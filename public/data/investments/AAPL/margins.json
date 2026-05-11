@@ -108,9 +108,9 @@
     {
       "symbol": "AAPL",
       "report_date": "2026-03-31",
-      "gross_profit": null,
-      "total_revenue": null,
-      "gross_margin": null
+      "gross_profit": 54781000000.0,
+      "total_revenue": 111184000000.0,
+      "gross_margin": 0.4927
     }
   ],
   "annual_gross": [
@@ -273,9 +273,9 @@
     {
       "symbol": "AAPL",
       "report_date": "2026-03-31",
-      "operating_income": null,
-      "total_revenue": null,
-      "operating_margin": null
+      "operating_income": 35885000000.0,
+      "total_revenue": 111184000000.0,
+      "operating_margin": 0.3228
     }
   ],
   "annual_operating": [
@@ -438,9 +438,9 @@
     {
       "symbol": "AAPL",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": null,
-      "total_revenue": null,
-      "net_margin": null
+      "net_income_common_stockholders": 29578000000.0,
+      "total_revenue": 111184000000.0,
+      "net_margin": 0.266
     }
   ],
   "annual_net": [
@@ -603,9 +603,9 @@
     {
       "symbol": "AAPL",
       "report_date": "2026-03-31",
-      "ebitda": null,
-      "total_revenue": null,
-      "ebitda_margin": null
+      "ebitda": 39324000000.0,
+      "total_revenue": 111184000000.0,
+      "ebitda_margin": 0.3537
     }
   ],
   "annual_ebitda": [
@@ -768,9 +768,9 @@
     {
       "symbol": "AAPL",
       "report_date": "2026-03-31",
-      "free_cash_flow": null,
-      "total_revenue": null,
-      "fcf_margin": null
+      "free_cash_flow": 26731000000.0,
+      "total_revenue": 111184000000.0,
+      "fcf_margin": 0.2404
     }
   ],
   "annual_fcf": [

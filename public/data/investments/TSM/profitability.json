@@ -268,9 +268,9 @@
       "tax_rate_for_calcs": 0.19,
       "nopat": 402348302190.0,
       "beginning_invested_capital": 5612918127000.0,
-      "ending_invested_capital": 4616630000000.0,
-      "avg_invested_capital": 5114774063500.0,
-      "roic": 0.0787
+      "ending_invested_capital": 5464745077000.0,
+      "avg_invested_capital": 5538831602000.0,
+      "roic": 0.0726
     },
     {
       "symbol": "TSM",
@@ -278,10 +278,10 @@
       "ebit": 528327591000.0,
       "tax_rate_for_calcs": 0.14,
       "nopat": 454361728260.0,
-      "beginning_invested_capital": 4616630000000.0,
+      "beginning_invested_capital": 5464745077000.0,
       "ending_invested_capital": 5916535228000.0,
-      "avg_invested_capital": 5266582614000.0,
-      "roic": 0.0863
+      "avg_invested_capital": 5690640152500.0,
+      "roic": 0.0798
     },
     {
       "symbol": "TSM",

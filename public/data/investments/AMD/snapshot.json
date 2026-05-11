@@ -1,10 +1,10 @@
 {
   "symbol": "AMD",
-  "lastUpdated": "2026-05-07T23:35:00.937242+00:00",
+  "lastUpdated": "2026-05-11T23:35:21.850921+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-05-07T23:35:00.937242+00:00",
+    "snapshotBuiltAt": "2026-05-11T23:35:21.850921+00:00",
     "sections": {
-      "price": "2026-05-01"
+      "price": "2026-05-08"
     }
   },
   "source": "prefetched",
@@ -40,12 +40,12 @@
       "longName": "Advanced Micro Devices, Inc."
     },
     "fundamentals": {
-      "ttmEps": 2.64,
-      "ttmPe": 136.57,
-      "marketCap": 587802350952,
-      "psRatio": 16.97,
-      "pbRatio": 9.33,
-      "pegRatio": 0.66
+      "ttmEps": 3.05,
+      "ttmPe": 149.24,
+      "marketCap": 742233087114,
+      "psRatio": 21.43,
+      "pbRatio": 11.78,
+      "pegRatio": 1.64
     },
     "profitability": {
       "roe": 2.44,
@@ -82,7 +82,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": 206.67
+        "yoyGrowth": 90.91
       }
     ],
     "income_statement": {
@@ -5634,57 +5634,17 @@
       ]
     },
     "wacc": {
-      "wacc": 24.48,
-      "costOfEquity": 24.64,
+      "wacc": 24.740000000000002,
+      "costOfEquity": 24.87,
       "costOfDebt": 0.9400000000000001,
       "taxRate": 22,
-      "beta": 2.3877,
-      "marketCap": 587802350952
+      "beta": 2.4135,
+      "marketCap": 742233087114
     },
     "beta": {
-      "beta5y": 2.3877
+      "beta5y": 2.4135
     },
     "price": [
-      {
-        "date": "2025-05-01",
-        "open": 99.27,
-        "high": 100.1,
-        "low": 96.45,
-        "close": 96.65,
-        "volume": 29591500
-      },
-      {
-        "date": "2025-05-02",
-        "open": 98.4,
-        "high": 99.88,
-        "low": 98.3,
-        "close": 98.8,
-        "volume": 29957900
-      },
-      {
-        "date": "2025-05-05",
-        "open": 99,
-        "high": 102.05,
-        "low": 98.76,
-        "close": 100.59,
-        "volume": 41268900
-      },
-      {
-        "date": "2025-05-06",
-        "open": 98.41,
-        "high": 100.07,
-        "low": 97.44,
-        "close": 98.62,
-        "volume": 54264300
-      },
-      {
-        "date": "2025-05-07",
-        "open": 100.75,
-        "high": 103.42,
-        "low": 96.88,
-        "close": 100.36,
-        "volume": 86474400
-      },
       {
         "date": "2025-05-08",
         "open": 101.92,
@@ -7659,7 +7619,47 @@
         "high": 362.79,
         "low": 349.25,
         "close": 360.54,
-        "volume": 34173000
+        "volume": 34279200
+      },
+      {
+        "date": "2026-05-04",
+        "open": 360.31,
+        "high": 361.85,
+        "low": 338.7,
+        "close": 341.54,
+        "volume": 42000200
+      },
+      {
+        "date": "2026-05-05",
+        "open": 351.51,
+        "high": 359.57,
+        "low": 344.88,
+        "close": 355.26,
+        "volume": 64235100
+      },
+      {
+        "date": "2026-05-06",
+        "open": 409.49,
+        "high": 430.6,
+        "low": 402.04,
+        "close": 421.39,
+        "volume": 87732200
+      },
+      {
+        "date": "2026-05-07",
+        "open": 417.07,
+        "high": 421.71,
+        "low": 401.08,
+        "close": 408.46,
+        "volume": 44885500
+      },
+      {
+        "date": "2026-05-08",
+        "open": 418.59,
+        "high": 456.29,
+        "low": 418.29,
+        "close": 455.19,
+        "volume": 57739000
       }
     ],
     "news": [
@@ -7680,19 +7680,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "9eeeb70a-4a36-3460-aa56-174cd3b4e291",
-        "title": "AMD downgraded, Dollar General upgraded: Wall Street’s top analyst calls",
-        "publisher": "TipRanks",
-        "reportDate": "2025-04-09",
-        "link": "https://finance.yahoo.com/news/amd-downgraded-dollar-general-upgraded-133520598.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "38332cb6-375c-3d3f-866e-110979b991dc",
         "title": "1 of Wall Street’s Favorite Stock to Keep an Eye On and 2 to Avoid",
         "publisher": "StockStory",
         "reportDate": "2025-04-09",
         "link": "https://finance.yahoo.com/news/1-wall-street-favorite-stock-130304939.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9eeeb70a-4a36-3460-aa56-174cd3b4e291",
+        "title": "AMD downgraded, Dollar General upgraded: Wall Street’s top analyst calls",
+        "publisher": "TipRanks",
+        "reportDate": "2025-04-09",
+        "link": "https://finance.yahoo.com/news/amd-downgraded-dollar-general-upgraded-133520598.html",
         "type": "STORY"
       },
       {
@@ -7728,19 +7728,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "d7508ced-74ae-3726-bec2-6d547fe0b90b",
-        "title": "AMD earnings preview, Datadog, Ferrari profits: Trending Tickers",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/video/amd-earnings-preview-datadog-ferrari-145641441.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "e4a8656b-f91a-33d9-aa1d-34b42cc5cd85",
         "title": "Howard Hughes stake, Tyson Foods declines, AMD earnings preview",
         "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-06",
         "link": "https://finance.yahoo.com/video/howard-hughes-stake-tyson-foods-161138167.html",
+        "type": "VIDEO"
+      },
+      {
+        "uuid": "d7508ced-74ae-3726-bec2-6d547fe0b90b",
+        "title": "AMD earnings preview, Datadog, Ferrari profits: Trending Tickers",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/video/amd-earnings-preview-datadog-ferrari-145641441.html",
         "type": "VIDEO"
       }
     ],
@@ -7806,50 +7806,50 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 136.57,
-        "industryAvg": 38.95
+        "value": 149.24,
+        "industryAvg": 42.11
       },
       {
         "metric": "P/S Ratio",
-        "value": 16.97,
-        "industryAvg": 14.18
+        "value": 21.43,
+        "industryAvg": 15.45
       },
       {
         "metric": "P/B Ratio",
-        "value": 9.33,
-        "industryAvg": 11.78
+        "value": 11.78,
+        "industryAvg": 12.85
       },
       {
         "metric": "ROE",
         "value": 2.44,
-        "industryAvg": 30.509999999999998
+        "industryAvg": 30.570000000000004
       },
       {
         "metric": "ROA",
         "value": 1.96,
-        "industryAvg": 18.740000000000002
+        "industryAvg": 18.77
       },
       {
         "metric": "Gross Margin",
         "value": 54.300000000000004,
-        "industryAvg": 57.15
+        "industryAvg": 57.18
       },
       {
         "metric": "EBITDA Margin",
         "value": 27.860000000000003,
-        "industryAvg": 52.629999999999995
+        "industryAvg": 52.669999999999995
       },
       {
         "metric": "Net Margin",
         "value": 14.71,
-        "industryAvg": 33.900000000000006
+        "industryAvg": 33.94
       }
     ],
     "dcf": {
-      "fairValue": 25.29,
-      "currentPrice": 360.54,
-      "upside": -92.99,
-      "wacc": 24.48,
+      "fairValue": 28.84,
+      "currentPrice": 455.19,
+      "upside": -93.66,
+      "wacc": 24.74,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

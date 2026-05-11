@@ -206,6 +206,15 @@
       "International Transactions": 3652000000.0,
       "Other": 1214000000.0,
       "Services": 4760000000.0
+    },
+    {
+      "symbol": "V",
+      "report_date": "2026-03-31",
+      "Client Incentives": -4245000000.0,
+      "Data Processing": 5543000000.0,
+      "International Transactions": 3631000000.0,
+      "Other": 1320000000.0,
+      "Services": 4981000000.0
     }
   ],
   "by_geography": [],

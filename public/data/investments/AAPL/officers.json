@@ -1,6 +1,16 @@
 [
   {
     "symbol": "AAPL",
+    "name": "Mr. Adrian  Perica",
+    "title": "Vice President of Corporate Development",
+    "age": 51,
+    "born": 1974,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "AAPL",
     "name": "Mr. Ben  Borders",
     "title": "Principal Accounting Officer",
     "age": 44,
@@ -56,16 +66,6 @@
     "age": 58,
     "born": 1967,
     "pay": 5037867,
-    "exercised": 0,
-    "unexercised": 0
-  },
-  {
-    "symbol": "AAPL",
-    "name": "Ms. Jennifer G. Newstead J.D.",
-    "title": "Senior VP & General Counsel",
-    "age": 54,
-    "born": 1971,
-    "pay": null,
     "exercised": 0,
     "unexercised": 0
   },

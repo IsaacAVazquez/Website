@@ -61,16 +61,6 @@
   },
   {
     "symbol": "CRWD",
-    "name": "Mr. George R. Kurtz",
-    "title": "Co-Founder, President, CEO & Director",
-    "age": 53,
-    "born": 1972,
-    "pay": 3344619,
-    "exercised": 0,
-    "unexercised": 136198624
-  },
-  {
-    "symbol": "CRWD",
     "name": "Mr. Justin  Acquaro",
     "title": "Chief Information Officer",
     "age": null,
@@ -95,6 +85,16 @@
     "title": "Chief Legal Officer",
     "age": null,
     "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "CRWD",
+    "name": "Ms. Jennifer L. Johnson",
+    "title": "Chief Marketing Officer",
+    "age": 49,
+    "born": 1976,
     "pay": null,
     "exercised": 0,
     "unexercised": 0

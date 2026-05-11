@@ -90,6 +90,13 @@
       "gross_profit": null,
       "total_revenue": 111442000000.0,
       "gross_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2026-03-31",
+      "gross_profit": null,
+      "total_revenue": 92070000000.0,
+      "gross_margin": null
     }
   ],
   "annual_gross": [
@@ -233,6 +240,13 @@
       "report_date": "2025-12-31",
       "operating_income": null,
       "total_revenue": 111442000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2026-03-31",
+      "operating_income": null,
+      "total_revenue": 92070000000.0,
       "operating_margin": null
     }
   ],
@@ -378,6 +392,13 @@
       "net_income_common_stockholders": 19199000000.0,
       "total_revenue": 111442000000.0,
       "net_margin": 0.1723
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 10106000000.0,
+      "total_revenue": 92070000000.0,
+      "net_margin": 0.1098
     }
   ],
   "annual_net": [
@@ -521,6 +542,13 @@
       "report_date": "2025-12-31",
       "ebitda": null,
       "total_revenue": 111442000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2026-03-31",
+      "ebitda": null,
+      "total_revenue": 92070000000.0,
       "ebitda_margin": null
     }
   ],
@@ -666,6 +694,13 @@
       "free_cash_flow": 4990000000.0,
       "total_revenue": 111442000000.0,
       "fcf_margin": 0.0448
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 5452000000.0,
+      "total_revenue": 92070000000.0,
+      "fcf_margin": 0.0592
     }
   ],
   "annual_fcf": [

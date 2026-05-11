@@ -1,10 +1,10 @@
 {
   "symbol": "ORCL",
-  "lastUpdated": "2026-05-07T23:35:00.937242+00:00",
+  "lastUpdated": "2026-05-11T23:35:21.850921+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-05-07T23:35:00.937242+00:00",
+    "snapshotBuiltAt": "2026-05-11T23:35:21.850921+00:00",
     "sections": {
-      "price": "2026-05-01"
+      "price": "2026-05-08"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.57,
-      "ttmPe": 30.85,
-      "marketCap": 494190984180,
-      "psRatio": 7.71,
-      "pbRatio": 12.84,
-      "pegRatio": 1.26
+      "ttmPe": 35.18,
+      "marketCap": 563561213700,
+      "psRatio": 8.8,
+      "pbRatio": 14.64,
+      "pegRatio": 1.44
     },
     "profitability": {
       "roe": 10.81,
@@ -5475,57 +5475,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.29,
-      "costOfEquity": 17.21,
+      "wacc": 13.850000000000001,
+      "costOfEquity": 17.43,
       "costOfDebt": 0.77,
       "taxRate": 16,
-      "beta": 1.5116,
-      "marketCap": 494190984180
+      "beta": 1.5369,
+      "marketCap": 563561213700
     },
     "beta": {
-      "beta5y": 1.5116
+      "beta5y": 1.5369
     },
     "price": [
-      {
-        "date": "2025-05-01",
-        "open": 146.56,
-        "high": 148.64,
-        "low": 145.34,
-        "close": 145.49,
-        "volume": 11525800
-      },
-      {
-        "date": "2025-05-02",
-        "open": 148.33,
-        "high": 153.06,
-        "low": 148.33,
-        "close": 150.73,
-        "volume": 11346000
-      },
-      {
-        "date": "2025-05-05",
-        "open": 149.44,
-        "high": 150.82,
-        "low": 148.52,
-        "close": 149.29,
-        "volume": 5187400
-      },
-      {
-        "date": "2025-05-06",
-        "open": 146.98,
-        "high": 148.94,
-        "low": 145.72,
-        "close": 147.7,
-        "volume": 5108600
-      },
-      {
-        "date": "2025-05-07",
-        "open": 147.5,
-        "high": 149.9,
-        "low": 147.24,
-        "close": 149.37,
-        "volume": 6049600
-      },
       {
         "date": "2025-05-08",
         "open": 149.05,
@@ -7500,7 +7460,47 @@
         "high": 174.3,
         "low": 166.15,
         "close": 171.83,
-        "volume": 26281900
+        "volume": 26318000
+      },
+      {
+        "date": "2026-05-04",
+        "open": 176.02,
+        "high": 183.5,
+        "low": 174.26,
+        "close": 180.29,
+        "volume": 33504500
+      },
+      {
+        "date": "2026-05-05",
+        "open": 182.13,
+        "high": 186.52,
+        "low": 179,
+        "close": 185.35,
+        "volume": 23497200
+      },
+      {
+        "date": "2026-05-06",
+        "open": 186.2,
+        "high": 194.29,
+        "low": 182.67,
+        "close": 194.03,
+        "volume": 27685500
+      },
+      {
+        "date": "2026-05-07",
+        "open": 198.61,
+        "high": 200.15,
+        "low": 190.8,
+        "close": 194.59,
+        "volume": 31803200
+      },
+      {
+        "date": "2026-05-08",
+        "open": 192.58,
+        "high": 198,
+        "low": 190.21,
+        "close": 195.95,
+        "volume": 21103000
       }
     ],
     "news": [
@@ -7569,19 +7569,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "df3945aa-0fd1-34d9-8a4f-aa0c9a0cdb45",
-        "title": "Trump and MBS Tout $1 Trillion Pledge as Details Remain Elusive",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/trump-mbs-tout-1-trillion-174902305.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "ca06a274-32e3-3e67-865f-0b228b4d8f22",
         "title": "White House calls out Boeing, GE Vernova exports in Saudi Arabia pact",
         "publisher": "TipRanks",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/white-house-calls-boeing-ge-142742667.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "df3945aa-0fd1-34d9-8a4f-aa0c9a0cdb45",
+        "title": "Trump and MBS Tout $1 Trillion Pledge as Details Remain Elusive",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/trump-mbs-tout-1-trillion-174902305.html",
         "type": "STORY"
       }
     ],
@@ -7651,50 +7651,50 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 30.85,
-        "industryAvg": 27.71
+        "value": 35.18,
+        "industryAvg": 28.64
       },
       {
         "metric": "P/S Ratio",
-        "value": 7.71,
-        "industryAvg": 5.84
+        "value": 8.8,
+        "industryAvg": 6
       },
       {
         "metric": "P/B Ratio",
-        "value": 12.84,
-        "industryAvg": 7.51
+        "value": 14.64,
+        "industryAvg": 7.71
       },
       {
         "metric": "ROE",
         "value": 10.81,
-        "industryAvg": 28.050000000000004
+        "industryAvg": 27.93
       },
       {
         "metric": "ROA",
         "value": 1.6400000000000001,
-        "industryAvg": 10.89
+        "industryAvg": 10.84
       },
       {
         "metric": "Gross Margin",
         "value": 64.56,
-        "industryAvg": 47.67
+        "industryAvg": 47.9
       },
       {
         "metric": "EBITDA Margin",
         "value": 47.48,
-        "industryAvg": 32.85
+        "industryAvg": 32.67
       },
       {
         "metric": "Net Margin",
         "value": 21.52,
-        "industryAvg": 18.69
+        "industryAvg": 18.55
       }
     ],
     "dcf": {
-      "fairValue": 80.03,
-      "currentPrice": 171.83,
-      "upside": -53.43,
-      "wacc": 13.29,
+      "fairValue": 75.78,
+      "currentPrice": 195.95,
+      "upside": -61.33,
+      "wacc": 13.85,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 24.51,
         "Terminal growth": 3

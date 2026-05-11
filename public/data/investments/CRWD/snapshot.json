@@ -1,10 +1,10 @@
 {
   "symbol": "CRWD",
-  "lastUpdated": "2026-05-07T23:35:00.937242+00:00",
+  "lastUpdated": "2026-05-11T23:35:21.850921+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-05-07T23:35:00.937242+00:00",
+    "snapshotBuiltAt": "2026-05-11T23:35:21.850921+00:00",
     "sections": {
-      "price": "2026-05-01"
+      "price": "2026-05-08"
     }
   },
   "source": "prefetched",
@@ -42,9 +42,9 @@
     "fundamentals": {
       "ttmEps": -0.74,
       "ttmPe": 778.18,
-      "marketCap": 115556728524,
-      "psRatio": 24.01,
-      "pbRatio": 26.09,
+      "marketCap": 133849913557,
+      "psRatio": 27.82,
+      "pbRatio": 30.23,
       "pegRatio": 1.21
     },
     "profitability": {
@@ -5549,57 +5549,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.139999999999999,
-      "costOfEquity": 13.23,
+      "wacc": 13.309999999999999,
+      "costOfEquity": 13.389999999999999,
       "costOfDebt": 0.9199999999999999,
       "taxRate": 40,
-      "beta": 1.0423,
-      "marketCap": 115556728524
+      "beta": 1.0614,
+      "marketCap": 133849913557
     },
     "beta": {
-      "beta5y": 1.0423
+      "beta5y": 1.0614
     },
     "price": [
-      {
-        "date": "2025-05-01",
-        "open": 431.51,
-        "high": 439.63,
-        "low": 427.75,
-        "close": 431.88,
-        "volume": 3080100
-      },
-      {
-        "date": "2025-05-02",
-        "open": 438.18,
-        "high": 443.7,
-        "low": 434.4,
-        "close": 440.58,
-        "volume": 2708700
-      },
-      {
-        "date": "2025-05-05",
-        "open": 436,
-        "high": 451.15,
-        "low": 435.4,
-        "close": 443.47,
-        "volume": 3281000
-      },
-      {
-        "date": "2025-05-06",
-        "open": 432.2,
-        "high": 447.5,
-        "low": 430.57,
-        "close": 443.21,
-        "volume": 3431200
-      },
-      {
-        "date": "2025-05-07",
-        "open": 425.42,
-        "high": 429.84,
-        "low": 417.06,
-        "close": 422.52,
-        "volume": 6673400
-      },
       {
         "date": "2025-05-08",
         "open": 427.48,
@@ -7574,7 +7534,47 @@
         "high": 457.97,
         "low": 445.57,
         "close": 455.64,
-        "volume": 1518700
+        "volume": 1522000
+      },
+      {
+        "date": "2026-05-04",
+        "open": 456.9,
+        "high": 471.81,
+        "low": 455.4,
+        "close": 469.24,
+        "volume": 2183600
+      },
+      {
+        "date": "2026-05-05",
+        "open": 474.39,
+        "high": 480.66,
+        "low": 466,
+        "close": 476.53,
+        "volume": 2225000
+      },
+      {
+        "date": "2026-05-06",
+        "open": 468.4,
+        "high": 475.3,
+        "low": 457.46,
+        "close": 468.07,
+        "volume": 2198900
+      },
+      {
+        "date": "2026-05-07",
+        "open": 486.09,
+        "high": 506.79,
+        "low": 486.09,
+        "close": 505.72,
+        "volume": 5114500
+      },
+      {
+        "date": "2026-05-08",
+        "open": 499.17,
+        "high": 528.91,
+        "low": 492.33,
+        "close": 527.77,
+        "volume": 4036500
       }
     ],
     "news": [
@@ -7635,19 +7635,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "afdc966c-3c94-3ea3-9b6e-e5fa8d70f65f",
-        "title": "1 S&P 500 Stock on Our Buy List and 2 to Brush Off",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-26",
-        "link": "https://finance.yahoo.com/news/1-p-500-stock-buy-043515117.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "ef528610-24d6-3366-b150-fe969e479439",
         "title": "3 Top Cybersecurity Stocks to Buy in May",
         "publisher": "Motley Fool",
         "reportDate": "2025-05-26",
         "link": "https://finance.yahoo.com/m/ef528610-24d6-3366-b150-fe969e479439/3-top-cybersecurity-stocks-to.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "afdc966c-3c94-3ea3-9b6e-e5fa8d70f65f",
+        "title": "1 S&P 500 Stock on Our Buy List and 2 to Brush Off",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-26",
+        "link": "https://finance.yahoo.com/news/1-p-500-stock-buy-043515117.html",
         "type": "STORY"
       },
       {
@@ -7692,13 +7692,6 @@
         "title": "Chief Technology Officer"
       },
       {
-        "name": "Mr. George R. Kurtz",
-        "title": "Co-Founder, President, CEO & Director",
-        "age": 53,
-        "yearBorn": 1972,
-        "totalPay": 3344619
-      },
-      {
         "name": "Mr. Justin Acquaro",
         "title": "Chief Information Officer"
       },
@@ -7712,55 +7705,61 @@
       {
         "name": "Ms. Cathleen Garrigan Anderson J.D.",
         "title": "Chief Legal Officer"
+      },
+      {
+        "name": "Ms. Jennifer L. Johnson",
+        "title": "Chief Marketing Officer",
+        "age": 49,
+        "yearBorn": 1976
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
         "value": 778.18,
-        "industryAvg": 27.71
+        "industryAvg": 28.64
       },
       {
         "metric": "P/S Ratio",
-        "value": 24.01,
-        "industryAvg": 5.84
+        "value": 27.82,
+        "industryAvg": 6
       },
       {
         "metric": "P/B Ratio",
-        "value": 26.09,
-        "industryAvg": 7.51
+        "value": 30.23,
+        "industryAvg": 7.71
       },
       {
         "metric": "ROE",
         "value": 1.41,
-        "industryAvg": 28.050000000000004
+        "industryAvg": 27.93
       },
       {
         "metric": "ROA",
         "value": 0.5599999999999999,
-        "industryAvg": 10.89
+        "industryAvg": 10.84
       },
       {
         "metric": "Gross Margin",
         "value": 76.12,
-        "industryAvg": 47.67
+        "industryAvg": 47.9
       },
       {
         "metric": "EBITDA Margin",
         "value": 10.95,
-        "industryAvg": 32.85
+        "industryAvg": 32.67
       },
       {
         "metric": "Net Margin",
         "value": 4.55,
-        "industryAvg": 18.69
+        "industryAvg": 18.55
       }
     ],
     "dcf": {
-      "fairValue": -15.86,
-      "currentPrice": 455.64,
-      "upside": -103.48,
-      "wacc": 13.14,
+      "fairValue": -15.58,
+      "currentPrice": 527.77,
+      "upside": -102.95,
+      "wacc": 13.31,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

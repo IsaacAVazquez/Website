@@ -1,51 +1,6 @@
 [
   {
     "symbol": "KLAC",
-    "report_date": "2025-05-01",
-    "open": 689.2,
-    "close": 676.31,
-    "high": 693.04,
-    "low": 674.76,
-    "volume": 1463500
-  },
-  {
-    "symbol": "KLAC",
-    "report_date": "2025-05-02",
-    "open": 694.25,
-    "close": 698.16,
-    "high": 707.84,
-    "low": 692.91,
-    "volume": 851800
-  },
-  {
-    "symbol": "KLAC",
-    "report_date": "2025-05-05",
-    "open": 691.02,
-    "close": 693.29,
-    "high": 701.61,
-    "low": 687.12,
-    "volume": 811900
-  },
-  {
-    "symbol": "KLAC",
-    "report_date": "2025-05-06",
-    "open": 680.86,
-    "close": 679.42,
-    "high": 690.0,
-    "low": 677.61,
-    "volume": 905400
-  },
-  {
-    "symbol": "KLAC",
-    "report_date": "2025-05-07",
-    "open": 680.49,
-    "close": 694.35,
-    "high": 696.46,
-    "low": 675.27,
-    "volume": 962800
-  },
-  {
-    "symbol": "KLAC",
     "report_date": "2025-05-08",
     "open": 703.32,
     "close": 703.33,
@@ -2266,5 +2221,50 @@
     "high": 1745.04,
     "low": 1695.0,
     "volume": 789200
+  },
+  {
+    "symbol": "KLAC",
+    "report_date": "2026-05-04",
+    "open": 1720.5,
+    "close": 1713.32,
+    "high": 1751.14,
+    "low": 1676.79,
+    "volume": 791600
+  },
+  {
+    "symbol": "KLAC",
+    "report_date": "2026-05-05",
+    "open": 1745.3,
+    "close": 1732.9,
+    "high": 1767.19,
+    "low": 1715.87,
+    "volume": 1194100
+  },
+  {
+    "symbol": "KLAC",
+    "report_date": "2026-05-06",
+    "open": 1784.69,
+    "close": 1816.29,
+    "high": 1824.79,
+    "low": 1759.26,
+    "volume": 1340900
+  },
+  {
+    "symbol": "KLAC",
+    "report_date": "2026-05-07",
+    "open": 1817.31,
+    "close": 1763.25,
+    "high": 1819.99,
+    "low": 1746.0,
+    "volume": 1241600
+  },
+  {
+    "symbol": "KLAC",
+    "report_date": "2026-05-08",
+    "open": 1816.63,
+    "close": 1869.19,
+    "high": 1889.06,
+    "low": 1805.0,
+    "volume": 1289400
   }
 ]

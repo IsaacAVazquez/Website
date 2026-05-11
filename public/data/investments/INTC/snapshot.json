@@ -1,10 +1,10 @@
 {
   "symbol": "INTC",
-  "lastUpdated": "2026-05-07T23:35:00.937242+00:00",
+  "lastUpdated": "2026-05-11T23:35:21.850921+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-05-07T23:35:00.937242+00:00",
+    "snapshotBuiltAt": "2026-05-11T23:35:21.850921+00:00",
     "sections": {
-      "price": "2026-05-01"
+      "price": "2026-05-08"
     }
   },
   "source": "prefetched",
@@ -42,9 +42,9 @@
     "fundamentals": {
       "ttmEps": -0.63,
       "ttmPe": 3730,
-      "marketCap": 500690120000,
-      "psRatio": 9.31,
-      "pbRatio": 4.49,
+      "marketCap": 627847920000,
+      "psRatio": 11.68,
+      "pbRatio": 5.64,
       "pegRatio": 30.28
     },
     "profitability": {
@@ -5823,57 +5823,17 @@
       ]
     },
     "wacc": {
-      "wacc": 20.82,
-      "costOfEquity": 22.66,
+      "wacc": 21.47,
+      "costOfEquity": 22.98,
       "costOfDebt": 0.59,
       "taxRate": 40,
-      "beta": 2.154,
-      "marketCap": 500690120000
+      "beta": 2.1906,
+      "marketCap": 627847920000
     },
     "beta": {
-      "beta5y": 2.154
+      "beta5y": 2.1906
     },
     "price": [
-      {
-        "date": "2025-05-01",
-        "open": 20.22,
-        "high": 20.65,
-        "low": 19.94,
-        "close": 19.98,
-        "volume": 72607500
-      },
-      {
-        "date": "2025-05-02",
-        "open": 20.26,
-        "high": 20.78,
-        "low": 20.21,
-        "close": 20.62,
-        "volume": 63298500
-      },
-      {
-        "date": "2025-05-05",
-        "open": 20.39,
-        "high": 20.58,
-        "low": 20.24,
-        "close": 20.27,
-        "volume": 44237000
-      },
-      {
-        "date": "2025-05-06",
-        "open": 19.92,
-        "high": 20.12,
-        "low": 19.77,
-        "close": 19.94,
-        "volume": 51330800
-      },
-      {
-        "date": "2025-05-07",
-        "open": 19.97,
-        "high": 20.37,
-        "low": 19.82,
-        "close": 20.31,
-        "volume": 61002600
-      },
       {
         "date": "2025-05-08",
         "open": 21.01,
@@ -7848,7 +7808,47 @@
         "high": 100.45,
         "low": 92.61,
         "close": 99.62,
-        "volume": 157427100
+        "volume": 158502800
+      },
+      {
+        "date": "2026-05-04",
+        "open": 99.18,
+        "high": 99.82,
+        "low": 95.6,
+        "close": 95.78,
+        "volume": 119294000
+      },
+      {
+        "date": "2026-05-05",
+        "open": 100.51,
+        "high": 110.48,
+        "low": 100.08,
+        "close": 108.15,
+        "volume": 198482000
+      },
+      {
+        "date": "2026-05-06",
+        "open": 110.98,
+        "high": 113.5,
+        "low": 106.58,
+        "close": 113.01,
+        "volume": 157320100
+      },
+      {
+        "date": "2026-05-07",
+        "open": 111.02,
+        "high": 114.51,
+        "low": 109.15,
+        "close": 109.62,
+        "volume": 122699900
+      },
+      {
+        "date": "2026-05-08",
+        "open": 111.81,
+        "high": 130.57,
+        "low": 111.8,
+        "close": 124.92,
+        "volume": 226166600
       }
     ],
     "news": [
@@ -7925,15 +7925,38 @@
         "type": "STORY"
       },
       {
-        "uuid": "4e7d3ddf-3e5f-37c6-a16b-3e53c35496f0",
-        "title": "Why Intel Stock Is Sinking Today",
+        "uuid": "5aeb5313-0a8a-304b-9136-ed60d6dfb814",
+        "title": "Why Arm Holdings Stock Was Moving Higher Today",
         "publisher": "Motley Fool",
         "reportDate": "2025-05-15",
-        "link": "https://finance.yahoo.com/m/4e7d3ddf-3e5f-37c6-a16b-3e53c35496f0/why-intel-stock-is-sinking.html",
+        "link": "https://finance.yahoo.com/m/5aeb5313-0a8a-304b-9136-ed60d6dfb814/why-arm-holdings-stock-was.html",
         "type": "STORY"
       }
     ],
     "officers": [
+      {
+        "name": "Mr. Allon Stabinsky",
+        "title": "Senior VP and Chief Deputy General Counsel of the Law & Policy Group"
+      },
+      {
+        "name": "Mr. David A. Zinsner",
+        "title": "Executive VP, CFO & Principal Accounting Officer",
+        "age": 56,
+        "yearBorn": 1969,
+        "totalPay": 4218200
+      },
+      {
+        "name": "Mr. Gregory Ernst",
+        "title": "Corporate VP, Chief Revenue Officer & General Manager of Sales Group"
+      },
+      {
+        "name": "Mr. James A. Murray",
+        "title": "Chief Antitrust Counsel and VP of Law & Policy Group"
+      },
+      {
+        "name": "Mr. John William Pitzer",
+        "title": "Corporate Vice President of Corporate Planning & Investor Relations"
+      },
       {
         "name": "Mr. Lip-Bu Tan",
         "title": "CEO & Director",
@@ -7949,60 +7972,70 @@
         "totalPay": 3473100
       },
       {
+        "name": "Ms. Annie Shea Weckesser",
+        "title": "Senior VP and Chief Marketing & Communications Officer"
+      },
+      {
         "name": "Ms. April Miller Boise J.D.",
         "title": "Executive VP, Chief Legal Officer & Corporate Secretary",
         "age": 56,
         "yearBorn": 1969,
         "totalPay": 2345700
+      },
+      {
+        "name": "Ms. Cynthia A. Stoddard",
+        "title": "Senior VP & Chief Information Officer",
+        "age": 68,
+        "yearBorn": 1957
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
         "value": 3730,
-        "industryAvg": 38.95
+        "industryAvg": 42.11
       },
       {
         "metric": "P/S Ratio",
-        "value": 9.31,
-        "industryAvg": 14.18
+        "value": 11.68,
+        "industryAvg": 15.45
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.49,
-        "industryAvg": 11.78
+        "value": 5.64,
+        "industryAvg": 12.85
       },
       {
         "metric": "ROE",
         "value": -3.3000000000000003,
-        "industryAvg": 30.509999999999998
+        "industryAvg": 30.570000000000004
       },
       {
         "metric": "ROA",
         "value": -1.79,
-        "industryAvg": 18.740000000000002
+        "industryAvg": 18.77
       },
       {
         "metric": "Gross Margin",
         "value": 39.379999999999995,
-        "industryAvg": 57.15
+        "industryAvg": 57.18
       },
       {
         "metric": "EBITDA Margin",
         "value": -4.02,
-        "industryAvg": 52.629999999999995
+        "industryAvg": 52.669999999999995
       },
       {
         "metric": "Net Margin",
         "value": -27.46,
-        "industryAvg": 33.900000000000006
+        "industryAvg": 33.94
       }
     ],
     "dcf": {
-      "fairValue": -1.98,
-      "currentPrice": 99.62,
-      "upside": -101.99,
-      "wacc": 20.82,
+      "fairValue": -1.92,
+      "currentPrice": 124.92,
+      "upside": -101.54,
+      "wacc": 21.47,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": -30,
         "Terminal growth": 3

@@ -1,8 +1,18 @@
 [
   {
     "symbol": "MA",
-    "name": "Eva  Chen",
-    "title": "Country Head of Taiwan & GM of Taiwan",
+    "name": "Mr. Craig E. Vosburg",
+    "title": "Chief Services Officer",
+    "age": 58,
+    "born": 1967,
+    "pay": 2694403,
+    "exercised": 22477560,
+    "unexercised": 9816097
+  },
+  {
+    "symbol": "MA",
+    "name": "Mr. Devin  Corr",
+    "title": "Executive Vice President of Investor Relations",
     "age": null,
     "born": null,
     "pay": null,
@@ -11,33 +21,13 @@
   },
   {
     "symbol": "MA",
-    "name": "Mr. Andrea  Scerch",
-    "title": "President of Latin America & the Caribbean",
-    "age": null,
-    "born": null,
-    "pay": null,
-    "exercised": 0,
-    "unexercised": 0
-  },
-  {
-    "symbol": "MA",
-    "name": "Mr. Daniel  Cohen",
-    "title": "Senior Vice President of Emerging Payments-Latin American & Caribbean",
-    "age": null,
-    "born": null,
-    "pay": null,
-    "exercised": 0,
-    "unexercised": 0
-  },
-  {
-    "symbol": "MA",
-    "name": "Mr. Ling  Hai",
-    "title": "President of Asia Pacific, Europe, Middle East & Africa",
-    "age": 54,
-    "born": 1971,
-    "pay": null,
-    "exercised": 0,
-    "unexercised": 0
+    "name": "Mr. Edward Grunde McLaughlin",
+    "title": "President & CTO of Mastercard Technology",
+    "age": 59,
+    "born": 1966,
+    "pay": 2064752,
+    "exercised": 5250432,
+    "unexercised": 19592664
   },
   {
     "symbol": "MA",
@@ -51,10 +41,10 @@
   },
   {
     "symbol": "MA",
-    "name": "Mr. Nick  Vora",
-    "title": "Senior Vice President of Operations & Technology Lead - MEA",
-    "age": null,
-    "born": null,
+    "name": "Mr. Richard R. Verma Ph.D.",
+    "title": "Chief Administrative Officer",
+    "age": 52,
+    "born": 1973,
     "pay": null,
     "exercised": 0,
     "unexercised": 0
@@ -81,20 +71,30 @@
   },
   {
     "symbol": "MA",
-    "name": "Ms. Deborah  Heng",
-    "title": "Group Head & General Manager of Singapore",
-    "age": null,
-    "born": null,
+    "name": "Ms. Jill  Kramer",
+    "title": "Chief Marketing & Communications Officer",
+    "age": 55,
+    "born": 1970,
     "pay": null,
     "exercised": 0,
     "unexercised": 0
   },
   {
     "symbol": "MA",
-    "name": "Ms. Tara  Nathan",
-    "title": "Executive Vice President of Public-Private Partnerships",
-    "age": null,
-    "born": null,
+    "name": "Ms. Linda Pistecchia Kirkpatrick",
+    "title": "President of the Americas",
+    "age": 48,
+    "born": 1977,
+    "pay": 2297718,
+    "exercised": 0,
+    "unexercised": 7960118
+  },
+  {
+    "symbol": "MA",
+    "name": "Ms. Tiffany M. Hall",
+    "title": "General Counsel",
+    "age": 46,
+    "born": 1979,
     "pay": null,
     "exercised": 0,
     "unexercised": 0

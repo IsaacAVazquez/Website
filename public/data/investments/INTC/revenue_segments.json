@@ -359,6 +359,18 @@
       "Mobileye": 0.0,
       "Network and Edge": 0.0,
       "Other": 574000000.0
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2026-03-31",
+      "Accelerated Computing": 0.0,
+      "Client Computing": 7727000000.0,
+      "Data Center": 5052000000.0,
+      "Foundry Services": 5421000000.0,
+      "Internet of Things": 0.0,
+      "Mobileye": 0.0,
+      "Network and Edge": 0.0,
+      "Other": 628000000.0
     }
   ],
   "by_geography": [],

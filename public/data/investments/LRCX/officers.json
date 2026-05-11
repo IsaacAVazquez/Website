@@ -71,16 +71,6 @@
   },
   {
     "symbol": "LRCX",
-    "name": "Ms. Audrey  Charles",
-    "title": "Senior VP of Corporate Strategy and Advanced Packaging & President of lam Capital",
-    "age": null,
-    "born": null,
-    "pay": null,
-    "exercised": 0,
-    "unexercised": 0
-  },
-  {
-    "symbol": "LRCX",
     "name": "Ms. Ava A. Harter J.D.",
     "title": "Senior VP, Chief Legal Officer & Secretary",
     "age": 55,
@@ -88,6 +78,16 @@
     "pay": 1685283,
     "exercised": 0,
     "unexercised": 121162
+  },
+  {
+    "symbol": "LRCX",
+    "name": "Ms. Christina C. Correia",
+    "title": "Chief Accounting Officer & Group VP",
+    "age": 55,
+    "born": 1970,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
   },
   {
     "symbol": "LRCX",

@@ -21,6 +21,26 @@
   },
   {
     "symbol": "WDAY",
+    "name": "Mr. Gabriel  Monroy",
+    "title": "Chief Technology Officer",
+    "age": 45,
+    "born": 1980,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "WDAY",
+    "name": "Mr. Justin Allen Furby",
+    "title": "Vice President of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "WDAY",
     "name": "Mr. Mark S. Garfield",
     "title": "Chief Accounting Officer",
     "age": 54,
@@ -46,6 +66,36 @@
     "age": 54,
     "born": 1971,
     "pay": 2079456,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "WDAY",
+    "name": "Ms. Ashley D. Goldsmith",
+    "title": "Executive VP & Chief People Officer",
+    "age": 54,
+    "born": 1971,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "WDAY",
+    "name": "Ms. Rani  Johnson",
+    "title": "Chief Information Officer",
+    "age": 49,
+    "born": 1976,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "WDAY",
+    "name": "Ms. Sheri  Rhodes",
+    "title": "Chief Customer Officer",
+    "age": 56,
+    "born": 1969,
+    "pay": null,
     "exercised": 0,
     "unexercised": 0
   }

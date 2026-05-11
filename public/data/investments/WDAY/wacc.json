@@ -16,12 +16,12 @@
     "sp500_cagr_end": 2022,
     "sp500_10y_cagr": 0.1041,
     "treasure_10y_yield": 0.0397,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.05,
     "weight_of_equity": 0.95,
     "cost_of_debt": 0.0089,
-    "cost_of_equity": 0.105,
-    "wacc": 0.1002
+    "cost_of_equity": 0.1054,
+    "wacc": 0.1006
   },
   {
     "symbol": "WDAY",
@@ -40,12 +40,12 @@
     "sp500_cagr_end": 2022,
     "sp500_10y_cagr": 0.1041,
     "treasure_10y_yield": 0.0488,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.0556,
     "weight_of_equity": 0.9444,
     "cost_of_debt": 0.0089,
-    "cost_of_equity": 0.1048,
-    "wacc": 0.0994
+    "cost_of_equity": 0.1052,
+    "wacc": 0.0998
   },
   {
     "symbol": "WDAY",
@@ -64,12 +64,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0399,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.0411,
     "weight_of_equity": 0.9589,
     "cost_of_debt": 0.0086,
-    "cost_of_equity": 0.1002,
-    "wacc": 0.0964
+    "cost_of_equity": 0.1006,
+    "wacc": 0.0967
   },
   {
     "symbol": "WDAY",
@@ -88,12 +88,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0469,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.049,
     "weight_of_equity": 0.951,
     "cost_of_debt": 0.0087,
-    "cost_of_equity": 0.1001,
-    "wacc": 0.0956
+    "cost_of_equity": 0.1005,
+    "wacc": 0.0959
   },
   {
     "symbol": "WDAY",
@@ -112,12 +112,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0409,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.0527,
     "weight_of_equity": 0.9473,
     "cost_of_debt": 0.0083,
-    "cost_of_equity": 0.1002,
-    "wacc": 0.0953
+    "cost_of_equity": 0.1006,
+    "wacc": 0.0956
   },
   {
     "symbol": "WDAY",
@@ -136,12 +136,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0428,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.0515,
     "weight_of_equity": 0.9485,
     "cost_of_debt": 0.0086,
-    "cost_of_equity": 0.1001,
-    "wacc": 0.0953
+    "cost_of_equity": 0.1006,
+    "wacc": 0.0958
   },
   {
     "symbol": "WDAY",
@@ -160,12 +160,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0458,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.046,
     "weight_of_equity": 0.954,
     "cost_of_debt": 0.0083,
-    "cost_of_equity": 0.1116,
-    "wacc": 0.1068
+    "cost_of_equity": 0.112,
+    "wacc": 0.1071
   },
   {
     "symbol": "WDAY",
@@ -184,12 +184,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0417,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.0494,
     "weight_of_equity": 0.9506,
     "cost_of_debt": 0.0085,
-    "cost_of_equity": 0.1116,
-    "wacc": 0.1064
+    "cost_of_equity": 0.1121,
+    "wacc": 0.1068
   },
   {
     "symbol": "WDAY",
@@ -208,12 +208,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0437,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.0581,
     "weight_of_equity": 0.9419,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1116,
-    "wacc": 0.1055
+    "cost_of_equity": 0.1121,
+    "wacc": 0.1059
   },
   {
     "symbol": "WDAY",
@@ -232,12 +232,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0411,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.0565,
     "weight_of_equity": 0.9435,
     "cost_of_debt": 0.0076,
-    "cost_of_equity": 0.1116,
-    "wacc": 0.1056
+    "cost_of_equity": 0.1121,
+    "wacc": 0.1061
   },
   {
     "symbol": "WDAY",
@@ -256,12 +256,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.0764,
     "weight_of_equity": 0.9236,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1202
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1209
   },
   {
     "symbol": "WDAY",
@@ -280,12 +280,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.0784,
     "weight_of_equity": 0.9216,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.12
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1206
   },
   {
     "symbol": "WDAY",
@@ -304,12 +304,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0428,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.0838,
     "weight_of_equity": 0.9162,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1193
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1199
   },
   {
     "symbol": "WDAY",
@@ -328,12 +328,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.0798,
     "weight_of_equity": 0.9202,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1198
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1204
   },
   {
     "symbol": "WDAY",
@@ -352,12 +352,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0421,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.085,
     "weight_of_equity": 0.915,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1191
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1198
   },
   {
     "symbol": "WDAY",
@@ -376,12 +376,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0422,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.083,
     "weight_of_equity": 0.917,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1194
+    "cost_of_equity": 0.1305,
+    "wacc": 0.12
   },
   {
     "symbol": "WDAY",
@@ -400,12 +400,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0422,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.0871,
     "weight_of_equity": 0.9129,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1189
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1195
   },
   {
     "symbol": "WDAY",
@@ -424,12 +424,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0416,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.0878,
     "weight_of_equity": 0.9122,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1188
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1194
   },
   {
     "symbol": "WDAY",
@@ -448,12 +448,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0418,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.0926,
     "weight_of_equity": 0.9074,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1182
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1188
   },
   {
     "symbol": "WDAY",
@@ -472,12 +472,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0409,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.0929,
     "weight_of_equity": 0.9071,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1299,
-    "wacc": 0.1182
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1188
   },
   {
     "symbol": "WDAY",
@@ -496,12 +496,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0404,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.0926,
     "weight_of_equity": 0.9074,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1299,
-    "wacc": 0.1183
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1188
   },
   {
     "symbol": "WDAY",
@@ -520,12 +520,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0405,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.0934,
     "weight_of_equity": 0.9066,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1299,
-    "wacc": 0.1182
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1187
   },
   {
     "symbol": "WDAY",
@@ -544,12 +544,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0409,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.0937,
     "weight_of_equity": 0.9063,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1299,
-    "wacc": 0.1181
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1187
   },
   {
     "symbol": "WDAY",
@@ -568,12 +568,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0408,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.0953,
     "weight_of_equity": 0.9047,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1299,
-    "wacc": 0.1179
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1185
   },
   {
     "symbol": "WDAY",
@@ -592,12 +592,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0408,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.0967,
     "weight_of_equity": 0.9033,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1299,
-    "wacc": 0.1178
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1183
   },
   {
     "symbol": "WDAY",
@@ -616,12 +616,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0403,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.1024,
     "weight_of_equity": 0.8976,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1299,
-    "wacc": 0.117
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1176
   },
   {
     "symbol": "WDAY",
@@ -640,12 +640,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0404,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.1017,
     "weight_of_equity": 0.8983,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1299,
-    "wacc": 0.1171
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1177
   },
   {
     "symbol": "WDAY",
@@ -664,12 +664,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0405,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.0997,
     "weight_of_equity": 0.9003,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1299,
-    "wacc": 0.1174
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1179
   },
   {
     "symbol": "WDAY",
@@ -688,12 +688,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0402,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.0958,
     "weight_of_equity": 0.9042,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1299,
-    "wacc": 0.1179
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1184
   },
   {
     "symbol": "WDAY",
@@ -712,12 +712,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0397,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.0993,
     "weight_of_equity": 0.9007,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1299,
-    "wacc": 0.1174
+    "cost_of_equity": 0.1305,
+    "wacc": 0.118
   },
   {
     "symbol": "WDAY",
@@ -736,12 +736,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0405,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.0991,
     "weight_of_equity": 0.9009,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1299,
-    "wacc": 0.1175
+    "cost_of_equity": 0.1305,
+    "wacc": 0.118
   },
   {
     "symbol": "WDAY",
@@ -760,12 +760,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0406,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.0931,
     "weight_of_equity": 0.9069,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1299,
-    "wacc": 0.1182
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1188
   },
   {
     "symbol": "WDAY",
@@ -784,12 +784,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0409,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.0941,
     "weight_of_equity": 0.9059,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1299,
-    "wacc": 0.1181
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1186
   },
   {
     "symbol": "WDAY",
@@ -808,12 +808,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0413,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.0917,
     "weight_of_equity": 0.9083,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1299,
-    "wacc": 0.1184
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1189
   },
   {
     "symbol": "WDAY",
@@ -832,12 +832,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0415,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.0896,
     "weight_of_equity": 0.9104,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1299,
-    "wacc": 0.1187
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1192
   },
   {
     "symbol": "WDAY",
@@ -856,12 +856,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0412,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.0912,
     "weight_of_equity": 0.9088,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1299,
-    "wacc": 0.1185
+    "cost_of_equity": 0.1305,
+    "wacc": 0.119
   },
   {
     "symbol": "WDAY",
@@ -880,12 +880,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0415,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.0945,
     "weight_of_equity": 0.9055,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1299,
-    "wacc": 0.118
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1186
   },
   {
     "symbol": "WDAY",
@@ -904,12 +904,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0421,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.0973,
     "weight_of_equity": 0.9027,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1176
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1182
   },
   {
     "symbol": "WDAY",
@@ -928,12 +928,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0427,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.0998,
     "weight_of_equity": 0.9002,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1173
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1179
   },
   {
     "symbol": "WDAY",
@@ -952,12 +952,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0428,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.1005,
     "weight_of_equity": 0.8995,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1172
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1178
   },
   {
     "symbol": "WDAY",
@@ -976,12 +976,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0423,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.1001,
     "weight_of_equity": 0.8999,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1172
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1179
   },
   {
     "symbol": "WDAY",
@@ -1000,12 +1000,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.042,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.0991,
     "weight_of_equity": 0.9009,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1174
+    "cost_of_equity": 0.1305,
+    "wacc": 0.118
   },
   {
     "symbol": "WDAY",
@@ -1024,12 +1024,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.101,
     "weight_of_equity": 0.899,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1171
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1178
   },
   {
     "symbol": "WDAY",
@@ -1048,12 +1048,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0425,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.1003,
     "weight_of_equity": 0.8997,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1172
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1179
   },
   {
     "symbol": "WDAY",
@@ -1072,12 +1072,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0439,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.0986,
     "weight_of_equity": 0.9014,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1174
+    "cost_of_equity": 0.1304,
+    "wacc": 0.118
   },
   {
     "symbol": "WDAY",
@@ -1096,12 +1096,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0434,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.0978,
     "weight_of_equity": 0.9022,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1175
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1182
   },
   {
     "symbol": "WDAY",
@@ -1120,12 +1120,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0439,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.1031,
     "weight_of_equity": 0.8969,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1169
+    "cost_of_equity": 0.1304,
+    "wacc": 0.1174
   },
   {
     "symbol": "WDAY",
@@ -1144,12 +1144,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0433,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.1047,
     "weight_of_equity": 0.8953,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1167
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1173
   },
   {
     "symbol": "WDAY",
@@ -1168,12 +1168,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0442,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.1041,
     "weight_of_equity": 0.8959,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1167
+    "cost_of_equity": 0.1304,
+    "wacc": 0.1173
   },
   {
     "symbol": "WDAY",
@@ -1192,12 +1192,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0444,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.1069,
     "weight_of_equity": 0.8931,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1164
+    "cost_of_equity": 0.1304,
+    "wacc": 0.1169
   },
   {
     "symbol": "WDAY",
@@ -1216,12 +1216,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0435,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.1035,
     "weight_of_equity": 0.8965,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1168
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1174
   },
   {
     "symbol": "WDAY",
@@ -1240,12 +1240,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.1027,
     "weight_of_equity": 0.8973,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1169
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1175
   },
   {
     "symbol": "WDAY",
@@ -1264,12 +1264,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0433,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.1033,
     "weight_of_equity": 0.8967,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1168
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1175
   },
   {
     "symbol": "WDAY",
@@ -1288,12 +1288,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0431,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.101,
     "weight_of_equity": 0.899,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1171
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1178
   },
   {
     "symbol": "WDAY",
@@ -1312,12 +1312,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0434,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.1028,
     "weight_of_equity": 0.8972,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1169
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1175
   },
   {
     "symbol": "WDAY",
@@ -1336,12 +1336,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0433,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.1044,
     "weight_of_equity": 0.8956,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1167
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1173
   },
   {
     "symbol": "WDAY",
@@ -1360,12 +1360,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.1109,
     "weight_of_equity": 0.8891,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1159
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1165
   },
   {
     "symbol": "WDAY",
@@ -1384,12 +1384,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.1162,
     "weight_of_equity": 0.8838,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1152
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1158
   },
   {
     "symbol": "WDAY",
@@ -1408,12 +1408,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0431,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.1167,
     "weight_of_equity": 0.8833,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1152
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1158
   },
   {
     "symbol": "WDAY",
@@ -1432,12 +1432,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.1103,
     "weight_of_equity": 0.8897,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.116
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1166
   },
   {
     "symbol": "WDAY",
@@ -1456,12 +1456,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.112,
     "weight_of_equity": 0.888,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1158
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1164
   },
   {
     "symbol": "WDAY",
@@ -1480,12 +1480,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.107,
     "weight_of_equity": 0.893,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1164
+    "cost_of_equity": 0.1305,
+    "wacc": 0.117
   },
   {
     "symbol": "WDAY",
@@ -1504,12 +1504,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0432,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.1064,
     "weight_of_equity": 0.8936,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1165
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1171
   },
   {
     "symbol": "WDAY",
@@ -1528,12 +1528,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.1072,
     "weight_of_equity": 0.8928,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1164
+    "cost_of_equity": 0.1305,
+    "wacc": 0.117
   },
   {
     "symbol": "WDAY",
@@ -1552,12 +1552,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.1041,
     "weight_of_equity": 0.8959,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1167
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1174
   },
   {
     "symbol": "WDAY",
@@ -1576,12 +1576,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.1032,
     "weight_of_equity": 0.8968,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1169
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1175
   },
   {
     "symbol": "WDAY",
@@ -1600,12 +1600,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.1051,
     "weight_of_equity": 0.8949,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1166
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1172
   },
   {
     "symbol": "WDAY",
@@ -1624,12 +1624,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0434,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.1148,
     "weight_of_equity": 0.8852,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1154
+    "cost_of_equity": 0.1305,
+    "wacc": 0.116
   },
   {
     "symbol": "WDAY",
@@ -1648,12 +1648,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0431,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.1104,
     "weight_of_equity": 0.8896,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.116
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1166
   },
   {
     "symbol": "WDAY",
@@ -1672,12 +1672,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0435,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.112,
     "weight_of_equity": 0.888,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1158
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1164
   },
   {
     "symbol": "WDAY",
@@ -1696,12 +1696,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0436,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.1093,
     "weight_of_equity": 0.8907,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1161
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1167
   },
   {
     "symbol": "WDAY",
@@ -1720,12 +1720,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0442,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.1083,
     "weight_of_equity": 0.8917,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1162
+    "cost_of_equity": 0.1304,
+    "wacc": 0.1168
   },
   {
     "symbol": "WDAY",
@@ -1744,12 +1744,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.044,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.1083,
     "weight_of_equity": 0.8917,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1162
+    "cost_of_equity": 0.1304,
+    "wacc": 0.1168
   },
   {
     "symbol": "WDAY",
@@ -1768,11 +1768,131 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0439,
-    "beta_5y": 1.0132,
+    "beta_5y": 1.0206,
     "weight_of_debt": 0.1048,
     "weight_of_equity": 0.8952,
     "cost_of_debt": 0.0073,
-    "cost_of_equity": 0.1298,
-    "wacc": 0.1167
+    "cost_of_equity": 0.1304,
+    "wacc": 0.1172
+  },
+  {
+    "symbol": "WDAY",
+    "report_date": "2026-05-04T00:00:00.000",
+    "market_capitalization": 32873996610.0,
+    "exchange_rate": 1.0,
+    "total_debt": 3821000000.0,
+    "total_debt_usd": 3821000000.0,
+    "interest_expense": 28000000.0,
+    "interest_expense_usd": 28000000.0,
+    "pretax_income": 264000000.0,
+    "pretax_income_usd": 264000000.0,
+    "tax_provision": 119000000.0,
+    "tax_provision_usd": 119000000.0,
+    "tax_rate_for_calcs": 0.4,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0445,
+    "beta_5y": 1.0206,
+    "weight_of_debt": 0.1041,
+    "weight_of_equity": 0.8959,
+    "cost_of_debt": 0.0073,
+    "cost_of_equity": 0.1304,
+    "wacc": 0.1173
+  },
+  {
+    "symbol": "WDAY",
+    "report_date": "2026-05-05T00:00:00.000",
+    "market_capitalization": 33128475120.0,
+    "exchange_rate": 1.0,
+    "total_debt": 3821000000.0,
+    "total_debt_usd": 3821000000.0,
+    "interest_expense": 28000000.0,
+    "interest_expense_usd": 28000000.0,
+    "pretax_income": 264000000.0,
+    "pretax_income_usd": 264000000.0,
+    "tax_provision": 119000000.0,
+    "tax_provision_usd": 119000000.0,
+    "tax_rate_for_calcs": 0.4,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0443,
+    "beta_5y": 1.0206,
+    "weight_of_debt": 0.1034,
+    "weight_of_equity": 0.8966,
+    "cost_of_debt": 0.0073,
+    "cost_of_equity": 0.1304,
+    "wacc": 0.1174
+  },
+  {
+    "symbol": "WDAY",
+    "report_date": "2026-05-06T00:00:00.000",
+    "market_capitalization": 31521918870.0,
+    "exchange_rate": 1.0,
+    "total_debt": 3821000000.0,
+    "total_debt_usd": 3821000000.0,
+    "interest_expense": 28000000.0,
+    "interest_expense_usd": 28000000.0,
+    "pretax_income": 264000000.0,
+    "pretax_income_usd": 264000000.0,
+    "tax_provision": 119000000.0,
+    "tax_provision_usd": 119000000.0,
+    "tax_rate_for_calcs": 0.4,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0436,
+    "beta_5y": 1.0206,
+    "weight_of_debt": 0.1081,
+    "weight_of_equity": 0.8919,
+    "cost_of_debt": 0.0073,
+    "cost_of_equity": 0.1305,
+    "wacc": 0.1169
+  },
+  {
+    "symbol": "WDAY",
+    "report_date": "2026-05-07T00:00:00.000",
+    "market_capitalization": 33642573120.0,
+    "exchange_rate": 1.0,
+    "total_debt": 3821000000.0,
+    "total_debt_usd": 3821000000.0,
+    "interest_expense": 28000000.0,
+    "interest_expense_usd": 28000000.0,
+    "pretax_income": 264000000.0,
+    "pretax_income_usd": 264000000.0,
+    "tax_provision": 119000000.0,
+    "tax_provision_usd": 119000000.0,
+    "tax_rate_for_calcs": 0.4,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0441,
+    "beta_5y": 1.0206,
+    "weight_of_debt": 0.102,
+    "weight_of_equity": 0.898,
+    "cost_of_debt": 0.0073,
+    "cost_of_equity": 0.1304,
+    "wacc": 0.1175
+  },
+  {
+    "symbol": "WDAY",
+    "report_date": "2026-05-08T00:00:00.000",
+    "market_capitalization": 32858573670.0,
+    "exchange_rate": 1.0,
+    "total_debt": 3821000000.0,
+    "total_debt_usd": 3821000000.0,
+    "interest_expense": 28000000.0,
+    "interest_expense_usd": 28000000.0,
+    "pretax_income": 264000000.0,
+    "pretax_income_usd": 264000000.0,
+    "tax_provision": 119000000.0,
+    "tax_provision_usd": 119000000.0,
+    "tax_rate_for_calcs": 0.4,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0438,
+    "beta_5y": 1.0206,
+    "weight_of_debt": 0.1042,
+    "weight_of_equity": 0.8958,
+    "cost_of_debt": 0.0073,
+    "cost_of_equity": 0.1304,
+    "wacc": 0.1173
   }
 ]

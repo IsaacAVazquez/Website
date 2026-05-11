@@ -80,9 +80,9 @@
     {
       "symbol": "CDNS",
       "report_date": "2025-03-31",
-      "gross_profit": 1075233000.0,
+      "gross_profit": 1075205000.0,
       "total_revenue": 1242366000.0,
-      "gross_margin": 0.8655
+      "gross_margin": 0.8654
     },
     {
       "symbol": "CDNS",
@@ -108,9 +108,9 @@
     {
       "symbol": "CDNS",
       "report_date": "2026-03-31",
-      "gross_profit": null,
-      "total_revenue": null,
-      "gross_margin": null
+      "gross_profit": 1259685000.0,
+      "total_revenue": 1474220000.0,
+      "gross_margin": 0.8545
     }
   ],
   "annual_gross": [
@@ -245,7 +245,7 @@
     {
       "symbol": "CDNS",
       "report_date": "2025-03-31",
-      "operating_income": 361411000.0,
+      "operating_income": 361383000.0,
       "total_revenue": 1242366000.0,
       "operating_margin": 0.2909
     },
@@ -273,9 +273,9 @@
     {
       "symbol": "CDNS",
       "report_date": "2026-03-31",
-      "operating_income": null,
-      "total_revenue": null,
-      "operating_margin": null
+      "operating_income": 431336000.0,
+      "total_revenue": 1474220000.0,
+      "operating_margin": 0.2926
     }
   ],
   "annual_operating": [
@@ -438,9 +438,9 @@
     {
       "symbol": "CDNS",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": null,
-      "total_revenue": null,
-      "net_margin": null
+      "net_income_common_stockholders": 335660000.0,
+      "total_revenue": 1474220000.0,
+      "net_margin": 0.2277
     }
   ],
   "annual_net": [
@@ -603,9 +603,9 @@
     {
       "symbol": "CDNS",
       "report_date": "2026-03-31",
-      "ebitda": null,
-      "total_revenue": null,
-      "ebitda_margin": null
+      "ebitda": 544088000.0,
+      "total_revenue": 1474220000.0,
+      "ebitda_margin": 0.3691
     }
   ],
   "annual_ebitda": [
@@ -768,9 +768,9 @@
     {
       "symbol": "CDNS",
       "report_date": "2026-03-31",
-      "free_cash_flow": null,
-      "total_revenue": null,
-      "fcf_margin": null
+      "free_cash_flow": 306962000.0,
+      "total_revenue": 1474220000.0,
+      "fcf_margin": 0.2082
     }
   ],
   "annual_fcf": [

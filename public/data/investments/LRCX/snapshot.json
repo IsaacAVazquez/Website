@@ -1,10 +1,10 @@
 {
   "symbol": "LRCX",
-  "lastUpdated": "2026-05-07T23:35:00.937242+00:00",
+  "lastUpdated": "2026-05-11T23:35:21.850921+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-05-07T23:35:00.937242+00:00",
+    "snapshotBuiltAt": "2026-05-11T23:35:21.850921+00:00",
     "sections": {
-      "price": "2026-05-01"
+      "price": "2026-05-08"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.3,
-      "ttmPe": 48.44,
-      "marketCap": 321046587120,
-      "psRatio": 14.81,
-      "pbRatio": 30.33,
-      "pegRatio": 1.19
+      "ttmPe": 55.48,
+      "marketCap": 367730402550,
+      "psRatio": 16.96,
+      "pbRatio": 34.74,
+      "pegRatio": 1.36
     },
     "profitability": {
       "roe": 17.61,
@@ -5259,57 +5259,17 @@
       ]
     },
     "wacc": {
-      "wacc": 19.439999999999998,
-      "costOfEquity": 19.66,
+      "wacc": 19.55,
+      "costOfEquity": 19.74,
       "costOfDebt": 1.05,
       "taxRate": 9,
-      "beta": 1.8007,
-      "marketCap": 321046587120
+      "beta": 1.8097,
+      "marketCap": 367730402550
     },
     "beta": {
-      "beta5y": 1.8007
+      "beta5y": 1.8097
     },
     "price": [
-      {
-        "date": "2025-05-01",
-        "open": 72.18,
-        "high": 73.53,
-        "low": 71.4,
-        "close": 71.73,
-        "volume": 14147600
-      },
-      {
-        "date": "2025-05-02",
-        "open": 74.25,
-        "high": 75.49,
-        "low": 73.69,
-        "close": 74.52,
-        "volume": 13339400
-      },
-      {
-        "date": "2025-05-05",
-        "open": 73.88,
-        "high": 74.9,
-        "low": 73.78,
-        "close": 73.91,
-        "volume": 6960800
-      },
-      {
-        "date": "2025-05-06",
-        "open": 72.59,
-        "high": 73.88,
-        "low": 72.59,
-        "close": 73.16,
-        "volume": 6892700
-      },
-      {
-        "date": "2025-05-07",
-        "open": 73.44,
-        "high": 75.3,
-        "low": 72.91,
-        "close": 75.06,
-        "volume": 9984700
-      },
       {
         "date": "2025-05-08",
         "open": 76.1,
@@ -7284,7 +7244,47 @@
         "high": 260.44,
         "low": 250.12,
         "close": 256.72,
-        "volume": 8089100
+        "volume": 8094500
+      },
+      {
+        "date": "2026-05-04",
+        "open": 256.69,
+        "high": 263.08,
+        "low": 254.95,
+        "close": 258.57,
+        "volume": 6497400
+      },
+      {
+        "date": "2026-05-05",
+        "open": 266.64,
+        "high": 280,
+        "low": 266.64,
+        "close": 275.8,
+        "volume": 11884000
+      },
+      {
+        "date": "2026-05-06",
+        "open": 287,
+        "high": 297.87,
+        "low": 285.85,
+        "close": 297.17,
+        "volume": 14788600
+      },
+      {
+        "date": "2026-05-07",
+        "open": 297.03,
+        "high": 298,
+        "low": 283.14,
+        "close": 286.52,
+        "volume": 9704500
+      },
+      {
+        "date": "2026-05-08",
+        "open": 295.72,
+        "high": 297.42,
+        "low": 287.52,
+        "close": 294.05,
+        "volume": 8991300
       }
     ],
     "news": [
@@ -7321,19 +7321,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "8700f987-3350-36fb-a7a6-b57b2c7afa29",
-        "title": "Lam Research Gains 18% in a Month: Should You Buy the Stock Now?",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/lam-research-gains-18-month-132000265.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "80a8b8d3-1495-3996-94b8-9b578be74ba9",
         "title": "3 Nasdaq-Listed Tech Stocks Flying-High in 2025 Signaling More Upside",
         "publisher": "Zacks",
         "reportDate": "2025-05-28",
         "link": "https://finance.yahoo.com/news/3-nasdaq-listed-tech-stocks-112100288.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "8700f987-3350-36fb-a7a6-b57b2c7afa29",
+        "title": "Lam Research Gains 18% in a Month: Should You Buy the Stock Now?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/news/lam-research-gains-18-month-132000265.html",
         "type": "STORY"
       },
       {
@@ -7411,15 +7411,17 @@
         "totalPay": 1219197
       },
       {
-        "name": "Ms. Audrey Charles",
-        "title": "Senior VP of Corporate Strategy and Advanced Packaging & President of lam Capital"
-      },
-      {
         "name": "Ms. Ava A. Harter J.D.",
         "title": "Senior VP, Chief Legal Officer & Secretary",
         "age": 55,
         "yearBorn": 1970,
         "totalPay": 1685283
+      },
+      {
+        "name": "Ms. Christina C. Correia",
+        "title": "Chief Accounting Officer & Group VP",
+        "age": 55,
+        "yearBorn": 1970
       },
       {
         "name": "Ms. Mary Teresa Hassett",
@@ -7431,50 +7433,50 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 48.44,
-        "industryAvg": 47
+        "value": 55.48,
+        "industryAvg": 51.7
       },
       {
         "metric": "P/S Ratio",
-        "value": 14.81,
-        "industryAvg": 12.71
+        "value": 16.96,
+        "industryAvg": 14.01
       },
       {
         "metric": "P/B Ratio",
-        "value": 30.33,
-        "industryAvg": 17.93
+        "value": 34.74,
+        "industryAvg": 19.63
       },
       {
         "metric": "ROE",
         "value": 17.61,
-        "industryAvg": 38.23
+        "industryAvg": 38.379999999999995
       },
       {
         "metric": "ROA",
         "value": 8.649999999999999,
-        "industryAvg": 18.529999999999998
+        "industryAvg": 18.63
       },
       {
         "metric": "Gross Margin",
         "value": 49.830000000000005,
-        "industryAvg": 48.92
+        "industryAvg": 48.949999999999996
       },
       {
         "metric": "EBITDA Margin",
         "value": 37.1,
-        "industryAvg": 34.89
+        "industryAvg": 34.949999999999996
       },
       {
         "metric": "Net Margin",
         "value": 31.25,
-        "industryAvg": 26.19
+        "industryAvg": 26.240000000000002
       }
     ],
     "dcf": {
-      "fairValue": 59.64,
-      "currentPrice": 256.72,
-      "upside": -76.77,
-      "wacc": 19.44,
+      "fairValue": 59.22,
+      "currentPrice": 294.05,
+      "upside": -79.86,
+      "wacc": 19.55,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 40.78,
         "Terminal growth": 3

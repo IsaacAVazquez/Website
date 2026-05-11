@@ -5,483 +5,483 @@
       "report_date": "2009-03-31",
       "tailing_eps": -0.01,
       "eps": -0.01,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2009-06-30",
       "tailing_eps": -0.02,
       "eps": -0.01,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2009-09-30",
       "tailing_eps": -0.02,
       "eps": 0.0,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2009-12-31",
       "tailing_eps": -0.04,
       "eps": -0.02,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2010-03-31",
       "tailing_eps": -0.05,
       "eps": -0.02,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2010-06-30",
       "tailing_eps": -0.07,
       "eps": -0.03,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2010-09-30",
       "tailing_eps": -0.09,
       "eps": -0.03,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2010-12-31",
       "tailing_eps": -0.11,
       "eps": -0.04,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2011-03-31",
       "tailing_eps": -0.12,
       "eps": -0.03,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2011-06-30",
       "tailing_eps": -0.14,
       "eps": -0.04,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2011-09-30",
       "tailing_eps": -0.15,
       "eps": -0.04,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2011-12-31",
       "tailing_eps": -0.17,
       "eps": -0.05,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2012-03-31",
       "tailing_eps": -0.19,
       "eps": -0.06,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2012-06-30",
       "tailing_eps": -0.22,
       "eps": -0.07,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2012-09-30",
       "tailing_eps": -0.25,
       "eps": -0.07,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2012-12-31",
       "tailing_eps": -0.25,
       "eps": -0.05,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2013-03-31",
       "tailing_eps": -0.19,
       "eps": 0.0,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2013-06-30",
       "tailing_eps": -0.14,
       "eps": -0.02,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2013-09-30",
       "tailing_eps": -0.09,
       "eps": -0.02,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2013-12-31",
       "tailing_eps": -0.05,
       "eps": -0.01,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2014-03-31",
       "tailing_eps": -0.07,
       "eps": -0.03,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2014-06-30",
       "tailing_eps": -0.09,
       "eps": -0.03,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2014-09-30",
       "tailing_eps": -0.11,
       "eps": -0.04,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2014-12-31",
       "tailing_eps": -0.16,
       "eps": -0.06,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2015-03-31",
       "tailing_eps": -0.21,
       "eps": -0.08,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2015-06-30",
       "tailing_eps": -0.28,
       "eps": -0.1,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2015-09-30",
       "tailing_eps": -0.35,
       "eps": -0.12,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2015-12-31",
       "tailing_eps": -0.46,
       "eps": -0.16,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2016-03-31",
       "tailing_eps": -0.52,
       "eps": -0.14,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2016-06-30",
       "tailing_eps": -0.56,
       "eps": -0.14,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2016-09-30",
       "tailing_eps": -0.43,
       "eps": 0.01,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2016-12-31",
       "tailing_eps": -0.32,
       "eps": -0.05,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2017-03-31",
       "tailing_eps": -0.32,
       "eps": -0.14,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2017-06-30",
       "tailing_eps": -0.31,
       "eps": -0.14,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2017-09-30",
       "tailing_eps": -0.57,
       "eps": -0.25,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2017-12-31",
       "tailing_eps": -0.79,
       "eps": -0.27,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2018-03-31",
       "tailing_eps": -0.93,
       "eps": -0.28,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2018-06-30",
       "tailing_eps": -1.07,
       "eps": -0.28,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2018-09-30",
       "tailing_eps": -0.71,
       "eps": 0.12,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2018-12-31",
       "tailing_eps": -0.39,
       "eps": 0.05,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2019-03-31",
       "tailing_eps": -0.38,
       "eps": -0.27,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2019-06-30",
       "tailing_eps": -0.26,
       "eps": -0.15,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2019-09-30",
       "tailing_eps": -0.32,
       "eps": 0.05,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2019-12-31",
       "tailing_eps": -0.34,
       "eps": 0.04,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2020-03-31",
       "tailing_eps": -0.06,
       "eps": 0.01,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2020-06-30",
       "tailing_eps": 0.13,
       "eps": 0.03,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2020-09-30",
       "tailing_eps": 0.17,
       "eps": 0.09,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2020-12-31",
       "tailing_eps": 0.21,
       "eps": 0.08,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2021-03-31",
       "tailing_eps": 0.33,
       "eps": 0.13,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2021-06-30",
       "tailing_eps": 0.64,
       "eps": 0.34,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2021-09-30",
       "tailing_eps": 1.03,
       "eps": 0.48,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2021-12-31",
       "tailing_eps": 1.63,
       "eps": 0.68,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2022-03-31",
       "tailing_eps": 2.46,
       "eps": 0.95,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2022-06-30",
       "tailing_eps": 2.77,
       "eps": 0.65,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2022-09-30",
       "tailing_eps": 3.24,
       "eps": 0.95,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2022-12-31",
       "tailing_eps": 3.63,
       "eps": 1.07,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2023-03-31",
       "tailing_eps": 3.4,
       "eps": 0.73,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2023-06-30",
       "tailing_eps": 3.52,
       "eps": 0.78,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2023-09-30",
       "tailing_eps": 3.11,
       "eps": 0.53,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2023-12-31",
       "tailing_eps": 4.3,
       "eps": 2.27,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2024-03-31",
       "tailing_eps": 3.99,
       "eps": 0.41,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2024-06-30",
       "tailing_eps": 3.61,
       "eps": 0.4,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2024-09-30",
       "tailing_eps": 3.7,
       "eps": 0.62,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2024-12-31",
       "tailing_eps": 2.09,
       "eps": 0.66,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2025-03-31",
       "tailing_eps": 1.8,
       "eps": 0.12,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2025-06-30",
       "tailing_eps": 1.73,
       "eps": 0.33,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2025-09-30",
       "tailing_eps": 1.5,
       "eps": 0.39,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2025-12-31",
       "tailing_eps": 1.08,
       "eps": 0.24,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     },
     {
       "symbol": "TSLA",
       "report_date": "2026-03-31",
       "tailing_eps": 1.09,
       "eps": 0.13,
-      "update_time": "2026-05-02"
+      "update_time": "2026-05-09"
     }
   ],
   "ttmPe": [
@@ -32364,6 +32364,46 @@
       "close_price": 390.82,
       "ttm_eps": 1.09,
       "ttm_pe": 358.55
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-05-04T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 392.51,
+      "ttm_eps": 1.09,
+      "ttm_pe": 360.1
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-05-05T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 389.37,
+      "ttm_eps": 1.09,
+      "ttm_pe": 357.22
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-05-06T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 398.73,
+      "ttm_eps": 1.09,
+      "ttm_pe": 365.81
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-05-07T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 411.79,
+      "ttm_eps": 1.09,
+      "ttm_pe": 377.79
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-05-08T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 428.35,
+      "ttm_eps": 1.09,
+      "ttm_pe": 392.98
     }
   ],
   "marketCap": [
@@ -64246,6 +64286,46 @@
       "close_price": 390.82,
       "shares_outstanding": 3755723900,
       "market_capitalization": 1467812014598.0
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-05-04T00:00:00.000",
+      "shares_report_date": "2026-04-16T00:00:00.000",
+      "close_price": 392.51,
+      "shares_outstanding": 3755723900,
+      "market_capitalization": 1474159187989.0
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-05-05T00:00:00.000",
+      "shares_report_date": "2026-04-16T00:00:00.000",
+      "close_price": 389.37,
+      "shares_outstanding": 3755723900,
+      "market_capitalization": 1462366214943.0
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-05-06T00:00:00.000",
+      "shares_report_date": "2026-04-16T00:00:00.000",
+      "close_price": 398.73,
+      "shares_outstanding": 3755723900,
+      "market_capitalization": 1497519790647.0
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-05-07T00:00:00.000",
+      "shares_report_date": "2026-04-16T00:00:00.000",
+      "close_price": 411.79,
+      "shares_outstanding": 3755723900,
+      "market_capitalization": 1546569544781.0
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-05-08T00:00:00.000",
+      "shares_report_date": "2026-04-16T00:00:00.000",
+      "close_price": 428.35,
+      "shares_outstanding": 3755723900,
+      "market_capitalization": 1608764332565.0
     }
   ],
   "psRatio": [
@@ -69488,6 +69568,56 @@
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 97879000000.0,
       "ps_ratio": 15.0
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-05-04T00:00:00.000",
+      "market_capitalization": 1474159187989.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 97879000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 97879000000.0,
+      "ps_ratio": 15.06
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-05-05T00:00:00.000",
+      "market_capitalization": 1462366214943.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 97879000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 97879000000.0,
+      "ps_ratio": 14.94
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-05-06T00:00:00.000",
+      "market_capitalization": 1497519790647.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 97879000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 97879000000.0,
+      "ps_ratio": 15.3
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-05-07T00:00:00.000",
+      "market_capitalization": 1546569544781.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 97879000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 97879000000.0,
+      "ps_ratio": 15.8
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-05-08T00:00:00.000",
+      "market_capitalization": 1608764332565.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 97879000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 97879000000.0,
+      "ps_ratio": 16.44
     }
   ],
   "pbRatio": [
@@ -79120,6 +79250,56 @@
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 84116000000.0,
       "pb_ratio": 17.45
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-05-04T00:00:00.000",
+      "market_capitalization": 1474159187989.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 84116000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 84116000000.0,
+      "pb_ratio": 17.53
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-05-05T00:00:00.000",
+      "market_capitalization": 1462366214943.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 84116000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 84116000000.0,
+      "pb_ratio": 17.39
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-05-06T00:00:00.000",
+      "market_capitalization": 1497519790647.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 84116000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 84116000000.0,
+      "pb_ratio": 17.8
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-05-07T00:00:00.000",
+      "market_capitalization": 1546569544781.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 84116000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 84116000000.0,
+      "pb_ratio": 18.39
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-05-08T00:00:00.000",
+      "market_capitalization": 1608764332565.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 84116000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 84116000000.0,
+      "pb_ratio": 19.13
     }
   ],
   "pegRatio": [
@@ -93792,6 +93972,56 @@
       "ttm_pe": 358.55,
       "eps_yoy_growth": 0.0833,
       "peg_ratio": 43.04
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-05-04T00:00:00.000",
+      "close_price": 392.51,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 1.09,
+      "ttm_pe": 360.1,
+      "eps_yoy_growth": 0.0833,
+      "peg_ratio": 43.23
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-05-05T00:00:00.000",
+      "close_price": 389.37,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 1.09,
+      "ttm_pe": 357.22,
+      "eps_yoy_growth": 0.0833,
+      "peg_ratio": 42.88
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-05-06T00:00:00.000",
+      "close_price": 398.73,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 1.09,
+      "ttm_pe": 365.81,
+      "eps_yoy_growth": 0.0833,
+      "peg_ratio": 43.91
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-05-07T00:00:00.000",
+      "close_price": 411.79,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 1.09,
+      "ttm_pe": 377.79,
+      "eps_yoy_growth": 0.0833,
+      "peg_ratio": 45.35
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-05-08T00:00:00.000",
+      "close_price": 428.35,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 1.09,
+      "ttm_pe": 392.98,
+      "eps_yoy_growth": 0.0833,
+      "peg_ratio": 47.18
     }
   ]
 }

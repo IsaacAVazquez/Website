@@ -11,10 +11,10 @@
   },
   {
     "symbol": "NXPI",
-    "name": "Mr. Ajith  Mekkoth",
-    "title": "Executive Vice President, AI & Chip Engineering",
-    "age": null,
-    "born": null,
+    "name": "Mr. Andrew  Hardy",
+    "title": "Executive VP & Chief Sales Officer",
+    "age": 48,
+    "born": 1977,
     "pay": null,
     "exercised": 0,
     "unexercised": 0
@@ -31,8 +31,18 @@
   },
   {
     "symbol": "NXPI",
-    "name": "Mr. Charles  Dachs",
-    "title": "Executive VP & GM of Secure Connected Edge",
+    "name": "Mr. Christopher L. Jensen",
+    "title": "Executive VP &  Chief Human Resources Officer",
+    "age": 56,
+    "born": 1969,
+    "pay": 709116,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "NXPI",
+    "name": "Mr. Jeff  Palmer",
+    "title": "Senior Vice President of Investor Relations",
     "age": null,
     "born": null,
     "pay": null,
@@ -41,10 +51,10 @@
   },
   {
     "symbol": "NXPI",
-    "name": "Mr. Jens  Hinrichsen",
-    "title": "Executive VP and GM of Advanced Analog & Automotive Embedded Systems",
-    "age": 58,
-    "born": 1967,
+    "name": "Mr. Lars  Reger M.B.A.",
+    "title": "Executive VP & CTO",
+    "age": 55,
+    "born": 1970,
     "pay": null,
     "exercised": 0,
     "unexercised": 0
@@ -71,31 +81,21 @@
   },
   {
     "symbol": "NXPI",
-    "name": "Mr. Robert  Li",
-    "title": "Executive VP & GM of China",
-    "age": null,
-    "born": null,
-    "pay": null,
-    "exercised": 0,
-    "unexercised": 0
-  },
-  {
-    "symbol": "NXPI",
-    "name": "Mr. Rutger  Vrijen",
-    "title": "Executive Vice President & Chief Strategy Officer",
-    "age": null,
-    "born": null,
-    "pay": null,
-    "exercised": 0,
-    "unexercised": 0
-  },
-  {
-    "symbol": "NXPI",
     "name": "Mr. William J. Betz",
     "title": "Executive VP & CFO",
     "age": 48,
     "born": 1977,
     "pay": 906088,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "NXPI",
+    "name": "Ms. Jennifer B. Wuamett",
+    "title": "Executive VP, General Counsel, Corporate Secretary & Chief Sustainability Officer",
+    "age": 60,
+    "born": 1965,
+    "pay": 771436,
     "exercised": 0,
     "unexercised": 0
   }

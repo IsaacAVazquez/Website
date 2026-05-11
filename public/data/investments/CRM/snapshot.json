@@ -1,10 +1,10 @@
 {
   "symbol": "CRM",
-  "lastUpdated": "2026-05-07T23:35:00.937242+00:00",
+  "lastUpdated": "2026-05-11T23:35:21.850921+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-05-07T23:35:00.937242+00:00",
+    "snapshotBuiltAt": "2026-05-11T23:35:21.850921+00:00",
     "sections": {
-      "price": "2026-05-01"
+      "price": "2026-05-08"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 7.81,
-      "ttmPe": 23.54,
-      "marketCap": 169665860000,
-      "psRatio": 4.09,
-      "pbRatio": 2.87,
-      "pegRatio": 1.29
+      "ttmPe": 23.28,
+      "marketCap": 167819860000,
+      "psRatio": 4.04,
+      "pbRatio": 2.84,
+      "pegRatio": 1.27
     },
     "profitability": {
       "roe": 3.26,
@@ -5135,49 +5135,9 @@
     },
     "wacc": {},
     "beta": {
-      "beta5y": 1.1189
+      "beta5y": 1.1234
     },
     "price": [
-      {
-        "date": "2025-05-01",
-        "open": 273.4,
-        "high": 274.6,
-        "low": 269,
-        "close": 269.33,
-        "volume": 5208900
-      },
-      {
-        "date": "2025-05-02",
-        "open": 274.46,
-        "high": 276.32,
-        "low": 272.25,
-        "close": 275.08,
-        "volume": 4323400
-      },
-      {
-        "date": "2025-05-05",
-        "open": 273.37,
-        "high": 276.17,
-        "low": 272.31,
-        "close": 272.63,
-        "volume": 4219600
-      },
-      {
-        "date": "2025-05-06",
-        "open": 269.82,
-        "high": 274.8,
-        "low": 268.54,
-        "close": 273.36,
-        "volume": 4681600
-      },
-      {
-        "date": "2025-05-07",
-        "open": 273.71,
-        "high": 278.79,
-        "low": 273.71,
-        "close": 278.23,
-        "volume": 4267600
-      },
       {
         "date": "2025-05-08",
         "open": 279.21,
@@ -7152,7 +7112,47 @@
         "high": 186.04,
         "low": 178.75,
         "close": 183.82,
-        "volume": 12319400
+        "volume": 12324400
+      },
+      {
+        "date": "2026-05-04",
+        "open": 184.24,
+        "high": 190.31,
+        "low": 183.97,
+        "close": 185.48,
+        "volume": 8444700
+      },
+      {
+        "date": "2026-05-05",
+        "open": 185.55,
+        "high": 187.39,
+        "low": 181.1,
+        "close": 186.99,
+        "volume": 9740800
+      },
+      {
+        "date": "2026-05-06",
+        "open": 185.52,
+        "high": 187.1,
+        "low": 179.58,
+        "close": 181.19,
+        "volume": 11303400
+      },
+      {
+        "date": "2026-05-07",
+        "open": 184.6,
+        "high": 188.58,
+        "low": 184,
+        "close": 186.34,
+        "volume": 13955100
+      },
+      {
+        "date": "2026-05-08",
+        "open": 179.68,
+        "high": 181.87,
+        "low": 176.88,
+        "close": 181.82,
+        "volume": 15112200
       }
     ],
     "news": [
@@ -7304,43 +7304,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 23.54,
-        "industryAvg": 25.31
+        "value": 23.28,
+        "industryAvg": 25.73
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.09,
-        "industryAvg": 4.46
+        "value": 4.04,
+        "industryAvg": 4.45
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.87,
-        "industryAvg": 4.38
+        "value": 2.84,
+        "industryAvg": 4.45
       },
       {
         "metric": "ROE",
         "value": 3.26,
-        "industryAvg": 6.15
+        "industryAvg": 6.02
       },
       {
         "metric": "ROA",
         "value": 1.87,
-        "industryAvg": 3.35
+        "industryAvg": 3.3000000000000003
       },
       {
         "metric": "Gross Margin",
         "value": 77.61,
-        "industryAvg": 63.23
+        "industryAvg": 63.29
       },
       {
         "metric": "EBITDA Margin",
         "value": 29.24,
-        "industryAvg": 15.1
+        "industryAvg": 14.99
       },
       {
         "metric": "Net Margin",
         "value": 17.349999999999998,
-        "industryAvg": 7.84
+        "industryAvg": 7.6
       }
     ]
   }

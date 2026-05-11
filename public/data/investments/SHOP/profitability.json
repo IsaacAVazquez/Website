@@ -89,6 +89,15 @@
       "ending_stockholders_equity": 13473000000.0,
       "avg_equity": 12992000000.0,
       "roe": 0.0572
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": -581000000.0,
+      "beginning_stockholders_equity": 13473000000.0,
+      "ending_stockholders_equity": 12501000000.0,
+      "avg_equity": 12987000000.0,
+      "roe": -0.0447
     }
   ],
   "roa": [
@@ -181,6 +190,15 @@
       "ending_total_assets": 15189000000.0,
       "avg_assets": 15114000000.0,
       "roa": 0.0492
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": -581000000.0,
+      "beginning_total_assets": 15189000000.0,
+      "ending_total_assets": 14121000000.0,
+      "avg_assets": 14655000000.0,
+      "roa": -0.0396
     }
   ],
   "roic": [
@@ -293,6 +311,17 @@
       "ending_invested_capital": 13473000000.0,
       "avg_invested_capital": 13452000000.0,
       "roic": 0.046
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-03-31",
+      "ebit": 498000000.0,
+      "tax_rate_for_calcs": 0.08,
+      "nopat": 458160000.0,
+      "beginning_invested_capital": 13473000000.0,
+      "ending_invested_capital": 12501000000.0,
+      "avg_invested_capital": 12987000000.0,
+      "roic": 0.0353
     }
   ],
   "equityMultiplier": [
@@ -365,6 +394,13 @@
       "roe": 0.0572,
       "roa": 0.0492,
       "equity_multiplier": 1.16
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": -0.0447,
+      "roa": -0.0396,
+      "equity_multiplier": 1.13
     }
   ],
   "assetTurnover": [
@@ -437,6 +473,13 @@
       "roa": 0.0492,
       "net_margin": 0.2023,
       "asset_turnover": 0.24
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": -0.0396,
+      "net_margin": -0.1833,
+      "asset_turnover": 0.22
     }
   ]
 }

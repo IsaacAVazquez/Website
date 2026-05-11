@@ -160,6 +160,13 @@
       "Analog": 3615000000.0,
       "Embedded Processing": 662000000.0,
       "Other": 146000000.0
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2026-03-31",
+      "Analog": 3924000000.0,
+      "Embedded Processing": 723000000.0,
+      "Other": 178000000.0
     }
   ],
   "by_geography": [],

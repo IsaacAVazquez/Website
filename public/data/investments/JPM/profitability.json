@@ -89,6 +89,15 @@
       "ending_stockholders_equity": 362438000000.0,
       "avg_equity": 361325000000.0,
       "roe": 0.0351
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 16148000000.0,
+      "beginning_stockholders_equity": 362438000000.0,
+      "ending_stockholders_equity": 364038000000.0,
+      "avg_equity": 363238000000.0,
+      "roe": 0.0445
     }
   ],
   "roa": [
@@ -181,6 +190,15 @@
       "ending_total_assets": 4424900000000.0,
       "avg_assets": 4492552500000.0,
       "roa": 0.0028
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 16148000000.0,
+      "beginning_total_assets": 4424900000000.0,
+      "ending_total_assets": 4900475000000.0,
+      "avg_assets": 4662687500000.0,
+      "roa": 0.0035
     }
   ],
   "roic": [],
@@ -254,6 +272,13 @@
       "roe": 0.0351,
       "roa": 0.0028,
       "equity_multiplier": 12.54
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.0445,
+      "roa": 0.0035,
+      "equity_multiplier": 12.71
     }
   ],
   "assetTurnover": [
@@ -325,6 +350,13 @@
       "report_date": "2025-12-31T00:00:00.000",
       "roa": 0.0028,
       "net_margin": 0.2771,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0035,
+      "net_margin": 0.324,
       "asset_turnover": 0.01
     }
   ]

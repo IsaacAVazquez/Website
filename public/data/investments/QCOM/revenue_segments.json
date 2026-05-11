@@ -131,6 +131,18 @@
       "report_date": "2025-09-30",
       "Equipment and Services": 9674000000.0,
       "Licensing": 1596000000.0
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2025-12-31",
+      "Equipment and Services": 10466000000.0,
+      "Licensing": 1786000000.0
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2026-03-31",
+      "Equipment and Services": 9060000000.0,
+      "Licensing": 1539000000.0
     }
   ],
   "by_geography": [],

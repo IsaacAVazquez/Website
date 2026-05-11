@@ -16,12 +16,12 @@
     "sp500_cagr_end": 2022,
     "sp500_10y_cagr": 0.1041,
     "treasure_10y_yield": 0.0381,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0154,
     "weight_of_equity": 0.9846,
     "cost_of_debt": 0.0098,
-    "cost_of_equity": 0.1957,
-    "wacc": 0.1928
+    "cost_of_equity": 0.1974,
+    "wacc": 0.1945
   },
   {
     "symbol": "AMD",
@@ -40,12 +40,12 @@
     "sp500_cagr_end": 2022,
     "sp500_10y_cagr": 0.1041,
     "treasure_10y_yield": 0.0459,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0169,
     "weight_of_equity": 0.9831,
     "cost_of_debt": 0.0091,
-    "cost_of_equity": 0.1849,
-    "wacc": 0.1819
+    "cost_of_equity": 0.1864,
+    "wacc": 0.1834
   },
   {
     "symbol": "AMD",
@@ -64,12 +64,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0388,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0125,
     "weight_of_equity": 0.9875,
     "cost_of_debt": 0.009,
-    "cost_of_equity": 0.1835,
-    "wacc": 0.1813
+    "cost_of_equity": 0.1851,
+    "wacc": 0.1829
   },
   {
     "symbol": "AMD",
@@ -88,12 +88,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.042,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0102,
     "weight_of_equity": 0.9898,
     "cost_of_debt": 0.0083,
-    "cost_of_equity": 0.1791,
-    "wacc": 0.1773
+    "cost_of_equity": 0.1805,
+    "wacc": 0.1787
   },
   {
     "symbol": "AMD",
@@ -112,12 +112,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0436,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0085,
     "weight_of_equity": 0.9915,
     "cost_of_debt": 0.0111,
-    "cost_of_equity": 0.1768,
-    "wacc": 0.1754
+    "cost_of_equity": 0.1783,
+    "wacc": 0.1769
   },
   {
     "symbol": "AMD",
@@ -136,12 +136,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0381,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0083,
     "weight_of_equity": 0.9917,
     "cost_of_debt": 0.0103,
-    "cost_of_equity": 0.1845,
-    "wacc": 0.1831
+    "cost_of_equity": 0.186,
+    "wacc": 0.1845
   },
   {
     "symbol": "AMD",
@@ -160,12 +160,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0458,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0112,
     "weight_of_equity": 0.9888,
     "cost_of_debt": 0.0086,
-    "cost_of_equity": 0.2008,
-    "wacc": 0.1986
+    "cost_of_equity": 0.2024,
+    "wacc": 0.2002
   },
   {
     "symbol": "AMD",
@@ -184,12 +184,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0423,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0276,
     "weight_of_equity": 0.9724,
     "cost_of_debt": 0.0042,
-    "cost_of_equity": 0.2056,
-    "wacc": 0.2
+    "cost_of_equity": 0.2074,
+    "wacc": 0.2018
   },
   {
     "symbol": "AMD",
@@ -208,12 +208,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0424,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0166,
     "weight_of_equity": 0.9834,
     "cost_of_debt": 0.0098,
-    "cost_of_equity": 0.2055,
-    "wacc": 0.2022
+    "cost_of_equity": 0.2072,
+    "wacc": 0.2039
   },
   {
     "symbol": "AMD",
@@ -232,12 +232,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0416,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0145,
     "weight_of_equity": 0.9855,
     "cost_of_debt": 0.0096,
-    "cost_of_equity": 0.2066,
-    "wacc": 0.2037
+    "cost_of_equity": 0.2084,
+    "wacc": 0.2055
   },
   {
     "symbol": "AMD",
@@ -256,12 +256,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0418,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0109,
     "weight_of_equity": 0.9891,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2493,
-    "wacc": 0.2467
+    "cost_of_equity": 0.2515,
+    "wacc": 0.2488
   },
   {
     "symbol": "AMD",
@@ -280,12 +280,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0419,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0105,
     "weight_of_equity": 0.9895,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2492,
-    "wacc": 0.2467
+    "cost_of_equity": 0.2514,
+    "wacc": 0.2488
   },
   {
     "symbol": "AMD",
@@ -304,12 +304,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0417,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0106,
     "weight_of_equity": 0.9894,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2494,
-    "wacc": 0.2468
+    "cost_of_equity": 0.2517,
+    "wacc": 0.2491
   },
   {
     "symbol": "AMD",
@@ -328,12 +328,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0418,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0109,
     "weight_of_equity": 0.9891,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2493,
-    "wacc": 0.2467
+    "cost_of_equity": 0.2515,
+    "wacc": 0.2488
   },
   {
     "symbol": "AMD",
@@ -352,12 +352,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0415,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0111,
     "weight_of_equity": 0.9889,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2497,
-    "wacc": 0.247
+    "cost_of_equity": 0.252,
+    "wacc": 0.2493
   },
   {
     "symbol": "AMD",
@@ -376,12 +376,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0419,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0114,
     "weight_of_equity": 0.9886,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2492,
-    "wacc": 0.2464
+    "cost_of_equity": 0.2514,
+    "wacc": 0.2486
   },
   {
     "symbol": "AMD",
@@ -400,12 +400,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0418,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0115,
     "weight_of_equity": 0.9885,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2493,
-    "wacc": 0.2465
+    "cost_of_equity": 0.2515,
+    "wacc": 0.2487
   },
   {
     "symbol": "AMD",
@@ -424,12 +424,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0419,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0112,
     "weight_of_equity": 0.9888,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2492,
-    "wacc": 0.2465
+    "cost_of_equity": 0.2514,
+    "wacc": 0.2487
   },
   {
     "symbol": "AMD",
@@ -448,12 +448,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0418,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0106,
     "weight_of_equity": 0.9894,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2493,
-    "wacc": 0.2467
+    "cost_of_equity": 0.2515,
+    "wacc": 0.2489
   },
   {
     "symbol": "AMD",
@@ -472,12 +472,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0415,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0104,
     "weight_of_equity": 0.9896,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2497,
-    "wacc": 0.2472
+    "cost_of_equity": 0.252,
+    "wacc": 0.2495
   },
   {
     "symbol": "AMD",
@@ -496,12 +496,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0417,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0102,
     "weight_of_equity": 0.9898,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2494,
-    "wacc": 0.2469
+    "cost_of_equity": 0.2517,
+    "wacc": 0.2492
   },
   {
     "symbol": "AMD",
@@ -520,12 +520,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0424,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0101,
     "weight_of_equity": 0.9899,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2485,
-    "wacc": 0.2461
+    "cost_of_equity": 0.2507,
+    "wacc": 0.2482
   },
   {
     "symbol": "AMD",
@@ -544,12 +544,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0101,
     "weight_of_equity": 0.9899,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2476,
-    "wacc": 0.2452
+    "cost_of_equity": 0.2498,
+    "wacc": 0.2474
   },
   {
     "symbol": "AMD",
@@ -568,12 +568,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0094,
     "weight_of_equity": 0.9906,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2482,
-    "wacc": 0.2459
+    "cost_of_equity": 0.2504,
+    "wacc": 0.2481
   },
   {
     "symbol": "AMD",
@@ -592,12 +592,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0092,
     "weight_of_equity": 0.9908,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2482,
-    "wacc": 0.246
+    "cost_of_equity": 0.2504,
+    "wacc": 0.2482
   },
   {
     "symbol": "AMD",
@@ -616,12 +616,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0424,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.009,
     "weight_of_equity": 0.991,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2485,
-    "wacc": 0.2463
+    "cost_of_equity": 0.2507,
+    "wacc": 0.2485
   },
   {
     "symbol": "AMD",
@@ -640,12 +640,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0422,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0093,
     "weight_of_equity": 0.9907,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2487,
-    "wacc": 0.2465
+    "cost_of_equity": 0.251,
+    "wacc": 0.2487
   },
   {
     "symbol": "AMD",
@@ -664,12 +664,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0424,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0093,
     "weight_of_equity": 0.9907,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2485,
-    "wacc": 0.2463
+    "cost_of_equity": 0.2507,
+    "wacc": 0.2484
   },
   {
     "symbol": "AMD",
@@ -688,12 +688,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0093,
     "weight_of_equity": 0.9907,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2482,
-    "wacc": 0.246
+    "cost_of_equity": 0.2504,
+    "wacc": 0.2481
   },
   {
     "symbol": "AMD",
@@ -712,12 +712,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0424,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0093,
     "weight_of_equity": 0.9907,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2485,
-    "wacc": 0.2463
+    "cost_of_equity": 0.2507,
+    "wacc": 0.2484
   },
   {
     "symbol": "AMD",
@@ -736,12 +736,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0099,
     "weight_of_equity": 0.9901,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2482,
-    "wacc": 0.2458
+    "cost_of_equity": 0.2504,
+    "wacc": 0.248
   },
   {
     "symbol": "AMD",
@@ -760,12 +760,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0095,
     "weight_of_equity": 0.9905,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2478,
-    "wacc": 0.2455
+    "cost_of_equity": 0.25,
+    "wacc": 0.2477
   },
   {
     "symbol": "AMD",
@@ -784,12 +784,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0428,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0097,
     "weight_of_equity": 0.9903,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2479,
-    "wacc": 0.2456
+    "cost_of_equity": 0.2501,
+    "wacc": 0.2477
   },
   {
     "symbol": "AMD",
@@ -808,12 +808,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0116,
     "weight_of_equity": 0.9884,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2478,
-    "wacc": 0.245
+    "cost_of_equity": 0.25,
+    "wacc": 0.2472
   },
   {
     "symbol": "AMD",
@@ -832,12 +832,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0421,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0121,
     "weight_of_equity": 0.9879,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2489,
-    "wacc": 0.246
+    "cost_of_equity": 0.2511,
+    "wacc": 0.2482
   },
   {
     "symbol": "AMD",
@@ -856,12 +856,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0422,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0112,
     "weight_of_equity": 0.9888,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2487,
-    "wacc": 0.246
+    "cost_of_equity": 0.251,
+    "wacc": 0.2483
   },
   {
     "symbol": "AMD",
@@ -880,12 +880,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0422,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0108,
     "weight_of_equity": 0.9892,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2487,
-    "wacc": 0.2461
+    "cost_of_equity": 0.251,
+    "wacc": 0.2484
   },
   {
     "symbol": "AMD",
@@ -904,12 +904,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0416,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0109,
     "weight_of_equity": 0.9891,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2496,
-    "wacc": 0.247
+    "cost_of_equity": 0.2518,
+    "wacc": 0.2491
   },
   {
     "symbol": "AMD",
@@ -928,12 +928,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0418,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0109,
     "weight_of_equity": 0.9891,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2493,
-    "wacc": 0.2467
+    "cost_of_equity": 0.2515,
+    "wacc": 0.2488
   },
   {
     "symbol": "AMD",
@@ -952,12 +952,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0409,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0113,
     "weight_of_equity": 0.9887,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2505,
-    "wacc": 0.2478
+    "cost_of_equity": 0.2528,
+    "wacc": 0.25
   },
   {
     "symbol": "AMD",
@@ -976,12 +976,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0404,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0113,
     "weight_of_equity": 0.9887,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2512,
-    "wacc": 0.2484
+    "cost_of_equity": 0.2535,
+    "wacc": 0.2507
   },
   {
     "symbol": "AMD",
@@ -1000,12 +1000,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0405,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0115,
     "weight_of_equity": 0.9885,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2511,
-    "wacc": 0.2483
+    "cost_of_equity": 0.2534,
+    "wacc": 0.2506
   },
   {
     "symbol": "AMD",
@@ -1024,12 +1024,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0409,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0117,
     "weight_of_equity": 0.9883,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2505,
-    "wacc": 0.2477
+    "cost_of_equity": 0.2528,
+    "wacc": 0.2499
   },
   {
     "symbol": "AMD",
@@ -1048,12 +1048,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0408,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0115,
     "weight_of_equity": 0.9885,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2507,
-    "wacc": 0.2479
+    "cost_of_equity": 0.2529,
+    "wacc": 0.2501
   },
   {
     "symbol": "AMD",
@@ -1072,12 +1072,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0408,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0117,
     "weight_of_equity": 0.9883,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2507,
-    "wacc": 0.2479
+    "cost_of_equity": 0.2529,
+    "wacc": 0.25
   },
   {
     "symbol": "AMD",
@@ -1096,12 +1096,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0403,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0119,
     "weight_of_equity": 0.9881,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2514,
-    "wacc": 0.2485
+    "cost_of_equity": 0.2537,
+    "wacc": 0.2508
   },
   {
     "symbol": "AMD",
@@ -1120,12 +1120,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0404,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0109,
     "weight_of_equity": 0.9891,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2512,
-    "wacc": 0.2485
+    "cost_of_equity": 0.2535,
+    "wacc": 0.2508
   },
   {
     "symbol": "AMD",
@@ -1144,12 +1144,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0405,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0111,
     "weight_of_equity": 0.9889,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2511,
-    "wacc": 0.2484
+    "cost_of_equity": 0.2534,
+    "wacc": 0.2507
   },
   {
     "symbol": "AMD",
@@ -1168,12 +1168,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0402,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0115,
     "weight_of_equity": 0.9885,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2515,
-    "wacc": 0.2487
+    "cost_of_equity": 0.2538,
+    "wacc": 0.251
   },
   {
     "symbol": "AMD",
@@ -1192,12 +1192,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0397,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0116,
     "weight_of_equity": 0.9884,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2522,
-    "wacc": 0.2494
+    "cost_of_equity": 0.2545,
+    "wacc": 0.2516
   },
   {
     "symbol": "AMD",
@@ -1216,12 +1216,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0405,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0117,
     "weight_of_equity": 0.9883,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2511,
-    "wacc": 0.2482
+    "cost_of_equity": 0.2534,
+    "wacc": 0.2505
   },
   {
     "symbol": "AMD",
@@ -1240,12 +1240,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0406,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0122,
     "weight_of_equity": 0.9878,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.251,
-    "wacc": 0.248
+    "cost_of_equity": 0.2532,
+    "wacc": 0.2502
   },
   {
     "symbol": "AMD",
@@ -1264,12 +1264,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0409,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0115,
     "weight_of_equity": 0.9885,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2505,
-    "wacc": 0.2477
+    "cost_of_equity": 0.2528,
+    "wacc": 0.25
   },
   {
     "symbol": "AMD",
@@ -1288,12 +1288,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0413,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0117,
     "weight_of_equity": 0.9883,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.25,
-    "wacc": 0.2472
+    "cost_of_equity": 0.2522,
+    "wacc": 0.2493
   },
   {
     "symbol": "AMD",
@@ -1312,12 +1312,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0415,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0121,
     "weight_of_equity": 0.9879,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2497,
-    "wacc": 0.2468
+    "cost_of_equity": 0.252,
+    "wacc": 0.249
   },
   {
     "symbol": "AMD",
@@ -1336,12 +1336,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0412,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0115,
     "weight_of_equity": 0.9885,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2501,
-    "wacc": 0.2473
+    "cost_of_equity": 0.2524,
+    "wacc": 0.2496
   },
   {
     "symbol": "AMD",
@@ -1360,12 +1360,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0415,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0115,
     "weight_of_equity": 0.9885,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2497,
-    "wacc": 0.2469
+    "cost_of_equity": 0.252,
+    "wacc": 0.2492
   },
   {
     "symbol": "AMD",
@@ -1384,12 +1384,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0421,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0114,
     "weight_of_equity": 0.9886,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2489,
-    "wacc": 0.2461
+    "cost_of_equity": 0.2511,
+    "wacc": 0.2483
   },
   {
     "symbol": "AMD",
@@ -1408,12 +1408,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0427,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0118,
     "weight_of_equity": 0.9882,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.248,
-    "wacc": 0.2452
+    "cost_of_equity": 0.2503,
+    "wacc": 0.2474
   },
   {
     "symbol": "AMD",
@@ -1432,12 +1432,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0428,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0121,
     "weight_of_equity": 0.9879,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2479,
-    "wacc": 0.245
+    "cost_of_equity": 0.2501,
+    "wacc": 0.2472
   },
   {
     "symbol": "AMD",
@@ -1456,12 +1456,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0423,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0119,
     "weight_of_equity": 0.9881,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2486,
-    "wacc": 0.2457
+    "cost_of_equity": 0.2508,
+    "wacc": 0.2479
   },
   {
     "symbol": "AMD",
@@ -1480,12 +1480,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.042,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0119,
     "weight_of_equity": 0.9881,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.249,
-    "wacc": 0.2461
+    "cost_of_equity": 0.2513,
+    "wacc": 0.2484
   },
   {
     "symbol": "AMD",
@@ -1504,12 +1504,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0117,
     "weight_of_equity": 0.9883,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2482,
-    "wacc": 0.2454
+    "cost_of_equity": 0.2504,
+    "wacc": 0.2476
   },
   {
     "symbol": "AMD",
@@ -1528,12 +1528,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0425,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0114,
     "weight_of_equity": 0.9886,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2483,
-    "wacc": 0.2456
+    "cost_of_equity": 0.2505,
+    "wacc": 0.2477
   },
   {
     "symbol": "AMD",
@@ -1552,12 +1552,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0439,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0116,
     "weight_of_equity": 0.9884,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2464,
-    "wacc": 0.2436
+    "cost_of_equity": 0.2486,
+    "wacc": 0.2458
   },
   {
     "symbol": "AMD",
@@ -1576,12 +1576,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0434,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0115,
     "weight_of_equity": 0.9885,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2471,
-    "wacc": 0.2443
+    "cost_of_equity": 0.2493,
+    "wacc": 0.2465
   },
   {
     "symbol": "AMD",
@@ -1600,12 +1600,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0439,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0114,
     "weight_of_equity": 0.9886,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2464,
-    "wacc": 0.2437
+    "cost_of_equity": 0.2486,
+    "wacc": 0.2458
   },
   {
     "symbol": "AMD",
@@ -1624,12 +1624,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0433,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0106,
     "weight_of_equity": 0.9894,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2472,
-    "wacc": 0.2447
+    "cost_of_equity": 0.2494,
+    "wacc": 0.2468
   },
   {
     "symbol": "AMD",
@@ -1648,12 +1648,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0442,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0114,
     "weight_of_equity": 0.9886,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.246,
-    "wacc": 0.2433
+    "cost_of_equity": 0.2481,
+    "wacc": 0.2454
   },
   {
     "symbol": "AMD",
@@ -1672,17 +1672,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0444,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0115,
     "weight_of_equity": 0.9885,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2457,
-    "wacc": 0.243
+    "cost_of_equity": 0.2479,
+    "wacc": 0.2451
   },
   {
     "symbol": "AMD",
     "report_date": "2026-03-30T00:00:00.000",
-    "market_capitalization": 319611618352.0,
+    "market_capitalization": 319625733232.0,
     "exchange_rate": 1.0,
     "total_debt": 3847000000.0,
     "total_debt_usd": 3847000000.0,
@@ -1696,17 +1696,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0435,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0119,
     "weight_of_equity": 0.9881,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2469,
-    "wacc": 0.244
+    "cost_of_equity": 0.2491,
+    "wacc": 0.2462
   },
   {
     "symbol": "AMD",
     "report_date": "2026-03-31T00:00:00.000",
-    "market_capitalization": 331659822084.0,
+    "market_capitalization": 331674469044.0,
     "exchange_rate": 1.0,
     "total_debt": 3847000000.0,
     "total_debt_usd": 3847000000.0,
@@ -1720,17 +1720,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0115,
     "weight_of_equity": 0.9885,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2476,
-    "wacc": 0.2448
+    "cost_of_equity": 0.2498,
+    "wacc": 0.247
   },
   {
     "symbol": "AMD",
     "report_date": "2026-04-01T00:00:00.000",
-    "market_capitalization": 342713519148.0,
+    "market_capitalization": 342728654268.0,
     "exchange_rate": 1.0,
     "total_debt": 3847000000.0,
     "total_debt_usd": 3847000000.0,
@@ -1744,17 +1744,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0433,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0111,
     "weight_of_equity": 0.9889,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2472,
-    "wacc": 0.2445
+    "cost_of_equity": 0.2494,
+    "wacc": 0.2467
   },
   {
     "symbol": "AMD",
     "report_date": "2026-04-02T00:00:00.000",
-    "market_capitalization": 354598689000.0,
+    "market_capitalization": 354614349000.0,
     "exchange_rate": 1.0,
     "total_debt": 3847000000.0,
     "total_debt_usd": 3847000000.0,
@@ -1768,17 +1768,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0431,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0107,
     "weight_of_equity": 0.9893,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2475,
-    "wacc": 0.2449
+    "cost_of_equity": 0.2497,
+    "wacc": 0.2471
   },
   {
     "symbol": "AMD",
     "report_date": "2026-04-06T00:00:00.000",
-    "market_capitalization": 358967996984.0,
+    "market_capitalization": 358983849944.0,
     "exchange_rate": 1.0,
     "total_debt": 3847000000.0,
     "total_debt_usd": 3847000000.0,
@@ -1792,17 +1792,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0434,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0106,
     "weight_of_equity": 0.9894,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2471,
-    "wacc": 0.2446
+    "cost_of_equity": 0.2493,
+    "wacc": 0.2467
   },
   {
     "symbol": "AMD",
     "report_date": "2026-04-07T00:00:00.000",
-    "market_capitalization": 361168954364.0,
+    "market_capitalization": 361184904524.0,
     "exchange_rate": 1.0,
     "total_debt": 3847000000.0,
     "total_debt_usd": 3847000000.0,
@@ -1816,17 +1816,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0433,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0105,
     "weight_of_equity": 0.9895,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2472,
-    "wacc": 0.2447
+    "cost_of_equity": 0.2494,
+    "wacc": 0.2469
   },
   {
     "symbol": "AMD",
     "report_date": "2026-04-08T00:00:00.000",
-    "market_capitalization": 377945140616.0,
+    "market_capitalization": 377961831656.0,
     "exchange_rate": 1.0,
     "total_debt": 3847000000.0,
     "total_debt_usd": 3847000000.0,
@@ -1840,17 +1840,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0101,
     "weight_of_equity": 0.9899,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2478,
-    "wacc": 0.2454
+    "cost_of_equity": 0.25,
+    "wacc": 0.2475
   },
   {
     "symbol": "AMD",
     "report_date": "2026-04-09T00:00:00.000",
-    "market_capitalization": 385803373632.0,
+    "market_capitalization": 385820411712.0,
     "exchange_rate": 1.0,
     "total_debt": 3847000000.0,
     "total_debt_usd": 3847000000.0,
@@ -1864,17 +1864,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0099,
     "weight_of_equity": 0.9901,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2478,
-    "wacc": 0.2454
+    "cost_of_equity": 0.25,
+    "wacc": 0.2476
   },
   {
     "symbol": "AMD",
     "report_date": "2026-04-10T00:00:00.000",
-    "market_capitalization": 399498219552.0,
+    "market_capitalization": 399515862432.0,
     "exchange_rate": 1.0,
     "total_debt": 3847000000.0,
     "total_debt_usd": 3847000000.0,
@@ -1888,17 +1888,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0431,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0095,
     "weight_of_equity": 0.9905,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2475,
-    "wacc": 0.2452
+    "cost_of_equity": 0.2497,
+    "wacc": 0.2474
   },
   {
     "symbol": "AMD",
     "report_date": "2026-04-13T00:00:00.000",
-    "market_capitalization": 402416526004.0,
+    "market_capitalization": 402434297764.0,
     "exchange_rate": 1.0,
     "total_debt": 3847000000.0,
     "total_debt_usd": 3847000000.0,
@@ -1912,17 +1912,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0095,
     "weight_of_equity": 0.9905,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2476,
-    "wacc": 0.2453
+    "cost_of_equity": 0.2498,
+    "wacc": 0.2475
   },
   {
     "symbol": "AMD",
     "report_date": "2026-04-14T00:00:00.000",
-    "market_capitalization": 415850517716.0,
+    "market_capitalization": 415868882756.0,
     "exchange_rate": 1.0,
     "total_debt": 3847000000.0,
     "total_debt_usd": 3847000000.0,
@@ -1936,17 +1936,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0092,
     "weight_of_equity": 0.9908,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2482,
-    "wacc": 0.246
+    "cost_of_equity": 0.2504,
+    "wacc": 0.2482
   },
   {
     "symbol": "AMD",
     "report_date": "2026-04-15T00:00:00.000",
-    "market_capitalization": 420823051056.0,
+    "market_capitalization": 420841635696.0,
     "exchange_rate": 1.0,
     "total_debt": 3847000000.0,
     "total_debt_usd": 3847000000.0,
@@ -1960,17 +1960,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0091,
     "weight_of_equity": 0.9909,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2478,
-    "wacc": 0.2456
+    "cost_of_equity": 0.25,
+    "wacc": 0.2478
   },
   {
     "symbol": "AMD",
     "report_date": "2026-04-16T00:00:00.000",
-    "market_capitalization": 453658074488.0,
+    "market_capitalization": 453678109208.0,
     "exchange_rate": 1.0,
     "total_debt": 3847000000.0,
     "total_debt_usd": 3847000000.0,
@@ -1984,17 +1984,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0432,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0084,
     "weight_of_equity": 0.9916,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2473,
-    "wacc": 0.2453
+    "cost_of_equity": 0.2496,
+    "wacc": 0.2476
   },
   {
     "symbol": "AMD",
     "report_date": "2026-04-17T00:00:00.000",
-    "market_capitalization": 453870018532.0,
+    "market_capitalization": 453890062612.0,
     "exchange_rate": 1.0,
     "total_debt": 3847000000.0,
     "total_debt_usd": 3847000000.0,
@@ -2008,17 +2008,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0084,
     "weight_of_equity": 0.9916,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2482,
-    "wacc": 0.2462
+    "cost_of_equity": 0.2504,
+    "wacc": 0.2484
   },
   {
     "symbol": "AMD",
     "report_date": "2026-04-20T00:00:00.000",
-    "market_capitalization": 448261653060.0,
+    "market_capitalization": 448281449460.0,
     "exchange_rate": 1.0,
     "total_debt": 3847000000.0,
     "total_debt_usd": 3847000000.0,
@@ -2032,17 +2032,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0085,
     "weight_of_equity": 0.9915,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2482,
-    "wacc": 0.2462
+    "cost_of_equity": 0.2504,
+    "wacc": 0.2483
   },
   {
     "symbol": "AMD",
     "report_date": "2026-04-21T00:00:00.000",
-    "market_capitalization": 463815085212.0,
+    "market_capitalization": 463835568492.0,
     "exchange_rate": 1.0,
     "total_debt": 3847000000.0,
     "total_debt_usd": 3847000000.0,
@@ -2056,17 +2056,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0082,
     "weight_of_equity": 0.9918,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2476,
-    "wacc": 0.2456
+    "cost_of_equity": 0.2498,
+    "wacc": 0.2478
   },
   {
     "symbol": "AMD",
     "report_date": "2026-04-22T00:00:00.000",
-    "market_capitalization": 494742612248.0,
+    "market_capitalization": 494764461368.0,
     "exchange_rate": 1.0,
     "total_debt": 3847000000.0,
     "total_debt_usd": 3847000000.0,
@@ -2080,17 +2080,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0077,
     "weight_of_equity": 0.9923,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2476,
-    "wacc": 0.2457
+    "cost_of_equity": 0.2498,
+    "wacc": 0.2479
   },
   {
     "symbol": "AMD",
     "report_date": "2026-04-23T00:00:00.000",
-    "market_capitalization": 497791345804.0,
+    "market_capitalization": 497813329564.0,
     "exchange_rate": 1.0,
     "total_debt": 3847000000.0,
     "total_debt_usd": 3847000000.0,
@@ -2104,17 +2104,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0434,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0077,
     "weight_of_equity": 0.9923,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2471,
-    "wacc": 0.2453
+    "cost_of_equity": 0.2493,
+    "wacc": 0.2474
   },
   {
     "symbol": "AMD",
     "report_date": "2026-04-24T00:00:00.000",
-    "market_capitalization": 567048138028.0,
+    "market_capitalization": 567073180348.0,
     "exchange_rate": 1.0,
     "total_debt": 3847000000.0,
     "total_debt_usd": 3847000000.0,
@@ -2128,17 +2128,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0431,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0067,
     "weight_of_equity": 0.9933,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2475,
-    "wacc": 0.2459
+    "cost_of_equity": 0.2497,
+    "wacc": 0.2481
   },
   {
     "symbol": "AMD",
     "report_date": "2026-04-27T00:00:00.000",
-    "market_capitalization": 545560272644.0,
+    "market_capitalization": 545584366004.0,
     "exchange_rate": 1.0,
     "total_debt": 3847000000.0,
     "total_debt_usd": 3847000000.0,
@@ -2152,17 +2152,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0435,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.007,
     "weight_of_equity": 0.993,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2469,
-    "wacc": 0.2452
+    "cost_of_equity": 0.2491,
+    "wacc": 0.2474
   },
   {
     "symbol": "AMD",
     "report_date": "2026-04-28T00:00:00.000",
-    "market_capitalization": 526941803548.0,
+    "market_capitalization": 526965074668.0,
     "exchange_rate": 1.0,
     "total_debt": 3847000000.0,
     "total_debt_usd": 3847000000.0,
@@ -2176,17 +2176,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0436,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0072,
     "weight_of_equity": 0.9928,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2468,
-    "wacc": 0.2451
+    "cost_of_equity": 0.249,
+    "wacc": 0.2473
   },
   {
     "symbol": "AMD",
     "report_date": "2026-04-29T00:00:00.000",
-    "market_capitalization": 549603512868.0,
+    "market_capitalization": 549691768266.0,
     "exchange_rate": 1.0,
     "total_debt": 3847000000.0,
     "total_debt_usd": 3847000000.0,
@@ -2200,17 +2200,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0442,
-    "beta_5y": 2.3877,
-    "weight_of_debt": 0.007,
-    "weight_of_equity": 0.993,
+    "beta_5y": 2.4135,
+    "weight_of_debt": 0.0069,
+    "weight_of_equity": 0.9931,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.246,
-    "wacc": 0.2443
+    "cost_of_equity": 0.2481,
+    "wacc": 0.2464
   },
   {
     "symbol": "AMD",
     "report_date": "2026-04-30T00:00:00.000",
-    "market_capitalization": 577938801212.0,
+    "market_capitalization": 578031606694.0,
     "exchange_rate": 1.0,
     "total_debt": 3847000000.0,
     "total_debt_usd": 3847000000.0,
@@ -2224,17 +2224,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.044,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0066,
     "weight_of_equity": 0.9934,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2462,
-    "wacc": 0.2446
+    "cost_of_equity": 0.2484,
+    "wacc": 0.2468
   },
   {
     "symbol": "AMD",
     "report_date": "2026-05-01T00:00:00.000",
-    "market_capitalization": 587802350952.0,
+    "market_capitalization": 587896740324.0,
     "exchange_rate": 1.0,
     "total_debt": 3847000000.0,
     "total_debt_usd": 3847000000.0,
@@ -2248,11 +2248,131 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0439,
-    "beta_5y": 2.3877,
+    "beta_5y": 2.4135,
     "weight_of_debt": 0.0065,
     "weight_of_equity": 0.9935,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.2464,
-    "wacc": 0.2448
+    "cost_of_equity": 0.2486,
+    "wacc": 0.247
+  },
+  {
+    "symbol": "AMD",
+    "report_date": "2026-05-04T00:00:00.000",
+    "market_capitalization": 556915328924.0,
+    "exchange_rate": 1.0,
+    "total_debt": 3847000000.0,
+    "total_debt_usd": 3847000000.0,
+    "interest_expense": 36000000.0,
+    "interest_expense_usd": 36000000.0,
+    "pretax_income": 2074000000.0,
+    "pretax_income_usd": 2074000000.0,
+    "tax_provision": 455000000.0,
+    "tax_provision_usd": 455000000.0,
+    "tax_rate_for_calcs": 0.22,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0445,
+    "beta_5y": 2.4135,
+    "weight_of_debt": 0.0069,
+    "weight_of_equity": 0.9931,
+    "cost_of_debt": 0.0094,
+    "cost_of_equity": 0.2477,
+    "wacc": 0.246
+  },
+  {
+    "symbol": "AMD",
+    "report_date": "2026-05-05T00:00:00.000",
+    "market_capitalization": 579287169156.0,
+    "exchange_rate": 1.0,
+    "total_debt": 3847000000.0,
+    "total_debt_usd": 3847000000.0,
+    "interest_expense": 36000000.0,
+    "interest_expense_usd": 36000000.0,
+    "pretax_income": 2074000000.0,
+    "pretax_income_usd": 2074000000.0,
+    "tax_provision": 455000000.0,
+    "tax_provision_usd": 455000000.0,
+    "tax_rate_for_calcs": 0.22,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0443,
+    "beta_5y": 2.4135,
+    "weight_of_debt": 0.0066,
+    "weight_of_equity": 0.9934,
+    "cost_of_debt": 0.0094,
+    "cost_of_equity": 0.248,
+    "wacc": 0.2464
+  },
+  {
+    "symbol": "AMD",
+    "report_date": "2026-05-06T00:00:00.000",
+    "market_capitalization": 687118786834.0,
+    "exchange_rate": 1.0,
+    "total_debt": 3847000000.0,
+    "total_debt_usd": 3847000000.0,
+    "interest_expense": 36000000.0,
+    "interest_expense_usd": 36000000.0,
+    "pretax_income": 2074000000.0,
+    "pretax_income_usd": 2074000000.0,
+    "tax_provision": 455000000.0,
+    "tax_provision_usd": 455000000.0,
+    "tax_rate_for_calcs": 0.22,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0436,
+    "beta_5y": 2.4135,
+    "weight_of_debt": 0.0056,
+    "weight_of_equity": 0.9944,
+    "cost_of_debt": 0.0094,
+    "cost_of_equity": 0.249,
+    "wacc": 0.2476
+  },
+  {
+    "symbol": "AMD",
+    "report_date": "2026-05-07T00:00:00.000",
+    "market_capitalization": 666035121076.0,
+    "exchange_rate": 1.0,
+    "total_debt": 3847000000.0,
+    "total_debt_usd": 3847000000.0,
+    "interest_expense": 36000000.0,
+    "interest_expense_usd": 36000000.0,
+    "pretax_income": 2074000000.0,
+    "pretax_income_usd": 2074000000.0,
+    "tax_provision": 455000000.0,
+    "tax_provision_usd": 455000000.0,
+    "tax_rate_for_calcs": 0.22,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0441,
+    "beta_5y": 2.4135,
+    "weight_of_debt": 0.0057,
+    "weight_of_equity": 0.9943,
+    "cost_of_debt": 0.0094,
+    "cost_of_equity": 0.2483,
+    "wacc": 0.2469
+  },
+  {
+    "symbol": "AMD",
+    "report_date": "2026-05-08T00:00:00.000",
+    "market_capitalization": 742233087114.0,
+    "exchange_rate": 1.0,
+    "total_debt": 3847000000.0,
+    "total_debt_usd": 3847000000.0,
+    "interest_expense": 36000000.0,
+    "interest_expense_usd": 36000000.0,
+    "pretax_income": 2074000000.0,
+    "pretax_income_usd": 2074000000.0,
+    "tax_provision": 455000000.0,
+    "tax_provision_usd": 455000000.0,
+    "tax_rate_for_calcs": 0.22,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0438,
+    "beta_5y": 2.4135,
+    "weight_of_debt": 0.0052,
+    "weight_of_equity": 0.9948,
+    "cost_of_debt": 0.0094,
+    "cost_of_equity": 0.2487,
+    "wacc": 0.2474
   }
 ]

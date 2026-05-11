@@ -1,6 +1,56 @@
 [
   {
     "symbol": "INTC",
+    "name": "Mr. Allon  Stabinsky",
+    "title": "Senior VP and Chief Deputy General Counsel of the Law & Policy Group",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "INTC",
+    "name": "Mr. David A. Zinsner",
+    "title": "Executive VP, CFO & Principal Accounting Officer",
+    "age": 56,
+    "born": 1969,
+    "pay": 4218200,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "INTC",
+    "name": "Mr. Gregory  Ernst",
+    "title": "Corporate VP, Chief Revenue Officer & General Manager of Sales Group",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "INTC",
+    "name": "Mr. James A. Murray",
+    "title": "Chief Antitrust Counsel and VP of Law & Policy Group",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "INTC",
+    "name": "Mr. John William Pitzer",
+    "title": "Corporate Vice President of Corporate Planning & Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "INTC",
     "name": "Mr. Lip-Bu  Tan",
     "title": "CEO & Director",
     "age": 66,
@@ -21,11 +71,31 @@
   },
   {
     "symbol": "INTC",
+    "name": "Ms. Annie Shea Weckesser",
+    "title": "Senior VP and Chief Marketing & Communications Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "INTC",
     "name": "Ms. April  Miller Boise J.D.",
     "title": "Executive VP, Chief Legal Officer & Corporate Secretary",
     "age": 56,
     "born": 1969,
     "pay": 2345700,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "INTC",
+    "name": "Ms. Cynthia A. Stoddard",
+    "title": "Senior VP & Chief Information Officer",
+    "age": 68,
+    "born": 1957,
+    "pay": null,
     "exercised": 0,
     "unexercised": 0
   }

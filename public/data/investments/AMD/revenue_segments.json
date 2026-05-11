@@ -439,6 +439,17 @@
       "Embedded": 950000000.0,
       "Enterprise, Embedded, and Semicustom": 0.0,
       "Gaming": 0.0
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2026-03-31",
+      "Client": 0.0,
+      "Client and Gaming": 3605000000.0,
+      "Computing and Graphics": 0.0,
+      "Data Center": 5775000000.0,
+      "Embedded": 873000000.0,
+      "Enterprise, Embedded, and Semicustom": 0.0,
+      "Gaming": 0.0
     }
   ],
   "by_geography": [],

@@ -242,6 +242,24 @@
       "PCB, Display and Component Inspection": 189488000.0,
       "Semiconductor Process Control": 2899392000.0,
       "Specialty Semiconductor Process": 119755000.0
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-12-31",
+      "Corporate Allocations and Effects of Foreign Currency Exchange Rates": -254000.0,
+      "Other": 0.0,
+      "PCB, Display and Component Inspection": 152175000.0,
+      "Semiconductor Process Control": 3004648000.0,
+      "Specialty Semiconductor Process": 140577000.0
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2026-03-31",
+      "Corporate Allocations and Effects of Foreign Currency Exchange Rates": -504000.0,
+      "Other": 0.0,
+      "PCB, Display and Component Inspection": 167642000.0,
+      "Semiconductor Process Control": 3083912000.0,
+      "Specialty Semiconductor Process": 164028000.0
     }
   ],
   "by_geography": [
@@ -486,6 +504,28 @@
       "North America": 297907000.0,
       "Rest of Asia": 105467000.0,
       "Taiwan": 793608000.0
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-12-31",
+      "China": 994891000.0,
+      "Europe and Israel": 161170000.0,
+      "Japan": 229050000.0,
+      "Korea": 479314000.0,
+      "North America": 394231000.0,
+      "Rest of Asia": 193503000.0,
+      "Taiwan": 844987000.0
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2026-03-31",
+      "China": 829583000.0,
+      "Europe and Israel": 247323000.0,
+      "Japan": 180374000.0,
+      "Korea": 681060000.0,
+      "North America": 410241000.0,
+      "Rest of Asia": 197387000.0,
+      "Taiwan": 869110000.0
     }
   ],
   "by_product": []

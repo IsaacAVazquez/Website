@@ -1,8 +1,8 @@
 [
   {
     "symbol": "IBM",
-    "report_date": "2026-05-01",
-    "beta": 0.5589,
+    "report_date": "2026-05-08",
+    "beta": 0.5554,
     "period": "5y",
     "benchmark": "SPY"
   }

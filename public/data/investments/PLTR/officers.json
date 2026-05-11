@@ -1,13 +1,13 @@
 [
   {
     "symbol": "PLTR",
-    "name": "Aki  Jain",
-    "title": "President of Palantir USG",
-    "age": null,
-    "born": null,
-    "pay": null,
+    "name": "Dr. Alexander C. Karp J.D.",
+    "title": "Co-Founder, CEO & Director",
+    "age": 58,
+    "born": 1967,
+    "pay": 8623000,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 271889408
   },
   {
     "symbol": "PLTR",
@@ -21,10 +21,30 @@
   },
   {
     "symbol": "PLTR",
+    "name": "Mr. David A. Glazer J.D.",
+    "title": "CFO & Treasurer",
+    "age": 40,
+    "born": 1985,
+    "pay": 486735,
+    "exercised": 13802735,
+    "unexercised": 67654728
+  },
+  {
+    "symbol": "PLTR",
     "name": "Mr. David B. MacNaughton",
     "title": "President of Palantir Canada",
     "age": 75,
     "born": 1950,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "PLTR",
+    "name": "Mr. Jeffrey  Buckley B.S., CPA",
+    "title": "Chief Accounting Officer",
+    "age": 41,
+    "born": 1984,
     "pay": null,
     "exercised": 0,
     "unexercised": 0
@@ -41,12 +61,42 @@
   },
   {
     "symbol": "PLTR",
-    "name": "Ms. Ana Drmanovic Soro",
-    "title": "Office of the CFO",
-    "age": null,
-    "born": null,
+    "name": "Mr. Peter Andreas Thiel J.D.",
+    "title": "Co-Founder & Chairman",
+    "age": 58,
+    "born": 1967,
     "pay": null,
     "exercised": 0,
     "unexercised": 0
+  },
+  {
+    "symbol": "PLTR",
+    "name": "Mr. Ryan D. Taylor J.D.",
+    "title": "Chief Revenue Officer & Chief Legal Officer",
+    "age": 42,
+    "born": 1983,
+    "pay": 479460,
+    "exercised": 37098980,
+    "unexercised": 0
+  },
+  {
+    "symbol": "PLTR",
+    "name": "Mr. Shyam  Sankar",
+    "title": "CTO & Executive VP",
+    "age": 42,
+    "born": 1983,
+    "pay": 1209250,
+    "exercised": 131851840,
+    "unexercised": 62388752
+  },
+  {
+    "symbol": "PLTR",
+    "name": "Mr. Stephen Andrew Cohen",
+    "title": "Co-Founder, President, Secretary & Director",
+    "age": 41,
+    "born": 1984,
+    "pay": 1003995,
+    "exercised": 318076640,
+    "unexercised": -830230272
   }
 ]

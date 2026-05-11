@@ -1,10 +1,10 @@
 {
   "symbol": "MA",
-  "lastUpdated": "2026-05-07T23:35:00.937242+00:00",
+  "lastUpdated": "2026-05-11T23:35:21.850921+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-05-07T23:35:00.937242+00:00",
+    "snapshotBuiltAt": "2026-05-11T23:35:21.850921+00:00",
     "sections": {
-      "price": "2026-05-01"
+      "price": "2026-05-08"
     }
   },
   "source": "prefetched",
@@ -42,9 +42,9 @@
     "fundamentals": {
       "ttmEps": 17.28,
       "ttmPe": 28.67,
-      "marketCap": 437637786614,
-      "psRatio": 12.89,
-      "pbRatio": 65.13,
+      "marketCap": 437798150772,
+      "psRatio": 12.9,
+      "pbRatio": 65.16,
       "pegRatio": 1.35
     },
     "profitability": {
@@ -753,7 +753,7 @@
           "2026-03-31": "3916689526.18",
           "2025-12-31": "4257337981.95",
           "2025-09-30": "3916795000.0",
-          "2025-06-30": "3750906464.04",
+          "2025-06-30": "3750896000.0",
           "2025-03-31": "3355673530.14",
           "2024-12-31": "3479424826.52",
           "2024-09-30": "3413232000.0",
@@ -993,7 +993,7 @@
           "2026-03-31": "-8310473.82",
           "2025-12-31": "-39662018.05",
           "2025-09-30": "2795000.0",
-          "2025-06-30": "-13093535.96",
+          "2025-06-30": "-13104000.0",
           "2025-03-31": "-17326469.86",
           "2024-12-31": "-22575173.48",
           "2024-09-30": "-27768000.0",
@@ -2768,8 +2768,8 @@
         },
         {
           "Breakdown": "Share Issued",
-          "2026-03-31": "1412595925.0",
-          "2025-12-31": "1411737665.0",
+          "2026-03-31": "1412895925.0",
+          "2025-12-31": "1412037665.0",
           "2025-09-30": "1411948696.0",
           "2025-06-30": "1411818985.0",
           "2025-03-31": "1411818985.0",
@@ -2787,8 +2787,8 @@
         },
         {
           "Breakdown": "Ordinary Shares Number",
-          "2026-03-31": "886595925.0",
-          "2025-12-31": "893737665.0",
+          "2026-03-31": "886895925.0",
+          "2025-12-31": "894037665.0",
           "2025-09-30": "900137665.0",
           "2025-06-30": "905818985.0",
           "2025-03-31": "909818985.0",
@@ -3507,8 +3507,8 @@
         },
         {
           "Breakdown": "Share Issued",
-          "2025-12-31": "1411737665.0",
-          "2024-12-31": "1410800000.0",
+          "2025-12-31": "1412037665.0",
+          "2024-12-31": "1410400000.0",
           "2023-12-31": "1409000000.0",
           "2022-12-31": "1407000000.0",
           "2021-12-31": "1405000000.0",
@@ -3517,8 +3517,8 @@
         },
         {
           "Breakdown": "Ordinary Shares Number",
-          "2025-12-31": "893737665.0",
-          "2024-12-31": "913800000.0",
+          "2025-12-31": "894037665.0",
+          "2024-12-31": "913400000.0",
           "2023-12-31": "934000000.0",
           "2022-12-31": "956000000.0",
           "2021-12-31": "980000000.0",
@@ -5294,57 +5294,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.35,
-      "costOfEquity": 10.76,
+      "wacc": 10.299999999999999,
+      "costOfEquity": 10.71,
       "costOfDebt": 0.98,
       "taxRate": 19,
-      "beta": 0.7513,
-      "marketCap": 437637786614
+      "beta": 0.7459,
+      "marketCap": 437798150772
     },
     "beta": {
-      "beta5y": 0.7513
+      "beta5y": 0.7459
     },
     "price": [
-      {
-        "date": "2025-05-01",
-        "open": 550,
-        "high": 552.83,
-        "low": 539.73,
-        "close": 546.63,
-        "volume": 2839900
-      },
-      {
-        "date": "2025-05-02",
-        "open": 555.63,
-        "high": 562.38,
-        "low": 554.99,
-        "close": 559.39,
-        "volume": 2632600
-      },
-      {
-        "date": "2025-05-05",
-        "open": 557.81,
-        "high": 564.55,
-        "low": 555.85,
-        "close": 561.12,
-        "volume": 2130900
-      },
-      {
-        "date": "2025-05-06",
-        "open": 556.48,
-        "high": 565.74,
-        "low": 556.1,
-        "close": 558.99,
-        "volume": 2341700
-      },
-      {
-        "date": "2025-05-07",
-        "open": 559.27,
-        "high": 567.23,
-        "low": 558.49,
-        "close": 566.33,
-        "volume": 2493700
-      },
       {
         "date": "2025-05-08",
         "open": 569.45,
@@ -7319,7 +7279,47 @@
         "high": 509,
         "low": 492.15,
         "close": 495.46,
-        "volume": 4529800
+        "volume": 4531800
+      },
+      {
+        "date": "2026-05-04",
+        "open": 495,
+        "high": 507.29,
+        "low": 493.88,
+        "close": 504.74,
+        "volume": 4419900
+      },
+      {
+        "date": "2026-05-05",
+        "open": 501.03,
+        "high": 503.88,
+        "low": 493.26,
+        "close": 497.08,
+        "volume": 4216700
+      },
+      {
+        "date": "2026-05-06",
+        "open": 499.14,
+        "high": 500.74,
+        "low": 489.73,
+        "close": 491.89,
+        "volume": 4363300
+      },
+      {
+        "date": "2026-05-07",
+        "open": 492.7,
+        "high": 503.52,
+        "low": 492.7,
+        "close": 500.94,
+        "volume": 4964100
+      },
+      {
+        "date": "2026-05-08",
+        "open": 500.13,
+        "high": 500.41,
+        "low": 491.73,
+        "close": 495.48,
+        "volume": 4143400
       }
     ],
     "news": [
@@ -7348,19 +7348,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "5b9dcc4b-b056-3ada-bc95-f86c8ba1a7bd",
-        "title": "Top Stock Reports for Microsoft, Amazon.com & Mastercard",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/top-stock-reports-microsoft-amazon-204300431.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "484110ff-a690-397a-aa34-0318000b0bcc",
         "title": "The Zacks Analyst Blog Highlights Microsoft, Amazon.com, Mastercard and CBL & Associates",
         "publisher": "Zacks",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-130600270.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "5b9dcc4b-b056-3ada-bc95-f86c8ba1a7bd",
+        "title": "Top Stock Reports for Microsoft, Amazon.com & Mastercard",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/top-stock-reports-microsoft-amazon-204300431.html",
         "type": "STORY"
       },
       {
@@ -7388,40 +7388,40 @@
         "type": "STORY"
       },
       {
-        "uuid": "9b574bb4-a153-3a61-bcd1-b0fb20c1579b",
-        "title": "Tokenization Up 33%, Click to Pay Doubled: Is Mastercard a Buy Now?",
-        "publisher": "Zacks",
-        "reportDate": "2025-06-04",
-        "link": "https://finance.yahoo.com/news/tokenization-33-click-pay-doubled-132300458.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b8242867-87a1-313d-87c5-e8303447ed88",
         "title": "Market Chatter: EU Regulators Push for More Transparency in Visa, Mastercard Fees",
         "publisher": "MT Newswires",
         "reportDate": "2025-06-04",
         "link": "https://finance.yahoo.com/news/market-chatter-eu-regulators-push-103559493.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "9b574bb4-a153-3a61-bcd1-b0fb20c1579b",
+        "title": "Tokenization Up 33%, Click to Pay Doubled: Is Mastercard a Buy Now?",
+        "publisher": "Zacks",
+        "reportDate": "2025-06-04",
+        "link": "https://finance.yahoo.com/news/tokenization-33-click-pay-doubled-132300458.html",
+        "type": "STORY"
       }
     ],
     "officers": [
       {
-        "name": "Eva Chen",
-        "title": "Country Head of Taiwan & GM of Taiwan"
+        "name": "Mr. Craig E. Vosburg",
+        "title": "Chief Services Officer",
+        "age": 58,
+        "yearBorn": 1967,
+        "totalPay": 2694403
       },
       {
-        "name": "Mr. Andrea Scerch",
-        "title": "President of Latin America & the Caribbean"
+        "name": "Mr. Devin Corr",
+        "title": "Executive Vice President of Investor Relations"
       },
       {
-        "name": "Mr. Daniel Cohen",
-        "title": "Senior Vice President of Emerging Payments-Latin American & Caribbean"
-      },
-      {
-        "name": "Mr. Ling Hai",
-        "title": "President of Asia Pacific, Europe, Middle East & Africa",
-        "age": 54,
-        "yearBorn": 1971
+        "name": "Mr. Edward Grunde McLaughlin",
+        "title": "President & CTO of Mastercard Technology",
+        "age": 59,
+        "yearBorn": 1966,
+        "totalPay": 2064752
       },
       {
         "name": "Mr. Michael Miebach",
@@ -7431,8 +7431,10 @@
         "totalPay": 9761053
       },
       {
-        "name": "Mr. Nick Vora",
-        "title": "Senior Vice President of Operations & Technology Lead - MEA"
+        "name": "Mr. Richard R. Verma Ph.D.",
+        "title": "Chief Administrative Officer",
+        "age": 52,
+        "yearBorn": 1973
       },
       {
         "name": "Mr. Sachin Mehra",
@@ -7449,34 +7451,45 @@
         "totalPay": 2399628
       },
       {
-        "name": "Ms. Deborah Heng",
-        "title": "Group Head & General Manager of Singapore"
+        "name": "Ms. Jill Kramer",
+        "title": "Chief Marketing & Communications Officer",
+        "age": 55,
+        "yearBorn": 1970
       },
       {
-        "name": "Ms. Tara Nathan",
-        "title": "Executive Vice President of Public-Private Partnerships"
+        "name": "Ms. Linda Pistecchia Kirkpatrick",
+        "title": "President of the Americas",
+        "age": 48,
+        "yearBorn": 1977,
+        "totalPay": 2297718
+      },
+      {
+        "name": "Ms. Tiffany M. Hall",
+        "title": "General Counsel",
+        "age": 46,
+        "yearBorn": 1979
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
         "value": 28.67,
-        "industryAvg": 23.25
+        "industryAvg": 22.64
       },
       {
         "metric": "P/S Ratio",
-        "value": 12.89,
-        "industryAvg": 4.92
+        "value": 12.9,
+        "industryAvg": 4.8
       },
       {
         "metric": "P/B Ratio",
-        "value": 65.13,
-        "industryAvg": 5
+        "value": 65.16,
+        "industryAvg": 4.9
       },
       {
         "metric": "ROE",
         "value": 53.71,
-        "industryAvg": 11.04
+        "industryAvg": 11.1
       },
       {
         "metric": "ROA",
@@ -7486,24 +7499,24 @@
       {
         "metric": "Gross Margin",
         "value": 75.74,
-        "industryAvg": 66.94
+        "industryAvg": 66.75999999999999
       },
       {
         "metric": "EBITDA Margin",
         "value": 63.06,
-        "industryAvg": 43.41
+        "industryAvg": 43.13
       },
       {
         "metric": "Net Margin",
         "value": 46.23,
-        "industryAvg": 13.99
+        "industryAvg": 14.030000000000001
       }
     ],
     "dcf": {
-      "fairValue": 331.8,
-      "currentPrice": 495.46,
-      "upside": -33.03,
-      "wacc": 10.35,
+      "fairValue": 334.12,
+      "currentPrice": 495.48,
+      "upside": -32.57,
+      "wacc": 10.3,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 21.17,
         "Terminal growth": 3

@@ -16,12 +16,12 @@
     "sp500_cagr_end": 2022,
     "sp500_10y_cagr": 0.1041,
     "treasure_10y_yield": 0.0397,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0445,
     "weight_of_equity": 0.9555,
     "cost_of_debt": 0.0121,
-    "cost_of_equity": 0.1047,
-    "wacc": 0.1005
+    "cost_of_equity": 0.1049,
+    "wacc": 0.1007
   },
   {
     "symbol": "INTU",
@@ -40,12 +40,12 @@
     "sp500_cagr_end": 2022,
     "sp500_10y_cagr": 0.1041,
     "treasure_10y_yield": 0.0488,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0444,
     "weight_of_equity": 0.9556,
     "cost_of_debt": 0.0101,
-    "cost_of_equity": 0.1046,
-    "wacc": 0.1004
+    "cost_of_equity": 0.1047,
+    "wacc": 0.1005
   },
   {
     "symbol": "INTU",
@@ -64,12 +64,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0399,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0355,
     "weight_of_equity": 0.9645,
     "cost_of_debt": 0.0088,
-    "cost_of_equity": 0.1,
-    "wacc": 0.0968
+    "cost_of_equity": 0.1001,
+    "wacc": 0.0969
   },
   {
     "symbol": "INTU",
@@ -88,12 +88,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0469,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0358,
     "weight_of_equity": 0.9642,
     "cost_of_debt": 0.0092,
-    "cost_of_equity": 0.0999,
-    "wacc": 0.0966
+    "cost_of_equity": 0.1,
+    "wacc": 0.0967
   },
   {
     "symbol": "INTU",
@@ -112,12 +112,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0409,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0349,
     "weight_of_equity": 0.9651,
     "cost_of_debt": 0.0091,
-    "cost_of_equity": 0.1,
-    "wacc": 0.0968
+    "cost_of_equity": 0.1001,
+    "wacc": 0.0969
   },
   {
     "symbol": "INTU",
@@ -136,12 +136,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0428,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0382,
     "weight_of_equity": 0.9618,
     "cost_of_debt": 0.0088,
-    "cost_of_equity": 0.0999,
-    "wacc": 0.0964
+    "cost_of_equity": 0.1001,
+    "wacc": 0.0966
   },
   {
     "symbol": "INTU",
@@ -160,12 +160,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0458,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0393,
     "weight_of_equity": 0.9607,
     "cost_of_debt": 0.0087,
-    "cost_of_equity": 0.1113,
-    "wacc": 0.1072
+    "cost_of_equity": 0.1115,
+    "wacc": 0.1074
   },
   {
     "symbol": "INTU",
@@ -184,12 +184,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0417,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0389,
     "weight_of_equity": 0.9611,
     "cost_of_debt": 0.0096,
-    "cost_of_equity": 0.1114,
-    "wacc": 0.1074
+    "cost_of_equity": 0.1115,
+    "wacc": 0.1075
   },
   {
     "symbol": "INTU",
@@ -208,12 +208,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0437,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0294,
     "weight_of_equity": 0.9706,
     "cost_of_debt": 0.0089,
-    "cost_of_equity": 0.1113,
-    "wacc": 0.1082
+    "cost_of_equity": 0.1115,
+    "wacc": 0.1084
   },
   {
     "symbol": "INTU",
@@ -232,12 +232,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0411,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0356,
     "weight_of_equity": 0.9644,
     "cost_of_debt": 0.0085,
-    "cost_of_equity": 0.1114,
-    "wacc": 0.1077
+    "cost_of_equity": 0.1115,
+    "wacc": 0.1078
   },
   {
     "symbol": "INTU",
@@ -256,12 +256,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0473,
     "weight_of_equity": 0.9527,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1237
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1239
   },
   {
     "symbol": "INTU",
@@ -280,12 +280,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0485,
     "weight_of_equity": 0.9515,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1235
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1237
   },
   {
     "symbol": "INTU",
@@ -304,12 +304,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0428,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0541,
     "weight_of_equity": 0.9459,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1229
+    "cost_of_equity": 0.1297,
+    "wacc": 0.123
   },
   {
     "symbol": "INTU",
@@ -328,12 +328,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0528,
     "weight_of_equity": 0.9472,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.123
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1232
   },
   {
     "symbol": "INTU",
@@ -352,12 +352,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0421,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.054,
     "weight_of_equity": 0.946,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1229
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1231
   },
   {
     "symbol": "INTU",
@@ -376,12 +376,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0422,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.053,
     "weight_of_equity": 0.947,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.123
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1232
   },
   {
     "symbol": "INTU",
@@ -400,12 +400,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0422,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0537,
     "weight_of_equity": 0.9463,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1229
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1231
   },
   {
     "symbol": "INTU",
@@ -424,12 +424,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0416,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0556,
     "weight_of_equity": 0.9444,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1227
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1229
   },
   {
     "symbol": "INTU",
@@ -448,12 +448,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0418,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0585,
     "weight_of_equity": 0.9415,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1223
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1225
   },
   {
     "symbol": "INTU",
@@ -472,12 +472,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0409,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0587,
     "weight_of_equity": 0.9413,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1223
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1225
   },
   {
     "symbol": "INTU",
@@ -496,12 +496,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0404,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0585,
     "weight_of_equity": 0.9415,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1223
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1225
   },
   {
     "symbol": "INTU",
@@ -520,12 +520,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0405,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0614,
     "weight_of_equity": 0.9386,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.122
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1221
   },
   {
     "symbol": "INTU",
@@ -544,12 +544,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0409,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0599,
     "weight_of_equity": 0.9401,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1221
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1223
   },
   {
     "symbol": "INTU",
@@ -568,12 +568,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0408,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0611,
     "weight_of_equity": 0.9389,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.122
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1222
   },
   {
     "symbol": "INTU",
@@ -592,12 +592,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0408,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0614,
     "weight_of_equity": 0.9386,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.122
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1221
   },
   {
     "symbol": "INTU",
@@ -616,12 +616,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0403,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0648,
     "weight_of_equity": 0.9352,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1215
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1217
   },
   {
     "symbol": "INTU",
@@ -640,12 +640,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0404,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0649,
     "weight_of_equity": 0.9351,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1215
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1217
   },
   {
     "symbol": "INTU",
@@ -664,12 +664,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0405,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0613,
     "weight_of_equity": 0.9387,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.122
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1222
   },
   {
     "symbol": "INTU",
@@ -688,12 +688,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0402,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0594,
     "weight_of_equity": 0.9406,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1222
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1224
   },
   {
     "symbol": "INTU",
@@ -712,12 +712,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0397,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0574,
     "weight_of_equity": 0.9426,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1225
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1226
   },
   {
     "symbol": "INTU",
@@ -736,12 +736,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0405,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0561,
     "weight_of_equity": 0.9439,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1226
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1228
   },
   {
     "symbol": "INTU",
@@ -760,12 +760,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0406,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0544,
     "weight_of_equity": 0.9456,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1228
+    "cost_of_equity": 0.1297,
+    "wacc": 0.123
   },
   {
     "symbol": "INTU",
@@ -784,12 +784,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0409,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0536,
     "weight_of_equity": 0.9464,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1229
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1231
   },
   {
     "symbol": "INTU",
@@ -808,12 +808,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0413,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0507,
     "weight_of_equity": 0.9493,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1233
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1235
   },
   {
     "symbol": "INTU",
@@ -832,12 +832,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0415,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0492,
     "weight_of_equity": 0.9508,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1235
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1236
   },
   {
     "symbol": "INTU",
@@ -856,12 +856,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0412,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.05,
     "weight_of_equity": 0.95,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1234
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1236
   },
   {
     "symbol": "INTU",
@@ -880,12 +880,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0415,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.052,
     "weight_of_equity": 0.948,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1231
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1233
   },
   {
     "symbol": "INTU",
@@ -904,12 +904,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0421,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0535,
     "weight_of_equity": 0.9465,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1229
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1231
   },
   {
     "symbol": "INTU",
@@ -928,12 +928,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0427,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0541,
     "weight_of_equity": 0.9459,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1229
+    "cost_of_equity": 0.1297,
+    "wacc": 0.123
   },
   {
     "symbol": "INTU",
@@ -952,12 +952,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0428,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0536,
     "weight_of_equity": 0.9464,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1229
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1231
   },
   {
     "symbol": "INTU",
@@ -976,12 +976,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0423,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0522,
     "weight_of_equity": 0.9478,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1231
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1233
   },
   {
     "symbol": "INTU",
@@ -1000,12 +1000,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.042,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0514,
     "weight_of_equity": 0.9486,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1232
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1234
   },
   {
     "symbol": "INTU",
@@ -1024,12 +1024,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0528,
     "weight_of_equity": 0.9472,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.123
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1232
   },
   {
     "symbol": "INTU",
@@ -1048,12 +1048,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0425,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0519,
     "weight_of_equity": 0.9481,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1231
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1233
   },
   {
     "symbol": "INTU",
@@ -1072,12 +1072,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0439,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0518,
     "weight_of_equity": 0.9482,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1231
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1233
   },
   {
     "symbol": "INTU",
@@ -1096,12 +1096,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0434,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0517,
     "weight_of_equity": 0.9483,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1232
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1233
   },
   {
     "symbol": "INTU",
@@ -1120,12 +1120,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0439,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0545,
     "weight_of_equity": 0.9455,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1228
+    "cost_of_equity": 0.1297,
+    "wacc": 0.123
   },
   {
     "symbol": "INTU",
@@ -1144,12 +1144,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0433,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0551,
     "weight_of_equity": 0.9449,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1227
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1229
   },
   {
     "symbol": "INTU",
@@ -1168,12 +1168,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0442,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0544,
     "weight_of_equity": 0.9456,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1228
+    "cost_of_equity": 0.1297,
+    "wacc": 0.123
   },
   {
     "symbol": "INTU",
@@ -1192,12 +1192,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0444,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0564,
     "weight_of_equity": 0.9436,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1226
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1228
   },
   {
     "symbol": "INTU",
@@ -1216,12 +1216,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0435,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0549,
     "weight_of_equity": 0.9451,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1228
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1229
   },
   {
     "symbol": "INTU",
@@ -1240,12 +1240,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0545,
     "weight_of_equity": 0.9455,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1228
+    "cost_of_equity": 0.1297,
+    "wacc": 0.123
   },
   {
     "symbol": "INTU",
@@ -1264,12 +1264,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0433,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0553,
     "weight_of_equity": 0.9447,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1227
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1229
   },
   {
     "symbol": "INTU",
@@ -1288,12 +1288,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0431,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0557,
     "weight_of_equity": 0.9443,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1227
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1229
   },
   {
     "symbol": "INTU",
@@ -1312,12 +1312,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0434,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0563,
     "weight_of_equity": 0.9437,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1226
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1228
   },
   {
     "symbol": "INTU",
@@ -1336,12 +1336,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0433,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0572,
     "weight_of_equity": 0.9428,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1225
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1227
   },
   {
     "symbol": "INTU",
@@ -1360,12 +1360,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0601,
     "weight_of_equity": 0.9399,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1221
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1223
   },
   {
     "symbol": "INTU",
@@ -1384,12 +1384,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0644,
     "weight_of_equity": 0.9356,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1216
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1218
   },
   {
     "symbol": "INTU",
@@ -1408,12 +1408,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0431,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0663,
     "weight_of_equity": 0.9337,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1214
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1215
   },
   {
     "symbol": "INTU",
@@ -1432,12 +1432,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0632,
     "weight_of_equity": 0.9368,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1217
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1219
   },
   {
     "symbol": "INTU",
@@ -1456,12 +1456,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0636,
     "weight_of_equity": 0.9364,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1217
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1219
   },
   {
     "symbol": "INTU",
@@ -1480,12 +1480,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0601,
     "weight_of_equity": 0.9399,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1221
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1223
   },
   {
     "symbol": "INTU",
@@ -1504,12 +1504,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0432,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0605,
     "weight_of_equity": 0.9395,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1221
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1223
   },
   {
     "symbol": "INTU",
@@ -1528,12 +1528,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0596,
     "weight_of_equity": 0.9404,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1222
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1224
   },
   {
     "symbol": "INTU",
@@ -1552,12 +1552,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.058,
     "weight_of_equity": 0.942,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1224
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1226
   },
   {
     "symbol": "INTU",
@@ -1576,12 +1576,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.058,
     "weight_of_equity": 0.942,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1224
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1226
   },
   {
     "symbol": "INTU",
@@ -1600,12 +1600,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0574,
     "weight_of_equity": 0.9426,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1225
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1226
   },
   {
     "symbol": "INTU",
@@ -1624,12 +1624,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0434,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.061,
     "weight_of_equity": 0.939,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.122
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1222
   },
   {
     "symbol": "INTU",
@@ -1648,12 +1648,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0431,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0592,
     "weight_of_equity": 0.9408,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1222
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1224
   },
   {
     "symbol": "INTU",
@@ -1672,12 +1672,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0435,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.06,
     "weight_of_equity": 0.94,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1221
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1223
   },
   {
     "symbol": "INTU",
@@ -1696,12 +1696,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0436,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0586,
     "weight_of_equity": 0.9414,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1223
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1225
   },
   {
     "symbol": "INTU",
@@ -1720,12 +1720,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0442,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0593,
     "weight_of_equity": 0.9407,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1222
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1224
   },
   {
     "symbol": "INTU",
@@ -1744,12 +1744,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.044,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0602,
     "weight_of_equity": 0.9398,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
-    "wacc": 0.1221
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1223
   },
   {
     "symbol": "INTU",
@@ -1768,11 +1768,131 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0439,
-    "beta_5y": 1.0095,
+    "beta_5y": 1.0117,
     "weight_of_debt": 0.0588,
     "weight_of_equity": 0.9412,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1295,
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1225
+  },
+  {
+    "symbol": "INTU",
+    "report_date": "2026-05-04T00:00:00.000",
+    "market_capitalization": 112553084500.0,
+    "exchange_rate": 1.0,
+    "total_debt": 6888000000.0,
+    "total_debt_usd": 6888000000.0,
+    "interest_expense": 58000000.0,
+    "interest_expense_usd": 58000000.0,
+    "pretax_income": 869000000.0,
+    "pretax_income_usd": 869000000.0,
+    "tax_provision": 176000000.0,
+    "tax_provision_usd": 176000000.0,
+    "tax_rate_for_calcs": 0.2,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0445,
+    "beta_5y": 1.0117,
+    "weight_of_debt": 0.0577,
+    "weight_of_equity": 0.9423,
+    "cost_of_debt": 0.0084,
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1226
+  },
+  {
+    "symbol": "INTU",
+    "report_date": "2026-05-05T00:00:00.000",
+    "market_capitalization": 110155396000.0,
+    "exchange_rate": 1.0,
+    "total_debt": 6888000000.0,
+    "total_debt_usd": 6888000000.0,
+    "interest_expense": 58000000.0,
+    "interest_expense_usd": 58000000.0,
+    "pretax_income": 869000000.0,
+    "pretax_income_usd": 869000000.0,
+    "tax_provision": 176000000.0,
+    "tax_provision_usd": 176000000.0,
+    "tax_rate_for_calcs": 0.2,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0443,
+    "beta_5y": 1.0117,
+    "weight_of_debt": 0.0588,
+    "weight_of_equity": 0.9412,
+    "cost_of_debt": 0.0084,
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1225
+  },
+  {
+    "symbol": "INTU",
+    "report_date": "2026-05-06T00:00:00.000",
+    "market_capitalization": 107453502500.0,
+    "exchange_rate": 1.0,
+    "total_debt": 6888000000.0,
+    "total_debt_usd": 6888000000.0,
+    "interest_expense": 58000000.0,
+    "interest_expense_usd": 58000000.0,
+    "pretax_income": 869000000.0,
+    "pretax_income_usd": 869000000.0,
+    "tax_provision": 176000000.0,
+    "tax_provision_usd": 176000000.0,
+    "tax_rate_for_calcs": 0.2,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0436,
+    "beta_5y": 1.0117,
+    "weight_of_debt": 0.0602,
+    "weight_of_equity": 0.9398,
+    "cost_of_debt": 0.0084,
+    "cost_of_equity": 0.1297,
     "wacc": 0.1223
+  },
+  {
+    "symbol": "INTU",
+    "report_date": "2026-05-07T00:00:00.000",
+    "market_capitalization": 112495009000.0,
+    "exchange_rate": 1.0,
+    "total_debt": 6888000000.0,
+    "total_debt_usd": 6888000000.0,
+    "interest_expense": 58000000.0,
+    "interest_expense_usd": 58000000.0,
+    "pretax_income": 869000000.0,
+    "pretax_income_usd": 869000000.0,
+    "tax_provision": 176000000.0,
+    "tax_provision_usd": 176000000.0,
+    "tax_rate_for_calcs": 0.2,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0441,
+    "beta_5y": 1.0117,
+    "weight_of_debt": 0.0577,
+    "weight_of_equity": 0.9423,
+    "cost_of_debt": 0.0084,
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1226
+  },
+  {
+    "symbol": "INTU",
+    "report_date": "2026-05-08T00:00:00.000",
+    "market_capitalization": 109599530500.0,
+    "exchange_rate": 1.0,
+    "total_debt": 6888000000.0,
+    "total_debt_usd": 6888000000.0,
+    "interest_expense": 58000000.0,
+    "interest_expense_usd": 58000000.0,
+    "pretax_income": 869000000.0,
+    "pretax_income_usd": 869000000.0,
+    "tax_provision": 176000000.0,
+    "tax_provision_usd": 176000000.0,
+    "tax_rate_for_calcs": 0.2,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0438,
+    "beta_5y": 1.0117,
+    "weight_of_debt": 0.0591,
+    "weight_of_equity": 0.9409,
+    "cost_of_debt": 0.0084,
+    "cost_of_equity": 0.1297,
+    "wacc": 0.1224
   }
 ]

@@ -61,6 +61,16 @@
   },
   {
     "symbol": "INTU",
+    "name": "Ms. Caryl  Hilliard",
+    "title": "Executive VP and Chief People & Places Officer",
+    "age": 59,
+    "born": 1966,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "INTU",
     "name": "Ms. Kerry J. McLean J.D.",
     "title": "Executive VP, General Counsel & Corporate Secretary",
     "age": 61,
@@ -88,15 +98,5 @@
     "pay": 1770000,
     "exercised": 19283934,
     "unexercised": 31312030
-  },
-  {
-    "symbol": "INTU",
-    "name": "Ms. Shveta  Mujumdar",
-    "title": "Vice President of Corporate Development",
-    "age": 45,
-    "born": 1980,
-    "pay": null,
-    "exercised": 0,
-    "unexercised": 0
   }
 ]

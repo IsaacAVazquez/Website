@@ -1,21 +1,31 @@
 [
   {
     "symbol": "SHOP",
-    "name": "Mr. Harley  Finkelstein",
-    "title": "President",
-    "age": 42,
-    "born": 1983,
-    "pay": 929563,
+    "name": "Darryl  Arvai",
+    "title": "VP & Corporate Controller",
+    "age": null,
+    "born": null,
+    "pay": null,
     "exercised": 0,
     "unexercised": 0
   },
   {
     "symbol": "SHOP",
-    "name": "Mr. Jeff J. Hoffmeister CPA",
-    "title": "Chief Financial Officer",
-    "age": 54,
-    "born": 1971,
-    "pay": 1000000,
+    "name": "Michael L. Johnson",
+    "title": "Corporate Secretary",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "SHOP",
+    "name": "Mr. Harley  Finkelstein",
+    "title": "President",
+    "age": 42,
+    "born": 1983,
+    "pay": 1018193,
     "exercised": 0,
     "unexercised": 0
   },
@@ -31,8 +41,38 @@
   },
   {
     "symbol": "SHOP",
-    "name": "Ms. Carrie  Gillard",
-    "title": "Director of Investor Relations",
+    "name": "Ms. Agatha  Krajewski",
+    "title": "Director of Product, Online",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "SHOP",
+    "name": "Ms. Bharati  Balakrishnan",
+    "title": "Country Head & Director- India",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "SHOP",
+    "name": "Ms. Jessica Rose Hertz",
+    "title": "Chief Operating Officer",
+    "age": 43,
+    "born": 1982,
+    "pay": 1000000,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "SHOP",
+    "name": "Ms. Vanessa  Lee",
+    "title": "Product Director",
     "age": null,
     "born": null,
     "pay": null,

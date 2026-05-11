@@ -160,6 +160,13 @@
       "Advertising": 58137000000.0,
       "Payments and Other": 801000000.0,
       "Reality Labs": 955000000.0
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-03-31",
+      "Advertising": 55024000000.0,
+      "Payments and Other": 885000000.0,
+      "Reality Labs": 402000000.0
     }
   ],
   "by_geography": [
@@ -346,6 +353,14 @@
       "Europe": 14480000000.0,
       "Rest of World": 11182000000.0,
       "US and Canada": 26472000000.0
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-03-31",
+      "Asia Pacific": 7818000000.0,
+      "Europe": 13500000000.0,
+      "Rest of World": 10914000000.0,
+      "US and Canada": 24079000000.0
     }
   ],
   "by_product": []

@@ -160,6 +160,13 @@
       "Auto": 17693000000.0,
       "Energy and Storage": 3837000000.0,
       "Services and Other": 3371000000.0
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-03-31",
+      "Auto": 16234000000.0,
+      "Energy and Storage": 2408000000.0,
+      "Services and Other": 3745000000.0
     }
   ],
   "by_geography": [
@@ -486,6 +493,15 @@
       "Norway": 0.0,
       "Other": 7313000000.0,
       "United States": 10887000000.0
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-03-31",
+      "China": 4184000000.0,
+      "Netherlands": 0.0,
+      "Norway": 0.0,
+      "Other": 7526000000.0,
+      "United States": 10677000000.0
     }
   ],
   "by_product": []

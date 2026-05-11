@@ -21,16 +21,6 @@
   },
   {
     "symbol": "NVDA",
-    "name": "Mr. Donald F. Robertson Jr.",
-    "title": "VP & Chief Accounting Officer",
-    "age": 56,
-    "born": 1969,
-    "pay": null,
-    "exercised": 0,
-    "unexercised": 0
-  },
-  {
-    "symbol": "NVDA",
     "name": "Mr. Jen-Hsun  Huang",
     "title": "Co-Founder, CEO & Director",
     "age": 62,
@@ -55,6 +45,16 @@
     "title": "Vice President of Investor Relations & Strategic Finance",
     "age": null,
     "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "NVDA",
+    "name": "Ms. Alison Berkley Wagonfeld",
+    "title": "Chief Marketing Officer",
+    "age": 54,
+    "born": 1971,
     "pay": null,
     "exercised": 0,
     "unexercised": 0

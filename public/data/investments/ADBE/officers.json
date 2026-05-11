@@ -41,16 +41,6 @@
   },
   {
     "symbol": "ADBE",
-    "name": "Mr. Shanmugh  Natarajan",
-    "title": "MD of India & VP of Products",
-    "age": null,
-    "born": null,
-    "pay": null,
-    "exercised": 0,
-    "unexercised": 0
-  },
-  {
-    "symbol": "ADBE",
     "name": "Mr. Shantanu  Narayen",
     "title": "Chairman & CEO",
     "age": 61,
@@ -95,6 +85,16 @@
     "title": "Senior VP, Chief Accounting Officer & Corporate Controller",
     "age": 50,
     "born": 1975,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "ADBE",
+    "name": "Ms. Lara H. Balazs",
+    "title": "Chief Marketing Officer & Executive Vice President of Global Marketing",
+    "age": 55,
+    "born": 1970,
     "pay": null,
     "exercised": 0,
     "unexercised": 0

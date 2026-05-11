@@ -137,6 +137,12 @@
       "report_date": "2025-12-31",
       "Commercial": 677000000.0,
       "Government": 730000000.0
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2026-03-31",
+      "Commercial": 774000000.0,
+      "Government": 858000000.0
     }
   ],
   "by_geography": [],

@@ -1510,6 +1510,13 @@
       "eps": 0.92,
       "prev_year_eps": 0.3,
       "yoy_growth": 2.0667
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2026-03-31T00:00:00.000",
+      "eps": 0.84,
+      "prev_year_eps": 0.44,
+      "yoy_growth": 0.9091
     }
   ]
 }

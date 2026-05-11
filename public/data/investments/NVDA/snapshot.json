@@ -1,10 +1,10 @@
 {
   "symbol": "NVDA",
-  "lastUpdated": "2026-05-07T23:35:00.937242+00:00",
+  "lastUpdated": "2026-05-11T23:35:21.850921+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-05-07T23:35:00.937242+00:00",
+    "snapshotBuiltAt": "2026-05-11T23:35:21.850921+00:00",
     "sections": {
-      "price": "2026-05-01"
+      "price": "2026-05-08"
     }
   },
   "source": "prefetched",
@@ -33,7 +33,7 @@
       "country": "United States",
       "industry": "Semiconductors",
       "sector": "Technology",
-      "longBusinessSummary": "NVIDIA Corporation operates as a data center scale AI infrastructure company. The company operates through two segments, Compute & Networking, and Graphics segments. The Compute & Networking segment provides data center accelerated computing and networking platforms and artificial intelligence solutions and software, and automotive platforms and autonomous and electric vehicle solutions, including software. The Graphics segment offers GeForce GPUs for gaming and PCs; Quadro/NVIDIA RTX GPUs for enterprise workstation graphics. The company's products are used in gaming, professional visualization, data center, and automotive markets. The company sells its products to original equipment manufacturers, original device manufacturers, system integrators and distributors, independent software vendors, cloud service providers, add-in board manufacturers, distributors, automotive manufacturers and tier-1 automotive suppliers, and other ecosystem participants worldwide. It has a collaboration with Tech Mahindra Limited to develop artificial intelligence powered telco network operations reasoning agent. The company has a strategic partnership with Lumentum Holdings Inc. to develop optics technologies for AI and data centers. It also has a strategic partnership with Nebius Group N.V. to develop and deploy hyperscale cloud for the artificial intelligence market. NVIDIA Corporation was incorporated in 1993 and is headquartered in Santa Clara, California.",
+      "longBusinessSummary": "NVIDIA Corporation operates as a data center scale AI infrastructure company. The company operates through two segments, Compute & Networking, and Graphics segments. The Compute & Networking segment provides data center accelerated computing and networking platforms and artificial intelligence solutions and software, and automotive platforms and autonomous and electric vehicle solutions, including software. The Graphics segment offers GeForce GPUs for gaming and PCs; Quadro/NVIDIA RTX GPUs for enterprise workstation graphics. The company's products are used in gaming, professional visualization, data center, and automotive markets. The company sells its products to original equipment manufacturers, original device manufacturers, system integrators and distributors, independent software vendors, cloud service providers, add-in board manufacturers, distributors, automotive manufacturers and tier-1 automotive suppliers, and other ecosystem participants worldwide. It has a collaboration with Tech Mahindra Limited to develop artificial intelligence powered telco network operations reasoning agent. The company has a strategic partnership with Lumentum Holdings Inc. to develop optics technologies for AI and data centers. It also has a strategic partnership with Nebius Group N.V. to develop and deploy hyperscale cloud for the artificial intelligence market; and has a strategic partnership with IREN Limited to accelerate deployment of up to 5 gigawatts of infrastructure. NVIDIA Corporation was incorporated in 1993 and is headquartered in Santa Clara, California.",
       "fullTimeEmployees": 42000,
       "website": "https://www.nvidia.com",
       "shortName": "NVIDIA Corporation",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.9,
-      "ttmPe": 40.5,
-      "marketCap": 4822335000000,
-      "psRatio": 22.33,
-      "pbRatio": 30.66,
-      "pegRatio": 0.41
+      "ttmPe": 43.92,
+      "marketCap": 5229360000000,
+      "psRatio": 24.22,
+      "pbRatio": 33.25,
+      "pegRatio": 0.45
     },
     "profitability": {
       "roe": 31.11,
@@ -5512,57 +5512,17 @@
       ]
     },
     "wacc": {
-      "wacc": 23.27,
-      "costOfEquity": 23.32,
+      "wacc": 23.25,
+      "costOfEquity": 23.3,
       "costOfDebt": 0.66,
       "taxRate": 15,
-      "beta": 2.2321,
-      "marketCap": 4822335000000
+      "beta": 2.2281,
+      "marketCap": 5229360000000
     },
     "beta": {
-      "beta5y": 2.2321
+      "beta5y": 2.2281
     },
     "price": [
-      {
-        "date": "2025-05-01",
-        "open": 113.08,
-        "high": 114.94,
-        "low": 111.3,
-        "close": 111.61,
-        "volume": 236121500
-      },
-      {
-        "date": "2025-05-02",
-        "open": 114.18,
-        "high": 115.4,
-        "low": 113.37,
-        "close": 114.5,
-        "volume": 190194800
-      },
-      {
-        "date": "2025-05-05",
-        "open": 112.91,
-        "high": 114.67,
-        "low": 112.66,
-        "close": 113.82,
-        "volume": 133163200
-      },
-      {
-        "date": "2025-05-06",
-        "open": 111.48,
-        "high": 114.74,
-        "low": 110.82,
-        "close": 113.54,
-        "volume": 158525600
-      },
-      {
-        "date": "2025-05-07",
-        "open": 113.05,
-        "high": 117.68,
-        "low": 112.28,
-        "close": 117.06,
-        "volume": 206758800
-      },
       {
         "date": "2025-05-08",
         "open": 118.25,
@@ -7537,7 +7497,47 @@
         "high": 203,
         "low": 197.12,
         "close": 198.45,
-        "volume": 128257500
+        "volume": 128647000
+      },
+      {
+        "date": "2026-05-04",
+        "open": 199.5,
+        "high": 201.73,
+        "low": 194.74,
+        "close": 198.48,
+        "volume": 125368100
+      },
+      {
+        "date": "2026-05-05",
+        "open": 199.3,
+        "high": 200.24,
+        "low": 196.03,
+        "close": 196.5,
+        "volume": 113406600
+      },
+      {
+        "date": "2026-05-06",
+        "open": 199.89,
+        "high": 208.27,
+        "low": 198.61,
+        "close": 207.83,
+        "volume": 188362800
+      },
+      {
+        "date": "2026-05-07",
+        "open": 208.34,
+        "high": 214.2,
+        "low": 206.5,
+        "close": 211.5,
+        "volume": 168307900
+      },
+      {
+        "date": "2026-05-08",
+        "open": 213.03,
+        "high": 217.8,
+        "low": 212.89,
+        "close": 215.2,
+        "volume": 136101000
       }
     ],
     "news": [
@@ -7590,14 +7590,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "9603d02d-962a-36da-ac81-d16892a33a25",
-        "title": "Lumentum Stock, Coherent Upgraded On View Nvidia Threat Overblown",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-03-24",
-        "link": "https://finance.yahoo.com/m/9603d02d-962a-36da-ac81-d16892a33a25/lumentum-stock%2C-coherent.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9c9222ce-74c7-3222-a9d9-ab586c63ce81",
         "title": "Nvidia’s Support Boosts Stereotaxis (STXS) in Advancing Robotic Surgery",
         "publisher": "Insider Monkey",
@@ -7606,11 +7598,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "b8f4eb3b-6cfb-3bc7-9dd5-91c82b5bacff",
-        "title": "Top Research Reports for Microsoft, NVIDIA & Alphabet",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-26",
-        "link": "https://finance.yahoo.com/news/top-research-reports-microsoft-nvidia-210900965.html",
+        "uuid": "9603d02d-962a-36da-ac81-d16892a33a25",
+        "title": "Lumentum Stock, Coherent Upgraded On View Nvidia Threat Overblown",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-03-24",
+        "link": "https://finance.yahoo.com/m/9603d02d-962a-36da-ac81-d16892a33a25/lumentum-stock%2C-coherent.html",
         "type": "STORY"
       },
       {
@@ -7619,6 +7611,14 @@
         "publisher": "Zacks",
         "reportDate": "2025-03-26",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-144500495.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b8f4eb3b-6cfb-3bc7-9dd5-91c82b5bacff",
+        "title": "Top Research Reports for Microsoft, NVIDIA & Alphabet",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-26",
+        "link": "https://finance.yahoo.com/news/top-research-reports-microsoft-nvidia-210900965.html",
         "type": "STORY"
       }
     ],
@@ -7634,12 +7634,6 @@
         "name": "Mr. Chris A. Malachowsky",
         "title": "Co-Founder",
         "totalPay": 320000
-      },
-      {
-        "name": "Mr. Donald F. Robertson Jr.",
-        "title": "VP & Chief Accounting Officer",
-        "age": 56,
-        "yearBorn": 1969
       },
       {
         "name": "Mr. Jen-Hsun Huang",
@@ -7658,6 +7652,12 @@
       {
         "name": "Mr. Toshiya Hari",
         "title": "Vice President of Investor Relations & Strategic Finance"
+      },
+      {
+        "name": "Ms. Alison Berkley Wagonfeld",
+        "title": "Chief Marketing Officer",
+        "age": 54,
+        "yearBorn": 1971
       },
       {
         "name": "Ms. Colette M. Kress",
@@ -7687,50 +7687,50 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 40.5,
-        "industryAvg": 38.95
+        "value": 43.92,
+        "industryAvg": 42.11
       },
       {
         "metric": "P/S Ratio",
-        "value": 22.33,
-        "industryAvg": 14.18
+        "value": 24.22,
+        "industryAvg": 15.45
       },
       {
         "metric": "P/B Ratio",
-        "value": 30.66,
-        "industryAvg": 11.78
+        "value": 33.25,
+        "industryAvg": 12.85
       },
       {
         "metric": "ROE",
         "value": 31.11,
-        "industryAvg": 30.509999999999998
+        "industryAvg": 30.570000000000004
       },
       {
         "metric": "ROA",
         "value": 23.35,
-        "industryAvg": 18.740000000000002
+        "industryAvg": 18.77
       },
       {
         "metric": "Gross Margin",
         "value": 75,
-        "industryAvg": 57.15
+        "industryAvg": 57.18
       },
       {
         "metric": "EBITDA Margin",
         "value": 75.28,
-        "industryAvg": 52.629999999999995
+        "industryAvg": 52.669999999999995
       },
       {
         "metric": "Net Margin",
         "value": 63.06,
-        "industryAvg": 33.900000000000006
+        "industryAvg": 33.94
       }
     ],
     "dcf": {
-      "fairValue": 50.01,
-      "currentPrice": 198.45,
-      "upside": -74.8,
-      "wacc": 23.27,
+      "fairValue": 50.06,
+      "currentPrice": 215.2,
+      "upside": -76.74,
+      "wacc": 23.25,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

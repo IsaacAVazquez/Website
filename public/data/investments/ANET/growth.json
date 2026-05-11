@@ -90,6 +90,13 @@
       "revenue": 2487800000.0,
       "prev_year_revenue": 1930436000.0,
       "yoy_growth": 0.2887
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2026-03-31T00:00:00.000",
+      "revenue": 2709000000.0,
+      "prev_year_revenue": 2004800000.0,
+      "yoy_growth": 0.3513
     }
   ],
   "annual_revenue": [
@@ -227,6 +234,13 @@
       "operating_income": 1032900000.0,
       "prev_year_operating_income": 799652000.0,
       "yoy_growth": 0.2917
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2026-03-31T00:00:00.000",
+      "operating_income": 1157800000.0,
+      "prev_year_operating_income": 858800000.0,
+      "yoy_growth": 0.3482
     }
   ],
   "annual_operating_income": [
@@ -357,6 +371,13 @@
       "ebitda": 1055700000.0,
       "prev_year_ebitda": 815040000.0,
       "yoy_growth": 0.2953
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2026-03-31T00:00:00.000",
+      "ebitda": 1181100000.0,
+      "prev_year_ebitda": 872600000.0,
+      "yoy_growth": 0.3535
     }
   ],
   "annual_ebitda": [
@@ -494,6 +515,13 @@
       "net_income_common_stockholders": 955800000.0,
       "prev_year_net_income_common_stockholders": 800996000.0,
       "yoy_growth": 0.1933
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2026-03-31T00:00:00.000",
+      "net_income_common_stockholders": 1022900000.0,
+      "prev_year_net_income_common_stockholders": 813800000.0,
+      "yoy_growth": 0.2569
     }
   ],
   "annual_net_income": [
@@ -624,6 +652,13 @@
       "free_cash_flow": 1224900000.0,
       "prev_year_free_cash_flow": 1018511000.0,
       "yoy_growth": 0.2026
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2026-03-31T00:00:00.000",
+      "free_cash_flow": 1639000000.0,
+      "prev_year_free_cash_flow": 613300000.0,
+      "yoy_growth": 1.6724
     }
   ],
   "annual_fcf": [
@@ -1034,6 +1069,13 @@
       "eps": 0.75,
       "prev_year_eps": 0.62,
       "yoy_growth": 0.2097
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2026-03-31T00:00:00.000",
+      "eps": 0.8,
+      "prev_year_eps": 0.64,
+      "yoy_growth": 0.25
     }
   ]
 }

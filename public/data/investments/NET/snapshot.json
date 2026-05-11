@@ -1,10 +1,10 @@
 {
   "symbol": "NET",
-  "lastUpdated": "2026-05-07T23:35:00.937242+00:00",
+  "lastUpdated": "2026-05-11T23:35:21.850921+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-05-07T23:35:00.937242+00:00",
+    "snapshotBuiltAt": "2026-05-11T23:35:21.850921+00:00",
     "sections": {
-      "price": "2026-05-01"
+      "price": "2026-05-08"
     }
   },
   "source": "prefetched",
@@ -41,9 +41,9 @@
     },
     "fundamentals": {
       "ttmEps": -0.29,
-      "marketCap": 76555715250,
-      "psRatio": 35.31,
-      "pbRatio": 52.47
+      "marketCap": 69307262233,
+      "psRatio": 31.97,
+      "pbRatio": 47.5
     },
     "profitability": {
       "roe": -0.86,
@@ -5283,57 +5283,17 @@
       ]
     },
     "wacc": {
-      "wacc": 17.62,
-      "costOfEquity": 18.43,
+      "wacc": 17.47,
+      "costOfEquity": 18.35,
       "costOfDebt": 0.08,
       "taxRate": 21,
-      "beta": 1.6561,
-      "marketCap": 76555715250
+      "beta": 1.6452,
+      "marketCap": 69307262233
     },
     "beta": {
-      "beta5y": 1.6561
+      "beta5y": 1.6452
     },
     "price": [
-      {
-        "date": "2025-05-01",
-        "open": 125.7,
-        "high": 125.98,
-        "low": 122.5,
-        "close": 122.61,
-        "volume": 3230800
-      },
-      {
-        "date": "2025-05-02",
-        "open": 125.11,
-        "high": 126.05,
-        "low": 123.42,
-        "close": 124.23,
-        "volume": 2625200
-      },
-      {
-        "date": "2025-05-05",
-        "open": 122.59,
-        "high": 126.25,
-        "low": 122.39,
-        "close": 124.64,
-        "volume": 2837400
-      },
-      {
-        "date": "2025-05-06",
-        "open": 122,
-        "high": 123.48,
-        "low": 120.46,
-        "close": 122.29,
-        "volume": 2596700
-      },
-      {
-        "date": "2025-05-07",
-        "open": 122.08,
-        "high": 122.74,
-        "low": 120.55,
-        "close": 121.71,
-        "volume": 2141500
-      },
       {
         "date": "2025-05-08",
         "open": 123.81,
@@ -7308,7 +7268,47 @@
         "high": 218.28,
         "low": 209,
         "close": 217.5,
-        "volume": 2991700
+        "volume": 2993700
+      },
+      {
+        "date": "2026-05-04",
+        "open": 219.55,
+        "high": 224.23,
+        "low": 217.48,
+        "close": 224.17,
+        "volume": 2781400
+      },
+      {
+        "date": "2026-05-05",
+        "open": 231.06,
+        "high": 248.92,
+        "low": 229.09,
+        "close": 244.43,
+        "volume": 7171700
+      },
+      {
+        "date": "2026-05-06",
+        "open": 242.44,
+        "high": 250.97,
+        "low": 234.76,
+        "close": 248.59,
+        "volume": 4746700
+      },
+      {
+        "date": "2026-05-07",
+        "open": 251.99,
+        "high": 258.88,
+        "low": 248.62,
+        "close": 256.79,
+        "volume": 8959600
+      },
+      {
+        "date": "2026-05-08",
+        "open": 217.22,
+        "high": 219,
+        "low": 192.27,
+        "close": 196.13,
+        "volume": 18892400
       }
     ],
     "news": [
@@ -7395,8 +7395,12 @@
     ],
     "officers": [
       {
-        "name": "Daniella Vallurupalli",
-        "title": "VP & Head of Global Communications"
+        "name": "Mr. Anwar Karzazi",
+        "title": "Head of EMEA Channels"
+      },
+      {
+        "name": "Mr. Brian Guan",
+        "title": "Head of Tax"
       },
       {
         "name": "Mr. Dane Knecht",
@@ -7407,94 +7411,85 @@
         "title": "Head of Product Strategy Operations"
       },
       {
-        "name": "Mr. Mark F. Anderson",
-        "title": "President of Revenue",
-        "age": 63,
-        "yearBorn": 1962,
-        "totalPay": 7665
+        "name": "Mr. Justin Paine",
+        "title": "Head of Trust & Safety"
       },
       {
         "name": "Mr. Matthew Prince J.D.",
         "title": "Co-Founder, Co-Chairman & CEO",
         "age": 50,
         "yearBorn": 1975,
-        "totalPay": 2081094
-      },
-      {
-        "name": "Mr. Philip Alan Winslow Jr., C.F.A., Jr.",
-        "title": "Vice President of Strategic Finance, Treasury and Investor Relations"
+        "totalPay": 2299951
       },
       {
         "name": "Mr. Thomas Josef Seifert",
         "title": "Chief Financial Officer",
         "age": 62,
         "yearBorn": 1963,
-        "totalPay": 741667
+        "totalPay": 750000
       },
       {
-        "name": "Ms. Janel Riley",
-        "title": "VP of Finance & Chief Accounting Officer",
-        "age": 47,
-        "yearBorn": 1978
+        "name": "Ms. . Kate",
+        "title": "Head of Customer Success, APAC"
+      },
+      {
+        "name": "Ms. Andria Jones",
+        "title": "Head of Legal Compliance"
       },
       {
         "name": "Ms. Michelle Zatlyn",
         "title": "Co-Founder, President & Co-Chair of the Board",
         "age": 45,
         "yearBorn": 1980,
-        "totalPay": 1360459
-      },
-      {
-        "name": "Ms. W. Ling",
-        "title": "Head of Governance Risk & Compliance"
+        "totalPay": 1794059
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "industryAvg": 27.71
+        "industryAvg": 28.64
       },
       {
         "metric": "P/S Ratio",
-        "value": 35.31,
-        "industryAvg": 5.84
+        "value": 31.97,
+        "industryAvg": 6
       },
       {
         "metric": "P/B Ratio",
-        "value": 52.47,
-        "industryAvg": 7.51
+        "value": 47.5,
+        "industryAvg": 7.71
       },
       {
         "metric": "ROE",
         "value": -0.86,
-        "industryAvg": 28.050000000000004
+        "industryAvg": 27.93
       },
       {
         "metric": "ROA",
         "value": -0.2,
-        "industryAvg": 10.89
+        "industryAvg": 10.84
       },
       {
         "metric": "Gross Margin",
         "value": 73.64,
-        "industryAvg": 47.67
+        "industryAvg": 47.9
       },
       {
         "metric": "EBITDA Margin",
         "value": 7.32,
-        "industryAvg": 32.85
+        "industryAvg": 32.67
       },
       {
         "metric": "Net Margin",
         "value": -1.97,
-        "industryAvg": 18.69
+        "industryAvg": 18.55
       }
     ],
     "dcf": {
-      "fairValue": -2.92,
-      "currentPrice": 217.5,
-      "upside": -101.34,
-      "wacc": 17.62,
+      "fairValue": -2.95,
+      "currentPrice": 196.13,
+      "upside": -101.51,
+      "wacc": 17.47,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 25,
         "Terminal growth": 3

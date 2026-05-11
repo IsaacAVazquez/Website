@@ -1,10 +1,10 @@
 {
   "symbol": "KLAC",
-  "lastUpdated": "2026-05-07T23:35:00.937242+00:00",
+  "lastUpdated": "2026-05-11T23:35:21.850921+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-05-07T23:35:00.937242+00:00",
+    "snapshotBuiltAt": "2026-05-11T23:35:21.850921+00:00",
     "sections": {
-      "price": "2026-05-01"
+      "price": "2026-05-08"
     }
   },
   "source": "prefetched",
@@ -40,12 +40,12 @@
       "longName": "KLA Corporation"
     },
     "fundamentals": {
-      "ttmEps": 35.38,
-      "ttmPe": 48.79,
-      "marketCap": 226272291516,
-      "psRatio": 17.28,
-      "pbRatio": 38.81,
-      "pegRatio": 4.2
+      "ttmEps": 35.37,
+      "ttmPe": 52.85,
+      "marketCap": 244167616725,
+      "psRatio": 18.64,
+      "pbRatio": 41.88,
+      "pegRatio": 4.54
     },
     "profitability": {
       "roe": 21.26,
@@ -3060,7 +3060,7 @@
         },
         {
           "Breakdown": "Share Issued",
-          "2026-03-31": "131076611.0",
+          "2026-03-31": "130710000.0",
           "2025-12-31": "131143000.0",
           "2025-09-30": "131516000.0",
           "2025-06-30": "281176000.0",
@@ -3079,7 +3079,7 @@
         },
         {
           "Breakdown": "Ordinary Shares Number",
-          "2026-03-31": "131076611.0",
+          "2026-03-31": "130710000.0",
           "2025-12-31": "131143000.0",
           "2025-09-30": "131516000.0",
           "2025-06-30": "132023000.0",
@@ -5866,57 +5866,17 @@
       ]
     },
     "wacc": {
-      "wacc": 16.55,
+      "wacc": 16.580000000000002,
       "costOfEquity": 16.97,
       "costOfDebt": 1.15,
       "taxRate": 15,
-      "beta": 1.4839,
-      "marketCap": 226272291516
+      "beta": 1.4831,
+      "marketCap": 244167616725
     },
     "beta": {
-      "beta5y": 1.4839
+      "beta5y": 1.4831
     },
     "price": [
-      {
-        "date": "2025-05-01",
-        "open": 689.2,
-        "high": 693.04,
-        "low": 674.76,
-        "close": 676.31,
-        "volume": 1463500
-      },
-      {
-        "date": "2025-05-02",
-        "open": 694.25,
-        "high": 707.84,
-        "low": 692.91,
-        "close": 698.16,
-        "volume": 851800
-      },
-      {
-        "date": "2025-05-05",
-        "open": 691.02,
-        "high": 701.61,
-        "low": 687.12,
-        "close": 693.29,
-        "volume": 811900
-      },
-      {
-        "date": "2025-05-06",
-        "open": 680.86,
-        "high": 690,
-        "low": 677.61,
-        "close": 679.42,
-        "volume": 905400
-      },
-      {
-        "date": "2025-05-07",
-        "open": 680.49,
-        "high": 696.46,
-        "low": 675.27,
-        "close": 694.35,
-        "volume": 962800
-      },
       {
         "date": "2025-05-08",
         "open": 703.32,
@@ -7892,23 +7852,63 @@
         "low": 1695,
         "close": 1726.26,
         "volume": 789200
+      },
+      {
+        "date": "2026-05-04",
+        "open": 1720.5,
+        "high": 1751.14,
+        "low": 1676.79,
+        "close": 1713.32,
+        "volume": 791600
+      },
+      {
+        "date": "2026-05-05",
+        "open": 1745.3,
+        "high": 1767.19,
+        "low": 1715.87,
+        "close": 1732.9,
+        "volume": 1194100
+      },
+      {
+        "date": "2026-05-06",
+        "open": 1784.69,
+        "high": 1824.79,
+        "low": 1759.26,
+        "close": 1816.29,
+        "volume": 1340900
+      },
+      {
+        "date": "2026-05-07",
+        "open": 1817.31,
+        "high": 1819.99,
+        "low": 1746,
+        "close": 1763.25,
+        "volume": 1241600
+      },
+      {
+        "date": "2026-05-08",
+        "open": 1816.63,
+        "high": 1889.06,
+        "low": 1805,
+        "close": 1869.19,
+        "volume": 1289400
       }
     ],
     "news": [
-      {
-        "uuid": "83f8d9f8-57f2-335d-9151-f1ea2ac9e406",
-        "title": "Is KLA Corp. (KLAC) the Best GARP Stock to Buy Now?",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-03-12",
-        "link": "https://finance.yahoo.com/news/kla-corp-klac-best-garp-142339226.html",
-        "type": "STORY"
-      },
       {
         "uuid": "aa125839-97db-3f4e-9c8d-45fe4d3f50e1",
         "title": "What Makes KLA Corporation (KLAC) a Good Long-Term Bet?",
         "publisher": "Insider Monkey",
         "reportDate": "2025-03-12",
         "link": "https://finance.yahoo.com/news/makes-kla-corporation-klac-good-134811807.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "83f8d9f8-57f2-335d-9151-f1ea2ac9e406",
+        "title": "Is KLA Corp. (KLAC) the Best GARP Stock to Buy Now?",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-03-12",
+        "link": "https://finance.yahoo.com/news/kla-corp-klac-best-garp-142339226.html",
         "type": "STORY"
       },
       {
@@ -7968,11 +7968,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "7d244f54-1547-3e57-9402-fe0b6840571f",
-        "title": "KLA Corporation Reports Fiscal 2025 Third Quarter Results; Announces an Increase in the Dividend Level to $1.90 Per Share and a $5 billion Increase in Share Repurchase Authorization",
-        "publisher": "PR Newswire",
+        "uuid": "5eeeacf1-26d3-3d4d-a281-9c0a18bbbb13",
+        "title": "KLA Corporation (NASDAQ:KLAC) Posts Better-Than-Expected Sales In Q1, Provides Encouraging Quarterly Revenue Guidance",
+        "publisher": "StockStory",
         "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/kla-corporation-reports-fiscal-2025-200500861.html",
+        "link": "https://finance.yahoo.com/news/kla-corporation-nasdaq-klac-posts-202749386.html",
         "type": "STORY"
       }
     ],
@@ -8042,50 +8042,50 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 48.79,
-        "industryAvg": 47
+        "value": 52.85,
+        "industryAvg": 51.7
       },
       {
         "metric": "P/S Ratio",
-        "value": 17.28,
-        "industryAvg": 12.71
+        "value": 18.64,
+        "industryAvg": 14.01
       },
       {
         "metric": "P/B Ratio",
-        "value": 38.81,
-        "industryAvg": 17.93
+        "value": 41.88,
+        "industryAvg": 19.63
       },
       {
         "metric": "ROE",
         "value": 21.26,
-        "industryAvg": 38.23
+        "industryAvg": 38.379999999999995
       },
       {
         "metric": "ROA",
         "value": 7.1499999999999995,
-        "industryAvg": 18.529999999999998
+        "industryAvg": 18.63
       },
       {
         "metric": "Gross Margin",
         "value": 61.12,
-        "industryAvg": 48.92
+        "industryAvg": 48.949999999999996
       },
       {
         "metric": "EBITDA Margin",
         "value": 46.45,
-        "industryAvg": 34.89
+        "industryAvg": 34.949999999999996
       },
       {
         "metric": "Net Margin",
         "value": 35.17,
-        "industryAvg": 26.19
+        "industryAvg": 26.240000000000002
       }
     ],
     "dcf": {
-      "fairValue": 311.21,
-      "currentPrice": 1726.26,
-      "upside": -81.97,
-      "wacc": 16.55,
+      "fairValue": 310.42,
+      "currentPrice": 1869.19,
+      "upside": -83.39,
+      "wacc": 16.58,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 11.63,
         "Terminal growth": 3

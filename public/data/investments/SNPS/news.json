@@ -108,50 +108,18 @@
     ]
   },
   {
-    "uuid": "018e0c72-aa04-3842-9a45-03fbadc39148",
+    "uuid": "9c46ac3e-a0bd-3c36-abfa-7e5382addab8",
     "related_symbols": "SNPS",
-    "title": "FTC to Require Synopsys, Ansys to Divest Assets to Resolve Merger Concerns",
-    "publisher": "MT Newswires",
+    "title": "Trump Blocks Chip Design Software Firms From Selling In China",
+    "publisher": "Investor's Business Daily",
     "report_date": "2025-05-29",
     "type": "STORY",
-    "link": "https://finance.yahoo.com/news/ftc-require-synopsys-ansys-divest-102101449.html",
+    "link": "https://finance.yahoo.com/m/9c46ac3e-a0bd-3c36-abfa-7e5382addab8/trump-blocks-chip-design.html",
     "news": [
       {
         "paragraph_number": 1,
         "highlight": "",
-        "paragraph": "Synopsys (SNPS) and Ansys (ANSS) will be required to divest certain assets in order to resolve poten"
-      }
-    ]
-  },
-  {
-    "uuid": "60b652b1-ba1a-3011-9e0c-1f92bb316553",
-    "related_symbols": "SNPS",
-    "title": "Cadence, Synopsys, Others Reportedly Ordered to Stop Shipments to China",
-    "publisher": "MT Newswires",
-    "report_date": "2025-05-29",
-    "type": "STORY",
-    "link": "https://finance.yahoo.com/news/cadence-synopsys-others-reportedly-ordered-110607594.html",
-    "news": [
-      {
-        "paragraph_number": 1,
-        "highlight": "",
-        "paragraph": "Cadence Design Systems (CDNS), Synopsys (SNPS) and other electronic design automation software maker"
-      }
-    ]
-  },
-  {
-    "uuid": "bb5b7531-d03b-3469-aae0-7b68b87bba87",
-    "related_symbols": "SNPS",
-    "title": "Synopsys gets conditional FTC approval for Ansys acquisition",
-    "publisher": "Verdict",
-    "report_date": "2025-05-29",
-    "type": "STORY",
-    "link": "https://finance.yahoo.com/m/bb5b7531-d03b-3469-aae0-7b68b87bba87/synopsys-gets-conditional-ftc.html",
-    "news": [
-      {
-        "paragraph_number": 1,
-        "highlight": "",
-        "paragraph": "Chip designer Synopsys has received conditional approval from the US Federal Trade Commission (FTC) for its $35bn acquisition of software developer Ansys.\nIn January 2024, the companies signed a definitive agreement to execute the deal.\nAs per the latest conditions set forward by the FTC, Synopsys and Ansys must divest certain assets to Keysight Technologies to address antitrust concerns.\nThis divestiture aims to maintain competition in software tool markets essential for semiconductor and light simulation device design.\nThe FTC's proposed divestiture order seeks to protect consumers from potential price increases for products such as cars, smartphones, and televisions.\nFTC Bureau of Competition director Daniel Guarnera said: \u201cThe FTC\u2019s action today protects Americans from higher costs for the countless everyday products that use computer chips, LED screens, fibre optic cables, and many other high-tech components.\n\u201cThe FTC\u2019s divestiture order ensures that competition can thrive across software markets that are critical to designing the digital products that power Americans\u2019 daily lives.\u201d\nSynopsys develops Electronic Design Automation software for semiconductor design, while Ansys offers Simulation & Analysis software for product testing, including semiconductors.\nUnder the proposed consent order, Synopsys will divest its optical software tools used for designing and simulating optical devices such as LED screens and lenses.\nAdditionally, Synopsys will divest its photonic software tools, which aid in designing devices using photons, like fibre optic cables and solar panels.\nAnsys will divest its PowerArtist tool, which measures and optimises power consumption of digital chips during the Register Transfer Level design stage.\nThe consent order addresses FTC allegations of anticompetitive behaviour in optical, photonic, and RTL power consumption analysis tool markets.\nThe consent order mandates that Synopsys and Ansys complete divestitures within ten days of the acquisition's closure.\nThe order also requires Synopsys and Ansys to provide transition services and technological support to enable Keysight to compete with the merged entity.\nA monitor will oversee the consent order's implementation, and a divestiture trustee will be appointed if divestitures are not completed, it said.\n\"Synopsys gets conditional FTC approval for Ansys acquisition\" was originally created and published by Verdict, a GlobalData owned brand.\n\n\u00a0\nThe information on this site has been included in good faith for general informational purposes only. It is not intended to amount to advice on which you should rely, and we give no representation, warranty or guarantee, whether express or implied as to its accuracy or completeness. You must obtain professional or specialist advice before taking, or refraining from, any action on the basis of the content on our site."
+        "paragraph": "Cadence and Synopsys tumbled after the Trump administration blocked the chip design software firms from selling in China."
       }
     ]
   },
@@ -172,34 +140,34 @@
     ]
   },
   {
-    "uuid": "78ac3576-2d73-311d-b281-88d7c914a586",
+    "uuid": "018e0c72-aa04-3842-9a45-03fbadc39148",
     "related_symbols": "SNPS",
-    "title": "Synopsys Says It Hasn\u2019t Received Notice to Stop Exports to China, Pushing Back on Report",
-    "publisher": "Barrons.com",
+    "title": "FTC to Require Synopsys, Ansys to Divest Assets to Resolve Merger Concerns",
+    "publisher": "MT Newswires",
     "report_date": "2025-05-29",
     "type": "STORY",
-    "link": "https://finance.yahoo.com/m/78ac3576-2d73-311d-b281-88d7c914a586/synopsys-says-it-hasn%E2%80%99t.html",
+    "link": "https://finance.yahoo.com/news/ftc-require-synopsys-ansys-divest-102101449.html",
     "news": [
       {
         "paragraph_number": 1,
         "highlight": "",
-        "paragraph": "Shares of semiconductor software design companies Synopsys and Cadence Design Systems were bouncing back in late trading Wednesday after Synopsys pushed back on a report that it had been told by the Trump administration to stop sales to China. On Wednesday afternoon, the Financial Times had cited people familiar with the matter who said that the Commerce Department told electronic design automation companies like Cadence and Synopsys to stop supplying their technology to China. \u201cWe are aware of the reporting and speculation, but Synopsys has not received a notice from BIS.\u201d"
+        "paragraph": "Synopsys (SNPS) and Ansys (ANSS) will be required to divest certain assets in order to resolve poten"
       }
     ]
   },
   {
-    "uuid": "8e48b696-e22a-3e7f-bdbd-a48a315aab69",
+    "uuid": "bb5b7531-d03b-3469-aae0-7b68b87bba87",
     "related_symbols": "SNPS",
-    "title": "US Tightens China Chip Curbs by Targeting Design Software",
-    "publisher": "Bloomberg",
+    "title": "Synopsys gets conditional FTC approval for Ansys acquisition",
+    "publisher": "Verdict",
     "report_date": "2025-05-29",
     "type": "STORY",
-    "link": "https://finance.yahoo.com/news/us-tightens-china-chip-curbs-045811794.html",
+    "link": "https://finance.yahoo.com/m/bb5b7531-d03b-3469-aae0-7b68b87bba87/synopsys-gets-conditional-ftc.html",
     "news": [
       {
         "paragraph_number": 1,
         "highlight": "",
-        "paragraph": "(Bloomberg) -- The Trump administration is moving to restrict the sale of chip design software to China, people familiar with the matter said, as the US government evaluates a broader policy announcement on the issue.\nMost Read from Bloomberg\n NYC Congestion Toll Brings In $216 Million in First Four Months \n NY Wins Order Against US Funding Freeze in Congestion Fight \n NY Congestion Pricing Is Likely to Stay Until Year End During Court Case \n Now With Colorful Blocks, Tirana\u2019s Pyramid Represents a Changing Albania \nThe Commerce Department\u2019s Bureau of Industry and Security sent letters to some of the leading providers of electronic design automation, or EDA, last Friday telling them to halt shipments to Chinese customers, said the people, asking not to be identified because the policy isn\u2019t yet public. Top makers of the technology include Cadence Design Systems Inc., Synopsys Inc. and Germany\u2019s Siemens AG.\n\u201cThe Commerce Department is reviewing exports of strategic significance to China,\u201d an agency spokesperson said. \u201cIn some cases, Commerce has suspended existing export licenses or imposed additional license requirements while the review is pending.\u201d\nShares of Cadence fell 10.7% to $288.61 in New York trading, the worst single-day drop since the start of the pandemic in March 2020. Synopsys fell 9.6% to $462.43, its steepest decline since December.\nIt\u2019s unclear how broad the restrictions will be, although it could mean an effective ban on doing business in China, according to one of the people. Synopsys gets about 16% of its revenue from China, while Cadence gets about 12%.\n\u201cOn May 23, the US Government informed the Electronic Design Automation (EDA) industry about new export controls on EDA software to China and Chinese military end users globally,\u201d a Siemens spokesperson said via email. \u201cSiemens has supported customers in China for more than 150 years and will continue to work with our customers globally to mitigate the impact of these new restrictions.\u201d\nSynopsys Chief Executive Officer Sassine Ghazi acknowledged reports about the letter but said the company hadn\u2019t gotten a notice from BIS. \u201cWe cannot speculate about any potential impact to a notice that we have not received,\u201d he said on a conference call Wednesday to discuss the company\u2019s latest results.\nCadence declined to comment. The Financial Times reported earlier on the letters.\nWashington has employed an escalating approach to curbing Beijing\u2019s ambitions to build a domestic semiconductor industry. It started by cutting China off from equipment used to make the most advanced electronic components then gradually broadened the scope of the rules. Software from Cadence and Synopsys is used to design everything from the highest-end processors for the likes of Nvidia Corp. and Apple Inc. to simple parts like power-regulation components.\nThe US has also moved to keep the most advanced semiconductors out of China. Nvidia has been the main target of increasingly strict US export controls \u2014 in part because its chips are the gold standard for training artificial intelligence models.\nThe Trump administration this year banned Nvidia from selling its H20 chips to Chinese customers, the third round of such restrictions since 2022. Nvidia CEO Jensen Huang has publicly objected to the restrictions and declared the US policy a \u201cfailure.\u201d\nExport controls by the US have emerged as a flashpoint in trade negotiations between Washington and Beijing. Chinese officials claiming that US restrictions \u2014 along with efforts to pressure allies not to use Huawei Technologies Co.\u2019s latest Ascend chip \u2014 violated the spirit of recent discussions in Geneva aimed at defusing broader tensions over tariffs on the world\u2019s second largest economy by President Donald Trump.\n--With assistance from Ian King and Catherine Lucey.\n(Updates with comment from Siemens in sixth paragraph)\nMost Read from Bloomberg Businessweek\n Mark Zuckerberg Loves MAGA Now. Will MAGA Ever Love Him Back? \n YouTube Is Swallowing TV Whole, and It\u2019s Coming for the Sitcom \n Millions of Americans Are Obsessed With This Japanese Barbecue Sauce \n Inside the First Stargate AI Data Center \n How Coach Handbags Became a Gen Z Status Symbol \n\u00a92025 Bloomberg L.P."
+        "paragraph": "Chip designer Synopsys has received conditional approval from the US Federal Trade Commission (FTC) for its $35bn acquisition of software developer Ansys.\nIn January 2024, the companies signed a definitive agreement to execute the deal.\nAs per the latest conditions set forward by the FTC, Synopsys and Ansys must divest certain assets to Keysight Technologies to address antitrust concerns.\nThis divestiture aims to maintain competition in software tool markets essential for semiconductor and light simulation device design.\nThe FTC's proposed divestiture order seeks to protect consumers from potential price increases for products such as cars, smartphones, and televisions.\nFTC Bureau of Competition director Daniel Guarnera said: \u201cThe FTC\u2019s action today protects Americans from higher costs for the countless everyday products that use computer chips, LED screens, fibre optic cables, and many other high-tech components.\n\u201cThe FTC\u2019s divestiture order ensures that competition can thrive across software markets that are critical to designing the digital products that power Americans\u2019 daily lives.\u201d\nSynopsys develops Electronic Design Automation software for semiconductor design, while Ansys offers Simulation & Analysis software for product testing, including semiconductors.\nUnder the proposed consent order, Synopsys will divest its optical software tools used for designing and simulating optical devices such as LED screens and lenses.\nAdditionally, Synopsys will divest its photonic software tools, which aid in designing devices using photons, like fibre optic cables and solar panels.\nAnsys will divest its PowerArtist tool, which measures and optimises power consumption of digital chips during the Register Transfer Level design stage.\nThe consent order addresses FTC allegations of anticompetitive behaviour in optical, photonic, and RTL power consumption analysis tool markets.\nThe consent order mandates that Synopsys and Ansys complete divestitures within ten days of the acquisition's closure.\nThe order also requires Synopsys and Ansys to provide transition services and technological support to enable Keysight to compete with the merged entity.\nA monitor will oversee the consent order's implementation, and a divestiture trustee will be appointed if divestitures are not completed, it said.\n\"Synopsys gets conditional FTC approval for Ansys acquisition\" was originally created and published by Verdict, a GlobalData owned brand.\n\n\u00a0\nThe information on this site has been included in good faith for general informational purposes only. It is not intended to amount to advice on which you should rely, and we give no representation, warranty or guarantee, whether express or implied as to its accuracy or completeness. You must obtain professional or specialist advice before taking, or refraining from, any action on the basis of the content on our site."
       }
     ]
   },
@@ -216,6 +184,38 @@
         "paragraph_number": 1,
         "highlight": "",
         "paragraph": "The Federal Trade Commission (FTC) announced on Wednesday that it will require Synopsys, Inc. (NASDAQ:SNPS) and ANSYS, Inc. (NASDAQ:ANSS) to divest certain assets to proceed with their $35 billion merger.\nA close-up of a tech engineer soldering a modern system-on-chip circuit board in a laboratory setting.\nAccording to the commission, the proposed divestiture order will preserve competition across several software tool markets that are vital to semiconductors and light simulation devices. The FTC also added that the order will protect consumers from higher input prices for phones, cars, cameras, televisions, and other products.\nUnder a proposed consent order, Synopsys, Inc. (NASDAQ:SNPS) will divest its optical software tools and photonic software tools, whereas ANSYS, Inc. (NASDAQ:ANSS) is required to divest PowerArtist, a power consumption analysis tool. Both companies will sell their assets to Keysight Technologies, Inc.\nThe order also requires the two companies to complete the divestitures within 10 days of Synopsys, Inc. (NASDAQ:SNPS) closing the acquisition of ANSYS, Inc. (NASDAQ:ANSS). Both will also have to provide a limited amount of technological support and transition services to Keysight so that it can immediately compete with the merged company.\nWhile we acknowledge the potential of SNPS and ANSS as investments, our conviction lies in the belief that some AI stocks hold greater promise for delivering higher returns and have limited downside risk. If you are looking for an AI stock that is more promising than SNPS and ANSS and that has 100x upside potential, check out our report about this cheapest AI stock.\nREAD NEXT: ChatGPT Stock Advice: Top 12 Stock Recommendations and 10 Cheap Rising Stocks to Buy Right Now.\nDisclosure: None."
+      }
+    ]
+  },
+  {
+    "uuid": "60b652b1-ba1a-3011-9e0c-1f92bb316553",
+    "related_symbols": "SNPS",
+    "title": "Cadence, Synopsys, Others Reportedly Ordered to Stop Shipments to China",
+    "publisher": "MT Newswires",
+    "report_date": "2025-05-29",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/cadence-synopsys-others-reportedly-ordered-110607594.html",
+    "news": [
+      {
+        "paragraph_number": 1,
+        "highlight": "",
+        "paragraph": "Cadence Design Systems (CDNS), Synopsys (SNPS) and other electronic design automation software maker"
+      }
+    ]
+  },
+  {
+    "uuid": "78ac3576-2d73-311d-b281-88d7c914a586",
+    "related_symbols": "SNPS",
+    "title": "Synopsys Says It Hasn\u2019t Received Notice to Stop Exports to China, Pushing Back on Report",
+    "publisher": "Barrons.com",
+    "report_date": "2025-05-29",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/78ac3576-2d73-311d-b281-88d7c914a586/synopsys-says-it-hasn%E2%80%99t.html",
+    "news": [
+      {
+        "paragraph_number": 1,
+        "highlight": "",
+        "paragraph": "Shares of semiconductor software design companies Synopsys and Cadence Design Systems were bouncing back in late trading Wednesday after Synopsys pushed back on a report that it had been told by the Trump administration to stop sales to China. On Wednesday afternoon, the Financial Times had cited people familiar with the matter who said that the Commerce Department told electronic design automation companies like Cadence and Synopsys to stop supplying their technology to China. \u201cWe are aware of the reporting and speculation, but Synopsys has not received a notice from BIS.\u201d"
       }
     ]
   }

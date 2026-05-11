@@ -16,12 +16,12 @@
     "sp500_cagr_end": 2022,
     "sp500_10y_cagr": 0.1041,
     "treasure_10y_yield": 0.0409,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2124,
     "weight_of_equity": 0.7876,
     "cost_of_debt": 0.0098,
-    "cost_of_equity": 0.1364,
-    "wacc": 0.1091
+    "cost_of_equity": 0.138,
+    "wacc": 0.1103
   },
   {
     "symbol": "ORCL",
@@ -40,12 +40,12 @@
     "sp500_cagr_end": 2022,
     "sp500_10y_cagr": 0.1041,
     "treasure_10y_yield": 0.0437,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2175,
     "weight_of_equity": 0.7825,
     "cost_of_debt": 0.01,
-    "cost_of_equity": 0.135,
-    "wacc": 0.1076
+    "cost_of_equity": 0.1365,
+    "wacc": 0.1088
   },
   {
     "symbol": "ORCL",
@@ -64,12 +64,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0425,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2229,
     "weight_of_equity": 0.7771,
     "cost_of_debt": 0.01,
-    "cost_of_equity": 0.1285,
-    "wacc": 0.1017
+    "cost_of_equity": 0.1299,
+    "wacc": 0.1028
   },
   {
     "symbol": "ORCL",
@@ -88,12 +88,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0451,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2239,
     "weight_of_equity": 0.7761,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.1272,
-    "wacc": 0.1005
+    "cost_of_equity": 0.1286,
+    "wacc": 0.1016
   },
   {
     "symbol": "ORCL",
@@ -112,12 +112,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0391,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.1783,
     "weight_of_equity": 0.8217,
     "cost_of_debt": 0.01,
-    "cost_of_equity": 0.1302,
-    "wacc": 0.1086
+    "cost_of_equity": 0.1318,
+    "wacc": 0.1099
   },
   {
     "symbol": "ORCL",
@@ -136,12 +136,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0418,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.1475,
     "weight_of_equity": 0.8525,
     "cost_of_debt": 0.0098,
-    "cost_of_equity": 0.1289,
-    "wacc": 0.1112
+    "cost_of_equity": 0.1303,
+    "wacc": 0.1124
   },
   {
     "symbol": "ORCL",
@@ -160,12 +160,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0424,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.1714,
     "weight_of_equity": 0.8286,
     "cost_of_debt": 0.0093,
-    "cost_of_equity": 0.1456,
-    "wacc": 0.122
+    "cost_of_equity": 0.1474,
+    "wacc": 0.1235
   },
   {
     "symbol": "ORCL",
@@ -184,12 +184,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0441,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.1832,
     "weight_of_equity": 0.8168,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.1448,
-    "wacc": 0.1197
+    "cost_of_equity": 0.1465,
+    "wacc": 0.1211
   },
   {
     "symbol": "ORCL",
@@ -208,12 +208,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0423,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.1423,
     "weight_of_equity": 0.8577,
     "cost_of_debt": 0.0088,
-    "cost_of_equity": 0.1457,
-    "wacc": 0.126
+    "cost_of_equity": 0.1474,
+    "wacc": 0.1275
   },
   {
     "symbol": "ORCL",
@@ -232,12 +232,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0402,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.1777,
     "weight_of_equity": 0.8223,
     "cost_of_debt": 0.0085,
-    "cost_of_equity": 0.1468,
-    "wacc": 0.1222
+    "cost_of_equity": 0.1486,
+    "wacc": 0.1237
   },
   {
     "symbol": "ORCL",
@@ -256,12 +256,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0397,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2682,
     "weight_of_equity": 0.7318,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1742,
-    "wacc": 0.1292
+    "cost_of_equity": 0.1765,
+    "wacc": 0.1309
   },
   {
     "symbol": "ORCL",
@@ -280,12 +280,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0405,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.263,
     "weight_of_equity": 0.737,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1738,
-    "wacc": 0.1298
+    "cost_of_equity": 0.1761,
+    "wacc": 0.1315
   },
   {
     "symbol": "ORCL",
@@ -304,12 +304,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0406,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2633,
     "weight_of_equity": 0.7367,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1738,
-    "wacc": 0.1297
+    "cost_of_equity": 0.176,
+    "wacc": 0.1314
   },
   {
     "symbol": "ORCL",
@@ -328,12 +328,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0409,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.259,
     "weight_of_equity": 0.741,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1736,
-    "wacc": 0.1303
+    "cost_of_equity": 0.1758,
+    "wacc": 0.1319
   },
   {
     "symbol": "ORCL",
@@ -352,12 +352,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0413,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2559,
     "weight_of_equity": 0.7441,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1734,
-    "wacc": 0.1307
+    "cost_of_equity": 0.1756,
+    "wacc": 0.1323
   },
   {
     "symbol": "ORCL",
@@ -376,12 +376,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0415,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2582,
     "weight_of_equity": 0.7418,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1733,
-    "wacc": 0.1302
+    "cost_of_equity": 0.1755,
+    "wacc": 0.1319
   },
   {
     "symbol": "ORCL",
@@ -400,12 +400,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0412,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.26,
     "weight_of_equity": 0.74,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1735,
-    "wacc": 0.1301
+    "cost_of_equity": 0.1757,
+    "wacc": 0.1317
   },
   {
     "symbol": "ORCL",
@@ -424,12 +424,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0415,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2627,
     "weight_of_equity": 0.7373,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1733,
-    "wacc": 0.1295
+    "cost_of_equity": 0.1755,
+    "wacc": 0.1311
   },
   {
     "symbol": "ORCL",
@@ -448,12 +448,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0421,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2461,
     "weight_of_equity": 0.7539,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.173,
-    "wacc": 0.132
+    "cost_of_equity": 0.1752,
+    "wacc": 0.1337
   },
   {
     "symbol": "ORCL",
@@ -472,12 +472,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0427,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2507,
     "weight_of_equity": 0.7493,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1727,
-    "wacc": 0.131
+    "cost_of_equity": 0.1749,
+    "wacc": 0.1327
   },
   {
     "symbol": "ORCL",
@@ -496,12 +496,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0428,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2555,
     "weight_of_equity": 0.7445,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1726,
-    "wacc": 0.1302
+    "cost_of_equity": 0.1748,
+    "wacc": 0.1318
   },
   {
     "symbol": "ORCL",
@@ -520,12 +520,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0423,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2545,
     "weight_of_equity": 0.7455,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1729,
-    "wacc": 0.1305
+    "cost_of_equity": 0.1751,
+    "wacc": 0.1322
   },
   {
     "symbol": "ORCL",
@@ -544,12 +544,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.042,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.256,
     "weight_of_equity": 0.744,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1731,
-    "wacc": 0.1304
+    "cost_of_equity": 0.1752,
+    "wacc": 0.132
   },
   {
     "symbol": "ORCL",
@@ -568,12 +568,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2583,
     "weight_of_equity": 0.7417,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1727,
-    "wacc": 0.1298
+    "cost_of_equity": 0.1749,
+    "wacc": 0.1314
   },
   {
     "symbol": "ORCL",
@@ -592,12 +592,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0425,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.255,
     "weight_of_equity": 0.745,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1728,
-    "wacc": 0.1304
+    "cost_of_equity": 0.175,
+    "wacc": 0.132
   },
   {
     "symbol": "ORCL",
@@ -616,12 +616,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0439,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2624,
     "weight_of_equity": 0.7376,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1721,
-    "wacc": 0.1286
+    "cost_of_equity": 0.1742,
+    "wacc": 0.1302
   },
   {
     "symbol": "ORCL",
@@ -640,12 +640,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0434,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2565,
     "weight_of_equity": 0.7435,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1723,
-    "wacc": 0.1298
+    "cost_of_equity": 0.1745,
+    "wacc": 0.1314
   },
   {
     "symbol": "ORCL",
@@ -664,12 +664,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0439,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2658,
     "weight_of_equity": 0.7342,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1721,
-    "wacc": 0.1281
+    "cost_of_equity": 0.1742,
+    "wacc": 0.1296
   },
   {
     "symbol": "ORCL",
@@ -688,12 +688,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0433,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2672,
     "weight_of_equity": 0.7328,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1724,
-    "wacc": 0.1281
+    "cost_of_equity": 0.1746,
+    "wacc": 0.1297
   },
   {
     "symbol": "ORCL",
@@ -712,12 +712,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0442,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2716,
     "weight_of_equity": 0.7284,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1719,
-    "wacc": 0.127
+    "cost_of_equity": 0.1741,
+    "wacc": 0.1286
   },
   {
     "symbol": "ORCL",
@@ -736,12 +736,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0444,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.276,
     "weight_of_equity": 0.724,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1718,
-    "wacc": 0.1262
+    "cost_of_equity": 0.174,
+    "wacc": 0.1278
   },
   {
     "symbol": "ORCL",
@@ -760,12 +760,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0435,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2772,
     "weight_of_equity": 0.7228,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1723,
-    "wacc": 0.1263
+    "cost_of_equity": 0.1744,
+    "wacc": 0.1278
   },
   {
     "symbol": "ORCL",
@@ -784,12 +784,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2657,
     "weight_of_equity": 0.7343,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1725,
-    "wacc": 0.1284
+    "cost_of_equity": 0.1747,
+    "wacc": 0.13
   },
   {
     "symbol": "ORCL",
@@ -808,12 +808,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0433,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2682,
     "weight_of_equity": 0.7318,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1724,
-    "wacc": 0.1279
+    "cost_of_equity": 0.1746,
+    "wacc": 0.1295
   },
   {
     "symbol": "ORCL",
@@ -832,12 +832,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0431,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2667,
     "weight_of_equity": 0.7333,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1725,
-    "wacc": 0.1282
+    "cost_of_equity": 0.1747,
+    "wacc": 0.1298
   },
   {
     "symbol": "ORCL",
@@ -856,12 +856,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0434,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2678,
     "weight_of_equity": 0.7322,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1723,
-    "wacc": 0.1279
+    "cost_of_equity": 0.1745,
+    "wacc": 0.1295
   },
   {
     "symbol": "ORCL",
@@ -880,12 +880,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0433,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2711,
     "weight_of_equity": 0.7289,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1724,
-    "wacc": 0.1274
+    "cost_of_equity": 0.1746,
+    "wacc": 0.129
   },
   {
     "symbol": "ORCL",
@@ -904,12 +904,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2704,
     "weight_of_equity": 0.7296,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1726,
-    "wacc": 0.1277
+    "cost_of_equity": 0.1748,
+    "wacc": 0.1293
   },
   {
     "symbol": "ORCL",
@@ -928,12 +928,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2786,
     "weight_of_equity": 0.7214,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1726,
-    "wacc": 0.1263
+    "cost_of_equity": 0.1748,
+    "wacc": 0.1279
   },
   {
     "symbol": "ORCL",
@@ -952,12 +952,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0431,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2783,
     "weight_of_equity": 0.7217,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1725,
-    "wacc": 0.1263
+    "cost_of_equity": 0.1747,
+    "wacc": 0.1279
   },
   {
     "symbol": "ORCL",
@@ -976,12 +976,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2549,
     "weight_of_equity": 0.7451,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1725,
-    "wacc": 0.1302
+    "cost_of_equity": 0.1747,
+    "wacc": 0.1318
   },
   {
     "symbol": "ORCL",
@@ -1000,12 +1000,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2462,
     "weight_of_equity": 0.7538,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1727,
-    "wacc": 0.1318
+    "cost_of_equity": 0.1749,
+    "wacc": 0.1334
   },
   {
     "symbol": "ORCL",
@@ -1024,12 +1024,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2387,
     "weight_of_equity": 0.7613,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1726,
-    "wacc": 0.1329
+    "cost_of_equity": 0.1748,
+    "wacc": 0.1346
   },
   {
     "symbol": "ORCL",
@@ -1048,12 +1048,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0432,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2299,
     "weight_of_equity": 0.7701,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1724,
-    "wacc": 0.1343
+    "cost_of_equity": 0.1746,
+    "wacc": 0.1359
   },
   {
     "symbol": "ORCL",
@@ -1072,12 +1072,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2332,
     "weight_of_equity": 0.7668,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1727,
-    "wacc": 0.1339
+    "cost_of_equity": 0.1749,
+    "wacc": 0.1356
   },
   {
     "symbol": "ORCL",
@@ -1096,12 +1096,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2307,
     "weight_of_equity": 0.7693,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1727,
-    "wacc": 0.1344
+    "cost_of_equity": 0.1749,
+    "wacc": 0.136
   },
   {
     "symbol": "ORCL",
@@ -1120,12 +1120,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2271,
     "weight_of_equity": 0.7729,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1725,
-    "wacc": 0.1348
+    "cost_of_equity": 0.1747,
+    "wacc": 0.1365
   },
   {
     "symbol": "ORCL",
@@ -1144,12 +1144,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2211,
     "weight_of_equity": 0.7789,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1725,
-    "wacc": 0.1358
+    "cost_of_equity": 0.1747,
+    "wacc": 0.1375
   },
   {
     "symbol": "ORCL",
@@ -1168,12 +1168,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0434,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.232,
     "weight_of_equity": 0.768,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1723,
-    "wacc": 0.1338
+    "cost_of_equity": 0.1745,
+    "wacc": 0.1355
   },
   {
     "symbol": "ORCL",
@@ -1192,12 +1192,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0431,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.235,
     "weight_of_equity": 0.765,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1725,
-    "wacc": 0.1335
+    "cost_of_equity": 0.1747,
+    "wacc": 0.1352
   },
   {
     "symbol": "ORCL",
@@ -1216,12 +1216,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0435,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2354,
     "weight_of_equity": 0.7646,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1723,
-    "wacc": 0.1333
+    "cost_of_equity": 0.1744,
+    "wacc": 0.1349
   },
   {
     "symbol": "ORCL",
@@ -1240,12 +1240,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0436,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2429,
     "weight_of_equity": 0.7571,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1722,
-    "wacc": 0.1319
+    "cost_of_equity": 0.1744,
+    "wacc": 0.1336
   },
   {
     "symbol": "ORCL",
@@ -1264,12 +1264,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0442,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2453,
     "weight_of_equity": 0.7547,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1719,
-    "wacc": 0.1313
+    "cost_of_equity": 0.1741,
+    "wacc": 0.133
   },
   {
     "symbol": "ORCL",
@@ -1288,12 +1288,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.044,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2481,
     "weight_of_equity": 0.7519,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.172,
-    "wacc": 0.1309
+    "cost_of_equity": 0.1742,
+    "wacc": 0.1326
   },
   {
     "symbol": "ORCL",
@@ -1312,11 +1312,131 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0439,
-    "beta_5y": 1.5116,
+    "beta_5y": 1.5369,
     "weight_of_debt": 0.2365,
     "weight_of_equity": 0.7635,
     "cost_of_debt": 0.0077,
-    "cost_of_equity": 0.1721,
-    "wacc": 0.1329
+    "cost_of_equity": 0.1742,
+    "wacc": 0.1345
+  },
+  {
+    "symbol": "ORCL",
+    "report_date": "2026-05-04T00:00:00.000",
+    "market_capitalization": 518522333340.0,
+    "exchange_rate": 1.0,
+    "total_debt": 153117000000.0,
+    "total_debt_usd": 153117000000.0,
+    "interest_expense": 1180000000.0,
+    "interest_expense_usd": 1180000000.0,
+    "pretax_income": 4416000000.0,
+    "pretax_income_usd": 4416000000.0,
+    "tax_provision": 695000000.0,
+    "tax_provision_usd": 695000000.0,
+    "tax_rate_for_calcs": 0.16,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0445,
+    "beta_5y": 1.5369,
+    "weight_of_debt": 0.228,
+    "weight_of_equity": 0.772,
+    "cost_of_debt": 0.0077,
+    "cost_of_equity": 0.1739,
+    "wacc": 0.1357
+  },
+  {
+    "symbol": "ORCL",
+    "report_date": "2026-05-05T00:00:00.000",
+    "market_capitalization": 533075126100.0,
+    "exchange_rate": 1.0,
+    "total_debt": 153117000000.0,
+    "total_debt_usd": 153117000000.0,
+    "interest_expense": 1180000000.0,
+    "interest_expense_usd": 1180000000.0,
+    "pretax_income": 4416000000.0,
+    "pretax_income_usd": 4416000000.0,
+    "tax_provision": 695000000.0,
+    "tax_provision_usd": 695000000.0,
+    "tax_rate_for_calcs": 0.16,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0443,
+    "beta_5y": 1.5369,
+    "weight_of_debt": 0.2231,
+    "weight_of_equity": 0.7769,
+    "cost_of_debt": 0.0077,
+    "cost_of_equity": 0.174,
+    "wacc": 0.1366
+  },
+  {
+    "symbol": "ORCL",
+    "report_date": "2026-05-06T00:00:00.000",
+    "market_capitalization": 558039205380.0,
+    "exchange_rate": 1.0,
+    "total_debt": 153117000000.0,
+    "total_debt_usd": 153117000000.0,
+    "interest_expense": 1180000000.0,
+    "interest_expense_usd": 1180000000.0,
+    "pretax_income": 4416000000.0,
+    "pretax_income_usd": 4416000000.0,
+    "tax_provision": 695000000.0,
+    "tax_provision_usd": 695000000.0,
+    "tax_rate_for_calcs": 0.16,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0436,
+    "beta_5y": 1.5369,
+    "weight_of_debt": 0.2153,
+    "weight_of_equity": 0.7847,
+    "cost_of_debt": 0.0077,
+    "cost_of_equity": 0.1744,
+    "wacc": 0.1382
+  },
+  {
+    "symbol": "ORCL",
+    "report_date": "2026-05-07T00:00:00.000",
+    "market_capitalization": 559649791140.0,
+    "exchange_rate": 1.0,
+    "total_debt": 153117000000.0,
+    "total_debt_usd": 153117000000.0,
+    "interest_expense": 1180000000.0,
+    "interest_expense_usd": 1180000000.0,
+    "pretax_income": 4416000000.0,
+    "pretax_income_usd": 4416000000.0,
+    "tax_provision": 695000000.0,
+    "tax_provision_usd": 695000000.0,
+    "tax_rate_for_calcs": 0.16,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0441,
+    "beta_5y": 1.5369,
+    "weight_of_debt": 0.2148,
+    "weight_of_equity": 0.7852,
+    "cost_of_debt": 0.0077,
+    "cost_of_equity": 0.1741,
+    "wacc": 0.1381
+  },
+  {
+    "symbol": "ORCL",
+    "report_date": "2026-05-08T00:00:00.000",
+    "market_capitalization": 563561213700.0,
+    "exchange_rate": 1.0,
+    "total_debt": 153117000000.0,
+    "total_debt_usd": 153117000000.0,
+    "interest_expense": 1180000000.0,
+    "interest_expense_usd": 1180000000.0,
+    "pretax_income": 4416000000.0,
+    "pretax_income_usd": 4416000000.0,
+    "tax_provision": 695000000.0,
+    "tax_provision_usd": 695000000.0,
+    "tax_rate_for_calcs": 0.16,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0438,
+    "beta_5y": 1.5369,
+    "weight_of_debt": 0.2136,
+    "weight_of_equity": 0.7864,
+    "cost_of_debt": 0.0077,
+    "cost_of_equity": 0.1743,
+    "wacc": 0.1385
   }
 ]

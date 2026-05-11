@@ -69,6 +69,13 @@
       "revenue": 111442000000.0,
       "prev_year_revenue": 101468000000.0,
       "yoy_growth": 0.0983
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2026-03-31T00:00:00.000",
+      "revenue": 92070000000.0,
+      "prev_year_revenue": 83290000000.0,
+      "yoy_growth": 0.1054
     }
   ],
   "annual_revenue": [
@@ -189,6 +196,13 @@
       "net_income_common_stockholders": 19199000000.0,
       "prev_year_net_income_common_stockholders": 19694000000.0,
       "yoy_growth": -0.0251
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2026-03-31T00:00:00.000",
+      "net_income_common_stockholders": 10106000000.0,
+      "prev_year_net_income_common_stockholders": 4603000000.0,
+      "yoy_growth": 1.1955
     }
   ],
   "annual_net_income": [
@@ -305,6 +319,13 @@
       "free_cash_flow": 4990000000.0,
       "prev_year_free_cash_flow": -726000000.0,
       "yoy_growth": 7.8733
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2026-03-31T00:00:00.000",
+      "free_cash_flow": 5452000000.0,
+      "prev_year_free_cash_flow": 6622000000.0,
+      "yoy_growth": -0.1767
     }
   ],
   "annual_fcf": [

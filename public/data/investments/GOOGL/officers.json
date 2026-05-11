@@ -21,6 +21,26 @@
   },
   {
     "symbol": "GOOGL",
+    "name": "Mr. James H. Friedland",
+    "title": "Head of Investor Relations",
+    "age": 55,
+    "born": 1970,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "GOOGL",
+    "name": "Mr. Philipp  Schindler",
+    "title": "Senior Vice President & Chief Business Officer of Google",
+    "age": 54,
+    "born": 1971,
+    "pay": 1623997,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "GOOGL",
     "name": "Mr. Sergey  Brin",
     "title": "Co-Founder & Director",
     "age": 51,
@@ -46,6 +66,26 @@
     "age": 52,
     "born": 1973,
     "pay": 1087961,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "GOOGL",
+    "name": "Ms. Fiona Clare Cicconi",
+    "title": "Chief People Officer",
+    "age": 59,
+    "born": 1966,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "GOOGL",
+    "name": "Ms. Ivy  Ross",
+    "title": "VP & Head of Design for all Hardware Products",
+    "age": 69,
+    "born": 1956,
+    "pay": null,
     "exercised": 0,
     "unexercised": 0
   },

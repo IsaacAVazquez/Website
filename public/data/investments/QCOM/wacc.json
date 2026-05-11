@@ -16,12 +16,12 @@
     "sp500_cagr_end": 2022,
     "sp500_10y_cagr": 0.1041,
     "treasure_10y_yield": 0.0381,
-    "beta_5y": 1.4787,
+    "beta_5y": 1.5017,
     "weight_of_debt": 0.1042,
     "weight_of_equity": 0.8958,
     "cost_of_debt": 0.0111,
-    "cost_of_equity": 0.1357,
-    "wacc": 0.1227
+    "cost_of_equity": 0.1372,
+    "wacc": 0.124
   },
   {
     "symbol": "QCOM",
@@ -40,12 +40,12 @@
     "sp500_cagr_end": 2022,
     "sp500_10y_cagr": 0.1041,
     "treasure_10y_yield": 0.0459,
-    "beta_5y": 1.4787,
+    "beta_5y": 1.5017,
     "weight_of_debt": 0.1107,
     "weight_of_equity": 0.8893,
     "cost_of_debt": 0.0112,
-    "cost_of_equity": 0.132,
-    "wacc": 0.1184
+    "cost_of_equity": 0.1333,
+    "wacc": 0.1195
   },
   {
     "symbol": "QCOM",
@@ -64,12 +64,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0388,
-    "beta_5y": 1.4787,
+    "beta_5y": 1.5017,
     "weight_of_debt": 0.0874,
     "weight_of_equity": 0.9126,
     "cost_of_debt": 0.0115,
-    "cost_of_equity": 0.1284,
-    "wacc": 0.1181
+    "cost_of_equity": 0.1298,
+    "wacc": 0.1194
   },
   {
     "symbol": "QCOM",
@@ -88,12 +88,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.042,
-    "beta_5y": 1.4787,
+    "beta_5y": 1.5017,
     "weight_of_debt": 0.0755,
     "weight_of_equity": 0.9245,
     "cost_of_debt": 0.0111,
-    "cost_of_equity": 0.1269,
-    "wacc": 0.1181
+    "cost_of_equity": 0.1282,
+    "wacc": 0.1193
   },
   {
     "symbol": "QCOM",
@@ -112,12 +112,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0436,
-    "beta_5y": 1.4787,
+    "beta_5y": 1.5017,
     "weight_of_debt": 0.0615,
     "weight_of_equity": 0.9385,
     "cost_of_debt": 0.0115,
-    "cost_of_equity": 0.1261,
-    "wacc": 0.119
+    "cost_of_equity": 0.1274,
+    "wacc": 0.1202
   },
   {
     "symbol": "QCOM",
@@ -136,12 +136,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0381,
-    "beta_5y": 1.4787,
+    "beta_5y": 1.5017,
     "weight_of_debt": 0.0718,
     "weight_of_equity": 0.9282,
     "cost_of_debt": 0.0123,
-    "cost_of_equity": 0.1287,
-    "wacc": 0.1202
+    "cost_of_equity": 0.1302,
+    "wacc": 0.1215
   },
   {
     "symbol": "QCOM",
@@ -160,12 +160,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0458,
-    "beta_5y": 1.4787,
+    "beta_5y": 1.5017,
     "weight_of_debt": 0.079,
     "weight_of_equity": 0.921,
     "cost_of_debt": 0.0112,
-    "cost_of_equity": 0.1418,
-    "wacc": 0.1314
+    "cost_of_equity": 0.1433,
+    "wacc": 0.1327
   },
   {
     "symbol": "QCOM",
@@ -184,12 +184,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0423,
-    "beta_5y": 1.4787,
+    "beta_5y": 1.5017,
     "weight_of_debt": 0.0796,
     "weight_of_equity": 0.9204,
     "cost_of_debt": 0.0111,
-    "cost_of_equity": 0.1434,
-    "wacc": 0.1328
+    "cost_of_equity": 0.145,
+    "wacc": 0.1343
   },
   {
     "symbol": "QCOM",
@@ -208,12 +208,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0424,
-    "beta_5y": 1.4787,
+    "beta_5y": 1.5017,
     "weight_of_debt": 0.0789,
     "weight_of_equity": 0.9211,
     "cost_of_debt": 0.0114,
-    "cost_of_equity": 0.1434,
-    "wacc": 0.1329
+    "cost_of_equity": 0.145,
+    "wacc": 0.1344
   },
   {
     "symbol": "QCOM",
@@ -232,12 +232,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0416,
-    "beta_5y": 1.4787,
+    "beta_5y": 1.5017,
     "weight_of_debt": 0.0765,
     "weight_of_equity": 0.9235,
     "cost_of_debt": 0.0115,
-    "cost_of_equity": 0.1438,
-    "wacc": 0.1335
+    "cost_of_equity": 0.1454,
+    "wacc": 0.135
   },
   {
     "symbol": "QCOM",
@@ -256,12 +256,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0418,
-    "beta_5y": 1.4787,
+    "beta_5y": 1.5017,
     "weight_of_debt": 0.0746,
     "weight_of_equity": 0.9254,
     "cost_of_debt": 0.0114,
-    "cost_of_equity": 0.1703,
-    "wacc": 0.1583
+    "cost_of_equity": 0.1723,
+    "wacc": 0.1602
   },
   {
     "symbol": "QCOM",
@@ -280,12 +280,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 1.4787,
+    "beta_5y": 1.5017,
     "weight_of_debt": 0.1007,
     "weight_of_equity": 0.8993,
     "cost_of_debt": 0.0112,
-    "cost_of_equity": 0.1697,
-    "wacc": 0.1533
+    "cost_of_equity": 0.1717,
+    "wacc": 0.1551
   },
   {
     "symbol": "QCOM",
@@ -304,12 +304,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0433,
-    "beta_5y": 1.4787,
+    "beta_5y": 1.5017,
     "weight_of_debt": 0.1018,
     "weight_of_equity": 0.8982,
     "cost_of_debt": 0.0112,
-    "cost_of_equity": 0.1696,
-    "wacc": 0.153
+    "cost_of_equity": 0.1715,
+    "wacc": 0.1547
   },
   {
     "symbol": "QCOM",
@@ -328,12 +328,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0431,
-    "beta_5y": 1.4787,
+    "beta_5y": 1.5017,
     "weight_of_debt": 0.1021,
     "weight_of_equity": 0.8979,
     "cost_of_debt": 0.0112,
-    "cost_of_equity": 0.1697,
-    "wacc": 0.1531
+    "cost_of_equity": 0.1716,
+    "wacc": 0.1548
   },
   {
     "symbol": "QCOM",
@@ -352,12 +352,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0434,
-    "beta_5y": 1.4787,
+    "beta_5y": 1.5017,
     "weight_of_debt": 0.1029,
     "weight_of_equity": 0.8971,
     "cost_of_debt": 0.0112,
-    "cost_of_equity": 0.1695,
-    "wacc": 0.1527
+    "cost_of_equity": 0.1715,
+    "wacc": 0.1545
   },
   {
     "symbol": "QCOM",
@@ -376,12 +376,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0433,
-    "beta_5y": 1.4787,
+    "beta_5y": 1.5017,
     "weight_of_debt": 0.1041,
     "weight_of_equity": 0.8959,
     "cost_of_debt": 0.0112,
-    "cost_of_equity": 0.1696,
-    "wacc": 0.1526
+    "cost_of_equity": 0.1715,
+    "wacc": 0.1543
   },
   {
     "symbol": "QCOM",
@@ -400,12 +400,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 1.4787,
+    "beta_5y": 1.5017,
     "weight_of_debt": 0.1016,
     "weight_of_equity": 0.8984,
     "cost_of_debt": 0.0112,
-    "cost_of_equity": 0.1698,
-    "wacc": 0.1532
+    "cost_of_equity": 0.1717,
+    "wacc": 0.1549
   },
   {
     "symbol": "QCOM",
@@ -424,12 +424,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 1.4787,
+    "beta_5y": 1.5017,
     "weight_of_debt": 0.1014,
     "weight_of_equity": 0.8986,
     "cost_of_debt": 0.0112,
-    "cost_of_equity": 0.1698,
-    "wacc": 0.1533
+    "cost_of_equity": 0.1717,
+    "wacc": 0.155
   },
   {
     "symbol": "QCOM",
@@ -448,12 +448,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0431,
-    "beta_5y": 1.4787,
+    "beta_5y": 1.5017,
     "weight_of_debt": 0.1012,
     "weight_of_equity": 0.8988,
     "cost_of_debt": 0.0112,
-    "cost_of_equity": 0.1697,
-    "wacc": 0.1532
+    "cost_of_equity": 0.1716,
+    "wacc": 0.1549
   },
   {
     "symbol": "QCOM",
@@ -472,12 +472,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 1.4787,
+    "beta_5y": 1.5017,
     "weight_of_debt": 0.099,
     "weight_of_equity": 0.901,
     "cost_of_debt": 0.0112,
-    "cost_of_equity": 0.1697,
-    "wacc": 0.1536
+    "cost_of_equity": 0.1717,
+    "wacc": 0.1554
   },
   {
     "symbol": "QCOM",
@@ -496,12 +496,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 1.4787,
+    "beta_5y": 1.5017,
     "weight_of_debt": 0.0979,
     "weight_of_equity": 0.9021,
     "cost_of_debt": 0.0112,
-    "cost_of_equity": 0.1699,
-    "wacc": 0.1539
+    "cost_of_equity": 0.1719,
+    "wacc": 0.1557
   },
   {
     "symbol": "QCOM",
@@ -520,12 +520,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 1.4787,
+    "beta_5y": 1.5017,
     "weight_of_debt": 0.0978,
     "weight_of_equity": 0.9022,
     "cost_of_debt": 0.0112,
-    "cost_of_equity": 0.1698,
-    "wacc": 0.1539
+    "cost_of_equity": 0.1717,
+    "wacc": 0.1556
   },
   {
     "symbol": "QCOM",
@@ -544,12 +544,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0432,
-    "beta_5y": 1.4787,
+    "beta_5y": 1.5017,
     "weight_of_debt": 0.0968,
     "weight_of_equity": 0.9032,
     "cost_of_debt": 0.0112,
-    "cost_of_equity": 0.1696,
-    "wacc": 0.1538
+    "cost_of_equity": 0.1716,
+    "wacc": 0.1556
   },
   {
     "symbol": "QCOM",
@@ -568,12 +568,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 1.4787,
+    "beta_5y": 1.5017,
     "weight_of_debt": 0.0957,
     "weight_of_equity": 0.9043,
     "cost_of_debt": 0.0112,
-    "cost_of_equity": 0.1699,
-    "wacc": 0.1543
+    "cost_of_equity": 0.1719,
+    "wacc": 0.1561
   },
   {
     "symbol": "QCOM",
@@ -592,12 +592,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 1.4787,
+    "beta_5y": 1.5017,
     "weight_of_debt": 0.0949,
     "weight_of_equity": 0.9051,
     "cost_of_debt": 0.0112,
-    "cost_of_equity": 0.1699,
-    "wacc": 0.1544
+    "cost_of_equity": 0.1719,
+    "wacc": 0.1562
   },
   {
     "symbol": "QCOM",
@@ -616,12 +616,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 1.4787,
+    "beta_5y": 1.5017,
     "weight_of_debt": 0.0961,
     "weight_of_equity": 0.9039,
     "cost_of_debt": 0.0112,
-    "cost_of_equity": 0.1697,
-    "wacc": 0.154
+    "cost_of_equity": 0.1717,
+    "wacc": 0.1558
   },
   {
     "symbol": "QCOM",
@@ -640,12 +640,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 1.4787,
+    "beta_5y": 1.5017,
     "weight_of_debt": 0.0958,
     "weight_of_equity": 0.9042,
     "cost_of_debt": 0.0112,
-    "cost_of_equity": 0.1697,
-    "wacc": 0.1541
+    "cost_of_equity": 0.1717,
+    "wacc": 0.1559
   },
   {
     "symbol": "QCOM",
@@ -664,12 +664,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0434,
-    "beta_5y": 1.4787,
+    "beta_5y": 1.5017,
     "weight_of_debt": 0.0972,
     "weight_of_equity": 0.9028,
     "cost_of_debt": 0.0112,
-    "cost_of_equity": 0.1695,
-    "wacc": 0.1537
+    "cost_of_equity": 0.1715,
+    "wacc": 0.1555
   },
   {
     "symbol": "QCOM",
@@ -688,12 +688,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0431,
-    "beta_5y": 1.4787,
+    "beta_5y": 1.5017,
     "weight_of_debt": 0.0883,
     "weight_of_equity": 0.9117,
     "cost_of_debt": 0.0112,
-    "cost_of_equity": 0.1697,
-    "wacc": 0.1553
+    "cost_of_equity": 0.1716,
+    "wacc": 0.157
   },
   {
     "symbol": "QCOM",
@@ -712,12 +712,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0435,
-    "beta_5y": 1.4787,
+    "beta_5y": 1.5017,
     "weight_of_debt": 0.0879,
     "weight_of_equity": 0.9121,
     "cost_of_debt": 0.0112,
-    "cost_of_equity": 0.1695,
-    "wacc": 0.1552
+    "cost_of_equity": 0.1714,
+    "wacc": 0.1569
   },
   {
     "symbol": "QCOM",
@@ -736,12 +736,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0436,
-    "beta_5y": 1.4787,
+    "beta_5y": 1.5017,
     "weight_of_debt": 0.0881,
     "weight_of_equity": 0.9119,
     "cost_of_debt": 0.0112,
-    "cost_of_equity": 0.1694,
-    "wacc": 0.1551
+    "cost_of_equity": 0.1714,
+    "wacc": 0.1569
   },
   {
     "symbol": "QCOM",
@@ -760,12 +760,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0442,
-    "beta_5y": 1.4787,
+    "beta_5y": 1.5017,
     "weight_of_debt": 0.085,
     "weight_of_equity": 0.915,
     "cost_of_debt": 0.0112,
-    "cost_of_equity": 0.1692,
-    "wacc": 0.1554
+    "cost_of_equity": 0.1711,
+    "wacc": 0.1571
   },
   {
     "symbol": "QCOM",
@@ -784,12 +784,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.044,
-    "beta_5y": 1.4787,
+    "beta_5y": 1.5017,
     "weight_of_debt": 0.0747,
     "weight_of_equity": 0.9253,
     "cost_of_debt": 0.0112,
-    "cost_of_equity": 0.1692,
-    "wacc": 0.1571
+    "cost_of_equity": 0.1712,
+    "wacc": 0.1589
   },
   {
     "symbol": "QCOM",
@@ -808,11 +808,131 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0439,
-    "beta_5y": 1.4787,
+    "beta_5y": 1.5017,
     "weight_of_debt": 0.0757,
     "weight_of_equity": 0.9243,
     "cost_of_debt": 0.0112,
-    "cost_of_equity": 0.1693,
-    "wacc": 0.157
+    "cost_of_equity": 0.1712,
+    "wacc": 0.1587
+  },
+  {
+    "symbol": "QCOM",
+    "report_date": "2026-05-04T00:00:00.000",
+    "market_capitalization": 177472520000.0,
+    "exchange_rate": 1.0,
+    "total_debt": 15270000000.0,
+    "total_debt_usd": 15270000000.0,
+    "interest_expense": 171000000.0,
+    "interest_expense_usd": 171000000.0,
+    "pretax_income": 2232000000.0,
+    "pretax_income_usd": 2232000000.0,
+    "tax_provision": -5138000000.0,
+    "tax_provision_usd": -5138000000.0,
+    "tax_rate_for_calcs": 0.4,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0445,
+    "beta_5y": 1.5017,
+    "weight_of_debt": 0.0792,
+    "weight_of_equity": 0.9208,
+    "cost_of_debt": 0.0112,
+    "cost_of_equity": 0.1709,
+    "wacc": 0.1579
+  },
+  {
+    "symbol": "QCOM",
+    "report_date": "2026-05-05T00:00:00.000",
+    "market_capitalization": 196623700000.0,
+    "exchange_rate": 1.0,
+    "total_debt": 15270000000.0,
+    "total_debt_usd": 15270000000.0,
+    "interest_expense": 171000000.0,
+    "interest_expense_usd": 171000000.0,
+    "pretax_income": 2232000000.0,
+    "pretax_income_usd": 2232000000.0,
+    "tax_provision": -5138000000.0,
+    "tax_provision_usd": -5138000000.0,
+    "tax_rate_for_calcs": 0.4,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0443,
+    "beta_5y": 1.5017,
+    "weight_of_debt": 0.0721,
+    "weight_of_equity": 0.9279,
+    "cost_of_debt": 0.0112,
+    "cost_of_equity": 0.171,
+    "wacc": 0.1592
+  },
+  {
+    "symbol": "QCOM",
+    "report_date": "2026-05-06T00:00:00.000",
+    "market_capitalization": 202968780000.0,
+    "exchange_rate": 1.0,
+    "total_debt": 15270000000.0,
+    "total_debt_usd": 15270000000.0,
+    "interest_expense": 171000000.0,
+    "interest_expense_usd": 171000000.0,
+    "pretax_income": 2232000000.0,
+    "pretax_income_usd": 2232000000.0,
+    "tax_provision": -5138000000.0,
+    "tax_provision_usd": -5138000000.0,
+    "tax_rate_for_calcs": 0.4,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0436,
+    "beta_5y": 1.5017,
+    "weight_of_debt": 0.07,
+    "weight_of_equity": 0.93,
+    "cost_of_debt": 0.0112,
+    "cost_of_equity": 0.1714,
+    "wacc": 0.1599
+  },
+  {
+    "symbol": "QCOM",
+    "report_date": "2026-05-07T00:00:00.000",
+    "market_capitalization": 213487700000.0,
+    "exchange_rate": 1.0,
+    "total_debt": 15270000000.0,
+    "total_debt_usd": 15270000000.0,
+    "interest_expense": 171000000.0,
+    "interest_expense_usd": 171000000.0,
+    "pretax_income": 2232000000.0,
+    "pretax_income_usd": 2232000000.0,
+    "tax_provision": -5138000000.0,
+    "tax_provision_usd": -5138000000.0,
+    "tax_rate_for_calcs": 0.4,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0441,
+    "beta_5y": 1.5017,
+    "weight_of_debt": 0.0668,
+    "weight_of_equity": 0.9332,
+    "cost_of_debt": 0.0112,
+    "cost_of_equity": 0.1711,
+    "wacc": 0.1601
+  },
+  {
+    "symbol": "QCOM",
+    "report_date": "2026-05-08T00:00:00.000",
+    "market_capitalization": 230920860000.0,
+    "exchange_rate": 1.0,
+    "total_debt": 15270000000.0,
+    "total_debt_usd": 15270000000.0,
+    "interest_expense": 171000000.0,
+    "interest_expense_usd": 171000000.0,
+    "pretax_income": 2232000000.0,
+    "pretax_income_usd": 2232000000.0,
+    "tax_provision": -5138000000.0,
+    "tax_provision_usd": -5138000000.0,
+    "tax_rate_for_calcs": 0.4,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0438,
+    "beta_5y": 1.5017,
+    "weight_of_debt": 0.062,
+    "weight_of_equity": 0.938,
+    "cost_of_debt": 0.0112,
+    "cost_of_equity": 0.1713,
+    "wacc": 0.1611
   }
 ]

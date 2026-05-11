@@ -97,6 +97,13 @@
       "revenue": 45796000000.0,
       "prev_year_revenue": 42791000000.0,
       "yoy_growth": 0.0702
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2026-03-31T00:00:00.000",
+      "revenue": 49833000000.0,
+      "prev_year_revenue": 45327000000.0,
+      "yoy_growth": 0.0994
     }
   ],
   "annual_revenue": [
@@ -245,6 +252,13 @@
       "net_income_common_stockholders": 12690000000.0,
       "prev_year_net_income_common_stockholders": 13669000000.0,
       "yoy_growth": -0.0716
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2026-03-31T00:00:00.000",
+      "net_income_common_stockholders": 16148000000.0,
+      "prev_year_net_income_common_stockholders": 14317000000.0,
+      "yoy_growth": 0.1279
     }
   ],
   "annual_net_income": [
@@ -375,6 +389,13 @@
       "free_cash_flow": 119724000000.0,
       "prev_year_free_cash_flow": 147758000000.0,
       "yoy_growth": -0.1897
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2026-03-31T00:00:00.000",
+      "free_cash_flow": -211761000000.0,
+      "prev_year_free_cash_flow": -251839000000.0,
+      "yoy_growth": 0.1591
     }
   ],
   "annual_fcf": [

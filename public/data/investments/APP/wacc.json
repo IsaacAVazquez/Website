@@ -16,12 +16,12 @@
     "sp500_cagr_end": 2022,
     "sp500_10y_cagr": 0.1041,
     "treasure_10y_yield": 0.0381,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.267,
     "weight_of_equity": 0.733,
     "cost_of_debt": 0.0156,
-    "cost_of_equity": 0.1939,
-    "wacc": 0.1456
+    "cost_of_equity": 0.1935,
+    "wacc": 0.1453
   },
   {
     "symbol": "APP",
@@ -40,12 +40,12 @@
     "sp500_cagr_end": 2022,
     "sp500_10y_cagr": 0.1041,
     "treasure_10y_yield": 0.0459,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.1866,
     "weight_of_equity": 0.8134,
     "cost_of_debt": 0.0246,
-    "cost_of_equity": 0.1833,
-    "wacc": 0.1536
+    "cost_of_equity": 0.183,
+    "wacc": 0.1534
   },
   {
     "symbol": "APP",
@@ -64,12 +64,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0388,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.1919,
     "weight_of_equity": 0.8081,
     "cost_of_debt": 0.0225,
-    "cost_of_equity": 0.1819,
-    "wacc": 0.1511
+    "cost_of_equity": 0.1815,
+    "wacc": 0.1508
   },
   {
     "symbol": "APP",
@@ -88,12 +88,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.042,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.1332,
     "weight_of_equity": 0.8668,
     "cost_of_debt": 0.021,
-    "cost_of_equity": 0.1775,
-    "wacc": 0.1563
+    "cost_of_equity": 0.1772,
+    "wacc": 0.1561
   },
   {
     "symbol": "APP",
@@ -112,12 +112,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0436,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.1138,
     "weight_of_equity": 0.8862,
     "cost_of_debt": 0.0212,
-    "cost_of_equity": 0.1753,
-    "wacc": 0.1576
+    "cost_of_equity": 0.175,
+    "wacc": 0.1574
   },
   {
     "symbol": "APP",
@@ -136,12 +136,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0381,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0742,
     "weight_of_equity": 0.9258,
     "cost_of_debt": 0.0213,
-    "cost_of_equity": 0.1828,
-    "wacc": 0.1707
+    "cost_of_equity": 0.1825,
+    "wacc": 0.1704
   },
   {
     "symbol": "APP",
@@ -160,12 +160,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0458,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0313,
     "weight_of_equity": 0.9687,
     "cost_of_debt": 0.0265,
-    "cost_of_equity": 0.199,
-    "wacc": 0.1934
+    "cost_of_equity": 0.1986,
+    "wacc": 0.193
   },
   {
     "symbol": "APP",
@@ -184,12 +184,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0423,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0397,
     "weight_of_equity": 0.9603,
     "cost_of_debt": 0.0143,
-    "cost_of_equity": 0.2038,
-    "wacc": 0.1962
+    "cost_of_equity": 0.2034,
+    "wacc": 0.1959
   },
   {
     "symbol": "APP",
@@ -208,12 +208,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0424,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0288,
     "weight_of_equity": 0.9712,
     "cost_of_debt": 0.0146,
-    "cost_of_equity": 0.2037,
-    "wacc": 0.1982
+    "cost_of_equity": 0.2033,
+    "wacc": 0.1978
   },
   {
     "symbol": "APP",
@@ -232,12 +232,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0416,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0142,
     "weight_of_equity": 0.9858,
     "cost_of_debt": 0.0146,
-    "cost_of_equity": 0.2048,
-    "wacc": 0.2021
+    "cost_of_equity": 0.2043,
+    "wacc": 0.2016
   },
   {
     "symbol": "APP",
@@ -256,12 +256,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0418,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0153,
     "weight_of_equity": 0.9847,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.247,
-    "wacc": 0.2434
+    "cost_of_equity": 0.2465,
+    "wacc": 0.2429
   },
   {
     "symbol": "APP",
@@ -280,12 +280,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0419,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0167,
     "weight_of_equity": 0.9833,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2468,
-    "wacc": 0.2429
+    "cost_of_equity": 0.2463,
+    "wacc": 0.2424
   },
   {
     "symbol": "APP",
@@ -304,12 +304,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0417,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0163,
     "weight_of_equity": 0.9837,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2471,
-    "wacc": 0.2433
+    "cost_of_equity": 0.2466,
+    "wacc": 0.2428
   },
   {
     "symbol": "APP",
@@ -328,12 +328,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0418,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0167,
     "weight_of_equity": 0.9833,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.247,
-    "wacc": 0.2431
+    "cost_of_equity": 0.2465,
+    "wacc": 0.2426
   },
   {
     "symbol": "APP",
@@ -352,12 +352,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0415,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0163,
     "weight_of_equity": 0.9837,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2474,
-    "wacc": 0.2436
+    "cost_of_equity": 0.2469,
+    "wacc": 0.2431
   },
   {
     "symbol": "APP",
@@ -376,12 +376,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0419,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0167,
     "weight_of_equity": 0.9833,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2468,
-    "wacc": 0.2429
+    "cost_of_equity": 0.2463,
+    "wacc": 0.2424
   },
   {
     "symbol": "APP",
@@ -400,12 +400,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0418,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0159,
     "weight_of_equity": 0.9841,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.247,
-    "wacc": 0.2433
+    "cost_of_equity": 0.2465,
+    "wacc": 0.2428
   },
   {
     "symbol": "APP",
@@ -424,12 +424,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0419,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0157,
     "weight_of_equity": 0.9843,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2468,
-    "wacc": 0.2431
+    "cost_of_equity": 0.2463,
+    "wacc": 0.2426
   },
   {
     "symbol": "APP",
@@ -448,12 +448,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0418,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0154,
     "weight_of_equity": 0.9846,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.247,
-    "wacc": 0.2434
+    "cost_of_equity": 0.2465,
+    "wacc": 0.2429
   },
   {
     "symbol": "APP",
@@ -472,12 +472,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0415,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0167,
     "weight_of_equity": 0.9833,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2474,
-    "wacc": 0.2435
+    "cost_of_equity": 0.2469,
+    "wacc": 0.243
   },
   {
     "symbol": "APP",
@@ -496,12 +496,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0417,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.017,
     "weight_of_equity": 0.983,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2471,
-    "wacc": 0.2431
+    "cost_of_equity": 0.2466,
+    "wacc": 0.2426
   },
   {
     "symbol": "APP",
@@ -520,12 +520,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0424,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0181,
     "weight_of_equity": 0.9819,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2462,
-    "wacc": 0.242
+    "cost_of_equity": 0.2456,
+    "wacc": 0.2414
   },
   {
     "symbol": "APP",
@@ -544,12 +544,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0182,
     "weight_of_equity": 0.9818,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2453,
-    "wacc": 0.2411
+    "cost_of_equity": 0.2448,
+    "wacc": 0.2406
   },
   {
     "symbol": "APP",
@@ -568,12 +568,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0193,
     "weight_of_equity": 0.9807,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2459,
-    "wacc": 0.2414
+    "cost_of_equity": 0.2454,
+    "wacc": 0.2409
   },
   {
     "symbol": "APP",
@@ -592,12 +592,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0197,
     "weight_of_equity": 0.9803,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2459,
-    "wacc": 0.2413
+    "cost_of_equity": 0.2454,
+    "wacc": 0.2408
   },
   {
     "symbol": "APP",
@@ -616,12 +616,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0424,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0196,
     "weight_of_equity": 0.9804,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2462,
-    "wacc": 0.2416
+    "cost_of_equity": 0.2456,
+    "wacc": 0.241
   },
   {
     "symbol": "APP",
@@ -640,12 +640,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0422,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0192,
     "weight_of_equity": 0.9808,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2464,
-    "wacc": 0.2419
+    "cost_of_equity": 0.2459,
+    "wacc": 0.2414
   },
   {
     "symbol": "APP",
@@ -664,12 +664,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0424,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0189,
     "weight_of_equity": 0.9811,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2462,
-    "wacc": 0.2418
+    "cost_of_equity": 0.2456,
+    "wacc": 0.2412
   },
   {
     "symbol": "APP",
@@ -688,12 +688,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.019,
     "weight_of_equity": 0.981,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2459,
-    "wacc": 0.2415
+    "cost_of_equity": 0.2454,
+    "wacc": 0.241
   },
   {
     "symbol": "APP",
@@ -712,12 +712,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0424,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0181,
     "weight_of_equity": 0.9819,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2462,
-    "wacc": 0.242
+    "cost_of_equity": 0.2456,
+    "wacc": 0.2414
   },
   {
     "symbol": "APP",
@@ -736,12 +736,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0217,
     "weight_of_equity": 0.9783,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2459,
-    "wacc": 0.2408
+    "cost_of_equity": 0.2454,
+    "wacc": 0.2404
   },
   {
     "symbol": "APP",
@@ -760,12 +760,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0212,
     "weight_of_equity": 0.9788,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2455,
-    "wacc": 0.2406
+    "cost_of_equity": 0.245,
+    "wacc": 0.2401
   },
   {
     "symbol": "APP",
@@ -784,12 +784,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0428,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0222,
     "weight_of_equity": 0.9778,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2456,
-    "wacc": 0.2404
+    "cost_of_equity": 0.2451,
+    "wacc": 0.2399
   },
   {
     "symbol": "APP",
@@ -808,12 +808,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0263,
     "weight_of_equity": 0.9737,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2455,
-    "wacc": 0.2394
+    "cost_of_equity": 0.245,
+    "wacc": 0.2389
   },
   {
     "symbol": "APP",
@@ -832,12 +832,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0421,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0272,
     "weight_of_equity": 0.9728,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2466,
-    "wacc": 0.2402
+    "cost_of_equity": 0.2461,
+    "wacc": 0.2398
   },
   {
     "symbol": "APP",
@@ -856,12 +856,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0422,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0251,
     "weight_of_equity": 0.9749,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2464,
-    "wacc": 0.2405
+    "cost_of_equity": 0.2459,
+    "wacc": 0.24
   },
   {
     "symbol": "APP",
@@ -880,12 +880,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0422,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0223,
     "weight_of_equity": 0.9777,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2464,
-    "wacc": 0.2412
+    "cost_of_equity": 0.2459,
+    "wacc": 0.2407
   },
   {
     "symbol": "APP",
@@ -904,12 +904,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0416,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0217,
     "weight_of_equity": 0.9783,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2473,
-    "wacc": 0.2422
+    "cost_of_equity": 0.2467,
+    "wacc": 0.2416
   },
   {
     "symbol": "APP",
@@ -928,12 +928,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0418,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0224,
     "weight_of_equity": 0.9776,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.247,
-    "wacc": 0.2418
+    "cost_of_equity": 0.2465,
+    "wacc": 0.2413
   },
   {
     "symbol": "APP",
@@ -952,12 +952,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0409,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0278,
     "weight_of_equity": 0.9722,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2482,
-    "wacc": 0.2417
+    "cost_of_equity": 0.2477,
+    "wacc": 0.2412
   },
   {
     "symbol": "APP",
@@ -976,12 +976,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0404,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0262,
     "weight_of_equity": 0.9738,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2489,
-    "wacc": 0.2427
+    "cost_of_equity": 0.2484,
+    "wacc": 0.2422
   },
   {
     "symbol": "APP",
@@ -1000,12 +1000,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0405,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0272,
     "weight_of_equity": 0.9728,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2487,
-    "wacc": 0.2423
+    "cost_of_equity": 0.2482,
+    "wacc": 0.2418
   },
   {
     "symbol": "APP",
@@ -1024,12 +1024,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0409,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0253,
     "weight_of_equity": 0.9747,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2482,
-    "wacc": 0.2422
+    "cost_of_equity": 0.2477,
+    "wacc": 0.2418
   },
   {
     "symbol": "APP",
@@ -1048,12 +1048,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0408,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0249,
     "weight_of_equity": 0.9751,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2483,
-    "wacc": 0.2424
+    "cost_of_equity": 0.2478,
+    "wacc": 0.2419
   },
   {
     "symbol": "APP",
@@ -1072,12 +1072,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0408,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0245,
     "weight_of_equity": 0.9755,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2483,
-    "wacc": 0.2425
+    "cost_of_equity": 0.2478,
+    "wacc": 0.242
   },
   {
     "symbol": "APP",
@@ -1096,12 +1096,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0403,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0269,
     "weight_of_equity": 0.9731,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.249,
-    "wacc": 0.2426
+    "cost_of_equity": 0.2485,
+    "wacc": 0.2422
   },
   {
     "symbol": "APP",
@@ -1120,12 +1120,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0404,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.026,
     "weight_of_equity": 0.974,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2489,
-    "wacc": 0.2428
+    "cost_of_equity": 0.2484,
+    "wacc": 0.2423
   },
   {
     "symbol": "APP",
@@ -1144,12 +1144,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0405,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0243,
     "weight_of_equity": 0.9757,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2487,
-    "wacc": 0.243
+    "cost_of_equity": 0.2482,
+    "wacc": 0.2425
   },
   {
     "symbol": "APP",
@@ -1168,12 +1168,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0402,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0231,
     "weight_of_equity": 0.9769,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2492,
-    "wacc": 0.2437
+    "cost_of_equity": 0.2486,
+    "wacc": 0.2432
   },
   {
     "symbol": "APP",
@@ -1192,12 +1192,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0397,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0236,
     "weight_of_equity": 0.9764,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2498,
-    "wacc": 0.2442
+    "cost_of_equity": 0.2493,
+    "wacc": 0.2437
   },
   {
     "symbol": "APP",
@@ -1216,12 +1216,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0405,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0237,
     "weight_of_equity": 0.9763,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2487,
-    "wacc": 0.2431
+    "cost_of_equity": 0.2482,
+    "wacc": 0.2426
   },
   {
     "symbol": "APP",
@@ -1240,12 +1240,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0406,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0234,
     "weight_of_equity": 0.9766,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2486,
-    "wacc": 0.2431
+    "cost_of_equity": 0.2481,
+    "wacc": 0.2426
   },
   {
     "symbol": "APP",
@@ -1264,12 +1264,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0409,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0213,
     "weight_of_equity": 0.9787,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2482,
-    "wacc": 0.2432
+    "cost_of_equity": 0.2477,
+    "wacc": 0.2427
   },
   {
     "symbol": "APP",
@@ -1288,12 +1288,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0413,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0202,
     "weight_of_equity": 0.9798,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2477,
-    "wacc": 0.243
+    "cost_of_equity": 0.2471,
+    "wacc": 0.2424
   },
   {
     "symbol": "APP",
@@ -1312,12 +1312,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0415,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0205,
     "weight_of_equity": 0.9795,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2474,
-    "wacc": 0.2426
+    "cost_of_equity": 0.2469,
+    "wacc": 0.2421
   },
   {
     "symbol": "APP",
@@ -1336,12 +1336,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0412,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0199,
     "weight_of_equity": 0.9801,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2478,
-    "wacc": 0.2431
+    "cost_of_equity": 0.2473,
+    "wacc": 0.2426
   },
   {
     "symbol": "APP",
@@ -1360,12 +1360,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0415,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0215,
     "weight_of_equity": 0.9785,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2474,
-    "wacc": 0.2424
+    "cost_of_equity": 0.2469,
+    "wacc": 0.2419
   },
   {
     "symbol": "APP",
@@ -1384,12 +1384,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0421,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0223,
     "weight_of_equity": 0.9777,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2466,
-    "wacc": 0.2414
+    "cost_of_equity": 0.2461,
+    "wacc": 0.2409
   },
   {
     "symbol": "APP",
@@ -1408,12 +1408,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0427,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0229,
     "weight_of_equity": 0.9771,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2458,
-    "wacc": 0.2405
+    "cost_of_equity": 0.2452,
+    "wacc": 0.2399
   },
   {
     "symbol": "APP",
@@ -1432,12 +1432,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0428,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0224,
     "weight_of_equity": 0.9776,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2456,
-    "wacc": 0.2404
+    "cost_of_equity": 0.2451,
+    "wacc": 0.2399
   },
   {
     "symbol": "APP",
@@ -1456,12 +1456,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0423,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0227,
     "weight_of_equity": 0.9773,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2463,
-    "wacc": 0.241
+    "cost_of_equity": 0.2458,
+    "wacc": 0.2405
   },
   {
     "symbol": "APP",
@@ -1480,12 +1480,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.042,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0224,
     "weight_of_equity": 0.9776,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2467,
-    "wacc": 0.2415
+    "cost_of_equity": 0.2462,
+    "wacc": 0.241
   },
   {
     "symbol": "APP",
@@ -1504,12 +1504,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0232,
     "weight_of_equity": 0.9768,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2459,
-    "wacc": 0.2405
+    "cost_of_equity": 0.2454,
+    "wacc": 0.24
   },
   {
     "symbol": "APP",
@@ -1528,12 +1528,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0425,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0233,
     "weight_of_equity": 0.9767,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.246,
-    "wacc": 0.2406
+    "cost_of_equity": 0.2455,
+    "wacc": 0.2401
   },
   {
     "symbol": "APP",
@@ -1552,12 +1552,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0439,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0232,
     "weight_of_equity": 0.9768,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2441,
-    "wacc": 0.2387
+    "cost_of_equity": 0.2436,
+    "wacc": 0.2382
   },
   {
     "symbol": "APP",
@@ -1576,12 +1576,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0434,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0224,
     "weight_of_equity": 0.9776,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2448,
-    "wacc": 0.2396
+    "cost_of_equity": 0.2443,
+    "wacc": 0.2391
   },
   {
     "symbol": "APP",
@@ -1600,12 +1600,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0439,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0235,
     "weight_of_equity": 0.9765,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2441,
-    "wacc": 0.2387
+    "cost_of_equity": 0.2436,
+    "wacc": 0.2382
   },
   {
     "symbol": "APP",
@@ -1624,12 +1624,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0433,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0235,
     "weight_of_equity": 0.9765,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2449,
-    "wacc": 0.2394
+    "cost_of_equity": 0.2444,
+    "wacc": 0.239
   },
   {
     "symbol": "APP",
@@ -1648,12 +1648,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0442,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0262,
     "weight_of_equity": 0.9738,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2437,
-    "wacc": 0.2376
+    "cost_of_equity": 0.2432,
+    "wacc": 0.2372
   },
   {
     "symbol": "APP",
@@ -1672,12 +1672,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0444,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0268,
     "weight_of_equity": 0.9732,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2434,
-    "wacc": 0.2372
+    "cost_of_equity": 0.2429,
+    "wacc": 0.2367
   },
   {
     "symbol": "APP",
@@ -1696,17 +1696,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0435,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0275,
     "weight_of_equity": 0.9725,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2447,
-    "wacc": 0.2383
+    "cost_of_equity": 0.2442,
+    "wacc": 0.2378
   },
   {
     "symbol": "APP",
     "report_date": "2026-03-31T00:00:00.000",
-    "market_capitalization": 134236644000.0,
+    "market_capitalization": 133845370200.0,
     "exchange_rate": 1.0,
     "total_debt": 3544741000.0,
     "total_debt_usd": 3544741000.0,
@@ -1720,17 +1720,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 2.3611,
-    "weight_of_debt": 0.0257,
-    "weight_of_equity": 0.9743,
+    "beta_5y": 2.3551,
+    "weight_of_debt": 0.0258,
+    "weight_of_equity": 0.9742,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2453,
-    "wacc": 0.2393
+    "cost_of_equity": 0.2448,
+    "wacc": 0.2388
   },
   {
     "symbol": "APP",
     "report_date": "2026-04-01T00:00:00.000",
-    "market_capitalization": 130809899520.0,
+    "market_capitalization": 130428614016.0,
     "exchange_rate": 1.0,
     "total_debt": 3544741000.0,
     "total_debt_usd": 3544741000.0,
@@ -1744,17 +1744,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0433,
-    "beta_5y": 2.3611,
-    "weight_of_debt": 0.0264,
-    "weight_of_equity": 0.9736,
+    "beta_5y": 2.3551,
+    "weight_of_debt": 0.0265,
+    "weight_of_equity": 0.9735,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2449,
-    "wacc": 0.2388
+    "cost_of_equity": 0.2444,
+    "wacc": 0.2383
   },
   {
     "symbol": "APP",
     "report_date": "2026-04-02T00:00:00.000",
-    "market_capitalization": 130314100860.0,
+    "market_capitalization": 129934260513.0,
     "exchange_rate": 1.0,
     "total_debt": 3544741000.0,
     "total_debt_usd": 3544741000.0,
@@ -1768,17 +1768,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0431,
-    "beta_5y": 2.3611,
-    "weight_of_debt": 0.0265,
-    "weight_of_equity": 0.9735,
+    "beta_5y": 2.3551,
+    "weight_of_debt": 0.0266,
+    "weight_of_equity": 0.9734,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2452,
-    "wacc": 0.239
+    "cost_of_equity": 0.2447,
+    "wacc": 0.2385
   },
   {
     "symbol": "APP",
     "report_date": "2026-04-06T00:00:00.000",
-    "market_capitalization": 139187885040.0,
+    "market_capitalization": 138782179332.0,
     "exchange_rate": 1.0,
     "total_debt": 3544741000.0,
     "total_debt_usd": 3544741000.0,
@@ -1792,17 +1792,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0434,
-    "beta_5y": 2.3611,
-    "weight_of_debt": 0.0248,
-    "weight_of_equity": 0.9752,
+    "beta_5y": 2.3551,
+    "weight_of_debt": 0.0249,
+    "weight_of_equity": 0.9751,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2448,
-    "wacc": 0.239
+    "cost_of_equity": 0.2443,
+    "wacc": 0.2385
   },
   {
     "symbol": "APP",
     "report_date": "2026-04-07T00:00:00.000",
-    "market_capitalization": 138432382320.0,
+    "market_capitalization": 138028878756.0,
     "exchange_rate": 1.0,
     "total_debt": 3544741000.0,
     "total_debt_usd": 3544741000.0,
@@ -1816,17 +1816,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0433,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.025,
     "weight_of_equity": 0.975,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2449,
-    "wacc": 0.2391
+    "cost_of_equity": 0.2444,
+    "wacc": 0.2386
   },
   {
     "symbol": "APP",
     "report_date": "2026-04-08T00:00:00.000",
-    "market_capitalization": 131943153600.0,
+    "market_capitalization": 131558564880.0,
     "exchange_rate": 1.0,
     "total_debt": 3544741000.0,
     "total_debt_usd": 3544741000.0,
@@ -1840,17 +1840,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0262,
     "weight_of_equity": 0.9738,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2455,
-    "wacc": 0.2394
+    "cost_of_equity": 0.245,
+    "wacc": 0.2389
   },
   {
     "symbol": "APP",
     "report_date": "2026-04-09T00:00:00.000",
-    "market_capitalization": 127875580920.0,
+    "market_capitalization": 127502848386.0,
     "exchange_rate": 1.0,
     "total_debt": 3544741000.0,
     "total_debt_usd": 3544741000.0,
@@ -1864,17 +1864,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.027,
     "weight_of_equity": 0.973,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2455,
-    "wacc": 0.2392
+    "cost_of_equity": 0.245,
+    "wacc": 0.2387
   },
   {
     "symbol": "APP",
     "report_date": "2026-04-10T00:00:00.000",
-    "market_capitalization": 132003863640.0,
+    "market_capitalization": 131619097962.0,
     "exchange_rate": 1.0,
     "total_debt": 3544741000.0,
     "total_debt_usd": 3544741000.0,
@@ -1888,17 +1888,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0431,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0262,
     "weight_of_equity": 0.9738,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2452,
-    "wacc": 0.2391
+    "cost_of_equity": 0.2447,
+    "wacc": 0.2386
   },
   {
     "symbol": "APP",
     "report_date": "2026-04-13T00:00:00.000",
-    "market_capitalization": 140796701100.0,
+    "market_capitalization": 140372112705.0,
     "exchange_rate": 1.0,
     "total_debt": 3544741000.0,
     "total_debt_usd": 3544741000.0,
@@ -1912,17 +1912,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0246,
     "weight_of_equity": 0.9754,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2453,
-    "wacc": 0.2396
+    "cost_of_equity": 0.2448,
+    "wacc": 0.2391
   },
   {
     "symbol": "APP",
     "report_date": "2026-04-14T00:00:00.000",
-    "market_capitalization": 146213385780.0,
+    "market_capitalization": 145772462759.0,
     "exchange_rate": 1.0,
     "total_debt": 3544741000.0,
     "total_debt_usd": 3544741000.0,
@@ -1936,17 +1936,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0237,
     "weight_of_equity": 0.9763,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2459,
-    "wacc": 0.2404
+    "cost_of_equity": 0.2454,
+    "wacc": 0.2399
   },
   {
     "symbol": "APP",
     "report_date": "2026-04-15T00:00:00.000",
-    "market_capitalization": 156709477140.0,
+    "market_capitalization": 156236901967.0,
     "exchange_rate": 1.0,
     "total_debt": 3544741000.0,
     "total_debt_usd": 3544741000.0,
@@ -1960,17 +1960,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 2.3611,
-    "weight_of_debt": 0.0221,
-    "weight_of_equity": 0.9779,
+    "beta_5y": 2.3551,
+    "weight_of_debt": 0.0222,
+    "weight_of_equity": 0.9778,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2455,
-    "wacc": 0.2404
+    "cost_of_equity": 0.245,
+    "wacc": 0.2398
   },
   {
     "symbol": "APP",
     "report_date": "2026-04-16T00:00:00.000",
-    "market_capitalization": 157201903020.0,
+    "market_capitalization": 156727842881.0,
     "exchange_rate": 1.0,
     "total_debt": 3544741000.0,
     "total_debt_usd": 3544741000.0,
@@ -1984,17 +1984,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0432,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0221,
     "weight_of_equity": 0.9779,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2451,
-    "wacc": 0.24
+    "cost_of_equity": 0.2446,
+    "wacc": 0.2395
   },
   {
     "symbol": "APP",
     "report_date": "2026-04-17T00:00:00.000",
-    "market_capitalization": 160949061600.0,
+    "market_capitalization": 160463701480.0,
     "exchange_rate": 1.0,
     "total_debt": 3544741000.0,
     "total_debt_usd": 3544741000.0,
@@ -2008,17 +2008,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 2.3611,
-    "weight_of_debt": 0.0215,
-    "weight_of_equity": 0.9785,
+    "beta_5y": 2.3551,
+    "weight_of_debt": 0.0216,
+    "weight_of_equity": 0.9784,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2459,
-    "wacc": 0.2409
+    "cost_of_equity": 0.2454,
+    "wacc": 0.2404
   },
   {
     "symbol": "APP",
     "report_date": "2026-04-20T00:00:00.000",
-    "market_capitalization": 165590006880.0,
+    "market_capitalization": 165090651464.0,
     "exchange_rate": 1.0,
     "total_debt": 3544741000.0,
     "total_debt_usd": 3544741000.0,
@@ -2032,17 +2032,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.021,
     "weight_of_equity": 0.979,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2459,
-    "wacc": 0.241
+    "cost_of_equity": 0.2454,
+    "wacc": 0.2405
   },
   {
     "symbol": "APP",
     "report_date": "2026-04-21T00:00:00.000",
-    "market_capitalization": 159593204040.0,
+    "market_capitalization": 159111932662.0,
     "exchange_rate": 1.0,
     "total_debt": 3544741000.0,
     "total_debt_usd": 3544741000.0,
@@ -2056,17 +2056,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 2.3611,
-    "weight_of_debt": 0.0217,
-    "weight_of_equity": 0.9783,
+    "beta_5y": 2.3551,
+    "weight_of_debt": 0.0218,
+    "weight_of_equity": 0.9782,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2453,
-    "wacc": 0.2403
+    "cost_of_equity": 0.2448,
+    "wacc": 0.2397
   },
   {
     "symbol": "APP",
     "report_date": "2026-04-22T00:00:00.000",
-    "market_capitalization": 163144741380.0,
+    "market_capitalization": 162652759939.0,
     "exchange_rate": 1.0,
     "total_debt": 3544741000.0,
     "total_debt_usd": 3544741000.0,
@@ -2080,17 +2080,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0213,
     "weight_of_equity": 0.9787,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2453,
-    "wacc": 0.2403
+    "cost_of_equity": 0.2448,
+    "wacc": 0.2399
   },
   {
     "symbol": "APP",
     "report_date": "2026-04-23T00:00:00.000",
-    "market_capitalization": 153181549260.0,
+    "market_capitalization": 152719612953.0,
     "exchange_rate": 1.0,
     "total_debt": 3544741000.0,
     "total_debt_usd": 3544741000.0,
@@ -2104,17 +2104,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0434,
-    "beta_5y": 2.3611,
-    "weight_of_debt": 0.0226,
-    "weight_of_equity": 0.9774,
+    "beta_5y": 2.3551,
+    "weight_of_debt": 0.0227,
+    "weight_of_equity": 0.9773,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2448,
-    "wacc": 0.2396
+    "cost_of_equity": 0.2443,
+    "wacc": 0.239
   },
   {
     "symbol": "APP",
     "report_date": "2026-04-24T00:00:00.000",
-    "market_capitalization": 151198354620.0,
+    "market_capitalization": 150742398861.0,
     "exchange_rate": 1.0,
     "total_debt": 3544741000.0,
     "total_debt_usd": 3544741000.0,
@@ -2128,17 +2128,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0431,
-    "beta_5y": 2.3611,
-    "weight_of_debt": 0.0229,
-    "weight_of_equity": 0.9771,
+    "beta_5y": 2.3551,
+    "weight_of_debt": 0.023,
+    "weight_of_equity": 0.977,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2452,
-    "wacc": 0.2399
+    "cost_of_equity": 0.2447,
+    "wacc": 0.2394
   },
   {
     "symbol": "APP",
     "report_date": "2026-04-27T00:00:00.000",
-    "market_capitalization": 155245690620.0,
+    "market_capitalization": 154777529661.0,
     "exchange_rate": 1.0,
     "total_debt": 3544741000.0,
     "total_debt_usd": 3544741000.0,
@@ -2152,17 +2152,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0435,
-    "beta_5y": 2.3611,
-    "weight_of_debt": 0.0223,
-    "weight_of_equity": 0.9777,
+    "beta_5y": 2.3551,
+    "weight_of_debt": 0.0224,
+    "weight_of_equity": 0.9776,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2447,
-    "wacc": 0.2395
+    "cost_of_equity": 0.2442,
+    "wacc": 0.239
   },
   {
     "symbol": "APP",
     "report_date": "2026-04-28T00:00:00.000",
-    "market_capitalization": 151447940340.0,
+    "market_capitalization": 150991231927.0,
     "exchange_rate": 1.0,
     "total_debt": 3544741000.0,
     "total_debt_usd": 3544741000.0,
@@ -2176,17 +2176,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0436,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0229,
     "weight_of_equity": 0.9771,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2445,
-    "wacc": 0.2392
+    "cost_of_equity": 0.244,
+    "wacc": 0.2387
   },
   {
     "symbol": "APP",
     "report_date": "2026-04-29T00:00:00.000",
-    "market_capitalization": 149559183540.0,
+    "market_capitalization": 149108170887.0,
     "exchange_rate": 1.0,
     "total_debt": 3544741000.0,
     "total_debt_usd": 3544741000.0,
@@ -2200,17 +2200,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0442,
-    "beta_5y": 2.3611,
+    "beta_5y": 2.3551,
     "weight_of_debt": 0.0232,
     "weight_of_equity": 0.9768,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2437,
-    "wacc": 0.2383
+    "cost_of_equity": 0.2432,
+    "wacc": 0.2379
   },
   {
     "symbol": "APP",
     "report_date": "2026-04-30T00:00:00.000",
-    "market_capitalization": 150544035300.0,
+    "market_capitalization": 149946595825.0,
     "exchange_rate": 1.0,
     "total_debt": 3544741000.0,
     "total_debt_usd": 3544741000.0,
@@ -2224,17 +2224,17 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.044,
-    "beta_5y": 2.3611,
-    "weight_of_debt": 0.023,
-    "weight_of_equity": 0.977,
+    "beta_5y": 2.3551,
+    "weight_of_debt": 0.0231,
+    "weight_of_equity": 0.9769,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.244,
-    "wacc": 0.2387
+    "cost_of_equity": 0.2435,
+    "wacc": 0.2382
   },
   {
     "symbol": "APP",
     "report_date": "2026-05-01T00:00:00.000",
-    "market_capitalization": 155147880000.0,
+    "market_capitalization": 154532170000.0,
     "exchange_rate": 1.0,
     "total_debt": 3544741000.0,
     "total_debt_usd": 3544741000.0,
@@ -2248,11 +2248,131 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0439,
-    "beta_5y": 2.3611,
-    "weight_of_debt": 0.0223,
-    "weight_of_equity": 0.9777,
+    "beta_5y": 2.3551,
+    "weight_of_debt": 0.0224,
+    "weight_of_equity": 0.9776,
     "cost_of_debt": 0.0145,
-    "cost_of_equity": 0.2441,
+    "cost_of_equity": 0.2436,
+    "wacc": 0.2384
+  },
+  {
+    "symbol": "APP",
+    "report_date": "2026-05-04T00:00:00.000",
+    "market_capitalization": 159571262500.0,
+    "exchange_rate": 1.0,
+    "total_debt": 3544741000.0,
+    "total_debt_usd": 3544741000.0,
+    "interest_expense": 51290000.0,
+    "interest_expense_usd": 51290000.0,
+    "pretax_income": 1253354000.0,
+    "pretax_income_usd": 1253354000.0,
+    "tax_provision": 151098000.0,
+    "tax_provision_usd": 151098000.0,
+    "tax_rate_for_calcs": 0.12,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0445,
+    "beta_5y": 2.3551,
+    "weight_of_debt": 0.0217,
+    "weight_of_equity": 0.9783,
+    "cost_of_debt": 0.0145,
+    "cost_of_equity": 0.2428,
+    "wacc": 0.2378
+  },
+  {
+    "symbol": "APP",
+    "report_date": "2026-05-05T00:00:00.000",
+    "market_capitalization": 160616034345.0,
+    "exchange_rate": 1.0,
+    "total_debt": 3544741000.0,
+    "total_debt_usd": 3544741000.0,
+    "interest_expense": 51290000.0,
+    "interest_expense_usd": 51290000.0,
+    "pretax_income": 1253354000.0,
+    "pretax_income_usd": 1253354000.0,
+    "tax_provision": 151098000.0,
+    "tax_provision_usd": 151098000.0,
+    "tax_rate_for_calcs": 0.12,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0443,
+    "beta_5y": 2.3551,
+    "weight_of_debt": 0.0216,
+    "weight_of_equity": 0.9784,
+    "cost_of_debt": 0.0145,
+    "cost_of_equity": 0.2431,
+    "wacc": 0.2381
+  },
+  {
+    "symbol": "APP",
+    "report_date": "2026-05-06T00:00:00.000",
+    "market_capitalization": 157498515785.0,
+    "exchange_rate": 1.0,
+    "total_debt": 3544741000.0,
+    "total_debt_usd": 3544741000.0,
+    "interest_expense": 51290000.0,
+    "interest_expense_usd": 51290000.0,
+    "pretax_income": 1253354000.0,
+    "pretax_income_usd": 1253354000.0,
+    "tax_provision": 151098000.0,
+    "tax_provision_usd": 151098000.0,
+    "tax_rate_for_calcs": 0.12,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0436,
+    "beta_5y": 2.3551,
+    "weight_of_debt": 0.022,
+    "weight_of_equity": 0.978,
+    "cost_of_debt": 0.0145,
+    "cost_of_equity": 0.244,
     "wacc": 0.2389
+  },
+  {
+    "symbol": "APP",
+    "report_date": "2026-05-07T00:00:00.000",
+    "market_capitalization": 167590138365.0,
+    "exchange_rate": 1.0,
+    "total_debt": 3544741000.0,
+    "total_debt_usd": 3544741000.0,
+    "interest_expense": 51290000.0,
+    "interest_expense_usd": 51290000.0,
+    "pretax_income": 1253354000.0,
+    "pretax_income_usd": 1253354000.0,
+    "tax_provision": 151098000.0,
+    "tax_provision_usd": 151098000.0,
+    "tax_rate_for_calcs": 0.12,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0441,
+    "beta_5y": 2.3551,
+    "weight_of_debt": 0.0207,
+    "weight_of_equity": 0.9793,
+    "cost_of_debt": 0.0145,
+    "cost_of_equity": 0.2433,
+    "wacc": 0.2385
+  },
+  {
+    "symbol": "APP",
+    "report_date": "2026-05-08T00:00:00.000",
+    "market_capitalization": 157404452725.0,
+    "exchange_rate": 1.0,
+    "total_debt": 3544741000.0,
+    "total_debt_usd": 3544741000.0,
+    "interest_expense": 51290000.0,
+    "interest_expense_usd": 51290000.0,
+    "pretax_income": 1253354000.0,
+    "pretax_income_usd": 1253354000.0,
+    "tax_provision": 151098000.0,
+    "tax_provision_usd": 151098000.0,
+    "tax_rate_for_calcs": 0.12,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0438,
+    "beta_5y": 2.3551,
+    "weight_of_debt": 0.022,
+    "weight_of_equity": 0.978,
+    "cost_of_debt": 0.0145,
+    "cost_of_equity": 0.2437,
+    "wacc": 0.2386
   }
 ]

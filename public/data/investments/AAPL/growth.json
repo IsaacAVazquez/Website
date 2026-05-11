@@ -83,6 +83,13 @@
       "revenue": 143756000000.0,
       "prev_year_revenue": 124300000000.0,
       "yoy_growth": 0.1565
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2026-03-31T00:00:00.000",
+      "revenue": 111184000000.0,
+      "prev_year_revenue": 95359000000.0,
+      "yoy_growth": 0.166
     }
   ],
   "annual_revenue": [
@@ -220,6 +227,13 @@
       "operating_income": 50852000000.0,
       "prev_year_operating_income": 42832000000.0,
       "yoy_growth": 0.1872
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2026-03-31T00:00:00.000",
+      "operating_income": 35885000000.0,
+      "prev_year_operating_income": 29589000000.0,
+      "yoy_growth": 0.2128
     }
   ],
   "annual_operating_income": [
@@ -350,6 +364,13 @@
       "ebitda": 54066000000.0,
       "prev_year_ebitda": 45912000000.0,
       "yoy_growth": 0.1776
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2026-03-31T00:00:00.000",
+      "ebitda": 39324000000.0,
+      "prev_year_ebitda": 32250000000.0,
+      "yoy_growth": 0.2193
     }
   ],
   "annual_ebitda": [
@@ -480,6 +501,13 @@
       "net_income_common_stockholders": 42097000000.0,
       "prev_year_net_income_common_stockholders": 36330000000.0,
       "yoy_growth": 0.1587
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2026-03-31T00:00:00.000",
+      "net_income_common_stockholders": 29578000000.0,
+      "prev_year_net_income_common_stockholders": 24780000000.0,
+      "yoy_growth": 0.1936
     }
   ],
   "annual_net_income": [
@@ -617,6 +645,13 @@
       "free_cash_flow": 51552000000.0,
       "prev_year_free_cash_flow": 26995000000.0,
       "yoy_growth": 0.9097
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2026-03-31T00:00:00.000",
+      "free_cash_flow": 26731000000.0,
+      "prev_year_free_cash_flow": 20881000000.0,
+      "yoy_growth": 0.2802
     }
   ],
   "annual_fcf": [
@@ -1566,6 +1601,13 @@
       "eps": 2.84,
       "prev_year_eps": 2.4,
       "yoy_growth": 0.1833
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2026-03-31T00:00:00.000",
+      "eps": 2.01,
+      "prev_year_eps": 1.65,
+      "yoy_growth": 0.2182
     }
   ]
 }

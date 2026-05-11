@@ -1,10 +1,10 @@
 {
   "symbol": "PLTR",
-  "lastUpdated": "2026-05-07T23:35:00.937242+00:00",
+  "lastUpdated": "2026-05-11T23:35:21.850921+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-05-07T23:35:00.937242+00:00",
+    "snapshotBuiltAt": "2026-05-11T23:35:21.850921+00:00",
     "sections": {
-      "price": "2026-05-01"
+      "price": "2026-05-08"
     }
   },
   "source": "prefetched",
@@ -34,18 +34,18 @@
       "industry": "Software-Infrastructure",
       "sector": "Technology",
       "longBusinessSummary": "Palantir Technologies Inc. builds and deploys software platforms for the intelligence community to assist in counterterrorism investigations and operations in the United States, the United Kingdom, and internationally. It provides Palantir Gotham integrates with other platforms for defense offerings which enables users to see, understand, and act in the modern battlespace; operations centers to the tactical edge; integrating data from domains and sensors in near real-time; and situational awareness and accelerating operational decision-making, as well as facilitates the hand-off between analysts and operational users, helping operators plan and execute real-world responses to threats that have been identified within the platform. The company also offers Palantir Foundry, a platform that helps organizations operate by creating a central operating system for their data; and allows individual users to integrate and analyze the data they need in one place. In addition, it provides Palantir Apollo, a software that delivers software and updates across the business, as well as enables customers to deploy their software virtually in any environment; and Palantir Artificial Intelligence Platform that provides unified access to open-source, self-hosted, and commercial large language models (LLMs) that can transform structured and unstructured data into LLM-understandable objects and can turn organizations' actions and processes into tools for humans and LLM-driven agents. The company also has a strategic partnership with Ondas Inc. to develop and deploy AI-enabled operational capabilities to scale stratospheric, aerial, and land-based ISR missions. The company was incorporated in 2003 and is headquartered in Aventura, Florida.",
-      "fullTimeEmployees": 4429,
+      "fullTimeEmployees": 4395,
       "website": "https://www.palantir.com",
       "shortName": "Palantir Technologies Inc.",
       "longName": "Palantir Technologies Inc."
     },
     "fundamentals": {
-      "ttmEps": 0.63,
-      "ttmPe": 228.68,
-      "marketCap": 344568718099,
-      "psRatio": 76.99,
-      "pbRatio": 46.64,
-      "pegRatio": 0.33
+      "ttmEps": 0.89,
+      "ttmPe": 154.83,
+      "marketCap": 330349593600,
+      "psRatio": 73.81,
+      "pbRatio": 44.72,
+      "pegRatio": 0.48
     },
     "profitability": {
       "roe": 8.709999999999999,
@@ -82,7 +82,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": 700
+        "yoyGrowth": 325
       }
     ],
     "income_statement": {
@@ -4807,57 +4807,17 @@
       ]
     },
     "wacc": {
-      "wacc": 17.11,
-      "costOfEquity": 17.119999999999997,
+      "wacc": 17.02,
+      "costOfEquity": 17.03,
       "costOfDebt": 0.06,
       "taxRate": 9,
-      "beta": 1.5006,
-      "marketCap": 344568718099
+      "beta": 1.4897,
+      "marketCap": 330349593600
     },
     "beta": {
-      "beta5y": 1.5006
+      "beta5y": 1.4897
     },
     "price": [
-      {
-        "date": "2025-05-01",
-        "open": 120.04,
-        "high": 120.19,
-        "low": 116,
-        "close": 116.2,
-        "volume": 90677600
-      },
-      {
-        "date": "2025-05-02",
-        "open": 118.66,
-        "high": 124.42,
-        "low": 118.63,
-        "close": 124.28,
-        "volume": 103094300
-      },
-      {
-        "date": "2025-05-05",
-        "open": 123.7,
-        "high": 125.25,
-        "low": 121.36,
-        "close": 123.77,
-        "volume": 135961300
-      },
-      {
-        "date": "2025-05-06",
-        "open": 112.71,
-        "high": 113.91,
-        "low": 105.32,
-        "close": 108.86,
-        "volume": 201193400
-      },
-      {
-        "date": "2025-05-07",
-        "open": 107.97,
-        "high": 111.85,
-        "low": 107,
-        "close": 110.48,
-        "volume": 95428800
-      },
       {
         "date": "2025-05-08",
         "open": 112.28,
@@ -6832,24 +6792,64 @@
         "high": 146.44,
         "low": 141.39,
         "close": 144.07,
-        "volume": 33085700
+        "volume": 33219900
+      },
+      {
+        "date": "2026-05-04",
+        "open": 147.75,
+        "high": 149.64,
+        "low": 145.23,
+        "close": 146.03,
+        "volume": 70525900
+      },
+      {
+        "date": "2026-05-05",
+        "open": 140.29,
+        "high": 142.98,
+        "low": 134.72,
+        "close": 135.91,
+        "volume": 89747100
+      },
+      {
+        "date": "2026-05-06",
+        "open": 133.71,
+        "high": 135.7,
+        "low": 131.15,
+        "close": 133.79,
+        "volume": 55524800
+      },
+      {
+        "date": "2026-05-07",
+        "open": 135.1,
+        "high": 140.95,
+        "low": 134.78,
+        "close": 137.05,
+        "volume": 50184900
+      },
+      {
+        "date": "2026-05-08",
+        "open": 135.87,
+        "high": 137.88,
+        "low": 133.02,
+        "close": 137.8,
+        "volume": 41598700
       }
     ],
     "news": [
-      {
-        "uuid": "5af5f21a-c494-3b85-940a-105f80e91ef5",
-        "title": "AI is Taking Over Aviation--And These Two Companies Just Hit the Accelerator",
-        "publisher": "GuruFocus.com",
-        "reportDate": "2025-03-14",
-        "link": "https://finance.yahoo.com/news/ai-taking-over-aviation-two-164103071.html",
-        "type": "STORY"
-      },
       {
         "uuid": "944b24c7-5dc1-3bf4-a1c9-ea3e0b527d80",
         "title": "Palantir (PLTR) Joins Forces with Ondas to Elevate AI-Powered Autonomous Drones",
         "publisher": "Insider Monkey",
         "reportDate": "2025-03-14",
         "link": "https://finance.yahoo.com/news/palantir-pltr-joins-forces-ondas-151809996.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "5af5f21a-c494-3b85-940a-105f80e91ef5",
+        "title": "AI is Taking Over Aviation--And These Two Companies Just Hit the Accelerator",
+        "publisher": "GuruFocus.com",
+        "reportDate": "2025-03-14",
+        "link": "https://finance.yahoo.com/news/ai-taking-over-aviation-two-164103071.html",
         "type": "STORY"
       },
       {
@@ -6919,12 +6919,22 @@
     ],
     "officers": [
       {
-        "name": "Aki Jain",
-        "title": "President of Palantir USG"
+        "name": "Dr. Alexander C. Karp J.D.",
+        "title": "Co-Founder, CEO & Director",
+        "age": 58,
+        "yearBorn": 1967,
+        "totalPay": 8623000
       },
       {
         "name": "Kevin Kawasaki",
         "title": "Head of Business Development"
+      },
+      {
+        "name": "Mr. David A. Glazer J.D.",
+        "title": "CFO & Treasurer",
+        "age": 40,
+        "yearBorn": 1985,
+        "totalPay": 486735
       },
       {
         "name": "Mr. David B. MacNaughton",
@@ -6933,63 +6943,92 @@
         "yearBorn": 1950
       },
       {
+        "name": "Mr. Jeffrey Buckley B.S., CPA",
+        "title": "Chief Accounting Officer",
+        "age": 41,
+        "yearBorn": 1984
+      },
+      {
         "name": "Mr. Joseph Todd Lonsdale",
         "title": "Co-Founder",
         "age": 42,
         "yearBorn": 1983
       },
       {
-        "name": "Ms. Ana Drmanovic Soro",
-        "title": "Office of the CFO"
+        "name": "Mr. Peter Andreas Thiel J.D.",
+        "title": "Co-Founder & Chairman",
+        "age": 58,
+        "yearBorn": 1967
+      },
+      {
+        "name": "Mr. Ryan D. Taylor J.D.",
+        "title": "Chief Revenue Officer & Chief Legal Officer",
+        "age": 42,
+        "yearBorn": 1983,
+        "totalPay": 479460
+      },
+      {
+        "name": "Mr. Shyam Sankar",
+        "title": "CTO & Executive VP",
+        "age": 42,
+        "yearBorn": 1983,
+        "totalPay": 1209250
+      },
+      {
+        "name": "Mr. Stephen Andrew Cohen",
+        "title": "Co-Founder, President, Secretary & Director",
+        "age": 41,
+        "yearBorn": 1984,
+        "totalPay": 1003995
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 228.68,
-        "industryAvg": 27.71
+        "value": 154.83,
+        "industryAvg": 28.64
       },
       {
         "metric": "P/S Ratio",
-        "value": 76.99,
-        "industryAvg": 5.84
+        "value": 73.81,
+        "industryAvg": 6
       },
       {
         "metric": "P/B Ratio",
-        "value": 46.64,
-        "industryAvg": 7.51
+        "value": 44.72,
+        "industryAvg": 7.71
       },
       {
         "metric": "ROE",
         "value": 8.709999999999999,
-        "industryAvg": 28.050000000000004
+        "industryAvg": 27.93
       },
       {
         "metric": "ROA",
         "value": 7.1499999999999995,
-        "industryAvg": 10.89
+        "industryAvg": 10.84
       },
       {
         "metric": "Gross Margin",
         "value": 84.65,
-        "industryAvg": 47.67
+        "industryAvg": 47.9
       },
       {
         "metric": "EBITDA Margin",
         "value": 41.4,
-        "industryAvg": 32.85
+        "industryAvg": 32.67
       },
       {
         "metric": "Net Margin",
         "value": 43.269999999999996,
-        "industryAvg": 18.69
+        "industryAvg": 18.55
       }
     ],
     "dcf": {
-      "fairValue": 9.51,
-      "currentPrice": 144.07,
-      "upside": -93.4,
-      "wacc": 17.11,
+      "fairValue": 13.52,
+      "currentPrice": 137.8,
+      "upside": -90.19,
+      "wacc": 17.02,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

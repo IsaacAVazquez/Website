@@ -104,6 +104,13 @@
       "revenue": 1440114000.0,
       "prev_year_revenue": 1355981000.0,
       "yoy_growth": 0.062
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2026-03-31T00:00:00.000",
+      "revenue": 1474220000.0,
+      "prev_year_revenue": 1242366000.0,
+      "yoy_growth": 0.1866
     }
   ],
   "annual_revenue": [
@@ -238,9 +245,9 @@
     {
       "symbol": "CDNS",
       "report_date": "2025-03-31T00:00:00.000",
-      "operating_income": 361411000.0,
+      "operating_income": 361383000.0,
       "prev_year_operating_income": 250236000.0,
-      "yoy_growth": 0.4443
+      "yoy_growth": 0.4442
     },
     {
       "symbol": "CDNS",
@@ -262,6 +269,13 @@
       "operating_income": 465225000.0,
       "prev_year_operating_income": 455855000.0,
       "yoy_growth": 0.0206
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2026-03-31T00:00:00.000",
+      "operating_income": 431336000.0,
+      "prev_year_operating_income": 361383000.0,
+      "yoy_growth": 0.1936
     }
   ],
   "annual_operating_income": [
@@ -413,6 +427,13 @@
       "ebitda": 591274000.0,
       "prev_year_ebitda": 520422000.0,
       "yoy_growth": 0.1361
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2026-03-31T00:00:00.000",
+      "ebitda": 544088000.0,
+      "prev_year_ebitda": 436280000.0,
+      "yoy_growth": 0.2471
     }
   ],
   "annual_ebitda": [
@@ -571,6 +592,13 @@
       "net_income_common_stockholders": 388136000.0,
       "prev_year_net_income_common_stockholders": 340210000.0,
       "yoy_growth": 0.1409
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2026-03-31T00:00:00.000",
+      "net_income_common_stockholders": 335660000.0,
+      "prev_year_net_income_common_stockholders": 273579000.0,
+      "yoy_growth": 0.2269
     }
   ],
   "annual_net_income": [
@@ -715,6 +743,13 @@
       "free_cash_flow": 512454000.0,
       "prev_year_free_cash_flow": 404157000.0,
       "yoy_growth": 0.268
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2026-03-31T00:00:00.000",
+      "free_cash_flow": 306962000.0,
+      "prev_year_free_cash_flow": 463960000.0,
+      "yoy_growth": -0.3384
     }
   ],
   "annual_fcf": [

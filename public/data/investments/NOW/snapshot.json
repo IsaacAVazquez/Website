@@ -1,10 +1,10 @@
 {
   "symbol": "NOW",
-  "lastUpdated": "2026-05-07T23:35:00.937242+00:00",
+  "lastUpdated": "2026-05-11T23:35:21.850921+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-05-07T23:35:00.937242+00:00",
+    "snapshotBuiltAt": "2026-05-11T23:35:21.850921+00:00",
     "sections": {
-      "price": "2026-05-01"
+      "price": "2026-05-08"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.68,
-      "ttmPe": 54.26,
-      "marketCap": 95353360000,
-      "psRatio": 6.83,
-      "pbRatio": 8.13,
-      "pegRatio": 11.33
+      "ttmPe": 54.27,
+      "marketCap": 94034663440,
+      "psRatio": 6.74,
+      "pbRatio": 8.02,
+      "pegRatio": 23.91
     },
     "profitability": {
       "roe": 3.8,
@@ -82,7 +82,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": -79.55
+        "yoyGrowth": 2.27
       }
     ],
     "income_statement": {
@@ -612,9 +612,9 @@
           "TTM": "203631250.0",
           "2026-03-31": "1035000000.0",
           "2025-12-31": "1039000000.0",
-          "2025-09-30": "1038150000.0",
-          "2025-06-30": "1035820000.0",
-          "2025-03-31": "1034098000.0",
+          "2025-09-30": "1040000000.0",
+          "2025-06-30": "1035000000.0",
+          "2025-03-31": "1035000000.0",
           "2024-12-31": "1030000000.0",
           "2024-09-30": "1030000000.0",
           "2024-06-30": "206000000.0",
@@ -632,9 +632,9 @@
           "TTM": "204918000.0",
           "2026-03-31": "1040000000.0",
           "2025-12-31": "1047000000.0",
-          "2025-09-30": "1047525000.0",
-          "2025-06-30": "1046610000.0",
-          "2025-03-31": "1046852000.0",
+          "2025-09-30": "1050000000.0",
+          "2025-06-30": "1045000000.0",
+          "2025-03-31": "1045000000.0",
           "2024-12-31": "1045000000.0",
           "2024-09-30": "1045000000.0",
           "2024-06-30": "208000000.0",
@@ -1241,7 +1241,7 @@
         },
         {
           "Breakdown": "Basic Average Shares",
-          "2025-12-31": "1036740000.0",
+          "2025-12-31": "1037000000.0",
           "2024-12-31": "1030000000.0",
           "2023-12-31": "1020000000.0",
           "2022-12-31": "1005000000.0",
@@ -1251,7 +1251,7 @@
         },
         {
           "Breakdown": "Diluted Average Shares",
-          "2025-12-31": "1046691000.0",
+          "2025-12-31": "1047000000.0",
           "2024-12-31": "1040000000.0",
           "2023-12-31": "1030000000.0",
           "2022-12-31": "1020000000.0",
@@ -5113,57 +5113,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.9,
-      "costOfEquity": 11.17,
+      "wacc": 10.92,
+      "costOfEquity": 11.200000000000001,
       "costOfDebt": 0.25,
       "taxRate": 30,
-      "beta": 0.7993,
-      "marketCap": 95353360000
+      "beta": 0.8034,
+      "marketCap": 94034663440
     },
     "beta": {
-      "beta5y": 0.7993
+      "beta5y": 0.8034
     },
     "price": [
-      {
-        "date": "2025-05-01",
-        "open": 194.77,
-        "high": 195.72,
-        "low": 191.5,
-        "close": 191.59,
-        "volume": 9038500
-      },
-      {
-        "date": "2025-05-02",
-        "open": 195.78,
-        "high": 197.1,
-        "low": 193.81,
-        "close": 195.47,
-        "volume": 8347000
-      },
-      {
-        "date": "2025-05-05",
-        "open": 194.6,
-        "high": 198.4,
-        "low": 194.27,
-        "close": 195.61,
-        "volume": 6371000
-      },
-      {
-        "date": "2025-05-06",
-        "open": 193.81,
-        "high": 195.74,
-        "low": 192.84,
-        "close": 193.05,
-        "volume": 6402500
-      },
-      {
-        "date": "2025-05-07",
-        "open": 194.24,
-        "high": 197.46,
-        "low": 193.46,
-        "close": 196.66,
-        "volume": 8648500
-      },
       {
         "date": "2025-05-08",
         "open": 197,
@@ -7138,7 +7098,47 @@
         "high": 92.6,
         "low": 87.87,
         "close": 91.16,
-        "volume": 22863500
+        "volume": 22911800
+      },
+      {
+        "date": "2026-05-04",
+        "open": 91.27,
+        "high": 95.62,
+        "low": 91.1,
+        "close": 91.97,
+        "volume": 21863500
+      },
+      {
+        "date": "2026-05-05",
+        "open": 92.25,
+        "high": 92.89,
+        "low": 89.14,
+        "close": 92.01,
+        "volume": 22756800
+      },
+      {
+        "date": "2026-05-06",
+        "open": 91.6,
+        "high": 91.68,
+        "low": 88.21,
+        "close": 89.05,
+        "volume": 23117900
+      },
+      {
+        "date": "2026-05-07",
+        "open": 92.17,
+        "high": 95.56,
+        "low": 91.89,
+        "close": 93.59,
+        "volume": 27960700
+      },
+      {
+        "date": "2026-05-08",
+        "open": 91.13,
+        "high": 91.85,
+        "low": 88.99,
+        "close": 91.18,
+        "volume": 24436900
       }
     ],
     "news": [
@@ -7191,14 +7191,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "9f38eca9-f098-3ec9-8940-f848a225631e",
-        "title": "Zoom, ServiceNow plan to integrate Zoom CX with ServiceNow CRM, ITSM",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-08",
-        "link": "https://finance.yahoo.com/news/zoom-servicenow-plan-integrate-zoom-150553095.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "0d66b766-bead-3972-a483-2318d3521577",
         "title": "Nice enters partnership with ServiceNow for customer service fulfillment",
         "publisher": "TipRanks",
@@ -7207,11 +7199,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "994a5e6b-ad52-3bb3-b8a4-56347c6d7387",
-        "title": "High Growth Tech Stocks in the US To Watch This May 2025",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/news/high-growth-tech-stocks-us-113821187.html",
+        "uuid": "9f38eca9-f098-3ec9-8940-f848a225631e",
+        "title": "Zoom, ServiceNow plan to integrate Zoom CX with ServiceNow CRM, ITSM",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-08",
+        "link": "https://finance.yahoo.com/news/zoom-servicenow-plan-integrate-zoom-150553095.html",
         "type": "STORY"
       },
       {
@@ -7220,6 +7212,14 @@
         "publisher": "StockStory",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/news/1-high-flying-stock-exciting-043642353.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "994a5e6b-ad52-3bb3-b8a4-56347c6d7387",
+        "title": "High Growth Tech Stocks in the US To Watch This May 2025",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/news/high-growth-tech-stocks-us-113821187.html",
         "type": "STORY"
       }
     ],
@@ -7286,52 +7286,52 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 54.26,
-        "industryAvg": 25.31
+        "value": 54.27,
+        "industryAvg": 25.73
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.83,
-        "industryAvg": 4.46
+        "value": 6.74,
+        "industryAvg": 4.45
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.13,
-        "industryAvg": 4.38
+        "value": 8.02,
+        "industryAvg": 4.45
       },
       {
         "metric": "ROE",
         "value": 3.8,
-        "industryAvg": 6.15
+        "industryAvg": 6.02
       },
       {
         "metric": "ROA",
         "value": 1.8599999999999999,
-        "industryAvg": 3.35
+        "industryAvg": 3.3000000000000003
       },
       {
         "metric": "Gross Margin",
         "value": 75.07000000000001,
-        "industryAvg": 63.23
+        "industryAvg": 63.29
       },
       {
         "metric": "EBITDA Margin",
         "value": 24.85,
-        "industryAvg": 15.1
+        "industryAvg": 14.99
       },
       {
         "metric": "Net Margin",
         "value": 12.44,
-        "industryAvg": 7.84
+        "industryAvg": 7.6
       }
     ],
     "dcf": {
-      "fairValue": 11.34,
-      "currentPrice": 91.16,
-      "upside": -87.56,
-      "wacc": 10.9,
+      "fairValue": 21.56,
+      "currentPrice": 91.18,
+      "upside": -76.35,
+      "wacc": 10.92,
       "growthEstimates": {
-        "Near-term growth (Yrs 1-3)": -30,
+        "Near-term growth (Yrs 1-3)": 2.27,
         "Terminal growth": 3
       },
       "recommendation": "Sell"

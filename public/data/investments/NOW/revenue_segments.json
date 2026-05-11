@@ -137,6 +137,12 @@
       "report_date": "2025-12-31",
       "Professional Services and Other": 102000000.0,
       "Subscription": 3466000000.0
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2026-03-31",
+      "Professional Services and Other": 99000000.0,
+      "Subscription": 3671000000.0
     }
   ],
   "by_geography": [
@@ -300,6 +306,13 @@
       "Asia Pacific and Other": 409000000.0,
       "Europe, Middle East, and Africa": 913000000.0,
       "North America": 2246000000.0
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2026-03-31",
+      "Asia Pacific and Other": 432000000.0,
+      "Europe, Middle East, and Africa": 979000000.0,
+      "North America": 2359000000.0
     }
   ],
   "by_product": []

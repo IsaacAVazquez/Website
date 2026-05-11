@@ -431,6 +431,18 @@
       "Hedging Gains": -68000000.0,
       "Other Bets": 370000000.0,
       "YouTube Ads": 11383000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2026-03-31",
+      "Advertising": 0.0,
+      "Google Cloud": 20028000000.0,
+      "Google Network": 6971000000.0,
+      "Google Search & Other": 60399000000.0,
+      "Google Subscriptions, Platforms & Devices": 12384000000.0,
+      "Hedging Gains": -180000000.0,
+      "Other Bets": 411000000.0,
+      "YouTube Ads": 9883000000.0
     }
   ],
   "by_geography": [
@@ -617,6 +629,14 @@
       "Europe, Middle East, and Africa": 33056000000.0,
       "Other Americas": 6869000000.0,
       "United States": 55444000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2026-03-31",
+      "Asia Pacific": 18288000000.0,
+      "Europe, Middle East, and Africa": 31468000000.0,
+      "Other Americas": 6345000000.0,
+      "United States": 53975000000.0
     }
   ],
   "by_product": []

@@ -1,51 +1,6 @@
 [
   {
     "symbol": "AMAT",
-    "report_date": "2025-05-01",
-    "open": 151.64,
-    "close": 148.96,
-    "high": 152.28,
-    "low": 148.74,
-    "volume": 6732000
-  },
-  {
-    "symbol": "AMAT",
-    "report_date": "2025-05-02",
-    "open": 152.79,
-    "close": 155.1,
-    "high": 156.7,
-    "low": 152.69,
-    "volume": 6083200
-  },
-  {
-    "symbol": "AMAT",
-    "report_date": "2025-05-05",
-    "open": 154.11,
-    "close": 154.61,
-    "high": 156.64,
-    "low": 153.85,
-    "volume": 4069300
-  },
-  {
-    "symbol": "AMAT",
-    "report_date": "2025-05-06",
-    "open": 152.0,
-    "close": 153.03,
-    "high": 154.48,
-    "low": 151.9,
-    "volume": 3471700
-  },
-  {
-    "symbol": "AMAT",
-    "report_date": "2025-05-07",
-    "open": 153.35,
-    "close": 155.81,
-    "high": 156.2,
-    "low": 151.51,
-    "volume": 5499000
-  },
-  {
-    "symbol": "AMAT",
     "report_date": "2025-05-08",
     "open": 158.03,
     "close": 156.0,
@@ -2265,6 +2220,51 @@
     "close": 389.08,
     "high": 398.64,
     "low": 386.2,
-    "volume": 4584600
+    "volume": 4586500
+  },
+  {
+    "symbol": "AMAT",
+    "report_date": "2026-05-04",
+    "open": 387.16,
+    "close": 391.38,
+    "high": 401.0,
+    "low": 385.65,
+    "volume": 5062300
+  },
+  {
+    "symbol": "AMAT",
+    "report_date": "2026-05-05",
+    "open": 404.39,
+    "close": 410.82,
+    "high": 414.5,
+    "low": 400.25,
+    "volume": 6321100
+  },
+  {
+    "symbol": "AMAT",
+    "report_date": "2026-05-06",
+    "open": 421.0,
+    "close": 428.62,
+    "high": 432.81,
+    "low": 417.75,
+    "volume": 7241200
+  },
+  {
+    "symbol": "AMAT",
+    "report_date": "2026-05-07",
+    "open": 426.36,
+    "close": 410.64,
+    "high": 427.7,
+    "low": 406.01,
+    "volume": 7741800
+  },
+  {
+    "symbol": "AMAT",
+    "report_date": "2026-05-08",
+    "open": 423.11,
+    "close": 435.44,
+    "high": 438.04,
+    "low": 417.9,
+    "volume": 8159800
   }
 ]

@@ -1,16 +1,6 @@
 [
   {
     "symbol": "TSLA",
-    "name": "Ashok  Elluswamy",
-    "title": "Executive Officer",
-    "age": null,
-    "born": null,
-    "pay": null,
-    "exercised": 0,
-    "unexercised": 0
-  },
-  {
-    "symbol": "TSLA",
     "name": "Mr. Brandon  Ehrhart",
     "title": "General Counsel & Corporate Secretary",
     "age": null,
@@ -33,36 +23,6 @@
     "symbol": "TSLA",
     "name": "Mr. Franz  von Holzhausen",
     "title": "Chief Designer",
-    "age": null,
-    "born": null,
-    "pay": null,
-    "exercised": 0,
-    "unexercised": 0
-  },
-  {
-    "symbol": "TSLA",
-    "name": "Mr. John  Walker",
-    "title": "Vice President of Sales - North America",
-    "age": 62,
-    "born": 1963,
-    "pay": 121550,
-    "exercised": 0,
-    "unexercised": 0
-  },
-  {
-    "symbol": "TSLA",
-    "name": "Mr. Lars  Moravy",
-    "title": "Vice President of Vehicle Engineering",
-    "age": null,
-    "born": null,
-    "pay": null,
-    "exercised": 0,
-    "unexercised": 0
-  },
-  {
-    "symbol": "TSLA",
-    "name": "Mr. Rodney D. Westmoreland Jr.",
-    "title": "Director of Construction Management",
     "age": null,
     "born": null,
     "pay": null,

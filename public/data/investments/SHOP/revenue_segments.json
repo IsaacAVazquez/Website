@@ -137,6 +137,12 @@
       "report_date": "2025-12-31",
       "Merchant Solutions": 2895000000.0,
       "Subscription Solutions": 777000000.0
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-03-31",
+      "Merchant Solutions": 2420000000.0,
+      "Subscription Solutions": 750000000.0
     }
   ],
   "by_geography": [],

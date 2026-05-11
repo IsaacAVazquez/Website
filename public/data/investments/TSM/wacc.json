@@ -16,11 +16,11 @@
     "sp500_cagr_end": 2022,
     "sp500_10y_cagr": 0.1041,
     "treasure_10y_yield": 0.0381,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0548,
     "weight_of_equity": 0.9452,
     "cost_of_debt": 0.0032,
-    "cost_of_equity": 0.1294,
+    "cost_of_equity": 0.1293,
     "wacc": 0.1224
   },
   {
@@ -40,12 +40,12 @@
     "sp500_cagr_end": 2022,
     "sp500_10y_cagr": 0.1041,
     "treasure_10y_yield": 0.0459,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0632,
     "weight_of_equity": 0.9368,
     "cost_of_debt": 0.0032,
-    "cost_of_equity": 0.1264,
-    "wacc": 0.1186
+    "cost_of_equity": 0.1263,
+    "wacc": 0.1185
   },
   {
     "symbol": "TSM",
@@ -64,12 +64,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0388,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0546,
     "weight_of_equity": 0.9454,
     "cost_of_debt": 0.0031,
-    "cost_of_equity": 0.1226,
-    "wacc": 0.1161
+    "cost_of_equity": 0.1225,
+    "wacc": 0.116
   },
   {
     "symbol": "TSM",
@@ -88,12 +88,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.042,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0426,
     "weight_of_equity": 0.9574,
     "cost_of_debt": 0.0027,
-    "cost_of_equity": 0.1214,
-    "wacc": 0.1163
+    "cost_of_equity": 0.1213,
+    "wacc": 0.1162
   },
   {
     "symbol": "TSM",
@@ -112,12 +112,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0436,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0338,
     "weight_of_equity": 0.9662,
     "cost_of_debt": 0.0026,
-    "cost_of_equity": 0.1208,
-    "wacc": 0.1168
+    "cost_of_equity": 0.1207,
+    "wacc": 0.1167
   },
   {
     "symbol": "TSM",
@@ -136,12 +136,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0381,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.001,
     "weight_of_equity": 0.999,
     "cost_of_debt": 0.0934,
-    "cost_of_equity": 0.1229,
-    "wacc": 0.1229
+    "cost_of_equity": 0.1228,
+    "wacc": 0.1228
   },
   {
     "symbol": "TSM",
@@ -160,11 +160,11 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0458,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0303,
     "weight_of_equity": 0.9697,
     "cost_of_debt": 0.0024,
-    "cost_of_equity": 0.1356,
+    "cost_of_equity": 0.1355,
     "wacc": 0.1315
   },
   {
@@ -184,12 +184,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0423,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0363,
     "weight_of_equity": 0.9637,
     "cost_of_debt": 0.0025,
-    "cost_of_equity": 0.1369,
-    "wacc": 0.132
+    "cost_of_equity": 0.1368,
+    "wacc": 0.1319
   },
   {
     "symbol": "TSM",
@@ -208,12 +208,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0424,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0261,
     "weight_of_equity": 0.9739,
     "cost_of_debt": 0.004,
-    "cost_of_equity": 0.1369,
-    "wacc": 0.1334
+    "cost_of_equity": 0.1368,
+    "wacc": 0.1333
   },
   {
     "symbol": "TSM",
@@ -232,12 +232,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0416,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0211,
     "weight_of_equity": 0.9789,
     "cost_of_debt": 0.0031,
-    "cost_of_equity": 0.1372,
-    "wacc": 0.1344
+    "cost_of_equity": 0.1371,
+    "wacc": 0.1343
   },
   {
     "symbol": "TSM",
@@ -256,12 +256,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0418,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0212,
     "weight_of_equity": 0.9788,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.162,
-    "wacc": 0.1586
+    "cost_of_equity": 0.1619,
+    "wacc": 0.1585
   },
   {
     "symbol": "TSM",
@@ -280,12 +280,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0419,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0201,
     "weight_of_equity": 0.9799,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.162,
-    "wacc": 0.1588
+    "cost_of_equity": 0.1618,
+    "wacc": 0.1586
   },
   {
     "symbol": "TSM",
@@ -304,12 +304,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0417,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.02,
     "weight_of_equity": 0.98,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1621,
-    "wacc": 0.1589
+    "cost_of_equity": 0.1619,
+    "wacc": 0.1587
   },
   {
     "symbol": "TSM",
@@ -328,12 +328,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0418,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0197,
     "weight_of_equity": 0.9803,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.162,
-    "wacc": 0.1589
+    "cost_of_equity": 0.1619,
+    "wacc": 0.1588
   },
   {
     "symbol": "TSM",
@@ -352,12 +352,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0415,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0202,
     "weight_of_equity": 0.9798,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1621,
-    "wacc": 0.1589
+    "cost_of_equity": 0.162,
+    "wacc": 0.1588
   },
   {
     "symbol": "TSM",
@@ -376,12 +376,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0419,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0202,
     "weight_of_equity": 0.9798,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.162,
-    "wacc": 0.1588
+    "cost_of_equity": 0.1618,
+    "wacc": 0.1586
   },
   {
     "symbol": "TSM",
@@ -400,12 +400,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0418,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0199,
     "weight_of_equity": 0.9801,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.162,
-    "wacc": 0.1588
+    "cost_of_equity": 0.1619,
+    "wacc": 0.1587
   },
   {
     "symbol": "TSM",
@@ -424,12 +424,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0419,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0194,
     "weight_of_equity": 0.9806,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.162,
-    "wacc": 0.1589
+    "cost_of_equity": 0.1618,
+    "wacc": 0.1587
   },
   {
     "symbol": "TSM",
@@ -448,12 +448,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0418,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0195,
     "weight_of_equity": 0.9805,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.162,
-    "wacc": 0.1589
+    "cost_of_equity": 0.1619,
+    "wacc": 0.1588
   },
   {
     "symbol": "TSM",
@@ -472,12 +472,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0415,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0197,
     "weight_of_equity": 0.9803,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1621,
-    "wacc": 0.159
+    "cost_of_equity": 0.162,
+    "wacc": 0.1589
   },
   {
     "symbol": "TSM",
@@ -496,12 +496,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0417,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0189,
     "weight_of_equity": 0.9811,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1621,
-    "wacc": 0.1591
+    "cost_of_equity": 0.1619,
+    "wacc": 0.1589
   },
   {
     "symbol": "TSM",
@@ -520,12 +520,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0424,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0188,
     "weight_of_equity": 0.9812,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1618,
-    "wacc": 0.1588
+    "cost_of_equity": 0.1616,
+    "wacc": 0.1586
   },
   {
     "symbol": "TSM",
@@ -544,12 +544,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0197,
     "weight_of_equity": 0.9803,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1616,
-    "wacc": 0.1585
+    "cost_of_equity": 0.1614,
+    "wacc": 0.1583
   },
   {
     "symbol": "TSM",
@@ -568,12 +568,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0197,
     "weight_of_equity": 0.9803,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1617,
-    "wacc": 0.1586
+    "cost_of_equity": 0.1616,
+    "wacc": 0.1585
   },
   {
     "symbol": "TSM",
@@ -592,12 +592,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0197,
     "weight_of_equity": 0.9803,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1617,
-    "wacc": 0.1586
+    "cost_of_equity": 0.1616,
+    "wacc": 0.1585
   },
   {
     "symbol": "TSM",
@@ -616,12 +616,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0424,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0192,
     "weight_of_equity": 0.9808,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1618,
-    "wacc": 0.1587
+    "cost_of_equity": 0.1616,
+    "wacc": 0.1585
   },
   {
     "symbol": "TSM",
@@ -640,12 +640,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0422,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0194,
     "weight_of_equity": 0.9806,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1619,
-    "wacc": 0.1588
+    "cost_of_equity": 0.1617,
+    "wacc": 0.1586
   },
   {
     "symbol": "TSM",
@@ -664,12 +664,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0424,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.019,
     "weight_of_equity": 0.981,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1618,
-    "wacc": 0.1588
+    "cost_of_equity": 0.1616,
+    "wacc": 0.1586
   },
   {
     "symbol": "TSM",
@@ -688,12 +688,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0188,
     "weight_of_equity": 0.9812,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1617,
-    "wacc": 0.1587
+    "cost_of_equity": 0.1616,
+    "wacc": 0.1586
   },
   {
     "symbol": "TSM",
@@ -712,12 +712,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0424,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.019,
     "weight_of_equity": 0.981,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1618,
-    "wacc": 0.1588
+    "cost_of_equity": 0.1616,
+    "wacc": 0.1586
   },
   {
     "symbol": "TSM",
@@ -736,12 +736,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0195,
     "weight_of_equity": 0.9805,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1617,
-    "wacc": 0.1586
+    "cost_of_equity": 0.1616,
+    "wacc": 0.1585
   },
   {
     "symbol": "TSM",
@@ -760,12 +760,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0189,
     "weight_of_equity": 0.9811,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1616,
-    "wacc": 0.1586
+    "cost_of_equity": 0.1614,
+    "wacc": 0.1584
   },
   {
     "symbol": "TSM",
@@ -784,12 +784,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0428,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0192,
     "weight_of_equity": 0.9808,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1616,
-    "wacc": 0.1585
+    "cost_of_equity": 0.1615,
+    "wacc": 0.1584
   },
   {
     "symbol": "TSM",
@@ -808,12 +808,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0198,
     "weight_of_equity": 0.9802,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1616,
-    "wacc": 0.1584
+    "cost_of_equity": 0.1614,
+    "wacc": 0.1583
   },
   {
     "symbol": "TSM",
@@ -832,12 +832,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0421,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0195,
     "weight_of_equity": 0.9805,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1619,
-    "wacc": 0.1588
+    "cost_of_equity": 0.1618,
+    "wacc": 0.1587
   },
   {
     "symbol": "TSM",
@@ -856,12 +856,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0422,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0185,
     "weight_of_equity": 0.9815,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1619,
-    "wacc": 0.1589
+    "cost_of_equity": 0.1617,
+    "wacc": 0.1588
   },
   {
     "symbol": "TSM",
@@ -880,12 +880,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0422,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0182,
     "weight_of_equity": 0.9818,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1619,
-    "wacc": 0.159
+    "cost_of_equity": 0.1617,
+    "wacc": 0.1588
   },
   {
     "symbol": "TSM",
@@ -904,12 +904,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0416,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0178,
     "weight_of_equity": 0.9822,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1621,
-    "wacc": 0.1593
+    "cost_of_equity": 0.1619,
+    "wacc": 0.1591
   },
   {
     "symbol": "TSM",
@@ -928,12 +928,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0418,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0173,
     "weight_of_equity": 0.9827,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.162,
-    "wacc": 0.1592
+    "cost_of_equity": 0.1619,
+    "wacc": 0.1591
   },
   {
     "symbol": "TSM",
@@ -952,12 +952,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0409,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0175,
     "weight_of_equity": 0.9825,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1624,
-    "wacc": 0.1596
+    "cost_of_equity": 0.1622,
+    "wacc": 0.1594
   },
   {
     "symbol": "TSM",
@@ -976,12 +976,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0404,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0176,
     "weight_of_equity": 0.9824,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1626,
-    "wacc": 0.1598
+    "cost_of_equity": 0.1624,
+    "wacc": 0.1596
   },
   {
     "symbol": "TSM",
@@ -1000,12 +1000,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0405,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0177,
     "weight_of_equity": 0.9823,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1625,
-    "wacc": 0.1597
+    "cost_of_equity": 0.1624,
+    "wacc": 0.1596
   },
   {
     "symbol": "TSM",
@@ -1024,12 +1024,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0409,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0178,
     "weight_of_equity": 0.9822,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1624,
-    "wacc": 0.1596
+    "cost_of_equity": 0.1622,
+    "wacc": 0.1594
   },
   {
     "symbol": "TSM",
@@ -1048,12 +1048,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0408,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0179,
     "weight_of_equity": 0.9821,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1624,
-    "wacc": 0.1595
+    "cost_of_equity": 0.1623,
+    "wacc": 0.1594
   },
   {
     "symbol": "TSM",
@@ -1072,12 +1072,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0408,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0174,
     "weight_of_equity": 0.9826,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1624,
-    "wacc": 0.1596
+    "cost_of_equity": 0.1623,
+    "wacc": 0.1595
   },
   {
     "symbol": "TSM",
@@ -1096,12 +1096,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0403,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0174,
     "weight_of_equity": 0.9826,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1626,
-    "wacc": 0.1598
+    "cost_of_equity": 0.1624,
+    "wacc": 0.1596
   },
   {
     "symbol": "TSM",
@@ -1120,12 +1120,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0404,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0167,
     "weight_of_equity": 0.9833,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1626,
-    "wacc": 0.1599
+    "cost_of_equity": 0.1624,
+    "wacc": 0.1597
   },
   {
     "symbol": "TSM",
@@ -1144,12 +1144,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0405,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0167,
     "weight_of_equity": 0.9833,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1625,
-    "wacc": 0.1598
+    "cost_of_equity": 0.1624,
+    "wacc": 0.1597
   },
   {
     "symbol": "TSM",
@@ -1168,12 +1168,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0402,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0171,
     "weight_of_equity": 0.9829,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1626,
-    "wacc": 0.1599
+    "cost_of_equity": 0.1625,
+    "wacc": 0.1598
   },
   {
     "symbol": "TSM",
@@ -1192,12 +1192,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0397,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0172,
     "weight_of_equity": 0.9828,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1628,
-    "wacc": 0.16
+    "cost_of_equity": 0.1627,
+    "wacc": 0.1599
   },
   {
     "symbol": "TSM",
@@ -1216,12 +1216,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0405,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0175,
     "weight_of_equity": 0.9825,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1625,
-    "wacc": 0.1597
+    "cost_of_equity": 0.1624,
+    "wacc": 0.1596
   },
   {
     "symbol": "TSM",
@@ -1240,12 +1240,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0406,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0183,
     "weight_of_equity": 0.9817,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1625,
-    "wacc": 0.1596
+    "cost_of_equity": 0.1623,
+    "wacc": 0.1594
   },
   {
     "symbol": "TSM",
@@ -1264,12 +1264,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0409,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0181,
     "weight_of_equity": 0.9819,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1624,
-    "wacc": 0.1595
+    "cost_of_equity": 0.1622,
+    "wacc": 0.1593
   },
   {
     "symbol": "TSM",
@@ -1288,12 +1288,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0413,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0182,
     "weight_of_equity": 0.9818,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1622,
-    "wacc": 0.1593
+    "cost_of_equity": 0.1621,
+    "wacc": 0.1592
   },
   {
     "symbol": "TSM",
@@ -1312,12 +1312,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0415,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.019,
     "weight_of_equity": 0.981,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1621,
-    "wacc": 0.1591
+    "cost_of_equity": 0.162,
+    "wacc": 0.159
   },
   {
     "symbol": "TSM",
@@ -1336,12 +1336,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0412,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0185,
     "weight_of_equity": 0.9815,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1623,
-    "wacc": 0.1593
+    "cost_of_equity": 0.1621,
+    "wacc": 0.1591
   },
   {
     "symbol": "TSM",
@@ -1360,12 +1360,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0415,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0186,
     "weight_of_equity": 0.9814,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1621,
-    "wacc": 0.1591
+    "cost_of_equity": 0.162,
+    "wacc": 0.159
   },
   {
     "symbol": "TSM",
@@ -1384,12 +1384,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0421,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0182,
     "weight_of_equity": 0.9818,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1619,
-    "wacc": 0.159
+    "cost_of_equity": 0.1618,
+    "wacc": 0.1589
   },
   {
     "symbol": "TSM",
@@ -1408,12 +1408,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0427,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0191,
     "weight_of_equity": 0.9809,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1617,
-    "wacc": 0.1587
+    "cost_of_equity": 0.1615,
+    "wacc": 0.1585
   },
   {
     "symbol": "TSM",
@@ -1432,12 +1432,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0428,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0191,
     "weight_of_equity": 0.9809,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1616,
-    "wacc": 0.1586
+    "cost_of_equity": 0.1615,
+    "wacc": 0.1585
   },
   {
     "symbol": "TSM",
@@ -1456,12 +1456,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0423,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0189,
     "weight_of_equity": 0.9811,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1618,
-    "wacc": 0.1588
+    "cost_of_equity": 0.1617,
+    "wacc": 0.1587
   },
   {
     "symbol": "TSM",
@@ -1480,12 +1480,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.042,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0186,
     "weight_of_equity": 0.9814,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1619,
-    "wacc": 0.1589
+    "cost_of_equity": 0.1618,
+    "wacc": 0.1588
   },
   {
     "symbol": "TSM",
@@ -1504,12 +1504,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.019,
     "weight_of_equity": 0.981,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1617,
-    "wacc": 0.1587
+    "cost_of_equity": 0.1616,
+    "wacc": 0.1586
   },
   {
     "symbol": "TSM",
@@ -1528,12 +1528,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0425,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.019,
     "weight_of_equity": 0.981,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1618,
-    "wacc": 0.1588
+    "cost_of_equity": 0.1616,
+    "wacc": 0.1586
   },
   {
     "symbol": "TSM",
@@ -1552,12 +1552,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0439,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0196,
     "weight_of_equity": 0.9804,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1612,
-    "wacc": 0.1581
+    "cost_of_equity": 0.1611,
+    "wacc": 0.158
   },
   {
     "symbol": "TSM",
@@ -1576,12 +1576,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0434,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.019,
     "weight_of_equity": 0.981,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1614,
-    "wacc": 0.1584
+    "cost_of_equity": 0.1613,
+    "wacc": 0.1583
   },
   {
     "symbol": "TSM",
@@ -1600,12 +1600,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0439,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0188,
     "weight_of_equity": 0.9812,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1612,
-    "wacc": 0.1582
+    "cost_of_equity": 0.1611,
+    "wacc": 0.1581
   },
   {
     "symbol": "TSM",
@@ -1624,12 +1624,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0433,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0185,
     "weight_of_equity": 0.9815,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1615,
-    "wacc": 0.1586
+    "cost_of_equity": 0.1613,
+    "wacc": 0.1584
   },
   {
     "symbol": "TSM",
@@ -1648,12 +1648,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0442,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0197,
     "weight_of_equity": 0.9803,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1611,
-    "wacc": 0.158
+    "cost_of_equity": 0.161,
+    "wacc": 0.1579
   },
   {
     "symbol": "TSM",
@@ -1672,12 +1672,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0444,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0197,
     "weight_of_equity": 0.9803,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.161,
-    "wacc": 0.1579
+    "cost_of_equity": 0.1609,
+    "wacc": 0.1578
   },
   {
     "symbol": "TSM",
@@ -1696,12 +1696,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0435,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0203,
     "weight_of_equity": 0.9797,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1614,
-    "wacc": 0.1582
+    "cost_of_equity": 0.1612,
+    "wacc": 0.158
   },
   {
     "symbol": "TSM",
@@ -1720,12 +1720,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0191,
     "weight_of_equity": 0.9809,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1616,
-    "wacc": 0.1586
+    "cost_of_equity": 0.1614,
+    "wacc": 0.1584
   },
   {
     "symbol": "TSM",
@@ -1744,12 +1744,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0433,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0189,
     "weight_of_equity": 0.9811,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1615,
-    "wacc": 0.1585
+    "cost_of_equity": 0.1613,
+    "wacc": 0.1583
   },
   {
     "symbol": "TSM",
@@ -1768,12 +1768,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0431,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.019,
     "weight_of_equity": 0.981,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1615,
-    "wacc": 0.1585
+    "cost_of_equity": 0.1614,
+    "wacc": 0.1584
   },
   {
     "symbol": "TSM",
@@ -1792,12 +1792,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0434,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0189,
     "weight_of_equity": 0.9811,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1614,
-    "wacc": 0.1584
+    "cost_of_equity": 0.1613,
+    "wacc": 0.1583
   },
   {
     "symbol": "TSM",
@@ -1816,12 +1816,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0433,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0187,
     "weight_of_equity": 0.9813,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1615,
-    "wacc": 0.1585
+    "cost_of_equity": 0.1613,
+    "wacc": 0.1583
   },
   {
     "symbol": "TSM",
@@ -1840,12 +1840,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0176,
     "weight_of_equity": 0.9824,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1616,
-    "wacc": 0.1588
+    "cost_of_equity": 0.1614,
+    "wacc": 0.1586
   },
   {
     "symbol": "TSM",
@@ -1864,12 +1864,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0177,
     "weight_of_equity": 0.9823,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1616,
-    "wacc": 0.1588
+    "cost_of_equity": 0.1614,
+    "wacc": 0.1586
   },
   {
     "symbol": "TSM",
@@ -1888,12 +1888,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0431,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0174,
     "weight_of_equity": 0.9826,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1615,
-    "wacc": 0.1587
+    "cost_of_equity": 0.1614,
+    "wacc": 0.1586
   },
   {
     "symbol": "TSM",
@@ -1912,12 +1912,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0175,
     "weight_of_equity": 0.9825,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1616,
-    "wacc": 0.1588
+    "cost_of_equity": 0.1614,
+    "wacc": 0.1586
   },
   {
     "symbol": "TSM",
@@ -1936,12 +1936,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.017,
     "weight_of_equity": 0.983,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1617,
-    "wacc": 0.159
+    "cost_of_equity": 0.1616,
+    "wacc": 0.1589
   },
   {
     "symbol": "TSM",
@@ -1960,12 +1960,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0172,
     "weight_of_equity": 0.9828,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1616,
-    "wacc": 0.1589
+    "cost_of_equity": 0.1614,
+    "wacc": 0.1587
   },
   {
     "symbol": "TSM",
@@ -1984,12 +1984,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0432,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0178,
     "weight_of_equity": 0.9822,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1615,
-    "wacc": 0.1587
+    "cost_of_equity": 0.1613,
+    "wacc": 0.1585
   },
   {
     "symbol": "TSM",
@@ -2008,12 +2008,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0174,
     "weight_of_equity": 0.9826,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1617,
-    "wacc": 0.1589
+    "cost_of_equity": 0.1616,
+    "wacc": 0.1588
   },
   {
     "symbol": "TSM",
@@ -2032,12 +2032,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0176,
     "weight_of_equity": 0.9824,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1617,
-    "wacc": 0.1589
+    "cost_of_equity": 0.1616,
+    "wacc": 0.1588
   },
   {
     "symbol": "TSM",
@@ -2056,12 +2056,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0175,
     "weight_of_equity": 0.9825,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1616,
-    "wacc": 0.1588
+    "cost_of_equity": 0.1614,
+    "wacc": 0.1586
   },
   {
     "symbol": "TSM",
@@ -2080,12 +2080,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0167,
     "weight_of_equity": 0.9833,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1616,
-    "wacc": 0.1589
+    "cost_of_equity": 0.1614,
+    "wacc": 0.1587
   },
   {
     "symbol": "TSM",
@@ -2104,12 +2104,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0434,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0169,
     "weight_of_equity": 0.9831,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1614,
-    "wacc": 0.1587
+    "cost_of_equity": 0.1613,
+    "wacc": 0.1586
   },
   {
     "symbol": "TSM",
@@ -2128,12 +2128,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0431,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0161,
     "weight_of_equity": 0.9839,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1615,
-    "wacc": 0.1589
+    "cost_of_equity": 0.1614,
+    "wacc": 0.1588
   },
   {
     "symbol": "TSM",
@@ -2152,12 +2152,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0435,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.016,
     "weight_of_equity": 0.984,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1614,
-    "wacc": 0.1589
+    "cost_of_equity": 0.1612,
+    "wacc": 0.1587
   },
   {
     "symbol": "TSM",
@@ -2176,12 +2176,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0436,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0165,
     "weight_of_equity": 0.9835,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1613,
-    "wacc": 0.1587
+    "cost_of_equity": 0.1612,
+    "wacc": 0.1586
   },
   {
     "symbol": "TSM",
@@ -2200,12 +2200,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0442,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0164,
     "weight_of_equity": 0.9836,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1611,
-    "wacc": 0.1585
+    "cost_of_equity": 0.161,
+    "wacc": 0.1584
   },
   {
     "symbol": "TSM",
@@ -2224,12 +2224,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.044,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0163,
     "weight_of_equity": 0.9837,
     "cost_of_debt": 0.0029,
-    "cost_of_equity": 0.1612,
-    "wacc": 0.1586
+    "cost_of_equity": 0.161,
+    "wacc": 0.1584
   },
   {
     "symbol": "TSM",
@@ -2248,11 +2248,131 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0439,
-    "beta_5y": 1.3835,
+    "beta_5y": 1.3817,
     "weight_of_debt": 0.0163,
     "weight_of_equity": 0.9837,
     "cost_of_debt": 0.0029,
+    "cost_of_equity": 0.1611,
+    "wacc": 0.1585
+  },
+  {
+    "symbol": "TSM",
+    "report_date": "2026-05-04T00:00:00.000",
+    "market_capitalization": 2082959542191.0,
+    "exchange_rate": 31.24,
+    "total_debt": 1064582700000.0,
+    "total_debt_usd": 34077551216.0,
+    "interest_expense": 3043463000.0,
+    "interest_expense_usd": 97421991.0,
+    "pretax_income": 592355061000.0,
+    "pretax_income_usd": 18961429609.0,
+    "tax_provision": 107211608000.0,
+    "tax_provision_usd": 3431869654.0,
+    "tax_rate_for_calcs": 0.18,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0445,
+    "beta_5y": 1.3817,
+    "weight_of_debt": 0.0161,
+    "weight_of_equity": 0.9839,
+    "cost_of_debt": 0.0029,
+    "cost_of_equity": 0.1608,
+    "wacc": 0.1582
+  },
+  {
+    "symbol": "TSM",
+    "report_date": "2026-05-05T00:00:00.000",
+    "market_capitalization": 2045616575871.0,
+    "exchange_rate": 31.24,
+    "total_debt": 1064582700000.0,
+    "total_debt_usd": 34077551216.0,
+    "interest_expense": 3043463000.0,
+    "interest_expense_usd": 97421991.0,
+    "pretax_income": 592355061000.0,
+    "pretax_income_usd": 18961429609.0,
+    "tax_provision": 107211608000.0,
+    "tax_provision_usd": 3431869654.0,
+    "tax_rate_for_calcs": 0.18,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0443,
+    "beta_5y": 1.3817,
+    "weight_of_debt": 0.0164,
+    "weight_of_equity": 0.9836,
+    "cost_of_debt": 0.0029,
+    "cost_of_equity": 0.1609,
+    "wacc": 0.1583
+  },
+  {
+    "symbol": "TSM",
+    "report_date": "2026-05-06T00:00:00.000",
+    "market_capitalization": 2175746440450.0,
+    "exchange_rate": 31.24,
+    "total_debt": 1064582700000.0,
+    "total_debt_usd": 34077551216.0,
+    "interest_expense": 3043463000.0,
+    "interest_expense_usd": 97421991.0,
+    "pretax_income": 592355061000.0,
+    "pretax_income_usd": 18961429609.0,
+    "tax_provision": 107211608000.0,
+    "tax_provision_usd": 3431869654.0,
+    "tax_rate_for_calcs": 0.18,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0436,
+    "beta_5y": 1.3817,
+    "weight_of_debt": 0.0154,
+    "weight_of_equity": 0.9846,
+    "cost_of_debt": 0.0029,
     "cost_of_equity": 0.1612,
+    "wacc": 0.1588
+  },
+  {
+    "symbol": "TSM",
+    "report_date": "2026-05-07T00:00:00.000",
+    "market_capitalization": 2147998541865.0,
+    "exchange_rate": 31.24,
+    "total_debt": 1064582700000.0,
+    "total_debt_usd": 34077551216.0,
+    "interest_expense": 3043463000.0,
+    "interest_expense_usd": 97421991.0,
+    "pretax_income": 592355061000.0,
+    "pretax_income_usd": 18961429609.0,
+    "tax_provision": 107211608000.0,
+    "tax_provision_usd": 3431869654.0,
+    "tax_rate_for_calcs": 0.18,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0441,
+    "beta_5y": 1.3817,
+    "weight_of_debt": 0.0156,
+    "weight_of_equity": 0.9844,
+    "cost_of_debt": 0.0029,
+    "cost_of_equity": 0.161,
+    "wacc": 0.1585
+  },
+  {
+    "symbol": "TSM",
+    "report_date": "2026-05-08T00:00:00.000",
+    "market_capitalization": 2135187829808.0,
+    "exchange_rate": 31.24,
+    "total_debt": 1064582700000.0,
+    "total_debt_usd": 34077551216.0,
+    "interest_expense": 3043463000.0,
+    "interest_expense_usd": 97421991.0,
+    "pretax_income": 592355061000.0,
+    "pretax_income_usd": 18961429609.0,
+    "tax_provision": 107211608000.0,
+    "tax_provision_usd": 3431869654.0,
+    "tax_rate_for_calcs": 0.18,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0438,
+    "beta_5y": 1.3817,
+    "weight_of_debt": 0.0157,
+    "weight_of_equity": 0.9843,
+    "cost_of_debt": 0.0029,
+    "cost_of_equity": 0.1611,
     "wacc": 0.1586
   }
 ]

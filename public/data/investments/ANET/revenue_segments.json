@@ -137,6 +137,12 @@
       "report_date": "2025-12-31",
       "Product": 2095700000.0,
       "Service": 392100000.0
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2026-03-31",
+      "Product": 2311300000.0,
+      "Service": 397700000.0
     }
   ],
   "by_geography": [
@@ -293,6 +299,20 @@
       "APAC": 229500000.0,
       "Americas": 1840000000.0,
       "EMEA": 238800000.0
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-12-31",
+      "APAC": 153000000.0,
+      "Americas": 1959500000.0,
+      "EMEA": 375300000.0
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2026-03-31",
+      "APAC": 183900000.0,
+      "Americas": 2290100000.0,
+      "EMEA": 235000000.0
     }
   ],
   "by_product": []
