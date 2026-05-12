@@ -315,21 +315,18 @@ export function InterchangeIQClient() {
   ];
 
   return (
-    <div className="tool-page-stack">
-      <div className="tool-shell" data-testid="interchange-iq-shell">
-        {/* ── Sidebar ── */}
-        <aside className="tool-sidebar" aria-label="Interchange IQ navigation">
-          <div className="tool-brand">
-            <div className="tool-brand-mark" aria-hidden="true">
-              <IconCreditCard size={18} />
-            </div>
-            <div className="tool-brand-name">
-              Interchange IQ
-              <small>Fee analyzer</small>
-            </div>
-          </div>
-
-          <nav className="flex flex-col gap-1.5" aria-label="In-page sections">
+    <section
+      className="home-page min-h-screen"
+      aria-label="Interchange IQ"
+      data-testid="interchange-iq-shell"
+    >
+      <div className="home-shell home-section">
+        <div className="flex flex-col gap-6">
+          {/* In-page section nav (replaces sidebar) */}
+          <nav
+            className="flex flex-wrap gap-2"
+            aria-label="In-page sections"
+          >
             {navItems.map((item) => {
               const isActive = item.id === activeView;
               const Icon =
@@ -341,26 +338,26 @@ export function InterchangeIQClient() {
                 <a
                   key={item.id}
                   href={item.href}
-                  className={`tool-nav-link${isActive ? " is-active" : ""}`}
                   aria-current={isActive ? "true" : undefined}
                   onClick={() => setActiveView(item.id)}
+                  className="inline-flex min-h-touch items-center gap-2 rounded-full border px-4 py-1.5 text-sm font-semibold transition-[transform,border-color,background-color,color] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                  style={{
+                    borderColor: isActive ? "var(--home-ink)" : "var(--home-rule)",
+                    background: isActive
+                      ? "var(--home-ink)"
+                      : "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))",
+                    color: isActive ? "var(--home-paper)" : "var(--home-ink-muted)",
+                    fontFamily: "var(--font-home-sans)",
+                  }}
                 >
-                  <Icon size={18} aria-hidden="true" />
+                  <Icon size={16} aria-hidden="true" />
                   {item.label}
                 </a>
               );
             })}
           </nav>
 
-          <div className="tool-sidebar-footer">
-            <IconInfoCircle size={14} aria-hidden="true" />
-            <span>Modeled on 2024 rates</span>
-          </div>
-        </aside>
-
-        {/* ── Main ── */}
-        <div className="tool-main" id="hero">
-          <div className="tool-topbar">
+          <div className="tool-topbar" id="hero">
             <div>
               <p className="tool-crumbs">
                 Interchange IQ / <strong>{VIEW_LABELS[activeView]}</strong>
@@ -406,7 +403,8 @@ export function InterchangeIQClient() {
             </span>
           </div>
 
-          <div className="mt-5 space-y-5">
+          <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,320px)]">
+            <div className="space-y-5">
             <HomeStatsPanel
               id="result-hero"
               title="Verdict at a glance"
@@ -649,10 +647,12 @@ export function InterchangeIQClient() {
               )}
             </article>
           </div>
-        </div>
 
         {/* ── Rail ── */}
-        <aside className="tool-rail" aria-label="Inputs side panel">
+        <aside
+          aria-label="Inputs side panel"
+          className="flex flex-col gap-4 rounded-[1.5rem] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_74%,var(--home-elev-mix))] p-5 shadow-[var(--shadow-sm)] lg:sticky lg:top-24 lg:self-start lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto"
+        >
           <section>
             <p className="tool-rail-label">
               <IconCreditCard size={12} aria-hidden="true" />
@@ -862,6 +862,8 @@ export function InterchangeIQClient() {
           only — actual rates vary by industry, card type, and negotiated terms.
         </p>
       </section>
-    </div>
+        </div>
+      </div>
+    </section>
   );
 }

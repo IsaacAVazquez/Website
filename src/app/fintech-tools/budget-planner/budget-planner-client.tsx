@@ -5,7 +5,6 @@ import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowLeft,
   ArrowRight,
-  Bookmark,
   CalendarRange,
   ChartPie,
   Landmark,
@@ -15,7 +14,6 @@ import {
   ReceiptText,
   Sparkles,
   Trash2,
-  Wallet,
 } from "lucide-react";
 import { getReducedMotionVariants, fadeInVariants } from "@/components/investments/animations";
 import {
@@ -247,46 +245,37 @@ export function BudgetPlannerClient() {
   const numericInput = `${fieldInput} [font-variant-numeric:tabular-nums]`;
 
   return (
-    <div className="mx-auto w-full max-w-[1280px] px-4 pb-14 pt-8 sm:px-6 sm:pb-16 sm:pt-10 lg:px-8">
-      <motion.div
-        variants={motionVariants}
-        initial="hidden"
-        animate="visible"
-        className="tool-page-stack"
-        data-testid="budget-planner-shell"
-      >
-        <div className="tool-shell">
-          <aside className="tool-sidebar" aria-label="Budget planner navigation">
-            <div className="tool-brand">
-              <div className="tool-brand-mark" aria-hidden="true">
-                <Wallet className="h-4 w-4" />
-              </div>
-              <div className="tool-brand-name">
-                Budget Planner
-                <small>Monthly</small>
-              </div>
-            </div>
+    <section
+      className="home-page min-h-screen"
+      aria-label="Budget Planner"
+      data-testid="budget-planner-shell"
+    >
+      <div className="home-shell home-section">
+        <motion.div
+          variants={motionVariants}
+          initial="hidden"
+          animate="visible"
+          className="flex flex-col gap-6"
+        >
+          {/* In-page section nav (replaces sidebar) */}
+          <nav className="flex flex-wrap gap-2" aria-label="Section navigation">
+            {NAV_ITEMS.map((item) => {
+              const Icon = item.icon;
+              return (
+                <a
+                  key={item.id}
+                  href={item.href}
+                  className="inline-flex min-h-touch items-center gap-2 rounded-full border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-4 py-1.5 text-sm font-semibold text-[var(--home-ink-muted)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                  style={{ fontFamily: "var(--font-home-sans)" }}
+                >
+                  <Icon size={16} aria-hidden="true" />
+                  <span>{item.label}</span>
+                </a>
+              );
+            })}
+          </nav>
 
-            <nav className="flex flex-col gap-1.5" aria-label="Section navigation">
-              {NAV_ITEMS.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <a key={item.id} href={item.href} className="tool-nav-link">
-                    <Icon size={18} aria-hidden="true" />
-                    <span>{item.label}</span>
-                  </a>
-                );
-              })}
-            </nav>
-
-            <div className="tool-sidebar-footer">
-              <Bookmark size={14} aria-hidden="true" />
-              <span>Saved in your browser</span>
-            </div>
-          </aside>
-
-          <div className="tool-main">
-            <div className="tool-topbar">
+          <div className="tool-topbar">
               <div className="min-w-0">
                 <p className="tool-crumbs">
                   Budget Planner / <strong>{monthLabel}</strong>
@@ -342,7 +331,8 @@ export function BudgetPlannerClient() {
               <span className="tool-meta-chip-meta">{percentSpent}% of budget</span>
             </div>
 
-            <div className="mt-5 flex flex-col gap-5">
+            <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,320px)]">
+              <div className="flex flex-col gap-5">
               <div id="section-summary" className="scroll-mt-28">
                 <HomeStatsPanel
                   id="budget-planner-stats"
@@ -636,9 +626,11 @@ export function BudgetPlannerClient() {
                 )}
               </section>
             </div>
-          </div>
 
-          <aside className="tool-rail" aria-label="Budget tools">
+          <aside
+            aria-label="Budget tools"
+            className="flex flex-col gap-4 rounded-[1.5rem] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_74%,var(--home-elev-mix))] p-5 shadow-[var(--shadow-sm)] lg:sticky lg:top-24 lg:self-start lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto"
+          >
             <section aria-labelledby="rail-add-expense">
               <p className="tool-rail-label" id="rail-add-expense">
                 <Plus size={12} aria-hidden="true" />
@@ -795,6 +787,7 @@ export function BudgetPlannerClient() {
           </aside>
         </div>
       </motion.div>
-    </div>
+      </div>
+    </section>
   );
 }

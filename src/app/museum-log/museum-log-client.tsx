@@ -18,7 +18,6 @@ import {
   MapPin,
   NotebookPen,
   Plus,
-  Save,
   Search,
   Star,
   Ticket,
@@ -1422,46 +1421,55 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
       : MUSEUM_VIEW_LABELS[activeView];
 
   return (
-    <section className="home-page min-h-screen">
-      <div className="tool-page-stack mx-auto w-full max-w-[1280px] px-4 pb-14 pt-8 sm:px-6 sm:pb-16 sm:pt-10 lg:px-8">
-        <div className="tool-shell" data-testid="museum-log-shell">
-          <aside className="tool-sidebar" aria-label="Museum Log navigation">
-            <div className="tool-brand">
-              <div className="tool-brand-mark" aria-hidden="true">ML</div>
-              <div className="tool-brand-name">
-                Museum Log
-                <small>Personal tracker</small>
-              </div>
-            </div>
+    <section
+      className="home-page min-h-screen"
+      data-testid="museum-log-shell"
+    >
+      <div className="home-shell home-section">
+        <div className="flex flex-col gap-6">
+          {/* In-page section nav (replaces sidebar) */}
+          <nav className="flex flex-wrap gap-2" aria-label="Section navigation">
+            {navItems.map((item) => {
+              const Icon = item.icon;
+              const isActive = item.id === activeView;
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => handleViewChange(item.id)}
+                  aria-current={isActive ? "true" : undefined}
+                  aria-pressed={isActive}
+                  className="inline-flex min-h-touch items-center gap-2 rounded-full border px-4 py-1.5 text-sm font-semibold transition-[border-color,background-color,color] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                  style={{
+                    borderColor: isActive ? "var(--home-ink)" : "var(--home-rule)",
+                    background: isActive
+                      ? "var(--home-ink)"
+                      : "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))",
+                    color: isActive ? "var(--home-paper)" : "var(--home-ink-muted)",
+                    fontFamily: "var(--font-home-sans)",
+                  }}
+                >
+                  <Icon size={16} aria-hidden />
+                  {item.label}
+                  {item.pill ? (
+                    <span
+                      className="ml-1 rounded-full px-2 py-0.5 text-[11px] font-bold tracking-[0.04em]"
+                      style={{
+                        background: isActive
+                          ? "color-mix(in srgb, var(--home-paper) 22%, transparent)"
+                          : "color-mix(in srgb, var(--home-acid) 40%, transparent)",
+                        color: isActive ? "var(--home-paper)" : "var(--home-ink)",
+                      }}
+                    >
+                      {item.pill}
+                    </span>
+                  ) : null}
+                </button>
+              );
+            })}
+          </nav>
 
-            <nav className="flex flex-col gap-1.5" aria-label="Section navigation">
-              {navItems.map((item) => {
-                const Icon = item.icon;
-                const isActive = item.id === activeView;
-                return (
-                  <button
-                    key={item.id}
-                    type="button"
-                    onClick={() => handleViewChange(item.id)}
-                    aria-current={isActive ? "true" : undefined}
-                    className="tool-nav-link"
-                  >
-                    <Icon size={18} aria-hidden />
-                    {item.label}
-                    {item.pill ? <span className="tool-nav-pill">{item.pill}</span> : null}
-                  </button>
-                );
-              })}
-            </nav>
-
-            <div className="tool-sidebar-footer">
-              <Save size={14} aria-hidden="true" />
-              <span>Saved in your browser</span>
-            </div>
-          </aside>
-
-          <div className="tool-main">
-            <div className="tool-topbar">
+          <div className="tool-topbar">
               <div>
                 <p className="tool-crumbs">
                   Museum Log / <strong>{currentViewLabel}</strong>
@@ -1499,7 +1507,8 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
               <span className="tool-meta-chip-meta">Updated {lastUpdated}</span>
             </div>
 
-            <div className="mt-5 space-y-5">
+            <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,320px)]">
+              <div className="space-y-5">
               <HomeStatsPanel
                 id="museum-log-stats"
                 title="Your log at a glance"
@@ -1602,9 +1611,11 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
                 />
               )}
             </div>
-          </div>
 
-          <aside className="tool-rail" aria-label="Museum Log side panel">
+          <aside
+            aria-label="Museum Log side panel"
+            className="flex flex-col gap-4 rounded-[1.5rem] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_74%,var(--home-elev-mix))] p-5 shadow-[var(--shadow-sm)] lg:sticky lg:top-24 lg:self-start lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto"
+          >
             {selectedMuseum ? (
               <section>
                 <p className="tool-rail-label">
@@ -1757,6 +1768,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
             </p>
           </section>
         )}
+        </div>
       </div>
     </section>
   );

@@ -25,8 +25,6 @@ export function InvestmentsClient({
 }: InvestmentsClientProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const shellClassName =
-    "mx-auto w-full max-w-[1680px] px-4 pb-12 pt-8 sm:px-6 sm:pb-14 sm:pt-10 lg:px-8 xl:px-10 2xl:px-12";
 
   const hasManagedParams =
     searchParams.get("symbol") !== null ||
@@ -87,11 +85,11 @@ export function InvestmentsClient({
 
   return (
     <section
-      className="min-h-screen bg-[radial-gradient(circle_at_top_left,color-mix(in_srgb,var(--home-haze)_10%,transparent),transparent_28%),linear-gradient(180deg,var(--home-paper)_0%,color-mix(in_srgb,var(--home-paper-alt)_65%,var(--home-paper))_100%)]"
+      className="home-page min-h-screen"
       aria-label="Investments dashboard"
       data-testid="investments-shell"
     >
-      <div className={shellClassName}>
+      <div className="home-shell home-shell-investments home-section">
         <InvestmentsDashboard
           researchSymbol={routeState.symbol}
           researchTab={routeState.section}

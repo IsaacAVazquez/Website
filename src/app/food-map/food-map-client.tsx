@@ -9,7 +9,7 @@ import {
 } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
-import { IconBookmark, IconSearch } from "@tabler/icons-react";
+import { IconSearch } from "@tabler/icons-react";
 import {
   FOOD_MAP_CUISINES,
   FOOD_MAP_MEALS,
@@ -704,193 +704,150 @@ function FoodMapWorkbench({
       aria-label="Food Map"
       data-testid="food-map-shell"
     >
-      <div className="tool-page-stack">
-        <motion.div variants={variants} initial="hidden" animate="visible">
-          <div className="tool-shell" data-testid="food-map-tool-shell">
-            <aside className="tool-sidebar" aria-label="Food map navigation">
-              <div className="tool-brand">
-                <div className="tool-brand-mark" aria-hidden="true">
-                  IV
-                </div>
-                <div className="tool-brand-name">
-                  Food Map
-                  <small>Austin shortlist</small>
-                </div>
-              </div>
+      <div className="home-shell home-section">
+        <motion.div
+          variants={variants}
+          initial="hidden"
+          animate="visible"
+          className="flex flex-col gap-6"
+        >
+          <div className="tool-topbar" id="food-map-main">
+            <div>
+              <p className="tool-crumbs">
+                Food Map / <strong>{currentNeighborhoodName}</strong>
+              </p>
+              <h1>Food Map</h1>
+            </div>
 
-              <nav
-                className="flex flex-col gap-1.5"
-                aria-label="Neighborhood navigation"
-              >
-                {FOOD_MAP_NEIGHBORHOODS.map((neighborhood) => {
-                  const counts = countPlacesByNeighborhood(FOOD_MAP_PLACES);
-                  const isActive = routeState.neighborhoods.includes(
-                    neighborhood.id
-                  );
-                  return (
-                    <button
-                      key={neighborhood.id}
-                      type="button"
-                      onClick={() => handleToggleNeighborhood(neighborhood.id)}
-                      aria-pressed={isActive}
-                      className={`tool-nav-link${isActive ? " is-active" : ""}`}
-                    >
-                      <span
-                        aria-hidden="true"
-                        className="inline-block h-2.5 w-2.5 flex-none rounded-full"
-                        style={{
-                          background: `color-mix(in srgb, ${neighborhood.accent} 70%, var(--home-rule))`,
-                        }}
-                      />
-                      <span className="truncate">{neighborhood.name}</span>
-                      <span className="tool-nav-pill">
-                        {counts[neighborhood.id] ?? 0}
-                      </span>
-                    </button>
-                  );
-                })}
-              </nav>
+            <label className="tool-search" aria-label="Filter by name or cuisine">
+              <IconSearch size={14} aria-hidden="true" />
+              <input
+                type="search"
+                placeholder="Filter by name or cuisine…"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+            </label>
+          </div>
 
-              <div className="tool-sidebar-footer">
-                <IconBookmark size={14} aria-hidden="true" />
-                <span>Curated by Isaac</span>
-              </div>
-            </aside>
+          <div
+            className="tool-meta-chip"
+            role="status"
+            aria-live="polite"
+          >
+            <span className="tool-meta-chip-dot" aria-hidden="true" />
+            <span>
+              <strong>{FOOD_MAP_PLACES.length}</strong> curated stops
+            </span>
+            <span className="tool-meta-chip-divider" aria-hidden="true">
+              ·
+            </span>
+            <span>
+              <strong>{FOOD_MAP_NEIGHBORHOODS.length}</strong> neighborhoods
+            </span>
+            <span className="tool-meta-chip-spacer" />
+            <span className="tool-meta-chip-meta">
+              Showing {visiblePlaces.length} of {FOOD_MAP_PLACES.length} spots.
+            </span>
+          </div>
 
-            <div className="tool-main" id="food-map-main">
-              <div className="tool-topbar">
-                <div>
-                  <p className="tool-crumbs">
-                    Food Map / <strong>{currentNeighborhoodName}</strong>
-                  </p>
-                  <h1>Food Map</h1>
-                </div>
+          <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,320px)]">
+            <div className="flex flex-col gap-4">
+              <HomeStatsPanel
+                id="food-map-stats"
+                title="Food Map at a glance"
+                meta={`${visiblePlaces.length} of ${FOOD_MAP_PLACES.length} visible`}
+                hideLiveDot
+                cells={foodMapStatsCells}
+                pills={[
+                  { label: "All stops", href: "/food-map" },
+                  { label: "Cheap eats", href: "/food-map?cuisine=tex-mex" },
+                  { label: "Date night", href: "/food-map?pick=suerte" },
+                  { label: "Tourist-tested", href: "/food-map?pick=franklin-barbecue" },
+                ]}
+              />
 
-                <label className="tool-search" aria-label="Filter by name or cuisine">
-                  <IconSearch size={14} aria-hidden="true" />
-                  <input
-                    type="search"
-                    placeholder="Filter by name or cuisine…"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                  />
-                </label>
+              <div className="tool-card tool-card-hero overflow-hidden p-4 sm:p-5">
+                <FoodMapSvg
+                  state={routeState}
+                  visiblePlaces={filteredPlaces}
+                  onSelectPlace={handleSelectPlace}
+                  onToggleNeighborhood={handleToggleNeighborhood}
+                />
               </div>
 
               <div
-                className="tool-meta-chip"
-                role="status"
-                aria-live="polite"
+                className="tool-card flex flex-col"
+                style={{ gap: 12 }}
               >
-                <span className="tool-meta-chip-dot" aria-hidden="true" />
-                <span>
-                  <strong>{FOOD_MAP_PLACES.length}</strong> curated stops
-                </span>
-                <span className="tool-meta-chip-divider" aria-hidden="true">
-                  ·
-                </span>
-                <span>
-                  <strong>{FOOD_MAP_NEIGHBORHOODS.length}</strong> neighborhoods
-                </span>
-                <span className="tool-meta-chip-spacer" />
-                <span className="tool-meta-chip-meta">
-                  Showing {visiblePlaces.length} of {FOOD_MAP_PLACES.length} spots.
-                </span>
-              </div>
-
-              <div className="mt-5 flex flex-col gap-4">
-                <HomeStatsPanel
-                  id="food-map-stats"
-                  title="Food Map at a glance"
-                  meta={`${visiblePlaces.length} of ${FOOD_MAP_PLACES.length} visible`}
-                  hideLiveDot
-                  cells={foodMapStatsCells}
-                  pills={[
-                    { label: "All stops", href: "/food-map" },
-                    { label: "Cheap eats", href: "/food-map?cuisine=tex-mex" },
-                    { label: "Date night", href: "/food-map?pick=suerte" },
-                    { label: "Tourist-tested", href: "/food-map?pick=franklin-barbecue" },
-                  ]}
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <p className="home-kicker mb-0">Filters</p>
+                  <button
+                    type="button"
+                    onClick={handleResetFilters}
+                    disabled={!hasFilters}
+                    className="min-h-touch rounded-full px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] transition-[transform,border-color,background-color,color,box-shadow] duration-200 ease disabled:cursor-not-allowed disabled:opacity-55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                    style={{
+                      ...getPanelStyle(),
+                      color: "var(--home-ink)",
+                      fontFamily: "var(--font-home-sans)",
+                    }}
+                  >
+                    Reset filters
+                  </button>
+                </div>
+                <NeighborhoodChips
+                  state={routeState}
+                  onToggle={handleToggleNeighborhood}
                 />
-
-                <div className="tool-card tool-card-hero overflow-hidden p-4 sm:p-5">
-                  <FoodMapSvg
-                    state={routeState}
-                    visiblePlaces={filteredPlaces}
-                    onSelectPlace={handleSelectPlace}
-                    onToggleNeighborhood={handleToggleNeighborhood}
-                  />
-                </div>
-
-                <div
-                  className="tool-card flex flex-col"
-                  style={{ gap: 12 }}
-                >
-                  <div className="flex flex-wrap items-center justify-between gap-2">
-                    <p className="home-kicker mb-0">Filters</p>
-                    <button
-                      type="button"
-                      onClick={handleResetFilters}
-                      disabled={!hasFilters}
-                      className="min-h-touch rounded-full px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] transition-[transform,border-color,background-color,color,box-shadow] duration-200 ease disabled:cursor-not-allowed disabled:opacity-55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
-                      style={{
-                        ...getPanelStyle(),
-                        color: "var(--home-ink)",
-                        fontFamily: "var(--font-home-sans)",
-                      }}
-                    >
-                      Reset filters
-                    </button>
-                  </div>
-                  <NeighborhoodChips
-                    state={routeState}
-                    onToggle={handleToggleNeighborhood}
-                  />
-                  <CuisineChips
-                    state={routeState}
-                    onToggle={handleToggleCuisine}
-                  />
-                  <MealSegmented state={routeState} onChange={handleSetMeal} />
-                </div>
-
-                {visiblePlaces.length === 0 ? (
-                  <div className="tool-empty">
-                    <p className="text-sm font-semibold" style={{ color: "var(--home-ink)" }}>
-                      Nothing matches that combination yet.
-                    </p>
-                    <p>
-                      The list intentionally stays short, so a few filters can
-                      rule it out entirely.
-                    </p>
-                    <button
-                      type="button"
-                      onClick={handleResetFilters}
-                      className="mt-4 min-h-touch rounded-full px-4 py-2 text-sm font-semibold transition-[transform,border-color,background-color,color] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
-                      style={{
-                        ...getPanelStyle(),
-                        color: "var(--home-ink)",
-                        fontFamily: "var(--font-home-sans)",
-                      }}
-                    >
-                      Reset filters
-                    </button>
-                  </div>
-                ) : (
-                  <div className="grid gap-3 md:grid-cols-2">
-                    {visiblePlaces.map((place) => (
-                      <PlaceCard
-                        key={place.id}
-                        place={place}
-                        isSelected={routeState.pick === place.id}
-                        onSelect={handleSelectPlace}
-                      />
-                    ))}
-                  </div>
-                )}
+                <CuisineChips
+                  state={routeState}
+                  onToggle={handleToggleCuisine}
+                />
+                <MealSegmented state={routeState} onChange={handleSetMeal} />
               </div>
+
+              {visiblePlaces.length === 0 ? (
+                <div className="tool-empty">
+                  <p className="text-sm font-semibold" style={{ color: "var(--home-ink)" }}>
+                    Nothing matches that combination yet.
+                  </p>
+                  <p>
+                    The list intentionally stays short, so a few filters can
+                    rule it out entirely.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={handleResetFilters}
+                    className="mt-4 min-h-touch rounded-full px-4 py-2 text-sm font-semibold transition-[transform,border-color,background-color,color] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                    style={{
+                      ...getPanelStyle(),
+                      color: "var(--home-ink)",
+                      fontFamily: "var(--font-home-sans)",
+                    }}
+                  >
+                    Reset filters
+                  </button>
+                </div>
+              ) : (
+                <div className="grid gap-3 md:grid-cols-2">
+                  {visiblePlaces.map((place) => (
+                    <PlaceCard
+                      key={place.id}
+                      place={place}
+                      isSelected={routeState.pick === place.id}
+                      onSelect={handleSelectPlace}
+                    />
+                  ))}
+                </div>
+              )}
             </div>
 
-            <aside className="tool-rail" aria-label="Food map side panel">
+            <aside
+              aria-label="Food map side panel"
+              className="flex flex-col gap-4 rounded-[1.5rem] p-5 lg:sticky lg:top-24 lg:self-start"
+              style={getPanelStyle()}
+            >
               {selectedPlace ? (
                 <PlaceDetail place={selectedPlace} onClear={handleClearPick} />
               ) : (

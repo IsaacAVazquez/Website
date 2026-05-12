@@ -283,109 +283,73 @@ export function WineCellarClient() {
 
   return (
     <section
-      className="min-h-screen bg-[radial-gradient(circle_at_top_left,color-mix(in_srgb,var(--home-haze)_11%,transparent),transparent_30%),linear-gradient(180deg,color-mix(in_srgb,var(--home-paper-alt)_88%,var(--home-paper))_0%,var(--home-paper)_100%)]"
+      className="home-page min-h-screen"
       aria-label="Wine cellar workspace"
       data-testid="wine-cellar-shell"
     >
-      <div className="mx-auto w-full max-w-[1680px] px-4 pb-14 pt-8 sm:px-6 sm:pb-16 sm:pt-10 lg:px-8 xl:px-10 2xl:px-12">
+      <div className="home-shell home-section">
         <motion.div
           variants={motionVariants}
           initial="hidden"
           animate="visible"
-          className="tool-page-stack"
+          className="flex flex-col gap-6"
         >
-          <div className="tool-shell" data-testid="wine-cellar-tool-shell">
-            <aside className="tool-sidebar" aria-label="Wine cellar navigation">
-              <div className="tool-brand">
-                <div className="tool-brand-mark" aria-hidden="true">
-                  <Wine className="h-4 w-4" />
-                </div>
-                <div className="tool-brand-name">
-                  Wine Cellar
-                  <small>Personal log</small>
-                </div>
-              </div>
+          <div className="tool-topbar" id="cellar">
+            <div>
+              <p className="tool-crumbs">
+                Wine Cellar / <strong>Cellar</strong>
+              </p>
+              <h1>Wine Cellar</h1>
+            </div>
 
-              <nav className="flex flex-col gap-1.5" aria-label="Section navigation">
-                <a href="#cellar" className="tool-nav-link">
-                  <Wine aria-hidden="true" />
-                  Cellar
-                  {hasEntries ? (
-                    <span className="tool-nav-pill">{entries.length}</span>
-                  ) : null}
-                </a>
-                <a href="#stats" className="tool-nav-link">
-                  <Star aria-hidden="true" />
-                  Stats
-                </a>
-                <a href="#filters" className="tool-nav-link">
-                  <Filter aria-hidden="true" />
-                  Search & filter
-                </a>
-              </nav>
+            <label className="tool-search" aria-label="Search wines">
+              <Search size={14} aria-hidden="true" />
+              <input
+                type="search"
+                placeholder="Search by name, region, or notes…"
+                value={filters.search}
+                onChange={(event) =>
+                  updateFilters((current) => ({
+                    ...current,
+                    search: event.target.value,
+                  }))
+                }
+              />
+            </label>
+          </div>
 
-              <div className="tool-sidebar-footer">
-                <Bookmark size={16} aria-hidden="true" />
-                <span>Saved in your browser</span>
-              </div>
-            </aside>
+          <div className="tool-meta-chip" role="status" aria-live="polite">
+            <span className="tool-meta-chip-dot" aria-hidden="true" />
+            <span>
+              <strong>
+                {hasEntries ? entries.length : "—"}
+              </strong>{" "}
+              {hasEntries && entries.length === 1 ? "bottle" : "bottles"}
+            </span>
+            <span className="tool-meta-chip-divider" aria-hidden="true">
+              ·
+            </span>
+            <span>
+              avg rating{" "}
+              <strong>
+                {hasEntries ? summary.averageRating.toFixed(1) : "—"}
+              </strong>
+            </span>
+            <span className="tool-meta-chip-divider" aria-hidden="true">
+              ·
+            </span>
+            <span>
+              last logged{" "}
+              <strong>
+                {lastLoggedDate ? formatTastedDate(lastLoggedDate) : "—"}
+              </strong>
+            </span>
+            <span className="tool-meta-chip-spacer" />
+            <span className="tool-meta-chip-meta">Local browser only</span>
+          </div>
 
-            <div className="tool-main" id="cellar">
-              <div className="tool-topbar">
-                <div>
-                  <p className="tool-crumbs">
-                    Wine Cellar / <strong>Cellar</strong>
-                  </p>
-                  <h1>Wine Cellar</h1>
-                </div>
-
-                <label className="tool-search" aria-label="Search wines">
-                  <Search size={14} aria-hidden="true" />
-                  <input
-                    type="search"
-                    placeholder="Search by name, region, or notes…"
-                    value={filters.search}
-                    onChange={(event) =>
-                      updateFilters((current) => ({
-                        ...current,
-                        search: event.target.value,
-                      }))
-                    }
-                  />
-                </label>
-              </div>
-
-              <div className="tool-meta-chip" role="status" aria-live="polite">
-                <span className="tool-meta-chip-dot" aria-hidden="true" />
-                <span>
-                  <strong>
-                    {hasEntries ? entries.length : "—"}
-                  </strong>{" "}
-                  {hasEntries && entries.length === 1 ? "bottle" : "bottles"}
-                </span>
-                <span className="tool-meta-chip-divider" aria-hidden="true">
-                  ·
-                </span>
-                <span>
-                  avg rating{" "}
-                  <strong>
-                    {hasEntries ? summary.averageRating.toFixed(1) : "—"}
-                  </strong>
-                </span>
-                <span className="tool-meta-chip-divider" aria-hidden="true">
-                  ·
-                </span>
-                <span>
-                  last logged{" "}
-                  <strong>
-                    {lastLoggedDate ? formatTastedDate(lastLoggedDate) : "—"}
-                  </strong>
-                </span>
-                <span className="tool-meta-chip-spacer" />
-                <span className="tool-meta-chip-meta">Local browser only</span>
-              </div>
-
-              <div className="mt-5 flex flex-col gap-5">
+          <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,360px)]">
+            <div className="flex flex-col gap-5">
                 <div id="stats" className="scroll-mt-28">
                   <HomeStatsPanel
                     id="wine-cellar-stats"
@@ -630,10 +594,12 @@ export function WineCellarClient() {
                     </ul>
                   )}
                 </section>
-              </div>
             </div>
 
-            <aside className="tool-rail" aria-label="Wine cellar side panel">
+            <aside
+              aria-label="Wine cellar side panel"
+              className="flex flex-col gap-4 rounded-[1.5rem] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_74%,var(--home-elev-mix))] p-5 shadow-[var(--shadow-sm)] lg:sticky lg:top-24 lg:self-start lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto"
+            >
               <section id="add-tasting">
                 <p className="tool-rail-label">
                   <Wine size={12} aria-hidden="true" />

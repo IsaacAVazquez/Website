@@ -8,6 +8,7 @@ import {
   useRef,
   useState,
   type CSSProperties,
+  type ReactNode,
 } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -15,12 +16,18 @@ import {
   Bell,
   BellOff,
   BriefcaseBusiness,
+  CalendarDays,
   CircleAlert,
+  Download,
+  Edit3,
   ExternalLink,
   Mail,
   MapPin,
   RefreshCcw,
+  Save,
   Search,
+  Trash2,
+  Upload,
   X,
 } from "lucide-react";
 import {
@@ -39,6 +46,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ChevronDown } from "lucide-react";
+import {
+  MBA_APPLICATION_PRIORITIES,
+  MBA_APPLICATION_PRIORITY_LABELS,
+  MBA_APPLICATION_STATUSES,
+  MBA_APPLICATION_STATUS_LABELS,
+} from "@/lib/mba-applications";
+import { useMBAApplications } from "@/hooks/useMBAApplications";
 import { useMBAJobs } from "@/hooks/useMBAJobs";
 import { MBA_COMPANIES, MBA_COMPANY_MAP } from "@/constants/mba-companies";
 import {
@@ -48,11 +62,15 @@ import {
 import type {
   MBACategory,
   MBACategoryFilter,
+  MBAApplicationPriority,
+  MBAApplicationStatus,
   MBACompany,
   MBAJob,
   MBAJobRoleFamily,
   MBAJobRoleType,
   MBAJobsSearchState,
+  MBAJobsSourceStatus,
+  MBATrackedApplication,
   MBARoleFamilyFilter,
   MBARoleTypeFilter,
   MBASortOrder,
@@ -62,6 +80,7 @@ import {
   CATEGORY_LABELS,
   CATEGORY_OPTIONS,
   DEFAULT_MBA_JOBS_STATE,
+  EXTERNAL_LABELS,
   normalizeMBAJobsState,
   ROLE_FAMILY_LABELS,
   ROLE_FAMILY_OPTIONS,
@@ -69,6 +88,7 @@ import {
   ROLE_TYPE_OPTIONS,
   SORT_LABELS,
   SORT_OPTIONS,
+  VIEW_LABELS,
 } from "./mba-jobs-state";
 
 // ---------------------------------------------------------------------------
@@ -108,6 +128,10 @@ const DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
   day: "numeric",
   hour: "numeric",
   minute: "2-digit",
+});
+const DATE_KEY_FORMATTER = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "numeric",
 });
 
 function formatFetchedAt(d: Date | null): string {
@@ -150,6 +174,29 @@ const ROLE_TYPE_STYLES: Record<
     borderWeight: 28,
   },
 };
+
+const APPLICATION_STATUS_ACCENTS: Record<MBAApplicationStatus, string> = {
+  saved: "var(--home-haze)",
+  applied: "var(--home-moss)",
+  interviewing: "var(--home-acid)",
+  offer: "color-mix(in srgb, var(--home-moss) 70%, var(--home-acid) 30%)",
+  rejected: "var(--home-stone)",
+  archived: "var(--home-ink-muted)",
+};
+
+const APPLICATION_PRIORITY_ACCENTS: Record<MBAApplicationPriority, string> = {
+  low: "var(--home-stone)",
+  medium: "var(--home-haze)",
+  high: "var(--home-acid)",
+};
+
+const ACTIVE_APPLICATION_STATUSES: MBAApplicationStatus[] = [
+  "saved",
+  "applied",
+  "interviewing",
+  "offer",
+  "rejected",
+];
 
 function getReadableAccentColor(accent: string): string {
   return `color-mix(in srgb, var(--home-ink) 76%, ${accent} 24%)`;
@@ -226,6 +273,7 @@ function buildJobSearchHaystack(job: MBAJob): string {
       job.department,
       job.location,
       job.snippet,
+      job.sourceName,
       ROLE_TYPE_LABELS[job.roleType],
       ...familyTerms,
     ]
@@ -344,15 +392,107 @@ function buildManualLinkedInQuery(
   return parts.join(" ");
 }
 
+function buildRoleSearchQuery(state: MBAJobsSearchState, suffix?: string): string {
+  const parts: string[] = [];
+
+  if (state.q.trim()) {
+    parts.push(state.q.trim());
+  } else {
+    if (state.roleFamily !== "all") {
+      parts.push(MBA_ROLE_FAMILY_LABELS[state.roleFamily]);
+    } else {
+      parts.push("MBA business roles");
+    }
+
+    if (state.roleType === "internship") {
+      parts.push("internship");
+    } else if (state.roleType === "full-time") {
+      parts.push("full time");
+    }
+  }
+
+  if (state.category !== "all") {
+    parts.push(CATEGORY_LABELS[state.category]);
+  }
+  if (state.location.trim()) {
+    parts.push(state.location.trim());
+  }
+  if (suffix) {
+    parts.push(suffix);
+  }
+
+  return parts.join(" ");
+}
+
+function buildExternalSearchLinks(state: MBAJobsSearchState) {
+  const query = buildRoleSearchQuery(state);
+  const careerPageQuery = buildRoleSearchQuery(
+    state,
+    "company careers OR jobs"
+  );
+  return [
+    {
+      label: "LinkedIn",
+      href: `https://www.linkedin.com/jobs/search/?keywords=${encodeURIComponent(query)}`,
+      ariaLabel: "Search LinkedIn for the current role filters",
+    },
+    {
+      label: "Google",
+      href: `https://www.google.com/search?q=${encodeURIComponent(query)}`,
+      ariaLabel: "Search Google for the current role filters",
+    },
+    {
+      label: "Handshake",
+      href: `https://app.joinhandshake.com/stu/postings?text=${encodeURIComponent(query)}`,
+      ariaLabel: "Search Handshake for the current role filters",
+    },
+    {
+      label: "Wellfound",
+      href: `https://wellfound.com/jobs?q=${encodeURIComponent(query)}`,
+      ariaLabel: "Search Wellfound for the current role filters",
+    },
+    {
+      label: "Career pages",
+      href: `https://www.google.com/search?q=${encodeURIComponent(careerPageQuery)}`,
+      ariaLabel: "Search company career pages for the current role filters",
+    },
+  ];
+}
+
 function hasActiveFilters(state: MBAJobsSearchState): boolean {
   return (
     state.q.trim().length > 0 ||
     state.location.trim().length > 0 ||
+    state.external !== DEFAULT_MBA_JOBS_STATE.external ||
     state.category !== DEFAULT_MBA_JOBS_STATE.category ||
     state.roleType !== DEFAULT_MBA_JOBS_STATE.roleType ||
     state.roleFamily !== DEFAULT_MBA_JOBS_STATE.roleFamily ||
     state.sort !== DEFAULT_MBA_JOBS_STATE.sort
   );
+}
+
+function getTodayDateKey(now = new Date()): string {
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+function formatDateKey(value: string | null): string {
+  if (!value) return "";
+  const date = new Date(`${value}T00:00:00`);
+  if (Number.isNaN(date.getTime())) return value;
+  return DATE_KEY_FORMATTER.format(date);
+}
+
+function downloadTextFile(filename: string, content: string, type: string) {
+  const blob = new Blob([content], { type });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = filename;
+  anchor.click();
+  URL.revokeObjectURL(url);
 }
 
 // ---------------------------------------------------------------------------
@@ -462,6 +602,39 @@ function RoleFamilyChip({ family }: { family: MBAJobRoleFamily }) {
   );
 }
 
+function ApplicationStatusChip({ status }: { status: MBAApplicationStatus }) {
+  return (
+    <span
+      className="inline-flex items-center rounded-full px-3 py-1 text-[0.68rem] font-semibold"
+      style={getChipStyle(APPLICATION_STATUS_ACCENTS[status], 18, 30)}
+    >
+      {MBA_APPLICATION_STATUS_LABELS[status]}
+    </span>
+  );
+}
+
+function ExternalLeadChip({ sourceName }: { sourceName?: string }) {
+  return (
+    <span
+      className="inline-flex items-center rounded-full px-3 py-1 text-[0.68rem] font-semibold"
+      style={getChipStyle("var(--home-haze)", 16, 28)}
+    >
+      {sourceName ? `${sourceName} lead` : "External lead"}
+    </span>
+  );
+}
+
+function ApplicationPriorityChip({ priority }: { priority: MBAApplicationPriority }) {
+  return (
+    <span
+      className="inline-flex items-center rounded-full px-3 py-1 text-[0.68rem] font-semibold"
+      style={getChipStyle(APPLICATION_PRIORITY_ACCENTS[priority], 14, 24)}
+    >
+      {MBA_APPLICATION_PRIORITY_LABELS[priority]} priority
+    </span>
+  );
+}
+
 function CardActionLink({
   href,
   label,
@@ -497,12 +670,20 @@ function CardActionLink({
 function JobCard({
   job,
   isNew,
+  application,
   onMarkSeen,
+  onTrack,
+  onMarkApplied,
+  onEditApplication,
   currentState,
 }: {
   job: MBAJob;
   isNew: boolean;
+  application: MBATrackedApplication | undefined;
   onMarkSeen: () => void;
+  onTrack: () => void;
+  onMarkApplied: () => void;
+  onEditApplication: () => void;
   currentState: MBAJobsSearchState;
 }) {
   const company = MBA_COMPANY_MAP.get(job.companyId);
@@ -524,6 +705,7 @@ function JobCard({
               <p className="home-meta mb-0">{job.companyName}</p>
               <p className="mb-0 mt-1 text-sm" style={{ color: "var(--home-ink-muted)" }}>
                 {job.department}
+                {job.sourceName ? ` · via ${job.sourceName}` : ""}
               </p>
             </div>
           </div>
@@ -532,6 +714,10 @@ function JobCard({
             className="flex max-w-full flex-wrap items-center gap-2 sm:justify-end"
           >
             {isNew && <NewBadge />}
+            {application && <ApplicationStatusChip status={application.status} />}
+            {job.atsType === "external-api" && (
+              <ExternalLeadChip sourceName={job.sourceName} />
+            )}
             <RoleTypeChip roleType={job.roleType} />
             <CategoryChip category={job.category} />
           </div>
@@ -579,7 +765,58 @@ function JobCard({
               job.location
             )}
           </p>
+          {job.sourceName && (
+            <p className="home-note-copy mb-0 mt-2 text-sm">
+              Found through {job.sourceName}
+              {job.sourceUrl ? (
+                <>
+                  {" "}
+                  ·{" "}
+                  <a
+                    href={job.sourceUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline decoration-[var(--home-rule)] underline-offset-4"
+                  >
+                    Source
+                  </a>
+                </>
+              ) : null}
+            </p>
+          )}
           <div className="mt-4 flex flex-wrap items-center gap-3">
+            <button
+              type="button"
+              onClick={() => {
+                onTrack();
+                onMarkSeen();
+              }}
+              className="home-button home-button-secondary px-4 py-3 text-sm"
+            >
+              <Save className="h-3.5 w-3.5" aria-hidden="true" />
+              {application ? "Tracked" : "Track"}
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                onMarkApplied();
+                onMarkSeen();
+              }}
+              className="home-button home-button-secondary px-4 py-3 text-sm"
+            >
+              <BriefcaseBusiness className="h-3.5 w-3.5" aria-hidden="true" />
+              Mark applied
+            </button>
+            {application && (
+              <button
+                type="button"
+                onClick={onEditApplication}
+                className="home-button home-button-secondary px-4 py-3 text-sm"
+              >
+                <Edit3 className="h-3.5 w-3.5" aria-hidden="true" />
+                Edit
+              </button>
+            )}
             <CardActionLink
               href={linkedinUrl}
               label="LinkedIn search"
@@ -655,6 +892,34 @@ function ManualCompanyCard({
         </div>
       </div>
     </article>
+  );
+}
+
+function SearchElsewhereStrip({ currentState }: { currentState: MBAJobsSearchState }) {
+  const links = buildExternalSearchLinks(currentState);
+
+  return (
+    <section className="space-y-4" aria-labelledby="mba-search-elsewhere-heading">
+      <SectionLead
+        kicker="Search elsewhere"
+        title="Open the same search on outside boards."
+        description="These are outbound searches only. LinkedIn stays a shortcut here, not a server-side source."
+        id="mba-search-elsewhere-heading"
+      />
+      <div className="section-panel">
+        <div className="flex flex-wrap gap-3">
+          {links.map((link) => (
+            <CardActionLink
+              key={link.label}
+              href={link.href}
+              label={link.label}
+              ariaLabel={link.ariaLabel}
+              trailingIcon
+            />
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -1199,6 +1464,753 @@ function CompanyFilterStrip({
   );
 }
 
+interface ApplicationFormState {
+  companyName: string;
+  title: string;
+  location: string;
+  department: string;
+  applyUrl: string;
+  sourceUrl: string;
+  status: MBAApplicationStatus;
+  priority: MBAApplicationPriority;
+  contact: string;
+  followUpDate: string;
+  deadline: string;
+  notes: string;
+}
+
+const EMPTY_APPLICATION_FORM: ApplicationFormState = {
+  companyName: "",
+  title: "",
+  location: "",
+  department: "",
+  applyUrl: "",
+  sourceUrl: "",
+  status: "saved",
+  priority: "medium",
+  contact: "",
+  followUpDate: "",
+  deadline: "",
+  notes: "",
+};
+
+function getApplicationFormState(
+  application: MBATrackedApplication | null
+): ApplicationFormState {
+  if (!application) return EMPTY_APPLICATION_FORM;
+  return {
+    companyName: application.jobSnapshot.companyName,
+    title: application.jobSnapshot.title,
+    location: application.jobSnapshot.location,
+    department: application.jobSnapshot.department,
+    applyUrl: application.jobSnapshot.applyUrl,
+    sourceUrl: application.sourceUrl,
+    status: application.status,
+    priority: application.priority,
+    contact: application.contact,
+    followUpDate: application.followUpDate ?? "",
+    deadline: application.deadline ?? "",
+    notes: application.notes,
+  };
+}
+
+function FormField({
+  label,
+  children,
+}: {
+  label: string;
+  children: ReactNode;
+}) {
+  return (
+    <label className="block space-y-2">
+      <span className="home-meta mb-0">{label}</span>
+      {children}
+    </label>
+  );
+}
+
+const applicationInputClass =
+  "w-full min-h-[44px] rounded-[0.9rem] border px-3 py-2 text-sm outline-none transition-[border-color,box-shadow] duration-200 ease focus-visible:border-[var(--home-haze)] focus-visible:ring-2 focus-visible:ring-[color-mix(in_srgb,var(--home-haze)_35%,transparent)]";
+
+const applicationInputStyle: CSSProperties = {
+  background: "var(--home-paper-alt)",
+  borderColor: "var(--home-rule)",
+  color: "var(--home-ink)",
+  fontFamily: "var(--font-home-sans)",
+};
+
+function ApplicationEditDialog({
+  isOpen,
+  application,
+  onClose,
+  onSave,
+}: {
+  isOpen: boolean;
+  application: MBATrackedApplication | null;
+  onClose: () => void;
+  onSave: (form: ApplicationFormState, application: MBATrackedApplication | null) => void;
+}) {
+  const [form, setForm] = useState<ApplicationFormState>(() =>
+    getApplicationFormState(application)
+  );
+  const dialogRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Dialog form mirrors the selected application each time it opens.
+    setForm(getApplicationFormState(application));
+  }, [application, isOpen]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const dialog = dialogRef.current;
+    dialog?.querySelector<HTMLElement>("input, select, textarea, button")?.focus();
+
+    function handleKey(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        onClose();
+      }
+    }
+
+    document.addEventListener("keydown", handleKey);
+    return () => document.removeEventListener("keydown", handleKey);
+  }, [isOpen, onClose]);
+
+  if (!isOpen) return null;
+
+  const canSave = form.companyName.trim() && form.title.trim();
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto p-4"
+      style={{ background: "rgba(0,0,0,0.45)" }}
+      role="presentation"
+      onClick={(event) => {
+        if (event.target === event.currentTarget) onClose();
+      }}
+    >
+      <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="application-dialog-title"
+        className="home-card max-h-[90vh] w-full max-w-2xl overflow-y-auto p-6 sm:p-7"
+        style={{ background: "var(--home-paper)" }}
+      >
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <p className="home-kicker mb-2">Application tracker</p>
+            <h2
+              id="application-dialog-title"
+              className="mb-0 text-xl font-semibold"
+              style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink)" }}
+            >
+              {application ? "Edit application" : "Add application"}
+            </h2>
+          </div>
+          <button
+            type="button"
+            onClick={onClose}
+            className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full"
+            aria-label="Close application dialog"
+            style={{ color: "var(--home-ink-muted)" }}
+          >
+            <X className="h-4 w-4" aria-hidden="true" />
+          </button>
+        </div>
+
+        <div className="mt-6 grid gap-4 sm:grid-cols-2">
+          <FormField label="Company">
+            <input
+              value={form.companyName}
+              onChange={(event) =>
+                setForm((current) => ({ ...current, companyName: event.target.value }))
+              }
+              className={applicationInputClass}
+              style={applicationInputStyle}
+            />
+          </FormField>
+          <FormField label="Role">
+            <input
+              value={form.title}
+              onChange={(event) =>
+                setForm((current) => ({ ...current, title: event.target.value }))
+              }
+              className={applicationInputClass}
+              style={applicationInputStyle}
+            />
+          </FormField>
+          <FormField label="Location">
+            <input
+              value={form.location}
+              onChange={(event) =>
+                setForm((current) => ({ ...current, location: event.target.value }))
+              }
+              className={applicationInputClass}
+              style={applicationInputStyle}
+            />
+          </FormField>
+          <FormField label="Department">
+            <input
+              value={form.department}
+              onChange={(event) =>
+                setForm((current) => ({ ...current, department: event.target.value }))
+              }
+              className={applicationInputClass}
+              style={applicationInputStyle}
+            />
+          </FormField>
+          <FormField label="Application URL">
+            <input
+              value={form.applyUrl}
+              onChange={(event) =>
+                setForm((current) => ({ ...current, applyUrl: event.target.value }))
+              }
+              className={applicationInputClass}
+              style={applicationInputStyle}
+              inputMode="url"
+            />
+          </FormField>
+          <FormField label="Source URL">
+            <input
+              value={form.sourceUrl}
+              onChange={(event) =>
+                setForm((current) => ({ ...current, sourceUrl: event.target.value }))
+              }
+              className={applicationInputClass}
+              style={applicationInputStyle}
+              inputMode="url"
+            />
+          </FormField>
+          <FormField label="Status">
+            <select
+              value={form.status}
+              onChange={(event) =>
+                setForm((current) => ({
+                  ...current,
+                  status: event.target.value as MBAApplicationStatus,
+                }))
+              }
+              className={applicationInputClass}
+              style={applicationInputStyle}
+            >
+              {MBA_APPLICATION_STATUSES.map((status) => (
+                <option key={status} value={status}>
+                  {MBA_APPLICATION_STATUS_LABELS[status]}
+                </option>
+              ))}
+            </select>
+          </FormField>
+          <FormField label="Priority">
+            <select
+              value={form.priority}
+              onChange={(event) =>
+                setForm((current) => ({
+                  ...current,
+                  priority: event.target.value as MBAApplicationPriority,
+                }))
+              }
+              className={applicationInputClass}
+              style={applicationInputStyle}
+            >
+              {MBA_APPLICATION_PRIORITIES.map((priority) => (
+                <option key={priority} value={priority}>
+                  {MBA_APPLICATION_PRIORITY_LABELS[priority]}
+                </option>
+              ))}
+            </select>
+          </FormField>
+          <FormField label="Follow-up date">
+            <input
+              type="date"
+              value={form.followUpDate}
+              onChange={(event) =>
+                setForm((current) => ({ ...current, followUpDate: event.target.value }))
+              }
+              className={applicationInputClass}
+              style={applicationInputStyle}
+            />
+          </FormField>
+          <FormField label="Deadline">
+            <input
+              type="date"
+              value={form.deadline}
+              onChange={(event) =>
+                setForm((current) => ({ ...current, deadline: event.target.value }))
+              }
+              className={applicationInputClass}
+              style={applicationInputStyle}
+            />
+          </FormField>
+          <FormField label="Contact">
+            <input
+              value={form.contact}
+              onChange={(event) =>
+                setForm((current) => ({ ...current, contact: event.target.value }))
+              }
+              className={applicationInputClass}
+              style={applicationInputStyle}
+            />
+          </FormField>
+          <div className="sm:col-span-2">
+            <FormField label="Notes">
+              <textarea
+                value={form.notes}
+                onChange={(event) =>
+                  setForm((current) => ({ ...current, notes: event.target.value }))
+                }
+                className={`${applicationInputClass} min-h-28 resize-y`}
+                style={applicationInputStyle}
+              />
+            </FormField>
+          </div>
+        </div>
+
+        <div className="mt-6 flex flex-wrap justify-end gap-3">
+          <button type="button" onClick={onClose} className="home-button home-button-secondary">
+            Cancel
+          </button>
+          <button
+            type="button"
+            onClick={() => onSave(form, application)}
+            disabled={!canSave}
+            className="home-button home-button-primary disabled:opacity-50"
+          >
+            Save application
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ApplicationCard({
+  application,
+  onStatusChange,
+  onEdit,
+  onArchive,
+  onRemove,
+}: {
+  application: MBATrackedApplication;
+  onStatusChange: (status: MBAApplicationStatus) => void;
+  onEdit: () => void;
+  onArchive: () => void;
+  onRemove: () => void;
+}) {
+  const followUpIsDue =
+    application.followUpDate !== null && application.followUpDate <= getTodayDateKey();
+  return (
+    <article
+      className="rounded-[1.1rem] border p-4"
+      style={{
+        borderColor: "var(--home-rule)",
+        background: "color-mix(in srgb, var(--home-paper-alt) 72%, var(--home-elev-mix))",
+      }}
+    >
+      <div className="flex items-start justify-between gap-3">
+        <div className="min-w-0">
+          <p className="home-meta mb-0">{application.jobSnapshot.companyName}</p>
+          <h3
+            className="mb-0 mt-2 text-base font-semibold leading-tight"
+            style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
+          >
+            {application.jobSnapshot.title}
+          </h3>
+        </div>
+        <ApplicationPriorityChip priority={application.priority} />
+      </div>
+      <p className="home-note-copy mb-0 mt-3 text-sm">
+        {application.jobSnapshot.department} · {application.jobSnapshot.location}
+      </p>
+      <div className="mt-4 flex flex-wrap gap-2">
+        <ApplicationStatusChip status={application.status} />
+        {application.followUpDate && (
+          <span
+            className="inline-flex items-center gap-1 rounded-full px-3 py-1 text-[0.68rem] font-semibold"
+            style={getChipStyle(
+              followUpIsDue ? "var(--home-acid)" : "var(--home-haze)",
+              16,
+              26
+            )}
+          >
+            <CalendarDays className="h-3 w-3" aria-hidden="true" />
+            Follow up {formatDateKey(application.followUpDate)}
+          </span>
+        )}
+        {application.deadline && (
+          <span
+            className="inline-flex items-center gap-1 rounded-full px-3 py-1 text-[0.68rem] font-semibold"
+            style={getChipStyle("var(--home-moss)", 14, 24)}
+          >
+            Due {formatDateKey(application.deadline)}
+          </span>
+        )}
+      </div>
+      {application.notes && (
+        <p className="home-note-copy mb-0 mt-4 line-clamp-3 text-sm">{application.notes}</p>
+      )}
+      <div className="mt-4 flex flex-wrap items-center gap-2 border-t border-[var(--home-rule)] pt-4">
+        <select
+          value={application.status}
+          onChange={(event) => onStatusChange(event.target.value as MBAApplicationStatus)}
+          className="min-h-[44px] rounded-full border px-3 py-2 text-sm"
+          style={applicationInputStyle}
+          aria-label={`Application status for ${application.jobSnapshot.title}`}
+        >
+          {MBA_APPLICATION_STATUSES.map((status) => (
+            <option key={status} value={status}>
+              {MBA_APPLICATION_STATUS_LABELS[status]}
+            </option>
+          ))}
+        </select>
+        <button type="button" onClick={onEdit} className="home-button home-button-secondary text-sm">
+          <Edit3 className="h-3.5 w-3.5" aria-hidden="true" />
+          Edit
+        </button>
+        {application.jobSnapshot.applyUrl && (
+          <CardActionLink
+            href={application.jobSnapshot.applyUrl}
+            label="Apply"
+            ariaLabel={`Open application for ${application.jobSnapshot.title}`}
+            variant="primary"
+            trailingIcon
+          />
+        )}
+        {application.status !== "archived" && (
+          <button type="button" onClick={onArchive} className="home-button home-button-secondary text-sm">
+            Archive
+          </button>
+        )}
+        <button
+          type="button"
+          onClick={onRemove}
+          className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold"
+          style={{
+            ...getPillStyle(false),
+            color: "color-mix(in srgb, var(--home-acid) 55%, var(--home-ink))",
+          }}
+        >
+          <Trash2 className="h-3.5 w-3.5" aria-hidden="true" />
+          Delete
+        </button>
+      </div>
+    </article>
+  );
+}
+
+function ApplicationPipeline({
+  applications,
+  onCreate,
+  onEdit,
+  onStatusChange,
+  onArchive,
+  onRemove,
+  onExportJson,
+  onExportCsv,
+  onImport,
+}: {
+  applications: MBATrackedApplication[];
+  onCreate: () => void;
+  onEdit: (application: MBATrackedApplication) => void;
+  onStatusChange: (id: string, status: MBAApplicationStatus) => void;
+  onArchive: (id: string) => void;
+  onRemove: (id: string) => void;
+  onExportJson: () => void;
+  onExportCsv: () => void;
+  onImport: (content: string) => { imported: number; total: number };
+}) {
+  const [query, setQuery] = useState("");
+  const [statusFilter, setStatusFilter] = useState<MBAApplicationStatus | "all">("all");
+  const [importMessage, setImportMessage] = useState<string | null>(null);
+  const importInputRef = useRef<HTMLInputElement | null>(null);
+  const today = getTodayDateKey();
+
+  const filteredApplications = useMemo(() => {
+    const normalizedQuery = query.trim().toLowerCase();
+    return applications.filter((application) => {
+      if (statusFilter === "all" && application.status === "archived") return false;
+      if (statusFilter !== "all" && application.status !== statusFilter) return false;
+      if (!normalizedQuery) return true;
+      return [
+        application.jobSnapshot.companyName,
+        application.jobSnapshot.title,
+        application.jobSnapshot.location,
+        application.jobSnapshot.department,
+        application.notes,
+        application.contact,
+      ]
+        .join(" ")
+        .toLowerCase()
+        .includes(normalizedQuery);
+    });
+  }, [applications, query, statusFilter]);
+
+  const overdueCount = applications.filter(
+    (application) =>
+      application.status !== "archived" &&
+      application.followUpDate !== null &&
+      application.followUpDate < today
+  ).length;
+  const todayCount = applications.filter(
+    (application) =>
+      application.status !== "archived" && application.followUpDate === today
+  ).length;
+  const activeCount = applications.filter(
+    (application) => application.status !== "archived"
+  ).length;
+  const statusesToShow =
+    statusFilter === "all" ? ACTIVE_APPLICATION_STATUSES : [statusFilter];
+
+  async function handleImportFile(file: File | undefined) {
+    if (!file) return;
+    try {
+      const content = await file.text();
+      const result = onImport(content);
+      setImportMessage(
+        result.imported > 0
+          ? `Imported ${result.imported} applications. ${result.total} total now.`
+          : "No valid applications were found in that file."
+      );
+    } catch {
+      setImportMessage("Could not read that import file.");
+    } finally {
+      if (importInputRef.current) importInputRef.current.value = "";
+    }
+  }
+
+  return (
+    <section className="space-y-4" aria-labelledby="mba-application-pipeline-heading">
+      <SectionLead
+        kicker="Applications"
+        title="Work the pipeline, not another spreadsheet."
+        description="Track roles from the live feed, add manual opportunities, and keep follow-ups visible without sending personal application data to the server."
+        id="mba-application-pipeline-heading"
+      />
+      <div className="section-panel space-y-6">
+        <div className="grid gap-3 md:grid-cols-3">
+          <div className="rounded-[1rem] border p-4" style={{ borderColor: "var(--home-rule)" }}>
+            <p className="home-meta mb-0">Active applications</p>
+            <p className="mb-0 mt-2 text-2xl font-semibold tabular-nums" style={{ color: "var(--home-ink)" }}>
+              {activeCount}
+            </p>
+          </div>
+          <div className="rounded-[1rem] border p-4" style={{ borderColor: "var(--home-rule)" }}>
+            <p className="home-meta mb-0">Due today</p>
+            <p className="mb-0 mt-2 text-2xl font-semibold tabular-nums" style={{ color: "var(--home-ink)" }}>
+              {todayCount}
+            </p>
+          </div>
+          <div className="rounded-[1rem] border p-4" style={{ borderColor: "var(--home-rule)" }}>
+            <p className="home-meta mb-0">Overdue follow-ups</p>
+            <p className="mb-0 mt-2 text-2xl font-semibold tabular-nums" style={{ color: "var(--home-ink)" }}>
+              {overdueCount}
+            </p>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
+          <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_220px] xl:min-w-[34rem]">
+            <div className="relative">
+              <Search
+                className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2"
+                style={{ color: "var(--home-ink-muted)" }}
+                aria-hidden="true"
+              />
+              <input
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                placeholder="Search company, role, notes, contact..."
+                aria-label="Search applications"
+                className="w-full min-h-[48px] rounded-[1rem] border pl-11 pr-4 text-sm outline-none transition-[border-color,box-shadow] duration-200 ease focus-visible:border-[var(--home-haze)] focus-visible:ring-2 focus-visible:ring-[color-mix(in_srgb,var(--home-haze)_35%,transparent)]"
+                style={applicationInputStyle}
+              />
+            </div>
+            <select
+              value={statusFilter}
+              onChange={(event) =>
+                setStatusFilter(event.target.value as MBAApplicationStatus | "all")
+              }
+              className={applicationInputClass}
+              style={applicationInputStyle}
+              aria-label="Filter applications by status"
+            >
+              <option value="all">All active statuses</option>
+              {MBA_APPLICATION_STATUSES.map((status) => (
+                <option key={status} value={status}>
+                  {MBA_APPLICATION_STATUS_LABELS[status]}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="flex flex-wrap gap-2">
+            <button type="button" onClick={onCreate} className="home-button home-button-primary text-sm">
+              Add application
+            </button>
+            <button type="button" onClick={onExportJson} className="home-button home-button-secondary text-sm">
+              <Download className="h-4 w-4" aria-hidden="true" />
+              JSON backup
+            </button>
+            <button type="button" onClick={onExportCsv} className="home-button home-button-secondary text-sm">
+              <Download className="h-4 w-4" aria-hidden="true" />
+              CSV
+            </button>
+            <button
+              type="button"
+              onClick={() => importInputRef.current?.click()}
+              className="home-button home-button-secondary text-sm"
+            >
+              <Upload className="h-4 w-4" aria-hidden="true" />
+              Import
+            </button>
+            <input
+              ref={importInputRef}
+              type="file"
+              accept="application/json,.json"
+              className="sr-only"
+              onChange={(event) => handleImportFile(event.target.files?.[0])}
+              aria-label="Import applications JSON"
+            />
+          </div>
+        </div>
+
+        {importMessage && (
+          <p className="home-note-copy mb-0" role="status">
+            {importMessage}
+          </p>
+        )}
+
+        {applications.length === 0 ? (
+          <StatusPanel
+            title="No applications tracked yet."
+            message="Track a role from the feed or add one manually to start building your pipeline."
+            icon={<BriefcaseBusiness className="h-5 w-5" aria-hidden="true" />}
+          />
+        ) : filteredApplications.length === 0 ? (
+          <StatusPanel
+            title="No applications match."
+            message="Try a different search or status filter."
+            icon={<Search className="h-5 w-5" aria-hidden="true" />}
+          />
+        ) : (
+          <div className="grid gap-4 xl:grid-cols-5">
+            {statusesToShow.map((status) => {
+              const statusApplications = filteredApplications.filter(
+                (application) => application.status === status
+              );
+              return (
+                <div key={status} className="space-y-3">
+                  <div
+                    className="flex items-center justify-between rounded-[1rem] border px-3 py-3"
+                    style={{
+                      borderColor: "var(--home-rule)",
+                      background: "color-mix(in srgb, var(--home-paper-alt) 72%, var(--home-elev-mix))",
+                    }}
+                  >
+                    <p className="home-meta mb-0">{MBA_APPLICATION_STATUS_LABELS[status]}</p>
+                    <span className="resume-chip">{statusApplications.length}</span>
+                  </div>
+                  {statusApplications.length === 0 ? (
+                    <div
+                      className="rounded-[1rem] border border-dashed p-4 text-sm"
+                      style={{
+                        borderColor: "var(--home-rule)",
+                        color: "var(--home-ink-muted)",
+                      }}
+                    >
+                      Nothing here.
+                    </div>
+                  ) : (
+                    statusApplications.map((application) => (
+                      <ApplicationCard
+                        key={application.id}
+                        application={application}
+                        onStatusChange={(nextStatus) =>
+                          onStatusChange(application.id, nextStatus)
+                        }
+                        onEdit={() => onEdit(application)}
+                        onArchive={() => onArchive(application.id)}
+                        onRemove={() => onRemove(application.id)}
+                      />
+                    ))
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
+function SourceHealthPanel({
+  sourceStatuses,
+  isLoading,
+}: {
+  sourceStatuses: MBAJobsSourceStatus[];
+  isLoading: boolean;
+}) {
+  if (isLoading || sourceStatuses.length === 0) return null;
+
+  const okCount = sourceStatuses.filter((status) => status.status === "ok").length;
+  const failedCount = sourceStatuses.filter((status) => status.status === "failed").length;
+  const skippedCount = sourceStatuses.filter((status) => status.status === "skipped").length;
+  const externalDisabledCount = sourceStatuses.filter(
+    (status) => status.status === "external-disabled"
+  ).length;
+
+  return (
+    <section className="space-y-4" aria-labelledby="mba-source-health-heading">
+      <SectionLead
+        kicker="Source health"
+        title="Know which feeds answered."
+        description="The tracker separates healthy feeds, failed requests, and manual-only sources so partial results are easier to trust."
+        id="mba-source-health-heading"
+      />
+      <div className="section-panel">
+        <div className="flex flex-wrap gap-2">
+          <span className="resume-chip">{okCount} healthy</span>
+          <span className="resume-chip">{failedCount} failed</span>
+          <span className="resume-chip">{skippedCount} manual-only</span>
+          {externalDisabledCount > 0 && (
+            <span className="resume-chip">{externalDisabledCount} external disabled</span>
+          )}
+        </div>
+        <div className="mt-4 flex flex-wrap gap-2">
+          {sourceStatuses.map((source) => {
+            const accent =
+              source.status === "ok"
+                ? "var(--home-moss)"
+                : source.status === "failed"
+                  ? "var(--home-acid)"
+                  : source.status === "external-disabled"
+                    ? "var(--home-haze)"
+                    : "var(--home-stone)";
+            return (
+              <span
+                key={`${source.companyId}-${source.status}`}
+                className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-[0.72rem] font-semibold"
+                style={getChipStyle(accent, 14, 24)}
+                title={source.message}
+              >
+                <span
+                  className="h-1.5 w-1.5 rounded-full"
+                  style={{ background: accent }}
+                  aria-hidden="true"
+                />
+                {source.companyName} ·{" "}
+                {source.status === "ok" ? `${source.jobCount} roles` : source.status}
+              </span>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ---------------------------------------------------------------------------
 // Main client component
 // ---------------------------------------------------------------------------
@@ -1239,6 +2251,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
     isLoading,
     error,
     fetchErrors,
+    sourceStatuses,
     lastFetchedAt,
     seenIds,
     watchedCompanyIds,
@@ -1254,9 +2267,26 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
     emailSending,
     emailResult,
     clearEmailResult,
-  } = useMBAJobs();
+  } = useMBAJobs({ externalLeads: uiState.external === "on" });
 
   const [emailDialogOpen, setEmailDialogOpen] = useState(false);
+  const [applicationDialogOpen, setApplicationDialogOpen] = useState(false);
+  const [editingApplication, setEditingApplication] =
+    useState<MBATrackedApplication | null>(null);
+  const {
+    applications,
+    activeApplications,
+    getApplicationForJob,
+    trackJob,
+    addManualApplication,
+    updateApplication,
+    updateStatus,
+    archiveApplication,
+    removeApplication,
+    importApplications,
+    exportJson,
+    exportCsv,
+  } = useMBAApplications();
   const activeFilters = hasActiveFilters(uiState);
   const effectiveState = useMemo(
     () => ({ ...uiState, q: deferredQuery, location: deferredLocation }),
@@ -1266,7 +2296,8 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
   const locationScopedEntries = useMemo(() => {
     const query = effectiveState.q.trim();
     return jobs.flatMap((job) => {
-      if (!watchedCompanyIds.has(job.companyId)) return [];
+      if (job.atsType !== "external-api" && !watchedCompanyIds.has(job.companyId)) return [];
+      if (job.atsType === "external-api" && effectiveState.external !== "on") return [];
       if (effectiveState.category !== "all" && job.category !== effectiveState.category) {
         return [];
       }
@@ -1297,7 +2328,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
         },
       ];
     });
-  }, [effectiveState.category, effectiveState.q, effectiveState.roleFamily, effectiveState.roleType, jobs, watchedCompanyIds]);
+  }, [effectiveState.category, effectiveState.external, effectiveState.q, effectiveState.roleFamily, effectiveState.roleType, jobs, watchedCompanyIds]);
 
   const locationOptions = useMemo(
     () => buildLocationOptions(locationScopedEntries.map((entry) => entry.job)),
@@ -1339,6 +2370,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
 
   const totalTracked = MBA_COMPANIES.filter((c) => c.atsType !== "manual").length;
   const totalCompanies = MBA_COMPANIES.length;
+  const externalLeadCount = jobs.filter((job) => job.atsType === "external-api").length;
   const internshipCount = jobs.filter((job) => job.roleType === "internship").length;
   const fullTimeCount = jobs.filter((job) => job.roleType === "full-time").length;
   const normalizedLocationFilter = normalizeSearchText(uiState.location);
@@ -1378,6 +2410,12 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
       tone: newJobCount > 0 ? "good" : "default",
     },
     {
+      label: "Tracked apps",
+      value: <span className="tabular-nums">{activeApplications.length}</span>,
+      sub: "Browser-local pipeline",
+      tone: activeApplications.length > 0 ? "good" : "default",
+    },
+    {
       label: "Companies tracked",
       value: <span className="tabular-nums">{totalCompanies}</span>,
       sub: "Public boards plus manual fallbacks",
@@ -1386,6 +2424,11 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
       label: "Live feeds",
       value: <span className="tabular-nums">{totalTracked}</span>,
       sub: "Auto-polled boards",
+    },
+    {
+      label: "External leads",
+      value: <span className="tabular-nums">{externalLeadCount}</span>,
+      sub: uiState.external === "on" ? "Opt-in aggregator" : "Off by default",
     },
     {
       label: "Manual fallbacks",
@@ -1404,6 +2447,76 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
     await sendEmailDigest(email, displayJobs.length > 0 ? displayJobs : jobs);
   }
 
+  function openApplicationDialog(application: MBATrackedApplication | null) {
+    setEditingApplication(application);
+    setApplicationDialogOpen(true);
+  }
+
+  function handleSaveApplication(
+    form: ApplicationFormState,
+    application: MBATrackedApplication | null
+  ) {
+    const followUpDate = form.followUpDate.trim() || null;
+    const deadline = form.deadline.trim() || null;
+
+    if (application) {
+      updateApplication(application.id, {
+        status: form.status,
+        priority: form.priority,
+        notes: form.notes,
+        contact: form.contact,
+        sourceUrl: form.sourceUrl,
+        followUpDate,
+        deadline,
+        jobSnapshot: {
+          companyName: form.companyName,
+          title: form.title,
+          location: form.location,
+          department: form.department,
+          applyUrl: form.applyUrl,
+        },
+      });
+    } else {
+      addManualApplication({
+        companyName: form.companyName,
+        title: form.title,
+        location: form.location,
+        department: form.department,
+        applyUrl: form.applyUrl,
+        sourceUrl: form.sourceUrl,
+        status: form.status,
+        priority: form.priority,
+        notes: form.notes,
+        contact: form.contact,
+        followUpDate,
+        deadline,
+      });
+    }
+
+    setApplicationDialogOpen(false);
+    setEditingApplication(null);
+  }
+
+  function handleTrackJob(job: MBAJob, status: MBAApplicationStatus = "saved") {
+    trackJob(job, status);
+  }
+
+  function handleExportJson() {
+    downloadTextFile(
+      `mba-applications-${getTodayDateKey()}.json`,
+      exportJson(),
+      "application/json"
+    );
+  }
+
+  function handleExportCsv() {
+    downloadTextFile(
+      `mba-applications-${getTodayDateKey()}.csv`,
+      exportCsv(),
+      "text/csv"
+    );
+  }
+
   return (
     <>
       <EmailDigestDialog
@@ -1411,6 +2524,15 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
         onClose={() => setEmailDialogOpen(false)}
         onSubmit={handleEmailSend}
         sending={emailSending}
+      />
+      <ApplicationEditDialog
+        isOpen={applicationDialogOpen}
+        application={editingApplication}
+        onClose={() => {
+          setApplicationDialogOpen(false);
+          setEditingApplication(null);
+        }}
+        onSave={handleSaveApplication}
       />
 
       <section className="home-page min-h-screen" aria-label="MBA role tracker">
@@ -1423,22 +2545,22 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
             pills={[
               {
                 label: "Internships",
-                href: buildMBAJobsHref({ ...uiState, roleType: "internship" }),
+                href: buildMBAJobsHref({ ...uiState, view: "feed", roleType: "internship" }),
                 icon: Briefcase,
               },
               {
                 label: "Product",
-                href: buildMBAJobsHref({ ...uiState, roleFamily: "product" }),
+                href: buildMBAJobsHref({ ...uiState, view: "feed", roleFamily: "product" }),
                 icon: ChartBar,
               },
               {
                 label: "Finance",
-                href: buildMBAJobsHref({ ...uiState, roleFamily: "finance" }),
+                href: buildMBAJobsHref({ ...uiState, view: "feed", roleFamily: "finance" }),
                 icon: FileText,
               },
               {
                 label: "Strategy",
-                href: buildMBAJobsHref({ ...uiState, roleFamily: "strategy" }),
+                href: buildMBAJobsHref({ ...uiState, view: "feed", roleFamily: "strategy" }),
                 icon: Article,
               },
               {
@@ -1467,9 +2589,8 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                 <p className="home-body mb-0 max-w-[44rem]">
                   I monitor {totalTracked} public job boards across {totalCompanies} target
                   companies for internships and full-time product, PMM, strategy, operations,
-                  growth, finance, analytics, and adjacent business roles. When a company does not
-                  expose a stable public feed, I keep the career page and LinkedIn search below so
-                  you can still move quickly.
+                  growth, finance, analytics, and adjacent business roles. External leads stay
+                  opt-in, and LinkedIn stays an outbound search shortcut instead of a scraped feed.
                 </p>
               </div>
               <div className="grid gap-3 self-start sm:grid-cols-2 xl:grid-cols-1">
@@ -1505,11 +2626,14 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
             <div className="mt-6 border-t border-[var(--home-rule)] pt-6">
               <div className="flex flex-wrap gap-2">
                 <span className="resume-chip">
-                  {isLoading ? "Loading…" : `${jobs.length} live roles`}
+                    {isLoading ? "Loading…" : `${jobs.length} live roles`}
                 </span>
                 {!isLoading && <span className="resume-chip">{internshipCount} internships</span>}
                 {!isLoading && <span className="resume-chip">{fullTimeCount} full-time</span>}
                 <span className="resume-chip">{totalTracked} live feeds</span>
+                {uiState.external === "on" && (
+                  <span className="resume-chip">{externalLeadCount} external leads</span>
+                )}
                 <span className="resume-chip">{totalCompanies} target companies</span>
                 <span className="resume-chip">{refreshLabel}</span>
                 {!isLoading && newJobCount > 0 && (
@@ -1561,8 +2685,43 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                 </button>
               )}
             </div>
+
+            <div
+              className="mt-5 flex flex-wrap gap-2 border-t border-[var(--home-rule)] pt-5"
+              role="tablist"
+              aria-label="Job tracker view"
+            >
+              {(["feed", "applications"] as const).map((view) => (
+                <EditorialPillButton
+                  key={view}
+                  active={uiState.view === view}
+                  onClick={() => updateRouteState({ view })}
+                  role="tab"
+                  ariaSelected={uiState.view === view}
+                  size="sm"
+                >
+                  {VIEW_LABELS[view]}
+                </EditorialPillButton>
+              ))}
+            </div>
           </motion.div>
 
+          <SourceHealthPanel sourceStatuses={sourceStatuses} isLoading={isLoading} />
+
+          {uiState.view === "applications" ? (
+            <ApplicationPipeline
+              applications={applications}
+              onCreate={() => openApplicationDialog(null)}
+              onEdit={openApplicationDialog}
+              onStatusChange={updateStatus}
+              onArchive={archiveApplication}
+              onRemove={removeApplication}
+              onExportJson={handleExportJson}
+              onExportCsv={handleExportCsv}
+              onImport={importApplications}
+            />
+          ) : (
+            <>
           {fetchErrors.length > 0 && !isLoading && (
             <div
               className="flex items-start gap-3 rounded-[1.5rem] px-5 py-4"
@@ -1811,6 +2970,24 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                       ))}
                     </div>
                   </div>
+
+                  <div className="space-y-2">
+                    <p className="home-meta mb-0">Sources</p>
+                    <div className="flex flex-wrap gap-2" role="tablist" aria-label="External lead sources">
+                      {(["off", "on"] as const).map((external) => (
+                        <EditorialPillButton
+                          key={external}
+                          active={uiState.external === external}
+                          onClick={() => updateRouteState({ external })}
+                          role="tab"
+                          ariaSelected={uiState.external === external}
+                          size="sm"
+                        >
+                          {EXTERNAL_LABELS[external]}
+                        </EditorialPillButton>
+                      ))}
+                    </div>
+                  </div>
                 </div>
 
                 {activeFilters && (
@@ -1879,11 +3056,21 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                         {SORT_LABELS[uiState.sort]}
                       </span>
                     )}
+                    {uiState.external !== DEFAULT_MBA_JOBS_STATE.external && (
+                      <span
+                        className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
+                        style={getChipStyle("var(--home-haze)", 16, 28)}
+                      >
+                        {EXTERNAL_LABELS[uiState.external]}
+                      </span>
+                    )}
                   </div>
                 )}
               </div>
             </motion.div>
           </section>
+
+          <SearchElsewhereStrip currentState={uiState} />
 
           <section className="space-y-4" aria-labelledby="mba-role-tracker-companies-heading">
             <SectionLead
@@ -1916,6 +3103,9 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
               >
                 <span className="resume-chip">{displayJobs.length} matching roles</span>
                 <span className="resume-chip">{watchedCompanyIds.size} watched feeds active</span>
+                {uiState.external === "on" && (
+                  <span className="resume-chip">{externalLeadCount} external leads</span>
+                )}
                 {uiState.location.trim() && (
                   <span className="resume-chip">{matchingRoleCount} before location filter</span>
                 )}
@@ -1956,15 +3146,25 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                 initial="hidden"
                 animate="visible"
               >
-                {displayJobs.map((job) => (
-                  <JobCard
-                    key={job.id}
-                    job={job}
-                    isNew={!seenIds.has(job.id)}
-                    onMarkSeen={() => markJobSeen(job.id)}
-                    currentState={uiState}
-                  />
-                ))}
+                {displayJobs.map((job) => {
+                  const application = getApplicationForJob(job);
+                  return (
+                    <JobCard
+                      key={job.id}
+                      job={job}
+                      isNew={!seenIds.has(job.id)}
+                      application={application}
+                      onMarkSeen={() => markJobSeen(job.id)}
+                      onTrack={() => handleTrackJob(job)}
+                      onMarkApplied={() => handleTrackJob(job, "applied")}
+                      onEditApplication={() => {
+                        const tracked = getApplicationForJob(job) ?? trackJob(job);
+                        openApplicationDialog(tracked);
+                      }}
+                      currentState={uiState}
+                    />
+                  );
+                })}
               </motion.div>
             )}
           </section>
@@ -1995,6 +3195,8 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                 {formatFetchedAt(lastFetchedAt)} · Polls every 30 min
               </UtilityStrip>
             </div>
+          )}
+            </>
           )}
         </div>
       </section>

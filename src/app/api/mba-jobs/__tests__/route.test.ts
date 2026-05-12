@@ -14,6 +14,7 @@ function resetMbaJobsCache(): void {
 }
 
 const originalFetch = global.fetch;
+const originalEnv = { ...process.env };
 const mockFetch = jest.fn<ReturnType<typeof fetch>, Parameters<typeof fetch>>();
 
 function buildGreenhouseResponse(overrides: Partial<Record<string, unknown>> = {}) {
@@ -23,12 +24,17 @@ function buildGreenhouseResponse(overrides: Partial<Record<string, unknown>> = {
   };
 }
 
-function buildAshbyPage(slug: string, jobs: object[]) {
-  return `<!doctype html><html><body><script>window.__appData = ${JSON.stringify({
-    organization: { hostedJobsPageSlug: slug },
-    jobBoard: { jobPostings: jobs },
-  })};
-fetch("https://cdn.ashbyprd.com/frontend_non_user/example/.vite/manifest.json");</script></body></html>`;
+function buildAshbyResponse(jobs: object[]) {
+  return { apiVersion: "1", jobs };
+}
+
+function buildSmartRecruitersList(content: object[]) {
+  return {
+    limit: 100,
+    offset: 0,
+    totalFound: content.length,
+    content,
+  };
 }
 
 function buildNextDataPage(pageProps: object) {
@@ -109,6 +115,9 @@ describe("GET /api/mba-jobs", () => {
       value: mockFetch,
       writable: true,
     });
+    delete process.env.ADZUNA_APP_ID;
+    delete process.env.ADZUNA_APP_KEY;
+    delete process.env.ADZUNA_COUNTRY;
   });
 
   afterAll(() => {
@@ -117,6 +126,7 @@ describe("GET /api/mba-jobs", () => {
       value: originalFetch,
       writable: true,
     });
+    process.env = originalEnv;
   });
 
   it("classifies internships, full-time roles, unclear MBA programs, and filters non-target roles", async () => {
@@ -292,34 +302,36 @@ describe("GET /api/mba-jobs", () => {
 
   it("parses Ashby public job board payloads and matches PMM and chief-of-staff variants", async () => {
     installFetchMock({
-      "https://jobs.ashbyhq.com/notion": new Response(
-        buildAshbyPage("notion", [
+      "https://api.ashbyhq.com/posting-api/job-board/notion?includeCompensation=true": new Response(
+        JSON.stringify(buildAshbyResponse([
           {
             id: "ashby-1",
             title: "PMM Manager",
             updatedAt: "2026-04-12T11:30:00.000Z",
-            departmentName: "Marketing",
-            teamName: "Product Marketing",
-            locationName: "San Francisco, California",
+            department: "Marketing",
+            team: "Product Marketing",
+            location: "San Francisco, California",
             workplaceType: "Hybrid",
             employmentType: "Full-Time",
+            jobUrl: "https://jobs.ashbyhq.com/notion/ashby-1",
             isListed: true,
           },
           {
             id: "ashby-2",
             title: "Chief of Staff to the COO",
             updatedAt: "2026-04-12T10:00:00.000Z",
-            departmentName: "Operations",
-            teamName: "Office of the CEO",
-            locationName: "New York, New York",
+            department: "Operations",
+            team: "Office of the CEO",
+            location: "New York, New York",
             workplaceType: "Hybrid",
             employmentType: "Full-Time",
+            jobUrl: "https://jobs.ashbyhq.com/notion/ashby-2",
             isListed: true,
           },
-        ]),
+        ])),
         {
           status: 200,
-          headers: { "Content-Type": "text/html; charset=utf-8" },
+          headers: { "Content-Type": "application/json" },
         }
       ),
     });
@@ -342,7 +354,7 @@ describe("GET /api/mba-jobs", () => {
         expect.objectContaining({
           title: "Chief of Staff to the COO",
           roleType: "full-time",
-          roleFamilies: ["operations", "chief-of-staff"],
+          roleFamilies: ["chief-of-staff"],
           atsType: "ashby",
         }),
       ])
@@ -372,22 +384,23 @@ describe("GET /api/mba-jobs", () => {
           headers: { "Content-Type": "application/json" },
         }
       ),
-      "https://jobs.ashbyhq.com/openai": new Response(
-        buildAshbyPage("openai", [
+      "https://api.ashbyhq.com/posting-api/job-board/openai?includeCompensation=true": new Response(
+        JSON.stringify(buildAshbyResponse([
           {
             id: "openai-1",
             title: "Corporate Development Associate",
             updatedAt: "2026-04-14T15:30:00.000Z",
-            departmentName: "Business",
-            teamName: "Corporate Development",
-            locationName: "San Francisco",
+            department: "Business",
+            team: "Corporate Development",
+            location: "San Francisco",
             employmentType: "Full-Time",
+            jobUrl: "https://jobs.ashbyhq.com/openai/openai-1",
             isListed: true,
           },
-        ]),
+        ])),
         {
           status: 200,
-          headers: { "Content-Type": "text/html; charset=utf-8" },
+          headers: { "Content-Type": "application/json" },
         }
       ),
     });
@@ -404,7 +417,7 @@ describe("GET /api/mba-jobs", () => {
     expect(mockFetch.mock.calls.map(([input]) => String(input))).toEqual(
       expect.arrayContaining([
         "https://boards-api.greenhouse.io/v1/boards/reddit/jobs?content=true",
-        "https://jobs.ashbyhq.com/openai",
+        "https://api.ashbyhq.com/posting-api/job-board/openai?includeCompensation=true",
       ])
     );
     expect(body.jobs).toEqual(
@@ -446,22 +459,23 @@ describe("GET /api/mba-jobs", () => {
           headers: { "Content-Type": "application/json" },
         }
       ),
-      "https://jobs.ashbyhq.com/ramp": new Response(
-        buildAshbyPage("ramp", [
+      "https://api.ashbyhq.com/posting-api/job-board/ramp?includeCompensation=true": new Response(
+        JSON.stringify(buildAshbyResponse([
           {
             id: "ramp-1",
             title: "Strategic Finance Lead",
             updatedAt: "2026-04-14T14:00:00.000Z",
-            departmentName: "Finance",
-            teamName: "Strategic Finance",
-            locationName: "New York, NY",
+            department: "Finance",
+            team: "Strategic Finance",
+            location: "New York, NY",
             employmentType: "Full-Time",
+            jobUrl: "https://jobs.ashbyhq.com/ramp/ramp-1",
             isListed: true,
           },
-        ]),
+        ])),
         {
           status: 200,
-          headers: { "Content-Type": "text/html; charset=utf-8" },
+          headers: { "Content-Type": "application/json" },
         }
       ),
       "https://us.miro.com/careers/open-positions/": new Response(
@@ -491,6 +505,55 @@ describe("GET /api/mba-jobs", () => {
           headers: { "Content-Type": "text/html; charset=utf-8" },
         }
       ),
+      "https://api.smartrecruiters.com/v1/companies/Canva/postings?limit=100": new Response(
+        JSON.stringify(
+          buildSmartRecruitersList([
+            {
+              id: "6000000000947886",
+              name: "Sales Strategy & Operations Lead",
+              releasedDate: "2026-04-14T13:00:00.000Z",
+              location: { city: "Austin", region: "TX", country: "US", remote: false },
+              department: { label: "Sales" },
+              typeOfEmployment: { label: "Full-time" },
+            },
+            {
+              id: "6000000000803918",
+              name: "Senior UI Engineer",
+              releasedDate: "2026-04-14T12:00:00.000Z",
+              location: { city: "London", country: "GB", remote: false },
+              department: { label: "Engineering" },
+              typeOfEmployment: { label: "Full-time" },
+            },
+          ])
+        ),
+        {
+          status: 200,
+          headers: { "Content-Type": "application/json" },
+        }
+      ),
+      "https://api.smartrecruiters.com/v1/companies/Canva/postings/6000000000947886": new Response(
+        JSON.stringify({
+          id: "6000000000947886",
+          name: "Sales Strategy & Operations Lead",
+          releasedDate: "2026-04-14T13:00:00.000Z",
+          location: { city: "Austin", region: "TX", country: "US", remote: false },
+          department: { label: "Sales" },
+          typeOfEmployment: { label: "Full-time" },
+          applyUrl:
+            "https://jobs.smartrecruiters.com/Canva/6000000000947886-sales-strategy-operations-lead",
+          jobAd: {
+            sections: {
+              jobDescription: {
+                text: "Serve as a strategic business partner and own forecasting, pipeline health, and executive readouts.",
+              },
+            },
+          },
+        }),
+        {
+          status: 200,
+          headers: { "Content-Type": "application/json" },
+        }
+      ),
     });
 
     const response = await GET(
@@ -505,13 +568,12 @@ describe("GET /api/mba-jobs", () => {
     expect(mockFetch.mock.calls.map(([input]) => String(input))).toEqual(
       expect.arrayContaining([
         "https://boards-api.greenhouse.io/v1/boards/chime/jobs?content=true",
-        "https://jobs.ashbyhq.com/ramp",
+        "https://api.ashbyhq.com/posting-api/job-board/ramp?includeCompensation=true",
         "https://us.miro.com/careers/open-positions/",
         "https://us.miro.com/careers/vacancy/8436222002/",
+        "https://api.smartrecruiters.com/v1/companies/Canva/postings?limit=100",
+        "https://api.smartrecruiters.com/v1/companies/Canva/postings/6000000000947886",
       ])
-    );
-    expect(mockFetch.mock.calls.map(([input]) => String(input))).not.toEqual(
-      expect.arrayContaining(["https://www.lifeatcanva.com/en/jobs/"])
     );
     expect(body.jobs).toEqual(
       expect.arrayContaining([
@@ -536,11 +598,92 @@ describe("GET /api/mba-jobs", () => {
             "Lead the evolution of our financial planning infrastructure and partner across Finance, Biz Tech, and Accounting.",
           postedAt: "",
         }),
+        expect.objectContaining({
+          companyId: "canva",
+          atsType: "smartrecruiters",
+          title: "Sales Strategy & Operations Lead",
+          roleFamilies: expect.arrayContaining(["strategy", "operations"]),
+          snippet:
+            "Serve as a strategic business partner and own forecasting, pipeline health, and executive readouts.",
+        }),
       ])
     );
     expect(body.jobs.map((job: { title: string }) => job.title)).not.toEqual(
       expect.arrayContaining(["Backend Software Engineer"])
     );
+  });
+
+  it("parses Plaid and Coinbase direct career pages before leaving other manual portals as fallbacks", async () => {
+    installFetchMock({
+      "https://plaid.com/careers/": new Response(
+        `<!doctype html><html><body><main>
+          <div class="role-card">Business Operations - Payments New York <a href="/careers/business-operations-payments">See role</a></div>
+          <div class="role-card">Backend Software Engineer San Francisco <a href="/careers/backend-software-engineer">See role</a></div>
+        </main></body></html>`,
+        { status: 200, headers: { "Content-Type": "text/html; charset=utf-8" } }
+      ),
+      "https://plaid.com/careers/business-operations-payments": new Response(
+        `<!doctype html><html><body><main>
+          <h1>Business Operations - Payments</h1>
+          <p>Lead payments operations strategy and analytics across Plaid's financial network.</p>
+        </main></body></html>`,
+        { status: 200, headers: { "Content-Type": "text/html; charset=utf-8" } }
+      ),
+      "https://plaid.com/careers/backend-software-engineer": new Response(
+        `<!doctype html><html><body><main>
+          <h1>Backend Software Engineer</h1>
+          <p>Build distributed systems.</p>
+        </main></body></html>`,
+        { status: 200, headers: { "Content-Type": "text/html; charset=utf-8" } }
+      ),
+      "https://www.coinbase.com/careers/positions": new Response(
+        `<!doctype html><html><body><main>
+          <div class="job">Corporate Development Associate Remote <a href="/careers/positions/6230012">View role</a></div>
+        </main></body></html>`,
+        { status: 200, headers: { "Content-Type": "text/html; charset=utf-8" } }
+      ),
+      "https://www.coinbase.com/careers/positions/6230012": new Response(
+        `<!doctype html><html><body><main>
+          <h1>Corporate Development Associate</h1>
+          <p>Work on corporate development, partnerships, and strategic finance opportunities.</p>
+        </main></body></html>`,
+        { status: 200, headers: { "Content-Type": "text/html; charset=utf-8" } }
+      ),
+    });
+
+    const response = await GET(
+      new NextRequest(
+        "https://isaacavazquez.com/api/mba-jobs?companies=plaid,coinbase,google"
+      )
+    );
+    const body = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(body.errors).toEqual([]);
+    expect(body.jobs).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          companyId: "plaid",
+          atsType: "direct-html",
+          title: "Business Operations - Payments",
+          roleFamilies: expect.arrayContaining(["operations", "analytics"]),
+        }),
+        expect.objectContaining({
+          companyId: "coinbase",
+          atsType: "direct-html",
+          title: "Corporate Development Associate",
+          roleFamilies: expect.arrayContaining(["business-development", "finance"]),
+        }),
+      ])
+    );
+    expect(body.jobs.map((job: { title: string }) => job.title)).not.toEqual(
+      expect.arrayContaining(["Backend Software Engineer"])
+    );
+    expect(body.sourceStatuses).toEqual([
+      expect.objectContaining({ companyId: "plaid", status: "ok", jobCount: 1 }),
+      expect.objectContaining({ companyId: "coinbase", status: "ok", jobCount: 1 }),
+      expect.objectContaining({ companyId: "google", status: "skipped", jobCount: 0 }),
+    ]);
   });
 
   it("returns partial success with company names when one upstream fails", async () => {
@@ -584,6 +727,198 @@ describe("GET /api/mba-jobs", () => {
         companyName: "Brex",
         message: "upstream timeout",
       },
+    ]);
+    expect(body.sourceStatuses).toEqual([
+      expect.objectContaining({
+        companyId: "stripe",
+        status: "ok",
+        jobCount: 1,
+      }),
+      expect.objectContaining({
+        companyId: "brex",
+        status: "failed",
+        jobCount: 0,
+        message: "upstream timeout",
+      }),
+    ]);
+  });
+
+  it("treats an explicit empty companies query as an empty scan", async () => {
+    installFetchMock({});
+
+    const response = await GET(
+      new NextRequest("https://isaacavazquez.com/api/mba-jobs?companies=")
+    );
+    const body = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(mockFetch).not.toHaveBeenCalled();
+    expect(body.jobs).toEqual([]);
+    expect(body.errors).toEqual([]);
+    expect(body.companiesRequested).toEqual([]);
+    expect(body.sourceStatuses).toEqual([]);
+  });
+
+  it("normalizes requested company ids and reports manual-only sources as skipped", async () => {
+    installFetchMock({
+      "https://boards-api.greenhouse.io/v1/boards/stripe/jobs?content=true": new Response(
+        JSON.stringify(
+          buildGreenhouseResponse({
+            jobs: [
+              {
+                id: 5001,
+                title: "MBA Product Intern",
+                location: { name: "San Francisco, CA" },
+                absolute_url: "https://example.com/jobs/5001",
+                updated_at: "2026-04-14T16:00:00.000Z",
+                departments: [{ name: "Product" }],
+                content: "<p>MBA summer internship.</p>",
+              },
+            ],
+          })
+        ),
+        {
+          status: 200,
+          headers: { "Content-Type": "application/json" },
+        }
+      ),
+    });
+
+    const response = await GET(
+      new NextRequest(
+        "https://isaacavazquez.com/api/mba-jobs?companies=STRIPE,stripe,microsoft,unknown"
+      )
+    );
+    const body = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(mockFetch).toHaveBeenCalledTimes(1);
+    expect(body.companiesRequested).toEqual(["stripe", "microsoft", "unknown"]);
+    expect(body.sourceStatuses).toEqual([
+      expect.objectContaining({
+        companyId: "stripe",
+        status: "ok",
+        jobCount: 1,
+      }),
+      expect.objectContaining({
+        companyId: "microsoft",
+        status: "skipped",
+        jobCount: 0,
+      }),
+    ]);
+  });
+
+  it("reports external leads as disabled when the opt-in is on without Adzuna keys", async () => {
+    installFetchMock({});
+
+    const response = await GET(
+      new NextRequest("https://isaacavazquez.com/api/mba-jobs?companies=&external=on")
+    );
+    const body = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(mockFetch).not.toHaveBeenCalled();
+    expect(body.jobs).toEqual([]);
+    expect(body.sourceStatuses).toEqual([
+      expect.objectContaining({
+        companyId: "external-adzuna",
+        atsType: "external-api",
+        status: "external-disabled",
+        jobCount: 0,
+      }),
+    ]);
+  });
+
+  it("adds opt-in Adzuna leads, labels them, and dedupes them against direct jobs", async () => {
+    process.env.ADZUNA_APP_ID = "test-id";
+    process.env.ADZUNA_APP_KEY = "test-key";
+    const adzunaUrl =
+      "https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=test-id&app_key=test-key&results_per_page=25&what=MBA+intern+product+marketing+strategy+operations+finance+growth&content-type=application%2Fjson";
+
+    installFetchMock({
+      "https://boards-api.greenhouse.io/v1/boards/stripe/jobs?content=true": new Response(
+        JSON.stringify(
+          buildGreenhouseResponse({
+            jobs: [
+              {
+                id: 6101,
+                title: "MBA Product Intern",
+                location: { name: "San Francisco, CA" },
+                absolute_url: "https://example.com/jobs/6101",
+                updated_at: "2026-04-14T16:00:00.000Z",
+                departments: [{ name: "Product" }],
+                content: "<p>MBA summer product internship.</p>",
+              },
+            ],
+          })
+        ),
+        {
+          status: 200,
+          headers: { "Content-Type": "application/json" },
+        }
+      ),
+      [adzunaUrl]: new Response(
+        JSON.stringify({
+          results: [
+            {
+              id: "ad-duplicate",
+              title: "MBA Product Intern",
+              company: { display_name: "Stripe" },
+              location: { display_name: "San Francisco, CA" },
+              category: { label: "Product" },
+              description: "MBA summer product internship.",
+              redirect_url: "https://example.com/jobs/6101",
+              created: "2026-04-14T18:00:00Z",
+            },
+            {
+              id: "ad-unique",
+              title: "Strategic Finance Associate",
+              company: { display_name: "External Fintech" },
+              location: { display_name: "Remote" },
+              category: { label: "Finance Jobs" },
+              description: "Lead strategic finance planning and business operations.",
+              redirect_url: "https://adzuna.example.com/jobs/ad-unique",
+              created: "2026-04-14T17:00:00Z",
+            },
+          ],
+        }),
+        {
+          status: 200,
+          headers: { "Content-Type": "application/json" },
+        }
+      ),
+    });
+
+    const response = await GET(
+      new NextRequest("https://isaacavazquez.com/api/mba-jobs?companies=stripe&external=on")
+    );
+    const body = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(body.jobs).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          companyId: "stripe",
+          atsType: "greenhouse",
+          title: "MBA Product Intern",
+        }),
+        expect.objectContaining({
+          atsType: "external-api",
+          sourceName: "Adzuna",
+          sourceUrl: "https://adzuna.example.com/jobs/ad-unique",
+          title: "Strategic Finance Associate",
+        }),
+      ])
+    );
+    expect(body.jobs.filter((job: { applyUrl: string }) => job.applyUrl === "https://example.com/jobs/6101")).toHaveLength(1);
+    expect(body.sourceStatuses).toEqual([
+      expect.objectContaining({ companyId: "stripe", status: "ok", jobCount: 1 }),
+      expect.objectContaining({
+        companyId: "external-adzuna",
+        atsType: "external-api",
+        status: "ok",
+        jobCount: 2,
+      }),
     ]);
   });
 });

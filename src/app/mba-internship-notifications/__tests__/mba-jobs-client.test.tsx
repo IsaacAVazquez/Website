@@ -3,12 +3,14 @@ import { fireEvent, render, screen, within } from "@testing-library/react";
 import { MBAJobsClient } from "../mba-jobs-client";
 import { DEFAULT_MBA_JOBS_STATE } from "../mba-jobs-state";
 import { MBA_COMPANIES } from "@/constants/mba-companies";
-import type { MBAJob } from "@/types/mba-jobs";
+import type { MBAJob, MBATrackedApplication } from "@/types/mba-jobs";
 import { useMBAJobs } from "@/hooks/useMBAJobs";
+import { useMBAApplications } from "@/hooks/useMBAApplications";
 
 const mockPush = jest.fn();
 let currentSearchParams = new URLSearchParams();
 const mockUseMBAJobs = useMBAJobs as jest.MockedFunction<typeof useMBAJobs>;
+const mockUseMBAApplications = useMBAApplications as jest.MockedFunction<typeof useMBAApplications>;
 
 function buildJob(overrides: Partial<MBAJob> = {}): MBAJob {
   return {
@@ -29,12 +31,40 @@ function buildJob(overrides: Partial<MBAJob> = {}): MBAJob {
   };
 }
 
+function buildApplication(
+  overrides: Partial<MBATrackedApplication> = {}
+): MBATrackedApplication {
+  const job = buildJob();
+  return {
+    id: "app-1",
+    jobId: job.id,
+    jobSnapshot: {
+      ...job,
+      capturedAt: "2026-04-14T18:30:00.000Z",
+      source: "live-feed",
+    },
+    status: "saved",
+    priority: "medium",
+    notes: "",
+    contact: "",
+    sourceUrl: job.applyUrl,
+    followUpDate: null,
+    deadline: null,
+    createdAt: "2026-04-14T18:30:00.000Z",
+    updatedAt: "2026-04-14T18:30:00.000Z",
+    appliedAt: null,
+    archivedAt: null,
+    ...overrides,
+  };
+}
+
 function buildHookValue(overrides: Partial<ReturnType<typeof useMBAJobs>> = {}) {
   return {
     jobs: [buildJob()],
     isLoading: false,
     error: null,
     fetchErrors: [],
+    sourceStatuses: [],
     lastFetchedAt: new Date("2026-04-14T18:30:00.000Z"),
     seenIds: new Set<string>(),
     watchedCompanyIds: new Set(
@@ -54,6 +84,29 @@ function buildHookValue(overrides: Partial<ReturnType<typeof useMBAJobs>> = {}) 
     emailSending: false,
     emailResult: null,
     clearEmailResult: jest.fn(),
+    ...overrides,
+  };
+}
+
+function buildApplicationsHookValue(
+  overrides: Partial<ReturnType<typeof useMBAApplications>> = {}
+) {
+  return {
+    applications: [],
+    activeApplications: [],
+    applicationsByJobId: new Map<string, MBATrackedApplication>(),
+    getApplicationForJob: jest.fn(),
+    trackJob: jest.fn(),
+    addManualApplication: jest.fn(),
+    updateApplication: jest.fn(),
+    updateStatus: jest.fn(),
+    updatePriority: jest.fn(),
+    archiveApplication: jest.fn(),
+    removeApplication: jest.fn(),
+    importApplications: jest.fn(() => ({ imported: 0, total: 0 })),
+    exportJson: jest.fn(() => "{}"),
+    exportCsv: jest.fn(() => ""),
+    searchApplications: jest.fn((query: string, source: MBATrackedApplication[] = []) => source),
     ...overrides,
   };
 }
@@ -92,11 +145,16 @@ jest.mock("@/hooks/useMBAJobs", () => ({
   useMBAJobs: jest.fn(),
 }));
 
+jest.mock("@/hooks/useMBAApplications", () => ({
+  useMBAApplications: jest.fn(),
+}));
+
 describe("MBAJobsClient", () => {
   beforeEach(() => {
     currentSearchParams = new URLSearchParams();
     mockPush.mockReset();
     mockUseMBAJobs.mockReturnValue(buildHookValue());
+    mockUseMBAApplications.mockReturnValue(buildApplicationsHookValue());
   });
 
   it("shows company names in the partial-failure banner and button-styled manual links", () => {
@@ -114,8 +172,8 @@ describe("MBAJobsClient", () => {
       screen.getByText(/Some companies could not be reached: Stripe, Reddit\./i)
     ).toBeVisible();
 
-    const plaidLinkedIn = screen.getByRole("link", {
-      name: "LinkedIn search for Plaid",
+    const googleLinkedIn = screen.getByRole("link", {
+      name: "LinkedIn search for Google",
     });
     const microsoftCareerPage = screen.getByRole("link", {
       name: "Career page for Microsoft",
@@ -124,7 +182,7 @@ describe("MBAJobsClient", () => {
       name: "Apply for MBA Product Intern at Stripe",
     });
 
-    expect(plaidLinkedIn).toHaveClass("home-button", "home-button-secondary");
+    expect(googleLinkedIn).toHaveClass("home-button", "home-button-secondary");
     expect(microsoftCareerPage).toHaveClass("home-button", "home-button-primary");
     expect(applyButton).toHaveClass("home-button", "home-button-primary");
   });
@@ -332,5 +390,155 @@ describe("MBAJobsClient", () => {
     expect(mockPush).toHaveBeenLastCalledWith("/mba-internship-notifications", {
       scroll: false,
     });
+  });
+
+  it("renders outbound search shortcuts and toggles external leads through URL state", () => {
+    currentSearchParams = new URLSearchParams("q=strategy&location=remote");
+
+    render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+
+    expect(screen.getByText("Search elsewhere")).toBeVisible();
+    expect(
+      screen.getByRole("link", { name: "Search LinkedIn for the current role filters" })
+    ).toHaveAttribute(
+      "href",
+      expect.stringContaining("https://www.linkedin.com/jobs/search/")
+    );
+    expect(
+      screen.getByRole("link", { name: "Search Google for the current role filters" })
+    ).toHaveAttribute("href", expect.stringContaining("strategy"));
+
+    fireEvent.click(screen.getByRole("tab", { name: "Direct + external leads" }));
+
+    expect(mockPush).toHaveBeenLastCalledWith(
+      "/mba-internship-notifications?external=on&q=strategy&location=remote",
+      { scroll: false }
+    );
+  });
+
+  it("tracks live jobs and marks them applied without opening the apply link", () => {
+    const trackJob = jest.fn();
+    mockUseMBAApplications.mockReturnValue(buildApplicationsHookValue({
+      trackJob,
+    }));
+
+    render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+
+    fireEvent.click(screen.getByRole("button", { name: "Track" }));
+    expect(trackJob).toHaveBeenCalledWith(expect.objectContaining({ id: "stripe-1" }), "saved");
+
+    fireEvent.click(screen.getByRole("button", { name: "Mark applied" }));
+    expect(trackJob).toHaveBeenCalledWith(expect.objectContaining({ id: "stripe-1" }), "applied");
+  });
+
+  it("shows tracked application state on feed cards", () => {
+    const application = buildApplication({ status: "applied" });
+    mockUseMBAApplications.mockReturnValue(buildApplicationsHookValue({
+      applications: [application],
+      activeApplications: [application],
+      getApplicationForJob: jest.fn(() => application),
+    }));
+
+    render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+
+    expect(screen.getByText("Applied")).toBeVisible();
+    expect(screen.getByRole("button", { name: "Tracked" })).toBeVisible();
+    expect(screen.getByRole("button", { name: "Edit" })).toBeVisible();
+  });
+
+  it("passes external lead mode to the hook and labels external roles", () => {
+    currentSearchParams = new URLSearchParams("external=on");
+    mockUseMBAJobs.mockReturnValue(buildHookValue({
+      jobs: [
+        buildJob({
+          id: "adzuna-1",
+          companyId: "external-adzuna-1",
+          companyName: "External Fintech",
+          title: "Strategic Finance Associate",
+          location: "Remote",
+          department: "Finance Jobs",
+          applyUrl: "https://adzuna.example.com/jobs/1",
+          atsType: "external-api",
+          category: "startup",
+          roleType: "full-time",
+          roleFamilies: ["finance"],
+          sourceName: "Adzuna",
+          sourceUrl: "https://adzuna.example.com/jobs/1",
+        }),
+      ],
+    }));
+
+    render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+
+    expect(mockUseMBAJobs).toHaveBeenCalledWith({ externalLeads: true });
+    expect(screen.getByRole("heading", { name: "Strategic Finance Associate" })).toBeVisible();
+    expect(screen.getByText("Adzuna lead")).toBeVisible();
+    expect(screen.getByText(/Found through Adzuna/)).toBeVisible();
+  });
+
+  it("renders source health when the API reports feed statuses", () => {
+    mockUseMBAJobs.mockReturnValue(buildHookValue({
+      sourceStatuses: [
+        {
+          companyId: "stripe",
+          companyName: "Stripe",
+          atsType: "greenhouse",
+          status: "ok",
+          jobCount: 1,
+        },
+        {
+          companyId: "external-adzuna",
+          companyName: "Adzuna leads",
+          atsType: "external-api",
+          status: "external-disabled",
+          jobCount: 0,
+          message: "Set ADZUNA_APP_ID and ADZUNA_APP_KEY to enable external leads.",
+        },
+        {
+          companyId: "microsoft",
+          companyName: "Microsoft",
+          atsType: "manual",
+          status: "skipped",
+          jobCount: 0,
+          message: "Manual-only company; use the career page fallback.",
+        },
+      ],
+    }));
+
+    render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+
+    expect(screen.getByText("Source health")).toBeVisible();
+    expect(screen.getByText("1 healthy")).toBeVisible();
+    expect(screen.getByText("1 manual-only")).toBeVisible();
+    expect(screen.getByText("1 external disabled")).toBeVisible();
+    expect(screen.getByText(/Stripe · 1 roles/)).toBeVisible();
+    expect(screen.getByText(/Adzuna leads · external-disabled/)).toBeVisible();
+  });
+
+  it("deep-links into the application pipeline and updates application status", () => {
+    currentSearchParams = new URLSearchParams("view=applications");
+    const updateStatus = jest.fn();
+    const application = buildApplication({
+      status: "interviewing",
+      notes: "Follow up with recruiter.",
+      followUpDate: "2026-04-15",
+    });
+    mockUseMBAApplications.mockReturnValue(buildApplicationsHookValue({
+      applications: [application],
+      activeApplications: [application],
+      updateStatus,
+    }));
+
+    render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+
+    expect(screen.getByLabelText("Search applications")).toBeVisible();
+    expect(screen.getByRole("heading", { name: "MBA Product Intern" })).toBeVisible();
+
+    fireEvent.change(
+      screen.getByLabelText("Application status for MBA Product Intern"),
+      { target: { value: "offer" } }
+    );
+
+    expect(updateStatus).toHaveBeenCalledWith("app-1", "offer");
   });
 });

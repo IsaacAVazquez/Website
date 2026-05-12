@@ -759,6 +759,13 @@
     max-width: 76rem;
   }
 
+  /* Investments dashboard density override: widen past .home-shell on xl+ screens. */
+  @media (min-width: 1440px) {
+    .home-shell.home-shell-investments {
+      max-width: 1680px;
+    }
+  }
+
   .home-section {
     position: relative;
     padding-block: clamp(1.25rem, 2vw, 2rem);
