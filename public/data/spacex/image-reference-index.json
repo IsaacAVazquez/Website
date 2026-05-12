@@ -1844,7 +1844,13 @@
           "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon2520925_image_20210520085648.jpeg"
         }
       ],
-      "patch": [],
+      "patch": [
+        {
+          "label": "SpX-34",
+          "localPath": "/data/spacex/images/39c94ac5602ed0f3.png",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/spx-34_mission_patch_20260512185813.png"
+        }
+      ],
       "rocket": [
         {
           "label": "Falcon 9 Block 5",
