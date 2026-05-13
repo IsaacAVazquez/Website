@@ -1578,6 +1578,31 @@
       "crew": []
     }
   },
+  "cb1762f0-90f4-4902-a5f6-655a7ade25bf": {
+    "launchId": "cb1762f0-90f4-4902-a5f6-655a7ade25bf",
+    "launchName": "Falcon 9 Block 5 | SDA Tranche 2 Tracking Layer B",
+    "window": "upcoming",
+    "images": {
+      "launch": [
+        {
+          "label": "Falcon 9 Block 5 | SDA Tranche 2 Tracking Layer B",
+          "localPath": "/data/spacex/images/83daf3ce21b64d93.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_image_20230807133459.jpeg"
+        }
+      ],
+      "patch": [],
+      "rocket": [],
+      "spacecraft": [],
+      "pad": [
+        {
+          "label": "Unknown Pad",
+          "localPath": "/data/spacex/images/5b975bfd1358b82e.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/map_images/pad_72_20200803143403.jpg"
+        }
+      ],
+      "crew": []
+    }
+  },
   "d08d8b46-353b-4eee-ab5e-e1385b329008": {
     "launchId": "d08d8b46-353b-4eee-ab5e-e1385b329008",
     "launchName": "Falcon 9 Block 5 | Rivada 11",
