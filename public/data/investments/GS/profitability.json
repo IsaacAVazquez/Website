@@ -89,6 +89,15 @@
       "ending_stockholders_equity": 124972000000.0,
       "avg_equity": 124687000000.0,
       "roe": 0.0352
+    },
+    {
+      "symbol": "GS",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 5403000000.0,
+      "beginning_stockholders_equity": 124972000000.0,
+      "ending_stockholders_equity": 122782000000.0,
+      "avg_equity": 123877000000.0,
+      "roe": 0.0436
     }
   ],
   "roa": [
@@ -181,6 +190,15 @@
       "ending_total_assets": 1809320000000.0,
       "avg_assets": 1808651000000.0,
       "roa": 0.0024
+    },
+    {
+      "symbol": "GS",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 5403000000.0,
+      "beginning_total_assets": 1809320000000.0,
+      "ending_total_assets": 2060180000000.0,
+      "avg_assets": 1934750000000.0,
+      "roa": 0.0028
     }
   ],
   "roic": [],
@@ -254,6 +272,13 @@
       "roe": 0.0352,
       "roa": 0.0024,
       "equity_multiplier": 14.67
+    },
+    {
+      "symbol": "GS",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.0436,
+      "roa": 0.0028,
+      "equity_multiplier": 15.57
     }
   ],
   "assetTurnover": [
@@ -325,6 +350,13 @@
       "report_date": "2025-12-31T00:00:00.000",
       "roa": 0.0024,
       "net_margin": 0.3259,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "GS",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0028,
+      "net_margin": 0.3136,
       "asset_turnover": 0.01
     }
   ]

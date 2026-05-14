@@ -41,9 +41,7 @@
     "BRK-B",
     "JPM",
     "V",
-    "MA"
-  ],
-  "failed": [
+    "MA",
     "BAC",
     "WFC",
     "GS",
@@ -55,7 +53,9 @@
     "SPGI",
     "MCO",
     "PNC",
-    "USB",
+    "USB"
+  ],
+  "failed": [
     "BX",
     "KKR",
     "APO",
@@ -153,7 +153,7 @@
     "FTNT",
     "ECL"
   ],
-  "lastUpdated": "2026-05-11T23:35:21.850921+00:00",
+  "lastUpdated": "2026-05-14T23:35:58.840342+00:00",
   "entries": [
     {
       "symbol": "AAPL",
@@ -406,6 +406,78 @@
       "shortName": "Mastercard Incorporated",
       "longName": "Mastercard Incorporated",
       "searchText": "ma mastercard incorporated mastercard incorporated"
+    },
+    {
+      "symbol": "BAC",
+      "shortName": "Bank of America Corporation",
+      "longName": "Bank of America Corporation",
+      "searchText": "bac bank of america corporation bank of america corporation"
+    },
+    {
+      "symbol": "WFC",
+      "shortName": "Wells Fargo & Company",
+      "longName": "Wells Fargo & Company",
+      "searchText": "wfc wells fargo & company wells fargo & company"
+    },
+    {
+      "symbol": "GS",
+      "shortName": "Goldman Sachs Group, Inc.",
+      "longName": "Goldman Sachs Group, Inc.",
+      "searchText": "gs goldman sachs group, inc. goldman sachs group, inc."
+    },
+    {
+      "symbol": "MS",
+      "shortName": "Morgan Stanley",
+      "longName": "Morgan Stanley",
+      "searchText": "ms morgan stanley morgan stanley"
+    },
+    {
+      "symbol": "AXP",
+      "shortName": "American Express Company",
+      "longName": "American Express Company",
+      "searchText": "axp american express company american express company"
+    },
+    {
+      "symbol": "BLK",
+      "shortName": "BlackRock, Inc.",
+      "longName": "BlackRock, Inc.",
+      "searchText": "blk blackrock, inc. blackrock, inc."
+    },
+    {
+      "symbol": "SCHW",
+      "shortName": "Charles Schwab Corporation",
+      "longName": "Charles Schwab Corporation",
+      "searchText": "schw charles schwab corporation charles schwab corporation"
+    },
+    {
+      "symbol": "CME",
+      "shortName": "CME Group Inc.",
+      "longName": "CME Group Inc.",
+      "searchText": "cme cme group inc. cme group inc."
+    },
+    {
+      "symbol": "SPGI",
+      "shortName": "S&P Global Inc.",
+      "longName": "S&P Global Inc.",
+      "searchText": "spgi s&p global inc. s&p global inc."
+    },
+    {
+      "symbol": "MCO",
+      "shortName": "Moody's Corporation",
+      "longName": "Moody's Corporation",
+      "searchText": "mco moody's corporation moody's corporation"
+    },
+    {
+      "symbol": "PNC",
+      "shortName": "PNC Financial Services Group",
+      "longName": "PNC Financial Services Group",
+      "searchText": "pnc pnc financial services group pnc financial services group"
+    },
+    {
+      "symbol": "USB",
+      "shortName": "U.S. Bancorp",
+      "longName": "U.S. Bancorp",
+      "searchText": "usb u.s. bancorp u.s. bancorp"
     }
   ]
 }

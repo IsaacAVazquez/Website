@@ -1,8 +1,8 @@
 {
   "symbol": "NVDA",
-  "lastUpdated": "2026-05-11T23:35:21.850921+00:00",
+  "lastUpdated": "2026-05-14T23:35:58.840342+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-05-11T23:35:21.850921+00:00",
+    "snapshotBuiltAt": "2026-05-14T23:35:58.840342+00:00",
     "sections": {
       "price": "2026-05-08"
     }
@@ -7574,19 +7574,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "6847b701-a805-3273-8363-1f5569a55995",
-        "title": "Stereotaxis Jumps 15% on NVIDIA's AI-Driven Collaboration: Is It a Buy Now?",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-22",
-        "link": "https://finance.yahoo.com/news/stereotaxis-jumps-15-nvidias-ai-160200798.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9fa0933e-573c-36a8-8e69-eacfa956fa70",
         "title": "Accenture reports Q2 beat, Apple TV+ losing $1B annually: Morning Buzz",
         "publisher": "TipRanks",
         "reportDate": "2025-03-22",
         "link": "https://finance.yahoo.com/news/accenture-reports-q2-beat-apple-161626223.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6847b701-a805-3273-8363-1f5569a55995",
+        "title": "Stereotaxis Jumps 15% on NVIDIA's AI-Driven Collaboration: Is It a Buy Now?",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-22",
+        "link": "https://finance.yahoo.com/news/stereotaxis-jumps-15-nvidias-ai-160200798.html",
         "type": "STORY"
       },
       {

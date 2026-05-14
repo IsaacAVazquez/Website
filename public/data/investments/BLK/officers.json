@@ -21,6 +21,16 @@
   },
   {
     "symbol": "BLK",
+    "name": "Mr. Derek N. Stein",
+    "title": "Senior MD and Global Head of Technology & Operations",
+    "age": 63,
+    "born": 1962,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "BLK",
     "name": "Mr. Laurence Douglas Fink",
     "title": "Founder, CEO & Chairman",
     "age": 73,
@@ -78,16 +88,6 @@
     "pay": 4188855,
     "exercised": 24951468,
     "unexercised": 11136800
-  },
-  {
-    "symbol": "BLK",
-    "name": "Mr. Robert Lawrence Goldstein",
-    "title": "Senior MD & COO",
-    "age": 51,
-    "born": 1974,
-    "pay": 5814205,
-    "exercised": 0,
-    "unexercised": 30175160
   },
   {
     "symbol": "BLK",

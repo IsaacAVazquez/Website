@@ -1,0 +1,102 @@
+[
+  {
+    "symbol": "USB",
+    "name": "Mr. Adam C. Graves",
+    "title": "Senior EVP and Head of Enterprise Strategy & Administration",
+    "age": 46,
+    "born": 1979,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "USB",
+    "name": "Mr. Alan  Flanagan",
+    "title": "Head of Global Investment Services",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "USB",
+    "name": "Mr. Dilip  Venkatachari",
+    "title": "Senior EVP and Chief Information & Technology Officer",
+    "age": 65,
+    "born": 1960,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "USB",
+    "name": "Mr. Elcio R. T. Barcelos",
+    "title": "Senior EVP & Chief Human Resources Officer",
+    "age": 54,
+    "born": 1971,
+    "pay": 2014772,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "USB",
+    "name": "Mr. John C. Stern",
+    "title": "Vice Chair & Chief Financial Officer",
+    "age": 46,
+    "born": 1979,
+    "pay": 2569372,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "USB",
+    "name": "Mr. Stephen L. Philipson",
+    "title": "Vice Chair & Head of Wealth, Corporate, Commercial and Institutional Banking",
+    "age": 45,
+    "born": 1980,
+    "pay": 2472720,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "USB",
+    "name": "Mr. Toby  Clements",
+    "title": "Senior EVP & Chief Operations Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "USB",
+    "name": "Ms. Gunjan  Kedia",
+    "title": "President, CEO & Chairman",
+    "age": 54,
+    "born": 1971,
+    "pay": 4721311,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "USB",
+    "name": "Ms. Jennifer Ann Thompson C.F.A.",
+    "title": "EVP & Head of Corporate Finance",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "USB",
+    "name": "Ms. Jodi L. Richard",
+    "title": "Vice Chair & Chief Risk Officer",
+    "age": 56,
+    "born": 1969,
+    "pay": 2745357,
+    "exercised": 0,
+    "unexercised": 0
+  }
+]

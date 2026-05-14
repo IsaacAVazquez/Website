@@ -1,8 +1,8 @@
 {
   "symbol": "SNPS",
-  "lastUpdated": "2026-05-11T23:35:21.850921+00:00",
+  "lastUpdated": "2026-05-14T23:35:58.840342+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-05-11T23:35:21.850921+00:00",
+    "snapshotBuiltAt": "2026-05-14T23:35:58.840342+00:00",
     "sections": {
       "price": "2026-05-08"
     }
@@ -7949,6 +7949,22 @@
         "type": "VIDEO"
       },
       {
+        "uuid": "78ac3576-2d73-311d-b281-88d7c914a586",
+        "title": "Synopsys Says It Hasn’t Received Notice to Stop Exports to China, Pushing Back on Report",
+        "publisher": "Barrons.com",
+        "reportDate": "2025-05-29",
+        "link": "https://finance.yahoo.com/m/78ac3576-2d73-311d-b281-88d7c914a586/synopsys-says-it-hasn%E2%80%99t.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "8e48b696-e22a-3e7f-bdbd-a48a315aab69",
+        "title": "US Tightens China Chip Curbs by Targeting Design Software",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-29",
+        "link": "https://finance.yahoo.com/news/us-tightens-china-chip-curbs-045811794.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "9c46ac3e-a0bd-3c36-abfa-7e5382addab8",
         "title": "Trump Blocks Chip Design Software Firms From Selling In China",
         "publisher": "Investor's Business Daily",
@@ -7986,22 +8002,6 @@
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-29",
         "link": "https://finance.yahoo.com/news/ftc-require-synopsys-ansys-divest-011750043.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "60b652b1-ba1a-3011-9e0c-1f92bb316553",
-        "title": "Cadence, Synopsys, Others Reportedly Ordered to Stop Shipments to China",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/cadence-synopsys-others-reportedly-ordered-110607594.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "78ac3576-2d73-311d-b281-88d7c914a586",
-        "title": "Synopsys Says It Hasn’t Received Notice to Stop Exports to China, Pushing Back on Report",
-        "publisher": "Barrons.com",
-        "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/m/78ac3576-2d73-311d-b281-88d7c914a586/synopsys-says-it-hasn%E2%80%99t.html",
         "type": "STORY"
       }
     ],

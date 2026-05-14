@@ -206,6 +206,15 @@
       "Global Markets": 5304000000.0,
       "Global Wealth and Investment Management": 6618000000.0,
       "Other": -829000000.0
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2026-03-31",
+      "Consumer Banking": 11049000000.0,
+      "Global Banking": 6287000000.0,
+      "Global Markets": 7109000000.0,
+      "Global Wealth and Investment Management": 6712000000.0,
+      "Other": -723000000.0
     }
   ],
   "by_geography": [],

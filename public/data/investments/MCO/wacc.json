@@ -16,12 +16,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.042,
-    "beta_5y": 1.3591,
+    "beta_5y": 1.3516,
     "weight_of_debt": 0.0927,
     "weight_of_equity": 0.9073,
     "cost_of_debt": 0.0115,
-    "cost_of_equity": 0.12,
-    "wacc": 0.1097
+    "cost_of_equity": 0.1196,
+    "wacc": 0.1093
   },
   {
     "symbol": "MCO",
@@ -40,12 +40,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0436,
-    "beta_5y": 1.3591,
+    "beta_5y": 1.3516,
     "weight_of_debt": 0.0868,
     "weight_of_equity": 0.9132,
     "cost_of_debt": 0.0118,
-    "cost_of_equity": 0.1194,
-    "wacc": 0.1098
+    "cost_of_equity": 0.119,
+    "wacc": 0.1095
   },
   {
     "symbol": "MCO",
@@ -64,12 +64,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0381,
-    "beta_5y": 1.3591,
+    "beta_5y": 1.3516,
     "weight_of_debt": 0.0843,
     "weight_of_equity": 0.9157,
     "cost_of_debt": 0.0111,
-    "cost_of_equity": 0.1214,
-    "wacc": 0.1119
+    "cost_of_equity": 0.121,
+    "wacc": 0.1115
   },
   {
     "symbol": "MCO",
@@ -88,12 +88,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0458,
-    "beta_5y": 1.3591,
+    "beta_5y": 1.3516,
     "weight_of_debt": 0.0832,
     "weight_of_equity": 0.9168,
     "cost_of_debt": 0.0105,
-    "cost_of_equity": 0.134,
-    "wacc": 0.1235
+    "cost_of_equity": 0.1335,
+    "wacc": 0.123
   },
   {
     "symbol": "MCO",
@@ -112,12 +112,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0423,
-    "beta_5y": 1.3591,
+    "beta_5y": 1.3516,
     "weight_of_debt": 0.0785,
     "weight_of_equity": 0.9215,
     "cost_of_debt": 0.0119,
-    "cost_of_equity": 0.1353,
-    "wacc": 0.1254
+    "cost_of_equity": 0.1347,
+    "wacc": 0.1249
   },
   {
     "symbol": "MCO",
@@ -136,12 +136,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0424,
-    "beta_5y": 1.3591,
+    "beta_5y": 1.3516,
     "weight_of_debt": 0.0749,
     "weight_of_equity": 0.9251,
     "cost_of_debt": 0.0102,
-    "cost_of_equity": 0.1352,
-    "wacc": 0.1256
+    "cost_of_equity": 0.1347,
+    "wacc": 0.1252
   },
   {
     "symbol": "MCO",
@@ -160,12 +160,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0416,
-    "beta_5y": 1.3591,
+    "beta_5y": 1.3516,
     "weight_of_debt": 0.0797,
     "weight_of_equity": 0.9203,
     "cost_of_debt": 0.0098,
-    "cost_of_equity": 0.1355,
-    "wacc": 0.1253
+    "cost_of_equity": 0.135,
+    "wacc": 0.1248
   },
   {
     "symbol": "MCO",
@@ -184,12 +184,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0418,
-    "beta_5y": 1.3591,
+    "beta_5y": 1.3516,
     "weight_of_debt": 0.075,
     "weight_of_equity": 0.925,
     "cost_of_debt": 0.0068,
-    "cost_of_equity": 0.1599,
-    "wacc": 0.1484
+    "cost_of_equity": 0.1593,
+    "wacc": 0.1478
   },
   {
     "symbol": "MCO",
@@ -208,12 +208,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 1.3591,
+    "beta_5y": 1.3516,
     "weight_of_debt": 0.0876,
     "weight_of_equity": 0.9124,
     "cost_of_debt": 0.0107,
-    "cost_of_equity": 0.1595,
-    "wacc": 0.1462
+    "cost_of_equity": 0.1588,
+    "wacc": 0.1456
   },
   {
     "symbol": "MCO",
@@ -232,12 +232,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0433,
-    "beta_5y": 1.3591,
+    "beta_5y": 1.3516,
     "weight_of_debt": 0.0871,
     "weight_of_equity": 0.9129,
     "cost_of_debt": 0.0107,
-    "cost_of_equity": 0.1594,
-    "wacc": 0.1462
+    "cost_of_equity": 0.1587,
+    "wacc": 0.1456
   },
   {
     "symbol": "MCO",
@@ -256,12 +256,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0431,
-    "beta_5y": 1.3591,
+    "beta_5y": 1.3516,
     "weight_of_debt": 0.0867,
     "weight_of_equity": 0.9133,
     "cost_of_debt": 0.0107,
-    "cost_of_equity": 0.1594,
-    "wacc": 0.1463
+    "cost_of_equity": 0.1588,
+    "wacc": 0.1457
   },
   {
     "symbol": "MCO",
@@ -280,12 +280,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0434,
-    "beta_5y": 1.3591,
+    "beta_5y": 1.3516,
     "weight_of_debt": 0.0862,
     "weight_of_equity": 0.9138,
     "cost_of_debt": 0.0107,
-    "cost_of_equity": 0.1593,
-    "wacc": 0.1463
+    "cost_of_equity": 0.1587,
+    "wacc": 0.1457
   },
   {
     "symbol": "MCO",
@@ -304,12 +304,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0433,
-    "beta_5y": 1.3591,
+    "beta_5y": 1.3516,
     "weight_of_debt": 0.0872,
     "weight_of_equity": 0.9128,
     "cost_of_debt": 0.0107,
-    "cost_of_equity": 0.1594,
-    "wacc": 0.1462
+    "cost_of_equity": 0.1587,
+    "wacc": 0.1456
   },
   {
     "symbol": "MCO",
@@ -328,12 +328,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 1.3591,
+    "beta_5y": 1.3516,
     "weight_of_debt": 0.0855,
     "weight_of_equity": 0.9145,
     "cost_of_debt": 0.0107,
-    "cost_of_equity": 0.1595,
-    "wacc": 0.1466
+    "cost_of_equity": 0.1589,
+    "wacc": 0.146
   },
   {
     "symbol": "MCO",
@@ -352,12 +352,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 1.3591,
+    "beta_5y": 1.3516,
     "weight_of_debt": 0.0872,
     "weight_of_equity": 0.9128,
     "cost_of_debt": 0.0107,
-    "cost_of_equity": 0.1595,
-    "wacc": 0.1463
+    "cost_of_equity": 0.1589,
+    "wacc": 0.1458
   },
   {
     "symbol": "MCO",
@@ -376,12 +376,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0431,
-    "beta_5y": 1.3591,
+    "beta_5y": 1.3516,
     "weight_of_debt": 0.0892,
     "weight_of_equity": 0.9108,
     "cost_of_debt": 0.0107,
-    "cost_of_equity": 0.1594,
-    "wacc": 0.1459
+    "cost_of_equity": 0.1588,
+    "wacc": 0.1454
   },
   {
     "symbol": "MCO",
@@ -400,12 +400,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 1.3591,
+    "beta_5y": 1.3516,
     "weight_of_debt": 0.087,
     "weight_of_equity": 0.913,
     "cost_of_debt": 0.0107,
-    "cost_of_equity": 0.1595,
-    "wacc": 0.1463
+    "cost_of_equity": 0.1588,
+    "wacc": 0.1457
   },
   {
     "symbol": "MCO",
@@ -424,12 +424,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 1.3591,
+    "beta_5y": 1.3516,
     "weight_of_debt": 0.0872,
     "weight_of_equity": 0.9128,
     "cost_of_debt": 0.0107,
-    "cost_of_equity": 0.1596,
-    "wacc": 0.1464
+    "cost_of_equity": 0.159,
+    "wacc": 0.1458
   },
   {
     "symbol": "MCO",
@@ -448,12 +448,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 1.3591,
+    "beta_5y": 1.3516,
     "weight_of_debt": 0.0857,
     "weight_of_equity": 0.9143,
     "cost_of_debt": 0.0107,
-    "cost_of_equity": 0.1595,
-    "wacc": 0.1465
+    "cost_of_equity": 0.1589,
+    "wacc": 0.146
   },
   {
     "symbol": "MCO",
@@ -472,12 +472,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0432,
-    "beta_5y": 1.3591,
+    "beta_5y": 1.3516,
     "weight_of_debt": 0.0854,
     "weight_of_equity": 0.9146,
     "cost_of_debt": 0.0107,
-    "cost_of_equity": 0.1594,
-    "wacc": 0.1465
+    "cost_of_equity": 0.1588,
+    "wacc": 0.1459
   },
   {
     "symbol": "MCO",
@@ -496,12 +496,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 1.3591,
+    "beta_5y": 1.3516,
     "weight_of_debt": 0.0842,
     "weight_of_equity": 0.9158,
     "cost_of_debt": 0.0107,
-    "cost_of_equity": 0.1596,
-    "wacc": 0.1468
+    "cost_of_equity": 0.159,
+    "wacc": 0.1463
   },
   {
     "symbol": "MCO",
@@ -520,12 +520,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 1.3591,
+    "beta_5y": 1.3516,
     "weight_of_debt": 0.0834,
     "weight_of_equity": 0.9166,
     "cost_of_debt": 0.0107,
-    "cost_of_equity": 0.1596,
-    "wacc": 0.147
+    "cost_of_equity": 0.159,
+    "wacc": 0.1464
   },
   {
     "symbol": "MCO",
@@ -544,12 +544,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 1.3591,
+    "beta_5y": 1.3516,
     "weight_of_debt": 0.0835,
     "weight_of_equity": 0.9165,
     "cost_of_debt": 0.0107,
-    "cost_of_equity": 0.1595,
-    "wacc": 0.1469
+    "cost_of_equity": 0.1588,
+    "wacc": 0.1462
   },
   {
     "symbol": "MCO",
@@ -568,12 +568,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 1.3591,
+    "beta_5y": 1.3516,
     "weight_of_debt": 0.0823,
     "weight_of_equity": 0.9177,
     "cost_of_debt": 0.0107,
-    "cost_of_equity": 0.1595,
-    "wacc": 0.147
+    "cost_of_equity": 0.1588,
+    "wacc": 0.1464
   },
   {
     "symbol": "MCO",
@@ -592,12 +592,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0434,
-    "beta_5y": 1.3591,
+    "beta_5y": 1.3516,
     "weight_of_debt": 0.0847,
     "weight_of_equity": 0.9153,
     "cost_of_debt": 0.0107,
-    "cost_of_equity": 0.1593,
-    "wacc": 0.1465
+    "cost_of_equity": 0.1587,
+    "wacc": 0.1459
   },
   {
     "symbol": "MCO",
@@ -616,12 +616,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0431,
-    "beta_5y": 1.3591,
+    "beta_5y": 1.3516,
     "weight_of_debt": 0.0841,
     "weight_of_equity": 0.9159,
     "cost_of_debt": 0.0107,
-    "cost_of_equity": 0.1594,
-    "wacc": 0.1467
+    "cost_of_equity": 0.1588,
+    "wacc": 0.1461
   },
   {
     "symbol": "MCO",
@@ -640,12 +640,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0435,
-    "beta_5y": 1.3591,
+    "beta_5y": 1.3516,
     "weight_of_debt": 0.0833,
     "weight_of_equity": 0.9167,
     "cost_of_debt": 0.0107,
-    "cost_of_equity": 0.1593,
-    "wacc": 0.1467
+    "cost_of_equity": 0.1587,
+    "wacc": 0.1462
   },
   {
     "symbol": "MCO",
@@ -664,12 +664,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0436,
-    "beta_5y": 1.3591,
+    "beta_5y": 1.3516,
     "weight_of_debt": 0.0838,
     "weight_of_equity": 0.9162,
     "cost_of_debt": 0.0107,
-    "cost_of_equity": 0.1593,
-    "wacc": 0.1466
+    "cost_of_equity": 0.1586,
+    "wacc": 0.146
   },
   {
     "symbol": "MCO",
@@ -688,12 +688,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0442,
-    "beta_5y": 1.3591,
+    "beta_5y": 1.3516,
     "weight_of_debt": 0.0834,
     "weight_of_equity": 0.9166,
     "cost_of_debt": 0.0107,
-    "cost_of_equity": 0.159,
-    "wacc": 0.1464
+    "cost_of_equity": 0.1584,
+    "wacc": 0.1459
   },
   {
     "symbol": "MCO",
@@ -712,12 +712,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.044,
-    "beta_5y": 1.3591,
+    "beta_5y": 1.3516,
     "weight_of_debt": 0.0831,
     "weight_of_equity": 0.9169,
     "cost_of_debt": 0.0107,
-    "cost_of_equity": 0.1591,
-    "wacc": 0.1466
+    "cost_of_equity": 0.1585,
+    "wacc": 0.146
   },
   {
     "symbol": "MCO",
@@ -736,11 +736,131 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0439,
-    "beta_5y": 1.3591,
+    "beta_5y": 1.3516,
     "weight_of_debt": 0.0841,
     "weight_of_equity": 0.9159,
     "cost_of_debt": 0.0107,
-    "cost_of_equity": 0.1592,
-    "wacc": 0.1465
+    "cost_of_equity": 0.1585,
+    "wacc": 0.1459
+  },
+  {
+    "symbol": "MCO",
+    "report_date": "2026-05-04T00:00:00.000",
+    "market_capitalization": 78527522384.0,
+    "exchange_rate": 1.0,
+    "total_debt": 7313000000.0,
+    "total_debt_usd": 7313000000.0,
+    "interest_expense": 78000000.0,
+    "interest_expense_usd": 78000000.0,
+    "pretax_income": 870000000.0,
+    "pretax_income_usd": 870000000.0,
+    "tax_provision": 209000000.0,
+    "tax_provision_usd": 209000000.0,
+    "tax_rate_for_calcs": 0.24,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0445,
+    "beta_5y": 1.3516,
+    "weight_of_debt": 0.0852,
+    "weight_of_equity": 0.9148,
+    "cost_of_debt": 0.0107,
+    "cost_of_equity": 0.1583,
+    "wacc": 0.1455
+  },
+  {
+    "symbol": "MCO",
+    "report_date": "2026-05-05T00:00:00.000",
+    "market_capitalization": 79399157620.0,
+    "exchange_rate": 1.0,
+    "total_debt": 7313000000.0,
+    "total_debt_usd": 7313000000.0,
+    "interest_expense": 78000000.0,
+    "interest_expense_usd": 78000000.0,
+    "pretax_income": 870000000.0,
+    "pretax_income_usd": 870000000.0,
+    "tax_provision": 209000000.0,
+    "tax_provision_usd": 209000000.0,
+    "tax_rate_for_calcs": 0.24,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0443,
+    "beta_5y": 1.3516,
+    "weight_of_debt": 0.0843,
+    "weight_of_equity": 0.9157,
+    "cost_of_debt": 0.0107,
+    "cost_of_equity": 0.1584,
+    "wacc": 0.1457
+  },
+  {
+    "symbol": "MCO",
+    "report_date": "2026-05-06T00:00:00.000",
+    "market_capitalization": 78366820096.0,
+    "exchange_rate": 1.0,
+    "total_debt": 7313000000.0,
+    "total_debt_usd": 7313000000.0,
+    "interest_expense": 78000000.0,
+    "interest_expense_usd": 78000000.0,
+    "pretax_income": 870000000.0,
+    "pretax_income_usd": 870000000.0,
+    "tax_provision": 209000000.0,
+    "tax_provision_usd": 209000000.0,
+    "tax_rate_for_calcs": 0.24,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0436,
+    "beta_5y": 1.3516,
+    "weight_of_debt": 0.0854,
+    "weight_of_equity": 0.9146,
+    "cost_of_debt": 0.0107,
+    "cost_of_equity": 0.1586,
+    "wacc": 0.1458
+  },
+  {
+    "symbol": "MCO",
+    "report_date": "2026-05-07T00:00:00.000",
+    "market_capitalization": 79844582440.0,
+    "exchange_rate": 1.0,
+    "total_debt": 7313000000.0,
+    "total_debt_usd": 7313000000.0,
+    "interest_expense": 78000000.0,
+    "interest_expense_usd": 78000000.0,
+    "pretax_income": 870000000.0,
+    "pretax_income_usd": 870000000.0,
+    "tax_provision": 209000000.0,
+    "tax_provision_usd": 209000000.0,
+    "tax_rate_for_calcs": 0.24,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0441,
+    "beta_5y": 1.3516,
+    "weight_of_debt": 0.0839,
+    "weight_of_equity": 0.9161,
+    "cost_of_debt": 0.0107,
+    "cost_of_equity": 0.1584,
+    "wacc": 0.1458
+  },
+  {
+    "symbol": "MCO",
+    "report_date": "2026-05-08T00:00:00.000",
+    "market_capitalization": 78834952848.0,
+    "exchange_rate": 1.0,
+    "total_debt": 7313000000.0,
+    "total_debt_usd": 7313000000.0,
+    "interest_expense": 78000000.0,
+    "interest_expense_usd": 78000000.0,
+    "pretax_income": 870000000.0,
+    "pretax_income_usd": 870000000.0,
+    "tax_provision": 209000000.0,
+    "tax_provision_usd": 209000000.0,
+    "tax_rate_for_calcs": 0.24,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0438,
+    "beta_5y": 1.3516,
+    "weight_of_debt": 0.0849,
+    "weight_of_equity": 0.9151,
+    "cost_of_debt": 0.0107,
+    "cost_of_equity": 0.1586,
+    "wacc": 0.1458
   }
 ]

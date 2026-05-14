@@ -109,7 +109,7 @@
       "symbol": "GS",
       "report_date": "2026-03-31",
       "gross_profit": null,
-      "total_revenue": null,
+      "total_revenue": 17227000000.0,
       "gross_margin": null
     }
   ],
@@ -274,7 +274,7 @@
       "symbol": "GS",
       "report_date": "2026-03-31",
       "operating_income": null,
-      "total_revenue": null,
+      "total_revenue": 17227000000.0,
       "operating_margin": null
     }
   ],
@@ -438,9 +438,9 @@
     {
       "symbol": "GS",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": null,
-      "total_revenue": null,
-      "net_margin": null
+      "net_income_common_stockholders": 5403000000.0,
+      "total_revenue": 17227000000.0,
+      "net_margin": 0.3136
     }
   ],
   "annual_net": [
@@ -604,7 +604,7 @@
       "symbol": "GS",
       "report_date": "2026-03-31",
       "ebitda": null,
-      "total_revenue": null,
+      "total_revenue": 17227000000.0,
       "ebitda_margin": null
     }
   ],
@@ -768,9 +768,9 @@
     {
       "symbol": "GS",
       "report_date": "2026-03-31",
-      "free_cash_flow": null,
-      "total_revenue": null,
-      "fcf_margin": null
+      "free_cash_flow": -32433000000.0,
+      "total_revenue": 17227000000.0,
+      "fcf_margin": -1.8827
     }
   ],
   "annual_fcf": [

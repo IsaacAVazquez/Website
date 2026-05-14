@@ -1,10 +1,10 @@
 {
   "symbol": "CME",
-  "lastUpdated": "2026-05-07T23:35:00.937242+00:00",
+  "lastUpdated": "2026-05-14T23:35:58.840342+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-05-07T23:35:00.937242+00:00",
+    "snapshotBuiltAt": "2026-05-14T23:35:58.840342+00:00",
     "sections": {
-      "price": "2026-05-01"
+      "price": "2026-05-08"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.72,
-      "ttmPe": 24.7,
-      "marketCap": 104917511722,
-      "psRatio": 15.52,
-      "pbRatio": 3.94,
-      "pegRatio": 1.16
+      "ttmPe": 24,
+      "marketCap": 101913553125,
+      "psRatio": 15.08,
+      "pbRatio": 3.83,
+      "pegRatio": 1.12
     },
     "profitability": {
       "roe": 4.22,
@@ -1113,7 +1113,7 @@
           "2026-03-31": "327874800.0",
           "2025-12-31": "445188070.2",
           "2025-09-30": "354652300.0",
-          "2025-06-30": "348354265.96",
+          "2025-06-30": "347713600.0",
           "2025-03-31": "207106400.0",
           "2024-12-31": "189588728.8",
           "2024-09-30": "230003200.0",
@@ -2709,7 +2709,7 @@
         },
         {
           "Breakdown": "Share Issued",
-          "2026-03-31": "362808081.0",
+          "2026-03-31": "361793138.0",
           "2025-12-31": "358953138.0",
           "2025-09-30": "359852138.0",
           "2025-06-30": "359650138.0",
@@ -2728,7 +2728,7 @@
         },
         {
           "Breakdown": "Ordinary Shares Number",
-          "2026-03-31": "362808081.0",
+          "2026-03-31": "361793138.0",
           "2025-12-31": "358953138.0",
           "2025-09-30": "359852138.0",
           "2025-06-30": "359650138.0",
@@ -5266,57 +5266,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.460000000000001,
-      "costOfEquity": 6.64,
+      "wacc": 6.41,
+      "costOfEquity": 6.59,
       "costOfDebt": 1.27,
       "taxRate": 24,
-      "beta": 0.2649,
-      "marketCap": 104917511722
+      "beta": 0.2608,
+      "marketCap": 101913553125
     },
     "beta": {
-      "beta5y": 0.2649
+      "beta5y": 0.2608
     },
     "price": [
-      {
-        "date": "2025-05-01",
-        "open": 275.27,
-        "high": 278.35,
-        "low": 273.91,
-        "close": 277.11,
-        "volume": 2048100
-      },
-      {
-        "date": "2025-05-02",
-        "open": 278.25,
-        "high": 282.1,
-        "low": 277.75,
-        "close": 280.45,
-        "volume": 2245600
-      },
-      {
-        "date": "2025-05-05",
-        "open": 279.86,
-        "high": 283.11,
-        "low": 278.64,
-        "close": 282.56,
-        "volume": 1510500
-      },
-      {
-        "date": "2025-05-06",
-        "open": 282.05,
-        "high": 285.94,
-        "low": 281,
-        "close": 282.98,
-        "volume": 1888500
-      },
-      {
-        "date": "2025-05-07",
-        "open": 282.42,
-        "high": 286.48,
-        "low": 281.86,
-        "close": 284.82,
-        "volume": 1411400
-      },
       {
         "date": "2025-05-08",
         "open": 283.7,
@@ -7292,6 +7252,46 @@
         "low": 288.01,
         "close": 289.54,
         "volume": 2019700
+      },
+      {
+        "date": "2026-05-04",
+        "open": 287.48,
+        "high": 292.34,
+        "low": 286.13,
+        "close": 290.29,
+        "volume": 1700600
+      },
+      {
+        "date": "2026-05-05",
+        "open": 289.77,
+        "high": 290.5,
+        "low": 286.35,
+        "close": 286.82,
+        "volume": 1949200
+      },
+      {
+        "date": "2026-05-06",
+        "open": 285.78,
+        "high": 288.89,
+        "low": 283.02,
+        "close": 288.34,
+        "volume": 2168700
+      },
+      {
+        "date": "2026-05-07",
+        "open": 288.2,
+        "high": 288.38,
+        "low": 285.15,
+        "close": 286.85,
+        "volume": 2364000
+      },
+      {
+        "date": "2026-05-08",
+        "open": 286.41,
+        "high": 286.95,
+        "low": 280.69,
+        "close": 281.25,
+        "volume": 2308700
       }
     ],
     "news": [
@@ -7328,19 +7328,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "46b7a220-ca41-30c8-bbc7-9560f27e7ff6",
-        "title": "Market Chatter: CME Group in Talks to Add Hong Kong to Aluminum Delivery Network",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/market-chatter-cme-group-talks-172140861.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "c37c3b44-7721-379d-ac7f-db111170144a",
         "title": "FX Spot+ Trades $1.4 Billion in a Single Day With Over 40 Clients Active in First Month",
         "publisher": "PR Newswire",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/news/fx-spot-trades-1-4-100000839.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "46b7a220-ca41-30c8-bbc7-9560f27e7ff6",
+        "title": "Market Chatter: CME Group in Talks to Add Hong Kong to Aluminum Delivery Network",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/market-chatter-cme-group-talks-172140861.html",
         "type": "STORY"
       },
       {
@@ -7352,19 +7352,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "3983830b-3586-3549-9334-10a4699a62b7",
-        "title": "CME Group vs. Intercontinental: Which Exchange Stock is a Better Buy?",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/cme-group-vs-intercontinental-exchange-180600366.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "31cac532-4fb9-34d3-a594-e266bef346bf",
         "title": "CME (CME) Up 7.1% Since Last Earnings Report: Can It Continue?",
         "publisher": "Zacks",
         "reportDate": "2025-05-23",
         "link": "https://finance.yahoo.com/news/cme-cme-7-1-since-153050961.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3983830b-3586-3549-9334-10a4699a62b7",
+        "title": "CME Group vs. Intercontinental: Which Exchange Stock is a Better Buy?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/cme-group-vs-intercontinental-exchange-180600366.html",
         "type": "STORY"
       },
       {
@@ -7442,50 +7442,50 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 24.7,
-        "industryAvg": 26.64
+        "value": 24,
+        "industryAvg": 26.41
       },
       {
         "metric": "P/S Ratio",
-        "value": 15.52,
-        "industryAvg": 7.88
+        "value": 15.08,
+        "industryAvg": 7.86
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.94,
-        "industryAvg": 4.05
+        "value": 3.83,
+        "industryAvg": 4.01
       },
       {
         "metric": "ROE",
         "value": 4.22,
-        "industryAvg": 17.83
+        "industryAvg": 17.91
       },
       {
         "metric": "ROA",
         "value": 0.58,
-        "industryAvg": 4.3999999999999995
+        "industryAvg": 4.42
       },
       {
         "metric": "Gross Margin",
         "value": 88.14,
-        "industryAvg": 64.79
+        "industryAvg": 64.92
       },
       {
         "metric": "EBITDA Margin",
         "value": 87.11,
-        "industryAvg": 49.58
+        "industryAvg": 49.74
       },
       {
         "metric": "Net Margin",
         "value": 62.12,
-        "industryAvg": 29.59
+        "industryAvg": 29.74
       }
     ],
     "dcf": {
-      "fairValue": 484.69,
-      "currentPrice": 289.54,
-      "upside": 67.4,
-      "wacc": 6.46,
+      "fairValue": 491.87,
+      "currentPrice": 281.25,
+      "upside": 74.89,
+      "wacc": 6.41,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 21.37,
         "Terminal growth": 3

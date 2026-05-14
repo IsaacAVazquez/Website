@@ -73,9 +73,9 @@
     {
       "symbol": "BAC",
       "report_date": "2025-03-31T00:00:00.000",
-      "revenue": 27366000000.0,
+      "revenue": 28247000000.0,
       "prev_year_revenue": 25818000000.0,
-      "yoy_growth": 0.06
+      "yoy_growth": 0.0941
     },
     {
       "symbol": "BAC",
@@ -97,6 +97,13 @@
       "revenue": 31180000000.0,
       "prev_year_revenue": 25347000000.0,
       "yoy_growth": 0.2301
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2026-03-31T00:00:00.000",
+      "revenue": 30272000000.0,
+      "prev_year_revenue": 28247000000.0,
+      "yoy_growth": 0.0717
     }
   ],
   "annual_revenue": [
@@ -228,9 +235,9 @@
     {
       "symbol": "BAC",
       "report_date": "2025-03-31T00:00:00.000",
-      "net_income_common_stockholders": 6990000000.0,
+      "net_income_common_stockholders": 6954000000.0,
       "prev_year_net_income_common_stockholders": 6142000000.0,
-      "yoy_growth": 0.1381
+      "yoy_growth": 0.1322
     },
     {
       "symbol": "BAC",
@@ -252,6 +259,13 @@
       "net_income_common_stockholders": 7200000000.0,
       "prev_year_net_income_common_stockholders": 6399000000.0,
       "yoy_growth": 0.1252
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2026-03-31T00:00:00.000",
+      "net_income_common_stockholders": 8155000000.0,
+      "prev_year_net_income_common_stockholders": 6954000000.0,
+      "yoy_growth": 0.1727
     }
   ],
   "annual_net_income": [
@@ -389,6 +403,13 @@
       "free_cash_flow": -22945000000.0,
       "prev_year_free_cash_flow": 25914000000.0,
       "yoy_growth": -1.8854
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2026-03-31T00:00:00.000",
+      "free_cash_flow": 41770000000.0,
+      "prev_year_free_cash_flow": -2184000000.0,
+      "yoy_growth": 20.1255
     }
   ],
   "annual_fcf": [
@@ -1195,9 +1216,9 @@
     {
       "symbol": "BAC",
       "report_date": "2025-03-31T00:00:00.000",
-      "eps": 0.9,
+      "eps": 0.89,
       "prev_year_eps": 0.76,
-      "yoy_growth": 0.1842
+      "yoy_growth": 0.1711
     },
     {
       "symbol": "BAC",
@@ -1224,8 +1245,8 @@
       "symbol": "BAC",
       "report_date": "2026-03-31T00:00:00.000",
       "eps": 1.11,
-      "prev_year_eps": 0.9,
-      "yoy_growth": 0.2333
+      "prev_year_eps": 0.89,
+      "yoy_growth": 0.2472
     }
   ]
 }

@@ -1,10 +1,10 @@
 {
   "symbol": "SCHW",
-  "lastUpdated": "2026-05-07T23:35:00.937242+00:00",
+  "lastUpdated": "2026-05-14T23:35:58.840342+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-05-07T23:35:00.937242+00:00",
+    "snapshotBuiltAt": "2026-05-14T23:35:58.840342+00:00",
     "sections": {
-      "price": "2026-05-01"
+      "price": "2026-05-08"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.04,
-      "ttmPe": 18.16,
-      "marketCap": 159105619076,
-      "psRatio": 6.65,
-      "pbRatio": 3.22,
-      "pegRatio": 0.47
+      "ttmPe": 17.58,
+      "marketCap": 154012987834,
+      "psRatio": 6.44,
+      "pbRatio": 3.12,
+      "pegRatio": 0.46
     },
     "profitability": {
       "roe": 4.79,
@@ -5695,57 +5695,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.66,
-      "costOfEquity": 11.14,
+      "wacc": 9.569999999999999,
+      "costOfEquity": 11.08,
       "costOfDebt": 2.69,
       "taxRate": 23,
-      "beta": 0.7965,
-      "marketCap": 159105619076
+      "beta": 0.7894,
+      "marketCap": 154012987834
     },
     "beta": {
-      "beta5y": 0.7965
+      "beta5y": 0.7894
     },
     "price": [
-      {
-        "date": "2025-05-01",
-        "open": 81.13,
-        "high": 82.07,
-        "low": 80.98,
-        "close": 81.51,
-        "volume": 7997800
-      },
-      {
-        "date": "2025-05-02",
-        "open": 83.07,
-        "high": 83.68,
-        "low": 82.63,
-        "close": 83.11,
-        "volume": 9348100
-      },
-      {
-        "date": "2025-05-05",
-        "open": 82.67,
-        "high": 83.85,
-        "low": 82.04,
-        "close": 83.37,
-        "volume": 5242600
-      },
-      {
-        "date": "2025-05-06",
-        "open": 82.71,
-        "high": 83.58,
-        "low": 82.4,
-        "close": 82.83,
-        "volume": 5724000
-      },
-      {
-        "date": "2025-05-07",
-        "open": 83.21,
-        "high": 84.26,
-        "low": 83.19,
-        "close": 84.01,
-        "volume": 9393700
-      },
       {
         "date": "2025-05-08",
         "open": 84.56,
@@ -7720,10 +7680,58 @@
         "high": 92.86,
         "low": 91.27,
         "close": 91.54,
-        "volume": 8531800
+        "volume": 8532600
+      },
+      {
+        "date": "2026-05-04",
+        "open": 91.37,
+        "high": 92.72,
+        "low": 90.95,
+        "close": 91.48,
+        "volume": 7005800
+      },
+      {
+        "date": "2026-05-05",
+        "open": 91.76,
+        "high": 92.89,
+        "low": 91.5,
+        "close": 92.4,
+        "volume": 5784300
+      },
+      {
+        "date": "2026-05-06",
+        "open": 92.36,
+        "high": 92.75,
+        "low": 91.59,
+        "close": 92.15,
+        "volume": 6883300
+      },
+      {
+        "date": "2026-05-07",
+        "open": 91.81,
+        "high": 92.43,
+        "low": 88.66,
+        "close": 89.5,
+        "volume": 14792000
+      },
+      {
+        "date": "2026-05-08",
+        "open": 89.29,
+        "high": 89.7,
+        "low": 88.31,
+        "close": 88.61,
+        "volume": 9950400
       }
     ],
     "news": [
+      {
+        "uuid": "b3ca163e-a8e2-34ba-91b9-fe8f8ef39064",
+        "title": "Top Research Reports for AbbVie, TJX & Charles Schwab",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/top-research-reports-abbvie-tjx-203000671.html",
+        "type": "STORY"
+      },
       {
         "uuid": "ac6e5de2-8b20-33f4-9118-155a4af9f80b",
         "title": "The Zacks Analyst Blog AbbVie, The TJX, The Charles Schwab, Enzo Biochem and CVD Equipment",
@@ -7738,14 +7746,6 @@
         "publisher": "Zacks",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/subdued-aum-performance-weak-markets-111500357.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "b3ca163e-a8e2-34ba-91b9-fe8f8ef39064",
-        "title": "Top Research Reports for AbbVie, TJX & Charles Schwab",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/top-research-reports-abbvie-tjx-203000671.html",
         "type": "STORY"
       },
       {
@@ -7765,19 +7765,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "d6874b40-31b1-30d0-83b4-14fbb580a284",
-        "title": "NYSE Content Advisory: Pre-Market update + Charles Schwab unveils National Investing Day",
-        "publisher": "CNW Group",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/nyse-content-advisory-pre-market-125500495.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9733c73b-ff43-3220-a882-110813226f8a",
         "title": "NYSE Content Advisory: Pre-Market update + Charles Schwab unveils National Investing Day",
         "publisher": "PR Newswire",
         "reportDate": "2025-05-01",
         "link": "https://finance.yahoo.com/news/nyse-content-advisory-pre-market-125500394.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d6874b40-31b1-30d0-83b4-14fbb580a284",
+        "title": "NYSE Content Advisory: Pre-Market update + Charles Schwab unveils National Investing Day",
+        "publisher": "CNW Group",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/news/nyse-content-advisory-pre-market-125500495.html",
         "type": "STORY"
       },
       {
@@ -7789,19 +7789,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "28deb7de-8bbe-3905-a439-9d725a84c8db",
-        "title": "TD Plans to Cut About 2% of Workforce Amid Restructuring",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/td-plans-cut-2-workforce-153043644.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "06d1444e-b766-3a02-a4ab-bbb55bbbc47c",
         "title": "Update On TD Bank; Up 0.6% in U.S. Premarket Following Q2 Adjusted Earnings Beat",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/news/td-bank-0-6-u-121826487.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "28deb7de-8bbe-3905-a439-9d725a84c8db",
+        "title": "TD Plans to Cut About 2% of Workforce Amid Restructuring",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/td-plans-cut-2-workforce-153043644.html",
         "type": "STORY"
       }
     ],
@@ -7866,48 +7866,48 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 18.16,
-        "industryAvg": 18.47
+        "value": 17.58,
+        "industryAvg": 17.96
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.65,
-        "industryAvg": 2.37
+        "value": 6.44,
+        "industryAvg": 2.39
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.22,
-        "industryAvg": 2.58
+        "value": 3.12,
+        "industryAvg": 2.63
       },
       {
         "metric": "ROE",
         "value": 4.79,
-        "industryAvg": 13.61
+        "industryAvg": 14.37
       },
       {
         "metric": "ROA",
         "value": 0.5,
-        "industryAvg": 1.0999999999999999
+        "industryAvg": 1.09
       },
       {
         "metric": "Gross Margin",
-        "industryAvg": 16.66
+        "industryAvg": 16.76
       },
       {
         "metric": "EBITDA Margin",
-        "industryAvg": 6.419999999999999
+        "industryAvg": 6.4799999999999995
       },
       {
         "metric": "Net Margin",
         "value": 37.36,
-        "industryAvg": 18.83
+        "industryAvg": 19.509999999999998
       }
     ],
     "dcf": {
-      "fairValue": 140.89,
-      "currentPrice": 91.54,
-      "upside": 53.91,
-      "wacc": 9.66,
+      "fairValue": 142.88,
+      "currentPrice": 88.61,
+      "upside": 61.24,
+      "wacc": 9.57,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 38.38,
         "Terminal growth": 3

@@ -1,10 +1,10 @@
 {
   "symbol": "BLK",
-  "lastUpdated": "2026-05-07T23:35:00.937242+00:00",
+  "lastUpdated": "2026-05-14T23:35:58.840342+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-05-07T23:35:00.937242+00:00",
+    "snapshotBuiltAt": "2026-05-14T23:35:58.840342+00:00",
     "sections": {
-      "price": "2026-05-01"
+      "price": "2026-05-08"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 39.42,
-      "ttmPe": 26.93,
-      "marketCap": 164947913200,
-      "psRatio": 6.81,
-      "pbRatio": 2.95,
-      "pegRatio": 0.59
+      "ttmPe": 27.52,
+      "marketCap": 168402500220,
+      "psRatio": 6.95,
+      "pbRatio": 3.01,
+      "pegRatio": 0.6
     },
     "profitability": {
       "roe": 2.02,
@@ -792,8 +792,8 @@
           "TTM": "149721161.0",
           "2026-03-31": "155300000.0",
           "2025-12-31": "155100000.0",
-          "2025-09-30": "154922231.0",
-          "2025-06-30": "154868992.0",
+          "2025-09-30": "154900000.0",
+          "2025-06-30": "154900000.0",
           "2025-03-31": "155000000.0",
           "2024-12-31": "155000000.0",
           "2024-09-30": "148000000.0",
@@ -812,8 +812,8 @@
           "TTM": "151165471.0",
           "2026-03-31": "165000000.0",
           "2025-12-31": "165400000.0",
-          "2025-09-30": "165177482.0",
-          "2025-06-30": "156253855.0",
+          "2025-09-30": "156900000.0",
+          "2025-06-30": "156300000.0",
           "2025-03-31": "156600000.0",
           "2024-12-31": "157000000.0",
           "2024-09-30": "149600000.0",
@@ -1541,7 +1541,7 @@
         },
         {
           "Breakdown": "Basic Average Shares",
-          "2025-12-31": "154984319.0",
+          "2025-12-31": "155000000.0",
           "2024-12-31": "150000000.0",
           "2023-12-31": "149300000.0",
           "2022-12-31": "150921161.0",
@@ -1551,7 +1551,7 @@
         },
         {
           "Breakdown": "Diluted Average Shares",
-          "2025-12-31": "160866521.0",
+          "2025-12-31": "160900000.0",
           "2024-12-31": "151600000.0",
           "2023-12-31": "150700000.0",
           "2022-12-31": "152440471.0",
@@ -5190,57 +5190,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.32,
-      "costOfEquity": 16.650000000000002,
+      "wacc": 15.340000000000002,
+      "costOfEquity": 16.64,
       "costOfDebt": 0.9299999999999999,
       "taxRate": 23,
-      "beta": 1.4453,
-      "marketCap": 164947913200
+      "beta": 1.4438,
+      "marketCap": 168402500220
     },
     "beta": {
-      "beta5y": 1.4453
+      "beta5y": 1.4438
     },
     "price": [
-      {
-        "date": "2025-05-01",
-        "open": 912.96,
-        "high": 923.88,
-        "low": 905.91,
-        "close": 916.14,
-        "volume": 451700
-      },
-      {
-        "date": "2025-05-02",
-        "open": 931.42,
-        "high": 935.16,
-        "low": 924.32,
-        "close": 929.2,
-        "volume": 822500
-      },
-      {
-        "date": "2025-05-05",
-        "open": 922.94,
-        "high": 933.7,
-        "low": 920.19,
-        "close": 920.53,
-        "volume": 384100
-      },
-      {
-        "date": "2025-05-06",
-        "open": 910.49,
-        "high": 923.77,
-        "low": 906.57,
-        "close": 914.97,
-        "volume": 482900
-      },
-      {
-        "date": "2025-05-07",
-        "open": 917.65,
-        "high": 924.99,
-        "low": 914.84,
-        "close": 920.36,
-        "volume": 547800
-      },
       {
         "date": "2025-05-08",
         "open": 930,
@@ -7215,7 +7175,47 @@
         "high": 1080.73,
         "low": 1060.59,
         "close": 1061.68,
-        "volume": 470300
+        "volume": 471100
+      },
+      {
+        "date": "2026-05-04",
+        "open": 1055,
+        "high": 1068.5,
+        "low": 1049.89,
+        "close": 1052.25,
+        "volume": 424600
+      },
+      {
+        "date": "2026-05-05",
+        "open": 1055,
+        "high": 1064.97,
+        "low": 1047.52,
+        "close": 1048.91,
+        "volume": 541500
+      },
+      {
+        "date": "2026-05-06",
+        "open": 1065.75,
+        "high": 1081.57,
+        "low": 1064.85,
+        "close": 1073.57,
+        "volume": 662600
+      },
+      {
+        "date": "2026-05-07",
+        "open": 1075.62,
+        "high": 1080.74,
+        "low": 1058.49,
+        "close": 1067.74,
+        "volume": 477200
+      },
+      {
+        "date": "2026-05-08",
+        "open": 1074.32,
+        "high": 1085.23,
+        "low": 1067,
+        "close": 1084.83,
+        "volume": 490600
       }
     ],
     "news": [
@@ -7315,6 +7315,12 @@
         "totalPay": 4038215
       },
       {
+        "name": "Mr. Derek N. Stein",
+        "title": "Senior MD and Global Head of Technology & Operations",
+        "age": 63,
+        "yearBorn": 1962
+      },
+      {
         "name": "Mr. Laurence Douglas Fink",
         "title": "Founder, CEO & Chairman",
         "age": 73,
@@ -7348,13 +7354,6 @@
         "totalPay": 4188855
       },
       {
-        "name": "Mr. Robert Lawrence Goldstein",
-        "title": "Senior MD & COO",
-        "age": 51,
-        "yearBorn": 1974,
-        "totalPay": 5814205
-      },
-      {
         "name": "Mr. Robert Steven Kapito",
         "title": "President & Member of Board of Directors",
         "age": 69,
@@ -7365,50 +7364,50 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 26.93,
-        "industryAvg": 24.17
+        "value": 27.52,
+        "industryAvg": 23.8
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.81,
-        "industryAvg": 3.35
+        "value": 6.95,
+        "industryAvg": 3.39
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.95,
-        "industryAvg": 2.54
+        "value": 3.01,
+        "industryAvg": 2.59
       },
       {
         "metric": "ROE",
         "value": 2.02,
-        "industryAvg": 8.19
+        "industryAvg": 7.6499999999999995
       },
       {
         "metric": "ROA",
         "value": 0.6799999999999999,
-        "industryAvg": 0.76
+        "industryAvg": 0.7100000000000001
       },
       {
         "metric": "Gross Margin",
         "value": 45.629999999999995,
-        "industryAvg": 32.9
+        "industryAvg": 32.800000000000004
       },
       {
         "metric": "EBITDA Margin",
         "value": 30.19,
-        "industryAvg": 40.89
+        "industryAvg": 40.73
       },
       {
         "metric": "Net Margin",
         "value": 16.08,
-        "industryAvg": 7.32
+        "industryAvg": 6.819999999999999
       }
     ],
     "dcf": {
-      "fairValue": 648,
-      "currentPrice": 1061.68,
-      "upside": -38.96,
-      "wacc": 15.32,
+      "fairValue": 646.89,
+      "currentPrice": 1084.83,
+      "upside": -40.37,
+      "wacc": 15.34,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 45.85,
         "Terminal growth": 3

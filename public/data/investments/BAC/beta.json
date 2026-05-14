@@ -1,8 +1,8 @@
 [
   {
     "symbol": "BAC",
-    "report_date": "2026-05-01",
-    "beta": 1.2222,
+    "report_date": "2026-05-08",
+    "beta": 1.2135,
     "period": "5y",
     "benchmark": "SPY"
   }

@@ -31,6 +31,16 @@
   },
   {
     "symbol": "MCO",
+    "name": "Mr. Michael L. West",
+    "title": "President of Moody's Investors Service Inc. & CEO of Moody's Ratings",
+    "age": 56,
+    "born": 1969,
+    "pay": 2299671,
+    "exercised": 493310,
+    "unexercised": 400519
+  },
+  {
+    "symbol": "MCO",
     "name": "Mr. Richard  Steele",
     "title": "Senior VP & General Counsel",
     "age": 55,
@@ -48,16 +58,6 @@
     "pay": 3368212,
     "exercised": 3185237,
     "unexercised": 20870980
-  },
-  {
-    "symbol": "MCO",
-    "name": "Ms. Christine  Elliott",
-    "title": "MD & Chief Corporate Affairs Officer",
-    "age": null,
-    "born": null,
-    "pay": null,
-    "exercised": 0,
-    "unexercised": 0
   },
   {
     "symbol": "MCO",

@@ -83,6 +83,13 @@
       "revenue": 16762000000.0,
       "prev_year_revenue": 15043000000.0,
       "yoy_growth": 0.1143
+    },
+    {
+      "symbol": "MS",
+      "report_date": "2026-03-31T00:00:00.000",
+      "revenue": 19324000000.0,
+      "prev_year_revenue": 16517000000.0,
+      "yoy_growth": 0.1699
     }
   ],
   "annual_revenue": [
@@ -217,6 +224,13 @@
       "net_income_common_stockholders": 4250000000.0,
       "prev_year_net_income_common_stockholders": 3564000000.0,
       "yoy_growth": 0.1925
+    },
+    {
+      "symbol": "MS",
+      "report_date": "2026-03-31T00:00:00.000",
+      "net_income_common_stockholders": 5411000000.0,
+      "prev_year_net_income_common_stockholders": 4157000000.0,
+      "yoy_growth": 0.3017
     }
   ],
   "annual_net_income": [
@@ -347,6 +361,13 @@
       "free_cash_flow": -3119000000.0,
       "prev_year_free_cash_flow": 10921000000.0,
       "yoy_growth": -1.2856
+    },
+    {
+      "symbol": "MS",
+      "report_date": "2026-03-31T00:00:00.000",
+      "free_cash_flow": -7852000000.0,
+      "prev_year_free_cash_flow": -24689000000.0,
+      "yoy_growth": 0.682
     }
   ],
   "annual_fcf": [

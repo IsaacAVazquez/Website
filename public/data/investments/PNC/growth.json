@@ -104,6 +104,13 @@
       "revenue": 6068000000.0,
       "prev_year_revenue": 5561000000.0,
       "yoy_growth": 0.0912
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2026-03-31T00:00:00.000",
+      "revenue": 6157000000.0,
+      "prev_year_revenue": 5447000000.0,
+      "yoy_growth": 0.1303
     }
   ],
   "annual_revenue": [
@@ -259,6 +266,13 @@
       "net_income_common_stockholders": 1922000000.0,
       "prev_year_net_income_common_stockholders": 1505000000.0,
       "yoy_growth": 0.2771
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2026-03-31T00:00:00.000",
+      "net_income_common_stockholders": 1675000000.0,
+      "prev_year_net_income_common_stockholders": 1399000000.0,
+      "yoy_growth": 0.1973
     }
   ],
   "annual_net_income": [
@@ -389,6 +403,13 @@
       "free_cash_flow": 757000000.0,
       "prev_year_free_cash_flow": 1800000000.0,
       "yoy_growth": -0.5794
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2026-03-31T00:00:00.000",
+      "free_cash_flow": 1928000000.0,
+      "prev_year_free_cash_flow": -509000000.0,
+      "yoy_growth": 4.7878
     }
   ],
   "annual_fcf": [

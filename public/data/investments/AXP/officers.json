@@ -11,6 +11,16 @@
   },
   {
     "symbol": "AXP",
+    "name": "Mr. David  Fabricant",
+    "title": "Senior Vice President of Controllership",
+    "age": 54,
+    "born": 1971,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "AXP",
     "name": "Mr. Howard Martin Grosfield",
     "title": "Group President of US Consumer Services",
     "age": 56,
@@ -38,16 +48,6 @@
     "pay": 7427926,
     "exercised": 0,
     "unexercised": 0
-  },
-  {
-    "symbol": "AXP",
-    "name": "Mr. Raymond Donald Joabar",
-    "title": "Group President of Global Commercial Services",
-    "age": 58,
-    "born": 1967,
-    "pay": 6363786,
-    "exercised": 3000551,
-    "unexercised": 8343986
   },
   {
     "symbol": "AXP",

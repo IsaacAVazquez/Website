@@ -16,12 +16,12 @@
     "sp500_cagr_end": 2022,
     "sp500_10y_cagr": 0.1041,
     "treasure_10y_yield": 0.0381,
-    "beta_5y": 0.9665,
+    "beta_5y": 0.9512,
     "weight_of_debt": 0.5447,
     "weight_of_equity": 0.4553,
     "cost_of_debt": 0.0409,
-    "cost_of_equity": 0.1019,
-    "wacc": 0.0651
+    "cost_of_equity": 0.1009,
+    "wacc": 0.0647
   },
   {
     "symbol": "WFC",
@@ -40,12 +40,12 @@
     "sp500_cagr_end": 2022,
     "sp500_10y_cagr": 0.1041,
     "treasure_10y_yield": 0.0459,
-    "beta_5y": 0.9665,
+    "beta_5y": 0.9512,
     "weight_of_debt": 0.5753,
     "weight_of_equity": 0.4247,
     "cost_of_debt": 0.0444,
-    "cost_of_equity": 0.1022,
-    "wacc": 0.0659
+    "cost_of_equity": 0.1013,
+    "wacc": 0.0655
   },
   {
     "symbol": "WFC",
@@ -64,12 +64,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0388,
-    "beta_5y": 0.9665,
+    "beta_5y": 0.9512,
     "weight_of_debt": 0.5511,
     "weight_of_equity": 0.4489,
     "cost_of_debt": 0.0459,
-    "cost_of_equity": 0.0974,
-    "wacc": 0.0637
+    "cost_of_equity": 0.0964,
+    "wacc": 0.0633
   },
   {
     "symbol": "WFC",
@@ -88,12 +88,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.042,
-    "beta_5y": 0.9665,
+    "beta_5y": 0.9512,
     "weight_of_debt": 0.5061,
     "weight_of_equity": 0.4939,
     "cost_of_debt": 0.0505,
-    "cost_of_equity": 0.0975,
-    "wacc": 0.0694
+    "cost_of_equity": 0.0966,
+    "wacc": 0.0689
   },
   {
     "symbol": "WFC",
@@ -112,12 +112,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0436,
-    "beta_5y": 0.9665,
+    "beta_5y": 0.9512,
     "weight_of_debt": 0.4813,
     "weight_of_equity": 0.5187,
     "cost_of_debt": 0.057,
-    "cost_of_equity": 0.0975,
-    "wacc": 0.0725
+    "cost_of_equity": 0.0967,
+    "wacc": 0.0721
   },
   {
     "symbol": "WFC",
@@ -136,12 +136,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0381,
-    "beta_5y": 0.9665,
+    "beta_5y": 0.9512,
     "weight_of_debt": 0.5096,
     "weight_of_equity": 0.4904,
     "cost_of_debt": 0.0576,
-    "cost_of_equity": 0.0973,
-    "wacc": 0.0721
+    "cost_of_equity": 0.0964,
+    "wacc": 0.0716
   },
   {
     "symbol": "WFC",
@@ -160,12 +160,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0458,
-    "beta_5y": 0.9665,
+    "beta_5y": 0.9512,
     "weight_of_debt": 0.4321,
     "weight_of_equity": 0.5679,
     "cost_of_debt": 0.0581,
-    "cost_of_equity": 0.1085,
-    "wacc": 0.0862
+    "cost_of_equity": 0.1075,
+    "wacc": 0.0857
   },
   {
     "symbol": "WFC",
@@ -184,12 +184,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0423,
-    "beta_5y": 0.9665,
+    "beta_5y": 0.9512,
     "weight_of_debt": 0.4461,
     "weight_of_equity": 0.5539,
     "cost_of_debt": 0.0503,
-    "cost_of_equity": 0.1084,
-    "wacc": 0.0802
+    "cost_of_equity": 0.1074,
+    "wacc": 0.0797
   },
   {
     "symbol": "WFC",
@@ -208,12 +208,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0424,
-    "beta_5y": 0.9665,
+    "beta_5y": 0.9512,
     "weight_of_debt": 0.449,
     "weight_of_equity": 0.551,
     "cost_of_debt": 0.0457,
-    "cost_of_equity": 0.1084,
-    "wacc": 0.0774
+    "cost_of_equity": 0.1074,
+    "wacc": 0.0768
   },
   {
     "symbol": "WFC",
@@ -232,12 +232,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0416,
-    "beta_5y": 0.9665,
+    "beta_5y": 0.9512,
     "weight_of_debt": 0.448,
     "weight_of_equity": 0.552,
     "cost_of_debt": 0.0489,
-    "cost_of_equity": 0.1084,
-    "wacc": 0.0776
+    "cost_of_equity": 0.1073,
+    "wacc": 0.077
   },
   {
     "symbol": "WFC",
@@ -256,12 +256,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0418,
-    "beta_5y": 0.9665,
+    "beta_5y": 0.9512,
     "weight_of_debt": 0.4011,
     "weight_of_equity": 0.5989,
     "cost_of_debt": 0.0532,
-    "cost_of_equity": 0.1258,
-    "wacc": 0.0931
+    "cost_of_equity": 0.1245,
+    "wacc": 0.0923
   },
   {
     "symbol": "WFC",
@@ -280,12 +280,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 0.9665,
+    "beta_5y": 0.9512,
     "weight_of_debt": 0.4699,
     "weight_of_equity": 0.5301,
     "cost_of_debt": 0.0479,
-    "cost_of_equity": 0.1258,
-    "wacc": 0.0865
+    "cost_of_equity": 0.1245,
+    "wacc": 0.0858
   },
   {
     "symbol": "WFC",
@@ -304,12 +304,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0433,
-    "beta_5y": 0.9665,
+    "beta_5y": 0.9512,
     "weight_of_debt": 0.4669,
     "weight_of_equity": 0.5331,
     "cost_of_debt": 0.0479,
-    "cost_of_equity": 0.1258,
-    "wacc": 0.0867
+    "cost_of_equity": 0.1245,
+    "wacc": 0.0861
   },
   {
     "symbol": "WFC",
@@ -328,12 +328,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0431,
-    "beta_5y": 0.9665,
+    "beta_5y": 0.9512,
     "weight_of_debt": 0.4668,
     "weight_of_equity": 0.5332,
     "cost_of_debt": 0.0479,
-    "cost_of_equity": 0.1258,
-    "wacc": 0.0868
+    "cost_of_equity": 0.1245,
+    "wacc": 0.0861
   },
   {
     "symbol": "WFC",
@@ -352,12 +352,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0434,
-    "beta_5y": 0.9665,
+    "beta_5y": 0.9512,
     "weight_of_debt": 0.463,
     "weight_of_equity": 0.537,
     "cost_of_debt": 0.0479,
-    "cost_of_equity": 0.1258,
-    "wacc": 0.0871
+    "cost_of_equity": 0.1245,
+    "wacc": 0.0864
   },
   {
     "symbol": "WFC",
@@ -376,12 +376,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0433,
-    "beta_5y": 0.9665,
+    "beta_5y": 0.9512,
     "weight_of_debt": 0.4633,
     "weight_of_equity": 0.5367,
     "cost_of_debt": 0.0479,
-    "cost_of_equity": 0.1258,
-    "wacc": 0.087
+    "cost_of_equity": 0.1245,
+    "wacc": 0.0863
   },
   {
     "symbol": "WFC",
@@ -400,12 +400,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 0.9665,
+    "beta_5y": 0.9512,
     "weight_of_debt": 0.4546,
     "weight_of_equity": 0.5454,
     "cost_of_debt": 0.0479,
-    "cost_of_equity": 0.1258,
-    "wacc": 0.0878
+    "cost_of_equity": 0.1245,
+    "wacc": 0.0871
   },
   {
     "symbol": "WFC",
@@ -424,12 +424,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 0.9665,
+    "beta_5y": 0.9512,
     "weight_of_debt": 0.4506,
     "weight_of_equity": 0.5494,
     "cost_of_debt": 0.0479,
-    "cost_of_equity": 0.1258,
-    "wacc": 0.0881
+    "cost_of_equity": 0.1245,
+    "wacc": 0.0874
   },
   {
     "symbol": "WFC",
@@ -448,12 +448,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0431,
-    "beta_5y": 0.9665,
+    "beta_5y": 0.9512,
     "weight_of_debt": 0.4524,
     "weight_of_equity": 0.5476,
     "cost_of_debt": 0.0479,
-    "cost_of_equity": 0.1258,
-    "wacc": 0.088
+    "cost_of_equity": 0.1245,
+    "wacc": 0.0872
   },
   {
     "symbol": "WFC",
@@ -472,12 +472,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 0.9665,
+    "beta_5y": 0.9512,
     "weight_of_debt": 0.4489,
     "weight_of_equity": 0.5511,
     "cost_of_debt": 0.0479,
-    "cost_of_equity": 0.1258,
-    "wacc": 0.0883
+    "cost_of_equity": 0.1245,
+    "wacc": 0.0875
   },
   {
     "symbol": "WFC",
@@ -496,12 +496,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 0.9665,
+    "beta_5y": 0.9512,
     "weight_of_debt": 0.4634,
     "weight_of_equity": 0.5366,
     "cost_of_debt": 0.0479,
-    "cost_of_equity": 0.1258,
-    "wacc": 0.087
+    "cost_of_equity": 0.1245,
+    "wacc": 0.0863
   },
   {
     "symbol": "WFC",
@@ -520,12 +520,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 0.9665,
+    "beta_5y": 0.9512,
     "weight_of_debt": 0.4678,
     "weight_of_equity": 0.5322,
     "cost_of_debt": 0.0479,
-    "cost_of_equity": 0.1258,
-    "wacc": 0.0867
+    "cost_of_equity": 0.1245,
+    "wacc": 0.086
   },
   {
     "symbol": "WFC",
@@ -544,12 +544,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0432,
-    "beta_5y": 0.9665,
+    "beta_5y": 0.9512,
     "weight_of_debt": 0.4648,
     "weight_of_equity": 0.5352,
     "cost_of_debt": 0.0479,
-    "cost_of_equity": 0.1258,
-    "wacc": 0.0869
+    "cost_of_equity": 0.1245,
+    "wacc": 0.0862
   },
   {
     "symbol": "WFC",
@@ -568,12 +568,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 0.9665,
+    "beta_5y": 0.9512,
     "weight_of_debt": 0.4646,
     "weight_of_equity": 0.5354,
     "cost_of_debt": 0.0479,
-    "cost_of_equity": 0.1258,
-    "wacc": 0.0869
+    "cost_of_equity": 0.1245,
+    "wacc": 0.0862
   },
   {
     "symbol": "WFC",
@@ -592,12 +592,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 0.9665,
+    "beta_5y": 0.9512,
     "weight_of_debt": 0.4629,
     "weight_of_equity": 0.5371,
     "cost_of_debt": 0.0479,
-    "cost_of_equity": 0.1258,
-    "wacc": 0.0871
+    "cost_of_equity": 0.1245,
+    "wacc": 0.0864
   },
   {
     "symbol": "WFC",
@@ -616,12 +616,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 0.9665,
+    "beta_5y": 0.9512,
     "weight_of_debt": 0.4642,
     "weight_of_equity": 0.5358,
     "cost_of_debt": 0.0479,
-    "cost_of_equity": 0.1258,
-    "wacc": 0.087
+    "cost_of_equity": 0.1245,
+    "wacc": 0.0863
   },
   {
     "symbol": "WFC",
@@ -640,12 +640,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 0.9665,
+    "beta_5y": 0.9512,
     "weight_of_debt": 0.4672,
     "weight_of_equity": 0.5328,
     "cost_of_debt": 0.0479,
-    "cost_of_equity": 0.1258,
-    "wacc": 0.0867
+    "cost_of_equity": 0.1245,
+    "wacc": 0.086
   },
   {
     "symbol": "WFC",
@@ -664,12 +664,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0434,
-    "beta_5y": 0.9665,
+    "beta_5y": 0.9512,
     "weight_of_debt": 0.4674,
     "weight_of_equity": 0.5326,
     "cost_of_debt": 0.0479,
-    "cost_of_equity": 0.1258,
-    "wacc": 0.0867
+    "cost_of_equity": 0.1245,
+    "wacc": 0.086
   },
   {
     "symbol": "WFC",
@@ -688,12 +688,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0431,
-    "beta_5y": 0.9665,
+    "beta_5y": 0.9512,
     "weight_of_debt": 0.4708,
     "weight_of_equity": 0.5292,
     "cost_of_debt": 0.0479,
-    "cost_of_equity": 0.1258,
-    "wacc": 0.0864
+    "cost_of_equity": 0.1245,
+    "wacc": 0.0857
   },
   {
     "symbol": "WFC",
@@ -712,12 +712,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0435,
-    "beta_5y": 0.9665,
+    "beta_5y": 0.9512,
     "weight_of_debt": 0.4673,
     "weight_of_equity": 0.5327,
     "cost_of_debt": 0.0479,
-    "cost_of_equity": 0.1258,
-    "wacc": 0.0867
+    "cost_of_equity": 0.1245,
+    "wacc": 0.086
   },
   {
     "symbol": "WFC",
@@ -736,12 +736,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0436,
-    "beta_5y": 0.9665,
+    "beta_5y": 0.9512,
     "weight_of_debt": 0.4644,
     "weight_of_equity": 0.5356,
     "cost_of_debt": 0.0479,
-    "cost_of_equity": 0.1258,
-    "wacc": 0.087
+    "cost_of_equity": 0.1245,
+    "wacc": 0.0863
   },
   {
     "symbol": "WFC",
@@ -760,12 +760,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0442,
-    "beta_5y": 0.9665,
+    "beta_5y": 0.9512,
     "weight_of_debt": 0.4643,
     "weight_of_equity": 0.5357,
     "cost_of_debt": 0.0479,
-    "cost_of_equity": 0.1259,
-    "wacc": 0.087
+    "cost_of_equity": 0.1246,
+    "wacc": 0.0863
   },
   {
     "symbol": "WFC",
@@ -784,12 +784,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.044,
-    "beta_5y": 0.9665,
+    "beta_5y": 0.9512,
     "weight_of_debt": 0.4622,
     "weight_of_equity": 0.5378,
     "cost_of_debt": 0.0479,
-    "cost_of_equity": 0.1259,
-    "wacc": 0.0872
+    "cost_of_equity": 0.1246,
+    "wacc": 0.0865
   },
   {
     "symbol": "WFC",
@@ -808,11 +808,131 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0439,
-    "beta_5y": 0.9665,
+    "beta_5y": 0.9512,
     "weight_of_debt": 0.4665,
     "weight_of_equity": 0.5335,
     "cost_of_debt": 0.0479,
-    "cost_of_equity": 0.1259,
-    "wacc": 0.0868
+    "cost_of_equity": 0.1246,
+    "wacc": 0.0861
+  },
+  {
+    "symbol": "WFC",
+    "report_date": "2026-05-04T00:00:00.000",
+    "market_capitalization": 242305804610.0,
+    "exchange_rate": 1.0,
+    "total_debt": 216223000000.0,
+    "total_debt_usd": 216223000000.0,
+    "interest_expense": 10349000000.0,
+    "interest_expense_usd": 10349000000.0,
+    "pretax_income": 5981000000.0,
+    "pretax_income_usd": 5981000000.0,
+    "tax_provision": 691000000.0,
+    "tax_provision_usd": 691000000.0,
+    "tax_rate_for_calcs": 0.12,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0445,
+    "beta_5y": 0.9512,
+    "weight_of_debt": 0.4716,
+    "weight_of_equity": 0.5284,
+    "cost_of_debt": 0.0479,
+    "cost_of_equity": 0.1246,
+    "wacc": 0.0857
+  },
+  {
+    "symbol": "WFC",
+    "report_date": "2026-05-05T00:00:00.000",
+    "market_capitalization": 244478539155.0,
+    "exchange_rate": 1.0,
+    "total_debt": 216223000000.0,
+    "total_debt_usd": 216223000000.0,
+    "interest_expense": 10349000000.0,
+    "interest_expense_usd": 10349000000.0,
+    "pretax_income": 5981000000.0,
+    "pretax_income_usd": 5981000000.0,
+    "tax_provision": 691000000.0,
+    "tax_provision_usd": 691000000.0,
+    "tax_rate_for_calcs": 0.12,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0443,
+    "beta_5y": 0.9512,
+    "weight_of_debt": 0.4693,
+    "weight_of_equity": 0.5307,
+    "cost_of_debt": 0.0479,
+    "cost_of_equity": 0.1246,
+    "wacc": 0.0859
+  },
+  {
+    "symbol": "WFC",
+    "report_date": "2026-05-06T00:00:00.000",
+    "market_capitalization": 246100439590.0,
+    "exchange_rate": 1.0,
+    "total_debt": 216223000000.0,
+    "total_debt_usd": 216223000000.0,
+    "interest_expense": 10349000000.0,
+    "interest_expense_usd": 10349000000.0,
+    "pretax_income": 5981000000.0,
+    "pretax_income_usd": 5981000000.0,
+    "tax_provision": 691000000.0,
+    "tax_provision_usd": 691000000.0,
+    "tax_rate_for_calcs": 0.12,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0436,
+    "beta_5y": 0.9512,
+    "weight_of_debt": 0.4677,
+    "weight_of_equity": 0.5323,
+    "cost_of_debt": 0.0479,
+    "cost_of_equity": 0.1245,
+    "wacc": 0.086
+  },
+  {
+    "symbol": "WFC",
+    "report_date": "2026-05-07T00:00:00.000",
+    "market_capitalization": 242244600820.0,
+    "exchange_rate": 1.0,
+    "total_debt": 216223000000.0,
+    "total_debt_usd": 216223000000.0,
+    "interest_expense": 10349000000.0,
+    "interest_expense_usd": 10349000000.0,
+    "pretax_income": 5981000000.0,
+    "pretax_income_usd": 5981000000.0,
+    "tax_provision": 691000000.0,
+    "tax_provision_usd": 691000000.0,
+    "tax_rate_for_calcs": 0.12,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0441,
+    "beta_5y": 0.9512,
+    "weight_of_debt": 0.4716,
+    "weight_of_equity": 0.5284,
+    "cost_of_debt": 0.0479,
+    "cost_of_equity": 0.1246,
+    "wacc": 0.0857
+  },
+  {
+    "symbol": "WFC",
+    "report_date": "2026-05-08T00:00:00.000",
+    "market_capitalization": 231472733780.0,
+    "exchange_rate": 1.0,
+    "total_debt": 216223000000.0,
+    "total_debt_usd": 216223000000.0,
+    "interest_expense": 10349000000.0,
+    "interest_expense_usd": 10349000000.0,
+    "pretax_income": 5981000000.0,
+    "pretax_income_usd": 5981000000.0,
+    "tax_provision": 691000000.0,
+    "tax_provision_usd": 691000000.0,
+    "tax_rate_for_calcs": 0.12,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0438,
+    "beta_5y": 0.9512,
+    "weight_of_debt": 0.483,
+    "weight_of_equity": 0.517,
+    "cost_of_debt": 0.0479,
+    "cost_of_equity": 0.1246,
+    "wacc": 0.0848
   }
 ]

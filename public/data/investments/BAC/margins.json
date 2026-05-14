@@ -81,7 +81,7 @@
       "symbol": "BAC",
       "report_date": "2025-03-31",
       "gross_profit": null,
-      "total_revenue": 27366000000.0,
+      "total_revenue": 28247000000.0,
       "gross_margin": null
     },
     {
@@ -109,7 +109,7 @@
       "symbol": "BAC",
       "report_date": "2026-03-31",
       "gross_profit": null,
-      "total_revenue": null,
+      "total_revenue": 30272000000.0,
       "gross_margin": null
     }
   ],
@@ -246,7 +246,7 @@
       "symbol": "BAC",
       "report_date": "2025-03-31",
       "operating_income": null,
-      "total_revenue": 27366000000.0,
+      "total_revenue": 28247000000.0,
       "operating_margin": null
     },
     {
@@ -274,7 +274,7 @@
       "symbol": "BAC",
       "report_date": "2026-03-31",
       "operating_income": null,
-      "total_revenue": null,
+      "total_revenue": 30272000000.0,
       "operating_margin": null
     }
   ],
@@ -410,9 +410,9 @@
     {
       "symbol": "BAC",
       "report_date": "2025-03-31",
-      "net_income_common_stockholders": 6990000000.0,
-      "total_revenue": 27366000000.0,
-      "net_margin": 0.2554
+      "net_income_common_stockholders": 6954000000.0,
+      "total_revenue": 28247000000.0,
+      "net_margin": 0.2462
     },
     {
       "symbol": "BAC",
@@ -438,9 +438,9 @@
     {
       "symbol": "BAC",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": null,
-      "total_revenue": null,
-      "net_margin": null
+      "net_income_common_stockholders": 8155000000.0,
+      "total_revenue": 30272000000.0,
+      "net_margin": 0.2694
     }
   ],
   "annual_net": [
@@ -576,7 +576,7 @@
       "symbol": "BAC",
       "report_date": "2025-03-31",
       "ebitda": null,
-      "total_revenue": 27366000000.0,
+      "total_revenue": 28247000000.0,
       "ebitda_margin": null
     },
     {
@@ -604,7 +604,7 @@
       "symbol": "BAC",
       "report_date": "2026-03-31",
       "ebitda": null,
-      "total_revenue": null,
+      "total_revenue": 30272000000.0,
       "ebitda_margin": null
     }
   ],
@@ -741,8 +741,8 @@
       "symbol": "BAC",
       "report_date": "2025-03-31",
       "free_cash_flow": -2184000000.0,
-      "total_revenue": 27366000000.0,
-      "fcf_margin": -0.0798
+      "total_revenue": 28247000000.0,
+      "fcf_margin": -0.0773
     },
     {
       "symbol": "BAC",
@@ -768,9 +768,9 @@
     {
       "symbol": "BAC",
       "report_date": "2026-03-31",
-      "free_cash_flow": null,
-      "total_revenue": null,
-      "fcf_margin": null
+      "free_cash_flow": 41770000000.0,
+      "total_revenue": 30272000000.0,
+      "fcf_margin": 1.3798
     }
   ],
   "annual_fcf": [
