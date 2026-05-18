@@ -13,7 +13,7 @@ export const formula1Snapshot: Formula1Snapshot = {
     "constructorStandings": "https://api.openf1.org/v1/championship_teams?session_key=11280"
   },
   "season": 2026,
-  "generatedAt": "2026-05-17T09:58:22.114Z",
+  "generatedAt": "2026-05-18T11:52:50.317Z",
   "defaultMeetingKey": "1285",
   "standingsMeetingKey": "1284",
   "meetings": [
@@ -3105,9 +3105,9 @@ export const formula1Snapshot: Formula1Snapshot = {
       "teamName": "Ferrari",
       "teamColor": "#ED1131",
       "headshotUrl": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/C/CHALEC01_Charles_Leclerc/chalec01.png.transform/1col/image.png",
-      "points": 63,
+      "points": 59,
       "pointsBeforeRace": 55,
-      "pointsDelta": 8
+      "pointsDelta": 4
     },
     {
       "position": 4,
@@ -3133,9 +3133,9 @@ export const formula1Snapshot: Formula1Snapshot = {
       "teamName": "Ferrari",
       "teamColor": "#ED1131",
       "headshotUrl": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/L/LEWHAM01_Lewis_Hamilton/lewham01.png.transform/1col/image.png",
-      "points": 49,
+      "points": 51,
       "pointsBeforeRace": 43,
-      "pointsDelta": 6
+      "pointsDelta": 8
     },
     {
       "position": 6,
@@ -3217,9 +3217,9 @@ export const formula1Snapshot: Formula1Snapshot = {
       "teamName": "Alpine",
       "teamColor": "#00A1E8",
       "headshotUrl": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/F/FRACOL01_Franco_Colapinto/fracol01.png.transform/1col/image.png",
-      "points": 5,
+      "points": 7,
       "pointsBeforeRace": 1,
-      "pointsDelta": 4
+      "pointsDelta": 6
     },
     {
       "position": 12,
@@ -3391,9 +3391,9 @@ export const formula1Snapshot: Formula1Snapshot = {
       "previousPosition": 2,
       "teamName": "Ferrari",
       "teamColor": "#ED1131",
-      "points": 112,
+      "points": 110,
       "pointsBeforeRace": 98,
-      "pointsDelta": 14
+      "pointsDelta": 12
     },
     {
       "position": 3,
@@ -3418,9 +3418,9 @@ export const formula1Snapshot: Formula1Snapshot = {
       "previousPosition": 6,
       "teamName": "Alpine",
       "teamColor": "#00A1E8",
-      "points": 21,
+      "points": 23,
       "pointsBeforeRace": 17,
-      "pointsDelta": 4
+      "pointsDelta": 6
     },
     {
       "position": 6,
