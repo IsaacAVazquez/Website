@@ -7,16 +7,17 @@
       "launch": [
         {
           "label": "Falcon 9 Block 5 | CAS500-2 & Others",
-          "localPath": "/data/spacex/images/83daf3ce21b64d93.jpg",
-          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_image_20230807133459.jpeg"
-        },
-        {
-          "label": "Falcon 9 Block 5 | CAS500-2 & Others",
           "localPath": "/data/spacex/images/3cb074a007e92691.jpg",
           "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_on_slc_image_20260503063348.jpeg"
         }
       ],
-      "patch": [],
+      "patch": [
+        {
+          "label": "CAS500-2 Mission Patch",
+          "localPath": "/data/spacex/images/27cdd4a212e9cc61.png",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/cas500-22520mi_mission_patch_20260503065126.png"
+        }
+      ],
       "rocket": [
         {
           "label": "Falcon 9 Block 5",
@@ -388,7 +389,13 @@
           "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_image_20230807133459.jpeg"
         }
       ],
-      "patch": [],
+      "patch": [
+        {
+          "label": "GPS III SV10 Patch",
+          "localPath": "/data/spacex/images/be73f55a2f64f6e7.png",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/gps2520iii252_mission_patch_20260416193031.png"
+        }
+      ],
       "rocket": [
         {
           "label": "Falcon 9 Block 5",
@@ -601,16 +608,17 @@
       "launch": [
         {
           "label": "Falcon Heavy | ViaSat-3 F3 (ViaSat-3 Asia-Pacific)",
-          "localPath": "/data/spacex/images/c62ac3115cf4d061.jpg",
-          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_heavy_image_20220129192819.jpeg"
-        },
-        {
-          "label": "Falcon Heavy | ViaSat-3 F3 (ViaSat-3 Asia-Pacific)",
           "localPath": "/data/spacex/images/f5d98a7183704017.jpg",
           "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_heavy_on_image_20260427051334.jpg"
         }
       ],
-      "patch": [],
+      "patch": [
+        {
+          "label": "Viasat-3F3",
+          "localPath": "/data/spacex/images/bebcc0a00bc989b3.png",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/viasat-3f3_mission_patch_20260424135759.png"
+        }
+      ],
       "rocket": [
         {
           "label": "Falcon Heavy",
@@ -859,7 +867,13 @@
           "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/space2520x252_mission_patch_20221011205756.png"
         }
       ],
-      "rocket": [],
+      "rocket": [
+        {
+          "label": "Falcon 9 Block 5",
+          "localPath": "/data/spacex/images/83daf3ce21b64d93.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_image_20230807133459.jpeg"
+        }
+      ],
       "spacecraft": [],
       "pad": [
         {
@@ -1398,7 +1412,13 @@
           "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/space2520x252_mission_patch_20221011205756.png"
         }
       ],
-      "rocket": [],
+      "rocket": [
+        {
+          "label": "Falcon 9 Block 5",
+          "localPath": "/data/spacex/images/83daf3ce21b64d93.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_image_20230807133459.jpeg"
+        }
+      ],
       "spacecraft": [],
       "pad": [
         {
@@ -1690,7 +1710,13 @@
           "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/space2520x252_mission_patch_20221011205756.png"
         }
       ],
-      "rocket": [],
+      "rocket": [
+        {
+          "label": "Falcon 9 Block 5",
+          "localPath": "/data/spacex/images/83daf3ce21b64d93.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_image_20230807133459.jpeg"
+        }
+      ],
       "spacecraft": [],
       "pad": [
         {
