@@ -1,8 +1,8 @@
 {
   "symbol": "V",
-  "lastUpdated": "2026-05-18T23:42:53.977161+00:00",
+  "lastUpdated": "2026-05-21T23:40:06.659482+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-05-18T23:42:53.977161+00:00",
+    "snapshotBuiltAt": "2026-05-21T23:40:06.659482+00:00",
     "sections": {
       "price": "2026-05-08"
     }
@@ -7251,19 +7251,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "e3daf31a-2695-3357-ba2d-3bfe949cf310",
-        "title": "The Zacks Analyst Blog Highlights Visa, ServiceNow, The Progressive, The Monarch Cement and Precipio",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-22",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-visa-125900502.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "3d018e47-3ca3-3120-a73e-e863c577b5fe",
         "title": "Top Research Reports for Visa, ServiceNow & Progressive",
         "publisher": "Zacks",
         "reportDate": "2025-04-22",
         "link": "https://finance.yahoo.com/news/top-research-reports-visa-servicenow-204900265.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "e3daf31a-2695-3357-ba2d-3bfe949cf310",
+        "title": "The Zacks Analyst Blog Highlights Visa, ServiceNow, The Progressive, The Monarch Cement and Precipio",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-22",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-visa-125900502.html",
         "type": "STORY"
       },
       {
@@ -7275,19 +7275,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "ee5143bb-558c-3eac-a0e4-f5ff6a1f801c",
-        "title": "Closing Bell Movers: Snap falls 14% after Q1 results, no guidance",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/closing-bell-movers-snap-falls-234039126.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "554d65d5-b261-3c95-8aa0-7089a114436d",
         "title": "Can Global Payments Navigate Lower Americas Revenues in Q1 Earnings?",
         "publisher": "Zacks",
         "reportDate": "2025-05-01",
         "link": "https://finance.yahoo.com/news/global-payments-navigate-lower-americas-120900847.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ee5143bb-558c-3eac-a0e4-f5ff6a1f801c",
+        "title": "Closing Bell Movers: Snap falls 14% after Q1 results, no guidance",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/news/closing-bell-movers-snap-falls-234039126.html",
         "type": "STORY"
       },
       {

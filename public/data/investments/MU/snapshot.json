@@ -1,8 +1,8 @@
 {
   "symbol": "MU",
-  "lastUpdated": "2026-05-18T23:42:53.977161+00:00",
+  "lastUpdated": "2026-05-21T23:40:06.659482+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-05-18T23:42:53.977161+00:00",
+    "snapshotBuiltAt": "2026-05-21T23:40:06.659482+00:00",
     "sections": {
       "price": "2026-05-08"
     }
@@ -7468,6 +7468,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "f9f8f9a3-3f03-3f30-87b2-8899197b3e99",
+        "title": "Micron Ships World’s First 1γ (1-Gamma)-Based LPDDR5X, Enabling Rich Mobile AI Experiences",
+        "publisher": "GlobeNewswire",
+        "reportDate": "2025-06-03",
+        "link": "https://finance.yahoo.com/news/micron-ships-world-first-1-130000724.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "792df1c6-501c-30ea-a2f4-b6631c2bb7db",
         "title": "The Zacks Analyst Blog Highlights NVIDIA, Advanced Micro Devices, Micron Technology and Broadcom",
         "publisher": "Zacks",
@@ -7476,11 +7484,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "f9f8f9a3-3f03-3f30-87b2-8899197b3e99",
-        "title": "Micron Ships World’s First 1γ (1-Gamma)-Based LPDDR5X, Enabling Rich Mobile AI Experiences",
-        "publisher": "GlobeNewswire",
-        "reportDate": "2025-06-03",
-        "link": "https://finance.yahoo.com/news/micron-ships-world-first-1-130000724.html",
+        "uuid": "3586c61d-c3b7-314a-b5c1-0def620b8629",
+        "title": "UBS Adjusts Price Target on Micron Technology to $120 From $92, Maintains Buy Rating",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-06-05",
+        "link": "https://finance.yahoo.com/news/ubs-adjusts-price-target-micron-143845185.html",
         "type": "STORY"
       },
       {
@@ -7505,14 +7513,6 @@
         "publisher": "MT Newswires",
         "reportDate": "2025-06-05",
         "link": "https://finance.yahoo.com/news/mizuho-adjusts-price-target-micron-095539930.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "afe5011f-cf74-3c69-8069-3feb8d628358",
-        "title": "Micron Technology: Smart Investment or Risky Bet in 2025?",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-06-05",
-        "link": "https://finance.yahoo.com/m/afe5011f-cf74-3c69-8069-3feb8d628358/micron-technology%3A-smart.html",
         "type": "STORY"
       }
     ],

@@ -1,8 +1,8 @@
 {
   "symbol": "WDAY",
-  "lastUpdated": "2026-05-18T23:42:53.977161+00:00",
+  "lastUpdated": "2026-05-21T23:40:06.659482+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-05-18T23:42:53.977161+00:00",
+    "snapshotBuiltAt": "2026-05-21T23:40:06.659482+00:00",
     "sections": {
       "price": "2026-05-08"
     }
@@ -7531,12 +7531,12 @@
         "type": "STORY"
       },
       {
-        "uuid": "3cde1379-a5ed-38e8-912f-564b5cfa411a",
-        "title": "Quantum stocks, MNTN IPO, Workday earnings: Trending tickers",
-        "publisher": "Yahoo Finance Video",
+        "uuid": "a8a7c6bc-d151-3b29-bb14-3b60f20774ca",
+        "title": "Workday Q1 Earnings Beat Estimates on Solid Revenue Growth",
+        "publisher": "Zacks",
         "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/video/quantum-stocks-mntn-ipo-workday-144923004.html",
-        "type": "VIDEO"
+        "link": "https://finance.yahoo.com/news/workday-q1-earnings-beat-estimates-154200149.html",
+        "type": "STORY"
       }
     ],
     "officers": [
