@@ -2145,9 +2145,14 @@
   "ed83366c-872c-4484-97c1-bc74832304fc": {
     "launchId": "ed83366c-872c-4484-97c1-bc74832304fc",
     "launchName": "Starship | Flight 12",
-    "window": "upcoming",
+    "window": "previous",
     "images": {
       "launch": [
+        {
+          "label": "Starship | Flight 12",
+          "localPath": "/data/spacex/images/8d4560ae6a29b1ef.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/starship_liftof_image_20260523085855.jpg"
+        },
         {
           "label": "Starship | Flight 12",
           "localPath": "/data/spacex/images/0be5c2f84b0c0132.jpg",
