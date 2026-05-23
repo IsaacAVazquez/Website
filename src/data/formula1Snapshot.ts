@@ -13,8 +13,8 @@ export const formula1Snapshot: Formula1Snapshot = {
     "constructorStandings": "https://api.openf1.org/v1/championship_teams?session_key=11280"
   },
   "season": 2026,
-  "generatedAt": "2026-05-22T11:14:12.356Z",
-  "defaultMeetingKey": "1285",
+  "generatedAt": "2026-05-23T10:03:22.851Z",
+  "defaultMeetingKey": "1286",
   "standingsMeetingKey": "1284",
   "meetings": [
     {
@@ -2000,7 +2000,7 @@ export const formula1Snapshot: Formula1Snapshot = {
       "gmtOffset": "-04:00:00",
       "startAt": "2026-05-22T16:30:00+00:00",
       "endAt": "2026-05-24T22:00:00+00:00",
-      "status": "upcoming",
+      "status": "live",
       "hasSprint": true,
       "raceSessionKey": "11291",
       "raceStartsAt": "2026-05-24T20:00:00+00:00",
@@ -3481,63 +3481,63 @@ export const formula1Snapshot: Formula1Snapshot = {
     "season": 2026,
     "totalRaces": 24,
     "completedRaces": 6,
-    "upcomingRaces": 18,
+    "upcomingRaces": 17,
     "sprintWeekends": 6
   },
   "nextMeeting": {
-    "key": "1285",
-    "name": "Canadian Grand Prix",
-    "officialName": "FORMULA 1 LENOVO GRAND PRIX DU CANADA 2026",
-    "location": "Montréal",
-    "countryName": "Canada",
-    "countryCode": "CAN",
-    "countryFlag": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/canada-flag.png",
-    "circuitKey": "23",
-    "circuitShortName": "Montreal",
-    "circuitType": "Permanent",
-    "circuitImage": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Canada%20carbon.png",
-    "gmtOffset": "-04:00:00",
-    "startAt": "2026-05-22T16:30:00+00:00",
-    "endAt": "2026-05-24T22:00:00+00:00",
+    "key": "1286",
+    "name": "Monaco Grand Prix",
+    "officialName": "FORMULA 1 LOUIS VUITTON GRAND PRIX DE MONACO 2026",
+    "location": "Monte Carlo",
+    "countryName": "Monaco",
+    "countryCode": "MON",
+    "countryFlag": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/monaco-flag.png",
+    "circuitKey": "22",
+    "circuitShortName": "Monte Carlo",
+    "circuitType": "Temporary - Street",
+    "circuitImage": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Monaco%20carbon.png",
+    "gmtOffset": "02:00:00",
+    "startAt": "2026-06-05T11:30:00+00:00",
+    "endAt": "2026-06-07T15:00:00+00:00",
     "status": "upcoming",
-    "hasSprint": true,
-    "raceSessionKey": "11291",
-    "raceStartsAt": "2026-05-24T20:00:00+00:00",
+    "hasSprint": false,
+    "raceSessionKey": "11299",
+    "raceStartsAt": "2026-06-07T13:00:00+00:00",
     "sessions": [
       {
-        "key": "11281",
+        "key": "11292",
         "name": "Practice 1",
         "type": "Practice",
-        "startAt": "2026-05-22T16:30:00+00:00",
-        "endAt": "2026-05-22T17:30:00+00:00"
+        "startAt": "2026-06-05T11:30:00+00:00",
+        "endAt": "2026-06-05T12:30:00+00:00"
       },
       {
-        "key": "11282",
-        "name": "Sprint Qualifying",
-        "type": "Qualifying",
-        "startAt": "2026-05-22T20:30:00+00:00",
-        "endAt": "2026-05-22T21:14:00+00:00"
+        "key": "11293",
+        "name": "Practice 2",
+        "type": "Practice",
+        "startAt": "2026-06-05T15:00:00+00:00",
+        "endAt": "2026-06-05T16:00:00+00:00"
       },
       {
-        "key": "11286",
-        "name": "Sprint",
-        "type": "Race",
-        "startAt": "2026-05-23T16:00:00+00:00",
-        "endAt": "2026-05-23T17:00:00+00:00"
+        "key": "11294",
+        "name": "Practice 3",
+        "type": "Practice",
+        "startAt": "2026-06-06T10:30:00+00:00",
+        "endAt": "2026-06-06T11:30:00+00:00"
       },
       {
-        "key": "11287",
+        "key": "11295",
         "name": "Qualifying",
         "type": "Qualifying",
-        "startAt": "2026-05-23T20:00:00+00:00",
-        "endAt": "2026-05-23T21:00:00+00:00"
+        "startAt": "2026-06-06T14:00:00+00:00",
+        "endAt": "2026-06-06T15:00:00+00:00"
       },
       {
-        "key": "11291",
+        "key": "11299",
         "name": "Race",
         "type": "Race",
-        "startAt": "2026-05-24T20:00:00+00:00",
-        "endAt": "2026-05-24T22:00:00+00:00"
+        "startAt": "2026-06-07T13:00:00+00:00",
+        "endAt": "2026-06-07T15:00:00+00:00"
       }
     ],
     "classification": [],
