@@ -417,9 +417,9 @@
     {
       "symbol": "GS",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 3473000000.0,
+      "net_income_common_stockholders": 14759000000.0,
       "total_revenue": 14583000000.0,
-      "net_margin": 0.2382
+      "net_margin": 1.0121
     },
     {
       "symbol": "GS",
@@ -438,9 +438,9 @@
     {
       "symbol": "GS",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 5403000000.0,
+      "net_income_common_stockholders": 17120000000.0,
       "total_revenue": 17227000000.0,
-      "net_margin": 0.3136
+      "net_margin": 0.9938
     }
   ],
   "annual_net": [
@@ -747,9 +747,9 @@
     {
       "symbol": "GS",
       "report_date": "2025-06-30",
-      "free_cash_flow": 5196000000.0,
+      "free_cash_flow": -24879000000.0,
       "total_revenue": 14583000000.0,
-      "fcf_margin": 0.3563
+      "fcf_margin": -1.706
     },
     {
       "symbol": "GS",
@@ -768,9 +768,9 @@
     {
       "symbol": "GS",
       "report_date": "2026-03-31",
-      "free_cash_flow": -32433000000.0,
+      "free_cash_flow": -41922000000.0,
       "total_revenue": 17227000000.0,
-      "fcf_margin": -1.8827
+      "fcf_margin": -2.4335
     }
   ],
   "annual_fcf": [

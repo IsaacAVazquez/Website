@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "LLY",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": -57400000.0,
+      "beginning_stockholders_equity": 11063800000.0,
+      "ending_stockholders_equity": 11220400000.0,
+      "avg_equity": 11142100000.0,
+      "roe": -0.0052
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 2189700000.0,
+      "beginning_stockholders_equity": 11220400000.0,
+      "ending_stockholders_equity": 10771900000.0,
+      "avg_equity": 10996150000.0,
+      "roe": 0.1991
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 2242900000.0,
+      "beginning_stockholders_equity": 10771900000.0,
+      "ending_stockholders_equity": 12812200000.0,
+      "avg_equity": 11792050000.0,
+      "roe": 0.1902
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 2967000000.0,
+      "beginning_stockholders_equity": 12812200000.0,
+      "ending_stockholders_equity": 13562000000.0,
+      "avg_equity": 13187100000.0,
+      "roe": 0.225
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 970300000.0,
+      "beginning_stockholders_equity": 13562000000.0,
+      "ending_stockholders_equity": 14240000000.0,
+      "avg_equity": 13901000000.0,
+      "roe": 0.0698
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 4409800000.0,
+      "beginning_stockholders_equity": 14240000000.0,
+      "ending_stockholders_equity": 14272000000.0,
+      "avg_equity": 14256000000.0,
+      "roe": 0.3093
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 2759000000.0,
+      "beginning_stockholders_equity": 14272000000.0,
+      "ending_stockholders_equity": 15764800000.0,
+      "avg_equity": 15018400000.0,
+      "roe": 0.1837
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 13799900000.0,
+      "beginning_stockholders_equity": 15764800000.0,
+      "ending_stockholders_equity": 18272900000.0,
+      "avg_equity": 17018850000.0,
+      "roe": 0.8109
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 5582500000.0,
+      "beginning_stockholders_equity": 18272900000.0,
+      "ending_stockholders_equity": 23793300000.0,
+      "avg_equity": 21033100000.0,
+      "roe": 0.2654
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 6637700000.0,
+      "beginning_stockholders_equity": 23793300000.0,
+      "ending_stockholders_equity": 26535000000.0,
+      "avg_equity": 25164150000.0,
+      "roe": 0.2638
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 25277000000.0,
+      "beginning_stockholders_equity": 26535000000.0,
+      "ending_stockholders_equity": 31198000000.0,
+      "avg_equity": 28866500000.0,
+      "roe": 0.8757
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "LLY",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": -57400000.0,
+      "beginning_total_assets": 54814000000.0,
+      "ending_total_assets": 57915500000.0,
+      "avg_assets": 56364750000.0,
+      "roa": -0.001
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 2189700000.0,
+      "beginning_total_assets": 57915500000.0,
+      "ending_total_assets": 64006300000.0,
+      "avg_assets": 60960900000.0,
+      "roa": 0.0359
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 2242900000.0,
+      "beginning_total_assets": 64006300000.0,
+      "ending_total_assets": 63943500000.0,
+      "avg_assets": 63974900000.0,
+      "roa": 0.0351
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 2967000000.0,
+      "beginning_total_assets": 63943500000.0,
+      "ending_total_assets": 71874800000.0,
+      "avg_assets": 67909150000.0,
+      "roa": 0.0437
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 970300000.0,
+      "beginning_total_assets": 71874800000.0,
+      "ending_total_assets": 75606900000.0,
+      "avg_assets": 73740850000.0,
+      "roa": 0.0132
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 4409800000.0,
+      "beginning_total_assets": 75606900000.0,
+      "ending_total_assets": 78715000000.0,
+      "avg_assets": 77160950000.0,
+      "roa": 0.0572
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 2759000000.0,
+      "beginning_total_assets": 78715000000.0,
+      "ending_total_assets": 89388800000.0,
+      "avg_assets": 84051900000.0,
+      "roa": 0.0328
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 13799900000.0,
+      "beginning_total_assets": 89388800000.0,
+      "ending_total_assets": 100922600000.0,
+      "avg_assets": 95155700000.0,
+      "roa": 0.145
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 5582500000.0,
+      "beginning_total_assets": 100922600000.0,
+      "ending_total_assets": 114935400000.0,
+      "avg_assets": 107929000000.0,
+      "roa": 0.0517
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 6637700000.0,
+      "beginning_total_assets": 114935400000.0,
+      "ending_total_assets": 112476000000.0,
+      "avg_assets": 113705700000.0,
+      "roa": 0.0584
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 25277000000.0,
+      "beginning_total_assets": 112476000000.0,
+      "ending_total_assets": 116576000000.0,
+      "avg_assets": 114526000000.0,
+      "roa": 0.2207
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "LLY",
+      "report_date": "2023-09-30",
+      "ebit": 551800000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 435922000.0,
+      "beginning_invested_capital": 29883800000.0,
+      "ending_invested_capital": 31388700000.0,
+      "avg_invested_capital": 30636250000.0,
+      "roic": 0.0142
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-12-31",
+      "ebit": 2647000000.0,
+      "tax_rate_for_calcs": 0.13,
+      "nopat": 2302890000.0,
+      "beginning_invested_capital": 31388700000.0,
+      "ending_invested_capital": 35997200000.0,
+      "avg_invested_capital": 33692950000.0,
+      "roic": 0.0683
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-03-31",
+      "ebit": 2715700000.0,
+      "tax_rate_for_calcs": 0.12,
+      "nopat": 2389816000.0,
+      "beginning_invested_capital": 35997200000.0,
+      "ending_invested_capital": 39023600000.0,
+      "avg_invested_capital": 37510400000.0,
+      "roic": 0.0637
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-06-30",
+      "ebit": 3700800000.0,
+      "tax_rate_for_calcs": 0.16,
+      "nopat": 3108672000.0,
+      "beginning_invested_capital": 39023600000.0,
+      "ending_invested_capital": 42454000000.0,
+      "avg_invested_capital": 40738800000.0,
+      "roic": 0.0763
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-09-30",
+      "ebit": 1781100000.0,
+      "tax_rate_for_calcs": 0.39,
+      "nopat": 1086471000.0,
+      "beginning_invested_capital": 42454000000.0,
+      "ending_invested_capital": 45359700000.0,
+      "avg_invested_capital": 43906850000.0,
+      "roic": 0.0247
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-12-31",
+      "ebit": 5263400000.0,
+      "tax_rate_for_calcs": 0.12,
+      "nopat": 4631792000.0,
+      "beginning_invested_capital": 45359700000.0,
+      "ending_invested_capital": 47916000000.0,
+      "avg_invested_capital": 46637850000.0,
+      "roic": 0.0993
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-03-31",
+      "ebit": 5302000000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 4241600000.0,
+      "beginning_invested_capital": 47916000000.0,
+      "ending_invested_capital": 54280700000.0,
+      "avg_invested_capital": 51098350000.0,
+      "roic": 0.083
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-06-30",
+      "ebit": 17769700000.0,
+      "tax_rate_for_calcs": 0.16,
+      "nopat": 14926548000.0,
+      "beginning_invested_capital": 54280700000.0,
+      "ending_invested_capital": 58176700000.0,
+      "avg_invested_capital": 56228700000.0,
+      "roic": 0.2655
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-09-30",
+      "ebit": 7412000000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 5707240000.0,
+      "beginning_invested_capital": 58176700000.0,
+      "ending_invested_capital": 66299900000.0,
+      "avg_invested_capital": 62238300000.0,
+      "roic": 0.0917
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-12-31",
+      "ebit": 11558800000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 9247040000.0,
+      "beginning_invested_capital": 66299900000.0,
+      "ending_invested_capital": 69038000000.0,
+      "avg_invested_capital": 67668950000.0,
+      "roic": 0.1367
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2026-03-31",
+      "ebit": 34172000000.0,
+      "tax_rate_for_calcs": 0.16,
+      "nopat": 28704480000.0,
+      "beginning_invested_capital": 69038000000.0,
+      "ending_invested_capital": 74568000000.0,
+      "avg_invested_capital": 71803000000.0,
+      "roic": 0.3998
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "LLY",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": -0.0052,
+      "roa": -0.001,
+      "equity_multiplier": 5.2
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.1991,
+      "roa": 0.0359,
+      "equity_multiplier": 5.55
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.1902,
+      "roa": 0.0351,
+      "equity_multiplier": 5.42
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.225,
+      "roa": 0.0437,
+      "equity_multiplier": 5.15
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.0698,
+      "roa": 0.0132,
+      "equity_multiplier": 5.29
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.3093,
+      "roa": 0.0572,
+      "equity_multiplier": 5.41
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.1837,
+      "roa": 0.0328,
+      "equity_multiplier": 5.6
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.8109,
+      "roa": 0.145,
+      "equity_multiplier": 5.59
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.2654,
+      "roa": 0.0517,
+      "equity_multiplier": 5.13
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.2638,
+      "roa": 0.0584,
+      "equity_multiplier": 4.52
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.8757,
+      "roa": 0.2207,
+      "equity_multiplier": 3.97
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "LLY",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": -0.001,
+      "net_margin": -0.006,
+      "asset_turnover": 0.17
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0359,
+      "net_margin": 0.2341,
+      "asset_turnover": 0.15
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0351,
+      "net_margin": 0.2558,
+      "asset_turnover": 0.14
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0437,
+      "net_margin": 0.2625,
+      "asset_turnover": 0.17
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0132,
+      "net_margin": 0.0848,
+      "asset_turnover": 0.16
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0572,
+      "net_margin": 0.3259,
+      "asset_turnover": 0.18
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0328,
+      "net_margin": 0.2167,
+      "asset_turnover": 0.15
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.145,
+      "net_margin": 0.887,
+      "asset_turnover": 0.16
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0517,
+      "net_margin": 0.3172,
+      "asset_turnover": 0.16
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0584,
+      "net_margin": 0.3441,
+      "asset_turnover": 0.17
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.2207,
+      "net_margin": 1.2767,
+      "asset_turnover": 0.17
+    }
+  ]
+}

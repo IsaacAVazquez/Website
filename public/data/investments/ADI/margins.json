@@ -111,6 +111,13 @@
       "gross_profit": 2044976000.0,
       "total_revenue": 3160263000.0,
       "gross_margin": 0.6471
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2026-04-30",
+      "gross_profit": 8216338000.0,
+      "total_revenue": 3623465000.0,
+      "gross_margin": 2.2675
     }
   ],
   "annual_gross": [
@@ -276,6 +283,13 @@
       "operating_income": 1045008000.0,
       "total_revenue": 3160263000.0,
       "operating_margin": 0.3307
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2026-04-30",
+      "operating_income": 1379680000.0,
+      "total_revenue": 3623465000.0,
+      "operating_margin": 0.3808
     }
   ],
   "annual_operating": [
@@ -441,6 +455,13 @@
       "net_income_common_stockholders": 830826000.0,
       "total_revenue": 3160263000.0,
       "net_margin": 0.2629
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2026-04-30",
+      "net_income_common_stockholders": 3313432000.0,
+      "total_revenue": 3623465000.0,
+      "net_margin": 0.9144
     }
   ],
   "annual_net": [
@@ -606,6 +627,13 @@
       "ebitda": 1522717000.0,
       "total_revenue": 3160263000.0,
       "ebitda_margin": 0.4818
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2026-04-30",
+      "ebitda": 1903382000.0,
+      "total_revenue": 3623465000.0,
+      "ebitda_margin": 0.5253
     }
   ],
   "annual_ebitda": [
@@ -771,6 +799,13 @@
       "free_cash_flow": 1259202000.0,
       "total_revenue": 3160263000.0,
       "fcf_margin": 0.3984
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2026-04-30",
+      "free_cash_flow": 4565150000.0,
+      "total_revenue": 3623465000.0,
+      "fcf_margin": 1.2599
     }
   ],
   "annual_fcf": [

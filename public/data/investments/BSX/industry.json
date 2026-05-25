@@ -1,0 +1,1832 @@
+{
+  "ttm_pe": [],
+  "ps_ratio": [],
+  "pb_ratio": [],
+  "roe": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": -26278000.0,
+      "total_avg_equity": 13916500.0,
+      "industry_roe": -1.8883
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": -26278000.0,
+      "total_avg_equity": 13916500.0,
+      "industry_roe": -1.8883
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": -26278000.0,
+      "total_avg_equity": 13916500.0,
+      "industry_roe": -1.8883
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": -27009000.0,
+      "total_avg_equity": 11245500.0,
+      "industry_roe": -2.4018
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": -27009000.0,
+      "total_avg_equity": 11245500.0,
+      "industry_roe": -2.4018
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": -27009000.0,
+      "total_avg_equity": 11245500.0,
+      "industry_roe": -2.4018
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": -27009000.0,
+      "total_avg_equity": 11245500.0,
+      "industry_roe": -2.4018
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": -27009000.0,
+      "total_avg_equity": 11245500.0,
+      "industry_roe": -2.4018
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": -27009000.0,
+      "total_avg_equity": 11245500.0,
+      "industry_roe": -2.4018
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": -492706000.0,
+      "total_avg_equity": 3210268000.0,
+      "industry_roe": -0.1535
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": -492706000.0,
+      "total_avg_equity": 3210268000.0,
+      "industry_roe": -0.1535
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": -497489177.0,
+      "total_avg_equity": 6360229500.0,
+      "industry_roe": -0.0782
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 9937217046.0,
+      "total_avg_equity": 166210642736.0,
+      "industry_roe": 0.0598
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 13606611838.0,
+      "total_avg_equity": 216910041535.5,
+      "industry_roe": 0.0627
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 13595996015.0,
+      "total_avg_equity": 216913918035.5,
+      "industry_roe": 0.0627
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 11590564435.0,
+      "total_avg_equity": 217952618671.5,
+      "industry_roe": 0.0532
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 11840879601.0,
+      "total_avg_equity": 216958862010.0,
+      "industry_roe": 0.0546
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 11826583601.0,
+      "total_avg_equity": 216953768010.0,
+      "industry_roe": 0.0545
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 16901773477.0,
+      "total_avg_equity": 220769167637.5,
+      "industry_roe": 0.0766
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 17262438937.0,
+      "total_avg_equity": 221212850778.0,
+      "industry_roe": 0.078
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 16810200937.0,
+      "total_avg_equity": 220978189778.0,
+      "industry_roe": 0.0761
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 20474626903.0,
+      "total_avg_equity": 225385778329.0,
+      "industry_roe": 0.0908
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 20445734422.0,
+      "total_avg_equity": 225041505045.5,
+      "industry_roe": 0.0909
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 20437611422.0,
+      "total_avg_equity": 225035729045.5,
+      "industry_roe": 0.0908
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 21653396159.68254,
+      "total_avg_equity": 241781121505.58847,
+      "industry_roe": 0.0896
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 22026052555.02535,
+      "total_avg_equity": 239958087792.30344,
+      "industry_roe": 0.0918
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 21422840584.02535,
+      "total_avg_equity": 239660101057.80344,
+      "industry_roe": 0.0894
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 32048166601.034496,
+      "total_avg_equity": 258226829332.5542,
+      "industry_roe": 0.1241
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 32046246730.158234,
+      "total_avg_equity": 258435214027.55984,
+      "industry_roe": 0.124
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 32096511730.158234,
+      "total_avg_equity": 258226259527.55984,
+      "industry_roe": 0.1243
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 26191559027.12539,
+      "total_avg_equity": 262948194937.08408,
+      "industry_roe": 0.0996
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 26295249466.44391,
+      "total_avg_equity": 263773500453.7498,
+      "industry_roe": 0.0997
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 26735237466.44391,
+      "total_avg_equity": 263761908453.7498,
+      "industry_roe": 0.1014
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 25054316398.4672,
+      "total_avg_equity": 267927644146.7297,
+      "industry_roe": 0.0935
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 28367367389.4672,
+      "total_avg_equity": 267411088214.2297,
+      "industry_roe": 0.1061
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 28361118389.4672,
+      "total_avg_equity": 267114224214.2297,
+      "industry_roe": 0.1062
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 35264632627.43049,
+      "total_avg_equity": 268358091247.2167,
+      "industry_roe": 0.1314
+    }
+  ],
+  "roa": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": -26278000.0,
+      "total_avg_assets": 17076500.0,
+      "industry_roa": -1.5388
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": -26278000.0,
+      "total_avg_assets": 17076500.0,
+      "industry_roa": -1.5388
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": -26278000.0,
+      "total_avg_assets": 17076500.0,
+      "industry_roa": -1.5388
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": -27009000.0,
+      "total_avg_assets": 14555000.0,
+      "industry_roa": -1.8557
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": -27009000.0,
+      "total_avg_assets": 14555000.0,
+      "industry_roa": -1.8557
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": -27009000.0,
+      "total_avg_assets": 14555000.0,
+      "industry_roa": -1.8557
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": -27009000.0,
+      "total_avg_assets": 14555000.0,
+      "industry_roa": -1.8557
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": -27009000.0,
+      "total_avg_assets": 14555000.0,
+      "industry_roa": -1.8557
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": -27009000.0,
+      "total_avg_assets": 14555000.0,
+      "industry_roa": -1.8557
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": -492706000.0,
+      "total_avg_assets": 7954324000.0,
+      "industry_roa": -0.0619
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": -492706000.0,
+      "total_avg_assets": 7954324000.0,
+      "industry_roa": -0.0619
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": -497489177.0,
+      "total_avg_assets": 12535184000.0,
+      "industry_roa": -0.0397
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 9937217046.0,
+      "total_avg_assets": 326514169694.0,
+      "industry_roa": 0.0304
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 13606611838.0,
+      "total_avg_assets": 416898720162.0,
+      "industry_roa": 0.0326
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 13595996015.0,
+      "total_avg_assets": 416884065662.0,
+      "industry_roa": 0.0326
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 11590564435.0,
+      "total_avg_assets": 416526891887.5,
+      "industry_roa": 0.0278
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 11840879601.0,
+      "total_avg_assets": 416065621303.5,
+      "industry_roa": 0.0285
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 11826583601.0,
+      "total_avg_assets": 416062060303.5,
+      "industry_roa": 0.0284
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 16901773477.0,
+      "total_avg_assets": 426187771057.5,
+      "industry_roa": 0.0397
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 17262438937.0,
+      "total_avg_assets": 426712780146.0,
+      "industry_roa": 0.0405
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 16810200937.0,
+      "total_avg_assets": 426477235646.0,
+      "industry_roa": 0.0394
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 20474626903.0,
+      "total_avg_assets": 428146146843.0,
+      "industry_roa": 0.0478
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 20445734422.0,
+      "total_avg_assets": 427682461354.5,
+      "industry_roa": 0.0478
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 20437611422.0,
+      "total_avg_assets": 427656260854.5,
+      "industry_roa": 0.0478
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 21249672813.0,
+      "total_avg_assets": 437757709191.5,
+      "industry_roa": 0.0485
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 21622329208.342808,
+      "total_avg_assets": 438494499482.90796,
+      "industry_roa": 0.0493
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 21019117237.342808,
+      "total_avg_assets": 438180383722.40796,
+      "industry_roa": 0.048
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 31851145374.342808,
+      "total_avg_assets": 451375473676.40796,
+      "industry_roa": 0.0706
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 31849225503.466545,
+      "total_avg_assets": 451168799336.25586,
+      "industry_roa": 0.0706
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 31899490503.466545,
+      "total_avg_assets": 450911575336.25586,
+      "industry_roa": 0.0707
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 26191559027.12539,
+      "total_avg_assets": 517169927352.8596,
+      "industry_roa": 0.0506
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 26295249466.44391,
+      "total_avg_assets": 517321154190.12024,
+      "industry_roa": 0.0508
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 26735237466.44391,
+      "total_avg_assets": 517302815690.12024,
+      "industry_roa": 0.0517
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 25054316398.4672,
+      "total_avg_assets": 521283927259.8108,
+      "industry_roa": 0.0481
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 28367367389.4672,
+      "total_avg_assets": 522206965979.8108,
+      "industry_roa": 0.0543
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 28361118389.4672,
+      "total_avg_assets": 521908945979.8108,
+      "industry_roa": 0.0543
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 35264632627.43049,
+      "total_avg_assets": 535351351057.8943,
+      "industry_roa": 0.0659
+    }
+  ],
+  "equity_multiplier": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roe": -1.8883,
+      "industry_roa": -1.5388,
+      "industry_equity_multiplier": 1.23
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roe": -1.8883,
+      "industry_roa": -1.5388,
+      "industry_equity_multiplier": 1.23
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roe": -1.8883,
+      "industry_roa": -1.5388,
+      "industry_equity_multiplier": 1.23
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roe": -2.4018,
+      "industry_roa": -1.8557,
+      "industry_equity_multiplier": 1.29
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roe": -2.4018,
+      "industry_roa": -1.8557,
+      "industry_equity_multiplier": 1.29
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roe": -2.4018,
+      "industry_roa": -1.8557,
+      "industry_equity_multiplier": 1.29
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roe": -2.4018,
+      "industry_roa": -1.8557,
+      "industry_equity_multiplier": 1.29
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roe": -2.4018,
+      "industry_roa": -1.8557,
+      "industry_equity_multiplier": 1.29
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roe": -2.4018,
+      "industry_roa": -1.8557,
+      "industry_equity_multiplier": 1.29
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roe": -0.1535,
+      "industry_roa": -0.0619,
+      "industry_equity_multiplier": 2.48
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roe": -0.1535,
+      "industry_roa": -0.0619,
+      "industry_equity_multiplier": 2.48
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roe": -0.0782,
+      "industry_roa": -0.0397,
+      "industry_equity_multiplier": 1.97
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roe": 0.0598,
+      "industry_roa": 0.0304,
+      "industry_equity_multiplier": 1.97
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roe": 0.0627,
+      "industry_roa": 0.0326,
+      "industry_equity_multiplier": 1.92
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roe": 0.0627,
+      "industry_roa": 0.0326,
+      "industry_equity_multiplier": 1.92
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roe": 0.0532,
+      "industry_roa": 0.0278,
+      "industry_equity_multiplier": 1.91
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roe": 0.0546,
+      "industry_roa": 0.0285,
+      "industry_equity_multiplier": 1.92
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roe": 0.0545,
+      "industry_roa": 0.0284,
+      "industry_equity_multiplier": 1.92
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roe": 0.0766,
+      "industry_roa": 0.0397,
+      "industry_equity_multiplier": 1.93
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roe": 0.078,
+      "industry_roa": 0.0405,
+      "industry_equity_multiplier": 1.93
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roe": 0.0761,
+      "industry_roa": 0.0394,
+      "industry_equity_multiplier": 1.93
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roe": 0.0908,
+      "industry_roa": 0.0478,
+      "industry_equity_multiplier": 1.9
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roe": 0.0909,
+      "industry_roa": 0.0478,
+      "industry_equity_multiplier": 1.9
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roe": 0.0908,
+      "industry_roa": 0.0478,
+      "industry_equity_multiplier": 1.9
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roe": 0.0896,
+      "industry_roa": 0.0485,
+      "industry_equity_multiplier": 1.85
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roe": 0.0918,
+      "industry_roa": 0.0493,
+      "industry_equity_multiplier": 1.86
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roe": 0.0894,
+      "industry_roa": 0.048,
+      "industry_equity_multiplier": 1.86
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roe": 0.1241,
+      "industry_roa": 0.0706,
+      "industry_equity_multiplier": 1.76
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roe": 0.124,
+      "industry_roa": 0.0706,
+      "industry_equity_multiplier": 1.76
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roe": 0.1243,
+      "industry_roa": 0.0707,
+      "industry_equity_multiplier": 1.76
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roe": 0.0996,
+      "industry_roa": 0.0506,
+      "industry_equity_multiplier": 1.97
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roe": 0.0997,
+      "industry_roa": 0.0508,
+      "industry_equity_multiplier": 1.96
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roe": 0.1014,
+      "industry_roa": 0.0517,
+      "industry_equity_multiplier": 1.96
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roe": 0.0935,
+      "industry_roa": 0.0481,
+      "industry_equity_multiplier": 1.94
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roe": 0.1061,
+      "industry_roa": 0.0543,
+      "industry_equity_multiplier": 1.95
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roe": 0.1062,
+      "industry_roa": 0.0543,
+      "industry_equity_multiplier": 1.96
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roe": 0.1314,
+      "industry_roa": 0.0659,
+      "industry_equity_multiplier": 1.99
+    }
+  ],
+  "gross_margin": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_gross_profit": 1159386000.0,
+      "total_ttm_revenue": 1876356000.0,
+      "industry_gross_margin": 0.6179
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_gross_profit": 1159386000.0,
+      "total_ttm_revenue": 1876356000.0,
+      "industry_gross_margin": 0.6179
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_gross_profit": 1159386000.0,
+      "total_ttm_revenue": 1876356000.0,
+      "industry_gross_margin": 0.6179
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_gross_profit": 1141203000.0,
+      "total_ttm_revenue": 1862564000.0,
+      "industry_gross_margin": 0.6127
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_gross_profit": 1141203000.0,
+      "total_ttm_revenue": 1862564000.0,
+      "industry_gross_margin": 0.6127
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_gross_profit": 1141203000.0,
+      "total_ttm_revenue": 1862564000.0,
+      "industry_gross_margin": 0.6127
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_gross_profit": 2320187000.0,
+      "total_ttm_revenue": 4297063000.0,
+      "industry_gross_margin": 0.5399
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_gross_profit": 2320187000.0,
+      "total_ttm_revenue": 4297063000.0,
+      "industry_gross_margin": 0.5399
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_gross_profit": 2320187000.0,
+      "total_ttm_revenue": 4297063000.0,
+      "industry_gross_margin": 0.5399
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_gross_profit": 18064094702.822357,
+      "total_ttm_revenue": 37806522686.22026,
+      "industry_gross_margin": 0.4778
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_gross_profit": 18064094702.822357,
+      "total_ttm_revenue": 37806522686.22026,
+      "industry_gross_margin": 0.4778
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_gross_profit": 18538311509.822357,
+      "total_ttm_revenue": 38741165894.22026,
+      "industry_gross_margin": 0.4785
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_gross_profit": 99026079581.54059,
+      "total_ttm_revenue": 180537523337.01038,
+      "industry_gross_margin": 0.5485
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_gross_profit": 120175092100.54059,
+      "total_ttm_revenue": 212901541937.01038,
+      "industry_gross_margin": 0.5645
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_gross_profit": 120165383293.54059,
+      "total_ttm_revenue": 212896533729.01038,
+      "industry_gross_margin": 0.5644
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_gross_profit": 121710898169.86635,
+      "total_ttm_revenue": 215122985166.1977,
+      "industry_gross_margin": 0.5658
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_gross_profit": 121790898169.86635,
+      "total_ttm_revenue": 215335985166.1977,
+      "industry_gross_margin": 0.5656
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_gross_profit": 121778940169.86635,
+      "total_ttm_revenue": 215324056166.1977,
+      "industry_gross_margin": 0.5656
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_gross_profit": 124458218299.71574,
+      "total_ttm_revenue": 219297740911.46677,
+      "industry_gross_margin": 0.5675
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_gross_profit": 124692215919.71574,
+      "total_ttm_revenue": 219716737011.46677,
+      "industry_gross_margin": 0.5675
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_gross_profit": 124688883919.71574,
+      "total_ttm_revenue": 219718435011.46677,
+      "industry_gross_margin": 0.5675
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_gross_profit": 126565961031.73778,
+      "total_ttm_revenue": 221817294958.13425,
+      "industry_gross_margin": 0.5706
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_gross_profit": 126771950892.73778,
+      "total_ttm_revenue": 222020280258.13425,
+      "industry_gross_margin": 0.571
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_gross_profit": 126765535892.73778,
+      "total_ttm_revenue": 222012570258.13425,
+      "industry_gross_margin": 0.571
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_gross_profit": 132145792433.56998,
+      "total_ttm_revenue": 231155036166.60883,
+      "industry_gross_margin": 0.5717
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_gross_profit": 132380794903.56998,
+      "total_ttm_revenue": 231493040516.60883,
+      "industry_gross_margin": 0.5719
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_gross_profit": 132698613249.56998,
+      "total_ttm_revenue": 232165130772.60883,
+      "industry_gross_margin": 0.5716
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_gross_profit": 220057978477.22308,
+      "total_ttm_revenue": 340195086418.7468,
+      "industry_gross_margin": 0.6469
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_gross_profit": 220480979617.22308,
+      "total_ttm_revenue": 340858088318.7468,
+      "industry_gross_margin": 0.6468
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_gross_profit": 220471158617.22308,
+      "total_ttm_revenue": 340849886318.7468,
+      "industry_gross_margin": 0.6468
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_gross_profit": 222612632319.82776,
+      "total_ttm_revenue": 344781670045.7579,
+      "industry_gross_margin": 0.6457
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_gross_profit": 223055633730.82776,
+      "total_ttm_revenue": 345339672464.7579,
+      "industry_gross_margin": 0.6459
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_gross_profit": 223048601730.82776,
+      "total_ttm_revenue": 345332679464.7579,
+      "industry_gross_margin": 0.6459
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_gross_profit": 226105857378.8694,
+      "total_ttm_revenue": 349334626529.2348,
+      "industry_gross_margin": 0.6472
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_gross_profit": 243606862399.8694,
+      "total_ttm_revenue": 376526626529.23486,
+      "industry_gross_margin": 0.647
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_gross_profit": 243890308399.8694,
+      "total_ttm_revenue": 377179395529.23486,
+      "industry_gross_margin": 0.6466
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_gross_profit": 326038584047.84094,
+      "total_ttm_revenue": 467885433996.1089,
+      "industry_gross_margin": 0.6968
+    }
+  ],
+  "ebitda_margin": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_ebitda": -62122000.0,
+      "total_ttm_revenue": 7940000.0,
+      "industry_ebitda_margin": -7.8239
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_ebitda": -62122000.0,
+      "total_ttm_revenue": 7940000.0,
+      "industry_ebitda_margin": -7.8239
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_ebitda": -62122000.0,
+      "total_ttm_revenue": 7940000.0,
+      "industry_ebitda_margin": -7.8239
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_ebitda": -563475000.0,
+      "total_ttm_revenue": 1862564000.0,
+      "industry_ebitda_margin": -0.3025
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_ebitda": -563475000.0,
+      "total_ttm_revenue": 1862564000.0,
+      "industry_ebitda_margin": -0.3025
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_ebitda": -563475000.0,
+      "total_ttm_revenue": 1862564000.0,
+      "industry_ebitda_margin": -0.3025
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_ebitda": -315508000.0,
+      "total_ttm_revenue": 4297063000.0,
+      "industry_ebitda_margin": -0.0734
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_ebitda": -315508000.0,
+      "total_ttm_revenue": 4297063000.0,
+      "industry_ebitda_margin": -0.0734
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_ebitda": -315508000.0,
+      "total_ttm_revenue": 4297063000.0,
+      "industry_ebitda_margin": -0.0734
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_ebitda": -1314755613.68456,
+      "total_ttm_revenue": 37806522686.22026,
+      "industry_ebitda_margin": -0.0348
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_ebitda": -1314755613.68456,
+      "total_ttm_revenue": 37806522686.22026,
+      "industry_ebitda_margin": -0.0348
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_ebitda": -1132308323.68456,
+      "total_ttm_revenue": 38741165894.22026,
+      "industry_ebitda_margin": -0.0292
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_ebitda": 27128863415.78411,
+      "total_ttm_revenue": 180533081366.01038,
+      "industry_ebitda_margin": 0.1503
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_ebitda": 35323753901.78411,
+      "total_ttm_revenue": 212897099966.01038,
+      "industry_ebitda_margin": 0.1659
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_ebitda": 35315628611.78411,
+      "total_ttm_revenue": 212892091758.01038,
+      "industry_ebitda_margin": 0.1659
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_ebitda": 33561930608.275005,
+      "total_ttm_revenue": 215118722682.1977,
+      "industry_ebitda_margin": 0.156
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_ebitda": 33642238522.275005,
+      "total_ttm_revenue": 215331722682.1977,
+      "industry_ebitda_margin": 0.1562
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_ebitda": 33626060522.275005,
+      "total_ttm_revenue": 215319793682.1977,
+      "industry_ebitda_margin": 0.1562
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_ebitda": 36716150642.047806,
+      "total_ttm_revenue": 219293787738.46677,
+      "industry_ebitda_margin": 0.1674
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_ebitda": 36993775141.047806,
+      "total_ttm_revenue": 219712783838.46677,
+      "industry_ebitda_margin": 0.1684
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_ebitda": 36522263141.047806,
+      "total_ttm_revenue": 219714481838.46677,
+      "industry_ebitda_margin": 0.1662
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_ebitda": 34046153647.59105,
+      "total_ttm_revenue": 221818528469.13425,
+      "industry_ebitda_margin": 0.1535
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_ebitda": 34139327360.59105,
+      "total_ttm_revenue": 222021513769.13425,
+      "industry_ebitda_margin": 0.1538
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_ebitda": 34134660360.59105,
+      "total_ttm_revenue": 222013803769.13425,
+      "industry_ebitda_margin": 0.1538
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_ebitda": 37365491823.29819,
+      "total_ttm_revenue": 231156344527.60883,
+      "industry_ebitda_margin": 0.1616
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_ebitda": 37914606674.47249,
+      "total_ttm_revenue": 231494348877.60883,
+      "industry_ebitda_margin": 0.1638
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_ebitda": 36935936705.47249,
+      "total_ttm_revenue": 232166439133.60883,
+      "industry_ebitda_margin": 0.1591
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_ebitda": 56314748651.48061,
+      "total_ttm_revenue": 340196562544.7468,
+      "industry_ebitda_margin": 0.1655
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_ebitda": 56443942941.599266,
+      "total_ttm_revenue": 340859564444.7468,
+      "industry_ebitda_margin": 0.1656
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_ebitda": 56500696941.599266,
+      "total_ttm_revenue": 340851362444.7468,
+      "industry_ebitda_margin": 0.1658
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_ebitda": 54276624632.510216,
+      "total_ttm_revenue": 344783810812.7579,
+      "industry_ebitda_margin": 0.1574
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_ebitda": 54355840267.120636,
+      "total_ttm_revenue": 345341813231.7579,
+      "industry_ebitda_margin": 0.1574
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_ebitda": 54807256267.120636,
+      "total_ttm_revenue": 345334820231.7579,
+      "industry_ebitda_margin": 0.1587
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_ebitda": 61295106295.336945,
+      "total_ttm_revenue": 349335871913.2348,
+      "industry_ebitda_margin": 0.1755
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_ebitda": 68250543682.336945,
+      "total_ttm_revenue": 376527871913.23486,
+      "industry_ebitda_margin": 0.1813
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_ebitda": 67772394682.336945,
+      "total_ttm_revenue": 377180640913.23486,
+      "industry_ebitda_margin": 0.1797
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_ebitda": 76398704978.17795,
+      "total_ttm_revenue": 467887418071.1089,
+      "industry_ebitda_margin": 0.1633
+    }
+  ],
+  "net_margin": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": -640370000.0,
+      "total_ttm_revenue": 1876356000.0,
+      "industry_net_margin": -0.3413
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": -640370000.0,
+      "total_ttm_revenue": 1876356000.0,
+      "industry_net_margin": -0.3413
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": -640370000.0,
+      "total_ttm_revenue": 1876356000.0,
+      "industry_net_margin": -0.3413
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": -732924000.0,
+      "total_ttm_revenue": 1862564000.0,
+      "industry_net_margin": -0.3935
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": -732924000.0,
+      "total_ttm_revenue": 1862564000.0,
+      "industry_net_margin": -0.3935
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": -732924000.0,
+      "total_ttm_revenue": 1862564000.0,
+      "industry_net_margin": -0.3935
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": -815508000.0,
+      "total_ttm_revenue": 4297063000.0,
+      "industry_net_margin": -0.1898
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": -815508000.0,
+      "total_ttm_revenue": 4297063000.0,
+      "industry_net_margin": -0.1898
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": -815508000.0,
+      "total_ttm_revenue": 4297063000.0,
+      "industry_net_margin": -0.1898
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": -2871297588.7863865,
+      "total_ttm_revenue": 37806522686.22026,
+      "industry_net_margin": -0.0759
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": -2871297588.7863865,
+      "total_ttm_revenue": 37806522686.22026,
+      "industry_net_margin": -0.0759
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": -2876080765.7863865,
+      "total_ttm_revenue": 38741165894.22026,
+      "industry_net_margin": -0.0742
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 8963147953.62349,
+      "total_ttm_revenue": 180533081366.01038,
+      "industry_net_margin": 0.0496
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 12632542745.62349,
+      "total_ttm_revenue": 212897099966.01038,
+      "industry_net_margin": 0.0593
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 12621926922.62349,
+      "total_ttm_revenue": 212892091758.01038,
+      "industry_net_margin": 0.0593
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 11078123833.431356,
+      "total_ttm_revenue": 215118722682.1977,
+      "industry_net_margin": 0.0515
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 11328438999.431356,
+      "total_ttm_revenue": 215331722682.1977,
+      "industry_net_margin": 0.0526
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 11314142999.431356,
+      "total_ttm_revenue": 215319793682.1977,
+      "industry_net_margin": 0.0525
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 16443766831.518038,
+      "total_ttm_revenue": 219293787738.46677,
+      "industry_net_margin": 0.075
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 16804432291.518038,
+      "total_ttm_revenue": 219712783838.46677,
+      "industry_net_margin": 0.0765
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 16352194291.518038,
+      "total_ttm_revenue": 219714481838.46677,
+      "industry_net_margin": 0.0744
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 19621496342.118626,
+      "total_ttm_revenue": 221818528469.13425,
+      "industry_net_margin": 0.0885
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 19592603861.118626,
+      "total_ttm_revenue": 222021513769.13425,
+      "industry_net_margin": 0.0882
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 19584480861.118626,
+      "total_ttm_revenue": 222013803769.13425,
+      "industry_net_margin": 0.0882
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 21553496672.68254,
+      "total_ttm_revenue": 231156344527.60883,
+      "industry_net_margin": 0.0932
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 21926153068.02535,
+      "total_ttm_revenue": 231494348877.60883,
+      "industry_net_margin": 0.0947
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 21322941097.02535,
+      "total_ttm_revenue": 232166439133.60883,
+      "industry_net_margin": 0.0918
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 32012071725.034496,
+      "total_ttm_revenue": 340196562544.7468,
+      "industry_net_margin": 0.0941
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 32010151854.158234,
+      "total_ttm_revenue": 340859564444.7468,
+      "industry_net_margin": 0.0939
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 32060416854.158234,
+      "total_ttm_revenue": 340851362444.7468,
+      "industry_net_margin": 0.0941
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 26191559027.12539,
+      "total_ttm_revenue": 344783810812.7579,
+      "industry_net_margin": 0.076
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 26295249466.44391,
+      "total_ttm_revenue": 345341813231.7579,
+      "industry_net_margin": 0.0761
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 26735237466.44391,
+      "total_ttm_revenue": 345334820231.7579,
+      "industry_net_margin": 0.0774
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 25054316398.4672,
+      "total_ttm_revenue": 349335871913.2348,
+      "industry_net_margin": 0.0717
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 28367367389.4672,
+      "total_ttm_revenue": 376527871913.23486,
+      "industry_net_margin": 0.0753
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 28361118389.4672,
+      "total_ttm_revenue": 377180640913.23486,
+      "industry_net_margin": 0.0752
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "total_ttm_net_income": 35880221627.43049,
+      "total_ttm_revenue": 467887418071.1089,
+      "industry_net_margin": 0.0767
+    }
+  ],
+  "asset_turnover": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roa": -1.5388,
+      "industry_net_margin": -0.3413,
+      "industry_asset_turnover": 4.51
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roa": -1.5388,
+      "industry_net_margin": -0.3413,
+      "industry_asset_turnover": 4.51
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roa": -1.5388,
+      "industry_net_margin": -0.3413,
+      "industry_asset_turnover": 4.51
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roa": -1.8557,
+      "industry_net_margin": -0.3935,
+      "industry_asset_turnover": 4.72
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roa": -1.8557,
+      "industry_net_margin": -0.3935,
+      "industry_asset_turnover": 4.72
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roa": -1.8557,
+      "industry_net_margin": -0.3935,
+      "industry_asset_turnover": 4.72
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roa": -1.8557,
+      "industry_net_margin": -0.1898,
+      "industry_asset_turnover": 9.78
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roa": -1.8557,
+      "industry_net_margin": -0.1898,
+      "industry_asset_turnover": 9.78
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roa": -1.8557,
+      "industry_net_margin": -0.1898,
+      "industry_asset_turnover": 9.78
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roa": -0.0619,
+      "industry_net_margin": -0.0759,
+      "industry_asset_turnover": 0.82
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roa": -0.0619,
+      "industry_net_margin": -0.0759,
+      "industry_asset_turnover": 0.82
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roa": -0.0397,
+      "industry_net_margin": -0.0742,
+      "industry_asset_turnover": 0.54
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roa": 0.0304,
+      "industry_net_margin": 0.0496,
+      "industry_asset_turnover": 0.61
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roa": 0.0326,
+      "industry_net_margin": 0.0593,
+      "industry_asset_turnover": 0.55
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roa": 0.0326,
+      "industry_net_margin": 0.0593,
+      "industry_asset_turnover": 0.55
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roa": 0.0278,
+      "industry_net_margin": 0.0515,
+      "industry_asset_turnover": 0.54
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roa": 0.0285,
+      "industry_net_margin": 0.0526,
+      "industry_asset_turnover": 0.54
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roa": 0.0284,
+      "industry_net_margin": 0.0525,
+      "industry_asset_turnover": 0.54
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roa": 0.0397,
+      "industry_net_margin": 0.075,
+      "industry_asset_turnover": 0.53
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roa": 0.0405,
+      "industry_net_margin": 0.0765,
+      "industry_asset_turnover": 0.53
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roa": 0.0394,
+      "industry_net_margin": 0.0744,
+      "industry_asset_turnover": 0.53
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roa": 0.0478,
+      "industry_net_margin": 0.0885,
+      "industry_asset_turnover": 0.54
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roa": 0.0478,
+      "industry_net_margin": 0.0882,
+      "industry_asset_turnover": 0.54
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roa": 0.0478,
+      "industry_net_margin": 0.0882,
+      "industry_asset_turnover": 0.54
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roa": 0.0485,
+      "industry_net_margin": 0.0932,
+      "industry_asset_turnover": 0.52
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roa": 0.0493,
+      "industry_net_margin": 0.0947,
+      "industry_asset_turnover": 0.52
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roa": 0.048,
+      "industry_net_margin": 0.0918,
+      "industry_asset_turnover": 0.52
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roa": 0.0706,
+      "industry_net_margin": 0.0941,
+      "industry_asset_turnover": 0.75
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roa": 0.0706,
+      "industry_net_margin": 0.0939,
+      "industry_asset_turnover": 0.75
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roa": 0.0707,
+      "industry_net_margin": 0.0941,
+      "industry_asset_turnover": 0.75
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roa": 0.0506,
+      "industry_net_margin": 0.076,
+      "industry_asset_turnover": 0.67
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roa": 0.0508,
+      "industry_net_margin": 0.0761,
+      "industry_asset_turnover": 0.67
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roa": 0.0517,
+      "industry_net_margin": 0.0774,
+      "industry_asset_turnover": 0.67
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roa": 0.0481,
+      "industry_net_margin": 0.0717,
+      "industry_asset_turnover": 0.67
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roa": 0.0543,
+      "industry_net_margin": 0.0753,
+      "industry_asset_turnover": 0.72
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roa": 0.0543,
+      "industry_net_margin": 0.0752,
+      "industry_asset_turnover": 0.72
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Medical Devices",
+      "industry_roa": 0.0659,
+      "industry_net_margin": 0.0767,
+      "industry_asset_turnover": 0.86
+    }
+  ]
+}

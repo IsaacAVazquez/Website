@@ -87,9 +87,9 @@
     {
       "symbol": "QCOM",
       "report_date": "2025-06-30",
-      "gross_profit": 5759000000.0,
-      "total_revenue": 10365000000.0,
-      "gross_margin": 0.5556
+      "gross_profit": 24086000000.0,
+      "total_revenue": 43257000000.0,
+      "gross_margin": 0.5568
     },
     {
       "symbol": "QCOM",
@@ -108,9 +108,9 @@
     {
       "symbol": "QCOM",
       "report_date": "2026-03-31",
-      "gross_profit": 5699000000.0,
-      "total_revenue": 10599000000.0,
-      "gross_margin": 0.5377
+      "gross_profit": 24378000000.0,
+      "total_revenue": 44486000000.0,
+      "gross_margin": 0.548
     }
   ],
   "annual_gross": [
@@ -252,9 +252,9 @@
     {
       "symbol": "QCOM",
       "report_date": "2025-06-30",
-      "operating_income": 2762000000.0,
-      "total_revenue": 10365000000.0,
-      "operating_margin": 0.2665
+      "operating_income": 12019000000.0,
+      "total_revenue": 43257000000.0,
+      "operating_margin": 0.2779
     },
     {
       "symbol": "QCOM",
@@ -273,9 +273,9 @@
     {
       "symbol": "QCOM",
       "report_date": "2026-03-31",
-      "operating_income": 2309000000.0,
-      "total_revenue": 10599000000.0,
-      "operating_margin": 0.2179
+      "operating_income": 11395000000.0,
+      "total_revenue": 44486000000.0,
+      "operating_margin": 0.2561
     }
   ],
   "annual_operating": [
@@ -418,8 +418,8 @@
       "symbol": "QCOM",
       "report_date": "2025-06-30",
       "net_income_common_stockholders": 2666000000.0,
-      "total_revenue": 10365000000.0,
-      "net_margin": 0.2572
+      "total_revenue": 43257000000.0,
+      "net_margin": 0.0616
     },
     {
       "symbol": "QCOM",
@@ -439,8 +439,8 @@
       "symbol": "QCOM",
       "report_date": "2026-03-31",
       "net_income_common_stockholders": 7370000000.0,
-      "total_revenue": 10599000000.0,
-      "net_margin": 0.6953
+      "total_revenue": 44486000000.0,
+      "net_margin": 0.1657
     }
   ],
   "annual_net": [
@@ -582,9 +582,9 @@
     {
       "symbol": "QCOM",
       "report_date": "2025-06-30",
-      "ebitda": 3518000000.0,
-      "total_revenue": 10365000000.0,
-      "ebitda_margin": 0.3394
+      "ebitda": 14631000000.0,
+      "total_revenue": 43257000000.0,
+      "ebitda_margin": 0.3382
     },
     {
       "symbol": "QCOM",
@@ -603,9 +603,9 @@
     {
       "symbol": "QCOM",
       "report_date": "2026-03-31",
-      "ebitda": 2816000000.0,
-      "total_revenue": 10599000000.0,
-      "ebitda_margin": 0.2657
+      "ebitda": 13956000000.0,
+      "total_revenue": 44486000000.0,
+      "ebitda_margin": 0.3137
     }
   ],
   "annual_ebitda": [
@@ -748,8 +748,8 @@
       "symbol": "QCOM",
       "report_date": "2025-06-30",
       "free_cash_flow": 2581000000.0,
-      "total_revenue": 10365000000.0,
-      "fcf_margin": 0.249
+      "total_revenue": 43257000000.0,
+      "fcf_margin": 0.0597
     },
     {
       "symbol": "QCOM",
@@ -769,8 +769,8 @@
       "symbol": "QCOM",
       "report_date": "2026-03-31",
       "free_cash_flow": 1916000000.0,
-      "total_revenue": 10599000000.0,
-      "fcf_margin": 0.1808
+      "total_revenue": 44486000000.0,
+      "fcf_margin": 0.0431
     }
   ],
   "annual_fcf": [

@@ -1,0 +1,1559 @@
+{
+  "ttm_pe": [],
+  "ps_ratio": [],
+  "pb_ratio": [],
+  "roe": [
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": -9472787.0,
+      "total_avg_equity": 122154.0,
+      "industry_roe": -77.5479
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": -9472787.0,
+      "total_avg_equity": 122154.0,
+      "industry_roe": -77.5479
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": -31289282.0,
+      "total_avg_equity": 18901617.5,
+      "industry_roe": -1.6554
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 10309373026.345203,
+      "total_avg_equity": 42035901730.47115,
+      "industry_roe": 0.2453
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 10309373026.345203,
+      "total_avg_equity": 42035901730.47115,
+      "industry_roe": 0.2453
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 10297563267.345203,
+      "total_avg_equity": 42029129635.97115,
+      "industry_roe": 0.245
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 10660747607.464758,
+      "total_avg_equity": 42581380639.13168,
+      "industry_roe": 0.2504
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 10660747607.464758,
+      "total_avg_equity": 42581380639.13168,
+      "industry_roe": 0.2504
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 10661118725.464758,
+      "total_avg_equity": 42576464215.63168,
+      "industry_roe": 0.2504
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 11487100877.874443,
+      "total_avg_equity": 43472386974.61712,
+      "industry_roe": 0.2642
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 11487100877.874443,
+      "total_avg_equity": 43472386974.61712,
+      "industry_roe": 0.2642
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 11496429280.874443,
+      "total_avg_equity": 43470905054.11712,
+      "industry_roe": 0.2645
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 11806099768.069965,
+      "total_avg_equity": 43948223250.8121,
+      "industry_roe": 0.2686
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 11806099768.069965,
+      "total_avg_equity": 43948223250.8121,
+      "industry_roe": 0.2686
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 11805826382.069965,
+      "total_avg_equity": 43947301521.8121,
+      "industry_roe": 0.2686
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 11210480323.953741,
+      "total_avg_equity": 86853620332.32455,
+      "industry_roe": 0.1291
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 11210480323.953741,
+      "total_avg_equity": 86853620332.32455,
+      "industry_roe": 0.1291
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 11209653237.953741,
+      "total_avg_equity": 86853759695.32455,
+      "industry_roe": 0.1291
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 20515138696.576347,
+      "total_avg_equity": 108077139304.15262,
+      "industry_roe": 0.1898
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 20515138696.576347,
+      "total_avg_equity": 108077139304.15262,
+      "industry_roe": 0.1898
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 20515138696.576347,
+      "total_avg_equity": 108077139304.15262,
+      "industry_roe": 0.1898
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 21754111682.726707,
+      "total_avg_equity": 108048464724.14622,
+      "industry_roe": 0.2013
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 21754111682.726707,
+      "total_avg_equity": 108048464724.14622,
+      "industry_roe": 0.2013
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 21754111682.726707,
+      "total_avg_equity": 108048464724.14622,
+      "industry_roe": 0.2013
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 22457855783.13643,
+      "total_avg_equity": 107187287357.58131,
+      "industry_roe": 0.2095
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 22457855783.13643,
+      "total_avg_equity": 107187287357.58131,
+      "industry_roe": 0.2095
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 22457855783.13643,
+      "total_avg_equity": 107187287357.58131,
+      "industry_roe": 0.2095
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 28206529543.46672,
+      "total_avg_equity": 105903259731.78745,
+      "industry_roe": 0.2663
+    }
+  ],
+  "roa": [
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": -9472787.0,
+      "total_avg_assets": 3493459.5,
+      "industry_roa": -2.7116
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": -9472787.0,
+      "total_avg_assets": 3493459.5,
+      "industry_roa": -2.7116
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": -31289282.0,
+      "total_avg_assets": 104074851.0,
+      "industry_roa": -0.3006
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 10309373026.345203,
+      "total_avg_assets": 232953388395.59088,
+      "industry_roa": 0.0443
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 10309373026.345203,
+      "total_avg_assets": 232953388395.59088,
+      "industry_roa": 0.0443
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 10297563267.345203,
+      "total_avg_assets": 232954433508.59088,
+      "industry_roa": 0.0442
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 10660747607.464758,
+      "total_avg_assets": 234374862836.14438,
+      "industry_roa": 0.0455
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 10660747607.464758,
+      "total_avg_assets": 234374862836.14438,
+      "industry_roa": 0.0455
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 10661118725.464758,
+      "total_avg_assets": 234370758976.64438,
+      "industry_roa": 0.0455
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 11487100877.874443,
+      "total_avg_assets": 244080963553.41016,
+      "industry_roa": 0.0471
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 11487100877.874443,
+      "total_avg_assets": 244080963553.41016,
+      "industry_roa": 0.0471
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 11496429280.874443,
+      "total_avg_assets": 244082080135.41016,
+      "industry_roa": 0.0471
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 11806099768.069965,
+      "total_avg_assets": 247695177650.93536,
+      "industry_roa": 0.0477
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 11806099768.069965,
+      "total_avg_assets": 247695177650.93536,
+      "industry_roa": 0.0477
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 11805826382.069965,
+      "total_avg_assets": 247695457278.93536,
+      "industry_roa": 0.0477
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 11210480323.953741,
+      "total_avg_assets": 344286075095.3076,
+      "industry_roa": 0.0326
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 11210480323.953741,
+      "total_avg_assets": 344286075095.3076,
+      "industry_roa": 0.0326
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 11209653237.953741,
+      "total_avg_assets": 344286287454.8076,
+      "industry_roa": 0.0326
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 20515138696.576347,
+      "total_avg_assets": 393833503904.8825,
+      "industry_roa": 0.0521
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 20515138696.576347,
+      "total_avg_assets": 393833503904.8825,
+      "industry_roa": 0.0521
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 20515138696.576347,
+      "total_avg_assets": 393833503904.8825,
+      "industry_roa": 0.0521
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 21754111682.726707,
+      "total_avg_assets": 395412119082.8355,
+      "industry_roa": 0.055
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 21754111682.726707,
+      "total_avg_assets": 395412119082.8355,
+      "industry_roa": 0.055
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 21754111682.726707,
+      "total_avg_assets": 395412119082.8355,
+      "industry_roa": 0.055
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 22457855783.13643,
+      "total_avg_assets": 396340686247.9898,
+      "industry_roa": 0.0567
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 22457855783.13643,
+      "total_avg_assets": 396340686247.9898,
+      "industry_roa": 0.0567
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 22457855783.13643,
+      "total_avg_assets": 396340686247.9898,
+      "industry_roa": 0.0567
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 28206529543.46672,
+      "total_avg_assets": 396497515136.01416,
+      "industry_roa": 0.0711
+    }
+  ],
+  "equity_multiplier": [
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roe": -77.5479,
+      "industry_roa": -2.7116,
+      "industry_equity_multiplier": 28.6
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roe": -77.5479,
+      "industry_roa": -2.7116,
+      "industry_equity_multiplier": 28.6
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roe": -1.6554,
+      "industry_roa": -0.3006,
+      "industry_equity_multiplier": 5.51
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roe": 0.2453,
+      "industry_roa": 0.0443,
+      "industry_equity_multiplier": 5.54
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roe": 0.2453,
+      "industry_roa": 0.0443,
+      "industry_equity_multiplier": 5.54
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roe": 0.245,
+      "industry_roa": 0.0442,
+      "industry_equity_multiplier": 5.54
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roe": 0.2504,
+      "industry_roa": 0.0455,
+      "industry_equity_multiplier": 5.5
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roe": 0.2504,
+      "industry_roa": 0.0455,
+      "industry_equity_multiplier": 5.5
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roe": 0.2504,
+      "industry_roa": 0.0455,
+      "industry_equity_multiplier": 5.5
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roe": 0.2642,
+      "industry_roa": 0.0471,
+      "industry_equity_multiplier": 5.61
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roe": 0.2642,
+      "industry_roa": 0.0471,
+      "industry_equity_multiplier": 5.61
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roe": 0.2645,
+      "industry_roa": 0.0471,
+      "industry_equity_multiplier": 5.62
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roe": 0.2686,
+      "industry_roa": 0.0477,
+      "industry_equity_multiplier": 5.63
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roe": 0.2686,
+      "industry_roa": 0.0477,
+      "industry_equity_multiplier": 5.63
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roe": 0.2686,
+      "industry_roa": 0.0477,
+      "industry_equity_multiplier": 5.63
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roe": 0.1291,
+      "industry_roa": 0.0326,
+      "industry_equity_multiplier": 3.96
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roe": 0.1291,
+      "industry_roa": 0.0326,
+      "industry_equity_multiplier": 3.96
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roe": 0.1291,
+      "industry_roa": 0.0326,
+      "industry_equity_multiplier": 3.96
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roe": 0.1898,
+      "industry_roa": 0.0521,
+      "industry_equity_multiplier": 3.64
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roe": 0.1898,
+      "industry_roa": 0.0521,
+      "industry_equity_multiplier": 3.64
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roe": 0.1898,
+      "industry_roa": 0.0521,
+      "industry_equity_multiplier": 3.64
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roe": 0.2013,
+      "industry_roa": 0.055,
+      "industry_equity_multiplier": 3.66
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roe": 0.2013,
+      "industry_roa": 0.055,
+      "industry_equity_multiplier": 3.66
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roe": 0.2013,
+      "industry_roa": 0.055,
+      "industry_equity_multiplier": 3.66
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roe": 0.2095,
+      "industry_roa": 0.0567,
+      "industry_equity_multiplier": 3.69
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roe": 0.2095,
+      "industry_roa": 0.0567,
+      "industry_equity_multiplier": 3.69
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roe": 0.2095,
+      "industry_roa": 0.0567,
+      "industry_equity_multiplier": 3.69
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roe": 0.2663,
+      "industry_roa": 0.0711,
+      "industry_equity_multiplier": 3.75
+    }
+  ],
+  "gross_margin": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_gross_profit": 1897329000.0,
+      "total_ttm_revenue": 5793011000.0,
+      "industry_gross_margin": 0.3275
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_gross_profit": 1897329000.0,
+      "total_ttm_revenue": 5793011000.0,
+      "industry_gross_margin": 0.3275
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_gross_profit": 1897329000.0,
+      "total_ttm_revenue": 5793011000.0,
+      "industry_gross_margin": 0.3275
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_gross_profit": 1774093000.0,
+      "total_ttm_revenue": 5380743000.0,
+      "industry_gross_margin": 0.3297
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_gross_profit": 1774093000.0,
+      "total_ttm_revenue": 5380743000.0,
+      "industry_gross_margin": 0.3297
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_gross_profit": 1774093000.0,
+      "total_ttm_revenue": 5380743000.0,
+      "industry_gross_margin": 0.3297
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_gross_profit": 1690118000.0,
+      "total_ttm_revenue": 5125846000.0,
+      "industry_gross_margin": 0.3297
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_gross_profit": 1690118000.0,
+      "total_ttm_revenue": 5125846000.0,
+      "industry_gross_margin": 0.3297
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_gross_profit": 1690118000.0,
+      "total_ttm_revenue": 5125846000.0,
+      "industry_gross_margin": 0.3297
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_gross_profit": 5039396797.0,
+      "total_ttm_revenue": 8961964356.0,
+      "industry_gross_margin": 0.5623
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_gross_profit": 5039396797.0,
+      "total_ttm_revenue": 8961964356.0,
+      "industry_gross_margin": 0.5623
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_gross_profit": 5067837378.0,
+      "total_ttm_revenue": 9006993911.0,
+      "industry_gross_margin": 0.5627
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_gross_profit": 113593323385.80244,
+      "total_ttm_revenue": 207711573231.45157,
+      "industry_gross_margin": 0.5469
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_gross_profit": 113593323385.80244,
+      "total_ttm_revenue": 207711573231.45157,
+      "industry_gross_margin": 0.5469
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_gross_profit": 113593294741.80244,
+      "total_ttm_revenue": 207711702270.45157,
+      "industry_gross_margin": 0.5469
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_gross_profit": 115819810944.57181,
+      "total_ttm_revenue": 210364876826.45477,
+      "industry_gross_margin": 0.5506
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_gross_profit": 115819810944.57181,
+      "total_ttm_revenue": 210364876826.45477,
+      "industry_gross_margin": 0.5506
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_gross_profit": 115820038125.57181,
+      "total_ttm_revenue": 210365073666.45477,
+      "industry_gross_margin": 0.5506
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_gross_profit": 114915363196.10568,
+      "total_ttm_revenue": 221284086731.40775,
+      "industry_gross_margin": 0.5193
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_gross_profit": 114915363196.10568,
+      "total_ttm_revenue": 221284086731.40775,
+      "industry_gross_margin": 0.5193
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_gross_profit": 114915949711.10568,
+      "total_ttm_revenue": 221284234361.40775,
+      "industry_gross_margin": 0.5193
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_gross_profit": 109252359868.3023,
+      "total_ttm_revenue": 225919617054.92108,
+      "industry_gross_margin": 0.4836
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_gross_profit": 109252359868.3023,
+      "total_ttm_revenue": 225919617054.92108,
+      "industry_gross_margin": 0.4836
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_gross_profit": 109252558296.3023,
+      "total_ttm_revenue": 225919733699.92108,
+      "industry_gross_margin": 0.4836
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_gross_profit": 114325172965.89532,
+      "total_ttm_revenue": 277218649577.998,
+      "industry_gross_margin": 0.4124
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_gross_profit": 114325172965.89532,
+      "total_ttm_revenue": 277218649577.998,
+      "industry_gross_margin": 0.4124
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_gross_profit": 114343540026.89532,
+      "total_ttm_revenue": 277218535609.998,
+      "industry_gross_margin": 0.4125
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_gross_profit": 192439598078.2938,
+      "total_ttm_revenue": 411884884257.2539,
+      "industry_gross_margin": 0.4672
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_gross_profit": 192439598078.2938,
+      "total_ttm_revenue": 411884884257.2539,
+      "industry_gross_margin": 0.4672
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_gross_profit": 192439598078.2938,
+      "total_ttm_revenue": 411884884257.2539,
+      "industry_gross_margin": 0.4672
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_gross_profit": 195799488256.62256,
+      "total_ttm_revenue": 417050144828.25995,
+      "industry_gross_margin": 0.4695
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_gross_profit": 195799488256.62256,
+      "total_ttm_revenue": 417050144828.25995,
+      "industry_gross_margin": 0.4695
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_gross_profit": 195799488256.62256,
+      "total_ttm_revenue": 417050144828.25995,
+      "industry_gross_margin": 0.4695
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_gross_profit": 198970771163.1527,
+      "total_ttm_revenue": 422502019406.24524,
+      "industry_gross_margin": 0.4709
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_gross_profit": 198970771163.1527,
+      "total_ttm_revenue": 422502019406.24524,
+      "industry_gross_margin": 0.4709
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_gross_profit": 198970771163.1527,
+      "total_ttm_revenue": 422502019406.24524,
+      "industry_gross_margin": 0.4709
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_gross_profit": 267841085694.06982,
+      "total_ttm_revenue": 543979457027.7736,
+      "industry_gross_margin": 0.4924
+    }
+  ],
+  "ebitda_margin": [
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_ebitda": 715115000.0,
+      "total_ttm_revenue": 5380743000.0,
+      "industry_ebitda_margin": 0.1329
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_ebitda": 715115000.0,
+      "total_ttm_revenue": 5380743000.0,
+      "industry_ebitda_margin": 0.1329
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_ebitda": 715115000.0,
+      "total_ttm_revenue": 5380743000.0,
+      "industry_ebitda_margin": 0.1329
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_ebitda": 678152000.0,
+      "total_ttm_revenue": 5125846000.0,
+      "industry_ebitda_margin": 0.1323
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_ebitda": 678152000.0,
+      "total_ttm_revenue": 5125846000.0,
+      "industry_ebitda_margin": 0.1323
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_ebitda": 678152000.0,
+      "total_ttm_revenue": 5125846000.0,
+      "industry_ebitda_margin": 0.1323
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_ebitda": 790889580.0,
+      "total_ttm_revenue": 8956961197.0,
+      "industry_ebitda_margin": 0.0883
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_ebitda": 790889580.0,
+      "total_ttm_revenue": 8956961197.0,
+      "industry_ebitda_margin": 0.0883
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_ebitda": 772893589.0,
+      "total_ttm_revenue": 9001990752.0,
+      "industry_ebitda_margin": 0.0859
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_ebitda": 33773670765.52412,
+      "total_ttm_revenue": 209059356072.45157,
+      "industry_ebitda_margin": 0.1616
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_ebitda": 33773670765.52412,
+      "total_ttm_revenue": 209059356072.45157,
+      "industry_ebitda_margin": 0.1616
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_ebitda": 33765056889.52412,
+      "total_ttm_revenue": 209059485111.45157,
+      "industry_ebitda_margin": 0.1615
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_ebitda": 34384687350.90137,
+      "total_ttm_revenue": 211762746417.45477,
+      "industry_ebitda_margin": 0.1624
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_ebitda": 34384687350.90137,
+      "total_ttm_revenue": 211762746417.45477,
+      "industry_ebitda_margin": 0.1624
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_ebitda": 34384975894.90137,
+      "total_ttm_revenue": 211762943257.45477,
+      "industry_ebitda_margin": 0.1624
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_ebitda": 35760686681.485435,
+      "total_ttm_revenue": 222755785622.40775,
+      "industry_ebitda_margin": 0.1605
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_ebitda": 35760686681.485435,
+      "total_ttm_revenue": 222755785622.40775,
+      "industry_ebitda_margin": 0.1605
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_ebitda": 35776681362.485435,
+      "total_ttm_revenue": 222755933252.40775,
+      "industry_ebitda_margin": 0.1606
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_ebitda": 35865458799.24741,
+      "total_ttm_revenue": 227420144104.92108,
+      "industry_ebitda_margin": 0.1577
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_ebitda": 35865458799.24741,
+      "total_ttm_revenue": 227420144104.92108,
+      "industry_ebitda_margin": 0.1577
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_ebitda": 35865615324.24741,
+      "total_ttm_revenue": 227420260749.92108,
+      "industry_ebitda_margin": 0.1577
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_ebitda": 41682069967.48872,
+      "total_ttm_revenue": 278703841577.998,
+      "industry_ebitda_margin": 0.1496
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_ebitda": 41682069967.48872,
+      "total_ttm_revenue": 278703841577.998,
+      "industry_ebitda_margin": 0.1496
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_ebitda": 41681550507.48872,
+      "total_ttm_revenue": 278703727609.998,
+      "industry_ebitda_margin": 0.1496
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_ebitda": 66482078136.3765,
+      "total_ttm_revenue": 414026251150.2442,
+      "industry_ebitda_margin": 0.1606
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_ebitda": 66482078136.3765,
+      "total_ttm_revenue": 414026251150.2442,
+      "industry_ebitda_margin": 0.1606
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_ebitda": 66482078136.3765,
+      "total_ttm_revenue": 414026251150.2442,
+      "industry_ebitda_margin": 0.1606
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_ebitda": 68783895906.97238,
+      "total_ttm_revenue": 419190013470.9734,
+      "industry_ebitda_margin": 0.1641
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_ebitda": 68783895906.97238,
+      "total_ttm_revenue": 419190013470.9734,
+      "industry_ebitda_margin": 0.1641
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_ebitda": 68783895906.97238,
+      "total_ttm_revenue": 419190013470.9734,
+      "industry_ebitda_margin": 0.1641
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_ebitda": 70022382182.62314,
+      "total_ttm_revenue": 424695921872.83887,
+      "industry_ebitda_margin": 0.1649
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_ebitda": 70022382182.62314,
+      "total_ttm_revenue": 424695921872.83887,
+      "industry_ebitda_margin": 0.1649
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_ebitda": 70022382182.62314,
+      "total_ttm_revenue": 424695921872.83887,
+      "industry_ebitda_margin": 0.1649
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_ebitda": 91900798682.5739,
+      "total_ttm_revenue": 547843001619.38763,
+      "industry_ebitda_margin": 0.1678
+    }
+  ],
+  "net_margin": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 432382000.0,
+      "total_ttm_revenue": 5793011000.0,
+      "industry_net_margin": 0.0746
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 432382000.0,
+      "total_ttm_revenue": 5793011000.0,
+      "industry_net_margin": 0.0746
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 432382000.0,
+      "total_ttm_revenue": 5793011000.0,
+      "industry_net_margin": 0.0746
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 373090000.0,
+      "total_ttm_revenue": 5380743000.0,
+      "industry_net_margin": 0.0693
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 373090000.0,
+      "total_ttm_revenue": 5380743000.0,
+      "industry_net_margin": 0.0693
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 373090000.0,
+      "total_ttm_revenue": 5380743000.0,
+      "industry_net_margin": 0.0693
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 337687000.0,
+      "total_ttm_revenue": 5125846000.0,
+      "industry_net_margin": 0.0659
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 337687000.0,
+      "total_ttm_revenue": 5125846000.0,
+      "industry_net_margin": 0.0659
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 337687000.0,
+      "total_ttm_revenue": 5125846000.0,
+      "industry_net_margin": 0.0659
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 152413016.0,
+      "total_ttm_revenue": 8956961197.0,
+      "industry_net_margin": 0.017
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 152413016.0,
+      "total_ttm_revenue": 8956961197.0,
+      "industry_net_margin": 0.017
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 130596521.0,
+      "total_ttm_revenue": 9001990752.0,
+      "industry_net_margin": 0.0145
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 10354745026.345203,
+      "total_ttm_revenue": 209059356072.45157,
+      "industry_net_margin": 0.0495
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 10354745026.345203,
+      "total_ttm_revenue": 209059356072.45157,
+      "industry_net_margin": 0.0495
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 10342935267.345203,
+      "total_ttm_revenue": 209059485111.45157,
+      "industry_net_margin": 0.0495
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 10684649607.464758,
+      "total_ttm_revenue": 211762746417.45477,
+      "industry_net_margin": 0.0505
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 10684649607.464758,
+      "total_ttm_revenue": 211762746417.45477,
+      "industry_net_margin": 0.0505
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 10685020725.464758,
+      "total_ttm_revenue": 211762943257.45477,
+      "industry_net_margin": 0.0505
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 11389012877.874443,
+      "total_ttm_revenue": 222755785622.40775,
+      "industry_net_margin": 0.0511
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 11389012877.874443,
+      "total_ttm_revenue": 222755785622.40775,
+      "industry_net_margin": 0.0511
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 11398341280.874443,
+      "total_ttm_revenue": 222755933252.40775,
+      "industry_net_margin": 0.0512
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 11696052768.069965,
+      "total_ttm_revenue": 227420144104.92108,
+      "industry_net_margin": 0.0514
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 11696052768.069965,
+      "total_ttm_revenue": 227420144104.92108,
+      "industry_net_margin": 0.0514
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 11695779382.069965,
+      "total_ttm_revenue": 227420260749.92108,
+      "industry_net_margin": 0.0514
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 11210480323.953741,
+      "total_ttm_revenue": 278703841577.998,
+      "industry_net_margin": 0.0402
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 11210480323.953741,
+      "total_ttm_revenue": 278703841577.998,
+      "industry_net_margin": 0.0402
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 11209653237.953741,
+      "total_ttm_revenue": 278703727609.998,
+      "industry_net_margin": 0.0402
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 20519251696.576347,
+      "total_ttm_revenue": 414026251150.2442,
+      "industry_net_margin": 0.0496
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 20519251696.576347,
+      "total_ttm_revenue": 414026251150.2442,
+      "industry_net_margin": 0.0496
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 20519251696.576347,
+      "total_ttm_revenue": 414026251150.2442,
+      "industry_net_margin": 0.0496
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 21759255682.726707,
+      "total_ttm_revenue": 419190013470.9734,
+      "industry_net_margin": 0.0519
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 21759255682.726707,
+      "total_ttm_revenue": 419190013470.9734,
+      "industry_net_margin": 0.0519
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 21759255682.726707,
+      "total_ttm_revenue": 419190013470.9734,
+      "industry_net_margin": 0.0519
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 22426541783.13643,
+      "total_ttm_revenue": 424695921872.83887,
+      "industry_net_margin": 0.0528
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 22426541783.13643,
+      "total_ttm_revenue": 424695921872.83887,
+      "industry_net_margin": 0.0528
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 22426541783.13643,
+      "total_ttm_revenue": 424695921872.83887,
+      "industry_net_margin": 0.0528
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "total_ttm_net_income": 28193844543.46672,
+      "total_ttm_revenue": 547843001619.38763,
+      "industry_net_margin": 0.0515
+    }
+  ],
+  "asset_turnover": [
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roa": -2.7116,
+      "industry_net_margin": 0.017,
+      "industry_asset_turnover": -159.51
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roa": -2.7116,
+      "industry_net_margin": 0.017,
+      "industry_asset_turnover": -159.51
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roa": -0.3006,
+      "industry_net_margin": 0.0145,
+      "industry_asset_turnover": -20.73
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roa": 0.0443,
+      "industry_net_margin": 0.0495,
+      "industry_asset_turnover": 0.89
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roa": 0.0443,
+      "industry_net_margin": 0.0495,
+      "industry_asset_turnover": 0.89
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roa": 0.0442,
+      "industry_net_margin": 0.0495,
+      "industry_asset_turnover": 0.89
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roa": 0.0455,
+      "industry_net_margin": 0.0505,
+      "industry_asset_turnover": 0.9
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roa": 0.0455,
+      "industry_net_margin": 0.0505,
+      "industry_asset_turnover": 0.9
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roa": 0.0455,
+      "industry_net_margin": 0.0505,
+      "industry_asset_turnover": 0.9
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roa": 0.0471,
+      "industry_net_margin": 0.0511,
+      "industry_asset_turnover": 0.92
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roa": 0.0471,
+      "industry_net_margin": 0.0511,
+      "industry_asset_turnover": 0.92
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roa": 0.0471,
+      "industry_net_margin": 0.0512,
+      "industry_asset_turnover": 0.92
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roa": 0.0477,
+      "industry_net_margin": 0.0514,
+      "industry_asset_turnover": 0.93
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roa": 0.0477,
+      "industry_net_margin": 0.0514,
+      "industry_asset_turnover": 0.93
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roa": 0.0477,
+      "industry_net_margin": 0.0514,
+      "industry_asset_turnover": 0.93
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roa": 0.0326,
+      "industry_net_margin": 0.0402,
+      "industry_asset_turnover": 0.81
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roa": 0.0326,
+      "industry_net_margin": 0.0402,
+      "industry_asset_turnover": 0.81
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roa": 0.0326,
+      "industry_net_margin": 0.0402,
+      "industry_asset_turnover": 0.81
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roa": 0.0521,
+      "industry_net_margin": 0.0496,
+      "industry_asset_turnover": 1.05
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roa": 0.0521,
+      "industry_net_margin": 0.0496,
+      "industry_asset_turnover": 1.05
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roa": 0.0521,
+      "industry_net_margin": 0.0496,
+      "industry_asset_turnover": 1.05
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roa": 0.055,
+      "industry_net_margin": 0.0519,
+      "industry_asset_turnover": 1.06
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roa": 0.055,
+      "industry_net_margin": 0.0519,
+      "industry_asset_turnover": 1.06
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roa": 0.055,
+      "industry_net_margin": 0.0519,
+      "industry_asset_turnover": 1.06
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roa": 0.0567,
+      "industry_net_margin": 0.0528,
+      "industry_asset_turnover": 1.07
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roa": 0.0567,
+      "industry_net_margin": 0.0528,
+      "industry_asset_turnover": 1.07
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roa": 0.0567,
+      "industry_net_margin": 0.0528,
+      "industry_asset_turnover": 1.07
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Medical Care Facilities",
+      "industry_roa": 0.0711,
+      "industry_net_margin": 0.0515,
+      "industry_asset_turnover": 1.38
+    }
+  ]
+}

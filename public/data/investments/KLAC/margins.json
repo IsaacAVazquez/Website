@@ -88,8 +88,8 @@
       "symbol": "KLAC",
       "report_date": "2025-06-30",
       "gross_profit": 1967455000.0,
-      "total_revenue": 3174741000.0,
-      "gross_margin": 0.6197
+      "total_revenue": 12156162000.0,
+      "gross_margin": 0.1618
     },
     {
       "symbol": "KLAC",
@@ -109,8 +109,8 @@
       "symbol": "KLAC",
       "report_date": "2026-03-31",
       "gross_profit": 2087406000.0,
-      "total_revenue": 3415078000.0,
-      "gross_margin": 0.6112
+      "total_revenue": 13096661000.0,
+      "gross_margin": 0.1594
     }
   ],
   "annual_gross": [
@@ -252,9 +252,9 @@
     {
       "symbol": "KLAC",
       "report_date": "2025-06-30",
-      "operating_income": 1351760000.0,
-      "total_revenue": 3174741000.0,
-      "operating_margin": 0.4258
+      "operating_income": 5014227000.0,
+      "total_revenue": 12156162000.0,
+      "operating_margin": 0.4125
     },
     {
       "symbol": "KLAC",
@@ -273,9 +273,9 @@
     {
       "symbol": "KLAC",
       "report_date": "2026-03-31",
-      "operating_income": 1407509000.0,
-      "total_revenue": 3415078000.0,
-      "operating_margin": 0.4121
+      "operating_income": 5458592000.0,
+      "total_revenue": 13096661000.0,
+      "operating_margin": 0.4168
     }
   ],
   "annual_operating": [
@@ -418,8 +418,8 @@
       "symbol": "KLAC",
       "report_date": "2025-06-30",
       "net_income_common_stockholders": 1202849000.0,
-      "total_revenue": 3174741000.0,
-      "net_margin": 0.3789
+      "total_revenue": 12156162000.0,
+      "net_margin": 0.0989
     },
     {
       "symbol": "KLAC",
@@ -439,8 +439,8 @@
       "symbol": "KLAC",
       "report_date": "2026-03-31",
       "net_income_common_stockholders": 1200990000.0,
-      "total_revenue": 3415078000.0,
-      "net_margin": 0.3517
+      "total_revenue": 13096661000.0,
+      "net_margin": 0.0917
     }
   ],
   "annual_net": [
@@ -583,8 +583,8 @@
       "symbol": "KLAC",
       "report_date": "2025-06-30",
       "ebitda": 1498176000.0,
-      "total_revenue": 3174741000.0,
-      "ebitda_margin": 0.4719
+      "total_revenue": 12156162000.0,
+      "ebitda_margin": 0.1232
     },
     {
       "symbol": "KLAC",
@@ -604,8 +604,8 @@
       "symbol": "KLAC",
       "report_date": "2026-03-31",
       "ebitda": 1586272000.0,
-      "total_revenue": 3415078000.0,
-      "ebitda_margin": 0.4645
+      "total_revenue": 13096661000.0,
+      "ebitda_margin": 0.1211
     }
   ],
   "annual_ebitda": [
@@ -748,8 +748,8 @@
       "symbol": "KLAC",
       "report_date": "2025-06-30",
       "free_cash_flow": 1062483000.0,
-      "total_revenue": 3174741000.0,
-      "fcf_margin": 0.3347
+      "total_revenue": 12156162000.0,
+      "fcf_margin": 0.0874
     },
     {
       "symbol": "KLAC",
@@ -769,8 +769,8 @@
       "symbol": "KLAC",
       "report_date": "2026-03-31",
       "free_cash_flow": 622264000.0,
-      "total_revenue": 3415078000.0,
-      "fcf_margin": 0.1822
+      "total_revenue": 13096661000.0,
+      "fcf_margin": 0.0475
     }
   ],
   "annual_fcf": [

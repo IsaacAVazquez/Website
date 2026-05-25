@@ -7,7 +7,8 @@
     "born": 1970,
     "pay": 3148478,
     "exercised": 0,
-    "unexercised": 1100922
+    "unexercised": 1100922,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "V",
@@ -17,7 +18,8 @@
     "born": 1964,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "V",
@@ -27,7 +29,8 @@
     "born": 1973,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "V",
@@ -37,7 +40,8 @@
     "born": 1966,
     "pay": 2633779,
     "exercised": 27429316,
-    "unexercised": 550461
+    "unexercised": 550461,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "V",
@@ -47,7 +51,8 @@
     "born": 1973,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "V",
@@ -57,7 +62,8 @@
     "born": 1964,
     "pay": 4600880,
     "exercised": 12952687,
-    "unexercised": 69936160
+    "unexercised": 69936160,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "V",
@@ -67,7 +73,8 @@
     "born": 1975,
     "pay": 7129213,
     "exercised": 26567312,
-    "unexercised": 83317928
+    "unexercised": 83317928,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "V",
@@ -77,7 +84,8 @@
     "born": null,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "V",
@@ -87,7 +95,8 @@
     "born": 1968,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "V",
@@ -97,6 +106,7 @@
     "born": 1966,
     "pay": 3162473,
     "exercised": 4472868,
-    "unexercised": 35300776
+    "unexercised": 35300776,
+    "report_date": "2026-05-25"
   }
 ]

@@ -1,4 +1,3 @@
 {
-  "file_path": "/tmp/defeatbeta/dcf/TSLA.xlsx",
-  "description": "DCF Valuation Analysis for TSLA"
+  "error": "can't multiply sequence by non-int of type 'float'"
 }

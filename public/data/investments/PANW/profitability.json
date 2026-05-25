@@ -286,13 +286,13 @@
     {
       "symbol": "PANW",
       "report_date": "2026-01-31",
-      "ebit": 549000000.0,
+      "ebit": 1863600000.0,
       "tax_rate_for_calcs": 0.21,
-      "nopat": 433710000.0,
+      "nopat": 1472244000.0,
       "beginning_invested_capital": 8665000000.0,
       "ending_invested_capital": 9393000000.0,
       "avg_invested_capital": 9029000000.0,
-      "roic": 0.048
+      "roic": 0.1631
     }
   ],
   "equityMultiplier": [

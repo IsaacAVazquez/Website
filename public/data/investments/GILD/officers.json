@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "GILD",
+    "name": "Dr. Dietmar P. Berger M.D., Ph.D.",
+    "title": "Chief Medical Officer",
+    "age": 56,
+    "born": 1969,
+    "pay": 5923077,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "GILD",
+    "name": "Dr. Flavius  Martin M.D.",
+    "title": "Executive Vice President of Research",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "GILD",
+    "name": "Dr. Linda Slanec Higgins Ph.D.",
+    "title": "Senior Vice President of Research, Innovation & Portfolio",
+    "age": 63,
+    "born": 1962,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "GILD",
+    "name": "Mr. Andrew D. Dickinson",
+    "title": "Executive VP & CFO",
+    "age": 55,
+    "born": 1970,
+    "pay": 3143899,
+    "exercised": 10007385,
+    "unexercised": 8502497,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "GILD",
+    "name": "Mr. Daniel P.  O'Day",
+    "title": "Chairman & CEO",
+    "age": 60,
+    "born": 1965,
+    "pay": 8698736,
+    "exercised": 0,
+    "unexercised": 80606328,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "GILD",
+    "name": "Ms. Erin E. Burkhart",
+    "title": "Senior VP, Controller & Chief Accounting Officer",
+    "age": 46,
+    "born": 1979,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "GILD",
+    "name": "Ms. Jacquie  Ross C.F.A.",
+    "title": "Senior Vice President of Treasury & Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "GILD",
+    "name": "Ms. Johanna  Mercier",
+    "title": "Chief Commercial & Corporate Affairs Officer",
+    "age": 55,
+    "born": 1970,
+    "pay": 3436150,
+    "exercised": 3799988,
+    "unexercised": 27628624,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "GILD",
+    "name": "Ms. Jyoti K. Mehra",
+    "title": "Executive Vice President of Human Resources",
+    "age": 48,
+    "born": 1977,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "GILD",
+    "name": "Ms. Keeley M. Cain Wettan",
+    "title": "Executive VP, General Counsel of Legal & Compliance and Secretary",
+    "age": 50,
+    "born": 1975,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  }
+]

@@ -1,96 +1,6 @@
 [
   {
     "symbol": "CDNS",
-    "report_date": "2025-05-08",
-    "open": 311.22,
-    "close": 307.96,
-    "high": 313.0,
-    "low": 307.7,
-    "volume": 1609500
-  },
-  {
-    "symbol": "CDNS",
-    "report_date": "2025-05-09",
-    "open": 309.53,
-    "close": 305.78,
-    "high": 309.53,
-    "low": 303.82,
-    "volume": 1480000
-  },
-  {
-    "symbol": "CDNS",
-    "report_date": "2025-05-12",
-    "open": 320.0,
-    "close": 311.77,
-    "high": 320.0,
-    "low": 308.58,
-    "volume": 2439800
-  },
-  {
-    "symbol": "CDNS",
-    "report_date": "2025-05-13",
-    "open": 312.42,
-    "close": 318.66,
-    "high": 319.57,
-    "low": 311.57,
-    "volume": 1707200
-  },
-  {
-    "symbol": "CDNS",
-    "report_date": "2025-05-14",
-    "open": 316.95,
-    "close": 319.39,
-    "high": 321.86,
-    "low": 316.79,
-    "volume": 1463300
-  },
-  {
-    "symbol": "CDNS",
-    "report_date": "2025-05-15",
-    "open": 318.36,
-    "close": 318.77,
-    "high": 321.87,
-    "low": 317.74,
-    "volume": 1535400
-  },
-  {
-    "symbol": "CDNS",
-    "report_date": "2025-05-16",
-    "open": 320.16,
-    "close": 321.56,
-    "high": 322.19,
-    "low": 317.18,
-    "volume": 1575100
-  },
-  {
-    "symbol": "CDNS",
-    "report_date": "2025-05-19",
-    "open": 318.77,
-    "close": 320.3,
-    "high": 322.27,
-    "low": 317.41,
-    "volume": 1510700
-  },
-  {
-    "symbol": "CDNS",
-    "report_date": "2025-05-20",
-    "open": 316.96,
-    "close": 320.55,
-    "high": 321.0,
-    "low": 315.36,
-    "volume": 1374200
-  },
-  {
-    "symbol": "CDNS",
-    "report_date": "2025-05-21",
-    "open": 317.37,
-    "close": 317.55,
-    "high": 322.64,
-    "low": 316.31,
-    "volume": 1869500
-  },
-  {
-    "symbol": "CDNS",
     "report_date": "2025-05-22",
     "open": 315.51,
     "close": 316.63,
@@ -2266,5 +2176,95 @@
     "high": 365.01,
     "low": 353.18,
     "volume": 2317500
+  },
+  {
+    "symbol": "CDNS",
+    "report_date": "2026-05-11",
+    "open": 359.07,
+    "close": 364.2,
+    "high": 365.0,
+    "low": 358.03,
+    "volume": 2642200
+  },
+  {
+    "symbol": "CDNS",
+    "report_date": "2026-05-12",
+    "open": 361.1,
+    "close": 358.04,
+    "high": 361.99,
+    "low": 355.56,
+    "volume": 1995600
+  },
+  {
+    "symbol": "CDNS",
+    "report_date": "2026-05-13",
+    "open": 359.04,
+    "close": 354.55,
+    "high": 361.03,
+    "low": 350.55,
+    "volume": 2321500
+  },
+  {
+    "symbol": "CDNS",
+    "report_date": "2026-05-14",
+    "open": 350.03,
+    "close": 352.84,
+    "high": 355.21,
+    "low": 348.46,
+    "volume": 1476300
+  },
+  {
+    "symbol": "CDNS",
+    "report_date": "2026-05-15",
+    "open": 351.81,
+    "close": 347.24,
+    "high": 352.0,
+    "low": 345.68,
+    "volume": 1703300
+  },
+  {
+    "symbol": "CDNS",
+    "report_date": "2026-05-18",
+    "open": 346.91,
+    "close": 345.99,
+    "high": 350.06,
+    "low": 341.49,
+    "volume": 1903600
+  },
+  {
+    "symbol": "CDNS",
+    "report_date": "2026-05-19",
+    "open": 342.67,
+    "close": 338.12,
+    "high": 348.12,
+    "low": 337.89,
+    "volume": 1742900
+  },
+  {
+    "symbol": "CDNS",
+    "report_date": "2026-05-20",
+    "open": 335.39,
+    "close": 350.89,
+    "high": 351.37,
+    "low": 331.56,
+    "volume": 2027700
+  },
+  {
+    "symbol": "CDNS",
+    "report_date": "2026-05-21",
+    "open": 349.88,
+    "close": 358.46,
+    "high": 362.21,
+    "low": 347.56,
+    "volume": 1757200
+  },
+  {
+    "symbol": "CDNS",
+    "report_date": "2026-05-22",
+    "open": 361.88,
+    "close": 373.59,
+    "high": 381.55,
+    "low": 361.54,
+    "volume": 2206200
   }
 ]

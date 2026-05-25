@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "KKR",
+      "report_date": "2022-06-30",
+      "gross_profit": 124601000.0,
+      "total_revenue": 330070000.0,
+      "gross_margin": 0.3775
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-06-30",
+      "gross_profit": 1193362000.0,
+      "total_revenue": 3586660000.0,
+      "gross_margin": 0.3327
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-09-30",
+      "gross_profit": 1607664000.0,
+      "total_revenue": 3273140000.0,
+      "gross_margin": 0.4912
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-12-31",
+      "gross_profit": 1116236000.0,
+      "total_revenue": 4372746000.0,
+      "gross_margin": 0.2553
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-03-31",
+      "gross_profit": 1026588000.0,
+      "total_revenue": 9600353000.0,
+      "gross_margin": 0.1069
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-06-30",
+      "gross_profit": 980888000.0,
+      "total_revenue": 4108021000.0,
+      "gross_margin": 0.2388
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-09-30",
+      "gross_profit": 885639000.0,
+      "total_revenue": 4731534000.0,
+      "gross_margin": 0.1872
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-12-31",
+      "gross_profit": 948761000.0,
+      "total_revenue": 3200380000.0,
+      "gross_margin": 0.2965
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-03-31",
+      "gross_profit": -84673000.0,
+      "total_revenue": 3054695000.0,
+      "gross_margin": -0.0277
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-06-30",
+      "gross_profit": 1052777000.0,
+      "total_revenue": 5002879000.0,
+      "gross_margin": 0.2104
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-09-30",
+      "gross_profit": 1347620000.0,
+      "total_revenue": 5464926000.0,
+      "gross_margin": 0.2466
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-12-31",
+      "gross_profit": 1140954000.0,
+      "total_revenue": 5685044000.0,
+      "gross_margin": 0.2007
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2026-03-31",
+      "gross_profit": 4719447000.0,
+      "total_revenue": 20405575000.0,
+      "gross_margin": 0.2313
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "KKR",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2020-12-31",
+      "gross_profit": 2078401000.0,
+      "total_revenue": 4230891000.0,
+      "gross_margin": 0.4912
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2021-12-31",
+      "gross_profit": 6895582000.0,
+      "total_revenue": 16105827000.0,
+      "gross_margin": 0.4281
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2022-12-31",
+      "gross_profit": 2006803000.0,
+      "total_revenue": 5565056000.0,
+      "gross_margin": 0.3606
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-12-31",
+      "gross_profit": 4860651000.0,
+      "total_revenue": 14322870000.0,
+      "gross_margin": 0.3394
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-12-31",
+      "gross_profit": 3841876000.0,
+      "total_revenue": 21640288000.0,
+      "gross_margin": 0.1775
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-12-31",
+      "gross_profit": 3456678000.0,
+      "total_revenue": 19207544000.0,
+      "gross_margin": 0.18
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "KKR",
+      "report_date": "2022-06-30",
+      "operating_income": -450049000.0,
+      "total_revenue": 330070000.0,
+      "operating_margin": -1.3635
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-06-30",
+      "operating_income": 504010000.0,
+      "total_revenue": 3586660000.0,
+      "operating_margin": 0.1405
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-09-30",
+      "operating_income": 1002341000.0,
+      "total_revenue": 3273140000.0,
+      "operating_margin": 0.3062
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-12-31",
+      "operating_income": 361295000.0,
+      "total_revenue": 4372746000.0,
+      "operating_margin": 0.0826
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-03-31",
+      "operating_income": 341976000.0,
+      "total_revenue": 9600353000.0,
+      "operating_margin": 0.0356
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-06-30",
+      "operating_income": 227442000.0,
+      "total_revenue": 4108021000.0,
+      "operating_margin": 0.0554
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-09-30",
+      "operating_income": 64037000.0,
+      "total_revenue": 4731534000.0,
+      "operating_margin": 0.0135
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-12-31",
+      "operating_income": 292742000.0,
+      "total_revenue": 3200380000.0,
+      "operating_margin": 0.0915
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-03-31",
+      "operating_income": -706689000.0,
+      "total_revenue": 3054695000.0,
+      "operating_margin": -0.2313
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-06-30",
+      "operating_income": 327265000.0,
+      "total_revenue": 5002879000.0,
+      "operating_margin": 0.0654
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-09-30",
+      "operating_income": 512719000.0,
+      "total_revenue": 5464926000.0,
+      "operating_margin": 0.0938
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-12-31",
+      "operating_income": 356903000.0,
+      "total_revenue": 5685044000.0,
+      "operating_margin": 0.0628
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2026-03-31",
+      "operating_income": 1653359000.0,
+      "total_revenue": 20405575000.0,
+      "operating_margin": 0.081
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "KKR",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2020-12-31",
+      "operating_income": 1297759000.0,
+      "total_revenue": 4230891000.0,
+      "operating_margin": 0.3067
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2021-12-31",
+      "operating_income": 4953222000.0,
+      "total_revenue": 16105827000.0,
+      "operating_margin": 0.3075
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2022-12-31",
+      "operating_income": -345578000.0,
+      "total_revenue": 5565056000.0,
+      "operating_margin": -0.0621
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-12-31",
+      "operating_income": 2138148000.0,
+      "total_revenue": 14322870000.0,
+      "operating_margin": 0.1493
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-12-31",
+      "operating_income": 926197000.0,
+      "total_revenue": 21640288000.0,
+      "operating_margin": 0.0428
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-12-31",
+      "operating_income": 490198000.0,
+      "total_revenue": 19207544000.0,
+      "operating_margin": 0.0255
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "KKR",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": -827934000.0,
+      "total_revenue": 330070000.0,
+      "net_margin": -2.5084
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 844463000.0,
+      "total_revenue": 3586660000.0,
+      "net_margin": 0.2354
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1472878000.0,
+      "total_revenue": 3273140000.0,
+      "net_margin": 0.45
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1040429000.0,
+      "total_revenue": 4372746000.0,
+      "net_margin": 0.2379
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 682214000.0,
+      "total_revenue": 9600353000.0,
+      "net_margin": 0.0711
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 667926000.0,
+      "total_revenue": 4108021000.0,
+      "net_margin": 0.1626
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 600550000.0,
+      "total_revenue": 4731534000.0,
+      "net_margin": 0.1269
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1125555000.0,
+      "total_revenue": 3200380000.0,
+      "net_margin": 0.3517
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": -199401000.0,
+      "total_revenue": 3054695000.0,
+      "net_margin": -0.0653
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 472387000.0,
+      "total_revenue": 5002879000.0,
+      "net_margin": 0.0944
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 859927000.0,
+      "total_revenue": 5464926000.0,
+      "net_margin": 0.1574
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1105477000.0,
+      "total_revenue": 5685044000.0,
+      "net_margin": 0.1945
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 364799000.0,
+      "total_revenue": 20405575000.0,
+      "net_margin": 0.0179
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "KKR",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 1942887000.0,
+      "total_revenue": 4230891000.0,
+      "net_margin": 0.4592
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 4626759000.0,
+      "total_revenue": 16105827000.0,
+      "net_margin": 0.2873
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": -590664000.0,
+      "total_revenue": 5565056000.0,
+      "net_margin": -0.1061
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 3680514000.0,
+      "total_revenue": 14322870000.0,
+      "net_margin": 0.257
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 3076245000.0,
+      "total_revenue": 21640288000.0,
+      "net_margin": 0.1422
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 2238390000.0,
+      "total_revenue": 19207544000.0,
+      "net_margin": 0.1165
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "KKR",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 330070000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-06-30",
+      "ebitda": 2210953000.0,
+      "total_revenue": 3586660000.0,
+      "ebitda_margin": 0.6164
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-09-30",
+      "ebitda": 3588256000.0,
+      "total_revenue": 3273140000.0,
+      "ebitda_margin": 1.0963
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-12-31",
+      "ebitda": 2676337000.0,
+      "total_revenue": 4372746000.0,
+      "ebitda_margin": 0.612
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-03-31",
+      "ebitda": 2171682000.0,
+      "total_revenue": 9600353000.0,
+      "ebitda_margin": 0.2262
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-06-30",
+      "ebitda": 2059208000.0,
+      "total_revenue": 4108021000.0,
+      "ebitda_margin": 0.5013
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-09-30",
+      "ebitda": 2445012000.0,
+      "total_revenue": 4731534000.0,
+      "ebitda_margin": 0.5167
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-12-31",
+      "ebitda": 2490445000.0,
+      "total_revenue": 3200380000.0,
+      "ebitda_margin": 0.7782
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-03-31",
+      "ebitda": 1495137000.0,
+      "total_revenue": 3054695000.0,
+      "ebitda_margin": 0.4895
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-06-30",
+      "ebitda": 2306989000.0,
+      "total_revenue": 5002879000.0,
+      "ebitda_margin": 0.4611
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-09-30",
+      "ebitda": 2994539000.0,
+      "total_revenue": 5464926000.0,
+      "ebitda_margin": 0.548
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-12-31",
+      "ebitda": 3374410000.0,
+      "total_revenue": 5685044000.0,
+      "ebitda_margin": 0.5936
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2026-03-31",
+      "ebitda": 1214958000.0,
+      "total_revenue": 20405575000.0,
+      "ebitda_margin": 0.0595
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "KKR",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2020-12-31",
+      "ebitda": 6696566000.0,
+      "total_revenue": 4230891000.0,
+      "ebitda_margin": 1.5828
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2021-12-31",
+      "ebitda": 14978628000.0,
+      "total_revenue": 16105827000.0,
+      "ebitda_margin": 0.93
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2022-12-31",
+      "ebitda": 1345738000.0,
+      "total_revenue": 5565056000.0,
+      "ebitda_margin": 0.2418
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-12-31",
+      "ebitda": 9500580000.0,
+      "total_revenue": 14322870000.0,
+      "ebitda_margin": 0.6633
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-12-31",
+      "ebitda": 9166347000.0,
+      "total_revenue": 21640288000.0,
+      "ebitda_margin": 0.4236
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-12-31",
+      "ebitda": 10171075000.0,
+      "total_revenue": 19207544000.0,
+      "ebitda_margin": 0.5295
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "KKR",
+      "report_date": "2022-06-30",
+      "free_cash_flow": -4085775000.0,
+      "total_revenue": 330070000.0,
+      "fcf_margin": -12.3785
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-06-30",
+      "free_cash_flow": -2677676000.0,
+      "total_revenue": 3586660000.0,
+      "fcf_margin": -0.7466
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 1953654000.0,
+      "total_revenue": 3273140000.0,
+      "fcf_margin": 0.5969
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 1077912000.0,
+      "total_revenue": 4372746000.0,
+      "fcf_margin": 0.2465
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 1510138000.0,
+      "total_revenue": 9600353000.0,
+      "fcf_margin": 0.1573
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 3331369000.0,
+      "total_revenue": 4108021000.0,
+      "fcf_margin": 0.8109
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 1831657000.0,
+      "total_revenue": 4731534000.0,
+      "fcf_margin": 0.3871
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-12-31",
+      "free_cash_flow": -164822000.0,
+      "total_revenue": 3200380000.0,
+      "fcf_margin": -0.0515
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 2528880000.0,
+      "total_revenue": 3054695000.0,
+      "fcf_margin": 0.8279
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 371395000.0,
+      "total_revenue": 5002879000.0,
+      "fcf_margin": 0.0742
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 2350887000.0,
+      "total_revenue": 5464926000.0,
+      "fcf_margin": 0.4302
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-12-31",
+      "free_cash_flow": -4934167000.0,
+      "total_revenue": 5685044000.0,
+      "fcf_margin": -0.8679
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2026-03-31",
+      "free_cash_flow": -492639000.0,
+      "total_revenue": 20405575000.0,
+      "fcf_margin": -0.0241
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "KKR",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2020-12-31",
+      "free_cash_flow": -6107079000.0,
+      "total_revenue": 4230891000.0,
+      "fcf_margin": -1.4434
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2021-12-31",
+      "free_cash_flow": -7278757000.0,
+      "total_revenue": 16105827000.0,
+      "fcf_margin": -0.4519
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2022-12-31",
+      "free_cash_flow": -5364315000.0,
+      "total_revenue": 5565056000.0,
+      "fcf_margin": -0.9639
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-12-31",
+      "free_cash_flow": -1602205000.0,
+      "total_revenue": 14322870000.0,
+      "fcf_margin": -0.1119
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 6508342000.0,
+      "total_revenue": 21640288000.0,
+      "fcf_margin": 0.3008
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 316995000.0,
+      "total_revenue": 19207544000.0,
+      "fcf_margin": 0.0165
+    }
+  ]
+}

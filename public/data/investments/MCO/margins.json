@@ -87,9 +87,9 @@
     {
       "symbol": "MCO",
       "report_date": "2025-06-30",
-      "gross_profit": 1409000000.0,
+      "gross_profit": 5318000000.0,
       "total_revenue": 1898000000.0,
-      "gross_margin": 0.7424
+      "gross_margin": 2.8019
     },
     {
       "symbol": "MCO",
@@ -108,9 +108,9 @@
     {
       "symbol": "MCO",
       "report_date": "2026-03-31",
-      "gross_profit": 1548000000.0,
+      "gross_profit": 5860000000.0,
       "total_revenue": 2079000000.0,
-      "gross_margin": 0.7446
+      "gross_margin": 2.8187
     }
   ],
   "annual_gross": [
@@ -417,9 +417,9 @@
     {
       "symbol": "MCO",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 578000000.0,
+      "net_income_common_stockholders": 2132000000.0,
       "total_revenue": 1898000000.0,
-      "net_margin": 0.3045
+      "net_margin": 1.1233
     },
     {
       "symbol": "MCO",
@@ -438,9 +438,9 @@
     {
       "symbol": "MCO",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 661000000.0,
+      "net_income_common_stockholders": 2495000000.0,
       "total_revenue": 2079000000.0,
-      "net_margin": 0.3179
+      "net_margin": 1.2001
     }
   ],
   "annual_net": [
@@ -582,9 +582,9 @@
     {
       "symbol": "MCO",
       "report_date": "2025-06-30",
-      "ebitda": 966000000.0,
+      "ebitda": 3586000000.0,
       "total_revenue": 1898000000.0,
-      "ebitda_margin": 0.509
+      "ebitda_margin": 1.8894
     },
     {
       "symbol": "MCO",
@@ -603,9 +603,9 @@
     {
       "symbol": "MCO",
       "report_date": "2026-03-31",
-      "ebitda": 1070000000.0,
+      "ebitda": 3959000000.0,
       "total_revenue": 2079000000.0,
-      "ebitda_margin": 0.5147
+      "ebitda_margin": 1.9043
     }
   ],
   "annual_ebitda": [
@@ -747,9 +747,9 @@
     {
       "symbol": "MCO",
       "report_date": "2025-06-30",
-      "free_cash_flow": 468000000.0,
+      "free_cash_flow": 2371000000.0,
       "total_revenue": 1898000000.0,
-      "fcf_margin": 0.2466
+      "fcf_margin": 1.2492
     },
     {
       "symbol": "MCO",
@@ -768,9 +768,9 @@
     {
       "symbol": "MCO",
       "report_date": "2026-03-31",
-      "free_cash_flow": 844000000.0,
+      "free_cash_flow": 2747000000.0,
       "total_revenue": 2079000000.0,
-      "fcf_margin": 0.406
+      "fcf_margin": 1.3213
     }
   ],
   "annual_fcf": [

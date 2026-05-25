@@ -7,7 +7,8 @@
     "born": 1955,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "ANET",
@@ -17,7 +18,8 @@
     "born": null,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "ANET",
@@ -27,7 +29,8 @@
     "born": null,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "ANET",
@@ -37,7 +40,8 @@
     "born": 1972,
     "pay": 610360,
     "exercised": 62192736,
-    "unexercised": 42901208
+    "unexercised": 42901208,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "ANET",
@@ -47,7 +51,8 @@
     "born": null,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "ANET",
@@ -57,7 +62,8 @@
     "born": null,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "ANET",
@@ -67,17 +73,19 @@
     "born": 1980,
     "pay": 446295,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "ANET",
-    "name": "Ms. Chantelle  Breithaupt",
+    "name": "Ms. Chantelle Y. Breithaupt",
     "title": "Senior VP & CFO",
     "age": 53,
     "born": 1972,
     "pay": 585445,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "ANET",
@@ -87,7 +95,8 @@
     "born": null,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "ANET",
@@ -97,6 +106,7 @@
     "born": 1961,
     "pay": 609360,
     "exercised": 0,
-    "unexercised": 1396657
+    "unexercised": 1396657,
+    "report_date": "2026-05-25"
   }
 ]

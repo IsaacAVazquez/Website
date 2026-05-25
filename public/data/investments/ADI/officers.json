@@ -3,11 +3,12 @@
     "symbol": "ADI",
     "name": "Dr. Katsufumi  Nakamura",
     "title": "Senior VP & Chief Customer Officer",
-    "age": 58,
-    "born": 1967,
+    "age": 59,
+    "born": 1966,
     "pay": 1885368,
     "exercised": 390681,
-    "unexercised": 292436
+    "unexercised": 292436,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "ADI",
@@ -17,7 +18,8 @@
     "born": 1934,
     "pay": 111163,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "ADI",
@@ -27,7 +29,8 @@
     "born": null,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "ADI",
@@ -37,27 +40,30 @@
     "born": 1965,
     "pay": 1611240,
     "exercised": 0,
-    "unexercised": 12435256
+    "unexercised": 12435256,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "ADI",
     "name": "Mr. Michael  Sondel",
     "title": "Corporate VP & Chief Accounting Officer",
-    "age": 47,
-    "born": 1978,
+    "age": 48,
+    "born": 1977,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "ADI",
     "name": "Mr. Richard C. Puccio Jr.",
     "title": "Executive VP & CFO",
-    "age": 56,
-    "born": 1969,
+    "age": 57,
+    "born": 1968,
     "pay": 2119759,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "ADI",
@@ -67,7 +73,8 @@
     "born": 1960,
     "pay": 5453986,
     "exercised": 10406356,
-    "unexercised": 72123696
+    "unexercised": 72123696,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "ADI",
@@ -77,17 +84,19 @@
     "born": 1960,
     "pay": 2097691,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "ADI",
     "name": "Ms. Janene I. Asgeirsson J.D.",
-    "title": "Chief Legal Officer & Corporate Secretary",
+    "title": "Senior VP, Chief Legal Officer & Corporate Secretary",
     "age": 55,
     "born": 1970,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "ADI",
@@ -97,6 +106,7 @@
     "born": 1983,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   }
 ]

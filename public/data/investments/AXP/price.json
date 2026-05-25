@@ -1,96 +1,6 @@
 [
   {
     "symbol": "AXP",
-    "report_date": "2025-05-08",
-    "open": 279.73,
-    "close": 283.66,
-    "high": 285.5,
-    "low": 278.73,
-    "volume": 3418000
-  },
-  {
-    "symbol": "AXP",
-    "report_date": "2025-05-09",
-    "open": 285.0,
-    "close": 284.51,
-    "high": 287.0,
-    "low": 282.97,
-    "volume": 2704600
-  },
-  {
-    "symbol": "AXP",
-    "report_date": "2025-05-12",
-    "open": 297.34,
-    "close": 298.92,
-    "high": 299.17,
-    "low": 294.73,
-    "volume": 4089000
-  },
-  {
-    "symbol": "AXP",
-    "report_date": "2025-05-13",
-    "open": 300.0,
-    "close": 302.3,
-    "high": 303.02,
-    "low": 298.82,
-    "volume": 3531700
-  },
-  {
-    "symbol": "AXP",
-    "report_date": "2025-05-14",
-    "open": 303.15,
-    "close": 300.1,
-    "high": 303.62,
-    "low": 299.45,
-    "volume": 1954400
-  },
-  {
-    "symbol": "AXP",
-    "report_date": "2025-05-15",
-    "open": 298.05,
-    "close": 299.55,
-    "high": 300.93,
-    "low": 297.0,
-    "volume": 1955000
-  },
-  {
-    "symbol": "AXP",
-    "report_date": "2025-05-16",
-    "open": 300.36,
-    "close": 299.72,
-    "high": 301.65,
-    "low": 297.83,
-    "volume": 2962200
-  },
-  {
-    "symbol": "AXP",
-    "report_date": "2025-05-19",
-    "open": 297.01,
-    "close": 299.3,
-    "high": 300.89,
-    "low": 295.69,
-    "volume": 2751300
-  },
-  {
-    "symbol": "AXP",
-    "report_date": "2025-05-20",
-    "open": 296.49,
-    "close": 296.17,
-    "high": 298.2,
-    "low": 294.19,
-    "volume": 2706600
-  },
-  {
-    "symbol": "AXP",
-    "report_date": "2025-05-21",
-    "open": 293.04,
-    "close": 286.0,
-    "high": 294.12,
-    "low": 285.11,
-    "volume": 3447500
-  },
-  {
-    "symbol": "AXP",
     "report_date": "2025-05-22",
     "open": 285.63,
     "close": 287.18,
@@ -2265,6 +2175,96 @@
     "close": 316.03,
     "high": 320.05,
     "low": 313.61,
-    "volume": 6801400
+    "volume": 6802200
+  },
+  {
+    "symbol": "AXP",
+    "report_date": "2026-05-11",
+    "open": 315.29,
+    "close": 312.32,
+    "high": 316.4,
+    "low": 311.81,
+    "volume": 3081600
+  },
+  {
+    "symbol": "AXP",
+    "report_date": "2026-05-12",
+    "open": 312.33,
+    "close": 314.31,
+    "high": 314.95,
+    "low": 311.08,
+    "volume": 2275500
+  },
+  {
+    "symbol": "AXP",
+    "report_date": "2026-05-13",
+    "open": 311.12,
+    "close": 309.61,
+    "high": 312.1,
+    "low": 307.76,
+    "volume": 2967000
+  },
+  {
+    "symbol": "AXP",
+    "report_date": "2026-05-14",
+    "open": 313.02,
+    "close": 312.77,
+    "high": 314.68,
+    "low": 311.03,
+    "volume": 3240500
+  },
+  {
+    "symbol": "AXP",
+    "report_date": "2026-05-15",
+    "open": 312.29,
+    "close": 313.48,
+    "high": 315.49,
+    "low": 312.0,
+    "volume": 2649600
+  },
+  {
+    "symbol": "AXP",
+    "report_date": "2026-05-18",
+    "open": 314.29,
+    "close": 312.24,
+    "high": 315.66,
+    "low": 310.4,
+    "volume": 2274200
+  },
+  {
+    "symbol": "AXP",
+    "report_date": "2026-05-19",
+    "open": 310.74,
+    "close": 309.31,
+    "high": 312.99,
+    "low": 307.63,
+    "volume": 2918400
+  },
+  {
+    "symbol": "AXP",
+    "report_date": "2026-05-20",
+    "open": 310.0,
+    "close": 309.82,
+    "high": 310.87,
+    "low": 303.04,
+    "volume": 4577100
+  },
+  {
+    "symbol": "AXP",
+    "report_date": "2026-05-21",
+    "open": 308.55,
+    "close": 309.7,
+    "high": 310.75,
+    "low": 305.61,
+    "volume": 1992700
+  },
+  {
+    "symbol": "AXP",
+    "report_date": "2026-05-22",
+    "open": 313.28,
+    "close": 311.78,
+    "high": 314.43,
+    "low": 310.65,
+    "volume": 2209200
   }
 ]

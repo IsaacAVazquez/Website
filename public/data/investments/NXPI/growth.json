@@ -333,9 +333,9 @@
     {
       "symbol": "NXPI",
       "report_date": "2025-06-30T00:00:00.000",
-      "ebitda": 923000000.0,
+      "ebitda": 4034000000.0,
       "prev_year_ebitda": 1131000000.0,
-      "yoy_growth": -0.1839
+      "yoy_growth": 2.5668
     },
     {
       "symbol": "NXPI",
@@ -354,9 +354,9 @@
     {
       "symbol": "NXPI",
       "report_date": "2026-03-31T00:00:00.000",
-      "ebitda": 1702000000.0,
+      "ebitda": 4717000000.0,
       "prev_year_ebitda": 946000000.0,
-      "yoy_growth": 0.7992
+      "yoy_growth": 3.9863
     }
   ],
   "annual_ebitda": [
@@ -470,9 +470,9 @@
     {
       "symbol": "NXPI",
       "report_date": "2025-06-30T00:00:00.000",
-      "net_income_common_stockholders": 445000000.0,
+      "net_income_common_stockholders": 2148000000.0,
       "prev_year_net_income_common_stockholders": 658000000.0,
-      "yoy_growth": -0.3237
+      "yoy_growth": 2.2644
     },
     {
       "symbol": "NXPI",
@@ -491,9 +491,9 @@
     {
       "symbol": "NXPI",
       "report_date": "2026-03-31T00:00:00.000",
-      "net_income_common_stockholders": 1122000000.0,
+      "net_income_common_stockholders": 2653000000.0,
       "prev_year_net_income_common_stockholders": 490000000.0,
-      "yoy_growth": 1.2898
+      "yoy_growth": 4.4143
     }
   ],
   "annual_net_income": [
@@ -607,9 +607,9 @@
     {
       "symbol": "NXPI",
       "report_date": "2025-06-30T00:00:00.000",
-      "free_cash_flow": 659000000.0,
+      "free_cash_flow": 1852000000.0,
       "prev_year_free_cash_flow": 521000000.0,
-      "yoy_growth": 0.2649
+      "yoy_growth": 2.5547
     },
     {
       "symbol": "NXPI",
@@ -628,9 +628,9 @@
     {
       "symbol": "NXPI",
       "report_date": "2026-03-31T00:00:00.000",
-      "free_cash_flow": 672000000.0,
+      "free_cash_flow": 2554000000.0,
       "prev_year_free_cash_flow": 401000000.0,
-      "yoy_growth": 0.6758
+      "yoy_growth": 5.3691
     }
   ],
   "annual_fcf": [
@@ -737,79 +737,79 @@
     {
       "symbol": "NXPI",
       "report_date": "2008-03-31T00:00:00.000",
-      "eps": -0.31,
+      "eps": -0.3129,
       "prev_year_eps": 0.0,
       "yoy_growth": -1.0
     },
     {
       "symbol": "NXPI",
       "report_date": "2008-06-30T00:00:00.000",
-      "eps": -1.32,
+      "eps": -1.324,
       "prev_year_eps": 0.0,
       "yoy_growth": -1.0
     },
     {
       "symbol": "NXPI",
       "report_date": "2008-09-30T00:00:00.000",
-      "eps": -10.22,
+      "eps": -10.2186,
       "prev_year_eps": 0.0,
       "yoy_growth": -1.0
     },
     {
       "symbol": "NXPI",
       "report_date": "2008-12-31T00:00:00.000",
-      "eps": -2.59,
+      "eps": -2.5878,
       "prev_year_eps": 0.0,
       "yoy_growth": -1.0
     },
     {
       "symbol": "NXPI",
       "report_date": "2009-03-31T00:00:00.000",
-      "eps": -2.24,
-      "prev_year_eps": -0.31,
-      "yoy_growth": -6.2258
+      "eps": -2.2387,
+      "prev_year_eps": -0.3129,
+      "yoy_growth": -6.1547
     },
     {
       "symbol": "NXPI",
       "report_date": "2009-06-30T00:00:00.000",
-      "eps": 1.36,
-      "prev_year_eps": -1.32,
-      "yoy_growth": 2.0303
+      "eps": 1.3601,
+      "prev_year_eps": -1.324,
+      "yoy_growth": 2.0273
     },
     {
       "symbol": "NXPI",
       "report_date": "2009-09-30T00:00:00.000",
-      "eps": 1.61,
-      "prev_year_eps": -10.22,
-      "yoy_growth": 1.1575
+      "eps": 1.6128,
+      "prev_year_eps": -10.2186,
+      "yoy_growth": 1.1578
     },
     {
       "symbol": "NXPI",
       "report_date": "2009-12-31T00:00:00.000",
       "eps": -1.44,
-      "prev_year_eps": -2.59,
-      "yoy_growth": 0.444
+      "prev_year_eps": -2.5878,
+      "yoy_growth": 0.4435
     },
     {
       "symbol": "NXPI",
       "report_date": "2010-03-31T00:00:00.000",
       "eps": -1.6,
-      "prev_year_eps": -2.24,
-      "yoy_growth": 0.2857
+      "prev_year_eps": -2.2387,
+      "yoy_growth": 0.2853
     },
     {
       "symbol": "NXPI",
       "report_date": "2010-06-30T00:00:00.000",
       "eps": -1.68,
-      "prev_year_eps": 1.36,
-      "yoy_growth": -2.2353
+      "prev_year_eps": 1.3601,
+      "yoy_growth": -2.2352
     },
     {
       "symbol": "NXPI",
       "report_date": "2010-09-30T00:00:00.000",
       "eps": 1.55,
-      "prev_year_eps": 1.61,
-      "yoy_growth": -0.0373
+      "prev_year_eps": 1.6128,
+      "yoy_growth": -0.0389
     },
     {
       "symbol": "NXPI",
@@ -1031,219 +1031,219 @@
     {
       "symbol": "NXPI",
       "report_date": "2018-09-30T00:00:00.000",
-      "eps": 5.6,
+      "eps": 5.5954,
       "prev_year_eps": 0.31,
-      "yoy_growth": 17.0645
+      "yoy_growth": 17.0497
     },
     {
       "symbol": "NXPI",
       "report_date": "2018-12-31T00:00:00.000",
-      "eps": 0.94,
+      "eps": 0.9358,
       "prev_year_eps": 2.17,
-      "yoy_growth": -0.5668
+      "yoy_growth": -0.5688
     },
     {
       "symbol": "NXPI",
       "report_date": "2019-03-31T00:00:00.000",
-      "eps": -0.07,
+      "eps": -0.0731,
       "prev_year_eps": 0.17,
-      "yoy_growth": -1.4118
+      "yoy_growth": -1.43
     },
     {
       "symbol": "NXPI",
       "report_date": "2019-06-30T00:00:00.000",
-      "eps": 0.14,
+      "eps": 0.1438,
       "prev_year_eps": 0.16,
-      "yoy_growth": -0.125
+      "yoy_growth": -0.1012
     },
     {
       "symbol": "NXPI",
       "report_date": "2019-09-30T00:00:00.000",
-      "eps": 0.38,
-      "prev_year_eps": 5.6,
-      "yoy_growth": -0.9321
+      "eps": 0.3845,
+      "prev_year_eps": 5.5954,
+      "yoy_growth": -0.9313
     },
     {
       "symbol": "NXPI",
       "report_date": "2019-12-31T00:00:00.000",
-      "eps": 0.4,
-      "prev_year_eps": 0.94,
-      "yoy_growth": -0.5745
+      "eps": 0.3993,
+      "prev_year_eps": 0.9358,
+      "yoy_growth": -0.5733
     },
     {
       "symbol": "NXPI",
       "report_date": "2020-03-31T00:00:00.000",
-      "eps": -0.08,
-      "prev_year_eps": -0.07,
-      "yoy_growth": -0.1429
+      "eps": -0.075,
+      "prev_year_eps": -0.0731,
+      "yoy_growth": -0.026
     },
     {
       "symbol": "NXPI",
       "report_date": "2020-06-30T00:00:00.000",
-      "eps": -0.77,
-      "prev_year_eps": 0.14,
-      "yoy_growth": -6.5
+      "eps": -0.7666,
+      "prev_year_eps": 0.1438,
+      "yoy_growth": -6.331
     },
     {
       "symbol": "NXPI",
       "report_date": "2020-09-30T00:00:00.000",
-      "eps": -0.08,
-      "prev_year_eps": 0.38,
-      "yoy_growth": -1.2105
+      "eps": -0.0787,
+      "prev_year_eps": 0.3845,
+      "yoy_growth": -1.2047
     },
     {
       "symbol": "NXPI",
       "report_date": "2020-12-31T00:00:00.000",
-      "eps": 1.08,
-      "prev_year_eps": 0.4,
-      "yoy_growth": 1.7
+      "eps": 1.0832,
+      "prev_year_eps": 0.3993,
+      "yoy_growth": 1.7127
     },
     {
       "symbol": "NXPI",
       "report_date": "2021-03-31T00:00:00.000",
-      "eps": 1.25,
-      "prev_year_eps": -0.08,
-      "yoy_growth": 16.625
+      "eps": 1.2462,
+      "prev_year_eps": -0.075,
+      "yoy_growth": 17.616
     },
     {
       "symbol": "NXPI",
       "report_date": "2021-06-30T00:00:00.000",
-      "eps": 1.42,
-      "prev_year_eps": -0.77,
-      "yoy_growth": 2.8442
+      "eps": 1.4243,
+      "prev_year_eps": -0.7666,
+      "yoy_growth": 2.8579
     },
     {
       "symbol": "NXPI",
       "report_date": "2021-09-30T00:00:00.000",
-      "eps": 1.91,
-      "prev_year_eps": -0.08,
-      "yoy_growth": 24.875
+      "eps": 1.9126,
+      "prev_year_eps": -0.0787,
+      "yoy_growth": 25.3024
     },
     {
       "symbol": "NXPI",
       "report_date": "2021-12-31T00:00:00.000",
-      "eps": 2.24,
-      "prev_year_eps": 1.08,
-      "yoy_growth": 1.0741
+      "eps": 2.2417,
+      "prev_year_eps": 1.0832,
+      "yoy_growth": 1.0695
     },
     {
       "symbol": "NXPI",
       "report_date": "2022-03-31T00:00:00.000",
-      "eps": 2.48,
-      "prev_year_eps": 1.25,
-      "yoy_growth": 0.984
+      "eps": 2.4782,
+      "prev_year_eps": 1.2462,
+      "yoy_growth": 0.9886
     },
     {
       "symbol": "NXPI",
       "report_date": "2022-06-30T00:00:00.000",
-      "eps": 2.53,
-      "prev_year_eps": 1.42,
-      "yoy_growth": 0.7817
+      "eps": 2.5312,
+      "prev_year_eps": 1.4243,
+      "yoy_growth": 0.7772
     },
     {
       "symbol": "NXPI",
       "report_date": "2022-09-30T00:00:00.000",
-      "eps": 2.79,
-      "prev_year_eps": 1.91,
-      "yoy_growth": 0.4607
+      "eps": 2.788,
+      "prev_year_eps": 1.9126,
+      "yoy_growth": 0.4577
     },
     {
       "symbol": "NXPI",
       "report_date": "2022-12-31T00:00:00.000",
-      "eps": 2.76,
-      "prev_year_eps": 2.24,
-      "yoy_growth": 0.2321
+      "eps": 2.7615,
+      "prev_year_eps": 2.2417,
+      "yoy_growth": 0.2319
     },
     {
       "symbol": "NXPI",
       "report_date": "2023-03-31T00:00:00.000",
-      "eps": 2.35,
-      "prev_year_eps": 2.48,
-      "yoy_growth": -0.0524
+      "eps": 2.3544,
+      "prev_year_eps": 2.4782,
+      "yoy_growth": -0.05
     },
     {
       "symbol": "NXPI",
       "report_date": "2023-06-30T00:00:00.000",
-      "eps": 2.67,
-      "prev_year_eps": 2.53,
+      "eps": 2.6712,
+      "prev_year_eps": 2.5312,
       "yoy_growth": 0.0553
     },
     {
       "symbol": "NXPI",
       "report_date": "2023-09-30T00:00:00.000",
-      "eps": 3.01,
-      "prev_year_eps": 2.79,
-      "yoy_growth": 0.0789
+      "eps": 3.0142,
+      "prev_year_eps": 2.788,
+      "yoy_growth": 0.0811
     },
     {
       "symbol": "NXPI",
       "report_date": "2023-12-31T00:00:00.000",
-      "eps": 2.68,
-      "prev_year_eps": 2.76,
-      "yoy_growth": -0.029
+      "eps": 2.6777,
+      "prev_year_eps": 2.7615,
+      "yoy_growth": -0.0303
     },
     {
       "symbol": "NXPI",
       "report_date": "2024-03-31T00:00:00.000",
-      "eps": 2.47,
-      "prev_year_eps": 2.35,
-      "yoy_growth": 0.0511
+      "eps": 2.4676,
+      "prev_year_eps": 2.3544,
+      "yoy_growth": 0.0481
     },
     {
       "symbol": "NXPI",
       "report_date": "2024-06-30T00:00:00.000",
-      "eps": 2.54,
-      "prev_year_eps": 2.67,
-      "yoy_growth": -0.0487
+      "eps": 2.5432,
+      "prev_year_eps": 2.6712,
+      "yoy_growth": -0.0479
     },
     {
       "symbol": "NXPI",
       "report_date": "2024-09-30T00:00:00.000",
-      "eps": 2.79,
-      "prev_year_eps": 3.01,
-      "yoy_growth": -0.0731
+      "eps": 2.786,
+      "prev_year_eps": 3.0142,
+      "yoy_growth": -0.0757
     },
     {
       "symbol": "NXPI",
       "report_date": "2024-12-31T00:00:00.000",
-      "eps": 1.93,
-      "prev_year_eps": 2.68,
-      "yoy_growth": -0.2799
+      "eps": 1.9289,
+      "prev_year_eps": 2.6777,
+      "yoy_growth": -0.2796
     },
     {
       "symbol": "NXPI",
       "report_date": "2025-03-31T00:00:00.000",
-      "eps": 1.92,
-      "prev_year_eps": 2.47,
-      "yoy_growth": -0.2227
+      "eps": 1.9214,
+      "prev_year_eps": 2.4676,
+      "yoy_growth": -0.2213
     },
     {
       "symbol": "NXPI",
       "report_date": "2025-06-30T00:00:00.000",
-      "eps": 1.75,
-      "prev_year_eps": 2.54,
-      "yoy_growth": -0.311
+      "eps": 1.7531,
+      "prev_year_eps": 2.5432,
+      "yoy_growth": -0.3107
     },
     {
       "symbol": "NXPI",
       "report_date": "2025-09-30T00:00:00.000",
-      "eps": 2.48,
-      "prev_year_eps": 2.79,
-      "yoy_growth": -0.1111
+      "eps": 2.4812,
+      "prev_year_eps": 2.786,
+      "yoy_growth": -0.1094
     },
     {
       "symbol": "NXPI",
       "report_date": "2025-12-31T00:00:00.000",
-      "eps": 1.79,
-      "prev_year_eps": 1.93,
-      "yoy_growth": -0.0725
+      "eps": 1.7908,
+      "prev_year_eps": 1.9289,
+      "yoy_growth": -0.0716
     },
     {
       "symbol": "NXPI",
       "report_date": "2026-03-31T00:00:00.000",
-      "eps": 4.43,
-      "prev_year_eps": 1.92,
-      "yoy_growth": 1.3073
+      "eps": 4.4256,
+      "prev_year_eps": 1.9214,
+      "yoy_growth": 1.3033
     }
   ]
 }

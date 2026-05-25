@@ -438,9 +438,9 @@
     {
       "symbol": "MU",
       "report_date": "2026-02-28",
-      "net_income_common_stockholders": 13785000000.0,
+      "net_income_common_stockholders": 24111000000.0,
       "total_revenue": 23860000000.0,
-      "net_margin": 0.5777
+      "net_margin": 1.0105
     }
   ],
   "annual_net": [
@@ -603,9 +603,9 @@
     {
       "symbol": "MU",
       "report_date": "2026-02-28",
-      "ebitda": 18478000000.0,
+      "ebitda": 37059000000.0,
       "total_revenue": 23860000000.0,
-      "ebitda_margin": 0.7744
+      "ebitda_margin": 1.5532
     }
   ],
   "annual_ebitda": [
@@ -768,9 +768,9 @@
     {
       "symbol": "MU",
       "report_date": "2026-02-28",
-      "free_cash_flow": 5516000000.0,
+      "free_cash_flow": 10281000000.0,
       "total_revenue": 23860000000.0,
-      "fcf_margin": 0.2312
+      "fcf_margin": 0.4309
     }
   ],
   "annual_fcf": [

@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "AMGN",
+    "name": "Casey  Capparelli",
+    "title": "Executive Director of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "AMGN",
+    "name": "Dr. David M. Reese M.D.",
+    "title": "Executive VP & CTO",
+    "age": 62,
+    "born": 1963,
+    "pay": 3490556,
+    "exercised": 1192259,
+    "unexercised": 17200032,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "AMGN",
+    "name": "Dr. James E. Bradner M.D.",
+    "title": "Executive Vice President of Research & Development",
+    "age": 53,
+    "born": 1972,
+    "pay": 3840115,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "AMGN",
+    "name": "Mr. Esteban  Santos",
+    "title": "Executive Vice President of Operations",
+    "age": 57,
+    "born": 1968,
+    "pay": 3006074,
+    "exercised": 0,
+    "unexercised": 12988893,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "AMGN",
+    "name": "Mr. Howard Y. Chang M.D., Ph.D.",
+    "title": "Senior VP of Global Research & Chief Scientific Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "AMGN",
+    "name": "Mr. Matthew C. Busch",
+    "title": "Chief Accounting Officer & VP of Finance",
+    "age": 50,
+    "born": 1975,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "AMGN",
+    "name": "Mr. Murdo  Gordon",
+    "title": "Executive Vice President of Global Commercial Operations",
+    "age": 58,
+    "born": 1967,
+    "pay": 3223764,
+    "exercised": 0,
+    "unexercised": 15054745,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "AMGN",
+    "name": "Mr. Peter H. Griffith",
+    "title": "Executive VP & CFO",
+    "age": 66,
+    "born": 1959,
+    "pay": 3311180,
+    "exercised": 0,
+    "unexercised": 8114863,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "AMGN",
+    "name": "Mr. Robert A. Bradway",
+    "title": "Chairman & CEO",
+    "age": 62,
+    "born": 1963,
+    "pay": 6693535,
+    "exercised": 0,
+    "unexercised": 108918352,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "AMGN",
+    "name": "Mr. Scott  Skellenger",
+    "title": "Senior VP & Chief Information Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  }
+]

@@ -111,6 +111,13 @@
       "gross_profit": 3608000000.0,
       "total_revenue": 4651000000.0,
       "gross_margin": 0.7757
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2026-04-30",
+      "gross_profit": 7184000000.0,
+      "total_revenue": 8558000000.0,
+      "gross_margin": 0.8394
     }
   ],
   "annual_gross": [
@@ -276,6 +283,13 @@
       "operating_income": 855000000.0,
       "total_revenue": 4651000000.0,
       "operating_margin": 0.1838
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2026-04-30",
+      "operating_income": 4020000000.0,
+      "total_revenue": 8558000000.0,
+      "operating_margin": 0.4697
     }
   ],
   "annual_operating": [
@@ -441,6 +455,13 @@
       "net_income_common_stockholders": 693000000.0,
       "total_revenue": 4651000000.0,
       "net_margin": 0.149
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2026-04-30",
+      "net_income_common_stockholders": 4584000000.0,
+      "total_revenue": 8558000000.0,
+      "net_margin": 0.5356
     }
   ],
   "annual_net": [
@@ -606,6 +627,13 @@
       "ebitda": 1136000000.0,
       "total_revenue": 4651000000.0,
       "ebitda_margin": 0.2442
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2026-04-30",
+      "ebitda": 6924000000.0,
+      "total_revenue": 8558000000.0,
+      "ebitda_margin": 0.8091
     }
   ],
   "annual_ebitda": [
@@ -771,6 +799,13 @@
       "free_cash_flow": 1524000000.0,
       "total_revenue": 4651000000.0,
       "fcf_margin": 0.3277
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2026-04-30",
+      "free_cash_flow": 7715000000.0,
+      "total_revenue": 8558000000.0,
+      "fcf_margin": 0.9015
     }
   ],
   "annual_fcf": [

@@ -375,9 +375,9 @@
     {
       "symbol": "BRK-B",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 12370000000.0,
+      "net_income_common_stockholders": 62918000000.0,
       "total_revenue": 98879000000.0,
-      "net_margin": 0.1251
+      "net_margin": 0.6363
     },
     {
       "symbol": "BRK-B",
@@ -396,9 +396,9 @@
     {
       "symbol": "BRK-B",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 10106000000.0,
+      "net_income_common_stockholders": 72471000000.0,
       "total_revenue": 92070000000.0,
-      "net_margin": 0.1098
+      "net_margin": 0.7871
     }
   ],
   "annual_net": [

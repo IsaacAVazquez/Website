@@ -417,9 +417,9 @@
     {
       "symbol": "TSLA",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 1172000000.0,
+      "net_income_common_stockholders": 5921000000.0,
       "total_revenue": 22496000000.0,
-      "net_margin": 0.0521
+      "net_margin": 0.2632
     },
     {
       "symbol": "TSLA",
@@ -438,9 +438,9 @@
     {
       "symbol": "TSLA",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 477000000.0,
+      "net_income_common_stockholders": 3862000000.0,
       "total_revenue": 22387000000.0,
-      "net_margin": 0.0213
+      "net_margin": 0.1725
     }
   ],
   "annual_net": [
@@ -582,9 +582,9 @@
     {
       "symbol": "TSLA",
       "report_date": "2025-06-30",
-      "ebitda": 3068000000.0,
+      "ebitda": 13542000000.0,
       "total_revenue": 22496000000.0,
-      "ebitda_margin": 0.1364
+      "ebitda_margin": 0.602
     },
     {
       "symbol": "TSLA",
@@ -603,9 +603,9 @@
     {
       "symbol": "TSLA",
       "report_date": "2026-03-31",
-      "ebitda": 2430000000.0,
+      "ebitda": 12067000000.0,
       "total_revenue": 22387000000.0,
-      "ebitda_margin": 0.1085
+      "ebitda_margin": 0.539
     }
   ],
   "annual_ebitda": [
@@ -747,9 +747,9 @@
     {
       "symbol": "TSLA",
       "report_date": "2025-06-30",
-      "free_cash_flow": 146000000.0,
+      "free_cash_flow": 5586000000.0,
       "total_revenue": 22496000000.0,
-      "fcf_margin": 0.0065
+      "fcf_margin": 0.2483
     },
     {
       "symbol": "TSLA",
@@ -768,9 +768,9 @@
     {
       "symbol": "TSLA",
       "report_date": "2026-03-31",
-      "free_cash_flow": 1444000000.0,
+      "free_cash_flow": 7000000000.0,
       "total_revenue": 22387000000.0,
-      "fcf_margin": 0.0645
+      "fcf_margin": 0.3127
     }
   ],
   "annual_fcf": [

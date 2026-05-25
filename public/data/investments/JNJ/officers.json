@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "JNJ",
+    "name": "Dr. Guy J. Lebeau M.D.",
+    "title": "Group Chairman of MD&D Business - EMEA",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "JNJ",
+    "name": "Dr. John C. Reed M.D., Ph.D.",
+    "title": "Executive Vice President of Innovative Medicine and R&D",
+    "age": 67,
+    "born": 1958,
+    "pay": 3165384,
+    "exercised": 755615,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "JNJ",
+    "name": "Mr. Dirk  Brinckman",
+    "title": "Chief Compliance Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "JNJ",
+    "name": "Mr. James  Swanson",
+    "title": "Executive VP & Chief Information Officer",
+    "age": 59,
+    "born": 1966,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "JNJ",
+    "name": "Mr. Joaquin  Duato",
+    "title": "CEO & Chairman",
+    "age": 62,
+    "born": 1963,
+    "pay": 6499931,
+    "exercised": 16436116,
+    "unexercised": 52665080,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "JNJ",
+    "name": "Mr. Robert J. Decker Jr.",
+    "title": "Controller & Chief Accounting Officer",
+    "age": 52,
+    "born": 1973,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "JNJ",
+    "name": "Mr. Timothy  Schmid",
+    "title": "Executive VP & Worldwide Chairman of MedTech",
+    "age": 55,
+    "born": 1970,
+    "pay": 2538167,
+    "exercised": 0,
+    "unexercised": 8556005,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "JNJ",
+    "name": "Ms. Elizabeth  Forminard J.D.",
+    "title": "Executive VP & Chief Legal Officer",
+    "age": 54,
+    "born": 1971,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "JNJ",
+    "name": "Ms. Jennifer L. Taubert",
+    "title": "Executive VP & Worldwide Chairman of Innovative Medicine",
+    "age": 61,
+    "born": 1964,
+    "pay": 3313021,
+    "exercised": 7392427,
+    "unexercised": 27728240,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "JNJ",
+    "name": "Ms. Kristen Blair Mulholland",
+    "title": "Executive VP & Chief Human Resources Officer",
+    "age": 58,
+    "born": 1967,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  }
+]

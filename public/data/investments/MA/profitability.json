@@ -283,12 +283,12 @@
       "symbol": "MA",
       "report_date": "2025-06-30",
       "ebit": 4867000000.0,
-      "tax_rate_for_calcs": 0.21,
-      "nopat": 3844930000.0,
+      "tax_rate_for_calcs": 0.17,
+      "nopat": 4039610000.0,
       "beginning_invested_capital": 25473000000.0,
       "ending_invested_capital": 26823000000.0,
       "avg_invested_capital": 26148000000.0,
-      "roic": 0.147
+      "roic": 0.1545
     },
     {
       "symbol": "MA",
@@ -316,12 +316,12 @@
       "symbol": "MA",
       "report_date": "2026-03-31",
       "ebit": 4997000000.0,
-      "tax_rate_for_calcs": 0.19,
-      "nopat": 4047570000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 3997600000.0,
       "beginning_invested_capital": 26737000000.0,
       "ending_invested_capital": 25679000000.0,
       "avg_invested_capital": 26208000000.0,
-      "roic": 0.1544
+      "roic": 0.1525
     }
   ],
   "equityMultiplier": [
@@ -457,8 +457,8 @@
       "symbol": "MA",
       "report_date": "2025-06-30T00:00:00.000",
       "roa": 0.0741,
-      "net_margin": 0.4551,
-      "asset_turnover": 0.16
+      "net_margin": 0.1224,
+      "asset_turnover": 0.61
     },
     {
       "symbol": "MA",
@@ -478,8 +478,8 @@
       "symbol": "MA",
       "report_date": "2026-03-31T00:00:00.000",
       "roa": 0.0728,
-      "net_margin": 0.4623,
-      "asset_turnover": 0.16
+      "net_margin": 0.1144,
+      "asset_turnover": 0.64
     }
   ]
 }

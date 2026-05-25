@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 26028000000.0,
+      "beginning_stockholders_equity": 75149000000.0,
+      "ending_stockholders_equity": 71228000000.0,
+      "avg_equity": 73188500000.0,
+      "roe": 0.3556
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 4049000000.0,
+      "beginning_stockholders_equity": 71228000000.0,
+      "ending_stockholders_equity": 68774000000.0,
+      "avg_equity": 70001000000.0,
+      "roe": 0.0578
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 3255000000.0,
+      "beginning_stockholders_equity": 68774000000.0,
+      "ending_stockholders_equity": 70020000000.0,
+      "avg_equity": 69397000000.0,
+      "roe": 0.0469
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 4686000000.0,
+      "beginning_stockholders_equity": 70020000000.0,
+      "ending_stockholders_equity": 71538000000.0,
+      "avg_equity": 70779000000.0,
+      "roe": 0.0662
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 2694000000.0,
+      "beginning_stockholders_equity": 71538000000.0,
+      "ending_stockholders_equity": 70158000000.0,
+      "avg_equity": 70848000000.0,
+      "roe": 0.038
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 3431000000.0,
+      "beginning_stockholders_equity": 70158000000.0,
+      "ending_stockholders_equity": 71490000000.0,
+      "avg_equity": 70824000000.0,
+      "roe": 0.0484
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 10999000000.0,
+      "beginning_stockholders_equity": 71490000000.0,
+      "ending_stockholders_equity": 78109000000.0,
+      "avg_equity": 74799500000.0,
+      "roe": 0.147
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 22661000000.0,
+      "beginning_stockholders_equity": 78109000000.0,
+      "ending_stockholders_equity": 78473000000.0,
+      "avg_equity": 78291000000.0,
+      "roe": 0.2894
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 5152000000.0,
+      "beginning_stockholders_equity": 78473000000.0,
+      "ending_stockholders_equity": 79277000000.0,
+      "avg_equity": 78875000000.0,
+      "roe": 0.0653
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 5116000000.0,
+      "beginning_stockholders_equity": 79277000000.0,
+      "ending_stockholders_equity": 81544000000.0,
+      "avg_equity": 80410500000.0,
+      "roe": 0.0636
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 21040000000.0,
+      "beginning_stockholders_equity": 81544000000.0,
+      "ending_stockholders_equity": 81186000000.0,
+      "avg_equity": 81365000000.0,
+      "roe": 0.2586
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 26028000000.0,
+      "beginning_total_assets": 191686000000.0,
+      "ending_total_assets": 166061000000.0,
+      "avg_assets": 178873500000.0,
+      "roa": 0.1455
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 4049000000.0,
+      "beginning_total_assets": 166061000000.0,
+      "ending_total_assets": 167558000000.0,
+      "avg_assets": 166809500000.0,
+      "roa": 0.0243
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 3255000000.0,
+      "beginning_total_assets": 167558000000.0,
+      "ending_total_assets": 171966000000.0,
+      "avg_assets": 169762000000.0,
+      "roa": 0.0192
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 4686000000.0,
+      "beginning_total_assets": 171966000000.0,
+      "ending_total_assets": 181088000000.0,
+      "avg_assets": 176527000000.0,
+      "roa": 0.0265
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 2694000000.0,
+      "beginning_total_assets": 181088000000.0,
+      "ending_total_assets": 178287000000.0,
+      "avg_assets": 179687500000.0,
+      "roa": 0.015
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 3431000000.0,
+      "beginning_total_assets": 178287000000.0,
+      "ending_total_assets": 180104000000.0,
+      "avg_assets": 179195500000.0,
+      "roa": 0.0191
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 10999000000.0,
+      "beginning_total_assets": 180104000000.0,
+      "ending_total_assets": 193671000000.0,
+      "avg_assets": 186887500000.0,
+      "roa": 0.0589
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 22661000000.0,
+      "beginning_total_assets": 193671000000.0,
+      "ending_total_assets": 193389000000.0,
+      "avg_assets": 193530000000.0,
+      "roa": 0.1171
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 5152000000.0,
+      "beginning_total_assets": 193389000000.0,
+      "ending_total_assets": 192816000000.0,
+      "avg_assets": 193102500000.0,
+      "roa": 0.0267
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 5116000000.0,
+      "beginning_total_assets": 192816000000.0,
+      "ending_total_assets": 199210000000.0,
+      "avg_assets": 196013000000.0,
+      "roa": 0.0261
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 21040000000.0,
+      "beginning_total_assets": 199210000000.0,
+      "ending_total_assets": 200894000000.0,
+      "avg_assets": 200052000000.0,
+      "roa": 0.1052
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-09-30",
+      "ebit": 5409000000.0,
+      "tax_rate_for_calcs": 0.17,
+      "nopat": 4489470000.0,
+      "beginning_invested_capital": 120751000000.0,
+      "ending_invested_capital": 101149000000.0,
+      "avg_invested_capital": 110950000000.0,
+      "roic": 0.0405
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-12-31",
+      "ebit": 4977000000.0,
+      "tax_rate_for_calcs": 0.14,
+      "nopat": 4280220000.0,
+      "beginning_invested_capital": 101149000000.0,
+      "ending_invested_capital": 98106000000.0,
+      "avg_invested_capital": 99627500000.0,
+      "roic": 0.043
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-03-31",
+      "ebit": 3869000000.0,
+      "tax_rate_for_calcs": 0.12,
+      "nopat": 3404720000.0,
+      "beginning_invested_capital": 98106000000.0,
+      "ending_invested_capital": 103652000000.0,
+      "avg_invested_capital": 100879000000.0,
+      "roic": 0.0338
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-06-30",
+      "ebit": 6018000000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 4934760000.0,
+      "beginning_invested_capital": 103652000000.0,
+      "ending_invested_capital": 113029000000.0,
+      "avg_invested_capital": 108340500000.0,
+      "roic": 0.0455
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-09-30",
+      "ebit": 3531000000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 2860110000.0,
+      "beginning_invested_capital": 113029000000.0,
+      "ending_invested_capital": 105909000000.0,
+      "avg_invested_capital": 109469000000.0,
+      "roic": 0.0261
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-12-31",
+      "ebit": 4024000000.0,
+      "tax_rate_for_calcs": 0.12,
+      "nopat": 3541120000.0,
+      "beginning_invested_capital": 105909000000.0,
+      "ending_invested_capital": 108124000000.0,
+      "avg_invested_capital": 107016500000.0,
+      "roic": 0.0331
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-03-31",
+      "ebit": 13835000000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 11206350000.0,
+      "beginning_invested_capital": 108124000000.0,
+      "ending_invested_capital": 130361000000.0,
+      "avg_invested_capital": 119242500000.0,
+      "roic": 0.094
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-06-30",
+      "ebit": 28189000000.0,
+      "tax_rate_for_calcs": 0.15,
+      "nopat": 23960650000.0,
+      "beginning_invested_capital": 130361000000.0,
+      "ending_invested_capital": 129234000000.0,
+      "avg_invested_capital": 129797500000.0,
+      "roic": 0.1846
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-09-30",
+      "ebit": 7738000000.0,
+      "tax_rate_for_calcs": 0.31,
+      "nopat": 5339220000.0,
+      "beginning_invested_capital": 129234000000.0,
+      "ending_invested_capital": 125072000000.0,
+      "avg_invested_capital": 127153000000.0,
+      "roic": 0.042
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-12-31",
+      "ebit": 5180000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 4092200000.0,
+      "beginning_invested_capital": 125072000000.0,
+      "ending_invested_capital": 129477000000.0,
+      "avg_invested_capital": 127274500000.0,
+      "roic": 0.0322
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2026-03-31",
+      "ebit": 25979000000.0,
+      "tax_rate_for_calcs": 0.13,
+      "nopat": 22601730000.0,
+      "beginning_invested_capital": 129477000000.0,
+      "ending_invested_capital": 136173000000.0,
+      "avg_invested_capital": 132825000000.0,
+      "roic": 0.1702
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.3556,
+      "roa": 0.1455,
+      "equity_multiplier": 2.44
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.0578,
+      "roa": 0.0243,
+      "equity_multiplier": 2.38
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.0469,
+      "roa": 0.0192,
+      "equity_multiplier": 2.44
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.0662,
+      "roa": 0.0265,
+      "equity_multiplier": 2.5
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.038,
+      "roa": 0.015,
+      "equity_multiplier": 2.53
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.0484,
+      "roa": 0.0191,
+      "equity_multiplier": 2.53
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.147,
+      "roa": 0.0589,
+      "equity_multiplier": 2.5
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.2894,
+      "roa": 0.1171,
+      "equity_multiplier": 2.47
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.0653,
+      "roa": 0.0267,
+      "equity_multiplier": 2.45
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.0636,
+      "roa": 0.0261,
+      "equity_multiplier": 2.44
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.2586,
+      "roa": 0.1052,
+      "equity_multiplier": 2.46
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.1455,
+      "net_margin": 1.2191,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0243,
+      "net_margin": 0.1892,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0192,
+      "net_margin": 0.1522,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0265,
+      "net_margin": 0.2088,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.015,
+      "net_margin": 0.1199,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0191,
+      "net_margin": 0.1524,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0589,
+      "net_margin": 0.5024,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.1171,
+      "net_margin": 0.9544,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0267,
+      "net_margin": 0.2147,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0261,
+      "net_margin": 0.2083,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.1052,
+      "net_margin": 0.8744,
+      "asset_turnover": 0.12
+    }
+  ]
+}

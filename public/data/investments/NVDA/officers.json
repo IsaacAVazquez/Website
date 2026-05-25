@@ -5,9 +5,10 @@
     "title": "Executive Vice President of Worldwide Field Operations",
     "age": 70,
     "born": 1955,
-    "pay": 2313851,
+    "pay": 2298337,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "NVDA",
@@ -17,7 +18,8 @@
     "born": null,
     "pay": 320000,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "NVDA",
@@ -25,9 +27,21 @@
     "title": "Co-Founder, CEO & Director",
     "age": 62,
     "born": 1963,
-    "pay": 11054945,
+    "pay": 11543318,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "NVDA",
+    "name": "Mr. Scott C. Gawel",
+    "title": "Chief Accounting Officer",
+    "age": 54,
+    "born": 1971,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "NVDA",
@@ -35,9 +49,10 @@
     "title": "Executive VP, General Counsel & Secretary",
     "age": 58,
     "born": 1967,
-    "pay": 1362989,
+    "pay": 1363896,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "NVDA",
@@ -47,17 +62,8 @@
     "born": null,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
-  },
-  {
-    "symbol": "NVDA",
-    "name": "Ms. Alison Berkley Wagonfeld",
-    "title": "Chief Marketing Officer",
-    "age": 54,
-    "born": 1971,
-    "pay": null,
-    "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "NVDA",
@@ -65,9 +71,10 @@
     "title": "Executive VP & CFO",
     "age": 58,
     "born": 1967,
-    "pay": 1512641,
+    "pay": 1514979,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "NVDA",
@@ -75,9 +82,10 @@
     "title": "Executive Vice President of Operations",
     "age": 70,
     "born": 1955,
-    "pay": 1379071,
+    "pay": 1382223,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "NVDA",
@@ -87,7 +95,8 @@
     "born": null,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "NVDA",
@@ -97,6 +106,7 @@
     "born": 1961,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   }
 ]

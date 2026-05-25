@@ -417,9 +417,9 @@
     {
       "symbol": "ON",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 170300000.0,
+      "net_income_common_stockholders": 465800000.0,
       "total_revenue": 1468700000.0,
-      "net_margin": 0.116
+      "net_margin": 0.3172
     },
     {
       "symbol": "ON",
@@ -438,9 +438,9 @@
     {
       "symbol": "ON",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": -33400000.0,
+      "net_income_common_stockholders": 573700000.0,
       "total_revenue": 1513300000.0,
-      "net_margin": -0.0221
+      "net_margin": 0.3791
     }
   ],
   "annual_net": [
@@ -582,9 +582,9 @@
     {
       "symbol": "ON",
       "report_date": "2025-06-30",
-      "ebitda": 376500000.0,
+      "ebitda": 1258200000.0,
       "total_revenue": 1468700000.0,
-      "ebitda_margin": 0.2563
+      "ebitda_margin": 0.8567
     },
     {
       "symbol": "ON",
@@ -603,9 +603,9 @@
     {
       "symbol": "ON",
       "report_date": "2026-03-31",
-      "ebitda": 254800000.0,
+      "ebitda": 1517800000.0,
       "total_revenue": 1513300000.0,
-      "ebitda_margin": 0.1684
+      "ebitda_margin": 1.003
     }
   ],
   "annual_ebitda": [
@@ -747,9 +747,9 @@
     {
       "symbol": "ON",
       "report_date": "2025-06-30",
-      "free_cash_flow": 106100000.0,
+      "free_cash_flow": 1287300000.0,
       "total_revenue": 1468700000.0,
-      "fcf_margin": 0.0722
+      "fcf_margin": 0.8765
     },
     {
       "symbol": "ON",
@@ -768,9 +768,9 @@
     {
       "symbol": "ON",
       "report_date": "2026-03-31",
-      "free_cash_flow": 217200000.0,
+      "free_cash_flow": 1181100000.0,
       "total_revenue": 1513300000.0,
-      "fcf_margin": 0.1435
+      "fcf_margin": 0.7805
     }
   ],
   "annual_fcf": [

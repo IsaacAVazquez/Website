@@ -111,6 +111,13 @@
       "gross_profit": 51093000000.0,
       "total_revenue": 68127000000.0,
       "gross_margin": 0.75
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2026-04-30",
+      "gross_profit": 61157000000.0,
+      "total_revenue": 81615000000.0,
+      "gross_margin": 0.7493
     }
   ],
   "annual_gross": [
@@ -276,6 +283,13 @@
       "operating_income": 44299000000.0,
       "total_revenue": 68127000000.0,
       "operating_margin": 0.6502
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2026-04-30",
+      "operating_income": 53536000000.0,
+      "total_revenue": 81615000000.0,
+      "operating_margin": 0.656
     }
   ],
   "annual_operating": [
@@ -441,6 +455,13 @@
       "net_income_common_stockholders": 42960000000.0,
       "total_revenue": 68127000000.0,
       "net_margin": 0.6306
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2026-04-30",
+      "net_income_common_stockholders": 159613000000.0,
+      "total_revenue": 81615000000.0,
+      "net_margin": 1.9557
     }
   ],
   "annual_net": [
@@ -606,6 +627,13 @@
       "ebitda": 51283000000.0,
       "total_revenue": 68127000000.0,
       "ebitda_margin": 0.7528
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2026-04-30",
+      "ebitda": 192970000000.0,
+      "total_revenue": 81615000000.0,
+      "ebitda_margin": 2.3644
     }
   ],
   "annual_ebitda": [
@@ -771,6 +799,13 @@
       "free_cash_flow": 34904000000.0,
       "total_revenue": 68127000000.0,
       "fcf_margin": 0.5123
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2026-04-30",
+      "free_cash_flow": 119076000000.0,
+      "total_revenue": 81615000000.0,
+      "fcf_margin": 1.459
     }
   ],
   "annual_fcf": [

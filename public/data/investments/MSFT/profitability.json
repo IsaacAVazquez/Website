@@ -66,11 +66,11 @@
     {
       "symbol": "MSFT",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 27233000000.0,
+      "net_income_common_stockholders": 101832000000.0,
       "beginning_stockholders_equity": 321891000000.0,
       "ending_stockholders_equity": 343479000000.0,
       "avg_equity": 332685000000.0,
-      "roe": 0.0819
+      "roe": 0.3061
     },
     {
       "symbol": "MSFT",
@@ -93,11 +93,11 @@
     {
       "symbol": "MSFT",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 31778000000.0,
+      "net_income_common_stockholders": 125216000000.0,
       "beginning_stockholders_equity": 390875000000.0,
       "ending_stockholders_equity": 414367000000.0,
       "avg_equity": 402621000000.0,
-      "roe": 0.0789
+      "roe": 0.311
     }
   ],
   "roa": [
@@ -167,11 +167,11 @@
     {
       "symbol": "MSFT",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 27233000000.0,
+      "net_income_common_stockholders": 101832000000.0,
       "beginning_total_assets": 562624000000.0,
       "ending_total_assets": 619003000000.0,
       "avg_assets": 590813500000.0,
-      "roa": 0.0461
+      "roa": 0.1724
     },
     {
       "symbol": "MSFT",
@@ -194,11 +194,11 @@
     {
       "symbol": "MSFT",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 31778000000.0,
+      "net_income_common_stockholders": 125216000000.0,
       "beginning_total_assets": 665302000000.0,
       "ending_total_assets": 694228000000.0,
       "avg_assets": 679765000000.0,
-      "roa": 0.0467
+      "roa": 0.1842
     }
   ],
   "roic": [
@@ -283,12 +283,12 @@
       "symbol": "MSFT",
       "report_date": "2025-06-30",
       "ebit": 33231000000.0,
-      "tax_rate_for_calcs": 0.17,
-      "nopat": 27581730000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 27249420000.0,
       "beginning_invested_capital": 364772000000.0,
       "ending_invested_capital": 386630000000.0,
       "avg_invested_capital": 375701000000.0,
-      "roic": 0.0734
+      "roic": 0.0725
     },
     {
       "symbol": "MSFT",
@@ -377,8 +377,8 @@
     {
       "symbol": "MSFT",
       "report_date": "2025-06-30T00:00:00.000",
-      "roe": 0.0819,
-      "roa": 0.0461,
+      "roe": 0.3061,
+      "roa": 0.1724,
       "equity_multiplier": 1.78
     },
     {
@@ -398,8 +398,8 @@
     {
       "symbol": "MSFT",
       "report_date": "2026-03-31T00:00:00.000",
-      "roe": 0.0789,
-      "roa": 0.0467,
+      "roe": 0.311,
+      "roa": 0.1842,
       "equity_multiplier": 1.69
     }
   ],
@@ -456,8 +456,8 @@
     {
       "symbol": "MSFT",
       "report_date": "2025-06-30T00:00:00.000",
-      "roa": 0.0461,
-      "net_margin": 0.3563,
+      "roa": 0.1724,
+      "net_margin": 1.3322,
       "asset_turnover": 0.13
     },
     {
@@ -477,8 +477,8 @@
     {
       "symbol": "MSFT",
       "report_date": "2026-03-31T00:00:00.000",
-      "roa": 0.0467,
-      "net_margin": 0.3834,
+      "roa": 0.1842,
+      "net_margin": 1.5107,
       "asset_turnover": 0.12
     }
   ]

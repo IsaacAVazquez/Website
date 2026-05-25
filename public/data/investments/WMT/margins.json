@@ -1,0 +1,862 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "WMT",
+      "report_date": "2022-04-30",
+      "gross_profit": 34722000000.0,
+      "total_revenue": 141569000000.0,
+      "gross_margin": 0.2453
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2022-07-31",
+      "gross_profit": 37021000000.0,
+      "total_revenue": 152859000000.0,
+      "gross_margin": 0.2422
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2022-10-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2023-01-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2023-04-30",
+      "gross_profit": 37017000000.0,
+      "total_revenue": 152301000000.0,
+      "gross_margin": 0.2431
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2023-07-31",
+      "gross_profit": 39782000000.0,
+      "total_revenue": 161632000000.0,
+      "gross_margin": 0.2461
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2023-10-31",
+      "gross_profit": 39621000000.0,
+      "total_revenue": 160804000000.0,
+      "gross_margin": 0.2464
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-01-31",
+      "gross_profit": 41563000000.0,
+      "total_revenue": 173388000000.0,
+      "gross_margin": 0.2397
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-04-30",
+      "gross_profit": 40077000000.0,
+      "total_revenue": 161508000000.0,
+      "gross_margin": 0.2481
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-07-31",
+      "gross_profit": 42525000000.0,
+      "total_revenue": 169335000000.0,
+      "gross_margin": 0.2511
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-10-31",
+      "gross_profit": 42248000000.0,
+      "total_revenue": 169588000000.0,
+      "gross_margin": 0.2491
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-01-31",
+      "gross_profit": 44382000000.0,
+      "total_revenue": 180554000000.0,
+      "gross_margin": 0.2458
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-04-30",
+      "gross_profit": 41306000000.0,
+      "total_revenue": 165609000000.0,
+      "gross_margin": 0.2494
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-07-31",
+      "gross_profit": 44631000000.0,
+      "total_revenue": 177402000000.0,
+      "gross_margin": 0.2516
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-10-31",
+      "gross_profit": 44790000000.0,
+      "total_revenue": 179496000000.0,
+      "gross_margin": 0.2495
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2026-01-31",
+      "gross_profit": 47041000000.0,
+      "total_revenue": 190656000000.0,
+      "gross_margin": 0.2467
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2026-04-30",
+      "gross_profit": 181155000000.0,
+      "total_revenue": 725305000000.0,
+      "gross_margin": 0.2498
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "WMT",
+      "report_date": "2020-01-31",
+      "gross_profit": 129359000000.0,
+      "total_revenue": 523964000000.0,
+      "gross_margin": 0.2469
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2021-01-31",
+      "gross_profit": 138836000000.0,
+      "total_revenue": 559151000000.0,
+      "gross_margin": 0.2483
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2022-01-31",
+      "gross_profit": 143754000000.0,
+      "total_revenue": 572754000000.0,
+      "gross_margin": 0.251
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2023-01-31",
+      "gross_profit": 147568000000.0,
+      "total_revenue": 611289000000.0,
+      "gross_margin": 0.2414
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-01-31",
+      "gross_profit": 157983000000.0,
+      "total_revenue": 648125000000.0,
+      "gross_margin": 0.2438
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-01-31",
+      "gross_profit": 169232000000.0,
+      "total_revenue": 680985000000.0,
+      "gross_margin": 0.2485
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2026-01-31",
+      "gross_profit": 177768000000.0,
+      "total_revenue": 713163000000.0,
+      "gross_margin": 0.2493
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "WMT",
+      "report_date": "2022-04-30",
+      "operating_income": 5318000000.0,
+      "total_revenue": 141569000000.0,
+      "operating_margin": 0.0376
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2022-07-31",
+      "operating_income": 6854000000.0,
+      "total_revenue": 152859000000.0,
+      "operating_margin": 0.0448
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2022-10-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2023-01-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2023-04-30",
+      "operating_income": 6240000000.0,
+      "total_revenue": 152301000000.0,
+      "operating_margin": 0.041
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2023-07-31",
+      "operating_income": 7316000000.0,
+      "total_revenue": 161632000000.0,
+      "operating_margin": 0.0453
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2023-10-31",
+      "operating_income": 6202000000.0,
+      "total_revenue": 160804000000.0,
+      "operating_margin": 0.0386
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-01-31",
+      "operating_income": 7254000000.0,
+      "total_revenue": 173388000000.0,
+      "operating_margin": 0.0418
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-04-30",
+      "operating_income": 6841000000.0,
+      "total_revenue": 161508000000.0,
+      "operating_margin": 0.0424
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-07-31",
+      "operating_income": 7940000000.0,
+      "total_revenue": 169335000000.0,
+      "operating_margin": 0.0469
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-10-31",
+      "operating_income": 6708000000.0,
+      "total_revenue": 169588000000.0,
+      "operating_margin": 0.0396
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-01-31",
+      "operating_income": 7859000000.0,
+      "total_revenue": 180554000000.0,
+      "operating_margin": 0.0435
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-04-30",
+      "operating_income": 7135000000.0,
+      "total_revenue": 165609000000.0,
+      "operating_margin": 0.0431
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-07-31",
+      "operating_income": 7286000000.0,
+      "total_revenue": 177402000000.0,
+      "operating_margin": 0.0411
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-10-31",
+      "operating_income": 6696000000.0,
+      "total_revenue": 179496000000.0,
+      "operating_margin": 0.0373
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2026-01-31",
+      "operating_income": 8708000000.0,
+      "total_revenue": 190656000000.0,
+      "operating_margin": 0.0457
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2026-04-30",
+      "operating_income": 30183000000.0,
+      "total_revenue": 725305000000.0,
+      "operating_margin": 0.0416
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "WMT",
+      "report_date": "2020-01-31",
+      "operating_income": 20568000000.0,
+      "total_revenue": 523964000000.0,
+      "operating_margin": 0.0393
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2021-01-31",
+      "operating_income": 22548000000.0,
+      "total_revenue": 559151000000.0,
+      "operating_margin": 0.0403
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2022-01-31",
+      "operating_income": 25942000000.0,
+      "total_revenue": 572754000000.0,
+      "operating_margin": 0.0453
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2023-01-31",
+      "operating_income": 20428000000.0,
+      "total_revenue": 611289000000.0,
+      "operating_margin": 0.0334
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-01-31",
+      "operating_income": 27012000000.0,
+      "total_revenue": 648125000000.0,
+      "operating_margin": 0.0417
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-01-31",
+      "operating_income": 29348000000.0,
+      "total_revenue": 680985000000.0,
+      "operating_margin": 0.0431
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2026-01-31",
+      "operating_income": 29825000000.0,
+      "total_revenue": 713163000000.0,
+      "operating_margin": 0.0418
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "WMT",
+      "report_date": "2022-04-30",
+      "net_income_common_stockholders": 2054000000.0,
+      "total_revenue": 141569000000.0,
+      "net_margin": 0.0145
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2022-07-31",
+      "net_income_common_stockholders": 5149000000.0,
+      "total_revenue": 152859000000.0,
+      "net_margin": 0.0337
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2022-10-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2023-01-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2023-04-30",
+      "net_income_common_stockholders": 1673000000.0,
+      "total_revenue": 152301000000.0,
+      "net_margin": 0.011
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2023-07-31",
+      "net_income_common_stockholders": 7891000000.0,
+      "total_revenue": 161632000000.0,
+      "net_margin": 0.0488
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2023-10-31",
+      "net_income_common_stockholders": 453000000.0,
+      "total_revenue": 160804000000.0,
+      "net_margin": 0.0028
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-01-31",
+      "net_income_common_stockholders": 5494000000.0,
+      "total_revenue": 173388000000.0,
+      "net_margin": 0.0317
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-04-30",
+      "net_income_common_stockholders": 5104000000.0,
+      "total_revenue": 161508000000.0,
+      "net_margin": 0.0316
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-07-31",
+      "net_income_common_stockholders": 4501000000.0,
+      "total_revenue": 169335000000.0,
+      "net_margin": 0.0266
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-10-31",
+      "net_income_common_stockholders": 4577000000.0,
+      "total_revenue": 169588000000.0,
+      "net_margin": 0.027
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-01-31",
+      "net_income_common_stockholders": 5254000000.0,
+      "total_revenue": 180554000000.0,
+      "net_margin": 0.0291
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-04-30",
+      "net_income_common_stockholders": 4487000000.0,
+      "total_revenue": 165609000000.0,
+      "net_margin": 0.0271
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-07-31",
+      "net_income_common_stockholders": 7026000000.0,
+      "total_revenue": 177402000000.0,
+      "net_margin": 0.0396
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-10-31",
+      "net_income_common_stockholders": 6143000000.0,
+      "total_revenue": 179496000000.0,
+      "net_margin": 0.0342
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2026-01-31",
+      "net_income_common_stockholders": 4237000000.0,
+      "total_revenue": 190656000000.0,
+      "net_margin": 0.0222
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2026-04-30",
+      "net_income_common_stockholders": 22736000000.0,
+      "total_revenue": 725305000000.0,
+      "net_margin": 0.0313
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "WMT",
+      "report_date": "2020-01-31",
+      "net_income_common_stockholders": 14881000000.0,
+      "total_revenue": 523964000000.0,
+      "net_margin": 0.0284
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2021-01-31",
+      "net_income_common_stockholders": 13510000000.0,
+      "total_revenue": 559151000000.0,
+      "net_margin": 0.0242
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2022-01-31",
+      "net_income_common_stockholders": 13673000000.0,
+      "total_revenue": 572754000000.0,
+      "net_margin": 0.0239
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2023-01-31",
+      "net_income_common_stockholders": 11680000000.0,
+      "total_revenue": 611289000000.0,
+      "net_margin": 0.0191
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-01-31",
+      "net_income_common_stockholders": 15511000000.0,
+      "total_revenue": 648125000000.0,
+      "net_margin": 0.0239
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-01-31",
+      "net_income_common_stockholders": 19436000000.0,
+      "total_revenue": 680985000000.0,
+      "net_margin": 0.0285
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2026-01-31",
+      "net_income_common_stockholders": 21893000000.0,
+      "total_revenue": 713163000000.0,
+      "net_margin": 0.0307
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "WMT",
+      "report_date": "2022-04-30",
+      "ebitda": null,
+      "total_revenue": 141569000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2022-07-31",
+      "ebitda": 9822000000.0,
+      "total_revenue": 152859000000.0,
+      "ebitda_margin": 0.0643
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2022-10-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2023-01-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2023-04-30",
+      "ebitda": 6197000000.0,
+      "total_revenue": 152301000000.0,
+      "ebitda_margin": 0.0407
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2023-07-31",
+      "ebitda": 14274000000.0,
+      "total_revenue": 161632000000.0,
+      "ebitda_margin": 0.0883
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2023-10-31",
+      "ebitda": 4583000000.0,
+      "total_revenue": 160804000000.0,
+      "ebitda_margin": 0.0285
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-01-31",
+      "ebitda": 11330000000.0,
+      "total_revenue": 173388000000.0,
+      "ebitda_margin": 0.0653
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-04-30",
+      "ebitda": 10877000000.0,
+      "total_revenue": 161508000000.0,
+      "ebitda_margin": 0.0673
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-07-31",
+      "ebitda": 10103000000.0,
+      "total_revenue": 169335000000.0,
+      "ebitda_margin": 0.0597
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-10-31",
+      "ebitda": 9976000000.0,
+      "total_revenue": 169588000000.0,
+      "ebitda_margin": 0.0588
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-01-31",
+      "ebitda": 11054000000.0,
+      "total_revenue": 180554000000.0,
+      "ebitda_margin": 0.0612
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-04-30",
+      "ebitda": 10000000000.0,
+      "total_revenue": 165609000000.0,
+      "ebitda_margin": 0.0604
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-07-31",
+      "ebitda": 13575000000.0,
+      "total_revenue": 177402000000.0,
+      "ebitda_margin": 0.0765
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-10-31",
+      "ebitda": 12476000000.0,
+      "total_revenue": 179496000000.0,
+      "ebitda_margin": 0.0695
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2026-01-31",
+      "ebitda": 10420000000.0,
+      "total_revenue": 190656000000.0,
+      "ebitda_margin": 0.0547
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2026-04-30",
+      "ebitda": 48139000000.0,
+      "total_revenue": 725305000000.0,
+      "ebitda_margin": 0.0664
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "WMT",
+      "report_date": "2020-01-31",
+      "ebitda": 33702000000.0,
+      "total_revenue": 523964000000.0,
+      "ebitda_margin": 0.0643
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2021-01-31",
+      "ebitda": 34031000000.0,
+      "total_revenue": 559151000000.0,
+      "ebitda_margin": 0.0609
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2022-01-31",
+      "ebitda": 31348000000.0,
+      "total_revenue": 572754000000.0,
+      "ebitda_margin": 0.0547
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2023-01-31",
+      "ebitda": 30089000000.0,
+      "total_revenue": 611289000000.0,
+      "ebitda_margin": 0.0492
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-01-31",
+      "ebitda": 36384000000.0,
+      "total_revenue": 648125000000.0,
+      "ebitda_margin": 0.0561
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-01-31",
+      "ebitda": 42010000000.0,
+      "total_revenue": 680985000000.0,
+      "ebitda_margin": 0.0617
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2026-01-31",
+      "ebitda": 46471000000.0,
+      "total_revenue": 713163000000.0,
+      "ebitda_margin": 0.0652
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "WMT",
+      "report_date": "2022-04-30",
+      "free_cash_flow": -7297000000.0,
+      "total_revenue": 141569000000.0,
+      "fcf_margin": -0.0515
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2022-07-31",
+      "free_cash_flow": 9045000000.0,
+      "total_revenue": 152859000000.0,
+      "fcf_margin": 0.0592
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2022-10-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2023-01-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2023-04-30",
+      "free_cash_flow": null,
+      "total_revenue": 152301000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2023-07-31",
+      "free_cash_flow": 8781000000.0,
+      "total_revenue": 161632000000.0,
+      "fcf_margin": 0.0543
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2023-10-31",
+      "free_cash_flow": -4645000000.0,
+      "total_revenue": 160804000000.0,
+      "fcf_margin": -0.0289
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-01-31",
+      "free_cash_flow": 10780000000.0,
+      "total_revenue": 173388000000.0,
+      "fcf_margin": 0.0622
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-04-30",
+      "free_cash_flow": -427000000.0,
+      "total_revenue": 161508000000.0,
+      "fcf_margin": -0.0026
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-07-31",
+      "free_cash_flow": 6277000000.0,
+      "total_revenue": 169335000000.0,
+      "fcf_margin": 0.0371
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-10-31",
+      "free_cash_flow": 372000000.0,
+      "total_revenue": 169588000000.0,
+      "fcf_margin": 0.0022
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-01-31",
+      "free_cash_flow": 6438000000.0,
+      "total_revenue": 180554000000.0,
+      "fcf_margin": 0.0357
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-04-30",
+      "free_cash_flow": 425000000.0,
+      "total_revenue": 165609000000.0,
+      "fcf_margin": 0.0026
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-07-31",
+      "free_cash_flow": 6518000000.0,
+      "total_revenue": 177402000000.0,
+      "fcf_margin": 0.0367
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-10-31",
+      "free_cash_flow": 1882000000.0,
+      "total_revenue": 179496000000.0,
+      "fcf_margin": 0.0105
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2026-01-31",
+      "free_cash_flow": 6098000000.0,
+      "total_revenue": 190656000000.0,
+      "fcf_margin": 0.032
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2026-04-30",
+      "free_cash_flow": 12552000000.0,
+      "total_revenue": 725305000000.0,
+      "fcf_margin": 0.0173
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "WMT",
+      "report_date": "2020-01-31",
+      "free_cash_flow": null,
+      "total_revenue": 523964000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2021-01-31",
+      "free_cash_flow": 25810000000.0,
+      "total_revenue": 559151000000.0,
+      "fcf_margin": 0.0462
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2022-01-31",
+      "free_cash_flow": 11075000000.0,
+      "total_revenue": 572754000000.0,
+      "fcf_margin": 0.0193
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2023-01-31",
+      "free_cash_flow": 11984000000.0,
+      "total_revenue": 611289000000.0,
+      "fcf_margin": 0.0196
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-01-31",
+      "free_cash_flow": 15120000000.0,
+      "total_revenue": 648125000000.0,
+      "fcf_margin": 0.0233
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-01-31",
+      "free_cash_flow": 12660000000.0,
+      "total_revenue": 680985000000.0,
+      "fcf_margin": 0.0186
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2026-01-31",
+      "free_cash_flow": 14923000000.0,
+      "total_revenue": 713163000000.0,
+      "fcf_margin": 0.0209
+    }
+  ]
+}

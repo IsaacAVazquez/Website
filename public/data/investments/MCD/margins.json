@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "MCD",
+      "report_date": "2022-06-30",
+      "gross_profit": 3302100000.0,
+      "total_revenue": 5718400000.0,
+      "gross_margin": 0.5775
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2022-09-30",
+      "gross_profit": 3446100000.0,
+      "total_revenue": 5872100000.0,
+      "gross_margin": 0.5869
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2022-12-31",
+      "gross_profit": 3408900000.0,
+      "total_revenue": 5926500000.0,
+      "gross_margin": 0.5752
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2023-06-30",
+      "gross_profit": 3731000000.0,
+      "total_revenue": 6497000000.0,
+      "gross_margin": 0.5743
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2023-09-30",
+      "gross_profit": 3864000000.0,
+      "total_revenue": 6692000000.0,
+      "gross_margin": 0.5774
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2023-12-31",
+      "gross_profit": 3654200000.0,
+      "total_revenue": 6406200000.0,
+      "gross_margin": 0.5704
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-03-31",
+      "gross_profit": 3439000000.0,
+      "total_revenue": 6169000000.0,
+      "gross_margin": 0.5575
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-06-30",
+      "gross_profit": 3718000000.0,
+      "total_revenue": 6490000000.0,
+      "gross_margin": 0.5729
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-09-30",
+      "gross_profit": 3876000000.0,
+      "total_revenue": 6874000000.0,
+      "gross_margin": 0.5639
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-12-31",
+      "gross_profit": 3679000000.0,
+      "total_revenue": 6388000000.0,
+      "gross_margin": 0.5759
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-03-31",
+      "gross_profit": 3336000000.0,
+      "total_revenue": 5955000000.0,
+      "gross_margin": 0.5602
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-06-30",
+      "gross_profit": 14851000000.0,
+      "total_revenue": 26059000000.0,
+      "gross_margin": 0.5699
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-09-30",
+      "gross_profit": 4104000000.0,
+      "total_revenue": 7077000000.0,
+      "gross_margin": 0.5799
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-12-31",
+      "gross_profit": 4030000000.0,
+      "total_revenue": 7008000000.0,
+      "gross_margin": 0.5751
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2026-03-31",
+      "gross_profit": 15741000000.0,
+      "total_revenue": 27447000000.0,
+      "gross_margin": 0.5735
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "MCD",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2020-12-31",
+      "gross_profit": 9752100000.0,
+      "total_revenue": 19207800000.0,
+      "gross_margin": 0.5077
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2021-12-31",
+      "gross_profit": 12580200000.0,
+      "total_revenue": 23222900000.0,
+      "gross_margin": 0.5417
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2022-12-31",
+      "gross_profit": 13207000000.0,
+      "total_revenue": 23182000000.0,
+      "gross_margin": 0.5697
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2023-12-31",
+      "gross_profit": 14564000000.0,
+      "total_revenue": 25495000000.0,
+      "gross_margin": 0.5712
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-12-31",
+      "gross_profit": 14710000000.0,
+      "total_revenue": 25920000000.0,
+      "gross_margin": 0.5675
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-12-31",
+      "gross_profit": 15434000000.0,
+      "total_revenue": 26885000000.0,
+      "gross_margin": 0.5741
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "MCD",
+      "report_date": "2022-06-30",
+      "operating_income": 1711800000.0,
+      "total_revenue": 5718400000.0,
+      "operating_margin": 0.2993
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2022-09-30",
+      "operating_income": 2763900000.0,
+      "total_revenue": 5872100000.0,
+      "operating_margin": 0.4707
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2022-12-31",
+      "operating_income": 2597200000.0,
+      "total_revenue": 5926500000.0,
+      "operating_margin": 0.4382
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2023-06-30",
+      "operating_income": 3069000000.0,
+      "total_revenue": 6497000000.0,
+      "operating_margin": 0.4724
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2023-09-30",
+      "operating_income": 3183000000.0,
+      "total_revenue": 6692000000.0,
+      "operating_margin": 0.4756
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2023-12-31",
+      "operating_income": 2832800000.0,
+      "total_revenue": 6406200000.0,
+      "operating_margin": 0.4422
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-03-31",
+      "operating_income": 2718000000.0,
+      "total_revenue": 6169000000.0,
+      "operating_margin": 0.4406
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-06-30",
+      "operating_income": 3027000000.0,
+      "total_revenue": 6490000000.0,
+      "operating_margin": 0.4664
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-09-30",
+      "operating_income": 3229000000.0,
+      "total_revenue": 6874000000.0,
+      "operating_margin": 0.4697
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-12-31",
+      "operating_income": 2879000000.0,
+      "total_revenue": 6388000000.0,
+      "operating_margin": 0.4507
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-03-31",
+      "operating_income": 2654000000.0,
+      "total_revenue": 5955000000.0,
+      "operating_margin": 0.4457
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-06-30",
+      "operating_income": 12020000000.0,
+      "total_revenue": 26059000000.0,
+      "operating_margin": 0.4613
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-09-30",
+      "operating_income": 3319000000.0,
+      "total_revenue": 7077000000.0,
+      "operating_margin": 0.469
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-12-31",
+      "operating_income": 3157000000.0,
+      "total_revenue": 7008000000.0,
+      "operating_margin": 0.4505
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2026-03-31",
+      "operating_income": 12624000000.0,
+      "total_revenue": 27447000000.0,
+      "operating_margin": 0.4599
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "MCD",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2020-12-31",
+      "operating_income": 7206500000.0,
+      "total_revenue": 19207800000.0,
+      "operating_margin": 0.3752
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2021-12-31",
+      "operating_income": 9872700000.0,
+      "total_revenue": 23222900000.0,
+      "operating_margin": 0.4251
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2022-12-31",
+      "operating_income": 10345000000.0,
+      "total_revenue": 23182000000.0,
+      "operating_margin": 0.4463
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2023-12-31",
+      "operating_income": 11747000000.0,
+      "total_revenue": 25495000000.0,
+      "operating_margin": 0.4608
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-12-31",
+      "operating_income": 11851000000.0,
+      "total_revenue": 25920000000.0,
+      "operating_margin": 0.4572
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-12-31",
+      "operating_income": 12394000000.0,
+      "total_revenue": 26885000000.0,
+      "operating_margin": 0.461
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "MCD",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 1188000000.0,
+      "total_revenue": 5718400000.0,
+      "net_margin": 0.2078
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": 1981600000.0,
+      "total_revenue": 5872100000.0,
+      "net_margin": 0.3375
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 1903400000.0,
+      "total_revenue": 5926500000.0,
+      "net_margin": 0.3212
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 2310000000.0,
+      "total_revenue": 6497000000.0,
+      "net_margin": 0.3555
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 2317000000.0,
+      "total_revenue": 6692000000.0,
+      "net_margin": 0.3462
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 2039000000.0,
+      "total_revenue": 6406200000.0,
+      "net_margin": 0.3183
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1929000000.0,
+      "total_revenue": 6169000000.0,
+      "net_margin": 0.3127
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 2022000000.0,
+      "total_revenue": 6490000000.0,
+      "net_margin": 0.3116
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 2255000000.0,
+      "total_revenue": 6874000000.0,
+      "net_margin": 0.328
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 2016000000.0,
+      "total_revenue": 6388000000.0,
+      "net_margin": 0.3156
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1868000000.0,
+      "total_revenue": 5955000000.0,
+      "net_margin": 0.3137
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 2253000000.0,
+      "total_revenue": 26059000000.0,
+      "net_margin": 0.0865
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 2278000000.0,
+      "total_revenue": 7077000000.0,
+      "net_margin": 0.3219
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 2164000000.0,
+      "total_revenue": 7008000000.0,
+      "net_margin": 0.3088
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1983000000.0,
+      "total_revenue": 27447000000.0,
+      "net_margin": 0.0722
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "MCD",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 4730500000.0,
+      "total_revenue": 19207800000.0,
+      "net_margin": 0.2463
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 7545200000.0,
+      "total_revenue": 23222900000.0,
+      "net_margin": 0.3249
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 6177000000.0,
+      "total_revenue": 23182000000.0,
+      "net_margin": 0.2665
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 8469000000.0,
+      "total_revenue": 25495000000.0,
+      "net_margin": 0.3322
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 8223000000.0,
+      "total_revenue": 25920000000.0,
+      "net_margin": 0.3172
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 8563000000.0,
+      "total_revenue": 26885000000.0,
+      "net_margin": 0.3185
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "MCD",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 5718400000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2022-09-30",
+      "ebitda": 2935700000.0,
+      "total_revenue": 5872100000.0,
+      "ebitda_margin": 0.4999
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2022-12-31",
+      "ebitda": 3124900000.0,
+      "total_revenue": 5926500000.0,
+      "ebitda_margin": 0.5273
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2023-06-30",
+      "ebitda": 3639000000.0,
+      "total_revenue": 6497000000.0,
+      "ebitda_margin": 0.5601
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2023-09-30",
+      "ebitda": 3763000000.0,
+      "total_revenue": 6692000000.0,
+      "ebitda_margin": 0.5623
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2023-12-31",
+      "ebitda": 3372700000.0,
+      "total_revenue": 6406200000.0,
+      "ebitda_margin": 0.5265
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-03-31",
+      "ebitda": 3291000000.0,
+      "total_revenue": 6169000000.0,
+      "ebitda_margin": 0.5335
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-06-30",
+      "ebitda": 3430000000.0,
+      "total_revenue": 6490000000.0,
+      "ebitda_margin": 0.5285
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-09-30",
+      "ebitda": 3756000000.0,
+      "total_revenue": 6874000000.0,
+      "ebitda_margin": 0.5464
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-12-31",
+      "ebitda": 3471000000.0,
+      "total_revenue": 6388000000.0,
+      "ebitda_margin": 0.5434
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-03-31",
+      "ebitda": 3226000000.0,
+      "total_revenue": 5955000000.0,
+      "ebitda_margin": 0.5417
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-06-30",
+      "ebitda": 14246000000.0,
+      "total_revenue": 26059000000.0,
+      "ebitda_margin": 0.5467
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-09-30",
+      "ebitda": 3914000000.0,
+      "total_revenue": 7077000000.0,
+      "ebitda_margin": 0.5531
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-12-31",
+      "ebitda": 3743000000.0,
+      "total_revenue": 7008000000.0,
+      "ebitda_margin": 0.5341
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2026-03-31",
+      "ebitda": 14960000000.0,
+      "total_revenue": 27447000000.0,
+      "ebitda_margin": 0.5451
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "MCD",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2020-12-31",
+      "ebitda": 9110200000.0,
+      "total_revenue": 19207800000.0,
+      "ebitda_margin": 0.4743
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2021-12-31",
+      "ebitda": 12181800000.0,
+      "total_revenue": 23222900000.0,
+      "ebitda_margin": 0.5246
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2022-12-31",
+      "ebitda": 10903000000.0,
+      "total_revenue": 23182000000.0,
+      "ebitda_margin": 0.4703
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2023-12-31",
+      "ebitda": 13861000000.0,
+      "total_revenue": 25495000000.0,
+      "ebitda_margin": 0.5437
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-12-31",
+      "ebitda": 13948000000.0,
+      "total_revenue": 25920000000.0,
+      "ebitda_margin": 0.5381
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-12-31",
+      "ebitda": 14678000000.0,
+      "total_revenue": 26885000000.0,
+      "ebitda_margin": 0.546
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "MCD",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 180200000.0,
+      "total_revenue": 5718400000.0,
+      "fcf_margin": 0.0315
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2022-09-30",
+      "free_cash_flow": 1902700000.0,
+      "total_revenue": 5872100000.0,
+      "fcf_margin": 0.324
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 1672500000.0,
+      "total_revenue": 5926500000.0,
+      "fcf_margin": 0.2822
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2023-03-31",
+      "free_cash_flow": 1917000000.0,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 1147000000.0,
+      "total_revenue": 6497000000.0,
+      "fcf_margin": 0.1765
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 2459000000.0,
+      "total_revenue": 6692000000.0,
+      "fcf_margin": 0.3675
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 1731600000.0,
+      "total_revenue": 6406200000.0,
+      "fcf_margin": 0.2703
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 1843000000.0,
+      "total_revenue": 6169000000.0,
+      "fcf_margin": 0.2988
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 1061000000.0,
+      "total_revenue": 6490000000.0,
+      "fcf_margin": 0.1635
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 1942000000.0,
+      "total_revenue": 6874000000.0,
+      "fcf_margin": 0.2825
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 1824000000.0,
+      "total_revenue": 6388000000.0,
+      "fcf_margin": 0.2855
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 1877000000.0,
+      "total_revenue": 5955000000.0,
+      "fcf_margin": 0.3152
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 1254000000.0,
+      "total_revenue": 26059000000.0,
+      "fcf_margin": 0.0481
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 2417000000.0,
+      "total_revenue": 7077000000.0,
+      "fcf_margin": 0.3415
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 1638000000.0,
+      "total_revenue": 7008000000.0,
+      "fcf_margin": 0.2337
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 1730000000.0,
+      "total_revenue": 27447000000.0,
+      "fcf_margin": 0.063
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "MCD",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 4624400000.0,
+      "total_revenue": 19207800000.0,
+      "fcf_margin": 0.2408
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 7101500000.0,
+      "total_revenue": 23222900000.0,
+      "fcf_margin": 0.3058
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 5488000000.0,
+      "total_revenue": 23182000000.0,
+      "fcf_margin": 0.2367
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 7255000000.0,
+      "total_revenue": 25495000000.0,
+      "fcf_margin": 0.2846
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 6672000000.0,
+      "total_revenue": 25920000000.0,
+      "fcf_margin": 0.2574
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 7186000000.0,
+      "total_revenue": 26885000000.0,
+      "fcf_margin": 0.2673
+    }
+  ]
+}

@@ -7,7 +7,8 @@
     "born": null,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "JPM",
@@ -17,7 +18,8 @@
     "born": 1963,
     "pay": 6616871,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "JPM",
@@ -27,7 +29,8 @@
     "born": 1966,
     "pay": 11631825,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "JPM",
@@ -37,7 +40,8 @@
     "born": 1956,
     "pay": 8087852,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "JPM",
@@ -47,7 +51,8 @@
     "born": 1973,
     "pay": 8400000,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "JPM",
@@ -57,7 +62,8 @@
     "born": 1971,
     "pay": 147717,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "JPM",
@@ -67,7 +73,8 @@
     "born": 1970,
     "pay": 11608676,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "JPM",
@@ -77,7 +84,8 @@
     "born": 1974,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "JPM",
@@ -87,7 +95,8 @@
     "born": 1971,
     "pay": 7855000,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "JPM",
@@ -97,6 +106,7 @@
     "born": 1967,
     "pay": 13000000,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   }
 ]

@@ -87,9 +87,9 @@
     {
       "symbol": "MSFT",
       "report_date": "2025-06-30",
-      "gross_profit": 52427000000.0,
+      "gross_profit": 193893000000.0,
       "total_revenue": 76441000000.0,
-      "gross_margin": 0.6858
+      "gross_margin": 2.5365
     },
     {
       "symbol": "MSFT",
@@ -108,9 +108,9 @@
     {
       "symbol": "MSFT",
       "report_date": "2026-03-31",
-      "gross_profit": 56058000000.0,
+      "gross_profit": 217410000000.0,
       "total_revenue": 82886000000.0,
-      "gross_margin": 0.6763
+      "gross_margin": 2.623
     }
   ],
   "annual_gross": [
@@ -417,9 +417,9 @@
     {
       "symbol": "MSFT",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 27233000000.0,
+      "net_income_common_stockholders": 101832000000.0,
       "total_revenue": 76441000000.0,
-      "net_margin": 0.3563
+      "net_margin": 1.3322
     },
     {
       "symbol": "MSFT",
@@ -438,9 +438,9 @@
     {
       "symbol": "MSFT",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 31778000000.0,
+      "net_income_common_stockholders": 125216000000.0,
       "total_revenue": 82886000000.0,
-      "net_margin": 0.3834
+      "net_margin": 1.5107
     }
   ],
   "annual_net": [
@@ -747,9 +747,9 @@
     {
       "symbol": "MSFT",
       "report_date": "2025-06-30",
-      "free_cash_flow": 25568000000.0,
+      "free_cash_flow": 71611000000.0,
       "total_revenue": 76441000000.0,
-      "fcf_margin": 0.3345
+      "fcf_margin": 0.9368
     },
     {
       "symbol": "MSFT",
@@ -768,9 +768,9 @@
     {
       "symbol": "MSFT",
       "report_date": "2026-03-31",
-      "free_cash_flow": 15803000000.0,
+      "free_cash_flow": 72916000000.0,
       "total_revenue": 82886000000.0,
-      "fcf_margin": 0.1907
+      "fcf_margin": 0.8797
     }
   ],
   "annual_fcf": [

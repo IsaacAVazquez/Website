@@ -17,9 +17,9 @@
     {
       "symbol": "ADBE",
       "report_date": "2022-11-30",
-      "gross_profit": 3957000000.0,
-      "total_revenue": 4525000000.0,
-      "gross_margin": 0.8745
+      "gross_profit": 15441000000.0,
+      "total_revenue": 17606000000.0,
+      "gross_margin": 0.877
     },
     {
       "symbol": "ADBE",
@@ -108,9 +108,9 @@
     {
       "symbol": "ADBE",
       "report_date": "2026-02-28",
-      "gross_profit": 5734000000.0,
+      "gross_profit": 21860000000.0,
       "total_revenue": 6398000000.0,
-      "gross_margin": 0.8962
+      "gross_margin": 3.4167
     }
   ],
   "annual_gross": [
@@ -182,9 +182,9 @@
     {
       "symbol": "ADBE",
       "report_date": "2022-11-30",
-      "operating_income": 1505000000.0,
-      "total_revenue": 4525000000.0,
-      "operating_margin": 0.3326
+      "operating_income": 6098000000.0,
+      "total_revenue": 17606000000.0,
+      "operating_margin": 0.3464
     },
     {
       "symbol": "ADBE",
@@ -347,9 +347,9 @@
     {
       "symbol": "ADBE",
       "report_date": "2022-11-30",
-      "net_income_common_stockholders": 1176000000.0,
-      "total_revenue": 4525000000.0,
-      "net_margin": 0.2599
+      "net_income_common_stockholders": 4756000000.0,
+      "total_revenue": 17606000000.0,
+      "net_margin": 0.2701
     },
     {
       "symbol": "ADBE",
@@ -438,9 +438,9 @@
     {
       "symbol": "ADBE",
       "report_date": "2026-02-28",
-      "net_income_common_stockholders": 1889000000.0,
+      "net_income_common_stockholders": 7208000000.0,
       "total_revenue": 6398000000.0,
-      "net_margin": 0.2952
+      "net_margin": 1.1266
     }
   ],
   "annual_net": [
@@ -512,9 +512,9 @@
     {
       "symbol": "ADBE",
       "report_date": "2022-11-30",
-      "ebitda": 1760000000.0,
-      "total_revenue": 4525000000.0,
-      "ebitda_margin": 0.389
+      "ebitda": 6976000000.0,
+      "total_revenue": 17606000000.0,
+      "ebitda_margin": 0.3962
     },
     {
       "symbol": "ADBE",
@@ -603,9 +603,9 @@
     {
       "symbol": "ADBE",
       "report_date": "2026-02-28",
-      "ebitda": 2659000000.0,
+      "ebitda": 10013000000.0,
       "total_revenue": 6398000000.0,
-      "ebitda_margin": 0.4156
+      "ebitda_margin": 1.565
     }
   ],
   "annual_ebitda": [
@@ -677,9 +677,9 @@
     {
       "symbol": "ADBE",
       "report_date": "2022-11-30",
-      "free_cash_flow": null,
-      "total_revenue": 4525000000.0,
-      "fcf_margin": null
+      "free_cash_flow": 7396000000.0,
+      "total_revenue": 17606000000.0,
+      "fcf_margin": 0.4201
     },
     {
       "symbol": "ADBE",
@@ -768,9 +768,9 @@
     {
       "symbol": "ADBE",
       "report_date": "2026-02-28",
-      "free_cash_flow": 2921000000.0,
+      "free_cash_flow": 10317000000.0,
       "total_revenue": 6398000000.0,
-      "fcf_margin": 0.4565
+      "fcf_margin": 1.6125
     }
   ],
   "annual_fcf": [

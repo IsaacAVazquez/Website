@@ -417,9 +417,9 @@
     {
       "symbol": "NXPI",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 445000000.0,
+      "net_income_common_stockholders": 2148000000.0,
       "total_revenue": 2926000000.0,
-      "net_margin": 0.1521
+      "net_margin": 0.7341
     },
     {
       "symbol": "NXPI",
@@ -438,9 +438,9 @@
     {
       "symbol": "NXPI",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 1122000000.0,
+      "net_income_common_stockholders": 2653000000.0,
       "total_revenue": 3181000000.0,
-      "net_margin": 0.3527
+      "net_margin": 0.834
     }
   ],
   "annual_net": [
@@ -582,9 +582,9 @@
     {
       "symbol": "NXPI",
       "report_date": "2025-06-30",
-      "ebitda": 923000000.0,
+      "ebitda": 4034000000.0,
       "total_revenue": 2926000000.0,
-      "ebitda_margin": 0.3154
+      "ebitda_margin": 1.3787
     },
     {
       "symbol": "NXPI",
@@ -603,9 +603,9 @@
     {
       "symbol": "NXPI",
       "report_date": "2026-03-31",
-      "ebitda": 1702000000.0,
+      "ebitda": 4717000000.0,
       "total_revenue": 3181000000.0,
-      "ebitda_margin": 0.5351
+      "ebitda_margin": 1.4829
     }
   ],
   "annual_ebitda": [
@@ -747,9 +747,9 @@
     {
       "symbol": "NXPI",
       "report_date": "2025-06-30",
-      "free_cash_flow": 659000000.0,
+      "free_cash_flow": 1852000000.0,
       "total_revenue": 2926000000.0,
-      "fcf_margin": 0.2252
+      "fcf_margin": 0.6329
     },
     {
       "symbol": "NXPI",
@@ -768,9 +768,9 @@
     {
       "symbol": "NXPI",
       "report_date": "2026-03-31",
-      "free_cash_flow": 672000000.0,
+      "free_cash_flow": 2554000000.0,
       "total_revenue": 3181000000.0,
-      "fcf_margin": 0.2113
+      "fcf_margin": 0.8029
     }
   ],
   "annual_fcf": [

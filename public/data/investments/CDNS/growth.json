@@ -87,9 +87,9 @@
     {
       "symbol": "CDNS",
       "report_date": "2025-06-30T00:00:00.000",
-      "revenue": 1275441000.0,
+      "revenue": 5089287000.0,
       "prev_year_revenue": 1060681000.0,
-      "yoy_growth": 0.2025
+      "yoy_growth": 3.7981
     },
     {
       "symbol": "CDNS",
@@ -108,9 +108,9 @@
     {
       "symbol": "CDNS",
       "report_date": "2026-03-31T00:00:00.000",
-      "revenue": 1474220000.0,
+      "revenue": 5528613000.0,
       "prev_year_revenue": 1242366000.0,
-      "yoy_growth": 0.1866
+      "yoy_growth": 3.4501
     }
   ],
   "annual_revenue": [
@@ -252,9 +252,9 @@
     {
       "symbol": "CDNS",
       "report_date": "2025-06-30T00:00:00.000",
-      "operating_income": 370389000.0,
+      "operating_income": 1562249000.0,
       "prev_year_operating_income": 293843000.0,
-      "yoy_growth": 0.2605
+      "yoy_growth": 4.3166
     },
     {
       "symbol": "CDNS",
@@ -273,9 +273,9 @@
     {
       "symbol": "CDNS",
       "report_date": "2026-03-31T00:00:00.000",
-      "operating_income": 431336000.0,
+      "operating_income": 1719734000.0,
       "prev_year_operating_income": 361383000.0,
-      "yoy_growth": 0.1936
+      "yoy_growth": 3.7588
     }
   ],
   "annual_operating_income": [
@@ -726,9 +726,9 @@
     {
       "symbol": "CDNS",
       "report_date": "2025-06-30T00:00:00.000",
-      "free_cash_flow": 333518000.0,
+      "free_cash_flow": 1585090000.0,
       "prev_year_free_cash_flow": 126766000.0,
-      "yoy_growth": 1.631
+      "yoy_growth": 11.5041
     },
     {
       "symbol": "CDNS",
@@ -747,9 +747,9 @@
     {
       "symbol": "CDNS",
       "report_date": "2026-03-31T00:00:00.000",
-      "free_cash_flow": 306962000.0,
+      "free_cash_flow": 1429912000.0,
       "prev_year_free_cash_flow": 463960000.0,
-      "yoy_growth": -0.3384
+      "yoy_growth": 2.082
     }
   ],
   "annual_fcf": [
@@ -1066,9 +1066,9 @@
     {
       "symbol": "CDNS",
       "report_date": "2007-09-30T00:00:00.000",
-      "eps": 0.24,
+      "eps": 0.2428,
       "prev_year_eps": 0.14,
-      "yoy_growth": 0.7143
+      "yoy_growth": 0.7343
     },
     {
       "symbol": "CDNS",
@@ -1095,8 +1095,8 @@
       "symbol": "CDNS",
       "report_date": "2008-09-30T00:00:00.000",
       "eps": -0.67,
-      "prev_year_eps": 0.24,
-      "yoy_growth": -3.7917
+      "prev_year_eps": 0.2428,
+      "yoy_growth": -3.7595
     },
     {
       "symbol": "CDNS",
@@ -1332,261 +1332,261 @@
     {
       "symbol": "CDNS",
       "report_date": "2017-03-31T00:00:00.000",
-      "eps": 0.25,
+      "eps": 0.2458,
       "prev_year_eps": 0.17,
-      "yoy_growth": 0.4706
+      "yoy_growth": 0.4459
     },
     {
       "symbol": "CDNS",
       "report_date": "2017-06-30T00:00:00.000",
-      "eps": 0.25,
+      "eps": 0.2473,
       "prev_year_eps": 0.17,
-      "yoy_growth": 0.4706
+      "yoy_growth": 0.4547
     },
     {
       "symbol": "CDNS",
       "report_date": "2017-09-30T00:00:00.000",
-      "eps": 0.29,
+      "eps": 0.2884,
       "prev_year_eps": 0.23,
-      "yoy_growth": 0.2609
+      "yoy_growth": 0.2539
     },
     {
       "symbol": "CDNS",
       "report_date": "2017-12-31T00:00:00.000",
-      "eps": -0.05,
+      "eps": -0.0529,
       "prev_year_eps": 0.14,
-      "yoy_growth": -1.3571
+      "yoy_growth": -1.3779
     },
     {
       "symbol": "CDNS",
       "report_date": "2018-03-31T00:00:00.000",
-      "eps": 0.26,
-      "prev_year_eps": 0.25,
-      "yoy_growth": 0.04
+      "eps": 0.2588,
+      "prev_year_eps": 0.2458,
+      "yoy_growth": 0.0529
     },
     {
       "symbol": "CDNS",
       "report_date": "2018-06-30T00:00:00.000",
-      "eps": 0.27,
-      "prev_year_eps": 0.25,
-      "yoy_growth": 0.08
+      "eps": 0.2676,
+      "prev_year_eps": 0.2473,
+      "yoy_growth": 0.0821
     },
     {
       "symbol": "CDNS",
       "report_date": "2018-09-30T00:00:00.000",
-      "eps": 0.35,
-      "prev_year_eps": 0.29,
-      "yoy_growth": 0.2069
+      "eps": 0.3526,
+      "prev_year_eps": 0.2884,
+      "yoy_growth": 0.2226
     },
     {
       "symbol": "CDNS",
       "report_date": "2018-12-31T00:00:00.000",
-      "eps": 0.35,
-      "prev_year_eps": -0.05,
-      "yoy_growth": 8.0
+      "eps": 0.3511,
+      "prev_year_eps": -0.0529,
+      "yoy_growth": 7.6371
     },
     {
       "symbol": "CDNS",
       "report_date": "2019-03-31T00:00:00.000",
-      "eps": 0.43,
-      "prev_year_eps": 0.26,
-      "yoy_growth": 0.6538
+      "eps": 0.4296,
+      "prev_year_eps": 0.2588,
+      "yoy_growth": 0.66
     },
     {
       "symbol": "CDNS",
       "report_date": "2019-06-30T00:00:00.000",
-      "eps": 0.38,
-      "prev_year_eps": 0.27,
-      "yoy_growth": 0.4074
+      "eps": 0.3816,
+      "prev_year_eps": 0.2676,
+      "yoy_growth": 0.426
     },
     {
       "symbol": "CDNS",
       "report_date": "2019-09-30T00:00:00.000",
-      "eps": 0.36,
-      "prev_year_eps": 0.35,
-      "yoy_growth": 0.0286
+      "eps": 0.3617,
+      "prev_year_eps": 0.3526,
+      "yoy_growth": 0.0258
     },
     {
       "symbol": "CDNS",
       "report_date": "2019-12-31T00:00:00.000",
-      "eps": 2.36,
-      "prev_year_eps": 0.35,
-      "yoy_growth": 5.7429
+      "eps": 2.3597,
+      "prev_year_eps": 0.3511,
+      "yoy_growth": 5.7209
     },
     {
       "symbol": "CDNS",
       "report_date": "2020-03-31T00:00:00.000",
-      "eps": 0.44,
-      "prev_year_eps": 0.43,
-      "yoy_growth": 0.0233
+      "eps": 0.444,
+      "prev_year_eps": 0.4296,
+      "yoy_growth": 0.0335
     },
     {
       "symbol": "CDNS",
       "report_date": "2020-06-30T00:00:00.000",
-      "eps": 0.47,
-      "prev_year_eps": 0.38,
-      "yoy_growth": 0.2368
+      "eps": 0.4704,
+      "prev_year_eps": 0.3816,
+      "yoy_growth": 0.2327
     },
     {
       "symbol": "CDNS",
       "report_date": "2020-09-30T00:00:00.000",
-      "eps": 0.58,
-      "prev_year_eps": 0.36,
-      "yoy_growth": 0.6111
+      "eps": 0.5772,
+      "prev_year_eps": 0.3617,
+      "yoy_growth": 0.5958
     },
     {
       "symbol": "CDNS",
       "report_date": "2020-12-31T00:00:00.000",
-      "eps": 0.62,
-      "prev_year_eps": 2.36,
-      "yoy_growth": -0.7373
+      "eps": 0.6201,
+      "prev_year_eps": 2.3597,
+      "yoy_growth": -0.7372
     },
     {
       "symbol": "CDNS",
       "report_date": "2021-03-31T00:00:00.000",
-      "eps": 0.67,
-      "prev_year_eps": 0.44,
-      "yoy_growth": 0.5227
+      "eps": 0.6681,
+      "prev_year_eps": 0.444,
+      "yoy_growth": 0.5047
     },
     {
       "symbol": "CDNS",
       "report_date": "2021-06-30T00:00:00.000",
-      "eps": 0.56,
-      "prev_year_eps": 0.47,
-      "yoy_growth": 0.1915
+      "eps": 0.5597,
+      "prev_year_eps": 0.4704,
+      "yoy_growth": 0.1898
     },
     {
       "symbol": "CDNS",
       "report_date": "2021-09-30T00:00:00.000",
-      "eps": 0.63,
-      "prev_year_eps": 0.58,
-      "yoy_growth": 0.0862
+      "eps": 0.6335,
+      "prev_year_eps": 0.5772,
+      "yoy_growth": 0.0975
     },
     {
       "symbol": "CDNS",
       "report_date": "2021-12-31T00:00:00.000",
-      "eps": 0.63,
-      "prev_year_eps": 0.62,
-      "yoy_growth": 0.0161
+      "eps": 0.6346,
+      "prev_year_eps": 0.6201,
+      "yoy_growth": 0.0234
     },
     {
       "symbol": "CDNS",
       "report_date": "2022-03-31T00:00:00.000",
-      "eps": 0.85,
-      "prev_year_eps": 0.67,
-      "yoy_growth": 0.2687
+      "eps": 0.8498,
+      "prev_year_eps": 0.6681,
+      "yoy_growth": 0.272
     },
     {
       "symbol": "CDNS",
       "report_date": "2022-06-30T00:00:00.000",
-      "eps": 0.68,
-      "prev_year_eps": 0.56,
-      "yoy_growth": 0.2143
+      "eps": 0.6793,
+      "prev_year_eps": 0.5597,
+      "yoy_growth": 0.2137
     },
     {
       "symbol": "CDNS",
       "report_date": "2022-09-30T00:00:00.000",
-      "eps": 0.68,
-      "prev_year_eps": 0.63,
-      "yoy_growth": 0.0794
+      "eps": 0.6776,
+      "prev_year_eps": 0.6335,
+      "yoy_growth": 0.0696
     },
     {
       "symbol": "CDNS",
       "report_date": "2022-12-31T00:00:00.000",
-      "eps": 0.88,
-      "prev_year_eps": 0.63,
-      "yoy_growth": 0.3968
+      "eps": 0.8806,
+      "prev_year_eps": 0.6346,
+      "yoy_growth": 0.3876
     },
     {
       "symbol": "CDNS",
       "report_date": "2023-03-31T00:00:00.000",
-      "eps": 0.89,
-      "prev_year_eps": 0.85,
-      "yoy_growth": 0.0471
+      "eps": 0.8852,
+      "prev_year_eps": 0.8498,
+      "yoy_growth": 0.0417
     },
     {
       "symbol": "CDNS",
       "report_date": "2023-06-30T00:00:00.000",
       "eps": 0.81,
-      "prev_year_eps": 0.68,
-      "yoy_growth": 0.1912
+      "prev_year_eps": 0.6793,
+      "yoy_growth": 0.1924
     },
     {
       "symbol": "CDNS",
       "report_date": "2023-09-30T00:00:00.000",
-      "eps": 0.93,
-      "prev_year_eps": 0.68,
-      "yoy_growth": 0.3676
+      "eps": 0.9335,
+      "prev_year_eps": 0.6776,
+      "yoy_growth": 0.3777
     },
     {
       "symbol": "CDNS",
       "report_date": "2023-12-31T00:00:00.000",
-      "eps": 1.19,
-      "prev_year_eps": 0.88,
-      "yoy_growth": 0.3523
+      "eps": 1.189,
+      "prev_year_eps": 0.8806,
+      "yoy_growth": 0.3502
     },
     {
       "symbol": "CDNS",
       "report_date": "2024-03-31T00:00:00.000",
-      "eps": 0.91,
-      "prev_year_eps": 0.89,
-      "yoy_growth": 0.0225
+      "eps": 0.9053,
+      "prev_year_eps": 0.8852,
+      "yoy_growth": 0.0227
     },
     {
       "symbol": "CDNS",
       "report_date": "2024-06-30T00:00:00.000",
-      "eps": 0.84,
+      "eps": 0.8391,
       "prev_year_eps": 0.81,
-      "yoy_growth": 0.037
+      "yoy_growth": 0.0359
     },
     {
       "symbol": "CDNS",
       "report_date": "2024-09-30T00:00:00.000",
-      "eps": 0.87,
-      "prev_year_eps": 0.93,
-      "yoy_growth": -0.0645
+      "eps": 0.8692,
+      "prev_year_eps": 0.9335,
+      "yoy_growth": -0.0689
     },
     {
       "symbol": "CDNS",
       "report_date": "2024-12-31T00:00:00.000",
-      "eps": 1.24,
-      "prev_year_eps": 1.19,
-      "yoy_growth": 0.042
+      "eps": 1.2403,
+      "prev_year_eps": 1.189,
+      "yoy_growth": 0.0431
     },
     {
       "symbol": "CDNS",
       "report_date": "2025-03-31T00:00:00.000",
-      "eps": 1.0,
-      "prev_year_eps": 0.91,
-      "yoy_growth": 0.0989
+      "eps": 0.9998,
+      "prev_year_eps": 0.9053,
+      "yoy_growth": 0.1044
     },
     {
       "symbol": "CDNS",
       "report_date": "2025-06-30T00:00:00.000",
-      "eps": 0.59,
-      "prev_year_eps": 0.84,
-      "yoy_growth": -0.2976
+      "eps": 0.5865,
+      "prev_year_eps": 0.8391,
+      "yoy_growth": -0.301
     },
     {
       "symbol": "CDNS",
       "report_date": "2025-09-30T00:00:00.000",
-      "eps": 1.05,
-      "prev_year_eps": 0.87,
-      "yoy_growth": 0.2069
+      "eps": 1.0487,
+      "prev_year_eps": 0.8692,
+      "yoy_growth": 0.2065
     },
     {
       "symbol": "CDNS",
       "report_date": "2025-12-31T00:00:00.000",
-      "eps": 1.42,
-      "prev_year_eps": 1.24,
-      "yoy_growth": 0.1452
+      "eps": 1.4221,
+      "prev_year_eps": 1.2403,
+      "yoy_growth": 0.1466
     },
     {
       "symbol": "CDNS",
       "report_date": "2026-03-31T00:00:00.000",
-      "eps": 1.23,
-      "prev_year_eps": 1.0,
-      "yoy_growth": 0.23
+      "eps": 1.2263,
+      "prev_year_eps": 0.9998,
+      "yoy_growth": 0.2265
     }
   ]
 }

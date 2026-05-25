@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "MDT",
+    "name": "Dr. Laura  Mauri M.D., M.Sc.",
+    "title": "Senior VP and Chief Scientific & Medical Officer",
+    "age": 55,
+    "born": 1970,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "MDT",
+    "name": "Mr. Brett A. Wall",
+    "title": "Executive VP & President of Neuroscience Portfolio",
+    "age": 59,
+    "born": 1966,
+    "pay": 1858925,
+    "exercised": 187399,
+    "unexercised": 2489,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "MDT",
+    "name": "Mr. Geoffrey Straub Martha",
+    "title": "Chairman of the Board & CEO",
+    "age": 55,
+    "born": 1970,
+    "pay": 3814693,
+    "exercised": 1013706,
+    "unexercised": 257865,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "MDT",
+    "name": "Mr. Jason  Weidman",
+    "title": "Senior VP and President of Coronary & Renal Denervation business",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "MDT",
+    "name": "Mr. Matthew R. Walter",
+    "title": "Senior Vice President of Human Resources, IT and Global Communications & Corporate Marketing",
+    "age": 46,
+    "born": 1979,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "MDT",
+    "name": "Mr. Rogerio  Branco",
+    "title": "SVP & Chief Operations and Supply Chain Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "MDT",
+    "name": "Mr. Thierry  Pieton",
+    "title": "Executive VP & CFO",
+    "age": 55,
+    "born": 1970,
+    "pay": 421766,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "MDT",
+    "name": "Ms. Denise L. Blomquist",
+    "title": "VP, Global Controller & Chief Accounting Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "MDT",
+    "name": "Ms. Ingrid  Goldberg",
+    "title": "Vice President & Head of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "MDT",
+    "name": "Ms. Michelle  Quinn",
+    "title": "Executive VP, General Counsel & Secretary",
+    "age": 56,
+    "born": 1969,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  }
+]

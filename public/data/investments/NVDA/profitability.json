@@ -89,6 +89,15 @@
       "ending_stockholders_equity": 157293000000.0,
       "avg_equity": 138095000000.0,
       "roe": 0.3111
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2026-04-30",
+      "net_income_common_stockholders": 159613000000.0,
+      "beginning_stockholders_equity": 157293000000.0,
+      "ending_stockholders_equity": 195474000000.0,
+      "avg_equity": 176383500000.0,
+      "roe": 0.9049
     }
   ],
   "roa": [
@@ -181,6 +190,15 @@
       "ending_total_assets": 206803000000.0,
       "avg_assets": 183975500000.0,
       "roa": 0.2335
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2026-04-30",
+      "net_income_common_stockholders": 159613000000.0,
+      "beginning_total_assets": 206803000000.0,
+      "ending_total_assets": 259474000000.0,
+      "avg_assets": 233138500000.0,
+      "roa": 0.6846
     }
   ],
   "roic": [
@@ -293,6 +311,17 @@
       "ending_invested_capital": 165761000000.0,
       "avg_invested_capital": 146562500000.0,
       "roic": 0.2927
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2026-04-30",
+      "ebit": 70005000000.0,
+      "tax_rate_for_calcs": 0.16,
+      "nopat": 58804200000.0,
+      "beginning_invested_capital": 165761000000.0,
+      "ending_invested_capital": 203944000000.0,
+      "avg_invested_capital": 184852500000.0,
+      "roic": 0.3181
     }
   ],
   "equityMultiplier": [
@@ -365,6 +394,13 @@
       "roe": 0.3111,
       "roa": 0.2335,
       "equity_multiplier": 1.33
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2026-04-30T00:00:00.000",
+      "roe": 0.9049,
+      "roa": 0.6846,
+      "equity_multiplier": 1.32
     }
   ],
   "assetTurnover": [
@@ -437,6 +473,13 @@
       "roa": 0.2335,
       "net_margin": 0.6306,
       "asset_turnover": 0.37
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2026-04-30T00:00:00.000",
+      "roa": 0.6846,
+      "net_margin": 1.9557,
+      "asset_turnover": 0.35
     }
   ]
 }

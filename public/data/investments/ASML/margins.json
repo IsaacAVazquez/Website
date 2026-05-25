@@ -87,9 +87,9 @@
     {
       "symbol": "ASML",
       "report_date": "2025-06-30",
-      "gross_profit": 4043700000.0,
-      "total_revenue": 7691700000.0,
-      "gross_margin": 0.5257
+      "gross_profit": 16911200000.0,
+      "total_revenue": 32163300000.0,
+      "gross_margin": 0.5258
     },
     {
       "symbol": "ASML",
@@ -108,9 +108,9 @@
     {
       "symbol": "ASML",
       "report_date": "2026-03-31",
-      "gross_profit": 4645000000.0,
-      "total_revenue": 8766900000.0,
-      "gross_margin": 0.5298
+      "gross_profit": 17723300000.0,
+      "total_revenue": 33692700000.0,
+      "gross_margin": 0.526
     }
   ],
   "annual_gross": [
@@ -252,9 +252,9 @@
     {
       "symbol": "ASML",
       "report_date": "2025-06-30",
-      "operating_income": 3137900000.0,
-      "total_revenue": 7691700000.0,
-      "operating_margin": 0.408
+      "operating_income": 11225000000.0,
+      "total_revenue": 32163300000.0,
+      "operating_margin": 0.349
     },
     {
       "symbol": "ASML",
@@ -273,9 +273,9 @@
     {
       "symbol": "ASML",
       "report_date": "2026-03-31",
-      "operating_income": 3157800000.0,
-      "total_revenue": 8766900000.0,
-      "operating_margin": 0.3602
+      "operating_income": 11721300000.0,
+      "total_revenue": 33692700000.0,
+      "operating_margin": 0.3479
     }
   ],
   "annual_operating": [
@@ -417,9 +417,9 @@
     {
       "symbol": "ASML",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 2676200000.0,
-      "total_revenue": 7691700000.0,
-      "net_margin": 0.3479
+      "net_income_common_stockholders": 9427300000.0,
+      "total_revenue": 32163300000.0,
+      "net_margin": 0.2931
     },
     {
       "symbol": "ASML",
@@ -438,9 +438,9 @@
     {
       "symbol": "ASML",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 2756700000.0,
-      "total_revenue": 8766900000.0,
-      "net_margin": 0.3144
+      "net_income_common_stockholders": 10011100000.0,
+      "total_revenue": 33692700000.0,
+      "net_margin": 0.2971
     }
   ],
   "annual_net": [
@@ -582,9 +582,9 @@
     {
       "symbol": "ASML",
       "report_date": "2025-06-30",
-      "ebitda": 3649500000.0,
-      "total_revenue": 7691700000.0,
-      "ebitda_margin": 0.4745
+      "ebitda": 12399900000.0,
+      "total_revenue": 32163300000.0,
+      "ebitda_margin": 0.3855
     },
     {
       "symbol": "ASML",
@@ -603,9 +603,9 @@
     {
       "symbol": "ASML",
       "report_date": "2026-03-31",
-      "ebitda": 3157800000.0,
-      "total_revenue": 8766900000.0,
-      "ebitda_margin": 0.3602
+      "ebitda": 11944300000.0,
+      "total_revenue": 33692700000.0,
+      "ebitda_margin": 0.3545
     }
   ],
   "annual_ebitda": [
@@ -748,8 +748,8 @@
       "symbol": "ASML",
       "report_date": "2025-06-30",
       "free_cash_flow": 357700000.0,
-      "total_revenue": 7691700000.0,
-      "fcf_margin": 0.0465
+      "total_revenue": 32163300000.0,
+      "fcf_margin": 0.0111
     },
     {
       "symbol": "ASML",
@@ -769,8 +769,8 @@
       "symbol": "ASML",
       "report_date": "2026-03-31",
       "free_cash_flow": -2607900000.0,
-      "total_revenue": 8766900000.0,
-      "fcf_margin": -0.2975
+      "total_revenue": 33692700000.0,
+      "fcf_margin": -0.0774
     }
   ],
   "annual_fcf": [

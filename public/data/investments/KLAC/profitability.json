@@ -457,8 +457,8 @@
       "symbol": "KLAC",
       "report_date": "2025-06-30T00:00:00.000",
       "roa": 0.077,
-      "net_margin": 0.3789,
-      "asset_turnover": 0.2
+      "net_margin": 0.0989,
+      "asset_turnover": 0.78
     },
     {
       "symbol": "KLAC",
@@ -478,8 +478,8 @@
       "symbol": "KLAC",
       "report_date": "2026-03-31T00:00:00.000",
       "roa": 0.0715,
-      "net_margin": 0.3517,
-      "asset_turnover": 0.2
+      "net_margin": 0.0917,
+      "asset_turnover": 0.78
     }
   ]
 }

@@ -88,8 +88,8 @@
       "symbol": "CDNS",
       "report_date": "2025-06-30",
       "gross_profit": 1091274000.0,
-      "total_revenue": 1275441000.0,
-      "gross_margin": 0.8556
+      "total_revenue": 5089287000.0,
+      "gross_margin": 0.2144
     },
     {
       "symbol": "CDNS",
@@ -109,8 +109,8 @@
       "symbol": "CDNS",
       "report_date": "2026-03-31",
       "gross_profit": 1259685000.0,
-      "total_revenue": 1474220000.0,
-      "gross_margin": 0.8545
+      "total_revenue": 5528613000.0,
+      "gross_margin": 0.2278
     }
   ],
   "annual_gross": [
@@ -252,9 +252,9 @@
     {
       "symbol": "CDNS",
       "report_date": "2025-06-30",
-      "operating_income": 370389000.0,
-      "total_revenue": 1275441000.0,
-      "operating_margin": 0.2904
+      "operating_income": 1562249000.0,
+      "total_revenue": 5089287000.0,
+      "operating_margin": 0.307
     },
     {
       "symbol": "CDNS",
@@ -273,9 +273,9 @@
     {
       "symbol": "CDNS",
       "report_date": "2026-03-31",
-      "operating_income": 431336000.0,
-      "total_revenue": 1474220000.0,
-      "operating_margin": 0.2926
+      "operating_income": 1719734000.0,
+      "total_revenue": 5528613000.0,
+      "operating_margin": 0.3111
     }
   ],
   "annual_operating": [
@@ -418,8 +418,8 @@
       "symbol": "CDNS",
       "report_date": "2025-06-30",
       "net_income_common_stockholders": 160051000.0,
-      "total_revenue": 1275441000.0,
-      "net_margin": 0.1255
+      "total_revenue": 5089287000.0,
+      "net_margin": 0.0314
     },
     {
       "symbol": "CDNS",
@@ -439,8 +439,8 @@
       "symbol": "CDNS",
       "report_date": "2026-03-31",
       "net_income_common_stockholders": 335660000.0,
-      "total_revenue": 1474220000.0,
-      "net_margin": 0.2277
+      "total_revenue": 5528613000.0,
+      "net_margin": 0.0607
     }
   ],
   "annual_net": [
@@ -583,8 +583,8 @@
       "symbol": "CDNS",
       "report_date": "2025-06-30",
       "ebitda": 367306000.0,
-      "total_revenue": 1275441000.0,
-      "ebitda_margin": 0.288
+      "total_revenue": 5089287000.0,
+      "ebitda_margin": 0.0722
     },
     {
       "symbol": "CDNS",
@@ -604,8 +604,8 @@
       "symbol": "CDNS",
       "report_date": "2026-03-31",
       "ebitda": 544088000.0,
-      "total_revenue": 1474220000.0,
-      "ebitda_margin": 0.3691
+      "total_revenue": 5528613000.0,
+      "ebitda_margin": 0.0984
     }
   ],
   "annual_ebitda": [
@@ -747,9 +747,9 @@
     {
       "symbol": "CDNS",
       "report_date": "2025-06-30",
-      "free_cash_flow": 333518000.0,
-      "total_revenue": 1275441000.0,
-      "fcf_margin": 0.2615
+      "free_cash_flow": 1585090000.0,
+      "total_revenue": 5089287000.0,
+      "fcf_margin": 0.3115
     },
     {
       "symbol": "CDNS",
@@ -768,9 +768,9 @@
     {
       "symbol": "CDNS",
       "report_date": "2026-03-31",
-      "free_cash_flow": 306962000.0,
-      "total_revenue": 1474220000.0,
-      "fcf_margin": 0.2082
+      "free_cash_flow": 1429912000.0,
+      "total_revenue": 5528613000.0,
+      "fcf_margin": 0.2586
     }
   ],
   "annual_fcf": [

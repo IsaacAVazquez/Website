@@ -286,13 +286,13 @@
     {
       "symbol": "MRVL",
       "report_date": "2026-01-31",
-      "ebit": 432400000.0,
-      "tax_rate_for_calcs": 0.4,
-      "nopat": 259440000.0,
+      "ebit": 3249200000.0,
+      "tax_rate_for_calcs": 0.12,
+      "nopat": 2859296000.0,
       "beginning_invested_capital": 18525500000.0,
       "ending_invested_capital": 18779000000.0,
       "avg_invested_capital": 18652250000.0,
-      "roic": 0.0139
+      "roic": 0.1533
     }
   ],
   "equityMultiplier": [
@@ -435,8 +435,8 @@
       "symbol": "MRVL",
       "report_date": "2026-01-31T00:00:00.000",
       "roa": 0.0181,
-      "net_margin": 0.1785,
-      "asset_turnover": 0.1
+      "net_margin": 0.0483,
+      "asset_turnover": 0.37
     }
   ]
 }

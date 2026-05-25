@@ -3,22 +3,22 @@
     {
       "symbol": "BRK-B",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 10106000000.0,
+      "net_income_common_stockholders": 72471000000.0,
       "beginning_stockholders_equity": 717419000000.0,
       "ending_stockholders_equity": 727181000000.0,
       "avg_equity": 722300000000.0,
-      "roe": 0.014
+      "roe": 0.1003
     }
   ],
   "roa": [
     {
       "symbol": "BRK-B",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 10106000000.0,
+      "net_income_common_stockholders": 72471000000.0,
       "beginning_total_assets": 1222176000000.0,
       "ending_total_assets": 1252271000000.0,
       "avg_assets": 1237223500000.0,
-      "roa": 0.0082
+      "roa": 0.0586
     }
   ],
   "roic": [
@@ -26,20 +26,20 @@
       "symbol": "BRK-B",
       "report_date": "2026-03-31",
       "ebit": 13620000000.0,
-      "tax_rate_for_calcs": 0.17,
-      "nopat": 11304600000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 11032200000.0,
       "beginning_invested_capital": 846500000000.0,
       "ending_invested_capital": 856067000000.0,
       "avg_invested_capital": 851283500000.0,
-      "roic": 0.0133
+      "roic": 0.013
     }
   ],
   "equityMultiplier": [
     {
       "symbol": "BRK-B",
       "report_date": "2026-03-31T00:00:00.000",
-      "roe": 0.014,
-      "roa": 0.0082,
+      "roe": 0.1003,
+      "roa": 0.0586,
       "equity_multiplier": 1.71
     }
   ],
@@ -47,8 +47,8 @@
     {
       "symbol": "BRK-B",
       "report_date": "2026-03-31T00:00:00.000",
-      "roa": 0.0082,
-      "net_margin": 0.1098,
+      "roa": 0.0586,
+      "net_margin": 0.7871,
       "asset_turnover": 0.07
     }
   ]

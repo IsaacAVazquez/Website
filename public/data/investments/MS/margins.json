@@ -88,7 +88,7 @@
       "symbol": "MS",
       "report_date": "2025-06-30",
       "gross_profit": null,
-      "total_revenue": 15604000000.0,
+      "total_revenue": 61503000000.0,
       "gross_margin": null
     },
     {
@@ -109,7 +109,7 @@
       "symbol": "MS",
       "report_date": "2026-03-31",
       "gross_profit": null,
-      "total_revenue": 19324000000.0,
+      "total_revenue": 68773000000.0,
       "gross_margin": null
     }
   ],
@@ -253,7 +253,7 @@
       "symbol": "MS",
       "report_date": "2025-06-30",
       "operating_income": null,
-      "total_revenue": 15604000000.0,
+      "total_revenue": 61503000000.0,
       "operating_margin": null
     },
     {
@@ -274,7 +274,7 @@
       "symbol": "MS",
       "report_date": "2026-03-31",
       "operating_income": null,
-      "total_revenue": 19324000000.0,
+      "total_revenue": 68773000000.0,
       "operating_margin": null
     }
   ],
@@ -418,8 +418,8 @@
       "symbol": "MS",
       "report_date": "2025-06-30",
       "net_income_common_stockholders": 3392000000.0,
-      "total_revenue": 15604000000.0,
-      "net_margin": 0.2174
+      "total_revenue": 61503000000.0,
+      "net_margin": 0.0552
     },
     {
       "symbol": "MS",
@@ -439,8 +439,8 @@
       "symbol": "MS",
       "report_date": "2026-03-31",
       "net_income_common_stockholders": 5411000000.0,
-      "total_revenue": 19324000000.0,
-      "net_margin": 0.28
+      "total_revenue": 68773000000.0,
+      "net_margin": 0.0787
     }
   ],
   "annual_net": [
@@ -583,7 +583,7 @@
       "symbol": "MS",
       "report_date": "2025-06-30",
       "ebitda": null,
-      "total_revenue": 15604000000.0,
+      "total_revenue": 61503000000.0,
       "ebitda_margin": null
     },
     {
@@ -604,7 +604,7 @@
       "symbol": "MS",
       "report_date": "2026-03-31",
       "ebitda": null,
-      "total_revenue": 19324000000.0,
+      "total_revenue": 68773000000.0,
       "ebitda_margin": null
     }
   ],
@@ -748,8 +748,8 @@
       "symbol": "MS",
       "report_date": "2025-06-30",
       "free_cash_flow": 11066000000.0,
-      "total_revenue": 15604000000.0,
-      "fcf_margin": 0.7092
+      "total_revenue": 61503000000.0,
+      "fcf_margin": 0.1799
     },
     {
       "symbol": "MS",
@@ -769,8 +769,8 @@
       "symbol": "MS",
       "report_date": "2026-03-31",
       "free_cash_flow": -7852000000.0,
-      "total_revenue": 19324000000.0,
-      "fcf_margin": -0.4063
+      "total_revenue": 68773000000.0,
+      "fcf_margin": -0.1142
     }
   ],
   "annual_fcf": [

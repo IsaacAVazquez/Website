@@ -66,11 +66,11 @@
     {
       "symbol": "USB",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 1733000000.0,
+      "net_income_common_stockholders": 6518000000.0,
       "beginning_stockholders_equity": 60096000000.0,
       "ending_stockholders_equity": 61438000000.0,
       "avg_equity": 60767000000.0,
-      "roe": 0.0285
+      "roe": 0.1073
     },
     {
       "symbol": "USB",
@@ -93,11 +93,11 @@
     {
       "symbol": "USB",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 1841000000.0,
+      "net_income_common_stockholders": 7432000000.0,
       "beginning_stockholders_equity": 65193000000.0,
       "ending_stockholders_equity": 65786000000.0,
       "avg_equity": 65489500000.0,
-      "roe": 0.0281
+      "roe": 0.1135
     }
   ],
   "roa": [
@@ -167,11 +167,11 @@
     {
       "symbol": "USB",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 1733000000.0,
+      "net_income_common_stockholders": 6518000000.0,
       "beginning_total_assets": 676489000000.0,
       "ending_total_assets": 686370000000.0,
       "avg_assets": 681429500000.0,
-      "roa": 0.0025
+      "roa": 0.0096
     },
     {
       "symbol": "USB",
@@ -194,11 +194,11 @@
     {
       "symbol": "USB",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 1841000000.0,
+      "net_income_common_stockholders": 7432000000.0,
       "beginning_total_assets": 692345000000.0,
       "ending_total_assets": 700998000000.0,
       "avg_assets": 696671500000.0,
-      "roa": 0.0026
+      "roa": 0.0107
     }
   ],
   "roic": [],
@@ -255,9 +255,9 @@
     {
       "symbol": "USB",
       "report_date": "2025-06-30T00:00:00.000",
-      "roe": 0.0285,
-      "roa": 0.0025,
-      "equity_multiplier": 11.4
+      "roe": 0.1073,
+      "roa": 0.0096,
+      "equity_multiplier": 11.18
     },
     {
       "symbol": "USB",
@@ -276,9 +276,9 @@
     {
       "symbol": "USB",
       "report_date": "2026-03-31T00:00:00.000",
-      "roe": 0.0281,
-      "roa": 0.0026,
-      "equity_multiplier": 10.81
+      "roe": 0.1135,
+      "roa": 0.0107,
+      "equity_multiplier": 10.61
     }
   ],
   "assetTurnover": [
@@ -334,8 +334,8 @@
     {
       "symbol": "USB",
       "report_date": "2025-06-30T00:00:00.000",
-      "roa": 0.0025,
-      "net_margin": 0.2485,
+      "roa": 0.0096,
+      "net_margin": 0.9345,
       "asset_turnover": 0.01
     },
     {
@@ -355,8 +355,8 @@
     {
       "symbol": "USB",
       "report_date": "2026-03-31T00:00:00.000",
-      "roa": 0.0026,
-      "net_margin": 0.2536,
+      "roa": 0.0107,
+      "net_margin": 1.0237,
       "asset_turnover": 0.01
     }
   ]

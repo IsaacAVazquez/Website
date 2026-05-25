@@ -66,11 +66,11 @@
     {
       "symbol": "GOOGL",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 28196000000.0,
+      "net_income_common_stockholders": 115573000000.0,
       "beginning_stockholders_equity": 345267000000.0,
       "ending_stockholders_equity": 362916000000.0,
       "avg_equity": 354091500000.0,
-      "roe": 0.0796
+      "roe": 0.3264
     },
     {
       "symbol": "GOOGL",
@@ -93,11 +93,11 @@
     {
       "symbol": "GOOGL",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 62578000000.0,
+      "net_income_common_stockholders": 160208000000.0,
       "beginning_stockholders_equity": 415265000000.0,
       "ending_stockholders_equity": 478746000000.0,
       "avg_equity": 447005500000.0,
-      "roe": 0.14
+      "roe": 0.3584
     }
   ],
   "roa": [
@@ -167,11 +167,11 @@
     {
       "symbol": "GOOGL",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 28196000000.0,
+      "net_income_common_stockholders": 115573000000.0,
       "beginning_total_assets": 475374000000.0,
       "ending_total_assets": 502053000000.0,
       "avg_assets": 488713500000.0,
-      "roa": 0.0577
+      "roa": 0.2365
     },
     {
       "symbol": "GOOGL",
@@ -194,11 +194,11 @@
     {
       "symbol": "GOOGL",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 62578000000.0,
+      "net_income_common_stockholders": 160208000000.0,
       "beginning_total_assets": 595281000000.0,
       "ending_total_assets": 703919000000.0,
       "avg_assets": 649600000000.0,
-      "roa": 0.0963
+      "roa": 0.2466
     }
   ],
   "roic": [
@@ -316,12 +316,12 @@
       "symbol": "GOOGL",
       "report_date": "2026-03-31",
       "ebit": 77945000000.0,
-      "tax_rate_for_calcs": 0.19,
-      "nopat": 63135450000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 63914900000.0,
       "beginning_invested_capital": 461812000000.0,
       "ending_invested_capital": 556247000000.0,
       "avg_invested_capital": 509029500000.0,
-      "roic": 0.124
+      "roic": 0.1256
     }
   ],
   "equityMultiplier": [
@@ -377,8 +377,8 @@
     {
       "symbol": "GOOGL",
       "report_date": "2025-06-30T00:00:00.000",
-      "roe": 0.0796,
-      "roa": 0.0577,
+      "roe": 0.3264,
+      "roa": 0.2365,
       "equity_multiplier": 1.38
     },
     {
@@ -398,8 +398,8 @@
     {
       "symbol": "GOOGL",
       "report_date": "2026-03-31T00:00:00.000",
-      "roe": 0.14,
-      "roa": 0.0963,
+      "roe": 0.3584,
+      "roa": 0.2466,
       "equity_multiplier": 1.45
     }
   ],
@@ -456,8 +456,8 @@
     {
       "symbol": "GOOGL",
       "report_date": "2025-06-30T00:00:00.000",
-      "roa": 0.0577,
-      "net_margin": 0.2924,
+      "roa": 0.2365,
+      "net_margin": 1.1985,
       "asset_turnover": 0.2
     },
     {
@@ -477,8 +477,8 @@
     {
       "symbol": "GOOGL",
       "report_date": "2026-03-31T00:00:00.000",
-      "roa": 0.0963,
-      "net_margin": 0.5694,
+      "roa": 0.2466,
+      "net_margin": 1.4578,
       "asset_turnover": 0.17
     }
   ]

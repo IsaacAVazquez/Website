@@ -108,9 +108,9 @@
     {
       "symbol": "CRM",
       "report_date": "2026-01-31",
-      "gross_profit": 8693000000.0,
-      "total_revenue": 11201000000.0,
-      "gross_margin": 0.7761
+      "gross_profit": 32255000000.0,
+      "total_revenue": 41525000000.0,
+      "gross_margin": 0.7768
     }
   ],
   "annual_gross": [
@@ -273,9 +273,9 @@
     {
       "symbol": "CRM",
       "report_date": "2026-01-31",
-      "operating_income": 2155000000.0,
-      "total_revenue": 11201000000.0,
-      "operating_margin": 0.1924
+      "operating_income": 8917000000.0,
+      "total_revenue": 41525000000.0,
+      "operating_margin": 0.2147
     }
   ],
   "annual_operating": [
@@ -439,8 +439,8 @@
       "symbol": "CRM",
       "report_date": "2026-01-31",
       "net_income_common_stockholders": 1943000000.0,
-      "total_revenue": 11201000000.0,
-      "net_margin": 0.1735
+      "total_revenue": 41525000000.0,
+      "net_margin": 0.0468
     }
   ],
   "annual_net": [
@@ -603,9 +603,9 @@
     {
       "symbol": "CRM",
       "report_date": "2026-01-31",
-      "ebitda": 3275000000.0,
-      "total_revenue": 11201000000.0,
-      "ebitda_margin": 0.2924
+      "ebitda": 12548000000.0,
+      "total_revenue": 41525000000.0,
+      "ebitda_margin": 0.3022
     }
   ],
   "annual_ebitda": [
@@ -769,8 +769,8 @@
       "symbol": "CRM",
       "report_date": "2026-01-31",
       "free_cash_flow": 5323000000.0,
-      "total_revenue": 11201000000.0,
-      "fcf_margin": 0.4752
+      "total_revenue": 41525000000.0,
+      "fcf_margin": 0.1282
     }
   ],
   "annual_fcf": [

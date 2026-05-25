@@ -1,0 +1,1137 @@
+{
+  "quarterly_revenue": [
+    {
+      "symbol": "KKR",
+      "report_date": "2022-06-30T00:00:00.000",
+      "revenue": 330070000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-06-30T00:00:00.000",
+      "revenue": 3586660000.0,
+      "prev_year_revenue": 330070000.0,
+      "yoy_growth": 9.8664
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-09-30T00:00:00.000",
+      "revenue": 3273140000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 4372746000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-03-31T00:00:00.000",
+      "revenue": 9600353000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-06-30T00:00:00.000",
+      "revenue": 4108021000.0,
+      "prev_year_revenue": 3586660000.0,
+      "yoy_growth": 0.1454
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-09-30T00:00:00.000",
+      "revenue": 4731534000.0,
+      "prev_year_revenue": 3273140000.0,
+      "yoy_growth": 0.4456
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 3200380000.0,
+      "prev_year_revenue": 4372746000.0,
+      "yoy_growth": -0.2681
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-03-31T00:00:00.000",
+      "revenue": 3054695000.0,
+      "prev_year_revenue": 9600353000.0,
+      "yoy_growth": -0.6818
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-06-30T00:00:00.000",
+      "revenue": 5002879000.0,
+      "prev_year_revenue": 4108021000.0,
+      "yoy_growth": 0.2178
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-09-30T00:00:00.000",
+      "revenue": 5464926000.0,
+      "prev_year_revenue": 4731534000.0,
+      "yoy_growth": 0.155
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 5685044000.0,
+      "prev_year_revenue": 3200380000.0,
+      "yoy_growth": 0.7764
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2026-03-31T00:00:00.000",
+      "revenue": 20405575000.0,
+      "prev_year_revenue": 3054695000.0,
+      "yoy_growth": 5.6801
+    }
+  ],
+  "annual_revenue": [
+    {
+      "symbol": "KKR",
+      "report_date": "2020-12-31T00:00:00.000",
+      "revenue": 4230891000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2021-12-31T00:00:00.000",
+      "revenue": 16105827000.0,
+      "prev_year_revenue": 4230891000.0,
+      "yoy_growth": 2.8067
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2022-12-31T00:00:00.000",
+      "revenue": 5565056000.0,
+      "prev_year_revenue": 16105827000.0,
+      "yoy_growth": -0.6545
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 14322870000.0,
+      "prev_year_revenue": 5565056000.0,
+      "yoy_growth": 1.5737
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 21640288000.0,
+      "prev_year_revenue": 14322870000.0,
+      "yoy_growth": 0.5109
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 19207544000.0,
+      "prev_year_revenue": 21640288000.0,
+      "yoy_growth": -0.1124
+    }
+  ],
+  "quarterly_operating_income": [
+    {
+      "symbol": "KKR",
+      "report_date": "2022-06-30T00:00:00.000",
+      "operating_income": -450049000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-06-30T00:00:00.000",
+      "operating_income": 504010000.0,
+      "prev_year_operating_income": -450049000.0,
+      "yoy_growth": 2.1199
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-09-30T00:00:00.000",
+      "operating_income": 1002341000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 361295000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-03-31T00:00:00.000",
+      "operating_income": 341976000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-06-30T00:00:00.000",
+      "operating_income": 227442000.0,
+      "prev_year_operating_income": 504010000.0,
+      "yoy_growth": -0.5487
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-09-30T00:00:00.000",
+      "operating_income": 64037000.0,
+      "prev_year_operating_income": 1002341000.0,
+      "yoy_growth": -0.9361
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 292742000.0,
+      "prev_year_operating_income": 361295000.0,
+      "yoy_growth": -0.1897
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-03-31T00:00:00.000",
+      "operating_income": -706689000.0,
+      "prev_year_operating_income": 341976000.0,
+      "yoy_growth": -3.0665
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-06-30T00:00:00.000",
+      "operating_income": 327265000.0,
+      "prev_year_operating_income": 227442000.0,
+      "yoy_growth": 0.4389
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-09-30T00:00:00.000",
+      "operating_income": 512719000.0,
+      "prev_year_operating_income": 64037000.0,
+      "yoy_growth": 7.0066
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 356903000.0,
+      "prev_year_operating_income": 292742000.0,
+      "yoy_growth": 0.2192
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2026-03-31T00:00:00.000",
+      "operating_income": 1653359000.0,
+      "prev_year_operating_income": -706689000.0,
+      "yoy_growth": 3.3396
+    }
+  ],
+  "annual_operating_income": [
+    {
+      "symbol": "KKR",
+      "report_date": "2020-12-31T00:00:00.000",
+      "operating_income": 1297759000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2021-12-31T00:00:00.000",
+      "operating_income": 4953222000.0,
+      "prev_year_operating_income": 1297759000.0,
+      "yoy_growth": 2.8168
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2022-12-31T00:00:00.000",
+      "operating_income": -345578000.0,
+      "prev_year_operating_income": 4953222000.0,
+      "yoy_growth": -1.0698
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 2138148000.0,
+      "prev_year_operating_income": -345578000.0,
+      "yoy_growth": 7.1872
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 926197000.0,
+      "prev_year_operating_income": 2138148000.0,
+      "yoy_growth": -0.5668
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 490198000.0,
+      "prev_year_operating_income": 926197000.0,
+      "yoy_growth": -0.4707
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "KKR",
+      "report_date": "2023-06-30T00:00:00.000",
+      "ebitda": 2210953000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-09-30T00:00:00.000",
+      "ebitda": 3588256000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 2676337000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-03-31T00:00:00.000",
+      "ebitda": 2171682000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-06-30T00:00:00.000",
+      "ebitda": 2059208000.0,
+      "prev_year_ebitda": 2210953000.0,
+      "yoy_growth": -0.0686
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-09-30T00:00:00.000",
+      "ebitda": 2445012000.0,
+      "prev_year_ebitda": 3588256000.0,
+      "yoy_growth": -0.3186
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 2490445000.0,
+      "prev_year_ebitda": 2676337000.0,
+      "yoy_growth": -0.0695
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-03-31T00:00:00.000",
+      "ebitda": 1495137000.0,
+      "prev_year_ebitda": 2171682000.0,
+      "yoy_growth": -0.3115
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-06-30T00:00:00.000",
+      "ebitda": 2306989000.0,
+      "prev_year_ebitda": 2059208000.0,
+      "yoy_growth": 0.1203
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-09-30T00:00:00.000",
+      "ebitda": 2994539000.0,
+      "prev_year_ebitda": 2445012000.0,
+      "yoy_growth": 0.2248
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 3374410000.0,
+      "prev_year_ebitda": 2490445000.0,
+      "yoy_growth": 0.3549
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2026-03-31T00:00:00.000",
+      "ebitda": 1214958000.0,
+      "prev_year_ebitda": 1495137000.0,
+      "yoy_growth": -0.1874
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "KKR",
+      "report_date": "2020-12-31T00:00:00.000",
+      "ebitda": 6696566000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2021-12-31T00:00:00.000",
+      "ebitda": 14978628000.0,
+      "prev_year_ebitda": 6696566000.0,
+      "yoy_growth": 1.2368
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2022-12-31T00:00:00.000",
+      "ebitda": 1345738000.0,
+      "prev_year_ebitda": 14978628000.0,
+      "yoy_growth": -0.9102
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 9500580000.0,
+      "prev_year_ebitda": 1345738000.0,
+      "yoy_growth": 6.0598
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 9166347000.0,
+      "prev_year_ebitda": 9500580000.0,
+      "yoy_growth": -0.0352
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 10171075000.0,
+      "prev_year_ebitda": 9166347000.0,
+      "yoy_growth": 0.1096
+    }
+  ],
+  "quarterly_net_income": [
+    {
+      "symbol": "KKR",
+      "report_date": "2022-06-30T00:00:00.000",
+      "net_income_common_stockholders": -827934000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-06-30T00:00:00.000",
+      "net_income_common_stockholders": 844463000.0,
+      "prev_year_net_income_common_stockholders": -827934000.0,
+      "yoy_growth": 2.02
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-09-30T00:00:00.000",
+      "net_income_common_stockholders": 1472878000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 1040429000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-03-31T00:00:00.000",
+      "net_income_common_stockholders": 682214000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-06-30T00:00:00.000",
+      "net_income_common_stockholders": 667926000.0,
+      "prev_year_net_income_common_stockholders": 844463000.0,
+      "yoy_growth": -0.2091
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-09-30T00:00:00.000",
+      "net_income_common_stockholders": 600550000.0,
+      "prev_year_net_income_common_stockholders": 1472878000.0,
+      "yoy_growth": -0.5923
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 1125555000.0,
+      "prev_year_net_income_common_stockholders": 1040429000.0,
+      "yoy_growth": 0.0818
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-03-31T00:00:00.000",
+      "net_income_common_stockholders": -199401000.0,
+      "prev_year_net_income_common_stockholders": 682214000.0,
+      "yoy_growth": -1.2923
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-06-30T00:00:00.000",
+      "net_income_common_stockholders": 472387000.0,
+      "prev_year_net_income_common_stockholders": 667926000.0,
+      "yoy_growth": -0.2928
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-09-30T00:00:00.000",
+      "net_income_common_stockholders": 859927000.0,
+      "prev_year_net_income_common_stockholders": 600550000.0,
+      "yoy_growth": 0.4319
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 1105477000.0,
+      "prev_year_net_income_common_stockholders": 1125555000.0,
+      "yoy_growth": -0.0178
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2026-03-31T00:00:00.000",
+      "net_income_common_stockholders": 364799000.0,
+      "prev_year_net_income_common_stockholders": -199401000.0,
+      "yoy_growth": 2.8295
+    }
+  ],
+  "annual_net_income": [
+    {
+      "symbol": "KKR",
+      "report_date": "2020-12-31T00:00:00.000",
+      "net_income_common_stockholders": 1942887000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2021-12-31T00:00:00.000",
+      "net_income_common_stockholders": 4626759000.0,
+      "prev_year_net_income_common_stockholders": 1942887000.0,
+      "yoy_growth": 1.3814
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2022-12-31T00:00:00.000",
+      "net_income_common_stockholders": -590664000.0,
+      "prev_year_net_income_common_stockholders": 4626759000.0,
+      "yoy_growth": -1.1277
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 3680514000.0,
+      "prev_year_net_income_common_stockholders": -590664000.0,
+      "yoy_growth": 7.2311
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 3076245000.0,
+      "prev_year_net_income_common_stockholders": 3680514000.0,
+      "yoy_growth": -0.1642
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 2238390000.0,
+      "prev_year_net_income_common_stockholders": 3076245000.0,
+      "yoy_growth": -0.2724
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "KKR",
+      "report_date": "2022-06-30T00:00:00.000",
+      "free_cash_flow": -4085775000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-06-30T00:00:00.000",
+      "free_cash_flow": -2677676000.0,
+      "prev_year_free_cash_flow": -4085775000.0,
+      "yoy_growth": 0.3446
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-09-30T00:00:00.000",
+      "free_cash_flow": 1953654000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 1077912000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-03-31T00:00:00.000",
+      "free_cash_flow": 1510138000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-06-30T00:00:00.000",
+      "free_cash_flow": 3331369000.0,
+      "prev_year_free_cash_flow": -2677676000.0,
+      "yoy_growth": 2.2441
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-09-30T00:00:00.000",
+      "free_cash_flow": 1831657000.0,
+      "prev_year_free_cash_flow": 1953654000.0,
+      "yoy_growth": -0.0624
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": -164822000.0,
+      "prev_year_free_cash_flow": 1077912000.0,
+      "yoy_growth": -1.1529
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-03-31T00:00:00.000",
+      "free_cash_flow": 2528880000.0,
+      "prev_year_free_cash_flow": 1510138000.0,
+      "yoy_growth": 0.6746
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-06-30T00:00:00.000",
+      "free_cash_flow": 371395000.0,
+      "prev_year_free_cash_flow": 3331369000.0,
+      "yoy_growth": -0.8885
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-09-30T00:00:00.000",
+      "free_cash_flow": 2350887000.0,
+      "prev_year_free_cash_flow": 1831657000.0,
+      "yoy_growth": 0.2835
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": -4934167000.0,
+      "prev_year_free_cash_flow": -164822000.0,
+      "yoy_growth": -28.9363
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2026-03-31T00:00:00.000",
+      "free_cash_flow": -492639000.0,
+      "prev_year_free_cash_flow": 2528880000.0,
+      "yoy_growth": -1.1948
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "KKR",
+      "report_date": "2020-12-31T00:00:00.000",
+      "free_cash_flow": -6107079000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2021-12-31T00:00:00.000",
+      "free_cash_flow": -7278757000.0,
+      "prev_year_free_cash_flow": -6107079000.0,
+      "yoy_growth": -0.1919
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2022-12-31T00:00:00.000",
+      "free_cash_flow": -5364315000.0,
+      "prev_year_free_cash_flow": -7278757000.0,
+      "yoy_growth": 0.263
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": -1602205000.0,
+      "prev_year_free_cash_flow": -5364315000.0,
+      "yoy_growth": 0.7013
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 6508342000.0,
+      "prev_year_free_cash_flow": -1602205000.0,
+      "yoy_growth": 5.0621
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 316995000.0,
+      "prev_year_free_cash_flow": 6508342000.0,
+      "yoy_growth": -0.9513
+    }
+  ],
+  "quarterly_eps": [
+    {
+      "symbol": "KKR",
+      "report_date": "2010-03-31T00:00:00.000",
+      "eps": 0.55,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2010-06-30T00:00:00.000",
+      "eps": 0.15,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2010-09-30T00:00:00.000",
+      "eps": 0.04,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2010-12-31T00:00:00.000",
+      "eps": 0.86,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2011-03-31T00:00:00.000",
+      "eps": 0.75,
+      "prev_year_eps": 0.55,
+      "yoy_growth": 0.3636
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2011-06-30T00:00:00.000",
+      "eps": 0.18,
+      "prev_year_eps": 0.15,
+      "yoy_growth": 0.2
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2011-09-30T00:00:00.000",
+      "eps": -1.09,
+      "prev_year_eps": 0.04,
+      "yoy_growth": -28.25
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2011-12-31T00:00:00.000",
+      "eps": 0.21,
+      "prev_year_eps": 0.86,
+      "yoy_growth": -0.7558
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2012-03-31T00:00:00.000",
+      "eps": 0.8,
+      "prev_year_eps": 0.75,
+      "yoy_growth": 0.0667
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2012-06-30T00:00:00.000",
+      "eps": 0.58,
+      "prev_year_eps": 0.18,
+      "yoy_growth": 2.2222
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2012-09-30T00:00:00.000",
+      "eps": 0.49,
+      "prev_year_eps": -1.09,
+      "yoy_growth": 1.4495
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2012-12-31T00:00:00.000",
+      "eps": 0.36,
+      "prev_year_eps": 0.21,
+      "yoy_growth": 0.7143
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2013-03-31T00:00:00.000",
+      "eps": 0.69,
+      "prev_year_eps": 0.8,
+      "yoy_growth": -0.1375
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2013-06-30T00:00:00.000",
+      "eps": 0.05,
+      "prev_year_eps": 0.58,
+      "yoy_growth": -0.9138
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2013-09-30T00:00:00.000",
+      "eps": 0.66,
+      "prev_year_eps": 0.49,
+      "yoy_growth": 0.3469
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2013-12-31T00:00:00.000",
+      "eps": 0.89,
+      "prev_year_eps": 0.36,
+      "yoy_growth": 1.4722
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2014-03-31T00:00:00.000",
+      "eps": 0.65,
+      "prev_year_eps": 0.69,
+      "yoy_growth": -0.058
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2014-06-30T00:00:00.000",
+      "eps": 0.43,
+      "prev_year_eps": 0.05,
+      "yoy_growth": 7.6
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2014-09-30T00:00:00.000",
+      "eps": 0.2,
+      "prev_year_eps": 0.66,
+      "yoy_growth": -0.697
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2014-12-31T00:00:00.000",
+      "eps": -0.0013,
+      "prev_year_eps": 0.89,
+      "yoy_growth": -1.0015
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2015-03-31T00:00:00.000",
+      "eps": 0.57,
+      "prev_year_eps": 0.65,
+      "yoy_growth": -0.1231
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2015-06-30T00:00:00.000",
+      "eps": 0.78,
+      "prev_year_eps": 0.43,
+      "yoy_growth": 0.814
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2015-09-30T00:00:00.000",
+      "eps": -0.42,
+      "prev_year_eps": 0.2,
+      "yoy_growth": -3.1
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2015-12-31T00:00:00.000",
+      "eps": 0.07,
+      "prev_year_eps": -0.0013,
+      "yoy_growth": 54.8462
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2016-03-31T00:00:00.000",
+      "eps": -0.73,
+      "prev_year_eps": 0.57,
+      "yoy_growth": -2.2807
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2016-06-30T00:00:00.000",
+      "eps": 0.19,
+      "prev_year_eps": 0.78,
+      "yoy_growth": -0.7564
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2016-09-30T00:00:00.000",
+      "eps": 0.73,
+      "prev_year_eps": -0.42,
+      "yoy_growth": 2.7381
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2016-12-31T00:00:00.000",
+      "eps": 0.35,
+      "prev_year_eps": 0.07,
+      "yoy_growth": 4.0
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2017-03-31T00:00:00.000",
+      "eps": 0.52,
+      "prev_year_eps": -0.73,
+      "yoy_growth": 1.7123
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2017-06-30T00:00:00.000",
+      "eps": 0.81,
+      "prev_year_eps": 0.19,
+      "yoy_growth": 3.2632
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2017-09-30T00:00:00.000",
+      "eps": 0.3,
+      "prev_year_eps": 0.73,
+      "yoy_growth": -0.589
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2017-12-31T00:00:00.000",
+      "eps": 0.32,
+      "prev_year_eps": 0.35,
+      "yoy_growth": -0.0857
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2018-03-31T00:00:00.000",
+      "eps": 0.32,
+      "prev_year_eps": 0.52,
+      "yoy_growth": -0.3846
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2018-06-30T00:00:00.000",
+      "eps": 1.24,
+      "prev_year_eps": 0.81,
+      "yoy_growth": 0.5309
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2018-09-30T00:00:00.000",
+      "eps": 1.1732,
+      "prev_year_eps": 0.3,
+      "yoy_growth": 2.9107
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2018-12-31T00:00:00.000",
+      "eps": -0.7383,
+      "prev_year_eps": 0.32,
+      "yoy_growth": -3.3072
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2019-03-31T00:00:00.000",
+      "eps": 1.2744,
+      "prev_year_eps": 0.32,
+      "yoy_growth": 2.9825
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2019-06-30T00:00:00.000",
+      "eps": 0.9274,
+      "prev_year_eps": 1.24,
+      "yoy_growth": -0.2521
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2019-09-30T00:00:00.000",
+      "eps": 0.4311,
+      "prev_year_eps": 1.1732,
+      "yoy_growth": -0.6325
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2019-12-31T00:00:00.000",
+      "eps": 0.9096,
+      "prev_year_eps": -0.7383,
+      "yoy_growth": 2.232
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2020-03-31T00:00:00.000",
+      "eps": -2.305,
+      "prev_year_eps": 1.2744,
+      "yoy_growth": -2.8087
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2020-06-30T00:00:00.000",
+      "eps": 1.2352,
+      "prev_year_eps": 0.9274,
+      "yoy_growth": 0.3319
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2020-09-30T00:00:00.000",
+      "eps": 1.7934,
+      "prev_year_eps": 0.4311,
+      "yoy_growth": 3.1601
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2020-12-31T00:00:00.000",
+      "eps": 2.4789,
+      "prev_year_eps": 0.9096,
+      "yoy_growth": 1.7253
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2021-03-31T00:00:00.000",
+      "eps": 2.676,
+      "prev_year_eps": -2.305,
+      "yoy_growth": 2.161
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2021-06-30T00:00:00.000",
+      "eps": 2.0542,
+      "prev_year_eps": 1.2352,
+      "yoy_growth": 0.6631
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2021-09-30T00:00:00.000",
+      "eps": 1.802,
+      "prev_year_eps": 1.7934,
+      "yoy_growth": 0.0048
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2021-12-31T00:00:00.000",
+      "eps": 0.8157,
+      "prev_year_eps": 2.4789,
+      "yoy_growth": -0.6709
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2022-03-31T00:00:00.000",
+      "eps": -0.0165,
+      "prev_year_eps": 2.676,
+      "yoy_growth": -1.0062
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2022-06-30T00:00:00.000",
+      "eps": -1.0792,
+      "prev_year_eps": 2.0542,
+      "yoy_growth": -1.5254
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2022-09-30T00:00:00.000",
+      "eps": 0.0368,
+      "prev_year_eps": 1.802,
+      "yoy_growth": -0.9796
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2022-12-31T00:00:00.000",
+      "eps": 0.1366,
+      "prev_year_eps": 0.8157,
+      "yoy_growth": -0.8325
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-03-31T00:00:00.000",
+      "eps": 0.3638,
+      "prev_year_eps": -0.0165,
+      "yoy_growth": 23.0485
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-06-30T00:00:00.000",
+      "eps": 0.9447,
+      "prev_year_eps": -1.0792,
+      "yoy_growth": 1.8754
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-09-30T00:00:00.000",
+      "eps": 1.6392,
+      "prev_year_eps": 0.0368,
+      "yoy_growth": 43.5435
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "eps": 1.1408,
+      "prev_year_eps": 0.1366,
+      "yoy_growth": 7.3514
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-03-31T00:00:00.000",
+      "eps": 0.7374,
+      "prev_year_eps": 0.3638,
+      "yoy_growth": 1.0269
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-06-30T00:00:00.000",
+      "eps": 0.7166,
+      "prev_year_eps": 0.9447,
+      "yoy_growth": -0.2415
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-09-30T00:00:00.000",
+      "eps": 0.6375,
+      "prev_year_eps": 1.6392,
+      "yoy_growth": -0.6111
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "eps": 1.177,
+      "prev_year_eps": 1.1408,
+      "yoy_growth": 0.0317
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-03-31T00:00:00.000",
+      "eps": -0.2245,
+      "prev_year_eps": 0.7374,
+      "yoy_growth": -1.3044
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-06-30T00:00:00.000",
+      "eps": 0.4951,
+      "prev_year_eps": 0.7166,
+      "yoy_growth": -0.3091
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-09-30T00:00:00.000",
+      "eps": 0.8997,
+      "prev_year_eps": 0.6375,
+      "yoy_growth": 0.4113
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "eps": 1.1568,
+      "prev_year_eps": 1.177,
+      "yoy_growth": -0.0172
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2026-03-31T00:00:00.000",
+      "eps": 0.3823,
+      "prev_year_eps": -0.2245,
+      "yoy_growth": 2.7029
+    }
+  ]
+}

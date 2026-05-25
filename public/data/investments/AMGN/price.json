@@ -1,0 +1,2270 @@
+[
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-05-22",
+    "open": 271.34,
+    "close": 271.9,
+    "high": 272.44,
+    "low": 269.1,
+    "volume": 1919800
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-05-23",
+    "open": 269.48,
+    "close": 271.66,
+    "high": 272.52,
+    "low": 269.13,
+    "volume": 2532000
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-05-27",
+    "open": 273.7,
+    "close": 279.45,
+    "high": 279.63,
+    "low": 273.12,
+    "volume": 2917100
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-05-28",
+    "open": 279.02,
+    "close": 278.4,
+    "high": 281.34,
+    "low": 276.62,
+    "volume": 3863800
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-05-29",
+    "open": 279.22,
+    "close": 283.54,
+    "high": 283.82,
+    "low": 278.4,
+    "volume": 2801900
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-05-30",
+    "open": 282.61,
+    "close": 288.18,
+    "high": 288.81,
+    "low": 281.04,
+    "volume": 5439200
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-06-02",
+    "open": 285.64,
+    "close": 288.47,
+    "high": 289.45,
+    "low": 284.77,
+    "volume": 2394000
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-06-03",
+    "open": 285.52,
+    "close": 289.57,
+    "high": 291.76,
+    "low": 283.04,
+    "volume": 2320400
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-06-04",
+    "open": 290.19,
+    "close": 287.01,
+    "high": 293.21,
+    "low": 286.89,
+    "volume": 2338300
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-06-05",
+    "open": 286.33,
+    "close": 287.1,
+    "high": 291.36,
+    "low": 284.99,
+    "volume": 2522400
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-06-06",
+    "open": 289.8,
+    "close": 290.33,
+    "high": 293.57,
+    "low": 289.01,
+    "volume": 1996100
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-06-09",
+    "open": 290.47,
+    "close": 289.98,
+    "high": 291.66,
+    "low": 287.54,
+    "volume": 1967100
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-06-10",
+    "open": 290.0,
+    "close": 293.43,
+    "high": 295.64,
+    "low": 289.79,
+    "volume": 2441500
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-06-11",
+    "open": 293.21,
+    "close": 291.81,
+    "high": 294.67,
+    "low": 291.15,
+    "volume": 1828300
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-06-12",
+    "open": 294.21,
+    "close": 297.29,
+    "high": 297.44,
+    "low": 292.68,
+    "volume": 2159700
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-06-13",
+    "open": 294.73,
+    "close": 295.22,
+    "high": 299.49,
+    "low": 294.07,
+    "volume": 2191200
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-06-16",
+    "open": 296.31,
+    "close": 295.56,
+    "high": 298.77,
+    "low": 292.46,
+    "volume": 2047600
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-06-17",
+    "open": 294.41,
+    "close": 290.05,
+    "high": 295.8,
+    "low": 289.63,
+    "volume": 2515100
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-06-18",
+    "open": 290.79,
+    "close": 289.63,
+    "high": 291.87,
+    "low": 286.6,
+    "volume": 2026800
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-06-20",
+    "open": 292.17,
+    "close": 289.33,
+    "high": 294.55,
+    "low": 288.54,
+    "volume": 6801300
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-06-23",
+    "open": 290.08,
+    "close": 272.44,
+    "high": 290.66,
+    "low": 267.83,
+    "volume": 5764900
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-06-24",
+    "open": 273.13,
+    "close": 277.49,
+    "high": 280.01,
+    "low": 269.01,
+    "volume": 3686900
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-06-25",
+    "open": 275.8,
+    "close": 280.35,
+    "high": 280.54,
+    "low": 273.13,
+    "volume": 2740300
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-06-26",
+    "open": 280.0,
+    "close": 279.11,
+    "high": 286.17,
+    "low": 277.75,
+    "volume": 2998200
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-06-27",
+    "open": 278.57,
+    "close": 277.13,
+    "high": 281.32,
+    "low": 275.7,
+    "volume": 2894500
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-06-30",
+    "open": 278.85,
+    "close": 279.21,
+    "high": 280.04,
+    "low": 276.58,
+    "volume": 2963500
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-07-01",
+    "open": 280.01,
+    "close": 290.52,
+    "high": 293.98,
+    "low": 278.98,
+    "volume": 3502700
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-07-02",
+    "open": 291.03,
+    "close": 296.85,
+    "high": 297.91,
+    "low": 289.5,
+    "volume": 2287000
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-07-03",
+    "open": 297.0,
+    "close": 298.24,
+    "high": 298.99,
+    "low": 295.51,
+    "volume": 1518500
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-07-07",
+    "open": 297.88,
+    "close": 292.95,
+    "high": 298.0,
+    "low": 291.38,
+    "volume": 2144500
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-07-08",
+    "open": 291.96,
+    "close": 297.0,
+    "high": 298.68,
+    "low": 291.25,
+    "volume": 1534100
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-07-09",
+    "open": 298.51,
+    "close": 296.52,
+    "high": 301.66,
+    "low": 291.77,
+    "volume": 2098000
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-07-10",
+    "open": 296.19,
+    "close": 300.37,
+    "high": 302.38,
+    "low": 295.17,
+    "volume": 1925800
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-07-11",
+    "open": 298.23,
+    "close": 295.27,
+    "high": 299.91,
+    "low": 294.0,
+    "volume": 1619800
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-07-14",
+    "open": 293.86,
+    "close": 297.03,
+    "high": 297.14,
+    "low": 292.84,
+    "volume": 1202300
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-07-15",
+    "open": 297.19,
+    "close": 292.51,
+    "high": 297.53,
+    "low": 291.94,
+    "volume": 1592700
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-07-16",
+    "open": 292.51,
+    "close": 299.02,
+    "high": 299.34,
+    "low": 292.33,
+    "volume": 1881000
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-07-17",
+    "open": 297.59,
+    "close": 298.25,
+    "high": 299.95,
+    "low": 296.28,
+    "volume": 1725600
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-07-18",
+    "open": 300.93,
+    "close": 294.76,
+    "high": 301.0,
+    "low": 293.75,
+    "volume": 1967700
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-07-21",
+    "open": 294.75,
+    "close": 295.87,
+    "high": 297.09,
+    "low": 293.6,
+    "volume": 2025100
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-07-22",
+    "open": 296.46,
+    "close": 305.69,
+    "high": 306.8,
+    "low": 295.86,
+    "volume": 2520800
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-07-23",
+    "open": 307.81,
+    "close": 309.22,
+    "high": 309.49,
+    "low": 305.99,
+    "volume": 1782700
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-07-24",
+    "open": 309.23,
+    "close": 308.55,
+    "high": 311.28,
+    "low": 307.35,
+    "volume": 1531200
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-07-25",
+    "open": 308.58,
+    "close": 306.58,
+    "high": 309.03,
+    "low": 304.45,
+    "volume": 1451300
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-07-28",
+    "open": 305.82,
+    "close": 301.29,
+    "high": 306.0,
+    "low": 300.1,
+    "volume": 1948000
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-07-29",
+    "open": 301.12,
+    "close": 303.56,
+    "high": 304.07,
+    "low": 297.78,
+    "volume": 1406500
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-07-30",
+    "open": 304.33,
+    "close": 301.37,
+    "high": 305.57,
+    "low": 299.66,
+    "volume": 1550400
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-07-31",
+    "open": 298.44,
+    "close": 295.1,
+    "high": 302.96,
+    "low": 293.63,
+    "volume": 2252700
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-08-01",
+    "open": 297.06,
+    "close": 296.88,
+    "high": 298.52,
+    "low": 292.59,
+    "volume": 2410900
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-08-04",
+    "open": 297.3,
+    "close": 301.94,
+    "high": 302.33,
+    "low": 296.3,
+    "volume": 2316200
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-08-05",
+    "open": 300.73,
+    "close": 300.08,
+    "high": 302.1,
+    "low": 297.02,
+    "volume": 2664100
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-08-06",
+    "open": 295.51,
+    "close": 284.67,
+    "high": 298.54,
+    "low": 281.65,
+    "volume": 4576000
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-08-07",
+    "open": 287.35,
+    "close": 284.7,
+    "high": 289.25,
+    "low": 281.69,
+    "volume": 2588800
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-08-08",
+    "open": 283.49,
+    "close": 288.23,
+    "high": 288.49,
+    "low": 283.49,
+    "volume": 1803300
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-08-11",
+    "open": 289.74,
+    "close": 285.09,
+    "high": 291.74,
+    "low": 284.72,
+    "volume": 1856800
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-08-12",
+    "open": 285.48,
+    "close": 284.98,
+    "high": 286.26,
+    "low": 282.6,
+    "volume": 2200300
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-08-13",
+    "open": 285.32,
+    "close": 289.33,
+    "high": 289.58,
+    "low": 284.69,
+    "volume": 1784900
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-08-14",
+    "open": 288.88,
+    "close": 290.29,
+    "high": 291.54,
+    "low": 287.41,
+    "volume": 1932300
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-08-15",
+    "open": 292.03,
+    "close": 296.47,
+    "high": 296.99,
+    "low": 290.58,
+    "volume": 2168300
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-08-18",
+    "open": 296.93,
+    "close": 292.62,
+    "high": 298.14,
+    "low": 292.3,
+    "volume": 1743800
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-08-19",
+    "open": 292.41,
+    "close": 295.55,
+    "high": 296.99,
+    "low": 292.11,
+    "volume": 1858500
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-08-20",
+    "open": 296.25,
+    "close": 296.45,
+    "high": 301.47,
+    "low": 295.8,
+    "volume": 1723700
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-08-21",
+    "open": 295.9,
+    "close": 295.76,
+    "high": 299.9,
+    "low": 294.49,
+    "volume": 1843700
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-08-22",
+    "open": 295.49,
+    "close": 293.72,
+    "high": 297.89,
+    "low": 293.35,
+    "volume": 1644000
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-08-25",
+    "open": 292.61,
+    "close": 288.47,
+    "high": 294.6,
+    "low": 287.56,
+    "volume": 1734300
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-08-26",
+    "open": 287.77,
+    "close": 289.58,
+    "high": 289.89,
+    "low": 286.53,
+    "volume": 1750400
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-08-27",
+    "open": 288.84,
+    "close": 287.97,
+    "high": 290.25,
+    "low": 286.65,
+    "volume": 1400800
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-08-28",
+    "open": 287.23,
+    "close": 285.61,
+    "high": 287.23,
+    "low": 284.87,
+    "volume": 1886700
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-08-29",
+    "open": 285.8,
+    "close": 287.71,
+    "high": 288.3,
+    "low": 285.16,
+    "volume": 1302700
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-09-02",
+    "open": 287.49,
+    "close": 286.92,
+    "high": 288.74,
+    "low": 284.71,
+    "volume": 1948200
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-09-03",
+    "open": 284.08,
+    "close": 283.85,
+    "high": 286.93,
+    "low": 280.38,
+    "volume": 2604100
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-09-04",
+    "open": 284.76,
+    "close": 280.1,
+    "high": 284.76,
+    "low": 278.75,
+    "volume": 2622000
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-09-05",
+    "open": 279.8,
+    "close": 283.64,
+    "high": 285.29,
+    "low": 279.0,
+    "volume": 2299400
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-09-08",
+    "open": 281.05,
+    "close": 280.19,
+    "high": 282.43,
+    "low": 277.32,
+    "volume": 2452900
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-09-09",
+    "open": 279.5,
+    "close": 279.97,
+    "high": 282.08,
+    "low": 278.78,
+    "volume": 1733000
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-09-10",
+    "open": 280.0,
+    "close": 278.51,
+    "high": 280.31,
+    "low": 275.16,
+    "volume": 2150700
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-09-11",
+    "open": 278.52,
+    "close": 282.73,
+    "high": 282.9,
+    "low": 278.0,
+    "volume": 2233100
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-09-12",
+    "open": 281.04,
+    "close": 276.39,
+    "high": 282.94,
+    "low": 276.07,
+    "volume": 2143700
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-09-15",
+    "open": 276.07,
+    "close": 274.4,
+    "high": 277.24,
+    "low": 271.61,
+    "volume": 2563100
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-09-16",
+    "open": 275.89,
+    "close": 273.08,
+    "high": 277.59,
+    "low": 271.73,
+    "volume": 2157400
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-09-17",
+    "open": 274.14,
+    "close": 274.71,
+    "high": 277.8,
+    "low": 273.0,
+    "volume": 1748800
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-09-18",
+    "open": 274.7,
+    "close": 275.83,
+    "high": 276.5,
+    "low": 273.97,
+    "volume": 3322500
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-09-19",
+    "open": 278.64,
+    "close": 285.41,
+    "high": 286.15,
+    "low": 277.37,
+    "volume": 8735100
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-09-22",
+    "open": 284.13,
+    "close": 286.0,
+    "high": 287.2,
+    "low": 281.71,
+    "volume": 3050500
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-09-23",
+    "open": 283.96,
+    "close": 286.81,
+    "high": 287.26,
+    "low": 283.96,
+    "volume": 2342000
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-09-24",
+    "open": 285.47,
+    "close": 279.22,
+    "high": 286.7,
+    "low": 278.0,
+    "volume": 2374200
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-09-25",
+    "open": 279.0,
+    "close": 271.18,
+    "high": 281.05,
+    "low": 270.64,
+    "volume": 2802700
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-09-26",
+    "open": 274.34,
+    "close": 272.98,
+    "high": 275.5,
+    "low": 269.77,
+    "volume": 1812200
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-09-29",
+    "open": 273.1,
+    "close": 273.97,
+    "high": 274.52,
+    "low": 270.67,
+    "volume": 1769100
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-09-30",
+    "open": 274.14,
+    "close": 282.2,
+    "high": 284.82,
+    "low": 274.02,
+    "volume": 3508700
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-10-01",
+    "open": 284.45,
+    "close": 298.5,
+    "high": 301.66,
+    "low": 283.0,
+    "volume": 4835400
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-10-02",
+    "open": 298.31,
+    "close": 297.4,
+    "high": 300.5,
+    "low": 295.46,
+    "volume": 2123200
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-10-03",
+    "open": 297.72,
+    "close": 297.89,
+    "high": 301.54,
+    "low": 295.63,
+    "volume": 2518500
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-10-06",
+    "open": 297.62,
+    "close": 294.12,
+    "high": 297.62,
+    "low": 293.03,
+    "volume": 1957300
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-10-07",
+    "open": 293.27,
+    "close": 295.54,
+    "high": 295.85,
+    "low": 290.21,
+    "volume": 1504300
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-10-08",
+    "open": 295.79,
+    "close": 294.62,
+    "high": 297.63,
+    "low": 292.29,
+    "volume": 2940600
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-10-09",
+    "open": 294.13,
+    "close": 295.43,
+    "high": 296.63,
+    "low": 293.7,
+    "volume": 1369000
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-10-10",
+    "open": 296.16,
+    "close": 290.13,
+    "high": 297.09,
+    "low": 289.58,
+    "volume": 2660500
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-10-13",
+    "open": 291.75,
+    "close": 292.4,
+    "high": 296.13,
+    "low": 289.44,
+    "volume": 1838400
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-10-14",
+    "open": 291.75,
+    "close": 293.85,
+    "high": 296.87,
+    "low": 290.97,
+    "volume": 1975900
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-10-15",
+    "open": 292.82,
+    "close": 297.32,
+    "high": 298.21,
+    "low": 292.43,
+    "volume": 2502100
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-10-16",
+    "open": 298.07,
+    "close": 295.81,
+    "high": 302.27,
+    "low": 294.44,
+    "volume": 1715000
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-10-17",
+    "open": 295.24,
+    "close": 298.81,
+    "high": 299.37,
+    "low": 293.14,
+    "volume": 1959400
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-10-20",
+    "open": 299.48,
+    "close": 303.33,
+    "high": 303.66,
+    "low": 297.75,
+    "volume": 1613400
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-10-21",
+    "open": 302.6,
+    "close": 301.14,
+    "high": 303.85,
+    "low": 298.03,
+    "volume": 1533400
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-10-22",
+    "open": 301.29,
+    "close": 295.98,
+    "high": 302.82,
+    "low": 295.6,
+    "volume": 1698500
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-10-23",
+    "open": 296.01,
+    "close": 292.89,
+    "high": 296.46,
+    "low": 291.91,
+    "volume": 1496800
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-10-24",
+    "open": 292.89,
+    "close": 291.76,
+    "high": 293.94,
+    "low": 290.66,
+    "volume": 1376300
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-10-27",
+    "open": 291.21,
+    "close": 291.16,
+    "high": 292.0,
+    "low": 288.26,
+    "volume": 1794300
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-10-28",
+    "open": 288.93,
+    "close": 292.09,
+    "high": 292.63,
+    "low": 288.26,
+    "volume": 2217200
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-10-29",
+    "open": 291.76,
+    "close": 291.77,
+    "high": 294.81,
+    "low": 289.44,
+    "volume": 2824300
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-10-30",
+    "open": 290.58,
+    "close": 292.0,
+    "high": 294.56,
+    "low": 289.0,
+    "volume": 2058200
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-10-31",
+    "open": 288.46,
+    "close": 298.43,
+    "high": 298.88,
+    "low": 288.0,
+    "volume": 2687100
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-11-03",
+    "open": 298.43,
+    "close": 296.3,
+    "high": 301.0,
+    "low": 292.12,
+    "volume": 2753300
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-11-04",
+    "open": 298.71,
+    "close": 296.7,
+    "high": 299.06,
+    "low": 294.48,
+    "volume": 3412500
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-11-05",
+    "open": 303.13,
+    "close": 319.86,
+    "high": 322.98,
+    "low": 302.13,
+    "volume": 5486200
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-11-06",
+    "open": 319.1,
+    "close": 315.59,
+    "high": 321.31,
+    "low": 312.52,
+    "volume": 3330300
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-11-07",
+    "open": 316.08,
+    "close": 320.2,
+    "high": 321.42,
+    "low": 314.0,
+    "volume": 2665200
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-11-10",
+    "open": 320.6,
+    "close": 323.66,
+    "high": 326.18,
+    "low": 319.54,
+    "volume": 2518600
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-11-11",
+    "open": 323.42,
+    "close": 338.45,
+    "high": 338.55,
+    "low": 323.42,
+    "volume": 3136500
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-11-12",
+    "open": 338.64,
+    "close": 336.28,
+    "high": 342.4,
+    "low": 335.82,
+    "volume": 2941000
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-11-13",
+    "open": 337.9,
+    "close": 336.0,
+    "high": 345.84,
+    "low": 335.12,
+    "volume": 3413500
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-11-14",
+    "open": 336.74,
+    "close": 336.74,
+    "high": 339.8,
+    "low": 330.35,
+    "volume": 3310300
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-11-17",
+    "open": 337.64,
+    "close": 341.71,
+    "high": 344.06,
+    "low": 336.83,
+    "volume": 2996600
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-11-18",
+    "open": 343.73,
+    "close": 343.99,
+    "high": 345.49,
+    "low": 339.3,
+    "volume": 2966600
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-11-19",
+    "open": 343.47,
+    "close": 342.4,
+    "high": 345.29,
+    "low": 340.02,
+    "volume": 2129800
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-11-20",
+    "open": 344.52,
+    "close": 336.07,
+    "high": 345.09,
+    "low": 335.0,
+    "volume": 3183700
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-11-21",
+    "open": 334.87,
+    "close": 337.54,
+    "high": 342.84,
+    "low": 334.74,
+    "volume": 4128600
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-11-24",
+    "open": 335.84,
+    "close": 334.3,
+    "high": 338.66,
+    "low": 331.71,
+    "volume": 3551600
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-11-25",
+    "open": 335.41,
+    "close": 341.11,
+    "high": 341.73,
+    "low": 335.41,
+    "volume": 2868600
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-11-26",
+    "open": 341.53,
+    "close": 344.57,
+    "high": 345.03,
+    "low": 340.0,
+    "volume": 2333100
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-11-28",
+    "open": 344.0,
+    "close": 345.46,
+    "high": 345.66,
+    "low": 342.26,
+    "volume": 1268800
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-12-01",
+    "open": 343.07,
+    "close": 337.49,
+    "high": 343.98,
+    "low": 336.25,
+    "volume": 2383800
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-12-02",
+    "open": 338.86,
+    "close": 338.36,
+    "high": 342.5,
+    "low": 336.33,
+    "volume": 2446500
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-12-03",
+    "open": 340.54,
+    "close": 345.42,
+    "high": 346.38,
+    "low": 338.85,
+    "volume": 2839100
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-12-04",
+    "open": 344.23,
+    "close": 340.16,
+    "high": 346.33,
+    "low": 338.94,
+    "volume": 3695700
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-12-05",
+    "open": 340.36,
+    "close": 329.89,
+    "high": 340.88,
+    "low": 328.63,
+    "volume": 2897700
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-12-08",
+    "open": 329.09,
+    "close": 321.23,
+    "high": 329.67,
+    "low": 320.17,
+    "volume": 3510700
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-12-09",
+    "open": 321.82,
+    "close": 313.85,
+    "high": 323.0,
+    "low": 313.18,
+    "volume": 2924900
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-12-10",
+    "open": 316.25,
+    "close": 315.38,
+    "high": 317.47,
+    "low": 313.0,
+    "volume": 3071500
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-12-11",
+    "open": 317.89,
+    "close": 317.38,
+    "high": 320.19,
+    "low": 312.39,
+    "volume": 2454800
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-12-12",
+    "open": 317.3,
+    "close": 317.74,
+    "high": 319.46,
+    "low": 315.19,
+    "volume": 2247200
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-12-15",
+    "open": 321.21,
+    "close": 325.31,
+    "high": 325.77,
+    "low": 319.06,
+    "volume": 4049500
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-12-16",
+    "open": 324.82,
+    "close": 326.74,
+    "high": 327.34,
+    "low": 323.02,
+    "volume": 2642500
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-12-17",
+    "open": 327.52,
+    "close": 326.01,
+    "high": 330.04,
+    "low": 325.43,
+    "volume": 2517300
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-12-18",
+    "open": 326.27,
+    "close": 324.42,
+    "high": 328.24,
+    "low": 321.91,
+    "volume": 2669000
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-12-19",
+    "open": 325.56,
+    "close": 327.38,
+    "high": 331.5,
+    "low": 324.73,
+    "volume": 13465700
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-12-22",
+    "open": 327.01,
+    "close": 331.39,
+    "high": 331.88,
+    "low": 326.08,
+    "volume": 2400400
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-12-23",
+    "open": 328.09,
+    "close": 331.49,
+    "high": 333.67,
+    "low": 328.07,
+    "volume": 1552800
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-12-24",
+    "open": 330.72,
+    "close": 333.96,
+    "high": 334.38,
+    "low": 330.72,
+    "volume": 833700
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-12-26",
+    "open": 333.65,
+    "close": 332.93,
+    "high": 333.98,
+    "low": 330.85,
+    "volume": 792600
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-12-29",
+    "open": 332.46,
+    "close": 329.63,
+    "high": 333.5,
+    "low": 329.47,
+    "volume": 2181000
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-12-30",
+    "open": 328.65,
+    "close": 328.69,
+    "high": 329.77,
+    "low": 325.83,
+    "volume": 1255900
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2025-12-31",
+    "open": 328.69,
+    "close": 327.31,
+    "high": 329.5,
+    "low": 327.06,
+    "volume": 1417300
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-01-02",
+    "open": 328.77,
+    "close": 327.64,
+    "high": 329.19,
+    "low": 325.01,
+    "volume": 1539700
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-01-05",
+    "open": 324.92,
+    "close": 320.72,
+    "high": 326.52,
+    "low": 318.21,
+    "volume": 2268700
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-01-06",
+    "open": 319.49,
+    "close": 330.17,
+    "high": 330.94,
+    "low": 318.83,
+    "volume": 2722500
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-01-07",
+    "open": 332.1,
+    "close": 341.64,
+    "high": 343.05,
+    "low": 332.1,
+    "volume": 3599200
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-01-08",
+    "open": 337.76,
+    "close": 330.11,
+    "high": 341.46,
+    "low": 328.21,
+    "volume": 2799300
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-01-09",
+    "open": 328.81,
+    "close": 326.1,
+    "high": 332.08,
+    "low": 323.89,
+    "volume": 2118400
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-01-12",
+    "open": 328.47,
+    "close": 325.54,
+    "high": 328.47,
+    "low": 322.74,
+    "volume": 2460600
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-01-13",
+    "open": 327.42,
+    "close": 324.3,
+    "high": 327.75,
+    "low": 319.79,
+    "volume": 2382200
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-01-14",
+    "open": 324.09,
+    "close": 328.97,
+    "high": 329.2,
+    "low": 323.55,
+    "volume": 1897400
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-01-15",
+    "open": 328.97,
+    "close": 330.03,
+    "high": 332.5,
+    "low": 325.19,
+    "volume": 2591900
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-01-16",
+    "open": 328.7,
+    "close": 330.41,
+    "high": 333.03,
+    "low": 326.9,
+    "volume": 4033700
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-01-20",
+    "open": 325.58,
+    "close": 331.0,
+    "high": 331.34,
+    "low": 321.71,
+    "volume": 2947500
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-01-21",
+    "open": 329.95,
+    "close": 343.6,
+    "high": 343.98,
+    "low": 329.32,
+    "volume": 4148600
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-01-22",
+    "open": 344.15,
+    "close": 347.07,
+    "high": 349.98,
+    "low": 342.14,
+    "volume": 3025100
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-01-23",
+    "open": 346.18,
+    "close": 344.75,
+    "high": 349.23,
+    "low": 341.82,
+    "volume": 2024900
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-01-26",
+    "open": 344.7,
+    "close": 349.69,
+    "high": 350.43,
+    "low": 343.62,
+    "volume": 3116100
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-01-27",
+    "open": 348.57,
+    "close": 351.32,
+    "high": 353.25,
+    "low": 346.93,
+    "volume": 3269600
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-01-28",
+    "open": 349.0,
+    "close": 342.22,
+    "high": 351.95,
+    "low": 340.0,
+    "volume": 2347800
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-01-29",
+    "open": 341.66,
+    "close": 342.94,
+    "high": 347.27,
+    "low": 338.75,
+    "volume": 3153100
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-01-30",
+    "open": 340.81,
+    "close": 341.88,
+    "high": 345.5,
+    "low": 338.07,
+    "volume": 2522400
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-02-02",
+    "open": 339.47,
+    "close": 344.68,
+    "high": 345.98,
+    "low": 339.41,
+    "volume": 1899900
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-02-03",
+    "open": 341.24,
+    "close": 338.59,
+    "high": 349.5,
+    "low": 338.59,
+    "volume": 4040000
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-02-04",
+    "open": 352.03,
+    "close": 366.2,
+    "high": 368.75,
+    "low": 342.38,
+    "volume": 5899600
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-02-05",
+    "open": 365.73,
+    "close": 367.8,
+    "high": 374.9,
+    "low": 365.0,
+    "volume": 4007300
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-02-06",
+    "open": 369.99,
+    "close": 384.32,
+    "high": 385.12,
+    "low": 368.9,
+    "volume": 3840300
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-02-09",
+    "open": 380.7,
+    "close": 375.82,
+    "high": 384.62,
+    "low": 372.34,
+    "volume": 2843700
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-02-10",
+    "open": 377.04,
+    "close": 364.65,
+    "high": 377.36,
+    "low": 363.65,
+    "volume": 3526400
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-02-11",
+    "open": 365.14,
+    "close": 366.58,
+    "high": 368.51,
+    "low": 361.0,
+    "volume": 2826000
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-02-12",
+    "open": 366.66,
+    "close": 366.2,
+    "high": 370.88,
+    "low": 365.06,
+    "volume": 2374500
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-02-13",
+    "open": 362.66,
+    "close": 369.19,
+    "high": 370.42,
+    "low": 361.71,
+    "volume": 2414200
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-02-17",
+    "open": 370.88,
+    "close": 373.36,
+    "high": 374.77,
+    "low": 369.0,
+    "volume": 2255400
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-02-18",
+    "open": 373.5,
+    "close": 379.73,
+    "high": 380.58,
+    "low": 370.44,
+    "volume": 2731900
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-02-19",
+    "open": 377.91,
+    "close": 375.5,
+    "high": 379.93,
+    "low": 374.13,
+    "volume": 2427000
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-02-20",
+    "open": 372.01,
+    "close": 374.75,
+    "high": 377.0,
+    "low": 371.39,
+    "volume": 2911700
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-02-23",
+    "open": 375.26,
+    "close": 379.42,
+    "high": 381.78,
+    "low": 374.74,
+    "volume": 2951400
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-02-24",
+    "open": 380.02,
+    "close": 382.87,
+    "high": 383.2,
+    "low": 378.82,
+    "volume": 2454700
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-02-25",
+    "open": 381.5,
+    "close": 384.33,
+    "high": 387.49,
+    "low": 380.54,
+    "volume": 2459500
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-02-26",
+    "open": 385.14,
+    "close": 379.33,
+    "high": 385.14,
+    "low": 374.25,
+    "volume": 2589400
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-02-27",
+    "open": 379.29,
+    "close": 388.16,
+    "high": 390.14,
+    "low": 378.75,
+    "volume": 3441000
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-03-02",
+    "open": 388.0,
+    "close": 385.7,
+    "high": 391.29,
+    "low": 381.89,
+    "volume": 2837900
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-03-03",
+    "open": 377.97,
+    "close": 377.0,
+    "high": 381.74,
+    "low": 372.71,
+    "volume": 2710400
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-03-04",
+    "open": 380.0,
+    "close": 379.27,
+    "high": 380.09,
+    "low": 370.82,
+    "volume": 2028300
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-03-05",
+    "open": 375.18,
+    "close": 367.6,
+    "high": 377.09,
+    "low": 361.4,
+    "volume": 2868400
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-03-06",
+    "open": 364.2,
+    "close": 369.53,
+    "high": 369.76,
+    "low": 361.71,
+    "volume": 2443000
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-03-09",
+    "open": 368.27,
+    "close": 376.97,
+    "high": 378.82,
+    "low": 366.53,
+    "volume": 2719900
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-03-10",
+    "open": 376.17,
+    "close": 375.43,
+    "high": 379.26,
+    "low": 372.74,
+    "volume": 2284500
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-03-11",
+    "open": 375.05,
+    "close": 377.64,
+    "high": 380.14,
+    "low": 373.0,
+    "volume": 2299200
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-03-12",
+    "open": 373.51,
+    "close": 367.79,
+    "high": 375.0,
+    "low": 367.76,
+    "volume": 1990500
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-03-13",
+    "open": 370.68,
+    "close": 366.21,
+    "high": 372.98,
+    "low": 365.93,
+    "volume": 1500300
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-03-16",
+    "open": 369.38,
+    "close": 366.25,
+    "high": 370.89,
+    "low": 364.72,
+    "volume": 2099100
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-03-17",
+    "open": 368.24,
+    "close": 361.13,
+    "high": 368.78,
+    "low": 359.8,
+    "volume": 2334300
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-03-18",
+    "open": 359.82,
+    "close": 351.48,
+    "high": 360.69,
+    "low": 350.81,
+    "volume": 2895100
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-03-19",
+    "open": 353.3,
+    "close": 349.92,
+    "high": 356.32,
+    "low": 347.85,
+    "volume": 2168700
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-03-20",
+    "open": 348.01,
+    "close": 347.8,
+    "high": 351.25,
+    "low": 344.95,
+    "volume": 9168800
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-03-23",
+    "open": 351.8,
+    "close": 349.77,
+    "high": 353.42,
+    "low": 348.61,
+    "volume": 2368700
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-03-24",
+    "open": 346.56,
+    "close": 348.43,
+    "high": 352.58,
+    "low": 345.8,
+    "volume": 2336700
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-03-25",
+    "open": 350.76,
+    "close": 353.93,
+    "high": 358.0,
+    "low": 350.76,
+    "volume": 1831900
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-03-26",
+    "open": 350.33,
+    "close": 353.16,
+    "high": 354.81,
+    "low": 348.52,
+    "volume": 2044800
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-03-27",
+    "open": 355.66,
+    "close": 348.77,
+    "high": 355.66,
+    "low": 347.8,
+    "volume": 2274800
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-03-30",
+    "open": 351.83,
+    "close": 349.0,
+    "high": 351.83,
+    "low": 348.13,
+    "volume": 2589900
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-03-31",
+    "open": 350.73,
+    "close": 351.85,
+    "high": 355.49,
+    "low": 347.11,
+    "volume": 3747100
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-04-01",
+    "open": 354.9,
+    "close": 353.28,
+    "high": 357.0,
+    "low": 351.66,
+    "volume": 2726600
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-04-02",
+    "open": 352.72,
+    "close": 347.94,
+    "high": 354.16,
+    "low": 345.87,
+    "volume": 1604300
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-04-06",
+    "open": 345.45,
+    "close": 342.57,
+    "high": 348.17,
+    "low": 340.64,
+    "volume": 2143700
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-04-07",
+    "open": 340.99,
+    "close": 340.0,
+    "high": 341.87,
+    "low": 335.06,
+    "volume": 3162200
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-04-08",
+    "open": 345.61,
+    "close": 349.81,
+    "high": 351.33,
+    "low": 342.35,
+    "volume": 2666400
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-04-09",
+    "open": 347.46,
+    "close": 355.6,
+    "high": 359.45,
+    "low": 346.42,
+    "volume": 2940700
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-04-10",
+    "open": 357.46,
+    "close": 351.02,
+    "high": 357.46,
+    "low": 349.75,
+    "volume": 2258100
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-04-13",
+    "open": 352.09,
+    "close": 349.82,
+    "high": 352.62,
+    "low": 345.49,
+    "volume": 2547700
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-04-14",
+    "open": 346.18,
+    "close": 350.95,
+    "high": 351.72,
+    "low": 345.41,
+    "volume": 2106800
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-04-15",
+    "open": 351.7,
+    "close": 348.22,
+    "high": 352.6,
+    "low": 344.21,
+    "volume": 2140000
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-04-16",
+    "open": 346.63,
+    "close": 349.39,
+    "high": 351.25,
+    "low": 346.6,
+    "volume": 1981600
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-04-17",
+    "open": 351.9,
+    "close": 355.3,
+    "high": 356.69,
+    "low": 349.42,
+    "volume": 3685900
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-04-20",
+    "open": 354.25,
+    "close": 350.16,
+    "high": 356.9,
+    "low": 350.02,
+    "volume": 2107600
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-04-21",
+    "open": 350.23,
+    "close": 344.86,
+    "high": 350.23,
+    "low": 340.06,
+    "volume": 2066600
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-04-22",
+    "open": 344.09,
+    "close": 345.92,
+    "high": 347.68,
+    "low": 342.97,
+    "volume": 2136100
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-04-23",
+    "open": 345.52,
+    "close": 348.62,
+    "high": 350.69,
+    "low": 345.5,
+    "volume": 2033400
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-04-24",
+    "open": 346.0,
+    "close": 344.55,
+    "high": 347.66,
+    "low": 342.52,
+    "volume": 2201200
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-04-27",
+    "open": 342.35,
+    "close": 340.18,
+    "high": 348.04,
+    "low": 339.98,
+    "volume": 2653800
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-04-28",
+    "open": 344.5,
+    "close": 339.57,
+    "high": 346.02,
+    "low": 337.82,
+    "volume": 2376400
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-04-29",
+    "open": 335.01,
+    "close": 338.02,
+    "high": 339.12,
+    "low": 333.55,
+    "volume": 2516500
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-04-30",
+    "open": 340.75,
+    "close": 346.25,
+    "high": 349.54,
+    "low": 340.05,
+    "volume": 3592600
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-05-01",
+    "open": 332.52,
+    "close": 329.82,
+    "high": 337.0,
+    "low": 324.63,
+    "volume": 3821100
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-05-04",
+    "open": 326.03,
+    "close": 323.85,
+    "high": 326.79,
+    "low": 321.92,
+    "volume": 3481000
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-05-05",
+    "open": 321.91,
+    "close": 329.59,
+    "high": 329.66,
+    "low": 320.52,
+    "volume": 3321400
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-05-06",
+    "open": 329.13,
+    "close": 331.11,
+    "high": 332.98,
+    "low": 329.05,
+    "volume": 2874400
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-05-07",
+    "open": 330.39,
+    "close": 329.09,
+    "high": 331.28,
+    "low": 327.22,
+    "volume": 3296900
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-05-08",
+    "open": 329.48,
+    "close": 331.7,
+    "high": 332.33,
+    "low": 328.0,
+    "volume": 2443200
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-05-11",
+    "open": 332.99,
+    "close": 329.59,
+    "high": 334.19,
+    "low": 327.62,
+    "volume": 1918800
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-05-12",
+    "open": 331.95,
+    "close": 336.29,
+    "high": 338.49,
+    "low": 329.8,
+    "volume": 3119100
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-05-13",
+    "open": 332.32,
+    "close": 336.45,
+    "high": 338.0,
+    "low": 330.06,
+    "volume": 2183800
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-05-14",
+    "open": 336.26,
+    "close": 336.23,
+    "high": 337.94,
+    "low": 333.47,
+    "volume": 2041600
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-05-15",
+    "open": 336.23,
+    "close": 326.31,
+    "high": 336.23,
+    "low": 325.16,
+    "volume": 3447700
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-05-18",
+    "open": 325.55,
+    "close": 324.39,
+    "high": 325.77,
+    "low": 321.21,
+    "volume": 2030100
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-05-19",
+    "open": 323.25,
+    "close": 330.75,
+    "high": 332.34,
+    "low": 320.97,
+    "volume": 3040400
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-05-20",
+    "open": 330.75,
+    "close": 331.57,
+    "high": 333.53,
+    "low": 326.8,
+    "volume": 4074400
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-05-21",
+    "open": 330.0,
+    "close": 337.42,
+    "high": 337.63,
+    "low": 329.09,
+    "volume": 2001000
+  },
+  {
+    "symbol": "AMGN",
+    "report_date": "2026-05-22",
+    "open": 340.26,
+    "close": 339.3,
+    "high": 343.8,
+    "low": 338.4,
+    "volume": 1566200
+  }
+]

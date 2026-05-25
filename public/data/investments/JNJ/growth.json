@@ -1,0 +1,1592 @@
+{
+  "quarterly_revenue": [
+    {
+      "symbol": "JNJ",
+      "report_date": "2022-06-30T00:00:00.000",
+      "revenue": 24020000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2022-12-31T00:00:00.000",
+      "revenue": 23706000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-06-30T00:00:00.000",
+      "revenue": 21519000000.0,
+      "prev_year_revenue": 24020000000.0,
+      "yoy_growth": -0.1041
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-09-30T00:00:00.000",
+      "revenue": 21351000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 21395000000.0,
+      "prev_year_revenue": 23706000000.0,
+      "yoy_growth": -0.0975
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-03-31T00:00:00.000",
+      "revenue": 21383000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-06-30T00:00:00.000",
+      "revenue": 22447000000.0,
+      "prev_year_revenue": 21519000000.0,
+      "yoy_growth": 0.0431
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-09-30T00:00:00.000",
+      "revenue": 22471000000.0,
+      "prev_year_revenue": 21351000000.0,
+      "yoy_growth": 0.0525
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 22520000000.0,
+      "prev_year_revenue": 21395000000.0,
+      "yoy_growth": 0.0526
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-03-31T00:00:00.000",
+      "revenue": 21893000000.0,
+      "prev_year_revenue": 21383000000.0,
+      "yoy_growth": 0.0239
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-06-30T00:00:00.000",
+      "revenue": 23743000000.0,
+      "prev_year_revenue": 22447000000.0,
+      "yoy_growth": 0.0577
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-09-30T00:00:00.000",
+      "revenue": 23993000000.0,
+      "prev_year_revenue": 22471000000.0,
+      "yoy_growth": 0.0677
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 24564000000.0,
+      "prev_year_revenue": 22520000000.0,
+      "yoy_growth": 0.0908
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2026-03-31T00:00:00.000",
+      "revenue": 24062000000.0,
+      "prev_year_revenue": 21893000000.0,
+      "yoy_growth": 0.0991
+    }
+  ],
+  "annual_revenue": [
+    {
+      "symbol": "JNJ",
+      "report_date": "2019-12-31T00:00:00.000",
+      "revenue": 82059000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2020-12-31T00:00:00.000",
+      "revenue": 82584000000.0,
+      "prev_year_revenue": 82059000000.0,
+      "yoy_growth": 0.0064
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2021-12-31T00:00:00.000",
+      "revenue": 78740000000.0,
+      "prev_year_revenue": 82584000000.0,
+      "yoy_growth": -0.0465
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2022-12-31T00:00:00.000",
+      "revenue": 79990000000.0,
+      "prev_year_revenue": 78740000000.0,
+      "yoy_growth": 0.0159
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 85159000000.0,
+      "prev_year_revenue": 79990000000.0,
+      "yoy_growth": 0.0646
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 88821000000.0,
+      "prev_year_revenue": 85159000000.0,
+      "yoy_growth": 0.043
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 94193000000.0,
+      "prev_year_revenue": 88821000000.0,
+      "yoy_growth": 0.0605
+    }
+  ],
+  "quarterly_operating_income": [
+    {
+      "symbol": "JNJ",
+      "report_date": "2022-06-30T00:00:00.000",
+      "operating_income": 6172000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2022-12-31T00:00:00.000",
+      "operating_income": 4805000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-06-30T00:00:00.000",
+      "operating_income": 6358000000.0,
+      "prev_year_operating_income": 6172000000.0,
+      "yoy_growth": 0.0301
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-09-30T00:00:00.000",
+      "operating_income": 6198000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 4607000000.0,
+      "prev_year_operating_income": 4805000000.0,
+      "yoy_growth": -0.0412
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-03-31T00:00:00.000",
+      "operating_income": 6273000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-06-30T00:00:00.000",
+      "operating_income": 6657000000.0,
+      "prev_year_operating_income": 6358000000.0,
+      "yoy_growth": 0.047
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-09-30T00:00:00.000",
+      "operating_income": 5278000000.0,
+      "prev_year_operating_income": 6198000000.0,
+      "yoy_growth": -0.1484
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 3641000000.0,
+      "prev_year_operating_income": 4607000000.0,
+      "yoy_growth": -0.2097
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-03-31T00:00:00.000",
+      "operating_income": 6199000000.0,
+      "prev_year_operating_income": 6273000000.0,
+      "yoy_growth": -0.0118
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-06-30T00:00:00.000",
+      "operating_income": 6710000000.0,
+      "prev_year_operating_income": 6657000000.0,
+      "yoy_growth": 0.008
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-09-30T00:00:00.000",
+      "operating_income": 7096000000.0,
+      "prev_year_operating_income": 5278000000.0,
+      "yoy_growth": 0.3444
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 5591000000.0,
+      "prev_year_operating_income": 3641000000.0,
+      "yoy_growth": 0.5356
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2026-03-31T00:00:00.000",
+      "operating_income": 6395000000.0,
+      "prev_year_operating_income": 6199000000.0,
+      "yoy_growth": 0.0316
+    }
+  ],
+  "annual_operating_income": [
+    {
+      "symbol": "JNJ",
+      "report_date": "2019-12-31T00:00:00.000",
+      "operating_income": 20970000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2020-12-31T00:00:00.000",
+      "operating_income": 19733000000.0,
+      "prev_year_operating_income": 20970000000.0,
+      "yoy_growth": -0.059
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2021-12-31T00:00:00.000",
+      "operating_income": 20943000000.0,
+      "prev_year_operating_income": 19733000000.0,
+      "yoy_growth": 0.0613
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2022-12-31T00:00:00.000",
+      "operating_income": 21013000000.0,
+      "prev_year_operating_income": 20943000000.0,
+      "yoy_growth": 0.0033
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 22009000000.0,
+      "prev_year_operating_income": 21013000000.0,
+      "yoy_growth": 0.0474
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 21249000000.0,
+      "prev_year_operating_income": 22009000000.0,
+      "yoy_growth": -0.0345
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 25596000000.0,
+      "prev_year_operating_income": 21249000000.0,
+      "yoy_growth": 0.2046
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "JNJ",
+      "report_date": "2022-12-31T00:00:00.000",
+      "ebitda": 6150000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-06-30T00:00:00.000",
+      "ebitda": 8457000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-09-30T00:00:00.000",
+      "ebitda": 7238000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 6820000000.0,
+      "prev_year_ebitda": 6150000000.0,
+      "yoy_growth": 0.1089
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-03-31T00:00:00.000",
+      "ebitda": 5684000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-06-30T00:00:00.000",
+      "ebitda": 7800000000.0,
+      "prev_year_ebitda": 8457000000.0,
+      "yoy_growth": -0.0777
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-09-30T00:00:00.000",
+      "ebitda": 5377000000.0,
+      "prev_year_ebitda": 7238000000.0,
+      "yoy_growth": -0.2571
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 5920000000.0,
+      "prev_year_ebitda": 6820000000.0,
+      "yoy_growth": -0.132
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-03-31T00:00:00.000",
+      "ebitda": 15607000000.0,
+      "prev_year_ebitda": 5684000000.0,
+      "yoy_growth": 1.7458
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-06-30T00:00:00.000",
+      "ebitda": 35646000000.0,
+      "prev_year_ebitda": 7800000000.0,
+      "yoy_growth": 3.57
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-09-30T00:00:00.000",
+      "ebitda": 9515000000.0,
+      "prev_year_ebitda": 5377000000.0,
+      "yoy_growth": 0.7696
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 7191000000.0,
+      "prev_year_ebitda": 5920000000.0,
+      "yoy_growth": 0.2147
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2026-03-31T00:00:00.000",
+      "ebitda": 33714000000.0,
+      "prev_year_ebitda": 15607000000.0,
+      "yoy_growth": 1.1602
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "JNJ",
+      "report_date": "2019-12-31T00:00:00.000",
+      "ebitda": 20970000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2020-12-31T00:00:00.000",
+      "ebitda": 23929000000.0,
+      "prev_year_ebitda": 20970000000.0,
+      "yoy_growth": 0.1411
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2021-12-31T00:00:00.000",
+      "ebitda": 26751000000.0,
+      "prev_year_ebitda": 23929000000.0,
+      "yoy_growth": 0.1179
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2022-12-31T00:00:00.000",
+      "ebitda": 26605000000.0,
+      "prev_year_ebitda": 26751000000.0,
+      "yoy_growth": -0.0055
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 23320000000.0,
+      "prev_year_ebitda": 26605000000.0,
+      "yoy_growth": -0.1235
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 24781000000.0,
+      "prev_year_ebitda": 23320000000.0,
+      "yoy_growth": 0.0627
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 41055000000.0,
+      "prev_year_ebitda": 24781000000.0,
+      "yoy_growth": 0.6567
+    }
+  ],
+  "quarterly_net_income": [
+    {
+      "symbol": "JNJ",
+      "report_date": "2022-06-30T00:00:00.000",
+      "net_income_common_stockholders": 4814000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2022-12-31T00:00:00.000",
+      "net_income_common_stockholders": 3520000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-06-30T00:00:00.000",
+      "net_income_common_stockholders": 5144000000.0,
+      "prev_year_net_income_common_stockholders": 4814000000.0,
+      "yoy_growth": 0.0686
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-09-30T00:00:00.000",
+      "net_income_common_stockholders": 26028000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 4049000000.0,
+      "prev_year_net_income_common_stockholders": 3520000000.0,
+      "yoy_growth": 0.1503
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-03-31T00:00:00.000",
+      "net_income_common_stockholders": 3255000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-06-30T00:00:00.000",
+      "net_income_common_stockholders": 4686000000.0,
+      "prev_year_net_income_common_stockholders": 5144000000.0,
+      "yoy_growth": -0.089
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-09-30T00:00:00.000",
+      "net_income_common_stockholders": 2694000000.0,
+      "prev_year_net_income_common_stockholders": 26028000000.0,
+      "yoy_growth": -0.8965
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 3431000000.0,
+      "prev_year_net_income_common_stockholders": 4049000000.0,
+      "yoy_growth": -0.1526
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-03-31T00:00:00.000",
+      "net_income_common_stockholders": 10999000000.0,
+      "prev_year_net_income_common_stockholders": 3255000000.0,
+      "yoy_growth": 2.3791
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-06-30T00:00:00.000",
+      "net_income_common_stockholders": 22661000000.0,
+      "prev_year_net_income_common_stockholders": 4686000000.0,
+      "yoy_growth": 3.8359
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-09-30T00:00:00.000",
+      "net_income_common_stockholders": 5152000000.0,
+      "prev_year_net_income_common_stockholders": 2694000000.0,
+      "yoy_growth": 0.9124
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 5116000000.0,
+      "prev_year_net_income_common_stockholders": 3431000000.0,
+      "yoy_growth": 0.4911
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2026-03-31T00:00:00.000",
+      "net_income_common_stockholders": 21040000000.0,
+      "prev_year_net_income_common_stockholders": 10999000000.0,
+      "yoy_growth": 0.9129
+    }
+  ],
+  "annual_net_income": [
+    {
+      "symbol": "JNJ",
+      "report_date": "2019-12-31T00:00:00.000",
+      "net_income_common_stockholders": 15119000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2020-12-31T00:00:00.000",
+      "net_income_common_stockholders": 14714000000.0,
+      "prev_year_net_income_common_stockholders": 15119000000.0,
+      "yoy_growth": -0.0268
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2021-12-31T00:00:00.000",
+      "net_income_common_stockholders": 20878000000.0,
+      "prev_year_net_income_common_stockholders": 14714000000.0,
+      "yoy_growth": 0.4189
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2022-12-31T00:00:00.000",
+      "net_income_common_stockholders": 17941000000.0,
+      "prev_year_net_income_common_stockholders": 20878000000.0,
+      "yoy_growth": -0.1407
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 35153000000.0,
+      "prev_year_net_income_common_stockholders": 17941000000.0,
+      "yoy_growth": 0.9594
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 14066000000.0,
+      "prev_year_net_income_common_stockholders": 35153000000.0,
+      "yoy_growth": -0.5999
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 26804000000.0,
+      "prev_year_net_income_common_stockholders": 14066000000.0,
+      "yoy_growth": 0.9056
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "JNJ",
+      "report_date": "2022-06-30T00:00:00.000",
+      "free_cash_flow": 4718000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-06-30T00:00:00.000",
+      "free_cash_flow": 3058000000.0,
+      "prev_year_free_cash_flow": 4718000000.0,
+      "yoy_growth": -0.3518
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-09-30T00:00:00.000",
+      "free_cash_flow": 6522000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 5804000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-03-31T00:00:00.000",
+      "free_cash_flow": 2850000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-06-30T00:00:00.000",
+      "free_cash_flow": 4657000000.0,
+      "prev_year_free_cash_flow": 3058000000.0,
+      "yoy_growth": 0.5229
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-09-30T00:00:00.000",
+      "free_cash_flow": 5714000000.0,
+      "prev_year_free_cash_flow": 6522000000.0,
+      "yoy_growth": -0.1239
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 4838000000.0,
+      "prev_year_free_cash_flow": 5804000000.0,
+      "yoy_growth": -0.1664
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-03-31T00:00:00.000",
+      "free_cash_flow": 3365000000.0,
+      "prev_year_free_cash_flow": 2850000000.0,
+      "yoy_growth": 0.1807
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-06-30T00:00:00.000",
+      "free_cash_flow": 16397000000.0,
+      "prev_year_free_cash_flow": 4657000000.0,
+      "yoy_growth": 2.5209
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-09-30T00:00:00.000",
+      "free_cash_flow": 7996000000.0,
+      "prev_year_free_cash_flow": 5714000000.0,
+      "yoy_growth": 0.3994
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 5472000000.0,
+      "prev_year_free_cash_flow": 4838000000.0,
+      "yoy_growth": 0.131
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2026-03-31T00:00:00.000",
+      "free_cash_flow": 17413000000.0,
+      "prev_year_free_cash_flow": 3365000000.0,
+      "yoy_growth": 4.1747
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "JNJ",
+      "report_date": "2019-12-31T00:00:00.000",
+      "free_cash_flow": 19918000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2020-12-31T00:00:00.000",
+      "free_cash_flow": 20189000000.0,
+      "prev_year_free_cash_flow": 19918000000.0,
+      "yoy_growth": 0.0136
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2021-12-31T00:00:00.000",
+      "free_cash_flow": 19758000000.0,
+      "prev_year_free_cash_flow": 20189000000.0,
+      "yoy_growth": -0.0213
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2022-12-31T00:00:00.000",
+      "free_cash_flow": 17185000000.0,
+      "prev_year_free_cash_flow": 19758000000.0,
+      "yoy_growth": -0.1302
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 17778000000.0,
+      "prev_year_free_cash_flow": 17185000000.0,
+      "yoy_growth": 0.0345
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 18059000000.0,
+      "prev_year_free_cash_flow": 17778000000.0,
+      "yoy_growth": 0.0158
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 19313000000.0,
+      "prev_year_free_cash_flow": 18059000000.0,
+      "yoy_growth": 0.0694
+    }
+  ],
+  "quarterly_eps": [
+    {
+      "symbol": "JNJ",
+      "report_date": "1996-03-31T00:00:00.000",
+      "eps": 0.29,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "1996-06-30T00:00:00.000",
+      "eps": 0.295,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "1996-09-30T00:00:00.000",
+      "eps": 0.275,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "1996-12-31T00:00:00.000",
+      "eps": 0.2086,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "1997-03-31T00:00:00.000",
+      "eps": 0.33,
+      "prev_year_eps": 0.29,
+      "yoy_growth": 0.1379
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "1997-06-30T00:00:00.000",
+      "eps": 0.335,
+      "prev_year_eps": 0.295,
+      "yoy_growth": 0.1356
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "1997-09-30T00:00:00.000",
+      "eps": 0.315,
+      "prev_year_eps": 0.275,
+      "yoy_growth": 0.1455
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "1997-12-31T00:00:00.000",
+      "eps": 0.2342,
+      "prev_year_eps": 0.2086,
+      "yoy_growth": 0.1227
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "1998-03-31T00:00:00.000",
+      "eps": 0.365,
+      "prev_year_eps": 0.33,
+      "yoy_growth": 0.1061
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "1998-06-30T00:00:00.000",
+      "eps": 0.37,
+      "prev_year_eps": 0.335,
+      "yoy_growth": 0.1045
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "1998-09-30T00:00:00.000",
+      "eps": 0.35,
+      "prev_year_eps": 0.315,
+      "yoy_growth": 0.1111
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "1998-12-31T00:00:00.000",
+      "eps": 0.0309,
+      "prev_year_eps": 0.2342,
+      "yoy_growth": -0.8681
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "1999-03-31T00:00:00.000",
+      "eps": 0.41,
+      "prev_year_eps": 0.365,
+      "yoy_growth": 0.1233
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "1999-06-30T00:00:00.000",
+      "eps": 0.42,
+      "prev_year_eps": 0.37,
+      "yoy_growth": 0.1351
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "1999-09-30T00:00:00.000",
+      "eps": 0.4,
+      "prev_year_eps": 0.35,
+      "yoy_growth": 0.1429
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "1999-12-31T00:00:00.000",
+      "eps": 0.265,
+      "prev_year_eps": 0.0309,
+      "yoy_growth": 7.5761
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2000-03-31T00:00:00.000",
+      "eps": 0.465,
+      "prev_year_eps": 0.41,
+      "yoy_growth": 0.1341
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2000-06-30T00:00:00.000",
+      "eps": 0.47,
+      "prev_year_eps": 0.42,
+      "yoy_growth": 0.119
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2000-09-30T00:00:00.000",
+      "eps": 0.445,
+      "prev_year_eps": 0.4,
+      "yoy_growth": 0.1125
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2000-12-31T00:00:00.000",
+      "eps": 0.315,
+      "prev_year_eps": 0.265,
+      "yoy_growth": 0.1887
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2001-03-31T00:00:00.000",
+      "eps": 0.53,
+      "prev_year_eps": 0.465,
+      "yoy_growth": 0.1398
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2001-06-30T00:00:00.000",
+      "eps": 0.48,
+      "prev_year_eps": 0.47,
+      "yoy_growth": 0.0213
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2001-09-30T00:00:00.000",
+      "eps": 0.49,
+      "prev_year_eps": 0.445,
+      "yoy_growth": 0.1011
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2001-12-31T00:00:00.000",
+      "eps": 0.36,
+      "prev_year_eps": 0.315,
+      "yoy_growth": 0.1429
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2002-03-31T00:00:00.000",
+      "eps": 0.59,
+      "prev_year_eps": 0.53,
+      "yoy_growth": 0.1132
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2002-06-30T00:00:00.000",
+      "eps": 0.54,
+      "prev_year_eps": 0.48,
+      "yoy_growth": 0.125
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2002-09-30T00:00:00.000",
+      "eps": 0.57,
+      "prev_year_eps": 0.49,
+      "yoy_growth": 0.1633
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2002-12-31T00:00:00.000",
+      "eps": 0.46,
+      "prev_year_eps": 0.36,
+      "yoy_growth": 0.2778
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2003-03-31T00:00:00.000",
+      "eps": 0.69,
+      "prev_year_eps": 0.59,
+      "yoy_growth": 0.1695
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2003-06-30T00:00:00.000",
+      "eps": 0.4,
+      "prev_year_eps": 0.54,
+      "yoy_growth": -0.2593
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2003-09-30T00:00:00.000",
+      "eps": 0.69,
+      "prev_year_eps": 0.57,
+      "yoy_growth": 0.2105
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2003-12-31T00:00:00.000",
+      "eps": 0.62,
+      "prev_year_eps": 0.46,
+      "yoy_growth": 0.3478
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2004-03-31T00:00:00.000",
+      "eps": 0.83,
+      "prev_year_eps": 0.69,
+      "yoy_growth": 0.2029
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2004-06-30T00:00:00.000",
+      "eps": 0.82,
+      "prev_year_eps": 0.4,
+      "yoy_growth": 1.05
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2004-09-30T00:00:00.000",
+      "eps": 0.78,
+      "prev_year_eps": 0.69,
+      "yoy_growth": 0.1304
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2004-12-31T00:00:00.000",
+      "eps": 0.67,
+      "prev_year_eps": 0.62,
+      "yoy_growth": 0.0806
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2005-03-31T00:00:00.000",
+      "eps": 0.94,
+      "prev_year_eps": 0.83,
+      "yoy_growth": 0.1325
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2005-06-30T00:00:00.000",
+      "eps": 0.86,
+      "prev_year_eps": 0.82,
+      "yoy_growth": 0.0488
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2005-09-30T00:00:00.000",
+      "eps": 0.85,
+      "prev_year_eps": 0.78,
+      "yoy_growth": 0.0897
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2005-12-31T00:00:00.000",
+      "eps": 0.7,
+      "prev_year_eps": 0.67,
+      "yoy_growth": 0.0448
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2006-03-31T00:00:00.000",
+      "eps": 1.1,
+      "prev_year_eps": 0.94,
+      "yoy_growth": 0.1702
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2006-06-30T00:00:00.000",
+      "eps": 0.95,
+      "prev_year_eps": 0.86,
+      "yoy_growth": 0.1047
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2006-09-30T00:00:00.000",
+      "eps": 0.94,
+      "prev_year_eps": 0.85,
+      "yoy_growth": 0.1059
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2006-12-31T00:00:00.000",
+      "eps": 0.74,
+      "prev_year_eps": 0.7,
+      "yoy_growth": 0.0571
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2007-03-31T00:00:00.000",
+      "eps": 0.88,
+      "prev_year_eps": 1.1,
+      "yoy_growth": -0.2
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2007-06-30T00:00:00.000",
+      "eps": 1.05,
+      "prev_year_eps": 0.95,
+      "yoy_growth": 0.1053
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2007-09-30T00:00:00.000",
+      "eps": 0.8747,
+      "prev_year_eps": 0.94,
+      "yoy_growth": -0.0695
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2007-12-31T00:00:00.000",
+      "eps": 0.82,
+      "prev_year_eps": 0.74,
+      "yoy_growth": 0.1081
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2008-03-31T00:00:00.000",
+      "eps": 1.26,
+      "prev_year_eps": 0.88,
+      "yoy_growth": 0.4318
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2008-06-30T00:00:00.000",
+      "eps": 1.17,
+      "prev_year_eps": 1.05,
+      "yoy_growth": 0.1143
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2008-09-30T00:00:00.000",
+      "eps": 1.17,
+      "prev_year_eps": 0.8747,
+      "yoy_growth": 0.3376
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2008-12-31T00:00:00.000",
+      "eps": 0.97,
+      "prev_year_eps": 0.82,
+      "yoy_growth": 0.1829
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2009-03-31T00:00:00.000",
+      "eps": 1.26,
+      "prev_year_eps": 1.26,
+      "yoy_growth": 0.0
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2009-06-30T00:00:00.000",
+      "eps": 1.15,
+      "prev_year_eps": 1.17,
+      "yoy_growth": -0.0171
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2009-09-30T00:00:00.000",
+      "eps": 1.2,
+      "prev_year_eps": 1.17,
+      "yoy_growth": 0.0256
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2009-12-31T00:00:00.000",
+      "eps": 0.79,
+      "prev_year_eps": 0.97,
+      "yoy_growth": -0.1856
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2010-03-31T00:00:00.000",
+      "eps": 1.62,
+      "prev_year_eps": 1.26,
+      "yoy_growth": 0.2857
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2010-06-30T00:00:00.000",
+      "eps": 1.23,
+      "prev_year_eps": 1.15,
+      "yoy_growth": 0.0696
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2010-09-30T00:00:00.000",
+      "eps": 1.23,
+      "prev_year_eps": 1.2,
+      "yoy_growth": 0.025
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2010-12-31T00:00:00.000",
+      "eps": 0.7,
+      "prev_year_eps": 0.79,
+      "yoy_growth": -0.1139
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2011-03-31T00:00:00.000",
+      "eps": 1.25,
+      "prev_year_eps": 1.62,
+      "yoy_growth": -0.2284
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2011-06-30T00:00:00.000",
+      "eps": 1.0,
+      "prev_year_eps": 1.23,
+      "yoy_growth": -0.187
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2011-09-30T00:00:00.000",
+      "eps": 1.15,
+      "prev_year_eps": 1.23,
+      "yoy_growth": -0.065
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2011-12-31T00:00:00.000",
+      "eps": 0.08,
+      "prev_year_eps": 0.7,
+      "yoy_growth": -0.8857
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2012-03-31T00:00:00.000",
+      "eps": 1.41,
+      "prev_year_eps": 1.25,
+      "yoy_growth": 0.128
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2012-06-30T00:00:00.000",
+      "eps": 0.5,
+      "prev_year_eps": 1.0,
+      "yoy_growth": -0.5
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2012-09-30T00:00:00.000",
+      "eps": 1.05,
+      "prev_year_eps": 1.15,
+      "yoy_growth": -0.087
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2012-12-31T00:00:00.000",
+      "eps": 0.91,
+      "prev_year_eps": 0.08,
+      "yoy_growth": 10.375
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2013-03-31T00:00:00.000",
+      "eps": 1.22,
+      "prev_year_eps": 1.41,
+      "yoy_growth": -0.1348
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2013-06-30T00:00:00.000",
+      "eps": 1.3249,
+      "prev_year_eps": 0.5,
+      "yoy_growth": 1.6498
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2013-09-30T00:00:00.000",
+      "eps": 1.035,
+      "prev_year_eps": 1.05,
+      "yoy_growth": -0.0143
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2013-12-31T00:00:00.000",
+      "eps": 1.23,
+      "prev_year_eps": 0.91,
+      "yoy_growth": 0.3516
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2014-03-31T00:00:00.000",
+      "eps": 1.64,
+      "prev_year_eps": 1.22,
+      "yoy_growth": 0.3443
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2014-06-30T00:00:00.000",
+      "eps": 1.51,
+      "prev_year_eps": 1.3249,
+      "yoy_growth": 0.1397
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2014-09-30T00:00:00.000",
+      "eps": 1.66,
+      "prev_year_eps": 1.035,
+      "yoy_growth": 0.6039
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2014-12-31T00:00:00.000",
+      "eps": 0.89,
+      "prev_year_eps": 1.23,
+      "yoy_growth": -0.2764
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2015-03-31T00:00:00.000",
+      "eps": 1.53,
+      "prev_year_eps": 1.64,
+      "yoy_growth": -0.0671
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2015-06-30T00:00:00.000",
+      "eps": 1.61,
+      "prev_year_eps": 1.51,
+      "yoy_growth": 0.0662
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2015-09-30T00:00:00.000",
+      "eps": 1.2,
+      "prev_year_eps": 1.66,
+      "yoy_growth": -0.2771
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2015-12-31T00:00:00.000",
+      "eps": 1.15,
+      "prev_year_eps": 0.89,
+      "yoy_growth": 0.2921
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2016-03-31T00:00:00.000",
+      "eps": 1.59,
+      "prev_year_eps": 1.53,
+      "yoy_growth": 0.0392
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2016-06-30T00:00:00.000",
+      "eps": 1.43,
+      "prev_year_eps": 1.61,
+      "yoy_growth": -0.1118
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2016-09-30T00:00:00.000",
+      "eps": 1.53,
+      "prev_year_eps": 1.2,
+      "yoy_growth": 0.275
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2016-12-31T00:00:00.000",
+      "eps": 1.38,
+      "prev_year_eps": 1.15,
+      "yoy_growth": 0.2
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2017-03-31T00:00:00.000",
+      "eps": 1.61,
+      "prev_year_eps": 1.59,
+      "yoy_growth": 0.0126
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2017-06-30T00:00:00.000",
+      "eps": 1.4,
+      "prev_year_eps": 1.43,
+      "yoy_growth": -0.021
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2017-09-30T00:00:00.000",
+      "eps": 1.37,
+      "prev_year_eps": 1.53,
+      "yoy_growth": -0.1046
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2017-12-31T00:00:00.000",
+      "eps": -3.99,
+      "prev_year_eps": 1.38,
+      "yoy_growth": -3.8913
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2018-03-31T00:00:00.000",
+      "eps": 1.6,
+      "prev_year_eps": 1.61,
+      "yoy_growth": -0.0062
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2018-06-30T00:00:00.000",
+      "eps": 1.45,
+      "prev_year_eps": 1.4,
+      "yoy_growth": 0.0357
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2018-09-30T00:00:00.000",
+      "eps": 1.44,
+      "prev_year_eps": 1.37,
+      "yoy_growth": 0.0511
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2018-12-31T00:00:00.000",
+      "eps": 1.12,
+      "prev_year_eps": -3.99,
+      "yoy_growth": 1.2807
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2019-03-31T00:00:00.000",
+      "eps": 1.3891,
+      "prev_year_eps": 1.6,
+      "yoy_growth": -0.1318
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2019-06-30T00:00:00.000",
+      "eps": 2.0831,
+      "prev_year_eps": 1.45,
+      "yoy_growth": 0.4366
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2019-09-30T00:00:00.000",
+      "eps": 0.6566,
+      "prev_year_eps": 1.44,
+      "yoy_growth": -0.544
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2019-12-31T00:00:00.000",
+      "eps": 1.5024,
+      "prev_year_eps": 1.12,
+      "yoy_growth": 0.3414
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2020-03-31T00:00:00.000",
+      "eps": 2.17,
+      "prev_year_eps": 1.3891,
+      "yoy_growth": 0.5622
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2020-06-30T00:00:00.000",
+      "eps": 1.3604,
+      "prev_year_eps": 2.0831,
+      "yoy_growth": -0.3469
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2020-09-30T00:00:00.000",
+      "eps": 1.3314,
+      "prev_year_eps": 0.6566,
+      "yoy_growth": 1.0277
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2020-12-31T00:00:00.000",
+      "eps": 0.6511,
+      "prev_year_eps": 1.5024,
+      "yoy_growth": -0.5666
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2021-03-31T00:00:00.000",
+      "eps": 2.3186,
+      "prev_year_eps": 2.17,
+      "yoy_growth": 0.0685
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2021-06-30T00:00:00.000",
+      "eps": 2.3499,
+      "prev_year_eps": 1.3604,
+      "yoy_growth": 0.7274
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2021-09-30T00:00:00.000",
+      "eps": 1.3709,
+      "prev_year_eps": 1.3314,
+      "yoy_growth": 0.0297
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2021-12-31T00:00:00.000",
+      "eps": 1.7736,
+      "prev_year_eps": 0.6511,
+      "yoy_growth": 1.724
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2022-03-31T00:00:00.000",
+      "eps": 1.931,
+      "prev_year_eps": 2.3186,
+      "yoy_growth": -0.1672
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2022-06-30T00:00:00.000",
+      "eps": 1.8044,
+      "prev_year_eps": 2.3499,
+      "yoy_growth": -0.2321
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2022-09-30T00:00:00.000",
+      "eps": 1.6751,
+      "prev_year_eps": 1.3709,
+      "yoy_growth": 0.2219
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2022-12-31T00:00:00.000",
+      "eps": 1.3282,
+      "prev_year_eps": 1.7736,
+      "yoy_growth": -0.2511
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-03-31T00:00:00.000",
+      "eps": -0.0261,
+      "prev_year_eps": 1.931,
+      "yoy_growth": -1.0135
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-06-30T00:00:00.000",
+      "eps": 1.9591,
+      "prev_year_eps": 1.8044,
+      "yoy_growth": 0.0857
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-09-30T00:00:00.000",
+      "eps": 1.9783,
+      "prev_year_eps": 1.6751,
+      "yoy_growth": 0.181
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-12-31T00:00:00.000",
+      "eps": 1.6658,
+      "prev_year_eps": 1.3282,
+      "yoy_growth": 0.2542
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-03-31T00:00:00.000",
+      "eps": 1.3394,
+      "prev_year_eps": -0.0261,
+      "yoy_growth": 52.318
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-06-30T00:00:00.000",
+      "eps": 1.9348,
+      "prev_year_eps": 1.9591,
+      "yoy_growth": -0.0124
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-09-30T00:00:00.000",
+      "eps": 1.1096,
+      "prev_year_eps": 1.9783,
+      "yoy_growth": -0.4391
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-12-31T00:00:00.000",
+      "eps": 1.4136,
+      "prev_year_eps": 1.6658,
+      "yoy_growth": -0.1514
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-03-31T00:00:00.000",
+      "eps": 4.5379,
+      "prev_year_eps": 1.3394,
+      "yoy_growth": 2.388
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-06-30T00:00:00.000",
+      "eps": 2.2889,
+      "prev_year_eps": 1.9348,
+      "yoy_growth": 0.183
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-09-30T00:00:00.000",
+      "eps": 2.1214,
+      "prev_year_eps": 1.1096,
+      "yoy_growth": 0.9119
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-12-31T00:00:00.000",
+      "eps": 2.0976,
+      "prev_year_eps": 1.4136,
+      "yoy_growth": 0.4839
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2026-03-31T00:00:00.000",
+      "eps": 2.1409,
+      "prev_year_eps": 4.5379,
+      "yoy_growth": -0.5282
+    }
+  ]
+}

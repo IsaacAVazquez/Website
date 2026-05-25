@@ -7,7 +7,8 @@
     "born": null,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "MRVL",
@@ -15,9 +16,10 @@
     "title": "President & COO",
     "age": 48,
     "born": 1977,
-    "pay": 1502102,
+    "pay": 2119420,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "MRVL",
@@ -27,7 +29,8 @@
     "born": 1974,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "MRVL",
@@ -37,7 +40,8 @@
     "born": null,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "MRVL",
@@ -47,17 +51,19 @@
     "born": 1973,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "MRVL",
     "name": "Mr. Mark J. Casper Esq.",
     "title": "Executive VP, Secretary & Chief Legal Officer",
-    "age": 56,
-    "born": 1969,
-    "pay": 1220444,
+    "age": 57,
+    "born": 1968,
+    "pay": 1299434,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "MRVL",
@@ -65,9 +71,10 @@
     "title": "CEO & Chairman",
     "age": 52,
     "born": 1973,
-    "pay": 4297036,
+    "pay": 4864280,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "MRVL",
@@ -77,26 +84,29 @@
     "born": null,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "MRVL",
+    "name": "Mr. Sandeep  Bharathi",
+    "title": "President of Data Center Group",
+    "age": 54,
+    "born": 1971,
+    "pay": 2169438,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "MRVL",
     "name": "Mr. Willem A. Meintjes",
     "title": "Executive VP & CFO",
-    "age": 43,
-    "born": 1982,
-    "pay": 1506849,
+    "age": 44,
+    "born": 1981,
+    "pay": 1811433,
     "exercised": 0,
-    "unexercised": 0
-  },
-  {
-    "symbol": "MRVL",
-    "name": "Ms. Janice  Hall",
-    "title": "Executive VP & Chief Human Resources Officer",
-    "age": null,
-    "born": null,
-    "pay": null,
-    "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   }
 ]

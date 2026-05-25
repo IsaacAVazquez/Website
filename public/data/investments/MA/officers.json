@@ -7,7 +7,8 @@
     "born": 1967,
     "pay": 2694403,
     "exercised": 22477560,
-    "unexercised": 9816097
+    "unexercised": 9816097,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "MA",
@@ -17,7 +18,8 @@
     "born": null,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "MA",
@@ -27,7 +29,8 @@
     "born": 1966,
     "pay": 2064752,
     "exercised": 5250432,
-    "unexercised": 19592664
+    "unexercised": 19592664,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "MA",
@@ -37,7 +40,8 @@
     "born": 1968,
     "pay": 9761053,
     "exercised": 11598079,
-    "unexercised": 30919096
+    "unexercised": 30919096,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "MA",
@@ -47,7 +51,8 @@
     "born": 1973,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "MA",
@@ -57,7 +62,8 @@
     "born": 1971,
     "pay": 3326275,
     "exercised": 11080211,
-    "unexercised": 7023571
+    "unexercised": 7023571,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "MA",
@@ -67,17 +73,8 @@
     "born": 1968,
     "pay": 2399628,
     "exercised": 2311073,
-    "unexercised": 6858552
-  },
-  {
-    "symbol": "MA",
-    "name": "Ms. Jill  Kramer",
-    "title": "Chief Marketing & Communications Officer",
-    "age": 55,
-    "born": 1970,
-    "pay": null,
-    "exercised": 0,
-    "unexercised": 0
+    "unexercised": 6858552,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "MA",
@@ -87,7 +84,19 @@
     "born": 1977,
     "pay": 2297718,
     "exercised": 0,
-    "unexercised": 7960118
+    "unexercised": 7960118,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "MA",
+    "name": "Ms. Sandra A. Arkell",
+    "title": "Corporate Controller & Principal Accounting Officer",
+    "age": 57,
+    "born": 1968,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "MA",
@@ -97,6 +106,7 @@
     "born": 1979,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   }
 ]

@@ -111,6 +111,13 @@
       "gross_profit": 1921000000.0,
       "total_revenue": 2532000000.0,
       "gross_margin": 0.7587
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-04-30",
+      "gross_profit": 7466000000.0,
+      "total_revenue": 9854000000.0,
+      "gross_margin": 0.7577
     }
   ],
   "annual_gross": [
@@ -276,6 +283,13 @@
       "operating_income": 305000000.0,
       "total_revenue": 2532000000.0,
       "operating_margin": 0.1205
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-04-30",
+      "operating_income": 1157000000.0,
+      "total_revenue": 9854000000.0,
+      "operating_margin": 0.1174
     }
   ],
   "annual_operating": [
@@ -441,6 +455,13 @@
       "net_income_common_stockholders": 145000000.0,
       "total_revenue": 2532000000.0,
       "net_margin": 0.0573
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-04-30",
+      "net_income_common_stockholders": 847000000.0,
+      "total_revenue": 9854000000.0,
+      "net_margin": 0.086
     }
   ],
   "annual_net": [
@@ -606,6 +627,13 @@
       "ebitda": 389000000.0,
       "total_revenue": 2532000000.0,
       "ebitda_margin": 0.1536
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-04-30",
+      "ebitda": 1684000000.0,
+      "total_revenue": 9854000000.0,
+      "ebitda_margin": 0.1709
     }
   ],
   "annual_ebitda": [
@@ -771,6 +799,13 @@
       "free_cash_flow": 1218000000.0,
       "total_revenue": 2532000000.0,
       "fcf_margin": 0.481
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-04-30",
+      "free_cash_flow": 2972000000.0,
+      "total_revenue": 9854000000.0,
+      "fcf_margin": 0.3016
     }
   ],
   "annual_fcf": [

@@ -66,11 +66,11 @@
     {
       "symbol": "BLK",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 1593000000.0,
+      "net_income_common_stockholders": 6404000000.0,
       "beginning_stockholders_equity": 48036000000.0,
       "ending_stockholders_equity": 49141000000.0,
       "avg_equity": 48588500000.0,
-      "roe": 0.0328
+      "roe": 0.1318
     },
     {
       "symbol": "BLK",
@@ -89,6 +89,15 @@
       "ending_stockholders_equity": 55888000000.0,
       "avg_equity": 55703500000.0,
       "roe": 0.0202
+    },
+    {
+      "symbol": "BLK",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 6255000000.0,
+      "beginning_stockholders_equity": 55888000000.0,
+      "ending_stockholders_equity": 56688000000.0,
+      "avg_equity": 56288000000.0,
+      "roe": 0.1111
     }
   ],
   "roa": [
@@ -158,11 +167,11 @@
     {
       "symbol": "BLK",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 1593000000.0,
+      "net_income_common_stockholders": 6404000000.0,
       "beginning_total_assets": 141942000000.0,
       "ending_total_assets": 146470000000.0,
       "avg_assets": 144206000000.0,
-      "roa": 0.011
+      "roa": 0.0444
     },
     {
       "symbol": "BLK",
@@ -181,6 +190,15 @@
       "ending_total_assets": 169998000000.0,
       "avg_assets": 166340000000.0,
       "roa": 0.0068
+    },
+    {
+      "symbol": "BLK",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 6255000000.0,
+      "beginning_total_assets": 169998000000.0,
+      "ending_total_assets": 170237000000.0,
+      "avg_assets": 170117500000.0,
+      "roa": 0.0368
     }
   ],
   "roic": [
@@ -265,12 +283,12 @@
       "symbol": "BLK",
       "report_date": "2025-06-30",
       "ebit": 2425000000.0,
-      "tax_rate_for_calcs": 0.26,
-      "nopat": 1794500000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 1891500000.0,
       "beginning_invested_capital": 60385000000.0,
       "ending_invested_capital": 61903000000.0,
       "avg_invested_capital": 61144000000.0,
-      "roic": 0.0293
+      "roic": 0.0309
     },
     {
       "symbol": "BLK",
@@ -293,6 +311,17 @@
       "ending_invested_capital": 68656000000.0,
       "avg_invested_capital": 68470500000.0,
       "roic": 0.0196
+    },
+    {
+      "symbol": "BLK",
+      "report_date": "2026-03-31",
+      "ebit": 2976000000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 2321280000.0,
+      "beginning_invested_capital": 68656000000.0,
+      "ending_invested_capital": 69437000000.0,
+      "avg_invested_capital": 69046500000.0,
+      "roic": 0.0336
     }
   ],
   "equityMultiplier": [
@@ -348,9 +377,9 @@
     {
       "symbol": "BLK",
       "report_date": "2025-06-30T00:00:00.000",
-      "roe": 0.0328,
-      "roa": 0.011,
-      "equity_multiplier": 2.98
+      "roe": 0.1318,
+      "roa": 0.0444,
+      "equity_multiplier": 2.97
     },
     {
       "symbol": "BLK",
@@ -365,6 +394,13 @@
       "roe": 0.0202,
       "roa": 0.0068,
       "equity_multiplier": 2.97
+    },
+    {
+      "symbol": "BLK",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.1111,
+      "roa": 0.0368,
+      "equity_multiplier": 3.02
     }
   ],
   "assetTurnover": [
@@ -420,8 +456,8 @@
     {
       "symbol": "BLK",
       "report_date": "2025-06-30T00:00:00.000",
-      "roa": 0.011,
-      "net_margin": 0.2937,
+      "roa": 0.0444,
+      "net_margin": 1.1809,
       "asset_turnover": 0.04
     },
     {
@@ -436,6 +472,13 @@
       "report_date": "2025-12-31T00:00:00.000",
       "roa": 0.0068,
       "net_margin": 0.1608,
+      "asset_turnover": 0.04
+    },
+    {
+      "symbol": "BLK",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0368,
+      "net_margin": 0.9339,
       "asset_turnover": 0.04
     }
   ]

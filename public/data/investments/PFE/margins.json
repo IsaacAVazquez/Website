@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "PFE",
+      "report_date": "2022-06-30",
+      "gross_profit": 19094000000.0,
+      "total_revenue": 27742000000.0,
+      "gross_margin": 0.6883
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2023-06-30",
+      "gross_profit": 9769000000.0,
+      "total_revenue": 13006000000.0,
+      "gross_margin": 0.7511
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2023-09-30",
+      "gross_profit": 4223000000.0,
+      "total_revenue": 13492000000.0,
+      "gross_margin": 0.313
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2023-12-31",
+      "gross_profit": 6686000000.0,
+      "total_revenue": 14249000000.0,
+      "gross_margin": 0.4692
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2024-03-31",
+      "gross_profit": 11499000000.0,
+      "total_revenue": 14878000000.0,
+      "gross_margin": 0.7729
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2024-06-30",
+      "gross_profit": 9983000000.0,
+      "total_revenue": 13283000000.0,
+      "gross_margin": 0.7516
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2024-09-30",
+      "gross_profit": 12438000000.0,
+      "total_revenue": 17701000000.0,
+      "gross_margin": 0.7027
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2024-12-31",
+      "gross_profit": 11855000000.0,
+      "total_revenue": 17764000000.0,
+      "gross_margin": 0.6674
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2025-03-31",
+      "gross_profit": 10870000000.0,
+      "total_revenue": 13715000000.0,
+      "gross_margin": 0.7926
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2025-06-30",
+      "gross_profit": 46037000000.0,
+      "total_revenue": 14653000000.0,
+      "gross_margin": 3.1418
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2025-09-30",
+      "gross_profit": 12482000000.0,
+      "total_revenue": 16654000000.0,
+      "gross_margin": 0.7495
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2025-12-31",
+      "gross_profit": 12285000000.0,
+      "total_revenue": 17557000000.0,
+      "gross_margin": 0.6997
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2026-03-31",
+      "gross_profit": 46544000000.0,
+      "total_revenue": 14450000000.0,
+      "gross_margin": 3.221
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "PFE",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2020-12-31",
+      "gross_profit": 33167000000.0,
+      "total_revenue": 41651000000.0,
+      "gross_margin": 0.7963
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2021-12-31",
+      "gross_profit": 50467000000.0,
+      "total_revenue": 81288000000.0,
+      "gross_margin": 0.6208
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2022-12-31",
+      "gross_profit": 66831000000.0,
+      "total_revenue": 101175000000.0,
+      "gross_margin": 0.6605
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2023-12-31",
+      "gross_profit": 34600000000.0,
+      "total_revenue": 59554000000.0,
+      "gross_margin": 0.581
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2024-12-31",
+      "gross_profit": 45776000000.0,
+      "total_revenue": 63627000000.0,
+      "gross_margin": 0.7194
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2025-12-31",
+      "gross_profit": 46512000000.0,
+      "total_revenue": 62579000000.0,
+      "gross_margin": 0.7433
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "PFE",
+      "report_date": "2022-06-30",
+      "operating_income": 12409000000.0,
+      "total_revenue": 27742000000.0,
+      "operating_margin": 0.4473
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2023-06-30",
+      "operating_income": 2440000000.0,
+      "total_revenue": 13006000000.0,
+      "operating_margin": 0.1876
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2023-09-30",
+      "operating_income": -2948000000.0,
+      "total_revenue": 13492000000.0,
+      "operating_margin": -0.2185
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2023-12-31",
+      "operating_income": -1971000000.0,
+      "total_revenue": 14249000000.0,
+      "operating_margin": -0.1383
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2024-03-31",
+      "operating_income": 4203000000.0,
+      "total_revenue": 14878000000.0,
+      "operating_margin": 0.2825
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2024-06-30",
+      "operating_income": 2257000000.0,
+      "total_revenue": 13283000000.0,
+      "operating_margin": 0.1699
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2024-09-30",
+      "operating_income": 5271000000.0,
+      "total_revenue": 17701000000.0,
+      "operating_margin": 0.2978
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2024-12-31",
+      "operating_income": 3187000000.0,
+      "total_revenue": 17764000000.0,
+      "operating_margin": 0.1794
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2025-03-31",
+      "operating_income": 4416000000.0,
+      "total_revenue": 13715000000.0,
+      "operating_margin": 0.322
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2025-06-30",
+      "operating_income": 3765000000.0,
+      "total_revenue": 14653000000.0,
+      "operating_margin": 0.2569
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2025-09-30",
+      "operating_income": 4137000000.0,
+      "total_revenue": 16654000000.0,
+      "operating_margin": 0.2484
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2025-12-31",
+      "operating_income": 3475000000.0,
+      "total_revenue": 17557000000.0,
+      "operating_margin": 0.1979
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2026-03-31",
+      "operating_income": 4131000000.0,
+      "total_revenue": 14450000000.0,
+      "operating_margin": 0.2859
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "PFE",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2020-12-31",
+      "operating_income": 8829000000.0,
+      "total_revenue": 41651000000.0,
+      "operating_margin": 0.212
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2021-12-31",
+      "operating_income": 20235000000.0,
+      "total_revenue": 81288000000.0,
+      "operating_margin": 0.2489
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2022-12-31",
+      "operating_income": 37164000000.0,
+      "total_revenue": 101175000000.0,
+      "operating_margin": 0.3673
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2023-12-31",
+      "operating_income": 4223000000.0,
+      "total_revenue": 59554000000.0,
+      "operating_margin": 0.0709
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2024-12-31",
+      "operating_income": 14830000000.0,
+      "total_revenue": 63627000000.0,
+      "operating_margin": 0.2331
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2025-12-31",
+      "operating_income": 15794000000.0,
+      "total_revenue": 62579000000.0,
+      "operating_margin": 0.2524
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "PFE",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 9906000000.0,
+      "total_revenue": 27742000000.0,
+      "net_margin": 0.3571
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 2327000000.0,
+      "total_revenue": 13006000000.0,
+      "net_margin": 0.1789
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": -2382000000.0,
+      "total_revenue": 13492000000.0,
+      "net_margin": -0.1765
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": -3369000000.0,
+      "total_revenue": 14249000000.0,
+      "net_margin": -0.2364
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 3115000000.0,
+      "total_revenue": 14878000000.0,
+      "net_margin": 0.2094
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 41000000.0,
+      "total_revenue": 13283000000.0,
+      "net_margin": 0.0031
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 4465000000.0,
+      "total_revenue": 17701000000.0,
+      "net_margin": 0.2522
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 410000000.0,
+      "total_revenue": 17764000000.0,
+      "net_margin": 0.0231
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 2967000000.0,
+      "total_revenue": 13715000000.0,
+      "net_margin": 0.2163
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 10752000000.0,
+      "total_revenue": 14653000000.0,
+      "net_margin": 0.7338
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 3541000000.0,
+      "total_revenue": 16654000000.0,
+      "net_margin": 0.2126
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": -1648000000.0,
+      "total_revenue": 17557000000.0,
+      "net_margin": -0.0939
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 7491000000.0,
+      "total_revenue": 14450000000.0,
+      "net_margin": 0.5184
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "PFE",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 9159000000.0,
+      "total_revenue": 41651000000.0,
+      "net_margin": 0.2199
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 21979000000.0,
+      "total_revenue": 81288000000.0,
+      "net_margin": 0.2704
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 31372000000.0,
+      "total_revenue": 101175000000.0,
+      "net_margin": 0.3101
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 2119000000.0,
+      "total_revenue": 59554000000.0,
+      "net_margin": 0.0356
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 8031000000.0,
+      "total_revenue": 63627000000.0,
+      "net_margin": 0.1262
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 7771000000.0,
+      "total_revenue": 62579000000.0,
+      "net_margin": 0.1242
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "PFE",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 27742000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2023-06-30",
+      "ebitda": 4350000000.0,
+      "total_revenue": 13006000000.0,
+      "ebitda_margin": 0.3345
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2023-09-30",
+      "ebitda": -1097000000.0,
+      "total_revenue": 13492000000.0,
+      "ebitda_margin": -0.0813
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2023-12-31",
+      "ebitda": -1771000000.0,
+      "total_revenue": 14249000000.0,
+      "ebitda_margin": -0.1243
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2024-03-31",
+      "ebitda": 5947000000.0,
+      "total_revenue": 14878000000.0,
+      "ebitda_margin": 0.3997
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2024-06-30",
+      "ebitda": 2406000000.0,
+      "total_revenue": 13283000000.0,
+      "ebitda_margin": 0.1811
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2024-09-30",
+      "ebitda": 7253000000.0,
+      "total_revenue": 17701000000.0,
+      "ebitda_margin": 0.4098
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2024-12-31",
+      "ebitda": 2520000000.0,
+      "total_revenue": 17764000000.0,
+      "ebitda_margin": 0.1419
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2025-03-31",
+      "ebitda": 5057000000.0,
+      "total_revenue": 13715000000.0,
+      "ebitda_margin": 0.3687
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2025-06-30",
+      "ebitda": 5323000000.0,
+      "total_revenue": 14653000000.0,
+      "ebitda_margin": 0.3633
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2025-09-30",
+      "ebitda": 5648000000.0,
+      "total_revenue": 16654000000.0,
+      "ebitda_margin": 0.3391
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2025-12-31",
+      "ebitda": 756000000.0,
+      "total_revenue": 17557000000.0,
+      "ebitda_margin": 0.0431
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2026-03-31",
+      "ebitda": 5451000000.0,
+      "total_revenue": 14450000000.0,
+      "ebitda_margin": 0.3772
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "PFE",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2020-12-31",
+      "ebitda": 13262000000.0,
+      "total_revenue": 41651000000.0,
+      "ebitda_margin": 0.3184
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2021-12-31",
+      "ebitda": 30793000000.0,
+      "total_revenue": 81288000000.0,
+      "ebitda_margin": 0.3788
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2022-12-31",
+      "ebitda": 41031000000.0,
+      "total_revenue": 101175000000.0,
+      "ebitda_margin": 0.4055
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2023-12-31",
+      "ebitda": 9557000000.0,
+      "total_revenue": 59554000000.0,
+      "ebitda_margin": 0.1605
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2024-12-31",
+      "ebitda": 18127000000.0,
+      "total_revenue": 63627000000.0,
+      "ebitda_margin": 0.2849
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2025-12-31",
+      "ebitda": 16783000000.0,
+      "total_revenue": 62579000000.0,
+      "ebitda_margin": 0.2682
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "PFE",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 7419000000.0,
+      "total_revenue": 27742000000.0,
+      "fcf_margin": 0.2674
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2023-06-30",
+      "free_cash_flow": -2122000000.0,
+      "total_revenue": 13006000000.0,
+      "fcf_margin": -0.1632
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 2646000000.0,
+      "total_revenue": 13492000000.0,
+      "fcf_margin": 0.1961
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 4196000000.0,
+      "total_revenue": 14249000000.0,
+      "fcf_margin": 0.2945
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 386000000.0,
+      "total_revenue": 14878000000.0,
+      "fcf_margin": 0.0259
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2024-06-30",
+      "free_cash_flow": -2418000000.0,
+      "total_revenue": 13283000000.0,
+      "fcf_margin": -0.182
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 6063000000.0,
+      "total_revenue": 17701000000.0,
+      "fcf_margin": 0.3425
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 5804000000.0,
+      "total_revenue": 17764000000.0,
+      "fcf_margin": 0.3267
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 1771000000.0,
+      "total_revenue": 13715000000.0,
+      "fcf_margin": 0.1291
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2025-06-30",
+      "free_cash_flow": -1200000000.0,
+      "total_revenue": 14653000000.0,
+      "fcf_margin": -0.0819
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 4001000000.0,
+      "total_revenue": 16654000000.0,
+      "fcf_margin": 0.2402
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 4503000000.0,
+      "total_revenue": 17557000000.0,
+      "fcf_margin": 0.2565
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 2179000000.0,
+      "total_revenue": 14450000000.0,
+      "fcf_margin": 0.1508
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "PFE",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 12177000000.0,
+      "total_revenue": 41651000000.0,
+      "fcf_margin": 0.2924
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 29869000000.0,
+      "total_revenue": 81288000000.0,
+      "fcf_margin": 0.3674
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 26031000000.0,
+      "total_revenue": 101175000000.0,
+      "fcf_margin": 0.2573
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 4793000000.0,
+      "total_revenue": 59554000000.0,
+      "fcf_margin": 0.0805
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 9835000000.0,
+      "total_revenue": 63627000000.0,
+      "fcf_margin": 0.1546
+    },
+    {
+      "symbol": "PFE",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 9075000000.0,
+      "total_revenue": 62579000000.0,
+      "fcf_margin": 0.145
+    }
+  ]
+}

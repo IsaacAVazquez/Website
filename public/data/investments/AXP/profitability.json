@@ -66,11 +66,11 @@
     {
       "symbol": "AXP",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 2852000000.0,
+      "net_income_common_stockholders": 10017000000.0,
       "beginning_stockholders_equity": 31202000000.0,
       "ending_stockholders_equity": 32311000000.0,
       "avg_equity": 31756500000.0,
-      "roe": 0.0898
+      "roe": 0.3154
     },
     {
       "symbol": "AXP",
@@ -93,11 +93,11 @@
     {
       "symbol": "AXP",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 2938000000.0,
+      "net_income_common_stockholders": 11087000000.0,
       "beginning_stockholders_equity": 33474000000.0,
       "ending_stockholders_equity": 33995000000.0,
       "avg_equity": 33734500000.0,
-      "roe": 0.0871
+      "roe": 0.3287
     }
   ],
   "roa": [
@@ -167,11 +167,11 @@
     {
       "symbol": "AXP",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 2852000000.0,
+      "net_income_common_stockholders": 10017000000.0,
       "beginning_total_assets": 282244000000.0,
       "ending_total_assets": 295556000000.0,
       "avg_assets": 288900000000.0,
-      "roa": 0.0099
+      "roa": 0.0347
     },
     {
       "symbol": "AXP",
@@ -194,11 +194,11 @@
     {
       "symbol": "AXP",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 2938000000.0,
+      "net_income_common_stockholders": 11087000000.0,
       "beginning_total_assets": 300052000000.0,
       "ending_total_assets": 308894000000.0,
       "avg_assets": 304473000000.0,
-      "roa": 0.0096
+      "roa": 0.0364
     }
   ],
   "roic": [],
@@ -255,9 +255,9 @@
     {
       "symbol": "AXP",
       "report_date": "2025-06-30T00:00:00.000",
-      "roe": 0.0898,
-      "roa": 0.0099,
-      "equity_multiplier": 9.07
+      "roe": 0.3154,
+      "roa": 0.0347,
+      "equity_multiplier": 9.09
     },
     {
       "symbol": "AXP",
@@ -276,9 +276,9 @@
     {
       "symbol": "AXP",
       "report_date": "2026-03-31T00:00:00.000",
-      "roe": 0.0871,
-      "roa": 0.0096,
-      "equity_multiplier": 9.07
+      "roe": 0.3287,
+      "roa": 0.0364,
+      "equity_multiplier": 9.03
     }
   ],
   "assetTurnover": [
@@ -334,8 +334,8 @@
     {
       "symbol": "AXP",
       "report_date": "2025-06-30T00:00:00.000",
-      "roa": 0.0099,
-      "net_margin": 0.1597,
+      "roa": 0.0347,
+      "net_margin": 0.561,
       "asset_turnover": 0.06
     },
     {
@@ -355,8 +355,8 @@
     {
       "symbol": "AXP",
       "report_date": "2026-03-31T00:00:00.000",
-      "roa": 0.0096,
-      "net_margin": 0.1554,
+      "roa": 0.0364,
+      "net_margin": 0.5864,
       "asset_turnover": 0.06
     }
   ]

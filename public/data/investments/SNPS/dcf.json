@@ -1,4 +1,3 @@
 {
-  "file_path": "/tmp/defeatbeta/dcf/SNPS.xlsx",
-  "description": "DCF Valuation Analysis for SNPS"
+  "error": "can't multiply sequence by non-int of type 'float'"
 }

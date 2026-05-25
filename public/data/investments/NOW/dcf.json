@@ -1,4 +1,3 @@
 {
-  "file_path": "/tmp/defeatbeta/dcf/NOW.xlsx",
-  "description": "DCF Valuation Analysis for NOW"
+  "error": "can't multiply sequence by non-int of type 'float'"
 }

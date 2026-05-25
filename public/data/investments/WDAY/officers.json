@@ -5,9 +5,10 @@
     "title": "Co-Founder, CEO & Executive Chairman of the Board",
     "age": 59,
     "born": 1966,
-    "pay": 3759040,
+    "pay": 3909259,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "WDAY",
@@ -17,7 +18,8 @@
     "born": 1941,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "WDAY",
@@ -27,7 +29,19 @@
     "born": 1980,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "WDAY",
+    "name": "Mr. Gerrit  Kazmaier",
+    "title": "President of Product & Technology",
+    "age": null,
+    "born": null,
+    "pay": 1525077,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "WDAY",
@@ -37,7 +51,8 @@
     "born": null,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "WDAY",
@@ -47,7 +62,19 @@
     "born": 1971,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "WDAY",
+    "name": "Mr. Richard Harry Sauer J.D.",
+    "title": "Chief Legal Officer, Head of Corporate Affairs & Corporate Secretary",
+    "age": 62,
+    "born": 1963,
+    "pay": 928254,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "WDAY",
@@ -57,7 +84,8 @@
     "born": 1963,
     "pay": 633236,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "WDAY",
@@ -65,19 +93,10 @@
     "title": "Chief Financial Officer",
     "age": 54,
     "born": 1971,
-    "pay": 2079456,
+    "pay": 1187790,
     "exercised": 0,
-    "unexercised": 0
-  },
-  {
-    "symbol": "WDAY",
-    "name": "Ms. Ashley D. Goldsmith",
-    "title": "Executive VP & Chief People Officer",
-    "age": 54,
-    "born": 1971,
-    "pay": null,
-    "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "WDAY",
@@ -87,16 +106,7 @@
     "born": 1976,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
-  },
-  {
-    "symbol": "WDAY",
-    "name": "Ms. Sheri  Rhodes",
-    "title": "Chief Customer Officer",
-    "age": 56,
-    "born": 1969,
-    "pay": null,
-    "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   }
 ]

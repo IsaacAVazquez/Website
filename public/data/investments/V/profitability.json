@@ -282,13 +282,13 @@
     {
       "symbol": "V",
       "report_date": "2025-06-30",
-      "ebit": 6372000000.0,
+      "ebit": 24898000000.0,
       "tax_rate_for_calcs": 0.17,
-      "nopat": 5288760000.0,
+      "nopat": 20665340000.0,
       "beginning_invested_capital": 57912000000.0,
       "ending_invested_capital": 62931000000.0,
       "avg_invested_capital": 60421500000.0,
-      "roic": 0.0875
+      "roic": 0.342
     },
     {
       "symbol": "V",
@@ -315,13 +315,13 @@
     {
       "symbol": "V",
       "report_date": "2026-03-31",
-      "ebit": 7352000000.0,
+      "ebit": 27077000000.0,
       "tax_rate_for_calcs": 0.16,
-      "nopat": 6175680000.0,
+      "nopat": 22744680000.0,
       "beginning_invested_capital": 59403000000.0,
       "ending_invested_capital": 59109000000.0,
       "avg_invested_capital": 59256000000.0,
-      "roic": 0.1042
+      "roic": 0.3838
     }
   ],
   "equityMultiplier": [
@@ -457,8 +457,8 @@
       "symbol": "V",
       "report_date": "2025-06-30T00:00:00.000",
       "roa": 0.0541,
-      "net_margin": 0.5131,
-      "asset_turnover": 0.11
+      "net_margin": 0.1342,
+      "asset_turnover": 0.4
     },
     {
       "symbol": "V",
@@ -478,8 +478,8 @@
       "symbol": "V",
       "report_date": "2026-03-31T00:00:00.000",
       "roa": 0.0623,
-      "net_margin": 0.5318,
-      "asset_turnover": 0.12
+      "net_margin": 0.1388,
+      "asset_turnover": 0.45
     }
   ]
 }

@@ -66,11 +66,11 @@
     {
       "symbol": "AMD",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 872000000.0,
+      "net_income_common_stockholders": 2834000000.0,
       "beginning_stockholders_equity": 57881000000.0,
       "ending_stockholders_equity": 59665000000.0,
       "avg_equity": 58773000000.0,
-      "roe": 0.0148
+      "roe": 0.0482
     },
     {
       "symbol": "AMD",
@@ -89,6 +89,15 @@
       "ending_stockholders_equity": 62999000000.0,
       "avg_equity": 61894500000.0,
       "roe": 0.0244
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 5009000000.0,
+      "beginning_stockholders_equity": 62999000000.0,
+      "ending_stockholders_equity": 64462000000.0,
+      "avg_equity": 63730500000.0,
+      "roe": 0.0786
     }
   ],
   "roa": [
@@ -158,11 +167,11 @@
     {
       "symbol": "AMD",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 872000000.0,
+      "net_income_common_stockholders": 2834000000.0,
       "beginning_total_assets": 71550000000.0,
       "ending_total_assets": 74820000000.0,
       "avg_assets": 73185000000.0,
-      "roa": 0.0119
+      "roa": 0.0387
     },
     {
       "symbol": "AMD",
@@ -181,6 +190,15 @@
       "ending_total_assets": 76926000000.0,
       "avg_assets": 76908500000.0,
       "roa": 0.0196
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 5009000000.0,
+      "beginning_total_assets": 76926000000.0,
+      "ending_total_assets": 79642000000.0,
+      "avg_assets": 78284000000.0,
+      "roa": 0.064
     }
   ],
   "roic": [
@@ -264,13 +282,13 @@
     {
       "symbol": "AMD",
       "report_date": "2025-06-30",
-      "ebit": -36000000.0,
+      "ebit": 2477000000.0,
       "tax_rate_for_calcs": 0.21,
-      "nopat": -28440000.0,
+      "nopat": 1956830000.0,
       "beginning_invested_capital": 62045000000.0,
       "ending_invested_capital": 62883000000.0,
       "avg_invested_capital": 62464000000.0,
-      "roic": -0.0005
+      "roic": 0.0313
     },
     {
       "symbol": "AMD",
@@ -293,6 +311,17 @@
       "ending_invested_capital": 66221000000.0,
       "avg_invested_capital": 65115500000.0,
       "roic": 0.0253
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2026-03-31",
+      "ebit": 5067000000.0,
+      "tax_rate_for_calcs": 0.15,
+      "nopat": 4306950000.0,
+      "beginning_invested_capital": 66221000000.0,
+      "ending_invested_capital": 67686000000.0,
+      "avg_invested_capital": 66953500000.0,
+      "roic": 0.0643
     }
   ],
   "equityMultiplier": [
@@ -348,9 +377,9 @@
     {
       "symbol": "AMD",
       "report_date": "2025-06-30T00:00:00.000",
-      "roe": 0.0148,
-      "roa": 0.0119,
-      "equity_multiplier": 1.24
+      "roe": 0.0482,
+      "roa": 0.0387,
+      "equity_multiplier": 1.25
     },
     {
       "symbol": "AMD",
@@ -365,6 +394,13 @@
       "roe": 0.0244,
       "roa": 0.0196,
       "equity_multiplier": 1.24
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.0786,
+      "roa": 0.064,
+      "equity_multiplier": 1.23
     }
   ],
   "assetTurnover": [
@@ -420,8 +456,8 @@
     {
       "symbol": "AMD",
       "report_date": "2025-06-30T00:00:00.000",
-      "roa": 0.0119,
-      "net_margin": 0.1135,
+      "roa": 0.0387,
+      "net_margin": 0.3688,
       "asset_turnover": 0.1
     },
     {
@@ -436,6 +472,13 @@
       "report_date": "2025-12-31T00:00:00.000",
       "roa": 0.0196,
       "net_margin": 0.1471,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.064,
+      "net_margin": 0.4885,
       "asset_turnover": 0.13
     }
   ]

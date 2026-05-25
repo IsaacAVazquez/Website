@@ -66,9 +66,9 @@
     {
       "symbol": "QCOM",
       "report_date": "2025-06-30T00:00:00.000",
-      "revenue": 10365000000.0,
+      "revenue": 43257000000.0,
       "prev_year_revenue": 9393000000.0,
-      "yoy_growth": 0.1035
+      "yoy_growth": 3.6052
     },
     {
       "symbol": "QCOM",
@@ -87,9 +87,9 @@
     {
       "symbol": "QCOM",
       "report_date": "2026-03-31T00:00:00.000",
-      "revenue": 10599000000.0,
+      "revenue": 44486000000.0,
       "prev_year_revenue": 10979000000.0,
-      "yoy_growth": -0.0346
+      "yoy_growth": 3.0519
     }
   ],
   "annual_revenue": [
@@ -203,9 +203,9 @@
     {
       "symbol": "QCOM",
       "report_date": "2025-06-30T00:00:00.000",
-      "operating_income": 2762000000.0,
+      "operating_income": 12019000000.0,
       "prev_year_operating_income": 2221000000.0,
-      "yoy_growth": 0.2436
+      "yoy_growth": 4.4115
     },
     {
       "symbol": "QCOM",
@@ -224,9 +224,9 @@
     {
       "symbol": "QCOM",
       "report_date": "2026-03-31T00:00:00.000",
-      "operating_income": 2309000000.0,
+      "operating_income": 11395000000.0,
       "prev_year_operating_income": 3120000000.0,
-      "yoy_growth": -0.2599
+      "yoy_growth": 2.6522
     }
   ],
   "annual_operating_income": [
@@ -333,9 +333,9 @@
     {
       "symbol": "QCOM",
       "report_date": "2025-06-30T00:00:00.000",
-      "ebitda": 3518000000.0,
+      "ebitda": 14631000000.0,
       "prev_year_ebitda": 2866000000.0,
-      "yoy_growth": 0.2275
+      "yoy_growth": 4.105
     },
     {
       "symbol": "QCOM",
@@ -354,9 +354,9 @@
     {
       "symbol": "QCOM",
       "report_date": "2026-03-31T00:00:00.000",
-      "ebitda": 2816000000.0,
+      "ebitda": 13956000000.0,
       "prev_year_ebitda": 3665000000.0,
-      "yoy_growth": -0.2317
+      "yoy_growth": 2.8079
     }
   ],
   "annual_ebitda": [
@@ -702,177 +702,177 @@
     {
       "symbol": "QCOM",
       "report_date": "1996-03-31T00:00:00.000",
-      "eps": 0.0,
+      "eps": 0.0012,
       "prev_year_eps": null,
       "yoy_growth": null
     },
     {
       "symbol": "QCOM",
       "report_date": "1996-06-30T00:00:00.000",
-      "eps": 0.0,
+      "eps": 0.0012,
       "prev_year_eps": null,
       "yoy_growth": null
     },
     {
       "symbol": "QCOM",
       "report_date": "1996-09-30T00:00:00.000",
-      "eps": 0.01,
+      "eps": 0.0075,
       "prev_year_eps": null,
       "yoy_growth": null
     },
     {
       "symbol": "QCOM",
       "report_date": "1996-12-31T00:00:00.000",
-      "eps": 0.01,
+      "eps": 0.0081,
       "prev_year_eps": null,
       "yoy_growth": null
     },
     {
       "symbol": "QCOM",
       "report_date": "1997-03-31T00:00:00.000",
-      "eps": 0.01,
-      "prev_year_eps": 0.0,
-      "yoy_growth": 1.0
+      "eps": 0.0144,
+      "prev_year_eps": 0.0012,
+      "yoy_growth": 11.0
     },
     {
       "symbol": "QCOM",
       "report_date": "1997-06-30T00:00:00.000",
-      "eps": 0.03,
-      "prev_year_eps": 0.0,
-      "yoy_growth": 1.0
+      "eps": 0.0306,
+      "prev_year_eps": 0.0012,
+      "yoy_growth": 24.5
     },
     {
       "symbol": "QCOM",
       "report_date": "1997-09-30T00:00:00.000",
-      "eps": 0.03,
-      "prev_year_eps": 0.01,
-      "yoy_growth": 2.0
+      "eps": 0.0276,
+      "prev_year_eps": 0.0075,
+      "yoy_growth": 2.68
     },
     {
       "symbol": "QCOM",
       "report_date": "1997-12-31T00:00:00.000",
-      "eps": 0.03,
-      "prev_year_eps": 0.01,
-      "yoy_growth": 2.0
+      "eps": 0.0312,
+      "prev_year_eps": 0.0081,
+      "yoy_growth": 2.8519
     },
     {
       "symbol": "QCOM",
       "report_date": "1998-03-31T00:00:00.000",
-      "eps": 0.02,
-      "prev_year_eps": 0.01,
-      "yoy_growth": 1.0
+      "eps": 0.0225,
+      "prev_year_eps": 0.0144,
+      "yoy_growth": 0.5625
     },
     {
       "symbol": "QCOM",
       "report_date": "1998-06-30T00:00:00.000",
-      "eps": 0.01,
-      "prev_year_eps": 0.03,
-      "yoy_growth": -0.6667
+      "eps": 0.005,
+      "prev_year_eps": 0.0306,
+      "yoy_growth": -0.8366
     },
     {
       "symbol": "QCOM",
       "report_date": "1998-09-30T00:00:00.000",
-      "eps": 0.03,
-      "prev_year_eps": 0.03,
-      "yoy_growth": 0.0
+      "eps": 0.0338,
+      "prev_year_eps": 0.0276,
+      "yoy_growth": 0.2246
     },
     {
       "symbol": "QCOM",
       "report_date": "1998-12-31T00:00:00.000",
-      "eps": 0.04,
-      "prev_year_eps": 0.03,
-      "yoy_growth": 0.3333
+      "eps": 0.0406,
+      "prev_year_eps": 0.0312,
+      "yoy_growth": 0.3013
     },
     {
       "symbol": "QCOM",
       "report_date": "1999-03-31T00:00:00.000",
-      "eps": -0.04,
-      "prev_year_eps": 0.02,
-      "yoy_growth": -3.0
+      "eps": -0.0369,
+      "prev_year_eps": 0.0225,
+      "yoy_growth": -2.64
     },
     {
       "symbol": "QCOM",
       "report_date": "1999-06-30T00:00:00.000",
-      "eps": 0.04,
-      "prev_year_eps": 0.01,
-      "yoy_growth": 3.0
+      "eps": 0.0438,
+      "prev_year_eps": 0.005,
+      "yoy_growth": 7.76
     },
     {
       "symbol": "QCOM",
       "report_date": "1999-09-30T00:00:00.000",
-      "eps": 0.09,
-      "prev_year_eps": 0.03,
-      "yoy_growth": 2.0
+      "eps": 0.0912,
+      "prev_year_eps": 0.0338,
+      "yoy_growth": 1.6982
     },
     {
       "symbol": "QCOM",
       "report_date": "1999-12-31T00:00:00.000",
-      "eps": 0.03,
-      "prev_year_eps": 0.04,
-      "yoy_growth": -0.25
+      "eps": 0.0288,
+      "prev_year_eps": 0.0406,
+      "yoy_growth": -0.2906
     },
     {
       "symbol": "QCOM",
       "report_date": "2000-03-31T00:00:00.000",
-      "eps": 0.13,
-      "prev_year_eps": -0.04,
-      "yoy_growth": 4.25
+      "eps": 0.125,
+      "prev_year_eps": -0.0369,
+      "yoy_growth": 4.3875
     },
     {
       "symbol": "QCOM",
       "report_date": "2000-06-30T00:00:00.000",
-      "eps": 0.1,
-      "prev_year_eps": 0.04,
-      "yoy_growth": 1.5
+      "eps": 0.095,
+      "prev_year_eps": 0.0438,
+      "yoy_growth": 1.1689
     },
     {
       "symbol": "QCOM",
       "report_date": "2000-09-30T00:00:00.000",
-      "eps": 0.09,
-      "prev_year_eps": 0.09,
-      "yoy_growth": 0.0
+      "eps": 0.085,
+      "prev_year_eps": 0.0912,
+      "yoy_growth": -0.068
     },
     {
       "symbol": "QCOM",
       "report_date": "2000-12-31T00:00:00.000",
       "eps": -0.24,
-      "prev_year_eps": 0.03,
-      "yoy_growth": -9.0
+      "prev_year_eps": 0.0288,
+      "yoy_growth": -9.3333
     },
     {
       "symbol": "QCOM",
       "report_date": "2001-03-31T00:00:00.000",
       "eps": 0.09,
-      "prev_year_eps": 0.13,
-      "yoy_growth": -0.3077
+      "prev_year_eps": 0.125,
+      "yoy_growth": -0.28
     },
     {
       "symbol": "QCOM",
       "report_date": "2001-06-30T00:00:00.000",
       "eps": -0.18,
-      "prev_year_eps": 0.1,
-      "yoy_growth": -2.8
+      "prev_year_eps": 0.095,
+      "yoy_growth": -2.8947
     },
     {
       "symbol": "QCOM",
       "report_date": "2001-09-30T00:00:00.000",
       "eps": -0.03,
-      "prev_year_eps": 0.09,
-      "yoy_growth": -1.3333
+      "prev_year_eps": 0.085,
+      "yoy_growth": -1.3529
     },
     {
       "symbol": "QCOM",
       "report_date": "2001-12-31T00:00:00.000",
-      "eps": 0.09,
+      "eps": 0.085,
       "prev_year_eps": -0.24,
-      "yoy_growth": 1.375
+      "yoy_growth": 1.3542
     },
     {
       "symbol": "QCOM",
       "report_date": "2002-03-31T00:00:00.000",
-      "eps": 0.03,
+      "eps": 0.025,
       "prev_year_eps": 0.09,
-      "yoy_growth": -0.6667
+      "yoy_growth": -0.7222
     },
     {
       "symbol": "QCOM",
@@ -884,72 +884,72 @@
     {
       "symbol": "QCOM",
       "report_date": "2002-09-30T00:00:00.000",
-      "eps": 0.12,
+      "eps": 0.115,
       "prev_year_eps": -0.03,
-      "yoy_growth": 5.0
+      "yoy_growth": 4.8333
     },
     {
       "symbol": "QCOM",
       "report_date": "2002-12-31T00:00:00.000",
       "eps": 0.15,
-      "prev_year_eps": 0.09,
-      "yoy_growth": 0.6667
+      "prev_year_eps": 0.085,
+      "yoy_growth": 0.7647
     },
     {
       "symbol": "QCOM",
       "report_date": "2003-03-31T00:00:00.000",
-      "eps": 0.07,
-      "prev_year_eps": 0.03,
-      "yoy_growth": 1.3333
+      "eps": 0.065,
+      "prev_year_eps": 0.025,
+      "yoy_growth": 1.6
     },
     {
       "symbol": "QCOM",
       "report_date": "2003-06-30T00:00:00.000",
-      "eps": 0.12,
+      "eps": 0.115,
       "prev_year_eps": -0.01,
-      "yoy_growth": 13.0
+      "yoy_growth": 12.5
     },
     {
       "symbol": "QCOM",
       "report_date": "2003-09-30T00:00:00.000",
-      "eps": 0.18,
-      "prev_year_eps": 0.12,
-      "yoy_growth": 0.5
+      "eps": 0.175,
+      "prev_year_eps": 0.115,
+      "yoy_growth": 0.5217
     },
     {
       "symbol": "QCOM",
       "report_date": "2003-12-31T00:00:00.000",
-      "eps": 0.22,
+      "eps": 0.215,
       "prev_year_eps": 0.15,
-      "yoy_growth": 0.4667
+      "yoy_growth": 0.4333
     },
     {
       "symbol": "QCOM",
       "report_date": "2004-03-31T00:00:00.000",
       "eps": 0.29,
-      "prev_year_eps": 0.07,
-      "yoy_growth": 3.1429
+      "prev_year_eps": 0.065,
+      "yoy_growth": 3.4615
     },
     {
       "symbol": "QCOM",
       "report_date": "2004-06-30T00:00:00.000",
       "eps": 0.29,
-      "prev_year_eps": 0.12,
-      "yoy_growth": 1.4167
+      "prev_year_eps": 0.115,
+      "yoy_growth": 1.5217
     },
     {
       "symbol": "QCOM",
       "report_date": "2004-09-30T00:00:00.000",
       "eps": 0.23,
-      "prev_year_eps": 0.18,
-      "yoy_growth": 0.2778
+      "prev_year_eps": 0.175,
+      "yoy_growth": 0.3143
     },
     {
       "symbol": "QCOM",
       "report_date": "2004-12-31T00:00:00.000",
       "eps": 0.3,
-      "prev_year_eps": 0.22,
-      "yoy_growth": 0.3636
+      "prev_year_eps": 0.215,
+      "yoy_growth": 0.3953
     },
     {
       "symbol": "QCOM",
@@ -1150,9 +1150,9 @@
     {
       "symbol": "QCOM",
       "report_date": "2012-03-31T00:00:00.000",
-      "eps": 0.6,
+      "eps": 0.603,
       "prev_year_eps": 0.59,
-      "yoy_growth": 0.0169
+      "yoy_growth": 0.022
     },
     {
       "symbol": "QCOM",
@@ -1179,8 +1179,8 @@
       "symbol": "QCOM",
       "report_date": "2013-03-31T00:00:00.000",
       "eps": 1.06,
-      "prev_year_eps": 0.6,
-      "yoy_growth": 0.7667
+      "prev_year_eps": 0.603,
+      "yoy_growth": 0.7579
     },
     {
       "symbol": "QCOM",
@@ -1199,16 +1199,16 @@
     {
       "symbol": "QCOM",
       "report_date": "2013-12-31T00:00:00.000",
-      "eps": 0.84,
+      "eps": 0.8391,
       "prev_year_eps": 1.09,
-      "yoy_growth": -0.2294
+      "yoy_growth": -0.2302
     },
     {
       "symbol": "QCOM",
       "report_date": "2014-03-31T00:00:00.000",
-      "eps": 1.14,
+      "eps": 1.1396,
       "prev_year_eps": 1.06,
-      "yoy_growth": 0.0755
+      "yoy_growth": 0.0751
     },
     {
       "symbol": "QCOM",
@@ -1220,23 +1220,23 @@
     {
       "symbol": "QCOM",
       "report_date": "2014-09-30T00:00:00.000",
-      "eps": 1.11,
+      "eps": 1.1135,
       "prev_year_eps": 0.86,
-      "yoy_growth": 0.2907
+      "yoy_growth": 0.2948
     },
     {
       "symbol": "QCOM",
       "report_date": "2014-12-31T00:00:00.000",
       "eps": 1.17,
-      "prev_year_eps": 0.84,
-      "yoy_growth": 0.3929
+      "prev_year_eps": 0.8391,
+      "yoy_growth": 0.3944
     },
     {
       "symbol": "QCOM",
       "report_date": "2015-03-31T00:00:00.000",
       "eps": 0.63,
-      "prev_year_eps": 1.14,
-      "yoy_growth": -0.4474
+      "prev_year_eps": 1.1396,
+      "yoy_growth": -0.4472
     },
     {
       "symbol": "QCOM",
@@ -1248,9 +1248,9 @@
     {
       "symbol": "QCOM",
       "report_date": "2015-09-30T00:00:00.000",
-      "eps": 0.67,
-      "prev_year_eps": 1.11,
-      "yoy_growth": -0.3964
+      "eps": 0.6745,
+      "prev_year_eps": 1.1135,
+      "yoy_growth": -0.3943
     },
     {
       "symbol": "QCOM",
@@ -1277,8 +1277,8 @@
       "symbol": "QCOM",
       "report_date": "2016-09-30T00:00:00.000",
       "eps": 1.07,
-      "prev_year_eps": 0.67,
-      "yoy_growth": 0.597
+      "prev_year_eps": 0.6745,
+      "yoy_growth": 0.5864
     },
     {
       "symbol": "QCOM",
@@ -1332,9 +1332,9 @@
     {
       "symbol": "QCOM",
       "report_date": "2018-09-30T00:00:00.000",
-      "eps": -0.36,
+      "eps": -0.362,
       "prev_year_eps": 0.11,
-      "yoy_growth": -4.2727
+      "yoy_growth": -4.2909
     },
     {
       "symbol": "QCOM",
@@ -1360,191 +1360,191 @@
     {
       "symbol": "QCOM",
       "report_date": "2019-09-30T00:00:00.000",
-      "eps": 0.42,
-      "prev_year_eps": -0.36,
-      "yoy_growth": 2.1667
+      "eps": 0.4178,
+      "prev_year_eps": -0.362,
+      "yoy_growth": 2.1541
     },
     {
       "symbol": "QCOM",
       "report_date": "2019-12-31T00:00:00.000",
-      "eps": 0.8,
+      "eps": 0.7981,
       "prev_year_eps": 0.87,
-      "yoy_growth": -0.0805
+      "yoy_growth": -0.0826
     },
     {
       "symbol": "QCOM",
       "report_date": "2020-03-31T00:00:00.000",
-      "eps": 0.41,
+      "eps": 0.4066,
       "prev_year_eps": 0.55,
-      "yoy_growth": -0.2545
+      "yoy_growth": -0.2607
     },
     {
       "symbol": "QCOM",
       "report_date": "2020-06-30T00:00:00.000",
-      "eps": 0.74,
+      "eps": 0.7419,
       "prev_year_eps": 1.75,
-      "yoy_growth": -0.5771
+      "yoy_growth": -0.5761
     },
     {
       "symbol": "QCOM",
       "report_date": "2020-09-30T00:00:00.000",
-      "eps": 2.58,
-      "prev_year_eps": 0.42,
-      "yoy_growth": 5.1429
+      "eps": 2.5784,
+      "prev_year_eps": 0.4178,
+      "yoy_growth": 5.1714
     },
     {
       "symbol": "QCOM",
       "report_date": "2020-12-31T00:00:00.000",
-      "eps": 2.12,
-      "prev_year_eps": 0.8,
-      "yoy_growth": 1.65
+      "eps": 2.1237,
+      "prev_year_eps": 0.7981,
+      "yoy_growth": 1.6609
     },
     {
       "symbol": "QCOM",
       "report_date": "2021-03-31T00:00:00.000",
-      "eps": 1.53,
-      "prev_year_eps": 0.41,
-      "yoy_growth": 2.7317
+      "eps": 1.5308,
+      "prev_year_eps": 0.4066,
+      "yoy_growth": 2.7649
     },
     {
       "symbol": "QCOM",
       "report_date": "2021-06-30T00:00:00.000",
-      "eps": 1.77,
-      "prev_year_eps": 0.74,
-      "yoy_growth": 1.3919
+      "eps": 1.7703,
+      "prev_year_eps": 0.7419,
+      "yoy_growth": 1.3862
     },
     {
       "symbol": "QCOM",
       "report_date": "2021-09-30T00:00:00.000",
-      "eps": 2.45,
-      "prev_year_eps": 2.58,
-      "yoy_growth": -0.0504
+      "eps": 2.4458,
+      "prev_year_eps": 2.5784,
+      "yoy_growth": -0.0514
     },
     {
       "symbol": "QCOM",
       "report_date": "2021-12-31T00:00:00.000",
-      "eps": 2.98,
-      "prev_year_eps": 2.12,
-      "yoy_growth": 0.4057
+      "eps": 2.9764,
+      "prev_year_eps": 2.1237,
+      "yoy_growth": 0.4015
     },
     {
       "symbol": "QCOM",
       "report_date": "2022-03-31T00:00:00.000",
-      "eps": 2.57,
-      "prev_year_eps": 1.53,
-      "yoy_growth": 0.6797
+      "eps": 2.5737,
+      "prev_year_eps": 1.5308,
+      "yoy_growth": 0.6813
     },
     {
       "symbol": "QCOM",
       "report_date": "2022-06-30T00:00:00.000",
-      "eps": 3.29,
-      "prev_year_eps": 1.77,
-      "yoy_growth": 0.8588
+      "eps": 3.2892,
+      "prev_year_eps": 1.7703,
+      "yoy_growth": 0.858
     },
     {
       "symbol": "QCOM",
       "report_date": "2022-09-30T00:00:00.000",
-      "eps": 2.54,
-      "prev_year_eps": 2.45,
-      "yoy_growth": 0.0367
+      "eps": 2.5358,
+      "prev_year_eps": 2.4458,
+      "yoy_growth": 0.0368
     },
     {
       "symbol": "QCOM",
       "report_date": "2022-12-31T00:00:00.000",
-      "eps": 1.98,
-      "prev_year_eps": 2.98,
-      "yoy_growth": -0.3356
+      "eps": 1.9761,
+      "prev_year_eps": 2.9764,
+      "yoy_growth": -0.3361
     },
     {
       "symbol": "QCOM",
       "report_date": "2023-03-31T00:00:00.000",
-      "eps": 1.52,
-      "prev_year_eps": 2.57,
-      "yoy_growth": -0.4086
+      "eps": 1.5174,
+      "prev_year_eps": 2.5737,
+      "yoy_growth": -0.4104
     },
     {
       "symbol": "QCOM",
       "report_date": "2023-06-30T00:00:00.000",
-      "eps": 1.6,
-      "prev_year_eps": 3.29,
-      "yoy_growth": -0.5137
+      "eps": 1.6041,
+      "prev_year_eps": 3.2892,
+      "yoy_growth": -0.5123
     },
     {
       "symbol": "QCOM",
       "report_date": "2023-09-30T00:00:00.000",
-      "eps": 1.32,
-      "prev_year_eps": 2.54,
-      "yoy_growth": -0.4803
+      "eps": 1.3236,
+      "prev_year_eps": 2.5358,
+      "yoy_growth": -0.478
     },
     {
       "symbol": "QCOM",
       "report_date": "2023-12-31T00:00:00.000",
-      "eps": 2.46,
-      "prev_year_eps": 1.98,
+      "eps": 2.4552,
+      "prev_year_eps": 1.9761,
       "yoy_growth": 0.2424
     },
     {
       "symbol": "QCOM",
       "report_date": "2024-03-31T00:00:00.000",
-      "eps": 2.06,
-      "prev_year_eps": 1.52,
-      "yoy_growth": 0.3553
+      "eps": 2.0584,
+      "prev_year_eps": 1.5174,
+      "yoy_growth": 0.3565
     },
     {
       "symbol": "QCOM",
       "report_date": "2024-06-30T00:00:00.000",
-      "eps": 1.88,
-      "prev_year_eps": 1.6,
-      "yoy_growth": 0.175
+      "eps": 1.8774,
+      "prev_year_eps": 1.6041,
+      "yoy_growth": 0.1704
     },
     {
       "symbol": "QCOM",
       "report_date": "2024-09-30T00:00:00.000",
-      "eps": 2.59,
-      "prev_year_eps": 1.32,
-      "yoy_growth": 0.9621
+      "eps": 2.5864,
+      "prev_year_eps": 1.3236,
+      "yoy_growth": 0.9541
     },
     {
       "symbol": "QCOM",
       "report_date": "2024-12-31T00:00:00.000",
-      "eps": 2.83,
-      "prev_year_eps": 2.46,
-      "yoy_growth": 0.1504
+      "eps": 2.8342,
+      "prev_year_eps": 2.4552,
+      "yoy_growth": 0.1544
     },
     {
       "symbol": "QCOM",
       "report_date": "2025-03-31T00:00:00.000",
-      "eps": 2.52,
-      "prev_year_eps": 2.06,
-      "yoy_growth": 0.2233
+      "eps": 2.522,
+      "prev_year_eps": 2.0584,
+      "yoy_growth": 0.2252
     },
     {
       "symbol": "QCOM",
       "report_date": "2025-06-30T00:00:00.000",
-      "eps": 2.43,
-      "prev_year_eps": 1.88,
-      "yoy_growth": 0.2926
+      "eps": 2.4258,
+      "prev_year_eps": 1.8774,
+      "yoy_growth": 0.2921
     },
     {
       "symbol": "QCOM",
       "report_date": "2025-09-30T00:00:00.000",
-      "eps": -2.89,
-      "prev_year_eps": 2.59,
-      "yoy_growth": -2.1158
+      "eps": -2.8915,
+      "prev_year_eps": 2.5864,
+      "yoy_growth": -2.118
     },
     {
       "symbol": "QCOM",
       "report_date": "2025-12-31T00:00:00.000",
-      "eps": 2.78,
-      "prev_year_eps": 2.83,
+      "eps": 2.7841,
+      "prev_year_eps": 2.8342,
       "yoy_growth": -0.0177
     },
     {
       "symbol": "QCOM",
       "report_date": "2026-03-31T00:00:00.000",
-      "eps": 6.88,
-      "prev_year_eps": 2.52,
-      "yoy_growth": 1.7302
+      "eps": 6.875,
+      "prev_year_eps": 2.522,
+      "yoy_growth": 1.726
     }
   ]
 }

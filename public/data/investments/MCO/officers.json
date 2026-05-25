@@ -7,7 +7,8 @@
     "born": null,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "MCO",
@@ -17,7 +18,8 @@
     "born": 1977,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "MCO",
@@ -27,7 +29,8 @@
     "born": null,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "MCO",
@@ -37,7 +40,8 @@
     "born": 1969,
     "pay": 2299671,
     "exercised": 493310,
-    "unexercised": 400519
+    "unexercised": 400519,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "MCO",
@@ -47,7 +51,8 @@
     "born": 1970,
     "pay": 1205813,
     "exercised": 335404,
-    "unexercised": 236519
+    "unexercised": 236519,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "MCO",
@@ -57,7 +62,8 @@
     "born": 1970,
     "pay": 3368212,
     "exercised": 3185237,
-    "unexercised": 20870980
+    "unexercised": 20870980,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "MCO",
@@ -67,17 +73,19 @@
     "born": 1974,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "MCO",
-    "name": "Ms. Noemie Clemence Heuland CPA",
+    "name": "Ms. Noemie Clemence Heuland C.P.A.",
     "title": "Senior VP & CFO",
     "age": 47,
     "born": 1978,
     "pay": 1894500,
     "exercised": 91204,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "MCO",
@@ -87,7 +95,8 @@
     "born": null,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "MCO",
@@ -97,6 +106,7 @@
     "born": null,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   }
 ]

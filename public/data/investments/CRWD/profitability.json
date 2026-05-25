@@ -84,11 +84,11 @@
     {
       "symbol": "CRWD",
       "report_date": "2026-01-31",
-      "net_income_common_stockholders": 59377000.0,
+      "net_income_common_stockholders": -162502000.0,
       "beginning_stockholders_equity": 4016497000.0,
       "ending_stockholders_equity": 4428390000.0,
       "avg_equity": 4222443500.0,
-      "roe": 0.0141
+      "roe": -0.0385
     }
   ],
   "roa": [
@@ -176,11 +176,11 @@
     {
       "symbol": "CRWD",
       "report_date": "2026-01-31",
-      "net_income_common_stockholders": 59377000.0,
+      "net_income_common_stockholders": -162502000.0,
       "beginning_total_assets": 9965347000.0,
       "ending_total_assets": 11086684000.0,
       "avg_assets": 10526015500.0,
-      "roa": 0.0056
+      "roa": -0.0154
     }
   ],
   "roic": [
@@ -362,9 +362,9 @@
     {
       "symbol": "CRWD",
       "report_date": "2026-01-31T00:00:00.000",
-      "roe": 0.0141,
-      "roa": 0.0056,
-      "equity_multiplier": 2.52
+      "roe": -0.0385,
+      "roa": -0.0154,
+      "equity_multiplier": 2.5
     }
   ],
   "assetTurnover": [
@@ -434,8 +434,8 @@
     {
       "symbol": "CRWD",
       "report_date": "2026-01-31T00:00:00.000",
-      "roa": 0.0056,
-      "net_margin": 0.0455,
+      "roa": -0.0154,
+      "net_margin": -0.1245,
       "asset_turnover": 0.12
     }
   ]

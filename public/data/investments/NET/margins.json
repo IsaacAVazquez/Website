@@ -87,9 +87,9 @@
     {
       "symbol": "NET",
       "report_date": "2025-06-30",
-      "gross_profit": 383639000.0,
+      "gross_profit": 1432525000.0,
       "total_revenue": 512316000.0,
-      "gross_margin": 0.7488
+      "gross_margin": 2.7962
     },
     {
       "symbol": "NET",
@@ -104,6 +104,13 @@
       "gross_profit": 452551000.0,
       "total_revenue": 614507000.0,
       "gross_margin": 0.7364
+    },
+    {
+      "symbol": "NET",
+      "report_date": "2026-03-31",
+      "gross_profit": 1707498000.0,
+      "total_revenue": 639755000.0,
+      "gross_margin": 2.669
     }
   ],
   "annual_gross": [
@@ -262,6 +269,13 @@
       "operating_income": -49234000.0,
       "total_revenue": 614507000.0,
       "operating_margin": -0.0801
+    },
+    {
+      "symbol": "NET",
+      "report_date": "2026-03-31",
+      "operating_income": -61994000.0,
+      "total_revenue": 639755000.0,
+      "operating_margin": -0.0969
     }
   ],
   "annual_operating": [
@@ -403,9 +417,9 @@
     {
       "symbol": "NET",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": -50446000.0,
+      "net_income_common_stockholders": -117079000.0,
       "total_revenue": 512316000.0,
-      "net_margin": -0.0985
+      "net_margin": -0.2285
     },
     {
       "symbol": "NET",
@@ -420,6 +434,13 @@
       "net_income_common_stockholders": -12077000.0,
       "total_revenue": 614507000.0,
       "net_margin": -0.0197
+    },
+    {
+      "symbol": "NET",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": -86740000.0,
+      "total_revenue": 639755000.0,
+      "net_margin": -0.1356
     }
   ],
   "annual_net": [
@@ -561,9 +582,9 @@
     {
       "symbol": "NET",
       "report_date": "2025-06-30",
-      "ebitda": -284000.0,
+      "ebitda": 53775000.0,
       "total_revenue": 512316000.0,
-      "ebitda_margin": -0.0006
+      "ebitda_margin": 0.105
     },
     {
       "symbol": "NET",
@@ -578,6 +599,13 @@
       "ebitda": 44965000.0,
       "total_revenue": 614507000.0,
       "ebitda_margin": 0.0732
+    },
+    {
+      "symbol": "NET",
+      "report_date": "2026-03-31",
+      "ebitda": 137887000.0,
+      "total_revenue": 639755000.0,
+      "ebitda_margin": 0.2155
     }
   ],
   "annual_ebitda": [
@@ -719,9 +747,9 @@
     {
       "symbol": "NET",
       "report_date": "2025-06-30",
-      "free_cash_flow": 33280000.0,
+      "free_cash_flow": 179180000.0,
       "total_revenue": 512316000.0,
-      "fcf_margin": 0.065
+      "fcf_margin": 0.3497
     },
     {
       "symbol": "NET",
@@ -736,6 +764,13 @@
       "free_cash_flow": 99444000.0,
       "total_revenue": 614507000.0,
       "fcf_margin": 0.1618
+    },
+    {
+      "symbol": "NET",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 291769000.0,
+      "total_revenue": 639755000.0,
+      "fcf_margin": 0.4561
     }
   ],
   "annual_fcf": [

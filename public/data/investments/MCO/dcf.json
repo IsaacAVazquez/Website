@@ -1,4 +1,3 @@
 {
-  "file_path": "/tmp/defeatbeta/dcf/MCO.xlsx",
-  "description": "DCF Valuation Analysis for MCO"
+  "error": "can't multiply sequence by non-int of type 'float'"
 }

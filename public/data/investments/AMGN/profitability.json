@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "AMGN",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1730000000.0,
+      "beginning_stockholders_equity": 6781000000.0,
+      "ending_stockholders_equity": 7656000000.0,
+      "avg_equity": 7218500000.0,
+      "roe": 0.2397
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 767000000.0,
+      "beginning_stockholders_equity": 7656000000.0,
+      "ending_stockholders_equity": 6232000000.0,
+      "avg_equity": 6944000000.0,
+      "roe": 0.1105
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": -113000000.0,
+      "beginning_stockholders_equity": 6232000000.0,
+      "ending_stockholders_equity": 5022000000.0,
+      "avg_equity": 5627000000.0,
+      "roe": -0.0201
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 746000000.0,
+      "beginning_stockholders_equity": 5022000000.0,
+      "ending_stockholders_equity": 5925000000.0,
+      "avg_equity": 5473500000.0,
+      "roe": 0.1363
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 2830000000.0,
+      "beginning_stockholders_equity": 5925000000.0,
+      "ending_stockholders_equity": 7527000000.0,
+      "avg_equity": 6726000000.0,
+      "roe": 0.4208
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 627000000.0,
+      "beginning_stockholders_equity": 7527000000.0,
+      "ending_stockholders_equity": 5877000000.0,
+      "avg_equity": 6702000000.0,
+      "roe": 0.0936
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1730000000.0,
+      "beginning_stockholders_equity": 5877000000.0,
+      "ending_stockholders_equity": 6207000000.0,
+      "avg_equity": 6042000000.0,
+      "roe": 0.2863
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 6619000000.0,
+      "beginning_stockholders_equity": 6207000000.0,
+      "ending_stockholders_equity": 7428000000.0,
+      "avg_equity": 6817500000.0,
+      "roe": 0.9709
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 3216000000.0,
+      "beginning_stockholders_equity": 7428000000.0,
+      "ending_stockholders_equity": 9619000000.0,
+      "avg_equity": 8523500000.0,
+      "roe": 0.3773
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1333000000.0,
+      "beginning_stockholders_equity": 9619000000.0,
+      "ending_stockholders_equity": 8658000000.0,
+      "avg_equity": 9138500000.0,
+      "roe": 0.1459
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 7800000000.0,
+      "beginning_stockholders_equity": 8658000000.0,
+      "ending_stockholders_equity": 9190000000.0,
+      "avg_equity": 8924000000.0,
+      "roe": 0.874
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "AMGN",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1730000000.0,
+      "beginning_total_assets": 90269000000.0,
+      "ending_total_assets": 90534000000.0,
+      "avg_assets": 90401500000.0,
+      "roa": 0.0191
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 767000000.0,
+      "beginning_total_assets": 90534000000.0,
+      "ending_total_assets": 97154000000.0,
+      "avg_assets": 93844000000.0,
+      "roa": 0.0082
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": -113000000.0,
+      "beginning_total_assets": 97154000000.0,
+      "ending_total_assets": 92980000000.0,
+      "avg_assets": 95067000000.0,
+      "roa": -0.0012
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 746000000.0,
+      "beginning_total_assets": 92980000000.0,
+      "ending_total_assets": 90907000000.0,
+      "avg_assets": 91943500000.0,
+      "roa": 0.0081
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 2830000000.0,
+      "beginning_total_assets": 90907000000.0,
+      "ending_total_assets": 90883000000.0,
+      "avg_assets": 90895000000.0,
+      "roa": 0.0311
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 627000000.0,
+      "beginning_total_assets": 90883000000.0,
+      "ending_total_assets": 91839000000.0,
+      "avg_assets": 91361000000.0,
+      "roa": 0.0069
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1730000000.0,
+      "beginning_total_assets": 91839000000.0,
+      "ending_total_assets": 89367000000.0,
+      "avg_assets": 90603000000.0,
+      "roa": 0.0191
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 6619000000.0,
+      "beginning_total_assets": 89367000000.0,
+      "ending_total_assets": 87897000000.0,
+      "avg_assets": 88632000000.0,
+      "roa": 0.0747
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 3216000000.0,
+      "beginning_total_assets": 87897000000.0,
+      "ending_total_assets": 90141000000.0,
+      "avg_assets": 89019000000.0,
+      "roa": 0.0361
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1333000000.0,
+      "beginning_total_assets": 90141000000.0,
+      "ending_total_assets": 90586000000.0,
+      "avg_assets": 90363500000.0,
+      "roa": 0.0148
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 7800000000.0,
+      "beginning_total_assets": 90586000000.0,
+      "ending_total_assets": 92504000000.0,
+      "avg_assets": 91545000000.0,
+      "roa": 0.0852
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "AMGN",
+      "report_date": "2023-09-30",
+      "ebit": 2706000000.0,
+      "tax_rate_for_calcs": 0.11,
+      "nopat": 2408340000.0,
+      "beginning_invested_capital": 68325000000.0,
+      "ending_invested_capital": 68124000000.0,
+      "avg_invested_capital": 68224500000.0,
+      "roic": 0.0353
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2023-12-31",
+      "ebit": 1673000000.0,
+      "tax_rate_for_calcs": 0.1,
+      "nopat": 1505700000.0,
+      "beginning_invested_capital": 68124000000.0,
+      "ending_invested_capital": 70845000000.0,
+      "avg_invested_capital": 69484500000.0,
+      "roic": 0.0217
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-03-31",
+      "ebit": 756000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 597240000.0,
+      "beginning_invested_capital": 70845000000.0,
+      "ending_invested_capital": 69042000000.0,
+      "avg_invested_capital": 69943500000.0,
+      "roic": 0.0085
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-06-30",
+      "ebit": 1602000000.0,
+      "tax_rate_for_calcs": 0.06,
+      "nopat": 1505880000.0,
+      "beginning_invested_capital": 69042000000.0,
+      "ending_invested_capital": 68570000000.0,
+      "avg_invested_capital": 68806000000.0,
+      "roic": 0.0219
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-09-30",
+      "ebit": 3877000000.0,
+      "tax_rate_for_calcs": 0.09,
+      "nopat": 3528070000.0,
+      "beginning_invested_capital": 68570000000.0,
+      "ending_invested_capital": 67925000000.0,
+      "avg_invested_capital": 68247500000.0,
+      "roic": 0.0517
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-12-31",
+      "ebit": 1529000000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 1223200000.0,
+      "beginning_invested_capital": 67925000000.0,
+      "ending_invested_capital": 65976000000.0,
+      "avg_invested_capital": 66950500000.0,
+      "roic": 0.0183
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-03-31",
+      "ebit": 2696000000.0,
+      "tax_rate_for_calcs": 0.12,
+      "nopat": 2372480000.0,
+      "beginning_invested_capital": 65976000000.0,
+      "ending_invested_capital": 63588000000.0,
+      "avg_invested_capital": 64782000000.0,
+      "roic": 0.0366
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-06-30",
+      "ebit": 2262000000.0,
+      "tax_rate_for_calcs": 0.09,
+      "nopat": 2058420000.0,
+      "beginning_invested_capital": 63588000000.0,
+      "ending_invested_capital": 63632000000.0,
+      "avg_invested_capital": 63610000000.0,
+      "roic": 0.0324
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-09-30",
+      "ebit": 4606000000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 3776920000.0,
+      "beginning_invested_capital": 63632000000.0,
+      "ending_invested_capital": 64206000000.0,
+      "avg_invested_capital": 63919000000.0,
+      "roic": 0.0591
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-12-31",
+      "ebit": 2167000000.0,
+      "tax_rate_for_calcs": 0.12,
+      "nopat": 1906960000.0,
+      "beginning_invested_capital": 64206000000.0,
+      "ending_invested_capital": 63262000000.0,
+      "avg_invested_capital": 63734000000.0,
+      "roic": 0.0299
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2026-03-31",
+      "ebit": 2741000000.0,
+      "tax_rate_for_calcs": 0.13,
+      "nopat": 2384670000.0,
+      "beginning_invested_capital": 63262000000.0,
+      "ending_invested_capital": 66513000000.0,
+      "avg_invested_capital": 64887500000.0,
+      "roic": 0.0368
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "AMGN",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.2397,
+      "roa": 0.0191,
+      "equity_multiplier": 12.55
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.1105,
+      "roa": 0.0082,
+      "equity_multiplier": 13.48
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": -0.0201,
+      "roa": -0.0012,
+      "equity_multiplier": 16.75
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.1363,
+      "roa": 0.0081,
+      "equity_multiplier": 16.83
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.4208,
+      "roa": 0.0311,
+      "equity_multiplier": 13.53
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.0936,
+      "roa": 0.0069,
+      "equity_multiplier": 13.57
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.2863,
+      "roa": 0.0191,
+      "equity_multiplier": 14.99
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.9709,
+      "roa": 0.0747,
+      "equity_multiplier": 13.0
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.3773,
+      "roa": 0.0361,
+      "equity_multiplier": 10.45
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.1459,
+      "roa": 0.0148,
+      "equity_multiplier": 9.86
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.874,
+      "roa": 0.0852,
+      "equity_multiplier": 10.26
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "AMGN",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0191,
+      "net_margin": 0.2506,
+      "asset_turnover": 0.08
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0082,
+      "net_margin": 0.0936,
+      "asset_turnover": 0.09
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": -0.0012,
+      "net_margin": -0.0152,
+      "asset_turnover": 0.08
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0081,
+      "net_margin": 0.0889,
+      "asset_turnover": 0.09
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0311,
+      "net_margin": 0.3328,
+      "asset_turnover": 0.09
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0069,
+      "net_margin": 0.069,
+      "asset_turnover": 0.1
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0191,
+      "net_margin": 0.2123,
+      "asset_turnover": 0.09
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0747,
+      "net_margin": 0.7211,
+      "asset_turnover": 0.1
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0361,
+      "net_margin": 0.3365,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0148,
+      "net_margin": 0.1351,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0852,
+      "net_margin": 0.9051,
+      "asset_turnover": 0.09
+    }
+  ]
+}

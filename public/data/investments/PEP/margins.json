@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "PEP",
+      "report_date": "2022-06-30",
+      "gross_profit": 10810000000.0,
+      "total_revenue": 20225000000.0,
+      "gross_margin": 0.5345
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2023-06-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2023-09-30",
+      "gross_profit": 12778000000.0,
+      "total_revenue": 23453000000.0,
+      "gross_margin": 0.5448
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2023-12-31",
+      "gross_profit": 14753000000.0,
+      "total_revenue": 27850000000.0,
+      "gross_margin": 0.5297
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2024-03-31",
+      "gross_profit": 10002000000.0,
+      "total_revenue": 18250000000.0,
+      "gross_margin": 0.5481
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2024-06-30",
+      "gross_profit": 12582000000.0,
+      "total_revenue": 22501000000.0,
+      "gross_margin": 0.5592
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2024-09-30",
+      "gross_profit": 12923000000.0,
+      "total_revenue": 23319000000.0,
+      "gross_margin": 0.5542
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2024-12-31",
+      "gross_profit": 14603000000.0,
+      "total_revenue": 27784000000.0,
+      "gross_margin": 0.5256
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2025-03-31",
+      "gross_profit": 9993000000.0,
+      "total_revenue": 17919000000.0,
+      "gross_margin": 0.5577
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2025-06-30",
+      "gross_profit": 12422000000.0,
+      "total_revenue": 22726000000.0,
+      "gross_margin": 0.5466
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2025-09-30",
+      "gross_profit": 12824000000.0,
+      "total_revenue": 23937000000.0,
+      "gross_margin": 0.5357
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2025-12-31",
+      "gross_profit": 15620000000.0,
+      "total_revenue": 29343000000.0,
+      "gross_margin": 0.5323
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2026-03-31",
+      "gross_profit": 10731000000.0,
+      "total_revenue": 19443000000.0,
+      "gross_margin": 0.5519
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "PEP",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2020-12-31",
+      "gross_profit": 38575000000.0,
+      "total_revenue": 70372000000.0,
+      "gross_margin": 0.5482
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2021-12-31",
+      "gross_profit": 42399000000.0,
+      "total_revenue": 79474000000.0,
+      "gross_margin": 0.5335
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2022-12-31",
+      "gross_profit": 45816000000.0,
+      "total_revenue": 86392000000.0,
+      "gross_margin": 0.5303
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2023-12-31",
+      "gross_profit": 49590000000.0,
+      "total_revenue": 91471000000.0,
+      "gross_margin": 0.5421
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2024-12-31",
+      "gross_profit": 50110000000.0,
+      "total_revenue": 91854000000.0,
+      "gross_margin": 0.5455
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2025-12-31",
+      "gross_profit": 50859000000.0,
+      "total_revenue": 93925000000.0,
+      "gross_margin": 0.5415
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "PEP",
+      "report_date": "2022-06-30",
+      "operating_income": 3423000000.0,
+      "total_revenue": 20225000000.0,
+      "operating_margin": 0.1692
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2023-06-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2023-09-30",
+      "operating_income": 4015000000.0,
+      "total_revenue": 23453000000.0,
+      "operating_margin": 0.1712
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2023-12-31",
+      "operating_income": 2604000000.0,
+      "total_revenue": 27850000000.0,
+      "operating_margin": 0.0935
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2024-03-31",
+      "operating_income": 2717000000.0,
+      "total_revenue": 18250000000.0,
+      "operating_margin": 0.1489
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2024-06-30",
+      "operating_income": 4048000000.0,
+      "total_revenue": 22501000000.0,
+      "operating_margin": 0.1799
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2024-09-30",
+      "operating_income": 3896000000.0,
+      "total_revenue": 23319000000.0,
+      "operating_margin": 0.1671
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2024-12-31",
+      "operating_income": 2283000000.0,
+      "total_revenue": 27784000000.0,
+      "operating_margin": 0.0822
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2025-03-31",
+      "operating_income": 2583000000.0,
+      "total_revenue": 17919000000.0,
+      "operating_margin": 0.1441
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2025-06-30",
+      "operating_income": 3649000000.0,
+      "total_revenue": 22726000000.0,
+      "operating_margin": 0.1606
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2025-09-30",
+      "operating_income": 3702000000.0,
+      "total_revenue": 23937000000.0,
+      "operating_margin": 0.1547
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2025-12-31",
+      "operating_income": 3557000000.0,
+      "total_revenue": 29343000000.0,
+      "operating_margin": 0.1212
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2026-03-31",
+      "operating_income": 3213000000.0,
+      "total_revenue": 19443000000.0,
+      "operating_margin": 0.1653
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "PEP",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2020-12-31",
+      "operating_income": 10122000000.0,
+      "total_revenue": 70372000000.0,
+      "operating_margin": 0.1438
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2021-12-31",
+      "operating_income": 11162000000.0,
+      "total_revenue": 79474000000.0,
+      "operating_margin": 0.1404
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2022-12-31",
+      "operating_income": 11357000000.0,
+      "total_revenue": 86392000000.0,
+      "operating_margin": 0.1315
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2023-12-31",
+      "operating_income": 12913000000.0,
+      "total_revenue": 91471000000.0,
+      "operating_margin": 0.1412
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2024-12-31",
+      "operating_income": 12920000000.0,
+      "total_revenue": 91854000000.0,
+      "operating_margin": 0.1407
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2025-12-31",
+      "operating_income": 13491000000.0,
+      "total_revenue": 93925000000.0,
+      "operating_margin": 0.1436
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "PEP",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 1429000000.0,
+      "total_revenue": 20225000000.0,
+      "net_margin": 0.0707
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 3092000000.0,
+      "total_revenue": 23453000000.0,
+      "net_margin": 0.1318
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1302000000.0,
+      "total_revenue": 27850000000.0,
+      "net_margin": 0.0468
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 2042000000.0,
+      "total_revenue": 18250000000.0,
+      "net_margin": 0.1119
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 3083000000.0,
+      "total_revenue": 22501000000.0,
+      "net_margin": 0.137
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 2930000000.0,
+      "total_revenue": 23319000000.0,
+      "net_margin": 0.1256
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1523000000.0,
+      "total_revenue": 27784000000.0,
+      "net_margin": 0.0548
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1834000000.0,
+      "total_revenue": 17919000000.0,
+      "net_margin": 0.1023
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 7550000000.0,
+      "total_revenue": 22726000000.0,
+      "net_margin": 0.3322
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 2603000000.0,
+      "total_revenue": 23937000000.0,
+      "net_margin": 0.1087
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 2540000000.0,
+      "total_revenue": 29343000000.0,
+      "net_margin": 0.0866
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 8733000000.0,
+      "total_revenue": 19443000000.0,
+      "net_margin": 0.4492
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "PEP",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 7120000000.0,
+      "total_revenue": 70372000000.0,
+      "net_margin": 0.1012
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 7618000000.0,
+      "total_revenue": 79474000000.0,
+      "net_margin": 0.0959
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 8910000000.0,
+      "total_revenue": 86392000000.0,
+      "net_margin": 0.1031
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 9074000000.0,
+      "total_revenue": 91471000000.0,
+      "net_margin": 0.0992
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 9578000000.0,
+      "total_revenue": 91854000000.0,
+      "net_margin": 0.1043
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 8240000000.0,
+      "total_revenue": 93925000000.0,
+      "net_margin": 0.0877
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "PEP",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 20225000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2023-06-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2023-09-30",
+      "ebitda": 4918000000.0,
+      "total_revenue": 23453000000.0,
+      "ebitda_margin": 0.2097
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2023-12-31",
+      "ebitda": 2911000000.0,
+      "total_revenue": 27850000000.0,
+      "ebitda_margin": 0.1045
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2024-03-31",
+      "ebitda": 3543000000.0,
+      "total_revenue": 18250000000.0,
+      "ebitda_margin": 0.1941
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2024-06-30",
+      "ebitda": 4993000000.0,
+      "total_revenue": 22501000000.0,
+      "ebitda_margin": 0.2219
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2024-09-30",
+      "ebitda": 4812000000.0,
+      "total_revenue": 23319000000.0,
+      "ebitda_margin": 0.2064
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2024-12-31",
+      "ebitda": 3332000000.0,
+      "total_revenue": 27784000000.0,
+      "ebitda_margin": 0.1199
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2025-03-31",
+      "ebitda": 3435000000.0,
+      "total_revenue": 17919000000.0,
+      "ebitda_margin": 0.1917
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2025-06-30",
+      "ebitda": 14387000000.0,
+      "total_revenue": 22726000000.0,
+      "ebitda_margin": 0.6331
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2025-09-30",
+      "ebitda": 4593000000.0,
+      "total_revenue": 23937000000.0,
+      "ebitda_margin": 0.1919
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2025-12-31",
+      "ebitda": 4707000000.0,
+      "total_revenue": 29343000000.0,
+      "ebitda_margin": 0.1604
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2026-03-31",
+      "ebitda": 16283000000.0,
+      "total_revenue": 19443000000.0,
+      "ebitda_margin": 0.8375
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "PEP",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2020-12-31",
+      "ebitda": 13223000000.0,
+      "total_revenue": 70372000000.0,
+      "ebitda_margin": 0.1879
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2021-12-31",
+      "ebitda": 14899000000.0,
+      "total_revenue": 79474000000.0,
+      "ebitda_margin": 0.1875
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2022-12-31",
+      "ebitda": 14924000000.0,
+      "total_revenue": 86392000000.0,
+      "ebitda_margin": 0.1727
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2023-12-31",
+      "ebitda": 15754000000.0,
+      "total_revenue": 91471000000.0,
+      "ebitda_margin": 0.1722
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2024-12-31",
+      "ebitda": 16680000000.0,
+      "total_revenue": 91854000000.0,
+      "ebitda_margin": 0.1816
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2025-12-31",
+      "ebitda": 15543000000.0,
+      "total_revenue": 93925000000.0,
+      "ebitda_margin": 0.1655
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "PEP",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 1078000000.0,
+      "total_revenue": 20225000000.0,
+      "fcf_margin": 0.0533
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2023-06-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 4587000000.0,
+      "total_revenue": 23453000000.0,
+      "fcf_margin": 0.1956
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 2831000000.0,
+      "total_revenue": 27850000000.0,
+      "fcf_margin": 0.1017
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2024-03-31",
+      "free_cash_flow": -1655000000.0,
+      "total_revenue": 18250000000.0,
+      "fcf_margin": -0.0907
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 1269000000.0,
+      "total_revenue": 22501000000.0,
+      "fcf_margin": 0.0564
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 3756000000.0,
+      "total_revenue": 23319000000.0,
+      "fcf_margin": 0.1611
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 3819000000.0,
+      "total_revenue": 27784000000.0,
+      "fcf_margin": 0.1375
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2025-03-31",
+      "free_cash_flow": -1576000000.0,
+      "total_revenue": 17919000000.0,
+      "fcf_margin": -0.088
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 7064000000.0,
+      "total_revenue": 22726000000.0,
+      "fcf_margin": 0.3108
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 3480000000.0,
+      "total_revenue": 23937000000.0,
+      "fcf_margin": 0.1454
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 4703000000.0,
+      "total_revenue": 29343000000.0,
+      "fcf_margin": 0.1603
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 8842000000.0,
+      "total_revenue": 19443000000.0,
+      "fcf_margin": 0.4548
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "PEP",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 6373000000.0,
+      "total_revenue": 70372000000.0,
+      "fcf_margin": 0.0906
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 6991000000.0,
+      "total_revenue": 79474000000.0,
+      "fcf_margin": 0.088
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 5604000000.0,
+      "total_revenue": 86392000000.0,
+      "fcf_margin": 0.0649
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 7924000000.0,
+      "total_revenue": 91471000000.0,
+      "fcf_margin": 0.0866
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 7189000000.0,
+      "total_revenue": 91854000000.0,
+      "fcf_margin": 0.0783
+    },
+    {
+      "symbol": "PEP",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 7672000000.0,
+      "total_revenue": 93925000000.0,
+      "fcf_margin": 0.0817
+    }
+  ]
+}

@@ -108,9 +108,9 @@
     {
       "symbol": "SNPS",
       "report_date": "2026-01-31",
-      "gross_profit": 1771416000.0,
+      "gross_profit": 6016705000.0,
       "total_revenue": 2408798000.0,
-      "gross_margin": 0.7354
+      "gross_margin": 2.4978
     }
   ],
   "annual_gross": [
@@ -438,9 +438,9 @@
     {
       "symbol": "SNPS",
       "report_date": "2026-01-31",
-      "net_income_common_stockholders": 64958000.0,
+      "net_income_common_stockholders": 1101495000.0,
       "total_revenue": 2408798000.0,
-      "net_margin": 0.027
+      "net_margin": 0.4573
     }
   ],
   "annual_net": [
@@ -768,9 +768,9 @@
     {
       "symbol": "SNPS",
       "report_date": "2026-01-31",
-      "free_cash_flow": 821512000.0,
+      "free_cash_flow": 2278836000.0,
       "total_revenue": 2408798000.0,
-      "fcf_margin": 0.341
+      "fcf_margin": 0.946
     }
   ],
   "annual_fcf": [

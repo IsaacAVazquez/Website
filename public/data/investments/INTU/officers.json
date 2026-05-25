@@ -7,17 +7,19 @@
     "born": null,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "INTU",
     "name": "Mr. Alex G. Balazs",
     "title": "Executive VP & CTO",
-    "age": 54,
-    "born": 1971,
+    "age": 53,
+    "born": 1972,
     "pay": 1704000,
     "exercised": 5925961,
-    "unexercised": 2139095
+    "unexercised": 2139095,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "INTU",
@@ -27,7 +29,8 @@
     "born": 1970,
     "pay": 1704000,
     "exercised": 3361494,
-    "unexercised": 9355770
+    "unexercised": 9355770,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "INTU",
@@ -37,7 +40,8 @@
     "born": 1976,
     "pay": 1771300,
     "exercised": 4101986,
-    "unexercised": 883111
+    "unexercised": 883111,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "INTU",
@@ -47,7 +51,8 @@
     "born": 1968,
     "pay": 3910000,
     "exercised": 43560552,
-    "unexercised": 62610408
+    "unexercised": 62610408,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "INTU",
@@ -57,7 +62,8 @@
     "born": 1952,
     "pay": 1300000,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "INTU",
@@ -67,7 +73,8 @@
     "born": 1966,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "INTU",
@@ -77,7 +84,8 @@
     "born": 1964,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "INTU",
@@ -87,16 +95,18 @@
     "born": 1976,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "INTU",
-    "name": "Ms. Marianna  Tessel",
-    "title": "Executive VP & GM of Small Business Group",
-    "age": 57,
-    "born": 1968,
-    "pay": 1770000,
-    "exercised": 19283934,
-    "unexercised": 31312030
+    "name": "Ms. Shveta  Mujumdar",
+    "title": "Vice President of Corporate Development",
+    "age": 46,
+    "born": 1979,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   }
 ]

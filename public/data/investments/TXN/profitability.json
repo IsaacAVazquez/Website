@@ -282,13 +282,13 @@
     {
       "symbol": "TXN",
       "report_date": "2025-06-30",
-      "ebit": 1611000000.0,
-      "tax_rate_for_calcs": 0.12,
-      "nopat": 1417680000.0,
+      "ebit": 6189000000.0,
+      "tax_rate_for_calcs": 0.11,
+      "nopat": 5508210000.0,
       "beginning_invested_capital": 29254000000.0,
       "ending_invested_capital": 30446000000.0,
       "avg_invested_capital": 29850000000.0,
-      "roic": 0.0475
+      "roic": 0.1845
     },
     {
       "symbol": "TXN",
@@ -315,13 +315,13 @@
     {
       "symbol": "TXN",
       "report_date": "2026-03-31",
-      "ebit": 1855000000.0,
-      "tax_rate_for_calcs": 0.1,
-      "nopat": 1669500000.0,
+      "ebit": 6704000000.0,
+      "tax_rate_for_calcs": 0.13,
+      "nopat": 5832480000.0,
       "beginning_invested_capital": 30321000000.0,
       "ending_invested_capital": 30828000000.0,
       "avg_invested_capital": 30574500000.0,
-      "roic": 0.0546
+      "roic": 0.1908
     }
   ],
   "equityMultiplier": [
@@ -457,8 +457,8 @@
       "symbol": "TXN",
       "report_date": "2025-06-30T00:00:00.000",
       "roa": 0.0375,
-      "net_margin": 0.2896,
-      "asset_turnover": 0.13
+      "net_margin": 0.0772,
+      "asset_turnover": 0.49
     },
     {
       "symbol": "TXN",
@@ -478,8 +478,8 @@
       "symbol": "TXN",
       "report_date": "2026-03-31T00:00:00.000",
       "roa": 0.0448,
-      "net_margin": 0.3202,
-      "asset_turnover": 0.14
+      "net_margin": 0.0838,
+      "asset_turnover": 0.53
     }
   ]
 }

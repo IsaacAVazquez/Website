@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "GEHC",
+    "name": "Dr. Taha  Kass-Hout M.D., M.S.",
+    "title": "Chief Science & Technology Officer",
+    "age": 53,
+    "born": 1972,
+    "pay": 1902597,
+    "exercised": 0,
+    "unexercised": 500307,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "GEHC",
+    "name": "Mr. Adam Y. Holton",
+    "title": "Chief People Officer",
+    "age": 54,
+    "born": 1971,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "GEHC",
+    "name": "Mr. Frank R. Jimenez Esq.",
+    "title": "General Counsel & Corporate Secretary",
+    "age": 60,
+    "born": 1965,
+    "pay": 1907725,
+    "exercised": 0,
+    "unexercised": 473275,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "GEHC",
+    "name": "Mr. George Andrew Newcomb",
+    "title": "Controller & Chief Accounting Officer",
+    "age": 58,
+    "born": 1967,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "GEHC",
+    "name": "Mr. Jahidul H. Khandaker",
+    "title": "Chief Information Officer",
+    "age": 53,
+    "born": 1972,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "GEHC",
+    "name": "Mr. James K. Saccaro",
+    "title": "VP & CFO",
+    "age": 52,
+    "born": 1973,
+    "pay": 1892648,
+    "exercised": 0,
+    "unexercised": 111935,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "GEHC",
+    "name": "Mr. Peter J. Arduini",
+    "title": "President, CEO & Director",
+    "age": 60,
+    "born": 1965,
+    "pay": 3682160,
+    "exercised": 0,
+    "unexercised": 3097994,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "GEHC",
+    "name": "Ms. Carolynne  Borders",
+    "title": "Chief Investor Relations Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "GEHC",
+    "name": "Ms. Jeannette  Bankes",
+    "title": "President & CEO of Patient Care Solutions",
+    "age": 54,
+    "born": 1971,
+    "pay": 1135663,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "GEHC",
+    "name": "Ms. Rana  Strellis",
+    "title": "Chief Corporate Marketing & Communications Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  }
+]

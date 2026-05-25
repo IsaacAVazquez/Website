@@ -88,8 +88,8 @@
       "symbol": "LRCX",
       "report_date": "2025-06-30",
       "gross_profit": 2589709000.0,
-      "total_revenue": 5171393000.0,
-      "gross_margin": 0.5008
+      "total_revenue": 18435591000.0,
+      "gross_margin": 0.1405
     },
     {
       "symbol": "LRCX",
@@ -109,8 +109,8 @@
       "symbol": "LRCX",
       "report_date": "2026-03-31",
       "gross_profit": 2910527000.0,
-      "total_revenue": 5841488000.0,
-      "gross_margin": 0.4983
+      "total_revenue": 21681845000.0,
+      "gross_margin": 0.1342
     }
   ],
   "annual_gross": [
@@ -252,9 +252,9 @@
     {
       "symbol": "LRCX",
       "report_date": "2025-06-30",
-      "operating_income": 1741128000.0,
-      "total_revenue": 5171393000.0,
-      "operating_margin": 0.3367
+      "operating_income": 5900968000.0,
+      "total_revenue": 18435591000.0,
+      "operating_margin": 0.3201
     },
     {
       "symbol": "LRCX",
@@ -273,9 +273,9 @@
     {
       "symbol": "LRCX",
       "report_date": "2026-03-31",
-      "operating_income": 2047016000.0,
-      "total_revenue": 5841488000.0,
-      "operating_margin": 0.3504
+      "operating_income": 7427435000.0,
+      "total_revenue": 21681845000.0,
+      "operating_margin": 0.3426
     }
   ],
   "annual_operating": [
@@ -418,8 +418,8 @@
       "symbol": "LRCX",
       "report_date": "2025-06-30",
       "net_income_common_stockholders": 1720088000.0,
-      "total_revenue": 5171393000.0,
-      "net_margin": 0.3326
+      "total_revenue": 18435591000.0,
+      "net_margin": 0.0933
     },
     {
       "symbol": "LRCX",
@@ -439,8 +439,8 @@
       "symbol": "LRCX",
       "report_date": "2026-03-31",
       "net_income_common_stockholders": 1825460000.0,
-      "total_revenue": 5841488000.0,
-      "net_margin": 0.3125
+      "total_revenue": 21681845000.0,
+      "net_margin": 0.0842
     }
   ],
   "annual_net": [
@@ -583,8 +583,8 @@
       "symbol": "LRCX",
       "report_date": "2025-06-30",
       "ebitda": 1920194000.0,
-      "total_revenue": 5171393000.0,
-      "ebitda_margin": 0.3713
+      "total_revenue": 18435591000.0,
+      "ebitda_margin": 0.1042
     },
     {
       "symbol": "LRCX",
@@ -604,8 +604,8 @@
       "symbol": "LRCX",
       "report_date": "2026-03-31",
       "ebitda": 2167211000.0,
-      "total_revenue": 5841488000.0,
-      "ebitda_margin": 0.371
+      "total_revenue": 21681845000.0,
+      "ebitda_margin": 0.1
     }
   ],
   "annual_ebitda": [
@@ -748,8 +748,8 @@
       "symbol": "LRCX",
       "report_date": "2025-06-30",
       "free_cash_flow": 2381997000.0,
-      "total_revenue": 5171393000.0,
-      "fcf_margin": 0.4606
+      "total_revenue": 18435591000.0,
+      "fcf_margin": 0.1292
     },
     {
       "symbol": "LRCX",
@@ -769,8 +769,8 @@
       "symbol": "LRCX",
       "report_date": "2026-03-31",
       "free_cash_flow": 809816000.0,
-      "total_revenue": 5841488000.0,
-      "fcf_margin": 0.1386
+      "total_revenue": 21681845000.0,
+      "fcf_margin": 0.0373
     }
   ],
   "annual_fcf": [

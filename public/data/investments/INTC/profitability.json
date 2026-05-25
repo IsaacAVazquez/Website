@@ -282,13 +282,13 @@
     {
       "symbol": "INTC",
       "report_date": "2025-06-30",
-      "ebit": -2542000000.0,
+      "ebit": -10834000000.0,
       "tax_rate_for_calcs": 0.21,
-      "nopat": -2008180000.0,
+      "nopat": -8558860000.0,
       "beginning_invested_capital": 149907000000.0,
       "ending_invested_capital": 148640000000.0,
       "avg_invested_capital": 149273500000.0,
-      "roic": -0.0135
+      "roic": -0.0573
     },
     {
       "symbol": "INTC",
@@ -315,13 +315,13 @@
     {
       "symbol": "INTC",
       "report_date": "2026-03-31",
-      "ebit": -3682000000.0,
+      "ebit": -747000000.0,
       "tax_rate_for_calcs": 0.4,
-      "nopat": -2209200000.0,
+      "nopat": -448200000.0,
       "beginning_invested_capital": 160866000000.0,
       "ending_invested_capital": 156425000000.0,
       "avg_invested_capital": 158645500000.0,
-      "roic": -0.0139
+      "roic": -0.0028
     }
   ],
   "equityMultiplier": [
@@ -457,8 +457,8 @@
       "symbol": "INTC",
       "report_date": "2025-06-30T00:00:00.000",
       "roa": -0.0152,
-      "net_margin": -0.2269,
-      "asset_turnover": 0.07
+      "net_margin": -0.055,
+      "asset_turnover": 0.28
     },
     {
       "symbol": "INTC",
@@ -478,8 +478,8 @@
       "symbol": "INTC",
       "report_date": "2026-03-31T00:00:00.000",
       "roa": -0.0179,
-      "net_margin": -0.2746,
-      "asset_turnover": 0.07
+      "net_margin": -0.0693,
+      "asset_turnover": 0.26
     }
   ]
 }

@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "JNJ",
+      "report_date": "2022-06-30",
+      "gross_profit": 16101000000.0,
+      "total_revenue": 24020000000.0,
+      "gross_margin": 0.6703
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2022-12-31",
+      "gross_profit": 15941000000.0,
+      "total_revenue": 23706000000.0,
+      "gross_margin": 0.6724
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-06-30",
+      "gross_profit": 15057000000.0,
+      "total_revenue": 21519000000.0,
+      "gross_margin": 0.6997
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-09-30",
+      "gross_profit": 14745000000.0,
+      "total_revenue": 21351000000.0,
+      "gross_margin": 0.6906
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-12-31",
+      "gross_profit": 14597000000.0,
+      "total_revenue": 21395000000.0,
+      "gross_margin": 0.6823
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-03-31",
+      "gross_profit": 14872000000.0,
+      "total_revenue": 21383000000.0,
+      "gross_margin": 0.6955
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-06-30",
+      "gross_profit": 15578000000.0,
+      "total_revenue": 22447000000.0,
+      "gross_margin": 0.694
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-09-30",
+      "gross_profit": 15508000000.0,
+      "total_revenue": 22471000000.0,
+      "gross_margin": 0.6901
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-12-31",
+      "gross_profit": 15392000000.0,
+      "total_revenue": 22520000000.0,
+      "gross_margin": 0.6835
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-03-31",
+      "gross_profit": 14536000000.0,
+      "total_revenue": 21893000000.0,
+      "gross_margin": 0.664
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-06-30",
+      "gross_profit": 61551000000.0,
+      "total_revenue": 23743000000.0,
+      "gross_margin": 2.5924
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-09-30",
+      "gross_profit": 16690000000.0,
+      "total_revenue": 23993000000.0,
+      "gross_margin": 0.6956
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-12-31",
+      "gross_profit": 16596000000.0,
+      "total_revenue": 24564000000.0,
+      "gross_margin": 0.6756
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2026-03-31",
+      "gross_profit": 65357000000.0,
+      "total_revenue": 24062000000.0,
+      "gross_margin": 2.7162
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "JNJ",
+      "report_date": "2019-12-31",
+      "gross_profit": 54503000000.0,
+      "total_revenue": 82059000000.0,
+      "gross_margin": 0.6642
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2020-12-31",
+      "gross_profit": 54157000000.0,
+      "total_revenue": 82584000000.0,
+      "gross_margin": 0.6558
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2021-12-31",
+      "gross_profit": 55338000000.0,
+      "total_revenue": 78740000000.0,
+      "gross_margin": 0.7028
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2022-12-31",
+      "gross_profit": 55394000000.0,
+      "total_revenue": 79990000000.0,
+      "gross_margin": 0.6925
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-12-31",
+      "gross_profit": 58606000000.0,
+      "total_revenue": 85159000000.0,
+      "gross_margin": 0.6882
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-12-31",
+      "gross_profit": 61350000000.0,
+      "total_revenue": 88821000000.0,
+      "gross_margin": 0.6907
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-12-31",
+      "gross_profit": 63937000000.0,
+      "total_revenue": 94193000000.0,
+      "gross_margin": 0.6788
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "JNJ",
+      "report_date": "2022-06-30",
+      "operating_income": 6172000000.0,
+      "total_revenue": 24020000000.0,
+      "operating_margin": 0.257
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2022-12-31",
+      "operating_income": 4805000000.0,
+      "total_revenue": 23706000000.0,
+      "operating_margin": 0.2027
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-06-30",
+      "operating_income": 6358000000.0,
+      "total_revenue": 21519000000.0,
+      "operating_margin": 0.2955
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-09-30",
+      "operating_income": 6198000000.0,
+      "total_revenue": 21351000000.0,
+      "operating_margin": 0.2903
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-12-31",
+      "operating_income": 4607000000.0,
+      "total_revenue": 21395000000.0,
+      "operating_margin": 0.2153
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-03-31",
+      "operating_income": 6273000000.0,
+      "total_revenue": 21383000000.0,
+      "operating_margin": 0.2934
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-06-30",
+      "operating_income": 6657000000.0,
+      "total_revenue": 22447000000.0,
+      "operating_margin": 0.2966
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-09-30",
+      "operating_income": 5278000000.0,
+      "total_revenue": 22471000000.0,
+      "operating_margin": 0.2349
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-12-31",
+      "operating_income": 3641000000.0,
+      "total_revenue": 22520000000.0,
+      "operating_margin": 0.1617
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-03-31",
+      "operating_income": 6199000000.0,
+      "total_revenue": 21893000000.0,
+      "operating_margin": 0.2831
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-06-30",
+      "operating_income": 6710000000.0,
+      "total_revenue": 23743000000.0,
+      "operating_margin": 0.2826
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-09-30",
+      "operating_income": 7096000000.0,
+      "total_revenue": 23993000000.0,
+      "operating_margin": 0.2958
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-12-31",
+      "operating_income": 5591000000.0,
+      "total_revenue": 24564000000.0,
+      "operating_margin": 0.2276
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2026-03-31",
+      "operating_income": 6395000000.0,
+      "total_revenue": 24062000000.0,
+      "operating_margin": 0.2658
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "JNJ",
+      "report_date": "2019-12-31",
+      "operating_income": 20970000000.0,
+      "total_revenue": 82059000000.0,
+      "operating_margin": 0.2555
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2020-12-31",
+      "operating_income": 19733000000.0,
+      "total_revenue": 82584000000.0,
+      "operating_margin": 0.2389
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2021-12-31",
+      "operating_income": 20943000000.0,
+      "total_revenue": 78740000000.0,
+      "operating_margin": 0.266
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2022-12-31",
+      "operating_income": 21013000000.0,
+      "total_revenue": 79990000000.0,
+      "operating_margin": 0.2627
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-12-31",
+      "operating_income": 22009000000.0,
+      "total_revenue": 85159000000.0,
+      "operating_margin": 0.2584
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-12-31",
+      "operating_income": 21249000000.0,
+      "total_revenue": 88821000000.0,
+      "operating_margin": 0.2392
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-12-31",
+      "operating_income": 25596000000.0,
+      "total_revenue": 94193000000.0,
+      "operating_margin": 0.2717
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "JNJ",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 4814000000.0,
+      "total_revenue": 24020000000.0,
+      "net_margin": 0.2004
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 3520000000.0,
+      "total_revenue": 23706000000.0,
+      "net_margin": 0.1485
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 5144000000.0,
+      "total_revenue": 21519000000.0,
+      "net_margin": 0.239
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 26028000000.0,
+      "total_revenue": 21351000000.0,
+      "net_margin": 1.2191
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 4049000000.0,
+      "total_revenue": 21395000000.0,
+      "net_margin": 0.1892
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 3255000000.0,
+      "total_revenue": 21383000000.0,
+      "net_margin": 0.1522
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 4686000000.0,
+      "total_revenue": 22447000000.0,
+      "net_margin": 0.2088
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 2694000000.0,
+      "total_revenue": 22471000000.0,
+      "net_margin": 0.1199
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 3431000000.0,
+      "total_revenue": 22520000000.0,
+      "net_margin": 0.1524
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 10999000000.0,
+      "total_revenue": 21893000000.0,
+      "net_margin": 0.5024
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 22661000000.0,
+      "total_revenue": 23743000000.0,
+      "net_margin": 0.9544
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 5152000000.0,
+      "total_revenue": 23993000000.0,
+      "net_margin": 0.2147
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 5116000000.0,
+      "total_revenue": 24564000000.0,
+      "net_margin": 0.2083
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 21040000000.0,
+      "total_revenue": 24062000000.0,
+      "net_margin": 0.8744
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "JNJ",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": 15119000000.0,
+      "total_revenue": 82059000000.0,
+      "net_margin": 0.1842
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 14714000000.0,
+      "total_revenue": 82584000000.0,
+      "net_margin": 0.1782
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 20878000000.0,
+      "total_revenue": 78740000000.0,
+      "net_margin": 0.2652
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 17941000000.0,
+      "total_revenue": 79990000000.0,
+      "net_margin": 0.2243
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 35153000000.0,
+      "total_revenue": 85159000000.0,
+      "net_margin": 0.4128
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 14066000000.0,
+      "total_revenue": 88821000000.0,
+      "net_margin": 0.1584
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 26804000000.0,
+      "total_revenue": 94193000000.0,
+      "net_margin": 0.2846
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "JNJ",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 24020000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2022-12-31",
+      "ebitda": 6150000000.0,
+      "total_revenue": 23706000000.0,
+      "ebitda_margin": 0.2594
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-06-30",
+      "ebitda": 8457000000.0,
+      "total_revenue": 21519000000.0,
+      "ebitda_margin": 0.393
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-09-30",
+      "ebitda": 7238000000.0,
+      "total_revenue": 21351000000.0,
+      "ebitda_margin": 0.339
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-12-31",
+      "ebitda": 6820000000.0,
+      "total_revenue": 21395000000.0,
+      "ebitda_margin": 0.3188
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-03-31",
+      "ebitda": 5684000000.0,
+      "total_revenue": 21383000000.0,
+      "ebitda_margin": 0.2658
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-06-30",
+      "ebitda": 7800000000.0,
+      "total_revenue": 22447000000.0,
+      "ebitda_margin": 0.3475
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-09-30",
+      "ebitda": 5377000000.0,
+      "total_revenue": 22471000000.0,
+      "ebitda_margin": 0.2393
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-12-31",
+      "ebitda": 5920000000.0,
+      "total_revenue": 22520000000.0,
+      "ebitda_margin": 0.2629
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-03-31",
+      "ebitda": 15607000000.0,
+      "total_revenue": 21893000000.0,
+      "ebitda_margin": 0.7129
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-06-30",
+      "ebitda": 35646000000.0,
+      "total_revenue": 23743000000.0,
+      "ebitda_margin": 1.5013
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-09-30",
+      "ebitda": 9515000000.0,
+      "total_revenue": 23993000000.0,
+      "ebitda_margin": 0.3966
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-12-31",
+      "ebitda": 7191000000.0,
+      "total_revenue": 24564000000.0,
+      "ebitda_margin": 0.2927
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2026-03-31",
+      "ebitda": 33714000000.0,
+      "total_revenue": 24062000000.0,
+      "ebitda_margin": 1.4011
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "JNJ",
+      "report_date": "2019-12-31",
+      "ebitda": 20970000000.0,
+      "total_revenue": 82059000000.0,
+      "ebitda_margin": 0.2555
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2020-12-31",
+      "ebitda": 23929000000.0,
+      "total_revenue": 82584000000.0,
+      "ebitda_margin": 0.2898
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2021-12-31",
+      "ebitda": 26751000000.0,
+      "total_revenue": 78740000000.0,
+      "ebitda_margin": 0.3397
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2022-12-31",
+      "ebitda": 26605000000.0,
+      "total_revenue": 79990000000.0,
+      "ebitda_margin": 0.3326
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-12-31",
+      "ebitda": 23320000000.0,
+      "total_revenue": 85159000000.0,
+      "ebitda_margin": 0.2738
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-12-31",
+      "ebitda": 24781000000.0,
+      "total_revenue": 88821000000.0,
+      "ebitda_margin": 0.279
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-12-31",
+      "ebitda": 41055000000.0,
+      "total_revenue": 94193000000.0,
+      "ebitda_margin": 0.4359
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "JNJ",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 4718000000.0,
+      "total_revenue": 24020000000.0,
+      "fcf_margin": 0.1964
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": 23706000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 3058000000.0,
+      "total_revenue": 21519000000.0,
+      "fcf_margin": 0.1421
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 6522000000.0,
+      "total_revenue": 21351000000.0,
+      "fcf_margin": 0.3055
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 5804000000.0,
+      "total_revenue": 21395000000.0,
+      "fcf_margin": 0.2713
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 2850000000.0,
+      "total_revenue": 21383000000.0,
+      "fcf_margin": 0.1333
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 4657000000.0,
+      "total_revenue": 22447000000.0,
+      "fcf_margin": 0.2075
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 5714000000.0,
+      "total_revenue": 22471000000.0,
+      "fcf_margin": 0.2543
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 4838000000.0,
+      "total_revenue": 22520000000.0,
+      "fcf_margin": 0.2148
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 3365000000.0,
+      "total_revenue": 21893000000.0,
+      "fcf_margin": 0.1537
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 16397000000.0,
+      "total_revenue": 23743000000.0,
+      "fcf_margin": 0.6906
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 7996000000.0,
+      "total_revenue": 23993000000.0,
+      "fcf_margin": 0.3333
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 5472000000.0,
+      "total_revenue": 24564000000.0,
+      "fcf_margin": 0.2228
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 17413000000.0,
+      "total_revenue": 24062000000.0,
+      "fcf_margin": 0.7237
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "JNJ",
+      "report_date": "2019-12-31",
+      "free_cash_flow": 19918000000.0,
+      "total_revenue": 82059000000.0,
+      "fcf_margin": 0.2427
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 20189000000.0,
+      "total_revenue": 82584000000.0,
+      "fcf_margin": 0.2445
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 19758000000.0,
+      "total_revenue": 78740000000.0,
+      "fcf_margin": 0.2509
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 17185000000.0,
+      "total_revenue": 79990000000.0,
+      "fcf_margin": 0.2148
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 17778000000.0,
+      "total_revenue": 85159000000.0,
+      "fcf_margin": 0.2088
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 18059000000.0,
+      "total_revenue": 88821000000.0,
+      "fcf_margin": 0.2033
+    },
+    {
+      "symbol": "JNJ",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 19313000000.0,
+      "total_revenue": 94193000000.0,
+      "fcf_margin": 0.205
+    }
+  ]
+}

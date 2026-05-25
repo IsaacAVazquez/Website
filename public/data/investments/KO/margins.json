@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "KO",
+      "report_date": "2022-06-30",
+      "gross_profit": 6495000000.0,
+      "total_revenue": 11325000000.0,
+      "gross_margin": 0.5735
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2023-06-30",
+      "gross_profit": 7060000000.0,
+      "total_revenue": 11972000000.0,
+      "gross_margin": 0.5897
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2023-09-30",
+      "gross_profit": 7296000000.0,
+      "total_revenue": 11953000000.0,
+      "gross_margin": 0.6104
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2023-12-31",
+      "gross_profit": 6215000000.0,
+      "total_revenue": 10849000000.0,
+      "gross_margin": 0.5729
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2024-03-31",
+      "gross_profit": 7065000000.0,
+      "total_revenue": 11300000000.0,
+      "gross_margin": 0.6252
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2024-06-30",
+      "gross_profit": 7551000000.0,
+      "total_revenue": 12363000000.0,
+      "gross_margin": 0.6108
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2024-09-30",
+      "gross_profit": 7190000000.0,
+      "total_revenue": 11854000000.0,
+      "gross_margin": 0.6065
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2024-12-31",
+      "gross_profit": 6931000000.0,
+      "total_revenue": 11544000000.0,
+      "gross_margin": 0.6004
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2025-03-31",
+      "gross_profit": 6966000000.0,
+      "total_revenue": 11129000000.0,
+      "gross_margin": 0.6259
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2025-06-30",
+      "gross_profit": 28908000000.0,
+      "total_revenue": 12535000000.0,
+      "gross_margin": 2.3062
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2025-09-30",
+      "gross_profit": 7658000000.0,
+      "total_revenue": 12455000000.0,
+      "gross_margin": 0.6149
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2025-12-31",
+      "gross_profit": 7099000000.0,
+      "total_revenue": 11822000000.0,
+      "gross_margin": 0.6005
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2026-03-31",
+      "gross_profit": 30430000000.0,
+      "total_revenue": 12472000000.0,
+      "gross_margin": 2.4399
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "KO",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2020-12-31",
+      "gross_profit": 19581000000.0,
+      "total_revenue": 33014000000.0,
+      "gross_margin": 0.5931
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2021-12-31",
+      "gross_profit": 23298000000.0,
+      "total_revenue": 38655000000.0,
+      "gross_margin": 0.6027
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2022-12-31",
+      "gross_profit": 25004000000.0,
+      "total_revenue": 43004000000.0,
+      "gross_margin": 0.5814
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2023-12-31",
+      "gross_profit": 27234000000.0,
+      "total_revenue": 45754000000.0,
+      "gross_margin": 0.5952
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2024-12-31",
+      "gross_profit": 28737000000.0,
+      "total_revenue": 47061000000.0,
+      "gross_margin": 0.6106
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2025-12-31",
+      "gross_profit": 29544000000.0,
+      "total_revenue": 47941000000.0,
+      "gross_margin": 0.6163
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "KO",
+      "report_date": "2022-06-30",
+      "operating_income": 2341000000.0,
+      "total_revenue": 11325000000.0,
+      "operating_margin": 0.2067
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2023-06-30",
+      "operating_income": 2401000000.0,
+      "total_revenue": 11972000000.0,
+      "operating_margin": 0.2006
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2023-09-30",
+      "operating_income": 3567000000.0,
+      "total_revenue": 11953000000.0,
+      "operating_margin": 0.2984
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2023-12-31",
+      "operating_income": 2357000000.0,
+      "total_revenue": 10849000000.0,
+      "operating_margin": 0.2173
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2024-03-31",
+      "operating_income": 3674000000.0,
+      "total_revenue": 11300000000.0,
+      "operating_margin": 0.3251
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2024-06-30",
+      "operating_income": 3971000000.0,
+      "total_revenue": 12363000000.0,
+      "operating_margin": 0.3212
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2024-09-30",
+      "operating_income": 3516000000.0,
+      "total_revenue": 11854000000.0,
+      "operating_margin": 0.2966
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2024-12-31",
+      "operating_income": 2865000000.0,
+      "total_revenue": 11544000000.0,
+      "operating_margin": 0.2482
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2025-03-31",
+      "operating_income": 3718000000.0,
+      "total_revenue": 11129000000.0,
+      "operating_margin": 0.3341
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2025-06-30",
+      "operating_income": 4319000000.0,
+      "total_revenue": 12535000000.0,
+      "operating_margin": 0.3446
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2025-09-30",
+      "operating_income": 4012000000.0,
+      "total_revenue": 12455000000.0,
+      "operating_margin": 0.3221
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2025-12-31",
+      "operating_income": 2862000000.0,
+      "total_revenue": 11822000000.0,
+      "operating_margin": 0.2421
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2026-03-31",
+      "operating_income": 4372000000.0,
+      "total_revenue": 12472000000.0,
+      "operating_margin": 0.3505
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "KO",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2020-12-31",
+      "operating_income": 9725000000.0,
+      "total_revenue": 33014000000.0,
+      "operating_margin": 0.2946
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2021-12-31",
+      "operating_income": 11039000000.0,
+      "total_revenue": 38655000000.0,
+      "operating_margin": 0.2856
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2022-12-31",
+      "operating_income": 12042000000.0,
+      "total_revenue": 43004000000.0,
+      "operating_margin": 0.28
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2023-12-31",
+      "operating_income": 13098000000.0,
+      "total_revenue": 45754000000.0,
+      "operating_margin": 0.2863
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2024-12-31",
+      "operating_income": 14022000000.0,
+      "total_revenue": 47061000000.0,
+      "operating_margin": 0.298
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2025-12-31",
+      "operating_income": 14911000000.0,
+      "total_revenue": 47941000000.0,
+      "operating_margin": 0.311
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "KO",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 1905000000.0,
+      "total_revenue": 11325000000.0,
+      "net_margin": 0.1682
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 2547000000.0,
+      "total_revenue": 11972000000.0,
+      "net_margin": 0.2127
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 3087000000.0,
+      "total_revenue": 11953000000.0,
+      "net_margin": 0.2583
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1973000000.0,
+      "total_revenue": 10849000000.0,
+      "net_margin": 0.1819
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 3177000000.0,
+      "total_revenue": 11300000000.0,
+      "net_margin": 0.2812
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 2411000000.0,
+      "total_revenue": 12363000000.0,
+      "net_margin": 0.195
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 2848000000.0,
+      "total_revenue": 11854000000.0,
+      "net_margin": 0.2403
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 2195000000.0,
+      "total_revenue": 11544000000.0,
+      "net_margin": 0.1901
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 3330000000.0,
+      "total_revenue": 11129000000.0,
+      "net_margin": 0.2992
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 12183000000.0,
+      "total_revenue": 12535000000.0,
+      "net_margin": 0.9719
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 3696000000.0,
+      "total_revenue": 12455000000.0,
+      "net_margin": 0.2967
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 2271000000.0,
+      "total_revenue": 11822000000.0,
+      "net_margin": 0.1921
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 13701000000.0,
+      "total_revenue": 12472000000.0,
+      "net_margin": 1.0985
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "KO",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 7747000000.0,
+      "total_revenue": 33014000000.0,
+      "net_margin": 0.2347
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 9771000000.0,
+      "total_revenue": 38655000000.0,
+      "net_margin": 0.2528
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 9542000000.0,
+      "total_revenue": 43004000000.0,
+      "net_margin": 0.2219
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 10714000000.0,
+      "total_revenue": 45754000000.0,
+      "net_margin": 0.2342
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 10631000000.0,
+      "total_revenue": 47061000000.0,
+      "net_margin": 0.2259
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 13107000000.0,
+      "total_revenue": 47941000000.0,
+      "net_margin": 0.2734
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "KO",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 11325000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2023-06-30",
+      "ebitda": 3535000000.0,
+      "total_revenue": 11972000000.0,
+      "ebitda_margin": 0.2953
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2023-09-30",
+      "ebitda": 4195000000.0,
+      "total_revenue": 11953000000.0,
+      "ebitda_margin": 0.351
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2023-12-31",
+      "ebitda": 3166000000.0,
+      "total_revenue": 10849000000.0,
+      "ebitda_margin": 0.2918
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2024-03-31",
+      "ebitda": 4516000000.0,
+      "total_revenue": 11300000000.0,
+      "ebitda_margin": 0.3996
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2024-06-30",
+      "ebitda": 3715000000.0,
+      "total_revenue": 12363000000.0,
+      "ebitda_margin": 0.3005
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2024-09-30",
+      "ebitda": 4073000000.0,
+      "total_revenue": 11854000000.0,
+      "ebitda_margin": 0.3436
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2024-12-31",
+      "ebitda": 3513000000.0,
+      "total_revenue": 11544000000.0,
+      "ebitda_margin": 0.3043
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2025-03-31",
+      "ebitda": 4711000000.0,
+      "total_revenue": 11129000000.0,
+      "ebitda_margin": 0.4233
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2025-06-30",
+      "ebitda": 17817000000.0,
+      "total_revenue": 12535000000.0,
+      "ebitda_margin": 1.4214
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2025-09-30",
+      "ebitda": 4842000000.0,
+      "total_revenue": 12455000000.0,
+      "ebitda_margin": 0.3888
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2025-12-31",
+      "ebitda": 3629000000.0,
+      "total_revenue": 11822000000.0,
+      "ebitda_margin": 0.307
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2026-03-31",
+      "ebitda": 19241000000.0,
+      "total_revenue": 12472000000.0,
+      "ebitda_margin": 1.5427
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "KO",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2020-12-31",
+      "ebitda": 12722000000.0,
+      "total_revenue": 33014000000.0,
+      "ebitda_margin": 0.3854
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2021-12-31",
+      "ebitda": 15474000000.0,
+      "total_revenue": 38655000000.0,
+      "ebitda_margin": 0.4003
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2022-12-31",
+      "ebitda": 13828000000.0,
+      "total_revenue": 43004000000.0,
+      "ebitda_margin": 0.3216
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2023-12-31",
+      "ebitda": 15607000000.0,
+      "total_revenue": 45754000000.0,
+      "ebitda_margin": 0.3411
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2024-12-31",
+      "ebitda": 15817000000.0,
+      "total_revenue": 47061000000.0,
+      "ebitda_margin": 0.3361
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2025-12-31",
+      "ebitda": 18702000000.0,
+      "total_revenue": 47941000000.0,
+      "ebitda_margin": 0.3901
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "KO",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 3653000000.0,
+      "total_revenue": 11325000000.0,
+      "fcf_margin": 0.3226
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2022-09-30",
+      "free_cash_flow": 3233000000.0,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 2242000000.0,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 4130000000.0,
+      "total_revenue": 11972000000.0,
+      "fcf_margin": 0.345
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 3914000000.0,
+      "total_revenue": 11953000000.0,
+      "fcf_margin": 0.3274
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 1819000000.0,
+      "total_revenue": 10849000000.0,
+      "fcf_margin": 0.1677
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 158000000.0,
+      "total_revenue": 11300000000.0,
+      "fcf_margin": 0.014
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 3163000000.0,
+      "total_revenue": 12363000000.0,
+      "fcf_margin": 0.2558
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2024-09-30",
+      "free_cash_flow": -1728000000.0,
+      "total_revenue": 11854000000.0,
+      "fcf_margin": -0.1458
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 3148000000.0,
+      "total_revenue": 11544000000.0,
+      "fcf_margin": 0.2727
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2025-03-31",
+      "free_cash_flow": -5511000000.0,
+      "total_revenue": 11129000000.0,
+      "fcf_margin": -0.4952
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2025-06-30",
+      "free_cash_flow": -722000000.0,
+      "total_revenue": 12535000000.0,
+      "fcf_margin": -0.0576
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 4564000000.0,
+      "total_revenue": 12455000000.0,
+      "fcf_margin": 0.3664
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 2874000000.0,
+      "total_revenue": 11822000000.0,
+      "fcf_margin": 0.2431
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 12562000000.0,
+      "total_revenue": 12472000000.0,
+      "fcf_margin": 1.0072
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "KO",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 8667000000.0,
+      "total_revenue": 33014000000.0,
+      "fcf_margin": 0.2625
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 11258000000.0,
+      "total_revenue": 38655000000.0,
+      "fcf_margin": 0.2912
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 9534000000.0,
+      "total_revenue": 43004000000.0,
+      "fcf_margin": 0.2217
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 9747000000.0,
+      "total_revenue": 45754000000.0,
+      "fcf_margin": 0.213
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 4741000000.0,
+      "total_revenue": 47061000000.0,
+      "fcf_margin": 0.1007
+    },
+    {
+      "symbol": "KO",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 5296000000.0,
+      "total_revenue": 47941000000.0,
+      "fcf_margin": 0.1105
+    }
+  ]
+}

@@ -84,11 +84,11 @@
     {
       "symbol": "MU",
       "report_date": "2026-02-28",
-      "net_income_common_stockholders": 13785000000.0,
+      "net_income_common_stockholders": 24111000000.0,
       "beginning_stockholders_equity": 58806000000.0,
       "ending_stockholders_equity": 72459000000.0,
       "avg_equity": 65632500000.0,
-      "roe": 0.21
+      "roe": 0.3674
     }
   ],
   "roa": [
@@ -176,11 +176,11 @@
     {
       "symbol": "MU",
       "report_date": "2026-02-28",
-      "net_income_common_stockholders": 13785000000.0,
+      "net_income_common_stockholders": 24111000000.0,
       "beginning_total_assets": 85971000000.0,
       "ending_total_assets": 101509000000.0,
       "avg_assets": 93740000000.0,
-      "roa": 0.1471
+      "roa": 0.2572
     }
   ],
   "roic": [
@@ -287,12 +287,12 @@
       "symbol": "MU",
       "report_date": "2026-02-28",
       "ebit": 16192000000.0,
-      "tax_rate_for_calcs": 0.15,
-      "nopat": 13763200000.0,
+      "tax_rate_for_calcs": 0.14,
+      "nopat": 13925120000.0,
       "beginning_invested_capital": 67650000000.0,
       "ending_invested_capital": 79801000000.0,
       "avg_invested_capital": 73725500000.0,
-      "roic": 0.1867
+      "roic": 0.1889
     }
   ],
   "equityMultiplier": [
@@ -362,8 +362,8 @@
     {
       "symbol": "MU",
       "report_date": "2026-02-28T00:00:00.000",
-      "roe": 0.21,
-      "roa": 0.1471,
+      "roe": 0.3674,
+      "roa": 0.2572,
       "equity_multiplier": 1.43
     }
   ],
@@ -434,8 +434,8 @@
     {
       "symbol": "MU",
       "report_date": "2026-02-28T00:00:00.000",
-      "roa": 0.1471,
-      "net_margin": 0.5777,
+      "roa": 0.2572,
+      "net_margin": 1.0105,
       "asset_turnover": 0.25
     }
   ]

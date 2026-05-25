@@ -1,0 +1,1594 @@
+{
+  "ttm_pe": [],
+  "ps_ratio": [],
+  "pb_ratio": [],
+  "roe": [
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 4138000000.0,
+      "total_avg_equity": 12518500000.0,
+      "industry_roe": 0.3306
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 4258857000.0,
+      "total_avg_equity": 13610283500.0,
+      "industry_roe": 0.3129
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 4258857000.0,
+      "total_avg_equity": 13610283500.0,
+      "industry_roe": 0.3129
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 24421252000.0,
+      "total_avg_equity": 112104982000.0,
+      "industry_roe": 0.2178
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 31597558000.0,
+      "total_avg_equity": 135528897000.0,
+      "industry_roe": 0.2331
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 31579346082.3449,
+      "total_avg_equity": 135499792072.11148,
+      "industry_roe": 0.2331
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 28404165082.3449,
+      "total_avg_equity": 137962328572.11148,
+      "industry_roe": 0.2059
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 28611339082.3449,
+      "total_avg_equity": 139433734572.11148,
+      "industry_roe": 0.2052
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 28642847095.36181,
+      "total_avg_equity": 139444918815.3511,
+      "industry_roe": 0.2054
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 32620792095.36181,
+      "total_avg_equity": 143607748815.3511,
+      "industry_roe": 0.2272
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 32828761095.36181,
+      "total_avg_equity": 141352370315.3511,
+      "industry_roe": 0.2322
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 32831673741.675632,
+      "total_avg_equity": 141542593929.4016,
+      "industry_roe": 0.232
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 30084846741.675632,
+      "total_avg_equity": 140463175929.4016,
+      "industry_roe": 0.2142
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 30134294741.675632,
+      "total_avg_equity": 141539419929.4016,
+      "industry_roe": 0.2129
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 30141555217.52101,
+      "total_avg_equity": 141556230129.96503,
+      "industry_roe": 0.2129
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 29730433217.52101,
+      "total_avg_equity": 140390671629.96503,
+      "industry_roe": 0.2118
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 30062562217.52101,
+      "total_avg_equity": 142124780629.96503,
+      "industry_roe": 0.2115
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 30031697738.49951,
+      "total_avg_equity": 142150001328.03522,
+      "industry_roe": 0.2113
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 34236677111.01307,
+      "total_avg_equity": 149714844870.5307,
+      "industry_roe": 0.2287
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 34495023111.01307,
+      "total_avg_equity": 151183240870.5307,
+      "industry_roe": 0.2282
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 34403249844.81598,
+      "total_avg_equity": 151195282199.09442,
+      "industry_roe": 0.2275
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 35953582990.64874,
+      "total_avg_equity": 153946784102.34674,
+      "industry_roe": 0.2335
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 36159136990.64874,
+      "total_avg_equity": 155114997102.34674,
+      "industry_roe": 0.2331
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 36100365555.72369,
+      "total_avg_equity": 155119074645.5943,
+      "industry_roe": 0.2327
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 42774387874.317764,
+      "total_avg_equity": 154558856358.60724,
+      "industry_roe": 0.2768
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 49644577874.317764,
+      "total_avg_equity": 156259784358.60724,
+      "industry_roe": 0.3177
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 49468252307.38077,
+      "total_avg_equity": 156261310974.73242,
+      "industry_roe": 0.3166
+    }
+  ],
+  "roa": [
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 4138000000.0,
+      "total_avg_assets": 53753000000.0,
+      "industry_roa": 0.077
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 4258857000.0,
+      "total_avg_assets": 55738061000.0,
+      "industry_roa": 0.0764
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 4258857000.0,
+      "total_avg_assets": 55738061000.0,
+      "industry_roa": 0.0764
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 24421252000.0,
+      "total_avg_assets": 373152812500.0,
+      "industry_roa": 0.0654
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 31597558000.0,
+      "total_avg_assets": 441633404500.0,
+      "industry_roa": 0.0715
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 31579346082.3449,
+      "total_avg_assets": 442542855742.01025,
+      "industry_roa": 0.0714
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 28404165082.3449,
+      "total_avg_assets": 448005099242.01025,
+      "industry_roa": 0.0634
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 28611339082.3449,
+      "total_avg_assets": 451342432742.01025,
+      "industry_roa": 0.0634
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 28642847095.36181,
+      "total_avg_assets": 451346164811.68335,
+      "industry_roa": 0.0635
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 32620792095.36181,
+      "total_avg_assets": 452694462811.68335,
+      "industry_roa": 0.0721
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 32828761095.36181,
+      "total_avg_assets": 450808205311.68335,
+      "industry_roa": 0.0728
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 32831673741.675632,
+      "total_avg_assets": 450899964226.2289,
+      "industry_roa": 0.0728
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 30084846741.675632,
+      "total_avg_assets": 447632709726.2289,
+      "industry_roa": 0.0672
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 30134294741.675632,
+      "total_avg_assets": 448340162226.2289,
+      "industry_roa": 0.0672
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 30141555217.52101,
+      "total_avg_assets": 448404061369.7676,
+      "industry_roa": 0.0672
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 29730433217.52101,
+      "total_avg_assets": 449628058869.7676,
+      "industry_roa": 0.0661
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 30062562217.52101,
+      "total_avg_assets": 451743944369.7676,
+      "industry_roa": 0.0665
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 30031697738.49951,
+      "total_avg_assets": 451898703871.31366,
+      "industry_roa": 0.0665
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 34236677111.01307,
+      "total_avg_assets": 471264799916.5216,
+      "industry_roa": 0.0726
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 34495023111.01307,
+      "total_avg_assets": 473945652416.5216,
+      "industry_roa": 0.0728
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 34403249844.81598,
+      "total_avg_assets": 474080560042.4028,
+      "industry_roa": 0.0726
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 35953582990.64874,
+      "total_avg_assets": 479918207438.86566,
+      "industry_roa": 0.0749
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 36159136990.64874,
+      "total_avg_assets": 482747569438.86566,
+      "industry_roa": 0.0749
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 36100365555.72369,
+      "total_avg_assets": 482904661482.3076,
+      "industry_roa": 0.0748
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 42774387874.317764,
+      "total_avg_assets": 480613122406.77966,
+      "industry_roa": 0.089
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 49644577874.317764,
+      "total_avg_assets": 482213939906.77966,
+      "industry_roa": 0.103
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 49468252307.38077,
+      "total_avg_assets": 482280015092.1788,
+      "industry_roa": 0.1026
+    }
+  ],
+  "equity_multiplier": [
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roe": 0.3306,
+      "industry_roa": 0.077,
+      "industry_equity_multiplier": 4.29
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roe": 0.3129,
+      "industry_roa": 0.0764,
+      "industry_equity_multiplier": 4.1
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roe": 0.3129,
+      "industry_roa": 0.0764,
+      "industry_equity_multiplier": 4.1
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roe": 0.2178,
+      "industry_roa": 0.0654,
+      "industry_equity_multiplier": 3.33
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roe": 0.2331,
+      "industry_roa": 0.0715,
+      "industry_equity_multiplier": 3.26
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roe": 0.2331,
+      "industry_roa": 0.0714,
+      "industry_equity_multiplier": 3.26
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roe": 0.2059,
+      "industry_roa": 0.0634,
+      "industry_equity_multiplier": 3.25
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roe": 0.2052,
+      "industry_roa": 0.0634,
+      "industry_equity_multiplier": 3.24
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roe": 0.2054,
+      "industry_roa": 0.0635,
+      "industry_equity_multiplier": 3.23
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roe": 0.2272,
+      "industry_roa": 0.0721,
+      "industry_equity_multiplier": 3.15
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roe": 0.2322,
+      "industry_roa": 0.0728,
+      "industry_equity_multiplier": 3.19
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roe": 0.232,
+      "industry_roa": 0.0728,
+      "industry_equity_multiplier": 3.19
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roe": 0.2142,
+      "industry_roa": 0.0672,
+      "industry_equity_multiplier": 3.19
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roe": 0.2129,
+      "industry_roa": 0.0672,
+      "industry_equity_multiplier": 3.17
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roe": 0.2129,
+      "industry_roa": 0.0672,
+      "industry_equity_multiplier": 3.17
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roe": 0.2118,
+      "industry_roa": 0.0661,
+      "industry_equity_multiplier": 3.2
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roe": 0.2115,
+      "industry_roa": 0.0665,
+      "industry_equity_multiplier": 3.18
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roe": 0.2113,
+      "industry_roa": 0.0665,
+      "industry_equity_multiplier": 3.18
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roe": 0.2287,
+      "industry_roa": 0.0726,
+      "industry_equity_multiplier": 3.15
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roe": 0.2282,
+      "industry_roa": 0.0728,
+      "industry_equity_multiplier": 3.13
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roe": 0.2275,
+      "industry_roa": 0.0726,
+      "industry_equity_multiplier": 3.13
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roe": 0.2335,
+      "industry_roa": 0.0749,
+      "industry_equity_multiplier": 3.12
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roe": 0.2331,
+      "industry_roa": 0.0749,
+      "industry_equity_multiplier": 3.11
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roe": 0.2327,
+      "industry_roa": 0.0748,
+      "industry_equity_multiplier": 3.11
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roe": 0.2768,
+      "industry_roa": 0.089,
+      "industry_equity_multiplier": 3.11
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roe": 0.3177,
+      "industry_roa": 0.103,
+      "industry_equity_multiplier": 3.08
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roe": 0.3166,
+      "industry_roa": 0.1026,
+      "industry_equity_multiplier": 3.09
+    }
+  ],
+  "gross_margin": [
+    {
+      "report_date": "2023-01-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 35826400000.0,
+      "total_ttm_revenue": 137451700000.0,
+      "industry_gross_margin": 0.2606
+    },
+    {
+      "report_date": "2023-02-28T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 35826400000.0,
+      "total_ttm_revenue": 137451700000.0,
+      "industry_gross_margin": 0.2606
+    },
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 35826400000.0,
+      "total_ttm_revenue": 137451700000.0,
+      "industry_gross_margin": 0.2606
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 36053400000.0,
+      "total_ttm_revenue": 137603700000.0,
+      "industry_gross_margin": 0.262
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 36053400000.0,
+      "total_ttm_revenue": 137603700000.0,
+      "industry_gross_margin": 0.262
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 36053400000.0,
+      "total_ttm_revenue": 137603700000.0,
+      "industry_gross_margin": 0.262
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 37133400000.0,
+      "total_ttm_revenue": 136339700000.0,
+      "industry_gross_margin": 0.2724
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 37133400000.0,
+      "total_ttm_revenue": 136339700000.0,
+      "industry_gross_margin": 0.2724
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 37133400000.0,
+      "total_ttm_revenue": 136339700000.0,
+      "industry_gross_margin": 0.2724
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 37544400000.0,
+      "total_ttm_revenue": 135219700000.0,
+      "industry_gross_margin": 0.2777
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 37544400000.0,
+      "total_ttm_revenue": 135219700000.0,
+      "industry_gross_margin": 0.2777
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 37544400000.0,
+      "total_ttm_revenue": 135219700000.0,
+      "industry_gross_margin": 0.2777
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 208313424000.0,
+      "total_ttm_revenue": 822560309000.0,
+      "industry_gross_margin": 0.2533
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 209114126000.0,
+      "total_ttm_revenue": 827233581000.0,
+      "industry_gross_margin": 0.2528
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 209571701951.0444,
+      "total_ttm_revenue": 830068693571.3735,
+      "industry_gross_margin": 0.2525
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 216964986951.0444,
+      "total_ttm_revenue": 860489474571.3735,
+      "industry_gross_margin": 0.2521
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 248696698951.0444,
+      "total_ttm_revenue": 1114317248571.3735,
+      "industry_gross_margin": 0.2232
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 248681422048.28052,
+      "total_ttm_revenue": 1114195099461.3506,
+      "industry_gross_margin": 0.2232
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 251426825048.28052,
+      "total_ttm_revenue": 1120040300461.3506,
+      "industry_gross_margin": 0.2245
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 251836335048.28052,
+      "total_ttm_revenue": 1120906152461.3506,
+      "industry_gross_margin": 0.2247
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 251836656055.52585,
+      "total_ttm_revenue": 1120913853527.139,
+      "industry_gross_margin": 0.2247
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 254056372055.52585,
+      "total_ttm_revenue": 1127695618527.139,
+      "industry_gross_margin": 0.2253
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 254771229055.52585,
+      "total_ttm_revenue": 1132139087527.139,
+      "industry_gross_margin": 0.225
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 254783049437.76233,
+      "total_ttm_revenue": 1132202373281.5986,
+      "industry_gross_margin": 0.225
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 253836896437.76233,
+      "total_ttm_revenue": 1125108534281.5986,
+      "industry_gross_margin": 0.2256
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 254526560437.76233,
+      "total_ttm_revenue": 1130461470281.5986,
+      "industry_gross_margin": 0.2252
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 254565614536.3369,
+      "total_ttm_revenue": 1130714137043.096,
+      "industry_gross_margin": 0.2251
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 255956435536.3369,
+      "total_ttm_revenue": 1135425808043.096,
+      "industry_gross_margin": 0.2254
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 256843315536.3369,
+      "total_ttm_revenue": 1140203669043.096,
+      "industry_gross_margin": 0.2253
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 256925803009.87274,
+      "total_ttm_revenue": 1140735389535.64,
+      "industry_gross_margin": 0.2252
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 263689349908.60693,
+      "total_ttm_revenue": 1159533317756.2546,
+      "industry_gross_margin": 0.2274
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 264719396908.60693,
+      "total_ttm_revenue": 1166097247756.2546,
+      "industry_gross_margin": 0.227
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 264784032633.90494,
+      "total_ttm_revenue": 1166479401914.0623,
+      "industry_gross_margin": 0.227
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 267862723111.68176,
+      "total_ttm_revenue": 1177598339992.9968,
+      "industry_gross_margin": 0.2275
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 268643054111.68176,
+      "total_ttm_revenue": 1182879124992.9968,
+      "industry_gross_margin": 0.2271
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 268705679863.2843,
+      "total_ttm_revenue": 1183275583207.2185,
+      "industry_gross_margin": 0.2271
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 288397659464.83435,
+      "total_ttm_revenue": 1222825936804.7932,
+      "industry_gross_margin": 0.2358
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 289327981464.83435,
+      "total_ttm_revenue": 1228831578804.7932,
+      "industry_gross_margin": 0.2354
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 289920460044.6998,
+      "total_ttm_revenue": 1232472823565.1436,
+      "industry_gross_margin": 0.2352
+    },
+    {
+      "report_date": "2026-04-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_gross_profit": 452984460044.6998,
+      "total_ttm_revenue": 1874699823565.1436,
+      "industry_gross_margin": 0.2416
+    }
+  ],
+  "ebitda_margin": [
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_ebitda": 6574000000.0,
+      "total_ttm_revenue": 109272000000.0,
+      "industry_ebitda_margin": 0.0602
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_ebitda": 6574000000.0,
+      "total_ttm_revenue": 109272000000.0,
+      "industry_ebitda_margin": 0.0602
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_ebitda": 6574000000.0,
+      "total_ttm_revenue": 109272000000.0,
+      "industry_ebitda_margin": 0.0602
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_ebitda": 7491000000.0,
+      "total_ttm_revenue": 108008000000.0,
+      "industry_ebitda_margin": 0.0694
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_ebitda": 7491000000.0,
+      "total_ttm_revenue": 108008000000.0,
+      "industry_ebitda_margin": 0.0694
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_ebitda": 7491000000.0,
+      "total_ttm_revenue": 108008000000.0,
+      "industry_ebitda_margin": 0.0694
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_ebitda": 7846000000.0,
+      "total_ttm_revenue": 106888000000.0,
+      "industry_ebitda_margin": 0.0734
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_ebitda": 7846000000.0,
+      "total_ttm_revenue": 106888000000.0,
+      "industry_ebitda_margin": 0.0734
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_ebitda": 7846000000.0,
+      "total_ttm_revenue": 106888000000.0,
+      "industry_ebitda_margin": 0.0734
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_ebitda": 48279093000.0,
+      "total_ttm_revenue": 794228609000.0,
+      "industry_ebitda_margin": 0.0608
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_ebitda": 48552808000.0,
+      "total_ttm_revenue": 798901881000.0,
+      "industry_ebitda_margin": 0.0608
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_ebitda": 48688617441.78091,
+      "total_ttm_revenue": 801736993571.3735,
+      "industry_ebitda_margin": 0.0607
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_ebitda": 54373971441.78091,
+      "total_ttm_revenue": 860489474571.3735,
+      "industry_ebitda_margin": 0.0632
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_ebitda": 66368499441.78091,
+      "total_ttm_revenue": 1114317248571.3735,
+      "industry_ebitda_margin": 0.0596
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_ebitda": 66370655957.30827,
+      "total_ttm_revenue": 1114195099461.3506,
+      "industry_ebitda_margin": 0.0596
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_ebitda": 62458434957.30827,
+      "total_ttm_revenue": 1120040300461.3506,
+      "industry_ebitda_margin": 0.0558
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_ebitda": 62633188957.30827,
+      "total_ttm_revenue": 1120906152461.3506,
+      "industry_ebitda_margin": 0.0559
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_ebitda": 62657214798.47686,
+      "total_ttm_revenue": 1120913853527.139,
+      "industry_ebitda_margin": 0.0559
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_ebitda": 67854112798.47686,
+      "total_ttm_revenue": 1127695618527.139,
+      "industry_ebitda_margin": 0.0602
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_ebitda": 68096151798.47686,
+      "total_ttm_revenue": 1132139087527.139,
+      "industry_ebitda_margin": 0.0601
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_ebitda": 68103188605.77156,
+      "total_ttm_revenue": 1132202373281.5986,
+      "industry_ebitda_margin": 0.0602
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_ebitda": 69380264605.77156,
+      "total_ttm_revenue": 1125108534281.5986,
+      "industry_ebitda_margin": 0.0617
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_ebitda": 69602432605.77156,
+      "total_ttm_revenue": 1130461470281.5986,
+      "industry_ebitda_margin": 0.0616
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_ebitda": 69616009188.39456,
+      "total_ttm_revenue": 1130714137043.096,
+      "industry_ebitda_margin": 0.0616
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_ebitda": 69186133188.39456,
+      "total_ttm_revenue": 1135425808043.096,
+      "industry_ebitda_margin": 0.0609
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_ebitda": 69740568188.39456,
+      "total_ttm_revenue": 1140203669043.096,
+      "industry_ebitda_margin": 0.0612
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_ebitda": 69736113187.242,
+      "total_ttm_revenue": 1140735389535.64,
+      "industry_ebitda_margin": 0.0611
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_ebitda": 76382775800.2619,
+      "total_ttm_revenue": 1159533317756.2546,
+      "industry_ebitda_margin": 0.0659
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_ebitda": 76850837800.2619,
+      "total_ttm_revenue": 1166097247756.2546,
+      "industry_ebitda_margin": 0.0659
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_ebitda": 76779181049.48157,
+      "total_ttm_revenue": 1166479401914.0623,
+      "industry_ebitda_margin": 0.0658
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_ebitda": 79362591112.80815,
+      "total_ttm_revenue": 1177598339992.9968,
+      "industry_ebitda_margin": 0.0674
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_ebitda": 79696197112.80815,
+      "total_ttm_revenue": 1182879124992.9968,
+      "industry_ebitda_margin": 0.0674
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_ebitda": 79645971947.86627,
+      "total_ttm_revenue": 1183275583207.2185,
+      "industry_ebitda_margin": 0.0673
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_ebitda": 84962566320.73413,
+      "total_ttm_revenue": 1222825936804.7932,
+      "industry_ebitda_margin": 0.0695
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_ebitda": 96257333320.73413,
+      "total_ttm_revenue": 1228831578804.7932,
+      "industry_ebitda_margin": 0.0783
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_ebitda": 96263166969.87411,
+      "total_ttm_revenue": 1232472823565.1436,
+      "industry_ebitda_margin": 0.0781
+    },
+    {
+      "report_date": "2026-04-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_ebitda": 140141166969.8741,
+      "total_ttm_revenue": 1874699823565.1436,
+      "industry_ebitda_margin": 0.0748
+    }
+  ],
+  "net_margin": [
+    {
+      "report_date": "2023-01-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 4395400000.0,
+      "total_ttm_revenue": 137451700000.0,
+      "industry_net_margin": 0.032
+    },
+    {
+      "report_date": "2023-02-28T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 4395400000.0,
+      "total_ttm_revenue": 137451700000.0,
+      "industry_net_margin": 0.032
+    },
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 4395400000.0,
+      "total_ttm_revenue": 137451700000.0,
+      "industry_net_margin": 0.032
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 4336400000.0,
+      "total_ttm_revenue": 137603700000.0,
+      "industry_net_margin": 0.0315
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 4336400000.0,
+      "total_ttm_revenue": 137603700000.0,
+      "industry_net_margin": 0.0315
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 4336400000.0,
+      "total_ttm_revenue": 137603700000.0,
+      "industry_net_margin": 0.0315
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 4988400000.0,
+      "total_ttm_revenue": 136339700000.0,
+      "industry_net_margin": 0.0366
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 4988400000.0,
+      "total_ttm_revenue": 136339700000.0,
+      "industry_net_margin": 0.0366
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 4988400000.0,
+      "total_ttm_revenue": 136339700000.0,
+      "industry_net_margin": 0.0366
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 5247400000.0,
+      "total_ttm_revenue": 135219700000.0,
+      "industry_net_margin": 0.0388
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 5247400000.0,
+      "total_ttm_revenue": 135219700000.0,
+      "industry_net_margin": 0.0388
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 5247400000.0,
+      "total_ttm_revenue": 135219700000.0,
+      "industry_net_margin": 0.0388
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 22925674000.0,
+      "total_ttm_revenue": 822560309000.0,
+      "industry_net_margin": 0.0279
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 23046531000.0,
+      "total_ttm_revenue": 827233581000.0,
+      "industry_net_margin": 0.0279
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 23010642655.865276,
+      "total_ttm_revenue": 830068693571.3735,
+      "industry_net_margin": 0.0277
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 24385363655.865276,
+      "total_ttm_revenue": 860489474571.3735,
+      "industry_net_margin": 0.0283
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 31561669655.865276,
+      "total_ttm_revenue": 1114317248571.3735,
+      "industry_net_margin": 0.0283
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 31579346082.3449,
+      "total_ttm_revenue": 1114195099461.3506,
+      "industry_net_margin": 0.0283
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 28404165082.3449,
+      "total_ttm_revenue": 1120040300461.3506,
+      "industry_net_margin": 0.0254
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 28611339082.3449,
+      "total_ttm_revenue": 1120906152461.3506,
+      "industry_net_margin": 0.0255
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 28642847095.36181,
+      "total_ttm_revenue": 1120913853527.139,
+      "industry_net_margin": 0.0256
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 32620792095.36181,
+      "total_ttm_revenue": 1127695618527.139,
+      "industry_net_margin": 0.0289
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 32828761095.36181,
+      "total_ttm_revenue": 1132139087527.139,
+      "industry_net_margin": 0.029
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 32831673741.675632,
+      "total_ttm_revenue": 1132202373281.5986,
+      "industry_net_margin": 0.029
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 30084846741.675632,
+      "total_ttm_revenue": 1125108534281.5986,
+      "industry_net_margin": 0.0267
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 30134294741.675632,
+      "total_ttm_revenue": 1130461470281.5986,
+      "industry_net_margin": 0.0267
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 30141555217.52101,
+      "total_ttm_revenue": 1130714137043.096,
+      "industry_net_margin": 0.0267
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 29730433217.52101,
+      "total_ttm_revenue": 1135425808043.096,
+      "industry_net_margin": 0.0262
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 30062562217.52101,
+      "total_ttm_revenue": 1140203669043.096,
+      "industry_net_margin": 0.0264
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 30031697738.49951,
+      "total_ttm_revenue": 1140735389535.64,
+      "industry_net_margin": 0.0263
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 34236677111.01307,
+      "total_ttm_revenue": 1159533317756.2546,
+      "industry_net_margin": 0.0295
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 34495023111.01307,
+      "total_ttm_revenue": 1166097247756.2546,
+      "industry_net_margin": 0.0296
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 34403249844.81598,
+      "total_ttm_revenue": 1166479401914.0623,
+      "industry_net_margin": 0.0295
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 35953582990.64874,
+      "total_ttm_revenue": 1177598339992.9968,
+      "industry_net_margin": 0.0305
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 36159136990.64874,
+      "total_ttm_revenue": 1182879124992.9968,
+      "industry_net_margin": 0.0306
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 36100365555.72369,
+      "total_ttm_revenue": 1183275583207.2185,
+      "industry_net_margin": 0.0305
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 42774387874.317764,
+      "total_ttm_revenue": 1222825936804.7932,
+      "industry_net_margin": 0.035
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 49644577874.317764,
+      "total_ttm_revenue": 1228831578804.7932,
+      "industry_net_margin": 0.0404
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 49468252307.38077,
+      "total_ttm_revenue": 1232472823565.1436,
+      "industry_net_margin": 0.0401
+    },
+    {
+      "report_date": "2026-04-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "total_ttm_net_income": 70131252307.38077,
+      "total_ttm_revenue": 1874699823565.1436,
+      "industry_net_margin": 0.0374
+    }
+  ],
+  "asset_turnover": [
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roa": 0.077,
+      "industry_net_margin": 0.0279,
+      "industry_asset_turnover": 2.76
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roa": 0.0764,
+      "industry_net_margin": 0.0279,
+      "industry_asset_turnover": 2.74
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roa": 0.0764,
+      "industry_net_margin": 0.0277,
+      "industry_asset_turnover": 2.76
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roa": 0.0654,
+      "industry_net_margin": 0.0283,
+      "industry_asset_turnover": 2.31
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roa": 0.0715,
+      "industry_net_margin": 0.0283,
+      "industry_asset_turnover": 2.53
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roa": 0.0714,
+      "industry_net_margin": 0.0283,
+      "industry_asset_turnover": 2.52
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roa": 0.0634,
+      "industry_net_margin": 0.0254,
+      "industry_asset_turnover": 2.5
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roa": 0.0634,
+      "industry_net_margin": 0.0255,
+      "industry_asset_turnover": 2.49
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roa": 0.0635,
+      "industry_net_margin": 0.0256,
+      "industry_asset_turnover": 2.48
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roa": 0.0721,
+      "industry_net_margin": 0.0289,
+      "industry_asset_turnover": 2.49
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roa": 0.0728,
+      "industry_net_margin": 0.029,
+      "industry_asset_turnover": 2.51
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roa": 0.0728,
+      "industry_net_margin": 0.029,
+      "industry_asset_turnover": 2.51
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roa": 0.0672,
+      "industry_net_margin": 0.0267,
+      "industry_asset_turnover": 2.52
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roa": 0.0672,
+      "industry_net_margin": 0.0267,
+      "industry_asset_turnover": 2.52
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roa": 0.0672,
+      "industry_net_margin": 0.0267,
+      "industry_asset_turnover": 2.52
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roa": 0.0661,
+      "industry_net_margin": 0.0262,
+      "industry_asset_turnover": 2.52
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roa": 0.0665,
+      "industry_net_margin": 0.0264,
+      "industry_asset_turnover": 2.52
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roa": 0.0665,
+      "industry_net_margin": 0.0263,
+      "industry_asset_turnover": 2.53
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roa": 0.0726,
+      "industry_net_margin": 0.0295,
+      "industry_asset_turnover": 2.46
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roa": 0.0728,
+      "industry_net_margin": 0.0296,
+      "industry_asset_turnover": 2.46
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roa": 0.0726,
+      "industry_net_margin": 0.0295,
+      "industry_asset_turnover": 2.46
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roa": 0.0749,
+      "industry_net_margin": 0.0305,
+      "industry_asset_turnover": 2.46
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roa": 0.0749,
+      "industry_net_margin": 0.0306,
+      "industry_asset_turnover": 2.45
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roa": 0.0748,
+      "industry_net_margin": 0.0305,
+      "industry_asset_turnover": 2.45
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roa": 0.089,
+      "industry_net_margin": 0.035,
+      "industry_asset_turnover": 2.54
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roa": 0.103,
+      "industry_net_margin": 0.0404,
+      "industry_asset_turnover": 2.55
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Discount Stores",
+      "industry_roa": 0.1026,
+      "industry_net_margin": 0.0401,
+      "industry_asset_turnover": 2.56
+    }
+  ]
+}

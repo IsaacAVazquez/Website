@@ -1,4 +1,3 @@
 {
-  "file_path": "/tmp/defeatbeta/dcf/MA.xlsx",
-  "description": "DCF Valuation Analysis for MA"
+  "error": "can't multiply sequence by non-int of type 'float'"
 }

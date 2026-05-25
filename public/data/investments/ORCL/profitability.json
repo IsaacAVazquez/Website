@@ -84,11 +84,11 @@
     {
       "symbol": "ORCL",
       "report_date": "2026-02-28",
-      "net_income_common_stockholders": 3699000000.0,
+      "net_income_common_stockholders": 16188000000.0,
       "beginning_stockholders_equity": 29951000000.0,
       "ending_stockholders_equity": 38495000000.0,
       "avg_equity": 34223000000.0,
-      "roe": 0.1081
+      "roe": 0.473
     }
   ],
   "roa": [
@@ -176,11 +176,11 @@
     {
       "symbol": "ORCL",
       "report_date": "2026-02-28",
-      "net_income_common_stockholders": 3699000000.0,
+      "net_income_common_stockholders": 16188000000.0,
       "beginning_total_assets": 204984000000.0,
       "ending_total_assets": 245240000000.0,
       "avg_assets": 225112000000.0,
-      "roa": 0.0164
+      "roa": 0.0719
     }
   ],
   "roic": [
@@ -286,13 +286,13 @@
     {
       "symbol": "ORCL",
       "report_date": "2026-02-28",
-      "ebit": 5596000000.0,
+      "ebit": 22475000000.0,
       "tax_rate_for_calcs": 0.16,
-      "nopat": 4700640000.0,
+      "nopat": 18879000000.0,
       "beginning_invested_capital": 138026000000.0,
       "ending_invested_capital": 168146000000.0,
       "avg_invested_capital": 153086000000.0,
-      "roic": 0.0307
+      "roic": 0.1233
     }
   ],
   "equityMultiplier": [
@@ -362,9 +362,9 @@
     {
       "symbol": "ORCL",
       "report_date": "2026-02-28T00:00:00.000",
-      "roe": 0.1081,
-      "roa": 0.0164,
-      "equity_multiplier": 6.59
+      "roe": 0.473,
+      "roa": 0.0719,
+      "equity_multiplier": 6.58
     }
   ],
   "assetTurnover": [
@@ -434,9 +434,9 @@
     {
       "symbol": "ORCL",
       "report_date": "2026-02-28T00:00:00.000",
-      "roa": 0.0164,
-      "net_margin": 0.2152,
-      "asset_turnover": 0.08
+      "roa": 0.0719,
+      "net_margin": 0.2526,
+      "asset_turnover": 0.28
     }
   ]
 }

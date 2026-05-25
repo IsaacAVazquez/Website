@@ -335,8 +335,8 @@
       "symbol": "MS",
       "report_date": "2025-06-30T00:00:00.000",
       "roa": 0.0026,
-      "net_margin": 0.2174,
-      "asset_turnover": 0.01
+      "net_margin": 0.0552,
+      "asset_turnover": 0.05
     },
     {
       "symbol": "MS",
@@ -356,8 +356,8 @@
       "symbol": "MS",
       "report_date": "2026-03-31T00:00:00.000",
       "roa": 0.0036,
-      "net_margin": 0.28,
-      "asset_turnover": 0.01
+      "net_margin": 0.0787,
+      "asset_turnover": 0.05
     }
   ]
 }

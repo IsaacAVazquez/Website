@@ -108,9 +108,9 @@
     {
       "symbol": "TSM",
       "report_date": "2026-03-31",
-      "gross_profit": null,
-      "total_revenue": null,
-      "gross_margin": null
+      "gross_profit": 2539194345000.0,
+      "total_revenue": 4103904076000.0,
+      "gross_margin": 0.6187
     }
   ],
   "annual_gross": [
@@ -252,30 +252,30 @@
     {
       "symbol": "TSM",
       "report_date": "2025-06-30",
-      "operating_income": 463440498000.0,
+      "operating_income": 463423000000.0,
       "total_revenue": 933791869000.0,
       "operating_margin": 0.4963
     },
     {
       "symbol": "TSM",
       "report_date": "2025-09-30",
-      "operating_income": 500684818000.0,
+      "operating_income": 500685080000.0,
       "total_revenue": 989918318000.0,
       "operating_margin": 0.5058
     },
     {
       "symbol": "TSM",
       "report_date": "2025-12-31",
-      "operating_income": 564906336000.0,
+      "operating_income": 564880854000.0,
       "total_revenue": 1046090449000.0,
       "operating_margin": 0.54
     },
     {
       "symbol": "TSM",
       "report_date": "2026-03-31",
-      "operating_income": null,
-      "total_revenue": null,
-      "operating_margin": null
+      "operating_income": 658948859000.0,
+      "total_revenue": 4103904076000.0,
+      "operating_margin": 0.1606
     }
   ],
   "annual_operating": [
@@ -438,9 +438,9 @@
     {
       "symbol": "TSM",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": null,
-      "total_revenue": null,
-      "net_margin": null
+      "net_income_common_stockholders": 1908519624000.0,
+      "total_revenue": 4103904076000.0,
+      "net_margin": 0.465
     }
   ],
   "annual_net": [
@@ -575,9 +575,9 @@
     {
       "symbol": "TSM",
       "report_date": "2025-03-31",
-      "ebitda": 608711765000.0,
+      "ebitda": 2259579144000.0,
       "total_revenue": 839253664000.0,
-      "ebitda_margin": 0.7253
+      "ebitda_margin": 2.6924
     },
     {
       "symbol": "TSM",
@@ -603,9 +603,9 @@
     {
       "symbol": "TSM",
       "report_date": "2026-03-31",
-      "ebitda": null,
-      "total_revenue": null,
-      "ebitda_margin": null
+      "ebitda": 2989376721000.0,
+      "total_revenue": 4103904076000.0,
+      "ebitda_margin": 0.7284
     }
   ],
   "annual_ebitda": [
@@ -768,9 +768,9 @@
     {
       "symbol": "TSM",
       "report_date": "2026-03-31",
-      "free_cash_flow": null,
-      "total_revenue": null,
-      "fcf_margin": null
+      "free_cash_flow": 347270237000.0,
+      "total_revenue": 4103904076000.0,
+      "fcf_margin": 0.0846
     }
   ],
   "annual_fcf": [

@@ -88,8 +88,8 @@
       "symbol": "V",
       "report_date": "2025-06-30",
       "gross_profit": 8199000000.0,
-      "total_revenue": 10172000000.0,
-      "gross_margin": 0.806
+      "total_revenue": 38893000000.0,
+      "gross_margin": 0.2108
     },
     {
       "symbol": "V",
@@ -109,8 +109,8 @@
       "symbol": "V",
       "report_date": "2026-03-31",
       "gross_profit": 9129000000.0,
-      "total_revenue": 11230000000.0,
-      "gross_margin": 0.8129
+      "total_revenue": 43027000000.0,
+      "gross_margin": 0.2122
     }
   ],
   "annual_gross": [
@@ -252,9 +252,9 @@
     {
       "symbol": "V",
       "report_date": "2025-06-30",
-      "operating_income": 6792000000.0,
-      "total_revenue": 10172000000.0,
-      "operating_margin": 0.6677
+      "operating_income": 25864000000.0,
+      "total_revenue": 38893000000.0,
+      "operating_margin": 0.665
     },
     {
       "symbol": "V",
@@ -273,9 +273,9 @@
     {
       "symbol": "V",
       "report_date": "2026-03-31",
-      "operating_income": 7563000000.0,
-      "total_revenue": 11230000000.0,
-      "operating_margin": 0.6735
+      "operating_income": 28851000000.0,
+      "total_revenue": 43027000000.0,
+      "operating_margin": 0.6705
     }
   ],
   "annual_operating": [
@@ -418,8 +418,8 @@
       "symbol": "V",
       "report_date": "2025-06-30",
       "net_income_common_stockholders": 5219000000.0,
-      "total_revenue": 10172000000.0,
-      "net_margin": 0.5131
+      "total_revenue": 38893000000.0,
+      "net_margin": 0.1342
     },
     {
       "symbol": "V",
@@ -439,8 +439,8 @@
       "symbol": "V",
       "report_date": "2026-03-31",
       "net_income_common_stockholders": 5972000000.0,
-      "total_revenue": 11230000000.0,
-      "net_margin": 0.5318
+      "total_revenue": 43027000000.0,
+      "net_margin": 0.1388
     }
   ],
   "annual_net": [
@@ -583,8 +583,8 @@
       "symbol": "V",
       "report_date": "2025-06-30",
       "ebitda": 6689000000.0,
-      "total_revenue": 10172000000.0,
-      "ebitda_margin": 0.6576
+      "total_revenue": 38893000000.0,
+      "ebitda_margin": 0.172
     },
     {
       "symbol": "V",
@@ -604,8 +604,8 @@
       "symbol": "V",
       "report_date": "2026-03-31",
       "ebitda": 7685000000.0,
-      "total_revenue": 11230000000.0,
-      "ebitda_margin": 0.6843
+      "total_revenue": 43027000000.0,
+      "ebitda_margin": 0.1786
     }
   ],
   "annual_ebitda": [
@@ -748,8 +748,8 @@
       "symbol": "V",
       "report_date": "2025-06-30",
       "free_cash_flow": 6309000000.0,
-      "total_revenue": 10172000000.0,
-      "fcf_margin": 0.6202
+      "total_revenue": 38893000000.0,
+      "fcf_margin": 0.1622
     },
     {
       "symbol": "V",
@@ -769,8 +769,8 @@
       "symbol": "V",
       "report_date": "2026-03-31",
       "free_cash_flow": 2625000000.0,
-      "total_revenue": 11230000000.0,
-      "fcf_margin": 0.2337
+      "total_revenue": 43027000000.0,
+      "fcf_margin": 0.061
     }
   ],
   "annual_fcf": [

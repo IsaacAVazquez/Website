@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "MCD",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 2317000000.0,
+      "beginning_stockholders_equity": -4999100000.0,
+      "ending_stockholders_equity": -4854800000.0,
+      "avg_equity": -4926950000.0,
+      "roe": -0.4703
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 2039000000.0,
+      "beginning_stockholders_equity": -4854800000.0,
+      "ending_stockholders_equity": -4706000000.0,
+      "avg_equity": -4780400000.0,
+      "roe": -0.4265
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1929000000.0,
+      "beginning_stockholders_equity": -4706000000.0,
+      "ending_stockholders_equity": -4832000000.0,
+      "avg_equity": -4769000000.0,
+      "roe": -0.4045
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 2022000000.0,
+      "beginning_stockholders_equity": -4832000000.0,
+      "ending_stockholders_equity": -4824000000.0,
+      "avg_equity": -4828000000.0,
+      "roe": -0.4188
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 2255000000.0,
+      "beginning_stockholders_equity": -4824000000.0,
+      "ending_stockholders_equity": -5177000000.0,
+      "avg_equity": -5000500000.0,
+      "roe": -0.451
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 2016000000.0,
+      "beginning_stockholders_equity": -5177000000.0,
+      "ending_stockholders_equity": -3796000000.0,
+      "avg_equity": -4486500000.0,
+      "roe": -0.4493
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1868000000.0,
+      "beginning_stockholders_equity": -3796000000.0,
+      "ending_stockholders_equity": -3454000000.0,
+      "avg_equity": -3625000000.0,
+      "roe": -0.5153
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 2253000000.0,
+      "beginning_stockholders_equity": -3454000000.0,
+      "ending_stockholders_equity": -2760000000.0,
+      "avg_equity": -3107000000.0,
+      "roe": -0.7251
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 2278000000.0,
+      "beginning_stockholders_equity": -2760000000.0,
+      "ending_stockholders_equity": -2163000000.0,
+      "avg_equity": -2461500000.0,
+      "roe": -0.9255
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 2164000000.0,
+      "beginning_stockholders_equity": -2163000000.0,
+      "ending_stockholders_equity": -1790000000.0,
+      "avg_equity": -1976500000.0,
+      "roe": -1.0949
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1983000000.0,
+      "beginning_stockholders_equity": -1790000000.0,
+      "ending_stockholders_equity": -1285000000.0,
+      "avg_equity": -1537500000.0,
+      "roe": -1.2898
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "MCD",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 2317000000.0,
+      "beginning_total_assets": 50442000000.0,
+      "ending_total_assets": 52089300000.0,
+      "avg_assets": 51265650000.0,
+      "roa": 0.0452
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 2039000000.0,
+      "beginning_total_assets": 52089300000.0,
+      "ending_total_assets": 56147000000.0,
+      "avg_assets": 54118150000.0,
+      "roa": 0.0377
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1929000000.0,
+      "beginning_total_assets": 56147000000.0,
+      "ending_total_assets": 53513000000.0,
+      "avg_assets": 54830000000.0,
+      "roa": 0.0352
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 2022000000.0,
+      "beginning_total_assets": 53513000000.0,
+      "ending_total_assets": 53801000000.0,
+      "avg_assets": 53657000000.0,
+      "roa": 0.0377
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 2255000000.0,
+      "beginning_total_assets": 53801000000.0,
+      "ending_total_assets": 56172000000.0,
+      "avg_assets": 54986500000.0,
+      "roa": 0.041
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 2016000000.0,
+      "beginning_total_assets": 56172000000.0,
+      "ending_total_assets": 55182000000.0,
+      "avg_assets": 55677000000.0,
+      "roa": 0.0362
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1868000000.0,
+      "beginning_total_assets": 55182000000.0,
+      "ending_total_assets": 56329000000.0,
+      "avg_assets": 55755500000.0,
+      "roa": 0.0335
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 2253000000.0,
+      "beginning_total_assets": 56329000000.0,
+      "ending_total_assets": 59555000000.0,
+      "avg_assets": 57942000000.0,
+      "roa": 0.0389
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 2278000000.0,
+      "beginning_total_assets": 59555000000.0,
+      "ending_total_assets": 60608000000.0,
+      "avg_assets": 60081500000.0,
+      "roa": 0.0379
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 2164000000.0,
+      "beginning_total_assets": 60608000000.0,
+      "ending_total_assets": 59515000000.0,
+      "avg_assets": 60061500000.0,
+      "roa": 0.036
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1983000000.0,
+      "beginning_total_assets": 59515000000.0,
+      "ending_total_assets": 60037000000.0,
+      "avg_assets": 59776000000.0,
+      "roa": 0.0332
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "MCD",
+      "report_date": "2023-09-30",
+      "ebit": 3265000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 2579350000.0,
+      "beginning_invested_capital": 30711000000.0,
+      "ending_invested_capital": 32419800000.0,
+      "avg_invested_capital": 31565400000.0,
+      "roic": 0.0817
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2023-12-31",
+      "ebit": 2875200000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 2328912000.0,
+      "beginning_invested_capital": 32419800000.0,
+      "ending_invested_capital": 34639000000.0,
+      "avg_invested_capital": 33529400000.0,
+      "roic": 0.0695
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-03-31",
+      "ebit": 2781000000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 2224800000.0,
+      "beginning_invested_capital": 34639000000.0,
+      "ending_invested_capital": 32536000000.0,
+      "avg_invested_capital": 33587500000.0,
+      "roic": 0.0662
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-06-30",
+      "ebit": 2928000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 2313120000.0,
+      "beginning_invested_capital": 32536000000.0,
+      "ending_invested_capital": 33700000000.0,
+      "avg_invested_capital": 33118000000.0,
+      "roic": 0.0698
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-09-30",
+      "ebit": 3224000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 2546960000.0,
+      "beginning_invested_capital": 33700000000.0,
+      "ending_invested_capital": 34409000000.0,
+      "avg_invested_capital": 34054500000.0,
+      "roic": 0.0748
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-12-31",
+      "ebit": 2918000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 2305220000.0,
+      "beginning_invested_capital": 34409000000.0,
+      "ending_invested_capital": 34628000000.0,
+      "avg_invested_capital": 34518500000.0,
+      "roic": 0.0668
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-03-31",
+      "ebit": 2706000000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 2164800000.0,
+      "beginning_invested_capital": 34628000000.0,
+      "ending_invested_capital": 35471000000.0,
+      "avg_invested_capital": 35049500000.0,
+      "roic": 0.0618
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-06-30",
+      "ebit": 3251000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 2568290000.0,
+      "beginning_invested_capital": 35471000000.0,
+      "ending_invested_capital": 38643000000.0,
+      "avg_invested_capital": 37057000000.0,
+      "roic": 0.0693
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-09-30",
+      "ebit": 3355000000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 2583350000.0,
+      "beginning_invested_capital": 38643000000.0,
+      "ending_invested_capital": 39120000000.0,
+      "avg_invested_capital": 38881500000.0,
+      "roic": 0.0664
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-12-31",
+      "ebit": 3167000000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 2470260000.0,
+      "beginning_invested_capital": 39120000000.0,
+      "ending_invested_capital": 38183000000.0,
+      "avg_invested_capital": 38651500000.0,
+      "roic": 0.0639
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2026-03-31",
+      "ebit": 2942000000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 2294760000.0,
+      "beginning_invested_capital": 38183000000.0,
+      "ending_invested_capital": 38820000000.0,
+      "avg_invested_capital": 38501500000.0,
+      "roic": 0.0596
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "MCD",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": -0.4703,
+      "roa": 0.0452,
+      "equity_multiplier": -10.4
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": -0.4265,
+      "roa": 0.0377,
+      "equity_multiplier": -11.31
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": -0.4045,
+      "roa": 0.0352,
+      "equity_multiplier": -11.49
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": -0.4188,
+      "roa": 0.0377,
+      "equity_multiplier": -11.11
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": -0.451,
+      "roa": 0.041,
+      "equity_multiplier": -11.0
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": -0.4493,
+      "roa": 0.0362,
+      "equity_multiplier": -12.41
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": -0.5153,
+      "roa": 0.0335,
+      "equity_multiplier": -15.38
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": -0.7251,
+      "roa": 0.0389,
+      "equity_multiplier": -18.64
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": -0.9255,
+      "roa": 0.0379,
+      "equity_multiplier": -24.42
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": -1.0949,
+      "roa": 0.036,
+      "equity_multiplier": -30.41
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": -1.2898,
+      "roa": 0.0332,
+      "equity_multiplier": -38.85
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "MCD",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0452,
+      "net_margin": 0.3462,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0377,
+      "net_margin": 0.3183,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0352,
+      "net_margin": 0.3127,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0377,
+      "net_margin": 0.3116,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.041,
+      "net_margin": 0.328,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0362,
+      "net_margin": 0.3156,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0335,
+      "net_margin": 0.3137,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0389,
+      "net_margin": 0.0865,
+      "asset_turnover": 0.45
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0379,
+      "net_margin": 0.3219,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.036,
+      "net_margin": 0.3088,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "MCD",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0332,
+      "net_margin": 0.0722,
+      "asset_turnover": 0.46
+    }
+  ]
+}

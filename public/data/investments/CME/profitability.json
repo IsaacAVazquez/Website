@@ -66,11 +66,11 @@
     {
       "symbol": "CME",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 1012200000.0,
+      "net_income_common_stockholders": 3721400000.0,
       "beginning_stockholders_equity": 27030700000.0,
       "ending_stockholders_equity": 27739000000.0,
       "avg_equity": 27384850000.0,
-      "roe": 0.037
+      "roe": 0.1359
     },
     {
       "symbol": "CME",
@@ -93,11 +93,11 @@
     {
       "symbol": "CME",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 1168000000.0,
+      "net_income_common_stockholders": 4244800000.0,
       "beginning_stockholders_equity": 28728200000.0,
       "ending_stockholders_equity": 26618200000.0,
       "avg_equity": 27673200000.0,
-      "roe": 0.0422
+      "roe": 0.1534
     }
   ],
   "roa": [
@@ -167,11 +167,11 @@
     {
       "symbol": "CME",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 1012200000.0,
+      "net_income_common_stockholders": 3721400000.0,
       "beginning_total_assets": 157831600000.0,
       "ending_total_assets": 179907000000.0,
       "avg_assets": 168869300000.0,
-      "roa": 0.006
+      "roa": 0.022
     },
     {
       "symbol": "CME",
@@ -194,11 +194,11 @@
     {
       "symbol": "CME",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 1168000000.0,
+      "net_income_common_stockholders": 4244800000.0,
       "beginning_total_assets": 198424200000.0,
       "ending_total_assets": 201993500000.0,
       "avg_assets": 200208850000.0,
-      "roa": 0.0058
+      "roa": 0.0212
     }
   ],
   "roic": [
@@ -282,13 +282,13 @@
     {
       "symbol": "CME",
       "report_date": "2025-06-30",
-      "ebit": 1374300000.0,
+      "ebit": 5015200000.0,
       "tax_rate_for_calcs": 0.23,
-      "nopat": 1058211000.0,
+      "nopat": 3861704000.0,
       "beginning_invested_capital": 30450100000.0,
       "ending_invested_capital": 31159400000.0,
       "avg_invested_capital": 30804750000.0,
-      "roic": 0.0344
+      "roic": 0.1254
     },
     {
       "symbol": "CME",
@@ -315,13 +315,13 @@
     {
       "symbol": "CME",
       "report_date": "2026-03-31",
-      "ebit": 1554500000.0,
+      "ebit": 5771900000.0,
       "tax_rate_for_calcs": 0.24,
-      "nopat": 1181420000.0,
+      "nopat": 4386644000.0,
       "beginning_invested_capital": 32150500000.0,
       "ending_invested_capital": 30041400000.0,
       "avg_invested_capital": 31095950000.0,
-      "roic": 0.038
+      "roic": 0.1411
     }
   ],
   "equityMultiplier": [
@@ -377,9 +377,9 @@
     {
       "symbol": "CME",
       "report_date": "2025-06-30T00:00:00.000",
-      "roe": 0.037,
-      "roa": 0.006,
-      "equity_multiplier": 6.17
+      "roe": 0.1359,
+      "roa": 0.022,
+      "equity_multiplier": 6.18
     },
     {
       "symbol": "CME",
@@ -398,9 +398,9 @@
     {
       "symbol": "CME",
       "report_date": "2026-03-31T00:00:00.000",
-      "roe": 0.0422,
-      "roa": 0.0058,
-      "equity_multiplier": 7.28
+      "roe": 0.1534,
+      "roa": 0.0212,
+      "equity_multiplier": 7.24
     }
   ],
   "assetTurnover": [
@@ -456,9 +456,9 @@
     {
       "symbol": "CME",
       "report_date": "2025-06-30T00:00:00.000",
-      "roa": 0.006,
-      "net_margin": 0.5982,
-      "asset_turnover": 0.01
+      "roa": 0.022,
+      "net_margin": 0.5775,
+      "asset_turnover": 0.04
     },
     {
       "symbol": "CME",
@@ -477,9 +477,9 @@
     {
       "symbol": "CME",
       "report_date": "2026-03-31T00:00:00.000",
-      "roa": 0.0058,
-      "net_margin": 0.6212,
-      "asset_turnover": 0.01
+      "roa": 0.0212,
+      "net_margin": 0.6281,
+      "asset_turnover": 0.03
     }
   ]
 }

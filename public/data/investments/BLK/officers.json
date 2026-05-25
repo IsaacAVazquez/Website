@@ -7,7 +7,8 @@
     "born": 1958,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "BLK",
@@ -17,17 +18,8 @@
     "born": 1954,
     "pay": 4038215,
     "exercised": 0,
-    "unexercised": 0
-  },
-  {
-    "symbol": "BLK",
-    "name": "Mr. Derek N. Stein",
-    "title": "Senior MD and Global Head of Technology & Operations",
-    "age": 63,
-    "born": 1962,
-    "pay": null,
-    "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "BLK",
@@ -37,7 +29,8 @@
     "born": 1952,
     "pay": 13149385,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "BLK",
@@ -47,7 +40,8 @@
     "born": 1973,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "BLK",
@@ -57,7 +51,8 @@
     "born": null,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "BLK",
@@ -67,7 +62,8 @@
     "born": 1976,
     "pay": 5774350,
     "exercised": 0,
-    "unexercised": 15060851
+    "unexercised": 15060851,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "BLK",
@@ -77,7 +73,8 @@
     "born": null,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "BLK",
@@ -87,7 +84,19 @@
     "born": null,
     "pay": 4188855,
     "exercised": 24951468,
-    "unexercised": 11136800
+    "unexercised": 11136800,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "BLK",
+    "name": "Mr. Robert Lawrence Goldstein",
+    "title": "Senior MD & COO",
+    "age": 51,
+    "born": 1974,
+    "pay": 5814205,
+    "exercised": 0,
+    "unexercised": 30175160,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "BLK",
@@ -97,6 +106,7 @@
     "born": 1956,
     "pay": 8642500,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   }
 ]

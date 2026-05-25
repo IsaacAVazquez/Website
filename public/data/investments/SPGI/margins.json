@@ -87,9 +87,9 @@
     {
       "symbol": "SPGI",
       "report_date": "2025-06-30",
-      "gross_profit": 2636000000.0,
+      "gross_profit": 10225000000.0,
       "total_revenue": 3755000000.0,
-      "gross_margin": 0.702
+      "gross_margin": 2.723
     },
     {
       "symbol": "SPGI",
@@ -108,9 +108,9 @@
     {
       "symbol": "SPGI",
       "report_date": "2026-03-31",
-      "gross_profit": 2936000000.0,
+      "gross_profit": 11085000000.0,
       "total_revenue": 4171000000.0,
-      "gross_margin": 0.7039
+      "gross_margin": 2.6576
     }
   ],
   "annual_gross": [
@@ -417,9 +417,9 @@
     {
       "symbol": "SPGI",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 1072000000.0,
+      "net_income_common_stockholders": 4011000000.0,
       "total_revenue": 3755000000.0,
-      "net_margin": 0.2855
+      "net_margin": 1.0682
     },
     {
       "symbol": "SPGI",
@@ -438,9 +438,9 @@
     {
       "symbol": "SPGI",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 1395000000.0,
+      "net_income_common_stockholders": 4776000000.0,
       "total_revenue": 4171000000.0,
-      "net_margin": 0.3345
+      "net_margin": 1.145
     }
   ],
   "annual_net": [

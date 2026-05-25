@@ -66,11 +66,11 @@
     {
       "symbol": "JPM",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 14630000000.0,
+      "net_income_common_stockholders": 55155000000.0,
       "beginning_stockholders_equity": 351420000000.0,
       "ending_stockholders_equity": 356924000000.0,
       "avg_equity": 354172000000.0,
-      "roe": 0.0413
+      "roe": 0.1557
     },
     {
       "symbol": "JPM",
@@ -93,11 +93,11 @@
     {
       "symbol": "JPM",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 16148000000.0,
+      "net_income_common_stockholders": 57512000000.0,
       "beginning_stockholders_equity": 362438000000.0,
       "ending_stockholders_equity": 364038000000.0,
       "avg_equity": 363238000000.0,
-      "roe": 0.0445
+      "roe": 0.1583
     }
   ],
   "roa": [
@@ -167,11 +167,11 @@
     {
       "symbol": "JPM",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 14630000000.0,
+      "net_income_common_stockholders": 55155000000.0,
       "beginning_total_assets": 4357856000000.0,
       "ending_total_assets": 4552482000000.0,
       "avg_assets": 4455169000000.0,
-      "roa": 0.0033
+      "roa": 0.0124
     },
     {
       "symbol": "JPM",
@@ -194,11 +194,11 @@
     {
       "symbol": "JPM",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 16148000000.0,
+      "net_income_common_stockholders": 57512000000.0,
       "beginning_total_assets": 4424900000000.0,
       "ending_total_assets": 4900475000000.0,
       "avg_assets": 4662687500000.0,
-      "roa": 0.0035
+      "roa": 0.0123
     }
   ],
   "roic": [],
@@ -255,9 +255,9 @@
     {
       "symbol": "JPM",
       "report_date": "2025-06-30T00:00:00.000",
-      "roe": 0.0413,
-      "roa": 0.0033,
-      "equity_multiplier": 12.52
+      "roe": 0.1557,
+      "roa": 0.0124,
+      "equity_multiplier": 12.56
     },
     {
       "symbol": "JPM",
@@ -276,9 +276,9 @@
     {
       "symbol": "JPM",
       "report_date": "2026-03-31T00:00:00.000",
-      "roe": 0.0445,
-      "roa": 0.0035,
-      "equity_multiplier": 12.71
+      "roe": 0.1583,
+      "roa": 0.0123,
+      "equity_multiplier": 12.87
     }
   ],
   "assetTurnover": [
@@ -334,8 +334,8 @@
     {
       "symbol": "JPM",
       "report_date": "2025-06-30T00:00:00.000",
-      "roa": 0.0033,
-      "net_margin": 0.326,
+      "roa": 0.0124,
+      "net_margin": 1.2289,
       "asset_turnover": 0.01
     },
     {
@@ -355,8 +355,8 @@
     {
       "symbol": "JPM",
       "report_date": "2026-03-31T00:00:00.000",
-      "roa": 0.0035,
-      "net_margin": 0.324,
+      "roa": 0.0123,
+      "net_margin": 1.1541,
       "asset_turnover": 0.01
     }
   ]

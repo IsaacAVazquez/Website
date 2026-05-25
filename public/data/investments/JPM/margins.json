@@ -417,9 +417,9 @@
     {
       "symbol": "JPM",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 14630000000.0,
+      "net_income_common_stockholders": 55155000000.0,
       "total_revenue": 44882000000.0,
-      "net_margin": 0.326
+      "net_margin": 1.2289
     },
     {
       "symbol": "JPM",
@@ -438,9 +438,9 @@
     {
       "symbol": "JPM",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 16148000000.0,
+      "net_income_common_stockholders": 57512000000.0,
       "total_revenue": 49833000000.0,
-      "net_margin": 0.324
+      "net_margin": 1.1541
     }
   ],
   "annual_net": [
@@ -747,9 +747,9 @@
     {
       "symbol": "JPM",
       "report_date": "2025-06-30",
-      "free_cash_flow": 29547000000.0,
+      "free_cash_flow": -148615000000.0,
       "total_revenue": 44882000000.0,
-      "fcf_margin": 0.6583
+      "fcf_margin": -3.3112
     },
     {
       "symbol": "JPM",
@@ -768,9 +768,9 @@
     {
       "symbol": "JPM",
       "report_date": "2026-03-31",
-      "free_cash_flow": -211761000000.0,
+      "free_cash_flow": -107704000000.0,
       "total_revenue": 49833000000.0,
-      "fcf_margin": -4.2494
+      "fcf_margin": -2.1613
     }
   ],
   "annual_fcf": [

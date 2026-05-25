@@ -7,7 +7,8 @@
     "born": 1954,
     "pay": 366673,
     "exercised": 5569971,
-    "unexercised": 33074978
+    "unexercised": 33074978,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "SNPS",
@@ -17,7 +18,8 @@
     "born": null,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "SNPS",
@@ -27,7 +29,8 @@
     "born": 1971,
     "pay": 2086177,
     "exercised": 14109843,
-    "unexercised": 2410485
+    "unexercised": 2410485,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "SNPS",
@@ -37,7 +40,8 @@
     "born": 1971,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "SNPS",
@@ -47,7 +51,8 @@
     "born": null,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "SNPS",
@@ -57,7 +62,8 @@
     "born": null,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "SNPS",
@@ -67,7 +73,8 @@
     "born": null,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "SNPS",
@@ -77,7 +84,8 @@
     "born": 1965,
     "pay": 501255,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "SNPS",
@@ -87,7 +95,8 @@
     "born": 1974,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "SNPS",
@@ -97,6 +106,7 @@
     "born": 1965,
     "pay": 1047605,
     "exercised": 1941984,
-    "unexercised": 971416
+    "unexercised": 971416,
+    "report_date": "2026-05-25"
   }
 ]

@@ -87,9 +87,9 @@
     {
       "symbol": "META",
       "report_date": "2025-06-30",
-      "gross_profit": 39025000000.0,
+      "gross_profit": 146528000000.0,
       "total_revenue": 47516000000.0,
-      "gross_margin": 0.8213
+      "gross_margin": 3.0838
     },
     {
       "symbol": "META",
@@ -108,9 +108,9 @@
     {
       "symbol": "META",
       "report_date": "2026-03-31",
-      "gross_profit": 46093000000.0,
+      "gross_profit": 176142000000.0,
       "total_revenue": 56311000000.0,
-      "gross_margin": 0.8185
+      "gross_margin": 3.128
     }
   ],
   "annual_gross": [
@@ -747,9 +747,9 @@
     {
       "symbol": "META",
       "report_date": "2025-06-30",
-      "free_cash_flow": 9023000000.0,
+      "free_cash_flow": 50137000000.0,
       "total_revenue": 47516000000.0,
-      "fcf_margin": 0.1899
+      "fcf_margin": 1.0552
     },
     {
       "symbol": "META",
@@ -768,9 +768,9 @@
     {
       "symbol": "META",
       "report_date": "2026-03-31",
-      "free_cash_flow": 13229000000.0,
+      "free_cash_flow": 48253000000.0,
       "total_revenue": 56311000000.0,
-      "fcf_margin": 0.2349
+      "fcf_margin": 0.8569
     }
   ],
   "annual_fcf": [

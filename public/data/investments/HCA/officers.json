@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "HCA",
+    "name": "Dr. Michael S. Cuffe M.B.A., M.D.",
+    "title": "Executive VP & Chief Clinical Officer",
+    "age": 59,
+    "born": 1966,
+    "pay": 3160812,
+    "exercised": 2604092,
+    "unexercised": 9288201,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "HCA",
+    "name": "Dr. Thomas F. Frist Jr., M.D.",
+    "title": "Founder & Chairman Emeritus",
+    "age": 86,
+    "born": 1939,
+    "pay": 17973,
+    "exercised": 673362,
+    "unexercised": 4267438,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "HCA",
+    "name": "Mr. Chad J. Wasserman",
+    "title": "Senior VP & Chief Information Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "HCA",
+    "name": "Mr. Christopher F. Wyatt",
+    "title": "Senior VP, Principal Accounting Officer & Controller",
+    "age": 47,
+    "born": 1978,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "HCA",
+    "name": "Mr. Frank George Morgan C.F.A.",
+    "title": "Vice President of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "HCA",
+    "name": "Mr. Jon Mack Foster",
+    "title": "Executive VP & COO",
+    "age": 63,
+    "born": 1962,
+    "pay": 3755736,
+    "exercised": 0,
+    "unexercised": 35616660,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "HCA",
+    "name": "Mr. Michael A. Marks",
+    "title": "CFO & Executive VP",
+    "age": 55,
+    "born": 1970,
+    "pay": 3489035,
+    "exercised": 0,
+    "unexercised": 16107644,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "HCA",
+    "name": "Mr. Michael R. McAlevey",
+    "title": "Executive VP and Chief Legal & Administrative Officer",
+    "age": 61,
+    "born": 1964,
+    "pay": 3166950,
+    "exercised": 2962591,
+    "unexercised": 4275922,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "HCA",
+    "name": "Mr. Samuel N. Hazen",
+    "title": "CEO & Director",
+    "age": 65,
+    "born": 1960,
+    "pay": 7533573,
+    "exercised": 22645304,
+    "unexercised": 241592864,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "HCA",
+    "name": "Ms. Wendy  Warren",
+    "title": "Senior VP and Chief Ethics & Compliance Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  }
+]

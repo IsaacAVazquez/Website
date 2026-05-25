@@ -1,4 +1,3 @@
 {
-  "file_path": "/tmp/defeatbeta/dcf/NVDA.xlsx",
-  "description": "DCF Valuation Analysis for NVDA"
+  "error": "can't multiply sequence by non-int of type 'float'"
 }

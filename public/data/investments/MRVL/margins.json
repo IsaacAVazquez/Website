@@ -109,8 +109,8 @@
       "symbol": "MRVL",
       "report_date": "2026-01-31",
       "gross_profit": 1147900000.0,
-      "total_revenue": 2218700000.0,
-      "gross_margin": 0.5174
+      "total_revenue": 8194600000.0,
+      "gross_margin": 0.1401
     }
   ],
   "annual_gross": [
@@ -273,9 +273,9 @@
     {
       "symbol": "MRVL",
       "report_date": "2026-01-31",
-      "operating_income": 413900000.0,
-      "total_revenue": 2218700000.0,
-      "operating_margin": 0.1866
+      "operating_income": 1338400000.0,
+      "total_revenue": 8194600000.0,
+      "operating_margin": 0.1633
     }
   ],
   "annual_operating": [
@@ -439,8 +439,8 @@
       "symbol": "MRVL",
       "report_date": "2026-01-31",
       "net_income_common_stockholders": 396100000.0,
-      "total_revenue": 2218700000.0,
-      "net_margin": 0.1785
+      "total_revenue": 8194600000.0,
+      "net_margin": 0.0483
     }
   ],
   "annual_net": [
@@ -604,8 +604,8 @@
       "symbol": "MRVL",
       "report_date": "2026-01-31",
       "ebitda": 749400000.0,
-      "total_revenue": 2218700000.0,
-      "ebitda_margin": 0.3378
+      "total_revenue": 8194600000.0,
+      "ebitda_margin": 0.0915
     }
   ],
   "annual_ebitda": [
@@ -769,8 +769,8 @@
       "symbol": "MRVL",
       "report_date": "2026-01-31",
       "free_cash_flow": 258300000.0,
-      "total_revenue": 2218700000.0,
-      "fcf_margin": 0.1164
+      "total_revenue": 8194600000.0,
+      "fcf_margin": 0.0315
     }
   ],
   "annual_fcf": [

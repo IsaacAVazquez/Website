@@ -39,11 +39,11 @@
     {
       "symbol": "MCO",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 578000000.0,
+      "net_income_common_stockholders": 2132000000.0,
       "beginning_stockholders_equity": 3700000000.0,
       "ending_stockholders_equity": 3949000000.0,
       "avg_equity": 3824500000.0,
-      "roe": 0.1511
+      "roe": 0.5575
     },
     {
       "symbol": "MCO",
@@ -66,11 +66,11 @@
     {
       "symbol": "MCO",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 661000000.0,
+      "net_income_common_stockholders": 2495000000.0,
       "beginning_stockholders_equity": 4054000000.0,
       "ending_stockholders_equity": 2994000000.0,
       "avg_equity": 3524000000.0,
-      "roe": 0.1876
+      "roe": 0.708
     }
   ],
   "roa": [
@@ -113,11 +113,11 @@
     {
       "symbol": "MCO",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 578000000.0,
+      "net_income_common_stockholders": 2132000000.0,
       "beginning_total_assets": 15096000000.0,
       "ending_total_assets": 15487000000.0,
       "avg_assets": 15291500000.0,
-      "roa": 0.0378
+      "roa": 0.1394
     },
     {
       "symbol": "MCO",
@@ -140,11 +140,11 @@
     {
       "symbol": "MCO",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 661000000.0,
+      "net_income_common_stockholders": 2495000000.0,
       "beginning_total_assets": 15830000000.0,
       "ending_total_assets": 14732000000.0,
       "avg_assets": 15281000000.0,
-      "roa": 0.0433
+      "roa": 0.1633
     }
   ],
   "roic": [
@@ -195,13 +195,13 @@
     {
       "symbol": "MCO",
       "report_date": "2025-06-30",
-      "ebit": 846000000.0,
+      "ebit": 3132000000.0,
       "tax_rate_for_calcs": 0.25,
-      "nopat": 634500000.0,
+      "nopat": 2349000000.0,
       "beginning_invested_capital": 10523000000.0,
       "ending_invested_capital": 10916000000.0,
       "avg_invested_capital": 10719500000.0,
-      "roic": 0.0592
+      "roic": 0.2191
     },
     {
       "symbol": "MCO",
@@ -228,13 +228,13 @@
     {
       "symbol": "MCO",
       "report_date": "2026-03-31",
-      "ebit": 948000000.0,
+      "ebit": 3470000000.0,
       "tax_rate_for_calcs": 0.24,
-      "nopat": 720480000.0,
+      "nopat": 2637200000.0,
       "beginning_invested_capital": 11048000000.0,
       "ending_invested_capital": 9957000000.0,
       "avg_invested_capital": 10502500000.0,
-      "roic": 0.0686
+      "roic": 0.2511
     }
   ],
   "equityMultiplier": [
@@ -269,8 +269,8 @@
     {
       "symbol": "MCO",
       "report_date": "2025-06-30T00:00:00.000",
-      "roe": 0.1511,
-      "roa": 0.0378,
+      "roe": 0.5575,
+      "roa": 0.1394,
       "equity_multiplier": 4.0
     },
     {
@@ -290,9 +290,9 @@
     {
       "symbol": "MCO",
       "report_date": "2026-03-31T00:00:00.000",
-      "roe": 0.1876,
-      "roa": 0.0433,
-      "equity_multiplier": 4.33
+      "roe": 0.708,
+      "roa": 0.1633,
+      "equity_multiplier": 4.34
     }
   ],
   "assetTurnover": [
@@ -327,8 +327,8 @@
     {
       "symbol": "MCO",
       "report_date": "2025-06-30T00:00:00.000",
-      "roa": 0.0378,
-      "net_margin": 0.3045,
+      "roa": 0.1394,
+      "net_margin": 1.1233,
       "asset_turnover": 0.12
     },
     {
@@ -348,8 +348,8 @@
     {
       "symbol": "MCO",
       "report_date": "2026-03-31T00:00:00.000",
-      "roa": 0.0433,
-      "net_margin": 0.3179,
+      "roa": 0.1633,
+      "net_margin": 1.2001,
       "asset_turnover": 0.14
     }
   ]

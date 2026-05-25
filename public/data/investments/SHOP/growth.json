@@ -66,9 +66,9 @@
     {
       "symbol": "SHOP",
       "report_date": "2025-06-30T00:00:00.000",
-      "revenue": 2680000000.0,
+      "revenue": 10014000000.0,
       "prev_year_revenue": 2045000000.0,
-      "yoy_growth": 0.3105
+      "yoy_growth": 3.8968
     },
     {
       "symbol": "SHOP",
@@ -87,9 +87,9 @@
     {
       "symbol": "SHOP",
       "report_date": "2026-03-31T00:00:00.000",
-      "revenue": 3170000000.0,
+      "revenue": 12366000000.0,
       "prev_year_revenue": 2360000000.0,
-      "yoy_growth": 0.3432
+      "yoy_growth": 4.2398
     }
   ],
   "annual_revenue": [
@@ -203,9 +203,9 @@
     {
       "symbol": "SHOP",
       "report_date": "2025-06-30T00:00:00.000",
-      "operating_income": 371000000.0,
+      "operating_income": 1531000000.0,
       "prev_year_operating_income": 283000000.0,
-      "yoy_growth": 0.311
+      "yoy_growth": 4.4099
     },
     {
       "symbol": "SHOP",
@@ -224,9 +224,9 @@
     {
       "symbol": "SHOP",
       "report_date": "2026-03-31T00:00:00.000",
-      "operating_income": 498000000.0,
+      "operating_income": 2105000000.0,
       "prev_year_operating_income": 278000000.0,
-      "yoy_growth": 0.7914
+      "yoy_growth": 6.5719
     }
   ],
   "annual_operating_income": [
@@ -681,373 +681,373 @@
     {
       "symbol": "SHOP",
       "report_date": "2013-03-31T00:00:00.000",
-      "eps": 0.0,
+      "eps": 0.0003,
       "prev_year_eps": null,
       "yoy_growth": null
     },
     {
       "symbol": "SHOP",
       "report_date": "2013-06-30T00:00:00.000",
-      "eps": 0.0,
+      "eps": -0.0002,
       "prev_year_eps": null,
       "yoy_growth": null
     },
     {
       "symbol": "SHOP",
       "report_date": "2013-09-30T00:00:00.000",
-      "eps": 0.0,
+      "eps": -0.002,
       "prev_year_eps": null,
       "yoy_growth": null
     },
     {
       "symbol": "SHOP",
       "report_date": "2013-12-31T00:00:00.000",
-      "eps": 0.0,
+      "eps": -0.0045,
       "prev_year_eps": null,
       "yoy_growth": null
     },
     {
       "symbol": "SHOP",
       "report_date": "2014-03-31T00:00:00.000",
-      "eps": -0.01,
-      "prev_year_eps": 0.0,
-      "yoy_growth": -1.0
+      "eps": -0.0084,
+      "prev_year_eps": 0.0003,
+      "yoy_growth": -29.0
     },
     {
       "symbol": "SHOP",
       "report_date": "2014-06-30T00:00:00.000",
-      "eps": -0.01,
-      "prev_year_eps": 0.0,
-      "yoy_growth": -1.0
+      "eps": -0.0091,
+      "prev_year_eps": -0.0002,
+      "yoy_growth": -44.5
     },
     {
       "symbol": "SHOP",
       "report_date": "2014-09-30T00:00:00.000",
-      "eps": -0.01,
-      "prev_year_eps": 0.0,
-      "yoy_growth": -1.0
+      "eps": -0.0056,
+      "prev_year_eps": -0.002,
+      "yoy_growth": -1.8
     },
     {
       "symbol": "SHOP",
       "report_date": "2014-12-31T00:00:00.000",
-      "eps": -0.01,
-      "prev_year_eps": 0.0,
-      "yoy_growth": -1.0
+      "eps": -0.0063,
+      "prev_year_eps": -0.0045,
+      "yoy_growth": -0.4
     },
     {
       "symbol": "SHOP",
       "report_date": "2015-03-31T00:00:00.000",
-      "eps": -0.01,
-      "prev_year_eps": -0.01,
-      "yoy_growth": 0.0
+      "eps": -0.006,
+      "prev_year_eps": -0.0084,
+      "yoy_growth": 0.2857
     },
     {
       "symbol": "SHOP",
       "report_date": "2015-06-30T00:00:00.000",
-      "eps": -0.01,
-      "prev_year_eps": -0.01,
-      "yoy_growth": 0.0
+      "eps": -0.006,
+      "prev_year_eps": -0.0091,
+      "yoy_growth": 0.3407
     },
     {
       "symbol": "SHOP",
       "report_date": "2015-09-30T00:00:00.000",
-      "eps": -0.01,
-      "prev_year_eps": -0.01,
-      "yoy_growth": 0.0
+      "eps": -0.006,
+      "prev_year_eps": -0.0056,
+      "yoy_growth": -0.0714
     },
     {
       "symbol": "SHOP",
       "report_date": "2015-12-31T00:00:00.000",
-      "eps": -0.01,
-      "prev_year_eps": -0.01,
-      "yoy_growth": 0.0
+      "eps": -0.008,
+      "prev_year_eps": -0.0063,
+      "yoy_growth": -0.2698
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-03-31T00:00:00.000",
-      "eps": -0.01,
-      "prev_year_eps": -0.01,
-      "yoy_growth": 0.0
+      "eps": -0.011,
+      "prev_year_eps": -0.006,
+      "yoy_growth": -0.8333
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-06-30T00:00:00.000",
       "eps": -0.01,
-      "prev_year_eps": -0.01,
-      "yoy_growth": 0.0
+      "prev_year_eps": -0.006,
+      "yoy_growth": -0.6667
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-09-30T00:00:00.000",
-      "eps": -0.01,
-      "prev_year_eps": -0.01,
-      "yoy_growth": 0.0
+      "eps": -0.011,
+      "prev_year_eps": -0.006,
+      "yoy_growth": -0.8333
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-12-31T00:00:00.000",
       "eps": -0.01,
-      "prev_year_eps": -0.01,
-      "yoy_growth": 0.0
+      "prev_year_eps": -0.008,
+      "yoy_growth": -0.25
     },
     {
       "symbol": "SHOP",
       "report_date": "2017-03-31T00:00:00.000",
-      "eps": -0.02,
-      "prev_year_eps": -0.01,
-      "yoy_growth": -1.0
+      "eps": -0.015,
+      "prev_year_eps": -0.011,
+      "yoy_growth": -0.3636
     },
     {
       "symbol": "SHOP",
       "report_date": "2017-06-30T00:00:00.000",
-      "eps": -0.02,
+      "eps": -0.015,
       "prev_year_eps": -0.01,
-      "yoy_growth": -1.0
+      "yoy_growth": -0.5
     },
     {
       "symbol": "SHOP",
       "report_date": "2017-09-30T00:00:00.000",
-      "eps": -0.01,
-      "prev_year_eps": -0.01,
-      "yoy_growth": 0.0
+      "eps": -0.009,
+      "prev_year_eps": -0.011,
+      "yoy_growth": 0.1818
     },
     {
       "symbol": "SHOP",
       "report_date": "2017-12-31T00:00:00.000",
-      "eps": 0.0,
+      "eps": -0.003,
       "prev_year_eps": -0.01,
-      "yoy_growth": 1.0
+      "yoy_growth": 0.7
     },
     {
       "symbol": "SHOP",
       "report_date": "2018-03-31T00:00:00.000",
-      "eps": -0.02,
-      "prev_year_eps": -0.02,
-      "yoy_growth": 0.0
+      "eps": -0.016,
+      "prev_year_eps": -0.015,
+      "yoy_growth": -0.0667
     },
     {
       "symbol": "SHOP",
       "report_date": "2018-06-30T00:00:00.000",
-      "eps": -0.02,
-      "prev_year_eps": -0.02,
-      "yoy_growth": 0.0
+      "eps": -0.023,
+      "prev_year_eps": -0.015,
+      "yoy_growth": -0.5333
     },
     {
       "symbol": "SHOP",
       "report_date": "2018-09-30T00:00:00.000",
-      "eps": -0.02,
-      "prev_year_eps": -0.01,
-      "yoy_growth": -1.0
+      "eps": -0.022,
+      "prev_year_eps": -0.009,
+      "yoy_growth": -1.4444
     },
     {
       "symbol": "SHOP",
       "report_date": "2018-12-31T00:00:00.000",
-      "eps": 0.0,
-      "prev_year_eps": 0.0,
-      "yoy_growth": null
+      "eps": -0.0014,
+      "prev_year_eps": -0.003,
+      "yoy_growth": 0.5333
     },
     {
       "symbol": "SHOP",
       "report_date": "2019-03-31T00:00:00.000",
-      "eps": -0.02,
-      "prev_year_eps": -0.02,
-      "yoy_growth": 0.0
+      "eps": -0.0218,
+      "prev_year_eps": -0.016,
+      "yoy_growth": -0.3625
     },
     {
       "symbol": "SHOP",
       "report_date": "2019-06-30T00:00:00.000",
-      "eps": -0.03,
-      "prev_year_eps": -0.02,
-      "yoy_growth": -0.5
+      "eps": -0.0256,
+      "prev_year_eps": -0.023,
+      "yoy_growth": -0.113
     },
     {
       "symbol": "SHOP",
       "report_date": "2019-09-30T00:00:00.000",
-      "eps": -0.06,
-      "prev_year_eps": -0.02,
-      "yoy_growth": -2.0
+      "eps": -0.0644,
+      "prev_year_eps": -0.022,
+      "yoy_growth": -1.9273
     },
     {
       "symbol": "SHOP",
       "report_date": "2019-12-31T00:00:00.000",
-      "eps": 0.0,
-      "prev_year_eps": 0.0,
-      "yoy_growth": null
+      "eps": 0.0007,
+      "prev_year_eps": -0.0014,
+      "yoy_growth": 1.5
     },
     {
       "symbol": "SHOP",
       "report_date": "2020-03-31T00:00:00.000",
-      "eps": -0.03,
-      "prev_year_eps": -0.02,
-      "yoy_growth": -0.5
+      "eps": -0.0269,
+      "prev_year_eps": -0.0218,
+      "yoy_growth": -0.2339
     },
     {
       "symbol": "SHOP",
       "report_date": "2020-06-30T00:00:00.000",
-      "eps": 0.03,
-      "prev_year_eps": -0.03,
-      "yoy_growth": 2.0
+      "eps": 0.0293,
+      "prev_year_eps": -0.0256,
+      "yoy_growth": 2.1445
     },
     {
       "symbol": "SHOP",
       "report_date": "2020-09-30T00:00:00.000",
-      "eps": 0.15,
-      "prev_year_eps": -0.06,
-      "yoy_growth": 3.5
+      "eps": 0.153,
+      "prev_year_eps": -0.0644,
+      "yoy_growth": 3.3758
     },
     {
       "symbol": "SHOP",
       "report_date": "2020-12-31T00:00:00.000",
-      "eps": 0.1,
-      "prev_year_eps": 0.0,
-      "yoy_growth": 1.0
+      "eps": 0.0987,
+      "prev_year_eps": 0.0007,
+      "yoy_growth": 140.0
     },
     {
       "symbol": "SHOP",
       "report_date": "2021-03-31T00:00:00.000",
-      "eps": 0.99,
-      "prev_year_eps": -0.03,
-      "yoy_growth": 34.0
+      "eps": 0.9934,
+      "prev_year_eps": -0.0269,
+      "yoy_growth": 37.9294
     },
     {
       "symbol": "SHOP",
       "report_date": "2021-06-30T00:00:00.000",
-      "eps": 0.69,
-      "prev_year_eps": 0.03,
-      "yoy_growth": 22.0
+      "eps": 0.6896,
+      "prev_year_eps": 0.0293,
+      "yoy_growth": 22.5358
     },
     {
       "symbol": "SHOP",
       "report_date": "2021-09-30T00:00:00.000",
-      "eps": 0.9,
-      "prev_year_eps": 0.15,
-      "yoy_growth": 5.0
+      "eps": 0.8999,
+      "prev_year_eps": 0.153,
+      "yoy_growth": 4.8817
     },
     {
       "symbol": "SHOP",
       "report_date": "2021-12-31T00:00:00.000",
-      "eps": -0.3,
-      "prev_year_eps": 0.1,
-      "yoy_growth": -4.0
+      "eps": -0.2953,
+      "prev_year_eps": 0.0987,
+      "yoy_growth": -3.9919
     },
     {
       "symbol": "SHOP",
       "report_date": "2022-03-31T00:00:00.000",
       "eps": -1.17,
-      "prev_year_eps": 0.99,
-      "yoy_growth": -2.1818
+      "prev_year_eps": 0.9934,
+      "yoy_growth": -2.1778
     },
     {
       "symbol": "SHOP",
       "report_date": "2022-06-30T00:00:00.000",
-      "eps": -0.95,
-      "prev_year_eps": 0.69,
-      "yoy_growth": -2.3768
+      "eps": -0.954,
+      "prev_year_eps": 0.6896,
+      "yoy_growth": -2.3834
     },
     {
       "symbol": "SHOP",
       "report_date": "2022-09-30T00:00:00.000",
-      "eps": -0.12,
-      "prev_year_eps": 0.9,
-      "yoy_growth": -1.1333
+      "eps": -0.1248,
+      "prev_year_eps": 0.8999,
+      "yoy_growth": -1.1387
     },
     {
       "symbol": "SHOP",
       "report_date": "2022-12-31T00:00:00.000",
-      "eps": -0.49,
-      "prev_year_eps": -0.3,
-      "yoy_growth": -0.6333
+      "eps": -0.4898,
+      "prev_year_eps": -0.2953,
+      "yoy_growth": -0.6587
     },
     {
       "symbol": "SHOP",
       "report_date": "2023-03-31T00:00:00.000",
-      "eps": 0.05,
+      "eps": 0.0526,
       "prev_year_eps": -1.17,
-      "yoy_growth": 1.0427
+      "yoy_growth": 1.045
     },
     {
       "symbol": "SHOP",
       "report_date": "2023-06-30T00:00:00.000",
-      "eps": -1.02,
-      "prev_year_eps": -0.95,
-      "yoy_growth": -0.0737
+      "eps": -1.0239,
+      "prev_year_eps": -0.954,
+      "yoy_growth": -0.0733
     },
     {
       "symbol": "SHOP",
       "report_date": "2023-09-30T00:00:00.000",
-      "eps": 0.55,
-      "prev_year_eps": -0.12,
-      "yoy_growth": 5.5833
+      "eps": 0.5541,
+      "prev_year_eps": -0.1248,
+      "yoy_growth": 5.4399
     },
     {
       "symbol": "SHOP",
       "report_date": "2023-12-31T00:00:00.000",
-      "eps": 0.51,
-      "prev_year_eps": -0.49,
-      "yoy_growth": 2.0408
+      "eps": 0.5072,
+      "prev_year_eps": -0.4898,
+      "yoy_growth": 2.0355
     },
     {
       "symbol": "SHOP",
       "report_date": "2024-03-31T00:00:00.000",
-      "eps": -0.21,
-      "prev_year_eps": 0.05,
-      "yoy_growth": -5.2
+      "eps": -0.2121,
+      "prev_year_eps": 0.0526,
+      "yoy_growth": -5.0323
     },
     {
       "symbol": "SHOP",
       "report_date": "2024-06-30T00:00:00.000",
-      "eps": 0.13,
-      "prev_year_eps": -1.02,
-      "yoy_growth": 1.1275
+      "eps": 0.1315,
+      "prev_year_eps": -1.0239,
+      "yoy_growth": 1.1284
     },
     {
       "symbol": "SHOP",
       "report_date": "2024-09-30T00:00:00.000",
-      "eps": 0.64,
-      "prev_year_eps": 0.55,
-      "yoy_growth": 0.1636
+      "eps": 0.6361,
+      "prev_year_eps": 0.5541,
+      "yoy_growth": 0.148
     },
     {
       "symbol": "SHOP",
       "report_date": "2024-12-31T00:00:00.000",
-      "eps": 1.0,
-      "prev_year_eps": 0.51,
-      "yoy_growth": 0.9608
+      "eps": 0.9988,
+      "prev_year_eps": 0.5072,
+      "yoy_growth": 0.9692
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-03-31T00:00:00.000",
-      "eps": -0.53,
-      "prev_year_eps": -0.21,
-      "yoy_growth": -1.5238
+      "eps": -0.5265,
+      "prev_year_eps": -0.2121,
+      "yoy_growth": -1.4823
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-06-30T00:00:00.000",
-      "eps": 0.69,
-      "prev_year_eps": 0.13,
-      "yoy_growth": 4.3077
+      "eps": 0.6921,
+      "prev_year_eps": 0.1315,
+      "yoy_growth": 4.2631
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-09-30T00:00:00.000",
-      "eps": 0.2,
-      "prev_year_eps": 0.64,
-      "yoy_growth": -0.6875
+      "eps": 0.2011,
+      "prev_year_eps": 0.6361,
+      "yoy_growth": -0.6839
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-12-31T00:00:00.000",
-      "eps": 0.57,
-      "prev_year_eps": 1.0,
-      "yoy_growth": -0.43
+      "eps": 0.5698,
+      "prev_year_eps": 0.9988,
+      "yoy_growth": -0.4295
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-03-31T00:00:00.000",
-      "eps": -0.45,
-      "prev_year_eps": -0.53,
-      "yoy_growth": 0.1509
+      "eps": -0.4458,
+      "prev_year_eps": -0.5265,
+      "yoy_growth": 0.1533
     }
   ]
 }

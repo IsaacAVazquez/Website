@@ -66,11 +66,11 @@
     {
       "symbol": "SCHW",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 1977000000.0,
+      "net_income_common_stockholders": 6789000000.0,
       "beginning_stockholders_equity": 49511000000.0,
       "ending_stockholders_equity": 49451000000.0,
       "avg_equity": 49481000000.0,
-      "roe": 0.04
+      "roe": 0.1372
     },
     {
       "symbol": "SCHW",
@@ -89,6 +89,15 @@
       "ending_stockholders_equity": 49425000000.0,
       "avg_equity": 49404500000.0,
       "roe": 0.0479
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 9018000000.0,
+      "beginning_stockholders_equity": 49425000000.0,
+      "ending_stockholders_equity": 49234000000.0,
+      "avg_equity": 49329500000.0,
+      "roe": 0.1828
     }
   ],
   "roa": [
@@ -158,11 +167,11 @@
     {
       "symbol": "SCHW",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 1977000000.0,
+      "net_income_common_stockholders": 6789000000.0,
       "beginning_total_assets": 462903000000.0,
       "ending_total_assets": 458936000000.0,
       "avg_assets": 460919500000.0,
-      "roa": 0.0043
+      "roa": 0.0147
     },
     {
       "symbol": "SCHW",
@@ -181,6 +190,15 @@
       "ending_total_assets": 490995000000.0,
       "avg_assets": 478125000000.0,
       "roa": 0.005
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 9018000000.0,
+      "beginning_total_assets": 490995000000.0,
+      "ending_total_assets": 493319000000.0,
+      "avg_assets": 492157000000.0,
+      "roa": 0.0183
     }
   ],
   "roic": [],
@@ -237,9 +255,9 @@
     {
       "symbol": "SCHW",
       "report_date": "2025-06-30T00:00:00.000",
-      "roe": 0.04,
-      "roa": 0.0043,
-      "equity_multiplier": 9.3
+      "roe": 0.1372,
+      "roa": 0.0147,
+      "equity_multiplier": 9.33
     },
     {
       "symbol": "SCHW",
@@ -254,6 +272,13 @@
       "roe": 0.0479,
       "roa": 0.005,
       "equity_multiplier": 9.58
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.1828,
+      "roa": 0.0183,
+      "equity_multiplier": 9.99
     }
   ],
   "assetTurnover": [
@@ -309,8 +334,8 @@
     {
       "symbol": "SCHW",
       "report_date": "2025-06-30T00:00:00.000",
-      "roa": 0.0043,
-      "net_margin": 0.3379,
+      "roa": 0.0147,
+      "net_margin": 1.1603,
       "asset_turnover": 0.01
     },
     {
@@ -325,6 +350,13 @@
       "report_date": "2025-12-31T00:00:00.000",
       "roa": 0.005,
       "net_margin": 0.3736,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0183,
+      "net_margin": 1.3912,
       "asset_turnover": 0.01
     }
   ]

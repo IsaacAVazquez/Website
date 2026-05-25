@@ -283,12 +283,12 @@
       "symbol": "QCOM",
       "report_date": "2025-06-30",
       "ebit": 3120000000.0,
-      "tax_rate_for_calcs": 0.1,
-      "nopat": 2808000000.0,
+      "tax_rate_for_calcs": 0.06,
+      "nopat": 2932800000.0,
       "beginning_invested_capital": 42351000000.0,
       "ending_invested_capital": 41997000000.0,
       "avg_invested_capital": 42174000000.0,
-      "roic": 0.0666
+      "roic": 0.0695
     },
     {
       "symbol": "QCOM",
@@ -316,12 +316,12 @@
       "symbol": "QCOM",
       "report_date": "2026-03-31",
       "ebit": 2403000000.0,
-      "tax_rate_for_calcs": 0.4,
-      "nopat": 1441800000.0,
+      "tax_rate_for_calcs": 0.15,
+      "nopat": 2042550000.0,
       "beginning_invested_capital": 37890000000.0,
       "ending_invested_capital": 42548000000.0,
       "avg_invested_capital": 40219000000.0,
-      "roic": 0.0358
+      "roic": 0.0508
     }
   ],
   "equityMultiplier": [
@@ -457,8 +457,8 @@
       "symbol": "QCOM",
       "report_date": "2025-06-30T00:00:00.000",
       "roa": 0.0484,
-      "net_margin": 0.2572,
-      "asset_turnover": 0.19
+      "net_margin": 0.0616,
+      "asset_turnover": 0.79
     },
     {
       "symbol": "QCOM",
@@ -478,8 +478,8 @@
       "symbol": "QCOM",
       "report_date": "2026-03-31T00:00:00.000",
       "roa": 0.1338,
-      "net_margin": 0.6953,
-      "asset_turnover": 0.19
+      "net_margin": 0.1657,
+      "asset_turnover": 0.81
     }
   ]
 }

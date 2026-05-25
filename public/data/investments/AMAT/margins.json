@@ -111,6 +111,13 @@
       "gross_profit": 3435000000.0,
       "total_revenue": 7012000000.0,
       "gross_margin": 0.4899
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2026-04-30",
+      "gross_profit": 14209000000.0,
+      "total_revenue": 29024000000.0,
+      "gross_margin": 0.4896
     }
   ],
   "annual_gross": [
@@ -276,6 +283,13 @@
       "operating_income": 2096000000.0,
       "total_revenue": 7012000000.0,
       "operating_margin": 0.2989
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2026-04-30",
+      "operating_income": 8745000000.0,
+      "total_revenue": 29024000000.0,
+      "operating_margin": 0.3013
     }
   ],
   "annual_operating": [
@@ -441,6 +455,13 @@
       "net_income_common_stockholders": 2026000000.0,
       "total_revenue": 7012000000.0,
       "net_margin": 0.2889
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2026-04-30",
+      "net_income_common_stockholders": 8508000000.0,
+      "total_revenue": 29024000000.0,
+      "net_margin": 0.2931
     }
   ],
   "annual_net": [
@@ -606,6 +627,13 @@
       "ebitda": 2524000000.0,
       "total_revenue": 7012000000.0,
       "ebitda_margin": 0.36
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2026-04-30",
+      "ebitda": 11147000000.0,
+      "total_revenue": 29024000000.0,
+      "ebitda_margin": 0.3841
     }
   ],
   "annual_ebitda": [
@@ -771,6 +799,13 @@
       "free_cash_flow": 1040000000.0,
       "total_revenue": 7012000000.0,
       "fcf_margin": 0.1483
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2026-04-30",
+      "free_cash_flow": 5343000000.0,
+      "total_revenue": 29024000000.0,
+      "fcf_margin": 0.1841
     }
   ],
   "annual_fcf": [

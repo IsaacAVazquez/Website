@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "BX",
+      "report_date": "2022-06-30",
+      "gross_profit": null,
+      "total_revenue": 760516000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": 974090000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2023-06-30",
+      "gross_profit": null,
+      "total_revenue": 2463517000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2023-09-30",
+      "gross_profit": null,
+      "total_revenue": 2135690000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2023-12-31",
+      "gross_profit": null,
+      "total_revenue": 1105800000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-03-31",
+      "gross_profit": null,
+      "total_revenue": 3048357000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-06-30",
+      "gross_profit": null,
+      "total_revenue": 2293144000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-09-30",
+      "gross_profit": null,
+      "total_revenue": 2886396000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-12-31",
+      "gross_profit": null,
+      "total_revenue": 2702643000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-03-31",
+      "gross_profit": null,
+      "total_revenue": 2826440000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-06-30",
+      "gross_profit": null,
+      "total_revenue": 11576715000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-09-30",
+      "gross_profit": null,
+      "total_revenue": 2685881000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-12-31",
+      "gross_profit": null,
+      "total_revenue": 3736455000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2026-03-31",
+      "gross_profit": null,
+      "total_revenue": 12586351000.0,
+      "gross_margin": null
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "BX",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2020-12-31",
+      "gross_profit": null,
+      "total_revenue": 5233168000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2021-12-31",
+      "gross_profit": null,
+      "total_revenue": 16652351000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": 7132632000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2023-12-31",
+      "gross_profit": null,
+      "total_revenue": 7006649000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-12-31",
+      "gross_profit": null,
+      "total_revenue": 10930540000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-12-31",
+      "gross_profit": null,
+      "total_revenue": 12410012000.0,
+      "gross_margin": null
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "BX",
+      "report_date": "2022-06-30",
+      "operating_income": null,
+      "total_revenue": 760516000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": 974090000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2023-06-30",
+      "operating_income": null,
+      "total_revenue": 2463517000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2023-09-30",
+      "operating_income": null,
+      "total_revenue": 2135690000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2023-12-31",
+      "operating_income": null,
+      "total_revenue": 1105800000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-03-31",
+      "operating_income": null,
+      "total_revenue": 3048357000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-06-30",
+      "operating_income": null,
+      "total_revenue": 2293144000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-09-30",
+      "operating_income": null,
+      "total_revenue": 2886396000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-12-31",
+      "operating_income": null,
+      "total_revenue": 2702643000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-03-31",
+      "operating_income": null,
+      "total_revenue": 2826440000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-06-30",
+      "operating_income": null,
+      "total_revenue": 11576715000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-09-30",
+      "operating_income": null,
+      "total_revenue": 2685881000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-12-31",
+      "operating_income": null,
+      "total_revenue": 3736455000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2026-03-31",
+      "operating_income": null,
+      "total_revenue": 12586351000.0,
+      "operating_margin": null
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "BX",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2020-12-31",
+      "operating_income": null,
+      "total_revenue": 5233168000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2021-12-31",
+      "operating_income": null,
+      "total_revenue": 16652351000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": 7132632000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2023-12-31",
+      "operating_income": null,
+      "total_revenue": 7006649000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-12-31",
+      "operating_income": null,
+      "total_revenue": 10930540000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-12-31",
+      "operating_income": null,
+      "total_revenue": 12410012000.0,
+      "operating_margin": null
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "BX",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": -29393000.0,
+      "total_revenue": 760516000.0,
+      "net_margin": -0.0386
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": 2296000.0,
+      "total_revenue": 974090000.0,
+      "net_margin": 0.0024
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 601274000.0,
+      "total_revenue": 2463517000.0,
+      "net_margin": 0.2441
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 551994000.0,
+      "total_revenue": 2135690000.0,
+      "net_margin": 0.2585
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 151800000.0,
+      "total_revenue": 1105800000.0,
+      "net_margin": 0.1373
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 847386000.0,
+      "total_revenue": 3048357000.0,
+      "net_margin": 0.278
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 444414000.0,
+      "total_revenue": 2293144000.0,
+      "net_margin": 0.1938
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 780835000.0,
+      "total_revenue": 2886396000.0,
+      "net_margin": 0.2705
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 703873000.0,
+      "total_revenue": 2702643000.0,
+      "net_margin": 0.2604
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 614852000.0,
+      "total_revenue": 2826440000.0,
+      "net_margin": 0.2175
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 764244000.0,
+      "total_revenue": 11576715000.0,
+      "net_margin": 0.066
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 624917000.0,
+      "total_revenue": 2685881000.0,
+      "net_margin": 0.2327
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1015201000.0,
+      "total_revenue": 3736455000.0,
+      "net_margin": 0.2717
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 649729000.0,
+      "total_revenue": 12586351000.0,
+      "net_margin": 0.0516
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "BX",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 1045363000.0,
+      "total_revenue": 5233168000.0,
+      "net_margin": 0.1998
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 5857397000.0,
+      "total_revenue": 16652351000.0,
+      "net_margin": 0.3517
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 1747631000.0,
+      "total_revenue": 7132632000.0,
+      "net_margin": 0.245
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1390880000.0,
+      "total_revenue": 7006649000.0,
+      "net_margin": 0.1985
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 2776508000.0,
+      "total_revenue": 10930540000.0,
+      "net_margin": 0.254
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 3019214000.0,
+      "total_revenue": 12410012000.0,
+      "net_margin": 0.2433
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "BX",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 760516000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": 974090000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2023-06-30",
+      "ebitda": null,
+      "total_revenue": 2463517000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2023-09-30",
+      "ebitda": null,
+      "total_revenue": 2135690000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2023-12-31",
+      "ebitda": null,
+      "total_revenue": 1105800000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-03-31",
+      "ebitda": null,
+      "total_revenue": 3048357000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-06-30",
+      "ebitda": null,
+      "total_revenue": 2293144000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-09-30",
+      "ebitda": null,
+      "total_revenue": 2886396000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-12-31",
+      "ebitda": null,
+      "total_revenue": 2702643000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-03-31",
+      "ebitda": null,
+      "total_revenue": 2826440000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-06-30",
+      "ebitda": null,
+      "total_revenue": 11576715000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-09-30",
+      "ebitda": null,
+      "total_revenue": 2685881000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-12-31",
+      "ebitda": null,
+      "total_revenue": 3736455000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2026-03-31",
+      "ebitda": null,
+      "total_revenue": 12586351000.0,
+      "ebitda_margin": null
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "BX",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2020-12-31",
+      "ebitda": null,
+      "total_revenue": 5233168000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2021-12-31",
+      "ebitda": null,
+      "total_revenue": 16652351000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": 7132632000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2023-12-31",
+      "ebitda": null,
+      "total_revenue": 7006649000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-12-31",
+      "ebitda": null,
+      "total_revenue": 10930540000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-12-31",
+      "ebitda": null,
+      "total_revenue": 12410012000.0,
+      "ebitda_margin": null
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "BX",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 1844447000.0,
+      "total_revenue": 760516000.0,
+      "fcf_margin": 2.4253
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2022-09-30",
+      "free_cash_flow": 897539000.0,
+      "total_revenue": 974090000.0,
+      "fcf_margin": 0.9214
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 666421000.0,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 1664897000.0,
+      "total_revenue": 2463517000.0,
+      "fcf_margin": 0.6758
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 1020246000.0,
+      "total_revenue": 2135690000.0,
+      "fcf_margin": 0.4777
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 864361000.0,
+      "total_revenue": 1105800000.0,
+      "fcf_margin": 0.7817
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 922090000.0,
+      "total_revenue": 3048357000.0,
+      "fcf_margin": 0.3025
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 1146181000.0,
+      "total_revenue": 2293144000.0,
+      "fcf_margin": 0.4998
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 1202463000.0,
+      "total_revenue": 2886396000.0,
+      "fcf_margin": 0.4166
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 149519000.0,
+      "total_revenue": 2702643000.0,
+      "fcf_margin": 0.0553
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 1079940000.0,
+      "total_revenue": 2826440000.0,
+      "fcf_margin": 0.3821
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 848357000.0,
+      "total_revenue": 11576715000.0,
+      "fcf_margin": 0.0733
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 1573716000.0,
+      "total_revenue": 2685881000.0,
+      "fcf_margin": 0.5859
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 1045445000.0,
+      "total_revenue": 3736455000.0,
+      "fcf_margin": 0.2798
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 957637000.0,
+      "total_revenue": 12586351000.0,
+      "fcf_margin": 0.0761
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "BX",
+      "report_date": "2019-12-31",
+      "free_cash_flow": 1902827000.0,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 1824295000.0,
+      "total_revenue": 5233168000.0,
+      "fcf_margin": 0.3486
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 3921672000.0,
+      "total_revenue": 16652351000.0,
+      "fcf_margin": 0.2355
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 6100756000.0,
+      "total_revenue": 7132632000.0,
+      "fcf_margin": 0.8553
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 3832675000.0,
+      "total_revenue": 7006649000.0,
+      "fcf_margin": 0.547
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 3420253000.0,
+      "total_revenue": 10930540000.0,
+      "fcf_margin": 0.3129
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 4547458000.0,
+      "total_revenue": 12410012000.0,
+      "fcf_margin": 0.3664
+    }
+  ]
+}

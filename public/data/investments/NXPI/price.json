@@ -1,96 +1,6 @@
 [
   {
     "symbol": "NXPI",
-    "report_date": "2025-05-08",
-    "open": 189.64,
-    "close": 188.57,
-    "high": 193.04,
-    "low": 186.9,
-    "volume": 2412200
-  },
-  {
-    "symbol": "NXPI",
-    "report_date": "2025-05-09",
-    "open": 191.28,
-    "close": 191.88,
-    "high": 194.05,
-    "low": 189.44,
-    "volume": 2682900
-  },
-  {
-    "symbol": "NXPI",
-    "report_date": "2025-05-12",
-    "open": 204.88,
-    "close": 207.03,
-    "high": 208.93,
-    "low": 204.32,
-    "volume": 4998000
-  },
-  {
-    "symbol": "NXPI",
-    "report_date": "2025-05-13",
-    "open": 206.2,
-    "close": 212.4,
-    "high": 213.01,
-    "low": 206.2,
-    "volume": 3909900
-  },
-  {
-    "symbol": "NXPI",
-    "report_date": "2025-05-14",
-    "open": 212.58,
-    "close": 211.33,
-    "high": 213.42,
-    "low": 209.07,
-    "volume": 2386700
-  },
-  {
-    "symbol": "NXPI",
-    "report_date": "2025-05-15",
-    "open": 209.71,
-    "close": 210.73,
-    "high": 211.67,
-    "low": 208.67,
-    "volume": 1999500
-  },
-  {
-    "symbol": "NXPI",
-    "report_date": "2025-05-16",
-    "open": 210.95,
-    "close": 212.56,
-    "high": 212.99,
-    "low": 209.12,
-    "volume": 2093700
-  },
-  {
-    "symbol": "NXPI",
-    "report_date": "2025-05-19",
-    "open": 206.68,
-    "close": 210.36,
-    "high": 211.44,
-    "low": 205.52,
-    "volume": 2108800
-  },
-  {
-    "symbol": "NXPI",
-    "report_date": "2025-05-20",
-    "open": 207.68,
-    "close": 210.08,
-    "high": 210.95,
-    "low": 207.68,
-    "volume": 1672000
-  },
-  {
-    "symbol": "NXPI",
-    "report_date": "2025-05-21",
-    "open": 207.36,
-    "close": 205.35,
-    "high": 213.36,
-    "low": 204.38,
-    "volume": 3017900
-  },
-  {
-    "symbol": "NXPI",
     "report_date": "2025-05-22",
     "open": 209.7,
     "close": 196.51,
@@ -2266,5 +2176,95 @@
     "high": 297.0,
     "low": 290.24,
     "volume": 6908800
+  },
+  {
+    "symbol": "NXPI",
+    "report_date": "2026-05-11",
+    "open": 295.92,
+    "close": 305.99,
+    "high": 306.62,
+    "low": 291.16,
+    "volume": 4975600
+  },
+  {
+    "symbol": "NXPI",
+    "report_date": "2026-05-12",
+    "open": 300.68,
+    "close": 294.23,
+    "high": 302.0,
+    "low": 291.01,
+    "volume": 4790600
+  },
+  {
+    "symbol": "NXPI",
+    "report_date": "2026-05-13",
+    "open": 300.02,
+    "close": 298.41,
+    "high": 302.41,
+    "low": 293.24,
+    "volume": 3250400
+  },
+  {
+    "symbol": "NXPI",
+    "report_date": "2026-05-14",
+    "open": 298.02,
+    "close": 294.17,
+    "high": 300.0,
+    "low": 291.27,
+    "volume": 2172500
+  },
+  {
+    "symbol": "NXPI",
+    "report_date": "2026-05-15",
+    "open": 287.61,
+    "close": 291.5,
+    "high": 295.27,
+    "low": 284.78,
+    "volume": 3390600
+  },
+  {
+    "symbol": "NXPI",
+    "report_date": "2026-05-18",
+    "open": 298.01,
+    "close": 291.68,
+    "high": 298.86,
+    "low": 287.36,
+    "volume": 3456900
+  },
+  {
+    "symbol": "NXPI",
+    "report_date": "2026-05-19",
+    "open": 285.68,
+    "close": 294.28,
+    "high": 298.63,
+    "low": 285.68,
+    "volume": 2904700
+  },
+  {
+    "symbol": "NXPI",
+    "report_date": "2026-05-20",
+    "open": 298.0,
+    "close": 310.15,
+    "high": 311.04,
+    "low": 294.61,
+    "volume": 4261900
+  },
+  {
+    "symbol": "NXPI",
+    "report_date": "2026-05-21",
+    "open": 308.5,
+    "close": 299.38,
+    "high": 309.37,
+    "low": 297.48,
+    "volume": 3492800
+  },
+  {
+    "symbol": "NXPI",
+    "report_date": "2026-05-22",
+    "open": 300.8,
+    "close": 316.47,
+    "high": 316.81,
+    "low": 300.62,
+    "volume": 2948500
   }
 ]

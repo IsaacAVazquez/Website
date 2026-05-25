@@ -66,11 +66,11 @@
     {
       "symbol": "SPGI",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 1072000000.0,
+      "net_income_common_stockholders": 4011000000.0,
       "beginning_stockholders_equity": 33371000000.0,
       "ending_stockholders_equity": 33390000000.0,
       "avg_equity": 33380500000.0,
-      "roe": 0.0321
+      "roe": 0.1202
     },
     {
       "symbol": "SPGI",
@@ -93,11 +93,11 @@
     {
       "symbol": "SPGI",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 1395000000.0,
+      "net_income_common_stockholders": 4776000000.0,
       "beginning_stockholders_equity": 31127000000.0,
       "ending_stockholders_equity": 31173000000.0,
       "avg_equity": 31150000000.0,
-      "roe": 0.0448
+      "roe": 0.1533
     }
   ],
   "roa": [
@@ -167,11 +167,11 @@
     {
       "symbol": "SPGI",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 1072000000.0,
+      "net_income_common_stockholders": 4011000000.0,
       "beginning_total_assets": 59889000000.0,
       "ending_total_assets": 60395000000.0,
       "avg_assets": 60142000000.0,
-      "roa": 0.0178
+      "roa": 0.0667
     },
     {
       "symbol": "SPGI",
@@ -194,11 +194,11 @@
     {
       "symbol": "SPGI",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 1395000000.0,
+      "net_income_common_stockholders": 4776000000.0,
       "beginning_total_assets": 61200000000.0,
       "ending_total_assets": 60792000000.0,
       "avg_assets": 60996000000.0,
-      "roa": 0.0229
+      "roa": 0.0783
     }
   ],
   "roic": [
@@ -282,13 +282,13 @@
     {
       "symbol": "SPGI",
       "report_date": "2025-06-30",
-      "ebit": 1579000000.0,
+      "ebit": 5907000000.0,
       "tax_rate_for_calcs": 0.23,
-      "nopat": 1215830000.0,
+      "nopat": 4548390000.0,
       "beginning_invested_capital": 44762000000.0,
       "ending_invested_capital": 44778000000.0,
       "avg_invested_capital": 44770000000.0,
-      "roic": 0.0272
+      "roic": 0.1016
     },
     {
       "symbol": "SPGI",
@@ -315,13 +315,13 @@
     {
       "symbol": "SPGI",
       "report_date": "2026-03-31",
-      "ebit": 2004000000.0,
+      "ebit": 6944000000.0,
       "tax_rate_for_calcs": 0.21,
-      "nopat": 1583160000.0,
+      "nopat": 5485760000.0,
       "beginning_invested_capital": 44215000000.0,
       "ending_invested_capital": 44491000000.0,
       "avg_invested_capital": 44353000000.0,
-      "roic": 0.0357
+      "roic": 0.1237
     }
   ],
   "equityMultiplier": [
@@ -377,8 +377,8 @@
     {
       "symbol": "SPGI",
       "report_date": "2025-06-30T00:00:00.000",
-      "roe": 0.0321,
-      "roa": 0.0178,
+      "roe": 0.1202,
+      "roa": 0.0667,
       "equity_multiplier": 1.8
     },
     {
@@ -398,8 +398,8 @@
     {
       "symbol": "SPGI",
       "report_date": "2026-03-31T00:00:00.000",
-      "roe": 0.0448,
-      "roa": 0.0229,
+      "roe": 0.1533,
+      "roa": 0.0783,
       "equity_multiplier": 1.96
     }
   ],
@@ -456,8 +456,8 @@
     {
       "symbol": "SPGI",
       "report_date": "2025-06-30T00:00:00.000",
-      "roa": 0.0178,
-      "net_margin": 0.2855,
+      "roa": 0.0667,
+      "net_margin": 1.0682,
       "asset_turnover": 0.06
     },
     {
@@ -477,8 +477,8 @@
     {
       "symbol": "SPGI",
       "report_date": "2026-03-31T00:00:00.000",
-      "roa": 0.0229,
-      "net_margin": 0.3345,
+      "roa": 0.0783,
+      "net_margin": 1.145,
       "asset_turnover": 0.07
     }
   ]

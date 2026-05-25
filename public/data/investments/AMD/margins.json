@@ -87,9 +87,9 @@
     {
       "symbol": "AMD",
       "report_date": "2025-06-30",
-      "gross_profit": 3059000000.0,
+      "gross_profit": 14096000000.0,
       "total_revenue": 7685000000.0,
-      "gross_margin": 0.398
+      "gross_margin": 1.8342
     },
     {
       "symbol": "AMD",
@@ -104,6 +104,13 @@
       "gross_profit": 5577000000.0,
       "total_revenue": 10270000000.0,
       "gross_margin": 0.543
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2026-03-31",
+      "gross_profit": 18832000000.0,
+      "total_revenue": 10253000000.0,
+      "gross_margin": 1.8367
     }
   ],
   "annual_gross": [
@@ -262,6 +269,13 @@
       "operating_income": 1752000000.0,
       "total_revenue": 10270000000.0,
       "operating_margin": 0.1706
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2026-03-31",
+      "operating_income": 1476000000.0,
+      "total_revenue": 10253000000.0,
+      "operating_margin": 0.144
     }
   ],
   "annual_operating": [
@@ -403,9 +417,9 @@
     {
       "symbol": "AMD",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 872000000.0,
+      "net_income_common_stockholders": 2834000000.0,
       "total_revenue": 7685000000.0,
-      "net_margin": 0.1135
+      "net_margin": 0.3688
     },
     {
       "symbol": "AMD",
@@ -420,6 +434,13 @@
       "net_income_common_stockholders": 1511000000.0,
       "total_revenue": 10270000000.0,
       "net_margin": 0.1471
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 5009000000.0,
+      "total_revenue": 10253000000.0,
+      "net_margin": 0.4885
     }
   ],
   "annual_net": [
@@ -561,9 +582,9 @@
     {
       "symbol": "AMD",
       "report_date": "2025-06-30",
-      "ebitda": 721000000.0,
+      "ebitda": 5600000000.0,
       "total_revenue": 7685000000.0,
-      "ebitda_margin": 0.0938
+      "ebitda_margin": 0.7287
     },
     {
       "symbol": "AMD",
@@ -578,6 +599,13 @@
       "ebitda": 2861000000.0,
       "total_revenue": 10270000000.0,
       "ebitda_margin": 0.2786
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2026-03-31",
+      "ebitda": 8086000000.0,
+      "total_revenue": 10253000000.0,
+      "ebitda_margin": 0.7886
     }
   ],
   "annual_ebitda": [
@@ -719,9 +747,9 @@
     {
       "symbol": "AMD",
       "report_date": "2025-06-30",
-      "free_cash_flow": 1729000000.0,
+      "free_cash_flow": 4043000000.0,
       "total_revenue": 7685000000.0,
-      "fcf_margin": 0.225
+      "fcf_margin": 0.5261
     },
     {
       "symbol": "AMD",
@@ -736,6 +764,13 @@
       "free_cash_flow": 2378000000.0,
       "total_revenue": 10270000000.0,
       "fcf_margin": 0.2315
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 8574000000.0,
+      "total_revenue": 10253000000.0,
+      "fcf_margin": 0.8362
     }
   ],
   "annual_fcf": [

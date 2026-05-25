@@ -88,8 +88,8 @@
       "symbol": "SHOP",
       "report_date": "2025-06-30",
       "gross_profit": 1302000000.0,
-      "total_revenue": 2680000000.0,
-      "gross_margin": 0.4858
+      "total_revenue": 10014000000.0,
+      "gross_margin": 0.13
     },
     {
       "symbol": "SHOP",
@@ -109,8 +109,8 @@
       "symbol": "SHOP",
       "report_date": "2026-03-31",
       "gross_profit": 1546000000.0,
-      "total_revenue": 3170000000.0,
-      "gross_margin": 0.4877
+      "total_revenue": 12366000000.0,
+      "gross_margin": 0.125
     }
   ],
   "annual_gross": [
@@ -252,9 +252,9 @@
     {
       "symbol": "SHOP",
       "report_date": "2025-06-30",
-      "operating_income": 371000000.0,
-      "total_revenue": 2680000000.0,
-      "operating_margin": 0.1384
+      "operating_income": 1531000000.0,
+      "total_revenue": 10014000000.0,
+      "operating_margin": 0.1529
     },
     {
       "symbol": "SHOP",
@@ -273,9 +273,9 @@
     {
       "symbol": "SHOP",
       "report_date": "2026-03-31",
-      "operating_income": 498000000.0,
-      "total_revenue": 3170000000.0,
-      "operating_margin": 0.1571
+      "operating_income": 2105000000.0,
+      "total_revenue": 12366000000.0,
+      "operating_margin": 0.1702
     }
   ],
   "annual_operating": [
@@ -418,8 +418,8 @@
       "symbol": "SHOP",
       "report_date": "2025-06-30",
       "net_income_common_stockholders": 906000000.0,
-      "total_revenue": 2680000000.0,
-      "net_margin": 0.3381
+      "total_revenue": 10014000000.0,
+      "net_margin": 0.0905
     },
     {
       "symbol": "SHOP",
@@ -439,8 +439,8 @@
       "symbol": "SHOP",
       "report_date": "2026-03-31",
       "net_income_common_stockholders": -581000000.0,
-      "total_revenue": 3170000000.0,
-      "net_margin": -0.1833
+      "total_revenue": 12366000000.0,
+      "net_margin": -0.047
     }
   ],
   "annual_net": [
@@ -583,8 +583,8 @@
       "symbol": "SHOP",
       "report_date": "2025-06-30",
       "ebitda": 379000000.0,
-      "total_revenue": 2680000000.0,
-      "ebitda_margin": 0.1414
+      "total_revenue": 10014000000.0,
+      "ebitda_margin": 0.0378
     },
     {
       "symbol": "SHOP",
@@ -604,8 +604,8 @@
       "symbol": "SHOP",
       "report_date": "2026-03-31",
       "ebitda": 505000000.0,
-      "total_revenue": 3170000000.0,
-      "ebitda_margin": 0.1593
+      "total_revenue": 12366000000.0,
+      "ebitda_margin": 0.0408
     }
   ],
   "annual_ebitda": [
@@ -748,8 +748,8 @@
       "symbol": "SHOP",
       "report_date": "2025-06-30",
       "free_cash_flow": 422000000.0,
-      "total_revenue": 2680000000.0,
-      "fcf_margin": 0.1575
+      "total_revenue": 10014000000.0,
+      "fcf_margin": 0.0421
     },
     {
       "symbol": "SHOP",
@@ -769,8 +769,8 @@
       "symbol": "SHOP",
       "report_date": "2026-03-31",
       "free_cash_flow": 476000000.0,
-      "total_revenue": 3170000000.0,
-      "fcf_margin": 0.1502
+      "total_revenue": 12366000000.0,
+      "fcf_margin": 0.0385
     }
   ],
   "annual_fcf": [

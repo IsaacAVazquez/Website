@@ -1,4 +1,3 @@
 {
-  "file_path": "/tmp/defeatbeta/dcf/MRVL.xlsx",
-  "description": "DCF Valuation Analysis for MRVL"
+  "error": "can't multiply sequence by non-int of type 'float'"
 }

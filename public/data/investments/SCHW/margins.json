@@ -109,7 +109,7 @@
       "symbol": "SCHW",
       "report_date": "2026-03-31",
       "gross_profit": null,
-      "total_revenue": null,
+      "total_revenue": 6482000000.0,
       "gross_margin": null
     }
   ],
@@ -274,7 +274,7 @@
       "symbol": "SCHW",
       "report_date": "2026-03-31",
       "operating_income": null,
-      "total_revenue": null,
+      "total_revenue": 6482000000.0,
       "operating_margin": null
     }
   ],
@@ -417,9 +417,9 @@
     {
       "symbol": "SCHW",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 1977000000.0,
+      "net_income_common_stockholders": 6789000000.0,
       "total_revenue": 5851000000.0,
-      "net_margin": 0.3379
+      "net_margin": 1.1603
     },
     {
       "symbol": "SCHW",
@@ -438,9 +438,9 @@
     {
       "symbol": "SCHW",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": null,
-      "total_revenue": null,
-      "net_margin": null
+      "net_income_common_stockholders": 9018000000.0,
+      "total_revenue": 6482000000.0,
+      "net_margin": 1.3912
     }
   ],
   "annual_net": [
@@ -604,7 +604,7 @@
       "symbol": "SCHW",
       "report_date": "2026-03-31",
       "ebitda": null,
-      "total_revenue": null,
+      "total_revenue": 6482000000.0,
       "ebitda_margin": null
     }
   ],
@@ -747,9 +747,9 @@
     {
       "symbol": "SCHW",
       "report_date": "2025-06-30",
-      "free_cash_flow": 3049000000.0,
+      "free_cash_flow": 17180000000.0,
       "total_revenue": 5851000000.0,
-      "fcf_margin": 0.5211
+      "fcf_margin": 2.9363
     },
     {
       "symbol": "SCHW",
@@ -768,9 +768,9 @@
     {
       "symbol": "SCHW",
       "report_date": "2026-03-31",
-      "free_cash_flow": null,
-      "total_revenue": null,
-      "fcf_margin": null
+      "free_cash_flow": 9723000000.0,
+      "total_revenue": 6482000000.0,
+      "fcf_margin": 1.5
     }
   ],
   "annual_fcf": [

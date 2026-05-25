@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "BX",
+    "name": "Mr. John Gary Finley J.D.",
+    "title": "Chief Legal Officer",
+    "age": 68,
+    "born": 1957,
+    "pay": 6924775,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "BX",
+    "name": "Mr. Jonathan D. Gray CIMA",
+    "title": "President, COO & Director",
+    "age": 56,
+    "born": 1969,
+    "pay": 59274602,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "BX",
+    "name": "Mr. Joseph Patrick Baratta",
+    "title": "Global Head of Private Equity Strategies & Director",
+    "age": 54,
+    "born": 1971,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "BX",
+    "name": "Mr. Michael S. Chae J.D.",
+    "title": "CFO & Vice Chairman",
+    "age": 57,
+    "born": 1968,
+    "pay": 8436779,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "BX",
+    "name": "Mr. Mustafa Mohsin Siddiqui",
+    "title": "Former Senior MD of BXMA - New York & Co-Head of Strategic Capital Group",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "BX",
+    "name": "Mr. Robert Christopher Heady",
+    "title": "Senior MD - Hong Kong, Head of Asia Real Estate & Chairman of Asia Pacific",
+    "age": null,
+    "born": null,
+    "pay": 4932575,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "BX",
+    "name": "Mr. Seth A. Meisel",
+    "title": "Senior Managing Director of Private Equity - New York",
+    "age": 52,
+    "born": 1973,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "BX",
+    "name": "Mr. Stephen Allen Schwarzman B.A., M.B.A.",
+    "title": "Co-Founder, Chairman & CEO",
+    "age": 78,
+    "born": 1947,
+    "pay": 125641824,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "BX",
+    "name": "Mr. Vikrant  Sawhney J.D.",
+    "title": "Chief Administrative Officer & Global Head of Institutional Client Solutions",
+    "age": null,
+    "born": null,
+    "pay": 10933850,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "BX",
+    "name": "Mr. William J. Stein",
+    "title": "Senior Managing Director of Real Estate- New York",
+    "age": 63,
+    "born": 1962,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  }
+]

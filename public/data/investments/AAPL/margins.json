@@ -87,9 +87,9 @@
     {
       "symbol": "AAPL",
       "report_date": "2025-06-30",
-      "gross_profit": 43718000000.0,
-      "total_revenue": 94036000000.0,
-      "gross_margin": 0.4649
+      "gross_profit": 190739000000.0,
+      "total_revenue": 408625000000.0,
+      "gross_margin": 0.4668
     },
     {
       "symbol": "AAPL",
@@ -108,9 +108,9 @@
     {
       "symbol": "AAPL",
       "report_date": "2026-03-31",
-      "gross_profit": 54781000000.0,
-      "total_revenue": 111184000000.0,
-      "gross_margin": 0.4927
+      "gross_profit": 216071000000.0,
+      "total_revenue": 451442000000.0,
+      "gross_margin": 0.4786
     }
   ],
   "annual_gross": [
@@ -252,9 +252,9 @@
     {
       "symbol": "AAPL",
       "report_date": "2025-06-30",
-      "operating_income": 28202000000.0,
-      "total_revenue": 94036000000.0,
-      "operating_margin": 0.2999
+      "operating_income": 130214000000.0,
+      "total_revenue": 408625000000.0,
+      "operating_margin": 0.3187
     },
     {
       "symbol": "AAPL",
@@ -273,9 +273,9 @@
     {
       "symbol": "AAPL",
       "report_date": "2026-03-31",
-      "operating_income": 35885000000.0,
-      "total_revenue": 111184000000.0,
-      "operating_margin": 0.3228
+      "operating_income": 147366000000.0,
+      "total_revenue": 451442000000.0,
+      "operating_margin": 0.3264
     }
   ],
   "annual_operating": [
@@ -417,9 +417,9 @@
     {
       "symbol": "AAPL",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 23434000000.0,
-      "total_revenue": 94036000000.0,
-      "net_margin": 0.2492
+      "net_income_common_stockholders": 99280000000.0,
+      "total_revenue": 408625000000.0,
+      "net_margin": 0.243
     },
     {
       "symbol": "AAPL",
@@ -438,9 +438,9 @@
     {
       "symbol": "AAPL",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 29578000000.0,
-      "total_revenue": 111184000000.0,
-      "net_margin": 0.266
+      "net_income_common_stockholders": 122575000000.0,
+      "total_revenue": 451442000000.0,
+      "net_margin": 0.2715
     }
   ],
   "annual_net": [
@@ -582,9 +582,9 @@
     {
       "symbol": "AAPL",
       "report_date": "2025-06-30",
-      "ebitda": 31032000000.0,
-      "total_revenue": 94036000000.0,
-      "ebitda_margin": 0.33
+      "ebitda": 141696000000.0,
+      "total_revenue": 408625000000.0,
+      "ebitda_margin": 0.3468
     },
     {
       "symbol": "AAPL",
@@ -603,9 +603,9 @@
     {
       "symbol": "AAPL",
       "report_date": "2026-03-31",
-      "ebitda": 39324000000.0,
-      "total_revenue": 111184000000.0,
-      "ebitda_margin": 0.3537
+      "ebitda": 159976000000.0,
+      "total_revenue": 451442000000.0,
+      "ebitda_margin": 0.3544
     }
   ],
   "annual_ebitda": [
@@ -748,8 +748,8 @@
       "symbol": "AAPL",
       "report_date": "2025-06-30",
       "free_cash_flow": 24405000000.0,
-      "total_revenue": 94036000000.0,
-      "fcf_margin": 0.2595
+      "total_revenue": 408625000000.0,
+      "fcf_margin": 0.0597
     },
     {
       "symbol": "AAPL",
@@ -769,8 +769,8 @@
       "symbol": "AAPL",
       "report_date": "2026-03-31",
       "free_cash_flow": 26731000000.0,
-      "total_revenue": 111184000000.0,
-      "fcf_margin": 0.2404
+      "total_revenue": 451442000000.0,
+      "fcf_margin": 0.0592
     }
   ],
   "annual_fcf": [

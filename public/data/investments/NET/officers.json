@@ -1,23 +1,14 @@
 [
   {
     "symbol": "NET",
-    "name": "Mr. Anwar  Karzazi",
-    "title": "Head of EMEA Channels",
+    "name": "Daniella  Vallurupalli",
+    "title": "VP & Head of Global Communications",
     "age": null,
     "born": null,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
-  },
-  {
-    "symbol": "NET",
-    "name": "Mr. Brian  Guan",
-    "title": "Head of Tax",
-    "age": null,
-    "born": null,
-    "pay": null,
-    "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "NET",
@@ -27,27 +18,19 @@
     "born": null,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "NET",
-    "name": "Mr. Isaac  Specter",
-    "title": "Head of Product Strategy Operations",
-    "age": null,
-    "born": null,
-    "pay": null,
+    "name": "Mr. Mark F. Anderson",
+    "title": "President of Revenue",
+    "age": 63,
+    "born": 1962,
+    "pay": 7665,
     "exercised": 0,
-    "unexercised": 0
-  },
-  {
-    "symbol": "NET",
-    "name": "Mr. Justin  Paine",
-    "title": "Head of Trust & Safety",
-    "age": null,
-    "born": null,
-    "pay": null,
-    "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "NET",
@@ -57,7 +40,19 @@
     "born": 1975,
     "pay": 2299951,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "NET",
+    "name": "Mr. Philip Alan Winslow Jr., C.F.A., Jr.",
+    "title": "Vice President of Strategic Finance, Treasury and Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "NET",
@@ -67,27 +62,30 @@
     "born": 1963,
     "pay": 750000,
     "exercised": 33655736,
-    "unexercised": 35956140
+    "unexercised": 35956140,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "NET",
-    "name": "Ms. .  Kate",
-    "title": "Head of Customer Success, APAC",
-    "age": null,
-    "born": null,
+    "name": "Ms. Alissa  Starzak",
+    "title": "Chief Legal Officer & Secretary",
+    "age": 52,
+    "born": 1973,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "NET",
-    "name": "Ms. Andria  Jones",
-    "title": "Head of Legal Compliance",
-    "age": null,
-    "born": null,
+    "name": "Ms. Janel  Riley",
+    "title": "VP of Finance & Chief Accounting Officer",
+    "age": 47,
+    "born": 1978,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "NET",
@@ -97,6 +95,18 @@
     "born": 1980,
     "pay": 1794059,
     "exercised": 146556432,
-    "unexercised": 341190816
+    "unexercised": 341190816,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "NET",
+    "name": "Ms. W.  Ling",
+    "title": "Head of Governance Risk & Compliance",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   }
 ]

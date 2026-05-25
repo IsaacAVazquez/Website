@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "ZTS",
+    "name": "Dr. Robert J. Polzer Ph.D.",
+    "title": "Scientific Advisor",
+    "age": 56,
+    "born": 1969,
+    "pay": 1445441,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "ZTS",
+    "name": "Mr. Jamie  Brannan",
+    "title": "Executive VP & Chief Commercial Officer",
+    "age": 52,
+    "born": 1973,
+    "pay": 1742448,
+    "exercised": 0,
+    "unexercised": 201455,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "ZTS",
+    "name": "Mr. Keith  Sarbaugh",
+    "title": "Executive VP & Chief Digital and Technology Officer",
+    "age": 46,
+    "born": 1979,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "ZTS",
+    "name": "Mr. Nick  Ashton",
+    "title": "Executive VP and President of Global Manufacturing & Supply",
+    "age": 51,
+    "born": 1974,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "ZTS",
+    "name": "Mr. Steven  Frank",
+    "title": "Vice President of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "ZTS",
+    "name": "Mr. Wetteny N. Joseph CPA",
+    "title": "Executive VP & CFO",
+    "age": 53,
+    "born": 1972,
+    "pay": 1796941,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "ZTS",
+    "name": "Ms. Jeannette Ferran Astorga",
+    "title": "Executive VP of Corporate Affairs & Chief Sustainability Officer",
+    "age": 49,
+    "born": 1976,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "ZTS",
+    "name": "Ms. Julie A. Fuller",
+    "title": "Executive VP, Chief Human Resources Officer & Global Operations",
+    "age": 52,
+    "born": 1973,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "ZTS",
+    "name": "Ms. Kristin C. Peck",
+    "title": "CEO & Director",
+    "age": 54,
+    "born": 1971,
+    "pay": 5421697,
+    "exercised": 42246,
+    "unexercised": 6077486,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "ZTS",
+    "name": "Ms. Roxanne  Lagano",
+    "title": "Executive VP, General Counsel & Corporate Secretary",
+    "age": 60,
+    "born": 1965,
+    "pay": 1435587,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  }
+]

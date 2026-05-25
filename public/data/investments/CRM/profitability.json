@@ -287,12 +287,12 @@
       "symbol": "CRM",
       "report_date": "2026-01-31",
       "ebit": 2155000000.0,
-      "tax_rate_for_calcs": 0.26,
-      "nopat": 1594700000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 1680900000.0,
       "beginning_invested_capital": 68459000000.0,
       "ending_invested_capital": 73581000000.0,
       "avg_invested_capital": 71020000000.0,
-      "roic": 0.0225
+      "roic": 0.0237
     }
   ],
   "equityMultiplier": [
@@ -435,8 +435,8 @@
       "symbol": "CRM",
       "report_date": "2026-01-31T00:00:00.000",
       "roa": 0.0187,
-      "net_margin": 0.1735,
-      "asset_turnover": 0.11
+      "net_margin": 0.0468,
+      "asset_turnover": 0.4
     }
   ]
 }

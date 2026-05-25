@@ -87,9 +87,9 @@
     {
       "symbol": "MA",
       "report_date": "2025-06-30",
-      "gross_profit": 6281000000.0,
-      "total_revenue": 8133000000.0,
-      "gross_margin": 0.7723
+      "gross_profit": 23149000000.0,
+      "total_revenue": 30241000000.0,
+      "gross_margin": 0.7655
     },
     {
       "symbol": "MA",
@@ -108,9 +108,9 @@
     {
       "symbol": "MA",
       "report_date": "2026-03-31",
-      "gross_profit": 6361000000.0,
-      "total_revenue": 8398000000.0,
-      "gross_margin": 0.7574
+      "gross_profit": 26339000000.0,
+      "total_revenue": 33939000000.0,
+      "gross_margin": 0.7761
     }
   ],
   "annual_gross": [
@@ -252,9 +252,9 @@
     {
       "symbol": "MA",
       "report_date": "2025-06-30",
-      "operating_income": 4914000000.0,
-      "total_revenue": 8133000000.0,
-      "operating_margin": 0.6042
+      "operating_income": 17645000000.0,
+      "total_revenue": 30241000000.0,
+      "operating_margin": 0.5835
     },
     {
       "symbol": "MA",
@@ -273,9 +273,9 @@
     {
       "symbol": "MA",
       "report_date": "2026-03-31",
-      "operating_income": 4965000000.0,
-      "total_revenue": 8398000000.0,
-      "operating_margin": 0.5912
+      "operating_income": 20178000000.0,
+      "total_revenue": 33939000000.0,
+      "operating_margin": 0.5945
     }
   ],
   "annual_operating": [
@@ -418,8 +418,8 @@
       "symbol": "MA",
       "report_date": "2025-06-30",
       "net_income_common_stockholders": 3701000000.0,
-      "total_revenue": 8133000000.0,
-      "net_margin": 0.4551
+      "total_revenue": 30241000000.0,
+      "net_margin": 0.1224
     },
     {
       "symbol": "MA",
@@ -439,8 +439,8 @@
       "symbol": "MA",
       "report_date": "2026-03-31",
       "net_income_common_stockholders": 3882000000.0,
-      "total_revenue": 8398000000.0,
-      "net_margin": 0.4623
+      "total_revenue": 33939000000.0,
+      "net_margin": 0.1144
     }
   ],
   "annual_net": [
@@ -583,8 +583,8 @@
       "symbol": "MA",
       "report_date": "2025-06-30",
       "ebitda": 5148000000.0,
-      "total_revenue": 8133000000.0,
-      "ebitda_margin": 0.633
+      "total_revenue": 30241000000.0,
+      "ebitda_margin": 0.1702
     },
     {
       "symbol": "MA",
@@ -604,8 +604,8 @@
       "symbol": "MA",
       "report_date": "2026-03-31",
       "ebitda": 5296000000.0,
-      "total_revenue": 8398000000.0,
-      "ebitda_margin": 0.6306
+      "total_revenue": 33939000000.0,
+      "ebitda_margin": 0.156
     }
   ],
   "annual_ebitda": [
@@ -748,8 +748,8 @@
       "symbol": "MA",
       "report_date": "2025-06-30",
       "free_cash_flow": 4394000000.0,
-      "total_revenue": 8133000000.0,
-      "fcf_margin": 0.5403
+      "total_revenue": 30241000000.0,
+      "fcf_margin": 0.1453
     },
     {
       "symbol": "MA",
@@ -769,8 +769,8 @@
       "symbol": "MA",
       "report_date": "2026-03-31",
       "free_cash_flow": 2664000000.0,
-      "total_revenue": 8398000000.0,
-      "fcf_margin": 0.3172
+      "total_revenue": 33939000000.0,
+      "fcf_margin": 0.0785
     }
   ],
   "annual_fcf": [

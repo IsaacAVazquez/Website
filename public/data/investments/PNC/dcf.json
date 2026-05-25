@@ -1,4 +1,3 @@
 {
-  "file_path": "/tmp/defeatbeta/dcf/PNC.xlsx",
-  "description": "DCF Valuation Analysis for PNC"
+  "error": "can't multiply sequence by non-int of type 'float'"
 }

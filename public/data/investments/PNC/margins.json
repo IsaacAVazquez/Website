@@ -88,7 +88,7 @@
       "symbol": "PNC",
       "report_date": "2025-06-30",
       "gross_profit": null,
-      "total_revenue": 5662000000.0,
+      "total_revenue": 22101000000.0,
       "gross_margin": null
     },
     {
@@ -109,7 +109,7 @@
       "symbol": "PNC",
       "report_date": "2026-03-31",
       "gross_profit": null,
-      "total_revenue": 6157000000.0,
+      "total_revenue": 23787000000.0,
       "gross_margin": null
     }
   ],
@@ -253,7 +253,7 @@
       "symbol": "PNC",
       "report_date": "2025-06-30",
       "operating_income": null,
-      "total_revenue": 5662000000.0,
+      "total_revenue": 22101000000.0,
       "operating_margin": null
     },
     {
@@ -274,7 +274,7 @@
       "symbol": "PNC",
       "report_date": "2026-03-31",
       "operating_income": null,
-      "total_revenue": 6157000000.0,
+      "total_revenue": 23787000000.0,
       "operating_margin": null
     }
   ],
@@ -417,9 +417,9 @@
     {
       "symbol": "PNC",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 1532000000.0,
-      "total_revenue": 5662000000.0,
-      "net_margin": 0.2706
+      "net_income_common_stockholders": 5832000000.0,
+      "total_revenue": 22101000000.0,
+      "net_margin": 0.2639
     },
     {
       "symbol": "PNC",
@@ -438,9 +438,9 @@
     {
       "symbol": "PNC",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 1675000000.0,
-      "total_revenue": 6157000000.0,
-      "net_margin": 0.272
+      "net_income_common_stockholders": 6852000000.0,
+      "total_revenue": 23787000000.0,
+      "net_margin": 0.2881
     }
   ],
   "annual_net": [
@@ -583,7 +583,7 @@
       "symbol": "PNC",
       "report_date": "2025-06-30",
       "ebitda": null,
-      "total_revenue": 5662000000.0,
+      "total_revenue": 22101000000.0,
       "ebitda_margin": null
     },
     {
@@ -604,7 +604,7 @@
       "symbol": "PNC",
       "report_date": "2026-03-31",
       "ebitda": null,
-      "total_revenue": 6157000000.0,
+      "total_revenue": 23787000000.0,
       "ebitda_margin": null
     }
   ],
@@ -748,8 +748,8 @@
       "symbol": "PNC",
       "report_date": "2025-06-30",
       "free_cash_flow": 1480000000.0,
-      "total_revenue": 5662000000.0,
-      "fcf_margin": 0.2614
+      "total_revenue": 22101000000.0,
+      "fcf_margin": 0.067
     },
     {
       "symbol": "PNC",
@@ -769,8 +769,8 @@
       "symbol": "PNC",
       "report_date": "2026-03-31",
       "free_cash_flow": 1928000000.0,
-      "total_revenue": 6157000000.0,
-      "fcf_margin": 0.3131
+      "total_revenue": 23787000000.0,
+      "fcf_margin": 0.0811
     }
   ],
   "annual_fcf": [

@@ -252,9 +252,9 @@
     {
       "symbol": "GOOGL",
       "report_date": "2025-06-30",
-      "operating_income": 31271000000.0,
+      "operating_income": 121370000000.0,
       "total_revenue": 96428000000.0,
-      "operating_margin": 0.3243
+      "operating_margin": 1.2587
     },
     {
       "symbol": "GOOGL",
@@ -273,9 +273,9 @@
     {
       "symbol": "GOOGL",
       "report_date": "2026-03-31",
-      "operating_income": 39696000000.0,
+      "operating_income": 138129000000.0,
       "total_revenue": 109896000000.0,
-      "operating_margin": 0.3612
+      "operating_margin": 1.2569
     }
   ],
   "annual_operating": [
@@ -417,9 +417,9 @@
     {
       "symbol": "GOOGL",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 28196000000.0,
+      "net_income_common_stockholders": 115573000000.0,
       "total_revenue": 96428000000.0,
-      "net_margin": 0.2924
+      "net_margin": 1.1985
     },
     {
       "symbol": "GOOGL",
@@ -438,9 +438,9 @@
     {
       "symbol": "GOOGL",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 62578000000.0,
+      "net_income_common_stockholders": 160208000000.0,
       "total_revenue": 109896000000.0,
-      "net_margin": 0.5694
+      "net_margin": 1.4578
     }
   ],
   "annual_net": [
@@ -582,9 +582,9 @@
     {
       "symbol": "GOOGL",
       "report_date": "2025-06-30",
-      "ebitda": 39192000000.0,
+      "ebitda": 157748000000.0,
       "total_revenue": 96428000000.0,
-      "ebitda_margin": 0.4064
+      "ebitda_margin": 1.6359
     },
     {
       "symbol": "GOOGL",
@@ -603,9 +603,9 @@
     {
       "symbol": "GOOGL",
       "report_date": "2026-03-31",
-      "ebitda": 84427000000.0,
+      "ebitda": 218815000000.0,
       "total_revenue": 109896000000.0,
-      "ebitda_margin": 0.7682
+      "ebitda_margin": 1.9911
     }
   ],
   "annual_ebitda": [

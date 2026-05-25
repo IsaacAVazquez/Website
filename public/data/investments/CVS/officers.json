@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "CVS",
+    "name": "Mr. Brian O. Newman",
+    "title": "Executive VP & CFO",
+    "age": 56,
+    "born": 1969,
+    "pay": 2817842,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "CVS",
+    "name": "Mr. David A. Falkowski",
+    "title": "Executive VP & Chief Compliance Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "CVS",
+    "name": "Mr. Gustavo A. Giraldo",
+    "title": "Head of Markets of Healthcare Benefits",
+    "age": 52,
+    "born": 1973,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "CVS",
+    "name": "Mr. J. David Joyner CEBS",
+    "title": "CEO, President & Chairman",
+    "age": 60,
+    "born": 1965,
+    "pay": 6649509,
+    "exercised": 0,
+    "unexercised": 3882397,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "CVS",
+    "name": "Mr. James David Clark",
+    "title": "Senior VP, Controller & Chief Accounting Officer",
+    "age": 60,
+    "born": 1965,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "CVS",
+    "name": "Mr. Prem S. Shah Pharm.D",
+    "title": "Executive VP & Group President",
+    "age": 45,
+    "born": 1980,
+    "pay": 4379297,
+    "exercised": 3756,
+    "unexercised": 3194775,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "CVS",
+    "name": "Mr. Samrat S. Khichi Esq.",
+    "title": "Executive Vice President, Corporate Services & Chief Legal Officer",
+    "age": 58,
+    "born": 1967,
+    "pay": 3386559,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "CVS",
+    "name": "Mr. Steven Hale Nelson M.B.A.",
+    "title": "Executive VP & President of Aetna",
+    "age": 66,
+    "born": 1959,
+    "pay": 4337201,
+    "exercised": 0,
+    "unexercised": 312593,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "CVS",
+    "name": "Mr. Tilak  Mandadi",
+    "title": "EVP of Ventures and Chief Experience & Technology Officer",
+    "age": 61,
+    "born": 1964,
+    "pay": 3977755,
+    "exercised": 0,
+    "unexercised": 243652,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "CVS",
+    "name": "Ms. Heidi B. Capozzi",
+    "title": "Executive VP & Chief People Officer",
+    "age": 55,
+    "born": 1970,
+    "pay": 1850759,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  }
+]

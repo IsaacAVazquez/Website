@@ -1,96 +1,6 @@
 [
   {
     "symbol": "INTC",
-    "report_date": "2025-05-08",
-    "open": 21.01,
-    "close": 21.0,
-    "high": 21.24,
-    "low": 20.64,
-    "volume": 71651700
-  },
-  {
-    "symbol": "INTC",
-    "report_date": "2025-05-09",
-    "open": 21.2,
-    "close": 21.42,
-    "high": 21.45,
-    "low": 20.83,
-    "volume": 51768600
-  },
-  {
-    "symbol": "INTC",
-    "report_date": "2025-05-12",
-    "open": 22.18,
-    "close": 22.18,
-    "high": 22.67,
-    "low": 21.88,
-    "volume": 94578700
-  },
-  {
-    "symbol": "INTC",
-    "report_date": "2025-05-13",
-    "open": 22.36,
-    "close": 22.56,
-    "high": 22.88,
-    "low": 22.3,
-    "volume": 76850400
-  },
-  {
-    "symbol": "INTC",
-    "report_date": "2025-05-14",
-    "open": 22.35,
-    "close": 21.52,
-    "high": 22.46,
-    "low": 21.46,
-    "volume": 91584800
-  },
-  {
-    "symbol": "INTC",
-    "report_date": "2025-05-15",
-    "open": 21.23,
-    "close": 21.55,
-    "high": 21.63,
-    "low": 21.19,
-    "volume": 66705500
-  },
-  {
-    "symbol": "INTC",
-    "report_date": "2025-05-16",
-    "open": 21.53,
-    "close": 21.66,
-    "high": 21.76,
-    "low": 21.35,
-    "volume": 55795100
-  },
-  {
-    "symbol": "INTC",
-    "report_date": "2025-05-19",
-    "open": 21.18,
-    "close": 21.38,
-    "high": 21.56,
-    "low": 21.05,
-    "volume": 64279100
-  },
-  {
-    "symbol": "INTC",
-    "report_date": "2025-05-20",
-    "open": 21.33,
-    "close": 21.27,
-    "high": 21.41,
-    "low": 21.12,
-    "volume": 48497400
-  },
-  {
-    "symbol": "INTC",
-    "report_date": "2025-05-21",
-    "open": 21.19,
-    "close": 20.69,
-    "high": 21.63,
-    "low": 20.59,
-    "volume": 62904700
-  },
-  {
-    "symbol": "INTC",
     "report_date": "2025-05-22",
     "open": 20.73,
     "close": 20.55,
@@ -2265,6 +2175,96 @@
     "close": 124.92,
     "high": 130.57,
     "low": 111.8,
-    "volume": 226166600
+    "volume": 227681300
+  },
+  {
+    "symbol": "INTC",
+    "report_date": "2026-05-11",
+    "open": 130.88,
+    "close": 129.44,
+    "high": 132.75,
+    "low": 123.92,
+    "volume": 179486500
+  },
+  {
+    "symbol": "INTC",
+    "report_date": "2026-05-12",
+    "open": 124.36,
+    "close": 120.61,
+    "high": 127.79,
+    "low": 115.0,
+    "volume": 172516500
+  },
+  {
+    "symbol": "INTC",
+    "report_date": "2026-05-13",
+    "open": 124.1,
+    "close": 120.29,
+    "high": 125.0,
+    "low": 116.41,
+    "volume": 115364400
+  },
+  {
+    "symbol": "INTC",
+    "report_date": "2026-05-14",
+    "open": 114.66,
+    "close": 115.93,
+    "high": 118.57,
+    "low": 113.17,
+    "volume": 118279800
+  },
+  {
+    "symbol": "INTC",
+    "report_date": "2026-05-15",
+    "open": 109.79,
+    "close": 108.77,
+    "high": 110.57,
+    "low": 105.02,
+    "volume": 135206000
+  },
+  {
+    "symbol": "INTC",
+    "report_date": "2026-05-18",
+    "open": 113.47,
+    "close": 108.17,
+    "high": 115.54,
+    "low": 103.85,
+    "volume": 145764000
+  },
+  {
+    "symbol": "INTC",
+    "report_date": "2026-05-19",
+    "open": 106.98,
+    "close": 110.8,
+    "high": 113.07,
+    "low": 102.4,
+    "volume": 150234900
+  },
+  {
+    "symbol": "INTC",
+    "report_date": "2026-05-20",
+    "open": 116.22,
+    "close": 118.96,
+    "high": 121.94,
+    "low": 114.8,
+    "volume": 165086900
+  },
+  {
+    "symbol": "INTC",
+    "report_date": "2026-05-21",
+    "open": 116.58,
+    "close": 118.5,
+    "high": 119.41,
+    "low": 113.17,
+    "volume": 102452500
+  },
+  {
+    "symbol": "INTC",
+    "report_date": "2026-05-22",
+    "open": 120.34,
+    "close": 119.84,
+    "high": 122.78,
+    "low": 118.09,
+    "volume": 82206800
   }
 ]

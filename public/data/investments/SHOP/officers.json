@@ -7,7 +7,8 @@
     "born": null,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "SHOP",
@@ -17,7 +18,8 @@
     "born": null,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "SHOP",
@@ -27,7 +29,19 @@
     "born": 1983,
     "pay": 1018193,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "SHOP",
+    "name": "Mr. Jeff J. Hoffmeister CPA",
+    "title": "Chief Financial Officer",
+    "age": 55,
+    "born": 1970,
+    "pay": 1000000,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "SHOP",
@@ -37,17 +51,8 @@
     "born": 1981,
     "pay": 1,
     "exercised": 0,
-    "unexercised": 0
-  },
-  {
-    "symbol": "SHOP",
-    "name": "Ms. Agatha  Krajewski",
-    "title": "Director of Product, Online",
-    "age": null,
-    "born": null,
-    "pay": null,
-    "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "SHOP",
@@ -57,7 +62,30 @@
     "born": null,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "SHOP",
+    "name": "Ms. Carrie  Gillard",
+    "title": "Director of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "SHOP",
+    "name": "Ms. Jean  Niehaus",
+    "title": "General Counsel",
+    "age": 42,
+    "born": 1983,
+    "pay": 451250,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "SHOP",
@@ -67,7 +95,8 @@
     "born": 1982,
     "pay": 1000000,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "SHOP",
@@ -77,6 +106,7 @@
     "born": null,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   }
 ]

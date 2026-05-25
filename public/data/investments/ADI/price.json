@@ -1,96 +1,6 @@
 [
   {
     "symbol": "ADI",
-    "report_date": "2025-05-08",
-    "open": 202.26,
-    "close": 202.78,
-    "high": 206.04,
-    "low": 200.96,
-    "volume": 3422400
-  },
-  {
-    "symbol": "ADI",
-    "report_date": "2025-05-09",
-    "open": 207.24,
-    "close": 207.51,
-    "high": 210.14,
-    "low": 206.29,
-    "volume": 3537500
-  },
-  {
-    "symbol": "ADI",
-    "report_date": "2025-05-12",
-    "open": 222.87,
-    "close": 223.15,
-    "high": 225.49,
-    "low": 219.1,
-    "volume": 6358100
-  },
-  {
-    "symbol": "ADI",
-    "report_date": "2025-05-13",
-    "open": 221.97,
-    "close": 226.68,
-    "high": 227.07,
-    "low": 220.25,
-    "volume": 4373500
-  },
-  {
-    "symbol": "ADI",
-    "report_date": "2025-05-14",
-    "open": 227.64,
-    "close": 226.82,
-    "high": 228.34,
-    "low": 224.01,
-    "volume": 4648400
-  },
-  {
-    "symbol": "ADI",
-    "report_date": "2025-05-15",
-    "open": 224.43,
-    "close": 227.12,
-    "high": 228.8,
-    "low": 224.01,
-    "volume": 3044800
-  },
-  {
-    "symbol": "ADI",
-    "report_date": "2025-05-16",
-    "open": 227.16,
-    "close": 227.11,
-    "high": 227.8,
-    "low": 225.53,
-    "volume": 3617900
-  },
-  {
-    "symbol": "ADI",
-    "report_date": "2025-05-19",
-    "open": 223.64,
-    "close": 224.54,
-    "high": 226.81,
-    "low": 223.07,
-    "volume": 3974200
-  },
-  {
-    "symbol": "ADI",
-    "report_date": "2025-05-20",
-    "open": 222.32,
-    "close": 224.49,
-    "high": 224.6,
-    "low": 221.93,
-    "volume": 2619200
-  },
-  {
-    "symbol": "ADI",
-    "report_date": "2025-05-21",
-    "open": 222.6,
-    "close": 222.22,
-    "high": 227.39,
-    "low": 221.33,
-    "volume": 5091100
-  },
-  {
-    "symbol": "ADI",
     "report_date": "2025-05-22",
     "open": 221.46,
     "close": 211.93,
@@ -2265,6 +2175,96 @@
     "close": 416.52,
     "high": 418.75,
     "low": 413.52,
-    "volume": 3753600
+    "volume": 3754400
+  },
+  {
+    "symbol": "ADI",
+    "report_date": "2026-05-11",
+    "open": 412.21,
+    "close": 422.73,
+    "high": 422.88,
+    "low": 411.48,
+    "volume": 3796800
+  },
+  {
+    "symbol": "ADI",
+    "report_date": "2026-05-12",
+    "open": 417.85,
+    "close": 419.65,
+    "high": 420.91,
+    "low": 406.77,
+    "volume": 4848600
+  },
+  {
+    "symbol": "ADI",
+    "report_date": "2026-05-13",
+    "open": 427.84,
+    "close": 432.39,
+    "high": 435.72,
+    "low": 426.0,
+    "volume": 3486300
+  },
+  {
+    "symbol": "ADI",
+    "report_date": "2026-05-14",
+    "open": 430.97,
+    "close": 426.79,
+    "high": 433.91,
+    "low": 424.07,
+    "volume": 2811400
+  },
+  {
+    "symbol": "ADI",
+    "report_date": "2026-05-15",
+    "open": 415.18,
+    "close": 417.49,
+    "high": 422.18,
+    "low": 414.55,
+    "volume": 3709600
+  },
+  {
+    "symbol": "ADI",
+    "report_date": "2026-05-18",
+    "open": 426.9,
+    "close": 418.58,
+    "high": 428.68,
+    "low": 414.07,
+    "volume": 4228500
+  },
+  {
+    "symbol": "ADI",
+    "report_date": "2026-05-19",
+    "open": 409.16,
+    "close": 414.31,
+    "high": 423.42,
+    "low": 407.19,
+    "volume": 6190400
+  },
+  {
+    "symbol": "ADI",
+    "report_date": "2026-05-20",
+    "open": 390.0,
+    "close": 398.05,
+    "high": 406.14,
+    "low": 383.85,
+    "volume": 10353000
+  },
+  {
+    "symbol": "ADI",
+    "report_date": "2026-05-21",
+    "open": 396.64,
+    "close": 384.21,
+    "high": 397.0,
+    "low": 381.22,
+    "volume": 5303500
+  },
+  {
+    "symbol": "ADI",
+    "report_date": "2026-05-22",
+    "open": 389.14,
+    "close": 397.07,
+    "high": 400.73,
+    "low": 387.01,
+    "volume": 6107800
   }
 ]

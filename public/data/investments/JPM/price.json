@@ -1,96 +1,6 @@
 [
   {
     "symbol": "JPM",
-    "report_date": "2025-05-08",
-    "open": 251.57,
-    "close": 253.47,
-    "high": 255.88,
-    "low": 251.55,
-    "volume": 8320100
-  },
-  {
-    "symbol": "JPM",
-    "report_date": "2025-05-09",
-    "open": 254.5,
-    "close": 253.08,
-    "high": 255.51,
-    "low": 252.34,
-    "volume": 5087600
-  },
-  {
-    "symbol": "JPM",
-    "report_date": "2025-05-12",
-    "open": 262.9,
-    "close": 260.05,
-    "high": 263.6,
-    "low": 258.7,
-    "volume": 9603900
-  },
-  {
-    "symbol": "JPM",
-    "report_date": "2025-05-13",
-    "open": 261.03,
-    "close": 263.01,
-    "high": 263.67,
-    "low": 260.39,
-    "volume": 8589000
-  },
-  {
-    "symbol": "JPM",
-    "report_date": "2025-05-14",
-    "open": 263.0,
-    "close": 265.64,
-    "high": 266.64,
-    "low": 262.29,
-    "volume": 8643100
-  },
-  {
-    "symbol": "JPM",
-    "report_date": "2025-05-15",
-    "open": 266.97,
-    "close": 267.49,
-    "high": 269.52,
-    "low": 264.76,
-    "volume": 9214600
-  },
-  {
-    "symbol": "JPM",
-    "report_date": "2025-05-16",
-    "open": 267.5,
-    "close": 267.56,
-    "high": 268.46,
-    "low": 264.71,
-    "volume": 8932900
-  },
-  {
-    "symbol": "JPM",
-    "report_date": "2025-05-19",
-    "open": 265.55,
-    "close": 264.88,
-    "high": 268.32,
-    "low": 261.93,
-    "volume": 12145000
-  },
-  {
-    "symbol": "JPM",
-    "report_date": "2025-05-20",
-    "open": 262.52,
-    "close": 265.68,
-    "high": 266.66,
-    "low": 262.3,
-    "volume": 8436300
-  },
-  {
-    "symbol": "JPM",
-    "report_date": "2025-05-21",
-    "open": 264.35,
-    "close": 261.04,
-    "high": 265.65,
-    "low": 260.73,
-    "volume": 7464000
-  },
-  {
-    "symbol": "JPM",
     "report_date": "2025-05-22",
     "open": 259.44,
     "close": 260.67,
@@ -2265,6 +2175,96 @@
     "close": 302.1,
     "high": 308.99,
     "low": 300.5,
-    "volume": 9458100
+    "volume": 9464300
+  },
+  {
+    "symbol": "JPM",
+    "report_date": "2026-05-11",
+    "open": 302.1,
+    "close": 300.0,
+    "high": 303.19,
+    "low": 298.88,
+    "volume": 9512000
+  },
+  {
+    "symbol": "JPM",
+    "report_date": "2026-05-12",
+    "open": 300.02,
+    "close": 304.88,
+    "high": 306.06,
+    "low": 295.55,
+    "volume": 9498200
+  },
+  {
+    "symbol": "JPM",
+    "report_date": "2026-05-13",
+    "open": 302.27,
+    "close": 300.25,
+    "high": 303.0,
+    "low": 300.07,
+    "volume": 7709500
+  },
+  {
+    "symbol": "JPM",
+    "report_date": "2026-05-14",
+    "open": 302.25,
+    "close": 299.91,
+    "high": 303.75,
+    "low": 298.81,
+    "volume": 7364300
+  },
+  {
+    "symbol": "JPM",
+    "report_date": "2026-05-15",
+    "open": 300.21,
+    "close": 297.81,
+    "high": 300.79,
+    "low": 296.45,
+    "volume": 8699300
+  },
+  {
+    "symbol": "JPM",
+    "report_date": "2026-05-18",
+    "open": 298.0,
+    "close": 300.73,
+    "high": 301.26,
+    "low": 297.22,
+    "volume": 7546300
+  },
+  {
+    "symbol": "JPM",
+    "report_date": "2026-05-19",
+    "open": 301.09,
+    "close": 295.7,
+    "high": 301.79,
+    "low": 295.26,
+    "volume": 8066900
+  },
+  {
+    "symbol": "JPM",
+    "report_date": "2026-05-20",
+    "open": 296.7,
+    "close": 301.98,
+    "high": 302.93,
+    "low": 293.67,
+    "volume": 9327000
+  },
+  {
+    "symbol": "JPM",
+    "report_date": "2026-05-21",
+    "open": 301.23,
+    "close": 303.0,
+    "high": 303.98,
+    "low": 300.21,
+    "volume": 7874400
+  },
+  {
+    "symbol": "JPM",
+    "report_date": "2026-05-22",
+    "open": 304.68,
+    "close": 306.38,
+    "high": 307.45,
+    "low": 303.84,
+    "volume": 5973900
   }
 ]

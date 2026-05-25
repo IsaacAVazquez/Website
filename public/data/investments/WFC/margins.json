@@ -417,9 +417,9 @@
     {
       "symbol": "WFC",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 5214000000.0,
+      "net_income_common_stockholders": 19483000000.0,
       "total_revenue": 20569000000.0,
-      "net_margin": 0.2535
+      "net_margin": 0.9472
     },
     {
       "symbol": "WFC",
@@ -438,9 +438,9 @@
     {
       "symbol": "WFC",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 5000000000.0,
+      "net_income_common_stockholders": 20669000000.0,
       "total_revenue": 21446000000.0,
-      "net_margin": 0.2331
+      "net_margin": 0.9638
     }
   ],
   "annual_net": [

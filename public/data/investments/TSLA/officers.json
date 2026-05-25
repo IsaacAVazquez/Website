@@ -7,7 +7,8 @@
     "born": null,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "TSLA",
@@ -17,7 +18,8 @@
     "born": 1971,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 129602732032,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "TSLA",
@@ -27,7 +29,41 @@
     "born": null,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "TSLA",
+    "name": "Mr. John  Walker",
+    "title": "Vice President of Sales - North America",
+    "age": 62,
+    "born": 1963,
+    "pay": 121550,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "TSLA",
+    "name": "Mr. Lars  Moravy",
+    "title": "Vice President of Vehicle Engineering",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "TSLA",
+    "name": "Mr. Rodney D. Westmoreland Jr.",
+    "title": "Director of Construction Management",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "TSLA",
@@ -35,9 +71,10 @@
     "title": "Chief Financial Officer",
     "age": 47,
     "born": 1978,
-    "pay": 306846,
-    "exercised": 9653338,
-    "unexercised": 347210016
+    "pay": 403000,
+    "exercised": 15033838,
+    "unexercised": 417696224,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "TSLA",
@@ -45,9 +82,21 @@
     "title": "Senior Vice President of APAC & Global Vehicle Manufacturing",
     "age": 45,
     "born": 1980,
-    "pay": 518250,
+    "pay": 376322,
+    "exercised": 4548562,
+    "unexercised": 808327104,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "TSLA",
+    "name": "Ms. Roxanne  Inskip-Kaye",
+    "title": "Head of Operations - Electric Vehicle Business",
+    "age": null,
+    "born": null,
+    "pay": null,
     "exercised": 0,
-    "unexercised": 697024064
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   },
   {
     "symbol": "TSLA",
@@ -57,6 +106,7 @@
     "born": null,
     "pay": null,
     "exercised": 0,
-    "unexercised": 0
+    "unexercised": 0,
+    "report_date": "2026-05-25"
   }
 ]

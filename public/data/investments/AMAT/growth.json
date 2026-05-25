@@ -90,6 +90,13 @@
       "revenue": 7012000000.0,
       "prev_year_revenue": 7166000000.0,
       "yoy_growth": -0.0215
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2026-04-30T00:00:00.000",
+      "revenue": 29024000000.0,
+      "prev_year_revenue": 7100000000.0,
+      "yoy_growth": 3.0879
     }
   ],
   "annual_revenue": [
@@ -234,6 +241,13 @@
       "operating_income": 2096000000.0,
       "prev_year_operating_income": 2175000000.0,
       "yoy_growth": -0.0363
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2026-04-30T00:00:00.000",
+      "operating_income": 8745000000.0,
+      "prev_year_operating_income": 2169000000.0,
+      "yoy_growth": 3.0318
     }
   ],
   "annual_operating_income": [
@@ -371,6 +385,13 @@
       "ebitda": 2524000000.0,
       "prev_year_ebitda": 2288000000.0,
       "yoy_growth": 0.1031
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2026-04-30T00:00:00.000",
+      "ebitda": 11147000000.0,
+      "prev_year_ebitda": 2493000000.0,
+      "yoy_growth": 3.4713
     }
   ],
   "annual_ebitda": [
@@ -515,6 +536,13 @@
       "net_income_common_stockholders": 2026000000.0,
       "prev_year_net_income_common_stockholders": 1185000000.0,
       "yoy_growth": 0.7097
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2026-04-30T00:00:00.000",
+      "net_income_common_stockholders": 8508000000.0,
+      "prev_year_net_income_common_stockholders": 2137000000.0,
+      "yoy_growth": 2.9813
     }
   ],
   "annual_net_income": [
@@ -659,6 +687,13 @@
       "free_cash_flow": 1040000000.0,
       "prev_year_free_cash_flow": 544000000.0,
       "yoy_growth": 0.9118
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2026-04-30T00:00:00.000",
+      "free_cash_flow": 5343000000.0,
+      "prev_year_free_cash_flow": 1061000000.0,
+      "yoy_growth": 4.0358
     }
   ],
   "annual_fcf": [
@@ -716,58 +751,58 @@
     {
       "symbol": "AMAT",
       "report_date": "1998-04-30T00:00:00.000",
-      "eps": 0.09,
+      "eps": 0.0925,
       "prev_year_eps": null,
       "yoy_growth": null
     },
     {
       "symbol": "AMAT",
       "report_date": "1998-07-31T00:00:00.000",
-      "eps": 0.03,
+      "eps": 0.0325,
       "prev_year_eps": null,
       "yoy_growth": null
     },
     {
       "symbol": "AMAT",
       "report_date": "1998-10-31T00:00:00.000",
-      "eps": -0.13,
+      "eps": -0.1275,
       "prev_year_eps": null,
       "yoy_growth": null
     },
     {
       "symbol": "AMAT",
       "report_date": "1999-01-31T00:00:00.000",
-      "eps": 0.04,
+      "eps": 0.035,
       "prev_year_eps": 0.15,
-      "yoy_growth": -0.7333
+      "yoy_growth": -0.7667
     },
     {
       "symbol": "AMAT",
       "report_date": "1999-04-30T00:00:00.000",
       "eps": 0.09,
-      "prev_year_eps": 0.09,
-      "yoy_growth": 0.0
+      "prev_year_eps": 0.0925,
+      "yoy_growth": -0.027
     },
     {
       "symbol": "AMAT",
       "report_date": "1999-07-31T00:00:00.000",
-      "eps": 0.15,
-      "prev_year_eps": 0.03,
-      "yoy_growth": 4.0
+      "eps": 0.1525,
+      "prev_year_eps": 0.0325,
+      "yoy_growth": 3.6923
     },
     {
       "symbol": "AMAT",
       "report_date": "1999-10-31T00:00:00.000",
-      "eps": 0.19,
-      "prev_year_eps": -0.13,
-      "yoy_growth": 2.4615
+      "eps": 0.1875,
+      "prev_year_eps": -0.1275,
+      "yoy_growth": 2.4706
     },
     {
       "symbol": "AMAT",
       "report_date": "2000-01-31T00:00:00.000",
       "eps": 0.2,
-      "prev_year_eps": 0.04,
-      "yoy_growth": 4.0
+      "prev_year_eps": 0.035,
+      "yoy_growth": 4.7143
     },
     {
       "symbol": "AMAT",
@@ -780,15 +815,15 @@
       "symbol": "AMAT",
       "report_date": "2000-07-31T00:00:00.000",
       "eps": 0.35,
-      "prev_year_eps": 0.15,
-      "yoy_growth": 1.3333
+      "prev_year_eps": 0.1525,
+      "yoy_growth": 1.2951
     },
     {
       "symbol": "AMAT",
       "report_date": "2000-10-31T00:00:00.000",
-      "eps": 0.39,
-      "prev_year_eps": 0.19,
-      "yoy_growth": 1.0526
+      "eps": 0.385,
+      "prev_year_eps": 0.1875,
+      "yoy_growth": 1.0533
     },
     {
       "symbol": "AMAT",
@@ -800,23 +835,23 @@
     {
       "symbol": "AMAT",
       "report_date": "2001-04-30T00:00:00.000",
-      "eps": 0.14,
+      "eps": 0.135,
       "prev_year_eps": 0.27,
-      "yoy_growth": -0.4815
+      "yoy_growth": -0.5
     },
     {
       "symbol": "AMAT",
       "report_date": "2001-07-31T00:00:00.000",
-      "eps": 0.02,
+      "eps": 0.015,
       "prev_year_eps": 0.35,
-      "yoy_growth": -0.9429
+      "yoy_growth": -0.9571
     },
     {
       "symbol": "AMAT",
       "report_date": "2001-10-31T00:00:00.000",
       "eps": -0.05,
-      "prev_year_eps": 0.39,
-      "yoy_growth": -1.1282
+      "prev_year_eps": 0.385,
+      "yoy_growth": -1.1299
     },
     {
       "symbol": "AMAT",
@@ -829,15 +864,15 @@
       "symbol": "AMAT",
       "report_date": "2002-04-30T00:00:00.000",
       "eps": 0.03,
-      "prev_year_eps": 0.14,
-      "yoy_growth": -0.7857
+      "prev_year_eps": 0.135,
+      "yoy_growth": -0.7778
     },
     {
       "symbol": "AMAT",
       "report_date": "2002-07-31T00:00:00.000",
       "eps": 0.07,
-      "prev_year_eps": 0.02,
-      "yoy_growth": 2.5
+      "prev_year_eps": 0.015,
+      "yoy_growth": 3.6667
     },
     {
       "symbol": "AMAT",
@@ -1283,16 +1318,16 @@
     {
       "symbol": "AMAT",
       "report_date": "2018-07-31T00:00:00.000",
-      "eps": 1.01,
+      "eps": 1.011,
       "prev_year_eps": 0.85,
-      "yoy_growth": 0.1882
+      "yoy_growth": 0.1894
     },
     {
       "symbol": "AMAT",
       "report_date": "2018-10-31T00:00:00.000",
-      "eps": 0.77,
+      "eps": 0.7693,
       "prev_year_eps": 0.91,
-      "yoy_growth": -0.1538
+      "yoy_growth": -0.1546
     },
     {
       "symbol": "AMAT",
@@ -1311,191 +1346,198 @@
     {
       "symbol": "AMAT",
       "report_date": "2019-07-31T00:00:00.000",
-      "eps": 0.61,
-      "prev_year_eps": 1.01,
-      "yoy_growth": -0.396
+      "eps": 0.6094,
+      "prev_year_eps": 1.011,
+      "yoy_growth": -0.3972
     },
     {
       "symbol": "AMAT",
       "report_date": "2019-10-31T00:00:00.000",
-      "eps": 0.75,
-      "prev_year_eps": 0.77,
-      "yoy_growth": -0.026
+      "eps": 0.7497,
+      "prev_year_eps": 0.7693,
+      "yoy_growth": -0.0255
     },
     {
       "symbol": "AMAT",
       "report_date": "2020-01-31T00:00:00.000",
-      "eps": 0.96,
+      "eps": 0.9622,
       "prev_year_eps": 0.8,
-      "yoy_growth": 0.2
+      "yoy_growth": 0.2028
     },
     {
       "symbol": "AMAT",
       "report_date": "2020-04-30T00:00:00.000",
-      "eps": 0.82,
+      "eps": 0.818,
       "prev_year_eps": 0.7,
-      "yoy_growth": 0.1714
+      "yoy_growth": 0.1686
     },
     {
       "symbol": "AMAT",
       "report_date": "2020-07-31T00:00:00.000",
-      "eps": 0.91,
-      "prev_year_eps": 0.61,
-      "yoy_growth": 0.4918
+      "eps": 0.9122,
+      "prev_year_eps": 0.6094,
+      "yoy_growth": 0.4969
     },
     {
       "symbol": "AMAT",
       "report_date": "2020-10-31T00:00:00.000",
-      "eps": 1.23,
-      "prev_year_eps": 0.75,
-      "yoy_growth": 0.64
+      "eps": 1.228,
+      "prev_year_eps": 0.7497,
+      "yoy_growth": 0.638
     },
     {
       "symbol": "AMAT",
       "report_date": "2021-01-31T00:00:00.000",
-      "eps": 1.22,
-      "prev_year_eps": 0.96,
-      "yoy_growth": 0.2708
+      "eps": 1.2216,
+      "prev_year_eps": 0.9622,
+      "yoy_growth": 0.2696
     },
     {
       "symbol": "AMAT",
       "report_date": "2021-04-30T00:00:00.000",
-      "eps": 1.43,
-      "prev_year_eps": 0.82,
-      "yoy_growth": 0.7439
+      "eps": 1.4347,
+      "prev_year_eps": 0.818,
+      "yoy_growth": 0.7539
     },
     {
       "symbol": "AMAT",
       "report_date": "2021-07-31T00:00:00.000",
-      "eps": 1.87,
-      "prev_year_eps": 0.91,
-      "yoy_growth": 1.0549
+      "eps": 1.8693,
+      "prev_year_eps": 0.9122,
+      "yoy_growth": 1.0492
     },
     {
       "symbol": "AMAT",
       "report_date": "2021-10-31T00:00:00.000",
-      "eps": 1.89,
-      "prev_year_eps": 1.23,
-      "yoy_growth": 0.5366
+      "eps": 1.8875,
+      "prev_year_eps": 1.228,
+      "yoy_growth": 0.5371
     },
     {
       "symbol": "AMAT",
       "report_date": "2022-01-31T00:00:00.000",
-      "eps": 2.0,
-      "prev_year_eps": 1.22,
-      "yoy_growth": 0.6393
+      "eps": 1.9978,
+      "prev_year_eps": 1.2216,
+      "yoy_growth": 0.6354
     },
     {
       "symbol": "AMAT",
       "report_date": "2022-04-30T00:00:00.000",
-      "eps": 1.74,
-      "prev_year_eps": 1.43,
-      "yoy_growth": 0.2168
+      "eps": 1.7395,
+      "prev_year_eps": 1.4347,
+      "yoy_growth": 0.2124
     },
     {
       "symbol": "AMAT",
       "report_date": "2022-07-31T00:00:00.000",
-      "eps": 1.85,
-      "prev_year_eps": 1.87,
-      "yoy_growth": -0.0107
+      "eps": 1.8481,
+      "prev_year_eps": 1.8693,
+      "yoy_growth": -0.0113
     },
     {
       "symbol": "AMAT",
       "report_date": "2022-10-31T00:00:00.000",
-      "eps": 1.85,
-      "prev_year_eps": 1.89,
-      "yoy_growth": -0.0212
+      "eps": 1.8522,
+      "prev_year_eps": 1.8875,
+      "yoy_growth": -0.0187
     },
     {
       "symbol": "AMAT",
       "report_date": "2023-01-31T00:00:00.000",
-      "eps": 2.02,
-      "prev_year_eps": 2.0,
-      "yoy_growth": 0.01
+      "eps": 2.0224,
+      "prev_year_eps": 1.9978,
+      "yoy_growth": 0.0123
     },
     {
       "symbol": "AMAT",
       "report_date": "2023-04-30T00:00:00.000",
-      "eps": 1.86,
-      "prev_year_eps": 1.74,
+      "eps": 1.8595,
+      "prev_year_eps": 1.7395,
       "yoy_growth": 0.069
     },
     {
       "symbol": "AMAT",
       "report_date": "2023-07-31T00:00:00.000",
-      "eps": 1.85,
-      "prev_year_eps": 1.85,
-      "yoy_growth": 0.0
+      "eps": 1.8505,
+      "prev_year_eps": 1.8481,
+      "yoy_growth": 0.0013
     },
     {
       "symbol": "AMAT",
       "report_date": "2023-10-31T00:00:00.000",
       "eps": 2.38,
-      "prev_year_eps": 1.85,
-      "yoy_growth": 0.2865
+      "prev_year_eps": 1.8522,
+      "yoy_growth": 0.285
     },
     {
       "symbol": "AMAT",
       "report_date": "2024-01-31T00:00:00.000",
-      "eps": 2.41,
-      "prev_year_eps": 2.02,
-      "yoy_growth": 0.1931
+      "eps": 2.4122,
+      "prev_year_eps": 2.0224,
+      "yoy_growth": 0.1927
     },
     {
       "symbol": "AMAT",
       "report_date": "2024-04-30T00:00:00.000",
-      "eps": 2.06,
-      "prev_year_eps": 1.86,
-      "yoy_growth": 0.1075
+      "eps": 2.0598,
+      "prev_year_eps": 1.8595,
+      "yoy_growth": 0.1077
     },
     {
       "symbol": "AMAT",
       "report_date": "2024-07-31T00:00:00.000",
-      "eps": 2.05,
-      "prev_year_eps": 1.85,
-      "yoy_growth": 0.1081
+      "eps": 2.0468,
+      "prev_year_eps": 1.8505,
+      "yoy_growth": 0.1061
     },
     {
       "symbol": "AMAT",
       "report_date": "2024-10-31T00:00:00.000",
-      "eps": 2.09,
+      "eps": 2.0906,
       "prev_year_eps": 2.38,
-      "yoy_growth": -0.1218
+      "yoy_growth": -0.1216
     },
     {
       "symbol": "AMAT",
       "report_date": "2025-01-31T00:00:00.000",
-      "eps": 1.45,
-      "prev_year_eps": 2.41,
-      "yoy_growth": -0.3983
+      "eps": 1.4469,
+      "prev_year_eps": 2.4122,
+      "yoy_growth": -0.4002
     },
     {
       "symbol": "AMAT",
       "report_date": "2025-04-30T00:00:00.000",
-      "eps": 2.63,
-      "prev_year_eps": 2.06,
-      "yoy_growth": 0.2767
+      "eps": 2.6318,
+      "prev_year_eps": 2.0598,
+      "yoy_growth": 0.2777
     },
     {
       "symbol": "AMAT",
       "report_date": "2025-07-31T00:00:00.000",
-      "eps": 2.22,
-      "prev_year_eps": 2.05,
-      "yoy_growth": 0.0829
+      "eps": 2.2182,
+      "prev_year_eps": 2.0468,
+      "yoy_growth": 0.0837
     },
     {
       "symbol": "AMAT",
       "report_date": "2025-10-31T00:00:00.000",
-      "eps": 2.38,
-      "prev_year_eps": 2.09,
-      "yoy_growth": 0.1388
+      "eps": 2.3772,
+      "prev_year_eps": 2.0906,
+      "yoy_growth": 0.1371
     },
     {
       "symbol": "AMAT",
       "report_date": "2026-01-31T00:00:00.000",
-      "eps": 2.54,
-      "prev_year_eps": 1.45,
-      "yoy_growth": 0.7517
+      "eps": 2.5357,
+      "prev_year_eps": 1.4469,
+      "yoy_growth": 0.7525
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2026-04-30T00:00:00.000",
+      "eps": 3.5119,
+      "prev_year_eps": 2.6318,
+      "yoy_growth": 0.3344
     }
   ]
 }

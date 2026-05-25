@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "TMO",
+      "report_date": "2022-06-30",
+      "gross_profit": 4730000000.0,
+      "total_revenue": 10970000000.0,
+      "gross_margin": 0.4312
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2022-09-30",
+      "gross_profit": 4431000000.0,
+      "total_revenue": 10677000000.0,
+      "gross_margin": 0.415
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2023-06-30",
+      "gross_profit": 4251000000.0,
+      "total_revenue": 10687000000.0,
+      "gross_margin": 0.3978
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2023-09-30",
+      "gross_profit": 4316000000.0,
+      "total_revenue": 10574000000.0,
+      "gross_margin": 0.4082
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2023-12-31",
+      "gross_profit": 4393000000.0,
+      "total_revenue": 10886000000.0,
+      "gross_margin": 0.4035
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2024-03-31",
+      "gross_profit": 4205000000.0,
+      "total_revenue": 10345000000.0,
+      "gross_margin": 0.4065
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2024-06-30",
+      "gross_profit": 4347000000.0,
+      "total_revenue": 10541000000.0,
+      "gross_margin": 0.4124
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2024-09-30",
+      "gross_profit": 4328000000.0,
+      "total_revenue": 10598000000.0,
+      "gross_margin": 0.4084
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2024-12-31",
+      "gross_profit": 4822000000.0,
+      "total_revenue": 11395000000.0,
+      "gross_margin": 0.4232
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2025-03-31",
+      "gross_profit": 4235000000.0,
+      "total_revenue": 10364000000.0,
+      "gross_margin": 0.4086
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2025-06-30",
+      "gross_profit": 4408000000.0,
+      "total_revenue": 10854000000.0,
+      "gross_margin": 0.4061
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2025-09-30",
+      "gross_profit": 4583000000.0,
+      "total_revenue": 11122000000.0,
+      "gross_margin": 0.4121
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2025-12-31",
+      "gross_profit": 5011000000.0,
+      "total_revenue": 12215000000.0,
+      "gross_margin": 0.4102
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2026-03-31",
+      "gross_profit": 4430000000.0,
+      "total_revenue": 11005000000.0,
+      "gross_margin": 0.4025
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "TMO",
+      "report_date": "2019-12-31",
+      "gross_profit": 11827000000.0,
+      "total_revenue": 25542000000.0,
+      "gross_margin": 0.463
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2020-12-31",
+      "gross_profit": 16004000000.0,
+      "total_revenue": 32218000000.0,
+      "gross_margin": 0.4967
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2021-12-31",
+      "gross_profit": 19638000000.0,
+      "total_revenue": 39211000000.0,
+      "gross_margin": 0.5008
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2022-12-31",
+      "gross_profit": 18971000000.0,
+      "total_revenue": 44915000000.0,
+      "gross_margin": 0.4224
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2023-12-31",
+      "gross_profit": 17100000000.0,
+      "total_revenue": 42857000000.0,
+      "gross_margin": 0.399
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2024-12-31",
+      "gross_profit": 17702000000.0,
+      "total_revenue": 42879000000.0,
+      "gross_margin": 0.4128
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2025-12-31",
+      "gross_profit": 18239000000.0,
+      "total_revenue": 44557000000.0,
+      "gross_margin": 0.4093
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "TMO",
+      "report_date": "2022-06-30",
+      "operating_income": 2025000000.0,
+      "total_revenue": 10970000000.0,
+      "operating_margin": 0.1846
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2022-09-30",
+      "operating_income": 1743000000.0,
+      "total_revenue": 10677000000.0,
+      "operating_margin": 0.1632
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2023-06-30",
+      "operating_income": 1761000000.0,
+      "total_revenue": 10687000000.0,
+      "operating_margin": 0.1648
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2023-09-30",
+      "operating_income": 1948000000.0,
+      "total_revenue": 10574000000.0,
+      "operating_margin": 0.1842
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2023-12-31",
+      "operating_income": 1934000000.0,
+      "total_revenue": 10886000000.0,
+      "operating_margin": 0.1777
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2024-03-31",
+      "operating_income": 1691000000.0,
+      "total_revenue": 10345000000.0,
+      "operating_margin": 0.1635
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2024-06-30",
+      "operating_income": 1897000000.0,
+      "total_revenue": 10541000000.0,
+      "operating_margin": 0.18
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2024-09-30",
+      "operating_income": 1884000000.0,
+      "total_revenue": 10598000000.0,
+      "operating_margin": 0.1778
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2024-12-31",
+      "operating_income": 2245000000.0,
+      "total_revenue": 11395000000.0,
+      "operating_margin": 0.197
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2025-03-31",
+      "operating_income": 1815000000.0,
+      "total_revenue": 10364000000.0,
+      "operating_margin": 0.1751
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2025-06-30",
+      "operating_income": 1916000000.0,
+      "total_revenue": 10854000000.0,
+      "operating_margin": 0.1765
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2025-09-30",
+      "operating_income": 2075000000.0,
+      "total_revenue": 11122000000.0,
+      "operating_margin": 0.1866
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2025-12-31",
+      "operating_income": 2303000000.0,
+      "total_revenue": 12215000000.0,
+      "operating_margin": 0.1885
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2026-03-31",
+      "operating_income": 1913000000.0,
+      "total_revenue": 11005000000.0,
+      "operating_margin": 0.1738
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "TMO",
+      "report_date": "2019-12-31",
+      "operating_income": 4181000000.0,
+      "total_revenue": 25542000000.0,
+      "operating_margin": 0.1637
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2020-12-31",
+      "operating_income": 7893000000.0,
+      "total_revenue": 32218000000.0,
+      "operating_margin": 0.245
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2021-12-31",
+      "operating_income": 10225000000.0,
+      "total_revenue": 39211000000.0,
+      "operating_margin": 0.2608
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2022-12-31",
+      "operating_income": 8507000000.0,
+      "total_revenue": 44915000000.0,
+      "operating_margin": 0.1894
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2023-12-31",
+      "operating_income": 7318000000.0,
+      "total_revenue": 42857000000.0,
+      "operating_margin": 0.1708
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2024-12-31",
+      "operating_income": 7717000000.0,
+      "total_revenue": 42879000000.0,
+      "operating_margin": 0.18
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2025-12-31",
+      "operating_income": 8110000000.0,
+      "total_revenue": 44557000000.0,
+      "operating_margin": 0.182
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "TMO",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 1664000000.0,
+      "total_revenue": 10970000000.0,
+      "net_margin": 0.1517
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": 1495000000.0,
+      "total_revenue": 10677000000.0,
+      "net_margin": 0.14
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 1361000000.0,
+      "total_revenue": 10687000000.0,
+      "net_margin": 0.1274
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1715000000.0,
+      "total_revenue": 10574000000.0,
+      "net_margin": 0.1622
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1630000000.0,
+      "total_revenue": 10886000000.0,
+      "net_margin": 0.1497
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1328000000.0,
+      "total_revenue": 10345000000.0,
+      "net_margin": 0.1284
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1548000000.0,
+      "total_revenue": 10541000000.0,
+      "net_margin": 0.1469
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1630000000.0,
+      "total_revenue": 10598000000.0,
+      "net_margin": 0.1538
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1830000000.0,
+      "total_revenue": 11395000000.0,
+      "net_margin": 0.1606
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1507000000.0,
+      "total_revenue": 10364000000.0,
+      "net_margin": 0.1454
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 6584000000.0,
+      "total_revenue": 10854000000.0,
+      "net_margin": 0.6066
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1616000000.0,
+      "total_revenue": 11122000000.0,
+      "net_margin": 0.1453
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1964000000.0,
+      "total_revenue": 12215000000.0,
+      "net_margin": 0.1608
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 6848000000.0,
+      "total_revenue": 11005000000.0,
+      "net_margin": 0.6223
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "TMO",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": 3696000000.0,
+      "total_revenue": 25542000000.0,
+      "net_margin": 0.1447
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 6375000000.0,
+      "total_revenue": 32218000000.0,
+      "net_margin": 0.1979
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 7725000000.0,
+      "total_revenue": 39211000000.0,
+      "net_margin": 0.197
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 6950000000.0,
+      "total_revenue": 44915000000.0,
+      "net_margin": 0.1547
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 5995000000.0,
+      "total_revenue": 42857000000.0,
+      "net_margin": 0.1399
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 6335000000.0,
+      "total_revenue": 42879000000.0,
+      "net_margin": 0.1477
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 6704000000.0,
+      "total_revenue": 44557000000.0,
+      "net_margin": 0.1505
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "TMO",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 10970000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2022-09-30",
+      "ebitda": 2612000000.0,
+      "total_revenue": 10677000000.0,
+      "ebitda_margin": 0.2446
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2023-06-30",
+      "ebitda": 2611000000.0,
+      "total_revenue": 10687000000.0,
+      "ebitda_margin": 0.2443
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2023-09-30",
+      "ebitda": 2977000000.0,
+      "total_revenue": 10574000000.0,
+      "ebitda_margin": 0.2815
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2023-12-31",
+      "ebitda": 2969000000.0,
+      "total_revenue": 10886000000.0,
+      "ebitda_margin": 0.2727
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2024-03-31",
+      "ebitda": 2788000000.0,
+      "total_revenue": 10345000000.0,
+      "ebitda_margin": 0.2695
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2024-06-30",
+      "ebitda": 2910000000.0,
+      "total_revenue": 10541000000.0,
+      "ebitda_margin": 0.2761
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2024-09-30",
+      "ebitda": 2837000000.0,
+      "total_revenue": 10598000000.0,
+      "ebitda_margin": 0.2677
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2024-12-31",
+      "ebitda": 3000000000.0,
+      "total_revenue": 11395000000.0,
+      "ebitda_margin": 0.2633
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2025-03-31",
+      "ebitda": 2628000000.0,
+      "total_revenue": 10364000000.0,
+      "ebitda_margin": 0.2536
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2025-06-30",
+      "ebitda": 11264000000.0,
+      "total_revenue": 10854000000.0,
+      "ebitda_margin": 1.0378
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2025-09-30",
+      "ebitda": 2834000000.0,
+      "total_revenue": 11122000000.0,
+      "ebitda_margin": 0.2548
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2025-12-31",
+      "ebitda": 3246000000.0,
+      "total_revenue": 12215000000.0,
+      "ebitda_margin": 0.2657
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2026-03-31",
+      "ebitda": 11703000000.0,
+      "total_revenue": 11005000000.0,
+      "ebitda_margin": 1.0634
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "TMO",
+      "report_date": "2019-12-31",
+      "ebitda": 7023000000.0,
+      "total_revenue": 25542000000.0,
+      "ebitda_margin": 0.275
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2020-12-31",
+      "ebitda": 10108000000.0,
+      "total_revenue": 32218000000.0,
+      "ebitda_margin": 0.3137
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2021-12-31",
+      "ebitda": 11969000000.0,
+      "total_revenue": 39211000000.0,
+      "ebitda_margin": 0.3052
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2022-12-31",
+      "ebitda": 11942000000.0,
+      "total_revenue": 44915000000.0,
+      "ebitda_margin": 0.2659
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2023-12-31",
+      "ebitda": 11079000000.0,
+      "total_revenue": 42857000000.0,
+      "ebitda_margin": 0.2585
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2024-12-31",
+      "ebitda": 11535000000.0,
+      "total_revenue": 42879000000.0,
+      "ebitda_margin": 0.269
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2025-12-31",
+      "ebitda": 11507000000.0,
+      "total_revenue": 44557000000.0,
+      "ebitda_margin": 0.2583
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "TMO",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 1022000000.0,
+      "total_revenue": 10970000000.0,
+      "fcf_margin": 0.0932
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": 10677000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 1256000000.0,
+      "total_revenue": 10687000000.0,
+      "fcf_margin": 0.1175
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 2082000000.0,
+      "total_revenue": 10574000000.0,
+      "fcf_margin": 0.1969
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 3318000000.0,
+      "total_revenue": 10886000000.0,
+      "fcf_margin": 0.3048
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 904000000.0,
+      "total_revenue": 10345000000.0,
+      "fcf_margin": 0.0874
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 1659000000.0,
+      "total_revenue": 10541000000.0,
+      "fcf_margin": 0.1574
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 1894000000.0,
+      "total_revenue": 10598000000.0,
+      "fcf_margin": 0.1787
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 2810000000.0,
+      "total_revenue": 11395000000.0,
+      "fcf_margin": 0.2466
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 361000000.0,
+      "total_revenue": 10364000000.0,
+      "fcf_margin": 0.0348
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 6170000000.0,
+      "total_revenue": 10854000000.0,
+      "fcf_margin": 0.5685
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 1835000000.0,
+      "total_revenue": 11122000000.0,
+      "fcf_margin": 0.165
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 2992000000.0,
+      "total_revenue": 12215000000.0,
+      "fcf_margin": 0.2449
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 6748000000.0,
+      "total_revenue": 11005000000.0,
+      "fcf_margin": 0.6132
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "TMO",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": 25542000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 6815000000.0,
+      "total_revenue": 32218000000.0,
+      "fcf_margin": 0.2115
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 6789000000.0,
+      "total_revenue": 39211000000.0,
+      "fcf_margin": 0.1731
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 6911000000.0,
+      "total_revenue": 44915000000.0,
+      "fcf_margin": 0.1539
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 6927000000.0,
+      "total_revenue": 42857000000.0,
+      "fcf_margin": 0.1616
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 7267000000.0,
+      "total_revenue": 42879000000.0,
+      "fcf_margin": 0.1695
+    },
+    {
+      "symbol": "TMO",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 6293000000.0,
+      "total_revenue": 44557000000.0,
+      "fcf_margin": 0.1412
+    }
+  ]
+}

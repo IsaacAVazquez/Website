@@ -59,16 +59,16 @@
     {
       "symbol": "APP",
       "report_date": "2025-03-31T00:00:00.000",
-      "revenue": 1484021000.0,
+      "revenue": 1158974000.0,
       "prev_year_revenue": 1058115000.0,
-      "yoy_growth": 0.4025
+      "yoy_growth": 0.0953
     },
     {
       "symbol": "APP",
       "report_date": "2025-06-30T00:00:00.000",
-      "revenue": 1258754000.0,
+      "revenue": 5737591000.0,
       "prev_year_revenue": 711015000.0,
-      "yoy_growth": 0.7704
+      "yoy_growth": 7.0696
     },
     {
       "symbol": "APP",
@@ -83,6 +83,13 @@
       "revenue": 1657944000.0,
       "prev_year_revenue": 1372779000.0,
       "yoy_growth": 0.2077
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-03-31T00:00:00.000",
+      "revenue": 6164192000.0,
+      "prev_year_revenue": 1158974000.0,
+      "yoy_growth": 4.3187
     }
   ],
   "annual_revenue": [
@@ -189,16 +196,16 @@
     {
       "symbol": "APP",
       "report_date": "2025-03-31T00:00:00.000",
-      "operating_income": 852414000.0,
+      "operating_income": 839982000.0,
       "prev_year_operating_income": 339559000.0,
-      "yoy_growth": 1.5104
+      "yoy_growth": 1.4737
     },
     {
       "symbol": "APP",
       "report_date": "2025-06-30T00:00:00.000",
-      "operating_income": 957682000.0,
+      "operating_income": 2922800000.0,
       "prev_year_operating_income": 384422000.0,
-      "yoy_growth": 1.4912
+      "yoy_growth": 6.6031
     },
     {
       "symbol": "APP",
@@ -213,6 +220,13 @@
       "operating_income": 1275243000.0,
       "prev_year_operating_income": 607980000.0,
       "yoy_growth": 1.0975
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-03-31T00:00:00.000",
+      "operating_income": 4751865000.0,
+      "prev_year_operating_income": 839982000.0,
+      "yoy_growth": 4.6571
     }
   ],
   "annual_operating_income": [
@@ -312,9 +326,9 @@
     {
       "symbol": "APP",
       "report_date": "2025-03-31T00:00:00.000",
-      "ebitda": 751169000.0,
+      "ebitda": 927381000.0,
       "prev_year_ebitda": 454794000.0,
-      "yoy_growth": 0.6517
+      "yoy_growth": 1.0391
     },
     {
       "symbol": "APP",
@@ -336,6 +350,13 @@
       "ebitda": 1337380000.0,
       "prev_year_ebitda": 737160000.0,
       "yoy_growth": 0.8142
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-03-31T00:00:00.000",
+      "ebitda": 1516232000.0,
+      "prev_year_ebitda": 927381000.0,
+      "yoy_growth": 0.635
     }
   ],
   "annual_ebitda": [
@@ -466,6 +487,13 @@
       "net_income_common_stockholders": 1102207000.0,
       "prev_year_net_income_common_stockholders": 598659000.0,
       "yoy_growth": 0.8411
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-03-31T00:00:00.000",
+      "net_income_common_stockholders": 1205613000.0,
+      "prev_year_net_income_common_stockholders": 576275000.0,
+      "yoy_growth": 1.0921
     }
   ],
   "annual_net_income": [
@@ -596,6 +624,13 @@
       "free_cash_flow": 1285416000.0,
       "prev_year_free_cash_flow": 714516000.0,
       "yoy_growth": 0.799
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-03-31T00:00:00.000",
+      "free_cash_flow": 1291393000.0,
+      "prev_year_free_cash_flow": 831712000.0,
+      "yoy_growth": 0.5527
     }
   ],
   "annual_fcf": [
@@ -646,198 +681,205 @@
     {
       "symbol": "APP",
       "report_date": "2019-03-31T00:00:00.000",
-      "eps": 0.06,
+      "eps": 0.0601,
       "prev_year_eps": null,
       "yoy_growth": null
     },
     {
       "symbol": "APP",
       "report_date": "2019-06-30T00:00:00.000",
-      "eps": 0.1,
+      "eps": 0.0991,
       "prev_year_eps": null,
       "yoy_growth": null
     },
     {
       "symbol": "APP",
       "report_date": "2019-09-30T00:00:00.000",
-      "eps": 0.06,
+      "eps": 0.0643,
       "prev_year_eps": null,
       "yoy_growth": null
     },
     {
       "symbol": "APP",
       "report_date": "2019-12-31T00:00:00.000",
-      "eps": 0.11,
+      "eps": 0.109,
       "prev_year_eps": null,
       "yoy_growth": null
     },
     {
       "symbol": "APP",
       "report_date": "2020-03-31T00:00:00.000",
-      "eps": 0.01,
-      "prev_year_eps": 0.06,
-      "yoy_growth": -0.8333
+      "eps": 0.0083,
+      "prev_year_eps": 0.0601,
+      "yoy_growth": -0.8619
     },
     {
       "symbol": "APP",
       "report_date": "2020-06-30T00:00:00.000",
-      "eps": -0.06,
-      "prev_year_eps": 0.1,
-      "yoy_growth": -1.6
+      "eps": -0.0587,
+      "prev_year_eps": 0.0991,
+      "yoy_growth": -1.5923
     },
     {
       "symbol": "APP",
       "report_date": "2020-09-30T00:00:00.000",
-      "eps": -0.25,
-      "prev_year_eps": 0.06,
-      "yoy_growth": -5.1667
+      "eps": -0.2512,
+      "prev_year_eps": 0.0643,
+      "yoy_growth": -4.9067
     },
     {
       "symbol": "APP",
       "report_date": "2020-12-31T00:00:00.000",
-      "eps": -0.05,
-      "prev_year_eps": 0.11,
-      "yoy_growth": -1.4545
+      "eps": -0.053,
+      "prev_year_eps": 0.109,
+      "yoy_growth": -1.4862
     },
     {
       "symbol": "APP",
       "report_date": "2021-03-31T00:00:00.000",
-      "eps": -0.03,
-      "prev_year_eps": 0.01,
-      "yoy_growth": -4.0
+      "eps": -0.0288,
+      "prev_year_eps": 0.0083,
+      "yoy_growth": -4.4699
     },
     {
       "symbol": "APP",
       "report_date": "2021-06-30T00:00:00.000",
-      "eps": 0.04,
-      "prev_year_eps": -0.06,
-      "yoy_growth": 1.6667
+      "eps": 0.0357,
+      "prev_year_eps": -0.0587,
+      "yoy_growth": 1.6082
     },
     {
       "symbol": "APP",
       "report_date": "2021-09-30T00:00:00.000",
-      "eps": 0.0,
-      "prev_year_eps": -0.25,
-      "yoy_growth": 1.0
+      "eps": 0.0005,
+      "prev_year_eps": -0.2512,
+      "yoy_growth": 1.002
     },
     {
       "symbol": "APP",
       "report_date": "2021-12-31T00:00:00.000",
-      "eps": 0.08,
-      "prev_year_eps": -0.05,
-      "yoy_growth": 2.6
+      "eps": 0.0828,
+      "prev_year_eps": -0.053,
+      "yoy_growth": 2.5623
     },
     {
       "symbol": "APP",
       "report_date": "2022-03-31T00:00:00.000",
-      "eps": -0.31,
-      "prev_year_eps": -0.03,
-      "yoy_growth": -9.3333
+      "eps": -0.3099,
+      "prev_year_eps": -0.0288,
+      "yoy_growth": -9.7604
     },
     {
       "symbol": "APP",
       "report_date": "2022-06-30T00:00:00.000",
-      "eps": -0.06,
-      "prev_year_eps": 0.04,
-      "yoy_growth": -2.5
+      "eps": -0.0582,
+      "prev_year_eps": 0.0357,
+      "yoy_growth": -2.6303
     },
     {
       "symbol": "APP",
       "report_date": "2022-09-30T00:00:00.000",
-      "eps": 0.06,
-      "prev_year_eps": 0.0,
-      "yoy_growth": 1.0
+      "eps": 0.0625,
+      "prev_year_eps": 0.0005,
+      "yoy_growth": 124.0
     },
     {
       "symbol": "APP",
       "report_date": "2022-12-31T00:00:00.000",
-      "eps": -0.21,
-      "prev_year_eps": 0.08,
-      "yoy_growth": -3.625
+      "eps": -0.2143,
+      "prev_year_eps": 0.0828,
+      "yoy_growth": -3.5882
     },
     {
       "symbol": "APP",
       "report_date": "2023-03-31T00:00:00.000",
-      "eps": -0.01,
-      "prev_year_eps": -0.31,
-      "yoy_growth": 0.9677
+      "eps": -0.0121,
+      "prev_year_eps": -0.3099,
+      "yoy_growth": 0.961
     },
     {
       "symbol": "APP",
       "report_date": "2023-06-30T00:00:00.000",
-      "eps": 0.22,
-      "prev_year_eps": -0.06,
-      "yoy_growth": 4.6667
+      "eps": 0.2185,
+      "prev_year_eps": -0.0582,
+      "yoy_growth": 4.7543
     },
     {
       "symbol": "APP",
       "report_date": "2023-09-30T00:00:00.000",
-      "eps": 0.3,
-      "prev_year_eps": 0.06,
-      "yoy_growth": 4.0
+      "eps": 0.3022,
+      "prev_year_eps": 0.0625,
+      "yoy_growth": 3.8352
     },
     {
       "symbol": "APP",
       "report_date": "2023-12-31T00:00:00.000",
-      "eps": 0.49,
-      "prev_year_eps": -0.21,
-      "yoy_growth": 3.3333
+      "eps": 0.4936,
+      "prev_year_eps": -0.2143,
+      "yoy_growth": 3.3033
     },
     {
       "symbol": "APP",
       "report_date": "2024-03-31T00:00:00.000",
-      "eps": 0.67,
-      "prev_year_eps": -0.01,
-      "yoy_growth": 68.0
+      "eps": 0.6735,
+      "prev_year_eps": -0.0121,
+      "yoy_growth": 56.6612
     },
     {
       "symbol": "APP",
       "report_date": "2024-06-30T00:00:00.000",
-      "eps": 0.89,
-      "prev_year_eps": 0.22,
-      "yoy_growth": 3.0455
+      "eps": 0.8906,
+      "prev_year_eps": 0.2185,
+      "yoy_growth": 3.076
     },
     {
       "symbol": "APP",
       "report_date": "2024-09-30T00:00:00.000",
-      "eps": 1.25,
-      "prev_year_eps": 0.3,
-      "yoy_growth": 3.1667
+      "eps": 1.2472,
+      "prev_year_eps": 0.3022,
+      "yoy_growth": 3.1271
     },
     {
       "symbol": "APP",
       "report_date": "2024-12-31T00:00:00.000",
-      "eps": 1.73,
-      "prev_year_eps": 0.49,
-      "yoy_growth": 2.5306
+      "eps": 1.7281,
+      "prev_year_eps": 0.4936,
+      "yoy_growth": 2.501
     },
     {
       "symbol": "APP",
       "report_date": "2025-03-31T00:00:00.000",
-      "eps": 1.67,
-      "prev_year_eps": 0.67,
-      "yoy_growth": 1.4925
+      "eps": 2.0974,
+      "prev_year_eps": 0.6735,
+      "yoy_growth": 2.1142
     },
     {
       "symbol": "APP",
       "report_date": "2025-06-30T00:00:00.000",
-      "eps": 2.08,
-      "prev_year_eps": 0.89,
-      "yoy_growth": 1.3371
+      "eps": 2.0839,
+      "prev_year_eps": 0.8906,
+      "yoy_growth": 1.3399
     },
     {
       "symbol": "APP",
       "report_date": "2025-09-30T00:00:00.000",
-      "eps": 2.45,
-      "prev_year_eps": 1.25,
-      "yoy_growth": 0.96
+      "eps": 2.4503,
+      "prev_year_eps": 1.2472,
+      "yoy_growth": 0.9646
     },
     {
       "symbol": "APP",
       "report_date": "2025-12-31T00:00:00.000",
-      "eps": 3.24,
-      "prev_year_eps": 1.73,
-      "yoy_growth": 0.8728
+      "eps": 3.2427,
+      "prev_year_eps": 1.7281,
+      "yoy_growth": 0.8765
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-03-31T00:00:00.000",
+      "eps": 3.5592,
+      "prev_year_eps": 2.0974,
+      "yoy_growth": 0.697
     }
   ]
 }

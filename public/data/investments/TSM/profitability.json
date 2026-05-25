@@ -89,6 +89,15 @@
       "ending_stockholders_equity": 5355038700000.0,
       "avg_equity": 5176672836000.0,
       "roe": 0.0938
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1908519624000.0,
+      "beginning_stockholders_equity": 5355038700000.0,
+      "ending_stockholders_equity": 5890960252000.0,
+      "avg_equity": 5622999476000.0,
+      "roe": 0.3394
     }
   ],
   "roa": [
@@ -181,6 +190,15 @@
       "ending_total_assets": 7932842500000.0,
       "avg_assets": 7643474788000.0,
       "roa": 0.0635
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1908519624000.0,
+      "beginning_total_assets": 7932842500000.0,
+      "ending_total_assets": 8660949685000.0,
+      "avg_assets": 8296896092500.0,
+      "roa": 0.23
     }
   ],
   "roic": [
@@ -268,9 +286,9 @@
       "tax_rate_for_calcs": 0.19,
       "nopat": 402348302190.0,
       "beginning_invested_capital": 5612918127000.0,
-      "ending_invested_capital": 5464745077000.0,
-      "avg_invested_capital": 5538831602000.0,
-      "roic": 0.0726
+      "ending_invested_capital": 5558958718000.0,
+      "avg_invested_capital": 5585938422500.0,
+      "roic": 0.072
     },
     {
       "symbol": "TSM",
@@ -278,10 +296,10 @@
       "ebit": 528327591000.0,
       "tax_rate_for_calcs": 0.14,
       "nopat": 454361728260.0,
-      "beginning_invested_capital": 5464745077000.0,
-      "ending_invested_capital": 5916535228000.0,
-      "avg_invested_capital": 5690640152500.0,
-      "roic": 0.0798
+      "beginning_invested_capital": 5558958718000.0,
+      "ending_invested_capital": 5992760841000.0,
+      "avg_invested_capital": 5775859779500.0,
+      "roic": 0.0787
     },
     {
       "symbol": "TSM",
@@ -289,10 +307,21 @@
       "ebit": 595398524000.0,
       "tax_rate_for_calcs": 0.18,
       "nopat": 488226789680.0,
-      "beginning_invested_capital": 5916535228000.0,
+      "beginning_invested_capital": 5992760841000.0,
       "ending_invested_capital": 6388026400000.0,
-      "avg_invested_capital": 6152280814000.0,
-      "roic": 0.0794
+      "avg_invested_capital": 6190393620500.0,
+      "roic": 0.0789
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2026-03-31",
+      "ebit": 2310968963000.0,
+      "tax_rate_for_calcs": 0.17,
+      "nopat": 1918104239290.0,
+      "beginning_invested_capital": 6388026400000.0,
+      "ending_invested_capital": 6948219732000.0,
+      "avg_invested_capital": 6668123066000.0,
+      "roic": 0.2877
     }
   ],
   "equityMultiplier": [
@@ -364,6 +393,13 @@
       "report_date": "2025-12-31T00:00:00.000",
       "roe": 0.0938,
       "roa": 0.0635,
+      "equity_multiplier": 1.48
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.3394,
+      "roa": 0.23,
       "equity_multiplier": 1.48
     }
   ],
@@ -437,6 +473,13 @@
       "roa": 0.0635,
       "net_margin": 0.4641,
       "asset_turnover": 0.14
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.23,
+      "net_margin": 0.465,
+      "asset_turnover": 0.49
     }
   ]
 }

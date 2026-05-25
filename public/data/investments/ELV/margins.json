@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "ELV",
+      "report_date": "2022-06-30",
+      "gross_profit": null,
+      "total_revenue": 38632000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2023-06-30",
+      "gross_profit": null,
+      "total_revenue": 43672000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2023-09-30",
+      "gross_profit": null,
+      "total_revenue": 42849000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2023-12-31",
+      "gross_profit": null,
+      "total_revenue": 42647000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-03-31",
+      "gross_profit": null,
+      "total_revenue": 42577000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-06-30",
+      "gross_profit": null,
+      "total_revenue": 43646000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-09-30",
+      "gross_profit": null,
+      "total_revenue": 45145000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-12-31",
+      "gross_profit": null,
+      "total_revenue": 45442000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-03-31",
+      "gross_profit": null,
+      "total_revenue": 48891000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-06-30",
+      "gross_profit": null,
+      "total_revenue": 49776000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-09-30",
+      "gross_profit": null,
+      "total_revenue": 50711000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-12-31",
+      "gross_profit": null,
+      "total_revenue": 49747000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2026-03-31",
+      "gross_profit": null,
+      "total_revenue": 50181000000.0,
+      "gross_margin": null
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "ELV",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2020-12-31",
+      "gross_profit": null,
+      "total_revenue": 121867000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2021-12-31",
+      "gross_profit": null,
+      "total_revenue": 138639000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": 156595000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2023-12-31",
+      "gross_profit": null,
+      "total_revenue": 171340000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-12-31",
+      "gross_profit": null,
+      "total_revenue": 176810000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-12-31",
+      "gross_profit": null,
+      "total_revenue": 199125000000.0,
+      "gross_margin": null
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "ELV",
+      "report_date": "2022-06-30",
+      "operating_income": null,
+      "total_revenue": 38632000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2023-06-30",
+      "operating_income": null,
+      "total_revenue": 43672000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2023-09-30",
+      "operating_income": null,
+      "total_revenue": 42849000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2023-12-31",
+      "operating_income": null,
+      "total_revenue": 42647000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-03-31",
+      "operating_income": null,
+      "total_revenue": 42577000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-06-30",
+      "operating_income": null,
+      "total_revenue": 43646000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-09-30",
+      "operating_income": null,
+      "total_revenue": 45145000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-12-31",
+      "operating_income": null,
+      "total_revenue": 45442000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-03-31",
+      "operating_income": null,
+      "total_revenue": 48891000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-06-30",
+      "operating_income": null,
+      "total_revenue": 49776000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-09-30",
+      "operating_income": null,
+      "total_revenue": 50711000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-12-31",
+      "operating_income": null,
+      "total_revenue": 49747000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2026-03-31",
+      "operating_income": null,
+      "total_revenue": 50181000000.0,
+      "operating_margin": null
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "ELV",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2020-12-31",
+      "operating_income": null,
+      "total_revenue": 121867000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2021-12-31",
+      "operating_income": null,
+      "total_revenue": 138639000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": 156595000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2023-12-31",
+      "operating_income": null,
+      "total_revenue": 171340000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-12-31",
+      "operating_income": null,
+      "total_revenue": 176810000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-12-31",
+      "operating_income": null,
+      "total_revenue": 199125000000.0,
+      "operating_margin": null
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "ELV",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 1653000000.0,
+      "total_revenue": 38632000000.0,
+      "net_margin": 0.0428
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 1853000000.0,
+      "total_revenue": 43672000000.0,
+      "net_margin": 0.0424
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1289000000.0,
+      "total_revenue": 42849000000.0,
+      "net_margin": 0.0301
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 856000000.0,
+      "total_revenue": 42647000000.0,
+      "net_margin": 0.0201
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 2246000000.0,
+      "total_revenue": 42577000000.0,
+      "net_margin": 0.0528
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 2300000000.0,
+      "total_revenue": 43646000000.0,
+      "net_margin": 0.0527
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1016000000.0,
+      "total_revenue": 45145000000.0,
+      "net_margin": 0.0225
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 418000000.0,
+      "total_revenue": 45442000000.0,
+      "net_margin": 0.0092
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 2183000000.0,
+      "total_revenue": 48891000000.0,
+      "net_margin": 0.0447
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 5360000000.0,
+      "total_revenue": 49776000000.0,
+      "net_margin": 0.1077
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1189000000.0,
+      "total_revenue": 50711000000.0,
+      "net_margin": 0.0234
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 547000000.0,
+      "total_revenue": 49747000000.0,
+      "net_margin": 0.011
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 5243000000.0,
+      "total_revenue": 50181000000.0,
+      "net_margin": 0.1045
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "ELV",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 4572000000.0,
+      "total_revenue": 121867000000.0,
+      "net_margin": 0.0375
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 6158000000.0,
+      "total_revenue": 138639000000.0,
+      "net_margin": 0.0444
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 5894000000.0,
+      "total_revenue": 156595000000.0,
+      "net_margin": 0.0376
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 5987000000.0,
+      "total_revenue": 171340000000.0,
+      "net_margin": 0.0349
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 5980000000.0,
+      "total_revenue": 176810000000.0,
+      "net_margin": 0.0338
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 5662000000.0,
+      "total_revenue": 199125000000.0,
+      "net_margin": 0.0284
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "ELV",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 38632000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2023-06-30",
+      "ebitda": null,
+      "total_revenue": 43672000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2023-09-30",
+      "ebitda": null,
+      "total_revenue": 42849000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2023-12-31",
+      "ebitda": null,
+      "total_revenue": 42647000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-03-31",
+      "ebitda": null,
+      "total_revenue": 42577000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-06-30",
+      "ebitda": null,
+      "total_revenue": 43646000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-09-30",
+      "ebitda": null,
+      "total_revenue": 45145000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-12-31",
+      "ebitda": null,
+      "total_revenue": 45442000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-03-31",
+      "ebitda": null,
+      "total_revenue": 48891000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-06-30",
+      "ebitda": null,
+      "total_revenue": 49776000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-09-30",
+      "ebitda": null,
+      "total_revenue": 50711000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-12-31",
+      "ebitda": null,
+      "total_revenue": 49747000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2026-03-31",
+      "ebitda": null,
+      "total_revenue": 50181000000.0,
+      "ebitda_margin": null
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "ELV",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2020-12-31",
+      "ebitda": null,
+      "total_revenue": 121867000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2021-12-31",
+      "ebitda": null,
+      "total_revenue": 138639000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": 156595000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2023-12-31",
+      "ebitda": null,
+      "total_revenue": 171340000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-12-31",
+      "ebitda": null,
+      "total_revenue": 176810000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-12-31",
+      "ebitda": null,
+      "total_revenue": 199125000000.0,
+      "ebitda_margin": null
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "ELV",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 2157000000.0,
+      "total_revenue": 38632000000.0,
+      "fcf_margin": 0.0558
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2022-09-30",
+      "free_cash_flow": 4619000000.0,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 1600000000.0,
+      "total_revenue": 43672000000.0,
+      "fcf_margin": 0.0366
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 2294000000.0,
+      "total_revenue": 42849000000.0,
+      "fcf_margin": 0.0535
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2023-12-31",
+      "free_cash_flow": -3297000000.0,
+      "total_revenue": 42647000000.0,
+      "fcf_margin": -0.0773
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 1699000000.0,
+      "total_revenue": 42577000000.0,
+      "fcf_margin": 0.0399
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 124000000.0,
+      "total_revenue": 43646000000.0,
+      "fcf_margin": 0.0028
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 2345000000.0,
+      "total_revenue": 45145000000.0,
+      "fcf_margin": 0.0519
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 384000000.0,
+      "total_revenue": 45442000000.0,
+      "fcf_margin": 0.0085
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 821000000.0,
+      "total_revenue": 48891000000.0,
+      "fcf_margin": 0.0168
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 5337000000.0,
+      "total_revenue": 49776000000.0,
+      "fcf_margin": 0.1072
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 775000000.0,
+      "total_revenue": 50711000000.0,
+      "fcf_margin": 0.0153
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-12-31",
+      "free_cash_flow": -209000000.0,
+      "total_revenue": 49747000000.0,
+      "fcf_margin": -0.0042
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 6450000000.0,
+      "total_revenue": 50181000000.0,
+      "fcf_margin": 0.1285
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "ELV",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 9667000000.0,
+      "total_revenue": 121867000000.0,
+      "fcf_margin": 0.0793
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 7277000000.0,
+      "total_revenue": 138639000000.0,
+      "fcf_margin": 0.0525
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 7247000000.0,
+      "total_revenue": 156595000000.0,
+      "fcf_margin": 0.0463
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 6765000000.0,
+      "total_revenue": 171340000000.0,
+      "fcf_margin": 0.0395
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 4552000000.0,
+      "total_revenue": 176810000000.0,
+      "fcf_margin": 0.0257
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 3174000000.0,
+      "total_revenue": 199125000000.0,
+      "fcf_margin": 0.0159
+    }
+  ]
+}

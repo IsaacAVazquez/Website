@@ -66,9 +66,9 @@
     {
       "symbol": "KLAC",
       "report_date": "2025-06-30T00:00:00.000",
-      "revenue": 3174741000.0,
+      "revenue": 12156162000.0,
       "prev_year_revenue": 2568735000.0,
-      "yoy_growth": 0.2359
+      "yoy_growth": 3.7324
     },
     {
       "symbol": "KLAC",
@@ -87,9 +87,9 @@
     {
       "symbol": "KLAC",
       "report_date": "2026-03-31T00:00:00.000",
-      "revenue": 3415078000.0,
+      "revenue": 13096661000.0,
       "prev_year_revenue": 3063029000.0,
-      "yoy_growth": 0.1149
+      "yoy_growth": 3.2757
     }
   ],
   "annual_revenue": [
@@ -196,9 +196,9 @@
     {
       "symbol": "KLAC",
       "report_date": "2025-06-30T00:00:00.000",
-      "operating_income": 1351760000.0,
+      "operating_income": 5014227000.0,
       "prev_year_operating_income": 977319000.0,
-      "yoy_growth": 0.3831
+      "yoy_growth": 4.1306
     },
     {
       "symbol": "KLAC",
@@ -217,9 +217,9 @@
     {
       "symbol": "KLAC",
       "report_date": "2026-03-31T00:00:00.000",
-      "operating_income": 1407509000.0,
+      "operating_income": 5458592000.0,
       "prev_year_operating_income": 1300392000.0,
-      "yoy_growth": 0.0824
+      "yoy_growth": 3.1977
     }
   ],
   "annual_operating_income": [
@@ -653,14 +653,14 @@
     {
       "symbol": "KLAC",
       "report_date": "1997-12-31T00:00:00.000",
-      "eps": 0.3,
+      "eps": 0.295,
       "prev_year_eps": null,
       "yoy_growth": null
     },
     {
       "symbol": "KLAC",
       "report_date": "1998-03-31T00:00:00.000",
-      "eps": 0.17,
+      "eps": 0.165,
       "prev_year_eps": null,
       "yoy_growth": null
     },
@@ -674,23 +674,23 @@
     {
       "symbol": "KLAC",
       "report_date": "1998-09-30T00:00:00.000",
-      "eps": 0.06,
+      "eps": 0.055,
       "prev_year_eps": 0.28,
-      "yoy_growth": -0.7857
+      "yoy_growth": -0.8036
     },
     {
       "symbol": "KLAC",
       "report_date": "1998-12-31T00:00:00.000",
       "eps": -0.1,
-      "prev_year_eps": 0.3,
-      "yoy_growth": -1.3333
+      "prev_year_eps": 0.295,
+      "yoy_growth": -1.339
     },
     {
       "symbol": "KLAC",
       "report_date": "1999-03-31T00:00:00.000",
       "eps": 0.11,
-      "prev_year_eps": 0.17,
-      "yoy_growth": -0.3529
+      "prev_year_eps": 0.165,
+      "yoy_growth": -0.3333
     },
     {
       "symbol": "KLAC",
@@ -703,8 +703,8 @@
       "symbol": "KLAC",
       "report_date": "1999-09-30T00:00:00.000",
       "eps": 0.21,
-      "prev_year_eps": 0.06,
-      "yoy_growth": 2.5
+      "prev_year_eps": 0.055,
+      "yoy_growth": 2.8182
     },
     {
       "symbol": "KLAC",
@@ -891,9 +891,9 @@
     {
       "symbol": "KLAC",
       "report_date": "2006-06-30T00:00:00.000",
-      "eps": 0.64,
+      "eps": 0.6355,
       "prev_year_eps": 0.52,
-      "yoy_growth": 0.2308
+      "yoy_growth": 0.2221
     },
     {
       "symbol": "KLAC",
@@ -920,8 +920,8 @@
       "symbol": "KLAC",
       "report_date": "2007-06-30T00:00:00.000",
       "eps": 0.75,
-      "prev_year_eps": 0.64,
-      "yoy_growth": 0.1719
+      "prev_year_eps": 0.6355,
+      "yoy_growth": 0.1802
     },
     {
       "symbol": "KLAC",
@@ -1220,16 +1220,16 @@
     {
       "symbol": "KLAC",
       "report_date": "2018-03-31T00:00:00.000",
-      "eps": 1.95,
+      "eps": 1.9522,
       "prev_year_eps": 1.61,
-      "yoy_growth": 0.2112
+      "yoy_growth": 0.2125
     },
     {
       "symbol": "KLAC",
       "report_date": "2018-06-30T00:00:00.000",
-      "eps": 2.22,
+      "eps": 2.224,
       "prev_year_eps": 1.62,
-      "yoy_growth": 0.3704
+      "yoy_growth": 0.3728
     },
     {
       "symbol": "KLAC",
@@ -1241,212 +1241,212 @@
     {
       "symbol": "KLAC",
       "report_date": "2018-12-31T00:00:00.000",
-      "eps": 2.42,
+      "eps": 2.418,
       "prev_year_eps": -0.86,
-      "yoy_growth": 3.814
+      "yoy_growth": 3.8116
     },
     {
       "symbol": "KLAC",
       "report_date": "2019-03-31T00:00:00.000",
-      "eps": 1.23,
-      "prev_year_eps": 1.95,
-      "yoy_growth": -0.3692
+      "eps": 1.2262,
+      "prev_year_eps": 1.9522,
+      "yoy_growth": -0.3719
     },
     {
       "symbol": "KLAC",
       "report_date": "2019-06-30T00:00:00.000",
-      "eps": 1.35,
-      "prev_year_eps": 2.22,
-      "yoy_growth": -0.3919
+      "eps": 1.3452,
+      "prev_year_eps": 2.224,
+      "yoy_growth": -0.3951
     },
     {
       "symbol": "KLAC",
       "report_date": "2019-09-30T00:00:00.000",
-      "eps": 2.16,
+      "eps": 2.164,
       "prev_year_eps": 2.54,
-      "yoy_growth": -0.1496
+      "yoy_growth": -0.148
     },
     {
       "symbol": "KLAC",
       "report_date": "2019-12-31T00:00:00.000",
-      "eps": 2.4,
-      "prev_year_eps": 2.42,
-      "yoy_growth": -0.0083
+      "eps": 2.3992,
+      "prev_year_eps": 2.418,
+      "yoy_growth": -0.0078
     },
     {
       "symbol": "KLAC",
       "report_date": "2020-03-31T00:00:00.000",
-      "eps": 0.5,
-      "prev_year_eps": 1.23,
-      "yoy_growth": -0.5935
+      "eps": 0.4992,
+      "prev_year_eps": 1.2262,
+      "yoy_growth": -0.5929
     },
     {
       "symbol": "KLAC",
       "report_date": "2020-06-30T00:00:00.000",
-      "eps": 2.63,
-      "prev_year_eps": 1.35,
-      "yoy_growth": 0.9481
+      "eps": 2.6332,
+      "prev_year_eps": 1.3452,
+      "yoy_growth": 0.9575
     },
     {
       "symbol": "KLAC",
       "report_date": "2020-09-30T00:00:00.000",
-      "eps": 2.69,
-      "prev_year_eps": 2.16,
-      "yoy_growth": 0.2454
+      "eps": 2.6883,
+      "prev_year_eps": 2.164,
+      "yoy_growth": 0.2423
     },
     {
       "symbol": "KLAC",
       "report_date": "2020-12-31T00:00:00.000",
-      "eps": 2.94,
-      "prev_year_eps": 2.4,
-      "yoy_growth": 0.225
+      "eps": 2.9394,
+      "prev_year_eps": 2.3992,
+      "yoy_growth": 0.2252
     },
     {
       "symbol": "KLAC",
       "report_date": "2021-03-31T00:00:00.000",
-      "eps": 3.66,
-      "prev_year_eps": 0.5,
-      "yoy_growth": 6.32
+      "eps": 3.6575,
+      "prev_year_eps": 0.4992,
+      "yoy_growth": 6.3267
     },
     {
       "symbol": "KLAC",
       "report_date": "2021-06-30T00:00:00.000",
-      "eps": 4.1,
-      "prev_year_eps": 2.63,
-      "yoy_growth": 0.5589
+      "eps": 4.1027,
+      "prev_year_eps": 2.6332,
+      "yoy_growth": 0.5581
     },
     {
       "symbol": "KLAC",
       "report_date": "2021-09-30T00:00:00.000",
-      "eps": 6.96,
-      "prev_year_eps": 2.69,
-      "yoy_growth": 1.5874
+      "eps": 6.9644,
+      "prev_year_eps": 2.6883,
+      "yoy_growth": 1.5906
     },
     {
       "symbol": "KLAC",
       "report_date": "2021-12-31T00:00:00.000",
-      "eps": 4.71,
-      "prev_year_eps": 2.94,
-      "yoy_growth": 0.602
+      "eps": 4.7098,
+      "prev_year_eps": 2.9394,
+      "yoy_growth": 0.6023
     },
     {
       "symbol": "KLAC",
       "report_date": "2022-03-31T00:00:00.000",
-      "eps": 4.83,
-      "prev_year_eps": 3.66,
-      "yoy_growth": 0.3197
+      "eps": 4.8323,
+      "prev_year_eps": 3.6575,
+      "yoy_growth": 0.3212
     },
     {
       "symbol": "KLAC",
       "report_date": "2022-06-30T00:00:00.000",
-      "eps": 5.4,
-      "prev_year_eps": 4.1,
-      "yoy_growth": 0.3171
+      "eps": 5.401,
+      "prev_year_eps": 4.1027,
+      "yoy_growth": 0.3165
     },
     {
       "symbol": "KLAC",
       "report_date": "2022-09-30T00:00:00.000",
-      "eps": 7.2,
-      "prev_year_eps": 6.96,
-      "yoy_growth": 0.0345
+      "eps": 7.1968,
+      "prev_year_eps": 6.9644,
+      "yoy_growth": 0.0334
     },
     {
       "symbol": "KLAC",
       "report_date": "2022-12-31T00:00:00.000",
-      "eps": 6.89,
-      "prev_year_eps": 4.71,
-      "yoy_growth": 0.4628
+      "eps": 6.8946,
+      "prev_year_eps": 4.7098,
+      "yoy_growth": 0.4639
     },
     {
       "symbol": "KLAC",
       "report_date": "2023-03-31T00:00:00.000",
-      "eps": 5.03,
-      "prev_year_eps": 4.83,
-      "yoy_growth": 0.0414
+      "eps": 5.0333,
+      "prev_year_eps": 4.8323,
+      "yoy_growth": 0.0416
     },
     {
       "symbol": "KLAC",
       "report_date": "2023-06-30T00:00:00.000",
-      "eps": 4.97,
-      "prev_year_eps": 5.4,
-      "yoy_growth": -0.0796
+      "eps": 4.9737,
+      "prev_year_eps": 5.401,
+      "yoy_growth": -0.0791
     },
     {
       "symbol": "KLAC",
       "report_date": "2023-09-30T00:00:00.000",
-      "eps": 5.41,
-      "prev_year_eps": 7.2,
+      "eps": 5.4074,
+      "prev_year_eps": 7.1968,
       "yoy_growth": -0.2486
     },
     {
       "symbol": "KLAC",
       "report_date": "2023-12-31T00:00:00.000",
-      "eps": 4.28,
-      "prev_year_eps": 6.89,
-      "yoy_growth": -0.3788
+      "eps": 4.2754,
+      "prev_year_eps": 6.8946,
+      "yoy_growth": -0.3799
     },
     {
       "symbol": "KLAC",
       "report_date": "2024-03-31T00:00:00.000",
-      "eps": 4.43,
-      "prev_year_eps": 5.03,
-      "yoy_growth": -0.1193
+      "eps": 4.4278,
+      "prev_year_eps": 5.0333,
+      "yoy_growth": -0.1203
     },
     {
       "symbol": "KLAC",
       "report_date": "2024-06-30T00:00:00.000",
-      "eps": 6.18,
-      "prev_year_eps": 4.97,
-      "yoy_growth": 0.2435
+      "eps": 6.1802,
+      "prev_year_eps": 4.9737,
+      "yoy_growth": 0.2426
     },
     {
       "symbol": "KLAC",
       "report_date": "2024-09-30T00:00:00.000",
-      "eps": 7.01,
-      "prev_year_eps": 5.41,
-      "yoy_growth": 0.2957
+      "eps": 7.0137,
+      "prev_year_eps": 5.4074,
+      "yoy_growth": 0.2971
     },
     {
       "symbol": "KLAC",
       "report_date": "2024-12-31T00:00:00.000",
-      "eps": 6.16,
-      "prev_year_eps": 4.28,
-      "yoy_growth": 0.4393
+      "eps": 6.1566,
+      "prev_year_eps": 4.2754,
+      "yoy_growth": 0.44
     },
     {
       "symbol": "KLAC",
       "report_date": "2025-03-31T00:00:00.000",
-      "eps": 8.17,
-      "prev_year_eps": 4.43,
-      "yoy_growth": 0.8442
+      "eps": 8.165,
+      "prev_year_eps": 4.4278,
+      "yoy_growth": 0.844
     },
     {
       "symbol": "KLAC",
       "report_date": "2025-06-30T00:00:00.000",
-      "eps": 9.06,
-      "prev_year_eps": 6.18,
-      "yoy_growth": 0.466
+      "eps": 9.0621,
+      "prev_year_eps": 6.1802,
+      "yoy_growth": 0.4663
     },
     {
       "symbol": "KLAC",
       "report_date": "2025-09-30T00:00:00.000",
-      "eps": 8.47,
-      "prev_year_eps": 7.01,
-      "yoy_growth": 0.2083
+      "eps": 8.4683,
+      "prev_year_eps": 7.0137,
+      "yoy_growth": 0.2074
     },
     {
       "symbol": "KLAC",
       "report_date": "2025-12-31T00:00:00.000",
-      "eps": 8.73,
-      "prev_year_eps": 6.16,
-      "yoy_growth": 0.4172
+      "eps": 8.7271,
+      "prev_year_eps": 6.1566,
+      "yoy_growth": 0.4175
     },
     {
       "symbol": "KLAC",
       "report_date": "2026-03-31T00:00:00.000",
-      "eps": 9.12,
-      "prev_year_eps": 8.17,
-      "yoy_growth": 0.1163
+      "eps": 9.1157,
+      "prev_year_eps": 8.165,
+      "yoy_growth": 0.1164
     }
   ]
 }

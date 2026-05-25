@@ -282,13 +282,13 @@
     {
       "symbol": "LRCX",
       "report_date": "2025-06-30",
-      "ebit": 1821755000.0,
+      "ebit": 6136332000.0,
       "tax_rate_for_calcs": 0.03,
-      "nopat": 1767102350.0,
+      "nopat": 5952242040.0,
       "beginning_invested_capital": 13995445000.0,
       "ending_invested_capital": 14330983000.0,
       "avg_invested_capital": 14163214000.0,
-      "roic": 0.1248
+      "roic": 0.4203
     },
     {
       "symbol": "LRCX",
@@ -315,13 +315,13 @@
     {
       "symbol": "LRCX",
       "report_date": "2026-03-31",
-      "ebit": 2050889000.0,
+      "ebit": 7651767000.0,
       "tax_rate_for_calcs": 0.09,
-      "nopat": 1866308990.0,
+      "nopat": 6963107970.0,
       "beginning_invested_capital": 14629174000.0,
       "ending_invested_capital": 14319258000.0,
       "avg_invested_capital": 14474216000.0,
-      "roic": 0.1289
+      "roic": 0.4811
     }
   ],
   "equityMultiplier": [
@@ -457,8 +457,8 @@
       "symbol": "LRCX",
       "report_date": "2025-06-30T00:00:00.000",
       "roa": 0.0833,
-      "net_margin": 0.3326,
-      "asset_turnover": 0.25
+      "net_margin": 0.0933,
+      "asset_turnover": 0.89
     },
     {
       "symbol": "LRCX",
@@ -478,8 +478,8 @@
       "symbol": "LRCX",
       "report_date": "2026-03-31T00:00:00.000",
       "roa": 0.0865,
-      "net_margin": 0.3125,
-      "asset_turnover": 0.28
+      "net_margin": 0.0842,
+      "asset_turnover": 1.03
     }
   ]
 }

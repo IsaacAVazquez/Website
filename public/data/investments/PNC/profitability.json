@@ -66,11 +66,11 @@
     {
       "symbol": "PNC",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 1532000000.0,
+      "net_income_common_stockholders": 5832000000.0,
       "beginning_stockholders_equity": 56405000000.0,
       "ending_stockholders_equity": 57607000000.0,
       "avg_equity": 57006000000.0,
-      "roe": 0.0269
+      "roe": 0.1023
     },
     {
       "symbol": "PNC",
@@ -93,11 +93,11 @@
     {
       "symbol": "PNC",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 1675000000.0,
+      "net_income_common_stockholders": 6852000000.0,
       "beginning_stockholders_equity": 60585000000.0,
       "ending_stockholders_equity": 63627000000.0,
       "avg_equity": 62106000000.0,
-      "roe": 0.027
+      "roe": 0.1103
     }
   ],
   "roa": [
@@ -167,11 +167,11 @@
     {
       "symbol": "PNC",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 1532000000.0,
+      "net_income_common_stockholders": 5832000000.0,
       "beginning_total_assets": 554722000000.0,
       "ending_total_assets": 559107000000.0,
       "avg_assets": 556914500000.0,
-      "roa": 0.0028
+      "roa": 0.0105
     },
     {
       "symbol": "PNC",
@@ -194,11 +194,11 @@
     {
       "symbol": "PNC",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 1675000000.0,
+      "net_income_common_stockholders": 6852000000.0,
       "beginning_total_assets": 573572000000.0,
       "ending_total_assets": 603028000000.0,
       "avg_assets": 588300000000.0,
-      "roa": 0.0028
+      "roa": 0.0116
     }
   ],
   "roic": [],
@@ -255,9 +255,9 @@
     {
       "symbol": "PNC",
       "report_date": "2025-06-30T00:00:00.000",
-      "roe": 0.0269,
-      "roa": 0.0028,
-      "equity_multiplier": 9.61
+      "roe": 0.1023,
+      "roa": 0.0105,
+      "equity_multiplier": 9.74
     },
     {
       "symbol": "PNC",
@@ -276,9 +276,9 @@
     {
       "symbol": "PNC",
       "report_date": "2026-03-31T00:00:00.000",
-      "roe": 0.027,
-      "roa": 0.0028,
-      "equity_multiplier": 9.64
+      "roe": 0.1103,
+      "roa": 0.0116,
+      "equity_multiplier": 9.51
     }
   ],
   "assetTurnover": [
@@ -334,9 +334,9 @@
     {
       "symbol": "PNC",
       "report_date": "2025-06-30T00:00:00.000",
-      "roa": 0.0028,
-      "net_margin": 0.2706,
-      "asset_turnover": 0.01
+      "roa": 0.0105,
+      "net_margin": 0.2639,
+      "asset_turnover": 0.04
     },
     {
       "symbol": "PNC",
@@ -355,9 +355,9 @@
     {
       "symbol": "PNC",
       "report_date": "2026-03-31T00:00:00.000",
-      "roa": 0.0028,
-      "net_margin": 0.272,
-      "asset_turnover": 0.01
+      "roa": 0.0116,
+      "net_margin": 0.2881,
+      "asset_turnover": 0.04
     }
   ]
 }

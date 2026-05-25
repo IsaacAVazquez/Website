@@ -108,9 +108,9 @@
     {
       "symbol": "BLK",
       "report_date": "2026-03-31",
-      "gross_profit": null,
-      "total_revenue": null,
-      "gross_margin": null
+      "gross_profit": 3216000000.0,
+      "total_revenue": 6698000000.0,
+      "gross_margin": 0.4801
     }
   ],
   "annual_gross": [
@@ -273,9 +273,9 @@
     {
       "symbol": "BLK",
       "report_date": "2026-03-31",
-      "operating_income": null,
-      "total_revenue": null,
-      "operating_margin": null
+      "operating_income": 2261000000.0,
+      "total_revenue": 6698000000.0,
+      "operating_margin": 0.3376
     }
   ],
   "annual_operating": [
@@ -417,9 +417,9 @@
     {
       "symbol": "BLK",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 1593000000.0,
+      "net_income_common_stockholders": 6404000000.0,
       "total_revenue": 5423000000.0,
-      "net_margin": 0.2937
+      "net_margin": 1.1809
     },
     {
       "symbol": "BLK",
@@ -438,9 +438,9 @@
     {
       "symbol": "BLK",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": null,
-      "total_revenue": null,
-      "net_margin": null
+      "net_income_common_stockholders": 6255000000.0,
+      "total_revenue": 6698000000.0,
+      "net_margin": 0.9339
     }
   ],
   "annual_net": [
@@ -582,9 +582,9 @@
     {
       "symbol": "BLK",
       "report_date": "2025-06-30",
-      "ebitda": 2642000000.0,
+      "ebitda": 9763000000.0,
       "total_revenue": 5423000000.0,
-      "ebitda_margin": 0.4872
+      "ebitda_margin": 1.8003
     },
     {
       "symbol": "BLK",
@@ -603,9 +603,9 @@
     {
       "symbol": "BLK",
       "report_date": "2026-03-31",
-      "ebitda": null,
-      "total_revenue": null,
-      "ebitda_margin": null
+      "ebitda": 10592000000.0,
+      "total_revenue": 6698000000.0,
+      "ebitda_margin": 1.5814
     }
   ],
   "annual_ebitda": [
@@ -768,9 +768,9 @@
     {
       "symbol": "BLK",
       "report_date": "2026-03-31",
-      "free_cash_flow": null,
-      "total_revenue": null,
-      "fcf_margin": null
+      "free_cash_flow": -1086000000.0,
+      "total_revenue": 6698000000.0,
+      "fcf_margin": -0.1621
     }
   ],
   "annual_fcf": [

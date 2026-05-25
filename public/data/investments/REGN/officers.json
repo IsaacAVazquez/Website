@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "REGN",
+    "name": "Dr. Andrew J. Murphy Ph.D.",
+    "title": "Executive VP of Research & Co-Chief Scientific Officer",
+    "age": 67,
+    "born": 1958,
+    "pay": 1727634,
+    "exercised": 3260250,
+    "unexercised": 61848128,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "REGN",
+    "name": "Dr. George D. Yancopoulos M.D., Ph.D.",
+    "title": "Co-Founder, President, Chief Scientific Officer & Co-Chairman",
+    "age": 65,
+    "born": 1960,
+    "pay": 6949469,
+    "exercised": 21411500,
+    "unexercised": 194887408,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "REGN",
+    "name": "Dr. Leonard S. Schleifer M.D., Ph.D.",
+    "title": "Co-Founder, President, CEO & Co-Chairman",
+    "age": 72,
+    "born": 1953,
+    "pay": 7280549,
+    "exercised": 25189922,
+    "unexercised": 194887408,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "REGN",
+    "name": "Mr. Christopher R. Fenimore CPA",
+    "title": "Executive VP of Finance & CFO",
+    "age": 54,
+    "born": 1971,
+    "pay": 1485636,
+    "exercised": 0,
+    "unexercised": 20570296,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "REGN",
+    "name": "Mr. Daniel P. Van Plew",
+    "title": "Executive VP and GM of Industrial Operations & Product Supply",
+    "age": 52,
+    "born": 1973,
+    "pay": 2030778,
+    "exercised": 0,
+    "unexercised": 13315421,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "REGN",
+    "name": "Mr. Joseph J. LaRosa J.D.",
+    "title": "Executive VP, General Counsel & Secretary",
+    "age": 66,
+    "born": 1959,
+    "pay": 2959826,
+    "exercised": 2616895,
+    "unexercised": 44087188,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "REGN",
+    "name": "Mr. Rajesh  Ahuja",
+    "title": "Senior Vice President of Quality Assurance & Operations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "REGN",
+    "name": "Mr. Ryan  Crowe",
+    "title": "Senior Vice President of Investor Relations & Strategic Analysis",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "REGN",
+    "name": "Mr. Ryan  Steinberger",
+    "title": "Executive VP, Chief Digital & Technology Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "REGN",
+    "name": "Ms. Melissa  Lozner",
+    "title": "Senior VP & Chief Compliance Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  }
+]

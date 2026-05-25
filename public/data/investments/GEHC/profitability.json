@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "GEHC",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 375000000.0,
+      "beginning_stockholders_equity": 7102000000.0,
+      "ending_stockholders_equity": 7131000000.0,
+      "avg_equity": 7116500000.0,
+      "roe": 0.0527
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 403000000.0,
+      "beginning_stockholders_equity": 7131000000.0,
+      "ending_stockholders_equity": 7133000000.0,
+      "avg_equity": 7132000000.0,
+      "roe": 0.0565
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 374000000.0,
+      "beginning_stockholders_equity": 7133000000.0,
+      "ending_stockholders_equity": 7408000000.0,
+      "avg_equity": 7270500000.0,
+      "roe": 0.0514
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 428000000.0,
+      "beginning_stockholders_equity": 7408000000.0,
+      "ending_stockholders_equity": 7801000000.0,
+      "avg_equity": 7604500000.0,
+      "roe": 0.0563
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 470000000.0,
+      "beginning_stockholders_equity": 7801000000.0,
+      "ending_stockholders_equity": 8317000000.0,
+      "avg_equity": 8059000000.0,
+      "roe": 0.0583
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 721000000.0,
+      "beginning_stockholders_equity": 8317000000.0,
+      "ending_stockholders_equity": 8446000000.0,
+      "avg_equity": 8381500000.0,
+      "roe": 0.086
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 564000000.0,
+      "beginning_stockholders_equity": 8446000000.0,
+      "ending_stockholders_equity": 9187000000.0,
+      "avg_equity": 8816500000.0,
+      "roe": 0.064
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 2240000000.0,
+      "beginning_stockholders_equity": 9187000000.0,
+      "ending_stockholders_equity": 9712000000.0,
+      "avg_equity": 9449500000.0,
+      "roe": 0.237
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 446000000.0,
+      "beginning_stockholders_equity": 9712000000.0,
+      "ending_stockholders_equity": 9993000000.0,
+      "avg_equity": 9852500000.0,
+      "roe": 0.0453
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 589000000.0,
+      "beginning_stockholders_equity": 9993000000.0,
+      "ending_stockholders_equity": 10379000000.0,
+      "avg_equity": 10186000000.0,
+      "roe": 0.0578
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1909000000.0,
+      "beginning_stockholders_equity": 10379000000.0,
+      "ending_stockholders_equity": 10668000000.0,
+      "avg_equity": 10523500000.0,
+      "roe": 0.1814
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "GEHC",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 375000000.0,
+      "beginning_total_assets": 32311000000.0,
+      "ending_total_assets": 32382000000.0,
+      "avg_assets": 32346500000.0,
+      "roa": 0.0116
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 403000000.0,
+      "beginning_total_assets": 32382000000.0,
+      "ending_total_assets": 32454000000.0,
+      "avg_assets": 32418000000.0,
+      "roa": 0.0124
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 374000000.0,
+      "beginning_total_assets": 32454000000.0,
+      "ending_total_assets": 32208000000.0,
+      "avg_assets": 32331000000.0,
+      "roa": 0.0116
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 428000000.0,
+      "beginning_total_assets": 32208000000.0,
+      "ending_total_assets": 31852000000.0,
+      "avg_assets": 32030000000.0,
+      "roa": 0.0134
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 470000000.0,
+      "beginning_total_assets": 31852000000.0,
+      "ending_total_assets": 33855000000.0,
+      "avg_assets": 32853500000.0,
+      "roa": 0.0143
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 721000000.0,
+      "beginning_total_assets": 33855000000.0,
+      "ending_total_assets": 33089000000.0,
+      "avg_assets": 33472000000.0,
+      "roa": 0.0215
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 564000000.0,
+      "beginning_total_assets": 33089000000.0,
+      "ending_total_assets": 33586000000.0,
+      "avg_assets": 33337500000.0,
+      "roa": 0.0169
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 2240000000.0,
+      "beginning_total_assets": 33586000000.0,
+      "ending_total_assets": 35500000000.0,
+      "avg_assets": 34543000000.0,
+      "roa": 0.0648
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 446000000.0,
+      "beginning_total_assets": 35500000000.0,
+      "ending_total_assets": 36127000000.0,
+      "avg_assets": 35813500000.0,
+      "roa": 0.0125
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 589000000.0,
+      "beginning_total_assets": 36127000000.0,
+      "ending_total_assets": 36906000000.0,
+      "avg_assets": 36516500000.0,
+      "roa": 0.0161
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1909000000.0,
+      "beginning_total_assets": 36906000000.0,
+      "ending_total_assets": 37125000000.0,
+      "avg_assets": 37015500000.0,
+      "roa": 0.0516
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "GEHC",
+      "report_date": "2023-09-30",
+      "ebit": 774000000.0,
+      "tax_rate_for_calcs": 0.39,
+      "nopat": 472140000.0,
+      "beginning_invested_capital": 17340000000.0,
+      "ending_invested_capital": 17391000000.0,
+      "avg_invested_capital": 17365500000.0,
+      "roic": 0.0272
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2023-12-31",
+      "ebit": 740000000.0,
+      "tax_rate_for_calcs": 0.32,
+      "nopat": 503200000.0,
+      "beginning_invested_capital": 17391000000.0,
+      "ending_invested_capital": 16575000000.0,
+      "avg_invested_capital": 16983000000.0,
+      "roic": 0.0296
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2024-03-31",
+      "ebit": 650000000.0,
+      "tax_rate_for_calcs": 0.24,
+      "nopat": 494000000.0,
+      "beginning_invested_capital": 16575000000.0,
+      "ending_invested_capital": 16663000000.0,
+      "avg_invested_capital": 16619000000.0,
+      "roic": 0.0297
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2024-06-30",
+      "ebit": 709000000.0,
+      "tax_rate_for_calcs": 0.25,
+      "nopat": 531750000.0,
+      "beginning_invested_capital": 16663000000.0,
+      "ending_invested_capital": 17041000000.0,
+      "avg_invested_capital": 16852000000.0,
+      "roic": 0.0316
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2024-09-30",
+      "ebit": 788000000.0,
+      "tax_rate_for_calcs": 0.26,
+      "nopat": 583120000.0,
+      "beginning_invested_capital": 17041000000.0,
+      "ending_invested_capital": 18630000000.0,
+      "avg_invested_capital": 17835500000.0,
+      "roic": 0.0327
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2024-12-31",
+      "ebit": 945000000.0,
+      "tax_rate_for_calcs": 0.12,
+      "nopat": 831600000.0,
+      "beginning_invested_capital": 18630000000.0,
+      "ending_invested_capital": 17397000000.0,
+      "avg_invested_capital": 18013500000.0,
+      "roic": 0.0462
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2025-03-31",
+      "ebit": 803000000.0,
+      "tax_rate_for_calcs": 0.15,
+      "nopat": 682550000.0,
+      "beginning_invested_capital": 17397000000.0,
+      "ending_invested_capital": 17946000000.0,
+      "avg_invested_capital": 17671500000.0,
+      "roic": 0.0386
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2025-06-30",
+      "ebit": 726000000.0,
+      "tax_rate_for_calcs": 0.17,
+      "nopat": 602580000.0,
+      "beginning_invested_capital": 17946000000.0,
+      "ending_invested_capital": 19987000000.0,
+      "avg_invested_capital": 18966500000.0,
+      "roic": 0.0318
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2025-09-30",
+      "ebit": 754000000.0,
+      "tax_rate_for_calcs": 0.28,
+      "nopat": 542880000.0,
+      "beginning_invested_capital": 19987000000.0,
+      "ending_invested_capital": 20275000000.0,
+      "avg_invested_capital": 20131000000.0,
+      "roic": 0.027
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2025-12-31",
+      "ebit": 926000000.0,
+      "tax_rate_for_calcs": 0.27,
+      "nopat": 675980000.0,
+      "beginning_invested_capital": 20275000000.0,
+      "ending_invested_capital": 20382000000.0,
+      "avg_invested_capital": 20328500000.0,
+      "roic": 0.0333
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2026-03-31",
+      "ebit": 602000000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 463540000.0,
+      "beginning_invested_capital": 20382000000.0,
+      "ending_invested_capital": 20802000000.0,
+      "avg_invested_capital": 20592000000.0,
+      "roic": 0.0225
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "GEHC",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.0527,
+      "roa": 0.0116,
+      "equity_multiplier": 4.54
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.0565,
+      "roa": 0.0124,
+      "equity_multiplier": 4.56
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.0514,
+      "roa": 0.0116,
+      "equity_multiplier": 4.43
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.0563,
+      "roa": 0.0134,
+      "equity_multiplier": 4.2
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.0583,
+      "roa": 0.0143,
+      "equity_multiplier": 4.08
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.086,
+      "roa": 0.0215,
+      "equity_multiplier": 4.0
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.064,
+      "roa": 0.0169,
+      "equity_multiplier": 3.79
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.237,
+      "roa": 0.0648,
+      "equity_multiplier": 3.66
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.0453,
+      "roa": 0.0125,
+      "equity_multiplier": 3.62
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.0578,
+      "roa": 0.0161,
+      "equity_multiplier": 3.59
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.1814,
+      "roa": 0.0516,
+      "equity_multiplier": 3.52
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "GEHC",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0116,
+      "net_margin": 0.0778,
+      "asset_turnover": 0.15
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0124,
+      "net_margin": 0.0774,
+      "asset_turnover": 0.16
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0116,
+      "net_margin": 0.0804,
+      "asset_turnover": 0.14
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0134,
+      "net_margin": 0.0884,
+      "asset_turnover": 0.15
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0143,
+      "net_margin": 0.0966,
+      "asset_turnover": 0.15
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0215,
+      "net_margin": 0.1356,
+      "asset_turnover": 0.16
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0169,
+      "net_margin": 0.1181,
+      "asset_turnover": 0.14
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0648,
+      "net_margin": 0.1122,
+      "asset_turnover": 0.58
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0125,
+      "net_margin": 0.0867,
+      "asset_turnover": 0.14
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0161,
+      "net_margin": 0.1034,
+      "asset_turnover": 0.16
+    },
+    {
+      "symbol": "GEHC",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0516,
+      "net_margin": 0.091,
+      "asset_turnover": 0.57
+    }
+  ]
+}

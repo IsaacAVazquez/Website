@@ -104,6 +104,13 @@
       "revenue": 10270000000.0,
       "prev_year_revenue": 7658000000.0,
       "yoy_growth": 0.3411
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2026-03-31T00:00:00.000",
+      "revenue": 10253000000.0,
+      "prev_year_revenue": 7438000000.0,
+      "yoy_growth": 0.3785
     }
   ],
   "annual_revenue": [
@@ -255,6 +262,13 @@
       "operating_income": 1752000000.0,
       "prev_year_operating_income": 1057000000.0,
       "yoy_growth": 0.6575
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2026-03-31T00:00:00.000",
+      "operating_income": 1476000000.0,
+      "prev_year_operating_income": 806000000.0,
+      "yoy_growth": 0.8313
     }
   ],
   "annual_operating_income": [
@@ -382,9 +396,9 @@
     {
       "symbol": "AMD",
       "report_date": "2025-06-30T00:00:00.000",
-      "ebitda": 721000000.0,
+      "ebitda": 5600000000.0,
       "prev_year_ebitda": 1093000000.0,
-      "yoy_growth": -0.3403
+      "yoy_growth": 4.1235
     },
     {
       "symbol": "AMD",
@@ -399,6 +413,13 @@
       "ebitda": 2861000000.0,
       "prev_year_ebitda": 1694000000.0,
       "yoy_growth": 0.6889
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2026-03-31T00:00:00.000",
+      "ebitda": 8086000000.0,
+      "prev_year_ebitda": 1587000000.0,
+      "yoy_growth": 4.0951
     }
   ],
   "annual_ebitda": [
@@ -533,9 +554,9 @@
     {
       "symbol": "AMD",
       "report_date": "2025-06-30T00:00:00.000",
-      "net_income_common_stockholders": 872000000.0,
+      "net_income_common_stockholders": 2834000000.0,
       "prev_year_net_income_common_stockholders": 265000000.0,
-      "yoy_growth": 2.2906
+      "yoy_growth": 9.6943
     },
     {
       "symbol": "AMD",
@@ -550,6 +571,13 @@
       "net_income_common_stockholders": 1511000000.0,
       "prev_year_net_income_common_stockholders": 482000000.0,
       "yoy_growth": 2.1349
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2026-03-31T00:00:00.000",
+      "net_income_common_stockholders": 5009000000.0,
+      "prev_year_net_income_common_stockholders": 709000000.0,
+      "yoy_growth": 6.0649
     }
   ],
   "annual_net_income": [
@@ -663,9 +691,9 @@
     {
       "symbol": "AMD",
       "report_date": "2025-06-30T00:00:00.000",
-      "free_cash_flow": 1729000000.0,
+      "free_cash_flow": 4043000000.0,
       "prev_year_free_cash_flow": 439000000.0,
-      "yoy_growth": 2.9385
+      "yoy_growth": 8.2096
     },
     {
       "symbol": "AMD",
@@ -680,6 +708,13 @@
       "free_cash_flow": 2378000000.0,
       "prev_year_free_cash_flow": 1091000000.0,
       "yoy_growth": 1.1797
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2026-03-31T00:00:00.000",
+      "free_cash_flow": 8574000000.0,
+      "prev_year_free_cash_flow": 727000000.0,
+      "yoy_growth": 10.7937
     }
   ],
   "annual_fcf": [
@@ -737,21 +772,21 @@
     {
       "symbol": "AMD",
       "report_date": "1998-06-30T00:00:00.000",
-      "eps": -0.23,
+      "eps": -0.225,
       "prev_year_eps": null,
       "yoy_growth": null
     },
     {
       "symbol": "AMD",
       "report_date": "1998-09-30T00:00:00.000",
-      "eps": 0.01,
+      "eps": 0.005,
       "prev_year_eps": null,
       "yoy_growth": null
     },
     {
       "symbol": "AMD",
       "report_date": "1998-12-31T00:00:00.000",
-      "eps": 0.08,
+      "eps": 0.075,
       "prev_year_eps": null,
       "yoy_growth": null
     },
@@ -765,37 +800,37 @@
     {
       "symbol": "AMD",
       "report_date": "1999-06-30T00:00:00.000",
-      "eps": 0.27,
-      "prev_year_eps": -0.23,
-      "yoy_growth": 2.1739
+      "eps": 0.265,
+      "prev_year_eps": -0.225,
+      "yoy_growth": 2.1778
     },
     {
       "symbol": "AMD",
       "report_date": "1999-09-30T00:00:00.000",
       "eps": -0.36,
-      "prev_year_eps": 0.01,
-      "yoy_growth": -37.0
+      "prev_year_eps": 0.005,
+      "yoy_growth": -73.0
     },
     {
       "symbol": "AMD",
       "report_date": "1999-12-31T00:00:00.000",
-      "eps": 0.22,
-      "prev_year_eps": 0.08,
-      "yoy_growth": 1.75
+      "eps": 0.215,
+      "prev_year_eps": 0.075,
+      "yoy_growth": 1.8667
     },
     {
       "symbol": "AMD",
       "report_date": "2000-03-31T00:00:00.000",
-      "eps": 0.58,
+      "eps": 0.575,
       "prev_year_eps": -0.44,
-      "yoy_growth": 2.3182
+      "yoy_growth": 2.3068
     },
     {
       "symbol": "AMD",
       "report_date": "2000-06-30T00:00:00.000",
-      "eps": 0.61,
-      "prev_year_eps": 0.27,
-      "yoy_growth": 1.2593
+      "eps": 0.605,
+      "prev_year_eps": 0.265,
+      "yoy_growth": 1.283
     },
     {
       "symbol": "AMD",
@@ -808,22 +843,22 @@
       "symbol": "AMD",
       "report_date": "2000-12-31T00:00:00.000",
       "eps": 0.53,
-      "prev_year_eps": 0.22,
-      "yoy_growth": 1.4091
+      "prev_year_eps": 0.215,
+      "yoy_growth": 1.4651
     },
     {
       "symbol": "AMD",
       "report_date": "2001-03-31T00:00:00.000",
       "eps": 0.37,
-      "prev_year_eps": 0.58,
-      "yoy_growth": -0.3621
+      "prev_year_eps": 0.575,
+      "yoy_growth": -0.3565
     },
     {
       "symbol": "AMD",
       "report_date": "2001-06-30T00:00:00.000",
       "eps": 0.05,
-      "prev_year_eps": 0.61,
-      "yoy_growth": -0.918
+      "prev_year_eps": 0.605,
+      "yoy_growth": -0.9174
     },
     {
       "symbol": "AMD",
@@ -1059,9 +1094,9 @@
     {
       "symbol": "AMD",
       "report_date": "2009-12-31T00:00:00.000",
-      "eps": 1.49,
+      "eps": 1.4892,
       "prev_year_eps": -2.34,
-      "yoy_growth": 1.6368
+      "yoy_growth": 1.6364
     },
     {
       "symbol": "AMD",
@@ -1087,9 +1122,9 @@
     {
       "symbol": "AMD",
       "report_date": "2010-12-31T00:00:00.000",
-      "eps": 0.49,
-      "prev_year_eps": 1.49,
-      "yoy_growth": -0.6711
+      "eps": 0.4947,
+      "prev_year_eps": 1.4892,
+      "yoy_growth": -0.6678
     },
     {
       "symbol": "AMD",
@@ -1116,8 +1151,8 @@
       "symbol": "AMD",
       "report_date": "2011-12-31T00:00:00.000",
       "eps": -0.24,
-      "prev_year_eps": 0.49,
-      "yoy_growth": -1.4898
+      "prev_year_eps": 0.4947,
+      "yoy_growth": -1.4851
     },
     {
       "symbol": "AMD",
@@ -1255,9 +1290,9 @@
     {
       "symbol": "AMD",
       "report_date": "2016-12-31T00:00:00.000",
-      "eps": -0.05,
+      "eps": -0.0548,
       "prev_year_eps": -0.13,
-      "yoy_growth": 0.6154
+      "yoy_growth": 0.5785
     },
     {
       "symbol": "AMD",
@@ -1284,8 +1319,8 @@
       "symbol": "AMD",
       "report_date": "2017-12-31T00:00:00.000",
       "eps": -0.02,
-      "prev_year_eps": -0.05,
-      "yoy_growth": 0.6
+      "prev_year_eps": -0.0548,
+      "yoy_growth": 0.635
     },
     {
       "symbol": "AMD",
@@ -1318,205 +1353,205 @@
     {
       "symbol": "AMD",
       "report_date": "2019-03-31T00:00:00.000",
-      "eps": 0.01,
+      "eps": 0.0146,
       "prev_year_eps": 0.08,
-      "yoy_growth": -0.875
+      "yoy_growth": -0.8175
     },
     {
       "symbol": "AMD",
       "report_date": "2019-06-30T00:00:00.000",
-      "eps": 0.03,
+      "eps": 0.0316,
       "prev_year_eps": 0.11,
-      "yoy_growth": -0.7273
+      "yoy_growth": -0.7127
     },
     {
       "symbol": "AMD",
       "report_date": "2019-09-30T00:00:00.000",
-      "eps": 0.11,
+      "eps": 0.1074,
       "prev_year_eps": 0.09,
-      "yoy_growth": 0.2222
+      "yoy_growth": 0.1933
     },
     {
       "symbol": "AMD",
       "report_date": "2019-12-31T00:00:00.000",
-      "eps": 0.14,
+      "eps": 0.1431,
       "prev_year_eps": 0.04,
-      "yoy_growth": 2.5
+      "yoy_growth": 2.5775
     },
     {
       "symbol": "AMD",
       "report_date": "2020-03-31T00:00:00.000",
-      "eps": 0.14,
-      "prev_year_eps": 0.01,
-      "yoy_growth": 13.0
+      "eps": 0.1356,
+      "prev_year_eps": 0.0146,
+      "yoy_growth": 8.2877
     },
     {
       "symbol": "AMD",
       "report_date": "2020-06-30T00:00:00.000",
-      "eps": 0.13,
-      "prev_year_eps": 0.03,
-      "yoy_growth": 3.3333
+      "eps": 0.1304,
+      "prev_year_eps": 0.0316,
+      "yoy_growth": 3.1266
     },
     {
       "symbol": "AMD",
       "report_date": "2020-09-30T00:00:00.000",
-      "eps": 0.32,
-      "prev_year_eps": 0.11,
-      "yoy_growth": 1.9091
+      "eps": 0.3218,
+      "prev_year_eps": 0.1074,
+      "yoy_growth": 1.9963
     },
     {
       "symbol": "AMD",
       "report_date": "2020-12-31T00:00:00.000",
-      "eps": 1.45,
-      "prev_year_eps": 0.14,
-      "yoy_growth": 9.3571
+      "eps": 1.4502,
+      "prev_year_eps": 0.1431,
+      "yoy_growth": 9.1342
     },
     {
       "symbol": "AMD",
       "report_date": "2021-03-31T00:00:00.000",
-      "eps": 0.45,
-      "prev_year_eps": 0.14,
-      "yoy_growth": 2.2143
+      "eps": 0.4508,
+      "prev_year_eps": 0.1356,
+      "yoy_growth": 2.3245
     },
     {
       "symbol": "AMD",
       "report_date": "2021-06-30T00:00:00.000",
-      "eps": 0.58,
-      "prev_year_eps": 0.13,
-      "yoy_growth": 3.4615
+      "eps": 0.5763,
+      "prev_year_eps": 0.1304,
+      "yoy_growth": 3.4195
     },
     {
       "symbol": "AMD",
       "report_date": "2021-09-30T00:00:00.000",
-      "eps": 0.75,
-      "prev_year_eps": 0.32,
-      "yoy_growth": 1.3438
+      "eps": 0.7504,
+      "prev_year_eps": 0.3218,
+      "yoy_growth": 1.3319
     },
     {
       "symbol": "AMD",
       "report_date": "2021-12-31T00:00:00.000",
-      "eps": 0.8,
-      "prev_year_eps": 1.45,
-      "yoy_growth": -0.4483
+      "eps": 0.797,
+      "prev_year_eps": 1.4502,
+      "yoy_growth": -0.4504
     },
     {
       "symbol": "AMD",
       "report_date": "2022-03-31T00:00:00.000",
-      "eps": 0.56,
-      "prev_year_eps": 0.45,
-      "yoy_growth": 0.2444
+      "eps": 0.5574,
+      "prev_year_eps": 0.4508,
+      "yoy_growth": 0.2365
     },
     {
       "symbol": "AMD",
       "report_date": "2022-06-30T00:00:00.000",
-      "eps": 0.27,
-      "prev_year_eps": 0.58,
-      "yoy_growth": -0.5345
+      "eps": 0.2739,
+      "prev_year_eps": 0.5763,
+      "yoy_growth": -0.5247
     },
     {
       "symbol": "AMD",
       "report_date": "2022-09-30T00:00:00.000",
-      "eps": 0.04,
-      "prev_year_eps": 0.75,
-      "yoy_growth": -0.9467
+      "eps": 0.0406,
+      "prev_year_eps": 0.7504,
+      "yoy_growth": -0.9459
     },
     {
       "symbol": "AMD",
       "report_date": "2022-12-31T00:00:00.000",
-      "eps": 0.01,
-      "prev_year_eps": 0.8,
-      "yoy_growth": -0.9875
+      "eps": 0.013,
+      "prev_year_eps": 0.797,
+      "yoy_growth": -0.9837
     },
     {
       "symbol": "AMD",
       "report_date": "2023-03-31T00:00:00.000",
-      "eps": -0.09,
-      "prev_year_eps": 0.56,
-      "yoy_growth": -1.1607
+      "eps": -0.0863,
+      "prev_year_eps": 0.5574,
+      "yoy_growth": -1.1548
     },
     {
       "symbol": "AMD",
       "report_date": "2023-06-30T00:00:00.000",
-      "eps": 0.02,
-      "prev_year_eps": 0.27,
-      "yoy_growth": -0.9259
+      "eps": 0.0166,
+      "prev_year_eps": 0.2739,
+      "yoy_growth": -0.9394
     },
     {
       "symbol": "AMD",
       "report_date": "2023-09-30T00:00:00.000",
-      "eps": 0.18,
-      "prev_year_eps": 0.04,
-      "yoy_growth": 3.5
+      "eps": 0.1836,
+      "prev_year_eps": 0.0406,
+      "yoy_growth": 3.5222
     },
     {
       "symbol": "AMD",
       "report_date": "2023-12-31T00:00:00.000",
-      "eps": 0.41,
-      "prev_year_eps": 0.01,
-      "yoy_growth": 40.0
+      "eps": 0.4097,
+      "prev_year_eps": 0.013,
+      "yoy_growth": 30.5154
     },
     {
       "symbol": "AMD",
       "report_date": "2024-03-31T00:00:00.000",
-      "eps": 0.08,
-      "prev_year_eps": -0.09,
-      "yoy_growth": 1.8889
+      "eps": 0.075,
+      "prev_year_eps": -0.0863,
+      "yoy_growth": 1.8691
     },
     {
       "symbol": "AMD",
       "report_date": "2024-06-30T00:00:00.000",
-      "eps": 0.16,
-      "prev_year_eps": 0.02,
-      "yoy_growth": 7.0
+      "eps": 0.1619,
+      "prev_year_eps": 0.0166,
+      "yoy_growth": 8.753
     },
     {
       "symbol": "AMD",
       "report_date": "2024-09-30T00:00:00.000",
-      "eps": 0.47,
-      "prev_year_eps": 0.18,
-      "yoy_growth": 1.6111
+      "eps": 0.4713,
+      "prev_year_eps": 0.1836,
+      "yoy_growth": 1.567
     },
     {
       "symbol": "AMD",
       "report_date": "2024-12-31T00:00:00.000",
-      "eps": 0.3,
-      "prev_year_eps": 0.41,
-      "yoy_growth": -0.2683
+      "eps": 0.295,
+      "prev_year_eps": 0.4097,
+      "yoy_growth": -0.28
     },
     {
       "symbol": "AMD",
       "report_date": "2025-03-31T00:00:00.000",
-      "eps": 0.44,
-      "prev_year_eps": 0.08,
-      "yoy_growth": 4.5
+      "eps": 0.436,
+      "prev_year_eps": 0.075,
+      "yoy_growth": 4.8133
     },
     {
       "symbol": "AMD",
       "report_date": "2025-06-30T00:00:00.000",
-      "eps": 0.54,
-      "prev_year_eps": 0.16,
-      "yoy_growth": 2.375
+      "eps": 0.535,
+      "prev_year_eps": 0.1619,
+      "yoy_growth": 2.3045
     },
     {
       "symbol": "AMD",
       "report_date": "2025-09-30T00:00:00.000",
-      "eps": 0.76,
-      "prev_year_eps": 0.47,
-      "yoy_growth": 0.617
+      "eps": 0.7575,
+      "prev_year_eps": 0.4713,
+      "yoy_growth": 0.6073
     },
     {
       "symbol": "AMD",
       "report_date": "2025-12-31T00:00:00.000",
-      "eps": 0.92,
-      "prev_year_eps": 0.3,
-      "yoy_growth": 2.0667
+      "eps": 0.9163,
+      "prev_year_eps": 0.295,
+      "yoy_growth": 2.1061
     },
     {
       "symbol": "AMD",
       "report_date": "2026-03-31T00:00:00.000",
-      "eps": 0.84,
-      "prev_year_eps": 0.44,
-      "yoy_growth": 0.9091
+      "eps": 0.8382,
+      "prev_year_eps": 0.436,
+      "yoy_growth": 0.9225
     }
   ]
 }

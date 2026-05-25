@@ -1,96 +1,6 @@
 [
   {
     "symbol": "QCOM",
-    "report_date": "2025-05-08",
-    "open": 145.64,
-    "close": 145.1,
-    "high": 147.5,
-    "low": 143.89,
-    "volume": 8489100
-  },
-  {
-    "symbol": "QCOM",
-    "report_date": "2025-05-09",
-    "open": 145.66,
-    "close": 145.18,
-    "high": 146.98,
-    "low": 144.6,
-    "volume": 6217100
-  },
-  {
-    "symbol": "QCOM",
-    "report_date": "2025-05-12",
-    "open": 154.08,
-    "close": 152.12,
-    "high": 154.36,
-    "low": 149.83,
-    "volume": 11414600
-  },
-  {
-    "symbol": "QCOM",
-    "report_date": "2025-05-13",
-    "open": 152.01,
-    "close": 151.34,
-    "high": 153.29,
-    "low": 150.96,
-    "volume": 10160900
-  },
-  {
-    "symbol": "QCOM",
-    "report_date": "2025-05-14",
-    "open": 151.93,
-    "close": 152.98,
-    "high": 153.27,
-    "low": 150.43,
-    "volume": 6971200
-  },
-  {
-    "symbol": "QCOM",
-    "report_date": "2025-05-15",
-    "open": 151.71,
-    "close": 152.61,
-    "high": 153.39,
-    "low": 150.18,
-    "volume": 6941200
-  },
-  {
-    "symbol": "QCOM",
-    "report_date": "2025-05-16",
-    "open": 152.87,
-    "close": 152.5,
-    "high": 153.06,
-    "low": 151.3,
-    "volume": 6668000
-  },
-  {
-    "symbol": "QCOM",
-    "report_date": "2025-05-19",
-    "open": 150.55,
-    "close": 153.7,
-    "high": 153.82,
-    "low": 150.11,
-    "volume": 7241100
-  },
-  {
-    "symbol": "QCOM",
-    "report_date": "2025-05-20",
-    "open": 153.04,
-    "close": 153.82,
-    "high": 153.89,
-    "low": 151.93,
-    "volume": 5269500
-  },
-  {
-    "symbol": "QCOM",
-    "report_date": "2025-05-21",
-    "open": 153.58,
-    "close": 151.31,
-    "high": 156.13,
-    "low": 150.83,
-    "volume": 9684500
-  },
-  {
-    "symbol": "QCOM",
     "report_date": "2025-05-22",
     "open": 151.39,
     "close": 147.37,
@@ -2265,6 +2175,96 @@
     "close": 219.09,
     "high": 228.05,
     "low": 208.63,
-    "volume": 37789900
+    "volume": 37850000
+  },
+  {
+    "symbol": "QCOM",
+    "report_date": "2026-05-11",
+    "open": 232.01,
+    "close": 237.53,
+    "high": 247.9,
+    "low": 231.2,
+    "volume": 45474000
+  },
+  {
+    "symbol": "QCOM",
+    "report_date": "2026-05-12",
+    "open": 229.84,
+    "close": 210.31,
+    "high": 230.0,
+    "low": 202.0,
+    "volume": 38590100
+  },
+  {
+    "symbol": "QCOM",
+    "report_date": "2026-05-13",
+    "open": 216.63,
+    "close": 213.17,
+    "high": 219.49,
+    "low": 207.15,
+    "volume": 26226300
+  },
+  {
+    "symbol": "QCOM",
+    "report_date": "2026-05-14",
+    "open": 208.51,
+    "close": 200.08,
+    "high": 209.53,
+    "low": 199.66,
+    "volume": 24883900
+  },
+  {
+    "symbol": "QCOM",
+    "report_date": "2026-05-15",
+    "open": 201.65,
+    "close": 201.49,
+    "high": 207.4,
+    "low": 199.16,
+    "volume": 25876800
+  },
+  {
+    "symbol": "QCOM",
+    "report_date": "2026-05-18",
+    "open": 206.77,
+    "close": 203.64,
+    "high": 210.8,
+    "low": 193.58,
+    "volume": 21082500
+  },
+  {
+    "symbol": "QCOM",
+    "report_date": "2026-05-19",
+    "open": 196.86,
+    "close": 195.61,
+    "high": 201.5,
+    "low": 191.02,
+    "volume": 19605200
+  },
+  {
+    "symbol": "QCOM",
+    "report_date": "2026-05-20",
+    "open": 197.0,
+    "close": 202.51,
+    "high": 203.59,
+    "low": 194.0,
+    "volume": 19037500
+  },
+  {
+    "symbol": "QCOM",
+    "report_date": "2026-05-21",
+    "open": 202.78,
+    "close": 213.41,
+    "high": 214.01,
+    "low": 197.6,
+    "volume": 28163700
+  },
+  {
+    "symbol": "QCOM",
+    "report_date": "2026-05-22",
+    "open": 214.43,
+    "close": 238.16,
+    "high": 243.0,
+    "low": 214.17,
+    "volume": 30332300
   }
 ]

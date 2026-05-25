@@ -66,11 +66,11 @@
     {
       "symbol": "WFC",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 5214000000.0,
+      "net_income_common_stockholders": 19483000000.0,
       "beginning_stockholders_equity": 181090000000.0,
       "ending_stockholders_equity": 181111000000.0,
       "avg_equity": 181100500000.0,
-      "roe": 0.0288
+      "roe": 0.1076
     },
     {
       "symbol": "WFC",
@@ -93,11 +93,11 @@
     {
       "symbol": "WFC",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 5000000000.0,
+      "net_income_common_stockholders": 20669000000.0,
       "beginning_stockholders_equity": 181117000000.0,
       "ending_stockholders_equity": 178396000000.0,
       "avg_equity": 179756500000.0,
-      "roe": 0.0278
+      "roe": 0.115
     }
   ],
   "roa": [
@@ -167,11 +167,11 @@
     {
       "symbol": "WFC",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 5214000000.0,
+      "net_income_common_stockholders": 19483000000.0,
       "beginning_total_assets": 1950311000000.0,
       "ending_total_assets": 1981269000000.0,
       "avg_assets": 1965790000000.0,
-      "roa": 0.0027
+      "roa": 0.0099
     },
     {
       "symbol": "WFC",
@@ -194,11 +194,11 @@
     {
       "symbol": "WFC",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 5000000000.0,
+      "net_income_common_stockholders": 20669000000.0,
       "beginning_total_assets": 2148631000000.0,
       "ending_total_assets": 2205752000000.0,
       "avg_assets": 2177191500000.0,
-      "roa": 0.0023
+      "roa": 0.0095
     }
   ],
   "roic": [],
@@ -255,9 +255,9 @@
     {
       "symbol": "WFC",
       "report_date": "2025-06-30T00:00:00.000",
-      "roe": 0.0288,
-      "roa": 0.0027,
-      "equity_multiplier": 10.67
+      "roe": 0.1076,
+      "roa": 0.0099,
+      "equity_multiplier": 10.87
     },
     {
       "symbol": "WFC",
@@ -276,9 +276,9 @@
     {
       "symbol": "WFC",
       "report_date": "2026-03-31T00:00:00.000",
-      "roe": 0.0278,
-      "roa": 0.0023,
-      "equity_multiplier": 12.09
+      "roe": 0.115,
+      "roa": 0.0095,
+      "equity_multiplier": 12.11
     }
   ],
   "assetTurnover": [
@@ -334,8 +334,8 @@
     {
       "symbol": "WFC",
       "report_date": "2025-06-30T00:00:00.000",
-      "roa": 0.0027,
-      "net_margin": 0.2535,
+      "roa": 0.0099,
+      "net_margin": 0.9472,
       "asset_turnover": 0.01
     },
     {
@@ -355,8 +355,8 @@
     {
       "symbol": "WFC",
       "report_date": "2026-03-31T00:00:00.000",
-      "roa": 0.0023,
-      "net_margin": 0.2331,
+      "roa": 0.0095,
+      "net_margin": 0.9638,
       "asset_turnover": 0.01
     }
   ]

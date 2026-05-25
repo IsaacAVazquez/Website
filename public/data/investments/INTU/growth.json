@@ -90,6 +90,13 @@
       "revenue": 4651000000.0,
       "prev_year_revenue": 3963000000.0,
       "yoy_growth": 0.1736
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2026-04-30T00:00:00.000",
+      "revenue": 8558000000.0,
+      "prev_year_revenue": 7754000000.0,
+      "yoy_growth": 0.1037
     }
   ],
   "annual_revenue": [
@@ -220,6 +227,13 @@
       "operating_income": 855000000.0,
       "prev_year_operating_income": 597000000.0,
       "yoy_growth": 0.4322
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2026-04-30T00:00:00.000",
+      "operating_income": 4020000000.0,
+      "prev_year_operating_income": 3721000000.0,
+      "yoy_growth": 0.0804
     }
   ],
   "annual_operating_income": [
@@ -343,6 +357,13 @@
       "ebitda": 1136000000.0,
       "prev_year_ebitda": 830000000.0,
       "yoy_growth": 0.3687
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2026-04-30T00:00:00.000",
+      "ebitda": 6924000000.0,
+      "prev_year_ebitda": 3953000000.0,
+      "yoy_growth": 0.7516
     }
   ],
   "annual_ebitda": [
@@ -473,6 +494,13 @@
       "net_income_common_stockholders": 693000000.0,
       "prev_year_net_income_common_stockholders": 471000000.0,
       "yoy_growth": 0.4713
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2026-04-30T00:00:00.000",
+      "net_income_common_stockholders": 4584000000.0,
+      "prev_year_net_income_common_stockholders": 2820000000.0,
+      "yoy_growth": 0.6255
     }
   ],
   "annual_net_income": [
@@ -617,6 +645,13 @@
       "free_cash_flow": 1524000000.0,
       "prev_year_free_cash_flow": 1038000000.0,
       "yoy_growth": 0.4682
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2026-04-30T00:00:00.000",
+      "free_cash_flow": 7715000000.0,
+      "prev_year_free_cash_flow": 4360000000.0,
+      "yoy_growth": 0.7695
     }
   ],
   "annual_fcf": [
@@ -660,30 +695,30 @@
     {
       "symbol": "INTU",
       "report_date": "1995-04-30T00:00:00.000",
-      "eps": -0.01,
+      "eps": -0.0076,
       "prev_year_eps": null,
       "yoy_growth": null
     },
     {
       "symbol": "INTU",
       "report_date": "1995-10-31T00:00:00.000",
-      "eps": -0.08,
+      "eps": -0.0758,
       "prev_year_eps": null,
       "yoy_growth": null
     },
     {
       "symbol": "INTU",
       "report_date": "1996-01-31T00:00:00.000",
-      "eps": 0.08,
+      "eps": 0.0764,
       "prev_year_eps": null,
       "yoy_growth": null
     },
     {
       "symbol": "INTU",
       "report_date": "1996-04-30T00:00:00.000",
-      "eps": 0.0,
-      "prev_year_eps": -0.01,
-      "yoy_growth": 1.0
+      "eps": -0.0011,
+      "prev_year_eps": -0.0076,
+      "yoy_growth": 0.8553
     },
     {
       "symbol": "INTU",
@@ -695,219 +730,219 @@
     {
       "symbol": "INTU",
       "report_date": "1996-10-31T00:00:00.000",
-      "eps": -0.1,
-      "prev_year_eps": -0.08,
-      "yoy_growth": -0.25
+      "eps": -0.1024,
+      "prev_year_eps": -0.0758,
+      "yoy_growth": -0.3509
     },
     {
       "symbol": "INTU",
       "report_date": "1997-01-31T00:00:00.000",
-      "eps": 0.16,
-      "prev_year_eps": 0.08,
-      "yoy_growth": 1.0
+      "eps": 0.1564,
+      "prev_year_eps": 0.0764,
+      "yoy_growth": 1.0471
     },
     {
       "symbol": "INTU",
       "report_date": "1997-04-30T00:00:00.000",
-      "eps": 0.0,
-      "prev_year_eps": 0.0,
-      "yoy_growth": null
+      "eps": 0.0017,
+      "prev_year_eps": -0.0011,
+      "yoy_growth": 2.5455
     },
     {
       "symbol": "INTU",
       "report_date": "1997-07-31T00:00:00.000",
-      "eps": -0.07,
+      "eps": -0.0704,
       "prev_year_eps": -0.08,
-      "yoy_growth": 0.125
+      "yoy_growth": 0.12
     },
     {
       "symbol": "INTU",
       "report_date": "1997-10-31T00:00:00.000",
-      "eps": -0.05,
-      "prev_year_eps": -0.1,
-      "yoy_growth": 0.5
+      "eps": -0.045,
+      "prev_year_eps": -0.1024,
+      "yoy_growth": 0.5605
     },
     {
       "symbol": "INTU",
       "report_date": "1998-01-31T00:00:00.000",
-      "eps": 0.14,
-      "prev_year_eps": 0.16,
-      "yoy_growth": -0.125
+      "eps": 0.1417,
+      "prev_year_eps": 0.1564,
+      "yoy_growth": -0.094
     },
     {
       "symbol": "INTU",
       "report_date": "1998-04-30T00:00:00.000",
-      "eps": -0.01,
-      "prev_year_eps": 0.0,
-      "yoy_growth": -1.0
+      "eps": -0.0083,
+      "prev_year_eps": 0.0017,
+      "yoy_growth": -5.8824
     },
     {
       "symbol": "INTU",
       "report_date": "1998-07-31T00:00:00.000",
       "eps": -0.13,
-      "prev_year_eps": -0.07,
-      "yoy_growth": -0.8571
+      "prev_year_eps": -0.0704,
+      "yoy_growth": -0.8466
     },
     {
       "symbol": "INTU",
       "report_date": "1998-10-31T00:00:00.000",
-      "eps": -0.05,
-      "prev_year_eps": -0.05,
-      "yoy_growth": 0.0
+      "eps": -0.0461,
+      "prev_year_eps": -0.045,
+      "yoy_growth": -0.0244
     },
     {
       "symbol": "INTU",
       "report_date": "1999-01-31T00:00:00.000",
-      "eps": 0.24,
-      "prev_year_eps": 0.14,
-      "yoy_growth": 0.7143
+      "eps": 0.2367,
+      "prev_year_eps": 0.1417,
+      "yoy_growth": 0.6704
     },
     {
       "symbol": "INTU",
       "report_date": "1999-04-30T00:00:00.000",
-      "eps": 0.19,
-      "prev_year_eps": -0.01,
-      "yoy_growth": 20.0
+      "eps": 0.1867,
+      "prev_year_eps": -0.0083,
+      "yoy_growth": 23.494
     },
     {
       "symbol": "INTU",
       "report_date": "1999-07-31T00:00:00.000",
-      "eps": 0.69,
+      "eps": 0.6867,
       "prev_year_eps": -0.13,
-      "yoy_growth": 6.3077
+      "yoy_growth": 6.2823
     },
     {
       "symbol": "INTU",
       "report_date": "1999-10-31T00:00:00.000",
-      "eps": -0.17,
-      "prev_year_eps": -0.05,
-      "yoy_growth": -2.4
+      "eps": -0.165,
+      "prev_year_eps": -0.0461,
+      "yoy_growth": -2.5792
     },
     {
       "symbol": "INTU",
       "report_date": "2000-01-31T00:00:00.000",
-      "eps": 0.14,
-      "prev_year_eps": 0.24,
-      "yoy_growth": -0.4167
+      "eps": 0.135,
+      "prev_year_eps": 0.2367,
+      "yoy_growth": -0.4297
     },
     {
       "symbol": "INTU",
       "report_date": "2000-04-30T00:00:00.000",
-      "eps": 0.7,
-      "prev_year_eps": 0.19,
-      "yoy_growth": 2.6842
+      "eps": 0.695,
+      "prev_year_eps": 0.1867,
+      "yoy_growth": 2.7225
     },
     {
       "symbol": "INTU",
       "report_date": "2000-07-31T00:00:00.000",
       "eps": 0.04,
-      "prev_year_eps": 0.69,
-      "yoy_growth": -0.942
+      "prev_year_eps": 0.6867,
+      "yoy_growth": -0.9418
     },
     {
       "symbol": "INTU",
       "report_date": "2000-10-31T00:00:00.000",
-      "eps": -0.12,
-      "prev_year_eps": -0.17,
-      "yoy_growth": 0.2941
+      "eps": -0.115,
+      "prev_year_eps": -0.165,
+      "yoy_growth": 0.303
     },
     {
       "symbol": "INTU",
       "report_date": "2001-01-31T00:00:00.000",
       "eps": 0.06,
-      "prev_year_eps": 0.14,
-      "yoy_growth": -0.5714
+      "prev_year_eps": 0.135,
+      "yoy_growth": -0.5556
     },
     {
       "symbol": "INTU",
       "report_date": "2001-04-30T00:00:00.000",
-      "eps": -0.04,
-      "prev_year_eps": 0.7,
-      "yoy_growth": -1.0571
+      "eps": -0.035,
+      "prev_year_eps": 0.695,
+      "yoy_growth": -1.0504
     },
     {
       "symbol": "INTU",
       "report_date": "2001-07-31T00:00:00.000",
-      "eps": -0.15,
+      "eps": -0.145,
       "prev_year_eps": 0.04,
-      "yoy_growth": -4.75
+      "yoy_growth": -4.625
     },
     {
       "symbol": "INTU",
       "report_date": "2001-10-31T00:00:00.000",
       "eps": -0.22,
-      "prev_year_eps": -0.12,
-      "yoy_growth": -0.8333
+      "prev_year_eps": -0.115,
+      "yoy_growth": -0.913
     },
     {
       "symbol": "INTU",
       "report_date": "2002-01-31T00:00:00.000",
-      "eps": 0.28,
+      "eps": 0.275,
       "prev_year_eps": 0.06,
-      "yoy_growth": 3.6667
+      "yoy_growth": 3.5833
     },
     {
       "symbol": "INTU",
       "report_date": "2002-04-30T00:00:00.000",
-      "eps": 0.34,
-      "prev_year_eps": -0.04,
-      "yoy_growth": 9.5
+      "eps": 0.335,
+      "prev_year_eps": -0.035,
+      "yoy_growth": 10.5714
     },
     {
       "symbol": "INTU",
       "report_date": "2002-07-31T00:00:00.000",
-      "eps": -0.16,
-      "prev_year_eps": -0.15,
-      "yoy_growth": -0.0667
+      "eps": -0.155,
+      "prev_year_eps": -0.145,
+      "yoy_growth": -0.069
     },
     {
       "symbol": "INTU",
       "report_date": "2002-10-31T00:00:00.000",
-      "eps": -0.15,
+      "eps": -0.145,
       "prev_year_eps": -0.22,
-      "yoy_growth": 0.3182
+      "yoy_growth": 0.3409
     },
     {
       "symbol": "INTU",
       "report_date": "2003-01-31T00:00:00.000",
-      "eps": 0.3,
-      "prev_year_eps": 0.28,
-      "yoy_growth": 0.0714
+      "eps": 0.295,
+      "prev_year_eps": 0.275,
+      "yoy_growth": 0.0727
     },
     {
       "symbol": "INTU",
       "report_date": "2003-04-30T00:00:00.000",
       "eps": 0.53,
-      "prev_year_eps": 0.34,
-      "yoy_growth": 0.5588
+      "prev_year_eps": 0.335,
+      "yoy_growth": 0.5821
     },
     {
       "symbol": "INTU",
       "report_date": "2003-07-31T00:00:00.000",
       "eps": -0.06,
-      "prev_year_eps": -0.16,
-      "yoy_growth": 0.625
+      "prev_year_eps": -0.155,
+      "yoy_growth": 0.6129
     },
     {
       "symbol": "INTU",
       "report_date": "2003-10-31T00:00:00.000",
-      "eps": -0.14,
-      "prev_year_eps": -0.15,
-      "yoy_growth": 0.0667
+      "eps": -0.135,
+      "prev_year_eps": -0.145,
+      "yoy_growth": 0.069
     },
     {
       "symbol": "INTU",
       "report_date": "2004-01-31T00:00:00.000",
-      "eps": 0.37,
-      "prev_year_eps": 0.3,
-      "yoy_growth": 0.2333
+      "eps": 0.365,
+      "prev_year_eps": 0.295,
+      "yoy_growth": 0.2373
     },
     {
       "symbol": "INTU",
       "report_date": "2004-04-30T00:00:00.000",
-      "eps": 0.67,
+      "eps": 0.665,
       "prev_year_eps": 0.53,
-      "yoy_growth": 0.2642
+      "yoy_growth": 0.2547
     },
     {
       "symbol": "INTU",
@@ -920,22 +955,22 @@
       "symbol": "INTU",
       "report_date": "2004-10-31T00:00:00.000",
       "eps": -0.12,
-      "prev_year_eps": -0.14,
-      "yoy_growth": 0.1429
+      "prev_year_eps": -0.135,
+      "yoy_growth": 0.1111
     },
     {
       "symbol": "INTU",
       "report_date": "2005-01-31T00:00:00.000",
       "eps": 0.39,
-      "prev_year_eps": 0.37,
-      "yoy_growth": 0.0541
+      "prev_year_eps": 0.365,
+      "yoy_growth": 0.0685
     },
     {
       "symbol": "INTU",
       "report_date": "2005-04-30T00:00:00.000",
-      "eps": 0.81,
-      "prev_year_eps": 0.67,
-      "yoy_growth": 0.209
+      "eps": 0.805,
+      "prev_year_eps": 0.665,
+      "yoy_growth": 0.2105
     },
     {
       "symbol": "INTU",
@@ -947,65 +982,65 @@
     {
       "symbol": "INTU",
       "report_date": "2005-10-31T00:00:00.000",
-      "eps": -0.15,
+      "eps": -0.1531,
       "prev_year_eps": -0.12,
-      "yoy_growth": -0.25
+      "yoy_growth": -0.2758
     },
     {
       "symbol": "INTU",
       "report_date": "2006-01-31T00:00:00.000",
-      "eps": 0.43,
+      "eps": 0.4323,
       "prev_year_eps": 0.39,
-      "yoy_growth": 0.1026
+      "yoy_growth": 0.1085
     },
     {
       "symbol": "INTU",
       "report_date": "2006-04-30T00:00:00.000",
-      "eps": 0.84,
-      "prev_year_eps": 0.81,
-      "yoy_growth": 0.037
+      "eps": 0.8391,
+      "prev_year_eps": 0.805,
+      "yoy_growth": 0.0424
     },
     {
       "symbol": "INTU",
       "report_date": "2006-07-31T00:00:00.000",
-      "eps": -0.06,
+      "eps": -0.055,
       "prev_year_eps": -0.06,
-      "yoy_growth": 0.0
+      "yoy_growth": 0.0833
     },
     {
       "symbol": "INTU",
       "report_date": "2006-10-31T00:00:00.000",
       "eps": -0.17,
-      "prev_year_eps": -0.15,
-      "yoy_growth": -0.1333
+      "prev_year_eps": -0.1531,
+      "yoy_growth": -0.1104
     },
     {
       "symbol": "INTU",
       "report_date": "2007-01-31T00:00:00.000",
       "eps": 0.4,
-      "prev_year_eps": 0.43,
-      "yoy_growth": -0.0698
+      "prev_year_eps": 0.4323,
+      "yoy_growth": -0.0747
     },
     {
       "symbol": "INTU",
       "report_date": "2007-04-30T00:00:00.000",
-      "eps": 1.05,
-      "prev_year_eps": 0.84,
-      "yoy_growth": 0.25
+      "eps": 1.0474,
+      "prev_year_eps": 0.8391,
+      "yoy_growth": 0.2482
     },
     {
       "symbol": "INTU",
       "report_date": "2007-07-31T00:00:00.000",
-      "eps": -0.04,
-      "prev_year_eps": -0.06,
-      "yoy_growth": 0.3333
+      "eps": -0.0404,
+      "prev_year_eps": -0.055,
+      "yoy_growth": 0.2655
     },
     {
       "symbol": "INTU",
       "report_date": "2007-10-31T00:00:00.000",
-      "eps": -0.14,
+      "eps": -0.1431,
       "prev_year_eps": -0.17,
-      "yoy_growth": 0.1765
+      "yoy_growth": 0.1582
     },
     {
       "symbol": "INTU",
@@ -1018,22 +1053,22 @@
       "symbol": "INTU",
       "report_date": "2008-04-30T00:00:00.000",
       "eps": 1.33,
-      "prev_year_eps": 1.05,
-      "yoy_growth": 0.2667
+      "prev_year_eps": 1.0474,
+      "yoy_growth": 0.2698
     },
     {
       "symbol": "INTU",
       "report_date": "2008-07-31T00:00:00.000",
       "eps": -0.19,
-      "prev_year_eps": -0.04,
-      "yoy_growth": -3.75
+      "prev_year_eps": -0.0404,
+      "yoy_growth": -3.703
     },
     {
       "symbol": "INTU",
       "report_date": "2008-10-31T00:00:00.000",
       "eps": -0.16,
-      "prev_year_eps": -0.14,
-      "yoy_growth": -0.1429
+      "prev_year_eps": -0.1431,
+      "yoy_growth": -0.1181
     },
     {
       "symbol": "INTU",
@@ -1066,9 +1101,9 @@
     {
       "symbol": "INTU",
       "report_date": "2010-01-31T00:00:00.000",
-      "eps": 0.24,
+      "eps": 0.2446,
       "prev_year_eps": 0.26,
-      "yoy_growth": -0.0769
+      "yoy_growth": -0.0592
     },
     {
       "symbol": "INTU",
@@ -1095,8 +1130,8 @@
       "symbol": "INTU",
       "report_date": "2011-01-31T00:00:00.000",
       "eps": 0.23,
-      "prev_year_eps": 0.24,
-      "yoy_growth": -0.0417
+      "prev_year_eps": 0.2446,
+      "yoy_growth": -0.0597
     },
     {
       "symbol": "INTU",
@@ -1157,9 +1192,9 @@
     {
       "symbol": "INTU",
       "report_date": "2013-04-30T00:00:00.000",
-      "eps": 2.7,
+      "eps": 2.704,
       "prev_year_eps": 2.42,
-      "yoy_growth": 0.1157
+      "yoy_growth": 0.1174
     },
     {
       "symbol": "INTU",
@@ -1186,8 +1221,8 @@
       "symbol": "INTU",
       "report_date": "2014-04-30T00:00:00.000",
       "eps": 3.39,
-      "prev_year_eps": 2.7,
-      "yoy_growth": 0.2556
+      "prev_year_eps": 2.704,
+      "yoy_growth": 0.2537
     },
     {
       "symbol": "INTU",
@@ -1241,16 +1276,16 @@
     {
       "symbol": "INTU",
       "report_date": "2016-04-30T00:00:00.000",
-      "eps": 3.27,
+      "eps": 3.2692,
       "prev_year_eps": 1.78,
-      "yoy_growth": 0.8371
+      "yoy_growth": 0.8366
     },
     {
       "symbol": "INTU",
       "report_date": "2016-07-31T00:00:00.000",
-      "eps": -0.16,
+      "eps": -0.1556,
       "prev_year_eps": 0.05,
-      "yoy_growth": -4.2
+      "yoy_growth": -4.112
     },
     {
       "symbol": "INTU",
@@ -1269,16 +1304,16 @@
     {
       "symbol": "INTU",
       "report_date": "2017-04-30T00:00:00.000",
-      "eps": 3.71,
-      "prev_year_eps": 3.27,
-      "yoy_growth": 0.1346
+      "eps": 3.7077,
+      "prev_year_eps": 3.2692,
+      "yoy_growth": 0.1341
     },
     {
       "symbol": "INTU",
       "report_date": "2017-07-31T00:00:00.000",
       "eps": 0.09,
-      "prev_year_eps": -0.16,
-      "yoy_growth": 1.5625
+      "prev_year_eps": -0.1556,
+      "yoy_growth": 1.5784
     },
     {
       "symbol": "INTU",
@@ -1298,15 +1333,15 @@
       "symbol": "INTU",
       "report_date": "2018-04-30T00:00:00.000",
       "eps": 4.53,
-      "prev_year_eps": 3.71,
-      "yoy_growth": 0.221
+      "prev_year_eps": 3.7077,
+      "yoy_growth": 0.2218
     },
     {
       "symbol": "INTU",
       "report_date": "2018-07-31T00:00:00.000",
-      "eps": -0.15,
+      "eps": -0.1473,
       "prev_year_eps": 0.09,
-      "yoy_growth": -2.6667
+      "yoy_growth": -2.6367
     },
     {
       "symbol": "INTU",
@@ -1332,191 +1367,191 @@
     {
       "symbol": "INTU",
       "report_date": "2019-07-31T00:00:00.000",
-      "eps": -0.17,
-      "prev_year_eps": -0.15,
-      "yoy_growth": -0.1333
+      "eps": -0.1692,
+      "prev_year_eps": -0.1473,
+      "yoy_growth": -0.1487
     },
     {
       "symbol": "INTU",
       "report_date": "2019-10-31T00:00:00.000",
-      "eps": 0.22,
+      "eps": 0.2159,
       "prev_year_eps": 0.13,
-      "yoy_growth": 0.6923
+      "yoy_growth": 0.6608
     },
     {
       "symbol": "INTU",
       "report_date": "2020-01-31T00:00:00.000",
-      "eps": 0.91,
+      "eps": 0.9091,
       "prev_year_eps": 0.72,
-      "yoy_growth": 0.2639
+      "yoy_growth": 0.2626
     },
     {
       "symbol": "INTU",
       "report_date": "2020-04-30T00:00:00.000",
-      "eps": 4.11,
+      "eps": 4.1061,
       "prev_year_eps": 5.22,
-      "yoy_growth": -0.2126
+      "yoy_growth": -0.2134
     },
     {
       "symbol": "INTU",
       "report_date": "2020-07-31T00:00:00.000",
-      "eps": 1.69,
-      "prev_year_eps": -0.17,
-      "yoy_growth": 10.9412
+      "eps": 1.6856,
+      "prev_year_eps": -0.1692,
+      "yoy_growth": 10.9622
     },
     {
       "symbol": "INTU",
       "report_date": "2020-10-31T00:00:00.000",
-      "eps": 0.75,
-      "prev_year_eps": 0.22,
-      "yoy_growth": 2.4091
+      "eps": 0.7472,
+      "prev_year_eps": 0.2159,
+      "yoy_growth": 2.4609
     },
     {
       "symbol": "INTU",
       "report_date": "2021-01-31T00:00:00.000",
-      "eps": 0.07,
-      "prev_year_eps": 0.91,
-      "yoy_growth": -0.9231
+      "eps": 0.0733,
+      "prev_year_eps": 0.9091,
+      "yoy_growth": -0.9194
     },
     {
       "symbol": "INTU",
       "report_date": "2021-04-30T00:00:00.000",
-      "eps": 5.3,
-      "prev_year_eps": 4.11,
-      "yoy_growth": 0.2895
+      "eps": 5.3044,
+      "prev_year_eps": 4.1061,
+      "yoy_growth": 0.2918
     },
     {
       "symbol": "INTU",
       "report_date": "2021-07-31T00:00:00.000",
-      "eps": 1.37,
-      "prev_year_eps": 1.69,
-      "yoy_growth": -0.1893
+      "eps": 1.3718,
+      "prev_year_eps": 1.6856,
+      "yoy_growth": -0.1862
     },
     {
       "symbol": "INTU",
       "report_date": "2021-10-31T00:00:00.000",
-      "eps": 0.82,
-      "prev_year_eps": 0.75,
-      "yoy_growth": 0.0933
+      "eps": 0.8231,
+      "prev_year_eps": 0.7472,
+      "yoy_growth": 0.1016
     },
     {
       "symbol": "INTU",
       "report_date": "2022-01-31T00:00:00.000",
-      "eps": 0.35,
-      "prev_year_eps": 0.07,
-      "yoy_growth": 4.0
+      "eps": 0.3484,
+      "prev_year_eps": 0.0733,
+      "yoy_growth": 3.7531
     },
     {
       "symbol": "INTU",
       "report_date": "2022-04-30T00:00:00.000",
-      "eps": 6.27,
-      "prev_year_eps": 5.3,
-      "yoy_growth": 0.183
+      "eps": 6.2727,
+      "prev_year_eps": 5.3044,
+      "yoy_growth": 0.1825
     },
     {
       "symbol": "INTU",
       "report_date": "2022-07-31T00:00:00.000",
-      "eps": -0.2,
-      "prev_year_eps": 1.37,
-      "yoy_growth": -1.146
+      "eps": -0.1986,
+      "prev_year_eps": 1.3718,
+      "yoy_growth": -1.1448
     },
     {
       "symbol": "INTU",
       "report_date": "2022-10-31T00:00:00.000",
-      "eps": 0.14,
-      "prev_year_eps": 0.82,
-      "yoy_growth": -0.8293
+      "eps": 0.1408,
+      "prev_year_eps": 0.8231,
+      "yoy_growth": -0.8289
     },
     {
       "symbol": "INTU",
       "report_date": "2023-01-31T00:00:00.000",
-      "eps": 0.6,
-      "prev_year_eps": 0.35,
-      "yoy_growth": 0.7143
+      "eps": 0.5957,
+      "prev_year_eps": 0.3484,
+      "yoy_growth": 0.7098
     },
     {
       "symbol": "INTU",
       "report_date": "2023-04-30T00:00:00.000",
-      "eps": 7.37,
-      "prev_year_eps": 6.27,
-      "yoy_growth": 0.1754
+      "eps": 7.3746,
+      "prev_year_eps": 6.2727,
+      "yoy_growth": 0.1757
     },
     {
       "symbol": "INTU",
       "report_date": "2023-07-31T00:00:00.000",
-      "eps": 0.31,
-      "prev_year_eps": -0.2,
-      "yoy_growth": 2.55
+      "eps": 0.3145,
+      "prev_year_eps": -0.1986,
+      "yoy_growth": 2.5836
     },
     {
       "symbol": "INTU",
       "report_date": "2023-10-31T00:00:00.000",
-      "eps": 0.85,
-      "prev_year_eps": 0.14,
-      "yoy_growth": 5.0714
+      "eps": 0.8516,
+      "prev_year_eps": 0.1408,
+      "yoy_growth": 5.0483
     },
     {
       "symbol": "INTU",
       "report_date": "2024-01-31T00:00:00.000",
-      "eps": 1.24,
-      "prev_year_eps": 0.6,
-      "yoy_growth": 1.0667
+      "eps": 1.243,
+      "prev_year_eps": 0.5957,
+      "yoy_growth": 1.0866
     },
     {
       "symbol": "INTU",
       "report_date": "2024-04-30T00:00:00.000",
-      "eps": 8.41,
-      "prev_year_eps": 7.37,
-      "yoy_growth": 0.1411
+      "eps": 8.412,
+      "prev_year_eps": 7.3746,
+      "yoy_growth": 0.1407
     },
     {
       "symbol": "INTU",
       "report_date": "2024-07-31T00:00:00.000",
-      "eps": -0.07,
-      "prev_year_eps": 0.31,
-      "yoy_growth": -1.2258
+      "eps": -0.0714,
+      "prev_year_eps": 0.3145,
+      "yoy_growth": -1.227
     },
     {
       "symbol": "INTU",
       "report_date": "2024-10-31T00:00:00.000",
-      "eps": 0.7,
-      "prev_year_eps": 0.85,
-      "yoy_growth": -0.1765
+      "eps": 0.6961,
+      "prev_year_eps": 0.8516,
+      "yoy_growth": -0.1826
     },
     {
       "symbol": "INTU",
       "report_date": "2025-01-31T00:00:00.000",
-      "eps": 1.66,
-      "prev_year_eps": 1.24,
-      "yoy_growth": 0.3387
+      "eps": 1.6643,
+      "prev_year_eps": 1.243,
+      "yoy_growth": 0.3389
     },
     {
       "symbol": "INTU",
       "report_date": "2025-04-30T00:00:00.000",
       "eps": 10.0,
-      "prev_year_eps": 8.41,
-      "yoy_growth": 0.1891
+      "prev_year_eps": 8.412,
+      "yoy_growth": 0.1888
     },
     {
       "symbol": "INTU",
       "report_date": "2025-07-31T00:00:00.000",
-      "eps": 1.35,
-      "prev_year_eps": -0.07,
-      "yoy_growth": 20.2857
+      "eps": 1.3511,
+      "prev_year_eps": -0.0714,
+      "yoy_growth": 19.923
     },
     {
       "symbol": "INTU",
       "report_date": "2025-10-31T00:00:00.000",
-      "eps": 1.59,
-      "prev_year_eps": 0.7,
-      "yoy_growth": 1.2714
+      "eps": 1.5872,
+      "prev_year_eps": 0.6961,
+      "yoy_growth": 1.2801
     },
     {
       "symbol": "INTU",
       "report_date": "2026-01-31T00:00:00.000",
-      "eps": 2.48,
-      "prev_year_eps": 1.66,
-      "yoy_growth": 0.494
+      "eps": 2.475,
+      "prev_year_eps": 1.6643,
+      "yoy_growth": 0.4871
     }
   ]
 }

@@ -1,96 +1,6 @@
 [
   {
     "symbol": "TSM",
-    "report_date": "2025-05-08",
-    "open": 175.34,
-    "close": 175.22,
-    "high": 177.45,
-    "low": 173.66,
-    "volume": 10343000
-  },
-  {
-    "symbol": "TSM",
-    "report_date": "2025-05-09",
-    "open": 179.8,
-    "close": 176.52,
-    "high": 180.46,
-    "low": 176.47,
-    "volume": 11582800
-  },
-  {
-    "symbol": "TSM",
-    "report_date": "2025-05-12",
-    "open": 187.28,
-    "close": 186.98,
-    "high": 189.17,
-    "low": 184.61,
-    "volume": 22064900
-  },
-  {
-    "symbol": "TSM",
-    "report_date": "2025-05-13",
-    "open": 187.72,
-    "close": 193.99,
-    "high": 194.28,
-    "low": 187.72,
-    "volume": 19996000
-  },
-  {
-    "symbol": "TSM",
-    "report_date": "2025-05-14",
-    "open": 195.28,
-    "close": 194.76,
-    "high": 196.22,
-    "low": 193.23,
-    "volume": 12359000
-  },
-  {
-    "symbol": "TSM",
-    "report_date": "2025-05-15",
-    "open": 193.1,
-    "close": 194.22,
-    "high": 194.49,
-    "low": 191.63,
-    "volume": 10241800
-  },
-  {
-    "symbol": "TSM",
-    "report_date": "2025-05-16",
-    "open": 194.53,
-    "close": 194.22,
-    "high": 195.08,
-    "low": 192.57,
-    "volume": 9146700
-  },
-  {
-    "symbol": "TSM",
-    "report_date": "2025-05-19",
-    "open": 189.0,
-    "close": 193.5,
-    "high": 193.5,
-    "low": 188.81,
-    "volume": 10144400
-  },
-  {
-    "symbol": "TSM",
-    "report_date": "2025-05-20",
-    "open": 191.8,
-    "close": 193.45,
-    "high": 193.73,
-    "low": 190.81,
-    "volume": 7054100
-  },
-  {
-    "symbol": "TSM",
-    "report_date": "2025-05-21",
-    "open": 193.1,
-    "close": 191.76,
-    "high": 195.27,
-    "low": 190.53,
-    "volume": 7375700
-  },
-  {
-    "symbol": "TSM",
     "report_date": "2025-05-22",
     "open": 191.34,
     "close": 196.19,
@@ -2265,6 +2175,96 @@
     "close": 411.68,
     "high": 417.0,
     "low": 400.88,
-    "volume": 18481900
+    "volume": 18531200
+  },
+  {
+    "symbol": "TSM",
+    "report_date": "2026-05-11",
+    "open": 406.74,
+    "close": 404.54,
+    "high": 407.73,
+    "low": 398.19,
+    "volume": 14680000
+  },
+  {
+    "symbol": "TSM",
+    "report_date": "2026-05-12",
+    "open": 397.75,
+    "close": 397.28,
+    "high": 402.24,
+    "low": 386.12,
+    "volume": 18121800
+  },
+  {
+    "symbol": "TSM",
+    "report_date": "2026-05-13",
+    "open": 398.27,
+    "close": 399.8,
+    "high": 404.68,
+    "low": 391.47,
+    "volume": 13127800
+  },
+  {
+    "symbol": "TSM",
+    "report_date": "2026-05-14",
+    "open": 403.21,
+    "close": 417.72,
+    "high": 421.97,
+    "low": 402.1,
+    "volume": 18577100
+  },
+  {
+    "symbol": "TSM",
+    "report_date": "2026-05-15",
+    "open": 406.5,
+    "close": 404.35,
+    "high": 409.87,
+    "low": 398.83,
+    "volume": 11868600
+  },
+  {
+    "symbol": "TSM",
+    "report_date": "2026-05-18",
+    "open": 406.88,
+    "close": 395.95,
+    "high": 406.88,
+    "low": 391.05,
+    "volume": 12117200
+  },
+  {
+    "symbol": "TSM",
+    "report_date": "2026-05-19",
+    "open": 389.51,
+    "close": 392.61,
+    "high": 398.88,
+    "low": 385.06,
+    "volume": 14083000
+  },
+  {
+    "symbol": "TSM",
+    "report_date": "2026-05-20",
+    "open": 397.0,
+    "close": 401.62,
+    "high": 403.88,
+    "low": 395.95,
+    "volume": 10254300
+  },
+  {
+    "symbol": "TSM",
+    "report_date": "2026-05-21",
+    "open": 399.51,
+    "close": 407.15,
+    "high": 411.46,
+    "low": 399.51,
+    "volume": 8937900
+  },
+  {
+    "symbol": "TSM",
+    "report_date": "2026-05-22",
+    "open": 409.43,
+    "close": 404.52,
+    "high": 410.67,
+    "low": 402.86,
+    "volume": 7096500
   }
 ]

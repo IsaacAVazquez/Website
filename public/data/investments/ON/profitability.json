@@ -66,11 +66,11 @@
     {
       "symbol": "ON",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 170300000.0,
+      "net_income_common_stockholders": 465800000.0,
       "beginning_stockholders_equity": 8029900000.0,
       "ending_stockholders_equity": 7940800000.0,
       "avg_equity": 7985350000.0,
-      "roe": 0.0213
+      "roe": 0.0583
     },
     {
       "symbol": "ON",
@@ -93,11 +93,11 @@
     {
       "symbol": "ON",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": -33400000.0,
+      "net_income_common_stockholders": 573700000.0,
       "beginning_stockholders_equity": 7673300000.0,
       "ending_stockholders_equity": 7301700000.0,
       "avg_equity": 7487500000.0,
-      "roe": -0.0045
+      "roe": 0.0766
     }
   ],
   "roa": [
@@ -167,11 +167,11 @@
     {
       "symbol": "ON",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 170300000.0,
+      "net_income_common_stockholders": 465800000.0,
       "beginning_total_assets": 13253900000.0,
       "ending_total_assets": 13126200000.0,
       "avg_assets": 13190050000.0,
-      "roa": 0.0129
+      "roa": 0.0353
     },
     {
       "symbol": "ON",
@@ -194,11 +194,11 @@
     {
       "symbol": "ON",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": -33400000.0,
+      "net_income_common_stockholders": 573700000.0,
       "beginning_total_assets": 12524100000.0,
       "ending_total_assets": 12010800000.0,
       "avg_assets": 12267450000.0,
-      "roa": -0.0027
+      "roa": 0.0468
     }
   ],
   "roic": [
@@ -377,8 +377,8 @@
     {
       "symbol": "ON",
       "report_date": "2025-06-30T00:00:00.000",
-      "roe": 0.0213,
-      "roa": 0.0129,
+      "roe": 0.0583,
+      "roa": 0.0353,
       "equity_multiplier": 1.65
     },
     {
@@ -398,9 +398,9 @@
     {
       "symbol": "ON",
       "report_date": "2026-03-31T00:00:00.000",
-      "roe": -0.0045,
-      "roa": -0.0027,
-      "equity_multiplier": 1.67
+      "roe": 0.0766,
+      "roa": 0.0468,
+      "equity_multiplier": 1.64
     }
   ],
   "assetTurnover": [
@@ -456,8 +456,8 @@
     {
       "symbol": "ON",
       "report_date": "2025-06-30T00:00:00.000",
-      "roa": 0.0129,
-      "net_margin": 0.116,
+      "roa": 0.0353,
+      "net_margin": 0.3172,
       "asset_turnover": 0.11
     },
     {
@@ -477,8 +477,8 @@
     {
       "symbol": "ON",
       "report_date": "2026-03-31T00:00:00.000",
-      "roa": -0.0027,
-      "net_margin": -0.0221,
+      "roa": 0.0468,
+      "net_margin": 0.3791,
       "asset_turnover": 0.12
     }
   ]

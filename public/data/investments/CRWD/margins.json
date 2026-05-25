@@ -108,9 +108,9 @@
     {
       "symbol": "CRWD",
       "report_date": "2026-01-31",
-      "gross_profit": 993677000.0,
+      "gross_profit": 3593076000.0,
       "total_revenue": 1305375000.0,
-      "gross_margin": 0.7612
+      "gross_margin": 2.7525
     }
   ],
   "annual_gross": [
@@ -438,9 +438,9 @@
     {
       "symbol": "CRWD",
       "report_date": "2026-01-31",
-      "net_income_common_stockholders": 59377000.0,
+      "net_income_common_stockholders": -162502000.0,
       "total_revenue": 1305375000.0,
-      "net_margin": 0.0455
+      "net_margin": -0.1245
     }
   ],
   "annual_net": [
@@ -768,9 +768,9 @@
     {
       "symbol": "CRWD",
       "report_date": "2026-01-31",
-      "free_cash_flow": 378149000.0,
+      "free_cash_flow": 1241490000.0,
       "total_revenue": 1305375000.0,
-      "fcf_margin": 0.2897
+      "fcf_margin": 0.9511
     }
   ],
   "annual_fcf": [

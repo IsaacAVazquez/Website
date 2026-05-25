@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "MCD",
+    "name": "Mr. Brian S. Rice",
+    "title": "Executive VP & Global Chief Information Officer",
+    "age": 62,
+    "born": 1963,
+    "pay": 834294,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "MCD",
+    "name": "Mr. Christopher J. Kempczinski",
+    "title": "Chairman President, & CEO",
+    "age": 56,
+    "born": 1969,
+    "pay": 4574244,
+    "exercised": 0,
+    "unexercised": 65150572,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "MCD",
+    "name": "Mr. Dexter P. Congbalay",
+    "title": "Vice President of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "MCD",
+    "name": "Mr. Ian Frederick Borden CPA",
+    "title": "Executive VP & Global CFO",
+    "age": 56,
+    "born": 1969,
+    "pay": 3089533,
+    "exercised": 3311488,
+    "unexercised": 24050752,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "MCD",
+    "name": "Mr. Joseph  Erlinger",
+    "title": "EVP & President of McDonald's USA",
+    "age": 51,
+    "born": 1974,
+    "pay": 1726311,
+    "exercised": 0,
+    "unexercised": 21478480,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "MCD",
+    "name": "Mr. Manuel J.M. Steijaert",
+    "title": "Executive VP & President of International Operated Markets",
+    "age": 54,
+    "born": 1971,
+    "pay": 2228267,
+    "exercised": 2751717,
+    "unexercised": 74442,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "MCD",
+    "name": "Ms. Desiree A. Ralls-Morrison J.D.",
+    "title": "Executive VP & Global Chief Legal Officer",
+    "age": 58,
+    "born": 1967,
+    "pay": 1228662,
+    "exercised": 0,
+    "unexercised": 1399144,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "MCD",
+    "name": "Ms. Gillian  McDonald",
+    "title": "Executive Vice President & Global Chief Restaurant Experience Officer",
+    "age": 59,
+    "born": 1966,
+    "pay": 2311602,
+    "exercised": 0,
+    "unexercised": 897777,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "MCD",
+    "name": "Ms. Lauren B. Elting CPA",
+    "title": "VP, Chief Accounting Officer & Corporate Controller",
+    "age": 43,
+    "born": 1982,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "MCD",
+    "name": "Ms. Tiffanie L. Boyd",
+    "title": "Executive VP & Global Chief People Officer",
+    "age": 52,
+    "born": 1973,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  }
+]

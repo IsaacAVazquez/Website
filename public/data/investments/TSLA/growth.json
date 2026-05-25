@@ -333,9 +333,9 @@
     {
       "symbol": "TSLA",
       "report_date": "2025-06-30T00:00:00.000",
-      "ebitda": 3068000000.0,
+      "ebitda": 13542000000.0,
       "prev_year_ebitda": 3151000000.0,
-      "yoy_growth": -0.0263
+      "yoy_growth": 3.2977
     },
     {
       "symbol": "TSLA",
@@ -354,9 +354,9 @@
     {
       "symbol": "TSLA",
       "report_date": "2026-03-31T00:00:00.000",
-      "ebitda": 2430000000.0,
+      "ebitda": 12067000000.0,
       "prev_year_ebitda": 2127000000.0,
-      "yoy_growth": 0.1425
+      "yoy_growth": 4.6732
     }
   ],
   "annual_ebitda": [
@@ -470,9 +470,9 @@
     {
       "symbol": "TSLA",
       "report_date": "2025-06-30T00:00:00.000",
-      "net_income_common_stockholders": 1172000000.0,
+      "net_income_common_stockholders": 5921000000.0,
       "prev_year_net_income_common_stockholders": 1400000000.0,
-      "yoy_growth": -0.1629
+      "yoy_growth": 3.2293
     },
     {
       "symbol": "TSLA",
@@ -491,9 +491,9 @@
     {
       "symbol": "TSLA",
       "report_date": "2026-03-31T00:00:00.000",
-      "net_income_common_stockholders": 477000000.0,
+      "net_income_common_stockholders": 3862000000.0,
       "prev_year_net_income_common_stockholders": 409000000.0,
-      "yoy_growth": 0.1663
+      "yoy_growth": 8.4425
     }
   ],
   "annual_net_income": [
@@ -607,9 +607,9 @@
     {
       "symbol": "TSLA",
       "report_date": "2025-06-30T00:00:00.000",
-      "free_cash_flow": 146000000.0,
+      "free_cash_flow": 5586000000.0,
       "prev_year_free_cash_flow": 1340000000.0,
-      "yoy_growth": -0.891
+      "yoy_growth": 3.1687
     },
     {
       "symbol": "TSLA",
@@ -628,9 +628,9 @@
     {
       "symbol": "TSLA",
       "report_date": "2026-03-31T00:00:00.000",
-      "free_cash_flow": 1444000000.0,
+      "free_cash_flow": 7000000000.0,
       "prev_year_free_cash_flow": 664000000.0,
-      "yoy_growth": 1.1747
+      "yoy_growth": 9.5422
     }
   ],
   "annual_fcf": [
@@ -681,485 +681,485 @@
     {
       "symbol": "TSLA",
       "report_date": "2009-03-31T00:00:00.000",
-      "eps": -0.01,
+      "eps": -0.0114,
       "prev_year_eps": null,
       "yoy_growth": null
     },
     {
       "symbol": "TSLA",
       "report_date": "2009-06-30T00:00:00.000",
-      "eps": -0.01,
+      "eps": -0.008,
       "prev_year_eps": null,
       "yoy_growth": null
     },
     {
       "symbol": "TSLA",
       "report_date": "2009-09-30T00:00:00.000",
-      "eps": 0.0,
+      "eps": -0.0033,
       "prev_year_eps": null,
       "yoy_growth": null
     },
     {
       "symbol": "TSLA",
       "report_date": "2009-12-31T00:00:00.000",
-      "eps": -0.02,
+      "eps": -0.0173,
       "prev_year_eps": null,
       "yoy_growth": null
     },
     {
       "symbol": "TSLA",
       "report_date": "2010-03-31T00:00:00.000",
-      "eps": -0.02,
-      "prev_year_eps": -0.01,
-      "yoy_growth": -1.0
+      "eps": -0.021,
+      "prev_year_eps": -0.0114,
+      "yoy_growth": -0.8421
     },
     {
       "symbol": "TSLA",
       "report_date": "2010-06-30T00:00:00.000",
-      "eps": -0.03,
-      "prev_year_eps": -0.01,
-      "yoy_growth": -2.0
+      "eps": -0.0273,
+      "prev_year_eps": -0.008,
+      "yoy_growth": -2.4125
     },
     {
       "symbol": "TSLA",
       "report_date": "2010-09-30T00:00:00.000",
-      "eps": -0.03,
-      "prev_year_eps": 0.0,
-      "yoy_growth": -1.0
+      "eps": -0.0253,
+      "prev_year_eps": -0.0033,
+      "yoy_growth": -6.6667
     },
     {
       "symbol": "TSLA",
       "report_date": "2010-12-31T00:00:00.000",
-      "eps": -0.04,
-      "prev_year_eps": -0.02,
-      "yoy_growth": -1.0
+      "eps": -0.036,
+      "prev_year_eps": -0.0173,
+      "yoy_growth": -1.0809
     },
     {
       "symbol": "TSLA",
       "report_date": "2011-03-31T00:00:00.000",
-      "eps": -0.03,
-      "prev_year_eps": -0.02,
-      "yoy_growth": -0.5
+      "eps": -0.034,
+      "prev_year_eps": -0.021,
+      "yoy_growth": -0.619
     },
     {
       "symbol": "TSLA",
       "report_date": "2011-06-30T00:00:00.000",
       "eps": -0.04,
-      "prev_year_eps": -0.03,
-      "yoy_growth": -0.3333
+      "prev_year_eps": -0.0273,
+      "yoy_growth": -0.4652
     },
     {
       "symbol": "TSLA",
       "report_date": "2011-09-30T00:00:00.000",
-      "eps": -0.04,
-      "prev_year_eps": -0.03,
-      "yoy_growth": -0.3333
+      "eps": -0.042,
+      "prev_year_eps": -0.0253,
+      "yoy_growth": -0.6601
     },
     {
       "symbol": "TSLA",
       "report_date": "2011-12-31T00:00:00.000",
-      "eps": -0.05,
-      "prev_year_eps": -0.04,
-      "yoy_growth": -0.25
+      "eps": -0.054,
+      "prev_year_eps": -0.036,
+      "yoy_growth": -0.5
     },
     {
       "symbol": "TSLA",
       "report_date": "2012-03-31T00:00:00.000",
-      "eps": -0.06,
-      "prev_year_eps": -0.03,
-      "yoy_growth": -1.0
+      "eps": -0.0573,
+      "prev_year_eps": -0.034,
+      "yoy_growth": -0.6853
     },
     {
       "symbol": "TSLA",
       "report_date": "2012-06-30T00:00:00.000",
-      "eps": -0.07,
+      "eps": -0.0667,
       "prev_year_eps": -0.04,
-      "yoy_growth": -0.75
+      "yoy_growth": -0.6675
     },
     {
       "symbol": "TSLA",
       "report_date": "2012-09-30T00:00:00.000",
       "eps": -0.07,
-      "prev_year_eps": -0.04,
-      "yoy_growth": -0.75
+      "prev_year_eps": -0.042,
+      "yoy_growth": -0.6667
     },
     {
       "symbol": "TSLA",
       "report_date": "2012-12-31T00:00:00.000",
-      "eps": -0.05,
-      "prev_year_eps": -0.05,
-      "yoy_growth": 0.0
+      "eps": -0.0527,
+      "prev_year_eps": -0.054,
+      "yoy_growth": 0.0241
     },
     {
       "symbol": "TSLA",
       "report_date": "2013-03-31T00:00:00.000",
-      "eps": 0.0,
-      "prev_year_eps": -0.06,
-      "yoy_growth": 1.0
+      "eps": 0.0003,
+      "prev_year_eps": -0.0573,
+      "yoy_growth": 1.0052
     },
     {
       "symbol": "TSLA",
       "report_date": "2013-06-30T00:00:00.000",
-      "eps": -0.02,
-      "prev_year_eps": -0.07,
-      "yoy_growth": 0.7143
+      "eps": -0.0173,
+      "prev_year_eps": -0.0667,
+      "yoy_growth": 0.7406
     },
     {
       "symbol": "TSLA",
       "report_date": "2013-09-30T00:00:00.000",
-      "eps": -0.02,
+      "eps": -0.0213,
       "prev_year_eps": -0.07,
-      "yoy_growth": 0.7143
+      "yoy_growth": 0.6957
     },
     {
       "symbol": "TSLA",
       "report_date": "2013-12-31T00:00:00.000",
-      "eps": -0.01,
-      "prev_year_eps": -0.05,
-      "yoy_growth": 0.8
+      "eps": -0.0087,
+      "prev_year_eps": -0.0527,
+      "yoy_growth": 0.8349
     },
     {
       "symbol": "TSLA",
       "report_date": "2014-03-31T00:00:00.000",
-      "eps": -0.03,
-      "prev_year_eps": 0.0,
-      "yoy_growth": -1.0
+      "eps": -0.0267,
+      "prev_year_eps": 0.0003,
+      "yoy_growth": -90.0
     },
     {
       "symbol": "TSLA",
       "report_date": "2014-06-30T00:00:00.000",
-      "eps": -0.03,
-      "prev_year_eps": -0.02,
-      "yoy_growth": -0.5
+      "eps": -0.0333,
+      "prev_year_eps": -0.0173,
+      "yoy_growth": -0.9249
     },
     {
       "symbol": "TSLA",
       "report_date": "2014-09-30T00:00:00.000",
       "eps": -0.04,
-      "prev_year_eps": -0.02,
-      "yoy_growth": -1.0
+      "prev_year_eps": -0.0213,
+      "yoy_growth": -0.8779
     },
     {
       "symbol": "TSLA",
       "report_date": "2014-12-31T00:00:00.000",
-      "eps": -0.06,
-      "prev_year_eps": -0.01,
-      "yoy_growth": -5.0
+      "eps": -0.0573,
+      "prev_year_eps": -0.0087,
+      "yoy_growth": -5.5862
     },
     {
       "symbol": "TSLA",
       "report_date": "2015-03-31T00:00:00.000",
-      "eps": -0.08,
-      "prev_year_eps": -0.03,
-      "yoy_growth": -1.6667
+      "eps": -0.0813,
+      "prev_year_eps": -0.0267,
+      "yoy_growth": -2.0449
     },
     {
       "symbol": "TSLA",
       "report_date": "2015-06-30T00:00:00.000",
-      "eps": -0.1,
-      "prev_year_eps": -0.03,
-      "yoy_growth": -2.3333
+      "eps": -0.0967,
+      "prev_year_eps": -0.0333,
+      "yoy_growth": -1.9039
     },
     {
       "symbol": "TSLA",
       "report_date": "2015-09-30T00:00:00.000",
-      "eps": -0.12,
+      "eps": -0.1187,
       "prev_year_eps": -0.04,
-      "yoy_growth": -2.0
+      "yoy_growth": -1.9675
     },
     {
       "symbol": "TSLA",
       "report_date": "2015-12-31T00:00:00.000",
-      "eps": -0.16,
-      "prev_year_eps": -0.06,
-      "yoy_growth": -1.6667
+      "eps": -0.1627,
+      "prev_year_eps": -0.0573,
+      "yoy_growth": -1.8394
     },
     {
       "symbol": "TSLA",
       "report_date": "2016-03-31T00:00:00.000",
-      "eps": -0.14,
-      "prev_year_eps": -0.08,
-      "yoy_growth": -0.75
+      "eps": -0.142,
+      "prev_year_eps": -0.0813,
+      "yoy_growth": -0.7466
     },
     {
       "symbol": "TSLA",
       "report_date": "2016-06-30T00:00:00.000",
-      "eps": -0.14,
-      "prev_year_eps": -0.1,
-      "yoy_growth": -0.4
+      "eps": -0.1393,
+      "prev_year_eps": -0.0967,
+      "yoy_growth": -0.4405
     },
     {
       "symbol": "TSLA",
       "report_date": "2016-09-30T00:00:00.000",
-      "eps": 0.01,
-      "prev_year_eps": -0.12,
-      "yoy_growth": 1.0833
+      "eps": 0.0093,
+      "prev_year_eps": -0.1187,
+      "yoy_growth": 1.0783
     },
     {
       "symbol": "TSLA",
       "report_date": "2016-12-31T00:00:00.000",
-      "eps": -0.05,
-      "prev_year_eps": -0.16,
-      "yoy_growth": 0.6875
+      "eps": -0.052,
+      "prev_year_eps": -0.1627,
+      "yoy_growth": 0.6804
     },
     {
       "symbol": "TSLA",
       "report_date": "2017-03-31T00:00:00.000",
-      "eps": -0.14,
-      "prev_year_eps": -0.14,
-      "yoy_growth": 0.0
+      "eps": -0.136,
+      "prev_year_eps": -0.142,
+      "yoy_growth": 0.0423
     },
     {
       "symbol": "TSLA",
       "report_date": "2017-06-30T00:00:00.000",
-      "eps": -0.14,
-      "prev_year_eps": -0.14,
-      "yoy_growth": 0.0
+      "eps": -0.136,
+      "prev_year_eps": -0.1393,
+      "yoy_growth": 0.0237
     },
     {
       "symbol": "TSLA",
       "report_date": "2017-09-30T00:00:00.000",
-      "eps": -0.25,
-      "prev_year_eps": 0.01,
-      "yoy_growth": -26.0
+      "eps": -0.2467,
+      "prev_year_eps": 0.0093,
+      "yoy_growth": -27.5269
     },
     {
       "symbol": "TSLA",
       "report_date": "2017-12-31T00:00:00.000",
-      "eps": -0.27,
-      "prev_year_eps": -0.05,
-      "yoy_growth": -4.4
+      "eps": -0.2673,
+      "prev_year_eps": -0.052,
+      "yoy_growth": -4.1404
     },
     {
       "symbol": "TSLA",
       "report_date": "2018-03-31T00:00:00.000",
-      "eps": -0.28,
-      "prev_year_eps": -0.14,
-      "yoy_growth": -1.0
+      "eps": -0.2793,
+      "prev_year_eps": -0.136,
+      "yoy_growth": -1.0537
     },
     {
       "symbol": "TSLA",
       "report_date": "2018-06-30T00:00:00.000",
-      "eps": -0.28,
-      "prev_year_eps": -0.14,
-      "yoy_growth": -1.0
+      "eps": -0.2813,
+      "prev_year_eps": -0.136,
+      "yoy_growth": -1.0684
     },
     {
       "symbol": "TSLA",
       "report_date": "2018-09-30T00:00:00.000",
-      "eps": 0.12,
-      "prev_year_eps": -0.25,
-      "yoy_growth": 1.48
+      "eps": 0.1165,
+      "prev_year_eps": -0.2467,
+      "yoy_growth": 1.4722
     },
     {
       "symbol": "TSLA",
       "report_date": "2018-12-31T00:00:00.000",
-      "eps": 0.05,
-      "prev_year_eps": -0.27,
-      "yoy_growth": 1.1852
+      "eps": 0.0519,
+      "prev_year_eps": -0.2673,
+      "yoy_growth": 1.1942
     },
     {
       "symbol": "TSLA",
       "report_date": "2019-03-31T00:00:00.000",
-      "eps": -0.27,
-      "prev_year_eps": -0.28,
-      "yoy_growth": 0.0357
+      "eps": -0.2706,
+      "prev_year_eps": -0.2793,
+      "yoy_growth": 0.0311
     },
     {
       "symbol": "TSLA",
       "report_date": "2019-06-30T00:00:00.000",
-      "eps": -0.15,
-      "prev_year_eps": -0.28,
-      "yoy_growth": 0.4643
+      "eps": -0.1541,
+      "prev_year_eps": -0.2813,
+      "yoy_growth": 0.4522
     },
     {
       "symbol": "TSLA",
       "report_date": "2019-09-30T00:00:00.000",
-      "eps": 0.05,
-      "prev_year_eps": 0.12,
-      "yoy_growth": -0.5833
+      "eps": 0.0518,
+      "prev_year_eps": 0.1165,
+      "yoy_growth": -0.5554
     },
     {
       "symbol": "TSLA",
       "report_date": "2019-12-31T00:00:00.000",
-      "eps": 0.04,
-      "prev_year_eps": 0.05,
-      "yoy_growth": -0.2
+      "eps": 0.0374,
+      "prev_year_eps": 0.0519,
+      "yoy_growth": -0.2794
     },
     {
       "symbol": "TSLA",
       "report_date": "2020-03-31T00:00:00.000",
-      "eps": 0.01,
-      "prev_year_eps": -0.27,
-      "yoy_growth": 1.037
+      "eps": 0.0054,
+      "prev_year_eps": -0.2706,
+      "yoy_growth": 1.02
     },
     {
       "symbol": "TSLA",
       "report_date": "2020-06-30T00:00:00.000",
-      "eps": 0.03,
-      "prev_year_eps": -0.15,
-      "yoy_growth": 1.2
+      "eps": 0.0335,
+      "prev_year_eps": -0.1541,
+      "yoy_growth": 1.2174
     },
     {
       "symbol": "TSLA",
       "report_date": "2020-09-30T00:00:00.000",
-      "eps": 0.09,
-      "prev_year_eps": 0.05,
-      "yoy_growth": 0.8
+      "eps": 0.0905,
+      "prev_year_eps": 0.0518,
+      "yoy_growth": 0.7471
     },
     {
       "symbol": "TSLA",
       "report_date": "2020-12-31T00:00:00.000",
-      "eps": 0.08,
-      "prev_year_eps": 0.04,
-      "yoy_growth": 1.0
+      "eps": 0.0802,
+      "prev_year_eps": 0.0374,
+      "yoy_growth": 1.1444
     },
     {
       "symbol": "TSLA",
       "report_date": "2021-03-31T00:00:00.000",
-      "eps": 0.13,
-      "prev_year_eps": 0.01,
-      "yoy_growth": 12.0
+      "eps": 0.1289,
+      "prev_year_eps": 0.0054,
+      "yoy_growth": 22.8704
     },
     {
       "symbol": "TSLA",
       "report_date": "2021-06-30T00:00:00.000",
-      "eps": 0.34,
-      "prev_year_eps": 0.03,
-      "yoy_growth": 10.3333
+      "eps": 0.3402,
+      "prev_year_eps": 0.0335,
+      "yoy_growth": 9.1552
     },
     {
       "symbol": "TSLA",
       "report_date": "2021-09-30T00:00:00.000",
-      "eps": 0.48,
-      "prev_year_eps": 0.09,
-      "yoy_growth": 4.3333
+      "eps": 0.4803,
+      "prev_year_eps": 0.0905,
+      "yoy_growth": 4.3072
     },
     {
       "symbol": "TSLA",
       "report_date": "2021-12-31T00:00:00.000",
-      "eps": 0.68,
-      "prev_year_eps": 0.08,
-      "yoy_growth": 7.5
+      "eps": 0.6816,
+      "prev_year_eps": 0.0802,
+      "yoy_growth": 7.4988
     },
     {
       "symbol": "TSLA",
       "report_date": "2022-03-31T00:00:00.000",
-      "eps": 0.95,
-      "prev_year_eps": 0.13,
-      "yoy_growth": 6.3077
+      "eps": 0.9545,
+      "prev_year_eps": 0.1289,
+      "yoy_growth": 6.405
     },
     {
       "symbol": "TSLA",
       "report_date": "2022-06-30T00:00:00.000",
-      "eps": 0.65,
-      "prev_year_eps": 0.34,
-      "yoy_growth": 0.9118
+      "eps": 0.6511,
+      "prev_year_eps": 0.3402,
+      "yoy_growth": 0.9139
     },
     {
       "symbol": "TSLA",
       "report_date": "2022-09-30T00:00:00.000",
-      "eps": 0.95,
-      "prev_year_eps": 0.48,
-      "yoy_growth": 0.9792
+      "eps": 0.9492,
+      "prev_year_eps": 0.4803,
+      "yoy_growth": 0.9763
     },
     {
       "symbol": "TSLA",
       "report_date": "2022-12-31T00:00:00.000",
-      "eps": 1.07,
-      "prev_year_eps": 0.68,
-      "yoy_growth": 0.5735
+      "eps": 1.0723,
+      "prev_year_eps": 0.6816,
+      "yoy_growth": 0.5732
     },
     {
       "symbol": "TSLA",
       "report_date": "2023-03-31T00:00:00.000",
-      "eps": 0.73,
-      "prev_year_eps": 0.95,
-      "yoy_growth": -0.2316
+      "eps": 0.7261,
+      "prev_year_eps": 0.9545,
+      "yoy_growth": -0.2393
     },
     {
       "symbol": "TSLA",
       "report_date": "2023-06-30T00:00:00.000",
-      "eps": 0.78,
-      "prev_year_eps": 0.65,
-      "yoy_growth": 0.2
+      "eps": 0.7772,
+      "prev_year_eps": 0.6511,
+      "yoy_growth": 0.1937
     },
     {
       "symbol": "TSLA",
       "report_date": "2023-09-30T00:00:00.000",
-      "eps": 0.53,
-      "prev_year_eps": 0.95,
-      "yoy_growth": -0.4421
+      "eps": 0.5299,
+      "prev_year_eps": 0.9492,
+      "yoy_growth": -0.4417
     },
     {
       "symbol": "TSLA",
       "report_date": "2023-12-31T00:00:00.000",
       "eps": 2.27,
-      "prev_year_eps": 1.07,
-      "yoy_growth": 1.1215
+      "prev_year_eps": 1.0723,
+      "yoy_growth": 1.1169
     },
     {
       "symbol": "TSLA",
       "report_date": "2024-03-31T00:00:00.000",
-      "eps": 0.41,
-      "prev_year_eps": 0.73,
-      "yoy_growth": -0.4384
+      "eps": 0.411,
+      "prev_year_eps": 0.7261,
+      "yoy_growth": -0.434
     },
     {
       "symbol": "TSLA",
       "report_date": "2024-06-30T00:00:00.000",
-      "eps": 0.4,
-      "prev_year_eps": 0.78,
-      "yoy_growth": -0.4872
+      "eps": 0.4022,
+      "prev_year_eps": 0.7772,
+      "yoy_growth": -0.4825
     },
     {
       "symbol": "TSLA",
       "report_date": "2024-09-30T00:00:00.000",
-      "eps": 0.62,
-      "prev_year_eps": 0.53,
-      "yoy_growth": 0.1698
+      "eps": 0.6214,
+      "prev_year_eps": 0.5299,
+      "yoy_growth": 0.1727
     },
     {
       "symbol": "TSLA",
       "report_date": "2024-12-31T00:00:00.000",
-      "eps": 0.66,
+      "eps": 0.658,
       "prev_year_eps": 2.27,
-      "yoy_growth": -0.7093
+      "yoy_growth": -0.7101
     },
     {
       "symbol": "TSLA",
       "report_date": "2025-03-31T00:00:00.000",
-      "eps": 0.12,
-      "prev_year_eps": 0.41,
-      "yoy_growth": -0.7073
+      "eps": 0.1162,
+      "prev_year_eps": 0.411,
+      "yoy_growth": -0.7173
     },
     {
       "symbol": "TSLA",
       "report_date": "2025-06-30T00:00:00.000",
-      "eps": 0.33,
-      "prev_year_eps": 0.4,
-      "yoy_growth": -0.175
+      "eps": 0.333,
+      "prev_year_eps": 0.4022,
+      "yoy_growth": -0.1721
     },
     {
       "symbol": "TSLA",
       "report_date": "2025-09-30T00:00:00.000",
-      "eps": 0.39,
-      "prev_year_eps": 0.62,
-      "yoy_growth": -0.371
+      "eps": 0.3894,
+      "prev_year_eps": 0.6214,
+      "yoy_growth": -0.3734
     },
     {
       "symbol": "TSLA",
       "report_date": "2025-12-31T00:00:00.000",
-      "eps": 0.24,
-      "prev_year_eps": 0.66,
-      "yoy_growth": -0.6364
+      "eps": 0.2374,
+      "prev_year_eps": 0.658,
+      "yoy_growth": -0.6392
     },
     {
       "symbol": "TSLA",
       "report_date": "2026-03-31T00:00:00.000",
-      "eps": 0.13,
-      "prev_year_eps": 0.12,
-      "yoy_growth": 0.0833
+      "eps": 0.1348,
+      "prev_year_eps": 0.1162,
+      "yoy_growth": 0.1601
     }
   ]
 }

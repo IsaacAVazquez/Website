@@ -66,11 +66,11 @@
     {
       "symbol": "TSLA",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 1172000000.0,
+      "net_income_common_stockholders": 5921000000.0,
       "beginning_stockholders_equity": 74653000000.0,
       "ending_stockholders_equity": 77314000000.0,
       "avg_equity": 75983500000.0,
-      "roe": 0.0154
+      "roe": 0.0779
     },
     {
       "symbol": "TSLA",
@@ -93,11 +93,11 @@
     {
       "symbol": "TSLA",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 477000000.0,
+      "net_income_common_stockholders": 3862000000.0,
       "beginning_stockholders_equity": 82137000000.0,
       "ending_stockholders_equity": 84116000000.0,
       "avg_equity": 83126500000.0,
-      "roe": 0.0057
+      "roe": 0.0465
     }
   ],
   "roa": [
@@ -167,11 +167,11 @@
     {
       "symbol": "TSLA",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 1172000000.0,
+      "net_income_common_stockholders": 5921000000.0,
       "beginning_total_assets": 125111000000.0,
       "ending_total_assets": 128567000000.0,
       "avg_assets": 126839000000.0,
-      "roa": 0.0092
+      "roa": 0.0467
     },
     {
       "symbol": "TSLA",
@@ -194,11 +194,11 @@
     {
       "symbol": "TSLA",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 477000000.0,
+      "net_income_common_stockholders": 3862000000.0,
       "beginning_total_assets": 137806000000.0,
       "ending_total_assets": 143724000000.0,
       "avg_assets": 140765000000.0,
-      "roa": 0.0034
+      "roa": 0.0274
     }
   ],
   "roic": [
@@ -283,12 +283,12 @@
       "symbol": "TSLA",
       "report_date": "2025-06-30",
       "ebit": 1635000000.0,
-      "tax_rate_for_calcs": 0.23,
-      "nopat": 1258950000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 1308000000.0,
       "beginning_invested_capital": 81897000000.0,
       "ending_invested_capital": 84270000000.0,
       "avg_invested_capital": 83083500000.0,
-      "roic": 0.0152
+      "roic": 0.0157
     },
     {
       "symbol": "TSLA",
@@ -316,12 +316,12 @@
       "symbol": "TSLA",
       "report_date": "2026-03-31",
       "ebit": 840000000.0,
-      "tax_rate_for_calcs": 0.34,
-      "nopat": 554400000.0,
+      "tax_rate_for_calcs": 0.28,
+      "nopat": 604800000.0,
       "beginning_invested_capital": 90290000000.0,
       "ending_invested_capital": 93135000000.0,
       "avg_invested_capital": 91712500000.0,
-      "roic": 0.006
+      "roic": 0.0066
     }
   ],
   "equityMultiplier": [
@@ -377,8 +377,8 @@
     {
       "symbol": "TSLA",
       "report_date": "2025-06-30T00:00:00.000",
-      "roe": 0.0154,
-      "roa": 0.0092,
+      "roe": 0.0779,
+      "roa": 0.0467,
       "equity_multiplier": 1.67
     },
     {
@@ -398,9 +398,9 @@
     {
       "symbol": "TSLA",
       "report_date": "2026-03-31T00:00:00.000",
-      "roe": 0.0057,
-      "roa": 0.0034,
-      "equity_multiplier": 1.68
+      "roe": 0.0465,
+      "roa": 0.0274,
+      "equity_multiplier": 1.7
     }
   ],
   "assetTurnover": [
@@ -456,8 +456,8 @@
     {
       "symbol": "TSLA",
       "report_date": "2025-06-30T00:00:00.000",
-      "roa": 0.0092,
-      "net_margin": 0.0521,
+      "roa": 0.0467,
+      "net_margin": 0.2632,
       "asset_turnover": 0.18
     },
     {
@@ -477,8 +477,8 @@
     {
       "symbol": "TSLA",
       "report_date": "2026-03-31T00:00:00.000",
-      "roa": 0.0034,
-      "net_margin": 0.0213,
+      "roa": 0.0274,
+      "net_margin": 0.1725,
       "asset_turnover": 0.16
     }
   ]

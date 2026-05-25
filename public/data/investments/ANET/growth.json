@@ -498,9 +498,9 @@
     {
       "symbol": "ANET",
       "report_date": "2025-06-30T00:00:00.000",
-      "net_income_common_stockholders": 888800000.0,
+      "net_income_common_stockholders": 3251554000.0,
       "prev_year_net_income_common_stockholders": 665400000.0,
-      "yoy_growth": 0.3357
+      "yoy_growth": 3.8866
     },
     {
       "symbol": "ANET",
@@ -519,9 +519,9 @@
     {
       "symbol": "ANET",
       "report_date": "2026-03-31T00:00:00.000",
-      "net_income_common_stockholders": 1022900000.0,
+      "net_income_common_stockholders": 3720500000.0,
       "prev_year_net_income_common_stockholders": 813800000.0,
-      "yoy_growth": 0.2569
+      "yoy_growth": 3.5718
     }
   ],
   "annual_net_income": [
@@ -635,9 +635,9 @@
     {
       "symbol": "ANET",
       "report_date": "2025-06-30T00:00:00.000",
-      "free_cash_flow": 1176100000.0,
+      "free_cash_flow": 3975403000.0,
       "prev_year_free_cash_flow": 985800000.0,
-      "yoy_growth": 0.193
+      "yoy_growth": 3.0327
     },
     {
       "symbol": "ANET",
@@ -656,9 +656,9 @@
     {
       "symbol": "ANET",
       "report_date": "2026-03-31T00:00:00.000",
-      "free_cash_flow": 1639000000.0,
+      "free_cash_flow": 5278100000.0,
       "prev_year_free_cash_flow": 613300000.0,
-      "yoy_growth": 1.6724
+      "yoy_growth": 7.6061
     }
   ],
   "annual_fcf": [
@@ -709,14 +709,14 @@
     {
       "symbol": "ANET",
       "report_date": "2013-03-31T00:00:00.000",
-      "eps": 0.0,
+      "eps": 0.0031,
       "prev_year_eps": null,
       "yoy_growth": null
     },
     {
       "symbol": "ANET",
       "report_date": "2013-06-30T00:00:00.000",
-      "eps": 0.0,
+      "eps": 0.0048,
       "prev_year_eps": null,
       "yoy_growth": null
     },
@@ -730,352 +730,352 @@
     {
       "symbol": "ANET",
       "report_date": "2013-12-31T00:00:00.000",
-      "eps": 0.01,
+      "eps": 0.0088,
       "prev_year_eps": null,
       "yoy_growth": null
     },
     {
       "symbol": "ANET",
       "report_date": "2014-03-31T00:00:00.000",
-      "eps": 0.01,
-      "prev_year_eps": 0.0,
-      "yoy_growth": 1.0
+      "eps": 0.0126,
+      "prev_year_eps": 0.0031,
+      "yoy_growth": 3.0645
     },
     {
       "symbol": "ANET",
       "report_date": "2014-06-30T00:00:00.000",
-      "eps": 0.02,
-      "prev_year_eps": 0.0,
-      "yoy_growth": 1.0
+      "eps": 0.0211,
+      "prev_year_eps": 0.0048,
+      "yoy_growth": 3.3958
     },
     {
       "symbol": "ANET",
       "report_date": "2014-09-30T00:00:00.000",
-      "eps": 0.02,
+      "eps": 0.019,
       "prev_year_eps": 0.0,
       "yoy_growth": 1.0
     },
     {
       "symbol": "ANET",
       "report_date": "2014-12-31T00:00:00.000",
-      "eps": 0.03,
-      "prev_year_eps": 0.01,
-      "yoy_growth": 2.0
+      "eps": 0.027,
+      "prev_year_eps": 0.0088,
+      "yoy_growth": 2.0682
     },
     {
       "symbol": "ANET",
       "report_date": "2015-03-31T00:00:00.000",
-      "eps": 0.02,
-      "prev_year_eps": 0.01,
-      "yoy_growth": 1.0
+      "eps": 0.0213,
+      "prev_year_eps": 0.0126,
+      "yoy_growth": 0.6905
     },
     {
       "symbol": "ANET",
       "report_date": "2015-06-30T00:00:00.000",
-      "eps": 0.02,
-      "prev_year_eps": 0.02,
-      "yoy_growth": 0.0
+      "eps": 0.0208,
+      "prev_year_eps": 0.0211,
+      "yoy_growth": -0.0142
     },
     {
       "symbol": "ANET",
       "report_date": "2015-09-30T00:00:00.000",
-      "eps": 0.02,
-      "prev_year_eps": 0.02,
-      "yoy_growth": 0.0
+      "eps": 0.0246,
+      "prev_year_eps": 0.019,
+      "yoy_growth": 0.2947
     },
     {
       "symbol": "ANET",
       "report_date": "2015-12-31T00:00:00.000",
-      "eps": 0.04,
-      "prev_year_eps": 0.03,
-      "yoy_growth": 0.3333
+      "eps": 0.0377,
+      "prev_year_eps": 0.027,
+      "yoy_growth": 0.3963
     },
     {
       "symbol": "ANET",
       "report_date": "2016-03-31T00:00:00.000",
-      "eps": 0.03,
-      "prev_year_eps": 0.02,
-      "yoy_growth": 0.5
+      "eps": 0.0302,
+      "prev_year_eps": 0.0213,
+      "yoy_growth": 0.4178
     },
     {
       "symbol": "ANET",
       "report_date": "2016-06-30T00:00:00.000",
-      "eps": 0.03,
-      "prev_year_eps": 0.02,
-      "yoy_growth": 0.5
+      "eps": 0.0332,
+      "prev_year_eps": 0.0208,
+      "yoy_growth": 0.5962
     },
     {
       "symbol": "ANET",
       "report_date": "2016-09-30T00:00:00.000",
-      "eps": 0.04,
-      "prev_year_eps": 0.02,
-      "yoy_growth": 1.0
+      "eps": 0.0434,
+      "prev_year_eps": 0.0246,
+      "yoy_growth": 0.7642
     },
     {
       "symbol": "ANET",
       "report_date": "2016-12-31T00:00:00.000",
-      "eps": 0.05,
-      "prev_year_eps": 0.04,
-      "yoy_growth": 0.25
+      "eps": 0.0492,
+      "prev_year_eps": 0.0377,
+      "yoy_growth": 0.305
     },
     {
       "symbol": "ANET",
       "report_date": "2017-03-31T00:00:00.000",
-      "eps": 0.07,
-      "prev_year_eps": 0.03,
-      "yoy_growth": 1.3333
+      "eps": 0.0667,
+      "prev_year_eps": 0.0302,
+      "yoy_growth": 1.2086
     },
     {
       "symbol": "ANET",
       "report_date": "2017-06-30T00:00:00.000",
-      "eps": 0.08,
-      "prev_year_eps": 0.03,
-      "yoy_growth": 1.6667
+      "eps": 0.0813,
+      "prev_year_eps": 0.0332,
+      "yoy_growth": 1.4488
     },
     {
       "symbol": "ANET",
       "report_date": "2017-09-30T00:00:00.000",
-      "eps": 0.11,
-      "prev_year_eps": 0.04,
-      "yoy_growth": 1.75
+      "eps": 0.1052,
+      "prev_year_eps": 0.0434,
+      "yoy_growth": 1.424
     },
     {
       "symbol": "ANET",
       "report_date": "2017-12-31T00:00:00.000",
-      "eps": 0.08,
-      "prev_year_eps": 0.05,
-      "yoy_growth": 0.6
+      "eps": 0.0808,
+      "prev_year_eps": 0.0492,
+      "yoy_growth": 0.6423
     },
     {
       "symbol": "ANET",
       "report_date": "2018-03-31T00:00:00.000",
-      "eps": 0.11,
-      "prev_year_eps": 0.07,
-      "yoy_growth": 0.5714
+      "eps": 0.1118,
+      "prev_year_eps": 0.0667,
+      "yoy_growth": 0.6762
     },
     {
       "symbol": "ANET",
       "report_date": "2018-06-30T00:00:00.000",
-      "eps": -0.13,
-      "prev_year_eps": 0.08,
-      "yoy_growth": -2.625
+      "eps": -0.1302,
+      "prev_year_eps": 0.0813,
+      "yoy_growth": -2.6015
     },
     {
       "symbol": "ANET",
       "report_date": "2018-09-30T00:00:00.000",
-      "eps": 0.13,
-      "prev_year_eps": 0.11,
-      "yoy_growth": 0.1818
+      "eps": 0.1299,
+      "prev_year_eps": 0.1052,
+      "yoy_growth": 0.2348
     },
     {
       "symbol": "ANET",
       "report_date": "2018-12-31T00:00:00.000",
-      "eps": 0.13,
-      "prev_year_eps": 0.08,
-      "yoy_growth": 0.625
+      "eps": 0.1315,
+      "prev_year_eps": 0.0808,
+      "yoy_growth": 0.6275
     },
     {
       "symbol": "ANET",
       "report_date": "2019-03-31T00:00:00.000",
-      "eps": 0.15,
-      "prev_year_eps": 0.11,
-      "yoy_growth": 0.3636
+      "eps": 0.1546,
+      "prev_year_eps": 0.1118,
+      "yoy_growth": 0.3828
     },
     {
       "symbol": "ANET",
       "report_date": "2019-06-30T00:00:00.000",
-      "eps": 0.15,
-      "prev_year_eps": -0.13,
-      "yoy_growth": 2.1538
+      "eps": 0.1454,
+      "prev_year_eps": -0.1302,
+      "yoy_growth": 2.1167
     },
     {
       "symbol": "ANET",
       "report_date": "2019-09-30T00:00:00.000",
-      "eps": 0.16,
-      "prev_year_eps": 0.13,
-      "yoy_growth": 0.2308
+      "eps": 0.1616,
+      "prev_year_eps": 0.1299,
+      "yoy_growth": 0.244
     },
     {
       "symbol": "ANET",
       "report_date": "2019-12-31T00:00:00.000",
-      "eps": 0.2,
-      "prev_year_eps": 0.13,
-      "yoy_growth": 0.5385
+      "eps": 0.2029,
+      "prev_year_eps": 0.1315,
+      "yoy_growth": 0.543
     },
     {
       "symbol": "ANET",
       "report_date": "2020-03-31T00:00:00.000",
-      "eps": 0.11,
-      "prev_year_eps": 0.15,
-      "yoy_growth": -0.2667
+      "eps": 0.1082,
+      "prev_year_eps": 0.1546,
+      "yoy_growth": -0.3001
     },
     {
       "symbol": "ANET",
       "report_date": "2020-06-30T00:00:00.000",
-      "eps": 0.11,
-      "prev_year_eps": 0.15,
-      "yoy_growth": -0.2667
+      "eps": 0.1141,
+      "prev_year_eps": 0.1454,
+      "yoy_growth": -0.2153
     },
     {
       "symbol": "ANET",
       "report_date": "2020-09-30T00:00:00.000",
-      "eps": 0.13,
-      "prev_year_eps": 0.16,
-      "yoy_growth": -0.1875
+      "eps": 0.1327,
+      "prev_year_eps": 0.1616,
+      "yoy_growth": -0.1788
     },
     {
       "symbol": "ANET",
       "report_date": "2020-12-31T00:00:00.000",
-      "eps": 0.14,
-      "prev_year_eps": 0.2,
-      "yoy_growth": -0.3
+      "eps": 0.1443,
+      "prev_year_eps": 0.2029,
+      "yoy_growth": -0.2888
     },
     {
       "symbol": "ANET",
       "report_date": "2021-03-31T00:00:00.000",
-      "eps": 0.14,
-      "prev_year_eps": 0.11,
-      "yoy_growth": 0.2727
+      "eps": 0.1416,
+      "prev_year_eps": 0.1082,
+      "yoy_growth": 0.3087
     },
     {
       "symbol": "ANET",
       "report_date": "2021-06-30T00:00:00.000",
-      "eps": 0.15,
-      "prev_year_eps": 0.11,
-      "yoy_growth": 0.3636
+      "eps": 0.1544,
+      "prev_year_eps": 0.1141,
+      "yoy_growth": 0.3532
     },
     {
       "symbol": "ANET",
       "report_date": "2021-09-30T00:00:00.000",
-      "eps": 0.18,
-      "prev_year_eps": 0.13,
-      "yoy_growth": 0.3846
+      "eps": 0.1754,
+      "prev_year_eps": 0.1327,
+      "yoy_growth": 0.3218
     },
     {
       "symbol": "ANET",
       "report_date": "2021-12-31T00:00:00.000",
-      "eps": 0.19,
-      "prev_year_eps": 0.14,
-      "yoy_growth": 0.3571
+      "eps": 0.1871,
+      "prev_year_eps": 0.1443,
+      "yoy_growth": 0.2966
     },
     {
       "symbol": "ANET",
       "report_date": "2022-03-31T00:00:00.000",
-      "eps": 0.21,
-      "prev_year_eps": 0.14,
-      "yoy_growth": 0.5
+      "eps": 0.2129,
+      "prev_year_eps": 0.1416,
+      "yoy_growth": 0.5035
     },
     {
       "symbol": "ANET",
       "report_date": "2022-06-30T00:00:00.000",
-      "eps": 0.24,
-      "prev_year_eps": 0.15,
-      "yoy_growth": 0.6
+      "eps": 0.2362,
+      "prev_year_eps": 0.1544,
+      "yoy_growth": 0.5298
     },
     {
       "symbol": "ANET",
       "report_date": "2022-09-30T00:00:00.000",
-      "eps": 0.28,
-      "prev_year_eps": 0.18,
-      "yoy_growth": 0.5556
+      "eps": 0.2815,
+      "prev_year_eps": 0.1754,
+      "yoy_growth": 0.6049
     },
     {
       "symbol": "ANET",
       "report_date": "2022-12-31T00:00:00.000",
-      "eps": 0.34,
-      "prev_year_eps": 0.19,
-      "yoy_growth": 0.7895
+      "eps": 0.3387,
+      "prev_year_eps": 0.1871,
+      "yoy_growth": 0.8103
     },
     {
       "symbol": "ANET",
       "report_date": "2023-03-31T00:00:00.000",
-      "eps": 0.35,
-      "prev_year_eps": 0.21,
-      "yoy_growth": 0.6667
+      "eps": 0.3458,
+      "prev_year_eps": 0.2129,
+      "yoy_growth": 0.6242
     },
     {
       "symbol": "ANET",
       "report_date": "2023-06-30T00:00:00.000",
-      "eps": 0.39,
-      "prev_year_eps": 0.24,
-      "yoy_growth": 0.625
+      "eps": 0.3886,
+      "prev_year_eps": 0.2362,
+      "yoy_growth": 0.6452
     },
     {
       "symbol": "ANET",
       "report_date": "2023-09-30T00:00:00.000",
-      "eps": 0.43,
-      "prev_year_eps": 0.28,
-      "yoy_growth": 0.5357
+      "eps": 0.4292,
+      "prev_year_eps": 0.2815,
+      "yoy_growth": 0.5247
     },
     {
       "symbol": "ANET",
       "report_date": "2023-12-31T00:00:00.000",
-      "eps": 0.48,
-      "prev_year_eps": 0.34,
-      "yoy_growth": 0.4118
+      "eps": 0.4811,
+      "prev_year_eps": 0.3387,
+      "yoy_growth": 0.4204
     },
     {
       "symbol": "ANET",
       "report_date": "2024-03-31T00:00:00.000",
-      "eps": 0.5,
-      "prev_year_eps": 0.35,
-      "yoy_growth": 0.4286
+      "eps": 0.4984,
+      "prev_year_eps": 0.3458,
+      "yoy_growth": 0.4413
     },
     {
       "symbol": "ANET",
       "report_date": "2024-06-30T00:00:00.000",
       "eps": 0.52,
-      "prev_year_eps": 0.39,
-      "yoy_growth": 0.3333
+      "prev_year_eps": 0.3886,
+      "yoy_growth": 0.3381
     },
     {
       "symbol": "ANET",
       "report_date": "2024-09-30T00:00:00.000",
-      "eps": 0.58,
-      "prev_year_eps": 0.43,
-      "yoy_growth": 0.3488
+      "eps": 0.5835,
+      "prev_year_eps": 0.4292,
+      "yoy_growth": 0.3595
     },
     {
       "symbol": "ANET",
       "report_date": "2024-12-31T00:00:00.000",
-      "eps": 0.62,
-      "prev_year_eps": 0.48,
-      "yoy_growth": 0.2917
+      "eps": 0.6241,
+      "prev_year_eps": 0.4811,
+      "yoy_growth": 0.2972
     },
     {
       "symbol": "ANET",
       "report_date": "2025-03-31T00:00:00.000",
-      "eps": 0.64,
-      "prev_year_eps": 0.5,
-      "yoy_growth": 0.28
+      "eps": 0.6362,
+      "prev_year_eps": 0.4984,
+      "yoy_growth": 0.2765
     },
     {
       "symbol": "ANET",
       "report_date": "2025-06-30T00:00:00.000",
-      "eps": 0.7,
+      "eps": 0.6992,
       "prev_year_eps": 0.52,
-      "yoy_growth": 0.3462
+      "yoy_growth": 0.3446
     },
     {
       "symbol": "ANET",
       "report_date": "2025-09-30T00:00:00.000",
-      "eps": 0.67,
-      "prev_year_eps": 0.58,
-      "yoy_growth": 0.1552
+      "eps": 0.6682,
+      "prev_year_eps": 0.5835,
+      "yoy_growth": 0.1452
     },
     {
       "symbol": "ANET",
       "report_date": "2025-12-31T00:00:00.000",
       "eps": 0.75,
-      "prev_year_eps": 0.62,
-      "yoy_growth": 0.2097
+      "prev_year_eps": 0.6241,
+      "yoy_growth": 0.2017
     },
     {
       "symbol": "ANET",
       "report_date": "2026-03-31T00:00:00.000",
-      "eps": 0.8,
-      "prev_year_eps": 0.64,
-      "yoy_growth": 0.25
+      "eps": 0.803,
+      "prev_year_eps": 0.6362,
+      "yoy_growth": 0.2622
     }
   ]
 }
