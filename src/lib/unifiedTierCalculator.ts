@@ -4,7 +4,6 @@ import { clusterPlayersWithGMM } from './gaussianMixture';
 // Cache for tier calculations to avoid re-computation
 const tierCalculationCache = new Map<string, CachedResult>();
 const CACHE_EXPIRY_MS = 5 * 60 * 1000; // 5 minutes
-const MAX_CACHE_SIZE = 50; // Limit cache size
 
 interface CachedResult {
   tiers: UnifiedTier[];
@@ -385,8 +384,6 @@ function findTierBreaks(
   playerValues: { player: Player; rank: number; value: number }[],
   maxTiers: number
 ): number[] {
-  const breaks: number[] = [];
-  
   // Calculate value drops between consecutive players
   const valueDrops: { index: number; drop: number }[] = [];
   
@@ -432,7 +429,7 @@ export function getUnifiedTierColor(tierNumber: number): string {
 /**
  * Get tier label by tier number
  */
-export function getUnifiedTierLabel(tierNumber: number, totalTiers?: number): string {
+export function getUnifiedTierLabel(tierNumber: number, _totalTiers?: number): string {
   if (tierNumber <= UNIFIED_TIER_LABELS.length) {
     return UNIFIED_TIER_LABELS[tierNumber - 1];
   }

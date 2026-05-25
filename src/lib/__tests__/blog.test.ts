@@ -18,15 +18,7 @@ import remarkHtml from 'remark-html';
 import {
   getBlogPostSlugs,
   getBlogPostBySlug,
-  getAllBlogPosts,
-  getBlogPostsByCategory,
-  getBlogPostsByTag,
-  getFeaturedBlogPosts,
   getLatestBlogPostPreviews,
-  searchBlogPosts,
-  getAllCategories,
-  getAllTags,
-  getRelatedBlogPosts,
   BlogPost,
 } from '../blog';
 
@@ -49,7 +41,11 @@ function makeFrontmatter(overrides: Partial<BlogPost> = {}) {
   };
 }
 
-function setupMockFile(slug: string, frontmatter: ReturnType<typeof makeFrontmatter>, content = 'Hello world content') {
+function setupMockFile(
+  slug: string,
+  frontmatter: Partial<ReturnType<typeof makeFrontmatter>>,
+  content = 'Hello world content',
+) {
   mockMatter.mockReturnValue({ data: frontmatter, content });
 }
 
@@ -146,16 +142,14 @@ describe('getBlogPostBySlug', () => {
   });
 
   it('defaults author to "Isaac Vazquez" when not in frontmatter', async () => {
-    const fm = makeFrontmatter();
-    delete (fm as any).author;
+    const { author: _author, ...fm } = makeFrontmatter();
     setupMockFile('no-author', fm);
     const result = await getBlogPostBySlug('no-author');
     expect(result!.author).toBe('Isaac Vazquez');
   });
 
   it('defaults featured to false when not in frontmatter', async () => {
-    const fm = makeFrontmatter();
-    delete (fm as any).featured;
+    const { featured: _featured, ...fm } = makeFrontmatter();
     setupMockFile('no-featured', fm);
     const result = await getBlogPostBySlug('no-featured');
     expect(result!.featured).toBe(false);

@@ -4,7 +4,6 @@ import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { MuseumLogClient } from "./museum-log-client";
 import { normalizeMuseumState } from "./museum-log-state";
 
-// eslint-disable-next-line react-refresh/only-export-components -- Next.js route modules export metadata alongside the page component.
 export const metadata = constructMetadata({
   title: "Museum Log | A Letterboxd for museums",
   description:

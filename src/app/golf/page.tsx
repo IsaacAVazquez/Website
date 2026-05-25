@@ -5,7 +5,6 @@ import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { GolfClient } from "./golf-client";
 import { normalizeGolfState } from "./golf-state";
 
-// eslint-disable-next-line react-refresh/only-export-components -- Next.js route modules export metadata alongside the page component.
 export const metadata = constructMetadata({
   title: "PGA Tour Pulse",
   description:

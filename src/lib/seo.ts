@@ -250,16 +250,29 @@ export function generateProjectStructuredData(project: ProjectStructuredData): o
   };
 }
 
-export function generateBreadcrumbStructuredData(items: { name: string; url: string }[]): object {
+export interface BreadcrumbStructuredData {
+  "@context": string;
+  "@type": "BreadcrumbList";
+  itemListElement: Array<{
+    "@type": "ListItem";
+    position: number;
+    name: string;
+    item: string;
+  }>;
+}
+
+export function generateBreadcrumbStructuredData(
+  items: { name: string; url: string }[],
+): BreadcrumbStructuredData {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    "itemListElement": items.map((item, index) => ({
+    itemListElement: items.map((item, index) => ({
       "@type": "ListItem",
-      "position": index + 1,
-      "name": item.name,
-      "item": item.url.startsWith('http') ? item.url : `${siteConfig.url}${item.url}`
-    }))
+      position: index + 1,
+      name: item.name,
+      item: item.url.startsWith('http') ? item.url : `${siteConfig.url}${item.url}`,
+    })),
   };
 }
 

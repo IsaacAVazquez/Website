@@ -1,4 +1,4 @@
-import { Player, Position, ScoringFormat } from '@/types';
+import { Player, Position } from '@/types';
 
 // Cache configuration
 const CACHE_CONFIG = {

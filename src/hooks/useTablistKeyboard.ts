@@ -10,7 +10,6 @@ import { useCallback, type KeyboardEvent } from "react";
  */
 export function useTablistKeyboard<T>(
   items: ReadonlyArray<T>,
-  getKey: (item: T) => string,
   onSelect: (item: T) => void,
 ) {
   return useCallback(
@@ -50,6 +49,6 @@ export function useTablistKeyboard<T>(
         onSelect(items[nextIndex]);
       }
     },
-    [items, getKey, onSelect],
+    [items, onSelect],
   );
 }

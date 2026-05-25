@@ -5,7 +5,6 @@ import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { Formula1Client } from "./formula-1-client";
 import { normalizeFormula1State } from "./formula-1-state";
 
-// eslint-disable-next-line react-refresh/only-export-components -- Next.js route modules export metadata alongside the page component.
 export const metadata = constructMetadata({
   title: "Formula 1 Pulse",
   description:

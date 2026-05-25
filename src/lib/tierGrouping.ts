@@ -9,7 +9,7 @@ export interface TierAssignment {
  * Calculate tier groupings for fantasy football players based on their rankings
  * Uses a gap-based algorithm to identify natural breaks in player rankings
  */
-export function getTierGroups(players: Player[], position: Position): TierAssignment[] {
+export function getTierGroups(players: Player[], _position: Position): TierAssignment[] {
   if (!players.length) return [];
 
   // Sort players by their average rank (lower is better)

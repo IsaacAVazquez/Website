@@ -8,7 +8,6 @@ import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { LaLigaClient } from "./la-liga-client";
 import { normalizeLaLigaState } from "./la-liga-state";
 
-// eslint-disable-next-line react-refresh/only-export-components -- Next.js route modules export metadata alongside the page component.
 export const metadata = constructMetadata({
   title: "La Liga Pulse",
   description:

@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable react-refresh/only-export-components -- co-located constants are intentional */
 
 import React from "react";
 

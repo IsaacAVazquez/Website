@@ -2,7 +2,6 @@ import { getPortfolioProjects } from "@/constants/caseStudies";
 import { constructMetadata } from "@/lib/seo";
 import { PortfolioProjectCard } from "@/components/PortfolioProjectCard";
 
-// eslint-disable-next-line react-refresh/only-export-components -- Next.js route modules export metadata alongside the page component.
 export const metadata = constructMetadata({
   title: "Projects",
   description:

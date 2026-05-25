@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { startTransition, useEffect, useState, type ReactNode } from "react";
+import { startTransition, useState, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import {
   BEST_UPSET_SHARE,

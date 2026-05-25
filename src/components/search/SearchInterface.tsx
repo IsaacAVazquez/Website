@@ -54,15 +54,6 @@ function readSeededSearchState(fallbacks: Pick<SearchState, "query" | "type" | "
   };
 }
 
-const kickerStyle = {
-  fontFamily: "var(--font-home-sans)",
-  color: "var(--home-ink-muted)",
-  fontWeight: 600,
-  fontSize: "0.72rem",
-  textTransform: "uppercase" as const,
-  letterSpacing: "0.12em",
-};
-
 const sectionTitleStyle = {
   fontFamily: "var(--font-home-sans)",
   color: "var(--home-ink)",

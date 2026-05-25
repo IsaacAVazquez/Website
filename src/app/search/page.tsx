@@ -38,13 +38,6 @@ const indexedContent = [
   "Case studies, resume, and contact",
 ];
 
-const sectionTitleStyle = {
-  fontFamily: "var(--font-home-sans)",
-  color: "var(--home-ink)",
-  fontWeight: 600,
-  letterSpacing: "-0.02em",
-} as const;
-
 const bodyStyle = {
   fontFamily: "var(--font-home-sans)",
   color: "var(--home-ink-muted)",

@@ -4,7 +4,6 @@ import { SpaceXMissionControlClient } from "./spacex-mission-control-client";
 import { loadMissionControlInitialData } from "./spacex-mission-control-data";
 import { normalizeMissionControlState } from "./spacex-mission-control-state";
 
-// eslint-disable-next-line react-refresh/only-export-components -- Next.js route modules export metadata alongside the page component.
 export const metadata = constructMetadata({
   title: "SpaceX Mission Control",
   description:

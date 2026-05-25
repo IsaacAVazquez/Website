@@ -15,7 +15,7 @@ import {
 import { useRouter, useSearchParams } from "next/navigation";
 import { MetricCard } from "@/components/football/MetricCard";
 import { EmptyPanel } from "@/components/football/EmptyPanel";
-import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
+import { HomeStatsPanel } from "@/components/home/HomeStatsPanel";
 import { ChartBar, Briefcase, FileText, BrandGithub } from "@/components/ui/ServerIcons";
 import {
   formatGitHubCompactNumber,

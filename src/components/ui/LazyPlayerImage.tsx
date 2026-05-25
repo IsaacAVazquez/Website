@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable react-refresh/only-export-components -- co-located preloader class/hook are intentional */
 
 import React, { useState, useRef, useEffect, memo } from 'react';
 import Image from 'next/image';

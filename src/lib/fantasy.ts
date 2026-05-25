@@ -204,15 +204,6 @@ function isFiniteNumber(value: unknown): value is number {
   return typeof value === "number" && Number.isFinite(value);
 }
 
-function parseNumericValue(value: number | string | undefined): number | undefined {
-  if (typeof value === "number") {
-    return Number.isFinite(value) ? value : undefined;
-  }
-
-  const parsed = Number.parseFloat(value ?? "");
-  return Number.isFinite(parsed) ? parsed : undefined;
-}
-
 function normalizeOptionalTimestamp(value: unknown): string | null {
   if (typeof value !== "string" || !value) {
     return null;

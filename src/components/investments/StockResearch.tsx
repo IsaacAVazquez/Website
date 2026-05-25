@@ -136,12 +136,10 @@ export function StockResearch({
 
   const handleVisibleTabKeyDown = useTablistKeyboard(
     visibleTabs,
-    (t) => t.key,
     (t) => onTabChange(t.key),
   );
   const handleAllTabsKeyDown = useTablistKeyboard(
     TABS,
-    (t) => t.key,
     (t) => onTabChange(t.key),
   );
 

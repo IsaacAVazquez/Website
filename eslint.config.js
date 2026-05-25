@@ -36,5 +36,14 @@ export default tseslint.config(
       'prefer-const': 'warn',
       'react-hooks/exhaustive-deps': 'warn',
     },
+  },
+  {
+    // Next.js App Router pages must export metadata/generateStaticParams
+    // alongside the component, and test utilities re-export helpers — the
+    // Fast Refresh warning is not actionable in either case.
+    files: ['src/app/**/*.{ts,tsx}', 'src/test-utils/**/*.{ts,tsx}'],
+    rules: {
+      'react-refresh/only-export-components': 'off',
+    },
   }
 );

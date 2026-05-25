@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable react-refresh/only-export-components -- co-located helper is intentional */
 
 import type { CSSProperties, ReactNode } from "react";
 

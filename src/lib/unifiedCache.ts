@@ -7,7 +7,7 @@
 import { Player, Position, ScoringFormat } from '@/types';
 import { logger } from './logger';
 
-export interface CacheEntry<T = any> {
+export interface CacheEntry<T = unknown> {
   data: T;
   timestamp: number;
   expires: number;
@@ -281,12 +281,12 @@ class UnifiedCache {
     return result.data;
   }
 
-  setTiers(position: Position, scoringFormat: ScoringFormat, tierData: any, algorithm?: string): void {
+  setTiers(position: Position, scoringFormat: ScoringFormat, tierData: unknown, algorithm?: string): void {
     const key = this.generateTierKey(position, scoringFormat, algorithm);
     this.set(key, tierData, { source: 'tier-calculation', ttl: this.defaultTTL });
   }
 
-  getTiers(position: Position, scoringFormat: ScoringFormat, algorithm?: string): any | null {
+  getTiers(position: Position, scoringFormat: ScoringFormat, algorithm?: string): unknown {
     const key = this.generateTierKey(position, scoringFormat, algorithm);
     const result = this.get(key);
     return result.data;

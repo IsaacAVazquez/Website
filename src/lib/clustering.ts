@@ -12,68 +12,6 @@ const TIER_COLORS = [
   '#BF00FF', // Purple (Tier 7+)
 ];
 
-// Simple K-means implementation for clustering
-function simpleKMeans(data: number[][], k: number): { clusters: number[] } {
-  const n = data.length;
-  const d = data[0].length;
-  
-  // Initialize centroids randomly
-  const centroids: number[][] = [];
-  for (let i = 0; i < k; i++) {
-    centroids.push([
-      Math.random() * 30, // Random rank between 0-30
-      Math.random() * 5   // Random std dev between 0-5
-    ]);
-  }
-  
-  let clusters = new Array(n).fill(0);
-  let changed = true;
-  let iterations = 0;
-  const maxIterations = 100;
-  
-  while (changed && iterations < maxIterations) {
-    changed = false;
-    
-    // Assign points to nearest centroid
-    for (let i = 0; i < n; i++) {
-      let minDistance = Infinity;
-      let nearestCentroid = 0;
-      
-      for (let j = 0; j < k; j++) {
-        const distance = Math.sqrt(
-          Math.pow(data[i][0] - centroids[j][0], 2) +
-          Math.pow(data[i][1] - centroids[j][1], 2)
-        );
-        
-        if (distance < minDistance) {
-          minDistance = distance;
-          nearestCentroid = j;
-        }
-      }
-      
-      if (clusters[i] !== nearestCentroid) {
-        clusters[i] = nearestCentroid;
-        changed = true;
-      }
-    }
-    
-    // Update centroids
-    for (let j = 0; j < k; j++) {
-      const clusterPoints = data.filter((_, i) => clusters[i] === j);
-      if (clusterPoints.length > 0) {
-        centroids[j] = [
-          clusterPoints.reduce((sum, point) => sum + point[0], 0) / clusterPoints.length,
-          clusterPoints.reduce((sum, point) => sum + point[1], 0) / clusterPoints.length
-        ];
-      }
-    }
-    
-    iterations++;
-  }
-  
-  return { clusters };
-}
-
 export function clusterPlayersIntoTiers(
   players: Player[],
   numberOfTiers: number = 6
