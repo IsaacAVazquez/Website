@@ -6,6 +6,7 @@ jest.mock("next/font/google", () => ({
   JetBrains_Mono: () => ({ variable: "font-jetbrains-mono" }),
   Instrument_Sans: () => ({ variable: "font-instrument-sans" }),
   Instrument_Serif: () => ({ variable: "font-instrument-serif" }),
+  Bricolage_Grotesque: () => ({ variable: "font-display" }),
 }));
 
 jest.mock("@/components/Providers", () => ({

@@ -1,24 +1,21 @@
 import { StructuredData } from "@/components/StructuredData";
 import { AIStructuredData } from "@/components/AIStructuredData";
-import { HomePageContent } from "@/components/home/HomePageContent";
+import { HomePageV3 } from "@/components/home/HomePageV3";
 import {
   getHomepageFeaturedCaseStudies,
   getPortfolioProjects,
 } from "@/constants/caseStudies";
-import {
-  getAllBlogPostPreviews,
-  getHomepageProofOfWorkBlogPostPreviews,
-} from "@/lib/blog";
+import { getAllBlogPostPreviews } from "@/lib/blog";
 import { profile, profileSameAs } from "@/lib/profile";
 
 export { metadata } from "./metadata";
 
 export default function Home() {
   const featuredProjects = getHomepageFeaturedCaseStudies();
-  const proofOfWorkPosts = getHomepageProofOfWorkBlogPostPreviews();
 
-  // Hero meta strip + quick-fact chips read live counts and the latest
-  // writing entry so the editorial hero stays accurate as content ships.
+  // Hero stats strip and marquee read live counts so the editorial hero
+  // stays accurate as content ships. Live tools are projects with a real
+  // hosted destination set on the case study.
   const allPosts = getAllBlogPostPreviews();
   const allProjects = getPortfolioProjects();
   const liveTools = allProjects.filter((p) => Boolean(p.link)).length;
@@ -27,17 +24,13 @@ export default function Home() {
     essayCount: allPosts.length,
     liveToolCount: liveTools,
   };
-  const latestPost = allPosts[0] ?? null;
-  const featuredEssay = allPosts.find((p) => !p.cluster) ?? latestPost;
 
   return (
-    <div className="w-full scroll-smooth bg-[var(--home-paper)]">
-      <HomePageContent
+    <>
+      <HomePageV3
         featuredProjects={featuredProjects}
-        proofOfWorkPosts={proofOfWorkPosts}
+        recentPosts={allPosts}
         heroIndex={heroIndex}
-        latestPost={latestPost}
-        featuredEssay={featuredEssay}
       />
 
       <StructuredData type="ProfilePage" />
@@ -94,6 +87,6 @@ export default function Home() {
           },
         }}
       />
-    </div>
+    </>
   );
 }

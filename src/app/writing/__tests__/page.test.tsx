@@ -184,17 +184,32 @@ describe("WritingPage", () => {
   it("keeps curated and archive-only posts separated by the active filter", () => {
     render(<WritingPage />);
 
-    const articleGrid = screen.getByRole("heading", { name: "All articles" }).closest("section");
-    expect(articleGrid).not.toBeNull();
-
+    // The v3 layout splits the filtered list across two sections — the
+    // featured card (first match) and the archive grid (the rest). Either
+    // location counts as "visible after this filter" from the user's
+    // perspective, so the assertion is page-scoped, not grid-scoped.
     fireEvent.click(screen.getByRole("tab", { name: /PM Workflows/i }));
 
-    expect(within(articleGrid as HTMLElement).getByText("Lead Workflow Essay")).toBeVisible();
-    expect(within(articleGrid as HTMLElement).queryByText("Weekly Tech Note")).not.toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { level: 2, name: "Lead Workflow Essay" }),
+    ).toBeVisible();
+    expect(
+      screen.queryByRole("heading", { level: 2, name: "Weekly Tech Note" }),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole("heading", { level: 3, name: "Weekly Tech Note" }),
+    ).not.toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("tab", { name: /Signals & Commentary/i }));
 
-    expect(within(articleGrid as HTMLElement).getByText("Weekly Tech Note")).toBeVisible();
-    expect(within(articleGrid as HTMLElement).queryByText("Lead Workflow Essay")).not.toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { level: 2, name: "Weekly Tech Note" }),
+    ).toBeVisible();
+    expect(
+      screen.queryByRole("heading", { level: 2, name: "Lead Workflow Essay" }),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole("heading", { level: 3, name: "Lead Workflow Essay" }),
+    ).not.toBeInTheDocument();
   });
 });

@@ -11,7 +11,7 @@ import {
   BLOG_CLUSTER_ORDER,
 } from "@/lib/blog-config";
 import { generateBreadcrumbStructuredData, constructMetadata } from "@/lib/seo";
-import { WritingArchiveClient } from "@/components/writing/WritingArchiveClient";
+import { WritingArchiveV3 } from "@/components/writing/WritingArchiveV3";
 
 export const metadata = constructMetadata({
   title: "Writing",
@@ -113,18 +113,14 @@ export default function WritingPage() {
         <StructuredData key={index} type="Article" data={article} />
       ))}
 
-      <section className="home-page min-h-screen">
-        <div className="home-shell home-section">
-          <WritingArchiveClient
-            posts={posts}
-            clusters={clusters}
-            buckets={buckets}
-            totalEssays={totalEssays}
-            totalNotes={totalNotes}
-            earliestDate={earliestDate}
-          />
-        </div>
-      </section>
+      <WritingArchiveV3
+        posts={posts}
+        clusters={clusters}
+        buckets={buckets}
+        totalEssays={totalEssays}
+        totalNotes={totalNotes}
+        earliestDate={earliestDate}
+      />
     </>
   );
 }

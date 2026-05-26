@@ -1,5 +1,6 @@
 import "./globals.css";
 import {
+  Bricolage_Grotesque,
   Instrument_Sans,
   Instrument_Serif,
   Inter,
@@ -57,6 +58,17 @@ const instrumentSerif = Instrument_Serif({
   preload: false,
 });
 
+// Bricolage Grotesque drives the v3 editorial-brutalist surfaces (home,
+// writing, projects, contact). Variable axis 300–800 + opsz so headlines
+// pick up the wider display cut without loading a second weight.
+const bricolageGrotesque = Bricolage_Grotesque({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-display",
+  display: "swap",
+  preload: false,
+});
+
 export const metadata = constructMetadata();
 
 export default function RootLayout({
@@ -90,6 +102,7 @@ export default function RootLayout({
           jetbrainsMono.variable,
           instrumentSans.variable,
           instrumentSerif.variable,
+          bricolageGrotesque.variable,
           "font-sans min-h-screen antialiased"
         )}
       >
