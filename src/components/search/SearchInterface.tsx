@@ -6,6 +6,7 @@ import { SearchResults } from "./SearchResults";
 import { SearchFilters } from "./SearchFilters";
 import { IconSearch, IconX, IconFilter } from "@tabler/icons-react";
 import { useDebounce } from "@/hooks/useDebounce";
+import { logger } from "@/lib/logger";
 
 export interface SearchInterfaceProps {
   initialQuery?: string;
@@ -170,7 +171,7 @@ export function SearchInterface({
         searchTime
       }));
     } catch (error) {
-      console.error('Search failed:', error);
+      logger.error('Search failed', error);
       setSearchState(prev => ({
         ...prev,
         results: [],

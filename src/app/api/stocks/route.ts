@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { isAllowedSymbol, fetchFinnhubQuote } from "@/lib/finnhub";
 import { apiRateLimiter, rateLimitResponse } from "@/lib/rateLimit";
+import { logger } from "@/lib/logger";
 
 /**
  * Stock API Route
@@ -103,7 +104,7 @@ export async function GET(request: NextRequest) {
       { headers: SUCCESS_CACHE_HEADERS }
     );
   } catch (error) {
-    console.error("Stock API Error:", error);
+    logger.error("Stock API error", error);
     return NextResponse.json(
       { error: "Failed to fetch stock data" },
       { status: 500, headers: NO_STORE_HEADERS }

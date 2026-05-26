@@ -248,7 +248,7 @@ function DriverHeadshot({
   return (
     <img
       src={url}
-      alt=""
+      alt={name}
       loading="lazy"
       className="h-9 w-9 flex-shrink-0 rounded-full border bg-[var(--home-paper-alt)] object-cover object-top"
       style={{ borderColor: teamColor ?? "var(--home-rule)" }}

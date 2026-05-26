@@ -144,6 +144,14 @@
   --space-3xl: 4rem;
   --space-4xl: 6rem;
 
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 1.6rem;
+  --radius-3xl: 1.8rem;
+  --radius-pill: 999px;
+
   --transition-fast: 150ms ease;
   --transition-base: 250ms ease;
   --transition-slow: 400ms ease;
@@ -846,7 +854,7 @@
    * pill row of quick links.
    */
   .home-stats-panel {
-    border-radius: 1.6rem;
+    border-radius: var(--radius-2xl);
     border: 1px solid var(--home-rule);
     background: color-mix(in srgb, var(--home-paper) 92%, white);
     box-shadow: var(--shadow-sm);
@@ -1337,7 +1345,7 @@
 
   .home-card {
     border: 1px solid var(--home-rule);
-    border-radius: 1.6rem;
+    border-radius: var(--radius-2xl);
     background: color-mix(in srgb, var(--home-paper) 88%, white);
     box-shadow: var(--shadow-md);
     transition-property: transform, border-color, background-color, box-shadow;
@@ -1423,7 +1431,7 @@
   }
 
   .home-note-card {
-    border-radius: 1.1rem;
+    border-radius: var(--radius-lg);
     background: color-mix(in srgb, var(--home-paper-alt) 64%, white);
     padding: 1rem;
   }

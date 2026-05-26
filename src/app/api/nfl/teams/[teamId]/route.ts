@@ -5,6 +5,7 @@ import {
   isNflTeamIdShape,
   isValidNflTeamId,
 } from "@/lib/nflSnapshot";
+import { logger } from "@/lib/logger";
 
 const SUCCESS_CACHE_HEADERS = {
   "Cache-Control": "public, max-age=300, stale-while-revalidate=900",
@@ -45,7 +46,7 @@ export async function GET(
   } catch (error) {
     const err = error as Error & { status?: number };
     if ((err.status ?? 500) >= 500) {
-      console.error("NFL team API error:", error);
+      logger.error("NFL team API error", error);
     }
     return NextResponse.json(
       {

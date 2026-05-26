@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { emailDigestRateLimiter, getClientIdentifier, rateLimitResponse } from "@/lib/rateLimit";
+import { logger } from "@/lib/logger";
 
 // ---------------------------------------------------------------------------
 // POST /api/mba-jobs/email — send an email digest of MBA job listings via Resend
@@ -357,13 +358,13 @@ export async function POST(request: NextRequest) {
     });
 
     if (result.error) {
-      console.error("MBA jobs email provider error:", result.error.message);
+      logger.error("MBA jobs email provider error", result.error.message);
       return json({ error: "Email provider failed to send digest." }, { status: 502 });
     }
 
     return json({ ok: true, id: result.data?.id });
   } catch (err) {
-    console.error("MBA jobs email send failed:", (err as Error)?.message ?? err);
+    logger.error("MBA jobs email send failed", (err as Error)?.message ?? err);
     return json({ error: "Failed to send email digest." }, { status: 500 });
   }
 }

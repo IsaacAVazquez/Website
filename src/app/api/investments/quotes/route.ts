@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import type { StockQuote } from "@/types/investment";
 import { isAllowedSymbol, fetchFinnhubQuote } from "@/lib/finnhub";
 import { apiRateLimiter, rateLimitResponse } from "@/lib/rateLimit";
+import { logger } from "@/lib/logger";
 
 const RATE_LIMITED_ERROR =
   "Live price is temporarily unavailable right now. Try again in a few minutes.";
@@ -106,7 +107,7 @@ export async function GET(request: NextRequest) {
       { headers: SUCCESS_CACHE_HEADERS }
     );
   } catch (error) {
-    console.error("Investments quotes proxy error:", error);
+    logger.error("Investments quotes proxy error", error);
     return NextResponse.json(
       { error: "Failed to fetch quotes" },
       { status: 502, headers: NO_STORE_HEADERS }

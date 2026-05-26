@@ -5,6 +5,7 @@ import {
   isLaLigaTeamIdShape,
   isValidLaLigaTeamId,
 } from "@/lib/laLigaSnapshot";
+import { logger } from "@/lib/logger";
 
 const SUCCESS_CACHE_HEADERS = {
   "Cache-Control": "public, max-age=300, stale-while-revalidate=900",
@@ -45,7 +46,7 @@ export async function GET(
   } catch (error) {
     const err = error as Error & { status?: number };
     if ((err.status ?? 500) >= 500) {
-      console.error("La Liga team API error:", error);
+      logger.error("La Liga team API error", error);
     }
     return NextResponse.json(
       { ...createEmptyLaLigaTeamSnapshot(), error: err.message || "Unable to load La Liga team snapshot" },

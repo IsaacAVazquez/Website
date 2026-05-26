@@ -452,6 +452,15 @@ function ToolDirectoryTable({
                     isSelected ? "bg-[var(--home-paper-alt)]" : ""
                   }`}
                   onClick={() => onSelect(tool.id)}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      event.preventDefault();
+                      onSelect(tool.id);
+                    }
+                  }}
+                  role="button"
+                  tabIndex={0}
+                  aria-pressed={isSelected}
                 >
                   <td className="min-w-[17rem] px-4 py-4 align-top">
                     <button

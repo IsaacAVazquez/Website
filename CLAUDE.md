@@ -90,6 +90,7 @@ Note: `prebuild` automatically runs a league-only football snapshot refresh; `po
 - `/mlb`
 - `/nba`
 - `/nfl`
+- `/golf`
 
 ### Fantasy football
 
@@ -97,6 +98,18 @@ Note: `prebuild` automatically runs a league-only football snapshot refresh; `po
 - `/fantasy-football/tiers/[position]`
 - `/fantasy-football/rb-tiers`
 - `/fantasy-football/draft-tracker`
+
+### AI / knowledge surfaces
+
+- `/ai-dev-tools`
+- `/frontier-models`
+- `/decision-lab`
+
+### Personal interest surfaces
+
+- `/food-map`
+- `/recipe-finder`
+- `/wine-cellar`
 
 ### Other live routes
 
@@ -108,6 +121,8 @@ Note: `prebuild` automatically runs a league-only football snapshot refresh; `po
 - `/polling-aggregator`
 - `/mba-internship-notifications`
 - `/museum-log`
+- `/now`
+- `/changelog`
 
 ### Utility/admin
 
@@ -148,6 +163,13 @@ All 7 links are active in the nav: Home, About, Projects, Writing, Investments, 
 - `full` on most content pages
 
 This is intentional to avoid stacked closing CTAs.
+
+### Error boundaries
+
+- Shared fallback: `src/components/RouteErrorBoundary.tsx` (editorial-styled, calls `logger.error`, exposes `reset()` retry).
+- Top-level catch-all: `src/app/error.tsx` covers anything below.
+- Per-route boundaries on snapshot-driven dashboards that need bespoke surface labels: `/nba`, `/nfl`, `/mlb`, `/formula-1`, `/premier-league`, `/la-liga`, `/spacex-mission-control`, `/news-pulse`, `/investments`.
+- When adding a new data-fetching dashboard route, drop in an `error.tsx` that re-exports `RouteErrorBoundary` with a `surfaceName`.
 
 ---
 
@@ -265,6 +287,7 @@ The `/nba` route follows the same snapshot-driven pattern as the soccer dashboar
 - `/news-pulse` reads from `src/lib/news-pulse-utils.ts` through `/api/news-pulse`
 - `/spacex-mission-control` reads from SpaceX data helpers and `/api/spacex/*` routes; `.github/workflows/update-spacex.yml` refreshes data and image artifacts twice daily
 - `/polling-aggregator` reads from `src/data/pollingSnapshot.ts` with deep-linkable route state
+- `/golf` reads from `src/data/golfSnapshot.ts`. **Manually maintained — no build script, no GitHub workflow.** To refresh, hand-edit the snapshot (tournament metadata, leaderboard, round scores). A scraped automation against the public ESPN golf endpoints (`https://site.api.espn.com/apis/site/v2/sports/golf/leaderboard`) would be doable but hasn't been built; the dashboard intentionally tracks specific events Isaac follows rather than every tour stop.
 - `/fintech-tools/budget-planner` uses `src/hooks/useBudgetPlanner.ts`
 - `/fintech-tools/interchange-iq` is a client-side fee analyzer under `src/app/fintech-tools/interchange-iq`
 

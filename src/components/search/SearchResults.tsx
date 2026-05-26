@@ -161,10 +161,20 @@ function SearchResultCard({ result, query }: SearchResultCardProps) {
     }
   };
 
+  const escapeHtml = (input: string): string =>
+    input
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+
   const highlightQuery = (text: string, q: string): string => {
-    if (!q) return text;
-    const regex = new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
-    return text.replace(
+    const safe = escapeHtml(text);
+    if (!q) return safe;
+    const escapedQuery = escapeHtml(q).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const regex = new RegExp(`(${escapedQuery})`, 'gi');
+    return safe.replace(
       regex,
       '<mark style="background-color: color-mix(in srgb, var(--home-acid) 40%, transparent); color: var(--home-ink); padding: 0 2px; border-radius: 2px;">$1</mark>'
     );

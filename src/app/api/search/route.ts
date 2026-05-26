@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getAllBlogPostPreviews } from '@/lib/blog';
 import { caseStudiesData } from '@/constants/caseStudies';
+import { logger } from '@/lib/logger';
 
 interface SearchableContent {
   id: string;
@@ -39,7 +40,7 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       });
     }
   } catch (err) {
-    console.error('Search corpus: failed to load blog posts', err);
+    logger.error('Search corpus: failed to load blog posts', err);
   }
 
   // ---- Project case studies (one entry per /portfolio/[slug]) ------------
@@ -543,7 +544,7 @@ export async function GET(request: NextRequest) {
     }, { headers: { 'Cache-Control': 'public, max-age=3600, stale-while-revalidate=86400' } });
 
   } catch (error) {
-    console.error('Search API error:', error);
+    logger.error('Search API error', error);
     return NextResponse.json(
       { error: 'Search failed', results: [], total: 0 },
       { status: 500 }

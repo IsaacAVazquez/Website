@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import type { MissionControlStatus } from "@/types/spacex";
 import { getMissionLaunchCards } from "@/lib/spacexData";
+import { logger } from "@/lib/logger";
 
 function isValidStatus(status: string): status is MissionControlStatus {
   return status === "upcoming" || status === "past";
@@ -40,7 +41,7 @@ export async function GET(request: NextRequest) {
         ? "Live SpaceX data is temporarily rate limited. Retry shortly."
         : err.message || "Unable to load launches";
     if (err.status !== 429 && status >= 500) {
-      console.error("SpaceX launches API error:", error);
+      logger.error("SpaceX launches API error", error);
     }
 
     return NextResponse.json(

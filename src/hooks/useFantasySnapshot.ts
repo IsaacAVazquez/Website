@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { fantasySnapshotRevision } from "@/data/fantasySnapshotRevision.generated";
+import { logger } from "@/lib/logger";
 import {
   FantasyRoutePosition,
   FantasyRouteScoring,
@@ -102,8 +103,8 @@ async function loadFantasySnapshot(scoring: FantasyRouteScoring): Promise<Fantas
       try {
         return await fetchApiFantasySnapshot(scoring);
       } catch (apiError) {
-        console.warn("Fantasy snapshot static fetch failed:", staticError);
-        console.warn("Fantasy snapshot API fallback failed:", apiError);
+        logger.warn("Fantasy snapshot static fetch failed", staticError);
+        logger.warn("Fantasy snapshot API fallback failed", apiError);
         throw new Error("Fantasy rankings are unavailable right now.", { cause: apiError });
       }
     })

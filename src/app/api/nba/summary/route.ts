@@ -3,6 +3,7 @@ import {
   createEmptyNbaSummarySnapshot,
   getNbaSummarySnapshot,
 } from "@/lib/nbaSnapshot";
+import { logger } from "@/lib/logger";
 
 const SUCCESS_CACHE_HEADERS = {
   "Cache-Control": "public, max-age=300, stale-while-revalidate=900",
@@ -20,7 +21,7 @@ export async function GET() {
   } catch (error) {
     const err = error as Error & { status?: number };
     if ((err.status ?? 500) >= 500) {
-      console.error("NBA summary API error:", error);
+      logger.error("NBA summary API error", error);
     }
     return NextResponse.json(
       {

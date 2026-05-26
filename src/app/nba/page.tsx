@@ -13,7 +13,7 @@ export const metadata = constructMetadata({
   description:
     "Interactive NBA dashboard with conference standings, playoff seeding, play-in race context, and snapshot leaderboards for points, rebounds, and assists.",
   canonicalUrl: "/nba",
-  dateModified: "2026-04-28",
+  dateModified: nbaSnapshot.updatedAt,
   aiMetadata: {
     profession: "Product Manager",
     specialty: "Interactive dashboards, sports data products, and productized exploratory tools",

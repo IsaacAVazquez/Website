@@ -5,6 +5,7 @@ import {
   isPremierLeagueTeamIdShape,
   isValidPremierLeagueTeamId,
 } from "@/lib/premierLeagueSnapshot";
+import { logger } from "@/lib/logger";
 
 const SUCCESS_CACHE_HEADERS = {
   "Cache-Control": "public, max-age=300, stale-while-revalidate=900",
@@ -61,7 +62,7 @@ export async function GET(
     const err = error as Error & { status?: number };
 
     if ((err.status ?? 500) >= 500) {
-      console.error("Premier League team API error:", error);
+      logger.error("Premier League team API error", error);
     }
 
     return NextResponse.json(

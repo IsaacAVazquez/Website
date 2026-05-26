@@ -5,6 +5,7 @@ import {
   isNbaTeamIdShape,
   isValidNbaTeamId,
 } from "@/lib/nbaSnapshot";
+import { logger } from "@/lib/logger";
 
 const SUCCESS_CACHE_HEADERS = {
   "Cache-Control": "public, max-age=300, stale-while-revalidate=900",
@@ -45,7 +46,7 @@ export async function GET(
   } catch (error) {
     const err = error as Error & { status?: number };
     if ((err.status ?? 500) >= 500) {
-      console.error("NBA team API error:", error);
+      logger.error("NBA team API error", error);
     }
     return NextResponse.json(
       { ...createEmptyNbaTeamSnapshot(), error: err.message || "Unable to load NBA team snapshot" },

@@ -198,6 +198,14 @@ function RaceRow({
       className="cursor-pointer border border-[var(--home-rule)] transition-colors"
       style={getRowStyle(isSelected)}
       onClick={onClick}
+      onKeyDown={(event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          onClick();
+        }
+      }}
+      role="button"
+      tabIndex={0}
       aria-selected={isSelected}
     >
       <td className="rounded-l-2xl px-3 py-3 align-middle">

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import type { InvestmentSection } from "@/types/investment";
 import { getInvestmentContext, getInvestmentDataEnvelope } from "@/lib/investmentsData";
 import { isAllowedSymbol } from "@/lib/finnhub";
+import { logger } from "@/lib/logger";
 
 const VALID_SECTIONS: InvestmentSection[] = [
   "price",
@@ -87,7 +88,7 @@ export async function GET(
     });
   } catch (error) {
     const err = error as Error & { status?: number };
-    console.error("Investments data API error:", error);
+    logger.error("Investments data API error", error);
     const status = err.status ?? 500;
     const message =
       status === 404

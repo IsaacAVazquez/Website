@@ -2,7 +2,10 @@ name: Refresh Premier League Snapshot
 
 on:
   schedule:
-    - cron: "15 6 * * *"
+    # Daily at 06:15 UTC during the PL season (Aug–May). Skipped Jun/Jul
+    # because the league is on summer break — no fixtures, no standings
+    # changes, so the daily run would just burn minutes.
+    - cron: "15 6 * 1-5,8-12 *"
   workflow_dispatch:
 
 # Don't stack a manual dispatch on top of a scheduled run.
@@ -141,7 +144,7 @@ jobs:
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "**Status:** ${{ job.status }}" >> "$GITHUB_STEP_SUMMARY"
           echo "**Run Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Schedule:** Daily at 06:15 UTC" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Schedule:** Daily at 06:15 UTC, Aug–May" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
           if [ -n "${{ steps.verify_quality.outputs.standings_count }}" ]; then
             echo "**Teams in standings:** ${{ steps.verify_quality.outputs.standings_count }}" >> "$GITHUB_STEP_SUMMARY"

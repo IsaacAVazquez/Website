@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getInvestmentsIndex } from "@/lib/investmentsData";
+import { logger } from "@/lib/logger";
 
 export async function GET(request: NextRequest) {
   try {
@@ -11,7 +12,7 @@ export async function GET(request: NextRequest) {
     });
   } catch (error) {
     const err = error as Error & { status?: number };
-    console.error("Investments index API error:", error);
+    logger.error("Investments index API error", error);
     return NextResponse.json(
       {
         symbols: [],
