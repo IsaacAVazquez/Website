@@ -1503,6 +1503,13 @@
       "eps": 1.7584,
       "prev_year_eps": 0.8942,
       "yoy_growth": 0.9665
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2026-04-30T00:00:00.000",
+      "eps": 2.3911,
+      "prev_year_eps": 0.7629,
+      "yoy_growth": 2.1342
     }
   ]
 }

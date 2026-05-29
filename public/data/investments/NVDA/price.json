@@ -1,24 +1,6 @@
 [
   {
     "symbol": "NVDA",
-    "report_date": "2025-05-22",
-    "open": 132.23,
-    "close": 132.83,
-    "high": 134.25,
-    "low": 131.55,
-    "volume": 187344000
-  },
-  {
-    "symbol": "NVDA",
-    "report_date": "2025-05-23",
-    "open": 130.0,
-    "close": 131.29,
-    "high": 132.68,
-    "low": 129.16,
-    "volume": 198821300
-  },
-  {
-    "symbol": "NVDA",
     "report_date": "2025-05-27",
     "open": 134.15,
     "close": 135.5,
@@ -2265,6 +2247,24 @@
     "close": 215.33,
     "high": 221.01,
     "low": 214.8,
-    "volume": 168346300
+    "volume": 169275700
+  },
+  {
+    "symbol": "NVDA",
+    "report_date": "2026-05-26",
+    "open": 216.54,
+    "close": 214.86,
+    "high": 218.18,
+    "low": 212.0,
+    "volume": 187202600
+  },
+  {
+    "symbol": "NVDA",
+    "report_date": "2026-05-27",
+    "open": 214.12,
+    "close": 212.6,
+    "high": 214.15,
+    "low": 208.78,
+    "volume": 167028500
   }
 ]

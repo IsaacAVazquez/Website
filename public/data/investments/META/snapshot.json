@@ -1,10 +1,10 @@
 {
   "symbol": "META",
-  "lastUpdated": "2026-05-25T23:55:29.511086+00:00",
+  "lastUpdated": "2026-05-29T00:06:20.579353+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-05-25T23:55:29.511086+00:00",
+    "snapshotBuiltAt": "2026-05-29T00:06:20.579353+00:00",
     "sections": {
-      "price": "2026-05-22"
+      "price": "2026-05-27"
     }
   },
   "source": "prefetched",
@@ -41,8 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 27.5066,
-      "ttmPe": 22.19,
-      "pegRatio": 0.36
+      "ttmPe": 23.09,
+      "marketCap": 1612558785558,
+      "psRatio": 7.5,
+      "pbRatio": 6.62,
+      "pegRatio": 0.37
     },
     "profitability": {
       "roe": 11.62,
@@ -4237,10 +4240,10 @@
         {
           "Breakdown": "Purchase of PPE",
           "TTM": "-52162000000.0",
-          "2026-03-31": "-18997000000.0",
+          "2026-03-31": "-75747000000.0",
           "2025-12-31": "-21383000000.0",
           "2025-09-30": "-18829000000.0",
-          "2025-06-30": "-16538000000.0",
+          "2025-06-30": "-52162000000.0",
           "2025-03-31": "-12941000000.0",
           "2024-12-31": "-14425000000.0",
           "2024-09-30": "-8258000000.0",
@@ -5389,22 +5392,6 @@
       ]
     },
     "price": [
-      {
-        "date": "2025-05-22",
-        "open": 634.05,
-        "high": 643.25,
-        "low": 630.71,
-        "close": 636.57,
-        "volume": 8228400
-      },
-      {
-        "date": "2025-05-23",
-        "open": 624,
-        "high": 632.45,
-        "low": 622.65,
-        "close": 627.06,
-        "volume": 8454100
-      },
       {
         "date": "2025-05-27",
         "open": 635.41,
@@ -7403,7 +7390,23 @@
         "high": 614.81,
         "low": 606.95,
         "close": 610.26,
-        "volume": 11671600
+        "volume": 11688600
+      },
+      {
+        "date": "2026-05-26",
+        "open": 608.89,
+        "high": 614.47,
+        "low": 605.3,
+        "close": 612.34,
+        "volume": 12234200
+      },
+      {
+        "date": "2026-05-27",
+        "open": 609.4,
+        "high": 638.5,
+        "low": 609,
+        "close": 635.26,
+        "volume": 23006900
       }
     ],
     "officers": [
@@ -7475,14 +7478,29 @@
     ],
     "industry": [
       {
+        "metric": "P/E (TTM)",
+        "value": 23.09,
+        "industryAvg": 14.5
+      },
+      {
+        "metric": "P/S Ratio",
+        "value": 7.5,
+        "industryAvg": 9
+      },
+      {
+        "metric": "P/B Ratio",
+        "value": 6.62,
+        "industryAvg": 8.24
+      },
+      {
         "metric": "ROE",
         "value": 11.62,
-        "industryAvg": 61.77
+        "industryAvg": 61.62
       },
       {
         "metric": "ROA",
         "value": 7.03,
-        "industryAvg": 41.29
+        "industryAvg": 41.199999999999996
       },
       {
         "metric": "Gross Margin",
@@ -7497,7 +7515,7 @@
       {
         "metric": "Net Margin",
         "value": 47.54,
-        "industryAvg": 60.62
+        "industryAvg": 60.47
       }
     ]
   }

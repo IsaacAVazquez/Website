@@ -1552,6 +1552,13 @@
       "eps": 2.475,
       "prev_year_eps": 1.6643,
       "yoy_growth": 0.4871
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2026-04-30T00:00:00.000",
+      "eps": 11.1014,
+      "prev_year_eps": 10.0,
+      "yoy_growth": 0.1101
     }
   ]
 }

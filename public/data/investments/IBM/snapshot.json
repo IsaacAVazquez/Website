@@ -1,10 +1,10 @@
 {
   "symbol": "IBM",
-  "lastUpdated": "2026-05-25T23:55:29.511086+00:00",
+  "lastUpdated": "2026-05-29T00:06:20.579353+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-05-25T23:55:29.511086+00:00",
+    "snapshotBuiltAt": "2026-05-29T00:06:20.579353+00:00",
     "sections": {
-      "price": "2026-05-22"
+      "price": "2026-05-27"
     }
   },
   "source": "prefetched",
@@ -41,8 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.3093,
-      "ttmPe": 22.45,
-      "pegRatio": 1.55
+      "ttmPe": 22.57,
+      "marketCap": 239858728560,
+      "psRatio": 1.42,
+      "pbRatio": 7.27,
+      "pegRatio": 1.56
     },
     "profitability": {
       "roe": 3.71,
@@ -6352,22 +6355,6 @@
     },
     "price": [
       {
-        "date": "2025-05-22",
-        "open": 260.77,
-        "high": 261.27,
-        "low": 257.91,
-        "close": 258.37,
-        "volume": 3091300
-      },
-      {
-        "date": "2025-05-23",
-        "open": 258.58,
-        "high": 259.87,
-        "low": 255.79,
-        "close": 258.63,
-        "volume": 2722600
-      },
-      {
         "date": "2025-05-27",
         "open": 261,
         "high": 263.79,
@@ -8365,7 +8352,23 @@
         "high": 264.38,
         "low": 253.39,
         "close": 253.84,
-        "volume": 19025900
+        "volume": 19072900
+      },
+      {
+        "date": "2026-05-26",
+        "open": 254.55,
+        "high": 254.55,
+        "low": 245.45,
+        "close": 250.69,
+        "volume": 9256100
+      },
+      {
+        "date": "2026-05-27",
+        "open": 250.46,
+        "high": 257.62,
+        "low": 250.46,
+        "close": 255.2,
+        "volume": 9255600
       }
     ],
     "officers": [
@@ -8429,29 +8432,44 @@
     ],
     "industry": [
       {
+        "metric": "P/E (TTM)",
+        "value": 22.57,
+        "industryAvg": 9.62
+      },
+      {
+        "metric": "P/S Ratio",
+        "value": 1.42,
+        "industryAvg": 0.96
+      },
+      {
+        "metric": "P/B Ratio",
+        "value": 7.27,
+        "industryAvg": 3.57
+      },
+      {
         "metric": "ROE",
         "value": 3.71,
-        "industryAvg": 27.96
+        "industryAvg": 27.87
       },
       {
         "metric": "ROA",
         "value": 0.79,
-        "industryAvg": 9.65
+        "industryAvg": 9.610000000000001
       },
       {
         "metric": "Gross Margin",
         "value": 58.36,
-        "industryAvg": 38.019999999999996
+        "industryAvg": 38
       },
       {
         "metric": "EBITDA Margin",
         "value": 4.55,
-        "industryAvg": 17.07
+        "industryAvg": 17.04
       },
       {
         "metric": "Net Margin",
         "value": 1.76,
-        "industryAvg": 8.42
+        "industryAvg": 8.38
       }
     ]
   }

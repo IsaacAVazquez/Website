@@ -1,24 +1,6 @@
 [
   {
     "symbol": "PANW",
-    "report_date": "2025-05-22",
-    "open": 183.01,
-    "close": 186.14,
-    "high": 187.65,
-    "low": 182.46,
-    "volume": 7613400
-  },
-  {
-    "symbol": "PANW",
-    "report_date": "2025-05-23",
-    "open": 183.61,
-    "close": 186.75,
-    "high": 187.65,
-    "low": 183.22,
-    "volume": 4902900
-  },
-  {
-    "symbol": "PANW",
     "report_date": "2025-05-27",
     "open": 188.67,
     "close": 187.46,
@@ -2266,5 +2248,23 @@
     "high": 261.41,
     "low": 249.5,
     "volume": 6626100
+  },
+  {
+    "symbol": "PANW",
+    "report_date": "2026-05-26",
+    "open": 258.17,
+    "close": 256.75,
+    "high": 259.84,
+    "low": 250.77,
+    "volume": 7164000
+  },
+  {
+    "symbol": "PANW",
+    "report_date": "2026-05-27",
+    "open": 245.62,
+    "close": 248.47,
+    "high": 251.64,
+    "low": 243.04,
+    "volume": 8318000
   }
 ]

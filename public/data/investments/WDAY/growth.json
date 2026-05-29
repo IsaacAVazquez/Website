@@ -101,9 +101,9 @@
     {
       "symbol": "WDAY",
       "report_date": "2026-04-30T00:00:00.000",
-      "revenue": 9854000000.0,
+      "revenue": 2542000000.0,
       "prev_year_revenue": 2240000000.0,
-      "yoy_growth": 3.3991
+      "yoy_growth": 0.1348
     }
   ],
   "annual_revenue": [
@@ -259,9 +259,9 @@
     {
       "symbol": "WDAY",
       "report_date": "2026-04-30T00:00:00.000",
-      "operating_income": 1157000000.0,
+      "operating_income": 338000000.0,
       "prev_year_operating_income": 205000000.0,
-      "yoy_growth": 4.6439
+      "yoy_growth": 0.6488
     }
   ],
   "annual_operating_income": [
@@ -410,9 +410,9 @@
     {
       "symbol": "WDAY",
       "report_date": "2026-04-30T00:00:00.000",
-      "ebitda": 1684000000.0,
+      "ebitda": 1727000000.0,
       "prev_year_ebitda": 216000000.0,
-      "yoy_growth": 6.7963
+      "yoy_growth": 6.9954
     }
   ],
   "annual_ebitda": [
@@ -719,9 +719,9 @@
     {
       "symbol": "WDAY",
       "report_date": "2026-04-30T00:00:00.000",
-      "free_cash_flow": 2972000000.0,
+      "free_cash_flow": 616000000.0,
       "prev_year_free_cash_flow": 421000000.0,
-      "yoy_growth": 6.0594
+      "yoy_growth": 0.4632
     }
   ],
   "annual_fcf": [
@@ -1188,6 +1188,13 @@
       "eps": 0.5505,
       "prev_year_eps": 0.3481,
       "yoy_growth": 0.5814
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-04-30T00:00:00.000",
+      "eps": 0.8729,
+      "prev_year_eps": 0.2516,
+      "yoy_growth": 2.4694
     }
   ]
 }

@@ -1,10 +1,10 @@
 {
   "symbol": "NET",
-  "lastUpdated": "2026-05-25T23:55:29.511086+00:00",
+  "lastUpdated": "2026-05-29T00:06:20.579353+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-05-25T23:55:29.511086+00:00",
+    "snapshotBuiltAt": "2026-05-29T00:06:20.579353+00:00",
     "sections": {
-      "price": "2026-05-22"
+      "price": "2026-05-27"
     }
   },
   "source": "prefetched",
@@ -40,7 +40,10 @@
       "longName": "Cloudflare, Inc."
     },
     "fundamentals": {
-      "ttmEps": -0.2483
+      "ttmEps": -0.2483,
+      "marketCap": 73952198364,
+      "psRatio": 31.76,
+      "pbRatio": 48.44
     },
     "profitability": {
       "roe": -5.81,
@@ -5460,22 +5463,6 @@
     },
     "price": [
       {
-        "date": "2025-05-22",
-        "open": 157.36,
-        "high": 160.48,
-        "low": 155.9,
-        "close": 158.21,
-        "volume": 2084700
-      },
-      {
-        "date": "2025-05-23",
-        "open": 155.17,
-        "high": 159.18,
-        "low": 154.93,
-        "close": 158.04,
-        "volume": 1677300
-      },
-      {
         "date": "2025-05-27",
         "open": 160,
         "high": 162.8,
@@ -7474,6 +7461,22 @@
         "low": 211.07,
         "close": 216.17,
         "volume": 2109300
+      },
+      {
+        "date": "2026-05-26",
+        "open": 216.25,
+        "high": 221.11,
+        "low": 208.24,
+        "close": 217.54,
+        "volume": 3458300
+      },
+      {
+        "date": "2026-05-27",
+        "open": 212.23,
+        "high": 215.35,
+        "low": 208,
+        "close": 209.22,
+        "volume": 3063900
       }
     ],
     "officers": [
@@ -7536,19 +7539,33 @@
     ],
     "industry": [
       {
+        "metric": "P/E (TTM)",
+        "industryAvg": 13.11
+      },
+      {
+        "metric": "P/S Ratio",
+        "value": 31.76,
+        "industryAvg": 4.99
+      },
+      {
+        "metric": "P/B Ratio",
+        "value": 48.44,
+        "industryAvg": 7.73
+      },
+      {
         "metric": "ROE",
         "value": -5.81,
-        "industryAvg": 59.64
+        "industryAvg": 59.63
       },
       {
         "metric": "ROA",
         "value": -1.4200000000000002,
-        "industryAvg": 23.06
+        "industryAvg": 23.05
       },
       {
         "metric": "Gross Margin",
         "value": 266.9,
-        "industryAvg": 78.64
+        "industryAvg": 78.66
       },
       {
         "metric": "EBITDA Margin",
@@ -7558,7 +7575,7 @@
       {
         "metric": "Net Margin",
         "value": -13.56,
-        "industryAvg": 32.06
+        "industryAvg": 32.05
       }
     ]
   }

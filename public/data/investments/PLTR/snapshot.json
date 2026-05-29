@@ -1,10 +1,10 @@
 {
   "symbol": "PLTR",
-  "lastUpdated": "2026-05-25T23:55:29.511086+00:00",
+  "lastUpdated": "2026-05-29T00:06:20.579353+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-05-25T23:55:29.511086+00:00",
+    "snapshotBuiltAt": "2026-05-29T00:06:20.579353+00:00",
     "sections": {
-      "price": "2026-05-22"
+      "price": "2026-05-27"
     }
   },
   "source": "prefetched",
@@ -41,8 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 0.8876,
-      "ttmPe": 154.21,
-      "pegRatio": 0.51
+      "ttmPe": 149.29,
+      "marketCap": 317667813120,
+      "psRatio": 60.81,
+      "pbRatio": 37.6,
+      "pegRatio": 0.49
     },
     "profitability": {
       "roe": 28.810000000000002,
@@ -547,10 +550,10 @@
         {
           "Breakdown": "Minority Interests",
           "TTM": "-9274000.0",
-          "2026-03-31": "-5875000.0",
+          "2026-03-31": "-11800000.0",
           "2025-12-31": "-2931000.0",
           "2025-09-30": "-1149000.0",
-          "2025-06-30": "-1845000.0",
+          "2025-06-30": "-9274000.0",
           "2025-03-31": "-3686000.0",
           "2024-12-31": "2073000.0",
           "2024-09-30": "-5816000.0",
@@ -5017,22 +5020,6 @@
     },
     "price": [
       {
-        "date": "2025-05-22",
-        "open": 121.95,
-        "high": 126.33,
-        "low": 121.375,
-        "close": 122.29,
-        "volume": 75498300
-      },
-      {
-        "date": "2025-05-23",
-        "open": 120.88,
-        "high": 125.54,
-        "low": 120.68,
-        "close": 123.31,
-        "volume": 65905800
-      },
-      {
         "date": "2025-05-27",
         "open": 126.82,
         "high": 127.88,
@@ -7030,7 +7017,23 @@
         "high": 139.02,
         "low": 134.3,
         "close": 136.88,
-        "volume": 27484300
+        "volume": 27578000
+      },
+      {
+        "date": "2026-05-26",
+        "open": 136.16,
+        "high": 138.68,
+        "low": 133.3,
+        "close": 136.6,
+        "volume": 31723900
+      },
+      {
+        "date": "2026-05-27",
+        "open": 133.3,
+        "high": 135.73,
+        "low": 131.63,
+        "close": 132.51,
+        "volume": 33976500
       }
     ],
     "officers": [
@@ -7100,19 +7103,34 @@
     ],
     "industry": [
       {
+        "metric": "P/E (TTM)",
+        "value": 149.29,
+        "industryAvg": 13.11
+      },
+      {
+        "metric": "P/S Ratio",
+        "value": 60.81,
+        "industryAvg": 4.99
+      },
+      {
+        "metric": "P/B Ratio",
+        "value": 37.6,
+        "industryAvg": 7.73
+      },
+      {
         "metric": "ROE",
         "value": 28.810000000000002,
-        "industryAvg": 59.64
+        "industryAvg": 59.63
       },
       {
         "metric": "ROA",
         "value": 23.89,
-        "industryAvg": 23.06
+        "industryAvg": 23.05
       },
       {
         "metric": "Gross Margin",
         "value": 269.03000000000003,
-        "industryAvg": 78.64
+        "industryAvg": 78.66
       },
       {
         "metric": "EBITDA Margin",
@@ -7122,7 +7140,7 @@
       {
         "metric": "Net Margin",
         "value": 139.75,
-        "industryAvg": 32.06
+        "industryAvg": 32.05
       }
     ]
   }

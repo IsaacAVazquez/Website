@@ -1,10 +1,10 @@
 {
   "symbol": "INTU",
-  "lastUpdated": "2026-05-25T23:55:29.511086+00:00",
+  "lastUpdated": "2026-05-29T00:06:20.579353+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-05-25T23:55:29.511086+00:00",
+    "snapshotBuiltAt": "2026-05-29T00:06:20.579353+00:00",
     "sections": {
-      "price": "2026-05-22"
+      "price": "2026-05-27"
     }
   },
   "source": "prefetched",
@@ -40,9 +40,12 @@
       "longName": "Intuit Inc."
     },
     "fundamentals": {
-      "ttmEps": 15.4133,
-      "ttmPe": 20.76,
-      "pegRatio": 0.43
+      "ttmEps": 16.5147,
+      "ttmPe": 18.63,
+      "marketCap": 84175541010,
+      "psRatio": 4.02,
+      "pbRatio": 4.08,
+      "pegRatio": 1.69
     },
     "profitability": {
       "roe": 23.1,
@@ -79,7 +82,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": 48.71
+        "yoyGrowth": 11.01
       }
     ],
     "income_statement": {
@@ -6186,22 +6189,6 @@
     },
     "price": [
       {
-        "date": "2025-05-22",
-        "open": 662.51,
-        "high": 670.56,
-        "low": 659,
-        "close": 666.07,
-        "volume": 2301200
-      },
-      {
-        "date": "2025-05-23",
-        "open": 720,
-        "high": 734.18,
-        "low": 714,
-        "close": 720.13,
-        "volume": 5327700
-      },
-      {
         "date": "2025-05-27",
         "open": 724.51,
         "high": 751.96,
@@ -8199,7 +8186,23 @@
         "high": 321.04,
         "low": 306.51,
         "close": 319.94,
-        "volume": 12469600
+        "volume": 12480800
+      },
+      {
+        "date": "2026-05-26",
+        "open": 314.47,
+        "high": 317.06,
+        "low": 302.38,
+        "close": 304.35,
+        "volume": 9770100
+      },
+      {
+        "date": "2026-05-27",
+        "open": 301.59,
+        "high": 314.7,
+        "low": 300.5,
+        "close": 307.73,
+        "volume": 7910700
       }
     ],
     "officers": [
@@ -8269,29 +8272,44 @@
     ],
     "industry": [
       {
+        "metric": "P/E (TTM)",
+        "value": 18.63,
+        "industryAvg": 15.32
+      },
+      {
+        "metric": "P/S Ratio",
+        "value": 4.02,
+        "industryAvg": 2.87
+      },
+      {
+        "metric": "P/B Ratio",
+        "value": 4.08,
+        "industryAvg": 4.41
+      },
+      {
         "metric": "ROE",
         "value": 23.1,
-        "industryAvg": 0.8999999999999999
+        "industryAvg": 1.04
       },
       {
         "metric": "ROA",
         "value": 12.45,
-        "industryAvg": 0.5
+        "industryAvg": 0.58
       },
       {
         "metric": "Gross Margin",
         "value": 83.94,
-        "industryAvg": 74.99
+        "industryAvg": 74.97
       },
       {
         "metric": "EBITDA Margin",
         "value": 80.91000000000001,
-        "industryAvg": 11.200000000000001
+        "industryAvg": 11.27
       },
       {
         "metric": "Net Margin",
         "value": 53.559999999999995,
-        "industryAvg": 1.1199999999999999
+        "industryAvg": 0.91
       }
     ]
   }

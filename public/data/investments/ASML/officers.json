@@ -8,7 +8,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-05-25"
+    "report_date": "2026-05-28"
   },
   {
     "symbol": "ASML",
@@ -19,7 +19,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-05-25"
+    "report_date": "2026-05-28"
   },
   {
     "symbol": "ASML",
@@ -27,10 +27,10 @@
     "title": "President, CEO and Chair of the Board of Management",
     "age": 52,
     "born": 1973,
-    "pay": 4389415,
+    "pay": 4401937,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-05-25"
+    "report_date": "2026-05-28"
   },
   {
     "symbol": "ASML",
@@ -38,10 +38,10 @@
     "title": "Executive VP, COO & Member of the Management Board",
     "age": 64,
     "born": 1961,
-    "pay": 2602553,
+    "pay": 2609977,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-05-25"
+    "report_date": "2026-05-28"
   },
   {
     "symbol": "ASML",
@@ -49,10 +49,10 @@
     "title": "Executive VP, Chief Customer Officer & Member of Management Board",
     "age": 58,
     "born": 1967,
-    "pay": 2770796,
+    "pay": 2778701,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-05-25"
+    "report_date": "2026-05-28"
   },
   {
     "symbol": "ASML",
@@ -63,7 +63,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-05-25"
+    "report_date": "2026-05-28"
   },
   {
     "symbol": "ASML",
@@ -71,10 +71,10 @@
     "title": "Executive VP, CFO & Member of the Management Board",
     "age": 60,
     "born": 1965,
-    "pay": 2583988,
+    "pay": 2591359,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-05-25"
+    "report_date": "2026-05-28"
   },
   {
     "symbol": "ASML",
@@ -85,7 +85,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-05-25"
+    "report_date": "2026-05-28"
   },
   {
     "symbol": "ASML",
@@ -93,10 +93,10 @@
     "title": "Executive VP, Chief Strategic Sourcing & Procurement Officer and Member of Management Board",
     "age": 58,
     "born": 1967,
-    "pay": 2715102,
+    "pay": 2722847,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-05-25"
+    "report_date": "2026-05-28"
   },
   {
     "symbol": "ASML",
@@ -107,6 +107,6 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-05-25"
+    "report_date": "2026-05-28"
   }
 ]

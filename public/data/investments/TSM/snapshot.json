@@ -1,10 +1,10 @@
 {
   "symbol": "TSM",
-  "lastUpdated": "2026-05-25T23:55:29.511086+00:00",
+  "lastUpdated": "2026-05-29T00:06:20.579353+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-05-25T23:55:29.511086+00:00",
+    "snapshotBuiltAt": "2026-05-29T00:06:20.579353+00:00",
     "sections": {
-      "price": "2026-05-22"
+      "price": "2026-05-27"
     }
   },
   "source": "prefetched",
@@ -41,8 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.0321,
-      "ttmPe": 33.62,
-      "pegRatio": 0.52
+      "ttmPe": 35.13,
+      "marketCap": 2192498910063,
+      "psRatio": 9.93,
+      "pbRatio": 11.92,
+      "pegRatio": 0.54
     },
     "profitability": {
       "roe": 33.94,
@@ -6706,22 +6709,6 @@
     },
     "price": [
       {
-        "date": "2025-05-22",
-        "open": 191.34,
-        "high": 196.83,
-        "low": 191.34,
-        "close": 196.19,
-        "volume": 11825000
-      },
-      {
-        "date": "2025-05-23",
-        "open": 192.02,
-        "high": 192.8,
-        "low": 190.03,
-        "close": 191.98,
-        "volume": 9403100
-      },
-      {
         "date": "2025-05-27",
         "open": 194.1,
         "high": 198.31,
@@ -8719,14 +8706,30 @@
         "high": 410.67,
         "low": 402.86,
         "close": 404.52,
-        "volume": 7096500
+        "volume": 7111900
+      },
+      {
+        "date": "2026-05-26",
+        "open": 413.12,
+        "high": 416.49,
+        "low": 410.07,
+        "close": 412.32,
+        "volume": 10132000
+      },
+      {
+        "date": "2026-05-27",
+        "open": 427.02,
+        "high": 430.55,
+        "low": 415.38,
+        "close": 422.73,
+        "volume": 14635900
       }
     ],
     "officers": [
       {
         "name": "Dr. C. C. Wei Ph.D.",
         "title": "Chairman & CEO",
-        "totalPay": 65090574
+        "totalPay": 65306412
       },
       {
         "name": "Dr. Horng-Dar Lin",
@@ -8751,7 +8754,7 @@
       {
         "name": "Mr. Jen-Chau Huang",
         "title": "Senior VP & CFO",
-        "totalPay": 9429837
+        "totalPay": 9461106
       },
       {
         "name": "Mr. Pei-Hong Chen",
@@ -8768,29 +8771,44 @@
     ],
     "industry": [
       {
+        "metric": "P/E (TTM)",
+        "value": 35.13,
+        "industryAvg": 23.04
+      },
+      {
+        "metric": "P/S Ratio",
+        "value": 9.93,
+        "industryAvg": 10.72
+      },
+      {
+        "metric": "P/B Ratio",
+        "value": 11.92,
+        "industryAvg": 12.57
+      },
+      {
         "metric": "ROE",
         "value": 33.94,
-        "industryAvg": 56.589999999999996
+        "industryAvg": 56.66
       },
       {
         "metric": "ROA",
         "value": 23,
-        "industryAvg": 35.089999999999996
+        "industryAvg": 35.13
       },
       {
         "metric": "Gross Margin",
         "value": 61.870000000000005,
-        "industryAvg": 57.550000000000004
+        "industryAvg": 57.31
       },
       {
         "metric": "EBITDA Margin",
         "value": 72.84,
-        "industryAvg": 65.63
+        "industryAvg": 65.49000000000001
       },
       {
         "metric": "Net Margin",
         "value": 46.5,
-        "industryAvg": 43.5
+        "industryAvg": 43.45
       }
     ]
   }

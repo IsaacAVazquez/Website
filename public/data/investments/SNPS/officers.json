@@ -8,7 +8,7 @@
     "pay": 366673,
     "exercised": 5569971,
     "unexercised": 33074978,
-    "report_date": "2026-05-25"
+    "report_date": "2026-05-28"
   },
   {
     "symbol": "SNPS",
@@ -19,7 +19,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-05-25"
+    "report_date": "2026-05-28"
   },
   {
     "symbol": "SNPS",
@@ -30,7 +30,7 @@
     "pay": 2086177,
     "exercised": 14109843,
     "unexercised": 2410485,
-    "report_date": "2026-05-25"
+    "report_date": "2026-05-28"
   },
   {
     "symbol": "SNPS",
@@ -41,7 +41,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-05-25"
+    "report_date": "2026-05-28"
   },
   {
     "symbol": "SNPS",
@@ -52,7 +52,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-05-25"
+    "report_date": "2026-05-28"
   },
   {
     "symbol": "SNPS",
@@ -63,7 +63,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-05-25"
+    "report_date": "2026-05-28"
   },
   {
     "symbol": "SNPS",
@@ -74,7 +74,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-05-25"
+    "report_date": "2026-05-28"
   },
   {
     "symbol": "SNPS",
@@ -85,7 +85,7 @@
     "pay": 501255,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-05-25"
+    "report_date": "2026-05-28"
   },
   {
     "symbol": "SNPS",
@@ -96,7 +96,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-05-25"
+    "report_date": "2026-05-28"
   },
   {
     "symbol": "SNPS",
@@ -107,6 +107,6 @@
     "pay": 1047605,
     "exercised": 1941984,
     "unexercised": 971416,
-    "report_date": "2026-05-25"
+    "report_date": "2026-05-28"
   }
 ]

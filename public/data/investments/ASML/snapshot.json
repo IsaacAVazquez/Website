@@ -1,10 +1,10 @@
 {
   "symbol": "ASML",
-  "lastUpdated": "2026-05-25T23:55:29.511086+00:00",
+  "lastUpdated": "2026-05-29T00:06:20.579353+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-05-25T23:55:29.511086+00:00",
+    "snapshotBuiltAt": "2026-05-29T00:06:20.579353+00:00",
     "sections": {
-      "price": "2026-05-22"
+      "price": "2026-05-27"
     }
   },
   "source": "prefetched",
@@ -41,8 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 29.9963,
-      "ttmPe": 54.44,
-      "pegRatio": 1.68
+      "ttmPe": 53.27,
+      "marketCap": 615847380299,
+      "psRatio": 6.47,
+      "pbRatio": 25.8,
+      "pegRatio": 1.64
     },
     "profitability": {
       "roe": 49.51,
@@ -5722,22 +5725,6 @@
     },
     "price": [
       {
-        "date": "2025-05-22",
-        "open": 736.32,
-        "high": 747.21,
-        "low": 734.15,
-        "close": 740.7,
-        "volume": 863500
-      },
-      {
-        "date": "2025-05-23",
-        "open": 724.6,
-        "high": 735.99,
-        "low": 722.52,
-        "close": 732.49,
-        "volume": 1525200
-      },
-      {
         "date": "2025-05-27",
         "open": 751.37,
         "high": 761.21,
@@ -7736,6 +7723,22 @@
         "low": 1615.85,
         "close": 1632.9,
         "volume": 1666700
+      },
+      {
+        "date": "2026-05-26",
+        "open": 1641.85,
+        "high": 1648.01,
+        "low": 1604.25,
+        "close": 1632.03,
+        "volume": 1651000
+      },
+      {
+        "date": "2026-05-27",
+        "open": 1637.35,
+        "high": 1639.13,
+        "low": 1583,
+        "close": 1597.87,
+        "volume": 1361600
       }
     ],
     "officers": [
@@ -7752,21 +7755,21 @@
         "title": "President, CEO and Chair of the Board of Management",
         "age": 52,
         "yearBorn": 1973,
-        "totalPay": 4389415
+        "totalPay": 4401937
       },
       {
         "name": "Mr. Frederic J. M. Schneider-Maunoury",
         "title": "Executive VP, COO & Member of the Management Board",
         "age": 64,
         "yearBorn": 1961,
-        "totalPay": 2602553
+        "totalPay": 2609977
       },
       {
         "name": "Mr. James P. Koonmen",
         "title": "Executive VP, Chief Customer Officer & Member of Management Board",
         "age": 58,
         "yearBorn": 1967,
-        "totalPay": 2770796
+        "totalPay": 2778701
       },
       {
         "name": "Mr. Marco J. A. Pieters",
@@ -7777,7 +7780,7 @@
         "title": "Executive VP, CFO & Member of the Management Board",
         "age": 60,
         "yearBorn": 1965,
-        "totalPay": 2583988
+        "totalPay": 2591359
       },
       {
         "name": "Mr. Ron Kool",
@@ -7788,7 +7791,7 @@
         "title": "Executive VP, Chief Strategic Sourcing & Procurement Officer and Member of Management Board",
         "age": 58,
         "yearBorn": 1967,
-        "totalPay": 2715102
+        "totalPay": 2722847
       },
       {
         "name": "Ms. Cristina Monteiro",
@@ -7797,29 +7800,44 @@
     ],
     "industry": [
       {
+        "metric": "P/E (TTM)",
+        "value": 53.27,
+        "industryAvg": 28.18
+      },
+      {
+        "metric": "P/S Ratio",
+        "value": 6.47,
+        "industryAvg": 7.11
+      },
+      {
+        "metric": "P/B Ratio",
+        "value": 25.8,
+        "industryAvg": 4.92
+      },
+      {
         "metric": "ROE",
         "value": 49.51,
-        "industryAvg": 67.32000000000001
+        "industryAvg": 71.86
       },
       {
         "metric": "ROA",
         "value": 20.3,
-        "industryAvg": 32.75
+        "industryAvg": 35.13
       },
       {
         "metric": "Gross Margin",
         "value": 52.6,
-        "industryAvg": 43.54
+        "industryAvg": 43.230000000000004
       },
       {
         "metric": "EBITDA Margin",
         "value": 35.449999999999996,
-        "industryAvg": 30.869999999999997
+        "industryAvg": 32.74
       },
       {
         "metric": "Net Margin",
         "value": 29.709999999999997,
-        "industryAvg": 23.27
+        "industryAvg": 24.67
       }
     ]
   }

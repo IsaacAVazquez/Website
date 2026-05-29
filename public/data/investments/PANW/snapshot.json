@@ -1,10 +1,10 @@
 {
   "symbol": "PANW",
-  "lastUpdated": "2026-05-25T23:55:29.511086+00:00",
+  "lastUpdated": "2026-05-29T00:06:20.579353+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-05-25T23:55:29.511086+00:00",
+    "snapshotBuiltAt": "2026-05-29T00:06:20.579353+00:00",
     "sections": {
-      "price": "2026-05-22"
+      "price": "2026-05-27"
     }
   },
   "source": "prefetched",
@@ -41,8 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.8072,
-      "ttmPe": 144.19,
-      "pegRatio": 2.36
+      "ttmPe": 137.49,
+      "marketCap": 201509170000,
+      "psRatio": 20.37,
+      "pbRatio": 21.45,
+      "pegRatio": 2.25
     },
     "profitability": {
       "roe": 4.78,
@@ -528,7 +531,7 @@
           "Breakdown": "Net Income(Attributable to Parent Company Shareholders)",
           "TTM": "1116900000.0",
           "2026-01-31": "1281900000.0",
-          "2025-10-31": "1116900000.0",
+          "2025-10-31": "334000000.0",
           "2025-07-31": "253800000.0",
           "2025-04-30": "262100000.0",
           "2025-01-31": "267000000.0",
@@ -3816,7 +3819,7 @@
         {
           "Breakdown": "Deferred Income Tax",
           "TTM": "-18900000.0",
-          "2026-01-31": "-18900000.0",
+          "2026-01-31": "5000000.0",
           "2025-10-31": "9000000.0",
           "2025-07-31": "91600000.0",
           "2025-04-30": "-124500000.0",
@@ -5271,22 +5274,6 @@
       ]
     },
     "price": [
-      {
-        "date": "2025-05-22",
-        "open": 183.01,
-        "high": 187.65,
-        "low": 182.46,
-        "close": 186.14,
-        "volume": 7613400
-      },
-      {
-        "date": "2025-05-23",
-        "open": 183.61,
-        "high": 187.65,
-        "low": 183.22,
-        "close": 186.75,
-        "volume": 4902900
-      },
       {
         "date": "2025-05-27",
         "open": 188.67,
@@ -7286,6 +7273,22 @@
         "low": 249.5,
         "close": 260.58,
         "volume": 6626100
+      },
+      {
+        "date": "2026-05-26",
+        "open": 258.17,
+        "high": 259.84,
+        "low": 250.77,
+        "close": 256.75,
+        "volume": 7164000
+      },
+      {
+        "date": "2026-05-27",
+        "open": 245.62,
+        "high": 251.64,
+        "low": 243.04,
+        "close": 248.47,
+        "volume": 8318000
       }
     ],
     "officers": [
@@ -7351,19 +7354,34 @@
     ],
     "industry": [
       {
+        "metric": "P/E (TTM)",
+        "value": 137.49,
+        "industryAvg": 13.11
+      },
+      {
+        "metric": "P/S Ratio",
+        "value": 20.37,
+        "industryAvg": 4.99
+      },
+      {
+        "metric": "P/B Ratio",
+        "value": 21.45,
+        "industryAvg": 7.73
+      },
+      {
         "metric": "ROE",
         "value": 4.78,
-        "industryAvg": 59.64
+        "industryAvg": 59.63
       },
       {
         "metric": "ROA",
         "value": 1.78,
-        "industryAvg": 23.06
+        "industryAvg": 23.05
       },
       {
         "metric": "Gross Margin",
         "value": 73.59,
-        "industryAvg": 78.64
+        "industryAvg": 78.66
       },
       {
         "metric": "EBITDA Margin",
@@ -7373,7 +7391,7 @@
       {
         "metric": "Net Margin",
         "value": 16.650000000000002,
-        "industryAvg": 32.06
+        "industryAvg": 32.05
       }
     ]
   }
