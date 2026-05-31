@@ -31,6 +31,21 @@
   -webkit-font-smoothing: antialiased;
 }
 
+/* Dark mode — next-themes sets `.dark` on <html>. Mirrors writing.module.css. */
+:global(.dark) .page {
+  --pj-paper:      #12110f;
+  --pj-paper-soft: #1a1916;
+  --pj-ink:        #f4eee1;
+  --pj-ink-soft:   #dad2bd;
+  --pj-muted:      #9c9381;
+  --pj-acid:       #a8b846;
+  --pj-acid-deep:  #c7d560;
+  --pj-haze:       #6f85ff;
+  --pj-stone:      #4f493f;
+  --pj-rule:       rgba(244, 238, 225, 0.18);
+  --pj-rule-soft:  rgba(244, 238, 225, 0.08);
+}
+
 .page ::selection {
   background: var(--pj-acid);
   color: var(--pj-ink);
@@ -953,6 +968,10 @@
   position: relative;
   overflow: hidden;
   border-bottom: 1px solid var(--pj-ink);
+  /* `isolation: isolate` contains the buttons' `mix-blend-mode: difference`
+   * to this panel — without it the blend would leak up the stacking
+   * context and pick up arbitrary site chrome behind it. */
+  isolation: isolate;
 }
 .cta::before {
   content: "";
@@ -1025,8 +1044,91 @@
   flex-direction: column;
   gap: 12px;
   position: relative;
-  z-index: 1;
+  /* No z-index here on purpose. Setting z-index would create a new
+   * stacking context, which would prevent the buttons' mix-blend-mode
+   * below from reaching back to the .cta panel + ::before underneath.
+   * .cta has `isolation: isolate` instead, which contains the blend
+   * without trapping it inside the actions column.
+   */
 }
+
+/* Buttons that sit on the panel's acid diagonal use a "clipped twin" — two
+ * stacked spans rendering the same label, each painted in INVERSE brand
+ * tokens for the panel-half it covers. clip-path slices each layer along
+ * the same angle as the .cta::before diagonal so the colors swap mid-button.
+ *
+ *   Base (full button):       background `--pj-ink`,  text `--pj-paper`
+ *     → inverse of acid; visible where the panel diagonal is acid (right).
+ *   Overlay (left side only): background `--pj-acid`, text `--pj-ink`
+ *     → inverse of ink; visible where the panel is ink (left).
+ *
+ * Both layers reference `--pj-*` tokens, so dark mode flips palettes
+ * automatically (paper → ink → cream-on-olive, etc).
+ *
+ * The diagonal cuts a different % across each button depending on how
+ * far down the panel that button sits. Per-row `--cut-top` / `--cut-bot`
+ * approximate the diagonal's slope (~8.4% over the panel height).
+ */
+.ctaActions .btnSwap {
+  position: relative;
+  display: inline-flex;
+  text-decoration: none;
+  isolation: isolate;
+  cursor: pointer;
+}
+.ctaActions .btnSwap > span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 22px;
+  border: 1px solid var(--pj-ink);
+  font-family: var(--pj-font-display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+.ctaActions .btnSwapBase {
+  /* This layer provides the button's intrinsic size — flow positioned. */
+  background: var(--pj-ink);
+  color: var(--pj-paper);
+  width: 100%;
+}
+.ctaActions .btnSwapOverlay {
+  /* Overlay on top of the base, clipped to the LEFT (ink) side of the
+   * diagonal. Colors are inverse of the .cta panel's left half. The
+   * `--cut-top` / `--cut-bot` values are set per-button by a
+   * ResizeObserver in PortfolioV3.tsx so the clip tracks the panel
+   * diagonal across viewport changes; the defaults here are only the
+   * pre-hydration fallback. */
+  position: absolute;
+  inset: 0;
+  background: var(--pj-acid);
+  color: var(--pj-ink);
+  clip-path: polygon(
+    0 0,
+    var(--cut-top, 0%) 0,
+    var(--cut-bot, 0%) 100%,
+    0 100%
+  );
+}
+.ctaActions .btnSwap:hover .btnSwapBase {
+  background: var(--pj-paper);
+  color: var(--pj-ink);
+  border-color: var(--pj-paper);
+}
+.ctaActions .btnSwap:hover .btnSwapOverlay {
+  background: var(--pj-ink);
+  color: var(--pj-paper);
+}
+.ctaActions .btnSwap:focus-visible {
+  outline: 2px solid var(--pj-haze);
+  outline-offset: 3px;
+  border-radius: 0;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;

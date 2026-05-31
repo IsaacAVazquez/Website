@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import {
   type CaseStudyData,
@@ -417,8 +417,23 @@ export function PortfolioV3({ projects }: Props) {
     setPage(1);
   }, [active, sort]);
 
-  const featured = filtered[0];
-  const archive = useMemo(() => filtered.slice(1), [filtered]);
+  // Pin Investment Analytics Platform as the featured spotlight on the
+  // "all" and "fintech" tabs — it's the flagship project, and burying it
+  // in the grid hurts both surfaces. Other category filters fall back to
+  // the first item in their filtered slice (still sort-aware).
+  const featured = useMemo(() => {
+    if (active === "all" || active === "fintech") {
+      const pinned = filtered.find(
+        (p) => p.slug === "investment-analytics-platform",
+      );
+      if (pinned) return pinned;
+    }
+    return filtered[0];
+  }, [filtered, active]);
+  const archive = useMemo(
+    () => (featured ? filtered.filter((p) => p.slug !== featured.slug) : []),
+    [filtered, featured],
+  );
 
   // Roving keyboard navigation: "All" tab + the active categories form one
   // tablist. ←/→ wrap, Home/End jump, Enter/Space activate. Roving tabindex
@@ -437,6 +452,59 @@ export function PortfolioV3({ projects }: Props) {
   const visible = archive.slice(pageStart, pageStart + PAGE_SIZE);
   const showingFrom = archive.length === 0 ? 0 : pageStart + 1;
   const showingTo = Math.min(page * PAGE_SIZE, archive.length);
+
+  // CTA panel diagonal alignment. The `.cta::before` paints an acid wedge
+  // anchored to the right 42% of the panel via a clip-path that traces from
+  // (66.4%, 0) to (58%, 100%) in panel-relative coords. Each split button
+  // needs its overlay clip to start where the diagonal actually crosses
+  // *that* button. Compute it from real DOM rects on mount + every resize
+  // so the cuts track viewport, breakpoint switches (grid 2-col → 1-col),
+  // and font-size changes.
+  const ctaRef = useRef<HTMLElement | null>(null);
+  useEffect(() => {
+    const panel = ctaRef.current;
+    if (!panel) return;
+
+    // Panel-relative x% where the diagonal sits at panel-y=0 and panel-y=100%.
+    const DIAG_X_TOP = 66.4;
+    const DIAG_X_BOT = 58;
+
+    const clamp = (v: number) => Math.max(0, Math.min(100, v));
+
+    const update = () => {
+      const panelRect = panel.getBoundingClientRect();
+      if (panelRect.width === 0 || panelRect.height === 0) return;
+
+      const diagXAtY = (yFrac: number) =>
+        panelRect.left +
+        (panelRect.width *
+          (DIAG_X_TOP - yFrac * (DIAG_X_TOP - DIAG_X_BOT))) /
+          100;
+
+      const buttons = panel.querySelectorAll<HTMLElement>("[data-cta-btn]");
+      buttons.forEach((btn) => {
+        const r = btn.getBoundingClientRect();
+        const yTop = (r.top - panelRect.top) / panelRect.height;
+        const yBot = (r.bottom - panelRect.top) / panelRect.height;
+        const cutTop = ((diagXAtY(yTop) - r.left) / r.width) * 100;
+        const cutBot = ((diagXAtY(yBot) - r.left) / r.width) * 100;
+        btn.style.setProperty("--cut-top", `${clamp(cutTop).toFixed(2)}%`);
+        btn.style.setProperty("--cut-bot", `${clamp(cutBot).toFixed(2)}%`);
+      });
+    };
+
+    update();
+    const observer = new ResizeObserver(update);
+    observer.observe(panel);
+    // Window resize covers cases the panel itself doesn't (e.g., column
+    // collapse at the 880px breakpoint which can keep panel width the same
+    // but reflow button positions).
+    window.addEventListener("resize", update);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", update);
+    };
+  }, []);
 
   // Stat strip — total counts driven by real data.
   const totalProjects = projects.length;
@@ -729,7 +797,7 @@ export function PortfolioV3({ projects }: Props) {
         </div>
 
         {/* CTA */}
-        <section className={styles.cta}>
+        <section className={styles.cta} ref={ctaRef}>
           <div className={styles.shell}>
             <div className={styles.ctaGrid}>
               <div>
@@ -746,18 +814,34 @@ export function PortfolioV3({ projects }: Props) {
                 </p>
               </div>
               <div className={styles.ctaActions}>
-                <Link className={`${styles.btn} ${styles.btnAcid}`} href="/contact">
-                  Send email
-                  <MailIcon size={14} />
-                </Link>
-                <Link className={`${styles.btn} ${styles.btnOutline}`} href="/writing">
-                  Read writing
-                  <ArrowRight size={14} />
-                </Link>
-                <Link className={`${styles.btn} ${styles.btnOutline}`} href="/resume">
-                  View résumé
-                  <DocIcon size={14} />
-                </Link>
+                {[
+                  { href: "/contact", label: "Send email", icon: <MailIcon size={14} /> },
+                  { href: "/writing", label: "Read writing", icon: <ArrowRight size={14} /> },
+                  { href: "/resume", label: "View résumé", icon: <DocIcon size={14} /> },
+                ].map((action) => (
+                  // Two stacked spans render the same content with INVERSE brand
+                  // colors. The overlay span is clip-pathed to show only on the
+                  // LEFT side of the panel's acid diagonal, the base span fills
+                  // the whole button (so it shows through on the right). The
+                  // diagonal aligns by hand-tuned `--cut-top` / `--cut-bot` per
+                  // button row in portfolio.module.css.
+                  <Link
+                    key={action.href}
+                    className={styles.btnSwap}
+                    href={action.href}
+                    aria-label={action.label}
+                    data-cta-btn
+                  >
+                    <span className={styles.btnSwapBase} aria-hidden="true">
+                      {action.label}
+                      {action.icon}
+                    </span>
+                    <span className={styles.btnSwapOverlay} aria-hidden="true">
+                      {action.label}
+                      {action.icon}
+                    </span>
+                  </Link>
+                ))}
               </div>
             </div>
           </div>

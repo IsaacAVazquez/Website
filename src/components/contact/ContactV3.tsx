@@ -119,7 +119,7 @@ export function ContactV3() {
             <span>Reply within 2 business days</span>
             <span>Best for product · analytics · fintech</span>
             <span>No form · no funnel · just email</span>
-            <span className={styles.hot}>UC Berkeley Haas MBA &apos;25</span>
+            <span className={styles.hot}>UC Berkeley Haas MBA &apos;27</span>
             <span className={styles.hot}>
               Currently open · Available for product work
             </span>
@@ -127,7 +127,7 @@ export function ContactV3() {
             <span>Reply within 2 business days</span>
             <span>Best for product · analytics · fintech</span>
             <span>No form · no funnel · just email</span>
-            <span className={styles.hot}>UC Berkeley Haas MBA &apos;25</span>
+            <span className={styles.hot}>UC Berkeley Haas MBA &apos;27</span>
           </div>
         </div>
       </div>
@@ -274,7 +274,7 @@ export function ContactV3() {
             <div className={styles["c-detail"]}>
               <span className={styles.lbl}>Background</span>
               <span className={styles.val}>
-                Haas <em>MBA</em> &apos;25
+                Haas <em>MBA</em> &apos;27
               </span>
               <span className={styles.sub}>Civic tech · SaaS · Investments</span>
             </div>

@@ -32,6 +32,20 @@
   -webkit-font-smoothing: antialiased;
 }
 
+/* Dark mode — next-themes sets `.dark` on <html>. Mirrors writing.module.css. */
+:global(.dark) .page {
+  --c-paper:      #12110f;
+  --c-paper-soft: #1a1916;
+  --c-ink:        #f4eee1;
+  --c-ink-soft:   #dad2bd;
+  --c-muted:      #9c9381;
+  --c-acid:       #a8b846;
+  --c-haze:       #6f85ff;
+  --c-stone:      #4f493f;
+  --c-rule:       rgba(244, 238, 225, 0.18);
+  --c-rule-soft:  rgba(244, 238, 225, 0.08);
+}
+
 .page,
 .page *,
 .page *::before,

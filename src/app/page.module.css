@@ -31,6 +31,21 @@
   -webkit-font-smoothing: antialiased;
 }
 
+/* Dark mode — next-themes sets `.dark` on <html>. Mirrors writing.module.css. */
+:global(.dark) .page {
+  --h-paper:      #12110F;
+  --h-paper-soft: #1A1916;
+  --h-ink:        #F4EEE1;
+  --h-ink-soft:   #DAD2BD;
+  --h-muted:      #9C9381;
+  --h-acid:       #A8B846;
+  --h-acid-deep:  #C7D560;
+  --h-haze:       #6F85FF;
+  --h-stone:      #4F493F;
+  --h-rule:       rgba(244, 238, 225, 0.18);
+  --h-rule-soft:  rgba(244, 238, 225, 0.08);
+}
+
 .page *,
 .page *::before,
 .page *::after {
@@ -1128,12 +1143,29 @@
 .h-cta-actions .h-btn {
   justify-content: center;
 }
+/* The CTA panel's ::before drops an acid-green diagonal across the right
+ * ~42% — exactly where the actions column lives. Every button here has to
+ * read on that acid surface, so primary becomes solid ink (dark on green,
+ * AAA contrast) and the ghost variants get ink type + ink border instead
+ * of paper, which was illegible cream-on-green.
+ */
 .h-cta-actions .h-btn.is-acid {
-  background: var(--h-acid);
-  color: var(--h-ink);
-  border-color: var(--h-acid);
+  background: var(--h-ink);
+  color: var(--h-paper);
+  border-color: var(--h-ink);
 }
 .h-cta-actions .h-btn.is-acid:hover {
+  background: var(--h-paper);
+  color: var(--h-ink);
+  border-color: var(--h-paper);
+}
+.h-cta-actions .h-btn.is-ghost-paper {
+  background: transparent;
+  color: var(--h-ink);
+  border-color: var(--h-ink);
+}
+.h-cta-actions .h-btn.is-ghost-paper:hover {
   background: var(--h-ink);
-  color: var(--h-acid);
+  color: var(--h-paper);
+  border-color: var(--h-ink);
 }
