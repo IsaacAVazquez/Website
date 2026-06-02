@@ -498,9 +498,9 @@
     {
       "symbol": "ANET",
       "report_date": "2025-06-30T00:00:00.000",
-      "net_income_common_stockholders": 3251554000.0,
+      "net_income_common_stockholders": 888800000.0,
       "prev_year_net_income_common_stockholders": 665400000.0,
-      "yoy_growth": 3.8866
+      "yoy_growth": 0.3357
     },
     {
       "symbol": "ANET",
@@ -519,9 +519,9 @@
     {
       "symbol": "ANET",
       "report_date": "2026-03-31T00:00:00.000",
-      "net_income_common_stockholders": 3720500000.0,
+      "net_income_common_stockholders": 1022900000.0,
       "prev_year_net_income_common_stockholders": 813800000.0,
-      "yoy_growth": 3.5718
+      "yoy_growth": 0.2569
     }
   ],
   "annual_net_income": [
@@ -635,9 +635,9 @@
     {
       "symbol": "ANET",
       "report_date": "2025-06-30T00:00:00.000",
-      "free_cash_flow": 3975403000.0,
+      "free_cash_flow": 1176100000.0,
       "prev_year_free_cash_flow": 985800000.0,
-      "yoy_growth": 3.0327
+      "yoy_growth": 0.193
     },
     {
       "symbol": "ANET",
@@ -656,9 +656,9 @@
     {
       "symbol": "ANET",
       "report_date": "2026-03-31T00:00:00.000",
-      "free_cash_flow": 5278100000.0,
+      "free_cash_flow": 1639000000.0,
       "prev_year_free_cash_flow": 613300000.0,
-      "yoy_growth": 7.6061
+      "yoy_growth": 1.6724
     }
   ],
   "annual_fcf": [

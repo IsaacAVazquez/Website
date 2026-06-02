@@ -28368,6 +28368,22 @@
       "close_price": 102.12,
       "ttm_eps": 1.6811,
       "ttm_pe": 60.75
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2026-05-28T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 108.73,
+      "ttm_eps": 1.6811,
+      "ttm_pe": 64.68
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2026-05-29T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 124.37,
+      "ttm_eps": 1.6811,
+      "ttm_pe": 73.98
     }
   ],
   "marketCap": [
@@ -56338,6 +56354,22 @@
       "close_price": 102.12,
       "shares_outstanding": 1031308000,
       "market_capitalization": 105317172960.0
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2026-05-28T00:00:00.000",
+      "shares_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 108.73,
+      "shares_outstanding": 1031308000,
+      "market_capitalization": 112134118840.0
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2026-05-29T00:00:00.000",
+      "shares_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 124.37,
+      "shares_outstanding": 1031308000,
+      "market_capitalization": 128263775960.0
     }
   ],
   "psRatio": [
@@ -59466,2290 +59498,2310 @@
       "report_date": "2025-06-30T00:00:00.000",
       "market_capitalization": 213346133520.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 10.21
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 17.69
     },
     {
       "symbol": "NOW",
       "report_date": "2025-07-01T00:00:00.000",
       "market_capitalization": 209986400910.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 10.05
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 17.42
     },
     {
       "symbol": "NOW",
       "report_date": "2025-07-02T00:00:00.000",
       "market_capitalization": 209544385440.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 10.03
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 17.38
     },
     {
       "symbol": "NOW",
       "report_date": "2025-07-03T00:00:00.000",
       "market_capitalization": 216793024110.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 10.37
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 17.98
     },
     {
       "symbol": "NOW",
       "report_date": "2025-07-07T00:00:00.000",
       "market_capitalization": 214784240190.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 10.28
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 17.81
     },
     {
       "symbol": "NOW",
       "report_date": "2025-07-08T00:00:00.000",
       "market_capitalization": 212287786620.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 10.16
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 17.61
     },
     {
       "symbol": "NOW",
       "report_date": "2025-07-09T00:00:00.000",
       "market_capitalization": 210364085490.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 10.07
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 17.45
     },
     {
       "symbol": "NOW",
       "report_date": "2025-07-10T00:00:00.000",
       "market_capitalization": 200897068710.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.61
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 16.66
     },
     {
       "symbol": "NOW",
       "report_date": "2025-07-11T00:00:00.000",
       "market_capitalization": 194814686820.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.32
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 16.16
     },
     {
       "symbol": "NOW",
       "report_date": "2025-07-14T00:00:00.000",
       "market_capitalization": 199587623820.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.55
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 16.55
     },
     {
       "symbol": "NOW",
       "report_date": "2025-07-15T00:00:00.000",
       "market_capitalization": 198579081480.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.5
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 16.47
     },
     {
       "symbol": "NOW",
       "report_date": "2025-07-16T00:00:00.000",
       "market_capitalization": 200664647430.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.6
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 16.64
     },
     {
       "symbol": "NOW",
       "report_date": "2025-07-17T00:00:00.000",
       "market_capitalization": 199041848850.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.52
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 16.51
     },
     {
       "symbol": "NOW",
       "report_date": "2025-07-18T00:00:00.000",
       "market_capitalization": 199923804600.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.57
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 16.58
     },
     {
       "symbol": "NOW",
       "report_date": "2025-07-21T00:00:00.000",
       "market_capitalization": 199199563290.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.53
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 16.52
     },
     {
       "symbol": "NOW",
       "report_date": "2025-07-22T00:00:00.000",
       "market_capitalization": 199710060030.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.56
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 16.56
     },
     {
       "symbol": "NOW",
       "report_date": "2025-07-23T00:00:00.000",
       "market_capitalization": 198477397170.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.5
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 16.46
     },
     {
       "symbol": "NOW",
       "report_date": "2025-07-24T00:00:00.000",
       "market_capitalization": 206726277420.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.89
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 17.15
     },
     {
       "symbol": "NOW",
       "report_date": "2025-07-25T00:00:00.000",
       "market_capitalization": 201042332010.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.62
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 16.67
     },
     {
       "symbol": "NOW",
       "report_date": "2025-07-28T00:00:00.000",
       "market_capitalization": 204561854250.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.79
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 16.97
     },
     {
       "symbol": "NOW",
       "report_date": "2025-07-29T00:00:00.000",
       "market_capitalization": 206107870800.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.86
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 17.09
     },
     {
       "symbol": "NOW",
       "report_date": "2025-07-30T00:00:00.000",
       "market_capitalization": 202845672120.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.71
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 16.82
     },
     {
       "symbol": "NOW",
       "report_date": "2025-07-31T00:00:00.000",
       "market_capitalization": 195715319280.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.36
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 16.23
     },
     {
       "symbol": "NOW",
       "report_date": "2025-08-01T00:00:00.000",
       "market_capitalization": 189749148030.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.08
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 15.74
     },
     {
       "symbol": "NOW",
       "report_date": "2025-08-04T00:00:00.000",
       "market_capitalization": 191540037000.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.17
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 15.89
     },
     {
       "symbol": "NOW",
       "report_date": "2025-08-05T00:00:00.000",
       "market_capitalization": 187829597280.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 8.99
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 15.58
     },
     {
       "symbol": "NOW",
       "report_date": "2025-08-06T00:00:00.000",
       "market_capitalization": 189321658890.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.06
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 15.7
     },
     {
       "symbol": "NOW",
       "report_date": "2025-08-07T00:00:00.000",
       "market_capitalization": 181396508280.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 8.68
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 15.04
     },
     {
       "symbol": "NOW",
       "report_date": "2025-08-08T00:00:00.000",
       "market_capitalization": 181062402690.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 8.66
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 15.02
     },
     {
       "symbol": "NOW",
       "report_date": "2025-08-11T00:00:00.000",
       "market_capitalization": 177713046030.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 8.5
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 14.74
     },
     {
       "symbol": "NOW",
       "report_date": "2025-08-12T00:00:00.000",
       "market_capitalization": 177102940170.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 8.47
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 14.69
     },
     {
       "symbol": "NOW",
       "report_date": "2025-08-13T00:00:00.000",
       "market_capitalization": 179151152700.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 8.57
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 14.86
     },
     {
       "symbol": "NOW",
       "report_date": "2025-08-14T00:00:00.000",
       "market_capitalization": 176569616340.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 8.45
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 14.64
     },
     {
       "symbol": "NOW",
       "report_date": "2025-08-15T00:00:00.000",
       "market_capitalization": 179968777560.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 8.61
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 14.93
     },
     {
       "symbol": "NOW",
       "report_date": "2025-08-18T00:00:00.000",
       "market_capitalization": 185117323950.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 8.86
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 15.35
     },
     {
       "symbol": "NOW",
       "report_date": "2025-08-19T00:00:00.000",
       "market_capitalization": 184023698820.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 8.81
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 15.26
     },
     {
       "symbol": "NOW",
       "report_date": "2025-08-20T00:00:00.000",
       "market_capitalization": 184743789750.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 8.84
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 15.32
     },
     {
       "symbol": "NOW",
       "report_date": "2025-08-21T00:00:00.000",
       "market_capitalization": 181987937430.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 8.71
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 15.09
     },
     {
       "symbol": "NOW",
       "report_date": "2025-08-22T00:00:00.000",
       "market_capitalization": 184017473250.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 8.81
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 15.26
     },
     {
       "symbol": "NOW",
       "report_date": "2025-08-25T00:00:00.000",
       "market_capitalization": 182604268860.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 8.74
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 15.15
     },
     {
       "symbol": "NOW",
       "report_date": "2025-08-26T00:00:00.000",
       "market_capitalization": 179433378540.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 8.59
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 14.88
     },
     {
       "symbol": "NOW",
       "report_date": "2025-08-27T00:00:00.000",
       "market_capitalization": 184272721620.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 8.82
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 15.28
     },
     {
       "symbol": "NOW",
       "report_date": "2025-08-28T00:00:00.000",
       "market_capitalization": 192702143400.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.22
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 15.98
     },
     {
       "symbol": "NOW",
       "report_date": "2025-08-29T00:00:00.000",
       "market_capitalization": 190390381740.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.11
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 15.79
     },
     {
       "symbol": "NOW",
       "report_date": "2025-09-02T00:00:00.000",
       "market_capitalization": 189136966980.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.05
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 15.69
     },
     {
       "symbol": "NOW",
       "report_date": "2025-09-03T00:00:00.000",
       "market_capitalization": 190788818220.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.13
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 15.82
     },
     {
       "symbol": "NOW",
       "report_date": "2025-09-04T00:00:00.000",
       "market_capitalization": 186468272640.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 8.92
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 15.47
     },
     {
       "symbol": "NOW",
       "report_date": "2025-09-05T00:00:00.000",
       "market_capitalization": 189630862200.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.07
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 15.73
     },
     {
       "symbol": "NOW",
       "report_date": "2025-09-08T00:00:00.000",
       "market_capitalization": 194928822270.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.33
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 16.17
     },
     {
       "symbol": "NOW",
       "report_date": "2025-09-09T00:00:00.000",
       "market_capitalization": 193754264730.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.27
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 16.07
     },
     {
       "symbol": "NOW",
       "report_date": "2025-09-10T00:00:00.000",
       "market_capitalization": 191658322830.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.17
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 15.9
     },
     {
       "symbol": "NOW",
       "report_date": "2025-09-11T00:00:00.000",
       "market_capitalization": 194710927320.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.32
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 16.15
     },
     {
       "symbol": "NOW",
       "report_date": "2025-09-12T00:00:00.000",
       "market_capitalization": 192776850240.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.22
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 15.99
     },
     {
       "symbol": "NOW",
       "report_date": "2025-09-15T00:00:00.000",
       "market_capitalization": 196607650980.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.41
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 16.31
     },
     {
       "symbol": "NOW",
       "report_date": "2025-09-16T00:00:00.000",
       "market_capitalization": 193409783190.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.25
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 16.04
     },
     {
       "symbol": "NOW",
       "report_date": "2025-09-17T00:00:00.000",
       "market_capitalization": 197219832030.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.44
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 16.36
     },
     {
       "symbol": "NOW",
       "report_date": "2025-09-18T00:00:00.000",
       "market_capitalization": 196674057060.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.41
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 16.31
     },
     {
       "symbol": "NOW",
       "report_date": "2025-09-19T00:00:00.000",
       "market_capitalization": 199456886850.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.54
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 16.54
     },
     {
       "symbol": "NOW",
       "report_date": "2025-09-22T00:00:00.000",
       "market_capitalization": 196682357820.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.41
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 16.31
     },
     {
       "symbol": "NOW",
       "report_date": "2025-09-23T00:00:00.000",
       "market_capitalization": 192509150730.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.21
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 15.97
     },
     {
       "symbol": "NOW",
       "report_date": "2025-09-24T00:00:00.000",
       "market_capitalization": 193692009030.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.27
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 16.06
     },
     {
       "symbol": "NOW",
       "report_date": "2025-09-25T00:00:00.000",
       "market_capitalization": 190629028590.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.12
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 15.81
     },
     {
       "symbol": "NOW",
       "report_date": "2025-09-26T00:00:00.000",
       "market_capitalization": 194237784000.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.29
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 16.11
     },
     {
       "symbol": "NOW",
       "report_date": "2025-09-29T00:00:00.000",
       "market_capitalization": 195244251150.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 20899000000.0,
+      "ttm_revenue": 12057000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 20899000000.0,
-      "ps_ratio": 9.34
+      "ttm_revenue_usd": 12057000000.0,
+      "ps_ratio": 16.19
     },
     {
       "symbol": "NOW",
       "report_date": "2025-09-30T00:00:00.000",
       "market_capitalization": 191557202280.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 8.91
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 15.12
     },
     {
       "symbol": "NOW",
       "report_date": "2025-10-01T00:00:00.000",
       "market_capitalization": 189923216930.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 8.83
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 14.99
     },
     {
       "symbol": "NOW",
       "report_date": "2025-10-02T00:00:00.000",
       "market_capitalization": 189438225100.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 8.81
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 14.96
     },
     {
       "symbol": "NOW",
       "report_date": "2025-10-03T00:00:00.000",
       "market_capitalization": 189908646360.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 8.83
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 14.99
     },
     {
       "symbol": "NOW",
       "report_date": "2025-10-06T00:00:00.000",
       "market_capitalization": 190008558840.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 8.83
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 15.0
     },
     {
       "symbol": "NOW",
       "report_date": "2025-10-07T00:00:00.000",
       "market_capitalization": 188218460240.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 8.75
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 14.86
     },
     {
       "symbol": "NOW",
       "report_date": "2025-10-08T00:00:00.000",
       "market_capitalization": 190316622320.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 8.85
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 15.02
     },
     {
       "symbol": "NOW",
       "report_date": "2025-10-09T00:00:00.000",
       "market_capitalization": 191072210450.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 8.88
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 15.08
     },
     {
       "symbol": "NOW",
       "report_date": "2025-10-10T00:00:00.000",
       "market_capitalization": 184985875210.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 8.6
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 14.6
     },
     {
       "symbol": "NOW",
       "report_date": "2025-10-13T00:00:00.000",
       "market_capitalization": 192269078700.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 8.94
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 15.18
     },
     {
       "symbol": "NOW",
       "report_date": "2025-10-14T00:00:00.000",
       "market_capitalization": 189679680260.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 8.82
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 14.97
     },
     {
       "symbol": "NOW",
       "report_date": "2025-10-15T00:00:00.000",
       "market_capitalization": 187970760550.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 8.74
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 14.84
     },
     {
       "symbol": "NOW",
       "report_date": "2025-10-16T00:00:00.000",
       "market_capitalization": 186188987990.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 8.66
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 14.7
     },
     {
       "symbol": "NOW",
       "report_date": "2025-10-17T00:00:00.000",
       "market_capitalization": 188085243600.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 8.74
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 14.85
     },
     {
       "symbol": "NOW",
       "report_date": "2025-10-20T00:00:00.000",
       "market_capitalization": 190988950050.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 8.88
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 15.08
     },
     {
       "symbol": "NOW",
       "report_date": "2025-10-21T00:00:00.000",
       "market_capitalization": 195974166500.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 9.11
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 15.47
     },
     {
       "symbol": "NOW",
       "report_date": "2025-10-22T00:00:00.000",
       "market_capitalization": 194756483150.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 9.05
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 15.38
     },
     {
       "symbol": "NOW",
       "report_date": "2025-10-23T00:00:00.000",
       "market_capitalization": 195489174670.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 9.09
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 15.43
     },
     {
       "symbol": "NOW",
       "report_date": "2025-10-24T00:00:00.000",
       "market_capitalization": 193615815670.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 9.0
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 15.29
     },
     {
       "symbol": "NOW",
       "report_date": "2025-10-27T00:00:00.000",
       "market_capitalization": 196971209790.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 9.16
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 15.55
     },
     {
       "symbol": "NOW",
       "report_date": "2025-10-28T00:00:00.000",
       "market_capitalization": 195226904410.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 9.08
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 15.41
     },
     {
       "symbol": "NOW",
       "report_date": "2025-10-29T00:00:00.000",
       "market_capitalization": 189771266700.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 8.82
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 14.98
     },
     {
       "symbol": "NOW",
       "report_date": "2025-10-30T00:00:00.000",
       "market_capitalization": 194554576680.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 9.05
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 15.36
     },
     {
       "symbol": "NOW",
       "report_date": "2025-10-31T00:00:00.000",
       "market_capitalization": 191349051280.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 8.9
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 15.11
     },
     {
       "symbol": "NOW",
       "report_date": "2025-11-03T00:00:00.000",
       "market_capitalization": 190216709840.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 8.84
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 15.02
     },
     {
       "symbol": "NOW",
       "report_date": "2025-11-04T00:00:00.000",
       "market_capitalization": 184748583070.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 8.59
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 14.59
     },
     {
       "symbol": "NOW",
       "report_date": "2025-11-05T00:00:00.000",
       "market_capitalization": 183095864130.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 8.51
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 14.45
     },
     {
       "symbol": "NOW",
       "report_date": "2025-11-06T00:00:00.000",
       "market_capitalization": 178753834270.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 8.31
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 14.11
     },
     {
       "symbol": "NOW",
       "report_date": "2025-11-07T00:00:00.000",
       "market_capitalization": 179399102370.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 8.34
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 14.16
     },
     {
       "symbol": "NOW",
       "report_date": "2025-11-10T00:00:00.000",
       "market_capitalization": 179741223450.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 8.36
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 14.19
     },
     {
       "symbol": "NOW",
       "report_date": "2025-11-11T00:00:00.000",
       "market_capitalization": 178573102605.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 8.3
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 14.1
     },
     {
       "symbol": "NOW",
       "report_date": "2025-11-12T00:00:00.000",
       "market_capitalization": 179272315260.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 8.33
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 14.15
     },
     {
       "symbol": "NOW",
       "report_date": "2025-11-13T00:00:00.000",
       "market_capitalization": 176294955735.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 8.2
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 13.92
     },
     {
       "symbol": "NOW",
       "report_date": "2025-11-14T00:00:00.000",
       "market_capitalization": 176448492045.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 8.2
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 13.93
     },
     {
       "symbol": "NOW",
       "report_date": "2025-11-17T00:00:00.000",
       "market_capitalization": 173410962885.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 8.06
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 13.69
     },
     {
       "symbol": "NOW",
       "report_date": "2025-11-18T00:00:00.000",
       "market_capitalization": 169713642555.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 7.89
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 13.4
     },
     {
       "symbol": "NOW",
       "report_date": "2025-11-19T00:00:00.000",
       "market_capitalization": 169398270675.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 7.88
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 13.37
     },
     {
       "symbol": "NOW",
       "report_date": "2025-11-20T00:00:00.000",
       "market_capitalization": 166080641490.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 7.72
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 13.11
     },
     {
       "symbol": "NOW",
       "report_date": "2025-11-21T00:00:00.000",
       "market_capitalization": 168771676545.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 7.85
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 13.32
     },
     {
       "symbol": "NOW",
       "report_date": "2025-11-24T00:00:00.000",
       "market_capitalization": 169271706960.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 7.87
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 13.36
     },
     {
       "symbol": "NOW",
       "report_date": "2025-11-25T00:00:00.000",
       "market_capitalization": 171236556765.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 7.96
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 13.52
     },
     {
       "symbol": "NOW",
       "report_date": "2025-11-26T00:00:00.000",
       "market_capitalization": 166549549680.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 7.74
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 13.15
     },
     {
       "symbol": "NOW",
       "report_date": "2025-11-28T00:00:00.000",
       "market_capitalization": 168560045415.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 7.84
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 13.31
     },
     {
       "symbol": "NOW",
       "report_date": "2025-12-01T00:00:00.000",
       "market_capitalization": 170725968385.39,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 7.94
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 13.48
     },
     {
       "symbol": "NOW",
       "report_date": "2025-12-02T00:00:00.000",
       "market_capitalization": 171205704888.32,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 7.96
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 13.52
     },
     {
       "symbol": "NOW",
       "report_date": "2025-12-03T00:00:00.000",
       "market_capitalization": 172975122639.42,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 8.04
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 13.66
     },
     {
       "symbol": "NOW",
       "report_date": "2025-12-04T00:00:00.000",
       "market_capitalization": 174214961134.03,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 8.1
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 13.75
     },
     {
       "symbol": "NOW",
       "report_date": "2025-12-05T00:00:00.000",
       "market_capitalization": 177431895519.53,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 8.25
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 14.01
     },
     {
       "symbol": "NOW",
       "report_date": "2025-12-08T00:00:00.000",
       "market_capitalization": 177257445882.1,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 8.24
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 13.99
     },
     {
       "symbol": "NOW",
       "report_date": "2025-12-09T00:00:00.000",
       "market_capitalization": 177546118496.42,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 8.25
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 14.02
     },
     {
       "symbol": "NOW",
       "report_date": "2025-12-10T00:00:00.000",
       "market_capitalization": 177265753007.69,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 8.24
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 13.99
     },
     {
       "symbol": "NOW",
       "report_date": "2025-12-11T00:00:00.000",
       "market_capitalization": 180158709495.1,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 8.38
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 14.22
     },
     {
       "symbol": "NOW",
       "report_date": "2025-12-12T00:00:00.000",
       "market_capitalization": 179654051615.39,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 8.35
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 14.18
     },
     {
       "symbol": "NOW",
       "report_date": "2025-12-15T00:00:00.000",
       "market_capitalization": 161479084720.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 7.51
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 12.75
     },
     {
       "symbol": "NOW",
       "report_date": "2025-12-16T00:00:00.000",
       "market_capitalization": 164838660032.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 7.66
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 13.01
     },
     {
       "symbol": "NOW",
       "report_date": "2025-12-17T00:00:00.000",
       "market_capitalization": 165106666354.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 7.68
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 13.03
     },
     {
       "symbol": "NOW",
       "report_date": "2025-12-18T00:00:00.000",
       "market_capitalization": 161837833340.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 7.52
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 12.78
     },
     {
       "symbol": "NOW",
       "report_date": "2025-12-19T00:00:00.000",
       "market_capitalization": 163874259330.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 7.62
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 12.94
     },
     {
       "symbol": "NOW",
       "report_date": "2025-12-22T00:00:00.000",
       "market_capitalization": 165319805240.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 7.69
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 13.05
     },
     {
       "symbol": "NOW",
       "report_date": "2025-12-23T00:00:00.000",
       "market_capitalization": 162871873480.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 7.57
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 12.86
     },
     {
       "symbol": "NOW",
       "report_date": "2025-12-24T00:00:00.000",
       "market_capitalization": 161004270370.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 7.49
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 12.71
     },
     {
       "symbol": "NOW",
       "report_date": "2025-12-26T00:00:00.000",
       "market_capitalization": 162375956270.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 7.55
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 12.82
     },
     {
       "symbol": "NOW",
       "report_date": "2025-12-29T00:00:00.000",
       "market_capitalization": 163104004940.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 7.58
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 12.88
     },
     {
       "symbol": "NOW",
       "report_date": "2025-12-30T00:00:00.000",
       "market_capitalization": 162734704890.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 21509000000.0,
+      "ttm_revenue": 12667000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 21509000000.0,
-      "ps_ratio": 7.57
+      "ttm_revenue_usd": 12667000000.0,
+      "ps_ratio": 12.85
     },
     {
       "symbol": "NOW",
       "report_date": "2025-12-31T00:00:00.000",
       "market_capitalization": 160432516820.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 7.25
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 12.08
     },
     {
       "symbol": "NOW",
       "report_date": "2026-01-02T00:00:00.000",
       "market_capitalization": 154421141100.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 6.98
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 11.63
     },
     {
       "symbol": "NOW",
       "report_date": "2026-01-05T00:00:00.000",
       "market_capitalization": 154578232800.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 6.99
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 11.64
     },
     {
       "symbol": "NOW",
       "report_date": "2026-01-06T00:00:00.000",
       "market_capitalization": 155845439180.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 7.05
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 11.74
     },
     {
       "symbol": "NOW",
       "report_date": "2026-01-07T00:00:00.000",
       "market_capitalization": 158034250200.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 7.14
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 11.9
     },
     {
       "symbol": "NOW",
       "report_date": "2026-01-08T00:00:00.000",
       "market_capitalization": 153101570820.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 6.92
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 11.53
     },
     {
       "symbol": "NOW",
       "report_date": "2026-01-09T00:00:00.000",
       "market_capitalization": 148504020400.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 6.71
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 11.18
     },
     {
       "symbol": "NOW",
       "report_date": "2026-01-12T00:00:00.000",
       "market_capitalization": 149383733920.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 6.75
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 11.25
     },
     {
       "symbol": "NOW",
       "report_date": "2026-01-13T00:00:00.000",
       "market_capitalization": 144723346820.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 6.54
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 10.9
     },
     {
       "symbol": "NOW",
       "report_date": "2026-01-14T00:00:00.000",
       "market_capitalization": 140974091580.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 6.37
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 10.62
     },
     {
       "symbol": "NOW",
       "report_date": "2026-01-15T00:00:00.000",
       "market_capitalization": 137371455260.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 6.21
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 10.35
     },
     {
       "symbol": "NOW",
       "report_date": "2026-01-16T00:00:00.000",
       "market_capitalization": 133328962180.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 6.03
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 10.04
     },
     {
       "symbol": "NOW",
       "report_date": "2026-01-20T00:00:00.000",
       "market_capitalization": 131328661200.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 5.94
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 9.89
     },
     {
       "symbol": "NOW",
       "report_date": "2026-01-21T00:00:00.000",
       "market_capitalization": 131223933400.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 5.93
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 9.88
     },
     {
       "symbol": "NOW",
       "report_date": "2026-01-22T00:00:00.000",
       "market_capitalization": 134638059680.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 6.09
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 10.14
     },
     {
       "symbol": "NOW",
       "report_date": "2026-01-23T00:00:00.000",
       "market_capitalization": 139233060000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 6.29
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 10.49
     },
     {
       "symbol": "NOW",
       "report_date": "2026-01-26T00:00:00.000",
       "market_capitalization": 142611640000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 6.45
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 10.74
     },
     {
       "symbol": "NOW",
       "report_date": "2026-01-27T00:00:00.000",
       "market_capitalization": 137862800000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 6.23
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 10.38
     },
     {
       "symbol": "NOW",
       "report_date": "2026-01-28T00:00:00.000",
       "market_capitalization": 135582520000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 6.13
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 10.21
     },
     {
       "symbol": "NOW",
       "report_date": "2026-01-29T00:00:00.000",
       "market_capitalization": 122099580000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 5.52
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 9.2
     },
     {
       "symbol": "NOW",
       "report_date": "2026-01-30T00:00:00.000",
       "market_capitalization": 122392460000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 5.53
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 9.22
     },
     {
       "symbol": "NOW",
       "report_date": "2026-02-02T00:00:00.000",
       "market_capitalization": 123428000000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 5.58
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 9.3
     },
     {
       "symbol": "NOW",
       "report_date": "2026-02-03T00:00:00.000",
       "market_capitalization": 114819420000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 5.19
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 8.65
     },
     {
       "symbol": "NOW",
       "report_date": "2026-02-04T00:00:00.000",
       "market_capitalization": 116179220000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 5.25
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 8.75
     },
     {
       "symbol": "NOW",
       "report_date": "2026-02-05T00:00:00.000",
       "market_capitalization": 107350980000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 4.85
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 8.08
     },
     {
       "symbol": "NOW",
       "report_date": "2026-02-06T00:00:00.000",
       "market_capitalization": 105374040000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 4.76
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 7.94
     },
     {
       "symbol": "NOW",
       "report_date": "2026-02-09T00:00:00.000",
       "market_capitalization": 108648020000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 4.91
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 8.18
     },
     {
       "symbol": "NOW",
       "report_date": "2026-02-10T00:00:00.000",
       "market_capitalization": 111378080000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 5.04
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 8.39
     },
     {
       "symbol": "NOW",
       "report_date": "2026-02-11T00:00:00.000",
       "market_capitalization": 105206680000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 4.76
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 7.92
     },
     {
       "symbol": "NOW",
       "report_date": "2026-02-12T00:00:00.000",
       "market_capitalization": 108041340000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 4.88
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 8.14
     },
     {
       "symbol": "NOW",
       "report_date": "2026-02-13T00:00:00.000",
       "market_capitalization": 112005680000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 5.06
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 8.44
     },
     {
       "symbol": "NOW",
       "report_date": "2026-02-17T00:00:00.000",
       "market_capitalization": 110781860000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 5.01
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 8.34
     },
     {
       "symbol": "NOW",
       "report_date": "2026-02-18T00:00:00.000",
       "market_capitalization": 112769260000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 5.1
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 8.49
     },
     {
       "symbol": "NOW",
       "report_date": "2026-02-19T00:00:00.000",
       "market_capitalization": 112309020000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 5.08
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 8.46
     },
     {
       "symbol": "NOW",
       "report_date": "2026-02-20T00:00:00.000",
       "market_capitalization": 109066420000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 4.93
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 8.21
     },
     {
       "symbol": "NOW",
       "report_date": "2026-02-23T00:00:00.000",
       "market_capitalization": 105436800000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 4.77
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 7.94
     },
     {
       "symbol": "NOW",
       "report_date": "2026-02-24T00:00:00.000",
       "market_capitalization": 107204540000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 4.85
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 8.07
     },
     {
       "symbol": "NOW",
       "report_date": "2026-02-25T00:00:00.000",
       "market_capitalization": 109024580000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 4.93
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 8.21
     },
     {
       "symbol": "NOW",
       "report_date": "2026-02-26T00:00:00.000",
       "market_capitalization": 114327800000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 5.17
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 8.61
     },
     {
       "symbol": "NOW",
       "report_date": "2026-02-27T00:00:00.000",
       "market_capitalization": 112978460000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 5.11
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 8.51
     },
     {
       "symbol": "NOW",
       "report_date": "2026-03-02T00:00:00.000",
       "market_capitalization": 113376145752.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 5.13
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 8.54
     },
     {
       "symbol": "NOW",
       "report_date": "2026-03-03T00:00:00.000",
       "market_capitalization": 117282452364.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 5.3
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 8.83
     },
     {
       "symbol": "NOW",
       "report_date": "2026-03-04T00:00:00.000",
       "market_capitalization": 117976676616.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 5.33
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 8.89
     },
     {
       "symbol": "NOW",
       "report_date": "2026-03-05T00:00:00.000",
       "market_capitalization": 124732411128.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 5.64
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 9.39
     },
     {
       "symbol": "NOW",
       "report_date": "2026-03-06T00:00:00.000",
       "market_capitalization": 128835587304.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 5.82
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 9.7
     },
     {
       "symbol": "NOW",
       "report_date": "2026-03-09T00:00:00.000",
       "market_capitalization": 126338452308.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 5.71
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 9.51
     },
     {
       "symbol": "NOW",
       "report_date": "2026-03-10T00:00:00.000",
       "market_capitalization": 120826104516.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 5.46
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 9.1
     },
     {
       "symbol": "NOW",
       "report_date": "2026-03-11T00:00:00.000",
       "market_capitalization": 119810672028.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 5.42
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 9.02
     },
     {
       "symbol": "NOW",
       "report_date": "2026-03-12T00:00:00.000",
       "market_capitalization": 117054498132.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 5.29
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 8.82
     },
     {
       "symbol": "NOW",
       "report_date": "2026-03-13T00:00:00.000",
       "market_capitalization": 117727999272.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 5.32
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 8.87
     },
     {
       "symbol": "NOW",
       "report_date": "2026-03-16T00:00:00.000",
       "market_capitalization": 119033555328.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 5.38
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 8.96
     },
     {
       "symbol": "NOW",
       "report_date": "2026-03-17T00:00:00.000",
       "market_capitalization": 120940081632.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 5.47
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 9.11
     },
     {
       "symbol": "NOW",
       "report_date": "2026-03-18T00:00:00.000",
       "market_capitalization": 117821253276.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 5.33
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 8.87
     },
     {
       "symbol": "NOW",
       "report_date": "2026-03-19T00:00:00.000",
       "market_capitalization": 117365344812.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 5.31
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 8.84
     },
     {
       "symbol": "NOW",
       "report_date": "2026-03-20T00:00:00.000",
       "market_capitalization": 114370855128.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 5.17
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 8.61
     },
     {
       "symbol": "NOW",
       "report_date": "2026-03-23T00:00:00.000",
       "market_capitalization": 114961585865.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 5.2
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 8.66
     },
     {
       "symbol": "NOW",
       "report_date": "2026-03-24T00:00:00.000",
       "market_capitalization": 108433798655.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 4.9
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 8.17
     },
     {
       "symbol": "NOW",
       "report_date": "2026-03-25T00:00:00.000",
       "market_capitalization": 106786309502.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 4.83
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 8.04
     },
     {
       "symbol": "NOW",
       "report_date": "2026-03-26T00:00:00.000",
       "market_capitalization": 107387280388.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 4.85
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 8.09
     },
     {
       "symbol": "NOW",
       "report_date": "2026-03-27T00:00:00.000",
       "market_capitalization": 103004337547.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 4.66
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 7.76
     },
     {
       "symbol": "NOW",
       "report_date": "2026-03-30T00:00:00.000",
       "market_capitalization": 108765368799.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 22120000000.0,
+      "ttm_revenue": 13278000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 22120000000.0,
-      "ps_ratio": 4.92
+      "ttm_revenue_usd": 13278000000.0,
+      "ps_ratio": 8.19
     },
     {
       "symbol": "NOW",
       "report_date": "2026-03-31T00:00:00.000",
       "market_capitalization": 107823251400.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 3.27
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 7.72
     },
     {
       "symbol": "NOW",
       "report_date": "2026-04-01T00:00:00.000",
       "market_capitalization": 107297284320.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 3.25
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 7.69
     },
     {
       "symbol": "NOW",
       "report_date": "2026-04-02T00:00:00.000",
       "market_capitalization": 105193416000.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 3.19
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 7.54
     },
     {
       "symbol": "NOW",
       "report_date": "2026-04-06T00:00:00.000",
       "market_capitalization": 105626565360.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 3.2
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 7.57
     },
     {
       "symbol": "NOW",
       "report_date": "2026-04-07T00:00:00.000",
       "market_capitalization": 103698019400.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 3.14
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 7.43
     },
     {
       "symbol": "NOW",
       "report_date": "2026-04-08T00:00:00.000",
       "market_capitalization": 100521590760.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 3.05
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 7.2
     },
     {
       "symbol": "NOW",
       "report_date": "2026-04-09T00:00:00.000",
       "market_capitalization": 92621771480.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 2.81
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 6.63
     },
     {
       "symbol": "NOW",
       "report_date": "2026-04-10T00:00:00.000",
       "market_capitalization": 85598564000.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 2.59
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 6.13
     },
     {
       "symbol": "NOW",
       "report_date": "2026-04-13T00:00:00.000",
       "market_capitalization": 91848290480.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 2.78
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 6.58
     },
     {
       "symbol": "NOW",
       "report_date": "2026-04-14T00:00:00.000",
       "market_capitalization": 90538529320.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 2.74
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 6.49
     },
     {
       "symbol": "NOW",
       "report_date": "2026-04-15T00:00:00.000",
       "market_capitalization": 97138900520.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 2.94
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 6.96
     },
     {
       "symbol": "NOW",
       "report_date": "2026-04-16T00:00:00.000",
       "market_capitalization": 99459343520.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 3.01
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 7.12
     },
     {
       "symbol": "NOW",
       "report_date": "2026-04-17T00:00:00.000",
       "market_capitalization": 99686231280.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 3.02
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 7.14
     },
     {
       "symbol": "NOW",
       "report_date": "2026-04-20T00:00:00.000",
       "market_capitalization": 102842033760.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 3.12
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 7.37
     },
     {
       "symbol": "NOW",
       "report_date": "2026-04-21T00:00:00.000",
       "market_capitalization": 103275183120.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 3.13
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 7.4
     },
     {
       "symbol": "NOW",
       "report_date": "2026-04-22T00:00:00.000",
       "market_capitalization": 106296915560.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 3.22
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 7.61
     },
     {
       "symbol": "NOW",
       "report_date": "2026-04-23T00:00:00.000",
       "market_capitalization": 87434292240.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 2.65
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 6.26
     },
     {
       "symbol": "NOW",
       "report_date": "2026-04-24T00:00:00.000",
       "market_capitalization": 92993042360.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 2.82
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 6.66
     },
     {
       "symbol": "NOW",
       "report_date": "2026-04-27T00:00:00.000",
       "market_capitalization": 93281808600.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 2.83
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 6.68
     },
     {
       "symbol": "NOW",
       "report_date": "2026-04-28T00:00:00.000",
       "market_capitalization": 93323060920.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 2.83
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 6.69
     },
     {
       "symbol": "NOW",
       "report_date": "2026-04-29T00:00:00.000",
       "market_capitalization": 91672968120.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 2.78
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 6.57
     },
     {
       "symbol": "NOW",
       "report_date": "2026-04-30T00:00:00.000",
       "market_capitalization": 91074809480.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 2.76
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 6.52
     },
     {
       "symbol": "NOW",
       "report_date": "2026-05-01T00:00:00.000",
       "market_capitalization": 94014037280.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 2.85
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 6.73
     },
     {
       "symbol": "NOW",
       "report_date": "2026-05-04T00:00:00.000",
       "market_capitalization": 94849396760.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 2.87
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 6.79
     },
     {
       "symbol": "NOW",
       "report_date": "2026-05-05T00:00:00.000",
       "market_capitalization": 94890649080.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 2.88
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 6.8
     },
     {
       "symbol": "NOW",
       "report_date": "2026-05-06T00:00:00.000",
       "market_capitalization": 91837977400.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 2.78
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 6.58
     },
     {
       "symbol": "NOW",
       "report_date": "2026-05-07T00:00:00.000",
       "market_capitalization": 96520115720.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 2.93
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 6.91
     },
     {
       "symbol": "NOW",
       "report_date": "2026-05-08T00:00:00.000",
       "market_capitalization": 94034663440.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 2.85
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 6.74
     },
     {
       "symbol": "NOW",
       "report_date": "2026-05-11T00:00:00.000",
       "market_capitalization": 94354368920.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 2.86
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 6.76
     },
     {
       "symbol": "NOW",
       "report_date": "2026-05-12T00:00:00.000",
       "market_capitalization": 91786412000.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 2.78
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 6.57
     },
     {
       "symbol": "NOW",
       "report_date": "2026-05-13T00:00:00.000",
       "market_capitalization": 89775361400.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 2.72
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 6.43
     },
     {
       "symbol": "NOW",
       "report_date": "2026-05-14T00:00:00.000",
       "market_capitalization": 93333374000.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 2.83
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 6.69
     },
     {
       "symbol": "NOW",
       "report_date": "2026-05-15T00:00:00.000",
       "market_capitalization": 98046451560.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 2.97
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 7.02
     },
     {
       "symbol": "NOW",
       "report_date": "2026-05-18T00:00:00.000",
       "market_capitalization": 106657873360.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 3.23
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 7.64
     },
     {
       "symbol": "NOW",
       "report_date": "2026-05-19T00:00:00.000",
       "market_capitalization": 105018093640.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 3.18
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 7.52
     },
     {
       "symbol": "NOW",
       "report_date": "2026-05-20T00:00:00.000",
       "market_capitalization": 106534116400.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 3.23
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 7.63
     },
     {
       "symbol": "NOW",
       "report_date": "2026-05-21T00:00:00.000",
       "market_capitalization": 102811094520.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 3.12
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 7.36
     },
     {
       "symbol": "NOW",
       "report_date": "2026-05-22T00:00:00.000",
       "market_capitalization": 105327486040.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 3.19
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 7.54
     },
     {
       "symbol": "NOW",
       "report_date": "2026-05-26T00:00:00.000",
       "market_capitalization": 103048295360.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 3.12
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 7.38
     },
     {
       "symbol": "NOW",
       "report_date": "2026-05-27T00:00:00.000",
       "market_capitalization": 105317172960.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 32992000000.0,
+      "ttm_revenue": 13960000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 32992000000.0,
-      "ps_ratio": 3.19
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 7.54
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2026-05-28T00:00:00.000",
+      "market_capitalization": 112134118840.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 13960000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 8.03
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2026-05-29T00:00:00.000",
+      "market_capitalization": 128263775960.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 13960000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 9.19
     }
   ],
   "pbRatio": [
@@ -71552,6 +71604,26 @@
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 11728000000.0,
       "pb_ratio": 8.98
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2026-05-28T00:00:00.000",
+      "market_capitalization": 112134118840.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 11728000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 11728000000.0,
+      "pb_ratio": 9.56
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2026-05-29T00:00:00.000",
+      "market_capitalization": 128263775960.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 11728000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 11728000000.0,
+      "pb_ratio": 10.94
     }
   ],
   "pegRatio": [
@@ -88914,6 +88986,26 @@
       "ttm_pe": 60.75,
       "eps_yoy_growth": 0.0264,
       "peg_ratio": 23.01
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2026-05-28T00:00:00.000",
+      "close_price": 108.73,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 1.6811,
+      "ttm_pe": 64.68,
+      "eps_yoy_growth": 0.0264,
+      "peg_ratio": 24.5
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2026-05-29T00:00:00.000",
+      "close_price": 124.37,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 1.6811,
+      "ttm_pe": 73.98,
+      "eps_yoy_growth": 0.0264,
+      "peg_ratio": 28.02
     }
   ]
 }

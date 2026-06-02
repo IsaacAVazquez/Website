@@ -84,11 +84,11 @@
     {
       "symbol": "ADBE",
       "report_date": "2026-02-28",
-      "net_income_common_stockholders": 7208000000.0,
+      "net_income_common_stockholders": 1889000000.0,
       "beginning_stockholders_equity": 11623000000.0,
       "ending_stockholders_equity": 11433000000.0,
       "avg_equity": 11528000000.0,
-      "roe": 0.6253
+      "roe": 0.1639
     }
   ],
   "roa": [
@@ -176,11 +176,11 @@
     {
       "symbol": "ADBE",
       "report_date": "2026-02-28",
-      "net_income_common_stockholders": 7208000000.0,
+      "net_income_common_stockholders": 1889000000.0,
       "beginning_total_assets": 29496000000.0,
       "ending_total_assets": 29704000000.0,
       "avg_assets": 29600000000.0,
-      "roa": 0.2435
+      "roa": 0.0638
     }
   ],
   "roic": [
@@ -286,13 +286,13 @@
     {
       "symbol": "ADBE",
       "report_date": "2026-02-28",
-      "ebit": 9238000000.0,
+      "ebit": 2485000000.0,
       "tax_rate_for_calcs": 0.22,
-      "nopat": 7205640000.0,
+      "nopat": 1938300000.0,
       "beginning_invested_capital": 17833000000.0,
       "ending_invested_capital": 17661000000.0,
       "avg_invested_capital": 17747000000.0,
-      "roic": 0.406
+      "roic": 0.1092
     }
   ],
   "equityMultiplier": [
@@ -362,8 +362,8 @@
     {
       "symbol": "ADBE",
       "report_date": "2026-02-28T00:00:00.000",
-      "roe": 0.6253,
-      "roa": 0.2435,
+      "roe": 0.1639,
+      "roa": 0.0638,
       "equity_multiplier": 2.57
     }
   ],
@@ -434,8 +434,8 @@
     {
       "symbol": "ADBE",
       "report_date": "2026-02-28T00:00:00.000",
-      "roa": 0.2435,
-      "net_margin": 1.1266,
+      "roa": 0.0638,
+      "net_margin": 0.2952,
       "asset_turnover": 0.22
     }
   ]

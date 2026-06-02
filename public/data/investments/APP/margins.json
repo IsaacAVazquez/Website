@@ -88,8 +88,8 @@
       "symbol": "APP",
       "report_date": "2025-06-30",
       "gross_profit": 1103678000.0,
-      "total_revenue": 5737591000.0,
-      "gross_margin": 0.1924
+      "total_revenue": 1258754000.0,
+      "gross_margin": 0.8768
     },
     {
       "symbol": "APP",
@@ -109,8 +109,8 @@
       "symbol": "APP",
       "report_date": "2026-03-31",
       "gross_profit": 1638817000.0,
-      "total_revenue": 6164192000.0,
-      "gross_margin": 0.2659
+      "total_revenue": 1842449000.0,
+      "gross_margin": 0.8895
     }
   ],
   "annual_gross": [
@@ -252,9 +252,9 @@
     {
       "symbol": "APP",
       "report_date": "2025-06-30",
-      "operating_income": 2922800000.0,
-      "total_revenue": 5737591000.0,
-      "operating_margin": 0.5094
+      "operating_income": 957682000.0,
+      "total_revenue": 1258754000.0,
+      "operating_margin": 0.7608
     },
     {
       "symbol": "APP",
@@ -273,9 +273,9 @@
     {
       "symbol": "APP",
       "report_date": "2026-03-31",
-      "operating_income": 4751865000.0,
-      "total_revenue": 6164192000.0,
-      "operating_margin": 0.7709
+      "operating_income": 1439933000.0,
+      "total_revenue": 1842449000.0,
+      "operating_margin": 0.7815
     }
   ],
   "annual_operating": [
@@ -418,8 +418,8 @@
       "symbol": "APP",
       "report_date": "2025-06-30",
       "net_income_common_stockholders": 819325000.0,
-      "total_revenue": 5737591000.0,
-      "net_margin": 0.1428
+      "total_revenue": 1258754000.0,
+      "net_margin": 0.6509
     },
     {
       "symbol": "APP",
@@ -439,8 +439,8 @@
       "symbol": "APP",
       "report_date": "2026-03-31",
       "net_income_common_stockholders": 1205613000.0,
-      "total_revenue": 6164192000.0,
-      "net_margin": 0.1956
+      "total_revenue": 1842449000.0,
+      "net_margin": 0.6544
     }
   ],
   "annual_net": [
@@ -583,8 +583,8 @@
       "symbol": "APP",
       "report_date": "2025-06-30",
       "ebitda": 982466000.0,
-      "total_revenue": 5737591000.0,
-      "ebitda_margin": 0.1712
+      "total_revenue": 1258754000.0,
+      "ebitda_margin": 0.7805
     },
     {
       "symbol": "APP",
@@ -604,8 +604,8 @@
       "symbol": "APP",
       "report_date": "2026-03-31",
       "ebitda": 1516232000.0,
-      "total_revenue": 6164192000.0,
-      "ebitda_margin": 0.246
+      "total_revenue": 1842449000.0,
+      "ebitda_margin": 0.8229
     }
   ],
   "annual_ebitda": [
@@ -748,8 +748,8 @@
       "symbol": "APP",
       "report_date": "2025-06-30",
       "free_cash_flow": 772226000.0,
-      "total_revenue": 5737591000.0,
-      "fcf_margin": 0.1346
+      "total_revenue": 1258754000.0,
+      "fcf_margin": 0.6135
     },
     {
       "symbol": "APP",
@@ -769,8 +769,8 @@
       "symbol": "APP",
       "report_date": "2026-03-31",
       "free_cash_flow": 1291393000.0,
-      "total_revenue": 6164192000.0,
-      "fcf_margin": 0.2095
+      "total_revenue": 1842449000.0,
+      "fcf_margin": 0.7009
     }
   ],
   "annual_fcf": [

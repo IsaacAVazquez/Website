@@ -80,9 +80,9 @@
     {
       "symbol": "NOW",
       "report_date": "2025-06-30T00:00:00.000",
-      "revenue": 12057000000.0,
+      "revenue": 3215000000.0,
       "prev_year_revenue": 2627000000.0,
-      "yoy_growth": 3.5896
+      "yoy_growth": 0.2238
     },
     {
       "symbol": "NOW",
@@ -101,9 +101,9 @@
     {
       "symbol": "NOW",
       "report_date": "2026-03-31T00:00:00.000",
-      "revenue": 13960000000.0,
+      "revenue": 3770000000.0,
       "prev_year_revenue": 3088000000.0,
-      "yoy_growth": 3.5207
+      "yoy_growth": 0.2209
     }
   ],
   "annual_revenue": [
@@ -231,9 +231,9 @@
     {
       "symbol": "NOW",
       "report_date": "2025-06-30T00:00:00.000",
-      "operating_income": 1601000000.0,
+      "operating_income": 358000000.0,
       "prev_year_operating_income": 240000000.0,
-      "yoy_growth": 5.6708
+      "yoy_growth": 0.4917
     },
     {
       "symbol": "NOW",
@@ -252,9 +252,9 @@
     {
       "symbol": "NOW",
       "report_date": "2026-03-31T00:00:00.000",
-      "operating_income": 1876000000.0,
+      "operating_income": 503000000.0,
       "prev_year_operating_income": 451000000.0,
-      "yoy_growth": 3.1596
+      "yoy_growth": 0.1153
     }
   ],
   "annual_operating_income": [

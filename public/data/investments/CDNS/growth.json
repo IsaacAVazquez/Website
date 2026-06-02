@@ -87,9 +87,9 @@
     {
       "symbol": "CDNS",
       "report_date": "2025-06-30T00:00:00.000",
-      "revenue": 5089287000.0,
+      "revenue": 1275441000.0,
       "prev_year_revenue": 1060681000.0,
-      "yoy_growth": 3.7981
+      "yoy_growth": 0.2025
     },
     {
       "symbol": "CDNS",
@@ -108,9 +108,9 @@
     {
       "symbol": "CDNS",
       "report_date": "2026-03-31T00:00:00.000",
-      "revenue": 5528613000.0,
+      "revenue": 1474220000.0,
       "prev_year_revenue": 1242366000.0,
-      "yoy_growth": 3.4501
+      "yoy_growth": 0.1866
     }
   ],
   "annual_revenue": [
@@ -252,9 +252,9 @@
     {
       "symbol": "CDNS",
       "report_date": "2025-06-30T00:00:00.000",
-      "operating_income": 1562249000.0,
+      "operating_income": 370389000.0,
       "prev_year_operating_income": 293843000.0,
-      "yoy_growth": 4.3166
+      "yoy_growth": 0.2605
     },
     {
       "symbol": "CDNS",
@@ -273,9 +273,9 @@
     {
       "symbol": "CDNS",
       "report_date": "2026-03-31T00:00:00.000",
-      "operating_income": 1719734000.0,
+      "operating_income": 431336000.0,
       "prev_year_operating_income": 361383000.0,
-      "yoy_growth": 3.7588
+      "yoy_growth": 0.1936
     }
   ],
   "annual_operating_income": [
@@ -726,9 +726,9 @@
     {
       "symbol": "CDNS",
       "report_date": "2025-06-30T00:00:00.000",
-      "free_cash_flow": 1585090000.0,
+      "free_cash_flow": 333518000.0,
       "prev_year_free_cash_flow": 126766000.0,
-      "yoy_growth": 11.5041
+      "yoy_growth": 1.631
     },
     {
       "symbol": "CDNS",
@@ -747,9 +747,9 @@
     {
       "symbol": "CDNS",
       "report_date": "2026-03-31T00:00:00.000",
-      "free_cash_flow": 1429912000.0,
+      "free_cash_flow": 306962000.0,
       "prev_year_free_cash_flow": 463960000.0,
-      "yoy_growth": 2.082
+      "yoy_growth": -0.3384
     }
   ],
   "annual_fcf": [

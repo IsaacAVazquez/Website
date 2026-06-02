@@ -396,9 +396,9 @@
     {
       "symbol": "AMZN",
       "report_date": "2025-06-30T00:00:00.000",
-      "ebitda": 143714000000.0,
+      "ebitda": 36600000000.0,
       "prev_year_ebitda": 27872000000.0,
-      "yoy_growth": 4.1562
+      "yoy_growth": 0.3131
     },
     {
       "symbol": "AMZN",
@@ -417,9 +417,9 @@
     {
       "symbol": "AMZN",
       "report_date": "2026-03-31T00:00:00.000",
-      "ebitda": 188438000000.0,
+      "ebitda": 59579000000.0,
       "prev_year_ebitda": 36482000000.0,
-      "yoy_growth": 4.1652
+      "yoy_growth": 0.6331
     }
   ],
   "annual_ebitda": [
@@ -554,9 +554,9 @@
     {
       "symbol": "AMZN",
       "report_date": "2025-06-30T00:00:00.000",
-      "net_income_common_stockholders": 70623000000.0,
+      "net_income_common_stockholders": 18164000000.0,
       "prev_year_net_income_common_stockholders": 13485000000.0,
-      "yoy_growth": 4.2372
+      "yoy_growth": 0.347
     },
     {
       "symbol": "AMZN",
@@ -575,9 +575,9 @@
     {
       "symbol": "AMZN",
       "report_date": "2026-03-31T00:00:00.000",
-      "net_income_common_stockholders": 90798000000.0,
+      "net_income_common_stockholders": 30255000000.0,
       "prev_year_net_income_common_stockholders": 17127000000.0,
-      "yoy_growth": 4.3015
+      "yoy_growth": 0.7665
     }
   ],
   "annual_net_income": [
@@ -705,9 +705,9 @@
     {
       "symbol": "AMZN",
       "report_date": "2025-06-30T00:00:00.000",
-      "free_cash_flow": 13481000000.0,
+      "free_cash_flow": 332000000.0,
       "prev_year_free_cash_flow": 7661000000.0,
-      "yoy_growth": 0.7597
+      "yoy_growth": -0.9567
     },
     {
       "symbol": "AMZN",
@@ -726,9 +726,9 @@
     {
       "symbol": "AMZN",
       "report_date": "2026-03-31T00:00:00.000",
-      "free_cash_flow": -2472000000.0,
+      "free_cash_flow": -18171000000.0,
       "prev_year_free_cash_flow": -8004000000.0,
-      "yoy_growth": 0.6912
+      "yoy_growth": -1.2702
     }
   ],
   "annual_fcf": [

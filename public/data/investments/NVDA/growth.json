@@ -389,9 +389,9 @@
     {
       "symbol": "NVDA",
       "report_date": "2026-04-30T00:00:00.000",
-      "ebitda": 192970000000.0,
+      "ebitda": 71002000000.0,
       "prev_year_ebitda": 22584000000.0,
-      "yoy_growth": 7.5445
+      "yoy_growth": 2.1439
     }
   ],
   "annual_ebitda": [
@@ -540,9 +540,9 @@
     {
       "symbol": "NVDA",
       "report_date": "2026-04-30T00:00:00.000",
-      "net_income_common_stockholders": 159613000000.0,
+      "net_income_common_stockholders": 58321000000.0,
       "prev_year_net_income_common_stockholders": 18775000000.0,
-      "yoy_growth": 7.5014
+      "yoy_growth": 2.1063
     }
   ],
   "annual_net_income": [
@@ -691,9 +691,9 @@
     {
       "symbol": "NVDA",
       "report_date": "2026-04-30T00:00:00.000",
-      "free_cash_flow": 119076000000.0,
+      "free_cash_flow": 48587000000.0,
       "prev_year_free_cash_flow": 26187000000.0,
-      "yoy_growth": 3.5471
+      "yoy_growth": 0.8554
     }
   ],
   "annual_fcf": [

@@ -1,24 +1,6 @@
 [
   {
     "symbol": "SHOP",
-    "report_date": "2025-05-27",
-    "open": 104.355,
-    "close": 106.74,
-    "high": 107.48,
-    "low": 103.9,
-    "volume": 7556600
-  },
-  {
-    "symbol": "SHOP",
-    "report_date": "2025-05-28",
-    "open": 106.53,
-    "close": 107.11,
-    "high": 108.14,
-    "low": 105.57,
-    "volume": 6823400
-  },
-  {
-    "symbol": "SHOP",
     "report_date": "2025-05-29",
     "open": 109.695,
     "close": 107.7,
@@ -2265,6 +2247,24 @@
     "close": 106.6,
     "high": 109.1,
     "low": 103.825,
-    "volume": 8325600
+    "volume": 8343800
+  },
+  {
+    "symbol": "SHOP",
+    "report_date": "2026-05-28",
+    "open": 107.185,
+    "close": 115.03,
+    "high": 115.25,
+    "low": 106.96,
+    "volume": 14633300
+  },
+  {
+    "symbol": "SHOP",
+    "report_date": "2026-05-29",
+    "open": 116.382,
+    "close": 118.71,
+    "high": 119.84,
+    "low": 113.45,
+    "volume": 12083600
   }
 ]

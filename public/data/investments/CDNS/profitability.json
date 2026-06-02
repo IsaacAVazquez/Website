@@ -282,13 +282,13 @@
     {
       "symbol": "CDNS",
       "report_date": "2025-06-30",
-      "ebit": 1518833000.0,
+      "ebit": 309555000.0,
       "tax_rate_for_calcs": 0.21,
-      "nopat": 1199878070.0,
+      "nopat": 244548450.0,
       "beginning_invested_capital": 7253416000.0,
       "ending_invested_capital": 7484683000.0,
       "avg_invested_capital": 7369049500.0,
-      "roic": 0.1628
+      "roic": 0.0332
     },
     {
       "symbol": "CDNS",
@@ -315,13 +315,13 @@
     {
       "symbol": "CDNS",
       "report_date": "2026-03-31",
-      "ebit": 1713490000.0,
+      "ebit": 459716000.0,
       "tax_rate_for_calcs": 0.22,
-      "nopat": 1336522200.0,
+      "nopat": 358578480.0,
       "beginning_invested_capital": 7954331000.0,
       "ending_invested_capital": 9467633000.0,
       "avg_invested_capital": 8710982000.0,
-      "roic": 0.1534
+      "roic": 0.0412
     }
   ],
   "equityMultiplier": [
@@ -457,8 +457,8 @@
       "symbol": "CDNS",
       "report_date": "2025-06-30T00:00:00.000",
       "roa": 0.0173,
-      "net_margin": 0.0314,
-      "asset_turnover": 0.55
+      "net_margin": 0.1255,
+      "asset_turnover": 0.14
     },
     {
       "symbol": "CDNS",
@@ -478,8 +478,8 @@
       "symbol": "CDNS",
       "report_date": "2026-03-31T00:00:00.000",
       "roa": 0.0302,
-      "net_margin": 0.0607,
-      "asset_turnover": 0.5
+      "net_margin": 0.2277,
+      "asset_turnover": 0.13
     }
   ]
 }

@@ -101,9 +101,16 @@
     {
       "symbol": "CRM",
       "report_date": "2026-01-31T00:00:00.000",
-      "revenue": 41525000000.0,
+      "revenue": 11201000000.0,
       "prev_year_revenue": 9993000000.0,
-      "yoy_growth": 3.1554
+      "yoy_growth": 0.1209
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2026-04-30T00:00:00.000",
+      "revenue": 11133000000.0,
+      "prev_year_revenue": 9829000000.0,
+      "yoy_growth": 0.1327
     }
   ],
   "annual_revenue": [
@@ -252,9 +259,16 @@
     {
       "symbol": "CRM",
       "report_date": "2026-01-31T00:00:00.000",
-      "operating_income": 8917000000.0,
+      "operating_income": 2155000000.0,
       "prev_year_operating_income": 2118000000.0,
-      "yoy_growth": 3.2101
+      "yoy_growth": 0.0175
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2026-04-30T00:00:00.000",
+      "operating_income": 2427000000.0,
+      "prev_year_operating_income": 1978000000.0,
+      "yoy_growth": 0.227
     }
   ],
   "annual_operating_income": [
@@ -375,9 +389,9 @@
     {
       "symbol": "CRM",
       "report_date": "2025-04-30T00:00:00.000",
-      "ebitda": 2821000000.0,
+      "ebitda": 2885000000.0,
       "prev_year_ebitda": 2596000000.0,
-      "yoy_growth": 0.0867
+      "yoy_growth": 0.1113
     },
     {
       "symbol": "CRM",
@@ -396,9 +410,16 @@
     {
       "symbol": "CRM",
       "report_date": "2026-01-31T00:00:00.000",
-      "ebitda": 12548000000.0,
+      "ebitda": 3275000000.0,
       "prev_year_ebitda": 2995000000.0,
-      "yoy_growth": 3.1896
+      "yoy_growth": 0.0935
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2026-04-30T00:00:00.000",
+      "ebitda": 4023000000.0,
+      "prev_year_ebitda": 2885000000.0,
+      "yoy_growth": 0.3945
     }
   ],
   "annual_ebitda": [
@@ -550,6 +571,13 @@
       "net_income_common_stockholders": 1943000000.0,
       "prev_year_net_income_common_stockholders": 1708000000.0,
       "yoy_growth": 0.1376
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2026-04-30T00:00:00.000",
+      "net_income_common_stockholders": 2107000000.0,
+      "prev_year_net_income_common_stockholders": 1541000000.0,
+      "yoy_growth": 0.3673
     }
   ],
   "annual_net_income": [
@@ -687,6 +715,13 @@
       "free_cash_flow": 5323000000.0,
       "prev_year_free_cash_flow": 3816000000.0,
       "yoy_growth": 0.3949
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2026-04-30T00:00:00.000",
+      "free_cash_flow": 6556000000.0,
+      "prev_year_free_cash_flow": 6297000000.0,
+      "yoy_growth": 0.0411
     }
   ],
   "annual_fcf": [
@@ -1405,6 +1440,13 @@
       "eps": 2.067,
       "prev_year_eps": 1.7536,
       "yoy_growth": 0.1787
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2026-04-30T00:00:00.000",
+      "eps": 2.4191,
+      "prev_year_eps": 1.5887,
+      "yoy_growth": 0.5227
     }
   ]
 }

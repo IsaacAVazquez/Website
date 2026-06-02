@@ -97,6 +97,13 @@
       "revenue": 2408798000.0,
       "prev_year_revenue": 1455315000.0,
       "yoy_growth": 0.6552
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2026-04-30T00:00:00.000",
+      "revenue": 2275985000.0,
+      "prev_year_revenue": 1604266000.0,
+      "yoy_growth": 0.4187
     }
   ],
   "annual_revenue": [
@@ -248,6 +255,13 @@
       "operating_income": 321328000.0,
       "prev_year_operating_income": 251839000.0,
       "yoy_growth": 0.2759
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2026-04-30T00:00:00.000",
+      "operating_income": 236320000.0,
+      "prev_year_operating_income": 376426000.0,
+      "yoy_growth": -0.3722
     }
   ],
   "annual_operating_income": [
@@ -392,6 +406,13 @@
       "ebitda": 692456000.0,
       "prev_year_ebitda": 350190000.0,
       "yoy_growth": 0.9774
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2026-04-30T00:00:00.000",
+      "ebitda": 609129000.0,
+      "prev_year_ebitda": 539431000.0,
+      "yoy_growth": 0.1292
     }
   ],
   "annual_ebitda": [
@@ -540,9 +561,16 @@
     {
       "symbol": "SNPS",
       "report_date": "2026-01-31T00:00:00.000",
-      "net_income_common_stockholders": 1101495000.0,
+      "net_income_common_stockholders": 64958000.0,
       "prev_year_net_income_common_stockholders": 295683000.0,
-      "yoy_growth": 2.7253
+      "yoy_growth": -0.7803
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2026-04-30T00:00:00.000",
+      "net_income_common_stockholders": 17105000.0,
+      "prev_year_net_income_common_stockholders": 345332000.0,
+      "yoy_growth": -0.9505
     }
   ],
   "annual_net_income": [
@@ -698,9 +726,16 @@
     {
       "symbol": "SNPS",
       "report_date": "2026-01-31T00:00:00.000",
-      "free_cash_flow": 2278836000.0,
+      "free_cash_flow": 821512000.0,
       "prev_year_free_cash_flow": -108170000.0,
-      "yoy_growth": 22.0672
+      "yoy_growth": 8.5946
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2026-04-30T00:00:00.000",
+      "free_cash_flow": 574736000.0,
+      "prev_year_free_cash_flow": 219777000.0,
+      "yoy_growth": 1.6151
     }
   ],
   "annual_fcf": [
@@ -1510,6 +1545,13 @@
       "eps": 0.3405,
       "prev_year_eps": 1.8931,
       "yoy_growth": -0.8201
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2026-04-30T00:00:00.000",
+      "eps": 0.089,
+      "prev_year_eps": 2.2374,
+      "yoy_growth": -0.9602
     }
   ]
 }

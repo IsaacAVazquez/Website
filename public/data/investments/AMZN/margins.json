@@ -417,9 +417,9 @@
     {
       "symbol": "AMZN",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 70623000000.0,
+      "net_income_common_stockholders": 18164000000.0,
       "total_revenue": 167702000000.0,
-      "net_margin": 0.4211
+      "net_margin": 0.1083
     },
     {
       "symbol": "AMZN",
@@ -438,9 +438,9 @@
     {
       "symbol": "AMZN",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 90798000000.0,
+      "net_income_common_stockholders": 30255000000.0,
       "total_revenue": 181519000000.0,
-      "net_margin": 0.5002
+      "net_margin": 0.1667
     }
   ],
   "annual_net": [
@@ -582,9 +582,9 @@
     {
       "symbol": "AMZN",
       "report_date": "2025-06-30",
-      "ebitda": 143714000000.0,
+      "ebitda": 36600000000.0,
       "total_revenue": 167702000000.0,
-      "ebitda_margin": 0.857
+      "ebitda_margin": 0.2182
     },
     {
       "symbol": "AMZN",
@@ -603,9 +603,9 @@
     {
       "symbol": "AMZN",
       "report_date": "2026-03-31",
-      "ebitda": 188438000000.0,
+      "ebitda": 59579000000.0,
       "total_revenue": 181519000000.0,
-      "ebitda_margin": 1.0381
+      "ebitda_margin": 0.3282
     }
   ],
   "annual_ebitda": [
@@ -747,9 +747,9 @@
     {
       "symbol": "AMZN",
       "report_date": "2025-06-30",
-      "free_cash_flow": 13481000000.0,
+      "free_cash_flow": 332000000.0,
       "total_revenue": 167702000000.0,
-      "fcf_margin": 0.0804
+      "fcf_margin": 0.002
     },
     {
       "symbol": "AMZN",
@@ -768,9 +768,9 @@
     {
       "symbol": "AMZN",
       "report_date": "2026-03-31",
-      "free_cash_flow": -2472000000.0,
+      "free_cash_flow": -18171000000.0,
       "total_revenue": 181519000000.0,
-      "fcf_margin": -0.0136
+      "fcf_margin": -0.1001
     }
   ],
   "annual_fcf": [

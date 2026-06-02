@@ -66,11 +66,11 @@
     {
       "symbol": "AMZN",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 70623000000.0,
+      "net_income_common_stockholders": 18164000000.0,
       "beginning_stockholders_equity": 305867000000.0,
       "ending_stockholders_equity": 333775000000.0,
       "avg_equity": 319821000000.0,
-      "roe": 0.2208
+      "roe": 0.0568
     },
     {
       "symbol": "AMZN",
@@ -93,11 +93,11 @@
     {
       "symbol": "AMZN",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 90798000000.0,
+      "net_income_common_stockholders": 30255000000.0,
       "beginning_stockholders_equity": 411065000000.0,
       "ending_stockholders_equity": 441914000000.0,
       "avg_equity": 426489500000.0,
-      "roe": 0.2129
+      "roe": 0.0709
     }
   ],
   "roa": [
@@ -167,11 +167,11 @@
     {
       "symbol": "AMZN",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 70623000000.0,
+      "net_income_common_stockholders": 18164000000.0,
       "beginning_total_assets": 643256000000.0,
       "ending_total_assets": 682170000000.0,
       "avg_assets": 662713000000.0,
-      "roa": 0.1066
+      "roa": 0.0274
     },
     {
       "symbol": "AMZN",
@@ -194,11 +194,11 @@
     {
       "symbol": "AMZN",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 90798000000.0,
+      "net_income_common_stockholders": 30255000000.0,
       "beginning_total_assets": 818042000000.0,
       "ending_total_assets": 916630000000.0,
       "avg_assets": 867336000000.0,
-      "roa": 0.1047
+      "roa": 0.0349
     }
   ],
   "roic": [
@@ -283,12 +283,12 @@
       "symbol": "AMZN",
       "report_date": "2025-06-30",
       "ebit": 21373000000.0,
-      "tax_rate_for_calcs": 0.15,
-      "nopat": 18167050000.0,
+      "tax_rate_for_calcs": 0.13,
+      "nopat": 18594510000.0,
       "beginning_invested_capital": 359241000000.0,
       "ending_invested_capital": 384493000000.0,
       "avg_invested_capital": 371867000000.0,
-      "roic": 0.0489
+      "roic": 0.05
     },
     {
       "symbol": "AMZN",
@@ -316,12 +316,12 @@
       "symbol": "AMZN",
       "report_date": "2026-03-31",
       "ebit": 40634000000.0,
-      "tax_rate_for_calcs": 0.21,
-      "nopat": 32100860000.0,
+      "tax_rate_for_calcs": 0.24,
+      "nopat": 30881840000.0,
       "beginning_invested_capital": 476713000000.0,
       "ending_invested_capital": 560988000000.0,
       "avg_invested_capital": 518850500000.0,
-      "roic": 0.0619
+      "roic": 0.0595
     }
   ],
   "equityMultiplier": [
@@ -377,8 +377,8 @@
     {
       "symbol": "AMZN",
       "report_date": "2025-06-30T00:00:00.000",
-      "roe": 0.2208,
-      "roa": 0.1066,
+      "roe": 0.0568,
+      "roa": 0.0274,
       "equity_multiplier": 2.07
     },
     {
@@ -398,8 +398,8 @@
     {
       "symbol": "AMZN",
       "report_date": "2026-03-31T00:00:00.000",
-      "roe": 0.2129,
-      "roa": 0.1047,
+      "roe": 0.0709,
+      "roa": 0.0349,
       "equity_multiplier": 2.03
     }
   ],
@@ -456,8 +456,8 @@
     {
       "symbol": "AMZN",
       "report_date": "2025-06-30T00:00:00.000",
-      "roa": 0.1066,
-      "net_margin": 0.4211,
+      "roa": 0.0274,
+      "net_margin": 0.1083,
       "asset_turnover": 0.25
     },
     {
@@ -477,8 +477,8 @@
     {
       "symbol": "AMZN",
       "report_date": "2026-03-31T00:00:00.000",
-      "roa": 0.1047,
-      "net_margin": 0.5002,
+      "roa": 0.0349,
+      "net_margin": 0.1667,
       "asset_turnover": 0.21
     }
   ]

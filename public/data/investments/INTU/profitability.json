@@ -93,11 +93,11 @@
     {
       "symbol": "INTU",
       "report_date": "2026-04-30",
-      "net_income_common_stockholders": 4584000000.0,
+      "net_income_common_stockholders": 3064000000.0,
       "beginning_stockholders_equity": 19055000000.0,
       "ending_stockholders_equity": 20629000000.0,
       "avg_equity": 19842000000.0,
-      "roe": 0.231
+      "roe": 0.1544
     }
   ],
   "roa": [
@@ -194,11 +194,11 @@
     {
       "symbol": "INTU",
       "report_date": "2026-04-30",
-      "net_income_common_stockholders": 4584000000.0,
+      "net_income_common_stockholders": 3064000000.0,
       "beginning_total_assets": 34282000000.0,
       "ending_total_assets": 39330000000.0,
       "avg_assets": 36806000000.0,
-      "roa": 0.1245
+      "roa": 0.0832
     }
   ],
   "roic": [
@@ -316,12 +316,12 @@
       "symbol": "INTU",
       "report_date": "2026-04-30",
       "ebit": 4117000000.0,
-      "tax_rate_for_calcs": 0.22,
-      "nopat": 3211260000.0,
+      "tax_rate_for_calcs": 0.24,
+      "nopat": 3128920000.0,
       "beginning_invested_capital": 25215000000.0,
       "ending_invested_capital": 26791000000.0,
       "avg_invested_capital": 26003000000.0,
-      "roic": 0.1235
+      "roic": 0.1203
     }
   ],
   "equityMultiplier": [
@@ -398,8 +398,8 @@
     {
       "symbol": "INTU",
       "report_date": "2026-04-30T00:00:00.000",
-      "roe": 0.231,
-      "roa": 0.1245,
+      "roe": 0.1544,
+      "roa": 0.0832,
       "equity_multiplier": 1.86
     }
   ],
@@ -477,8 +477,8 @@
     {
       "symbol": "INTU",
       "report_date": "2026-04-30T00:00:00.000",
-      "roa": 0.1245,
-      "net_margin": 0.5356,
+      "roa": 0.0832,
+      "net_margin": 0.358,
       "asset_turnover": 0.23
     }
   ]

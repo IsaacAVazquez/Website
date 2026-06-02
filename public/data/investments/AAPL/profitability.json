@@ -66,11 +66,11 @@
     {
       "symbol": "AAPL",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 99280000000.0,
+      "net_income_common_stockholders": 23434000000.0,
       "beginning_stockholders_equity": 66796000000.0,
       "ending_stockholders_equity": 65830000000.0,
       "avg_equity": 66313000000.0,
-      "roe": 1.4971
+      "roe": 0.3534
     },
     {
       "symbol": "AAPL",
@@ -93,11 +93,11 @@
     {
       "symbol": "AAPL",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 122575000000.0,
+      "net_income_common_stockholders": 29578000000.0,
       "beginning_stockholders_equity": 88190000000.0,
       "ending_stockholders_equity": 106491000000.0,
       "avg_equity": 97340500000.0,
-      "roe": 1.2592
+      "roe": 0.3039
     }
   ],
   "roa": [
@@ -167,11 +167,11 @@
     {
       "symbol": "AAPL",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 99280000000.0,
+      "net_income_common_stockholders": 23434000000.0,
       "beginning_total_assets": 331233000000.0,
       "ending_total_assets": 331495000000.0,
       "avg_assets": 331364000000.0,
-      "roa": 0.2996
+      "roa": 0.0707
     },
     {
       "symbol": "AAPL",
@@ -194,11 +194,11 @@
     {
       "symbol": "AAPL",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 122575000000.0,
+      "net_income_common_stockholders": 29578000000.0,
       "beginning_total_assets": 379297000000.0,
       "ending_total_assets": 371082000000.0,
       "avg_assets": 375189500000.0,
-      "roa": 0.3267
+      "roa": 0.0788
     }
   ],
   "roic": [
@@ -377,8 +377,8 @@
     {
       "symbol": "AAPL",
       "report_date": "2025-06-30T00:00:00.000",
-      "roe": 1.4971,
-      "roa": 0.2996,
+      "roe": 0.3534,
+      "roa": 0.0707,
       "equity_multiplier": 5.0
     },
     {
@@ -398,9 +398,9 @@
     {
       "symbol": "AAPL",
       "report_date": "2026-03-31T00:00:00.000",
-      "roe": 1.2592,
-      "roa": 0.3267,
-      "equity_multiplier": 3.85
+      "roe": 0.3039,
+      "roa": 0.0788,
+      "equity_multiplier": 3.86
     }
   ],
   "assetTurnover": [
@@ -456,9 +456,9 @@
     {
       "symbol": "AAPL",
       "report_date": "2025-06-30T00:00:00.000",
-      "roa": 0.2996,
-      "net_margin": 0.243,
-      "asset_turnover": 1.23
+      "roa": 0.0707,
+      "net_margin": 0.2492,
+      "asset_turnover": 0.28
     },
     {
       "symbol": "AAPL",
@@ -477,9 +477,9 @@
     {
       "symbol": "AAPL",
       "report_date": "2026-03-31T00:00:00.000",
-      "roa": 0.3267,
-      "net_margin": 0.2715,
-      "asset_turnover": 1.2
+      "roa": 0.0788,
+      "net_margin": 0.266,
+      "asset_turnover": 0.3
     }
   ]
 }

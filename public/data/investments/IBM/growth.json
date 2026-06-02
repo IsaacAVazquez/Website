@@ -80,9 +80,9 @@
     {
       "symbol": "IBM",
       "report_date": "2025-06-30T00:00:00.000",
-      "revenue": 64040000000.0,
+      "revenue": 16977000000.0,
       "prev_year_revenue": 15769000000.0,
-      "yoy_growth": 3.0611
+      "yoy_growth": 0.0766
     },
     {
       "symbol": "IBM",
@@ -101,9 +101,9 @@
     {
       "symbol": "IBM",
       "report_date": "2026-03-31T00:00:00.000",
-      "revenue": 68912000000.0,
+      "revenue": 15917000000.0,
       "prev_year_revenue": 14541000000.0,
-      "yoy_growth": 3.7392
+      "yoy_growth": 0.0946
     }
   ],
   "annual_revenue": [
@@ -231,9 +231,9 @@
     {
       "symbol": "IBM",
       "report_date": "2025-06-30T00:00:00.000",
-      "operating_income": 10928000000.0,
+      "operating_income": 3086000000.0,
       "prev_year_operating_income": 2434000000.0,
-      "yoy_growth": 3.4897
+      "yoy_growth": 0.2679
     },
     {
       "symbol": "IBM",
@@ -252,9 +252,9 @@
     {
       "symbol": "IBM",
       "report_date": "2026-03-31T00:00:00.000",
-      "operating_income": 12946000000.0,
+      "operating_income": 2219000000.0,
       "prev_year_operating_income": 1765000000.0,
-      "yoy_growth": 6.3348
+      "yoy_growth": 0.2572
     }
   ],
   "annual_operating_income": [

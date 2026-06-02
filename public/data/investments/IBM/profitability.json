@@ -457,8 +457,8 @@
       "symbol": "IBM",
       "report_date": "2025-06-30T00:00:00.000",
       "roa": 0.0149,
-      "net_margin": 0.0343,
-      "asset_turnover": 0.43
+      "net_margin": 0.1292,
+      "asset_turnover": 0.12
     },
     {
       "symbol": "IBM",
@@ -478,8 +478,8 @@
       "symbol": "IBM",
       "report_date": "2026-03-31T00:00:00.000",
       "roa": 0.0079,
-      "net_margin": 0.0176,
-      "asset_turnover": 0.45
+      "net_margin": 0.0764,
+      "asset_turnover": 0.1
     }
   ]
 }

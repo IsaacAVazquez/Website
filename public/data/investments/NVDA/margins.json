@@ -459,9 +459,9 @@
     {
       "symbol": "NVDA",
       "report_date": "2026-04-30",
-      "net_income_common_stockholders": 159613000000.0,
+      "net_income_common_stockholders": 58321000000.0,
       "total_revenue": 81615000000.0,
-      "net_margin": 1.9557
+      "net_margin": 0.7146
     }
   ],
   "annual_net": [
@@ -631,9 +631,9 @@
     {
       "symbol": "NVDA",
       "report_date": "2026-04-30",
-      "ebitda": 192970000000.0,
+      "ebitda": 71002000000.0,
       "total_revenue": 81615000000.0,
-      "ebitda_margin": 2.3644
+      "ebitda_margin": 0.87
     }
   ],
   "annual_ebitda": [
@@ -803,9 +803,9 @@
     {
       "symbol": "NVDA",
       "report_date": "2026-04-30",
-      "free_cash_flow": 119076000000.0,
+      "free_cash_flow": 48587000000.0,
       "total_revenue": 81615000000.0,
-      "fcf_margin": 1.459
+      "fcf_margin": 0.5953
     }
   ],
   "annual_fcf": [

@@ -93,11 +93,11 @@
     {
       "symbol": "WDAY",
       "report_date": "2026-04-30",
-      "net_income_common_stockholders": 847000000.0,
+      "net_income_common_stockholders": 222000000.0,
       "beginning_stockholders_equity": 7805000000.0,
       "ending_stockholders_equity": 6683000000.0,
       "avg_equity": 7244000000.0,
-      "roe": 0.1169
+      "roe": 0.0306
     }
   ],
   "roa": [
@@ -194,11 +194,11 @@
     {
       "symbol": "WDAY",
       "report_date": "2026-04-30",
-      "net_income_common_stockholders": 847000000.0,
+      "net_income_common_stockholders": 222000000.0,
       "beginning_total_assets": 18074000000.0,
       "ending_total_assets": 16091000000.0,
       "avg_assets": 17082500000.0,
-      "roa": 0.0496
+      "roa": 0.013
     }
   ],
   "roic": [
@@ -316,12 +316,12 @@
       "symbol": "WDAY",
       "report_date": "2026-04-30",
       "ebit": 381000000.0,
-      "tax_rate_for_calcs": 0.33,
-      "nopat": 255270000.0,
+      "tax_rate_for_calcs": 0.37,
+      "nopat": 240030000.0,
       "beginning_invested_capital": 10792000000.0,
       "ending_invested_capital": 9671000000.0,
       "avg_invested_capital": 10231500000.0,
-      "roic": 0.0249
+      "roic": 0.0235
     }
   ],
   "equityMultiplier": [
@@ -398,9 +398,9 @@
     {
       "symbol": "WDAY",
       "report_date": "2026-04-30T00:00:00.000",
-      "roe": 0.1169,
-      "roa": 0.0496,
-      "equity_multiplier": 2.36
+      "roe": 0.0306,
+      "roa": 0.013,
+      "equity_multiplier": 2.35
     }
   ],
   "assetTurnover": [
@@ -477,8 +477,8 @@
     {
       "symbol": "WDAY",
       "report_date": "2026-04-30T00:00:00.000",
-      "roa": 0.0496,
-      "net_margin": 0.3332,
+      "roa": 0.013,
+      "net_margin": 0.0873,
       "asset_turnover": 0.15
     }
   ]

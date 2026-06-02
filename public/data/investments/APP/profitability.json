@@ -282,13 +282,13 @@
     {
       "symbol": "APP",
       "report_date": "2025-06-30",
-      "ebit": 2919343000.0,
+      "ebit": 935413000.0,
       "tax_rate_for_calcs": 0.13,
-      "nopat": 2539828410.0,
+      "nopat": 813809310.0,
       "beginning_invested_capital": 4285385000.0,
       "ending_invested_capital": 4678085000.0,
       "avg_invested_capital": 4481735000.0,
-      "roic": 0.5667
+      "roic": 0.1816
     },
     {
       "symbol": "APP",
@@ -315,13 +315,13 @@
     {
       "symbol": "APP",
       "report_date": "2026-03-31",
-      "ebit": 4794999000.0,
+      "ebit": 1482567000.0,
       "tax_rate_for_calcs": 0.16,
-      "nopat": 4027799160.0,
+      "nopat": 1245356280.0,
       "beginning_invested_capital": 5647658000.0,
       "ending_invested_capital": 5877505000.0,
       "avg_invested_capital": 5762581500.0,
-      "roic": 0.699
+      "roic": 0.2161
     }
   ],
   "equityMultiplier": [
@@ -457,8 +457,8 @@
       "symbol": "APP",
       "report_date": "2025-06-30T00:00:00.000",
       "roa": 0.1405,
-      "net_margin": 0.1428,
-      "asset_turnover": 0.98
+      "net_margin": 0.6509,
+      "asset_turnover": 0.22
     },
     {
       "symbol": "APP",
@@ -478,8 +478,8 @@
       "symbol": "APP",
       "report_date": "2026-03-31T00:00:00.000",
       "roa": 0.1611,
-      "net_margin": 0.1956,
-      "asset_turnover": 0.82
+      "net_margin": 0.6544,
+      "asset_turnover": 0.25
     }
   ]
 }

@@ -17,7 +17,7 @@
     {
       "symbol": "ADBE",
       "report_date": "2022-11-30T00:00:00.000",
-      "revenue": 17606000000.0,
+      "revenue": 4525000000.0,
       "prev_year_revenue": null,
       "yoy_growth": null
     },
@@ -32,8 +32,8 @@
       "symbol": "ADBE",
       "report_date": "2023-11-30T00:00:00.000",
       "revenue": 5048000000.0,
-      "prev_year_revenue": 17606000000.0,
-      "yoy_growth": -0.7133
+      "prev_year_revenue": 4525000000.0,
+      "yoy_growth": 0.1156
     },
     {
       "symbol": "ADBE",
@@ -161,7 +161,7 @@
     {
       "symbol": "ADBE",
       "report_date": "2022-11-30T00:00:00.000",
-      "operating_income": 6098000000.0,
+      "operating_income": 1505000000.0,
       "prev_year_operating_income": null,
       "yoy_growth": null
     },
@@ -176,8 +176,8 @@
       "symbol": "ADBE",
       "report_date": "2023-11-30T00:00:00.000",
       "operating_income": 1743000000.0,
-      "prev_year_operating_income": 6098000000.0,
-      "yoy_growth": -0.7142
+      "prev_year_operating_income": 1505000000.0,
+      "yoy_growth": 0.1581
     },
     {
       "symbol": "ADBE",
@@ -298,7 +298,7 @@
     {
       "symbol": "ADBE",
       "report_date": "2022-11-30T00:00:00.000",
-      "ebitda": 6976000000.0,
+      "ebitda": 1760000000.0,
       "prev_year_ebitda": null,
       "yoy_growth": null
     },
@@ -313,8 +313,8 @@
       "symbol": "ADBE",
       "report_date": "2023-11-30T00:00:00.000",
       "ebitda": 2058000000.0,
-      "prev_year_ebitda": 6976000000.0,
-      "yoy_growth": -0.705
+      "prev_year_ebitda": 1760000000.0,
+      "yoy_growth": 0.1693
     },
     {
       "symbol": "ADBE",
@@ -375,9 +375,9 @@
     {
       "symbol": "ADBE",
       "report_date": "2026-02-28T00:00:00.000",
-      "ebitda": 10013000000.0,
+      "ebitda": 2659000000.0,
       "prev_year_ebitda": 2461000000.0,
-      "yoy_growth": 3.0687
+      "yoy_growth": 0.0805
     }
   ],
   "annual_ebitda": [
@@ -442,7 +442,7 @@
     {
       "symbol": "ADBE",
       "report_date": "2022-11-30T00:00:00.000",
-      "net_income_common_stockholders": 4756000000.0,
+      "net_income_common_stockholders": 1176000000.0,
       "prev_year_net_income_common_stockholders": null,
       "yoy_growth": null
     },
@@ -457,8 +457,8 @@
       "symbol": "ADBE",
       "report_date": "2023-11-30T00:00:00.000",
       "net_income_common_stockholders": 1483000000.0,
-      "prev_year_net_income_common_stockholders": 4756000000.0,
-      "yoy_growth": -0.6882
+      "prev_year_net_income_common_stockholders": 1176000000.0,
+      "yoy_growth": 0.2611
     },
     {
       "symbol": "ADBE",
@@ -519,9 +519,9 @@
     {
       "symbol": "ADBE",
       "report_date": "2026-02-28T00:00:00.000",
-      "net_income_common_stockholders": 7208000000.0,
+      "net_income_common_stockholders": 1889000000.0,
       "prev_year_net_income_common_stockholders": 1811000000.0,
-      "yoy_growth": 2.9801
+      "yoy_growth": 0.0431
     }
   ],
   "annual_net_income": [
@@ -578,13 +578,6 @@
     },
     {
       "symbol": "ADBE",
-      "report_date": "2022-11-30T00:00:00.000",
-      "free_cash_flow": 7396000000.0,
-      "prev_year_free_cash_flow": null,
-      "yoy_growth": null
-    },
-    {
-      "symbol": "ADBE",
       "report_date": "2023-08-31T00:00:00.000",
       "free_cash_flow": 1782000000.0,
       "prev_year_free_cash_flow": null,
@@ -594,8 +587,8 @@
       "symbol": "ADBE",
       "report_date": "2023-11-30T00:00:00.000",
       "free_cash_flow": 1550000000.0,
-      "prev_year_free_cash_flow": 7396000000.0,
-      "yoy_growth": -0.7904
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
     },
     {
       "symbol": "ADBE",
@@ -656,9 +649,9 @@
     {
       "symbol": "ADBE",
       "report_date": "2026-02-28T00:00:00.000",
-      "free_cash_flow": 10317000000.0,
+      "free_cash_flow": 2921000000.0,
       "prev_year_free_cash_flow": 2456000000.0,
-      "yoy_growth": 3.2007
+      "yoy_growth": 0.1893
     }
   ],
   "annual_fcf": [

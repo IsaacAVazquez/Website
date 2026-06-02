@@ -361,9 +361,9 @@
     {
       "symbol": "INTU",
       "report_date": "2026-04-30T00:00:00.000",
-      "ebitda": 6924000000.0,
+      "ebitda": 4327000000.0,
       "prev_year_ebitda": 3953000000.0,
-      "yoy_growth": 0.7516
+      "yoy_growth": 0.0946
     }
   ],
   "annual_ebitda": [
@@ -498,9 +498,9 @@
     {
       "symbol": "INTU",
       "report_date": "2026-04-30T00:00:00.000",
-      "net_income_common_stockholders": 4584000000.0,
+      "net_income_common_stockholders": 3064000000.0,
       "prev_year_net_income_common_stockholders": 2820000000.0,
-      "yoy_growth": 0.6255
+      "yoy_growth": 0.0865
     }
   ],
   "annual_net_income": [
@@ -649,9 +649,9 @@
     {
       "symbol": "INTU",
       "report_date": "2026-04-30T00:00:00.000",
-      "free_cash_flow": 7715000000.0,
+      "free_cash_flow": 5236000000.0,
       "prev_year_free_cash_flow": 4360000000.0,
-      "yoy_growth": 0.7695
+      "yoy_growth": 0.2009
     }
   ],
   "annual_fcf": [

@@ -282,13 +282,13 @@
     {
       "symbol": "NOW",
       "report_date": "2025-06-30",
-      "ebit": 2028000000.0,
+      "ebit": 477000000.0,
       "tax_rate_for_calcs": 0.18,
-      "nopat": 1662960000.0,
+      "nopat": 391140000.0,
       "beginning_invested_capital": 11629000000.0,
       "ending_invested_capital": 12422000000.0,
       "avg_invested_capital": 12025500000.0,
-      "roic": 0.1383
+      "roic": 0.0325
     },
     {
       "symbol": "NOW",
@@ -315,13 +315,13 @@
     {
       "symbol": "NOW",
       "report_date": "2026-03-31",
-      "ebit": 2402000000.0,
+      "ebit": 679000000.0,
       "tax_rate_for_calcs": 0.3,
-      "nopat": 1681400000.0,
+      "nopat": 475300000.0,
       "beginning_invested_capital": 14455000000.0,
       "ending_invested_capital": 13219000000.0,
       "avg_invested_capital": 13837000000.0,
-      "roic": 0.1215
+      "roic": 0.0343
     }
   ],
   "equityMultiplier": [
@@ -457,8 +457,8 @@
       "symbol": "NOW",
       "report_date": "2025-06-30T00:00:00.000",
       "roa": 0.0179,
-      "net_margin": 0.0319,
-      "asset_turnover": 0.56
+      "net_margin": 0.1198,
+      "asset_turnover": 0.15
     },
     {
       "symbol": "NOW",
@@ -478,8 +478,8 @@
       "symbol": "NOW",
       "report_date": "2026-03-31T00:00:00.000",
       "roa": 0.0186,
-      "net_margin": 0.0336,
-      "asset_turnover": 0.55
+      "net_margin": 0.1244,
+      "asset_turnover": 0.15
     }
   ]
 }

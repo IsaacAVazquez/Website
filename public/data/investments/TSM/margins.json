@@ -108,9 +108,9 @@
     {
       "symbol": "TSM",
       "report_date": "2026-03-31",
-      "gross_profit": 2539194345000.0,
-      "total_revenue": 4103904076000.0,
-      "gross_margin": 0.6187
+      "gross_profit": 751295421000.0,
+      "total_revenue": 1134103440000.0,
+      "gross_margin": 0.6625
     }
   ],
   "annual_gross": [
@@ -252,7 +252,7 @@
     {
       "symbol": "TSM",
       "report_date": "2025-06-30",
-      "operating_income": 463423000000.0,
+      "operating_income": 463440498000.0,
       "total_revenue": 933791869000.0,
       "operating_margin": 0.4963
     },
@@ -274,8 +274,8 @@
       "symbol": "TSM",
       "report_date": "2026-03-31",
       "operating_income": 658948859000.0,
-      "total_revenue": 4103904076000.0,
-      "operating_margin": 0.1606
+      "total_revenue": 1134103440000.0,
+      "operating_margin": 0.581
     }
   ],
   "annual_operating": [
@@ -438,9 +438,9 @@
     {
       "symbol": "TSM",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 1908519624000.0,
-      "total_revenue": 4103904076000.0,
-      "net_margin": 0.465
+      "net_income_common_stockholders": 572479752000.0,
+      "total_revenue": 1134103440000.0,
+      "net_margin": 0.5048
     }
   ],
   "annual_net": [
@@ -575,9 +575,9 @@
     {
       "symbol": "TSM",
       "report_date": "2025-03-31",
-      "ebitda": 2259579144000.0,
+      "ebitda": 608711765000.0,
       "total_revenue": 839253664000.0,
-      "ebitda_margin": 2.6924
+      "ebitda_margin": 0.7253
     },
     {
       "symbol": "TSM",
@@ -603,9 +603,9 @@
     {
       "symbol": "TSM",
       "report_date": "2026-03-31",
-      "ebitda": 2989376721000.0,
-      "total_revenue": 4103904076000.0,
-      "ebitda_margin": 0.7284
+      "ebitda": 855966986000.0,
+      "total_revenue": 1134103440000.0,
+      "ebitda_margin": 0.7548
     }
   ],
   "annual_ebitda": [
@@ -769,8 +769,8 @@
       "symbol": "TSM",
       "report_date": "2026-03-31",
       "free_cash_flow": 347270237000.0,
-      "total_revenue": 4103904076000.0,
-      "fcf_margin": 0.0846
+      "total_revenue": 1134103440000.0,
+      "fcf_margin": 0.3062
     }
   ],
   "annual_fcf": [

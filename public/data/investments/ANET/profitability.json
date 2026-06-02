@@ -66,11 +66,11 @@
     {
       "symbol": "ANET",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 3251554000.0,
+      "net_income_common_stockholders": 888800000.0,
       "beginning_stockholders_equity": 10119100000.0,
       "ending_stockholders_equity": 10901600000.0,
       "avg_equity": 10510350000.0,
-      "roe": 0.3094
+      "roe": 0.0846
     },
     {
       "symbol": "ANET",
@@ -93,11 +93,11 @@
     {
       "symbol": "ANET",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 3720500000.0,
+      "net_income_common_stockholders": 1022900000.0,
       "beginning_stockholders_equity": 12370500000.0,
       "ending_stockholders_equity": 13487100000.0,
       "avg_equity": 12928800000.0,
-      "roe": 0.2878
+      "roe": 0.0791
     }
   ],
   "roa": [
@@ -167,11 +167,11 @@
     {
       "symbol": "ANET",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 3251554000.0,
+      "net_income_common_stockholders": 888800000.0,
       "beginning_total_assets": 14514600000.0,
       "ending_total_assets": 16534200000.0,
       "avg_assets": 15524400000.0,
-      "roa": 0.2094
+      "roa": 0.0573
     },
     {
       "symbol": "ANET",
@@ -194,11 +194,11 @@
     {
       "symbol": "ANET",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 3720500000.0,
+      "net_income_common_stockholders": 1022900000.0,
       "beginning_total_assets": 19448600000.0,
       "ending_total_assets": 21656500000.0,
       "avg_assets": 20552550000.0,
-      "roa": 0.181
+      "roa": 0.0498
     }
   ],
   "roic": [
@@ -282,13 +282,13 @@
     {
       "symbol": "ANET",
       "report_date": "2025-06-30",
-      "ebit": 3429916000.0,
-      "tax_rate_for_calcs": 0.15,
-      "nopat": 2915428600.0,
+      "ebit": 986200000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 808684000.0,
       "beginning_invested_capital": 10119100000.0,
       "ending_invested_capital": 10901600000.0,
       "avg_invested_capital": 10510350000.0,
-      "roic": 0.2774
+      "roic": 0.0769
     },
     {
       "symbol": "ANET",
@@ -315,13 +315,13 @@
     {
       "symbol": "ANET",
       "report_date": "2026-03-31",
-      "ebit": 4155100000.0,
-      "tax_rate_for_calcs": 0.19,
-      "nopat": 3365631000.0,
+      "ebit": 1157800000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 926240000.0,
       "beginning_invested_capital": 12370500000.0,
       "ending_invested_capital": 13487100000.0,
       "avg_invested_capital": 12928800000.0,
-      "roic": 0.2603
+      "roic": 0.0716
     }
   ],
   "equityMultiplier": [
@@ -377,8 +377,8 @@
     {
       "symbol": "ANET",
       "report_date": "2025-06-30T00:00:00.000",
-      "roe": 0.3094,
-      "roa": 0.2094,
+      "roe": 0.0846,
+      "roa": 0.0573,
       "equity_multiplier": 1.48
     },
     {
@@ -398,8 +398,8 @@
     {
       "symbol": "ANET",
       "report_date": "2026-03-31T00:00:00.000",
-      "roe": 0.2878,
-      "roa": 0.181,
+      "roe": 0.0791,
+      "roa": 0.0498,
       "equity_multiplier": 1.59
     }
   ],
@@ -456,8 +456,8 @@
     {
       "symbol": "ANET",
       "report_date": "2025-06-30T00:00:00.000",
-      "roa": 0.2094,
-      "net_margin": 1.4748,
+      "roa": 0.0573,
+      "net_margin": 0.4031,
       "asset_turnover": 0.14
     },
     {
@@ -477,8 +477,8 @@
     {
       "symbol": "ANET",
       "report_date": "2026-03-31T00:00:00.000",
-      "roa": 0.181,
-      "net_margin": 1.3734,
+      "roa": 0.0498,
+      "net_margin": 0.3776,
       "asset_turnover": 0.13
     }
   ]

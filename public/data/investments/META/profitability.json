@@ -282,13 +282,13 @@
     {
       "symbol": "META",
       "report_date": "2025-06-30",
-      "ebit": 81231000000.0,
+      "ebit": 20775000000.0,
       "tax_rate_for_calcs": 0.11,
-      "nopat": 72295590000.0,
+      "nopat": 18489750000.0,
       "beginning_invested_capital": 213858000000.0,
       "ending_invested_capital": 223902000000.0,
       "avg_invested_capital": 218880000000.0,
-      "roic": 0.3303
+      "roic": 0.0845
     },
     {
       "symbol": "META",
@@ -315,13 +315,13 @@
     {
       "symbol": "META",
       "report_date": "2026-03-31",
-      "ebit": 90789000000.0,
+      "ebit": 22314000000.0,
       "tax_rate_for_calcs": 0.4,
-      "nopat": 54473400000.0,
+      "nopat": 13388400000.0,
       "beginning_invested_capital": 275987000000.0,
       "ending_invested_capital": 302429000000.0,
       "avg_invested_capital": 289208000000.0,
-      "roic": 0.1884
+      "roic": 0.0463
     }
   ],
   "equityMultiplier": [

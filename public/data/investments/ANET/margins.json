@@ -87,9 +87,9 @@
     {
       "symbol": "ANET",
       "report_date": "2025-06-30",
-      "gross_profit": 5107403000.0,
+      "gross_profit": 1438600000.0,
       "total_revenue": 2204800000.0,
-      "gross_margin": 2.3165
+      "gross_margin": 0.6525
     },
     {
       "symbol": "ANET",
@@ -108,9 +108,9 @@
     {
       "symbol": "ANET",
       "report_date": "2026-03-31",
-      "gross_profit": 6169400000.0,
+      "gross_profit": 1676800000.0,
       "total_revenue": 2709000000.0,
-      "gross_margin": 2.2774
+      "gross_margin": 0.619
     }
   ],
   "annual_gross": [
@@ -417,9 +417,9 @@
     {
       "symbol": "ANET",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 3251554000.0,
+      "net_income_common_stockholders": 888800000.0,
       "total_revenue": 2204800000.0,
-      "net_margin": 1.4748
+      "net_margin": 0.4031
     },
     {
       "symbol": "ANET",
@@ -438,9 +438,9 @@
     {
       "symbol": "ANET",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 3720500000.0,
+      "net_income_common_stockholders": 1022900000.0,
       "total_revenue": 2709000000.0,
-      "net_margin": 1.3734
+      "net_margin": 0.3776
     }
   ],
   "annual_net": [
@@ -747,9 +747,9 @@
     {
       "symbol": "ANET",
       "report_date": "2025-06-30",
-      "free_cash_flow": 3975403000.0,
+      "free_cash_flow": 1176100000.0,
       "total_revenue": 2204800000.0,
-      "fcf_margin": 1.8031
+      "fcf_margin": 0.5334
     },
     {
       "symbol": "ANET",
@@ -768,9 +768,9 @@
     {
       "symbol": "ANET",
       "report_date": "2026-03-31",
-      "free_cash_flow": 5278100000.0,
+      "free_cash_flow": 1639000000.0,
       "total_revenue": 2709000000.0,
-      "fcf_margin": 1.9484
+      "fcf_margin": 0.605
     }
   ],
   "annual_fcf": [

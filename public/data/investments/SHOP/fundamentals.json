@@ -22540,6 +22540,22 @@
       "close_price": 106.6,
       "ttm_eps": 1.0172,
       "ttm_pe": 104.8
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-05-28T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 115.03,
+      "ttm_eps": 1.0172,
+      "ttm_pe": 113.08
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-05-29T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 118.71,
+      "ttm_eps": 1.0172,
+      "ttm_pe": 116.7
     }
   ],
   "marketCap": [
@@ -44710,6 +44726,22 @@
       "close_price": 106.6,
       "shares_outstanding": 1297654600,
       "market_capitalization": 138329980360.0
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-05-28T00:00:00.000",
+      "shares_report_date": "2026-05-01T00:00:00.000",
+      "close_price": 115.03,
+      "shares_outstanding": 1297654600,
+      "market_capitalization": 149269208638.0
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-05-29T00:00:00.000",
+      "shares_report_date": "2026-05-01T00:00:00.000",
+      "close_price": 118.71,
+      "shares_outstanding": 1297654600,
+      "market_capitalization": 154044577566.0
     }
   ],
   "psRatio": [
@@ -47838,2290 +47870,2310 @@
       "report_date": "2025-06-30T00:00:00.000",
       "market_capitalization": 149882121870.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 8.64
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 14.97
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-07-01T00:00:00.000",
       "market_capitalization": 146399815094.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 8.44
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 14.62
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-07-02T00:00:00.000",
       "market_capitalization": 149128488314.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 8.6
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 14.89
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-07-03T00:00:00.000",
       "market_capitalization": 151402382664.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 8.73
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 15.12
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-07-07T00:00:00.000",
       "market_capitalization": 151584294212.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 8.74
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 15.14
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-07-08T00:00:00.000",
       "market_capitalization": 146152935136.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 8.42
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 14.59
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-07-09T00:00:00.000",
       "market_capitalization": 148543772624.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 8.56
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 14.83
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-07-10T00:00:00.000",
       "market_capitalization": 149635241912.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 8.63
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 14.94
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-07-11T00:00:00.000",
       "market_capitalization": 145672168902.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 8.4
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 14.55
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-07-14T00:00:00.000",
       "market_capitalization": 151688243668.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 8.74
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 15.15
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-07-15T00:00:00.000",
       "market_capitalization": 149492311410.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 8.62
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 14.93
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-07-16T00:00:00.000",
       "market_capitalization": 155924184000.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 8.99
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 15.57
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-07-17T00:00:00.000",
       "market_capitalization": 164694919350.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 9.49
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 16.45
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-07-18T00:00:00.000",
       "market_capitalization": 165110717174.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 9.52
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 16.49
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-07-21T00:00:00.000",
       "market_capitalization": 166877857926.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 9.62
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 16.66
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-07-22T00:00:00.000",
       "market_capitalization": 160744840022.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 9.27
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 16.05
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-07-23T00:00:00.000",
       "market_capitalization": 158795787722.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 9.15
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 15.86
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-07-24T00:00:00.000",
       "market_capitalization": 158626869856.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 9.14
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 15.84
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-07-25T00:00:00.000",
       "market_capitalization": 161680385126.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 9.32
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 16.15
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-07-28T00:00:00.000",
       "market_capitalization": 164811862488.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 9.5
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 16.46
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-07-29T00:00:00.000",
       "market_capitalization": 162226119770.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 9.35
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 16.2
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-07-30T00:00:00.000",
       "market_capitalization": 159835282282.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 9.21
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 15.96
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-07-31T00:00:00.000",
       "market_capitalization": 158795787722.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 9.15
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 15.86
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-08-01T00:00:00.000",
       "market_capitalization": 154139770880.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 8.89
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 15.39
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-08-04T00:00:00.000",
       "market_capitalization": 162730528768.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 9.38
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 16.25
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-08-05T00:00:00.000",
       "market_capitalization": 165056921600.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 9.51
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 16.48
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-08-06T00:00:00.000",
       "market_capitalization": 201317457920.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 11.6
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 20.1
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-08-07T00:00:00.000",
       "market_capitalization": 196339757056.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 11.32
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 19.61
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-08-08T00:00:00.000",
       "market_capitalization": 194442252288.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 11.21
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 19.42
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-08-11T00:00:00.000",
       "market_capitalization": 191699968000.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 11.05
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 19.14
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-08-12T00:00:00.000",
       "market_capitalization": 194039357440.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 11.19
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 19.38
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-08-13T00:00:00.000",
       "market_capitalization": 195066089472.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 11.24
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 19.48
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-08-14T00:00:00.000",
       "market_capitalization": 187502063616.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 10.81
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 18.72
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-08-15T00:00:00.000",
       "market_capitalization": 183863013376.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 10.6
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 18.36
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-08-18T00:00:00.000",
       "market_capitalization": 185994457088.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 10.72
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 18.57
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-08-19T00:00:00.000",
       "market_capitalization": 180977766400.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 10.43
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 18.07
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-08-20T00:00:00.000",
       "market_capitalization": 178430431232.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 10.29
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 17.82
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-08-21T00:00:00.000",
       "market_capitalization": 177637638144.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 10.24
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 17.74
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-08-22T00:00:00.000",
       "market_capitalization": 184694796288.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 10.65
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 18.44
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-08-25T00:00:00.000",
       "market_capitalization": 182641332224.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 10.53
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 18.24
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-08-26T00:00:00.000",
       "market_capitalization": 183057223680.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 10.55
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 18.28
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-08-27T00:00:00.000",
       "market_capitalization": 181809549312.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 10.48
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 18.16
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-08-28T00:00:00.000",
       "market_capitalization": 183953989632.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 10.6
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 18.37
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-08-29T00:00:00.000",
       "market_capitalization": 183616077824.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 10.58
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 18.34
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-09-02T00:00:00.000",
       "market_capitalization": 180704837632.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 10.42
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 18.05
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-09-03T00:00:00.000",
       "market_capitalization": 182238437376.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 10.5
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 18.2
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-09-04T00:00:00.000",
       "market_capitalization": 188645765120.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 10.87
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 18.84
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-09-05T00:00:00.000",
       "market_capitalization": 190816198656.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 11.0
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 19.05
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-09-08T00:00:00.000",
       "market_capitalization": 190036402176.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 10.95
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 18.98
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-09-09T00:00:00.000",
       "market_capitalization": 186423345152.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 10.75
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 18.62
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-09-10T00:00:00.000",
       "market_capitalization": 184811765760.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 10.65
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 18.46
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-09-11T00:00:00.000",
       "market_capitalization": 188489805824.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 10.87
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 18.82
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-09-12T00:00:00.000",
       "market_capitalization": 186345365504.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 10.74
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 18.61
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-09-15T00:00:00.000",
       "market_capitalization": 192206835712.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 11.08
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 19.19
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-09-16T00:00:00.000",
       "market_capitalization": 191323066368.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 11.03
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 19.11
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-09-17T00:00:00.000",
       "market_capitalization": 192180842496.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 11.08
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 19.19
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-09-18T00:00:00.000",
       "market_capitalization": 197691404288.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 11.4
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 19.74
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-09-19T00:00:00.000",
       "market_capitalization": 199238000640.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 11.48
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 19.9
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-09-22T00:00:00.000",
       "market_capitalization": 204202704896.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 11.77
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 20.39
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-09-23T00:00:00.000",
       "market_capitalization": 194871140352.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 11.23
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 19.46
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-09-24T00:00:00.000",
       "market_capitalization": 193428516864.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 11.15
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 19.32
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-09-25T00:00:00.000",
       "market_capitalization": 186436341760.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 10.75
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 18.62
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-09-26T00:00:00.000",
       "market_capitalization": 182277427200.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 10.51
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 18.2
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-09-29T00:00:00.000",
       "market_capitalization": 193649459200.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 17348000000.0,
+      "ttm_revenue": 10014000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 17348000000.0,
-      "ps_ratio": 11.16
+      "ttm_revenue_usd": 10014000000.0,
+      "ps_ratio": 19.34
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-09-30T00:00:00.000",
       "market_capitalization": 193383384271.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 10.73
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 18.08
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-10-01T00:00:00.000",
       "market_capitalization": 194632614127.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 10.79
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 18.2
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-10-02T00:00:00.000",
       "market_capitalization": 196883830430.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 10.92
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 18.41
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-10-03T00:00:00.000",
       "market_capitalization": 209688436454.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 11.63
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 19.6
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-10-06T00:00:00.000",
       "market_capitalization": 214060740950.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 11.87
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 20.01
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-10-07T00:00:00.000",
       "market_capitalization": 209870615808.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 11.64
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 19.62
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-10-08T00:00:00.000",
       "market_capitalization": 216572213473.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 12.01
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 20.25
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-10-09T00:00:00.000",
       "market_capitalization": 213240933857.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 11.83
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 19.94
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-10-10T00:00:00.000",
       "market_capitalization": 196519471722.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 10.9
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 18.37
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-10-13T00:00:00.000",
       "market_capitalization": 199954853826.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 11.09
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 18.69
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-10-14T00:00:00.000",
       "market_capitalization": 198939854568.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 11.03
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 18.6
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-10-15T00:00:00.000",
       "market_capitalization": 203273120631.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 11.27
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 19.0
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-10-16T00:00:00.000",
       "market_capitalization": 203741581827.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 11.3
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 19.05
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-10-17T00:00:00.000",
       "market_capitalization": 205290106336.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 11.39
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 19.19
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-10-20T00:00:00.000",
       "market_capitalization": 214334009981.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 11.89
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 20.04
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-10-21T00:00:00.000",
       "market_capitalization": 211640358104.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 11.74
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 19.79
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-10-22T00:00:00.000",
       "market_capitalization": 210820551011.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 11.69
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 19.71
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-10-23T00:00:00.000",
       "market_capitalization": 217352982133.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 12.06
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 20.32
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-10-24T00:00:00.000",
       "market_capitalization": 225056566245.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 12.48
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 21.04
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-10-27T00:00:00.000",
       "market_capitalization": 227802269366.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 12.63
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 21.3
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-10-28T00:00:00.000",
       "market_capitalization": 232877265656.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 12.92
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 21.77
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-10-29T00:00:00.000",
       "market_capitalization": 233042897529.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 12.93
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 21.79
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-10-30T00:00:00.000",
       "market_capitalization": 226012945869.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 12.54
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 21.13
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-10-31T00:00:00.000",
       "market_capitalization": 226338406594.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 12.55
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 21.16
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-11-03T00:00:00.000",
       "market_capitalization": 225140711126.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 12.49
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 21.05
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-11-04T00:00:00.000",
       "market_capitalization": 209518596326.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 11.62
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 19.59
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-11-05T00:00:00.000",
       "market_capitalization": 212096245268.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 11.76
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 19.83
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-11-06T00:00:00.000",
       "market_capitalization": 203152584545.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 11.27
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 18.99
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-11-07T00:00:00.000",
       "market_capitalization": 198413876389.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 11.0
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 18.55
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-11-10T00:00:00.000",
       "market_capitalization": 206836799952.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 11.47
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 19.34
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-11-11T00:00:00.000",
       "market_capitalization": 206914910526.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 11.48
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 19.35
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-11-12T00:00:00.000",
       "market_capitalization": 203855579711.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 11.31
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 19.06
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-11-13T00:00:00.000",
       "market_capitalization": 190511689986.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 10.57
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 17.81
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-11-14T00:00:00.000",
       "market_capitalization": 190121137116.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 10.54
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 17.77
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-11-17T00:00:00.000",
       "market_capitalization": 182166876997.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 10.1
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 17.03
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-11-18T00:00:00.000",
       "market_capitalization": 182843835305.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 10.14
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 17.09
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-11-19T00:00:00.000",
       "market_capitalization": 190069063400.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 10.54
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 17.77
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-11-20T00:00:00.000",
       "market_capitalization": 188194409624.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 10.44
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 17.59
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-11-21T00:00:00.000",
       "market_capitalization": 192412380620.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 10.67
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 17.99
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-11-24T00:00:00.000",
       "market_capitalization": 202189220799.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 11.21
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 18.9
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-11-25T00:00:00.000",
       "market_capitalization": 204871017173.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 11.36
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 19.15
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-11-26T00:00:00.000",
       "market_capitalization": 207435647686.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 11.51
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 19.39
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-11-28T00:00:00.000",
       "market_capitalization": 206524357656.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 11.45
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 19.31
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-12-01T00:00:00.000",
       "market_capitalization": 194339108112.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 10.78
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 18.17
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-12-02T00:00:00.000",
       "market_capitalization": 204168022007.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 11.32
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 19.09
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-12-03T00:00:00.000",
       "market_capitalization": 208294864000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 11.55
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 19.47
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-12-04T00:00:00.000",
       "market_capitalization": 211302121099.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 11.72
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 19.76
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-12-05T00:00:00.000",
       "market_capitalization": 209700854332.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 11.63
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 19.61
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-12-08T00:00:00.000",
       "market_capitalization": 206224933789.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 11.44
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 19.28
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-12-09T00:00:00.000",
       "market_capitalization": 208151661281.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 11.54
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 19.46
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-12-10T00:00:00.000",
       "market_capitalization": 219256381218.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 12.16
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 20.5
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-12-11T00:00:00.000",
       "market_capitalization": 214478617775.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 11.9
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 20.05
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-12-12T00:00:00.000",
       "market_capitalization": 213749585751.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 11.86
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 19.98
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-12-15T00:00:00.000",
       "market_capitalization": 208099587565.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 11.54
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 19.46
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-12-16T00:00:00.000",
       "market_capitalization": 212382650706.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 11.78
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 19.86
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-12-17T00:00:00.000",
       "market_capitalization": 210547052217.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 11.68
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 19.68
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-12-18T00:00:00.000",
       "market_capitalization": 217147395720.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 12.04
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 20.3
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-12-19T00:00:00.000",
       "market_capitalization": 220753500553.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 12.24
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 20.64
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-12-22T00:00:00.000",
       "market_capitalization": 220883684843.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 12.25
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 20.65
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-12-23T00:00:00.000",
       "market_capitalization": 220701426837.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 12.24
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 20.63
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-12-24T00:00:00.000",
       "market_capitalization": 220597279405.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 12.24
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 20.62
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-12-26T00:00:00.000",
       "market_capitalization": 222393822607.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 12.33
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 20.79
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-12-29T00:00:00.000",
       "market_capitalization": 218553386052.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 12.12
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 20.43
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-12-30T00:00:00.000",
       "market_capitalization": 213163756446.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 18030000000.0,
+      "ttm_revenue": 10696000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18030000000.0,
-      "ps_ratio": 11.82
+      "ttm_revenue_usd": 10696000000.0,
+      "ps_ratio": 19.93
     },
     {
       "symbol": "SHOP",
       "report_date": "2025-12-31T00:00:00.000",
       "market_capitalization": 209889475171.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 11.11
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 18.16
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-01-02T00:00:00.000",
       "market_capitalization": 204973755960.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 10.85
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 17.74
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-01-05T00:00:00.000",
       "market_capitalization": 216721933703.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 11.47
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 18.75
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-01-06T00:00:00.000",
       "market_capitalization": 219642679335.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 11.63
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 19.01
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-01-07T00:00:00.000",
       "market_capitalization": 217413002982.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 11.51
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 18.81
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-01-08T00:00:00.000",
       "market_capitalization": 219421015604.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 11.62
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 18.99
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-01-09T00:00:00.000",
       "market_capitalization": 214466179264.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 11.35
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 18.56
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-01-12T00:00:00.000",
       "market_capitalization": 218964649099.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 11.59
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 18.95
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-01-13T00:00:00.000",
       "market_capitalization": 218325735992.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 11.56
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 18.89
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-01-14T00:00:00.000",
       "market_capitalization": 205377966293.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 10.87
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 17.77
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-01-15T00:00:00.000",
       "market_capitalization": 206003840357.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 10.91
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 17.83
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-01-16T00:00:00.000",
       "market_capitalization": 203161328983.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 10.75
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 17.58
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-01-20T00:00:00.000",
       "market_capitalization": 188414171350.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 9.97
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 16.3
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-01-21T00:00:00.000",
       "market_capitalization": 180642901722.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 9.56
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 15.63
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-01-22T00:00:00.000",
       "market_capitalization": 179469387852.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 9.5
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 15.53
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-01-23T00:00:00.000",
       "market_capitalization": 179795363927.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 9.52
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 15.56
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-01-26T00:00:00.000",
       "market_capitalization": 177735195133.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 9.41
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 15.38
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-01-27T00:00:00.000",
       "market_capitalization": 179286841250.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 9.49
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 15.51
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-01-28T00:00:00.000",
       "market_capitalization": 181139899584.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 9.59
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 15.67
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-01-29T00:00:00.000",
       "market_capitalization": 187294379328.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 9.92
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 16.21
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-01-30T00:00:00.000",
       "market_capitalization": 171112791696.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 9.06
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 14.81
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-02-02T00:00:00.000",
       "market_capitalization": 172377589440.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 9.13
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 14.92
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-02-03T00:00:00.000",
       "market_capitalization": 155544044208.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 8.23
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 13.46
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-02-04T00:00:00.000",
       "market_capitalization": 148672411104.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 7.87
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 12.87
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-02-05T00:00:00.000",
       "market_capitalization": 145047526848.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 7.68
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 12.55
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-02-06T00:00:00.000",
       "market_capitalization": 146125682370.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 7.74
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 12.65
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-02-09T00:00:00.000",
       "market_capitalization": 154406789760.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 8.17
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 13.36
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-02-10T00:00:00.000",
       "market_capitalization": 165935134536.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 8.78
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 14.36
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-02-11T00:00:00.000",
       "market_capitalization": 154811064294.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 8.2
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 13.4
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-02-12T00:00:00.000",
       "market_capitalization": 144312967524.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 7.64
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 12.49
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-02-13T00:00:00.000",
       "market_capitalization": 146973354780.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 7.78
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 12.72
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-02-17T00:00:00.000",
       "market_capitalization": 148068808356.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 7.84
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 12.81
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-02-18T00:00:00.000",
       "market_capitalization": 158632110696.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 8.4
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 13.73
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-02-19T00:00:00.000",
       "market_capitalization": 161448991320.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 8.55
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 13.97
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-02-20T00:00:00.000",
       "market_capitalization": 164578858680.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 8.71
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 14.24
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-02-23T00:00:00.000",
       "market_capitalization": 152946184992.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 8.1
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 13.24
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-02-24T00:00:00.000",
       "market_capitalization": 152489746002.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 8.07
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 13.2
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-02-25T00:00:00.000",
       "market_capitalization": 156897642534.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 8.31
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 13.58
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-02-26T00:00:00.000",
       "market_capitalization": 164239789716.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 8.69
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 14.21
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-02-27T00:00:00.000",
       "market_capitalization": 157445369322.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 8.33
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 13.62
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-03-02T00:00:00.000",
       "market_capitalization": 155684818932.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 8.24
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 13.47
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-03-03T00:00:00.000",
       "market_capitalization": 158932056318.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 8.41
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 13.75
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-03-04T00:00:00.000",
       "market_capitalization": 169078043010.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 8.95
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 14.63
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-03-05T00:00:00.000",
       "market_capitalization": 175781175606.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 9.31
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 15.21
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-03-06T00:00:00.000",
       "market_capitalization": 169795304280.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 8.99
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 14.69
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-03-09T00:00:00.000",
       "market_capitalization": 174098871900.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 9.22
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 15.07
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-03-10T00:00:00.000",
       "market_capitalization": 168699850704.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 8.93
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 14.6
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-03-11T00:00:00.000",
       "market_capitalization": 168908508528.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 8.94
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 14.62
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-03-12T00:00:00.000",
       "market_capitalization": 164539735338.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 8.71
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 14.24
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-03-13T00:00:00.000",
       "market_capitalization": 160353537744.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 8.49
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 13.88
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-03-16T00:00:00.000",
       "market_capitalization": 165074421012.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 8.74
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 14.28
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-03-17T00:00:00.000",
       "market_capitalization": 166665436920.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 8.82
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 14.42
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-03-18T00:00:00.000",
       "market_capitalization": 161383785750.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 8.54
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 13.97
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-03-19T00:00:00.000",
       "market_capitalization": 159584112018.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 8.45
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 13.81
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-03-20T00:00:00.000",
       "market_capitalization": 152294129292.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 8.06
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 13.18
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-03-23T00:00:00.000",
       "market_capitalization": 157927890540.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 8.36
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 13.67
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-03-24T00:00:00.000",
       "market_capitalization": 151472539110.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 8.02
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 13.11
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-03-25T00:00:00.000",
       "market_capitalization": 154432871988.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 8.18
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 13.36
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-03-26T00:00:00.000",
       "market_capitalization": 150533578902.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 7.97
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 13.03
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-03-27T00:00:00.000",
       "market_capitalization": 145864860090.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 7.72
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 12.62
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-03-30T00:00:00.000",
       "market_capitalization": 145760531178.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 18890000000.0,
+      "ttm_revenue": 11556000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 18890000000.0,
-      "ps_ratio": 7.72
+      "ttm_revenue_usd": 11556000000.0,
+      "ps_ratio": 12.61
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-03-31T00:00:00.000",
       "market_capitalization": 154298404980.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 5.34
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 12.48
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-04-01T00:00:00.000",
       "market_capitalization": 154168327080.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 5.34
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 12.47
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-04-02T00:00:00.000",
       "market_capitalization": 153817116750.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 5.32
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 12.44
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-04-06T00:00:00.000",
       "market_capitalization": 154532545200.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 5.35
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 12.5
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-04-07T00:00:00.000",
       "market_capitalization": 152293561632.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 5.27
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 12.32
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-04-08T00:00:00.000",
       "market_capitalization": 156248562720.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 5.41
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 12.64
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-04-09T00:00:00.000",
       "market_capitalization": 146204941536.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 5.06
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 11.82
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-04-10T00:00:00.000",
       "market_capitalization": 144136371888.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 4.99
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 11.66
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-04-13T00:00:00.000",
       "market_capitalization": 149574498384.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 5.18
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 12.1
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-04-14T00:00:00.000",
       "market_capitalization": 153048134208.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 5.3
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 12.38
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-04-15T00:00:00.000",
       "market_capitalization": 165758779152.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 5.74
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 13.4
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-04-16T00:00:00.000",
       "market_capitalization": 165147315168.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 5.72
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 13.35
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-04-17T00:00:00.000",
       "market_capitalization": 170624471280.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 5.9
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 13.8
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-04-20T00:00:00.000",
       "market_capitalization": 175815410208.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 6.08
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 14.22
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-04-21T00:00:00.000",
       "market_capitalization": 170256031767.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 5.89
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 13.77
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-04-22T00:00:00.000",
       "market_capitalization": 171333683764.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 5.93
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 13.86
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-04-23T00:00:00.000",
       "market_capitalization": 161297238057.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 5.58
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 13.04
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-04-24T00:00:00.000",
       "market_capitalization": 163374639497.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 5.65
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 13.21
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-04-27T00:00:00.000",
       "market_capitalization": 161297238057.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 5.58
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 13.04
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-04-28T00:00:00.000",
       "market_capitalization": 158466778595.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 5.48
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 12.81
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-04-29T00:00:00.000",
       "market_capitalization": 157441061634.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 5.45
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 12.73
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-04-30T00:00:00.000",
       "market_capitalization": 157272272767.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 5.44
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 12.72
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-05-01T00:00:00.000",
       "market_capitalization": 165671562782.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 5.73
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 13.4
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-05-04T00:00:00.000",
       "market_capitalization": 165515844230.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 5.73
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 13.38
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-05-05T00:00:00.000",
       "market_capitalization": 139666564598.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 4.83
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 11.29
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-05-06T00:00:00.000",
       "market_capitalization": 136824701024.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 4.74
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 11.06
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-05-07T00:00:00.000",
       "market_capitalization": 144999925004.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 5.02
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 11.73
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-05-08T00:00:00.000",
       "market_capitalization": 143274044386.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 4.96
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 11.59
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-05-11T00:00:00.000",
       "market_capitalization": 133061502684.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 4.6
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 10.76
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-05-12T00:00:00.000",
       "market_capitalization": 129557835264.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 4.48
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 10.48
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-05-13T00:00:00.000",
       "market_capitalization": 123796248840.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 4.28
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 10.01
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-05-14T00:00:00.000",
       "market_capitalization": 126417511132.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 4.37
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 10.22
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-05-15T00:00:00.000",
       "market_capitalization": 130128803288.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 4.5
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 10.52
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-05-18T00:00:00.000",
       "market_capitalization": 132866854494.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 4.6
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 10.74
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-05-19T00:00:00.000",
       "market_capitalization": 131076091146.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 4.54
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 10.6
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-05-20T00:00:00.000",
       "market_capitalization": 136266709546.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 4.72
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 11.02
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-05-21T00:00:00.000",
       "market_capitalization": 136072061356.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 4.71
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 11.0
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-05-22T00:00:00.000",
       "market_capitalization": 133658423800.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 4.63
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 10.81
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-05-26T00:00:00.000",
       "market_capitalization": 136123967540.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 4.71
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 11.01
     },
     {
       "symbol": "SHOP",
       "report_date": "2026-05-27T00:00:00.000",
       "market_capitalization": 138329980360.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 28896000000.0,
+      "ttm_revenue": 12366000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 28896000000.0,
-      "ps_ratio": 4.79
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 11.19
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-05-28T00:00:00.000",
+      "market_capitalization": 149269208638.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 12366000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 12.07
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-05-29T00:00:00.000",
+      "market_capitalization": 154044577566.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 12366000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 12.46
     }
   ],
   "pbRatio": [
@@ -59924,6 +59976,26 @@
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 12501000000.0,
       "pb_ratio": 11.07
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-05-28T00:00:00.000",
+      "market_capitalization": 149269208638.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 12501000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 12501000000.0,
+      "pb_ratio": 11.94
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-05-29T00:00:00.000",
+      "market_capitalization": 154044577566.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 12501000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 12501000000.0,
+      "pb_ratio": 12.32
     }
   ],
   "pegRatio": [
@@ -69716,6 +69788,26 @@
       "ttm_pe": 104.8,
       "eps_yoy_growth": 0.1533,
       "peg_ratio": 6.84
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-05-28T00:00:00.000",
+      "close_price": 115.03,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 1.0172,
+      "ttm_pe": 113.08,
+      "eps_yoy_growth": 0.1533,
+      "peg_ratio": 7.38
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-05-29T00:00:00.000",
+      "close_price": 118.71,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 1.0172,
+      "ttm_pe": 116.7,
+      "eps_yoy_growth": 0.1533,
+      "peg_ratio": 7.61
     }
   ]
 }

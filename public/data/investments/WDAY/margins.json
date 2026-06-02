@@ -459,9 +459,9 @@
     {
       "symbol": "WDAY",
       "report_date": "2026-04-30",
-      "net_income_common_stockholders": 847000000.0,
+      "net_income_common_stockholders": 222000000.0,
       "total_revenue": 2542000000.0,
-      "net_margin": 0.3332
+      "net_margin": 0.0873
     }
   ],
   "annual_net": [
@@ -631,9 +631,9 @@
     {
       "symbol": "WDAY",
       "report_date": "2026-04-30",
-      "ebitda": 1727000000.0,
+      "ebitda": 473000000.0,
       "total_revenue": 2542000000.0,
-      "ebitda_margin": 0.6794
+      "ebitda_margin": 0.1861
     }
   ],
   "annual_ebitda": [

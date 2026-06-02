@@ -87,9 +87,9 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-06-30",
-      "gross_profit": 2753511000.0,
+      "gross_profit": 810763000.0,
       "total_revenue": 1003697000.0,
-      "gross_margin": 2.7434
+      "gross_margin": 0.8078
     },
     {
       "symbol": "PLTR",
@@ -108,9 +108,9 @@
     {
       "symbol": "PLTR",
       "report_date": "2026-03-31",
-      "gross_profit": 4392169000.0,
+      "gross_profit": 1416785000.0,
       "total_revenue": 1632583000.0,
-      "gross_margin": 2.6903
+      "gross_margin": 0.8678
     }
   ],
   "annual_gross": [
@@ -417,9 +417,9 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-06-30",
-      "net_income_common_stockholders": 763292000.0,
+      "net_income_common_stockholders": 326727000.0,
       "total_revenue": 1003697000.0,
-      "net_margin": 0.7605
+      "net_margin": 0.3255
     },
     {
       "symbol": "PLTR",
@@ -438,9 +438,9 @@
     {
       "symbol": "PLTR",
       "report_date": "2026-03-31",
-      "net_income_common_stockholders": 2281529000.0,
+      "net_income_common_stockholders": 870527000.0,
       "total_revenue": 1632583000.0,
-      "net_margin": 1.3975
+      "net_margin": 0.5332
     }
   ],
   "annual_net": [
@@ -747,9 +747,9 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-06-30",
-      "free_cash_flow": 1708704000.0,
+      "free_cash_flow": 531617000.0,
       "total_revenue": 1003697000.0,
-      "fcf_margin": 1.7024
+      "fcf_margin": 0.5297
     },
     {
       "symbol": "PLTR",
@@ -768,9 +768,9 @@
     {
       "symbol": "PLTR",
       "report_date": "2026-03-31",
-      "free_cash_flow": 2688276000.0,
+      "free_cash_flow": 891764000.0,
       "total_revenue": 1632583000.0,
-      "fcf_margin": 1.6466
+      "fcf_margin": 0.5462
     }
   ],
   "annual_fcf": [

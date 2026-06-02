@@ -13704,6 +13704,22 @@
       "close_price": 209.22,
       "ttm_eps": -0.2483,
       "ttm_pe": null
+    },
+    {
+      "symbol": "NET",
+      "report_date": "2026-05-28T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 228.11,
+      "ttm_eps": -0.2483,
+      "ttm_pe": null
+    },
+    {
+      "symbol": "NET",
+      "report_date": "2026-05-29T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 241.82,
+      "ttm_eps": -0.2483,
+      "ttm_pe": null
     }
   ],
   "marketCap": [
@@ -27178,6 +27194,22 @@
       "close_price": 209.22,
       "shares_outstanding": 353466200,
       "market_capitalization": 73952198364.0
+    },
+    {
+      "symbol": "NET",
+      "report_date": "2026-05-28T00:00:00.000",
+      "shares_report_date": "2026-04-23T00:00:00.000",
+      "close_price": 228.11,
+      "shares_outstanding": 353466200,
+      "market_capitalization": 80629174882.0
+    },
+    {
+      "symbol": "NET",
+      "report_date": "2026-05-29T00:00:00.000",
+      "shares_report_date": "2026-04-23T00:00:00.000",
+      "close_price": 241.82,
+      "shares_outstanding": 353466200,
+      "market_capitalization": 85475196484.0
     }
   ],
   "psRatio": [
@@ -33200,6 +33232,26 @@
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 2328605000.0,
       "ps_ratio": 31.76
+    },
+    {
+      "symbol": "NET",
+      "report_date": "2026-05-28T00:00:00.000",
+      "market_capitalization": 80629174882.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 2328605000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 2328605000.0,
+      "ps_ratio": 34.63
+    },
+    {
+      "symbol": "NET",
+      "report_date": "2026-05-29T00:00:00.000",
+      "market_capitalization": 85475196484.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 2328605000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 2328605000.0,
+      "ps_ratio": 36.71
     }
   ],
   "pbRatio": [
@@ -43002,6 +43054,26 @@
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 1526708000.0,
       "pb_ratio": 48.44
+    },
+    {
+      "symbol": "NET",
+      "report_date": "2026-05-28T00:00:00.000",
+      "market_capitalization": 80629174882.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 1526708000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 1526708000.0,
+      "pb_ratio": 52.81
+    },
+    {
+      "symbol": "NET",
+      "report_date": "2026-05-29T00:00:00.000",
+      "market_capitalization": 85475196484.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 1526708000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 1526708000.0,
+      "pb_ratio": 55.99
     }
   ],
   "pegRatio": []

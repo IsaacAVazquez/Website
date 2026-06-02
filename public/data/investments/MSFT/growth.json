@@ -498,9 +498,9 @@
     {
       "symbol": "MSFT",
       "report_date": "2025-06-30T00:00:00.000",
-      "net_income_common_stockholders": 101832000000.0,
+      "net_income_common_stockholders": 27233000000.0,
       "prev_year_net_income_common_stockholders": 22036000000.0,
-      "yoy_growth": 3.6212
+      "yoy_growth": 0.2358
     },
     {
       "symbol": "MSFT",
@@ -519,9 +519,9 @@
     {
       "symbol": "MSFT",
       "report_date": "2026-03-31T00:00:00.000",
-      "net_income_common_stockholders": 125216000000.0,
+      "net_income_common_stockholders": 31778000000.0,
       "prev_year_net_income_common_stockholders": 25824000000.0,
-      "yoy_growth": 3.8488
+      "yoy_growth": 0.2306
     }
   ],
   "annual_net_income": [
@@ -635,9 +635,9 @@
     {
       "symbol": "MSFT",
       "report_date": "2025-06-30T00:00:00.000",
-      "free_cash_flow": 71611000000.0,
+      "free_cash_flow": 25568000000.0,
       "prev_year_free_cash_flow": 23322000000.0,
-      "yoy_growth": 2.0705
+      "yoy_growth": 0.0963
     },
     {
       "symbol": "MSFT",
@@ -656,9 +656,9 @@
     {
       "symbol": "MSFT",
       "report_date": "2026-03-31T00:00:00.000",
-      "free_cash_flow": 72916000000.0,
+      "free_cash_flow": 15803000000.0,
       "prev_year_free_cash_flow": 20299000000.0,
-      "yoy_growth": 2.5921
+      "yoy_growth": -0.2215
     }
   ],
   "annual_fcf": [

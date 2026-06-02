@@ -87,9 +87,9 @@
     {
       "symbol": "NOW",
       "report_date": "2025-06-30",
-      "gross_profit": 9467000000.0,
-      "total_revenue": 12057000000.0,
-      "gross_margin": 0.7852
+      "gross_profit": 2491000000.0,
+      "total_revenue": 3215000000.0,
+      "gross_margin": 0.7748
     },
     {
       "symbol": "NOW",
@@ -108,9 +108,9 @@
     {
       "symbol": "NOW",
       "report_date": "2026-03-31",
-      "gross_profit": 10688000000.0,
-      "total_revenue": 13960000000.0,
-      "gross_margin": 0.7656
+      "gross_profit": 2830000000.0,
+      "total_revenue": 3770000000.0,
+      "gross_margin": 0.7507
     }
   ],
   "annual_gross": [
@@ -252,9 +252,9 @@
     {
       "symbol": "NOW",
       "report_date": "2025-06-30",
-      "operating_income": 1601000000.0,
-      "total_revenue": 12057000000.0,
-      "operating_margin": 0.1328
+      "operating_income": 358000000.0,
+      "total_revenue": 3215000000.0,
+      "operating_margin": 0.1114
     },
     {
       "symbol": "NOW",
@@ -273,9 +273,9 @@
     {
       "symbol": "NOW",
       "report_date": "2026-03-31",
-      "operating_income": 1876000000.0,
-      "total_revenue": 13960000000.0,
-      "operating_margin": 0.1344
+      "operating_income": 503000000.0,
+      "total_revenue": 3770000000.0,
+      "operating_margin": 0.1334
     }
   ],
   "annual_operating": [
@@ -418,8 +418,8 @@
       "symbol": "NOW",
       "report_date": "2025-06-30",
       "net_income_common_stockholders": 385000000.0,
-      "total_revenue": 12057000000.0,
-      "net_margin": 0.0319
+      "total_revenue": 3215000000.0,
+      "net_margin": 0.1198
     },
     {
       "symbol": "NOW",
@@ -439,8 +439,8 @@
       "symbol": "NOW",
       "report_date": "2026-03-31",
       "net_income_common_stockholders": 469000000.0,
-      "total_revenue": 13960000000.0,
-      "net_margin": 0.0336
+      "total_revenue": 3770000000.0,
+      "net_margin": 0.1244
     }
   ],
   "annual_net": [
@@ -583,8 +583,8 @@
       "symbol": "NOW",
       "report_date": "2025-06-30",
       "ebitda": 649000000.0,
-      "total_revenue": 12057000000.0,
-      "ebitda_margin": 0.0538
+      "total_revenue": 3215000000.0,
+      "ebitda_margin": 0.2019
     },
     {
       "symbol": "NOW",
@@ -604,8 +604,8 @@
       "symbol": "NOW",
       "report_date": "2026-03-31",
       "ebitda": 937000000.0,
-      "total_revenue": 13960000000.0,
-      "ebitda_margin": 0.0671
+      "total_revenue": 3770000000.0,
+      "ebitda_margin": 0.2485
     }
   ],
   "annual_ebitda": [
@@ -748,8 +748,8 @@
       "symbol": "NOW",
       "report_date": "2025-06-30",
       "free_cash_flow": 526000000.0,
-      "total_revenue": 12057000000.0,
-      "fcf_margin": 0.0436
+      "total_revenue": 3215000000.0,
+      "fcf_margin": 0.1636
     },
     {
       "symbol": "NOW",
@@ -769,8 +769,8 @@
       "symbol": "NOW",
       "report_date": "2026-03-31",
       "free_cash_flow": 1529000000.0,
-      "total_revenue": 13960000000.0,
-      "fcf_margin": 0.1095
+      "total_revenue": 3770000000.0,
+      "fcf_margin": 0.4056
     }
   ],
   "annual_fcf": [

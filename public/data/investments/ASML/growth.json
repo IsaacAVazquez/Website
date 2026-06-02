@@ -66,9 +66,9 @@
     {
       "symbol": "ASML",
       "report_date": "2025-06-30T00:00:00.000",
-      "revenue": 32163300000.0,
+      "revenue": 7691700000.0,
       "prev_year_revenue": 6242800000.0,
-      "yoy_growth": 4.1521
+      "yoy_growth": 0.2321
     },
     {
       "symbol": "ASML",
@@ -87,9 +87,9 @@
     {
       "symbol": "ASML",
       "report_date": "2026-03-31T00:00:00.000",
-      "revenue": 33692700000.0,
+      "revenue": 8766900000.0,
       "prev_year_revenue": 7741500000.0,
-      "yoy_growth": 3.3522
+      "yoy_growth": 0.1325
     }
   ],
   "annual_revenue": [
@@ -203,9 +203,9 @@
     {
       "symbol": "ASML",
       "report_date": "2025-06-30T00:00:00.000",
-      "operating_income": 11225000000.0,
+      "operating_income": 3137900000.0,
       "prev_year_operating_income": 1834600000.0,
-      "yoy_growth": 5.1185
+      "yoy_growth": 0.7104
     },
     {
       "symbol": "ASML",
@@ -224,9 +224,9 @@
     {
       "symbol": "ASML",
       "report_date": "2026-03-31T00:00:00.000",
-      "operating_income": 11721300000.0,
+      "operating_income": 3157800000.0,
       "prev_year_operating_income": 2737900000.0,
-      "yoy_growth": 3.2811
+      "yoy_growth": 0.1534
     }
   ],
   "annual_operating_income": [
@@ -333,9 +333,9 @@
     {
       "symbol": "ASML",
       "report_date": "2025-06-30T00:00:00.000",
-      "ebitda": 12399900000.0,
+      "ebitda": 3649500000.0,
       "prev_year_ebitda": 2062100000.0,
-      "yoy_growth": 5.0132
+      "yoy_growth": 0.7698
     },
     {
       "symbol": "ASML",
@@ -354,9 +354,9 @@
     {
       "symbol": "ASML",
       "report_date": "2026-03-31T00:00:00.000",
-      "ebitda": 11944300000.0,
+      "ebitda": 3157800000.0,
       "prev_year_ebitda": 2979200000.0,
-      "yoy_growth": 3.0092
+      "yoy_growth": 0.0599
     }
   ],
   "annual_ebitda": [
@@ -470,9 +470,9 @@
     {
       "symbol": "ASML",
       "report_date": "2025-06-30T00:00:00.000",
-      "net_income_common_stockholders": 9427300000.0,
+      "net_income_common_stockholders": 2676200000.0,
       "prev_year_net_income_common_stockholders": 1577900000.0,
-      "yoy_growth": 4.9746
+      "yoy_growth": 0.6961
     },
     {
       "symbol": "ASML",
@@ -491,9 +491,9 @@
     {
       "symbol": "ASML",
       "report_date": "2026-03-31T00:00:00.000",
-      "net_income_common_stockholders": 10011100000.0,
+      "net_income_common_stockholders": 2756700000.0,
       "prev_year_net_income_common_stockholders": 2355000000.0,
-      "yoy_growth": 3.251
+      "yoy_growth": 0.1706
     }
   ],
   "annual_net_income": [

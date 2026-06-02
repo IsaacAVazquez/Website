@@ -8,7 +8,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-05-28"
+    "report_date": "2026-06-01"
   },
   {
     "symbol": "AAPL",
@@ -19,7 +19,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-05-28"
+    "report_date": "2026-06-01"
   },
   {
     "symbol": "AAPL",
@@ -30,7 +30,7 @@
     "pay": 4034174,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-05-28"
+    "report_date": "2026-06-01"
   },
   {
     "symbol": "AAPL",
@@ -41,7 +41,7 @@
     "pay": 5021905,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-05-28"
+    "report_date": "2026-06-01"
   },
   {
     "symbol": "AAPL",
@@ -52,7 +52,7 @@
     "pay": 16759518,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-05-28"
+    "report_date": "2026-06-01"
   },
   {
     "symbol": "AAPL",
@@ -63,7 +63,7 @@
     "pay": 5037867,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-05-28"
+    "report_date": "2026-06-01"
   },
   {
     "symbol": "AAPL",
@@ -74,7 +74,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-05-28"
+    "report_date": "2026-06-01"
   },
   {
     "symbol": "AAPL",
@@ -85,7 +85,7 @@
     "pay": 5022482,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-05-28"
+    "report_date": "2026-06-01"
   },
   {
     "symbol": "AAPL",
@@ -96,7 +96,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-05-28"
+    "report_date": "2026-06-01"
   },
   {
     "symbol": "AAPL",
@@ -107,6 +107,6 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-05-28"
+    "report_date": "2026-06-01"
   }
 ]

@@ -66,9 +66,9 @@
     {
       "symbol": "APP",
       "report_date": "2025-06-30T00:00:00.000",
-      "revenue": 5737591000.0,
+      "revenue": 1258754000.0,
       "prev_year_revenue": 711015000.0,
-      "yoy_growth": 7.0696
+      "yoy_growth": 0.7704
     },
     {
       "symbol": "APP",
@@ -87,9 +87,9 @@
     {
       "symbol": "APP",
       "report_date": "2026-03-31T00:00:00.000",
-      "revenue": 6164192000.0,
+      "revenue": 1842449000.0,
       "prev_year_revenue": 1158974000.0,
-      "yoy_growth": 4.3187
+      "yoy_growth": 0.5897
     }
   ],
   "annual_revenue": [
@@ -203,9 +203,9 @@
     {
       "symbol": "APP",
       "report_date": "2025-06-30T00:00:00.000",
-      "operating_income": 2922800000.0,
+      "operating_income": 957682000.0,
       "prev_year_operating_income": 384422000.0,
-      "yoy_growth": 6.6031
+      "yoy_growth": 1.4912
     },
     {
       "symbol": "APP",
@@ -224,9 +224,9 @@
     {
       "symbol": "APP",
       "report_date": "2026-03-31T00:00:00.000",
-      "operating_income": 4751865000.0,
+      "operating_income": 1439933000.0,
       "prev_year_operating_income": 839982000.0,
-      "yoy_growth": 4.6571
+      "yoy_growth": 0.7142
     }
   ],
   "annual_operating_income": [

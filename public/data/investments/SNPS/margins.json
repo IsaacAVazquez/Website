@@ -108,9 +108,16 @@
     {
       "symbol": "SNPS",
       "report_date": "2026-01-31",
-      "gross_profit": 6016705000.0,
+      "gross_profit": 1771416000.0,
       "total_revenue": 2408798000.0,
-      "gross_margin": 2.4978
+      "gross_margin": 0.7354
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2026-04-30",
+      "gross_profit": 1646135000.0,
+      "total_revenue": 2275985000.0,
+      "gross_margin": 0.7233
     }
   ],
   "annual_gross": [
@@ -276,6 +283,13 @@
       "operating_income": 321328000.0,
       "total_revenue": 2408798000.0,
       "operating_margin": 0.1334
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2026-04-30",
+      "operating_income": 236320000.0,
+      "total_revenue": 2275985000.0,
+      "operating_margin": 0.1038
     }
   ],
   "annual_operating": [
@@ -438,9 +452,16 @@
     {
       "symbol": "SNPS",
       "report_date": "2026-01-31",
-      "net_income_common_stockholders": 1101495000.0,
+      "net_income_common_stockholders": 64958000.0,
       "total_revenue": 2408798000.0,
-      "net_margin": 0.4573
+      "net_margin": 0.027
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2026-04-30",
+      "net_income_common_stockholders": 17105000.0,
+      "total_revenue": 2275985000.0,
+      "net_margin": 0.0075
     }
   ],
   "annual_net": [
@@ -606,6 +627,13 @@
       "ebitda": 692456000.0,
       "total_revenue": 2408798000.0,
       "ebitda_margin": 0.2875
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2026-04-30",
+      "ebitda": 609129000.0,
+      "total_revenue": 2275985000.0,
+      "ebitda_margin": 0.2676
     }
   ],
   "annual_ebitda": [
@@ -768,9 +796,16 @@
     {
       "symbol": "SNPS",
       "report_date": "2026-01-31",
-      "free_cash_flow": 2278836000.0,
+      "free_cash_flow": 821512000.0,
       "total_revenue": 2408798000.0,
-      "fcf_margin": 0.946
+      "fcf_margin": 0.341
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2026-04-30",
+      "free_cash_flow": 574736000.0,
+      "total_revenue": 2275985000.0,
+      "fcf_margin": 0.2525
     }
   ],
   "annual_fcf": [

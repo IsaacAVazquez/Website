@@ -1,24 +1,6 @@
 [
   {
     "symbol": "ADBE",
-    "report_date": "2025-05-27",
-    "open": 412.76,
-    "close": 413.1,
-    "high": 414.95,
-    "low": 411.6,
-    "volume": 2680400
-  },
-  {
-    "symbol": "ADBE",
-    "report_date": "2025-05-28",
-    "open": 413.81,
-    "close": 412.23,
-    "high": 416.37,
-    "low": 411.42,
-    "volume": 2246500
-  },
-  {
-    "symbol": "ADBE",
     "report_date": "2025-05-29",
     "open": 414.0,
     "close": 413.36,
@@ -2266,5 +2248,23 @@
     "high": 244.24,
     "low": 237.28,
     "volume": 3402000
+  },
+  {
+    "symbol": "ADBE",
+    "report_date": "2026-05-28",
+    "open": 239.57,
+    "close": 241.44,
+    "high": 244.76,
+    "low": 236.66,
+    "volume": 3386500
+  },
+  {
+    "symbol": "ADBE",
+    "report_date": "2026-05-29",
+    "open": 245.23,
+    "close": 259.21,
+    "high": 260.63,
+    "low": 244.66,
+    "volume": 10788600
   }
 ]

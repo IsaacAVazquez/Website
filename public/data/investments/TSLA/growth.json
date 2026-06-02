@@ -333,9 +333,9 @@
     {
       "symbol": "TSLA",
       "report_date": "2025-06-30T00:00:00.000",
-      "ebitda": 13542000000.0,
+      "ebitda": 3068000000.0,
       "prev_year_ebitda": 3151000000.0,
-      "yoy_growth": 3.2977
+      "yoy_growth": -0.0263
     },
     {
       "symbol": "TSLA",
@@ -354,9 +354,9 @@
     {
       "symbol": "TSLA",
       "report_date": "2026-03-31T00:00:00.000",
-      "ebitda": 12067000000.0,
+      "ebitda": 2430000000.0,
       "prev_year_ebitda": 2127000000.0,
-      "yoy_growth": 4.6732
+      "yoy_growth": 0.1425
     }
   ],
   "annual_ebitda": [
@@ -470,9 +470,9 @@
     {
       "symbol": "TSLA",
       "report_date": "2025-06-30T00:00:00.000",
-      "net_income_common_stockholders": 5921000000.0,
+      "net_income_common_stockholders": 1172000000.0,
       "prev_year_net_income_common_stockholders": 1400000000.0,
-      "yoy_growth": 3.2293
+      "yoy_growth": -0.1629
     },
     {
       "symbol": "TSLA",
@@ -491,9 +491,9 @@
     {
       "symbol": "TSLA",
       "report_date": "2026-03-31T00:00:00.000",
-      "net_income_common_stockholders": 3862000000.0,
+      "net_income_common_stockholders": 477000000.0,
       "prev_year_net_income_common_stockholders": 409000000.0,
-      "yoy_growth": 8.4425
+      "yoy_growth": 0.1663
     }
   ],
   "annual_net_income": [
@@ -607,9 +607,9 @@
     {
       "symbol": "TSLA",
       "report_date": "2025-06-30T00:00:00.000",
-      "free_cash_flow": 5586000000.0,
+      "free_cash_flow": 146000000.0,
       "prev_year_free_cash_flow": 1340000000.0,
-      "yoy_growth": 3.1687
+      "yoy_growth": -0.891
     },
     {
       "symbol": "TSLA",
@@ -628,9 +628,9 @@
     {
       "symbol": "TSLA",
       "report_date": "2026-03-31T00:00:00.000",
-      "free_cash_flow": 7000000000.0,
+      "free_cash_flow": 1444000000.0,
       "prev_year_free_cash_flow": 664000000.0,
-      "yoy_growth": 9.5422
+      "yoy_growth": 1.1747
     }
   ],
   "annual_fcf": [

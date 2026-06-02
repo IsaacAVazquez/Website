@@ -10484,6 +10484,22 @@
       "close_price": 567.83,
       "ttm_eps": 11.3361,
       "ttm_pe": 50.09
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-05-28T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 599.89,
+      "ttm_eps": 11.3361,
+      "ttm_pe": 52.92
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-05-29T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 613.09,
+      "ttm_eps": 11.3361,
+      "ttm_pe": 54.08
     }
   ],
   "marketCap": [
@@ -20766,6 +20782,22 @@
       "close_price": 567.83,
       "shares_outstanding": 335939500,
       "market_capitalization": 190756526285.0
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-05-28T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 599.89,
+      "shares_outstanding": 335939500,
+      "market_capitalization": 201526746655.0
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-05-29T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 613.09,
+      "shares_outstanding": 335939500,
+      "market_capitalization": 205961148055.0
     }
   ],
   "psRatio": [
@@ -23894,2290 +23926,2310 @@
       "report_date": "2025-06-30T00:00:00.000",
       "market_capitalization": 118600977600.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 13.03
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 25.64
     },
     {
       "symbol": "APP",
       "report_date": "2025-07-01T00:00:00.000",
       "market_capitalization": 114064679925.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 12.53
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 24.66
     },
     {
       "symbol": "APP",
       "report_date": "2025-07-02T00:00:00.000",
       "market_capitalization": 113830920000.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 12.5
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 24.61
     },
     {
       "symbol": "APP",
       "report_date": "2025-07-03T00:00:00.000",
       "market_capitalization": 115741653300.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 12.71
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 25.02
     },
     {
       "symbol": "APP",
       "report_date": "2025-07-07T00:00:00.000",
       "market_capitalization": 116879962500.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 12.84
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 25.27
     },
     {
       "symbol": "APP",
       "report_date": "2025-07-08T00:00:00.000",
       "market_capitalization": 116795266875.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 12.83
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 25.25
     },
     {
       "symbol": "APP",
       "report_date": "2025-07-09T00:00:00.000",
       "market_capitalization": 119502139050.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 13.13
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 25.83
     },
     {
       "symbol": "APP",
       "report_date": "2025-07-10T00:00:00.000",
       "market_capitalization": 117327155400.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 12.89
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 25.36
     },
     {
       "symbol": "APP",
       "report_date": "2025-07-11T00:00:00.000",
       "market_capitalization": 113526015750.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 12.47
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 24.54
     },
     {
       "symbol": "APP",
       "report_date": "2025-07-14T00:00:00.000",
       "market_capitalization": 120572691750.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 13.24
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 26.07
     },
     {
       "symbol": "APP",
       "report_date": "2025-07-15T00:00:00.000",
       "market_capitalization": 119576671200.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 13.13
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 25.85
     },
     {
       "symbol": "APP",
       "report_date": "2025-07-16T00:00:00.000",
       "market_capitalization": 120437178750.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 13.23
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 26.04
     },
     {
       "symbol": "APP",
       "report_date": "2025-07-17T00:00:00.000",
       "market_capitalization": 123242297850.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 13.54
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 26.64
     },
     {
       "symbol": "APP",
       "report_date": "2025-07-18T00:00:00.000",
       "market_capitalization": 123472669950.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 13.56
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 26.69
     },
     {
       "symbol": "APP",
       "report_date": "2025-07-21T00:00:00.000",
       "market_capitalization": 124051988025.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 13.63
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 26.82
     },
     {
       "symbol": "APP",
       "report_date": "2025-07-22T00:00:00.000",
       "market_capitalization": 118573875000.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 13.02
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 25.63
     },
     {
       "symbol": "APP",
       "report_date": "2025-07-23T00:00:00.000",
       "market_capitalization": 122679918900.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 13.47
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 26.52
     },
     {
       "symbol": "APP",
       "report_date": "2025-07-24T00:00:00.000",
       "market_capitalization": 121941373050.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 13.39
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 26.36
     },
     {
       "symbol": "APP",
       "report_date": "2025-07-25T00:00:00.000",
       "market_capitalization": 123364259550.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 13.55
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 26.67
     },
     {
       "symbol": "APP",
       "report_date": "2025-07-28T00:00:00.000",
       "market_capitalization": 125674756200.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 13.8
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 27.17
     },
     {
       "symbol": "APP",
       "report_date": "2025-07-29T00:00:00.000",
       "market_capitalization": 122513915475.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 13.46
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 26.49
     },
     {
       "symbol": "APP",
       "report_date": "2025-07-30T00:00:00.000",
       "market_capitalization": 123083070075.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 13.52
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 26.61
     },
     {
       "symbol": "APP",
       "report_date": "2025-07-31T00:00:00.000",
       "market_capitalization": 132154235930.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 14.52
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 28.57
     },
     {
       "symbol": "APP",
       "report_date": "2025-08-01T00:00:00.000",
       "market_capitalization": 128254214583.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 14.09
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 27.73
     },
     {
       "symbol": "APP",
       "report_date": "2025-08-04T00:00:00.000",
       "market_capitalization": 133612092999.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 14.68
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 28.88
     },
     {
       "symbol": "APP",
       "report_date": "2025-08-05T00:00:00.000",
       "market_capitalization": 127834784707.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 14.04
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 27.64
     },
     {
       "symbol": "APP",
       "report_date": "2025-08-06T00:00:00.000",
       "market_capitalization": 132110263443.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 14.51
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 28.56
     },
     {
       "symbol": "APP",
       "report_date": "2025-08-07T00:00:00.000",
       "market_capitalization": 147930211266.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 16.25
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 31.98
     },
     {
       "symbol": "APP",
       "report_date": "2025-08-08T00:00:00.000",
       "market_capitalization": 154235189402.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 16.94
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 33.34
     },
     {
       "symbol": "APP",
       "report_date": "2025-08-11T00:00:00.000",
       "market_capitalization": 157482388442.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 17.3
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 34.05
     },
     {
       "symbol": "APP",
       "report_date": "2025-08-12T00:00:00.000",
       "market_capitalization": 157962703300.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 17.35
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 34.15
     },
     {
       "symbol": "APP",
       "report_date": "2025-08-13T00:00:00.000",
       "market_capitalization": 150994755360.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 16.58
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 32.64
     },
     {
       "symbol": "APP",
       "report_date": "2025-08-14T00:00:00.000",
       "market_capitalization": 146577211666.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 16.1
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 31.69
     },
     {
       "symbol": "APP",
       "report_date": "2025-08-15T00:00:00.000",
       "market_capitalization": 148383466132.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 16.3
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 32.08
     },
     {
       "symbol": "APP",
       "report_date": "2025-08-18T00:00:00.000",
       "market_capitalization": 148336111146.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 16.29
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 32.07
     },
     {
       "symbol": "APP",
       "report_date": "2025-08-19T00:00:00.000",
       "market_capitalization": 139561908740.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 15.33
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 30.17
     },
     {
       "symbol": "APP",
       "report_date": "2025-08-20T00:00:00.000",
       "market_capitalization": 139487493762.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 15.32
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 30.15
     },
     {
       "symbol": "APP",
       "report_date": "2025-08-21T00:00:00.000",
       "market_capitalization": 141645528124.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 15.56
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 30.62
     },
     {
       "symbol": "APP",
       "report_date": "2025-08-22T00:00:00.000",
       "market_capitalization": 149398215832.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 16.41
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 32.3
     },
     {
       "symbol": "APP",
       "report_date": "2025-08-25T00:00:00.000",
       "market_capitalization": 152442464932.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 16.74
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 32.96
     },
     {
       "symbol": "APP",
       "report_date": "2025-08-26T00:00:00.000",
       "market_capitalization": 158750825567.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 17.44
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 34.32
     },
     {
       "symbol": "APP",
       "report_date": "2025-08-27T00:00:00.000",
       "market_capitalization": 156589408706.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 17.2
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 33.85
     },
     {
       "symbol": "APP",
       "report_date": "2025-08-28T00:00:00.000",
       "market_capitalization": 163628389125.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 17.97
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 35.37
     },
     {
       "symbol": "APP",
       "report_date": "2025-08-29T00:00:00.000",
       "market_capitalization": 161883019641.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 17.78
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 35.0
     },
     {
       "symbol": "APP",
       "report_date": "2025-09-02T00:00:00.000",
       "market_capitalization": 162945124327.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 17.9
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 35.23
     },
     {
       "symbol": "APP",
       "report_date": "2025-09-03T00:00:00.000",
       "market_capitalization": 164846088765.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 18.11
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 35.64
     },
     {
       "symbol": "APP",
       "report_date": "2025-09-04T00:00:00.000",
       "market_capitalization": 169114802503.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 18.57
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 36.56
     },
     {
       "symbol": "APP",
       "report_date": "2025-09-05T00:00:00.000",
       "market_capitalization": 165823630976.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 18.21
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 35.85
     },
     {
       "symbol": "APP",
       "report_date": "2025-09-08T00:00:00.000",
       "market_capitalization": 185036225296.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 20.32
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 40.0
     },
     {
       "symbol": "APP",
       "report_date": "2025-09-09T00:00:00.000",
       "market_capitalization": 188800946683.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 20.74
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 40.82
     },
     {
       "symbol": "APP",
       "report_date": "2025-09-10T00:00:00.000",
       "market_capitalization": 191828283288.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 21.07
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 41.47
     },
     {
       "symbol": "APP",
       "report_date": "2025-09-11T00:00:00.000",
       "market_capitalization": 193245550369.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 21.23
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 41.78
     },
     {
       "symbol": "APP",
       "report_date": "2025-09-12T00:00:00.000",
       "market_capitalization": 196861441800.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 21.62
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 42.56
     },
     {
       "symbol": "APP",
       "report_date": "2025-09-15T00:00:00.000",
       "market_capitalization": 200629545686.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 22.04
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 43.37
     },
     {
       "symbol": "APP",
       "report_date": "2025-09-16T00:00:00.000",
       "market_capitalization": 204235289620.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 22.43
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 44.15
     },
     {
       "symbol": "APP",
       "report_date": "2025-09-17T00:00:00.000",
       "market_capitalization": 205202684334.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 22.54
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 44.36
     },
     {
       "symbol": "APP",
       "report_date": "2025-09-18T00:00:00.000",
       "market_capitalization": 210229077848.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 23.09
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 45.45
     },
     {
       "symbol": "APP",
       "report_date": "2025-09-19T00:00:00.000",
       "market_capitalization": 219723752541.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 24.13
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 47.5
     },
     {
       "symbol": "APP",
       "report_date": "2025-09-22T00:00:00.000",
       "market_capitalization": 217663810650.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 23.91
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 47.06
     },
     {
       "symbol": "APP",
       "report_date": "2025-09-23T00:00:00.000",
       "market_capitalization": 220261569882.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 24.19
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 47.62
     },
     {
       "symbol": "APP",
       "report_date": "2025-09-24T00:00:00.000",
       "market_capitalization": 217129375808.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 23.85
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 46.94
     },
     {
       "symbol": "APP",
       "report_date": "2025-09-25T00:00:00.000",
       "market_capitalization": 216449493509.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 23.77
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 46.79
     },
     {
       "symbol": "APP",
       "report_date": "2025-09-26T00:00:00.000",
       "market_capitalization": 226580078014.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 24.89
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 48.98
     },
     {
       "symbol": "APP",
       "report_date": "2025-09-29T00:00:00.000",
       "market_capitalization": 240955698764.0,
       "fiscal_quarter": "2025-06-30T00:00:00.000",
-      "ttm_revenue": 9104530000.0,
+      "ttm_revenue": 4625693000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9104530000.0,
-      "ps_ratio": 26.47
+      "ttm_revenue_usd": 4625693000.0,
+      "ps_ratio": 52.09
     },
     {
       "symbol": "APP",
       "report_date": "2025-09-30T00:00:00.000",
       "market_capitalization": 243250220360.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 25.14
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 46.82
     },
     {
       "symbol": "APP",
       "report_date": "2025-10-01T00:00:00.000",
       "market_capitalization": 238358404060.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 24.64
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 45.88
     },
     {
       "symbol": "APP",
       "report_date": "2025-10-02T00:00:00.000",
       "market_capitalization": 231435383760.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 23.92
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 44.54
     },
     {
       "symbol": "APP",
       "report_date": "2025-10-03T00:00:00.000",
       "market_capitalization": 231137473840.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 23.89
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 44.49
     },
     {
       "symbol": "APP",
       "report_date": "2025-10-06T00:00:00.000",
       "market_capitalization": 198719458000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 20.54
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 38.25
     },
     {
       "symbol": "APP",
       "report_date": "2025-10-07T00:00:00.000",
       "market_capitalization": 213902707900.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 22.11
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 41.17
     },
     {
       "symbol": "APP",
       "report_date": "2025-10-08T00:00:00.000",
       "market_capitalization": 213174859800.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 22.03
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 41.03
     },
     {
       "symbol": "APP",
       "report_date": "2025-10-09T00:00:00.000",
       "market_capitalization": 203228730880.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 21.01
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 39.12
     },
     {
       "symbol": "APP",
       "report_date": "2025-10-10T00:00:00.000",
       "market_capitalization": 192927141260.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 19.94
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 37.13
     },
     {
       "symbol": "APP",
       "report_date": "2025-10-13T00:00:00.000",
       "market_capitalization": 199772298740.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 20.65
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 38.45
     },
     {
       "symbol": "APP",
       "report_date": "2025-10-14T00:00:00.000",
       "market_capitalization": 199745216020.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 20.65
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 38.45
     },
     {
       "symbol": "APP",
       "report_date": "2025-10-15T00:00:00.000",
       "market_capitalization": 203899028200.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 21.08
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 39.24
     },
     {
       "symbol": "APP",
       "report_date": "2025-10-16T00:00:00.000",
       "market_capitalization": 205043273120.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 21.19
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 39.47
     },
     {
       "symbol": "APP",
       "report_date": "2025-10-17T00:00:00.000",
       "market_capitalization": 202886811540.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 20.97
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 39.05
     },
     {
       "symbol": "APP",
       "report_date": "2025-10-20T00:00:00.000",
       "market_capitalization": 191589931960.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 19.8
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 36.88
     },
     {
       "symbol": "APP",
       "report_date": "2025-10-21T00:00:00.000",
       "market_capitalization": 187087429760.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 19.34
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 36.01
     },
     {
       "symbol": "APP",
       "report_date": "2025-10-22T00:00:00.000",
       "market_capitalization": 191210773880.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 19.76
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 36.8
     },
     {
       "symbol": "APP",
       "report_date": "2025-10-23T00:00:00.000",
       "market_capitalization": 199633499800.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 20.64
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 38.42
     },
     {
       "symbol": "APP",
       "report_date": "2025-10-24T00:00:00.000",
       "market_capitalization": 209891080000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 21.7
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 40.4
     },
     {
       "symbol": "APP",
       "report_date": "2025-10-27T00:00:00.000",
       "market_capitalization": 217711215400.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 22.5
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 41.9
     },
     {
       "symbol": "APP",
       "report_date": "2025-10-28T00:00:00.000",
       "market_capitalization": 212199881880.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 21.93
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 40.84
     },
     {
       "symbol": "APP",
       "report_date": "2025-10-29T00:00:00.000",
       "market_capitalization": 213682660800.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 22.09
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 41.13
     },
     {
       "symbol": "APP",
       "report_date": "2025-10-30T00:00:00.000",
       "market_capitalization": 210100971080.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 21.72
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 40.44
     },
     {
       "symbol": "APP",
       "report_date": "2025-10-31T00:00:00.000",
       "market_capitalization": 215388860150.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 22.26
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 41.46
     },
     {
       "symbol": "APP",
       "report_date": "2025-11-03T00:00:00.000",
       "market_capitalization": 213634873700.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 22.08
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 41.12
     },
     {
       "symbol": "APP",
       "report_date": "2025-11-04T00:00:00.000",
       "market_capitalization": 205706449400.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 21.26
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 39.59
     },
     {
       "symbol": "APP",
       "report_date": "2025-11-05T00:00:00.000",
       "market_capitalization": 208535132750.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 21.56
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 40.14
     },
     {
       "symbol": "APP",
       "report_date": "2025-11-06T00:00:00.000",
       "market_capitalization": 209991718800.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 21.71
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 40.42
     },
     {
       "symbol": "APP",
       "report_date": "2025-11-07T00:00:00.000",
       "market_capitalization": 209508443150.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 21.66
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 40.32
     },
     {
       "symbol": "APP",
       "report_date": "2025-11-10T00:00:00.000",
       "market_capitalization": 220116850600.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 22.75
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 42.37
     },
     {
       "symbol": "APP",
       "report_date": "2025-11-11T00:00:00.000",
       "market_capitalization": 201052809050.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 20.78
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 38.7
     },
     {
       "symbol": "APP",
       "report_date": "2025-11-12T00:00:00.000",
       "market_capitalization": 197656361300.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 20.43
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 38.04
     },
     {
       "symbol": "APP",
       "report_date": "2025-11-13T00:00:00.000",
       "market_capitalization": 187953673250.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 19.43
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 36.18
     },
     {
       "symbol": "APP",
       "report_date": "2025-11-14T00:00:00.000",
       "market_capitalization": 188477503500.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 19.48
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 36.28
     },
     {
       "symbol": "APP",
       "report_date": "2025-11-17T00:00:00.000",
       "market_capitalization": 182248992850.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 18.84
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 35.08
     },
     {
       "symbol": "APP",
       "report_date": "2025-11-18T00:00:00.000",
       "market_capitalization": 177767709550.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 18.38
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 34.22
     },
     {
       "symbol": "APP",
       "report_date": "2025-11-19T00:00:00.000",
       "market_capitalization": 179133047750.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 18.52
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 34.48
     },
     {
       "symbol": "APP",
       "report_date": "2025-11-20T00:00:00.000",
       "market_capitalization": 176013723100.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 18.19
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 33.88
     },
     {
       "symbol": "APP",
       "report_date": "2025-11-21T00:00:00.000",
       "market_capitalization": 175824468300.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 18.17
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 33.84
     },
     {
       "symbol": "APP",
       "report_date": "2025-11-24T00:00:00.000",
       "market_capitalization": 189187209000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 19.56
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 36.41
     },
     {
       "symbol": "APP",
       "report_date": "2025-11-25T00:00:00.000",
       "market_capitalization": 187913118650.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 19.42
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 36.17
     },
     {
       "symbol": "APP",
       "report_date": "2025-11-26T00:00:00.000",
       "market_capitalization": 198166673350.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 20.48
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 38.14
     },
     {
       "symbol": "APP",
       "report_date": "2025-11-28T00:00:00.000",
       "market_capitalization": 202597263400.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 20.94
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 38.99
     },
     {
       "symbol": "APP",
       "report_date": "2025-12-01T00:00:00.000",
       "market_capitalization": 210745358450.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 21.78
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 40.56
     },
     {
       "symbol": "APP",
       "report_date": "2025-12-02T00:00:00.000",
       "market_capitalization": 220684615000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 22.81
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 42.48
     },
     {
       "symbol": "APP",
       "report_date": "2025-12-03T00:00:00.000",
       "market_capitalization": 223797180550.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 23.13
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 43.07
     },
     {
       "symbol": "APP",
       "report_date": "2025-12-04T00:00:00.000",
       "market_capitalization": 231086869900.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 23.89
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 44.48
     },
     {
       "symbol": "APP",
       "report_date": "2025-12-05T00:00:00.000",
       "market_capitalization": 233844582700.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 24.17
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 45.01
     },
     {
       "symbol": "APP",
       "report_date": "2025-12-08T00:00:00.000",
       "market_capitalization": 233107840800.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 24.1
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 44.87
     },
     {
       "symbol": "APP",
       "report_date": "2025-12-09T00:00:00.000",
       "market_capitalization": 244888952100.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 25.31
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 47.13
     },
     {
       "symbol": "APP",
       "report_date": "2025-12-10T00:00:00.000",
       "market_capitalization": 237676992400.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 24.57
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 45.75
     },
     {
       "symbol": "APP",
       "report_date": "2025-12-11T00:00:00.000",
       "market_capitalization": 242306975900.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 25.05
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 46.64
     },
     {
       "symbol": "APP",
       "report_date": "2025-12-12T00:00:00.000",
       "market_capitalization": 226656279850.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 23.43
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 43.63
     },
     {
       "symbol": "APP",
       "report_date": "2025-12-15T00:00:00.000",
       "market_capitalization": 228175387575.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 23.59
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 43.92
     },
     {
       "symbol": "APP",
       "report_date": "2025-12-16T00:00:00.000",
       "market_capitalization": 228896921500.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 23.66
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 44.06
     },
     {
       "symbol": "APP",
       "report_date": "2025-12-17T00:00:00.000",
       "market_capitalization": 222080369150.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 22.96
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 42.74
     },
     {
       "symbol": "APP",
       "report_date": "2025-12-18T00:00:00.000",
       "market_capitalization": 234665813350.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 24.26
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 45.17
     },
     {
       "symbol": "APP",
       "report_date": "2025-12-19T00:00:00.000",
       "market_capitalization": 243790598350.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 25.2
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 46.92
     },
     {
       "symbol": "APP",
       "report_date": "2025-12-22T00:00:00.000",
       "market_capitalization": 247923788000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 25.63
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 47.72
     },
     {
       "symbol": "APP",
       "report_date": "2025-12-23T00:00:00.000",
       "market_capitalization": 246183319750.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 25.45
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 47.38
     },
     {
       "symbol": "APP",
       "report_date": "2025-12-24T00:00:00.000",
       "market_capitalization": 245862262500.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 25.41
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 47.32
     },
     {
       "symbol": "APP",
       "report_date": "2025-12-26T00:00:00.000",
       "market_capitalization": 241377599650.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 24.95
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 46.46
     },
     {
       "symbol": "APP",
       "report_date": "2025-12-29T00:00:00.000",
       "market_capitalization": 236169713100.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 24.41
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 45.46
     },
     {
       "symbol": "APP",
       "report_date": "2025-12-30T00:00:00.000",
       "market_capitalization": 234442763050.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
-      "ttm_revenue": 9674389000.0,
+      "ttm_revenue": 5195552000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9674389000.0,
-      "ps_ratio": 24.23
+      "ttm_revenue_usd": 5195552000.0,
+      "ps_ratio": 45.12
     },
     {
       "symbol": "APP",
       "report_date": "2025-12-31T00:00:00.000",
       "market_capitalization": 227962065660.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 22.89
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 41.59
     },
     {
       "symbol": "APP",
       "report_date": "2026-01-02T00:00:00.000",
       "market_capitalization": 209185694160.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 21.0
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 38.17
     },
     {
       "symbol": "APP",
       "report_date": "2026-01-05T00:00:00.000",
       "market_capitalization": 214121680830.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 21.5
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 39.07
     },
     {
       "symbol": "APP",
       "report_date": "2026-01-06T00:00:00.000",
       "market_capitalization": 208820316120.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 20.97
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 38.1
     },
     {
       "symbol": "APP",
       "report_date": "2026-01-07T00:00:00.000",
       "market_capitalization": 214125063960.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 21.5
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 39.07
     },
     {
       "symbol": "APP",
       "report_date": "2026-01-08T00:00:00.000",
       "market_capitalization": 208580113890.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 20.94
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 38.06
     },
     {
       "symbol": "APP",
       "report_date": "2026-01-09T00:00:00.000",
       "market_capitalization": 219132096360.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 22.0
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 39.98
     },
     {
       "symbol": "APP",
       "report_date": "2026-01-12T00:00:00.000",
       "market_capitalization": 222829857450.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 22.37
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 40.66
     },
     {
       "symbol": "APP",
       "report_date": "2026-01-13T00:00:00.000",
       "market_capitalization": 226206221190.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 22.71
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 41.27
     },
     {
       "symbol": "APP",
       "report_date": "2026-01-14T00:00:00.000",
       "market_capitalization": 208996238880.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 20.98
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 38.13
     },
     {
       "symbol": "APP",
       "report_date": "2026-01-15T00:00:00.000",
       "market_capitalization": 205352607870.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 20.62
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 37.47
     },
     {
       "symbol": "APP",
       "report_date": "2026-01-16T00:00:00.000",
       "market_capitalization": 192418901880.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 19.32
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 35.11
     },
     {
       "symbol": "APP",
       "report_date": "2026-01-20T00:00:00.000",
       "market_capitalization": 191322767760.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 19.21
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 34.91
     },
     {
       "symbol": "APP",
       "report_date": "2026-01-21T00:00:00.000",
       "market_capitalization": 180171971280.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 18.09
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 32.87
     },
     {
       "symbol": "APP",
       "report_date": "2026-01-22T00:00:00.000",
       "market_capitalization": 176579087220.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 17.73
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 32.22
     },
     {
       "symbol": "APP",
       "report_date": "2026-01-23T00:00:00.000",
       "market_capitalization": 177414720330.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 17.81
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 32.37
     },
     {
       "symbol": "APP",
       "report_date": "2026-01-26T00:00:00.000",
       "market_capitalization": 181146312720.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 18.19
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 33.05
     },
     {
       "symbol": "APP",
       "report_date": "2026-01-27T00:00:00.000",
       "market_capitalization": 183893414280.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 18.46
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 33.55
     },
     {
       "symbol": "APP",
       "report_date": "2026-01-28T00:00:00.000",
       "market_capitalization": 183487438680.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 18.42
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 33.48
     },
     {
       "symbol": "APP",
       "report_date": "2026-01-29T00:00:00.000",
       "market_capitalization": 192581292120.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 19.34
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 35.14
     },
     {
       "symbol": "APP",
       "report_date": "2026-01-30T00:00:00.000",
       "market_capitalization": 160059263430.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 16.07
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 29.2
     },
     {
       "symbol": "APP",
       "report_date": "2026-02-02T00:00:00.000",
       "market_capitalization": 163405179000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 16.41
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 29.81
     },
     {
       "symbol": "APP",
       "report_date": "2026-02-03T00:00:00.000",
       "market_capitalization": 156229560270.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 15.69
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 28.51
     },
     {
       "symbol": "APP",
       "report_date": "2026-02-04T00:00:00.000",
       "market_capitalization": 131042157420.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 13.16
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 23.91
     },
     {
       "symbol": "APP",
       "report_date": "2026-02-05T00:00:00.000",
       "market_capitalization": 126945186990.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 12.75
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 23.16
     },
     {
       "symbol": "APP",
       "report_date": "2026-02-06T00:00:00.000",
       "market_capitalization": 137598663360.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 13.82
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 25.11
     },
     {
       "symbol": "APP",
       "report_date": "2026-02-09T00:00:00.000",
       "market_capitalization": 155752538940.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 15.64
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 28.42
     },
     {
       "symbol": "APP",
       "report_date": "2026-02-10T00:00:00.000",
       "market_capitalization": 159994983960.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 16.06
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 29.19
     },
     {
       "symbol": "APP",
       "report_date": "2026-02-11T00:00:00.000",
       "market_capitalization": 154544761530.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 15.52
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 28.2
     },
     {
       "symbol": "APP",
       "report_date": "2026-02-12T00:00:00.000",
       "market_capitalization": 124130422830.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 12.46
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 22.65
     },
     {
       "symbol": "APP",
       "report_date": "2026-02-13T00:00:00.000",
       "market_capitalization": 131723922900.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 13.23
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 24.03
     },
     {
       "symbol": "APP",
       "report_date": "2026-02-17T00:00:00.000",
       "market_capitalization": 126944693640.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 12.75
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 23.16
     },
     {
       "symbol": "APP",
       "report_date": "2026-02-18T00:00:00.000",
       "market_capitalization": 136391850420.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 13.69
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 24.89
     },
     {
       "symbol": "APP",
       "report_date": "2026-02-19T00:00:00.000",
       "market_capitalization": 138958536000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 13.95
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 25.35
     },
     {
       "symbol": "APP",
       "report_date": "2026-02-20T00:00:00.000",
       "market_capitalization": 141211553040.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 14.18
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 25.77
     },
     {
       "symbol": "APP",
       "report_date": "2026-02-23T00:00:00.000",
       "market_capitalization": 128374752360.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 12.89
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 23.42
     },
     {
       "symbol": "APP",
       "report_date": "2026-02-24T00:00:00.000",
       "market_capitalization": 132624455160.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 13.32
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 24.2
     },
     {
       "symbol": "APP",
       "report_date": "2026-02-25T00:00:00.000",
       "market_capitalization": 142206523140.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 14.28
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 25.95
     },
     {
       "symbol": "APP",
       "report_date": "2026-02-26T00:00:00.000",
       "market_capitalization": 150065100540.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 15.07
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 27.38
     },
     {
       "symbol": "APP",
       "report_date": "2026-02-27T00:00:00.000",
       "market_capitalization": 146638356060.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 14.72
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 26.76
     },
     {
       "symbol": "APP",
       "report_date": "2026-03-02T00:00:00.000",
       "market_capitalization": 146034628440.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 14.66
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 26.65
     },
     {
       "symbol": "APP",
       "report_date": "2026-03-03T00:00:00.000",
       "market_capitalization": 148027941420.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 14.86
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 27.01
     },
     {
       "symbol": "APP",
       "report_date": "2026-03-04T00:00:00.000",
       "market_capitalization": 162841191180.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 16.35
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 29.71
     },
     {
       "symbol": "APP",
       "report_date": "2026-03-05T00:00:00.000",
       "market_capitalization": 171526099680.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 17.22
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 31.3
     },
     {
       "symbol": "APP",
       "report_date": "2026-03-06T00:00:00.000",
       "market_capitalization": 169360774920.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 17.0
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 30.9
     },
     {
       "symbol": "APP",
       "report_date": "2026-03-09T00:00:00.000",
       "market_capitalization": 174450299940.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 17.52
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 31.83
     },
     {
       "symbol": "APP",
       "report_date": "2026-03-10T00:00:00.000",
       "market_capitalization": 161013144420.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 16.17
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 29.38
     },
     {
       "symbol": "APP",
       "report_date": "2026-03-11T00:00:00.000",
       "market_capitalization": 155636933100.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 15.63
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 28.4
     },
     {
       "symbol": "APP",
       "report_date": "2026-03-12T00:00:00.000",
       "market_capitalization": 151549123740.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 15.22
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 27.65
     },
     {
       "symbol": "APP",
       "report_date": "2026-03-13T00:00:00.000",
       "market_capitalization": 154699300260.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 15.53
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 28.23
     },
     {
       "symbol": "APP",
       "report_date": "2026-03-16T00:00:00.000",
       "market_capitalization": 152888117400.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 15.35
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 27.9
     },
     {
       "symbol": "APP",
       "report_date": "2026-03-17T00:00:00.000",
       "market_capitalization": 154840957020.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 15.55
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 28.25
     },
     {
       "symbol": "APP",
       "report_date": "2026-03-18T00:00:00.000",
       "market_capitalization": 149269124460.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 14.99
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 27.24
     },
     {
       "symbol": "APP",
       "report_date": "2026-03-19T00:00:00.000",
       "market_capitalization": 148375337760.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 14.9
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 27.07
     },
     {
       "symbol": "APP",
       "report_date": "2026-03-20T00:00:00.000",
       "market_capitalization": 149208414420.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 14.98
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 27.22
     },
     {
       "symbol": "APP",
       "report_date": "2026-03-23T00:00:00.000",
       "market_capitalization": 154793738100.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 15.54
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 28.24
     },
     {
       "symbol": "APP",
       "report_date": "2026-03-24T00:00:00.000",
       "market_capitalization": 147022852980.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 14.76
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 26.83
     },
     {
       "symbol": "APP",
       "report_date": "2026-03-25T00:00:00.000",
       "market_capitalization": 147285929820.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 14.79
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 26.87
     },
     {
       "symbol": "APP",
       "report_date": "2026-03-26T00:00:00.000",
       "market_capitalization": 131946526380.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 13.25
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 24.07
     },
     {
       "symbol": "APP",
       "report_date": "2026-03-27T00:00:00.000",
       "market_capitalization": 128570373600.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 12.91
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 23.46
     },
     {
       "symbol": "APP",
       "report_date": "2026-03-30T00:00:00.000",
       "market_capitalization": 125494398240.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
-      "ttm_revenue": 9959554000.0,
+      "ttm_revenue": 5480717000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9959554000.0,
-      "ps_ratio": 12.6
+      "ttm_revenue_usd": 5480717000.0,
+      "ps_ratio": 22.9
     },
     {
       "symbol": "APP",
       "report_date": "2026-03-31T00:00:00.000",
       "market_capitalization": 133845370200.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 8.94
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 21.71
     },
     {
       "symbol": "APP",
       "report_date": "2026-04-01T00:00:00.000",
       "market_capitalization": 130428614016.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 8.72
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 21.16
     },
     {
       "symbol": "APP",
       "report_date": "2026-04-02T00:00:00.000",
       "market_capitalization": 129934260513.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 8.68
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 21.08
     },
     {
       "symbol": "APP",
       "report_date": "2026-04-06T00:00:00.000",
       "market_capitalization": 138782179332.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 9.27
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 22.51
     },
     {
       "symbol": "APP",
       "report_date": "2026-04-07T00:00:00.000",
       "market_capitalization": 138028878756.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 9.22
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 22.39
     },
     {
       "symbol": "APP",
       "report_date": "2026-04-08T00:00:00.000",
       "market_capitalization": 131558564880.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 8.79
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 21.34
     },
     {
       "symbol": "APP",
       "report_date": "2026-04-09T00:00:00.000",
       "market_capitalization": 127502848386.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 8.52
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 20.68
     },
     {
       "symbol": "APP",
       "report_date": "2026-04-10T00:00:00.000",
       "market_capitalization": 131619097962.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 8.8
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 21.35
     },
     {
       "symbol": "APP",
       "report_date": "2026-04-13T00:00:00.000",
       "market_capitalization": 140372112705.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 9.38
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 22.77
     },
     {
       "symbol": "APP",
       "report_date": "2026-04-14T00:00:00.000",
       "market_capitalization": 145772462759.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 9.74
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 23.65
     },
     {
       "symbol": "APP",
       "report_date": "2026-04-15T00:00:00.000",
       "market_capitalization": 156236901967.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 10.44
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 25.35
     },
     {
       "symbol": "APP",
       "report_date": "2026-04-16T00:00:00.000",
       "market_capitalization": 156727842881.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 10.47
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 25.43
     },
     {
       "symbol": "APP",
       "report_date": "2026-04-17T00:00:00.000",
       "market_capitalization": 160463701480.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 10.72
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 26.03
     },
     {
       "symbol": "APP",
       "report_date": "2026-04-20T00:00:00.000",
       "market_capitalization": 165090651464.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 11.03
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 26.78
     },
     {
       "symbol": "APP",
       "report_date": "2026-04-21T00:00:00.000",
       "market_capitalization": 159111932662.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 10.63
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 25.81
     },
     {
       "symbol": "APP",
       "report_date": "2026-04-22T00:00:00.000",
       "market_capitalization": 162652759939.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 10.87
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 26.39
     },
     {
       "symbol": "APP",
       "report_date": "2026-04-23T00:00:00.000",
       "market_capitalization": 152719612953.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 10.21
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 24.78
     },
     {
       "symbol": "APP",
       "report_date": "2026-04-24T00:00:00.000",
       "market_capitalization": 150742398861.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 10.07
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 24.45
     },
     {
       "symbol": "APP",
       "report_date": "2026-04-27T00:00:00.000",
       "market_capitalization": 154777529661.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 10.34
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 25.11
     },
     {
       "symbol": "APP",
       "report_date": "2026-04-28T00:00:00.000",
       "market_capitalization": 150991231927.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 10.09
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 24.49
     },
     {
       "symbol": "APP",
       "report_date": "2026-04-29T00:00:00.000",
       "market_capitalization": 149108170887.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 9.96
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 24.19
     },
     {
       "symbol": "APP",
       "report_date": "2026-04-30T00:00:00.000",
       "market_capitalization": 149946595825.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 10.02
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 24.33
     },
     {
       "symbol": "APP",
       "report_date": "2026-05-01T00:00:00.000",
       "market_capitalization": 154532170000.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 10.33
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 25.07
     },
     {
       "symbol": "APP",
       "report_date": "2026-05-04T00:00:00.000",
       "market_capitalization": 159571262500.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 10.66
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 25.89
     },
     {
       "symbol": "APP",
       "report_date": "2026-05-05T00:00:00.000",
       "market_capitalization": 160616034345.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 10.73
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 26.06
     },
     {
       "symbol": "APP",
       "report_date": "2026-05-06T00:00:00.000",
       "market_capitalization": 157498515785.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 10.52
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 25.55
     },
     {
       "symbol": "APP",
       "report_date": "2026-05-07T00:00:00.000",
       "market_capitalization": 167590138365.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 11.2
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 27.19
     },
     {
       "symbol": "APP",
       "report_date": "2026-05-08T00:00:00.000",
       "market_capitalization": 157404452725.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 10.52
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 25.54
     },
     {
       "symbol": "APP",
       "report_date": "2026-05-11T00:00:00.000",
       "market_capitalization": 160720175590.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 10.74
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 26.07
     },
     {
       "symbol": "APP",
       "report_date": "2026-05-12T00:00:00.000",
       "market_capitalization": 164842153255.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 11.02
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 26.74
     },
     {
       "symbol": "APP",
       "report_date": "2026-05-13T00:00:00.000",
       "market_capitalization": 152358641435.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 10.18
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 24.72
     },
     {
       "symbol": "APP",
       "report_date": "2026-05-14T00:00:00.000",
       "market_capitalization": 162984407820.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 10.89
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 26.44
     },
     {
       "symbol": "APP",
       "report_date": "2026-05-15T00:00:00.000",
       "market_capitalization": 168305689500.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 11.25
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 27.3
     },
     {
       "symbol": "APP",
       "report_date": "2026-05-18T00:00:00.000",
       "market_capitalization": 165409891010.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 11.05
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 26.83
     },
     {
       "symbol": "APP",
       "report_date": "2026-05-19T00:00:00.000",
       "market_capitalization": 160209547550.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 10.71
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 25.99
     },
     {
       "symbol": "APP",
       "report_date": "2026-05-20T00:00:00.000",
       "market_capitalization": 162016902060.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 10.83
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 26.28
     },
     {
       "symbol": "APP",
       "report_date": "2026-05-21T00:00:00.000",
       "market_capitalization": 163229643655.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 10.91
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 26.48
     },
     {
       "symbol": "APP",
       "report_date": "2026-05-22T00:00:00.000",
       "market_capitalization": 161815338360.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 10.81
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 26.25
     },
     {
       "symbol": "APP",
       "report_date": "2026-05-26T00:00:00.000",
       "market_capitalization": 172753528480.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 11.54
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 28.03
     },
     {
       "symbol": "APP",
       "report_date": "2026-05-27T00:00:00.000",
       "market_capitalization": 190756526285.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
-      "ttm_revenue": 14964772000.0,
+      "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 14964772000.0,
-      "ps_ratio": 12.75
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 30.95
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-05-28T00:00:00.000",
+      "market_capitalization": 201526746655.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 6164192000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 32.69
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-05-29T00:00:00.000",
+      "market_capitalization": 205961148055.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 6164192000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 33.41
     }
   ],
   "pbRatio": [
@@ -35980,6 +36032,26 @@
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 2363483000.0,
       "pb_ratio": 80.71
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-05-28T00:00:00.000",
+      "market_capitalization": 201526746655.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 2363483000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 2363483000.0,
+      "pb_ratio": 85.27
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-05-29T00:00:00.000",
+      "market_capitalization": 205961148055.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 2363483000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 2363483000.0,
+      "pb_ratio": 87.14
     }
   ],
   "pegRatio": [
@@ -43892,6 +43964,26 @@
       "ttm_pe": 50.09,
       "eps_yoy_growth": 0.697,
       "peg_ratio": 0.72
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-05-28T00:00:00.000",
+      "close_price": 599.89,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 11.3361,
+      "ttm_pe": 52.92,
+      "eps_yoy_growth": 0.697,
+      "peg_ratio": 0.76
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-05-29T00:00:00.000",
+      "close_price": 613.09,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 11.3361,
+      "ttm_pe": 54.08,
+      "eps_yoy_growth": 0.697,
+      "peg_ratio": 0.78
     }
   ]
 }

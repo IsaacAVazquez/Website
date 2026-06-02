@@ -84,11 +84,20 @@
     {
       "symbol": "SNPS",
       "report_date": "2026-01-31",
-      "net_income_common_stockholders": 1101495000.0,
+      "net_income_common_stockholders": 64958000.0,
       "beginning_stockholders_equity": 28327602000.0,
       "ending_stockholders_equity": 30548827000.0,
       "avg_equity": 29438214500.0,
-      "roe": 0.0374
+      "roe": 0.0022
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2026-04-30",
+      "net_income_common_stockholders": 17105000.0,
+      "beginning_stockholders_equity": 30548827000.0,
+      "ending_stockholders_equity": 30478131000.0,
+      "avg_equity": 30513479000.0,
+      "roe": 0.0006
     }
   ],
   "roa": [
@@ -176,11 +185,20 @@
     {
       "symbol": "SNPS",
       "report_date": "2026-01-31",
-      "net_income_common_stockholders": 1101495000.0,
+      "net_income_common_stockholders": 64958000.0,
       "beginning_total_assets": 48224461000.0,
       "ending_total_assets": 47237928000.0,
       "avg_assets": 47731194500.0,
-      "roa": 0.0231
+      "roa": 0.0014
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2026-04-30",
+      "net_income_common_stockholders": 17105000.0,
+      "beginning_total_assets": 47237928000.0,
+      "ending_total_assets": 46889027000.0,
+      "avg_assets": 47063477500.0,
+      "roa": 0.0004
     }
   ],
   "roic": [
@@ -286,13 +304,24 @@
     {
       "symbol": "SNPS",
       "report_date": "2026-01-31",
-      "ebit": 1779383000.0,
+      "ebit": 241768000.0,
       "tax_rate_for_calcs": 0.18,
-      "nopat": 1459094060.0,
+      "nopat": 198249760.0,
       "beginning_invested_capital": 41812117000.0,
       "ending_invested_capital": 40593037000.0,
       "avg_invested_capital": 41202577000.0,
-      "roic": 0.0354
+      "roic": 0.0048
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2026-04-30",
+      "ebit": 152640000.0,
+      "tax_rate_for_calcs": 0.13,
+      "nopat": 132796800.0,
+      "beginning_invested_capital": 40593037000.0,
+      "ending_invested_capital": 40514093000.0,
+      "avg_invested_capital": 40553565000.0,
+      "roic": 0.0033
     }
   ],
   "equityMultiplier": [
@@ -362,9 +391,16 @@
     {
       "symbol": "SNPS",
       "report_date": "2026-01-31T00:00:00.000",
-      "roe": 0.0374,
-      "roa": 0.0231,
-      "equity_multiplier": 1.62
+      "roe": 0.0022,
+      "roa": 0.0014,
+      "equity_multiplier": 1.57
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2026-04-30T00:00:00.000",
+      "roe": 0.0006,
+      "roa": 0.0004,
+      "equity_multiplier": 1.5
     }
   ],
   "assetTurnover": [
@@ -434,8 +470,15 @@
     {
       "symbol": "SNPS",
       "report_date": "2026-01-31T00:00:00.000",
-      "roa": 0.0231,
-      "net_margin": 0.4573,
+      "roa": 0.0014,
+      "net_margin": 0.027,
+      "asset_turnover": 0.05
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2026-04-30T00:00:00.000",
+      "roa": 0.0004,
+      "net_margin": 0.0075,
       "asset_turnover": 0.05
     }
   ]

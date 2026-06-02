@@ -66,9 +66,9 @@
     {
       "symbol": "AAPL",
       "report_date": "2025-06-30T00:00:00.000",
-      "revenue": 408625000000.0,
+      "revenue": 94036000000.0,
       "prev_year_revenue": 85777000000.0,
-      "yoy_growth": 3.7638
+      "yoy_growth": 0.0963
     },
     {
       "symbol": "AAPL",
@@ -87,9 +87,9 @@
     {
       "symbol": "AAPL",
       "report_date": "2026-03-31T00:00:00.000",
-      "revenue": 451442000000.0,
+      "revenue": 111184000000.0,
       "prev_year_revenue": 95359000000.0,
-      "yoy_growth": 3.7341
+      "yoy_growth": 0.166
     }
   ],
   "annual_revenue": [
@@ -210,9 +210,9 @@
     {
       "symbol": "AAPL",
       "report_date": "2025-06-30T00:00:00.000",
-      "operating_income": 130214000000.0,
+      "operating_income": 28202000000.0,
       "prev_year_operating_income": 25352000000.0,
-      "yoy_growth": 4.1362
+      "yoy_growth": 0.1124
     },
     {
       "symbol": "AAPL",
@@ -231,9 +231,9 @@
     {
       "symbol": "AAPL",
       "report_date": "2026-03-31T00:00:00.000",
-      "operating_income": 147366000000.0,
+      "operating_income": 35885000000.0,
       "prev_year_operating_income": 29589000000.0,
-      "yoy_growth": 3.9804
+      "yoy_growth": 0.2128
     }
   ],
   "annual_operating_income": [
@@ -347,9 +347,9 @@
     {
       "symbol": "AAPL",
       "report_date": "2025-06-30T00:00:00.000",
-      "ebitda": 141696000000.0,
+      "ebitda": 31032000000.0,
       "prev_year_ebitda": 28202000000.0,
-      "yoy_growth": 4.0243
+      "yoy_growth": 0.1003
     },
     {
       "symbol": "AAPL",
@@ -368,9 +368,9 @@
     {
       "symbol": "AAPL",
       "report_date": "2026-03-31T00:00:00.000",
-      "ebitda": 159976000000.0,
+      "ebitda": 39324000000.0,
       "prev_year_ebitda": 32250000000.0,
-      "yoy_growth": 3.9605
+      "yoy_growth": 0.2193
     }
   ],
   "annual_ebitda": [
@@ -484,9 +484,9 @@
     {
       "symbol": "AAPL",
       "report_date": "2025-06-30T00:00:00.000",
-      "net_income_common_stockholders": 99280000000.0,
+      "net_income_common_stockholders": 23434000000.0,
       "prev_year_net_income_common_stockholders": 21448000000.0,
-      "yoy_growth": 3.6289
+      "yoy_growth": 0.0926
     },
     {
       "symbol": "AAPL",
@@ -505,9 +505,9 @@
     {
       "symbol": "AAPL",
       "report_date": "2026-03-31T00:00:00.000",
-      "net_income_common_stockholders": 122575000000.0,
+      "net_income_common_stockholders": 29578000000.0,
       "prev_year_net_income_common_stockholders": 24780000000.0,
-      "yoy_growth": 3.9465
+      "yoy_growth": 0.1936
     }
   ],
   "annual_net_income": [

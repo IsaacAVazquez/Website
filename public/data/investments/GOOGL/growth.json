@@ -231,9 +231,9 @@
     {
       "symbol": "GOOGL",
       "report_date": "2025-06-30T00:00:00.000",
-      "operating_income": 121370000000.0,
+      "operating_income": 31271000000.0,
       "prev_year_operating_income": 27425000000.0,
-      "yoy_growth": 3.4255
+      "yoy_growth": 0.1402
     },
     {
       "symbol": "GOOGL",
@@ -252,9 +252,9 @@
     {
       "symbol": "GOOGL",
       "report_date": "2026-03-31T00:00:00.000",
-      "operating_income": 138129000000.0,
+      "operating_income": 39696000000.0,
       "prev_year_operating_income": 30606000000.0,
-      "yoy_growth": 3.5131
+      "yoy_growth": 0.297
     }
   ],
   "annual_operating_income": [
@@ -375,9 +375,9 @@
     {
       "symbol": "GOOGL",
       "report_date": "2025-06-30T00:00:00.000",
-      "ebitda": 157748000000.0,
+      "ebitda": 39192000000.0,
       "prev_year_ebitda": 31326000000.0,
-      "yoy_growth": 4.0357
+      "yoy_growth": 0.2511
     },
     {
       "symbol": "GOOGL",
@@ -396,9 +396,9 @@
     {
       "symbol": "GOOGL",
       "report_date": "2026-03-31T00:00:00.000",
-      "ebitda": 218815000000.0,
+      "ebitda": 84427000000.0,
       "prev_year_ebitda": 46310000000.0,
-      "yoy_growth": 3.725
+      "yoy_growth": 0.8231
     }
   ],
   "annual_ebitda": [
@@ -526,9 +526,9 @@
     {
       "symbol": "GOOGL",
       "report_date": "2025-06-30T00:00:00.000",
-      "net_income_common_stockholders": 115573000000.0,
+      "net_income_common_stockholders": 28196000000.0,
       "prev_year_net_income_common_stockholders": 23619000000.0,
-      "yoy_growth": 3.8932
+      "yoy_growth": 0.1938
     },
     {
       "symbol": "GOOGL",
@@ -547,9 +547,9 @@
     {
       "symbol": "GOOGL",
       "report_date": "2026-03-31T00:00:00.000",
-      "net_income_common_stockholders": 160208000000.0,
+      "net_income_common_stockholders": 62578000000.0,
       "prev_year_net_income_common_stockholders": 34540000000.0,
-      "yoy_growth": 3.6383
+      "yoy_growth": 0.8118
     }
   ],
   "annual_net_income": [

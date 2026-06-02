@@ -368,9 +368,9 @@
     {
       "symbol": "NET",
       "report_date": "2025-06-30T00:00:00.000",
-      "ebitda": 53775000.0,
+      "ebitda": -284000.0,
       "prev_year_ebitda": 16941000.0,
-      "yoy_growth": 2.1743
+      "yoy_growth": -1.0168
     },
     {
       "symbol": "NET",
@@ -389,9 +389,9 @@
     {
       "symbol": "NET",
       "report_date": "2026-03-31T00:00:00.000",
-      "ebitda": 137887000.0,
+      "ebitda": 38976000.0,
       "prev_year_ebitda": 6891000.0,
-      "yoy_growth": 19.0097
+      "yoy_growth": 4.6561
     }
   ],
   "annual_ebitda": [
@@ -519,9 +519,9 @@
     {
       "symbol": "NET",
       "report_date": "2025-06-30T00:00:00.000",
-      "net_income_common_stockholders": -117079000.0,
+      "net_income_common_stockholders": -50446000.0,
       "prev_year_net_income_common_stockholders": -15078000.0,
-      "yoy_growth": -6.7649
+      "yoy_growth": -2.3457
     },
     {
       "symbol": "NET",
@@ -540,9 +540,9 @@
     {
       "symbol": "NET",
       "report_date": "2026-03-31T00:00:00.000",
-      "net_income_common_stockholders": -86740000.0,
+      "net_income_common_stockholders": -22927000.0,
       "prev_year_net_income_common_stockholders": -38454000.0,
-      "yoy_growth": -1.2557
+      "yoy_growth": 0.4038
     }
   ],
   "annual_net_income": [
@@ -670,9 +670,9 @@
     {
       "symbol": "NET",
       "report_date": "2025-06-30T00:00:00.000",
-      "free_cash_flow": 179180000.0,
+      "free_cash_flow": 33280000.0,
       "prev_year_free_cash_flow": 38275000.0,
-      "yoy_growth": 3.6814
+      "yoy_growth": -0.1305
     },
     {
       "symbol": "NET",
@@ -691,9 +691,9 @@
     {
       "symbol": "NET",
       "report_date": "2026-03-31T00:00:00.000",
-      "free_cash_flow": 291769000.0,
+      "free_cash_flow": 84074000.0,
       "prev_year_free_cash_flow": 52867000.0,
-      "yoy_growth": 4.5189
+      "yoy_growth": 0.5903
     }
   ],
   "annual_fcf": [

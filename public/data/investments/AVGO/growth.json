@@ -354,9 +354,9 @@
     {
       "symbol": "AVGO",
       "report_date": "2026-01-31T00:00:00.000",
-      "ebitda": 37326000000.0,
+      "ebitda": 11149000000.0,
       "prev_year_ebitda": 8537000000.0,
-      "yoy_growth": 3.3723
+      "yoy_growth": 0.306
     }
   ],
   "annual_ebitda": [
@@ -491,9 +491,9 @@
     {
       "symbol": "AVGO",
       "report_date": "2026-01-31T00:00:00.000",
-      "net_income_common_stockholders": 24972000000.0,
+      "net_income_common_stockholders": 7349000000.0,
       "prev_year_net_income_common_stockholders": 5503000000.0,
-      "yoy_growth": 3.5379
+      "yoy_growth": 0.3355
     }
   ],
   "annual_net_income": [

@@ -498,9 +498,9 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-06-30T00:00:00.000",
-      "net_income_common_stockholders": 763292000.0,
+      "net_income_common_stockholders": 326727000.0,
       "prev_year_net_income_common_stockholders": 134126000.0,
-      "yoy_growth": 4.6909
+      "yoy_growth": 1.436
     },
     {
       "symbol": "PLTR",
@@ -519,9 +519,9 @@
     {
       "symbol": "PLTR",
       "report_date": "2026-03-31T00:00:00.000",
-      "net_income_common_stockholders": 2281529000.0,
+      "net_income_common_stockholders": 870527000.0,
       "prev_year_net_income_common_stockholders": 214031000.0,
-      "yoy_growth": 9.6598
+      "yoy_growth": 3.0673
     }
   ],
   "annual_net_income": [
@@ -635,9 +635,9 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-06-30T00:00:00.000",
-      "free_cash_flow": 1708704000.0,
+      "free_cash_flow": 531617000.0,
       "prev_year_free_cash_flow": 141308000.0,
-      "yoy_growth": 11.0921
+      "yoy_growth": 2.7621
     },
     {
       "symbol": "PLTR",
@@ -656,9 +656,9 @@
     {
       "symbol": "PLTR",
       "report_date": "2026-03-31T00:00:00.000",
-      "free_cash_flow": 2688276000.0,
+      "free_cash_flow": 891764000.0,
       "prev_year_free_cash_flow": 304079000.0,
-      "yoy_growth": 7.8407
+      "yoy_growth": 1.9327
     }
   ],
   "annual_fcf": [

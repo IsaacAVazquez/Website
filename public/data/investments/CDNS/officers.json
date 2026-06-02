@@ -8,7 +8,7 @@
     "pay": 2271043,
     "exercised": 28832058,
     "unexercised": 83347712,
-    "report_date": "2026-05-28"
+    "report_date": "2026-06-01"
   },
   {
     "symbol": "CDNS",
@@ -19,7 +19,7 @@
     "pay": 1114478,
     "exercised": 10462365,
     "unexercised": 1899150,
-    "report_date": "2026-05-28"
+    "report_date": "2026-06-01"
   },
   {
     "symbol": "CDNS",
@@ -30,7 +30,7 @@
     "pay": 1136083,
     "exercised": 525950,
     "unexercised": 6453821,
-    "report_date": "2026-05-28"
+    "report_date": "2026-06-01"
   },
   {
     "symbol": "CDNS",
@@ -41,7 +41,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-05-28"
+    "report_date": "2026-06-01"
   },
   {
     "symbol": "CDNS",
@@ -52,7 +52,7 @@
     "pay": 1383058,
     "exercised": 4010486,
     "unexercised": 180620,
-    "report_date": "2026-05-28"
+    "report_date": "2026-06-01"
   },
   {
     "symbol": "CDNS",
@@ -63,7 +63,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-05-28"
+    "report_date": "2026-06-01"
   },
   {
     "symbol": "CDNS",
@@ -74,7 +74,7 @@
     "pay": 1208527,
     "exercised": 0,
     "unexercised": 153548,
-    "report_date": "2026-05-28"
+    "report_date": "2026-06-01"
   },
   {
     "symbol": "CDNS",
@@ -85,7 +85,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-05-28"
+    "report_date": "2026-06-01"
   },
   {
     "symbol": "CDNS",
@@ -96,7 +96,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-05-28"
+    "report_date": "2026-06-01"
   },
   {
     "symbol": "CDNS",
@@ -107,6 +107,6 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-05-28"
+    "report_date": "2026-06-01"
   }
 ]

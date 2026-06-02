@@ -89,6 +89,15 @@
       "ending_stockholders_equity": 59142000000.0,
       "avg_equity": 59581500000.0,
       "roe": 0.0326
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2026-04-30",
+      "net_income_common_stockholders": 2107000000.0,
+      "beginning_stockholders_equity": 59142000000.0,
+      "ending_stockholders_equity": 34235000000.0,
+      "avg_equity": 46688500000.0,
+      "roe": 0.0451
     }
   ],
   "roa": [
@@ -181,6 +190,15 @@
       "ending_total_assets": 112305000000.0,
       "avg_assets": 103724500000.0,
       "roa": 0.0187
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2026-04-30",
+      "net_income_common_stockholders": 2107000000.0,
+      "beginning_total_assets": 112305000000.0,
+      "ending_total_assets": 106680000000.0,
+      "avg_assets": 109492500000.0,
+      "roa": 0.0192
     }
   ],
   "roic": [
@@ -253,13 +271,13 @@
     {
       "symbol": "CRM",
       "report_date": "2025-04-30",
-      "ebit": 1978000000.0,
+      "ebit": 2042000000.0,
       "tax_rate_for_calcs": 0.22,
-      "nopat": 1542840000.0,
+      "nopat": 1592760000.0,
       "beginning_invested_capital": 69606000000.0,
       "ending_invested_capital": 69101000000.0,
       "avg_invested_capital": 69353500000.0,
-      "roic": 0.0222
+      "roic": 0.023
     },
     {
       "symbol": "CRM",
@@ -287,12 +305,23 @@
       "symbol": "CRM",
       "report_date": "2026-01-31",
       "ebit": 2155000000.0,
-      "tax_rate_for_calcs": 0.22,
-      "nopat": 1680900000.0,
+      "tax_rate_for_calcs": 0.26,
+      "nopat": 1594700000.0,
       "beginning_invested_capital": 68459000000.0,
       "ending_invested_capital": 73581000000.0,
       "avg_invested_capital": 71020000000.0,
-      "roic": 0.0237
+      "roic": 0.0225
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2026-04-30",
+      "ebit": 3038000000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 2339260000.0,
+      "beginning_invested_capital": 73581000000.0,
+      "ending_invested_capital": 73515000000.0,
+      "avg_invested_capital": 73548000000.0,
+      "roic": 0.0318
     }
   ],
   "equityMultiplier": [
@@ -365,6 +394,13 @@
       "roe": 0.0326,
       "roa": 0.0187,
       "equity_multiplier": 1.74
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2026-04-30T00:00:00.000",
+      "roe": 0.0451,
+      "roa": 0.0192,
+      "equity_multiplier": 2.35
     }
   ],
   "assetTurnover": [
@@ -435,8 +471,15 @@
       "symbol": "CRM",
       "report_date": "2026-01-31T00:00:00.000",
       "roa": 0.0187,
-      "net_margin": 0.0468,
-      "asset_turnover": 0.4
+      "net_margin": 0.1735,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2026-04-30T00:00:00.000",
+      "roa": 0.0192,
+      "net_margin": 0.1893,
+      "asset_turnover": 0.1
     }
   ]
 }

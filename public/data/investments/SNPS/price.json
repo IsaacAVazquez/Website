@@ -1,24 +1,6 @@
 [
   {
     "symbol": "SNPS",
-    "report_date": "2025-05-27",
-    "open": 507.14,
-    "close": 511.79,
-    "high": 515.08,
-    "low": 504.36,
-    "volume": 1251900
-  },
-  {
-    "symbol": "SNPS",
-    "report_date": "2025-05-28",
-    "open": 511.02,
-    "close": 462.43,
-    "high": 514.99,
-    "low": 445.0,
-    "volume": 4806200
-  },
-  {
-    "symbol": "SNPS",
     "report_date": "2025-05-29",
     "open": 473.0,
     "close": 454.99,
@@ -2266,5 +2248,23 @@
     "high": 534.62,
     "low": 523.15,
     "volume": 2433700
+  },
+  {
+    "symbol": "SNPS",
+    "report_date": "2026-05-28",
+    "open": 510.0,
+    "close": 480.64,
+    "high": 526.09,
+    "low": 471.69,
+    "volume": 4745100
+  },
+  {
+    "symbol": "SNPS",
+    "report_date": "2026-05-29",
+    "open": 480.67,
+    "close": 475.62,
+    "high": 484.5,
+    "low": 469.37,
+    "volume": 3357500
   }
 ]

@@ -607,9 +607,9 @@
     {
       "symbol": "META",
       "report_date": "2025-06-30T00:00:00.000",
-      "free_cash_flow": 50137000000.0,
+      "free_cash_flow": 9023000000.0,
       "prev_year_free_cash_flow": 11197000000.0,
-      "yoy_growth": 3.4777
+      "yoy_growth": -0.1942
     },
     {
       "symbol": "META",
@@ -628,9 +628,9 @@
     {
       "symbol": "META",
       "report_date": "2026-03-31T00:00:00.000",
-      "free_cash_flow": 48253000000.0,
+      "free_cash_flow": 13229000000.0,
       "prev_year_free_cash_flow": 11085000000.0,
-      "yoy_growth": 3.353
+      "yoy_growth": 0.1934
     }
   ],
   "annual_fcf": [
