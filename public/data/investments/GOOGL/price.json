@@ -1,33 +1,6 @@
 [
   {
     "symbol": "GOOGL",
-    "report_date": "2025-05-29",
-    "open": 174.0,
-    "close": 171.86,
-    "high": 174.42,
-    "low": 170.63,
-    "volume": 29373800
-  },
-  {
-    "symbol": "GOOGL",
-    "report_date": "2025-05-30",
-    "open": 171.35,
-    "close": 171.74,
-    "high": 172.21,
-    "low": 167.44,
-    "volume": 52639900
-  },
-  {
-    "symbol": "GOOGL",
-    "report_date": "2025-06-02",
-    "open": 167.84,
-    "close": 169.03,
-    "high": 169.87,
-    "low": 167.39,
-    "volume": 38612300
-  },
-  {
-    "symbol": "GOOGL",
     "report_date": "2025-06-03",
     "open": 167.49,
     "close": 166.18,
@@ -2265,6 +2238,33 @@
     "close": 380.34,
     "high": 385.24,
     "low": 378.46,
-    "volume": 44355000
+    "volume": 44415800
+  },
+  {
+    "symbol": "GOOGL",
+    "report_date": "2026-06-01",
+    "open": 376.52,
+    "close": 376.37,
+    "high": 378.56,
+    "low": 373.52,
+    "volume": 28672100
+  },
+  {
+    "symbol": "GOOGL",
+    "report_date": "2026-06-02",
+    "open": 366.59,
+    "close": 361.85,
+    "high": 373.54,
+    "low": 358.44,
+    "volume": 50412300
+  },
+  {
+    "symbol": "GOOGL",
+    "report_date": "2026-06-03",
+    "open": 362.03,
+    "close": 358.99,
+    "high": 366.45,
+    "low": 358.08,
+    "volume": 52636770
   }
 ]

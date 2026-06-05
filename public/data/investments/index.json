@@ -24,10 +24,10 @@
     "PANW",
     "CRWD",
     "NET",
-    "SNPS",
-    "CDNS"
+    "SNPS"
   ],
   "failed": [
+    "CDNS",
     "AMD",
     "INTC",
     "QCOM",
@@ -153,7 +153,7 @@
     "FTNT",
     "ECL"
   ],
-  "lastUpdated": "2026-06-02T00:07:23.336952+00:00",
+  "lastUpdated": "2026-06-05T00:00:31.538495+00:00",
   "entries": [
     {
       "symbol": "AAPL",
@@ -304,12 +304,6 @@
       "shortName": "Synopsys, Inc.",
       "longName": "Synopsys, Inc.",
       "searchText": "snps synopsys, inc. synopsys, inc."
-    },
-    {
-      "symbol": "CDNS",
-      "shortName": "Cadence Design Systems, Inc.",
-      "longName": "Cadence Design Systems, Inc.",
-      "searchText": "cdns cadence design systems, inc. cadence design systems, inc."
     }
   ]
 }

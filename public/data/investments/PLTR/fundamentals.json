@@ -11580,6 +11580,30 @@
       "close_price": 156.54,
       "ttm_eps": 0.8876,
       "ttm_pe": 176.36
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2026-06-01T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 160.65,
+      "ttm_eps": 0.8876,
+      "ttm_pe": 180.99
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2026-06-02T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 152.17,
+      "ttm_eps": 0.8876,
+      "ttm_pe": 171.44
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2026-06-03T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 142.2,
+      "ttm_eps": 0.8876,
+      "ttm_pe": 160.21
     }
   ],
   "marketCap": [
@@ -14116,264 +14140,264 @@
       "report_date": "2021-12-31T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 18.21,
-      "shares_outstanding": 2027474000,
-      "market_capitalization": 36920301540.0
+      "shares_outstanding": 2128359000,
+      "market_capitalization": 38757417390.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2022-01-03T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 18.53,
-      "shares_outstanding": 2027474000,
-      "market_capitalization": 37569093220.0
+      "shares_outstanding": 2128359000,
+      "market_capitalization": 39438492270.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2022-01-04T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 18.17,
-      "shares_outstanding": 2027474000,
-      "market_capitalization": 36839202580.0
+      "shares_outstanding": 2128359000,
+      "market_capitalization": 38672283030.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2022-01-05T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 16.96,
-      "shares_outstanding": 2027474000,
-      "market_capitalization": 34385959040.0
+      "shares_outstanding": 2128359000,
+      "market_capitalization": 36096968640.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2022-01-06T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 16.74,
-      "shares_outstanding": 2027474000,
-      "market_capitalization": 33939914760.0
+      "shares_outstanding": 2128359000,
+      "market_capitalization": 35628729660.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2022-01-07T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 16.56,
-      "shares_outstanding": 2027474000,
-      "market_capitalization": 33574969440.0
+      "shares_outstanding": 2128359000,
+      "market_capitalization": 35245625040.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2022-01-10T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 16.5,
-      "shares_outstanding": 2027474000,
-      "market_capitalization": 33453321000.0
+      "shares_outstanding": 2128359000,
+      "market_capitalization": 35117923500.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2022-01-11T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 16.89,
-      "shares_outstanding": 2027474000,
-      "market_capitalization": 34244035860.0
+      "shares_outstanding": 2128359000,
+      "market_capitalization": 35947983510.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2022-01-12T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 16.72,
-      "shares_outstanding": 2027474000,
-      "market_capitalization": 33899365280.0
+      "shares_outstanding": 2128359000,
+      "market_capitalization": 35586162480.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2022-01-13T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 16.01,
-      "shares_outstanding": 2027474000,
-      "market_capitalization": 32459858740.0
+      "shares_outstanding": 2128359000,
+      "market_capitalization": 34075027590.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2022-01-14T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 16.01,
-      "shares_outstanding": 2027474000,
-      "market_capitalization": 32459858740.0
+      "shares_outstanding": 2128359000,
+      "market_capitalization": 34075027590.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2022-01-18T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 14.97,
-      "shares_outstanding": 2027474000,
-      "market_capitalization": 30351285780.0
+      "shares_outstanding": 2128359000,
+      "market_capitalization": 31861534230.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2022-01-19T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 14.56,
-      "shares_outstanding": 2027474000,
-      "market_capitalization": 29520021440.0
+      "shares_outstanding": 2128359000,
+      "market_capitalization": 30988907040.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2022-01-20T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 14.62,
-      "shares_outstanding": 2027474000,
-      "market_capitalization": 29641669880.0
+      "shares_outstanding": 2128359000,
+      "market_capitalization": 31116608580.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2022-01-21T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 13.53,
-      "shares_outstanding": 2027474000,
-      "market_capitalization": 27431723220.0
+      "shares_outstanding": 2128359000,
+      "market_capitalization": 28796697270.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2022-01-24T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 13.4,
-      "shares_outstanding": 2027474000,
-      "market_capitalization": 27168151600.0
+      "shares_outstanding": 2128359000,
+      "market_capitalization": 28520010600.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2022-01-25T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 13.06,
-      "shares_outstanding": 2027474000,
-      "market_capitalization": 26478810440.0
+      "shares_outstanding": 2128359000,
+      "market_capitalization": 27796368540.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2022-01-26T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 12.75,
-      "shares_outstanding": 2027474000,
-      "market_capitalization": 25850293500.0
+      "shares_outstanding": 2128359000,
+      "market_capitalization": 27136577250.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2022-01-27T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 12.28,
-      "shares_outstanding": 2027474000,
-      "market_capitalization": 24897380720.0
+      "shares_outstanding": 2128359000,
+      "market_capitalization": 26136248520.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2022-01-28T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 12.71,
-      "shares_outstanding": 2027474000,
-      "market_capitalization": 25769194540.0
+      "shares_outstanding": 2128359000,
+      "market_capitalization": 27051442890.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2022-01-31T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 13.71,
-      "shares_outstanding": 2027474000,
-      "market_capitalization": 27796668540.0
+      "shares_outstanding": 2128359000,
+      "market_capitalization": 29179801890.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2022-02-01T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 14.2,
-      "shares_outstanding": 2027474000,
-      "market_capitalization": 28790130800.0
+      "shares_outstanding": 2128359000,
+      "market_capitalization": 30222697800.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2022-02-02T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 13.32,
-      "shares_outstanding": 2027474000,
-      "market_capitalization": 27005953680.0
+      "shares_outstanding": 2128359000,
+      "market_capitalization": 28349741880.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2022-02-03T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 12.45,
-      "shares_outstanding": 2027474000,
-      "market_capitalization": 25242051300.0
+      "shares_outstanding": 2128359000,
+      "market_capitalization": 26498069550.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2022-02-04T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 12.94,
-      "shares_outstanding": 2027474000,
-      "market_capitalization": 26235513560.0
+      "shares_outstanding": 2128359000,
+      "market_capitalization": 27540965460.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2022-02-07T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 12.98,
-      "shares_outstanding": 2027474000,
-      "market_capitalization": 26316612520.0
+      "shares_outstanding": 2128359000,
+      "market_capitalization": 27626099820.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2022-02-08T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 13.15,
-      "shares_outstanding": 2027474000,
-      "market_capitalization": 26661283100.0
+      "shares_outstanding": 2128359000,
+      "market_capitalization": 27987920850.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2022-02-09T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 13.87,
-      "shares_outstanding": 2027474000,
-      "market_capitalization": 28121064380.0
+      "shares_outstanding": 2128359000,
+      "market_capitalization": 29520339330.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2022-02-10T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 13.56,
-      "shares_outstanding": 2027474000,
-      "market_capitalization": 27492547440.0
+      "shares_outstanding": 2128359000,
+      "market_capitalization": 28860548040.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2022-02-11T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 13.13,
-      "shares_outstanding": 2027474000,
-      "market_capitalization": 26620733620.0
+      "shares_outstanding": 2128359000,
+      "market_capitalization": 27945353670.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2022-02-14T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 13.26,
-      "shares_outstanding": 2027474000,
-      "market_capitalization": 26884305240.0
+      "shares_outstanding": 2128359000,
+      "market_capitalization": 28222040340.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2022-02-15T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 14.17,
-      "shares_outstanding": 2027474000,
-      "market_capitalization": 28729306580.0
+      "shares_outstanding": 2128359000,
+      "market_capitalization": 30158847030.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2022-02-16T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 13.97,
-      "shares_outstanding": 2027474000,
-      "market_capitalization": 28323811780.0
+      "shares_outstanding": 2128359000,
+      "market_capitalization": 29733175230.0
     },
     {
       "symbol": "PLTR",
@@ -17628,144 +17652,144 @@
       "report_date": "2023-10-02T00:00:00.000",
       "shares_report_date": "2023-09-30T00:00:00.000",
       "close_price": 15.88,
-      "shares_outstanding": 2175240800,
-      "market_capitalization": 34542823904.0
+      "shares_outstanding": 2175241000,
+      "market_capitalization": 34542827080.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2023-10-03T00:00:00.000",
       "shares_report_date": "2023-09-30T00:00:00.000",
       "close_price": 14.9,
-      "shares_outstanding": 2175240800,
-      "market_capitalization": 32411087920.0
+      "shares_outstanding": 2175241000,
+      "market_capitalization": 32411090900.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2023-10-04T00:00:00.000",
       "shares_report_date": "2023-09-30T00:00:00.000",
       "close_price": 15.73,
-      "shares_outstanding": 2175240800,
-      "market_capitalization": 34216537784.0
+      "shares_outstanding": 2175241000,
+      "market_capitalization": 34216540930.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2023-10-05T00:00:00.000",
       "shares_report_date": "2023-09-30T00:00:00.000",
       "close_price": 15.81,
-      "shares_outstanding": 2175240800,
-      "market_capitalization": 34390557048.0
+      "shares_outstanding": 2175241000,
+      "market_capitalization": 34390560210.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2023-10-06T00:00:00.000",
       "shares_report_date": "2023-09-30T00:00:00.000",
       "close_price": 16.61,
-      "shares_outstanding": 2175240800,
-      "market_capitalization": 36130749688.0
+      "shares_outstanding": 2175241000,
+      "market_capitalization": 36130753010.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2023-10-09T00:00:00.000",
       "shares_report_date": "2023-09-30T00:00:00.000",
       "close_price": 17.61,
-      "shares_outstanding": 2175240800,
-      "market_capitalization": 38305990488.0
+      "shares_outstanding": 2175241000,
+      "market_capitalization": 38305994010.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2023-10-10T00:00:00.000",
       "shares_report_date": "2023-09-30T00:00:00.000",
       "close_price": 17.8,
-      "shares_outstanding": 2175240800,
-      "market_capitalization": 38719286240.0
+      "shares_outstanding": 2175241000,
+      "market_capitalization": 38719289800.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2023-10-11T00:00:00.000",
       "shares_report_date": "2023-09-30T00:00:00.000",
       "close_price": 17.92,
-      "shares_outstanding": 2175240800,
-      "market_capitalization": 38980315136.0
+      "shares_outstanding": 2175241000,
+      "market_capitalization": 38980318720.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2023-10-12T00:00:00.000",
       "shares_report_date": "2023-09-30T00:00:00.000",
       "close_price": 17.94,
-      "shares_outstanding": 2175240800,
-      "market_capitalization": 39023819952.0
+      "shares_outstanding": 2175241000,
+      "market_capitalization": 39023823540.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2023-10-13T00:00:00.000",
       "shares_report_date": "2023-09-30T00:00:00.000",
       "close_price": 17.36,
-      "shares_outstanding": 2175240800,
-      "market_capitalization": 37762180288.0
+      "shares_outstanding": 2175241000,
+      "market_capitalization": 37762183760.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2023-10-16T00:00:00.000",
       "shares_report_date": "2023-09-30T00:00:00.000",
       "close_price": 17.36,
-      "shares_outstanding": 2175240800,
-      "market_capitalization": 37762180288.0
+      "shares_outstanding": 2175241000,
+      "market_capitalization": 37762183760.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2023-10-17T00:00:00.000",
       "shares_report_date": "2023-09-30T00:00:00.000",
       "close_price": 17.84,
-      "shares_outstanding": 2175240800,
-      "market_capitalization": 38806295872.0
+      "shares_outstanding": 2175241000,
+      "market_capitalization": 38806299440.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2023-10-18T00:00:00.000",
       "shares_report_date": "2023-09-30T00:00:00.000",
       "close_price": 17.2,
-      "shares_outstanding": 2175240800,
-      "market_capitalization": 37414141760.0
+      "shares_outstanding": 2175241000,
+      "market_capitalization": 37414145200.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2023-10-19T00:00:00.000",
       "shares_report_date": "2023-09-30T00:00:00.000",
       "close_price": 17.06,
-      "shares_outstanding": 2175240800,
-      "market_capitalization": 37109608048.0
+      "shares_outstanding": 2175241000,
+      "market_capitalization": 37109611460.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2023-10-20T00:00:00.000",
       "shares_report_date": "2023-09-30T00:00:00.000",
       "close_price": 16.11,
-      "shares_outstanding": 2175240800,
-      "market_capitalization": 35043129288.0
+      "shares_outstanding": 2175241000,
+      "market_capitalization": 35043132510.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2023-10-23T00:00:00.000",
       "shares_report_date": "2023-09-30T00:00:00.000",
       "close_price": 16.2,
-      "shares_outstanding": 2175240800,
-      "market_capitalization": 35238900960.0
+      "shares_outstanding": 2175241000,
+      "market_capitalization": 35238904200.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2023-10-24T00:00:00.000",
       "shares_report_date": "2023-09-30T00:00:00.000",
       "close_price": 16.64,
-      "shares_outstanding": 2175240800,
-      "market_capitalization": 36196006912.0
+      "shares_outstanding": 2175241000,
+      "market_capitalization": 36196010240.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2023-10-25T00:00:00.000",
       "shares_report_date": "2023-09-30T00:00:00.000",
       "close_price": 15.59,
-      "shares_outstanding": 2175240800,
-      "market_capitalization": 33912004072.0
+      "shares_outstanding": 2175241000,
+      "market_capitalization": 33912007190.0
     },
     {
       "symbol": "PLTR",
@@ -18132,232 +18156,232 @@
       "report_date": "2024-01-02T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 16.58,
-      "shares_outstanding": 2200127700,
-      "market_capitalization": 36478117266.0
+      "shares_outstanding": 2200128000,
+      "market_capitalization": 36478122240.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-01-03T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 16.09,
-      "shares_outstanding": 2200127700,
-      "market_capitalization": 35400054693.0
+      "shares_outstanding": 2200128000,
+      "market_capitalization": 35400059520.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-01-04T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 16.25,
-      "shares_outstanding": 2200127700,
-      "market_capitalization": 35752075125.0
+      "shares_outstanding": 2200128000,
+      "market_capitalization": 35752080000.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-01-05T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 15.98,
-      "shares_outstanding": 2200127700,
-      "market_capitalization": 35158040646.0
+      "shares_outstanding": 2200128000,
+      "market_capitalization": 35158045440.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-01-08T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 16.67,
-      "shares_outstanding": 2200127700,
-      "market_capitalization": 36676128759.0
+      "shares_outstanding": 2200128000,
+      "market_capitalization": 36676133760.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-01-09T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 16.39,
-      "shares_outstanding": 2200127700,
-      "market_capitalization": 36060093003.0
+      "shares_outstanding": 2200128000,
+      "market_capitalization": 36060097920.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-01-10T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 16.79,
-      "shares_outstanding": 2200127700,
-      "market_capitalization": 36940144083.0
+      "shares_outstanding": 2200128000,
+      "market_capitalization": 36940149120.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-01-11T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 16.68,
-      "shares_outstanding": 2200127700,
-      "market_capitalization": 36698130036.0
+      "shares_outstanding": 2200128000,
+      "market_capitalization": 36698135040.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-01-12T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 16.76,
-      "shares_outstanding": 2200127700,
-      "market_capitalization": 36874140252.0
+      "shares_outstanding": 2200128000,
+      "market_capitalization": 36874145280.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-01-16T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 16.53,
-      "shares_outstanding": 2200127700,
-      "market_capitalization": 36368110881.0
+      "shares_outstanding": 2200128000,
+      "market_capitalization": 36368115840.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-01-17T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 16.39,
-      "shares_outstanding": 2200127700,
-      "market_capitalization": 36060093003.0
+      "shares_outstanding": 2200128000,
+      "market_capitalization": 36060097920.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-01-18T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 16.4,
-      "shares_outstanding": 2200127700,
-      "market_capitalization": 36082094280.0
+      "shares_outstanding": 2200128000,
+      "market_capitalization": 36082099200.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-01-19T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 16.78,
-      "shares_outstanding": 2200127700,
-      "market_capitalization": 36918142806.0
+      "shares_outstanding": 2200128000,
+      "market_capitalization": 36918147840.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-01-22T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 17.6,
-      "shares_outstanding": 2200127700,
-      "market_capitalization": 38722247520.0
+      "shares_outstanding": 2200128000,
+      "market_capitalization": 38722252800.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-01-23T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 17.33,
-      "shares_outstanding": 2200127700,
-      "market_capitalization": 38128213041.0
+      "shares_outstanding": 2200128000,
+      "market_capitalization": 38128218240.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-01-24T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 16.75,
-      "shares_outstanding": 2200127700,
-      "market_capitalization": 36852138975.0
+      "shares_outstanding": 2200128000,
+      "market_capitalization": 36852144000.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-01-25T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 16.46,
-      "shares_outstanding": 2200127700,
-      "market_capitalization": 36214101942.0
+      "shares_outstanding": 2200128000,
+      "market_capitalization": 36214106880.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-01-26T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 16.35,
-      "shares_outstanding": 2200127700,
-      "market_capitalization": 35972087895.0
+      "shares_outstanding": 2200128000,
+      "market_capitalization": 35972092800.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-01-29T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 17.09,
-      "shares_outstanding": 2200127700,
-      "market_capitalization": 37600182393.0
+      "shares_outstanding": 2200128000,
+      "market_capitalization": 37600187520.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-01-30T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 16.74,
-      "shares_outstanding": 2200127700,
-      "market_capitalization": 36830137698.0
+      "shares_outstanding": 2200128000,
+      "market_capitalization": 36830142720.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-01-31T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 16.09,
-      "shares_outstanding": 2200127700,
-      "market_capitalization": 35400054693.0
+      "shares_outstanding": 2200128000,
+      "market_capitalization": 35400059520.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-02-01T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 16.33,
-      "shares_outstanding": 2200127700,
-      "market_capitalization": 35928085341.0
+      "shares_outstanding": 2200128000,
+      "market_capitalization": 35928090240.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-02-02T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 17.02,
-      "shares_outstanding": 2200127700,
-      "market_capitalization": 37446173454.0
+      "shares_outstanding": 2200128000,
+      "market_capitalization": 37446178560.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-02-05T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 16.72,
-      "shares_outstanding": 2200127700,
-      "market_capitalization": 36786135144.0
+      "shares_outstanding": 2200128000,
+      "market_capitalization": 36786140160.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-02-06T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 21.87,
-      "shares_outstanding": 2200127700,
-      "market_capitalization": 48116792799.0
+      "shares_outstanding": 2200128000,
+      "market_capitalization": 48116799360.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-02-07T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 23.6,
-      "shares_outstanding": 2200127700,
-      "market_capitalization": 51923013720.0
+      "shares_outstanding": 2200128000,
+      "market_capitalization": 51923020800.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-02-08T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 24.51,
-      "shares_outstanding": 2200127700,
-      "market_capitalization": 53925129927.0
+      "shares_outstanding": 2200128000,
+      "market_capitalization": 53925137280.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-02-09T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 24.38,
-      "shares_outstanding": 2200127700,
-      "market_capitalization": 53639113326.0
+      "shares_outstanding": 2200128000,
+      "market_capitalization": 53639120640.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-02-12T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 25.05,
-      "shares_outstanding": 2200127700,
-      "market_capitalization": 55113198885.0
+      "shares_outstanding": 2200128000,
+      "market_capitalization": 55113206400.0
     },
     {
       "symbol": "PLTR",
@@ -18620,64 +18644,64 @@
       "report_date": "2024-04-01T00:00:00.000",
       "shares_report_date": "2024-03-31T00:00:00.000",
       "close_price": 22.86,
-      "shares_outstanding": 2226963100,
-      "market_capitalization": 50908376466.0
+      "shares_outstanding": 2226963000,
+      "market_capitalization": 50908374180.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-04-02T00:00:00.000",
       "shares_report_date": "2024-03-31T00:00:00.000",
       "close_price": 22.72,
-      "shares_outstanding": 2226963100,
-      "market_capitalization": 50596601632.0
+      "shares_outstanding": 2226963000,
+      "market_capitalization": 50596599360.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-04-03T00:00:00.000",
       "shares_report_date": "2024-03-31T00:00:00.000",
       "close_price": 22.7,
-      "shares_outstanding": 2226963100,
-      "market_capitalization": 50552062370.0
+      "shares_outstanding": 2226963000,
+      "market_capitalization": 50552060100.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-04-04T00:00:00.000",
       "shares_report_date": "2024-03-31T00:00:00.000",
       "close_price": 22.48,
-      "shares_outstanding": 2226963100,
-      "market_capitalization": 50062130488.0
+      "shares_outstanding": 2226963000,
+      "market_capitalization": 50062128240.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-04-05T00:00:00.000",
       "shares_report_date": "2024-03-31T00:00:00.000",
       "close_price": 22.96,
-      "shares_outstanding": 2226963100,
-      "market_capitalization": 51131072776.0
+      "shares_outstanding": 2226963000,
+      "market_capitalization": 51131070480.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-04-08T00:00:00.000",
       "shares_report_date": "2024-03-31T00:00:00.000",
       "close_price": 23.0,
-      "shares_outstanding": 2226963100,
-      "market_capitalization": 51220151300.0
+      "shares_outstanding": 2226963000,
+      "market_capitalization": 51220149000.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-04-09T00:00:00.000",
       "shares_report_date": "2024-03-31T00:00:00.000",
       "close_price": 22.81,
-      "shares_outstanding": 2226963100,
-      "market_capitalization": 50797028311.0
+      "shares_outstanding": 2226963000,
+      "market_capitalization": 50797026030.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-04-10T00:00:00.000",
       "shares_report_date": "2024-03-31T00:00:00.000",
       "close_price": 22.42,
-      "shares_outstanding": 2226963100,
-      "market_capitalization": 49928512702.0
+      "shares_outstanding": 2226963000,
+      "market_capitalization": 49928510460.0
     },
     {
       "symbol": "PLTR",
@@ -19628,160 +19652,160 @@
       "report_date": "2024-09-30T00:00:00.000",
       "shares_report_date": "2024-09-30T00:00:00.000",
       "close_price": 37.2,
-      "shares_outstanding": 2269808600,
-      "market_capitalization": 84436879920.0
+      "shares_outstanding": 2269809000,
+      "market_capitalization": 84436894800.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-10-01T00:00:00.000",
       "shares_report_date": "2024-09-30T00:00:00.000",
       "close_price": 36.46,
-      "shares_outstanding": 2269808600,
-      "market_capitalization": 82757221556.0
+      "shares_outstanding": 2269809000,
+      "market_capitalization": 82757236140.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-10-02T00:00:00.000",
       "shares_report_date": "2024-09-30T00:00:00.000",
       "close_price": 37.49,
-      "shares_outstanding": 2269808600,
-      "market_capitalization": 85095124414.0
+      "shares_outstanding": 2269809000,
+      "market_capitalization": 85095139410.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-10-03T00:00:00.000",
       "shares_report_date": "2024-09-30T00:00:00.000",
       "close_price": 39.24,
-      "shares_outstanding": 2269808600,
-      "market_capitalization": 89067289464.0
+      "shares_outstanding": 2269809000,
+      "market_capitalization": 89067305160.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-10-04T00:00:00.000",
       "shares_report_date": "2024-09-30T00:00:00.000",
       "close_price": 40.01,
-      "shares_outstanding": 2269808600,
-      "market_capitalization": 90815042086.0
+      "shares_outstanding": 2269809000,
+      "market_capitalization": 90815058090.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-10-07T00:00:00.000",
       "shares_report_date": "2024-09-30T00:00:00.000",
       "close_price": 38.89,
-      "shares_outstanding": 2269808600,
-      "market_capitalization": 88272856454.0
+      "shares_outstanding": 2269809000,
+      "market_capitalization": 88272872010.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-10-08T00:00:00.000",
       "shares_report_date": "2024-09-30T00:00:00.000",
       "close_price": 41.45,
-      "shares_outstanding": 2269808600,
-      "market_capitalization": 94083566470.0
+      "shares_outstanding": 2269809000,
+      "market_capitalization": 94083583050.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-10-09T00:00:00.000",
       "shares_report_date": "2024-09-30T00:00:00.000",
       "close_price": 43.13,
-      "shares_outstanding": 2269808600,
-      "market_capitalization": 97896844918.0
+      "shares_outstanding": 2269809000,
+      "market_capitalization": 97896862170.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-10-10T00:00:00.000",
       "shares_report_date": "2024-09-30T00:00:00.000",
       "close_price": 43.52,
-      "shares_outstanding": 2269808600,
-      "market_capitalization": 98782070272.0
+      "shares_outstanding": 2269809000,
+      "market_capitalization": 98782087680.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-10-11T00:00:00.000",
       "shares_report_date": "2024-09-30T00:00:00.000",
       "close_price": 43.51,
-      "shares_outstanding": 2269808600,
-      "market_capitalization": 98759372186.0
+      "shares_outstanding": 2269809000,
+      "market_capitalization": 98759389590.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-10-14T00:00:00.000",
       "shares_report_date": "2024-09-30T00:00:00.000",
       "close_price": 43.4,
-      "shares_outstanding": 2269808600,
-      "market_capitalization": 98509693240.0
+      "shares_outstanding": 2269809000,
+      "market_capitalization": 98509710600.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-10-15T00:00:00.000",
       "shares_report_date": "2024-09-30T00:00:00.000",
       "close_price": 42.43,
-      "shares_outstanding": 2269808600,
-      "market_capitalization": 96307978898.0
+      "shares_outstanding": 2269809000,
+      "market_capitalization": 96307995870.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-10-16T00:00:00.000",
       "shares_report_date": "2024-09-30T00:00:00.000",
       "close_price": 41.93,
-      "shares_outstanding": 2269808600,
-      "market_capitalization": 95173074598.0
+      "shares_outstanding": 2269809000,
+      "market_capitalization": 95173091370.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-10-17T00:00:00.000",
       "shares_report_date": "2024-09-30T00:00:00.000",
       "close_price": 42.0,
-      "shares_outstanding": 2269808600,
-      "market_capitalization": 95331961200.0
+      "shares_outstanding": 2269809000,
+      "market_capitalization": 95331978000.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-10-18T00:00:00.000",
       "shares_report_date": "2024-09-30T00:00:00.000",
       "close_price": 42.97,
-      "shares_outstanding": 2269808600,
-      "market_capitalization": 97533675542.0
+      "shares_outstanding": 2269809000,
+      "market_capitalization": 97533692730.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-10-21T00:00:00.000",
       "shares_report_date": "2024-09-30T00:00:00.000",
       "close_price": 42.7,
-      "shares_outstanding": 2269808600,
-      "market_capitalization": 96920827220.0
+      "shares_outstanding": 2269809000,
+      "market_capitalization": 96920844300.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-10-22T00:00:00.000",
       "shares_report_date": "2024-09-30T00:00:00.000",
       "close_price": 42.94,
-      "shares_outstanding": 2269808600,
-      "market_capitalization": 97465581284.0
+      "shares_outstanding": 2269809000,
+      "market_capitalization": 97465598460.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-10-23T00:00:00.000",
       "shares_report_date": "2024-09-30T00:00:00.000",
       "close_price": 42.59,
-      "shares_outstanding": 2269808600,
-      "market_capitalization": 96671148274.0
+      "shares_outstanding": 2269809000,
+      "market_capitalization": 96671165310.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-10-24T00:00:00.000",
       "shares_report_date": "2024-09-30T00:00:00.000",
       "close_price": 43.56,
-      "shares_outstanding": 2269808600,
-      "market_capitalization": 98872862616.0
+      "shares_outstanding": 2269809000,
+      "market_capitalization": 98872880040.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2024-10-25T00:00:00.000",
       "shares_report_date": "2024-09-30T00:00:00.000",
       "close_price": 44.86,
-      "shares_outstanding": 2269808600,
-      "market_capitalization": 101823613796.0
+      "shares_outstanding": 2269809000,
+      "market_capitalization": 101823631740.0
     },
     {
       "symbol": "PLTR",
@@ -20140,208 +20164,208 @@
       "report_date": "2024-12-31T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 75.63,
-      "shares_outstanding": 2338795200,
-      "market_capitalization": 176883080976.0
+      "shares_outstanding": 2338795000,
+      "market_capitalization": 176883065850.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2025-01-02T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 75.19,
-      "shares_outstanding": 2338795200,
-      "market_capitalization": 175854011088.0
+      "shares_outstanding": 2338795000,
+      "market_capitalization": 175853996050.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2025-01-03T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 79.89,
-      "shares_outstanding": 2338795200,
-      "market_capitalization": 186846348528.0
+      "shares_outstanding": 2338795000,
+      "market_capitalization": 186846332550.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2025-01-06T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 75.92,
-      "shares_outstanding": 2338795200,
-      "market_capitalization": 177561331584.0
+      "shares_outstanding": 2338795000,
+      "market_capitalization": 177561316400.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2025-01-07T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 69.99,
-      "shares_outstanding": 2338795200,
-      "market_capitalization": 163692276048.0
+      "shares_outstanding": 2338795000,
+      "market_capitalization": 163692262050.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2025-01-08T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 68.23,
-      "shares_outstanding": 2338795200,
-      "market_capitalization": 159575996496.0
+      "shares_outstanding": 2338795000,
+      "market_capitalization": 159575982850.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2025-01-10T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 67.26,
-      "shares_outstanding": 2338795200,
-      "market_capitalization": 157307365152.0
+      "shares_outstanding": 2338795000,
+      "market_capitalization": 157307351700.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2025-01-13T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 64.98,
-      "shares_outstanding": 2338795200,
-      "market_capitalization": 151974912096.0
+      "shares_outstanding": 2338795000,
+      "market_capitalization": 151974899100.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2025-01-14T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 65.91,
-      "shares_outstanding": 2338795200,
-      "market_capitalization": 154149991632.0
+      "shares_outstanding": 2338795000,
+      "market_capitalization": 154149978450.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2025-01-15T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 68.14,
-      "shares_outstanding": 2338795200,
-      "market_capitalization": 159365504928.0
+      "shares_outstanding": 2338795000,
+      "market_capitalization": 159365491300.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2025-01-16T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 69.24,
-      "shares_outstanding": 2338795200,
-      "market_capitalization": 161938179648.0
+      "shares_outstanding": 2338795000,
+      "market_capitalization": 161938165800.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2025-01-17T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 71.77,
-      "shares_outstanding": 2338795200,
-      "market_capitalization": 167855331504.0
+      "shares_outstanding": 2338795000,
+      "market_capitalization": 167855317150.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2025-01-21T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 73.07,
-      "shares_outstanding": 2338795200,
-      "market_capitalization": 170895765264.0
+      "shares_outstanding": 2338795000,
+      "market_capitalization": 170895750650.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2025-01-22T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 76.87,
-      "shares_outstanding": 2338795200,
-      "market_capitalization": 179783187024.0
+      "shares_outstanding": 2338795000,
+      "market_capitalization": 179783171650.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2025-01-23T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 78.98,
-      "shares_outstanding": 2338795200,
-      "market_capitalization": 184718044896.0
+      "shares_outstanding": 2338795000,
+      "market_capitalization": 184718029100.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2025-01-24T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 78.98,
-      "shares_outstanding": 2338795200,
-      "market_capitalization": 184718044896.0
+      "shares_outstanding": 2338795000,
+      "market_capitalization": 184718029100.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2025-01-27T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 75.44,
-      "shares_outstanding": 2338795200,
-      "market_capitalization": 176438709888.0
+      "shares_outstanding": 2338795000,
+      "market_capitalization": 176438694800.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2025-01-28T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 80.23,
-      "shares_outstanding": 2338795200,
-      "market_capitalization": 187641538896.0
+      "shares_outstanding": 2338795000,
+      "market_capitalization": 187641522850.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2025-01-29T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 79.76,
-      "shares_outstanding": 2338795200,
-      "market_capitalization": 186542305152.0
+      "shares_outstanding": 2338795000,
+      "market_capitalization": 186542289200.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2025-01-30T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 81.22,
-      "shares_outstanding": 2338795200,
-      "market_capitalization": 189956946144.0
+      "shares_outstanding": 2338795000,
+      "market_capitalization": 189956929900.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2025-01-31T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 82.49,
-      "shares_outstanding": 2338795200,
-      "market_capitalization": 192927216048.0
+      "shares_outstanding": 2338795000,
+      "market_capitalization": 192927199550.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2025-02-03T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 83.74,
-      "shares_outstanding": 2338795200,
-      "market_capitalization": 195850710048.0
+      "shares_outstanding": 2338795000,
+      "market_capitalization": 195850693300.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2025-02-04T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 103.83,
-      "shares_outstanding": 2338795200,
-      "market_capitalization": 242837105616.0
+      "shares_outstanding": 2338795000,
+      "market_capitalization": 242837084850.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2025-02-05T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 101.36,
-      "shares_outstanding": 2338795200,
-      "market_capitalization": 237060281472.0
+      "shares_outstanding": 2338795000,
+      "market_capitalization": 237060261200.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2025-02-06T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 111.28,
-      "shares_outstanding": 2338795200,
-      "market_capitalization": 260261129856.0
+      "shares_outstanding": 2338795000,
+      "market_capitalization": 260261107600.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2025-02-07T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 110.85,
-      "shares_outstanding": 2338795200,
-      "market_capitalization": 259255447920.0
+      "shares_outstanding": 2338795000,
+      "market_capitalization": 259255425750.0
     },
     {
       "symbol": "PLTR",
@@ -20620,72 +20644,72 @@
       "report_date": "2025-03-31T00:00:00.000",
       "shares_report_date": "2025-03-31T00:00:00.000",
       "close_price": 84.4,
-      "shares_outstanding": 2359663200,
-      "market_capitalization": 199155574080.0
+      "shares_outstanding": 2359663000,
+      "market_capitalization": 199155557200.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2025-04-01T00:00:00.000",
       "shares_report_date": "2025-03-31T00:00:00.000",
       "close_price": 84.68,
-      "shares_outstanding": 2359663200,
-      "market_capitalization": 199816279776.0
+      "shares_outstanding": 2359663000,
+      "market_capitalization": 199816262840.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2025-04-02T00:00:00.000",
       "shares_report_date": "2025-03-31T00:00:00.000",
       "close_price": 87.45,
-      "shares_outstanding": 2359663200,
-      "market_capitalization": 206352546840.0
+      "shares_outstanding": 2359663000,
+      "market_capitalization": 206352529350.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2025-04-03T00:00:00.000",
       "shares_report_date": "2025-03-31T00:00:00.000",
       "close_price": 83.6,
-      "shares_outstanding": 2359663200,
-      "market_capitalization": 197267843520.0
+      "shares_outstanding": 2359663000,
+      "market_capitalization": 197267826800.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2025-04-04T00:00:00.000",
       "shares_report_date": "2025-03-31T00:00:00.000",
       "close_price": 74.01,
-      "shares_outstanding": 2359663200,
-      "market_capitalization": 174638673432.0
+      "shares_outstanding": 2359663000,
+      "market_capitalization": 174638658630.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2025-04-07T00:00:00.000",
       "shares_report_date": "2025-03-31T00:00:00.000",
       "close_price": 77.84,
-      "shares_outstanding": 2359663200,
-      "market_capitalization": 183676183488.0
+      "shares_outstanding": 2359663000,
+      "market_capitalization": 183676167920.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2025-04-08T00:00:00.000",
       "shares_report_date": "2025-03-31T00:00:00.000",
       "close_price": 77.32,
-      "shares_outstanding": 2359663200,
-      "market_capitalization": 182449158624.0
+      "shares_outstanding": 2359663000,
+      "market_capitalization": 182449143160.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2025-04-09T00:00:00.000",
       "shares_report_date": "2025-03-31T00:00:00.000",
       "close_price": 92.01,
-      "shares_outstanding": 2359663200,
-      "market_capitalization": 217112611032.0
+      "shares_outstanding": 2359663000,
+      "market_capitalization": 217112592630.0
     },
     {
       "symbol": "PLTR",
       "report_date": "2025-04-10T00:00:00.000",
       "shares_report_date": "2025-03-31T00:00:00.000",
       "close_price": 88.59,
-      "shares_outstanding": 2359663200,
-      "market_capitalization": 209042562888.0
+      "shares_outstanding": 2359663000,
+      "market_capitalization": 209042545170.0
     },
     {
       "symbol": "PLTR",
@@ -22958,13 +22982,37 @@
       "close_price": 156.54,
       "shares_outstanding": 2397312000,
       "market_capitalization": 375275220480.0
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2026-06-01T00:00:00.000",
+      "shares_report_date": "2026-04-27T00:00:00.000",
+      "close_price": 160.65,
+      "shares_outstanding": 2397312000,
+      "market_capitalization": 385128172800.0
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2026-06-02T00:00:00.000",
+      "shares_report_date": "2026-04-27T00:00:00.000",
+      "close_price": 152.17,
+      "shares_outstanding": 2397312000,
+      "market_capitalization": 364798967040.0
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2026-06-03T00:00:00.000",
+      "shares_report_date": "2026-04-27T00:00:00.000",
+      "close_price": 142.2,
+      "shares_outstanding": 2397312000,
+      "market_capitalization": 340897766400.0
     }
   ],
   "psRatio": [
     {
       "symbol": "PLTR",
       "report_date": "2024-04-01T00:00:00.000",
-      "market_capitalization": 50908376466.0,
+      "market_capitalization": 50908374180.0,
       "fiscal_quarter": "2024-03-31T00:00:00.000",
       "ttm_revenue": 2334164000.0,
       "exchange_rate": 1.0,
@@ -22974,7 +23022,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-04-02T00:00:00.000",
-      "market_capitalization": 50596601632.0,
+      "market_capitalization": 50596599360.0,
       "fiscal_quarter": "2024-03-31T00:00:00.000",
       "ttm_revenue": 2334164000.0,
       "exchange_rate": 1.0,
@@ -22984,7 +23032,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-04-03T00:00:00.000",
-      "market_capitalization": 50552062370.0,
+      "market_capitalization": 50552060100.0,
       "fiscal_quarter": "2024-03-31T00:00:00.000",
       "ttm_revenue": 2334164000.0,
       "exchange_rate": 1.0,
@@ -22994,7 +23042,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-04-04T00:00:00.000",
-      "market_capitalization": 50062130488.0,
+      "market_capitalization": 50062128240.0,
       "fiscal_quarter": "2024-03-31T00:00:00.000",
       "ttm_revenue": 2334164000.0,
       "exchange_rate": 1.0,
@@ -23004,7 +23052,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-04-05T00:00:00.000",
-      "market_capitalization": 51131072776.0,
+      "market_capitalization": 51131070480.0,
       "fiscal_quarter": "2024-03-31T00:00:00.000",
       "ttm_revenue": 2334164000.0,
       "exchange_rate": 1.0,
@@ -23014,7 +23062,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-04-08T00:00:00.000",
-      "market_capitalization": 51220151300.0,
+      "market_capitalization": 51220149000.0,
       "fiscal_quarter": "2024-03-31T00:00:00.000",
       "ttm_revenue": 2334164000.0,
       "exchange_rate": 1.0,
@@ -23024,7 +23072,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-04-09T00:00:00.000",
-      "market_capitalization": 50797028311.0,
+      "market_capitalization": 50797026030.0,
       "fiscal_quarter": "2024-03-31T00:00:00.000",
       "ttm_revenue": 2334164000.0,
       "exchange_rate": 1.0,
@@ -23034,7 +23082,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-04-10T00:00:00.000",
-      "market_capitalization": 49928512702.0,
+      "market_capitalization": 49928510460.0,
       "fiscal_quarter": "2024-03-31T00:00:00.000",
       "ttm_revenue": 2334164000.0,
       "exchange_rate": 1.0,
@@ -24224,7 +24272,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-09-30T00:00:00.000",
-      "market_capitalization": 84436879920.0,
+      "market_capitalization": 84436894800.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "ttm_revenue": 2646338000.0,
       "exchange_rate": 1.0,
@@ -24234,7 +24282,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-10-01T00:00:00.000",
-      "market_capitalization": 82757221556.0,
+      "market_capitalization": 82757236140.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "ttm_revenue": 2646338000.0,
       "exchange_rate": 1.0,
@@ -24244,7 +24292,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-10-02T00:00:00.000",
-      "market_capitalization": 85095124414.0,
+      "market_capitalization": 85095139410.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "ttm_revenue": 2646338000.0,
       "exchange_rate": 1.0,
@@ -24254,7 +24302,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-10-03T00:00:00.000",
-      "market_capitalization": 89067289464.0,
+      "market_capitalization": 89067305160.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "ttm_revenue": 2646338000.0,
       "exchange_rate": 1.0,
@@ -24264,7 +24312,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-10-04T00:00:00.000",
-      "market_capitalization": 90815042086.0,
+      "market_capitalization": 90815058090.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "ttm_revenue": 2646338000.0,
       "exchange_rate": 1.0,
@@ -24274,7 +24322,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-10-07T00:00:00.000",
-      "market_capitalization": 88272856454.0,
+      "market_capitalization": 88272872010.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "ttm_revenue": 2646338000.0,
       "exchange_rate": 1.0,
@@ -24284,7 +24332,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-10-08T00:00:00.000",
-      "market_capitalization": 94083566470.0,
+      "market_capitalization": 94083583050.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "ttm_revenue": 2646338000.0,
       "exchange_rate": 1.0,
@@ -24294,7 +24342,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-10-09T00:00:00.000",
-      "market_capitalization": 97896844918.0,
+      "market_capitalization": 97896862170.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "ttm_revenue": 2646338000.0,
       "exchange_rate": 1.0,
@@ -24304,7 +24352,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-10-10T00:00:00.000",
-      "market_capitalization": 98782070272.0,
+      "market_capitalization": 98782087680.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "ttm_revenue": 2646338000.0,
       "exchange_rate": 1.0,
@@ -24314,7 +24362,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-10-11T00:00:00.000",
-      "market_capitalization": 98759372186.0,
+      "market_capitalization": 98759389590.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "ttm_revenue": 2646338000.0,
       "exchange_rate": 1.0,
@@ -24324,7 +24372,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-10-14T00:00:00.000",
-      "market_capitalization": 98509693240.0,
+      "market_capitalization": 98509710600.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "ttm_revenue": 2646338000.0,
       "exchange_rate": 1.0,
@@ -24334,7 +24382,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-10-15T00:00:00.000",
-      "market_capitalization": 96307978898.0,
+      "market_capitalization": 96307995870.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "ttm_revenue": 2646338000.0,
       "exchange_rate": 1.0,
@@ -24344,7 +24392,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-10-16T00:00:00.000",
-      "market_capitalization": 95173074598.0,
+      "market_capitalization": 95173091370.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "ttm_revenue": 2646338000.0,
       "exchange_rate": 1.0,
@@ -24354,7 +24402,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-10-17T00:00:00.000",
-      "market_capitalization": 95331961200.0,
+      "market_capitalization": 95331978000.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "ttm_revenue": 2646338000.0,
       "exchange_rate": 1.0,
@@ -24364,7 +24412,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-10-18T00:00:00.000",
-      "market_capitalization": 97533675542.0,
+      "market_capitalization": 97533692730.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "ttm_revenue": 2646338000.0,
       "exchange_rate": 1.0,
@@ -24374,7 +24422,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-10-21T00:00:00.000",
-      "market_capitalization": 96920827220.0,
+      "market_capitalization": 96920844300.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "ttm_revenue": 2646338000.0,
       "exchange_rate": 1.0,
@@ -24384,7 +24432,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-10-22T00:00:00.000",
-      "market_capitalization": 97465581284.0,
+      "market_capitalization": 97465598460.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "ttm_revenue": 2646338000.0,
       "exchange_rate": 1.0,
@@ -24394,7 +24442,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-10-23T00:00:00.000",
-      "market_capitalization": 96671148274.0,
+      "market_capitalization": 96671165310.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "ttm_revenue": 2646338000.0,
       "exchange_rate": 1.0,
@@ -24404,7 +24452,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-10-24T00:00:00.000",
-      "market_capitalization": 98872862616.0,
+      "market_capitalization": 98872880040.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "ttm_revenue": 2646338000.0,
       "exchange_rate": 1.0,
@@ -24414,7 +24462,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-10-25T00:00:00.000",
-      "market_capitalization": 101823613796.0,
+      "market_capitalization": 101823631740.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "ttm_revenue": 2646338000.0,
       "exchange_rate": 1.0,
@@ -24864,7 +24912,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-12-31T00:00:00.000",
-      "market_capitalization": 176883080976.0,
+      "market_capitalization": 176883065850.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 2865507000.0,
       "exchange_rate": 1.0,
@@ -24874,7 +24922,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-02T00:00:00.000",
-      "market_capitalization": 175854011088.0,
+      "market_capitalization": 175853996050.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 2865507000.0,
       "exchange_rate": 1.0,
@@ -24884,7 +24932,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-03T00:00:00.000",
-      "market_capitalization": 186846348528.0,
+      "market_capitalization": 186846332550.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 2865507000.0,
       "exchange_rate": 1.0,
@@ -24894,7 +24942,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-06T00:00:00.000",
-      "market_capitalization": 177561331584.0,
+      "market_capitalization": 177561316400.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 2865507000.0,
       "exchange_rate": 1.0,
@@ -24904,7 +24952,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-07T00:00:00.000",
-      "market_capitalization": 163692276048.0,
+      "market_capitalization": 163692262050.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 2865507000.0,
       "exchange_rate": 1.0,
@@ -24914,7 +24962,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-08T00:00:00.000",
-      "market_capitalization": 159575996496.0,
+      "market_capitalization": 159575982850.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 2865507000.0,
       "exchange_rate": 1.0,
@@ -24924,7 +24972,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-10T00:00:00.000",
-      "market_capitalization": 157307365152.0,
+      "market_capitalization": 157307351700.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 2865507000.0,
       "exchange_rate": 1.0,
@@ -24934,7 +24982,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-13T00:00:00.000",
-      "market_capitalization": 151974912096.0,
+      "market_capitalization": 151974899100.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 2865507000.0,
       "exchange_rate": 1.0,
@@ -24944,7 +24992,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-14T00:00:00.000",
-      "market_capitalization": 154149991632.0,
+      "market_capitalization": 154149978450.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 2865507000.0,
       "exchange_rate": 1.0,
@@ -24954,7 +25002,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-15T00:00:00.000",
-      "market_capitalization": 159365504928.0,
+      "market_capitalization": 159365491300.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 2865507000.0,
       "exchange_rate": 1.0,
@@ -24964,7 +25012,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-16T00:00:00.000",
-      "market_capitalization": 161938179648.0,
+      "market_capitalization": 161938165800.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 2865507000.0,
       "exchange_rate": 1.0,
@@ -24974,7 +25022,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-17T00:00:00.000",
-      "market_capitalization": 167855331504.0,
+      "market_capitalization": 167855317150.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 2865507000.0,
       "exchange_rate": 1.0,
@@ -24984,7 +25032,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-21T00:00:00.000",
-      "market_capitalization": 170895765264.0,
+      "market_capitalization": 170895750650.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 2865507000.0,
       "exchange_rate": 1.0,
@@ -24994,7 +25042,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-22T00:00:00.000",
-      "market_capitalization": 179783187024.0,
+      "market_capitalization": 179783171650.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 2865507000.0,
       "exchange_rate": 1.0,
@@ -25004,7 +25052,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-23T00:00:00.000",
-      "market_capitalization": 184718044896.0,
+      "market_capitalization": 184718029100.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 2865507000.0,
       "exchange_rate": 1.0,
@@ -25014,7 +25062,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-24T00:00:00.000",
-      "market_capitalization": 184718044896.0,
+      "market_capitalization": 184718029100.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 2865507000.0,
       "exchange_rate": 1.0,
@@ -25024,7 +25072,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-27T00:00:00.000",
-      "market_capitalization": 176438709888.0,
+      "market_capitalization": 176438694800.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 2865507000.0,
       "exchange_rate": 1.0,
@@ -25034,7 +25082,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-28T00:00:00.000",
-      "market_capitalization": 187641538896.0,
+      "market_capitalization": 187641522850.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 2865507000.0,
       "exchange_rate": 1.0,
@@ -25044,7 +25092,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-29T00:00:00.000",
-      "market_capitalization": 186542305152.0,
+      "market_capitalization": 186542289200.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 2865507000.0,
       "exchange_rate": 1.0,
@@ -25054,7 +25102,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-30T00:00:00.000",
-      "market_capitalization": 189956946144.0,
+      "market_capitalization": 189956929900.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 2865507000.0,
       "exchange_rate": 1.0,
@@ -25064,7 +25112,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-31T00:00:00.000",
-      "market_capitalization": 192927216048.0,
+      "market_capitalization": 192927199550.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 2865507000.0,
       "exchange_rate": 1.0,
@@ -25074,7 +25122,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-02-03T00:00:00.000",
-      "market_capitalization": 195850710048.0,
+      "market_capitalization": 195850693300.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 2865507000.0,
       "exchange_rate": 1.0,
@@ -25084,7 +25132,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-02-04T00:00:00.000",
-      "market_capitalization": 242837105616.0,
+      "market_capitalization": 242837084850.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 2865507000.0,
       "exchange_rate": 1.0,
@@ -25094,7 +25142,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-02-05T00:00:00.000",
-      "market_capitalization": 237060281472.0,
+      "market_capitalization": 237060261200.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 2865507000.0,
       "exchange_rate": 1.0,
@@ -25104,7 +25152,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-02-06T00:00:00.000",
-      "market_capitalization": 260261129856.0,
+      "market_capitalization": 260261107600.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 2865507000.0,
       "exchange_rate": 1.0,
@@ -25114,7 +25162,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-02-07T00:00:00.000",
-      "market_capitalization": 259255447920.0,
+      "market_capitalization": 259255425750.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 2865507000.0,
       "exchange_rate": 1.0,
@@ -25464,7 +25512,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-03-31T00:00:00.000",
-      "market_capitalization": 199155574080.0,
+      "market_capitalization": 199155557200.0,
       "fiscal_quarter": "2025-03-31T00:00:00.000",
       "ttm_revenue": 3115024000.0,
       "exchange_rate": 1.0,
@@ -25474,7 +25522,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-04-01T00:00:00.000",
-      "market_capitalization": 199816279776.0,
+      "market_capitalization": 199816262840.0,
       "fiscal_quarter": "2025-03-31T00:00:00.000",
       "ttm_revenue": 3115024000.0,
       "exchange_rate": 1.0,
@@ -25484,7 +25532,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-04-02T00:00:00.000",
-      "market_capitalization": 206352546840.0,
+      "market_capitalization": 206352529350.0,
       "fiscal_quarter": "2025-03-31T00:00:00.000",
       "ttm_revenue": 3115024000.0,
       "exchange_rate": 1.0,
@@ -25494,7 +25542,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-04-03T00:00:00.000",
-      "market_capitalization": 197267843520.0,
+      "market_capitalization": 197267826800.0,
       "fiscal_quarter": "2025-03-31T00:00:00.000",
       "ttm_revenue": 3115024000.0,
       "exchange_rate": 1.0,
@@ -25504,7 +25552,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-04-04T00:00:00.000",
-      "market_capitalization": 174638673432.0,
+      "market_capitalization": 174638658630.0,
       "fiscal_quarter": "2025-03-31T00:00:00.000",
       "ttm_revenue": 3115024000.0,
       "exchange_rate": 1.0,
@@ -25514,7 +25562,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-04-07T00:00:00.000",
-      "market_capitalization": 183676183488.0,
+      "market_capitalization": 183676167920.0,
       "fiscal_quarter": "2025-03-31T00:00:00.000",
       "ttm_revenue": 3115024000.0,
       "exchange_rate": 1.0,
@@ -25524,7 +25572,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-04-08T00:00:00.000",
-      "market_capitalization": 182449158624.0,
+      "market_capitalization": 182449143160.0,
       "fiscal_quarter": "2025-03-31T00:00:00.000",
       "ttm_revenue": 3115024000.0,
       "exchange_rate": 1.0,
@@ -25534,7 +25582,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-04-09T00:00:00.000",
-      "market_capitalization": 217112611032.0,
+      "market_capitalization": 217112592630.0,
       "fiscal_quarter": "2025-03-31T00:00:00.000",
       "ttm_revenue": 3115024000.0,
       "exchange_rate": 1.0,
@@ -25544,7 +25592,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-04-10T00:00:00.000",
-      "market_capitalization": 209042562888.0,
+      "market_capitalization": 209042545170.0,
       "fiscal_quarter": "2025-03-31T00:00:00.000",
       "ttm_revenue": 3115024000.0,
       "exchange_rate": 1.0,
@@ -28390,6 +28438,36 @@
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 5224174000.0,
       "ps_ratio": 71.83
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2026-06-01T00:00:00.000",
+      "market_capitalization": 385128172800.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 5224174000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 5224174000.0,
+      "ps_ratio": 73.72
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2026-06-02T00:00:00.000",
+      "market_capitalization": 364798967040.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 5224174000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 5224174000.0,
+      "ps_ratio": 69.83
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2026-06-03T00:00:00.000",
+      "market_capitalization": 340897766400.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 5224174000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 5224174000.0,
+      "ps_ratio": 65.25
     }
   ],
   "pbRatio": [
@@ -31546,7 +31624,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2023-10-02T00:00:00.000",
-      "market_capitalization": 34542823904.0,
+      "market_capitalization": 34542827080.0,
       "fiscal_quarter": "2023-09-30T00:00:00.000",
       "book_value_of_equity": 3190015000.0,
       "exchange_rate": 1.0,
@@ -31556,7 +31634,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2023-10-03T00:00:00.000",
-      "market_capitalization": 32411087920.0,
+      "market_capitalization": 32411090900.0,
       "fiscal_quarter": "2023-09-30T00:00:00.000",
       "book_value_of_equity": 3190015000.0,
       "exchange_rate": 1.0,
@@ -31566,7 +31644,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2023-10-04T00:00:00.000",
-      "market_capitalization": 34216537784.0,
+      "market_capitalization": 34216540930.0,
       "fiscal_quarter": "2023-09-30T00:00:00.000",
       "book_value_of_equity": 3190015000.0,
       "exchange_rate": 1.0,
@@ -31576,7 +31654,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2023-10-05T00:00:00.000",
-      "market_capitalization": 34390557048.0,
+      "market_capitalization": 34390560210.0,
       "fiscal_quarter": "2023-09-30T00:00:00.000",
       "book_value_of_equity": 3190015000.0,
       "exchange_rate": 1.0,
@@ -31586,7 +31664,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2023-10-06T00:00:00.000",
-      "market_capitalization": 36130749688.0,
+      "market_capitalization": 36130753010.0,
       "fiscal_quarter": "2023-09-30T00:00:00.000",
       "book_value_of_equity": 3190015000.0,
       "exchange_rate": 1.0,
@@ -31596,7 +31674,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2023-10-09T00:00:00.000",
-      "market_capitalization": 38305990488.0,
+      "market_capitalization": 38305994010.0,
       "fiscal_quarter": "2023-09-30T00:00:00.000",
       "book_value_of_equity": 3190015000.0,
       "exchange_rate": 1.0,
@@ -31606,7 +31684,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2023-10-10T00:00:00.000",
-      "market_capitalization": 38719286240.0,
+      "market_capitalization": 38719289800.0,
       "fiscal_quarter": "2023-09-30T00:00:00.000",
       "book_value_of_equity": 3190015000.0,
       "exchange_rate": 1.0,
@@ -31616,7 +31694,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2023-10-11T00:00:00.000",
-      "market_capitalization": 38980315136.0,
+      "market_capitalization": 38980318720.0,
       "fiscal_quarter": "2023-09-30T00:00:00.000",
       "book_value_of_equity": 3190015000.0,
       "exchange_rate": 1.0,
@@ -31626,7 +31704,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2023-10-12T00:00:00.000",
-      "market_capitalization": 39023819952.0,
+      "market_capitalization": 39023823540.0,
       "fiscal_quarter": "2023-09-30T00:00:00.000",
       "book_value_of_equity": 3190015000.0,
       "exchange_rate": 1.0,
@@ -31636,7 +31714,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2023-10-13T00:00:00.000",
-      "market_capitalization": 37762180288.0,
+      "market_capitalization": 37762183760.0,
       "fiscal_quarter": "2023-09-30T00:00:00.000",
       "book_value_of_equity": 3190015000.0,
       "exchange_rate": 1.0,
@@ -31646,7 +31724,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2023-10-16T00:00:00.000",
-      "market_capitalization": 37762180288.0,
+      "market_capitalization": 37762183760.0,
       "fiscal_quarter": "2023-09-30T00:00:00.000",
       "book_value_of_equity": 3190015000.0,
       "exchange_rate": 1.0,
@@ -31656,7 +31734,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2023-10-17T00:00:00.000",
-      "market_capitalization": 38806295872.0,
+      "market_capitalization": 38806299440.0,
       "fiscal_quarter": "2023-09-30T00:00:00.000",
       "book_value_of_equity": 3190015000.0,
       "exchange_rate": 1.0,
@@ -31666,7 +31744,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2023-10-18T00:00:00.000",
-      "market_capitalization": 37414141760.0,
+      "market_capitalization": 37414145200.0,
       "fiscal_quarter": "2023-09-30T00:00:00.000",
       "book_value_of_equity": 3190015000.0,
       "exchange_rate": 1.0,
@@ -31676,7 +31754,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2023-10-19T00:00:00.000",
-      "market_capitalization": 37109608048.0,
+      "market_capitalization": 37109611460.0,
       "fiscal_quarter": "2023-09-30T00:00:00.000",
       "book_value_of_equity": 3190015000.0,
       "exchange_rate": 1.0,
@@ -31686,7 +31764,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2023-10-20T00:00:00.000",
-      "market_capitalization": 35043129288.0,
+      "market_capitalization": 35043132510.0,
       "fiscal_quarter": "2023-09-30T00:00:00.000",
       "book_value_of_equity": 3190015000.0,
       "exchange_rate": 1.0,
@@ -31696,7 +31774,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2023-10-23T00:00:00.000",
-      "market_capitalization": 35238900960.0,
+      "market_capitalization": 35238904200.0,
       "fiscal_quarter": "2023-09-30T00:00:00.000",
       "book_value_of_equity": 3190015000.0,
       "exchange_rate": 1.0,
@@ -31706,7 +31784,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2023-10-24T00:00:00.000",
-      "market_capitalization": 36196006912.0,
+      "market_capitalization": 36196010240.0,
       "fiscal_quarter": "2023-09-30T00:00:00.000",
       "book_value_of_equity": 3190015000.0,
       "exchange_rate": 1.0,
@@ -31716,7 +31794,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2023-10-25T00:00:00.000",
-      "market_capitalization": 33912004072.0,
+      "market_capitalization": 33912007190.0,
       "fiscal_quarter": "2023-09-30T00:00:00.000",
       "book_value_of_equity": 3190015000.0,
       "exchange_rate": 1.0,
@@ -32176,7 +32254,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-01-02T00:00:00.000",
-      "market_capitalization": 36478117266.0,
+      "market_capitalization": 36478122240.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 3475561000.0,
       "exchange_rate": 1.0,
@@ -32186,7 +32264,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-01-03T00:00:00.000",
-      "market_capitalization": 35400054693.0,
+      "market_capitalization": 35400059520.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 3475561000.0,
       "exchange_rate": 1.0,
@@ -32196,7 +32274,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-01-04T00:00:00.000",
-      "market_capitalization": 35752075125.0,
+      "market_capitalization": 35752080000.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 3475561000.0,
       "exchange_rate": 1.0,
@@ -32206,7 +32284,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-01-05T00:00:00.000",
-      "market_capitalization": 35158040646.0,
+      "market_capitalization": 35158045440.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 3475561000.0,
       "exchange_rate": 1.0,
@@ -32216,7 +32294,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-01-08T00:00:00.000",
-      "market_capitalization": 36676128759.0,
+      "market_capitalization": 36676133760.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 3475561000.0,
       "exchange_rate": 1.0,
@@ -32226,7 +32304,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-01-09T00:00:00.000",
-      "market_capitalization": 36060093003.0,
+      "market_capitalization": 36060097920.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 3475561000.0,
       "exchange_rate": 1.0,
@@ -32236,7 +32314,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-01-10T00:00:00.000",
-      "market_capitalization": 36940144083.0,
+      "market_capitalization": 36940149120.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 3475561000.0,
       "exchange_rate": 1.0,
@@ -32246,7 +32324,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-01-11T00:00:00.000",
-      "market_capitalization": 36698130036.0,
+      "market_capitalization": 36698135040.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 3475561000.0,
       "exchange_rate": 1.0,
@@ -32256,7 +32334,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-01-12T00:00:00.000",
-      "market_capitalization": 36874140252.0,
+      "market_capitalization": 36874145280.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 3475561000.0,
       "exchange_rate": 1.0,
@@ -32266,7 +32344,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-01-16T00:00:00.000",
-      "market_capitalization": 36368110881.0,
+      "market_capitalization": 36368115840.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 3475561000.0,
       "exchange_rate": 1.0,
@@ -32276,7 +32354,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-01-17T00:00:00.000",
-      "market_capitalization": 36060093003.0,
+      "market_capitalization": 36060097920.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 3475561000.0,
       "exchange_rate": 1.0,
@@ -32286,7 +32364,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-01-18T00:00:00.000",
-      "market_capitalization": 36082094280.0,
+      "market_capitalization": 36082099200.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 3475561000.0,
       "exchange_rate": 1.0,
@@ -32296,7 +32374,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-01-19T00:00:00.000",
-      "market_capitalization": 36918142806.0,
+      "market_capitalization": 36918147840.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 3475561000.0,
       "exchange_rate": 1.0,
@@ -32306,7 +32384,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-01-22T00:00:00.000",
-      "market_capitalization": 38722247520.0,
+      "market_capitalization": 38722252800.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 3475561000.0,
       "exchange_rate": 1.0,
@@ -32316,7 +32394,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-01-23T00:00:00.000",
-      "market_capitalization": 38128213041.0,
+      "market_capitalization": 38128218240.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 3475561000.0,
       "exchange_rate": 1.0,
@@ -32326,7 +32404,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-01-24T00:00:00.000",
-      "market_capitalization": 36852138975.0,
+      "market_capitalization": 36852144000.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 3475561000.0,
       "exchange_rate": 1.0,
@@ -32336,7 +32414,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-01-25T00:00:00.000",
-      "market_capitalization": 36214101942.0,
+      "market_capitalization": 36214106880.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 3475561000.0,
       "exchange_rate": 1.0,
@@ -32346,7 +32424,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-01-26T00:00:00.000",
-      "market_capitalization": 35972087895.0,
+      "market_capitalization": 35972092800.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 3475561000.0,
       "exchange_rate": 1.0,
@@ -32356,7 +32434,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-01-29T00:00:00.000",
-      "market_capitalization": 37600182393.0,
+      "market_capitalization": 37600187520.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 3475561000.0,
       "exchange_rate": 1.0,
@@ -32366,7 +32444,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-01-30T00:00:00.000",
-      "market_capitalization": 36830137698.0,
+      "market_capitalization": 36830142720.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 3475561000.0,
       "exchange_rate": 1.0,
@@ -32376,7 +32454,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-01-31T00:00:00.000",
-      "market_capitalization": 35400054693.0,
+      "market_capitalization": 35400059520.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 3475561000.0,
       "exchange_rate": 1.0,
@@ -32386,7 +32464,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-02-01T00:00:00.000",
-      "market_capitalization": 35928085341.0,
+      "market_capitalization": 35928090240.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 3475561000.0,
       "exchange_rate": 1.0,
@@ -32396,7 +32474,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-02-02T00:00:00.000",
-      "market_capitalization": 37446173454.0,
+      "market_capitalization": 37446178560.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 3475561000.0,
       "exchange_rate": 1.0,
@@ -32406,7 +32484,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-02-05T00:00:00.000",
-      "market_capitalization": 36786135144.0,
+      "market_capitalization": 36786140160.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 3475561000.0,
       "exchange_rate": 1.0,
@@ -32416,7 +32494,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-02-06T00:00:00.000",
-      "market_capitalization": 48116792799.0,
+      "market_capitalization": 48116799360.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 3475561000.0,
       "exchange_rate": 1.0,
@@ -32426,7 +32504,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-02-07T00:00:00.000",
-      "market_capitalization": 51923013720.0,
+      "market_capitalization": 51923020800.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 3475561000.0,
       "exchange_rate": 1.0,
@@ -32436,7 +32514,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-02-08T00:00:00.000",
-      "market_capitalization": 53925129927.0,
+      "market_capitalization": 53925137280.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 3475561000.0,
       "exchange_rate": 1.0,
@@ -32446,7 +32524,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-02-09T00:00:00.000",
-      "market_capitalization": 53639113326.0,
+      "market_capitalization": 53639120640.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 3475561000.0,
       "exchange_rate": 1.0,
@@ -32456,7 +32534,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-02-12T00:00:00.000",
-      "market_capitalization": 55113198885.0,
+      "market_capitalization": 55113206400.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 3475561000.0,
       "exchange_rate": 1.0,
@@ -32786,7 +32864,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-04-01T00:00:00.000",
-      "market_capitalization": 50908376466.0,
+      "market_capitalization": 50908374180.0,
       "fiscal_quarter": "2024-03-31T00:00:00.000",
       "book_value_of_equity": 3775227000.0,
       "exchange_rate": 1.0,
@@ -32796,7 +32874,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-04-02T00:00:00.000",
-      "market_capitalization": 50596601632.0,
+      "market_capitalization": 50596599360.0,
       "fiscal_quarter": "2024-03-31T00:00:00.000",
       "book_value_of_equity": 3775227000.0,
       "exchange_rate": 1.0,
@@ -32806,7 +32884,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-04-03T00:00:00.000",
-      "market_capitalization": 50552062370.0,
+      "market_capitalization": 50552060100.0,
       "fiscal_quarter": "2024-03-31T00:00:00.000",
       "book_value_of_equity": 3775227000.0,
       "exchange_rate": 1.0,
@@ -32816,7 +32894,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-04-04T00:00:00.000",
-      "market_capitalization": 50062130488.0,
+      "market_capitalization": 50062128240.0,
       "fiscal_quarter": "2024-03-31T00:00:00.000",
       "book_value_of_equity": 3775227000.0,
       "exchange_rate": 1.0,
@@ -32826,7 +32904,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-04-05T00:00:00.000",
-      "market_capitalization": 51131072776.0,
+      "market_capitalization": 51131070480.0,
       "fiscal_quarter": "2024-03-31T00:00:00.000",
       "book_value_of_equity": 3775227000.0,
       "exchange_rate": 1.0,
@@ -32836,7 +32914,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-04-08T00:00:00.000",
-      "market_capitalization": 51220151300.0,
+      "market_capitalization": 51220149000.0,
       "fiscal_quarter": "2024-03-31T00:00:00.000",
       "book_value_of_equity": 3775227000.0,
       "exchange_rate": 1.0,
@@ -32846,7 +32924,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-04-09T00:00:00.000",
-      "market_capitalization": 50797028311.0,
+      "market_capitalization": 50797026030.0,
       "fiscal_quarter": "2024-03-31T00:00:00.000",
       "book_value_of_equity": 3775227000.0,
       "exchange_rate": 1.0,
@@ -32856,7 +32934,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-04-10T00:00:00.000",
-      "market_capitalization": 49928512702.0,
+      "market_capitalization": 49928510460.0,
       "fiscal_quarter": "2024-03-31T00:00:00.000",
       "book_value_of_equity": 3775227000.0,
       "exchange_rate": 1.0,
@@ -34046,7 +34124,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-09-30T00:00:00.000",
-      "market_capitalization": 84436879920.0,
+      "market_capitalization": 84436894800.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "book_value_of_equity": 4498143000.0,
       "exchange_rate": 1.0,
@@ -34056,7 +34134,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-10-01T00:00:00.000",
-      "market_capitalization": 82757221556.0,
+      "market_capitalization": 82757236140.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "book_value_of_equity": 4498143000.0,
       "exchange_rate": 1.0,
@@ -34066,7 +34144,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-10-02T00:00:00.000",
-      "market_capitalization": 85095124414.0,
+      "market_capitalization": 85095139410.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "book_value_of_equity": 4498143000.0,
       "exchange_rate": 1.0,
@@ -34076,7 +34154,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-10-03T00:00:00.000",
-      "market_capitalization": 89067289464.0,
+      "market_capitalization": 89067305160.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "book_value_of_equity": 4498143000.0,
       "exchange_rate": 1.0,
@@ -34086,7 +34164,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-10-04T00:00:00.000",
-      "market_capitalization": 90815042086.0,
+      "market_capitalization": 90815058090.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "book_value_of_equity": 4498143000.0,
       "exchange_rate": 1.0,
@@ -34096,7 +34174,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-10-07T00:00:00.000",
-      "market_capitalization": 88272856454.0,
+      "market_capitalization": 88272872010.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "book_value_of_equity": 4498143000.0,
       "exchange_rate": 1.0,
@@ -34106,7 +34184,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-10-08T00:00:00.000",
-      "market_capitalization": 94083566470.0,
+      "market_capitalization": 94083583050.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "book_value_of_equity": 4498143000.0,
       "exchange_rate": 1.0,
@@ -34116,7 +34194,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-10-09T00:00:00.000",
-      "market_capitalization": 97896844918.0,
+      "market_capitalization": 97896862170.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "book_value_of_equity": 4498143000.0,
       "exchange_rate": 1.0,
@@ -34126,7 +34204,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-10-10T00:00:00.000",
-      "market_capitalization": 98782070272.0,
+      "market_capitalization": 98782087680.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "book_value_of_equity": 4498143000.0,
       "exchange_rate": 1.0,
@@ -34136,7 +34214,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-10-11T00:00:00.000",
-      "market_capitalization": 98759372186.0,
+      "market_capitalization": 98759389590.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "book_value_of_equity": 4498143000.0,
       "exchange_rate": 1.0,
@@ -34146,7 +34224,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-10-14T00:00:00.000",
-      "market_capitalization": 98509693240.0,
+      "market_capitalization": 98509710600.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "book_value_of_equity": 4498143000.0,
       "exchange_rate": 1.0,
@@ -34156,7 +34234,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-10-15T00:00:00.000",
-      "market_capitalization": 96307978898.0,
+      "market_capitalization": 96307995870.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "book_value_of_equity": 4498143000.0,
       "exchange_rate": 1.0,
@@ -34166,7 +34244,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-10-16T00:00:00.000",
-      "market_capitalization": 95173074598.0,
+      "market_capitalization": 95173091370.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "book_value_of_equity": 4498143000.0,
       "exchange_rate": 1.0,
@@ -34176,7 +34254,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-10-17T00:00:00.000",
-      "market_capitalization": 95331961200.0,
+      "market_capitalization": 95331978000.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "book_value_of_equity": 4498143000.0,
       "exchange_rate": 1.0,
@@ -34186,7 +34264,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-10-18T00:00:00.000",
-      "market_capitalization": 97533675542.0,
+      "market_capitalization": 97533692730.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "book_value_of_equity": 4498143000.0,
       "exchange_rate": 1.0,
@@ -34196,7 +34274,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-10-21T00:00:00.000",
-      "market_capitalization": 96920827220.0,
+      "market_capitalization": 96920844300.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "book_value_of_equity": 4498143000.0,
       "exchange_rate": 1.0,
@@ -34206,7 +34284,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-10-22T00:00:00.000",
-      "market_capitalization": 97465581284.0,
+      "market_capitalization": 97465598460.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "book_value_of_equity": 4498143000.0,
       "exchange_rate": 1.0,
@@ -34216,7 +34294,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-10-23T00:00:00.000",
-      "market_capitalization": 96671148274.0,
+      "market_capitalization": 96671165310.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "book_value_of_equity": 4498143000.0,
       "exchange_rate": 1.0,
@@ -34226,7 +34304,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-10-24T00:00:00.000",
-      "market_capitalization": 98872862616.0,
+      "market_capitalization": 98872880040.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "book_value_of_equity": 4498143000.0,
       "exchange_rate": 1.0,
@@ -34236,7 +34314,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-10-25T00:00:00.000",
-      "market_capitalization": 101823613796.0,
+      "market_capitalization": 101823631740.0,
       "fiscal_quarter": "2024-09-30T00:00:00.000",
       "book_value_of_equity": 4498143000.0,
       "exchange_rate": 1.0,
@@ -34686,7 +34764,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2024-12-31T00:00:00.000",
-      "market_capitalization": 176883080976.0,
+      "market_capitalization": 176883065850.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 5003275000.0,
       "exchange_rate": 1.0,
@@ -34696,7 +34774,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-02T00:00:00.000",
-      "market_capitalization": 175854011088.0,
+      "market_capitalization": 175853996050.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 5003275000.0,
       "exchange_rate": 1.0,
@@ -34706,7 +34784,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-03T00:00:00.000",
-      "market_capitalization": 186846348528.0,
+      "market_capitalization": 186846332550.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 5003275000.0,
       "exchange_rate": 1.0,
@@ -34716,7 +34794,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-06T00:00:00.000",
-      "market_capitalization": 177561331584.0,
+      "market_capitalization": 177561316400.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 5003275000.0,
       "exchange_rate": 1.0,
@@ -34726,7 +34804,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-07T00:00:00.000",
-      "market_capitalization": 163692276048.0,
+      "market_capitalization": 163692262050.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 5003275000.0,
       "exchange_rate": 1.0,
@@ -34736,7 +34814,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-08T00:00:00.000",
-      "market_capitalization": 159575996496.0,
+      "market_capitalization": 159575982850.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 5003275000.0,
       "exchange_rate": 1.0,
@@ -34746,7 +34824,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-10T00:00:00.000",
-      "market_capitalization": 157307365152.0,
+      "market_capitalization": 157307351700.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 5003275000.0,
       "exchange_rate": 1.0,
@@ -34756,7 +34834,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-13T00:00:00.000",
-      "market_capitalization": 151974912096.0,
+      "market_capitalization": 151974899100.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 5003275000.0,
       "exchange_rate": 1.0,
@@ -34766,7 +34844,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-14T00:00:00.000",
-      "market_capitalization": 154149991632.0,
+      "market_capitalization": 154149978450.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 5003275000.0,
       "exchange_rate": 1.0,
@@ -34776,7 +34854,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-15T00:00:00.000",
-      "market_capitalization": 159365504928.0,
+      "market_capitalization": 159365491300.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 5003275000.0,
       "exchange_rate": 1.0,
@@ -34786,7 +34864,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-16T00:00:00.000",
-      "market_capitalization": 161938179648.0,
+      "market_capitalization": 161938165800.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 5003275000.0,
       "exchange_rate": 1.0,
@@ -34796,7 +34874,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-17T00:00:00.000",
-      "market_capitalization": 167855331504.0,
+      "market_capitalization": 167855317150.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 5003275000.0,
       "exchange_rate": 1.0,
@@ -34806,7 +34884,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-21T00:00:00.000",
-      "market_capitalization": 170895765264.0,
+      "market_capitalization": 170895750650.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 5003275000.0,
       "exchange_rate": 1.0,
@@ -34816,7 +34894,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-22T00:00:00.000",
-      "market_capitalization": 179783187024.0,
+      "market_capitalization": 179783171650.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 5003275000.0,
       "exchange_rate": 1.0,
@@ -34826,7 +34904,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-23T00:00:00.000",
-      "market_capitalization": 184718044896.0,
+      "market_capitalization": 184718029100.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 5003275000.0,
       "exchange_rate": 1.0,
@@ -34836,7 +34914,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-24T00:00:00.000",
-      "market_capitalization": 184718044896.0,
+      "market_capitalization": 184718029100.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 5003275000.0,
       "exchange_rate": 1.0,
@@ -34846,7 +34924,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-27T00:00:00.000",
-      "market_capitalization": 176438709888.0,
+      "market_capitalization": 176438694800.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 5003275000.0,
       "exchange_rate": 1.0,
@@ -34856,7 +34934,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-28T00:00:00.000",
-      "market_capitalization": 187641538896.0,
+      "market_capitalization": 187641522850.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 5003275000.0,
       "exchange_rate": 1.0,
@@ -34866,7 +34944,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-29T00:00:00.000",
-      "market_capitalization": 186542305152.0,
+      "market_capitalization": 186542289200.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 5003275000.0,
       "exchange_rate": 1.0,
@@ -34876,7 +34954,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-30T00:00:00.000",
-      "market_capitalization": 189956946144.0,
+      "market_capitalization": 189956929900.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 5003275000.0,
       "exchange_rate": 1.0,
@@ -34886,7 +34964,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-01-31T00:00:00.000",
-      "market_capitalization": 192927216048.0,
+      "market_capitalization": 192927199550.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 5003275000.0,
       "exchange_rate": 1.0,
@@ -34896,7 +34974,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-02-03T00:00:00.000",
-      "market_capitalization": 195850710048.0,
+      "market_capitalization": 195850693300.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 5003275000.0,
       "exchange_rate": 1.0,
@@ -34906,7 +34984,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-02-04T00:00:00.000",
-      "market_capitalization": 242837105616.0,
+      "market_capitalization": 242837084850.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 5003275000.0,
       "exchange_rate": 1.0,
@@ -34916,7 +34994,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-02-05T00:00:00.000",
-      "market_capitalization": 237060281472.0,
+      "market_capitalization": 237060261200.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 5003275000.0,
       "exchange_rate": 1.0,
@@ -34926,7 +35004,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-02-06T00:00:00.000",
-      "market_capitalization": 260261129856.0,
+      "market_capitalization": 260261107600.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 5003275000.0,
       "exchange_rate": 1.0,
@@ -34936,7 +35014,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-02-07T00:00:00.000",
-      "market_capitalization": 259255447920.0,
+      "market_capitalization": 259255425750.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 5003275000.0,
       "exchange_rate": 1.0,
@@ -35286,7 +35364,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-03-31T00:00:00.000",
-      "market_capitalization": 199155574080.0,
+      "market_capitalization": 199155557200.0,
       "fiscal_quarter": "2025-03-31T00:00:00.000",
       "book_value_of_equity": 5424155000.0,
       "exchange_rate": 1.0,
@@ -35296,7 +35374,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-04-01T00:00:00.000",
-      "market_capitalization": 199816279776.0,
+      "market_capitalization": 199816262840.0,
       "fiscal_quarter": "2025-03-31T00:00:00.000",
       "book_value_of_equity": 5424155000.0,
       "exchange_rate": 1.0,
@@ -35306,7 +35384,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-04-02T00:00:00.000",
-      "market_capitalization": 206352546840.0,
+      "market_capitalization": 206352529350.0,
       "fiscal_quarter": "2025-03-31T00:00:00.000",
       "book_value_of_equity": 5424155000.0,
       "exchange_rate": 1.0,
@@ -35316,7 +35394,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-04-03T00:00:00.000",
-      "market_capitalization": 197267843520.0,
+      "market_capitalization": 197267826800.0,
       "fiscal_quarter": "2025-03-31T00:00:00.000",
       "book_value_of_equity": 5424155000.0,
       "exchange_rate": 1.0,
@@ -35326,7 +35404,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-04-04T00:00:00.000",
-      "market_capitalization": 174638673432.0,
+      "market_capitalization": 174638658630.0,
       "fiscal_quarter": "2025-03-31T00:00:00.000",
       "book_value_of_equity": 5424155000.0,
       "exchange_rate": 1.0,
@@ -35336,7 +35414,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-04-07T00:00:00.000",
-      "market_capitalization": 183676183488.0,
+      "market_capitalization": 183676167920.0,
       "fiscal_quarter": "2025-03-31T00:00:00.000",
       "book_value_of_equity": 5424155000.0,
       "exchange_rate": 1.0,
@@ -35346,7 +35424,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-04-08T00:00:00.000",
-      "market_capitalization": 182449158624.0,
+      "market_capitalization": 182449143160.0,
       "fiscal_quarter": "2025-03-31T00:00:00.000",
       "book_value_of_equity": 5424155000.0,
       "exchange_rate": 1.0,
@@ -35356,7 +35434,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-04-09T00:00:00.000",
-      "market_capitalization": 217112611032.0,
+      "market_capitalization": 217112592630.0,
       "fiscal_quarter": "2025-03-31T00:00:00.000",
       "book_value_of_equity": 5424155000.0,
       "exchange_rate": 1.0,
@@ -35366,7 +35444,7 @@
     {
       "symbol": "PLTR",
       "report_date": "2025-04-10T00:00:00.000",
-      "market_capitalization": 209042562888.0,
+      "market_capitalization": 209042545170.0,
       "fiscal_quarter": "2025-03-31T00:00:00.000",
       "book_value_of_equity": 5424155000.0,
       "exchange_rate": 1.0,
@@ -38212,6 +38290,36 @@
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 8449663000.0,
       "pb_ratio": 44.41
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2026-06-01T00:00:00.000",
+      "market_capitalization": 385128172800.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 8449663000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 8449663000.0,
+      "pb_ratio": 45.58
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2026-06-02T00:00:00.000",
+      "market_capitalization": 364798967040.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 8449663000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 8449663000.0,
+      "pb_ratio": 43.17
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2026-06-03T00:00:00.000",
+      "market_capitalization": 340897766400.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 8449663000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 8449663000.0,
+      "pb_ratio": 40.34
     }
   ],
   "pegRatio": [
@@ -44884,6 +44992,36 @@
       "ttm_pe": 176.36,
       "eps_yoy_growth": 3.0406,
       "peg_ratio": 0.58
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2026-06-01T00:00:00.000",
+      "close_price": 160.65,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 0.8876,
+      "ttm_pe": 180.99,
+      "eps_yoy_growth": 3.0406,
+      "peg_ratio": 0.6
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2026-06-02T00:00:00.000",
+      "close_price": 152.17,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 0.8876,
+      "ttm_pe": 171.44,
+      "eps_yoy_growth": 3.0406,
+      "peg_ratio": 0.56
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2026-06-03T00:00:00.000",
+      "close_price": 142.2,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 0.8876,
+      "ttm_pe": 160.21,
+      "eps_yoy_growth": 3.0406,
+      "peg_ratio": 0.53
     }
   ]
 }

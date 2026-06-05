@@ -1,10 +1,10 @@
 {
   "symbol": "TSLA",
-  "lastUpdated": "2026-06-02T00:07:23.336952+00:00",
+  "lastUpdated": "2026-06-05T00:00:31.538495+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-02T00:07:23.336952+00:00",
+    "snapshotBuiltAt": "2026-06-05T00:00:31.538495+00:00",
     "sections": {
-      "price": "2026-05-29"
+      "price": "2026-06-03"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.0946,
-      "ttmPe": 398.13,
-      "marketCap": 1636706918381,
-      "psRatio": 16.72,
-      "pbRatio": 19.46,
-      "pegRatio": 24.87
+      "ttmPe": 387.08,
+      "marketCap": 1591300216430,
+      "psRatio": 16.26,
+      "pbRatio": 18.92,
+      "pegRatio": 24.18
     },
     "profitability": {
       "roe": 0.5700000000000001,
@@ -5782,30 +5782,6 @@
     },
     "price": [
       {
-        "date": "2025-05-29",
-        "open": 365.29,
-        "high": 367.71,
-        "low": 356,
-        "close": 358.43,
-        "volume": 88545700
-      },
-      {
-        "date": "2025-05-30",
-        "open": 355.52,
-        "high": 363.68,
-        "low": 345.29,
-        "close": 346.46,
-        "volume": 123474900
-      },
-      {
-        "date": "2025-06-02",
-        "open": 343.5,
-        "high": 348.02,
-        "low": 333.33,
-        "close": 342.69,
-        "volume": 81873800
-      },
-      {
         "date": "2025-06-03",
         "open": 346.6,
         "high": 355.4,
@@ -7795,7 +7771,31 @@
         "high": 441.07,
         "low": 428.14,
         "close": 435.79,
-        "volume": 45059400
+        "volume": 45176800
+      },
+      {
+        "date": "2026-06-01",
+        "open": 427.49,
+        "high": 429.6,
+        "low": 415.43,
+        "close": 415.88,
+        "volume": 44937900
+      },
+      {
+        "date": "2026-06-02",
+        "open": 418.22,
+        "high": 424.42,
+        "low": 413.65,
+        "close": 423.74,
+        "volume": 37596000
+      },
+      {
+        "date": "2026-06-03",
+        "open": 418.7,
+        "high": 433.6,
+        "low": 416,
+        "close": 423.7,
+        "volume": 43747438
       }
     ],
     "officers": [
@@ -7854,18 +7854,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 398.13,
-        "industryAvg": 29.08
+        "value": 387.08,
+        "industryAvg": 28.18
       },
       {
         "metric": "P/S Ratio",
-        "value": 16.72,
-        "industryAvg": 1.35
+        "value": 16.26,
+        "industryAvg": 1.31
       },
       {
         "metric": "P/B Ratio",
-        "value": 19.46,
-        "industryAvg": 2.05
+        "value": 18.92,
+        "industryAvg": 1.99
       },
       {
         "metric": "ROE",

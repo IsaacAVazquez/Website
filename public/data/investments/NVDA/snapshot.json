@@ -1,10 +1,10 @@
 {
   "symbol": "NVDA",
-  "lastUpdated": "2026-06-02T00:07:23.336952+00:00",
+  "lastUpdated": "2026-06-05T00:00:31.538495+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-02T00:07:23.336952+00:00",
+    "snapshotBuiltAt": "2026-06-05T00:00:31.538495+00:00",
     "sections": {
-      "price": "2026-05-29"
+      "price": "2026-06-03"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 6.5299,
-      "ttmPe": 32.33,
-      "marketCap": 5114021940000,
-      "psRatio": 20.17,
-      "pbRatio": 26.16,
+      "ttmPe": 32.89,
+      "marketCap": 5201459750000,
+      "psRatio": 20.52,
+      "pbRatio": 26.61,
       "pegRatio": 0.15
     },
     "profitability": {
@@ -5693,30 +5693,6 @@
     },
     "price": [
       {
-        "date": "2025-05-29",
-        "open": 142.25,
-        "high": 143.49,
-        "low": 137.91,
-        "close": 139.19,
-        "volume": 369241900
-      },
-      {
-        "date": "2025-05-30",
-        "open": 138.72,
-        "high": 139.62,
-        "low": 132.92,
-        "close": 135.13,
-        "volume": 333170900
-      },
-      {
-        "date": "2025-06-02",
-        "open": 135.49,
-        "high": 138.12,
-        "low": 135.4,
-        "close": 137.38,
-        "volume": 197663100
-      },
-      {
         "date": "2025-06-03",
         "open": 138.78,
         "high": 142,
@@ -7706,7 +7682,31 @@
         "high": 217.86,
         "low": 211.13,
         "close": 211.14,
-        "volume": 288291500
+        "volume": 289410600
+      },
+      {
+        "date": "2026-06-01",
+        "open": 215.73,
+        "high": 224.87,
+        "low": 215.7,
+        "close": 224.36,
+        "volume": 212850700
+      },
+      {
+        "date": "2026-06-02",
+        "open": 227.18,
+        "high": 232.28,
+        "low": 221.35,
+        "close": 222.82,
+        "volume": 193362900
+      },
+      {
+        "date": "2026-06-03",
+        "open": 221.685,
+        "high": 222.82,
+        "low": 214.51,
+        "close": 214.75,
+        "volume": 150147825
       }
     ],
     "officers": [
@@ -7774,18 +7774,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 32.33,
-        "industryAvg": 38.41
+        "value": 32.89,
+        "industryAvg": 40.37
       },
       {
         "metric": "P/S Ratio",
-        "value": 20.17,
-        "industryAvg": 15.29
+        "value": 20.52,
+        "industryAvg": 16.03
       },
       {
         "metric": "P/B Ratio",
-        "value": 26.16,
-        "industryAvg": 12.69
+        "value": 26.61,
+        "industryAvg": 13.34
       },
       {
         "metric": "ROE",

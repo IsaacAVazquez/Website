@@ -1,10 +1,10 @@
 {
   "symbol": "MSFT",
-  "lastUpdated": "2026-06-02T00:07:23.336952+00:00",
+  "lastUpdated": "2026-06-05T00:00:31.538495+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-02T00:07:23.336952+00:00",
+    "snapshotBuiltAt": "2026-06-05T00:00:31.538495+00:00",
     "sections": {
-      "price": "2026-05-29"
+      "price": "2026-06-03"
     }
   },
   "source": "prefetched",
@@ -33,7 +33,7 @@
       "country": "United States",
       "industry": "Software-Infrastructure",
       "sector": "Technology",
-      "longBusinessSummary": "Microsoft Corporation develops and supports software, services, devices, and solutions worldwide. The Productivity and Business Processes segment offers Microsoft 365 commercial, enterprise mobility + security, windows commercial, power BI, exchange, sharepoint, Microsoft teams, security and compliance, and copilot; Microsoft 365 commercial products, such as Windows commercial on-premises and office licensed services; Microsoft 365 consumer products and cloud services, including Microsoft 365 consumer subscriptions, office licensed on-premises, and other consumer services; LinkedIn; dynamics products and cloud services, such as dynamics 365, cloud-based applications, and on-premises ERP and CRM applications. Its Intelligent Cloud segment provides Server products and cloud services comprising Azure and other cloud services, GitHub, Nuance Healthcare, virtual desktop offerings, and other cloud services; server products, including SQL and windows server, visual studio and system center related client access licenses, and other on-premises offerings; enterprise and partner services, such as enterprise support and nuance professional services, industry solutions, Microsoft partner network, and learning experience. The Personal Computing segment provides windows and devices, such as Windows OEM licensing and devices and surface and PC accessories; gaming services and solutions, such as Xbox hardware, content, and services, first- and third-party content Xbox game pass, subscriptions, and cloud gaming, advertising, and other cloud services; search and news advertising services that includes Bing and Copilot, Microsoft News and Edge, and third-party affiliates. It sells its products through OEMs, distributors, and resellers; and online and retail stores. The company was founded in 1975 and is headquartered in Redmond, Washington.",
+      "longBusinessSummary": "Microsoft Corporation develops and supports software, services, devices, and solutions worldwide. The Productivity and Business Processes segment offers Microsoft 365 commercial, enterprise mobility + security, windows commercial, power BI, exchange, sharepoint, Microsoft teams, security and compliance, and copilot; Microsoft 365 commercial products, such as Windows commercial on-premises and office licensed services; Microsoft 365 consumer products and cloud services, including Microsoft 365 consumer subscriptions, office licensed on-premises, and other consumer services; LinkedIn; dynamics products and cloud services, such as dynamics 365, cloud-based applications, and on-premises ERP and CRM applications. Its Intelligent Cloud segment provides Server products and cloud services comprising Azure and other cloud services, GitHub, Nuance Healthcare, virtual desktop offerings, and other cloud services; server products, including SQL and windows server, visual studio and system center related client access licenses, and other on-premises offerings; enterprise and partner services, such as enterprise support and nuance professional services, industry solutions, Microsoft partner network, and learning experience. The Personal Computing segment provides windows and devices, such as Windows OEM licensing and devices and surface and PC accessories; gaming services and solutions, such as Xbox hardware, content, and services, first- and third-party content Xbox game pass, subscriptions, and cloud gaming, advertising, and other cloud services; search and news advertising services that includes Bing and Copilot, Microsoft News and Edge, and third-party affiliates. It sells its products through OEMs, distributors, and resellers; and online and retail stores. The company has a strategic collaboration with Mayo Clinic, Inc. for the development of a frontier AI model for healthcare. The company was founded in 1975 and is headquartered in Redmond, Washington.",
       "fullTimeEmployees": 228000,
       "website": "https://www.microsoft.com",
       "shortName": "Microsoft Corporation",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 16.79,
-      "ttmPe": 26.82,
-      "marketCap": 3344578439328,
-      "psRatio": 10.51,
-      "pbRatio": 8.07,
-      "pegRatio": 1.15
+      "ttmPe": 25.45,
+      "marketCap": 3174467284698,
+      "psRatio": 9.97,
+      "pbRatio": 7.66,
+      "pegRatio": 1.09
     },
     "profitability": {
       "roe": 7.89,
@@ -5548,30 +5548,6 @@
     },
     "price": [
       {
-        "date": "2025-05-29",
-        "open": 461.55,
-        "high": 461.72,
-        "low": 455.31,
-        "close": 458.68,
-        "volume": 13974800
-      },
-      {
-        "date": "2025-05-30",
-        "open": 459.72,
-        "high": 461.68,
-        "low": 455.54,
-        "close": 460.36,
-        "volume": 34770500
-      },
-      {
-        "date": "2025-06-02",
-        "open": 457.14,
-        "high": 462.11,
-        "low": 456.89,
-        "close": 461.97,
-        "volume": 16626500
-      },
-      {
         "date": "2025-06-03",
         "open": 461.47,
         "high": 464.14,
@@ -7561,7 +7537,31 @@
         "high": 450.33,
         "low": 432.36,
         "close": 450.24,
-        "volume": 79522600
+        "volume": 79654400
+      },
+      {
+        "date": "2026-06-01",
+        "open": 464.84,
+        "high": 466.32,
+        "low": 458.27,
+        "close": 460.52,
+        "volume": 53628900
+      },
+      {
+        "date": "2026-06-02",
+        "open": 446.88,
+        "high": 453.5,
+        "low": 440.43,
+        "close": 441.31,
+        "volume": 37036800
+      },
+      {
+        "date": "2026-06-03",
+        "open": 438.45,
+        "high": 440.39,
+        "low": 424.25,
+        "close": 427.34,
+        "volume": 35953959
       }
     ],
     "officers": [
@@ -7628,33 +7628,33 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 26.82,
-        "industryAvg": 31.44
+        "value": 25.45,
+        "industryAvg": 30.32
       },
       {
         "metric": "P/S Ratio",
-        "value": 10.51,
-        "industryAvg": 6.83
+        "value": 9.97,
+        "industryAvg": 6.63
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.07,
-        "industryAvg": 8.55
+        "value": 7.66,
+        "industryAvg": 8.3
       },
       {
         "metric": "ROE",
         "value": 7.89,
-        "industryAvg": 27.060000000000002
+        "industryAvg": 27.07
       },
       {
         "metric": "ROA",
         "value": 4.67,
-        "industryAvg": 10.530000000000001
+        "industryAvg": 10.54
       },
       {
         "metric": "Gross Margin",
         "value": 67.63,
-        "industryAvg": 49.49
+        "industryAvg": 49.5
       },
       {
         "metric": "EBITDA Margin",

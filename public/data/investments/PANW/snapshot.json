@@ -1,10 +1,10 @@
 {
   "symbol": "PANW",
-  "lastUpdated": "2026-06-02T00:07:23.336952+00:00",
+  "lastUpdated": "2026-06-05T00:00:31.538495+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-02T00:07:23.336952+00:00",
+    "snapshotBuiltAt": "2026-06-05T00:00:31.538495+00:00",
     "sections": {
-      "price": "2026-05-29"
+      "price": "2026-06-03"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.8072,
-      "ttmPe": 155.87,
-      "marketCap": 228450590000,
-      "psRatio": 23.09,
-      "pbRatio": 24.32,
-      "pegRatio": 2.55
+      "ttmPe": 155.17,
+      "marketCap": 227428730000,
+      "psRatio": 22.99,
+      "pbRatio": 24.21,
+      "pegRatio": 2.54
     },
     "profitability": {
       "roe": 4.78,
@@ -5223,30 +5223,6 @@
     },
     "price": [
       {
-        "date": "2025-05-29",
-        "open": 189,
-        "high": 189.15,
-        "low": 182.89,
-        "close": 185.82,
-        "volume": 4499600
-      },
-      {
-        "date": "2025-05-30",
-        "open": 187.02,
-        "high": 192.73,
-        "low": 186.73,
-        "close": 192.42,
-        "volume": 11419700
-      },
-      {
-        "date": "2025-06-02",
-        "open": 192.14,
-        "high": 195.29,
-        "low": 191.48,
-        "close": 194.86,
-        "volume": 4411500
-      },
-      {
         "date": "2025-06-03",
         "open": 195,
         "high": 198.45,
@@ -7236,7 +7212,31 @@
         "high": 283.71,
         "low": 256.01,
         "close": 281.69,
-        "volume": 14987600
+        "volume": 14998900
+      },
+      {
+        "date": "2026-06-01",
+        "open": 285.43,
+        "high": 302.95,
+        "low": 283.8,
+        "close": 300.48,
+        "volume": 13714500
+      },
+      {
+        "date": "2026-06-02",
+        "open": 287.46,
+        "high": 299.33,
+        "low": 287.27,
+        "close": 297.18,
+        "volume": 20783700
+      },
+      {
+        "date": "2026-06-03",
+        "open": 284,
+        "high": 288,
+        "low": 275.85,
+        "close": 280.43,
+        "volume": 14527883
       }
     ],
     "officers": [
@@ -7250,10 +7250,6 @@
         "age": 51,
         "yearBorn": 1974,
         "totalPay": 1321720
-      },
-      {
-        "name": "Mr. Hamza Fodderwala",
-        "title": "Senior VP of Investor Relations & Strategic Finance"
       },
       {
         "name": "Mr. Josh D. Paul",
@@ -7298,38 +7294,42 @@
         "title": "Chief Information Officer",
         "age": 53,
         "yearBorn": 1972
+      },
+      {
+        "name": "Nicole Hockin",
+        "title": "Vice President of Global Communications"
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 155.87,
-        "industryAvg": 31.4
+        "value": 155.17,
+        "industryAvg": 30.32
       },
       {
         "metric": "P/S Ratio",
-        "value": 23.09,
-        "industryAvg": 6.83
+        "value": 22.99,
+        "industryAvg": 6.63
       },
       {
         "metric": "P/B Ratio",
-        "value": 24.32,
-        "industryAvg": 8.55
+        "value": 24.21,
+        "industryAvg": 8.3
       },
       {
         "metric": "ROE",
         "value": 4.78,
-        "industryAvg": 27.060000000000002
+        "industryAvg": 27.07
       },
       {
         "metric": "ROA",
         "value": 1.78,
-        "industryAvg": 10.530000000000001
+        "industryAvg": 10.54
       },
       {
         "metric": "Gross Margin",
         "value": 73.59,
-        "industryAvg": 49.49
+        "industryAvg": 49.5
       },
       {
         "metric": "EBITDA Margin",

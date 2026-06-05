@@ -8,7 +8,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-01"
+    "report_date": "2026-06-04"
   },
   {
     "symbol": "TSLA",
@@ -19,7 +19,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 129602732032,
-    "report_date": "2026-06-01"
+    "report_date": "2026-06-04"
   },
   {
     "symbol": "TSLA",
@@ -30,7 +30,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-01"
+    "report_date": "2026-06-04"
   },
   {
     "symbol": "TSLA",
@@ -41,7 +41,7 @@
     "pay": 121550,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-01"
+    "report_date": "2026-06-04"
   },
   {
     "symbol": "TSLA",
@@ -52,7 +52,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-01"
+    "report_date": "2026-06-04"
   },
   {
     "symbol": "TSLA",
@@ -63,7 +63,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-01"
+    "report_date": "2026-06-04"
   },
   {
     "symbol": "TSLA",
@@ -74,7 +74,7 @@
     "pay": 403000,
     "exercised": 15033838,
     "unexercised": 417696224,
-    "report_date": "2026-06-01"
+    "report_date": "2026-06-04"
   },
   {
     "symbol": "TSLA",
@@ -85,7 +85,7 @@
     "pay": 376322,
     "exercised": 4548562,
     "unexercised": 808327104,
-    "report_date": "2026-06-01"
+    "report_date": "2026-06-04"
   },
   {
     "symbol": "TSLA",
@@ -96,7 +96,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-01"
+    "report_date": "2026-06-04"
   },
   {
     "symbol": "TSLA",
@@ -107,6 +107,6 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-01"
+    "report_date": "2026-06-04"
   }
 ]

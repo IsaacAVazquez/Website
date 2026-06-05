@@ -1,10 +1,10 @@
 {
   "symbol": "CRM",
-  "lastUpdated": "2026-06-02T00:07:23.336952+00:00",
+  "lastUpdated": "2026-06-05T00:00:31.538495+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-02T00:07:23.336952+00:00",
+    "snapshotBuiltAt": "2026-06-05T00:00:31.538495+00:00",
     "sections": {
-      "price": "2026-05-29"
+      "price": "2026-06-03"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 8.6388,
-      "ttmPe": 22.12,
-      "marketCap": 156510900000,
-      "psRatio": 3.65,
-      "pbRatio": 4.57,
+      "ttmPe": 22.06,
+      "marketCap": 156109590000,
+      "psRatio": 3.64,
+      "pbRatio": 4.56,
       "pegRatio": 0.42
     },
     "profitability": {
@@ -5387,30 +5387,6 @@
     },
     "price": [
       {
-        "date": "2025-05-29",
-        "open": 263.59,
-        "high": 267.79,
-        "low": 254.5,
-        "close": 266.92,
-        "volume": 28075000
-      },
-      {
-        "date": "2025-05-30",
-        "open": 268.08,
-        "high": 269.74,
-        "low": 260.7,
-        "close": 265.37,
-        "volume": 12388500
-      },
-      {
-        "date": "2025-06-02",
-        "open": 263.11,
-        "high": 263.79,
-        "low": 259.14,
-        "close": 261.62,
-        "volume": 9213500
-      },
-      {
         "date": "2025-06-03",
         "open": 262,
         "high": 264.75,
@@ -7400,10 +7376,38 @@
         "high": 194.14,
         "low": 180.02,
         "close": 191.1,
-        "volume": 33957300
+        "volume": 33998900
+      },
+      {
+        "date": "2026-06-01",
+        "open": 198.75,
+        "high": 211.34,
+        "low": 198.21,
+        "close": 209.6,
+        "volume": 27594800
+      },
+      {
+        "date": "2026-06-02",
+        "open": 201.02,
+        "high": 204.39,
+        "low": 195.76,
+        "close": 200.84,
+        "volume": 19216600
+      },
+      {
+        "date": "2026-06-03",
+        "open": 197.27,
+        "high": 197.68,
+        "low": 189.732,
+        "close": 190.61,
+        "volume": 13965525
       }
     ],
     "officers": [
+      {
+        "name": "Mr. Andy White",
+        "title": "Senior Vice President of Technology"
+      },
       {
         "name": "Mr. David Schmaier",
         "title": "President and Chief Strategy Officer",
@@ -7461,55 +7465,48 @@
         "title": "Executive VP & Chief Accounting Officer",
         "age": 51,
         "yearBorn": 1974
-      },
-      {
-        "name": "Ms. Robin L. Washington CPA",
-        "title": "President, Chief Operating & Financial Officer and Director",
-        "age": 62,
-        "yearBorn": 1963,
-        "totalPay": 11668529
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.12,
-        "industryAvg": 25.82
+        "value": 22.06,
+        "industryAvg": 25.59
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.65,
-        "industryAvg": 4.53
+        "value": 3.64,
+        "industryAvg": 4.51
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.57,
-        "industryAvg": 4.95
+        "value": 4.56,
+        "industryAvg": 4.88
       },
       {
         "metric": "ROE",
         "value": 4.51,
-        "industryAvg": -0.27
+        "industryAvg": -0.2
       },
       {
         "metric": "ROA",
         "value": 1.92,
-        "industryAvg": -0.15
+        "industryAvg": -0.11
       },
       {
         "metric": "Gross Margin",
         "value": 76.92,
-        "industryAvg": 63.31
+        "industryAvg": 63.33
       },
       {
         "metric": "EBITDA Margin",
         "value": 36.14,
-        "industryAvg": 21.09
+        "industryAvg": 21.16
       },
       {
         "metric": "Net Margin",
         "value": 18.93,
-        "industryAvg": -0.35000000000000003
+        "industryAvg": -0.25
       }
     ]
   }

@@ -13720,6 +13720,30 @@
       "close_price": 241.82,
       "ttm_eps": -0.2483,
       "ttm_pe": null
+    },
+    {
+      "symbol": "NET",
+      "report_date": "2026-06-01T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 270.82,
+      "ttm_eps": -0.2483,
+      "ttm_pe": null
+    },
+    {
+      "symbol": "NET",
+      "report_date": "2026-06-02T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 272.66,
+      "ttm_eps": -0.2483,
+      "ttm_pe": null
+    },
+    {
+      "symbol": "NET",
+      "report_date": "2026-06-03T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 265.33,
+      "ttm_eps": -0.2483,
+      "ttm_pe": null
     }
   ],
   "marketCap": [
@@ -14328,8 +14352,8 @@
       "report_date": "2019-12-31T00:00:00.000",
       "shares_report_date": "2019-12-31T00:00:00.000",
       "close_price": 17.06,
-      "shares_outstanding": 300173000,
-      "market_capitalization": 5120951380.0
+      "shares_outstanding": 300173100,
+      "market_capitalization": 5120953086.0
     },
     {
       "symbol": "NET",
@@ -14824,64 +14848,64 @@
       "report_date": "2020-03-31T00:00:00.000",
       "shares_report_date": "2020-03-31T00:00:00.000",
       "close_price": 23.48,
-      "shares_outstanding": 303357000,
-      "market_capitalization": 7122822360.0
+      "shares_outstanding": 303357300,
+      "market_capitalization": 7122829404.0
     },
     {
       "symbol": "NET",
       "report_date": "2020-04-01T00:00:00.000",
       "shares_report_date": "2020-03-31T00:00:00.000",
       "close_price": 24.12,
-      "shares_outstanding": 303357000,
-      "market_capitalization": 7316970840.0
+      "shares_outstanding": 303357300,
+      "market_capitalization": 7316978076.0
     },
     {
       "symbol": "NET",
       "report_date": "2020-04-02T00:00:00.000",
       "shares_report_date": "2020-03-31T00:00:00.000",
       "close_price": 23.06,
-      "shares_outstanding": 303357000,
-      "market_capitalization": 6995412420.0
+      "shares_outstanding": 303357300,
+      "market_capitalization": 6995419338.0
     },
     {
       "symbol": "NET",
       "report_date": "2020-04-03T00:00:00.000",
       "shares_report_date": "2020-03-31T00:00:00.000",
       "close_price": 24.08,
-      "shares_outstanding": 303357000,
-      "market_capitalization": 7304836560.0
+      "shares_outstanding": 303357300,
+      "market_capitalization": 7304843784.0
     },
     {
       "symbol": "NET",
       "report_date": "2020-04-06T00:00:00.000",
       "shares_report_date": "2020-03-31T00:00:00.000",
       "close_price": 23.64,
-      "shares_outstanding": 303357000,
-      "market_capitalization": 7171359480.0
+      "shares_outstanding": 303357300,
+      "market_capitalization": 7171366572.0
     },
     {
       "symbol": "NET",
       "report_date": "2020-04-07T00:00:00.000",
       "shares_report_date": "2020-03-31T00:00:00.000",
       "close_price": 22.8,
-      "shares_outstanding": 303357000,
-      "market_capitalization": 6916539600.0
+      "shares_outstanding": 303357300,
+      "market_capitalization": 6916546440.0
     },
     {
       "symbol": "NET",
       "report_date": "2020-04-08T00:00:00.000",
       "shares_report_date": "2020-03-31T00:00:00.000",
       "close_price": 22.84,
-      "shares_outstanding": 303357000,
-      "market_capitalization": 6928673880.0
+      "shares_outstanding": 303357300,
+      "market_capitalization": 6928680732.0
     },
     {
       "symbol": "NET",
       "report_date": "2020-04-09T00:00:00.000",
       "shares_report_date": "2020-03-31T00:00:00.000",
       "close_price": 21.18,
-      "shares_outstanding": 303357000,
-      "market_capitalization": 6425101260.0
+      "shares_outstanding": 303357300,
+      "market_capitalization": 6425107614.0
     },
     {
       "symbol": "NET",
@@ -15328,192 +15352,192 @@
       "report_date": "2020-06-30T00:00:00.000",
       "shares_report_date": "2020-06-30T00:00:00.000",
       "close_price": 35.95,
-      "shares_outstanding": 305424000,
-      "market_capitalization": 10979992800.0
+      "shares_outstanding": 305424200,
+      "market_capitalization": 10979999990.0
     },
     {
       "symbol": "NET",
       "report_date": "2020-07-01T00:00:00.000",
       "shares_report_date": "2020-06-30T00:00:00.000",
       "close_price": 36.93,
-      "shares_outstanding": 305424000,
-      "market_capitalization": 11279308320.0
+      "shares_outstanding": 305424200,
+      "market_capitalization": 11279315706.0
     },
     {
       "symbol": "NET",
       "report_date": "2020-07-02T00:00:00.000",
       "shares_report_date": "2020-06-30T00:00:00.000",
       "close_price": 36.47,
-      "shares_outstanding": 305424000,
-      "market_capitalization": 11138813280.0
+      "shares_outstanding": 305424200,
+      "market_capitalization": 11138820574.0
     },
     {
       "symbol": "NET",
       "report_date": "2020-07-06T00:00:00.000",
       "shares_report_date": "2020-06-30T00:00:00.000",
       "close_price": 38.34,
-      "shares_outstanding": 305424000,
-      "market_capitalization": 11709956160.0
+      "shares_outstanding": 305424200,
+      "market_capitalization": 11709963828.0
     },
     {
       "symbol": "NET",
       "report_date": "2020-07-07T00:00:00.000",
       "shares_report_date": "2020-06-30T00:00:00.000",
       "close_price": 37.91,
-      "shares_outstanding": 305424000,
-      "market_capitalization": 11578623840.0
+      "shares_outstanding": 305424200,
+      "market_capitalization": 11578631422.0
     },
     {
       "symbol": "NET",
       "report_date": "2020-07-08T00:00:00.000",
       "shares_report_date": "2020-06-30T00:00:00.000",
       "close_price": 38.4,
-      "shares_outstanding": 305424000,
-      "market_capitalization": 11728281600.0
+      "shares_outstanding": 305424200,
+      "market_capitalization": 11728289280.0
     },
     {
       "symbol": "NET",
       "report_date": "2020-07-09T00:00:00.000",
       "shares_report_date": "2020-06-30T00:00:00.000",
       "close_price": 39.73,
-      "shares_outstanding": 305424000,
-      "market_capitalization": 12134495520.0
+      "shares_outstanding": 305424200,
+      "market_capitalization": 12134503466.0
     },
     {
       "symbol": "NET",
       "report_date": "2020-07-10T00:00:00.000",
       "shares_report_date": "2020-06-30T00:00:00.000",
       "close_price": 40.08,
-      "shares_outstanding": 305424000,
-      "market_capitalization": 12241393920.0
+      "shares_outstanding": 305424200,
+      "market_capitalization": 12241401936.0
     },
     {
       "symbol": "NET",
       "report_date": "2020-07-13T00:00:00.000",
       "shares_report_date": "2020-06-30T00:00:00.000",
       "close_price": 36.75,
-      "shares_outstanding": 305424000,
-      "market_capitalization": 11224332000.0
+      "shares_outstanding": 305424200,
+      "market_capitalization": 11224339350.0
     },
     {
       "symbol": "NET",
       "report_date": "2020-07-14T00:00:00.000",
       "shares_report_date": "2020-06-30T00:00:00.000",
       "close_price": 36.75,
-      "shares_outstanding": 305424000,
-      "market_capitalization": 11224332000.0
+      "shares_outstanding": 305424200,
+      "market_capitalization": 11224339350.0
     },
     {
       "symbol": "NET",
       "report_date": "2020-07-15T00:00:00.000",
       "shares_report_date": "2020-06-30T00:00:00.000",
       "close_price": 36.12,
-      "shares_outstanding": 305424000,
-      "market_capitalization": 11031914880.0
+      "shares_outstanding": 305424200,
+      "market_capitalization": 11031922104.0
     },
     {
       "symbol": "NET",
       "report_date": "2020-07-16T00:00:00.000",
       "shares_report_date": "2020-06-30T00:00:00.000",
       "close_price": 35.1,
-      "shares_outstanding": 305424000,
-      "market_capitalization": 10720382400.0
+      "shares_outstanding": 305424200,
+      "market_capitalization": 10720389420.0
     },
     {
       "symbol": "NET",
       "report_date": "2020-07-17T00:00:00.000",
       "shares_report_date": "2020-06-30T00:00:00.000",
       "close_price": 37.02,
-      "shares_outstanding": 305424000,
-      "market_capitalization": 11306796480.0
+      "shares_outstanding": 305424200,
+      "market_capitalization": 11306803884.0
     },
     {
       "symbol": "NET",
       "report_date": "2020-07-20T00:00:00.000",
       "shares_report_date": "2020-06-30T00:00:00.000",
       "close_price": 38.37,
-      "shares_outstanding": 305424000,
-      "market_capitalization": 11719118880.0
+      "shares_outstanding": 305424200,
+      "market_capitalization": 11719126554.0
     },
     {
       "symbol": "NET",
       "report_date": "2020-07-21T00:00:00.000",
       "shares_report_date": "2020-06-30T00:00:00.000",
       "close_price": 38.18,
-      "shares_outstanding": 305424000,
-      "market_capitalization": 11661088320.0
+      "shares_outstanding": 305424200,
+      "market_capitalization": 11661095956.0
     },
     {
       "symbol": "NET",
       "report_date": "2020-07-22T00:00:00.000",
       "shares_report_date": "2020-06-30T00:00:00.000",
       "close_price": 38.04,
-      "shares_outstanding": 305424000,
-      "market_capitalization": 11618328960.0
+      "shares_outstanding": 305424200,
+      "market_capitalization": 11618336568.0
     },
     {
       "symbol": "NET",
       "report_date": "2020-07-23T00:00:00.000",
       "shares_report_date": "2020-06-30T00:00:00.000",
       "close_price": 36.43,
-      "shares_outstanding": 305424000,
-      "market_capitalization": 11126596320.0
+      "shares_outstanding": 305424200,
+      "market_capitalization": 11126603606.0
     },
     {
       "symbol": "NET",
       "report_date": "2020-07-24T00:00:00.000",
       "shares_report_date": "2020-06-30T00:00:00.000",
       "close_price": 35.72,
-      "shares_outstanding": 305424000,
-      "market_capitalization": 10909745280.0
+      "shares_outstanding": 305424200,
+      "market_capitalization": 10909752424.0
     },
     {
       "symbol": "NET",
       "report_date": "2020-07-27T00:00:00.000",
       "shares_report_date": "2020-06-30T00:00:00.000",
       "close_price": 37.36,
-      "shares_outstanding": 305424000,
-      "market_capitalization": 11410640640.0
+      "shares_outstanding": 305424200,
+      "market_capitalization": 11410648112.0
     },
     {
       "symbol": "NET",
       "report_date": "2020-07-28T00:00:00.000",
       "shares_report_date": "2020-06-30T00:00:00.000",
       "close_price": 37.65,
-      "shares_outstanding": 305424000,
-      "market_capitalization": 11499213600.0
+      "shares_outstanding": 305424200,
+      "market_capitalization": 11499221130.0
     },
     {
       "symbol": "NET",
       "report_date": "2020-07-29T00:00:00.000",
       "shares_report_date": "2020-06-30T00:00:00.000",
       "close_price": 38.7,
-      "shares_outstanding": 305424000,
-      "market_capitalization": 11819908800.0
+      "shares_outstanding": 305424200,
+      "market_capitalization": 11819916540.0
     },
     {
       "symbol": "NET",
       "report_date": "2020-07-30T00:00:00.000",
       "shares_report_date": "2020-06-30T00:00:00.000",
       "close_price": 41.13,
-      "shares_outstanding": 305424000,
-      "market_capitalization": 12562089120.0
+      "shares_outstanding": 305424200,
+      "market_capitalization": 12562097346.0
     },
     {
       "symbol": "NET",
       "report_date": "2020-07-31T00:00:00.000",
       "shares_report_date": "2020-06-30T00:00:00.000",
       "close_price": 41.62,
-      "shares_outstanding": 305424000,
-      "market_capitalization": 12711746880.0
+      "shares_outstanding": 305424200,
+      "market_capitalization": 12711755204.0
     },
     {
       "symbol": "NET",
       "report_date": "2020-08-03T00:00:00.000",
       "shares_report_date": "2020-06-30T00:00:00.000",
       "close_price": 42.51,
-      "shares_outstanding": 305424000,
-      "market_capitalization": 12983574240.0
+      "shares_outstanding": 305424200,
+      "market_capitalization": 12983582742.0
     },
     {
       "symbol": "NET",
@@ -16840,72 +16864,72 @@
       "report_date": "2021-03-31T00:00:00.000",
       "shares_report_date": "2021-03-31T00:00:00.000",
       "close_price": 70.26,
-      "shares_outstanding": 310525000,
-      "market_capitalization": 21817486500.0
+      "shares_outstanding": 310525100,
+      "market_capitalization": 21817493526.0
     },
     {
       "symbol": "NET",
       "report_date": "2021-04-01T00:00:00.000",
       "shares_report_date": "2021-03-31T00:00:00.000",
       "close_price": 71.79,
-      "shares_outstanding": 310525000,
-      "market_capitalization": 22292589750.0
+      "shares_outstanding": 310525100,
+      "market_capitalization": 22292596929.0
     },
     {
       "symbol": "NET",
       "report_date": "2021-04-05T00:00:00.000",
       "shares_report_date": "2021-03-31T00:00:00.000",
       "close_price": 71.17,
-      "shares_outstanding": 310525000,
-      "market_capitalization": 22100064250.0
+      "shares_outstanding": 310525100,
+      "market_capitalization": 22100071367.0
     },
     {
       "symbol": "NET",
       "report_date": "2021-04-06T00:00:00.000",
       "shares_report_date": "2021-03-31T00:00:00.000",
       "close_price": 72.21,
-      "shares_outstanding": 310525000,
-      "market_capitalization": 22423010250.0
+      "shares_outstanding": 310525100,
+      "market_capitalization": 22423017471.0
     },
     {
       "symbol": "NET",
       "report_date": "2021-04-07T00:00:00.000",
       "shares_report_date": "2021-03-31T00:00:00.000",
       "close_price": 70.05,
-      "shares_outstanding": 310525000,
-      "market_capitalization": 21752276250.0
+      "shares_outstanding": 310525100,
+      "market_capitalization": 21752283255.0
     },
     {
       "symbol": "NET",
       "report_date": "2021-04-08T00:00:00.000",
       "shares_report_date": "2021-03-31T00:00:00.000",
       "close_price": 72.36,
-      "shares_outstanding": 310525000,
-      "market_capitalization": 22469589000.0
+      "shares_outstanding": 310525100,
+      "market_capitalization": 22469596236.0
     },
     {
       "symbol": "NET",
       "report_date": "2021-04-09T00:00:00.000",
       "shares_report_date": "2021-03-31T00:00:00.000",
       "close_price": 70.88,
-      "shares_outstanding": 310525000,
-      "market_capitalization": 22010012000.0
+      "shares_outstanding": 310525100,
+      "market_capitalization": 22010019088.0
     },
     {
       "symbol": "NET",
       "report_date": "2021-04-12T00:00:00.000",
       "shares_report_date": "2021-03-31T00:00:00.000",
       "close_price": 69.73,
-      "shares_outstanding": 310525000,
-      "market_capitalization": 21652908250.0
+      "shares_outstanding": 310525100,
+      "market_capitalization": 21652915223.0
     },
     {
       "symbol": "NET",
       "report_date": "2021-04-13T00:00:00.000",
       "shares_report_date": "2021-03-31T00:00:00.000",
       "close_price": 77.61,
-      "shares_outstanding": 310525000,
-      "market_capitalization": 24099845250.0
+      "shares_outstanding": 310525100,
+      "market_capitalization": 24099853011.0
     },
     {
       "symbol": "NET",
@@ -17344,104 +17368,104 @@
       "report_date": "2021-06-30T00:00:00.000",
       "shares_report_date": "2021-06-30T00:00:00.000",
       "close_price": 105.84,
-      "shares_outstanding": 312365000,
-      "market_capitalization": 33060711600.0
+      "shares_outstanding": 312365100,
+      "market_capitalization": 33060722184.0
     },
     {
       "symbol": "NET",
       "report_date": "2021-07-01T00:00:00.000",
       "shares_report_date": "2021-06-30T00:00:00.000",
       "close_price": 104.39,
-      "shares_outstanding": 312365000,
-      "market_capitalization": 32607782350.0
+      "shares_outstanding": 312365100,
+      "market_capitalization": 32607792789.0
     },
     {
       "symbol": "NET",
       "report_date": "2021-07-02T00:00:00.000",
       "shares_report_date": "2021-06-30T00:00:00.000",
       "close_price": 106.02,
-      "shares_outstanding": 312365000,
-      "market_capitalization": 33116937300.0
+      "shares_outstanding": 312365100,
+      "market_capitalization": 33116947902.0
     },
     {
       "symbol": "NET",
       "report_date": "2021-07-06T00:00:00.000",
       "shares_report_date": "2021-06-30T00:00:00.000",
       "close_price": 108.93,
-      "shares_outstanding": 312365000,
-      "market_capitalization": 34025919450.0
+      "shares_outstanding": 312365100,
+      "market_capitalization": 34025930343.0
     },
     {
       "symbol": "NET",
       "report_date": "2021-07-07T00:00:00.000",
       "shares_report_date": "2021-06-30T00:00:00.000",
       "close_price": 108.35,
-      "shares_outstanding": 312365000,
-      "market_capitalization": 33844747750.0
+      "shares_outstanding": 312365100,
+      "market_capitalization": 33844758585.0
     },
     {
       "symbol": "NET",
       "report_date": "2021-07-08T00:00:00.000",
       "shares_report_date": "2021-06-30T00:00:00.000",
       "close_price": 108.78,
-      "shares_outstanding": 312365000,
-      "market_capitalization": 33979064700.0
+      "shares_outstanding": 312365100,
+      "market_capitalization": 33979075578.0
     },
     {
       "symbol": "NET",
       "report_date": "2021-07-09T00:00:00.000",
       "shares_report_date": "2021-06-30T00:00:00.000",
       "close_price": 108.97,
-      "shares_outstanding": 312365000,
-      "market_capitalization": 34038414050.0
+      "shares_outstanding": 312365100,
+      "market_capitalization": 34038424947.0
     },
     {
       "symbol": "NET",
       "report_date": "2021-07-12T00:00:00.000",
       "shares_report_date": "2021-06-30T00:00:00.000",
       "close_price": 107.28,
-      "shares_outstanding": 312365000,
-      "market_capitalization": 33510517200.0
+      "shares_outstanding": 312365100,
+      "market_capitalization": 33510527928.0
     },
     {
       "symbol": "NET",
       "report_date": "2021-07-13T00:00:00.000",
       "shares_report_date": "2021-06-30T00:00:00.000",
       "close_price": 106.51,
-      "shares_outstanding": 312365000,
-      "market_capitalization": 33269996150.0
+      "shares_outstanding": 312365100,
+      "market_capitalization": 33270006801.0
     },
     {
       "symbol": "NET",
       "report_date": "2021-07-14T00:00:00.000",
       "shares_report_date": "2021-06-30T00:00:00.000",
       "close_price": 104.38,
-      "shares_outstanding": 312365000,
-      "market_capitalization": 32604658700.0
+      "shares_outstanding": 312365100,
+      "market_capitalization": 32604669138.0
     },
     {
       "symbol": "NET",
       "report_date": "2021-07-15T00:00:00.000",
       "shares_report_date": "2021-06-30T00:00:00.000",
       "close_price": 102.67,
-      "shares_outstanding": 312365000,
-      "market_capitalization": 32070514550.0
+      "shares_outstanding": 312365100,
+      "market_capitalization": 32070524817.0
     },
     {
       "symbol": "NET",
       "report_date": "2021-07-16T00:00:00.000",
       "shares_report_date": "2021-06-30T00:00:00.000",
       "close_price": 102.66,
-      "shares_outstanding": 312365000,
-      "market_capitalization": 32067390900.0
+      "shares_outstanding": 312365100,
+      "market_capitalization": 32067401166.0
     },
     {
       "symbol": "NET",
       "report_date": "2021-07-19T00:00:00.000",
       "shares_report_date": "2021-06-30T00:00:00.000",
       "close_price": 105.52,
-      "shares_outstanding": 312365000,
-      "market_capitalization": 32960754800.0
+      "shares_outstanding": 312365100,
+      "market_capitalization": 32960765352.0
     },
     {
       "symbol": "NET",
@@ -17856,128 +17880,128 @@
       "report_date": "2021-09-30T00:00:00.000",
       "shares_report_date": "2021-09-30T00:00:00.000",
       "close_price": 112.65,
-      "shares_outstanding": 321614000,
-      "market_capitalization": 36229817100.0
+      "shares_outstanding": 321613300,
+      "market_capitalization": 36229738245.0
     },
     {
       "symbol": "NET",
       "report_date": "2021-10-01T00:00:00.000",
       "shares_report_date": "2021-09-30T00:00:00.000",
       "close_price": 114.98,
-      "shares_outstanding": 321614000,
-      "market_capitalization": 36979177720.0
+      "shares_outstanding": 321613300,
+      "market_capitalization": 36979097234.0
     },
     {
       "symbol": "NET",
       "report_date": "2021-10-04T00:00:00.000",
       "shares_report_date": "2021-09-30T00:00:00.000",
       "close_price": 115.73,
-      "shares_outstanding": 321614000,
-      "market_capitalization": 37220388220.0
+      "shares_outstanding": 321613300,
+      "market_capitalization": 37220307209.0
     },
     {
       "symbol": "NET",
       "report_date": "2021-10-05T00:00:00.000",
       "shares_report_date": "2021-09-30T00:00:00.000",
       "close_price": 125.59,
-      "shares_outstanding": 321614000,
-      "market_capitalization": 40391502260.0
+      "shares_outstanding": 321613300,
+      "market_capitalization": 40391414347.0
     },
     {
       "symbol": "NET",
       "report_date": "2021-10-06T00:00:00.000",
       "shares_report_date": "2021-09-30T00:00:00.000",
       "close_price": 133.44,
-      "shares_outstanding": 321614000,
-      "market_capitalization": 42916172160.0
+      "shares_outstanding": 321613300,
+      "market_capitalization": 42916078752.0
     },
     {
       "symbol": "NET",
       "report_date": "2021-10-07T00:00:00.000",
       "shares_report_date": "2021-09-30T00:00:00.000",
       "close_price": 136.92,
-      "shares_outstanding": 321614000,
-      "market_capitalization": 44035388880.0
+      "shares_outstanding": 321613300,
+      "market_capitalization": 44035293036.0
     },
     {
       "symbol": "NET",
       "report_date": "2021-10-08T00:00:00.000",
       "shares_report_date": "2021-09-30T00:00:00.000",
       "close_price": 139.66,
-      "shares_outstanding": 321614000,
-      "market_capitalization": 44916611240.0
+      "shares_outstanding": 321613300,
+      "market_capitalization": 44916513478.0
     },
     {
       "symbol": "NET",
       "report_date": "2021-10-11T00:00:00.000",
       "shares_report_date": "2021-09-30T00:00:00.000",
       "close_price": 144.27,
-      "shares_outstanding": 321614000,
-      "market_capitalization": 46399251780.0
+      "shares_outstanding": 321613300,
+      "market_capitalization": 46399150791.0
     },
     {
       "symbol": "NET",
       "report_date": "2021-10-12T00:00:00.000",
       "shares_report_date": "2021-09-30T00:00:00.000",
       "close_price": 150.94,
-      "shares_outstanding": 321614000,
-      "market_capitalization": 48544417160.0
+      "shares_outstanding": 321613300,
+      "market_capitalization": 48544311502.0
     },
     {
       "symbol": "NET",
       "report_date": "2021-10-13T00:00:00.000",
       "shares_report_date": "2021-09-30T00:00:00.000",
       "close_price": 159.43,
-      "shares_outstanding": 321614000,
-      "market_capitalization": 51274920020.0
+      "shares_outstanding": 321613300,
+      "market_capitalization": 51274808419.0
     },
     {
       "symbol": "NET",
       "report_date": "2021-10-14T00:00:00.000",
       "shares_report_date": "2021-09-30T00:00:00.000",
       "close_price": 165.28,
-      "shares_outstanding": 321614000,
-      "market_capitalization": 53156361920.0
+      "shares_outstanding": 321613300,
+      "market_capitalization": 53156246224.0
     },
     {
       "symbol": "NET",
       "report_date": "2021-10-15T00:00:00.000",
       "shares_report_date": "2021-09-30T00:00:00.000",
       "close_price": 167.69,
-      "shares_outstanding": 321614000,
-      "market_capitalization": 53931451660.0
+      "shares_outstanding": 321613300,
+      "market_capitalization": 53931334277.0
     },
     {
       "symbol": "NET",
       "report_date": "2021-10-18T00:00:00.000",
       "shares_report_date": "2021-09-30T00:00:00.000",
       "close_price": 180.77,
-      "shares_outstanding": 321614000,
-      "market_capitalization": 58138162780.0
+      "shares_outstanding": 321613300,
+      "market_capitalization": 58138036241.0
     },
     {
       "symbol": "NET",
       "report_date": "2021-10-19T00:00:00.000",
       "shares_report_date": "2021-09-30T00:00:00.000",
       "close_price": 172.89,
-      "shares_outstanding": 321614000,
-      "market_capitalization": 55603844460.0
+      "shares_outstanding": 321613300,
+      "market_capitalization": 55603723437.0
     },
     {
       "symbol": "NET",
       "report_date": "2021-10-20T00:00:00.000",
       "shares_report_date": "2021-09-30T00:00:00.000",
       "close_price": 175.45,
-      "shares_outstanding": 321614000,
-      "market_capitalization": 56427176300.0
+      "shares_outstanding": 321613300,
+      "market_capitalization": 56427053485.0
     },
     {
       "symbol": "NET",
       "report_date": "2021-10-21T00:00:00.000",
       "shares_report_date": "2021-09-30T00:00:00.000",
       "close_price": 182.0,
-      "shares_outstanding": 321614000,
-      "market_capitalization": 58533748000.0
+      "shares_outstanding": 321613300,
+      "market_capitalization": 58533620600.0
     },
     {
       "symbol": "NET",
@@ -18368,224 +18392,224 @@
       "report_date": "2021-12-31T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 131.5,
-      "shares_outstanding": 323612000,
-      "market_capitalization": 42554978000.0
+      "shares_outstanding": 323611900,
+      "market_capitalization": 42554964850.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-01-03T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 126.16,
-      "shares_outstanding": 323612000,
-      "market_capitalization": 40826889920.0
+      "shares_outstanding": 323611900,
+      "market_capitalization": 40826877304.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-01-04T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 114.96,
-      "shares_outstanding": 323612000,
-      "market_capitalization": 37202435520.0
+      "shares_outstanding": 323611900,
+      "market_capitalization": 37202424024.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-01-05T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 105.95,
-      "shares_outstanding": 323612000,
-      "market_capitalization": 34286691400.0
+      "shares_outstanding": 323611900,
+      "market_capitalization": 34286680805.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-01-06T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 104.04,
-      "shares_outstanding": 323612000,
-      "market_capitalization": 33668592480.0
+      "shares_outstanding": 323611900,
+      "market_capitalization": 33668582076.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-01-07T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 107.0,
-      "shares_outstanding": 323612000,
-      "market_capitalization": 34626484000.0
+      "shares_outstanding": 323611900,
+      "market_capitalization": 34626473300.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-01-10T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 110.75,
-      "shares_outstanding": 323612000,
-      "market_capitalization": 35840029000.0
+      "shares_outstanding": 323611900,
+      "market_capitalization": 35840017925.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-01-11T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 114.14,
-      "shares_outstanding": 323612000,
-      "market_capitalization": 36937073680.0
+      "shares_outstanding": 323611900,
+      "market_capitalization": 36937062266.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-01-12T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 113.97,
-      "shares_outstanding": 323612000,
-      "market_capitalization": 36882059640.0
+      "shares_outstanding": 323611900,
+      "market_capitalization": 36882048243.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-01-13T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 98.98,
-      "shares_outstanding": 323612000,
-      "market_capitalization": 32031115760.0
+      "shares_outstanding": 323611900,
+      "market_capitalization": 32031105862.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-01-14T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 100.29,
-      "shares_outstanding": 323612000,
-      "market_capitalization": 32455047480.0
+      "shares_outstanding": 323611900,
+      "market_capitalization": 32455037451.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-01-18T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 93.63,
-      "shares_outstanding": 323612000,
-      "market_capitalization": 30299791560.0
+      "shares_outstanding": 323611900,
+      "market_capitalization": 30299782197.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-01-19T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 94.32,
-      "shares_outstanding": 323612000,
-      "market_capitalization": 30523083840.0
+      "shares_outstanding": 323611900,
+      "market_capitalization": 30523074408.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-01-20T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 93.41,
-      "shares_outstanding": 323612000,
-      "market_capitalization": 30228596920.0
+      "shares_outstanding": 323611900,
+      "market_capitalization": 30228587579.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-01-21T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 88.55,
-      "shares_outstanding": 323612000,
-      "market_capitalization": 28655842600.0
+      "shares_outstanding": 323611900,
+      "market_capitalization": 28655833745.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-01-24T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 93.28,
-      "shares_outstanding": 323612000,
-      "market_capitalization": 30186527360.0
+      "shares_outstanding": 323611900,
+      "market_capitalization": 30186518032.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-01-25T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 84.78,
-      "shares_outstanding": 323612000,
-      "market_capitalization": 27435825360.0
+      "shares_outstanding": 323611900,
+      "market_capitalization": 27435816882.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-01-26T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 80.07,
-      "shares_outstanding": 323612000,
-      "market_capitalization": 25911612840.0
+      "shares_outstanding": 323611900,
+      "market_capitalization": 25911604833.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-01-27T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 80.34,
-      "shares_outstanding": 323612000,
-      "market_capitalization": 25998988080.0
+      "shares_outstanding": 323611900,
+      "market_capitalization": 25998980046.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-01-28T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 84.18,
-      "shares_outstanding": 323612000,
-      "market_capitalization": 27241658160.0
+      "shares_outstanding": 323611900,
+      "market_capitalization": 27241649742.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-01-31T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 96.4,
-      "shares_outstanding": 323612000,
-      "market_capitalization": 31196196800.0
+      "shares_outstanding": 323611900,
+      "market_capitalization": 31196187160.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-02-01T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 102.43,
-      "shares_outstanding": 323612000,
-      "market_capitalization": 33147577160.0
+      "shares_outstanding": 323611900,
+      "market_capitalization": 33147566917.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-02-02T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 99.8,
-      "shares_outstanding": 323612000,
-      "market_capitalization": 32296477600.0
+      "shares_outstanding": 323611900,
+      "market_capitalization": 32296467620.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-02-03T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 96.66,
-      "shares_outstanding": 323612000,
-      "market_capitalization": 31280335920.0
+      "shares_outstanding": 323611900,
+      "market_capitalization": 31280326254.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-02-04T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 103.19,
-      "shares_outstanding": 323612000,
-      "market_capitalization": 33393522280.0
+      "shares_outstanding": 323611900,
+      "market_capitalization": 33393511961.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-02-07T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 107.1,
-      "shares_outstanding": 323612000,
-      "market_capitalization": 34658845200.0
+      "shares_outstanding": 323611900,
+      "market_capitalization": 34658834490.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-02-08T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 109.96,
-      "shares_outstanding": 323612000,
-      "market_capitalization": 35584375520.0
+      "shares_outstanding": 323611900,
+      "market_capitalization": 35584364524.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-02-09T00:00:00.000",
       "shares_report_date": "2021-12-31T00:00:00.000",
       "close_price": 114.81,
-      "shares_outstanding": 323612000,
-      "market_capitalization": 37153893720.0
+      "shares_outstanding": 323611900,
+      "market_capitalization": 37153882239.0
     },
     {
       "symbol": "NET",
@@ -18864,40 +18888,40 @@
       "report_date": "2022-03-31T00:00:00.000",
       "shares_report_date": "2022-03-31T00:00:00.000",
       "close_price": 119.7,
-      "shares_outstanding": 325540000,
-      "market_capitalization": 38967138000.0
+      "shares_outstanding": 325539900,
+      "market_capitalization": 38967126030.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-04-01T00:00:00.000",
       "shares_report_date": "2022-03-31T00:00:00.000",
       "close_price": 123.5,
-      "shares_outstanding": 325540000,
-      "market_capitalization": 40204190000.0
+      "shares_outstanding": 325539900,
+      "market_capitalization": 40204177650.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-04-04T00:00:00.000",
       "shares_report_date": "2022-03-31T00:00:00.000",
       "close_price": 126.9,
-      "shares_outstanding": 325540000,
-      "market_capitalization": 41311026000.0
+      "shares_outstanding": 325539900,
+      "market_capitalization": 41311013310.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-04-05T00:00:00.000",
       "shares_report_date": "2022-03-31T00:00:00.000",
       "close_price": 120.44,
-      "shares_outstanding": 325540000,
-      "market_capitalization": 39208037600.0
+      "shares_outstanding": 325539900,
+      "market_capitalization": 39208025556.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-04-06T00:00:00.000",
       "shares_report_date": "2022-03-31T00:00:00.000",
       "close_price": 109.63,
-      "shares_outstanding": 325540000,
-      "market_capitalization": 35688950200.0
+      "shares_outstanding": 325539900,
+      "market_capitalization": 35688939237.0
     },
     {
       "symbol": "NET",
@@ -19360,112 +19384,112 @@
       "report_date": "2022-06-30T00:00:00.000",
       "shares_report_date": "2022-06-30T00:00:00.000",
       "close_price": 43.75,
-      "shares_outstanding": 327397000,
-      "market_capitalization": 14323618750.0
+      "shares_outstanding": 327397500,
+      "market_capitalization": 14323640625.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-07-01T00:00:00.000",
       "shares_report_date": "2022-06-30T00:00:00.000",
       "close_price": 45.9,
-      "shares_outstanding": 327397000,
-      "market_capitalization": 15027522300.0
+      "shares_outstanding": 327397500,
+      "market_capitalization": 15027545250.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-07-05T00:00:00.000",
       "shares_report_date": "2022-06-30T00:00:00.000",
       "close_price": 50.5,
-      "shares_outstanding": 327397000,
-      "market_capitalization": 16533548500.0
+      "shares_outstanding": 327397500,
+      "market_capitalization": 16533573750.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-07-06T00:00:00.000",
       "shares_report_date": "2022-06-30T00:00:00.000",
       "close_price": 50.35,
-      "shares_outstanding": 327397000,
-      "market_capitalization": 16484438950.0
+      "shares_outstanding": 327397500,
+      "market_capitalization": 16484464125.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-07-07T00:00:00.000",
       "shares_report_date": "2022-06-30T00:00:00.000",
       "close_price": 52.74,
-      "shares_outstanding": 327397000,
-      "market_capitalization": 17266917780.0
+      "shares_outstanding": 327397500,
+      "market_capitalization": 17266944150.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-07-08T00:00:00.000",
       "shares_report_date": "2022-06-30T00:00:00.000",
       "close_price": 52.08,
-      "shares_outstanding": 327397000,
-      "market_capitalization": 17050835760.0
+      "shares_outstanding": 327397500,
+      "market_capitalization": 17050861800.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-07-11T00:00:00.000",
       "shares_report_date": "2022-06-30T00:00:00.000",
       "close_price": 50.69,
-      "shares_outstanding": 327397000,
-      "market_capitalization": 16595753930.0
+      "shares_outstanding": 327397500,
+      "market_capitalization": 16595779275.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-07-12T00:00:00.000",
       "shares_report_date": "2022-06-30T00:00:00.000",
       "close_price": 47.37,
-      "shares_outstanding": 327397000,
-      "market_capitalization": 15508795890.0
+      "shares_outstanding": 327397500,
+      "market_capitalization": 15508819575.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-07-13T00:00:00.000",
       "shares_report_date": "2022-06-30T00:00:00.000",
       "close_price": 46.78,
-      "shares_outstanding": 327397000,
-      "market_capitalization": 15315631660.0
+      "shares_outstanding": 327397500,
+      "market_capitalization": 15315655050.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-07-14T00:00:00.000",
       "shares_report_date": "2022-06-30T00:00:00.000",
       "close_price": 44.61,
-      "shares_outstanding": 327397000,
-      "market_capitalization": 14605180170.0
+      "shares_outstanding": 327397500,
+      "market_capitalization": 14605202475.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-07-15T00:00:00.000",
       "shares_report_date": "2022-06-30T00:00:00.000",
       "close_price": 46.6,
-      "shares_outstanding": 327397000,
-      "market_capitalization": 15256700200.0
+      "shares_outstanding": 327397500,
+      "market_capitalization": 15256723500.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-07-18T00:00:00.000",
       "shares_report_date": "2022-06-30T00:00:00.000",
       "close_price": 48.83,
-      "shares_outstanding": 327397000,
-      "market_capitalization": 15986795510.0
+      "shares_outstanding": 327397500,
+      "market_capitalization": 15986819925.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-07-19T00:00:00.000",
       "shares_report_date": "2022-06-30T00:00:00.000",
       "close_price": 49.54,
-      "shares_outstanding": 327397000,
-      "market_capitalization": 16219247380.0
+      "shares_outstanding": 327397500,
+      "market_capitalization": 16219272150.0
     },
     {
       "symbol": "NET",
       "report_date": "2022-07-20T00:00:00.000",
       "shares_report_date": "2022-06-30T00:00:00.000",
       "close_price": 53.0,
-      "shares_outstanding": 327397000,
-      "market_capitalization": 17352041000.0
+      "shares_outstanding": 327397500,
+      "market_capitalization": 17352067500.0
     },
     {
       "symbol": "NET",
@@ -20384,216 +20408,216 @@
       "report_date": "2023-01-03T00:00:00.000",
       "shares_report_date": "2022-12-31T00:00:00.000",
       "close_price": 43.02,
-      "shares_outstanding": 330086000,
-      "market_capitalization": 14200299720.0
+      "shares_outstanding": 330085500,
+      "market_capitalization": 14200278210.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-01-04T00:00:00.000",
       "shares_report_date": "2022-12-31T00:00:00.000",
       "close_price": 43.05,
-      "shares_outstanding": 330086000,
-      "market_capitalization": 14210202300.0
+      "shares_outstanding": 330085500,
+      "market_capitalization": 14210180775.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-01-05T00:00:00.000",
       "shares_report_date": "2022-12-31T00:00:00.000",
       "close_price": 38.91,
-      "shares_outstanding": 330086000,
-      "market_capitalization": 12843646260.0
+      "shares_outstanding": 330085500,
+      "market_capitalization": 12843626805.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-01-06T00:00:00.000",
       "shares_report_date": "2022-12-31T00:00:00.000",
       "close_price": 39.9,
-      "shares_outstanding": 330086000,
-      "market_capitalization": 13170431400.0
+      "shares_outstanding": 330085500,
+      "market_capitalization": 13170411450.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-01-09T00:00:00.000",
       "shares_report_date": "2022-12-31T00:00:00.000",
       "close_price": 40.4,
-      "shares_outstanding": 330086000,
-      "market_capitalization": 13335474400.0
+      "shares_outstanding": 330085500,
+      "market_capitalization": 13335454200.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-01-10T00:00:00.000",
       "shares_report_date": "2022-12-31T00:00:00.000",
       "close_price": 41.8,
-      "shares_outstanding": 330086000,
-      "market_capitalization": 13797594800.0
+      "shares_outstanding": 330085500,
+      "market_capitalization": 13797573900.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-01-11T00:00:00.000",
       "shares_report_date": "2022-12-31T00:00:00.000",
       "close_price": 43.53,
-      "shares_outstanding": 330086000,
-      "market_capitalization": 14368643580.0
+      "shares_outstanding": 330085500,
+      "market_capitalization": 14368621815.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-01-12T00:00:00.000",
       "shares_report_date": "2022-12-31T00:00:00.000",
       "close_price": 43.48,
-      "shares_outstanding": 330086000,
-      "market_capitalization": 14352139280.0
+      "shares_outstanding": 330085500,
+      "market_capitalization": 14352117540.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-01-13T00:00:00.000",
       "shares_report_date": "2022-12-31T00:00:00.000",
       "close_price": 43.93,
-      "shares_outstanding": 330086000,
-      "market_capitalization": 14500677980.0
+      "shares_outstanding": 330085500,
+      "market_capitalization": 14500656015.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-01-17T00:00:00.000",
       "shares_report_date": "2022-12-31T00:00:00.000",
       "close_price": 46.36,
-      "shares_outstanding": 330086000,
-      "market_capitalization": 15302786960.0
+      "shares_outstanding": 330085500,
+      "market_capitalization": 15302763780.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-01-18T00:00:00.000",
       "shares_report_date": "2022-12-31T00:00:00.000",
       "close_price": 44.25,
-      "shares_outstanding": 330086000,
-      "market_capitalization": 14606305500.0
+      "shares_outstanding": 330085500,
+      "market_capitalization": 14606283375.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-01-19T00:00:00.000",
       "shares_report_date": "2022-12-31T00:00:00.000",
       "close_price": 42.7,
-      "shares_outstanding": 330086000,
-      "market_capitalization": 14094672200.0
+      "shares_outstanding": 330085500,
+      "market_capitalization": 14094650850.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-01-20T00:00:00.000",
       "shares_report_date": "2022-12-31T00:00:00.000",
       "close_price": 45.6,
-      "shares_outstanding": 330086000,
-      "market_capitalization": 15051921600.0
+      "shares_outstanding": 330085500,
+      "market_capitalization": 15051898800.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-01-23T00:00:00.000",
       "shares_report_date": "2022-12-31T00:00:00.000",
       "close_price": 47.62,
-      "shares_outstanding": 330086000,
-      "market_capitalization": 15718695320.0
+      "shares_outstanding": 330085500,
+      "market_capitalization": 15718671510.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-01-24T00:00:00.000",
       "shares_report_date": "2022-12-31T00:00:00.000",
       "close_price": 46.67,
-      "shares_outstanding": 330086000,
-      "market_capitalization": 15405113620.0
+      "shares_outstanding": 330085500,
+      "market_capitalization": 15405090285.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-01-25T00:00:00.000",
       "shares_report_date": "2022-12-31T00:00:00.000",
       "close_price": 46.16,
-      "shares_outstanding": 330086000,
-      "market_capitalization": 15236769760.0
+      "shares_outstanding": 330085500,
+      "market_capitalization": 15236746680.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-01-26T00:00:00.000",
       "shares_report_date": "2022-12-31T00:00:00.000",
       "close_price": 49.52,
-      "shares_outstanding": 330086000,
-      "market_capitalization": 16345858720.0
+      "shares_outstanding": 330085500,
+      "market_capitalization": 16345833960.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-01-27T00:00:00.000",
       "shares_report_date": "2022-12-31T00:00:00.000",
       "close_price": 53.11,
-      "shares_outstanding": 330086000,
-      "market_capitalization": 17530867460.0
+      "shares_outstanding": 330085500,
+      "market_capitalization": 17530840905.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-01-30T00:00:00.000",
       "shares_report_date": "2022-12-31T00:00:00.000",
       "close_price": 49.97,
-      "shares_outstanding": 330086000,
-      "market_capitalization": 16494397420.0
+      "shares_outstanding": 330085500,
+      "market_capitalization": 16494372435.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-01-31T00:00:00.000",
       "shares_report_date": "2022-12-31T00:00:00.000",
       "close_price": 52.91,
-      "shares_outstanding": 330086000,
-      "market_capitalization": 17464850260.0
+      "shares_outstanding": 330085500,
+      "market_capitalization": 17464823805.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-02-01T00:00:00.000",
       "shares_report_date": "2022-12-31T00:00:00.000",
       "close_price": 55.51,
-      "shares_outstanding": 330086000,
-      "market_capitalization": 18323073860.0
+      "shares_outstanding": 330085500,
+      "market_capitalization": 18323046105.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-02-02T00:00:00.000",
       "shares_report_date": "2022-12-31T00:00:00.000",
       "close_price": 63.29,
-      "shares_outstanding": 330086000,
-      "market_capitalization": 20891142940.0
+      "shares_outstanding": 330085500,
+      "market_capitalization": 20891111295.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-02-03T00:00:00.000",
       "shares_report_date": "2022-12-31T00:00:00.000",
       "close_price": 59.43,
-      "shares_outstanding": 330086000,
-      "market_capitalization": 19617010980.0
+      "shares_outstanding": 330085500,
+      "market_capitalization": 19616981265.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-02-06T00:00:00.000",
       "shares_report_date": "2022-12-31T00:00:00.000",
       "close_price": 56.65,
-      "shares_outstanding": 330086000,
-      "market_capitalization": 18699371900.0
+      "shares_outstanding": 330085500,
+      "market_capitalization": 18699343575.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-02-07T00:00:00.000",
       "shares_report_date": "2022-12-31T00:00:00.000",
       "close_price": 58.37,
-      "shares_outstanding": 330086000,
-      "market_capitalization": 19267119820.0
+      "shares_outstanding": 330085500,
+      "market_capitalization": 19267090635.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-02-08T00:00:00.000",
       "shares_report_date": "2022-12-31T00:00:00.000",
       "close_price": 58.07,
-      "shares_outstanding": 330086000,
-      "market_capitalization": 19168094020.0
+      "shares_outstanding": 330085500,
+      "market_capitalization": 19168064985.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-02-09T00:00:00.000",
       "shares_report_date": "2022-12-31T00:00:00.000",
       "close_price": 58.17,
-      "shares_outstanding": 330086000,
-      "market_capitalization": 19201102620.0
+      "shares_outstanding": 330085500,
+      "market_capitalization": 19201073535.0
     },
     {
       "symbol": "NET",
@@ -20872,40 +20896,40 @@
       "report_date": "2023-03-31T00:00:00.000",
       "shares_report_date": "2023-03-31T00:00:00.000",
       "close_price": 61.66,
-      "shares_outstanding": 331767000,
-      "market_capitalization": 20456753220.0
+      "shares_outstanding": 331767600,
+      "market_capitalization": 20456790216.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-04-03T00:00:00.000",
       "shares_report_date": "2023-03-31T00:00:00.000",
       "close_price": 61.18,
-      "shares_outstanding": 331767000,
-      "market_capitalization": 20297505060.0
+      "shares_outstanding": 331767600,
+      "market_capitalization": 20297541768.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-04-04T00:00:00.000",
       "shares_report_date": "2023-03-31T00:00:00.000",
       "close_price": 61.23,
-      "shares_outstanding": 331767000,
-      "market_capitalization": 20314093410.0
+      "shares_outstanding": 331767600,
+      "market_capitalization": 20314130148.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-04-05T00:00:00.000",
       "shares_report_date": "2023-03-31T00:00:00.000",
       "close_price": 57.64,
-      "shares_outstanding": 331767000,
-      "market_capitalization": 19123049880.0
+      "shares_outstanding": 331767600,
+      "market_capitalization": 19123084464.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-04-06T00:00:00.000",
       "shares_report_date": "2023-03-31T00:00:00.000",
       "close_price": 59.08,
-      "shares_outstanding": 331767000,
-      "market_capitalization": 19600794360.0
+      "shares_outstanding": 331767600,
+      "market_capitalization": 19600829808.0
     },
     {
       "symbol": "NET",
@@ -21368,104 +21392,104 @@
       "report_date": "2023-06-30T00:00:00.000",
       "shares_report_date": "2023-06-30T00:00:00.000",
       "close_price": 65.37,
-      "shares_outstanding": 333639000,
-      "market_capitalization": 21809981430.0
+      "shares_outstanding": 333639300,
+      "market_capitalization": 21810001041.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-07-03T00:00:00.000",
       "shares_report_date": "2023-06-30T00:00:00.000",
       "close_price": 65.82,
-      "shares_outstanding": 333639000,
-      "market_capitalization": 21960118980.0
+      "shares_outstanding": 333639300,
+      "market_capitalization": 21960138726.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-07-05T00:00:00.000",
       "shares_report_date": "2023-06-30T00:00:00.000",
       "close_price": 65.08,
-      "shares_outstanding": 333639000,
-      "market_capitalization": 21713226120.0
+      "shares_outstanding": 333639300,
+      "market_capitalization": 21713245644.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-07-06T00:00:00.000",
       "shares_report_date": "2023-06-30T00:00:00.000",
       "close_price": 63.15,
-      "shares_outstanding": 333639000,
-      "market_capitalization": 21069302850.0
+      "shares_outstanding": 333639300,
+      "market_capitalization": 21069321795.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-07-07T00:00:00.000",
       "shares_report_date": "2023-06-30T00:00:00.000",
       "close_price": 62.36,
-      "shares_outstanding": 333639000,
-      "market_capitalization": 20805728040.0
+      "shares_outstanding": 333639300,
+      "market_capitalization": 20805746748.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-07-10T00:00:00.000",
       "shares_report_date": "2023-06-30T00:00:00.000",
       "close_price": 65.48,
-      "shares_outstanding": 333639000,
-      "market_capitalization": 21846681720.0
+      "shares_outstanding": 333639300,
+      "market_capitalization": 21846701364.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-07-11T00:00:00.000",
       "shares_report_date": "2023-06-30T00:00:00.000",
       "close_price": 67.94,
-      "shares_outstanding": 333639000,
-      "market_capitalization": 22667433660.0
+      "shares_outstanding": 333639300,
+      "market_capitalization": 22667454042.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-07-12T00:00:00.000",
       "shares_report_date": "2023-06-30T00:00:00.000",
       "close_price": 64.23,
-      "shares_outstanding": 333639000,
-      "market_capitalization": 21429632970.0
+      "shares_outstanding": 333639300,
+      "market_capitalization": 21429652239.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-07-13T00:00:00.000",
       "shares_report_date": "2023-06-30T00:00:00.000",
       "close_price": 67.62,
-      "shares_outstanding": 333639000,
-      "market_capitalization": 22560669180.0
+      "shares_outstanding": 333639300,
+      "market_capitalization": 22560689466.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-07-14T00:00:00.000",
       "shares_report_date": "2023-06-30T00:00:00.000",
       "close_price": 66.54,
-      "shares_outstanding": 333639000,
-      "market_capitalization": 22200339060.0
+      "shares_outstanding": 333639300,
+      "market_capitalization": 22200359022.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-07-17T00:00:00.000",
       "shares_report_date": "2023-06-30T00:00:00.000",
       "close_price": 71.18,
-      "shares_outstanding": 333639000,
-      "market_capitalization": 23748424020.0
+      "shares_outstanding": 333639300,
+      "market_capitalization": 23748445374.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-07-18T00:00:00.000",
       "shares_report_date": "2023-06-30T00:00:00.000",
       "close_price": 72.93,
-      "shares_outstanding": 333639000,
-      "market_capitalization": 24332292270.0
+      "shares_outstanding": 333639300,
+      "market_capitalization": 24332314149.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-07-19T00:00:00.000",
       "shares_report_date": "2023-06-30T00:00:00.000",
       "close_price": 72.7,
-      "shares_outstanding": 333639000,
-      "market_capitalization": 24255555300.0
+      "shares_outstanding": 333639300,
+      "market_capitalization": 24255577110.0
     },
     {
       "symbol": "NET",
@@ -21880,104 +21904,104 @@
       "report_date": "2023-10-02T00:00:00.000",
       "shares_report_date": "2023-09-30T00:00:00.000",
       "close_price": 62.51,
-      "shares_outstanding": 335666000,
-      "market_capitalization": 20982481660.0
+      "shares_outstanding": 335665900,
+      "market_capitalization": 20982475409.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-10-03T00:00:00.000",
       "shares_report_date": "2023-09-30T00:00:00.000",
       "close_price": 58.4,
-      "shares_outstanding": 335666000,
-      "market_capitalization": 19602894400.0
+      "shares_outstanding": 335665900,
+      "market_capitalization": 19602888560.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-10-04T00:00:00.000",
       "shares_report_date": "2023-09-30T00:00:00.000",
       "close_price": 59.25,
-      "shares_outstanding": 335666000,
-      "market_capitalization": 19888210500.0
+      "shares_outstanding": 335665900,
+      "market_capitalization": 19888204575.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-10-05T00:00:00.000",
       "shares_report_date": "2023-09-30T00:00:00.000",
       "close_price": 58.17,
-      "shares_outstanding": 335666000,
-      "market_capitalization": 19525691220.0
+      "shares_outstanding": 335665900,
+      "market_capitalization": 19525685403.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-10-06T00:00:00.000",
       "shares_report_date": "2023-09-30T00:00:00.000",
       "close_price": 62.55,
-      "shares_outstanding": 335666000,
-      "market_capitalization": 20995908300.0
+      "shares_outstanding": 335665900,
+      "market_capitalization": 20995902045.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-10-09T00:00:00.000",
       "shares_report_date": "2023-09-30T00:00:00.000",
       "close_price": 63.69,
-      "shares_outstanding": 335666000,
-      "market_capitalization": 21378567540.0
+      "shares_outstanding": 335665900,
+      "market_capitalization": 21378561171.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-10-10T00:00:00.000",
       "shares_report_date": "2023-09-30T00:00:00.000",
       "close_price": 65.56,
-      "shares_outstanding": 335666000,
-      "market_capitalization": 22006262960.0
+      "shares_outstanding": 335665900,
+      "market_capitalization": 22006256404.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-10-11T00:00:00.000",
       "shares_report_date": "2023-09-30T00:00:00.000",
       "close_price": 65.29,
-      "shares_outstanding": 335666000,
-      "market_capitalization": 21915633140.0
+      "shares_outstanding": 335665900,
+      "market_capitalization": 21915626611.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-10-12T00:00:00.000",
       "shares_report_date": "2023-09-30T00:00:00.000",
       "close_price": 62.62,
-      "shares_outstanding": 335666000,
-      "market_capitalization": 21019404920.0
+      "shares_outstanding": 335665900,
+      "market_capitalization": 21019398658.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-10-13T00:00:00.000",
       "shares_report_date": "2023-09-30T00:00:00.000",
       "close_price": 61.16,
-      "shares_outstanding": 335666000,
-      "market_capitalization": 20529332560.0
+      "shares_outstanding": 335665900,
+      "market_capitalization": 20529326444.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-10-16T00:00:00.000",
       "shares_report_date": "2023-09-30T00:00:00.000",
       "close_price": 63.51,
-      "shares_outstanding": 335666000,
-      "market_capitalization": 21318147660.0
+      "shares_outstanding": 335665900,
+      "market_capitalization": 21318141309.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-10-17T00:00:00.000",
       "shares_report_date": "2023-09-30T00:00:00.000",
       "close_price": 64.63,
-      "shares_outstanding": 335666000,
-      "market_capitalization": 21694093580.0
+      "shares_outstanding": 335665900,
+      "market_capitalization": 21694087117.0
     },
     {
       "symbol": "NET",
       "report_date": "2023-10-18T00:00:00.000",
       "shares_report_date": "2023-09-30T00:00:00.000",
       "close_price": 62.43,
-      "shares_outstanding": 335666000,
-      "market_capitalization": 20955628380.0
+      "shares_outstanding": 335665900,
+      "market_capitalization": 20955622137.0
     },
     {
       "symbol": "NET",
@@ -22384,200 +22408,200 @@
       "report_date": "2024-01-02T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 79.35,
-      "shares_outstanding": 337532000,
-      "market_capitalization": 26783164200.0
+      "shares_outstanding": 337531900,
+      "market_capitalization": 26783156265.0
     },
     {
       "symbol": "NET",
       "report_date": "2024-01-03T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 76.39,
-      "shares_outstanding": 337532000,
-      "market_capitalization": 25784069480.0
+      "shares_outstanding": 337531900,
+      "market_capitalization": 25784061841.0
     },
     {
       "symbol": "NET",
       "report_date": "2024-01-04T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 76.83,
-      "shares_outstanding": 337532000,
-      "market_capitalization": 25932583560.0
+      "shares_outstanding": 337531900,
+      "market_capitalization": 25932575877.0
     },
     {
       "symbol": "NET",
       "report_date": "2024-01-05T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 76.28,
-      "shares_outstanding": 337532000,
-      "market_capitalization": 25746940960.0
+      "shares_outstanding": 337531900,
+      "market_capitalization": 25746933332.0
     },
     {
       "symbol": "NET",
       "report_date": "2024-01-08T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 79.64,
-      "shares_outstanding": 337532000,
-      "market_capitalization": 26881048480.0
+      "shares_outstanding": 337531900,
+      "market_capitalization": 26881040516.0
     },
     {
       "symbol": "NET",
       "report_date": "2024-01-09T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 81.63,
-      "shares_outstanding": 337532000,
-      "market_capitalization": 27552737160.0
+      "shares_outstanding": 337531900,
+      "market_capitalization": 27552728997.0
     },
     {
       "symbol": "NET",
       "report_date": "2024-01-10T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 80.97,
-      "shares_outstanding": 337532000,
-      "market_capitalization": 27329966040.0
+      "shares_outstanding": 337531900,
+      "market_capitalization": 27329957943.0
     },
     {
       "symbol": "NET",
       "report_date": "2024-01-11T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 80.82,
-      "shares_outstanding": 337532000,
-      "market_capitalization": 27279336240.0
+      "shares_outstanding": 337531900,
+      "market_capitalization": 27279328158.0
     },
     {
       "symbol": "NET",
       "report_date": "2024-01-12T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 79.37,
-      "shares_outstanding": 337532000,
-      "market_capitalization": 26789914840.0
+      "shares_outstanding": 337531900,
+      "market_capitalization": 26789906903.0
     },
     {
       "symbol": "NET",
       "report_date": "2024-01-16T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 78.45,
-      "shares_outstanding": 337532000,
-      "market_capitalization": 26479385400.0
+      "shares_outstanding": 337531900,
+      "market_capitalization": 26479377555.0
     },
     {
       "symbol": "NET",
       "report_date": "2024-01-17T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 77.07,
-      "shares_outstanding": 337532000,
-      "market_capitalization": 26013591240.0
+      "shares_outstanding": 337531900,
+      "market_capitalization": 26013583533.0
     },
     {
       "symbol": "NET",
       "report_date": "2024-01-18T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 77.96,
-      "shares_outstanding": 337532000,
-      "market_capitalization": 26313994720.0
+      "shares_outstanding": 337531900,
+      "market_capitalization": 26313986924.0
     },
     {
       "symbol": "NET",
       "report_date": "2024-01-19T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 81.35,
-      "shares_outstanding": 337532000,
-      "market_capitalization": 27458228200.0
+      "shares_outstanding": 337531900,
+      "market_capitalization": 27458220065.0
     },
     {
       "symbol": "NET",
       "report_date": "2024-01-22T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 84.68,
-      "shares_outstanding": 337532000,
-      "market_capitalization": 28582209760.0
+      "shares_outstanding": 337531900,
+      "market_capitalization": 28582201292.0
     },
     {
       "symbol": "NET",
       "report_date": "2024-01-23T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 83.93,
-      "shares_outstanding": 337532000,
-      "market_capitalization": 28329060760.0
+      "shares_outstanding": 337531900,
+      "market_capitalization": 28329052367.0
     },
     {
       "symbol": "NET",
       "report_date": "2024-01-24T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 82.33,
-      "shares_outstanding": 337532000,
-      "market_capitalization": 27789009560.0
+      "shares_outstanding": 337531900,
+      "market_capitalization": 27789001327.0
     },
     {
       "symbol": "NET",
       "report_date": "2024-01-25T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 81.86,
-      "shares_outstanding": 337532000,
-      "market_capitalization": 27630369520.0
+      "shares_outstanding": 337531900,
+      "market_capitalization": 27630361334.0
     },
     {
       "symbol": "NET",
       "report_date": "2024-01-26T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 80.18,
-      "shares_outstanding": 337532000,
-      "market_capitalization": 27063315760.0
+      "shares_outstanding": 337531900,
+      "market_capitalization": 27063307742.0
     },
     {
       "symbol": "NET",
       "report_date": "2024-01-29T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 84.3,
-      "shares_outstanding": 337532000,
-      "market_capitalization": 28453947600.0
+      "shares_outstanding": 337531900,
+      "market_capitalization": 28453939170.0
     },
     {
       "symbol": "NET",
       "report_date": "2024-01-30T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 82.96,
-      "shares_outstanding": 337532000,
-      "market_capitalization": 28001654720.0
+      "shares_outstanding": 337531900,
+      "market_capitalization": 28001646424.0
     },
     {
       "symbol": "NET",
       "report_date": "2024-01-31T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 79.05,
-      "shares_outstanding": 337532000,
-      "market_capitalization": 26681904600.0
+      "shares_outstanding": 337531900,
+      "market_capitalization": 26681896695.0
     },
     {
       "symbol": "NET",
       "report_date": "2024-02-01T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 79.59,
-      "shares_outstanding": 337532000,
-      "market_capitalization": 26864171880.0
+      "shares_outstanding": 337531900,
+      "market_capitalization": 26864163921.0
     },
     {
       "symbol": "NET",
       "report_date": "2024-02-02T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 82.65,
-      "shares_outstanding": 337532000,
-      "market_capitalization": 27897019800.0
+      "shares_outstanding": 337531900,
+      "market_capitalization": 27897011535.0
     },
     {
       "symbol": "NET",
       "report_date": "2024-02-05T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 80.82,
-      "shares_outstanding": 337532000,
-      "market_capitalization": 27279336240.0
+      "shares_outstanding": 337531900,
+      "market_capitalization": 27279328158.0
     },
     {
       "symbol": "NET",
       "report_date": "2024-02-06T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 81.59,
-      "shares_outstanding": 337532000,
-      "market_capitalization": 27539235880.0
+      "shares_outstanding": 337531900,
+      "market_capitalization": 27539227721.0
     },
     {
       "symbol": "NET",
@@ -22872,56 +22896,56 @@
       "report_date": "2024-04-01T00:00:00.000",
       "shares_report_date": "2024-03-31T00:00:00.000",
       "close_price": 95.66,
-      "shares_outstanding": 339732900,
-      "market_capitalization": 32498849214.0
+      "shares_outstanding": 339733000,
+      "market_capitalization": 32498858780.0
     },
     {
       "symbol": "NET",
       "report_date": "2024-04-02T00:00:00.000",
       "shares_report_date": "2024-03-31T00:00:00.000",
       "close_price": 94.97,
-      "shares_outstanding": 339732900,
-      "market_capitalization": 32264433513.0
+      "shares_outstanding": 339733000,
+      "market_capitalization": 32264443010.0
     },
     {
       "symbol": "NET",
       "report_date": "2024-04-03T00:00:00.000",
       "shares_report_date": "2024-03-31T00:00:00.000",
       "close_price": 94.67,
-      "shares_outstanding": 339732900,
-      "market_capitalization": 32162513643.0
+      "shares_outstanding": 339733000,
+      "market_capitalization": 32162523110.0
     },
     {
       "symbol": "NET",
       "report_date": "2024-04-04T00:00:00.000",
       "shares_report_date": "2024-03-31T00:00:00.000",
       "close_price": 93.25,
-      "shares_outstanding": 339732900,
-      "market_capitalization": 31680092925.0
+      "shares_outstanding": 339733000,
+      "market_capitalization": 31680102250.0
     },
     {
       "symbol": "NET",
       "report_date": "2024-04-05T00:00:00.000",
       "shares_report_date": "2024-03-31T00:00:00.000",
       "close_price": 96.16,
-      "shares_outstanding": 339732900,
-      "market_capitalization": 32668715664.0
+      "shares_outstanding": 339733000,
+      "market_capitalization": 32668725280.0
     },
     {
       "symbol": "NET",
       "report_date": "2024-04-08T00:00:00.000",
       "shares_report_date": "2024-03-31T00:00:00.000",
       "close_price": 95.33,
-      "shares_outstanding": 339732900,
-      "market_capitalization": 32386737357.0
+      "shares_outstanding": 339733000,
+      "market_capitalization": 32386746890.0
     },
     {
       "symbol": "NET",
       "report_date": "2024-04-09T00:00:00.000",
       "shares_report_date": "2024-03-31T00:00:00.000",
       "close_price": 97.0,
-      "shares_outstanding": 339732900,
-      "market_capitalization": 32954091300.0
+      "shares_outstanding": 339733000,
+      "market_capitalization": 32954101000.0
     },
     {
       "symbol": "NET",
@@ -26880,128 +26904,128 @@
       "report_date": "2026-03-31T00:00:00.000",
       "shares_report_date": "2026-03-31T00:00:00.000",
       "close_price": 206.34,
-      "shares_outstanding": 353374100,
-      "market_capitalization": 72915211794.0
+      "shares_outstanding": 353374000,
+      "market_capitalization": 72915191160.0
     },
     {
       "symbol": "NET",
       "report_date": "2026-04-01T00:00:00.000",
       "shares_report_date": "2026-03-31T00:00:00.000",
       "close_price": 205.43,
-      "shares_outstanding": 353374100,
-      "market_capitalization": 72593641363.0
+      "shares_outstanding": 353374000,
+      "market_capitalization": 72593620820.0
     },
     {
       "symbol": "NET",
       "report_date": "2026-04-02T00:00:00.000",
       "shares_report_date": "2026-03-31T00:00:00.000",
       "close_price": 211.69,
-      "shares_outstanding": 353374100,
-      "market_capitalization": 74805763229.0
+      "shares_outstanding": 353374000,
+      "market_capitalization": 74805742060.0
     },
     {
       "symbol": "NET",
       "report_date": "2026-04-06T00:00:00.000",
       "shares_report_date": "2026-03-31T00:00:00.000",
       "close_price": 211.78,
-      "shares_outstanding": 353374100,
-      "market_capitalization": 74837566898.0
+      "shares_outstanding": 353374000,
+      "market_capitalization": 74837545720.0
     },
     {
       "symbol": "NET",
       "report_date": "2026-04-07T00:00:00.000",
       "shares_report_date": "2026-03-31T00:00:00.000",
       "close_price": 216.29,
-      "shares_outstanding": 353374100,
-      "market_capitalization": 76431284089.0
+      "shares_outstanding": 353374000,
+      "market_capitalization": 76431262460.0
     },
     {
       "symbol": "NET",
       "report_date": "2026-04-08T00:00:00.000",
       "shares_report_date": "2026-03-31T00:00:00.000",
       "close_price": 211.25,
-      "shares_outstanding": 353374100,
-      "market_capitalization": 74650278625.0
+      "shares_outstanding": 353374000,
+      "market_capitalization": 74650257500.0
     },
     {
       "symbol": "NET",
       "report_date": "2026-04-09T00:00:00.000",
       "shares_report_date": "2026-03-31T00:00:00.000",
       "close_price": 193.05,
-      "shares_outstanding": 353374100,
-      "market_capitalization": 68218870005.0
+      "shares_outstanding": 353374000,
+      "market_capitalization": 68218850700.0
     },
     {
       "symbol": "NET",
       "report_date": "2026-04-10T00:00:00.000",
       "shares_report_date": "2026-03-31T00:00:00.000",
       "close_price": 166.99,
-      "shares_outstanding": 353374100,
-      "market_capitalization": 59009940959.0
+      "shares_outstanding": 353374000,
+      "market_capitalization": 59009924260.0
     },
     {
       "symbol": "NET",
       "report_date": "2026-04-13T00:00:00.000",
       "shares_report_date": "2026-03-31T00:00:00.000",
       "close_price": 184.02,
-      "shares_outstanding": 353374100,
-      "market_capitalization": 65027901882.0
+      "shares_outstanding": 353374000,
+      "market_capitalization": 65027883480.0
     },
     {
       "symbol": "NET",
       "report_date": "2026-04-14T00:00:00.000",
       "shares_report_date": "2026-03-31T00:00:00.000",
       "close_price": 178.65,
-      "shares_outstanding": 353374100,
-      "market_capitalization": 63130282965.0
+      "shares_outstanding": 353374000,
+      "market_capitalization": 63130265100.0
     },
     {
       "symbol": "NET",
       "report_date": "2026-04-15T00:00:00.000",
       "shares_report_date": "2026-03-31T00:00:00.000",
       "close_price": 190.13,
-      "shares_outstanding": 353374100,
-      "market_capitalization": 67187017633.0
+      "shares_outstanding": 353374000,
+      "market_capitalization": 67186998620.0
     },
     {
       "symbol": "NET",
       "report_date": "2026-04-16T00:00:00.000",
       "shares_report_date": "2026-03-31T00:00:00.000",
       "close_price": 197.38,
-      "shares_outstanding": 353374100,
-      "market_capitalization": 69748979858.0
+      "shares_outstanding": 353374000,
+      "market_capitalization": 69748960120.0
     },
     {
       "symbol": "NET",
       "report_date": "2026-04-17T00:00:00.000",
       "shares_report_date": "2026-03-31T00:00:00.000",
       "close_price": 200.99,
-      "shares_outstanding": 353374100,
-      "market_capitalization": 71024660359.0
+      "shares_outstanding": 353374000,
+      "market_capitalization": 71024640260.0
     },
     {
       "symbol": "NET",
       "report_date": "2026-04-20T00:00:00.000",
       "shares_report_date": "2026-03-31T00:00:00.000",
       "close_price": 204.81,
-      "shares_outstanding": 353374100,
-      "market_capitalization": 72374549421.0
+      "shares_outstanding": 353374000,
+      "market_capitalization": 72374528940.0
     },
     {
       "symbol": "NET",
       "report_date": "2026-04-21T00:00:00.000",
       "shares_report_date": "2026-03-31T00:00:00.000",
       "close_price": 207.67,
-      "shares_outstanding": 353374100,
-      "market_capitalization": 73385199347.0
+      "shares_outstanding": 353374000,
+      "market_capitalization": 73385178580.0
     },
     {
       "symbol": "NET",
       "report_date": "2026-04-22T00:00:00.000",
       "shares_report_date": "2026-03-31T00:00:00.000",
       "close_price": 207.56,
-      "shares_outstanding": 353374100,
-      "market_capitalization": 73346328196.0
+      "shares_outstanding": 353374000,
+      "market_capitalization": 73346307440.0
     },
     {
       "symbol": "NET",
@@ -27210,13 +27234,37 @@
       "close_price": 241.82,
       "shares_outstanding": 353466200,
       "market_capitalization": 85475196484.0
+    },
+    {
+      "symbol": "NET",
+      "report_date": "2026-06-01T00:00:00.000",
+      "shares_report_date": "2026-04-23T00:00:00.000",
+      "close_price": 270.82,
+      "shares_outstanding": 353466200,
+      "market_capitalization": 95725716284.0
+    },
+    {
+      "symbol": "NET",
+      "report_date": "2026-06-02T00:00:00.000",
+      "shares_report_date": "2026-04-23T00:00:00.000",
+      "close_price": 272.66,
+      "shares_outstanding": 353466200,
+      "market_capitalization": 96376094092.0
+    },
+    {
+      "symbol": "NET",
+      "report_date": "2026-06-03T00:00:00.000",
+      "shares_report_date": "2026-04-23T00:00:00.000",
+      "close_price": 265.33,
+      "shares_outstanding": 353466200,
+      "market_capitalization": 93785186846.0
     }
   ],
   "psRatio": [
     {
       "symbol": "NET",
       "report_date": "2024-01-02T00:00:00.000",
-      "market_capitalization": 26783164200.0,
+      "market_capitalization": 26783156265.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "ttm_revenue": 1296745000.0,
       "exchange_rate": 1.0,
@@ -27226,7 +27274,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-03T00:00:00.000",
-      "market_capitalization": 25784069480.0,
+      "market_capitalization": 25784061841.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "ttm_revenue": 1296745000.0,
       "exchange_rate": 1.0,
@@ -27236,7 +27284,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-04T00:00:00.000",
-      "market_capitalization": 25932583560.0,
+      "market_capitalization": 25932575877.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "ttm_revenue": 1296745000.0,
       "exchange_rate": 1.0,
@@ -27246,7 +27294,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-05T00:00:00.000",
-      "market_capitalization": 25746940960.0,
+      "market_capitalization": 25746933332.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "ttm_revenue": 1296745000.0,
       "exchange_rate": 1.0,
@@ -27256,7 +27304,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-08T00:00:00.000",
-      "market_capitalization": 26881048480.0,
+      "market_capitalization": 26881040516.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "ttm_revenue": 1296745000.0,
       "exchange_rate": 1.0,
@@ -27266,7 +27314,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-09T00:00:00.000",
-      "market_capitalization": 27552737160.0,
+      "market_capitalization": 27552728997.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "ttm_revenue": 1296745000.0,
       "exchange_rate": 1.0,
@@ -27276,7 +27324,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-10T00:00:00.000",
-      "market_capitalization": 27329966040.0,
+      "market_capitalization": 27329957943.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "ttm_revenue": 1296745000.0,
       "exchange_rate": 1.0,
@@ -27286,7 +27334,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-11T00:00:00.000",
-      "market_capitalization": 27279336240.0,
+      "market_capitalization": 27279328158.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "ttm_revenue": 1296745000.0,
       "exchange_rate": 1.0,
@@ -27296,7 +27344,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-12T00:00:00.000",
-      "market_capitalization": 26789914840.0,
+      "market_capitalization": 26789906903.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "ttm_revenue": 1296745000.0,
       "exchange_rate": 1.0,
@@ -27306,7 +27354,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-16T00:00:00.000",
-      "market_capitalization": 26479385400.0,
+      "market_capitalization": 26479377555.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "ttm_revenue": 1296745000.0,
       "exchange_rate": 1.0,
@@ -27316,7 +27364,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-17T00:00:00.000",
-      "market_capitalization": 26013591240.0,
+      "market_capitalization": 26013583533.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "ttm_revenue": 1296745000.0,
       "exchange_rate": 1.0,
@@ -27326,7 +27374,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-18T00:00:00.000",
-      "market_capitalization": 26313994720.0,
+      "market_capitalization": 26313986924.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "ttm_revenue": 1296745000.0,
       "exchange_rate": 1.0,
@@ -27336,7 +27384,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-19T00:00:00.000",
-      "market_capitalization": 27458228200.0,
+      "market_capitalization": 27458220065.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "ttm_revenue": 1296745000.0,
       "exchange_rate": 1.0,
@@ -27346,7 +27394,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-22T00:00:00.000",
-      "market_capitalization": 28582209760.0,
+      "market_capitalization": 28582201292.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "ttm_revenue": 1296745000.0,
       "exchange_rate": 1.0,
@@ -27356,7 +27404,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-23T00:00:00.000",
-      "market_capitalization": 28329060760.0,
+      "market_capitalization": 28329052367.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "ttm_revenue": 1296745000.0,
       "exchange_rate": 1.0,
@@ -27366,7 +27414,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-24T00:00:00.000",
-      "market_capitalization": 27789009560.0,
+      "market_capitalization": 27789001327.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "ttm_revenue": 1296745000.0,
       "exchange_rate": 1.0,
@@ -27376,7 +27424,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-25T00:00:00.000",
-      "market_capitalization": 27630369520.0,
+      "market_capitalization": 27630361334.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "ttm_revenue": 1296745000.0,
       "exchange_rate": 1.0,
@@ -27386,7 +27434,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-26T00:00:00.000",
-      "market_capitalization": 27063315760.0,
+      "market_capitalization": 27063307742.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "ttm_revenue": 1296745000.0,
       "exchange_rate": 1.0,
@@ -27396,7 +27444,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-29T00:00:00.000",
-      "market_capitalization": 28453947600.0,
+      "market_capitalization": 28453939170.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "ttm_revenue": 1296745000.0,
       "exchange_rate": 1.0,
@@ -27406,7 +27454,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-30T00:00:00.000",
-      "market_capitalization": 28001654720.0,
+      "market_capitalization": 28001646424.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "ttm_revenue": 1296745000.0,
       "exchange_rate": 1.0,
@@ -27416,7 +27464,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-31T00:00:00.000",
-      "market_capitalization": 26681904600.0,
+      "market_capitalization": 26681896695.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "ttm_revenue": 1296745000.0,
       "exchange_rate": 1.0,
@@ -27426,7 +27474,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-02-01T00:00:00.000",
-      "market_capitalization": 26864171880.0,
+      "market_capitalization": 26864163921.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "ttm_revenue": 1296745000.0,
       "exchange_rate": 1.0,
@@ -27436,7 +27484,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-02-02T00:00:00.000",
-      "market_capitalization": 27897019800.0,
+      "market_capitalization": 27897011535.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "ttm_revenue": 1296745000.0,
       "exchange_rate": 1.0,
@@ -27446,7 +27494,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-02-05T00:00:00.000",
-      "market_capitalization": 27279336240.0,
+      "market_capitalization": 27279328158.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "ttm_revenue": 1296745000.0,
       "exchange_rate": 1.0,
@@ -27456,7 +27504,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-02-06T00:00:00.000",
-      "market_capitalization": 27539235880.0,
+      "market_capitalization": 27539227721.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "ttm_revenue": 1296745000.0,
       "exchange_rate": 1.0,
@@ -27826,7 +27874,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-04-01T00:00:00.000",
-      "market_capitalization": 32498849214.0,
+      "market_capitalization": 32498858780.0,
       "fiscal_quarter": "2024-03-31T00:00:00.000",
       "ttm_revenue": 1385172000.0,
       "exchange_rate": 1.0,
@@ -27836,7 +27884,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-04-02T00:00:00.000",
-      "market_capitalization": 32264433513.0,
+      "market_capitalization": 32264443010.0,
       "fiscal_quarter": "2024-03-31T00:00:00.000",
       "ttm_revenue": 1385172000.0,
       "exchange_rate": 1.0,
@@ -27846,7 +27894,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-04-03T00:00:00.000",
-      "market_capitalization": 32162513643.0,
+      "market_capitalization": 32162523110.0,
       "fiscal_quarter": "2024-03-31T00:00:00.000",
       "ttm_revenue": 1385172000.0,
       "exchange_rate": 1.0,
@@ -27856,7 +27904,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-04-04T00:00:00.000",
-      "market_capitalization": 31680092925.0,
+      "market_capitalization": 31680102250.0,
       "fiscal_quarter": "2024-03-31T00:00:00.000",
       "ttm_revenue": 1385172000.0,
       "exchange_rate": 1.0,
@@ -27866,7 +27914,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-04-05T00:00:00.000",
-      "market_capitalization": 32668715664.0,
+      "market_capitalization": 32668725280.0,
       "fiscal_quarter": "2024-03-31T00:00:00.000",
       "ttm_revenue": 1385172000.0,
       "exchange_rate": 1.0,
@@ -27876,7 +27924,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-04-08T00:00:00.000",
-      "market_capitalization": 32386737357.0,
+      "market_capitalization": 32386746890.0,
       "fiscal_quarter": "2024-03-31T00:00:00.000",
       "ttm_revenue": 1385172000.0,
       "exchange_rate": 1.0,
@@ -27886,7 +27934,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-04-09T00:00:00.000",
-      "market_capitalization": 32954091300.0,
+      "market_capitalization": 32954101000.0,
       "fiscal_quarter": "2024-03-31T00:00:00.000",
       "ttm_revenue": 1385172000.0,
       "exchange_rate": 1.0,
@@ -32836,7 +32884,7 @@
     {
       "symbol": "NET",
       "report_date": "2026-03-31T00:00:00.000",
-      "market_capitalization": 72915211794.0,
+      "market_capitalization": 72915191160.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "ttm_revenue": 2328605000.0,
       "exchange_rate": 1.0,
@@ -32846,7 +32894,7 @@
     {
       "symbol": "NET",
       "report_date": "2026-04-01T00:00:00.000",
-      "market_capitalization": 72593641363.0,
+      "market_capitalization": 72593620820.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "ttm_revenue": 2328605000.0,
       "exchange_rate": 1.0,
@@ -32856,7 +32904,7 @@
     {
       "symbol": "NET",
       "report_date": "2026-04-02T00:00:00.000",
-      "market_capitalization": 74805763229.0,
+      "market_capitalization": 74805742060.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "ttm_revenue": 2328605000.0,
       "exchange_rate": 1.0,
@@ -32866,7 +32914,7 @@
     {
       "symbol": "NET",
       "report_date": "2026-04-06T00:00:00.000",
-      "market_capitalization": 74837566898.0,
+      "market_capitalization": 74837545720.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "ttm_revenue": 2328605000.0,
       "exchange_rate": 1.0,
@@ -32876,7 +32924,7 @@
     {
       "symbol": "NET",
       "report_date": "2026-04-07T00:00:00.000",
-      "market_capitalization": 76431284089.0,
+      "market_capitalization": 76431262460.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "ttm_revenue": 2328605000.0,
       "exchange_rate": 1.0,
@@ -32886,7 +32934,7 @@
     {
       "symbol": "NET",
       "report_date": "2026-04-08T00:00:00.000",
-      "market_capitalization": 74650278625.0,
+      "market_capitalization": 74650257500.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "ttm_revenue": 2328605000.0,
       "exchange_rate": 1.0,
@@ -32896,7 +32944,7 @@
     {
       "symbol": "NET",
       "report_date": "2026-04-09T00:00:00.000",
-      "market_capitalization": 68218870005.0,
+      "market_capitalization": 68218850700.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "ttm_revenue": 2328605000.0,
       "exchange_rate": 1.0,
@@ -32906,7 +32954,7 @@
     {
       "symbol": "NET",
       "report_date": "2026-04-10T00:00:00.000",
-      "market_capitalization": 59009940959.0,
+      "market_capitalization": 59009924260.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "ttm_revenue": 2328605000.0,
       "exchange_rate": 1.0,
@@ -32916,7 +32964,7 @@
     {
       "symbol": "NET",
       "report_date": "2026-04-13T00:00:00.000",
-      "market_capitalization": 65027901882.0,
+      "market_capitalization": 65027883480.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "ttm_revenue": 2328605000.0,
       "exchange_rate": 1.0,
@@ -32926,7 +32974,7 @@
     {
       "symbol": "NET",
       "report_date": "2026-04-14T00:00:00.000",
-      "market_capitalization": 63130282965.0,
+      "market_capitalization": 63130265100.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "ttm_revenue": 2328605000.0,
       "exchange_rate": 1.0,
@@ -32936,7 +32984,7 @@
     {
       "symbol": "NET",
       "report_date": "2026-04-15T00:00:00.000",
-      "market_capitalization": 67187017633.0,
+      "market_capitalization": 67186998620.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "ttm_revenue": 2328605000.0,
       "exchange_rate": 1.0,
@@ -32946,7 +32994,7 @@
     {
       "symbol": "NET",
       "report_date": "2026-04-16T00:00:00.000",
-      "market_capitalization": 69748979858.0,
+      "market_capitalization": 69748960120.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "ttm_revenue": 2328605000.0,
       "exchange_rate": 1.0,
@@ -32956,7 +33004,7 @@
     {
       "symbol": "NET",
       "report_date": "2026-04-17T00:00:00.000",
-      "market_capitalization": 71024660359.0,
+      "market_capitalization": 71024640260.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "ttm_revenue": 2328605000.0,
       "exchange_rate": 1.0,
@@ -32966,7 +33014,7 @@
     {
       "symbol": "NET",
       "report_date": "2026-04-20T00:00:00.000",
-      "market_capitalization": 72374549421.0,
+      "market_capitalization": 72374528940.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "ttm_revenue": 2328605000.0,
       "exchange_rate": 1.0,
@@ -32976,7 +33024,7 @@
     {
       "symbol": "NET",
       "report_date": "2026-04-21T00:00:00.000",
-      "market_capitalization": 73385199347.0,
+      "market_capitalization": 73385178580.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "ttm_revenue": 2328605000.0,
       "exchange_rate": 1.0,
@@ -32986,7 +33034,7 @@
     {
       "symbol": "NET",
       "report_date": "2026-04-22T00:00:00.000",
-      "market_capitalization": 73346328196.0,
+      "market_capitalization": 73346307440.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "ttm_revenue": 2328605000.0,
       "exchange_rate": 1.0,
@@ -33252,13 +33300,43 @@
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 2328605000.0,
       "ps_ratio": 36.71
+    },
+    {
+      "symbol": "NET",
+      "report_date": "2026-06-01T00:00:00.000",
+      "market_capitalization": 95725716284.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 2328605000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 2328605000.0,
+      "ps_ratio": 41.11
+    },
+    {
+      "symbol": "NET",
+      "report_date": "2026-06-02T00:00:00.000",
+      "market_capitalization": 96376094092.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 2328605000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 2328605000.0,
+      "ps_ratio": 41.39
+    },
+    {
+      "symbol": "NET",
+      "report_date": "2026-06-03T00:00:00.000",
+      "market_capitalization": 93785186846.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 2328605000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 2328605000.0,
+      "ps_ratio": 40.28
     }
   ],
   "pbRatio": [
     {
       "symbol": "NET",
       "report_date": "2022-06-30T00:00:00.000",
-      "market_capitalization": 14323618750.0,
+      "market_capitalization": 14323640625.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -33268,7 +33346,7 @@
     {
       "symbol": "NET",
       "report_date": "2022-07-01T00:00:00.000",
-      "market_capitalization": 15027522300.0,
+      "market_capitalization": 15027545250.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -33278,7 +33356,7 @@
     {
       "symbol": "NET",
       "report_date": "2022-07-05T00:00:00.000",
-      "market_capitalization": 16533548500.0,
+      "market_capitalization": 16533573750.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -33288,7 +33366,7 @@
     {
       "symbol": "NET",
       "report_date": "2022-07-06T00:00:00.000",
-      "market_capitalization": 16484438950.0,
+      "market_capitalization": 16484464125.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -33298,7 +33376,7 @@
     {
       "symbol": "NET",
       "report_date": "2022-07-07T00:00:00.000",
-      "market_capitalization": 17266917780.0,
+      "market_capitalization": 17266944150.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -33308,7 +33386,7 @@
     {
       "symbol": "NET",
       "report_date": "2022-07-08T00:00:00.000",
-      "market_capitalization": 17050835760.0,
+      "market_capitalization": 17050861800.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -33318,7 +33396,7 @@
     {
       "symbol": "NET",
       "report_date": "2022-07-11T00:00:00.000",
-      "market_capitalization": 16595753930.0,
+      "market_capitalization": 16595779275.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -33328,7 +33406,7 @@
     {
       "symbol": "NET",
       "report_date": "2022-07-12T00:00:00.000",
-      "market_capitalization": 15508795890.0,
+      "market_capitalization": 15508819575.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -33338,7 +33416,7 @@
     {
       "symbol": "NET",
       "report_date": "2022-07-13T00:00:00.000",
-      "market_capitalization": 15315631660.0,
+      "market_capitalization": 15315655050.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -33348,7 +33426,7 @@
     {
       "symbol": "NET",
       "report_date": "2022-07-14T00:00:00.000",
-      "market_capitalization": 14605180170.0,
+      "market_capitalization": 14605202475.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -33358,7 +33436,7 @@
     {
       "symbol": "NET",
       "report_date": "2022-07-15T00:00:00.000",
-      "market_capitalization": 15256700200.0,
+      "market_capitalization": 15256723500.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -33368,7 +33446,7 @@
     {
       "symbol": "NET",
       "report_date": "2022-07-18T00:00:00.000",
-      "market_capitalization": 15986795510.0,
+      "market_capitalization": 15986819925.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -33378,7 +33456,7 @@
     {
       "symbol": "NET",
       "report_date": "2022-07-19T00:00:00.000",
-      "market_capitalization": 16219247380.0,
+      "market_capitalization": 16219272150.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -33388,7 +33466,7 @@
     {
       "symbol": "NET",
       "report_date": "2022-07-20T00:00:00.000",
-      "market_capitalization": 17352041000.0,
+      "market_capitalization": 17352067500.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -34538,7 +34616,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-01-03T00:00:00.000",
-      "market_capitalization": 14200299720.0,
+      "market_capitalization": 14200278210.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -34548,7 +34626,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-01-04T00:00:00.000",
-      "market_capitalization": 14210202300.0,
+      "market_capitalization": 14210180775.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -34558,7 +34636,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-01-05T00:00:00.000",
-      "market_capitalization": 12843646260.0,
+      "market_capitalization": 12843626805.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -34568,7 +34646,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-01-06T00:00:00.000",
-      "market_capitalization": 13170431400.0,
+      "market_capitalization": 13170411450.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -34578,7 +34656,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-01-09T00:00:00.000",
-      "market_capitalization": 13335474400.0,
+      "market_capitalization": 13335454200.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -34588,7 +34666,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-01-10T00:00:00.000",
-      "market_capitalization": 13797594800.0,
+      "market_capitalization": 13797573900.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -34598,7 +34676,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-01-11T00:00:00.000",
-      "market_capitalization": 14368643580.0,
+      "market_capitalization": 14368621815.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -34608,7 +34686,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-01-12T00:00:00.000",
-      "market_capitalization": 14352139280.0,
+      "market_capitalization": 14352117540.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -34618,7 +34696,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-01-13T00:00:00.000",
-      "market_capitalization": 14500677980.0,
+      "market_capitalization": 14500656015.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -34628,7 +34706,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-01-17T00:00:00.000",
-      "market_capitalization": 15302786960.0,
+      "market_capitalization": 15302763780.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -34638,7 +34716,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-01-18T00:00:00.000",
-      "market_capitalization": 14606305500.0,
+      "market_capitalization": 14606283375.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -34648,7 +34726,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-01-19T00:00:00.000",
-      "market_capitalization": 14094672200.0,
+      "market_capitalization": 14094650850.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -34658,7 +34736,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-01-20T00:00:00.000",
-      "market_capitalization": 15051921600.0,
+      "market_capitalization": 15051898800.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -34668,7 +34746,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-01-23T00:00:00.000",
-      "market_capitalization": 15718695320.0,
+      "market_capitalization": 15718671510.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -34678,7 +34756,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-01-24T00:00:00.000",
-      "market_capitalization": 15405113620.0,
+      "market_capitalization": 15405090285.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -34688,7 +34766,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-01-25T00:00:00.000",
-      "market_capitalization": 15236769760.0,
+      "market_capitalization": 15236746680.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -34698,7 +34776,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-01-26T00:00:00.000",
-      "market_capitalization": 16345858720.0,
+      "market_capitalization": 16345833960.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -34708,7 +34786,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-01-27T00:00:00.000",
-      "market_capitalization": 17530867460.0,
+      "market_capitalization": 17530840905.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -34718,7 +34796,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-01-30T00:00:00.000",
-      "market_capitalization": 16494397420.0,
+      "market_capitalization": 16494372435.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -34728,7 +34806,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-01-31T00:00:00.000",
-      "market_capitalization": 17464850260.0,
+      "market_capitalization": 17464823805.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -34738,7 +34816,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-02-01T00:00:00.000",
-      "market_capitalization": 18323073860.0,
+      "market_capitalization": 18323046105.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -34748,7 +34826,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-02-02T00:00:00.000",
-      "market_capitalization": 20891142940.0,
+      "market_capitalization": 20891111295.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -34758,7 +34836,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-02-03T00:00:00.000",
-      "market_capitalization": 19617010980.0,
+      "market_capitalization": 19616981265.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -34768,7 +34846,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-02-06T00:00:00.000",
-      "market_capitalization": 18699371900.0,
+      "market_capitalization": 18699343575.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -34778,7 +34856,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-02-07T00:00:00.000",
-      "market_capitalization": 19267119820.0,
+      "market_capitalization": 19267090635.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -34788,7 +34866,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-02-08T00:00:00.000",
-      "market_capitalization": 19168094020.0,
+      "market_capitalization": 19168064985.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -34798,7 +34876,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-02-09T00:00:00.000",
-      "market_capitalization": 19201102620.0,
+      "market_capitalization": 19201073535.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -35148,7 +35226,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-03-31T00:00:00.000",
-      "market_capitalization": 20456753220.0,
+      "market_capitalization": 20456790216.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -35158,7 +35236,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-04-03T00:00:00.000",
-      "market_capitalization": 20297505060.0,
+      "market_capitalization": 20297541768.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -35168,7 +35246,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-04-04T00:00:00.000",
-      "market_capitalization": 20314093410.0,
+      "market_capitalization": 20314130148.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -35178,7 +35256,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-04-05T00:00:00.000",
-      "market_capitalization": 19123049880.0,
+      "market_capitalization": 19123084464.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -35188,7 +35266,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-04-06T00:00:00.000",
-      "market_capitalization": 19600794360.0,
+      "market_capitalization": 19600829808.0,
       "fiscal_quarter": "2022-06-30T00:00:00.000",
       "book_value_of_equity": 580490000.0,
       "exchange_rate": 1.0,
@@ -35768,7 +35846,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-06-30T00:00:00.000",
-      "market_capitalization": 21809981430.0,
+      "market_capitalization": 21810001041.0,
       "fiscal_quarter": "2023-06-30T00:00:00.000",
       "book_value_of_equity": 641834000.0,
       "exchange_rate": 1.0,
@@ -35778,7 +35856,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-07-03T00:00:00.000",
-      "market_capitalization": 21960118980.0,
+      "market_capitalization": 21960138726.0,
       "fiscal_quarter": "2023-06-30T00:00:00.000",
       "book_value_of_equity": 641834000.0,
       "exchange_rate": 1.0,
@@ -35788,7 +35866,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-07-05T00:00:00.000",
-      "market_capitalization": 21713226120.0,
+      "market_capitalization": 21713245644.0,
       "fiscal_quarter": "2023-06-30T00:00:00.000",
       "book_value_of_equity": 641834000.0,
       "exchange_rate": 1.0,
@@ -35798,7 +35876,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-07-06T00:00:00.000",
-      "market_capitalization": 21069302850.0,
+      "market_capitalization": 21069321795.0,
       "fiscal_quarter": "2023-06-30T00:00:00.000",
       "book_value_of_equity": 641834000.0,
       "exchange_rate": 1.0,
@@ -35808,7 +35886,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-07-07T00:00:00.000",
-      "market_capitalization": 20805728040.0,
+      "market_capitalization": 20805746748.0,
       "fiscal_quarter": "2023-06-30T00:00:00.000",
       "book_value_of_equity": 641834000.0,
       "exchange_rate": 1.0,
@@ -35818,7 +35896,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-07-10T00:00:00.000",
-      "market_capitalization": 21846681720.0,
+      "market_capitalization": 21846701364.0,
       "fiscal_quarter": "2023-06-30T00:00:00.000",
       "book_value_of_equity": 641834000.0,
       "exchange_rate": 1.0,
@@ -35828,7 +35906,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-07-11T00:00:00.000",
-      "market_capitalization": 22667433660.0,
+      "market_capitalization": 22667454042.0,
       "fiscal_quarter": "2023-06-30T00:00:00.000",
       "book_value_of_equity": 641834000.0,
       "exchange_rate": 1.0,
@@ -35838,7 +35916,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-07-12T00:00:00.000",
-      "market_capitalization": 21429632970.0,
+      "market_capitalization": 21429652239.0,
       "fiscal_quarter": "2023-06-30T00:00:00.000",
       "book_value_of_equity": 641834000.0,
       "exchange_rate": 1.0,
@@ -35848,7 +35926,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-07-13T00:00:00.000",
-      "market_capitalization": 22560669180.0,
+      "market_capitalization": 22560689466.0,
       "fiscal_quarter": "2023-06-30T00:00:00.000",
       "book_value_of_equity": 641834000.0,
       "exchange_rate": 1.0,
@@ -35858,7 +35936,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-07-14T00:00:00.000",
-      "market_capitalization": 22200339060.0,
+      "market_capitalization": 22200359022.0,
       "fiscal_quarter": "2023-06-30T00:00:00.000",
       "book_value_of_equity": 641834000.0,
       "exchange_rate": 1.0,
@@ -35868,7 +35946,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-07-17T00:00:00.000",
-      "market_capitalization": 23748424020.0,
+      "market_capitalization": 23748445374.0,
       "fiscal_quarter": "2023-06-30T00:00:00.000",
       "book_value_of_equity": 641834000.0,
       "exchange_rate": 1.0,
@@ -35878,7 +35956,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-07-18T00:00:00.000",
-      "market_capitalization": 24332292270.0,
+      "market_capitalization": 24332314149.0,
       "fiscal_quarter": "2023-06-30T00:00:00.000",
       "book_value_of_equity": 641834000.0,
       "exchange_rate": 1.0,
@@ -35888,7 +35966,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-07-19T00:00:00.000",
-      "market_capitalization": 24255555300.0,
+      "market_capitalization": 24255577110.0,
       "fiscal_quarter": "2023-06-30T00:00:00.000",
       "book_value_of_equity": 641834000.0,
       "exchange_rate": 1.0,
@@ -36408,7 +36486,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-10-02T00:00:00.000",
-      "market_capitalization": 20982481660.0,
+      "market_capitalization": 20982475409.0,
       "fiscal_quarter": "2023-09-30T00:00:00.000",
       "book_value_of_equity": 699257000.0,
       "exchange_rate": 1.0,
@@ -36418,7 +36496,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-10-03T00:00:00.000",
-      "market_capitalization": 19602894400.0,
+      "market_capitalization": 19602888560.0,
       "fiscal_quarter": "2023-09-30T00:00:00.000",
       "book_value_of_equity": 699257000.0,
       "exchange_rate": 1.0,
@@ -36428,7 +36506,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-10-04T00:00:00.000",
-      "market_capitalization": 19888210500.0,
+      "market_capitalization": 19888204575.0,
       "fiscal_quarter": "2023-09-30T00:00:00.000",
       "book_value_of_equity": 699257000.0,
       "exchange_rate": 1.0,
@@ -36438,7 +36516,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-10-05T00:00:00.000",
-      "market_capitalization": 19525691220.0,
+      "market_capitalization": 19525685403.0,
       "fiscal_quarter": "2023-09-30T00:00:00.000",
       "book_value_of_equity": 699257000.0,
       "exchange_rate": 1.0,
@@ -36448,7 +36526,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-10-06T00:00:00.000",
-      "market_capitalization": 20995908300.0,
+      "market_capitalization": 20995902045.0,
       "fiscal_quarter": "2023-09-30T00:00:00.000",
       "book_value_of_equity": 699257000.0,
       "exchange_rate": 1.0,
@@ -36458,7 +36536,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-10-09T00:00:00.000",
-      "market_capitalization": 21378567540.0,
+      "market_capitalization": 21378561171.0,
       "fiscal_quarter": "2023-09-30T00:00:00.000",
       "book_value_of_equity": 699257000.0,
       "exchange_rate": 1.0,
@@ -36468,7 +36546,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-10-10T00:00:00.000",
-      "market_capitalization": 22006262960.0,
+      "market_capitalization": 22006256404.0,
       "fiscal_quarter": "2023-09-30T00:00:00.000",
       "book_value_of_equity": 699257000.0,
       "exchange_rate": 1.0,
@@ -36478,7 +36556,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-10-11T00:00:00.000",
-      "market_capitalization": 21915633140.0,
+      "market_capitalization": 21915626611.0,
       "fiscal_quarter": "2023-09-30T00:00:00.000",
       "book_value_of_equity": 699257000.0,
       "exchange_rate": 1.0,
@@ -36488,7 +36566,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-10-12T00:00:00.000",
-      "market_capitalization": 21019404920.0,
+      "market_capitalization": 21019398658.0,
       "fiscal_quarter": "2023-09-30T00:00:00.000",
       "book_value_of_equity": 699257000.0,
       "exchange_rate": 1.0,
@@ -36498,7 +36576,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-10-13T00:00:00.000",
-      "market_capitalization": 20529332560.0,
+      "market_capitalization": 20529326444.0,
       "fiscal_quarter": "2023-09-30T00:00:00.000",
       "book_value_of_equity": 699257000.0,
       "exchange_rate": 1.0,
@@ -36508,7 +36586,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-10-16T00:00:00.000",
-      "market_capitalization": 21318147660.0,
+      "market_capitalization": 21318141309.0,
       "fiscal_quarter": "2023-09-30T00:00:00.000",
       "book_value_of_equity": 699257000.0,
       "exchange_rate": 1.0,
@@ -36518,7 +36596,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-10-17T00:00:00.000",
-      "market_capitalization": 21694093580.0,
+      "market_capitalization": 21694087117.0,
       "fiscal_quarter": "2023-09-30T00:00:00.000",
       "book_value_of_equity": 699257000.0,
       "exchange_rate": 1.0,
@@ -36528,7 +36606,7 @@
     {
       "symbol": "NET",
       "report_date": "2023-10-18T00:00:00.000",
-      "market_capitalization": 20955628380.0,
+      "market_capitalization": 20955622137.0,
       "fiscal_quarter": "2023-09-30T00:00:00.000",
       "book_value_of_equity": 699257000.0,
       "exchange_rate": 1.0,
@@ -37038,7 +37116,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-02T00:00:00.000",
-      "market_capitalization": 26783164200.0,
+      "market_capitalization": 26783156265.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 763047000.0,
       "exchange_rate": 1.0,
@@ -37048,7 +37126,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-03T00:00:00.000",
-      "market_capitalization": 25784069480.0,
+      "market_capitalization": 25784061841.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 763047000.0,
       "exchange_rate": 1.0,
@@ -37058,7 +37136,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-04T00:00:00.000",
-      "market_capitalization": 25932583560.0,
+      "market_capitalization": 25932575877.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 763047000.0,
       "exchange_rate": 1.0,
@@ -37068,7 +37146,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-05T00:00:00.000",
-      "market_capitalization": 25746940960.0,
+      "market_capitalization": 25746933332.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 763047000.0,
       "exchange_rate": 1.0,
@@ -37078,7 +37156,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-08T00:00:00.000",
-      "market_capitalization": 26881048480.0,
+      "market_capitalization": 26881040516.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 763047000.0,
       "exchange_rate": 1.0,
@@ -37088,7 +37166,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-09T00:00:00.000",
-      "market_capitalization": 27552737160.0,
+      "market_capitalization": 27552728997.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 763047000.0,
       "exchange_rate": 1.0,
@@ -37098,7 +37176,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-10T00:00:00.000",
-      "market_capitalization": 27329966040.0,
+      "market_capitalization": 27329957943.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 763047000.0,
       "exchange_rate": 1.0,
@@ -37108,7 +37186,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-11T00:00:00.000",
-      "market_capitalization": 27279336240.0,
+      "market_capitalization": 27279328158.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 763047000.0,
       "exchange_rate": 1.0,
@@ -37118,7 +37196,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-12T00:00:00.000",
-      "market_capitalization": 26789914840.0,
+      "market_capitalization": 26789906903.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 763047000.0,
       "exchange_rate": 1.0,
@@ -37128,7 +37206,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-16T00:00:00.000",
-      "market_capitalization": 26479385400.0,
+      "market_capitalization": 26479377555.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 763047000.0,
       "exchange_rate": 1.0,
@@ -37138,7 +37216,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-17T00:00:00.000",
-      "market_capitalization": 26013591240.0,
+      "market_capitalization": 26013583533.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 763047000.0,
       "exchange_rate": 1.0,
@@ -37148,7 +37226,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-18T00:00:00.000",
-      "market_capitalization": 26313994720.0,
+      "market_capitalization": 26313986924.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 763047000.0,
       "exchange_rate": 1.0,
@@ -37158,7 +37236,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-19T00:00:00.000",
-      "market_capitalization": 27458228200.0,
+      "market_capitalization": 27458220065.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 763047000.0,
       "exchange_rate": 1.0,
@@ -37168,7 +37246,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-22T00:00:00.000",
-      "market_capitalization": 28582209760.0,
+      "market_capitalization": 28582201292.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 763047000.0,
       "exchange_rate": 1.0,
@@ -37178,7 +37256,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-23T00:00:00.000",
-      "market_capitalization": 28329060760.0,
+      "market_capitalization": 28329052367.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 763047000.0,
       "exchange_rate": 1.0,
@@ -37188,7 +37266,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-24T00:00:00.000",
-      "market_capitalization": 27789009560.0,
+      "market_capitalization": 27789001327.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 763047000.0,
       "exchange_rate": 1.0,
@@ -37198,7 +37276,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-25T00:00:00.000",
-      "market_capitalization": 27630369520.0,
+      "market_capitalization": 27630361334.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 763047000.0,
       "exchange_rate": 1.0,
@@ -37208,7 +37286,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-26T00:00:00.000",
-      "market_capitalization": 27063315760.0,
+      "market_capitalization": 27063307742.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 763047000.0,
       "exchange_rate": 1.0,
@@ -37218,7 +37296,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-29T00:00:00.000",
-      "market_capitalization": 28453947600.0,
+      "market_capitalization": 28453939170.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 763047000.0,
       "exchange_rate": 1.0,
@@ -37228,7 +37306,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-30T00:00:00.000",
-      "market_capitalization": 28001654720.0,
+      "market_capitalization": 28001646424.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 763047000.0,
       "exchange_rate": 1.0,
@@ -37238,7 +37316,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-01-31T00:00:00.000",
-      "market_capitalization": 26681904600.0,
+      "market_capitalization": 26681896695.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 763047000.0,
       "exchange_rate": 1.0,
@@ -37248,7 +37326,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-02-01T00:00:00.000",
-      "market_capitalization": 26864171880.0,
+      "market_capitalization": 26864163921.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 763047000.0,
       "exchange_rate": 1.0,
@@ -37258,7 +37336,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-02-02T00:00:00.000",
-      "market_capitalization": 27897019800.0,
+      "market_capitalization": 27897011535.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 763047000.0,
       "exchange_rate": 1.0,
@@ -37268,7 +37346,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-02-05T00:00:00.000",
-      "market_capitalization": 27279336240.0,
+      "market_capitalization": 27279328158.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 763047000.0,
       "exchange_rate": 1.0,
@@ -37278,7 +37356,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-02-06T00:00:00.000",
-      "market_capitalization": 27539235880.0,
+      "market_capitalization": 27539227721.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 763047000.0,
       "exchange_rate": 1.0,
@@ -37648,7 +37726,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-04-01T00:00:00.000",
-      "market_capitalization": 32498849214.0,
+      "market_capitalization": 32498858780.0,
       "fiscal_quarter": "2024-03-31T00:00:00.000",
       "book_value_of_equity": 797224000.0,
       "exchange_rate": 1.0,
@@ -37658,7 +37736,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-04-02T00:00:00.000",
-      "market_capitalization": 32264433513.0,
+      "market_capitalization": 32264443010.0,
       "fiscal_quarter": "2024-03-31T00:00:00.000",
       "book_value_of_equity": 797224000.0,
       "exchange_rate": 1.0,
@@ -37668,7 +37746,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-04-03T00:00:00.000",
-      "market_capitalization": 32162513643.0,
+      "market_capitalization": 32162523110.0,
       "fiscal_quarter": "2024-03-31T00:00:00.000",
       "book_value_of_equity": 797224000.0,
       "exchange_rate": 1.0,
@@ -37678,7 +37756,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-04-04T00:00:00.000",
-      "market_capitalization": 31680092925.0,
+      "market_capitalization": 31680102250.0,
       "fiscal_quarter": "2024-03-31T00:00:00.000",
       "book_value_of_equity": 797224000.0,
       "exchange_rate": 1.0,
@@ -37688,7 +37766,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-04-05T00:00:00.000",
-      "market_capitalization": 32668715664.0,
+      "market_capitalization": 32668725280.0,
       "fiscal_quarter": "2024-03-31T00:00:00.000",
       "book_value_of_equity": 797224000.0,
       "exchange_rate": 1.0,
@@ -37698,7 +37776,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-04-08T00:00:00.000",
-      "market_capitalization": 32386737357.0,
+      "market_capitalization": 32386746890.0,
       "fiscal_quarter": "2024-03-31T00:00:00.000",
       "book_value_of_equity": 797224000.0,
       "exchange_rate": 1.0,
@@ -37708,7 +37786,7 @@
     {
       "symbol": "NET",
       "report_date": "2024-04-09T00:00:00.000",
-      "market_capitalization": 32954091300.0,
+      "market_capitalization": 32954101000.0,
       "fiscal_quarter": "2024-03-31T00:00:00.000",
       "book_value_of_equity": 797224000.0,
       "exchange_rate": 1.0,
@@ -42658,7 +42736,7 @@
     {
       "symbol": "NET",
       "report_date": "2026-03-31T00:00:00.000",
-      "market_capitalization": 72915211794.0,
+      "market_capitalization": 72915191160.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "book_value_of_equity": 1526708000.0,
       "exchange_rate": 1.0,
@@ -42668,7 +42746,7 @@
     {
       "symbol": "NET",
       "report_date": "2026-04-01T00:00:00.000",
-      "market_capitalization": 72593641363.0,
+      "market_capitalization": 72593620820.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "book_value_of_equity": 1526708000.0,
       "exchange_rate": 1.0,
@@ -42678,7 +42756,7 @@
     {
       "symbol": "NET",
       "report_date": "2026-04-02T00:00:00.000",
-      "market_capitalization": 74805763229.0,
+      "market_capitalization": 74805742060.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "book_value_of_equity": 1526708000.0,
       "exchange_rate": 1.0,
@@ -42688,7 +42766,7 @@
     {
       "symbol": "NET",
       "report_date": "2026-04-06T00:00:00.000",
-      "market_capitalization": 74837566898.0,
+      "market_capitalization": 74837545720.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "book_value_of_equity": 1526708000.0,
       "exchange_rate": 1.0,
@@ -42698,7 +42776,7 @@
     {
       "symbol": "NET",
       "report_date": "2026-04-07T00:00:00.000",
-      "market_capitalization": 76431284089.0,
+      "market_capitalization": 76431262460.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "book_value_of_equity": 1526708000.0,
       "exchange_rate": 1.0,
@@ -42708,7 +42786,7 @@
     {
       "symbol": "NET",
       "report_date": "2026-04-08T00:00:00.000",
-      "market_capitalization": 74650278625.0,
+      "market_capitalization": 74650257500.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "book_value_of_equity": 1526708000.0,
       "exchange_rate": 1.0,
@@ -42718,7 +42796,7 @@
     {
       "symbol": "NET",
       "report_date": "2026-04-09T00:00:00.000",
-      "market_capitalization": 68218870005.0,
+      "market_capitalization": 68218850700.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "book_value_of_equity": 1526708000.0,
       "exchange_rate": 1.0,
@@ -42728,7 +42806,7 @@
     {
       "symbol": "NET",
       "report_date": "2026-04-10T00:00:00.000",
-      "market_capitalization": 59009940959.0,
+      "market_capitalization": 59009924260.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "book_value_of_equity": 1526708000.0,
       "exchange_rate": 1.0,
@@ -42738,7 +42816,7 @@
     {
       "symbol": "NET",
       "report_date": "2026-04-13T00:00:00.000",
-      "market_capitalization": 65027901882.0,
+      "market_capitalization": 65027883480.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "book_value_of_equity": 1526708000.0,
       "exchange_rate": 1.0,
@@ -42748,7 +42826,7 @@
     {
       "symbol": "NET",
       "report_date": "2026-04-14T00:00:00.000",
-      "market_capitalization": 63130282965.0,
+      "market_capitalization": 63130265100.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "book_value_of_equity": 1526708000.0,
       "exchange_rate": 1.0,
@@ -42758,7 +42836,7 @@
     {
       "symbol": "NET",
       "report_date": "2026-04-15T00:00:00.000",
-      "market_capitalization": 67187017633.0,
+      "market_capitalization": 67186998620.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "book_value_of_equity": 1526708000.0,
       "exchange_rate": 1.0,
@@ -42768,7 +42846,7 @@
     {
       "symbol": "NET",
       "report_date": "2026-04-16T00:00:00.000",
-      "market_capitalization": 69748979858.0,
+      "market_capitalization": 69748960120.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "book_value_of_equity": 1526708000.0,
       "exchange_rate": 1.0,
@@ -42778,7 +42856,7 @@
     {
       "symbol": "NET",
       "report_date": "2026-04-17T00:00:00.000",
-      "market_capitalization": 71024660359.0,
+      "market_capitalization": 71024640260.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "book_value_of_equity": 1526708000.0,
       "exchange_rate": 1.0,
@@ -42788,7 +42866,7 @@
     {
       "symbol": "NET",
       "report_date": "2026-04-20T00:00:00.000",
-      "market_capitalization": 72374549421.0,
+      "market_capitalization": 72374528940.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "book_value_of_equity": 1526708000.0,
       "exchange_rate": 1.0,
@@ -42798,7 +42876,7 @@
     {
       "symbol": "NET",
       "report_date": "2026-04-21T00:00:00.000",
-      "market_capitalization": 73385199347.0,
+      "market_capitalization": 73385178580.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "book_value_of_equity": 1526708000.0,
       "exchange_rate": 1.0,
@@ -42808,7 +42886,7 @@
     {
       "symbol": "NET",
       "report_date": "2026-04-22T00:00:00.000",
-      "market_capitalization": 73346328196.0,
+      "market_capitalization": 73346307440.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "book_value_of_equity": 1526708000.0,
       "exchange_rate": 1.0,
@@ -43074,6 +43152,36 @@
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 1526708000.0,
       "pb_ratio": 55.99
+    },
+    {
+      "symbol": "NET",
+      "report_date": "2026-06-01T00:00:00.000",
+      "market_capitalization": 95725716284.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 1526708000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 1526708000.0,
+      "pb_ratio": 62.7
+    },
+    {
+      "symbol": "NET",
+      "report_date": "2026-06-02T00:00:00.000",
+      "market_capitalization": 96376094092.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 1526708000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 1526708000.0,
+      "pb_ratio": 63.13
+    },
+    {
+      "symbol": "NET",
+      "report_date": "2026-06-03T00:00:00.000",
+      "market_capitalization": 93785186846.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 1526708000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 1526708000.0,
+      "pb_ratio": 61.43
     }
   ],
   "pegRatio": []

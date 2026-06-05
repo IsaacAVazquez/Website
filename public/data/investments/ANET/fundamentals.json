@@ -24476,6 +24476,30 @@
       "close_price": 159.47,
       "ttm_eps": 2.9204,
       "ttm_pe": 54.61
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2026-06-01T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 170.68,
+      "ttm_eps": 2.9204,
+      "ttm_pe": 58.44
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2026-06-02T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 175.33,
+      "ttm_eps": 2.9204,
+      "ttm_pe": 60.04
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2026-06-03T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 174.37,
+      "ttm_eps": 2.9204,
+      "ttm_pe": 59.71
     }
   ],
   "marketCap": [
@@ -43756,200 +43780,200 @@
       "report_date": "2024-01-02T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 57.89,
-      "shares_outstanding": 1248980000,
-      "market_capitalization": 72303452200.0
+      "shares_outstanding": 1248982000,
+      "market_capitalization": 72303567980.0
     },
     {
       "symbol": "ANET",
       "report_date": "2024-01-03T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 57.35,
-      "shares_outstanding": 1248980000,
-      "market_capitalization": 71629003000.0
+      "shares_outstanding": 1248982000,
+      "market_capitalization": 71629117700.0
     },
     {
       "symbol": "ANET",
       "report_date": "2024-01-04T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 57.64,
-      "shares_outstanding": 1248980000,
-      "market_capitalization": 71991207200.0
+      "shares_outstanding": 1248982000,
+      "market_capitalization": 71991322480.0
     },
     {
       "symbol": "ANET",
       "report_date": "2024-01-05T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 57.73,
-      "shares_outstanding": 1248980000,
-      "market_capitalization": 72103615400.0
+      "shares_outstanding": 1248982000,
+      "market_capitalization": 72103730860.0
     },
     {
       "symbol": "ANET",
       "report_date": "2024-01-08T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 61.4625,
-      "shares_outstanding": 1248980000,
-      "market_capitalization": 76765433250.0
+      "shares_outstanding": 1248982000,
+      "market_capitalization": 76765556175.0
     },
     {
       "symbol": "ANET",
       "report_date": "2024-01-09T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 61.3,
-      "shares_outstanding": 1248980000,
-      "market_capitalization": 76562474000.0
+      "shares_outstanding": 1248982000,
+      "market_capitalization": 76562596600.0
     },
     {
       "symbol": "ANET",
       "report_date": "2024-01-10T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 62.3075,
-      "shares_outstanding": 1248980000,
-      "market_capitalization": 77820821350.0
+      "shares_outstanding": 1248982000,
+      "market_capitalization": 77820945965.0
     },
     {
       "symbol": "ANET",
       "report_date": "2024-01-11T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 62.935,
-      "shares_outstanding": 1248980000,
-      "market_capitalization": 78604556300.0
+      "shares_outstanding": 1248982000,
+      "market_capitalization": 78604682170.0
     },
     {
       "symbol": "ANET",
       "report_date": "2024-01-12T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 63.0075,
-      "shares_outstanding": 1248980000,
-      "market_capitalization": 78695107350.0
+      "shares_outstanding": 1248982000,
+      "market_capitalization": 78695233365.0
     },
     {
       "symbol": "ANET",
       "report_date": "2024-01-16T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 63.315,
-      "shares_outstanding": 1248980000,
-      "market_capitalization": 79079168700.0
+      "shares_outstanding": 1248982000,
+      "market_capitalization": 79079295330.0
     },
     {
       "symbol": "ANET",
       "report_date": "2024-01-17T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 62.2475,
-      "shares_outstanding": 1248980000,
-      "market_capitalization": 77745882550.0
+      "shares_outstanding": 1248982000,
+      "market_capitalization": 77746007045.0
     },
     {
       "symbol": "ANET",
       "report_date": "2024-01-18T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 64.39,
-      "shares_outstanding": 1248980000,
-      "market_capitalization": 80421822200.0
+      "shares_outstanding": 1248982000,
+      "market_capitalization": 80421950980.0
     },
     {
       "symbol": "ANET",
       "report_date": "2024-01-19T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 65.8775,
-      "shares_outstanding": 1248980000,
-      "market_capitalization": 82279679950.0
+      "shares_outstanding": 1248982000,
+      "market_capitalization": 82279811705.0
     },
     {
       "symbol": "ANET",
       "report_date": "2024-01-22T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 66.65,
-      "shares_outstanding": 1248980000,
-      "market_capitalization": 83244517000.0
+      "shares_outstanding": 1248982000,
+      "market_capitalization": 83244650300.0
     },
     {
       "symbol": "ANET",
       "report_date": "2024-01-23T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 65.51,
-      "shares_outstanding": 1248980000,
-      "market_capitalization": 81820679800.0
+      "shares_outstanding": 1248982000,
+      "market_capitalization": 81820810820.0
     },
     {
       "symbol": "ANET",
       "report_date": "2024-01-24T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 65.6175,
-      "shares_outstanding": 1248980000,
-      "market_capitalization": 81954945150.0
+      "shares_outstanding": 1248982000,
+      "market_capitalization": 81955076385.0
     },
     {
       "symbol": "ANET",
       "report_date": "2024-01-25T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 66.105,
-      "shares_outstanding": 1248980000,
-      "market_capitalization": 82563822900.0
+      "shares_outstanding": 1248982000,
+      "market_capitalization": 82563955110.0
     },
     {
       "symbol": "ANET",
       "report_date": "2024-01-26T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 66.1,
-      "shares_outstanding": 1248980000,
-      "market_capitalization": 82557578000.0
+      "shares_outstanding": 1248982000,
+      "market_capitalization": 82557710200.0
     },
     {
       "symbol": "ANET",
       "report_date": "2024-01-29T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 67.395,
-      "shares_outstanding": 1248980000,
-      "market_capitalization": 84175007100.0
+      "shares_outstanding": 1248982000,
+      "market_capitalization": 84175141890.0
     },
     {
       "symbol": "ANET",
       "report_date": "2024-01-30T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 67.99,
-      "shares_outstanding": 1248980000,
-      "market_capitalization": 84918150200.0
+      "shares_outstanding": 1248982000,
+      "market_capitalization": 84918286180.0
     },
     {
       "symbol": "ANET",
       "report_date": "2024-01-31T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 64.67,
-      "shares_outstanding": 1248980000,
-      "market_capitalization": 80771536600.0
+      "shares_outstanding": 1248982000,
+      "market_capitalization": 80771665940.0
     },
     {
       "symbol": "ANET",
       "report_date": "2024-02-01T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 65.745,
-      "shares_outstanding": 1248980000,
-      "market_capitalization": 82114190100.0
+      "shares_outstanding": 1248982000,
+      "market_capitalization": 82114321590.0
     },
     {
       "symbol": "ANET",
       "report_date": "2024-02-02T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 68.275,
-      "shares_outstanding": 1248980000,
-      "market_capitalization": 85274109500.0
+      "shares_outstanding": 1248982000,
+      "market_capitalization": 85274246050.0
     },
     {
       "symbol": "ANET",
       "report_date": "2024-02-05T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 68.2425,
-      "shares_outstanding": 1248980000,
-      "market_capitalization": 85233517650.0
+      "shares_outstanding": 1248982000,
+      "market_capitalization": 85233654135.0
     },
     {
       "symbol": "ANET",
       "report_date": "2024-02-06T00:00:00.000",
       "shares_report_date": "2023-12-31T00:00:00.000",
       "close_price": 66.2225,
-      "shares_outstanding": 1248980000,
-      "market_capitalization": 82710578050.0
+      "shares_outstanding": 1248982000,
+      "market_capitalization": 82710710495.0
     },
     {
       "symbol": "ANET",
@@ -48582,6 +48606,30 @@
       "close_price": 159.47,
       "shares_outstanding": 1259169400,
       "market_capitalization": 200799744218.0
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2026-06-01T00:00:00.000",
+      "shares_report_date": "2026-04-02T00:00:00.000",
+      "close_price": 170.68,
+      "shares_outstanding": 1259169400,
+      "market_capitalization": 214915033192.0
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2026-06-02T00:00:00.000",
+      "shares_report_date": "2026-04-02T00:00:00.000",
+      "close_price": 175.33,
+      "shares_outstanding": 1259169400,
+      "market_capitalization": 220770170902.0
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2026-06-03T00:00:00.000",
+      "shares_report_date": "2026-04-02T00:00:00.000",
+      "close_price": 174.37,
+      "shares_outstanding": 1259169400,
+      "market_capitalization": 219561368278.0
     }
   ],
   "psRatio": [
@@ -54014,6 +54062,36 @@
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 9709900000.0,
       "ps_ratio": 20.68
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2026-06-01T00:00:00.000",
+      "market_capitalization": 214915033192.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 9709900000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 9709900000.0,
+      "ps_ratio": 22.13
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2026-06-02T00:00:00.000",
+      "market_capitalization": 220770170902.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 9709900000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 9709900000.0,
+      "ps_ratio": 22.74
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2026-06-03T00:00:00.000",
+      "market_capitalization": 219561368278.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 9709900000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 9709900000.0,
+      "ps_ratio": 22.61
     }
   ],
   "pbRatio": [
@@ -57800,7 +57878,7 @@
     {
       "symbol": "ANET",
       "report_date": "2024-01-02T00:00:00.000",
-      "market_capitalization": 72303452200.0,
+      "market_capitalization": 72303567980.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 7219059000.0,
       "exchange_rate": 1.0,
@@ -57810,7 +57888,7 @@
     {
       "symbol": "ANET",
       "report_date": "2024-01-03T00:00:00.000",
-      "market_capitalization": 71629003000.0,
+      "market_capitalization": 71629117700.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 7219059000.0,
       "exchange_rate": 1.0,
@@ -57820,7 +57898,7 @@
     {
       "symbol": "ANET",
       "report_date": "2024-01-04T00:00:00.000",
-      "market_capitalization": 71991207200.0,
+      "market_capitalization": 71991322480.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 7219059000.0,
       "exchange_rate": 1.0,
@@ -57830,7 +57908,7 @@
     {
       "symbol": "ANET",
       "report_date": "2024-01-05T00:00:00.000",
-      "market_capitalization": 72103615400.0,
+      "market_capitalization": 72103730860.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 7219059000.0,
       "exchange_rate": 1.0,
@@ -57840,7 +57918,7 @@
     {
       "symbol": "ANET",
       "report_date": "2024-01-08T00:00:00.000",
-      "market_capitalization": 76765433250.0,
+      "market_capitalization": 76765556175.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 7219059000.0,
       "exchange_rate": 1.0,
@@ -57850,7 +57928,7 @@
     {
       "symbol": "ANET",
       "report_date": "2024-01-09T00:00:00.000",
-      "market_capitalization": 76562474000.0,
+      "market_capitalization": 76562596600.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 7219059000.0,
       "exchange_rate": 1.0,
@@ -57860,7 +57938,7 @@
     {
       "symbol": "ANET",
       "report_date": "2024-01-10T00:00:00.000",
-      "market_capitalization": 77820821350.0,
+      "market_capitalization": 77820945965.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 7219059000.0,
       "exchange_rate": 1.0,
@@ -57870,7 +57948,7 @@
     {
       "symbol": "ANET",
       "report_date": "2024-01-11T00:00:00.000",
-      "market_capitalization": 78604556300.0,
+      "market_capitalization": 78604682170.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 7219059000.0,
       "exchange_rate": 1.0,
@@ -57880,7 +57958,7 @@
     {
       "symbol": "ANET",
       "report_date": "2024-01-12T00:00:00.000",
-      "market_capitalization": 78695107350.0,
+      "market_capitalization": 78695233365.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 7219059000.0,
       "exchange_rate": 1.0,
@@ -57890,7 +57968,7 @@
     {
       "symbol": "ANET",
       "report_date": "2024-01-16T00:00:00.000",
-      "market_capitalization": 79079168700.0,
+      "market_capitalization": 79079295330.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 7219059000.0,
       "exchange_rate": 1.0,
@@ -57900,7 +57978,7 @@
     {
       "symbol": "ANET",
       "report_date": "2024-01-17T00:00:00.000",
-      "market_capitalization": 77745882550.0,
+      "market_capitalization": 77746007045.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 7219059000.0,
       "exchange_rate": 1.0,
@@ -57910,7 +57988,7 @@
     {
       "symbol": "ANET",
       "report_date": "2024-01-18T00:00:00.000",
-      "market_capitalization": 80421822200.0,
+      "market_capitalization": 80421950980.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 7219059000.0,
       "exchange_rate": 1.0,
@@ -57920,7 +57998,7 @@
     {
       "symbol": "ANET",
       "report_date": "2024-01-19T00:00:00.000",
-      "market_capitalization": 82279679950.0,
+      "market_capitalization": 82279811705.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 7219059000.0,
       "exchange_rate": 1.0,
@@ -57930,7 +58008,7 @@
     {
       "symbol": "ANET",
       "report_date": "2024-01-22T00:00:00.000",
-      "market_capitalization": 83244517000.0,
+      "market_capitalization": 83244650300.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 7219059000.0,
       "exchange_rate": 1.0,
@@ -57940,7 +58018,7 @@
     {
       "symbol": "ANET",
       "report_date": "2024-01-23T00:00:00.000",
-      "market_capitalization": 81820679800.0,
+      "market_capitalization": 81820810820.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 7219059000.0,
       "exchange_rate": 1.0,
@@ -57950,7 +58028,7 @@
     {
       "symbol": "ANET",
       "report_date": "2024-01-24T00:00:00.000",
-      "market_capitalization": 81954945150.0,
+      "market_capitalization": 81955076385.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 7219059000.0,
       "exchange_rate": 1.0,
@@ -57960,7 +58038,7 @@
     {
       "symbol": "ANET",
       "report_date": "2024-01-25T00:00:00.000",
-      "market_capitalization": 82563822900.0,
+      "market_capitalization": 82563955110.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 7219059000.0,
       "exchange_rate": 1.0,
@@ -57970,7 +58048,7 @@
     {
       "symbol": "ANET",
       "report_date": "2024-01-26T00:00:00.000",
-      "market_capitalization": 82557578000.0,
+      "market_capitalization": 82557710200.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 7219059000.0,
       "exchange_rate": 1.0,
@@ -57980,7 +58058,7 @@
     {
       "symbol": "ANET",
       "report_date": "2024-01-29T00:00:00.000",
-      "market_capitalization": 84175007100.0,
+      "market_capitalization": 84175141890.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 7219059000.0,
       "exchange_rate": 1.0,
@@ -57990,7 +58068,7 @@
     {
       "symbol": "ANET",
       "report_date": "2024-01-30T00:00:00.000",
-      "market_capitalization": 84918150200.0,
+      "market_capitalization": 84918286180.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 7219059000.0,
       "exchange_rate": 1.0,
@@ -58000,7 +58078,7 @@
     {
       "symbol": "ANET",
       "report_date": "2024-01-31T00:00:00.000",
-      "market_capitalization": 80771536600.0,
+      "market_capitalization": 80771665940.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 7219059000.0,
       "exchange_rate": 1.0,
@@ -58010,7 +58088,7 @@
     {
       "symbol": "ANET",
       "report_date": "2024-02-01T00:00:00.000",
-      "market_capitalization": 82114190100.0,
+      "market_capitalization": 82114321590.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 7219059000.0,
       "exchange_rate": 1.0,
@@ -58020,7 +58098,7 @@
     {
       "symbol": "ANET",
       "report_date": "2024-02-02T00:00:00.000",
-      "market_capitalization": 85274109500.0,
+      "market_capitalization": 85274246050.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 7219059000.0,
       "exchange_rate": 1.0,
@@ -58030,7 +58108,7 @@
     {
       "symbol": "ANET",
       "report_date": "2024-02-05T00:00:00.000",
-      "market_capitalization": 85233517650.0,
+      "market_capitalization": 85233654135.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 7219059000.0,
       "exchange_rate": 1.0,
@@ -58040,7 +58118,7 @@
     {
       "symbol": "ANET",
       "report_date": "2024-02-06T00:00:00.000",
-      "market_capitalization": 82710578050.0,
+      "market_capitalization": 82710710495.0,
       "fiscal_quarter": "2023-12-31T00:00:00.000",
       "book_value_of_equity": 7219059000.0,
       "exchange_rate": 1.0,
@@ -63836,6 +63914,36 @@
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 13487100000.0,
       "pb_ratio": 14.89
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2026-06-01T00:00:00.000",
+      "market_capitalization": 214915033192.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 13487100000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 13487100000.0,
+      "pb_ratio": 15.93
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2026-06-02T00:00:00.000",
+      "market_capitalization": 220770170902.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 13487100000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 13487100000.0,
+      "pb_ratio": 16.37
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2026-06-03T00:00:00.000",
+      "market_capitalization": 219561368278.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 13487100000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 13487100000.0,
+      "pb_ratio": 16.28
     }
   ],
   "pegRatio": [
@@ -93968,6 +94076,36 @@
       "ttm_pe": 54.61,
       "eps_yoy_growth": 0.2622,
       "peg_ratio": 2.08
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2026-06-01T00:00:00.000",
+      "close_price": 170.68,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 2.9204,
+      "ttm_pe": 58.44,
+      "eps_yoy_growth": 0.2622,
+      "peg_ratio": 2.23
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2026-06-02T00:00:00.000",
+      "close_price": 175.33,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 2.9204,
+      "ttm_pe": 60.04,
+      "eps_yoy_growth": 0.2622,
+      "peg_ratio": 2.29
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2026-06-03T00:00:00.000",
+      "close_price": 174.37,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 2.9204,
+      "ttm_pe": 59.71,
+      "eps_yoy_growth": 0.2622,
+      "peg_ratio": 2.28
     }
   ]
 }

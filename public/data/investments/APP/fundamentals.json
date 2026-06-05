@@ -10500,6 +10500,30 @@
       "close_price": 613.09,
       "ttm_eps": 11.3361,
       "ttm_pe": 54.08
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-06-01T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 613.7,
+      "ttm_eps": 11.3361,
+      "ttm_pe": 54.14
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-06-02T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 605.63,
+      "ttm_eps": 11.3361,
+      "ttm_pe": 53.42
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-06-03T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 570.83,
+      "ttm_eps": 11.3361,
+      "ttm_pe": 50.36
     }
   ],
   "marketCap": [
@@ -17980,280 +18004,280 @@
       "report_date": "2024-12-31T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 323.83,
-      "shares_outstanding": 340041700,
-      "market_capitalization": 110115703711.0
+      "shares_outstanding": 340042000,
+      "market_capitalization": 110115800860.0
     },
     {
       "symbol": "APP",
       "report_date": "2025-01-02T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 341.78,
-      "shares_outstanding": 340041700,
-      "market_capitalization": 116219452226.0
+      "shares_outstanding": 340042000,
+      "market_capitalization": 116219554760.0
     },
     {
       "symbol": "APP",
       "report_date": "2025-01-03T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 350.65,
-      "shares_outstanding": 340041700,
-      "market_capitalization": 119235622105.0
+      "shares_outstanding": 340042000,
+      "market_capitalization": 119235727300.0
     },
     {
       "symbol": "APP",
       "report_date": "2025-01-06T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 354.93,
-      "shares_outstanding": 340041700,
-      "market_capitalization": 120691000581.0
+      "shares_outstanding": 340042000,
+      "market_capitalization": 120691107060.0
     },
     {
       "symbol": "APP",
       "report_date": "2025-01-07T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 330.005,
-      "shares_outstanding": 340041700,
-      "market_capitalization": 112215461208.5
+      "shares_outstanding": 340042000,
+      "market_capitalization": 112215560210.0
     },
     {
       "symbol": "APP",
       "report_date": "2025-01-08T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 329.2,
-      "shares_outstanding": 340041700,
-      "market_capitalization": 111941727640.0
+      "shares_outstanding": 340042000,
+      "market_capitalization": 111941826400.0
     },
     {
       "symbol": "APP",
       "report_date": "2025-01-10T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 318.48,
-      "shares_outstanding": 340041700,
-      "market_capitalization": 108296480616.0
+      "shares_outstanding": 340042000,
+      "market_capitalization": 108296576160.0
     },
     {
       "symbol": "APP",
       "report_date": "2025-01-13T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 315.68,
-      "shares_outstanding": 340041700,
-      "market_capitalization": 107344363856.0
+      "shares_outstanding": 340042000,
+      "market_capitalization": 107344458560.0
     },
     {
       "symbol": "APP",
       "report_date": "2025-01-14T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 321.09,
-      "shares_outstanding": 340041700,
-      "market_capitalization": 109183989453.0
+      "shares_outstanding": 340042000,
+      "market_capitalization": 109184085780.0
     },
     {
       "symbol": "APP",
       "report_date": "2025-01-15T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 335.03,
-      "shares_outstanding": 340041700,
-      "market_capitalization": 113924170751.0
+      "shares_outstanding": 340042000,
+      "market_capitalization": 113924271260.0
     },
     {
       "symbol": "APP",
       "report_date": "2025-01-16T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 332.01,
-      "shares_outstanding": 340041700,
-      "market_capitalization": 112897244817.0
+      "shares_outstanding": 340042000,
+      "market_capitalization": 112897344420.0
     },
     {
       "symbol": "APP",
       "report_date": "2025-01-17T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 342.34,
-      "shares_outstanding": 340041700,
-      "market_capitalization": 116409875578.0
+      "shares_outstanding": 340042000,
+      "market_capitalization": 116409978280.0
     },
     {
       "symbol": "APP",
       "report_date": "2025-01-21T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 338.39,
-      "shares_outstanding": 340041700,
-      "market_capitalization": 115066710863.0
+      "shares_outstanding": 340042000,
+      "market_capitalization": 115066812380.0
     },
     {
       "symbol": "APP",
       "report_date": "2025-01-22T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 361.72,
-      "shares_outstanding": 340041700,
-      "market_capitalization": 122999883724.0
+      "shares_outstanding": 340042000,
+      "market_capitalization": 122999992240.0
     },
     {
       "symbol": "APP",
       "report_date": "2025-01-23T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 362.52,
-      "shares_outstanding": 340041700,
-      "market_capitalization": 123271917084.0
+      "shares_outstanding": 340042000,
+      "market_capitalization": 123272025840.0
     },
     {
       "symbol": "APP",
       "report_date": "2025-01-24T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 363.1,
-      "shares_outstanding": 340041700,
-      "market_capitalization": 123469141270.0
+      "shares_outstanding": 340042000,
+      "market_capitalization": 123469250200.0
     },
     {
       "symbol": "APP",
       "report_date": "2025-01-27T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 343.02,
-      "shares_outstanding": 340041700,
-      "market_capitalization": 116641103934.0
+      "shares_outstanding": 340042000,
+      "market_capitalization": 116641206840.0
     },
     {
       "symbol": "APP",
       "report_date": "2025-01-28T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 360.75,
-      "shares_outstanding": 340041700,
-      "market_capitalization": 122670043275.0
+      "shares_outstanding": 340042000,
+      "market_capitalization": 122670151500.0
     },
     {
       "symbol": "APP",
       "report_date": "2025-01-29T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 366.34,
-      "shares_outstanding": 340041700,
-      "market_capitalization": 124570876378.0
+      "shares_outstanding": 340042000,
+      "market_capitalization": 124570986280.0
     },
     {
       "symbol": "APP",
       "report_date": "2025-01-30T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 365.51,
-      "shares_outstanding": 340041700,
-      "market_capitalization": 124288641767.0
+      "shares_outstanding": 340042000,
+      "market_capitalization": 124288751420.0
     },
     {
       "symbol": "APP",
       "report_date": "2025-01-31T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 369.59,
-      "shares_outstanding": 340041700,
-      "market_capitalization": 125676011903.0
+      "shares_outstanding": 340042000,
+      "market_capitalization": 125676122780.0
     },
     {
       "symbol": "APP",
       "report_date": "2025-02-03T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 365.44,
-      "shares_outstanding": 340041700,
-      "market_capitalization": 124264838848.0
+      "shares_outstanding": 340042000,
+      "market_capitalization": 124264948480.0
     },
     {
       "symbol": "APP",
       "report_date": "2025-02-04T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 380.26,
-      "shares_outstanding": 340041700,
-      "market_capitalization": 129304256842.0
+      "shares_outstanding": 340042000,
+      "market_capitalization": 129304370920.0
     },
     {
       "symbol": "APP",
       "report_date": "2025-02-05T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 368.27,
-      "shares_outstanding": 340041700,
-      "market_capitalization": 125227156859.0
+      "shares_outstanding": 340042000,
+      "market_capitalization": 125227267340.0
     },
     {
       "symbol": "APP",
       "report_date": "2025-02-06T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 380.63,
-      "shares_outstanding": 340041700,
-      "market_capitalization": 129430072271.0
+      "shares_outstanding": 340042000,
+      "market_capitalization": 129430186460.0
     },
     {
       "symbol": "APP",
       "report_date": "2025-02-07T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 375.72,
-      "shares_outstanding": 340041700,
-      "market_capitalization": 127760467524.0
+      "shares_outstanding": 340042000,
+      "market_capitalization": 127760580240.0
     },
     {
       "symbol": "APP",
       "report_date": "2025-02-10T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 384.4,
-      "shares_outstanding": 340041700,
-      "market_capitalization": 130712029480.0
+      "shares_outstanding": 340042000,
+      "market_capitalization": 130712144800.0
     },
     {
       "symbol": "APP",
       "report_date": "2025-02-11T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 375.25,
-      "shares_outstanding": 340041700,
-      "market_capitalization": 127600647925.0
+      "shares_outstanding": 340042000,
+      "market_capitalization": 127600760500.0
     },
     {
       "symbol": "APP",
       "report_date": "2025-02-12T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 380.32,
-      "shares_outstanding": 340041700,
-      "market_capitalization": 129324659344.0
+      "shares_outstanding": 340042000,
+      "market_capitalization": 129324773440.0
     },
     {
       "symbol": "APP",
       "report_date": "2025-02-13T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 471.67,
-      "shares_outstanding": 340041700,
-      "market_capitalization": 160387468639.0
+      "shares_outstanding": 340042000,
+      "market_capitalization": 160387610140.0
     },
     {
       "symbol": "APP",
       "report_date": "2025-02-14T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 510.13,
-      "shares_outstanding": 340041700,
-      "market_capitalization": 173465472421.0
+      "shares_outstanding": 340042000,
+      "market_capitalization": 173465625460.0
     },
     {
       "symbol": "APP",
       "report_date": "2025-02-18T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 496.0,
-      "shares_outstanding": 340041700,
-      "market_capitalization": 168660683200.0
+      "shares_outstanding": 340042000,
+      "market_capitalization": 168660832000.0
     },
     {
       "symbol": "APP",
       "report_date": "2025-02-19T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 494.17,
-      "shares_outstanding": 340041700,
-      "market_capitalization": 168038406889.0
+      "shares_outstanding": 340042000,
+      "market_capitalization": 168038555140.0
     },
     {
       "symbol": "APP",
       "report_date": "2025-02-20T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 450.01,
-      "shares_outstanding": 340041700,
-      "market_capitalization": 153022165417.0
+      "shares_outstanding": 340042000,
+      "market_capitalization": 153022300420.0
     },
     {
       "symbol": "APP",
       "report_date": "2025-02-21T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 415.31,
-      "shares_outstanding": 340041700,
-      "market_capitalization": 141222718427.0
+      "shares_outstanding": 340042000,
+      "market_capitalization": 141222843020.0
     },
     {
       "symbol": "APP",
@@ -20468,64 +20492,64 @@
       "report_date": "2026-03-31T00:00:00.000",
       "shares_report_date": "2026-03-31T00:00:00.000",
       "close_price": 398.0,
-      "shares_outstanding": 336294900,
-      "market_capitalization": 133845370200.0
+      "shares_outstanding": 336295000,
+      "market_capitalization": 133845410000.0
     },
     {
       "symbol": "APP",
       "report_date": "2026-04-01T00:00:00.000",
       "shares_report_date": "2026-03-31T00:00:00.000",
       "close_price": 387.84,
-      "shares_outstanding": 336294900,
-      "market_capitalization": 130428614016.0
+      "shares_outstanding": 336295000,
+      "market_capitalization": 130428652800.0
     },
     {
       "symbol": "APP",
       "report_date": "2026-04-02T00:00:00.000",
       "shares_report_date": "2026-03-31T00:00:00.000",
       "close_price": 386.37,
-      "shares_outstanding": 336294900,
-      "market_capitalization": 129934260513.0
+      "shares_outstanding": 336295000,
+      "market_capitalization": 129934299150.0
     },
     {
       "symbol": "APP",
       "report_date": "2026-04-06T00:00:00.000",
       "shares_report_date": "2026-03-31T00:00:00.000",
       "close_price": 412.68,
-      "shares_outstanding": 336294900,
-      "market_capitalization": 138782179332.0
+      "shares_outstanding": 336295000,
+      "market_capitalization": 138782220600.0
     },
     {
       "symbol": "APP",
       "report_date": "2026-04-07T00:00:00.000",
       "shares_report_date": "2026-03-31T00:00:00.000",
       "close_price": 410.44,
-      "shares_outstanding": 336294900,
-      "market_capitalization": 138028878756.0
+      "shares_outstanding": 336295000,
+      "market_capitalization": 138028919800.0
     },
     {
       "symbol": "APP",
       "report_date": "2026-04-08T00:00:00.000",
       "shares_report_date": "2026-03-31T00:00:00.000",
       "close_price": 391.2,
-      "shares_outstanding": 336294900,
-      "market_capitalization": 131558564880.0
+      "shares_outstanding": 336295000,
+      "market_capitalization": 131558604000.0
     },
     {
       "symbol": "APP",
       "report_date": "2026-04-09T00:00:00.000",
       "shares_report_date": "2026-03-31T00:00:00.000",
       "close_price": 379.14,
-      "shares_outstanding": 336294900,
-      "market_capitalization": 127502848386.0
+      "shares_outstanding": 336295000,
+      "market_capitalization": 127502886300.0
     },
     {
       "symbol": "APP",
       "report_date": "2026-04-10T00:00:00.000",
       "shares_report_date": "2026-03-31T00:00:00.000",
       "close_price": 391.38,
-      "shares_outstanding": 336294900,
-      "market_capitalization": 131619097962.0
+      "shares_outstanding": 336295000,
+      "market_capitalization": 131619137100.0
     },
     {
       "symbol": "APP",
@@ -20798,6 +20822,30 @@
       "close_price": 613.09,
       "shares_outstanding": 335939500,
       "market_capitalization": 205961148055.0
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-06-01T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 613.7,
+      "shares_outstanding": 335939500,
+      "market_capitalization": 206166071150.0
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-06-02T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 605.63,
+      "shares_outstanding": 335939500,
+      "market_capitalization": 203455039385.0
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-06-03T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 570.83,
+      "shares_outstanding": 335939500,
+      "market_capitalization": 191764344785.0
     }
   ],
   "psRatio": [
@@ -22704,7 +22752,7 @@
     {
       "symbol": "APP",
       "report_date": "2024-12-31T00:00:00.000",
-      "market_capitalization": 110115703711.0,
+      "market_capitalization": 110115800860.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 3977095000.0,
       "exchange_rate": 1.0,
@@ -22714,7 +22762,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-02T00:00:00.000",
-      "market_capitalization": 116219452226.0,
+      "market_capitalization": 116219554760.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 3977095000.0,
       "exchange_rate": 1.0,
@@ -22724,7 +22772,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-03T00:00:00.000",
-      "market_capitalization": 119235622105.0,
+      "market_capitalization": 119235727300.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 3977095000.0,
       "exchange_rate": 1.0,
@@ -22734,7 +22782,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-06T00:00:00.000",
-      "market_capitalization": 120691000581.0,
+      "market_capitalization": 120691107060.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 3977095000.0,
       "exchange_rate": 1.0,
@@ -22744,7 +22792,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-07T00:00:00.000",
-      "market_capitalization": 112215461208.5,
+      "market_capitalization": 112215560210.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 3977095000.0,
       "exchange_rate": 1.0,
@@ -22754,7 +22802,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-08T00:00:00.000",
-      "market_capitalization": 111941727640.0,
+      "market_capitalization": 111941826400.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 3977095000.0,
       "exchange_rate": 1.0,
@@ -22764,7 +22812,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-10T00:00:00.000",
-      "market_capitalization": 108296480616.0,
+      "market_capitalization": 108296576160.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 3977095000.0,
       "exchange_rate": 1.0,
@@ -22774,7 +22822,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-13T00:00:00.000",
-      "market_capitalization": 107344363856.0,
+      "market_capitalization": 107344458560.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 3977095000.0,
       "exchange_rate": 1.0,
@@ -22784,7 +22832,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-14T00:00:00.000",
-      "market_capitalization": 109183989453.0,
+      "market_capitalization": 109184085780.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 3977095000.0,
       "exchange_rate": 1.0,
@@ -22794,7 +22842,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-15T00:00:00.000",
-      "market_capitalization": 113924170751.0,
+      "market_capitalization": 113924271260.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 3977095000.0,
       "exchange_rate": 1.0,
@@ -22804,7 +22852,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-16T00:00:00.000",
-      "market_capitalization": 112897244817.0,
+      "market_capitalization": 112897344420.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 3977095000.0,
       "exchange_rate": 1.0,
@@ -22814,7 +22862,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-17T00:00:00.000",
-      "market_capitalization": 116409875578.0,
+      "market_capitalization": 116409978280.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 3977095000.0,
       "exchange_rate": 1.0,
@@ -22824,7 +22872,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-21T00:00:00.000",
-      "market_capitalization": 115066710863.0,
+      "market_capitalization": 115066812380.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 3977095000.0,
       "exchange_rate": 1.0,
@@ -22834,7 +22882,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-22T00:00:00.000",
-      "market_capitalization": 122999883724.0,
+      "market_capitalization": 122999992240.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 3977095000.0,
       "exchange_rate": 1.0,
@@ -22844,7 +22892,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-23T00:00:00.000",
-      "market_capitalization": 123271917084.0,
+      "market_capitalization": 123272025840.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 3977095000.0,
       "exchange_rate": 1.0,
@@ -22854,7 +22902,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-24T00:00:00.000",
-      "market_capitalization": 123469141270.0,
+      "market_capitalization": 123469250200.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 3977095000.0,
       "exchange_rate": 1.0,
@@ -22864,7 +22912,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-27T00:00:00.000",
-      "market_capitalization": 116641103934.0,
+      "market_capitalization": 116641206840.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 3977095000.0,
       "exchange_rate": 1.0,
@@ -22874,7 +22922,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-28T00:00:00.000",
-      "market_capitalization": 122670043275.0,
+      "market_capitalization": 122670151500.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 3977095000.0,
       "exchange_rate": 1.0,
@@ -22884,7 +22932,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-29T00:00:00.000",
-      "market_capitalization": 124570876378.0,
+      "market_capitalization": 124570986280.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 3977095000.0,
       "exchange_rate": 1.0,
@@ -22894,7 +22942,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-30T00:00:00.000",
-      "market_capitalization": 124288641767.0,
+      "market_capitalization": 124288751420.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 3977095000.0,
       "exchange_rate": 1.0,
@@ -22904,7 +22952,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-31T00:00:00.000",
-      "market_capitalization": 125676011903.0,
+      "market_capitalization": 125676122780.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 3977095000.0,
       "exchange_rate": 1.0,
@@ -22914,7 +22962,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-02-03T00:00:00.000",
-      "market_capitalization": 124264838848.0,
+      "market_capitalization": 124264948480.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 3977095000.0,
       "exchange_rate": 1.0,
@@ -22924,7 +22972,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-02-04T00:00:00.000",
-      "market_capitalization": 129304256842.0,
+      "market_capitalization": 129304370920.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 3977095000.0,
       "exchange_rate": 1.0,
@@ -22934,7 +22982,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-02-05T00:00:00.000",
-      "market_capitalization": 125227156859.0,
+      "market_capitalization": 125227267340.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 3977095000.0,
       "exchange_rate": 1.0,
@@ -22944,7 +22992,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-02-06T00:00:00.000",
-      "market_capitalization": 129430072271.0,
+      "market_capitalization": 129430186460.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 3977095000.0,
       "exchange_rate": 1.0,
@@ -22954,7 +23002,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-02-07T00:00:00.000",
-      "market_capitalization": 127760467524.0,
+      "market_capitalization": 127760580240.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 3977095000.0,
       "exchange_rate": 1.0,
@@ -22964,7 +23012,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-02-10T00:00:00.000",
-      "market_capitalization": 130712029480.0,
+      "market_capitalization": 130712144800.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 3977095000.0,
       "exchange_rate": 1.0,
@@ -22974,7 +23022,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-02-11T00:00:00.000",
-      "market_capitalization": 127600647925.0,
+      "market_capitalization": 127600760500.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 3977095000.0,
       "exchange_rate": 1.0,
@@ -22984,7 +23032,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-02-12T00:00:00.000",
-      "market_capitalization": 129324659344.0,
+      "market_capitalization": 129324773440.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 3977095000.0,
       "exchange_rate": 1.0,
@@ -22994,7 +23042,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-02-13T00:00:00.000",
-      "market_capitalization": 160387468639.0,
+      "market_capitalization": 160387610140.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 3977095000.0,
       "exchange_rate": 1.0,
@@ -23004,7 +23052,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-02-14T00:00:00.000",
-      "market_capitalization": 173465472421.0,
+      "market_capitalization": 173465625460.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 3977095000.0,
       "exchange_rate": 1.0,
@@ -23014,7 +23062,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-02-18T00:00:00.000",
-      "market_capitalization": 168660683200.0,
+      "market_capitalization": 168660832000.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 3977095000.0,
       "exchange_rate": 1.0,
@@ -23024,7 +23072,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-02-19T00:00:00.000",
-      "market_capitalization": 168038406889.0,
+      "market_capitalization": 168038555140.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 3977095000.0,
       "exchange_rate": 1.0,
@@ -23034,7 +23082,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-02-20T00:00:00.000",
-      "market_capitalization": 153022165417.0,
+      "market_capitalization": 153022300420.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 3977095000.0,
       "exchange_rate": 1.0,
@@ -23044,7 +23092,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-02-21T00:00:00.000",
-      "market_capitalization": 141222718427.0,
+      "market_capitalization": 141222843020.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 3977095000.0,
       "exchange_rate": 1.0,
@@ -25814,7 +25862,7 @@
     {
       "symbol": "APP",
       "report_date": "2026-03-31T00:00:00.000",
-      "market_capitalization": 133845370200.0,
+      "market_capitalization": 133845410000.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
@@ -25824,7 +25872,7 @@
     {
       "symbol": "APP",
       "report_date": "2026-04-01T00:00:00.000",
-      "market_capitalization": 130428614016.0,
+      "market_capitalization": 130428652800.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
@@ -25834,7 +25882,7 @@
     {
       "symbol": "APP",
       "report_date": "2026-04-02T00:00:00.000",
-      "market_capitalization": 129934260513.0,
+      "market_capitalization": 129934299150.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
@@ -25844,7 +25892,7 @@
     {
       "symbol": "APP",
       "report_date": "2026-04-06T00:00:00.000",
-      "market_capitalization": 138782179332.0,
+      "market_capitalization": 138782220600.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
@@ -25854,7 +25902,7 @@
     {
       "symbol": "APP",
       "report_date": "2026-04-07T00:00:00.000",
-      "market_capitalization": 138028878756.0,
+      "market_capitalization": 138028919800.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
@@ -25864,7 +25912,7 @@
     {
       "symbol": "APP",
       "report_date": "2026-04-08T00:00:00.000",
-      "market_capitalization": 131558564880.0,
+      "market_capitalization": 131558604000.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
@@ -25874,7 +25922,7 @@
     {
       "symbol": "APP",
       "report_date": "2026-04-09T00:00:00.000",
-      "market_capitalization": 127502848386.0,
+      "market_capitalization": 127502886300.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
@@ -25884,7 +25932,7 @@
     {
       "symbol": "APP",
       "report_date": "2026-04-10T00:00:00.000",
-      "market_capitalization": 131619097962.0,
+      "market_capitalization": 131619137100.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "ttm_revenue": 6164192000.0,
       "exchange_rate": 1.0,
@@ -26230,6 +26278,36 @@
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 6164192000.0,
       "ps_ratio": 33.41
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-06-01T00:00:00.000",
+      "market_capitalization": 206166071150.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 6164192000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 33.45
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-06-02T00:00:00.000",
+      "market_capitalization": 203455039385.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 6164192000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 33.01
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-06-03T00:00:00.000",
+      "market_capitalization": 191764344785.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 6164192000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 31.11
     }
   ],
   "pbRatio": [
@@ -32526,7 +32604,7 @@
     {
       "symbol": "APP",
       "report_date": "2024-12-31T00:00:00.000",
-      "market_capitalization": 110115703711.0,
+      "market_capitalization": 110115800860.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 1089818000.0,
       "exchange_rate": 1.0,
@@ -32536,7 +32614,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-02T00:00:00.000",
-      "market_capitalization": 116219452226.0,
+      "market_capitalization": 116219554760.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 1089818000.0,
       "exchange_rate": 1.0,
@@ -32546,7 +32624,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-03T00:00:00.000",
-      "market_capitalization": 119235622105.0,
+      "market_capitalization": 119235727300.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 1089818000.0,
       "exchange_rate": 1.0,
@@ -32556,7 +32634,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-06T00:00:00.000",
-      "market_capitalization": 120691000581.0,
+      "market_capitalization": 120691107060.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 1089818000.0,
       "exchange_rate": 1.0,
@@ -32566,7 +32644,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-07T00:00:00.000",
-      "market_capitalization": 112215461208.5,
+      "market_capitalization": 112215560210.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 1089818000.0,
       "exchange_rate": 1.0,
@@ -32576,7 +32654,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-08T00:00:00.000",
-      "market_capitalization": 111941727640.0,
+      "market_capitalization": 111941826400.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 1089818000.0,
       "exchange_rate": 1.0,
@@ -32586,7 +32664,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-10T00:00:00.000",
-      "market_capitalization": 108296480616.0,
+      "market_capitalization": 108296576160.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 1089818000.0,
       "exchange_rate": 1.0,
@@ -32596,7 +32674,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-13T00:00:00.000",
-      "market_capitalization": 107344363856.0,
+      "market_capitalization": 107344458560.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 1089818000.0,
       "exchange_rate": 1.0,
@@ -32606,7 +32684,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-14T00:00:00.000",
-      "market_capitalization": 109183989453.0,
+      "market_capitalization": 109184085780.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 1089818000.0,
       "exchange_rate": 1.0,
@@ -32616,7 +32694,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-15T00:00:00.000",
-      "market_capitalization": 113924170751.0,
+      "market_capitalization": 113924271260.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 1089818000.0,
       "exchange_rate": 1.0,
@@ -32626,7 +32704,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-16T00:00:00.000",
-      "market_capitalization": 112897244817.0,
+      "market_capitalization": 112897344420.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 1089818000.0,
       "exchange_rate": 1.0,
@@ -32636,7 +32714,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-17T00:00:00.000",
-      "market_capitalization": 116409875578.0,
+      "market_capitalization": 116409978280.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 1089818000.0,
       "exchange_rate": 1.0,
@@ -32646,7 +32724,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-21T00:00:00.000",
-      "market_capitalization": 115066710863.0,
+      "market_capitalization": 115066812380.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 1089818000.0,
       "exchange_rate": 1.0,
@@ -32656,7 +32734,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-22T00:00:00.000",
-      "market_capitalization": 122999883724.0,
+      "market_capitalization": 122999992240.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 1089818000.0,
       "exchange_rate": 1.0,
@@ -32666,7 +32744,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-23T00:00:00.000",
-      "market_capitalization": 123271917084.0,
+      "market_capitalization": 123272025840.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 1089818000.0,
       "exchange_rate": 1.0,
@@ -32676,7 +32754,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-24T00:00:00.000",
-      "market_capitalization": 123469141270.0,
+      "market_capitalization": 123469250200.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 1089818000.0,
       "exchange_rate": 1.0,
@@ -32686,7 +32764,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-27T00:00:00.000",
-      "market_capitalization": 116641103934.0,
+      "market_capitalization": 116641206840.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 1089818000.0,
       "exchange_rate": 1.0,
@@ -32696,7 +32774,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-28T00:00:00.000",
-      "market_capitalization": 122670043275.0,
+      "market_capitalization": 122670151500.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 1089818000.0,
       "exchange_rate": 1.0,
@@ -32706,7 +32784,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-29T00:00:00.000",
-      "market_capitalization": 124570876378.0,
+      "market_capitalization": 124570986280.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 1089818000.0,
       "exchange_rate": 1.0,
@@ -32716,7 +32794,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-30T00:00:00.000",
-      "market_capitalization": 124288641767.0,
+      "market_capitalization": 124288751420.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 1089818000.0,
       "exchange_rate": 1.0,
@@ -32726,7 +32804,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-01-31T00:00:00.000",
-      "market_capitalization": 125676011903.0,
+      "market_capitalization": 125676122780.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 1089818000.0,
       "exchange_rate": 1.0,
@@ -32736,7 +32814,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-02-03T00:00:00.000",
-      "market_capitalization": 124264838848.0,
+      "market_capitalization": 124264948480.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 1089818000.0,
       "exchange_rate": 1.0,
@@ -32746,7 +32824,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-02-04T00:00:00.000",
-      "market_capitalization": 129304256842.0,
+      "market_capitalization": 129304370920.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 1089818000.0,
       "exchange_rate": 1.0,
@@ -32756,7 +32834,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-02-05T00:00:00.000",
-      "market_capitalization": 125227156859.0,
+      "market_capitalization": 125227267340.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 1089818000.0,
       "exchange_rate": 1.0,
@@ -32766,7 +32844,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-02-06T00:00:00.000",
-      "market_capitalization": 129430072271.0,
+      "market_capitalization": 129430186460.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 1089818000.0,
       "exchange_rate": 1.0,
@@ -32776,7 +32854,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-02-07T00:00:00.000",
-      "market_capitalization": 127760467524.0,
+      "market_capitalization": 127760580240.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 1089818000.0,
       "exchange_rate": 1.0,
@@ -32786,7 +32864,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-02-10T00:00:00.000",
-      "market_capitalization": 130712029480.0,
+      "market_capitalization": 130712144800.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 1089818000.0,
       "exchange_rate": 1.0,
@@ -32796,7 +32874,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-02-11T00:00:00.000",
-      "market_capitalization": 127600647925.0,
+      "market_capitalization": 127600760500.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 1089818000.0,
       "exchange_rate": 1.0,
@@ -32806,7 +32884,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-02-12T00:00:00.000",
-      "market_capitalization": 129324659344.0,
+      "market_capitalization": 129324773440.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 1089818000.0,
       "exchange_rate": 1.0,
@@ -32816,7 +32894,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-02-13T00:00:00.000",
-      "market_capitalization": 160387468639.0,
+      "market_capitalization": 160387610140.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 1089818000.0,
       "exchange_rate": 1.0,
@@ -32826,7 +32904,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-02-14T00:00:00.000",
-      "market_capitalization": 173465472421.0,
+      "market_capitalization": 173465625460.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 1089818000.0,
       "exchange_rate": 1.0,
@@ -32836,7 +32914,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-02-18T00:00:00.000",
-      "market_capitalization": 168660683200.0,
+      "market_capitalization": 168660832000.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 1089818000.0,
       "exchange_rate": 1.0,
@@ -32846,7 +32924,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-02-19T00:00:00.000",
-      "market_capitalization": 168038406889.0,
+      "market_capitalization": 168038555140.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 1089818000.0,
       "exchange_rate": 1.0,
@@ -32856,7 +32934,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-02-20T00:00:00.000",
-      "market_capitalization": 153022165417.0,
+      "market_capitalization": 153022300420.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 1089818000.0,
       "exchange_rate": 1.0,
@@ -32866,7 +32944,7 @@
     {
       "symbol": "APP",
       "report_date": "2025-02-21T00:00:00.000",
-      "market_capitalization": 141222718427.0,
+      "market_capitalization": 141222843020.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 1089818000.0,
       "exchange_rate": 1.0,
@@ -35636,7 +35714,7 @@
     {
       "symbol": "APP",
       "report_date": "2026-03-31T00:00:00.000",
-      "market_capitalization": 133845370200.0,
+      "market_capitalization": 133845410000.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "book_value_of_equity": 2363483000.0,
       "exchange_rate": 1.0,
@@ -35646,7 +35724,7 @@
     {
       "symbol": "APP",
       "report_date": "2026-04-01T00:00:00.000",
-      "market_capitalization": 130428614016.0,
+      "market_capitalization": 130428652800.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "book_value_of_equity": 2363483000.0,
       "exchange_rate": 1.0,
@@ -35656,7 +35734,7 @@
     {
       "symbol": "APP",
       "report_date": "2026-04-02T00:00:00.000",
-      "market_capitalization": 129934260513.0,
+      "market_capitalization": 129934299150.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "book_value_of_equity": 2363483000.0,
       "exchange_rate": 1.0,
@@ -35666,7 +35744,7 @@
     {
       "symbol": "APP",
       "report_date": "2026-04-06T00:00:00.000",
-      "market_capitalization": 138782179332.0,
+      "market_capitalization": 138782220600.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "book_value_of_equity": 2363483000.0,
       "exchange_rate": 1.0,
@@ -35676,7 +35754,7 @@
     {
       "symbol": "APP",
       "report_date": "2026-04-07T00:00:00.000",
-      "market_capitalization": 138028878756.0,
+      "market_capitalization": 138028919800.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "book_value_of_equity": 2363483000.0,
       "exchange_rate": 1.0,
@@ -35686,7 +35764,7 @@
     {
       "symbol": "APP",
       "report_date": "2026-04-08T00:00:00.000",
-      "market_capitalization": 131558564880.0,
+      "market_capitalization": 131558604000.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "book_value_of_equity": 2363483000.0,
       "exchange_rate": 1.0,
@@ -35696,7 +35774,7 @@
     {
       "symbol": "APP",
       "report_date": "2026-04-09T00:00:00.000",
-      "market_capitalization": 127502848386.0,
+      "market_capitalization": 127502886300.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "book_value_of_equity": 2363483000.0,
       "exchange_rate": 1.0,
@@ -35706,7 +35784,7 @@
     {
       "symbol": "APP",
       "report_date": "2026-04-10T00:00:00.000",
-      "market_capitalization": 131619097962.0,
+      "market_capitalization": 131619137100.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "book_value_of_equity": 2363483000.0,
       "exchange_rate": 1.0,
@@ -36052,6 +36130,36 @@
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 2363483000.0,
       "pb_ratio": 87.14
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-06-01T00:00:00.000",
+      "market_capitalization": 206166071150.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 2363483000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 2363483000.0,
+      "pb_ratio": 87.23
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-06-02T00:00:00.000",
+      "market_capitalization": 203455039385.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 2363483000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 2363483000.0,
+      "pb_ratio": 86.08
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-06-03T00:00:00.000",
+      "market_capitalization": 191764344785.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 2363483000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 2363483000.0,
+      "pb_ratio": 81.14
     }
   ],
   "pegRatio": [
@@ -43984,6 +44092,36 @@
       "ttm_pe": 54.08,
       "eps_yoy_growth": 0.697,
       "peg_ratio": 0.78
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-06-01T00:00:00.000",
+      "close_price": 613.7,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 11.3361,
+      "ttm_pe": 54.14,
+      "eps_yoy_growth": 0.697,
+      "peg_ratio": 0.78
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-06-02T00:00:00.000",
+      "close_price": 605.63,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 11.3361,
+      "ttm_pe": 53.42,
+      "eps_yoy_growth": 0.697,
+      "peg_ratio": 0.77
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-06-03T00:00:00.000",
+      "close_price": 570.83,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 11.3361,
+      "ttm_pe": 50.36,
+      "eps_yoy_growth": 0.697,
+      "peg_ratio": 0.72
     }
   ]
 }

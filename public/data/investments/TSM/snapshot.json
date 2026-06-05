@@ -1,10 +1,10 @@
 {
   "symbol": "TSM",
-  "lastUpdated": "2026-06-02T00:07:23.336952+00:00",
+  "lastUpdated": "2026-06-05T00:00:31.538495+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-02T00:07:23.336952+00:00",
+    "snapshotBuiltAt": "2026-06-05T00:00:31.538495+00:00",
     "sections": {
-      "price": "2026-05-29"
+      "price": "2026-06-03"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.0321,
-      "ttmPe": 34.78,
-      "marketCap": 2170300591195,
-      "psRatio": 16.94,
-      "pbRatio": 11.8,
-      "pegRatio": 0.54
+      "ttmPe": 36.29,
+      "marketCap": 2264881331060,
+      "psRatio": 17.68,
+      "pbRatio": 12.32,
+      "pegRatio": 0.56
     },
     "profitability": {
       "roe": 10.18,
@@ -6709,30 +6709,6 @@
     },
     "price": [
       {
-        "date": "2025-05-29",
-        "open": 199.46,
-        "high": 199.8,
-        "low": 196.08,
-        "close": 197.15,
-        "volume": 14609900
-      },
-      {
-        "date": "2025-05-30",
-        "open": 195.77,
-        "high": 195.91,
-        "low": 190.56,
-        "close": 193.32,
-        "volume": 11998300
-      },
-      {
-        "date": "2025-06-02",
-        "open": 193.04,
-        "high": 195.16,
-        "low": 192.2,
-        "close": 194.84,
-        "volume": 7447400
-      },
-      {
         "date": "2025-06-03",
         "open": 194.35,
         "high": 198.17,
@@ -8722,14 +8698,38 @@
         "high": 430.44,
         "low": 417.25,
         "close": 418.45,
-        "volume": 11202700
+        "volume": 11232300
+      },
+      {
+        "date": "2026-06-01",
+        "open": 424.88,
+        "high": 449.39,
+        "low": 422.5,
+        "close": 435.63,
+        "volume": 18040400
+      },
+      {
+        "date": "2026-06-02",
+        "open": 440.58,
+        "high": 448.38,
+        "low": 436.01,
+        "close": 446.69,
+        "volume": 10147900
+      },
+      {
+        "date": "2026-06-03",
+        "open": 449.99,
+        "high": 450.1636,
+        "low": 434.525,
+        "close": 436.69,
+        "volume": 9113591
       }
     ],
     "officers": [
       {
         "name": "Dr. C. C. Wei Ph.D.",
         "title": "Chairman & CEO",
-        "totalPay": 65351635
+        "totalPay": 65240633
       },
       {
         "name": "Dr. Horng-Dar Lin",
@@ -8754,7 +8754,7 @@
       {
         "name": "Mr. Jen-Chau Huang",
         "title": "Senior VP & CFO",
-        "totalPay": 9467658
+        "totalPay": 9451576
       },
       {
         "name": "Mr. Pei-Hong Chen",
@@ -8772,18 +8772,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 34.78,
-        "industryAvg": 38.41
+        "value": 36.29,
+        "industryAvg": 40.37
       },
       {
         "metric": "P/S Ratio",
-        "value": 16.94,
-        "industryAvg": 15.29
+        "value": 17.68,
+        "industryAvg": 16.02
       },
       {
         "metric": "P/B Ratio",
-        "value": 11.8,
-        "industryAvg": 12.69
+        "value": 12.32,
+        "industryAvg": 13.34
       },
       {
         "metric": "ROE",

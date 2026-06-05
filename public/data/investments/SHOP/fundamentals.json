@@ -22556,6 +22556,30 @@
       "close_price": 118.71,
       "ttm_eps": 1.0172,
       "ttm_pe": 116.7
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-06-01T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 124.12,
+      "ttm_eps": 1.0172,
+      "ttm_pe": 122.02
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-06-02T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 117.01,
+      "ttm_eps": 1.0172,
+      "ttm_pe": 115.03
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-06-03T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 112.94,
+      "ttm_eps": 1.0172,
+      "ttm_pe": 111.03
     }
   ],
   "marketCap": [
@@ -25324,512 +25348,512 @@
       "report_date": "2016-09-30T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.292,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3817143850.0
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3817143420.8
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-10-03T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.303,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3826926837.5
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3826926407.2
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-10-04T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.341,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3860722612.5
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3860722178.4
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-10-05T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.377,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3892739662.5
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3892739224.8
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-10-06T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.368,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3884735400.0
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3884734963.2
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-10-07T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.436,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3945212050.0
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3945211606.4
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-10-10T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.373,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3889182212.5
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3889181775.2
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-10-11T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.23,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3762003375.0
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3762002952.0
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-10-12T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.239,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3770007637.5
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3770007213.6
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-10-13T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.209,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3743326762.5
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3743326341.6
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-10-14T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.282,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3808250225.0
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3808249796.8
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-10-17T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.202,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3737101225.0
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3737100804.8
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-10-18T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.248,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3778011900.0
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3778011475.2
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-10-19T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.339,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3858943887.5
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3858943453.6
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-10-20T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.315,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3837599187.5
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3837598756.0
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-10-21T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.348,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3866948150.0
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3866947715.2
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-10-24T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.386,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3900743925.0
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3900743486.4
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-10-25T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.349,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3867837512.5
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3867837077.6
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-10-26T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.303,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3826926837.5
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3826926407.2
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-10-27T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.135,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3677513937.5
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3677513524.0
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-10-28T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.084,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3632156450.0
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3632156041.6
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-10-31T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.145,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3686407562.5
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3686407148.0
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-11-01T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.078,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3626820275.0
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3626819867.2
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-11-02T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.357,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3874952412.5
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3874951976.8
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-11-03T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.041,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3593913862.5
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3593913458.4
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-11-04T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 3.915,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3481854187.5
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3481853796.0
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-11-07T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.015,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3570790437.5
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3570790036.0
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-11-08T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.135,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3677513937.5
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3677513524.0
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-11-09T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.058,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3609033025.0
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3609032619.2
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-11-10T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.009,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3565454262.5
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3565453861.6
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-11-11T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 3.966,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3527211675.0
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3527211278.4
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-11-14T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 3.79,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3370683875.0
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3370683496.0
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-11-15T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 3.992,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3550335100.0
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3550334700.8
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-11-16T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.036,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3589467050.0
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3589466646.4
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-11-17T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.202,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3737101225.0
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3737100804.8
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-11-18T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.405,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3917641812.5
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3917641372.0
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-11-21T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.489,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3992348262.5
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3992347813.6
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-11-22T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.296,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3820701300.0
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3820700870.4
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-11-23T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.305,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3828705562.5
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3828705132.0
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-11-25T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.327,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3848271537.5
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3848271104.8
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-11-28T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.249,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3778901262.5
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3778900837.6
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-11-29T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.259,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3787794887.5
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3787794461.6
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-11-30T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.167,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3705973537.5
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3705973120.8
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-12-01T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 3.967,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3528101037.5
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3528100640.8
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-12-02T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 3.905,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3472960562.5
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3472960172.0
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-12-05T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.057,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3608143662.5
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3608143256.8
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-12-06T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.09,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3637492625.0
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3637492216.0
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-12-07T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.072,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3621484100.0
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3621483692.8
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-12-08T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.263,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3791352337.5
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3791351911.2
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-12-09T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.222,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3754888475.0
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3754888052.8
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-12-12T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.204,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3738879950.0
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3738879529.6
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-12-13T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.227,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3759335287.5
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3759334864.8
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-12-14T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.175,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3713088437.5
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3713088020.0
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-12-15T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.241,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3771786362.5
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3771785938.4
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-12-16T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.205,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3739769312.5
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3739768892.0
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-12-19T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.187,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3723760787.5
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3723760368.8
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-12-20T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.142,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3683739475.0
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3683739060.8
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-12-21T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.08,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3628599000.0
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3628598592.0
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-12-22T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.017,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3572569162.5
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3572568760.8
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-12-23T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.134,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3676624575.0
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3676624161.6
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-12-27T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.364,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3881177950.0
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3881177513.6
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-12-28T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.322,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3843824725.0
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3843824292.8
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-12-29T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.31,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3833152375.0
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3833151944.0
     },
     {
       "symbol": "SHOP",
       "report_date": "2016-12-30T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 4.287,
-      "shares_outstanding": 889362500,
-      "market_capitalization": 3812697037.5
+      "shares_outstanding": 889362400,
+      "market_capitalization": 3812696608.8
     },
     {
       "symbol": "SHOP",
@@ -44742,6 +44766,30 @@
       "close_price": 118.71,
       "shares_outstanding": 1297654600,
       "market_capitalization": 154044577566.0
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-06-01T00:00:00.000",
+      "shares_report_date": "2026-05-01T00:00:00.000",
+      "close_price": 124.12,
+      "shares_outstanding": 1297654600,
+      "market_capitalization": 161064888952.0
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-06-02T00:00:00.000",
+      "shares_report_date": "2026-05-01T00:00:00.000",
+      "close_price": 117.01,
+      "shares_outstanding": 1297654600,
+      "market_capitalization": 151838564746.0
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-06-03T00:00:00.000",
+      "shares_report_date": "2026-05-01T00:00:00.000",
+      "close_price": 112.94,
+      "shares_outstanding": 1297654600,
+      "market_capitalization": 146557110524.0
     }
   ],
   "psRatio": [
@@ -50174,6 +50222,36 @@
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 12366000000.0,
       "ps_ratio": 12.46
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-06-01T00:00:00.000",
+      "market_capitalization": 161064888952.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 12366000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 13.02
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-06-02T00:00:00.000",
+      "market_capitalization": 151838564746.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 12366000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 12.28
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-06-03T00:00:00.000",
+      "market_capitalization": 146557110524.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 12366000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 11.85
     }
   ],
   "pbRatio": [
@@ -59996,6 +60074,36 @@
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 12501000000.0,
       "pb_ratio": 12.32
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-06-01T00:00:00.000",
+      "market_capitalization": 161064888952.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 12501000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 12501000000.0,
+      "pb_ratio": 12.88
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-06-02T00:00:00.000",
+      "market_capitalization": 151838564746.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 12501000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 12501000000.0,
+      "pb_ratio": 12.15
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-06-03T00:00:00.000",
+      "market_capitalization": 146557110524.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 12501000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 12501000000.0,
+      "pb_ratio": 11.72
     }
   ],
   "pegRatio": [
@@ -69808,6 +69916,36 @@
       "ttm_pe": 116.7,
       "eps_yoy_growth": 0.1533,
       "peg_ratio": 7.61
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-06-01T00:00:00.000",
+      "close_price": 124.12,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 1.0172,
+      "ttm_pe": 122.02,
+      "eps_yoy_growth": 0.1533,
+      "peg_ratio": 7.96
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-06-02T00:00:00.000",
+      "close_price": 117.01,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 1.0172,
+      "ttm_pe": 115.03,
+      "eps_yoy_growth": 0.1533,
+      "peg_ratio": 7.5
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-06-03T00:00:00.000",
+      "close_price": 112.94,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 1.0172,
+      "ttm_pe": 111.03,
+      "eps_yoy_growth": 0.1533,
+      "peg_ratio": 7.24
     }
   ]
 }

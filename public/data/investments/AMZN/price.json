@@ -1,33 +1,6 @@
 [
   {
     "symbol": "AMZN",
-    "report_date": "2025-05-29",
-    "open": 208.03,
-    "close": 205.7,
-    "high": 208.81,
-    "low": 204.23,
-    "volume": 34650000
-  },
-  {
-    "symbol": "AMZN",
-    "report_date": "2025-05-30",
-    "open": 204.84,
-    "close": 205.01,
-    "high": 205.99,
-    "low": 201.7,
-    "volume": 51679400
-  },
-  {
-    "symbol": "AMZN",
-    "report_date": "2025-06-02",
-    "open": 204.98,
-    "close": 206.65,
-    "high": 207.0,
-    "low": 202.68,
-    "volume": 29113300
-  },
-  {
-    "symbol": "AMZN",
     "report_date": "2025-06-03",
     "open": 207.11,
     "close": 205.71,
@@ -2265,6 +2238,33 @@
     "close": 270.64,
     "high": 274.75,
     "low": 269.64,
-    "volume": 54699300
+    "volume": 54749600
+  },
+  {
+    "symbol": "AMZN",
+    "report_date": "2026-06-01",
+    "open": 266.29,
+    "close": 261.26,
+    "high": 266.63,
+    "low": 260.7,
+    "volume": 53604400
+  },
+  {
+    "symbol": "AMZN",
+    "report_date": "2026-06-02",
+    "open": 257.16,
+    "close": 256.52,
+    "high": 261.2,
+    "low": 254.37,
+    "volume": 41811000
+  },
+  {
+    "symbol": "AMZN",
+    "report_date": "2026-06-03",
+    "open": 254.7,
+    "close": 250.02,
+    "high": 257.09,
+    "low": 247.71,
+    "volume": 50988687
   }
 ]

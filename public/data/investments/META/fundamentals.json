@@ -28672,6 +28672,30 @@
       "close_price": 632.51,
       "ttm_eps": 27.5066,
       "ttm_pe": 22.99
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-01T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 600.47,
+      "ttm_eps": 27.5066,
+      "ttm_pe": 21.83
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-02T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 597.63,
+      "ttm_eps": 27.5066,
+      "ttm_pe": 21.73
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-03T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 622.98,
+      "ttm_eps": 27.5066,
+      "ttm_pe": 22.65
     }
   ],
   "marketCap": [
@@ -29912,152 +29936,152 @@
       "report_date": "2012-12-31T00:00:00.000",
       "shares_report_date": "2012-12-31T00:00:00.000",
       "close_price": 26.62,
-      "shares_outstanding": 2372000000,
-      "market_capitalization": 63142640000.0
+      "shares_outstanding": 2372705200,
+      "market_capitalization": 63161412424.0
     },
     {
       "symbol": "META",
       "report_date": "2013-01-02T00:00:00.000",
       "shares_report_date": "2012-12-31T00:00:00.000",
       "close_price": 28.0,
-      "shares_outstanding": 2372000000,
-      "market_capitalization": 66416000000.0
+      "shares_outstanding": 2372705200,
+      "market_capitalization": 66435745600.0
     },
     {
       "symbol": "META",
       "report_date": "2013-01-03T00:00:00.000",
       "shares_report_date": "2012-12-31T00:00:00.000",
       "close_price": 27.77,
-      "shares_outstanding": 2372000000,
-      "market_capitalization": 65870440000.0
+      "shares_outstanding": 2372705200,
+      "market_capitalization": 65890023404.0
     },
     {
       "symbol": "META",
       "report_date": "2013-01-04T00:00:00.000",
       "shares_report_date": "2012-12-31T00:00:00.000",
       "close_price": 28.76,
-      "shares_outstanding": 2372000000,
-      "market_capitalization": 68218720000.0
+      "shares_outstanding": 2372705200,
+      "market_capitalization": 68239001552.0
     },
     {
       "symbol": "META",
       "report_date": "2013-01-07T00:00:00.000",
       "shares_report_date": "2012-12-31T00:00:00.000",
       "close_price": 29.42,
-      "shares_outstanding": 2372000000,
-      "market_capitalization": 69784240000.0
+      "shares_outstanding": 2372705200,
+      "market_capitalization": 69804986984.0
     },
     {
       "symbol": "META",
       "report_date": "2013-01-08T00:00:00.000",
       "shares_report_date": "2012-12-31T00:00:00.000",
       "close_price": 29.06,
-      "shares_outstanding": 2372000000,
-      "market_capitalization": 68930320000.0
+      "shares_outstanding": 2372705200,
+      "market_capitalization": 68950813112.0
     },
     {
       "symbol": "META",
       "report_date": "2013-01-09T00:00:00.000",
       "shares_report_date": "2012-12-31T00:00:00.000",
       "close_price": 30.59,
-      "shares_outstanding": 2372000000,
-      "market_capitalization": 72559480000.0
+      "shares_outstanding": 2372705200,
+      "market_capitalization": 72581052068.0
     },
     {
       "symbol": "META",
       "report_date": "2013-01-10T00:00:00.000",
       "shares_report_date": "2012-12-31T00:00:00.000",
       "close_price": 31.3,
-      "shares_outstanding": 2372000000,
-      "market_capitalization": 74243600000.0
+      "shares_outstanding": 2372705200,
+      "market_capitalization": 74265672760.0
     },
     {
       "symbol": "META",
       "report_date": "2013-01-11T00:00:00.000",
       "shares_report_date": "2012-12-31T00:00:00.000",
       "close_price": 31.72,
-      "shares_outstanding": 2372000000,
-      "market_capitalization": 75239840000.0
+      "shares_outstanding": 2372705200,
+      "market_capitalization": 75262208944.0
     },
     {
       "symbol": "META",
       "report_date": "2013-01-14T00:00:00.000",
       "shares_report_date": "2012-12-31T00:00:00.000",
       "close_price": 30.95,
-      "shares_outstanding": 2372000000,
-      "market_capitalization": 73413400000.0
+      "shares_outstanding": 2372705200,
+      "market_capitalization": 73435225940.0
     },
     {
       "symbol": "META",
       "report_date": "2013-01-15T00:00:00.000",
       "shares_report_date": "2012-12-31T00:00:00.000",
       "close_price": 30.1,
-      "shares_outstanding": 2372000000,
-      "market_capitalization": 71397200000.0
+      "shares_outstanding": 2372705200,
+      "market_capitalization": 71418426520.0
     },
     {
       "symbol": "META",
       "report_date": "2013-01-16T00:00:00.000",
       "shares_report_date": "2012-12-31T00:00:00.000",
       "close_price": 29.85,
-      "shares_outstanding": 2372000000,
-      "market_capitalization": 70804200000.0
+      "shares_outstanding": 2372705200,
+      "market_capitalization": 70825250220.0
     },
     {
       "symbol": "META",
       "report_date": "2013-01-17T00:00:00.000",
       "shares_report_date": "2012-12-31T00:00:00.000",
       "close_price": 30.14,
-      "shares_outstanding": 2372000000,
-      "market_capitalization": 71492080000.0
+      "shares_outstanding": 2372705200,
+      "market_capitalization": 71513334728.0
     },
     {
       "symbol": "META",
       "report_date": "2013-01-18T00:00:00.000",
       "shares_report_date": "2012-12-31T00:00:00.000",
       "close_price": 29.66,
-      "shares_outstanding": 2372000000,
-      "market_capitalization": 70353520000.0
+      "shares_outstanding": 2372705200,
+      "market_capitalization": 70374436232.0
     },
     {
       "symbol": "META",
       "report_date": "2013-01-22T00:00:00.000",
       "shares_report_date": "2012-12-31T00:00:00.000",
       "close_price": 30.73,
-      "shares_outstanding": 2372000000,
-      "market_capitalization": 72891560000.0
+      "shares_outstanding": 2372705200,
+      "market_capitalization": 72913230796.0
     },
     {
       "symbol": "META",
       "report_date": "2013-01-23T00:00:00.000",
       "shares_report_date": "2012-12-31T00:00:00.000",
       "close_price": 30.82,
-      "shares_outstanding": 2372000000,
-      "market_capitalization": 73105040000.0
+      "shares_outstanding": 2372705200,
+      "market_capitalization": 73126774264.0
     },
     {
       "symbol": "META",
       "report_date": "2013-01-24T00:00:00.000",
       "shares_report_date": "2012-12-31T00:00:00.000",
       "close_price": 31.08,
-      "shares_outstanding": 2372000000,
-      "market_capitalization": 73721760000.0
+      "shares_outstanding": 2372705200,
+      "market_capitalization": 73743677616.0
     },
     {
       "symbol": "META",
       "report_date": "2013-01-25T00:00:00.000",
       "shares_report_date": "2012-12-31T00:00:00.000",
       "close_price": 31.54,
-      "shares_outstanding": 2372000000,
-      "market_capitalization": 74812880000.0
+      "shares_outstanding": 2372705200,
+      "market_capitalization": 74835122008.0
     },
     {
       "symbol": "META",
       "report_date": "2013-01-28T00:00:00.000",
       "shares_report_date": "2012-12-31T00:00:00.000",
       "close_price": 32.47,
-      "shares_outstanding": 2372000000,
-      "market_capitalization": 77018840000.0
+      "shares_outstanding": 2372705200,
+      "market_capitalization": 77041737844.0
     },
     {
       "symbol": "META",
@@ -31928,144 +31952,144 @@
       "report_date": "2013-12-31T00:00:00.000",
       "shares_report_date": "2013-12-31T00:00:00.000",
       "close_price": 54.65,
-      "shares_outstanding": 2547000000,
-      "market_capitalization": 139193550000.0
+      "shares_outstanding": 2546584100,
+      "market_capitalization": 139170821065.0
     },
     {
       "symbol": "META",
       "report_date": "2014-01-02T00:00:00.000",
       "shares_report_date": "2013-12-31T00:00:00.000",
       "close_price": 54.71,
-      "shares_outstanding": 2547000000,
-      "market_capitalization": 139346370000.0
+      "shares_outstanding": 2546584100,
+      "market_capitalization": 139323616111.0
     },
     {
       "symbol": "META",
       "report_date": "2014-01-03T00:00:00.000",
       "shares_report_date": "2013-12-31T00:00:00.000",
       "close_price": 54.56,
-      "shares_outstanding": 2547000000,
-      "market_capitalization": 138964320000.0
+      "shares_outstanding": 2546584100,
+      "market_capitalization": 138941628496.0
     },
     {
       "symbol": "META",
       "report_date": "2014-01-06T00:00:00.000",
       "shares_report_date": "2013-12-31T00:00:00.000",
       "close_price": 57.2,
-      "shares_outstanding": 2547000000,
-      "market_capitalization": 145688400000.0
+      "shares_outstanding": 2546584100,
+      "market_capitalization": 145664610520.0
     },
     {
       "symbol": "META",
       "report_date": "2014-01-07T00:00:00.000",
       "shares_report_date": "2013-12-31T00:00:00.000",
       "close_price": 57.92,
-      "shares_outstanding": 2547000000,
-      "market_capitalization": 147522240000.0
+      "shares_outstanding": 2546584100,
+      "market_capitalization": 147498151072.0
     },
     {
       "symbol": "META",
       "report_date": "2014-01-08T00:00:00.000",
       "shares_report_date": "2013-12-31T00:00:00.000",
       "close_price": 58.23,
-      "shares_outstanding": 2547000000,
-      "market_capitalization": 148311810000.0
+      "shares_outstanding": 2546584100,
+      "market_capitalization": 148287592143.0
     },
     {
       "symbol": "META",
       "report_date": "2014-01-09T00:00:00.000",
       "shares_report_date": "2013-12-31T00:00:00.000",
       "close_price": 57.22,
-      "shares_outstanding": 2547000000,
-      "market_capitalization": 145739340000.0
+      "shares_outstanding": 2546584100,
+      "market_capitalization": 145715542202.0
     },
     {
       "symbol": "META",
       "report_date": "2014-01-10T00:00:00.000",
       "shares_report_date": "2013-12-31T00:00:00.000",
       "close_price": 57.94,
-      "shares_outstanding": 2547000000,
-      "market_capitalization": 147573180000.0
+      "shares_outstanding": 2546584100,
+      "market_capitalization": 147549082754.0
     },
     {
       "symbol": "META",
       "report_date": "2014-01-13T00:00:00.000",
       "shares_report_date": "2013-12-31T00:00:00.000",
       "close_price": 55.91,
-      "shares_outstanding": 2547000000,
-      "market_capitalization": 142402770000.0
+      "shares_outstanding": 2546584100,
+      "market_capitalization": 142379517031.0
     },
     {
       "symbol": "META",
       "report_date": "2014-01-14T00:00:00.000",
       "shares_report_date": "2013-12-31T00:00:00.000",
       "close_price": 57.74,
-      "shares_outstanding": 2547000000,
-      "market_capitalization": 147063780000.0
+      "shares_outstanding": 2546584100,
+      "market_capitalization": 147039765934.0
     },
     {
       "symbol": "META",
       "report_date": "2014-01-15T00:00:00.000",
       "shares_report_date": "2013-12-31T00:00:00.000",
       "close_price": 57.6,
-      "shares_outstanding": 2547000000,
-      "market_capitalization": 146707200000.0
+      "shares_outstanding": 2546584100,
+      "market_capitalization": 146683244160.0
     },
     {
       "symbol": "META",
       "report_date": "2014-01-16T00:00:00.000",
       "shares_report_date": "2013-12-31T00:00:00.000",
       "close_price": 57.19,
-      "shares_outstanding": 2547000000,
-      "market_capitalization": 145662930000.0
+      "shares_outstanding": 2546584100,
+      "market_capitalization": 145639144679.0
     },
     {
       "symbol": "META",
       "report_date": "2014-01-17T00:00:00.000",
       "shares_report_date": "2013-12-31T00:00:00.000",
       "close_price": 56.3,
-      "shares_outstanding": 2547000000,
-      "market_capitalization": 143396100000.0
+      "shares_outstanding": 2546584100,
+      "market_capitalization": 143372684830.0
     },
     {
       "symbol": "META",
       "report_date": "2014-01-21T00:00:00.000",
       "shares_report_date": "2013-12-31T00:00:00.000",
       "close_price": 58.51,
-      "shares_outstanding": 2547000000,
-      "market_capitalization": 149024970000.0
+      "shares_outstanding": 2546584100,
+      "market_capitalization": 149000635691.0
     },
     {
       "symbol": "META",
       "report_date": "2014-01-22T00:00:00.000",
       "shares_report_date": "2013-12-31T00:00:00.000",
       "close_price": 57.51,
-      "shares_outstanding": 2547000000,
-      "market_capitalization": 146477970000.0
+      "shares_outstanding": 2546584100,
+      "market_capitalization": 146454051591.0
     },
     {
       "symbol": "META",
       "report_date": "2014-01-23T00:00:00.000",
       "shares_report_date": "2013-12-31T00:00:00.000",
       "close_price": 56.63,
-      "shares_outstanding": 2547000000,
-      "market_capitalization": 144236610000.0
+      "shares_outstanding": 2546584100,
+      "market_capitalization": 144213057583.0
     },
     {
       "symbol": "META",
       "report_date": "2014-01-24T00:00:00.000",
       "shares_report_date": "2013-12-31T00:00:00.000",
       "close_price": 54.45,
-      "shares_outstanding": 2547000000,
-      "market_capitalization": 138684150000.0
+      "shares_outstanding": 2546584100,
+      "market_capitalization": 138661504245.0
     },
     {
       "symbol": "META",
       "report_date": "2014-01-27T00:00:00.000",
       "shares_report_date": "2013-12-31T00:00:00.000",
       "close_price": 53.55,
-      "shares_outstanding": 2547000000,
-      "market_capitalization": 136391850000.0
+      "shares_outstanding": 2546584100,
+      "market_capitalization": 136369578555.0
     },
     {
       "symbol": "META",
@@ -33944,136 +33968,136 @@
       "report_date": "2014-12-31T00:00:00.000",
       "shares_report_date": "2014-12-31T00:00:00.000",
       "close_price": 78.02,
-      "shares_outstanding": 2778000000,
-      "market_capitalization": 216739560000.0
+      "shares_outstanding": 2799011800,
+      "market_capitalization": 218378900636.0
     },
     {
       "symbol": "META",
       "report_date": "2015-01-02T00:00:00.000",
       "shares_report_date": "2014-12-31T00:00:00.000",
       "close_price": 78.45,
-      "shares_outstanding": 2778000000,
-      "market_capitalization": 217934100000.0
+      "shares_outstanding": 2799011800,
+      "market_capitalization": 219582475710.0
     },
     {
       "symbol": "META",
       "report_date": "2015-01-05T00:00:00.000",
       "shares_report_date": "2014-12-31T00:00:00.000",
       "close_price": 77.19,
-      "shares_outstanding": 2778000000,
-      "market_capitalization": 214433820000.0
+      "shares_outstanding": 2799011800,
+      "market_capitalization": 216055720842.0
     },
     {
       "symbol": "META",
       "report_date": "2015-01-06T00:00:00.000",
       "shares_report_date": "2014-12-31T00:00:00.000",
       "close_price": 76.15,
-      "shares_outstanding": 2778000000,
-      "market_capitalization": 211544700000.0
+      "shares_outstanding": 2799011800,
+      "market_capitalization": 213144748570.0
     },
     {
       "symbol": "META",
       "report_date": "2015-01-07T00:00:00.000",
       "shares_report_date": "2014-12-31T00:00:00.000",
       "close_price": 76.15,
-      "shares_outstanding": 2778000000,
-      "market_capitalization": 211544700000.0
+      "shares_outstanding": 2799011800,
+      "market_capitalization": 213144748570.0
     },
     {
       "symbol": "META",
       "report_date": "2015-01-08T00:00:00.000",
       "shares_report_date": "2014-12-31T00:00:00.000",
       "close_price": 78.18,
-      "shares_outstanding": 2778000000,
-      "market_capitalization": 217184040000.0
+      "shares_outstanding": 2799011800,
+      "market_capitalization": 218826742524.0
     },
     {
       "symbol": "META",
       "report_date": "2015-01-09T00:00:00.000",
       "shares_report_date": "2014-12-31T00:00:00.000",
       "close_price": 77.74,
-      "shares_outstanding": 2778000000,
-      "market_capitalization": 215961720000.0
+      "shares_outstanding": 2799011800,
+      "market_capitalization": 217595177332.0
     },
     {
       "symbol": "META",
       "report_date": "2015-01-12T00:00:00.000",
       "shares_report_date": "2014-12-31T00:00:00.000",
       "close_price": 76.72,
-      "shares_outstanding": 2778000000,
-      "market_capitalization": 213128160000.0
+      "shares_outstanding": 2799011800,
+      "market_capitalization": 214740185296.0
     },
     {
       "symbol": "META",
       "report_date": "2015-01-13T00:00:00.000",
       "shares_report_date": "2014-12-31T00:00:00.000",
       "close_price": 76.45,
-      "shares_outstanding": 2778000000,
-      "market_capitalization": 212378100000.0
+      "shares_outstanding": 2799011800,
+      "market_capitalization": 213984452110.0
     },
     {
       "symbol": "META",
       "report_date": "2015-01-14T00:00:00.000",
       "shares_report_date": "2014-12-31T00:00:00.000",
       "close_price": 76.28,
-      "shares_outstanding": 2778000000,
-      "market_capitalization": 211905840000.0
+      "shares_outstanding": 2799011800,
+      "market_capitalization": 213508620104.0
     },
     {
       "symbol": "META",
       "report_date": "2015-01-15T00:00:00.000",
       "shares_report_date": "2014-12-31T00:00:00.000",
       "close_price": 74.05,
-      "shares_outstanding": 2778000000,
-      "market_capitalization": 205710900000.0
+      "shares_outstanding": 2799011800,
+      "market_capitalization": 207266823790.0
     },
     {
       "symbol": "META",
       "report_date": "2015-01-16T00:00:00.000",
       "shares_report_date": "2014-12-31T00:00:00.000",
       "close_price": 75.18,
-      "shares_outstanding": 2778000000,
-      "market_capitalization": 208850040000.0
+      "shares_outstanding": 2799011800,
+      "market_capitalization": 210429707124.0
     },
     {
       "symbol": "META",
       "report_date": "2015-01-20T00:00:00.000",
       "shares_report_date": "2014-12-31T00:00:00.000",
       "close_price": 76.24,
-      "shares_outstanding": 2778000000,
-      "market_capitalization": 211794720000.0
+      "shares_outstanding": 2799011800,
+      "market_capitalization": 213396659632.0
     },
     {
       "symbol": "META",
       "report_date": "2015-01-21T00:00:00.000",
       "shares_report_date": "2014-12-31T00:00:00.000",
       "close_price": 76.74,
-      "shares_outstanding": 2778000000,
-      "market_capitalization": 213183720000.0
+      "shares_outstanding": 2799011800,
+      "market_capitalization": 214796165532.0
     },
     {
       "symbol": "META",
       "report_date": "2015-01-22T00:00:00.000",
       "shares_report_date": "2014-12-31T00:00:00.000",
       "close_price": 77.65,
-      "shares_outstanding": 2778000000,
-      "market_capitalization": 215711700000.0
+      "shares_outstanding": 2799011800,
+      "market_capitalization": 217343266270.0
     },
     {
       "symbol": "META",
       "report_date": "2015-01-23T00:00:00.000",
       "shares_report_date": "2014-12-31T00:00:00.000",
       "close_price": 77.83,
-      "shares_outstanding": 2778000000,
-      "market_capitalization": 216211740000.0
+      "shares_outstanding": 2799011800,
+      "market_capitalization": 217847088394.0
     },
     {
       "symbol": "META",
       "report_date": "2015-01-26T00:00:00.000",
       "shares_report_date": "2014-12-31T00:00:00.000",
       "close_price": 77.5,
-      "shares_outstanding": 2778000000,
-      "market_capitalization": 215295000000.0
+      "shares_outstanding": 2799011800,
+      "market_capitalization": 216923414500.0
     },
     {
       "symbol": "META",
@@ -34936,144 +34960,144 @@
       "report_date": "2015-06-30T00:00:00.000",
       "shares_report_date": "2015-06-30T00:00:00.000",
       "close_price": 85.77,
-      "shares_outstanding": 2800000000,
-      "market_capitalization": 240156000000.0
+      "shares_outstanding": 2814000000,
+      "market_capitalization": 241356780000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-07-01T00:00:00.000",
       "shares_report_date": "2015-06-30T00:00:00.000",
       "close_price": 86.91,
-      "shares_outstanding": 2800000000,
-      "market_capitalization": 243348000000.0
+      "shares_outstanding": 2814000000,
+      "market_capitalization": 244564740000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-07-02T00:00:00.000",
       "shares_report_date": "2015-06-30T00:00:00.000",
       "close_price": 87.29,
-      "shares_outstanding": 2800000000,
-      "market_capitalization": 244412000000.0
+      "shares_outstanding": 2814000000,
+      "market_capitalization": 245634060000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-07-06T00:00:00.000",
       "shares_report_date": "2015-06-30T00:00:00.000",
       "close_price": 87.55,
-      "shares_outstanding": 2800000000,
-      "market_capitalization": 245140000000.0
+      "shares_outstanding": 2814000000,
+      "market_capitalization": 246365700000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-07-07T00:00:00.000",
       "shares_report_date": "2015-06-30T00:00:00.000",
       "close_price": 87.22,
-      "shares_outstanding": 2800000000,
-      "market_capitalization": 244216000000.0
+      "shares_outstanding": 2814000000,
+      "market_capitalization": 245437080000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-07-08T00:00:00.000",
       "shares_report_date": "2015-06-30T00:00:00.000",
       "close_price": 85.65,
-      "shares_outstanding": 2800000000,
-      "market_capitalization": 239820000000.0
+      "shares_outstanding": 2814000000,
+      "market_capitalization": 241019100000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-07-09T00:00:00.000",
       "shares_report_date": "2015-06-30T00:00:00.000",
       "close_price": 85.88,
-      "shares_outstanding": 2800000000,
-      "market_capitalization": 240464000000.0
+      "shares_outstanding": 2814000000,
+      "market_capitalization": 241666320000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-07-10T00:00:00.000",
       "shares_report_date": "2015-06-30T00:00:00.000",
       "close_price": 87.95,
-      "shares_outstanding": 2800000000,
-      "market_capitalization": 246260000000.0
+      "shares_outstanding": 2814000000,
+      "market_capitalization": 247491300000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-07-13T00:00:00.000",
       "shares_report_date": "2015-06-30T00:00:00.000",
       "close_price": 90.1,
-      "shares_outstanding": 2800000000,
-      "market_capitalization": 252280000000.0
+      "shares_outstanding": 2814000000,
+      "market_capitalization": 253541400000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-07-14T00:00:00.000",
       "shares_report_date": "2015-06-30T00:00:00.000",
       "close_price": 89.68,
-      "shares_outstanding": 2800000000,
-      "market_capitalization": 251104000000.0
+      "shares_outstanding": 2814000000,
+      "market_capitalization": 252359520000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-07-15T00:00:00.000",
       "shares_report_date": "2015-06-30T00:00:00.000",
       "close_price": 89.76,
-      "shares_outstanding": 2800000000,
-      "market_capitalization": 251328000000.0
+      "shares_outstanding": 2814000000,
+      "market_capitalization": 252584640000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-07-16T00:00:00.000",
       "shares_report_date": "2015-06-30T00:00:00.000",
       "close_price": 90.85,
-      "shares_outstanding": 2800000000,
-      "market_capitalization": 254380000000.0
+      "shares_outstanding": 2814000000,
+      "market_capitalization": 255651900000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-07-17T00:00:00.000",
       "shares_report_date": "2015-06-30T00:00:00.000",
       "close_price": 94.97,
-      "shares_outstanding": 2800000000,
-      "market_capitalization": 265916000000.0
+      "shares_outstanding": 2814000000,
+      "market_capitalization": 267245580000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-07-20T00:00:00.000",
       "shares_report_date": "2015-06-30T00:00:00.000",
       "close_price": 97.91,
-      "shares_outstanding": 2800000000,
-      "market_capitalization": 274148000000.0
+      "shares_outstanding": 2814000000,
+      "market_capitalization": 275518740000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-07-21T00:00:00.000",
       "shares_report_date": "2015-06-30T00:00:00.000",
       "close_price": 98.39,
-      "shares_outstanding": 2800000000,
-      "market_capitalization": 275492000000.0
+      "shares_outstanding": 2814000000,
+      "market_capitalization": 276869460000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-07-22T00:00:00.000",
       "shares_report_date": "2015-06-30T00:00:00.000",
       "close_price": 97.04,
-      "shares_outstanding": 2800000000,
-      "market_capitalization": 271712000000.0
+      "shares_outstanding": 2814000000,
+      "market_capitalization": 273070560000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-07-23T00:00:00.000",
       "shares_report_date": "2015-06-30T00:00:00.000",
       "close_price": 95.44,
-      "shares_outstanding": 2800000000,
-      "market_capitalization": 267232000000.0
+      "shares_outstanding": 2814000000,
+      "market_capitalization": 268568160000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-07-24T00:00:00.000",
       "shares_report_date": "2015-06-30T00:00:00.000",
       "close_price": 96.95,
-      "shares_outstanding": 2800000000,
-      "market_capitalization": 271460000000.0
+      "shares_outstanding": 2814000000,
+      "market_capitalization": 272817300000.0
     },
     {
       "symbol": "META",
@@ -35448,184 +35472,184 @@
       "report_date": "2015-09-30T00:00:00.000",
       "shares_report_date": "2015-09-30T00:00:00.000",
       "close_price": 89.9,
-      "shares_outstanding": 2814000000,
-      "market_capitalization": 252978600000.0
+      "shares_outstanding": 2826000000,
+      "market_capitalization": 254057400000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-10-01T00:00:00.000",
       "shares_report_date": "2015-09-30T00:00:00.000",
       "close_price": 90.95,
-      "shares_outstanding": 2814000000,
-      "market_capitalization": 255933300000.0
+      "shares_outstanding": 2826000000,
+      "market_capitalization": 257024700000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-10-02T00:00:00.000",
       "shares_report_date": "2015-09-30T00:00:00.000",
       "close_price": 92.07,
-      "shares_outstanding": 2814000000,
-      "market_capitalization": 259084980000.0
+      "shares_outstanding": 2826000000,
+      "market_capitalization": 260189820000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-10-05T00:00:00.000",
       "shares_report_date": "2015-09-30T00:00:00.000",
       "close_price": 94.01,
-      "shares_outstanding": 2814000000,
-      "market_capitalization": 264544140000.0
+      "shares_outstanding": 2826000000,
+      "market_capitalization": 265672260000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-10-06T00:00:00.000",
       "shares_report_date": "2015-09-30T00:00:00.000",
       "close_price": 92.8,
-      "shares_outstanding": 2814000000,
-      "market_capitalization": 261139200000.0
+      "shares_outstanding": 2826000000,
+      "market_capitalization": 262252800000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-10-07T00:00:00.000",
       "shares_report_date": "2015-09-30T00:00:00.000",
       "close_price": 92.4,
-      "shares_outstanding": 2814000000,
-      "market_capitalization": 260013600000.0
+      "shares_outstanding": 2826000000,
+      "market_capitalization": 261122400000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-10-08T00:00:00.000",
       "shares_report_date": "2015-09-30T00:00:00.000",
       "close_price": 92.47,
-      "shares_outstanding": 2814000000,
-      "market_capitalization": 260210580000.0
+      "shares_outstanding": 2826000000,
+      "market_capitalization": 261320220000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-10-09T00:00:00.000",
       "shares_report_date": "2015-09-30T00:00:00.000",
       "close_price": 93.24,
-      "shares_outstanding": 2814000000,
-      "market_capitalization": 262377360000.0
+      "shares_outstanding": 2826000000,
+      "market_capitalization": 263496240000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-10-12T00:00:00.000",
       "shares_report_date": "2015-09-30T00:00:00.000",
       "close_price": 94.26,
-      "shares_outstanding": 2814000000,
-      "market_capitalization": 265247640000.0
+      "shares_outstanding": 2826000000,
+      "market_capitalization": 266378760000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-10-13T00:00:00.000",
       "shares_report_date": "2015-09-30T00:00:00.000",
       "close_price": 94.12,
-      "shares_outstanding": 2814000000,
-      "market_capitalization": 264853680000.0
+      "shares_outstanding": 2826000000,
+      "market_capitalization": 265983120000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-10-14T00:00:00.000",
       "shares_report_date": "2015-09-30T00:00:00.000",
       "close_price": 94.07,
-      "shares_outstanding": 2814000000,
-      "market_capitalization": 264712980000.0
+      "shares_outstanding": 2826000000,
+      "market_capitalization": 265841820000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-10-15T00:00:00.000",
       "shares_report_date": "2015-09-30T00:00:00.000",
       "close_price": 95.96,
-      "shares_outstanding": 2814000000,
-      "market_capitalization": 270031440000.0
+      "shares_outstanding": 2826000000,
+      "market_capitalization": 271182960000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-10-16T00:00:00.000",
       "shares_report_date": "2015-09-30T00:00:00.000",
       "close_price": 97.54,
-      "shares_outstanding": 2814000000,
-      "market_capitalization": 274477560000.0
+      "shares_outstanding": 2826000000,
+      "market_capitalization": 275648040000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-10-19T00:00:00.000",
       "shares_report_date": "2015-09-30T00:00:00.000",
       "close_price": 98.47,
-      "shares_outstanding": 2814000000,
-      "market_capitalization": 277094580000.0
+      "shares_outstanding": 2826000000,
+      "market_capitalization": 278276220000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-10-20T00:00:00.000",
       "shares_report_date": "2015-09-30T00:00:00.000",
       "close_price": 97.0,
-      "shares_outstanding": 2814000000,
-      "market_capitalization": 272958000000.0
+      "shares_outstanding": 2826000000,
+      "market_capitalization": 274122000000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-10-21T00:00:00.000",
       "shares_report_date": "2015-09-30T00:00:00.000",
       "close_price": 97.11,
-      "shares_outstanding": 2814000000,
-      "market_capitalization": 273267540000.0
+      "shares_outstanding": 2826000000,
+      "market_capitalization": 274432860000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-10-22T00:00:00.000",
       "shares_report_date": "2015-09-30T00:00:00.000",
       "close_price": 99.67,
-      "shares_outstanding": 2814000000,
-      "market_capitalization": 280471380000.0
+      "shares_outstanding": 2826000000,
+      "market_capitalization": 281667420000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-10-23T00:00:00.000",
       "shares_report_date": "2015-09-30T00:00:00.000",
       "close_price": 102.19,
-      "shares_outstanding": 2814000000,
-      "market_capitalization": 287562660000.0
+      "shares_outstanding": 2826000000,
+      "market_capitalization": 288788940000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-10-26T00:00:00.000",
       "shares_report_date": "2015-09-30T00:00:00.000",
       "close_price": 103.77,
-      "shares_outstanding": 2814000000,
-      "market_capitalization": 292008780000.0
+      "shares_outstanding": 2826000000,
+      "market_capitalization": 293254020000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-10-27T00:00:00.000",
       "shares_report_date": "2015-09-30T00:00:00.000",
       "close_price": 103.7,
-      "shares_outstanding": 2814000000,
-      "market_capitalization": 291811800000.0
+      "shares_outstanding": 2826000000,
+      "market_capitalization": 293056200000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-10-28T00:00:00.000",
       "shares_report_date": "2015-09-30T00:00:00.000",
       "close_price": 104.2,
-      "shares_outstanding": 2814000000,
-      "market_capitalization": 293218800000.0
+      "shares_outstanding": 2826000000,
+      "market_capitalization": 294469200000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-10-29T00:00:00.000",
       "shares_report_date": "2015-09-30T00:00:00.000",
       "close_price": 104.88,
-      "shares_outstanding": 2814000000,
-      "market_capitalization": 295132320000.0
+      "shares_outstanding": 2826000000,
+      "market_capitalization": 296390880000.0
     },
     {
       "symbol": "META",
       "report_date": "2015-10-30T00:00:00.000",
       "shares_report_date": "2015-09-30T00:00:00.000",
       "close_price": 101.97,
-      "shares_outstanding": 2814000000,
-      "market_capitalization": 286943580000.0
+      "shares_outstanding": 2826000000,
+      "market_capitalization": 288167220000.0
     },
     {
       "symbol": "META",
@@ -35960,120 +35984,120 @@
       "report_date": "2015-12-31T00:00:00.000",
       "shares_report_date": "2015-12-31T00:00:00.000",
       "close_price": 104.66,
-      "shares_outstanding": 2834000000,
-      "market_capitalization": 296606440000.0
+      "shares_outstanding": 2845000000,
+      "market_capitalization": 297757700000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-01-04T00:00:00.000",
       "shares_report_date": "2015-12-31T00:00:00.000",
       "close_price": 102.22,
-      "shares_outstanding": 2834000000,
-      "market_capitalization": 289691480000.0
+      "shares_outstanding": 2845000000,
+      "market_capitalization": 290815900000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-01-05T00:00:00.000",
       "shares_report_date": "2015-12-31T00:00:00.000",
       "close_price": 102.73,
-      "shares_outstanding": 2834000000,
-      "market_capitalization": 291136820000.0
+      "shares_outstanding": 2845000000,
+      "market_capitalization": 292266850000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-01-06T00:00:00.000",
       "shares_report_date": "2015-12-31T00:00:00.000",
       "close_price": 102.97,
-      "shares_outstanding": 2834000000,
-      "market_capitalization": 291816980000.0
+      "shares_outstanding": 2845000000,
+      "market_capitalization": 292949650000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-01-07T00:00:00.000",
       "shares_report_date": "2015-12-31T00:00:00.000",
       "close_price": 97.92,
-      "shares_outstanding": 2834000000,
-      "market_capitalization": 277505280000.0
+      "shares_outstanding": 2845000000,
+      "market_capitalization": 278582400000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-01-08T00:00:00.000",
       "shares_report_date": "2015-12-31T00:00:00.000",
       "close_price": 97.33,
-      "shares_outstanding": 2834000000,
-      "market_capitalization": 275833220000.0
+      "shares_outstanding": 2845000000,
+      "market_capitalization": 276903850000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-01-11T00:00:00.000",
       "shares_report_date": "2015-12-31T00:00:00.000",
       "close_price": 97.51,
-      "shares_outstanding": 2834000000,
-      "market_capitalization": 276343340000.0
+      "shares_outstanding": 2845000000,
+      "market_capitalization": 277415950000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-01-12T00:00:00.000",
       "shares_report_date": "2015-12-31T00:00:00.000",
       "close_price": 99.37,
-      "shares_outstanding": 2834000000,
-      "market_capitalization": 281614580000.0
+      "shares_outstanding": 2845000000,
+      "market_capitalization": 282707650000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-01-13T00:00:00.000",
       "shares_report_date": "2015-12-31T00:00:00.000",
       "close_price": 95.44,
-      "shares_outstanding": 2834000000,
-      "market_capitalization": 270476960000.0
+      "shares_outstanding": 2845000000,
+      "market_capitalization": 271526800000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-01-14T00:00:00.000",
       "shares_report_date": "2015-12-31T00:00:00.000",
       "close_price": 98.37,
-      "shares_outstanding": 2834000000,
-      "market_capitalization": 278780580000.0
+      "shares_outstanding": 2845000000,
+      "market_capitalization": 279862650000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-01-15T00:00:00.000",
       "shares_report_date": "2015-12-31T00:00:00.000",
       "close_price": 94.97,
-      "shares_outstanding": 2834000000,
-      "market_capitalization": 269144980000.0
+      "shares_outstanding": 2845000000,
+      "market_capitalization": 270189650000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-01-19T00:00:00.000",
       "shares_report_date": "2015-12-31T00:00:00.000",
       "close_price": 95.26,
-      "shares_outstanding": 2834000000,
-      "market_capitalization": 269966840000.0
+      "shares_outstanding": 2845000000,
+      "market_capitalization": 271014700000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-01-20T00:00:00.000",
       "shares_report_date": "2015-12-31T00:00:00.000",
       "close_price": 94.35,
-      "shares_outstanding": 2834000000,
-      "market_capitalization": 267387900000.0
+      "shares_outstanding": 2845000000,
+      "market_capitalization": 268425750000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-01-21T00:00:00.000",
       "shares_report_date": "2015-12-31T00:00:00.000",
       "close_price": 94.16,
-      "shares_outstanding": 2834000000,
-      "market_capitalization": 266849440000.0
+      "shares_outstanding": 2845000000,
+      "market_capitalization": 267885200000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-01-22T00:00:00.000",
       "shares_report_date": "2015-12-31T00:00:00.000",
       "close_price": 97.94,
-      "shares_outstanding": 2834000000,
-      "market_capitalization": 277561960000.0
+      "shares_outstanding": 2845000000,
+      "market_capitalization": 278639300000.0
     },
     {
       "symbol": "META",
@@ -36448,136 +36472,136 @@
       "report_date": "2016-03-31T00:00:00.000",
       "shares_report_date": "2016-03-31T00:00:00.000",
       "close_price": 114.1,
-      "shares_outstanding": 2850000000,
-      "market_capitalization": 325185000000.0
+      "shares_outstanding": 2860000000,
+      "market_capitalization": 326326000000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-04-01T00:00:00.000",
       "shares_report_date": "2016-03-31T00:00:00.000",
       "close_price": 116.06,
-      "shares_outstanding": 2850000000,
-      "market_capitalization": 330771000000.0
+      "shares_outstanding": 2860000000,
+      "market_capitalization": 331931600000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-04-04T00:00:00.000",
       "shares_report_date": "2016-03-31T00:00:00.000",
       "close_price": 112.55,
-      "shares_outstanding": 2850000000,
-      "market_capitalization": 320767500000.0
+      "shares_outstanding": 2860000000,
+      "market_capitalization": 321893000000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-04-05T00:00:00.000",
       "shares_report_date": "2016-03-31T00:00:00.000",
       "close_price": 112.22,
-      "shares_outstanding": 2850000000,
-      "market_capitalization": 319827000000.0
+      "shares_outstanding": 2860000000,
+      "market_capitalization": 320949200000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-04-06T00:00:00.000",
       "shares_report_date": "2016-03-31T00:00:00.000",
       "close_price": 113.71,
-      "shares_outstanding": 2850000000,
-      "market_capitalization": 324073500000.0
+      "shares_outstanding": 2860000000,
+      "market_capitalization": 325210600000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-04-07T00:00:00.000",
       "shares_report_date": "2016-03-31T00:00:00.000",
       "close_price": 113.64,
-      "shares_outstanding": 2850000000,
-      "market_capitalization": 323874000000.0
+      "shares_outstanding": 2860000000,
+      "market_capitalization": 325010400000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-04-08T00:00:00.000",
       "shares_report_date": "2016-03-31T00:00:00.000",
       "close_price": 110.63,
-      "shares_outstanding": 2850000000,
-      "market_capitalization": 315295500000.0
+      "shares_outstanding": 2860000000,
+      "market_capitalization": 316401800000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-04-11T00:00:00.000",
       "shares_report_date": "2016-03-31T00:00:00.000",
       "close_price": 108.99,
-      "shares_outstanding": 2850000000,
-      "market_capitalization": 310621500000.0
+      "shares_outstanding": 2860000000,
+      "market_capitalization": 311711400000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-04-12T00:00:00.000",
       "shares_report_date": "2016-03-31T00:00:00.000",
       "close_price": 110.61,
-      "shares_outstanding": 2850000000,
-      "market_capitalization": 315238500000.0
+      "shares_outstanding": 2860000000,
+      "market_capitalization": 316344600000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-04-13T00:00:00.000",
       "shares_report_date": "2016-03-31T00:00:00.000",
       "close_price": 110.51,
-      "shares_outstanding": 2850000000,
-      "market_capitalization": 314953500000.0
+      "shares_outstanding": 2860000000,
+      "market_capitalization": 316058600000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-04-14T00:00:00.000",
       "shares_report_date": "2016-03-31T00:00:00.000",
       "close_price": 110.84,
-      "shares_outstanding": 2850000000,
-      "market_capitalization": 315894000000.0
+      "shares_outstanding": 2860000000,
+      "market_capitalization": 317002400000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-04-15T00:00:00.000",
       "shares_report_date": "2016-03-31T00:00:00.000",
       "close_price": 109.64,
-      "shares_outstanding": 2850000000,
-      "market_capitalization": 312474000000.0
+      "shares_outstanding": 2860000000,
+      "market_capitalization": 313570400000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-04-18T00:00:00.000",
       "shares_report_date": "2016-03-31T00:00:00.000",
       "close_price": 110.45,
-      "shares_outstanding": 2850000000,
-      "market_capitalization": 314782500000.0
+      "shares_outstanding": 2860000000,
+      "market_capitalization": 315887000000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-04-19T00:00:00.000",
       "shares_report_date": "2016-03-31T00:00:00.000",
       "close_price": 112.29,
-      "shares_outstanding": 2850000000,
-      "market_capitalization": 320026500000.0
+      "shares_outstanding": 2860000000,
+      "market_capitalization": 321149400000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-04-20T00:00:00.000",
       "shares_report_date": "2016-03-31T00:00:00.000",
       "close_price": 112.42,
-      "shares_outstanding": 2850000000,
-      "market_capitalization": 320397000000.0
+      "shares_outstanding": 2860000000,
+      "market_capitalization": 321521200000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-04-21T00:00:00.000",
       "shares_report_date": "2016-03-31T00:00:00.000",
       "close_price": 113.44,
-      "shares_outstanding": 2850000000,
-      "market_capitalization": 323304000000.0
+      "shares_outstanding": 2860000000,
+      "market_capitalization": 324438400000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-04-22T00:00:00.000",
       "shares_report_date": "2016-03-31T00:00:00.000",
       "close_price": 110.56,
-      "shares_outstanding": 2850000000,
-      "market_capitalization": 315096000000.0
+      "shares_outstanding": 2860000000,
+      "market_capitalization": 316201600000.0
     },
     {
       "symbol": "META",
@@ -36960,128 +36984,128 @@
       "report_date": "2016-06-30T00:00:00.000",
       "shares_report_date": "2016-06-30T00:00:00.000",
       "close_price": 114.28,
-      "shares_outstanding": 2862000000,
-      "market_capitalization": 327069360000.0
+      "shares_outstanding": 2870000000,
+      "market_capitalization": 327983600000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-07-01T00:00:00.000",
       "shares_report_date": "2016-06-30T00:00:00.000",
       "close_price": 114.19,
-      "shares_outstanding": 2862000000,
-      "market_capitalization": 326811780000.0
+      "shares_outstanding": 2870000000,
+      "market_capitalization": 327725300000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-07-05T00:00:00.000",
       "shares_report_date": "2016-06-30T00:00:00.000",
       "close_price": 114.2,
-      "shares_outstanding": 2862000000,
-      "market_capitalization": 326840400000.0
+      "shares_outstanding": 2870000000,
+      "market_capitalization": 327754000000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-07-06T00:00:00.000",
       "shares_report_date": "2016-06-30T00:00:00.000",
       "close_price": 116.7,
-      "shares_outstanding": 2862000000,
-      "market_capitalization": 333995400000.0
+      "shares_outstanding": 2870000000,
+      "market_capitalization": 334929000000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-07-07T00:00:00.000",
       "shares_report_date": "2016-06-30T00:00:00.000",
       "close_price": 115.85,
-      "shares_outstanding": 2862000000,
-      "market_capitalization": 331562700000.0
+      "shares_outstanding": 2870000000,
+      "market_capitalization": 332489500000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-07-08T00:00:00.000",
       "shares_report_date": "2016-06-30T00:00:00.000",
       "close_price": 117.24,
-      "shares_outstanding": 2862000000,
-      "market_capitalization": 335540880000.0
+      "shares_outstanding": 2870000000,
+      "market_capitalization": 336478800000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-07-11T00:00:00.000",
       "shares_report_date": "2016-06-30T00:00:00.000",
       "close_price": 117.87,
-      "shares_outstanding": 2862000000,
-      "market_capitalization": 337343940000.0
+      "shares_outstanding": 2870000000,
+      "market_capitalization": 338286900000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-07-12T00:00:00.000",
       "shares_report_date": "2016-06-30T00:00:00.000",
       "close_price": 117.93,
-      "shares_outstanding": 2862000000,
-      "market_capitalization": 337515660000.0
+      "shares_outstanding": 2870000000,
+      "market_capitalization": 338459100000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-07-13T00:00:00.000",
       "shares_report_date": "2016-06-30T00:00:00.000",
       "close_price": 116.78,
-      "shares_outstanding": 2862000000,
-      "market_capitalization": 334224360000.0
+      "shares_outstanding": 2870000000,
+      "market_capitalization": 335158600000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-07-14T00:00:00.000",
       "shares_report_date": "2016-06-30T00:00:00.000",
       "close_price": 117.29,
-      "shares_outstanding": 2862000000,
-      "market_capitalization": 335683980000.0
+      "shares_outstanding": 2870000000,
+      "market_capitalization": 336622300000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-07-15T00:00:00.000",
       "shares_report_date": "2016-06-30T00:00:00.000",
       "close_price": 116.86,
-      "shares_outstanding": 2862000000,
-      "market_capitalization": 334453320000.0
+      "shares_outstanding": 2870000000,
+      "market_capitalization": 335388200000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-07-18T00:00:00.000",
       "shares_report_date": "2016-06-30T00:00:00.000",
       "close_price": 119.37,
-      "shares_outstanding": 2862000000,
-      "market_capitalization": 341636940000.0
+      "shares_outstanding": 2870000000,
+      "market_capitalization": 342591900000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-07-19T00:00:00.000",
       "shares_report_date": "2016-06-30T00:00:00.000",
       "close_price": 120.61,
-      "shares_outstanding": 2862000000,
-      "market_capitalization": 345185820000.0
+      "shares_outstanding": 2870000000,
+      "market_capitalization": 346150700000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-07-20T00:00:00.000",
       "shares_report_date": "2016-06-30T00:00:00.000",
       "close_price": 121.92,
-      "shares_outstanding": 2862000000,
-      "market_capitalization": 348935040000.0
+      "shares_outstanding": 2870000000,
+      "market_capitalization": 349910400000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-07-21T00:00:00.000",
       "shares_report_date": "2016-06-30T00:00:00.000",
       "close_price": 120.61,
-      "shares_outstanding": 2862000000,
-      "market_capitalization": 345185820000.0
+      "shares_outstanding": 2870000000,
+      "market_capitalization": 346150700000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-07-22T00:00:00.000",
       "shares_report_date": "2016-06-30T00:00:00.000",
       "close_price": 121.0,
-      "shares_outstanding": 2862000000,
-      "market_capitalization": 346302000000.0
+      "shares_outstanding": 2870000000,
+      "market_capitalization": 347270000000.0
     },
     {
       "symbol": "META",
@@ -37472,160 +37496,160 @@
       "report_date": "2016-09-30T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 128.27,
-      "shares_outstanding": 2877000000,
-      "market_capitalization": 369032790000.0
+      "shares_outstanding": 2882000000,
+      "market_capitalization": 369674140000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-10-03T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 128.77,
-      "shares_outstanding": 2877000000,
-      "market_capitalization": 370471290000.0
+      "shares_outstanding": 2882000000,
+      "market_capitalization": 371115140000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-10-04T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 128.19,
-      "shares_outstanding": 2877000000,
-      "market_capitalization": 368802630000.0
+      "shares_outstanding": 2882000000,
+      "market_capitalization": 369443580000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-10-05T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 128.47,
-      "shares_outstanding": 2877000000,
-      "market_capitalization": 369608190000.0
+      "shares_outstanding": 2882000000,
+      "market_capitalization": 370250540000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-10-06T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 128.74,
-      "shares_outstanding": 2877000000,
-      "market_capitalization": 370384980000.0
+      "shares_outstanding": 2882000000,
+      "market_capitalization": 371028680000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-10-07T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 128.99,
-      "shares_outstanding": 2877000000,
-      "market_capitalization": 371104230000.0
+      "shares_outstanding": 2882000000,
+      "market_capitalization": 371749180000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-10-10T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 130.24,
-      "shares_outstanding": 2877000000,
-      "market_capitalization": 374700480000.0
+      "shares_outstanding": 2882000000,
+      "market_capitalization": 375351680000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-10-11T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 128.88,
-      "shares_outstanding": 2877000000,
-      "market_capitalization": 370787760000.0
+      "shares_outstanding": 2882000000,
+      "market_capitalization": 371432160000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-10-12T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 129.05,
-      "shares_outstanding": 2877000000,
-      "market_capitalization": 371276850000.0
+      "shares_outstanding": 2882000000,
+      "market_capitalization": 371922100000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-10-13T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 127.82,
-      "shares_outstanding": 2877000000,
-      "market_capitalization": 367738140000.0
+      "shares_outstanding": 2882000000,
+      "market_capitalization": 368377240000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-10-14T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 127.88,
-      "shares_outstanding": 2877000000,
-      "market_capitalization": 367910760000.0
+      "shares_outstanding": 2882000000,
+      "market_capitalization": 368550160000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-10-17T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 127.54,
-      "shares_outstanding": 2877000000,
-      "market_capitalization": 366932580000.0
+      "shares_outstanding": 2882000000,
+      "market_capitalization": 367570280000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-10-18T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 128.57,
-      "shares_outstanding": 2877000000,
-      "market_capitalization": 369895890000.0
+      "shares_outstanding": 2882000000,
+      "market_capitalization": 370538740000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-10-19T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 130.11,
-      "shares_outstanding": 2877000000,
-      "market_capitalization": 374326470000.0
+      "shares_outstanding": 2882000000,
+      "market_capitalization": 374977020000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-10-20T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 130.0,
-      "shares_outstanding": 2877000000,
-      "market_capitalization": 374010000000.0
+      "shares_outstanding": 2882000000,
+      "market_capitalization": 374660000000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-10-21T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 132.07,
-      "shares_outstanding": 2877000000,
-      "market_capitalization": 379965390000.0
+      "shares_outstanding": 2882000000,
+      "market_capitalization": 380625740000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-10-24T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 133.28,
-      "shares_outstanding": 2877000000,
-      "market_capitalization": 383446560000.0
+      "shares_outstanding": 2882000000,
+      "market_capitalization": 384112960000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-10-25T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 132.29,
-      "shares_outstanding": 2877000000,
-      "market_capitalization": 380598330000.0
+      "shares_outstanding": 2882000000,
+      "market_capitalization": 381259780000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-10-26T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 131.04,
-      "shares_outstanding": 2877000000,
-      "market_capitalization": 377002080000.0
+      "shares_outstanding": 2882000000,
+      "market_capitalization": 377657280000.0
     },
     {
       "symbol": "META",
       "report_date": "2016-10-27T00:00:00.000",
       "shares_report_date": "2016-09-30T00:00:00.000",
       "close_price": 129.69,
-      "shares_outstanding": 2877000000,
-      "market_capitalization": 373118130000.0
+      "shares_outstanding": 2882000000,
+      "market_capitalization": 373766580000.0
     },
     {
       "symbol": "META",
@@ -38472,40 +38496,40 @@
       "report_date": "2017-03-31T00:00:00.000",
       "shares_report_date": "2017-03-31T00:00:00.000",
       "close_price": 142.05,
-      "shares_outstanding": 2893000000,
-      "market_capitalization": 410950650000.0
+      "shares_outstanding": 2898000000,
+      "market_capitalization": 411660900000.0
     },
     {
       "symbol": "META",
       "report_date": "2017-04-03T00:00:00.000",
       "shares_report_date": "2017-03-31T00:00:00.000",
       "close_price": 142.28,
-      "shares_outstanding": 2893000000,
-      "market_capitalization": 411616040000.0
+      "shares_outstanding": 2898000000,
+      "market_capitalization": 412327440000.0
     },
     {
       "symbol": "META",
       "report_date": "2017-04-04T00:00:00.000",
       "shares_report_date": "2017-03-31T00:00:00.000",
       "close_price": 141.73,
-      "shares_outstanding": 2893000000,
-      "market_capitalization": 410024890000.0
+      "shares_outstanding": 2898000000,
+      "market_capitalization": 410733540000.0
     },
     {
       "symbol": "META",
       "report_date": "2017-04-05T00:00:00.000",
       "shares_report_date": "2017-03-31T00:00:00.000",
       "close_price": 141.85,
-      "shares_outstanding": 2893000000,
-      "market_capitalization": 410372050000.0
+      "shares_outstanding": 2898000000,
+      "market_capitalization": 411081300000.0
     },
     {
       "symbol": "META",
       "report_date": "2017-04-06T00:00:00.000",
       "shares_report_date": "2017-03-31T00:00:00.000",
       "close_price": 141.17,
-      "shares_outstanding": 2893000000,
-      "market_capitalization": 408404810000.0
+      "shares_outstanding": 2898000000,
+      "market_capitalization": 409110660000.0
     },
     {
       "symbol": "META",
@@ -38976,120 +39000,120 @@
       "report_date": "2017-06-30T00:00:00.000",
       "shares_report_date": "2017-06-30T00:00:00.000",
       "close_price": 150.98,
-      "shares_outstanding": 2900000000,
-      "market_capitalization": 437842000000.0
+      "shares_outstanding": 2903000000,
+      "market_capitalization": 438294940000.0
     },
     {
       "symbol": "META",
       "report_date": "2017-07-03T00:00:00.000",
       "shares_report_date": "2017-06-30T00:00:00.000",
       "close_price": 148.43,
-      "shares_outstanding": 2900000000,
-      "market_capitalization": 430447000000.0
+      "shares_outstanding": 2903000000,
+      "market_capitalization": 430892290000.0
     },
     {
       "symbol": "META",
       "report_date": "2017-07-05T00:00:00.000",
       "shares_report_date": "2017-06-30T00:00:00.000",
       "close_price": 150.34,
-      "shares_outstanding": 2900000000,
-      "market_capitalization": 435986000000.0
+      "shares_outstanding": 2903000000,
+      "market_capitalization": 436437020000.0
     },
     {
       "symbol": "META",
       "report_date": "2017-07-06T00:00:00.000",
       "shares_report_date": "2017-06-30T00:00:00.000",
       "close_price": 148.82,
-      "shares_outstanding": 2900000000,
-      "market_capitalization": 431578000000.0
+      "shares_outstanding": 2903000000,
+      "market_capitalization": 432024460000.0
     },
     {
       "symbol": "META",
       "report_date": "2017-07-07T00:00:00.000",
       "shares_report_date": "2017-06-30T00:00:00.000",
       "close_price": 151.44,
-      "shares_outstanding": 2900000000,
-      "market_capitalization": 439176000000.0
+      "shares_outstanding": 2903000000,
+      "market_capitalization": 439630320000.0
     },
     {
       "symbol": "META",
       "report_date": "2017-07-10T00:00:00.000",
       "shares_report_date": "2017-06-30T00:00:00.000",
       "close_price": 153.5,
-      "shares_outstanding": 2900000000,
-      "market_capitalization": 445150000000.0
+      "shares_outstanding": 2903000000,
+      "market_capitalization": 445610500000.0
     },
     {
       "symbol": "META",
       "report_date": "2017-07-11T00:00:00.000",
       "shares_report_date": "2017-06-30T00:00:00.000",
       "close_price": 155.27,
-      "shares_outstanding": 2900000000,
-      "market_capitalization": 450283000000.0
+      "shares_outstanding": 2903000000,
+      "market_capitalization": 450748810000.0
     },
     {
       "symbol": "META",
       "report_date": "2017-07-12T00:00:00.000",
       "shares_report_date": "2017-06-30T00:00:00.000",
       "close_price": 158.9,
-      "shares_outstanding": 2900000000,
-      "market_capitalization": 460810000000.0
+      "shares_outstanding": 2903000000,
+      "market_capitalization": 461286700000.0
     },
     {
       "symbol": "META",
       "report_date": "2017-07-13T00:00:00.000",
       "shares_report_date": "2017-06-30T00:00:00.000",
       "close_price": 159.26,
-      "shares_outstanding": 2900000000,
-      "market_capitalization": 461854000000.0
+      "shares_outstanding": 2903000000,
+      "market_capitalization": 462331780000.0
     },
     {
       "symbol": "META",
       "report_date": "2017-07-14T00:00:00.000",
       "shares_report_date": "2017-06-30T00:00:00.000",
       "close_price": 159.97,
-      "shares_outstanding": 2900000000,
-      "market_capitalization": 463913000000.0
+      "shares_outstanding": 2903000000,
+      "market_capitalization": 464392910000.0
     },
     {
       "symbol": "META",
       "report_date": "2017-07-17T00:00:00.000",
       "shares_report_date": "2017-06-30T00:00:00.000",
       "close_price": 159.73,
-      "shares_outstanding": 2900000000,
-      "market_capitalization": 463217000000.0
+      "shares_outstanding": 2903000000,
+      "market_capitalization": 463696190000.0
     },
     {
       "symbol": "META",
       "report_date": "2017-07-18T00:00:00.000",
       "shares_report_date": "2017-06-30T00:00:00.000",
       "close_price": 162.86,
-      "shares_outstanding": 2900000000,
-      "market_capitalization": 472294000000.0
+      "shares_outstanding": 2903000000,
+      "market_capitalization": 472782580000.0
     },
     {
       "symbol": "META",
       "report_date": "2017-07-19T00:00:00.000",
       "shares_report_date": "2017-06-30T00:00:00.000",
       "close_price": 164.14,
-      "shares_outstanding": 2900000000,
-      "market_capitalization": 476006000000.0
+      "shares_outstanding": 2903000000,
+      "market_capitalization": 476498420000.0
     },
     {
       "symbol": "META",
       "report_date": "2017-07-20T00:00:00.000",
       "shares_report_date": "2017-06-30T00:00:00.000",
       "close_price": 164.53,
-      "shares_outstanding": 2900000000,
-      "market_capitalization": 477137000000.0
+      "shares_outstanding": 2903000000,
+      "market_capitalization": 477630590000.0
     },
     {
       "symbol": "META",
       "report_date": "2017-07-21T00:00:00.000",
       "shares_report_date": "2017-06-30T00:00:00.000",
       "close_price": 164.43,
-      "shares_outstanding": 2900000000,
-      "market_capitalization": 476847000000.0
+      "shares_outstanding": 2903000000,
+      "market_capitalization": 477340290000.0
     },
     {
       "symbol": "META",
@@ -53056,144 +53080,144 @@
       "report_date": "2024-07-01T00:00:00.000",
       "shares_report_date": "2024-06-30T00:00:00.000",
       "close_price": 504.68,
-      "shares_outstanding": 2533088000,
-      "market_capitalization": 1278398851840.0
+      "shares_outstanding": 2533000000,
+      "market_capitalization": 1278354440000.0
     },
     {
       "symbol": "META",
       "report_date": "2024-07-02T00:00:00.000",
       "shares_report_date": "2024-06-30T00:00:00.000",
       "close_price": 509.5,
-      "shares_outstanding": 2533088000,
-      "market_capitalization": 1290608336000.0
+      "shares_outstanding": 2533000000,
+      "market_capitalization": 1290563500000.0
     },
     {
       "symbol": "META",
       "report_date": "2024-07-03T00:00:00.000",
       "shares_report_date": "2024-06-30T00:00:00.000",
       "close_price": 509.96,
-      "shares_outstanding": 2533088000,
-      "market_capitalization": 1291773556480.0
+      "shares_outstanding": 2533000000,
+      "market_capitalization": 1291728680000.0
     },
     {
       "symbol": "META",
       "report_date": "2024-07-05T00:00:00.000",
       "shares_report_date": "2024-06-30T00:00:00.000",
       "close_price": 539.91,
-      "shares_outstanding": 2533088000,
-      "market_capitalization": 1367639542080.0
+      "shares_outstanding": 2533000000,
+      "market_capitalization": 1367592030000.0
     },
     {
       "symbol": "META",
       "report_date": "2024-07-08T00:00:00.000",
       "shares_report_date": "2024-06-30T00:00:00.000",
       "close_price": 529.32,
-      "shares_outstanding": 2533088000,
-      "market_capitalization": 1340814140160.0
+      "shares_outstanding": 2533000000,
+      "market_capitalization": 1340767560000.0
     },
     {
       "symbol": "META",
       "report_date": "2024-07-09T00:00:00.000",
       "shares_report_date": "2024-06-30T00:00:00.000",
       "close_price": 530.0,
-      "shares_outstanding": 2533088000,
-      "market_capitalization": 1342536640000.0
+      "shares_outstanding": 2533000000,
+      "market_capitalization": 1342490000000.0
     },
     {
       "symbol": "META",
       "report_date": "2024-07-10T00:00:00.000",
       "shares_report_date": "2024-06-30T00:00:00.000",
       "close_price": 534.69,
-      "shares_outstanding": 2533088000,
-      "market_capitalization": 1354416822720.0
+      "shares_outstanding": 2533000000,
+      "market_capitalization": 1354369770000.0
     },
     {
       "symbol": "META",
       "report_date": "2024-07-11T00:00:00.000",
       "shares_report_date": "2024-06-30T00:00:00.000",
       "close_price": 512.7,
-      "shares_outstanding": 2533088000,
-      "market_capitalization": 1298714217600.0
+      "shares_outstanding": 2533000000,
+      "market_capitalization": 1298669100000.0
     },
     {
       "symbol": "META",
       "report_date": "2024-07-12T00:00:00.000",
       "shares_report_date": "2024-06-30T00:00:00.000",
       "close_price": 498.87,
-      "shares_outstanding": 2533088000,
-      "market_capitalization": 1263681610560.0
+      "shares_outstanding": 2533000000,
+      "market_capitalization": 1263637710000.0
     },
     {
       "symbol": "META",
       "report_date": "2024-07-15T00:00:00.000",
       "shares_report_date": "2024-06-30T00:00:00.000",
       "close_price": 496.16,
-      "shares_outstanding": 2533088000,
-      "market_capitalization": 1256816942080.0
+      "shares_outstanding": 2533000000,
+      "market_capitalization": 1256773280000.0
     },
     {
       "symbol": "META",
       "report_date": "2024-07-16T00:00:00.000",
       "shares_report_date": "2024-06-30T00:00:00.000",
       "close_price": 489.79,
-      "shares_outstanding": 2533088000,
-      "market_capitalization": 1240681171520.0
+      "shares_outstanding": 2533000000,
+      "market_capitalization": 1240638070000.0
     },
     {
       "symbol": "META",
       "report_date": "2024-07-17T00:00:00.000",
       "shares_report_date": "2024-06-30T00:00:00.000",
       "close_price": 461.99,
-      "shares_outstanding": 2533088000,
-      "market_capitalization": 1170261325120.0
+      "shares_outstanding": 2533000000,
+      "market_capitalization": 1170220670000.0
     },
     {
       "symbol": "META",
       "report_date": "2024-07-18T00:00:00.000",
       "shares_report_date": "2024-06-30T00:00:00.000",
       "close_price": 475.85,
-      "shares_outstanding": 2533088000,
-      "market_capitalization": 1205369924800.0
+      "shares_outstanding": 2533000000,
+      "market_capitalization": 1205328050000.0
     },
     {
       "symbol": "META",
       "report_date": "2024-07-19T00:00:00.000",
       "shares_report_date": "2024-06-30T00:00:00.000",
       "close_price": 476.79,
-      "shares_outstanding": 2533088000,
-      "market_capitalization": 1207751027520.0
+      "shares_outstanding": 2533000000,
+      "market_capitalization": 1207709070000.0
     },
     {
       "symbol": "META",
       "report_date": "2024-07-22T00:00:00.000",
       "shares_report_date": "2024-06-30T00:00:00.000",
       "close_price": 487.4,
-      "shares_outstanding": 2533088000,
-      "market_capitalization": 1234627091200.0
+      "shares_outstanding": 2533000000,
+      "market_capitalization": 1234584200000.0
     },
     {
       "symbol": "META",
       "report_date": "2024-07-23T00:00:00.000",
       "shares_report_date": "2024-06-30T00:00:00.000",
       "close_price": 488.69,
-      "shares_outstanding": 2533088000,
-      "market_capitalization": 1237894774720.0
+      "shares_outstanding": 2533000000,
+      "market_capitalization": 1237851770000.0
     },
     {
       "symbol": "META",
       "report_date": "2024-07-24T00:00:00.000",
       "shares_report_date": "2024-06-30T00:00:00.000",
       "close_price": 461.27,
-      "shares_outstanding": 2533088000,
-      "market_capitalization": 1168437501760.0
+      "shares_outstanding": 2533000000,
+      "market_capitalization": 1168396910000.0
     },
     {
       "symbol": "META",
       "report_date": "2024-07-25T00:00:00.000",
       "shares_report_date": "2024-06-30T00:00:00.000",
       "close_price": 453.41,
-      "shares_outstanding": 2533088000,
-      "market_capitalization": 1148527430080.0
+      "shares_outstanding": 2533000000,
+      "market_capitalization": 1148487530000.0
     },
     {
       "symbol": "META",
@@ -54072,120 +54096,120 @@
       "report_date": "2024-12-31T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 585.51,
-      "shares_outstanding": 2534487700,
-      "market_capitalization": 1483967893227.0
+      "shares_outstanding": 2534000000,
+      "market_capitalization": 1483682340000.0
     },
     {
       "symbol": "META",
       "report_date": "2025-01-02T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 599.24,
-      "shares_outstanding": 2534487700,
-      "market_capitalization": 1518766409348.0
+      "shares_outstanding": 2534000000,
+      "market_capitalization": 1518474160000.0
     },
     {
       "symbol": "META",
       "report_date": "2025-01-03T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 604.63,
-      "shares_outstanding": 2534487700,
-      "market_capitalization": 1532427298051.0
+      "shares_outstanding": 2534000000,
+      "market_capitalization": 1532132420000.0
     },
     {
       "symbol": "META",
       "report_date": "2025-01-06T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 630.2,
-      "shares_outstanding": 2534487700,
-      "market_capitalization": 1597234148540.0
+      "shares_outstanding": 2534000000,
+      "market_capitalization": 1596926800000.0
     },
     {
       "symbol": "META",
       "report_date": "2025-01-07T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 617.89,
-      "shares_outstanding": 2534487700,
-      "market_capitalization": 1566034604953.0
+      "shares_outstanding": 2534000000,
+      "market_capitalization": 1565733260000.0
     },
     {
       "symbol": "META",
       "report_date": "2025-01-08T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 610.72,
-      "shares_outstanding": 2534487700,
-      "market_capitalization": 1547862328144.0
+      "shares_outstanding": 2534000000,
+      "market_capitalization": 1547564480000.0
     },
     {
       "symbol": "META",
       "report_date": "2025-01-10T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 615.86,
-      "shares_outstanding": 2534487700,
-      "market_capitalization": 1560889594922.0
+      "shares_outstanding": 2534000000,
+      "market_capitalization": 1560589240000.0
     },
     {
       "symbol": "META",
       "report_date": "2025-01-13T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 608.33,
-      "shares_outstanding": 2534487700,
-      "market_capitalization": 1541804902541.0
+      "shares_outstanding": 2534000000,
+      "market_capitalization": 1541508220000.0
     },
     {
       "symbol": "META",
       "report_date": "2025-01-14T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 594.25,
-      "shares_outstanding": 2534487700,
-      "market_capitalization": 1506119315725.0
+      "shares_outstanding": 2534000000,
+      "market_capitalization": 1505829500000.0
     },
     {
       "symbol": "META",
       "report_date": "2025-01-15T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 617.12,
-      "shares_outstanding": 2534487700,
-      "market_capitalization": 1564083049424.0
+      "shares_outstanding": 2534000000,
+      "market_capitalization": 1563782080000.0
     },
     {
       "symbol": "META",
       "report_date": "2025-01-16T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 611.3,
-      "shares_outstanding": 2534487700,
-      "market_capitalization": 1549332331010.0
+      "shares_outstanding": 2534000000,
+      "market_capitalization": 1549034200000.0
     },
     {
       "symbol": "META",
       "report_date": "2025-01-17T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 612.77,
-      "shares_outstanding": 2534487700,
-      "market_capitalization": 1553058027929.0
+      "shares_outstanding": 2534000000,
+      "market_capitalization": 1552759180000.0
     },
     {
       "symbol": "META",
       "report_date": "2025-01-21T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 616.46,
-      "shares_outstanding": 2534487700,
-      "market_capitalization": 1562410287542.0
+      "shares_outstanding": 2534000000,
+      "market_capitalization": 1562109640000.0
     },
     {
       "symbol": "META",
       "report_date": "2025-01-22T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 623.5,
-      "shares_outstanding": 2534487700,
-      "market_capitalization": 1580253080950.0
+      "shares_outstanding": 2534000000,
+      "market_capitalization": 1579949000000.0
     },
     {
       "symbol": "META",
       "report_date": "2025-01-23T00:00:00.000",
       "shares_report_date": "2024-12-31T00:00:00.000",
       "close_price": 636.45,
-      "shares_outstanding": 2534487700,
-      "market_capitalization": 1613074696665.0
+      "shares_outstanding": 2534000000,
+      "market_capitalization": 1612764300000.0
     },
     {
       "symbol": "META",
@@ -55560,144 +55584,144 @@
       "report_date": "2025-09-30T00:00:00.000",
       "shares_report_date": "2025-09-30T00:00:00.000",
       "close_price": 734.38,
-      "shares_outstanding": 2521179000,
-      "market_capitalization": 1851503434020.0
+      "shares_outstanding": 2521000000,
+      "market_capitalization": 1851371980000.0
     },
     {
       "symbol": "META",
       "report_date": "2025-10-01T00:00:00.000",
       "shares_report_date": "2025-09-30T00:00:00.000",
       "close_price": 717.34,
-      "shares_outstanding": 2521179000,
-      "market_capitalization": 1808542543860.0
+      "shares_outstanding": 2521000000,
+      "market_capitalization": 1808414140000.0
     },
     {
       "symbol": "META",
       "report_date": "2025-10-02T00:00:00.000",
       "shares_report_date": "2025-09-30T00:00:00.000",
       "close_price": 727.05,
-      "shares_outstanding": 2521179000,
-      "market_capitalization": 1833023191950.0
+      "shares_outstanding": 2521000000,
+      "market_capitalization": 1832893050000.0
     },
     {
       "symbol": "META",
       "report_date": "2025-10-03T00:00:00.000",
       "shares_report_date": "2025-09-30T00:00:00.000",
       "close_price": 710.56,
-      "shares_outstanding": 2521179000,
-      "market_capitalization": 1791448950240.0
+      "shares_outstanding": 2521000000,
+      "market_capitalization": 1791321760000.0
     },
     {
       "symbol": "META",
       "report_date": "2025-10-06T00:00:00.000",
       "shares_report_date": "2025-09-30T00:00:00.000",
       "close_price": 715.66,
-      "shares_outstanding": 2521179000,
-      "market_capitalization": 1804306963140.0
+      "shares_outstanding": 2521000000,
+      "market_capitalization": 1804178860000.0
     },
     {
       "symbol": "META",
       "report_date": "2025-10-07T00:00:00.000",
       "shares_report_date": "2025-09-30T00:00:00.000",
       "close_price": 713.08,
-      "shares_outstanding": 2521179000,
-      "market_capitalization": 1797802321320.0
+      "shares_outstanding": 2521000000,
+      "market_capitalization": 1797674680000.0
     },
     {
       "symbol": "META",
       "report_date": "2025-10-08T00:00:00.000",
       "shares_report_date": "2025-09-30T00:00:00.000",
       "close_price": 717.84,
-      "shares_outstanding": 2521179000,
-      "market_capitalization": 1809803133360.0
+      "shares_outstanding": 2521000000,
+      "market_capitalization": 1809674640000.0
     },
     {
       "symbol": "META",
       "report_date": "2025-10-09T00:00:00.000",
       "shares_report_date": "2025-09-30T00:00:00.000",
       "close_price": 733.51,
-      "shares_outstanding": 2521179000,
-      "market_capitalization": 1849310008290.0
+      "shares_outstanding": 2521000000,
+      "market_capitalization": 1849178710000.0
     },
     {
       "symbol": "META",
       "report_date": "2025-10-10T00:00:00.000",
       "shares_report_date": "2025-09-30T00:00:00.000",
       "close_price": 705.3,
-      "shares_outstanding": 2521179000,
-      "market_capitalization": 1778187548700.0
+      "shares_outstanding": 2521000000,
+      "market_capitalization": 1778061300000.0
     },
     {
       "symbol": "META",
       "report_date": "2025-10-13T00:00:00.000",
       "shares_report_date": "2025-09-30T00:00:00.000",
       "close_price": 715.7,
-      "shares_outstanding": 2521179000,
-      "market_capitalization": 1804407810300.0
+      "shares_outstanding": 2521000000,
+      "market_capitalization": 1804279700000.0
     },
     {
       "symbol": "META",
       "report_date": "2025-10-14T00:00:00.000",
       "shares_report_date": "2025-09-30T00:00:00.000",
       "close_price": 708.65,
-      "shares_outstanding": 2521179000,
-      "market_capitalization": 1786633498350.0
+      "shares_outstanding": 2521000000,
+      "market_capitalization": 1786506650000.0
     },
     {
       "symbol": "META",
       "report_date": "2025-10-15T00:00:00.000",
       "shares_report_date": "2025-09-30T00:00:00.000",
       "close_price": 717.55,
-      "shares_outstanding": 2521179000,
-      "market_capitalization": 1809071991450.0
+      "shares_outstanding": 2521000000,
+      "market_capitalization": 1808943550000.0
     },
     {
       "symbol": "META",
       "report_date": "2025-10-16T00:00:00.000",
       "shares_report_date": "2025-09-30T00:00:00.000",
       "close_price": 712.07,
-      "shares_outstanding": 2521179000,
-      "market_capitalization": 1795255930530.0
+      "shares_outstanding": 2521000000,
+      "market_capitalization": 1795128470000.0
     },
     {
       "symbol": "META",
       "report_date": "2025-10-17T00:00:00.000",
       "shares_report_date": "2025-09-30T00:00:00.000",
       "close_price": 716.92,
-      "shares_outstanding": 2521179000,
-      "market_capitalization": 1807483648680.0
+      "shares_outstanding": 2521000000,
+      "market_capitalization": 1807355320000.0
     },
     {
       "symbol": "META",
       "report_date": "2025-10-20T00:00:00.000",
       "shares_report_date": "2025-09-30T00:00:00.000",
       "close_price": 732.17,
-      "shares_outstanding": 2521179000,
-      "market_capitalization": 1845931628430.0
+      "shares_outstanding": 2521000000,
+      "market_capitalization": 1845800570000.0
     },
     {
       "symbol": "META",
       "report_date": "2025-10-21T00:00:00.000",
       "shares_report_date": "2025-09-30T00:00:00.000",
       "close_price": 733.27,
-      "shares_outstanding": 2521179000,
-      "market_capitalization": 1848704925330.0
+      "shares_outstanding": 2521000000,
+      "market_capitalization": 1848573670000.0
     },
     {
       "symbol": "META",
       "report_date": "2025-10-22T00:00:00.000",
       "shares_report_date": "2025-09-30T00:00:00.000",
       "close_price": 733.41,
-      "shares_outstanding": 2521179000,
-      "market_capitalization": 1849057890390.0
+      "shares_outstanding": 2521000000,
+      "market_capitalization": 1848926610000.0
     },
     {
       "symbol": "META",
       "report_date": "2025-10-23T00:00:00.000",
       "shares_report_date": "2025-09-30T00:00:00.000",
       "close_price": 734.0,
-      "shares_outstanding": 2521179000,
-      "market_capitalization": 1850545386000.0
+      "shares_outstanding": 2521000000,
+      "market_capitalization": 1850414000000.0
     },
     {
       "symbol": "META",
@@ -56072,120 +56096,120 @@
       "report_date": "2025-12-31T00:00:00.000",
       "shares_report_date": "2025-12-31T00:00:00.000",
       "close_price": 660.09,
-      "shares_outstanding": 2529638300,
-      "market_capitalization": 1669788945447.0
+      "shares_outstanding": 2530000000,
+      "market_capitalization": 1670027700000.0
     },
     {
       "symbol": "META",
       "report_date": "2026-01-02T00:00:00.000",
       "shares_report_date": "2025-12-31T00:00:00.000",
       "close_price": 650.41,
-      "shares_outstanding": 2529638300,
-      "market_capitalization": 1645302046703.0
+      "shares_outstanding": 2530000000,
+      "market_capitalization": 1645537300000.0
     },
     {
       "symbol": "META",
       "report_date": "2026-01-05T00:00:00.000",
       "shares_report_date": "2025-12-31T00:00:00.000",
       "close_price": 658.79,
-      "shares_outstanding": 2529638300,
-      "market_capitalization": 1666500415657.0
+      "shares_outstanding": 2530000000,
+      "market_capitalization": 1666738700000.0
     },
     {
       "symbol": "META",
       "report_date": "2026-01-06T00:00:00.000",
       "shares_report_date": "2025-12-31T00:00:00.000",
       "close_price": 660.62,
-      "shares_outstanding": 2529638300,
-      "market_capitalization": 1671129653746.0
+      "shares_outstanding": 2530000000,
+      "market_capitalization": 1671368600000.0
     },
     {
       "symbol": "META",
       "report_date": "2026-01-07T00:00:00.000",
       "shares_report_date": "2025-12-31T00:00:00.000",
       "close_price": 648.69,
-      "shares_outstanding": 2529638300,
-      "market_capitalization": 1640951068827.0
+      "shares_outstanding": 2530000000,
+      "market_capitalization": 1641185700000.0
     },
     {
       "symbol": "META",
       "report_date": "2026-01-08T00:00:00.000",
       "shares_report_date": "2025-12-31T00:00:00.000",
       "close_price": 646.06,
-      "shares_outstanding": 2529638300,
-      "market_capitalization": 1634298120098.0
+      "shares_outstanding": 2530000000,
+      "market_capitalization": 1634531800000.0
     },
     {
       "symbol": "META",
       "report_date": "2026-01-09T00:00:00.000",
       "shares_report_date": "2025-12-31T00:00:00.000",
       "close_price": 653.06,
-      "shares_outstanding": 2529638300,
-      "market_capitalization": 1652005588198.0
+      "shares_outstanding": 2530000000,
+      "market_capitalization": 1652241800000.0
     },
     {
       "symbol": "META",
       "report_date": "2026-01-12T00:00:00.000",
       "shares_report_date": "2025-12-31T00:00:00.000",
       "close_price": 641.97,
-      "shares_outstanding": 2529638300,
-      "market_capitalization": 1623951899451.0
+      "shares_outstanding": 2530000000,
+      "market_capitalization": 1624184100000.0
     },
     {
       "symbol": "META",
       "report_date": "2026-01-13T00:00:00.000",
       "shares_report_date": "2025-12-31T00:00:00.000",
       "close_price": 631.09,
-      "shares_outstanding": 2529638300,
-      "market_capitalization": 1596429434747.0
+      "shares_outstanding": 2530000000,
+      "market_capitalization": 1596657700000.0
     },
     {
       "symbol": "META",
       "report_date": "2026-01-14T00:00:00.000",
       "shares_report_date": "2025-12-31T00:00:00.000",
       "close_price": 615.52,
-      "shares_outstanding": 2529638300,
-      "market_capitalization": 1557042966416.0
+      "shares_outstanding": 2530000000,
+      "market_capitalization": 1557265600000.0
     },
     {
       "symbol": "META",
       "report_date": "2026-01-15T00:00:00.000",
       "shares_report_date": "2025-12-31T00:00:00.000",
       "close_price": 620.8,
-      "shares_outstanding": 2529638300,
-      "market_capitalization": 1570399456640.0
+      "shares_outstanding": 2530000000,
+      "market_capitalization": 1570624000000.0
     },
     {
       "symbol": "META",
       "report_date": "2026-01-16T00:00:00.000",
       "shares_report_date": "2025-12-31T00:00:00.000",
       "close_price": 620.25,
-      "shares_outstanding": 2529638300,
-      "market_capitalization": 1569008155575.0
+      "shares_outstanding": 2530000000,
+      "market_capitalization": 1569232500000.0
     },
     {
       "symbol": "META",
       "report_date": "2026-01-20T00:00:00.000",
       "shares_report_date": "2025-12-31T00:00:00.000",
       "close_price": 604.12,
-      "shares_outstanding": 2529638300,
-      "market_capitalization": 1528205089796.0
+      "shares_outstanding": 2530000000,
+      "market_capitalization": 1528423600000.0
     },
     {
       "symbol": "META",
       "report_date": "2026-01-21T00:00:00.000",
       "shares_report_date": "2025-12-31T00:00:00.000",
       "close_price": 612.96,
-      "shares_outstanding": 2529638300,
-      "market_capitalization": 1550567092368.0
+      "shares_outstanding": 2530000000,
+      "market_capitalization": 1550788800000.0
     },
     {
       "symbol": "META",
       "report_date": "2026-01-22T00:00:00.000",
       "shares_report_date": "2025-12-31T00:00:00.000",
       "close_price": 647.63,
-      "shares_outstanding": 2529638300,
-      "market_capitalization": 1638269652229.0
+      "shares_outstanding": 2530000000,
+      "market_capitalization": 1638503900000.0
     },
     {
       "symbol": "META",
@@ -56560,8 +56584,8 @@
       "report_date": "2026-03-31T00:00:00.000",
       "shares_report_date": "2026-03-31T00:00:00.000",
       "close_price": 572.13,
-      "shares_outstanding": 2538377700,
-      "market_capitalization": 1452282033501.0
+      "shares_outstanding": 2538000000,
+      "market_capitalization": 1452065940000.0
     },
     {
       "symbol": "META",
@@ -56890,6 +56914,30 @@
       "close_price": 632.51,
       "shares_outstanding": 2538423300,
       "market_capitalization": 1605578121483.0
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-01T00:00:00.000",
+      "shares_report_date": "2026-04-24T00:00:00.000",
+      "close_price": 600.47,
+      "shares_outstanding": 2538423300,
+      "market_capitalization": 1524247038951.0
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-02T00:00:00.000",
+      "shares_report_date": "2026-04-24T00:00:00.000",
+      "close_price": 597.63,
+      "shares_outstanding": 2538423300,
+      "market_capitalization": 1517037916779.0
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-03T00:00:00.000",
+      "shares_report_date": "2026-04-24T00:00:00.000",
+      "close_price": 622.98,
+      "shares_outstanding": 2538423300,
+      "market_capitalization": 1581386947434.0
     }
   ],
   "psRatio": [
@@ -57526,17 +57574,17 @@
     {
       "symbol": "META",
       "report_date": "2024-07-01T00:00:00.000",
-      "market_capitalization": 1278398851840.0,
+      "market_capitalization": 1278354440000.0,
       "fiscal_quarter": "2024-06-30T00:00:00.000",
       "ttm_revenue": 149783000000.0,
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 149783000000.0,
-      "ps_ratio": 8.54
+      "ps_ratio": 8.53
     },
     {
       "symbol": "META",
       "report_date": "2024-07-02T00:00:00.000",
-      "market_capitalization": 1290608336000.0,
+      "market_capitalization": 1290563500000.0,
       "fiscal_quarter": "2024-06-30T00:00:00.000",
       "ttm_revenue": 149783000000.0,
       "exchange_rate": 1.0,
@@ -57546,7 +57594,7 @@
     {
       "symbol": "META",
       "report_date": "2024-07-03T00:00:00.000",
-      "market_capitalization": 1291773556480.0,
+      "market_capitalization": 1291728680000.0,
       "fiscal_quarter": "2024-06-30T00:00:00.000",
       "ttm_revenue": 149783000000.0,
       "exchange_rate": 1.0,
@@ -57556,7 +57604,7 @@
     {
       "symbol": "META",
       "report_date": "2024-07-05T00:00:00.000",
-      "market_capitalization": 1367639542080.0,
+      "market_capitalization": 1367592030000.0,
       "fiscal_quarter": "2024-06-30T00:00:00.000",
       "ttm_revenue": 149783000000.0,
       "exchange_rate": 1.0,
@@ -57566,7 +57614,7 @@
     {
       "symbol": "META",
       "report_date": "2024-07-08T00:00:00.000",
-      "market_capitalization": 1340814140160.0,
+      "market_capitalization": 1340767560000.0,
       "fiscal_quarter": "2024-06-30T00:00:00.000",
       "ttm_revenue": 149783000000.0,
       "exchange_rate": 1.0,
@@ -57576,7 +57624,7 @@
     {
       "symbol": "META",
       "report_date": "2024-07-09T00:00:00.000",
-      "market_capitalization": 1342536640000.0,
+      "market_capitalization": 1342490000000.0,
       "fiscal_quarter": "2024-06-30T00:00:00.000",
       "ttm_revenue": 149783000000.0,
       "exchange_rate": 1.0,
@@ -57586,7 +57634,7 @@
     {
       "symbol": "META",
       "report_date": "2024-07-10T00:00:00.000",
-      "market_capitalization": 1354416822720.0,
+      "market_capitalization": 1354369770000.0,
       "fiscal_quarter": "2024-06-30T00:00:00.000",
       "ttm_revenue": 149783000000.0,
       "exchange_rate": 1.0,
@@ -57596,7 +57644,7 @@
     {
       "symbol": "META",
       "report_date": "2024-07-11T00:00:00.000",
-      "market_capitalization": 1298714217600.0,
+      "market_capitalization": 1298669100000.0,
       "fiscal_quarter": "2024-06-30T00:00:00.000",
       "ttm_revenue": 149783000000.0,
       "exchange_rate": 1.0,
@@ -57606,7 +57654,7 @@
     {
       "symbol": "META",
       "report_date": "2024-07-12T00:00:00.000",
-      "market_capitalization": 1263681610560.0,
+      "market_capitalization": 1263637710000.0,
       "fiscal_quarter": "2024-06-30T00:00:00.000",
       "ttm_revenue": 149783000000.0,
       "exchange_rate": 1.0,
@@ -57616,7 +57664,7 @@
     {
       "symbol": "META",
       "report_date": "2024-07-15T00:00:00.000",
-      "market_capitalization": 1256816942080.0,
+      "market_capitalization": 1256773280000.0,
       "fiscal_quarter": "2024-06-30T00:00:00.000",
       "ttm_revenue": 149783000000.0,
       "exchange_rate": 1.0,
@@ -57626,7 +57674,7 @@
     {
       "symbol": "META",
       "report_date": "2024-07-16T00:00:00.000",
-      "market_capitalization": 1240681171520.0,
+      "market_capitalization": 1240638070000.0,
       "fiscal_quarter": "2024-06-30T00:00:00.000",
       "ttm_revenue": 149783000000.0,
       "exchange_rate": 1.0,
@@ -57636,7 +57684,7 @@
     {
       "symbol": "META",
       "report_date": "2024-07-17T00:00:00.000",
-      "market_capitalization": 1170261325120.0,
+      "market_capitalization": 1170220670000.0,
       "fiscal_quarter": "2024-06-30T00:00:00.000",
       "ttm_revenue": 149783000000.0,
       "exchange_rate": 1.0,
@@ -57646,7 +57694,7 @@
     {
       "symbol": "META",
       "report_date": "2024-07-18T00:00:00.000",
-      "market_capitalization": 1205369924800.0,
+      "market_capitalization": 1205328050000.0,
       "fiscal_quarter": "2024-06-30T00:00:00.000",
       "ttm_revenue": 149783000000.0,
       "exchange_rate": 1.0,
@@ -57656,7 +57704,7 @@
     {
       "symbol": "META",
       "report_date": "2024-07-19T00:00:00.000",
-      "market_capitalization": 1207751027520.0,
+      "market_capitalization": 1207709070000.0,
       "fiscal_quarter": "2024-06-30T00:00:00.000",
       "ttm_revenue": 149783000000.0,
       "exchange_rate": 1.0,
@@ -57666,7 +57714,7 @@
     {
       "symbol": "META",
       "report_date": "2024-07-22T00:00:00.000",
-      "market_capitalization": 1234627091200.0,
+      "market_capitalization": 1234584200000.0,
       "fiscal_quarter": "2024-06-30T00:00:00.000",
       "ttm_revenue": 149783000000.0,
       "exchange_rate": 1.0,
@@ -57676,7 +57724,7 @@
     {
       "symbol": "META",
       "report_date": "2024-07-23T00:00:00.000",
-      "market_capitalization": 1237894774720.0,
+      "market_capitalization": 1237851770000.0,
       "fiscal_quarter": "2024-06-30T00:00:00.000",
       "ttm_revenue": 149783000000.0,
       "exchange_rate": 1.0,
@@ -57686,7 +57734,7 @@
     {
       "symbol": "META",
       "report_date": "2024-07-24T00:00:00.000",
-      "market_capitalization": 1168437501760.0,
+      "market_capitalization": 1168396910000.0,
       "fiscal_quarter": "2024-06-30T00:00:00.000",
       "ttm_revenue": 149783000000.0,
       "exchange_rate": 1.0,
@@ -57696,7 +57744,7 @@
     {
       "symbol": "META",
       "report_date": "2024-07-25T00:00:00.000",
-      "market_capitalization": 1148527430080.0,
+      "market_capitalization": 1148487530000.0,
       "fiscal_quarter": "2024-06-30T00:00:00.000",
       "ttm_revenue": 149783000000.0,
       "exchange_rate": 1.0,
@@ -58796,7 +58844,7 @@
     {
       "symbol": "META",
       "report_date": "2024-12-31T00:00:00.000",
-      "market_capitalization": 1483967893227.0,
+      "market_capitalization": 1483682340000.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 164500000000.0,
       "exchange_rate": 1.0,
@@ -58806,7 +58854,7 @@
     {
       "symbol": "META",
       "report_date": "2025-01-02T00:00:00.000",
-      "market_capitalization": 1518766409348.0,
+      "market_capitalization": 1518474160000.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 164500000000.0,
       "exchange_rate": 1.0,
@@ -58816,17 +58864,17 @@
     {
       "symbol": "META",
       "report_date": "2025-01-03T00:00:00.000",
-      "market_capitalization": 1532427298051.0,
+      "market_capitalization": 1532132420000.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 164500000000.0,
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 164500000000.0,
-      "ps_ratio": 9.32
+      "ps_ratio": 9.31
     },
     {
       "symbol": "META",
       "report_date": "2025-01-06T00:00:00.000",
-      "market_capitalization": 1597234148540.0,
+      "market_capitalization": 1596926800000.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 164500000000.0,
       "exchange_rate": 1.0,
@@ -58836,7 +58884,7 @@
     {
       "symbol": "META",
       "report_date": "2025-01-07T00:00:00.000",
-      "market_capitalization": 1566034604953.0,
+      "market_capitalization": 1565733260000.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 164500000000.0,
       "exchange_rate": 1.0,
@@ -58846,7 +58894,7 @@
     {
       "symbol": "META",
       "report_date": "2025-01-08T00:00:00.000",
-      "market_capitalization": 1547862328144.0,
+      "market_capitalization": 1547564480000.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 164500000000.0,
       "exchange_rate": 1.0,
@@ -58856,7 +58904,7 @@
     {
       "symbol": "META",
       "report_date": "2025-01-10T00:00:00.000",
-      "market_capitalization": 1560889594922.0,
+      "market_capitalization": 1560589240000.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 164500000000.0,
       "exchange_rate": 1.0,
@@ -58866,7 +58914,7 @@
     {
       "symbol": "META",
       "report_date": "2025-01-13T00:00:00.000",
-      "market_capitalization": 1541804902541.0,
+      "market_capitalization": 1541508220000.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 164500000000.0,
       "exchange_rate": 1.0,
@@ -58876,17 +58924,17 @@
     {
       "symbol": "META",
       "report_date": "2025-01-14T00:00:00.000",
-      "market_capitalization": 1506119315725.0,
+      "market_capitalization": 1505829500000.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 164500000000.0,
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 164500000000.0,
-      "ps_ratio": 9.16
+      "ps_ratio": 9.15
     },
     {
       "symbol": "META",
       "report_date": "2025-01-15T00:00:00.000",
-      "market_capitalization": 1564083049424.0,
+      "market_capitalization": 1563782080000.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 164500000000.0,
       "exchange_rate": 1.0,
@@ -58896,7 +58944,7 @@
     {
       "symbol": "META",
       "report_date": "2025-01-16T00:00:00.000",
-      "market_capitalization": 1549332331010.0,
+      "market_capitalization": 1549034200000.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 164500000000.0,
       "exchange_rate": 1.0,
@@ -58906,7 +58954,7 @@
     {
       "symbol": "META",
       "report_date": "2025-01-17T00:00:00.000",
-      "market_capitalization": 1553058027929.0,
+      "market_capitalization": 1552759180000.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 164500000000.0,
       "exchange_rate": 1.0,
@@ -58916,7 +58964,7 @@
     {
       "symbol": "META",
       "report_date": "2025-01-21T00:00:00.000",
-      "market_capitalization": 1562410287542.0,
+      "market_capitalization": 1562109640000.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 164500000000.0,
       "exchange_rate": 1.0,
@@ -58926,22 +58974,22 @@
     {
       "symbol": "META",
       "report_date": "2025-01-22T00:00:00.000",
-      "market_capitalization": 1580253080950.0,
+      "market_capitalization": 1579949000000.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 164500000000.0,
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 164500000000.0,
-      "ps_ratio": 9.61
+      "ps_ratio": 9.6
     },
     {
       "symbol": "META",
       "report_date": "2025-01-23T00:00:00.000",
-      "market_capitalization": 1613074696665.0,
+      "market_capitalization": 1612764300000.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "ttm_revenue": 164500000000.0,
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 164500000000.0,
-      "ps_ratio": 9.81
+      "ps_ratio": 9.8
     },
     {
       "symbol": "META",
@@ -60656,7 +60704,7 @@
     {
       "symbol": "META",
       "report_date": "2025-09-30T00:00:00.000",
-      "market_capitalization": 1851503434020.0,
+      "market_capitalization": 1851371980000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
       "ttm_revenue": 189457000000.0,
       "exchange_rate": 1.0,
@@ -60666,7 +60714,7 @@
     {
       "symbol": "META",
       "report_date": "2025-10-01T00:00:00.000",
-      "market_capitalization": 1808542543860.0,
+      "market_capitalization": 1808414140000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
       "ttm_revenue": 189457000000.0,
       "exchange_rate": 1.0,
@@ -60676,17 +60724,17 @@
     {
       "symbol": "META",
       "report_date": "2025-10-02T00:00:00.000",
-      "market_capitalization": 1833023191950.0,
+      "market_capitalization": 1832893050000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
       "ttm_revenue": 189457000000.0,
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 189457000000.0,
-      "ps_ratio": 9.68
+      "ps_ratio": 9.67
     },
     {
       "symbol": "META",
       "report_date": "2025-10-03T00:00:00.000",
-      "market_capitalization": 1791448950240.0,
+      "market_capitalization": 1791321760000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
       "ttm_revenue": 189457000000.0,
       "exchange_rate": 1.0,
@@ -60696,7 +60744,7 @@
     {
       "symbol": "META",
       "report_date": "2025-10-06T00:00:00.000",
-      "market_capitalization": 1804306963140.0,
+      "market_capitalization": 1804178860000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
       "ttm_revenue": 189457000000.0,
       "exchange_rate": 1.0,
@@ -60706,7 +60754,7 @@
     {
       "symbol": "META",
       "report_date": "2025-10-07T00:00:00.000",
-      "market_capitalization": 1797802321320.0,
+      "market_capitalization": 1797674680000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
       "ttm_revenue": 189457000000.0,
       "exchange_rate": 1.0,
@@ -60716,7 +60764,7 @@
     {
       "symbol": "META",
       "report_date": "2025-10-08T00:00:00.000",
-      "market_capitalization": 1809803133360.0,
+      "market_capitalization": 1809674640000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
       "ttm_revenue": 189457000000.0,
       "exchange_rate": 1.0,
@@ -60726,7 +60774,7 @@
     {
       "symbol": "META",
       "report_date": "2025-10-09T00:00:00.000",
-      "market_capitalization": 1849310008290.0,
+      "market_capitalization": 1849178710000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
       "ttm_revenue": 189457000000.0,
       "exchange_rate": 1.0,
@@ -60736,7 +60784,7 @@
     {
       "symbol": "META",
       "report_date": "2025-10-10T00:00:00.000",
-      "market_capitalization": 1778187548700.0,
+      "market_capitalization": 1778061300000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
       "ttm_revenue": 189457000000.0,
       "exchange_rate": 1.0,
@@ -60746,7 +60794,7 @@
     {
       "symbol": "META",
       "report_date": "2025-10-13T00:00:00.000",
-      "market_capitalization": 1804407810300.0,
+      "market_capitalization": 1804279700000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
       "ttm_revenue": 189457000000.0,
       "exchange_rate": 1.0,
@@ -60756,7 +60804,7 @@
     {
       "symbol": "META",
       "report_date": "2025-10-14T00:00:00.000",
-      "market_capitalization": 1786633498350.0,
+      "market_capitalization": 1786506650000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
       "ttm_revenue": 189457000000.0,
       "exchange_rate": 1.0,
@@ -60766,7 +60814,7 @@
     {
       "symbol": "META",
       "report_date": "2025-10-15T00:00:00.000",
-      "market_capitalization": 1809071991450.0,
+      "market_capitalization": 1808943550000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
       "ttm_revenue": 189457000000.0,
       "exchange_rate": 1.0,
@@ -60776,7 +60824,7 @@
     {
       "symbol": "META",
       "report_date": "2025-10-16T00:00:00.000",
-      "market_capitalization": 1795255930530.0,
+      "market_capitalization": 1795128470000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
       "ttm_revenue": 189457000000.0,
       "exchange_rate": 1.0,
@@ -60786,7 +60834,7 @@
     {
       "symbol": "META",
       "report_date": "2025-10-17T00:00:00.000",
-      "market_capitalization": 1807483648680.0,
+      "market_capitalization": 1807355320000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
       "ttm_revenue": 189457000000.0,
       "exchange_rate": 1.0,
@@ -60796,7 +60844,7 @@
     {
       "symbol": "META",
       "report_date": "2025-10-20T00:00:00.000",
-      "market_capitalization": 1845931628430.0,
+      "market_capitalization": 1845800570000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
       "ttm_revenue": 189457000000.0,
       "exchange_rate": 1.0,
@@ -60806,7 +60854,7 @@
     {
       "symbol": "META",
       "report_date": "2025-10-21T00:00:00.000",
-      "market_capitalization": 1848704925330.0,
+      "market_capitalization": 1848573670000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
       "ttm_revenue": 189457000000.0,
       "exchange_rate": 1.0,
@@ -60816,7 +60864,7 @@
     {
       "symbol": "META",
       "report_date": "2025-10-22T00:00:00.000",
-      "market_capitalization": 1849057890390.0,
+      "market_capitalization": 1848926610000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
       "ttm_revenue": 189457000000.0,
       "exchange_rate": 1.0,
@@ -60826,7 +60874,7 @@
     {
       "symbol": "META",
       "report_date": "2025-10-23T00:00:00.000",
-      "market_capitalization": 1850545386000.0,
+      "market_capitalization": 1850414000000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
       "ttm_revenue": 189457000000.0,
       "exchange_rate": 1.0,
@@ -61296,7 +61344,7 @@
     {
       "symbol": "META",
       "report_date": "2025-12-31T00:00:00.000",
-      "market_capitalization": 1669788945447.0,
+      "market_capitalization": 1670027700000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
       "ttm_revenue": 200965000000.0,
       "exchange_rate": 1.0,
@@ -61306,7 +61354,7 @@
     {
       "symbol": "META",
       "report_date": "2026-01-02T00:00:00.000",
-      "market_capitalization": 1645302046703.0,
+      "market_capitalization": 1645537300000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
       "ttm_revenue": 200965000000.0,
       "exchange_rate": 1.0,
@@ -61316,7 +61364,7 @@
     {
       "symbol": "META",
       "report_date": "2026-01-05T00:00:00.000",
-      "market_capitalization": 1666500415657.0,
+      "market_capitalization": 1666738700000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
       "ttm_revenue": 200965000000.0,
       "exchange_rate": 1.0,
@@ -61326,7 +61374,7 @@
     {
       "symbol": "META",
       "report_date": "2026-01-06T00:00:00.000",
-      "market_capitalization": 1671129653746.0,
+      "market_capitalization": 1671368600000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
       "ttm_revenue": 200965000000.0,
       "exchange_rate": 1.0,
@@ -61336,7 +61384,7 @@
     {
       "symbol": "META",
       "report_date": "2026-01-07T00:00:00.000",
-      "market_capitalization": 1640951068827.0,
+      "market_capitalization": 1641185700000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
       "ttm_revenue": 200965000000.0,
       "exchange_rate": 1.0,
@@ -61346,7 +61394,7 @@
     {
       "symbol": "META",
       "report_date": "2026-01-08T00:00:00.000",
-      "market_capitalization": 1634298120098.0,
+      "market_capitalization": 1634531800000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
       "ttm_revenue": 200965000000.0,
       "exchange_rate": 1.0,
@@ -61356,7 +61404,7 @@
     {
       "symbol": "META",
       "report_date": "2026-01-09T00:00:00.000",
-      "market_capitalization": 1652005588198.0,
+      "market_capitalization": 1652241800000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
       "ttm_revenue": 200965000000.0,
       "exchange_rate": 1.0,
@@ -61366,7 +61414,7 @@
     {
       "symbol": "META",
       "report_date": "2026-01-12T00:00:00.000",
-      "market_capitalization": 1623951899451.0,
+      "market_capitalization": 1624184100000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
       "ttm_revenue": 200965000000.0,
       "exchange_rate": 1.0,
@@ -61376,7 +61424,7 @@
     {
       "symbol": "META",
       "report_date": "2026-01-13T00:00:00.000",
-      "market_capitalization": 1596429434747.0,
+      "market_capitalization": 1596657700000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
       "ttm_revenue": 200965000000.0,
       "exchange_rate": 1.0,
@@ -61386,7 +61434,7 @@
     {
       "symbol": "META",
       "report_date": "2026-01-14T00:00:00.000",
-      "market_capitalization": 1557042966416.0,
+      "market_capitalization": 1557265600000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
       "ttm_revenue": 200965000000.0,
       "exchange_rate": 1.0,
@@ -61396,17 +61444,17 @@
     {
       "symbol": "META",
       "report_date": "2026-01-15T00:00:00.000",
-      "market_capitalization": 1570399456640.0,
+      "market_capitalization": 1570624000000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
       "ttm_revenue": 200965000000.0,
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 200965000000.0,
-      "ps_ratio": 7.81
+      "ps_ratio": 7.82
     },
     {
       "symbol": "META",
       "report_date": "2026-01-16T00:00:00.000",
-      "market_capitalization": 1569008155575.0,
+      "market_capitalization": 1569232500000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
       "ttm_revenue": 200965000000.0,
       "exchange_rate": 1.0,
@@ -61416,17 +61464,17 @@
     {
       "symbol": "META",
       "report_date": "2026-01-20T00:00:00.000",
-      "market_capitalization": 1528205089796.0,
+      "market_capitalization": 1528423600000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
       "ttm_revenue": 200965000000.0,
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 200965000000.0,
-      "ps_ratio": 7.6
+      "ps_ratio": 7.61
     },
     {
       "symbol": "META",
       "report_date": "2026-01-21T00:00:00.000",
-      "market_capitalization": 1550567092368.0,
+      "market_capitalization": 1550788800000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
       "ttm_revenue": 200965000000.0,
       "exchange_rate": 1.0,
@@ -61436,7 +61484,7 @@
     {
       "symbol": "META",
       "report_date": "2026-01-22T00:00:00.000",
-      "market_capitalization": 1638269652229.0,
+      "market_capitalization": 1638503900000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
       "ttm_revenue": 200965000000.0,
       "exchange_rate": 1.0,
@@ -61906,12 +61954,12 @@
     {
       "symbol": "META",
       "report_date": "2026-03-31T00:00:00.000",
-      "market_capitalization": 1452282033501.0,
+      "market_capitalization": 1452065940000.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "ttm_revenue": 214962000000.0,
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 214962000000.0,
-      "ps_ratio": 6.76
+      "ps_ratio": 6.75
     },
     {
       "symbol": "META",
@@ -62322,6 +62370,36 @@
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 214962000000.0,
       "ps_ratio": 7.47
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-01T00:00:00.000",
+      "market_capitalization": 1524247038951.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 214962000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 214962000000.0,
+      "ps_ratio": 7.09
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-02T00:00:00.000",
+      "market_capitalization": 1517037916779.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 214962000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 214962000000.0,
+      "ps_ratio": 7.06
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-03T00:00:00.000",
+      "market_capitalization": 1581386947434.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 214962000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 214962000000.0,
+      "ps_ratio": 7.36
     }
   ],
   "pbRatio": [
@@ -67348,7 +67426,7 @@
     {
       "symbol": "META",
       "report_date": "2024-07-01T00:00:00.000",
-      "market_capitalization": 1278398851840.0,
+      "market_capitalization": 1278354440000.0,
       "fiscal_quarter": "2024-06-30T00:00:00.000",
       "book_value_of_equity": 156763000000.0,
       "exchange_rate": 1.0,
@@ -67358,7 +67436,7 @@
     {
       "symbol": "META",
       "report_date": "2024-07-02T00:00:00.000",
-      "market_capitalization": 1290608336000.0,
+      "market_capitalization": 1290563500000.0,
       "fiscal_quarter": "2024-06-30T00:00:00.000",
       "book_value_of_equity": 156763000000.0,
       "exchange_rate": 1.0,
@@ -67368,7 +67446,7 @@
     {
       "symbol": "META",
       "report_date": "2024-07-03T00:00:00.000",
-      "market_capitalization": 1291773556480.0,
+      "market_capitalization": 1291728680000.0,
       "fiscal_quarter": "2024-06-30T00:00:00.000",
       "book_value_of_equity": 156763000000.0,
       "exchange_rate": 1.0,
@@ -67378,7 +67456,7 @@
     {
       "symbol": "META",
       "report_date": "2024-07-05T00:00:00.000",
-      "market_capitalization": 1367639542080.0,
+      "market_capitalization": 1367592030000.0,
       "fiscal_quarter": "2024-06-30T00:00:00.000",
       "book_value_of_equity": 156763000000.0,
       "exchange_rate": 1.0,
@@ -67388,7 +67466,7 @@
     {
       "symbol": "META",
       "report_date": "2024-07-08T00:00:00.000",
-      "market_capitalization": 1340814140160.0,
+      "market_capitalization": 1340767560000.0,
       "fiscal_quarter": "2024-06-30T00:00:00.000",
       "book_value_of_equity": 156763000000.0,
       "exchange_rate": 1.0,
@@ -67398,7 +67476,7 @@
     {
       "symbol": "META",
       "report_date": "2024-07-09T00:00:00.000",
-      "market_capitalization": 1342536640000.0,
+      "market_capitalization": 1342490000000.0,
       "fiscal_quarter": "2024-06-30T00:00:00.000",
       "book_value_of_equity": 156763000000.0,
       "exchange_rate": 1.0,
@@ -67408,7 +67486,7 @@
     {
       "symbol": "META",
       "report_date": "2024-07-10T00:00:00.000",
-      "market_capitalization": 1354416822720.0,
+      "market_capitalization": 1354369770000.0,
       "fiscal_quarter": "2024-06-30T00:00:00.000",
       "book_value_of_equity": 156763000000.0,
       "exchange_rate": 1.0,
@@ -67418,7 +67496,7 @@
     {
       "symbol": "META",
       "report_date": "2024-07-11T00:00:00.000",
-      "market_capitalization": 1298714217600.0,
+      "market_capitalization": 1298669100000.0,
       "fiscal_quarter": "2024-06-30T00:00:00.000",
       "book_value_of_equity": 156763000000.0,
       "exchange_rate": 1.0,
@@ -67428,7 +67506,7 @@
     {
       "symbol": "META",
       "report_date": "2024-07-12T00:00:00.000",
-      "market_capitalization": 1263681610560.0,
+      "market_capitalization": 1263637710000.0,
       "fiscal_quarter": "2024-06-30T00:00:00.000",
       "book_value_of_equity": 156763000000.0,
       "exchange_rate": 1.0,
@@ -67438,7 +67516,7 @@
     {
       "symbol": "META",
       "report_date": "2024-07-15T00:00:00.000",
-      "market_capitalization": 1256816942080.0,
+      "market_capitalization": 1256773280000.0,
       "fiscal_quarter": "2024-06-30T00:00:00.000",
       "book_value_of_equity": 156763000000.0,
       "exchange_rate": 1.0,
@@ -67448,7 +67526,7 @@
     {
       "symbol": "META",
       "report_date": "2024-07-16T00:00:00.000",
-      "market_capitalization": 1240681171520.0,
+      "market_capitalization": 1240638070000.0,
       "fiscal_quarter": "2024-06-30T00:00:00.000",
       "book_value_of_equity": 156763000000.0,
       "exchange_rate": 1.0,
@@ -67458,17 +67536,17 @@
     {
       "symbol": "META",
       "report_date": "2024-07-17T00:00:00.000",
-      "market_capitalization": 1170261325120.0,
+      "market_capitalization": 1170220670000.0,
       "fiscal_quarter": "2024-06-30T00:00:00.000",
       "book_value_of_equity": 156763000000.0,
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 156763000000.0,
-      "pb_ratio": 7.47
+      "pb_ratio": 7.46
     },
     {
       "symbol": "META",
       "report_date": "2024-07-18T00:00:00.000",
-      "market_capitalization": 1205369924800.0,
+      "market_capitalization": 1205328050000.0,
       "fiscal_quarter": "2024-06-30T00:00:00.000",
       "book_value_of_equity": 156763000000.0,
       "exchange_rate": 1.0,
@@ -67478,7 +67556,7 @@
     {
       "symbol": "META",
       "report_date": "2024-07-19T00:00:00.000",
-      "market_capitalization": 1207751027520.0,
+      "market_capitalization": 1207709070000.0,
       "fiscal_quarter": "2024-06-30T00:00:00.000",
       "book_value_of_equity": 156763000000.0,
       "exchange_rate": 1.0,
@@ -67488,7 +67566,7 @@
     {
       "symbol": "META",
       "report_date": "2024-07-22T00:00:00.000",
-      "market_capitalization": 1234627091200.0,
+      "market_capitalization": 1234584200000.0,
       "fiscal_quarter": "2024-06-30T00:00:00.000",
       "book_value_of_equity": 156763000000.0,
       "exchange_rate": 1.0,
@@ -67498,7 +67576,7 @@
     {
       "symbol": "META",
       "report_date": "2024-07-23T00:00:00.000",
-      "market_capitalization": 1237894774720.0,
+      "market_capitalization": 1237851770000.0,
       "fiscal_quarter": "2024-06-30T00:00:00.000",
       "book_value_of_equity": 156763000000.0,
       "exchange_rate": 1.0,
@@ -67508,7 +67586,7 @@
     {
       "symbol": "META",
       "report_date": "2024-07-24T00:00:00.000",
-      "market_capitalization": 1168437501760.0,
+      "market_capitalization": 1168396910000.0,
       "fiscal_quarter": "2024-06-30T00:00:00.000",
       "book_value_of_equity": 156763000000.0,
       "exchange_rate": 1.0,
@@ -67518,7 +67596,7 @@
     {
       "symbol": "META",
       "report_date": "2024-07-25T00:00:00.000",
-      "market_capitalization": 1148527430080.0,
+      "market_capitalization": 1148487530000.0,
       "fiscal_quarter": "2024-06-30T00:00:00.000",
       "book_value_of_equity": 156763000000.0,
       "exchange_rate": 1.0,
@@ -68618,27 +68696,27 @@
     {
       "symbol": "META",
       "report_date": "2024-12-31T00:00:00.000",
-      "market_capitalization": 1483967893227.0,
+      "market_capitalization": 1483682340000.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 182637000000.0,
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 182637000000.0,
-      "pb_ratio": 8.13
+      "pb_ratio": 8.12
     },
     {
       "symbol": "META",
       "report_date": "2025-01-02T00:00:00.000",
-      "market_capitalization": 1518766409348.0,
+      "market_capitalization": 1518474160000.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 182637000000.0,
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 182637000000.0,
-      "pb_ratio": 8.32
+      "pb_ratio": 8.31
     },
     {
       "symbol": "META",
       "report_date": "2025-01-03T00:00:00.000",
-      "market_capitalization": 1532427298051.0,
+      "market_capitalization": 1532132420000.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 182637000000.0,
       "exchange_rate": 1.0,
@@ -68648,17 +68726,17 @@
     {
       "symbol": "META",
       "report_date": "2025-01-06T00:00:00.000",
-      "market_capitalization": 1597234148540.0,
+      "market_capitalization": 1596926800000.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 182637000000.0,
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 182637000000.0,
-      "pb_ratio": 8.75
+      "pb_ratio": 8.74
     },
     {
       "symbol": "META",
       "report_date": "2025-01-07T00:00:00.000",
-      "market_capitalization": 1566034604953.0,
+      "market_capitalization": 1565733260000.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 182637000000.0,
       "exchange_rate": 1.0,
@@ -68668,27 +68746,27 @@
     {
       "symbol": "META",
       "report_date": "2025-01-08T00:00:00.000",
-      "market_capitalization": 1547862328144.0,
+      "market_capitalization": 1547564480000.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 182637000000.0,
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 182637000000.0,
-      "pb_ratio": 8.48
+      "pb_ratio": 8.47
     },
     {
       "symbol": "META",
       "report_date": "2025-01-10T00:00:00.000",
-      "market_capitalization": 1560889594922.0,
+      "market_capitalization": 1560589240000.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 182637000000.0,
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 182637000000.0,
-      "pb_ratio": 8.55
+      "pb_ratio": 8.54
     },
     {
       "symbol": "META",
       "report_date": "2025-01-13T00:00:00.000",
-      "market_capitalization": 1541804902541.0,
+      "market_capitalization": 1541508220000.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 182637000000.0,
       "exchange_rate": 1.0,
@@ -68698,17 +68776,17 @@
     {
       "symbol": "META",
       "report_date": "2025-01-14T00:00:00.000",
-      "market_capitalization": 1506119315725.0,
+      "market_capitalization": 1505829500000.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 182637000000.0,
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 182637000000.0,
-      "pb_ratio": 8.25
+      "pb_ratio": 8.24
     },
     {
       "symbol": "META",
       "report_date": "2025-01-15T00:00:00.000",
-      "market_capitalization": 1564083049424.0,
+      "market_capitalization": 1563782080000.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 182637000000.0,
       "exchange_rate": 1.0,
@@ -68718,7 +68796,7 @@
     {
       "symbol": "META",
       "report_date": "2025-01-16T00:00:00.000",
-      "market_capitalization": 1549332331010.0,
+      "market_capitalization": 1549034200000.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 182637000000.0,
       "exchange_rate": 1.0,
@@ -68728,7 +68806,7 @@
     {
       "symbol": "META",
       "report_date": "2025-01-17T00:00:00.000",
-      "market_capitalization": 1553058027929.0,
+      "market_capitalization": 1552759180000.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 182637000000.0,
       "exchange_rate": 1.0,
@@ -68738,7 +68816,7 @@
     {
       "symbol": "META",
       "report_date": "2025-01-21T00:00:00.000",
-      "market_capitalization": 1562410287542.0,
+      "market_capitalization": 1562109640000.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 182637000000.0,
       "exchange_rate": 1.0,
@@ -68748,7 +68826,7 @@
     {
       "symbol": "META",
       "report_date": "2025-01-22T00:00:00.000",
-      "market_capitalization": 1580253080950.0,
+      "market_capitalization": 1579949000000.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 182637000000.0,
       "exchange_rate": 1.0,
@@ -68758,7 +68836,7 @@
     {
       "symbol": "META",
       "report_date": "2025-01-23T00:00:00.000",
-      "market_capitalization": 1613074696665.0,
+      "market_capitalization": 1612764300000.0,
       "fiscal_quarter": "2024-12-31T00:00:00.000",
       "book_value_of_equity": 182637000000.0,
       "exchange_rate": 1.0,
@@ -70478,7 +70556,7 @@
     {
       "symbol": "META",
       "report_date": "2025-09-30T00:00:00.000",
-      "market_capitalization": 1851503434020.0,
+      "market_capitalization": 1851371980000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
       "book_value_of_equity": 194066000000.0,
       "exchange_rate": 1.0,
@@ -70488,7 +70566,7 @@
     {
       "symbol": "META",
       "report_date": "2025-10-01T00:00:00.000",
-      "market_capitalization": 1808542543860.0,
+      "market_capitalization": 1808414140000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
       "book_value_of_equity": 194066000000.0,
       "exchange_rate": 1.0,
@@ -70498,17 +70576,17 @@
     {
       "symbol": "META",
       "report_date": "2025-10-02T00:00:00.000",
-      "market_capitalization": 1833023191950.0,
+      "market_capitalization": 1832893050000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
       "book_value_of_equity": 194066000000.0,
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 194066000000.0,
-      "pb_ratio": 9.45
+      "pb_ratio": 9.44
     },
     {
       "symbol": "META",
       "report_date": "2025-10-03T00:00:00.000",
-      "market_capitalization": 1791448950240.0,
+      "market_capitalization": 1791321760000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
       "book_value_of_equity": 194066000000.0,
       "exchange_rate": 1.0,
@@ -70518,7 +70596,7 @@
     {
       "symbol": "META",
       "report_date": "2025-10-06T00:00:00.000",
-      "market_capitalization": 1804306963140.0,
+      "market_capitalization": 1804178860000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
       "book_value_of_equity": 194066000000.0,
       "exchange_rate": 1.0,
@@ -70528,7 +70606,7 @@
     {
       "symbol": "META",
       "report_date": "2025-10-07T00:00:00.000",
-      "market_capitalization": 1797802321320.0,
+      "market_capitalization": 1797674680000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
       "book_value_of_equity": 194066000000.0,
       "exchange_rate": 1.0,
@@ -70538,7 +70616,7 @@
     {
       "symbol": "META",
       "report_date": "2025-10-08T00:00:00.000",
-      "market_capitalization": 1809803133360.0,
+      "market_capitalization": 1809674640000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
       "book_value_of_equity": 194066000000.0,
       "exchange_rate": 1.0,
@@ -70548,7 +70626,7 @@
     {
       "symbol": "META",
       "report_date": "2025-10-09T00:00:00.000",
-      "market_capitalization": 1849310008290.0,
+      "market_capitalization": 1849178710000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
       "book_value_of_equity": 194066000000.0,
       "exchange_rate": 1.0,
@@ -70558,7 +70636,7 @@
     {
       "symbol": "META",
       "report_date": "2025-10-10T00:00:00.000",
-      "market_capitalization": 1778187548700.0,
+      "market_capitalization": 1778061300000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
       "book_value_of_equity": 194066000000.0,
       "exchange_rate": 1.0,
@@ -70568,7 +70646,7 @@
     {
       "symbol": "META",
       "report_date": "2025-10-13T00:00:00.000",
-      "market_capitalization": 1804407810300.0,
+      "market_capitalization": 1804279700000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
       "book_value_of_equity": 194066000000.0,
       "exchange_rate": 1.0,
@@ -70578,7 +70656,7 @@
     {
       "symbol": "META",
       "report_date": "2025-10-14T00:00:00.000",
-      "market_capitalization": 1786633498350.0,
+      "market_capitalization": 1786506650000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
       "book_value_of_equity": 194066000000.0,
       "exchange_rate": 1.0,
@@ -70588,7 +70666,7 @@
     {
       "symbol": "META",
       "report_date": "2025-10-15T00:00:00.000",
-      "market_capitalization": 1809071991450.0,
+      "market_capitalization": 1808943550000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
       "book_value_of_equity": 194066000000.0,
       "exchange_rate": 1.0,
@@ -70598,7 +70676,7 @@
     {
       "symbol": "META",
       "report_date": "2025-10-16T00:00:00.000",
-      "market_capitalization": 1795255930530.0,
+      "market_capitalization": 1795128470000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
       "book_value_of_equity": 194066000000.0,
       "exchange_rate": 1.0,
@@ -70608,7 +70686,7 @@
     {
       "symbol": "META",
       "report_date": "2025-10-17T00:00:00.000",
-      "market_capitalization": 1807483648680.0,
+      "market_capitalization": 1807355320000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
       "book_value_of_equity": 194066000000.0,
       "exchange_rate": 1.0,
@@ -70618,7 +70696,7 @@
     {
       "symbol": "META",
       "report_date": "2025-10-20T00:00:00.000",
-      "market_capitalization": 1845931628430.0,
+      "market_capitalization": 1845800570000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
       "book_value_of_equity": 194066000000.0,
       "exchange_rate": 1.0,
@@ -70628,7 +70706,7 @@
     {
       "symbol": "META",
       "report_date": "2025-10-21T00:00:00.000",
-      "market_capitalization": 1848704925330.0,
+      "market_capitalization": 1848573670000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
       "book_value_of_equity": 194066000000.0,
       "exchange_rate": 1.0,
@@ -70638,7 +70716,7 @@
     {
       "symbol": "META",
       "report_date": "2025-10-22T00:00:00.000",
-      "market_capitalization": 1849057890390.0,
+      "market_capitalization": 1848926610000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
       "book_value_of_equity": 194066000000.0,
       "exchange_rate": 1.0,
@@ -70648,12 +70726,12 @@
     {
       "symbol": "META",
       "report_date": "2025-10-23T00:00:00.000",
-      "market_capitalization": 1850545386000.0,
+      "market_capitalization": 1850414000000.0,
       "fiscal_quarter": "2025-09-30T00:00:00.000",
       "book_value_of_equity": 194066000000.0,
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 194066000000.0,
-      "pb_ratio": 9.54
+      "pb_ratio": 9.53
     },
     {
       "symbol": "META",
@@ -71118,7 +71196,7 @@
     {
       "symbol": "META",
       "report_date": "2025-12-31T00:00:00.000",
-      "market_capitalization": 1669788945447.0,
+      "market_capitalization": 1670027700000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
       "book_value_of_equity": 217243000000.0,
       "exchange_rate": 1.0,
@@ -71128,7 +71206,7 @@
     {
       "symbol": "META",
       "report_date": "2026-01-02T00:00:00.000",
-      "market_capitalization": 1645302046703.0,
+      "market_capitalization": 1645537300000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
       "book_value_of_equity": 217243000000.0,
       "exchange_rate": 1.0,
@@ -71138,7 +71216,7 @@
     {
       "symbol": "META",
       "report_date": "2026-01-05T00:00:00.000",
-      "market_capitalization": 1666500415657.0,
+      "market_capitalization": 1666738700000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
       "book_value_of_equity": 217243000000.0,
       "exchange_rate": 1.0,
@@ -71148,7 +71226,7 @@
     {
       "symbol": "META",
       "report_date": "2026-01-06T00:00:00.000",
-      "market_capitalization": 1671129653746.0,
+      "market_capitalization": 1671368600000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
       "book_value_of_equity": 217243000000.0,
       "exchange_rate": 1.0,
@@ -71158,7 +71236,7 @@
     {
       "symbol": "META",
       "report_date": "2026-01-07T00:00:00.000",
-      "market_capitalization": 1640951068827.0,
+      "market_capitalization": 1641185700000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
       "book_value_of_equity": 217243000000.0,
       "exchange_rate": 1.0,
@@ -71168,7 +71246,7 @@
     {
       "symbol": "META",
       "report_date": "2026-01-08T00:00:00.000",
-      "market_capitalization": 1634298120098.0,
+      "market_capitalization": 1634531800000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
       "book_value_of_equity": 217243000000.0,
       "exchange_rate": 1.0,
@@ -71178,17 +71256,17 @@
     {
       "symbol": "META",
       "report_date": "2026-01-09T00:00:00.000",
-      "market_capitalization": 1652005588198.0,
+      "market_capitalization": 1652241800000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
       "book_value_of_equity": 217243000000.0,
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 217243000000.0,
-      "pb_ratio": 7.6
+      "pb_ratio": 7.61
     },
     {
       "symbol": "META",
       "report_date": "2026-01-12T00:00:00.000",
-      "market_capitalization": 1623951899451.0,
+      "market_capitalization": 1624184100000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
       "book_value_of_equity": 217243000000.0,
       "exchange_rate": 1.0,
@@ -71198,7 +71276,7 @@
     {
       "symbol": "META",
       "report_date": "2026-01-13T00:00:00.000",
-      "market_capitalization": 1596429434747.0,
+      "market_capitalization": 1596657700000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
       "book_value_of_equity": 217243000000.0,
       "exchange_rate": 1.0,
@@ -71208,7 +71286,7 @@
     {
       "symbol": "META",
       "report_date": "2026-01-14T00:00:00.000",
-      "market_capitalization": 1557042966416.0,
+      "market_capitalization": 1557265600000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
       "book_value_of_equity": 217243000000.0,
       "exchange_rate": 1.0,
@@ -71218,7 +71296,7 @@
     {
       "symbol": "META",
       "report_date": "2026-01-15T00:00:00.000",
-      "market_capitalization": 1570399456640.0,
+      "market_capitalization": 1570624000000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
       "book_value_of_equity": 217243000000.0,
       "exchange_rate": 1.0,
@@ -71228,7 +71306,7 @@
     {
       "symbol": "META",
       "report_date": "2026-01-16T00:00:00.000",
-      "market_capitalization": 1569008155575.0,
+      "market_capitalization": 1569232500000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
       "book_value_of_equity": 217243000000.0,
       "exchange_rate": 1.0,
@@ -71238,17 +71316,17 @@
     {
       "symbol": "META",
       "report_date": "2026-01-20T00:00:00.000",
-      "market_capitalization": 1528205089796.0,
+      "market_capitalization": 1528423600000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
       "book_value_of_equity": 217243000000.0,
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 217243000000.0,
-      "pb_ratio": 7.03
+      "pb_ratio": 7.04
     },
     {
       "symbol": "META",
       "report_date": "2026-01-21T00:00:00.000",
-      "market_capitalization": 1550567092368.0,
+      "market_capitalization": 1550788800000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
       "book_value_of_equity": 217243000000.0,
       "exchange_rate": 1.0,
@@ -71258,7 +71336,7 @@
     {
       "symbol": "META",
       "report_date": "2026-01-22T00:00:00.000",
-      "market_capitalization": 1638269652229.0,
+      "market_capitalization": 1638503900000.0,
       "fiscal_quarter": "2025-12-31T00:00:00.000",
       "book_value_of_equity": 217243000000.0,
       "exchange_rate": 1.0,
@@ -71728,7 +71806,7 @@
     {
       "symbol": "META",
       "report_date": "2026-03-31T00:00:00.000",
-      "market_capitalization": 1452282033501.0,
+      "market_capitalization": 1452065940000.0,
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "book_value_of_equity": 243681000000.0,
       "exchange_rate": 1.0,
@@ -72144,6 +72222,36 @@
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 243681000000.0,
       "pb_ratio": 6.59
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-01T00:00:00.000",
+      "market_capitalization": 1524247038951.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 243681000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 243681000000.0,
+      "pb_ratio": 6.26
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-02T00:00:00.000",
+      "market_capitalization": 1517037916779.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 243681000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 243681000000.0,
+      "pb_ratio": 6.23
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-03T00:00:00.000",
+      "market_capitalization": 1581386947434.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 243681000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 243681000000.0,
+      "pb_ratio": 6.49
     }
   ],
   "pegRatio": [
@@ -106806,6 +106914,36 @@
       "ttm_pe": 22.99,
       "eps_yoy_growth": 0.6249,
       "peg_ratio": 0.37
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-01T00:00:00.000",
+      "close_price": 600.47,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 27.5066,
+      "ttm_pe": 21.83,
+      "eps_yoy_growth": 0.6249,
+      "peg_ratio": 0.35
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-02T00:00:00.000",
+      "close_price": 597.63,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 27.5066,
+      "ttm_pe": 21.73,
+      "eps_yoy_growth": 0.6249,
+      "peg_ratio": 0.35
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-03T00:00:00.000",
+      "close_price": 622.98,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 27.5066,
+      "ttm_pe": 22.65,
+      "eps_yoy_growth": 0.6249,
+      "peg_ratio": 0.36
     }
   ]
 }

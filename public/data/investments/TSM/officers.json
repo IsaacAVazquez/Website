@@ -5,10 +5,10 @@
     "title": "Chairman & CEO",
     "age": null,
     "born": null,
-    "pay": 65351635,
+    "pay": 65240633,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-01"
+    "report_date": "2026-06-04"
   },
   {
     "symbol": "TSM",
@@ -19,7 +19,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-01"
+    "report_date": "2026-06-04"
   },
   {
     "symbol": "TSM",
@@ -30,7 +30,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-01"
+    "report_date": "2026-06-04"
   },
   {
     "symbol": "TSM",
@@ -41,7 +41,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-01"
+    "report_date": "2026-06-04"
   },
   {
     "symbol": "TSM",
@@ -52,7 +52,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-01"
+    "report_date": "2026-06-04"
   },
   {
     "symbol": "TSM",
@@ -63,7 +63,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-01"
+    "report_date": "2026-06-04"
   },
   {
     "symbol": "TSM",
@@ -71,10 +71,10 @@
     "title": "Senior VP & CFO",
     "age": null,
     "born": null,
-    "pay": 9467658,
+    "pay": 9451576,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-01"
+    "report_date": "2026-06-04"
   },
   {
     "symbol": "TSM",
@@ -85,7 +85,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-01"
+    "report_date": "2026-06-04"
   },
   {
     "symbol": "TSM",
@@ -96,7 +96,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-01"
+    "report_date": "2026-06-04"
   },
   {
     "symbol": "TSM",
@@ -107,6 +107,6 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-01"
+    "report_date": "2026-06-04"
   }
 ]

@@ -1,10 +1,10 @@
 {
   "symbol": "ASML",
-  "lastUpdated": "2026-06-02T00:07:23.336952+00:00",
+  "lastUpdated": "2026-06-05T00:00:31.538495+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-02T00:07:23.336952+00:00",
+    "snapshotBuiltAt": "2026-06-05T00:00:31.538495+00:00",
     "sections": {
-      "price": "2026-05-29"
+      "price": "2026-06-03"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 29.9963,
-      "ttmPe": 53.77,
-      "marketCap": 621586249852,
-      "psRatio": 16.1,
-      "pbRatio": 26.04,
-      "pegRatio": 1.66
+      "ttmPe": 57.55,
+      "marketCap": 665369700572,
+      "psRatio": 17.23,
+      "pbRatio": 27.87,
+      "pegRatio": 1.78
     },
     "profitability": {
       "roe": 13.63,
@@ -5725,30 +5725,6 @@
     },
     "price": [
       {
-        "date": "2025-05-29",
-        "open": 757.83,
-        "high": 759.55,
-        "low": 744.84,
-        "close": 747.07,
-        "volume": 1166000
-      },
-      {
-        "date": "2025-05-30",
-        "open": 745.01,
-        "high": 745.96,
-        "low": 723,
-        "close": 736.77,
-        "volume": 1785400
-      },
-      {
-        "date": "2025-06-02",
-        "open": 733.29,
-        "high": 746.95,
-        "low": 732.66,
-        "close": 746.53,
-        "volume": 812600
-      },
-      {
         "date": "2025-06-03",
         "open": 732.66,
         "high": 748.55,
@@ -7739,6 +7715,30 @@
         "low": 1604.86,
         "close": 1612.76,
         "volume": 1069400
+      },
+      {
+        "date": "2026-06-01",
+        "open": 1594.47,
+        "high": 1646.53,
+        "low": 1585.61,
+        "close": 1628.5699,
+        "volume": 1058900
+      },
+      {
+        "date": "2026-06-02",
+        "open": 1659.6899,
+        "high": 1708.3199,
+        "low": 1647.59,
+        "close": 1705.37,
+        "volume": 1484000
+      },
+      {
+        "date": "2026-06-03",
+        "open": 1710.73,
+        "high": 1743.27,
+        "low": 1690,
+        "close": 1726.36,
+        "volume": 1812048
       }
     ],
     "officers": [
@@ -7755,21 +7755,21 @@
         "title": "President, CEO and Chair of the Board of Management",
         "age": 52,
         "yearBorn": 1973,
-        "totalPay": 4411243
+        "totalPay": 4396451
       },
       {
         "name": "Mr. Frederic J. M. Schneider-Maunoury",
         "title": "Executive VP, COO & Member of the Management Board",
         "age": 64,
         "yearBorn": 1961,
-        "totalPay": 2615495
+        "totalPay": 2606725
       },
       {
         "name": "Mr. James P. Koonmen",
         "title": "Executive VP, Chief Customer Officer & Member of Management Board",
         "age": 58,
         "yearBorn": 1967,
-        "totalPay": 2784575
+        "totalPay": 2775238
       },
       {
         "name": "Mr. Marco J. A. Pieters",
@@ -7780,7 +7780,7 @@
         "title": "Executive VP, CFO & Member of the Management Board",
         "age": 60,
         "yearBorn": 1965,
-        "totalPay": 2596838
+        "totalPay": 2588130
       },
       {
         "name": "Mr. Ron Kool",
@@ -7791,7 +7791,7 @@
         "title": "Executive VP, Chief Strategic Sourcing & Procurement Officer and Member of Management Board",
         "age": 58,
         "yearBorn": 1967,
-        "totalPay": 2728604
+        "totalPay": 2719454
       },
       {
         "name": "Ms. Cristina Monteiro",
@@ -7801,18 +7801,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 53.77,
-        "industryAvg": 52.49
+        "value": 57.55,
+        "industryAvg": 56.69
       },
       {
         "metric": "P/S Ratio",
-        "value": 16.1,
-        "industryAvg": 14.3
+        "value": 17.23,
+        "industryAvg": 15.44
       },
       {
         "metric": "P/B Ratio",
-        "value": 26.04,
-        "industryAvg": 4.91
+        "value": 27.87,
+        "industryAvg": 5.26
       },
       {
         "metric": "ROE",
