@@ -13,8 +13,8 @@ export const formula1Snapshot: Formula1Snapshot = {
     "constructorStandings": "https://api.openf1.org/v1/championship_teams?session_key=11291"
   },
   "season": 2026,
-  "generatedAt": "2026-06-04T11:23:56.151Z",
-  "defaultMeetingKey": "1286",
+  "generatedAt": "2026-06-07T10:35:32.652Z",
+  "defaultMeetingKey": "1287",
   "standingsMeetingKey": "1285",
   "meetings": [
     {
@@ -2462,7 +2462,7 @@ export const formula1Snapshot: Formula1Snapshot = {
       "gmtOffset": "02:00:00",
       "startAt": "2026-06-05T11:30:00+00:00",
       "endAt": "2026-06-07T15:00:00+00:00",
-      "status": "upcoming",
+      "status": "live",
       "hasSprint": false,
       "raceSessionKey": "11299",
       "raceStartsAt": "2026-06-07T13:00:00+00:00",
@@ -3883,63 +3883,63 @@ export const formula1Snapshot: Formula1Snapshot = {
     "season": 2026,
     "totalRaces": 24,
     "completedRaces": 7,
-    "upcomingRaces": 17,
+    "upcomingRaces": 16,
     "sprintWeekends": 6
   },
   "nextMeeting": {
-    "key": "1286",
-    "name": "Monaco Grand Prix",
-    "officialName": "FORMULA 1 LOUIS VUITTON GRAND PRIX DE MONACO 2026",
-    "location": "Monte Carlo",
-    "countryName": "Monaco",
-    "countryCode": "MON",
-    "countryFlag": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/monaco-flag.png",
-    "circuitKey": "22",
-    "circuitShortName": "Monte Carlo",
-    "circuitType": "Temporary - Street",
-    "circuitImage": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Monaco%20carbon.png",
+    "key": "1287",
+    "name": "Barcelona Grand Prix",
+    "officialName": "FORMULA 1 MSC CRUISES GRAN PREMIO DE BARCELONA-CATALUNYA 2026",
+    "location": "Barcelona",
+    "countryName": "Spain",
+    "countryCode": "ESP",
+    "countryFlag": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/spain-flag.png",
+    "circuitKey": "15",
+    "circuitShortName": "Catalunya",
+    "circuitType": "Permanent",
+    "circuitImage": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Barcelona-Catalunya%20carbon.png",
     "gmtOffset": "02:00:00",
-    "startAt": "2026-06-05T11:30:00+00:00",
-    "endAt": "2026-06-07T15:00:00+00:00",
+    "startAt": "2026-06-12T11:30:00+00:00",
+    "endAt": "2026-06-14T15:00:00+00:00",
     "status": "upcoming",
     "hasSprint": false,
-    "raceSessionKey": "11299",
-    "raceStartsAt": "2026-06-07T13:00:00+00:00",
+    "raceSessionKey": "11307",
+    "raceStartsAt": "2026-06-14T13:00:00+00:00",
     "sessions": [
       {
-        "key": "11292",
+        "key": "11300",
         "name": "Practice 1",
         "type": "Practice",
-        "startAt": "2026-06-05T11:30:00+00:00",
-        "endAt": "2026-06-05T12:30:00+00:00"
+        "startAt": "2026-06-12T11:30:00+00:00",
+        "endAt": "2026-06-12T12:30:00+00:00"
       },
       {
-        "key": "11293",
+        "key": "11301",
         "name": "Practice 2",
         "type": "Practice",
-        "startAt": "2026-06-05T15:00:00+00:00",
-        "endAt": "2026-06-05T16:00:00+00:00"
+        "startAt": "2026-06-12T15:00:00+00:00",
+        "endAt": "2026-06-12T16:00:00+00:00"
       },
       {
-        "key": "11294",
+        "key": "11302",
         "name": "Practice 3",
         "type": "Practice",
-        "startAt": "2026-06-06T10:30:00+00:00",
-        "endAt": "2026-06-06T11:30:00+00:00"
+        "startAt": "2026-06-13T10:30:00+00:00",
+        "endAt": "2026-06-13T11:30:00+00:00"
       },
       {
-        "key": "11295",
+        "key": "11303",
         "name": "Qualifying",
         "type": "Qualifying",
-        "startAt": "2026-06-06T14:00:00+00:00",
-        "endAt": "2026-06-06T15:00:00+00:00"
+        "startAt": "2026-06-13T14:00:00+00:00",
+        "endAt": "2026-06-13T15:00:00+00:00"
       },
       {
-        "key": "11299",
+        "key": "11307",
         "name": "Race",
         "type": "Race",
-        "startAt": "2026-06-07T13:00:00+00:00",
-        "endAt": "2026-06-07T15:00:00+00:00"
+        "startAt": "2026-06-14T13:00:00+00:00",
+        "endAt": "2026-06-14T15:00:00+00:00"
       }
     ],
     "classification": [],
