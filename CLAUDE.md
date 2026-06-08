@@ -197,6 +197,15 @@ This is intentional to avoid stacked closing CTAs.
   - `/api/investments/quotes`
   - `/api/investments/data/[symbol]`
 
+#### Retirement planner
+
+- Surfaced as the `#retirement` band inside the investments dashboard (`InvestmentsDashboard.tsx`); reachable from the sidebar nav. Offers the live portfolio value as a one-click starting balance.
+- **Pure engine:** `src/lib/retirement/*` — framework-free and unit-tested. `project(input)` / `projectCore(input)` return `{ deterministic, monteCarlo, levers, verdict, targetNestEgg, assumptions }`. Expected return + volatility are **derived from the allocation** via dated capital-market assumptions (`capitalMarketAssumptions.ts`), never a single hardcoded number. Two-phase projection (accumulation/decumulation), seeded Monte Carlo (1,000 trials) with confidence bands, coarse account-aware taxes + RMDs, Social Security claim mechanics, and fixed-real / guardrails / fixed-% withdrawal strategies.
+- **CMAs are illustrative and tagged for verification** (`CMA_VERIFIED = false` in `capitalMarketAssumptions.ts`). Re-pin them to a dated primary source before relying on the figures; the UI discloses the source + as-of date + unverified state.
+- **State:** browser-local via `useRetirementPlan` (localStorage key `retirement_plan`), mirroring `useInvestments`. The headline (verdict/chart) computes synchronously; the heavier lever sensitivity runs off the critical path and fills in after paint.
+- **UI:** `src/components/investments/retirement/*` — progressive-disclosure inputs, honest "N of 100 scenarios" framing, D3 confidence-band chart, levers panel, editable assumptions footer, and the educational disclaimer (all output is illustrative, not advice).
+- Output is **educational only** — keep the disclaimer and assumption disclosure intact (compliance, spec §9).
+
 ### NFL Dashboard
 
 `/nfl` is a snapshot-driven NFL dashboard following the same pattern as the Premier League and La Liga. Data comes from public NFLverse CSVs (no API key required) and is committed to the repo as TypeScript.
