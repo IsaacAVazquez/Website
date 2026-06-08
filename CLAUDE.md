@@ -147,7 +147,7 @@ Redirects:
 
 `src/components/StaticHeader.tsx` uses `src/constants/navlinks.tsx`.
 
-All 7 links are active in the nav: Home, About, Projects, Writing, Investments, Resume, Contact.
+All 8 links are active in the nav: Home, About, Projects, Writing, Investments, Fantasy, Resume, Contact. The Fantasy link points to `/fantasy-football`.
 
 ### Layout
 

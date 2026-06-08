@@ -161,13 +161,13 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       id: 'page-fantasy-football',
       title: 'Fantasy Football Analytics Platform',
       excerpt:
-        'Advanced fantasy football analytics with tier charts, clustering, and draft tooling.',
+        'Snapshot-backed fantasy football rankings with consensus tiers, scoring toggles, and a manual draft assistant.',
       content:
-        'Fantasy football analytics data visualization D3 React TypeScript clustering tier charts draft tools waiver wire',
+        'Fantasy football rankings FantasyPros consensus tiers PPR half PPR standard scoring overall position QB RB WR TE draft assistant snake draft waiver',
       url: '/fantasy-football',
       type: 'project',
       category: 'Fantasy Football Analytics',
-      tags: ['Fantasy Football', 'Analytics', 'Data Visualization', 'React', 'TypeScript'],
+      tags: ['Fantasy Football', 'Rankings', 'Draft Tools', 'Next.js', 'TypeScript'],
     },
     {
       id: 'page-news-pulse',
