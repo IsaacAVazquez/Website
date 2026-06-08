@@ -9,6 +9,7 @@ import {
   IconHelp,
   IconHome,
   IconList,
+  IconPigMoney,
   IconReportMoney,
   IconSearch,
   IconWallet,
@@ -20,6 +21,7 @@ import { DataFreshnessIndicator } from "./DataFreshnessIndicator";
 import { HoldingsTable } from "./HoldingsTable";
 import { ResearchSection } from "./ResearchSection";
 import { StockSearch } from "./StockSearch";
+import { RetirementPlanner } from "./retirement/RetirementPlanner";
 import { useInvestments } from "@/hooks/useInvestments";
 import type { ResearchTab } from "@/app/investments/investments-state";
 
@@ -105,6 +107,7 @@ export function InvestmentsDashboard({
       { id: "stats", label: "Portfolio stats", href: "#portfolio-stats", icon: IconCircleHalf },
       { id: "performance", label: "Performance", href: "#hero", icon: IconChartLine },
       { id: "research", label: "Research", href: "#research-section", icon: IconReportMoney },
+      { id: "retirement", label: "Retirement", href: "#retirement", icon: IconPigMoney },
     ],
     [enhancedHoldings.length],
   );
@@ -346,6 +349,11 @@ export function InvestmentsDashboard({
         portfolioSymbols={portfolioSymbols}
       />
     </section>
+
+    {/* Retirement planner — projects whether the portfolio + savings last
+        through retirement, with allocation-derived Monte Carlo. Offers the
+        live portfolio value as a one-click starting balance. */}
+    <RetirementPlanner portfolioValue={summary.totalValue > 0 ? summary.totalValue : undefined} />
     </div>
   );
 }
