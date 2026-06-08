@@ -1,290 +1,572 @@
-export const FOOD_MAP_NEIGHBORHOOD_IDS = [
-  "east-austin",
-  "downtown",
-  "south-congress",
-  "south-lamar",
+// Food Map data — a curated, multi-city restaurant map.
+//
+// Spots live in one of a handful of cities and are attributed to one or more
+// "curators" (a point of view: Anthony Bourdain's picks, Isaac's personal
+// go-tos, or simply what's top-rated on Google). The page (`food-map-client`)
+// and the Leaflet map (`food-map-leaflet`) read from this file.
+//
+// Coordinates are approximate — good enough to drop a pin on the right block.
+// Detail links resolve to a Google Maps search so they stay valid if a venue
+// moves; always verify hours before making a trip.
+
+export type LatLng = [number, number];
+
+/* -------------------------------------------------------------------------- */
+/* Cities                                                                      */
+/* -------------------------------------------------------------------------- */
+
+export const FOOD_MAP_CITY_IDS = [
+  "austin",
+  "sf",
+  "nyc",
+  "nola",
+  "la",
+  "tokyo",
 ] as const;
 
-export type FoodMapNeighborhoodId = (typeof FOOD_MAP_NEIGHBORHOOD_IDS)[number];
+export type FoodMapCityId = (typeof FOOD_MAP_CITY_IDS)[number];
+
+export interface FoodMapCity {
+  id: FoodMapCityId;
+  name: string;
+  country: string;
+  /** Map center when this city is selected. */
+  center: LatLng;
+  /** Zoom level when this city is selected. */
+  zoom: number;
+}
+
+export const FOOD_MAP_CITIES: readonly FoodMapCity[] = [
+  { id: "austin", name: "Austin", country: "USA", center: [30.2649, -97.747], zoom: 12 },
+  { id: "sf", name: "San Francisco Bay Area", country: "USA", center: [37.79, -122.41], zoom: 12 },
+  { id: "nyc", name: "New York City", country: "USA", center: [40.72, -73.99], zoom: 12 },
+  { id: "nola", name: "New Orleans", country: "USA", center: [29.95, -90.07], zoom: 12 },
+  { id: "la", name: "Los Angeles", country: "USA", center: [34.05, -118.27], zoom: 11 },
+  // NOTE: Tokyo longitude is positive (east of the meridian). The source data
+  // this was ported from used a negative sign, which plots pins in the Pacific.
+  { id: "tokyo", name: "Tokyo", country: "Japan", center: [35.67, 139.74], zoom: 11 },
+] as const;
+
+/* -------------------------------------------------------------------------- */
+/* Curators                                                                    */
+/* -------------------------------------------------------------------------- */
+
+export const FOOD_MAP_CURATOR_IDS = ["bourdain", "isaac", "google"] as const;
+
+export type FoodMapCuratorId = (typeof FOOD_MAP_CURATOR_IDS)[number];
+
+export interface FoodMapCurator {
+  id: FoodMapCuratorId;
+  name: string;
+  blurb: string;
+  /** Hex accent for the map pin + card. Leaflet markers are inline SVG, so a
+   *  real color value is required here rather than a CSS variable. Tuned to sit
+   *  alongside the editorial palette. */
+  accent: string;
+}
+
+export const FOOD_MAP_CURATORS: readonly FoodMapCurator[] = [
+  {
+    id: "bourdain",
+    name: "Anthony Bourdain",
+    blurb:
+      "The late chef's no-reservations picks — dives, legends, and gut-truth cooking.",
+    accent: "#B3493E",
+  },
+  {
+    id: "isaac",
+    name: "Isaac's Picks",
+    blurb: "My personal go-tos — the places I actually send friends to.",
+    accent: "#C2872E",
+  },
+  {
+    id: "google",
+    name: "Top Rated on Google",
+    blurb: "Crowd favorites with the reviews to back them up.",
+    accent: "#3B7A57",
+  },
+] as const;
+
+/* -------------------------------------------------------------------------- */
+/* Cuisines                                                                    */
+/* -------------------------------------------------------------------------- */
 
 export const FOOD_MAP_CUISINE_IDS = [
   "barbecue",
   "tacos",
   "mexican",
+  "oaxacan",
   "japanese",
+  "sushi",
+  "ramen",
+  "noodles",
   "asian",
   "pizza",
   "american",
+  "californian",
+  "steakhouse",
+  "deli",
+  "cajun",
+  "po-boys",
+  "italian",
+  "bakery",
   "seafood",
+  "oysters",
+  "hot-chicken",
   "coffee",
 ] as const;
 
 export type FoodMapCuisineId = (typeof FOOD_MAP_CUISINE_IDS)[number];
-
-export const FOOD_MAP_MEAL_IDS = [
-  "all",
-  "breakfast",
-  "lunch",
-  "dinner",
-  "coffee",
-] as const;
-
-export type FoodMapMealId = (typeof FOOD_MAP_MEAL_IDS)[number];
-
-export interface FoodMapNeighborhood {
-  id: FoodMapNeighborhoodId;
-  name: string;
-  blurb: string;
-  shape: { x: number; y: number; width: number; height: number };
-  labelX: number;
-  labelY: number;
-  accent: string;
-}
 
 export interface FoodMapCuisine {
   id: FoodMapCuisineId;
   label: string;
 }
 
-export interface FoodMapMeal {
-  id: FoodMapMealId;
-  label: string;
-}
-
-export interface FoodMapPlace {
-  id: string;
-  name: string;
-  neighborhood: FoodMapNeighborhoodId;
-  cuisine: FoodMapCuisineId;
-  meals: ReadonlyArray<Exclude<FoodMapMealId, "all">>;
-  price: "$" | "$$" | "$$$";
-  signature: string;
-  why: string;
-  x: number;
-  y: number;
-}
-
-export const FOOD_MAP_NEIGHBORHOODS: readonly FoodMapNeighborhood[] = [
-  {
-    id: "east-austin",
-    name: "East Austin",
-    blurb:
-      "I send people here first. The density of barbecue, taquerias, and dinner rooms doing their own thing is hard to match anywhere else in town.",
-    shape: { x: 56, y: 22, width: 32, height: 26 },
-    labelX: 72,
-    labelY: 19,
-    accent: "var(--home-haze)",
-  },
-  {
-    id: "downtown",
-    name: "Downtown",
-    blurb:
-      "I think of downtown as the workday option. It is more about a reliable hotel-bar dinner than a spot I would drive across town for.",
-    shape: { x: 30, y: 30, width: 22, height: 18 },
-    labelX: 41,
-    labelY: 27,
-    accent: "var(--home-moss)",
-  },
-  {
-    id: "south-congress",
-    name: "South Congress",
-    blurb:
-      "South Congress is where I take visitors when they want the all-day version of Austin food, from breakfast through oysters at night.",
-    shape: { x: 36, y: 58, width: 24, height: 22 },
-    labelX: 48,
-    labelY: 84,
-    accent: "var(--home-acid)",
-  },
-  {
-    id: "south-lamar",
-    name: "South Lamar",
-    blurb:
-      "South Lamar is the one I pick when I want a longer dinner. The rooms feel a little more grown up and the cooking has more reps behind it.",
-    shape: { x: 14, y: 58, width: 22, height: 22 },
-    labelX: 25,
-    labelY: 84,
-    accent: "var(--home-ink)",
-  },
-] as const;
-
 export const FOOD_MAP_CUISINES: readonly FoodMapCuisine[] = [
   { id: "barbecue", label: "Barbecue" },
   { id: "tacos", label: "Tacos" },
   { id: "mexican", label: "Mexican" },
+  { id: "oaxacan", label: "Oaxacan" },
   { id: "japanese", label: "Japanese" },
-  { id: "asian", label: "Asian smokehouse" },
+  { id: "sushi", label: "Sushi" },
+  { id: "ramen", label: "Ramen" },
+  { id: "noodles", label: "Noodles" },
+  { id: "asian", label: "Asian" },
   { id: "pizza", label: "Pizza" },
   { id: "american", label: "American" },
+  { id: "californian", label: "Californian" },
+  { id: "steakhouse", label: "Steakhouse" },
+  { id: "deli", label: "Deli" },
+  { id: "cajun", label: "Cajun" },
+  { id: "po-boys", label: "Po-Boys" },
+  { id: "italian", label: "Italian" },
+  { id: "bakery", label: "Bakery" },
   { id: "seafood", label: "Seafood" },
+  { id: "oysters", label: "Oysters" },
+  { id: "hot-chicken", label: "Hot Chicken" },
   { id: "coffee", label: "Coffee" },
 ] as const;
 
-export const FOOD_MAP_MEALS: readonly FoodMapMeal[] = [
-  { id: "all", label: "All meals" },
-  { id: "breakfast", label: "Breakfast" },
-  { id: "lunch", label: "Lunch" },
-  { id: "dinner", label: "Dinner" },
-  { id: "coffee", label: "Coffee" },
-] as const;
+/* -------------------------------------------------------------------------- */
+/* Places                                                                      */
+/* -------------------------------------------------------------------------- */
+
+export interface FoodMapPlace {
+  id: string;
+  name: string;
+  city: FoodMapCityId;
+  /** Curator ids who recommend this spot (at least one). */
+  curators: ReadonlyArray<FoodMapCuratorId>;
+  cuisine: FoodMapCuisineId;
+  coords: LatLng;
+  /** The signature order — what to actually get. */
+  order: string;
+  /** Why it earns the spot. */
+  why: string;
+  /** Display-only neighborhood label (Austin spots). */
+  neighborhood?: string;
+  /** Display-only price band (Austin spots). */
+  price?: "$" | "$$" | "$$$";
+}
 
 export const FOOD_MAP_PLACES: readonly FoodMapPlace[] = [
+  // ---- Austin ----
   {
     id: "franklin-barbecue",
     name: "Franklin Barbecue",
-    neighborhood: "east-austin",
+    city: "austin",
+    curators: ["isaac", "google"],
     cuisine: "barbecue",
-    meals: ["lunch"],
-    price: "$$",
-    signature: "Brisket, fatty end",
+    coords: [30.2701, -97.7314],
+    order: "Brisket, fatty end",
     why: "The line is the price of admission, and I think it still earns it. I plan a Franklin lunch like an event, not a casual stop.",
-    x: 64,
-    y: 32,
+    neighborhood: "East Austin",
+    price: "$$",
   },
   {
     id: "la-barbecue",
     name: "La Barbecue",
-    neighborhood: "east-austin",
+    city: "austin",
+    curators: ["isaac"],
     cuisine: "barbecue",
-    meals: ["lunch"],
-    price: "$$",
-    signature: "Brisket plate with the sausage add-on",
+    coords: [30.2575, -97.7212],
+    order: "Brisket plate with the sausage add-on",
     why: "I rotate La Barbecue in when I want the same caliber of brisket without committing the whole morning to a queue.",
-    x: 71,
-    y: 41,
+    neighborhood: "East Austin",
+    price: "$$",
   },
   {
     id: "veracruz-all-natural",
     name: "Veracruz All Natural",
-    neighborhood: "east-austin",
+    city: "austin",
+    curators: ["isaac", "google"],
     cuisine: "tacos",
-    meals: ["breakfast", "lunch"],
-    price: "$",
-    signature: "Migas taco",
+    coords: [30.2553, -97.7193],
+    order: "Migas taco",
     why: "I think the migas taco is the single best argument for Austin breakfast. I order two and never feel like that was a mistake.",
-    x: 60,
-    y: 38,
+    neighborhood: "East Austin",
+    price: "$",
   },
   {
     id: "suerte",
     name: "Suerte",
-    neighborhood: "east-austin",
+    city: "austin",
+    curators: ["isaac"],
     cuisine: "mexican",
-    meals: ["dinner"],
-    price: "$$$",
-    signature: "Suadero tacos",
+    coords: [30.2607, -97.7224],
+    order: "Suadero tacos",
     why: "Suerte is where I take dinners that need to land. The masa work alone makes it the most distinctive Mexican kitchen in town.",
-    x: 75,
-    y: 35,
+    neighborhood: "East Austin",
+    price: "$$$",
   },
   {
     id: "kemuri-tatsu-ya",
     name: "Kemuri Tatsu-ya",
-    neighborhood: "east-austin",
+    city: "austin",
+    curators: ["isaac"],
     cuisine: "japanese",
-    meals: ["dinner"],
-    price: "$$",
-    signature: "Brisket ramen",
+    coords: [30.2543, -97.7079],
+    order: "Brisket ramen",
     why: "I love that Kemuri does not pretend Texas and Japan are separate ideas. The brisket ramen reads as a real dish, not a gimmick.",
-    x: 80,
-    y: 28,
+    neighborhood: "East Austin",
+    price: "$$",
   },
   {
     id: "cuvee-coffee",
     name: "Cuvée Coffee",
-    neighborhood: "east-austin",
+    city: "austin",
+    curators: ["isaac"],
     cuisine: "coffee",
-    meals: ["coffee", "breakfast"],
-    price: "$",
-    signature: "Black & Blue nitro",
+    coords: [30.2662, -97.7212],
+    order: "Black & Blue nitro",
     why: "I write here when I need a long, quiet morning. The nitro is the one I miss when I am out of town.",
-    x: 58,
-    y: 44,
+    neighborhood: "East Austin",
+    price: "$",
   },
   {
     id: "uchi",
     name: "Uchi",
-    neighborhood: "south-lamar",
+    city: "austin",
+    curators: ["isaac", "google"],
     cuisine: "japanese",
-    meals: ["dinner"],
-    price: "$$$",
-    signature: "Hama chili",
+    coords: [30.2586, -97.7639],
+    order: "Hama chili",
     why: "Uchi is the dinner I send out-of-town friends to when they want the full version. The hama chili still sets the bar.",
-    x: 25,
-    y: 64,
+    neighborhood: "South Lamar",
+    price: "$$$",
   },
   {
     id: "loro",
     name: "Loro",
-    neighborhood: "south-lamar",
+    city: "austin",
+    curators: ["isaac"],
     cuisine: "asian",
-    meals: ["lunch", "dinner"],
-    price: "$$",
-    signature: "Oak-grilled hamachi",
+    coords: [30.249, -97.7831],
+    order: "Oak-grilled hamachi",
     why: "Loro is my answer when someone wants smoke and a patio without the Franklin commitment. I usually start with the hamachi and a slushie.",
-    x: 31,
-    y: 71,
+    neighborhood: "South Lamar",
+    price: "$$",
   },
   {
     id: "home-slice-pizza",
     name: "Home Slice Pizza",
-    neighborhood: "south-congress",
+    city: "austin",
+    curators: ["isaac", "google"],
     cuisine: "pizza",
-    meals: ["lunch", "dinner"],
-    price: "$",
-    signature: "Cheese slice, doubled up",
+    coords: [30.2495, -97.7501],
+    order: "Cheese slice, doubled up",
     why: "I think Home Slice is the most honest pizza in town. I order two cheese slices and walk South Congress like a tourist on purpose.",
-    x: 45,
-    y: 70,
+    neighborhood: "South Congress",
+    price: "$",
   },
   {
     id: "junes-all-day",
     name: "June's All Day",
-    neighborhood: "south-congress",
+    city: "austin",
+    curators: ["isaac"],
     cuisine: "american",
-    meals: ["breakfast", "lunch", "dinner"],
-    price: "$$",
-    signature: "Breakfast sandwich",
+    coords: [30.2475, -97.7502],
+    order: "Breakfast sandwich",
     why: "June's is my default when I cannot tell what meal I am in the mood for. The room flexes between brunch and dinner without losing the thread.",
-    x: 51,
-    y: 64,
+    neighborhood: "South Congress",
+    price: "$$",
   },
   {
     id: "perlas",
     name: "Perla's",
-    neighborhood: "south-congress",
+    city: "austin",
+    curators: ["isaac"],
     cuisine: "seafood",
-    meals: ["dinner"],
-    price: "$$$",
-    signature: "Oyster tower",
+    coords: [30.2503, -97.7501],
+    order: "Oyster tower",
     why: "Perla's is the patio I pick when the night needs to feel like a proper Austin evening. Oysters first, then whatever the chalkboard says.",
-    x: 49,
-    y: 78,
+    neighborhood: "South Congress",
+    price: "$$$",
   },
   {
     id: "eberly",
     name: "Eberly",
-    neighborhood: "downtown",
+    city: "austin",
+    curators: ["isaac"],
     cuisine: "american",
-    meals: ["dinner"],
-    price: "$$",
-    signature: "Cedar Tavern bar snacks",
+    coords: [30.2614, -97.7626],
+    order: "Cedar Tavern bar snacks",
     why: "Eberly is my downtown move when the night is part work, part dinner. The Cedar Tavern bar still feels like the city's living room.",
-    x: 39,
-    y: 43,
+    neighborhood: "Downtown",
+    price: "$$",
+  },
+
+  // ---- San Francisco Bay Area ----
+  {
+    id: "swan-oyster-depot",
+    name: "Swan Oyster Depot",
+    city: "sf",
+    curators: ["bourdain", "isaac"],
+    cuisine: "seafood",
+    coords: [37.7916, -122.4205],
+    order: "Half-dozen oysters, crab back, and a cold Anchor Steam.",
+    why: "A 100-year-old marble counter Bourdain called one of his favorite places on earth.",
+  },
+  {
+    id: "la-taqueria",
+    name: "La Taqueria",
+    city: "sf",
+    curators: ["google"],
+    cuisine: "tacos",
+    coords: [37.751, -122.4181],
+    order: "Carnitas burrito, dorado-style (griddled), no rice.",
+    why: "Mission institution that's topped national 'best burrito' lists for years.",
+  },
+  {
+    id: "zuni-cafe",
+    name: "Zuni Café",
+    city: "sf",
+    curators: ["google", "isaac"],
+    cuisine: "californian",
+    coords: [37.7726, -122.4216],
+    order: "The brick-oven roast chicken for two with bread salad.",
+    why: "A Market Street classic where the roast chicken is basically a religion.",
+  },
+  {
+    id: "cheese-board-pizza",
+    name: "Cheese Board Pizza",
+    city: "sf",
+    curators: ["isaac"],
+    cuisine: "pizza",
+    coords: [37.8797, -122.269],
+    order: "Whatever's on the board — there's only one, and it's always good.",
+    why: "Worker-owned Berkeley co-op with one vegetarian pizza a day and a line out the door.",
+  },
+  {
+    id: "tartine-bakery",
+    name: "Tartine Bakery",
+    city: "sf",
+    curators: ["google"],
+    cuisine: "bakery",
+    coords: [37.7614, -122.4241],
+    order: "Morning bun and a slice of the pressed sandwich.",
+    why: "The bakery that set the modern country-loaf standard.",
+  },
+
+  // ---- New York City ----
+  {
+    id: "katzs-deli",
+    name: "Katz's Delicatessen",
+    city: "nyc",
+    curators: ["bourdain", "google"],
+    cuisine: "deli",
+    coords: [40.7223, -73.9874],
+    order: "Hand-cut pastrami on rye, mustard only.",
+    why: "Since 1888 — the platonic ideal of a New York deli, ticket system and all.",
+  },
+  {
+    id: "russ-and-daughters",
+    name: "Russ & Daughters",
+    city: "nyc",
+    curators: ["bourdain"],
+    cuisine: "deli",
+    coords: [40.7226, -73.9882],
+    order: "Bagel with sable, cream cheese, and a little smoked salmon.",
+    why: "Century-old Lower East Side appetizing shop and a Bourdain pilgrimage stop.",
+  },
+  {
+    id: "di-fara-pizza",
+    name: "Di Fara Pizza",
+    city: "nyc",
+    curators: ["bourdain"],
+    cuisine: "pizza",
+    coords: [40.625, -73.9615],
+    order: "Classic round pie with fresh basil snipped on top.",
+    why: "Dom DeMarco's Midwood shrine — every pie made by hand, no rushing.",
+  },
+  {
+    id: "peter-luger",
+    name: "Peter Luger Steak House",
+    city: "nyc",
+    curators: ["google"],
+    cuisine: "steakhouse",
+    coords: [40.7099, -73.9626],
+    order: "Porterhouse for two, creamed spinach, and the bacon to start.",
+    why: "Williamsburg's cash-only steak temple, slinging porterhouse since 1887.",
+  },
+  {
+    id: "xian-famous-foods",
+    name: "Xi'an Famous Foods",
+    city: "nyc",
+    curators: ["isaac"],
+    cuisine: "noodles",
+    coords: [40.7159, -73.997],
+    order: "Spicy cumin lamb hand-ripped noodles.",
+    why: "Hand-pulled noodles and cumin lamb that started in a Flushing basement.",
+  },
+
+  // ---- New Orleans ----
+  {
+    id: "domilises",
+    name: "Domilise's Po-Boys",
+    city: "nola",
+    curators: ["bourdain"],
+    cuisine: "po-boys",
+    coords: [29.927, -90.099],
+    order: "Fried shrimp po-boy, dressed, with a Barq's root beer.",
+    why: "A corner shop and a Bourdain favorite for the real, dressed New Orleans po-boy.",
+  },
+  {
+    id: "cochon",
+    name: "Cochon",
+    city: "nola",
+    curators: ["bourdain", "google"],
+    cuisine: "cajun",
+    coords: [29.943, -90.0668],
+    order: "Fried boudin, the wood-fired oyster roast, and the namesake cochon.",
+    why: "Donald Link's Warehouse District ode to whole-hog Cajun cooking.",
+  },
+  {
+    id: "cafe-du-monde",
+    name: "Café du Monde",
+    city: "nola",
+    curators: ["google"],
+    cuisine: "coffee",
+    coords: [29.9575, -90.0617],
+    order: "Order of three beignets and a café au lait.",
+    why: "The 24-hour French Quarter coffee stand that defines a NOLA morning.",
+  },
+  {
+    id: "casamentos",
+    name: "Casamento's",
+    city: "nola",
+    curators: ["isaac"],
+    cuisine: "oysters",
+    coords: [29.923, -90.098],
+    order: "Oyster loaf on pan bread.",
+    why: "Tile-walled Uptown oyster house, open only when oysters are in season.",
+  },
+
+  // ---- Los Angeles ----
+  {
+    id: "langers-deli",
+    name: "Langer's Delicatessen",
+    city: "la",
+    curators: ["bourdain", "google"],
+    cuisine: "deli",
+    coords: [34.0577, -118.276],
+    order: "The #19 — pastrami, Swiss, slaw, and Russian on double-baked rye.",
+    why: "Bourdain swore the #19 was the best pastrami sandwich in America.",
+  },
+  {
+    id: "guelaguetza",
+    name: "Guelaguetza",
+    city: "la",
+    curators: ["bourdain", "isaac"],
+    cuisine: "oaxacan",
+    coords: [34.0566, -118.294],
+    order: "Mole negro plate and a michelada.",
+    why: "The James Beard-honored heart of LA's Oaxacan cooking.",
+  },
+  {
+    id: "howlin-rays",
+    name: "Howlin' Ray's",
+    city: "la",
+    curators: ["google"],
+    cuisine: "hot-chicken",
+    coords: [34.0617, -118.2387],
+    order: "The sando at 'medium' — that's plenty hot.",
+    why: "Chinatown Nashville hot chicken worth the famously long line.",
+  },
+  {
+    id: "bestia",
+    name: "Bestia",
+    city: "la",
+    curators: ["isaac"],
+    cuisine: "italian",
+    coords: [34.0335, -118.23],
+    order: "Cavatelli alla Norcina and any pizza off the wood oven.",
+    why: "Arts District Italian that's been a hard reservation for a decade.",
+  },
+
+  // ---- Tokyo ----
+  {
+    id: "sukiyabashi-jiro",
+    name: "Sukiyabashi Jiro",
+    city: "tokyo",
+    curators: ["bourdain"],
+    cuisine: "sushi",
+    coords: [35.672, 139.7636],
+    order: "Whatever Jiro's counter serves, in the order it's served.",
+    why: "The Ginza basement omakase made famous worldwide — pure, exacting edomae sushi.",
+  },
+  {
+    id: "rokurinsha",
+    name: "Rokurinsha",
+    city: "tokyo",
+    curators: ["isaac", "google"],
+    cuisine: "ramen",
+    coords: [35.6812, 139.7671],
+    order: "Tsukemen — thick noodles, dip in the rich pork-fish broth.",
+    why: "Tokyo Station's Ramen Street legend that helped make tsukemen famous.",
+  },
+  {
+    id: "ichiran-shibuya",
+    name: "Ichiran Shibuya",
+    city: "tokyo",
+    curators: ["google"],
+    cuisine: "ramen",
+    coords: [35.6595, 139.7005],
+    order: "Classic tonkotsu, customize the richness and spice on the slip.",
+    why: "Solo-booth tonkotsu chain perfected for a heads-down, focused bowl.",
+  },
+  {
+    id: "tsukiji-outer-market",
+    name: "Tsukiji Outer Market",
+    city: "tokyo",
+    curators: ["bourdain", "isaac"],
+    cuisine: "seafood",
+    coords: [35.6654, 139.7707],
+    order: "Grilled scallop on a stick, then a tuna bowl. Go hungry.",
+    why: "Stalls of tamagoyaki, uni, and the freshest sushi breakfast in the city.",
   },
 ] as const;
 
-const neighborhoodMap = new Map(
-  FOOD_MAP_NEIGHBORHOODS.map((entry) => [entry.id, entry])
-);
+/* -------------------------------------------------------------------------- */
+/* Lookups + guards                                                            */
+/* -------------------------------------------------------------------------- */
+
+const cityMap = new Map(FOOD_MAP_CITIES.map((entry) => [entry.id, entry]));
+const curatorMap = new Map(FOOD_MAP_CURATORS.map((entry) => [entry.id, entry]));
 const cuisineMap = new Map(FOOD_MAP_CUISINES.map((entry) => [entry.id, entry]));
-const mealMap = new Map(FOOD_MAP_MEALS.map((entry) => [entry.id, entry]));
 const placeMap = new Map(FOOD_MAP_PLACES.map((entry) => [entry.id, entry]));
 
-export function isFoodMapNeighborhoodId(
+export function isFoodMapCityId(
   value: string | null | undefined
-): value is FoodMapNeighborhoodId {
-  return Boolean(value && neighborhoodMap.has(value as FoodMapNeighborhoodId));
+): value is FoodMapCityId {
+  return Boolean(value && cityMap.has(value as FoodMapCityId));
+}
+
+export function isFoodMapCuratorId(
+  value: string | null | undefined
+): value is FoodMapCuratorId {
+  return Boolean(value && curatorMap.has(value as FoodMapCuratorId));
 }
 
 export function isFoodMapCuisineId(
@@ -293,20 +575,16 @@ export function isFoodMapCuisineId(
   return Boolean(value && cuisineMap.has(value as FoodMapCuisineId));
 }
 
-export function isFoodMapMealId(
-  value: string | null | undefined
-): value is FoodMapMealId {
-  return Boolean(value && mealMap.has(value as FoodMapMealId));
-}
-
 export function isFoodMapPlaceId(value: string | null | undefined): boolean {
   return Boolean(value && placeMap.has(value));
 }
 
-export function getFoodMapNeighborhood(
-  id: FoodMapNeighborhoodId
-): FoodMapNeighborhood {
-  return neighborhoodMap.get(id) ?? FOOD_MAP_NEIGHBORHOODS[0];
+export function getFoodMapCity(id: FoodMapCityId): FoodMapCity {
+  return cityMap.get(id) ?? FOOD_MAP_CITIES[0];
+}
+
+export function getFoodMapCurator(id: FoodMapCuratorId): FoodMapCurator {
+  return curatorMap.get(id) ?? FOOD_MAP_CURATORS[0];
 }
 
 export function getFoodMapCuisine(id: FoodMapCuisineId): FoodMapCuisine {
@@ -317,10 +595,19 @@ export function getFoodMapPlace(id: string): FoodMapPlace | undefined {
   return placeMap.get(id);
 }
 
+/** First curator drives a place's pin + card accent color. */
+export function getPlaceAccent(place: FoodMapPlace): string {
+  return getFoodMapCurator(place.curators[0]).accent;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Filtering + counts                                                          */
+/* -------------------------------------------------------------------------- */
+
 export interface FoodMapFilters {
-  neighborhoods: ReadonlyArray<FoodMapNeighborhoodId>;
+  city: FoodMapCityId;
+  curators: ReadonlyArray<FoodMapCuratorId>;
   cuisines: ReadonlyArray<FoodMapCuisineId>;
-  meal: FoodMapMealId;
 }
 
 export function filterFoodMapPlaces(
@@ -328,24 +615,18 @@ export function filterFoodMapPlaces(
   filters: FoodMapFilters
 ): FoodMapPlace[] {
   return places.filter((place) => {
-    if (
-      filters.neighborhoods.length > 0 &&
-      !filters.neighborhoods.includes(place.neighborhood)
-    ) {
+    if (place.city !== filters.city) {
       return false;
     }
 
     if (
-      filters.cuisines.length > 0 &&
-      !filters.cuisines.includes(place.cuisine)
+      filters.curators.length > 0 &&
+      !filters.curators.some((curator) => place.curators.includes(curator))
     ) {
       return false;
     }
 
-    if (
-      filters.meal !== "all" &&
-      !place.meals.includes(filters.meal as Exclude<FoodMapMealId, "all">)
-    ) {
+    if (filters.cuisines.length > 0 && !filters.cuisines.includes(place.cuisine)) {
       return false;
     }
 
@@ -353,19 +634,40 @@ export function filterFoodMapPlaces(
   });
 }
 
-export function countPlacesByNeighborhood(
+export function countPlacesByCity(
   places: ReadonlyArray<FoodMapPlace>
-): Record<FoodMapNeighborhoodId, number> {
-  const counts = FOOD_MAP_NEIGHBORHOODS.reduce<
-    Record<FoodMapNeighborhoodId, number>
-  >((acc, neighborhood) => {
-    acc[neighborhood.id] = 0;
-    return acc;
-  }, {} as Record<FoodMapNeighborhoodId, number>);
+): Record<FoodMapCityId, number> {
+  const counts = FOOD_MAP_CITIES.reduce<Record<FoodMapCityId, number>>(
+    (acc, city) => {
+      acc[city.id] = 0;
+      return acc;
+    },
+    {} as Record<FoodMapCityId, number>
+  );
 
   for (const place of places) {
-    counts[place.neighborhood] = (counts[place.neighborhood] ?? 0) + 1;
+    counts[place.city] = (counts[place.city] ?? 0) + 1;
   }
 
   return counts;
+}
+
+/** Cuisines actually present in a city, in canonical order — used to scope the
+ *  cuisine filter chips to the selected city. */
+export function getCuisinesForCity(
+  cityId: FoodMapCityId
+): FoodMapCuisine[] {
+  const present = new Set(
+    FOOD_MAP_PLACES.filter((place) => place.city === cityId).map(
+      (place) => place.cuisine
+    )
+  );
+  return FOOD_MAP_CUISINES.filter((cuisine) => present.has(cuisine.id));
+}
+
+/** Google Maps search link for a spot, resilient to a venue moving address. */
+export function mapsLink(place: FoodMapPlace): string {
+  const city = getFoodMapCity(place.city);
+  const query = encodeURIComponent(`${place.name} ${city.name}`.trim());
+  return `https://www.google.com/maps/search/?api=1&query=${query}`;
 }

@@ -3,88 +3,94 @@ import {
   DEFAULT_FOOD_MAP_STATE,
   normalizeFoodMapState,
   resetFoodMapFilters,
-  setMeal,
+  setCity,
   setPick,
   toggleCuisine,
-  toggleNeighborhood,
+  toggleCurator,
 } from "../food-map-state";
 
 describe("food-map-state", () => {
-  it("returns the default state when params are empty", () => {
+  it("returns the default state (Austin, no filters) when params are empty", () => {
     expect(normalizeFoodMapState({})).toEqual(DEFAULT_FOOD_MAP_STATE);
+    expect(DEFAULT_FOOD_MAP_STATE.city).toBe("austin");
   });
 
-  it("drops invalid neighborhoods, cuisines, meal, and pick values", () => {
+  it("drops invalid city, curator, cuisine, and pick values", () => {
     expect(
       normalizeFoodMapState({
-        neighborhood: "east-austin,not-real,downtown",
+        city: "atlantis",
+        curator: "bourdain,not-real,isaac",
         cuisine: "tacos,nope",
-        meal: "midnight",
         pick: "fake-place",
       })
     ).toEqual({
-      neighborhoods: ["east-austin", "downtown"],
+      city: "austin",
+      curators: ["bourdain", "isaac"],
       cuisines: ["tacos"],
-      meal: "all",
       pick: null,
     });
   });
 
   it("dedupes repeated values inside a list parameter", () => {
     expect(
-      normalizeFoodMapState({
-        cuisine: "tacos,tacos,coffee",
-      }).cuisines
-    ).toEqual(["tacos", "coffee"]);
+      normalizeFoodMapState({ curator: "isaac,isaac,google" }).curators
+    ).toEqual(["isaac", "google"]);
   });
 
-  it("omits default values when serializing the href", () => {
+  it("omits the default city and empty filters when serializing the href", () => {
     expect(buildFoodMapHref(DEFAULT_FOOD_MAP_STATE)).toBe("/food-map");
     expect(
       buildFoodMapHref({
-        neighborhoods: ["east-austin"],
-        cuisines: ["tacos", "coffee"],
-        meal: "breakfast",
-        pick: "veracruz-all-natural",
+        city: "tokyo",
+        curators: ["bourdain", "isaac"],
+        cuisines: ["ramen"],
+        pick: "rokurinsha",
       })
     ).toBe(
-      "/food-map?neighborhood=east-austin&cuisine=tacos%2Ccoffee&meal=breakfast&pick=veracruz-all-natural"
+      "/food-map?city=tokyo&curator=bourdain%2Cisaac&cuisine=ramen&pick=rokurinsha"
     );
   });
 
-  it("toggles neighborhood and cuisine selections cleanly", () => {
-    const afterAdd = toggleNeighborhood(DEFAULT_FOOD_MAP_STATE, "east-austin");
-    expect(afterAdd.neighborhoods).toEqual(["east-austin"]);
+  it("toggles curator and cuisine selections cleanly and clears the pick", () => {
+    const curatorAdded = toggleCurator(DEFAULT_FOOD_MAP_STATE, "bourdain");
+    expect(curatorAdded.curators).toEqual(["bourdain"]);
+    expect(toggleCurator(curatorAdded, "bourdain").curators).toEqual([]);
 
-    const afterRemove = toggleNeighborhood(afterAdd, "east-austin");
-    expect(afterRemove.neighborhoods).toEqual([]);
-
-    const cuisineAdded = toggleCuisine(DEFAULT_FOOD_MAP_STATE, "tacos");
+    const withPick = setPick(DEFAULT_FOOD_MAP_STATE, "franklin-barbecue");
+    const cuisineAdded = toggleCuisine(withPick, "tacos");
     expect(cuisineAdded.cuisines).toEqual(["tacos"]);
     expect(cuisineAdded.pick).toBeNull();
   });
 
-  it("setMeal preserves filters and clears the pick", () => {
-    const base = setPick(DEFAULT_FOOD_MAP_STATE, "franklin-barbecue");
-    expect(base.pick).toBe("franklin-barbecue");
-
-    const next = setMeal(base, "lunch");
-    expect(next.meal).toBe("lunch");
-    expect(next.pick).toBeNull();
-  });
-
-  it("resetFoodMapFilters keeps the current pick", () => {
-    const filtered = {
-      neighborhoods: ["east-austin" as const],
+  it("setCity switches city, clearing city-scoped cuisines and the pick", () => {
+    const base = {
+      city: "austin" as const,
+      curators: ["isaac" as const],
       cuisines: ["tacos" as const],
-      meal: "breakfast" as const,
       pick: "veracruz-all-natural",
     };
 
-    const reset = resetFoodMapFilters(filtered);
-    expect(reset).toEqual({
-      ...DEFAULT_FOOD_MAP_STATE,
-      pick: "veracruz-all-natural",
+    const next = setCity(base, "tokyo");
+    expect(next.city).toBe("tokyo");
+    expect(next.cuisines).toEqual([]);
+    expect(next.pick).toBeNull();
+    // Curators are cross-city and survive a city change.
+    expect(next.curators).toEqual(["isaac"]);
+  });
+
+  it("resetFoodMapFilters keeps the city and pick but clears filters", () => {
+    const filtered = {
+      city: "nyc" as const,
+      curators: ["bourdain" as const],
+      cuisines: ["deli" as const],
+      pick: "katzs-deli",
+    };
+
+    expect(resetFoodMapFilters(filtered)).toEqual({
+      city: "nyc",
+      curators: [],
+      cuisines: [],
+      pick: "katzs-deli",
     });
   });
 });

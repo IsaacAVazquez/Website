@@ -6,9 +6,9 @@ import { normalizeFoodMapState } from "./food-map-state";
 export const metadata = constructMetadata({
   title: "Food Map",
   description:
-    "A curated, deep-linkable map of the Austin restaurants I send people to first, filterable by neighborhood, cuisine, and meal.",
+    "A curated, deep-linkable map of where to eat across Austin, San Francisco, New York, New Orleans, LA, and Tokyo — filterable by city, curator (Anthony Bourdain, Isaac's picks, top-rated on Google), and cuisine.",
   canonicalUrl: "/food-map",
-  dateModified: "2026-04-28",
+  dateModified: "2026-06-08",
   aiMetadata: {
     profession: "Product Manager",
     specialty: "Editorial product surfaces, deep-linkable filtering, and curated city guides",
@@ -20,16 +20,16 @@ export const metadata = constructMetadata({
     ],
     industry: ["Food & Beverage", "Travel", "Local Guides"],
     topics: [
-      "austin restaurants",
-      "austin food map",
-      "curated city guide",
-      "neighborhood food map",
+      "where to eat",
+      "curated food map",
+      "anthony bourdain restaurants",
+      "multi-city restaurant guide",
     ],
     contentType: "Software Application",
     context:
-      "Standalone food map by Isaac Vazquez that turns a personal Austin shortlist into a deep-linkable product surface.",
+      "Standalone food map by Isaac Vazquez: a curator-driven, multi-city restaurant guide on an interactive map.",
     summary:
-      "Curated Austin restaurant map with neighborhood, cuisine, and meal filters and a shareable URL state.",
+      "Curator-driven restaurant map across six cities with city, curator, and cuisine filters and a shareable URL state.",
     primaryFocus:
       "Curated city guides, editorial product UX, and deep-linkable filtering models",
   },
@@ -37,9 +37,9 @@ export const metadata = constructMetadata({
 
 interface FoodMapPageProps {
   searchParams: Promise<{
-    neighborhood?: string;
+    city?: string;
+    curator?: string;
     cuisine?: string;
-    meal?: string;
     pick?: string;
   }>;
 }
@@ -65,15 +65,15 @@ export default async function FoodMapPage({ searchParams }: FoodMapPageProps) {
         data={{
           name: "Food Map",
           description:
-            "Curated Austin restaurant map with neighborhood, cuisine, and meal filters and a shareable URL state.",
+            "Curator-driven restaurant map across Austin, San Francisco, New York, New Orleans, LA, and Tokyo with city, curator, and cuisine filters and a shareable URL state.",
           url: "https://isaacavazquez.com/food-map",
           applicationCategory: "LifestyleApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
           author: "Isaac Vazquez",
           keywords: [
-            "austin food map",
-            "austin restaurants",
-            "curated guide",
+            "where to eat",
+            "curated food map",
+            "anthony bourdain restaurants",
             "deep-linkable filters",
           ],
         }}
