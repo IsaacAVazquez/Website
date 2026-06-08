@@ -3,7 +3,7 @@
 Current route inventory and page ownership for the live app.
 
 **Framework:** Next.js 16 App Router
-**Last updated:** 2026-04-14
+**Last updated:** 2026-06-08
 
 ---
 
@@ -37,15 +37,25 @@ Current route inventory and page ownership for the live app.
 | `/formula-1` | `src/app/formula-1/page.tsx` | Snapshot-backed Formula 1 season dashboard |
 | `/fantasy-formula-1` | `src/app/fantasy-formula-1/page.tsx` | Snapshot-backed Fantasy Formula 1 team optimizer |
 | `/ai-dev-tools` | `src/app/ai-dev-tools/page.tsx` | Filterable AI coding and agent tool directory |
+| `/frontier-models` | `src/app/frontier-models/page.tsx` | Snapshot-backed frontier model tracker |
 | `/github-trending-pulse` | `src/app/github-trending-pulse/page.tsx` | Snapshot-backed GitHub repository trend dashboard |
 | `/premier-league` | `src/app/premier-league/page.tsx` | Snapshot-backed Premier League dashboard |
 | `/la-liga` | `src/app/la-liga/page.tsx` | Snapshot-backed La Liga dashboard |
+| `/mlb` | `src/app/mlb/page.tsx` | Snapshot-backed MLB dashboard |
+| `/nba` | `src/app/nba/page.tsx` | Snapshot-backed NBA dashboard |
+| `/nfl` | `src/app/nfl/page.tsx` | Snapshot-backed NFL dashboard |
+| `/golf` | `src/app/golf/page.tsx` | Manually maintained golf dashboard |
 | `/news-pulse` | `src/app/news-pulse/page.tsx` | News Pulse dashboard |
 | `/spacex-mission-control` | `src/app/spacex-mission-control/page.tsx` | SpaceX Mission Control dashboard |
 | `/polling-aggregator` | `src/app/polling-aggregator/page.tsx` | Snapshot-backed political polling dashboard |
 | `/fintech-tools/budget-planner` | `src/app/fintech-tools/budget-planner/page.tsx` | Budget planner tool |
 | `/fintech-tools/interchange-iq` | `src/app/fintech-tools/interchange-iq/page.tsx` | Interchange fee analyzer |
 | `/mba-internship-notifications` | `src/app/mba-internship-notifications/page.tsx` | Live MBA role tracker polling 32 tech companies for internships and full-time business roles |
+| `/decision-lab` | `src/app/decision-lab/page.tsx` | Decision-modeling sandbox |
+| `/food-map` | `src/app/food-map/page.tsx` | Food map |
+| `/recipe-finder` | `src/app/recipe-finder/page.tsx` | Recipe finder |
+| `/wine-cellar` | `src/app/wine-cellar/page.tsx` | Wine cellar |
+| `/museum-log` | `src/app/museum-log/page.tsx` | Museum visit log |
 
 ### Fantasy football
 
@@ -62,6 +72,8 @@ Current route inventory and page ownership for the live app.
 |------|------|-------|
 | `/search` | `src/app/search/page.tsx` | Search UI backed by limited `/api/search` |
 | `/admin` | `src/app/admin/page.tsx` | Credentials-based admin screen |
+| `/now` | `src/app/now/page.tsx` | Current focus / status page |
+| `/changelog` | `src/app/changelog/page.tsx` | Site changelog |
 
 ---
 
@@ -92,26 +104,35 @@ These routes manage more of their own spacing and width:
 
 - `/about`
 - `/ai-dev-tools`
+- `/changelog`
 - `/contact`
+- `/decision-lab`
 - `/fantasy-formula-1`
 - `/fantasy-football`
 - `/fantasy-football/draft-tracker`
 - `/fintech-tools/budget-planner`
+- `/fintech-tools/interchange-iq`
+- `/food-map`
 - `/formula-1`
+- `/golf`
 - `/github-trending-pulse`
 - `/investments`
 - `/la-liga`
-- `/premier-league`
 - `/march-madness-2026`
 - `/mba-internship-notifications`
+- `/museum-log`
 - `/news-pulse`
+- `/now`
 - `/polling-aggregator`
+- `/premier-league`
 - `/portfolio`
 - `/portfolio/[slug]`
+- `/recipe-finder`
 - `/writing`
 - `/writing/[slug]`
 - `/resume`
 - `/spacex-mission-control`
+- `/wine-cellar`
 
 ### Footer variants
 
@@ -127,8 +148,9 @@ These routes manage more of their own spacing and width:
 - `/march-madness-2026` is a first-class route and should be documented anywhere route inventories or SEO coverage are described
 - `/formula-1` is a live off-nav Formula 1 dashboard with a self-managed shell
 - `/fantasy-formula-1` is a live off-nav Fantasy Formula 1 optimizer with a self-managed shell
-- `/premier-league` and `/la-liga` are live off-nav sports data dashboards with self-managed shells
-- `/ai-dev-tools`, `/news-pulse`, `/github-trending-pulse`, `/spacex-mission-control`, `/polling-aggregator`, `/mba-internship-notifications`, and `/fintech-tools/*` are live standalone tool surfaces even though they are not promoted in the global header
+- `/premier-league`, `/la-liga`, `/mlb`, `/nba`, `/nfl`, and `/golf` are live off-nav sports data dashboards
+- `/ai-dev-tools`, `/frontier-models`, `/decision-lab`, `/news-pulse`, `/github-trending-pulse`, `/spacex-mission-control`, `/polling-aggregator`, `/mba-internship-notifications`, and `/fintech-tools/*` are live standalone tool surfaces even though they are not promoted in the global header
+- `/food-map`, `/recipe-finder`, `/wine-cellar`, `/museum-log`, `/now`, and `/changelog` are live personal or utility surfaces
 - `/search` exists, but its data quality is limited by the current hardcoded search API
 - there is no live `/admin/analytics` page in the current app tree
 

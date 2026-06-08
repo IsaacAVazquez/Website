@@ -2,7 +2,7 @@
 
 Current high-level data flow reference.
 
-**Last updated:** 2026-04-10
+**Last updated:** 2026-06-08
 
 ---
 
@@ -70,26 +70,35 @@ Runtime API routes read those committed snapshots instead of calling `football-d
 
 ---
 
+## US Sports Dashboard Pipeline
+
+MLB, NBA, and NFL use committed TypeScript snapshots:
+
+- `src/data/mlbSnapshot.ts`
+- `src/data/nbaSnapshot.ts`
+- `src/data/nflSnapshot.ts`
+
+Update paths:
+
+- `npm run update:mlb`
+- `npm run update:nba`
+- `npm run update:nfl`
+
+Runtime API routes under `/api/mlb/*`, `/api/nba/*`, and `/api/nfl/*` read those snapshots. The matching GitHub Actions workflows refresh and commit snapshots on their seasonal schedules.
+
+Golf uses the manually maintained `src/data/golfSnapshot.ts`; there is no golf update script or scheduled workflow.
+
+---
+
 ## Fantasy Football Pipeline
 
-The fantasy stack mixes:
+The fantasy stack is generated snapshot first:
 
-- published static snapshot JSON
-- generated TypeScript position data
-- API-backed operational ranking fetches
-- sample-data fallbacks
-- scheduled refresh endpoints
-- SQLite persistence and helper libraries
-
-The exact ingestion flow is broader than this quick reference, so verify the current implementation in:
-
-- `src/app/api/fantasy-data/route.ts`
-- `src/app/api/fantasy-pros-session/route.ts`
-- `src/app/api/data-manager/route.ts`
-- `src/lib/`
 - `scripts/buildFantasyPositionData.ts`
 - `scripts/buildFantasySnapshots.ts`
-- `scripts/updateFantasyRBTiers.ts`
+- `src/app/api/fantasy-data/route.ts`
+- `src/lib/fantasySnapshotServer.ts`
+- `src/lib/fantasy.ts`
 
 Public generated outputs include:
 
@@ -98,6 +107,8 @@ Public generated outputs include:
 - `public/data/fantasy/ppr.json`
 - `public/data/fantasy/half_ppr.json`
 - `public/data/fantasy/standard.json`
+
+The public app and `/api/fantasy-data` read those generated snapshot files. There are no live `/api/fantasy-pros-*`, `/api/data-manager`, `/api/data-metadata`, `/api/sample-data`, or `/api/scheduled-update` routes in the current app tree.
 
 ---
 
@@ -124,7 +135,13 @@ March Madness is split between:
 
 - `/news-pulse` reads data through `/api/news-pulse` and `src/lib/news-pulse-utils.ts`
 - `/spacex-mission-control` reads SpaceX payloads through `/api/spacex/*` and `src/lib/spacexData.ts`
+- `/formula-1` reads `src/data/formula1Snapshot.ts`, rebuilt by `npm run update:formula-1`
+- `/fantasy-formula-1` reads Formula 1 data and browser-local lineup state helpers in `src/lib/fantasyFormula1.ts`
+- `/github-trending-pulse` reads `src/data/githubTrendingSnapshot.ts`, rebuilt by `npm run update:github-trending`
+- `/frontier-models` reads `src/data/frontierModelsSnapshot.ts`, rebuilt from `scripts/data/frontierModels.source.ts`
 - `/polling-aggregator` reads `src/data/pollingSnapshot.ts`
+- `/museum-log` reads `src/data/museumSnapshot.ts`
+- `/recipe-finder` reads `src/data/recipesSnapshot.ts` through `src/lib/recipes.ts`
 - `/fintech-tools/budget-planner` uses `src/hooks/useBudgetPlanner.ts`
 - `/fintech-tools/interchange-iq` is client-side and does not depend on a checked-in data refresh script
 

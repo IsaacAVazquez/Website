@@ -2,7 +2,7 @@
 
 Fast diagnostics for the current site, data workflows, and deployment path.
 
-**Last updated:** 2026-04-10
+**Last updated:** 2026-06-08
 
 ---
 
@@ -22,7 +22,7 @@ Fast diagnostics for the current site, data workflows, and deployment path.
 
 ### `npm run dev` boots but pages crash
 
-- Check missing environment variables for admin or FantasyPros flows
+- Check missing environment variables for admin, MBA email, or data refresh flows
 - Confirm recent docs or content edits did not introduce malformed frontmatter or markdown
 
 ---
@@ -40,20 +40,12 @@ Confirm:
 
 The admin flow uses credential auth in `src/lib/auth.ts`.
 
-### `/api/scheduled-update` returns `401`
+### `netlify/functions/purge-cache.ts` returns `401`
 
 - Set `CRON_SECRET`
 - Send `Authorization: Bearer <CRON_SECRET>`
 
-### FantasyPros refreshes fail
-
-Confirm:
-
-- `FANTASYPROS_USERNAME`
-- `FANTASYPROS_PASSWORD`
-- `FANTASYPROS_API_KEY` if the failing path is the older FantasyPros API helper
-
-If those are missing, session-based fantasy update routes will fail even though the public fantasy pages may still load from other sources.
+There is no live `/api/scheduled-update` route in the current app tree; older references to that endpoint are historical.
 
 ---
 
@@ -71,14 +63,14 @@ That is expected today. `/api/search` is still a small hardcoded index, not a fu
 
 ### Fantasy football data looks inconsistent
 
-The fantasy surface is mixed-source:
+The public fantasy surface is snapshot-backed:
 
-- `/api/fantasy-data` uses nflverse-style data flows
-- some operational routes still use FantasyPros-based refresh logic
-- SQLite helpers live in `src/lib/database.ts`
-- `src/app/api/data-manager/route.ts` also keeps an in-memory operational store
+- `public/data/fantasy/{ppr,half_ppr,standard}.json` contains the published scoring-format snapshots
+- `src/data/fantasyPositionData.generated.ts` contains the generated TypeScript position source
+- `src/data/fantasySnapshotRevision.generated.ts` controls client cache busting
+- `/api/fantasy-data` reads the same public snapshot files through `src/lib/fantasySnapshotServer.ts`
 
-Check the exact route or script before assuming the whole fantasy stack uses one source.
+Rebuild the generated artifacts with `npm run update:fantasy`. There are no live `/api/fantasy-pros-*`, `/api/data-manager`, `/api/data-metadata`, `/api/sample-data`, or `/api/scheduled-update` routes.
 
 ### Premier League or La Liga data looks stale
 

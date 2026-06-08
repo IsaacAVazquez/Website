@@ -2,7 +2,7 @@
 
 Operational context for agents working in this repo. Start here, then read `CLAUDE.md` for deeper implementation context.
 
-**Last updated:** 2026-05-04
+**Last updated:** 2026-06-08
 
 ---
 
@@ -28,16 +28,30 @@ Primary live routes:
 - `/github-trending-pulse`
 - `/premier-league`
 - `/la-liga`
+- `/mlb`
+- `/nba`
+- `/nfl`
+- `/golf`
 - `/writing` and `/writing/[slug]`
 - `/resume`
 - `/contact`
 - `/fantasy-football/*`
 - `/march-madness-2026`
+- `/ai-dev-tools`
+- `/frontier-models`
+- `/decision-lab`
+- `/food-map`
+- `/recipe-finder`
+- `/wine-cellar`
 - `/news-pulse`
 - `/spacex-mission-control`
 - `/fintech-tools/budget-planner`
 - `/fintech-tools/interchange-iq`
 - `/polling-aggregator`
+- `/mba-internship-notifications`
+- `/museum-log`
+- `/now`
+- `/changelog`
 - `/search`
 - `/admin`
 
@@ -74,23 +88,34 @@ Shared shell files:
 Self-shell routes currently include:
 
 - `/about`
+- `/ai-dev-tools`
+- `/changelog`
 - `/contact`
+- `/decision-lab`
 - `/fantasy-formula-1`
 - `/fantasy-football`
 - `/fantasy-football/draft-tracker`
 - `/fintech-tools/budget-planner`
+- `/fintech-tools/interchange-iq`
+- `/food-map`
 - `/formula-1`
+- `/golf`
 - `/github-trending-pulse`
 - `/investments`
 - `/la-liga`
-- `/premier-league`
 - `/march-madness-2026`
+- `/mba-internship-notifications`
+- `/museum-log`
 - `/news-pulse`
+- `/now`
 - `/polling-aggregator`
+- `/premier-league`
 - `/portfolio`
 - `/portfolio/[slug]`
+- `/recipe-finder`
 - `/resume`
 - `/spacex-mission-control`
+- `/wine-cellar`
 - `/writing`
 - `/writing/[slug]`
 
@@ -169,11 +194,9 @@ Current generated outputs:
 - `public/data/fantasy/half_ppr.json`
 - `public/data/fantasy/standard.json`
 
-Legacy RB tiers artifacts still exist:
+Legacy RB tiers artifact still exists, and the old RB tier route redirects to the canonical fantasy board:
 
-- `scripts/updateFantasyRBTiers.ts`
 - `public/fantasy/rb_current.json`
-- `src/components/RBTiersChart.tsx`
 
 Operational note: `.github/workflows/update-fantasy.yml` commits the real fantasy snapshot artifacts above. There is no live Netlify scheduled fantasy updater; GitHub Actions is the public update path.
 
@@ -339,7 +362,7 @@ Current behavior:
 - `update-nfl.yml` runs on manual dispatch and Tuesdays September through February at `10:35 UTC`, then commits `src/data/nflSnapshot.ts` when it changes
 - A daily cron-job.org ping to the Netlify build hook triggers production deploys; `prebuild` refreshes Premier League and La Liga league-level snapshots with `tsx scripts/updateFootballSnapshots.ts --league-only`
 - `purge-cache.ts` is protected by `Authorization: Bearer <CRON_SECRET>` or `x-cron-secret` and calls Netlify Durable Cache purge; query-string secrets are intentionally rejected
-- TODO: `vercel.json` still declares a cron for `/api/scheduled-update`, but no matching route exists. Treat that config as historical until confirmed.
+- Historical caveat: `vercel.json` still declares a cron for `/api/scheduled-update`, but no matching route exists. Treat that config as historical until confirmed.
 
 For public fantasy updates, GitHub Actions is the source of truth.
 

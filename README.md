@@ -3,7 +3,7 @@
 Portfolio, writing, fantasy football analytics, investment research, and standalone data tools built on Next.js 16.
 
 **Live:** [isaacavazquez.com](https://isaacavazquez.com)
-**Last updated:** 2026-04-27
+**Last updated:** 2026-06-08
 
 ---
 
@@ -15,7 +15,7 @@ This repo powers a multi-surface personal site with several live product areas:
 - **Writing** — MDX-backed long-form posts under `/writing`
 - **Fantasy football** — rankings, tier charts, and draft tooling
 - **Investments and seasonal analysis** — `/investments` and `/march-madness-2026`
-- **Sports and data dashboards** — off-nav products like `/premier-league`, `/la-liga`, `/polling-aggregator`, `/news-pulse`, and `/spacex-mission-control`
+- **Sports and data dashboards** — off-nav products like `/premier-league`, `/la-liga`, `/mlb`, `/nba`, `/nfl`, `/golf`, `/polling-aggregator`, `/news-pulse`, and `/spacex-mission-control`
 - **Fintech tools** — standalone calculators under `/fintech-tools/*`
 
 The site is portfolio-first. `Writing` is live and promoted in the global header.
@@ -31,7 +31,7 @@ The site is portfolio-first. `Writing` is live and promoted in the global header
 | Charts | D3 |
 | Theme | `next-themes` |
 | Content | `gray-matter`, `remark`, `remark-gfm`, `remark-html` |
-| Data | Static, version-controlled snapshots (TypeScript and JSON) for fantasy football, investments, football, Formula 1, golf, polling, and SpaceX dashboards. No runtime database. |
+| Data | Static, version-controlled snapshots (TypeScript and JSON) for fantasy football, investments, football, US sports, Formula 1, golf, polling, and SpaceX dashboards. No runtime database. |
 | Email | Resend (MBA internship digest) |
 | Auth | NextAuth v4 (credentials provider) |
 | Tests | Jest, Playwright |
@@ -52,11 +52,20 @@ The site is portfolio-first. `Writing` is live and promoted in the global header
 | `/la-liga` | La Liga dashboard |
 | `/formula-1` | Formula 1 dashboard |
 | `/fantasy-formula-1` | Fantasy Formula 1 optimizer |
+| `/mlb` | MLB dashboard |
+| `/nba` | NBA dashboard |
+| `/nfl` | NFL dashboard |
 | `/golf` | PGA Tour dashboard |
 | `/writing` | Writing index |
 | `/writing/[slug]` | Article page |
 | `/march-madness-2026` | Seasonal bracket analysis |
 | `/fantasy-football/*` | Fantasy football tools |
+| `/ai-dev-tools` | AI development tools directory |
+| `/frontier-models` | Frontier model tracker |
+| `/github-trending-pulse` | GitHub Trending Pulse dashboard |
+| `/food-map` | Food map |
+| `/recipe-finder` | Recipe finder |
+| `/wine-cellar` | Wine cellar |
 | `/news-pulse` | News Pulse dashboard |
 | `/spacex-mission-control` | SpaceX Mission Control dashboard |
 | `/fintech-tools/budget-planner` | Budget planner |
@@ -64,6 +73,7 @@ The site is portfolio-first. `Writing` is live and promoted in the global header
 | `/polling-aggregator` | Political polling aggregator |
 | `/decision-lab` | Decision-modeling sandbox |
 | `/mba-internship-notifications` | MBA role tracker across tech company job boards |
+| `/museum-log` | Museum visit log |
 | `/now` | Current focus / status page |
 | `/changelog` | Site changelog |
 | `/resume` | Resume |
@@ -104,8 +114,14 @@ npm run update:investments
 npm run update:football
 npm run update:premier-league
 npm run update:la-liga
+npm run update:mlb
+npm run update:nba
+npm run update:nfl
 npm run update:formula-1
+npm run update:frontier-models
+npm run update:github-trending
 npm run update:spacex
+npm run update:spacex-images
 ```
 
 `prebuild` runs a league-only football snapshot refresh automatically; `postbuild` runs `next-sitemap`.
@@ -149,7 +165,7 @@ CRON_SECRET=...               # protects the Netlify purge-cache function
 - `ProjectsContent.tsx` and `WritingPreview.tsx` still exist, but they are not the primary live path for the current shell
 - `/api/search` is limited and mostly hardcoded; do not treat it as comprehensive site search
 - `/investments` uses `InvestmentsClient` plus targeted routes under `/api/investments/index`, `/api/investments/quotes`, and `/api/investments/data/[symbol]`
-- `/premier-league` and `/la-liga` read from committed TypeScript snapshots, not live third-party API calls at runtime
+- `/premier-league`, `/la-liga`, `/mlb`, `/nba`, and `/nfl` read from committed TypeScript snapshots, not live third-party API calls at runtime
 
 ---
 

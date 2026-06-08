@@ -2,7 +2,7 @@
 
 Current component ownership reference.
 
-**Last updated:** 2026-04-10
+**Last updated:** 2026-06-08
 
 ---
 
@@ -81,7 +81,7 @@ Top-level ownership:
 
 ## Football Dashboards
 
-Shared components for `/premier-league` and `/la-liga` live in `src/components/football/`:
+Shared components for `/premier-league`, `/la-liga`, `/mlb`, `/nba`, and `/nfl` live in `src/components/football/`:
 
 - `FixtureCard`
 - `FixtureGroupSection`
@@ -102,6 +102,8 @@ Page-level clients live at `src/app/premier-league/premier-league-client.tsx` an
 
 - `src/app/news-pulse/*` plus `src/lib/news-pulse-utils.ts`
 - `src/components/spacex/*` plus `src/app/spacex-mission-control/*`
+- `src/app/mlb/*`, `src/app/nba/*`, `src/app/nfl/*`, and `src/components/football/*`
+- `src/app/golf/*` plus `src/data/golfSnapshot.ts`
 - `src/app/polling-aggregator/*` plus `src/data/pollingSnapshot.ts`
 - `src/app/fintech-tools/budget-planner/*` plus `src/hooks/useBudgetPlanner.ts`
 - `src/app/fintech-tools/interchange-iq/*`
@@ -112,15 +114,13 @@ Page-level clients live at `src/app/premier-league/premier-league-client.tsx` an
 
 Representative live components:
 
-- `FantasyFootballLandingContent`
-- `TierDisplay`
-- `TierChartEnhanced`
-- `RBTiersChart`
-- `PositionSelector`
-- `EnhancedPlayerCard`
-- `DataFreshnessIndicator`
+- `src/app/fantasy-football/fantasy-football-client.tsx`
+- `src/app/fantasy-football/draft-tracker/draft-tracker-client.tsx`
+- `src/app/fantasy-football/draft-tracker/components/DraftBoard.tsx`
+- `src/app/fantasy-football/draft-tracker/components/DraftSetup.tsx`
+- `src/components/fantasy/TierBreakdown.tsx`
 
-These work with the fantasy hooks and API routes described elsewhere in `docs/ai-context`.
+These work with the generated fantasy snapshots and `/api/fantasy-data` route described elsewhere in `docs/ai-context`.
 
 ---
 

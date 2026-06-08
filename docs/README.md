@@ -2,7 +2,7 @@
 
 Current map of tracked Markdown documentation.
 
-**Last updated:** 2026-05-03
+**Last updated:** 2026-06-08
 
 Tracked Markdown audit scope: `git ls-files '*.md'` returned 216 tracked files before the 2026-04-15 content coverage sync. That sync adds 16 new markdown files under `content/projects/` and `content/sections/`.
 
@@ -53,10 +53,8 @@ Use these when the task is specifically about setup, deployment, data operations
 - `../TROUBLESHOOTING.md`
 - `AUTOMATION_SCRIPTS.md`
 - `CRON_SETUP.md`
-- `DATABASE_SCHEMA.md`
 - `ENVIRONMENT_CONFIGURATION.md`
 - `FANTASY_PLATFORM_SETUP.md`
-- `PLAYER_IMAGES_SETUP.md`
 - `SECURITY.md`
 
 Historical release notes and changelogs:
@@ -84,6 +82,8 @@ These remain in the repo for context, but they should not be treated as live sou
 - `../NFLVERSE_INTEGRATION.md`
 - `../PERFORMANCE-SEO.md`
 - `../PERFORMANCE_REPORT.md`
+- `DATABASE_SCHEMA.md` (historical SQLite fantasy layer; no live `src/lib/database.ts`)
+- `PLAYER_IMAGES_SETUP.md` (historical fantasy player-image workflow; referenced assets no longer exist)
 - `FEATURE_ROADMAP.md`
 - `PROJECTS.md`
 - `UNDERUTILIZED_FEATURES.md`
