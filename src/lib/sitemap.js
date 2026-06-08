@@ -32,6 +32,7 @@ const STATIC_ROUTE_LASTMOD = {
   "/premier-league": readPremierLeagueLastmod(),
   "/la-liga": readLaLigaLastmod(),
   "/nfl": readNflLastmod(),
+  "/world-cup-2026": readWorldCupLastmod(),
   "/march-madness-2026": "2026-03-17",
   "/fantasy-football": readFantasyLastmod(),
   "/fantasy-football/draft-tracker": readFantasyLastmod(),
@@ -91,6 +92,14 @@ function readLaLigaLastmod() {
 function readNflLastmod() {
   return toIsoString(
     readFirstMatch("src/data/nflSnapshot.ts", /"updatedAt":\s*"([^"]+)"/)
+  );
+}
+
+function readWorldCupLastmod() {
+  // The tournament block is first in the file, so the first generatedAt match is
+  // the tournament-level timestamp (per-team snapshots also carry one).
+  return toIsoString(
+    readFirstMatch("src/data/worldCupSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
   );
 }
 

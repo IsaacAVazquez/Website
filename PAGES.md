@@ -40,6 +40,7 @@ Current route inventory and page ownership for the live app.
 | `/github-trending-pulse` | `src/app/github-trending-pulse/page.tsx` | Snapshot-backed GitHub repository trend dashboard |
 | `/premier-league` | `src/app/premier-league/page.tsx` | Snapshot-backed Premier League dashboard |
 | `/la-liga` | `src/app/la-liga/page.tsx` | Snapshot-backed La Liga dashboard |
+| `/world-cup-2026` | `src/app/world-cup-2026/page.tsx` | Snapshot-backed 2026 FIFA World Cup hub (groups, knockout bracket, schedule, venues) |
 | `/news-pulse` | `src/app/news-pulse/page.tsx` | News Pulse dashboard |
 | `/spacex-mission-control` | `src/app/spacex-mission-control/page.tsx` | SpaceX Mission Control dashboard |
 | `/polling-aggregator` | `src/app/polling-aggregator/page.tsx` | Snapshot-backed political polling dashboard |
@@ -112,6 +113,7 @@ These routes manage more of their own spacing and width:
 - `/writing/[slug]`
 - `/resume`
 - `/spacex-mission-control`
+- `/world-cup-2026`
 
 ### Footer variants
 

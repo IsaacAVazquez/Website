@@ -93,6 +93,7 @@ Note: `prebuild` automatically runs a league-only football snapshot refresh; `po
 - `/nba`
 - `/nfl`
 - `/golf`
+- `/world-cup-2026`
 
 ### Fantasy football
 
@@ -231,6 +232,24 @@ NFL is intentionally **not** wired into the Netlify `prebuild` step. The snapsho
 **Shared football components:** Reuses `src/components/football/*` (FixtureCard accepts an optional `periodLabel` prop, set to `"Week"` for NFL).
 
 **State / route:** `?view=` (`league`, `afc`, `nfc`, `playoffs`) and `?team=<lowercase abbr>` (e.g., `kc`, `buf`).
+
+### World Cup Dashboard
+
+`/world-cup-2026` ("World Cup Pulse") is a snapshot-driven 2026 FIFA World Cup hub following the same pattern as the soccer and NFL dashboards. It reuses the shared `src/components/football/*` components. Data comes from ESPN's public `soccer/fifa.world` endpoints (no API key required) and is committed to the repo as TypeScript.
+
+**Snapshot file:** `src/data/worldCupSnapshot.ts`
+
+The dynamic sections (groups, knockout rounds, fixtures, scorers, team options, team snapshots) ship **empty in the seed** and are filled by the update script. The `tournament` block carries the stable pre-confirmed facts (host nations, 16 venues, format, dates, match counts), so the page is a useful tournament hub before kickoff and progressively becomes a full live dashboard.
+
+**Data sources (ESPN site API):**
+- Standings (group tables): `https://site.api.espn.com/apis/v2/sports/soccer/fifa.world/standings`
+- Scoreboard (fixtures/scores): `https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=YYYYMMDD-YYYYMMDD` (paged across the tournament window)
+
+**Build logic / update script:** `src/lib/worldCupData.ts` → `scripts/buildWorldCupSnapshot.ts` (`npm run update:world-cup`). A failed or empty fetch keeps the previous snapshot rather than wiping it (shared `readGeneratedSnapshot` fallback). `.github/workflows/update-world-cup.yml` refreshes it every six hours during June and July.
+
+**Accessors / API:** `src/lib/worldCupSnapshot.ts`; routes `/api/world-cup/summary` and `/api/world-cup/teams/[teamId]` (keyed by lowercased team slug, e.g. `brazil`).
+
+**State / route:** `?view=` (`groups`, `knockout`, `schedule`) and `?team=<slug>` for the team detail panel.
 
 ### Football Dashboards (Premier League + La Liga)
 
