@@ -266,6 +266,18 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       tags: ['Formula 1', 'F1', 'Racing', 'Sports Data', 'Dashboard'],
     },
     {
+      id: 'page-fantasy-formula-1',
+      title: 'Fantasy Formula 1 Optimizer',
+      excerpt:
+        'Fantasy Formula 1 team optimizer with model prices, lineup constraints, locked picks, and local persistence.',
+      content:
+        'Fantasy Formula 1 F1 optimizer team builder drivers constructors budget model prices projections OpenF1 sports data',
+      url: '/fantasy-formula-1',
+      type: 'project',
+      category: 'Sports Data Tools',
+      tags: ['Fantasy Formula 1', 'F1', 'Optimizer', 'Sports Data', 'Dashboard'],
+    },
+    {
       id: 'page-premier-league',
       title: 'Premier League Pulse',
       excerpt:

@@ -51,6 +51,7 @@ The site is portfolio-first. `Writing` is live and promoted in the global header
 | `/premier-league` | Premier League dashboard |
 | `/la-liga` | La Liga dashboard |
 | `/formula-1` | Formula 1 dashboard |
+| `/fantasy-formula-1` | Fantasy Formula 1 optimizer |
 | `/golf` | PGA Tour dashboard |
 | `/writing` | Writing index |
 | `/writing/[slug]` | Article page |

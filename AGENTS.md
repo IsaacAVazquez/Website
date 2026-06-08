@@ -24,6 +24,7 @@ Primary live routes:
 - `/portfolio` and `/portfolio/[slug]`
 - `/investments`
 - `/formula-1`
+- `/fantasy-formula-1`
 - `/github-trending-pulse`
 - `/premier-league`
 - `/la-liga`
@@ -74,6 +75,7 @@ Self-shell routes currently include:
 
 - `/about`
 - `/contact`
+- `/fantasy-formula-1`
 - `/fantasy-football`
 - `/fantasy-football/draft-tracker`
 - `/fintech-tools/budget-planner`

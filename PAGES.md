@@ -35,6 +35,7 @@ Current route inventory and page ownership for the live app.
 | `/investments` | `src/app/investments/page.tsx` | Public investment research platform |
 | `/march-madness-2026` | `src/app/march-madness-2026/page.tsx` | Metadata-driven bracket analysis with client UI |
 | `/formula-1` | `src/app/formula-1/page.tsx` | Snapshot-backed Formula 1 season dashboard |
+| `/fantasy-formula-1` | `src/app/fantasy-formula-1/page.tsx` | Snapshot-backed Fantasy Formula 1 team optimizer |
 | `/ai-dev-tools` | `src/app/ai-dev-tools/page.tsx` | Filterable AI coding and agent tool directory |
 | `/github-trending-pulse` | `src/app/github-trending-pulse/page.tsx` | Snapshot-backed GitHub repository trend dashboard |
 | `/premier-league` | `src/app/premier-league/page.tsx` | Snapshot-backed Premier League dashboard |
@@ -92,6 +93,7 @@ These routes manage more of their own spacing and width:
 - `/about`
 - `/ai-dev-tools`
 - `/contact`
+- `/fantasy-formula-1`
 - `/fantasy-football`
 - `/fantasy-football/draft-tracker`
 - `/fintech-tools/budget-planner`
@@ -124,6 +126,7 @@ These routes manage more of their own spacing and width:
 - `Writing` is a live route and a top-level nav item
 - `/march-madness-2026` is a first-class route and should be documented anywhere route inventories or SEO coverage are described
 - `/formula-1` is a live off-nav Formula 1 dashboard with a self-managed shell
+- `/fantasy-formula-1` is a live off-nav Fantasy Formula 1 optimizer with a self-managed shell
 - `/premier-league` and `/la-liga` are live off-nav sports data dashboards with self-managed shells
 - `/ai-dev-tools`, `/news-pulse`, `/github-trending-pulse`, `/spacex-mission-control`, `/polling-aggregator`, `/mba-internship-notifications`, and `/fintech-tools/*` are live standalone tool surfaces even though they are not promoted in the global header
 - `/search` exists, but its data quality is limited by the current hardcoded search API

@@ -15,6 +15,7 @@ const STATIC_ROUTE_LASTMOD = {
   "/golf": "2026-04-16",
   "/decision-lab": "2026-04-04",
   "/formula-1": "2026-04-04",
+  "/fantasy-formula-1": readFormula1Lastmod(),
   "/frontier-models": "2026-04-04",
   "/mba-internship-notifications": "2026-04-04",
   "/mlb": "2026-04-04",
@@ -90,6 +91,12 @@ function readLaLigaLastmod() {
 function readNflLastmod() {
   return toIsoString(
     readFirstMatch("src/data/nflSnapshot.ts", /"updatedAt":\s*"([^"]+)"/)
+  );
+}
+
+function readFormula1Lastmod() {
+  return toIsoString(
+    readFirstMatch("src/data/formula1Snapshot.ts", /"generatedAt":\s*"([^"]+)"/)
   );
 }
 

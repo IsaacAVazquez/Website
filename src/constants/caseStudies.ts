@@ -676,6 +676,39 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     retrospective: "",
   },
 
+  "fantasy-formula-1-optimizer": {
+    slug: "fantasy-formula-1-optimizer",
+    title: "Fantasy Formula 1 Optimizer",
+    description:
+      "Practical Fantasy Formula 1 team optimizer with model-based prices, five-driver and two-constructor lineup constraints, locked picks, and local browser persistence.",
+    role: "Full-Stack Developer & Designer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "OpenF1 API", "Optimization UX"],
+    metrics: "$100m budget model · 5 drivers + 2 constructors · Local lineup persistence",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/fantasy-formula-1",
+    featured: true,
+
+    overview: {
+      summary:
+        "I built a Fantasy Formula 1 optimizer that turns the existing OpenF1 snapshot into a practical team-building surface with transparent pricing and projection assumptions.",
+      impact:
+        "Gives F1 fantasy players a faster way to compare lineup tradeoffs before a race weekend without pretending unofficial model data is official scoring.",
+    },
+    problem: {
+      context:
+        "Fantasy Formula 1 decisions usually mix official-game constraints, subjective form reads, and scattered race context with little visibility into why a lineup works.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
+
   "pga-tour-pulse": {
     slug: "pga-tour-pulse",
     title: "PGA Tour Pulse",
@@ -969,6 +1002,7 @@ const PORTFOLIO_PROJECT_ORDER = [
   "fantasy-football-analytics",
   "nfl-pulse",
   "formula-1-pulse",
+  "fantasy-formula-1-optimizer",
   "pga-tour-pulse",
   "mlb-pulse",
   "nba-pulse",
