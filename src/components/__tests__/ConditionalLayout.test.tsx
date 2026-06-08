@@ -131,4 +131,19 @@ describe("ConditionalLayout", () => {
     expect(container.querySelector("main > .max-w-4xl")).toBeNull();
     expect(container.querySelector('[data-testid="route-content"]')).toBeTruthy();
   });
+
+  it("treats /world-cup-2026 as a self-shell route", () => {
+    mockUsePathname.mockReturnValue("/world-cup-2026");
+
+    act(() => {
+      root.render(
+        <ConditionalLayout>
+          <div data-testid="route-content">Page content</div>
+        </ConditionalLayout>
+      );
+    });
+
+    expect(container.querySelector("main > .max-w-4xl")).toBeNull();
+    expect(container.querySelector('[data-testid="route-content"]')).toBeTruthy();
+  });
 });

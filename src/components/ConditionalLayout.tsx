@@ -42,6 +42,7 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
     "/resume",
     "/spacex-mission-control",
     "/wine-cellar",
+    "/world-cup-2026",
     "/writing",
   ]);
   const isSelfShellRoute =

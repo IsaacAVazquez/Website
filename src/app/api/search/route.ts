@@ -338,6 +338,18 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       tags: ['NFL', 'Football', 'Sports Data', 'Dashboard'],
     },
     {
+      id: 'page-world-cup-2026',
+      title: 'World Cup Pulse',
+      excerpt:
+        '2026 FIFA World Cup dashboard with group standings, the 32-team knockout bracket, the full match schedule, and host venues across the United States, Canada, and Mexico.',
+      content:
+        'World Cup 2026 FIFA soccer football groups standings knockout bracket round of 32 schedule fixtures host cities venues United States Canada Mexico dashboard',
+      url: '/world-cup-2026',
+      type: 'project',
+      category: 'Sports Data Tools',
+      tags: ['World Cup', 'FIFA', 'Soccer', 'Football', 'Sports Data', 'Dashboard'],
+    },
+    {
       id: 'page-interchange-iq',
       title: 'Interchange IQ',
       excerpt:
