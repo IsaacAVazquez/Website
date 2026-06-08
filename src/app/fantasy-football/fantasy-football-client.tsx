@@ -663,8 +663,10 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                         </div>
 
                         <div>
-                          <p className={cellLabelClassName}>Availability</p>
-                          <p className="text-sm font-semibold">{formatOwnership(player.ownership)}</p>
+                          <p className={cellLabelClassName}>Rostered</p>
+                          <p className="text-sm font-semibold" title="Share of leagues where this player is on a roster">
+                            {formatOwnership(player.ownership)}
+                          </p>
                           <p className="mt-1 text-xs" style={{ color: "var(--home-ink-muted)" }}>
                             {player.byeWeek ? `Bye ${player.byeWeek}` : "Bye not listed"}
                           </p>

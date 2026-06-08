@@ -163,7 +163,7 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
           ...baseData,
           "@type": "SoftwareApplication",
           "name": data.name || "Fantasy Football Analytics Tools",
-          "description": data.description || "Advanced fantasy football analytics and visualization platform",
+          "description": data.description || "Snapshot-backed fantasy football rankings and a manual draft assistant sourced from FantasyPros consensus pages",
           "applicationCategory": "SportsApplication",
           "operatingSystem": "Any",
           "url": siteConfig.url,
@@ -182,11 +182,11 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
             "audienceType": "Fantasy Football Players"
           },
           "featureList": [
-            "Interactive tier visualizations",
-            "Real-time player data",
-            "Clustering algorithms",
-            "Mobile-optimized interface",
-            "Draft assistance tools"
+            "Overall and position-specific rankings",
+            "PPR, Half PPR, and Standard scoring",
+            "FantasyPros consensus tiers and expert ranges",
+            "Published snapshot freshness metadata",
+            "Manual draft assistant with local persistence"
           ],
           "screenshot": `${siteConfig.url}${siteConfig.ogImage}`,
           "offers": {

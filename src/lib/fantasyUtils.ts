@@ -74,7 +74,7 @@ export function formatOwnership(ownership: number | undefined): string {
     return "Not listed";
   }
 
-  return `${ownership?.toFixed(1)}% rostered`;
+  return `${ownership?.toFixed(1)}%`;
 }
 
 export function getPositionTone(position: string): CSSProperties {

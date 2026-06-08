@@ -93,11 +93,11 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     slug: "fantasy-football-analytics",
     title: "Fantasy Football Analytics Platform",
     description:
-      "Full-stack fantasy football platform with live tier rankings, D3 visualizations, and an automated data pipeline.",
+      "Fantasy football platform with snapshot-backed consensus rankings, tier views, scoring toggles, and a manual draft assistant fed by an automated weekly data pipeline.",
     role: "Solo Builder",
-    timeline: "2024–2025",
-    tools: ["Next.js", "D3.js", "TypeScript", "SQLite"],
-    metrics: "Live platform · 2026 season coming soon",
+    timeline: "2024–2026",
+    tools: ["Next.js", "TypeScript", "React", "GitHub Actions"],
+    metrics: "Live · Weekly FantasyPros snapshots · PPR / Half / Standard",
     github: "https://github.com/IsaacAVazquez",
     link: "/fantasy-football",
     featured: true,
@@ -105,9 +105,9 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 
     overview: {
       summary:
-        "I built a fantasy football platform that combines tier rankings, visualizations, and automated data refreshes into a single weekly workflow.",
+        "I built a fantasy football platform that combines consensus rankings, tier views, and an automated weekly data refresh into a single workflow.",
       impact:
-        "Gives players one place to move from raw rankings to lineup and waiver decisions with less tab-hopping.",
+        "Gives players one place to move from raw rankings to draft decisions with less tab-hopping, and keeps data freshness explicit instead of implied.",
     },
     problem: {
       context:

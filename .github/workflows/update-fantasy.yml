@@ -42,8 +42,11 @@ jobs:
 
       # Quality gate: a partial scrape (e.g. FantasyPros throttling some
       # positions) can produce a snapshot with mostly empty boards and slip
-      # past `git diff` because the file does change. Refuse to commit if any
-      # of the three scoring formats has fewer than the minimum player count.
+      # past `git diff` because the file does change. Refuse to commit unless
+      # every scoring format has a healthy overall board AND every individual
+      # position board (QB/RB/WR/TE/K/DST) clears a conservative floor. The
+      # floors sit well below normal counts so they only trip on a genuinely
+      # degraded or empty board, not on routine week-to-week churn.
       - name: Verify fantasy snapshot quality
         id: verify_quality
         run: |
@@ -51,7 +54,8 @@ jobs:
           const fs = require('fs');
           const path = require('path');
 
-          const MIN_PLAYERS = 100;
+          const MIN_OVERALL = 100;
+          const MIN_POSITION = { QB: 20, RB: 40, WR: 40, TE: 20, K: 10, DST: 10 };
           const DATA_DIR = path.join('public', 'data', 'fantasy');
           const formats = ['ppr', 'half_ppr', 'standard'];
           const failures = [];
@@ -61,9 +65,20 @@ jobs:
             try {
               const snapshot = JSON.parse(fs.readFileSync(filePath, 'utf8'));
               const overallCount = Array.isArray(snapshot.overall) ? snapshot.overall.length : 0;
-              console.log(format + ': overall=' + overallCount);
-              if (overallCount < MIN_PLAYERS) {
-                failures.push(format + ' overall has ' + overallCount + ' players (need >= ' + MIN_PLAYERS + ')');
+              const positions = snapshot.positions || {};
+              const counts = Object.keys(MIN_POSITION)
+                .map((pos) => pos + '=' + ((positions[pos] || []).length))
+                .join(' ');
+              console.log(format + ': overall=' + overallCount + ' ' + counts);
+
+              if (overallCount < MIN_OVERALL) {
+                failures.push(format + ' overall has ' + overallCount + ' players (need >= ' + MIN_OVERALL + ')');
+              }
+              for (const [pos, min] of Object.entries(MIN_POSITION)) {
+                const count = Array.isArray(positions[pos]) ? positions[pos].length : 0;
+                if (count < min) {
+                  failures.push(format + ' ' + pos + ' board has ' + count + ' players (need >= ' + min + ')');
+                }
               }
             } catch (err) {
               failures.push(format + ' failed to parse: ' + err.message);
@@ -77,7 +92,7 @@ jobs:
             }
             process.exit(1);
           }
-          console.log('All scoring formats have at least ' + MIN_PLAYERS + ' players. Quality gate passed.');
+          console.log('All scoring formats cleared the overall and per-position floors. Quality gate passed.');
           "
 
       - name: Check for snapshot changes
@@ -166,7 +181,7 @@ jobs:
               `Check the run logs to diagnose. Common causes:`,
               `- FantasyPros HTML structure changed (\`var ecrData\` extraction failed)`,
               `- Sustained 429s exceeded retry budget`,
-              `- Quality gate caught a degraded snapshot (< 100 players in a scoring format)`,
+              `- Quality gate caught a degraded snapshot (thin overall board or an empty/short position board)`,
               ``,
               `This issue will be updated if the next run also fails, and auto-closed on the first successful run.`
             ].join('\n');
