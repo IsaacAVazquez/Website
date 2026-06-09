@@ -41,14 +41,12 @@ Current route inventory and page ownership for the live app.
 | `/github-trending-pulse` | `src/app/github-trending-pulse/page.tsx` | Snapshot-backed GitHub repository trend dashboard |
 | `/premier-league` | `src/app/premier-league/page.tsx` | Snapshot-backed Premier League dashboard |
 | `/la-liga` | `src/app/la-liga/page.tsx` | Snapshot-backed La Liga dashboard |
-<<<<<<< HEAD
 | `/mlb` | `src/app/mlb/page.tsx` | Snapshot-backed MLB dashboard |
 | `/nba` | `src/app/nba/page.tsx` | Snapshot-backed NBA dashboard |
 | `/nfl` | `src/app/nfl/page.tsx` | Snapshot-backed NFL dashboard |
 | `/golf` | `src/app/golf/page.tsx` | Manually maintained golf dashboard |
-=======
 | `/world-cup-2026` | `src/app/world-cup-2026/page.tsx` | Snapshot-backed 2026 FIFA World Cup hub (groups, knockout bracket, schedule, venues) |
->>>>>>> deb110b23d963f2ced13f361fb9f660c3cb6ecc7
+| `/tech-startup-tracker` | `src/app/tech-startup-tracker/page.tsx` | Curated tech startup funding tracker (sector/stage, valuations, momentum) |
 | `/news-pulse` | `src/app/news-pulse/page.tsx` | News Pulse dashboard |
 | `/spacex-mission-control` | `src/app/spacex-mission-control/page.tsx` | SpaceX Mission Control dashboard |
 | `/polling-aggregator` | `src/app/polling-aggregator/page.tsx` | Snapshot-backed political polling dashboard |
