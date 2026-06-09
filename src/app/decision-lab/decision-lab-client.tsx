@@ -711,7 +711,7 @@ function DecisionLabWorkbench({
                       >
                         <span className="block truncate">{preset.name}</span>
                         <span
-                          className="block truncate text-[11px] font-normal"
+                          className="block truncate text-2xs font-normal"
                           style={{ color: "var(--home-ink-muted)" }}
                         >
                           {preset.outcomeHint}
@@ -746,7 +746,7 @@ function DecisionLabWorkbench({
                     Copy link
                   </button>
                   <p
-                    className="m-0 text-[11px] leading-snug"
+                    className="m-0 text-2xs leading-snug"
                     style={{ color: "var(--home-ink-muted)" }}
                   >
                     {copyStatus === "copied"

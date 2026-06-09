@@ -398,7 +398,7 @@ interface FilterSelectProps {
 function FilterSelect({ label, value, options, onChange }: FilterSelectProps) {
   return (
     <label className="inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 text-sm font-semibold text-[var(--home-ink-muted)]">
-      <span className="text-[11px] uppercase tracking-[0.16em]">{label}</span>
+      <span className="text-2xs uppercase tracking-[0.16em]">{label}</span>
       <select
         value={value}
         onChange={(event) => onChange(event.target.value)}
@@ -435,7 +435,7 @@ function ToolDirectoryTable({
                 <th
                   key={heading}
                   scope="col"
-                  className="px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]"
+                  className="px-4 py-3 text-left text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]"
                 >
                   {heading}
                 </th>
@@ -536,7 +536,7 @@ function ToolDetail({ tool }: { tool: AiDevTool | null }) {
             <ToolCategoryIcon category={tool.category} className="h-5 w-5" />
           </span>
           <div>
-            <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]">
+            <p className="mb-1 text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]">
               {tool.company}
             </p>
             <h2 className="mb-0 text-2xl font-semibold text-[var(--home-ink)]">
@@ -580,7 +580,7 @@ function ToolDetail({ tool }: { tool: AiDevTool | null }) {
       </div>
 
       <div className="mt-5 border-t border-[var(--home-rule)] pt-4">
-        <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]">
+        <p className="mb-2 text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]">
           Sources
         </p>
         <div className="flex flex-col gap-2">
@@ -616,7 +616,7 @@ function ToolDetail({ tool }: { tool: AiDevTool | null }) {
 function DetailRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-3">
-      <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
+      <p className="mb-1 text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
         {label}
       </p>
       <p className="mb-0 text-sm leading-6 text-[var(--home-ink)]">{value}</p>
