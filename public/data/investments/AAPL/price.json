@@ -1,24 +1,6 @@
 [
   {
     "symbol": "AAPL",
-    "report_date": "2025-06-03",
-    "open": 201.35,
-    "close": 203.27,
-    "high": 203.77,
-    "low": 200.96,
-    "volume": 46381600
-  },
-  {
-    "symbol": "AAPL",
-    "report_date": "2025-06-04",
-    "open": 202.91,
-    "close": 202.82,
-    "high": 206.24,
-    "low": 202.1,
-    "volume": 43604000
-  },
-  {
-    "symbol": "AAPL",
     "report_date": "2025-06-05",
     "open": 203.5,
     "close": 200.63,
@@ -2261,10 +2243,28 @@
   {
     "symbol": "AAPL",
     "report_date": "2026-06-03",
-    "open": 314.175,
+    "open": 314.18,
     "close": 310.26,
     "high": 316.94,
     "low": 308.85,
-    "volume": 50459550
+    "volume": 50836700
+  },
+  {
+    "symbol": "AAPL",
+    "report_date": "2026-06-04",
+    "open": 313.23,
+    "close": 311.23,
+    "high": 313.54,
+    "low": 309.65,
+    "volume": 44869100
+  },
+  {
+    "symbol": "AAPL",
+    "report_date": "2026-06-05",
+    "open": 312.86,
+    "close": 307.34,
+    "high": 315.17,
+    "low": 307.15,
+    "volume": 65246700
   }
 ]

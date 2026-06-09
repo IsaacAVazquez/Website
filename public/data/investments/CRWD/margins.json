@@ -87,9 +87,9 @@
     {
       "symbol": "CRWD",
       "report_date": "2025-04-30",
-      "gross_profit": 814291000.0,
+      "gross_profit": 815559000.0,
       "total_revenue": 1103434000.0,
-      "gross_margin": 0.738
+      "gross_margin": 0.7391
     },
     {
       "symbol": "CRWD",
@@ -111,6 +111,13 @@
       "gross_profit": 993677000.0,
       "total_revenue": 1305375000.0,
       "gross_margin": 0.7612
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-04-30",
+      "gross_profit": 1043352000.0,
+      "total_revenue": 1385629000.0,
+      "gross_margin": 0.753
     }
   ],
   "annual_gross": [
@@ -252,9 +259,9 @@
     {
       "symbol": "CRWD",
       "report_date": "2025-04-30",
-      "operating_income": -124656000.0,
+      "operating_income": -118713000.0,
       "total_revenue": 1103434000.0,
-      "operating_margin": -0.113
+      "operating_margin": -0.1076
     },
     {
       "symbol": "CRWD",
@@ -276,6 +283,13 @@
       "operating_income": 13786000.0,
       "total_revenue": 1305375000.0,
       "operating_margin": 0.0106
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-04-30",
+      "operating_income": -30600000.0,
+      "total_revenue": 1385629000.0,
+      "operating_margin": -0.0221
     }
   ],
   "annual_operating": [
@@ -417,9 +431,9 @@
     {
       "symbol": "CRWD",
       "report_date": "2025-04-30",
-      "net_income_common_stockholders": -110207000.0,
+      "net_income_common_stockholders": -104264000.0,
       "total_revenue": 1103434000.0,
-      "net_margin": -0.0999
+      "net_margin": -0.0945
     },
     {
       "symbol": "CRWD",
@@ -441,6 +455,13 @@
       "net_income_common_stockholders": 59377000.0,
       "total_revenue": 1305375000.0,
       "net_margin": 0.0455
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-04-30",
+      "net_income_common_stockholders": 27774000.0,
+      "total_revenue": 1385629000.0,
+      "net_margin": 0.02
     }
   ],
   "annual_net": [
@@ -582,9 +603,9 @@
     {
       "symbol": "CRWD",
       "report_date": "2025-04-30",
-      "ebitda": -19115000.0,
+      "ebitda": -13172000.0,
       "total_revenue": 1103434000.0,
-      "ebitda_margin": -0.0173
+      "ebitda_margin": -0.0119
     },
     {
       "symbol": "CRWD",
@@ -606,6 +627,13 @@
       "ebitda": 142899000.0,
       "total_revenue": 1305375000.0,
       "ebitda_margin": 0.1095
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-04-30",
+      "ebitda": 133106000.0,
+      "total_revenue": 1385629000.0,
+      "ebitda_margin": 0.0961
     }
   ],
   "annual_ebitda": [
@@ -771,6 +799,13 @@
       "free_cash_flow": 378149000.0,
       "total_revenue": 1305375000.0,
       "fcf_margin": 0.2897
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-04-30",
+      "free_cash_flow": 470742000.0,
+      "total_revenue": 1385629000.0,
+      "fcf_margin": 0.3397
     }
   ],
   "annual_fcf": [

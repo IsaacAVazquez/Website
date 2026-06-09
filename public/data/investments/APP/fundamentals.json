@@ -10524,6 +10524,22 @@
       "close_price": 570.83,
       "ttm_eps": 11.3361,
       "ttm_pe": 50.36
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-06-04T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 558.87,
+      "ttm_eps": 11.3361,
+      "ttm_pe": 49.3
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-06-05T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 557.2,
+      "ttm_eps": 11.3361,
+      "ttm_pe": 49.15
     }
   ],
   "marketCap": [
@@ -20846,6 +20862,22 @@
       "close_price": 570.83,
       "shares_outstanding": 335939500,
       "market_capitalization": 191764344785.0
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-06-04T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 558.87,
+      "shares_outstanding": 335939500,
+      "market_capitalization": 187746508365.0
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-06-05T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 557.2,
+      "shares_outstanding": 335939500,
+      "market_capitalization": 187185489400.0
     }
   ],
   "psRatio": [
@@ -26308,6 +26340,26 @@
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 6164192000.0,
       "ps_ratio": 31.11
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-06-04T00:00:00.000",
+      "market_capitalization": 187746508365.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 6164192000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 30.46
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-06-05T00:00:00.000",
+      "market_capitalization": 187185489400.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 6164192000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 6164192000.0,
+      "ps_ratio": 30.37
     }
   ],
   "pbRatio": [
@@ -36160,6 +36212,26 @@
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 2363483000.0,
       "pb_ratio": 81.14
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-06-04T00:00:00.000",
+      "market_capitalization": 187746508365.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 2363483000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 2363483000.0,
+      "pb_ratio": 79.44
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-06-05T00:00:00.000",
+      "market_capitalization": 187185489400.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 2363483000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 2363483000.0,
+      "pb_ratio": 79.2
     }
   ],
   "pegRatio": [
@@ -44122,6 +44194,26 @@
       "ttm_pe": 50.36,
       "eps_yoy_growth": 0.697,
       "peg_ratio": 0.72
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-06-04T00:00:00.000",
+      "close_price": 558.87,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 11.3361,
+      "ttm_pe": 49.3,
+      "eps_yoy_growth": 0.697,
+      "peg_ratio": 0.71
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-06-05T00:00:00.000",
+      "close_price": 557.2,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 11.3361,
+      "ttm_pe": 49.15,
+      "eps_yoy_growth": 0.697,
+      "peg_ratio": 0.71
     }
   ]
 }

@@ -5571,6 +5571,20 @@
       "total_market_cap": 1304744618616.0,
       "total_ttm_net_income": 28092369465.0,
       "industry_pe": 46.44
+    },
+    {
+      "report_date": "2026-06-04T00:00:00.000",
+      "industry": "Computer Hardware",
+      "total_market_cap": 1272501379064.98,
+      "total_ttm_net_income": 28092369465.0,
+      "industry_pe": 45.3
+    },
+    {
+      "report_date": "2026-06-05T00:00:00.000",
+      "industry": "Computer Hardware",
+      "total_market_cap": 1160252455819.02,
+      "total_ttm_net_income": 28092369465.0,
+      "industry_pe": 41.3
     }
   ],
   "ps_ratio": [
@@ -11142,9 +11156,23 @@
     {
       "report_date": "2026-06-03T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1329956048823.49,
+      "total_market_cap": 1329956369275.95,
       "total_ttm_revenue": 263818462639.68,
       "industry_ps_ratio": 5.04
+    },
+    {
+      "report_date": "2026-06-04T00:00:00.000",
+      "industry": "Computer Hardware",
+      "total_market_cap": 1297903845570.0198,
+      "total_ttm_revenue": 263818462639.68,
+      "industry_ps_ratio": 4.92
+    },
+    {
+      "report_date": "2026-06-05T00:00:00.000",
+      "industry": "Computer Hardware",
+      "total_market_cap": 1182247800854.06,
+      "total_ttm_revenue": 263818462639.68,
+      "industry_ps_ratio": 4.48
     }
   ],
   "pb_ratio": [
@@ -18326,9 +18354,23 @@
     {
       "report_date": "2026-06-03T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1082459156008.0,
+      "total_market_cap": 1082459475832.4,
       "total_bve": 106604112493.71002,
       "industry_pb_ratio": 10.15
+    },
+    {
+      "report_date": "2026-06-04T00:00:00.000",
+      "industry": "Computer Hardware",
+      "total_market_cap": 1048864435662.78,
+      "total_bve": 106604112493.71002,
+      "industry_pb_ratio": 9.84
+    },
+    {
+      "report_date": "2026-06-05T00:00:00.000",
+      "industry": "Computer Hardware",
+      "total_market_cap": 950709316346.22,
+      "total_bve": 106604112493.71002,
+      "industry_pb_ratio": 8.92
     }
   ],
   "roe": [

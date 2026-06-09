@@ -433,6 +433,13 @@
       "eps": 0.6076,
       "tailing_eps": 1.8072,
       "update_time": "2026-05-16"
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2026-04-30",
+      "eps": -0.221,
+      "tailing_eps": 1.2157,
+      "update_time": "2026-06-05"
     }
   ],
   "ttmPe": [
@@ -28143,194 +28150,210 @@
     {
       "symbol": "PANW",
       "report_date": "2026-04-30T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 179.32,
-      "ttm_eps": 1.8072,
-      "ttm_pe": 99.23
+      "ttm_eps": 1.2157,
+      "ttm_pe": 147.5
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-01T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 181.08,
-      "ttm_eps": 1.8072,
-      "ttm_pe": 100.2
+      "ttm_eps": 1.2157,
+      "ttm_pe": 148.95
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-04T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 184.56,
-      "ttm_eps": 1.8072,
-      "ttm_pe": 102.12
+      "ttm_eps": 1.2157,
+      "ttm_pe": 151.81
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-05T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 183.98,
-      "ttm_eps": 1.8072,
-      "ttm_pe": 101.8
+      "ttm_eps": 1.2157,
+      "ttm_pe": 151.34
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-06T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 183.68,
-      "ttm_eps": 1.8072,
-      "ttm_pe": 101.64
+      "ttm_eps": 1.2157,
+      "ttm_pe": 151.09
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-07T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 196.53,
-      "ttm_eps": 1.8072,
-      "ttm_pe": 108.75
+      "ttm_eps": 1.2157,
+      "ttm_pe": 161.66
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-08T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 207.88,
-      "ttm_eps": 1.8072,
-      "ttm_pe": 115.03
+      "ttm_eps": 1.2157,
+      "ttm_pe": 171.0
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-11T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 213.66,
-      "ttm_eps": 1.8072,
-      "ttm_pe": 118.23
+      "ttm_eps": 1.2157,
+      "ttm_pe": 175.75
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-12T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 215.6,
-      "ttm_eps": 1.8072,
-      "ttm_pe": 119.3
+      "ttm_eps": 1.2157,
+      "ttm_pe": 177.35
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-13T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 227.79,
-      "ttm_eps": 1.8072,
-      "ttm_pe": 126.05
+      "ttm_eps": 1.2157,
+      "ttm_pe": 187.37
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-14T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 238.21,
-      "ttm_eps": 1.8072,
-      "ttm_pe": 131.81
+      "ttm_eps": 1.2157,
+      "ttm_pe": 195.94
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-15T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 242.83,
-      "ttm_eps": 1.8072,
-      "ttm_pe": 134.37
+      "ttm_eps": 1.2157,
+      "ttm_pe": 199.75
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-18T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 247.55,
-      "ttm_eps": 1.8072,
-      "ttm_pe": 136.98
+      "ttm_eps": 1.2157,
+      "ttm_pe": 203.63
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-19T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 240.13,
-      "ttm_eps": 1.8072,
-      "ttm_pe": 132.87
+      "ttm_eps": 1.2157,
+      "ttm_pe": 197.52
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-20T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 246.66,
-      "ttm_eps": 1.8072,
-      "ttm_pe": 136.49
+      "ttm_eps": 1.2157,
+      "ttm_pe": 202.9
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-21T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 252.92,
-      "ttm_eps": 1.8072,
-      "ttm_pe": 139.95
+      "ttm_eps": 1.2157,
+      "ttm_pe": 208.04
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-22T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 260.58,
-      "ttm_eps": 1.8072,
-      "ttm_pe": 144.19
+      "ttm_eps": 1.2157,
+      "ttm_pe": 214.35
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-26T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 256.75,
-      "ttm_eps": 1.8072,
-      "ttm_pe": 142.07
+      "ttm_eps": 1.2157,
+      "ttm_pe": 211.2
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-27T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 248.47,
-      "ttm_eps": 1.8072,
-      "ttm_pe": 137.49
+      "ttm_eps": 1.2157,
+      "ttm_pe": 204.38
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-28T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 257.77,
-      "ttm_eps": 1.8072,
-      "ttm_pe": 142.64
+      "ttm_eps": 1.2157,
+      "ttm_pe": 212.03
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-29T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 281.69,
-      "ttm_eps": 1.8072,
-      "ttm_pe": 155.87
+      "ttm_eps": 1.2157,
+      "ttm_pe": 231.71
     },
     {
       "symbol": "PANW",
       "report_date": "2026-06-01T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 300.48,
-      "ttm_eps": 1.8072,
-      "ttm_pe": 166.27
+      "ttm_eps": 1.2157,
+      "ttm_pe": 247.17
     },
     {
       "symbol": "PANW",
       "report_date": "2026-06-02T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 297.18,
-      "ttm_eps": 1.8072,
-      "ttm_pe": 164.44
+      "ttm_eps": 1.2157,
+      "ttm_pe": 244.45
     },
     {
       "symbol": "PANW",
       "report_date": "2026-06-03T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 280.43,
-      "ttm_eps": 1.8072,
-      "ttm_pe": 155.17
+      "ttm_eps": 1.2157,
+      "ttm_pe": 230.67
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2026-06-04T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 279.25,
+      "ttm_eps": 1.2157,
+      "ttm_pe": 229.7
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2026-06-05T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 272.05,
+      "ttm_eps": 1.2157,
+      "ttm_pe": 223.78
     }
   ],
   "marketCap": [
@@ -56041,194 +56064,210 @@
     {
       "symbol": "PANW",
       "report_date": "2026-04-30T00:00:00.000",
-      "shares_report_date": "2026-03-06T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 179.32,
-      "shares_outstanding": 811000000,
-      "market_capitalization": 145428520000.0
+      "shares_outstanding": 813000000,
+      "market_capitalization": 145787160000.0
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-01T00:00:00.000",
-      "shares_report_date": "2026-03-06T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 181.08,
-      "shares_outstanding": 811000000,
-      "market_capitalization": 146855880000.0
+      "shares_outstanding": 813000000,
+      "market_capitalization": 147218040000.0
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-04T00:00:00.000",
-      "shares_report_date": "2026-03-06T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 184.56,
-      "shares_outstanding": 811000000,
-      "market_capitalization": 149678160000.0
+      "shares_outstanding": 813000000,
+      "market_capitalization": 150047280000.0
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-05T00:00:00.000",
-      "shares_report_date": "2026-03-06T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 183.98,
-      "shares_outstanding": 811000000,
-      "market_capitalization": 149207780000.0
+      "shares_outstanding": 813000000,
+      "market_capitalization": 149575740000.0
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-06T00:00:00.000",
-      "shares_report_date": "2026-03-06T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 183.68,
-      "shares_outstanding": 811000000,
-      "market_capitalization": 148964480000.0
+      "shares_outstanding": 813000000,
+      "market_capitalization": 149331840000.0
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-07T00:00:00.000",
-      "shares_report_date": "2026-03-06T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 196.53,
-      "shares_outstanding": 811000000,
-      "market_capitalization": 159385830000.0
+      "shares_outstanding": 813000000,
+      "market_capitalization": 159778890000.0
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-08T00:00:00.000",
-      "shares_report_date": "2026-03-06T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 207.88,
-      "shares_outstanding": 811000000,
-      "market_capitalization": 168590680000.0
+      "shares_outstanding": 813000000,
+      "market_capitalization": 169006440000.0
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-11T00:00:00.000",
-      "shares_report_date": "2026-03-06T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 213.66,
-      "shares_outstanding": 811000000,
-      "market_capitalization": 173278260000.0
+      "shares_outstanding": 813000000,
+      "market_capitalization": 173705580000.0
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-12T00:00:00.000",
-      "shares_report_date": "2026-03-06T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 215.6,
-      "shares_outstanding": 811000000,
-      "market_capitalization": 174851600000.0
+      "shares_outstanding": 813000000,
+      "market_capitalization": 175282800000.0
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-13T00:00:00.000",
-      "shares_report_date": "2026-03-06T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 227.79,
-      "shares_outstanding": 811000000,
-      "market_capitalization": 184737690000.0
+      "shares_outstanding": 813000000,
+      "market_capitalization": 185193270000.0
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-14T00:00:00.000",
-      "shares_report_date": "2026-03-06T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 238.21,
-      "shares_outstanding": 811000000,
-      "market_capitalization": 193188310000.0
+      "shares_outstanding": 813000000,
+      "market_capitalization": 193664730000.0
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-15T00:00:00.000",
-      "shares_report_date": "2026-03-06T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 242.83,
-      "shares_outstanding": 811000000,
-      "market_capitalization": 196935130000.0
+      "shares_outstanding": 813000000,
+      "market_capitalization": 197420790000.0
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-18T00:00:00.000",
-      "shares_report_date": "2026-03-06T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 247.55,
-      "shares_outstanding": 811000000,
-      "market_capitalization": 200763050000.0
+      "shares_outstanding": 813000000,
+      "market_capitalization": 201258150000.0
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-19T00:00:00.000",
-      "shares_report_date": "2026-03-06T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 240.13,
-      "shares_outstanding": 811000000,
-      "market_capitalization": 194745430000.0
+      "shares_outstanding": 813000000,
+      "market_capitalization": 195225690000.0
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-20T00:00:00.000",
-      "shares_report_date": "2026-03-06T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 246.66,
-      "shares_outstanding": 811000000,
-      "market_capitalization": 200041260000.0
+      "shares_outstanding": 813000000,
+      "market_capitalization": 200534580000.0
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-21T00:00:00.000",
-      "shares_report_date": "2026-03-06T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 252.92,
-      "shares_outstanding": 811000000,
-      "market_capitalization": 205118120000.0
+      "shares_outstanding": 813000000,
+      "market_capitalization": 205623960000.0
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-22T00:00:00.000",
-      "shares_report_date": "2026-03-06T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 260.58,
-      "shares_outstanding": 811000000,
-      "market_capitalization": 211330380000.0
+      "shares_outstanding": 813000000,
+      "market_capitalization": 211851540000.0
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-26T00:00:00.000",
-      "shares_report_date": "2026-03-06T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 256.75,
-      "shares_outstanding": 811000000,
-      "market_capitalization": 208224250000.0
+      "shares_outstanding": 813000000,
+      "market_capitalization": 208737750000.0
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-27T00:00:00.000",
-      "shares_report_date": "2026-03-06T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 248.47,
-      "shares_outstanding": 811000000,
-      "market_capitalization": 201509170000.0
+      "shares_outstanding": 813000000,
+      "market_capitalization": 202006110000.0
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-28T00:00:00.000",
-      "shares_report_date": "2026-03-06T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 257.77,
-      "shares_outstanding": 811000000,
-      "market_capitalization": 209051470000.0
+      "shares_outstanding": 813000000,
+      "market_capitalization": 209567010000.0
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-29T00:00:00.000",
-      "shares_report_date": "2026-03-06T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 281.69,
-      "shares_outstanding": 811000000,
-      "market_capitalization": 228450590000.0
+      "shares_outstanding": 813000000,
+      "market_capitalization": 229013970000.0
     },
     {
       "symbol": "PANW",
       "report_date": "2026-06-01T00:00:00.000",
-      "shares_report_date": "2026-03-06T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 300.48,
-      "shares_outstanding": 811000000,
-      "market_capitalization": 243689280000.0
+      "shares_outstanding": 813000000,
+      "market_capitalization": 244290240000.0
     },
     {
       "symbol": "PANW",
       "report_date": "2026-06-02T00:00:00.000",
-      "shares_report_date": "2026-03-06T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 297.18,
-      "shares_outstanding": 811000000,
-      "market_capitalization": 241012980000.0
+      "shares_outstanding": 813000000,
+      "market_capitalization": 241607340000.0
     },
     {
       "symbol": "PANW",
       "report_date": "2026-06-03T00:00:00.000",
-      "shares_report_date": "2026-03-06T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 280.43,
-      "shares_outstanding": 811000000,
-      "market_capitalization": 227428730000.0
+      "shares_outstanding": 813000000,
+      "market_capitalization": 227989590000.0
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2026-06-04T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 279.25,
+      "shares_outstanding": 813000000,
+      "market_capitalization": 227030250000.0
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2026-06-05T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 272.05,
+      "shares_outstanding": 813000000,
+      "market_capitalization": 221176650000.0
     }
   ],
   "psRatio": [
@@ -61245,242 +61284,262 @@
     {
       "symbol": "PANW",
       "report_date": "2026-04-30T00:00:00.000",
-      "market_capitalization": 145428520000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 9893300000.0,
+      "market_capitalization": 145787160000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 10606300000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9893300000.0,
-      "ps_ratio": 14.7
+      "ttm_revenue_usd": 10606300000.0,
+      "ps_ratio": 13.75
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-01T00:00:00.000",
-      "market_capitalization": 146855880000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 9893300000.0,
+      "market_capitalization": 147218040000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 10606300000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9893300000.0,
-      "ps_ratio": 14.84
+      "ttm_revenue_usd": 10606300000.0,
+      "ps_ratio": 13.88
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-04T00:00:00.000",
-      "market_capitalization": 149678160000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 9893300000.0,
+      "market_capitalization": 150047280000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 10606300000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9893300000.0,
-      "ps_ratio": 15.13
+      "ttm_revenue_usd": 10606300000.0,
+      "ps_ratio": 14.15
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-05T00:00:00.000",
-      "market_capitalization": 149207780000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 9893300000.0,
+      "market_capitalization": 149575740000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 10606300000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9893300000.0,
-      "ps_ratio": 15.08
+      "ttm_revenue_usd": 10606300000.0,
+      "ps_ratio": 14.1
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-06T00:00:00.000",
-      "market_capitalization": 148964480000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 9893300000.0,
+      "market_capitalization": 149331840000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 10606300000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9893300000.0,
-      "ps_ratio": 15.06
+      "ttm_revenue_usd": 10606300000.0,
+      "ps_ratio": 14.08
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-07T00:00:00.000",
-      "market_capitalization": 159385830000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 9893300000.0,
+      "market_capitalization": 159778890000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 10606300000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9893300000.0,
-      "ps_ratio": 16.11
+      "ttm_revenue_usd": 10606300000.0,
+      "ps_ratio": 15.06
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-08T00:00:00.000",
-      "market_capitalization": 168590680000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 9893300000.0,
+      "market_capitalization": 169006440000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 10606300000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9893300000.0,
-      "ps_ratio": 17.04
+      "ttm_revenue_usd": 10606300000.0,
+      "ps_ratio": 15.93
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-11T00:00:00.000",
-      "market_capitalization": 173278260000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 9893300000.0,
+      "market_capitalization": 173705580000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 10606300000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9893300000.0,
-      "ps_ratio": 17.51
+      "ttm_revenue_usd": 10606300000.0,
+      "ps_ratio": 16.38
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-12T00:00:00.000",
-      "market_capitalization": 174851600000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 9893300000.0,
+      "market_capitalization": 175282800000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 10606300000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9893300000.0,
-      "ps_ratio": 17.67
+      "ttm_revenue_usd": 10606300000.0,
+      "ps_ratio": 16.53
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-13T00:00:00.000",
-      "market_capitalization": 184737690000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 9893300000.0,
+      "market_capitalization": 185193270000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 10606300000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9893300000.0,
-      "ps_ratio": 18.67
+      "ttm_revenue_usd": 10606300000.0,
+      "ps_ratio": 17.46
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-14T00:00:00.000",
-      "market_capitalization": 193188310000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 9893300000.0,
+      "market_capitalization": 193664730000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 10606300000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9893300000.0,
-      "ps_ratio": 19.53
+      "ttm_revenue_usd": 10606300000.0,
+      "ps_ratio": 18.26
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-15T00:00:00.000",
-      "market_capitalization": 196935130000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 9893300000.0,
+      "market_capitalization": 197420790000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 10606300000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9893300000.0,
-      "ps_ratio": 19.91
+      "ttm_revenue_usd": 10606300000.0,
+      "ps_ratio": 18.61
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-18T00:00:00.000",
-      "market_capitalization": 200763050000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 9893300000.0,
+      "market_capitalization": 201258150000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 10606300000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9893300000.0,
-      "ps_ratio": 20.29
+      "ttm_revenue_usd": 10606300000.0,
+      "ps_ratio": 18.98
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-19T00:00:00.000",
-      "market_capitalization": 194745430000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 9893300000.0,
+      "market_capitalization": 195225690000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 10606300000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9893300000.0,
-      "ps_ratio": 19.68
+      "ttm_revenue_usd": 10606300000.0,
+      "ps_ratio": 18.41
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-20T00:00:00.000",
-      "market_capitalization": 200041260000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 9893300000.0,
+      "market_capitalization": 200534580000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 10606300000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9893300000.0,
-      "ps_ratio": 20.22
+      "ttm_revenue_usd": 10606300000.0,
+      "ps_ratio": 18.91
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-21T00:00:00.000",
-      "market_capitalization": 205118120000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 9893300000.0,
+      "market_capitalization": 205623960000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 10606300000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9893300000.0,
-      "ps_ratio": 20.73
+      "ttm_revenue_usd": 10606300000.0,
+      "ps_ratio": 19.39
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-22T00:00:00.000",
-      "market_capitalization": 211330380000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 9893300000.0,
+      "market_capitalization": 211851540000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 10606300000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9893300000.0,
-      "ps_ratio": 21.36
+      "ttm_revenue_usd": 10606300000.0,
+      "ps_ratio": 19.97
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-26T00:00:00.000",
-      "market_capitalization": 208224250000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 9893300000.0,
+      "market_capitalization": 208737750000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 10606300000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9893300000.0,
-      "ps_ratio": 21.05
+      "ttm_revenue_usd": 10606300000.0,
+      "ps_ratio": 19.68
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-27T00:00:00.000",
-      "market_capitalization": 201509170000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 9893300000.0,
+      "market_capitalization": 202006110000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 10606300000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9893300000.0,
-      "ps_ratio": 20.37
+      "ttm_revenue_usd": 10606300000.0,
+      "ps_ratio": 19.05
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-28T00:00:00.000",
-      "market_capitalization": 209051470000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 9893300000.0,
+      "market_capitalization": 209567010000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 10606300000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9893300000.0,
-      "ps_ratio": 21.13
+      "ttm_revenue_usd": 10606300000.0,
+      "ps_ratio": 19.76
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-29T00:00:00.000",
-      "market_capitalization": 228450590000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 9893300000.0,
+      "market_capitalization": 229013970000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 10606300000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9893300000.0,
-      "ps_ratio": 23.09
+      "ttm_revenue_usd": 10606300000.0,
+      "ps_ratio": 21.59
     },
     {
       "symbol": "PANW",
       "report_date": "2026-06-01T00:00:00.000",
-      "market_capitalization": 243689280000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 9893300000.0,
+      "market_capitalization": 244290240000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 10606300000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9893300000.0,
-      "ps_ratio": 24.63
+      "ttm_revenue_usd": 10606300000.0,
+      "ps_ratio": 23.03
     },
     {
       "symbol": "PANW",
       "report_date": "2026-06-02T00:00:00.000",
-      "market_capitalization": 241012980000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 9893300000.0,
+      "market_capitalization": 241607340000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 10606300000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9893300000.0,
-      "ps_ratio": 24.36
+      "ttm_revenue_usd": 10606300000.0,
+      "ps_ratio": 22.78
     },
     {
       "symbol": "PANW",
       "report_date": "2026-06-03T00:00:00.000",
-      "market_capitalization": 227428730000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 9893300000.0,
+      "market_capitalization": 227989590000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 10606300000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 9893300000.0,
-      "ps_ratio": 22.99
+      "ttm_revenue_usd": 10606300000.0,
+      "ps_ratio": 21.5
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2026-06-04T00:00:00.000",
+      "market_capitalization": 227030250000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 10606300000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 10606300000.0,
+      "ps_ratio": 21.41
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2026-06-05T00:00:00.000",
+      "market_capitalization": 221176650000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 10606300000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 10606300000.0,
+      "ps_ratio": 20.85
     }
   ],
   "pbRatio": [
@@ -71507,242 +71566,262 @@
     {
       "symbol": "PANW",
       "report_date": "2026-04-30T00:00:00.000",
-      "market_capitalization": 145428520000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 9393000000.0,
+      "market_capitalization": 145787160000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 27668000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 9393000000.0,
-      "pb_ratio": 15.48
+      "book_value_of_equity_usd": 27668000000.0,
+      "pb_ratio": 5.27
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-01T00:00:00.000",
-      "market_capitalization": 146855880000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 9393000000.0,
+      "market_capitalization": 147218040000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 27668000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 9393000000.0,
-      "pb_ratio": 15.63
+      "book_value_of_equity_usd": 27668000000.0,
+      "pb_ratio": 5.32
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-04T00:00:00.000",
-      "market_capitalization": 149678160000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 9393000000.0,
+      "market_capitalization": 150047280000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 27668000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 9393000000.0,
-      "pb_ratio": 15.94
+      "book_value_of_equity_usd": 27668000000.0,
+      "pb_ratio": 5.42
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-05T00:00:00.000",
-      "market_capitalization": 149207780000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 9393000000.0,
+      "market_capitalization": 149575740000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 27668000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 9393000000.0,
-      "pb_ratio": 15.88
+      "book_value_of_equity_usd": 27668000000.0,
+      "pb_ratio": 5.41
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-06T00:00:00.000",
-      "market_capitalization": 148964480000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 9393000000.0,
+      "market_capitalization": 149331840000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 27668000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 9393000000.0,
-      "pb_ratio": 15.86
+      "book_value_of_equity_usd": 27668000000.0,
+      "pb_ratio": 5.4
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-07T00:00:00.000",
-      "market_capitalization": 159385830000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 9393000000.0,
+      "market_capitalization": 159778890000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 27668000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 9393000000.0,
-      "pb_ratio": 16.97
+      "book_value_of_equity_usd": 27668000000.0,
+      "pb_ratio": 5.77
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-08T00:00:00.000",
-      "market_capitalization": 168590680000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 9393000000.0,
+      "market_capitalization": 169006440000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 27668000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 9393000000.0,
-      "pb_ratio": 17.95
+      "book_value_of_equity_usd": 27668000000.0,
+      "pb_ratio": 6.11
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-11T00:00:00.000",
-      "market_capitalization": 173278260000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 9393000000.0,
+      "market_capitalization": 173705580000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 27668000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 9393000000.0,
-      "pb_ratio": 18.45
+      "book_value_of_equity_usd": 27668000000.0,
+      "pb_ratio": 6.28
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-12T00:00:00.000",
-      "market_capitalization": 174851600000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 9393000000.0,
+      "market_capitalization": 175282800000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 27668000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 9393000000.0,
-      "pb_ratio": 18.62
+      "book_value_of_equity_usd": 27668000000.0,
+      "pb_ratio": 6.34
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-13T00:00:00.000",
-      "market_capitalization": 184737690000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 9393000000.0,
+      "market_capitalization": 185193270000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 27668000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 9393000000.0,
-      "pb_ratio": 19.67
+      "book_value_of_equity_usd": 27668000000.0,
+      "pb_ratio": 6.69
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-14T00:00:00.000",
-      "market_capitalization": 193188310000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 9393000000.0,
+      "market_capitalization": 193664730000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 27668000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 9393000000.0,
-      "pb_ratio": 20.57
+      "book_value_of_equity_usd": 27668000000.0,
+      "pb_ratio": 7.0
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-15T00:00:00.000",
-      "market_capitalization": 196935130000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 9393000000.0,
+      "market_capitalization": 197420790000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 27668000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 9393000000.0,
-      "pb_ratio": 20.97
+      "book_value_of_equity_usd": 27668000000.0,
+      "pb_ratio": 7.14
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-18T00:00:00.000",
-      "market_capitalization": 200763050000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 9393000000.0,
+      "market_capitalization": 201258150000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 27668000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 9393000000.0,
-      "pb_ratio": 21.37
+      "book_value_of_equity_usd": 27668000000.0,
+      "pb_ratio": 7.27
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-19T00:00:00.000",
-      "market_capitalization": 194745430000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 9393000000.0,
+      "market_capitalization": 195225690000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 27668000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 9393000000.0,
-      "pb_ratio": 20.73
+      "book_value_of_equity_usd": 27668000000.0,
+      "pb_ratio": 7.06
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-20T00:00:00.000",
-      "market_capitalization": 200041260000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 9393000000.0,
+      "market_capitalization": 200534580000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 27668000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 9393000000.0,
-      "pb_ratio": 21.3
+      "book_value_of_equity_usd": 27668000000.0,
+      "pb_ratio": 7.25
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-21T00:00:00.000",
-      "market_capitalization": 205118120000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 9393000000.0,
+      "market_capitalization": 205623960000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 27668000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 9393000000.0,
-      "pb_ratio": 21.84
+      "book_value_of_equity_usd": 27668000000.0,
+      "pb_ratio": 7.43
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-22T00:00:00.000",
-      "market_capitalization": 211330380000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 9393000000.0,
+      "market_capitalization": 211851540000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 27668000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 9393000000.0,
-      "pb_ratio": 22.5
+      "book_value_of_equity_usd": 27668000000.0,
+      "pb_ratio": 7.66
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-26T00:00:00.000",
-      "market_capitalization": 208224250000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 9393000000.0,
+      "market_capitalization": 208737750000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 27668000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 9393000000.0,
-      "pb_ratio": 22.17
+      "book_value_of_equity_usd": 27668000000.0,
+      "pb_ratio": 7.54
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-27T00:00:00.000",
-      "market_capitalization": 201509170000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 9393000000.0,
+      "market_capitalization": 202006110000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 27668000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 9393000000.0,
-      "pb_ratio": 21.45
+      "book_value_of_equity_usd": 27668000000.0,
+      "pb_ratio": 7.3
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-28T00:00:00.000",
-      "market_capitalization": 209051470000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 9393000000.0,
+      "market_capitalization": 209567010000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 27668000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 9393000000.0,
-      "pb_ratio": 22.26
+      "book_value_of_equity_usd": 27668000000.0,
+      "pb_ratio": 7.57
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-29T00:00:00.000",
-      "market_capitalization": 228450590000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 9393000000.0,
+      "market_capitalization": 229013970000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 27668000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 9393000000.0,
-      "pb_ratio": 24.32
+      "book_value_of_equity_usd": 27668000000.0,
+      "pb_ratio": 8.28
     },
     {
       "symbol": "PANW",
       "report_date": "2026-06-01T00:00:00.000",
-      "market_capitalization": 243689280000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 9393000000.0,
+      "market_capitalization": 244290240000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 27668000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 9393000000.0,
-      "pb_ratio": 25.94
+      "book_value_of_equity_usd": 27668000000.0,
+      "pb_ratio": 8.83
     },
     {
       "symbol": "PANW",
       "report_date": "2026-06-02T00:00:00.000",
-      "market_capitalization": 241012980000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 9393000000.0,
+      "market_capitalization": 241607340000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 27668000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 9393000000.0,
-      "pb_ratio": 25.66
+      "book_value_of_equity_usd": 27668000000.0,
+      "pb_ratio": 8.73
     },
     {
       "symbol": "PANW",
       "report_date": "2026-06-03T00:00:00.000",
-      "market_capitalization": 227428730000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 9393000000.0,
+      "market_capitalization": 227989590000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 27668000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 9393000000.0,
-      "pb_ratio": 24.21
+      "book_value_of_equity_usd": 27668000000.0,
+      "pb_ratio": 8.24
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2026-06-04T00:00:00.000",
+      "market_capitalization": 227030250000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 27668000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 27668000000.0,
+      "pb_ratio": 8.21
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2026-06-05T00:00:00.000",
+      "market_capitalization": 221176650000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 27668000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 27668000000.0,
+      "pb_ratio": 7.99
     }
   ],
   "pegRatio": [
@@ -79890,241 +79969,261 @@
       "symbol": "PANW",
       "report_date": "2026-04-30T00:00:00.000",
       "close_price": 179.32,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 1.8072,
-      "ttm_pe": 99.23,
-      "eps_yoy_growth": 0.6117,
-      "peg_ratio": 1.62
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 1.2157,
+      "ttm_pe": 147.5,
+      "eps_yoy_growth": -1.5965,
+      "peg_ratio": null
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-01T00:00:00.000",
       "close_price": 181.08,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 1.8072,
-      "ttm_pe": 100.2,
-      "eps_yoy_growth": 0.6117,
-      "peg_ratio": 1.64
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 1.2157,
+      "ttm_pe": 148.95,
+      "eps_yoy_growth": -1.5965,
+      "peg_ratio": null
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-04T00:00:00.000",
       "close_price": 184.56,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 1.8072,
-      "ttm_pe": 102.12,
-      "eps_yoy_growth": 0.6117,
-      "peg_ratio": 1.67
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 1.2157,
+      "ttm_pe": 151.81,
+      "eps_yoy_growth": -1.5965,
+      "peg_ratio": null
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-05T00:00:00.000",
       "close_price": 183.98,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 1.8072,
-      "ttm_pe": 101.8,
-      "eps_yoy_growth": 0.6117,
-      "peg_ratio": 1.66
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 1.2157,
+      "ttm_pe": 151.34,
+      "eps_yoy_growth": -1.5965,
+      "peg_ratio": null
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-06T00:00:00.000",
       "close_price": 183.68,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 1.8072,
-      "ttm_pe": 101.64,
-      "eps_yoy_growth": 0.6117,
-      "peg_ratio": 1.66
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 1.2157,
+      "ttm_pe": 151.09,
+      "eps_yoy_growth": -1.5965,
+      "peg_ratio": null
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-07T00:00:00.000",
       "close_price": 196.53,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 1.8072,
-      "ttm_pe": 108.75,
-      "eps_yoy_growth": 0.6117,
-      "peg_ratio": 1.78
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 1.2157,
+      "ttm_pe": 161.66,
+      "eps_yoy_growth": -1.5965,
+      "peg_ratio": null
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-08T00:00:00.000",
       "close_price": 207.88,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 1.8072,
-      "ttm_pe": 115.03,
-      "eps_yoy_growth": 0.6117,
-      "peg_ratio": 1.88
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 1.2157,
+      "ttm_pe": 171.0,
+      "eps_yoy_growth": -1.5965,
+      "peg_ratio": null
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-11T00:00:00.000",
       "close_price": 213.66,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 1.8072,
-      "ttm_pe": 118.23,
-      "eps_yoy_growth": 0.6117,
-      "peg_ratio": 1.93
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 1.2157,
+      "ttm_pe": 175.75,
+      "eps_yoy_growth": -1.5965,
+      "peg_ratio": null
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-12T00:00:00.000",
       "close_price": 215.6,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 1.8072,
-      "ttm_pe": 119.3,
-      "eps_yoy_growth": 0.6117,
-      "peg_ratio": 1.95
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 1.2157,
+      "ttm_pe": 177.35,
+      "eps_yoy_growth": -1.5965,
+      "peg_ratio": null
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-13T00:00:00.000",
       "close_price": 227.79,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 1.8072,
-      "ttm_pe": 126.05,
-      "eps_yoy_growth": 0.6117,
-      "peg_ratio": 2.06
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 1.2157,
+      "ttm_pe": 187.37,
+      "eps_yoy_growth": -1.5965,
+      "peg_ratio": null
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-14T00:00:00.000",
       "close_price": 238.21,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 1.8072,
-      "ttm_pe": 131.81,
-      "eps_yoy_growth": 0.6117,
-      "peg_ratio": 2.15
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 1.2157,
+      "ttm_pe": 195.94,
+      "eps_yoy_growth": -1.5965,
+      "peg_ratio": null
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-15T00:00:00.000",
       "close_price": 242.83,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 1.8072,
-      "ttm_pe": 134.37,
-      "eps_yoy_growth": 0.6117,
-      "peg_ratio": 2.2
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 1.2157,
+      "ttm_pe": 199.75,
+      "eps_yoy_growth": -1.5965,
+      "peg_ratio": null
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-18T00:00:00.000",
       "close_price": 247.55,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 1.8072,
-      "ttm_pe": 136.98,
-      "eps_yoy_growth": 0.6117,
-      "peg_ratio": 2.24
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 1.2157,
+      "ttm_pe": 203.63,
+      "eps_yoy_growth": -1.5965,
+      "peg_ratio": null
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-19T00:00:00.000",
       "close_price": 240.13,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 1.8072,
-      "ttm_pe": 132.87,
-      "eps_yoy_growth": 0.6117,
-      "peg_ratio": 2.17
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 1.2157,
+      "ttm_pe": 197.52,
+      "eps_yoy_growth": -1.5965,
+      "peg_ratio": null
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-20T00:00:00.000",
       "close_price": 246.66,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 1.8072,
-      "ttm_pe": 136.49,
-      "eps_yoy_growth": 0.6117,
-      "peg_ratio": 2.23
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 1.2157,
+      "ttm_pe": 202.9,
+      "eps_yoy_growth": -1.5965,
+      "peg_ratio": null
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-21T00:00:00.000",
       "close_price": 252.92,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 1.8072,
-      "ttm_pe": 139.95,
-      "eps_yoy_growth": 0.6117,
-      "peg_ratio": 2.29
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 1.2157,
+      "ttm_pe": 208.04,
+      "eps_yoy_growth": -1.5965,
+      "peg_ratio": null
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-22T00:00:00.000",
       "close_price": 260.58,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 1.8072,
-      "ttm_pe": 144.19,
-      "eps_yoy_growth": 0.6117,
-      "peg_ratio": 2.36
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 1.2157,
+      "ttm_pe": 214.35,
+      "eps_yoy_growth": -1.5965,
+      "peg_ratio": null
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-26T00:00:00.000",
       "close_price": 256.75,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 1.8072,
-      "ttm_pe": 142.07,
-      "eps_yoy_growth": 0.6117,
-      "peg_ratio": 2.32
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 1.2157,
+      "ttm_pe": 211.2,
+      "eps_yoy_growth": -1.5965,
+      "peg_ratio": null
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-27T00:00:00.000",
       "close_price": 248.47,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 1.8072,
-      "ttm_pe": 137.49,
-      "eps_yoy_growth": 0.6117,
-      "peg_ratio": 2.25
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 1.2157,
+      "ttm_pe": 204.38,
+      "eps_yoy_growth": -1.5965,
+      "peg_ratio": null
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-28T00:00:00.000",
       "close_price": 257.77,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 1.8072,
-      "ttm_pe": 142.64,
-      "eps_yoy_growth": 0.6117,
-      "peg_ratio": 2.33
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 1.2157,
+      "ttm_pe": 212.03,
+      "eps_yoy_growth": -1.5965,
+      "peg_ratio": null
     },
     {
       "symbol": "PANW",
       "report_date": "2026-05-29T00:00:00.000",
       "close_price": 281.69,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 1.8072,
-      "ttm_pe": 155.87,
-      "eps_yoy_growth": 0.6117,
-      "peg_ratio": 2.55
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 1.2157,
+      "ttm_pe": 231.71,
+      "eps_yoy_growth": -1.5965,
+      "peg_ratio": null
     },
     {
       "symbol": "PANW",
       "report_date": "2026-06-01T00:00:00.000",
       "close_price": 300.48,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 1.8072,
-      "ttm_pe": 166.27,
-      "eps_yoy_growth": 0.6117,
-      "peg_ratio": 2.72
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 1.2157,
+      "ttm_pe": 247.17,
+      "eps_yoy_growth": -1.5965,
+      "peg_ratio": null
     },
     {
       "symbol": "PANW",
       "report_date": "2026-06-02T00:00:00.000",
       "close_price": 297.18,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 1.8072,
-      "ttm_pe": 164.44,
-      "eps_yoy_growth": 0.6117,
-      "peg_ratio": 2.69
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 1.2157,
+      "ttm_pe": 244.45,
+      "eps_yoy_growth": -1.5965,
+      "peg_ratio": null
     },
     {
       "symbol": "PANW",
       "report_date": "2026-06-03T00:00:00.000",
       "close_price": 280.43,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 1.8072,
-      "ttm_pe": 155.17,
-      "eps_yoy_growth": 0.6117,
-      "peg_ratio": 2.54
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 1.2157,
+      "ttm_pe": 230.67,
+      "eps_yoy_growth": -1.5965,
+      "peg_ratio": null
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2026-06-04T00:00:00.000",
+      "close_price": 279.25,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 1.2157,
+      "ttm_pe": 229.7,
+      "eps_yoy_growth": -1.5965,
+      "peg_ratio": null
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2026-06-05T00:00:00.000",
+      "close_price": 272.05,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 1.2157,
+      "ttm_pe": 223.78,
+      "eps_yoy_growth": -1.5965,
+      "peg_ratio": null
     }
   ]
 }

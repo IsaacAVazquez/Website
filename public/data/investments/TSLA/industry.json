@@ -4245,9 +4245,23 @@
     {
       "report_date": "2026-06-03T00:00:00.000",
       "industry": "Auto Manufacturers",
-      "total_market_cap": 2538958314145.0,
+      "total_market_cap": 2538660942373.0,
       "total_ttm_net_income": 90093864308.68,
       "industry_pe": 28.18
+    },
+    {
+      "report_date": "2026-06-04T00:00:00.000",
+      "industry": "Auto Manufacturers",
+      "total_market_cap": 2527994237429.0,
+      "total_ttm_net_income": 90093864308.68,
+      "industry_pe": 28.06
+    },
+    {
+      "report_date": "2026-06-05T00:00:00.000",
+      "industry": "Auto Manufacturers",
+      "total_market_cap": 2394204069870.0,
+      "total_ttm_net_income": 90093864308.68,
+      "industry_pe": 26.57
     }
   ],
   "ps_ratio": [
@@ -9819,9 +9833,23 @@
     {
       "report_date": "2026-06-03T00:00:00.000",
       "industry": "Auto Manufacturers",
-      "total_market_cap": 2731236711096.2,
+      "total_market_cap": 2730939339324.2,
       "total_ttm_revenue": 2091035813959.3699,
       "industry_ps_ratio": 1.31
+    },
+    {
+      "report_date": "2026-06-04T00:00:00.000",
+      "industry": "Auto Manufacturers",
+      "total_market_cap": 2717319594305.9004,
+      "total_ttm_revenue": 2091035813959.3699,
+      "industry_ps_ratio": 1.3
+    },
+    {
+      "report_date": "2026-06-05T00:00:00.000",
+      "industry": "Auto Manufacturers",
+      "total_market_cap": 2576873983739.4,
+      "total_ttm_revenue": 2091035813959.3699,
+      "industry_ps_ratio": 1.23
     }
   ],
   "pb_ratio": [
@@ -16716,9 +16744,23 @@
     {
       "report_date": "2026-06-03T00:00:00.000",
       "industry": "Auto Manufacturers",
-      "total_market_cap": 2816721003428.1504,
+      "total_market_cap": 2816494126917.1,
       "total_bve": 1418094274927.6304,
       "industry_pb_ratio": 1.99
+    },
+    {
+      "report_date": "2026-06-04T00:00:00.000",
+      "industry": "Auto Manufacturers",
+      "total_market_cap": 2803187367471.1,
+      "total_bve": 1418094274927.6304,
+      "industry_pb_ratio": 1.98
+    },
+    {
+      "report_date": "2026-06-05T00:00:00.000",
+      "industry": "Auto Manufacturers",
+      "total_market_cap": 2660924122737.2,
+      "total_bve": 1418094274927.6304,
+      "industry_pb_ratio": 1.88
     }
   ],
   "roe": [
