@@ -7,7 +7,7 @@ test.describe("Footer CTA cleanup", () => {
 
     await expect(
       page.getByRole("heading", {
-        name: /if you're building something that needs judgment and follow-through, i'd like to hear about it/i,
+        name: /building something that needs judgment and follow-through/i,
       })
     ).toBeVisible();
 
