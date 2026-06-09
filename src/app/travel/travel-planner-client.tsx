@@ -3,6 +3,7 @@
 import { type FormEvent, useMemo, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import {
+  AlertTriangle,
   BedDouble,
   BookOpen,
   Bookmark,
@@ -35,7 +36,7 @@ import {
   ACTIVITY_CATEGORY_LABELS,
   JOURNAL_MOODS,
   JOURNAL_MOOD_LABELS,
-  formatActivityTime,
+  formatActivityTimeRange,
   formatDayHeading,
   formatTripDateRange,
   getDefaultActivityDate,
@@ -91,6 +92,7 @@ function emptyActivityDraft(date: string): ActivityDraft {
   return {
     date,
     time: "",
+    endTime: "",
     title: "",
     location: "",
     category: "activity",
@@ -209,6 +211,7 @@ export function TravelPlannerClient() {
     setActivityDraft({
       date: activity.date,
       time: activity.time,
+      endTime: activity.endTime,
       title: activity.title,
       location: activity.location,
       category: activity.category,
@@ -477,29 +480,51 @@ export function TravelPlannerClient() {
                       className={fieldInput}
                     />
                   </label>
+                  <label className="block">
+                    <span className={fieldLabel}>Date</span>
+                    <input
+                      type="date"
+                      value={activityDraft.date}
+                      min={activeTrip?.startDate}
+                      max={activeTrip?.endDate}
+                      onChange={(event) =>
+                        setActivityDraft((draft) => ({ ...draft, date: event.target.value }))
+                      }
+                      className={fieldInput}
+                    />
+                  </label>
                   <div className="grid grid-cols-2 gap-2">
                     <label className="block">
-                      <span className={fieldLabel}>Date</span>
+                      <span className={fieldLabel}>Starts</span>
                       <input
-                        type="date"
-                        value={activityDraft.date}
-                        min={activeTrip?.startDate}
-                        max={activeTrip?.endDate}
+                        type="time"
+                        value={activityDraft.time}
                         onChange={(event) =>
-                          setActivityDraft((draft) => ({ ...draft, date: event.target.value }))
+                          setActivityDraft((draft) => {
+                            const time = event.target.value;
+                            return {
+                              ...draft,
+                              time,
+                              // Drop an end that's no longer after the start.
+                              endTime:
+                                time && draft.endTime > time ? draft.endTime : "",
+                            };
+                          })
                         }
                         className={fieldInput}
                       />
                     </label>
                     <label className="block">
-                      <span className={fieldLabel}>Time</span>
+                      <span className={fieldLabel}>Ends</span>
                       <input
                         type="time"
-                        value={activityDraft.time}
+                        value={activityDraft.endTime}
+                        min={activityDraft.time || undefined}
+                        disabled={!activityDraft.time}
                         onChange={(event) =>
-                          setActivityDraft((draft) => ({ ...draft, time: event.target.value }))
+                          setActivityDraft((draft) => ({ ...draft, endTime: event.target.value }))
                         }
-                        className={fieldInput}
+                        className={`${fieldInput} disabled:cursor-not-allowed disabled:opacity-50`}
                       />
                     </label>
                   </div>
@@ -696,6 +721,7 @@ function ActiveTripView({
   onSelectTrip,
   onRemoveTrip,
 }: ActiveTripViewProps) {
+  const today = getTodayKey();
   const journalSorted = useMemo(
     () =>
       [...trip.journal].sort((left, right) => {
@@ -724,7 +750,12 @@ function ActiveTripView({
     {
       label: "Stops",
       value: `${summary.activitiesCompleted} / ${summary.activitiesTotal}`,
-      sub: summary.activitiesTotal === 0 ? "Add your first stop" : "Completed",
+      sub:
+        summary.activitiesTotal === 0
+          ? "Add your first stop"
+          : summary.conflictCount > 0
+            ? `${summary.conflictCount} time overlap${summary.conflictCount === 1 ? "" : "s"}`
+            : "Completed",
     },
     {
       label: "Journal",
@@ -888,12 +919,20 @@ function ActiveTripView({
             {summary.dayBuckets.map((bucket) => (
               <div key={bucket.date} className="flex flex-col gap-2">
                 <header className="flex items-baseline justify-between gap-2">
-                  <h3 className="text-[13px] font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
-                    {formatDayHeading(bucket.date)}
+                  <h3 className="flex items-center gap-2 text-[13px] font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                    <span className={bucket.date === today ? "text-[var(--home-ink)]" : undefined}>
+                      {formatDayHeading(bucket.date)}
+                    </span>
+                    {bucket.date === today ? (
+                      <span className="rounded-full bg-[var(--home-ink)] px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-[0.12em] text-[var(--home-paper)]">
+                        Today
+                      </span>
+                    ) : null}
                   </h3>
                   <span className="text-[11.5px] text-[var(--home-ink-muted)] [font-variant-numeric:tabular-nums]">
-                    {bucket.activities.length}{" "}
-                    {bucket.activities.length === 1 ? "stop" : "stops"}
+                    {bucket.activities.length === 0
+                      ? "0 stops"
+                      : `${bucket.completed}/${bucket.activities.length} done`}
                   </span>
                 </header>
                 {bucket.activities.length === 0 ? (
@@ -905,6 +944,7 @@ function ActiveTripView({
                     {bucket.activities.map((activity) => {
                       const categoryMeta = CATEGORY_META[activity.category];
                       const CategoryIcon = categoryMeta.icon;
+                      const hasConflict = bucket.conflictIds.includes(activity.id);
                       return (
                       <li key={activity.id} className="flex items-start gap-3 px-3 py-2.5">
                         <button
@@ -934,13 +974,24 @@ function ActiveTripView({
                           <CategoryIcon className="h-4 w-4" />
                         </span>
                         <div className="min-w-0 flex-1">
-                          <p
-                            className={`text-[13.5px] font-semibold text-[var(--home-ink)] ${
-                              activity.completed ? "line-through opacity-60" : ""
-                            }`}
-                          >
-                            {activity.title}
-                          </p>
+                          <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                            <p
+                              className={`text-[13.5px] font-semibold text-[var(--home-ink)] ${
+                                activity.completed ? "line-through opacity-60" : ""
+                              }`}
+                            >
+                              {activity.title}
+                            </p>
+                            {hasConflict ? (
+                              <span
+                                className="inline-flex items-center gap-1 rounded-full border border-[var(--color-warning,#b8860b)] px-1.5 py-0.5 text-[9.5px] font-semibold uppercase tracking-[0.1em] text-[var(--color-warning,#b8860b)]"
+                                title="Overlaps another stop on this day"
+                              >
+                                <AlertTriangle className="h-3 w-3" aria-hidden="true" />
+                                Overlap
+                              </span>
+                            ) : null}
+                          </div>
                           <p className="mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[11px] uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
                             <span style={{ color: categoryMeta.tint }}>
                               {ACTIVITY_CATEGORY_LABELS[activity.category]}
@@ -948,7 +999,7 @@ function ActiveTripView({
                             {activity.time ? (
                               <>
                                 <span aria-hidden="true">·</span>
-                                <span>{formatActivityTime(activity.time)}</span>
+                                <span>{formatActivityTimeRange(activity.time, activity.endTime)}</span>
                               </>
                             ) : null}
                             {activity.location ? (

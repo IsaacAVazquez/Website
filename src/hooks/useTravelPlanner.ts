@@ -55,6 +55,7 @@ export interface NewTripInput {
 export interface ActivityDraft {
   date: string;
   time: string;
+  endTime: string;
   title: string;
   location: string;
   category: TripActivity["category"];
@@ -143,6 +144,10 @@ export function useTravelPlanner() {
           ? {
               ...activity,
               ...draft,
+              endTime:
+                draft.time && draft.endTime && draft.endTime > draft.time
+                  ? draft.endTime
+                  : "",
               title: draft.title.trim() || "Untitled stop",
               location: draft.location.trim(),
               notes: draft.notes.trim(),
