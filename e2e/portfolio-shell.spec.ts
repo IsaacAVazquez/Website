@@ -36,6 +36,7 @@ const orderedPortfolioTitles = [
   "AI Dev Tool Ecosystem",
   "Frontier Model Tracker",
   "GitHub Trending Pulse",
+  "Tech Startup Tracker",
   "Decision Lab",
   "Food Map",
   "Museum Log",
