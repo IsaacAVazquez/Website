@@ -18,7 +18,7 @@ import {
   withdrawForYear,
   type AccountBalances,
 } from "./tax";
-import { DEFAULT_SAFE_WITHDRAWAL_RATE } from "./defaults";
+import { DEFAULT_SAFE_WITHDRAWAL_RATE, FIXED_PERCENT_SPEND_FLOOR } from "./defaults";
 
 const MEDICARE_AGE = 65;
 const DEFAULT_SWR = DEFAULT_SAFE_WITHDRAWAL_RATE;
@@ -162,6 +162,15 @@ export function simulatePath(
       taxes = result.taxes;
       if (result.depleted && depletionAge === null) {
         depletionAge = age;
+      }
+      // Fixed-percent never depletes the balance, so depletion can't measure
+      // success. Flag the first year the real portfolio draw can no longer fund
+      // the desired lifestyle as the funding-shortfall point instead.
+      if (strategy === "fixed-percent" && depletionAge === null) {
+        const realDraw = (swr * startBalance) / inflationFactor;
+        if (realDraw < FIXED_PERCENT_SPEND_FLOOR * input.desiredAnnualSpend) {
+          depletionAge = age;
+        }
       }
     }
 

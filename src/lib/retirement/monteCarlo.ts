@@ -15,7 +15,7 @@ import type {
 import { makeNormalSampler, mulberry32 } from "./random";
 import { simulatePath } from "./projection";
 
-/** Returns below −95% would imply an implausible near-total wipeout; floor there. */
+/** Lognormal draws stay above −100% by construction; this is just a tail floor. */
 const MIN_ANNUAL_RETURN = -0.95;
 
 function percentile(sorted: number[], p: number): number {
@@ -50,6 +50,16 @@ export function runMonteCarlo(
   const uniform = mulberry32(seed);
   const normal = makeNormalSampler(uniform);
 
+  // Sample multiplicative (lognormal) returns rather than additive normal ones.
+  // `expectedReturn` is a compound/geometric estimate — the deterministic
+  // projection compounds it directly, and the JPM-aligned CMAs are geometric —
+  // so center the log-returns at ln(1 + E[r]). That keeps the Monte Carlo median
+  // path consistent with the deterministic line. Drawing simple returns as
+  // Normal(E[r], σ) instead treats E[r] as the *arithmetic* mean and silently
+  // pulls the MC median ~σ²/2 below the headline every year (and can draw the
+  // physically impossible "lose more than 100%").
+  const logMean = Math.log(1 + Math.max(-0.999, expectedReturn));
+
   const totalYears = Math.max(0, input.horizonAge - input.currentAge);
   const tRetire = Math.max(0, input.retirementAge - input.currentAge);
 
@@ -66,7 +76,8 @@ export function runMonteCarlo(
 
   for (let s = 0; s < simulations; s++) {
     for (let t = 0; t <= totalYears; t++) {
-      returns[t] = Math.max(MIN_ANNUAL_RETURN, expectedReturn + volatility * normal());
+      const gross = Math.exp(logMean + volatility * normal());
+      returns[t] = Math.max(MIN_ANNUAL_RETURN, gross - 1);
     }
 
     const path = simulatePath(input, returns, referenceYear, realOut);

@@ -231,9 +231,15 @@ function pickEvent(events: EspnEvent[]): EspnEvent | null {
       event.competitions?.[0]?.status?.type?.state === "in"
   );
   if (inProgress) return inProgress;
+  // ESPN occasionally returns an empty-string startDate for finished events;
+  // `?? 0` doesn't catch "" (not nullish) and `new Date("")` is NaN, which would
+  // make the comparator non-deterministic. Coerce any unparseable date to 0.
+  const startEpoch = (value: string | undefined | null) => {
+    const ms = new Date(value ?? "").getTime();
+    return Number.isNaN(ms) ? 0 : ms;
+  };
   const sorted = [...events].sort(
-    (a, b) =>
-      new Date(b.startDate ?? 0).getTime() - new Date(a.startDate ?? 0).getTime()
+    (a, b) => startEpoch(b.startDate) - startEpoch(a.startDate)
   );
   return sorted[0] ?? events[0];
 }

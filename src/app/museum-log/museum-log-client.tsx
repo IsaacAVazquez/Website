@@ -1444,7 +1444,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
                     borderColor: isActive ? "var(--home-ink)" : "var(--home-rule)",
                     background: isActive
                       ? "var(--home-ink)"
-                      : "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))",
+                      : "var(--home-paper-raised)",
                     color: isActive ? "var(--home-paper)" : "var(--home-ink-muted)",
                     fontFamily: "var(--font-home-sans)",
                   }}
