@@ -47,17 +47,21 @@ export function InvestmentsClient({
     };
   }, []);
 
-  // Keep URL in sync with normalized route state.
+  // Keep URL in sync with normalized route state. Compare canonical hrefs:
+  // comparing raw param values treated an absent param (null) as different
+  // from the default ("" / "overview"), so a bare /investments fired a
+  // router.replace on every render. That is an endless refetch of the dynamic
+  // route, and each one flashes the route loading state and remounts the page.
   useEffect(() => {
-    if (
-      searchParams.get("symbol") === routeState.symbol &&
-      searchParams.get("section") === routeState.section
-    ) {
+    const canonicalHref = buildInvestmentsHref(routeState, searchParams);
+    const currentQuery = searchParams.toString();
+    const currentHref = `/investments${currentQuery ? `?${currentQuery}` : ""}`;
+    if (currentHref === canonicalHref) {
       return;
     }
 
     startTransition(() => {
-      router.replace(buildInvestmentsHref(routeState, searchParams), { scroll: false });
+      router.replace(canonicalHref, { scroll: false });
     });
   }, [routeState, router, searchParams]);
 

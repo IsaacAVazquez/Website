@@ -88,6 +88,15 @@ export function buildInvestmentsHref(
   } else {
     params.delete("symbol");
   }
-  params.set("section", state.section);
-  return `/investments?${params.toString()}`;
+  // Default values stay out of the URL so a bare /investments is already
+  // canonical — the client only issues a router.replace when the href
+  // actually differs, and every replace refetches the dynamic route (and
+  // flashes the route loading state).
+  if (state.section === DEFAULT_INVESTMENTS_STATE.section) {
+    params.delete("section");
+  } else {
+    params.set("section", state.section);
+  }
+  const query = params.toString();
+  return `/investments${query ? `?${query}` : ""}`;
 }

@@ -147,9 +147,22 @@ describe("InvestmentsClient", () => {
     await flushPromises();
 
     expect(mockReplace).toHaveBeenCalledWith(
-      "/investments?section=overview",
+      "/investments",
       { scroll: false }
     );
     expect(container.querySelector('[data-testid="research-props"]')?.textContent).toBe(":overview");
+  });
+
+  it("does not navigate when a bare /investments URL is already canonical", async () => {
+    // A replace here is an endless refetch loop: every navigation on the
+    // dynamic route re-renders with fresh searchParams and would fire again.
+    currentSearchParams = new URLSearchParams("");
+
+    await act(async () => {
+      root.render(<InvestmentsClient initialState={DEFAULT_INVESTMENTS_STATE} />);
+    });
+    await flushPromises();
+
+    expect(mockReplace).not.toHaveBeenCalled();
   });
 });
