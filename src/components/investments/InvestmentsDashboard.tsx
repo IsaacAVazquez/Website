@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import {
   IconBookmark,
   IconChartArcs3,
@@ -75,6 +75,20 @@ export function InvestmentsDashboard({
   const [searchQuery, setSearchQuery] = useState("");
   const addHoldingRef = useRef<HTMLDivElement | null>(null);
   const researchSectionRef = useRef<HTMLDivElement | null>(null);
+  const filterInputRef = useRef<HTMLInputElement | null>(null);
+
+  // ⌘K / Ctrl+K focuses the holdings filter (matching the keyboard hint).
+  useEffect(() => {
+    function onKeyDown(e: KeyboardEvent) {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        filterInputRef.current?.focus();
+        filterInputRef.current?.select();
+      }
+    }
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
 
   const filteredHoldings = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
@@ -177,6 +191,7 @@ export function InvestmentsDashboard({
           <label className="invest-search" aria-label="Filter holdings">
             <IconSearch size={14} aria-hidden="true" />
             <input
+              ref={filterInputRef}
               type="search"
               placeholder="Filter holdings…"
               value={searchQuery}

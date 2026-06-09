@@ -10,6 +10,7 @@ import {
 } from "@tabler/icons-react";
 import { useLiveQuote } from "@/hooks/useLiveQuote";
 import { useStockData } from "@/hooks/useStockData";
+import { DataFreshnessIndicator } from "./DataFreshnessIndicator";
 import { formatHistoryAsOf } from "@/lib/investmentsHistory";
 import type {
   BetaData,
@@ -130,6 +131,14 @@ function getPriceDate(entry: (StockPrice & { report_date?: string }) | undefined
   return entry?.date ?? entry?.report_date;
 }
 
+// Mirrors DataFreshnessIndicator's STALE_DATASET_THRESHOLD_DAYS (7). Defined at
+// module scope so the relative-time read isn't flagged as impure during render.
+function isSnapshotStale(snapshotBuiltAt: string | null): boolean {
+  if (!snapshotBuiltAt) return false;
+  const days = Math.floor((Date.now() - new Date(snapshotBuiltAt).getTime()) / 86_400_000);
+  return days >= 7;
+}
+
 interface KeyMetric {
   label: string;
   hint: string;
@@ -171,7 +180,7 @@ export function ResearchAssetHeader({
   portfolioShares = null,
   onAddToPortfolio,
 }: Props) {
-  const { data: info } = useStockData<CompanyInfo>(symbol || null, "info");
+  const { data: info, freshness } = useStockData<CompanyInfo>(symbol || null, "info");
   const { data: fundamentals } = useStockData<Fundamentals>(symbol || null, "fundamentals");
   const { data: dcf } = useStockData<DcfData>(symbol || null, "dcf");
   const { data: profitability } = useStockData<Profitability>(symbol || null, "profitability");
@@ -299,6 +308,13 @@ export function ResearchAssetHeader({
     livePrice === undefined && savedClose !== undefined && !quoteLoading;
   const showQuoteUnavailableNote = livePrice === undefined && Boolean(quoteError);
 
+  // Surface snapshot staleness honestly: when the curated fundamentals snapshot
+  // is more than a week old (e.g. a symbol served from a prior run because the
+  // latest fetch failed for it), badge the "as of" date. Fresh symbols stay
+  // quiet. Note this is the *fundamentals* snapshot age, not the live quote.
+  const snapshotBuiltAt = freshness?.snapshotBuiltAt ?? null;
+  const snapshotIsStale = isSnapshotStale(snapshotBuiltAt);
+
   return (
     <section className="research-asset-card" aria-label={`${upper} asset summary`}>
       <div className="research-asset-row">
@@ -331,6 +347,14 @@ export function ResearchAssetHeader({
             ) : null}
             {info?.industry && info.industry !== info.sector ? (
               <span className="research-badge-pill tag">{info.industry}</span>
+            ) : null}
+            {snapshotIsStale && snapshotBuiltAt ? (
+              <span
+                className="research-asset-stale"
+                title="This company's research data comes from an earlier snapshot — the latest data refresh did not include it. Live price (above) is still current."
+              >
+                <DataFreshnessIndicator lastUpdated={snapshotBuiltAt} mode="dataset" />
+              </span>
             ) : null}
           </div>
         </div>
