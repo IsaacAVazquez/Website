@@ -4,12 +4,12 @@ const routeExpectations = [
   {
     path: "/",
     title: /Product Manager \| UC Berkeley Haas MBA \| Portfolio & Case Studies \| Isaac Vazquez/,
-    h1: /i build products that make hard problems easier to act on/i,
+    h1: /isaac vazquez/i,
   },
   {
     path: "/portfolio",
     title: /Projects \| Isaac Vazquez/,
-    h1: /all projects across product, analytics, and tooling/i,
+    h1: /all projects across product, analytics & tooling/i,
   },
   {
     path: "/contact",
@@ -19,7 +19,7 @@ const routeExpectations = [
   {
     path: "/writing",
     title: /Writing \| Isaac Vazquez/,
-    h1: /writing on product, ai, and judgment/i,
+    h1: /notes on product, ai & judgment/i,
   },
   {
     path: "/resume",
@@ -80,14 +80,48 @@ test.describe("Portfolio shell", () => {
     });
   }
 
-  test("/portfolio shows the full ordered project index", async ({ page }) => {
+  test("/portfolio lists every project across the paginated archive", async ({ page }) => {
     await page.goto("/portfolio");
     await page.waitForLoadState("networkidle");
 
-    const projectTitles = await page
-      .locator('section[aria-label="All projects"] h3')
-      .allTextContents();
+    const seen = new Set<string>();
 
-    expect(projectTitles).toEqual(orderedPortfolioTitles);
+    // The flagship is pinned out of the grid as the featured spotlight; its
+    // cover link carries an "Open <title>" accessible name.
+    const featuredAria = await page
+      .locator('a[aria-label^="Open "]')
+      .first()
+      .getAttribute("aria-label");
+    if (featuredAria) {
+      seen.add(featuredAria.replace(/^Open /, "").trim());
+    }
+
+    // The archive section is the one holding the sort control; its cards are
+    // h3s. Walk every page so we collect the whole index regardless of sort
+    // order or page size.
+    const archive = page.locator("section", {
+      has: page.locator('select[aria-label="Sort projects"]'),
+    });
+    const nextButton = page.getByRole("button", { name: "Next", exact: true });
+
+    for (let guard = 0; guard < 25; guard += 1) {
+      const titles = await archive
+        .getByRole("heading", { level: 3 })
+        .allTextContents();
+      titles.forEach((title) => seen.add(title.trim()));
+
+      if (await nextButton.isDisabled()) break;
+      const firstBefore = titles[0] ?? "";
+      await nextButton.click();
+      await expect
+        .poll(async () =>
+          (
+            await archive.getByRole("heading", { level: 3 }).first().textContent()
+          )?.trim()
+        )
+        .not.toBe(firstBefore);
+    }
+
+    expect([...seen].sort()).toEqual([...orderedPortfolioTitles].sort());
   });
 });

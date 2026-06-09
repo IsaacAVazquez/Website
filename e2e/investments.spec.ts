@@ -394,7 +394,7 @@ test.describe("Investments", () => {
 
   test("homepage prioritizes the fintech project in projects", async ({ page }) => {
     await page.goto("/");
-    const section = page.getByTestId("home-projects");
+    const section = page.locator("section#projects");
 
     await expect(section).toBeVisible();
     await expect(section.getByRole("heading", { name: /product surfaces that show how i think in practice/i })).toBeVisible();
