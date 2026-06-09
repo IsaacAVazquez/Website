@@ -278,7 +278,7 @@ export function WritingArchiveV3({
         </div>
       </div>
 
-      <main>
+      <div>
         {featured ? (
           <div className={styles["wr-shell"]}>
             <section className={styles["wr-featured"]} aria-labelledby="wr-feat-title">
@@ -547,7 +547,7 @@ export function WritingArchiveV3({
             </div>
           </div>
         </section>
-      </main>
+      </div>
     </div>
   );
 }

@@ -77,7 +77,7 @@ function StatementTable({
     return (
       <div className="space-y-2 py-2">
         {Array.from({ length: 6 }).map((_, i) => (
-          <div key={i} className="h-7 rounded bg-[var(--neutral-200)] animate-pulse" />
+          <div key={i} className="h-7 rounded bg-[var(--home-stone)] animate-pulse" />
         ))}
       </div>
     );
@@ -178,7 +178,7 @@ export function FinancialStatementsPanel({ symbol }: Props) {
               onClick={() => setPeriod(p)}
               className={`px-3 py-1.5 text-xs font-medium rounded-md transition capitalize min-h-[36px] ${
                 period === p
-                  ? "bg-[var(--neutral-200)] text-[var(--home-ink)]"
+                  ? "bg-[var(--home-stone)] text-[var(--home-ink)]"
                   : "text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] hover:bg-[var(--home-paper-alt)]"
               }`}
             >

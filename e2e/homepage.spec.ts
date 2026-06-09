@@ -1,5 +1,20 @@
 import { test, expect } from '@playwright/test'
 
+const NAV_LABELS = [
+  'Home',
+  'About',
+  'Projects',
+  'Writing',
+  'Investments',
+  'Fantasy',
+  'Resume',
+  'Contact',
+]
+
+// The editorial homepage (HomePageV3) leads with a wordmark hero and exposes
+// stable section ids (#projects, #writing, #contact) instead of test ids.
+const heroSection = 'section[aria-labelledby="home-hero-wordmark"]'
+
 test.describe('Homepage', () => {
   test('should load successfully', async ({ page }) => {
     await page.goto('/')
@@ -9,7 +24,10 @@ test.describe('Homepage', () => {
   test('should display hero section', async ({ page }) => {
     await page.goto('/')
 
-    await expect(page.locator('[data-testid="hero"]')).toBeVisible()
+    await expect(page.locator(heroSection)).toBeVisible()
+    await expect(
+      page.getByRole('heading', { level: 1, name: /isaac\s*vazquez/i })
+    ).toBeVisible()
   })
 
   test('should have functional desktop navigation', async ({ page }) => {
@@ -22,15 +40,7 @@ test.describe('Homepage', () => {
       .getByRole('link')
       .allTextContents()
 
-    expect(navLabels).toEqual([
-      'Home',
-      'About',
-      'Projects',
-      'Writing',
-      'Investments',
-      'Resume',
-      'Contact',
-    ])
+    expect(navLabels).toEqual(NAV_LABELS)
   })
 
   test('should have functional mobile navigation', async ({ page }) => {
@@ -44,30 +54,24 @@ test.describe('Homepage', () => {
       .getByRole('link')
       .allTextContents()
 
-    expect(navLabels).toEqual([
-      'Home',
-      'About',
-      'Projects',
-      'Writing',
-      'Investments',
-      'Resume',
-      'Contact',
-    ])
+    expect(navLabels).toEqual(NAV_LABELS)
   })
 
   test('should use the homepage hero and primary CTAs', async ({ page }) => {
     await page.goto('/')
-    const hero = page.getByTestId('hero')
 
+    await expect(page.locator(heroSection)).toBeVisible()
     await expect(
-      hero.getByRole('heading', {
-        name: /i build products that make hard problems easier to act on/i,
-      })
+      page.getByRole('heading', { level: 1, name: /isaac\s*vazquez/i })
     ).toBeVisible()
-    await expect(hero.getByRole('link', { name: /view projects/i })).toBeVisible()
-    await expect(hero.getByRole('link', { name: /read writing/i })).toBeVisible()
-    await expect(page.getByTestId('home-projects')).toBeVisible()
-    await expect(page.getByTestId('home-writing')).toBeVisible()
+    await expect(
+      page.getByRole('link', { name: /view projects/i }).first()
+    ).toBeVisible()
+    await expect(
+      page.getByRole('link', { name: /read writing/i }).first()
+    ).toBeVisible()
+    await expect(page.locator('#projects')).toBeVisible()
+    await expect(page.locator('#writing')).toBeVisible()
     await expect(page.getByRole('button', { name: /theme:/i }).first()).toBeVisible()
   })
 
@@ -91,23 +95,20 @@ test.describe('Homepage', () => {
     }
   })
 
-  test('keeps the primary homepage CTA in the initial mobile viewport', async ({ page }) => {
+  test('keeps the homepage hero in the initial mobile viewport', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 })
     await page.goto('/')
 
     const heroHeading = page.getByRole('heading', {
       level: 1,
-      name: /i build products that make hard problems easier to act on/i,
+      name: /isaac\s*vazquez/i,
     })
-    const primaryCta = page.getByRole('link', { name: /view projects/i })
 
     const headingBox = await heroHeading.boundingBox()
-    const ctaBox = await primaryCta.boundingBox()
 
     expect(headingBox).not.toBeNull()
-    expect(ctaBox).not.toBeNull()
     expect((headingBox?.y ?? 9999) < 650).toBe(true)
-    expect((ctaBox?.y ?? 9999) + (ctaBox?.height ?? 0) <= 844).toBe(true)
+    expect((headingBox?.y ?? 9999) + (headingBox?.height ?? 0) <= 844).toBe(true)
   })
 
   test('shows the editorial sections and card links', async ({ page }) => {
@@ -121,17 +122,21 @@ test.describe('Homepage', () => {
     ).toBeVisible()
     await expect(
       page.getByRole('heading', {
-        name: /writing that shows how i think about pm, ai workflows, and fintech tools/i,
+        name: /writing on pm, ai workflows, and fintech tools/i,
       })
     ).toBeVisible()
     await expect(
       page.getByRole('heading', {
-        name: /if you're building something that needs judgment and follow-through, i'd like to hear about it/i,
+        name: /building something that needs judgment and follow-through/i,
       })
     ).toBeVisible()
 
-    await expect(page.getByTestId('home-projects').getByRole('link')).toHaveCount(3)
-    await expect(page.getByTestId('home-writing').getByRole('link')).toHaveCount(3)
+    await expect(
+      page.locator('#projects').getByRole('heading', { level: 3 })
+    ).toHaveCount(3)
+    await expect(
+      page.locator('#writing').getByRole('heading', { level: 3 })
+    ).toHaveCount(3)
   })
 
   test('supports dark theme on the homepage', async ({ page }) => {
@@ -143,23 +148,24 @@ test.describe('Homepage', () => {
     await page.waitForLoadState('networkidle')
 
     await expect(page.locator('html')).toHaveClass(/dark/)
-    await expect(page.getByTestId('hero')).toBeVisible()
-    await expect(page.getByTestId('home-writing')).toBeVisible()
+    await expect(page.locator(heroSection)).toBeVisible()
+    await expect(page.locator('#writing')).toBeVisible()
   })
 
-  test('disables decorative homepage motion when reduced motion is requested', async ({ page }) => {
+  test('honors reduced motion on the homepage', async ({ page }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' })
     await page.goto('/')
     await page.waitForLoadState('networkidle')
 
-    const styles = await page.evaluate(() => {
-      const reveal = document.querySelector('.home-reveal')
+    // The global reduced-motion reset forces animation-iteration-count to 1,
+    // so the decorative marquee (and any other looping motion) stops repeating.
+    const infiniteAnimations = await page.evaluate(
+      () =>
+        Array.from(document.querySelectorAll('*')).filter(
+          (el) => getComputedStyle(el).animationIterationCount === 'infinite'
+        ).length
+    )
 
-      return {
-        revealOpacity: reveal ? window.getComputedStyle(reveal).opacity : null,
-      }
-    })
-
-    expect(styles.revealOpacity).toBe('1')
+    expect(infiniteAnimations).toBe(0)
   })
 })

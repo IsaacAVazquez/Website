@@ -528,27 +528,27 @@ export function WineCellarClient() {
                                 </p>
                               ) : null}
                               <div className="mt-3 flex flex-wrap items-center gap-2">
-                                <span className="rounded-full bg-[var(--home-paper-alt)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                                <span className="rounded-full bg-[var(--home-paper-alt)] px-3 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
                                   {WINE_TYPE_LABELS[entry.type]}
                                 </span>
                                 {entry.region ? (
-                                  <span className="rounded-full bg-[var(--home-paper-alt)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                                  <span className="rounded-full bg-[var(--home-paper-alt)] px-3 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
                                     {entry.region}
                                   </span>
                                 ) : null}
                                 {entry.varietal ? (
-                                  <span className="rounded-full bg-[var(--home-paper-alt)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                                  <span className="rounded-full bg-[var(--home-paper-alt)] px-3 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
                                     {entry.varietal}
                                   </span>
                                 ) : null}
                                 <span
-                                  className="rounded-full bg-[var(--home-paper-alt)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]"
+                                  className="rounded-full bg-[var(--home-paper-alt)] px-3 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]"
                                   title={entry.tastedOn}
                                 >
                                   {formatTastedDate(entry.tastedOn)}
                                 </span>
                                 {entry.price !== null ? (
-                                  <span className="rounded-full bg-[var(--home-paper-alt)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                                  <span className="rounded-full bg-[var(--home-paper-alt)] px-3 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
                                     {formatCurrency(entry.price)}
                                   </span>
                                 ) : null}
@@ -830,7 +830,7 @@ export function WineCellarClient() {
                             <span className="block truncate text-[13px] font-semibold text-[var(--home-ink)]">
                               {entry.name}
                             </span>
-                            <span className="block truncate text-[11px] uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                            <span className="block truncate text-2xs uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
                               {formatTastedDate(entry.tastedOn)}
                             </span>
                           </span>
@@ -881,7 +881,7 @@ export function WineCellarClient() {
                             <p className="text-sm font-semibold text-[var(--home-ink)]">
                               {WINE_TYPE_LABELS[bucket.type]}
                             </p>
-                            <p className="text-[11px] uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                            <p className="text-2xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                               {bucket.count} · avg {bucket.averageRating.toFixed(1)}
                             </p>
                           </div>
@@ -917,7 +917,7 @@ export function WineCellarClient() {
                               <p className="truncate text-sm font-semibold text-[var(--home-ink)]">
                                 {entry.name}
                               </p>
-                              <p className="mt-1 text-[11px] uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                              <p className="mt-1 text-2xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                                 {entry.producer || WINE_TYPE_LABELS[entry.type]}
                               </p>
                             </div>
@@ -955,7 +955,7 @@ export function WineCellarClient() {
                                 {entry.name}
                               </p>
                               <p
-                                className="mt-1 text-[11px] uppercase tracking-[0.14em] text-[var(--home-ink-muted)]"
+                                className="mt-1 text-2xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]"
                                 title={entry.tastedOn}
                               >
                                 {formatTastedDate(entry.tastedOn)} ·{" "}
@@ -971,7 +971,7 @@ export function WineCellarClient() {
                     </ul>
                   )}
                   {summary.topVarietal ? (
-                    <p className="mt-4 rounded-2xl border border-dashed border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-3 text-[11px] uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                    <p className="mt-4 rounded-2xl border border-dashed border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-3 text-2xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                       Most-poured varietal:{" "}
                       <span className="font-semibold text-[var(--home-ink)]">
                         {summary.topVarietal}

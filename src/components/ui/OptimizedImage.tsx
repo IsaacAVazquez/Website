@@ -99,7 +99,7 @@ export function OptimizedImage({
   if (hasError) {
     return (
       <div
-        className={`flex items-center justify-center bg-[var(--neutral-200)] text-[var(--home-ink-muted)] ${className}`}
+        className={`flex items-center justify-center bg-[var(--home-stone)] text-[var(--home-ink-muted)] ${className}`}
         style={{ width, height }}
       >
         <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
@@ -114,7 +114,7 @@ export function OptimizedImage({
       {/* Loading placeholder */}
       {!isLoaded && (
         <div
-          className="absolute inset-0 bg-[var(--neutral-200)] animate-pulse"
+          className="absolute inset-0 bg-[var(--home-stone)] animate-pulse"
           style={placeholder === 'blur' ? {
             backgroundImage: `url(${blurDataURL || defaultBlurDataURL})`,
             backgroundSize: 'cover',

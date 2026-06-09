@@ -4,7 +4,7 @@ const routeExpectations = [
   {
     path: "/",
     title: /Product Manager \| UC Berkeley Haas MBA \| Portfolio & Case Studies \| Isaac Vazquez/,
-    h1: /isaac vazquez/i,
+    h1: /isaac\s*vazquez/i,
   },
   {
     path: "/portfolio",
@@ -52,6 +52,7 @@ const orderedPortfolioTitles = [
   "Fantasy Football Analytics Platform",
   "NFL Pulse",
   "Formula 1 Pulse",
+  "Fantasy Formula 1 Optimizer",
   "PGA Tour Pulse",
   "MLB Pulse",
   "NBA Pulse",
@@ -80,48 +81,38 @@ test.describe("Portfolio shell", () => {
     });
   }
 
-  test("/portfolio lists every project across the paginated archive", async ({ page }) => {
+  test("/portfolio surfaces every project across the featured spot and archive pages", async ({
+    page,
+  }) => {
     await page.goto("/portfolio");
     await page.waitForLoadState("networkidle");
 
-    const seen = new Set<string>();
+    // The flagship project is pinned as the featured spotlight (an <h2>),
+    // pulled out of the paginated archive grid below.
+    await expect(
+      page.getByRole("heading", { name: "Investment Analytics Platform" }),
+    ).toBeVisible();
 
-    // The flagship is pinned out of the grid as the featured spotlight; its
-    // cover link carries an "Open <title>" accessible name.
-    const featuredAria = await page
-      .locator('a[aria-label^="Open "]')
-      .first()
-      .getAttribute("aria-label");
-    if (featuredAria) {
-      seen.add(featuredAria.replace(/^Open /, "").trim());
-    }
+    // The archive grid paginates (12 cards per page). Walk every page and
+    // collect the project card titles (each an <h3>) so a project silently
+    // dropping out of the index still fails the test.
+    const archiveTitles = new Set<string>();
+    const collect = async () => {
+      const titles = await page.locator("h3").allTextContents();
+      titles.forEach((t) => archiveTitles.add(t.trim()));
+    };
+    const nextButton = page.getByRole("button", { name: /^next$/i });
 
-    // The archive section is the one holding the sort control; its cards are
-    // h3s. Walk every page so we collect the whole index regardless of sort
-    // order or page size.
-    const archive = page.locator("section", {
-      has: page.locator('select[aria-label="Sort projects"]'),
-    });
-    const nextButton = page.getByRole("button", { name: "Next", exact: true });
-
-    for (let guard = 0; guard < 25; guard += 1) {
-      const titles = await archive
-        .getByRole("heading", { level: 3 })
-        .allTextContents();
-      titles.forEach((title) => seen.add(title.trim()));
-
-      if (await nextButton.isDisabled()) break;
-      const firstBefore = titles[0] ?? "";
+    await collect();
+    while (!(await nextButton.isDisabled())) {
       await nextButton.click();
-      await expect
-        .poll(async () =>
-          (
-            await archive.getByRole("heading", { level: 3 }).first().textContent()
-          )?.trim()
-        )
-        .not.toBe(firstBefore);
+      await page.waitForTimeout(200);
+      await collect();
     }
 
-    expect([...seen].sort()).toEqual([...orderedPortfolioTitles].sort());
+    const surfaced = new Set(archiveTitles);
+    surfaced.add("Investment Analytics Platform");
+
+    expect([...surfaced].sort()).toEqual([...orderedPortfolioTitles].sort());
   });
 });

@@ -46,7 +46,7 @@ export function InvestmentsFreshnessBanner({
       </span>
       {isStale && (
         <span
-          className="inline-flex items-center gap-1 rounded-full bg-[color-mix(in_srgb,var(--color-warning)_18%,var(--home-paper))] px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-[var(--color-warning)]"
+          className="inline-flex items-center gap-1 rounded-full bg-[color-mix(in_srgb,var(--color-warning)_18%,var(--home-paper))] px-2 py-0.5 text-2xs font-semibold uppercase tracking-wide text-[var(--color-warning)]"
           title="The automated refresh has not produced newer data. Runs weekdays at 22:15 UTC."
         >
           Refresh pending
