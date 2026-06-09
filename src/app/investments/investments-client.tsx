@@ -47,17 +47,23 @@ export function InvestmentsClient({
     };
   }, []);
 
-  // Keep URL in sync with normalized route state.
+  // Keep URL in sync with normalized route state. We compare the canonical
+  // href against the current querystring so we only navigate when something
+  // genuinely needs normalizing. Comparing raw params field-by-field is a trap:
+  // an absent param reads back as `null` while the normalized state uses
+  // empty-string/default values (e.g. `symbol: ""`, `section: "overview"`), so
+  // `null === ""` is never true and the effect would `router.replace` on every
+  // render — each replace yields a fresh `searchParams` reference, re-firing the
+  // effect and spinning `startTransition` forever.
   useEffect(() => {
-    if (
-      searchParams.get("symbol") === routeState.symbol &&
-      searchParams.get("section") === routeState.section
-    ) {
+    const desiredHref = buildInvestmentsHref(routeState, searchParams);
+    const currentHref = `/investments?${searchParams.toString()}`;
+    if (desiredHref === currentHref) {
       return;
     }
 
     startTransition(() => {
-      router.replace(buildInvestmentsHref(routeState, searchParams), { scroll: false });
+      router.replace(desiredHref, { scroll: false });
     });
   }, [routeState, router, searchParams]);
 
