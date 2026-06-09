@@ -30,6 +30,7 @@
     "update:golf": "tsx scripts/buildGolfSnapshot.ts",
     "update:earthquake": "tsx scripts/buildEarthquakeSnapshot.ts",
     "update:world-cup": "tsx scripts/buildWorldCupSnapshot.ts",
+    "update:bay-area-transit": "tsx scripts/buildBayAreaTransitSnapshot.ts",
     "update:frontier-models": "tsx scripts/buildFrontierModelsSnapshot.ts",
     "update:github-trending": "tsx scripts/buildGitHubTrendingSnapshot.ts",
     "update:spacex": "tsx scripts/buildSpaceXSnapshot.ts",

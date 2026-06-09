@@ -184,8 +184,6 @@ export function AuthorBio({
       itemType="https://schema.org/Person"
       itemProp="author"
     >
-      <p className="home-kicker mb-4">About the author</p>
-
       <div className="flex flex-col sm:flex-row items-start gap-6">
         {showImage && image && (
           <div className="flex-shrink-0">

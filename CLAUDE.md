@@ -51,6 +51,7 @@ npm run update:nba
 npm run update:nfl
 npm run update:formula-1
 npm run update:golf
+npm run update:bay-area-transit
 npm run update:github-trending
 npm run update:spacex
 npm run lint
@@ -95,6 +96,7 @@ Note: `prebuild` automatically runs a league-only football snapshot refresh; `po
 - `/golf`
 - `/earthquake-pulse`
 - `/world-cup-2026`
+- `/bay-area-transit`
 
 ### Fantasy football
 
@@ -310,6 +312,25 @@ The `/nba` route follows the same snapshot-driven pattern as the soccer dashboar
 - `/api/nba/summary` — conference standings, leaders, scoreboard slate
 - `/api/nba/teams/[teamId]` — team schedule + form, keyed by lowercased ESPN abbreviation
 
+### Bay Area Transit Dashboard
+
+`/bay-area-transit` ("Bay Area Transit Pulse") is a snapshot-driven BART dashboard. It is the Bay Area civic surface in the Pulse family and follows the same pattern as the sports dashboards. Data comes from BART's public legacy API (no token required — the published demo key `MW9S-E7SL-26DU-VV8V` is baked into the builder) and is committed to the repo as TypeScript.
+
+**Snapshot file:** `src/data/bayAreaTransitSnapshot.ts` (ships with a hand-authored seed, `system.seed = true`, so the page is useful before the first live refresh; the seed is replaced wholesale on update).
+
+**Data sources (BART public API, `https://api.bart.gov/api`):**
+- Stations: `stn.aspx?cmd=stns`
+- Lines/routes: `route.aspx?cmd=routes` plus `route.aspx?cmd=routeinfo&route=<n>` per route (derives the station→lines mapping)
+- Service advisories: `bsa.aspx?cmd=bsa`
+- Elevator outages: `bsa.aspx?cmd=elev`
+- Real-time departures for every station in one call: `etd.aspx?cmd=etd&orig=ALL`
+
+**Build logic / update script:** `src/lib/bayAreaTransitData.ts` → `scripts/buildBayAreaTransitSnapshot.ts` (`npm run update:bay-area-transit`). A failed or thin fetch keeps the previous snapshot rather than wiping it (shared `readGeneratedSnapshot` fallback). `.github/workflows/update-bay-area-transit.yml` refreshes it every six hours.
+
+**Accessors / API:** `src/lib/bayAreaTransitSnapshot.ts`; routes `/api/bay-area-transit/summary` and `/api/bay-area-transit/stations/[stationId]` (keyed by lowercased BART abbreviation, e.g. `embr`).
+
+**State / route:** `?view=` (`lines`, `stations`, `advisories`) and `?station=<abbr>` for the per-station departure board.
+
 ### Other standalone data tools
 
 - `/mlb` reads from `src/data/mlbSnapshot.ts` with deep-linkable route state. Snapshot is built by `npm run update:mlb` against the public MLB Stats API (`https://statsapi.mlb.com/api/v1`); no auth token required. `.github/workflows/update-mlb.yml` refreshes it daily March through November (covering Opening Day and the World Series). Shares the football components in `src/components/football/`.
@@ -371,6 +392,8 @@ Live routes under `src/app/api/`:
 - `/api/nfl/summary`
 - `/api/nfl/teams/[teamId]`
 - `/api/earthquake-pulse/summary`
+- `/api/bay-area-transit/summary`
+- `/api/bay-area-transit/stations/[stationId]`
 - `/api/mba-jobs`
 - `/api/mba-jobs/email`
 - `/api/news-pulse`

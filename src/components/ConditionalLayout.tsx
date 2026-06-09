@@ -16,6 +16,7 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
   const selfShellRoutes = new Set([
     "/about",
     "/ai-dev-tools",
+    "/bay-area-transit",
     "/changelog",
     "/contact",
     "/decision-lab",

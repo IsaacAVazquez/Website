@@ -45,6 +45,7 @@ const orderedPortfolioTitles = [
   "Job Search",
   "Polling Aggregator",
   "SpaceX Mission Control",
+  "Bay Area Transit Pulse",
   "Premier League Pulse",
   "La Liga Pulse",
   "World Cup Pulse",

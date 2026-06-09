@@ -753,7 +753,7 @@ function DecisionLabWorkbench({
                       ? "Link copied"
                       : copyStatus === "error"
                         ? "Copy failed"
-                        : "Copy to share — every slider change is encoded."}
+                        : "Copy to share. Every slider change is encoded."}
                   </p>
                 </div>
               </div>
