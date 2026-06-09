@@ -53,6 +53,7 @@ const orderedPortfolioTitles = [
   "Formula 1 Pulse",
   "Fantasy Formula 1 Optimizer",
   "PGA Tour Pulse",
+  "Earthquake Pulse",
   "MLB Pulse",
   "NBA Pulse",
   "March Madness 2026 Bracket Analysis",
