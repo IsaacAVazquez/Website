@@ -1871,7 +1871,15 @@
 }
 
 .skeleton {
-  background: linear-gradient(90deg, var(--neutral-200) 0%, var(--neutral-300) 50%, var(--neutral-200) 100%);
+  /* Shimmer derived from the editorial palette (the old slate --neutral-*
+     grays read cold against the warm paper). Tracks light/dark automatically
+     through the themed --home-* values. */
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--home-ink) 8%, var(--home-paper)) 0%,
+    color-mix(in srgb, var(--home-ink) 15%, var(--home-paper)) 50%,
+    color-mix(in srgb, var(--home-ink) 8%, var(--home-paper)) 100%
+  );
   background-size: 200% 100%;
   animation: skeleton-loading 1.5s ease-in-out infinite;
 }

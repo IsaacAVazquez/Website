@@ -93,9 +93,12 @@ test.describe('Homepage', () => {
     const heroHeading = page.getByRole('heading', { level: 1, name: /isaac vazquez/i })
     await expect(heroHeading).toBeVisible()
 
+    // The whole heading box must fit inside the initial 844px viewport —
+    // asserting only `y < 844` would pass for any heading near the top.
     const headingBox = await heroHeading.boundingBox()
     expect(headingBox).not.toBeNull()
-    expect((headingBox?.y ?? 9999) < 844).toBe(true)
+    expect(headingBox!.y).toBeGreaterThanOrEqual(0)
+    expect(headingBox!.y + headingBox!.height).toBeLessThanOrEqual(844)
 
     // The primary "View projects" CTA is present further down the page.
     await expect(page.getByRole('link', { name: /view projects/i }).first()).toBeVisible()

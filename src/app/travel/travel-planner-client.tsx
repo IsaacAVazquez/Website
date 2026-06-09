@@ -122,7 +122,7 @@ function formatBudget(value: number) {
 }
 
 const fieldLabel =
-  "block text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]";
+  "block text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]";
 const fieldInput =
   "mt-1.5 w-full min-h-touch rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-[13px] text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2";
 const textareaInput = `${fieldInput} min-h-[88px] resize-y`;

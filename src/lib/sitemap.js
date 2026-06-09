@@ -222,18 +222,26 @@ function getBlogRouteEntries() {
     return [];
   }
 
+  // Future-dated posts (staggered series) stay out of the sitemap until their
+  // publish date arrives — search engines distrust future lastmod values, and
+  // the listing pages apply the same cutoff (see isBlogPostPublished).
+  const today = new Date().toISOString().slice(0, 10);
+
   return fs
     .readdirSync(contentDirectory)
     .filter((file) => file.endsWith(".mdx") || file.endsWith(".md"))
     .map((file) => {
       const slug = file.replace(/\.(mdx|md)$/, "");
       const { data } = matter(readFile(path.join("content/blog", file)));
+      if (data.publishedAt && String(data.publishedAt).slice(0, 10) > today) {
+        return null;
+      }
       return {
         loc: `/writing/${slug}`,
         lastmod: toIsoString(data.updatedAt || data.publishedAt),
       };
     })
-    .filter((entry) => entry.lastmod);
+    .filter((entry) => entry && entry.lastmod);
 }
 
 function getPublicSitemapEntries() {

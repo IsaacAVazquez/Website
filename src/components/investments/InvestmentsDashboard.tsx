@@ -275,7 +275,7 @@ export function InvestmentsDashboard({
               <p className="mb-2 text-sm font-semibold text-[var(--home-ink)]">
                 No positions yet
               </p>
-              <p className="mx-auto max-w-xs text-sm text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+              <p className="mx-auto max-w-xs text-sm text-[var(--home-ink-soft)]">
                 Add your first stock with the Add a holding form. Holdings are saved in your browser and persist across visits.
               </p>
             </div>

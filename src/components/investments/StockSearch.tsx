@@ -226,7 +226,7 @@ export function StockSearch({ value, onChange }: Props) {
       <div className="relative">
         <IconSearch
           size={16}
-          className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]"
+          className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-[var(--home-ink-soft)]"
         />
 
         <input
@@ -247,7 +247,7 @@ export function StockSearch({ value, onChange }: Props) {
           placeholder="Search symbol or company…"
           autoComplete="off"
           spellCheck={false}
-          className="box-border w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] py-3 pl-9 pr-4 text-sm text-[var(--home-ink)] transition placeholder:text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[var(--home-haze)]"
+          className="box-border w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] py-3 pl-9 pr-4 text-sm text-[var(--home-ink)] transition placeholder:text-[var(--home-ink-soft)] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[var(--home-haze)]"
           aria-label="Search stock symbol"
           aria-autocomplete="list"
           aria-controls="stock-search-listbox"
