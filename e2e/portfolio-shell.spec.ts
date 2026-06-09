@@ -41,6 +41,7 @@ const orderedPortfolioTitles = [
   "Museum Log",
   "Wine Cellar",
   "Recipe Finder",
+  "Travel Planner",
   "Budget Planner",
   "Job Search",
   "Polling Aggregator",
