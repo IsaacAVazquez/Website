@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "LLY",
+      "report_date": "2022-06-30",
+      "gross_profit": 5057500000.0,
+      "total_revenue": 6488000000.0,
+      "gross_margin": 0.7795
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-06-30",
+      "gross_profit": 6504700000.0,
+      "total_revenue": 8312100000.0,
+      "gross_margin": 0.7826
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-09-30",
+      "gross_profit": 7638500000.0,
+      "total_revenue": 9498600000.0,
+      "gross_margin": 0.8042
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-12-31",
+      "gross_profit": 7565400000.0,
+      "total_revenue": 9353400000.0,
+      "gross_margin": 0.8088
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-03-31",
+      "gross_profit": 7094500000.0,
+      "total_revenue": 8768000000.0,
+      "gross_margin": 0.8091
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-06-30",
+      "gross_profit": 9132600000.0,
+      "total_revenue": 11302800000.0,
+      "gross_margin": 0.808
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-09-30",
+      "gross_profit": 9268300000.0,
+      "total_revenue": 11439100000.0,
+      "gross_margin": 0.8102
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-12-31",
+      "gross_profit": 11129000000.0,
+      "total_revenue": 13532800000.0,
+      "gross_margin": 0.8224
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-03-31",
+      "gross_profit": 10504000000.0,
+      "total_revenue": 12729000000.0,
+      "gross_margin": 0.8252
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-06-30",
+      "gross_profit": 44011500000.0,
+      "total_revenue": 15557700000.0,
+      "gross_margin": 2.8289
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-09-30",
+      "gross_profit": 14592500000.0,
+      "total_revenue": 17600800000.0,
+      "gross_margin": 0.8291
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-12-31",
+      "gross_profit": 15920300000.0,
+      "total_revenue": 19292000000.0,
+      "gross_margin": 0.8252
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2026-03-31",
+      "gross_profit": 59845000000.0,
+      "total_revenue": 19799000000.0,
+      "gross_margin": 3.0226
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "LLY",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2020-12-31",
+      "gross_profit": 19056500000.0,
+      "total_revenue": 24539800000.0,
+      "gross_margin": 0.7766
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2021-12-31",
+      "gross_profit": 21005600000.0,
+      "total_revenue": 28318400000.0,
+      "gross_margin": 0.7418
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2022-12-31",
+      "gross_profit": 21911600000.0,
+      "total_revenue": 28541400000.0,
+      "gross_margin": 0.7677
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-12-31",
+      "gross_profit": 27042000000.0,
+      "total_revenue": 34124000000.0,
+      "gross_margin": 0.7925
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-12-31",
+      "gross_profit": 36625000000.0,
+      "total_revenue": 45043000000.0,
+      "gross_margin": 0.8131
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-12-31",
+      "gross_profit": 54127000000.0,
+      "total_revenue": 65179000000.0,
+      "gross_margin": 0.8304
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "LLY",
+      "report_date": "2022-06-30",
+      "operating_income": 1650500000.0,
+      "total_revenue": 6488000000.0,
+      "operating_margin": 0.2544
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-06-30",
+      "operating_income": 2338400000.0,
+      "total_revenue": 8312100000.0,
+      "operating_margin": 0.2813
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-09-30",
+      "operating_income": 3425500000.0,
+      "total_revenue": 9498600000.0,
+      "operating_margin": 0.3606
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-12-31",
+      "operating_income": 3193100000.0,
+      "total_revenue": 9353400000.0,
+      "operating_margin": 0.3414
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-03-31",
+      "operating_income": 2735600000.0,
+      "total_revenue": 8768000000.0,
+      "operating_margin": 0.312
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-06-30",
+      "operating_income": 4418500000.0,
+      "total_revenue": 11302800000.0,
+      "operating_margin": 0.3909
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-09-30",
+      "operating_income": 4434400000.0,
+      "total_revenue": 11439100000.0,
+      "operating_margin": 0.3877
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-12-31",
+      "operating_income": 5682000000.0,
+      "total_revenue": 13532800000.0,
+      "operating_margin": 0.4199
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-03-31",
+      "operating_income": 5302000000.0,
+      "total_revenue": 12729000000.0,
+      "operating_margin": 0.4165
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-06-30",
+      "operating_income": 7020800000.0,
+      "total_revenue": 15557700000.0,
+      "operating_margin": 0.4513
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-09-30",
+      "operating_income": 8386100000.0,
+      "total_revenue": 17600800000.0,
+      "operating_margin": 0.4765
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-12-31",
+      "operating_income": 8987400000.0,
+      "total_revenue": 19292000000.0,
+      "operating_margin": 0.4659
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2026-03-31",
+      "operating_income": 9778000000.0,
+      "total_revenue": 19799000000.0,
+      "operating_margin": 0.4939
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "LLY",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2020-12-31",
+      "operating_income": 7101400000.0,
+      "total_revenue": 24539800000.0,
+      "operating_margin": 0.2894
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2021-12-31",
+      "operating_income": 7643300000.0,
+      "total_revenue": 28318400000.0,
+      "operating_margin": 0.2699
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2022-12-31",
+      "operating_income": 8280400000.0,
+      "total_revenue": 28541400000.0,
+      "operating_margin": 0.2901
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-12-31",
+      "operating_income": 10325000000.0,
+      "total_revenue": 34124000000.0,
+      "operating_margin": 0.3026
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-12-31",
+      "operating_income": 17040000000.0,
+      "total_revenue": 45043000000.0,
+      "operating_margin": 0.3783
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-12-31",
+      "operating_income": 29696000000.0,
+      "total_revenue": 65179000000.0,
+      "operating_margin": 0.4556
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "LLY",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 952500000.0,
+      "total_revenue": 6488000000.0,
+      "net_margin": 0.1468
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 1763200000.0,
+      "total_revenue": 8312100000.0,
+      "net_margin": 0.2121
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": -57400000.0,
+      "total_revenue": 9498600000.0,
+      "net_margin": -0.006
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 2189700000.0,
+      "total_revenue": 9353400000.0,
+      "net_margin": 0.2341
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 2242900000.0,
+      "total_revenue": 8768000000.0,
+      "net_margin": 0.2558
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 2967000000.0,
+      "total_revenue": 11302800000.0,
+      "net_margin": 0.2625
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 970300000.0,
+      "total_revenue": 11439100000.0,
+      "net_margin": 0.0848
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 4409800000.0,
+      "total_revenue": 13532800000.0,
+      "net_margin": 0.3259
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 2759000000.0,
+      "total_revenue": 12729000000.0,
+      "net_margin": 0.2167
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 13799900000.0,
+      "total_revenue": 15557700000.0,
+      "net_margin": 0.887
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 5582500000.0,
+      "total_revenue": 17600800000.0,
+      "net_margin": 0.3172
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 6637700000.0,
+      "total_revenue": 19292000000.0,
+      "net_margin": 0.3441
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 25277000000.0,
+      "total_revenue": 19799000000.0,
+      "net_margin": 1.2767
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "LLY",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 6193700000.0,
+      "total_revenue": 24539800000.0,
+      "net_margin": 0.2524
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 5581700000.0,
+      "total_revenue": 28318400000.0,
+      "net_margin": 0.1971
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 6244800000.0,
+      "total_revenue": 28541400000.0,
+      "net_margin": 0.2188
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 5240000000.0,
+      "total_revenue": 34124000000.0,
+      "net_margin": 0.1536
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 10590000000.0,
+      "total_revenue": 45043000000.0,
+      "net_margin": 0.2351
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 20640000000.0,
+      "total_revenue": 65179000000.0,
+      "net_margin": 0.3167
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "LLY",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 6488000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-06-30",
+      "ebitda": 2575500000.0,
+      "total_revenue": 8312100000.0,
+      "ebitda_margin": 0.3098
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-09-30",
+      "ebitda": 962800000.0,
+      "total_revenue": 9498600000.0,
+      "ebitda_margin": 0.1014
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-12-31",
+      "ebitda": 3034700000.0,
+      "total_revenue": 9353400000.0,
+      "ebitda_margin": 0.3244
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-03-31",
+      "ebitda": 3116300000.0,
+      "total_revenue": 8768000000.0,
+      "ebitda_margin": 0.3554
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-06-30",
+      "ebitda": 4115200000.0,
+      "total_revenue": 11302800000.0,
+      "ebitda_margin": 0.3641
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-09-30",
+      "ebitda": 2247900000.0,
+      "total_revenue": 11439100000.0,
+      "ebitda_margin": 0.1965
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-12-31",
+      "ebitda": 5748200000.0,
+      "total_revenue": 13532800000.0,
+      "ebitda_margin": 0.4248
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-03-31",
+      "ebitda": 5765000000.0,
+      "total_revenue": 12729000000.0,
+      "ebitda_margin": 0.4529
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-06-30",
+      "ebitda": 7503700000.0,
+      "total_revenue": 15557700000.0,
+      "ebitda_margin": 0.4823
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-09-30",
+      "ebitda": 7882000000.0,
+      "total_revenue": 17600800000.0,
+      "ebitda_margin": 0.4478
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-12-31",
+      "ebitda": 12144500000.0,
+      "total_revenue": 19292000000.0,
+      "ebitda_margin": 0.6295
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2026-03-31",
+      "ebitda": 10287000000.0,
+      "total_revenue": 19799000000.0,
+      "ebitda_margin": 0.5196
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "LLY",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2020-12-31",
+      "ebitda": 8913400000.0,
+      "total_revenue": 24539800000.0,
+      "ebitda_margin": 0.3632
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2021-12-31",
+      "ebitda": 8042900000.0,
+      "total_revenue": 28318400000.0,
+      "ebitda_margin": 0.284
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2022-12-31",
+      "ebitda": 8660500000.0,
+      "total_revenue": 28541400000.0,
+      "ebitda_margin": 0.3034
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-12-31",
+      "ebitda": 11852000000.0,
+      "total_revenue": 34124000000.0,
+      "ebitda_margin": 0.3473
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-12-31",
+      "ebitda": 18807000000.0,
+      "total_revenue": 45043000000.0,
+      "ebitda_margin": 0.4175
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-12-31",
+      "ebitda": 31693000000.0,
+      "total_revenue": 65179000000.0,
+      "ebitda_margin": 0.4862
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "LLY",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 369700000.0,
+      "total_revenue": 6488000000.0,
+      "fcf_margin": 0.057
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-06-30",
+      "free_cash_flow": -204400000.0,
+      "total_revenue": 8312100000.0,
+      "fcf_margin": -0.0246
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-09-30",
+      "free_cash_flow": -1811700000.0,
+      "total_revenue": 9498600000.0,
+      "fcf_margin": -0.1907
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-12-31",
+      "free_cash_flow": -1963000000.0,
+      "total_revenue": 9353400000.0,
+      "fcf_margin": -0.2099
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 83200000.0,
+      "total_revenue": 8768000000.0,
+      "fcf_margin": 0.0095
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 63400000.0,
+      "total_revenue": 11302800000.0,
+      "fcf_margin": 0.0056
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-09-30",
+      "free_cash_flow": -458900000.0,
+      "total_revenue": 11439100000.0,
+      "fcf_margin": -0.0401
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 726600000.0,
+      "total_revenue": 13532800000.0,
+      "fcf_margin": 0.0537
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-03-31",
+      "free_cash_flow": -1601000000.0,
+      "total_revenue": 12729000000.0,
+      "fcf_margin": -0.1258
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 1283100000.0,
+      "total_revenue": 15557700000.0,
+      "fcf_margin": 0.0825
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 6027700000.0,
+      "total_revenue": 17600800000.0,
+      "fcf_margin": 0.3425
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 254200000.0,
+      "total_revenue": 19292000000.0,
+      "fcf_margin": 0.0132
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 2803000000.0,
+      "total_revenue": 19799000000.0,
+      "fcf_margin": 0.1416
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "LLY",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 4470500000.0,
+      "total_revenue": 24539800000.0,
+      "fcf_margin": 0.1822
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 5387500000.0,
+      "total_revenue": 28318400000.0,
+      "fcf_margin": 0.1902
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 4600400000.0,
+      "total_revenue": 28541400000.0,
+      "fcf_margin": 0.1612
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-12-31",
+      "free_cash_flow": -3152000000.0,
+      "total_revenue": 34124000000.0,
+      "fcf_margin": -0.0924
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 414000000.0,
+      "total_revenue": 45043000000.0,
+      "fcf_margin": 0.0092
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 5964000000.0,
+      "total_revenue": 65179000000.0,
+      "fcf_margin": 0.0915
+    }
+  ]
+}

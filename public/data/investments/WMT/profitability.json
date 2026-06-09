@@ -1,0 +1,442 @@
+{
+  "roe": [
+    {
+      "symbol": "WMT",
+      "report_date": "2023-10-31",
+      "net_income_common_stockholders": 453000000.0,
+      "beginning_stockholders_equity": 79556000000.0,
+      "ending_stockholders_equity": 79456000000.0,
+      "avg_equity": 79506000000.0,
+      "roe": 0.0057
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-01-31",
+      "net_income_common_stockholders": 5494000000.0,
+      "beginning_stockholders_equity": 79456000000.0,
+      "ending_stockholders_equity": 83861000000.0,
+      "avg_equity": 81658500000.0,
+      "roe": 0.0673
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-04-30",
+      "net_income_common_stockholders": 5104000000.0,
+      "beginning_stockholders_equity": 83861000000.0,
+      "ending_stockholders_equity": 81293000000.0,
+      "avg_equity": 82577000000.0,
+      "roe": 0.0618
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-07-31",
+      "net_income_common_stockholders": 4501000000.0,
+      "beginning_stockholders_equity": 81293000000.0,
+      "ending_stockholders_equity": 84423000000.0,
+      "avg_equity": 82858000000.0,
+      "roe": 0.0543
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-10-31",
+      "net_income_common_stockholders": 4577000000.0,
+      "beginning_stockholders_equity": 84423000000.0,
+      "ending_stockholders_equity": 88108000000.0,
+      "avg_equity": 86265500000.0,
+      "roe": 0.0531
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-01-31",
+      "net_income_common_stockholders": 5254000000.0,
+      "beginning_stockholders_equity": 88108000000.0,
+      "ending_stockholders_equity": 91013000000.0,
+      "avg_equity": 89560500000.0,
+      "roe": 0.0587
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-04-30",
+      "net_income_common_stockholders": 4487000000.0,
+      "beginning_stockholders_equity": 91013000000.0,
+      "ending_stockholders_equity": 83793000000.0,
+      "avg_equity": 87403000000.0,
+      "roe": 0.0513
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-07-31",
+      "net_income_common_stockholders": 7026000000.0,
+      "beginning_stockholders_equity": 83793000000.0,
+      "ending_stockholders_equity": 90110000000.0,
+      "avg_equity": 86951500000.0,
+      "roe": 0.0808
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-10-31",
+      "net_income_common_stockholders": 6143000000.0,
+      "beginning_stockholders_equity": 90110000000.0,
+      "ending_stockholders_equity": 96094000000.0,
+      "avg_equity": 93102000000.0,
+      "roe": 0.066
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2026-01-31",
+      "net_income_common_stockholders": 4237000000.0,
+      "beginning_stockholders_equity": 96094000000.0,
+      "ending_stockholders_equity": 99617000000.0,
+      "avg_equity": 97855500000.0,
+      "roe": 0.0433
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "WMT",
+      "report_date": "2023-10-31",
+      "net_income_common_stockholders": 453000000.0,
+      "beginning_total_assets": 255121000000.0,
+      "ending_total_assets": 259174000000.0,
+      "avg_assets": 257147500000.0,
+      "roa": 0.0018
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-01-31",
+      "net_income_common_stockholders": 5494000000.0,
+      "beginning_total_assets": 259174000000.0,
+      "ending_total_assets": 252399000000.0,
+      "avg_assets": 255786500000.0,
+      "roa": 0.0215
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-04-30",
+      "net_income_common_stockholders": 5104000000.0,
+      "beginning_total_assets": 252399000000.0,
+      "ending_total_assets": 254054000000.0,
+      "avg_assets": 253226500000.0,
+      "roa": 0.0202
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-07-31",
+      "net_income_common_stockholders": 4501000000.0,
+      "beginning_total_assets": 254054000000.0,
+      "ending_total_assets": 254440000000.0,
+      "avg_assets": 254247000000.0,
+      "roa": 0.0177
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-10-31",
+      "net_income_common_stockholders": 4577000000.0,
+      "beginning_total_assets": 254440000000.0,
+      "ending_total_assets": 263399000000.0,
+      "avg_assets": 258919500000.0,
+      "roa": 0.0177
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-01-31",
+      "net_income_common_stockholders": 5254000000.0,
+      "beginning_total_assets": 263399000000.0,
+      "ending_total_assets": 260823000000.0,
+      "avg_assets": 262111000000.0,
+      "roa": 0.02
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-04-30",
+      "net_income_common_stockholders": 4487000000.0,
+      "beginning_total_assets": 260823000000.0,
+      "ending_total_assets": 262372000000.0,
+      "avg_assets": 261597500000.0,
+      "roa": 0.0172
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-07-31",
+      "net_income_common_stockholders": 7026000000.0,
+      "beginning_total_assets": 262372000000.0,
+      "ending_total_assets": 270837000000.0,
+      "avg_assets": 266604500000.0,
+      "roa": 0.0264
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-10-31",
+      "net_income_common_stockholders": 6143000000.0,
+      "beginning_total_assets": 270837000000.0,
+      "ending_total_assets": 288655000000.0,
+      "avg_assets": 279746000000.0,
+      "roa": 0.022
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2026-01-31",
+      "net_income_common_stockholders": 4237000000.0,
+      "beginning_total_assets": 288655000000.0,
+      "ending_total_assets": 284668000000.0,
+      "avg_assets": 286661500000.0,
+      "roa": 0.0148
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "WMT",
+      "report_date": "2023-10-31",
+      "ebit": 1597000000.0,
+      "tax_rate_for_calcs": 0.3,
+      "nopat": 1117900000.0,
+      "beginning_invested_capital": 123805000000.0,
+      "ending_invested_capital": 128546000000.0,
+      "avg_invested_capital": 126175500000.0,
+      "roic": 0.0089
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-01-31",
+      "ebit": 8213000000.0,
+      "tax_rate_for_calcs": 0.24,
+      "nopat": 6241880000.0,
+      "beginning_invested_capital": 128546000000.0,
+      "ending_invested_capital": 124318000000.0,
+      "avg_invested_capital": 126432000000.0,
+      "roic": 0.0494
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-04-30",
+      "ebit": 7749000000.0,
+      "tax_rate_for_calcs": 0.25,
+      "nopat": 5811750000.0,
+      "beginning_invested_capital": 124318000000.0,
+      "ending_invested_capital": 124543000000.0,
+      "avg_invested_capital": 124430500000.0,
+      "roic": 0.0467
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-07-31",
+      "ebit": 6892000000.0,
+      "tax_rate_for_calcs": 0.24,
+      "nopat": 5237920000.0,
+      "beginning_invested_capital": 124543000000.0,
+      "ending_invested_capital": 124477000000.0,
+      "avg_invested_capital": 124510000000.0,
+      "roic": 0.0421
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-10-31",
+      "ebit": 6716000000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 5171320000.0,
+      "beginning_invested_capital": 124477000000.0,
+      "ending_invested_capital": 128578000000.0,
+      "avg_invested_capital": 126527500000.0,
+      "roic": 0.0409
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-01-31",
+      "ebit": 7680000000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 5990400000.0,
+      "beginning_invested_capital": 128578000000.0,
+      "ending_invested_capital": 130080000000.0,
+      "avg_invested_capital": 129329000000.0,
+      "roic": 0.0463
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-04-30",
+      "ebit": 6631000000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 5105870000.0,
+      "beginning_invested_capital": 130080000000.0,
+      "ending_invested_capital": 129993000000.0,
+      "avg_invested_capital": 130036500000.0,
+      "roic": 0.0393
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-07-31",
+      "ebit": 10088000000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 7767760000.0,
+      "beginning_invested_capital": 129993000000.0,
+      "ending_invested_capital": 133598000000.0,
+      "avg_invested_capital": 131795500000.0,
+      "roic": 0.0589
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-10-31",
+      "ebit": 8870000000.0,
+      "tax_rate_for_calcs": 0.26,
+      "nopat": 6563800000.0,
+      "beginning_invested_capital": 133598000000.0,
+      "ending_invested_capital": 142463000000.0,
+      "avg_invested_capital": 138030500000.0,
+      "roic": 0.0476
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2026-01-31",
+      "ebit": 6679000000.0,
+      "tax_rate_for_calcs": 0.26,
+      "nopat": 4942460000.0,
+      "beginning_invested_capital": 142463000000.0,
+      "ending_invested_capital": 144379000000.0,
+      "avg_invested_capital": 143421000000.0,
+      "roic": 0.0345
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "WMT",
+      "report_date": "2023-10-31T00:00:00.000",
+      "roe": 0.0057,
+      "roa": 0.0018,
+      "equity_multiplier": 3.17
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-01-31T00:00:00.000",
+      "roe": 0.0673,
+      "roa": 0.0215,
+      "equity_multiplier": 3.13
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-04-30T00:00:00.000",
+      "roe": 0.0618,
+      "roa": 0.0202,
+      "equity_multiplier": 3.06
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-07-31T00:00:00.000",
+      "roe": 0.0543,
+      "roa": 0.0177,
+      "equity_multiplier": 3.07
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-10-31T00:00:00.000",
+      "roe": 0.0531,
+      "roa": 0.0177,
+      "equity_multiplier": 3.0
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-01-31T00:00:00.000",
+      "roe": 0.0587,
+      "roa": 0.02,
+      "equity_multiplier": 2.94
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-04-30T00:00:00.000",
+      "roe": 0.0513,
+      "roa": 0.0172,
+      "equity_multiplier": 2.98
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-07-31T00:00:00.000",
+      "roe": 0.0808,
+      "roa": 0.0264,
+      "equity_multiplier": 3.06
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-10-31T00:00:00.000",
+      "roe": 0.066,
+      "roa": 0.022,
+      "equity_multiplier": 3.0
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2026-01-31T00:00:00.000",
+      "roe": 0.0433,
+      "roa": 0.0148,
+      "equity_multiplier": 2.93
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "WMT",
+      "report_date": "2023-10-31T00:00:00.000",
+      "roa": 0.0018,
+      "net_margin": 0.0028,
+      "asset_turnover": 0.64
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-01-31T00:00:00.000",
+      "roa": 0.0215,
+      "net_margin": 0.0317,
+      "asset_turnover": 0.68
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-04-30T00:00:00.000",
+      "roa": 0.0202,
+      "net_margin": 0.0316,
+      "asset_turnover": 0.64
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-07-31T00:00:00.000",
+      "roa": 0.0177,
+      "net_margin": 0.0266,
+      "asset_turnover": 0.67
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2024-10-31T00:00:00.000",
+      "roa": 0.0177,
+      "net_margin": 0.027,
+      "asset_turnover": 0.66
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-01-31T00:00:00.000",
+      "roa": 0.02,
+      "net_margin": 0.0291,
+      "asset_turnover": 0.69
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-04-30T00:00:00.000",
+      "roa": 0.0172,
+      "net_margin": 0.0271,
+      "asset_turnover": 0.63
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-07-31T00:00:00.000",
+      "roa": 0.0264,
+      "net_margin": 0.0396,
+      "asset_turnover": 0.67
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2025-10-31T00:00:00.000",
+      "roa": 0.022,
+      "net_margin": 0.0342,
+      "asset_turnover": 0.64
+    },
+    {
+      "symbol": "WMT",
+      "report_date": "2026-01-31T00:00:00.000",
+      "roa": 0.0148,
+      "net_margin": 0.0222,
+      "asset_turnover": 0.67
+    }
+  ]
+}

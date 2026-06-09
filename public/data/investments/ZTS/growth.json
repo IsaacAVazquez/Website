@@ -1,0 +1,1165 @@
+{
+  "quarterly_revenue": [
+    {
+      "symbol": "ZTS",
+      "report_date": "2022-06-30T00:00:00.000",
+      "revenue": 2052000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-03-31T00:00:00.000",
+      "revenue": 2000000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-06-30T00:00:00.000",
+      "revenue": 2180000000.0,
+      "prev_year_revenue": 2052000000.0,
+      "yoy_growth": 0.0624
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-09-30T00:00:00.000",
+      "revenue": 2151000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 2213000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-03-31T00:00:00.000",
+      "revenue": 2190000000.0,
+      "prev_year_revenue": 2000000000.0,
+      "yoy_growth": 0.095
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-06-30T00:00:00.000",
+      "revenue": 2361000000.0,
+      "prev_year_revenue": 2180000000.0,
+      "yoy_growth": 0.083
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-09-30T00:00:00.000",
+      "revenue": 2388000000.0,
+      "prev_year_revenue": 2151000000.0,
+      "yoy_growth": 0.1102
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 2317000000.0,
+      "prev_year_revenue": 2213000000.0,
+      "yoy_growth": 0.047
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-03-31T00:00:00.000",
+      "revenue": 2198000000.0,
+      "prev_year_revenue": 2190000000.0,
+      "yoy_growth": 0.0037
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-06-30T00:00:00.000",
+      "revenue": 9385000000.0,
+      "prev_year_revenue": 2361000000.0,
+      "yoy_growth": 2.975
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-09-30T00:00:00.000",
+      "revenue": 2400000000.0,
+      "prev_year_revenue": 2388000000.0,
+      "yoy_growth": 0.005
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 2387000000.0,
+      "prev_year_revenue": 2317000000.0,
+      "yoy_growth": 0.0302
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2026-03-31T00:00:00.000",
+      "revenue": 9531000000.0,
+      "prev_year_revenue": 2198000000.0,
+      "yoy_growth": 3.3362
+    }
+  ],
+  "annual_revenue": [
+    {
+      "symbol": "ZTS",
+      "report_date": "2019-12-31T00:00:00.000",
+      "revenue": 6260000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2020-12-31T00:00:00.000",
+      "revenue": 6675000000.0,
+      "prev_year_revenue": 6260000000.0,
+      "yoy_growth": 0.0663
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2021-12-31T00:00:00.000",
+      "revenue": 7776000000.0,
+      "prev_year_revenue": 6675000000.0,
+      "yoy_growth": 0.1649
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2022-12-31T00:00:00.000",
+      "revenue": 8080000000.0,
+      "prev_year_revenue": 7776000000.0,
+      "yoy_growth": 0.0391
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 8544000000.0,
+      "prev_year_revenue": 8080000000.0,
+      "yoy_growth": 0.0574
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 9256000000.0,
+      "prev_year_revenue": 8544000000.0,
+      "yoy_growth": 0.0833
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 9467000000.0,
+      "prev_year_revenue": 9256000000.0,
+      "yoy_growth": 0.0228
+    }
+  ],
+  "quarterly_operating_income": [
+    {
+      "symbol": "ZTS",
+      "report_date": "2022-06-30T00:00:00.000",
+      "operating_income": 726000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-03-31T00:00:00.000",
+      "operating_income": 728000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-06-30T00:00:00.000",
+      "operating_income": 834000000.0,
+      "prev_year_operating_income": 726000000.0,
+      "yoy_growth": 0.1488
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-09-30T00:00:00.000",
+      "operating_income": 798000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 709000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-03-31T00:00:00.000",
+      "operating_income": 801000000.0,
+      "prev_year_operating_income": 728000000.0,
+      "yoy_growth": 0.1003
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-06-30T00:00:00.000",
+      "operating_income": 906000000.0,
+      "prev_year_operating_income": 834000000.0,
+      "yoy_growth": 0.0863
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-09-30T00:00:00.000",
+      "operating_income": 920000000.0,
+      "prev_year_operating_income": 798000000.0,
+      "yoy_growth": 0.1529
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 765000000.0,
+      "prev_year_operating_income": 709000000.0,
+      "yoy_growth": 0.079
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-03-31T00:00:00.000",
+      "operating_income": 812000000.0,
+      "prev_year_operating_income": 801000000.0,
+      "yoy_growth": 0.0137
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-06-30T00:00:00.000",
+      "operating_income": 3520000000.0,
+      "prev_year_operating_income": 906000000.0,
+      "yoy_growth": 2.8852
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-09-30T00:00:00.000",
+      "operating_income": 936000000.0,
+      "prev_year_operating_income": 920000000.0,
+      "yoy_growth": 0.0174
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 826000000.0,
+      "prev_year_operating_income": 765000000.0,
+      "yoy_growth": 0.0797
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2026-03-31T00:00:00.000",
+      "operating_income": 3607000000.0,
+      "prev_year_operating_income": 812000000.0,
+      "yoy_growth": 3.4421
+    }
+  ],
+  "annual_operating_income": [
+    {
+      "symbol": "ZTS",
+      "report_date": "2019-12-31T00:00:00.000",
+      "operating_income": 2018000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2020-12-31T00:00:00.000",
+      "operating_income": 2269000000.0,
+      "prev_year_operating_income": 2018000000.0,
+      "yoy_growth": 0.1244
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2021-12-31T00:00:00.000",
+      "operating_income": 2803000000.0,
+      "prev_year_operating_income": 2269000000.0,
+      "yoy_growth": 0.2353
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2022-12-31T00:00:00.000",
+      "operating_income": 2928000000.0,
+      "prev_year_operating_income": 2803000000.0,
+      "yoy_growth": 0.0446
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 3069000000.0,
+      "prev_year_operating_income": 2928000000.0,
+      "yoy_growth": 0.0482
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 3392000000.0,
+      "prev_year_operating_income": 3069000000.0,
+      "yoy_growth": 0.1052
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 3597000000.0,
+      "prev_year_operating_income": 3392000000.0,
+      "yoy_growth": 0.0604
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-03-31T00:00:00.000",
+      "ebitda": 880000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-06-30T00:00:00.000",
+      "ebitda": 1051000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-09-30T00:00:00.000",
+      "ebitda": 900000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 835000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-03-31T00:00:00.000",
+      "ebitda": 931000000.0,
+      "prev_year_ebitda": 880000000.0,
+      "yoy_growth": 0.058
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-06-30T00:00:00.000",
+      "ebitda": 966000000.0,
+      "prev_year_ebitda": 1051000000.0,
+      "yoy_growth": -0.0809
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-09-30T00:00:00.000",
+      "ebitda": 1052000000.0,
+      "prev_year_ebitda": 900000000.0,
+      "yoy_growth": 0.1689
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 906000000.0,
+      "prev_year_ebitda": 835000000.0,
+      "yoy_growth": 0.085
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-03-31T00:00:00.000",
+      "ebitda": 946000000.0,
+      "prev_year_ebitda": 931000000.0,
+      "yoy_growth": 0.0161
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-06-30T00:00:00.000",
+      "ebitda": 4019000000.0,
+      "prev_year_ebitda": 966000000.0,
+      "yoy_growth": 3.1605
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-09-30T00:00:00.000",
+      "ebitda": 1069000000.0,
+      "prev_year_ebitda": 1052000000.0,
+      "yoy_growth": 0.0162
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 939000000.0,
+      "prev_year_ebitda": 906000000.0,
+      "yoy_growth": 0.0364
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2026-03-31T00:00:00.000",
+      "ebitda": 4062000000.0,
+      "prev_year_ebitda": 946000000.0,
+      "yoy_growth": 3.2939
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "ZTS",
+      "report_date": "2019-12-31T00:00:00.000",
+      "ebitda": 2179000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2020-12-31T00:00:00.000",
+      "ebitda": 2668000000.0,
+      "prev_year_ebitda": 2179000000.0,
+      "yoy_growth": 0.2244
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2021-12-31T00:00:00.000",
+      "ebitda": 3160000000.0,
+      "prev_year_ebitda": 2668000000.0,
+      "yoy_growth": 0.1844
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2022-12-31T00:00:00.000",
+      "ebitda": 3342000000.0,
+      "prev_year_ebitda": 3160000000.0,
+      "yoy_growth": 0.0576
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 3666000000.0,
+      "prev_year_ebitda": 3342000000.0,
+      "yoy_growth": 0.0969
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 3855000000.0,
+      "prev_year_ebitda": 3666000000.0,
+      "yoy_growth": 0.0516
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 4069000000.0,
+      "prev_year_ebitda": 3855000000.0,
+      "yoy_growth": 0.0555
+    }
+  ],
+  "quarterly_net_income": [
+    {
+      "symbol": "ZTS",
+      "report_date": "2022-06-30T00:00:00.000",
+      "net_income_common_stockholders": 529000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-03-31T00:00:00.000",
+      "net_income_common_stockholders": 552000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-06-30T00:00:00.000",
+      "net_income_common_stockholders": 671000000.0,
+      "prev_year_net_income_common_stockholders": 529000000.0,
+      "yoy_growth": 0.2684
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-09-30T00:00:00.000",
+      "net_income_common_stockholders": 596000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 525000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-03-31T00:00:00.000",
+      "net_income_common_stockholders": 599000000.0,
+      "prev_year_net_income_common_stockholders": 552000000.0,
+      "yoy_growth": 0.0851
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-06-30T00:00:00.000",
+      "net_income_common_stockholders": 624000000.0,
+      "prev_year_net_income_common_stockholders": 671000000.0,
+      "yoy_growth": -0.07
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-09-30T00:00:00.000",
+      "net_income_common_stockholders": 682000000.0,
+      "prev_year_net_income_common_stockholders": 596000000.0,
+      "yoy_growth": 0.1443
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 581000000.0,
+      "prev_year_net_income_common_stockholders": 525000000.0,
+      "yoy_growth": 0.1067
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-03-31T00:00:00.000",
+      "net_income_common_stockholders": 602000000.0,
+      "prev_year_net_income_common_stockholders": 599000000.0,
+      "yoy_growth": 0.005
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-06-30T00:00:00.000",
+      "net_income_common_stockholders": 718000000.0,
+      "prev_year_net_income_common_stockholders": 624000000.0,
+      "yoy_growth": 0.1506
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-09-30T00:00:00.000",
+      "net_income_common_stockholders": 721000000.0,
+      "prev_year_net_income_common_stockholders": 682000000.0,
+      "yoy_growth": 0.0572
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 603000000.0,
+      "prev_year_net_income_common_stockholders": 581000000.0,
+      "yoy_growth": 0.0379
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2026-03-31T00:00:00.000",
+      "net_income_common_stockholders": 601000000.0,
+      "prev_year_net_income_common_stockholders": 602000000.0,
+      "yoy_growth": -0.0017
+    }
+  ],
+  "annual_net_income": [
+    {
+      "symbol": "ZTS",
+      "report_date": "2019-12-31T00:00:00.000",
+      "net_income_common_stockholders": 1500000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2020-12-31T00:00:00.000",
+      "net_income_common_stockholders": 1638000000.0,
+      "prev_year_net_income_common_stockholders": 1500000000.0,
+      "yoy_growth": 0.092
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2021-12-31T00:00:00.000",
+      "net_income_common_stockholders": 2037000000.0,
+      "prev_year_net_income_common_stockholders": 1638000000.0,
+      "yoy_growth": 0.2436
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2022-12-31T00:00:00.000",
+      "net_income_common_stockholders": 2114000000.0,
+      "prev_year_net_income_common_stockholders": 2037000000.0,
+      "yoy_growth": 0.0378
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 2344000000.0,
+      "prev_year_net_income_common_stockholders": 2114000000.0,
+      "yoy_growth": 0.1088
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 2486000000.0,
+      "prev_year_net_income_common_stockholders": 2344000000.0,
+      "yoy_growth": 0.0606
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 2673000000.0,
+      "prev_year_net_income_common_stockholders": 2486000000.0,
+      "yoy_growth": 0.0752
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "ZTS",
+      "report_date": "2022-06-30T00:00:00.000",
+      "free_cash_flow": 190000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-06-30T00:00:00.000",
+      "free_cash_flow": 17000000.0,
+      "prev_year_free_cash_flow": 190000000.0,
+      "yoy_growth": -0.9105
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-09-30T00:00:00.000",
+      "free_cash_flow": 579000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 699000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-03-31T00:00:00.000",
+      "free_cash_flow": 455000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-06-30T00:00:00.000",
+      "free_cash_flow": 370000000.0,
+      "prev_year_free_cash_flow": 17000000.0,
+      "yoy_growth": 20.7647
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-09-30T00:00:00.000",
+      "free_cash_flow": 784000000.0,
+      "prev_year_free_cash_flow": 579000000.0,
+      "yoy_growth": 0.3541
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 689000000.0,
+      "prev_year_free_cash_flow": 699000000.0,
+      "yoy_growth": -0.0143
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-03-31T00:00:00.000",
+      "free_cash_flow": 337000000.0,
+      "prev_year_free_cash_flow": 455000000.0,
+      "yoy_growth": -0.2593
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-06-30T00:00:00.000",
+      "free_cash_flow": 409000000.0,
+      "prev_year_free_cash_flow": 370000000.0,
+      "yoy_growth": 0.1054
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-09-30T00:00:00.000",
+      "free_cash_flow": 805000000.0,
+      "prev_year_free_cash_flow": 784000000.0,
+      "yoy_growth": 0.0268
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 732000000.0,
+      "prev_year_free_cash_flow": 689000000.0,
+      "yoy_growth": 0.0624
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2026-03-31T00:00:00.000",
+      "free_cash_flow": 291000000.0,
+      "prev_year_free_cash_flow": 337000000.0,
+      "yoy_growth": -0.1365
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "ZTS",
+      "report_date": "2020-12-31T00:00:00.000",
+      "free_cash_flow": 1673000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2021-12-31T00:00:00.000",
+      "free_cash_flow": 1736000000.0,
+      "prev_year_free_cash_flow": 1673000000.0,
+      "yoy_growth": 0.0377
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2022-12-31T00:00:00.000",
+      "free_cash_flow": 1326000000.0,
+      "prev_year_free_cash_flow": 1736000000.0,
+      "yoy_growth": -0.2362
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 1621000000.0,
+      "prev_year_free_cash_flow": 1326000000.0,
+      "yoy_growth": 0.2225
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 2298000000.0,
+      "prev_year_free_cash_flow": 1621000000.0,
+      "yoy_growth": 0.4176
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 2283000000.0,
+      "prev_year_free_cash_flow": 2298000000.0,
+      "yoy_growth": -0.0065
+    }
+  ],
+  "quarterly_eps": [
+    {
+      "symbol": "ZTS",
+      "report_date": "2011-03-31T00:00:00.000",
+      "eps": 0.152,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2011-06-30T00:00:00.000",
+      "eps": 0.132,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2011-09-30T00:00:00.000",
+      "eps": 0.188,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2011-12-31T00:00:00.000",
+      "eps": 0.018,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2012-03-31T00:00:00.000",
+      "eps": 0.222,
+      "prev_year_eps": 0.152,
+      "yoy_growth": 0.4605
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2012-06-30T00:00:00.000",
+      "eps": 0.346,
+      "prev_year_eps": 0.132,
+      "yoy_growth": 1.6212
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2012-09-30T00:00:00.000",
+      "eps": 0.324,
+      "prev_year_eps": 0.188,
+      "yoy_growth": 0.7234
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2012-12-31T00:00:00.000",
+      "eps": -0.02,
+      "prev_year_eps": 0.018,
+      "yoy_growth": -2.1111
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2013-03-31T00:00:00.000",
+      "eps": 0.28,
+      "prev_year_eps": 0.222,
+      "yoy_growth": 0.2613
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2013-06-30T00:00:00.000",
+      "eps": 0.26,
+      "prev_year_eps": 0.346,
+      "yoy_growth": -0.2486
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2013-09-30T00:00:00.000",
+      "eps": 0.26,
+      "prev_year_eps": 0.324,
+      "yoy_growth": -0.1975
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2013-12-31T00:00:00.000",
+      "eps": 0.21,
+      "prev_year_eps": -0.02,
+      "yoy_growth": 11.5
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2014-03-31T00:00:00.000",
+      "eps": 0.31,
+      "prev_year_eps": 0.28,
+      "yoy_growth": 0.1071
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2014-06-30T00:00:00.000",
+      "eps": 0.27,
+      "prev_year_eps": 0.26,
+      "yoy_growth": 0.0385
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2014-09-30T00:00:00.000",
+      "eps": 0.33,
+      "prev_year_eps": 0.26,
+      "yoy_growth": 0.2692
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2014-12-31T00:00:00.000",
+      "eps": 0.25,
+      "prev_year_eps": 0.21,
+      "yoy_growth": 0.1905
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2015-03-31T00:00:00.000",
+      "eps": 0.33,
+      "prev_year_eps": 0.31,
+      "yoy_growth": 0.0645
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2015-06-30T00:00:00.000",
+      "eps": -0.07,
+      "prev_year_eps": 0.27,
+      "yoy_growth": -1.2593
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2015-09-30T00:00:00.000",
+      "eps": 0.38,
+      "prev_year_eps": 0.33,
+      "yoy_growth": 0.1515
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2015-12-31T00:00:00.000",
+      "eps": 0.04,
+      "prev_year_eps": 0.25,
+      "yoy_growth": -0.84
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2016-03-31T00:00:00.000",
+      "eps": 0.41,
+      "prev_year_eps": 0.33,
+      "yoy_growth": 0.2424
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2016-06-30T00:00:00.000",
+      "eps": 0.45,
+      "prev_year_eps": -0.07,
+      "yoy_growth": 7.4286
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2016-09-30T00:00:00.000",
+      "eps": 0.48,
+      "prev_year_eps": 0.38,
+      "yoy_growth": 0.2632
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2016-12-31T00:00:00.000",
+      "eps": 0.31,
+      "prev_year_eps": 0.04,
+      "yoy_growth": 6.75
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2017-03-31T00:00:00.000",
+      "eps": 0.48,
+      "prev_year_eps": 0.41,
+      "yoy_growth": 0.1707
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2017-06-30T00:00:00.000",
+      "eps": 0.5,
+      "prev_year_eps": 0.45,
+      "yoy_growth": 0.1111
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2017-09-30T00:00:00.000",
+      "eps": 0.61,
+      "prev_year_eps": 0.48,
+      "yoy_growth": 0.2708
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2017-12-31T00:00:00.000",
+      "eps": 0.16,
+      "prev_year_eps": 0.31,
+      "yoy_growth": -0.4839
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2018-03-31T00:00:00.000",
+      "eps": 0.72,
+      "prev_year_eps": 0.48,
+      "yoy_growth": 0.5
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2018-06-30T00:00:00.000",
+      "eps": 0.79,
+      "prev_year_eps": 0.5,
+      "yoy_growth": 0.58
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2018-09-30T00:00:00.000",
+      "eps": 0.7143,
+      "prev_year_eps": 0.61,
+      "yoy_growth": 0.171
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2018-12-31T00:00:00.000",
+      "eps": 0.7121,
+      "prev_year_eps": 0.16,
+      "yoy_growth": 3.4506
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2019-03-31T00:00:00.000",
+      "eps": 0.6458,
+      "prev_year_eps": 0.72,
+      "yoy_growth": -0.1031
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2019-06-30T00:00:00.000",
+      "eps": 0.7692,
+      "prev_year_eps": 0.79,
+      "yoy_growth": -0.0263
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2019-09-30T00:00:00.000",
+      "eps": 0.8993,
+      "prev_year_eps": 0.7143,
+      "yoy_growth": 0.259
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2019-12-31T00:00:00.000",
+      "eps": 0.7997,
+      "prev_year_eps": 0.7121,
+      "yoy_growth": 0.123
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2020-03-31T00:00:00.000",
+      "eps": 0.8831,
+      "prev_year_eps": 0.6458,
+      "yoy_growth": 0.3675
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2020-06-30T00:00:00.000",
+      "eps": 0.7885,
+      "prev_year_eps": 0.7692,
+      "yoy_growth": 0.0251
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2020-09-30T00:00:00.000",
+      "eps": 1.001,
+      "prev_year_eps": 0.8993,
+      "yoy_growth": 0.1131
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2020-12-31T00:00:00.000",
+      "eps": 0.75,
+      "prev_year_eps": 0.7997,
+      "yoy_growth": -0.0621
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2021-03-31T00:00:00.000",
+      "eps": 1.1697,
+      "prev_year_eps": 0.8831,
+      "yoy_growth": 0.3245
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2021-06-30T00:00:00.000",
+      "eps": 1.0734,
+      "prev_year_eps": 0.7885,
+      "yoy_growth": 0.3613
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2021-09-30T00:00:00.000",
+      "eps": 1.1589,
+      "prev_year_eps": 1.001,
+      "yoy_growth": 0.1577
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2021-12-31T00:00:00.000",
+      "eps": 0.8705,
+      "prev_year_eps": 0.75,
+      "yoy_growth": 0.1607
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2022-03-31T00:00:00.000",
+      "eps": 1.255,
+      "prev_year_eps": 1.1697,
+      "yoy_growth": 0.0729
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2022-06-30T00:00:00.000",
+      "eps": 1.122,
+      "prev_year_eps": 1.0734,
+      "yoy_growth": 0.0453
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2022-09-30T00:00:00.000",
+      "eps": 1.1277,
+      "prev_year_eps": 1.1589,
+      "yoy_growth": -0.0269
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2022-12-31T00:00:00.000",
+      "eps": 0.9876,
+      "prev_year_eps": 0.8705,
+      "yoy_growth": 0.1345
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-03-31T00:00:00.000",
+      "eps": 1.1881,
+      "prev_year_eps": 1.255,
+      "yoy_growth": -0.0533
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-06-30T00:00:00.000",
+      "eps": 1.4496,
+      "prev_year_eps": 1.122,
+      "yoy_growth": 0.292
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-09-30T00:00:00.000",
+      "eps": 1.2917,
+      "prev_year_eps": 1.1277,
+      "yoy_growth": 0.1454
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-12-31T00:00:00.000",
+      "eps": 1.1411,
+      "prev_year_eps": 0.9876,
+      "yoy_growth": 0.1554
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-03-31T00:00:00.000",
+      "eps": 1.3056,
+      "prev_year_eps": 1.1881,
+      "yoy_growth": 0.0989
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-06-30T00:00:00.000",
+      "eps": 1.3684,
+      "prev_year_eps": 1.4496,
+      "yoy_growth": -0.056
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-09-30T00:00:00.000",
+      "eps": 1.5039,
+      "prev_year_eps": 1.2917,
+      "yoy_growth": 0.1643
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-12-31T00:00:00.000",
+      "eps": 1.288,
+      "prev_year_eps": 1.1411,
+      "yoy_growth": 0.1287
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-03-31T00:00:00.000",
+      "eps": 1.3438,
+      "prev_year_eps": 1.3056,
+      "yoy_growth": 0.0293
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-06-30T00:00:00.000",
+      "eps": 1.6117,
+      "prev_year_eps": 1.3684,
+      "yoy_growth": 0.1778
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-09-30T00:00:00.000",
+      "eps": 1.6268,
+      "prev_year_eps": 1.5039,
+      "yoy_growth": 0.0817
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-12-31T00:00:00.000",
+      "eps": 1.3748,
+      "prev_year_eps": 1.288,
+      "yoy_growth": 0.0674
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2026-03-31T00:00:00.000",
+      "eps": 1.4228,
+      "prev_year_eps": 1.3438,
+      "yoy_growth": 0.0588
+    }
+  ]
+}

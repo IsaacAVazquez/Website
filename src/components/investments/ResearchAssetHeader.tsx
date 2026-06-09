@@ -10,6 +10,7 @@ import {
 } from "@tabler/icons-react";
 import { useLiveQuote } from "@/hooks/useLiveQuote";
 import { useStockData } from "@/hooks/useStockData";
+import { formatHistoryAsOf } from "@/lib/investmentsHistory";
 import type {
   BetaData,
   CompanyInfo,
@@ -125,6 +126,10 @@ function formatRange(low: number | undefined, high: number | undefined): string 
   return `${fmt(low)}–${fmt(high)}`;
 }
 
+function getPriceDate(entry: (StockPrice & { report_date?: string }) | undefined): string | undefined {
+  return entry?.date ?? entry?.report_date;
+}
+
 interface KeyMetric {
   label: string;
   hint: string;
@@ -185,6 +190,15 @@ export function ResearchAssetHeader({
     if (!Array.isArray(priceRaw)) return [];
     return (priceRaw as StockPrice[]).slice(-252);
   }, [priceRaw]);
+  const latestHistoricalPrice = trailingYear[trailingYear.length - 1] as
+    | (StockPrice & { report_date?: string })
+    | undefined;
+  const savedClose =
+    typeof latestHistoricalPrice?.close === "number" &&
+    Number.isFinite(latestHistoricalPrice.close)
+      ? latestHistoricalPrice.close
+      : undefined;
+  const savedCloseLabel = formatHistoryAsOf(getPriceDate(latestHistoricalPrice));
   const trailingHigh = trailingYear.length
     ? Math.max(...trailingYear.map((p) => p.high ?? p.close ?? 0))
     : undefined;
@@ -267,8 +281,23 @@ export function ResearchAssetHeader({
   const livePrice = quote && !quote.error ? quote.price : undefined;
   const dayChange = quote && !quote.error ? quote.change : undefined;
   const dayChangePct = quote && !quote.error ? quote.changePercent : undefined;
-  const px = formatBalance(livePrice);
+  const displayPrice = livePrice ?? savedClose;
+  const px =
+    displayPrice !== undefined
+      ? formatBalance(displayPrice)
+      : { whole: "Unavailable", cents: "" };
   const positive = (dayChange ?? 0) >= 0;
+  const priceEyebrow =
+    livePrice !== undefined
+      ? "Live quote"
+      : quoteLoading && savedClose === undefined
+        ? "Fetching live quote"
+        : savedClose !== undefined
+          ? `Price as of ${savedCloseLabel}`
+          : "No price data";
+  const showSavedCloseNote =
+    livePrice === undefined && savedClose !== undefined && !quoteLoading;
+  const showQuoteUnavailableNote = livePrice === undefined && Boolean(quoteError);
 
   return (
     <section className="research-asset-card" aria-label={`${upper} asset summary`}>
@@ -309,23 +338,32 @@ export function ResearchAssetHeader({
         <div className="research-asset-price">
           <span className="research-asset-price-eyebrow">
             <span className="invest-hero-livedot" aria-hidden="true" />
-            {livePrice !== undefined
-              ? "Live quote"
-              : quoteLoading
-                ? "Fetching live quote"
-                : "Last close"}
+            {priceEyebrow}
           </span>
           <p className="research-asset-px">
             <span>{px.whole}</span>
             <span className="cents">{px.cents}</span>
           </p>
           <div className="research-asset-delta">
-            <span className={`chip ${positive ? "pos" : "neg"}`}>
-              {formatSignedCurrency(dayChange)}
-            </span>
-            <span className={positive ? "pos" : "neg"}>
-              {formatPercent(dayChangePct)} today
-            </span>
+            {livePrice !== undefined ? (
+              <>
+                <span className={`chip ${positive ? "pos" : "neg"}`}>
+                  {formatSignedCurrency(dayChange)}
+                </span>
+                <span className={positive ? "pos" : "neg"}>
+                  {formatPercent(dayChangePct)} today
+                </span>
+              </>
+            ) : (
+              <>
+                {showSavedCloseNote ? (
+                  <span>Showing the latest saved close from {savedCloseLabel}.</span>
+                ) : null}
+                {showQuoteUnavailableNote ? (
+                  <span>Live pricing is temporarily unavailable.</span>
+                ) : null}
+              </>
+            )}
           </div>
         </div>
       </div>

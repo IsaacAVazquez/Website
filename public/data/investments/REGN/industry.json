@@ -1,0 +1,1832 @@
+{
+  "ttm_pe": [],
+  "ps_ratio": [],
+  "pb_ratio": [],
+  "roe": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -118759000.0,
+      "total_avg_equity": 682390000.0,
+      "industry_roe": -0.174
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -118759000.0,
+      "total_avg_equity": 682390000.0,
+      "industry_roe": -0.174
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -118759000.0,
+      "total_avg_equity": 682390000.0,
+      "industry_roe": -0.174
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -216778000.0,
+      "total_avg_equity": 686998000.0,
+      "industry_roe": -0.3155
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -216778000.0,
+      "total_avg_equity": 686998000.0,
+      "industry_roe": -0.3155
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -237858000.0,
+      "total_avg_equity": 701627000.0,
+      "industry_roe": -0.339
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -408645430.0,
+      "total_avg_equity": 694223234.5,
+      "industry_roe": -0.5886
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -408645430.0,
+      "total_avg_equity": 694223234.5,
+      "industry_roe": -0.5886
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -488916430.0,
+      "total_avg_equity": 649678234.5,
+      "industry_roe": -0.7526
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": 1743825633.0,
+      "total_avg_equity": 18760325246.5,
+      "industry_roe": 0.093
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": 1731218482.0,
+      "total_avg_equity": 18753342557.0,
+      "industry_roe": 0.0923
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": 1581045796.0,
+      "total_avg_equity": 18973135196.5,
+      "industry_roe": 0.0833
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -32030640555.693054,
+      "total_avg_equity": 215975866432.3882,
+      "industry_roe": -0.1483
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -32325256192.693054,
+      "total_avg_equity": 216338251392.7632,
+      "industry_roe": -0.1494
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -32344935380.693054,
+      "total_avg_equity": 216427297127.2632,
+      "industry_roe": -0.1494
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -36741853262.901085,
+      "total_avg_equity": 200654292717.0368,
+      "industry_roe": -0.1831
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -36733295753.901085,
+      "total_avg_equity": 200681944730.1618,
+      "industry_roe": -0.183
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -36746215224.901085,
+      "total_avg_equity": 200667670300.6618,
+      "industry_roe": -0.1831
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -35669555710.27989,
+      "total_avg_equity": 214272466979.27786,
+      "industry_roe": -0.1665
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -35620705033.27989,
+      "total_avg_equity": 214246622911.27786,
+      "industry_roe": -0.1663
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -35638822409.27989,
+      "total_avg_equity": 214308077028.27786,
+      "industry_roe": -0.1663
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -39529306244.68342,
+      "total_avg_equity": 219149880818.79248,
+      "industry_roe": -0.1804
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -39553592937.9848,
+      "total_avg_equity": 219289323050.0959,
+      "industry_roe": -0.1804
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -39570489610.9848,
+      "total_avg_equity": 219367743706.5959,
+      "industry_roe": -0.1804
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -39177817608.55803,
+      "total_avg_equity": 204404649185.9217,
+      "industry_roe": -0.1917
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -39238419784.13478,
+      "total_avg_equity": 204368797488.19342,
+      "industry_roe": -0.192
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -39395610735.57618,
+      "total_avg_equity": 204264093937.73425,
+      "industry_roe": -0.1929
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -45800183349.96711,
+      "total_avg_equity": 222843645587.14178,
+      "industry_roe": -0.2055
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -45900713340.31508,
+      "total_avg_equity": 222784603296.0804,
+      "industry_roe": -0.206
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -45940227547.41913,
+      "total_avg_equity": 222820923011.44864,
+      "industry_roe": -0.2062
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -47887608234.8221,
+      "total_avg_equity": 225925487689.81927,
+      "industry_roe": -0.212
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -47915439577.12904,
+      "total_avg_equity": 225884426584.33932,
+      "industry_roe": -0.2121
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -47934341025.868195,
+      "total_avg_equity": 225943737535.92767,
+      "industry_roe": -0.2122
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -50681087947.3501,
+      "total_avg_equity": 237700777974.17316,
+      "industry_roe": -0.2132
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -50822968864.9412,
+      "total_avg_equity": 237750752197.64615,
+      "industry_roe": -0.2138
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -51068945521.8119,
+      "total_avg_equity": 237705540029.11435,
+      "industry_roe": -0.2148
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -72427166310.14299,
+      "total_avg_equity": 240327273638.52307,
+      "industry_roe": -0.3014
+    }
+  ],
+  "roa": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -118759000.0,
+      "total_avg_assets": 1097863500.0,
+      "industry_roa": -0.1082
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -118759000.0,
+      "total_avg_assets": 1097863500.0,
+      "industry_roa": -0.1082
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -118759000.0,
+      "total_avg_assets": 1097863500.0,
+      "industry_roa": -0.1082
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -216778000.0,
+      "total_avg_assets": 1058257000.0,
+      "industry_roa": -0.2048
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -216778000.0,
+      "total_avg_assets": 1058257000.0,
+      "industry_roa": -0.2048
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -237858000.0,
+      "total_avg_assets": 1434669000.0,
+      "industry_roa": -0.1658
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -408645430.0,
+      "total_avg_assets": 1437227662.0,
+      "industry_roa": -0.2843
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -408645430.0,
+      "total_avg_assets": 1437227662.0,
+      "industry_roa": -0.2843
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -488916430.0,
+      "total_avg_assets": 1391496162.0,
+      "industry_roa": -0.3514
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": 1712180625.0,
+      "total_avg_assets": 25642036806.0,
+      "industry_roa": 0.0668
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": 1699573474.0,
+      "total_avg_assets": 25663013263.5,
+      "industry_roa": 0.0662
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": 1549400788.0,
+      "total_avg_assets": 26000458103.5,
+      "industry_roa": 0.0596
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -32030640555.693054,
+      "total_avg_assets": 334864872386.16833,
+      "industry_roa": -0.0957
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -32325256192.693054,
+      "total_avg_assets": 335361989279.44336,
+      "industry_roa": -0.0964
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -32344935380.693054,
+      "total_avg_assets": 335440708650.94336,
+      "industry_roa": -0.0964
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -36741853262.901085,
+      "total_avg_assets": 321370921572.661,
+      "industry_roa": -0.1143
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -36733295753.901085,
+      "total_avg_assets": 321356296512.88605,
+      "industry_roa": -0.1143
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -36746215224.901085,
+      "total_avg_assets": 321380978582.88605,
+      "industry_roa": -0.1143
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -35669555710.27989,
+      "total_avg_assets": 340594901885.4722,
+      "industry_roa": -0.1047
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -35620705033.27989,
+      "total_avg_assets": 340576778534.4722,
+      "industry_roa": -0.1046
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -35638822409.27989,
+      "total_avg_assets": 340635013661.4722,
+      "industry_roa": -0.1046
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -39529306244.68342,
+      "total_avg_assets": 343871546562.0598,
+      "industry_roa": -0.115
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -39553592937.9848,
+      "total_avg_assets": 344053772320.88617,
+      "industry_roa": -0.115
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -39570489610.9848,
+      "total_avg_assets": 344127075915.88617,
+      "industry_roa": -0.115
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -39177817608.55803,
+      "total_avg_assets": 327867310518.2577,
+      "industry_roa": -0.1195
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -39238419784.13478,
+      "total_avg_assets": 327876592907.0528,
+      "industry_roa": -0.1197
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -39395610735.57618,
+      "total_avg_assets": 327890821676.2369,
+      "industry_roa": -0.1201
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -45800183349.96711,
+      "total_avg_assets": 356813118227.1774,
+      "industry_roa": -0.1284
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -45900713340.31508,
+      "total_avg_assets": 356778403907.08264,
+      "industry_roa": -0.1287
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -45940227547.41913,
+      "total_avg_assets": 356823943102.17126,
+      "industry_roa": -0.1287
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -47887608234.8221,
+      "total_avg_assets": 365488320771.26685,
+      "industry_roa": -0.131
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -47915439577.12904,
+      "total_avg_assets": 365447512520.70807,
+      "industry_roa": -0.1311
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -47934341025.868195,
+      "total_avg_assets": 365503301582.2643,
+      "industry_roa": -0.1311
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -50681087947.3501,
+      "total_avg_assets": 383421982642.9595,
+      "industry_roa": -0.1322
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -50822968864.9412,
+      "total_avg_assets": 383475088477.44434,
+      "industry_roa": -0.1325
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -51068945521.8119,
+      "total_avg_assets": 383437843140.2886,
+      "industry_roa": -0.1332
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -72427166310.14299,
+      "total_avg_assets": 387653552028.959,
+      "industry_roa": -0.1868
+    }
+  ],
+  "equity_multiplier": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roe": -0.174,
+      "industry_roa": -0.1082,
+      "industry_equity_multiplier": 1.61
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roe": -0.174,
+      "industry_roa": -0.1082,
+      "industry_equity_multiplier": 1.61
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roe": -0.174,
+      "industry_roa": -0.1082,
+      "industry_equity_multiplier": 1.61
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roe": -0.3155,
+      "industry_roa": -0.2048,
+      "industry_equity_multiplier": 1.54
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roe": -0.3155,
+      "industry_roa": -0.2048,
+      "industry_equity_multiplier": 1.54
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roe": -0.339,
+      "industry_roa": -0.1658,
+      "industry_equity_multiplier": 2.04
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roe": -0.5886,
+      "industry_roa": -0.2843,
+      "industry_equity_multiplier": 2.07
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roe": -0.5886,
+      "industry_roa": -0.2843,
+      "industry_equity_multiplier": 2.07
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roe": -0.7526,
+      "industry_roa": -0.3514,
+      "industry_equity_multiplier": 2.14
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roe": 0.093,
+      "industry_roa": 0.0668,
+      "industry_equity_multiplier": 1.39
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roe": 0.0923,
+      "industry_roa": 0.0662,
+      "industry_equity_multiplier": 1.39
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roe": 0.0833,
+      "industry_roa": 0.0596,
+      "industry_equity_multiplier": 1.4
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roe": -0.1483,
+      "industry_roa": -0.0957,
+      "industry_equity_multiplier": 1.55
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roe": -0.1494,
+      "industry_roa": -0.0964,
+      "industry_equity_multiplier": 1.55
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roe": -0.1494,
+      "industry_roa": -0.0964,
+      "industry_equity_multiplier": 1.55
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roe": -0.1831,
+      "industry_roa": -0.1143,
+      "industry_equity_multiplier": 1.6
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roe": -0.183,
+      "industry_roa": -0.1143,
+      "industry_equity_multiplier": 1.6
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roe": -0.1831,
+      "industry_roa": -0.1143,
+      "industry_equity_multiplier": 1.6
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roe": -0.1665,
+      "industry_roa": -0.1047,
+      "industry_equity_multiplier": 1.59
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roe": -0.1663,
+      "industry_roa": -0.1046,
+      "industry_equity_multiplier": 1.59
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roe": -0.1663,
+      "industry_roa": -0.1046,
+      "industry_equity_multiplier": 1.59
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roe": -0.1804,
+      "industry_roa": -0.115,
+      "industry_equity_multiplier": 1.57
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roe": -0.1804,
+      "industry_roa": -0.115,
+      "industry_equity_multiplier": 1.57
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roe": -0.1804,
+      "industry_roa": -0.115,
+      "industry_equity_multiplier": 1.57
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roe": -0.1917,
+      "industry_roa": -0.1195,
+      "industry_equity_multiplier": 1.6
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roe": -0.192,
+      "industry_roa": -0.1197,
+      "industry_equity_multiplier": 1.6
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roe": -0.1929,
+      "industry_roa": -0.1201,
+      "industry_equity_multiplier": 1.61
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roe": -0.2055,
+      "industry_roa": -0.1284,
+      "industry_equity_multiplier": 1.6
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roe": -0.206,
+      "industry_roa": -0.1287,
+      "industry_equity_multiplier": 1.6
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roe": -0.2062,
+      "industry_roa": -0.1287,
+      "industry_equity_multiplier": 1.6
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roe": -0.212,
+      "industry_roa": -0.131,
+      "industry_equity_multiplier": 1.62
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roe": -0.2121,
+      "industry_roa": -0.1311,
+      "industry_equity_multiplier": 1.62
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roe": -0.2122,
+      "industry_roa": -0.1311,
+      "industry_equity_multiplier": 1.62
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roe": -0.2132,
+      "industry_roa": -0.1322,
+      "industry_equity_multiplier": 1.61
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roe": -0.2138,
+      "industry_roa": -0.1325,
+      "industry_equity_multiplier": 1.61
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roe": -0.2148,
+      "industry_roa": -0.1332,
+      "industry_equity_multiplier": 1.61
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roe": -0.3014,
+      "industry_roa": -0.1868,
+      "industry_equity_multiplier": 1.61
+    }
+  ],
+  "gross_margin": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_gross_profit": 9198235000.0,
+      "total_ttm_revenue": 10427810000.0,
+      "industry_gross_margin": 0.8821
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_gross_profit": 9198235000.0,
+      "total_ttm_revenue": 10427810000.0,
+      "industry_gross_margin": 0.8821
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_gross_profit": 9198235000.0,
+      "total_ttm_revenue": 10427810000.0,
+      "industry_gross_margin": 0.8821
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_gross_profit": 9518128000.0,
+      "total_ttm_revenue": 10766174000.0,
+      "industry_gross_margin": 0.8841
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_gross_profit": 9518128000.0,
+      "total_ttm_revenue": 10766174000.0,
+      "industry_gross_margin": 0.8841
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_gross_profit": 9621885000.0,
+      "total_ttm_revenue": 11056174000.0,
+      "industry_gross_margin": 0.8703
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_gross_profit": 9741375600.0,
+      "total_ttm_revenue": 11209457528.0,
+      "industry_gross_margin": 0.869
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_gross_profit": 9741375600.0,
+      "total_ttm_revenue": 11209457528.0,
+      "industry_gross_margin": 0.869
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_gross_profit": 9732335600.0,
+      "total_ttm_revenue": 11184193528.0,
+      "industry_gross_margin": 0.8702
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_gross_profit": 10420824123.0,
+      "total_ttm_revenue": 12072677757.0,
+      "industry_gross_margin": 0.8632
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_gross_profit": 10420824123.0,
+      "total_ttm_revenue": 12072677757.0,
+      "industry_gross_margin": 0.8632
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_gross_profit": 10421177106.0,
+      "total_ttm_revenue": 12073048309.0,
+      "industry_gross_margin": 0.8632
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_gross_profit": 65918964799.81843,
+      "total_ttm_revenue": 82721765411.31137,
+      "industry_gross_margin": 0.7969
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_gross_profit": 65940523406.81843,
+      "total_ttm_revenue": 82773937325.31137,
+      "industry_gross_margin": 0.7966
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_gross_profit": 65940542446.81843,
+      "total_ttm_revenue": 82773943618.31137,
+      "industry_gross_margin": 0.7966
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_gross_profit": 65330784573.23465,
+      "total_ttm_revenue": 81690121048.91287,
+      "industry_gross_margin": 0.7997
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_gross_profit": 65332698459.23465,
+      "total_ttm_revenue": 81691407950.91287,
+      "industry_gross_margin": 0.7997
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_gross_profit": 65332785892.23465,
+      "total_ttm_revenue": 81691495383.91287,
+      "industry_gross_margin": 0.7998
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_gross_profit": 69113857604.49258,
+      "total_ttm_revenue": 84691846362.92561,
+      "industry_gross_margin": 0.8161
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_gross_profit": 69114995712.49258,
+      "total_ttm_revenue": 84693980317.92561,
+      "industry_gross_margin": 0.8161
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_gross_profit": 69115030459.49258,
+      "total_ttm_revenue": 84694012962.92561,
+      "industry_gross_margin": 0.8161
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_gross_profit": 147126551160.97305,
+      "total_ttm_revenue": 174881576483.65616,
+      "industry_gross_margin": 0.8413
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_gross_profit": 147132907876.97305,
+      "total_ttm_revenue": 174886714249.65616,
+      "industry_gross_margin": 0.8413
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_gross_profit": 147132936876.97305,
+      "total_ttm_revenue": 174886743249.65616,
+      "industry_gross_margin": 0.8413
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_gross_profit": 151245669821.77808,
+      "total_ttm_revenue": 179352901792.25583,
+      "industry_gross_margin": 0.8433
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_gross_profit": 151254034731.82834,
+      "total_ttm_revenue": 179366835504.5072,
+      "industry_gross_margin": 0.8433
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_gross_profit": 151254124731.82834,
+      "total_ttm_revenue": 179366925504.5072,
+      "industry_gross_margin": 0.8433
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_gross_profit": 209765426166.60086,
+      "total_ttm_revenue": 235828858566.97897,
+      "industry_gross_margin": 0.8895
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_gross_profit": 209765030349.59583,
+      "total_ttm_revenue": 235829686393.00247,
+      "industry_gross_margin": 0.8895
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_gross_profit": 209765120349.59583,
+      "total_ttm_revenue": 235829776393.00247,
+      "industry_gross_margin": 0.8895
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_gross_profit": 213695298191.70856,
+      "total_ttm_revenue": 240465462317.6193,
+      "industry_gross_margin": 0.8887
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_gross_profit": 213698117911.98956,
+      "total_ttm_revenue": 240468026630.93616,
+      "industry_gross_margin": 0.8887
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_gross_profit": 213697936708.98956,
+      "total_ttm_revenue": 240467842707.93616,
+      "industry_gross_margin": 0.8887
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_gross_profit": 141630058845.15305,
+      "total_ttm_revenue": 157500826614.43283,
+      "industry_gross_margin": 0.8992
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_gross_profit": 141661005687.78116,
+      "total_ttm_revenue": 157519694848.0833,
+      "industry_gross_margin": 0.8993
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_gross_profit": 141661199687.78116,
+      "total_ttm_revenue": 157519540848.0833,
+      "industry_gross_margin": 0.8993
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_gross_profit": 203696111780.4826,
+      "total_ttm_revenue": 214996372771.50476,
+      "industry_gross_margin": 0.9474
+    }
+  ],
+  "ebitda_margin": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_ebitda": -505026739.0,
+      "total_ttm_revenue": 53475000.0,
+      "industry_ebitda_margin": -9.4442
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_ebitda": -505026739.0,
+      "total_ttm_revenue": 53475000.0,
+      "industry_ebitda_margin": -9.4442
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_ebitda": -505026739.0,
+      "total_ttm_revenue": 53475000.0,
+      "industry_ebitda_margin": -9.4442
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_ebitda": 1078635233.0,
+      "total_ttm_revenue": 11015921000.0,
+      "industry_ebitda_margin": 0.0979
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_ebitda": 1078635233.0,
+      "total_ttm_revenue": 11015921000.0,
+      "industry_ebitda_margin": 0.0979
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_ebitda": 1086296233.0,
+      "total_ttm_revenue": 11305921000.0,
+      "industry_ebitda_margin": 0.0961
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_ebitda": -252354026.0,
+      "total_ttm_revenue": 11568785528.0,
+      "industry_ebitda_margin": -0.0218
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_ebitda": -252354026.0,
+      "total_ttm_revenue": 11568785528.0,
+      "industry_ebitda_margin": -0.0218
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_ebitda": -252354026.0,
+      "total_ttm_revenue": 11568785528.0,
+      "industry_ebitda_margin": -0.0218
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_ebitda": -2185412955.0,
+      "total_ttm_revenue": 12355973270.0,
+      "industry_ebitda_margin": -0.1769
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_ebitda": -2224175054.0,
+      "total_ttm_revenue": 12355973270.0,
+      "industry_ebitda_margin": -0.18
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_ebitda": -2372265658.0,
+      "total_ttm_revenue": 12437230822.0,
+      "industry_ebitda_margin": -0.1907
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_ebitda": -28625207408.53423,
+      "total_ttm_revenue": 89860440599.0966,
+      "industry_ebitda_margin": -0.3186
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_ebitda": -28886928050.53423,
+      "total_ttm_revenue": 89912612513.0966,
+      "industry_ebitda_margin": -0.3213
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_ebitda": -28907297040.53423,
+      "total_ttm_revenue": 89894034806.0966,
+      "industry_ebitda_margin": -0.3216
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_ebitda": -33375330979.571365,
+      "total_ttm_revenue": 89132544650.14813,
+      "industry_ebitda_margin": -0.3744
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_ebitda": -33395316321.571365,
+      "total_ttm_revenue": 89133831552.14813,
+      "industry_ebitda_margin": -0.3747
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_ebitda": -33410356801.571365,
+      "total_ttm_revenue": 89128039985.14813,
+      "industry_ebitda_margin": -0.3749
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_ebitda": -35046104679.163284,
+      "total_ttm_revenue": 92078740681.61491,
+      "industry_ebitda_margin": -0.3806
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_ebitda": -34986197944.163284,
+      "total_ttm_revenue": 92080874636.61491,
+      "industry_ebitda_margin": -0.38
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_ebitda": -35006522092.163284,
+      "total_ttm_revenue": 92079032281.61491,
+      "industry_ebitda_margin": -0.3802
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_ebitda": -30963086397.251926,
+      "total_ttm_revenue": 181843219111.06583,
+      "industry_ebitda_margin": -0.1703
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_ebitda": -30983034475.41352,
+      "total_ttm_revenue": 181848356877.06583,
+      "industry_ebitda_margin": -0.1704
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_ebitda": -31002551409.41352,
+      "total_ttm_revenue": 181850253877.06583,
+      "industry_ebitda_margin": -0.1705
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_ebitda": -29899187232.778786,
+      "total_ttm_revenue": 187387684764.99326,
+      "industry_ebitda_margin": -0.1596
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_ebitda": -30002880435.689877,
+      "total_ttm_revenue": 187401629355.24463,
+      "industry_ebitda_margin": -0.1601
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_ebitda": -29985137528.296856,
+      "total_ttm_revenue": 187433683355.24463,
+      "industry_ebitda_margin": -0.16
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_ebitda": -30828386327.98471,
+      "total_ttm_revenue": 246469671516.97702,
+      "industry_ebitda_margin": -0.1251
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_ebitda": -31007087091.682373,
+      "total_ttm_revenue": 246471925343.0005,
+      "industry_ebitda_margin": -0.1258
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_ebitda": -31044909800.52993,
+      "total_ttm_revenue": 246467321343.0005,
+      "industry_ebitda_margin": -0.126
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_ebitda": -29254911971.632404,
+      "total_ttm_revenue": 251782092472.87646,
+      "industry_ebitda_margin": -0.1162
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_ebitda": -29278482777.694965,
+      "total_ttm_revenue": 251784656786.19333,
+      "industry_ebitda_margin": -0.1163
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_ebitda": -29295738223.225452,
+      "total_ttm_revenue": 251784765863.19333,
+      "industry_ebitda_margin": -0.1164
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_ebitda": -36835611018.99165,
+      "total_ttm_revenue": 168776072653.26157,
+      "industry_ebitda_margin": -0.2183
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_ebitda": -36935058461.14095,
+      "total_ttm_revenue": 168794940886.91205,
+      "industry_ebitda_margin": -0.2188
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_ebitda": -36964180493.09772,
+      "total_ttm_revenue": 168782585886.91205,
+      "industry_ebitda_margin": -0.219
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_ebitda": -52080541622.19765,
+      "total_ttm_revenue": 228470193916.5621,
+      "industry_ebitda_margin": -0.228
+    }
+  ],
+  "net_margin": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": 769916541.0,
+      "total_ttm_revenue": 10668841000.0,
+      "industry_net_margin": 0.0722
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": 769916541.0,
+      "total_ttm_revenue": 10668841000.0,
+      "industry_net_margin": 0.0722
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": 769916541.0,
+      "total_ttm_revenue": 10668841000.0,
+      "industry_net_margin": 0.0722
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": 466849679.0,
+      "total_ttm_revenue": 11015921000.0,
+      "industry_net_margin": 0.0424
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": 466849679.0,
+      "total_ttm_revenue": 11015921000.0,
+      "industry_net_margin": 0.0424
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": 445769679.0,
+      "total_ttm_revenue": 11305921000.0,
+      "industry_net_margin": 0.0394
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -1020641333.0,
+      "total_ttm_revenue": 11568785528.0,
+      "industry_net_margin": -0.0882
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -1020641333.0,
+      "total_ttm_revenue": 11568785528.0,
+      "industry_net_margin": -0.0882
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -1020641333.0,
+      "total_ttm_revenue": 11568785528.0,
+      "industry_net_margin": -0.0882
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -3253755863.0,
+      "total_ttm_revenue": 12355973270.0,
+      "industry_net_margin": -0.2633
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -3278764759.0,
+      "total_ttm_revenue": 12355973270.0,
+      "industry_net_margin": -0.2654
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -3428937445.0,
+      "total_ttm_revenue": 12437230822.0,
+      "industry_net_margin": -0.2757
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -33722709127.663055,
+      "total_ttm_revenue": 89860440599.0966,
+      "industry_net_margin": -0.3753
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -34004923019.663055,
+      "total_ttm_revenue": 89912612513.0966,
+      "industry_net_margin": -0.3782
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -34024602207.663055,
+      "total_ttm_revenue": 89894034806.0966,
+      "industry_net_margin": -0.3785
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -38065904348.87108,
+      "total_ttm_revenue": 89132544650.14813,
+      "industry_net_margin": -0.4271
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -38057346839.87108,
+      "total_ttm_revenue": 89133831552.14813,
+      "industry_net_margin": -0.427
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -38070266310.87108,
+      "total_ttm_revenue": 89128039985.14813,
+      "industry_net_margin": -0.4271
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -36751635692.249886,
+      "total_ttm_revenue": 92078740681.61491,
+      "industry_net_margin": -0.3991
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -36702785015.249886,
+      "total_ttm_revenue": 92080874636.61491,
+      "industry_net_margin": -0.3986
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -36720902391.249886,
+      "total_ttm_revenue": 92079032281.61491,
+      "industry_net_margin": -0.3988
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -39878205644.11942,
+      "total_ttm_revenue": 181843219111.06583,
+      "industry_net_margin": -0.2193
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -39902492337.42081,
+      "total_ttm_revenue": 181848356877.06583,
+      "industry_net_margin": -0.2194
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -39919389010.42081,
+      "total_ttm_revenue": 181850253877.06583,
+      "industry_net_margin": -0.2195
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -38989172373.31016,
+      "total_ttm_revenue": 187387684764.99326,
+      "industry_net_margin": -0.2081
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -39049774548.88691,
+      "total_ttm_revenue": 187401629355.24463,
+      "industry_net_margin": -0.2084
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -39206965500.32831,
+      "total_ttm_revenue": 187433683355.24463,
+      "industry_net_margin": -0.2092
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -44269320241.75594,
+      "total_ttm_revenue": 246469671516.97702,
+      "industry_net_margin": -0.1796
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -44373310840.25394,
+      "total_ttm_revenue": 246471925343.0005,
+      "industry_net_margin": -0.18
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -44412825047.35799,
+      "total_ttm_revenue": 246467321343.0005,
+      "industry_net_margin": -0.1802
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -45549729208.97213,
+      "total_ttm_revenue": 251782092472.87646,
+      "industry_net_margin": -0.1809
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -45577560551.279076,
+      "total_ttm_revenue": 251784656786.19333,
+      "industry_net_margin": -0.181
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -45596462000.01823,
+      "total_ttm_revenue": 251784765863.19333,
+      "industry_net_margin": -0.1811
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -48660025555.50012,
+      "total_ttm_revenue": 168776072653.26157,
+      "industry_net_margin": -0.2883
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -48801906473.091225,
+      "total_ttm_revenue": 168794940886.91205,
+      "industry_net_margin": -0.2891
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -49047883129.961914,
+      "total_ttm_revenue": 168782585886.91205,
+      "industry_net_margin": -0.2906
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "total_ttm_net_income": -68866758849.26147,
+      "total_ttm_revenue": 228470193916.5621,
+      "industry_net_margin": -0.3014
+    }
+  ],
+  "asset_turnover": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roa": -0.1082,
+      "industry_net_margin": 0.0722,
+      "industry_asset_turnover": -1.5
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roa": -0.1082,
+      "industry_net_margin": 0.0722,
+      "industry_asset_turnover": -1.5
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roa": -0.1082,
+      "industry_net_margin": 0.0722,
+      "industry_asset_turnover": -1.5
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roa": -0.2048,
+      "industry_net_margin": 0.0424,
+      "industry_asset_turnover": -4.83
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roa": -0.2048,
+      "industry_net_margin": 0.0424,
+      "industry_asset_turnover": -4.83
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roa": -0.1658,
+      "industry_net_margin": 0.0394,
+      "industry_asset_turnover": -4.21
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roa": -0.2843,
+      "industry_net_margin": -0.0882,
+      "industry_asset_turnover": 3.22
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roa": -0.2843,
+      "industry_net_margin": -0.0882,
+      "industry_asset_turnover": 3.22
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roa": -0.3514,
+      "industry_net_margin": -0.0882,
+      "industry_asset_turnover": 3.98
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roa": 0.0668,
+      "industry_net_margin": -0.2633,
+      "industry_asset_turnover": -0.25
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roa": 0.0662,
+      "industry_net_margin": -0.2654,
+      "industry_asset_turnover": -0.25
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roa": 0.0596,
+      "industry_net_margin": -0.2757,
+      "industry_asset_turnover": -0.22
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roa": -0.0957,
+      "industry_net_margin": -0.3753,
+      "industry_asset_turnover": 0.25
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roa": -0.0964,
+      "industry_net_margin": -0.3782,
+      "industry_asset_turnover": 0.25
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roa": -0.0964,
+      "industry_net_margin": -0.3785,
+      "industry_asset_turnover": 0.25
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roa": -0.1143,
+      "industry_net_margin": -0.4271,
+      "industry_asset_turnover": 0.27
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roa": -0.1143,
+      "industry_net_margin": -0.427,
+      "industry_asset_turnover": 0.27
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roa": -0.1143,
+      "industry_net_margin": -0.4271,
+      "industry_asset_turnover": 0.27
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roa": -0.1047,
+      "industry_net_margin": -0.3991,
+      "industry_asset_turnover": 0.26
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roa": -0.1046,
+      "industry_net_margin": -0.3986,
+      "industry_asset_turnover": 0.26
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roa": -0.1046,
+      "industry_net_margin": -0.3988,
+      "industry_asset_turnover": 0.26
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roa": -0.115,
+      "industry_net_margin": -0.2193,
+      "industry_asset_turnover": 0.52
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roa": -0.115,
+      "industry_net_margin": -0.2194,
+      "industry_asset_turnover": 0.52
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roa": -0.115,
+      "industry_net_margin": -0.2195,
+      "industry_asset_turnover": 0.52
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roa": -0.1195,
+      "industry_net_margin": -0.2081,
+      "industry_asset_turnover": 0.57
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roa": -0.1197,
+      "industry_net_margin": -0.2084,
+      "industry_asset_turnover": 0.57
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roa": -0.1201,
+      "industry_net_margin": -0.2092,
+      "industry_asset_turnover": 0.57
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roa": -0.1284,
+      "industry_net_margin": -0.1796,
+      "industry_asset_turnover": 0.71
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roa": -0.1287,
+      "industry_net_margin": -0.18,
+      "industry_asset_turnover": 0.72
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roa": -0.1287,
+      "industry_net_margin": -0.1802,
+      "industry_asset_turnover": 0.71
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roa": -0.131,
+      "industry_net_margin": -0.1809,
+      "industry_asset_turnover": 0.72
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roa": -0.1311,
+      "industry_net_margin": -0.181,
+      "industry_asset_turnover": 0.72
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roa": -0.1311,
+      "industry_net_margin": -0.1811,
+      "industry_asset_turnover": 0.72
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roa": -0.1322,
+      "industry_net_margin": -0.2883,
+      "industry_asset_turnover": 0.46
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roa": -0.1325,
+      "industry_net_margin": -0.2891,
+      "industry_asset_turnover": 0.46
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roa": -0.1332,
+      "industry_net_margin": -0.2906,
+      "industry_asset_turnover": 0.46
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Biotechnology",
+      "industry_roa": -0.1868,
+      "industry_net_margin": -0.3014,
+      "industry_asset_turnover": 0.62
+    }
+  ]
+}

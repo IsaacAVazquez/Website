@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "CRM",
+    "name": "Mr. David  Schmaier",
+    "title": "President and Chief Strategy Officer",
+    "age": 61,
+    "born": 1964,
+    "pay": 2297750,
+    "exercised": 0,
+    "unexercised": 712439,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "CRM",
+    "name": "Mr. Marc R. Benioff",
+    "title": "Co-Founder, Chairman & CEO",
+    "age": 60,
+    "born": 1965,
+    "pay": 11370795,
+    "exercised": 17568536,
+    "unexercised": 21184708,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "CRM",
+    "name": "Mr. Miguel  Milano",
+    "title": "President & Chief Revenue Officer",
+    "age": 56,
+    "born": 1969,
+    "pay": 4340416,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "CRM",
+    "name": "Mr. Parker  Harris",
+    "title": "Co-Founder, CTO of Slack & Director",
+    "age": 58,
+    "born": 1967,
+    "pay": 2291250,
+    "exercised": 9857124,
+    "unexercised": 8066859,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "CRM",
+    "name": "Mr. Patrick  Stokes",
+    "title": "President & Chief Marketing Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "CRM",
+    "name": "Mr. Sabastian V. Niles",
+    "title": "President, Chief Legal Officer & Corporate Secretary",
+    "age": 45,
+    "born": 1980,
+    "pay": 3918008,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "CRM",
+    "name": "Mr. Srinivas  Tallapragada",
+    "title": "President, Chief Engineering & Customer Success Officer",
+    "age": 55,
+    "born": 1970,
+    "pay": 3139934,
+    "exercised": 947960,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "CRM",
+    "name": "Mr. Stephen D. Fisher",
+    "title": "President, CPO, Executive VP and GM of Next Gen CRM & Unified Data",
+    "age": 60,
+    "born": 1965,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "CRM",
+    "name": "Mr. Sundeep G. Reddy",
+    "title": "Executive VP & Chief Accounting Officer",
+    "age": 51,
+    "born": 1974,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "CRM",
+    "name": "Ms. Robin L. Washington CPA",
+    "title": "President, Chief Operating & Financial Officer and Director",
+    "age": 62,
+    "born": 1963,
+    "pay": 11668529,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  }
+]

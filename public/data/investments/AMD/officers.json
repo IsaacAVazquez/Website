@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "AMD",
+    "name": "Dr. Lisa T. Su Ph.D.",
+    "title": "Chair, President & CEO",
+    "age": 55,
+    "born": 1970,
+    "pay": 4540876,
+    "exercised": 29165564,
+    "unexercised": 47659288,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "AMD",
+    "name": "Mr. Forrest E. Norrod",
+    "title": "Executive VP & GM of the Data Center Solutions Business Group",
+    "age": 60,
+    "born": 1965,
+    "pay": 1939077,
+    "exercised": 2639673,
+    "unexercised": 12280258,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "AMD",
+    "name": "Mr. Hasmukh  Ranjan",
+    "title": "Senior VP & Chief Information Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "AMD",
+    "name": "Mr. Keivan  Keshvari",
+    "title": "Senior Vice President of Global Operations & Quality",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "AMD",
+    "name": "Mr. Mark D. Papermaster",
+    "title": "CTO and Executive VP of Technology & Engineering",
+    "age": 63,
+    "born": 1962,
+    "pay": 2165455,
+    "exercised": 21492850,
+    "unexercised": 14220974,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "AMD",
+    "name": "Mr. Matthew D. Ramsay",
+    "title": "Vice President of Financial Strategy & Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "AMD",
+    "name": "Mr. Paul Darren Grasby",
+    "title": "Executive VP, Chief Sales Officer & President AMD EMEA",
+    "age": 55,
+    "born": 1970,
+    "pay": 2180902,
+    "exercised": 0,
+    "unexercised": 6177534,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "AMD",
+    "name": "Ms. Emily  Ellis",
+    "title": "Corporate VP, Chief Accounting Officer & Principal Accounting Officer",
+    "age": 42,
+    "born": 1983,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "AMD",
+    "name": "Ms. Jean X. Hu Ph.D.",
+    "title": "Executive VP, CFO & Treasurer",
+    "age": 62,
+    "born": 1963,
+    "pay": 1976642,
+    "exercised": 0,
+    "unexercised": 1801494,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "AMD",
+    "name": "Ms. Ruth  Cotter",
+    "title": "Senior VP & Chief Administrative Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  }
+]

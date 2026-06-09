@@ -4,7 +4,7 @@ import { renderHook, waitFor } from "@testing-library/react";
 import { createRoot, type Root } from "react-dom/client";
 import { __testUtils, useStockData } from "../useStockData";
 
-globalThis.IS_REACT_ACT_ENVIRONMENT = true;
+(globalThis as Record<string, unknown>).IS_REACT_ACT_ENVIRONMENT = true;
 const mockFetch = jest.fn();
 global.fetch = mockFetch as unknown as typeof fetch;
 

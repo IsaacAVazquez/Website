@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "INTU",
+      "report_date": "2023-10-31",
+      "net_income_common_stockholders": 241000000.0,
+      "beginning_stockholders_equity": 17269000000.0,
+      "ending_stockholders_equity": 16992000000.0,
+      "avg_equity": 17130500000.0,
+      "roe": 0.0141
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-01-31",
+      "net_income_common_stockholders": 353000000.0,
+      "beginning_stockholders_equity": 16992000000.0,
+      "ending_stockholders_equity": 16908000000.0,
+      "avg_equity": 16950000000.0,
+      "roe": 0.0208
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-04-30",
+      "net_income_common_stockholders": 2389000000.0,
+      "beginning_stockholders_equity": 16908000000.0,
+      "ending_stockholders_equity": 18757000000.0,
+      "avg_equity": 17832500000.0,
+      "roe": 0.134
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-07-31",
+      "net_income_common_stockholders": -20000000.0,
+      "beginning_stockholders_equity": 18757000000.0,
+      "ending_stockholders_equity": 18436000000.0,
+      "avg_equity": 18596500000.0,
+      "roe": -0.0011
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-10-31",
+      "net_income_common_stockholders": 197000000.0,
+      "beginning_stockholders_equity": 18436000000.0,
+      "ending_stockholders_equity": 18136000000.0,
+      "avg_equity": 18286000000.0,
+      "roe": 0.0108
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-01-31",
+      "net_income_common_stockholders": 471000000.0,
+      "beginning_stockholders_equity": 18136000000.0,
+      "ending_stockholders_equity": 17949000000.0,
+      "avg_equity": 18042500000.0,
+      "roe": 0.0261
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-04-30",
+      "net_income_common_stockholders": 2820000000.0,
+      "beginning_stockholders_equity": 17949000000.0,
+      "ending_stockholders_equity": 20125000000.0,
+      "avg_equity": 19037000000.0,
+      "roe": 0.1481
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-07-31",
+      "net_income_common_stockholders": 381000000.0,
+      "beginning_stockholders_equity": 20125000000.0,
+      "ending_stockholders_equity": 19710000000.0,
+      "avg_equity": 19917500000.0,
+      "roe": 0.0191
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-10-31",
+      "net_income_common_stockholders": 446000000.0,
+      "beginning_stockholders_equity": 19710000000.0,
+      "ending_stockholders_equity": 19322000000.0,
+      "avg_equity": 19516000000.0,
+      "roe": 0.0229
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2026-01-31",
+      "net_income_common_stockholders": 693000000.0,
+      "beginning_stockholders_equity": 19322000000.0,
+      "ending_stockholders_equity": 19055000000.0,
+      "avg_equity": 19188500000.0,
+      "roe": 0.0361
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2026-04-30",
+      "net_income_common_stockholders": 3064000000.0,
+      "beginning_stockholders_equity": 19055000000.0,
+      "ending_stockholders_equity": 20629000000.0,
+      "avg_equity": 19842000000.0,
+      "roe": 0.1544
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "INTU",
+      "report_date": "2023-10-31",
+      "net_income_common_stockholders": 241000000.0,
+      "beginning_total_assets": 27780000000.0,
+      "ending_total_assets": 28488000000.0,
+      "avg_assets": 28134000000.0,
+      "roa": 0.0086
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-01-31",
+      "net_income_common_stockholders": 353000000.0,
+      "beginning_total_assets": 28488000000.0,
+      "ending_total_assets": 29688000000.0,
+      "avg_assets": 29088000000.0,
+      "roa": 0.0121
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-04-30",
+      "net_income_common_stockholders": 2389000000.0,
+      "beginning_total_assets": 29688000000.0,
+      "ending_total_assets": 31560000000.0,
+      "avg_assets": 30624000000.0,
+      "roa": 0.078
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-07-31",
+      "net_income_common_stockholders": -20000000.0,
+      "beginning_total_assets": 31560000000.0,
+      "ending_total_assets": 32132000000.0,
+      "avg_assets": 31846000000.0,
+      "roa": -0.0006
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-10-31",
+      "net_income_common_stockholders": 197000000.0,
+      "beginning_total_assets": 32132000000.0,
+      "ending_total_assets": 33193000000.0,
+      "avg_assets": 32662500000.0,
+      "roa": 0.006
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-01-31",
+      "net_income_common_stockholders": 471000000.0,
+      "beginning_total_assets": 33193000000.0,
+      "ending_total_assets": 31682000000.0,
+      "avg_assets": 32437500000.0,
+      "roa": 0.0145
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-04-30",
+      "net_income_common_stockholders": 2820000000.0,
+      "beginning_total_assets": 31682000000.0,
+      "ending_total_assets": 36593000000.0,
+      "avg_assets": 34137500000.0,
+      "roa": 0.0826
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-07-31",
+      "net_income_common_stockholders": 381000000.0,
+      "beginning_total_assets": 36593000000.0,
+      "ending_total_assets": 36958000000.0,
+      "avg_assets": 36775500000.0,
+      "roa": 0.0104
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-10-31",
+      "net_income_common_stockholders": 446000000.0,
+      "beginning_total_assets": 36958000000.0,
+      "ending_total_assets": 33191000000.0,
+      "avg_assets": 35074500000.0,
+      "roa": 0.0127
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2026-01-31",
+      "net_income_common_stockholders": 693000000.0,
+      "beginning_total_assets": 33191000000.0,
+      "ending_total_assets": 34282000000.0,
+      "avg_assets": 33736500000.0,
+      "roa": 0.0205
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2026-04-30",
+      "net_income_common_stockholders": 3064000000.0,
+      "beginning_total_assets": 34282000000.0,
+      "ending_total_assets": 39330000000.0,
+      "avg_assets": 36806000000.0,
+      "roa": 0.0832
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "INTU",
+      "report_date": "2023-10-31",
+      "ebit": 329000000.0,
+      "tax_rate_for_calcs": 0.09,
+      "nopat": 299390000.0,
+      "beginning_invested_capital": 23389000000.0,
+      "ending_invested_capital": 22871000000.0,
+      "avg_invested_capital": 23130000000.0,
+      "roic": 0.0129
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-01-31",
+      "ebit": 411000000.0,
+      "tax_rate_for_calcs": 0.0,
+      "nopat": 411000000.0,
+      "beginning_invested_capital": 22871000000.0,
+      "ending_invested_capital": 22858000000.0,
+      "avg_invested_capital": 22864500000.0,
+      "roic": 0.018
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-04-30",
+      "ebit": 3132000000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 2442960000.0,
+      "beginning_invested_capital": 22858000000.0,
+      "ending_invested_capital": 24709000000.0,
+      "avg_invested_capital": 23783500000.0,
+      "roic": 0.1027
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-07-31",
+      "ebit": -80000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": -63200000.0,
+      "beginning_invested_capital": 24709000000.0,
+      "ending_invested_capital": 24474000000.0,
+      "avg_invested_capital": 24591500000.0,
+      "roic": -0.0026
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-10-31",
+      "ebit": 273000000.0,
+      "tax_rate_for_calcs": 0.08,
+      "nopat": 251160000.0,
+      "beginning_invested_capital": 24474000000.0,
+      "ending_invested_capital": 24260000000.0,
+      "avg_invested_capital": 24367000000.0,
+      "roic": 0.0103
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-01-31",
+      "ebit": 631000000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 517420000.0,
+      "beginning_invested_capital": 24260000000.0,
+      "ending_invested_capital": 24209000000.0,
+      "avg_invested_capital": 24234500000.0,
+      "roic": 0.0214
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-04-30",
+      "ebit": 3752000000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 2889040000.0,
+      "beginning_invested_capital": 24209000000.0,
+      "ending_invested_capital": 26531000000.0,
+      "avg_invested_capital": 25370000000.0,
+      "roic": 0.1139
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-07-31",
+      "ebit": 425000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 335750000.0,
+      "beginning_invested_capital": 26531000000.0,
+      "ending_invested_capital": 25683000000.0,
+      "avg_invested_capital": 26107000000.0,
+      "roic": 0.0129
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-10-31",
+      "ebit": 619000000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 495200000.0,
+      "beginning_invested_capital": 25683000000.0,
+      "ending_invested_capital": 25462000000.0,
+      "avg_invested_capital": 25572500000.0,
+      "roic": 0.0194
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2026-01-31",
+      "ebit": 927000000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 741600000.0,
+      "beginning_invested_capital": 25462000000.0,
+      "ending_invested_capital": 25215000000.0,
+      "avg_invested_capital": 25338500000.0,
+      "roic": 0.0293
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2026-04-30",
+      "ebit": 4117000000.0,
+      "tax_rate_for_calcs": 0.24,
+      "nopat": 3128920000.0,
+      "beginning_invested_capital": 25215000000.0,
+      "ending_invested_capital": 26791000000.0,
+      "avg_invested_capital": 26003000000.0,
+      "roic": 0.1203
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "INTU",
+      "report_date": "2023-10-31T00:00:00.000",
+      "roe": 0.0141,
+      "roa": 0.0086,
+      "equity_multiplier": 1.64
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-01-31T00:00:00.000",
+      "roe": 0.0208,
+      "roa": 0.0121,
+      "equity_multiplier": 1.72
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-04-30T00:00:00.000",
+      "roe": 0.134,
+      "roa": 0.078,
+      "equity_multiplier": 1.72
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-07-31T00:00:00.000",
+      "roe": -0.0011,
+      "roa": -0.0006,
+      "equity_multiplier": 1.83
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-10-31T00:00:00.000",
+      "roe": 0.0108,
+      "roa": 0.006,
+      "equity_multiplier": 1.8
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-01-31T00:00:00.000",
+      "roe": 0.0261,
+      "roa": 0.0145,
+      "equity_multiplier": 1.8
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-04-30T00:00:00.000",
+      "roe": 0.1481,
+      "roa": 0.0826,
+      "equity_multiplier": 1.79
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-07-31T00:00:00.000",
+      "roe": 0.0191,
+      "roa": 0.0104,
+      "equity_multiplier": 1.84
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-10-31T00:00:00.000",
+      "roe": 0.0229,
+      "roa": 0.0127,
+      "equity_multiplier": 1.8
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2026-01-31T00:00:00.000",
+      "roe": 0.0361,
+      "roa": 0.0205,
+      "equity_multiplier": 1.76
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2026-04-30T00:00:00.000",
+      "roe": 0.1544,
+      "roa": 0.0832,
+      "equity_multiplier": 1.86
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "INTU",
+      "report_date": "2023-10-31T00:00:00.000",
+      "roa": 0.0086,
+      "net_margin": 0.0809,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-01-31T00:00:00.000",
+      "roa": 0.0121,
+      "net_margin": 0.1043,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-04-30T00:00:00.000",
+      "roa": 0.078,
+      "net_margin": 0.3546,
+      "asset_turnover": 0.22
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-07-31T00:00:00.000",
+      "roa": -0.0006,
+      "net_margin": -0.0063,
+      "asset_turnover": 0.1
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-10-31T00:00:00.000",
+      "roa": 0.006,
+      "net_margin": 0.06,
+      "asset_turnover": 0.1
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-01-31T00:00:00.000",
+      "roa": 0.0145,
+      "net_margin": 0.1188,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-04-30T00:00:00.000",
+      "roa": 0.0826,
+      "net_margin": 0.3637,
+      "asset_turnover": 0.23
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-07-31T00:00:00.000",
+      "roa": 0.0104,
+      "net_margin": 0.0995,
+      "asset_turnover": 0.1
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-10-31T00:00:00.000",
+      "roa": 0.0127,
+      "net_margin": 0.1148,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2026-01-31T00:00:00.000",
+      "roa": 0.0205,
+      "net_margin": 0.149,
+      "asset_turnover": 0.14
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2026-04-30T00:00:00.000",
+      "roa": 0.0832,
+      "net_margin": 0.358,
+      "asset_turnover": 0.23
+    }
+  ]
+}

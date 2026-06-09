@@ -15,6 +15,11 @@ import type {
 
 const ESPN_BASE_URL = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba";
 const ESPN_STANDINGS_URL = "https://site.api.espn.com/apis/v2/sports/basketball/nba/standings";
+// ESPN's old `/leaders` endpoint returns 404 as of 2026-04. The replacement
+// `byathlete` endpoint returns ~227 athletes in a single page (limit=500) with
+// all three stat categories, so one call covers points, rebounds, and assists.
+const ESPN_BYATHLETE_URL =
+  "https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/statistics/byathlete?category=offensive&limit=500";
 const REQUEST_TIMEOUT_MS = 15_000;
 const SUMMARY_REVALIDATE_SECONDS = 300;
 const TEAM_REVALIDATE_SECONDS = 300;
@@ -89,22 +94,35 @@ interface EspnScoreboardResponse {
   season?: { year?: number | null; type?: number | null } | null;
 }
 
-interface EspnLeaderEntry {
-  athlete?: { id?: string | null; displayName?: string | null } | null;
-  team?: EspnTeam | null;
-  value?: number | null;
-  displayValue?: string | null;
-}
-
-interface EspnLeaderCategory {
+interface EspnByAthleteCategoryGlossary {
   name?: string | null;
   displayName?: string | null;
-  leaders?: EspnLeaderEntry[] | null;
+  names?: string[] | null;
 }
 
-interface EspnLeadersResponse {
-  categories?: EspnLeaderCategory[] | null;
-  season?: { year?: number | null } | null;
+interface EspnByAthleteCategory {
+  name?: string | null;
+  values?: number[] | null;
+}
+
+interface EspnByAthleteAthlete {
+  id?: string | null;
+  displayName?: string | null;
+  teamId?: string | null;
+  teamShortName?: string | null;
+}
+
+interface EspnByAthleteEntry {
+  athlete?: EspnByAthleteAthlete | null;
+  categories?: EspnByAthleteCategory[] | null;
+}
+
+interface EspnByAthleteResponse {
+  athletes?: EspnByAthleteEntry[] | null;
+  // Top-level glossary mapping each category's column index → stat name.
+  categories?: EspnByAthleteCategoryGlossary[] | null;
+  // Note: byathlete does not echo a season object the way `/leaders` did, so the
+  // season label is sourced from the standings response instead.
 }
 
 interface EspnTeamsListItem {
@@ -285,33 +303,51 @@ function buildTeamFormSummary(teamIdValue: string, fixtures: NbaFixture[]): NbaF
   );
 }
 
-async function fetchEspnJson<T>(url: string, revalidateSeconds: number): Promise<T> {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
-  try {
-    const response = await fetch(url, {
-      signal: controller.signal,
-      headers: { Accept: "application/json" },
-      next: { revalidate: revalidateSeconds },
-    });
-    if (!response.ok) {
-      if (response.status === 404) {
-        throw createNbaDataError("Requested NBA resource was not found.", 404);
-      }
-      throw createNbaDataError(
-        "Unable to load NBA data from the upstream provider.",
-        response.status >= 500 ? 503 : 502
-      );
+async function fetchEspnJsonOnce<T>(url: string, revalidateSeconds: number): Promise<T> {
+  const response = await fetch(url, {
+    signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
+    headers: { Accept: "application/json" },
+    next: { revalidate: revalidateSeconds },
+  });
+  if (!response.ok) {
+    if (response.status === 404) {
+      throw createNbaDataError("Requested NBA resource was not found.", 404);
     }
-    return (await response.json()) as T;
-  } catch (error) {
-    if (error instanceof Error && error.name === "AbortError") {
-      throw createNbaDataError("NBA data provider timed out.", 504);
-    }
-    throw error;
-  } finally {
-    clearTimeout(timeout);
+    throw createNbaDataError(
+      "Unable to load NBA data from the upstream provider.",
+      response.status >= 500 ? 503 : 502
+    );
   }
+  return (await response.json()) as T;
+}
+
+/**
+ * Wraps the per-attempt fetch in a 3-attempt retry. Backs off on 5xx and on
+ * network/timeout errors, but NOT on 4xx (client-side errors won't recover).
+ * Mirrors the pattern in src/lib/nflData.ts (`fetchTextOnce` + `fetchText`).
+ */
+async function fetchEspnJson<T>(url: string, revalidateSeconds: number): Promise<T> {
+  let lastError: unknown;
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    try {
+      return await fetchEspnJsonOnce<T>(url, revalidateSeconds);
+    } catch (error) {
+      lastError = error;
+      if (error instanceof Error && (error.name === "AbortError" || error.name === "TimeoutError")) {
+        if (attempt < 2) {
+          await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
+          continue;
+        }
+        throw createNbaDataError("NBA data provider timed out.", 504);
+      }
+      const status = (error as NbaDataError).status;
+      if (typeof status === "number" && status >= 400 && status < 500) throw error;
+      if (attempt < 2) {
+        await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
+      }
+    }
+  }
+  throw lastError;
 }
 
 function inferConference(group: EspnStandingsGroup): NbaConference {
@@ -392,20 +428,72 @@ function normalizeTeamProfile(team: EspnTeam | null | undefined, conference: Nba
   };
 }
 
-function normalizeLeader(entry: EspnLeaderEntry, rank: number): NbaLeader | null {
-  const name = entry.athlete?.displayName?.trim();
-  const id = teamId(entry.team);
-  if (!name || !id) return null;
-  const value = typeof entry.value === "number" && Number.isFinite(entry.value) ? entry.value : 0;
-  return {
-    rank,
-    name,
-    teamId: id,
-    teamAbbreviation: entry.team?.abbreviation?.trim() || id.toUpperCase(),
-    total: value,
-    appearances: 0,
-    perGame: value,
-  };
+const LEADER_LIMIT = 10;
+
+/**
+ * The byathlete endpoint encodes per-athlete stats as positional arrays inside
+ * `athlete.categories[].values`. The column order for each category is given
+ * once at the top level under `response.categories[].names`. This builds a
+ * (categoryName -> Map<statName, columnIndex>) lookup so callers can read a
+ * stat by its semantic name without baking column positions into the code.
+ */
+function buildByAthleteStatIndex(
+  glossary: EspnByAthleteCategoryGlossary[] | null | undefined,
+): Map<string, Map<string, number>> {
+  const result = new Map<string, Map<string, number>>();
+  for (const category of glossary ?? []) {
+    if (!category.name) continue;
+    const inner = new Map<string, number>();
+    (category.names ?? []).forEach((name, index) => inner.set(name, index));
+    result.set(category.name, inner);
+  }
+  return result;
+}
+
+function readByAthleteStat(
+  entry: EspnByAthleteEntry,
+  categoryName: string,
+  statName: string,
+  index: Map<string, Map<string, number>>,
+): number {
+  const columnIndex = index.get(categoryName)?.get(statName);
+  if (columnIndex === undefined) return 0;
+  const category = entry.categories?.find((c) => c.name === categoryName);
+  const value = category?.values?.[columnIndex];
+  return typeof value === "number" && Number.isFinite(value) ? value : 0;
+}
+
+function topByAthletes(
+  entries: EspnByAthleteEntry[],
+  categoryName: string,
+  perGameStat: string,
+  totalStat: string,
+  index: Map<string, Map<string, number>>,
+  limit: number,
+): NbaLeader[] {
+  const ranked: NbaLeader[] = [];
+  for (const entry of entries) {
+    const name = entry.athlete?.displayName?.trim();
+    const teamAbbrRaw = entry.athlete?.teamShortName?.trim();
+    if (!name || !teamAbbrRaw) continue;
+    const perGame = readByAthleteStat(entry, categoryName, perGameStat, index);
+    if (perGame <= 0) continue;
+    const total = readByAthleteStat(entry, categoryName, totalStat, index);
+    const games = readByAthleteStat(entry, "general", "gamesPlayed", index);
+    ranked.push({
+      rank: 0,
+      name,
+      teamId: teamAbbrRaw.toLowerCase(),
+      teamAbbreviation: teamAbbrRaw.toUpperCase(),
+      total,
+      appearances: games,
+      perGame,
+    });
+  }
+  return ranked
+    .sort((a, b) => b.perGame - a.perGame)
+    .slice(0, limit)
+    .map((leader, i) => ({ ...leader, rank: i + 1 }));
 }
 
 function buildSeasonLabel(season: { year?: number | null; displayName?: string | null } | null | undefined): string {
@@ -454,7 +542,11 @@ export async function getNbaSummary(): Promise<{
   teams: NbaTeamOption[];
   generatedAt: string;
 }> {
-  const standingsUrl = `${ESPN_STANDINGS_URL}?level=3&group=conference`;
+  // `level=2` returns conferences with 15 entries each. The previous query
+  // (`level=3&group=conference`) returns 400 as of 2026-04 — `&group=conference`
+  // is rejected, and `level=3` alone splits down to divisions, leaving the
+  // conference children with empty `entries` arrays.
+  const standingsUrl = `${ESPN_STANDINGS_URL}?level=2`;
   const today = new Date();
   const yesterday = new Date(today);
   yesterday.setUTCDate(today.getUTCDate() - 7);
@@ -462,13 +554,13 @@ export async function getNbaSummary(): Promise<{
   tomorrow.setUTCDate(today.getUTCDate() + 7);
   const dateRange = `${formatEspnDate(yesterday)}-${formatEspnDate(tomorrow)}`;
   const scoreboardUrl = `${ESPN_BASE_URL}/scoreboard?dates=${dateRange}&limit=200`;
-  const leadersUrl = `${ESPN_BASE_URL}/leaders`;
+  const leadersUrl = ESPN_BYATHLETE_URL;
   const teamsUrl = `${ESPN_BASE_URL}/teams?limit=40`;
 
   const [standingsResponse, scoreboardResponse, leadersResponse, teamsResponse] = await Promise.all([
     fetchEspnJson<EspnStandingsResponse>(standingsUrl, SUMMARY_REVALIDATE_SECONDS),
     fetchEspnJson<EspnScoreboardResponse>(scoreboardUrl, SUMMARY_REVALIDATE_SECONDS),
-    fetchEspnJson<EspnLeadersResponse>(leadersUrl, SUMMARY_REVALIDATE_SECONDS),
+    fetchEspnJson<EspnByAthleteResponse>(leadersUrl, SUMMARY_REVALIDATE_SECONDS),
     fetchEspnJson<EspnTeamsResponse>(teamsUrl, SUMMARY_REVALIDATE_SECONDS),
   ]);
 
@@ -498,25 +590,33 @@ export async function getNbaSummary(): Promise<{
     .sort((a, b) => new Date(a.utcDate).getTime() - new Date(b.utcDate).getTime())
     .slice(0, UPCOMING_FIXTURE_LIMIT);
 
-  const scorerCategory = leadersResponse.categories?.find((c) =>
-    matchesLeaderCategory(c, ["points", "avgPoints", "scoringLeader"])
-  );
-  const reboundCategory = leadersResponse.categories?.find((c) =>
-    matchesLeaderCategory(c, ["rebounds", "avgRebounds", "reboundsleader"])
-  );
-  const assistCategory = leadersResponse.categories?.find((c) =>
-    matchesLeaderCategory(c, ["assists", "avgAssists", "assistsleader"])
-  );
+  const statIndex = buildByAthleteStatIndex(leadersResponse.categories);
+  const allAthletes = leadersResponse.athletes ?? [];
 
-  const scorers = (scorerCategory?.leaders ?? [])
-    .map((entry, i) => normalizeLeader(entry, i + 1))
-    .filter((entry): entry is NbaLeader => entry !== null);
-  const rebounders = (reboundCategory?.leaders ?? [])
-    .map((entry, i) => normalizeLeader(entry, i + 1))
-    .filter((entry): entry is NbaLeader => entry !== null);
-  const assistLeaders = (assistCategory?.leaders ?? [])
-    .map((entry, i) => normalizeLeader(entry, i + 1))
-    .filter((entry): entry is NbaLeader => entry !== null);
+  const scorers = topByAthletes(
+    allAthletes,
+    "offensive",
+    "avgPoints",
+    "points",
+    statIndex,
+    LEADER_LIMIT,
+  );
+  const rebounders = topByAthletes(
+    allAthletes,
+    "general",
+    "avgRebounds",
+    "rebounds",
+    statIndex,
+    LEADER_LIMIT,
+  );
+  const assistLeaders = topByAthletes(
+    allAthletes,
+    "offensive",
+    "avgAssists",
+    "assists",
+    statIndex,
+    LEADER_LIMIT,
+  );
 
   const conferenceById = new Map<string, NbaConference>();
   for (const team of [...teamsByConference.east, ...teamsByConference.west]) {
@@ -543,13 +643,6 @@ export async function getNbaSummary(): Promise<{
     teams,
     generatedAt: new Date().toISOString(),
   };
-}
-
-function matchesLeaderCategory(category: EspnLeaderCategory | null | undefined, names: string[]): boolean {
-  if (!category) return false;
-  const candidates = [category.name, category.displayName].filter(Boolean) as string[];
-  const haystack = candidates.join(" ").toLowerCase();
-  return names.some((name) => haystack.includes(name.toLowerCase()));
 }
 
 function formatEspnDate(date: Date): string {
@@ -623,7 +716,7 @@ function readExistingTeamSnapshots(filePath: string): Record<string, NbaTeamSnap
 export async function buildNbaSnapshot(options?: { skipTeamSnapshots?: boolean }): Promise<NbaSnapshot> {
   const summary = await getNbaSummary();
   const generatedAt = new Date().toISOString();
-  let teamSnapshots: Record<string, NbaTeamSnapshot> = {};
+  let teamSnapshots: Record<string, NbaTeamSnapshot>;
 
   if (options?.skipTeamSnapshots) {
     teamSnapshots = readExistingTeamSnapshots(NBA_SNAPSHOT_PATH);
@@ -633,18 +726,19 @@ export async function buildNbaSnapshot(options?: { skipTeamSnapshots?: boolean }
     for (const team of [...summary.teamsByConference.east, ...summary.teamsByConference.west]) {
       conferenceById.set(team.id, team.conference);
     }
-    const entries: Array<[string, NbaTeamSnapshot]> = [];
+    // Start from the prior snapshots so a per-team failure preserves that
+    // team's previous data instead of dropping it from the snapshot.
+    teamSnapshots = { ...readExistingTeamSnapshots(NBA_SNAPSHOT_PATH) };
     for (const team of summary.teams) {
       await delay(TEAM_FETCH_DELAY_MS);
       const conference = conferenceById.get(team.id) ?? "east";
       try {
         const snap = await getNbaTeamSnapshot(team.id, conference);
-        entries.push([team.id, { ...snap, generatedAt }]);
+        teamSnapshots[team.id] = { ...snap, generatedAt };
       } catch (err) {
-        console.warn(`  Skipping team ${team.id} (${team.shortName}): ${(err as Error).message}`);
+        console.warn(`  Skipping team ${team.id} (${team.shortName}): ${(err as Error).message} — keeping previous snapshot if any.`);
       }
     }
-    teamSnapshots = Object.fromEntries(entries);
   }
 
   return {

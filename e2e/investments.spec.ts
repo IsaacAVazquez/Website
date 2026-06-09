@@ -1,5 +1,21 @@
 import { expect, test, type Page } from "@playwright/test";
 
+async function expectInvestmentsShell(page: Page) {
+  await expect(page.getByTestId("investments-shell")).toBeVisible();
+  await expect(page.getByRole("heading", { name: /^Investments$/i })).toBeVisible();
+}
+
+async function waitForClientInvestmentsIndex(page: Page) {
+  await page.waitForResponse((response) => {
+    const url = new URL(response.url());
+
+    return (
+      url.pathname === "/data/investments/index.json" &&
+      response.request().resourceType() === "fetch"
+    );
+  });
+}
+
 const curatedIndex = {
   symbols: ["AAPL", "MSFT", "V"],
   failed: [],
@@ -219,36 +235,38 @@ test.describe("Investments", () => {
     }
 
     await page.goto("/investments");
-    await page.waitForLoadState("networkidle");
+    await expectInvestmentsShell(page);
     await expect(page).toHaveURL(/.*investments/);
-    await expect(
-      page.getByRole("heading", { name: /investment research platform/i })
-    ).toBeVisible();
   });
 
   test("supports deep-linked research and uses live price separately from history", async ({ page }) => {
     await routeInvestmentsFixtures(page);
 
     await page.goto("/investments?view=research&symbol=V&section=overview");
-    await page.waitForLoadState("networkidle");
+    await expectInvestmentsShell(page);
 
     await expect(page.getByRole("textbox", { name: /search stock symbol/i })).toHaveValue("V");
     await expect(page.getByText("Visa Inc.")).toBeVisible();
     await expect(page.getByText("$352.45")).toBeVisible();
-    await expect(page.getByText(/historical chart through feb 27, 2026/i)).toBeVisible();
-    await expect(page.getByText(/historical series trails the dataset by/i)).toBeVisible();
+    await expect(page.getByText(/live quote/i).first()).toBeVisible();
+
+    await page.getByRole("tab", { name: /^chart$/i }).click();
+    await expect(page).toHaveURL(/section=chart/);
+    await expect(page.getByRole("heading", { name: /price history/i })).toBeVisible();
   });
 
-  test("finds Visa by company name and preserves research context across portfolio and reload", async ({ page }) => {
+  test("finds Visa by company name and preserves selected research context after reload", async ({ page }) => {
     await routeInvestmentsFixtures(page);
 
+    const indexLoaded = waitForClientInvestmentsIndex(page);
     await page.goto("/investments");
-    await page.waitForLoadState("networkidle");
+    await expectInvestmentsShell(page);
+    await indexLoaded;
 
     const search = page.getByRole("textbox", { name: /search stock symbol/i });
     await search.fill("visa");
-    await expect(page.getByRole("option", { name: /v visa inc\./i })).toBeVisible();
-    await search.press("ArrowDown");
+    await expect(page.getByRole("listbox", { name: /symbol suggestions/i })).toBeVisible();
+    await expect(page.getByRole("option", { name: /^V\s+Visa Inc\.$/i })).toBeVisible();
     await search.press("Enter");
 
     await expect(page).toHaveURL(/symbol=V/);
@@ -258,18 +276,8 @@ test.describe("Investments", () => {
     await expect(page).toHaveURL(/section=chart/);
     await expect(page.getByRole("heading", { name: /price history/i })).toBeVisible();
 
-    await page.getByRole("tab", { name: /my portfolio/i }).click();
-    await expect(page).toHaveURL(/view=portfolio/);
-    await expect(page.getByText(/no positions yet/i)).toBeVisible();
-
-    await page.getByRole("tab", { name: /^research$/i }).click();
-    await expect(page).toHaveURL(/view=research/);
-    await expect(page).toHaveURL(/symbol=V/);
-    await expect(page).toHaveURL(/section=chart/);
-    await expect(page.getByRole("tab", { name: /^chart$/i })).toHaveAttribute("aria-selected", "true");
-
     await page.reload();
-    await page.waitForLoadState("networkidle");
+    await expectInvestmentsShell(page);
 
     await expect(page).toHaveURL(/symbol=V/);
     await expect(page).toHaveURL(/section=chart/);
@@ -292,7 +300,7 @@ test.describe("Investments", () => {
     });
 
     await page.goto("/investments");
-    await page.waitForLoadState("networkidle");
+    await expectInvestmentsShell(page);
 
     const search = page.getByRole("textbox", { name: /search stock symbol/i });
     await search.fill("SHOP");
@@ -318,7 +326,7 @@ test.describe("Investments", () => {
     });
 
     await page.goto("/investments?view=research&symbol=SHOP&section=overview");
-    await page.waitForLoadState("networkidle");
+    await expectInvestmentsShell(page);
 
     await expect(page.getByRole("textbox", { name: /search stock symbol/i })).toHaveValue("SHOP");
     await expect(
@@ -351,26 +359,26 @@ test.describe("Investments", () => {
     });
 
     await page.goto("/investments?view=research&symbol=V&section=overview");
-    await page.waitForLoadState("networkidle");
+    await expectInvestmentsShell(page);
 
     await expect(page.getByText("$340.12")).toBeVisible();
     await expect(page.getByText(/price as of feb 27, 2026/i)).toBeVisible();
     await expect(page.getByText(/showing the latest saved close from feb 27, 2026/i)).toBeVisible();
-    await expect(page.getByText(/live price is temporarily unavailable/i)).toBeVisible();
+    await expect(page.getByText(/live pricing is temporarily unavailable/i)).toBeVisible();
     await expect(page.getByText(/^Unavailable$/)).toHaveCount(0);
   });
 
-  test("keeps the shell stable across top-level tabs and avoids horizontal overflow", async ({ page }) => {
+  test("keeps the shell stable across section navigation and avoids horizontal overflow", async ({ page }) => {
     await routeInvestmentsFixtures(page);
 
     await page.goto("/investments?view=research&symbol=V&section=chart");
-    await page.waitForLoadState("networkidle");
+    await expectInvestmentsShell(page);
 
     const shell = page.locator('[data-testid="investments-shell"]');
     const before = await shell.boundingBox();
 
-    await page.getByRole("tab", { name: /my portfolio/i }).click();
-    await page.waitForLoadState("networkidle");
+    await page.getByRole("link", { name: /^research$/i }).click();
+    await expect(page.locator("#research-section")).toBeInViewport();
 
     const after = await shell.boundingBox();
 
@@ -386,7 +394,7 @@ test.describe("Investments", () => {
 
   test("homepage prioritizes the fintech project in projects", async ({ page }) => {
     await page.goto("/");
-    const section = page.getByTestId("home-projects");
+    const section = page.locator("#projects");
 
     await expect(section).toBeVisible();
     await expect(section.getByRole("heading", { name: /product surfaces that show how i think in practice/i })).toBeVisible();

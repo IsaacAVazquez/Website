@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getMissionControlSummary } from "@/lib/spacexData";
+import { logger } from "@/lib/logger";
 
 export async function GET() {
   try {
@@ -18,7 +19,7 @@ export async function GET() {
         ? "Live SpaceX data is temporarily rate limited. Retry shortly."
         : err.message || "Unable to load SpaceX summary";
     if (err.status !== 429 && status >= 500) {
-      console.error("SpaceX summary API error:", error);
+      logger.error("SpaceX summary API error", error);
     }
 
     return NextResponse.json(

@@ -1,10 +1,10 @@
 {
   "symbol": "ORCL",
-  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
+  "lastUpdated": "2026-06-09T00:00:39.728571+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
+    "snapshotBuiltAt": "2026-06-09T00:00:39.728571+00:00",
     "sections": {
-      "price": "2026-04-24"
+      "price": "2026-06-05"
     }
   },
   "source": "prefetched",
@@ -18,11 +18,11 @@
     "income_statement": true,
     "balance_sheet": true,
     "cash_flow": true,
-    "wacc": true,
+    "wacc": false,
     "industry": true,
-    "beta": true,
-    "news": true,
-    "dcf": true,
+    "beta": false,
+    "news": false,
+    "dcf": false,
     "officers": true,
     "compare": true
   },
@@ -40,11 +40,12 @@
       "longName": "Oracle Corporation"
     },
     "fundamentals": {
-      "ttmEps": 5.57,
-      "ttmPe": 31.11,
-      "marketCap": 498361250880,
-      "psRatio": 7.78,
-      "pbRatio": 12.95
+      "ttmEps": 5.5698,
+      "ttmPe": 38.36,
+      "marketCap": 614553509280,
+      "psRatio": 9.59,
+      "pbRatio": 15.96,
+      "pegRatio": 1.58
     },
     "profitability": {
       "roe": 10.81,
@@ -81,7 +82,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": 24.51
+        "yoyGrowth": 24.34
       }
     ],
     "income_statement": {
@@ -768,7 +769,7 @@
         },
         {
           "Breakdown": "Basic EPS",
-          "TTM": "3.73",
+          "TTM": "5.69",
           "2026-02-28": "1.29",
           "2025-11-30": "2.14",
           "2025-08-31": "1.04",
@@ -788,7 +789,7 @@
         },
         {
           "Breakdown": "Diluted EPS",
-          "TTM": "3.62",
+          "TTM": "5.57",
           "2026-02-28": "1.27",
           "2025-11-30": "2.1",
           "2025-08-31": "1.01",
@@ -808,7 +809,7 @@
         },
         {
           "Breakdown": "Basic Average Shares",
-          "TTM": "2719500000.0",
+          "TTM": "2843000000.0",
           "2026-02-28": "2874000000.0",
           "2025-11-30": "2864000000.0",
           "2025-08-31": "2826000000.0",
@@ -828,7 +829,7 @@
         },
         {
           "Breakdown": "Diluted Average Shares",
-          "TTM": "2802500000.0",
+          "TTM": "2902750000.0",
           "2026-02-28": "2912000000.0",
           "2025-11-30": "2922000000.0",
           "2025-08-31": "2909000000.0",
@@ -5473,250 +5474,7 @@
         }
       ]
     },
-    "wacc": {
-      "wacc": 13.819999999999999,
-      "costOfEquity": 17.87,
-      "costOfDebt": 0.77,
-      "taxRate": 16,
-      "beta": 1.5839,
-      "marketCap": 498361250880
-    },
-    "beta": {
-      "beta5y": 1.5839
-    },
     "price": [
-      {
-        "date": "2025-04-24",
-        "open": 132.51,
-        "high": 137.86,
-        "low": 132,
-        "close": 137.51,
-        "volume": 7305900
-      },
-      {
-        "date": "2025-04-25",
-        "open": 137.49,
-        "high": 139,
-        "low": 136.76,
-        "close": 138.49,
-        "volume": 5476400
-      },
-      {
-        "date": "2025-04-28",
-        "open": 139.65,
-        "high": 140.67,
-        "low": 138.08,
-        "close": 140.14,
-        "volume": 6985100
-      },
-      {
-        "date": "2025-04-29",
-        "open": 139.81,
-        "high": 141.16,
-        "low": 139.55,
-        "close": 140.79,
-        "volume": 4851500
-      },
-      {
-        "date": "2025-04-30",
-        "open": 138.48,
-        "high": 141.3,
-        "low": 135.57,
-        "close": 140.72,
-        "volume": 9443500
-      },
-      {
-        "date": "2025-05-01",
-        "open": 146.56,
-        "high": 148.64,
-        "low": 145.34,
-        "close": 145.49,
-        "volume": 11525800
-      },
-      {
-        "date": "2025-05-02",
-        "open": 148.33,
-        "high": 153.06,
-        "low": 148.33,
-        "close": 150.73,
-        "volume": 11346000
-      },
-      {
-        "date": "2025-05-05",
-        "open": 149.44,
-        "high": 150.82,
-        "low": 148.52,
-        "close": 149.29,
-        "volume": 5187400
-      },
-      {
-        "date": "2025-05-06",
-        "open": 146.98,
-        "high": 148.94,
-        "low": 145.72,
-        "close": 147.7,
-        "volume": 5108600
-      },
-      {
-        "date": "2025-05-07",
-        "open": 147.5,
-        "high": 149.9,
-        "low": 147.24,
-        "close": 149.37,
-        "volume": 6049600
-      },
-      {
-        "date": "2025-05-08",
-        "open": 149.05,
-        "high": 151.81,
-        "low": 148.61,
-        "close": 150.3,
-        "volume": 6113600
-      },
-      {
-        "date": "2025-05-09",
-        "open": 150.04,
-        "high": 151.8,
-        "low": 149.79,
-        "close": 150.34,
-        "volume": 4707100
-      },
-      {
-        "date": "2025-05-12",
-        "open": 156.31,
-        "high": 157.43,
-        "low": 154.42,
-        "close": 157.22,
-        "volume": 7875500
-      },
-      {
-        "date": "2025-05-13",
-        "open": 158.22,
-        "high": 163.22,
-        "low": 157.57,
-        "close": 162.27,
-        "volume": 11955200
-      },
-      {
-        "date": "2025-05-14",
-        "open": 162.36,
-        "high": 163.41,
-        "low": 161.06,
-        "close": 162.95,
-        "volume": 7499400
-      },
-      {
-        "date": "2025-05-15",
-        "open": 161.36,
-        "high": 161.74,
-        "low": 158.91,
-        "close": 159.4,
-        "volume": 10169200
-      },
-      {
-        "date": "2025-05-16",
-        "open": 160,
-        "high": 160.84,
-        "low": 158.52,
-        "close": 160.49,
-        "volume": 8515500
-      },
-      {
-        "date": "2025-05-19",
-        "open": 158.3,
-        "high": 161.97,
-        "low": 157.83,
-        "close": 159.64,
-        "volume": 10268900
-      },
-      {
-        "date": "2025-05-20",
-        "open": 158.63,
-        "high": 160.36,
-        "low": 157.53,
-        "close": 160.31,
-        "volume": 7576400
-      },
-      {
-        "date": "2025-05-21",
-        "open": 158.35,
-        "high": 160.9,
-        "low": 156.46,
-        "close": 157.18,
-        "volume": 6011000
-      },
-      {
-        "date": "2025-05-22",
-        "open": 156.98,
-        "high": 159.19,
-        "low": 156.82,
-        "close": 157.31,
-        "volume": 7603300
-      },
-      {
-        "date": "2025-05-23",
-        "open": 154.99,
-        "high": 157.38,
-        "low": 154.26,
-        "close": 155.97,
-        "volume": 6527500
-      },
-      {
-        "date": "2025-05-27",
-        "open": 159.32,
-        "high": 162.4,
-        "low": 158.92,
-        "close": 161.91,
-        "volume": 6976800
-      },
-      {
-        "date": "2025-05-28",
-        "open": 161.87,
-        "high": 164.32,
-        "low": 161.28,
-        "close": 163.85,
-        "volume": 8090700
-      },
-      {
-        "date": "2025-05-29",
-        "open": 165,
-        "high": 165.32,
-        "low": 161.49,
-        "close": 162.9,
-        "volume": 6994700
-      },
-      {
-        "date": "2025-05-30",
-        "open": 163.43,
-        "high": 165.75,
-        "low": 161.55,
-        "close": 165.53,
-        "volume": 17547900
-      },
-      {
-        "date": "2025-06-02",
-        "open": 164.17,
-        "high": 167,
-        "low": 162.6,
-        "close": 166.57,
-        "volume": 7166000
-      },
-      {
-        "date": "2025-06-03",
-        "open": 166.8,
-        "high": 169.33,
-        "low": 166.59,
-        "close": 169.14,
-        "volume": 7155300
-      },
-      {
-        "date": "2025-06-04",
-        "open": 169.71,
-        "high": 170.48,
-        "low": 167.57,
-        "close": 168.1,
-        "volume": 6375800
-      },
       {
         "date": "2025-06-05",
         "open": 169,
@@ -7499,89 +7257,239 @@
         "high": 180.71,
         "low": 168.8,
         "close": 173.28,
-        "volume": 33159800
-      }
-    ],
-    "news": [
-      {
-        "uuid": "dfc96f53-7bf6-377c-a902-238d0488fc2c",
-        "title": "Trump Trade: Binance founder denies report on Trump talks",
-        "publisher": "TipRanks",
-        "reportDate": "2025-03-15",
-        "link": "https://finance.yahoo.com/news/trump-trade-binance-founder-denies-140515998.html",
-        "type": "STORY"
+        "volume": 33215000
       },
       {
-        "uuid": "08501801-66ee-3113-a401-9e991895ffc1",
-        "title": "Autodesk in proxy fight, General Mills reports mixed Q3: Morning Buzz",
-        "publisher": "TipRanks",
-        "reportDate": "2025-03-21",
-        "link": "https://finance.yahoo.com/news/autodesk-proxy-fight-general-mills-160527898.html",
-        "type": "STORY"
+        "date": "2026-04-27",
+        "open": 172.58,
+        "high": 173.55,
+        "low": 167.9,
+        "close": 172.96,
+        "volume": 21616600
       },
       {
-        "uuid": "c16c56ae-6575-3d0b-a403-71bd79459a65",
-        "title": "Lululemon reports Q4 beat, CoreWeave IPO priced at $40: Morning Buzz",
-        "publisher": "TipRanks",
-        "reportDate": "2025-03-30",
-        "link": "https://finance.yahoo.com/news/lululemon-reports-q4-beat-coreweave-160526047.html",
-        "type": "STORY"
+        "date": "2026-04-28",
+        "open": 162.16,
+        "high": 168.7,
+        "low": 162.05,
+        "close": 165.96,
+        "volume": 33716500
       },
       {
-        "uuid": "c62e9c41-40df-38ca-9602-fb9728a49ea5",
-        "title": "Trump Trade: Tariff plan still being worked on ahead of unveiling",
-        "publisher": "TipRanks",
-        "reportDate": "2025-04-03",
-        "link": "https://finance.yahoo.com/news/trump-trade-tariff-plan-still-141558122.html",
-        "type": "STORY"
+        "date": "2026-04-29",
+        "open": 164.04,
+        "high": 164.76,
+        "low": 160.65,
+        "close": 163.83,
+        "volume": 20587500
       },
       {
-        "uuid": "38e5c5c8-57d9-3b7a-88ec-e4a4c84f7823",
-        "title": "China announces retaliatory tariffs, U.S. unemployment rises: Morning Buzz",
-        "publisher": "TipRanks",
-        "reportDate": "2025-04-06",
-        "link": "https://finance.yahoo.com/news/china-announces-retaliatory-tariffs-u-161032836.html",
-        "type": "STORY"
+        "date": "2026-04-30",
+        "open": 162.02,
+        "high": 165.18,
+        "low": 160.33,
+        "close": 161.39,
+        "volume": 21016400
       },
       {
-        "uuid": "f463d70e-5913-3081-8c7e-7bdd1b9a3be6",
-        "title": "Will PRGS' AI-Powered Upgrades to Sitefinity Drive the Stock Upward?",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-15",
-        "link": "https://finance.yahoo.com/news/prgs-ai-powered-upgrades-sitefinity-145600061.html",
-        "type": "STORY"
+        "date": "2026-05-01",
+        "open": 166.42,
+        "high": 174.3,
+        "low": 166.15,
+        "close": 171.83,
+        "volume": 26318000
       },
       {
-        "uuid": "853459fc-a326-3b0c-b0f7-fc98e76b003b",
-        "title": "Why Oracle Stock Was on Fire Today",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/m/853459fc-a326-3b0c-b0f7-fc98e76b003b/why-oracle-stock-was-on-fire.html",
-        "type": "STORY"
+        "date": "2026-05-04",
+        "open": 176.02,
+        "high": 183.5,
+        "low": 174.26,
+        "close": 180.29,
+        "volume": 33504500
       },
       {
-        "uuid": "2fa586c6-fea0-3ed3-9dbe-a55dc20b7137",
-        "title": "Olo jumps after Bloomberg says company exploring possible sale",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/news/olo-jumps-bloomberg-says-company-155559972.html",
-        "type": "STORY"
+        "date": "2026-05-05",
+        "open": 182.13,
+        "high": 186.52,
+        "low": 179,
+        "close": 185.35,
+        "volume": 23497200
       },
       {
-        "uuid": "ca06a274-32e3-3e67-865f-0b228b4d8f22",
-        "title": "White House calls out Boeing, GE Vernova exports in Saudi Arabia pact",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/white-house-calls-boeing-ge-142742667.html",
-        "type": "STORY"
+        "date": "2026-05-06",
+        "open": 186.2,
+        "high": 194.29,
+        "low": 182.67,
+        "close": 194.03,
+        "volume": 27685500
       },
       {
-        "uuid": "df3945aa-0fd1-34d9-8a4f-aa0c9a0cdb45",
-        "title": "Trump and MBS Tout $1 Trillion Pledge as Details Remain Elusive",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/trump-mbs-tout-1-trillion-174902305.html",
-        "type": "STORY"
+        "date": "2026-05-07",
+        "open": 198.61,
+        "high": 200.15,
+        "low": 190.8,
+        "close": 194.59,
+        "volume": 31803200
+      },
+      {
+        "date": "2026-05-08",
+        "open": 192.58,
+        "high": 198,
+        "low": 190.21,
+        "close": 195.95,
+        "volume": 21158300
+      },
+      {
+        "date": "2026-05-11",
+        "open": 192.15,
+        "high": 195.68,
+        "low": 190.6,
+        "close": 193.84,
+        "volume": 16890600
+      },
+      {
+        "date": "2026-05-12",
+        "open": 192.92,
+        "high": 192.92,
+        "low": 180.87,
+        "close": 186.83,
+        "volume": 22123400
+      },
+      {
+        "date": "2026-05-13",
+        "open": 189.03,
+        "high": 191.57,
+        "low": 185.06,
+        "close": 189.76,
+        "volume": 15789300
+      },
+      {
+        "date": "2026-05-14",
+        "open": 188.18,
+        "high": 200.71,
+        "low": 185.45,
+        "close": 195.61,
+        "volume": 22545000
+      },
+      {
+        "date": "2026-05-15",
+        "open": 190.49,
+        "high": 196.43,
+        "low": 188.9,
+        "close": 192.95,
+        "volume": 15747100
+      },
+      {
+        "date": "2026-05-18",
+        "open": 190,
+        "high": 190.76,
+        "low": 183.27,
+        "close": 186.61,
+        "volume": 19114300
+      },
+      {
+        "date": "2026-05-19",
+        "open": 186,
+        "high": 188.72,
+        "low": 180.93,
+        "close": 181.46,
+        "volume": 16717700
+      },
+      {
+        "date": "2026-05-20",
+        "open": 179.94,
+        "high": 188.22,
+        "low": 178.8,
+        "close": 188.16,
+        "volume": 16517200
+      },
+      {
+        "date": "2026-05-21",
+        "open": 189.01,
+        "high": 192.82,
+        "low": 187.2,
+        "close": 189.77,
+        "volume": 12119700
+      },
+      {
+        "date": "2026-05-22",
+        "open": 191.67,
+        "high": 197,
+        "low": 191.1,
+        "close": 192.08,
+        "volume": 10875800
+      },
+      {
+        "date": "2026-05-26",
+        "open": 193.3,
+        "high": 195.2,
+        "low": 190.56,
+        "close": 193.06,
+        "volume": 12856100
+      },
+      {
+        "date": "2026-05-27",
+        "open": 191.48,
+        "high": 192.14,
+        "low": 187.92,
+        "close": 190.96,
+        "volume": 12126000
+      },
+      {
+        "date": "2026-05-28",
+        "open": 194.04,
+        "high": 205,
+        "low": 193.38,
+        "close": 203.7,
+        "volume": 25339900
+      },
+      {
+        "date": "2026-05-29",
+        "open": 209,
+        "high": 226.29,
+        "low": 208.01,
+        "close": 225.78,
+        "volume": 41082200
+      },
+      {
+        "date": "2026-06-01",
+        "open": 230.5,
+        "high": 250.25,
+        "low": 224.6,
+        "close": 248.15,
+        "volume": 48390000
+      },
+      {
+        "date": "2026-06-02",
+        "open": 242.8,
+        "high": 249,
+        "low": 238.84,
+        "close": 244.58,
+        "volume": 30294800
+      },
+      {
+        "date": "2026-06-03",
+        "open": 240.48,
+        "high": 240.51,
+        "low": 227.61,
+        "close": 230.33,
+        "volume": 23644700
+      },
+      {
+        "date": "2026-06-04",
+        "open": 227,
+        "high": 238.95,
+        "low": 224,
+        "close": 236.34,
+        "volume": 19993800
+      },
+      {
+        "date": "2026-06-05",
+        "open": 229.49,
+        "high": 231.44,
+        "low": 209.45,
+        "close": 213.68,
+        "volume": 28891400
       }
     ],
     "officers": [
@@ -7650,55 +7558,44 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 31.11,
-        "industryAvg": 33.56
+        "value": 38.36,
+        "industryAvg": 29.35
       },
       {
         "metric": "P/S Ratio",
-        "value": 7.78,
-        "industryAvg": 5.94
+        "value": 9.59,
+        "industryAvg": 6.37
       },
       {
         "metric": "P/B Ratio",
-        "value": 12.95,
-        "industryAvg": 7.95
+        "value": 15.96,
+        "industryAvg": 7.79
       },
       {
         "metric": "ROE",
         "value": 10.81,
-        "industryAvg": 7.4399999999999995
+        "industryAvg": 26.56
       },
       {
         "metric": "ROA",
         "value": 1.6400000000000001,
-        "industryAvg": 3.11
+        "industryAvg": 10.39
       },
       {
         "metric": "Gross Margin",
         "value": 64.56,
-        "industryAvg": 46.01
+        "industryAvg": 49.51
       },
       {
         "metric": "EBITDA Margin",
         "value": 47.48,
-        "industryAvg": 34.660000000000004
+        "industryAvg": 33.57
       },
       {
         "metric": "Net Margin",
         "value": 21.52,
-        "industryAvg": 19.96
+        "industryAvg": 18.7
       }
-    ],
-    "dcf": {
-      "fairValue": 76,
-      "currentPrice": 173.28,
-      "upside": -56.14,
-      "wacc": 13.82,
-      "growthEstimates": {
-        "Near-term growth (Yrs 1-3)": 24.51,
-        "Terminal growth": 3
-      },
-      "recommendation": "Sell"
-    }
+    ]
   }
 }

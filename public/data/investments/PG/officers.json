@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "PG",
+    "name": "Mr. Andre  Schulten",
+    "title": "Chief Financial Officer",
+    "age": 54,
+    "born": 1971,
+    "pay": 1824131,
+    "exercised": 0,
+    "unexercised": 6001604,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "PG",
+    "name": "Mr. Damon D. Jones",
+    "title": "Chief Communications Officer",
+    "age": 49,
+    "born": 1976,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "PG",
+    "name": "Mr. John T. Chevalier",
+    "title": "Senior Vice President of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "PG",
+    "name": "Mr. Jon R. Moeller",
+    "title": "Executive Chairman",
+    "age": 61,
+    "born": 1964,
+    "pay": 3827656,
+    "exercised": 11551180,
+    "unexercised": 13650635,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "PG",
+    "name": "Mr. Matthew W. Janzaruk",
+    "title": "Senior VP & Chief Accounting Officer",
+    "age": 51,
+    "born": 1974,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "PG",
+    "name": "Mr. Seth  Cohen",
+    "title": "Chief Information Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "PG",
+    "name": "Mr. Shailesh G. Jejurikar",
+    "title": "CEO, President & Director",
+    "age": 57,
+    "born": 1968,
+    "pay": 2118211,
+    "exercised": 0,
+    "unexercised": 25970436,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "PG",
+    "name": "Mr. Sundar G. Raman",
+    "title": "Chief Executive Officer of Fabric and Home Care and P&G Ventures",
+    "age": 50,
+    "born": 1975,
+    "pay": 2731833,
+    "exercised": 0,
+    "unexercised": 7282699,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "PG",
+    "name": "Ms. Jennifer L. Davis",
+    "title": "Chief Executive Officer of Health Care",
+    "age": 53,
+    "born": 1972,
+    "pay": 1734433,
+    "exercised": 0,
+    "unexercised": 7203285,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "PG",
+    "name": "Ms. Susan Street Whaley",
+    "title": "Chief Legal Officer & Secretary",
+    "age": 51,
+    "born": 1974,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  }
+]

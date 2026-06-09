@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "CRWD",
+      "report_date": "2023-10-31",
+      "net_income_common_stockholders": 26665000.0,
+      "beginning_stockholders_equity": 1838207000.0,
+      "ending_stockholders_equity": 2028950000.0,
+      "avg_equity": 1933578500.0,
+      "roe": 0.0138
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-01-31",
+      "net_income_common_stockholders": 53699000.0,
+      "beginning_stockholders_equity": 2028950000.0,
+      "ending_stockholders_equity": 2303950000.0,
+      "avg_equity": 2166450000.0,
+      "roe": 0.0248
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-04-30",
+      "net_income_common_stockholders": 42820000.0,
+      "beginning_stockholders_equity": 2303950000.0,
+      "ending_stockholders_equity": 2535540000.0,
+      "avg_equity": 2419745000.0,
+      "roe": 0.0177
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-07-31",
+      "net_income_common_stockholders": 47013000.0,
+      "beginning_stockholders_equity": 2535540000.0,
+      "ending_stockholders_equity": 2852915000.0,
+      "avg_equity": 2694227500.0,
+      "roe": 0.0174
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-10-31",
+      "net_income_common_stockholders": -16822000.0,
+      "beginning_stockholders_equity": 2852915000.0,
+      "ending_stockholders_equity": 3057933000.0,
+      "avg_equity": 2955424000.0,
+      "roe": -0.0057
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-01-31",
+      "net_income_common_stockholders": -92282000.0,
+      "beginning_stockholders_equity": 3057933000.0,
+      "ending_stockholders_equity": 3279494000.0,
+      "avg_equity": 3168713500.0,
+      "roe": -0.0291
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-04-30",
+      "net_income_common_stockholders": -104264000.0,
+      "beginning_stockholders_equity": 3279494000.0,
+      "ending_stockholders_equity": 3450877000.0,
+      "avg_equity": 3365185500.0,
+      "roe": -0.031
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-07-31",
+      "net_income_common_stockholders": -77675000.0,
+      "beginning_stockholders_equity": 3450877000.0,
+      "ending_stockholders_equity": 3756680000.0,
+      "avg_equity": 3603778500.0,
+      "roe": -0.0216
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-10-31",
+      "net_income_common_stockholders": -33997000.0,
+      "beginning_stockholders_equity": 3756680000.0,
+      "ending_stockholders_equity": 4016497000.0,
+      "avg_equity": 3886588500.0,
+      "roe": -0.0087
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-01-31",
+      "net_income_common_stockholders": 59377000.0,
+      "beginning_stockholders_equity": 4016497000.0,
+      "ending_stockholders_equity": 4428390000.0,
+      "avg_equity": 4222443500.0,
+      "roe": 0.0141
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-04-30",
+      "net_income_common_stockholders": 27774000.0,
+      "beginning_stockholders_equity": 4428390000.0,
+      "ending_stockholders_equity": 4633877000.0,
+      "avg_equity": 4531133500.0,
+      "roe": 0.0061
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "CRWD",
+      "report_date": "2023-10-31",
+      "net_income_common_stockholders": 26665000.0,
+      "beginning_total_assets": 5520458000.0,
+      "ending_total_assets": 5831056000.0,
+      "avg_assets": 5675757000.0,
+      "roa": 0.0047
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-01-31",
+      "net_income_common_stockholders": 53699000.0,
+      "beginning_total_assets": 5831056000.0,
+      "ending_total_assets": 6646520000.0,
+      "avg_assets": 6238788000.0,
+      "roa": 0.0086
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-04-30",
+      "net_income_common_stockholders": 42820000.0,
+      "beginning_total_assets": 6646520000.0,
+      "ending_total_assets": 6841985000.0,
+      "avg_assets": 6744252500.0,
+      "roa": 0.0063
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-07-31",
+      "net_income_common_stockholders": 47013000.0,
+      "beginning_total_assets": 6841985000.0,
+      "ending_total_assets": 7202474000.0,
+      "avg_assets": 7022229500.0,
+      "roa": 0.0067
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-10-31",
+      "net_income_common_stockholders": -16822000.0,
+      "beginning_total_assets": 7202474000.0,
+      "ending_total_assets": 7782958000.0,
+      "avg_assets": 7492716000.0,
+      "roa": -0.0022
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-01-31",
+      "net_income_common_stockholders": -92282000.0,
+      "beginning_total_assets": 7782958000.0,
+      "ending_total_assets": 8701578000.0,
+      "avg_assets": 8242268000.0,
+      "roa": -0.0112
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-04-30",
+      "net_income_common_stockholders": -104264000.0,
+      "beginning_total_assets": 8701578000.0,
+      "ending_total_assets": 8720362000.0,
+      "avg_assets": 8710970000.0,
+      "roa": -0.012
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-07-31",
+      "net_income_common_stockholders": -77675000.0,
+      "beginning_total_assets": 8720362000.0,
+      "ending_total_assets": 9288859000.0,
+      "avg_assets": 9004610500.0,
+      "roa": -0.0086
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-10-31",
+      "net_income_common_stockholders": -33997000.0,
+      "beginning_total_assets": 9288859000.0,
+      "ending_total_assets": 9965347000.0,
+      "avg_assets": 9627103000.0,
+      "roa": -0.0035
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-01-31",
+      "net_income_common_stockholders": 59377000.0,
+      "beginning_total_assets": 9965347000.0,
+      "ending_total_assets": 11086684000.0,
+      "avg_assets": 10526015500.0,
+      "roa": 0.0056
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-04-30",
+      "net_income_common_stockholders": 27774000.0,
+      "beginning_total_assets": 11086684000.0,
+      "ending_total_assets": 11270100000.0,
+      "avg_assets": 11178392000.0,
+      "roa": 0.0025
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "CRWD",
+      "report_date": "2023-10-31",
+      "ebit": 42775000.0,
+      "tax_rate_for_calcs": 0.27,
+      "nopat": 31225750.0,
+      "beginning_invested_capital": 2579957000.0,
+      "ending_invested_capital": 2771072000.0,
+      "avg_invested_capital": 2675514500.0,
+      "roic": 0.0117
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-01-31",
+      "ebit": 74972000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 59977600.0,
+      "beginning_invested_capital": 2771072000.0,
+      "ending_invested_capital": 3046444000.0,
+      "avg_invested_capital": 2908758000.0,
+      "roic": 0.0206
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-04-30",
+      "ebit": 60442000.0,
+      "tax_rate_for_calcs": 0.14,
+      "nopat": 51980120.0,
+      "beginning_invested_capital": 3046444000.0,
+      "ending_invested_capital": 3278406000.0,
+      "avg_invested_capital": 3162425000.0,
+      "roic": 0.0164
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-07-31",
+      "ebit": 64153000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 51963930.0,
+      "beginning_invested_capital": 3278406000.0,
+      "ending_invested_capital": 3596153000.0,
+      "avg_invested_capital": 3437279500.0,
+      "roic": 0.0151
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-10-31",
+      "ebit": -3951000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": -3121290.0,
+      "beginning_invested_capital": 3596153000.0,
+      "ending_invested_capital": 3801543000.0,
+      "avg_invested_capital": 3698848000.0,
+      "roic": -0.0008
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-01-31",
+      "ebit": -39799000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": -31441210.0,
+      "beginning_invested_capital": 3801543000.0,
+      "ending_invested_capital": 4023477000.0,
+      "avg_invested_capital": 3912510000.0,
+      "roic": -0.008
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-04-30",
+      "ebit": -77229000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": -61010910.0,
+      "beginning_invested_capital": 4023477000.0,
+      "ending_invested_capital": 4195232000.0,
+      "avg_invested_capital": 4109354500.0,
+      "roic": -0.0148
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-07-31",
+      "ebit": -64851000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": -51232290.0,
+      "beginning_invested_capital": 4195232000.0,
+      "ending_invested_capital": 4501407000.0,
+      "avg_invested_capital": 4348319500.0,
+      "roic": -0.0118
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-10-31",
+      "ebit": -16337000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": -12906230.0,
+      "beginning_invested_capital": 4501407000.0,
+      "ending_invested_capital": 4761596000.0,
+      "avg_invested_capital": 4631501500.0,
+      "roic": -0.0028
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-01-31",
+      "ebit": 65392000.0,
+      "tax_rate_for_calcs": 0.4,
+      "nopat": 39235200.0,
+      "beginning_invested_capital": 4761596000.0,
+      "ending_invested_capital": 5173861000.0,
+      "avg_invested_capital": 4967728500.0,
+      "roic": 0.0079
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-04-30",
+      "ebit": 45179000.0,
+      "tax_rate_for_calcs": 0.4,
+      "nopat": 27107400.0,
+      "beginning_invested_capital": 5173861000.0,
+      "ending_invested_capital": 5379720000.0,
+      "avg_invested_capital": 5276790500.0,
+      "roic": 0.0051
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "CRWD",
+      "report_date": "2023-10-31T00:00:00.000",
+      "roe": 0.0138,
+      "roa": 0.0047,
+      "equity_multiplier": 2.94
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-01-31T00:00:00.000",
+      "roe": 0.0248,
+      "roa": 0.0086,
+      "equity_multiplier": 2.88
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-04-30T00:00:00.000",
+      "roe": 0.0177,
+      "roa": 0.0063,
+      "equity_multiplier": 2.81
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-07-31T00:00:00.000",
+      "roe": 0.0174,
+      "roa": 0.0067,
+      "equity_multiplier": 2.6
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-10-31T00:00:00.000",
+      "roe": -0.0057,
+      "roa": -0.0022,
+      "equity_multiplier": 2.59
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-01-31T00:00:00.000",
+      "roe": -0.0291,
+      "roa": -0.0112,
+      "equity_multiplier": 2.6
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-04-30T00:00:00.000",
+      "roe": -0.031,
+      "roa": -0.012,
+      "equity_multiplier": 2.58
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-07-31T00:00:00.000",
+      "roe": -0.0216,
+      "roa": -0.0086,
+      "equity_multiplier": 2.51
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-10-31T00:00:00.000",
+      "roe": -0.0087,
+      "roa": -0.0035,
+      "equity_multiplier": 2.49
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-01-31T00:00:00.000",
+      "roe": 0.0141,
+      "roa": 0.0056,
+      "equity_multiplier": 2.52
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-04-30T00:00:00.000",
+      "roe": 0.0061,
+      "roa": 0.0025,
+      "equity_multiplier": 2.44
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "CRWD",
+      "report_date": "2023-10-31T00:00:00.000",
+      "roa": 0.0047,
+      "net_margin": 0.0339,
+      "asset_turnover": 0.14
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-01-31T00:00:00.000",
+      "roa": 0.0086,
+      "net_margin": 0.0635,
+      "asset_turnover": 0.14
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-04-30T00:00:00.000",
+      "roa": 0.0063,
+      "net_margin": 0.0465,
+      "asset_turnover": 0.14
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-07-31T00:00:00.000",
+      "roa": 0.0067,
+      "net_margin": 0.0488,
+      "asset_turnover": 0.14
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-10-31T00:00:00.000",
+      "roa": -0.0022,
+      "net_margin": -0.0167,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-01-31T00:00:00.000",
+      "roa": -0.0112,
+      "net_margin": -0.0872,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-04-30T00:00:00.000",
+      "roa": -0.012,
+      "net_margin": -0.0945,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-07-31T00:00:00.000",
+      "roa": -0.0086,
+      "net_margin": -0.0664,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-10-31T00:00:00.000",
+      "roa": -0.0035,
+      "net_margin": -0.0275,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-01-31T00:00:00.000",
+      "roa": 0.0056,
+      "net_margin": 0.0455,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-04-30T00:00:00.000",
+      "roa": 0.0025,
+      "net_margin": 0.02,
+      "asset_turnover": 0.12
+    }
+  ]
+}

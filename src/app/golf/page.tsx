@@ -5,7 +5,6 @@ import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { GolfClient } from "./golf-client";
 import { normalizeGolfState } from "./golf-state";
 
-// eslint-disable-next-line react-refresh/only-export-components -- Next.js route modules export metadata alongside the page component.
 export const metadata = constructMetadata({
   title: "PGA Tour Pulse",
   description:
@@ -87,7 +86,7 @@ export default async function GolfPage({ searchParams }: GolfPageProps) {
             "Tournament context for course, dates, field size, and cut line",
             "Local snapshot rendering without a live third-party runtime dependency",
           ],
-          dateModified: golfSnapshot.summary.tournament?.generatedAt ?? undefined,
+          dateModified: golfSnapshot.summary.tournament?.generatedAt ?? "",
         }}
       />
       <GolfClient

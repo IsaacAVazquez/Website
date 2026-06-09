@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-10-31",
+      "net_income_common_stockholders": 114000000.0,
+      "beginning_stockholders_equity": 6274553000.0,
+      "ending_stockholders_equity": 6624917000.0,
+      "avg_equity": 6449735000.0,
+      "roe": 0.0177
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-01-31",
+      "net_income_common_stockholders": 1188495000.0,
+      "beginning_stockholders_equity": 6624917000.0,
+      "ending_stockholders_equity": 8082000000.0,
+      "avg_equity": 7353458500.0,
+      "roe": 0.1616
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-04-30",
+      "net_income_common_stockholders": 107000000.0,
+      "beginning_stockholders_equity": 8082000000.0,
+      "ending_stockholders_equity": 8163000000.0,
+      "avg_equity": 8122500000.0,
+      "roe": 0.0132
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-07-31",
+      "net_income_common_stockholders": 132000000.0,
+      "beginning_stockholders_equity": 8163000000.0,
+      "ending_stockholders_equity": 8345000000.0,
+      "avg_equity": 8254000000.0,
+      "roe": 0.016
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-10-31",
+      "net_income_common_stockholders": 193000000.0,
+      "beginning_stockholders_equity": 8345000000.0,
+      "ending_stockholders_equity": 8624000000.0,
+      "avg_equity": 8484500000.0,
+      "roe": 0.0227
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-01-31",
+      "net_income_common_stockholders": 94000000.0,
+      "beginning_stockholders_equity": 8624000000.0,
+      "ending_stockholders_equity": 9034000000.0,
+      "avg_equity": 8829000000.0,
+      "roe": 0.0106
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-04-30",
+      "net_income_common_stockholders": 68000000.0,
+      "beginning_stockholders_equity": 9034000000.0,
+      "ending_stockholders_equity": 8919000000.0,
+      "avg_equity": 8976500000.0,
+      "roe": 0.0076
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-07-31",
+      "net_income_common_stockholders": 228000000.0,
+      "beginning_stockholders_equity": 8919000000.0,
+      "ending_stockholders_equity": 9172000000.0,
+      "avg_equity": 9045500000.0,
+      "roe": 0.0252
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-10-31",
+      "net_income_common_stockholders": 252000000.0,
+      "beginning_stockholders_equity": 9172000000.0,
+      "ending_stockholders_equity": 8879000000.0,
+      "avg_equity": 9025500000.0,
+      "roe": 0.0279
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-01-31",
+      "net_income_common_stockholders": 145000000.0,
+      "beginning_stockholders_equity": 8879000000.0,
+      "ending_stockholders_equity": 7805000000.0,
+      "avg_equity": 8342000000.0,
+      "roe": 0.0174
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-04-30",
+      "net_income_common_stockholders": 222000000.0,
+      "beginning_stockholders_equity": 7805000000.0,
+      "ending_stockholders_equity": 6683000000.0,
+      "avg_equity": 7244000000.0,
+      "roe": 0.0306
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-10-31",
+      "net_income_common_stockholders": 114000000.0,
+      "beginning_total_assets": 13735315000.0,
+      "ending_total_assets": 13925933000.0,
+      "avg_assets": 13830624000.0,
+      "roa": 0.0082
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-01-31",
+      "net_income_common_stockholders": 1188495000.0,
+      "beginning_total_assets": 13925933000.0,
+      "ending_total_assets": 16452000000.0,
+      "avg_assets": 15188966500.0,
+      "roa": 0.0782
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-04-30",
+      "net_income_common_stockholders": 107000000.0,
+      "beginning_total_assets": 16452000000.0,
+      "ending_total_assets": 15941000000.0,
+      "avg_assets": 16196500000.0,
+      "roa": 0.0066
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-07-31",
+      "net_income_common_stockholders": 132000000.0,
+      "beginning_total_assets": 15941000000.0,
+      "ending_total_assets": 16234000000.0,
+      "avg_assets": 16087500000.0,
+      "roa": 0.0082
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-10-31",
+      "net_income_common_stockholders": 193000000.0,
+      "beginning_total_assets": 16234000000.0,
+      "ending_total_assets": 16424000000.0,
+      "avg_assets": 16329000000.0,
+      "roa": 0.0118
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-01-31",
+      "net_income_common_stockholders": 94000000.0,
+      "beginning_total_assets": 16424000000.0,
+      "ending_total_assets": 17977000000.0,
+      "avg_assets": 17200500000.0,
+      "roa": 0.0055
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-04-30",
+      "net_income_common_stockholders": 68000000.0,
+      "beginning_total_assets": 17977000000.0,
+      "ending_total_assets": 17212000000.0,
+      "avg_assets": 17594500000.0,
+      "roa": 0.0039
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-07-31",
+      "net_income_common_stockholders": 228000000.0,
+      "beginning_total_assets": 17212000000.0,
+      "ending_total_assets": 17961000000.0,
+      "avg_assets": 17586500000.0,
+      "roa": 0.013
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-10-31",
+      "net_income_common_stockholders": 252000000.0,
+      "beginning_total_assets": 17961000000.0,
+      "ending_total_assets": 17751000000.0,
+      "avg_assets": 17856000000.0,
+      "roa": 0.0141
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-01-31",
+      "net_income_common_stockholders": 145000000.0,
+      "beginning_total_assets": 17751000000.0,
+      "ending_total_assets": 18074000000.0,
+      "avg_assets": 17912500000.0,
+      "roa": 0.0081
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-04-30",
+      "net_income_common_stockholders": 222000000.0,
+      "beginning_total_assets": 18074000000.0,
+      "ending_total_assets": 16091000000.0,
+      "avg_assets": 17082500000.0,
+      "roa": 0.013
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-10-31",
+      "ebit": 158000000.0,
+      "tax_rate_for_calcs": 0.12,
+      "nopat": 139040000.0,
+      "beginning_invested_capital": 9252398000.0,
+      "ending_invested_capital": 9603717000.0,
+      "avg_invested_capital": 9428057500.0,
+      "roic": 0.0147
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-01-31",
+      "ebit": 166419000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 131471010.0,
+      "beginning_invested_capital": 9603717000.0,
+      "ending_invested_capital": 11062000000.0,
+      "avg_invested_capital": 10332858500.0,
+      "roic": 0.0127
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-04-30",
+      "ebit": 152000000.0,
+      "tax_rate_for_calcs": 0.13,
+      "nopat": 132240000.0,
+      "beginning_invested_capital": 11062000000.0,
+      "ending_invested_capital": 11144000000.0,
+      "avg_invested_capital": 11103000000.0,
+      "roic": 0.0119
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-07-31",
+      "ebit": 196000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 154840000.0,
+      "beginning_invested_capital": 11144000000.0,
+      "ending_invested_capital": 11327000000.0,
+      "avg_invested_capital": 11235500000.0,
+      "roic": 0.0138
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-10-31",
+      "ebit": 256000000.0,
+      "tax_rate_for_calcs": 0.15,
+      "nopat": 217600000.0,
+      "beginning_invested_capital": 11327000000.0,
+      "ending_invested_capital": 11607000000.0,
+      "avg_invested_capital": 11467000000.0,
+      "roic": 0.019
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-01-31",
+      "ebit": 148000000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 115440000.0,
+      "beginning_invested_capital": 11607000000.0,
+      "ending_invested_capital": 12018000000.0,
+      "avg_invested_capital": 11812500000.0,
+      "roic": 0.0098
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-04-30",
+      "ebit": 132000000.0,
+      "tax_rate_for_calcs": 0.34,
+      "nopat": 87120000.0,
+      "beginning_invested_capital": 12018000000.0,
+      "ending_invested_capital": 11904000000.0,
+      "avg_invested_capital": 11961000000.0,
+      "roic": 0.0073
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-07-31",
+      "ebit": 333000000.0,
+      "tax_rate_for_calcs": 0.25,
+      "nopat": 249750000.0,
+      "beginning_invested_capital": 11904000000.0,
+      "ending_invested_capital": 12157000000.0,
+      "avg_invested_capital": 12030500000.0,
+      "roic": 0.0208
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-10-31",
+      "ebit": 367000000.0,
+      "tax_rate_for_calcs": 0.25,
+      "nopat": 275250000.0,
+      "beginning_invested_capital": 12157000000.0,
+      "ending_invested_capital": 11865000000.0,
+      "avg_invested_capital": 12011000000.0,
+      "roic": 0.0229
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-01-31",
+      "ebit": 292000000.0,
+      "tax_rate_for_calcs": 0.4,
+      "nopat": 175200000.0,
+      "beginning_invested_capital": 11865000000.0,
+      "ending_invested_capital": 10792000000.0,
+      "avg_invested_capital": 11328500000.0,
+      "roic": 0.0155
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-04-30",
+      "ebit": 381000000.0,
+      "tax_rate_for_calcs": 0.37,
+      "nopat": 240030000.0,
+      "beginning_invested_capital": 10792000000.0,
+      "ending_invested_capital": 9671000000.0,
+      "avg_invested_capital": 10231500000.0,
+      "roic": 0.0235
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-10-31T00:00:00.000",
+      "roe": 0.0177,
+      "roa": 0.0082,
+      "equity_multiplier": 2.16
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-01-31T00:00:00.000",
+      "roe": 0.1616,
+      "roa": 0.0782,
+      "equity_multiplier": 2.07
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-04-30T00:00:00.000",
+      "roe": 0.0132,
+      "roa": 0.0066,
+      "equity_multiplier": 2.0
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-07-31T00:00:00.000",
+      "roe": 0.016,
+      "roa": 0.0082,
+      "equity_multiplier": 1.95
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-10-31T00:00:00.000",
+      "roe": 0.0227,
+      "roa": 0.0118,
+      "equity_multiplier": 1.92
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-01-31T00:00:00.000",
+      "roe": 0.0106,
+      "roa": 0.0055,
+      "equity_multiplier": 1.93
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-04-30T00:00:00.000",
+      "roe": 0.0076,
+      "roa": 0.0039,
+      "equity_multiplier": 1.95
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-07-31T00:00:00.000",
+      "roe": 0.0252,
+      "roa": 0.013,
+      "equity_multiplier": 1.94
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-10-31T00:00:00.000",
+      "roe": 0.0279,
+      "roa": 0.0141,
+      "equity_multiplier": 1.98
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-01-31T00:00:00.000",
+      "roe": 0.0174,
+      "roa": 0.0081,
+      "equity_multiplier": 2.15
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-04-30T00:00:00.000",
+      "roe": 0.0306,
+      "roa": 0.013,
+      "equity_multiplier": 2.35
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-10-31T00:00:00.000",
+      "roa": 0.0082,
+      "net_margin": 0.0611,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-01-31T00:00:00.000",
+      "roa": 0.0782,
+      "net_margin": 0.6183,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-04-30T00:00:00.000",
+      "roa": 0.0066,
+      "net_margin": 0.0538,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-07-31T00:00:00.000",
+      "roa": 0.0082,
+      "net_margin": 0.0633,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-10-31T00:00:00.000",
+      "roa": 0.0118,
+      "net_margin": 0.0894,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-01-31T00:00:00.000",
+      "roa": 0.0055,
+      "net_margin": 0.0425,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-04-30T00:00:00.000",
+      "roa": 0.0039,
+      "net_margin": 0.0304,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-07-31T00:00:00.000",
+      "roa": 0.013,
+      "net_margin": 0.0971,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-10-31T00:00:00.000",
+      "roa": 0.0141,
+      "net_margin": 0.1036,
+      "asset_turnover": 0.14
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-01-31T00:00:00.000",
+      "roa": 0.0081,
+      "net_margin": 0.0573,
+      "asset_turnover": 0.14
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-04-30T00:00:00.000",
+      "roa": 0.013,
+      "net_margin": 0.0873,
+      "asset_turnover": 0.15
+    }
+  ]
+}

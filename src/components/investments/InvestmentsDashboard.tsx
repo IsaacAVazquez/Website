@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import {
   IconBookmark,
   IconChartArcs3,
@@ -9,6 +9,7 @@ import {
   IconHelp,
   IconHome,
   IconList,
+  IconPigMoney,
   IconReportMoney,
   IconSearch,
   IconWallet,
@@ -20,6 +21,7 @@ import { DataFreshnessIndicator } from "./DataFreshnessIndicator";
 import { HoldingsTable } from "./HoldingsTable";
 import { ResearchSection } from "./ResearchSection";
 import { StockSearch } from "./StockSearch";
+import { RetirementPlanner } from "./retirement/RetirementPlanner";
 import { useInvestments } from "@/hooks/useInvestments";
 import type { ResearchTab } from "@/app/investments/investments-state";
 
@@ -105,6 +107,7 @@ export function InvestmentsDashboard({
       { id: "stats", label: "Portfolio stats", href: "#portfolio-stats", icon: IconCircleHalf },
       { id: "performance", label: "Performance", href: "#hero", icon: IconChartLine },
       { id: "research", label: "Research", href: "#research-section", icon: IconReportMoney },
+      { id: "retirement", label: "Retirement", href: "#retirement", icon: IconPigMoney },
     ],
     [enhancedHoldings.length],
   );
@@ -164,7 +167,7 @@ export function InvestmentsDashboard({
         </div>
       </aside>
 
-      <main className="invest-main" id="hero">
+      <div className="invest-main" id="hero">
         <div className="invest-topbar">
           <div>
             <p className="invest-crumbs">Investments / <strong>Dashboard</strong></p>
@@ -248,12 +251,12 @@ export function InvestmentsDashboard({
                 No positions yet
               </p>
               <p className="mx-auto max-w-xs text-sm text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
-                Add your first stock using the form on the right. Holdings are saved in your browser and persist across visits.
+                Add your first stock with the Add a holding form. Holdings are saved in your browser and persist across visits.
               </p>
             </div>
           )}
         </div>
-      </main>
+      </div>
 
       <aside className="invest-rail" aria-label="Portfolio side panel">
         <section ref={addHoldingRef} id="add-holding" className="scroll-mt-28">
@@ -346,6 +349,11 @@ export function InvestmentsDashboard({
         portfolioSymbols={portfolioSymbols}
       />
     </section>
+
+    {/* Retirement planner — projects whether the portfolio + savings last
+        through retirement, with allocation-derived Monte Carlo. Offers the
+        live portfolio value as a one-click starting balance. */}
+    <RetirementPlanner portfolioValue={summary.totalValue > 0 ? summary.totalValue : undefined} />
     </div>
   );
 }

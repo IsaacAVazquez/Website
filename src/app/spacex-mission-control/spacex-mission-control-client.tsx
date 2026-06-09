@@ -13,9 +13,10 @@ import type {
   MissionControlStatus,
 } from "@/types/spacex";
 import { MissionControlHero } from "@/components/spacex/MissionControlHero";
-import { MissionInsightsStrip } from "@/components/spacex/MissionInsightsStrip";
 import { MissionLaunchBoard } from "@/components/spacex/MissionLaunchBoard";
 import { MissionDetailPanel } from "@/components/spacex/MissionDetailPanel";
+import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
+import { ChartBar, Briefcase, FileText, Search } from "@/components/ui/ServerIcons";
 import {
   buildMissionControlHref,
   DEFAULT_MISSION_CONTROL_STATE,
@@ -54,7 +55,11 @@ async function fetchJson<T>(url: string, validate?: (data: unknown) => data is T
 function isMissionControlSummary(data: unknown): data is MissionControlSummary {
   if (!data || typeof data !== "object") return false;
   const candidate = data as Record<string, unknown>;
-  return "stats" in candidate && "nextLaunch" in candidate;
+  return (
+    "heroLaunch" in candidate &&
+    "nextLaunch" in candidate &&
+    Array.isArray(candidate.insights)
+  );
 }
 
 function isLaunchesPayload(data: unknown): data is { launches: MissionLaunchCard[] } {
@@ -71,8 +76,9 @@ function isMissionLaunchDetail(data: unknown): data is MissionLaunchDetail {
 export function SpaceXMissionControlClient({
   initialState,
   initialData,
-  renderedAtMs = Date.now(),
+  renderedAtMs: renderedAtMsProp,
 }: SpaceXMissionControlClientProps) {
+  const [renderedAtMs] = useState(() => renderedAtMsProp ?? Date.now());
   const router = useRouter();
   const searchParams = useSearchParams();
   const shouldReduceMotion = useReducedMotion();
@@ -442,13 +448,83 @@ export function SpaceXMissionControlClient({
       ? "Refreshing SpaceX feed"
       : "SpaceX data cached locally";
 
-  const motionProps = shouldReduceMotion
-    ? {}
-    : {
-        initial: { opacity: 0, y: 18 },
-        animate: { opacity: 1, y: 0 },
-        transition: { duration: 0.42 },
-      };
+  const motionProps = {
+    initial: { opacity: 0, y: 18 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: shouldReduceMotion ? 0 : 0.42 },
+  };
+
+  const insightByLabel = useMemo(() => {
+    const map = new Map<string, string>();
+    (summary?.insights ?? []).forEach((insight) => {
+      map.set(insight.label.toLowerCase(), insight.value);
+    });
+    return map;
+  }, [summary]);
+
+  const heroLaunchDate = summary?.heroLaunch?.dateUtc ?? null;
+  const daysToNext = useMemo(() => {
+    if (!heroLaunchDate) return "—";
+    const ms = new Date(heroLaunchDate).getTime() - renderedAtMs;
+    if (Number.isNaN(ms)) return "—";
+    const days = Math.round(ms / (1000 * 60 * 60 * 24));
+    if (days < 0) return "Past";
+    return days === 0 ? "Today" : String(days);
+  }, [heroLaunchDate, renderedAtMs]);
+
+  const upcomingCount = routeState.status === "upcoming" ? launches.length : "—";
+
+  const past30DayCount = useMemo(() => {
+    if (routeState.status !== "past") return null;
+    const cutoff = renderedAtMs - 30 * 24 * 60 * 60 * 1000;
+    return launches.filter((launch) => {
+      const t = new Date(launch.dateUtc).getTime();
+      return Number.isFinite(t) && t >= cutoff;
+    }).length;
+  }, [launches, renderedAtMs, routeState.status]);
+
+  const insightsCells: HomeStatsCell[] = [
+    {
+      label: "Days to next launch",
+      value: <span className="tabular-nums">{daysToNext}</span>,
+      sub: summary?.heroLaunch?.name ?? "Awaiting schedule",
+    },
+    {
+      label: "Upcoming launches",
+      value: <span className="tabular-nums">{upcomingCount}</span>,
+      sub: routeState.status === "upcoming" ? "On the live board" : "Switch to upcoming view",
+    },
+    {
+      label: "Launches in last 30 days",
+      value: <span className="tabular-nums">{past30DayCount ?? "—"}</span>,
+      sub: routeState.status === "past" ? "Counted from the past board" : "n/a in current snapshot",
+    },
+    {
+      label: "Success rate",
+      value: insightByLabel.get("success rate") ?? "—",
+      sub: "Across tracked Falcon launches",
+    },
+    {
+      label: "Most-flown rocket",
+      value: insightByLabel.get("most flown") ?? insightByLabel.get("most-flown rocket") ?? "—",
+      sub: "By total flights in dataset",
+    },
+    {
+      label: "Active launchpads",
+      value: insightByLabel.get("active launchpads") ?? "—",
+      sub: "Cape, Vandy, Boca Chica",
+    },
+    {
+      label: "Booster reuses YTD",
+      value: insightByLabel.get("booster reuses ytd") ?? insightByLabel.get("reuses") ?? "—",
+      sub: "n/a in current snapshot",
+    },
+    {
+      label: "Falcon 9 turnaround",
+      value: insightByLabel.get("falcon 9 turnaround") ?? insightByLabel.get("avg turnaround") ?? "—",
+      sub: "Average days between flights",
+    },
+  ];
 
   return (
     <section
@@ -462,7 +538,7 @@ export function SpaceXMissionControlClient({
         >
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-3">
-              <span className="rounded-full border border-[color-mix(in_srgb,var(--home-haze)_24%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-paper)_72%,transparent)] px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--home-haze)]">
+              <span className="rounded-full border border-[color-mix(in_srgb,var(--home-haze)_24%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-paper)_72%,transparent)] px-3 py-1 font-mono text-2xs font-semibold uppercase tracking-[0.22em] text-[var(--home-haze)]">
                 SpaceX Mission Control
               </span>
               <span className="rounded-full border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] px-3 py-1 text-xs font-medium text-[var(--home-ink-muted)]">
@@ -535,9 +611,17 @@ export function SpaceXMissionControlClient({
           </motion.div>
 
           <motion.div {...motionProps}>
-            <MissionInsightsStrip
-              insights={summary?.insights ?? []}
-              isLoading={summaryLoading}
+            <HomeStatsPanel
+              id="spacex-stats"
+              title="Mission control at a glance"
+              meta="Live, refreshes every 5 min"
+              cells={insightsCells}
+              pills={[
+                { label: "Upcoming launches", href: "/spacex-mission-control?status=upcoming", icon: Briefcase },
+                { label: "Past 30d", href: "/spacex-mission-control?status=past", icon: ChartBar },
+                { label: "Stats", href: "/spacex-mission-control?status=past", icon: FileText },
+                { label: "Boosters", href: "/spacex-mission-control?status=past", icon: Search },
+              ]}
             />
           </motion.div>
 

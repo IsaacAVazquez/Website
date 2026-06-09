@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "ADBE",
+      "report_date": "2022-05-31",
+      "gross_profit": 3847000000.0,
+      "total_revenue": 4386000000.0,
+      "gross_margin": 0.8771
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2022-08-31",
+      "gross_profit": 3887000000.0,
+      "total_revenue": 4433000000.0,
+      "gross_margin": 0.8768
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2022-11-30",
+      "gross_profit": 3957000000.0,
+      "total_revenue": 4525000000.0,
+      "gross_margin": 0.8745
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2023-02-28",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2023-05-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2023-08-31",
+      "gross_profit": 4310000000.0,
+      "total_revenue": 4890000000.0,
+      "gross_margin": 0.8814
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2023-11-30",
+      "gross_profit": 4414000000.0,
+      "total_revenue": 5048000000.0,
+      "gross_margin": 0.8744
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2024-02-29",
+      "gross_profit": 4592000000.0,
+      "total_revenue": 5182000000.0,
+      "gross_margin": 0.8861
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2024-05-31",
+      "gross_profit": 4711000000.0,
+      "total_revenue": 5309000000.0,
+      "gross_margin": 0.8874
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2024-08-31",
+      "gross_profit": 4854000000.0,
+      "total_revenue": 5408000000.0,
+      "gross_margin": 0.8976
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2024-11-30",
+      "gross_profit": 4990000000.0,
+      "total_revenue": 5606000000.0,
+      "gross_margin": 0.8901
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2025-02-28",
+      "gross_profit": 5092000000.0,
+      "total_revenue": 5714000000.0,
+      "gross_margin": 0.8911
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2025-05-31",
+      "gross_profit": 5235000000.0,
+      "total_revenue": 5873000000.0,
+      "gross_margin": 0.8914
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2025-08-31",
+      "gross_profit": 5346000000.0,
+      "total_revenue": 5988000000.0,
+      "gross_margin": 0.8928
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2025-11-30",
+      "gross_profit": 5545000000.0,
+      "total_revenue": 6194000000.0,
+      "gross_margin": 0.8952
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2026-02-28",
+      "gross_profit": 5734000000.0,
+      "total_revenue": 6398000000.0,
+      "gross_margin": 0.8962
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "ADBE",
+      "report_date": "2019-11-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2020-11-30",
+      "gross_profit": 11146000000.0,
+      "total_revenue": 12868000000.0,
+      "gross_margin": 0.8662
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2021-11-30",
+      "gross_profit": 13920000000.0,
+      "total_revenue": 15785000000.0,
+      "gross_margin": 0.8818
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2022-11-30",
+      "gross_profit": 15441000000.0,
+      "total_revenue": 17606000000.0,
+      "gross_margin": 0.877
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2023-11-30",
+      "gross_profit": 17055000000.0,
+      "total_revenue": 19409000000.0,
+      "gross_margin": 0.8787
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2024-11-30",
+      "gross_profit": 19147000000.0,
+      "total_revenue": 21505000000.0,
+      "gross_margin": 0.8904
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2025-11-30",
+      "gross_profit": 21218000000.0,
+      "total_revenue": 23769000000.0,
+      "gross_margin": 0.8927
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "ADBE",
+      "report_date": "2022-05-31",
+      "operating_income": 1529000000.0,
+      "total_revenue": 4386000000.0,
+      "operating_margin": 0.3486
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2022-08-31",
+      "operating_income": 1484000000.0,
+      "total_revenue": 4433000000.0,
+      "operating_margin": 0.3348
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2022-11-30",
+      "operating_income": 1505000000.0,
+      "total_revenue": 4525000000.0,
+      "operating_margin": 0.3326
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2023-02-28",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2023-05-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2023-08-31",
+      "operating_income": 1697000000.0,
+      "total_revenue": 4890000000.0,
+      "operating_margin": 0.347
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2023-11-30",
+      "operating_income": 1743000000.0,
+      "total_revenue": 5048000000.0,
+      "operating_margin": 0.3453
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2024-02-29",
+      "operating_income": 1907000000.0,
+      "total_revenue": 5182000000.0,
+      "operating_margin": 0.368
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2024-05-31",
+      "operating_income": 1885000000.0,
+      "total_revenue": 5309000000.0,
+      "operating_margin": 0.3551
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2024-08-31",
+      "operating_income": 1992000000.0,
+      "total_revenue": 5408000000.0,
+      "operating_margin": 0.3683
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2024-11-30",
+      "operating_income": 1957000000.0,
+      "total_revenue": 5606000000.0,
+      "operating_margin": 0.3491
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2025-02-28",
+      "operating_income": 2163000000.0,
+      "total_revenue": 5714000000.0,
+      "operating_margin": 0.3785
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2025-05-31",
+      "operating_income": 2109000000.0,
+      "total_revenue": 5873000000.0,
+      "operating_margin": 0.3591
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2025-08-31",
+      "operating_income": 2173000000.0,
+      "total_revenue": 5988000000.0,
+      "operating_margin": 0.3629
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2025-11-30",
+      "operating_income": 2261000000.0,
+      "total_revenue": 6194000000.0,
+      "operating_margin": 0.365
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2026-02-28",
+      "operating_income": 2418000000.0,
+      "total_revenue": 6398000000.0,
+      "operating_margin": 0.3779
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "ADBE",
+      "report_date": "2019-11-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2020-11-30",
+      "operating_income": 4237000000.0,
+      "total_revenue": 12868000000.0,
+      "operating_margin": 0.3293
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2021-11-30",
+      "operating_income": 5802000000.0,
+      "total_revenue": 15785000000.0,
+      "operating_margin": 0.3676
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2022-11-30",
+      "operating_income": 6098000000.0,
+      "total_revenue": 17606000000.0,
+      "operating_margin": 0.3464
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2023-11-30",
+      "operating_income": 6650000000.0,
+      "total_revenue": 19409000000.0,
+      "operating_margin": 0.3426
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2024-11-30",
+      "operating_income": 7741000000.0,
+      "total_revenue": 21505000000.0,
+      "operating_margin": 0.36
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2025-11-30",
+      "operating_income": 8706000000.0,
+      "total_revenue": 23769000000.0,
+      "operating_margin": 0.3663
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "ADBE",
+      "report_date": "2022-05-31",
+      "net_income_common_stockholders": 1178000000.0,
+      "total_revenue": 4386000000.0,
+      "net_margin": 0.2686
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2022-08-31",
+      "net_income_common_stockholders": 1136000000.0,
+      "total_revenue": 4433000000.0,
+      "net_margin": 0.2563
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2022-11-30",
+      "net_income_common_stockholders": 1176000000.0,
+      "total_revenue": 4525000000.0,
+      "net_margin": 0.2599
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2023-02-28",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2023-05-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2023-08-31",
+      "net_income_common_stockholders": 1403000000.0,
+      "total_revenue": 4890000000.0,
+      "net_margin": 0.2869
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2023-11-30",
+      "net_income_common_stockholders": 1483000000.0,
+      "total_revenue": 5048000000.0,
+      "net_margin": 0.2938
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2024-02-29",
+      "net_income_common_stockholders": 620000000.0,
+      "total_revenue": 5182000000.0,
+      "net_margin": 0.1196
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2024-05-31",
+      "net_income_common_stockholders": 1573000000.0,
+      "total_revenue": 5309000000.0,
+      "net_margin": 0.2963
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2024-08-31",
+      "net_income_common_stockholders": 1684000000.0,
+      "total_revenue": 5408000000.0,
+      "net_margin": 0.3114
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2024-11-30",
+      "net_income_common_stockholders": 1683000000.0,
+      "total_revenue": 5606000000.0,
+      "net_margin": 0.3002
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2025-02-28",
+      "net_income_common_stockholders": 1811000000.0,
+      "total_revenue": 5714000000.0,
+      "net_margin": 0.3169
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2025-05-31",
+      "net_income_common_stockholders": 1691000000.0,
+      "total_revenue": 5873000000.0,
+      "net_margin": 0.2879
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2025-08-31",
+      "net_income_common_stockholders": 1772000000.0,
+      "total_revenue": 5988000000.0,
+      "net_margin": 0.2959
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2025-11-30",
+      "net_income_common_stockholders": 1856000000.0,
+      "total_revenue": 6194000000.0,
+      "net_margin": 0.2996
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2026-02-28",
+      "net_income_common_stockholders": 1889000000.0,
+      "total_revenue": 6398000000.0,
+      "net_margin": 0.2952
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "ADBE",
+      "report_date": "2019-11-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2020-11-30",
+      "net_income_common_stockholders": 5260000000.0,
+      "total_revenue": 12868000000.0,
+      "net_margin": 0.4088
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2021-11-30",
+      "net_income_common_stockholders": 4822000000.0,
+      "total_revenue": 15785000000.0,
+      "net_margin": 0.3055
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2022-11-30",
+      "net_income_common_stockholders": 4756000000.0,
+      "total_revenue": 17606000000.0,
+      "net_margin": 0.2701
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2023-11-30",
+      "net_income_common_stockholders": 5428000000.0,
+      "total_revenue": 19409000000.0,
+      "net_margin": 0.2797
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2024-11-30",
+      "net_income_common_stockholders": 5560000000.0,
+      "total_revenue": 21505000000.0,
+      "net_margin": 0.2585
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2025-11-30",
+      "net_income_common_stockholders": 7130000000.0,
+      "total_revenue": 23769000000.0,
+      "net_margin": 0.3
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "ADBE",
+      "report_date": "2022-05-31",
+      "ebitda": null,
+      "total_revenue": 4386000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2022-08-31",
+      "ebitda": 1700000000.0,
+      "total_revenue": 4433000000.0,
+      "ebitda_margin": 0.3835
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2022-11-30",
+      "ebitda": 1760000000.0,
+      "total_revenue": 4525000000.0,
+      "ebitda_margin": 0.389
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2023-02-28",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2023-05-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2023-08-31",
+      "ebitda": 1988000000.0,
+      "total_revenue": 4890000000.0,
+      "ebitda_margin": 0.4065
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2023-11-30",
+      "ebitda": 2058000000.0,
+      "total_revenue": 5048000000.0,
+      "ebitda_margin": 0.4077
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2024-02-29",
+      "ebitda": 1207000000.0,
+      "total_revenue": 5182000000.0,
+      "ebitda_margin": 0.2329
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2024-05-31",
+      "ebitda": 2185000000.0,
+      "total_revenue": 5309000000.0,
+      "ebitda_margin": 0.4116
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2024-08-31",
+      "ebitda": 2306000000.0,
+      "total_revenue": 5408000000.0,
+      "ebitda_margin": 0.4264
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2024-11-30",
+      "ebitda": 2259000000.0,
+      "total_revenue": 5606000000.0,
+      "ebitda_margin": 0.403
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2025-02-28",
+      "ebitda": 2461000000.0,
+      "total_revenue": 5714000000.0,
+      "ebitda_margin": 0.4307
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2025-05-31",
+      "ebitda": 2378000000.0,
+      "total_revenue": 5873000000.0,
+      "ebitda_margin": 0.4049
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2025-08-31",
+      "ebitda": 2462000000.0,
+      "total_revenue": 5988000000.0,
+      "ebitda_margin": 0.4112
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2025-11-30",
+      "ebitda": 2514000000.0,
+      "total_revenue": 6194000000.0,
+      "ebitda_margin": 0.4059
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2026-02-28",
+      "ebitda": 2659000000.0,
+      "total_revenue": 6398000000.0,
+      "ebitda_margin": 0.4156
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "ADBE",
+      "report_date": "2019-11-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2020-11-30",
+      "ebitda": 5049000000.0,
+      "total_revenue": 12868000000.0,
+      "ebitda_margin": 0.3924
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2021-11-30",
+      "ebitda": 6606000000.0,
+      "total_revenue": 15785000000.0,
+      "ebitda_margin": 0.4185
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2022-11-30",
+      "ebitda": 6976000000.0,
+      "total_revenue": 17606000000.0,
+      "ebitda_margin": 0.3962
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2023-11-30",
+      "ebitda": 7784000000.0,
+      "total_revenue": 19409000000.0,
+      "ebitda_margin": 0.4011
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2024-11-30",
+      "ebitda": 7957000000.0,
+      "total_revenue": 21505000000.0,
+      "ebitda_margin": 0.37
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2025-11-30",
+      "ebitda": 9815000000.0,
+      "total_revenue": 23769000000.0,
+      "ebitda_margin": 0.4129
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "ADBE",
+      "report_date": "2022-05-31",
+      "free_cash_flow": 1914000000.0,
+      "total_revenue": 4386000000.0,
+      "fcf_margin": 0.4364
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2022-08-31",
+      "free_cash_flow": null,
+      "total_revenue": 4433000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2022-11-30",
+      "free_cash_flow": null,
+      "total_revenue": 4525000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2023-02-28",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2023-05-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2023-08-31",
+      "free_cash_flow": 1782000000.0,
+      "total_revenue": 4890000000.0,
+      "fcf_margin": 0.3644
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2023-11-30",
+      "free_cash_flow": 1550000000.0,
+      "total_revenue": 5048000000.0,
+      "fcf_margin": 0.3071
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2024-02-29",
+      "free_cash_flow": 1137000000.0,
+      "total_revenue": 5182000000.0,
+      "fcf_margin": 0.2194
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2024-05-31",
+      "free_cash_flow": 1899000000.0,
+      "total_revenue": 5309000000.0,
+      "fcf_margin": 0.3577
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2024-08-31",
+      "free_cash_flow": 1964000000.0,
+      "total_revenue": 5408000000.0,
+      "fcf_margin": 0.3632
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2024-11-30",
+      "free_cash_flow": 2873000000.0,
+      "total_revenue": 5606000000.0,
+      "fcf_margin": 0.5125
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2025-02-28",
+      "free_cash_flow": 2456000000.0,
+      "total_revenue": 5714000000.0,
+      "fcf_margin": 0.4298
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2025-05-31",
+      "free_cash_flow": 2144000000.0,
+      "total_revenue": 5873000000.0,
+      "fcf_margin": 0.3651
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2025-08-31",
+      "free_cash_flow": 2126000000.0,
+      "total_revenue": 5988000000.0,
+      "fcf_margin": 0.355
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2025-11-30",
+      "free_cash_flow": 3126000000.0,
+      "total_revenue": 6194000000.0,
+      "fcf_margin": 0.5047
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2026-02-28",
+      "free_cash_flow": 2921000000.0,
+      "total_revenue": 6398000000.0,
+      "fcf_margin": 0.4565
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "ADBE",
+      "report_date": "2019-11-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2020-11-30",
+      "free_cash_flow": 5308000000.0,
+      "total_revenue": 12868000000.0,
+      "fcf_margin": 0.4125
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2021-11-30",
+      "free_cash_flow": 6882000000.0,
+      "total_revenue": 15785000000.0,
+      "fcf_margin": 0.436
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2022-11-30",
+      "free_cash_flow": 7396000000.0,
+      "total_revenue": 17606000000.0,
+      "fcf_margin": 0.4201
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2023-11-30",
+      "free_cash_flow": 6942000000.0,
+      "total_revenue": 19409000000.0,
+      "fcf_margin": 0.3577
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2024-11-30",
+      "free_cash_flow": 7873000000.0,
+      "total_revenue": 21505000000.0,
+      "fcf_margin": 0.3661
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2025-11-30",
+      "free_cash_flow": 9852000000.0,
+      "total_revenue": 23769000000.0,
+      "fcf_margin": 0.4145
+    }
+  ]
+}

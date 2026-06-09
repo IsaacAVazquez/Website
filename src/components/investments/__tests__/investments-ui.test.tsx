@@ -20,7 +20,7 @@ import { __testUtils as liveQuoteTestUtils } from "@/hooks/useLiveQuote";
 import { __testUtils as stockDataTestUtils } from "@/hooks/useStockData";
 import { clearClientInvestmentDataCachesForTests } from "@/lib/investmentsClientData";
 
-globalThis.IS_REACT_ACT_ENVIRONMENT = true;
+(globalThis as Record<string, unknown>).IS_REACT_ACT_ENVIRONMENT = true;
 const mockFetch = jest.fn();
 global.fetch = mockFetch as unknown as typeof fetch;
 
@@ -357,8 +357,7 @@ describe("investments UI", () => {
 
     expect(container.textContent).toContain("Visa Inc.");
     expect(container.textContent).toContain("$352.45");
-    expect(container.textContent).toContain("Historical chart through Feb 27, 2026.");
-    expect(container.textContent).toContain("Historical series trails the dataset by 17 days.");
+    expect(container.textContent).toContain("Live quote");
 
     const tabs = queryTabs(container);
     expect(tabs).toEqual(

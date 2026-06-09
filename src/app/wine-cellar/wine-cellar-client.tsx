@@ -27,6 +27,7 @@ import {
 } from "@/lib/wineCellar";
 import { useWineCellar } from "@/hooks/useWineCellar";
 import type { WineEntry, WineType } from "@/types/wine";
+import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
 
 interface WineFormDraft {
   name: string;
@@ -241,151 +242,129 @@ export function WineCellarClient() {
     [entries]
   );
 
+  const favoriteType = summary.typeBreakdown[0]?.type ?? null;
+
+  const wineStatsCells: HomeStatsCell[] = [
+    {
+      label: "Bottles logged",
+      value: hasEntries ? summary.totalWines.toLocaleString() : "—",
+    },
+    {
+      label: "Average rating",
+      value: hasEntries ? summary.averageRating.toFixed(1) : "—",
+      sub: hasEntries ? "Across the cellar" : "Add a bottle to start",
+    },
+    {
+      label: "Cellar spend",
+      value: summary.totalSpend > 0 ? formatCurrency(summary.totalSpend) : "—",
+    },
+    {
+      label: "Top region",
+      value: summary.topRegion ?? "—",
+    },
+    {
+      label: "Top varietal",
+      value: summary.topVarietal ?? "—",
+    },
+    {
+      label: "Recent five-stars",
+      value: recentFiveStars.length.toLocaleString(),
+      tone: recentFiveStars.length > 0 ? "good" : "default",
+    },
+    {
+      label: "Favorite type",
+      value: favoriteType ? WINE_TYPE_LABELS[favoriteType] : "—",
+    },
+    {
+      label: "Last logged",
+      value: lastLoggedDate ? formatTastedDate(lastLoggedDate) : "—",
+    },
+  ];
+
   return (
     <section
-      className="min-h-screen bg-[radial-gradient(circle_at_top_left,color-mix(in_srgb,var(--home-haze)_11%,transparent),transparent_30%),linear-gradient(180deg,color-mix(in_srgb,var(--home-paper-alt)_88%,var(--home-paper))_0%,var(--home-paper)_100%)]"
+      className="home-page min-h-screen"
       aria-label="Wine cellar workspace"
       data-testid="wine-cellar-shell"
     >
-      <div className="mx-auto w-full max-w-[1680px] px-4 pb-14 pt-8 sm:px-6 sm:pb-16 sm:pt-10 lg:px-8 xl:px-10 2xl:px-12">
+      <div className="home-shell home-section">
         <motion.div
           variants={motionVariants}
           initial="hidden"
           animate="visible"
-          className="tool-page-stack"
+          className="flex flex-col gap-6"
         >
-          <div className="tool-shell" data-testid="wine-cellar-tool-shell">
-            <aside className="tool-sidebar" aria-label="Wine cellar navigation">
-              <div className="tool-brand">
-                <div className="tool-brand-mark" aria-hidden="true">
-                  <Wine className="h-4 w-4" />
-                </div>
-                <div className="tool-brand-name">
-                  Wine Cellar
-                  <small>Personal log</small>
-                </div>
-              </div>
+          <div className="tool-topbar" id="cellar">
+            <div>
+              <p className="tool-crumbs">
+                Wine Cellar / <strong>Cellar</strong>
+              </p>
+              <h1>Wine Cellar</h1>
+            </div>
 
-              <nav className="flex flex-col gap-1.5" aria-label="Section navigation">
-                <a href="#cellar" className="tool-nav-link">
-                  <Wine aria-hidden="true" />
-                  Cellar
-                  {hasEntries ? (
-                    <span className="tool-nav-pill">{entries.length}</span>
-                  ) : null}
-                </a>
-                <a href="#stats" className="tool-nav-link">
-                  <Star aria-hidden="true" />
-                  Stats
-                </a>
-                <a href="#filters" className="tool-nav-link">
-                  <Filter aria-hidden="true" />
-                  Search & filter
-                </a>
-              </nav>
+            <label className="tool-search" aria-label="Search wines">
+              <Search size={14} aria-hidden="true" />
+              <input
+                type="search"
+                placeholder="Search by name, region, or notes…"
+                value={filters.search}
+                onChange={(event) =>
+                  updateFilters((current) => ({
+                    ...current,
+                    search: event.target.value,
+                  }))
+                }
+              />
+            </label>
+          </div>
 
-              <div className="tool-sidebar-footer">
-                <Bookmark size={16} aria-hidden="true" />
-                <span>Saved in your browser</span>
-              </div>
-            </aside>
+          <div className="tool-meta-chip" role="status" aria-live="polite">
+            <span className="tool-meta-chip-dot" aria-hidden="true" />
+            <span>
+              <strong>
+                {hasEntries ? entries.length : "—"}
+              </strong>{" "}
+              {hasEntries && entries.length === 1 ? "bottle" : "bottles"}
+            </span>
+            <span className="tool-meta-chip-divider" aria-hidden="true">
+              ·
+            </span>
+            <span>
+              avg rating{" "}
+              <strong>
+                {hasEntries ? summary.averageRating.toFixed(1) : "—"}
+              </strong>
+            </span>
+            <span className="tool-meta-chip-divider" aria-hidden="true">
+              ·
+            </span>
+            <span>
+              last logged{" "}
+              <strong>
+                {lastLoggedDate ? formatTastedDate(lastLoggedDate) : "—"}
+              </strong>
+            </span>
+            <span className="tool-meta-chip-spacer" />
+            <span className="tool-meta-chip-meta">Local browser only</span>
+          </div>
 
-            <main className="tool-main" id="cellar">
-              <div className="tool-topbar">
-                <div>
-                  <p className="tool-crumbs">
-                    Wine Cellar / <strong>Cellar</strong>
-                  </p>
-                  <h1>Wine Cellar</h1>
-                </div>
-
-                <label className="tool-search" aria-label="Search wines">
-                  <Search size={14} aria-hidden="true" />
-                  <input
-                    type="search"
-                    placeholder="Search by name, region, or notes…"
-                    value={filters.search}
-                    onChange={(event) =>
-                      updateFilters((current) => ({
-                        ...current,
-                        search: event.target.value,
-                      }))
-                    }
+          <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,360px)]">
+            <div className="flex flex-col gap-5">
+                <div id="stats" className="scroll-mt-28">
+                  <HomeStatsPanel
+                    id="wine-cellar-stats"
+                    title="Cellar at a glance"
+                    meta={lastLoggedDate ? `Last logged ${formatTastedDate(lastLoggedDate)}` : "No bottles yet"}
+                    hideLiveDot
+                    cells={wineStatsCells}
+                    pills={[
+                      { label: "All bottles", href: "#cellar" },
+                      { label: "By region", href: "#filters" },
+                      { label: "By varietal", href: "#filters" },
+                      { label: "Reset filters", href: "#filters" },
+                    ]}
                   />
-                </label>
-              </div>
-
-              <div className="tool-meta-chip" role="status" aria-live="polite">
-                <span className="tool-meta-chip-dot" aria-hidden="true" />
-                <span>
-                  <strong>
-                    {hasEntries ? entries.length : "—"}
-                  </strong>{" "}
-                  {hasEntries && entries.length === 1 ? "bottle" : "bottles"}
-                </span>
-                <span className="tool-meta-chip-divider" aria-hidden="true">
-                  ·
-                </span>
-                <span>
-                  avg rating{" "}
-                  <strong>
-                    {hasEntries ? summary.averageRating.toFixed(1) : "—"}
-                  </strong>
-                </span>
-                <span className="tool-meta-chip-divider" aria-hidden="true">
-                  ·
-                </span>
-                <span>
-                  last logged{" "}
-                  <strong>
-                    {lastLoggedDate ? formatTastedDate(lastLoggedDate) : "—"}
-                  </strong>
-                </span>
-                <span className="tool-meta-chip-spacer" />
-                <span className="tool-meta-chip-meta">Local browser only</span>
-              </div>
-
-              <div className="mt-5 flex flex-col gap-5">
-                {/* Stats grid — single card, 4 cells */}
-                <section
-                  id="stats"
-                  className="tool-card scroll-mt-28"
-                  aria-label="Cellar stats"
-                >
-                  <div className="tool-stats-grid">
-                    <div className="tool-stat-cell">
-                      <p className="tool-stat-label">Bottles logged</p>
-                      <p className="tool-stat-val">
-                        {hasEntries ? summary.totalWines : "—"}
-                      </p>
-                    </div>
-                    <div className="tool-stat-cell">
-                      <p className="tool-stat-label">Average rating</p>
-                      <p className="tool-stat-val">
-                        {hasEntries ? summary.averageRating.toFixed(1) : "—"}
-                      </p>
-                      {hasEntries ? (
-                        <p className="tool-stat-delta">
-                          <StarRating value={summary.averageRating} />
-                        </p>
-                      ) : null}
-                    </div>
-                    <div className="tool-stat-cell">
-                      <p className="tool-stat-label">Cellar spend</p>
-                      <p className="tool-stat-val">
-                        {summary.totalSpend > 0
-                          ? formatCurrency(summary.totalSpend)
-                          : "—"}
-                      </p>
-                    </div>
-                    <div className="tool-stat-cell">
-                      <p className="tool-stat-label">Top region</p>
-                      <p className="tool-stat-val truncate">
-                        {summary.topRegion ?? "—"}
-                      </p>
-                    </div>
-                  </div>
-                </section>
+                </div>
 
                 {/* Filter / sort strip */}
                 <section
@@ -549,27 +528,27 @@ export function WineCellarClient() {
                                 </p>
                               ) : null}
                               <div className="mt-3 flex flex-wrap items-center gap-2">
-                                <span className="rounded-full bg-[var(--home-paper-alt)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                                <span className="rounded-full bg-[var(--home-paper-alt)] px-3 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
                                   {WINE_TYPE_LABELS[entry.type]}
                                 </span>
                                 {entry.region ? (
-                                  <span className="rounded-full bg-[var(--home-paper-alt)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                                  <span className="rounded-full bg-[var(--home-paper-alt)] px-3 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
                                     {entry.region}
                                   </span>
                                 ) : null}
                                 {entry.varietal ? (
-                                  <span className="rounded-full bg-[var(--home-paper-alt)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                                  <span className="rounded-full bg-[var(--home-paper-alt)] px-3 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
                                     {entry.varietal}
                                   </span>
                                 ) : null}
                                 <span
-                                  className="rounded-full bg-[var(--home-paper-alt)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]"
+                                  className="rounded-full bg-[var(--home-paper-alt)] px-3 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]"
                                   title={entry.tastedOn}
                                 >
                                   {formatTastedDate(entry.tastedOn)}
                                 </span>
                                 {entry.price !== null ? (
-                                  <span className="rounded-full bg-[var(--home-paper-alt)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                                  <span className="rounded-full bg-[var(--home-paper-alt)] px-3 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
                                     {formatCurrency(entry.price)}
                                   </span>
                                 ) : null}
@@ -615,10 +594,12 @@ export function WineCellarClient() {
                     </ul>
                   )}
                 </section>
-              </div>
-            </main>
+            </div>
 
-            <aside className="tool-rail" aria-label="Wine cellar side panel">
+            <aside
+              aria-label="Wine cellar side panel"
+              className="flex flex-col gap-4 rounded-[1.5rem] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_74%,var(--home-elev-mix))] p-5 shadow-[var(--shadow-sm)] lg:sticky lg:top-24 lg:self-start lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto"
+            >
               <section id="add-tasting">
                 <p className="tool-rail-label">
                   <Wine size={12} aria-hidden="true" />
@@ -849,7 +830,7 @@ export function WineCellarClient() {
                             <span className="block truncate text-[13px] font-semibold text-[var(--home-ink)]">
                               {entry.name}
                             </span>
-                            <span className="block truncate text-[11px] uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                            <span className="block truncate text-2xs uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
                               {formatTastedDate(entry.tastedOn)}
                             </span>
                           </span>
@@ -900,7 +881,7 @@ export function WineCellarClient() {
                             <p className="text-sm font-semibold text-[var(--home-ink)]">
                               {WINE_TYPE_LABELS[bucket.type]}
                             </p>
-                            <p className="text-[11px] uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                            <p className="text-2xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                               {bucket.count} · avg {bucket.averageRating.toFixed(1)}
                             </p>
                           </div>
@@ -936,7 +917,7 @@ export function WineCellarClient() {
                               <p className="truncate text-sm font-semibold text-[var(--home-ink)]">
                                 {entry.name}
                               </p>
-                              <p className="mt-1 text-[11px] uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                              <p className="mt-1 text-2xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                                 {entry.producer || WINE_TYPE_LABELS[entry.type]}
                               </p>
                             </div>
@@ -974,7 +955,7 @@ export function WineCellarClient() {
                                 {entry.name}
                               </p>
                               <p
-                                className="mt-1 text-[11px] uppercase tracking-[0.14em] text-[var(--home-ink-muted)]"
+                                className="mt-1 text-2xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]"
                                 title={entry.tastedOn}
                               >
                                 {formatTastedDate(entry.tastedOn)} ·{" "}
@@ -990,7 +971,7 @@ export function WineCellarClient() {
                     </ul>
                   )}
                   {summary.topVarietal ? (
-                    <p className="mt-4 rounded-2xl border border-dashed border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-3 text-[11px] uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                    <p className="mt-4 rounded-2xl border border-dashed border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-3 text-2xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                       Most-poured varietal:{" "}
                       <span className="font-semibold text-[var(--home-ink)]">
                         {summary.topVarietal}

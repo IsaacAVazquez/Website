@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable react-refresh/only-export-components -- co-located preloader class/hook are intentional */
 
 import React, { useState, useRef, useEffect, memo } from 'react';
 import Image from 'next/image';
@@ -22,7 +23,7 @@ const BLUR_DATA_URL = 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA
 
 // Performance-optimized intersection observer hook
 function useIntersectionObserver(
-  elementRef: React.RefObject<HTMLElement>,
+  elementRef: React.RefObject<HTMLElement | null>,
   options?: IntersectionObserverInit
 ): boolean {
   const [isVisible, setIsVisible] = useState(false);
@@ -68,7 +69,7 @@ export const LazyPlayerImage = memo<LazyPlayerImageProps>(({
   onLoad,
   onError,
   placeholder = 'blur',
-  fallbackIcon = <IconUser size={24} className="text-slate-500" />
+  fallbackIcon = <IconUser size={24} className="text-[var(--home-ink-muted)]" />
 }) => {
   const [imageState, setImageState] = useState<'loading' | 'loaded' | 'error'>('loading');
   const [showImage, setShowImage] = useState(priority);
@@ -80,6 +81,7 @@ export const LazyPlayerImage = memo<LazyPlayerImageProps>(({
   // Start loading when visible or priority
   useEffect(() => {
     if (isVisible || priority) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- Trigger image load when intersection observer reports visibility (subscription pattern)
       setShowImage(true);
     }
   }, [isVisible, priority]);
@@ -128,16 +130,16 @@ export const LazyPlayerImage = memo<LazyPlayerImageProps>(({
       {shouldShowPlaceholder && (
         <div className={`
           absolute inset-0 flex items-center justify-center
-          bg-slate-700 rounded-full transition-opacity duration-300
+          bg-[var(--home-stone)] rounded-full transition-opacity duration-300
           ${imageState === 'loaded' ? 'opacity-0 pointer-events-none' : 'opacity-100'}
         `}>
           {shouldShowFallback ? (
             fallbackIcon
           ) : imageState === 'loading' ? (
             placeholder === 'blur' ? (
-              <div className="w-full h-full bg-slate-600 animate-pulse rounded-full" />
+              <div className="w-full h-full bg-[var(--home-stone)] animate-pulse rounded-full" />
             ) : (
-              <div className="w-4 h-4 border border-slate-400 border-t-transparent rounded-full animate-spin" />
+              <div className="w-4 h-4 border border-[var(--home-ink-muted)] border-t-transparent rounded-full animate-spin" />
             )
           ) : null}
         </div>

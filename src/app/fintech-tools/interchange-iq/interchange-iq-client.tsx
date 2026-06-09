@@ -1,17 +1,16 @@
 "use client";
 
-import { useState, useMemo, useRef } from "react";
+import { useId, useState, useMemo } from "react";
 import {
   IconCreditCard,
   IconInfoCircle,
-  IconTrendingDown,
-  IconAlertTriangle,
   IconLayoutGrid,
   IconScale,
   IconCalculator,
   IconRefresh,
   IconCirclePercentage,
 } from "@tabler/icons-react";
+import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
 
 // ─── Interchange rate data (US, representative 2024 published values) ─────────
 // Source: Visa/Mastercard published interchange tables; Amex OptBlue program
@@ -113,7 +112,6 @@ const fmtVolume = (n: number) =>
   n >= 1000 ? `$${(n / 1000).toFixed(n >= 10_000 ? 0 : 1)}k` : `$${n}`;
 
 // ─── Slider ───────────────────────────────────────────────────────────────────
-let sliderUid = 0;
 function Slider({
   label,
   value,
@@ -134,11 +132,7 @@ function Slider({
   hint?: string;
 }) {
   const pct = ((value - min) / (max - min)) * 100;
-  const idRef = useRef<string | null>(null);
-  if (idRef.current === null) {
-    idRef.current = `iq-slider-${++sliderUid}`;
-  }
-  const inputId = idRef.current;
+  const inputId = useId();
   const hintId = hint ? `${inputId}-hint` : undefined;
   return (
     <div className="space-y-1.5">
@@ -277,22 +271,62 @@ export function InterchangeIQClient() {
     { label: "Amex",           pct: cardMix.amexFraction   * 100, rate: "~2.30%" },
   ];
 
-  return (
-    <div className="tool-page-stack">
-      <div className="tool-shell" data-testid="interchange-iq-shell">
-        {/* ── Sidebar ── */}
-        <aside className="tool-sidebar" aria-label="Interchange IQ navigation">
-          <div className="tool-brand">
-            <div className="tool-brand-mark" aria-hidden="true">
-              <IconCreditCard size={18} />
-            </div>
-            <div className="tool-brand-name">
-              Interchange IQ
-              <small>Fee analyzer</small>
-            </div>
-          </div>
+  const monthlyTxCount = avgTicket > 0 ? monthlyVolume / avgTicket : 0;
+  const annualSavings = savingsVsWorst * 12;
 
-          <nav className="flex flex-col gap-1.5" aria-label="In-page sections">
+  const interchangeStatsCells: HomeStatsCell[] = [
+    {
+      label: "Best processor",
+      value: cheapest.name,
+      sub: cheapest.model,
+    },
+    {
+      label: "Best fee",
+      value: fmtFull(cheapest.monthlyFee),
+      sub: "per month",
+    },
+    {
+      label: "Effective rate",
+      value: `${(cheapest.effectiveRate * 100).toFixed(2)}%`,
+    },
+    {
+      label: "Savings vs worst",
+      value: fmtFull(savingsVsWorst),
+      sub: `vs ${worst.name}`,
+    },
+    {
+      label: "Savings vs flat",
+      value: savings > 0 ? fmtFull(savings) : "—",
+      sub: savings > 0 ? `vs ${bestFlat.name}` : "Flat-rate wins",
+    },
+    {
+      label: "Annual savings",
+      value: fmtFull(annualSavings),
+      tone: annualSavings > 0 ? "good" : "default",
+    },
+    {
+      label: "Monthly tx",
+      value: Math.round(monthlyTxCount).toLocaleString(),
+    },
+    {
+      label: "Avg per-tx fee",
+      value: fmtFull(cheapest.perTxAvg),
+    },
+  ];
+
+  return (
+    <section
+      className="home-page min-h-screen"
+      aria-label="Interchange IQ"
+      data-testid="interchange-iq-shell"
+    >
+      <div className="home-shell home-section">
+        <div className="flex flex-col gap-6">
+          {/* In-page section nav (replaces sidebar) */}
+          <nav
+            className="flex flex-wrap gap-2"
+            aria-label="In-page sections"
+          >
             {navItems.map((item) => {
               const isActive = item.id === activeView;
               const Icon =
@@ -304,26 +338,26 @@ export function InterchangeIQClient() {
                 <a
                   key={item.id}
                   href={item.href}
-                  className={`tool-nav-link${isActive ? " is-active" : ""}`}
                   aria-current={isActive ? "true" : undefined}
                   onClick={() => setActiveView(item.id)}
+                  className="inline-flex min-h-touch items-center gap-2 rounded-full border px-4 py-1.5 text-sm font-semibold transition-[transform,border-color,background-color,color] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                  style={{
+                    borderColor: isActive ? "var(--home-ink)" : "var(--home-rule)",
+                    background: isActive
+                      ? "var(--home-ink)"
+                      : "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))",
+                    color: isActive ? "var(--home-paper)" : "var(--home-ink-muted)",
+                    fontFamily: "var(--font-home-sans)",
+                  }}
                 >
-                  <Icon size={18} aria-hidden="true" />
+                  <Icon size={16} aria-hidden="true" />
                   {item.label}
                 </a>
               );
             })}
           </nav>
 
-          <div className="tool-sidebar-footer">
-            <IconInfoCircle size={14} aria-hidden="true" />
-            <span>Modeled on 2024 rates</span>
-          </div>
-        </aside>
-
-        {/* ── Main ── */}
-        <main className="tool-main" id="hero">
-          <div className="tool-topbar">
+          <div className="tool-topbar" id="hero">
             <div>
               <p className="tool-crumbs">
                 Interchange IQ / <strong>{VIEW_LABELS[activeView]}</strong>
@@ -369,94 +403,21 @@ export function InterchangeIQClient() {
             </span>
           </div>
 
-          <div className="mt-5 space-y-5">
-            {/* Hero card — headline result */}
-            <article className="tool-card tool-card-hero" id="result-hero">
-              <div className="flex items-start gap-3">
-                {savings > 100 ? (
-                  <IconTrendingDown
-                    className="h-5 w-5 flex-shrink-0 mt-1"
-                    style={{ color: "var(--color-success)" }}
-                    aria-hidden="true"
-                  />
-                ) : savings < -50 ? (
-                  <IconAlertTriangle
-                    className="h-5 w-5 flex-shrink-0 mt-1"
-                    style={{ color: "var(--color-warning)" }}
-                    aria-hidden="true"
-                  />
-                ) : (
-                  <IconInfoCircle
-                    className="h-5 w-5 flex-shrink-0 mt-1"
-                    style={{ color: "var(--home-haze)" }}
-                    aria-hidden="true"
-                  />
-                )}
-                <div className="min-w-0 flex-1 space-y-2">
-                  <p
-                    className="mb-0"
-                    style={{
-                      fontFamily: "var(--font-home-sans)",
-                      fontSize: "10.5px",
-                      fontWeight: 700,
-                      letterSpacing: "0.14em",
-                      textTransform: "uppercase",
-                      color: "var(--home-ink-muted)",
-                    }}
-                  >
-                    Best processor for your profile
-                  </p>
-                  <p
-                    className="mb-0 tabular-nums"
-                    style={{
-                      fontFamily: "var(--font-home-sans)",
-                      fontSize: "clamp(1.5rem, 1.5vw + 1rem, 1.95rem)",
-                      fontWeight: 600,
-                      letterSpacing: "-0.04em",
-                      lineHeight: 1.05,
-                      color: "var(--home-ink)",
-                    }}
-                  >
-                    {cheapest.name}{" "}
-                    <span style={{ color: "var(--home-haze)" }}>
-                      {fmtFull(cheapest.monthlyFee)}
-                    </span>
-                    <span
-                      style={{
-                        fontWeight: 400,
-                        color: "var(--home-ink-muted)",
-                        fontSize: "0.7em",
-                      }}
-                    >
-                      {" "}/mo
-                    </span>
-                  </p>
-                  <p
-                    className="mb-0"
-                    style={{
-                      fontFamily: "var(--font-home-sans)",
-                      fontSize: "13.5px",
-                      lineHeight: 1.55,
-                      color: "var(--home-ink-muted)",
-                    }}
-                  >
-                    {savingsVsWorst > 0 ? (
-                      <>
-                        <span className="tabular-nums" style={{ color: "var(--home-ink)", fontWeight: 600 }}>
-                          {fmtFull(savingsVsWorst)}/mo
-                        </span>{" "}
-                        less than {worst.name} ({fmtFull(savingsVsWorst * 12)}/yr).{" "}
-                      </>
-                    ) : null}
-                    {savings > 100
-                      ? `Interchange+ wins at this volume. ${bestIC.name} saves ${fmtFull(savings)}/mo over the cheapest flat-rate option.`
-                      : savings < -50
-                      ? "Flat-rate is cheaper here. Per-transaction fixed fees compound at lower ticket sizes."
-                      : "Flat-rate and interchange+ are roughly equivalent at this profile."}
-                  </p>
-                </div>
-              </div>
-            </article>
+          <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,320px)]">
+            <div className="space-y-5">
+            <HomeStatsPanel
+              id="result-hero"
+              title="Verdict at a glance"
+              meta={`${cheapest.name} wins`}
+              hideLiveDot
+              cells={interchangeStatsCells}
+              pills={[
+                { label: "Sliders", href: "#hero" },
+                { label: "Card mix", href: "#hero" },
+                { label: "Breakeven", href: "#breakeven" },
+                { label: "Reference", href: "#all-processors" },
+              ]}
+            />
 
             {/* Processor comparison — table-style rows */}
             <article className="tool-card" id="all-processors">
@@ -686,10 +647,12 @@ export function InterchangeIQClient() {
               )}
             </article>
           </div>
-        </main>
 
         {/* ── Rail ── */}
-        <aside className="tool-rail" aria-label="Inputs side panel">
+        <aside
+          aria-label="Inputs side panel"
+          className="flex flex-col gap-4 rounded-[1.5rem] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_74%,var(--home-elev-mix))] p-5 shadow-[var(--shadow-sm)] lg:sticky lg:top-24 lg:self-start lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto"
+        >
           <section>
             <p className="tool-rail-label">
               <IconCreditCard size={12} aria-hidden="true" />
@@ -899,6 +862,8 @@ export function InterchangeIQClient() {
           only. Actual rates vary by industry, card type, and negotiated terms.
         </p>
       </section>
-    </div>
+        </div>
+      </div>
+    </section>
   );
 }

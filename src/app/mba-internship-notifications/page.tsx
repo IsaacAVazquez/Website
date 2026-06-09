@@ -29,7 +29,7 @@ export const metadata = constructMetadata({
     ],
     contentType: "Software Application",
     context:
-      "Portfolio tool by Isaac Vazquez (UC Berkeley Haas MBA candidate) tracking MBA internships and full-time business roles across Greenhouse, Lever, and Ashby job boards plus curated manual career portals at major tech companies.",
+      "Portfolio tool by Isaac Vazquez (UC Berkeley Haas MBA candidate) tracking MBA internships and full-time business roles across Greenhouse, Lever, Ashby, SmartRecruiters, and direct career pages plus curated manual career portals at major tech companies.",
     summary:
       "Real-time dashboard polling public job boards across 32 tech companies for MBA internships and full-time business roles, with new-since-last-visit detection, browser notifications, and email digests.",
     primaryFocus:
@@ -45,6 +45,8 @@ interface MBAJobsPageProps {
     category?: string;
     roleType?: string;
     roleFamily?: string;
+    view?: string;
+    external?: string;
   }>;
 }
 
@@ -72,7 +74,7 @@ export default async function MBAJobsPage({ searchParams }: MBAJobsPageProps) {
         data={{
           name: "Job Search",
           description:
-            "Career page and public job board monitor for MBA internships and full-time business roles across 32 tech companies.",
+            "Career page and public job board monitor for MBA internships and full-time business roles across 32 tech companies, with optional external job leads.",
           url: "https://isaacavazquez.com/mba-internship-notifications",
           applicationCategory: "BusinessApplication",
           programmingLanguage: ["TypeScript", "Next.js"],

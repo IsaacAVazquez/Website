@@ -1,0 +1,10 @@
+# Default owner for all paths
+* @IsaacAVazquez
+
+# Workflows require explicit review (security-sensitive)
+/.github/ @IsaacAVazquez
+
+# Build / deploy config
+/netlify.toml @IsaacAVazquez
+/next.config.mjs @IsaacAVazquez
+/package.json @IsaacAVazquez

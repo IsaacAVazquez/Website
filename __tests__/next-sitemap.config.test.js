@@ -1,5 +1,7 @@
 import sitemapConfig from "../next-sitemap.config.js";
 
+const investmentsIndex = require("../public/data/investments/index.json");
+
 describe("next-sitemap config", () => {
   test("includes the explicit public-route allowlist and omits internal pages", async () => {
     const paths = await sitemapConfig.additionalPaths({});
@@ -32,7 +34,7 @@ describe("next-sitemap config", () => {
     const investmentsTool = paths.find((path) => path.loc === "/investments");
 
     expect(investmentArticle.lastmod).toBe(new Date("2026-04-02T00:00:00.000Z").toISOString());
-    expect(investmentsTool.lastmod).toBe(new Date("2026-04-10T07:59:18.898372+00:00").toISOString());
+    expect(investmentsTool.lastmod).toBe(new Date(investmentsIndex.lastUpdated).toISOString());
     expect(investmentArticle).not.toHaveProperty("priority");
     expect(investmentArticle).not.toHaveProperty("changefreq");
   });

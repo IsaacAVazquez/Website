@@ -51,6 +51,7 @@ export function StockSearch({ value, onChange }: Props) {
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- One-shot mount flag to gate portal rendering until after hydration
     setMounted(true);
   }, []);
 
@@ -63,6 +64,7 @@ export function StockSearch({ value, onChange }: Props) {
   }, []);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Mirror controlled prop value into local input state when external value changes
     setInput(value);
   }, [value]);
 
@@ -121,6 +123,7 @@ export function StockSearch({ value, onChange }: Props) {
     hasInput && index !== null && !isSeededSymbol && suggestions.length === 0;
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Reset highlighted suggestion when the suggestion list changes
     setActiveIndex(suggestions.length > 0 ? 0 : -1);
   }, [suggestions]);
 

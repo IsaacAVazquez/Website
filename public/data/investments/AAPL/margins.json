@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-06-30",
+      "gross_profit": 35885000000.0,
+      "total_revenue": 82959000000.0,
+      "gross_margin": 0.4326
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-06-30",
+      "gross_profit": 36413000000.0,
+      "total_revenue": 81797000000.0,
+      "gross_margin": 0.4452
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-09-30",
+      "gross_profit": 40427000000.0,
+      "total_revenue": 89498000000.0,
+      "gross_margin": 0.4517
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-12-31",
+      "gross_profit": 54855000000.0,
+      "total_revenue": 119575000000.0,
+      "gross_margin": 0.4587
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-03-31",
+      "gross_profit": 42271000000.0,
+      "total_revenue": 90753000000.0,
+      "gross_margin": 0.4658
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-06-30",
+      "gross_profit": 39678000000.0,
+      "total_revenue": 85777000000.0,
+      "gross_margin": 0.4626
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-09-30",
+      "gross_profit": 43879000000.0,
+      "total_revenue": 94930000000.0,
+      "gross_margin": 0.4622
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-12-31",
+      "gross_profit": 58275000000.0,
+      "total_revenue": 124300000000.0,
+      "gross_margin": 0.4688
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-03-31",
+      "gross_profit": 44867000000.0,
+      "total_revenue": 95359000000.0,
+      "gross_margin": 0.4705
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-06-30",
+      "gross_profit": 43718000000.0,
+      "total_revenue": 94036000000.0,
+      "gross_margin": 0.4649
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-09-30",
+      "gross_profit": 48341000000.0,
+      "total_revenue": 102466000000.0,
+      "gross_margin": 0.4718
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-12-31",
+      "gross_profit": 69231000000.0,
+      "total_revenue": 143756000000.0,
+      "gross_margin": 0.4816
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2026-03-31",
+      "gross_profit": 54781000000.0,
+      "total_revenue": 111184000000.0,
+      "gross_margin": 0.4927
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "AAPL",
+      "report_date": "2019-09-30",
+      "gross_profit": 98392000000.0,
+      "total_revenue": 260174000000.0,
+      "gross_margin": 0.3782
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2020-09-30",
+      "gross_profit": 104956000000.0,
+      "total_revenue": 274515000000.0,
+      "gross_margin": 0.3823
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2021-09-30",
+      "gross_profit": 152836000000.0,
+      "total_revenue": 365817000000.0,
+      "gross_margin": 0.4178
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-09-30",
+      "gross_profit": 170782000000.0,
+      "total_revenue": 394328000000.0,
+      "gross_margin": 0.4331
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-09-30",
+      "gross_profit": 169148000000.0,
+      "total_revenue": 383285000000.0,
+      "gross_margin": 0.4413
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-09-30",
+      "gross_profit": 180683000000.0,
+      "total_revenue": 391035000000.0,
+      "gross_margin": 0.4621
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-09-30",
+      "gross_profit": 195201000000.0,
+      "total_revenue": 416161000000.0,
+      "gross_margin": 0.4691
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-06-30",
+      "operating_income": 23076000000.0,
+      "total_revenue": 82959000000.0,
+      "operating_margin": 0.2782
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-06-30",
+      "operating_income": 22998000000.0,
+      "total_revenue": 81797000000.0,
+      "operating_margin": 0.2812
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-09-30",
+      "operating_income": 26969000000.0,
+      "total_revenue": 89498000000.0,
+      "operating_margin": 0.3013
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-12-31",
+      "operating_income": 40373000000.0,
+      "total_revenue": 119575000000.0,
+      "operating_margin": 0.3376
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-03-31",
+      "operating_income": 27900000000.0,
+      "total_revenue": 90753000000.0,
+      "operating_margin": 0.3074
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-06-30",
+      "operating_income": 25352000000.0,
+      "total_revenue": 85777000000.0,
+      "operating_margin": 0.2956
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-09-30",
+      "operating_income": 29591000000.0,
+      "total_revenue": 94930000000.0,
+      "operating_margin": 0.3117
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-12-31",
+      "operating_income": 42832000000.0,
+      "total_revenue": 124300000000.0,
+      "operating_margin": 0.3446
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-03-31",
+      "operating_income": 29589000000.0,
+      "total_revenue": 95359000000.0,
+      "operating_margin": 0.3103
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-06-30",
+      "operating_income": 28202000000.0,
+      "total_revenue": 94036000000.0,
+      "operating_margin": 0.2999
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-09-30",
+      "operating_income": 32427000000.0,
+      "total_revenue": 102466000000.0,
+      "operating_margin": 0.3165
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-12-31",
+      "operating_income": 50852000000.0,
+      "total_revenue": 143756000000.0,
+      "operating_margin": 0.3537
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2026-03-31",
+      "operating_income": 35885000000.0,
+      "total_revenue": 111184000000.0,
+      "operating_margin": 0.3228
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "AAPL",
+      "report_date": "2019-09-30",
+      "operating_income": 63930000000.0,
+      "total_revenue": 260174000000.0,
+      "operating_margin": 0.2457
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2020-09-30",
+      "operating_income": 66288000000.0,
+      "total_revenue": 274515000000.0,
+      "operating_margin": 0.2415
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2021-09-30",
+      "operating_income": 108949000000.0,
+      "total_revenue": 365817000000.0,
+      "operating_margin": 0.2978
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-09-30",
+      "operating_income": 119437000000.0,
+      "total_revenue": 394328000000.0,
+      "operating_margin": 0.3029
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-09-30",
+      "operating_income": 114301000000.0,
+      "total_revenue": 383285000000.0,
+      "operating_margin": 0.2982
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-09-30",
+      "operating_income": 123216000000.0,
+      "total_revenue": 391035000000.0,
+      "operating_margin": 0.3151
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-09-30",
+      "operating_income": 133050000000.0,
+      "total_revenue": 416161000000.0,
+      "operating_margin": 0.3197
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 19442000000.0,
+      "total_revenue": 82959000000.0,
+      "net_margin": 0.2344
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 19881000000.0,
+      "total_revenue": 81797000000.0,
+      "net_margin": 0.2431
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 22956000000.0,
+      "total_revenue": 89498000000.0,
+      "net_margin": 0.2565
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 33916000000.0,
+      "total_revenue": 119575000000.0,
+      "net_margin": 0.2836
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 23636000000.0,
+      "total_revenue": 90753000000.0,
+      "net_margin": 0.2604
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 21448000000.0,
+      "total_revenue": 85777000000.0,
+      "net_margin": 0.25
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 14736000000.0,
+      "total_revenue": 94930000000.0,
+      "net_margin": 0.1552
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 36330000000.0,
+      "total_revenue": 124300000000.0,
+      "net_margin": 0.2923
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 24780000000.0,
+      "total_revenue": 95359000000.0,
+      "net_margin": 0.2599
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 23434000000.0,
+      "total_revenue": 94036000000.0,
+      "net_margin": 0.2492
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 27466000000.0,
+      "total_revenue": 102466000000.0,
+      "net_margin": 0.268
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 42097000000.0,
+      "total_revenue": 143756000000.0,
+      "net_margin": 0.2928
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 29578000000.0,
+      "total_revenue": 111184000000.0,
+      "net_margin": 0.266
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "AAPL",
+      "report_date": "2019-09-30",
+      "net_income_common_stockholders": 55256000000.0,
+      "total_revenue": 260174000000.0,
+      "net_margin": 0.2124
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2020-09-30",
+      "net_income_common_stockholders": 57411000000.0,
+      "total_revenue": 274515000000.0,
+      "net_margin": 0.2091
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2021-09-30",
+      "net_income_common_stockholders": 94680000000.0,
+      "total_revenue": 365817000000.0,
+      "net_margin": 0.2588
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": 99803000000.0,
+      "total_revenue": 394328000000.0,
+      "net_margin": 0.2531
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 96995000000.0,
+      "total_revenue": 383285000000.0,
+      "net_margin": 0.2531
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 93736000000.0,
+      "total_revenue": 391035000000.0,
+      "net_margin": 0.2397
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 112010000000.0,
+      "total_revenue": 416161000000.0,
+      "net_margin": 0.2692
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 82959000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-06-30",
+      "ebitda": 26050000000.0,
+      "total_revenue": 81797000000.0,
+      "ebitda_margin": 0.3185
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-09-30",
+      "ebitda": 30653000000.0,
+      "total_revenue": 89498000000.0,
+      "ebitda_margin": 0.3425
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-12-31",
+      "ebitda": 43221000000.0,
+      "total_revenue": 119575000000.0,
+      "ebitda_margin": 0.3615
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-03-31",
+      "ebitda": 30736000000.0,
+      "total_revenue": 90753000000.0,
+      "ebitda_margin": 0.3387
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-06-30",
+      "ebitda": 28202000000.0,
+      "total_revenue": 85777000000.0,
+      "ebitda_margin": 0.3288
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-09-30",
+      "ebitda": 32502000000.0,
+      "total_revenue": 94930000000.0,
+      "ebitda_margin": 0.3424
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-12-31",
+      "ebitda": 45912000000.0,
+      "total_revenue": 124300000000.0,
+      "ebitda_margin": 0.3694
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-03-31",
+      "ebitda": 32250000000.0,
+      "total_revenue": 95359000000.0,
+      "ebitda_margin": 0.3382
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-06-30",
+      "ebitda": 31032000000.0,
+      "total_revenue": 94036000000.0,
+      "ebitda_margin": 0.33
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-09-30",
+      "ebitda": 35554000000.0,
+      "total_revenue": 102466000000.0,
+      "ebitda_margin": 0.347
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-12-31",
+      "ebitda": 54066000000.0,
+      "total_revenue": 143756000000.0,
+      "ebitda_margin": 0.3761
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2026-03-31",
+      "ebitda": 39324000000.0,
+      "total_revenue": 111184000000.0,
+      "ebitda_margin": 0.3537
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "AAPL",
+      "report_date": "2019-09-30",
+      "ebitda": null,
+      "total_revenue": 260174000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2020-09-30",
+      "ebitda": 81020000000.0,
+      "total_revenue": 274515000000.0,
+      "ebitda_margin": 0.2951
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2021-09-30",
+      "ebitda": 123136000000.0,
+      "total_revenue": 365817000000.0,
+      "ebitda_margin": 0.3366
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-09-30",
+      "ebitda": 130541000000.0,
+      "total_revenue": 394328000000.0,
+      "ebitda_margin": 0.331
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-09-30",
+      "ebitda": 125820000000.0,
+      "total_revenue": 383285000000.0,
+      "ebitda_margin": 0.3283
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-09-30",
+      "ebitda": 134661000000.0,
+      "total_revenue": 391035000000.0,
+      "ebitda_margin": 0.3444
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-09-30",
+      "ebitda": 144748000000.0,
+      "total_revenue": 416161000000.0,
+      "ebitda_margin": 0.3478
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 20790000000.0,
+      "total_revenue": 82959000000.0,
+      "fcf_margin": 0.2506
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 24287000000.0,
+      "total_revenue": 81797000000.0,
+      "fcf_margin": 0.2969
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 19435000000.0,
+      "total_revenue": 89498000000.0,
+      "fcf_margin": 0.2172
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 37503000000.0,
+      "total_revenue": 119575000000.0,
+      "fcf_margin": 0.3136
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 20694000000.0,
+      "total_revenue": 90753000000.0,
+      "fcf_margin": 0.228
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 26707000000.0,
+      "total_revenue": 85777000000.0,
+      "fcf_margin": 0.3114
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 23903000000.0,
+      "total_revenue": 94930000000.0,
+      "fcf_margin": 0.2518
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 26995000000.0,
+      "total_revenue": 124300000000.0,
+      "fcf_margin": 0.2172
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 20881000000.0,
+      "total_revenue": 95359000000.0,
+      "fcf_margin": 0.219
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 24405000000.0,
+      "total_revenue": 94036000000.0,
+      "fcf_margin": 0.2595
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 26486000000.0,
+      "total_revenue": 102466000000.0,
+      "fcf_margin": 0.2585
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 51552000000.0,
+      "total_revenue": 143756000000.0,
+      "fcf_margin": 0.3586
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 26731000000.0,
+      "total_revenue": 111184000000.0,
+      "fcf_margin": 0.2404
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "AAPL",
+      "report_date": "2019-09-30",
+      "free_cash_flow": null,
+      "total_revenue": 260174000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2020-09-30",
+      "free_cash_flow": 73365000000.0,
+      "total_revenue": 274515000000.0,
+      "fcf_margin": 0.2673
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2021-09-30",
+      "free_cash_flow": 92953000000.0,
+      "total_revenue": 365817000000.0,
+      "fcf_margin": 0.2541
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-09-30",
+      "free_cash_flow": 111443000000.0,
+      "total_revenue": 394328000000.0,
+      "fcf_margin": 0.2826
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 99584000000.0,
+      "total_revenue": 383285000000.0,
+      "fcf_margin": 0.2598
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 108807000000.0,
+      "total_revenue": 391035000000.0,
+      "fcf_margin": 0.2783
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 98767000000.0,
+      "total_revenue": 416161000000.0,
+      "fcf_margin": 0.2373
+    }
+  ]
+}

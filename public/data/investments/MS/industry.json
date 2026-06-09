@@ -1,0 +1,1559 @@
+{
+  "ttm_pe": [],
+  "ps_ratio": [],
+  "pb_ratio": [],
+  "roe": [
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 2038654604.0,
+      "total_avg_equity": 23042989632.5,
+      "industry_roe": 0.0885
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 2038654604.0,
+      "total_avg_equity": 23042989632.5,
+      "industry_roe": 0.0885
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 2038654604.0,
+      "total_avg_equity": 23042989632.5,
+      "industry_roe": 0.0885
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 129784947917.2728,
+      "total_avg_equity": 1483034136960.931,
+      "industry_roe": 0.0875
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 129779961600.2728,
+      "total_avg_equity": 1483072339957.431,
+      "industry_roe": 0.0875
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 130178711600.2728,
+      "total_avg_equity": 1492859291957.431,
+      "industry_roe": 0.0872
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 144292651666.6047,
+      "total_avg_equity": 1500279880345.804,
+      "industry_roe": 0.0962
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 144290616151.6047,
+      "total_avg_equity": 1500279995356.304,
+      "industry_roe": 0.0962
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 144406325151.6047,
+      "total_avg_equity": 1500370929856.304,
+      "industry_roe": 0.0962
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 156454022989.7404,
+      "total_avg_equity": 1518035425915.1602,
+      "industry_roe": 0.1031
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 156448529737.7404,
+      "total_avg_equity": 1518038714436.1602,
+      "industry_roe": 0.1031
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 156596823956.7404,
+      "total_avg_equity": 1518133658014.1602,
+      "industry_roe": 0.1032
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 186813680945.14954,
+      "total_avg_equity": 1534611098800.2715,
+      "industry_roe": 0.1217
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 186811406131.14954,
+      "total_avg_equity": 1534611434562.2715,
+      "industry_roe": 0.1217
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 186789304813.14954,
+      "total_avg_equity": 1534681979637.7715,
+      "industry_roe": 0.1217
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 195929405401.1245,
+      "total_avg_equity": 1563480589217.4028,
+      "industry_roe": 0.1253
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 195910268084.1245,
+      "total_avg_equity": 1563470432106.9028,
+      "industry_roe": 0.1253
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 195848929286.1813,
+      "total_avg_equity": 1563608835827.035,
+      "industry_roe": 0.1253
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 280824994700.1843,
+      "total_avg_equity": 1713173800561.5405,
+      "industry_roe": 0.1639
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 280811785446.1843,
+      "total_avg_equity": 1713187806990.0405,
+      "industry_roe": 0.1639
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 281203308485.5821,
+      "total_avg_equity": 1717654911501.363,
+      "industry_roe": 0.1637
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 303639419506.29456,
+      "total_avg_equity": 1746782929359.9795,
+      "industry_roe": 0.1738
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 303639510518.29456,
+      "total_avg_equity": 1746780866271.9795,
+      "industry_roe": 0.1738
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 298420134541.76056,
+      "total_avg_equity": 1748149781670.707,
+      "industry_roe": 0.1707
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 302495029363.2237,
+      "total_avg_equity": 1770656999128.4487,
+      "industry_roe": 0.1708
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 302496223056.2237,
+      "total_avg_equity": 1770647049782.9487,
+      "industry_roe": 0.1708
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 298706873056.22363,
+      "total_avg_equity": 1770018813186.4487,
+      "industry_roe": 0.1688
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 373733511191.53406,
+      "total_avg_equity": 1790462311866.1562,
+      "industry_roe": 0.2087
+    }
+  ],
+  "roa": [
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 2038654604.0,
+      "total_avg_assets": 157381548352.0,
+      "industry_roa": 0.013
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 2038654604.0,
+      "total_avg_assets": 157381548352.0,
+      "industry_roa": 0.013
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 2038654604.0,
+      "total_avg_assets": 157381548352.0,
+      "industry_roa": 0.013
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 129784947917.2728,
+      "total_avg_assets": 18024231078283.242,
+      "industry_roa": 0.0072
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 129779961600.2728,
+      "total_avg_assets": 18024273574153.242,
+      "industry_roa": 0.0072
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 130178711600.2728,
+      "total_avg_assets": 18083796118653.242,
+      "industry_roa": 0.0072
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 144292651666.6047,
+      "total_avg_assets": 17889157005293.934,
+      "industry_roa": 0.0081
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 144290616151.6047,
+      "total_avg_assets": 17889157569539.434,
+      "industry_roa": 0.0081
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 144406325151.6047,
+      "total_avg_assets": 17890225154539.434,
+      "industry_roa": 0.0081
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 156454022989.7404,
+      "total_avg_assets": 18499508759825.387,
+      "industry_roa": 0.0085
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 156448529737.7404,
+      "total_avg_assets": 18499512923010.887,
+      "industry_roa": 0.0085
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 156596823956.7404,
+      "total_avg_assets": 18501577340391.887,
+      "industry_roa": 0.0085
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 186813680945.14954,
+      "total_avg_assets": 18463220316543.707,
+      "industry_roa": 0.0101
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 186811406131.14954,
+      "total_avg_assets": 18463219808981.707,
+      "industry_roa": 0.0101
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 186789304813.14954,
+      "total_avg_assets": 18467182806203.207,
+      "industry_roa": 0.0101
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 195929405401.1245,
+      "total_avg_assets": 18844604908872.445,
+      "industry_roa": 0.0104
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 195910268084.1245,
+      "total_avg_assets": 18844595994416.445,
+      "industry_roa": 0.0104
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 195848929286.1813,
+      "total_avg_assets": 18843269458060.203,
+      "industry_roa": 0.0104
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 280824994700.1843,
+      "total_avg_assets": 21199833448205.543,
+      "industry_roa": 0.0132
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 280811785446.1843,
+      "total_avg_assets": 21199848322772.543,
+      "industry_roa": 0.0132
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 281203308485.5821,
+      "total_avg_assets": 21205801847844.418,
+      "industry_roa": 0.0133
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 303639419506.29456,
+      "total_avg_assets": 21164729037495.53,
+      "industry_roa": 0.0143
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 303639510518.29456,
+      "total_avg_assets": 21164726522423.03,
+      "industry_roa": 0.0143
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 298420134541.76056,
+      "total_avg_assets": 21172346174656.566,
+      "industry_roa": 0.0141
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 302495029363.2237,
+      "total_avg_assets": 21983251736440.37,
+      "industry_roa": 0.0138
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 302496223056.2237,
+      "total_avg_assets": 21983242547075.87,
+      "industry_roa": 0.0138
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 298706873056.22363,
+      "total_avg_assets": 21980163718145.87,
+      "industry_roa": 0.0136
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 373733511191.53406,
+      "total_avg_assets": 23508370879347.332,
+      "industry_roa": 0.0159
+    }
+  ],
+  "equity_multiplier": [
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roe": 0.0885,
+      "industry_roa": 0.013,
+      "industry_equity_multiplier": 6.81
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roe": 0.0885,
+      "industry_roa": 0.013,
+      "industry_equity_multiplier": 6.81
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roe": 0.0885,
+      "industry_roa": 0.013,
+      "industry_equity_multiplier": 6.81
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roe": 0.0875,
+      "industry_roa": 0.0072,
+      "industry_equity_multiplier": 12.15
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roe": 0.0875,
+      "industry_roa": 0.0072,
+      "industry_equity_multiplier": 12.15
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roe": 0.0872,
+      "industry_roa": 0.0072,
+      "industry_equity_multiplier": 12.11
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roe": 0.0962,
+      "industry_roa": 0.0081,
+      "industry_equity_multiplier": 11.88
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roe": 0.0962,
+      "industry_roa": 0.0081,
+      "industry_equity_multiplier": 11.88
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roe": 0.0962,
+      "industry_roa": 0.0081,
+      "industry_equity_multiplier": 11.88
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roe": 0.1031,
+      "industry_roa": 0.0085,
+      "industry_equity_multiplier": 12.13
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roe": 0.1031,
+      "industry_roa": 0.0085,
+      "industry_equity_multiplier": 12.13
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roe": 0.1032,
+      "industry_roa": 0.0085,
+      "industry_equity_multiplier": 12.14
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roe": 0.1217,
+      "industry_roa": 0.0101,
+      "industry_equity_multiplier": 12.05
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roe": 0.1217,
+      "industry_roa": 0.0101,
+      "industry_equity_multiplier": 12.05
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roe": 0.1217,
+      "industry_roa": 0.0101,
+      "industry_equity_multiplier": 12.05
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roe": 0.1253,
+      "industry_roa": 0.0104,
+      "industry_equity_multiplier": 12.05
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roe": 0.1253,
+      "industry_roa": 0.0104,
+      "industry_equity_multiplier": 12.05
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roe": 0.1253,
+      "industry_roa": 0.0104,
+      "industry_equity_multiplier": 12.05
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roe": 0.1639,
+      "industry_roa": 0.0132,
+      "industry_equity_multiplier": 12.42
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roe": 0.1639,
+      "industry_roa": 0.0132,
+      "industry_equity_multiplier": 12.42
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roe": 0.1637,
+      "industry_roa": 0.0133,
+      "industry_equity_multiplier": 12.31
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roe": 0.1738,
+      "industry_roa": 0.0143,
+      "industry_equity_multiplier": 12.15
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roe": 0.1738,
+      "industry_roa": 0.0143,
+      "industry_equity_multiplier": 12.15
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roe": 0.1707,
+      "industry_roa": 0.0141,
+      "industry_equity_multiplier": 12.11
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roe": 0.1708,
+      "industry_roa": 0.0138,
+      "industry_equity_multiplier": 12.38
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roe": 0.1708,
+      "industry_roa": 0.0138,
+      "industry_equity_multiplier": 12.38
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roe": 0.1688,
+      "industry_roa": 0.0136,
+      "industry_equity_multiplier": 12.41
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roe": 0.2087,
+      "industry_roa": 0.0159,
+      "industry_equity_multiplier": 13.13
+    }
+  ],
+  "gross_margin": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_gross_profit": 660883000.0,
+      "total_ttm_revenue": 2037621000.0,
+      "industry_gross_margin": 0.3243
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_gross_profit": 660883000.0,
+      "total_ttm_revenue": 2037621000.0,
+      "industry_gross_margin": 0.3243
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_gross_profit": 660883000.0,
+      "total_ttm_revenue": 2037621000.0,
+      "industry_gross_margin": 0.3243
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_gross_profit": 652569000.0,
+      "total_ttm_revenue": 2043939000.0,
+      "industry_gross_margin": 0.3193
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_gross_profit": 652569000.0,
+      "total_ttm_revenue": 2043939000.0,
+      "industry_gross_margin": 0.3193
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_gross_profit": 652569000.0,
+      "total_ttm_revenue": 2043939000.0,
+      "industry_gross_margin": 0.3193
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_gross_profit": 1327702159.0,
+      "total_ttm_revenue": 4893168855.0,
+      "industry_gross_margin": 0.2713
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_gross_profit": 1327702159.0,
+      "total_ttm_revenue": 4893168855.0,
+      "industry_gross_margin": 0.2713
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_gross_profit": 1327702159.0,
+      "total_ttm_revenue": 4893168855.0,
+      "industry_gross_margin": 0.2713
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_gross_profit": 4069808737.0,
+      "total_ttm_revenue": 10461867530.0,
+      "industry_gross_margin": 0.389
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_gross_profit": 4069808737.0,
+      "total_ttm_revenue": 10461867530.0,
+      "industry_gross_margin": 0.389
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_gross_profit": 4069808737.0,
+      "total_ttm_revenue": 10461867530.0,
+      "industry_gross_margin": 0.389
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_gross_profit": 26539765700.808517,
+      "total_ttm_revenue": 138594523673.32767,
+      "industry_gross_margin": 0.1915
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_gross_profit": 26544609075.808517,
+      "total_ttm_revenue": 138599475108.32767,
+      "industry_gross_margin": 0.1915
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_gross_profit": 32070410075.808517,
+      "total_ttm_revenue": 147677366108.32767,
+      "industry_gross_margin": 0.2172
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_gross_profit": 33867074660.89647,
+      "total_ttm_revenue": 160832864604.3998,
+      "industry_gross_margin": 0.2106
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_gross_profit": 33865704911.89647,
+      "total_ttm_revenue": 160831487022.3998,
+      "industry_gross_margin": 0.2106
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_gross_profit": 34129664911.89647,
+      "total_ttm_revenue": 161386161022.3998,
+      "industry_gross_margin": 0.2115
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_gross_profit": 34634835591.6614,
+      "total_ttm_revenue": 180077368857.51328,
+      "industry_gross_margin": 0.1923
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_gross_profit": 34632964814.6614,
+      "total_ttm_revenue": 180075497727.51328,
+      "industry_gross_margin": 0.1923
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_gross_profit": 35060327759.6614,
+      "total_ttm_revenue": 180962001767.51328,
+      "industry_gross_margin": 0.1937
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_gross_profit": 38027056398.123314,
+      "total_ttm_revenue": 209659747195.5107,
+      "industry_gross_margin": 0.1814
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_gross_profit": 38026218007.123314,
+      "total_ttm_revenue": 209658857084.5107,
+      "industry_gross_margin": 0.1814
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_gross_profit": 38025974385.123314,
+      "total_ttm_revenue": 209580404471.5107,
+      "industry_gross_margin": 0.1814
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_gross_profit": 38689947434.38037,
+      "total_ttm_revenue": 230797967804.6171,
+      "industry_gross_margin": 0.1676
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_gross_profit": 38690067242.38037,
+      "total_ttm_revenue": 230798504259.6171,
+      "industry_gross_margin": 0.1676
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_gross_profit": 38650801427.38037,
+      "total_ttm_revenue": 230777350124.6171,
+      "industry_gross_margin": 0.1675
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_gross_profit": 55472512687.549774,
+      "total_ttm_revenue": 273765028528.2505,
+      "industry_gross_margin": 0.2026
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_gross_profit": 55472606382.549774,
+      "total_ttm_revenue": 273765074911.2505,
+      "industry_gross_margin": 0.2026
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_gross_profit": 55572486952.549774,
+      "total_ttm_revenue": 274077802366.2505,
+      "industry_gross_margin": 0.2028
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_gross_profit": 58240250093.78477,
+      "total_ttm_revenue": 291256710313.6854,
+      "industry_gross_margin": 0.2
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_gross_profit": 58240148545.78477,
+      "total_ttm_revenue": 291256590861.6854,
+      "industry_gross_margin": 0.2
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_gross_profit": 58247169545.78477,
+      "total_ttm_revenue": 291355264861.6854,
+      "industry_gross_margin": 0.1999
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_gross_profit": 62034040140.01673,
+      "total_ttm_revenue": 372842040427.202,
+      "industry_gross_margin": 0.1664
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_gross_profit": 62033987137.01673,
+      "total_ttm_revenue": 372841982092.202,
+      "industry_gross_margin": 0.1664
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_gross_profit": 62186628137.01673,
+      "total_ttm_revenue": 381606391092.202,
+      "industry_gross_margin": 0.163
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_gross_profit": 85324285205.25256,
+      "total_ttm_revenue": 482834447070.0104,
+      "industry_gross_margin": 0.1767
+    }
+  ],
+  "ebitda_margin": [
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_ebitda": 190051000.0,
+      "total_ttm_revenue": 2043939000.0,
+      "industry_ebitda_margin": 0.093
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_ebitda": 190051000.0,
+      "total_ttm_revenue": 2043939000.0,
+      "industry_ebitda_margin": 0.093
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_ebitda": 190051000.0,
+      "total_ttm_revenue": 2043939000.0,
+      "industry_ebitda_margin": 0.093
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_ebitda": 442065890.0,
+      "total_ttm_revenue": 4893168855.0,
+      "industry_ebitda_margin": 0.0903
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_ebitda": 442065890.0,
+      "total_ttm_revenue": 4893168855.0,
+      "industry_ebitda_margin": 0.0903
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_ebitda": 442065890.0,
+      "total_ttm_revenue": 4893168855.0,
+      "industry_ebitda_margin": 0.0903
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_ebitda": 1988704522.0,
+      "total_ttm_revenue": 10463977530.0,
+      "industry_ebitda_margin": 0.1901
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_ebitda": 1988704522.0,
+      "total_ttm_revenue": 10463977530.0,
+      "industry_ebitda_margin": 0.1901
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_ebitda": 1988704522.0,
+      "total_ttm_revenue": 10463977530.0,
+      "industry_ebitda_margin": 0.1901
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_ebitda": 22542637121.602604,
+      "total_ttm_revenue": 138671172673.32767,
+      "industry_ebitda_margin": 0.1626
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_ebitda": 22535451368.602604,
+      "total_ttm_revenue": 138676124108.32767,
+      "industry_ebitda_margin": 0.1625
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_ebitda": 26613874368.602604,
+      "total_ttm_revenue": 147754015108.32767,
+      "industry_ebitda_margin": 0.1801
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_ebitda": 27618534240.6604,
+      "total_ttm_revenue": 160921261604.3998,
+      "industry_ebitda_margin": 0.1716
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_ebitda": 27616775423.6604,
+      "total_ttm_revenue": 160919884022.3998,
+      "industry_ebitda_margin": 0.1716
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_ebitda": 27854044423.6604,
+      "total_ttm_revenue": 161474558022.3998,
+      "industry_ebitda_margin": 0.1725
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_ebitda": 27335379497.75692,
+      "total_ttm_revenue": 197623123857.51328,
+      "industry_ebitda_margin": 0.1383
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_ebitda": 27331711758.75692,
+      "total_ttm_revenue": 197621747727.51328,
+      "industry_ebitda_margin": 0.1383
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_ebitda": 27697829148.75692,
+      "total_ttm_revenue": 198508251767.51328,
+      "industry_ebitda_margin": 0.1395
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_ebitda": 30407474854.992702,
+      "total_ttm_revenue": 227248495011.4807,
+      "industry_ebitda_margin": 0.1338
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_ebitda": 30408446809.992702,
+      "total_ttm_revenue": 227247779900.4807,
+      "industry_ebitda_margin": 0.1338
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_ebitda": 30394098840.992702,
+      "total_ttm_revenue": 227169327287.4807,
+      "industry_ebitda_margin": 0.1338
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_ebitda": 27869882107.426567,
+      "total_ttm_revenue": 261426934032.5849,
+      "industry_ebitda_margin": 0.1066
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_ebitda": 27851812162.426567,
+      "total_ttm_revenue": 261427520487.5849,
+      "industry_ebitda_margin": 0.1065
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_ebitda": 27760839905.04369,
+      "total_ttm_revenue": 261406463308.25635,
+      "industry_ebitda_margin": 0.1062
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_ebitda": 38061287884.096504,
+      "total_ttm_revenue": 298867171764.19867,
+      "industry_ebitda_margin": 0.1274
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_ebitda": 38065881446.096504,
+      "total_ttm_revenue": 298868898147.19867,
+      "industry_ebitda_margin": 0.1274
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_ebitda": 38545716812.93392,
+      "total_ttm_revenue": 299181603205.0727,
+      "industry_ebitda_margin": 0.1288
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_ebitda": 42108427302.153625,
+      "total_ttm_revenue": 336231345571.32166,
+      "industry_ebitda_margin": 0.1252
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_ebitda": 42108520917.153625,
+      "total_ttm_revenue": 336231226119.32166,
+      "industry_ebitda_margin": 0.1252
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_ebitda": 36744572444.172485,
+      "total_ttm_revenue": 336329878789.0665,
+      "industry_ebitda_margin": 0.1093
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_ebitda": 33587367605.20103,
+      "total_ttm_revenue": 372979095560.70294,
+      "industry_ebitda_margin": 0.0901
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_ebitda": 33588620427.20103,
+      "total_ttm_revenue": 372979037225.70294,
+      "industry_ebitda_margin": 0.0901
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_ebitda": 29786652427.20103,
+      "total_ttm_revenue": 381743446225.70294,
+      "industry_ebitda_margin": 0.078
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_ebitda": 41707350475.48035,
+      "total_ttm_revenue": 483108552400.04333,
+      "industry_ebitda_margin": 0.0863
+    }
+  ],
+  "net_margin": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 747194000.0,
+      "total_ttm_revenue": 6370033000.0,
+      "industry_net_margin": 0.1173
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 747194000.0,
+      "total_ttm_revenue": 6370033000.0,
+      "industry_net_margin": 0.1173
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 747194000.0,
+      "total_ttm_revenue": 6370033000.0,
+      "industry_net_margin": 0.1173
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 651910000.0,
+      "total_ttm_revenue": 6319860000.0,
+      "industry_net_margin": 0.1032
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 651910000.0,
+      "total_ttm_revenue": 6319860000.0,
+      "industry_net_margin": 0.1032
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 651910000.0,
+      "total_ttm_revenue": 6319860000.0,
+      "industry_net_margin": 0.1032
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 296521232.0,
+      "total_ttm_revenue": 9169055855.0,
+      "industry_net_margin": 0.0323
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 296521232.0,
+      "total_ttm_revenue": 9169055855.0,
+      "industry_net_margin": 0.0323
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 296521232.0,
+      "total_ttm_revenue": 9169055855.0,
+      "industry_net_margin": 0.0323
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 2421185792.0,
+      "total_ttm_revenue": 30052326530.0,
+      "industry_net_margin": 0.0806
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 2421185792.0,
+      "total_ttm_revenue": 30052326530.0,
+      "industry_net_margin": 0.0806
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 2421185792.0,
+      "total_ttm_revenue": 30052326530.0,
+      "industry_net_margin": 0.0806
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 129819252379.2728,
+      "total_ttm_revenue": 832148632247.1765,
+      "industry_net_margin": 0.156
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 129814266062.2728,
+      "total_ttm_revenue": 832153583682.1765,
+      "industry_net_margin": 0.156
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 130213016062.2728,
+      "total_ttm_revenue": 841231474682.1765,
+      "industry_net_margin": 0.1548
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 144296548151.6047,
+      "total_ttm_revenue": 873950998682.1866,
+      "industry_net_margin": 0.1651
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 144294512636.6047,
+      "total_ttm_revenue": 873949621100.1866,
+      "industry_net_margin": 0.1651
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 144410221636.6047,
+      "total_ttm_revenue": 874504295100.1866,
+      "industry_net_margin": 0.1651
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 156583073551.08783,
+      "total_ttm_revenue": 937041833873.2522,
+      "industry_net_margin": 0.1671
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 156577580299.08783,
+      "total_ttm_revenue": 937040457743.2522,
+      "industry_net_margin": 0.1671
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 156725874518.08783,
+      "total_ttm_revenue": 937926961783.2522,
+      "industry_net_margin": 0.1671
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 187249120253.37033,
+      "total_ttm_revenue": 1004979890971.8584,
+      "industry_net_margin": 0.1863
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 187246845439.37033,
+      "total_ttm_revenue": 1004979175860.8584,
+      "industry_net_margin": 0.1863
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 187224744121.37033,
+      "total_ttm_revenue": 1004900723247.8584,
+      "industry_net_margin": 0.1863
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 196192304186.59195,
+      "total_ttm_revenue": 1064302602290.3488,
+      "industry_net_margin": 0.1843
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 196173166869.59195,
+      "total_ttm_revenue": 1064303188745.3488,
+      "industry_net_margin": 0.1843
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 196111828071.64874,
+      "total_ttm_revenue": 1064282131566.0201,
+      "industry_net_margin": 0.1843
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 280262652041.6423,
+      "total_ttm_revenue": 1661228378065.4368,
+      "industry_net_margin": 0.1687
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 280249442787.6423,
+      "total_ttm_revenue": 1661230104448.4368,
+      "industry_net_margin": 0.1687
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 280640965827.04004,
+      "total_ttm_revenue": 1661542809506.3108,
+      "industry_net_margin": 0.1689
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 303226784717.29456,
+      "total_ttm_revenue": 1738465428585.0837,
+      "industry_net_margin": 0.1744
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 303226875729.29456,
+      "total_ttm_revenue": 1738465309133.0837,
+      "industry_net_margin": 0.1744
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 298007499752.76056,
+      "total_ttm_revenue": 1738563961802.8286,
+      "industry_net_margin": 0.1714
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 301868052401.2237,
+      "total_ttm_revenue": 1791210562294.766,
+      "industry_net_margin": 0.1685
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 301869246094.2237,
+      "total_ttm_revenue": 1791210503959.766,
+      "industry_net_margin": 0.1685
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 298079896094.22363,
+      "total_ttm_revenue": 1799974912959.766,
+      "industry_net_margin": 0.1656
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "total_ttm_net_income": 377357140729.5357,
+      "total_ttm_revenue": 2456177823189.747,
+      "industry_net_margin": 0.1536
+    }
+  ],
+  "asset_turnover": [
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roa": 0.013,
+      "industry_net_margin": 0.0806,
+      "industry_asset_turnover": 0.16
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roa": 0.013,
+      "industry_net_margin": 0.0806,
+      "industry_asset_turnover": 0.16
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roa": 0.013,
+      "industry_net_margin": 0.0806,
+      "industry_asset_turnover": 0.16
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roa": 0.0072,
+      "industry_net_margin": 0.156,
+      "industry_asset_turnover": 0.05
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roa": 0.0072,
+      "industry_net_margin": 0.156,
+      "industry_asset_turnover": 0.05
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roa": 0.0072,
+      "industry_net_margin": 0.1548,
+      "industry_asset_turnover": 0.05
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roa": 0.0081,
+      "industry_net_margin": 0.1651,
+      "industry_asset_turnover": 0.05
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roa": 0.0081,
+      "industry_net_margin": 0.1651,
+      "industry_asset_turnover": 0.05
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roa": 0.0081,
+      "industry_net_margin": 0.1651,
+      "industry_asset_turnover": 0.05
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roa": 0.0085,
+      "industry_net_margin": 0.1671,
+      "industry_asset_turnover": 0.05
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roa": 0.0085,
+      "industry_net_margin": 0.1671,
+      "industry_asset_turnover": 0.05
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roa": 0.0085,
+      "industry_net_margin": 0.1671,
+      "industry_asset_turnover": 0.05
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roa": 0.0101,
+      "industry_net_margin": 0.1863,
+      "industry_asset_turnover": 0.05
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roa": 0.0101,
+      "industry_net_margin": 0.1863,
+      "industry_asset_turnover": 0.05
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roa": 0.0101,
+      "industry_net_margin": 0.1863,
+      "industry_asset_turnover": 0.05
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roa": 0.0104,
+      "industry_net_margin": 0.1843,
+      "industry_asset_turnover": 0.06
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roa": 0.0104,
+      "industry_net_margin": 0.1843,
+      "industry_asset_turnover": 0.06
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roa": 0.0104,
+      "industry_net_margin": 0.1843,
+      "industry_asset_turnover": 0.06
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roa": 0.0132,
+      "industry_net_margin": 0.1687,
+      "industry_asset_turnover": 0.08
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roa": 0.0132,
+      "industry_net_margin": 0.1687,
+      "industry_asset_turnover": 0.08
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roa": 0.0133,
+      "industry_net_margin": 0.1689,
+      "industry_asset_turnover": 0.08
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roa": 0.0143,
+      "industry_net_margin": 0.1744,
+      "industry_asset_turnover": 0.08
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roa": 0.0143,
+      "industry_net_margin": 0.1744,
+      "industry_asset_turnover": 0.08
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roa": 0.0141,
+      "industry_net_margin": 0.1714,
+      "industry_asset_turnover": 0.08
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roa": 0.0138,
+      "industry_net_margin": 0.1685,
+      "industry_asset_turnover": 0.08
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roa": 0.0138,
+      "industry_net_margin": 0.1685,
+      "industry_asset_turnover": 0.08
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roa": 0.0136,
+      "industry_net_margin": 0.1656,
+      "industry_asset_turnover": 0.08
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Capital Markets",
+      "industry_roa": 0.0159,
+      "industry_net_margin": 0.1536,
+      "industry_asset_turnover": 0.1
+    }
+  ]
+}

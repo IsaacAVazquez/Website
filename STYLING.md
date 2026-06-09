@@ -140,6 +140,7 @@ Fonts are loaded in `src/app/layout.tsx`:
 
 Typography is fluid and token-based via:
 
+- `--text-3xs` / `--text-2xs` — fixed micro sizes (10px / 11px) for dense labels, table cells, and metadata. Registered in the `@theme` block in `globals.css` and exposed as the `text-3xs` / `text-2xs` utilities. Prefer these over arbitrary `text-[10px]` / `text-[11px]` values so micro-type stays consistent and tokenized. They are intentionally non-fluid (these labels should not scale).
 - `--text-xs`
 - `--text-sm`
 - `--text-base`

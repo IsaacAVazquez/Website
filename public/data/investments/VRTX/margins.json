@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "VRTX",
+      "report_date": "2022-06-30",
+      "gross_profit": 1934400000.0,
+      "total_revenue": 2196200000.0,
+      "gross_margin": 0.8808
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2022-09-30",
+      "gross_profit": 2044900000.0,
+      "total_revenue": 2334300000.0,
+      "gross_margin": 0.876
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2022-12-31",
+      "gross_profit": 2019400000.0,
+      "total_revenue": 2302700000.0,
+      "gross_margin": 0.877
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-03-31",
+      "gross_profit": 2107900000.0,
+      "total_revenue": 2374800000.0,
+      "gross_margin": 0.8876
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-06-30",
+      "gross_profit": 2184600000.0,
+      "total_revenue": 2493200000.0,
+      "gross_margin": 0.8762
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-09-30",
+      "gross_profit": 2164800000.0,
+      "total_revenue": 2483500000.0,
+      "gross_margin": 0.8717
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-12-31",
+      "gross_profit": 2149700000.0,
+      "total_revenue": 2517700000.0,
+      "gross_margin": 0.8538
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-03-31",
+      "gross_profit": 2348000000.0,
+      "total_revenue": 2690600000.0,
+      "gross_margin": 0.8727
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-06-30",
+      "gross_profit": 2273700000.0,
+      "total_revenue": 2645600000.0,
+      "gross_margin": 0.8594
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-09-30",
+      "gross_profit": 2379300000.0,
+      "total_revenue": 2771900000.0,
+      "gross_margin": 0.8584
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-12-31",
+      "gross_profit": 2488600000.0,
+      "total_revenue": 2912000000.0,
+      "gross_margin": 0.8546
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-03-31",
+      "gross_profit": 2407200000.0,
+      "total_revenue": 2770200000.0,
+      "gross_margin": 0.869
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-06-30",
+      "gross_profit": 9832300000.0,
+      "total_revenue": 11418800000.0,
+      "gross_margin": 0.8611
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-09-30",
+      "gross_profit": 2661600000.0,
+      "total_revenue": 3076400000.0,
+      "gross_margin": 0.8652
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-12-31",
+      "gross_profit": 2724000000.0,
+      "total_revenue": 3190000000.0,
+      "gross_margin": 0.8539
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2026-03-31",
+      "gross_profit": 10536900000.0,
+      "total_revenue": 12218000000.0,
+      "gross_margin": 0.8624
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "VRTX",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2020-12-31",
+      "gross_profit": 5469400000.0,
+      "total_revenue": 6205700000.0,
+      "gross_margin": 0.8814
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2021-12-31",
+      "gross_profit": 6670200000.0,
+      "total_revenue": 7574400000.0,
+      "gross_margin": 0.8806
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2022-12-31",
+      "gross_profit": 7850400000.0,
+      "total_revenue": 8930700000.0,
+      "gross_margin": 0.879
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-12-31",
+      "gross_profit": 8607000000.0,
+      "total_revenue": 9869200000.0,
+      "gross_margin": 0.8721
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-12-31",
+      "gross_profit": 9489600000.0,
+      "total_revenue": 11020100000.0,
+      "gross_margin": 0.8611
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-12-31",
+      "gross_profit": 10350000000.0,
+      "total_revenue": 12001300000.0,
+      "gross_margin": 0.8624
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "VRTX",
+      "report_date": "2022-06-30",
+      "operating_income": 1119000000.0,
+      "total_revenue": 2196200000.0,
+      "operating_margin": 0.5095
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2022-09-30",
+      "operating_income": 1153100000.0,
+      "total_revenue": 2334300000.0,
+      "operating_margin": 0.494
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2022-12-31",
+      "operating_income": 1057900000.0,
+      "total_revenue": 2302700000.0,
+      "operating_margin": 0.4594
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-03-31",
+      "operating_income": 1124200000.0,
+      "total_revenue": 2374800000.0,
+      "operating_margin": 0.4734
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-06-30",
+      "operating_income": 1136300000.0,
+      "total_revenue": 2493200000.0,
+      "operating_margin": 0.4558
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-09-30",
+      "operating_income": 1091000000.0,
+      "total_revenue": 2483500000.0,
+      "operating_margin": 0.4393
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-12-31",
+      "operating_income": 428900000.0,
+      "total_revenue": 2517700000.0,
+      "operating_margin": 0.1704
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-03-31",
+      "operating_income": 1216200000.0,
+      "total_revenue": 2690600000.0,
+      "operating_margin": 0.452
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-06-30",
+      "operating_income": 934900000.0,
+      "total_revenue": 2645600000.0,
+      "operating_margin": 0.3534
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-09-30",
+      "operating_income": 1131600000.0,
+      "total_revenue": 2771900000.0,
+      "operating_margin": 0.4082
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-12-31",
+      "operating_income": -3516100000.0,
+      "total_revenue": 2912000000.0,
+      "operating_margin": -1.2075
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-03-31",
+      "operating_income": 1031100000.0,
+      "total_revenue": 2770200000.0,
+      "operating_margin": 0.3722
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-06-30",
+      "operating_income": 1154200000.0,
+      "total_revenue": 11418800000.0,
+      "operating_margin": 0.1011
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-09-30",
+      "operating_income": 1238800000.0,
+      "total_revenue": 3076400000.0,
+      "operating_margin": 0.4027
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-12-31",
+      "operating_income": 1130300000.0,
+      "total_revenue": 3190000000.0,
+      "operating_margin": 0.3543
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2026-03-31",
+      "operating_income": 1138800000.0,
+      "total_revenue": 12218000000.0,
+      "operating_margin": 0.0932
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "VRTX",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2020-12-31",
+      "operating_income": 2869400000.0,
+      "total_revenue": 6205700000.0,
+      "operating_margin": 0.4624
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2021-12-31",
+      "operating_income": 2779000000.0,
+      "total_revenue": 7574400000.0,
+      "operating_margin": 0.3669
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2022-12-31",
+      "operating_income": 4249900000.0,
+      "total_revenue": 8930700000.0,
+      "operating_margin": 0.4759
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-12-31",
+      "operating_income": 3780400000.0,
+      "total_revenue": 9869200000.0,
+      "operating_margin": 0.3831
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-12-31",
+      "operating_income": -233400000.0,
+      "total_revenue": 11020100000.0,
+      "operating_margin": -0.0212
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-12-31",
+      "operating_income": 4554400000.0,
+      "total_revenue": 12001300000.0,
+      "operating_margin": 0.3795
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "VRTX",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 810500000.0,
+      "total_revenue": 2196200000.0,
+      "net_margin": 0.369
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": 930500000.0,
+      "total_revenue": 2334300000.0,
+      "net_margin": 0.3986
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 818900000.0,
+      "total_revenue": 2302700000.0,
+      "net_margin": 0.3556
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": 699800000.0,
+      "total_revenue": 2374800000.0,
+      "net_margin": 0.2947
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 915700000.0,
+      "total_revenue": 2493200000.0,
+      "net_margin": 0.3673
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1035300000.0,
+      "total_revenue": 2483500000.0,
+      "net_margin": 0.4169
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 968800000.0,
+      "total_revenue": 2517700000.0,
+      "net_margin": 0.3848
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1099600000.0,
+      "total_revenue": 2690600000.0,
+      "net_margin": 0.4087
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": -3593600000.0,
+      "total_revenue": 2645600000.0,
+      "net_margin": -1.3583
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1045400000.0,
+      "total_revenue": 2771900000.0,
+      "net_margin": 0.3771
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 913000000.0,
+      "total_revenue": 2912000000.0,
+      "net_margin": 0.3135
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 646300000.0,
+      "total_revenue": 2770200000.0,
+      "net_margin": 0.2333
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 3637600000.0,
+      "total_revenue": 11418800000.0,
+      "net_margin": 0.3186
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1082900000.0,
+      "total_revenue": 3076400000.0,
+      "net_margin": 0.352
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1191100000.0,
+      "total_revenue": 3190000000.0,
+      "net_margin": 0.3734
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 4338300000.0,
+      "total_revenue": 12218000000.0,
+      "net_margin": 0.3551
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "VRTX",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 2711700000.0,
+      "total_revenue": 6205700000.0,
+      "net_margin": 0.437
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 2342100000.0,
+      "total_revenue": 7574400000.0,
+      "net_margin": 0.3092
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 3322000000.0,
+      "total_revenue": 8930700000.0,
+      "net_margin": 0.372
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 3619600000.0,
+      "total_revenue": 9869200000.0,
+      "net_margin": 0.3668
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": -535600000.0,
+      "total_revenue": 11020100000.0,
+      "net_margin": -0.0486
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 3953200000.0,
+      "total_revenue": 12001300000.0,
+      "net_margin": 0.3294
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "VRTX",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 2196200000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2022-09-30",
+      "ebitda": 1190100000.0,
+      "total_revenue": 2334300000.0,
+      "ebitda_margin": 0.5098
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2022-12-31",
+      "ebitda": 1126800000.0,
+      "total_revenue": 2302700000.0,
+      "ebitda_margin": 0.4893
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-03-31",
+      "ebitda": 941700000.0,
+      "total_revenue": 2374800000.0,
+      "ebitda_margin": 0.3965
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-06-30",
+      "ebitda": 1214100000.0,
+      "total_revenue": 2493200000.0,
+      "ebitda_margin": 0.487
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-09-30",
+      "ebitda": 1232200000.0,
+      "total_revenue": 2483500000.0,
+      "ebitda_margin": 0.4962
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-12-31",
+      "ebitda": 1217200000.0,
+      "total_revenue": 2517700000.0,
+      "ebitda_margin": 0.4835
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-03-31",
+      "ebitda": 1343000000.0,
+      "total_revenue": 2690600000.0,
+      "ebitda_margin": 0.4991
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-06-30",
+      "ebitda": -3327300000.0,
+      "total_revenue": 2645600000.0,
+      "ebitda_margin": -1.2577
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-09-30",
+      "ebitda": 1284800000.0,
+      "total_revenue": 2771900000.0,
+      "ebitda_margin": 0.4635
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-12-31",
+      "ebitda": 1185800000.0,
+      "total_revenue": 2912000000.0,
+      "ebitda_margin": 0.4072
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-03-31",
+      "ebitda": 1079500000.0,
+      "total_revenue": 2770200000.0,
+      "ebitda_margin": 0.3897
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-06-30",
+      "ebitda": 4590800000.0,
+      "total_revenue": 11418800000.0,
+      "ebitda_margin": 0.402
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-09-30",
+      "ebitda": 1356100000.0,
+      "total_revenue": 3076400000.0,
+      "ebitda_margin": 0.4408
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-12-31",
+      "ebitda": 1390000000.0,
+      "total_revenue": 3190000000.0,
+      "ebitda_margin": 0.4357
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2026-03-31",
+      "ebitda": 4981500000.0,
+      "total_revenue": 12218000000.0,
+      "ebitda_margin": 0.4077
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "VRTX",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2020-12-31",
+      "ebitda": 3284600000.0,
+      "total_revenue": 6205700000.0,
+      "ebitda_margin": 0.5293
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2021-12-31",
+      "ebitda": 2917500000.0,
+      "total_revenue": 7574400000.0,
+      "ebitda_margin": 0.3852
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2022-12-31",
+      "ebitda": 4435500000.0,
+      "total_revenue": 8930700000.0,
+      "ebitda_margin": 0.4967
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-12-31",
+      "ebitda": 4605200000.0,
+      "total_revenue": 9869200000.0,
+      "ebitda_margin": 0.4666
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-12-31",
+      "ebitda": 486300000.0,
+      "total_revenue": 11020100000.0,
+      "ebitda_margin": 0.0441
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-12-31",
+      "ebitda": 4866300000.0,
+      "total_revenue": 12001300000.0,
+      "ebitda_margin": 0.4055
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "VRTX",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 1086500000.0,
+      "total_revenue": 2196200000.0,
+      "fcf_margin": 0.4947
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": 2334300000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": 2302700000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": 2374800000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 1074800000.0,
+      "total_revenue": 2493200000.0,
+      "fcf_margin": 0.4311
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 1227800000.0,
+      "total_revenue": 2483500000.0,
+      "fcf_margin": 0.4944
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 118500000.0,
+      "total_revenue": 2517700000.0,
+      "fcf_margin": 0.0471
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 1058200000.0,
+      "total_revenue": 2690600000.0,
+      "fcf_margin": 0.3933
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-06-30",
+      "free_cash_flow": -3830300000.0,
+      "total_revenue": 2645600000.0,
+      "fcf_margin": -1.4478
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 1302100000.0,
+      "total_revenue": 2771900000.0,
+      "fcf_margin": 0.4697
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 492000000.0,
+      "total_revenue": 2912000000.0,
+      "fcf_margin": 0.169
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 778200000.0,
+      "total_revenue": 2770200000.0,
+      "fcf_margin": 0.2809
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 927400000.0,
+      "total_revenue": 11418800000.0,
+      "fcf_margin": 0.0812
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 1139600000.0,
+      "total_revenue": 3076400000.0,
+      "fcf_margin": 0.3704
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 348600000.0,
+      "total_revenue": 3190000000.0,
+      "fcf_margin": 0.1093
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 1294700000.0,
+      "total_revenue": 12218000000.0,
+      "fcf_margin": 0.106
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "VRTX",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 2993700000.0,
+      "total_revenue": 6205700000.0,
+      "fcf_margin": 0.4824
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 2408500000.0,
+      "total_revenue": 7574400000.0,
+      "fcf_margin": 0.318
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 3925200000.0,
+      "total_revenue": 8930700000.0,
+      "fcf_margin": 0.4395
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 3278900000.0,
+      "total_revenue": 9869200000.0,
+      "fcf_margin": 0.3322
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-12-31",
+      "free_cash_flow": -978000000.0,
+      "total_revenue": 11020100000.0,
+      "fcf_margin": -0.0887
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 3193800000.0,
+      "total_revenue": 12001300000.0,
+      "fcf_margin": 0.2661
+    }
+  ]
+}

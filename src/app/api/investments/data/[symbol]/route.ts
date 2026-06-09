@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import type { InvestmentSection } from "@/types/investment";
 import { getInvestmentContext, getInvestmentDataEnvelope } from "@/lib/investmentsData";
+import { isAllowedSymbol } from "@/lib/finnhub";
+import { logger } from "@/lib/logger";
 
 const VALID_SECTIONS: InvestmentSection[] = [
   "price",
@@ -21,8 +23,20 @@ const VALID_SECTIONS: InvestmentSection[] = [
   "officers",
 ];
 
-function isValidSymbol(symbol: string): boolean {
-  return /^[A-Z0-9.-]{1,10}$/.test(symbol);
+const SUCCESS_CACHE_HEADERS = {
+  "Cache-Control": "public, max-age=3600, stale-while-revalidate=86400",
+};
+const NO_STORE_HEADERS = { "Cache-Control": "no-store" };
+
+/**
+ * Strict symbol shape. Forbids leading dots/dashes and consecutive
+ * separators; requires at least one alphanumeric and capped at 10 chars.
+ */
+function isValidSymbolFormat(symbol: string): boolean {
+  if (typeof symbol !== "string" || symbol.length === 0 || symbol.length > 10) {
+    return false;
+  }
+  return /^[A-Z][A-Z0-9]*([.-][A-Z0-9]+)*$/.test(symbol);
 }
 
 function isValidSection(section: string): section is InvestmentSection {
@@ -37,15 +51,32 @@ export async function GET(
     const { symbol: rawSymbol } = await params;
     const symbol = rawSymbol.toUpperCase();
 
-    if (!isValidSymbol(symbol)) {
-      return NextResponse.json({ error: "Invalid symbol" }, { status: 400 });
+    // Validate format BEFORE doing any filesystem access.
+    if (!isValidSymbolFormat(symbol)) {
+      return NextResponse.json(
+        { error: "Invalid symbol" },
+        { status: 400, headers: NO_STORE_HEADERS }
+      );
+    }
+
+    // Reject symbols outside the curated universe BEFORE doing any
+    // filesystem access. The allowlist is loaded once at module init and
+    // shared with the quote proxies.
+    if (!isAllowedSymbol(symbol)) {
+      return NextResponse.json(
+        { error: "Symbol not found" },
+        { status: 404, headers: NO_STORE_HEADERS }
+      );
     }
 
     const searchParams = request.nextUrl.searchParams;
     const section = searchParams.get("section") ?? "fundamentals";
 
     if (!isValidSection(section)) {
-      return NextResponse.json({ error: "Invalid section" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Invalid section" },
+        { status: 400, headers: NO_STORE_HEADERS }
+      );
     }
 
     const options = { assetOrigin: request.nextUrl.origin };
@@ -53,28 +84,21 @@ export async function GET(
     const envelope = await getInvestmentDataEnvelope(symbol, section, context, options);
 
     return NextResponse.json(envelope, {
-      headers: {
-        "Cache-Control": "public, max-age=3600, stale-while-revalidate=86400",
-      },
+      headers: SUCCESS_CACHE_HEADERS,
     });
   } catch (error) {
-    const err = error as Error & {
-      status?: number;
-      source?: string;
-      capabilities?: Record<string, boolean>;
-      lastUpdated?: string | null;
-      freshness?: unknown;
-    };
-    console.error("Investments data API error:", error);
+    const err = error as Error & { status?: number };
+    logger.error("Investments data API error", error);
+    const status = err.status ?? 500;
+    const message =
+      status === 404
+        ? "Symbol not found"
+        : status === 400
+          ? "Invalid symbol"
+          : "Internal server error";
     return NextResponse.json(
-      {
-        error: err.message || "Internal server error",
-        source: err.source,
-        capabilities: err.capabilities,
-        lastUpdated: err.lastUpdated ?? null,
-        freshness: err.freshness ?? null,
-      },
-      { status: err.status ?? 500 }
+      { error: message },
+      { status, headers: NO_STORE_HEADERS }
     );
   }
 }

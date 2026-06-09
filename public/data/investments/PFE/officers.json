@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "PFE",
+    "name": "Dr. Albert  Bourla D.V.M., Ph.D.",
+    "title": "Chairman of the Board & CEO",
+    "age": 63,
+    "born": 1962,
+    "pay": 9140441,
+    "exercised": 1641272,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "PFE",
+    "name": "Dr. Chris  Boshoff FMedSci, M.D., Ph.D.",
+    "title": "Chief Scientific Officer and President of Research & Development",
+    "age": 61,
+    "born": 1964,
+    "pay": 5198006,
+    "exercised": 24800,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "PFE",
+    "name": "Dr. Michael S. Vincent M.D., Ph.D.",
+    "title": "Senior VP and Chief Scientific Officer of Inflammation & Immunology",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "PFE",
+    "name": "Mr. Aamir  Malik",
+    "title": "Executive VP & Chief U.S. Commercial Officer",
+    "age": 49,
+    "born": 1976,
+    "pay": 4898062,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "PFE",
+    "name": "Mr. David M. Denton",
+    "title": "Executive VP & CFO",
+    "age": 60,
+    "born": 1965,
+    "pay": 4802804,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "PFE",
+    "name": "Mr. Dennis P. Hancock",
+    "title": "Executive VP & Chief Information Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "PFE",
+    "name": "Mr. Douglas M. Lankler",
+    "title": "Executive VP & Chief Legal Officer",
+    "age": 59,
+    "born": 1966,
+    "pay": 4622375,
+    "exercised": 503278,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "PFE",
+    "name": "Ms. Francesca M. DeMartino",
+    "title": "Chief Investor Relations Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "PFE",
+    "name": "Ms. Jennifer B. Damico",
+    "title": "Senior VP, Controller & Principal Accounting Officer",
+    "age": 56,
+    "born": 1969,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "PFE",
+    "name": "Ms. Payal Sahni Becher",
+    "title": "Chief People Experience Officer & Executive VP",
+    "age": 50,
+    "born": 1975,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  }
+]

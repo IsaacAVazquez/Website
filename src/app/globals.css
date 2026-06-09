@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
+/*
+ * Register micro-type sizes as first-class utilities. Tailwind v4 only emits a
+ * `text-*` utility for sizes declared in `@theme`, so these belong here (not in
+ * the `:root` block or tailwind.config.ts, neither of which registers utilities
+ * under this setup). Fixed rem values: these labels are intentionally small and
+ * should not scale. `text-3xs` = 10px, `text-2xs` = 11px.
+ */
+@theme {
+  --text-3xs: 0.625rem;
+  --text-2xs: 0.6875rem;
+}
+
 @layer base, components, utilities;
 
 @layer base {
@@ -143,6 +155,14 @@
   --space-2xl: 3rem;
   --space-3xl: 4rem;
   --space-4xl: 6rem;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 1.6rem;
+  --radius-3xl: 1.8rem;
+  --radius-pill: 999px;
 
   --transition-fast: 150ms ease;
   --transition-base: 250ms ease;
@@ -605,7 +625,7 @@
   }
 
   .section-kicker {
-    @apply inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em];
+    @apply inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-2xs font-semibold uppercase tracking-[0.16em];
     color: var(--color-primary);
     border-color: color-mix(in srgb, var(--color-primary) 25%, var(--border-primary));
     background: color-mix(in srgb, var(--color-primary) 8%, var(--surface-secondary));
@@ -759,6 +779,13 @@
     max-width: 76rem;
   }
 
+  /* Investments dashboard density override: widen past .home-shell on xl+ screens. */
+  @media (min-width: 1440px) {
+    .home-shell.home-shell-investments {
+      max-width: 1680px;
+    }
+  }
+
   .home-section {
     position: relative;
     padding-block: clamp(1.25rem, 2vw, 2rem);
@@ -830,6 +857,147 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 1rem;
     }
+  }
+
+  /*
+   * Dashboard-style stats panel (homepage "Practice at a glance" + writing
+   * "Archive at a glance"). Lifted from the investments dashboard idiom —
+   * dotted-underline tooltip labels, dense numeric grid, live-dot meta,
+   * pill row of quick links.
+   */
+  .home-stats-panel {
+    border-radius: var(--radius-2xl);
+    border: 1px solid var(--home-rule);
+    background: color-mix(in srgb, var(--home-paper) 92%, white);
+    box-shadow: var(--shadow-sm);
+    padding: 1.375rem 1.5rem;
+  }
+  .dark .home-stats-panel {
+    background: color-mix(in srgb, var(--home-paper) 88%, transparent);
+  }
+  .home-stats-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .home-stats-head h2 {
+    margin: 0;
+    font-family: var(--font-home-sans);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--home-ink);
+  }
+  .home-stats-head-meta {
+    font-family: var(--font-home-sans);
+    font-size: 0.72rem;
+    color: var(--home-ink-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+  }
+  .home-stats-live-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: #2BA84A;
+    box-shadow: 0 0 0 3px rgba(43, 168, 74, 0.16);
+  }
+  .home-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 1.5rem;
+    row-gap: 1.375rem;
+  }
+  @media (max-width: 1100px) {
+    .home-stats-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .home-stats-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+  }
+  .home-stats-cell-lbl {
+    font-family: var(--font-home-sans);
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--home-ink-muted);
+    text-decoration: underline dotted;
+    text-decoration-color: color-mix(in srgb, var(--home-ink) 28%, transparent);
+    text-underline-offset: 3px;
+    cursor: help;
+    width: fit-content;
+  }
+  .home-stats-cell-val {
+    font-family: var(--font-home-sans);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--home-ink);
+    font-variant-numeric: tabular-nums;
+    line-height: 1.3;
+  }
+  .home-stats-cell-val em {
+    font-family: var(--font-home-serif);
+    font-style: italic;
+    font-weight: 500;
+    color: color-mix(in srgb, var(--home-ink) 78%, var(--home-ink-muted));
+  }
+  .home-stats-cell-val-good {
+    color: #1F8F3B;
+  }
+  .dark .home-stats-cell-val-good {
+    color: #4FC273;
+  }
+  .home-stats-cell-sub {
+    font-family: var(--font-home-sans);
+    font-size: 0.72rem;
+    color: var(--home-ink-muted);
+  }
+  .home-stats-pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.125rem;
+    padding-top: 1.125rem;
+    border-top: 1px dashed color-mix(in srgb, var(--home-ink) 14%, transparent);
+  }
+  .home-stats-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.875rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--home-paper) 88%, white);
+    border: 1px solid var(--home-rule);
+    font-family: var(--font-home-sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--home-ink);
+    text-decoration: none;
+    transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+  }
+  .home-stats-pill:hover,
+  .home-stats-pill:focus-visible {
+    background: color-mix(in srgb, var(--home-acid) 20%, transparent);
+    border-color: color-mix(in srgb, var(--home-ink) 18%, transparent);
+    transform: translateY(-1px);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .home-stats-pill:hover,
+    .home-stats-pill:focus-visible {
+      transform: none;
+    }
+  }
+  .home-stats-pill svg {
+    width: 14px;
+    height: 14px;
   }
 
   .home-intro-block {
@@ -1189,7 +1357,7 @@
 
   .home-card {
     border: 1px solid var(--home-rule);
-    border-radius: 1.6rem;
+    border-radius: var(--radius-2xl);
     background: color-mix(in srgb, var(--home-paper) 88%, white);
     box-shadow: var(--shadow-md);
     transition-property: transform, border-color, background-color, box-shadow;
@@ -1275,7 +1443,7 @@
   }
 
   .home-note-card {
-    border-radius: 1.1rem;
+    border-radius: var(--radius-lg);
     background: color-mix(in srgb, var(--home-paper-alt) 64%, white);
     padding: 1rem;
   }
@@ -1770,6 +1938,10 @@ img {
   border-bottom: 1px solid var(--home-rule);
   padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
 }
+
+.wp-archive-stats-wrap {
+  margin: clamp(1.5rem, 3vw, 2.5rem) 0 clamp(1.5rem, 3vw, 2.5rem);
+}
 @media (max-width: 880px) {
   .wp-pagehead { grid-template-columns: 1fr; align-items: start; }
 }
@@ -2254,7 +2426,19 @@ img {
 }
 @media (max-width: 1280px) {
   .invest-shell { grid-template-columns: 200px minmax(0, 1fr); }
-  .invest-rail { display: none !important; }
+  /* The rail holds the "Add a holding" form, allocation chart, and movers.
+     Don't hide it on narrower screens — reflow it into a full-width band below
+     the main column, otherwise there is no way to add a holding on tablet or
+     mobile and the empty-state instructions point at nothing. */
+  .invest-rail {
+    grid-column: 1 / -1;
+    border-left: 0;
+    border-top: 1px solid var(--home-rule);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 22px 26px;
+    align-items: start;
+  }
 }
 @media (max-width: 900px) {
   .invest-shell { grid-template-columns: 1fr; border-radius: 20px; }
@@ -3052,11 +3236,16 @@ img {
 }
 @media (max-width: 1280px) {
   .tool-shell { grid-template-columns: 200px minmax(0, 1fr); }
-  .tool-rail { display: none !important; }
+  .tool-rail {
+    grid-column: 2;
+    border-left: 0;
+    border-top: 1px solid var(--home-rule);
+  }
 }
 @media (max-width: 900px) {
   .tool-shell { grid-template-columns: 1fr; border-radius: 20px; }
   .tool-sidebar { display: none !important; }
+  .tool-rail { grid-column: 1; }
 }
 
 .tool-band {
@@ -3435,5 +3624,709 @@ input[type="range"]:focus-visible::-moz-range-thumb {
   input[type="range"]::-webkit-slider-thumb,
   input[type="range"]::-moz-range-thumb {
     transition: none;
+  }
+}
+
+/* ============================================================
+   Retirement planner (/investments #retirement)
+   Reuses the editorial palette + invest-research-band shell.
+   ============================================================ */
+
+.invest-retire-band {
+  scroll-margin-top: 7rem;
+}
+.invest-retire-band-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--home-ink-muted);
+  background: var(--home-paper-alt);
+  border: 1px solid var(--home-rule);
+  border-radius: 999px;
+  padding: 6px 12px;
+}
+.invest-retire-computing {
+  color: var(--home-acid, var(--home-ink-muted));
+  font-weight: 600;
+}
+.invest-retire-intro {
+  margin: 0;
+  max-width: 62ch;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--home-ink-muted);
+}
+
+.invest-retire-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 380px) minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+@media (max-width: 1024px) {
+  .invest-retire-layout {
+    grid-template-columns: 1fr;
+  }
+}
+.invest-retire-col-results {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+}
+
+/* ── Inputs ── */
+.invest-retire-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border: 1px solid var(--home-rule);
+  border-radius: 24px;
+  background: color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix));
+  padding: 18px;
+}
+.invest-retire-inputs-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.invest-retire-reset {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid var(--home-rule);
+  background: transparent;
+  color: var(--home-ink-muted);
+  border-radius: 999px;
+  padding: 5px 11px;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  min-height: 32px;
+}
+.invest-retire-reset:hover {
+  color: var(--home-ink);
+  border-color: var(--home-ink-muted);
+}
+.invest-retire-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+@media (max-width: 420px) {
+  .invest-retire-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.invest-retire-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+.invest-retire-field-label {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--home-ink);
+}
+.invest-retire-field-hint {
+  font-size: 10.5px;
+  color: var(--home-ink-muted);
+  line-height: 1.3;
+}
+.invest-retire-input-wrap {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--home-rule);
+  border-radius: 12px;
+  background: var(--home-paper);
+  overflow: hidden;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.invest-retire-input-wrap:focus-within {
+  border-color: color-mix(in srgb, var(--home-acid, #2563eb) 60%, var(--home-rule));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--home-acid, #2563eb) 14%, transparent);
+}
+.invest-retire-input-wrap input,
+.invest-retire-input-wrap select {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  color: var(--home-ink);
+  font: inherit;
+  font-size: 13px;
+  padding: 9px 10px;
+  min-height: 44px;
+}
+.invest-retire-input-wrap input:focus,
+.invest-retire-input-wrap select:focus {
+  outline: none;
+}
+.invest-retire-affix {
+  font-size: 12px;
+  color: var(--home-ink-muted);
+  padding: 0 2px 0 10px;
+}
+.invest-retire-affix-suffix {
+  padding: 0 10px 0 2px;
+}
+
+/* ── Collapsible advanced sections ── */
+.invest-retire-disclose {
+  border: 1px solid var(--home-rule);
+  border-radius: 14px;
+  background: var(--home-paper);
+  overflow: hidden;
+}
+.invest-retire-disclose > summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 14px;
+  cursor: pointer;
+  list-style: none;
+  min-height: 44px;
+}
+.invest-retire-disclose > summary::-webkit-details-marker {
+  display: none;
+}
+.invest-retire-disclose-title {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--home-ink);
+}
+.invest-retire-disclose-summary {
+  font-size: 11px;
+  color: var(--home-ink-muted);
+}
+.invest-retire-disclose-chevron {
+  margin-left: auto;
+  font-size: 16px;
+  line-height: 1;
+  color: var(--home-ink-muted);
+  transition: transform 0.18s ease;
+}
+.invest-retire-disclose[open] > summary .invest-retire-disclose-chevron {
+  transform: rotate(45deg);
+}
+.invest-retire-disclose-body {
+  padding: 4px 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-top: 1px solid var(--home-rule);
+}
+
+.invest-retire-seed {
+  align-self: flex-start;
+  border: 1px dashed color-mix(in srgb, var(--home-acid, #2563eb) 50%, var(--home-rule));
+  background: color-mix(in srgb, var(--home-acid, #2563eb) 8%, var(--home-paper));
+  color: var(--home-ink);
+  border-radius: 12px;
+  padding: 8px 13px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  min-height: 44px;
+}
+.invest-retire-seed:hover {
+  background: color-mix(in srgb, var(--home-acid, #2563eb) 14%, var(--home-paper));
+}
+
+.invest-retire-accounts,
+.invest-retire-lumpy {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.invest-retire-account {
+  border: 1px solid var(--home-rule);
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--home-paper-alt);
+}
+.invest-retire-account-head {
+  display: flex;
+  align-items: end;
+  gap: 8px;
+}
+.invest-retire-account-head .invest-retire-field {
+  flex: 1 1 auto;
+}
+.invest-retire-icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--home-rule);
+  border-radius: 10px;
+  background: var(--home-paper);
+  color: var(--home-ink-muted);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.invest-retire-icon-btn:hover {
+  color: var(--color-error);
+  border-color: color-mix(in srgb, var(--color-error) 40%, var(--home-rule));
+}
+.invest-retire-add {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  border: 1px solid var(--home-rule);
+  background: var(--home-paper);
+  color: var(--home-ink);
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  min-height: 44px;
+}
+.invest-retire-add:hover {
+  border-color: var(--home-ink-muted);
+}
+.invest-retire-lumpy-row {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 0.8fr auto;
+  gap: 8px;
+  align-items: end;
+}
+@media (max-width: 520px) {
+  .invest-retire-lumpy-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.invest-retire-lumpy-label {
+  border: 1px solid var(--home-rule);
+  border-radius: 12px;
+  background: var(--home-paper);
+  color: var(--home-ink);
+  font: inherit;
+  font-size: 13px;
+  padding: 9px 10px;
+  min-height: 44px;
+}
+.invest-retire-alloc-note {
+  margin: 0;
+  font-size: 11px;
+  color: var(--home-ink-muted);
+}
+.invest-retire-alloc-note.warn {
+  color: var(--color-warning);
+}
+
+/* ── Verdict ── */
+.invest-retire-verdict {
+  border: 1px solid var(--home-rule);
+  border-radius: 24px;
+  background: color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix));
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.invest-retire-verdict-head {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.invest-retire-gauge {
+  --gauge: 0;
+  --gauge-tone: var(--home-ink);
+  width: 116px;
+  height: 116px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: conic-gradient(
+    var(--gauge-tone) calc(var(--gauge) * 1%),
+    color-mix(in srgb, var(--home-rule) 70%, transparent) 0
+  );
+  display: grid;
+  place-items: center;
+}
+.invest-retire-gauge-inner {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: var(--home-paper);
+  display: grid;
+  place-items: center;
+  line-height: 1;
+}
+.invest-retire-gauge-num {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--home-ink);
+  letter-spacing: -0.03em;
+}
+.invest-retire-gauge-unit {
+  font-size: 10.5px;
+  color: var(--home-ink-muted);
+  margin-top: 2px;
+}
+.invest-retire-verdict-copy {
+  flex: 1 1 240px;
+  min-width: 0;
+}
+.invest-retire-verdict-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.invest-retire-verdict-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.invest-retire-verdict-line {
+  margin: 8px 0 0;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--home-ink);
+}
+.invest-retire-verdict-sub {
+  margin: 6px 0 0;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--home-ink-muted);
+}
+.invest-retire-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 0;
+}
+@media (max-width: 640px) {
+  .invest-retire-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.invest-retire-stats > div {
+  border: 1px solid var(--home-rule);
+  border-radius: 14px;
+  background: var(--home-paper);
+  padding: 11px 12px;
+}
+.invest-retire-stats dt {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--home-ink-muted);
+  margin: 0 0 4px;
+}
+.invest-retire-stats dd {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--home-ink);
+}
+.invest-retire-stat-meta {
+  display: block;
+  margin-top: 3px;
+  font-size: 10px;
+  color: var(--home-ink-muted);
+}
+.invest-retire-verdict-note {
+  margin: 0;
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--home-ink-muted);
+  border-top: 1px solid var(--home-rule);
+  padding-top: 12px;
+}
+
+/* ── Chart ── */
+.invest-retire-chart {
+  margin: 0;
+  border: 1px solid var(--home-rule);
+  border-radius: 24px;
+  background: color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix));
+  padding: 16px 18px;
+}
+.invest-retire-chart-cap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--home-ink);
+  margin-bottom: 6px;
+}
+.invest-retire-chart-legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10.5px;
+  font-weight: 500;
+  color: var(--home-ink-muted);
+}
+.invest-retire-legend-band {
+  display: inline-block;
+  width: 16px;
+  height: 9px;
+  border-radius: 3px;
+  background: color-mix(in srgb, #2563eb 20%, transparent);
+  margin-right: 2px;
+}
+.invest-retire-legend-line {
+  display: inline-block;
+  width: 16px;
+  height: 0;
+  border-top: 2.5px solid #2563eb;
+  margin: 0 2px 0 8px;
+}
+
+/* ── Levers ── */
+.invest-retire-levers {
+  border: 1px solid var(--home-rule);
+  border-radius: 24px;
+  background: color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix));
+  padding: 18px;
+}
+.invest-retire-levers-head h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--home-ink);
+}
+.invest-retire-levers-head p {
+  margin: 3px 0 14px;
+  font-size: 12px;
+  color: var(--home-ink-muted);
+}
+.invest-retire-lever-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+@media (max-width: 640px) {
+  .invest-retire-lever-list {
+    grid-template-columns: 1fr;
+  }
+}
+.invest-retire-lever {
+  border: 1px solid var(--home-rule);
+  border-radius: 14px;
+  background: var(--home-paper);
+  padding: 12px;
+}
+.invest-retire-lever-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+.invest-retire-lever-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--home-ink);
+}
+.invest-retire-lever-change {
+  display: block;
+  font-size: 11px;
+  color: var(--home-ink-muted);
+  margin-top: 1px;
+}
+.invest-retire-lever-delta {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 12.5px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.invest-retire-lever-desc {
+  margin: 8px 0 10px;
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--home-ink-muted);
+}
+.invest-retire-lever-bar {
+  position: relative;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--home-paper-alt);
+  border: 1px solid var(--home-rule);
+  overflow: hidden;
+}
+.invest-retire-lever-bar-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: 999px;
+}
+.invest-retire-lever-bar-target {
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  width: 2px;
+  background: var(--home-ink);
+  opacity: 0.5;
+}
+.invest-retire-lever-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 8px;
+  font-size: 11px;
+  color: var(--home-ink-muted);
+}
+.invest-retire-lever-target {
+  font-weight: 700;
+  color: var(--home-ink);
+}
+
+/* ── Assumptions footer ── */
+.invest-retire-assumptions {
+  border: 1px solid var(--home-rule);
+  border-radius: 20px;
+  background: var(--home-paper-alt);
+  padding: 18px;
+}
+.invest-retire-assumptions header h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--home-ink);
+}
+.invest-retire-assumptions header p {
+  margin: 3px 0 14px;
+  font-size: 11.5px;
+  color: var(--home-ink-muted);
+}
+.invest-retire-assumption-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px 18px;
+  margin: 0 0 12px;
+}
+.invest-retire-assumption-grid > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  border-bottom: 1px dotted var(--home-rule);
+  padding-bottom: 6px;
+}
+.invest-retire-assumption-grid dt {
+  font-size: 11.5px;
+  color: var(--home-ink-muted);
+}
+.invest-retire-assumption-grid dd {
+  margin: 0;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--home-ink);
+  text-align: right;
+  white-space: nowrap;
+}
+.invest-retire-cma {
+  margin-top: 6px;
+}
+.invest-retire-cma > summary {
+  cursor: pointer;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--home-ink);
+  padding: 6px 0;
+}
+.invest-retire-cma table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 6px;
+}
+.invest-retire-cma th,
+.invest-retire-cma td {
+  text-align: left;
+  font-size: 11.5px;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--home-rule);
+  color: var(--home-ink);
+}
+.invest-retire-cma th {
+  color: var(--home-ink-muted);
+  font-weight: 600;
+}
+.invest-retire-cma td:nth-child(2),
+.invest-retire-cma td:nth-child(3),
+.invest-retire-cma th:nth-child(2),
+.invest-retire-cma th:nth-child(3) {
+  text-align: right;
+}
+.invest-retire-cma-source {
+  margin: 12px 0 0;
+  font-size: 10.5px;
+  line-height: 1.5;
+  color: var(--home-ink-muted);
+}
+
+/* ── Disclaimer + loading ── */
+.invest-retire-disclaimer {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  border: 1px solid var(--home-rule);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix));
+  padding: 14px 16px;
+  color: var(--home-ink-muted);
+}
+.invest-retire-disclaimer p {
+  margin: 0;
+  font-size: 11.5px;
+  line-height: 1.55;
+}
+.invest-retire-loading {
+  display: grid;
+  place-items: center;
+  min-height: 280px;
+  border: 1px dashed var(--home-rule);
+  border-radius: 24px;
+  color: var(--home-ink-muted);
+  font-size: 13px;
+}
+.invest-retire-lever-skeleton {
+  min-height: 118px;
+  background: linear-gradient(
+    100deg,
+    var(--home-paper) 30%,
+    var(--home-paper-alt) 50%,
+    var(--home-paper) 70%
+  );
+  background-size: 200% 100%;
+  animation: invest-retire-shimmer 1.4s ease-in-out infinite;
+}
+@keyframes invest-retire-shimmer {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .invest-retire-lever-skeleton {
+    animation: none;
+  }
+  /* Stop the looping skeleton/spinner animations across the investments
+     surface for motion-sensitive users (the static state stays legible). */
+  .invest-page-stack .animate-pulse,
+  .invest-page-stack .animate-spin {
+    animation: none !important;
   }
 }

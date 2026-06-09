@@ -1,0 +1,363 @@
+{
+  "roe": [
+    {
+      "symbol": "PNC",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1440000000.0,
+      "beginning_stockholders_equity": 49320000000.0,
+      "ending_stockholders_equity": 49454000000.0,
+      "avg_equity": 49387000000.0,
+      "roe": 0.0292
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 740000000.0,
+      "beginning_stockholders_equity": 49454000000.0,
+      "ending_stockholders_equity": 51105000000.0,
+      "avg_equity": 50279500000.0,
+      "roe": 0.0147
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1240000000.0,
+      "beginning_stockholders_equity": 51105000000.0,
+      "ending_stockholders_equity": 51340000000.0,
+      "avg_equity": 51222500000.0,
+      "roe": 0.0242
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1355000000.0,
+      "beginning_stockholders_equity": 51340000000.0,
+      "ending_stockholders_equity": 52642000000.0,
+      "avg_equity": 51991000000.0,
+      "roe": 0.0261
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1396000000.0,
+      "beginning_stockholders_equity": 52642000000.0,
+      "ending_stockholders_equity": 55689000000.0,
+      "avg_equity": 54165500000.0,
+      "roe": 0.0258
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1505000000.0,
+      "beginning_stockholders_equity": 55689000000.0,
+      "ending_stockholders_equity": 54425000000.0,
+      "avg_equity": 55057000000.0,
+      "roe": 0.0273
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1399000000.0,
+      "beginning_stockholders_equity": 54425000000.0,
+      "ending_stockholders_equity": 56405000000.0,
+      "avg_equity": 55415000000.0,
+      "roe": 0.0252
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 5832000000.0,
+      "beginning_stockholders_equity": 56405000000.0,
+      "ending_stockholders_equity": 57607000000.0,
+      "avg_equity": 57006000000.0,
+      "roe": 0.1023
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1723000000.0,
+      "beginning_stockholders_equity": 57607000000.0,
+      "ending_stockholders_equity": 58990000000.0,
+      "avg_equity": 58298500000.0,
+      "roe": 0.0296
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1922000000.0,
+      "beginning_stockholders_equity": 58990000000.0,
+      "ending_stockholders_equity": 60585000000.0,
+      "avg_equity": 59787500000.0,
+      "roe": 0.0321
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 6852000000.0,
+      "beginning_stockholders_equity": 60585000000.0,
+      "ending_stockholders_equity": 63627000000.0,
+      "avg_equity": 62106000000.0,
+      "roe": 0.1103
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "PNC",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1440000000.0,
+      "beginning_total_assets": 558207000000.0,
+      "ending_total_assets": 557334000000.0,
+      "avg_assets": 557770500000.0,
+      "roa": 0.0026
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 740000000.0,
+      "beginning_total_assets": 557334000000.0,
+      "ending_total_assets": 561580000000.0,
+      "avg_assets": 559457000000.0,
+      "roa": 0.0013
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1240000000.0,
+      "beginning_total_assets": 561580000000.0,
+      "ending_total_assets": 566162000000.0,
+      "avg_assets": 563871000000.0,
+      "roa": 0.0022
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1355000000.0,
+      "beginning_total_assets": 566162000000.0,
+      "ending_total_assets": 556519000000.0,
+      "avg_assets": 561340500000.0,
+      "roa": 0.0024
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1396000000.0,
+      "beginning_total_assets": 556519000000.0,
+      "ending_total_assets": 564881000000.0,
+      "avg_assets": 560700000000.0,
+      "roa": 0.0025
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1505000000.0,
+      "beginning_total_assets": 564881000000.0,
+      "ending_total_assets": 560038000000.0,
+      "avg_assets": 562459500000.0,
+      "roa": 0.0027
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1399000000.0,
+      "beginning_total_assets": 560038000000.0,
+      "ending_total_assets": 554722000000.0,
+      "avg_assets": 557380000000.0,
+      "roa": 0.0025
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 5832000000.0,
+      "beginning_total_assets": 554722000000.0,
+      "ending_total_assets": 559107000000.0,
+      "avg_assets": 556914500000.0,
+      "roa": 0.0105
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1723000000.0,
+      "beginning_total_assets": 559107000000.0,
+      "ending_total_assets": 568767000000.0,
+      "avg_assets": 563937000000.0,
+      "roa": 0.0031
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1922000000.0,
+      "beginning_total_assets": 568767000000.0,
+      "ending_total_assets": 573572000000.0,
+      "avg_assets": 571169500000.0,
+      "roa": 0.0034
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 6852000000.0,
+      "beginning_total_assets": 573572000000.0,
+      "ending_total_assets": 603028000000.0,
+      "avg_assets": 588300000000.0,
+      "roa": 0.0116
+    }
+  ],
+  "roic": [],
+  "equityMultiplier": [
+    {
+      "symbol": "PNC",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.0292,
+      "roa": 0.0026,
+      "equity_multiplier": 11.23
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.0147,
+      "roa": 0.0013,
+      "equity_multiplier": 11.31
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.0242,
+      "roa": 0.0022,
+      "equity_multiplier": 11.0
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.0261,
+      "roa": 0.0024,
+      "equity_multiplier": 10.88
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.0258,
+      "roa": 0.0025,
+      "equity_multiplier": 10.32
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.0273,
+      "roa": 0.0027,
+      "equity_multiplier": 10.11
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.0252,
+      "roa": 0.0025,
+      "equity_multiplier": 10.08
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.1023,
+      "roa": 0.0105,
+      "equity_multiplier": 9.74
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.0296,
+      "roa": 0.0031,
+      "equity_multiplier": 9.55
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.0321,
+      "roa": 0.0034,
+      "equity_multiplier": 9.44
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.1103,
+      "roa": 0.0116,
+      "equity_multiplier": 9.51
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "PNC",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0026,
+      "net_margin": 0.2751,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0013,
+      "net_margin": 0.1377,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0022,
+      "net_margin": 0.241,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0024,
+      "net_margin": 0.2901,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0025,
+      "net_margin": 0.257,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0027,
+      "net_margin": 0.2706,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0025,
+      "net_margin": 0.2568,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0105,
+      "net_margin": 0.2639,
+      "asset_turnover": 0.04
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0031,
+      "net_margin": 0.292,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0034,
+      "net_margin": 0.3167,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0116,
+      "net_margin": 0.2881,
+      "asset_turnover": 0.04
+    }
+  ]
+}

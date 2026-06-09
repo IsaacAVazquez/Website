@@ -93,7 +93,7 @@ test.describe('Navigation', () => {
     )
 
     await page.goBack()
-    await expect(page).toHaveURL('http://localhost:3000/')
+    await expect(page).toHaveURL('/')
   })
 
   test('should expose Home in the mobile menu and avoid horizontal overflow', async ({ page }) => {

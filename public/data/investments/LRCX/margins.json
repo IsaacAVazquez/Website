@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "LRCX",
+      "report_date": "2022-06-30",
+      "gross_profit": 2100512000.0,
+      "total_revenue": 4635554000.0,
+      "gross_margin": 0.4531
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2022-09-30",
+      "gross_profit": 2336835000.0,
+      "total_revenue": 5074121000.0,
+      "gross_margin": 0.4605
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2022-12-31",
+      "gross_profit": 2376349000.0,
+      "total_revenue": 5277569000.0,
+      "gross_margin": 0.4503
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2023-06-30",
+      "gross_profit": 1458129000.0,
+      "total_revenue": 3207257000.0,
+      "gross_margin": 0.4546
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2023-09-30",
+      "gross_profit": 1654702000.0,
+      "total_revenue": 3482062000.0,
+      "gross_margin": 0.4752
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2023-12-31",
+      "gross_profit": 1757455000.0,
+      "total_revenue": 3758259000.0,
+      "gross_margin": 0.4676
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-03-31",
+      "gross_profit": 1800536000.0,
+      "total_revenue": 3793558000.0,
+      "gross_margin": 0.4746
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-06-30",
+      "gross_profit": 1840098000.0,
+      "total_revenue": 3871507000.0,
+      "gross_margin": 0.4753
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-09-30",
+      "gross_profit": 2002683000.0,
+      "total_revenue": 4167976000.0,
+      "gross_margin": 0.4805
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-12-31",
+      "gross_profit": 2072981000.0,
+      "total_revenue": 4376047000.0,
+      "gross_margin": 0.4737
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-03-31",
+      "gross_profit": 2313686000.0,
+      "total_revenue": 4720175000.0,
+      "gross_margin": 0.4902
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-06-30",
+      "gross_profit": 2589709000.0,
+      "total_revenue": 18435591000.0,
+      "gross_margin": 0.1405
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-09-30",
+      "gross_profit": 2684879000.0,
+      "total_revenue": 5324173000.0,
+      "gross_margin": 0.5043
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-12-31",
+      "gross_profit": 2651162000.0,
+      "total_revenue": 5344791000.0,
+      "gross_margin": 0.496
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2026-03-31",
+      "gross_profit": 2910527000.0,
+      "total_revenue": 21681845000.0,
+      "gross_margin": 0.1342
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "LRCX",
+      "report_date": "2019-06-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2020-06-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2021-06-30",
+      "gross_profit": 6805306000.0,
+      "total_revenue": 14626150000.0,
+      "gross_margin": 0.4653
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2022-06-30",
+      "gross_profit": 7871807000.0,
+      "total_revenue": 17227039000.0,
+      "gross_margin": 0.4569
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2023-06-30",
+      "gross_profit": 7776925000.0,
+      "total_revenue": 17428516000.0,
+      "gross_margin": 0.4462
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-06-30",
+      "gross_profit": 7052791000.0,
+      "total_revenue": 14905386000.0,
+      "gross_margin": 0.4732
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-06-30",
+      "gross_profit": 8979059000.0,
+      "total_revenue": 18435591000.0,
+      "gross_margin": 0.4871
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "LRCX",
+      "report_date": "2022-06-30",
+      "operating_income": 1479353000.0,
+      "total_revenue": 4635554000.0,
+      "operating_margin": 0.3191
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2022-09-30",
+      "operating_income": 1697840000.0,
+      "total_revenue": 5074121000.0,
+      "operating_margin": 0.3346
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2022-12-31",
+      "operating_income": 1680162000.0,
+      "total_revenue": 5277569000.0,
+      "operating_margin": 0.3184
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2023-06-30",
+      "operating_income": 856347000.0,
+      "total_revenue": 3207257000.0,
+      "operating_margin": 0.267
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2023-09-30",
+      "operating_income": 1025050000.0,
+      "total_revenue": 3482062000.0,
+      "operating_margin": 0.2944
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2023-12-31",
+      "operating_income": 1058900000.0,
+      "total_revenue": 3758259000.0,
+      "operating_margin": 0.2818
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-03-31",
+      "operating_income": 1072358000.0,
+      "total_revenue": 3793558000.0,
+      "operating_margin": 0.2827
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-06-30",
+      "operating_income": 1125792000.0,
+      "total_revenue": 3871507000.0,
+      "operating_margin": 0.2908
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-09-30",
+      "operating_income": 1264197000.0,
+      "total_revenue": 4167976000.0,
+      "operating_margin": 0.3033
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-12-31",
+      "operating_income": 1333884000.0,
+      "total_revenue": 4376047000.0,
+      "operating_margin": 0.3048
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-03-31",
+      "operating_income": 1561759000.0,
+      "total_revenue": 4720175000.0,
+      "operating_margin": 0.3309
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-06-30",
+      "operating_income": 5900968000.0,
+      "total_revenue": 18435591000.0,
+      "operating_margin": 0.3201
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-09-30",
+      "operating_income": 1829088000.0,
+      "total_revenue": 5324173000.0,
+      "operating_margin": 0.3435
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-12-31",
+      "operating_income": 1810203000.0,
+      "total_revenue": 5344791000.0,
+      "operating_margin": 0.3387
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2026-03-31",
+      "operating_income": 7427435000.0,
+      "total_revenue": 21681845000.0,
+      "operating_margin": 0.3426
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "LRCX",
+      "report_date": "2019-06-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2020-06-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2021-06-30",
+      "operating_income": 4482023000.0,
+      "total_revenue": 14626150000.0,
+      "operating_margin": 0.3064
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2022-06-30",
+      "operating_income": 5381822000.0,
+      "total_revenue": 17227039000.0,
+      "operating_margin": 0.3124
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2023-06-30",
+      "operating_income": 5217010000.0,
+      "total_revenue": 17428516000.0,
+      "operating_margin": 0.2993
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-06-30",
+      "operating_income": 4282100000.0,
+      "total_revenue": 14905386000.0,
+      "operating_margin": 0.2873
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-06-30",
+      "operating_income": 5900968000.0,
+      "total_revenue": 18435591000.0,
+      "operating_margin": 0.3201
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "LRCX",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 1208934000.0,
+      "total_revenue": 4635554000.0,
+      "net_margin": 0.2608
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": 1425879000.0,
+      "total_revenue": 5074121000.0,
+      "net_margin": 0.281
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 1468507000.0,
+      "total_revenue": 5277569000.0,
+      "net_margin": 0.2783
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 802537000.0,
+      "total_revenue": 3207257000.0,
+      "net_margin": 0.2502
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 887398000.0,
+      "total_revenue": 3482062000.0,
+      "net_margin": 0.2548
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 954266000.0,
+      "total_revenue": 3758259000.0,
+      "net_margin": 0.2539
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 965826000.0,
+      "total_revenue": 3793558000.0,
+      "net_margin": 0.2546
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1020282000.0,
+      "total_revenue": 3871507000.0,
+      "net_margin": 0.2635
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1116444000.0,
+      "total_revenue": 4167976000.0,
+      "net_margin": 0.2679
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1191018000.0,
+      "total_revenue": 4376047000.0,
+      "net_margin": 0.2722
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1330667000.0,
+      "total_revenue": 4720175000.0,
+      "net_margin": 0.2819
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1720088000.0,
+      "total_revenue": 18435591000.0,
+      "net_margin": 0.0933
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1568660000.0,
+      "total_revenue": 5324173000.0,
+      "net_margin": 0.2946
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1593994000.0,
+      "total_revenue": 5344791000.0,
+      "net_margin": 0.2982
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1825460000.0,
+      "total_revenue": 21681845000.0,
+      "net_margin": 0.0842
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "LRCX",
+      "report_date": "2019-06-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2020-06-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2021-06-30",
+      "net_income_common_stockholders": 3908458000.0,
+      "total_revenue": 14626150000.0,
+      "net_margin": 0.2672
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 4605286000.0,
+      "total_revenue": 17227039000.0,
+      "net_margin": 0.2673
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 4510931000.0,
+      "total_revenue": 17428516000.0,
+      "net_margin": 0.2588
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 3827772000.0,
+      "total_revenue": 14905386000.0,
+      "net_margin": 0.2568
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 5358217000.0,
+      "total_revenue": 18435591000.0,
+      "net_margin": 0.2906
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "LRCX",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 4635554000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2022-09-30",
+      "ebitda": 1773591000.0,
+      "total_revenue": 5074121000.0,
+      "ebitda_margin": 0.3495
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2022-12-31",
+      "ebitda": 1784003000.0,
+      "total_revenue": 5277569000.0,
+      "ebitda_margin": 0.338
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2023-06-30",
+      "ebitda": 999751000.0,
+      "total_revenue": 3207257000.0,
+      "ebitda_margin": 0.3117
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2023-09-30",
+      "ebitda": 1161440000.0,
+      "total_revenue": 3482062000.0,
+      "ebitda_margin": 0.3335
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2023-12-31",
+      "ebitda": 1224305000.0,
+      "total_revenue": 3758259000.0,
+      "ebitda_margin": 0.3258
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-03-31",
+      "ebitda": 1230260000.0,
+      "total_revenue": 3793558000.0,
+      "ebitda_margin": 0.3243
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-06-30",
+      "ebitda": 1289152000.0,
+      "total_revenue": 3871507000.0,
+      "ebitda_margin": 0.333
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-09-30",
+      "ebitda": 1433519000.0,
+      "total_revenue": 4167976000.0,
+      "ebitda_margin": 0.3439
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-12-31",
+      "ebitda": 1489645000.0,
+      "total_revenue": 4376047000.0,
+      "ebitda_margin": 0.3404
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-03-31",
+      "ebitda": 1679251000.0,
+      "total_revenue": 4720175000.0,
+      "ebitda_margin": 0.3558
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-06-30",
+      "ebitda": 1920194000.0,
+      "total_revenue": 18435591000.0,
+      "ebitda_margin": 0.1042
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-09-30",
+      "ebitda": 2003278000.0,
+      "total_revenue": 5324173000.0,
+      "ebitda_margin": 0.3763
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-12-31",
+      "ebitda": 1981414000.0,
+      "total_revenue": 5344791000.0,
+      "ebitda_margin": 0.3707
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2026-03-31",
+      "ebitda": 2167211000.0,
+      "total_revenue": 21681845000.0,
+      "ebitda_margin": 0.1
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "LRCX",
+      "report_date": "2019-06-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2020-06-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2021-06-30",
+      "ebitda": 4886552000.0,
+      "total_revenue": 14626150000.0,
+      "ebitda_margin": 0.3341
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2022-06-30",
+      "ebitda": 5711612000.0,
+      "total_revenue": 17227039000.0,
+      "ebitda_margin": 0.3315
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2023-06-30",
+      "ebitda": 5638104000.0,
+      "total_revenue": 17428516000.0,
+      "ebitda_margin": 0.3235
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-06-30",
+      "ebitda": 4905157000.0,
+      "total_revenue": 14905386000.0,
+      "ebitda_margin": 0.3291
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-06-30",
+      "ebitda": 6522609000.0,
+      "total_revenue": 18435591000.0,
+      "ebitda_margin": 0.3538
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "LRCX",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 318188000.0,
+      "total_revenue": 4635554000.0,
+      "fcf_margin": 0.0686
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": 5074121000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": 5277569000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 1044055000.0,
+      "total_revenue": 3207257000.0,
+      "fcf_margin": 0.3255
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 874171000.0,
+      "total_revenue": 3482062000.0,
+      "fcf_margin": 0.251
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 1338564000.0,
+      "total_revenue": 3758259000.0,
+      "fcf_margin": 0.3562
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 1281182000.0,
+      "total_revenue": 3793558000.0,
+      "fcf_margin": 0.3377
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 761682000.0,
+      "total_revenue": 3871507000.0,
+      "fcf_margin": 0.1967
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 1457883000.0,
+      "total_revenue": 4167976000.0,
+      "fcf_margin": 0.3498
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 553593000.0,
+      "total_revenue": 4376047000.0,
+      "fcf_margin": 0.1265
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 1020605000.0,
+      "total_revenue": 4720175000.0,
+      "fcf_margin": 0.2162
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 2381997000.0,
+      "total_revenue": 18435591000.0,
+      "fcf_margin": 0.1292
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 1593843000.0,
+      "total_revenue": 5324173000.0,
+      "fcf_margin": 0.2994
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 1219166000.0,
+      "total_revenue": 5344791000.0,
+      "fcf_margin": 0.2281
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 809816000.0,
+      "total_revenue": 21681845000.0,
+      "fcf_margin": 0.0373
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "LRCX",
+      "report_date": "2019-06-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2020-06-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2021-06-30",
+      "free_cash_flow": 3239067000.0,
+      "total_revenue": 14626150000.0,
+      "fcf_margin": 0.2215
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 2553640000.0,
+      "total_revenue": 17227039000.0,
+      "fcf_margin": 0.1482
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 4677370000.0,
+      "total_revenue": 17428516000.0,
+      "fcf_margin": 0.2684
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 4255599000.0,
+      "total_revenue": 14905386000.0,
+      "fcf_margin": 0.2855
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 5414078000.0,
+      "total_revenue": 18435591000.0,
+      "fcf_margin": 0.2937
+    }
+  ]
+}

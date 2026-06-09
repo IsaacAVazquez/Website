@@ -17,8 +17,8 @@ import { getAllChangelogEntries } from "../changelog";
 
 const mockFs = fs as jest.Mocked<typeof fs>;
 const mockMatter = matter as unknown as jest.Mock;
-const mockRemark = remark as jest.Mock;
-const mockRemarkHtml = remarkHtml as jest.Mock;
+const mockRemark = remark as unknown as jest.Mock;
+const mockRemarkHtml = remarkHtml as unknown as jest.Mock;
 
 describe("getAllChangelogEntries", () => {
   beforeEach(() => {

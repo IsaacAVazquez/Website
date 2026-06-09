@@ -12,6 +12,7 @@ import type {
   MBAJob,
   MBAJobsApiResponse,
   MBAJobsFetchError,
+  MBAJobsSourceStatus,
 } from "@/types/mba-jobs";
 import { MBA_COMPANIES } from "@/constants/mba-companies";
 
@@ -24,6 +25,7 @@ const WATCHED_KEY = "mba_watched_companies_v2";
 
 const POLL_INTERVAL_MS = 30 * 60 * 1_000; // 30 minutes
 const DEDUPE_WINDOW_MS = 2_000;
+const MAX_SEEN_IDS = 500;
 
 // ---------------------------------------------------------------------------
 // Default watched companies (all non-manual)
@@ -47,14 +49,10 @@ function safeParseStringArray(raw: string | null): string[] {
   }
 }
 
-function loadSeenIds(): Set<string> {
-  if (typeof window === "undefined") return new Set();
-  return new Set(safeParseStringArray(localStorage.getItem(SEEN_IDS_KEY)));
-}
-
 function saveSeenIds(ids: Set<string>) {
   if (typeof window === "undefined") return;
-  localStorage.setItem(SEEN_IDS_KEY, JSON.stringify(Array.from(ids)));
+  const compacted = Array.from(ids).slice(-MAX_SEEN_IDS);
+  localStorage.setItem(SEEN_IDS_KEY, JSON.stringify(compacted));
   emitSeenChange();
 }
 
@@ -63,7 +61,7 @@ function loadWatchedCompanies(): Set<string> {
   const raw = localStorage.getItem(WATCHED_KEY);
   if (!raw) return new Set(DEFAULT_WATCHED_IDS);
   const parsed = safeParseStringArray(raw);
-  return parsed.length > 0 ? new Set(parsed) : new Set(DEFAULT_WATCHED_IDS);
+  return new Set(parsed);
 }
 
 function saveWatchedCompanies(ids: Set<string>) {
@@ -111,6 +109,7 @@ export interface UseMBAJobsResult {
   isLoading: boolean;
   error: string | null;
   fetchErrors: MBAJobsFetchError[];
+  sourceStatuses: MBAJobsSourceStatus[];
   lastFetchedAt: Date | null;
   seenIds: Set<string>;
   watchedCompanyIds: Set<string>;
@@ -128,7 +127,12 @@ export interface UseMBAJobsResult {
   clearEmailResult: () => void;
 }
 
-export function useMBAJobs(): UseMBAJobsResult {
+export interface UseMBAJobsOptions {
+  externalLeads?: boolean;
+}
+
+export function useMBAJobs(options: UseMBAJobsOptions = {}): UseMBAJobsResult {
+  const externalLeadsEnabled = options.externalLeads === true;
   // ── Seen IDs (external store for cross-tab sync) ───────────────────────
   const rawSeenSnapshot = useSyncExternalStore(
     subscribeSeenIds,
@@ -154,6 +158,10 @@ export function useMBAJobs(): UseMBAJobsResult {
   useEffect(() => {
     watchedRef.current = watchedCompanyIds;
   }, [watchedCompanyIds]);
+  const externalLeadsRef = useRef(externalLeadsEnabled);
+  useEffect(() => {
+    externalLeadsRef.current = externalLeadsEnabled;
+  }, [externalLeadsEnabled]);
 
   // ── Notification permission ────────────────────────────────────────────
   // Always start "unsupported" on both server and first client render so
@@ -167,6 +175,7 @@ export function useMBAJobs(): UseMBAJobsResult {
 
   useEffect(() => {
     if (typeof window === "undefined" || !("Notification" in window)) return;
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Resolve real Notification permission after mount to avoid SSR hydration mismatch (see comment above)
     setNotificationPermission(Notification.permission);
   }, []);
 
@@ -175,6 +184,7 @@ export function useMBAJobs(): UseMBAJobsResult {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [fetchErrors, setFetchErrors] = useState<MBAJobsFetchError[]>([]);
+  const [sourceStatuses, setSourceStatuses] = useState<MBAJobsSourceStatus[]>([]);
   const [lastFetchedAt, setLastFetchedAt] = useState<Date | null>(null);
 
   const isMountedRef = useRef(true);
@@ -223,8 +233,13 @@ export function useMBAJobs(): UseMBAJobsResult {
         setError(null);
       }
 
-      const watched = Array.from(watchedRef.current).join(",");
-      const url = watched ? `/api/mba-jobs?companies=${encodeURIComponent(watched)}` : "/api/mba-jobs";
+      const params = new URLSearchParams({
+        companies: Array.from(watchedRef.current).join(","),
+      });
+      if (externalLeadsRef.current) {
+        params.set("external", "on");
+      }
+      const url = `/api/mba-jobs?${params.toString()}`;
 
       try {
         const res = await fetch(url);
@@ -246,6 +261,7 @@ export function useMBAJobs(): UseMBAJobsResult {
 
         setJobs(data.jobs);
         setFetchErrors(data.errors ?? []);
+        setSourceStatuses(data.sourceStatuses ?? []);
         setLastFetchedAt(new Date(data.fetchedAt));
         setError(null);
       } catch (err) {
@@ -262,6 +278,7 @@ export function useMBAJobs(): UseMBAJobsResult {
 
   // ── Initial fetch ──────────────────────────────────────────────────────
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- One-shot mount-time fetch; fetchJobs internally manages loading/error state
     fetchJobs({ showLoading: true });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -299,6 +316,17 @@ export function useMBAJobs(): UseMBAJobsResult {
     fetchJobs({ showLoading: true });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [watchedCompanyIds]);
+
+  // ── Re-fetch when external lead mode changes ──────────────────────────
+  const isFirstExternalRender = useRef(true);
+  useEffect(() => {
+    if (isFirstExternalRender.current) {
+      isFirstExternalRender.current = false;
+      return;
+    }
+    fetchJobs({ showLoading: true });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [externalLeadsEnabled]);
 
   // ── Derived ────────────────────────────────────────────────────────────
   const newJobCount = useMemo(
@@ -375,6 +403,7 @@ export function useMBAJobs(): UseMBAJobsResult {
     isLoading,
     error,
     fetchErrors,
+    sourceStatuses,
     lastFetchedAt,
     seenIds,
     watchedCompanyIds,

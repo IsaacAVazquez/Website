@@ -4,7 +4,6 @@ import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { PollingAggregatorClient } from "./polling-aggregator-client";
 import { normalizePollingState } from "./polling-aggregator-state";
 
-// eslint-disable-next-line react-refresh/only-export-components -- Next.js route modules export metadata alongside the page component.
 export const metadata = constructMetadata({
   title: "Polling Aggregator",
   description:

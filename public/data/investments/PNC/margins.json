@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "PNC",
+      "report_date": "2022-06-30",
+      "gross_profit": null,
+      "total_revenue": 5112000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": 5550000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": 5747000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": 5575000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2023-06-30",
+      "gross_profit": null,
+      "total_revenue": 5327000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2023-09-30",
+      "gross_profit": null,
+      "total_revenue": 5234000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2023-12-31",
+      "gross_profit": null,
+      "total_revenue": 5373000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-03-31",
+      "gross_profit": null,
+      "total_revenue": 5146000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-06-30",
+      "gross_profit": null,
+      "total_revenue": 4671000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-09-30",
+      "gross_profit": null,
+      "total_revenue": 5431000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-12-31",
+      "gross_profit": null,
+      "total_revenue": 5561000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-03-31",
+      "gross_profit": null,
+      "total_revenue": 5447000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-06-30",
+      "gross_profit": null,
+      "total_revenue": 22101000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-09-30",
+      "gross_profit": null,
+      "total_revenue": 5900000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-12-31",
+      "gross_profit": null,
+      "total_revenue": 6068000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2026-03-31",
+      "gross_profit": null,
+      "total_revenue": 23787000000.0,
+      "gross_margin": null
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "PNC",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2020-12-31",
+      "gross_profit": null,
+      "total_revenue": 16901000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2021-12-31",
+      "gross_profit": null,
+      "total_revenue": 19211000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": 21114000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2023-12-31",
+      "gross_profit": null,
+      "total_revenue": 21509000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-12-31",
+      "gross_profit": null,
+      "total_revenue": 20809000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-12-31",
+      "gross_profit": null,
+      "total_revenue": 23077000000.0,
+      "gross_margin": null
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "PNC",
+      "report_date": "2022-06-30",
+      "operating_income": null,
+      "total_revenue": 5112000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": 5550000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": 5747000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": 5575000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2023-06-30",
+      "operating_income": null,
+      "total_revenue": 5327000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2023-09-30",
+      "operating_income": null,
+      "total_revenue": 5234000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2023-12-31",
+      "operating_income": null,
+      "total_revenue": 5373000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-03-31",
+      "operating_income": null,
+      "total_revenue": 5146000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-06-30",
+      "operating_income": null,
+      "total_revenue": 4671000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-09-30",
+      "operating_income": null,
+      "total_revenue": 5431000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-12-31",
+      "operating_income": null,
+      "total_revenue": 5561000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-03-31",
+      "operating_income": null,
+      "total_revenue": 5447000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-06-30",
+      "operating_income": null,
+      "total_revenue": 22101000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-09-30",
+      "operating_income": null,
+      "total_revenue": 5900000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-12-31",
+      "operating_income": null,
+      "total_revenue": 6068000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2026-03-31",
+      "operating_income": null,
+      "total_revenue": 23787000000.0,
+      "operating_margin": null
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "PNC",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2020-12-31",
+      "operating_income": null,
+      "total_revenue": 16901000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2021-12-31",
+      "operating_income": null,
+      "total_revenue": 19211000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": 21114000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2023-12-31",
+      "operating_income": null,
+      "total_revenue": 21509000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-12-31",
+      "operating_income": null,
+      "total_revenue": 20809000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-12-31",
+      "operating_income": null,
+      "total_revenue": 23077000000.0,
+      "operating_margin": null
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "PNC",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 1409000000.0,
+      "total_revenue": 5112000000.0,
+      "net_margin": 0.2756
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": 1558000000.0,
+      "total_revenue": 5550000000.0,
+      "net_margin": 0.2807
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 1401000000.0,
+      "total_revenue": 5747000000.0,
+      "net_margin": 0.2438
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": 1599000000.0,
+      "total_revenue": 5575000000.0,
+      "net_margin": 0.2868
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 1347000000.0,
+      "total_revenue": 5327000000.0,
+      "net_margin": 0.2529
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1440000000.0,
+      "total_revenue": 5234000000.0,
+      "net_margin": 0.2751
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 740000000.0,
+      "total_revenue": 5373000000.0,
+      "net_margin": 0.1377
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1240000000.0,
+      "total_revenue": 5146000000.0,
+      "net_margin": 0.241
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1355000000.0,
+      "total_revenue": 4671000000.0,
+      "net_margin": 0.2901
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1396000000.0,
+      "total_revenue": 5431000000.0,
+      "net_margin": 0.257
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1505000000.0,
+      "total_revenue": 5561000000.0,
+      "net_margin": 0.2706
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1399000000.0,
+      "total_revenue": 5447000000.0,
+      "net_margin": 0.2568
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 5832000000.0,
+      "total_revenue": 22101000000.0,
+      "net_margin": 0.2639
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1723000000.0,
+      "total_revenue": 5900000000.0,
+      "net_margin": 0.292
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1922000000.0,
+      "total_revenue": 6068000000.0,
+      "net_margin": 0.3167
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 6852000000.0,
+      "total_revenue": 23787000000.0,
+      "net_margin": 0.2881
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "PNC",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 7249000000.0,
+      "total_revenue": 16901000000.0,
+      "net_margin": 0.4289
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 5409000000.0,
+      "total_revenue": 19211000000.0,
+      "net_margin": 0.2816
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 5708000000.0,
+      "total_revenue": 21114000000.0,
+      "net_margin": 0.2703
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 5126000000.0,
+      "total_revenue": 21509000000.0,
+      "net_margin": 0.2383
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 5496000000.0,
+      "total_revenue": 20809000000.0,
+      "net_margin": 0.2641
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 6576000000.0,
+      "total_revenue": 23077000000.0,
+      "net_margin": 0.285
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "PNC",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 5112000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": 5550000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": 5747000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": 5575000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2023-06-30",
+      "ebitda": null,
+      "total_revenue": 5327000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2023-09-30",
+      "ebitda": null,
+      "total_revenue": 5234000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2023-12-31",
+      "ebitda": null,
+      "total_revenue": 5373000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-03-31",
+      "ebitda": null,
+      "total_revenue": 5146000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-06-30",
+      "ebitda": null,
+      "total_revenue": 4671000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-09-30",
+      "ebitda": null,
+      "total_revenue": 5431000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-12-31",
+      "ebitda": null,
+      "total_revenue": 5561000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-03-31",
+      "ebitda": null,
+      "total_revenue": 5447000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-06-30",
+      "ebitda": null,
+      "total_revenue": 22101000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-09-30",
+      "ebitda": null,
+      "total_revenue": 5900000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-12-31",
+      "ebitda": null,
+      "total_revenue": 6068000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2026-03-31",
+      "ebitda": null,
+      "total_revenue": 23787000000.0,
+      "ebitda_margin": null
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "PNC",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2020-12-31",
+      "ebitda": null,
+      "total_revenue": 16901000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2021-12-31",
+      "ebitda": null,
+      "total_revenue": 19211000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": 21114000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2023-12-31",
+      "ebitda": null,
+      "total_revenue": 21509000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-12-31",
+      "ebitda": null,
+      "total_revenue": 20809000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-12-31",
+      "ebitda": null,
+      "total_revenue": 23077000000.0,
+      "ebitda_margin": null
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "PNC",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 2632000000.0,
+      "total_revenue": 5112000000.0,
+      "fcf_margin": 0.5149
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": 5550000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": 5747000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": 5575000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 3256000000.0,
+      "total_revenue": 5327000000.0,
+      "fcf_margin": 0.6112
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 115000000.0,
+      "total_revenue": 5234000000.0,
+      "fcf_margin": 0.022
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 4864000000.0,
+      "total_revenue": 5373000000.0,
+      "fcf_margin": 0.9053
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 1758000000.0,
+      "total_revenue": 5146000000.0,
+      "fcf_margin": 0.3416
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 1035000000.0,
+      "total_revenue": 4671000000.0,
+      "fcf_margin": 0.2216
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 3287000000.0,
+      "total_revenue": 5431000000.0,
+      "fcf_margin": 0.6052
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 1800000000.0,
+      "total_revenue": 5561000000.0,
+      "fcf_margin": 0.3237
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-03-31",
+      "free_cash_flow": -509000000.0,
+      "total_revenue": 5447000000.0,
+      "fcf_margin": -0.0934
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 1480000000.0,
+      "total_revenue": 22101000000.0,
+      "fcf_margin": 0.067
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 2656000000.0,
+      "total_revenue": 5900000000.0,
+      "fcf_margin": 0.4502
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 757000000.0,
+      "total_revenue": 6068000000.0,
+      "fcf_margin": 0.1248
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 1928000000.0,
+      "total_revenue": 23787000000.0,
+      "fcf_margin": 0.0811
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "PNC",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 4659000000.0,
+      "total_revenue": 16901000000.0,
+      "fcf_margin": 0.2757
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 7214000000.0,
+      "total_revenue": 19211000000.0,
+      "fcf_margin": 0.3755
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 9083000000.0,
+      "total_revenue": 21114000000.0,
+      "fcf_margin": 0.4302
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 10111000000.0,
+      "total_revenue": 21509000000.0,
+      "fcf_margin": 0.4701
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 7880000000.0,
+      "total_revenue": 20809000000.0,
+      "fcf_margin": 0.3787
+    },
+    {
+      "symbol": "PNC",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 4384000000.0,
+      "total_revenue": 23077000000.0,
+      "fcf_margin": 0.19
+    }
+  ]
+}

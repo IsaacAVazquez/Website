@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "NOW",
+    "name": "Mr. Amit K. Zavery",
+    "title": "President, Chief Product Officer & COO",
+    "age": 53,
+    "born": 1972,
+    "pay": 4081523,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "NOW",
+    "name": "Mr. Darren  Yip",
+    "title": "Head of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "NOW",
+    "name": "Mr. Frederic B. Luddy",
+    "title": "Founder & Director",
+    "age": 70,
+    "born": 1955,
+    "pay": 40000,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "NOW",
+    "name": "Mr. Hossein  Nowbar",
+    "title": "President, Secretary & Chief Legal Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "NOW",
+    "name": "Mr. Pat  Casey",
+    "title": "CTO & Executive VP of Dev Ops",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "NOW",
+    "name": "Mr. Paul  Fipps",
+    "title": "President of Global Customer Operations",
+    "age": 52,
+    "born": 1973,
+    "pay": 2196545,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "NOW",
+    "name": "Mr. William R. McDermott",
+    "title": "Chairman & CEO",
+    "age": 63,
+    "born": 1962,
+    "pay": 8069306,
+    "exercised": 0,
+    "unexercised": 83141472,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "NOW",
+    "name": "Ms. Danielle  Fontaine",
+    "title": "CAO & Corporate Controller",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "NOW",
+    "name": "Ms. Gina M. Mastantuono",
+    "title": "President & CFO",
+    "age": 55,
+    "born": 1970,
+    "pay": 2166155,
+    "exercised": 0,
+    "unexercised": 3445640,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "NOW",
+    "name": "Ms. Jacqueline P. Canney",
+    "title": "Chief People & AI Enablement Officer",
+    "age": 57,
+    "born": 1968,
+    "pay": 1554880,
+    "exercised": 0,
+    "unexercised": 1722600,
+    "report_date": "2026-06-08"
+  }
+]

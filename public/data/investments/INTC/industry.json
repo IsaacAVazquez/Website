@@ -1,0 +1,1692 @@
+{
+  "ttm_pe": [],
+  "ps_ratio": [],
+  "pb_ratio": [],
+  "roe": [
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 21591264.0,
+      "total_avg_equity": 64972048.5,
+      "industry_roe": 0.3323
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 21591264.0,
+      "total_avg_equity": 64972048.5,
+      "industry_roe": 0.3323
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 21591264.0,
+      "total_avg_equity": 64972048.5,
+      "industry_roe": 0.3323
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 111242606.0,
+      "total_avg_equity": 1719742899.5,
+      "industry_roe": 0.0647
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 111242606.0,
+      "total_avg_equity": 1719742899.5,
+      "industry_roe": 0.0647
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 108448606.0,
+      "total_avg_equity": 1722257899.5,
+      "industry_roe": 0.063
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 61283920151.28288,
+      "total_avg_equity": 404078176570.4823,
+      "industry_roe": 0.1517
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 114200095151.28288,
+      "total_avg_equity": 539400731570.4823,
+      "industry_roe": 0.2117
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 112661532151.28288,
+      "total_avg_equity": 583572649570.4823,
+      "industry_roe": 0.1931
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 109331401833.3569,
+      "total_avg_equity": 594957606757.0824,
+      "industry_roe": 0.1838
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 114307678833.3569,
+      "total_avg_equity": 600810054257.0824,
+      "industry_roe": 0.1903
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 116624999833.3569,
+      "total_avg_equity": 600645073757.0824,
+      "industry_roe": 0.1942
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 103442859466.22365,
+      "total_avg_equity": 607420194531.3105,
+      "industry_roe": 0.1703
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 113809563466.22365,
+      "total_avg_equity": 639456415031.3105,
+      "industry_roe": 0.178
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 116913614466.22365,
+      "total_avg_equity": 640782774531.3105,
+      "industry_roe": 0.1825
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 116185503564.67743,
+      "total_avg_equity": 661481736012.4844,
+      "industry_roe": 0.1756
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 131401431564.6774,
+      "total_avg_equity": 672186401012.4844,
+      "industry_roe": 0.1955
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 132192378564.6774,
+      "total_avg_equity": 673282744012.4844,
+      "industry_roe": 0.1963
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 134381419308.90851,
+      "total_avg_equity": 685908196460.7653,
+      "industry_roe": 0.1959
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 141866704830.9085,
+      "total_avg_equity": 690295887282.7653,
+      "industry_roe": 0.2055
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 143420246830.9085,
+      "total_avg_equity": 691806329782.7653,
+      "industry_roe": 0.2073
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 163131923568.53442,
+      "total_avg_equity": 766958017189.7815,
+      "industry_roe": 0.2127
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 179700228713.53442,
+      "total_avg_equity": 781050084805.7815,
+      "industry_roe": 0.2301
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 182013594713.53442,
+      "total_avg_equity": 783590667305.7815,
+      "industry_roe": 0.2323
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 252256651882.91492,
+      "total_avg_equity": 943056939194.8226,
+      "industry_roe": 0.2675
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 272033396466.91492,
+      "total_avg_equity": 964999146153.8226,
+      "industry_roe": 0.2819
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 275403201466.9149,
+      "total_avg_equity": 968238298153.8226,
+      "industry_roe": 0.2844
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 280746881258.5837,
+      "total_avg_equity": 990399742214.4841,
+      "industry_roe": 0.2835
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 321959850600.5837,
+      "total_avg_equity": 1011387219291.4841,
+      "industry_roe": 0.3183
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 344485146600.58374,
+      "total_avg_equity": 1019271136291.4841,
+      "industry_roe": 0.338
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 454605850681.8902,
+      "total_avg_equity": 1030226735748.6902,
+      "industry_roe": 0.4413
+    },
+    {
+      "report_date": "2026-04-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 598187512681.8903,
+      "total_avg_equity": 1056976233748.6902,
+      "industry_roe": 0.5659
+    }
+  ],
+  "roa": [
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 21591264.0,
+      "total_avg_assets": 66720386.0,
+      "industry_roa": 0.3236
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 21591264.0,
+      "total_avg_assets": 66720386.0,
+      "industry_roa": 0.3236
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 21591264.0,
+      "total_avg_assets": 66720386.0,
+      "industry_roa": 0.3236
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 111242606.0,
+      "total_avg_assets": 2597808452.0,
+      "industry_roa": 0.0428
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 111242606.0,
+      "total_avg_assets": 2597808452.0,
+      "industry_roa": 0.0428
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 108448606.0,
+      "total_avg_assets": 2611109452.0,
+      "industry_roa": 0.0415
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 61283920151.28288,
+      "total_avg_assets": 686725473526.1935,
+      "industry_roa": 0.0892
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 114200095151.28288,
+      "total_avg_assets": 945913199026.1935,
+      "industry_roa": 0.1207
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 112661532151.28288,
+      "total_avg_assets": 1011166881026.1935,
+      "industry_roa": 0.1114
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 109331401833.3569,
+      "total_avg_assets": 1027675553013.4741,
+      "industry_roa": 0.1064
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 114307678833.3569,
+      "total_avg_assets": 1030527553013.4741,
+      "industry_roa": 0.1109
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 116624999833.3569,
+      "total_avg_assets": 1031868719013.4741,
+      "industry_roa": 0.113
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 103442859466.22365,
+      "total_avg_assets": 1042092187111.3312,
+      "industry_roa": 0.0993
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 113809563466.22365,
+      "total_avg_assets": 1103452760111.331,
+      "industry_roa": 0.1031
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 116913614466.22365,
+      "total_avg_assets": 1105445320611.331,
+      "industry_roa": 0.1058
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 116185503564.67743,
+      "total_avg_assets": 1152040054736.8157,
+      "industry_roa": 0.1009
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 131401431564.6774,
+      "total_avg_assets": 1164082022736.8157,
+      "industry_roa": 0.1129
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 132192378564.6774,
+      "total_avg_assets": 1165152661736.8157,
+      "industry_roa": 0.1135
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 134381419308.90851,
+      "total_avg_assets": 1177269206610.9875,
+      "industry_roa": 0.1141
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 141866704830.9085,
+      "total_avg_assets": 1183632804603.9875,
+      "industry_roa": 0.1199
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 143420246830.9085,
+      "total_avg_assets": 1187885115103.9875,
+      "industry_roa": 0.1207
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 163131923568.53442,
+      "total_avg_assets": 1313915084673.9495,
+      "industry_roa": 0.1242
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 179700228713.53442,
+      "total_avg_assets": 1326644746718.4495,
+      "industry_roa": 0.1355
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 182013594713.53442,
+      "total_avg_assets": 1329863584218.4495,
+      "industry_roa": 0.1369
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 252256651882.91492,
+      "total_avg_assets": 1572953521845.6665,
+      "industry_roa": 0.1604
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 272033396466.91492,
+      "total_avg_assets": 1594386850618.1665,
+      "industry_roa": 0.1706
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 275403201466.9149,
+      "total_avg_assets": 1596775062618.1665,
+      "industry_roa": 0.1725
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 280746881258.5837,
+      "total_avg_assets": 1619478945191.4124,
+      "industry_roa": 0.1734
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 321959850600.5837,
+      "total_avg_assets": 1648472260557.412,
+      "industry_roa": 0.1953
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 344485146600.58374,
+      "total_avg_assets": 1658914272057.412,
+      "industry_roa": 0.2077
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 454605850681.8902,
+      "total_avg_assets": 1670210747898.4316,
+      "industry_roa": 0.2722
+    },
+    {
+      "report_date": "2026-04-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 598187512681.8903,
+      "total_avg_assets": 1704692257398.4316,
+      "industry_roa": 0.3509
+    }
+  ],
+  "equity_multiplier": [
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roe": 0.3323,
+      "industry_roa": 0.3236,
+      "industry_equity_multiplier": 1.03
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roe": 0.3323,
+      "industry_roa": 0.3236,
+      "industry_equity_multiplier": 1.03
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roe": 0.3323,
+      "industry_roa": 0.3236,
+      "industry_equity_multiplier": 1.03
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roe": 0.0647,
+      "industry_roa": 0.0428,
+      "industry_equity_multiplier": 1.51
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roe": 0.0647,
+      "industry_roa": 0.0428,
+      "industry_equity_multiplier": 1.51
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roe": 0.063,
+      "industry_roa": 0.0415,
+      "industry_equity_multiplier": 1.52
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roe": 0.1517,
+      "industry_roa": 0.0892,
+      "industry_equity_multiplier": 1.7
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roe": 0.2117,
+      "industry_roa": 0.1207,
+      "industry_equity_multiplier": 1.75
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roe": 0.1931,
+      "industry_roa": 0.1114,
+      "industry_equity_multiplier": 1.73
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roe": 0.1838,
+      "industry_roa": 0.1064,
+      "industry_equity_multiplier": 1.73
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roe": 0.1903,
+      "industry_roa": 0.1109,
+      "industry_equity_multiplier": 1.72
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roe": 0.1942,
+      "industry_roa": 0.113,
+      "industry_equity_multiplier": 1.72
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roe": 0.1703,
+      "industry_roa": 0.0993,
+      "industry_equity_multiplier": 1.72
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roe": 0.178,
+      "industry_roa": 0.1031,
+      "industry_equity_multiplier": 1.73
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roe": 0.1825,
+      "industry_roa": 0.1058,
+      "industry_equity_multiplier": 1.72
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roe": 0.1756,
+      "industry_roa": 0.1009,
+      "industry_equity_multiplier": 1.74
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roe": 0.1955,
+      "industry_roa": 0.1129,
+      "industry_equity_multiplier": 1.73
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roe": 0.1963,
+      "industry_roa": 0.1135,
+      "industry_equity_multiplier": 1.73
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roe": 0.1959,
+      "industry_roa": 0.1141,
+      "industry_equity_multiplier": 1.72
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roe": 0.2055,
+      "industry_roa": 0.1199,
+      "industry_equity_multiplier": 1.71
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roe": 0.2073,
+      "industry_roa": 0.1207,
+      "industry_equity_multiplier": 1.72
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roe": 0.2127,
+      "industry_roa": 0.1242,
+      "industry_equity_multiplier": 1.71
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roe": 0.2301,
+      "industry_roa": 0.1355,
+      "industry_equity_multiplier": 1.7
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roe": 0.2323,
+      "industry_roa": 0.1369,
+      "industry_equity_multiplier": 1.7
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roe": 0.2675,
+      "industry_roa": 0.1604,
+      "industry_equity_multiplier": 1.67
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roe": 0.2819,
+      "industry_roa": 0.1706,
+      "industry_equity_multiplier": 1.65
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roe": 0.2844,
+      "industry_roa": 0.1725,
+      "industry_equity_multiplier": 1.65
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roe": 0.2835,
+      "industry_roa": 0.1734,
+      "industry_equity_multiplier": 1.63
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roe": 0.3183,
+      "industry_roa": 0.1953,
+      "industry_equity_multiplier": 1.63
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roe": 0.338,
+      "industry_roa": 0.2077,
+      "industry_equity_multiplier": 1.63
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roe": 0.4413,
+      "industry_roa": 0.2722,
+      "industry_equity_multiplier": 1.62
+    },
+    {
+      "report_date": "2026-04-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roe": 0.5659,
+      "industry_roa": 0.3509,
+      "industry_equity_multiplier": 1.61
+    }
+  ],
+  "gross_margin": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_gross_profit": 15965069663.152346,
+      "total_ttm_revenue": 49357118410.38482,
+      "industry_gross_margin": 0.3235
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_gross_profit": 15965069663.152346,
+      "total_ttm_revenue": 49357118410.38482,
+      "industry_gross_margin": 0.3235
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_gross_profit": 15965069663.152346,
+      "total_ttm_revenue": 49357118410.38482,
+      "industry_gross_margin": 0.3235
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_gross_profit": 14637939455.601868,
+      "total_ttm_revenue": 46391816938.776825,
+      "industry_gross_margin": 0.3155
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_gross_profit": 14637939455.601868,
+      "total_ttm_revenue": 46391816938.776825,
+      "industry_gross_margin": 0.3155
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_gross_profit": 14637939455.601868,
+      "total_ttm_revenue": 46391816938.776825,
+      "industry_gross_margin": 0.3155
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_gross_profit": 15514431133.216988,
+      "total_ttm_revenue": 48428519053.04611,
+      "industry_gross_margin": 0.3204
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_gross_profit": 15514431133.216988,
+      "total_ttm_revenue": 48428519053.04611,
+      "industry_gross_margin": 0.3204
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_gross_profit": 15514431133.216988,
+      "total_ttm_revenue": 48428519053.04611,
+      "industry_gross_margin": 0.3204
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_gross_profit": 17928471708.216988,
+      "total_ttm_revenue": 52790346557.04611,
+      "industry_gross_margin": 0.3396
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_gross_profit": 17928471708.216988,
+      "total_ttm_revenue": 52790346557.04611,
+      "industry_gross_margin": 0.3396
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_gross_profit": 17929110708.216988,
+      "total_ttm_revenue": 52796014557.04611,
+      "industry_gross_margin": 0.3396
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_gross_profit": 148212793829.2936,
+      "total_ttm_revenue": 311671221601.3934,
+      "industry_gross_margin": 0.4755
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_gross_profit": 244932627829.2936,
+      "total_ttm_revenue": 450907137601.3934,
+      "industry_gross_margin": 0.5432
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_gross_profit": 247373929829.2936,
+      "total_ttm_revenue": 472277781601.3934,
+      "industry_gross_margin": 0.5238
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_gross_profit": 247872840162.781,
+      "total_ttm_revenue": 474718048735.2536,
+      "industry_gross_margin": 0.5221
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_gross_profit": 262614193162.781,
+      "total_ttm_revenue": 494616364735.2536,
+      "industry_gross_margin": 0.5309
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_gross_profit": 265786305162.781,
+      "total_ttm_revenue": 498356235735.2536,
+      "industry_gross_margin": 0.5333
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_gross_profit": 266617970788.20712,
+      "total_ttm_revenue": 505911449178.3399,
+      "industry_gross_margin": 0.527
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_gross_profit": 281583979788.2071,
+      "total_ttm_revenue": 527520595178.3399,
+      "industry_gross_margin": 0.5338
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_gross_profit": 284966994788.2071,
+      "total_ttm_revenue": 531503206178.3399,
+      "industry_gross_margin": 0.5362
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_gross_profit": 290055098077.0589,
+      "total_ttm_revenue": 539912890785.90045,
+      "industry_gross_margin": 0.5372
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_gross_profit": 305151022077.0589,
+      "total_ttm_revenue": 560537258785.9004,
+      "industry_gross_margin": 0.5444
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_gross_profit": 307035913077.0589,
+      "total_ttm_revenue": 562776244785.9004,
+      "industry_gross_margin": 0.5456
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_gross_profit": 311926407884.67755,
+      "total_ttm_revenue": 571543016465.8807,
+      "industry_gross_margin": 0.5458
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_gross_profit": 321571501884.67755,
+      "total_ttm_revenue": 593447643465.8807,
+      "industry_gross_margin": 0.5419
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_gross_profit": 323247897884.67755,
+      "total_ttm_revenue": 595953971465.8807,
+      "industry_gross_margin": 0.5424
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_gross_profit": 395254429718.2946,
+      "total_ttm_revenue": 775614243705.3606,
+      "industry_gross_margin": 0.5096
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_gross_profit": 409923664718.2946,
+      "total_ttm_revenue": 796704176705.3606,
+      "industry_gross_margin": 0.5145
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_gross_profit": 412240740718.2946,
+      "total_ttm_revenue": 800281077705.3606,
+      "industry_gross_margin": 0.5151
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_gross_profit": 489124402303.1175,
+      "total_ttm_revenue": 925748336123.0597,
+      "industry_gross_margin": 0.5284
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_gross_profit": 509463535303.1175,
+      "total_ttm_revenue": 953050787123.0597,
+      "industry_gross_margin": 0.5346
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_gross_profit": 513761293303.1175,
+      "total_ttm_revenue": 957986095123.0597,
+      "industry_gross_margin": 0.5363
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_gross_profit": 521730212586.9683,
+      "total_ttm_revenue": 968026864910.7113,
+      "industry_gross_margin": 0.539
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_gross_profit": 548561967586.9683,
+      "total_ttm_revenue": 1009403136910.7113,
+      "industry_gross_margin": 0.5435
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_gross_profit": 563354156586.9684,
+      "total_ttm_revenue": 1025200328910.7113,
+      "industry_gross_margin": 0.5495
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_gross_profit": 751865022859.5588,
+      "total_ttm_revenue": 1339333594073.6738,
+      "industry_gross_margin": 0.5614
+    },
+    {
+      "report_date": "2026-04-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_gross_profit": 792958750859.5588,
+      "total_ttm_revenue": 1377869991073.6738,
+      "industry_gross_margin": 0.5755
+    }
+  ],
+  "ebitda_margin": [
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_ebitda": 7845959442.618736,
+      "total_ttm_revenue": 46391816938.776825,
+      "industry_ebitda_margin": 0.1691
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_ebitda": 7845959442.618736,
+      "total_ttm_revenue": 46391816938.776825,
+      "industry_ebitda_margin": 0.1691
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_ebitda": 7845959442.618736,
+      "total_ttm_revenue": 46391816938.776825,
+      "industry_ebitda_margin": 0.1691
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_ebitda": 8702598542.082245,
+      "total_ttm_revenue": 48428519053.04611,
+      "industry_ebitda_margin": 0.1797
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_ebitda": 8702598542.082245,
+      "total_ttm_revenue": 48428519053.04611,
+      "industry_ebitda_margin": 0.1797
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_ebitda": 8702598542.082245,
+      "total_ttm_revenue": 48428519053.04611,
+      "industry_ebitda_margin": 0.1797
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_ebitda": 9011156757.082245,
+      "total_ttm_revenue": 52790346557.04611,
+      "industry_ebitda_margin": 0.1707
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_ebitda": 9011156757.082245,
+      "total_ttm_revenue": 52790346557.04611,
+      "industry_ebitda_margin": 0.1707
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_ebitda": 9009343757.082245,
+      "total_ttm_revenue": 52796014557.04611,
+      "industry_ebitda_margin": 0.1706
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_ebitda": 115566334413.77142,
+      "total_ttm_revenue": 311671515252.3934,
+      "industry_ebitda_margin": 0.3708
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_ebitda": 191400330413.77142,
+      "total_ttm_revenue": 450907431252.3934,
+      "industry_ebitda_margin": 0.4245
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_ebitda": 197958646413.77142,
+      "total_ttm_revenue": 472278075252.3934,
+      "industry_ebitda_margin": 0.4192
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_ebitda": 199188789944.0653,
+      "total_ttm_revenue": 474718164996.2536,
+      "industry_ebitda_margin": 0.4196
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_ebitda": 212730321944.0653,
+      "total_ttm_revenue": 494616480996.2536,
+      "industry_ebitda_margin": 0.4301
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_ebitda": 215754646944.0653,
+      "total_ttm_revenue": 498356351996.2536,
+      "industry_ebitda_margin": 0.4329
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_ebitda": 208699982587.6382,
+      "total_ttm_revenue": 505911569124.3399,
+      "industry_ebitda_margin": 0.4125
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_ebitda": 221975561587.6382,
+      "total_ttm_revenue": 527520715124.3399,
+      "industry_ebitda_margin": 0.4208
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_ebitda": 225383591587.6382,
+      "total_ttm_revenue": 531503326124.3399,
+      "industry_ebitda_margin": 0.424
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_ebitda": 226665080659.4624,
+      "total_ttm_revenue": 539912932212.90045,
+      "industry_ebitda_margin": 0.4198
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_ebitda": 242686897659.4624,
+      "total_ttm_revenue": 560537300212.9004,
+      "industry_ebitda_margin": 0.433
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_ebitda": 244398818659.4624,
+      "total_ttm_revenue": 562776286212.9004,
+      "industry_ebitda_margin": 0.4343
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_ebitda": 298429884273.67804,
+      "total_ttm_revenue": 571543215942.8807,
+      "industry_ebitda_margin": 0.5221
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_ebitda": 306452753809.67804,
+      "total_ttm_revenue": 593447842942.8807,
+      "industry_ebitda_margin": 0.5164
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_ebitda": 307963310809.67804,
+      "total_ttm_revenue": 595954170942.8807,
+      "industry_ebitda_margin": 0.5168
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_ebitda": 368506405853.6179,
+      "total_ttm_revenue": 775614711651.3606,
+      "industry_ebitda_margin": 0.4751
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_ebitda": 383488626251.6179,
+      "total_ttm_revenue": 796704644651.3606,
+      "industry_ebitda_margin": 0.4813
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_ebitda": 385760017251.6179,
+      "total_ttm_revenue": 800281545651.3606,
+      "industry_ebitda_margin": 0.482
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_ebitda": 544087604051.26666,
+      "total_ttm_revenue": 925749098818.0597,
+      "industry_ebitda_margin": 0.5877
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_ebitda": 565930344633.2666,
+      "total_ttm_revenue": 953051549818.0597,
+      "industry_ebitda_margin": 0.5938
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_ebitda": 569977119633.2666,
+      "total_ttm_revenue": 957986857818.0597,
+      "industry_ebitda_margin": 0.595
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_ebitda": 574689942554.2003,
+      "total_ttm_revenue": 968027939775.7113,
+      "industry_ebitda_margin": 0.5937
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_ebitda": 629884687013.2003,
+      "total_ttm_revenue": 1009404211775.7113,
+      "industry_ebitda_margin": 0.624
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_ebitda": 662993694013.2003,
+      "total_ttm_revenue": 1025201403775.7113,
+      "industry_ebitda_margin": 0.6467
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_ebitda": 733141302634.0448,
+      "total_ttm_revenue": 1339335005567.6738,
+      "industry_ebitda_margin": 0.5474
+    },
+    {
+      "report_date": "2026-04-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_ebitda": 904229446634.0447,
+      "total_ttm_revenue": 1377871402567.6738,
+      "industry_ebitda_margin": 0.6563
+    }
+  ],
+  "net_margin": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 2410896007.643648,
+      "total_ttm_revenue": 49357118410.38482,
+      "industry_net_margin": 0.0488
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 2410896007.643648,
+      "total_ttm_revenue": 49357118410.38482,
+      "industry_net_margin": 0.0488
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 2410896007.643648,
+      "total_ttm_revenue": 49357118410.38482,
+      "industry_net_margin": 0.0488
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 1498400115.0196192,
+      "total_ttm_revenue": 46391816938.776825,
+      "industry_net_margin": 0.0323
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 1498400115.0196192,
+      "total_ttm_revenue": 46391816938.776825,
+      "industry_net_margin": 0.0323
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 1498400115.0196192,
+      "total_ttm_revenue": 46391816938.776825,
+      "industry_net_margin": 0.0323
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 1694388963.720531,
+      "total_ttm_revenue": 48428519053.04611,
+      "industry_net_margin": 0.035
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 1694388963.720531,
+      "total_ttm_revenue": 48428519053.04611,
+      "industry_net_margin": 0.035
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 1694388963.720531,
+      "total_ttm_revenue": 48428519053.04611,
+      "industry_net_margin": 0.035
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 2230552305.720531,
+      "total_ttm_revenue": 52790346557.04611,
+      "industry_net_margin": 0.0423
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 2230552305.720531,
+      "total_ttm_revenue": 52790346557.04611,
+      "industry_net_margin": 0.0423
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 2227758305.720531,
+      "total_ttm_revenue": 52796014557.04611,
+      "industry_net_margin": 0.0422
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 62309664851.00342,
+      "total_ttm_revenue": 311671515252.3934,
+      "industry_net_margin": 0.1999
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 115225839851.00342,
+      "total_ttm_revenue": 450907431252.3934,
+      "industry_net_margin": 0.2555
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 113687276851.00342,
+      "total_ttm_revenue": 472278075252.3934,
+      "industry_net_margin": 0.2407
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 110437229533.07744,
+      "total_ttm_revenue": 474718164996.2536,
+      "industry_net_margin": 0.2326
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 115413506533.07744,
+      "total_ttm_revenue": 494616480996.2536,
+      "industry_net_margin": 0.2333
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 117730827533.07744,
+      "total_ttm_revenue": 498356351996.2536,
+      "industry_net_margin": 0.2362
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 104639814165.94418,
+      "total_ttm_revenue": 505911569124.3399,
+      "industry_net_margin": 0.2068
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 115006518165.94418,
+      "total_ttm_revenue": 527520715124.3399,
+      "industry_net_margin": 0.218
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 118110569165.94418,
+      "total_ttm_revenue": 531503326124.3399,
+      "industry_net_margin": 0.2222
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 116172257564.67743,
+      "total_ttm_revenue": 539912932212.90045,
+      "industry_net_margin": 0.2152
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 131388185564.6774,
+      "total_ttm_revenue": 560537300212.9004,
+      "industry_net_margin": 0.2344
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 132179132564.6774,
+      "total_ttm_revenue": 562776286212.9004,
+      "industry_net_margin": 0.2349
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 134340524308.90851,
+      "total_ttm_revenue": 571543215942.8807,
+      "industry_net_margin": 0.235
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 141825809830.9085,
+      "total_ttm_revenue": 593447842942.8807,
+      "industry_net_margin": 0.239
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 143379351830.9085,
+      "total_ttm_revenue": 595954170942.8807,
+      "industry_net_margin": 0.2406
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 163095830706.18695,
+      "total_ttm_revenue": 775614711651.3606,
+      "industry_net_margin": 0.2103
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 179664135851.18695,
+      "total_ttm_revenue": 796704644651.3606,
+      "industry_net_margin": 0.2255
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 181977501851.18695,
+      "total_ttm_revenue": 800281545651.3606,
+      "industry_net_margin": 0.2274
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 252258978743.99008,
+      "total_ttm_revenue": 925749098818.0597,
+      "industry_net_margin": 0.2725
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 272035723327.99008,
+      "total_ttm_revenue": 953051549818.0597,
+      "industry_net_margin": 0.2854
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 275405528327.9901,
+      "total_ttm_revenue": 957986857818.0597,
+      "industry_net_margin": 0.2875
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 280764505187.9644,
+      "total_ttm_revenue": 968027939775.7113,
+      "industry_net_margin": 0.29
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 321977474529.9644,
+      "total_ttm_revenue": 1009404211775.7113,
+      "industry_net_margin": 0.319
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 344502770529.9645,
+      "total_ttm_revenue": 1025201403775.7113,
+      "industry_net_margin": 0.336
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 455840034681.8902,
+      "total_ttm_revenue": 1339335005567.6738,
+      "industry_net_margin": 0.3403
+    },
+    {
+      "report_date": "2026-04-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_ttm_net_income": 599421696681.8903,
+      "total_ttm_revenue": 1377871402567.6738,
+      "industry_net_margin": 0.435
+    }
+  ],
+  "asset_turnover": [
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roa": 0.3236,
+      "industry_net_margin": 0.035,
+      "industry_asset_turnover": 9.25
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roa": 0.3236,
+      "industry_net_margin": 0.035,
+      "industry_asset_turnover": 9.25
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roa": 0.3236,
+      "industry_net_margin": 0.035,
+      "industry_asset_turnover": 9.25
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roa": 0.0428,
+      "industry_net_margin": 0.0423,
+      "industry_asset_turnover": 1.01
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roa": 0.0428,
+      "industry_net_margin": 0.0423,
+      "industry_asset_turnover": 1.01
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roa": 0.0415,
+      "industry_net_margin": 0.0422,
+      "industry_asset_turnover": 0.98
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roa": 0.0892,
+      "industry_net_margin": 0.1999,
+      "industry_asset_turnover": 0.45
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roa": 0.1207,
+      "industry_net_margin": 0.2555,
+      "industry_asset_turnover": 0.47
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roa": 0.1114,
+      "industry_net_margin": 0.2407,
+      "industry_asset_turnover": 0.46
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roa": 0.1064,
+      "industry_net_margin": 0.2326,
+      "industry_asset_turnover": 0.46
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roa": 0.1109,
+      "industry_net_margin": 0.2333,
+      "industry_asset_turnover": 0.48
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roa": 0.113,
+      "industry_net_margin": 0.2362,
+      "industry_asset_turnover": 0.48
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roa": 0.0993,
+      "industry_net_margin": 0.2068,
+      "industry_asset_turnover": 0.48
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roa": 0.1031,
+      "industry_net_margin": 0.218,
+      "industry_asset_turnover": 0.47
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roa": 0.1058,
+      "industry_net_margin": 0.2222,
+      "industry_asset_turnover": 0.48
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roa": 0.1009,
+      "industry_net_margin": 0.2152,
+      "industry_asset_turnover": 0.47
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roa": 0.1129,
+      "industry_net_margin": 0.2344,
+      "industry_asset_turnover": 0.48
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roa": 0.1135,
+      "industry_net_margin": 0.2349,
+      "industry_asset_turnover": 0.48
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roa": 0.1141,
+      "industry_net_margin": 0.235,
+      "industry_asset_turnover": 0.49
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roa": 0.1199,
+      "industry_net_margin": 0.239,
+      "industry_asset_turnover": 0.5
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roa": 0.1207,
+      "industry_net_margin": 0.2406,
+      "industry_asset_turnover": 0.5
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roa": 0.1242,
+      "industry_net_margin": 0.2103,
+      "industry_asset_turnover": 0.59
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roa": 0.1355,
+      "industry_net_margin": 0.2255,
+      "industry_asset_turnover": 0.6
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roa": 0.1369,
+      "industry_net_margin": 0.2274,
+      "industry_asset_turnover": 0.6
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roa": 0.1604,
+      "industry_net_margin": 0.2725,
+      "industry_asset_turnover": 0.59
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roa": 0.1706,
+      "industry_net_margin": 0.2854,
+      "industry_asset_turnover": 0.6
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roa": 0.1725,
+      "industry_net_margin": 0.2875,
+      "industry_asset_turnover": 0.6
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roa": 0.1734,
+      "industry_net_margin": 0.29,
+      "industry_asset_turnover": 0.6
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roa": 0.1953,
+      "industry_net_margin": 0.319,
+      "industry_asset_turnover": 0.61
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roa": 0.2077,
+      "industry_net_margin": 0.336,
+      "industry_asset_turnover": 0.62
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roa": 0.2722,
+      "industry_net_margin": 0.3403,
+      "industry_asset_turnover": 0.8
+    },
+    {
+      "report_date": "2026-04-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "industry_roa": 0.3509,
+      "industry_net_margin": 0.435,
+      "industry_asset_turnover": 0.81
+    }
+  ]
+}

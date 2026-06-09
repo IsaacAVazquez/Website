@@ -1,0 +1,1312 @@
+{
+  "ttm_pe": [],
+  "ps_ratio": [],
+  "pb_ratio": [],
+  "roe": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 18894000.0,
+      "total_avg_equity": 399451000.0,
+      "industry_roe": 0.0473
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 18894000.0,
+      "total_avg_equity": 399451000.0,
+      "industry_roe": 0.0473
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 18894000.0,
+      "total_avg_equity": 399451000.0,
+      "industry_roe": 0.0473
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 13697000.0,
+      "total_avg_equity": 392512000.0,
+      "industry_roe": 0.0349
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 13697000.0,
+      "total_avg_equity": 392512000.0,
+      "industry_roe": 0.0349
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 13697000.0,
+      "total_avg_equity": 392512000.0,
+      "industry_roe": 0.0349
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 2643000.0,
+      "total_avg_equity": 388634500.0,
+      "industry_roe": 0.0068
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 2643000.0,
+      "total_avg_equity": 388634500.0,
+      "industry_roe": 0.0068
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 2643000.0,
+      "total_avg_equity": 388634500.0,
+      "industry_roe": 0.0068
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 9353688593.58554,
+      "total_avg_equity": 86503882612.15994,
+      "industry_roe": 0.1081
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 9353688593.58554,
+      "total_avg_equity": 86503882612.15994,
+      "industry_roe": 0.1081
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 9353688593.58554,
+      "total_avg_equity": 86503882612.15994,
+      "industry_roe": 0.1081
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 155752661589.16855,
+      "total_avg_equity": 2012120244617.932,
+      "industry_roe": 0.0774
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 155786334670.3129,
+      "total_avg_equity": 2012400169253.9163,
+      "industry_roe": 0.0774
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 155786334670.3129,
+      "total_avg_equity": 2012400169253.9163,
+      "industry_roe": 0.0774
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 153359138595.2855,
+      "total_avg_equity": 2018911064438.418,
+      "industry_roe": 0.076
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 153358478510.53104,
+      "total_avg_equity": 2018914945939.6177,
+      "industry_roe": 0.076
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 153358478510.53104,
+      "total_avg_equity": 2018914945939.6177,
+      "industry_roe": 0.076
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 153830020662.23532,
+      "total_avg_equity": 2156862411522.556,
+      "industry_roe": 0.0713
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 153824876518.30444,
+      "total_avg_equity": 2156861980780.8276,
+      "industry_roe": 0.0713
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 153824876518.30444,
+      "total_avg_equity": 2156861980780.8276,
+      "industry_roe": 0.0713
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 187929884674.86444,
+      "total_avg_equity": 2121899282006.9585,
+      "industry_roe": 0.0886
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 187925786608.30206,
+      "total_avg_equity": 2121933783517.5952,
+      "industry_roe": 0.0886
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 187925786608.30206,
+      "total_avg_equity": 2121933783517.5952,
+      "industry_roe": 0.0886
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 205168744641.17438,
+      "total_avg_equity": 2288367687873.9995,
+      "industry_roe": 0.0897
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 205167682324.21533,
+      "total_avg_equity": 2288388746022.5103,
+      "industry_roe": 0.0897
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 205167682324.21533,
+      "total_avg_equity": 2288388746022.5103,
+      "industry_roe": 0.0897
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 380174286540.62177,
+      "total_avg_equity": 2746883367970.522,
+      "industry_roe": 0.1384
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 380172209536.422,
+      "total_avg_equity": 2746879819896.027,
+      "industry_roe": 0.1384
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 380172209536.422,
+      "total_avg_equity": 2746879819896.027,
+      "industry_roe": 0.1384
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 397596418964.2143,
+      "total_avg_equity": 2805904455392.5854,
+      "industry_roe": 0.1417
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 397596142266.6605,
+      "total_avg_equity": 2805945997101.412,
+      "industry_roe": 0.1417
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 397596142266.6605,
+      "total_avg_equity": 2805945997101.412,
+      "industry_roe": 0.1417
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 413772880232.3358,
+      "total_avg_equity": 2854218398522.178,
+      "industry_roe": 0.145
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 413790843727.826,
+      "total_avg_equity": 2854238513266.3887,
+      "industry_roe": 0.145
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 413790843727.826,
+      "total_avg_equity": 2854238513266.3887,
+      "industry_roe": 0.145
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 574134806113.2457,
+      "total_avg_equity": 2932098025930.856,
+      "industry_roe": 0.1958
+    }
+  ],
+  "roa": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 18894000.0,
+      "total_avg_assets": 3720992000.0,
+      "industry_roa": 0.0051
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 18894000.0,
+      "total_avg_assets": 3720992000.0,
+      "industry_roa": 0.0051
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 18894000.0,
+      "total_avg_assets": 3720992000.0,
+      "industry_roa": 0.0051
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 13697000.0,
+      "total_avg_assets": 3602827500.0,
+      "industry_roa": 0.0038
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 13697000.0,
+      "total_avg_assets": 3602827500.0,
+      "industry_roa": 0.0038
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 13697000.0,
+      "total_avg_assets": 3602827500.0,
+      "industry_roa": 0.0038
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 2643000.0,
+      "total_avg_assets": 3692656000.0,
+      "industry_roa": 0.0007
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 2643000.0,
+      "total_avg_assets": 3692656000.0,
+      "industry_roa": 0.0007
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 2643000.0,
+      "total_avg_assets": 3692656000.0,
+      "industry_roa": 0.0007
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 9353688593.58554,
+      "total_avg_assets": 1299476821792.7617,
+      "industry_roa": 0.0072
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 9353688593.58554,
+      "total_avg_assets": 1299476821792.7617,
+      "industry_roa": 0.0072
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 9353688593.58554,
+      "total_avg_assets": 1299476821792.7617,
+      "industry_roa": 0.0072
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 155752661589.16855,
+      "total_avg_assets": 23677112774868.547,
+      "industry_roa": 0.0066
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 155786334670.3129,
+      "total_avg_assets": 23680174589824.28,
+      "industry_roa": 0.0066
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 155786334670.3129,
+      "total_avg_assets": 23680174589824.28,
+      "industry_roa": 0.0066
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 153359138595.2855,
+      "total_avg_assets": 23600930036023.79,
+      "industry_roa": 0.0065
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 153358478510.53104,
+      "total_avg_assets": 23601015530093.324,
+      "industry_roa": 0.0065
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 153358478510.53104,
+      "total_avg_assets": 23601015530093.324,
+      "industry_roa": 0.0065
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 153830020662.23532,
+      "total_avg_assets": 24490675021796.29,
+      "industry_roa": 0.0063
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 153824876518.30444,
+      "total_avg_assets": 24490816510225.723,
+      "industry_roa": 0.0063
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 153824876518.30444,
+      "total_avg_assets": 24490816510225.723,
+      "industry_roa": 0.0063
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 187929884674.86444,
+      "total_avg_assets": 24058404948996.0,
+      "industry_roa": 0.0078
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 187925786608.30206,
+      "total_avg_assets": 24058345314585.523,
+      "industry_roa": 0.0078
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 187925786608.30206,
+      "total_avg_assets": 24058345314585.523,
+      "industry_roa": 0.0078
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 205168744641.17438,
+      "total_avg_assets": 25869504249299.08,
+      "industry_roa": 0.0079
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 205167682324.21533,
+      "total_avg_assets": 25869733381257.383,
+      "industry_roa": 0.0079
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 205167682324.21533,
+      "total_avg_assets": 25869733381257.383,
+      "industry_roa": 0.0079
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 380174286540.62177,
+      "total_avg_assets": 32241806762516.715,
+      "industry_roa": 0.0118
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 380172209536.422,
+      "total_avg_assets": 32242079379991.58,
+      "industry_roa": 0.0118
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 380172209536.422,
+      "total_avg_assets": 32242079379991.58,
+      "industry_roa": 0.0118
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 397596418964.2143,
+      "total_avg_assets": 32806238957027.156,
+      "industry_roa": 0.0121
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 397596142266.6605,
+      "total_avg_assets": 32806363350679.508,
+      "industry_roa": 0.0121
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 397596142266.6605,
+      "total_avg_assets": 32806363350679.508,
+      "industry_roa": 0.0121
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 413772880232.3358,
+      "total_avg_assets": 32891156829219.82,
+      "industry_roa": 0.0126
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 413790843727.826,
+      "total_avg_assets": 32891449589722.152,
+      "industry_roa": 0.0126
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 413790843727.826,
+      "total_avg_assets": 32891449589722.152,
+      "industry_roa": 0.0126
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 574134806113.2457,
+      "total_avg_assets": 33569452387548.062,
+      "industry_roa": 0.0171
+    }
+  ],
+  "equity_multiplier": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roe": 0.0473,
+      "industry_roa": 0.0051,
+      "industry_equity_multiplier": 9.27
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roe": 0.0473,
+      "industry_roa": 0.0051,
+      "industry_equity_multiplier": 9.27
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roe": 0.0473,
+      "industry_roa": 0.0051,
+      "industry_equity_multiplier": 9.27
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roe": 0.0349,
+      "industry_roa": 0.0038,
+      "industry_equity_multiplier": 9.18
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roe": 0.0349,
+      "industry_roa": 0.0038,
+      "industry_equity_multiplier": 9.18
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roe": 0.0349,
+      "industry_roa": 0.0038,
+      "industry_equity_multiplier": 9.18
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roe": 0.0068,
+      "industry_roa": 0.0007,
+      "industry_equity_multiplier": 9.71
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roe": 0.0068,
+      "industry_roa": 0.0007,
+      "industry_equity_multiplier": 9.71
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roe": 0.0068,
+      "industry_roa": 0.0007,
+      "industry_equity_multiplier": 9.71
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roe": 0.1081,
+      "industry_roa": 0.0072,
+      "industry_equity_multiplier": 15.01
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roe": 0.1081,
+      "industry_roa": 0.0072,
+      "industry_equity_multiplier": 15.01
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roe": 0.1081,
+      "industry_roa": 0.0072,
+      "industry_equity_multiplier": 15.01
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roe": 0.0774,
+      "industry_roa": 0.0066,
+      "industry_equity_multiplier": 11.73
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roe": 0.0774,
+      "industry_roa": 0.0066,
+      "industry_equity_multiplier": 11.73
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roe": 0.0774,
+      "industry_roa": 0.0066,
+      "industry_equity_multiplier": 11.73
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roe": 0.076,
+      "industry_roa": 0.0065,
+      "industry_equity_multiplier": 11.69
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roe": 0.076,
+      "industry_roa": 0.0065,
+      "industry_equity_multiplier": 11.69
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roe": 0.076,
+      "industry_roa": 0.0065,
+      "industry_equity_multiplier": 11.69
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roe": 0.0713,
+      "industry_roa": 0.0063,
+      "industry_equity_multiplier": 11.32
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roe": 0.0713,
+      "industry_roa": 0.0063,
+      "industry_equity_multiplier": 11.32
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roe": 0.0713,
+      "industry_roa": 0.0063,
+      "industry_equity_multiplier": 11.32
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roe": 0.0886,
+      "industry_roa": 0.0078,
+      "industry_equity_multiplier": 11.36
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roe": 0.0886,
+      "industry_roa": 0.0078,
+      "industry_equity_multiplier": 11.36
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roe": 0.0886,
+      "industry_roa": 0.0078,
+      "industry_equity_multiplier": 11.36
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roe": 0.0897,
+      "industry_roa": 0.0079,
+      "industry_equity_multiplier": 11.35
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roe": 0.0897,
+      "industry_roa": 0.0079,
+      "industry_equity_multiplier": 11.35
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roe": 0.0897,
+      "industry_roa": 0.0079,
+      "industry_equity_multiplier": 11.35
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roe": 0.1384,
+      "industry_roa": 0.0118,
+      "industry_equity_multiplier": 11.73
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roe": 0.1384,
+      "industry_roa": 0.0118,
+      "industry_equity_multiplier": 11.73
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roe": 0.1384,
+      "industry_roa": 0.0118,
+      "industry_equity_multiplier": 11.73
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roe": 0.1417,
+      "industry_roa": 0.0121,
+      "industry_equity_multiplier": 11.71
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roe": 0.1417,
+      "industry_roa": 0.0121,
+      "industry_equity_multiplier": 11.71
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roe": 0.1417,
+      "industry_roa": 0.0121,
+      "industry_equity_multiplier": 11.71
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roe": 0.145,
+      "industry_roa": 0.0126,
+      "industry_equity_multiplier": 11.51
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roe": 0.145,
+      "industry_roa": 0.0126,
+      "industry_equity_multiplier": 11.51
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roe": 0.145,
+      "industry_roa": 0.0126,
+      "industry_equity_multiplier": 11.51
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roe": 0.1958,
+      "industry_roa": 0.0171,
+      "industry_equity_multiplier": 11.45
+    }
+  ],
+  "gross_margin": [],
+  "ebitda_margin": [],
+  "net_margin": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 58881242881.73998,
+      "total_ttm_revenue": 119025674381.50038,
+      "industry_net_margin": 0.4947
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 58881242881.73998,
+      "total_ttm_revenue": 119025674381.50038,
+      "industry_net_margin": 0.4947
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 58881242881.73998,
+      "total_ttm_revenue": 119025674381.50038,
+      "industry_net_margin": 0.4947
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 60576696924.54416,
+      "total_ttm_revenue": 124493258560.94997,
+      "industry_net_margin": 0.4866
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 60576696924.54416,
+      "total_ttm_revenue": 124493258560.94997,
+      "industry_net_margin": 0.4866
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 60576696924.54416,
+      "total_ttm_revenue": 124493258560.94997,
+      "industry_net_margin": 0.4866
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 66536253364.808075,
+      "total_ttm_revenue": 155967978767.99585,
+      "industry_net_margin": 0.4266
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 66536253364.808075,
+      "total_ttm_revenue": 155967978767.99585,
+      "industry_net_margin": 0.4266
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 66536253364.808075,
+      "total_ttm_revenue": 155967978767.99585,
+      "industry_net_margin": 0.4266
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 111607440776.17491,
+      "total_ttm_revenue": 379782046690.0378,
+      "industry_net_margin": 0.2939
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 111607440776.17491,
+      "total_ttm_revenue": 379782046690.0378,
+      "industry_net_margin": 0.2939
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 111607440776.17491,
+      "total_ttm_revenue": 379782046690.0378,
+      "industry_net_margin": 0.2939
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 155781148589.16855,
+      "total_ttm_revenue": 858448801558.8779,
+      "industry_net_margin": 0.1815
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 155814821670.3129,
+      "total_ttm_revenue": 858531763437.8564,
+      "industry_net_margin": 0.1815
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 155814821670.3129,
+      "total_ttm_revenue": 858531763437.8564,
+      "industry_net_margin": 0.1815
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 153380758037.2855,
+      "total_ttm_revenue": 832043259710.0343,
+      "industry_net_margin": 0.1843
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 153380097952.53104,
+      "total_ttm_revenue": 832042262451.9944,
+      "industry_net_margin": 0.1843
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 153380097952.53104,
+      "total_ttm_revenue": 832042262451.9944,
+      "industry_net_margin": 0.1843
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 153867586662.23532,
+      "total_ttm_revenue": 834481178004.1808,
+      "industry_net_margin": 0.1844
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 153862442518.30444,
+      "total_ttm_revenue": 834479478698.1688,
+      "industry_net_margin": 0.1844
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 153862442518.30444,
+      "total_ttm_revenue": 834479478698.1688,
+      "industry_net_margin": 0.1844
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 188019984702.86444,
+      "total_ttm_revenue": 821083302068.8829,
+      "industry_net_margin": 0.229
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 188015886636.30206,
+      "total_ttm_revenue": 821079355666.5348,
+      "industry_net_margin": 0.229
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 188015886636.30206,
+      "total_ttm_revenue": 821079355666.5348,
+      "industry_net_margin": 0.229
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 212036764526.90704,
+      "total_ttm_revenue": 903514588790.3269,
+      "industry_net_margin": 0.2347
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 212035702209.948,
+      "total_ttm_revenue": 903519449453.94,
+      "industry_net_margin": 0.2347
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 212035702209.948,
+      "total_ttm_revenue": 903519449453.94,
+      "industry_net_margin": 0.2347
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 393756095798.3063,
+      "total_ttm_revenue": 1350432027267.4456,
+      "industry_net_margin": 0.2916
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 393754018794.1065,
+      "total_ttm_revenue": 1350435356913.6772,
+      "industry_net_margin": 0.2916
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 393754018794.1065,
+      "total_ttm_revenue": 1350435356913.6772,
+      "industry_net_margin": 0.2916
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 411125281743.51044,
+      "total_ttm_revenue": 1385710446213.769,
+      "industry_net_margin": 0.2967
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 411125005045.95667,
+      "total_ttm_revenue": 1385715087266.7197,
+      "industry_net_margin": 0.2967
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 411125005045.95667,
+      "total_ttm_revenue": 1385715087266.7197,
+      "industry_net_margin": 0.2967
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 427397758894.58,
+      "total_ttm_revenue": 1414068087519.532,
+      "industry_net_margin": 0.3022
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 427415722390.0702,
+      "total_ttm_revenue": 1414077757285.6643,
+      "industry_net_margin": 0.3023
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 427415722390.0702,
+      "total_ttm_revenue": 1414077757285.6643,
+      "industry_net_margin": 0.3023
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "total_ttm_net_income": 587555210273.4435,
+      "total_ttm_revenue": 1753066205096.6775,
+      "industry_net_margin": 0.3352
+    }
+  ],
+  "asset_turnover": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roa": 0.0051,
+      "industry_net_margin": 0.4947,
+      "industry_asset_turnover": 0.01
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roa": 0.0051,
+      "industry_net_margin": 0.4947,
+      "industry_asset_turnover": 0.01
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roa": 0.0051,
+      "industry_net_margin": 0.4947,
+      "industry_asset_turnover": 0.01
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roa": 0.0038,
+      "industry_net_margin": 0.4866,
+      "industry_asset_turnover": 0.01
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roa": 0.0038,
+      "industry_net_margin": 0.4866,
+      "industry_asset_turnover": 0.01
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roa": 0.0038,
+      "industry_net_margin": 0.4866,
+      "industry_asset_turnover": 0.01
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roa": 0.0007,
+      "industry_net_margin": 0.4266,
+      "industry_asset_turnover": 0.0
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roa": 0.0007,
+      "industry_net_margin": 0.4266,
+      "industry_asset_turnover": 0.0
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roa": 0.0007,
+      "industry_net_margin": 0.4266,
+      "industry_asset_turnover": 0.0
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roa": 0.0072,
+      "industry_net_margin": 0.2939,
+      "industry_asset_turnover": 0.02
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roa": 0.0072,
+      "industry_net_margin": 0.2939,
+      "industry_asset_turnover": 0.02
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roa": 0.0072,
+      "industry_net_margin": 0.2939,
+      "industry_asset_turnover": 0.02
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roa": 0.0066,
+      "industry_net_margin": 0.1815,
+      "industry_asset_turnover": 0.04
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roa": 0.0066,
+      "industry_net_margin": 0.1815,
+      "industry_asset_turnover": 0.04
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roa": 0.0066,
+      "industry_net_margin": 0.1815,
+      "industry_asset_turnover": 0.04
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roa": 0.0065,
+      "industry_net_margin": 0.1843,
+      "industry_asset_turnover": 0.04
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roa": 0.0065,
+      "industry_net_margin": 0.1843,
+      "industry_asset_turnover": 0.04
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roa": 0.0065,
+      "industry_net_margin": 0.1843,
+      "industry_asset_turnover": 0.04
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roa": 0.0063,
+      "industry_net_margin": 0.1844,
+      "industry_asset_turnover": 0.03
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roa": 0.0063,
+      "industry_net_margin": 0.1844,
+      "industry_asset_turnover": 0.03
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roa": 0.0063,
+      "industry_net_margin": 0.1844,
+      "industry_asset_turnover": 0.03
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roa": 0.0078,
+      "industry_net_margin": 0.229,
+      "industry_asset_turnover": 0.03
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roa": 0.0078,
+      "industry_net_margin": 0.229,
+      "industry_asset_turnover": 0.03
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roa": 0.0078,
+      "industry_net_margin": 0.229,
+      "industry_asset_turnover": 0.03
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roa": 0.0079,
+      "industry_net_margin": 0.2347,
+      "industry_asset_turnover": 0.03
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roa": 0.0079,
+      "industry_net_margin": 0.2347,
+      "industry_asset_turnover": 0.03
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roa": 0.0079,
+      "industry_net_margin": 0.2347,
+      "industry_asset_turnover": 0.03
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roa": 0.0118,
+      "industry_net_margin": 0.2916,
+      "industry_asset_turnover": 0.04
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roa": 0.0118,
+      "industry_net_margin": 0.2916,
+      "industry_asset_turnover": 0.04
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roa": 0.0118,
+      "industry_net_margin": 0.2916,
+      "industry_asset_turnover": 0.04
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roa": 0.0121,
+      "industry_net_margin": 0.2967,
+      "industry_asset_turnover": 0.04
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roa": 0.0121,
+      "industry_net_margin": 0.2967,
+      "industry_asset_turnover": 0.04
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roa": 0.0121,
+      "industry_net_margin": 0.2967,
+      "industry_asset_turnover": 0.04
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roa": 0.0126,
+      "industry_net_margin": 0.3022,
+      "industry_asset_turnover": 0.04
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roa": 0.0126,
+      "industry_net_margin": 0.3023,
+      "industry_asset_turnover": 0.04
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roa": 0.0126,
+      "industry_net_margin": 0.3023,
+      "industry_asset_turnover": 0.04
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Banks-Regional",
+      "industry_roa": 0.0171,
+      "industry_net_margin": 0.3352,
+      "industry_asset_turnover": 0.05
+    }
+  ]
+}

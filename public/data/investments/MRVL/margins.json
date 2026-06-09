@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "MRVL",
+      "report_date": "2022-04-30",
+      "gross_profit": 750900000.0,
+      "total_revenue": 1446900000.0,
+      "gross_margin": 0.519
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2022-07-31",
+      "gross_profit": 786000000.0,
+      "total_revenue": 1516900000.0,
+      "gross_margin": 0.5182
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2022-10-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2023-01-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2023-04-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2023-07-31",
+      "gross_profit": 521100000.0,
+      "total_revenue": 1340900000.0,
+      "gross_margin": 0.3886
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2023-10-31",
+      "gross_profit": 551200000.0,
+      "total_revenue": 1418600000.0,
+      "gross_margin": 0.3886
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-01-31",
+      "gross_profit": 664100000.0,
+      "total_revenue": 1426500000.0,
+      "gross_margin": 0.4655
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-04-30",
+      "gross_profit": 527800000.0,
+      "total_revenue": 1160900000.0,
+      "gross_margin": 0.4546
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-07-31",
+      "gross_profit": 587600000.0,
+      "total_revenue": 1272900000.0,
+      "gross_margin": 0.4616
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-10-31",
+      "gross_profit": 349400000.0,
+      "total_revenue": 1516100000.0,
+      "gross_margin": 0.2305
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-01-31",
+      "gross_profit": 917400000.0,
+      "total_revenue": 1817400000.0,
+      "gross_margin": 0.5048
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-04-30",
+      "gross_profit": 952400000.0,
+      "total_revenue": 1895300000.0,
+      "gross_margin": 0.5025
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-07-31",
+      "gross_profit": 1010600000.0,
+      "total_revenue": 2006100000.0,
+      "gross_margin": 0.5038
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-10-31",
+      "gross_profit": 1069800000.0,
+      "total_revenue": 2074500000.0,
+      "gross_margin": 0.5157
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2026-01-31",
+      "gross_profit": 1147900000.0,
+      "total_revenue": 8194600000.0,
+      "gross_margin": 0.1401
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "MRVL",
+      "report_date": "2020-01-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2021-01-31",
+      "gross_profit": 1488300000.0,
+      "total_revenue": 2968900000.0,
+      "gross_margin": 0.5013
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2022-01-31",
+      "gross_profit": 2064200000.0,
+      "total_revenue": 4462400000.0,
+      "gross_margin": 0.4626
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2023-01-31",
+      "gross_profit": 2987500000.0,
+      "total_revenue": 5919600000.0,
+      "gross_margin": 0.5047
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-01-31",
+      "gross_profit": 2293600000.0,
+      "total_revenue": 5507700000.0,
+      "gross_margin": 0.4164
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-01-31",
+      "gross_profit": 2382200000.0,
+      "total_revenue": 5767300000.0,
+      "gross_margin": 0.4131
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2026-01-31",
+      "gross_profit": 4180700000.0,
+      "total_revenue": 8194600000.0,
+      "gross_margin": 0.5102
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "MRVL",
+      "report_date": "2022-04-30",
+      "operating_income": 71100000.0,
+      "total_revenue": 1446900000.0,
+      "operating_margin": 0.0491
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2022-07-31",
+      "operating_income": 125300000.0,
+      "total_revenue": 1516900000.0,
+      "operating_margin": 0.0826
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2022-10-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2023-01-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2023-04-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2023-07-31",
+      "operating_income": -163700000.0,
+      "total_revenue": 1340900000.0,
+      "operating_margin": -0.1221
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2023-10-31",
+      "operating_income": -142900000.0,
+      "total_revenue": 1418600000.0,
+      "operating_margin": -0.1007
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-01-31",
+      "operating_income": -7500000.0,
+      "total_revenue": 1426500000.0,
+      "operating_margin": -0.0053
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-04-30",
+      "operating_income": -148200000.0,
+      "total_revenue": 1160900000.0,
+      "operating_margin": -0.1277
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-07-31",
+      "operating_income": -96400000.0,
+      "total_revenue": 1272900000.0,
+      "operating_margin": -0.0757
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-10-31",
+      "operating_income": -344500000.0,
+      "total_revenue": 1516100000.0,
+      "operating_margin": -0.2272
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-01-31",
+      "operating_income": 222700000.0,
+      "total_revenue": 1817400000.0,
+      "operating_margin": 0.1225
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-04-30",
+      "operating_income": 258300000.0,
+      "total_revenue": 1895300000.0,
+      "operating_margin": 0.1363
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-07-31",
+      "operating_income": 298800000.0,
+      "total_revenue": 2006100000.0,
+      "operating_margin": 0.1489
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-10-31",
+      "operating_income": 367400000.0,
+      "total_revenue": 2074500000.0,
+      "operating_margin": 0.1771
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2026-01-31",
+      "operating_income": 1338400000.0,
+      "total_revenue": 8194600000.0,
+      "operating_margin": 0.1633
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "MRVL",
+      "report_date": "2020-01-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2021-01-31",
+      "operating_income": -51600000.0,
+      "total_revenue": 2968900000.0,
+      "operating_margin": -0.0174
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2022-01-31",
+      "operating_income": -315300000.0,
+      "total_revenue": 4462400000.0,
+      "operating_margin": -0.0707
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2023-01-31",
+      "operating_income": 359600000.0,
+      "total_revenue": 5919600000.0,
+      "operating_margin": 0.0607
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-01-31",
+      "operating_income": -436600000.0,
+      "total_revenue": 5507700000.0,
+      "operating_margin": -0.0793
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-01-31",
+      "operating_income": -366400000.0,
+      "total_revenue": 5767300000.0,
+      "operating_margin": -0.0635
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2026-01-31",
+      "operating_income": 1338400000.0,
+      "total_revenue": 8194600000.0,
+      "operating_margin": 0.1633
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "MRVL",
+      "report_date": "2022-04-30",
+      "net_income_common_stockholders": -165700000.0,
+      "total_revenue": 1446900000.0,
+      "net_margin": -0.1145
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2022-07-31",
+      "net_income_common_stockholders": 4300000.0,
+      "total_revenue": 1516900000.0,
+      "net_margin": 0.0028
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2022-10-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2023-01-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2023-04-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2023-07-31",
+      "net_income_common_stockholders": -207500000.0,
+      "total_revenue": 1340900000.0,
+      "net_margin": -0.1547
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2023-10-31",
+      "net_income_common_stockholders": -164300000.0,
+      "total_revenue": 1418600000.0,
+      "net_margin": -0.1158
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-01-31",
+      "net_income_common_stockholders": -392700000.0,
+      "total_revenue": 1426500000.0,
+      "net_margin": -0.2753
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-04-30",
+      "net_income_common_stockholders": -215600000.0,
+      "total_revenue": 1160900000.0,
+      "net_margin": -0.1857
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-07-31",
+      "net_income_common_stockholders": -193300000.0,
+      "total_revenue": 1272900000.0,
+      "net_margin": -0.1519
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-10-31",
+      "net_income_common_stockholders": -676300000.0,
+      "total_revenue": 1516100000.0,
+      "net_margin": -0.4461
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-01-31",
+      "net_income_common_stockholders": 200200000.0,
+      "total_revenue": 1817400000.0,
+      "net_margin": 0.1102
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-04-30",
+      "net_income_common_stockholders": 177900000.0,
+      "total_revenue": 1895300000.0,
+      "net_margin": 0.0939
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-07-31",
+      "net_income_common_stockholders": 194800000.0,
+      "total_revenue": 2006100000.0,
+      "net_margin": 0.0971
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-10-31",
+      "net_income_common_stockholders": 1901300000.0,
+      "total_revenue": 2074500000.0,
+      "net_margin": 0.9165
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2026-01-31",
+      "net_income_common_stockholders": 396100000.0,
+      "total_revenue": 8194600000.0,
+      "net_margin": 0.0483
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "MRVL",
+      "report_date": "2020-01-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2021-01-31",
+      "net_income_common_stockholders": -277300000.0,
+      "total_revenue": 2968900000.0,
+      "net_margin": -0.0934
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2022-01-31",
+      "net_income_common_stockholders": -421000000.0,
+      "total_revenue": 4462400000.0,
+      "net_margin": -0.0943
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2023-01-31",
+      "net_income_common_stockholders": -163500000.0,
+      "total_revenue": 5919600000.0,
+      "net_margin": -0.0276
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-01-31",
+      "net_income_common_stockholders": -933400000.0,
+      "total_revenue": 5507700000.0,
+      "net_margin": -0.1695
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-01-31",
+      "net_income_common_stockholders": -885000000.0,
+      "total_revenue": 5767300000.0,
+      "net_margin": -0.1535
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2026-01-31",
+      "net_income_common_stockholders": 2670100000.0,
+      "total_revenue": 8194600000.0,
+      "net_margin": 0.3258
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "MRVL",
+      "report_date": "2022-04-30",
+      "ebitda": null,
+      "total_revenue": 1446900000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2022-07-31",
+      "ebitda": 392300000.0,
+      "total_revenue": 1516900000.0,
+      "ebitda_margin": 0.2586
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2022-10-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2023-01-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2023-04-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2023-07-31",
+      "ebitda": 149500000.0,
+      "total_revenue": 1340900000.0,
+      "ebitda_margin": 0.1115
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2023-10-31",
+      "ebitda": 207000000.0,
+      "total_revenue": 1418600000.0,
+      "ebitda_margin": 0.1459
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-01-31",
+      "ebitda": 325400000.0,
+      "total_revenue": 1426500000.0,
+      "ebitda_margin": 0.2281
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-04-30",
+      "ebitda": 188500000.0,
+      "total_revenue": 1160900000.0,
+      "ebitda_margin": 0.1624
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-07-31",
+      "ebitda": 254200000.0,
+      "total_revenue": 1272900000.0,
+      "ebitda_margin": 0.1997
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-10-31",
+      "ebitda": -361300000.0,
+      "total_revenue": 1516100000.0,
+      "ebitda_margin": -0.2383
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-01-31",
+      "ebitda": 570700000.0,
+      "total_revenue": 1817400000.0,
+      "ebitda_margin": 0.314
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-04-30",
+      "ebitda": 600500000.0,
+      "total_revenue": 1895300000.0,
+      "ebitda_margin": 0.3168
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-07-31",
+      "ebitda": 617900000.0,
+      "total_revenue": 2006100000.0,
+      "ebitda_margin": 0.308
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-10-31",
+      "ebitda": 2582500000.0,
+      "total_revenue": 2074500000.0,
+      "ebitda_margin": 1.2449
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2026-01-31",
+      "ebitda": 749400000.0,
+      "total_revenue": 8194600000.0,
+      "ebitda_margin": 0.0915
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "MRVL",
+      "report_date": "2020-01-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2021-01-31",
+      "ebitda": 388600000.0,
+      "total_revenue": 2968900000.0,
+      "ebitda_margin": 0.1309
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2022-01-31",
+      "ebitda": 901100000.0,
+      "total_revenue": 4462400000.0,
+      "ebitda_margin": 0.2019
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2023-01-31",
+      "ebitda": 1648000000.0,
+      "total_revenue": 5919600000.0,
+      "ebitda_margin": 0.2784
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-01-31",
+      "ebitda": 850700000.0,
+      "total_revenue": 5507700000.0,
+      "ebitda_margin": 0.1545
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-01-31",
+      "ebitda": 651600000.0,
+      "total_revenue": 5767300000.0,
+      "ebitda_margin": 0.113
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2026-01-31",
+      "ebitda": 4539800000.0,
+      "total_revenue": 8194600000.0,
+      "ebitda_margin": 0.554
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "MRVL",
+      "report_date": "2022-04-30",
+      "free_cash_flow": 156300000.0,
+      "total_revenue": 1446900000.0,
+      "fcf_margin": 0.108
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2022-07-31",
+      "free_cash_flow": 256300000.0,
+      "total_revenue": 1516900000.0,
+      "fcf_margin": 0.169
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2022-10-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2023-01-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2023-04-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2023-07-31",
+      "free_cash_flow": 1200000.0,
+      "total_revenue": 1340900000.0,
+      "fcf_margin": 0.0009
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2023-10-31",
+      "free_cash_flow": 448300000.0,
+      "total_revenue": 1418600000.0,
+      "fcf_margin": 0.316
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-01-31",
+      "free_cash_flow": 465000000.0,
+      "total_revenue": 1426500000.0,
+      "fcf_margin": 0.326
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-04-30",
+      "free_cash_flow": 232500000.0,
+      "total_revenue": 1160900000.0,
+      "fcf_margin": 0.2003
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-07-31",
+      "free_cash_flow": 253000000.0,
+      "total_revenue": 1272900000.0,
+      "fcf_margin": 0.1988
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-10-31",
+      "free_cash_flow": 460800000.0,
+      "total_revenue": 1516100000.0,
+      "fcf_margin": 0.3039
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-01-31",
+      "free_cash_flow": 443300000.0,
+      "total_revenue": 1817400000.0,
+      "fcf_margin": 0.2439
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-04-30",
+      "free_cash_flow": 213000000.0,
+      "total_revenue": 1895300000.0,
+      "fcf_margin": 0.1124
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-07-31",
+      "free_cash_flow": 413000000.0,
+      "total_revenue": 2006100000.0,
+      "fcf_margin": 0.2059
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-10-31",
+      "free_cash_flow": 507600000.0,
+      "total_revenue": 2074500000.0,
+      "fcf_margin": 0.2447
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2026-01-31",
+      "free_cash_flow": 258300000.0,
+      "total_revenue": 8194600000.0,
+      "fcf_margin": 0.0315
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "MRVL",
+      "report_date": "2020-01-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2021-01-31",
+      "free_cash_flow": 697800000.0,
+      "total_revenue": 2968900000.0,
+      "fcf_margin": 0.235
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2022-01-31",
+      "free_cash_flow": 632400000.0,
+      "total_revenue": 4462400000.0,
+      "fcf_margin": 0.1417
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2023-01-31",
+      "free_cash_flow": 1071500000.0,
+      "total_revenue": 5919600000.0,
+      "fcf_margin": 0.181
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-01-31",
+      "free_cash_flow": 1020300000.0,
+      "total_revenue": 5507700000.0,
+      "fcf_margin": 0.1852
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-01-31",
+      "free_cash_flow": 1389600000.0,
+      "total_revenue": 5767300000.0,
+      "fcf_margin": 0.2409
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2026-01-31",
+      "free_cash_flow": 1391900000.0,
+      "total_revenue": 8194600000.0,
+      "fcf_margin": 0.1699
+    }
+  ]
+}

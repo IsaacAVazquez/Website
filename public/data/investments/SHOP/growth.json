@@ -1,0 +1,1053 @@
+{
+  "quarterly_revenue": [
+    {
+      "symbol": "SHOP",
+      "report_date": "2022-06-30T00:00:00.000",
+      "revenue": 1295063000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-06-30T00:00:00.000",
+      "revenue": 1694000000.0,
+      "prev_year_revenue": 1295063000.0,
+      "yoy_growth": 0.308
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-09-30T00:00:00.000",
+      "revenue": 1714000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 2144000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-03-31T00:00:00.000",
+      "revenue": 1861000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-06-30T00:00:00.000",
+      "revenue": 2045000000.0,
+      "prev_year_revenue": 1694000000.0,
+      "yoy_growth": 0.2072
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-09-30T00:00:00.000",
+      "revenue": 2162000000.0,
+      "prev_year_revenue": 1714000000.0,
+      "yoy_growth": 0.2614
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 2812000000.0,
+      "prev_year_revenue": 2144000000.0,
+      "yoy_growth": 0.3116
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-03-31T00:00:00.000",
+      "revenue": 2360000000.0,
+      "prev_year_revenue": 1861000000.0,
+      "yoy_growth": 0.2681
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-06-30T00:00:00.000",
+      "revenue": 2680000000.0,
+      "prev_year_revenue": 2045000000.0,
+      "yoy_growth": 0.3105
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-09-30T00:00:00.000",
+      "revenue": 2844000000.0,
+      "prev_year_revenue": 2162000000.0,
+      "yoy_growth": 0.3154
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 3672000000.0,
+      "prev_year_revenue": 2812000000.0,
+      "yoy_growth": 0.3058
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-03-31T00:00:00.000",
+      "revenue": 3170000000.0,
+      "prev_year_revenue": 2360000000.0,
+      "yoy_growth": 0.3432
+    }
+  ],
+  "annual_revenue": [
+    {
+      "symbol": "SHOP",
+      "report_date": "2020-12-31T00:00:00.000",
+      "revenue": 2929491000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2021-12-31T00:00:00.000",
+      "revenue": 4611856000.0,
+      "prev_year_revenue": 2929491000.0,
+      "yoy_growth": 0.5743
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2022-12-31T00:00:00.000",
+      "revenue": 5600000000.0,
+      "prev_year_revenue": 4611856000.0,
+      "yoy_growth": 0.2143
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 7060000000.0,
+      "prev_year_revenue": 5600000000.0,
+      "yoy_growth": 0.2607
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 8880000000.0,
+      "prev_year_revenue": 7060000000.0,
+      "yoy_growth": 0.2578
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 11556000000.0,
+      "prev_year_revenue": 8880000000.0,
+      "yoy_growth": 0.3014
+    }
+  ],
+  "quarterly_operating_income": [
+    {
+      "symbol": "SHOP",
+      "report_date": "2022-06-30T00:00:00.000",
+      "operating_income": -190208000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-06-30T00:00:00.000",
+      "operating_income": -296000000.0,
+      "prev_year_operating_income": -190208000.0,
+      "yoy_growth": -0.5562
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-09-30T00:00:00.000",
+      "operating_income": 122000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 289000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-03-31T00:00:00.000",
+      "operating_income": 86000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-06-30T00:00:00.000",
+      "operating_income": 283000000.0,
+      "prev_year_operating_income": -296000000.0,
+      "yoy_growth": 1.9561
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-09-30T00:00:00.000",
+      "operating_income": 341000000.0,
+      "prev_year_operating_income": 122000000.0,
+      "yoy_growth": 1.7951
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 541000000.0,
+      "prev_year_operating_income": 289000000.0,
+      "yoy_growth": 0.872
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-03-31T00:00:00.000",
+      "operating_income": 278000000.0,
+      "prev_year_operating_income": 86000000.0,
+      "yoy_growth": 2.2326
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-06-30T00:00:00.000",
+      "operating_income": 371000000.0,
+      "prev_year_operating_income": 283000000.0,
+      "yoy_growth": 0.311
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-09-30T00:00:00.000",
+      "operating_income": 491000000.0,
+      "prev_year_operating_income": 341000000.0,
+      "yoy_growth": 0.4399
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 745000000.0,
+      "prev_year_operating_income": 541000000.0,
+      "yoy_growth": 0.3771
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-03-31T00:00:00.000",
+      "operating_income": 498000000.0,
+      "prev_year_operating_income": 278000000.0,
+      "yoy_growth": 0.7914
+    }
+  ],
+  "annual_operating_income": [
+    {
+      "symbol": "SHOP",
+      "report_date": "2020-12-31T00:00:00.000",
+      "operating_income": 90153000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2021-12-31T00:00:00.000",
+      "operating_income": 350360000.0,
+      "prev_year_operating_income": 90153000.0,
+      "yoy_growth": 2.8863
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2022-12-31T00:00:00.000",
+      "operating_income": -687000000.0,
+      "prev_year_operating_income": 350360000.0,
+      "yoy_growth": -2.9608
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 74000000.0,
+      "prev_year_operating_income": -687000000.0,
+      "yoy_growth": 1.1077
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 1302000000.0,
+      "prev_year_operating_income": 74000000.0,
+      "yoy_growth": 16.5946
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 1885000000.0,
+      "prev_year_operating_income": 1302000000.0,
+      "yoy_growth": 0.4478
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-06-30T00:00:00.000",
+      "ebitda": -279000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-09-30T00:00:00.000",
+      "ebitda": 135000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 299000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-03-31T00:00:00.000",
+      "ebitda": 96000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-06-30T00:00:00.000",
+      "ebitda": 293000000.0,
+      "prev_year_ebitda": -279000000.0,
+      "yoy_growth": 2.0502
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-09-30T00:00:00.000",
+      "ebitda": 349000000.0,
+      "prev_year_ebitda": 135000000.0,
+      "yoy_growth": 1.5852
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 549000000.0,
+      "prev_year_ebitda": 299000000.0,
+      "yoy_growth": 0.8361
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-03-31T00:00:00.000",
+      "ebitda": 286000000.0,
+      "prev_year_ebitda": 96000000.0,
+      "yoy_growth": 1.9792
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-06-30T00:00:00.000",
+      "ebitda": 379000000.0,
+      "prev_year_ebitda": 293000000.0,
+      "yoy_growth": 0.2935
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-09-30T00:00:00.000",
+      "ebitda": 499000000.0,
+      "prev_year_ebitda": 349000000.0,
+      "yoy_growth": 0.4298
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 752000000.0,
+      "prev_year_ebitda": 549000000.0,
+      "yoy_growth": 0.3698
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-03-31T00:00:00.000",
+      "ebitda": 505000000.0,
+      "prev_year_ebitda": 286000000.0,
+      "yoy_growth": 0.7657
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "SHOP",
+      "report_date": "2020-12-31T00:00:00.000",
+      "ebitda": 318999000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2021-12-31T00:00:00.000",
+      "ebitda": 3208050000.0,
+      "prev_year_ebitda": 318999000.0,
+      "yoy_growth": 9.0566
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2022-12-31T00:00:00.000",
+      "ebitda": -594000000.0,
+      "prev_year_ebitda": 3208050000.0,
+      "yoy_growth": -1.1852
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 144000000.0,
+      "prev_year_ebitda": -594000000.0,
+      "yoy_growth": 1.2424
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 1338000000.0,
+      "prev_year_ebitda": 144000000.0,
+      "yoy_growth": 8.2917
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 1916000000.0,
+      "prev_year_ebitda": 1338000000.0,
+      "yoy_growth": 0.432
+    }
+  ],
+  "quarterly_net_income": [
+    {
+      "symbol": "SHOP",
+      "report_date": "2022-06-30T00:00:00.000",
+      "net_income_common_stockholders": -1203907000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-06-30T00:00:00.000",
+      "net_income_common_stockholders": -1311000000.0,
+      "prev_year_net_income_common_stockholders": -1203907000.0,
+      "yoy_growth": -0.089
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-09-30T00:00:00.000",
+      "net_income_common_stockholders": 718000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 657000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-03-31T00:00:00.000",
+      "net_income_common_stockholders": -273000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-06-30T00:00:00.000",
+      "net_income_common_stockholders": 171000000.0,
+      "prev_year_net_income_common_stockholders": -1311000000.0,
+      "yoy_growth": 1.1304
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-09-30T00:00:00.000",
+      "net_income_common_stockholders": 828000000.0,
+      "prev_year_net_income_common_stockholders": 718000000.0,
+      "yoy_growth": 0.1532
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 1293000000.0,
+      "prev_year_net_income_common_stockholders": 657000000.0,
+      "yoy_growth": 0.968
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-03-31T00:00:00.000",
+      "net_income_common_stockholders": -682000000.0,
+      "prev_year_net_income_common_stockholders": -273000000.0,
+      "yoy_growth": -1.4982
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-06-30T00:00:00.000",
+      "net_income_common_stockholders": 906000000.0,
+      "prev_year_net_income_common_stockholders": 171000000.0,
+      "yoy_growth": 4.2982
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-09-30T00:00:00.000",
+      "net_income_common_stockholders": 264000000.0,
+      "prev_year_net_income_common_stockholders": 828000000.0,
+      "yoy_growth": -0.6812
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 743000000.0,
+      "prev_year_net_income_common_stockholders": 1293000000.0,
+      "yoy_growth": -0.4254
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-03-31T00:00:00.000",
+      "net_income_common_stockholders": -581000000.0,
+      "prev_year_net_income_common_stockholders": -682000000.0,
+      "yoy_growth": 0.1481
+    }
+  ],
+  "annual_net_income": [
+    {
+      "symbol": "SHOP",
+      "report_date": "2020-12-31T00:00:00.000",
+      "net_income_common_stockholders": 319509000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2021-12-31T00:00:00.000",
+      "net_income_common_stockholders": 2914659000.0,
+      "prev_year_net_income_common_stockholders": 319509000.0,
+      "yoy_growth": 8.1223
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2022-12-31T00:00:00.000",
+      "net_income_common_stockholders": -3460000000.0,
+      "prev_year_net_income_common_stockholders": 2914659000.0,
+      "yoy_growth": -2.1871
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 132000000.0,
+      "prev_year_net_income_common_stockholders": -3460000000.0,
+      "yoy_growth": 1.0382
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 2019000000.0,
+      "prev_year_net_income_common_stockholders": 132000000.0,
+      "yoy_growth": 14.2955
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 1231000000.0,
+      "prev_year_net_income_common_stockholders": 2019000000.0,
+      "yoy_growth": -0.3903
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "SHOP",
+      "report_date": "2022-06-30T00:00:00.000",
+      "free_cash_flow": -136716000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-06-30T00:00:00.000",
+      "free_cash_flow": 97000000.0,
+      "prev_year_free_cash_flow": -136716000.0,
+      "yoy_growth": 1.7095
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-09-30T00:00:00.000",
+      "free_cash_flow": 276000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 446000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-03-31T00:00:00.000",
+      "free_cash_flow": 232000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-06-30T00:00:00.000",
+      "free_cash_flow": 333000000.0,
+      "prev_year_free_cash_flow": 97000000.0,
+      "yoy_growth": 2.433
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-09-30T00:00:00.000",
+      "free_cash_flow": 421000000.0,
+      "prev_year_free_cash_flow": 276000000.0,
+      "yoy_growth": 0.5254
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 611000000.0,
+      "prev_year_free_cash_flow": 446000000.0,
+      "yoy_growth": 0.37
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-03-31T00:00:00.000",
+      "free_cash_flow": 363000000.0,
+      "prev_year_free_cash_flow": 232000000.0,
+      "yoy_growth": 0.5647
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-06-30T00:00:00.000",
+      "free_cash_flow": 422000000.0,
+      "prev_year_free_cash_flow": 333000000.0,
+      "yoy_growth": 0.2673
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-09-30T00:00:00.000",
+      "free_cash_flow": 507000000.0,
+      "prev_year_free_cash_flow": 421000000.0,
+      "yoy_growth": 0.2043
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 715000000.0,
+      "prev_year_free_cash_flow": 611000000.0,
+      "yoy_growth": 0.1702
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-03-31T00:00:00.000",
+      "free_cash_flow": 476000000.0,
+      "prev_year_free_cash_flow": 363000000.0,
+      "yoy_growth": 0.3113
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "SHOP",
+      "report_date": "2020-12-31T00:00:00.000",
+      "free_cash_flow": 382963000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2021-12-31T00:00:00.000",
+      "free_cash_flow": 484923000.0,
+      "prev_year_free_cash_flow": 382963000.0,
+      "yoy_growth": 0.2662
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2022-12-31T00:00:00.000",
+      "free_cash_flow": -186000000.0,
+      "prev_year_free_cash_flow": 484923000.0,
+      "yoy_growth": -1.3836
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 905000000.0,
+      "prev_year_free_cash_flow": -186000000.0,
+      "yoy_growth": 5.8656
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 1597000000.0,
+      "prev_year_free_cash_flow": 905000000.0,
+      "yoy_growth": 0.7646
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 2007000000.0,
+      "prev_year_free_cash_flow": 1597000000.0,
+      "yoy_growth": 0.2567
+    }
+  ],
+  "quarterly_eps": [
+    {
+      "symbol": "SHOP",
+      "report_date": "2013-03-31T00:00:00.000",
+      "eps": 0.0003,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2013-06-30T00:00:00.000",
+      "eps": -0.0002,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2013-09-30T00:00:00.000",
+      "eps": -0.002,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2013-12-31T00:00:00.000",
+      "eps": -0.0045,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2014-03-31T00:00:00.000",
+      "eps": -0.0084,
+      "prev_year_eps": 0.0003,
+      "yoy_growth": -29.0
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2014-06-30T00:00:00.000",
+      "eps": -0.0091,
+      "prev_year_eps": -0.0002,
+      "yoy_growth": -44.5
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2014-09-30T00:00:00.000",
+      "eps": -0.0056,
+      "prev_year_eps": -0.002,
+      "yoy_growth": -1.8
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2014-12-31T00:00:00.000",
+      "eps": -0.0063,
+      "prev_year_eps": -0.0045,
+      "yoy_growth": -0.4
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2015-03-31T00:00:00.000",
+      "eps": -0.006,
+      "prev_year_eps": -0.0084,
+      "yoy_growth": 0.2857
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2015-06-30T00:00:00.000",
+      "eps": -0.006,
+      "prev_year_eps": -0.0091,
+      "yoy_growth": 0.3407
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2015-09-30T00:00:00.000",
+      "eps": -0.006,
+      "prev_year_eps": -0.0056,
+      "yoy_growth": -0.0714
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2015-12-31T00:00:00.000",
+      "eps": -0.008,
+      "prev_year_eps": -0.0063,
+      "yoy_growth": -0.2698
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2016-03-31T00:00:00.000",
+      "eps": -0.011,
+      "prev_year_eps": -0.006,
+      "yoy_growth": -0.8333
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2016-06-30T00:00:00.000",
+      "eps": -0.01,
+      "prev_year_eps": -0.006,
+      "yoy_growth": -0.6667
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2016-09-30T00:00:00.000",
+      "eps": -0.011,
+      "prev_year_eps": -0.006,
+      "yoy_growth": -0.8333
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2016-12-31T00:00:00.000",
+      "eps": -0.01,
+      "prev_year_eps": -0.008,
+      "yoy_growth": -0.25
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2017-03-31T00:00:00.000",
+      "eps": -0.015,
+      "prev_year_eps": -0.011,
+      "yoy_growth": -0.3636
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2017-06-30T00:00:00.000",
+      "eps": -0.015,
+      "prev_year_eps": -0.01,
+      "yoy_growth": -0.5
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2017-09-30T00:00:00.000",
+      "eps": -0.009,
+      "prev_year_eps": -0.011,
+      "yoy_growth": 0.1818
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2017-12-31T00:00:00.000",
+      "eps": -0.003,
+      "prev_year_eps": -0.01,
+      "yoy_growth": 0.7
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2018-03-31T00:00:00.000",
+      "eps": -0.016,
+      "prev_year_eps": -0.015,
+      "yoy_growth": -0.0667
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2018-06-30T00:00:00.000",
+      "eps": -0.023,
+      "prev_year_eps": -0.015,
+      "yoy_growth": -0.5333
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2018-09-30T00:00:00.000",
+      "eps": -0.022,
+      "prev_year_eps": -0.009,
+      "yoy_growth": -1.4444
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2018-12-31T00:00:00.000",
+      "eps": -0.0014,
+      "prev_year_eps": -0.003,
+      "yoy_growth": 0.5333
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2019-03-31T00:00:00.000",
+      "eps": -0.0218,
+      "prev_year_eps": -0.016,
+      "yoy_growth": -0.3625
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2019-06-30T00:00:00.000",
+      "eps": -0.0256,
+      "prev_year_eps": -0.023,
+      "yoy_growth": -0.113
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2019-09-30T00:00:00.000",
+      "eps": -0.0644,
+      "prev_year_eps": -0.022,
+      "yoy_growth": -1.9273
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2019-12-31T00:00:00.000",
+      "eps": 0.0007,
+      "prev_year_eps": -0.0014,
+      "yoy_growth": 1.5
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2020-03-31T00:00:00.000",
+      "eps": -0.0269,
+      "prev_year_eps": -0.0218,
+      "yoy_growth": -0.2339
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2020-06-30T00:00:00.000",
+      "eps": 0.0293,
+      "prev_year_eps": -0.0256,
+      "yoy_growth": 2.1445
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2020-09-30T00:00:00.000",
+      "eps": 0.153,
+      "prev_year_eps": -0.0644,
+      "yoy_growth": 3.3758
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2020-12-31T00:00:00.000",
+      "eps": 0.0987,
+      "prev_year_eps": 0.0007,
+      "yoy_growth": 140.0
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2021-03-31T00:00:00.000",
+      "eps": 0.9934,
+      "prev_year_eps": -0.0269,
+      "yoy_growth": 37.9294
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2021-06-30T00:00:00.000",
+      "eps": 0.6896,
+      "prev_year_eps": 0.0293,
+      "yoy_growth": 22.5358
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2021-09-30T00:00:00.000",
+      "eps": 0.8999,
+      "prev_year_eps": 0.153,
+      "yoy_growth": 4.8817
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2021-12-31T00:00:00.000",
+      "eps": -0.2953,
+      "prev_year_eps": 0.0987,
+      "yoy_growth": -3.9919
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2022-03-31T00:00:00.000",
+      "eps": -1.17,
+      "prev_year_eps": 0.9934,
+      "yoy_growth": -2.1778
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2022-06-30T00:00:00.000",
+      "eps": -0.954,
+      "prev_year_eps": 0.6896,
+      "yoy_growth": -2.3834
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2022-09-30T00:00:00.000",
+      "eps": -0.1248,
+      "prev_year_eps": 0.8999,
+      "yoy_growth": -1.1387
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2022-12-31T00:00:00.000",
+      "eps": -0.4898,
+      "prev_year_eps": -0.2953,
+      "yoy_growth": -0.6587
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-03-31T00:00:00.000",
+      "eps": 0.0526,
+      "prev_year_eps": -1.17,
+      "yoy_growth": 1.045
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-06-30T00:00:00.000",
+      "eps": -1.0239,
+      "prev_year_eps": -0.954,
+      "yoy_growth": -0.0733
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-09-30T00:00:00.000",
+      "eps": 0.5541,
+      "prev_year_eps": -0.1248,
+      "yoy_growth": 5.4399
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-12-31T00:00:00.000",
+      "eps": 0.5072,
+      "prev_year_eps": -0.4898,
+      "yoy_growth": 2.0355
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-03-31T00:00:00.000",
+      "eps": -0.2121,
+      "prev_year_eps": 0.0526,
+      "yoy_growth": -5.0323
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-06-30T00:00:00.000",
+      "eps": 0.1315,
+      "prev_year_eps": -1.0239,
+      "yoy_growth": 1.1284
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-09-30T00:00:00.000",
+      "eps": 0.6361,
+      "prev_year_eps": 0.5541,
+      "yoy_growth": 0.148
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-12-31T00:00:00.000",
+      "eps": 0.9988,
+      "prev_year_eps": 0.5072,
+      "yoy_growth": 0.9692
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-03-31T00:00:00.000",
+      "eps": -0.5265,
+      "prev_year_eps": -0.2121,
+      "yoy_growth": -1.4823
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-06-30T00:00:00.000",
+      "eps": 0.6921,
+      "prev_year_eps": 0.1315,
+      "yoy_growth": 4.2631
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-09-30T00:00:00.000",
+      "eps": 0.2011,
+      "prev_year_eps": 0.6361,
+      "yoy_growth": -0.6839
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-12-31T00:00:00.000",
+      "eps": 0.5698,
+      "prev_year_eps": 0.9988,
+      "yoy_growth": -0.4295
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-03-31T00:00:00.000",
+      "eps": -0.4458,
+      "prev_year_eps": -0.5265,
+      "yoy_growth": 0.1533
+    }
+  ]
+}

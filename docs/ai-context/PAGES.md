@@ -2,7 +2,7 @@
 
 Fast route reference for the current app.
 
-**Last updated:** 2026-04-14
+**Last updated:** 2026-06-08
 
 ---
 
@@ -21,8 +21,16 @@ Fast route reference for the current app.
 | `/writing/[slug]` | `src/app/writing/[slug]/page.tsx` | Async server page |
 | `/investments` | `src/app/investments/page.tsx` | Server page -> `InvestmentsClient` |
 | `/formula-1` | `src/app/formula-1/page.tsx` | Server page -> `Formula1Client` |
+| `/fantasy-formula-1` | `src/app/fantasy-formula-1/page.tsx` | Server page -> `FantasyFormula1Client` |
+| `/ai-dev-tools` | `src/app/ai-dev-tools/page.tsx` | Server page with filterable AI tool directory |
+| `/frontier-models` | `src/app/frontier-models/page.tsx` | Server page backed by frontier model snapshot data |
+| `/github-trending-pulse` | `src/app/github-trending-pulse/page.tsx` | Server page backed by GitHub trending snapshot data |
 | `/premier-league` | `src/app/premier-league/page.tsx` | Server page -> `PremierLeagueClient` |
 | `/la-liga` | `src/app/la-liga/page.tsx` | Server page -> `LaLigaClient` |
+| `/mlb` | `src/app/mlb/page.tsx` | Server page -> MLB dashboard client |
+| `/nba` | `src/app/nba/page.tsx` | Server page -> NBA dashboard client |
+| `/nfl` | `src/app/nfl/page.tsx` | Server page -> NFL dashboard client |
+| `/golf` | `src/app/golf/page.tsx` | Server page -> golf dashboard client |
 | `/march-madness-2026` | `src/app/march-madness-2026/page.tsx` | Async server page -> `MarchMadnessClient` |
 | `/news-pulse` | `src/app/news-pulse/page.tsx` | Server page -> `NewsPulseClient` |
 | `/spacex-mission-control` | `src/app/spacex-mission-control/page.tsx` | Server page -> SpaceX client dashboard |
@@ -30,12 +38,19 @@ Fast route reference for the current app.
 | `/fintech-tools/budget-planner` | `src/app/fintech-tools/budget-planner/page.tsx` | Server page -> budget planner client |
 | `/fintech-tools/interchange-iq` | `src/app/fintech-tools/interchange-iq/page.tsx` | Server page -> `InterchangeIQClient` |
 | `/mba-internship-notifications` | `src/app/mba-internship-notifications/page.tsx` | Async server page -> `MBAJobsClient` |
+| `/decision-lab` | `src/app/decision-lab/page.tsx` | Server page for decision-modeling content |
+| `/food-map` | `src/app/food-map/page.tsx` | Server page for food map content |
+| `/recipe-finder` | `src/app/recipe-finder/page.tsx` | Server page for recipe finder content |
+| `/wine-cellar` | `src/app/wine-cellar/page.tsx` | Server page for wine cellar content |
+| `/museum-log` | `src/app/museum-log/page.tsx` | Server page for museum log content |
 | `/fantasy-football` | `src/app/fantasy-football/page.tsx` | Server page -> fantasy client UI |
 | `/fantasy-football/tiers/[position]` | `src/app/fantasy-football/tiers/[position]/page.tsx` | Redirect page to the canonical fantasy board |
 | `/fantasy-football/rb-tiers` | `src/app/fantasy-football/rb-tiers/page.tsx` | Redirect page to the canonical RB board |
 | `/fantasy-football/draft-tracker` | `src/app/fantasy-football/draft-tracker/page.tsx` | Server page |
 | `/search` | `src/app/search/page.tsx` | Search UI page |
 | `/admin` | `src/app/admin/page.tsx` | Auth-aware admin page |
+| `/now` | `src/app/now/page.tsx` | Current focus / status page |
+| `/changelog` | `src/app/changelog/page.tsx` | Site changelog page |
 
 There is no live `/admin/analytics` route in the current app tree.
 
@@ -46,25 +61,37 @@ There is no live `/admin/analytics` route in the current app tree.
 - `src/app/layout.tsx` renders fonts, providers, skip link, and `StaticHeader`
 - `ConditionalLayout` wraps page content and footer
 - self-shell routes:
-  - `/about`
-  - `/contact`
-  - `/fantasy-football`
-  - `/fantasy-football/draft-tracker`
-  - `/fintech-tools/budget-planner`
-  - `/formula-1`
-  - `/investments`
-  - `/la-liga`
-  - `/premier-league`
-  - `/march-madness-2026`
-  - `/mba-internship-notifications`
-  - `/news-pulse`
-  - `/polling-aggregator`
-  - `/portfolio`
-  - `/portfolio/[slug]`
-  - `/resume`
-  - `/spacex-mission-control`
-  - `/writing`
-  - `/writing/[slug]`
+- `/about`
+- `/ai-dev-tools`
+- `/changelog`
+- `/contact`
+- `/decision-lab`
+- `/fantasy-formula-1`
+- `/fantasy-football`
+- `/fantasy-football/draft-tracker`
+- `/fintech-tools/budget-planner`
+- `/fintech-tools/interchange-iq`
+- `/food-map`
+- `/formula-1`
+- `/golf`
+- `/github-trending-pulse`
+- `/investments`
+- `/la-liga`
+- `/march-madness-2026`
+- `/mba-internship-notifications`
+- `/museum-log`
+- `/news-pulse`
+- `/now`
+- `/polling-aggregator`
+- `/premier-league`
+- `/portfolio`
+- `/portfolio/[slug]`
+- `/recipe-finder`
+- `/resume`
+- `/spacex-mission-control`
+- `/wine-cellar`
+- `/writing`
+- `/writing/[slug]`
 
 Semantics:
 
@@ -119,6 +146,12 @@ Footer behavior:
 - server entry provides metadata plus breadcrumb and software-application structured data
 - client route supports deep-linked `overview`, `drivers`, `constructors`, and `calendar` views through query params
 
+### `/fantasy-formula-1`
+
+- server entry provides metadata plus breadcrumb and software-application structured data
+- client route supports deep-linked `builder`, `assets`, and `rules` views through query params
+- lineup state is browser-local and scoped by season
+
 ### `/la-liga`
 
 - server entry provides metadata plus breadcrumb and sports-application structured data
@@ -129,6 +162,10 @@ Footer behavior:
 - `/news-pulse` is a live route backed by `/api/news-pulse`
 - `/spacex-mission-control` is a live route backed by `/api/spacex/*`
 - `/polling-aggregator` is a live route backed by `src/data/pollingSnapshot.ts`
+- `/mlb`, `/nba`, and `/nfl` are live sports dashboards backed by committed TypeScript snapshots and matching `/api/{league}/*` routes
+- `/golf` is a live sports dashboard backed by the manually maintained `src/data/golfSnapshot.ts`
+- `/ai-dev-tools` and `/frontier-models` are live AI/knowledge surfaces
+- `/decision-lab`, `/food-map`, `/recipe-finder`, `/wine-cellar`, `/museum-log`, `/now`, and `/changelog` are live personal or utility surfaces
 - `/fintech-tools/budget-planner` and `/fintech-tools/interchange-iq` are live fintech tool routes
 - `/mba-internship-notifications` is a live route backed by `/api/mba-jobs` that polls Greenhouse, Lever, Ashby, and direct-HTML job boards across 32 tech companies for MBA internships and full-time business roles
 

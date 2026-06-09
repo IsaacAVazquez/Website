@@ -28,7 +28,7 @@ const focus = [
     kicker: "Writing",
     title: "Agentic AI and PM workflows",
     detail:
-      "Working through a series on agentic product decisions. When agents help, when they get in the way, and what it means for PM craft.",
+      "Working through a series on agentic product decisions, including when agents help, when they get in the way, and what it means for PM craft.",
   },
 ];
 
@@ -74,14 +74,14 @@ const building = [
 ];
 
 const notBuilding = [
-  "New side projects outside this site. The surface is already wide enough.",
+  "New side projects outside this site. The surface is wide enough already.",
   "A paid product. This is a portfolio, not a business.",
   "Social media content. I write here and that's it.",
 ];
 
 export const metadata: Metadata = constructMetadata({
   title: "Now",
-  description: `What Isaac Vazquez is focused on right now. Current work, reading, side projects, and location. Updated ${NOW_UPDATED_LABEL}.`,
+  description: `What Isaac Vazquez is focused on right now, including current work, reading, side projects, and location. Updated ${NOW_UPDATED_LABEL}.`,
   canonicalUrl: "https://isaacavazquez.com/now",
   dateModified: NOW_UPDATED,
 });
@@ -123,7 +123,7 @@ export default function NowPage() {
 
       <section
         className="home-page home-section min-h-screen"
-        aria-label="Now — current focus"
+        aria-label="Now, current focus"
       >
         <div className="home-shell home-shell-tight space-y-10">
           <header className="space-y-4">
@@ -201,7 +201,7 @@ export default function NowPage() {
                         className="font-normal"
                         style={{ color: "var(--home-ink-muted)" }}
                       >
-                        — {book.author}
+                        by {book.author}
                       </span>
                     </p>
                     <p className="mb-0 text-sm leading-6" style={bodyStyle}>

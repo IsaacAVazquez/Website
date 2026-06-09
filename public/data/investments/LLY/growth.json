@@ -1,0 +1,1473 @@
+{
+  "quarterly_revenue": [
+    {
+      "symbol": "LLY",
+      "report_date": "2022-06-30T00:00:00.000",
+      "revenue": 6488000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-06-30T00:00:00.000",
+      "revenue": 8312100000.0,
+      "prev_year_revenue": 6488000000.0,
+      "yoy_growth": 0.2811
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-09-30T00:00:00.000",
+      "revenue": 9498600000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 9353400000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-03-31T00:00:00.000",
+      "revenue": 8768000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-06-30T00:00:00.000",
+      "revenue": 11302800000.0,
+      "prev_year_revenue": 8312100000.0,
+      "yoy_growth": 0.3598
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-09-30T00:00:00.000",
+      "revenue": 11439100000.0,
+      "prev_year_revenue": 9498600000.0,
+      "yoy_growth": 0.2043
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 13532800000.0,
+      "prev_year_revenue": 9353400000.0,
+      "yoy_growth": 0.4468
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-03-31T00:00:00.000",
+      "revenue": 12729000000.0,
+      "prev_year_revenue": 8768000000.0,
+      "yoy_growth": 0.4518
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-06-30T00:00:00.000",
+      "revenue": 15557700000.0,
+      "prev_year_revenue": 11302800000.0,
+      "yoy_growth": 0.3764
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-09-30T00:00:00.000",
+      "revenue": 17600800000.0,
+      "prev_year_revenue": 11439100000.0,
+      "yoy_growth": 0.5387
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 19292000000.0,
+      "prev_year_revenue": 13532800000.0,
+      "yoy_growth": 0.4256
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2026-03-31T00:00:00.000",
+      "revenue": 19799000000.0,
+      "prev_year_revenue": 12729000000.0,
+      "yoy_growth": 0.5554
+    }
+  ],
+  "annual_revenue": [
+    {
+      "symbol": "LLY",
+      "report_date": "2020-12-31T00:00:00.000",
+      "revenue": 24539800000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2021-12-31T00:00:00.000",
+      "revenue": 28318400000.0,
+      "prev_year_revenue": 24539800000.0,
+      "yoy_growth": 0.154
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2022-12-31T00:00:00.000",
+      "revenue": 28541400000.0,
+      "prev_year_revenue": 28318400000.0,
+      "yoy_growth": 0.0079
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 34124000000.0,
+      "prev_year_revenue": 28541400000.0,
+      "yoy_growth": 0.1956
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 45043000000.0,
+      "prev_year_revenue": 34124000000.0,
+      "yoy_growth": 0.32
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 65179000000.0,
+      "prev_year_revenue": 45043000000.0,
+      "yoy_growth": 0.447
+    }
+  ],
+  "quarterly_operating_income": [
+    {
+      "symbol": "LLY",
+      "report_date": "2022-06-30T00:00:00.000",
+      "operating_income": 1650500000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-06-30T00:00:00.000",
+      "operating_income": 2338400000.0,
+      "prev_year_operating_income": 1650500000.0,
+      "yoy_growth": 0.4168
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-09-30T00:00:00.000",
+      "operating_income": 3425500000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 3193100000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-03-31T00:00:00.000",
+      "operating_income": 2735600000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-06-30T00:00:00.000",
+      "operating_income": 4418500000.0,
+      "prev_year_operating_income": 2338400000.0,
+      "yoy_growth": 0.8895
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-09-30T00:00:00.000",
+      "operating_income": 4434400000.0,
+      "prev_year_operating_income": 3425500000.0,
+      "yoy_growth": 0.2945
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 5682000000.0,
+      "prev_year_operating_income": 3193100000.0,
+      "yoy_growth": 0.7795
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-03-31T00:00:00.000",
+      "operating_income": 5302000000.0,
+      "prev_year_operating_income": 2735600000.0,
+      "yoy_growth": 0.9381
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-06-30T00:00:00.000",
+      "operating_income": 7020800000.0,
+      "prev_year_operating_income": 4418500000.0,
+      "yoy_growth": 0.589
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-09-30T00:00:00.000",
+      "operating_income": 8386100000.0,
+      "prev_year_operating_income": 4434400000.0,
+      "yoy_growth": 0.8911
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 8987400000.0,
+      "prev_year_operating_income": 5682000000.0,
+      "yoy_growth": 0.5817
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2026-03-31T00:00:00.000",
+      "operating_income": 9778000000.0,
+      "prev_year_operating_income": 5302000000.0,
+      "yoy_growth": 0.8442
+    }
+  ],
+  "annual_operating_income": [
+    {
+      "symbol": "LLY",
+      "report_date": "2020-12-31T00:00:00.000",
+      "operating_income": 7101400000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2021-12-31T00:00:00.000",
+      "operating_income": 7643300000.0,
+      "prev_year_operating_income": 7101400000.0,
+      "yoy_growth": 0.0763
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2022-12-31T00:00:00.000",
+      "operating_income": 8280400000.0,
+      "prev_year_operating_income": 7643300000.0,
+      "yoy_growth": 0.0834
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 10325000000.0,
+      "prev_year_operating_income": 8280400000.0,
+      "yoy_growth": 0.2469
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 17040000000.0,
+      "prev_year_operating_income": 10325000000.0,
+      "yoy_growth": 0.6504
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 29696000000.0,
+      "prev_year_operating_income": 17040000000.0,
+      "yoy_growth": 0.7427
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "LLY",
+      "report_date": "2023-06-30T00:00:00.000",
+      "ebitda": 2575500000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-09-30T00:00:00.000",
+      "ebitda": 962800000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 3034700000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-03-31T00:00:00.000",
+      "ebitda": 3116300000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-06-30T00:00:00.000",
+      "ebitda": 4115200000.0,
+      "prev_year_ebitda": 2575500000.0,
+      "yoy_growth": 0.5978
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-09-30T00:00:00.000",
+      "ebitda": 2247900000.0,
+      "prev_year_ebitda": 962800000.0,
+      "yoy_growth": 1.3348
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 5748200000.0,
+      "prev_year_ebitda": 3034700000.0,
+      "yoy_growth": 0.8942
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-03-31T00:00:00.000",
+      "ebitda": 5765000000.0,
+      "prev_year_ebitda": 3116300000.0,
+      "yoy_growth": 0.85
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-06-30T00:00:00.000",
+      "ebitda": 7503700000.0,
+      "prev_year_ebitda": 4115200000.0,
+      "yoy_growth": 0.8234
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-09-30T00:00:00.000",
+      "ebitda": 7882000000.0,
+      "prev_year_ebitda": 2247900000.0,
+      "yoy_growth": 2.5064
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 12144500000.0,
+      "prev_year_ebitda": 5748200000.0,
+      "yoy_growth": 1.1127
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2026-03-31T00:00:00.000",
+      "ebitda": 10287000000.0,
+      "prev_year_ebitda": 5765000000.0,
+      "yoy_growth": 0.7844
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "LLY",
+      "report_date": "2020-12-31T00:00:00.000",
+      "ebitda": 8913400000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2021-12-31T00:00:00.000",
+      "ebitda": 8042900000.0,
+      "prev_year_ebitda": 8913400000.0,
+      "yoy_growth": -0.0977
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2022-12-31T00:00:00.000",
+      "ebitda": 8660500000.0,
+      "prev_year_ebitda": 8042900000.0,
+      "yoy_growth": 0.0768
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 11852000000.0,
+      "prev_year_ebitda": 8660500000.0,
+      "yoy_growth": 0.3685
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 18807000000.0,
+      "prev_year_ebitda": 11852000000.0,
+      "yoy_growth": 0.5868
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 31693000000.0,
+      "prev_year_ebitda": 18807000000.0,
+      "yoy_growth": 0.6852
+    }
+  ],
+  "quarterly_net_income": [
+    {
+      "symbol": "LLY",
+      "report_date": "2022-06-30T00:00:00.000",
+      "net_income_common_stockholders": 952500000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-06-30T00:00:00.000",
+      "net_income_common_stockholders": 1763200000.0,
+      "prev_year_net_income_common_stockholders": 952500000.0,
+      "yoy_growth": 0.8511
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-09-30T00:00:00.000",
+      "net_income_common_stockholders": -57400000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 2189700000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-03-31T00:00:00.000",
+      "net_income_common_stockholders": 2242900000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-06-30T00:00:00.000",
+      "net_income_common_stockholders": 2967000000.0,
+      "prev_year_net_income_common_stockholders": 1763200000.0,
+      "yoy_growth": 0.6827
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-09-30T00:00:00.000",
+      "net_income_common_stockholders": 970300000.0,
+      "prev_year_net_income_common_stockholders": -57400000.0,
+      "yoy_growth": 17.9042
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 4409800000.0,
+      "prev_year_net_income_common_stockholders": 2189700000.0,
+      "yoy_growth": 1.0139
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-03-31T00:00:00.000",
+      "net_income_common_stockholders": 2759000000.0,
+      "prev_year_net_income_common_stockholders": 2242900000.0,
+      "yoy_growth": 0.2301
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-06-30T00:00:00.000",
+      "net_income_common_stockholders": 13799900000.0,
+      "prev_year_net_income_common_stockholders": 2967000000.0,
+      "yoy_growth": 3.6511
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-09-30T00:00:00.000",
+      "net_income_common_stockholders": 5582500000.0,
+      "prev_year_net_income_common_stockholders": 970300000.0,
+      "yoy_growth": 4.7534
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 6637700000.0,
+      "prev_year_net_income_common_stockholders": 4409800000.0,
+      "yoy_growth": 0.5052
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2026-03-31T00:00:00.000",
+      "net_income_common_stockholders": 25277000000.0,
+      "prev_year_net_income_common_stockholders": 2759000000.0,
+      "yoy_growth": 8.1617
+    }
+  ],
+  "annual_net_income": [
+    {
+      "symbol": "LLY",
+      "report_date": "2020-12-31T00:00:00.000",
+      "net_income_common_stockholders": 6193700000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2021-12-31T00:00:00.000",
+      "net_income_common_stockholders": 5581700000.0,
+      "prev_year_net_income_common_stockholders": 6193700000.0,
+      "yoy_growth": -0.0988
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2022-12-31T00:00:00.000",
+      "net_income_common_stockholders": 6244800000.0,
+      "prev_year_net_income_common_stockholders": 5581700000.0,
+      "yoy_growth": 0.1188
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 5240000000.0,
+      "prev_year_net_income_common_stockholders": 6244800000.0,
+      "yoy_growth": -0.1609
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 10590000000.0,
+      "prev_year_net_income_common_stockholders": 5240000000.0,
+      "yoy_growth": 1.021
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 20640000000.0,
+      "prev_year_net_income_common_stockholders": 10590000000.0,
+      "yoy_growth": 0.949
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "LLY",
+      "report_date": "2022-06-30T00:00:00.000",
+      "free_cash_flow": 369700000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-06-30T00:00:00.000",
+      "free_cash_flow": -204400000.0,
+      "prev_year_free_cash_flow": 369700000.0,
+      "yoy_growth": -1.5529
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-09-30T00:00:00.000",
+      "free_cash_flow": -1811700000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": -1963000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-03-31T00:00:00.000",
+      "free_cash_flow": 83200000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-06-30T00:00:00.000",
+      "free_cash_flow": 63400000.0,
+      "prev_year_free_cash_flow": -204400000.0,
+      "yoy_growth": 1.3102
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-09-30T00:00:00.000",
+      "free_cash_flow": -458900000.0,
+      "prev_year_free_cash_flow": -1811700000.0,
+      "yoy_growth": 0.7467
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 726600000.0,
+      "prev_year_free_cash_flow": -1963000000.0,
+      "yoy_growth": 1.3701
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-03-31T00:00:00.000",
+      "free_cash_flow": -1601000000.0,
+      "prev_year_free_cash_flow": 83200000.0,
+      "yoy_growth": -20.2428
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-06-30T00:00:00.000",
+      "free_cash_flow": 1283100000.0,
+      "prev_year_free_cash_flow": 63400000.0,
+      "yoy_growth": 19.2382
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-09-30T00:00:00.000",
+      "free_cash_flow": 6027700000.0,
+      "prev_year_free_cash_flow": -458900000.0,
+      "yoy_growth": 14.1351
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 254200000.0,
+      "prev_year_free_cash_flow": 726600000.0,
+      "yoy_growth": -0.6502
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2026-03-31T00:00:00.000",
+      "free_cash_flow": 2803000000.0,
+      "prev_year_free_cash_flow": -1601000000.0,
+      "yoy_growth": 2.7508
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "LLY",
+      "report_date": "2020-12-31T00:00:00.000",
+      "free_cash_flow": 4470500000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2021-12-31T00:00:00.000",
+      "free_cash_flow": 5387500000.0,
+      "prev_year_free_cash_flow": 4470500000.0,
+      "yoy_growth": 0.2051
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2022-12-31T00:00:00.000",
+      "free_cash_flow": 4600400000.0,
+      "prev_year_free_cash_flow": 5387500000.0,
+      "yoy_growth": -0.1461
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": -3152000000.0,
+      "prev_year_free_cash_flow": 4600400000.0,
+      "yoy_growth": -1.6852
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 414000000.0,
+      "prev_year_free_cash_flow": -3152000000.0,
+      "yoy_growth": 1.1313
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 5964000000.0,
+      "prev_year_free_cash_flow": 414000000.0,
+      "yoy_growth": 13.4058
+    }
+  ],
+  "quarterly_eps": [
+    {
+      "symbol": "LLY",
+      "report_date": "1998-03-31T00:00:00.000",
+      "eps": 0.47,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "1998-06-30T00:00:00.000",
+      "eps": 0.44,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "1998-09-30T00:00:00.000",
+      "eps": 0.46,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "1998-12-31T00:00:00.000",
+      "eps": 0.51,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "1999-03-31T00:00:00.000",
+      "eps": 0.56,
+      "prev_year_eps": 0.47,
+      "yoy_growth": 0.1915
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "1999-06-30T00:00:00.000",
+      "eps": 0.52,
+      "prev_year_eps": 0.44,
+      "yoy_growth": 0.1818
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "1999-09-30T00:00:00.000",
+      "eps": 0.67,
+      "prev_year_eps": 0.46,
+      "yoy_growth": 0.4565
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "1999-12-31T00:00:00.000",
+      "eps": 0.71,
+      "prev_year_eps": 0.51,
+      "yoy_growth": 0.3922
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2000-03-31T00:00:00.000",
+      "eps": 0.77,
+      "prev_year_eps": 0.56,
+      "yoy_growth": 0.375
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2000-06-30T00:00:00.000",
+      "eps": 0.61,
+      "prev_year_eps": 0.52,
+      "yoy_growth": 0.1731
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2000-09-30T00:00:00.000",
+      "eps": 0.71,
+      "prev_year_eps": 0.67,
+      "yoy_growth": 0.0597
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2000-12-31T00:00:00.000",
+      "eps": 0.7,
+      "prev_year_eps": 0.71,
+      "yoy_growth": -0.0141
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2001-03-31T00:00:00.000",
+      "eps": 0.74,
+      "prev_year_eps": 0.77,
+      "yoy_growth": -0.039
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2001-06-30T00:00:00.000",
+      "eps": 0.76,
+      "prev_year_eps": 0.61,
+      "yoy_growth": 0.2459
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2001-09-30T00:00:00.000",
+      "eps": 0.54,
+      "prev_year_eps": 0.71,
+      "yoy_growth": -0.2394
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2001-12-31T00:00:00.000",
+      "eps": 0.54,
+      "prev_year_eps": 0.7,
+      "yoy_growth": -0.2286
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2002-03-31T00:00:00.000",
+      "eps": 0.58,
+      "prev_year_eps": 0.74,
+      "yoy_growth": -0.2162
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2002-06-30T00:00:00.000",
+      "eps": 0.61,
+      "prev_year_eps": 0.76,
+      "yoy_growth": -0.1974
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2002-09-30T00:00:00.000",
+      "eps": 0.63,
+      "prev_year_eps": 0.54,
+      "yoy_growth": 0.1667
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2002-12-31T00:00:00.000",
+      "eps": 0.68,
+      "prev_year_eps": 0.54,
+      "yoy_growth": 0.2593
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2003-03-31T00:00:00.000",
+      "eps": 0.38,
+      "prev_year_eps": 0.58,
+      "yoy_growth": -0.3448
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2003-06-30T00:00:00.000",
+      "eps": 0.64,
+      "prev_year_eps": 0.61,
+      "yoy_growth": 0.0492
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2003-09-30T00:00:00.000",
+      "eps": 0.66,
+      "prev_year_eps": 0.63,
+      "yoy_growth": 0.0476
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2003-12-31T00:00:00.000",
+      "eps": 0.69,
+      "prev_year_eps": 0.68,
+      "yoy_growth": 0.0147
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2004-03-31T00:00:00.000",
+      "eps": 0.37,
+      "prev_year_eps": 0.38,
+      "yoy_growth": -0.0263
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2004-06-30T00:00:00.000",
+      "eps": 0.6,
+      "prev_year_eps": 0.64,
+      "yoy_growth": -0.0625
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2004-09-30T00:00:00.000",
+      "eps": 0.69,
+      "prev_year_eps": 0.66,
+      "yoy_growth": 0.0455
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2004-12-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.69,
+      "yoy_growth": -1.0
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2005-03-31T00:00:00.000",
+      "eps": 0.68,
+      "prev_year_eps": 0.37,
+      "yoy_growth": 0.8378
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2005-06-30T00:00:00.000",
+      "eps": -0.23,
+      "prev_year_eps": 0.6,
+      "yoy_growth": -1.3833
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2005-09-30T00:00:00.000",
+      "eps": 0.73,
+      "prev_year_eps": 0.69,
+      "yoy_growth": 0.058
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2005-12-31T00:00:00.000",
+      "eps": 0.6608,
+      "prev_year_eps": 0.0,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2006-03-31T00:00:00.000",
+      "eps": 0.77,
+      "prev_year_eps": 0.68,
+      "yoy_growth": 0.1324
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2006-06-30T00:00:00.000",
+      "eps": 0.76,
+      "prev_year_eps": -0.23,
+      "yoy_growth": 4.3043
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2006-09-30T00:00:00.000",
+      "eps": 0.8,
+      "prev_year_eps": 0.73,
+      "yoy_growth": 0.0959
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2006-12-31T00:00:00.000",
+      "eps": 0.12,
+      "prev_year_eps": 0.6608,
+      "yoy_growth": -0.8184
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2007-03-31T00:00:00.000",
+      "eps": 0.47,
+      "prev_year_eps": 0.77,
+      "yoy_growth": -0.3896
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2007-06-30T00:00:00.000",
+      "eps": 0.61,
+      "prev_year_eps": 0.76,
+      "yoy_growth": -0.1974
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2007-09-30T00:00:00.000",
+      "eps": 0.85,
+      "prev_year_eps": 0.8,
+      "yoy_growth": 0.0625
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2007-12-31T00:00:00.000",
+      "eps": 0.78,
+      "prev_year_eps": 0.12,
+      "yoy_growth": 5.5
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2008-03-31T00:00:00.000",
+      "eps": 0.97,
+      "prev_year_eps": 0.47,
+      "yoy_growth": 1.0638
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2008-06-30T00:00:00.000",
+      "eps": 0.88,
+      "prev_year_eps": 0.61,
+      "yoy_growth": 0.4426
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2008-09-30T00:00:00.000",
+      "eps": -0.43,
+      "prev_year_eps": 0.85,
+      "yoy_growth": -1.5059
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2008-12-31T00:00:00.000",
+      "eps": -3.31,
+      "prev_year_eps": 0.78,
+      "yoy_growth": -5.2436
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2009-03-31T00:00:00.000",
+      "eps": 1.2,
+      "prev_year_eps": 0.97,
+      "yoy_growth": 0.2371
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2009-06-30T00:00:00.000",
+      "eps": 1.06,
+      "prev_year_eps": 0.88,
+      "yoy_growth": 0.2045
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2009-09-30T00:00:00.000",
+      "eps": 0.86,
+      "prev_year_eps": -0.43,
+      "yoy_growth": 3.0
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2009-12-31T00:00:00.000",
+      "eps": 0.83,
+      "prev_year_eps": -3.31,
+      "yoy_growth": 1.2508
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2010-03-31T00:00:00.000",
+      "eps": 1.13,
+      "prev_year_eps": 1.2,
+      "yoy_growth": -0.0583
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2010-06-30T00:00:00.000",
+      "eps": 1.22,
+      "prev_year_eps": 1.06,
+      "yoy_growth": 0.1509
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2010-09-30T00:00:00.000",
+      "eps": 1.18,
+      "prev_year_eps": 0.86,
+      "yoy_growth": 0.3721
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2010-12-31T00:00:00.000",
+      "eps": 1.05,
+      "prev_year_eps": 0.83,
+      "yoy_growth": 0.2651
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2011-03-31T00:00:00.000",
+      "eps": 0.95,
+      "prev_year_eps": 1.13,
+      "yoy_growth": -0.1593
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2011-06-30T00:00:00.000",
+      "eps": 1.07,
+      "prev_year_eps": 1.22,
+      "yoy_growth": -0.123
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2011-09-30T00:00:00.000",
+      "eps": 1.11,
+      "prev_year_eps": 1.18,
+      "yoy_growth": -0.0593
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2011-12-31T00:00:00.000",
+      "eps": 0.77,
+      "prev_year_eps": 1.05,
+      "yoy_growth": -0.2667
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2012-03-31T00:00:00.000",
+      "eps": 0.91,
+      "prev_year_eps": 0.95,
+      "yoy_growth": -0.0421
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2012-06-30T00:00:00.000",
+      "eps": 0.83,
+      "prev_year_eps": 1.07,
+      "yoy_growth": -0.2243
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2012-09-30T00:00:00.000",
+      "eps": 1.18,
+      "prev_year_eps": 1.11,
+      "yoy_growth": 0.0631
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2012-12-31T00:00:00.000",
+      "eps": 0.74,
+      "prev_year_eps": 0.77,
+      "yoy_growth": -0.039
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2013-03-31T00:00:00.000",
+      "eps": 1.42,
+      "prev_year_eps": 0.91,
+      "yoy_growth": 0.5604
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2013-06-30T00:00:00.000",
+      "eps": 1.11,
+      "prev_year_eps": 0.83,
+      "yoy_growth": 0.3373
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2013-09-30T00:00:00.000",
+      "eps": 1.11,
+      "prev_year_eps": 1.18,
+      "yoy_growth": -0.0593
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2013-12-31T00:00:00.000",
+      "eps": 0.67,
+      "prev_year_eps": 0.74,
+      "yoy_growth": -0.0946
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2014-03-31T00:00:00.000",
+      "eps": 0.68,
+      "prev_year_eps": 1.42,
+      "yoy_growth": -0.5211
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2014-06-30T00:00:00.000",
+      "eps": 0.68,
+      "prev_year_eps": 1.11,
+      "yoy_growth": -0.3874
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2014-09-30T00:00:00.000",
+      "eps": 0.47,
+      "prev_year_eps": 1.11,
+      "yoy_growth": -0.5766
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2014-12-31T00:00:00.000",
+      "eps": 0.4,
+      "prev_year_eps": 0.67,
+      "yoy_growth": -0.403
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2015-03-31T00:00:00.000",
+      "eps": 0.5,
+      "prev_year_eps": 0.68,
+      "yoy_growth": -0.2647
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2015-06-30T00:00:00.000",
+      "eps": 0.56,
+      "prev_year_eps": 0.68,
+      "yoy_growth": -0.1765
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2015-09-30T00:00:00.000",
+      "eps": 0.75,
+      "prev_year_eps": 0.47,
+      "yoy_growth": 0.5957
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2015-12-31T00:00:00.000",
+      "eps": 0.4328,
+      "prev_year_eps": 0.4,
+      "yoy_growth": 0.082
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2016-03-31T00:00:00.000",
+      "eps": 0.41,
+      "prev_year_eps": 0.5,
+      "yoy_growth": -0.18
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2016-06-30T00:00:00.000",
+      "eps": 0.71,
+      "prev_year_eps": 0.56,
+      "yoy_growth": 0.2679
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2016-09-30T00:00:00.000",
+      "eps": 0.73,
+      "prev_year_eps": 0.75,
+      "yoy_growth": -0.0267
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2016-12-31T00:00:00.000",
+      "eps": 0.7011,
+      "prev_year_eps": 0.4328,
+      "yoy_growth": 0.6199
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2017-03-31T00:00:00.000",
+      "eps": -0.1,
+      "prev_year_eps": 0.41,
+      "yoy_growth": -1.2439
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2017-06-30T00:00:00.000",
+      "eps": 0.95,
+      "prev_year_eps": 0.71,
+      "yoy_growth": 0.338
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2017-09-30T00:00:00.000",
+      "eps": 0.53,
+      "prev_year_eps": 0.73,
+      "yoy_growth": -0.274
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2017-12-31T00:00:00.000",
+      "eps": -1.5063,
+      "prev_year_eps": 0.7011,
+      "yoy_growth": -3.1485
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2018-03-31T00:00:00.000",
+      "eps": 1.1118,
+      "prev_year_eps": -0.1,
+      "yoy_growth": 12.118
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2018-06-30T00:00:00.000",
+      "eps": -0.22,
+      "prev_year_eps": 0.95,
+      "yoy_growth": -1.2316
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2018-09-30T00:00:00.000",
+      "eps": 1.0656,
+      "prev_year_eps": 0.53,
+      "yoy_growth": 1.0106
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2018-12-31T00:00:00.000",
+      "eps": 1.0609,
+      "prev_year_eps": -1.5063,
+      "yoy_growth": 1.7043
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2019-03-31T00:00:00.000",
+      "eps": 0.5702,
+      "prev_year_eps": 1.1118,
+      "yoy_growth": -0.4871
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2019-06-30T00:00:00.000",
+      "eps": 1.44,
+      "prev_year_eps": -0.22,
+      "yoy_growth": 7.5455
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2019-09-30T00:00:00.000",
+      "eps": 1.3652,
+      "prev_year_eps": 1.0656,
+      "yoy_growth": 0.2812
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2019-12-31T00:00:00.000",
+      "eps": 1.6352,
+      "prev_year_eps": 1.0609,
+      "yoy_growth": 0.5413
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2020-03-31T00:00:00.000",
+      "eps": 1.5976,
+      "prev_year_eps": 0.5702,
+      "yoy_growth": 1.8018
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2020-06-30T00:00:00.000",
+      "eps": 1.5501,
+      "prev_year_eps": 1.44,
+      "yoy_growth": 0.0765
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2020-09-30T00:00:00.000",
+      "eps": 1.3259,
+      "prev_year_eps": 1.3652,
+      "yoy_growth": -0.0288
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2020-12-31T00:00:00.000",
+      "eps": 2.3196,
+      "prev_year_eps": 1.6352,
+      "yoy_growth": 0.4185
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2021-03-31T00:00:00.000",
+      "eps": 1.4854,
+      "prev_year_eps": 1.5976,
+      "yoy_growth": -0.0702
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2021-06-30T00:00:00.000",
+      "eps": 1.527,
+      "prev_year_eps": 1.5501,
+      "yoy_growth": -0.0149
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2021-09-30T00:00:00.000",
+      "eps": 1.2188,
+      "prev_year_eps": 1.3259,
+      "yoy_growth": -0.0808
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2021-12-31T00:00:00.000",
+      "eps": 1.8977,
+      "prev_year_eps": 2.3196,
+      "yoy_growth": -0.1819
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2022-03-31T00:00:00.000",
+      "eps": 2.0994,
+      "prev_year_eps": 1.4854,
+      "yoy_growth": 0.4134
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2022-06-30T00:00:00.000",
+      "eps": 1.0549,
+      "prev_year_eps": 1.527,
+      "yoy_growth": -0.3092
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2022-09-30T00:00:00.000",
+      "eps": 1.6062,
+      "prev_year_eps": 1.2188,
+      "yoy_growth": 0.3179
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2022-12-31T00:00:00.000",
+      "eps": 2.0393,
+      "prev_year_eps": 1.8977,
+      "yoy_growth": 0.0746
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-03-31T00:00:00.000",
+      "eps": 1.4889,
+      "prev_year_eps": 2.0994,
+      "yoy_growth": -0.2908
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-06-30T00:00:00.000",
+      "eps": 1.9532,
+      "prev_year_eps": 1.0549,
+      "yoy_growth": 0.8515
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-09-30T00:00:00.000",
+      "eps": -0.0638,
+      "prev_year_eps": 1.6062,
+      "yoy_growth": -1.0397
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2023-12-31T00:00:00.000",
+      "eps": 2.3064,
+      "prev_year_eps": 2.0393,
+      "yoy_growth": 0.131
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-03-31T00:00:00.000",
+      "eps": 2.4816,
+      "prev_year_eps": 1.4889,
+      "yoy_growth": 0.6667
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-06-30T00:00:00.000",
+      "eps": 3.2814,
+      "prev_year_eps": 1.9532,
+      "yoy_growth": 0.68
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-09-30T00:00:00.000",
+      "eps": 1.0722,
+      "prev_year_eps": -0.0638,
+      "yoy_growth": 17.8056
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2024-12-31T00:00:00.000",
+      "eps": 4.654,
+      "prev_year_eps": 2.3064,
+      "yoy_growth": 1.0179
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-03-31T00:00:00.000",
+      "eps": 3.0638,
+      "prev_year_eps": 2.4816,
+      "yoy_growth": 0.2346
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-06-30T00:00:00.000",
+      "eps": 6.2908,
+      "prev_year_eps": 3.2814,
+      "yoy_growth": 0.9171
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-09-30T00:00:00.000",
+      "eps": 6.2111,
+      "prev_year_eps": 1.0722,
+      "yoy_growth": 4.7929
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2025-12-31T00:00:00.000",
+      "eps": 7.0237,
+      "prev_year_eps": 4.654,
+      "yoy_growth": 0.5092
+    },
+    {
+      "symbol": "LLY",
+      "report_date": "2026-03-31T00:00:00.000",
+      "eps": 8.2554,
+      "prev_year_eps": 3.0638,
+      "yoy_growth": 1.6945
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "KO",
+    "name": "Mr. Henrique  Braun",
+    "title": "CEO & Director",
+    "age": 56,
+    "born": 1969,
+    "pay": 4249503,
+    "exercised": 1385757,
+    "unexercised": 6500164,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "KO",
+    "name": "Mr. James Robert B. Quincey",
+    "title": "Executive Chairman",
+    "age": 60,
+    "born": 1965,
+    "pay": 7231315,
+    "exercised": 7605114,
+    "unexercised": 59902496,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "KO",
+    "name": "Mr. John  Murphy",
+    "title": "President & CFO",
+    "age": 63,
+    "born": 1962,
+    "pay": 3988074,
+    "exercised": 1107465,
+    "unexercised": 20311522,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "KO",
+    "name": "Mr. Manuel Arroyo Prieto",
+    "title": "EVP, Chief Marketing & Customer Commercial Officer",
+    "age": 58,
+    "born": 1967,
+    "pay": 2532132,
+    "exercised": 0,
+    "unexercised": 10408435,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "KO",
+    "name": "Mr. Neeraj S. Tolmare",
+    "title": "Senior VP & Chief Information Officer",
+    "age": 51,
+    "born": 1974,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "KO",
+    "name": "Mr. Todd  Beiger",
+    "title": "VP & Head of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "KO",
+    "name": "Ms. Erin L. May",
+    "title": "Senior VP, Chief Accounting Officer & Controller",
+    "age": 45,
+    "born": 1980,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "KO",
+    "name": "Ms. Jennifer Kay Mann J.D.",
+    "title": "Executive VP & President of North America Operating Unit",
+    "age": 53,
+    "born": 1972,
+    "pay": 2343780,
+    "exercised": 0,
+    "unexercised": 5160516,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "KO",
+    "name": "Ms. Monica Howard Douglas",
+    "title": "Executive VP & Global General Counsel",
+    "age": 52,
+    "born": 1973,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "KO",
+    "name": "Ms. Nancy W. Quan",
+    "title": "Executive VP and Global Chief Technical & Innovation Officer",
+    "age": 59,
+    "born": 1966,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  }
+]

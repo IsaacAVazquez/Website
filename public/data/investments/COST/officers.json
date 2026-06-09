@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "COST",
+    "name": "Brenda  Weber",
+    "title": "Senior Vice President of Human Resources",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "COST",
+    "name": "Mr. Gary  Millerchip",
+    "title": "Executive VP & CFO",
+    "age": 53,
+    "born": 1972,
+    "pay": 1316800,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "COST",
+    "name": "Mr. Javier  Polit",
+    "title": "Executive VP and CI&DO of Information Systems",
+    "age": 60,
+    "born": 1965,
+    "pay": 3837307,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "COST",
+    "name": "Mr. John  Sullivan",
+    "title": "Executive VP, General Counsel & Corporate Secretary",
+    "age": 65,
+    "born": 1960,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "COST",
+    "name": "Mr. Pierre  Riel",
+    "title": "Executive VP & COO of International Division",
+    "age": 62,
+    "born": 1963,
+    "pay": 1162886,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "COST",
+    "name": "Mr. Ron M. Vachris",
+    "title": "President, CEO & Director",
+    "age": 60,
+    "born": 1965,
+    "pay": 1841901,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "COST",
+    "name": "Ms. Claudine E. Adamo",
+    "title": "Executive Vice President of Administration",
+    "age": 54,
+    "born": 1971,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "COST",
+    "name": "Ms. Tiffany M. Barbre",
+    "title": "Senior VP, Corporate Controller & Principal Accounting Officer",
+    "age": 51,
+    "born": 1974,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "COST",
+    "name": "Peter  Gruening",
+    "title": "Senior VP of Membership, Marketing & Member Service Centers",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "COST",
+    "name": "Sheri  Flies",
+    "title": "Senior Vice President of Global Sustainability & Compliance",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  }
+]

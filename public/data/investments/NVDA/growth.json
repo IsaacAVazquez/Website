@@ -1,0 +1,1515 @@
+{
+  "quarterly_revenue": [
+    {
+      "symbol": "NVDA",
+      "report_date": "2022-04-30T00:00:00.000",
+      "revenue": 8288000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2022-07-31T00:00:00.000",
+      "revenue": 6704000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2023-07-31T00:00:00.000",
+      "revenue": 13507000000.0,
+      "prev_year_revenue": 6704000000.0,
+      "yoy_growth": 1.0148
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2023-10-31T00:00:00.000",
+      "revenue": 18120000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2024-01-31T00:00:00.000",
+      "revenue": 22103000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2024-04-30T00:00:00.000",
+      "revenue": 26044000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2024-07-31T00:00:00.000",
+      "revenue": 30040000000.0,
+      "prev_year_revenue": 13507000000.0,
+      "yoy_growth": 1.224
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2024-10-31T00:00:00.000",
+      "revenue": 35082000000.0,
+      "prev_year_revenue": 18120000000.0,
+      "yoy_growth": 0.9361
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2025-01-31T00:00:00.000",
+      "revenue": 39331000000.0,
+      "prev_year_revenue": 22103000000.0,
+      "yoy_growth": 0.7794
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2025-04-30T00:00:00.000",
+      "revenue": 44062000000.0,
+      "prev_year_revenue": 26044000000.0,
+      "yoy_growth": 0.6918
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2025-07-31T00:00:00.000",
+      "revenue": 46743000000.0,
+      "prev_year_revenue": 30040000000.0,
+      "yoy_growth": 0.556
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2025-10-31T00:00:00.000",
+      "revenue": 57006000000.0,
+      "prev_year_revenue": 35082000000.0,
+      "yoy_growth": 0.6249
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2026-01-31T00:00:00.000",
+      "revenue": 68127000000.0,
+      "prev_year_revenue": 39331000000.0,
+      "yoy_growth": 0.7321
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2026-04-30T00:00:00.000",
+      "revenue": 81615000000.0,
+      "prev_year_revenue": 44062000000.0,
+      "yoy_growth": 0.8523
+    }
+  ],
+  "annual_revenue": [
+    {
+      "symbol": "NVDA",
+      "report_date": "2020-01-31T00:00:00.000",
+      "revenue": 10918000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2021-01-31T00:00:00.000",
+      "revenue": 16675000000.0,
+      "prev_year_revenue": 10918000000.0,
+      "yoy_growth": 0.5273
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2022-01-31T00:00:00.000",
+      "revenue": 26914000000.0,
+      "prev_year_revenue": 16675000000.0,
+      "yoy_growth": 0.614
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2023-01-31T00:00:00.000",
+      "revenue": 26974000000.0,
+      "prev_year_revenue": 26914000000.0,
+      "yoy_growth": 0.0022
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2024-01-31T00:00:00.000",
+      "revenue": 60922000000.0,
+      "prev_year_revenue": 26974000000.0,
+      "yoy_growth": 1.2585
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2025-01-31T00:00:00.000",
+      "revenue": 130497000000.0,
+      "prev_year_revenue": 60922000000.0,
+      "yoy_growth": 1.142
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2026-01-31T00:00:00.000",
+      "revenue": 215938000000.0,
+      "prev_year_revenue": 130497000000.0,
+      "yoy_growth": 0.6547
+    }
+  ],
+  "quarterly_operating_income": [
+    {
+      "symbol": "NVDA",
+      "report_date": "2022-04-30T00:00:00.000",
+      "operating_income": 3221000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2022-07-31T00:00:00.000",
+      "operating_income": 499000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2023-07-31T00:00:00.000",
+      "operating_income": 6800000000.0,
+      "prev_year_operating_income": 499000000.0,
+      "yoy_growth": 12.6273
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2023-10-31T00:00:00.000",
+      "operating_income": 10417000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2024-01-31T00:00:00.000",
+      "operating_income": 13614000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2024-04-30T00:00:00.000",
+      "operating_income": 16909000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2024-07-31T00:00:00.000",
+      "operating_income": 18642000000.0,
+      "prev_year_operating_income": 6800000000.0,
+      "yoy_growth": 1.7415
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2024-10-31T00:00:00.000",
+      "operating_income": 21869000000.0,
+      "prev_year_operating_income": 10417000000.0,
+      "yoy_growth": 1.0994
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2025-01-31T00:00:00.000",
+      "operating_income": 24034000000.0,
+      "prev_year_operating_income": 13614000000.0,
+      "yoy_growth": 0.7654
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2025-04-30T00:00:00.000",
+      "operating_income": 21638000000.0,
+      "prev_year_operating_income": 16909000000.0,
+      "yoy_growth": 0.2797
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2025-07-31T00:00:00.000",
+      "operating_income": 28440000000.0,
+      "prev_year_operating_income": 18642000000.0,
+      "yoy_growth": 0.5256
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2025-10-31T00:00:00.000",
+      "operating_income": 36010000000.0,
+      "prev_year_operating_income": 21869000000.0,
+      "yoy_growth": 0.6466
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2026-01-31T00:00:00.000",
+      "operating_income": 44299000000.0,
+      "prev_year_operating_income": 24034000000.0,
+      "yoy_growth": 0.8432
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2026-04-30T00:00:00.000",
+      "operating_income": 53536000000.0,
+      "prev_year_operating_income": 21638000000.0,
+      "yoy_growth": 1.4742
+    }
+  ],
+  "annual_operating_income": [
+    {
+      "symbol": "NVDA",
+      "report_date": "2020-01-31T00:00:00.000",
+      "operating_income": 2846000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2021-01-31T00:00:00.000",
+      "operating_income": 4532000000.0,
+      "prev_year_operating_income": 2846000000.0,
+      "yoy_growth": 0.5924
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2022-01-31T00:00:00.000",
+      "operating_income": 10041000000.0,
+      "prev_year_operating_income": 4532000000.0,
+      "yoy_growth": 1.2156
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2023-01-31T00:00:00.000",
+      "operating_income": 5577000000.0,
+      "prev_year_operating_income": 10041000000.0,
+      "yoy_growth": -0.4446
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2024-01-31T00:00:00.000",
+      "operating_income": 32972000000.0,
+      "prev_year_operating_income": 5577000000.0,
+      "yoy_growth": 4.9121
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2025-01-31T00:00:00.000",
+      "operating_income": 81453000000.0,
+      "prev_year_operating_income": 32972000000.0,
+      "yoy_growth": 1.4704
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2026-01-31T00:00:00.000",
+      "operating_income": 130387000000.0,
+      "prev_year_operating_income": 81453000000.0,
+      "yoy_growth": 0.6008
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "NVDA",
+      "report_date": "2022-07-31T00:00:00.000",
+      "ebitda": 918000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2023-07-31T00:00:00.000",
+      "ebitda": 7411000000.0,
+      "prev_year_ebitda": 918000000.0,
+      "yoy_growth": 7.073
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2023-10-31T00:00:00.000",
+      "ebitda": 10957000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2024-01-31T00:00:00.000",
+      "ebitda": 14556000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2024-04-30T00:00:00.000",
+      "ebitda": 17753000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2024-07-31T00:00:00.000",
+      "ebitda": 19708000000.0,
+      "prev_year_ebitda": 7411000000.0,
+      "yoy_growth": 1.6593
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2024-10-31T00:00:00.000",
+      "ebitda": 22855000000.0,
+      "prev_year_ebitda": 10957000000.0,
+      "yoy_growth": 1.0859
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2025-01-31T00:00:00.000",
+      "ebitda": 25821000000.0,
+      "prev_year_ebitda": 14556000000.0,
+      "yoy_growth": 0.7739
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2025-04-30T00:00:00.000",
+      "ebitda": 22584000000.0,
+      "prev_year_ebitda": 17753000000.0,
+      "yoy_growth": 0.2721
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2025-07-31T00:00:00.000",
+      "ebitda": 31937000000.0,
+      "prev_year_ebitda": 19708000000.0,
+      "yoy_growth": 0.6205
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2025-10-31T00:00:00.000",
+      "ebitda": 38748000000.0,
+      "prev_year_ebitda": 22855000000.0,
+      "yoy_growth": 0.6954
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2026-01-31T00:00:00.000",
+      "ebitda": 51283000000.0,
+      "prev_year_ebitda": 25821000000.0,
+      "yoy_growth": 0.9861
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2026-04-30T00:00:00.000",
+      "ebitda": 71002000000.0,
+      "prev_year_ebitda": 22584000000.0,
+      "yoy_growth": 2.1439
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "NVDA",
+      "report_date": "2020-01-31T00:00:00.000",
+      "ebitda": 3403000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2021-01-31T00:00:00.000",
+      "ebitda": 5691000000.0,
+      "prev_year_ebitda": 3403000000.0,
+      "yoy_growth": 0.6723
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2022-01-31T00:00:00.000",
+      "ebitda": 11351000000.0,
+      "prev_year_ebitda": 5691000000.0,
+      "yoy_growth": 0.9946
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2023-01-31T00:00:00.000",
+      "ebitda": 5986000000.0,
+      "prev_year_ebitda": 11351000000.0,
+      "yoy_growth": -0.4726
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2024-01-31T00:00:00.000",
+      "ebitda": 35583000000.0,
+      "prev_year_ebitda": 5986000000.0,
+      "yoy_growth": 4.9444
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2025-01-31T00:00:00.000",
+      "ebitda": 86137000000.0,
+      "prev_year_ebitda": 35583000000.0,
+      "yoy_growth": 1.4207
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2026-01-31T00:00:00.000",
+      "ebitda": 144552000000.0,
+      "prev_year_ebitda": 86137000000.0,
+      "yoy_growth": 0.6782
+    }
+  ],
+  "quarterly_net_income": [
+    {
+      "symbol": "NVDA",
+      "report_date": "2022-04-30T00:00:00.000",
+      "net_income_common_stockholders": 1618000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2022-07-31T00:00:00.000",
+      "net_income_common_stockholders": 656000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2023-07-31T00:00:00.000",
+      "net_income_common_stockholders": 6188000000.0,
+      "prev_year_net_income_common_stockholders": 656000000.0,
+      "yoy_growth": 8.4329
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2023-10-31T00:00:00.000",
+      "net_income_common_stockholders": 9243000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2024-01-31T00:00:00.000",
+      "net_income_common_stockholders": 12285000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2024-04-30T00:00:00.000",
+      "net_income_common_stockholders": 14881000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2024-07-31T00:00:00.000",
+      "net_income_common_stockholders": 16599000000.0,
+      "prev_year_net_income_common_stockholders": 6188000000.0,
+      "yoy_growth": 1.6824
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2024-10-31T00:00:00.000",
+      "net_income_common_stockholders": 19309000000.0,
+      "prev_year_net_income_common_stockholders": 9243000000.0,
+      "yoy_growth": 1.089
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2025-01-31T00:00:00.000",
+      "net_income_common_stockholders": 22091000000.0,
+      "prev_year_net_income_common_stockholders": 12285000000.0,
+      "yoy_growth": 0.7982
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2025-04-30T00:00:00.000",
+      "net_income_common_stockholders": 18775000000.0,
+      "prev_year_net_income_common_stockholders": 14881000000.0,
+      "yoy_growth": 0.2617
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2025-07-31T00:00:00.000",
+      "net_income_common_stockholders": 26422000000.0,
+      "prev_year_net_income_common_stockholders": 16599000000.0,
+      "yoy_growth": 0.5918
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2025-10-31T00:00:00.000",
+      "net_income_common_stockholders": 31910000000.0,
+      "prev_year_net_income_common_stockholders": 19309000000.0,
+      "yoy_growth": 0.6526
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2026-01-31T00:00:00.000",
+      "net_income_common_stockholders": 42960000000.0,
+      "prev_year_net_income_common_stockholders": 22091000000.0,
+      "yoy_growth": 0.9447
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2026-04-30T00:00:00.000",
+      "net_income_common_stockholders": 58321000000.0,
+      "prev_year_net_income_common_stockholders": 18775000000.0,
+      "yoy_growth": 2.1063
+    }
+  ],
+  "annual_net_income": [
+    {
+      "symbol": "NVDA",
+      "report_date": "2020-01-31T00:00:00.000",
+      "net_income_common_stockholders": 2796000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2021-01-31T00:00:00.000",
+      "net_income_common_stockholders": 4332000000.0,
+      "prev_year_net_income_common_stockholders": 2796000000.0,
+      "yoy_growth": 0.5494
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2022-01-31T00:00:00.000",
+      "net_income_common_stockholders": 9752000000.0,
+      "prev_year_net_income_common_stockholders": 4332000000.0,
+      "yoy_growth": 1.2512
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2023-01-31T00:00:00.000",
+      "net_income_common_stockholders": 4368000000.0,
+      "prev_year_net_income_common_stockholders": 9752000000.0,
+      "yoy_growth": -0.5521
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2024-01-31T00:00:00.000",
+      "net_income_common_stockholders": 29760000000.0,
+      "prev_year_net_income_common_stockholders": 4368000000.0,
+      "yoy_growth": 5.8132
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2025-01-31T00:00:00.000",
+      "net_income_common_stockholders": 72880000000.0,
+      "prev_year_net_income_common_stockholders": 29760000000.0,
+      "yoy_growth": 1.4489
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2026-01-31T00:00:00.000",
+      "net_income_common_stockholders": 120067000000.0,
+      "prev_year_net_income_common_stockholders": 72880000000.0,
+      "yoy_growth": 0.6475
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "NVDA",
+      "report_date": "2022-04-30T00:00:00.000",
+      "free_cash_flow": 1370000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2022-07-31T00:00:00.000",
+      "free_cash_flow": 837000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2023-07-31T00:00:00.000",
+      "free_cash_flow": 6059000000.0,
+      "prev_year_free_cash_flow": 837000000.0,
+      "yoy_growth": 6.2389
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2023-10-31T00:00:00.000",
+      "free_cash_flow": 7054000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2024-01-31T00:00:00.000",
+      "free_cash_flow": 11245000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2024-04-30T00:00:00.000",
+      "free_cash_flow": 14976000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2024-07-31T00:00:00.000",
+      "free_cash_flow": 13511000000.0,
+      "prev_year_free_cash_flow": 6059000000.0,
+      "yoy_growth": 1.2299
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2024-10-31T00:00:00.000",
+      "free_cash_flow": 16814000000.0,
+      "prev_year_free_cash_flow": 7054000000.0,
+      "yoy_growth": 1.3836
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2025-01-31T00:00:00.000",
+      "free_cash_flow": 15552000000.0,
+      "prev_year_free_cash_flow": 11245000000.0,
+      "yoy_growth": 0.383
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2025-04-30T00:00:00.000",
+      "free_cash_flow": 26187000000.0,
+      "prev_year_free_cash_flow": 14976000000.0,
+      "yoy_growth": 0.7486
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2025-07-31T00:00:00.000",
+      "free_cash_flow": 13470000000.0,
+      "prev_year_free_cash_flow": 13511000000.0,
+      "yoy_growth": -0.003
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2025-10-31T00:00:00.000",
+      "free_cash_flow": 22115000000.0,
+      "prev_year_free_cash_flow": 16814000000.0,
+      "yoy_growth": 0.3153
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2026-01-31T00:00:00.000",
+      "free_cash_flow": 34904000000.0,
+      "prev_year_free_cash_flow": 15552000000.0,
+      "yoy_growth": 1.2443
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2026-04-30T00:00:00.000",
+      "free_cash_flow": 48587000000.0,
+      "prev_year_free_cash_flow": 26187000000.0,
+      "yoy_growth": 0.8554
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "NVDA",
+      "report_date": "2021-01-31T00:00:00.000",
+      "free_cash_flow": 4694000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2022-01-31T00:00:00.000",
+      "free_cash_flow": 8132000000.0,
+      "prev_year_free_cash_flow": 4694000000.0,
+      "yoy_growth": 0.7324
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2023-01-31T00:00:00.000",
+      "free_cash_flow": 3808000000.0,
+      "prev_year_free_cash_flow": 8132000000.0,
+      "yoy_growth": -0.5317
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2024-01-31T00:00:00.000",
+      "free_cash_flow": 27021000000.0,
+      "prev_year_free_cash_flow": 3808000000.0,
+      "yoy_growth": 6.0959
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2025-01-31T00:00:00.000",
+      "free_cash_flow": 60853000000.0,
+      "prev_year_free_cash_flow": 27021000000.0,
+      "yoy_growth": 1.2521
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2026-01-31T00:00:00.000",
+      "free_cash_flow": 96676000000.0,
+      "prev_year_free_cash_flow": 60853000000.0,
+      "yoy_growth": 0.5887
+    }
+  ],
+  "quarterly_eps": [
+    {
+      "symbol": "NVDA",
+      "report_date": "1999-01-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "1999-04-30T00:00:00.000",
+      "eps": 0.0004,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "1999-07-31T00:00:00.000",
+      "eps": 0.0004,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "1999-10-31T00:00:00.000",
+      "eps": 0.0006,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2000-01-31T00:00:00.000",
+      "eps": 0.001,
+      "prev_year_eps": 0.0,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2000-04-30T00:00:00.000",
+      "eps": 0.001,
+      "prev_year_eps": 0.0004,
+      "yoy_growth": 1.5
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2000-07-31T00:00:00.000",
+      "eps": 0.0012,
+      "prev_year_eps": 0.0004,
+      "yoy_growth": 2.0
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2000-10-31T00:00:00.000",
+      "eps": 0.0015,
+      "prev_year_eps": 0.0006,
+      "yoy_growth": 1.5
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2001-01-31T00:00:00.000",
+      "eps": 0.0016,
+      "prev_year_eps": 0.001,
+      "yoy_growth": 0.6
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2001-04-30T00:00:00.000",
+      "eps": 0.0013,
+      "prev_year_eps": 0.001,
+      "yoy_growth": 0.3
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2001-07-31T00:00:00.000",
+      "eps": 0.0016,
+      "prev_year_eps": 0.0012,
+      "yoy_growth": 0.3333
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2001-10-31T00:00:00.000",
+      "eps": 0.0022,
+      "prev_year_eps": 0.0015,
+      "yoy_growth": 0.4667
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2002-01-31T00:00:00.000",
+      "eps": 0.0036,
+      "prev_year_eps": 0.0016,
+      "yoy_growth": 1.25
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2002-04-30T00:00:00.000",
+      "eps": 0.0039,
+      "prev_year_eps": 0.0013,
+      "yoy_growth": 2.0
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2002-07-31T00:00:00.000",
+      "eps": 0.0002,
+      "prev_year_eps": 0.0016,
+      "yoy_growth": -0.875
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2002-10-31T00:00:00.000",
+      "eps": -0.0027,
+      "prev_year_eps": 0.0022,
+      "yoy_growth": -2.2273
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2003-01-31T00:00:00.000",
+      "eps": 0.0025,
+      "prev_year_eps": 0.0036,
+      "yoy_growth": -0.3056
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2003-04-30T00:00:00.000",
+      "eps": 0.001,
+      "prev_year_eps": 0.0039,
+      "yoy_growth": -0.7436
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2003-07-31T00:00:00.000",
+      "eps": 0.0012,
+      "prev_year_eps": 0.0002,
+      "yoy_growth": 5.0
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2003-10-31T00:00:00.000",
+      "eps": 0.0003,
+      "prev_year_eps": -0.0027,
+      "yoy_growth": 1.1111
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2004-01-31T00:00:00.000",
+      "eps": 0.0012,
+      "prev_year_eps": 0.0025,
+      "yoy_growth": -0.52
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2004-04-30T00:00:00.000",
+      "eps": 0.001,
+      "prev_year_eps": 0.001,
+      "yoy_growth": 0.0
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2004-07-31T00:00:00.000",
+      "eps": 0.0002,
+      "prev_year_eps": 0.0012,
+      "yoy_growth": -0.8333
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2004-10-31T00:00:00.000",
+      "eps": 0.0012,
+      "prev_year_eps": 0.0003,
+      "yoy_growth": 3.0
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2005-01-31T00:00:00.000",
+      "eps": 0.0022,
+      "prev_year_eps": 0.0012,
+      "yoy_growth": 0.8333
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2005-04-30T00:00:00.000",
+      "eps": 0.003,
+      "prev_year_eps": 0.001,
+      "yoy_growth": 2.0
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2005-07-31T00:00:00.000",
+      "eps": 0.0034,
+      "prev_year_eps": 0.0002,
+      "yoy_growth": 16.0
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2005-10-31T00:00:00.000",
+      "eps": 0.0015,
+      "prev_year_eps": 0.0012,
+      "yoy_growth": 0.25
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2006-01-31T00:00:00.000",
+      "eps": 0.0044,
+      "prev_year_eps": 0.0022,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2006-04-30T00:00:00.000",
+      "eps": 0.0038,
+      "prev_year_eps": 0.003,
+      "yoy_growth": 0.2667
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2006-07-31T00:00:00.000",
+      "eps": 0.0037,
+      "prev_year_eps": 0.0034,
+      "yoy_growth": 0.0882
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2006-10-31T00:00:00.000",
+      "eps": 0.0045,
+      "prev_year_eps": 0.0015,
+      "yoy_growth": 2.0
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2007-01-31T00:00:00.000",
+      "eps": 0.0068,
+      "prev_year_eps": 0.0044,
+      "yoy_growth": 0.5455
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2007-04-30T00:00:00.000",
+      "eps": 0.0055,
+      "prev_year_eps": 0.0038,
+      "yoy_growth": 0.4474
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2007-07-31T00:00:00.000",
+      "eps": 0.0072,
+      "prev_year_eps": 0.0037,
+      "yoy_growth": 0.9459
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2007-10-31T00:00:00.000",
+      "eps": 0.0095,
+      "prev_year_eps": 0.0045,
+      "yoy_growth": 1.1111
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2008-01-31T00:00:00.000",
+      "eps": 0.0105,
+      "prev_year_eps": 0.0068,
+      "yoy_growth": 0.5441
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2008-04-30T00:00:00.000",
+      "eps": 0.0075,
+      "prev_year_eps": 0.0055,
+      "yoy_growth": 0.3636
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2008-07-31T00:00:00.000",
+      "eps": -0.0055,
+      "prev_year_eps": 0.0072,
+      "yoy_growth": -1.7639
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2008-10-31T00:00:00.000",
+      "eps": 0.0028,
+      "prev_year_eps": 0.0095,
+      "yoy_growth": -0.7053
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2009-01-31T00:00:00.000",
+      "eps": -0.0068,
+      "prev_year_eps": 0.0105,
+      "yoy_growth": -1.6476
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2009-04-30T00:00:00.000",
+      "eps": -0.0092,
+      "prev_year_eps": 0.0075,
+      "yoy_growth": -2.2267
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2009-07-31T00:00:00.000",
+      "eps": -0.0048,
+      "prev_year_eps": -0.0055,
+      "yoy_growth": 0.1273
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2009-10-31T00:00:00.000",
+      "eps": 0.0048,
+      "prev_year_eps": 0.0028,
+      "yoy_growth": 0.7143
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2010-01-31T00:00:00.000",
+      "eps": 0.0058,
+      "prev_year_eps": -0.0068,
+      "yoy_growth": 1.8529
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2010-04-30T00:00:00.000",
+      "eps": 0.0058,
+      "prev_year_eps": -0.0092,
+      "yoy_growth": 1.6304
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2010-07-31T00:00:00.000",
+      "eps": -0.0062,
+      "prev_year_eps": -0.0048,
+      "yoy_growth": -0.2917
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2010-10-31T00:00:00.000",
+      "eps": 0.0038,
+      "prev_year_eps": 0.0048,
+      "yoy_growth": -0.2083
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2011-01-31T00:00:00.000",
+      "eps": 0.0072,
+      "prev_year_eps": 0.0058,
+      "yoy_growth": 0.2414
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2011-04-30T00:00:00.000",
+      "eps": 0.0055,
+      "prev_year_eps": 0.0058,
+      "yoy_growth": -0.0517
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2011-07-31T00:00:00.000",
+      "eps": 0.0062,
+      "prev_year_eps": -0.0062,
+      "yoy_growth": 2.0
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2011-10-31T00:00:00.000",
+      "eps": 0.0072,
+      "prev_year_eps": 0.0038,
+      "yoy_growth": 0.8947
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2012-01-31T00:00:00.000",
+      "eps": 0.0048,
+      "prev_year_eps": 0.0072,
+      "yoy_growth": -0.3333
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2012-04-30T00:00:00.000",
+      "eps": 0.0025,
+      "prev_year_eps": 0.0055,
+      "yoy_growth": -0.5455
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2012-07-31T00:00:00.000",
+      "eps": 0.0048,
+      "prev_year_eps": 0.0062,
+      "yoy_growth": -0.2258
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2012-10-31T00:00:00.000",
+      "eps": 0.0082,
+      "prev_year_eps": 0.0072,
+      "yoy_growth": 0.1389
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2013-01-31T00:00:00.000",
+      "eps": 0.007,
+      "prev_year_eps": 0.0048,
+      "yoy_growth": 0.4583
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2013-04-30T00:00:00.000",
+      "eps": 0.0032,
+      "prev_year_eps": 0.0025,
+      "yoy_growth": 0.28
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2013-07-31T00:00:00.000",
+      "eps": 0.004,
+      "prev_year_eps": 0.0048,
+      "yoy_growth": -0.1667
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2013-10-31T00:00:00.000",
+      "eps": 0.005,
+      "prev_year_eps": 0.0082,
+      "yoy_growth": -0.3902
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2014-01-31T00:00:00.000",
+      "eps": 0.0062,
+      "prev_year_eps": 0.007,
+      "yoy_growth": -0.1143
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2014-04-30T00:00:00.000",
+      "eps": 0.006,
+      "prev_year_eps": 0.0032,
+      "yoy_growth": 0.875
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2014-07-31T00:00:00.000",
+      "eps": 0.0055,
+      "prev_year_eps": 0.004,
+      "yoy_growth": 0.375
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2014-10-31T00:00:00.000",
+      "eps": 0.0078,
+      "prev_year_eps": 0.005,
+      "yoy_growth": 0.56
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2015-01-31T00:00:00.000",
+      "eps": 0.0088,
+      "prev_year_eps": 0.0062,
+      "yoy_growth": 0.4194
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2015-04-30T00:00:00.000",
+      "eps": 0.006,
+      "prev_year_eps": 0.006,
+      "yoy_growth": 0.0
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2015-07-31T00:00:00.000",
+      "eps": 0.0012,
+      "prev_year_eps": 0.0055,
+      "yoy_growth": -0.7818
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2015-10-31T00:00:00.000",
+      "eps": 0.011,
+      "prev_year_eps": 0.0078,
+      "yoy_growth": 0.4103
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2016-01-31T00:00:00.000",
+      "eps": 0.0088,
+      "prev_year_eps": 0.0088,
+      "yoy_growth": 0.0
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2016-04-30T00:00:00.000",
+      "eps": 0.0088,
+      "prev_year_eps": 0.006,
+      "yoy_growth": 0.4667
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2016-07-31T00:00:00.000",
+      "eps": 0.0102,
+      "prev_year_eps": 0.0012,
+      "yoy_growth": 7.5
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2016-10-31T00:00:00.000",
+      "eps": 0.0208,
+      "prev_year_eps": 0.011,
+      "yoy_growth": 0.8909
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2017-01-31T00:00:00.000",
+      "eps": 0.0248,
+      "prev_year_eps": 0.0088,
+      "yoy_growth": 1.8182
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2017-04-30T00:00:00.000",
+      "eps": 0.0198,
+      "prev_year_eps": 0.0088,
+      "yoy_growth": 1.25
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2017-07-31T00:00:00.000",
+      "eps": 0.023,
+      "prev_year_eps": 0.0102,
+      "yoy_growth": 1.2549
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2017-10-31T00:00:00.000",
+      "eps": 0.0332,
+      "prev_year_eps": 0.0208,
+      "yoy_growth": 0.5962
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2018-01-31T00:00:00.000",
+      "eps": 0.0445,
+      "prev_year_eps": 0.0248,
+      "yoy_growth": 0.7944
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2018-04-30T00:00:00.000",
+      "eps": 0.0495,
+      "prev_year_eps": 0.0198,
+      "yoy_growth": 1.5
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2018-07-31T00:00:00.000",
+      "eps": 0.044,
+      "prev_year_eps": 0.023,
+      "yoy_growth": 0.913
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2018-10-31T00:00:00.000",
+      "eps": 0.0492,
+      "prev_year_eps": 0.0332,
+      "yoy_growth": 0.4819
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2019-01-31T00:00:00.000",
+      "eps": 0.023,
+      "prev_year_eps": 0.0445,
+      "yoy_growth": -0.4831
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2019-04-30T00:00:00.000",
+      "eps": 0.016,
+      "prev_year_eps": 0.0495,
+      "yoy_growth": -0.6768
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2019-07-31T00:00:00.000",
+      "eps": 0.0224,
+      "prev_year_eps": 0.044,
+      "yoy_growth": -0.4909
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2019-10-31T00:00:00.000",
+      "eps": 0.0364,
+      "prev_year_eps": 0.0492,
+      "yoy_growth": -0.2602
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2020-01-31T00:00:00.000",
+      "eps": 0.0382,
+      "prev_year_eps": 0.023,
+      "yoy_growth": 0.6609
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2020-04-30T00:00:00.000",
+      "eps": 0.0369,
+      "prev_year_eps": 0.016,
+      "yoy_growth": 1.3063
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2020-07-31T00:00:00.000",
+      "eps": 0.0248,
+      "prev_year_eps": 0.0224,
+      "yoy_growth": 0.1071
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2020-10-31T00:00:00.000",
+      "eps": 0.053,
+      "prev_year_eps": 0.0364,
+      "yoy_growth": 0.456
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2021-01-31T00:00:00.000",
+      "eps": 0.0577,
+      "prev_year_eps": 0.0382,
+      "yoy_growth": 0.5105
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2021-04-30T00:00:00.000",
+      "eps": 0.0756,
+      "prev_year_eps": 0.0369,
+      "yoy_growth": 1.0488
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2021-07-31T00:00:00.000",
+      "eps": 0.0938,
+      "prev_year_eps": 0.0248,
+      "yoy_growth": 2.7823
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2021-10-31T00:00:00.000",
+      "eps": 0.0971,
+      "prev_year_eps": 0.053,
+      "yoy_growth": 0.8321
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2022-01-31T00:00:00.000",
+      "eps": 0.118,
+      "prev_year_eps": 0.0577,
+      "yoy_growth": 1.0451
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2022-04-30T00:00:00.000",
+      "eps": 0.0638,
+      "prev_year_eps": 0.0756,
+      "yoy_growth": -0.1561
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2022-07-31T00:00:00.000",
+      "eps": 0.0261,
+      "prev_year_eps": 0.0938,
+      "yoy_growth": -0.7217
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2022-10-31T00:00:00.000",
+      "eps": 0.0272,
+      "prev_year_eps": 0.0971,
+      "yoy_growth": -0.7199
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2023-01-31T00:00:00.000",
+      "eps": 0.0571,
+      "prev_year_eps": 0.118,
+      "yoy_growth": -0.5161
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2023-04-30T00:00:00.000",
+      "eps": 0.082,
+      "prev_year_eps": 0.0638,
+      "yoy_growth": 0.2853
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2023-07-31T00:00:00.000",
+      "eps": 0.2476,
+      "prev_year_eps": 0.0261,
+      "yoy_growth": 8.4866
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2023-10-31T00:00:00.000",
+      "eps": 0.3706,
+      "prev_year_eps": 0.0272,
+      "yoy_growth": 12.625
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2024-01-31T00:00:00.000",
+      "eps": 0.4934,
+      "prev_year_eps": 0.0571,
+      "yoy_growth": 7.641
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2024-04-30T00:00:00.000",
+      "eps": 0.5979,
+      "prev_year_eps": 0.082,
+      "yoy_growth": 6.2915
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2024-07-31T00:00:00.000",
+      "eps": 0.668,
+      "prev_year_eps": 0.2476,
+      "yoy_growth": 1.6979
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2024-10-31T00:00:00.000",
+      "eps": 0.7794,
+      "prev_year_eps": 0.3706,
+      "yoy_growth": 1.1031
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2025-01-31T00:00:00.000",
+      "eps": 0.8942,
+      "prev_year_eps": 0.4934,
+      "yoy_growth": 0.8123
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2025-04-30T00:00:00.000",
+      "eps": 0.7629,
+      "prev_year_eps": 0.5979,
+      "yoy_growth": 0.276
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2025-07-31T00:00:00.000",
+      "eps": 1.077,
+      "prev_year_eps": 0.668,
+      "yoy_growth": 0.6123
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2025-10-31T00:00:00.000",
+      "eps": 1.3034,
+      "prev_year_eps": 0.7794,
+      "yoy_growth": 0.6723
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2026-01-31T00:00:00.000",
+      "eps": 1.7584,
+      "prev_year_eps": 0.8942,
+      "yoy_growth": 0.9665
+    },
+    {
+      "symbol": "NVDA",
+      "report_date": "2026-04-30T00:00:00.000",
+      "eps": 2.3911,
+      "prev_year_eps": 0.7629,
+      "yoy_growth": 2.1342
+    }
+  ]
+}

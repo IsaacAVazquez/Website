@@ -11,14 +11,5 @@ export const metadata = constructMetadata({
 });
 
 export default function InterchangeIQPage() {
-  return (
-    <section
-      className="home-page min-h-screen"
-      aria-label="Interchange IQ"
-    >
-      <div className="mx-auto w-full max-w-[1680px] px-4 pb-12 pt-8 sm:px-6 sm:pb-14 sm:pt-10 lg:px-8 xl:px-10 2xl:px-12">
-        <InterchangeIQClient />
-      </div>
-    </section>
-  );
+  return <InterchangeIQClient />;
 }

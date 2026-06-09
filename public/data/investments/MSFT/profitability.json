@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "MSFT",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 22291000000.0,
+      "beginning_stockholders_equity": 206223000000.0,
+      "ending_stockholders_equity": 220714000000.0,
+      "avg_equity": 213468500000.0,
+      "roe": 0.1044
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 21870000000.0,
+      "beginning_stockholders_equity": 220714000000.0,
+      "ending_stockholders_equity": 238268000000.0,
+      "avg_equity": 229491000000.0,
+      "roe": 0.0953
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 21939000000.0,
+      "beginning_stockholders_equity": 238268000000.0,
+      "ending_stockholders_equity": 253152000000.0,
+      "avg_equity": 245710000000.0,
+      "roe": 0.0893
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 22036000000.0,
+      "beginning_stockholders_equity": 253152000000.0,
+      "ending_stockholders_equity": 268477000000.0,
+      "avg_equity": 260814500000.0,
+      "roe": 0.0845
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 24667000000.0,
+      "beginning_stockholders_equity": 268477000000.0,
+      "ending_stockholders_equity": 287723000000.0,
+      "avg_equity": 278100000000.0,
+      "roe": 0.0887
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 24108000000.0,
+      "beginning_stockholders_equity": 287723000000.0,
+      "ending_stockholders_equity": 302695000000.0,
+      "avg_equity": 295209000000.0,
+      "roe": 0.0817
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 25824000000.0,
+      "beginning_stockholders_equity": 302695000000.0,
+      "ending_stockholders_equity": 321891000000.0,
+      "avg_equity": 312293000000.0,
+      "roe": 0.0827
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 27233000000.0,
+      "beginning_stockholders_equity": 321891000000.0,
+      "ending_stockholders_equity": 343479000000.0,
+      "avg_equity": 332685000000.0,
+      "roe": 0.0819
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 27747000000.0,
+      "beginning_stockholders_equity": 343479000000.0,
+      "ending_stockholders_equity": 363076000000.0,
+      "avg_equity": 353277500000.0,
+      "roe": 0.0785
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 38458000000.0,
+      "beginning_stockholders_equity": 363076000000.0,
+      "ending_stockholders_equity": 390875000000.0,
+      "avg_equity": 376975500000.0,
+      "roe": 0.102
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 31778000000.0,
+      "beginning_stockholders_equity": 390875000000.0,
+      "ending_stockholders_equity": 414367000000.0,
+      "avg_equity": 402621000000.0,
+      "roe": 0.0789
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "MSFT",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 22291000000.0,
+      "beginning_total_assets": 411976000000.0,
+      "ending_total_assets": 445785000000.0,
+      "avg_assets": 428880500000.0,
+      "roa": 0.052
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 21870000000.0,
+      "beginning_total_assets": 445785000000.0,
+      "ending_total_assets": 470558000000.0,
+      "avg_assets": 458171500000.0,
+      "roa": 0.0477
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 21939000000.0,
+      "beginning_total_assets": 470558000000.0,
+      "ending_total_assets": 484275000000.0,
+      "avg_assets": 477416500000.0,
+      "roa": 0.046
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 22036000000.0,
+      "beginning_total_assets": 484275000000.0,
+      "ending_total_assets": 512163000000.0,
+      "avg_assets": 498219000000.0,
+      "roa": 0.0442
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 24667000000.0,
+      "beginning_total_assets": 512163000000.0,
+      "ending_total_assets": 523013000000.0,
+      "avg_assets": 517588000000.0,
+      "roa": 0.0477
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 24108000000.0,
+      "beginning_total_assets": 523013000000.0,
+      "ending_total_assets": 533898000000.0,
+      "avg_assets": 528455500000.0,
+      "roa": 0.0456
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 25824000000.0,
+      "beginning_total_assets": 533898000000.0,
+      "ending_total_assets": 562624000000.0,
+      "avg_assets": 548261000000.0,
+      "roa": 0.0471
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 27233000000.0,
+      "beginning_total_assets": 562624000000.0,
+      "ending_total_assets": 619003000000.0,
+      "avg_assets": 590813500000.0,
+      "roa": 0.0461
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 27747000000.0,
+      "beginning_total_assets": 619003000000.0,
+      "ending_total_assets": 636351000000.0,
+      "avg_assets": 627677000000.0,
+      "roa": 0.0442
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 38458000000.0,
+      "beginning_total_assets": 636351000000.0,
+      "ending_total_assets": 665302000000.0,
+      "avg_assets": 650826500000.0,
+      "roa": 0.0591
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 31778000000.0,
+      "beginning_total_assets": 665302000000.0,
+      "ending_total_assets": 694228000000.0,
+      "avg_assets": 679765000000.0,
+      "roa": 0.0467
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "MSFT",
+      "report_date": "2023-09-30",
+      "ebit": 27809000000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 22803380000.0,
+      "beginning_invested_capital": 253460000000.0,
+      "ending_invested_capital": 292216000000.0,
+      "avg_invested_capital": 272838000000.0,
+      "roic": 0.0836
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2023-12-31",
+      "ebit": 27435000000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 22496700000.0,
+      "beginning_invested_capital": 292216000000.0,
+      "ending_invested_capital": 312487000000.0,
+      "avg_invested_capital": 302351500000.0,
+      "roic": 0.0744
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2024-03-31",
+      "ebit": 27527000000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 22572140000.0,
+      "beginning_invested_capital": 312487000000.0,
+      "ending_invested_capital": 318594000000.0,
+      "avg_invested_capital": 315540500000.0,
+      "roic": 0.0715
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2024-06-30",
+      "ebit": 27951000000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 22640310000.0,
+      "beginning_invested_capital": 318594000000.0,
+      "ending_invested_capital": 320107000000.0,
+      "avg_invested_capital": 319350500000.0,
+      "roic": 0.0709
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2024-09-30",
+      "ebit": 30851000000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 24989310000.0,
+      "beginning_invested_capital": 320107000000.0,
+      "ending_invested_capital": 332840000000.0,
+      "avg_invested_capital": 326473500000.0,
+      "roic": 0.0765
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2024-12-31",
+      "ebit": 29959000000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 24566380000.0,
+      "beginning_invested_capital": 332840000000.0,
+      "ending_invested_capital": 347665000000.0,
+      "avg_invested_capital": 340252500000.0,
+      "roic": 0.0722
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2025-03-31",
+      "ebit": 31971000000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 26216220000.0,
+      "beginning_invested_capital": 347665000000.0,
+      "ending_invested_capital": 364772000000.0,
+      "avg_invested_capital": 356218500000.0,
+      "roic": 0.0736
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2025-06-30",
+      "ebit": 33231000000.0,
+      "tax_rate_for_calcs": 0.17,
+      "nopat": 27581730000.0,
+      "beginning_invested_capital": 364772000000.0,
+      "ending_invested_capital": 386630000000.0,
+      "avg_invested_capital": 375701000000.0,
+      "roic": 0.0734
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2025-09-30",
+      "ebit": 34999000000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 28349190000.0,
+      "beginning_invested_capital": 386630000000.0,
+      "ending_invested_capital": 406284000000.0,
+      "avg_invested_capital": 396457000000.0,
+      "roic": 0.0715
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2025-12-31",
+      "ebit": 48982000000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 39185600000.0,
+      "beginning_invested_capital": 406284000000.0,
+      "ending_invested_capital": 431137000000.0,
+      "avg_invested_capital": 418710500000.0,
+      "roic": 0.0936
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2026-03-31",
+      "ebit": 40118000000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 32495580000.0,
+      "beginning_invested_capital": 431137000000.0,
+      "ending_invested_capital": 454629000000.0,
+      "avg_invested_capital": 442883000000.0,
+      "roic": 0.0734
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "MSFT",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.1044,
+      "roa": 0.052,
+      "equity_multiplier": 2.01
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.0953,
+      "roa": 0.0477,
+      "equity_multiplier": 2.0
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.0893,
+      "roa": 0.046,
+      "equity_multiplier": 1.94
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.0845,
+      "roa": 0.0442,
+      "equity_multiplier": 1.91
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.0887,
+      "roa": 0.0477,
+      "equity_multiplier": 1.86
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.0817,
+      "roa": 0.0456,
+      "equity_multiplier": 1.79
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.0827,
+      "roa": 0.0471,
+      "equity_multiplier": 1.76
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.0819,
+      "roa": 0.0461,
+      "equity_multiplier": 1.78
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.0785,
+      "roa": 0.0442,
+      "equity_multiplier": 1.78
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.102,
+      "roa": 0.0591,
+      "equity_multiplier": 1.73
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.0789,
+      "roa": 0.0467,
+      "equity_multiplier": 1.69
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "MSFT",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.052,
+      "net_margin": 0.3944,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0477,
+      "net_margin": 0.3526,
+      "asset_turnover": 0.14
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.046,
+      "net_margin": 0.3547,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0442,
+      "net_margin": 0.3404,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0477,
+      "net_margin": 0.3761,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0456,
+      "net_margin": 0.3462,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0471,
+      "net_margin": 0.3686,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0461,
+      "net_margin": 0.3563,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0442,
+      "net_margin": 0.3572,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0591,
+      "net_margin": 0.4732,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0467,
+      "net_margin": 0.3834,
+      "asset_turnover": 0.12
+    }
+  ]
+}

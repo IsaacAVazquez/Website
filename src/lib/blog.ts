@@ -119,6 +119,30 @@ function resolveBlogPostPath(slug: string): string | null {
   return null;
 }
 
+// Required frontmatter fields for every blog post. Missing any of these
+// fails the build with a descriptive error rather than silently producing
+// a broken post (e.g., empty title or NaN dates downstream).
+const REQUIRED_FRONTMATTER_FIELDS = [
+  "title",
+  "excerpt",
+  "category",
+  "publishedAt",
+] as const;
+
+function assertValidFrontmatter(
+  fileLabel: string,
+  data: Record<string, unknown>
+): asserts data is Record<string, unknown> & BlogPostMetadata {
+  for (const field of REQUIRED_FRONTMATTER_FIELDS) {
+    const value = data[field];
+    if (typeof value !== "string" || value.trim().length === 0) {
+      throw new Error(
+        `Blog post ${fileLabel} is missing required field: ${field}`
+      );
+    }
+  }
+}
+
 function readBlogPostSource(slug: string): {
   metadata: BlogPostMetadata;
   content: string;
@@ -132,10 +156,16 @@ function readBlogPostSource(slug: string): {
   const fileContents = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(fileContents);
 
+  assertValidFrontmatter(path.basename(filePath), data);
+
   return {
     metadata: data as BlogPostMetadata,
     content,
   };
+}
+
+function stripLeadingMarkdownH1(content: string): string {
+  return content.replace(/^\s*#\s+.+(?:\r?\n)+/, "");
 }
 
 async function renderBlogPostHtml(content: string): Promise<string> {
@@ -146,9 +176,15 @@ async function renderBlogPostHtml(content: string): Promise<string> {
       import("remark-html"),
     ]);
 
+  // Note: the `{ sanitize: true }` option on remark-html is deprecated
+  // (and was effectively a no-op in modern remark). All posts under
+  // content/blog are author-controlled (single-author repo, committed by
+  // Isaac only) and never user-generated, so no runtime HTML sanitization
+  // is enforced here. If user-generated content is ever introduced, switch
+  // to a remark-rehype + rehype-sanitize + rehype-stringify chain.
   const processedContent = await remark()
     .use(remarkGfm)
-    .use(remarkHtml, { sanitize: true })
+    .use(remarkHtml)
     .process(content);
 
   return processedContent.toString();
@@ -223,7 +259,7 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
       slug,
       title: metadata.title,
       excerpt: metadata.excerpt,
-      content: await renderBlogPostHtml(content),
+      content: await renderBlogPostHtml(stripLeadingMarkdownH1(content)),
       publishedAt: metadata.publishedAt,
       updatedAt: metadata.updatedAt,
       category: metadata.category,

@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "NVDA",
+    "name": "Mr. Ajay K. Puri",
+    "title": "Executive Vice President of Worldwide Field Operations",
+    "age": 70,
+    "born": 1955,
+    "pay": 2298337,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "NVDA",
+    "name": "Mr. Chris A. Malachowsky",
+    "title": "Co-Founder",
+    "age": null,
+    "born": null,
+    "pay": 320000,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "NVDA",
+    "name": "Mr. Jen-Hsun  Huang",
+    "title": "Co-Founder, CEO & Director",
+    "age": 62,
+    "born": 1963,
+    "pay": 11543318,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "NVDA",
+    "name": "Mr. Scott C. Gawel",
+    "title": "Chief Accounting Officer",
+    "age": 54,
+    "born": 1971,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "NVDA",
+    "name": "Mr. Timothy S. Teter J.D.",
+    "title": "Executive VP, General Counsel & Secretary",
+    "age": 58,
+    "born": 1967,
+    "pay": 1363896,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "NVDA",
+    "name": "Mr. Toshiya  Hari",
+    "title": "Vice President of Investor Relations & Strategic Finance",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "NVDA",
+    "name": "Ms. Colette M. Kress",
+    "title": "Executive VP & CFO",
+    "age": 58,
+    "born": 1967,
+    "pay": 1514979,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "NVDA",
+    "name": "Ms. Debora  Shoquist",
+    "title": "Executive Vice President of Operations",
+    "age": 70,
+    "born": 1955,
+    "pay": 1382223,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "NVDA",
+    "name": "Ms. Mylene  Mangalindan",
+    "title": "Vice President of Corporate Communications",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "NVDA",
+    "name": "Prof. William J. Dally Ph.D.",
+    "title": "Chief Scientist & Senior VP of Research",
+    "age": 64,
+    "born": 1961,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  }
+]

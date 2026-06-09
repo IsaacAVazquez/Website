@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "PNC",
+    "name": "Mr. Alexander E. C. Overstrom",
+    "title": "Executive VP & Head of Retail Banking",
+    "age": 41,
+    "born": 1984,
+    "pay": 2840120,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "PNC",
+    "name": "Mr. Bryan K. Gill",
+    "title": "EVP, Director of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "PNC",
+    "name": "Mr. Mark Kenneth Wiedman J.D.",
+    "title": "President",
+    "age": 54,
+    "born": 1971,
+    "pay": 4822359,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "PNC",
+    "name": "Mr. Robert Q. Reilly",
+    "title": "Executive VP & CFO",
+    "age": 60,
+    "born": 1965,
+    "pay": 4046117,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "PNC",
+    "name": "Mr. William S. Demchak",
+    "title": "Chairman & CEO",
+    "age": 63,
+    "born": 1962,
+    "pay": 10670221,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "PNC",
+    "name": "Ms. Amanda  Rosseter Schab",
+    "title": "Executive VP, Chief Communications & Brand Officer",
+    "age": 56,
+    "born": 1969,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "PNC",
+    "name": "Ms. Deborah  Guild",
+    "title": "Executive VP & Head of Technology",
+    "age": 56,
+    "born": 1969,
+    "pay": 3448477,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "PNC",
+    "name": "Ms. Jenn  Garbach",
+    "title": "Chief Marketing Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "PNC",
+    "name": "Ms. Laura L. Long J.D.",
+    "title": "Executive VP, General Counsel & Chief Administrative Officer",
+    "age": 52,
+    "born": 1973,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "PNC",
+    "name": "Ms. Vicki C. Henn",
+    "title": "Executive VP & Chief Human Resources Officer",
+    "age": 56,
+    "born": 1969,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  }
+]

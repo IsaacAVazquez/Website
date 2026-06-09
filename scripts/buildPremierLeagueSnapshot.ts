@@ -7,6 +7,17 @@ import { buildPremierLeagueSnapshot } from "../src/lib/premierLeagueData";
 const PROJECT_ROOT = process.cwd();
 const OUTPUT_FILE = path.join(PROJECT_ROOT, "src", "data", "premierLeagueSnapshot.ts");
 
+/**
+ * Atomic write: write to .tmp then rename. Renames are atomic on POSIX, so the
+ * destination file is never observed in a half-written state if the process is
+ * killed mid-write.
+ */
+async function writeFileAtomic(filePath: string, content: string): Promise<void> {
+  const tmp = `${filePath}.tmp`;
+  await fs.writeFile(tmp, content, "utf8");
+  await fs.rename(tmp, filePath);
+}
+
 async function main() {
   const snapshot = await buildPremierLeagueSnapshot();
   const fileContents = `import type { PremierLeagueSnapshot } from "@/types/premier-league";
@@ -15,7 +26,7 @@ async function main() {
 export const premierLeagueSnapshot: PremierLeagueSnapshot = ${JSON.stringify(snapshot, null, 2)};
 `;
 
-  await fs.writeFile(OUTPUT_FILE, fileContents, "utf8");
+  await writeFileAtomic(OUTPUT_FILE, fileContents);
 }
 
 main().catch((error) => {

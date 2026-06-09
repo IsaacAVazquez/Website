@@ -24,17 +24,21 @@ jest.mock("@/lib/golfSnapshot", () => ({
     generatedAt: "2026-04-16T19:05:00.000Z",
   })),
   getGolfPlayerSnapshot: jest.fn(),
+  isGolfPlayerIdShape: jest.fn(),
   isValidGolfPlayerId: jest.fn(),
 }));
 
 import { GET } from "../route";
 import {
   getGolfPlayerSnapshot,
+  isGolfPlayerIdShape,
   isValidGolfPlayerId,
 } from "@/lib/golfSnapshot";
 
 const mockGetGolfPlayerSnapshot =
   getGolfPlayerSnapshot as jest.MockedFunction<typeof getGolfPlayerSnapshot>;
+const mockIsGolfPlayerIdShape =
+  isGolfPlayerIdShape as jest.MockedFunction<typeof isGolfPlayerIdShape>;
 const mockIsValidGolfPlayerId =
   isValidGolfPlayerId as jest.MockedFunction<typeof isValidGolfPlayerId>;
 
@@ -48,20 +52,40 @@ describe("GET /api/golf/players/[playerId]", () => {
     jest.restoreAllMocks();
   });
 
-  it("rejects invalid player ids before hitting the data loader", async () => {
+  it("rejects malformed player ids with a 400 before hitting the data loader", async () => {
+    // Shape-level rejection: "bad id with spaces!" wouldn't match the slug
+    // pattern. Previously this route returned 404 for any invalid input;
+    // now shape failures correctly surface as 400.
+    mockIsGolfPlayerIdShape.mockReturnValue(false);
+
+    const response = await GET(new Request("http://localhost:3000"), {
+      params: Promise.resolve({ playerId: "bad id!" }),
+    });
+    const body = await response.json();
+
+    expect(response.status).toBe(400);
+    expect(body.error).toMatch(/invalid player id/i);
+    expect(response.headers.get("Cache-Control")).toBe("no-store");
+    expect(mockGetGolfPlayerSnapshot).not.toHaveBeenCalled();
+  });
+
+  it("returns 404 with no-store when the slug is well-formed but unknown", async () => {
+    mockIsGolfPlayerIdShape.mockReturnValue(true);
     mockIsValidGolfPlayerId.mockReturnValue(false);
 
     const response = await GET(new Request("http://localhost:3000"), {
-      params: Promise.resolve({ playerId: "bad-id" }),
+      params: Promise.resolve({ playerId: "unknown-player" }),
     });
     const body = await response.json();
 
     expect(response.status).toBe(404);
-    expect(body.error).toMatch(/invalid player id/i);
+    expect(body.error).toMatch(/snapshot/i);
+    expect(response.headers.get("Cache-Control")).toBe("no-store");
     expect(mockGetGolfPlayerSnapshot).not.toHaveBeenCalled();
   });
 
   it("returns the golfer snapshot with cache headers", async () => {
+    mockIsGolfPlayerIdShape.mockReturnValue(true);
     mockIsValidGolfPlayerId.mockReturnValue(true);
     mockGetGolfPlayerSnapshot.mockResolvedValue({
       player: {
@@ -106,6 +130,7 @@ describe("GET /api/golf/players/[playerId]", () => {
   });
 
   it("returns a stable empty payload when the player lookup fails", async () => {
+    mockIsGolfPlayerIdShape.mockReturnValue(true);
     mockIsValidGolfPlayerId.mockReturnValue(true);
     mockGetGolfPlayerSnapshot.mockRejectedValue(
       Object.assign(new Error("Golf player snapshot was not found."), {
@@ -122,5 +147,7 @@ describe("GET /api/golf/players/[playerId]", () => {
     expect(body.error).toMatch(/snapshot/i);
     expect(body.player).toBeNull();
     expect(body.roundByRound).toEqual([]);
+    // Errors must NOT be cached by the CDN.
+    expect(response.headers.get("Cache-Control")).toBe("no-store");
   });
 });

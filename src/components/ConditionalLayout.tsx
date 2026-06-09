@@ -19,6 +19,7 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
     "/changelog",
     "/contact",
     "/decision-lab",
+    "/fantasy-formula-1",
     "/fantasy-football",
     "/fantasy-football/draft-tracker",
     "/fintech-tools/budget-planner",
@@ -41,6 +42,7 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
     "/resume",
     "/spacex-mission-control",
     "/wine-cellar",
+    "/world-cup-2026",
     "/writing",
   ]);
   const isSelfShellRoute =

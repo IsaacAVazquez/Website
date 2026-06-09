@@ -43,7 +43,7 @@ describe("premier-league-state", () => {
         {
           view: "europe",
           team: "57",
-        },
+        } as Parameters<typeof buildPremierLeagueHref>[0],
         new URLSearchParams("ref=portfolio")
       )
     ).toBe("/premier-league?ref=portfolio&view=europe&team=57");

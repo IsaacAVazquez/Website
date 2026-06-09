@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
 import type { SearchInterfaceProps } from "./SearchInterface";
 
-const SearchInterfaceNoSSR = dynamic(
+const SearchInterfaceNoSSR = dynamic<SearchInterfaceProps>(
   () => import("./SearchInterface").then((mod) => mod.SearchInterface),
   { ssr: false }
 );

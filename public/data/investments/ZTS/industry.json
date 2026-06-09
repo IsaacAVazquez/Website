@@ -1,0 +1,1811 @@
+{
+  "ttm_pe": [],
+  "ps_ratio": [],
+  "pb_ratio": [],
+  "roe": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -3566000.0,
+      "total_avg_equity": 235445500.0,
+      "industry_roe": -0.0151
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -3566000.0,
+      "total_avg_equity": 235445500.0,
+      "industry_roe": -0.0151
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -3566000.0,
+      "total_avg_equity": 235445500.0,
+      "industry_roe": -0.0151
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 36209963.42950021,
+      "total_avg_equity": 355912915.6169579,
+      "industry_roe": 0.1017
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 36209963.42950021,
+      "total_avg_equity": 355912915.6169579,
+      "industry_roe": 0.1017
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 36209963.42950021,
+      "total_avg_equity": 355912915.6169579,
+      "industry_roe": 0.1017
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 36209963.42950021,
+      "total_avg_equity": 355912915.6169579,
+      "industry_roe": 0.1017
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 36209963.42950021,
+      "total_avg_equity": 355912915.6169579,
+      "industry_roe": 0.1017
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 36209963.42950021,
+      "total_avg_equity": 355912915.6169579,
+      "industry_roe": 0.1017
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 53318223.13925077,
+      "total_avg_equity": 427040264.153239,
+      "industry_roe": 0.1249
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 53318223.13925077,
+      "total_avg_equity": 427040264.153239,
+      "industry_roe": 0.1249
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -298628776.86074924,
+      "total_avg_equity": 3764315264.1532393,
+      "industry_roe": -0.0793
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -93643319.4041251,
+      "total_avg_equity": 117049366940.55194,
+      "industry_roe": -0.0008
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -93643319.4041251,
+      "total_avg_equity": 117049366940.55194,
+      "industry_roe": -0.0008
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 25335680.595874906,
+      "total_avg_equity": 117122109440.55194,
+      "industry_roe": 0.0002
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -302050924.44447076,
+      "total_avg_equity": 114985502914.03125,
+      "industry_roe": -0.0026
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -302050924.44447076,
+      "total_avg_equity": 114985502914.03125,
+      "industry_roe": -0.0026
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -275166924.44447076,
+      "total_avg_equity": 114997440914.03125,
+      "industry_roe": -0.0024
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 2811272417.554457,
+      "total_avg_equity": 118028763418.29184,
+      "industry_roe": 0.0238
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 2811272417.554457,
+      "total_avg_equity": 118028763418.29184,
+      "industry_roe": 0.0238
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 2752017417.554457,
+      "total_avg_equity": 118039268418.29184,
+      "industry_roe": 0.0233
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 2530175199.8200717,
+      "total_avg_equity": 115016665001.74323,
+      "industry_roe": 0.022
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 2528146192.0232043,
+      "total_avg_equity": 115019388120.4902,
+      "industry_roe": 0.022
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 1799652181.0232043,
+      "total_avg_equity": 114678886319.9902,
+      "industry_roe": 0.0157
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -1933969212.788785,
+      "total_avg_equity": 119441194138.92538,
+      "industry_roe": -0.0162
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -1935285164.129836,
+      "total_avg_equity": 119440283770.95587,
+      "industry_roe": -0.0162
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -3171372973.129836,
+      "total_avg_equity": 118840697121.45587,
+      "industry_roe": -0.0267
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -3510181382.6865497,
+      "total_avg_equity": 181054496141.2169,
+      "industry_roe": -0.0194
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -3510855846.6865497,
+      "total_avg_equity": 181050421593.7169,
+      "industry_roe": -0.0194
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -3472012846.6865497,
+      "total_avg_equity": 181062474593.7169,
+      "industry_roe": -0.0192
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -3148879656.392964,
+      "total_avg_equity": 182336908107.57858,
+      "industry_roe": -0.0173
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -3148857949.392964,
+      "total_avg_equity": 182336904565.57858,
+      "industry_roe": -0.0173
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -3108550759.392964,
+      "total_avg_equity": 181984593178.07858,
+      "industry_roe": -0.0171
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -2031065469.9339223,
+      "total_avg_equity": 176465978440.61197,
+      "industry_roe": -0.0115
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -2031065469.9339223,
+      "total_avg_equity": 176465978440.61197,
+      "industry_roe": -0.0115
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -1268245876.9339223,
+      "total_avg_equity": 175845596373.61197,
+      "industry_roe": -0.0072
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 1787097646.9527698,
+      "total_avg_equity": 175596744489.21304,
+      "industry_roe": 0.0102
+    }
+  ],
+  "roa": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -3566000.0,
+      "total_avg_assets": 511366000.0,
+      "industry_roa": -0.007
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -3566000.0,
+      "total_avg_assets": 511366000.0,
+      "industry_roa": -0.007
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -3566000.0,
+      "total_avg_assets": 511366000.0,
+      "industry_roa": -0.007
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 36209963.42950021,
+      "total_avg_assets": 724266050.386022,
+      "industry_roa": 0.05
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 36209963.42950021,
+      "total_avg_assets": 724266050.386022,
+      "industry_roa": 0.05
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 36209963.42950021,
+      "total_avg_assets": 724266050.386022,
+      "industry_roa": 0.05
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 36209963.42950021,
+      "total_avg_assets": 724266050.386022,
+      "industry_roa": 0.05
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 36209963.42950021,
+      "total_avg_assets": 724266050.386022,
+      "industry_roa": 0.05
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 36209963.42950021,
+      "total_avg_assets": 724266050.386022,
+      "industry_roa": 0.05
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 53318223.13925077,
+      "total_avg_assets": 824495305.2972087,
+      "industry_roa": 0.0647
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 53318223.13925077,
+      "total_avg_assets": 824495305.2972087,
+      "industry_roa": 0.0647
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -298628776.86074924,
+      "total_avg_assets": 5084552805.297209,
+      "industry_roa": -0.0587
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -93643319.4041251,
+      "total_avg_assets": 310435917728.0574,
+      "industry_roa": -0.0003
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -93643319.4041251,
+      "total_avg_assets": 310435917728.0574,
+      "industry_roa": -0.0003
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 25335680.595874906,
+      "total_avg_assets": 310737607728.0574,
+      "industry_roa": 0.0001
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -302050924.44447076,
+      "total_avg_assets": 306311934520.45667,
+      "industry_roa": -0.001
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -302050924.44447076,
+      "total_avg_assets": 306311934520.45667,
+      "industry_roa": -0.001
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -275166924.44447076,
+      "total_avg_assets": 306292719020.45667,
+      "industry_roa": -0.0009
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 2811272417.554457,
+      "total_avg_assets": 312912943826.32764,
+      "industry_roa": 0.009
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 2811272417.554457,
+      "total_avg_assets": 312912943826.32764,
+      "industry_roa": 0.009
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 2752017417.554457,
+      "total_avg_assets": 312823530326.32764,
+      "industry_roa": 0.0088
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 2530175199.8200717,
+      "total_avg_assets": 303065042457.9219,
+      "industry_roa": 0.0083
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 2528146192.0232043,
+      "total_avg_assets": 303069686959.75037,
+      "industry_roa": 0.0083
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 1799652181.0232043,
+      "total_avg_assets": 302674836483.75037,
+      "industry_roa": 0.0059
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -1933969212.788785,
+      "total_avg_assets": 312926674160.02985,
+      "industry_roa": -0.0062
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -1935285164.129836,
+      "total_avg_assets": 312925985910.09985,
+      "industry_roa": -0.0062
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -3171372973.129836,
+      "total_avg_assets": 312278936966.09985,
+      "industry_roa": -0.0102
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -3510181382.6865497,
+      "total_avg_assets": 471651669032.0714,
+      "industry_roa": -0.0074
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -3510855846.6865497,
+      "total_avg_assets": 471653272381.5714,
+      "industry_roa": -0.0074
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -3472012846.6865497,
+      "total_avg_assets": 471622375381.5714,
+      "industry_roa": -0.0074
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -3148879656.392964,
+      "total_avg_assets": 467886304108.53375,
+      "industry_roa": -0.0067
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -3148857949.392964,
+      "total_avg_assets": 467884795759.03375,
+      "industry_roa": -0.0067
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -3108550759.392964,
+      "total_avg_assets": 467498556949.53375,
+      "industry_roa": -0.0066
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -2031065469.9339223,
+      "total_avg_assets": 456381871104.36597,
+      "industry_roa": -0.0045
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -2031065469.9339223,
+      "total_avg_assets": 456381871104.36597,
+      "industry_roa": -0.0045
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -1268245876.9339223,
+      "total_avg_assets": 455705550925.36597,
+      "industry_roa": -0.0028
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 1787097646.9527698,
+      "total_avg_assets": 457497412172.973,
+      "industry_roa": 0.0039
+    }
+  ],
+  "equity_multiplier": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roe": -0.0151,
+      "industry_roa": -0.007,
+      "industry_equity_multiplier": 2.16
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roe": -0.0151,
+      "industry_roa": -0.007,
+      "industry_equity_multiplier": 2.16
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roe": -0.0151,
+      "industry_roa": -0.007,
+      "industry_equity_multiplier": 2.16
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roe": 0.1017,
+      "industry_roa": 0.05,
+      "industry_equity_multiplier": 2.03
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roe": 0.1017,
+      "industry_roa": 0.05,
+      "industry_equity_multiplier": 2.03
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roe": 0.1017,
+      "industry_roa": 0.05,
+      "industry_equity_multiplier": 2.03
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roe": 0.1017,
+      "industry_roa": 0.05,
+      "industry_equity_multiplier": 2.03
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roe": 0.1017,
+      "industry_roa": 0.05,
+      "industry_equity_multiplier": 2.03
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roe": 0.1017,
+      "industry_roa": 0.05,
+      "industry_equity_multiplier": 2.03
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roe": 0.1249,
+      "industry_roa": 0.0647,
+      "industry_equity_multiplier": 1.93
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roe": 0.1249,
+      "industry_roa": 0.0647,
+      "industry_equity_multiplier": 1.93
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roe": -0.0793,
+      "industry_roa": -0.0587,
+      "industry_equity_multiplier": 1.35
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roe": -0.0008,
+      "industry_roa": -0.0003,
+      "industry_equity_multiplier": 2.67
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roe": -0.0008,
+      "industry_roa": -0.0003,
+      "industry_equity_multiplier": 2.67
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roe": 0.0002,
+      "industry_roa": 0.0001,
+      "industry_equity_multiplier": 2.0
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roe": -0.0026,
+      "industry_roa": -0.001,
+      "industry_equity_multiplier": 2.6
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roe": -0.0026,
+      "industry_roa": -0.001,
+      "industry_equity_multiplier": 2.6
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roe": -0.0024,
+      "industry_roa": -0.0009,
+      "industry_equity_multiplier": 2.67
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roe": 0.0238,
+      "industry_roa": 0.009,
+      "industry_equity_multiplier": 2.64
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roe": 0.0238,
+      "industry_roa": 0.009,
+      "industry_equity_multiplier": 2.64
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roe": 0.0233,
+      "industry_roa": 0.0088,
+      "industry_equity_multiplier": 2.65
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roe": 0.022,
+      "industry_roa": 0.0083,
+      "industry_equity_multiplier": 2.65
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roe": 0.022,
+      "industry_roa": 0.0083,
+      "industry_equity_multiplier": 2.65
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roe": 0.0157,
+      "industry_roa": 0.0059,
+      "industry_equity_multiplier": 2.66
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roe": -0.0162,
+      "industry_roa": -0.0062,
+      "industry_equity_multiplier": 2.61
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roe": -0.0162,
+      "industry_roa": -0.0062,
+      "industry_equity_multiplier": 2.61
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roe": -0.0267,
+      "industry_roa": -0.0102,
+      "industry_equity_multiplier": 2.62
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roe": -0.0194,
+      "industry_roa": -0.0074,
+      "industry_equity_multiplier": 2.62
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roe": -0.0194,
+      "industry_roa": -0.0074,
+      "industry_equity_multiplier": 2.62
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roe": -0.0192,
+      "industry_roa": -0.0074,
+      "industry_equity_multiplier": 2.59
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roe": -0.0173,
+      "industry_roa": -0.0067,
+      "industry_equity_multiplier": 2.58
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roe": -0.0173,
+      "industry_roa": -0.0067,
+      "industry_equity_multiplier": 2.58
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roe": -0.0171,
+      "industry_roa": -0.0066,
+      "industry_equity_multiplier": 2.59
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roe": -0.0115,
+      "industry_roa": -0.0045,
+      "industry_equity_multiplier": 2.56
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roe": -0.0115,
+      "industry_roa": -0.0045,
+      "industry_equity_multiplier": 2.56
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roe": -0.0072,
+      "industry_roa": -0.0028,
+      "industry_equity_multiplier": 2.57
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roe": 0.0102,
+      "industry_roa": 0.0039,
+      "industry_equity_multiplier": 2.62
+    }
+  ],
+  "gross_margin": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_gross_profit": 6548731987.708002,
+      "total_ttm_revenue": 16306139737.770716,
+      "industry_gross_margin": 0.4016
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_gross_profit": 6548731987.708002,
+      "total_ttm_revenue": 16306139737.770716,
+      "industry_gross_margin": 0.4016
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_gross_profit": 6548731987.708002,
+      "total_ttm_revenue": 16306139737.770716,
+      "industry_gross_margin": 0.4016
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_gross_profit": 6437915465.528917,
+      "total_ttm_revenue": 16078590013.273737,
+      "industry_gross_margin": 0.4004
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_gross_profit": 6437915465.528917,
+      "total_ttm_revenue": 16078590013.273737,
+      "industry_gross_margin": 0.4004
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_gross_profit": 6437915465.528917,
+      "total_ttm_revenue": 16078590013.273737,
+      "industry_gross_margin": 0.4004
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_gross_profit": 6692851465.528917,
+      "total_ttm_revenue": 16259846013.273737,
+      "industry_gross_margin": 0.4116
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_gross_profit": 6692851465.528917,
+      "total_ttm_revenue": 16259846013.273737,
+      "industry_gross_margin": 0.4116
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_gross_profit": 6692851465.528917,
+      "total_ttm_revenue": 16259846013.273737,
+      "industry_gross_margin": 0.4116
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_gross_profit": 40523781159.25196,
+      "total_ttm_revenue": 65628872551.87488,
+      "industry_gross_margin": 0.6175
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_gross_profit": 40523781159.25196,
+      "total_ttm_revenue": 65628872551.87488,
+      "industry_gross_margin": 0.6175
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_gross_profit": 40731945159.25196,
+      "total_ttm_revenue": 66372120551.87488,
+      "industry_gross_margin": 0.6137
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_gross_profit": 76305961991.84213,
+      "total_ttm_revenue": 128953248181.8711,
+      "industry_gross_margin": 0.5917
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_gross_profit": 76305961991.84213,
+      "total_ttm_revenue": 128953248181.8711,
+      "industry_gross_margin": 0.5917
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_gross_profit": 76362999991.84213,
+      "total_ttm_revenue": 129127204181.8711,
+      "industry_gross_margin": 0.5914
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_gross_profit": 76465664705.12416,
+      "total_ttm_revenue": 129731573595.64073,
+      "industry_gross_margin": 0.5894
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_gross_profit": 76465664705.12416,
+      "total_ttm_revenue": 129731573595.64073,
+      "industry_gross_margin": 0.5894
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_gross_profit": 76483833705.12416,
+      "total_ttm_revenue": 129754851595.64073,
+      "industry_gross_margin": 0.5894
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_gross_profit": 81079478593.29066,
+      "total_ttm_revenue": 136827962682.86118,
+      "industry_gross_margin": 0.5926
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_gross_profit": 81079478593.29066,
+      "total_ttm_revenue": 136827962682.86118,
+      "industry_gross_margin": 0.5926
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_gross_profit": 81094416593.29066,
+      "total_ttm_revenue": 136847555682.86118,
+      "industry_gross_margin": 0.5926
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_gross_profit": 79070392402.11523,
+      "total_ttm_revenue": 133849336803.1651,
+      "industry_gross_margin": 0.5907
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_gross_profit": 79070392402.11523,
+      "total_ttm_revenue": 133849336803.1651,
+      "industry_gross_margin": 0.5907
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_gross_profit": 79071256891.11523,
+      "total_ttm_revenue": 133846570731.1651,
+      "industry_gross_margin": 0.5908
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_gross_profit": 82103694622.35799,
+      "total_ttm_revenue": 139150942628.58585,
+      "industry_gross_margin": 0.59
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_gross_profit": 82103694622.35799,
+      "total_ttm_revenue": 139150942628.58585,
+      "industry_gross_margin": 0.59
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_gross_profit": 82085884554.35799,
+      "total_ttm_revenue": 139236803788.58585,
+      "industry_gross_margin": 0.5895
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_gross_profit": 133996364553.20589,
+      "total_ttm_revenue": 216190069942.0744,
+      "industry_gross_margin": 0.6198
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_gross_profit": 133996364553.20589,
+      "total_ttm_revenue": 216190069942.0744,
+      "industry_gross_margin": 0.6198
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_gross_profit": 133994152032.20589,
+      "total_ttm_revenue": 216199603280.0744,
+      "industry_gross_margin": 0.6198
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_gross_profit": 133159718514.22981,
+      "total_ttm_revenue": 215185386700.42325,
+      "industry_gross_margin": 0.6188
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_gross_profit": 133159718514.22981,
+      "total_ttm_revenue": 215185386700.42325,
+      "industry_gross_margin": 0.6188
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_gross_profit": 133156000988.22981,
+      "total_ttm_revenue": 215191956852.42325,
+      "industry_gross_margin": 0.6188
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_gross_profit": 134673570087.57654,
+      "total_ttm_revenue": 216450822579.1704,
+      "industry_gross_margin": 0.6222
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_gross_profit": 134673570087.57654,
+      "total_ttm_revenue": 216450822579.1704,
+      "industry_gross_margin": 0.6222
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_gross_profit": 134676542298.57654,
+      "total_ttm_revenue": 216471803805.1704,
+      "industry_gross_margin": 0.6221
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_gross_profit": 184960217260.5803,
+      "total_ttm_revenue": 282587713368.3336,
+      "industry_gross_margin": 0.6545
+    }
+  ],
+  "ebitda_margin": [
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_ebitda": 5623405104.293648,
+      "total_ttm_revenue": 16078590013.273737,
+      "industry_ebitda_margin": 0.3497
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_ebitda": 5623405104.293648,
+      "total_ttm_revenue": 16078590013.273737,
+      "industry_ebitda_margin": 0.3497
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_ebitda": 5623405104.293648,
+      "total_ttm_revenue": 16078590013.273737,
+      "industry_ebitda_margin": 0.3497
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_ebitda": 6131502876.223647,
+      "total_ttm_revenue": 16259846013.273737,
+      "industry_ebitda_margin": 0.3771
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_ebitda": 6131502876.223647,
+      "total_ttm_revenue": 16259846013.273737,
+      "industry_ebitda_margin": 0.3771
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_ebitda": 6131502876.223647,
+      "total_ttm_revenue": 16259846013.273737,
+      "industry_ebitda_margin": 0.3771
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_ebitda": 16663376714.05281,
+      "total_ttm_revenue": 65628872551.87488,
+      "industry_ebitda_margin": 0.2539
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_ebitda": 16663376714.05281,
+      "total_ttm_revenue": 65628872551.87488,
+      "industry_ebitda_margin": 0.2539
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_ebitda": 16534878714.05281,
+      "total_ttm_revenue": 66372120551.87488,
+      "industry_ebitda_margin": 0.2491
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_ebitda": 23423031207.47312,
+      "total_ttm_revenue": 129367347181.8711,
+      "industry_ebitda_margin": 0.1811
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_ebitda": 23423031207.47312,
+      "total_ttm_revenue": 129367347181.8711,
+      "industry_ebitda_margin": 0.1811
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_ebitda": 23514482207.47312,
+      "total_ttm_revenue": 129541303181.8711,
+      "industry_ebitda_margin": 0.1815
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_ebitda": 23566396501.676247,
+      "total_ttm_revenue": 130132242595.64073,
+      "industry_ebitda_margin": 0.1811
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_ebitda": 23566396501.676247,
+      "total_ttm_revenue": 130132242595.64073,
+      "industry_ebitda_margin": 0.1811
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_ebitda": 23579798501.676247,
+      "total_ttm_revenue": 130155520595.64073,
+      "industry_ebitda_margin": 0.1812
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_ebitda": 28194603131.4949,
+      "total_ttm_revenue": 137137622682.86118,
+      "industry_ebitda_margin": 0.2056
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_ebitda": 28194603131.4949,
+      "total_ttm_revenue": 137137622682.86118,
+      "industry_ebitda_margin": 0.2056
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_ebitda": 28143531131.4949,
+      "total_ttm_revenue": 137157215682.86118,
+      "industry_ebitda_margin": 0.2052
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_ebitda": 27449134444.906162,
+      "total_ttm_revenue": 134131884803.1651,
+      "industry_ebitda_margin": 0.2046
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_ebitda": 27450843799.07714,
+      "total_ttm_revenue": 134131884803.1651,
+      "industry_ebitda_margin": 0.2047
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_ebitda": 26738278380.07714,
+      "total_ttm_revenue": 134129118731.1651,
+      "industry_ebitda_margin": 0.1993
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_ebitda": 24576610429.936134,
+      "total_ttm_revenue": 139400296628.58585,
+      "industry_ebitda_margin": 0.1763
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_ebitda": 24576568013.640324,
+      "total_ttm_revenue": 139400296628.58585,
+      "industry_ebitda_margin": 0.1763
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_ebitda": 23227019248.640324,
+      "total_ttm_revenue": 139486157788.58585,
+      "industry_ebitda_margin": 0.1665
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_ebitda": 54540474890.958435,
+      "total_ttm_revenue": 216434054471.0744,
+      "industry_ebitda_margin": 0.252
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_ebitda": 54540104644.958435,
+      "total_ttm_revenue": 216434058803.0744,
+      "industry_ebitda_margin": 0.252
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_ebitda": 54553634872.958435,
+      "total_ttm_revenue": 216443592141.0744,
+      "industry_ebitda_margin": 0.252
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_ebitda": 54749231783.072235,
+      "total_ttm_revenue": 215461809561.42325,
+      "industry_ebitda_margin": 0.2541
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_ebitda": 54749352201.072235,
+      "total_ttm_revenue": 215461805229.42325,
+      "industry_ebitda_margin": 0.2541
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_ebitda": 54772164781.072235,
+      "total_ttm_revenue": 215468375381.42325,
+      "industry_ebitda_margin": 0.2542
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_ebitda": 56607734415.05187,
+      "total_ttm_revenue": 216708596816.1704,
+      "industry_ebitda_margin": 0.2612
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_ebitda": 56607734415.05187,
+      "total_ttm_revenue": 216708596816.1704,
+      "industry_ebitda_margin": 0.2612
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_ebitda": 57356591834.05187,
+      "total_ttm_revenue": 216729578042.1704,
+      "industry_ebitda_margin": 0.2646
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_ebitda": 86234292043.40811,
+      "total_ttm_revenue": 283181380536.3336,
+      "industry_ebitda_margin": 0.3045
+    }
+  ],
+  "net_margin": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 1916588854.0847898,
+      "total_ttm_revenue": 16306139737.770716,
+      "industry_net_margin": 0.1175
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 1916588854.0847898,
+      "total_ttm_revenue": 16306139737.770716,
+      "industry_net_margin": 0.1175
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 1916588854.0847898,
+      "total_ttm_revenue": 16306139737.770716,
+      "industry_net_margin": 0.1175
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 1890409963.4295,
+      "total_ttm_revenue": 16078590013.273737,
+      "industry_net_margin": 0.1176
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 1890409963.4295,
+      "total_ttm_revenue": 16078590013.273737,
+      "industry_net_margin": 0.1176
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 1890409963.4295,
+      "total_ttm_revenue": 16078590013.273737,
+      "industry_net_margin": 0.1176
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 1655557861.6595001,
+      "total_ttm_revenue": 16259846013.273737,
+      "industry_net_margin": 0.1018
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 1655557861.6595001,
+      "total_ttm_revenue": 16259846013.273737,
+      "industry_net_margin": 0.1018
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 1655557861.6595001,
+      "total_ttm_revenue": 16259846013.273737,
+      "industry_net_margin": 0.1018
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 2049929736.3024335,
+      "total_ttm_revenue": 65628872551.87488,
+      "industry_net_margin": 0.0312
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 2049929736.3024335,
+      "total_ttm_revenue": 65628872551.87488,
+      "industry_net_margin": 0.0312
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 1697982736.3024335,
+      "total_ttm_revenue": 66372120551.87488,
+      "industry_net_margin": 0.0256
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 1293194821.250117,
+      "total_ttm_revenue": 129367347181.8711,
+      "industry_net_margin": 0.01
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 1293194821.250117,
+      "total_ttm_revenue": 129367347181.8711,
+      "industry_net_margin": 0.01
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 1412173821.250117,
+      "total_ttm_revenue": 129541303181.8711,
+      "industry_net_margin": 0.0109
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 1055312028.0087414,
+      "total_ttm_revenue": 130132242595.64073,
+      "industry_net_margin": 0.0081
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 1055312028.0087414,
+      "total_ttm_revenue": 130132242595.64073,
+      "industry_net_margin": 0.0081
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 1082196028.0087414,
+      "total_ttm_revenue": 130155520595.64073,
+      "industry_net_margin": 0.0083
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 4406826026.014843,
+      "total_ttm_revenue": 137137622682.86118,
+      "industry_net_margin": 0.0321
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 4406826026.014843,
+      "total_ttm_revenue": 137137622682.86118,
+      "industry_net_margin": 0.0321
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 4347571026.014843,
+      "total_ttm_revenue": 137157215682.86118,
+      "industry_net_margin": 0.0317
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 4316606509.271572,
+      "total_ttm_revenue": 134131884803.1651,
+      "industry_net_margin": 0.0322
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 4314577501.474705,
+      "total_ttm_revenue": 134131884803.1651,
+      "industry_net_margin": 0.0322
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 3586083490.4747047,
+      "total_ttm_revenue": 134129118731.1651,
+      "industry_net_margin": 0.0267
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -153796135.62843037,
+      "total_ttm_revenue": 139400296628.58585,
+      "industry_net_margin": -0.0011
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -155112086.96948147,
+      "total_ttm_revenue": 139400296628.58585,
+      "industry_net_margin": -0.0011
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -1391199895.9694815,
+      "total_ttm_revenue": 139486157788.58585,
+      "industry_net_margin": -0.01
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -1702887826.2350519,
+      "total_ttm_revenue": 216434054471.0744,
+      "industry_net_margin": -0.0079
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -1703562290.2350519,
+      "total_ttm_revenue": 216434058803.0744,
+      "industry_net_margin": -0.0079
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -1664836515.2350519,
+      "total_ttm_revenue": 216443592141.0744,
+      "industry_net_margin": -0.0077
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -1342565934.941464,
+      "total_ttm_revenue": 215461809561.42325,
+      "industry_net_margin": -0.0062
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -1342544227.941464,
+      "total_ttm_revenue": 215461805229.42325,
+      "industry_net_margin": -0.0062
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -1302119812.941464,
+      "total_ttm_revenue": 215468375381.42325,
+      "industry_net_margin": -0.006
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -227831802.48242244,
+      "total_ttm_revenue": 216708596816.1704,
+      "industry_net_margin": -0.0011
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": -227831802.48242244,
+      "total_ttm_revenue": 216708596816.1704,
+      "industry_net_margin": -0.0011
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 534987790.5175775,
+      "total_ttm_revenue": 216729578042.1704,
+      "industry_net_margin": 0.0025
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "total_ttm_net_income": 7252294549.794396,
+      "total_ttm_revenue": 283181380536.3336,
+      "industry_net_margin": 0.0256
+    }
+  ],
+  "asset_turnover": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roa": -0.007,
+      "industry_net_margin": 0.1175,
+      "industry_asset_turnover": -0.06
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roa": -0.007,
+      "industry_net_margin": 0.1175,
+      "industry_asset_turnover": -0.06
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roa": -0.007,
+      "industry_net_margin": 0.1175,
+      "industry_asset_turnover": -0.06
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roa": 0.05,
+      "industry_net_margin": 0.1176,
+      "industry_asset_turnover": 0.43
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roa": 0.05,
+      "industry_net_margin": 0.1176,
+      "industry_asset_turnover": 0.43
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roa": 0.05,
+      "industry_net_margin": 0.1176,
+      "industry_asset_turnover": 0.43
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roa": 0.05,
+      "industry_net_margin": 0.1018,
+      "industry_asset_turnover": 0.49
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roa": 0.05,
+      "industry_net_margin": 0.1018,
+      "industry_asset_turnover": 0.49
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roa": 0.05,
+      "industry_net_margin": 0.1018,
+      "industry_asset_turnover": 0.49
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roa": 0.0647,
+      "industry_net_margin": 0.0312,
+      "industry_asset_turnover": 2.07
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roa": 0.0647,
+      "industry_net_margin": 0.0312,
+      "industry_asset_turnover": 2.07
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roa": -0.0587,
+      "industry_net_margin": 0.0256,
+      "industry_asset_turnover": -2.29
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roa": -0.0003,
+      "industry_net_margin": 0.01,
+      "industry_asset_turnover": -0.03
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roa": -0.0003,
+      "industry_net_margin": 0.01,
+      "industry_asset_turnover": -0.03
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roa": 0.0001,
+      "industry_net_margin": 0.0109,
+      "industry_asset_turnover": 0.01
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roa": -0.001,
+      "industry_net_margin": 0.0081,
+      "industry_asset_turnover": -0.12
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roa": -0.001,
+      "industry_net_margin": 0.0081,
+      "industry_asset_turnover": -0.12
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roa": -0.0009,
+      "industry_net_margin": 0.0083,
+      "industry_asset_turnover": -0.11
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roa": 0.009,
+      "industry_net_margin": 0.0321,
+      "industry_asset_turnover": 0.28
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roa": 0.009,
+      "industry_net_margin": 0.0321,
+      "industry_asset_turnover": 0.28
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roa": 0.0088,
+      "industry_net_margin": 0.0317,
+      "industry_asset_turnover": 0.28
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roa": 0.0083,
+      "industry_net_margin": 0.0322,
+      "industry_asset_turnover": 0.26
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roa": 0.0083,
+      "industry_net_margin": 0.0322,
+      "industry_asset_turnover": 0.26
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roa": 0.0059,
+      "industry_net_margin": 0.0267,
+      "industry_asset_turnover": 0.22
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roa": -0.0062,
+      "industry_net_margin": -0.0011,
+      "industry_asset_turnover": 5.64
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roa": -0.0062,
+      "industry_net_margin": -0.0011,
+      "industry_asset_turnover": 5.64
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roa": -0.0102,
+      "industry_net_margin": -0.01,
+      "industry_asset_turnover": 1.02
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roa": -0.0074,
+      "industry_net_margin": -0.0079,
+      "industry_asset_turnover": 0.94
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roa": -0.0074,
+      "industry_net_margin": -0.0079,
+      "industry_asset_turnover": 0.94
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roa": -0.0074,
+      "industry_net_margin": -0.0077,
+      "industry_asset_turnover": 0.96
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roa": -0.0067,
+      "industry_net_margin": -0.0062,
+      "industry_asset_turnover": 1.08
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roa": -0.0067,
+      "industry_net_margin": -0.0062,
+      "industry_asset_turnover": 1.08
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roa": -0.0066,
+      "industry_net_margin": -0.006,
+      "industry_asset_turnover": 1.1
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roa": -0.0045,
+      "industry_net_margin": -0.0011,
+      "industry_asset_turnover": 4.09
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roa": -0.0045,
+      "industry_net_margin": -0.0011,
+      "industry_asset_turnover": 4.09
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roa": -0.0028,
+      "industry_net_margin": 0.0025,
+      "industry_asset_turnover": -1.12
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Drug Manufacturers-Specialty & Generic",
+      "industry_roa": 0.0039,
+      "industry_net_margin": 0.0256,
+      "industry_asset_turnover": 0.15
+    }
+  ]
+}

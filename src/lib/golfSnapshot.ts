@@ -51,8 +51,18 @@ export function createEmptyGolfPlayerSnapshot(): GolfPlayerSnapshot {
   };
 }
 
+// Golf player ids are URL-friendly slugs like "scottie-scheffler" — lowercase
+// letters/digits with `-` separators, capped at 64 chars to keep the regex
+// from being abused. The shape check runs before membership so route handlers
+// can return 400 (bad input) vs 404 (unknown id).
+const GOLF_PLAYER_ID_PATTERN = /^[a-z0-9](?:[a-z0-9-]{0,62}[a-z0-9])?$/i;
+
+export function isGolfPlayerIdShape(playerId: string): boolean {
+  return GOLF_PLAYER_ID_PATTERN.test(playerId);
+}
+
 export function isValidGolfPlayerId(playerId: string): boolean {
-  return playerId in golfSnapshot.playerSnapshots;
+  return GOLF_PLAYER_ID_PATTERN.test(playerId) && playerId in golfSnapshot.playerSnapshots;
 }
 
 export async function getGolfSummary(): Promise<GolfSummary> {

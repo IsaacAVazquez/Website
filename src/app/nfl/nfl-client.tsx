@@ -24,6 +24,14 @@ import {
   TeamResultPill,
   FixtureCard,
 } from "@/components/football";
+import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
+import {
+  Article,
+  Briefcase,
+  Calendar,
+  ChartBar,
+  User,
+} from "@/components/ui/ServerIcons";
 import type {
   NFLLeader,
   NFLLeaderboards,
@@ -220,6 +228,7 @@ export function NflClient({
 
   useEffect(() => {
     if (teamSnapshots[selectedTeam.id]) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- Reset loading/error flags when cached snapshot exists for the selected team
       setLoadingTeamId(null);
       setTeamSnapshotError(null);
       return;
@@ -285,6 +294,72 @@ export function NflClient({
   const nfcCutoff = nfcContext.lastIn;
   const nfcFirstOut = nfcContext.firstOut;
 
+  // Stats panel cells
+  const passingLeader = summary.leaders.passing[0] ?? null;
+  const rushingLeader = summary.leaders.rushing[0] ?? null;
+  const receivingLeader = summary.leaders.receiving[0] ?? null;
+  const totalRegSeasonWeeks = 18;
+
+  const statsPanelCells: HomeStatsCell[] = [
+    {
+      label: "AFC #1 seed",
+      tooltip: "Top seed in the American Football Conference and current record.",
+      value: afcTopSeed ? `${afcTopSeed.shortName} · ${formatRecord(afcTopSeed)}` : "—",
+      sub: afcTopSeed ? `${formatDifferential(afcTopSeed.pointDifferential)} pt diff` : undefined,
+    },
+    {
+      label: "NFC #1 seed",
+      tooltip: "Top seed in the National Football Conference and current record.",
+      value: nfcTopSeed ? `${nfcTopSeed.shortName} · ${formatRecord(nfcTopSeed)}` : "—",
+      sub: nfcTopSeed ? `${formatDifferential(nfcTopSeed.pointDifferential)} pt diff` : undefined,
+    },
+    {
+      label: "AFC playoff cutoff",
+      tooltip: "Last AFC team currently inside the playoff field and their record.",
+      value: afcCutoff ? `${afcCutoff.shortName} · ${formatRecord(afcCutoff)}` : "—",
+      sub: afcFirstOut
+        ? `${Math.max(0, afcCutoff.wins - afcFirstOut.wins)} wins clear of ${afcFirstOut.shortName}`
+        : undefined,
+    },
+    {
+      label: "NFC playoff cutoff",
+      tooltip: "Last NFC team currently inside the playoff field and their record.",
+      value: nfcCutoff ? `${nfcCutoff.shortName} · ${formatRecord(nfcCutoff)}` : "—",
+      sub: nfcFirstOut
+        ? `${Math.max(0, nfcCutoff.wins - nfcFirstOut.wins)} wins clear of ${nfcFirstOut.shortName}`
+        : undefined,
+    },
+    {
+      label: "Passing leader",
+      tooltip: "Player leading the league in passing yards this season.",
+      value: passingLeader
+        ? `${passingLeader.name} · ${passingLeader.total.toLocaleString()} yds`
+        : "—",
+      sub: passingLeader ? passingLeader.teamCode : undefined,
+    },
+    {
+      label: "Rushing leader",
+      tooltip: "Player leading the league in rushing yards this season.",
+      value: rushingLeader
+        ? `${rushingLeader.name} · ${rushingLeader.total.toLocaleString()} yds`
+        : "—",
+      sub: rushingLeader ? rushingLeader.teamCode : undefined,
+    },
+    {
+      label: "Receiving leader",
+      tooltip: "Player leading the league in receiving yards this season.",
+      value: receivingLeader
+        ? `${receivingLeader.name} · ${receivingLeader.total.toLocaleString()} yds`
+        : "—",
+      sub: receivingLeader ? receivingLeader.teamCode : undefined,
+    },
+    {
+      label: "Through week",
+      tooltip: "Most recently completed week within the regular season.",
+      value: summary.week ? `Week ${summary.week} of ${totalRegSeasonWeeks}` : "Final regular season",
+    },
+  ];
+
   return (
     <div className="home-page min-h-screen">
       <div className="home-shell home-section space-y-5 sm:space-y-6">
@@ -299,7 +374,7 @@ export function NflClient({
               The NFL season compressed into one view. Conference seedings, division leaders, the playoff cutoff, and stat leaders, refreshed from a curated NFLverse snapshot.
             </p>
           </div>
-          <div className="flex flex-wrap gap-1.5 text-[11px] text-[var(--home-ink-muted)]">
+          <div className="flex flex-wrap gap-1.5 text-2xs text-[var(--home-ink-muted)]">
             {[
               `Season ${summary.season}`,
               summary.week ? `Through Week ${summary.week}` : "Final regular season",
@@ -314,6 +389,22 @@ export function NflClient({
             ))}
           </div>
         </div>
+
+        {/* Dense stats panel */}
+        <HomeStatsPanel
+          id="nfl-stats-panel"
+          title="NFL at a glance"
+          meta={`Live · refreshed ${snapshotDateLabel}`}
+          cells={statsPanelCells}
+          pills={[
+            { label: "AFC", href: "?view=afc", icon: ChartBar },
+            { label: "NFC", href: "?view=nfc", icon: ChartBar },
+            { label: "Playoff bracket", href: "?view=playoffs", icon: Briefcase },
+            { label: "Stat leaders", href: "#nfl-standings", icon: User },
+            { label: "Schedule", href: "#nfl-standings", icon: Calendar },
+            { label: "Article", href: "/writing", icon: Article },
+          ]}
+        />
 
         {/* Key gaps */}
         <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
@@ -356,7 +447,7 @@ export function NflClient({
         </div>
 
         {/* Main standings + sidebar */}
-        <div className="grid gap-5 md:grid-cols-[minmax(0,1fr)_280px] lg:grid-cols-[minmax(0,1fr)_320px]">
+        <div id="nfl-standings" className="grid gap-5 md:grid-cols-[minmax(0,1fr)_280px] lg:grid-cols-[minmax(0,1fr)_320px]">
           <section className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,white)] p-5 sm:p-6 shadow-[var(--shadow-sm)]">
             <div className="flex items-center justify-between border-b border-[var(--home-rule)] pb-4">
               <h2 className="text-lg font-bold text-[var(--home-ink)]">Standings</h2>
@@ -488,21 +579,21 @@ export function NflClient({
                   </h2>
                   <div className="mt-1.5 flex flex-wrap gap-1.5">
                     <span
-                      className="inline-flex items-center rounded-full border px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em]"
+                      className="inline-flex items-center rounded-full border px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em]"
                       style={getZonePillStyle(selectedZone)}
                     >
                       {getZoneLabel(selectedZone)}
                     </span>
-                    <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                    <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
                       {formatRecord(selectedTeam)}
                     </span>
-                    <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                    <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
                       {selectedTeam.division}
                     </span>
                   </div>
                 </div>
                 <div className="flex-shrink-0 rounded-xl bg-[var(--home-haze)] px-3 py-2 text-center text-[var(--home-paper)] shadow-sm">
-                  <p className="text-[10px] uppercase tracking-[0.14em] opacity-80">Seed</p>
+                  <p className="text-3xs uppercase tracking-[0.14em] opacity-80">Seed</p>
                   <p className="text-xl font-bold">{selectedTeam.seed ?? "—"}</p>
                 </div>
               </div>
@@ -531,7 +622,7 @@ export function NflClient({
                   ] as const
                 ).map(([label, value]) => (
                   <div key={label} className="flex items-baseline justify-between gap-2">
-                    <dt className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                    <dt className="text-2xs font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
                       {label}
                     </dt>
                     <dd className="text-sm font-bold text-[var(--home-ink)]">{value}</dd>
@@ -541,7 +632,7 @@ export function NflClient({
 
               {formSequence.length > 0 && (
                 <div className="mt-4 border-t border-[var(--home-rule)] pt-4">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                  <p className="text-2xs font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
                     Form (last 5)
                   </p>
                   <div className="mt-2 flex gap-1.5">

@@ -9,6 +9,7 @@ import {
 } from "react";
 import { ChefHat, Plus, Search, Sparkles, Trash2, X } from "lucide-react";
 import { EditorialPillButton } from "@/components/editorial";
+import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
 import { RECIPES } from "@/data/recipesSnapshot";
 import {
   formatTotalTime,
@@ -102,17 +103,13 @@ function totalMinutes(recipe: RecipeMatch["recipe"]): number {
 }
 
 export function RecipeFinderClient() {
-  const [pantry, setPantry] = useState<string[]>([]);
+  const [pantry, setPantry] = useState<string[]>(() => loadPantry());
   const [pantryDraft, setPantryDraft] = useState("");
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<RecipeCategory | "all">("all");
   const [diet, setDiet] = useState<DietTag | "all">("all");
   const [view, setView] = useState<ViewId>("all");
   const [openRecipeId, setOpenRecipeId] = useState<string | null>(null);
-
-  useEffect(() => {
-    setPantry(loadPantry());
-  }, []);
 
   useEffect(() => {
     savePantry(pantry);
@@ -165,6 +162,62 @@ export function RecipeFinderClient() {
   const hasPantry = pantry.length > 0;
   const totalRecipes = RECIPES.length;
 
+  const quickWinsCount = useMemo(
+    () => baseMatches.filter((m) => totalMinutes(m.recipe) <= 15).length,
+    [baseMatches],
+  );
+
+  const dietLabel = useMemo(() => {
+    if (view === "vegetarian") return "Vegetarian";
+    return DIET_OPTIONS.find((option) => option.value === diet)?.label ?? "Any diet";
+  }, [diet, view]);
+
+  const mealLabel = useMemo(
+    () => CATEGORY_OPTIONS.find((option) => option.value === category)?.label ?? "Any time",
+    [category],
+  );
+
+  const recipeStatsCells: HomeStatsCell[] = [
+    {
+      label: "Recipes available",
+      value: visibleMatches.length.toLocaleString(),
+      sub: `of ${totalRecipes} in corpus`,
+    },
+    {
+      label: "Pantry items",
+      value: hasPantry ? pantry.length.toLocaleString() : "—",
+      sub: hasPantry ? "Saved locally" : "Add to start",
+    },
+    {
+      label: "Cookable now",
+      value: hasPantry ? cookableNow.toLocaleString() : "—",
+      sub: hasPantry ? "100% pantry match" : undefined,
+      tone: hasPantry && cookableNow > 0 ? "good" : "default",
+    },
+    {
+      label: "Almost cookable",
+      value: hasPantry ? almostCookable.toLocaleString() : "—",
+      sub: hasPantry ? "60% or better" : undefined,
+    },
+    {
+      label: "Total in corpus",
+      value: totalRecipes.toLocaleString(),
+    },
+    {
+      label: "Active diet",
+      value: dietLabel,
+    },
+    {
+      label: "Active meal",
+      value: mealLabel,
+    },
+    {
+      label: "Quick wins",
+      value: quickWinsCount.toLocaleString(),
+      sub: "15 minutes or less",
+    },
+  ];
+
   function addIngredient(rawValue: string) {
     const value = rawValue.trim().toLowerCase();
     if (!value) return;
@@ -204,108 +257,109 @@ export function RecipeFinderClient() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-[1280px] px-4 pb-14 pt-8 sm:px-6 sm:pb-16 sm:pt-10 lg:px-8">
-      <div className="tool-page-stack">
-        <div className="tool-shell" data-testid="recipe-shell">
-          <aside className="tool-sidebar" aria-label="Recipe finder navigation">
-            <div className="tool-brand">
-              <div className="tool-brand-mark" aria-hidden="true">
-                <ChefHat className="h-4 w-4" />
-              </div>
-              <div className="tool-brand-name">
-                Recipe Finder
-                <small>Pantry-aware</small>
-              </div>
+    <section
+      className="home-page min-h-screen"
+      aria-label="Recipe Finder"
+      data-testid="recipe-shell"
+    >
+      <div className="home-shell home-section">
+        <div className="flex flex-col gap-6">
+          <div className="tool-topbar">
+            <div>
+              <p className="tool-crumbs">
+                Recipe Finder / <strong>{VIEW_LABELS[view]}</strong>
+              </p>
+              <h1>Recipe Finder</h1>
             </div>
 
-            <nav className="flex flex-col gap-1.5" aria-label="Recipe views">
-              {(Object.keys(VIEW_LABELS) as ViewId[]).map((id) => (
+            <label className="tool-search" aria-label="Search recipes">
+              <Search size={14} aria-hidden="true" />
+              <input
+                type="search"
+                placeholder="Search by name or ingredient…"
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+              />
+            </label>
+          </div>
+
+          <div
+            className="flex flex-wrap gap-2"
+            role="tablist"
+            aria-label="Recipe views"
+          >
+            {(Object.keys(VIEW_LABELS) as ViewId[]).map((id) => {
+              const isActive = view === id;
+              return (
                 <button
                   key={id}
                   type="button"
                   onClick={() => selectView(id)}
-                  className={`tool-nav-link${view === id ? " is-active" : ""}`}
-                  aria-current={view === id ? "true" : undefined}
+                  role="tab"
+                  aria-selected={isActive}
+                  aria-current={isActive ? "true" : undefined}
+                  className="inline-flex min-h-touch items-center gap-2 rounded-full border px-4 py-1.5 text-sm font-semibold transition-[transform,border-color,background-color,color,box-shadow] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                  style={{
+                    borderColor: isActive
+                      ? "var(--home-ink)"
+                      : "var(--home-rule)",
+                    background: isActive
+                      ? "var(--home-ink)"
+                      : "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))",
+                    color: isActive ? "var(--home-paper)" : "var(--home-ink-muted)",
+                    fontFamily: "var(--font-home-sans)",
+                  }}
                 >
-                  {id === "all" && <Search size={18} aria-hidden="true" />}
-                  {id === "quick" && <Sparkles size={18} aria-hidden="true" />}
-                  {id === "vegetarian" && <ChefHat size={18} aria-hidden="true" />}
-                  {id === "pantry" && <Plus size={18} aria-hidden="true" />}
+                  {id === "all" && <Search size={16} aria-hidden="true" />}
+                  {id === "quick" && <Sparkles size={16} aria-hidden="true" />}
+                  {id === "vegetarian" && <ChefHat size={16} aria-hidden="true" />}
+                  {id === "pantry" && <Plus size={16} aria-hidden="true" />}
                   <span>{VIEW_LABELS[id]}</span>
                   {id === "pantry" && hasPantry ? (
-                    <span className="tool-nav-pill">{cookableNow}</span>
+                    <span
+                      className="ml-1 rounded-full px-2 py-0.5 text-2xs font-bold tracking-[0.04em]"
+                      style={{
+                        background: isActive
+                          ? "color-mix(in srgb, var(--home-paper) 22%, transparent)"
+                          : "color-mix(in srgb, var(--home-acid) 40%, transparent)",
+                        color: isActive ? "var(--home-paper)" : "var(--home-ink)",
+                      }}
+                    >
+                      {cookableNow}
+                    </span>
                   ) : null}
                 </button>
-              ))}
-            </nav>
+              );
+            })}
+          </div>
 
-            <div className="tool-sidebar-footer">
-              <Sparkles size={14} aria-hidden="true" />
-              <span>Pantry saved in your browser</span>
-            </div>
-          </aside>
+          <div className="tool-meta-chip" role="status" aria-live="polite">
+            <span className="tool-meta-chip-dot" aria-hidden="true" />
+            <span>
+              <strong>{totalRecipes}</strong> recipes ·{" "}
+              <strong>{pantry.length}</strong> ingredient{pantry.length === 1 ? "" : "s"} in pantry
+            </span>
+            <span className="tool-meta-chip-divider" aria-hidden="true">
+              ·
+            </span>
+            <span>ranking by pantry match</span>
+          </div>
 
-          <main className="tool-main">
-            <div className="tool-topbar">
-              <div>
-                <p className="tool-crumbs">
-                  Recipe Finder / <strong>{VIEW_LABELS[view]}</strong>
-                </p>
-                <h1>Recipe Finder</h1>
-              </div>
-
-              <label className="tool-search" aria-label="Search recipes">
-                <Search size={14} aria-hidden="true" />
-                <input
-                  type="search"
-                  placeholder="Search by name or ingredient…"
-                  value={query}
-                  onChange={(event) => setQuery(event.target.value)}
-                />
-              </label>
-            </div>
-
-            <div className="tool-meta-chip" role="status" aria-live="polite">
-              <span className="tool-meta-chip-dot" aria-hidden="true" />
-              <span>
-                <strong>{totalRecipes}</strong> recipes ·{" "}
-                <strong>{pantry.length}</strong> ingredient{pantry.length === 1 ? "" : "s"} in pantry
-              </span>
-              <span className="tool-meta-chip-divider" aria-hidden="true">
-                ·
-              </span>
-              <span>ranking by pantry match</span>
-            </div>
-
-            <div className="mt-5 space-y-5">
-              <div className="tool-card">
-                <div className="tool-stats-grid">
-                  <div className="tool-stat-cell">
-                    <p className="tool-stat-label">Recipes available</p>
-                    <p className="tool-stat-val">{visibleMatches.length}</p>
-                    <p className="tool-stat-delta">
-                      of {totalRecipes} in corpus
-                    </p>
-                  </div>
-                  <div className="tool-stat-cell">
-                    <p className="tool-stat-label">Pantry items</p>
-                    <p className="tool-stat-val">{hasPantry ? pantry.length : "—"}</p>
-                    <p className="tool-stat-delta">
-                      {hasPantry ? "saved locally" : "add to start"}
-                    </p>
-                  </div>
-                  <div className="tool-stat-cell">
-                    <p className="tool-stat-label">Cookable now</p>
-                    <p className="tool-stat-val">{hasPantry ? cookableNow : "—"}</p>
-                    <p className="tool-stat-delta">100% match</p>
-                  </div>
-                  <div className="tool-stat-cell">
-                    <p className="tool-stat-label">Almost cookable</p>
-                    <p className="tool-stat-val">{hasPantry ? almostCookable : "—"}</p>
-                    <p className="tool-stat-delta">≥60% match</p>
-                  </div>
-                </div>
-              </div>
+          <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,320px)]">
+            <div className="space-y-5">
+              <HomeStatsPanel
+                id="recipe-finder-stats"
+                title="Recipes at a glance"
+                meta={hasPantry ? `${cookableNow} cookable now` : "Add pantry items to rank"}
+                hideLiveDot
+                cells={recipeStatsCells}
+                pills={[
+                  { label: "Quick wins", href: "/recipe-finder?view=quick" },
+                  { label: "Vegetarian", href: "/recipe-finder?view=vegetarian" },
+                  { label: "Pantry", href: "/recipe-finder?view=pantry" },
+                  { label: "All recipes", href: "/recipe-finder?view=all" },
+                ]}
+              />
 
               <div
                 className="flex flex-wrap gap-2"
@@ -335,83 +389,86 @@ export function RecipeFinderClient() {
                 }
               />
             </div>
-          </main>
 
-          <aside className="tool-rail" aria-label="Pantry editor">
-            <section aria-labelledby="pantry-heading">
-              <p className="tool-rail-label" id="pantry-heading">
-                <ChefHat size={12} aria-hidden="true" />
-                Pantry
-              </p>
-              <PantryEditor
-                pantry={pantry}
-                pantryDraft={pantryDraft}
-                suggestions={suggestions}
-                onDraftChange={setPantryDraft}
-                onAdd={addIngredient}
-                onRemove={removeIngredient}
-                onClear={clearPantry}
-                onSubmit={handlePantrySubmit}
-                onKeyDown={handlePantryKeyDown}
-                cookableNow={cookableNow}
-              />
-            </section>
-
-            <section aria-labelledby="diet-heading">
-              <p className="tool-rail-label" id="diet-heading">
-                <Sparkles size={12} aria-hidden="true" />
-                Diet
-              </p>
-              <label className="sr-only" htmlFor="recipe-diet-select">
-                Filter by diet
-              </label>
-              <select
-                id="recipe-diet-select"
-                value={diet}
-                onChange={(event) => setDiet(event.target.value as DietTag | "all")}
-                disabled={view === "vegetarian"}
-                className="w-full min-h-touch rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-3 py-2 text-[13px] font-medium text-[var(--home-ink)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
-              >
-                {DIET_OPTIONS.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.label}
-                  </option>
-                ))}
-              </select>
-              {view === "vegetarian" ? (
-                <p className="mt-2 text-[11px] text-[var(--home-ink-muted)]">
-                  Vegetarian view is active. Switch to All recipes to use other diets.
+            <aside
+              aria-label="Pantry editor"
+              className="flex flex-col gap-4 rounded-[1.5rem] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_74%,var(--home-elev-mix))] p-5 shadow-[var(--shadow-sm)] lg:sticky lg:top-24 lg:self-start"
+            >
+              <section aria-labelledby="pantry-heading">
+                <p className="tool-rail-label" id="pantry-heading">
+                  <ChefHat size={12} aria-hidden="true" />
+                  Pantry
                 </p>
-              ) : null}
-            </section>
+                <PantryEditor
+                  pantry={pantry}
+                  pantryDraft={pantryDraft}
+                  suggestions={suggestions}
+                  onDraftChange={setPantryDraft}
+                  onAdd={addIngredient}
+                  onRemove={removeIngredient}
+                  onClear={clearPantry}
+                  onSubmit={handlePantrySubmit}
+                  onKeyDown={handlePantryKeyDown}
+                  cookableNow={cookableNow}
+                />
+              </section>
 
-            <section aria-labelledby="quick-adds-heading">
-              <p className="tool-rail-label" id="quick-adds-heading">
-                <Plus size={12} aria-hidden="true" />
-                Quick adds
+              <section aria-labelledby="diet-heading">
+                <p className="tool-rail-label" id="diet-heading">
+                  <Sparkles size={12} aria-hidden="true" />
+                  Diet
+                </p>
+                <label className="sr-only" htmlFor="recipe-diet-select">
+                  Filter by diet
+                </label>
+                <select
+                  id="recipe-diet-select"
+                  value={diet}
+                  onChange={(event) => setDiet(event.target.value as DietTag | "all")}
+                  disabled={view === "vegetarian"}
+                  className="w-full min-h-touch rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-3 py-2 text-[13px] font-medium text-[var(--home-ink)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  {DIET_OPTIONS.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
+                </select>
+                {view === "vegetarian" ? (
+                  <p className="mt-2 text-2xs text-[var(--home-ink-muted)]">
+                    Vegetarian view is active. Switch to All recipes to use other diets.
+                  </p>
+                ) : null}
+              </section>
+
+              <section aria-labelledby="quick-adds-heading">
+                <p className="tool-rail-label" id="quick-adds-heading">
+                  <Plus size={12} aria-hidden="true" />
+                  Quick adds
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {QUICK_PICKS.filter((pick) => !pantry.includes(pick)).map((pick) => (
+                    <button
+                      key={pick}
+                      type="button"
+                      onClick={() => addIngredient(pick)}
+                      className="inline-flex min-h-touch items-center rounded-full border border-dashed border-[var(--home-rule)] bg-transparent px-3 py-1 text-2xs font-medium text-[var(--home-ink-muted)] transition-colors hover:border-[var(--home-haze)] hover:text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                    >
+                      + {pick}
+                    </button>
+                  ))}
+                </div>
+              </section>
+
+              <p className="tool-rail-foot">
+                <Sparkles size={14} aria-hidden="true" />
+                Pantry saved in your browser
               </p>
-              <div className="flex flex-wrap gap-1.5">
-                {QUICK_PICKS.filter((pick) => !pantry.includes(pick)).map((pick) => (
-                  <button
-                    key={pick}
-                    type="button"
-                    onClick={() => addIngredient(pick)}
-                    className="inline-flex min-h-touch items-center rounded-full border border-dashed border-[var(--home-rule)] bg-transparent px-3 py-1 text-[11px] font-medium text-[var(--home-ink-muted)] transition-colors hover:border-[var(--home-haze)] hover:text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
-                  >
-                    + {pick}
-                  </button>
-                ))}
-              </div>
-            </section>
-
-            <p className="tool-rail-foot">
-              <Sparkles size={14} aria-hidden="true" />
-              Pantry saved in your browser
-            </p>
-          </aside>
+            </aside>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
@@ -514,7 +571,7 @@ function PantryEditor({
             <button
               type="button"
               onClick={onClear}
-              className="inline-flex min-h-touch items-center gap-1 rounded-full border border-[var(--home-rule)] bg-transparent px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+              className="inline-flex min-h-touch items-center gap-1 rounded-full border border-[var(--home-rule)] bg-transparent px-3 py-1 text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
             >
               <Trash2 className="h-3 w-3" aria-hidden="true" />
               Clear
@@ -585,7 +642,7 @@ function RecipeCard({ match, hasPantry, isOpen, onToggle }: RecipeCardProps) {
         className="flex w-full items-start justify-between gap-4 px-5 py-5 text-left sm:px-6"
       >
         <div className="min-w-0 flex-1">
-          <div className="mb-1.5 flex flex-wrap items-center gap-2 text-[10px] font-mono font-semibold uppercase tracking-[0.22em] text-[var(--home-ink-muted)]">
+          <div className="mb-1.5 flex flex-wrap items-center gap-2 text-3xs font-mono font-semibold uppercase tracking-[0.22em] text-[var(--home-ink-muted)]">
             <span>{recipe.cuisine}</span>
             <span aria-hidden="true">·</span>
             <span>{recipe.category}</span>
@@ -637,7 +694,7 @@ function RecipeCard({ match, hasPantry, isOpen, onToggle }: RecipeCardProps) {
           >
             {hasPantry ? formatPercent(matchScore) : "—"}
           </span>
-          <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--home-ink-muted)]">
+          <span className="font-mono text-3xs uppercase tracking-[0.18em] text-[var(--home-ink-muted)]">
             {isOpen ? "Hide" : "Open"}
           </span>
         </div>
@@ -650,7 +707,7 @@ function RecipeCard({ match, hasPantry, isOpen, onToggle }: RecipeCardProps) {
         >
           <div className="grid gap-6 md:grid-cols-2">
             <div>
-              <h4 className="mb-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--home-ink-muted)]">
+              <h4 className="mb-3 font-mono text-2xs font-semibold uppercase tracking-[0.22em] text-[var(--home-ink-muted)]">
                 Ingredients
               </h4>
               <ul className="space-y-1.5 text-sm">
@@ -671,13 +728,13 @@ function RecipeCard({ match, hasPantry, isOpen, onToggle }: RecipeCardProps) {
                       <span>
                         {ingredient.display}
                         {isStaple && (
-                          <span className="ml-2 rounded-full border border-[var(--home-rule)] px-1.5 py-0.5 text-[10px] uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
+                          <span className="ml-2 rounded-full border border-[var(--home-rule)] px-1.5 py-0.5 text-3xs uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
                             staple
                           </span>
                         )}
                         {isMissing && hasPantry && (
                           <span
-                            className="ml-2 rounded-full px-1.5 py-0.5 text-[10px] uppercase tracking-[0.16em]"
+                            className="ml-2 rounded-full px-1.5 py-0.5 text-3xs uppercase tracking-[0.16em]"
                             style={{
                               border:
                                 "1px solid color-mix(in srgb, var(--home-haze) 40%, var(--home-rule))",
@@ -694,13 +751,13 @@ function RecipeCard({ match, hasPantry, isOpen, onToggle }: RecipeCardProps) {
               </ul>
             </div>
             <div>
-              <h4 className="mb-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--home-ink-muted)]">
+              <h4 className="mb-3 font-mono text-2xs font-semibold uppercase tracking-[0.22em] text-[var(--home-ink-muted)]">
                 Instructions
               </h4>
               <ol className="space-y-2 text-sm text-[var(--home-ink)]">
                 {recipe.instructions.map((step, index) => (
                   <li key={index} className="flex gap-3">
-                    <span className="font-mono text-[11px] font-bold text-[var(--home-haze)]">
+                    <span className="font-mono text-2xs font-bold text-[var(--home-haze)]">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     <span>{step}</span>
@@ -715,7 +772,7 @@ function RecipeCard({ match, hasPantry, isOpen, onToggle }: RecipeCardProps) {
               {recipe.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-full border border-[var(--home-rule)] bg-transparent px-2.5 py-0.5 text-[11px] text-[var(--home-ink-muted)]"
+                  className="rounded-full border border-[var(--home-rule)] bg-transparent px-2.5 py-0.5 text-2xs text-[var(--home-ink-muted)]"
                 >
                   {tag}
                 </span>

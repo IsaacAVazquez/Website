@@ -596,12 +596,25 @@ function buildLeaderboards(rows: PlayerStatRow[]): NFLLeaderboards {
 }
 
 export function isValidNflTeamId(teamId: string): boolean {
-  return /^[a-z]{2,4}$/.test(teamId);
+  return /^[a-z]{2,4}$/i.test(teamId);
+}
+
+/**
+ * The NFL season starts in early September. Once we cross into the new
+ * calendar year (Jan–Aug) we're still talking about the previous fall's
+ * season, so this returns last calendar year for those months. Mirrors the
+ * MLB `getCurrentSeason()` shape (which inverts: MLB rolls forward in Nov).
+ */
+function getCurrentSeason(): string {
+  const now = new Date();
+  const month = now.getUTCMonth() + 1;
+  const year = now.getUTCFullYear();
+  return month < 9 ? String(year - 1) : String(year);
 }
 
 export function createEmptyNflSnapshot(): NFLSnapshot {
   return {
-    season: "2025",
+    season: getCurrentSeason(),
     week: 0,
     updatedAt: new Date().toISOString().slice(0, 10),
     sourceLabel: "NFLverse",

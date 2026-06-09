@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "BSX",
+    "name": "Mr. Adam  Smith",
+    "title": "General Manager of Global Sales & Marketing",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "BSX",
+    "name": "Mr. Arthur Crosswell  Butcher",
+    "title": "Executive VP and Group President of MedSurg & Asia Pacific",
+    "age": 54,
+    "born": 1971,
+    "pay": 1976990,
+    "exercised": 5381204,
+    "unexercised": 8240690,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "BSX",
+    "name": "Mr. Jonathan R. Monson",
+    "title": "Executive VP & CFO",
+    "age": 51,
+    "born": 1974,
+    "pay": 1470301,
+    "exercised": 1713888,
+    "unexercised": 4918464,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "BSX",
+    "name": "Mr. Joseph M. Fitzgerald",
+    "title": "Executive VP & Group President of Cardiovascular",
+    "age": 61,
+    "born": 1964,
+    "pay": 2396262,
+    "exercised": 23536068,
+    "unexercised": 23706244,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "BSX",
+    "name": "Mr. Michael F. Mahoney",
+    "title": "Chairman, President & CEO",
+    "age": 60,
+    "born": 1965,
+    "pay": 5732403,
+    "exercised": 25786816,
+    "unexercised": 80468448,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "BSX",
+    "name": "Mr. Paudie  O'Connor",
+    "title": "Executive Vice President of Global Operations",
+    "age": 57,
+    "born": 1968,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "BSX",
+    "name": "Mr. Vance R. Brown J.D.",
+    "title": "EVP, General Counsel & Corporate Secretary",
+    "age": 55,
+    "born": 1970,
+    "pay": 1602123,
+    "exercised": 0,
+    "unexercised": 3446400,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "BSX",
+    "name": "Ms. Brenda  Becker",
+    "title": "Senior Vice President of Global Government Affairs",
+    "age": 65,
+    "born": 1960,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "BSX",
+    "name": "Ms. Emily M. Woodworth",
+    "title": "Senior VP, Global Controller & Chief Accounting Officer",
+    "age": 47,
+    "born": 1978,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "BSX",
+    "name": "Ms. Miriam  O'sullivan",
+    "title": "Senior VP & Chief Human Resources Officer",
+    "age": 44,
+    "born": 1981,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  }
+]

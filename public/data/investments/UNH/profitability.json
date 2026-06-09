@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "UNH",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 5841000000.0,
+      "beginning_stockholders_equity": 82353000000.0,
+      "ending_stockholders_equity": 84494000000.0,
+      "avg_equity": 83423500000.0,
+      "roe": 0.07
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 5455000000.0,
+      "beginning_stockholders_equity": 84494000000.0,
+      "ending_stockholders_equity": 88756000000.0,
+      "avg_equity": 86625000000.0,
+      "roe": 0.063
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": -1409000000.0,
+      "beginning_stockholders_equity": 88756000000.0,
+      "ending_stockholders_equity": 86688000000.0,
+      "avg_equity": 87722000000.0,
+      "roe": -0.0161
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 4216000000.0,
+      "beginning_stockholders_equity": 86688000000.0,
+      "ending_stockholders_equity": 89359000000.0,
+      "avg_equity": 88023500000.0,
+      "roe": 0.0479
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 6055000000.0,
+      "beginning_stockholders_equity": 89359000000.0,
+      "ending_stockholders_equity": 94535000000.0,
+      "avg_equity": 91947000000.0,
+      "roe": 0.0659
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 5543000000.0,
+      "beginning_stockholders_equity": 94535000000.0,
+      "ending_stockholders_equity": 92658000000.0,
+      "avg_equity": 93596500000.0,
+      "roe": 0.0592
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 6292000000.0,
+      "beginning_stockholders_equity": 92658000000.0,
+      "ending_stockholders_equity": 95038000000.0,
+      "avg_equity": 93848000000.0,
+      "roe": 0.067
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 3406000000.0,
+      "beginning_stockholders_equity": 95038000000.0,
+      "ending_stockholders_equity": 94724000000.0,
+      "avg_equity": 94881000000.0,
+      "roe": 0.0359
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 2348000000.0,
+      "beginning_stockholders_equity": 94724000000.0,
+      "ending_stockholders_equity": 95787000000.0,
+      "avg_equity": 95255500000.0,
+      "roe": 0.0246
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 10000000.0,
+      "beginning_stockholders_equity": 95787000000.0,
+      "ending_stockholders_equity": 94110000000.0,
+      "avg_equity": 94948500000.0,
+      "roe": 0.0001
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 6280000000.0,
+      "beginning_stockholders_equity": 94110000000.0,
+      "ending_stockholders_equity": 97881000000.0,
+      "avg_equity": 95995500000.0,
+      "roe": 0.0654
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "UNH",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 5841000000.0,
+      "beginning_total_assets": 280164000000.0,
+      "ending_total_assets": 282063000000.0,
+      "avg_assets": 281113500000.0,
+      "roa": 0.0208
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 5455000000.0,
+      "beginning_total_assets": 282063000000.0,
+      "ending_total_assets": 273720000000.0,
+      "avg_assets": 277891500000.0,
+      "roa": 0.0196
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": -1409000000.0,
+      "beginning_total_assets": 273720000000.0,
+      "ending_total_assets": 284210000000.0,
+      "avg_assets": 278965000000.0,
+      "roa": -0.0051
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 4216000000.0,
+      "beginning_total_assets": 284210000000.0,
+      "ending_total_assets": 286056000000.0,
+      "avg_assets": 285133000000.0,
+      "roa": 0.0148
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 6055000000.0,
+      "beginning_total_assets": 286056000000.0,
+      "ending_total_assets": 299309000000.0,
+      "avg_assets": 292682500000.0,
+      "roa": 0.0207
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 5543000000.0,
+      "beginning_total_assets": 299309000000.0,
+      "ending_total_assets": 298278000000.0,
+      "avg_assets": 298793500000.0,
+      "roa": 0.0186
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 6292000000.0,
+      "beginning_total_assets": 298278000000.0,
+      "ending_total_assets": 309790000000.0,
+      "avg_assets": 304034000000.0,
+      "roa": 0.0207
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 3406000000.0,
+      "beginning_total_assets": 309790000000.0,
+      "ending_total_assets": 308573000000.0,
+      "avg_assets": 309181500000.0,
+      "roa": 0.011
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 2348000000.0,
+      "beginning_total_assets": 308573000000.0,
+      "ending_total_assets": 315269000000.0,
+      "avg_assets": 311921000000.0,
+      "roa": 0.0075
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 10000000.0,
+      "beginning_total_assets": 315269000000.0,
+      "ending_total_assets": 309581000000.0,
+      "avg_assets": 312425000000.0,
+      "roa": 0.0
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 6280000000.0,
+      "beginning_total_assets": 309581000000.0,
+      "ending_total_assets": 312644000000.0,
+      "avg_assets": 311112500000.0,
+      "roa": 0.0202
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "UNH",
+      "report_date": "2023-09-30",
+      "ebit": 8526000000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 6650280000.0,
+      "beginning_invested_capital": 147942000000.0,
+      "ending_invested_capital": 147863000000.0,
+      "avg_invested_capital": 147902500000.0,
+      "roic": 0.045
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2023-12-31",
+      "ebit": 7689000000.0,
+      "tax_rate_for_calcs": 0.17,
+      "nopat": 6381870000.0,
+      "beginning_invested_capital": 147863000000.0,
+      "ending_invested_capital": 151293000000.0,
+      "avg_invested_capital": 149578000000.0,
+      "roic": 0.0427
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-03-31",
+      "ebit": 845000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 667550000.0,
+      "beginning_invested_capital": 151293000000.0,
+      "ending_invested_capital": 160325000000.0,
+      "avg_invested_capital": 155809000000.0,
+      "roic": 0.0043
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-06-30",
+      "ebit": 6650000000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 5187000000.0,
+      "beginning_invested_capital": 160325000000.0,
+      "ending_invested_capital": 164457000000.0,
+      "avg_invested_capital": 162391000000.0,
+      "roic": 0.0319
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-09-30",
+      "ebit": 8688000000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 7124160000.0,
+      "beginning_invested_capital": 164457000000.0,
+      "ending_invested_capital": 172545000000.0,
+      "avg_invested_capital": 168501000000.0,
+      "roic": 0.0423
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-12-31",
+      "ebit": 7794000000.0,
+      "tax_rate_for_calcs": 0.15,
+      "nopat": 6624900000.0,
+      "beginning_invested_capital": 172545000000.0,
+      "ending_invested_capital": 169562000000.0,
+      "avg_invested_capital": 171053500000.0,
+      "roic": 0.0387
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-03-31",
+      "ebit": 9104000000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 7283200000.0,
+      "beginning_invested_capital": 169562000000.0,
+      "ending_invested_capital": 176309000000.0,
+      "avg_invested_capital": 172935500000.0,
+      "roic": 0.0421
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-06-30",
+      "ebit": 30695000000.0,
+      "tax_rate_for_calcs": 0.17,
+      "nopat": 25476850000.0,
+      "beginning_invested_capital": 176309000000.0,
+      "ending_invested_capital": 173917000000.0,
+      "avg_invested_capital": 175113000000.0,
+      "roic": 0.1455
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-09-30",
+      "ebit": 4232000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 3343280000.0,
+      "beginning_invested_capital": 173917000000.0,
+      "ending_invested_capital": 175923000000.0,
+      "avg_invested_capital": 174920000000.0,
+      "roic": 0.0191
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-12-31",
+      "ebit": 254000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 200660000.0,
+      "beginning_invested_capital": 175923000000.0,
+      "ending_invested_capital": 172499000000.0,
+      "avg_invested_capital": 174211000000.0,
+      "roic": 0.0012
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2026-03-31",
+      "ebit": 18513000000.0,
+      "tax_rate_for_calcs": 0.12,
+      "nopat": 16291440000.0,
+      "beginning_invested_capital": 172499000000.0,
+      "ending_invested_capital": 175798000000.0,
+      "avg_invested_capital": 174148500000.0,
+      "roic": 0.0935
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "UNH",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.07,
+      "roa": 0.0208,
+      "equity_multiplier": 3.37
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.063,
+      "roa": 0.0196,
+      "equity_multiplier": 3.21
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": -0.0161,
+      "roa": -0.0051,
+      "equity_multiplier": 3.16
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.0479,
+      "roa": 0.0148,
+      "equity_multiplier": 3.24
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.0659,
+      "roa": 0.0207,
+      "equity_multiplier": 3.18
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.0592,
+      "roa": 0.0186,
+      "equity_multiplier": 3.18
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.067,
+      "roa": 0.0207,
+      "equity_multiplier": 3.24
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.0359,
+      "roa": 0.011,
+      "equity_multiplier": 3.26
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.0246,
+      "roa": 0.0075,
+      "equity_multiplier": 3.28
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.0001,
+      "roa": 0.0,
+      "equity_multiplier": null
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.0654,
+      "roa": 0.0202,
+      "equity_multiplier": 3.24
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "UNH",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0208,
+      "net_margin": 0.0639,
+      "asset_turnover": 0.33
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0196,
+      "net_margin": 0.0578,
+      "asset_turnover": 0.34
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": -0.0051,
+      "net_margin": -0.0141,
+      "asset_turnover": 0.36
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0148,
+      "net_margin": 0.0426,
+      "asset_turnover": 0.35
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0207,
+      "net_margin": 0.0601,
+      "asset_turnover": 0.34
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0186,
+      "net_margin": 0.055,
+      "asset_turnover": 0.34
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0207,
+      "net_margin": 0.0574,
+      "asset_turnover": 0.36
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.011,
+      "net_margin": 0.0081,
+      "asset_turnover": 1.36
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0075,
+      "net_margin": 0.0207,
+      "asset_turnover": 0.36
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0,
+      "net_margin": 0.0001,
+      "asset_turnover": 0.0
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0202,
+      "net_margin": 0.014,
+      "asset_turnover": 1.44
+    }
+  ]
+}

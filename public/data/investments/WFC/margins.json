@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "WFC",
+      "report_date": "2022-06-30",
+      "gross_profit": null,
+      "total_revenue": 17028000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2023-06-30",
+      "gross_profit": null,
+      "total_revenue": 20533000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2023-09-30",
+      "gross_profit": null,
+      "total_revenue": 20857000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2023-12-31",
+      "gross_profit": null,
+      "total_revenue": 20478000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2024-03-31",
+      "gross_profit": null,
+      "total_revenue": 20863000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2024-06-30",
+      "gross_profit": null,
+      "total_revenue": 20689000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2024-09-30",
+      "gross_profit": null,
+      "total_revenue": 20366000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2024-12-31",
+      "gross_profit": null,
+      "total_revenue": 20378000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2025-03-31",
+      "gross_profit": null,
+      "total_revenue": 20149000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2025-06-30",
+      "gross_profit": null,
+      "total_revenue": 20569000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2025-09-30",
+      "gross_profit": null,
+      "total_revenue": 21436000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2025-12-31",
+      "gross_profit": null,
+      "total_revenue": 21292000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2026-03-31",
+      "gross_profit": null,
+      "total_revenue": 21446000000.0,
+      "gross_margin": null
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "WFC",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2020-12-31",
+      "gross_profit": null,
+      "total_revenue": 74264000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2021-12-31",
+      "gross_profit": null,
+      "total_revenue": 79166000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": 74368000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2023-12-31",
+      "gross_profit": null,
+      "total_revenue": 82597000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2024-12-31",
+      "gross_profit": null,
+      "total_revenue": 82296000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2025-12-31",
+      "gross_profit": null,
+      "total_revenue": 83699000000.0,
+      "gross_margin": null
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "WFC",
+      "report_date": "2022-06-30",
+      "operating_income": null,
+      "total_revenue": 17028000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2023-06-30",
+      "operating_income": null,
+      "total_revenue": 20533000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2023-09-30",
+      "operating_income": null,
+      "total_revenue": 20857000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2023-12-31",
+      "operating_income": null,
+      "total_revenue": 20478000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2024-03-31",
+      "operating_income": null,
+      "total_revenue": 20863000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2024-06-30",
+      "operating_income": null,
+      "total_revenue": 20689000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2024-09-30",
+      "operating_income": null,
+      "total_revenue": 20366000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2024-12-31",
+      "operating_income": null,
+      "total_revenue": 20378000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2025-03-31",
+      "operating_income": null,
+      "total_revenue": 20149000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2025-06-30",
+      "operating_income": null,
+      "total_revenue": 20569000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2025-09-30",
+      "operating_income": null,
+      "total_revenue": 21436000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2025-12-31",
+      "operating_income": null,
+      "total_revenue": 21292000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2026-03-31",
+      "operating_income": null,
+      "total_revenue": 21446000000.0,
+      "operating_margin": null
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "WFC",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2020-12-31",
+      "operating_income": null,
+      "total_revenue": 74264000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2021-12-31",
+      "operating_income": null,
+      "total_revenue": 79166000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": 74368000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2023-12-31",
+      "operating_income": null,
+      "total_revenue": 82597000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2024-12-31",
+      "operating_income": null,
+      "total_revenue": 82296000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2025-12-31",
+      "operating_income": null,
+      "total_revenue": 83699000000.0,
+      "operating_margin": null
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "WFC",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 2839000000.0,
+      "total_revenue": 17028000000.0,
+      "net_margin": 0.1667
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 4659000000.0,
+      "total_revenue": 20533000000.0,
+      "net_margin": 0.2269
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 5450000000.0,
+      "total_revenue": 20857000000.0,
+      "net_margin": 0.2613
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 3160000000.0,
+      "total_revenue": 20478000000.0,
+      "net_margin": 0.1543
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 4313000000.0,
+      "total_revenue": 20863000000.0,
+      "net_margin": 0.2067
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 4640000000.0,
+      "total_revenue": 20689000000.0,
+      "net_margin": 0.2243
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 4852000000.0,
+      "total_revenue": 20366000000.0,
+      "net_margin": 0.2382
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 4801000000.0,
+      "total_revenue": 20378000000.0,
+      "net_margin": 0.2356
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 4616000000.0,
+      "total_revenue": 20149000000.0,
+      "net_margin": 0.2291
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 19483000000.0,
+      "total_revenue": 20569000000.0,
+      "net_margin": 0.9472
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 5341000000.0,
+      "total_revenue": 21436000000.0,
+      "net_margin": 0.2492
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 5114000000.0,
+      "total_revenue": 21292000000.0,
+      "net_margin": 0.2402
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 20669000000.0,
+      "total_revenue": 21446000000.0,
+      "net_margin": 0.9638
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "WFC",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 1786000000.0,
+      "total_revenue": 74264000000.0,
+      "net_margin": 0.024
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 20818000000.0,
+      "total_revenue": 79166000000.0,
+      "net_margin": 0.263
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 12562000000.0,
+      "total_revenue": 74368000000.0,
+      "net_margin": 0.1689
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 17982000000.0,
+      "total_revenue": 82597000000.0,
+      "net_margin": 0.2177
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 18606000000.0,
+      "total_revenue": 82296000000.0,
+      "net_margin": 0.2261
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 20285000000.0,
+      "total_revenue": 83699000000.0,
+      "net_margin": 0.2424
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "WFC",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 17028000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2023-06-30",
+      "ebitda": null,
+      "total_revenue": 20533000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2023-09-30",
+      "ebitda": null,
+      "total_revenue": 20857000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2023-12-31",
+      "ebitda": null,
+      "total_revenue": 20478000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2024-03-31",
+      "ebitda": null,
+      "total_revenue": 20863000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2024-06-30",
+      "ebitda": null,
+      "total_revenue": 20689000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2024-09-30",
+      "ebitda": null,
+      "total_revenue": 20366000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2024-12-31",
+      "ebitda": null,
+      "total_revenue": 20378000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2025-03-31",
+      "ebitda": null,
+      "total_revenue": 20149000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2025-06-30",
+      "ebitda": null,
+      "total_revenue": 20569000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2025-09-30",
+      "ebitda": null,
+      "total_revenue": 21436000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2025-12-31",
+      "ebitda": null,
+      "total_revenue": 21292000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2026-03-31",
+      "ebitda": null,
+      "total_revenue": 21446000000.0,
+      "ebitda_margin": null
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "WFC",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2020-12-31",
+      "ebitda": null,
+      "total_revenue": 74264000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2021-12-31",
+      "ebitda": null,
+      "total_revenue": 79166000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": 74368000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2023-12-31",
+      "ebitda": null,
+      "total_revenue": 82597000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2024-12-31",
+      "ebitda": null,
+      "total_revenue": 82296000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2025-12-31",
+      "ebitda": null,
+      "total_revenue": 83699000000.0,
+      "ebitda_margin": null
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "WFC",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 7588000000.0,
+      "total_revenue": 17028000000.0,
+      "fcf_margin": 0.4456
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2023-06-30",
+      "free_cash_flow": -755000000.0,
+      "total_revenue": 20533000000.0,
+      "fcf_margin": -0.0368
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 15505000000.0,
+      "total_revenue": 20857000000.0,
+      "fcf_margin": 0.7434
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 18202000000.0,
+      "total_revenue": 20478000000.0,
+      "fcf_margin": 0.8889
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2024-03-31",
+      "free_cash_flow": -12125000000.0,
+      "total_revenue": 20863000000.0,
+      "fcf_margin": -0.5812
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 2050000000.0,
+      "total_revenue": 20689000000.0,
+      "fcf_margin": 0.0991
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 4206000000.0,
+      "total_revenue": 20366000000.0,
+      "fcf_margin": 0.2065
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 8904000000.0,
+      "total_revenue": 20378000000.0,
+      "fcf_margin": 0.4369
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2025-03-31",
+      "free_cash_flow": -11037000000.0,
+      "total_revenue": 20149000000.0,
+      "fcf_margin": -0.5478
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2025-06-30",
+      "free_cash_flow": -11216000000.0,
+      "total_revenue": 20569000000.0,
+      "fcf_margin": -0.5453
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2025-09-30",
+      "free_cash_flow": -869000000.0,
+      "total_revenue": 21436000000.0,
+      "fcf_margin": -0.0405
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 4121000000.0,
+      "total_revenue": 21292000000.0,
+      "fcf_margin": 0.1935
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 9143000000.0,
+      "total_revenue": 21446000000.0,
+      "fcf_margin": 0.4263
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "WFC",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 2051000000.0,
+      "total_revenue": 74264000000.0,
+      "fcf_margin": 0.0276
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2021-12-31",
+      "free_cash_flow": -11525000000.0,
+      "total_revenue": 79166000000.0,
+      "fcf_margin": -0.1456
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 27048000000.0,
+      "total_revenue": 74368000000.0,
+      "fcf_margin": 0.3637
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 40358000000.0,
+      "total_revenue": 82597000000.0,
+      "fcf_margin": 0.4886
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 3035000000.0,
+      "total_revenue": 82296000000.0,
+      "fcf_margin": 0.0369
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2025-12-31",
+      "free_cash_flow": -19001000000.0,
+      "total_revenue": 83699000000.0,
+      "fcf_margin": -0.227
+    }
+  ]
+}

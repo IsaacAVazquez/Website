@@ -1,0 +1,1559 @@
+{
+  "ttm_pe": [],
+  "ps_ratio": [],
+  "pb_ratio": [],
+  "roe": [
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 1062248100.0,
+      "total_avg_equity": 3743825386.0,
+      "industry_roe": 0.2837
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 1062248100.0,
+      "total_avg_equity": 3743825386.0,
+      "industry_roe": 0.2837
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 1062248100.0,
+      "total_avg_equity": 3743825386.0,
+      "industry_roe": 0.2837
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 37995168049.0,
+      "total_avg_equity": 289425309120.0,
+      "industry_roe": 0.1313
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 37995168049.0,
+      "total_avg_equity": 289425309120.0,
+      "industry_roe": 0.1313
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 37995168049.0,
+      "total_avg_equity": 289425309120.0,
+      "industry_roe": 0.1313
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 37055086049.0,
+      "total_avg_equity": 294858022120.0,
+      "industry_roe": 0.1257
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 37055086049.0,
+      "total_avg_equity": 294858022120.0,
+      "industry_roe": 0.1257
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 37055086049.0,
+      "total_avg_equity": 294858022120.0,
+      "industry_roe": 0.1257
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 34172359049.0,
+      "total_avg_equity": 302945963120.0,
+      "industry_roe": 0.1128
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 34172359049.0,
+      "total_avg_equity": 302945963120.0,
+      "industry_roe": 0.1128
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 34172359049.0,
+      "total_avg_equity": 302945963120.0,
+      "industry_roe": 0.1128
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 33994402049.0,
+      "total_avg_equity": 295879754620.0,
+      "industry_roe": 0.1149
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 33994402049.0,
+      "total_avg_equity": 295879754620.0,
+      "industry_roe": 0.1149
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 33994402049.0,
+      "total_avg_equity": 295879754620.0,
+      "industry_roe": 0.1149
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 44697473049.0,
+      "total_avg_equity": 302810113120.0,
+      "industry_roe": 0.1476
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 44697473049.0,
+      "total_avg_equity": 302810113120.0,
+      "industry_roe": 0.1476
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 44697473049.0,
+      "total_avg_equity": 302810113120.0,
+      "industry_roe": 0.1476
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 55588145244.0,
+      "total_avg_equity": 307746386227.0,
+      "industry_roe": 0.1806
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 55588145244.0,
+      "total_avg_equity": 307746386227.0,
+      "industry_roe": 0.1806
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 55588145244.0,
+      "total_avg_equity": 307746386227.0,
+      "industry_roe": 0.1806
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 41180702383.0,
+      "total_avg_equity": 299975949109.0,
+      "industry_roe": 0.1373
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 41180702383.0,
+      "total_avg_equity": 299975949109.0,
+      "industry_roe": 0.1373
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 41180702383.0,
+      "total_avg_equity": 299975949109.0,
+      "industry_roe": 0.1373
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 34783387696.0,
+      "total_avg_equity": 302752484478.0,
+      "industry_roe": 0.1149
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 34783387696.0,
+      "total_avg_equity": 302752484478.0,
+      "industry_roe": 0.1149
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 34783387696.0,
+      "total_avg_equity": 302752484478.0,
+      "industry_roe": 0.1149
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 35759597686.0,
+      "total_avg_equity": 308317441766.0,
+      "industry_roe": 0.116
+    }
+  ],
+  "roa": [
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 1062248100.0,
+      "total_avg_assets": 14168452619.5,
+      "industry_roa": 0.075
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 1062248100.0,
+      "total_avg_assets": 14168452619.5,
+      "industry_roa": 0.075
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 1062248100.0,
+      "total_avg_assets": 14168452619.5,
+      "industry_roa": 0.075
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 37995168049.0,
+      "total_avg_assets": 951749997086.5,
+      "industry_roa": 0.0399
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 37995168049.0,
+      "total_avg_assets": 951749997086.5,
+      "industry_roa": 0.0399
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 37995168049.0,
+      "total_avg_assets": 951749997086.5,
+      "industry_roa": 0.0399
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 37055086049.0,
+      "total_avg_assets": 958554836586.5,
+      "industry_roa": 0.0387
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 37055086049.0,
+      "total_avg_assets": 958554836586.5,
+      "industry_roa": 0.0387
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 37055086049.0,
+      "total_avg_assets": 958554836586.5,
+      "industry_roa": 0.0387
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 34172359049.0,
+      "total_avg_assets": 958920875086.5,
+      "industry_roa": 0.0356
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 34172359049.0,
+      "total_avg_assets": 958920875086.5,
+      "industry_roa": 0.0356
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 34172359049.0,
+      "total_avg_assets": 958920875086.5,
+      "industry_roa": 0.0356
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 33994402049.0,
+      "total_avg_assets": 964706686086.5,
+      "industry_roa": 0.0352
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 33994402049.0,
+      "total_avg_assets": 964706686086.5,
+      "industry_roa": 0.0352
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 33994402049.0,
+      "total_avg_assets": 964706686086.5,
+      "industry_roa": 0.0352
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 44697473049.0,
+      "total_avg_assets": 980359224586.5,
+      "industry_roa": 0.0456
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 44697473049.0,
+      "total_avg_assets": 980359224586.5,
+      "industry_roa": 0.0456
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 44697473049.0,
+      "total_avg_assets": 980359224586.5,
+      "industry_roa": 0.0456
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 55588145244.0,
+      "total_avg_assets": 991398883541.0,
+      "industry_roa": 0.0561
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 55588145244.0,
+      "total_avg_assets": 991398883541.0,
+      "industry_roa": 0.0561
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 55588145244.0,
+      "total_avg_assets": 991398883541.0,
+      "industry_roa": 0.0561
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 41180702383.0,
+      "total_avg_assets": 991349159080.0,
+      "industry_roa": 0.0415
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 41180702383.0,
+      "total_avg_assets": 991349159080.0,
+      "industry_roa": 0.0415
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 41180702383.0,
+      "total_avg_assets": 991349159080.0,
+      "industry_roa": 0.0415
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 34783387696.0,
+      "total_avg_assets": 995344981772.5,
+      "industry_roa": 0.0349
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 34783387696.0,
+      "total_avg_assets": 995344981772.5,
+      "industry_roa": 0.0349
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 34783387696.0,
+      "total_avg_assets": 995344981772.5,
+      "industry_roa": 0.0349
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 35759597686.0,
+      "total_avg_assets": 1005895712571.5,
+      "industry_roa": 0.0356
+    }
+  ],
+  "equity_multiplier": [
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roe": 0.2837,
+      "industry_roa": 0.075,
+      "industry_equity_multiplier": 3.78
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roe": 0.2837,
+      "industry_roa": 0.075,
+      "industry_equity_multiplier": 3.78
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roe": 0.2837,
+      "industry_roa": 0.075,
+      "industry_equity_multiplier": 3.78
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roe": 0.1313,
+      "industry_roa": 0.0399,
+      "industry_equity_multiplier": 3.29
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roe": 0.1313,
+      "industry_roa": 0.0399,
+      "industry_equity_multiplier": 3.29
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roe": 0.1313,
+      "industry_roa": 0.0399,
+      "industry_equity_multiplier": 3.29
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roe": 0.1257,
+      "industry_roa": 0.0387,
+      "industry_equity_multiplier": 3.25
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roe": 0.1257,
+      "industry_roa": 0.0387,
+      "industry_equity_multiplier": 3.25
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roe": 0.1257,
+      "industry_roa": 0.0387,
+      "industry_equity_multiplier": 3.25
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roe": 0.1128,
+      "industry_roa": 0.0356,
+      "industry_equity_multiplier": 3.17
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roe": 0.1128,
+      "industry_roa": 0.0356,
+      "industry_equity_multiplier": 3.17
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roe": 0.1128,
+      "industry_roa": 0.0356,
+      "industry_equity_multiplier": 3.17
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roe": 0.1149,
+      "industry_roa": 0.0352,
+      "industry_equity_multiplier": 3.26
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roe": 0.1149,
+      "industry_roa": 0.0352,
+      "industry_equity_multiplier": 3.26
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roe": 0.1149,
+      "industry_roa": 0.0352,
+      "industry_equity_multiplier": 3.26
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roe": 0.1476,
+      "industry_roa": 0.0456,
+      "industry_equity_multiplier": 3.24
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roe": 0.1476,
+      "industry_roa": 0.0456,
+      "industry_equity_multiplier": 3.24
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roe": 0.1476,
+      "industry_roa": 0.0456,
+      "industry_equity_multiplier": 3.24
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roe": 0.1806,
+      "industry_roa": 0.0561,
+      "industry_equity_multiplier": 3.22
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roe": 0.1806,
+      "industry_roa": 0.0561,
+      "industry_equity_multiplier": 3.22
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roe": 0.1806,
+      "industry_roa": 0.0561,
+      "industry_equity_multiplier": 3.22
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roe": 0.1373,
+      "industry_roa": 0.0415,
+      "industry_equity_multiplier": 3.31
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roe": 0.1373,
+      "industry_roa": 0.0415,
+      "industry_equity_multiplier": 3.31
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roe": 0.1373,
+      "industry_roa": 0.0415,
+      "industry_equity_multiplier": 3.31
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roe": 0.1149,
+      "industry_roa": 0.0349,
+      "industry_equity_multiplier": 3.29
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roe": 0.1149,
+      "industry_roa": 0.0349,
+      "industry_equity_multiplier": 3.29
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roe": 0.1149,
+      "industry_roa": 0.0349,
+      "industry_equity_multiplier": 3.29
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roe": 0.116,
+      "industry_roa": 0.0356,
+      "industry_equity_multiplier": 3.26
+    }
+  ],
+  "gross_margin": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_gross_profit": 4033000000.0,
+      "total_ttm_revenue": 32353000000.0,
+      "industry_gross_margin": 0.1247
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_gross_profit": 4033000000.0,
+      "total_ttm_revenue": 32353000000.0,
+      "industry_gross_margin": 0.1247
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_gross_profit": 4033000000.0,
+      "total_ttm_revenue": 32353000000.0,
+      "industry_gross_margin": 0.1247
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_gross_profit": 4186000000.0,
+      "total_ttm_revenue": 32626000000.0,
+      "industry_gross_margin": 0.1283
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_gross_profit": 4186000000.0,
+      "total_ttm_revenue": 32626000000.0,
+      "industry_gross_margin": 0.1283
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_gross_profit": 4186000000.0,
+      "total_ttm_revenue": 32626000000.0,
+      "industry_gross_margin": 0.1283
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_gross_profit": 4296000000.0,
+      "total_ttm_revenue": 33247000000.0,
+      "industry_gross_margin": 0.1292
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_gross_profit": 4296000000.0,
+      "total_ttm_revenue": 33247000000.0,
+      "industry_gross_margin": 0.1292
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_gross_profit": 4296000000.0,
+      "total_ttm_revenue": 33247000000.0,
+      "industry_gross_margin": 0.1292
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_gross_profit": 58978945935.0,
+      "total_ttm_revenue": 393708785051.0,
+      "industry_gross_margin": 0.1498
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_gross_profit": 58978945935.0,
+      "total_ttm_revenue": 393708785051.0,
+      "industry_gross_margin": 0.1498
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_gross_profit": 58978945935.0,
+      "total_ttm_revenue": 393708785051.0,
+      "industry_gross_margin": 0.1498
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_gross_profit": 165389102624.0,
+      "total_ttm_revenue": 934348048056.0,
+      "industry_gross_margin": 0.177
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_gross_profit": 165389102624.0,
+      "total_ttm_revenue": 934348048056.0,
+      "industry_gross_margin": 0.177
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_gross_profit": 165389102624.0,
+      "total_ttm_revenue": 934348048056.0,
+      "industry_gross_margin": 0.177
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_gross_profit": 165511018624.0,
+      "total_ttm_revenue": 947788791056.0,
+      "industry_gross_margin": 0.1746
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_gross_profit": 165511018624.0,
+      "total_ttm_revenue": 947788791056.0,
+      "industry_gross_margin": 0.1746
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_gross_profit": 165511018624.0,
+      "total_ttm_revenue": 947788791056.0,
+      "industry_gross_margin": 0.1746
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_gross_profit": 164764766624.0,
+      "total_ttm_revenue": 968948207056.0,
+      "industry_gross_margin": 0.17
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_gross_profit": 164764766624.0,
+      "total_ttm_revenue": 968948207056.0,
+      "industry_gross_margin": 0.17
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_gross_profit": 164764766624.0,
+      "total_ttm_revenue": 968948207056.0,
+      "industry_gross_margin": 0.17
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_gross_profit": 163301677624.0,
+      "total_ttm_revenue": 982112264056.0,
+      "industry_gross_margin": 0.1663
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_gross_profit": 163301677624.0,
+      "total_ttm_revenue": 982112264056.0,
+      "industry_gross_margin": 0.1663
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_gross_profit": 163301677624.0,
+      "total_ttm_revenue": 982112264056.0,
+      "industry_gross_margin": 0.1663
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_gross_profit": 166613844624.0,
+      "total_ttm_revenue": 1005930964056.0,
+      "industry_gross_margin": 0.1656
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_gross_profit": 166613844624.0,
+      "total_ttm_revenue": 1005930964056.0,
+      "industry_gross_margin": 0.1656
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_gross_profit": 166613844624.0,
+      "total_ttm_revenue": 1005930964056.0,
+      "industry_gross_margin": 0.1656
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_gross_profit": 203718211624.0,
+      "total_ttm_revenue": 1350551487056.0,
+      "industry_gross_margin": 0.1508
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_gross_profit": 203718211624.0,
+      "total_ttm_revenue": 1350551487056.0,
+      "industry_gross_margin": 0.1508
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_gross_profit": 203718211624.0,
+      "total_ttm_revenue": 1350551487056.0,
+      "industry_gross_margin": 0.1508
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_gross_profit": 201580451624.0,
+      "total_ttm_revenue": 1379633134056.0,
+      "industry_gross_margin": 0.1461
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_gross_profit": 201580451624.0,
+      "total_ttm_revenue": 1379633134056.0,
+      "industry_gross_margin": 0.1461
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_gross_profit": 201580451624.0,
+      "total_ttm_revenue": 1379633134056.0,
+      "industry_gross_margin": 0.1461
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_gross_profit": 197800154624.0,
+      "total_ttm_revenue": 1410302413056.0,
+      "industry_gross_margin": 0.1403
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_gross_profit": 197800154624.0,
+      "total_ttm_revenue": 1410302413056.0,
+      "industry_gross_margin": 0.1403
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_gross_profit": 197800154624.0,
+      "total_ttm_revenue": 1410302413056.0,
+      "industry_gross_margin": 0.1403
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_gross_profit": 242453074624.0,
+      "total_ttm_revenue": 1762277602056.0,
+      "industry_gross_margin": 0.1376
+    }
+  ],
+  "ebitda_margin": [
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_ebitda": 1516000000.0,
+      "total_ttm_revenue": 32626000000.0,
+      "industry_ebitda_margin": 0.0465
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_ebitda": 1516000000.0,
+      "total_ttm_revenue": 32626000000.0,
+      "industry_ebitda_margin": 0.0465
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_ebitda": 1516000000.0,
+      "total_ttm_revenue": 32626000000.0,
+      "industry_ebitda_margin": 0.0465
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_ebitda": 1537000000.0,
+      "total_ttm_revenue": 33247000000.0,
+      "industry_ebitda_margin": 0.0462
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_ebitda": 1537000000.0,
+      "total_ttm_revenue": 33247000000.0,
+      "industry_ebitda_margin": 0.0462
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_ebitda": 1537000000.0,
+      "total_ttm_revenue": 33247000000.0,
+      "industry_ebitda_margin": 0.0462
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_ebitda": 19813587828.0,
+      "total_ttm_revenue": 393708785051.0,
+      "industry_ebitda_margin": 0.0503
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_ebitda": 19813587828.0,
+      "total_ttm_revenue": 393708785051.0,
+      "industry_ebitda_margin": 0.0503
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_ebitda": 19813587828.0,
+      "total_ttm_revenue": 393708785051.0,
+      "industry_ebitda_margin": 0.0503
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_ebitda": 53442550411.0,
+      "total_ttm_revenue": 934348048056.0,
+      "industry_ebitda_margin": 0.0572
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_ebitda": 53442550411.0,
+      "total_ttm_revenue": 934348048056.0,
+      "industry_ebitda_margin": 0.0572
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_ebitda": 53442550411.0,
+      "total_ttm_revenue": 934348048056.0,
+      "industry_ebitda_margin": 0.0572
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_ebitda": 52014369411.0,
+      "total_ttm_revenue": 947788791056.0,
+      "industry_ebitda_margin": 0.0549
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_ebitda": 52014369411.0,
+      "total_ttm_revenue": 947788791056.0,
+      "industry_ebitda_margin": 0.0549
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_ebitda": 52014369411.0,
+      "total_ttm_revenue": 947788791056.0,
+      "industry_ebitda_margin": 0.0549
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_ebitda": 49666207411.0,
+      "total_ttm_revenue": 968948207056.0,
+      "industry_ebitda_margin": 0.0513
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_ebitda": 49666207411.0,
+      "total_ttm_revenue": 968948207056.0,
+      "industry_ebitda_margin": 0.0513
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_ebitda": 49666207411.0,
+      "total_ttm_revenue": 968948207056.0,
+      "industry_ebitda_margin": 0.0513
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_ebitda": 49788242411.0,
+      "total_ttm_revenue": 982112264056.0,
+      "industry_ebitda_margin": 0.0507
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_ebitda": 49788242411.0,
+      "total_ttm_revenue": 982112264056.0,
+      "industry_ebitda_margin": 0.0507
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_ebitda": 49788242411.0,
+      "total_ttm_revenue": 982112264056.0,
+      "industry_ebitda_margin": 0.0507
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_ebitda": 59579868411.0,
+      "total_ttm_revenue": 1005930964056.0,
+      "industry_ebitda_margin": 0.0592
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_ebitda": 59579868411.0,
+      "total_ttm_revenue": 1005930964056.0,
+      "industry_ebitda_margin": 0.0592
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_ebitda": 59579868411.0,
+      "total_ttm_revenue": 1005930964056.0,
+      "industry_ebitda_margin": 0.0592
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_ebitda": 61539094768.0,
+      "total_ttm_revenue": 1350558074248.0,
+      "industry_ebitda_margin": 0.0456
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_ebitda": 61539094768.0,
+      "total_ttm_revenue": 1350558074248.0,
+      "industry_ebitda_margin": 0.0456
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_ebitda": 61539094768.0,
+      "total_ttm_revenue": 1350558074248.0,
+      "industry_ebitda_margin": 0.0456
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_ebitda": 45652129410.0,
+      "total_ttm_revenue": 1379639807395.0,
+      "industry_ebitda_margin": 0.0331
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_ebitda": 45652129410.0,
+      "total_ttm_revenue": 1379639807395.0,
+      "industry_ebitda_margin": 0.0331
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_ebitda": 45652129410.0,
+      "total_ttm_revenue": 1379639807395.0,
+      "industry_ebitda_margin": 0.0331
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_ebitda": 35008120708.0,
+      "total_ttm_revenue": 1410309128231.0,
+      "industry_ebitda_margin": 0.0248
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_ebitda": 35008120708.0,
+      "total_ttm_revenue": 1410309128231.0,
+      "industry_ebitda_margin": 0.0248
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_ebitda": 35008120708.0,
+      "total_ttm_revenue": 1410309128231.0,
+      "industry_ebitda_margin": 0.0248
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_ebitda": 29502285553.0,
+      "total_ttm_revenue": 1762283996121.0,
+      "industry_ebitda_margin": 0.0167
+    }
+  ],
+  "net_margin": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 855000000.0,
+      "total_ttm_revenue": 32353000000.0,
+      "industry_net_margin": 0.0264
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 855000000.0,
+      "total_ttm_revenue": 32353000000.0,
+      "industry_net_margin": 0.0264
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 855000000.0,
+      "total_ttm_revenue": 32353000000.0,
+      "industry_net_margin": 0.0264
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 916000000.0,
+      "total_ttm_revenue": 32626000000.0,
+      "industry_net_margin": 0.0281
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 916000000.0,
+      "total_ttm_revenue": 32626000000.0,
+      "industry_net_margin": 0.0281
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 916000000.0,
+      "total_ttm_revenue": 32626000000.0,
+      "industry_net_margin": 0.0281
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 931000000.0,
+      "total_ttm_revenue": 33247000000.0,
+      "industry_net_margin": 0.028
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 931000000.0,
+      "total_ttm_revenue": 33247000000.0,
+      "industry_net_margin": 0.028
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 931000000.0,
+      "total_ttm_revenue": 33247000000.0,
+      "industry_net_margin": 0.028
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 9258231100.0,
+      "total_ttm_revenue": 393708785051.0,
+      "industry_net_margin": 0.0235
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 9258231100.0,
+      "total_ttm_revenue": 393708785051.0,
+      "industry_net_margin": 0.0235
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 9258231100.0,
+      "total_ttm_revenue": 393708785051.0,
+      "industry_net_margin": 0.0235
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 37995168049.0,
+      "total_ttm_revenue": 1426017634056.0,
+      "industry_net_margin": 0.0266
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 37995168049.0,
+      "total_ttm_revenue": 1426017634056.0,
+      "industry_net_margin": 0.0266
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 37995168049.0,
+      "total_ttm_revenue": 1426017634056.0,
+      "industry_net_margin": 0.0266
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 37055086049.0,
+      "total_ttm_revenue": 1454512594056.0,
+      "industry_net_margin": 0.0255
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 37055086049.0,
+      "total_ttm_revenue": 1454512594056.0,
+      "industry_net_margin": 0.0255
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 37055086049.0,
+      "total_ttm_revenue": 1454512594056.0,
+      "industry_net_margin": 0.0255
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 34172359049.0,
+      "total_ttm_revenue": 1495664501056.0,
+      "industry_net_margin": 0.0228
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 34172359049.0,
+      "total_ttm_revenue": 1495664501056.0,
+      "industry_net_margin": 0.0228
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 34172359049.0,
+      "total_ttm_revenue": 1495664501056.0,
+      "industry_net_margin": 0.0228
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 33994402049.0,
+      "total_ttm_revenue": 1529972739056.0,
+      "industry_net_margin": 0.0222
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 33994402049.0,
+      "total_ttm_revenue": 1529972739056.0,
+      "industry_net_margin": 0.0222
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 33994402049.0,
+      "total_ttm_revenue": 1529972739056.0,
+      "industry_net_margin": 0.0222
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 44697473049.0,
+      "total_ttm_revenue": 1573590863056.0,
+      "industry_net_margin": 0.0284
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 44697473049.0,
+      "total_ttm_revenue": 1573590863056.0,
+      "industry_net_margin": 0.0284
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 44697473049.0,
+      "total_ttm_revenue": 1573590863056.0,
+      "industry_net_margin": 0.0284
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 55588145244.0,
+      "total_ttm_revenue": 2025302577248.0,
+      "industry_net_margin": 0.0274
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 55588145244.0,
+      "total_ttm_revenue": 2025302577248.0,
+      "industry_net_margin": 0.0274
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 55588145244.0,
+      "total_ttm_revenue": 2025302577248.0,
+      "industry_net_margin": 0.0274
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 41180702383.0,
+      "total_ttm_revenue": 2070506812395.0,
+      "industry_net_margin": 0.0199
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 41180702383.0,
+      "total_ttm_revenue": 2070506812395.0,
+      "industry_net_margin": 0.0199
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 41180702383.0,
+      "total_ttm_revenue": 2070506812395.0,
+      "industry_net_margin": 0.0199
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 34783387696.0,
+      "total_ttm_revenue": 2115850555231.0,
+      "industry_net_margin": 0.0164
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 34783387696.0,
+      "total_ttm_revenue": 2115850555231.0,
+      "industry_net_margin": 0.0164
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 34783387696.0,
+      "total_ttm_revenue": 2115850555231.0,
+      "industry_net_margin": 0.0164
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "total_ttm_net_income": 35759597686.0,
+      "total_ttm_revenue": 2783472354121.0,
+      "industry_net_margin": 0.0128
+    }
+  ],
+  "asset_turnover": [
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roa": 0.075,
+      "industry_net_margin": 0.0235,
+      "industry_asset_turnover": 3.19
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roa": 0.075,
+      "industry_net_margin": 0.0235,
+      "industry_asset_turnover": 3.19
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roa": 0.075,
+      "industry_net_margin": 0.0235,
+      "industry_asset_turnover": 3.19
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roa": 0.0399,
+      "industry_net_margin": 0.0266,
+      "industry_asset_turnover": 1.5
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roa": 0.0399,
+      "industry_net_margin": 0.0266,
+      "industry_asset_turnover": 1.5
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roa": 0.0399,
+      "industry_net_margin": 0.0266,
+      "industry_asset_turnover": 1.5
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roa": 0.0387,
+      "industry_net_margin": 0.0255,
+      "industry_asset_turnover": 1.52
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roa": 0.0387,
+      "industry_net_margin": 0.0255,
+      "industry_asset_turnover": 1.52
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roa": 0.0387,
+      "industry_net_margin": 0.0255,
+      "industry_asset_turnover": 1.52
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roa": 0.0356,
+      "industry_net_margin": 0.0228,
+      "industry_asset_turnover": 1.56
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roa": 0.0356,
+      "industry_net_margin": 0.0228,
+      "industry_asset_turnover": 1.56
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roa": 0.0356,
+      "industry_net_margin": 0.0228,
+      "industry_asset_turnover": 1.56
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roa": 0.0352,
+      "industry_net_margin": 0.0222,
+      "industry_asset_turnover": 1.59
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roa": 0.0352,
+      "industry_net_margin": 0.0222,
+      "industry_asset_turnover": 1.59
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roa": 0.0352,
+      "industry_net_margin": 0.0222,
+      "industry_asset_turnover": 1.59
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roa": 0.0456,
+      "industry_net_margin": 0.0284,
+      "industry_asset_turnover": 1.61
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roa": 0.0456,
+      "industry_net_margin": 0.0284,
+      "industry_asset_turnover": 1.61
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roa": 0.0456,
+      "industry_net_margin": 0.0284,
+      "industry_asset_turnover": 1.61
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roa": 0.0561,
+      "industry_net_margin": 0.0274,
+      "industry_asset_turnover": 2.05
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roa": 0.0561,
+      "industry_net_margin": 0.0274,
+      "industry_asset_turnover": 2.05
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roa": 0.0561,
+      "industry_net_margin": 0.0274,
+      "industry_asset_turnover": 2.05
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roa": 0.0415,
+      "industry_net_margin": 0.0199,
+      "industry_asset_turnover": 2.09
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roa": 0.0415,
+      "industry_net_margin": 0.0199,
+      "industry_asset_turnover": 2.09
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roa": 0.0415,
+      "industry_net_margin": 0.0199,
+      "industry_asset_turnover": 2.09
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roa": 0.0349,
+      "industry_net_margin": 0.0164,
+      "industry_asset_turnover": 2.13
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roa": 0.0349,
+      "industry_net_margin": 0.0164,
+      "industry_asset_turnover": 2.13
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roa": 0.0349,
+      "industry_net_margin": 0.0164,
+      "industry_asset_turnover": 2.13
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Healthcare Plans",
+      "industry_roa": 0.0356,
+      "industry_net_margin": 0.0128,
+      "industry_asset_turnover": 2.78
+    }
+  ]
+}

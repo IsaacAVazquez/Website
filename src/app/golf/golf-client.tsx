@@ -35,6 +35,14 @@ import {
   GOLF_VIEW_OPTIONS,
   normalizeGolfState,
 } from "./golf-state";
+import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
+import {
+  Article,
+  Briefcase,
+  Calendar,
+  ChartBar,
+  User,
+} from "@/components/ui/ServerIcons";
 
 interface GolfClientProps {
   initialState: GolfRouteState;
@@ -108,9 +116,21 @@ function formatGeneratedAt(value: string | null | undefined): string {
 }
 
 function formatDateRange(startDate: string, endDate: string): string {
-  return `${DATE_RANGE_FORMATTER.format(new Date(startDate))} – ${DATE_RANGE_FORMATTER.format(
-    new Date(endDate)
-  )}`;
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+  const startValid = !Number.isNaN(start.getTime());
+  const endValid = !Number.isNaN(end.getTime());
+
+  if (startValid && endValid) {
+    return `${DATE_RANGE_FORMATTER.format(start)} – ${DATE_RANGE_FORMATTER.format(end)}`;
+  }
+  if (endValid) {
+    return DATE_RANGE_FORMATTER.format(end);
+  }
+  if (startValid) {
+    return DATE_RANGE_FORMATTER.format(start);
+  }
+  return "Dates TBD";
 }
 
 function getViewButtonStyle(isActive: boolean): CSSProperties {
@@ -677,6 +697,63 @@ export function GolfClient({
     });
   }
 
+  // Stats panel cells (computed regardless; safe to call when tournament is null)
+  const scoringAverage = useMemo(() => {
+    const scores = summary.leaderboard.flatMap((row) => row.roundScores ?? []).filter((value) =>
+      Number.isFinite(value) && value > 0
+    );
+    if (scores.length === 0) return null;
+    const sum = scores.reduce((acc, score) => acc + score, 0);
+    return sum / scores.length;
+  }, [summary.leaderboard]);
+
+  const statsPanelCells: HomeStatsCell[] = [
+    {
+      label: "Leader",
+      tooltip: "Player at the top of the board after the most recent round.",
+      value: summary.heroStats.leaderName
+        ? `${summary.heroStats.leaderName} · ${formatScoreToPar(summary.heroStats.leaderScore)}`
+        : "—",
+    },
+    {
+      label: "Cut line",
+      tooltip: "Score at which the field gets trimmed for the weekend.",
+      value: summary.heroStats.cutLine === null
+        ? "No cut"
+        : formatScoreToPar(summary.heroStats.cutLine),
+    },
+    {
+      label: "Under par",
+      tooltip: "Number of players currently shooting better than even par.",
+      value: `${summary.heroStats.playersUnderPar}`,
+    },
+    {
+      label: "Field",
+      tooltip: "Total players in the tournament field.",
+      value: `${summary.heroStats.fieldSize}`,
+    },
+    {
+      label: "Round",
+      tooltip: "Round of the tournament currently in progress or just completed.",
+      value: tournament?.roundLabel ?? "—",
+    },
+    {
+      label: "Course par",
+      tooltip: "Total par for a single round at the host course.",
+      value: tournament ? `${tournament.coursePar}` : "—",
+    },
+    {
+      label: "Scoring average",
+      tooltip: "Average round score across the visible field.",
+      value: scoringAverage ? scoringAverage.toFixed(1) : "—",
+    },
+    {
+      label: "Snapshot",
+      tooltip: "Time the most recent snapshot was generated.",
+      value: tournament ? formatGeneratedAt(tournament.generatedAt) : "Unavailable",
+    },
+  ];
+
   if (!tournament) {
     return (
       <section className="home-page min-h-screen">
@@ -791,41 +868,19 @@ export function GolfClient({
           </div>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          <StatBlock
-            label="Leader"
-            value={`${summary.heroStats.leaderName ?? "—"} ${formatScoreToPar(summary.heroStats.leaderScore)}`}
-            detail="Top of the board after 36 holes."
-          />
-          <StatBlock
-            label="Cut line"
-            value={
-              summary.heroStats.cutLine === null
-                ? "No cut"
-                : formatScoreToPar(summary.heroStats.cutLine)
-            }
-            detail={
-              summary.heroStats.cutLine === null
-                ? "No cut for this event."
-                : "Cut set after Round 2."
-            }
-            valueColor={
-              summary.heroStats.cutLine === null
-                ? undefined
-                : getScoreToParColor(summary.heroStats.cutLine)
-            }
-          />
-          <StatBlock
-            label="Under par"
-            value={`${summary.heroStats.playersUnderPar}`}
-            detail="Players sitting in red numbers."
-          />
-          <StatBlock
-            label="Field"
-            value={`${summary.heroStats.fieldSize}`}
-            detail={tournament.status}
-          />
-        </div>
+        <HomeStatsPanel
+          id="golf-stats-panel"
+          title="PGA Tour at a glance"
+          meta={`Live · refreshed ${formatGeneratedAt(tournament.generatedAt)}`}
+          cells={statsPanelCells}
+          pills={[
+            { label: "Leaderboard", href: "?view=leaderboard", icon: ChartBar },
+            { label: "Cut", href: "?view=leaderboard", icon: Briefcase },
+            { label: "Top performers", href: "?view=players", icon: User },
+            { label: "Conditions", href: "?view=leaderboard", icon: Calendar },
+            { label: "Article", href: "/writing", icon: Article },
+          ]}
+        />
 
         <div className="grid gap-8 xl:grid-cols-[minmax(0,1.7fr)_minmax(320px,0.92fr)]">
           <div className="space-y-6">

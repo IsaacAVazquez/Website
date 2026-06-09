@@ -1,0 +1,2270 @@
+[
+  {
+    "symbol": "BAC",
+    "report_date": "2025-05-22",
+    "open": 43.18,
+    "close": 43.31,
+    "high": 43.57,
+    "low": 42.96,
+    "volume": 29026200
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-05-23",
+    "open": 42.48,
+    "close": 43.2,
+    "high": 43.43,
+    "low": 42.35,
+    "volume": 34875100
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-05-27",
+    "open": 43.79,
+    "close": 44.22,
+    "high": 44.22,
+    "low": 43.3,
+    "volume": 36322000
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-05-28",
+    "open": 44.21,
+    "close": 44.06,
+    "high": 44.44,
+    "low": 43.96,
+    "volume": 35673800
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-05-29",
+    "open": 44.37,
+    "close": 44.24,
+    "high": 44.46,
+    "low": 43.9,
+    "volume": 28545100
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-05-30",
+    "open": 44.19,
+    "close": 44.13,
+    "high": 44.3,
+    "low": 43.72,
+    "volume": 66537500
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-06-02",
+    "open": 43.88,
+    "close": 44.08,
+    "high": 44.15,
+    "low": 43.36,
+    "volume": 28582600
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-06-03",
+    "open": 44.01,
+    "close": 44.65,
+    "high": 44.73,
+    "low": 43.94,
+    "volume": 31320200
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-06-04",
+    "open": 44.6,
+    "close": 44.36,
+    "high": 45.09,
+    "low": 44.34,
+    "volume": 30591700
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-06-05",
+    "open": 44.45,
+    "close": 44.38,
+    "high": 44.58,
+    "low": 44.01,
+    "volume": 32020900
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-06-06",
+    "open": 44.69,
+    "close": 44.97,
+    "high": 45.17,
+    "low": 44.64,
+    "volume": 37013000
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-06-09",
+    "open": 45.11,
+    "close": 44.87,
+    "high": 45.4,
+    "low": 44.78,
+    "volume": 32414000
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-06-10",
+    "open": 44.8,
+    "close": 45.09,
+    "high": 45.2,
+    "low": 44.75,
+    "volume": 32229100
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-06-11",
+    "open": 45.2,
+    "close": 44.73,
+    "high": 45.41,
+    "low": 44.55,
+    "volume": 47873500
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-06-12",
+    "open": 44.4,
+    "close": 44.62,
+    "high": 44.65,
+    "low": 44.02,
+    "volume": 30165400
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-06-13",
+    "open": 44.0,
+    "close": 44.09,
+    "high": 44.46,
+    "low": 43.66,
+    "volume": 43281700
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-06-16",
+    "open": 44.64,
+    "close": 44.41,
+    "high": 44.89,
+    "low": 44.35,
+    "volume": 34103600
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-06-17",
+    "open": 44.27,
+    "close": 44.23,
+    "high": 44.67,
+    "low": 44.06,
+    "volume": 27489600
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-06-18",
+    "open": 44.26,
+    "close": 45.06,
+    "high": 45.2,
+    "low": 44.21,
+    "volume": 37684700
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-06-20",
+    "open": 45.31,
+    "close": 45.5,
+    "high": 45.65,
+    "low": 45.27,
+    "volume": 64591600
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-06-23",
+    "open": 45.4,
+    "close": 46.3,
+    "high": 46.37,
+    "low": 45.11,
+    "volume": 42683600
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-06-24",
+    "open": 46.75,
+    "close": 46.66,
+    "high": 47.19,
+    "low": 46.57,
+    "volume": 45437600
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-06-25",
+    "open": 46.58,
+    "close": 46.85,
+    "high": 46.98,
+    "low": 46.46,
+    "volume": 33532400
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-06-26",
+    "open": 46.95,
+    "close": 47.46,
+    "high": 47.58,
+    "low": 46.9,
+    "volume": 40127000
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-06-27",
+    "open": 47.45,
+    "close": 47.12,
+    "high": 47.67,
+    "low": 46.91,
+    "volume": 56705000
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-06-30",
+    "open": 47.62,
+    "close": 47.32,
+    "high": 47.62,
+    "low": 47.03,
+    "volume": 47921200
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-07-01",
+    "open": 47.02,
+    "close": 48.15,
+    "high": 48.42,
+    "low": 46.94,
+    "volume": 48540900
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-07-02",
+    "open": 48.36,
+    "close": 48.71,
+    "high": 48.73,
+    "low": 48.06,
+    "volume": 48003600
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-07-03",
+    "open": 48.95,
+    "close": 48.93,
+    "high": 49.31,
+    "low": 48.81,
+    "volume": 21620300
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-07-07",
+    "open": 48.74,
+    "close": 48.66,
+    "high": 49.21,
+    "low": 48.37,
+    "volume": 35567900
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-07-08",
+    "open": 47.5,
+    "close": 47.15,
+    "high": 47.79,
+    "low": 46.76,
+    "volume": 88086500
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-07-09",
+    "open": 47.16,
+    "close": 46.84,
+    "high": 47.45,
+    "low": 46.71,
+    "volume": 46227900
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-07-10",
+    "open": 46.9,
+    "close": 46.97,
+    "high": 47.22,
+    "low": 46.78,
+    "volume": 44225000
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-07-11",
+    "open": 46.64,
+    "close": 46.73,
+    "high": 46.81,
+    "low": 46.25,
+    "volume": 31653000
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-07-14",
+    "open": 46.81,
+    "close": 47.07,
+    "high": 47.07,
+    "low": 46.55,
+    "volume": 36381200
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-07-15",
+    "open": 46.88,
+    "close": 46.15,
+    "high": 47.01,
+    "low": 45.95,
+    "volume": 55145000
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-07-16",
+    "open": 46.25,
+    "close": 46.03,
+    "high": 46.56,
+    "low": 45.01,
+    "volume": 61296600
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-07-17",
+    "open": 45.64,
+    "close": 47.02,
+    "high": 47.22,
+    "low": 45.44,
+    "volume": 56480700
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-07-18",
+    "open": 47.01,
+    "close": 47.32,
+    "high": 47.38,
+    "low": 46.9,
+    "volume": 48314200
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-07-21",
+    "open": 47.54,
+    "close": 47.48,
+    "high": 48.04,
+    "low": 47.2,
+    "volume": 32199700
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-07-22",
+    "open": 47.6,
+    "close": 47.77,
+    "high": 48.17,
+    "low": 47.46,
+    "volume": 34749400
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-07-23",
+    "open": 48.01,
+    "close": 48.14,
+    "high": 48.31,
+    "low": 47.81,
+    "volume": 31380100
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-07-24",
+    "open": 48.49,
+    "close": 48.39,
+    "high": 49.0,
+    "low": 48.21,
+    "volume": 42967600
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-07-25",
+    "open": 48.39,
+    "close": 48.45,
+    "high": 48.55,
+    "low": 47.94,
+    "volume": 24461200
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-07-28",
+    "open": 48.45,
+    "close": 48.23,
+    "high": 48.54,
+    "low": 48.08,
+    "volume": 20590400
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-07-29",
+    "open": 48.39,
+    "close": 47.95,
+    "high": 48.51,
+    "low": 47.89,
+    "volume": 26216500
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-07-30",
+    "open": 48.26,
+    "close": 47.96,
+    "high": 48.5,
+    "low": 47.74,
+    "volume": 32265900
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-07-31",
+    "open": 47.76,
+    "close": 47.27,
+    "high": 48.03,
+    "low": 47.19,
+    "volume": 40016300
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-08-01",
+    "open": 46.36,
+    "close": 45.66,
+    "high": 46.41,
+    "low": 45.32,
+    "volume": 52310400
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-08-04",
+    "open": 45.96,
+    "close": 45.85,
+    "high": 46.11,
+    "low": 45.64,
+    "volume": 31038900
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-08-05",
+    "open": 45.95,
+    "close": 45.56,
+    "high": 46.0,
+    "low": 44.75,
+    "volume": 36798300
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-08-06",
+    "open": 45.71,
+    "close": 45.42,
+    "high": 45.94,
+    "low": 45.39,
+    "volume": 27916800
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-08-07",
+    "open": 45.71,
+    "close": 44.92,
+    "high": 45.76,
+    "low": 44.78,
+    "volume": 30609900
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-08-08",
+    "open": 45.15,
+    "close": 46.01,
+    "high": 46.3,
+    "low": 44.98,
+    "volume": 37131600
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-08-11",
+    "open": 46.06,
+    "close": 46.16,
+    "high": 46.52,
+    "low": 45.81,
+    "volume": 35559400
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-08-12",
+    "open": 46.48,
+    "close": 47.5,
+    "high": 47.66,
+    "low": 46.36,
+    "volume": 35481200
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-08-13",
+    "open": 47.68,
+    "close": 47.24,
+    "high": 47.76,
+    "low": 46.99,
+    "volume": 29465100
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-08-14",
+    "open": 47.09,
+    "close": 47.71,
+    "high": 47.73,
+    "low": 46.89,
+    "volume": 21073800
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-08-15",
+    "open": 47.75,
+    "close": 46.94,
+    "high": 47.82,
+    "low": 46.9,
+    "volume": 26276900
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-08-18",
+    "open": 46.92,
+    "close": 47.92,
+    "high": 48.04,
+    "low": 46.79,
+    "volume": 43125100
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-08-19",
+    "open": 47.82,
+    "close": 48.08,
+    "high": 48.12,
+    "low": 47.63,
+    "volume": 33783400
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-08-20",
+    "open": 48.17,
+    "close": 48.35,
+    "high": 48.5,
+    "low": 47.87,
+    "volume": 30822200
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-08-21",
+    "open": 48.27,
+    "close": 48.26,
+    "high": 48.49,
+    "low": 47.81,
+    "volume": 28713200
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-08-22",
+    "open": 48.52,
+    "close": 49.48,
+    "high": 49.66,
+    "low": 48.46,
+    "volume": 45078900
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-08-25",
+    "open": 49.39,
+    "close": 49.48,
+    "high": 49.66,
+    "low": 49.21,
+    "volume": 34715700
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-08-26",
+    "open": 49.25,
+    "close": 50.25,
+    "high": 50.26,
+    "low": 49.25,
+    "volume": 40609300
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-08-27",
+    "open": 50.03,
+    "close": 50.38,
+    "high": 50.63,
+    "low": 49.99,
+    "volume": 42428200
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-08-28",
+    "open": 50.55,
+    "close": 50.49,
+    "high": 50.64,
+    "low": 50.28,
+    "volume": 32949400
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-08-29",
+    "open": 50.51,
+    "close": 50.74,
+    "high": 50.92,
+    "low": 50.51,
+    "volume": 32496500
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-09-02",
+    "open": 50.22,
+    "close": 50.42,
+    "high": 50.47,
+    "low": 49.67,
+    "volume": 52719800
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-09-03",
+    "open": 50.4,
+    "close": 50.06,
+    "high": 50.57,
+    "low": 49.7,
+    "volume": 38344200
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-09-04",
+    "open": 50.24,
+    "close": 50.62,
+    "high": 50.83,
+    "low": 50.12,
+    "volume": 34796900
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-09-05",
+    "open": 50.44,
+    "close": 49.77,
+    "high": 50.79,
+    "low": 49.23,
+    "volume": 40063300
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-09-08",
+    "open": 49.8,
+    "close": 49.46,
+    "high": 49.91,
+    "low": 48.88,
+    "volume": 48033100
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-09-09",
+    "open": 49.5,
+    "close": 50.29,
+    "high": 50.56,
+    "low": 49.46,
+    "volume": 40060100
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-09-10",
+    "open": 50.37,
+    "close": 50.13,
+    "high": 50.63,
+    "low": 49.97,
+    "volume": 31706300
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-09-11",
+    "open": 50.14,
+    "close": 50.75,
+    "high": 50.96,
+    "low": 49.99,
+    "volume": 28055200
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-09-12",
+    "open": 50.7,
+    "close": 50.58,
+    "high": 50.93,
+    "low": 50.46,
+    "volume": 27851100
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-09-15",
+    "open": 50.85,
+    "close": 50.59,
+    "high": 51.09,
+    "low": 50.46,
+    "volume": 29043600
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-09-16",
+    "open": 50.64,
+    "close": 50.66,
+    "high": 50.88,
+    "low": 50.21,
+    "volume": 31624400
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-09-17",
+    "open": 50.86,
+    "close": 51.4,
+    "high": 51.63,
+    "low": 50.79,
+    "volume": 38337900
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-09-18",
+    "open": 51.49,
+    "close": 52.13,
+    "high": 52.19,
+    "low": 51.3,
+    "volume": 35246900
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-09-19",
+    "open": 52.15,
+    "close": 52.25,
+    "high": 52.66,
+    "low": 51.76,
+    "volume": 98970700
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-09-22",
+    "open": 51.76,
+    "close": 51.92,
+    "high": 52.35,
+    "low": 51.76,
+    "volume": 27468000
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-09-23",
+    "open": 52.0,
+    "close": 51.7,
+    "high": 52.88,
+    "low": 51.52,
+    "volume": 28278200
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-09-24",
+    "open": 51.85,
+    "close": 51.7,
+    "high": 52.25,
+    "low": 51.46,
+    "volume": 27010400
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-09-25",
+    "open": 51.48,
+    "close": 51.85,
+    "high": 52.33,
+    "low": 51.44,
+    "volume": 22957900
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-09-26",
+    "open": 52.11,
+    "close": 52.21,
+    "high": 52.62,
+    "low": 51.98,
+    "volume": 20025800
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-09-29",
+    "open": 52.36,
+    "close": 52.42,
+    "high": 52.55,
+    "low": 52.11,
+    "volume": 23701000
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-09-30",
+    "open": 52.48,
+    "close": 51.59,
+    "high": 52.57,
+    "low": 51.02,
+    "volume": 29945000
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-10-01",
+    "open": 51.3,
+    "close": 50.68,
+    "high": 51.68,
+    "low": 50.56,
+    "volume": 27709100
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-10-02",
+    "open": 50.65,
+    "close": 50.48,
+    "high": 50.85,
+    "low": 50.07,
+    "volume": 22757200
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-10-03",
+    "open": 50.62,
+    "close": 50.64,
+    "high": 51.13,
+    "low": 50.55,
+    "volume": 24565700
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-10-06",
+    "open": 50.93,
+    "close": 50.39,
+    "high": 51.32,
+    "low": 49.89,
+    "volume": 25386300
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-10-07",
+    "open": 50.55,
+    "close": 50.29,
+    "high": 50.91,
+    "low": 50.13,
+    "volume": 24107300
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-10-08",
+    "open": 50.4,
+    "close": 49.84,
+    "high": 50.51,
+    "low": 49.78,
+    "volume": 24014200
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-10-09",
+    "open": 50.0,
+    "close": 49.79,
+    "high": 50.28,
+    "low": 49.67,
+    "volume": 21816900
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-10-10",
+    "open": 49.93,
+    "close": 48.65,
+    "high": 50.14,
+    "low": 48.55,
+    "volume": 31831900
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-10-13",
+    "open": 49.2,
+    "close": 48.86,
+    "high": 49.4,
+    "low": 48.81,
+    "volume": 34462800
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-10-14",
+    "open": 48.85,
+    "close": 50.09,
+    "high": 50.5,
+    "low": 48.53,
+    "volume": 42462600
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-10-15",
+    "open": 51.57,
+    "close": 52.28,
+    "high": 52.85,
+    "low": 51.23,
+    "volume": 69992200
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-10-16",
+    "open": 52.6,
+    "close": 50.44,
+    "high": 52.76,
+    "low": 50.0,
+    "volume": 49027700
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-10-17",
+    "open": 50.95,
+    "close": 51.28,
+    "high": 51.77,
+    "low": 50.33,
+    "volume": 48915400
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-10-20",
+    "open": 51.44,
+    "close": 52.04,
+    "high": 52.28,
+    "low": 51.37,
+    "volume": 25786000
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-10-21",
+    "open": 52.09,
+    "close": 51.52,
+    "high": 52.37,
+    "low": 51.44,
+    "volume": 27303400
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-10-22",
+    "open": 51.5,
+    "close": 51.1,
+    "high": 51.58,
+    "low": 50.44,
+    "volume": 34955000
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-10-23",
+    "open": 51.48,
+    "close": 51.76,
+    "high": 51.8,
+    "low": 51.11,
+    "volume": 26028800
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-10-24",
+    "open": 51.85,
+    "close": 52.57,
+    "high": 52.82,
+    "low": 51.85,
+    "volume": 38923900
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-10-27",
+    "open": 52.8,
+    "close": 53.02,
+    "high": 53.07,
+    "low": 52.53,
+    "volume": 27345800
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-10-28",
+    "open": 53.0,
+    "close": 52.87,
+    "high": 53.28,
+    "low": 52.34,
+    "volume": 29575200
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-10-29",
+    "open": 52.66,
+    "close": 52.58,
+    "high": 53.01,
+    "low": 52.32,
+    "volume": 29158800
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-10-30",
+    "open": 52.67,
+    "close": 53.03,
+    "high": 53.44,
+    "low": 52.56,
+    "volume": 37548600
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-10-31",
+    "open": 52.79,
+    "close": 53.45,
+    "high": 53.64,
+    "low": 52.77,
+    "volume": 39295700
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-11-03",
+    "open": 53.26,
+    "close": 53.56,
+    "high": 53.64,
+    "low": 52.71,
+    "volume": 31252300
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-11-04",
+    "open": 53.02,
+    "close": 53.54,
+    "high": 54.0,
+    "low": 52.72,
+    "volume": 47226600
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-11-05",
+    "open": 52.96,
+    "close": 52.45,
+    "high": 53.07,
+    "low": 51.74,
+    "volume": 54353600
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-11-06",
+    "open": 53.42,
+    "close": 53.29,
+    "high": 53.75,
+    "low": 52.77,
+    "volume": 55296000
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-11-07",
+    "open": 53.15,
+    "close": 53.2,
+    "high": 53.58,
+    "low": 52.71,
+    "volume": 40537700
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-11-10",
+    "open": 53.41,
+    "close": 53.42,
+    "high": 53.99,
+    "low": 53.34,
+    "volume": 26094600
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-11-11",
+    "open": 53.75,
+    "close": 53.63,
+    "high": 53.98,
+    "low": 53.28,
+    "volume": 22244300
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-11-12",
+    "open": 53.89,
+    "close": 54.11,
+    "high": 54.69,
+    "low": 53.77,
+    "volume": 40536700
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-11-13",
+    "open": 53.79,
+    "close": 52.87,
+    "high": 54.21,
+    "low": 52.77,
+    "volume": 37716100
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-11-14",
+    "open": 52.86,
+    "close": 52.61,
+    "high": 52.9,
+    "low": 52.03,
+    "volume": 32363100
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-11-17",
+    "open": 52.58,
+    "close": 51.48,
+    "high": 52.58,
+    "low": 51.39,
+    "volume": 35546800
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-11-18",
+    "open": 51.28,
+    "close": 51.64,
+    "high": 52.18,
+    "low": 51.15,
+    "volume": 35189500
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-11-19",
+    "open": 51.67,
+    "close": 52.02,
+    "high": 52.49,
+    "low": 51.67,
+    "volume": 28112300
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-11-20",
+    "open": 52.5,
+    "close": 51.0,
+    "high": 52.95,
+    "low": 50.97,
+    "volume": 36661600
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-11-21",
+    "open": 51.29,
+    "close": 51.56,
+    "high": 51.78,
+    "low": 50.7,
+    "volume": 43867200
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-11-24",
+    "open": 51.65,
+    "close": 51.93,
+    "high": 52.24,
+    "low": 51.4,
+    "volume": 52852100
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-11-25",
+    "open": 52.25,
+    "close": 52.48,
+    "high": 52.88,
+    "low": 51.86,
+    "volume": 41310100
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-11-26",
+    "open": 52.7,
+    "close": 52.99,
+    "high": 53.25,
+    "low": 52.55,
+    "volume": 32045600
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-11-28",
+    "open": 53.11,
+    "close": 53.65,
+    "high": 53.94,
+    "low": 53.05,
+    "volume": 18920800
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-12-01",
+    "open": 53.5,
+    "close": 53.24,
+    "high": 53.9,
+    "low": 53.21,
+    "volume": 30536500
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-12-02",
+    "open": 53.53,
+    "close": 53.19,
+    "high": 53.64,
+    "low": 52.97,
+    "volume": 46073500
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-12-03",
+    "open": 53.25,
+    "close": 54.09,
+    "high": 54.24,
+    "low": 53.18,
+    "volume": 37134400
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-12-04",
+    "open": 54.21,
+    "close": 54.16,
+    "high": 54.69,
+    "low": 54.0,
+    "volume": 38529600
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-12-05",
+    "open": 53.93,
+    "close": 53.95,
+    "high": 54.83,
+    "low": 53.74,
+    "volume": 33986500
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-12-08",
+    "open": 53.9,
+    "close": 53.9,
+    "high": 54.21,
+    "low": 53.49,
+    "volume": 34386600
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-12-09",
+    "open": 53.97,
+    "close": 53.54,
+    "high": 54.28,
+    "low": 53.27,
+    "volume": 47189300
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-12-10",
+    "open": 53.59,
+    "close": 54.08,
+    "high": 54.55,
+    "low": 53.34,
+    "volume": 54424400
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-12-11",
+    "open": 53.95,
+    "close": 54.56,
+    "high": 54.65,
+    "low": 53.75,
+    "volume": 35686900
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-12-12",
+    "open": 54.78,
+    "close": 55.14,
+    "high": 55.3,
+    "low": 54.35,
+    "volume": 40539400
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-12-15",
+    "open": 55.41,
+    "close": 55.33,
+    "high": 56.07,
+    "low": 55.07,
+    "volume": 32881300
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-12-16",
+    "open": 55.14,
+    "close": 54.81,
+    "high": 55.35,
+    "low": 54.69,
+    "volume": 32931900
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-12-17",
+    "open": 55.12,
+    "close": 54.55,
+    "high": 55.57,
+    "low": 54.46,
+    "volume": 35304100
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-12-18",
+    "open": 54.8,
+    "close": 54.26,
+    "high": 55.15,
+    "low": 53.77,
+    "volume": 87452700
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-12-19",
+    "open": 54.52,
+    "close": 55.27,
+    "high": 55.31,
+    "low": 54.38,
+    "volume": 73001900
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-12-22",
+    "open": 55.37,
+    "close": 55.88,
+    "high": 56.11,
+    "low": 55.34,
+    "volume": 33408800
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-12-23",
+    "open": 55.81,
+    "close": 55.97,
+    "high": 56.22,
+    "low": 55.81,
+    "volume": 22274600
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-12-24",
+    "open": 56.13,
+    "close": 56.25,
+    "high": 56.5,
+    "low": 55.89,
+    "volume": 13634400
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-12-26",
+    "open": 56.28,
+    "close": 56.17,
+    "high": 56.55,
+    "low": 56.03,
+    "volume": 15259400
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-12-29",
+    "open": 56.11,
+    "close": 55.35,
+    "high": 56.25,
+    "low": 55.27,
+    "volume": 21040100
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-12-30",
+    "open": 55.49,
+    "close": 55.28,
+    "high": 55.64,
+    "low": 55.17,
+    "volume": 17427600
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2025-12-31",
+    "open": 55.32,
+    "close": 55.0,
+    "high": 55.42,
+    "low": 54.93,
+    "volume": 16293000
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-01-02",
+    "open": 55.03,
+    "close": 55.95,
+    "high": 55.99,
+    "low": 54.88,
+    "volume": 25503600
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-01-05",
+    "open": 56.17,
+    "close": 56.89,
+    "high": 57.55,
+    "low": 56.14,
+    "volume": 36096600
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-01-06",
+    "open": 57.01,
+    "close": 57.25,
+    "high": 57.41,
+    "low": 56.75,
+    "volume": 31791900
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-01-07",
+    "open": 56.69,
+    "close": 55.64,
+    "high": 56.81,
+    "low": 55.44,
+    "volume": 49695500
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-01-08",
+    "open": 55.48,
+    "close": 56.18,
+    "high": 56.58,
+    "low": 55.47,
+    "volume": 30933700
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-01-09",
+    "open": 56.17,
+    "close": 55.85,
+    "high": 56.61,
+    "low": 55.79,
+    "volume": 30768800
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-01-12",
+    "open": 55.29,
+    "close": 55.19,
+    "high": 55.45,
+    "low": 54.73,
+    "volume": 45860600
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-01-13",
+    "open": 55.27,
+    "close": 54.54,
+    "high": 55.52,
+    "low": 54.3,
+    "volume": 43542200
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-01-14",
+    "open": 52.88,
+    "close": 52.48,
+    "high": 53.48,
+    "low": 51.66,
+    "volume": 84750000
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-01-15",
+    "open": 52.72,
+    "close": 52.59,
+    "high": 53.04,
+    "low": 52.23,
+    "volume": 51018300
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-01-16",
+    "open": 52.69,
+    "close": 52.97,
+    "high": 53.38,
+    "low": 52.25,
+    "volume": 52178400
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-01-20",
+    "open": 52.32,
+    "close": 52.1,
+    "high": 53.48,
+    "low": 51.96,
+    "volume": 49172700
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-01-21",
+    "open": 52.23,
+    "close": 52.07,
+    "high": 52.86,
+    "low": 52.05,
+    "volume": 36340000
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-01-22",
+    "open": 52.47,
+    "close": 52.45,
+    "high": 53.13,
+    "low": 52.33,
+    "volume": 31229200
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-01-23",
+    "open": 52.11,
+    "close": 51.72,
+    "high": 52.2,
+    "low": 51.38,
+    "volume": 34553500
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-01-26",
+    "open": 51.8,
+    "close": 52.02,
+    "high": 52.28,
+    "low": 51.67,
+    "volume": 27728400
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-01-27",
+    "open": 52.21,
+    "close": 52.17,
+    "high": 52.25,
+    "low": 51.81,
+    "volume": 26494300
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-01-28",
+    "open": 51.95,
+    "close": 51.81,
+    "high": 52.14,
+    "low": 51.31,
+    "volume": 35030200
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-01-29",
+    "open": 51.98,
+    "close": 53.08,
+    "high": 53.09,
+    "low": 51.95,
+    "volume": 35200500
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-01-30",
+    "open": 52.87,
+    "close": 53.2,
+    "high": 53.41,
+    "low": 52.77,
+    "volume": 34549100
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-02-02",
+    "open": 53.2,
+    "close": 54.03,
+    "high": 54.09,
+    "low": 52.95,
+    "volume": 34624500
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-02-03",
+    "open": 54.2,
+    "close": 54.45,
+    "high": 55.12,
+    "low": 53.68,
+    "volume": 41208400
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-02-04",
+    "open": 54.78,
+    "close": 55.38,
+    "high": 56.04,
+    "low": 54.71,
+    "volume": 54522500
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-02-05",
+    "open": 55.02,
+    "close": 54.94,
+    "high": 55.29,
+    "low": 54.25,
+    "volume": 32959700
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-02-06",
+    "open": 55.55,
+    "close": 56.53,
+    "high": 56.87,
+    "low": 55.29,
+    "volume": 42468000
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-02-09",
+    "open": 56.39,
+    "close": 56.41,
+    "high": 56.72,
+    "low": 56.18,
+    "volume": 31968400
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-02-10",
+    "open": 56.44,
+    "close": 55.39,
+    "high": 56.83,
+    "low": 54.27,
+    "volume": 48304700
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-02-11",
+    "open": 55.97,
+    "close": 53.85,
+    "high": 56.11,
+    "low": 53.24,
+    "volume": 48973500
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-02-12",
+    "open": 53.91,
+    "close": 52.52,
+    "high": 53.94,
+    "low": 51.79,
+    "volume": 55481600
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-02-13",
+    "open": 51.91,
+    "close": 52.55,
+    "high": 52.82,
+    "low": 51.44,
+    "volume": 31772100
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-02-17",
+    "open": 53.04,
+    "close": 52.74,
+    "high": 53.55,
+    "low": 52.62,
+    "volume": 35542400
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-02-18",
+    "open": 52.99,
+    "close": 53.36,
+    "high": 53.61,
+    "low": 52.79,
+    "volume": 30698900
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-02-19",
+    "open": 51.91,
+    "close": 52.77,
+    "high": 52.81,
+    "low": 51.83,
+    "volume": 47148600
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-02-20",
+    "open": 52.53,
+    "close": 53.06,
+    "high": 53.09,
+    "low": 51.83,
+    "volume": 33552000
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-02-23",
+    "open": 52.84,
+    "close": 51.07,
+    "high": 53.26,
+    "low": 50.89,
+    "volume": 50602500
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-02-24",
+    "open": 50.74,
+    "close": 50.41,
+    "high": 50.88,
+    "low": 49.47,
+    "volume": 53062700
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-02-25",
+    "open": 50.33,
+    "close": 51.69,
+    "high": 51.77,
+    "low": 50.31,
+    "volume": 41375000
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-02-26",
+    "open": 51.88,
+    "close": 52.3,
+    "high": 52.67,
+    "low": 51.74,
+    "volume": 52418500
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-02-27",
+    "open": 51.08,
+    "close": 49.83,
+    "high": 51.41,
+    "low": 49.32,
+    "volume": 77728700
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-03-02",
+    "open": 48.78,
+    "close": 49.81,
+    "high": 50.42,
+    "low": 48.58,
+    "volume": 40595200
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-03-03",
+    "open": 48.76,
+    "close": 49.97,
+    "high": 50.51,
+    "low": 48.5,
+    "volume": 51242900
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-03-04",
+    "open": 49.89,
+    "close": 50.3,
+    "high": 50.41,
+    "low": 49.21,
+    "volume": 34208500
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-03-05",
+    "open": 49.82,
+    "close": 49.81,
+    "high": 50.43,
+    "low": 49.33,
+    "volume": 39073900
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-03-06",
+    "open": 48.55,
+    "close": 48.64,
+    "high": 48.7,
+    "low": 47.62,
+    "volume": 47016000
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-03-09",
+    "open": 47.94,
+    "close": 47.9,
+    "high": 48.15,
+    "low": 46.77,
+    "volume": 62752800
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-03-10",
+    "open": 48.28,
+    "close": 48.56,
+    "high": 49.15,
+    "low": 47.6,
+    "volume": 50271100
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-03-11",
+    "open": 48.36,
+    "close": 48.52,
+    "high": 48.65,
+    "low": 47.78,
+    "volume": 42185800
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-03-12",
+    "open": 47.7,
+    "close": 47.13,
+    "high": 47.78,
+    "low": 46.79,
+    "volume": 58354500
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-03-13",
+    "open": 47.52,
+    "close": 46.72,
+    "high": 47.82,
+    "low": 46.66,
+    "volume": 45473100
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-03-16",
+    "open": 47.12,
+    "close": 47.06,
+    "high": 47.68,
+    "low": 46.9,
+    "volume": 38055600
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-03-17",
+    "open": 47.66,
+    "close": 47.28,
+    "high": 48.08,
+    "low": 47.2,
+    "volume": 33427800
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-03-18",
+    "open": 47.22,
+    "close": 46.83,
+    "high": 47.88,
+    "low": 46.69,
+    "volume": 40251800
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-03-19",
+    "open": 46.42,
+    "close": 47.01,
+    "high": 47.19,
+    "low": 46.12,
+    "volume": 38601400
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-03-20",
+    "open": 47.13,
+    "close": 47.16,
+    "high": 47.46,
+    "low": 46.69,
+    "volume": 78060900
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-03-23",
+    "open": 48.34,
+    "close": 47.52,
+    "high": 48.39,
+    "low": 47.48,
+    "volume": 42333200
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-03-24",
+    "open": 47.05,
+    "close": 48.14,
+    "high": 48.46,
+    "low": 47.02,
+    "volume": 39804100
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-03-25",
+    "open": 48.52,
+    "close": 48.75,
+    "high": 49.11,
+    "low": 48.18,
+    "volume": 29988300
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-03-26",
+    "open": 48.71,
+    "close": 48.24,
+    "high": 48.87,
+    "low": 48.03,
+    "volume": 32502600
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-03-27",
+    "open": 48.07,
+    "close": 46.97,
+    "high": 48.25,
+    "low": 46.84,
+    "volume": 36781900
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-03-30",
+    "open": 47.55,
+    "close": 47.23,
+    "high": 47.86,
+    "low": 46.93,
+    "volume": 43375900
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-03-31",
+    "open": 47.68,
+    "close": 48.75,
+    "high": 48.77,
+    "low": 47.37,
+    "volume": 49060600
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-04-01",
+    "open": 49.7,
+    "close": 49.27,
+    "high": 50.05,
+    "low": 48.78,
+    "volume": 32947000
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-04-02",
+    "open": 48.75,
+    "close": 49.38,
+    "high": 49.57,
+    "low": 48.16,
+    "volume": 27548200
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-04-06",
+    "open": 49.43,
+    "close": 50.06,
+    "high": 50.12,
+    "low": 49.25,
+    "volume": 28507200
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-04-07",
+    "open": 49.8,
+    "close": 50.28,
+    "high": 50.48,
+    "low": 49.62,
+    "volume": 28473200
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-04-08",
+    "open": 51.94,
+    "close": 51.88,
+    "high": 52.26,
+    "low": 51.37,
+    "volume": 36473500
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-04-09",
+    "open": 51.63,
+    "close": 52.71,
+    "high": 52.84,
+    "low": 51.63,
+    "volume": 32008000
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-04-10",
+    "open": 52.8,
+    "close": 52.54,
+    "high": 52.83,
+    "low": 52.2,
+    "volume": 25225300
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-04-13",
+    "open": 52.18,
+    "close": 53.35,
+    "high": 53.44,
+    "low": 51.85,
+    "volume": 27835300
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-04-14",
+    "open": 53.1,
+    "close": 53.35,
+    "high": 53.57,
+    "low": 52.8,
+    "volume": 40178500
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-04-15",
+    "open": 54.25,
+    "close": 54.32,
+    "high": 55.4,
+    "low": 53.71,
+    "volume": 63838200
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-04-16",
+    "open": 54.04,
+    "close": 53.51,
+    "high": 54.51,
+    "low": 53.47,
+    "volume": 35206700
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-04-17",
+    "open": 54.16,
+    "close": 53.91,
+    "high": 54.6,
+    "low": 53.75,
+    "volume": 43484700
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-04-20",
+    "open": 53.5,
+    "close": 53.95,
+    "high": 53.95,
+    "low": 53.18,
+    "volume": 43999200
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-04-21",
+    "open": 54.0,
+    "close": 53.48,
+    "high": 54.65,
+    "low": 53.21,
+    "volume": 34266300
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-04-22",
+    "open": 53.67,
+    "close": 53.12,
+    "high": 53.8,
+    "low": 53.0,
+    "volume": 24097600
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-04-23",
+    "open": 53.06,
+    "close": 52.47,
+    "high": 53.52,
+    "low": 52.25,
+    "volume": 31956300
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-04-24",
+    "open": 52.32,
+    "close": 52.05,
+    "high": 52.51,
+    "low": 51.93,
+    "volume": 30265400
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-04-27",
+    "open": 51.99,
+    "close": 52.63,
+    "high": 52.93,
+    "low": 51.83,
+    "volume": 28043700
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-04-28",
+    "open": 53.02,
+    "close": 52.66,
+    "high": 53.43,
+    "low": 52.63,
+    "volume": 21164100
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-04-29",
+    "open": 52.43,
+    "close": 52.88,
+    "high": 53.02,
+    "low": 51.83,
+    "volume": 26250700
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-04-30",
+    "open": 52.61,
+    "close": 53.46,
+    "high": 53.66,
+    "low": 52.15,
+    "volume": 27089200
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-05-01",
+    "open": 53.69,
+    "close": 53.24,
+    "high": 54.06,
+    "low": 53.09,
+    "volume": 24825000
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-05-04",
+    "open": 53.07,
+    "close": 52.19,
+    "high": 53.07,
+    "low": 52.0,
+    "volume": 42929000
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-05-05",
+    "open": 52.57,
+    "close": 53.12,
+    "high": 53.36,
+    "low": 52.28,
+    "volume": 28458600
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-05-06",
+    "open": 53.82,
+    "close": 53.6,
+    "high": 54.2,
+    "low": 53.47,
+    "volume": 27541200
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-05-07",
+    "open": 53.55,
+    "close": 52.75,
+    "high": 54.0,
+    "low": 52.5,
+    "volume": 28682100
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-05-08",
+    "open": 52.98,
+    "close": 51.31,
+    "high": 53.01,
+    "low": 51.1,
+    "volume": 36111200
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-05-11",
+    "open": 51.21,
+    "close": 50.55,
+    "high": 51.39,
+    "low": 50.27,
+    "volume": 33132200
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-05-12",
+    "open": 50.86,
+    "close": 50.78,
+    "high": 51.08,
+    "low": 49.84,
+    "volume": 33518800
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-05-13",
+    "open": 50.36,
+    "close": 49.84,
+    "high": 50.78,
+    "low": 49.8,
+    "volume": 29838000
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-05-14",
+    "open": 50.06,
+    "close": 49.85,
+    "high": 50.47,
+    "low": 49.49,
+    "volume": 37671800
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-05-15",
+    "open": 49.62,
+    "close": 49.77,
+    "high": 49.99,
+    "low": 49.3,
+    "volume": 46282300
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-05-18",
+    "open": 49.72,
+    "close": 50.69,
+    "high": 50.92,
+    "low": 49.72,
+    "volume": 33404100
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-05-19",
+    "open": 50.73,
+    "close": 50.7,
+    "high": 51.28,
+    "low": 50.38,
+    "volume": 44154600
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-05-20",
+    "open": 50.99,
+    "close": 51.23,
+    "high": 51.58,
+    "low": 50.49,
+    "volume": 47739400
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-05-21",
+    "open": 51.0,
+    "close": 51.49,
+    "high": 51.5,
+    "low": 50.76,
+    "volume": 27461900
+  },
+  {
+    "symbol": "BAC",
+    "report_date": "2026-05-22",
+    "open": 51.69,
+    "close": 51.8,
+    "high": 52.15,
+    "low": 51.65,
+    "volume": 26666900
+  }
+]

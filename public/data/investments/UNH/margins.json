@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "UNH",
+      "report_date": "2022-06-30",
+      "gross_profit": 19643000000.0,
+      "total_revenue": 80332000000.0,
+      "gross_margin": 0.2445
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2023-06-30",
+      "gross_profit": 21772000000.0,
+      "total_revenue": 91788000000.0,
+      "gross_margin": 0.2372
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2023-09-30",
+      "gross_profit": 22391000000.0,
+      "total_revenue": 91364000000.0,
+      "gross_margin": 0.2451
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2023-12-31",
+      "gross_profit": 22002000000.0,
+      "total_revenue": 94427000000.0,
+      "gross_margin": 0.233
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-03-31",
+      "gross_profit": 23005000000.0,
+      "total_revenue": 99796000000.0,
+      "gross_margin": 0.2305
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-06-30",
+      "gross_profit": 22057000000.0,
+      "total_revenue": 98855000000.0,
+      "gross_margin": 0.2231
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-09-30",
+      "gross_profit": 23029000000.0,
+      "total_revenue": 100820000000.0,
+      "gross_margin": 0.2284
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-12-31",
+      "gross_profit": 21308000000.0,
+      "total_revenue": 100807000000.0,
+      "gross_margin": 0.2114
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-03-31",
+      "gross_profit": 23774000000.0,
+      "total_revenue": 109575000000.0,
+      "gross_margin": 0.217
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-06-30",
+      "gross_profit": 20012000000.0,
+      "total_revenue": 422818000000.0,
+      "gross_margin": 0.0473
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-09-30",
+      "gross_profit": 20637000000.0,
+      "total_revenue": 113161000000.0,
+      "gross_margin": 0.1824
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-12-31",
+      "gross_profit": 18494000000.0,
+      "total_revenue": 113215000000.0,
+      "gross_margin": 0.1634
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2026-03-31",
+      "gross_profit": 25409000000.0,
+      "total_revenue": 449713000000.0,
+      "gross_margin": 0.0565
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "UNH",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2020-12-31",
+      "gross_profit": 65498000000.0,
+      "total_revenue": 255639000000.0,
+      "gross_margin": 0.2562
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2021-12-31",
+      "gross_profit": 69652000000.0,
+      "total_revenue": 287597000000.0,
+      "gross_margin": 0.2422
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2022-12-31",
+      "gross_profit": 79617000000.0,
+      "total_revenue": 324162000000.0,
+      "gross_margin": 0.2456
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2023-12-31",
+      "gross_profit": 90958000000.0,
+      "total_revenue": 371622000000.0,
+      "gross_margin": 0.2448
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-12-31",
+      "gross_profit": 89399000000.0,
+      "total_revenue": 400278000000.0,
+      "gross_margin": 0.2233
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-12-31",
+      "gross_profit": 82917000000.0,
+      "total_revenue": 447567000000.0,
+      "gross_margin": 0.1853
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "UNH",
+      "report_date": "2022-06-30",
+      "operating_income": 7132000000.0,
+      "total_revenue": 80332000000.0,
+      "operating_margin": 0.0888
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2023-06-30",
+      "operating_income": 6942000000.0,
+      "total_revenue": 91788000000.0,
+      "operating_margin": 0.0756
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2023-09-30",
+      "operating_income": 7529000000.0,
+      "total_revenue": 91364000000.0,
+      "operating_margin": 0.0824
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2023-12-31",
+      "operating_income": 7689000000.0,
+      "total_revenue": 94427000000.0,
+      "operating_margin": 0.0814
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-03-31",
+      "operating_income": 7931000000.0,
+      "total_revenue": 99796000000.0,
+      "operating_margin": 0.0795
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-06-30",
+      "operating_income": 7875000000.0,
+      "total_revenue": 98855000000.0,
+      "operating_margin": 0.0797
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-09-30",
+      "operating_income": 8708000000.0,
+      "total_revenue": 100820000000.0,
+      "operating_margin": 0.0864
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-12-31",
+      "operating_income": 7773000000.0,
+      "total_revenue": 100807000000.0,
+      "operating_margin": 0.0771
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-03-31",
+      "operating_income": 9119000000.0,
+      "total_revenue": 109575000000.0,
+      "operating_margin": 0.0832
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-06-30",
+      "operating_income": 30750000000.0,
+      "total_revenue": 422818000000.0,
+      "operating_margin": 0.0727
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-09-30",
+      "operating_income": 4315000000.0,
+      "total_revenue": 113161000000.0,
+      "operating_margin": 0.0381
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-12-31",
+      "operating_income": 380000000.0,
+      "total_revenue": 113215000000.0,
+      "operating_margin": 0.0034
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2026-03-31",
+      "operating_income": 18835000000.0,
+      "total_revenue": 449713000000.0,
+      "operating_margin": 0.0419
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "UNH",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2020-12-31",
+      "operating_income": 20903000000.0,
+      "total_revenue": 255639000000.0,
+      "operating_margin": 0.0818
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2021-12-31",
+      "operating_income": 23970000000.0,
+      "total_revenue": 287597000000.0,
+      "operating_margin": 0.0833
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2022-12-31",
+      "operating_income": 28435000000.0,
+      "total_revenue": 324162000000.0,
+      "operating_margin": 0.0877
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2023-12-31",
+      "operating_income": 32358000000.0,
+      "total_revenue": 371622000000.0,
+      "operating_margin": 0.0871
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-12-31",
+      "operating_income": 32287000000.0,
+      "total_revenue": 400278000000.0,
+      "operating_margin": 0.0807
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-12-31",
+      "operating_income": 18964000000.0,
+      "total_revenue": 447567000000.0,
+      "operating_margin": 0.0424
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "UNH",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 5070000000.0,
+      "total_revenue": 80332000000.0,
+      "net_margin": 0.0631
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 5474000000.0,
+      "total_revenue": 91788000000.0,
+      "net_margin": 0.0596
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 5841000000.0,
+      "total_revenue": 91364000000.0,
+      "net_margin": 0.0639
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 5455000000.0,
+      "total_revenue": 94427000000.0,
+      "net_margin": 0.0578
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": -1409000000.0,
+      "total_revenue": 99796000000.0,
+      "net_margin": -0.0141
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 4216000000.0,
+      "total_revenue": 98855000000.0,
+      "net_margin": 0.0426
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 6055000000.0,
+      "total_revenue": 100820000000.0,
+      "net_margin": 0.0601
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 5543000000.0,
+      "total_revenue": 100807000000.0,
+      "net_margin": 0.055
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 6292000000.0,
+      "total_revenue": 109575000000.0,
+      "net_margin": 0.0574
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 3406000000.0,
+      "total_revenue": 422818000000.0,
+      "net_margin": 0.0081
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 2348000000.0,
+      "total_revenue": 113161000000.0,
+      "net_margin": 0.0207
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 10000000.0,
+      "total_revenue": 113215000000.0,
+      "net_margin": 0.0001
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 6280000000.0,
+      "total_revenue": 449713000000.0,
+      "net_margin": 0.014
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "UNH",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 15403000000.0,
+      "total_revenue": 255639000000.0,
+      "net_margin": 0.0603
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 17285000000.0,
+      "total_revenue": 287597000000.0,
+      "net_margin": 0.0601
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 20120000000.0,
+      "total_revenue": 324162000000.0,
+      "net_margin": 0.0621
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 22381000000.0,
+      "total_revenue": 371622000000.0,
+      "net_margin": 0.0602
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 14405000000.0,
+      "total_revenue": 400278000000.0,
+      "net_margin": 0.036
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 12056000000.0,
+      "total_revenue": 447567000000.0,
+      "net_margin": 0.0269
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "UNH",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 80332000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2023-06-30",
+      "ebitda": 9078000000.0,
+      "total_revenue": 91788000000.0,
+      "ebitda_margin": 0.0989
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2023-09-30",
+      "ebitda": 9533000000.0,
+      "total_revenue": 91364000000.0,
+      "ebitda_margin": 0.1043
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2023-12-31",
+      "ebitda": 8663000000.0,
+      "total_revenue": 94427000000.0,
+      "ebitda_margin": 0.0917
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-03-31",
+      "ebitda": 1842000000.0,
+      "total_revenue": 99796000000.0,
+      "ebitda_margin": 0.0185
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-06-30",
+      "ebitda": 7670000000.0,
+      "total_revenue": 98855000000.0,
+      "ebitda_margin": 0.0776
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-09-30",
+      "ebitda": 9729000000.0,
+      "total_revenue": 100820000000.0,
+      "ebitda_margin": 0.0965
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-12-31",
+      "ebitda": 8835000000.0,
+      "total_revenue": 100807000000.0,
+      "ebitda_margin": 0.0876
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-03-31",
+      "ebitda": 10165000000.0,
+      "total_revenue": 109575000000.0,
+      "ebitda_margin": 0.0928
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-06-30",
+      "ebitda": 6193000000.0,
+      "total_revenue": 422818000000.0,
+      "ebitda_margin": 0.0146
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-09-30",
+      "ebitda": 5331000000.0,
+      "total_revenue": 113161000000.0,
+      "ebitda_margin": 0.0471
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-12-31",
+      "ebitda": 1371000000.0,
+      "total_revenue": 113215000000.0,
+      "ebitda_margin": 0.0121
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2026-03-31",
+      "ebitda": 9947000000.0,
+      "total_revenue": 449713000000.0,
+      "ebitda_margin": 0.0221
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "UNH",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2020-12-31",
+      "ebitda": 25296000000.0,
+      "total_revenue": 255639000000.0,
+      "ebitda_margin": 0.099
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2021-12-31",
+      "ebitda": 27073000000.0,
+      "total_revenue": 287597000000.0,
+      "ebitda_margin": 0.0941
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2022-12-31",
+      "ebitda": 31835000000.0,
+      "total_revenue": 324162000000.0,
+      "ebitda_margin": 0.0982
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2023-12-31",
+      "ebitda": 36330000000.0,
+      "total_revenue": 371622000000.0,
+      "ebitda_margin": 0.0978
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-12-31",
+      "ebitda": 28076000000.0,
+      "total_revenue": 400278000000.0,
+      "ebitda_margin": 0.0701
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-12-31",
+      "ebitda": 23060000000.0,
+      "total_revenue": 447567000000.0,
+      "ebitda_margin": 0.0515
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "UNH",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 6214000000.0,
+      "total_revenue": 80332000000.0,
+      "fcf_margin": 0.0774
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 10203000000.0,
+      "total_revenue": 91788000000.0,
+      "fcf_margin": 0.1112
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 6064000000.0,
+      "total_revenue": 91364000000.0,
+      "fcf_margin": 0.0664
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2023-12-31",
+      "free_cash_flow": -6152000000.0,
+      "total_revenue": 94427000000.0,
+      "fcf_margin": -0.0652
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 401000000.0,
+      "total_revenue": 99796000000.0,
+      "fcf_margin": 0.004
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 5893000000.0,
+      "total_revenue": 98855000000.0,
+      "fcf_margin": 0.0596
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 12954000000.0,
+      "total_revenue": 100820000000.0,
+      "fcf_margin": 0.1285
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 1457000000.0,
+      "total_revenue": 100807000000.0,
+      "fcf_margin": 0.0145
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 4558000000.0,
+      "total_revenue": 109575000000.0,
+      "fcf_margin": 0.0416
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 6302000000.0,
+      "total_revenue": 422818000000.0,
+      "fcf_margin": 0.0149
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 5055000000.0,
+      "total_revenue": 113161000000.0,
+      "fcf_margin": 0.0447
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 160000000.0,
+      "total_revenue": 113215000000.0,
+      "fcf_margin": 0.0014
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 8149000000.0,
+      "total_revenue": 449713000000.0,
+      "fcf_margin": 0.0181
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "UNH",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 20123000000.0,
+      "total_revenue": 255639000000.0,
+      "fcf_margin": 0.0787
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 19889000000.0,
+      "total_revenue": 287597000000.0,
+      "fcf_margin": 0.0692
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 23404000000.0,
+      "total_revenue": 324162000000.0,
+      "fcf_margin": 0.0722
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 25682000000.0,
+      "total_revenue": 371622000000.0,
+      "fcf_margin": 0.0691
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 20705000000.0,
+      "total_revenue": 400278000000.0,
+      "fcf_margin": 0.0517
+    },
+    {
+      "symbol": "UNH",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 16075000000.0,
+      "total_revenue": 447567000000.0,
+      "fcf_margin": 0.0359
+    }
+  ]
+}

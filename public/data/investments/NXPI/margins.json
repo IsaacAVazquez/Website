@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "NXPI",
+      "report_date": "2022-06-30",
+      "gross_profit": 1882000000.0,
+      "total_revenue": 3312000000.0,
+      "gross_margin": 0.5682
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2023-06-30",
+      "gross_profit": 1881000000.0,
+      "total_revenue": 3299000000.0,
+      "gross_margin": 0.5702
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2023-09-30",
+      "gross_profit": 1965000000.0,
+      "total_revenue": 3434000000.0,
+      "gross_margin": 0.5722
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2023-12-31",
+      "gross_profit": 1937000000.0,
+      "total_revenue": 3422000000.0,
+      "gross_margin": 0.566
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-03-31",
+      "gross_profit": 1783000000.0,
+      "total_revenue": 3126000000.0,
+      "gross_margin": 0.5704
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-06-30",
+      "gross_profit": 1792000000.0,
+      "total_revenue": 3127000000.0,
+      "gross_margin": 0.5731
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-09-30",
+      "gross_profit": 1866000000.0,
+      "total_revenue": 3250000000.0,
+      "gross_margin": 0.5742
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-12-31",
+      "gross_profit": 1678000000.0,
+      "total_revenue": 3111000000.0,
+      "gross_margin": 0.5394
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-03-31",
+      "gross_profit": 1560000000.0,
+      "total_revenue": 2835000000.0,
+      "gross_margin": 0.5503
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-06-30",
+      "gross_profit": 1562000000.0,
+      "total_revenue": 2926000000.0,
+      "gross_margin": 0.5338
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-09-30",
+      "gross_profit": 1787000000.0,
+      "total_revenue": 3173000000.0,
+      "gross_margin": 0.5632
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-12-31",
+      "gross_profit": 1807000000.0,
+      "total_revenue": 3335000000.0,
+      "gross_margin": 0.5418
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2026-03-31",
+      "gross_profit": 1788000000.0,
+      "total_revenue": 3181000000.0,
+      "gross_margin": 0.5621
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "NXPI",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2020-12-31",
+      "gross_profit": 4235000000.0,
+      "total_revenue": 8612000000.0,
+      "gross_margin": 0.4918
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2021-12-31",
+      "gross_profit": 6067000000.0,
+      "total_revenue": 11063000000.0,
+      "gross_margin": 0.5484
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2022-12-31",
+      "gross_profit": 7517000000.0,
+      "total_revenue": 13205000000.0,
+      "gross_margin": 0.5693
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2023-12-31",
+      "gross_profit": 7553000000.0,
+      "total_revenue": 13276000000.0,
+      "gross_margin": 0.5689
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-12-31",
+      "gross_profit": 7119000000.0,
+      "total_revenue": 12614000000.0,
+      "gross_margin": 0.5644
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-12-31",
+      "gross_profit": 6716000000.0,
+      "total_revenue": 12269000000.0,
+      "gross_margin": 0.5474
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "NXPI",
+      "report_date": "2022-06-30",
+      "operating_income": 941000000.0,
+      "total_revenue": 3312000000.0,
+      "operating_margin": 0.2841
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2023-06-30",
+      "operating_income": 937000000.0,
+      "total_revenue": 3299000000.0,
+      "operating_margin": 0.284
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2023-09-30",
+      "operating_income": 999000000.0,
+      "total_revenue": 3434000000.0,
+      "operating_margin": 0.2909
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2023-12-31",
+      "operating_income": 912000000.0,
+      "total_revenue": 3422000000.0,
+      "operating_margin": 0.2665
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-03-31",
+      "operating_income": 862000000.0,
+      "total_revenue": 3126000000.0,
+      "operating_margin": 0.2758
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-06-30",
+      "operating_income": 900000000.0,
+      "total_revenue": 3127000000.0,
+      "operating_margin": 0.2878
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-09-30",
+      "operating_income": 995000000.0,
+      "total_revenue": 3250000000.0,
+      "operating_margin": 0.3062
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-12-31",
+      "operating_income": 715000000.0,
+      "total_revenue": 3111000000.0,
+      "operating_margin": 0.2298
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-03-31",
+      "operating_income": 705000000.0,
+      "total_revenue": 2835000000.0,
+      "operating_margin": 0.2487
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-06-30",
+      "operating_income": 686000000.0,
+      "total_revenue": 2926000000.0,
+      "operating_margin": 0.2344
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-09-30",
+      "operating_income": 895000000.0,
+      "total_revenue": 3173000000.0,
+      "operating_margin": 0.2821
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-12-31",
+      "operating_income": 749000000.0,
+      "total_revenue": 3335000000.0,
+      "operating_margin": 0.2246
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2026-03-31",
+      "operating_income": 884000000.0,
+      "total_revenue": 3181000000.0,
+      "operating_margin": 0.2779
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "NXPI",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2020-12-31",
+      "operating_income": 304000000.0,
+      "total_revenue": 8612000000.0,
+      "operating_margin": 0.0353
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2021-12-31",
+      "operating_income": 2583000000.0,
+      "total_revenue": 11063000000.0,
+      "operating_margin": 0.2335
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2022-12-31",
+      "operating_income": 3794000000.0,
+      "total_revenue": 13205000000.0,
+      "operating_margin": 0.2873
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2023-12-31",
+      "operating_income": 3676000000.0,
+      "total_revenue": 13276000000.0,
+      "operating_margin": 0.2769
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-12-31",
+      "operating_income": 3472000000.0,
+      "total_revenue": 12614000000.0,
+      "operating_margin": 0.2752
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-12-31",
+      "operating_income": 3035000000.0,
+      "total_revenue": 12269000000.0,
+      "operating_margin": 0.2474
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "NXPI",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 670000000.0,
+      "total_revenue": 3312000000.0,
+      "net_margin": 0.2023
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 698000000.0,
+      "total_revenue": 3299000000.0,
+      "net_margin": 0.2116
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 787000000.0,
+      "total_revenue": 3434000000.0,
+      "net_margin": 0.2292
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 697000000.0,
+      "total_revenue": 3422000000.0,
+      "net_margin": 0.2037
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 639000000.0,
+      "total_revenue": 3126000000.0,
+      "net_margin": 0.2044
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 658000000.0,
+      "total_revenue": 3127000000.0,
+      "net_margin": 0.2104
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 718000000.0,
+      "total_revenue": 3250000000.0,
+      "net_margin": 0.2209
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 495000000.0,
+      "total_revenue": 3111000000.0,
+      "net_margin": 0.1591
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 490000000.0,
+      "total_revenue": 2835000000.0,
+      "net_margin": 0.1728
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 2148000000.0,
+      "total_revenue": 2926000000.0,
+      "net_margin": 0.7341
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 631000000.0,
+      "total_revenue": 3173000000.0,
+      "net_margin": 0.1989
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 455000000.0,
+      "total_revenue": 3335000000.0,
+      "net_margin": 0.1364
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 2653000000.0,
+      "total_revenue": 3181000000.0,
+      "net_margin": 0.834
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "NXPI",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 52000000.0,
+      "total_revenue": 8612000000.0,
+      "net_margin": 0.006
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 1871000000.0,
+      "total_revenue": 11063000000.0,
+      "net_margin": 0.1691
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 2787000000.0,
+      "total_revenue": 13205000000.0,
+      "net_margin": 0.2111
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 2797000000.0,
+      "total_revenue": 13276000000.0,
+      "net_margin": 0.2107
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 2510000000.0,
+      "total_revenue": 12614000000.0,
+      "net_margin": 0.199
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 2021000000.0,
+      "total_revenue": 12269000000.0,
+      "net_margin": 0.1647
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "NXPI",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 3312000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2023-06-30",
+      "ebitda": 1253000000.0,
+      "total_revenue": 3299000000.0,
+      "ebitda_margin": 0.3798
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2023-09-30",
+      "ebitda": 1299000000.0,
+      "total_revenue": 3434000000.0,
+      "ebitda_margin": 0.3783
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2023-12-31",
+      "ebitda": 1207000000.0,
+      "total_revenue": 3422000000.0,
+      "ebitda_margin": 0.3527
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-03-31",
+      "ebitda": 1126000000.0,
+      "total_revenue": 3126000000.0,
+      "ebitda_margin": 0.3602
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-06-30",
+      "ebitda": 1131000000.0,
+      "total_revenue": 3127000000.0,
+      "ebitda_margin": 0.3617
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-09-30",
+      "ebitda": 1222000000.0,
+      "total_revenue": 3250000000.0,
+      "ebitda_margin": 0.376
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-12-31",
+      "ebitda": 943000000.0,
+      "total_revenue": 3111000000.0,
+      "ebitda_margin": 0.3031
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-03-31",
+      "ebitda": 946000000.0,
+      "total_revenue": 2835000000.0,
+      "ebitda_margin": 0.3337
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-06-30",
+      "ebitda": 4034000000.0,
+      "total_revenue": 2926000000.0,
+      "ebitda_margin": 1.3787
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-09-30",
+      "ebitda": 1114000000.0,
+      "total_revenue": 3173000000.0,
+      "ebitda_margin": 0.3511
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-12-31",
+      "ebitda": 978000000.0,
+      "total_revenue": 3335000000.0,
+      "ebitda_margin": 0.2933
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2026-03-31",
+      "ebitda": 4717000000.0,
+      "total_revenue": 3181000000.0,
+      "ebitda_margin": 1.4829
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "NXPI",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2020-12-31",
+      "ebitda": 2351000000.0,
+      "total_revenue": 8612000000.0,
+      "ebitda_margin": 0.273
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2021-12-31",
+      "ebitda": 3811000000.0,
+      "total_revenue": 11063000000.0,
+      "ebitda_margin": 0.3445
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2022-12-31",
+      "ebitda": 5040000000.0,
+      "total_revenue": 13205000000.0,
+      "ebitda_margin": 0.3817
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2023-12-31",
+      "ebitda": 4896000000.0,
+      "total_revenue": 13276000000.0,
+      "ebitda_margin": 0.3688
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-12-31",
+      "ebitda": 4422000000.0,
+      "total_revenue": 12614000000.0,
+      "ebitda_margin": 0.3506
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-12-31",
+      "ebitda": 3961000000.0,
+      "total_revenue": 12269000000.0,
+      "ebitda_margin": 0.3228
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "NXPI",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 522000000.0,
+      "total_revenue": 3312000000.0,
+      "fcf_margin": 0.1576
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 504000000.0,
+      "total_revenue": 3299000000.0,
+      "fcf_margin": 0.1528
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 746000000.0,
+      "total_revenue": 3434000000.0,
+      "fcf_margin": 0.2172
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 918000000.0,
+      "total_revenue": 3422000000.0,
+      "fcf_margin": 0.2683
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 593000000.0,
+      "total_revenue": 3126000000.0,
+      "fcf_margin": 0.1897
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 521000000.0,
+      "total_revenue": 3127000000.0,
+      "fcf_margin": 0.1666
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 567000000.0,
+      "total_revenue": 3250000000.0,
+      "fcf_margin": 0.1745
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 225000000.0,
+      "total_revenue": 3111000000.0,
+      "fcf_margin": 0.0723
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 401000000.0,
+      "total_revenue": 2835000000.0,
+      "fcf_margin": 0.1414
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 1852000000.0,
+      "total_revenue": 2926000000.0,
+      "fcf_margin": 0.6329
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 485000000.0,
+      "total_revenue": 3173000000.0,
+      "fcf_margin": 0.1529
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 738000000.0,
+      "total_revenue": 3335000000.0,
+      "fcf_margin": 0.2213
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 2554000000.0,
+      "total_revenue": 3181000000.0,
+      "fcf_margin": 0.8029
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "NXPI",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 1960000000.0,
+      "total_revenue": 8612000000.0,
+      "fcf_margin": 0.2276
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 2145000000.0,
+      "total_revenue": 11063000000.0,
+      "fcf_margin": 0.1939
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 2668000000.0,
+      "total_revenue": 13205000000.0,
+      "fcf_margin": 0.202
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 2507000000.0,
+      "total_revenue": 13276000000.0,
+      "fcf_margin": 0.1888
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 1906000000.0,
+      "total_revenue": 12614000000.0,
+      "fcf_margin": 0.1511
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 2283000000.0,
+      "total_revenue": 12269000000.0,
+      "fcf_margin": 0.1861
+    }
+  ]
+}

@@ -12,13 +12,15 @@ test.describe("Search", () => {
     const input = page.getByRole("textbox", { name: /search content/i });
 
     await expect(input).toHaveValue("fantasy");
-    await expect(page.getByRole("heading", { name: /search results/i })).toBeVisible();
+    await expect(
+      page.getByRole("heading", { name: /result found for .fantasy/i })
+    ).toBeVisible();
     await expect(page.getByText("Fantasy Football Analytics Platform")).toBeVisible();
     await expect(page.getByText("Type: project")).toBeVisible();
     await expect(page.getByText("Category: Fantasy Football Analytics")).toBeVisible();
 
     await page.getByRole("button", { name: /show filters|hide filters/i }).click();
-    await page.getByRole("button", { name: /clear all filters/i }).click();
+    await page.getByRole("button", { name: /clear filters/i }).click();
 
     await expect(page).toHaveURL(/\/search\?q=fantasy$/);
 

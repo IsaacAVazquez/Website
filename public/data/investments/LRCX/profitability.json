@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "LRCX",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 887398000.0,
+      "beginning_stockholders_equity": 8210172000.0,
+      "ending_stockholders_equity": 8047330000.0,
+      "avg_equity": 8128751000.0,
+      "roe": 0.1092
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 954266000.0,
+      "beginning_stockholders_equity": 8047330000.0,
+      "ending_stockholders_equity": 8222478000.0,
+      "avg_equity": 8134904000.0,
+      "roe": 0.1173
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 965826000.0,
+      "beginning_stockholders_equity": 8222478000.0,
+      "ending_stockholders_equity": 8022101000.0,
+      "avg_equity": 8122289500.0,
+      "roe": 0.1189
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1020282000.0,
+      "beginning_stockholders_equity": 8022101000.0,
+      "ending_stockholders_equity": 8539454000.0,
+      "avg_equity": 8280777500.0,
+      "roe": 0.1232
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1116444000.0,
+      "beginning_stockholders_equity": 8539454000.0,
+      "ending_stockholders_equity": 8471891000.0,
+      "avg_equity": 8505672500.0,
+      "roe": 0.1313
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1191018000.0,
+      "beginning_stockholders_equity": 8471891000.0,
+      "ending_stockholders_equity": 8808026000.0,
+      "avg_equity": 8639958500.0,
+      "roe": 0.1378
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1330667000.0,
+      "beginning_stockholders_equity": 8808026000.0,
+      "ending_stockholders_equity": 9511105000.0,
+      "avg_equity": 9159565500.0,
+      "roe": 0.1453
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1720088000.0,
+      "beginning_stockholders_equity": 9511105000.0,
+      "ending_stockholders_equity": 9861619000.0,
+      "avg_equity": 9686362000.0,
+      "roe": 0.1776
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1568660000.0,
+      "beginning_stockholders_equity": 9861619000.0,
+      "ending_stockholders_equity": 10192752000.0,
+      "avg_equity": 10027185500.0,
+      "roe": 0.1564
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1593994000.0,
+      "beginning_stockholders_equity": 10192752000.0,
+      "ending_stockholders_equity": 10145426000.0,
+      "avg_equity": 10169089000.0,
+      "roe": 0.1567
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1825460000.0,
+      "beginning_stockholders_equity": 10145426000.0,
+      "ending_stockholders_equity": 10584779000.0,
+      "avg_equity": 10365102500.0,
+      "roe": 0.1761
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "LRCX",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 887398000.0,
+      "beginning_total_assets": 18781643000.0,
+      "ending_total_assets": 18538457000.0,
+      "avg_assets": 18660050000.0,
+      "roa": 0.0476
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 954266000.0,
+      "beginning_total_assets": 18538457000.0,
+      "ending_total_assets": 18783852000.0,
+      "avg_assets": 18661154500.0,
+      "roa": 0.0511
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 965826000.0,
+      "beginning_total_assets": 18783852000.0,
+      "ending_total_assets": 18279650000.0,
+      "avg_assets": 18531751000.0,
+      "roa": 0.0521
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1020282000.0,
+      "beginning_total_assets": 18279650000.0,
+      "ending_total_assets": 18744728000.0,
+      "avg_assets": 18512189000.0,
+      "roa": 0.0551
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1116444000.0,
+      "beginning_total_assets": 18744728000.0,
+      "ending_total_assets": 19532489000.0,
+      "avg_assets": 19138608500.0,
+      "roa": 0.0583
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1191018000.0,
+      "beginning_total_assets": 19532489000.0,
+      "ending_total_assets": 19839916000.0,
+      "avg_assets": 19686202500.0,
+      "roa": 0.0605
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1330667000.0,
+      "beginning_total_assets": 19839916000.0,
+      "ending_total_assets": 19968310000.0,
+      "avg_assets": 19904113000.0,
+      "roa": 0.0669
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1720088000.0,
+      "beginning_total_assets": 19968310000.0,
+      "ending_total_assets": 21345260000.0,
+      "avg_assets": 20656785000.0,
+      "roa": 0.0833
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1568660000.0,
+      "beginning_total_assets": 21345260000.0,
+      "ending_total_assets": 21900211000.0,
+      "avg_assets": 21622735500.0,
+      "roa": 0.0725
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1593994000.0,
+      "beginning_total_assets": 21900211000.0,
+      "ending_total_assets": 21391171000.0,
+      "avg_assets": 21645691000.0,
+      "roa": 0.0736
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1825460000.0,
+      "beginning_total_assets": 21391171000.0,
+      "ending_total_assets": 20791910000.0,
+      "avg_assets": 21091540500.0,
+      "roa": 0.0865
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "LRCX",
+      "report_date": "2023-09-30",
+      "ebit": 1070961000.0,
+      "tax_rate_for_calcs": 0.14,
+      "nopat": 921026460.0,
+      "beginning_invested_capital": 13175537000.0,
+      "ending_invested_capital": 13031651000.0,
+      "avg_invested_capital": 13103594000.0,
+      "roic": 0.0703
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2023-12-31",
+      "ebit": 1133364000.0,
+      "tax_rate_for_calcs": 0.12,
+      "nopat": 997360320.0,
+      "beginning_invested_capital": 13031651000.0,
+      "ending_invested_capital": 13206262000.0,
+      "avg_invested_capital": 13118956500.0,
+      "roic": 0.076
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-03-31",
+      "ebit": 1140338000.0,
+      "tax_rate_for_calcs": 0.12,
+      "nopat": 1003497440.0,
+      "beginning_invested_capital": 13206262000.0,
+      "ending_invested_capital": 13005552000.0,
+      "avg_invested_capital": 13105907000.0,
+      "roic": 0.0766
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-06-30",
+      "ebit": 1200795000.0,
+      "tax_rate_for_calcs": 0.12,
+      "nopat": 1056699600.0,
+      "beginning_invested_capital": 13005552000.0,
+      "ending_invested_capital": 13506815000.0,
+      "avg_invested_capital": 13256183500.0,
+      "roic": 0.0797
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-09-30",
+      "ebit": 1339224000.0,
+      "tax_rate_for_calcs": 0.14,
+      "nopat": 1151732640.0,
+      "beginning_invested_capital": 13506815000.0,
+      "ending_invested_capital": 13455660000.0,
+      "avg_invested_capital": 13481237500.0,
+      "roic": 0.0854
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-12-31",
+      "ebit": 1393445000.0,
+      "tax_rate_for_calcs": 0.12,
+      "nopat": 1226231600.0,
+      "beginning_invested_capital": 13455660000.0,
+      "ending_invested_capital": 13790310000.0,
+      "avg_invested_capital": 13622985000.0,
+      "roic": 0.09
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-03-31",
+      "ebit": 1581908000.0,
+      "tax_rate_for_calcs": 0.13,
+      "nopat": 1376259960.0,
+      "beginning_invested_capital": 13790310000.0,
+      "ending_invested_capital": 13995445000.0,
+      "avg_invested_capital": 13892877500.0,
+      "roic": 0.0991
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-06-30",
+      "ebit": 6136332000.0,
+      "tax_rate_for_calcs": 0.03,
+      "nopat": 5952242040.0,
+      "beginning_invested_capital": 13995445000.0,
+      "ending_invested_capital": 14330983000.0,
+      "avg_invested_capital": 14163214000.0,
+      "roic": 0.4203
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-09-30",
+      "ebit": 1901634000.0,
+      "tax_rate_for_calcs": 0.16,
+      "nopat": 1597372560.0,
+      "beginning_invested_capital": 14330983000.0,
+      "ending_invested_capital": 14676695000.0,
+      "avg_invested_capital": 14503839000.0,
+      "roic": 0.1101
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-12-31",
+      "ebit": 1877489000.0,
+      "tax_rate_for_calcs": 0.13,
+      "nopat": 1633415430.0,
+      "beginning_invested_capital": 14676695000.0,
+      "ending_invested_capital": 14629174000.0,
+      "avg_invested_capital": 14652934500.0,
+      "roic": 0.1115
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2026-03-31",
+      "ebit": 7651767000.0,
+      "tax_rate_for_calcs": 0.09,
+      "nopat": 6963107970.0,
+      "beginning_invested_capital": 14629174000.0,
+      "ending_invested_capital": 14319258000.0,
+      "avg_invested_capital": 14474216000.0,
+      "roic": 0.4811
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "LRCX",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.1092,
+      "roa": 0.0476,
+      "equity_multiplier": 2.29
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.1173,
+      "roa": 0.0511,
+      "equity_multiplier": 2.3
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.1189,
+      "roa": 0.0521,
+      "equity_multiplier": 2.28
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.1232,
+      "roa": 0.0551,
+      "equity_multiplier": 2.24
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.1313,
+      "roa": 0.0583,
+      "equity_multiplier": 2.25
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.1378,
+      "roa": 0.0605,
+      "equity_multiplier": 2.28
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.1453,
+      "roa": 0.0669,
+      "equity_multiplier": 2.17
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.1776,
+      "roa": 0.0833,
+      "equity_multiplier": 2.13
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.1564,
+      "roa": 0.0725,
+      "equity_multiplier": 2.16
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.1567,
+      "roa": 0.0736,
+      "equity_multiplier": 2.13
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.1761,
+      "roa": 0.0865,
+      "equity_multiplier": 2.04
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "LRCX",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0476,
+      "net_margin": 0.2548,
+      "asset_turnover": 0.19
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0511,
+      "net_margin": 0.2539,
+      "asset_turnover": 0.2
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0521,
+      "net_margin": 0.2546,
+      "asset_turnover": 0.2
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0551,
+      "net_margin": 0.2635,
+      "asset_turnover": 0.21
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0583,
+      "net_margin": 0.2679,
+      "asset_turnover": 0.22
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0605,
+      "net_margin": 0.2722,
+      "asset_turnover": 0.22
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0669,
+      "net_margin": 0.2819,
+      "asset_turnover": 0.24
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0833,
+      "net_margin": 0.0933,
+      "asset_turnover": 0.89
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0725,
+      "net_margin": 0.2946,
+      "asset_turnover": 0.25
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0736,
+      "net_margin": 0.2982,
+      "asset_turnover": 0.25
+    },
+    {
+      "symbol": "LRCX",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0865,
+      "net_margin": 0.0842,
+      "asset_turnover": 1.03
+    }
+  ]
+}

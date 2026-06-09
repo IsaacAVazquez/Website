@@ -25,7 +25,10 @@ import {
 interface AIStructuredDataProps {
   schema:
     | { type: "Person"; data: PersonSchemaData }
-    | { type: "ProfessionalService"; data: any }
+    | {
+        type: "ProfessionalService";
+        data: Parameters<typeof generateProfessionalServiceSchema>[0];
+      }
     | { type: "Article"; data: ArticleSchemaData }
     | { type: "Project"; data: ProjectSchemaData }
     | { type: "FAQ"; data: { items: FAQItem[] } }

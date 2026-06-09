@@ -1,0 +1,1643 @@
+{
+  "ttm_pe": [],
+  "ps_ratio": [],
+  "pb_ratio": [],
+  "roe": [
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": -46924062.0,
+      "total_avg_equity": 43126217.5,
+      "industry_roe": -1.0881
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": -46924062.0,
+      "total_avg_equity": 43126217.5,
+      "industry_roe": -1.0881
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": -46924062.0,
+      "total_avg_equity": 43126217.5,
+      "industry_roe": -1.0881
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": -232726727.0,
+      "total_avg_equity": 1507333808.5,
+      "industry_roe": -0.1544
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": -232726727.0,
+      "total_avg_equity": 1507333808.5,
+      "industry_roe": -0.1544
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": -232726727.0,
+      "total_avg_equity": 1507333808.5,
+      "industry_roe": -0.1544
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 12819071899.340553,
+      "total_avg_equity": 164337282744.30365,
+      "industry_roe": 0.078
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 14061071899.340553,
+      "total_avg_equity": 170223282744.30365,
+      "industry_roe": 0.0826
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 14061071899.340553,
+      "total_avg_equity": 170223282744.30365,
+      "industry_roe": 0.0826
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 12392968093.837517,
+      "total_avg_equity": 168409924038.15918,
+      "industry_roe": 0.0736
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 12563968093.837517,
+      "total_avg_equity": 168397924038.15918,
+      "industry_roe": 0.0746
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 12563968093.837517,
+      "total_avg_equity": 168397924038.15918,
+      "industry_roe": 0.0746
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 12189145130.515728,
+      "total_avg_equity": 173997767251.72324,
+      "industry_roe": 0.0701
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 12065145130.515728,
+      "total_avg_equity": 174166767251.72324,
+      "industry_roe": 0.0693
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 12065145130.515728,
+      "total_avg_equity": 174166767251.72324,
+      "industry_roe": 0.0693
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 12399285519.491306,
+      "total_avg_equity": 174179091916.294,
+      "industry_roe": 0.0712
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 12369285519.491306,
+      "total_avg_equity": 174256591916.294,
+      "industry_roe": 0.071
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 12369285519.491306,
+      "total_avg_equity": 174256591916.294,
+      "industry_roe": 0.071
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 12770991593.373905,
+      "total_avg_equity": 171342937232.4491,
+      "industry_roe": 0.0745
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 12677991593.373905,
+      "total_avg_equity": 171241937232.4491,
+      "industry_roe": 0.074
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 12677991593.373905,
+      "total_avg_equity": 171241937232.4491,
+      "industry_roe": 0.074
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 24902984751.15467,
+      "total_avg_equity": 174911051728.37744,
+      "industry_roe": 0.1424
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 24956984751.15467,
+      "total_avg_equity": 175025551728.37744,
+      "industry_roe": 0.1426
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 24956984751.15467,
+      "total_avg_equity": 175025551728.37744,
+      "industry_roe": 0.1426
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 25195466355.552002,
+      "total_avg_equity": 173550346571.27643,
+      "industry_roe": 0.1452
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 25278466355.552002,
+      "total_avg_equity": 173800346571.27643,
+      "industry_roe": 0.1454
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 25278466355.552002,
+      "total_avg_equity": 173800346571.27643,
+      "industry_roe": 0.1454
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 26613643912.354736,
+      "total_avg_equity": 176943539848.68054,
+      "industry_roe": 0.1504
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 26600643912.354736,
+      "total_avg_equity": 177081539848.68054,
+      "industry_roe": 0.1502
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 26600643912.354736,
+      "total_avg_equity": 177081539848.68054,
+      "industry_roe": 0.1502
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 34516225967.35474,
+      "total_avg_equity": 183546603159.68054,
+      "industry_roe": 0.1881
+    }
+  ],
+  "roa": [
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": -46924062.0,
+      "total_avg_assets": 56309399.0,
+      "industry_roa": -0.8333
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": -46924062.0,
+      "total_avg_assets": 56309399.0,
+      "industry_roa": -0.8333
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": -46924062.0,
+      "total_avg_assets": 56309399.0,
+      "industry_roa": -0.8333
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": -232726727.0,
+      "total_avg_assets": 2141322867.5,
+      "industry_roa": -0.1087
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": -232726727.0,
+      "total_avg_assets": 2141322867.5,
+      "industry_roa": -0.1087
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": -232726727.0,
+      "total_avg_assets": 2141322867.5,
+      "industry_roa": -0.1087
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 12819071899.340553,
+      "total_avg_assets": 333081592439.6998,
+      "industry_roa": 0.0385
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 14061071899.340553,
+      "total_avg_assets": 343847092439.6998,
+      "industry_roa": 0.0409
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 14061071899.340553,
+      "total_avg_assets": 343847092439.6998,
+      "industry_roa": 0.0409
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 12392968093.837517,
+      "total_avg_assets": 341006189682.4463,
+      "industry_roa": 0.0363
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 12563968093.837517,
+      "total_avg_assets": 341120189682.4463,
+      "industry_roa": 0.0368
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 12563968093.837517,
+      "total_avg_assets": 341120189682.4463,
+      "industry_roa": 0.0368
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 12189145130.515728,
+      "total_avg_assets": 349940975453.9336,
+      "industry_roa": 0.0348
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 12065145130.515728,
+      "total_avg_assets": 350458475453.9336,
+      "industry_roa": 0.0344
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 12065145130.515728,
+      "total_avg_assets": 350458475453.9336,
+      "industry_roa": 0.0344
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 12399285519.491306,
+      "total_avg_assets": 344369266370.4575,
+      "industry_roa": 0.036
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 12369285519.491306,
+      "total_avg_assets": 344357266370.4575,
+      "industry_roa": 0.0359
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 12369285519.491306,
+      "total_avg_assets": 344357266370.4575,
+      "industry_roa": 0.0359
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 12770991593.373905,
+      "total_avg_assets": 340669913033.3541,
+      "industry_roa": 0.0375
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 12677991593.373905,
+      "total_avg_assets": 340861913033.3541,
+      "industry_roa": 0.0372
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 12677991593.373905,
+      "total_avg_assets": 340861913033.3541,
+      "industry_roa": 0.0372
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 24902984751.15467,
+      "total_avg_assets": 348925679711.9997,
+      "industry_roa": 0.0714
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 24956984751.15467,
+      "total_avg_assets": 349384679711.9997,
+      "industry_roa": 0.0714
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 24956984751.15467,
+      "total_avg_assets": 349384679711.9997,
+      "industry_roa": 0.0714
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 25195466355.552002,
+      "total_avg_assets": 345646985443.63696,
+      "industry_roa": 0.0729
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 25278466355.552002,
+      "total_avg_assets": 345931485443.63696,
+      "industry_roa": 0.0731
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 25278466355.552002,
+      "total_avg_assets": 345931485443.63696,
+      "industry_roa": 0.0731
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 26613643912.354736,
+      "total_avg_assets": 353973272310.5725,
+      "industry_roa": 0.0752
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 26600643912.354736,
+      "total_avg_assets": 354138272310.5725,
+      "industry_roa": 0.0751
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 26600643912.354736,
+      "total_avg_assets": 354138272310.5725,
+      "industry_roa": 0.0751
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 34516225967.35474,
+      "total_avg_assets": 368947946821.5725,
+      "industry_roa": 0.0936
+    }
+  ],
+  "equity_multiplier": [
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roe": -1.0881,
+      "industry_roa": -0.8333,
+      "industry_equity_multiplier": 1.31
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roe": -1.0881,
+      "industry_roa": -0.8333,
+      "industry_equity_multiplier": 1.31
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roe": -1.0881,
+      "industry_roa": -0.8333,
+      "industry_equity_multiplier": 1.31
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roe": -0.1544,
+      "industry_roa": -0.1087,
+      "industry_equity_multiplier": 1.42
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roe": -0.1544,
+      "industry_roa": -0.1087,
+      "industry_equity_multiplier": 1.42
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roe": -0.1544,
+      "industry_roa": -0.1087,
+      "industry_equity_multiplier": 1.42
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roe": 0.078,
+      "industry_roa": 0.0385,
+      "industry_equity_multiplier": 2.03
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roe": 0.0826,
+      "industry_roa": 0.0409,
+      "industry_equity_multiplier": 2.02
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roe": 0.0826,
+      "industry_roa": 0.0409,
+      "industry_equity_multiplier": 2.02
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roe": 0.0736,
+      "industry_roa": 0.0363,
+      "industry_equity_multiplier": 2.03
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roe": 0.0746,
+      "industry_roa": 0.0368,
+      "industry_equity_multiplier": 2.03
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roe": 0.0746,
+      "industry_roa": 0.0368,
+      "industry_equity_multiplier": 2.03
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roe": 0.0701,
+      "industry_roa": 0.0348,
+      "industry_equity_multiplier": 2.01
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roe": 0.0693,
+      "industry_roa": 0.0344,
+      "industry_equity_multiplier": 2.01
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roe": 0.0693,
+      "industry_roa": 0.0344,
+      "industry_equity_multiplier": 2.01
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roe": 0.0712,
+      "industry_roa": 0.036,
+      "industry_equity_multiplier": 1.98
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roe": 0.071,
+      "industry_roa": 0.0359,
+      "industry_equity_multiplier": 1.98
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roe": 0.071,
+      "industry_roa": 0.0359,
+      "industry_equity_multiplier": 1.98
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roe": 0.0745,
+      "industry_roa": 0.0375,
+      "industry_equity_multiplier": 1.99
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roe": 0.074,
+      "industry_roa": 0.0372,
+      "industry_equity_multiplier": 1.99
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roe": 0.074,
+      "industry_roa": 0.0372,
+      "industry_equity_multiplier": 1.99
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roe": 0.1424,
+      "industry_roa": 0.0714,
+      "industry_equity_multiplier": 1.99
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roe": 0.1426,
+      "industry_roa": 0.0714,
+      "industry_equity_multiplier": 2.0
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roe": 0.1426,
+      "industry_roa": 0.0714,
+      "industry_equity_multiplier": 2.0
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roe": 0.1452,
+      "industry_roa": 0.0729,
+      "industry_equity_multiplier": 1.99
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roe": 0.1454,
+      "industry_roa": 0.0731,
+      "industry_equity_multiplier": 1.99
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roe": 0.1454,
+      "industry_roa": 0.0731,
+      "industry_equity_multiplier": 1.99
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roe": 0.1504,
+      "industry_roa": 0.0752,
+      "industry_equity_multiplier": 2.0
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roe": 0.1502,
+      "industry_roa": 0.0751,
+      "industry_equity_multiplier": 2.0
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roe": 0.1502,
+      "industry_roa": 0.0751,
+      "industry_equity_multiplier": 2.0
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roe": 0.1881,
+      "industry_roa": 0.0936,
+      "industry_equity_multiplier": 2.01
+    }
+  ],
+  "gross_margin": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_gross_profit": 6504708000.0,
+      "total_ttm_revenue": 18563005000.0,
+      "industry_gross_margin": 0.3504
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_gross_profit": 6504708000.0,
+      "total_ttm_revenue": 18563005000.0,
+      "industry_gross_margin": 0.3504
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_gross_profit": 6504708000.0,
+      "total_ttm_revenue": 18563005000.0,
+      "industry_gross_margin": 0.3504
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_gross_profit": 6244547000.0,
+      "total_ttm_revenue": 17888337000.0,
+      "industry_gross_margin": 0.3491
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_gross_profit": 6244547000.0,
+      "total_ttm_revenue": 17888337000.0,
+      "industry_gross_margin": 0.3491
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_gross_profit": 6244547000.0,
+      "total_ttm_revenue": 17888337000.0,
+      "industry_gross_margin": 0.3491
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_gross_profit": 8597012221.0,
+      "total_ttm_revenue": 25645879999.0,
+      "industry_gross_margin": 0.3352
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_gross_profit": 12062012221.0,
+      "total_ttm_revenue": 32478879999.0,
+      "industry_gross_margin": 0.3714
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_gross_profit": 12062012221.0,
+      "total_ttm_revenue": 32478879999.0,
+      "industry_gross_margin": 0.3714
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_gross_profit": 22724738659.0,
+      "total_ttm_revenue": 56426598479.0,
+      "industry_gross_margin": 0.4027
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_gross_profit": 22664738659.0,
+      "total_ttm_revenue": 56328598479.0,
+      "industry_gross_margin": 0.4024
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_gross_profit": 22664738659.0,
+      "total_ttm_revenue": 56328598479.0,
+      "industry_gross_margin": 0.4024
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_gross_profit": 66336965020.86784,
+      "total_ttm_revenue": 152027918921.8206,
+      "industry_gross_margin": 0.4363
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_gross_profit": 66268965020.86784,
+      "total_ttm_revenue": 151883918921.8206,
+      "industry_gross_margin": 0.4363
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_gross_profit": 66268965020.86784,
+      "total_ttm_revenue": 151883918921.8206,
+      "industry_gross_margin": 0.4363
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_gross_profit": 66575504161.67635,
+      "total_ttm_revenue": 152342737520.85117,
+      "industry_gross_margin": 0.437
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_gross_profit": 66772504161.67635,
+      "total_ttm_revenue": 152248737520.85117,
+      "industry_gross_margin": 0.4386
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_gross_profit": 66772504161.67635,
+      "total_ttm_revenue": 152248737520.85117,
+      "industry_gross_margin": 0.4386
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_gross_profit": 67520545424.81463,
+      "total_ttm_revenue": 153761606228.10104,
+      "industry_gross_margin": 0.4391
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_gross_profit": 67521545424.81463,
+      "total_ttm_revenue": 153774606228.10104,
+      "industry_gross_margin": 0.4391
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_gross_profit": 67521545424.81463,
+      "total_ttm_revenue": 153774606228.10104,
+      "industry_gross_margin": 0.4391
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_gross_profit": 70884766028.97862,
+      "total_ttm_revenue": 159562059746.8347,
+      "industry_gross_margin": 0.4442
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_gross_profit": 70875766028.97862,
+      "total_ttm_revenue": 159585059746.8347,
+      "industry_gross_margin": 0.4441
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_gross_profit": 70875766028.97862,
+      "total_ttm_revenue": 159585059746.8347,
+      "industry_gross_margin": 0.4441
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_gross_profit": 71373768323.68233,
+      "total_ttm_revenue": 160456379011.0471,
+      "industry_gross_margin": 0.4448
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_gross_profit": 71383768323.68233,
+      "total_ttm_revenue": 160551379011.0471,
+      "industry_gross_margin": 0.4446
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_gross_profit": 71383768323.68233,
+      "total_ttm_revenue": 160551379011.0471,
+      "industry_gross_margin": 0.4446
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_gross_profit": 98086357714.9182,
+      "total_ttm_revenue": 200607885382.1194,
+      "industry_gross_margin": 0.4889
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_gross_profit": 98119357714.9182,
+      "total_ttm_revenue": 200767885382.1194,
+      "industry_gross_margin": 0.4887
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_gross_profit": 98119357714.9182,
+      "total_ttm_revenue": 200767885382.1194,
+      "industry_gross_margin": 0.4887
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_gross_profit": 99369371389.2261,
+      "total_ttm_revenue": 203479627778.1577,
+      "industry_gross_margin": 0.4884
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_gross_profit": 99443371389.2261,
+      "total_ttm_revenue": 203639627778.1577,
+      "industry_gross_margin": 0.4883
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_gross_profit": 99443371389.2261,
+      "total_ttm_revenue": 203639627778.1577,
+      "industry_gross_margin": 0.4883
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_gross_profit": 100763721127.67807,
+      "total_ttm_revenue": 206809329242.55692,
+      "industry_gross_margin": 0.4872
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_gross_profit": 100810721127.67807,
+      "total_ttm_revenue": 212193329242.55692,
+      "industry_gross_margin": 0.4751
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_gross_profit": 100810721127.67807,
+      "total_ttm_revenue": 212193329242.55692,
+      "industry_gross_margin": 0.4751
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_gross_profit": 129219833730.67807,
+      "total_ttm_revenue": 256316404149.55692,
+      "industry_gross_margin": 0.5041
+    }
+  ],
+  "ebitda_margin": [
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_ebitda": 2742175000.0,
+      "total_ttm_revenue": 17888337000.0,
+      "industry_ebitda_margin": 0.1533
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_ebitda": 2742175000.0,
+      "total_ttm_revenue": 17888337000.0,
+      "industry_ebitda_margin": 0.1533
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_ebitda": 2742175000.0,
+      "total_ttm_revenue": 17888337000.0,
+      "industry_ebitda_margin": 0.1533
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_ebitda": 4170294215.0,
+      "total_ttm_revenue": 25645879999.0,
+      "industry_ebitda_margin": 0.1626
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_ebitda": 5875294215.0,
+      "total_ttm_revenue": 32478879999.0,
+      "industry_ebitda_margin": 0.1809
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_ebitda": 5875294215.0,
+      "total_ttm_revenue": 32478879999.0,
+      "industry_ebitda_margin": 0.1809
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_ebitda": 9078733646.0,
+      "total_ttm_revenue": 56426598479.0,
+      "industry_ebitda_margin": 0.1609
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_ebitda": 9063733646.0,
+      "total_ttm_revenue": 56328598479.0,
+      "industry_ebitda_margin": 0.1609
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_ebitda": 9063733646.0,
+      "total_ttm_revenue": 56328598479.0,
+      "industry_ebitda_margin": 0.1609
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_ebitda": 31628035200.102333,
+      "total_ttm_revenue": 152027918921.8206,
+      "industry_ebitda_margin": 0.208
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_ebitda": 31613035200.102333,
+      "total_ttm_revenue": 151883918921.8206,
+      "industry_ebitda_margin": 0.2081
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_ebitda": 31613035200.102333,
+      "total_ttm_revenue": 151883918921.8206,
+      "industry_ebitda_margin": 0.2081
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_ebitda": 30139570249.23118,
+      "total_ttm_revenue": 152342737520.85117,
+      "industry_ebitda_margin": 0.1978
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_ebitda": 30340570249.23118,
+      "total_ttm_revenue": 152248737520.85117,
+      "industry_ebitda_margin": 0.1993
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_ebitda": 30340570249.23118,
+      "total_ttm_revenue": 152248737520.85117,
+      "industry_ebitda_margin": 0.1993
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_ebitda": 31365080198.3014,
+      "total_ttm_revenue": 153761606228.10104,
+      "industry_ebitda_margin": 0.204
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_ebitda": 31363080198.3014,
+      "total_ttm_revenue": 153774606228.10104,
+      "industry_ebitda_margin": 0.204
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_ebitda": 31363080198.3014,
+      "total_ttm_revenue": 153774606228.10104,
+      "industry_ebitda_margin": 0.204
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_ebitda": 32699079108.785614,
+      "total_ttm_revenue": 159562059746.8347,
+      "industry_ebitda_margin": 0.2049
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_ebitda": 32679079108.785614,
+      "total_ttm_revenue": 159585059746.8347,
+      "industry_ebitda_margin": 0.2048
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_ebitda": 32679079108.785614,
+      "total_ttm_revenue": 159585059746.8347,
+      "industry_ebitda_margin": 0.2048
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_ebitda": 32689818956.936222,
+      "total_ttm_revenue": 160456379011.0471,
+      "industry_ebitda_margin": 0.2037
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_ebitda": 32594818956.936222,
+      "total_ttm_revenue": 160551379011.0471,
+      "industry_ebitda_margin": 0.203
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_ebitda": 32594818956.936222,
+      "total_ttm_revenue": 160551379011.0471,
+      "industry_ebitda_margin": 0.203
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_ebitda": 54824060741.805374,
+      "total_ttm_revenue": 200607891382.1194,
+      "industry_ebitda_margin": 0.2733
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_ebitda": 54862060741.805374,
+      "total_ttm_revenue": 200767891382.1194,
+      "industry_ebitda_margin": 0.2733
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_ebitda": 54862060741.805374,
+      "total_ttm_revenue": 200767891382.1194,
+      "industry_ebitda_margin": 0.2733
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_ebitda": 55715078107.653824,
+      "total_ttm_revenue": 203479630778.1577,
+      "industry_ebitda_margin": 0.2738
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_ebitda": 55753078107.653824,
+      "total_ttm_revenue": 203639630778.1577,
+      "industry_ebitda_margin": 0.2738
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_ebitda": 55753078107.653824,
+      "total_ttm_revenue": 203639630778.1577,
+      "industry_ebitda_margin": 0.2738
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_ebitda": 57129733256.603226,
+      "total_ttm_revenue": 206809329242.55692,
+      "industry_ebitda_margin": 0.2762
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_ebitda": 57118733256.603226,
+      "total_ttm_revenue": 212193329242.55692,
+      "industry_ebitda_margin": 0.2692
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_ebitda": 57118733256.603226,
+      "total_ttm_revenue": 212193329242.55692,
+      "industry_ebitda_margin": 0.2692
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_ebitda": 76677451958.60323,
+      "total_ttm_revenue": 256316404149.55692,
+      "industry_ebitda_margin": 0.2992
+    }
+  ],
+  "net_margin": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 1542126000.0,
+      "total_ttm_revenue": 18563005000.0,
+      "industry_net_margin": 0.0831
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 1542126000.0,
+      "total_ttm_revenue": 18563005000.0,
+      "industry_net_margin": 0.0831
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 1542126000.0,
+      "total_ttm_revenue": 18563005000.0,
+      "industry_net_margin": 0.0831
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 1379851000.0,
+      "total_ttm_revenue": 17888337000.0,
+      "industry_net_margin": 0.0771
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 1379851000.0,
+      "total_ttm_revenue": 17888337000.0,
+      "industry_net_margin": 0.0771
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 1379851000.0,
+      "total_ttm_revenue": 17888337000.0,
+      "industry_net_margin": 0.0771
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 1842360938.0,
+      "total_ttm_revenue": 25645879999.0,
+      "industry_net_margin": 0.0718
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 3082360938.0,
+      "total_ttm_revenue": 32478879999.0,
+      "industry_net_margin": 0.0949
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 3082360938.0,
+      "total_ttm_revenue": 32478879999.0,
+      "industry_net_margin": 0.0949
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 3282370273.0,
+      "total_ttm_revenue": 56426598479.0,
+      "industry_net_margin": 0.0582
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 3278370273.0,
+      "total_ttm_revenue": 56328598479.0,
+      "industry_net_margin": 0.0582
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 3278370273.0,
+      "total_ttm_revenue": 56328598479.0,
+      "industry_net_margin": 0.0582
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 14051418435.340553,
+      "total_ttm_revenue": 152027918921.8206,
+      "industry_net_margin": 0.0924
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 14057418435.340553,
+      "total_ttm_revenue": 151883918921.8206,
+      "industry_net_margin": 0.0926
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 14057418435.340553,
+      "total_ttm_revenue": 151883918921.8206,
+      "industry_net_margin": 0.0926
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 12390185815.837517,
+      "total_ttm_revenue": 152342737520.85117,
+      "industry_net_margin": 0.0813
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 12561185815.837517,
+      "total_ttm_revenue": 152248737520.85117,
+      "industry_net_margin": 0.0825
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 12561185815.837517,
+      "total_ttm_revenue": 152248737520.85117,
+      "industry_net_margin": 0.0825
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 12186868588.515728,
+      "total_ttm_revenue": 153761606228.10104,
+      "industry_net_margin": 0.0793
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 12062868588.515728,
+      "total_ttm_revenue": 153774606228.10104,
+      "industry_net_margin": 0.0784
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 12062868588.515728,
+      "total_ttm_revenue": 153774606228.10104,
+      "industry_net_margin": 0.0784
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 12396246418.491306,
+      "total_ttm_revenue": 159562059746.8347,
+      "industry_net_margin": 0.0777
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 12366246418.491306,
+      "total_ttm_revenue": 159585059746.8347,
+      "industry_net_margin": 0.0775
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 12366246418.491306,
+      "total_ttm_revenue": 159585059746.8347,
+      "industry_net_margin": 0.0775
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 12770991593.373905,
+      "total_ttm_revenue": 160456379011.0471,
+      "industry_net_margin": 0.0796
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 12677991593.373905,
+      "total_ttm_revenue": 160551379011.0471,
+      "industry_net_margin": 0.079
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 12677991593.373905,
+      "total_ttm_revenue": 160551379011.0471,
+      "industry_net_margin": 0.079
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 24872369751.15467,
+      "total_ttm_revenue": 200607891382.1194,
+      "industry_net_margin": 0.124
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 24926369751.15467,
+      "total_ttm_revenue": 200767891382.1194,
+      "industry_net_margin": 0.1242
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 24926369751.15467,
+      "total_ttm_revenue": 200767891382.1194,
+      "industry_net_margin": 0.1242
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 25181262355.552002,
+      "total_ttm_revenue": 203479630778.1577,
+      "industry_net_margin": 0.1238
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 25264262355.552002,
+      "total_ttm_revenue": 203639630778.1577,
+      "industry_net_margin": 0.1241
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 25264262355.552002,
+      "total_ttm_revenue": 203639630778.1577,
+      "industry_net_margin": 0.1241
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 26613447912.354736,
+      "total_ttm_revenue": 206809329242.55692,
+      "industry_net_margin": 0.1287
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 26600447912.354736,
+      "total_ttm_revenue": 212193329242.55692,
+      "industry_net_margin": 0.1254
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 26600447912.354736,
+      "total_ttm_revenue": 212193329242.55692,
+      "industry_net_margin": 0.1254
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "total_ttm_net_income": 34544894967.35474,
+      "total_ttm_revenue": 256316404149.55692,
+      "industry_net_margin": 0.1348
+    }
+  ],
+  "asset_turnover": [
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roa": -0.8333,
+      "industry_net_margin": 0.0718,
+      "industry_asset_turnover": -11.61
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roa": -0.8333,
+      "industry_net_margin": 0.0949,
+      "industry_asset_turnover": -8.78
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roa": -0.8333,
+      "industry_net_margin": 0.0949,
+      "industry_asset_turnover": -8.78
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roa": -0.1087,
+      "industry_net_margin": 0.0582,
+      "industry_asset_turnover": -1.87
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roa": -0.1087,
+      "industry_net_margin": 0.0582,
+      "industry_asset_turnover": -1.87
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roa": -0.1087,
+      "industry_net_margin": 0.0582,
+      "industry_asset_turnover": -1.87
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roa": 0.0385,
+      "industry_net_margin": 0.0924,
+      "industry_asset_turnover": 0.42
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roa": 0.0409,
+      "industry_net_margin": 0.0926,
+      "industry_asset_turnover": 0.44
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roa": 0.0409,
+      "industry_net_margin": 0.0926,
+      "industry_asset_turnover": 0.44
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roa": 0.0363,
+      "industry_net_margin": 0.0813,
+      "industry_asset_turnover": 0.45
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roa": 0.0368,
+      "industry_net_margin": 0.0825,
+      "industry_asset_turnover": 0.45
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roa": 0.0368,
+      "industry_net_margin": 0.0825,
+      "industry_asset_turnover": 0.45
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roa": 0.0348,
+      "industry_net_margin": 0.0793,
+      "industry_asset_turnover": 0.44
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roa": 0.0344,
+      "industry_net_margin": 0.0784,
+      "industry_asset_turnover": 0.44
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roa": 0.0344,
+      "industry_net_margin": 0.0784,
+      "industry_asset_turnover": 0.44
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roa": 0.036,
+      "industry_net_margin": 0.0777,
+      "industry_asset_turnover": 0.46
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roa": 0.0359,
+      "industry_net_margin": 0.0775,
+      "industry_asset_turnover": 0.46
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roa": 0.0359,
+      "industry_net_margin": 0.0775,
+      "industry_asset_turnover": 0.46
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roa": 0.0375,
+      "industry_net_margin": 0.0796,
+      "industry_asset_turnover": 0.47
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roa": 0.0372,
+      "industry_net_margin": 0.079,
+      "industry_asset_turnover": 0.47
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roa": 0.0372,
+      "industry_net_margin": 0.079,
+      "industry_asset_turnover": 0.47
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roa": 0.0714,
+      "industry_net_margin": 0.124,
+      "industry_asset_turnover": 0.58
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roa": 0.0714,
+      "industry_net_margin": 0.1242,
+      "industry_asset_turnover": 0.57
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roa": 0.0714,
+      "industry_net_margin": 0.1242,
+      "industry_asset_turnover": 0.57
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roa": 0.0729,
+      "industry_net_margin": 0.1238,
+      "industry_asset_turnover": 0.59
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roa": 0.0731,
+      "industry_net_margin": 0.1241,
+      "industry_asset_turnover": 0.59
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roa": 0.0731,
+      "industry_net_margin": 0.1241,
+      "industry_asset_turnover": 0.59
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roa": 0.0752,
+      "industry_net_margin": 0.1287,
+      "industry_asset_turnover": 0.58
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roa": 0.0751,
+      "industry_net_margin": 0.1254,
+      "industry_asset_turnover": 0.6
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roa": 0.0751,
+      "industry_net_margin": 0.1254,
+      "industry_asset_turnover": 0.6
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Diagnostics & Research",
+      "industry_roa": 0.0936,
+      "industry_net_margin": 0.1348,
+      "industry_asset_turnover": 0.69
+    }
+  ]
+}

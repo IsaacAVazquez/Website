@@ -16,6 +16,15 @@ import type {
 const mockFetch = jest.fn();
 global.fetch = mockFetch as unknown as typeof fetch;
 
+const emptySnapshot: MissionControlSnapshot = {
+  generatedAt: null,
+  sourceLabel: null,
+  summary: null,
+  upcomingLaunches: [],
+  pastLaunches: [],
+  launchDetails: {},
+};
+
 const baseLaunch = {
   id: "63aa7636-d2b7-457f-a3e6-27e564e42941",
   name: "Falcon 9 Block 5 | Starlink Group 10-58",
@@ -131,7 +140,7 @@ describe("spacexData image normalization", () => {
     mockFetch.mockReset();
     resetSpaceXDataCacheForTests();
     setSpaceXImageManifestForTests(null);
-    setSpaceXSnapshotForTests(null);
+    setSpaceXSnapshotForTests(emptySnapshot);
   });
 
   it("prefers the launch image for vehicle art on launch cards", async () => {

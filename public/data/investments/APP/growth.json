@@ -1,0 +1,885 @@
+{
+  "quarterly_revenue": [
+    {
+      "symbol": "APP",
+      "report_date": "2022-06-30T00:00:00.000",
+      "revenue": 776231000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2023-06-30T00:00:00.000",
+      "revenue": 750165000.0,
+      "prev_year_revenue": 776231000.0,
+      "yoy_growth": -0.0336
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2023-09-30T00:00:00.000",
+      "revenue": 864256000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 953261000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2024-03-31T00:00:00.000",
+      "revenue": 1058115000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2024-06-30T00:00:00.000",
+      "revenue": 711015000.0,
+      "prev_year_revenue": 750165000.0,
+      "yoy_growth": -0.0522
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2024-09-30T00:00:00.000",
+      "revenue": 835186000.0,
+      "prev_year_revenue": 864256000.0,
+      "yoy_growth": -0.0336
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 1372779000.0,
+      "prev_year_revenue": 953261000.0,
+      "yoy_growth": 0.4401
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2025-03-31T00:00:00.000",
+      "revenue": 1158974000.0,
+      "prev_year_revenue": 1058115000.0,
+      "yoy_growth": 0.0953
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2025-06-30T00:00:00.000",
+      "revenue": 1258754000.0,
+      "prev_year_revenue": 711015000.0,
+      "yoy_growth": 0.7704
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2025-09-30T00:00:00.000",
+      "revenue": 1405045000.0,
+      "prev_year_revenue": 835186000.0,
+      "yoy_growth": 0.6823
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 1657944000.0,
+      "prev_year_revenue": 1372779000.0,
+      "yoy_growth": 0.2077
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-03-31T00:00:00.000",
+      "revenue": 1842449000.0,
+      "prev_year_revenue": 1158974000.0,
+      "yoy_growth": 0.5897
+    }
+  ],
+  "annual_revenue": [
+    {
+      "symbol": "APP",
+      "report_date": "2020-12-31T00:00:00.000",
+      "revenue": 1451086000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2021-12-31T00:00:00.000",
+      "revenue": 2793104000.0,
+      "prev_year_revenue": 1451086000.0,
+      "yoy_growth": 0.9248
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2022-12-31T00:00:00.000",
+      "revenue": 2817058000.0,
+      "prev_year_revenue": 2793104000.0,
+      "yoy_growth": 0.0086
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 1841762000.0,
+      "prev_year_revenue": 2817058000.0,
+      "yoy_growth": -0.3462
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 3224058000.0,
+      "prev_year_revenue": 1841762000.0,
+      "yoy_growth": 0.7505
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 5480717000.0,
+      "prev_year_revenue": 3224058000.0,
+      "yoy_growth": 0.6999
+    }
+  ],
+  "quarterly_operating_income": [
+    {
+      "symbol": "APP",
+      "report_date": "2022-06-30T00:00:00.000",
+      "operating_income": 53355000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2023-06-30T00:00:00.000",
+      "operating_income": 131328000.0,
+      "prev_year_operating_income": 53355000.0,
+      "yoy_growth": 1.4614
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2023-09-30T00:00:00.000",
+      "operating_income": 186318000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 269514000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2024-03-31T00:00:00.000",
+      "operating_income": 339559000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2024-06-30T00:00:00.000",
+      "operating_income": 384422000.0,
+      "prev_year_operating_income": 131328000.0,
+      "yoy_growth": 1.9272
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2024-09-30T00:00:00.000",
+      "operating_income": 534299000.0,
+      "prev_year_operating_income": 186318000.0,
+      "yoy_growth": 1.8677
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 607980000.0,
+      "prev_year_operating_income": 269514000.0,
+      "yoy_growth": 1.2558
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2025-03-31T00:00:00.000",
+      "operating_income": 839982000.0,
+      "prev_year_operating_income": 339559000.0,
+      "yoy_growth": 1.4737
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2025-06-30T00:00:00.000",
+      "operating_income": 957682000.0,
+      "prev_year_operating_income": 384422000.0,
+      "yoy_growth": 1.4912
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2025-09-30T00:00:00.000",
+      "operating_income": 1079007000.0,
+      "prev_year_operating_income": 534299000.0,
+      "yoy_growth": 1.0195
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 1275243000.0,
+      "prev_year_operating_income": 607980000.0,
+      "yoy_growth": 1.0975
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-03-31T00:00:00.000",
+      "operating_income": 1439933000.0,
+      "prev_year_operating_income": 839982000.0,
+      "yoy_growth": 0.7142
+    }
+  ],
+  "annual_operating_income": [
+    {
+      "symbol": "APP",
+      "report_date": "2020-12-31T00:00:00.000",
+      "operating_income": 20629000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2021-12-31T00:00:00.000",
+      "operating_income": 150016000.0,
+      "prev_year_operating_income": 20629000.0,
+      "yoy_growth": 6.2721
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2022-12-31T00:00:00.000",
+      "operating_income": -47791000.0,
+      "prev_year_operating_income": 150016000.0,
+      "yoy_growth": -1.3186
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 772411000.0,
+      "prev_year_operating_income": -47791000.0,
+      "yoy_growth": 17.1623
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 1910956000.0,
+      "prev_year_operating_income": 772411000.0,
+      "yoy_growth": 1.474
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 4151914000.0,
+      "prev_year_operating_income": 1910956000.0,
+      "yoy_growth": 1.1727
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "APP",
+      "report_date": "2023-06-30T00:00:00.000",
+      "ebitda": 266681000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2023-09-30T00:00:00.000",
+      "ebitda": 309605000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 369591000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2024-03-31T00:00:00.000",
+      "ebitda": 454794000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2024-06-30T00:00:00.000",
+      "ebitda": 500835000.0,
+      "prev_year_ebitda": 266681000.0,
+      "yoy_growth": 0.878
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2024-09-30T00:00:00.000",
+      "ebitda": 642301000.0,
+      "prev_year_ebitda": 309605000.0,
+      "yoy_growth": 1.0746
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 737160000.0,
+      "prev_year_ebitda": 369591000.0,
+      "yoy_growth": 0.9945
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2025-03-31T00:00:00.000",
+      "ebitda": 927381000.0,
+      "prev_year_ebitda": 454794000.0,
+      "yoy_growth": 1.0391
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2025-06-30T00:00:00.000",
+      "ebitda": 982466000.0,
+      "prev_year_ebitda": 500835000.0,
+      "yoy_growth": 0.9617
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2025-09-30T00:00:00.000",
+      "ebitda": 1107477000.0,
+      "prev_year_ebitda": 642301000.0,
+      "yoy_growth": 0.7242
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 1337380000.0,
+      "prev_year_ebitda": 737160000.0,
+      "yoy_growth": 0.8142
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-03-31T00:00:00.000",
+      "ebitda": 1516232000.0,
+      "prev_year_ebitda": 927381000.0,
+      "yoy_growth": 0.635
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "APP",
+      "report_date": "2020-12-31T00:00:00.000",
+      "ebitda": 197118000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2021-12-31T00:00:00.000",
+      "ebitda": 580544000.0,
+      "prev_year_ebitda": 197118000.0,
+      "yoy_growth": 1.9452
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2022-12-31T00:00:00.000",
+      "ebitda": 513770000.0,
+      "prev_year_ebitda": 580544000.0,
+      "yoy_growth": -0.115
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 1264118000.0,
+      "prev_year_ebitda": 513770000.0,
+      "yoy_growth": 1.4605
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 2377832000.0,
+      "prev_year_ebitda": 1264118000.0,
+      "yoy_growth": 0.881
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 4354704000.0,
+      "prev_year_ebitda": 2377832000.0,
+      "yoy_growth": 0.8314
+    }
+  ],
+  "quarterly_net_income": [
+    {
+      "symbol": "APP",
+      "report_date": "2022-06-30T00:00:00.000",
+      "net_income_common_stockholders": -21748000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2023-06-30T00:00:00.000",
+      "net_income_common_stockholders": 80039000.0,
+      "prev_year_net_income_common_stockholders": -21748000.0,
+      "yoy_growth": 4.6803
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2023-09-30T00:00:00.000",
+      "net_income_common_stockholders": 107835000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 171427000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2024-03-31T00:00:00.000",
+      "net_income_common_stockholders": 234732000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2024-06-30T00:00:00.000",
+      "net_income_common_stockholders": 309890000.0,
+      "prev_year_net_income_common_stockholders": 80039000.0,
+      "yoy_growth": 2.8717
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2024-09-30T00:00:00.000",
+      "net_income_common_stockholders": 434310000.0,
+      "prev_year_net_income_common_stockholders": 107835000.0,
+      "yoy_growth": 3.0275
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 598659000.0,
+      "prev_year_net_income_common_stockholders": 171427000.0,
+      "yoy_growth": 2.4922
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2025-03-31T00:00:00.000",
+      "net_income_common_stockholders": 576275000.0,
+      "prev_year_net_income_common_stockholders": 234732000.0,
+      "yoy_growth": 1.455
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2025-06-30T00:00:00.000",
+      "net_income_common_stockholders": 819325000.0,
+      "prev_year_net_income_common_stockholders": 309890000.0,
+      "yoy_growth": 1.6439
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2025-09-30T00:00:00.000",
+      "net_income_common_stockholders": 835495000.0,
+      "prev_year_net_income_common_stockholders": 434310000.0,
+      "yoy_growth": 0.9237
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 1102207000.0,
+      "prev_year_net_income_common_stockholders": 598659000.0,
+      "yoy_growth": 0.8411
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-03-31T00:00:00.000",
+      "net_income_common_stockholders": 1205613000.0,
+      "prev_year_net_income_common_stockholders": 576275000.0,
+      "yoy_growth": 1.0921
+    }
+  ],
+  "annual_net_income": [
+    {
+      "symbol": "APP",
+      "report_date": "2020-12-31T00:00:00.000",
+      "net_income_common_stockholders": -125187000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2021-12-31T00:00:00.000",
+      "net_income_common_stockholders": 31703000.0,
+      "prev_year_net_income_common_stockholders": -125187000.0,
+      "yoy_growth": 1.2532
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2022-12-31T00:00:00.000",
+      "net_income_common_stockholders": -192746000.0,
+      "prev_year_net_income_common_stockholders": 31703000.0,
+      "yoy_growth": -7.0797
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 354941000.0,
+      "prev_year_net_income_common_stockholders": -192746000.0,
+      "yoy_growth": 2.8415
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 1577059000.0,
+      "prev_year_net_income_common_stockholders": 354941000.0,
+      "yoy_growth": 3.4432
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 3333286000.0,
+      "prev_year_net_income_common_stockholders": 1577059000.0,
+      "yoy_growth": 1.1136
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "APP",
+      "report_date": "2022-06-30T00:00:00.000",
+      "free_cash_flow": 105746000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2023-06-30T00:00:00.000",
+      "free_cash_flow": 191438000.0,
+      "prev_year_free_cash_flow": 105746000.0,
+      "yoy_growth": 0.8104
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2023-09-30T00:00:00.000",
+      "free_cash_flow": 185606000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 350267000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2024-03-31T00:00:00.000",
+      "free_cash_flow": 392779000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2024-06-30T00:00:00.000",
+      "free_cash_flow": 454527000.0,
+      "prev_year_free_cash_flow": 191438000.0,
+      "yoy_growth": 1.3743
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2024-09-30T00:00:00.000",
+      "free_cash_flow": 550702000.0,
+      "prev_year_free_cash_flow": 185606000.0,
+      "yoy_growth": 1.967
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 714516000.0,
+      "prev_year_free_cash_flow": 350267000.0,
+      "yoy_growth": 1.0399
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2025-03-31T00:00:00.000",
+      "free_cash_flow": 831712000.0,
+      "prev_year_free_cash_flow": 392779000.0,
+      "yoy_growth": 1.1175
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2025-06-30T00:00:00.000",
+      "free_cash_flow": 772226000.0,
+      "prev_year_free_cash_flow": 454527000.0,
+      "yoy_growth": 0.699
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2025-09-30T00:00:00.000",
+      "free_cash_flow": 1053422000.0,
+      "prev_year_free_cash_flow": 550702000.0,
+      "yoy_growth": 0.9129
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 1285416000.0,
+      "prev_year_free_cash_flow": 714516000.0,
+      "yoy_growth": 0.799
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-03-31T00:00:00.000",
+      "free_cash_flow": 1291393000.0,
+      "prev_year_free_cash_flow": 831712000.0,
+      "yoy_growth": 0.5527
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "APP",
+      "report_date": "2020-12-31T00:00:00.000",
+      "free_cash_flow": 219642000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2021-12-31T00:00:00.000",
+      "free_cash_flow": 360461000.0,
+      "prev_year_free_cash_flow": 219642000.0,
+      "yoy_growth": 0.6411
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2022-12-31T00:00:00.000",
+      "free_cash_flow": 412111000.0,
+      "prev_year_free_cash_flow": 360461000.0,
+      "yoy_growth": 0.1433
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 997611000.0,
+      "prev_year_free_cash_flow": 412111000.0,
+      "yoy_growth": 1.4207
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 2073458000.0,
+      "prev_year_free_cash_flow": 997611000.0,
+      "yoy_growth": 1.0784
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 3942776000.0,
+      "prev_year_free_cash_flow": 2073458000.0,
+      "yoy_growth": 0.9015
+    }
+  ],
+  "quarterly_eps": [
+    {
+      "symbol": "APP",
+      "report_date": "2019-03-31T00:00:00.000",
+      "eps": 0.0601,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2019-06-30T00:00:00.000",
+      "eps": 0.0991,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2019-09-30T00:00:00.000",
+      "eps": 0.0643,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2019-12-31T00:00:00.000",
+      "eps": 0.109,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2020-03-31T00:00:00.000",
+      "eps": 0.0083,
+      "prev_year_eps": 0.0601,
+      "yoy_growth": -0.8619
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2020-06-30T00:00:00.000",
+      "eps": -0.0587,
+      "prev_year_eps": 0.0991,
+      "yoy_growth": -1.5923
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2020-09-30T00:00:00.000",
+      "eps": -0.2512,
+      "prev_year_eps": 0.0643,
+      "yoy_growth": -4.9067
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2020-12-31T00:00:00.000",
+      "eps": -0.053,
+      "prev_year_eps": 0.109,
+      "yoy_growth": -1.4862
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2021-03-31T00:00:00.000",
+      "eps": -0.0288,
+      "prev_year_eps": 0.0083,
+      "yoy_growth": -4.4699
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2021-06-30T00:00:00.000",
+      "eps": 0.0357,
+      "prev_year_eps": -0.0587,
+      "yoy_growth": 1.6082
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2021-09-30T00:00:00.000",
+      "eps": 0.0005,
+      "prev_year_eps": -0.2512,
+      "yoy_growth": 1.002
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2021-12-31T00:00:00.000",
+      "eps": 0.0828,
+      "prev_year_eps": -0.053,
+      "yoy_growth": 2.5623
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2022-03-31T00:00:00.000",
+      "eps": -0.3099,
+      "prev_year_eps": -0.0288,
+      "yoy_growth": -9.7604
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2022-06-30T00:00:00.000",
+      "eps": -0.0582,
+      "prev_year_eps": 0.0357,
+      "yoy_growth": -2.6303
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2022-09-30T00:00:00.000",
+      "eps": 0.0625,
+      "prev_year_eps": 0.0005,
+      "yoy_growth": 124.0
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2022-12-31T00:00:00.000",
+      "eps": -0.2143,
+      "prev_year_eps": 0.0828,
+      "yoy_growth": -3.5882
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2023-03-31T00:00:00.000",
+      "eps": -0.0121,
+      "prev_year_eps": -0.3099,
+      "yoy_growth": 0.961
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2023-06-30T00:00:00.000",
+      "eps": 0.2185,
+      "prev_year_eps": -0.0582,
+      "yoy_growth": 4.7543
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2023-09-30T00:00:00.000",
+      "eps": 0.3022,
+      "prev_year_eps": 0.0625,
+      "yoy_growth": 3.8352
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2023-12-31T00:00:00.000",
+      "eps": 0.4936,
+      "prev_year_eps": -0.2143,
+      "yoy_growth": 3.3033
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2024-03-31T00:00:00.000",
+      "eps": 0.6735,
+      "prev_year_eps": -0.0121,
+      "yoy_growth": 56.6612
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2024-06-30T00:00:00.000",
+      "eps": 0.8906,
+      "prev_year_eps": 0.2185,
+      "yoy_growth": 3.076
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2024-09-30T00:00:00.000",
+      "eps": 1.2472,
+      "prev_year_eps": 0.3022,
+      "yoy_growth": 3.1271
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2024-12-31T00:00:00.000",
+      "eps": 1.7281,
+      "prev_year_eps": 0.4936,
+      "yoy_growth": 2.501
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2025-03-31T00:00:00.000",
+      "eps": 2.0974,
+      "prev_year_eps": 0.6735,
+      "yoy_growth": 2.1142
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2025-06-30T00:00:00.000",
+      "eps": 2.0839,
+      "prev_year_eps": 0.8906,
+      "yoy_growth": 1.3399
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2025-09-30T00:00:00.000",
+      "eps": 2.4503,
+      "prev_year_eps": 1.2472,
+      "yoy_growth": 0.9646
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2025-12-31T00:00:00.000",
+      "eps": 3.2427,
+      "prev_year_eps": 1.7281,
+      "yoy_growth": 0.8765
+    },
+    {
+      "symbol": "APP",
+      "report_date": "2026-03-31T00:00:00.000",
+      "eps": 3.5592,
+      "prev_year_eps": 2.0974,
+      "yoy_growth": 0.697
+    }
+  ]
+}

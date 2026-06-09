@@ -1,0 +1,1594 @@
+{
+  "ttm_pe": [],
+  "ps_ratio": [],
+  "pb_ratio": [],
+  "roe": [
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 19945000.0,
+      "total_avg_equity": -53844000.0,
+      "industry_roe": -0.3704
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 19945000.0,
+      "total_avg_equity": -53844000.0,
+      "industry_roe": -0.3704
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 21505000.0,
+      "total_avg_equity": 108666000.0,
+      "industry_roe": 0.1979
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 18352160983.972603,
+      "total_avg_equity": -2918496305.5568047,
+      "industry_roe": -6.2882
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 18449281983.972603,
+      "total_avg_equity": -1890038805.5568047,
+      "industry_roe": -9.7613
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 19474643983.972603,
+      "total_avg_equity": 308234694.44319534,
+      "industry_roe": 63.1812
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 19432141708.083004,
+      "total_avg_equity": -3050516849.3467636,
+      "industry_roe": -6.3701
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 19412818708.083004,
+      "total_avg_equity": -3055507349.3467636,
+      "industry_roe": -6.3534
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 19417392708.083004,
+      "total_avg_equity": -3161451349.3467636,
+      "industry_roe": -6.1419
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 19336285822.542202,
+      "total_avg_equity": -2716364331.9857845,
+      "industry_roe": -7.1184
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 19335673822.542202,
+      "total_avg_equity": -2715231331.9857845,
+      "industry_roe": -7.1212
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 19339759822.542202,
+      "total_avg_equity": -2647742331.9857845,
+      "industry_roe": -7.3042
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 18851507937.27558,
+      "total_avg_equity": -1951395775.9587421,
+      "industry_roe": -9.6605
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 18847180937.27558,
+      "total_avg_equity": -1958993275.9587421,
+      "industry_roe": -9.6209
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 18854897937.27558,
+      "total_avg_equity": -1862836275.9587421,
+      "industry_roe": -10.1216
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 18419491528.66272,
+      "total_avg_equity": -1326563679.0642729,
+      "industry_roe": -13.8851
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 18441264528.66272,
+      "total_avg_equity": -1315569679.0642729,
+      "industry_roe": -14.0177
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 18438087528.66272,
+      "total_avg_equity": -1311784179.0642729,
+      "industry_roe": -14.0557
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 24063408086.48768,
+      "total_avg_equity": 757023410.1147013,
+      "industry_roe": 31.7869
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 24052023086.48768,
+      "total_avg_equity": 753487910.1147013,
+      "industry_roe": 31.9209
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 24110097086.48768,
+      "total_avg_equity": 708790410.1147013,
+      "industry_roe": 34.0158
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 22633171449.805195,
+      "total_avg_equity": 2744370778.246767,
+      "industry_roe": 8.2471
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 22603705449.805195,
+      "total_avg_equity": 2738017778.246767,
+      "industry_roe": 8.2555
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 22623706449.805195,
+      "total_avg_equity": 2729267278.246767,
+      "industry_roe": 8.2893
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 21526394485.215305,
+      "total_avg_equity": 2452768530.014719,
+      "industry_roe": 8.7764
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 21500175485.215305,
+      "total_avg_equity": 2455496030.014719,
+      "industry_roe": 8.7559
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 22284444485.215305,
+      "total_avg_equity": 2522230530.014719,
+      "industry_roe": 8.8352
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 26488567310.426014,
+      "total_avg_equity": 3742711005.051321,
+      "industry_roe": 7.0774
+    }
+  ],
+  "roa": [
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 19945000.0,
+      "total_avg_assets": 472632500.0,
+      "industry_roa": 0.0422
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 19945000.0,
+      "total_avg_assets": 472632500.0,
+      "industry_roa": 0.0422
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 21505000.0,
+      "total_avg_assets": 773521000.0,
+      "industry_roa": 0.0278
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 18352160983.972603,
+      "total_avg_assets": 174839562119.28647,
+      "industry_roa": 0.105
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 18449281983.972603,
+      "total_avg_assets": 178022187619.28647,
+      "industry_roa": 0.1036
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 19474643983.972603,
+      "total_avg_assets": 189332094119.28647,
+      "industry_roa": 0.1029
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 19432141708.083004,
+      "total_avg_assets": 194898234069.2565,
+      "industry_roa": 0.0997
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 19412818708.083004,
+      "total_avg_assets": 194901203069.2565,
+      "industry_roa": 0.0996
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 19417392708.083004,
+      "total_avg_assets": 194948117569.2565,
+      "industry_roa": 0.0996
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 19336285822.542202,
+      "total_avg_assets": 200664009731.90024,
+      "industry_roa": 0.0964
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 19335673822.542202,
+      "total_avg_assets": 200662474731.90024,
+      "industry_roa": 0.0964
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 19339759822.542202,
+      "total_avg_assets": 201303114231.90024,
+      "industry_roa": 0.0961
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 18851507937.27558,
+      "total_avg_assets": 200303856714.2172,
+      "industry_roa": 0.0941
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 18847180937.27558,
+      "total_avg_assets": 200268154214.2172,
+      "industry_roa": 0.0941
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 18854897937.27558,
+      "total_avg_assets": 200279306714.2172,
+      "industry_roa": 0.0941
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 18419491528.66272,
+      "total_avg_assets": 203284722717.4621,
+      "industry_roa": 0.0906
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 18441264528.66272,
+      "total_avg_assets": 203281669217.4621,
+      "industry_roa": 0.0907
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 18438087528.66272,
+      "total_avg_assets": 203317365217.4621,
+      "industry_roa": 0.0907
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 24063408086.48768,
+      "total_avg_assets": 244576484236.60547,
+      "industry_roa": 0.0984
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 24052023086.48768,
+      "total_avg_assets": 244603652736.60547,
+      "industry_roa": 0.0983
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 24110097086.48768,
+      "total_avg_assets": 245315210736.60547,
+      "industry_roa": 0.0983
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 22633171449.805195,
+      "total_avg_assets": 247431807716.49292,
+      "industry_roa": 0.0915
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 22603705449.805195,
+      "total_avg_assets": 247404833216.49292,
+      "industry_roa": 0.0914
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 22623706449.805195,
+      "total_avg_assets": 247525569216.49292,
+      "industry_roa": 0.0914
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 21526394485.215305,
+      "total_avg_assets": 248259626308.66098,
+      "industry_roa": 0.0867
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 21500175485.215305,
+      "total_avg_assets": 248230591308.66098,
+      "industry_roa": 0.0866
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 22284444485.215305,
+      "total_avg_assets": 248231176308.66098,
+      "industry_roa": 0.0898
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 26488567310.426014,
+      "total_avg_assets": 251380175427.3804,
+      "industry_roa": 0.1054
+    }
+  ],
+  "equity_multiplier": [
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roe": -0.3704,
+      "industry_roa": 0.0422,
+      "industry_equity_multiplier": -8.78
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roe": -0.3704,
+      "industry_roa": 0.0422,
+      "industry_equity_multiplier": -8.78
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roe": 0.1979,
+      "industry_roa": 0.0278,
+      "industry_equity_multiplier": 7.12
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roe": -6.2882,
+      "industry_roa": 0.105,
+      "industry_equity_multiplier": -59.89
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roe": -9.7613,
+      "industry_roa": 0.1036,
+      "industry_equity_multiplier": -94.22
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roe": 63.1812,
+      "industry_roa": 0.1029,
+      "industry_equity_multiplier": 614.01
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roe": -6.3701,
+      "industry_roa": 0.0997,
+      "industry_equity_multiplier": -63.89
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roe": -6.3534,
+      "industry_roa": 0.0996,
+      "industry_equity_multiplier": -63.79
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roe": -6.1419,
+      "industry_roa": 0.0996,
+      "industry_equity_multiplier": -61.67
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roe": -7.1184,
+      "industry_roa": 0.0964,
+      "industry_equity_multiplier": -73.84
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roe": -7.1212,
+      "industry_roa": 0.0964,
+      "industry_equity_multiplier": -73.87
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roe": -7.3042,
+      "industry_roa": 0.0961,
+      "industry_equity_multiplier": -76.01
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roe": -9.6605,
+      "industry_roa": 0.0941,
+      "industry_equity_multiplier": -102.66
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roe": -9.6209,
+      "industry_roa": 0.0941,
+      "industry_equity_multiplier": -102.24
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roe": -10.1216,
+      "industry_roa": 0.0941,
+      "industry_equity_multiplier": -107.56
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roe": -13.8851,
+      "industry_roa": 0.0906,
+      "industry_equity_multiplier": -153.26
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roe": -14.0177,
+      "industry_roa": 0.0907,
+      "industry_equity_multiplier": -154.55
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roe": -14.0557,
+      "industry_roa": 0.0907,
+      "industry_equity_multiplier": -154.97
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roe": 31.7869,
+      "industry_roa": 0.0984,
+      "industry_equity_multiplier": 323.04
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roe": 31.9209,
+      "industry_roa": 0.0983,
+      "industry_equity_multiplier": 324.73
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roe": 34.0158,
+      "industry_roa": 0.0983,
+      "industry_equity_multiplier": 346.04
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roe": 8.2471,
+      "industry_roa": 0.0915,
+      "industry_equity_multiplier": 90.13
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roe": 8.2555,
+      "industry_roa": 0.0914,
+      "industry_equity_multiplier": 90.32
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roe": 8.2893,
+      "industry_roa": 0.0914,
+      "industry_equity_multiplier": 90.69
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roe": 8.7764,
+      "industry_roa": 0.0867,
+      "industry_equity_multiplier": 101.23
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roe": 8.7559,
+      "industry_roa": 0.0866,
+      "industry_equity_multiplier": 101.11
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roe": 8.8352,
+      "industry_roa": 0.0898,
+      "industry_equity_multiplier": 98.39
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roe": 7.0774,
+      "industry_roa": 0.1054,
+      "industry_equity_multiplier": 67.15
+    }
+  ],
+  "gross_margin": [
+    {
+      "report_date": "2023-01-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 1078647000.0,
+      "total_ttm_revenue": 3393983000.0,
+      "industry_gross_margin": 0.3178
+    },
+    {
+      "report_date": "2023-02-28T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 1121132000.0,
+      "total_ttm_revenue": 3668469000.0,
+      "industry_gross_margin": 0.3056
+    },
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 1533039000.0,
+      "total_ttm_revenue": 6607315000.0,
+      "industry_gross_margin": 0.232
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 1533039000.0,
+      "total_ttm_revenue": 6607315000.0,
+      "industry_gross_margin": 0.232
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 1534993000.0,
+      "total_ttm_revenue": 6618584000.0,
+      "industry_gross_margin": 0.2319
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 1562121000.0,
+      "total_ttm_revenue": 6646362000.0,
+      "industry_gross_margin": 0.235
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 1562121000.0,
+      "total_ttm_revenue": 6646362000.0,
+      "industry_gross_margin": 0.235
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 1564165000.0,
+      "total_ttm_revenue": 6659293000.0,
+      "industry_gross_margin": 0.2349
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 1830383000.0,
+      "total_ttm_revenue": 7585298000.0,
+      "industry_gross_margin": 0.2413
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 1830383000.0,
+      "total_ttm_revenue": 7585298000.0,
+      "industry_gross_margin": 0.2413
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 1813978000.0,
+      "total_ttm_revenue": 7486198000.0,
+      "industry_gross_margin": 0.2423
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 5530237000.0,
+      "total_ttm_revenue": 18932337000.0,
+      "industry_gross_margin": 0.2921
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 5530237000.0,
+      "total_ttm_revenue": 18932337000.0,
+      "industry_gross_margin": 0.2921
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 5530661000.0,
+      "total_ttm_revenue": 18945684000.0,
+      "industry_gross_margin": 0.2919
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 46631700204.83353,
+      "total_ttm_revenue": 142634359325.69275,
+      "industry_gross_margin": 0.3269
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 46866887204.83353,
+      "total_ttm_revenue": 143524218325.69275,
+      "industry_gross_margin": 0.3265
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 49276470204.83353,
+      "total_ttm_revenue": 154928062325.69275,
+      "industry_gross_margin": 0.3181
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 51792560367.86856,
+      "total_ttm_revenue": 162231284031.12286,
+      "industry_gross_margin": 0.3193
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 51805385367.86856,
+      "total_ttm_revenue": 162288939031.12286,
+      "industry_gross_margin": 0.3192
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 51814623367.86856,
+      "total_ttm_revenue": 162326422031.12286,
+      "industry_gross_margin": 0.3192
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 51758034094.976875,
+      "total_ttm_revenue": 163934388713.38162,
+      "industry_gross_margin": 0.3157
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 51773164094.976875,
+      "total_ttm_revenue": 163955638713.38162,
+      "industry_gross_margin": 0.3158
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 51842660094.976875,
+      "total_ttm_revenue": 164131319713.38162,
+      "industry_gross_margin": 0.3159
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 52923080276.89259,
+      "total_ttm_revenue": 167174329782.267,
+      "industry_gross_margin": 0.3166
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 52938997276.89259,
+      "total_ttm_revenue": 167188367782.267,
+      "industry_gross_margin": 0.3166
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 53001718276.89259,
+      "total_ttm_revenue": 167379170782.267,
+      "industry_gross_margin": 0.3167
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 52924201319.129974,
+      "total_ttm_revenue": 168980202224.99728,
+      "industry_gross_margin": 0.3132
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 52930013319.129974,
+      "total_ttm_revenue": 168984214224.99728,
+      "industry_gross_margin": 0.3132
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 53039006319.129974,
+      "total_ttm_revenue": 169504859224.99728,
+      "industry_gross_margin": 0.3129
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 78386787298.39561,
+      "total_ttm_revenue": 269888414858.0255,
+      "industry_gross_margin": 0.2904
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 78386339298.39561,
+      "total_ttm_revenue": 269862036858.0255,
+      "industry_gross_margin": 0.2905
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 78444040298.39561,
+      "total_ttm_revenue": 270163172858.0255,
+      "industry_gross_margin": 0.2904
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 79497619367.91565,
+      "total_ttm_revenue": 273102367249.67465,
+      "industry_gross_margin": 0.2911
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 79466137367.91565,
+      "total_ttm_revenue": 273054466249.67465,
+      "industry_gross_margin": 0.291
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 79476569367.91565,
+      "total_ttm_revenue": 273275565249.67465,
+      "industry_gross_margin": 0.2908
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 82163235350.9631,
+      "total_ttm_revenue": 285699501824.354,
+      "industry_gross_margin": 0.2876
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 82116396350.9631,
+      "total_ttm_revenue": 285624879824.354,
+      "industry_gross_margin": 0.2875
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 84155464350.96312,
+      "total_ttm_revenue": 286054171824.354,
+      "industry_gross_margin": 0.2942
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_gross_profit": 106223703605.47368,
+      "total_ttm_revenue": 368263027250.467,
+      "industry_gross_margin": 0.2884
+    }
+  ],
+  "ebitda_margin": [
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_ebitda": 11349000.0,
+      "total_ttm_revenue": 285755000.0,
+      "industry_ebitda_margin": 0.0397
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_ebitda": 324421000.0,
+      "total_ttm_revenue": 3252379000.0,
+      "industry_ebitda_margin": 0.0997
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_ebitda": 324421000.0,
+      "total_ttm_revenue": 3252379000.0,
+      "industry_ebitda_margin": 0.0997
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_ebitda": 327697000.0,
+      "total_ttm_revenue": 3265310000.0,
+      "industry_ebitda_margin": 0.1004
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_ebitda": 130811000.0,
+      "total_ttm_revenue": 4191315000.0,
+      "industry_ebitda_margin": 0.0312
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_ebitda": 130811000.0,
+      "total_ttm_revenue": 4191315000.0,
+      "industry_ebitda_margin": 0.0312
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_ebitda": 126822000.0,
+      "total_ttm_revenue": 4092215000.0,
+      "industry_ebitda_margin": 0.031
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_ebitda": 1219369000.0,
+      "total_ttm_revenue": 15538354000.0,
+      "industry_ebitda_margin": 0.0785
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_ebitda": 1219369000.0,
+      "total_ttm_revenue": 15538354000.0,
+      "industry_ebitda_margin": 0.0785
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_ebitda": 1220354000.0,
+      "total_ttm_revenue": 15551701000.0,
+      "industry_ebitda_margin": 0.0785
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_ebitda": 34140332893.00858,
+      "total_ttm_revenue": 139240376325.69275,
+      "industry_ebitda_margin": 0.2452
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_ebitda": 34425909893.008575,
+      "total_ttm_revenue": 143524218325.69275,
+      "industry_ebitda_margin": 0.2399
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_ebitda": 36203446893.008575,
+      "total_ttm_revenue": 154928062325.69275,
+      "industry_ebitda_margin": 0.2337
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_ebitda": 37012424701.58058,
+      "total_ttm_revenue": 162231284031.12286,
+      "industry_ebitda_margin": 0.2281
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_ebitda": 36994704701.58058,
+      "total_ttm_revenue": 162288939031.12286,
+      "industry_ebitda_margin": 0.228
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_ebitda": 37017743701.58058,
+      "total_ttm_revenue": 162326422031.12286,
+      "industry_ebitda_margin": 0.228
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_ebitda": 37228185837.26105,
+      "total_ttm_revenue": 163934388713.38162,
+      "industry_ebitda_margin": 0.2271
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_ebitda": 37226328837.26105,
+      "total_ttm_revenue": 163955638713.38162,
+      "industry_ebitda_margin": 0.2271
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_ebitda": 37254820837.26105,
+      "total_ttm_revenue": 164131319713.38162,
+      "industry_ebitda_margin": 0.227
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_ebitda": 37710292789.24754,
+      "total_ttm_revenue": 167174329782.267,
+      "industry_ebitda_margin": 0.2256
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_ebitda": 37711128789.24754,
+      "total_ttm_revenue": 167188367782.267,
+      "industry_ebitda_margin": 0.2256
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_ebitda": 37759549789.24754,
+      "total_ttm_revenue": 167379170782.267,
+      "industry_ebitda_margin": 0.2256
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_ebitda": 37586221794.63226,
+      "total_ttm_revenue": 168980202224.99728,
+      "industry_ebitda_margin": 0.2224
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_ebitda": 37623004794.63226,
+      "total_ttm_revenue": 168984214224.99728,
+      "industry_ebitda_margin": 0.2226
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_ebitda": 37635965794.63226,
+      "total_ttm_revenue": 169504859224.99728,
+      "industry_ebitda_margin": 0.222
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_ebitda": 58674160194.48059,
+      "total_ttm_revenue": 269888414858.0255,
+      "industry_ebitda_margin": 0.2174
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_ebitda": 58661986194.48059,
+      "total_ttm_revenue": 269862036858.0255,
+      "industry_ebitda_margin": 0.2174
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_ebitda": 58712202194.48059,
+      "total_ttm_revenue": 270163172858.0255,
+      "industry_ebitda_margin": 0.2173
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_ebitda": 57802291434.35012,
+      "total_ttm_revenue": 273102367249.67465,
+      "industry_ebitda_margin": 0.2117
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_ebitda": 57763471434.35012,
+      "total_ttm_revenue": 273054466249.67465,
+      "industry_ebitda_margin": 0.2115
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_ebitda": 57800483434.35012,
+      "total_ttm_revenue": 273275565249.67465,
+      "industry_ebitda_margin": 0.2115
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_ebitda": 58095682029.239784,
+      "total_ttm_revenue": 285699501824.354,
+      "industry_ebitda_margin": 0.2033
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_ebitda": 58159135029.239784,
+      "total_ttm_revenue": 285624879824.354,
+      "industry_ebitda_margin": 0.2036
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_ebitda": 59593600029.239784,
+      "total_ttm_revenue": 286054171824.354,
+      "industry_ebitda_margin": 0.2083
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_ebitda": 77776337760.98692,
+      "total_ttm_revenue": 368263027250.467,
+      "industry_ebitda_margin": 0.2112
+    }
+  ],
+  "net_margin": [
+    {
+      "report_date": "2023-01-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 108500000.0,
+      "total_ttm_revenue": 3393983000.0,
+      "industry_net_margin": 0.032
+    },
+    {
+      "report_date": "2023-02-28T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 108298000.0,
+      "total_ttm_revenue": 3668469000.0,
+      "industry_net_margin": 0.0295
+    },
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": -191649000.0,
+      "total_ttm_revenue": 6607315000.0,
+      "industry_net_margin": -0.029
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": -191649000.0,
+      "total_ttm_revenue": 6607315000.0,
+      "industry_net_margin": -0.029
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": -190446000.0,
+      "total_ttm_revenue": 6618584000.0,
+      "industry_net_margin": -0.0288
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": -4401000.0,
+      "total_ttm_revenue": 6646362000.0,
+      "industry_net_margin": -0.0007
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": -4401000.0,
+      "total_ttm_revenue": 6646362000.0,
+      "industry_net_margin": -0.0007
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": -3389000.0,
+      "total_ttm_revenue": 6659293000.0,
+      "industry_net_margin": -0.0005
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": -202527000.0,
+      "total_ttm_revenue": 7585298000.0,
+      "industry_net_margin": -0.0267
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": -202527000.0,
+      "total_ttm_revenue": 7585298000.0,
+      "industry_net_margin": -0.0267
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": -202997000.0,
+      "total_ttm_revenue": 7486198000.0,
+      "industry_net_margin": -0.0271
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": -114872000.0,
+      "total_ttm_revenue": 18932337000.0,
+      "industry_net_margin": -0.0061
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": -114872000.0,
+      "total_ttm_revenue": 18932337000.0,
+      "industry_net_margin": -0.0061
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": -114855000.0,
+      "total_ttm_revenue": 18945684000.0,
+      "industry_net_margin": -0.0061
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 18460660983.972603,
+      "total_ttm_revenue": 142634359325.69275,
+      "industry_net_margin": 0.1294
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 18449281983.972603,
+      "total_ttm_revenue": 143524218325.69275,
+      "industry_net_margin": 0.1285
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 19474643983.972603,
+      "total_ttm_revenue": 154928062325.69275,
+      "industry_net_margin": 0.1257
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 19413035590.083004,
+      "total_ttm_revenue": 162231284031.12286,
+      "industry_net_margin": 0.1197
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 19393712590.083004,
+      "total_ttm_revenue": 162288939031.12286,
+      "industry_net_margin": 0.1195
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 19398286590.083004,
+      "total_ttm_revenue": 162326422031.12286,
+      "industry_net_margin": 0.1195
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 19312745822.542202,
+      "total_ttm_revenue": 163934388713.38162,
+      "industry_net_margin": 0.1178
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 19312133822.542202,
+      "total_ttm_revenue": 163955638713.38162,
+      "industry_net_margin": 0.1178
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 19316219822.542202,
+      "total_ttm_revenue": 164131319713.38162,
+      "industry_net_margin": 0.1177
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 18803337937.27558,
+      "total_ttm_revenue": 167174329782.267,
+      "industry_net_margin": 0.1125
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 18799010937.27558,
+      "total_ttm_revenue": 167188367782.267,
+      "industry_net_margin": 0.1124
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 18806727937.27558,
+      "total_ttm_revenue": 167379170782.267,
+      "industry_net_margin": 0.1124
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 18368430528.66272,
+      "total_ttm_revenue": 168980202224.99728,
+      "industry_net_margin": 0.1087
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 18390203528.66272,
+      "total_ttm_revenue": 168984214224.99728,
+      "industry_net_margin": 0.1088
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 18387026528.66272,
+      "total_ttm_revenue": 169504859224.99728,
+      "industry_net_margin": 0.1085
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 24137049612.88942,
+      "total_ttm_revenue": 269888414858.0255,
+      "industry_net_margin": 0.0894
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 24125664612.88942,
+      "total_ttm_revenue": 269862036858.0255,
+      "industry_net_margin": 0.0894
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 24183738612.88942,
+      "total_ttm_revenue": 270163172858.0255,
+      "industry_net_margin": 0.0895
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 22632944449.805195,
+      "total_ttm_revenue": 273102367249.67465,
+      "industry_net_margin": 0.0829
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 22603478449.805195,
+      "total_ttm_revenue": 273054466249.67465,
+      "industry_net_margin": 0.0828
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 22623479449.805195,
+      "total_ttm_revenue": 273275565249.67465,
+      "industry_net_margin": 0.0828
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 21527586485.215305,
+      "total_ttm_revenue": 285699501824.354,
+      "industry_net_margin": 0.0754
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 21501367485.215305,
+      "total_ttm_revenue": 285624879824.354,
+      "industry_net_margin": 0.0753
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 22285636485.215305,
+      "total_ttm_revenue": 286054171824.354,
+      "industry_net_margin": 0.0779
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Restaurants",
+      "total_ttm_net_income": 26524462310.426014,
+      "total_ttm_revenue": 368263027250.467,
+      "industry_net_margin": 0.072
+    }
+  ],
+  "asset_turnover": [
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roa": 0.0422,
+      "industry_net_margin": -0.0061,
+      "industry_asset_turnover": -6.92
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roa": 0.0422,
+      "industry_net_margin": -0.0061,
+      "industry_asset_turnover": -6.92
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roa": 0.0278,
+      "industry_net_margin": -0.0061,
+      "industry_asset_turnover": -4.56
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roa": 0.105,
+      "industry_net_margin": 0.1294,
+      "industry_asset_turnover": 0.81
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roa": 0.1036,
+      "industry_net_margin": 0.1285,
+      "industry_asset_turnover": 0.81
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roa": 0.1029,
+      "industry_net_margin": 0.1257,
+      "industry_asset_turnover": 0.82
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roa": 0.0997,
+      "industry_net_margin": 0.1197,
+      "industry_asset_turnover": 0.83
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roa": 0.0996,
+      "industry_net_margin": 0.1195,
+      "industry_asset_turnover": 0.83
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roa": 0.0996,
+      "industry_net_margin": 0.1195,
+      "industry_asset_turnover": 0.83
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roa": 0.0964,
+      "industry_net_margin": 0.1178,
+      "industry_asset_turnover": 0.82
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roa": 0.0964,
+      "industry_net_margin": 0.1178,
+      "industry_asset_turnover": 0.82
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roa": 0.0961,
+      "industry_net_margin": 0.1177,
+      "industry_asset_turnover": 0.82
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roa": 0.0941,
+      "industry_net_margin": 0.1125,
+      "industry_asset_turnover": 0.84
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roa": 0.0941,
+      "industry_net_margin": 0.1124,
+      "industry_asset_turnover": 0.84
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roa": 0.0941,
+      "industry_net_margin": 0.1124,
+      "industry_asset_turnover": 0.84
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roa": 0.0906,
+      "industry_net_margin": 0.1087,
+      "industry_asset_turnover": 0.83
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roa": 0.0907,
+      "industry_net_margin": 0.1088,
+      "industry_asset_turnover": 0.83
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roa": 0.0907,
+      "industry_net_margin": 0.1085,
+      "industry_asset_turnover": 0.84
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roa": 0.0984,
+      "industry_net_margin": 0.0894,
+      "industry_asset_turnover": 1.1
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roa": 0.0983,
+      "industry_net_margin": 0.0894,
+      "industry_asset_turnover": 1.1
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roa": 0.0983,
+      "industry_net_margin": 0.0895,
+      "industry_asset_turnover": 1.1
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roa": 0.0915,
+      "industry_net_margin": 0.0829,
+      "industry_asset_turnover": 1.1
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roa": 0.0914,
+      "industry_net_margin": 0.0828,
+      "industry_asset_turnover": 1.1
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roa": 0.0914,
+      "industry_net_margin": 0.0828,
+      "industry_asset_turnover": 1.1
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roa": 0.0867,
+      "industry_net_margin": 0.0754,
+      "industry_asset_turnover": 1.15
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roa": 0.0866,
+      "industry_net_margin": 0.0753,
+      "industry_asset_turnover": 1.15
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roa": 0.0898,
+      "industry_net_margin": 0.0779,
+      "industry_asset_turnover": 1.15
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Restaurants",
+      "industry_roa": 0.1054,
+      "industry_net_margin": 0.072,
+      "industry_asset_turnover": 1.46
+    }
+  ]
+}

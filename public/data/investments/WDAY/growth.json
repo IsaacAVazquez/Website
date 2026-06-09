@@ -1,0 +1,1200 @@
+{
+  "quarterly_revenue": [
+    {
+      "symbol": "WDAY",
+      "report_date": "2022-04-30T00:00:00.000",
+      "revenue": 1434657000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2022-07-31T00:00:00.000",
+      "revenue": 1535798000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-01-31T00:00:00.000",
+      "revenue": 1646260000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-07-31T00:00:00.000",
+      "revenue": 1787000000.0,
+      "prev_year_revenue": 1535798000.0,
+      "yoy_growth": 0.1636
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-10-31T00:00:00.000",
+      "revenue": 1866000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-01-31T00:00:00.000",
+      "revenue": 1922247000.0,
+      "prev_year_revenue": 1646260000.0,
+      "yoy_growth": 0.1676
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-04-30T00:00:00.000",
+      "revenue": 1990000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-07-31T00:00:00.000",
+      "revenue": 2085000000.0,
+      "prev_year_revenue": 1787000000.0,
+      "yoy_growth": 0.1668
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-10-31T00:00:00.000",
+      "revenue": 2160000000.0,
+      "prev_year_revenue": 1866000000.0,
+      "yoy_growth": 0.1576
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-01-31T00:00:00.000",
+      "revenue": 2211000000.0,
+      "prev_year_revenue": 1922247000.0,
+      "yoy_growth": 0.1502
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-04-30T00:00:00.000",
+      "revenue": 2240000000.0,
+      "prev_year_revenue": 1990000000.0,
+      "yoy_growth": 0.1256
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-07-31T00:00:00.000",
+      "revenue": 2348000000.0,
+      "prev_year_revenue": 2085000000.0,
+      "yoy_growth": 0.1261
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-10-31T00:00:00.000",
+      "revenue": 2432000000.0,
+      "prev_year_revenue": 2160000000.0,
+      "yoy_growth": 0.1259
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-01-31T00:00:00.000",
+      "revenue": 2532000000.0,
+      "prev_year_revenue": 2211000000.0,
+      "yoy_growth": 0.1452
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-04-30T00:00:00.000",
+      "revenue": 2542000000.0,
+      "prev_year_revenue": 2240000000.0,
+      "yoy_growth": 0.1348
+    }
+  ],
+  "annual_revenue": [
+    {
+      "symbol": "WDAY",
+      "report_date": "2020-01-31T00:00:00.000",
+      "revenue": 3627206000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2021-01-31T00:00:00.000",
+      "revenue": 4317996000.0,
+      "prev_year_revenue": 3627206000.0,
+      "yoy_growth": 0.1904
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2022-01-31T00:00:00.000",
+      "revenue": 5139000000.0,
+      "prev_year_revenue": 4317996000.0,
+      "yoy_growth": 0.1901
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-01-31T00:00:00.000",
+      "revenue": 6216000000.0,
+      "prev_year_revenue": 5139000000.0,
+      "yoy_growth": 0.2096
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-01-31T00:00:00.000",
+      "revenue": 7259000000.0,
+      "prev_year_revenue": 6216000000.0,
+      "yoy_growth": 0.1678
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-01-31T00:00:00.000",
+      "revenue": 8446000000.0,
+      "prev_year_revenue": 7259000000.0,
+      "yoy_growth": 0.1635
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-01-31T00:00:00.000",
+      "revenue": 9552000000.0,
+      "prev_year_revenue": 8446000000.0,
+      "yoy_growth": 0.1309
+    }
+  ],
+  "quarterly_operating_income": [
+    {
+      "symbol": "WDAY",
+      "report_date": "2022-04-30T00:00:00.000",
+      "operating_income": -72843000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2022-07-31T00:00:00.000",
+      "operating_income": -34078000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-01-31T00:00:00.000",
+      "operating_income": -88958000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-07-31T00:00:00.000",
+      "operating_income": 36000000.0,
+      "prev_year_operating_income": -34078000.0,
+      "yoy_growth": 2.0564
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-10-31T00:00:00.000",
+      "operating_income": 88000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-01-31T00:00:00.000",
+      "operating_income": 78688000.0,
+      "prev_year_operating_income": -88958000.0,
+      "yoy_growth": 1.8846
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-04-30T00:00:00.000",
+      "operating_income": 72000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-07-31T00:00:00.000",
+      "operating_income": 112000000.0,
+      "prev_year_operating_income": 36000000.0,
+      "yoy_growth": 2.1111
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-10-31T00:00:00.000",
+      "operating_income": 165000000.0,
+      "prev_year_operating_income": 88000000.0,
+      "yoy_growth": 0.875
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-01-31T00:00:00.000",
+      "operating_income": 159000000.0,
+      "prev_year_operating_income": 78688000.0,
+      "yoy_growth": 1.0206
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-04-30T00:00:00.000",
+      "operating_income": 205000000.0,
+      "prev_year_operating_income": 72000000.0,
+      "yoy_growth": 1.8472
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-07-31T00:00:00.000",
+      "operating_income": 249000000.0,
+      "prev_year_operating_income": 112000000.0,
+      "yoy_growth": 1.2232
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-10-31T00:00:00.000",
+      "operating_income": 264000000.0,
+      "prev_year_operating_income": 165000000.0,
+      "yoy_growth": 0.6
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-01-31T00:00:00.000",
+      "operating_income": 305000000.0,
+      "prev_year_operating_income": 159000000.0,
+      "yoy_growth": 0.9182
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-04-30T00:00:00.000",
+      "operating_income": 338000000.0,
+      "prev_year_operating_income": 205000000.0,
+      "yoy_growth": 0.6488
+    }
+  ],
+  "annual_operating_income": [
+    {
+      "symbol": "WDAY",
+      "report_date": "2020-01-31T00:00:00.000",
+      "operating_income": -502230000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2021-01-31T00:00:00.000",
+      "operating_income": -248599000.0,
+      "prev_year_operating_income": -502230000.0,
+      "yoy_growth": 0.505
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2022-01-31T00:00:00.000",
+      "operating_income": -116000000.0,
+      "prev_year_operating_income": -248599000.0,
+      "yoy_growth": 0.5334
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-01-31T00:00:00.000",
+      "operating_income": -182000000.0,
+      "prev_year_operating_income": -116000000.0,
+      "yoy_growth": -0.569
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-01-31T00:00:00.000",
+      "operating_income": 183000000.0,
+      "prev_year_operating_income": -182000000.0,
+      "yoy_growth": 2.0055
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-01-31T00:00:00.000",
+      "operating_income": 499000000.0,
+      "prev_year_operating_income": 183000000.0,
+      "yoy_growth": 1.7268
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-01-31T00:00:00.000",
+      "operating_income": 1024000000.0,
+      "prev_year_operating_income": 499000000.0,
+      "yoy_growth": 1.0521
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "WDAY",
+      "report_date": "2022-07-31T00:00:00.000",
+      "ebitda": 55988000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-01-31T00:00:00.000",
+      "ebitda": 40592000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-07-31T00:00:00.000",
+      "ebitda": 182000000.0,
+      "prev_year_ebitda": 55988000.0,
+      "yoy_growth": 2.2507
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-10-31T00:00:00.000",
+      "ebitda": 227000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-01-31T00:00:00.000",
+      "ebitda": 237949000.0,
+      "prev_year_ebitda": 40592000.0,
+      "yoy_growth": 4.862
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-04-30T00:00:00.000",
+      "ebitda": 227000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-07-31T00:00:00.000",
+      "ebitda": 275000000.0,
+      "prev_year_ebitda": 182000000.0,
+      "yoy_growth": 0.511
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-10-31T00:00:00.000",
+      "ebitda": 337000000.0,
+      "prev_year_ebitda": 227000000.0,
+      "yoy_growth": 0.4846
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-01-31T00:00:00.000",
+      "ebitda": 239000000.0,
+      "prev_year_ebitda": 237949000.0,
+      "yoy_growth": 0.0044
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-04-30T00:00:00.000",
+      "ebitda": 216000000.0,
+      "prev_year_ebitda": 227000000.0,
+      "yoy_growth": -0.0485
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-07-31T00:00:00.000",
+      "ebitda": 414000000.0,
+      "prev_year_ebitda": 275000000.0,
+      "yoy_growth": 0.5055
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-10-31T00:00:00.000",
+      "ebitda": 452000000.0,
+      "prev_year_ebitda": 337000000.0,
+      "yoy_growth": 0.3412
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-01-31T00:00:00.000",
+      "ebitda": 389000000.0,
+      "prev_year_ebitda": 239000000.0,
+      "yoy_growth": 0.6276
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-04-30T00:00:00.000",
+      "ebitda": 473000000.0,
+      "prev_year_ebitda": 216000000.0,
+      "yoy_growth": 1.1898
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "WDAY",
+      "report_date": "2020-01-31T00:00:00.000",
+      "ebitda": -147484000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2021-01-31T00:00:00.000",
+      "ebitda": 87329000.0,
+      "prev_year_ebitda": -147484000.0,
+      "yoy_growth": 1.5921
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2022-01-31T00:00:00.000",
+      "ebitda": 377000000.0,
+      "prev_year_ebitda": 87329000.0,
+      "yoy_growth": 3.317
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-01-31T00:00:00.000",
+      "ebitda": 206000000.0,
+      "prev_year_ebitda": 377000000.0,
+      "yoy_growth": -0.4536
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-01-31T00:00:00.000",
+      "ebitda": 752000000.0,
+      "prev_year_ebitda": 206000000.0,
+      "yoy_growth": 2.6505
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-01-31T00:00:00.000",
+      "ebitda": 1078000000.0,
+      "prev_year_ebitda": 752000000.0,
+      "yoy_growth": 0.4335
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-01-31T00:00:00.000",
+      "ebitda": 1470000000.0,
+      "prev_year_ebitda": 1078000000.0,
+      "yoy_growth": 0.3636
+    }
+  ],
+  "quarterly_net_income": [
+    {
+      "symbol": "WDAY",
+      "report_date": "2022-04-30T00:00:00.000",
+      "net_income_common_stockholders": -102173000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2022-07-31T00:00:00.000",
+      "net_income_common_stockholders": -64158000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-01-31T00:00:00.000",
+      "net_income_common_stockholders": -125697000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-07-31T00:00:00.000",
+      "net_income_common_stockholders": 79000000.0,
+      "prev_year_net_income_common_stockholders": -64158000.0,
+      "yoy_growth": 2.2313
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-10-31T00:00:00.000",
+      "net_income_common_stockholders": 114000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-01-31T00:00:00.000",
+      "net_income_common_stockholders": 1188495000.0,
+      "prev_year_net_income_common_stockholders": -125697000.0,
+      "yoy_growth": 10.4552
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-04-30T00:00:00.000",
+      "net_income_common_stockholders": 107000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-07-31T00:00:00.000",
+      "net_income_common_stockholders": 132000000.0,
+      "prev_year_net_income_common_stockholders": 79000000.0,
+      "yoy_growth": 0.6709
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-10-31T00:00:00.000",
+      "net_income_common_stockholders": 193000000.0,
+      "prev_year_net_income_common_stockholders": 114000000.0,
+      "yoy_growth": 0.693
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-01-31T00:00:00.000",
+      "net_income_common_stockholders": 94000000.0,
+      "prev_year_net_income_common_stockholders": 1188495000.0,
+      "yoy_growth": -0.9209
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-04-30T00:00:00.000",
+      "net_income_common_stockholders": 68000000.0,
+      "prev_year_net_income_common_stockholders": 107000000.0,
+      "yoy_growth": -0.3645
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-07-31T00:00:00.000",
+      "net_income_common_stockholders": 228000000.0,
+      "prev_year_net_income_common_stockholders": 132000000.0,
+      "yoy_growth": 0.7273
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-10-31T00:00:00.000",
+      "net_income_common_stockholders": 252000000.0,
+      "prev_year_net_income_common_stockholders": 193000000.0,
+      "yoy_growth": 0.3057
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-01-31T00:00:00.000",
+      "net_income_common_stockholders": 145000000.0,
+      "prev_year_net_income_common_stockholders": 94000000.0,
+      "yoy_growth": 0.5426
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-04-30T00:00:00.000",
+      "net_income_common_stockholders": 222000000.0,
+      "prev_year_net_income_common_stockholders": 68000000.0,
+      "yoy_growth": 2.2647
+    }
+  ],
+  "annual_net_income": [
+    {
+      "symbol": "WDAY",
+      "report_date": "2020-01-31T00:00:00.000",
+      "net_income_common_stockholders": -480674000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2021-01-31T00:00:00.000",
+      "net_income_common_stockholders": -282431000.0,
+      "prev_year_net_income_common_stockholders": -480674000.0,
+      "yoy_growth": 0.4124
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2022-01-31T00:00:00.000",
+      "net_income_common_stockholders": 29000000.0,
+      "prev_year_net_income_common_stockholders": -282431000.0,
+      "yoy_growth": 1.1027
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-01-31T00:00:00.000",
+      "net_income_common_stockholders": -367000000.0,
+      "prev_year_net_income_common_stockholders": 29000000.0,
+      "yoy_growth": -13.6552
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-01-31T00:00:00.000",
+      "net_income_common_stockholders": 1381000000.0,
+      "prev_year_net_income_common_stockholders": -367000000.0,
+      "yoy_growth": 4.7629
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-01-31T00:00:00.000",
+      "net_income_common_stockholders": 526000000.0,
+      "prev_year_net_income_common_stockholders": 1381000000.0,
+      "yoy_growth": -0.6191
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-01-31T00:00:00.000",
+      "net_income_common_stockholders": 693000000.0,
+      "prev_year_net_income_common_stockholders": 526000000.0,
+      "yoy_growth": 0.3175
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "WDAY",
+      "report_date": "2022-04-30T00:00:00.000",
+      "free_cash_flow": 380967000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2022-07-31T00:00:00.000",
+      "free_cash_flow": -54240000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-07-31T00:00:00.000",
+      "free_cash_flow": 360000000.0,
+      "prev_year_free_cash_flow": -54240000.0,
+      "yoy_growth": 7.6372
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-10-31T00:00:00.000",
+      "free_cash_flow": 390000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-01-31T00:00:00.000",
+      "free_cash_flow": 948898000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-04-30T00:00:00.000",
+      "free_cash_flow": 291000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-07-31T00:00:00.000",
+      "free_cash_flow": 516000000.0,
+      "prev_year_free_cash_flow": 360000000.0,
+      "yoy_growth": 0.4333
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-10-31T00:00:00.000",
+      "free_cash_flow": 357000000.0,
+      "prev_year_free_cash_flow": 390000000.0,
+      "yoy_growth": -0.0846
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-01-31T00:00:00.000",
+      "free_cash_flow": 1026000000.0,
+      "prev_year_free_cash_flow": 948898000.0,
+      "yoy_growth": 0.0813
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-04-30T00:00:00.000",
+      "free_cash_flow": 421000000.0,
+      "prev_year_free_cash_flow": 291000000.0,
+      "yoy_growth": 0.4467
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-07-31T00:00:00.000",
+      "free_cash_flow": 588000000.0,
+      "prev_year_free_cash_flow": 516000000.0,
+      "yoy_growth": 0.1395
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-10-31T00:00:00.000",
+      "free_cash_flow": 550000000.0,
+      "prev_year_free_cash_flow": 357000000.0,
+      "yoy_growth": 0.5406
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-01-31T00:00:00.000",
+      "free_cash_flow": 1218000000.0,
+      "prev_year_free_cash_flow": 1026000000.0,
+      "yoy_growth": 0.1871
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-04-30T00:00:00.000",
+      "free_cash_flow": 616000000.0,
+      "prev_year_free_cash_flow": 421000000.0,
+      "yoy_growth": 0.4632
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "WDAY",
+      "report_date": "2021-01-31T00:00:00.000",
+      "free_cash_flow": 1012111000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2022-01-31T00:00:00.000",
+      "free_cash_flow": 1379000000.0,
+      "prev_year_free_cash_flow": 1012111000.0,
+      "yoy_growth": 0.3625
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-01-31T00:00:00.000",
+      "free_cash_flow": 1292000000.0,
+      "prev_year_free_cash_flow": 1379000000.0,
+      "yoy_growth": -0.0631
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-01-31T00:00:00.000",
+      "free_cash_flow": 1907000000.0,
+      "prev_year_free_cash_flow": 1292000000.0,
+      "yoy_growth": 0.476
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-01-31T00:00:00.000",
+      "free_cash_flow": 2189000000.0,
+      "prev_year_free_cash_flow": 1907000000.0,
+      "yoy_growth": 0.1479
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-01-31T00:00:00.000",
+      "free_cash_flow": 2777000000.0,
+      "prev_year_free_cash_flow": 2189000000.0,
+      "yoy_growth": 0.2686
+    }
+  ],
+  "quarterly_eps": [
+    {
+      "symbol": "WDAY",
+      "report_date": "2011-04-30T00:00:00.000",
+      "eps": -0.0964,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2011-07-31T00:00:00.000",
+      "eps": -0.1254,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2011-10-31T00:00:00.000",
+      "eps": -0.121,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2012-01-31T00:00:00.000",
+      "eps": -0.1456,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2012-04-30T00:00:00.000",
+      "eps": -0.1237,
+      "prev_year_eps": -0.0964,
+      "yoy_growth": -0.2832
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2012-07-31T00:00:00.000",
+      "eps": -0.1655,
+      "prev_year_eps": -0.1254,
+      "yoy_growth": -0.3198
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2012-10-31T00:00:00.000",
+      "eps": -0.2533,
+      "prev_year_eps": -0.121,
+      "yoy_growth": -1.0934
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2013-01-31T00:00:00.000",
+      "eps": -0.19,
+      "prev_year_eps": -0.1456,
+      "yoy_growth": -0.3049
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2013-04-30T00:00:00.000",
+      "eps": -0.2,
+      "prev_year_eps": -0.1237,
+      "yoy_growth": -0.6168
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2013-07-31T00:00:00.000",
+      "eps": -0.21,
+      "prev_year_eps": -0.1655,
+      "yoy_growth": -0.2689
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2013-10-31T00:00:00.000",
+      "eps": -0.27,
+      "prev_year_eps": -0.2533,
+      "yoy_growth": -0.0659
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2014-01-31T00:00:00.000",
+      "eps": -0.32,
+      "prev_year_eps": -0.19,
+      "yoy_growth": -0.6842
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2014-04-30T00:00:00.000",
+      "eps": -0.32,
+      "prev_year_eps": -0.2,
+      "yoy_growth": -0.6
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2014-07-31T00:00:00.000",
+      "eps": -0.38,
+      "prev_year_eps": -0.21,
+      "yoy_growth": -0.8095
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2014-10-31T00:00:00.000",
+      "eps": -0.33,
+      "prev_year_eps": -0.27,
+      "yoy_growth": -0.2222
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2015-01-31T00:00:00.000",
+      "eps": -0.32,
+      "prev_year_eps": -0.32,
+      "yoy_growth": 0.0
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2015-04-30T00:00:00.000",
+      "eps": -0.33,
+      "prev_year_eps": -0.32,
+      "yoy_growth": -0.0313
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2015-07-31T00:00:00.000",
+      "eps": -0.37,
+      "prev_year_eps": -0.38,
+      "yoy_growth": 0.0263
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2015-10-31T00:00:00.000",
+      "eps": -0.41,
+      "prev_year_eps": -0.33,
+      "yoy_growth": -0.2424
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2016-01-31T00:00:00.000",
+      "eps": -0.42,
+      "prev_year_eps": -0.32,
+      "yoy_growth": -0.3125
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2016-04-30T00:00:00.000",
+      "eps": -0.4,
+      "prev_year_eps": -0.33,
+      "yoy_growth": -0.2121
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2016-07-31T00:00:00.000",
+      "eps": -0.55,
+      "prev_year_eps": -0.37,
+      "yoy_growth": -0.4865
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2016-10-31T00:00:00.000",
+      "eps": -0.55,
+      "prev_year_eps": -0.41,
+      "yoy_growth": -0.3415
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2017-01-31T00:00:00.000",
+      "eps": -0.4348,
+      "prev_year_eps": -0.42,
+      "yoy_growth": -0.0352
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2017-04-30T00:00:00.000",
+      "eps": -0.31,
+      "prev_year_eps": -0.4,
+      "yoy_growth": 0.225
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2017-07-31T00:00:00.000",
+      "eps": -0.4,
+      "prev_year_eps": -0.55,
+      "yoy_growth": 0.2727
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2017-10-31T00:00:00.000",
+      "eps": -0.41,
+      "prev_year_eps": -0.55,
+      "yoy_growth": 0.2545
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2018-01-31T00:00:00.000",
+      "eps": -0.42,
+      "prev_year_eps": -0.4348,
+      "yoy_growth": 0.034
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2018-04-30T00:00:00.000",
+      "eps": -0.35,
+      "prev_year_eps": -0.31,
+      "yoy_growth": -0.129
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2018-07-31T00:00:00.000",
+      "eps": -0.4,
+      "prev_year_eps": -0.4,
+      "yoy_growth": 0.0
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2018-10-31T00:00:00.000",
+      "eps": -0.7043,
+      "prev_year_eps": -0.41,
+      "yoy_growth": -0.7178
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2019-01-31T00:00:00.000",
+      "eps": -0.4736,
+      "prev_year_eps": -0.42,
+      "yoy_growth": -0.1276
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2019-04-30T00:00:00.000",
+      "eps": -0.5207,
+      "prev_year_eps": -0.35,
+      "yoy_growth": -0.4877
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2019-07-31T00:00:00.000",
+      "eps": -0.5332,
+      "prev_year_eps": -0.4,
+      "yoy_growth": -0.333
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2019-10-31T00:00:00.000",
+      "eps": -0.5066,
+      "prev_year_eps": -0.7043,
+      "yoy_growth": 0.2807
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2020-01-31T00:00:00.000",
+      "eps": -0.5552,
+      "prev_year_eps": -0.4736,
+      "yoy_growth": -0.1723
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2020-04-30T00:00:00.000",
+      "eps": -0.6799,
+      "prev_year_eps": -0.5207,
+      "yoy_growth": -0.3057
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2020-07-31T00:00:00.000",
+      "eps": -0.1187,
+      "prev_year_eps": -0.5332,
+      "yoy_growth": 0.7774
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2020-10-31T00:00:00.000",
+      "eps": -0.1022,
+      "prev_year_eps": -0.5066,
+      "yoy_growth": 0.7983
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2021-01-31T00:00:00.000",
+      "eps": -0.2976,
+      "prev_year_eps": -0.5552,
+      "yoy_growth": 0.464
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2021-04-30T00:00:00.000",
+      "eps": -0.1909,
+      "prev_year_eps": -0.6799,
+      "yoy_growth": 0.7192
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2021-07-31T00:00:00.000",
+      "eps": 0.4066,
+      "prev_year_eps": -0.1187,
+      "yoy_growth": 4.4254
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2021-10-31T00:00:00.000",
+      "eps": 0.1704,
+      "prev_year_eps": -0.1022,
+      "yoy_growth": 2.6673
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2022-01-31T00:00:00.000",
+      "eps": -0.293,
+      "prev_year_eps": -0.2976,
+      "yoy_growth": 0.0155
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2022-04-30T00:00:00.000",
+      "eps": -0.4059,
+      "prev_year_eps": -0.1909,
+      "yoy_growth": -1.1262
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2022-07-31T00:00:00.000",
+      "eps": -0.2522,
+      "prev_year_eps": 0.4066,
+      "yoy_growth": -1.6203
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2022-10-31T00:00:00.000",
+      "eps": -0.2922,
+      "prev_year_eps": 0.1704,
+      "yoy_growth": -2.7148
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-01-31T00:00:00.000",
+      "eps": -0.4885,
+      "prev_year_eps": -0.293,
+      "yoy_growth": -0.6672
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-04-30T00:00:00.000",
+      "eps": 0.0005,
+      "prev_year_eps": -0.4059,
+      "yoy_growth": 1.0012
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-07-31T00:00:00.000",
+      "eps": 0.2975,
+      "prev_year_eps": -0.2522,
+      "yoy_growth": 2.1796
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-10-31T00:00:00.000",
+      "eps": 0.4269,
+      "prev_year_eps": -0.2922,
+      "yoy_growth": 2.461
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-01-31T00:00:00.000",
+      "eps": 4.4189,
+      "prev_year_eps": -0.4885,
+      "yoy_growth": 10.0459
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-04-30T00:00:00.000",
+      "eps": 0.3959,
+      "prev_year_eps": 0.0005,
+      "yoy_growth": 790.8
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-07-31T00:00:00.000",
+      "eps": 0.4926,
+      "prev_year_eps": 0.2975,
+      "yoy_growth": 0.6558
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-10-31T00:00:00.000",
+      "eps": 0.7187,
+      "prev_year_eps": 0.4269,
+      "yoy_growth": 0.6835
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-01-31T00:00:00.000",
+      "eps": 0.3481,
+      "prev_year_eps": 4.4189,
+      "yoy_growth": -0.9212
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-04-30T00:00:00.000",
+      "eps": 0.2516,
+      "prev_year_eps": 0.3959,
+      "yoy_growth": -0.3645
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-07-31T00:00:00.000",
+      "eps": 0.8439,
+      "prev_year_eps": 0.4926,
+      "yoy_growth": 0.7132
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-10-31T00:00:00.000",
+      "eps": 0.9381,
+      "prev_year_eps": 0.7187,
+      "yoy_growth": 0.3053
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-01-31T00:00:00.000",
+      "eps": 0.5505,
+      "prev_year_eps": 0.3481,
+      "yoy_growth": 0.5814
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-04-30T00:00:00.000",
+      "eps": 0.8729,
+      "prev_year_eps": 0.2516,
+      "yoy_growth": 2.4694
+    }
+  ]
+}

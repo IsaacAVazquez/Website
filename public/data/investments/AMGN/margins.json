@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "AMGN",
+      "report_date": "2022-06-30",
+      "gross_profit": 5084000000.0,
+      "total_revenue": 6594000000.0,
+      "gross_margin": 0.771
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2023-03-31",
+      "gross_profit": 4385000000.0,
+      "total_revenue": 6105000000.0,
+      "gross_margin": 0.7183
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2023-06-30",
+      "gross_profit": 5173000000.0,
+      "total_revenue": 6986000000.0,
+      "gross_margin": 0.7405
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2023-09-30",
+      "gross_profit": 5097000000.0,
+      "total_revenue": 6903000000.0,
+      "gross_margin": 0.7384
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2023-12-31",
+      "gross_profit": 5084000000.0,
+      "total_revenue": 8196000000.0,
+      "gross_margin": 0.6203
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-03-31",
+      "gross_profit": 4247000000.0,
+      "total_revenue": 7447000000.0,
+      "gross_margin": 0.5703
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-06-30",
+      "gross_profit": 5152000000.0,
+      "total_revenue": 8388000000.0,
+      "gross_margin": 0.6142
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-09-30",
+      "gross_profit": 5193000000.0,
+      "total_revenue": 8503000000.0,
+      "gross_margin": 0.6107
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-12-31",
+      "gross_profit": 5974000000.0,
+      "total_revenue": 9086000000.0,
+      "gross_margin": 0.6575
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-03-31",
+      "gross_profit": 5181000000.0,
+      "total_revenue": 8149000000.0,
+      "gross_margin": 0.6358
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-06-30",
+      "gross_profit": 22516000000.0,
+      "total_revenue": 9179000000.0,
+      "gross_margin": 2.453
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-09-30",
+      "gross_profit": 6475000000.0,
+      "total_revenue": 9557000000.0,
+      "gross_margin": 0.6775
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-12-31",
+      "gross_profit": 6890000000.0,
+      "total_revenue": 9866000000.0,
+      "gross_margin": 0.6984
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2026-03-31",
+      "gross_profit": 25407000000.0,
+      "total_revenue": 8618000000.0,
+      "gross_margin": 2.9481
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "AMGN",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2020-12-31",
+      "gross_profit": 19265000000.0,
+      "total_revenue": 25424000000.0,
+      "gross_margin": 0.7577
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2021-12-31",
+      "gross_profit": 19525000000.0,
+      "total_revenue": 25979000000.0,
+      "gross_margin": 0.7516
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2022-12-31",
+      "gross_profit": 19917000000.0,
+      "total_revenue": 26323000000.0,
+      "gross_margin": 0.7566
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2023-12-31",
+      "gross_profit": 19739000000.0,
+      "total_revenue": 28190000000.0,
+      "gross_margin": 0.7002
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-12-31",
+      "gross_profit": 20566000000.0,
+      "total_revenue": 33424000000.0,
+      "gross_margin": 0.6153
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-12-31",
+      "gross_profit": 24714000000.0,
+      "total_revenue": 36751000000.0,
+      "gross_margin": 0.6725
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "AMGN",
+      "report_date": "2022-06-30",
+      "operating_income": 2176000000.0,
+      "total_revenue": 6594000000.0,
+      "operating_margin": 0.33
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2023-03-31",
+      "operating_income": 1921000000.0,
+      "total_revenue": 6105000000.0,
+      "operating_margin": 0.3147
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2023-06-30",
+      "operating_income": 2684000000.0,
+      "total_revenue": 6986000000.0,
+      "operating_margin": 0.3842
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2023-09-30",
+      "operating_income": 2021000000.0,
+      "total_revenue": 6903000000.0,
+      "operating_margin": 0.2928
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2023-12-31",
+      "operating_income": 1271000000.0,
+      "total_revenue": 8196000000.0,
+      "operating_margin": 0.1551
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-03-31",
+      "operating_income": 991000000.0,
+      "total_revenue": 7447000000.0,
+      "operating_margin": 0.1331
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-06-30",
+      "operating_income": 1909000000.0,
+      "total_revenue": 8388000000.0,
+      "operating_margin": 0.2276
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-09-30",
+      "operating_income": 2047000000.0,
+      "total_revenue": 8503000000.0,
+      "operating_margin": 0.2407
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-12-31",
+      "operating_income": 2311000000.0,
+      "total_revenue": 9086000000.0,
+      "operating_margin": 0.2543
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-03-31",
+      "operating_income": 1178000000.0,
+      "total_revenue": 8149000000.0,
+      "operating_margin": 0.1446
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-06-30",
+      "operating_income": 2656000000.0,
+      "total_revenue": 9179000000.0,
+      "operating_margin": 0.2894
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-09-30",
+      "operating_income": 2526000000.0,
+      "total_revenue": 9557000000.0,
+      "operating_margin": 0.2643
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-12-31",
+      "operating_income": 2720000000.0,
+      "total_revenue": 9866000000.0,
+      "operating_margin": 0.2757
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2026-03-31",
+      "operating_income": 2666000000.0,
+      "total_revenue": 8618000000.0,
+      "operating_margin": 0.3094
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "AMGN",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2020-12-31",
+      "operating_income": 9139000000.0,
+      "total_revenue": 25424000000.0,
+      "operating_margin": 0.3595
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2021-12-31",
+      "operating_income": 7639000000.0,
+      "total_revenue": 25979000000.0,
+      "operating_margin": 0.294
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2022-12-31",
+      "operating_income": 9566000000.0,
+      "total_revenue": 26323000000.0,
+      "operating_margin": 0.3634
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2023-12-31",
+      "operating_income": 7897000000.0,
+      "total_revenue": 28190000000.0,
+      "operating_margin": 0.2801
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-12-31",
+      "operating_income": 7258000000.0,
+      "total_revenue": 33424000000.0,
+      "operating_margin": 0.2171
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-12-31",
+      "operating_income": 9080000000.0,
+      "total_revenue": 36751000000.0,
+      "operating_margin": 0.2471
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "AMGN",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 1317000000.0,
+      "total_revenue": 6594000000.0,
+      "net_margin": 0.1997
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": 2841000000.0,
+      "total_revenue": 6105000000.0,
+      "net_margin": 0.4654
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 1379000000.0,
+      "total_revenue": 6986000000.0,
+      "net_margin": 0.1974
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1730000000.0,
+      "total_revenue": 6903000000.0,
+      "net_margin": 0.2506
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 767000000.0,
+      "total_revenue": 8196000000.0,
+      "net_margin": 0.0936
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": -113000000.0,
+      "total_revenue": 7447000000.0,
+      "net_margin": -0.0152
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 746000000.0,
+      "total_revenue": 8388000000.0,
+      "net_margin": 0.0889
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 2830000000.0,
+      "total_revenue": 8503000000.0,
+      "net_margin": 0.3328
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 627000000.0,
+      "total_revenue": 9086000000.0,
+      "net_margin": 0.069
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1730000000.0,
+      "total_revenue": 8149000000.0,
+      "net_margin": 0.2123
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 6619000000.0,
+      "total_revenue": 9179000000.0,
+      "net_margin": 0.7211
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 3216000000.0,
+      "total_revenue": 9557000000.0,
+      "net_margin": 0.3365
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1333000000.0,
+      "total_revenue": 9866000000.0,
+      "net_margin": 0.1351
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 7800000000.0,
+      "total_revenue": 8618000000.0,
+      "net_margin": 0.9051
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "AMGN",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 7264000000.0,
+      "total_revenue": 25424000000.0,
+      "net_margin": 0.2857
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 5893000000.0,
+      "total_revenue": 25979000000.0,
+      "net_margin": 0.2268
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 6552000000.0,
+      "total_revenue": 26323000000.0,
+      "net_margin": 0.2489
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 6717000000.0,
+      "total_revenue": 28190000000.0,
+      "net_margin": 0.2383
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 4090000000.0,
+      "total_revenue": 33424000000.0,
+      "net_margin": 0.1224
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 7711000000.0,
+      "total_revenue": 36751000000.0,
+      "net_margin": 0.2098
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "AMGN",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 6594000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2023-03-31",
+      "ebitda": 4885000000.0,
+      "total_revenue": 6105000000.0,
+      "ebitda_margin": 0.8002
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2023-06-30",
+      "ebitda": 3262000000.0,
+      "total_revenue": 6986000000.0,
+      "ebitda_margin": 0.4669
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2023-09-30",
+      "ebitda": 3601000000.0,
+      "total_revenue": 6903000000.0,
+      "ebitda_margin": 0.5217
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2023-12-31",
+      "ebitda": 3053000000.0,
+      "total_revenue": 8196000000.0,
+      "ebitda_margin": 0.3725
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-03-31",
+      "ebitda": 2155000000.0,
+      "total_revenue": 7447000000.0,
+      "ebitda_margin": 0.2894
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-06-30",
+      "ebitda": 3002000000.0,
+      "total_revenue": 8388000000.0,
+      "ebitda_margin": 0.3579
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-09-30",
+      "ebitda": 5273000000.0,
+      "total_revenue": 8503000000.0,
+      "ebitda_margin": 0.6201
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-12-31",
+      "ebitda": 2926000000.0,
+      "total_revenue": 9086000000.0,
+      "ebitda_margin": 0.322
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-03-31",
+      "ebitda": 4083000000.0,
+      "total_revenue": 8149000000.0,
+      "ebitda_margin": 0.501
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-06-30",
+      "ebitda": 3603000000.0,
+      "total_revenue": 9179000000.0,
+      "ebitda_margin": 0.3925
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-09-30",
+      "ebitda": 5913000000.0,
+      "total_revenue": 9557000000.0,
+      "ebitda_margin": 0.6187
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-12-31",
+      "ebitda": 3299000000.0,
+      "total_revenue": 9866000000.0,
+      "ebitda_margin": 0.3344
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2026-03-31",
+      "ebitda": 3857000000.0,
+      "total_revenue": 8618000000.0,
+      "ebitda_margin": 0.4476
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "AMGN",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2020-12-31",
+      "ebitda": 12996000000.0,
+      "total_revenue": 25424000000.0,
+      "ebitda_margin": 0.5112
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2021-12-31",
+      "ebitda": 11296000000.0,
+      "total_revenue": 25979000000.0,
+      "ebitda_margin": 0.4348
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2022-12-31",
+      "ebitda": 12169000000.0,
+      "total_revenue": 26323000000.0,
+      "ebitda_margin": 0.4623
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2023-12-31",
+      "ebitda": 14801000000.0,
+      "total_revenue": 28190000000.0,
+      "ebitda_margin": 0.525
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-12-31",
+      "ebitda": 13356000000.0,
+      "total_revenue": 33424000000.0,
+      "ebitda_margin": 0.3996
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-12-31",
+      "ebitda": 16898000000.0,
+      "total_revenue": 36751000000.0,
+      "ebitda_margin": 0.4598
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "AMGN",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 1930000000.0,
+      "total_revenue": 6594000000.0,
+      "fcf_margin": 0.2927
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": 6105000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 3838000000.0,
+      "total_revenue": 6986000000.0,
+      "fcf_margin": 0.5494
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 2512000000.0,
+      "total_revenue": 6903000000.0,
+      "fcf_margin": 0.3639
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 289000000.0,
+      "total_revenue": 8196000000.0,
+      "fcf_margin": 0.0353
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 459000000.0,
+      "total_revenue": 7447000000.0,
+      "fcf_margin": 0.0616
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 2221000000.0,
+      "total_revenue": 8388000000.0,
+      "fcf_margin": 0.2648
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 3314000000.0,
+      "total_revenue": 8503000000.0,
+      "fcf_margin": 0.3897
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 4400000000.0,
+      "total_revenue": 9086000000.0,
+      "fcf_margin": 0.4843
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 980000000.0,
+      "total_revenue": 8149000000.0,
+      "fcf_margin": 0.1203
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 10605000000.0,
+      "total_revenue": 9179000000.0,
+      "fcf_margin": 1.1554
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 4248000000.0,
+      "total_revenue": 9557000000.0,
+      "fcf_margin": 0.4445
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 961000000.0,
+      "total_revenue": 9866000000.0,
+      "fcf_margin": 0.0974
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 8597000000.0,
+      "total_revenue": 8618000000.0,
+      "fcf_margin": 0.9976
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "AMGN",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 9889000000.0,
+      "total_revenue": 25424000000.0,
+      "fcf_margin": 0.389
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 8381000000.0,
+      "total_revenue": 25979000000.0,
+      "fcf_margin": 0.3226
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 8785000000.0,
+      "total_revenue": 26323000000.0,
+      "fcf_margin": 0.3337
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 7359000000.0,
+      "total_revenue": 28190000000.0,
+      "fcf_margin": 0.2611
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 10394000000.0,
+      "total_revenue": 33424000000.0,
+      "fcf_margin": 0.311
+    },
+    {
+      "symbol": "AMGN",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 8100000000.0,
+      "total_revenue": 36751000000.0,
+      "fcf_margin": 0.2204
+    }
+  ]
+}

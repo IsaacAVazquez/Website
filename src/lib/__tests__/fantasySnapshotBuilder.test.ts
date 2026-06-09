@@ -2,7 +2,31 @@
  * @jest-environment node
  */
 import { FANTASY_SNAPSHOT_SCHEMA_VERSION } from "@/lib/fantasy";
-import { buildFantasySnapshot } from "@/lib/fantasySnapshotBuilder";
+import { buildFantasySnapshot, getNflRegularSeasonWeek } from "@/lib/fantasySnapshotBuilder";
+
+const NFL_WEEKS = 18;
+
+describe("getNflRegularSeasonWeek", () => {
+  it("reports week 0 during the offseason and before Week 1 kickoff", () => {
+    expect(getNflRegularSeasonWeek(2026, new Date(Date.UTC(2026, 5, 8)))).toBe(0); // June
+    expect(getNflRegularSeasonWeek(2026, new Date(Date.UTC(2026, 8, 1)))).toBe(0); // Sep 1, before kickoff
+  });
+
+  it("counts up through the regular season", () => {
+    const earlyOctober = getNflRegularSeasonWeek(2026, new Date(Date.UTC(2026, 9, 1)));
+    const lateNovember = getNflRegularSeasonWeek(2026, new Date(Date.UTC(2026, 10, 25)));
+
+    expect(earlyOctober).toBeGreaterThanOrEqual(3);
+    expect(earlyOctober).toBeLessThanOrEqual(6);
+    expect(lateNovember).toBeGreaterThan(earlyOctober);
+    expect(lateNovember).toBeLessThanOrEqual(NFL_WEEKS);
+  });
+
+  it("caps at the final regular-season week through the playoffs and offseason rollover", () => {
+    expect(getNflRegularSeasonWeek(2026, new Date(Date.UTC(2026, 11, 25)))).toBeGreaterThanOrEqual(15); // late December
+    expect(getNflRegularSeasonWeek(2026, new Date(Date.UTC(2027, 1, 1)))).toBe(NFL_WEEKS); // following February
+  });
+});
 
 describe("fantasySnapshotBuilder", () => {
   it("publishes sourced overall and position availability for every scoring format", () => {
@@ -139,6 +163,7 @@ describe("fantasySnapshotBuilder", () => {
       jest.isolateModules(() => {
         const {
           buildFantasySnapshot: buildSyntheticFantasySnapshot,
+          // eslint-disable-next-line @typescript-eslint/no-require-imports -- jest.isolateModules requires a synchronous callback; dynamic import() would not work here
         } = require("../fantasySnapshotBuilder") as typeof import("../fantasySnapshotBuilder");
         const snapshot = buildSyntheticFantasySnapshot("ppr");
 

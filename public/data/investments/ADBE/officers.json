@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "ADBE",
+    "name": "Dr. Anil S. Chakravarthy",
+    "title": "President of Customer Experience Orchestration Business",
+    "age": 57,
+    "born": 1968,
+    "pay": 1889926,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "ADBE",
+    "name": "Mr. Daniel J. Durn",
+    "title": "CFO and Executive VP of Finance, Technology, Security & Operations",
+    "age": 59,
+    "born": 1966,
+    "pay": 1858284,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "ADBE",
+    "name": "Mr. David  Wadhwani",
+    "title": "President of Creativity & Productivity Business",
+    "age": 53,
+    "born": 1972,
+    "pay": 1885686,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "ADBE",
+    "name": "Mr. Douglas G. Clark C.F.A.",
+    "title": "Vice President of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "ADBE",
+    "name": "Mr. Shantanu  Narayen",
+    "title": "Chairman & CEO",
+    "age": 61,
+    "born": 1964,
+    "pay": 5797825,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "ADBE",
+    "name": "Mr. Steven  Day",
+    "title": "CFO & SVP - Digital Experience Business Unit & SVP of Corporate Finance",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "ADBE",
+    "name": "Ms. Adele Louise  Pentland",
+    "title": "EVP of Legal & Government Relations, Chief Legal Officer and Corporate Secretary",
+    "age": 53,
+    "born": 1972,
+    "pay": 3055813,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "ADBE",
+    "name": "Ms. Gloria  Chen",
+    "title": "Chief People Officer & Executive VP of Employee Experience",
+    "age": 60,
+    "born": 1965,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "ADBE",
+    "name": "Ms. Jillian  Forusz",
+    "title": "Senior VP, Chief Accounting Officer & Corporate Controller",
+    "age": 50,
+    "born": 1975,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "ADBE",
+    "name": "Ms. Lara H. Balazs",
+    "title": "Chief Marketing Officer & Executive Vice President of Global Marketing",
+    "age": 55,
+    "born": 1970,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  }
+]

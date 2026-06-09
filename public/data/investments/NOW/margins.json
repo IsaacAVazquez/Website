@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "NOW",
+      "report_date": "2022-06-30",
+      "gross_profit": 1363000000.0,
+      "total_revenue": 1752000000.0,
+      "gross_margin": 0.778
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2022-09-30",
+      "gross_profit": 1431000000.0,
+      "total_revenue": 1831000000.0,
+      "gross_margin": 0.7815
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2022-12-31",
+      "gross_profit": 1525000000.0,
+      "total_revenue": 1940000000.0,
+      "gross_margin": 0.7861
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2023-06-30",
+      "gross_profit": 1679000000.0,
+      "total_revenue": 2150000000.0,
+      "gross_margin": 0.7809
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2023-09-30",
+      "gross_profit": 1792000000.0,
+      "total_revenue": 2288000000.0,
+      "gross_margin": 0.7832
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2023-12-31",
+      "gross_profit": 1921000000.0,
+      "total_revenue": 2437000000.0,
+      "gross_margin": 0.7883
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2024-03-31",
+      "gross_profit": 2083000000.0,
+      "total_revenue": 2603000000.0,
+      "gross_margin": 0.8002
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2024-06-30",
+      "gross_profit": 2075000000.0,
+      "total_revenue": 2627000000.0,
+      "gross_margin": 0.7899
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2024-09-30",
+      "gross_profit": 2213000000.0,
+      "total_revenue": 2797000000.0,
+      "gross_margin": 0.7912
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2024-12-31",
+      "gross_profit": 2326000000.0,
+      "total_revenue": 2957000000.0,
+      "gross_margin": 0.7866
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2025-03-31",
+      "gross_profit": 2437000000.0,
+      "total_revenue": 3088000000.0,
+      "gross_margin": 0.7892
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2025-06-30",
+      "gross_profit": 2491000000.0,
+      "total_revenue": 3215000000.0,
+      "gross_margin": 0.7748
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2025-09-30",
+      "gross_profit": 2633000000.0,
+      "total_revenue": 3407000000.0,
+      "gross_margin": 0.7728
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2025-12-31",
+      "gross_profit": 2734000000.0,
+      "total_revenue": 3568000000.0,
+      "gross_margin": 0.7663
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2026-03-31",
+      "gross_profit": 2830000000.0,
+      "total_revenue": 3770000000.0,
+      "gross_margin": 0.7507
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "NOW",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2020-12-31",
+      "gross_profit": 3532000000.0,
+      "total_revenue": 4519000000.0,
+      "gross_margin": 0.7816
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2021-12-31",
+      "gross_profit": 4543000000.0,
+      "total_revenue": 5896000000.0,
+      "gross_margin": 0.7705
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2022-12-31",
+      "gross_profit": 5672000000.0,
+      "total_revenue": 7245000000.0,
+      "gross_margin": 0.7829
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2023-12-31",
+      "gross_profit": 7050000000.0,
+      "total_revenue": 8971000000.0,
+      "gross_margin": 0.7859
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2024-12-31",
+      "gross_profit": 8697000000.0,
+      "total_revenue": 10984000000.0,
+      "gross_margin": 0.7918
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2025-12-31",
+      "gross_profit": 10295000000.0,
+      "total_revenue": 13278000000.0,
+      "gross_margin": 0.7753
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "NOW",
+      "report_date": "2022-06-30",
+      "operating_income": 22000000.0,
+      "total_revenue": 1752000000.0,
+      "operating_margin": 0.0126
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2022-09-30",
+      "operating_income": 91000000.0,
+      "total_revenue": 1831000000.0,
+      "operating_margin": 0.0497
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2022-12-31",
+      "operating_income": 155000000.0,
+      "total_revenue": 1940000000.0,
+      "operating_margin": 0.0799
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2023-06-30",
+      "operating_income": 117000000.0,
+      "total_revenue": 2150000000.0,
+      "operating_margin": 0.0544
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2023-09-30",
+      "operating_income": 231000000.0,
+      "total_revenue": 2288000000.0,
+      "operating_margin": 0.101
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2023-12-31",
+      "operating_income": 270000000.0,
+      "total_revenue": 2437000000.0,
+      "operating_margin": 0.1108
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2024-03-31",
+      "operating_income": 332000000.0,
+      "total_revenue": 2603000000.0,
+      "operating_margin": 0.1275
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2024-06-30",
+      "operating_income": 240000000.0,
+      "total_revenue": 2627000000.0,
+      "operating_margin": 0.0914
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2024-09-30",
+      "operating_income": 418000000.0,
+      "total_revenue": 2797000000.0,
+      "operating_margin": 0.1494
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2024-12-31",
+      "operating_income": 374000000.0,
+      "total_revenue": 2957000000.0,
+      "operating_margin": 0.1265
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2025-03-31",
+      "operating_income": 451000000.0,
+      "total_revenue": 3088000000.0,
+      "operating_margin": 0.146
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2025-06-30",
+      "operating_income": 358000000.0,
+      "total_revenue": 3215000000.0,
+      "operating_margin": 0.1114
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2025-09-30",
+      "operating_income": 572000000.0,
+      "total_revenue": 3407000000.0,
+      "operating_margin": 0.1679
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2025-12-31",
+      "operating_income": 443000000.0,
+      "total_revenue": 3568000000.0,
+      "operating_margin": 0.1242
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2026-03-31",
+      "operating_income": 503000000.0,
+      "total_revenue": 3770000000.0,
+      "operating_margin": 0.1334
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "NOW",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2020-12-31",
+      "operating_income": 199000000.0,
+      "total_revenue": 4519000000.0,
+      "operating_margin": 0.044
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2021-12-31",
+      "operating_income": 257000000.0,
+      "total_revenue": 5896000000.0,
+      "operating_margin": 0.0436
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2022-12-31",
+      "operating_income": 355000000.0,
+      "total_revenue": 7245000000.0,
+      "operating_margin": 0.049
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2023-12-31",
+      "operating_income": 762000000.0,
+      "total_revenue": 8971000000.0,
+      "operating_margin": 0.0849
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2024-12-31",
+      "operating_income": 1364000000.0,
+      "total_revenue": 10984000000.0,
+      "operating_margin": 0.1242
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2025-12-31",
+      "operating_income": 1824000000.0,
+      "total_revenue": 13278000000.0,
+      "operating_margin": 0.1374
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "NOW",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 20000000.0,
+      "total_revenue": 1752000000.0,
+      "net_margin": 0.0114
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": 80000000.0,
+      "total_revenue": 1831000000.0,
+      "net_margin": 0.0437
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 150000000.0,
+      "total_revenue": 1940000000.0,
+      "net_margin": 0.0773
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 1044000000.0,
+      "total_revenue": 2150000000.0,
+      "net_margin": 0.4856
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 242000000.0,
+      "total_revenue": 2288000000.0,
+      "net_margin": 0.1058
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 295000000.0,
+      "total_revenue": 2437000000.0,
+      "net_margin": 0.1211
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 347000000.0,
+      "total_revenue": 2603000000.0,
+      "net_margin": 0.1333
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 262000000.0,
+      "total_revenue": 2627000000.0,
+      "net_margin": 0.0997
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 432000000.0,
+      "total_revenue": 2797000000.0,
+      "net_margin": 0.1545
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 384000000.0,
+      "total_revenue": 2957000000.0,
+      "net_margin": 0.1299
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 460000000.0,
+      "total_revenue": 3088000000.0,
+      "net_margin": 0.149
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 385000000.0,
+      "total_revenue": 3215000000.0,
+      "net_margin": 0.1198
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 502000000.0,
+      "total_revenue": 3407000000.0,
+      "net_margin": 0.1473
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 401000000.0,
+      "total_revenue": 3568000000.0,
+      "net_margin": 0.1124
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 469000000.0,
+      "total_revenue": 3770000000.0,
+      "net_margin": 0.1244
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "NOW",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 119000000.0,
+      "total_revenue": 4519000000.0,
+      "net_margin": 0.0263
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 230000000.0,
+      "total_revenue": 5896000000.0,
+      "net_margin": 0.039
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 325000000.0,
+      "total_revenue": 7245000000.0,
+      "net_margin": 0.0449
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1731000000.0,
+      "total_revenue": 8971000000.0,
+      "net_margin": 0.193
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1425000000.0,
+      "total_revenue": 10984000000.0,
+      "net_margin": 0.1297
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1748000000.0,
+      "total_revenue": 13278000000.0,
+      "net_margin": 0.1316
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "NOW",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 1752000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2022-09-30",
+      "ebitda": 219000000.0,
+      "total_revenue": 1831000000.0,
+      "ebitda_margin": 0.1196
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2022-12-31",
+      "ebitda": 308000000.0,
+      "total_revenue": 1940000000.0,
+      "ebitda_margin": 0.1588
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2023-06-30",
+      "ebitda": 316000000.0,
+      "total_revenue": 2150000000.0,
+      "ebitda_margin": 0.147
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2023-09-30",
+      "ebitda": 451000000.0,
+      "total_revenue": 2288000000.0,
+      "ebitda_margin": 0.1971
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2023-12-31",
+      "ebitda": 507000000.0,
+      "total_revenue": 2437000000.0,
+      "ebitda_margin": 0.208
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2024-03-31",
+      "ebitda": 561000000.0,
+      "total_revenue": 2603000000.0,
+      "ebitda_margin": 0.2155
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2024-06-30",
+      "ebitda": 476000000.0,
+      "total_revenue": 2627000000.0,
+      "ebitda_margin": 0.1812
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2024-09-30",
+      "ebitda": 666000000.0,
+      "total_revenue": 2797000000.0,
+      "ebitda_margin": 0.2381
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2024-12-31",
+      "ebitda": 622000000.0,
+      "total_revenue": 2957000000.0,
+      "ebitda_margin": 0.2103
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2025-03-31",
+      "ebitda": 721000000.0,
+      "total_revenue": 3088000000.0,
+      "ebitda_margin": 0.2335
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2025-06-30",
+      "ebitda": 649000000.0,
+      "total_revenue": 3215000000.0,
+      "ebitda_margin": 0.2019
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2025-09-30",
+      "ebitda": 894000000.0,
+      "total_revenue": 3407000000.0,
+      "ebitda_margin": 0.2624
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2025-12-31",
+      "ebitda": 758000000.0,
+      "total_revenue": 3568000000.0,
+      "ebitda_margin": 0.2124
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2026-03-31",
+      "ebitda": 937000000.0,
+      "total_revenue": 3770000000.0,
+      "ebitda_margin": 0.2485
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "NOW",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2020-12-31",
+      "ebitda": 519000000.0,
+      "total_revenue": 4519000000.0,
+      "ebitda_margin": 0.1148
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2021-12-31",
+      "ebitda": 729000000.0,
+      "total_revenue": 5896000000.0,
+      "ebitda_margin": 0.1236
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2022-12-31",
+      "ebitda": 788000000.0,
+      "total_revenue": 7245000000.0,
+      "ebitda_margin": 0.1088
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2023-12-31",
+      "ebitda": 1324000000.0,
+      "total_revenue": 8971000000.0,
+      "ebitda_margin": 0.1476
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2024-12-31",
+      "ebitda": 2325000000.0,
+      "total_revenue": 10984000000.0,
+      "ebitda_margin": 0.2117
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2025-12-31",
+      "ebitda": 3022000000.0,
+      "total_revenue": 13278000000.0,
+      "ebitda_margin": 0.2276
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "NOW",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 282000000.0,
+      "total_revenue": 1752000000.0,
+      "fcf_margin": 0.161
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2022-09-30",
+      "free_cash_flow": 103000000.0,
+      "total_revenue": 1831000000.0,
+      "fcf_margin": 0.0563
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": 1940000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 448000000.0,
+      "total_revenue": 2150000000.0,
+      "fcf_margin": 0.2084
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 172000000.0,
+      "total_revenue": 2288000000.0,
+      "fcf_margin": 0.0752
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 1344000000.0,
+      "total_revenue": 2437000000.0,
+      "fcf_margin": 0.5515
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 1185000000.0,
+      "total_revenue": 2603000000.0,
+      "fcf_margin": 0.4552
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 349000000.0,
+      "total_revenue": 2627000000.0,
+      "fcf_margin": 0.1329
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 469000000.0,
+      "total_revenue": 2797000000.0,
+      "fcf_margin": 0.1677
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 1372000000.0,
+      "total_revenue": 2957000000.0,
+      "fcf_margin": 0.464
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 1438000000.0,
+      "total_revenue": 3088000000.0,
+      "fcf_margin": 0.4657
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 526000000.0,
+      "total_revenue": 3215000000.0,
+      "fcf_margin": 0.1636
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 569000000.0,
+      "total_revenue": 3407000000.0,
+      "fcf_margin": 0.167
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 2000000000.0,
+      "total_revenue": 3568000000.0,
+      "fcf_margin": 0.5605
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 1529000000.0,
+      "total_revenue": 3770000000.0,
+      "fcf_margin": 0.4056
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "NOW",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 1354000000.0,
+      "total_revenue": 4519000000.0,
+      "fcf_margin": 0.2996
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 1799000000.0,
+      "total_revenue": 5896000000.0,
+      "fcf_margin": 0.3051
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 2173000000.0,
+      "total_revenue": 7245000000.0,
+      "fcf_margin": 0.2999
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 2701000000.0,
+      "total_revenue": 8971000000.0,
+      "fcf_margin": 0.3011
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 3375000000.0,
+      "total_revenue": 10984000000.0,
+      "fcf_margin": 0.3073
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 4533000000.0,
+      "total_revenue": 13278000000.0,
+      "fcf_margin": 0.3414
+    }
+  ]
+}

@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "GILD",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 2180000000.0,
+      "beginning_stockholders_equity": 21157000000.0,
+      "ending_stockholders_equity": 22313000000.0,
+      "avg_equity": 21735000000.0,
+      "roe": 0.1003
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1429000000.0,
+      "beginning_stockholders_equity": 22313000000.0,
+      "ending_stockholders_equity": 22833000000.0,
+      "avg_equity": 22573000000.0,
+      "roe": 0.0633
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": -4170000000.0,
+      "beginning_stockholders_equity": 22833000000.0,
+      "ending_stockholders_equity": 17539000000.0,
+      "avg_equity": 20186000000.0,
+      "roe": -0.2066
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1614000000.0,
+      "beginning_stockholders_equity": 17539000000.0,
+      "ending_stockholders_equity": 18281000000.0,
+      "avg_equity": 17910000000.0,
+      "roe": 0.0901
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1253000000.0,
+      "beginning_stockholders_equity": 18281000000.0,
+      "ending_stockholders_equity": 18474000000.0,
+      "avg_equity": 18377500000.0,
+      "roe": 0.0682
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1783000000.0,
+      "beginning_stockholders_equity": 18474000000.0,
+      "ending_stockholders_equity": 19330000000.0,
+      "avg_equity": 18902000000.0,
+      "roe": 0.0943
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1315000000.0,
+      "beginning_stockholders_equity": 19330000000.0,
+      "ending_stockholders_equity": 19162000000.0,
+      "avg_equity": 19246000000.0,
+      "roe": 0.0683
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1960000000.0,
+      "beginning_stockholders_equity": 19162000000.0,
+      "ending_stockholders_equity": 19675000000.0,
+      "avg_equity": 19418500000.0,
+      "roe": 0.1009
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 3052000000.0,
+      "beginning_stockholders_equity": 19675000000.0,
+      "ending_stockholders_equity": 21540000000.0,
+      "avg_equity": 20607500000.0,
+      "roe": 0.1481
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 2183000000.0,
+      "beginning_stockholders_equity": 21540000000.0,
+      "ending_stockholders_equity": 22702000000.0,
+      "avg_equity": 22121000000.0,
+      "roe": 0.0987
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 2021000000.0,
+      "beginning_stockholders_equity": 22702000000.0,
+      "ending_stockholders_equity": 23515000000.0,
+      "avg_equity": 23108500000.0,
+      "roe": 0.0875
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "GILD",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 2180000000.0,
+      "beginning_total_assets": 62337000000.0,
+      "ending_total_assets": 62373000000.0,
+      "avg_assets": 62355000000.0,
+      "roa": 0.035
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1429000000.0,
+      "beginning_total_assets": 62373000000.0,
+      "ending_total_assets": 62125000000.0,
+      "avg_assets": 62249000000.0,
+      "roa": 0.023
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": -4170000000.0,
+      "beginning_total_assets": 62125000000.0,
+      "ending_total_assets": 56292000000.0,
+      "avg_assets": 59208500000.0,
+      "roa": -0.0704
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1614000000.0,
+      "beginning_total_assets": 56292000000.0,
+      "ending_total_assets": 53579000000.0,
+      "avg_assets": 54935500000.0,
+      "roa": 0.0294
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1253000000.0,
+      "beginning_total_assets": 53579000000.0,
+      "ending_total_assets": 54525000000.0,
+      "avg_assets": 54052000000.0,
+      "roa": 0.0232
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1783000000.0,
+      "beginning_total_assets": 54525000000.0,
+      "ending_total_assets": 58995000000.0,
+      "avg_assets": 56760000000.0,
+      "roa": 0.0314
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1315000000.0,
+      "beginning_total_assets": 58995000000.0,
+      "ending_total_assets": 56434000000.0,
+      "avg_assets": 57714500000.0,
+      "roa": 0.0228
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1960000000.0,
+      "beginning_total_assets": 56434000000.0,
+      "ending_total_assets": 55721000000.0,
+      "avg_assets": 56077500000.0,
+      "roa": 0.035
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 3052000000.0,
+      "beginning_total_assets": 55721000000.0,
+      "ending_total_assets": 58533000000.0,
+      "avg_assets": 57127000000.0,
+      "roa": 0.0534
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 2183000000.0,
+      "beginning_total_assets": 58533000000.0,
+      "ending_total_assets": 59023000000.0,
+      "avg_assets": 58778000000.0,
+      "roa": 0.0371
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 2021000000.0,
+      "beginning_total_assets": 59023000000.0,
+      "ending_total_assets": 56278000000.0,
+      "avg_assets": 57650500000.0,
+      "roa": 0.0351
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "GILD",
+      "report_date": "2023-09-30",
+      "ebit": 2550000000.0,
+      "tax_rate_for_calcs": 0.06,
+      "nopat": 2397000000.0,
+      "beginning_invested_capital": 46403000000.0,
+      "ending_invested_capital": 47295000000.0,
+      "avg_invested_capital": 46849000000.0,
+      "roic": 0.0512
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2023-12-31",
+      "ebit": 1905000000.0,
+      "tax_rate_for_calcs": 0.14,
+      "nopat": 1638300000.0,
+      "beginning_invested_capital": 47295000000.0,
+      "ending_invested_capital": 47820000000.0,
+      "avg_invested_capital": 47557500000.0,
+      "roic": 0.0344
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-03-31",
+      "ebit": -4232000000.0,
+      "tax_rate_for_calcs": 0.07,
+      "nopat": -3935760000.0,
+      "beginning_invested_capital": 47820000000.0,
+      "ending_invested_capital": 42733000000.0,
+      "avg_invested_capital": 45276500000.0,
+      "roic": -0.0869
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-06-30",
+      "ebit": 2290000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 1809100000.0,
+      "beginning_invested_capital": 42733000000.0,
+      "ending_invested_capital": 41631000000.0,
+      "avg_invested_capital": 42182000000.0,
+      "roic": 0.0429
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-09-30",
+      "ebit": 1194000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 943260000.0,
+      "beginning_invested_capital": 41631000000.0,
+      "ending_invested_capital": 41723000000.0,
+      "avg_invested_capital": 41677000000.0,
+      "roic": 0.0226
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-12-31",
+      "ebit": 2416000000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 1981120000.0,
+      "beginning_invested_capital": 41723000000.0,
+      "ending_invested_capital": 46041000000.0,
+      "avg_invested_capital": 43882000000.0,
+      "roic": 0.0451
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-03-31",
+      "ebit": 1909000000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 1527200000.0,
+      "beginning_invested_capital": 46041000000.0,
+      "ending_invested_capital": 44114000000.0,
+      "avg_invested_capital": 45077500000.0,
+      "roic": 0.0339
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-06-30",
+      "ebit": 2683000000.0,
+      "tax_rate_for_calcs": 0.12,
+      "nopat": 2361040000.0,
+      "beginning_invested_capital": 44114000000.0,
+      "ending_invested_capital": 44621000000.0,
+      "avg_invested_capital": 44367500000.0,
+      "roic": 0.0532
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-09-30",
+      "ebit": 3897000000.0,
+      "tax_rate_for_calcs": 0.16,
+      "nopat": 3273480000.0,
+      "beginning_invested_capital": 44621000000.0,
+      "ending_invested_capital": 46481000000.0,
+      "avg_invested_capital": 45551000000.0,
+      "roic": 0.0719
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-12-31",
+      "ebit": 2333000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 1843070000.0,
+      "beginning_invested_capital": 46481000000.0,
+      "ending_invested_capital": 47638000000.0,
+      "avg_invested_capital": 47059500000.0,
+      "roic": 0.0392
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2026-03-31",
+      "ebit": 2820000000.0,
+      "tax_rate_for_calcs": 0.14,
+      "nopat": 2425200000.0,
+      "beginning_invested_capital": 47638000000.0,
+      "ending_invested_capital": 45689000000.0,
+      "avg_invested_capital": 46663500000.0,
+      "roic": 0.052
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "GILD",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.1003,
+      "roa": 0.035,
+      "equity_multiplier": 2.87
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.0633,
+      "roa": 0.023,
+      "equity_multiplier": 2.75
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": -0.2066,
+      "roa": -0.0704,
+      "equity_multiplier": 2.93
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.0901,
+      "roa": 0.0294,
+      "equity_multiplier": 3.06
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.0682,
+      "roa": 0.0232,
+      "equity_multiplier": 2.94
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.0943,
+      "roa": 0.0314,
+      "equity_multiplier": 3.0
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.0683,
+      "roa": 0.0228,
+      "equity_multiplier": 3.0
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.1009,
+      "roa": 0.035,
+      "equity_multiplier": 2.88
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.1481,
+      "roa": 0.0534,
+      "equity_multiplier": 2.77
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.0987,
+      "roa": 0.0371,
+      "equity_multiplier": 2.66
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.0875,
+      "roa": 0.0351,
+      "equity_multiplier": 2.49
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "GILD",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.035,
+      "net_margin": 0.3092,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.023,
+      "net_margin": 0.2009,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": -0.0704,
+      "net_margin": -0.6237,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0294,
+      "net_margin": 0.2321,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0232,
+      "net_margin": 0.1661,
+      "asset_turnover": 0.14
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0314,
+      "net_margin": 0.2356,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0228,
+      "net_margin": 0.1972,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.035,
+      "net_margin": 0.0679,
+      "asset_turnover": 0.52
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0534,
+      "net_margin": 0.3928,
+      "asset_turnover": 0.14
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0371,
+      "net_margin": 0.2755,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0351,
+      "net_margin": 0.068,
+      "asset_turnover": 0.52
+    }
+  ]
+}

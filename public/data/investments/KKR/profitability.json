@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "KKR",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1472878000.0,
+      "beginning_stockholders_equity": 19981567000.0,
+      "ending_stockholders_equity": 20407773000.0,
+      "avg_equity": 20194670000.0,
+      "roe": 0.0729
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1040429000.0,
+      "beginning_stockholders_equity": 20407773000.0,
+      "ending_stockholders_equity": 22858694000.0,
+      "avg_equity": 21633233500.0,
+      "roe": 0.0481
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 682214000.0,
+      "beginning_stockholders_equity": 22858694000.0,
+      "ending_stockholders_equity": 21421193000.0,
+      "avg_equity": 22139943500.0,
+      "roe": 0.0308
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 667926000.0,
+      "beginning_stockholders_equity": 21421193000.0,
+      "ending_stockholders_equity": 21673103000.0,
+      "avg_equity": 21547148000.0,
+      "roe": 0.031
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 600550000.0,
+      "beginning_stockholders_equity": 21673103000.0,
+      "ending_stockholders_equity": 24083685000.0,
+      "avg_equity": 22878394000.0,
+      "roe": 0.0262
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1125555000.0,
+      "beginning_stockholders_equity": 24083685000.0,
+      "ending_stockholders_equity": 23651568000.0,
+      "avg_equity": 23867626500.0,
+      "roe": 0.0472
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": -199401000.0,
+      "beginning_stockholders_equity": 23651568000.0,
+      "ending_stockholders_equity": 27469987000.0,
+      "avg_equity": 25560777500.0,
+      "roe": -0.0078
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 472387000.0,
+      "beginning_stockholders_equity": 27469987000.0,
+      "ending_stockholders_equity": 28219229000.0,
+      "avg_equity": 27844608000.0,
+      "roe": 0.017
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 859927000.0,
+      "beginning_stockholders_equity": 28219229000.0,
+      "ending_stockholders_equity": 29749202000.0,
+      "avg_equity": 28984215500.0,
+      "roe": 0.0297
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1105477000.0,
+      "beginning_stockholders_equity": 29749202000.0,
+      "ending_stockholders_equity": 30902561000.0,
+      "avg_equity": 30325881500.0,
+      "roe": 0.0365
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 364799000.0,
+      "beginning_stockholders_equity": 30902561000.0,
+      "ending_stockholders_equity": 30496153000.0,
+      "avg_equity": 30699357000.0,
+      "roe": 0.0119
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "KKR",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1472878000.0,
+      "beginning_total_assets": 287694799000.0,
+      "ending_total_assets": 288732956000.0,
+      "avg_assets": 288213877500.0,
+      "roa": 0.0051
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1040429000.0,
+      "beginning_total_assets": 288732956000.0,
+      "ending_total_assets": 317294194000.0,
+      "avg_assets": 303013575000.0,
+      "roa": 0.0034
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 682214000.0,
+      "beginning_total_assets": 317294194000.0,
+      "ending_total_assets": 339773927000.0,
+      "avg_assets": 328534060500.0,
+      "roa": 0.0021
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 667926000.0,
+      "beginning_total_assets": 339773927000.0,
+      "ending_total_assets": 348469179000.0,
+      "avg_assets": 344121553000.0,
+      "roa": 0.0019
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 600550000.0,
+      "beginning_total_assets": 348469179000.0,
+      "ending_total_assets": 360655876000.0,
+      "avg_assets": 354562527500.0,
+      "roa": 0.0017
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1125555000.0,
+      "beginning_total_assets": 360655876000.0,
+      "ending_total_assets": 360099411000.0,
+      "avg_assets": 360377643500.0,
+      "roa": 0.0031
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": -199401000.0,
+      "beginning_total_assets": 360099411000.0,
+      "ending_total_assets": 372372919000.0,
+      "avg_assets": 366236165000.0,
+      "roa": -0.0005
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 472387000.0,
+      "beginning_total_assets": 372372919000.0,
+      "ending_total_assets": 380867573000.0,
+      "avg_assets": 376620246000.0,
+      "roa": 0.0013
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 859927000.0,
+      "beginning_total_assets": 380867573000.0,
+      "ending_total_assets": 398480928000.0,
+      "avg_assets": 389674250500.0,
+      "roa": 0.0022
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1105477000.0,
+      "beginning_total_assets": 398480928000.0,
+      "ending_total_assets": 410144072000.0,
+      "avg_assets": 404312500000.0,
+      "roa": 0.0027
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 364799000.0,
+      "beginning_total_assets": 410144072000.0,
+      "ending_total_assets": 412084513000.0,
+      "avg_assets": 411114292500.0,
+      "roa": 0.0009
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "KKR",
+      "report_date": "2023-09-30",
+      "ebit": 3588256000.0,
+      "tax_rate_for_calcs": 0.16,
+      "nopat": 3014135040.0,
+      "beginning_invested_capital": 65735563000.0,
+      "ending_invested_capital": 66719164000.0,
+      "avg_invested_capital": 66227363500.0,
+      "roic": 0.0455
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-12-31",
+      "ebit": 2676337000.0,
+      "tax_rate_for_calcs": 0.15,
+      "nopat": 2274886450.0,
+      "beginning_invested_capital": 66719164000.0,
+      "ending_invested_capital": 71691855000.0,
+      "avg_invested_capital": 69205509500.0,
+      "roic": 0.0329
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-03-31",
+      "ebit": 2171682000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 1737345600.0,
+      "beginning_invested_capital": 71691855000.0,
+      "ending_invested_capital": 70415655000.0,
+      "avg_invested_capital": 71053755000.0,
+      "roic": 0.0245
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-06-30",
+      "ebit": 2059208000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 1688550560.0,
+      "beginning_invested_capital": 70415655000.0,
+      "ending_invested_capital": 71333728000.0,
+      "avg_invested_capital": 70874691500.0,
+      "roic": 0.0238
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-09-30",
+      "ebit": 2445012000.0,
+      "tax_rate_for_calcs": 0.13,
+      "nopat": 2127160440.0,
+      "beginning_invested_capital": 71333728000.0,
+      "ending_invested_capital": 73739160000.0,
+      "avg_invested_capital": 72536444000.0,
+      "roic": 0.0293
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-12-31",
+      "ebit": 2490445000.0,
+      "tax_rate_for_calcs": 0.16,
+      "nopat": 2091973800.0,
+      "beginning_invested_capital": 73739160000.0,
+      "ending_invested_capital": 73560220000.0,
+      "avg_invested_capital": 73649690000.0,
+      "roic": 0.0284
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-03-31",
+      "ebit": 1495137000.0,
+      "tax_rate_for_calcs": 0.11,
+      "nopat": 1330671930.0,
+      "beginning_invested_capital": 73560220000.0,
+      "ending_invested_capital": 74812937000.0,
+      "avg_invested_capital": 74186578500.0,
+      "roic": 0.0179
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-06-30",
+      "ebit": 2306989000.0,
+      "tax_rate_for_calcs": 0.11,
+      "nopat": 2053220210.0,
+      "beginning_invested_capital": 74812937000.0,
+      "ending_invested_capital": 77251028000.0,
+      "avg_invested_capital": 76031982500.0,
+      "roic": 0.027
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-09-30",
+      "ebit": 2994539000.0,
+      "tax_rate_for_calcs": 0.16,
+      "nopat": 2515412760.0,
+      "beginning_invested_capital": 77251028000.0,
+      "ending_invested_capital": 80709781000.0,
+      "avg_invested_capital": 78980404500.0,
+      "roic": 0.0318
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-12-31",
+      "ebit": 3374410000.0,
+      "tax_rate_for_calcs": 0.13,
+      "nopat": 2935736700.0,
+      "beginning_invested_capital": 80709781000.0,
+      "ending_invested_capital": 81961557000.0,
+      "avg_invested_capital": 81335669000.0,
+      "roic": 0.0361
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2026-03-31",
+      "ebit": 1214958000.0,
+      "tax_rate_for_calcs": 0.4,
+      "nopat": 728974800.0,
+      "beginning_invested_capital": 81961557000.0,
+      "ending_invested_capital": 81656620000.0,
+      "avg_invested_capital": 81809088500.0,
+      "roic": 0.0089
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "KKR",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.0729,
+      "roa": 0.0051,
+      "equity_multiplier": 14.29
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.0481,
+      "roa": 0.0034,
+      "equity_multiplier": 14.15
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.0308,
+      "roa": 0.0021,
+      "equity_multiplier": 14.67
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.031,
+      "roa": 0.0019,
+      "equity_multiplier": 16.32
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.0262,
+      "roa": 0.0017,
+      "equity_multiplier": 15.41
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.0472,
+      "roa": 0.0031,
+      "equity_multiplier": 15.23
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": -0.0078,
+      "roa": -0.0005,
+      "equity_multiplier": 15.6
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.017,
+      "roa": 0.0013,
+      "equity_multiplier": 13.08
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.0297,
+      "roa": 0.0022,
+      "equity_multiplier": 13.5
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.0365,
+      "roa": 0.0027,
+      "equity_multiplier": 13.52
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.0119,
+      "roa": 0.0009,
+      "equity_multiplier": 13.22
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "KKR",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0051,
+      "net_margin": 0.45,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0034,
+      "net_margin": 0.2379,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0021,
+      "net_margin": 0.0711,
+      "asset_turnover": 0.03
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0019,
+      "net_margin": 0.1626,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0017,
+      "net_margin": 0.1269,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0031,
+      "net_margin": 0.3517,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": -0.0005,
+      "net_margin": -0.0653,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0013,
+      "net_margin": 0.0944,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0022,
+      "net_margin": 0.1574,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0027,
+      "net_margin": 0.1945,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "KKR",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0009,
+      "net_margin": 0.0179,
+      "asset_turnover": 0.05
+    }
+  ]
+}

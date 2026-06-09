@@ -1,0 +1,11 @@
+{
+  "by_segment": {
+    "error": "Query failed: Binder Error: Referenced column \"breakdown_type\" not found in FROM clause!\nCandidate bindings: \"period_type\", \"report_date\", \"role_name\", \"form_type\", \"period_label\""
+  },
+  "by_geography": {
+    "error": "Query failed: Binder Error: Referenced column \"breakdown_type\" not found in FROM clause!\nCandidate bindings: \"period_type\", \"report_date\", \"role_name\", \"form_type\", \"period_label\""
+  },
+  "by_product": {
+    "error": "Query failed: Binder Error: Referenced column \"breakdown_type\" not found in FROM clause!\nCandidate bindings: \"period_type\", \"report_date\", \"role_name\", \"form_type\", \"period_label\""
+  }
+}

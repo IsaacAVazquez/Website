@@ -1,0 +1,1811 @@
+{
+  "ttm_pe": [],
+  "ps_ratio": [],
+  "pb_ratio": [],
+  "roe": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 425282000.0,
+      "total_avg_equity": 4371345500.0,
+      "industry_roe": 0.0973
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 425282000.0,
+      "total_avg_equity": 4371345500.0,
+      "industry_roe": 0.0973
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 425282000.0,
+      "total_avg_equity": 4371345500.0,
+      "industry_roe": 0.0973
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 626378000.0,
+      "total_avg_equity": 4572715000.0,
+      "industry_roe": 0.137
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 626378000.0,
+      "total_avg_equity": 4572715000.0,
+      "industry_roe": 0.137
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 626378000.0,
+      "total_avg_equity": 4572715000.0,
+      "industry_roe": 0.137
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 772561000.0,
+      "total_avg_equity": 9492867500.0,
+      "industry_roe": 0.0814
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 772561000.0,
+      "total_avg_equity": 9492867500.0,
+      "industry_roe": 0.0814
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 772561000.0,
+      "total_avg_equity": 9492867500.0,
+      "industry_roe": 0.0814
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 6020413000.0,
+      "total_avg_equity": 39378658500.0,
+      "industry_roe": 0.1529
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 6020413000.0,
+      "total_avg_equity": 39378658500.0,
+      "industry_roe": 0.1529
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 6029346825.0,
+      "total_avg_equity": 39732495978.0,
+      "industry_roe": 0.1517
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 53333351608.72558,
+      "total_avg_equity": 399281128391.7237,
+      "industry_roe": 0.1336
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 53333351608.72558,
+      "total_avg_equity": 399281128391.7237,
+      "industry_roe": 0.1336
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 53340175305.72558,
+      "total_avg_equity": 399292257832.2237,
+      "industry_roe": 0.1336
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 54479726112.73934,
+      "total_avg_equity": 401203159475.5498,
+      "industry_roe": 0.1358
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 54479726112.73934,
+      "total_avg_equity": 401203159475.5498,
+      "industry_roe": 0.1358
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 54485147800.73934,
+      "total_avg_equity": 401203998852.5498,
+      "industry_roe": 0.1358
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 45046452077.62851,
+      "total_avg_equity": 426801576460.6524,
+      "industry_roe": 0.1055
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 45046452077.62851,
+      "total_avg_equity": 426801576460.6524,
+      "industry_roe": 0.1055
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 45059342638.62851,
+      "total_avg_equity": 426808315046.6524,
+      "industry_roe": 0.1056
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 57720801147.29619,
+      "total_avg_equity": 434355609897.46686,
+      "industry_roe": 0.1329
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 57720801147.29619,
+      "total_avg_equity": 434355609897.46686,
+      "industry_roe": 0.1329
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 57714817633.29619,
+      "total_avg_equity": 434363325290.96686,
+      "industry_roe": 0.1329
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 51658603009.07305,
+      "total_avg_equity": 448606064488.7862,
+      "industry_roe": 0.1152
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 51658603009.07305,
+      "total_avg_equity": 448606064488.7862,
+      "industry_roe": 0.1152
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 51687400653.07305,
+      "total_avg_equity": 448610015792.2862,
+      "industry_roe": 0.1152
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 78301063697.97652,
+      "total_avg_equity": 840916788567.0259,
+      "industry_roe": 0.0931
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 78298407056.38521,
+      "total_avg_equity": 840916156895.0548,
+      "industry_roe": 0.0931
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 78298374552.38521,
+      "total_avg_equity": 840924627928.0548,
+      "industry_roe": 0.0931
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 83854754550.45651,
+      "total_avg_equity": 853271797083.334,
+      "industry_roe": 0.0983
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 83854679045.56332,
+      "total_avg_equity": 853272133683.7794,
+      "industry_roe": 0.0983
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 83857844087.56332,
+      "total_avg_equity": 853282387262.2794,
+      "industry_roe": 0.0983
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 88755262228.71347,
+      "total_avg_equity": 872294686752.9952,
+      "industry_roe": 0.1017
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 88754974404.84518,
+      "total_avg_equity": 872294643434.7344,
+      "industry_roe": 0.1017
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 88792255464.84518,
+      "total_avg_equity": 872287969779.2344,
+      "industry_roe": 0.1018
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 127248434672.34383,
+      "total_avg_equity": 871448714210.6677,
+      "industry_roe": 0.146
+    }
+  ],
+  "roa": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 425282000.0,
+      "total_avg_assets": 9362295000.0,
+      "industry_roa": 0.0454
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 425282000.0,
+      "total_avg_assets": 9362295000.0,
+      "industry_roa": 0.0454
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 425282000.0,
+      "total_avg_assets": 9362295000.0,
+      "industry_roa": 0.0454
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 626378000.0,
+      "total_avg_assets": 9566131500.0,
+      "industry_roa": 0.0655
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 626378000.0,
+      "total_avg_assets": 9566131500.0,
+      "industry_roa": 0.0655
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 626378000.0,
+      "total_avg_assets": 9566131500.0,
+      "industry_roa": 0.0655
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 772561000.0,
+      "total_avg_assets": 19503600500.0,
+      "industry_roa": 0.0396
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 772561000.0,
+      "total_avg_assets": 19503600500.0,
+      "industry_roa": 0.0396
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 772561000.0,
+      "total_avg_assets": 19503600500.0,
+      "industry_roa": 0.0396
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 6020413000.0,
+      "total_avg_assets": 240868583500.0,
+      "industry_roa": 0.025
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 6020413000.0,
+      "total_avg_assets": 240868583500.0,
+      "industry_roa": 0.025
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 6029346825.0,
+      "total_avg_assets": 242037292742.5,
+      "industry_roa": 0.0249
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 53333351608.72558,
+      "total_avg_assets": 4652902521593.823,
+      "industry_roa": 0.0115
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 53333351608.72558,
+      "total_avg_assets": 4652902521593.823,
+      "industry_roa": 0.0115
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 53340175305.72558,
+      "total_avg_assets": 4652912858288.823,
+      "industry_roa": 0.0115
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 54479726112.73934,
+      "total_avg_assets": 4621652979615.017,
+      "industry_roa": 0.0118
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 54479726112.73934,
+      "total_avg_assets": 4621652979615.017,
+      "industry_roa": 0.0118
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 54485147800.73934,
+      "total_avg_assets": 4621667134067.017,
+      "industry_roa": 0.0118
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 45046452077.62851,
+      "total_avg_assets": 4833499401432.116,
+      "industry_roa": 0.0093
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 45046452077.62851,
+      "total_avg_assets": 4833499401432.116,
+      "industry_roa": 0.0093
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 45059342638.62851,
+      "total_avg_assets": 4833511763900.116,
+      "industry_roa": 0.0093
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 57720801147.29619,
+      "total_avg_assets": 4950339123244.237,
+      "industry_roa": 0.0117
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 57720801147.29619,
+      "total_avg_assets": 4950339123244.237,
+      "industry_roa": 0.0117
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 57714817633.29619,
+      "total_avg_assets": 4950330222638.237,
+      "industry_roa": 0.0117
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 51658603009.07305,
+      "total_avg_assets": 5021043145234.591,
+      "industry_roa": 0.0103
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 51658603009.07305,
+      "total_avg_assets": 5021043145234.591,
+      "industry_roa": 0.0103
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 51687400653.07305,
+      "total_avg_assets": 5021054969480.091,
+      "industry_roa": 0.0103
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 78301063697.97652,
+      "total_avg_assets": 9151713600535.197,
+      "industry_roa": 0.0086
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 78298407056.38521,
+      "total_avg_assets": 9151714021872.63,
+      "industry_roa": 0.0086
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 78298374552.38521,
+      "total_avg_assets": 9151718601032.63,
+      "industry_roa": 0.0086
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 83854754550.45651,
+      "total_avg_assets": 9221183950514.49,
+      "industry_roa": 0.0091
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 83854679045.56332,
+      "total_avg_assets": 9221184187967.201,
+      "industry_roa": 0.0091
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 83857844087.56332,
+      "total_avg_assets": 9221165375214.201,
+      "industry_roa": 0.0091
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 88755262228.71347,
+      "total_avg_assets": 9347730984027.848,
+      "industry_roa": 0.0095
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 88754974404.84518,
+      "total_avg_assets": 9347730954331.242,
+      "industry_roa": 0.0095
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 88792255464.84518,
+      "total_avg_assets": 9347707468645.742,
+      "industry_roa": 0.0095
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 127248434672.34383,
+      "total_avg_assets": 9506628640697.893,
+      "industry_roa": 0.0134
+    }
+  ],
+  "equity_multiplier": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roe": 0.0973,
+      "industry_roa": 0.0454,
+      "industry_equity_multiplier": 2.14
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roe": 0.0973,
+      "industry_roa": 0.0454,
+      "industry_equity_multiplier": 2.14
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roe": 0.0973,
+      "industry_roa": 0.0454,
+      "industry_equity_multiplier": 2.14
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roe": 0.137,
+      "industry_roa": 0.0655,
+      "industry_equity_multiplier": 2.09
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roe": 0.137,
+      "industry_roa": 0.0655,
+      "industry_equity_multiplier": 2.09
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roe": 0.137,
+      "industry_roa": 0.0655,
+      "industry_equity_multiplier": 2.09
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roe": 0.0814,
+      "industry_roa": 0.0396,
+      "industry_equity_multiplier": 2.06
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roe": 0.0814,
+      "industry_roa": 0.0396,
+      "industry_equity_multiplier": 2.06
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roe": 0.0814,
+      "industry_roa": 0.0396,
+      "industry_equity_multiplier": 2.06
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roe": 0.1529,
+      "industry_roa": 0.025,
+      "industry_equity_multiplier": 6.12
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roe": 0.1529,
+      "industry_roa": 0.025,
+      "industry_equity_multiplier": 6.12
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roe": 0.1517,
+      "industry_roa": 0.0249,
+      "industry_equity_multiplier": 6.09
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roe": 0.1336,
+      "industry_roa": 0.0115,
+      "industry_equity_multiplier": 11.62
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roe": 0.1336,
+      "industry_roa": 0.0115,
+      "industry_equity_multiplier": 11.62
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roe": 0.1336,
+      "industry_roa": 0.0115,
+      "industry_equity_multiplier": 11.62
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roe": 0.1358,
+      "industry_roa": 0.0118,
+      "industry_equity_multiplier": 11.51
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roe": 0.1358,
+      "industry_roa": 0.0118,
+      "industry_equity_multiplier": 11.51
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roe": 0.1358,
+      "industry_roa": 0.0118,
+      "industry_equity_multiplier": 11.51
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roe": 0.1055,
+      "industry_roa": 0.0093,
+      "industry_equity_multiplier": 11.34
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roe": 0.1055,
+      "industry_roa": 0.0093,
+      "industry_equity_multiplier": 11.34
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roe": 0.1056,
+      "industry_roa": 0.0093,
+      "industry_equity_multiplier": 11.35
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roe": 0.1329,
+      "industry_roa": 0.0117,
+      "industry_equity_multiplier": 11.36
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roe": 0.1329,
+      "industry_roa": 0.0117,
+      "industry_equity_multiplier": 11.36
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roe": 0.1329,
+      "industry_roa": 0.0117,
+      "industry_equity_multiplier": 11.36
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roe": 0.1152,
+      "industry_roa": 0.0103,
+      "industry_equity_multiplier": 11.18
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roe": 0.1152,
+      "industry_roa": 0.0103,
+      "industry_equity_multiplier": 11.18
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roe": 0.1152,
+      "industry_roa": 0.0103,
+      "industry_equity_multiplier": 11.18
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roe": 0.0931,
+      "industry_roa": 0.0086,
+      "industry_equity_multiplier": 10.83
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roe": 0.0931,
+      "industry_roa": 0.0086,
+      "industry_equity_multiplier": 10.83
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roe": 0.0931,
+      "industry_roa": 0.0086,
+      "industry_equity_multiplier": 10.83
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roe": 0.0983,
+      "industry_roa": 0.0091,
+      "industry_equity_multiplier": 10.8
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roe": 0.0983,
+      "industry_roa": 0.0091,
+      "industry_equity_multiplier": 10.8
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roe": 0.0983,
+      "industry_roa": 0.0091,
+      "industry_equity_multiplier": 10.8
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roe": 0.1017,
+      "industry_roa": 0.0095,
+      "industry_equity_multiplier": 10.71
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roe": 0.1017,
+      "industry_roa": 0.0095,
+      "industry_equity_multiplier": 10.71
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roe": 0.1018,
+      "industry_roa": 0.0095,
+      "industry_equity_multiplier": 10.72
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roe": 0.146,
+      "industry_roa": 0.0134,
+      "industry_equity_multiplier": 10.9
+    }
+  ],
+  "gross_margin": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_gross_profit": 15731279000.0,
+      "total_ttm_revenue": 32198146000.0,
+      "industry_gross_margin": 0.4886
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_gross_profit": 15731279000.0,
+      "total_ttm_revenue": 32198146000.0,
+      "industry_gross_margin": 0.4886
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_gross_profit": 15731279000.0,
+      "total_ttm_revenue": 32198146000.0,
+      "industry_gross_margin": 0.4886
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_gross_profit": 14837607000.0,
+      "total_ttm_revenue": 32146661000.0,
+      "industry_gross_margin": 0.4616
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_gross_profit": 14837607000.0,
+      "total_ttm_revenue": 32146661000.0,
+      "industry_gross_margin": 0.4616
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_gross_profit": 14837607000.0,
+      "total_ttm_revenue": 32146661000.0,
+      "industry_gross_margin": 0.4616
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_gross_profit": 14879800000.0,
+      "total_ttm_revenue": 32457472000.0,
+      "industry_gross_margin": 0.4584
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_gross_profit": 14879800000.0,
+      "total_ttm_revenue": 32457472000.0,
+      "industry_gross_margin": 0.4584
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_gross_profit": 14879800000.0,
+      "total_ttm_revenue": 32457472000.0,
+      "industry_gross_margin": 0.4584
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_gross_profit": 85353080099.19797,
+      "total_ttm_revenue": 107092845634.86703,
+      "industry_gross_margin": 0.797
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_gross_profit": 85353080099.19797,
+      "total_ttm_revenue": 107092845634.86703,
+      "industry_gross_margin": 0.797
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_gross_profit": 85353080099.19797,
+      "total_ttm_revenue": 107092845634.86703,
+      "industry_gross_margin": 0.797
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_gross_profit": 128867635054.4986,
+      "total_ttm_revenue": 251890944177.0929,
+      "industry_gross_margin": 0.5116
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_gross_profit": 128867635054.4986,
+      "total_ttm_revenue": 251890944177.0929,
+      "industry_gross_margin": 0.5116
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_gross_profit": 128867635054.4986,
+      "total_ttm_revenue": 251890944177.0929,
+      "industry_gross_margin": 0.5116
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_gross_profit": 110894159528.70486,
+      "total_ttm_revenue": 236509826059.78384,
+      "industry_gross_margin": 0.4689
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_gross_profit": 110894159528.70486,
+      "total_ttm_revenue": 236509826059.78384,
+      "industry_gross_margin": 0.4689
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_gross_profit": 110894159528.70486,
+      "total_ttm_revenue": 236509826059.78384,
+      "industry_gross_margin": 0.4689
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_gross_profit": 122774544581.07803,
+      "total_ttm_revenue": 245459734400.3685,
+      "industry_gross_margin": 0.5002
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_gross_profit": 122774544581.07803,
+      "total_ttm_revenue": 245459734400.3685,
+      "industry_gross_margin": 0.5002
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_gross_profit": 122774544581.07803,
+      "total_ttm_revenue": 245459734400.3685,
+      "industry_gross_margin": 0.5002
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_gross_profit": 114464907069.78261,
+      "total_ttm_revenue": 231687083420.96686,
+      "industry_gross_margin": 0.494
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_gross_profit": 114464907069.78261,
+      "total_ttm_revenue": 231687083420.96686,
+      "industry_gross_margin": 0.494
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_gross_profit": 114464907069.78261,
+      "total_ttm_revenue": 231687083420.96686,
+      "industry_gross_margin": 0.494
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_gross_profit": 109222332048.34482,
+      "total_ttm_revenue": 218718525727.29395,
+      "industry_gross_margin": 0.4994
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_gross_profit": 109222332048.34482,
+      "total_ttm_revenue": 218718525727.29395,
+      "industry_gross_margin": 0.4994
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_gross_profit": 109222332048.34482,
+      "total_ttm_revenue": 218718525727.29395,
+      "industry_gross_margin": 0.4994
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_gross_profit": 255330642125.03912,
+      "total_ttm_revenue": 787390451320.1827,
+      "industry_gross_margin": 0.3243
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_gross_profit": 255330642125.03912,
+      "total_ttm_revenue": 787390451320.1827,
+      "industry_gross_margin": 0.3243
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_gross_profit": 255330642125.03912,
+      "total_ttm_revenue": 787390451320.1827,
+      "industry_gross_margin": 0.3243
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_gross_profit": 253469042021.2434,
+      "total_ttm_revenue": 782013179198.5294,
+      "industry_gross_margin": 0.3241
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_gross_profit": 253469042021.2434,
+      "total_ttm_revenue": 782013179198.5294,
+      "industry_gross_margin": 0.3241
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_gross_profit": 253469042021.2434,
+      "total_ttm_revenue": 782013179198.5294,
+      "industry_gross_margin": 0.3241
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_gross_profit": 266183773519.08188,
+      "total_ttm_revenue": 806512122184.1056,
+      "industry_gross_margin": 0.33
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_gross_profit": 266183773519.08188,
+      "total_ttm_revenue": 806512122184.1056,
+      "industry_gross_margin": 0.33
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_gross_profit": 266183773519.08188,
+      "total_ttm_revenue": 806512122184.1056,
+      "industry_gross_margin": 0.33
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_gross_profit": 289425982845.02264,
+      "total_ttm_revenue": 926003166993.3263,
+      "industry_gross_margin": 0.3126
+    }
+  ],
+  "ebitda_margin": [
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_ebitda": 12361195000.0,
+      "total_ttm_revenue": 32146661000.0,
+      "industry_ebitda_margin": 0.3845
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_ebitda": 12361195000.0,
+      "total_ttm_revenue": 32146661000.0,
+      "industry_ebitda_margin": 0.3845
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_ebitda": 12361195000.0,
+      "total_ttm_revenue": 32146661000.0,
+      "industry_ebitda_margin": 0.3845
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_ebitda": 12676736000.0,
+      "total_ttm_revenue": 32457472000.0,
+      "industry_ebitda_margin": 0.3906
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_ebitda": 12676736000.0,
+      "total_ttm_revenue": 32457472000.0,
+      "industry_ebitda_margin": 0.3906
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_ebitda": 12676736000.0,
+      "total_ttm_revenue": 32457472000.0,
+      "industry_ebitda_margin": 0.3906
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_ebitda": 28488041607.71071,
+      "total_ttm_revenue": 107092845634.86703,
+      "industry_ebitda_margin": 0.266
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_ebitda": 28488041607.71071,
+      "total_ttm_revenue": 107092845634.86703,
+      "industry_ebitda_margin": 0.266
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_ebitda": 28488041607.71071,
+      "total_ttm_revenue": 107092845634.86703,
+      "industry_ebitda_margin": 0.266
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_ebitda": 82244409861.78697,
+      "total_ttm_revenue": 251892014106.0929,
+      "industry_ebitda_margin": 0.3265
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_ebitda": 82244409861.78697,
+      "total_ttm_revenue": 251892014106.0929,
+      "industry_ebitda_margin": 0.3265
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_ebitda": 82244409861.78697,
+      "total_ttm_revenue": 251892014106.0929,
+      "industry_ebitda_margin": 0.3265
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_ebitda": 83426850381.50421,
+      "total_ttm_revenue": 236512088217.78384,
+      "industry_ebitda_margin": 0.3527
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_ebitda": 83426850381.50421,
+      "total_ttm_revenue": 236512088217.78384,
+      "industry_ebitda_margin": 0.3527
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_ebitda": 83426850381.50421,
+      "total_ttm_revenue": 236512088217.78384,
+      "industry_ebitda_margin": 0.3527
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_ebitda": 85976325808.66635,
+      "total_ttm_revenue": 245462986240.3685,
+      "industry_ebitda_margin": 0.3503
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_ebitda": 85976325808.66635,
+      "total_ttm_revenue": 245462986240.3685,
+      "industry_ebitda_margin": 0.3503
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_ebitda": 85976325808.66635,
+      "total_ttm_revenue": 245462986240.3685,
+      "industry_ebitda_margin": 0.3503
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_ebitda": 82717496400.94032,
+      "total_ttm_revenue": 231689320333.96686,
+      "industry_ebitda_margin": 0.357
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_ebitda": 82717496400.94032,
+      "total_ttm_revenue": 231689320333.96686,
+      "industry_ebitda_margin": 0.357
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_ebitda": 82717496400.94032,
+      "total_ttm_revenue": 231689320333.96686,
+      "industry_ebitda_margin": 0.357
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_ebitda": 80240616371.115,
+      "total_ttm_revenue": 219093929799.29395,
+      "industry_ebitda_margin": 0.3662
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_ebitda": 80240616371.115,
+      "total_ttm_revenue": 219093929799.29395,
+      "industry_ebitda_margin": 0.3662
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_ebitda": 80240616371.115,
+      "total_ttm_revenue": 219093929799.29395,
+      "industry_ebitda_margin": 0.3662
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_ebitda": 313959650532.73486,
+      "total_ttm_revenue": 787963567320.1827,
+      "industry_ebitda_margin": 0.3984
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_ebitda": 313957001363.83795,
+      "total_ttm_revenue": 787963577057.6149,
+      "industry_ebitda_margin": 0.3984
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_ebitda": 313957001363.83795,
+      "total_ttm_revenue": 787963577057.6149,
+      "industry_ebitda_margin": 0.3984
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_ebitda": 312162515462.75836,
+      "total_ttm_revenue": 782619016935.9615,
+      "industry_ebitda_margin": 0.3989
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_ebitda": 312162439658.4774,
+      "total_ttm_revenue": 782619016827.3113,
+      "industry_ebitda_margin": 0.3989
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_ebitda": 312162439658.4774,
+      "total_ttm_revenue": 782619016827.3113,
+      "industry_ebitda_margin": 0.3989
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_ebitda": 333091935236.4641,
+      "total_ttm_revenue": 807427969812.8875,
+      "industry_ebitda_margin": 0.4125
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_ebitda": 333091653804.36475,
+      "total_ttm_revenue": 807427970161.8702,
+      "industry_ebitda_margin": 0.4125
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_ebitda": 333091653804.36475,
+      "total_ttm_revenue": 807427970161.8702,
+      "industry_ebitda_margin": 0.4125
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_ebitda": 553787243276.7194,
+      "total_ttm_revenue": 927161078971.091,
+      "industry_ebitda_margin": 0.5973
+    }
+  ],
+  "net_margin": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 11188235000.0,
+      "total_ttm_revenue": 59584809000.0,
+      "industry_net_margin": 0.1878
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 11188235000.0,
+      "total_ttm_revenue": 59584809000.0,
+      "industry_net_margin": 0.1878
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 11188235000.0,
+      "total_ttm_revenue": 59584809000.0,
+      "industry_net_margin": 0.1878
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 11113324000.0,
+      "total_ttm_revenue": 57434790000.0,
+      "industry_net_margin": 0.1935
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 11113324000.0,
+      "total_ttm_revenue": 57434790000.0,
+      "industry_net_margin": 0.1935
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 11113324000.0,
+      "total_ttm_revenue": 57434790000.0,
+      "industry_net_margin": 0.1935
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 12791529000.0,
+      "total_ttm_revenue": 59091124000.0,
+      "industry_net_margin": 0.2165
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 12791529000.0,
+      "total_ttm_revenue": 59091124000.0,
+      "industry_net_margin": 0.2165
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 12791529000.0,
+      "total_ttm_revenue": 59091124000.0,
+      "industry_net_margin": 0.2165
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 23632390211.903755,
+      "total_ttm_revenue": 155729211634.86703,
+      "industry_net_margin": 0.1518
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 23632390211.903755,
+      "total_ttm_revenue": 155729211634.86703,
+      "industry_net_margin": 0.1518
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 23641324036.903755,
+      "total_ttm_revenue": 155749576575.86703,
+      "industry_net_margin": 0.1518
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 53425538794.72558,
+      "total_ttm_revenue": 406714759076.0929,
+      "industry_net_margin": 0.1314
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 53425538794.72558,
+      "total_ttm_revenue": 406714759076.0929,
+      "industry_net_margin": 0.1314
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 53432362491.72558,
+      "total_ttm_revenue": 406722604197.0929,
+      "industry_net_margin": 0.1314
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 54479726112.73934,
+      "total_ttm_revenue": 396036455752.7838,
+      "industry_net_margin": 0.1376
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 54479726112.73934,
+      "total_ttm_revenue": 396036455752.7838,
+      "industry_net_margin": 0.1376
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 54485147800.73934,
+      "total_ttm_revenue": 396042252159.7838,
+      "industry_net_margin": 0.1376
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 45046452077.62851,
+      "total_ttm_revenue": 401070446280.3685,
+      "industry_net_margin": 0.1123
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 45046452077.62851,
+      "total_ttm_revenue": 401070446280.3685,
+      "industry_net_margin": 0.1123
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 45059342638.62851,
+      "total_ttm_revenue": 401083373723.3685,
+      "industry_net_margin": 0.1123
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 57672042147.29619,
+      "total_ttm_revenue": 403547140772.96686,
+      "industry_net_margin": 0.1429
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 57672042147.29619,
+      "total_ttm_revenue": 403547140772.96686,
+      "industry_net_margin": 0.1429
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 57666058633.29619,
+      "total_ttm_revenue": 403542311289.96686,
+      "industry_net_margin": 0.1429
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 51471807009.07305,
+      "total_ttm_revenue": 394382079420.29395,
+      "industry_net_margin": 0.1305
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 51471807009.07305,
+      "total_ttm_revenue": 394382079420.29395,
+      "industry_net_margin": 0.1305
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 51500604653.07305,
+      "total_ttm_revenue": 394389036454.29395,
+      "industry_net_margin": 0.1306
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 78013785094.97652,
+      "total_ttm_revenue": 1020595259322.1827,
+      "industry_net_margin": 0.0764
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 78011128453.38521,
+      "total_ttm_revenue": 1020595269059.6149,
+      "industry_net_margin": 0.0764
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 78011095949.38521,
+      "total_ttm_revenue": 1020594820545.6149,
+      "industry_net_margin": 0.0764
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 83541326947.45651,
+      "total_ttm_revenue": 1018861056902.9615,
+      "industry_net_margin": 0.082
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 83541251442.56332,
+      "total_ttm_revenue": 1018861056794.3113,
+      "industry_net_margin": 0.082
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 83544416484.56332,
+      "total_ttm_revenue": 1018864556490.3113,
+      "industry_net_margin": 0.082
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 88731718625.71347,
+      "total_ttm_revenue": 1053434723028.8875,
+      "industry_net_margin": 0.0842
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 88731430801.84518,
+      "total_ttm_revenue": 1053434723377.8702,
+      "industry_net_margin": 0.0842
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 88768711861.84518,
+      "total_ttm_revenue": 1053432528754.8702,
+      "industry_net_margin": 0.0843
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Asset Management",
+      "total_ttm_net_income": 126713088373.34383,
+      "total_ttm_revenue": 1228979954340.0908,
+      "industry_net_margin": 0.1031
+    }
+  ],
+  "asset_turnover": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roa": 0.0454,
+      "industry_net_margin": 0.1878,
+      "industry_asset_turnover": 0.24
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roa": 0.0454,
+      "industry_net_margin": 0.1878,
+      "industry_asset_turnover": 0.24
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roa": 0.0454,
+      "industry_net_margin": 0.1878,
+      "industry_asset_turnover": 0.24
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roa": 0.0655,
+      "industry_net_margin": 0.1935,
+      "industry_asset_turnover": 0.34
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roa": 0.0655,
+      "industry_net_margin": 0.1935,
+      "industry_asset_turnover": 0.34
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roa": 0.0655,
+      "industry_net_margin": 0.1935,
+      "industry_asset_turnover": 0.34
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roa": 0.0396,
+      "industry_net_margin": 0.2165,
+      "industry_asset_turnover": 0.18
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roa": 0.0396,
+      "industry_net_margin": 0.2165,
+      "industry_asset_turnover": 0.18
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roa": 0.0396,
+      "industry_net_margin": 0.2165,
+      "industry_asset_turnover": 0.18
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roa": 0.025,
+      "industry_net_margin": 0.1518,
+      "industry_asset_turnover": 0.16
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roa": 0.025,
+      "industry_net_margin": 0.1518,
+      "industry_asset_turnover": 0.16
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roa": 0.0249,
+      "industry_net_margin": 0.1518,
+      "industry_asset_turnover": 0.16
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roa": 0.0115,
+      "industry_net_margin": 0.1314,
+      "industry_asset_turnover": 0.09
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roa": 0.0115,
+      "industry_net_margin": 0.1314,
+      "industry_asset_turnover": 0.09
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roa": 0.0115,
+      "industry_net_margin": 0.1314,
+      "industry_asset_turnover": 0.09
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roa": 0.0118,
+      "industry_net_margin": 0.1376,
+      "industry_asset_turnover": 0.09
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roa": 0.0118,
+      "industry_net_margin": 0.1376,
+      "industry_asset_turnover": 0.09
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roa": 0.0118,
+      "industry_net_margin": 0.1376,
+      "industry_asset_turnover": 0.09
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roa": 0.0093,
+      "industry_net_margin": 0.1123,
+      "industry_asset_turnover": 0.08
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roa": 0.0093,
+      "industry_net_margin": 0.1123,
+      "industry_asset_turnover": 0.08
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roa": 0.0093,
+      "industry_net_margin": 0.1123,
+      "industry_asset_turnover": 0.08
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roa": 0.0117,
+      "industry_net_margin": 0.1429,
+      "industry_asset_turnover": 0.08
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roa": 0.0117,
+      "industry_net_margin": 0.1429,
+      "industry_asset_turnover": 0.08
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roa": 0.0117,
+      "industry_net_margin": 0.1429,
+      "industry_asset_turnover": 0.08
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roa": 0.0103,
+      "industry_net_margin": 0.1305,
+      "industry_asset_turnover": 0.08
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roa": 0.0103,
+      "industry_net_margin": 0.1305,
+      "industry_asset_turnover": 0.08
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roa": 0.0103,
+      "industry_net_margin": 0.1306,
+      "industry_asset_turnover": 0.08
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roa": 0.0086,
+      "industry_net_margin": 0.0764,
+      "industry_asset_turnover": 0.11
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roa": 0.0086,
+      "industry_net_margin": 0.0764,
+      "industry_asset_turnover": 0.11
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roa": 0.0086,
+      "industry_net_margin": 0.0764,
+      "industry_asset_turnover": 0.11
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roa": 0.0091,
+      "industry_net_margin": 0.082,
+      "industry_asset_turnover": 0.11
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roa": 0.0091,
+      "industry_net_margin": 0.082,
+      "industry_asset_turnover": 0.11
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roa": 0.0091,
+      "industry_net_margin": 0.082,
+      "industry_asset_turnover": 0.11
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roa": 0.0095,
+      "industry_net_margin": 0.0842,
+      "industry_asset_turnover": 0.11
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roa": 0.0095,
+      "industry_net_margin": 0.0842,
+      "industry_asset_turnover": 0.11
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roa": 0.0095,
+      "industry_net_margin": 0.0843,
+      "industry_asset_turnover": 0.11
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Asset Management",
+      "industry_roa": 0.0134,
+      "industry_net_margin": 0.1031,
+      "industry_asset_turnover": 0.13
+    }
+  ]
+}

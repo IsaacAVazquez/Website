@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "MA",
+    "name": "Mr. Craig E. Vosburg",
+    "title": "Chief Services Officer",
+    "age": 58,
+    "born": 1967,
+    "pay": 2694403,
+    "exercised": 22477560,
+    "unexercised": 9816097,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "MA",
+    "name": "Mr. Devin  Corr",
+    "title": "Executive Vice President of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "MA",
+    "name": "Mr. Edward Grunde McLaughlin",
+    "title": "President & CTO of Mastercard Technology",
+    "age": 59,
+    "born": 1966,
+    "pay": 2064752,
+    "exercised": 5250432,
+    "unexercised": 19592664,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "MA",
+    "name": "Mr. Michael  Miebach",
+    "title": "CEO, President & Director",
+    "age": 57,
+    "born": 1968,
+    "pay": 9761053,
+    "exercised": 11598079,
+    "unexercised": 30919096,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "MA",
+    "name": "Mr. Richard R. Verma Ph.D.",
+    "title": "Chief Administrative Officer",
+    "age": 52,
+    "born": 1973,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "MA",
+    "name": "Mr. Sachin  Mehra",
+    "title": "Chief Financial Officer",
+    "age": 54,
+    "born": 1971,
+    "pay": 3326275,
+    "exercised": 11080211,
+    "unexercised": 7023571,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "MA",
+    "name": "Mr. Timothy Henry Murphy J.D.",
+    "title": "Vice Chair",
+    "age": 57,
+    "born": 1968,
+    "pay": 2399628,
+    "exercised": 2311073,
+    "unexercised": 6858552,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "MA",
+    "name": "Ms. Linda Pistecchia Kirkpatrick",
+    "title": "President of the Americas",
+    "age": 48,
+    "born": 1977,
+    "pay": 2297718,
+    "exercised": 0,
+    "unexercised": 7960118,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "MA",
+    "name": "Ms. Sandra A. Arkell",
+    "title": "Corporate Controller & Principal Accounting Officer",
+    "age": 57,
+    "born": 1968,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "MA",
+    "name": "Ms. Tiffany M. Hall",
+    "title": "General Counsel",
+    "age": 46,
+    "born": 1979,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  }
+]

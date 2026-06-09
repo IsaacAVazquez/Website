@@ -18,6 +18,7 @@ jobs:
     timeout-minutes: 30
     permissions:
       contents: write
+      issues: write
 
     steps:
       - name: Checkout repository
@@ -38,6 +39,61 @@ jobs:
         run: npm run update:fantasy
         env:
           NODE_ENV: production
+
+      # Quality gate: a partial scrape (e.g. FantasyPros throttling some
+      # positions) can produce a snapshot with mostly empty boards and slip
+      # past `git diff` because the file does change. Refuse to commit unless
+      # every scoring format has a healthy overall board AND every individual
+      # position board (QB/RB/WR/TE/K/DST) clears a conservative floor. The
+      # floors sit well below normal counts so they only trip on a genuinely
+      # degraded or empty board, not on routine week-to-week churn.
+      - name: Verify fantasy snapshot quality
+        id: verify_quality
+        run: |
+          node -e "
+          const fs = require('fs');
+          const path = require('path');
+
+          const MIN_OVERALL = 100;
+          const MIN_POSITION = { QB: 20, RB: 40, WR: 40, TE: 20, K: 10, DST: 10 };
+          const DATA_DIR = path.join('public', 'data', 'fantasy');
+          const formats = ['ppr', 'half_ppr', 'standard'];
+          const failures = [];
+
+          for (const format of formats) {
+            const filePath = path.join(DATA_DIR, format + '.json');
+            try {
+              const snapshot = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+              const overallCount = Array.isArray(snapshot.overall) ? snapshot.overall.length : 0;
+              const positions = snapshot.positions || {};
+              const counts = Object.keys(MIN_POSITION)
+                .map((pos) => pos + '=' + ((positions[pos] || []).length))
+                .join(' ');
+              console.log(format + ': overall=' + overallCount + ' ' + counts);
+
+              if (overallCount < MIN_OVERALL) {
+                failures.push(format + ' overall has ' + overallCount + ' players (need >= ' + MIN_OVERALL + ')');
+              }
+              for (const [pos, min] of Object.entries(MIN_POSITION)) {
+                const count = Array.isArray(positions[pos]) ? positions[pos].length : 0;
+                if (count < min) {
+                  failures.push(format + ' ' + pos + ' board has ' + count + ' players (need >= ' + min + ')');
+                }
+              }
+            } catch (err) {
+              failures.push(format + ' failed to parse: ' + err.message);
+            }
+          }
+
+          if (failures.length > 0) {
+            console.error('::error::Fantasy snapshot quality gate failed:');
+            for (const failure of failures) {
+              console.error('::error::  - ' + failure);
+            }
+            process.exit(1);
+          }
+          console.log('All scoring formats cleared the overall and per-position floors. Quality gate passed.');
+          "
 
       - name: Check for snapshot changes
         id: check_changes
@@ -66,7 +122,7 @@ jobs:
             public/data/fantasy/ppr.json \
             public/data/fantasy/half_ppr.json \
             public/data/fantasy/standard.json
-          git commit -m "chore: update fantasy football snapshots [automated]"
+          git commit -m "chore: update fantasy football snapshots [automated] [skip ci]"
           # Retry on push rejection — main can move during the multi-minute
           # snapshot refresh. Rebase the single snapshot commit onto the
           # latest origin/main and try again. Bail on a real conflict.
@@ -106,3 +162,77 @@ jobs:
           echo "- public/data/fantasy/ppr.json" >> "$GITHUB_STEP_SUMMARY"
           echo "- public/data/fantasy/half_ppr.json" >> "$GITHUB_STEP_SUMMARY"
           echo "- public/data/fantasy/standard.json" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Notify on failure via GitHub issue
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const today = new Date().toISOString().slice(0, 10);
+            const title = `Fantasy refresh failed ${today}`;
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const body = [
+              `The **Refresh Fantasy Football Snapshots** workflow failed on ${today}.`,
+              ``,
+              `**Run:** ${runUrl}`,
+              `**Commit:** ${context.sha}`,
+              `**Trigger:** ${context.eventName}`,
+              ``,
+              `Check the run logs to diagnose. Common causes:`,
+              `- FantasyPros HTML structure changed (\`var ecrData\` extraction failed)`,
+              `- Sustained 429s exceeded retry budget`,
+              `- Quality gate caught a degraded snapshot (thin overall board or an empty/short position board)`,
+              ``,
+              `This issue will be updated if the next run also fails, and auto-closed on the first successful run.`
+            ].join('\n');
+            const existing = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'fantasy-refresh-failure',
+              per_page: 5,
+            });
+            if (existing.data.length > 0) {
+              const issue = existing.data[0];
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: `Failed again on ${today}. Run: ${runUrl}`,
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body,
+                labels: ['fantasy-refresh-failure', 'automation'],
+              });
+            }
+
+      - name: Close resolved failure issues
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const existing = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'fantasy-refresh-failure',
+              per_page: 10,
+            });
+            for (const issue of existing.data) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: `Refresh succeeded at ${new Date().toISOString()}. Auto-closing.`,
+              });
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                state: 'closed',
+              });
+            }

@@ -5,7 +5,6 @@ import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowLeft,
   ArrowRight,
-  Bookmark,
   CalendarRange,
   ChartPie,
   Landmark,
@@ -15,7 +14,6 @@ import {
   ReceiptText,
   Sparkles,
   Trash2,
-  Wallet,
 } from "lucide-react";
 import { getReducedMotionVariants, fadeInVariants } from "@/components/investments/animations";
 import {
@@ -25,6 +23,7 @@ import {
   isBudgetMonthKey,
 } from "@/lib/budgetPlanner";
 import { useBudgetPlanner } from "@/hooks/useBudgetPlanner";
+import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
 
 interface ExpenseDraft {
   categoryId: string;
@@ -108,7 +107,7 @@ export function BudgetPlannerClient() {
   const [newCategoryName, setNewCategoryName] = useState("");
   const [editingExpenseId, setEditingExpenseId] = useState<string | null>(null);
   const [expenseDraft, setExpenseDraft] = useState<ExpenseDraft>(() =>
-    createEmptyExpenseDraft(activeMonthKey)
+    createEmptyExpenseDraft(activeMonthKey, activeMonth.categories[0]?.id ?? "")
   );
   const shouldReduceMotion = useReducedMotion();
   const motionVariants = shouldReduceMotion
@@ -142,6 +141,45 @@ export function BudgetPlannerClient() {
     [summary.categorySummaries]
   );
 
+  const largestCategory = topCategories[0] ?? null;
+
+  const budgetStatsCells: HomeStatsCell[] = [
+    {
+      label: "Income",
+      value: formatCurrency(totalIncome),
+    },
+    {
+      label: "Spent",
+      value: formatCurrency(totalExpenses),
+    },
+    {
+      label: "Remaining",
+      value: formatSignedCurrency(remaining),
+      tone: remaining > 0 ? "good" : "default",
+    },
+    {
+      label: "Savings target",
+      value: formatCurrency(activeMonth.savingsTarget),
+    },
+    {
+      label: "Percent spent",
+      value: `${percentSpent}%`,
+    },
+    {
+      label: "Categories",
+      value: activeMonth.categories.length.toLocaleString(),
+    },
+    {
+      label: "Largest category",
+      value: largestCategory ? largestCategory.name || "Untitled" : "—",
+      sub: largestCategory ? formatCurrency(largestCategory.spent) : "No spend yet",
+    },
+    {
+      label: "Active month",
+      value: monthLabel,
+    },
+  ];
+
   function handleMonthChange(nextMonthKey: string) {
     if (!isBudgetMonthKey(nextMonthKey)) return;
     setEditingExpenseId(null);
@@ -167,7 +205,7 @@ export function BudgetPlannerClient() {
 
   function handleExpenseSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!expenseDraft.categoryId) return;
+    if (!resolvedExpenseCategoryId) return;
 
     const payload = {
       categoryId: resolvedExpenseCategoryId,
@@ -207,46 +245,37 @@ export function BudgetPlannerClient() {
   const numericInput = `${fieldInput} [font-variant-numeric:tabular-nums]`;
 
   return (
-    <div className="mx-auto w-full max-w-[1280px] px-4 pb-14 pt-8 sm:px-6 sm:pb-16 sm:pt-10 lg:px-8">
-      <motion.div
-        variants={motionVariants}
-        initial="hidden"
-        animate="visible"
-        className="tool-page-stack"
-        data-testid="budget-planner-shell"
-      >
-        <div className="tool-shell">
-          <aside className="tool-sidebar" aria-label="Budget planner navigation">
-            <div className="tool-brand">
-              <div className="tool-brand-mark" aria-hidden="true">
-                <Wallet className="h-4 w-4" />
-              </div>
-              <div className="tool-brand-name">
-                Budget Planner
-                <small>Monthly</small>
-              </div>
-            </div>
+    <section
+      className="home-page min-h-screen"
+      aria-label="Budget Planner"
+      data-testid="budget-planner-shell"
+    >
+      <div className="home-shell home-section">
+        <motion.div
+          variants={motionVariants}
+          initial="hidden"
+          animate="visible"
+          className="flex flex-col gap-6"
+        >
+          {/* In-page section nav (replaces sidebar) */}
+          <nav className="flex flex-wrap gap-2" aria-label="Section navigation">
+            {NAV_ITEMS.map((item) => {
+              const Icon = item.icon;
+              return (
+                <a
+                  key={item.id}
+                  href={item.href}
+                  className="inline-flex min-h-touch items-center gap-2 rounded-full border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-4 py-1.5 text-sm font-semibold text-[var(--home-ink-muted)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                  style={{ fontFamily: "var(--font-home-sans)" }}
+                >
+                  <Icon size={16} aria-hidden="true" />
+                  <span>{item.label}</span>
+                </a>
+              );
+            })}
+          </nav>
 
-            <nav className="flex flex-col gap-1.5" aria-label="Section navigation">
-              {NAV_ITEMS.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <a key={item.id} href={item.href} className="tool-nav-link">
-                    <Icon size={18} aria-hidden="true" />
-                    <span>{item.label}</span>
-                  </a>
-                );
-              })}
-            </nav>
-
-            <div className="tool-sidebar-footer">
-              <Bookmark size={14} aria-hidden="true" />
-              <span>Saved in your browser</span>
-            </div>
-          </aside>
-
-          <main className="tool-main">
-            <div className="tool-topbar">
+          <div className="tool-topbar">
               <div className="min-w-0">
                 <p className="tool-crumbs">
                   Budget Planner / <strong>{monthLabel}</strong>
@@ -302,49 +331,23 @@ export function BudgetPlannerClient() {
               <span className="tool-meta-chip-meta">{percentSpent}% of budget</span>
             </div>
 
-            <div className="mt-5 flex flex-col gap-5">
-              {/* Hero summary card */}
-              <section
-                id="section-summary"
-                className="tool-card tool-card-hero scroll-mt-28"
-                aria-label="Budget summary"
-              >
-                <div className="flex flex-wrap items-end justify-between gap-4">
-                  <div>
-                    <p className="tool-section-kicker">{monthLabel}</p>
-                    <p className="mt-1 text-[12px] text-[var(--home-ink-muted)]">
-                      Income vs. spend, at a glance.
-                    </p>
-                  </div>
-                  <p
-                    className={`text-[12px] font-semibold uppercase tracking-[0.14em] ${
-                      summary.remainingToBudget < 0
-                        ? "text-[var(--color-error)]"
-                        : "text-[var(--home-ink-muted)]"
-                    }`}
-                  >
-                    {formatSignedCurrency(summary.remainingToBudget)} left to budget
-                  </p>
-                </div>
-
-                <div className="mt-5 grid gap-4 sm:grid-cols-3">
-                  <div>
-                    <p className="tool-stat-label">Income</p>
-                    <p className="tool-stat-val">{formatCurrency(totalIncome)}</p>
-                  </div>
-                  <div>
-                    <p className="tool-stat-label">Spent</p>
-                    <p className="tool-stat-val">{formatCurrency(totalExpenses)}</p>
-                  </div>
-                  <div>
-                    <p className="tool-stat-label">Remaining</p>
-                    <p className={`tool-stat-val ${getBalanceTone(remaining)}`}>
-                      {formatSignedCurrency(remaining)}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="mt-5">
+            <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,320px)]">
+              <div className="flex flex-col gap-5">
+              <div id="section-summary" className="scroll-mt-28">
+                <HomeStatsPanel
+                  id="budget-planner-stats"
+                  title="Budget at a glance"
+                  meta={`${formatSignedCurrency(summary.remainingToBudget)} left to budget`}
+                  hideLiveDot
+                  cells={budgetStatsCells}
+                  pills={[
+                    { label: "Income", href: "#section-income" },
+                    { label: "Categories", href: "#section-categories" },
+                    { label: "Expenses", href: "#section-expenses" },
+                    { label: "Summary", href: "#section-summary" },
+                  ]}
+                />
+                <div className="mt-3">
                   <div className="mb-2 flex items-center justify-between text-[10.5px] font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                     <span>Spend progress</span>
                     <span className="[font-variant-numeric:tabular-nums]">{percentSpent}%</span>
@@ -362,7 +365,7 @@ export function BudgetPlannerClient() {
                     />
                   </div>
                 </div>
-              </section>
+              </div>
 
               {/* Income + Savings target */}
               <section
@@ -481,7 +484,7 @@ export function BudgetPlannerClient() {
                         {empty ? (
                           <span
                             id={`category-${category.id}-error`}
-                            className="text-[11px] text-[var(--color-error)]"
+                            className="text-2xs text-[var(--color-error)]"
                           >
                             Name a category. Empty fields fall back to "Untitled".
                           </span>
@@ -519,7 +522,7 @@ export function BudgetPlannerClient() {
                         {hasLinkedExpenses ? (
                           <p
                             id={`category-${category.id}-delete-help`}
-                            className="text-[11px] text-[var(--home-ink-muted)]"
+                            className="text-2xs text-[var(--home-ink-muted)]"
                           >
                             Remove linked expenses before deleting this category.
                           </p>
@@ -584,7 +587,7 @@ export function BudgetPlannerClient() {
                             <p className="truncate text-[13.5px] font-semibold text-[var(--home-ink)]">
                               {expense.note || expense.categoryName}
                             </p>
-                            <p className="mt-0.5 text-[11px] uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                            <p className="mt-0.5 text-2xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                               <span>{expense.categoryName}</span>
                               <span aria-hidden="true"> · </span>
                               <span title={expense.date}>{formatExpenseDate(expense.date)}</span>
@@ -623,9 +626,11 @@ export function BudgetPlannerClient() {
                 )}
               </section>
             </div>
-          </main>
 
-          <aside className="tool-rail" aria-label="Budget tools">
+          <aside
+            aria-label="Budget tools"
+            className="flex flex-col gap-4 rounded-[1.5rem] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_74%,var(--home-elev-mix))] p-5 shadow-[var(--shadow-sm)] lg:sticky lg:top-24 lg:self-start lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto"
+          >
             <section aria-labelledby="rail-add-expense">
               <p className="tool-rail-label" id="rail-add-expense">
                 <Plus size={12} aria-hidden="true" />
@@ -782,6 +787,7 @@ export function BudgetPlannerClient() {
           </aside>
         </div>
       </motion.div>
-    </div>
+      </div>
+    </section>
   );
 }

@@ -257,6 +257,7 @@ export function useInvestments(): UseInvestmentsReturn {
   useEffect(() => {
     isMounted.current = true;
     const initial = loadHoldings();
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- One-shot mount-time hydration from localStorage; must be in effect (not lazy init) because localStorage is unsafe during SSR and reads multiple coordinated keys
     setHoldings(initial);
     setSnapshots(loadSnapshots());
     const cached = loadCachedQuotes();

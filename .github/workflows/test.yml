@@ -2,7 +2,7 @@ name: Tests
 
 on:
   push:
-    branches: [main, develop, claude/**]
+    branches: [main, develop]
   pull_request:
     branches: [main, develop]
 
@@ -221,4 +221,3 @@ jobs:
 
       - name: Run ESLint
         run: npm run lint
-        continue-on-error: true

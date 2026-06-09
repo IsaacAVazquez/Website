@@ -1,3 +1,7 @@
+jest.mock("../investments-client", () => ({
+  InvestmentsClient: () => null,
+}));
+
 import { metadata } from "../page";
 
 describe("Investments metadata", () => {

@@ -8,13 +8,12 @@ import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { NbaClient } from "./nba-client";
 import { normalizeNbaState } from "./nba-state";
 
-// eslint-disable-next-line react-refresh/only-export-components -- Next.js route modules export metadata alongside the page component.
 export const metadata = constructMetadata({
   title: "NBA Pulse",
   description:
     "Interactive NBA dashboard with conference standings, playoff seeding, play-in race context, and snapshot leaderboards for points, rebounds, and assists.",
   canonicalUrl: "/nba",
-  dateModified: "2026-04-28",
+  dateModified: nbaSnapshot.updatedAt,
   aiMetadata: {
     profession: "Product Manager",
     specialty: "Interactive dashboards, sports data products, and productized exploratory tools",

@@ -5,7 +5,6 @@ import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { NflClient } from "./nfl-client";
 import { normalizeNflState } from "./nfl-state";
 
-// eslint-disable-next-line react-refresh/only-export-components -- Next.js route modules export metadata alongside the page component.
 export const metadata = constructMetadata({
   title: "NFL Pulse",
   description:

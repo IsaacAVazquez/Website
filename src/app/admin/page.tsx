@@ -35,6 +35,7 @@ export default function AdminPage() {
           return `Authentication error: ${error}`;
       }
     })();
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- One-shot mount-time read of URL search params; safe to surface auth error after first paint
     setLoginForm(prev => ({ ...prev, error: errorMessage }));
     window.history.replaceState({}, document.title, window.location.pathname);
   }, []);
@@ -68,22 +69,22 @@ export default function AdminPage() {
 
   if (!session) {
     return (
-      <div className="min-h-screen bg-[#FFFCF7] dark:bg-gradient-to-br dark:from-[#1C1410] dark:via-[#2D1B12] dark:to-[#1C1410] flex items-center justify-center p-4">
+      <div className="home-page min-h-screen flex items-center justify-center p-4">
         <div className="w-full max-w-md">
           <WarmCard hover={false} padding="xl">
             <div className="text-center mb-8">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#FF6B35]/10 dark:bg-[#FF8E53]/20 mb-4">
-                <IconLock className="w-8 h-8 text-[#FF6B35] dark:text-[#FF8E53]" />
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[color-mix(in_srgb,var(--home-haze)_14%,transparent)] mb-4">
+                <IconLock className="w-8 h-8 text-[var(--home-haze)]" />
               </div>
-              <h2 className="text-2xl font-bold text-[#FF6B35] dark:text-[#FF8E53] mb-2">
+              <h1 className="text-2xl font-bold text-[var(--home-haze)] mb-2">
                 Admin Access
-              </h2>
-              <p className="text-[#6B4F3D] dark:text-[#D4A88E]">Portfolio Dashboard</p>
+              </h1>
+              <p className="text-[var(--home-ink-muted)]">Portfolio Dashboard</p>
             </div>
 
             <form onSubmit={handleLogin} className="space-y-6">
               <div>
-                <label htmlFor="username" className="block text-sm font-medium text-[#4A3426] dark:text-[#D4A88E] mb-2">
+                <label htmlFor="username" className="block text-sm font-medium text-[var(--home-ink)] mb-2">
                   Username
                 </label>
                 <input
@@ -91,14 +92,14 @@ export default function AdminPage() {
                   type="text"
                   value={loginForm.username}
                   onChange={e => setLoginForm(prev => ({ ...prev, username: e.target.value }))}
-                  className="w-full px-4 py-3 bg-white dark:bg-[#2D1B12] border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30 rounded-lg text-[#4A3426] dark:text-[#FFE4D6] placeholder-[#6B4F3D] dark:placeholder-[#D4A88E] focus:outline-none focus:border-[#FF6B35] dark:focus:border-[#FF8E53] focus:ring-2 focus:ring-[#FF6B35]/20 transition-colors"
+                  className="w-full px-4 py-3 bg-[var(--home-paper)] border-2 border-[var(--home-rule)] rounded-lg text-[var(--home-ink)] placeholder-[var(--home-ink-muted)] focus:outline-none focus:border-[var(--home-haze)] focus:ring-2 focus:ring-[color-mix(in_srgb,var(--home-haze)_24%,transparent)] transition-colors"
                   placeholder="Enter username"
                   required
                 />
               </div>
 
               <div>
-                <label htmlFor="password" className="block text-sm font-medium text-[#4A3426] dark:text-[#D4A88E] mb-2">
+                <label htmlFor="password" className="block text-sm font-medium text-[var(--home-ink)] mb-2">
                   Password
                 </label>
                 <input
@@ -106,7 +107,7 @@ export default function AdminPage() {
                   type="password"
                   value={loginForm.password}
                   onChange={e => setLoginForm(prev => ({ ...prev, password: e.target.value }))}
-                  className="w-full px-4 py-3 bg-white dark:bg-[#2D1B12] border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30 rounded-lg text-[#4A3426] dark:text-[#FFE4D6] placeholder-[#6B4F3D] dark:placeholder-[#D4A88E] focus:outline-none focus:border-[#FF6B35] dark:focus:border-[#FF8E53] focus:ring-2 focus:ring-[#FF6B35]/20 transition-colors"
+                  className="w-full px-4 py-3 bg-[var(--home-paper)] border-2 border-[var(--home-rule)] rounded-lg text-[var(--home-ink)] placeholder-[var(--home-ink-muted)] focus:outline-none focus:border-[var(--home-haze)] focus:ring-2 focus:ring-[color-mix(in_srgb,var(--home-haze)_24%,transparent)] transition-colors"
                   placeholder="Enter password"
                   required
                 />

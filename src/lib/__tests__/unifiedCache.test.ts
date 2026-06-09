@@ -251,7 +251,7 @@ describe('UnifiedCache', () => {
 
   describe('setPlayers / getPlayers', () => {
     it('stores and retrieves player data', () => {
-      const players = [{ id: 'p1', name: 'Josh Allen' } as any];
+      const players = [{ id: 'p1', name: 'Josh Allen' } as unknown as import('@/types').Player];
       unifiedCache.setPlayers('QB', 'PPR', players, 'test');
       const result = unifiedCache.getPlayers('QB', 'PPR');
       expect(result).toEqual(players);

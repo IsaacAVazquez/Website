@@ -5,7 +5,6 @@ import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { GitHubTrendingClient } from "./github-trending-client";
 import { normalizeGitHubTrendingState } from "./github-trending-state";
 
-// eslint-disable-next-line react-refresh/only-export-components -- Next.js route modules export metadata alongside the page component.
 export const metadata = constructMetadata({
   title: "GitHub Trending Pulse",
   description:

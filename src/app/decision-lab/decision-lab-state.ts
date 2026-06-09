@@ -31,7 +31,7 @@ function readParam(input: SearchParamInput, key: keyof DecisionLabState): string
     return input.get(key);
   }
 
-  const rawValue = input[key];
+  const rawValue = (input as Record<string, string | string[] | undefined | null>)[key];
   if (Array.isArray(rawValue)) {
     return rawValue[0] ?? null;
   }

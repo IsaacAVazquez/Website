@@ -117,7 +117,6 @@ export function ResearchSection({
 
   const handleVisibleTabKeyDown = useTablistKeyboard(
     visibleTabs,
-    (t) => t.key,
     (t) => onTabChange(t.key),
   );
 

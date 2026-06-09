@@ -6,6 +6,7 @@ import { SearchResults } from "./SearchResults";
 import { SearchFilters } from "./SearchFilters";
 import { IconSearch, IconX, IconFilter } from "@tabler/icons-react";
 import { useDebounce } from "@/hooks/useDebounce";
+import { logger } from "@/lib/logger";
 
 export interface SearchInterfaceProps {
   initialQuery?: string;
@@ -54,15 +55,6 @@ function readSeededSearchState(fallbacks: Pick<SearchState, "query" | "type" | "
   };
 }
 
-const kickerStyle = {
-  fontFamily: "var(--font-home-sans)",
-  color: "var(--home-ink-muted)",
-  fontWeight: 600,
-  fontSize: "0.72rem",
-  textTransform: "uppercase" as const,
-  letterSpacing: "0.12em",
-};
-
 const sectionTitleStyle = {
   fontFamily: "var(--font-home-sans)",
   color: "var(--home-ink)",
@@ -110,6 +102,7 @@ export function SearchInterface({
       category: initialCategory,
     });
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Sync local search state when URL-derived seeded state changes; identity check prevents redundant updates
     setSearchState((prev) => {
       if (
         prev.query === nextSeededState.query &&
@@ -178,7 +171,7 @@ export function SearchInterface({
         searchTime
       }));
     } catch (error) {
-      console.error('Search failed:', error);
+      logger.error('Search failed', error);
       setSearchState(prev => ({
         ...prev,
         results: [],
@@ -197,6 +190,7 @@ export function SearchInterface({
       searchState.type !== initialType ||
       searchState.category !== initialCategory
     ) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- Run a debounced search and URL sync when filters change; performSearch internally updates loading/results state
       performSearch(effectiveQuery, searchState.type, searchState.category);
       updateURL(effectiveQuery, searchState.type, searchState.category);
     }
@@ -221,6 +215,7 @@ export function SearchInterface({
     }
 
     if (initialQuery) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- Initial search when URL provides a query; performSearch updates results/loading state
       performSearch(initialQuery, initialType, initialCategory);
       return;
     }

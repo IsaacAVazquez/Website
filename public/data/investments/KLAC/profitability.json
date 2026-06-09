@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "KLAC",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 741375000.0,
+      "beginning_stockholders_equity": 2919753000.0,
+      "ending_stockholders_equity": 2990217000.0,
+      "avg_equity": 2954985000.0,
+      "roe": 0.2509
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 582534000.0,
+      "beginning_stockholders_equity": 2990217000.0,
+      "ending_stockholders_equity": 3043711000.0,
+      "avg_equity": 3016964000.0,
+      "roe": 0.1931
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 601541000.0,
+      "beginning_stockholders_equity": 3043711000.0,
+      "ending_stockholders_equity": 3094885000.0,
+      "avg_equity": 3069298000.0,
+      "roe": 0.196
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 836446000.0,
+      "beginning_stockholders_equity": 3094885000.0,
+      "ending_stockholders_equity": 3368328000.0,
+      "avg_equity": 3231606500.0,
+      "roe": 0.2588
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 945851000.0,
+      "beginning_stockholders_equity": 3368328000.0,
+      "ending_stockholders_equity": 3559714000.0,
+      "avg_equity": 3464021000.0,
+      "roe": 0.2731
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 824527000.0,
+      "beginning_stockholders_equity": 3559714000.0,
+      "ending_stockholders_equity": 3584549000.0,
+      "avg_equity": 3572131500.0,
+      "roe": 0.2308
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1088416000.0,
+      "beginning_stockholders_equity": 3584549000.0,
+      "ending_stockholders_equity": 4004739000.0,
+      "avg_equity": 3794644000.0,
+      "roe": 0.2868
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1202849000.0,
+      "beginning_stockholders_equity": 4004739000.0,
+      "ending_stockholders_equity": 4692453000.0,
+      "avg_equity": 4348596000.0,
+      "roe": 0.2766
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1121040000.0,
+      "beginning_stockholders_equity": 4692453000.0,
+      "ending_stockholders_equity": 4985071000.0,
+      "avg_equity": 4838762000.0,
+      "roe": 0.2317
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1145682000.0,
+      "beginning_stockholders_equity": 4985071000.0,
+      "ending_stockholders_equity": 5465731000.0,
+      "avg_equity": 5225401000.0,
+      "roe": 0.2193
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1200990000.0,
+      "beginning_stockholders_equity": 5465731000.0,
+      "ending_stockholders_equity": 5830495000.0,
+      "avg_equity": 5648113000.0,
+      "roe": 0.2126
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "KLAC",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 741375000.0,
+      "beginning_total_assets": 14072357000.0,
+      "ending_total_assets": 14136841000.0,
+      "avg_assets": 14104599000.0,
+      "roa": 0.0526
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 582534000.0,
+      "beginning_total_assets": 14136841000.0,
+      "ending_total_assets": 14280501000.0,
+      "avg_assets": 14208671000.0,
+      "roa": 0.041
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 601541000.0,
+      "beginning_total_assets": 14280501000.0,
+      "ending_total_assets": 14957289000.0,
+      "avg_assets": 14618895000.0,
+      "roa": 0.0411
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 836446000.0,
+      "beginning_total_assets": 14957289000.0,
+      "ending_total_assets": 15433566000.0,
+      "avg_assets": 15195427500.0,
+      "roa": 0.055
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 945851000.0,
+      "beginning_total_assets": 15433566000.0,
+      "ending_total_assets": 15681737000.0,
+      "avg_assets": 15557651500.0,
+      "roa": 0.0608
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 824527000.0,
+      "beginning_total_assets": 15681737000.0,
+      "ending_total_assets": 15001696000.0,
+      "avg_assets": 15341716500.0,
+      "roa": 0.0537
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1088416000.0,
+      "beginning_total_assets": 15001696000.0,
+      "ending_total_assets": 15188307000.0,
+      "avg_assets": 15095001500.0,
+      "roa": 0.0721
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1202849000.0,
+      "beginning_total_assets": 15188307000.0,
+      "ending_total_assets": 16067926000.0,
+      "avg_assets": 15628116500.0,
+      "roa": 0.077
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1121040000.0,
+      "beginning_total_assets": 16067926000.0,
+      "ending_total_assets": 16317974000.0,
+      "avg_assets": 16192950000.0,
+      "roa": 0.0692
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1145682000.0,
+      "beginning_total_assets": 16317974000.0,
+      "ending_total_assets": 16720228000.0,
+      "avg_assets": 16519101000.0,
+      "roa": 0.0694
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1200990000.0,
+      "beginning_total_assets": 16720228000.0,
+      "ending_total_assets": 16873515000.0,
+      "avg_assets": 16796871500.0,
+      "roa": 0.0715
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "KLAC",
+      "report_date": "2023-09-30",
+      "ebit": 925945000.0,
+      "tax_rate_for_calcs": 0.13,
+      "nopat": 805572150.0,
+      "beginning_invested_capital": 8810489000.0,
+      "ending_invested_capital": 8881948000.0,
+      "avg_invested_capital": 8846218500.0,
+      "roic": 0.0911
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2023-12-31",
+      "ebit": 765472000.0,
+      "tax_rate_for_calcs": 0.16,
+      "nopat": 642996480.0,
+      "beginning_invested_capital": 8881948000.0,
+      "ending_invested_capital": 8936437000.0,
+      "avg_invested_capital": 8909192500.0,
+      "roic": 0.0722
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-03-31",
+      "ebit": 781989000.0,
+      "tax_rate_for_calcs": 0.14,
+      "nopat": 672510540.0,
+      "beginning_invested_capital": 8936437000.0,
+      "ending_invested_capital": 9723799000.0,
+      "avg_invested_capital": 9330118000.0,
+      "roic": 0.0721
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-06-30",
+      "ebit": 1027879000.0,
+      "tax_rate_for_calcs": 0.11,
+      "nopat": 914812310.0,
+      "beginning_invested_capital": 9723799000.0,
+      "ending_invested_capital": 9998463000.0,
+      "avg_invested_capital": 9861131000.0,
+      "roic": 0.0928
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-09-30",
+      "ebit": 1160858000.0,
+      "tax_rate_for_calcs": 0.12,
+      "nopat": 1021555040.0,
+      "beginning_invested_capital": 9998463000.0,
+      "ending_invested_capital": 10191070000.0,
+      "avg_invested_capital": 10094766500.0,
+      "roic": 0.1012
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-12-31",
+      "ebit": 1047510000.0,
+      "tax_rate_for_calcs": 0.15,
+      "nopat": 890383500.0,
+      "beginning_invested_capital": 10191070000.0,
+      "ending_invested_capital": 9466936000.0,
+      "avg_invested_capital": 9829003000.0,
+      "roic": 0.0906
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-03-31",
+      "ebit": 1336322000.0,
+      "tax_rate_for_calcs": 0.14,
+      "nopat": 1149236920.0,
+      "beginning_invested_capital": 9466936000.0,
+      "ending_invested_capital": 9888061000.0,
+      "avg_invested_capital": 9677498500.0,
+      "roic": 0.1188
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-06-30",
+      "ebit": 1401924000.0,
+      "tax_rate_for_calcs": 0.09,
+      "nopat": 1275750840.0,
+      "beginning_invested_capital": 9888061000.0,
+      "ending_invested_capital": 10576710000.0,
+      "avg_invested_capital": 10232385500.0,
+      "roic": 0.1247
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-09-30",
+      "ebit": 1380551000.0,
+      "tax_rate_for_calcs": 0.14,
+      "nopat": 1187273860.0,
+      "beginning_invested_capital": 10576710000.0,
+      "ending_invested_capital": 10870264000.0,
+      "avg_invested_capital": 10723487000.0,
+      "roic": 0.1107
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-12-31",
+      "ebit": 1399971000.0,
+      "tax_rate_for_calcs": 0.14,
+      "nopat": 1203975060.0,
+      "beginning_invested_capital": 10870264000.0,
+      "ending_invested_capital": 11351859000.0,
+      "avg_invested_capital": 11111061500.0,
+      "roic": 0.1084
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2026-03-31",
+      "ebit": 1487184000.0,
+      "tax_rate_for_calcs": 0.15,
+      "nopat": 1264106400.0,
+      "beginning_invested_capital": 11351859000.0,
+      "ending_invested_capital": 11717558000.0,
+      "avg_invested_capital": 11534708500.0,
+      "roic": 0.1096
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "KLAC",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.2509,
+      "roa": 0.0526,
+      "equity_multiplier": 4.77
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.1931,
+      "roa": 0.041,
+      "equity_multiplier": 4.71
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.196,
+      "roa": 0.0411,
+      "equity_multiplier": 4.77
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.2588,
+      "roa": 0.055,
+      "equity_multiplier": 4.71
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.2731,
+      "roa": 0.0608,
+      "equity_multiplier": 4.49
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.2308,
+      "roa": 0.0537,
+      "equity_multiplier": 4.3
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.2868,
+      "roa": 0.0721,
+      "equity_multiplier": 3.98
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.2766,
+      "roa": 0.077,
+      "equity_multiplier": 3.59
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.2317,
+      "roa": 0.0692,
+      "equity_multiplier": 3.35
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.2193,
+      "roa": 0.0694,
+      "equity_multiplier": 3.16
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.2126,
+      "roa": 0.0715,
+      "equity_multiplier": 2.97
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "KLAC",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0526,
+      "net_margin": 0.3093,
+      "asset_turnover": 0.17
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.041,
+      "net_margin": 0.2343,
+      "asset_turnover": 0.17
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0411,
+      "net_margin": 0.2549,
+      "asset_turnover": 0.16
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.055,
+      "net_margin": 0.3256,
+      "asset_turnover": 0.17
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0608,
+      "net_margin": 0.3329,
+      "asset_turnover": 0.18
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0537,
+      "net_margin": 0.268,
+      "asset_turnover": 0.2
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0721,
+      "net_margin": 0.3553,
+      "asset_turnover": 0.2
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.077,
+      "net_margin": 0.0989,
+      "asset_turnover": 0.78
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0692,
+      "net_margin": 0.3493,
+      "asset_turnover": 0.2
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0694,
+      "net_margin": 0.3475,
+      "asset_turnover": 0.2
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0715,
+      "net_margin": 0.0917,
+      "asset_turnover": 0.78
+    }
+  ]
+}

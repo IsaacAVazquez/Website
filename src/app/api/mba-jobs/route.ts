@@ -5,16 +5,23 @@ import type {
   MBACompany,
   MBAJob,
   MBAJobsApiResponse,
+  MBAJobsSourceStatus,
 } from "@/types/mba-jobs";
 import { MBA_COMPANIES } from "@/constants/mba-companies";
 import { matchMBAJobRole } from "@/lib/mba-job-matching";
 
 const TIMEOUT_MS = 8_000;
 const MAX_SNIPPET_LENGTH = 220;
-type PollableMBACompany = MBACompany & { atsType: Exclude<MBAATSType, "manual"> };
+const DIRECT_HTML_DETAIL_CONCURRENCY = 6;
+const SMARTRECRUITERS_DETAIL_CONCURRENCY = 6;
+const ADZUNA_RESULTS_PER_PAGE = 25;
+type PollableMBACompany = MBACompany & {
+  atsType: Exclude<MBAATSType, "manual" | "external-api">;
+};
 type GreenhouseMBACompany = MBACompany & { atsType: "greenhouse" };
 type LeverMBACompany = MBACompany & { atsType: "lever" };
 type AshbyMBACompany = MBACompany & { atsType: "ashby" };
+type SmartRecruitersMBACompany = MBACompany & { atsType: "smartrecruiters" };
 type DirectHtmlMBACompany = MBACompany & { atsType: "direct-html" };
 
 // ---------------------------------------------------------------------------
@@ -117,6 +124,27 @@ async function fetchText(url: string): Promise<string> {
   } finally {
     clearTimeout(timer);
   }
+}
+
+async function mapWithConcurrency<T, R>(
+  items: T[],
+  limit: number,
+  mapper: (item: T, index: number) => Promise<R>
+): Promise<R[]> {
+  const results: R[] = new Array(items.length);
+  let nextIndex = 0;
+
+  async function worker() {
+    while (nextIndex < items.length) {
+      const currentIndex = nextIndex;
+      nextIndex += 1;
+      results[currentIndex] = await mapper(items[currentIndex], currentIndex);
+    }
+  }
+
+  const workerCount = Math.min(limit, items.length);
+  await Promise.all(Array.from({ length: workerCount }, () => worker()));
+  return results;
 }
 
 function buildMBAJob(
@@ -227,99 +255,177 @@ interface AshbyJobPosting {
   id: string;
   title: string;
   updatedAt?: string | null;
+  publishedAt?: string | null;
   publishedDate?: string | null;
+  department?: string | null;
   departmentName?: string | null;
+  team?: string | null;
   teamName?: string | null;
+  location?: string | null;
   locationName?: string | null;
   workplaceType?: string | null;
   employmentType?: string | null;
+  jobUrl?: string | null;
+  descriptionHtml?: string | null;
+  descriptionPlain?: string | null;
   isListed?: boolean;
 }
 
-interface AshbyAppData {
-  jobBoard?: {
-    jobPostings?: AshbyJobPosting[];
-  };
+interface AshbyPostingApiResponse {
+  jobs?: AshbyJobPosting[];
 }
 
-function extractJsonObject(source: string, marker: string): string | null {
-  const start = source.indexOf(marker);
-  if (start === -1) return null;
-
-  const objectStart = source.indexOf("{", start + marker.length);
-  if (objectStart === -1) return null;
-
-  let depth = 0;
-  let inString = false;
-  let isEscaped = false;
-
-  for (let index = objectStart; index < source.length; index += 1) {
-    const char = source[index];
-
-    if (inString) {
-      if (isEscaped) {
-        isEscaped = false;
-      } else if (char === "\\") {
-        isEscaped = true;
-      } else if (char === "\"") {
-        inString = false;
-      }
-      continue;
-    }
-
-    if (char === "\"") {
-      inString = true;
-      continue;
-    }
-
-    if (char === "{") {
-      depth += 1;
-      continue;
-    }
-
-    if (char === "}") {
-      depth -= 1;
-      if (depth === 0) {
-        return source.slice(objectStart, index + 1);
-      }
-    }
-  }
-
-  return null;
+function getAshbyJobText(value?: string | null): string | null {
+  if (!value) return null;
+  return normalizeJobSnippet(value);
 }
 
 async function fetchAshby(company: AshbyMBACompany): Promise<MBAJob[]> {
-  const html = await fetchText(`https://jobs.ashbyhq.com/${company.sourceKey}`);
-  const rawAppData = extractJsonObject(html, "window.__appData = ");
-  if (!rawAppData) {
-    throw new Error("Ashby payload missing app data");
-  }
-
-  const data = JSON.parse(rawAppData) as AshbyAppData;
-  const postings = data.jobBoard?.jobPostings ?? [];
+  const data = await fetchJson<AshbyPostingApiResponse>(
+    `https://api.ashbyhq.com/posting-api/job-board/${company.sourceKey}?includeCompensation=true`
+  );
+  const postings = data.jobs ?? [];
 
   return postings
     .filter((job) => job.isListed !== false)
     .flatMap((job) => {
+      const department = job.team ?? job.teamName ?? job.department ?? job.departmentName;
+      const location = job.location ?? job.locationName ?? job.workplaceType;
+      const snippet =
+        getAshbyJobText(job.descriptionPlain) ?? getAshbyJobText(job.descriptionHtml);
       const match = matchMBAJobRole({
         title: job.title,
-        department: [job.teamName, job.departmentName].filter(Boolean).join(" "),
-        location: job.locationName ?? job.workplaceType,
+        department,
+        location,
+        snippet,
         employmentType: job.employmentType,
       });
       if (!match) return [];
       return buildMBAJob(company, {
         id: `${company.id}-${job.id}`,
         title: job.title.trim(),
-        location: job.locationName ?? job.workplaceType ?? "Remote",
-        department: job.teamName ?? job.departmentName ?? "General",
-        applyUrl: `https://jobs.ashbyhq.com/${company.sourceKey}/${job.id}`,
-        postedAt: job.updatedAt ?? job.publishedDate ?? new Date().toISOString(),
-        snippet: null,
+        location: location ?? "Remote",
+        department: department ?? "General",
+        applyUrl: job.jobUrl ?? `https://jobs.ashbyhq.com/${company.sourceKey}/${job.id}`,
+        postedAt:
+          job.updatedAt ?? job.publishedAt ?? job.publishedDate ?? new Date().toISOString(),
+        snippet,
         roleType: match.roleType,
         roleFamilies: match.roleFamilies,
       });
     });
+}
+
+// ---------------------------------------------------------------------------
+// SmartRecruiters
+// ---------------------------------------------------------------------------
+
+interface SmartRecruitersPosting {
+  id: string;
+  name: string;
+  releasedDate?: string | null;
+  location?: {
+    city?: string | null;
+    region?: string | null;
+    country?: string | null;
+    remote?: boolean | null;
+  } | null;
+  department?: { label?: string | null } | null;
+  function?: { label?: string | null } | null;
+  typeOfEmployment?: { label?: string | null } | null;
+  ref?: string | null;
+}
+
+interface SmartRecruitersListResponse {
+  content?: SmartRecruitersPosting[];
+}
+
+interface SmartRecruitersPostingDetail extends SmartRecruitersPosting {
+  applyUrl?: string | null;
+  jobAd?: {
+    sections?: Record<string, { text?: string | null } | undefined>;
+  } | null;
+}
+
+function formatSmartRecruitersLocation(
+  location: SmartRecruitersPosting["location"]
+): string {
+  if (!location) return "Remote";
+  const parts = [location.city, location.region, location.country]
+    .filter((part): part is string => !!part?.trim())
+    .map((part) => part.trim());
+  if (location.remote) {
+    return parts.length > 0 ? `${parts.join(", ")} / Remote` : "Remote";
+  }
+  return parts.length > 0 ? parts.join(", ") : "Remote";
+}
+
+function getSmartRecruitersSnippet(detail: SmartRecruitersPostingDetail): string | null {
+  const sections = detail.jobAd?.sections;
+  if (!sections) return null;
+  const raw = [
+    sections.jobDescription?.text,
+    sections.qualifications?.text,
+    sections.additionalInformation?.text,
+  ]
+    .filter(Boolean)
+    .join(" ");
+  return raw ? normalizeJobSnippet(raw) : null;
+}
+
+async function fetchSmartRecruiters(
+  company: SmartRecruitersMBACompany
+): Promise<MBAJob[]> {
+  const listUrl = new URL(
+    `https://api.smartrecruiters.com/v1/companies/${company.sourceKey}/postings`
+  );
+  listUrl.searchParams.set("limit", "100");
+  const data = await fetchJson<SmartRecruitersListResponse>(listUrl.toString());
+  const postings = data.content ?? [];
+
+  const matchedSeeds = postings.flatMap((job) => {
+    const department = job.department?.label ?? job.function?.label ?? "General";
+    const location = formatSmartRecruitersLocation(job.location);
+    const match = matchMBAJobRole({
+      title: job.name,
+      department,
+      location,
+      employmentType: job.typeOfEmployment?.label,
+    });
+    if (!match) return [];
+    return [{ job, department, location, match }];
+  });
+
+  const results = await mapWithConcurrency(
+    matchedSeeds,
+    SMARTRECRUITERS_DETAIL_CONCURRENCY,
+    async ({ job, department, location, match }) => {
+      let detail: SmartRecruitersPostingDetail | null;
+      try {
+        detail = await fetchJson<SmartRecruitersPostingDetail>(
+          `https://api.smartrecruiters.com/v1/companies/${company.sourceKey}/postings/${job.id}`
+        );
+      } catch {
+        detail = null;
+      }
+
+      return buildMBAJob(company, {
+        id: `${company.id}-${job.id}`,
+        title: job.name.trim(),
+        location: detail ? formatSmartRecruitersLocation(detail.location) : location,
+        department: detail?.department?.label ?? detail?.function?.label ?? department,
+        applyUrl:
+          detail?.applyUrl ??
+          `https://jobs.smartrecruiters.com/${company.sourceKey}/${job.id}`,
+        postedAt: detail?.releasedDate ?? job.releasedDate ?? new Date().toISOString(),
+        snippet: detail ? getSmartRecruitersSnippet(detail) : null,
+        roleType: match.roleType,
+        roleFamilies: match.roleFamilies,
+      });
+    }
+  );
+
+  return results;
 }
 
 // ---------------------------------------------------------------------------
@@ -338,6 +444,7 @@ interface DirectHtmlJobSeed {
 }
 
 interface DirectHtmlJobDetail {
+  title?: string;
   location?: string;
   department?: string;
   applyUrl?: string;
@@ -360,6 +467,67 @@ function parseNextData<T>(html: string): T {
   }
 
   return JSON.parse(raw) as T;
+}
+
+function normalizeAbsoluteUrl(href: string, baseUrl: string): string | null {
+  try {
+    return new URL(href, baseUrl).toString();
+  } catch {
+    return null;
+  }
+}
+
+function getCompactElementText(value: string): string {
+  return decodeHtmlEntities(value)
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function parseAnchorJobs(
+  html: string,
+  options: {
+    baseUrl: string;
+    linkMatcher: (href: string) => boolean;
+    fallbackDepartment?: string;
+  }
+): DirectHtmlJobSeed[] {
+  const $ = load(html);
+  const seen = new Set<string>();
+  const jobs: DirectHtmlJobSeed[] = [];
+
+  $("a[href]").each((_, element) => {
+    const rawHref = $(element).attr("href") ?? "";
+    const applyUrl = normalizeAbsoluteUrl(rawHref, options.baseUrl);
+    if (!applyUrl || !options.linkMatcher(applyUrl) || seen.has(applyUrl)) return;
+
+    const container = $(element).closest("article, li, [data-testid], [class*=job], [class*=role], div");
+    const text = getCompactElementText(container.text() || $(element).text());
+    const linkText = getCompactElementText($(element).text());
+    const title = [linkText, text]
+      .map((candidate) =>
+        candidate
+          .replace(/\b(see role|view role|apply|learn more|read more)\b/gi, " ")
+          .replace(/\s+/g, " ")
+          .trim()
+      )
+      .find((candidate) => candidate.length >= 4 && candidate.length <= 120);
+
+    if (!title) return;
+    seen.add(applyUrl);
+
+    jobs.push({
+      id: applyUrl,
+      title,
+      location: "See role",
+      department: options.fallbackDepartment ?? "General",
+      applyUrl,
+      detailUrl: applyUrl,
+      postedAt: "",
+      snippet: text ? truncatePlainText(text, MAX_SNIPPET_LENGTH) : null,
+    });
+  });
+
+  return jobs;
 }
 
 interface MiroOpenPositionsPageData {
@@ -387,6 +555,59 @@ interface MiroVacancyPageData {
 }
 
 const DIRECT_HTML_PARSERS: Record<string, DirectHtmlParser> = {
+  plaid: {
+    jobsUrl: "https://plaid.com/careers/",
+    parseList(html) {
+      return parseAnchorJobs(html, {
+        baseUrl: "https://plaid.com/careers/",
+        fallbackDepartment: "General",
+        linkMatcher: (href) =>
+          href.includes("plaid.com/careers") &&
+          !href.endsWith("/careers/") &&
+          !href.includes("#"),
+      });
+    },
+    parseDetail(html, seed) {
+      const $ = load(html);
+      const title = getCompactElementText($("h1").first().text()) || seed.title;
+      const body = getCompactElementText($("main").text() || $("body").text());
+      return {
+        department: seed.department,
+        location: seed.location,
+        snippet: body ? truncatePlainText(body, MAX_SNIPPET_LENGTH) : seed.snippet,
+        applyUrl: seed.applyUrl,
+        postedAt: seed.postedAt,
+        ...(title ? { title } : {}),
+      };
+    },
+  },
+  coinbase: {
+    jobsUrl: "https://www.coinbase.com/careers/positions",
+    parseList(html) {
+      return parseAnchorJobs(html, {
+        baseUrl: "https://www.coinbase.com/careers/positions",
+        fallbackDepartment: "General",
+        linkMatcher: (href) =>
+          href.includes("coinbase.com") &&
+          href.includes("/careers/positions") &&
+          !href.endsWith("/careers/positions") &&
+          !href.includes("#"),
+      });
+    },
+    parseDetail(html, seed) {
+      const $ = load(html);
+      const title = getCompactElementText($("h1").first().text()) || seed.title;
+      const body = getCompactElementText($("main").text() || $("body").text());
+      return {
+        department: seed.department,
+        location: seed.location,
+        snippet: body ? truncatePlainText(body, MAX_SNIPPET_LENGTH) : seed.snippet,
+        applyUrl: seed.applyUrl,
+        postedAt: seed.postedAt,
+        ...(title ? { title } : {}),
+      };
+    },
+  },
   miro: {
     jobsUrl: "https://us.miro.com/careers/open-positions/",
     parseList(html) {
@@ -429,8 +650,10 @@ async function fetchDirectHtml(company: DirectHtmlMBACompany): Promise<MBAJob[]>
   const html = await fetchText(company.jobsUrl ?? parser.jobsUrl);
   const seeds = parser.parseList(html);
 
-  const results = await Promise.all(
-    seeds.map(async (seed) => {
+  const results = await mapWithConcurrency(
+    seeds,
+    DIRECT_HTML_DETAIL_CONCURRENCY,
+    async (seed) => {
       let detail: DirectHtmlJobDetail = {};
       if (parser.parseDetail && seed.detailUrl) {
         try {
@@ -441,7 +664,7 @@ async function fetchDirectHtml(company: DirectHtmlMBACompany): Promise<MBAJob[]>
         }
       }
 
-      const title = seed.title.trim();
+      const title = detail.title?.trim() || seed.title.trim();
       const location = detail.location?.trim() || seed.location;
       const department = detail.department?.trim() || seed.department;
       const snippet = detail.snippet ?? seed.snippet ?? null;
@@ -467,7 +690,7 @@ async function fetchDirectHtml(company: DirectHtmlMBACompany): Promise<MBAJob[]>
         roleType: match.roleType,
         roleFamilies: match.roleFamilies,
       });
-    })
+    }
   );
 
   return results.filter((job): job is MBAJob => job !== null);
@@ -477,28 +700,219 @@ const PROVIDER_FETCHERS = {
   greenhouse: fetchGreenhouse,
   lever: fetchLever,
   ashby: fetchAshby,
+  smartrecruiters: fetchSmartRecruiters,
   "direct-html": fetchDirectHtml,
 } as const;
 
 // ---------------------------------------------------------------------------
-// Handler
+// Optional external leads
 // ---------------------------------------------------------------------------
 
-export async function GET(request: NextRequest) {
-  const param = request.nextUrl.searchParams.get("companies");
-  const requestedIds = param
-    ? param
-        .split(",")
-        .map((s) => s.trim())
-        .filter(Boolean)
-    : MBA_COMPANIES.filter((c) => c.atsType !== "manual").map((c) => c.id);
+interface AdzunaJob {
+  id: string | number;
+  title?: string;
+  description?: string;
+  redirect_url?: string;
+  created?: string;
+  company?: { display_name?: string | null } | null;
+  location?: { display_name?: string | null } | null;
+  category?: { label?: string | null } | null;
+  contract_type?: string | null;
+  contract_time?: string | null;
+}
 
-  const targets = MBA_COMPANIES.filter(
-    (c): c is PollableMBACompany =>
-      c.atsType !== "manual" && requestedIds.includes(c.id)
-  );
+interface AdzunaResponse {
+  results?: AdzunaJob[];
+}
 
+interface ExternalFetchResult {
+  jobs: MBAJob[];
+  status: MBAJobsSourceStatus;
+}
+
+function normalizeDedupeText(value: string): string {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function normalizeJobUrlForDedupe(value: string): string {
+  try {
+    const url = new URL(value);
+    url.hash = "";
+    for (const key of Array.from(url.searchParams.keys())) {
+      if (/^(utm_|gh_src|source|ref)/i.test(key)) {
+        url.searchParams.delete(key);
+      }
+    }
+    return url.toString().replace(/\/+$/, "").toLowerCase();
+  } catch {
+    return value.trim().replace(/\/+$/, "").toLowerCase();
+  }
+}
+
+function getJobDedupeKey(job: MBAJob): string {
+  const urlKey = normalizeJobUrlForDedupe(job.applyUrl);
+  if (urlKey) return `url:${urlKey}`;
+  return `title:${normalizeDedupeText(job.companyName)}:${normalizeDedupeText(job.title)}`;
+}
+
+function dedupeJobs(jobs: MBAJob[]): MBAJob[] {
+  const seen = new Set<string>();
+  return jobs.filter((job) => {
+    const key = getJobDedupeKey(job);
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+function getKnownCompanyForName(companyName: string): MBACompany | undefined {
+  const normalized = normalizeDedupeText(companyName);
+  return MBA_COMPANIES.find((company) => normalizeDedupeText(company.name) === normalized);
+}
+
+async function fetchAdzunaExternalLeads(): Promise<ExternalFetchResult> {
+  const appId = process.env.ADZUNA_APP_ID?.trim();
+  const appKey = process.env.ADZUNA_APP_KEY?.trim();
+  const country = process.env.ADZUNA_COUNTRY?.trim().toLowerCase() || "us";
+  const sourceStatusBase = {
+    companyId: "external-adzuna",
+    companyName: "Adzuna leads",
+    atsType: "external-api" as const,
+  };
+
+  if (!appId || !appKey) {
+    return {
+      jobs: [],
+      status: {
+        ...sourceStatusBase,
+        status: "external-disabled",
+        jobCount: 0,
+        message: "Set ADZUNA_APP_ID and ADZUNA_APP_KEY to enable external leads.",
+      },
+    };
+  }
+
+  try {
+    const url = new URL(
+      `https://api.adzuna.com/v1/api/jobs/${country}/search/1`
+    );
+    url.searchParams.set("app_id", appId);
+    url.searchParams.set("app_key", appKey);
+    url.searchParams.set("results_per_page", String(ADZUNA_RESULTS_PER_PAGE));
+    url.searchParams.set(
+      "what",
+      "MBA intern product marketing strategy operations finance growth"
+    );
+    url.searchParams.set("content-type", "application/json");
+
+    const data = await fetchJson<AdzunaResponse>(url.toString());
+    const jobs = (data.results ?? []).flatMap((job) => {
+      const title = job.title?.trim();
+      const companyName = job.company?.display_name?.trim() || "External company";
+      const applyUrl = job.redirect_url?.trim();
+      if (!title || !applyUrl) return [];
+
+      const snippet = job.description ? normalizeJobSnippet(job.description) : null;
+      const match = matchMBAJobRole({
+        title,
+        department: job.category?.label,
+        location: job.location?.display_name,
+        snippet,
+        employmentType: [job.contract_type, job.contract_time].filter(Boolean).join(" "),
+      });
+      if (!match) return [];
+
+      const knownCompany = getKnownCompanyForName(companyName);
+      return [
+        {
+          id: `adzuna-${job.id}`,
+          companyId: knownCompany?.id ?? `external-adzuna-${job.id}`,
+          companyName,
+          title,
+          location: job.location?.display_name ?? "See posting",
+          department: job.category?.label ?? "External lead",
+          applyUrl,
+          postedAt: job.created ?? new Date().toISOString(),
+          atsType: "external-api" as const,
+          category: knownCompany?.category ?? "startup",
+          snippet,
+          roleType: match.roleType,
+          roleFamilies: match.roleFamilies,
+          sourceName: "Adzuna",
+          sourceUrl: applyUrl,
+        },
+      ];
+    });
+
+    return {
+      jobs,
+      status: {
+        ...sourceStatusBase,
+        status: "ok",
+        jobCount: jobs.length,
+      },
+    };
+  } catch (error) {
+    return {
+      jobs: [],
+      status: {
+        ...sourceStatusBase,
+        status: "failed",
+        jobCount: 0,
+        message: (error as Error)?.message ?? "External leads failed.",
+      },
+    };
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Single-flight in-memory cache
+// ---------------------------------------------------------------------------
+//
+// This route fans out to ~10 external ATS sources, plus 50+ HTML scrape
+// requests for direct sources like Miro. Without coalescing, simultaneous
+// requests would multiply the upstream load by N. Single-flight caches the
+// in-flight promise per cache key so concurrent callers share the result.
+//
+// Single Netlify instance — no Redis needed.
+
+const SUCCESS_TTL_MS = 30 * 60 * 1000; // 30 minutes
+const ERROR_TTL_MS = 2 * 60 * 1000; // 2 minutes
+const ERROR_CACHE_CONTROL_HEADER = "no-store";
+const SUCCESS_CACHE_CONTROL_HEADER =
+  "public, s-maxage=1800, stale-while-revalidate=3600";
+
+interface JobsFetchResult {
+  body: MBAJobsApiResponse;
+  isError: boolean;
+}
+
+interface JobsCacheEntry {
+  promise: Promise<JobsFetchResult>;
+  completedAt: number | null;
+  value: JobsFetchResult | null;
+}
+
+const jobsCache = new Map<string, JobsCacheEntry>();
+
+function isJobsFresh(entry: JobsCacheEntry, now: number): boolean {
+  if (entry.completedAt === null || entry.value === null) {
+    return true; // in-flight
+  }
+  const ttl = entry.value.isError ? ERROR_TTL_MS : SUCCESS_TTL_MS;
+  return now - entry.completedAt < ttl;
+}
+
+async function fetchAllJobs(
+  targets: PollableMBACompany[],
+  includeExternalLeads: boolean
+): Promise<JobsFetchResult> {
   const errors: MBAJobsApiResponse["errors"] = [];
+  const sourceStatuses: MBAJobsSourceStatus[] = [];
 
   const results = await Promise.allSettled(
     targets.map((company) => {
@@ -511,31 +925,221 @@ export async function GET(request: NextRequest) {
 
   const jobs: MBAJob[] = [];
   results.forEach((r, i) => {
+    const company = targets[i];
     if (r.status === "fulfilled") {
       jobs.push(...r.value);
+      sourceStatuses.push({
+        companyId: company.id,
+        companyName: company.name,
+        atsType: company.atsType,
+        status: "ok",
+        jobCount: r.value.length,
+      });
     } else {
       errors.push({
-        companyId: targets[i].id,
-        companyName: targets[i].name,
+        companyId: company.id,
+        companyName: company.name,
+        message: (r.reason as Error)?.message ?? "unknown error",
+      });
+      sourceStatuses.push({
+        companyId: company.id,
+        companyName: company.name,
+        atsType: company.atsType,
+        status: "failed",
+        jobCount: 0,
         message: (r.reason as Error)?.message ?? "unknown error",
       });
     }
   });
 
-  jobs.sort(
+  if (includeExternalLeads) {
+    const externalResult = await fetchAdzunaExternalLeads();
+    jobs.push(...externalResult.jobs);
+    sourceStatuses.push(externalResult.status);
+  }
+
+  const dedupedJobs = dedupeJobs(jobs);
+
+  dedupedJobs.sort(
     (a, b) => getPostedAtTime(b.postedAt) - getPostedAtTime(a.postedAt)
   );
 
-  const body: MBAJobsApiResponse = {
-    jobs,
-    fetchedAt: new Date().toISOString(),
-    errors,
-    companiesRequested: requestedIds,
+  // If every target failed, treat as an error so the cache TTL is short.
+  const isError = dedupedJobs.length === 0 && errors.length > 0;
+
+  return {
+    body: {
+      jobs: dedupedJobs,
+      fetchedAt: new Date().toISOString(),
+      errors,
+      companiesRequested: targets.map((target) => target.id),
+      sourceStatuses,
+    },
+    isError,
+  };
+}
+
+function getOrFetchJobs(
+  cacheKey: string,
+  targets: PollableMBACompany[],
+  includeExternalLeads: boolean
+): Promise<JobsFetchResult> {
+  const now = Date.now();
+  const existing = jobsCache.get(cacheKey);
+
+  if (existing && isJobsFresh(existing, now)) {
+    return existing.promise;
+  }
+
+  const entry: JobsCacheEntry = {
+    promise: Promise.resolve<JobsFetchResult>({
+      body: {
+        jobs: [],
+        fetchedAt: "",
+        errors: [],
+        companiesRequested: [],
+        sourceStatuses: [],
+      },
+      isError: true,
+    }),
+    completedAt: null,
+    value: null,
   };
 
-  return NextResponse.json(body, {
+  entry.promise = (async () => {
+    try {
+      const result = await fetchAllJobs(targets, includeExternalLeads);
+      entry.value = result;
+      entry.completedAt = Date.now();
+      return result;
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "unknown error";
+      const result: JobsFetchResult = {
+        body: {
+          jobs: [],
+          fetchedAt: new Date().toISOString(),
+          errors: [{ companyId: "", companyName: "", message }],
+          companiesRequested: targets.map((target) => target.id),
+          sourceStatuses: targets.map((target) => ({
+            companyId: target.id,
+            companyName: target.name,
+            atsType: target.atsType,
+            status: "failed",
+            jobCount: 0,
+            message,
+          })),
+        },
+        isError: true,
+      };
+      entry.value = result;
+      entry.completedAt = Date.now();
+      return result;
+    }
+  })();
+
+  jobsCache.set(cacheKey, entry);
+  return entry.promise;
+}
+
+// ---------------------------------------------------------------------------
+// Handler
+// ---------------------------------------------------------------------------
+
+function normalizeRequestedCompanyIds(request: NextRequest): string[] {
+  const params = request.nextUrl.searchParams;
+  if (!params.has("companies")) {
+    return MBA_COMPANIES.filter((c) => c.atsType !== "manual").map((c) => c.id);
+  }
+
+  const rawParam = params.get("companies") ?? "";
+  return Array.from(
+    new Set(
+      rawParam
+        .split(",")
+        .map((id) => id.trim().toLowerCase())
+        .filter(Boolean)
+    )
+  );
+}
+
+function buildSkippedSourceStatuses(requestedIds: string[]): MBAJobsSourceStatus[] {
+  return requestedIds.flatMap((id) => {
+    const company = MBA_COMPANIES.find((candidate) => candidate.id === id);
+    if (!company || company.atsType !== "manual") return [];
+    return [
+      {
+        companyId: company.id,
+        companyName: company.name,
+        atsType: company.atsType,
+        status: "skipped" as const,
+        jobCount: 0,
+        message: "Manual-only company; use the career page fallback.",
+      },
+    ];
+  });
+}
+
+function orderSourceStatuses(
+  requestedIds: string[],
+  sourceStatuses: MBAJobsSourceStatus[]
+): MBAJobsSourceStatus[] {
+  const byCompanyId = new Map(
+    sourceStatuses.map((status) => [status.companyId, status])
+  );
+  const orderedCompanyStatuses = requestedIds
+    .map((id) => byCompanyId.get(id))
+    .filter((status): status is MBAJobsSourceStatus => !!status);
+  const externalStatuses = sourceStatuses.filter((status) =>
+    status.companyId.startsWith("external-")
+  );
+  return [...orderedCompanyStatuses, ...externalStatuses];
+}
+
+export async function GET(request: NextRequest) {
+  const requestedIds = normalizeRequestedCompanyIds(request);
+  const includeExternalLeads = request.nextUrl.searchParams.get("external") === "on";
+
+  const targets = MBA_COMPANIES.filter(
+    (c): c is PollableMBACompany =>
+      c.atsType !== "manual" &&
+      c.atsType !== "external-api" &&
+      requestedIds.includes(c.id)
+  );
+
+  // Stable cache key: sorted validated pollable company ids. Manual-only and
+  // unknown ids do not affect fetched data, so they are added to source health
+  // outside the single-flight cache.
+  const cacheKey = targets
+    .map((target) => target.id)
+    .sort()
+    .concat(includeExternalLeads ? ["external:adzuna"] : [])
+    .join(",") || "__empty__";
+
+  const result = await getOrFetchJobs(cacheKey, targets, includeExternalLeads);
+  const sourceStatuses = orderSourceStatuses(requestedIds, [
+    ...buildSkippedSourceStatuses(requestedIds),
+    ...(result.body.sourceStatuses ?? []),
+  ]);
+
+  return NextResponse.json({
+    ...result.body,
+    companiesRequested: requestedIds,
+    sourceStatuses,
+  }, {
     headers: {
-      "Cache-Control": "public, s-maxage=1800, stale-while-revalidate=3600",
+      "Cache-Control": result.isError
+        ? ERROR_CACHE_CONTROL_HEADER
+        : SUCCESS_CACHE_CONTROL_HEADER,
     },
   });
 }
+
+// Test-only side channel. Next.js route-type checking forbids non-handler
+// exports, so the cache reset is hung off a Symbol on `globalThis` instead.
+// Tests call `(globalThis as any)[Symbol.for(...)]()` between cases to clear
+// the module-level single-flight cache. Do not call this from production.
+(globalThis as Record<symbol, unknown>)[
+  Symbol.for("__mbaJobsCacheResetForTesting")
+] = (): void => {
+  jobsCache.clear();
+};

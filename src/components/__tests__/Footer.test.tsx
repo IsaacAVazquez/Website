@@ -3,7 +3,7 @@ import { act } from "react";
 import { createRoot, type Root } from "react-dom/client";
 import { Footer } from "@/components/Footer";
 
-globalThis.IS_REACT_ACT_ENVIRONMENT = true;
+(globalThis as Record<string, unknown>).IS_REACT_ACT_ENVIRONMENT = true;
 
 describe("Footer", () => {
   let container: HTMLDivElement;
@@ -30,9 +30,16 @@ describe("Footer", () => {
     const links = footer?.querySelectorAll("a");
 
     expect(footer?.getAttribute("data-footer-variant")).toBe("full");
-    expect(heading?.textContent).toBe("Thanks for taking a look.");
-    expect(Array.from(links ?? []).some((link) => link.getAttribute("href") === "/portfolio")).toBe(true);
-    expect(Array.from(links ?? []).some((link) => link.getAttribute("href") === "/contact")).toBe(true);
+    expect(heading?.getAttribute("id")).toBe("home-cta-heading");
+    expect(heading?.textContent).toBe(
+      "Building something that needs judgment and follow-through?",
+    );
+    expect(
+      Array.from(links ?? []).some(
+        (link) => link.getAttribute("href") === "mailto:IsaacVazquez@berkeley.edu",
+      ),
+    ).toBe(true);
+    expect(Array.from(links ?? []).some((link) => link.getAttribute("href") === "/resume")).toBe(true);
   });
 
   it("renders the compact variant without the large CTA block", () => {

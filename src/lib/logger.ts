@@ -8,7 +8,7 @@ type LogLevel = 'info' | 'warn' | 'error' | 'debug';
 interface LogEntry {
   level: LogLevel;
   message: string;
-  data?: any;
+  data?: unknown;
   timestamp: string;
 }
 
@@ -19,7 +19,7 @@ class Logger {
   /**
    * Log info messages (development only)
    */
-  info(message: string, data?: any): void {
+  info(message: string, data?: unknown): void {
     if (this.isDevelopment) {
       console.log(`[INFO] ${message}`, data ? data : '');
     }
@@ -28,7 +28,7 @@ class Logger {
   /**
    * Log warning messages (development only)
    */
-  warn(message: string, data?: any): void {
+  warn(message: string, data?: unknown): void {
     if (this.isDevelopment) {
       console.warn(`[WARN] ${message}`, data ? data : '');
     }
@@ -37,14 +37,14 @@ class Logger {
   /**
    * Log error messages (always logged)
    */
-  error(message: string, error?: any): void {
+  error(message: string, error?: unknown): void {
     console.error(`[ERROR] ${message}`, error ? error : '');
   }
 
   /**
    * Log debug messages (development only)
    */
-  debug(message: string, data?: any): void {
+  debug(message: string, data?: unknown): void {
     if (this.isDevelopment) {
       console.debug(`[DEBUG] ${message}`, data ? data : '');
     }
@@ -62,7 +62,7 @@ class Logger {
   /**
    * Create a structured log entry
    */
-  createLogEntry(level: LogLevel, message: string, data?: any): LogEntry {
+  createLogEntry(level: LogLevel, message: string, data?: unknown): LogEntry {
     return {
       level,
       message,

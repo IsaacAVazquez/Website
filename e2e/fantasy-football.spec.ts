@@ -6,9 +6,9 @@ async function selectPosition(
   label: string,
   position: string
 ) {
-  const tab = shell.getByRole("tab", { name: label });
-  await tab.click();
-  await expect(tab).toHaveAttribute("aria-selected", "true");
+  const option = shell.getByRole("radio", { name: label });
+  await option.click();
+  await expect(option).toHaveAttribute("aria-checked", "true");
   await expect(page).toHaveURL(new RegExp(`position=${position}`));
 }
 
@@ -34,7 +34,7 @@ test.describe("Fantasy football rankings", () => {
     await expect(page).toHaveURL(/position=overall/);
     await expect(page).toHaveURL(/scoring=ppr/);
     await expect(page.getByText("No Data Available")).toHaveCount(0);
-    await expect(shell.getByRole("tab", { name: /RB/i })).toHaveAttribute("aria-disabled", "false");
+    await expect(shell.getByRole("radio", { name: /RB/i })).toBeEnabled();
 
     await selectPosition(page, shell, "RB", "rb");
     await expect(page.getByRole("heading", { name: /RB rankings/i })).toBeVisible();
@@ -48,7 +48,7 @@ test.describe("Fantasy football rankings", () => {
     await expect(page).toHaveURL(/position=te/);
     await expect(page).toHaveURL(/scoring=half_ppr/);
     await expect(page.getByRole("heading", { name: /TE rankings/i })).toBeVisible();
-    await expect(page.getByText(/unavailable/i)).toHaveCount(0);
+    await expect(page.getByText("No Data Available")).toHaveCount(0);
   });
 
   test("keeps normal scoring-position boards available across formats, including K and DST", async ({
@@ -59,7 +59,7 @@ test.describe("Fantasy football rankings", () => {
     const shell = page.locator('[data-testid="fantasy-football-shell"]');
 
     await expect(page.getByRole("heading", { name: /RB rankings/i })).toBeVisible();
-    await expect(page.getByText(/unavailable/i)).toHaveCount(0);
+    await expect(page.getByText("No Data Available")).toHaveCount(0);
 
     await selectScoring(page, shell, "Half PPR", "half_ppr");
     await expect(page.getByRole("heading", { name: /RB rankings/i })).toBeVisible();
@@ -69,11 +69,11 @@ test.describe("Fantasy football rankings", () => {
 
     await selectPosition(page, shell, "K", "k");
     await expect(page.getByRole("heading", { name: /K rankings/i })).toBeVisible();
-    await expect(page.getByText(/unavailable/i)).toHaveCount(0);
+    await expect(page.getByText("No Data Available")).toHaveCount(0);
 
     await selectPosition(page, shell, "DST", "dst");
     await expect(page.getByRole("heading", { name: /DST rankings/i })).toBeVisible();
-    await expect(page.getByText(/unavailable/i)).toHaveCount(0);
+    await expect(page.getByText("No Data Available")).toHaveCount(0);
   });
 
   test("repeated switching uses stable static data without rate-limit failures", async ({ page }) => {
@@ -127,13 +127,13 @@ test.describe("Fantasy football draft tracker", () => {
     await page.getByRole("button", { name: "Log pick" }).first().click();
     await page.getByRole("button", { name: "Log pick" }).first().click();
 
-    await expect(page.getByText("2 picks logged")).toBeVisible();
+    await expect(page.getByText(/2 of \d+ picks logged/i)).toBeVisible();
     await expect(page.getByRole("button", { name: "Log pick" }).first().locator("..")).toContainText(/Tier/i);
 
     await page.reload();
     await page.waitForLoadState("networkidle");
 
-    await expect(page.getByText("2 picks logged")).toBeVisible();
+    await expect(page.getByText(/2 of \d+ picks logged/i)).toBeVisible();
     await expect(page.getByText("No Data Available")).toHaveCount(0);
   });
 });

@@ -8,6 +8,15 @@ import {
   type NewsFeedId,
 } from "@/lib/news-pulse-sources";
 
+// The route exposes its cache reset on globalThis under a well-known Symbol
+// because Next.js route-type checking forbids extra route exports.
+function resetNewsPulseCache(): void {
+  const reset = (globalThis as Record<symbol, unknown>)[
+    Symbol.for("__newsPulseCacheResetForTesting")
+  ];
+  if (typeof reset === "function") (reset as () => void)();
+}
+
 const FEED_URLS = Object.fromEntries(
   NEWS_FEEDS.map((feed) => [feed.id, feed.url]),
 ) as Record<NewsFeedId, string>;
@@ -124,7 +133,7 @@ function buildFeedMap(overrides: Partial<Record<string, string | Error>> = {}) {
   };
 }
 
-function installFetchMock(feedMap: Record<string, string | Error>) {
+function installFetchMock(feedMap: Record<string, string | Error | undefined>) {
   mockFetch.mockImplementation(async (input) => {
     const url =
       typeof input === "string"
@@ -152,6 +161,10 @@ function installFetchMock(feedMap: Record<string, string | Error>) {
 describe("GET /api/news-pulse", () => {
   beforeEach(() => {
     jest.clearAllMocks();
+    // The route uses a module-level single-flight cache. Without resetting
+    // it between tests, the second test's mocked feed map would never be
+    // hit because the first test's cached result would be returned.
+    resetNewsPulseCache();
     Object.defineProperty(global, "fetch", {
       configurable: true,
       value: mockFetch,

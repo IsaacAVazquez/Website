@@ -1,0 +1,363 @@
+{
+  "roe": [
+    {
+      "symbol": "BX",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 551994000.0,
+      "beginning_stockholders_equity": 7219447000.0,
+      "ending_stockholders_equity": 7132823000.0,
+      "avg_equity": 7176135000.0,
+      "roe": 0.0769
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 151800000.0,
+      "beginning_stockholders_equity": 7132823000.0,
+      "ending_stockholders_equity": 6816798000.0,
+      "avg_equity": 6974810500.0,
+      "roe": 0.0218
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 847386000.0,
+      "beginning_stockholders_equity": 6816798000.0,
+      "ending_stockholders_equity": 6955068000.0,
+      "avg_equity": 6885933000.0,
+      "roe": 0.1231
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 444414000.0,
+      "beginning_stockholders_equity": 6955068000.0,
+      "ending_stockholders_equity": 6833573000.0,
+      "avg_equity": 6894320500.0,
+      "roe": 0.0645
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 780835000.0,
+      "beginning_stockholders_equity": 6833573000.0,
+      "ending_stockholders_equity": 7007657000.0,
+      "avg_equity": 6920615000.0,
+      "roe": 0.1128
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 703873000.0,
+      "beginning_stockholders_equity": 7007657000.0,
+      "ending_stockholders_equity": 8212321000.0,
+      "avg_equity": 7609989000.0,
+      "roe": 0.0925
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 614852000.0,
+      "beginning_stockholders_equity": 8212321000.0,
+      "ending_stockholders_equity": 7978120000.0,
+      "avg_equity": 8095220500.0,
+      "roe": 0.076
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 764244000.0,
+      "beginning_stockholders_equity": 7978120000.0,
+      "ending_stockholders_equity": 8352339000.0,
+      "avg_equity": 8165229500.0,
+      "roe": 0.0936
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 624917000.0,
+      "beginning_stockholders_equity": 8352339000.0,
+      "ending_stockholders_equity": 8392523000.0,
+      "avg_equity": 8372431000.0,
+      "roe": 0.0746
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1015201000.0,
+      "beginning_stockholders_equity": 8392523000.0,
+      "ending_stockholders_equity": 8665526000.0,
+      "avg_equity": 8529024500.0,
+      "roe": 0.119
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 649729000.0,
+      "beginning_stockholders_equity": 8665526000.0,
+      "ending_stockholders_equity": 8370770000.0,
+      "avg_equity": 8518148000.0,
+      "roe": 0.0763
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "BX",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 551994000.0,
+      "beginning_total_assets": 41582784000.0,
+      "ending_total_assets": 41663823000.0,
+      "avg_assets": 41623303500.0,
+      "roa": 0.0133
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 151800000.0,
+      "beginning_total_assets": 41663823000.0,
+      "ending_total_assets": 40287530000.0,
+      "avg_assets": 40975676500.0,
+      "roa": 0.0037
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 847386000.0,
+      "beginning_total_assets": 40287530000.0,
+      "ending_total_assets": 39706302000.0,
+      "avg_assets": 39996916000.0,
+      "roa": 0.0212
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 444414000.0,
+      "beginning_total_assets": 39706302000.0,
+      "ending_total_assets": 40585029000.0,
+      "avg_assets": 40145665500.0,
+      "roa": 0.0111
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 780835000.0,
+      "beginning_total_assets": 40585029000.0,
+      "ending_total_assets": 42575442000.0,
+      "avg_assets": 41580235500.0,
+      "roa": 0.0188
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 703873000.0,
+      "beginning_total_assets": 42575442000.0,
+      "ending_total_assets": 43469875000.0,
+      "avg_assets": 43022658500.0,
+      "roa": 0.0164
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 614852000.0,
+      "beginning_total_assets": 43469875000.0,
+      "ending_total_assets": 45255629000.0,
+      "avg_assets": 44362752000.0,
+      "roa": 0.0139
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 764244000.0,
+      "beginning_total_assets": 45255629000.0,
+      "ending_total_assets": 45373094000.0,
+      "avg_assets": 45314361500.0,
+      "roa": 0.0169
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 624917000.0,
+      "beginning_total_assets": 45373094000.0,
+      "ending_total_assets": 46554290000.0,
+      "avg_assets": 45963692000.0,
+      "roa": 0.0136
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1015201000.0,
+      "beginning_total_assets": 46554290000.0,
+      "ending_total_assets": 47708975000.0,
+      "avg_assets": 47131632500.0,
+      "roa": 0.0215
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 649729000.0,
+      "beginning_total_assets": 47708975000.0,
+      "ending_total_assets": 48326982000.0,
+      "avg_assets": 48017978500.0,
+      "roa": 0.0135
+    }
+  ],
+  "roic": [],
+  "equityMultiplier": [
+    {
+      "symbol": "BX",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.0769,
+      "roa": 0.0133,
+      "equity_multiplier": 5.78
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.0218,
+      "roa": 0.0037,
+      "equity_multiplier": 5.89
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.1231,
+      "roa": 0.0212,
+      "equity_multiplier": 5.81
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.0645,
+      "roa": 0.0111,
+      "equity_multiplier": 5.81
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.1128,
+      "roa": 0.0188,
+      "equity_multiplier": 6.0
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.0925,
+      "roa": 0.0164,
+      "equity_multiplier": 5.64
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.076,
+      "roa": 0.0139,
+      "equity_multiplier": 5.47
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.0936,
+      "roa": 0.0169,
+      "equity_multiplier": 5.54
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.0746,
+      "roa": 0.0136,
+      "equity_multiplier": 5.49
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.119,
+      "roa": 0.0215,
+      "equity_multiplier": 5.53
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.0763,
+      "roa": 0.0135,
+      "equity_multiplier": 5.65
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "BX",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0133,
+      "net_margin": 0.2585,
+      "asset_turnover": 0.05
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0037,
+      "net_margin": 0.1373,
+      "asset_turnover": 0.03
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0212,
+      "net_margin": 0.278,
+      "asset_turnover": 0.08
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0111,
+      "net_margin": 0.1938,
+      "asset_turnover": 0.06
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0188,
+      "net_margin": 0.2705,
+      "asset_turnover": 0.07
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0164,
+      "net_margin": 0.2604,
+      "asset_turnover": 0.06
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0139,
+      "net_margin": 0.2175,
+      "asset_turnover": 0.06
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0169,
+      "net_margin": 0.066,
+      "asset_turnover": 0.26
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0136,
+      "net_margin": 0.2327,
+      "asset_turnover": 0.06
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0215,
+      "net_margin": 0.2717,
+      "asset_turnover": 0.08
+    },
+    {
+      "symbol": "BX",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0135,
+      "net_margin": 0.0516,
+      "asset_turnover": 0.26
+    }
+  ]
+}

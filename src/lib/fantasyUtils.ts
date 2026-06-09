@@ -14,6 +14,41 @@ export function formatUpdatedAt(timestamp: string | null | undefined): string {
   }).format(new Date(timestamp));
 }
 
+export type FantasySnapshotStaleness = "fresh" | "aging" | "stale";
+
+const FANTASY_STALENESS_AGING_DAYS = 8;
+const FANTASY_STALENESS_STALE_DAYS = 14;
+const MS_PER_DAY = 86_400_000;
+
+/**
+ * Buckets a snapshot timestamp into a freshness band that downstream UI can
+ * use to surface a soft warning. The thresholds match the weekly Wednesday
+ * refresh cadence: anything <8 days is on schedule, 8–14 days is suspicious,
+ * and >14 days means the automated refresh has missed at least two cycles.
+ *
+ * Returns "stale" for any invalid or missing date so callers default to the
+ * conservative warning rather than silently treating it as fresh.
+ */
+export function getSnapshotStaleness(date: Date | string | null | undefined): FantasySnapshotStaleness {
+  if (date === null || date === undefined) {
+    return "stale";
+  }
+
+  const parsed = date instanceof Date ? date : new Date(date);
+  if (Number.isNaN(parsed.getTime())) {
+    return "stale";
+  }
+
+  const ageDays = (Date.now() - parsed.getTime()) / MS_PER_DAY;
+  if (ageDays < FANTASY_STALENESS_AGING_DAYS) {
+    return "fresh";
+  }
+  if (ageDays <= FANTASY_STALENESS_STALE_DAYS) {
+    return "aging";
+  }
+  return "stale";
+}
+
 export function formatRankValue(value: number | string | undefined): string {
   if (typeof value === "number") {
     if (!Number.isFinite(value)) {
@@ -39,7 +74,7 @@ export function formatOwnership(ownership: number | undefined): string {
     return "Not listed";
   }
 
-  return `${ownership?.toFixed(1)}% rostered`;
+  return `${ownership?.toFixed(1)}%`;
 }
 
 export function getPositionTone(position: string): CSSProperties {

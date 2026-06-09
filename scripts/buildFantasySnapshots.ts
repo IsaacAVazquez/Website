@@ -1,4 +1,4 @@
-import { mkdir, writeFile } from "fs/promises";
+import { mkdir, rename, writeFile } from "fs/promises";
 import path from "path";
 import { buildFantasySnapshot } from "@/lib/fantasySnapshotBuilder";
 
@@ -20,18 +20,24 @@ export const fantasySnapshotRevision = ${JSON.stringify(revision)};
 `;
 }
 
+async function atomicWriteFile(targetPath: string, contents: string) {
+  const tempPath = `${targetPath}.tmp`;
+  await writeFile(tempPath, contents, "utf8");
+  await rename(tempPath, targetPath);
+}
+
 async function main() {
   await mkdir(OUTPUT_DIR, { recursive: true });
   await mkdir(path.dirname(REVISION_OUTPUT_PATH), { recursive: true });
 
   const revision = new Date().toISOString();
-  await writeFile(REVISION_OUTPUT_PATH, renderRevisionModule(revision), "utf8");
+  await atomicWriteFile(REVISION_OUTPUT_PATH, renderRevisionModule(revision));
   console.log(`Wrote fantasy snapshot revision: ${REVISION_OUTPUT_PATH}`);
 
   for (const scoring of ["ppr", "half_ppr", "standard"] as const) {
     const snapshot = buildFantasySnapshot(scoring);
     const outputPath = path.join(OUTPUT_DIR, `${scoring}.json`);
-    await writeFile(outputPath, `${JSON.stringify(snapshot, null, 2)}\n`, "utf8");
+    await atomicWriteFile(outputPath, `${JSON.stringify(snapshot, null, 2)}\n`);
     console.log(`Wrote fantasy snapshot: ${outputPath}`);
   }
 }

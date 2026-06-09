@@ -1,0 +1,913 @@
+{
+  "quarterly_revenue": [
+    {
+      "symbol": "PLTR",
+      "report_date": "2022-06-30T00:00:00.000",
+      "revenue": 473010000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2022-09-30T00:00:00.000",
+      "revenue": 477880000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2023-06-30T00:00:00.000",
+      "revenue": 533317000.0,
+      "prev_year_revenue": 473010000.0,
+      "yoy_growth": 0.1275
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2023-09-30T00:00:00.000",
+      "revenue": 558159000.0,
+      "prev_year_revenue": 477880000.0,
+      "yoy_growth": 0.168
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 608350000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2024-03-31T00:00:00.000",
+      "revenue": 634338000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2024-06-30T00:00:00.000",
+      "revenue": 678134000.0,
+      "prev_year_revenue": 533317000.0,
+      "yoy_growth": 0.2715
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2024-09-30T00:00:00.000",
+      "revenue": 725516000.0,
+      "prev_year_revenue": 558159000.0,
+      "yoy_growth": 0.2998
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 827519000.0,
+      "prev_year_revenue": 608350000.0,
+      "yoy_growth": 0.3603
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2025-03-31T00:00:00.000",
+      "revenue": 883855000.0,
+      "prev_year_revenue": 634338000.0,
+      "yoy_growth": 0.3934
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2025-06-30T00:00:00.000",
+      "revenue": 1003697000.0,
+      "prev_year_revenue": 678134000.0,
+      "yoy_growth": 0.4801
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2025-09-30T00:00:00.000",
+      "revenue": 1181092000.0,
+      "prev_year_revenue": 725516000.0,
+      "yoy_growth": 0.6279
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 1406802000.0,
+      "prev_year_revenue": 827519000.0,
+      "yoy_growth": 0.7
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2026-03-31T00:00:00.000",
+      "revenue": 1632583000.0,
+      "prev_year_revenue": 883855000.0,
+      "yoy_growth": 0.8471
+    }
+  ],
+  "annual_revenue": [
+    {
+      "symbol": "PLTR",
+      "report_date": "2020-12-31T00:00:00.000",
+      "revenue": 1092673000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2021-12-31T00:00:00.000",
+      "revenue": 1541889000.0,
+      "prev_year_revenue": 1092673000.0,
+      "yoy_growth": 0.4111
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2022-12-31T00:00:00.000",
+      "revenue": 1905871000.0,
+      "prev_year_revenue": 1541889000.0,
+      "yoy_growth": 0.2361
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 2225012000.0,
+      "prev_year_revenue": 1905871000.0,
+      "yoy_growth": 0.1675
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 2865507000.0,
+      "prev_year_revenue": 2225012000.0,
+      "yoy_growth": 0.2879
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 4475446000.0,
+      "prev_year_revenue": 2865507000.0,
+      "yoy_growth": 0.5618
+    }
+  ],
+  "quarterly_operating_income": [
+    {
+      "symbol": "PLTR",
+      "report_date": "2022-06-30T00:00:00.000",
+      "operating_income": -41745000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2022-09-30T00:00:00.000",
+      "operating_income": -62191000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2023-06-30T00:00:00.000",
+      "operating_income": 10074000.0,
+      "prev_year_operating_income": -41745000.0,
+      "yoy_growth": 1.2413
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2023-09-30T00:00:00.000",
+      "operating_income": 39983000.0,
+      "prev_year_operating_income": -62191000.0,
+      "yoy_growth": 1.6429
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 65794000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2024-03-31T00:00:00.000",
+      "operating_income": 80881000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2024-06-30T00:00:00.000",
+      "operating_income": 105339000.0,
+      "prev_year_operating_income": 10074000.0,
+      "yoy_growth": 9.4565
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2024-09-30T00:00:00.000",
+      "operating_income": 113140000.0,
+      "prev_year_operating_income": 39983000.0,
+      "yoy_growth": 1.8297
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 11043000.0,
+      "prev_year_operating_income": 65794000.0,
+      "yoy_growth": -0.8322
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2025-03-31T00:00:00.000",
+      "operating_income": 176048000.0,
+      "prev_year_operating_income": 80881000.0,
+      "yoy_growth": 1.1766
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2025-06-30T00:00:00.000",
+      "operating_income": 269317000.0,
+      "prev_year_operating_income": 105339000.0,
+      "yoy_growth": 1.5567
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2025-09-30T00:00:00.000",
+      "operating_income": 393256000.0,
+      "prev_year_operating_income": 113140000.0,
+      "yoy_growth": 2.4758
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 575394000.0,
+      "prev_year_operating_income": 11043000.0,
+      "yoy_growth": 51.1049
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2026-03-31T00:00:00.000",
+      "operating_income": 753998000.0,
+      "prev_year_operating_income": 176048000.0,
+      "yoy_growth": 3.2829
+    }
+  ],
+  "annual_operating_income": [
+    {
+      "symbol": "PLTR",
+      "report_date": "2020-12-31T00:00:00.000",
+      "operating_income": -1173679000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2021-12-31T00:00:00.000",
+      "operating_income": -411046000.0,
+      "prev_year_operating_income": -1173679000.0,
+      "yoy_growth": 0.6498
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2022-12-31T00:00:00.000",
+      "operating_income": -161201000.0,
+      "prev_year_operating_income": -411046000.0,
+      "yoy_growth": 0.6078
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 119966000.0,
+      "prev_year_operating_income": -161201000.0,
+      "yoy_growth": 1.7442
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 310403000.0,
+      "prev_year_operating_income": 119966000.0,
+      "yoy_growth": 1.5874
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 1414015000.0,
+      "prev_year_operating_income": 310403000.0,
+      "yoy_growth": 3.5554
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "PLTR",
+      "report_date": "2022-09-30T00:00:00.000",
+      "ebitda": -115755000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2023-06-30T00:00:00.000",
+      "ebitda": 18473000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2023-09-30T00:00:00.000",
+      "ebitda": 89374000.0,
+      "prev_year_ebitda": -115755000.0,
+      "yoy_growth": 1.7721
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 114355000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2024-03-31T00:00:00.000",
+      "ebitda": 89319000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2024-06-30T00:00:00.000",
+      "ebitda": 113395000.0,
+      "prev_year_ebitda": 18473000.0,
+      "yoy_growth": 5.1384
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2024-09-30T00:00:00.000",
+      "ebitda": 121227000.0,
+      "prev_year_ebitda": 89374000.0,
+      "yoy_growth": 0.3564
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 18049000.0,
+      "prev_year_ebitda": 114355000.0,
+      "yoy_growth": -0.8422
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2025-03-31T00:00:00.000",
+      "ebitda": 182670000.0,
+      "prev_year_ebitda": 89319000.0,
+      "yoy_growth": 1.0451
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2025-06-30T00:00:00.000",
+      "ebitda": 275847000.0,
+      "prev_year_ebitda": 113395000.0,
+      "yoy_growth": 1.4326
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2025-09-30T00:00:00.000",
+      "ebitda": 399231000.0,
+      "prev_year_ebitda": 121227000.0,
+      "yoy_growth": 2.2933
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 582412000.0,
+      "prev_year_ebitda": 18049000.0,
+      "yoy_growth": 31.2684
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2026-03-31T00:00:00.000",
+      "ebitda": 760763000.0,
+      "prev_year_ebitda": 182670000.0,
+      "yoy_growth": 3.1647
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "PLTR",
+      "report_date": "2020-12-31T00:00:00.000",
+      "ebitda": -1151017000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2021-12-31T00:00:00.000",
+      "ebitda": -469957000.0,
+      "prev_year_ebitda": -1151017000.0,
+      "yoy_growth": 0.5917
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2022-12-31T00:00:00.000",
+      "ebitda": -138679000.0,
+      "prev_year_ebitda": -469957000.0,
+      "yoy_growth": 0.7049
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 153320000.0,
+      "prev_year_ebitda": -138679000.0,
+      "yoy_growth": 2.1056
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 341990000.0,
+      "prev_year_ebitda": 153320000.0,
+      "yoy_growth": 1.2306
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 1440160000.0,
+      "prev_year_ebitda": 341990000.0,
+      "yoy_growth": 3.2111
+    }
+  ],
+  "quarterly_net_income": [
+    {
+      "symbol": "PLTR",
+      "report_date": "2022-06-30T00:00:00.000",
+      "net_income_common_stockholders": -179329000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2022-09-30T00:00:00.000",
+      "net_income_common_stockholders": -123875000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2023-06-30T00:00:00.000",
+      "net_income_common_stockholders": 28127000.0,
+      "prev_year_net_income_common_stockholders": -179329000.0,
+      "yoy_growth": 1.1568
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2023-09-30T00:00:00.000",
+      "net_income_common_stockholders": 71505000.0,
+      "prev_year_net_income_common_stockholders": -123875000.0,
+      "yoy_growth": 1.5772
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 93391000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2024-03-31T00:00:00.000",
+      "net_income_common_stockholders": 105530000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2024-06-30T00:00:00.000",
+      "net_income_common_stockholders": 134126000.0,
+      "prev_year_net_income_common_stockholders": 28127000.0,
+      "yoy_growth": 3.7686
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2024-09-30T00:00:00.000",
+      "net_income_common_stockholders": 143525000.0,
+      "prev_year_net_income_common_stockholders": 71505000.0,
+      "yoy_growth": 1.0072
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 79009000.0,
+      "prev_year_net_income_common_stockholders": 93391000.0,
+      "yoy_growth": -0.154
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2025-03-31T00:00:00.000",
+      "net_income_common_stockholders": 214031000.0,
+      "prev_year_net_income_common_stockholders": 105530000.0,
+      "yoy_growth": 1.0282
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2025-06-30T00:00:00.000",
+      "net_income_common_stockholders": 326727000.0,
+      "prev_year_net_income_common_stockholders": 134126000.0,
+      "yoy_growth": 1.436
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2025-09-30T00:00:00.000",
+      "net_income_common_stockholders": 475599000.0,
+      "prev_year_net_income_common_stockholders": 143525000.0,
+      "yoy_growth": 2.3137
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 608676000.0,
+      "prev_year_net_income_common_stockholders": 79009000.0,
+      "yoy_growth": 6.7039
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2026-03-31T00:00:00.000",
+      "net_income_common_stockholders": 870527000.0,
+      "prev_year_net_income_common_stockholders": 214031000.0,
+      "yoy_growth": 3.0673
+    }
+  ],
+  "annual_net_income": [
+    {
+      "symbol": "PLTR",
+      "report_date": "2020-12-31T00:00:00.000",
+      "net_income_common_stockholders": -1166391000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2021-12-31T00:00:00.000",
+      "net_income_common_stockholders": -520379000.0,
+      "prev_year_net_income_common_stockholders": -1166391000.0,
+      "yoy_growth": 0.5539
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2022-12-31T00:00:00.000",
+      "net_income_common_stockholders": -373705000.0,
+      "prev_year_net_income_common_stockholders": -520379000.0,
+      "yoy_growth": 0.2819
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 209825000.0,
+      "prev_year_net_income_common_stockholders": -373705000.0,
+      "yoy_growth": 1.5615
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 462190000.0,
+      "prev_year_net_income_common_stockholders": 209825000.0,
+      "yoy_growth": 1.2027
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 1625033000.0,
+      "prev_year_net_income_common_stockholders": 462190000.0,
+      "yoy_growth": 2.5159
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "PLTR",
+      "report_date": "2022-06-30T00:00:00.000",
+      "free_cash_flow": 56973000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2023-06-30T00:00:00.000",
+      "free_cash_flow": 86258000.0,
+      "prev_year_free_cash_flow": 56973000.0,
+      "yoy_growth": 0.514
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2023-09-30T00:00:00.000",
+      "free_cash_flow": 131878000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 296312000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2024-03-31T00:00:00.000",
+      "free_cash_flow": 126915000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2024-06-30T00:00:00.000",
+      "free_cash_flow": 141308000.0,
+      "prev_year_free_cash_flow": 86258000.0,
+      "yoy_growth": 0.6382
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2024-09-30T00:00:00.000",
+      "free_cash_flow": 415787000.0,
+      "prev_year_free_cash_flow": 131878000.0,
+      "yoy_growth": 2.1528
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 457221000.0,
+      "prev_year_free_cash_flow": 296312000.0,
+      "yoy_growth": 0.543
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2025-03-31T00:00:00.000",
+      "free_cash_flow": 304079000.0,
+      "prev_year_free_cash_flow": 126915000.0,
+      "yoy_growth": 1.3959
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2025-06-30T00:00:00.000",
+      "free_cash_flow": 531617000.0,
+      "prev_year_free_cash_flow": 141308000.0,
+      "yoy_growth": 2.7621
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2025-09-30T00:00:00.000",
+      "free_cash_flow": 500872000.0,
+      "prev_year_free_cash_flow": 415787000.0,
+      "yoy_growth": 0.2046
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 764023000.0,
+      "prev_year_free_cash_flow": 457221000.0,
+      "yoy_growth": 0.671
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2026-03-31T00:00:00.000",
+      "free_cash_flow": 891764000.0,
+      "prev_year_free_cash_flow": 304079000.0,
+      "yoy_growth": 1.9327
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "PLTR",
+      "report_date": "2020-12-31T00:00:00.000",
+      "free_cash_flow": -308844000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2021-12-31T00:00:00.000",
+      "free_cash_flow": 321224000.0,
+      "prev_year_free_cash_flow": -308844000.0,
+      "yoy_growth": 2.0401
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2022-12-31T00:00:00.000",
+      "free_cash_flow": 183710000.0,
+      "prev_year_free_cash_flow": 321224000.0,
+      "yoy_growth": -0.4281
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 697069000.0,
+      "prev_year_free_cash_flow": 183710000.0,
+      "yoy_growth": 2.7944
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 1141231000.0,
+      "prev_year_free_cash_flow": 697069000.0,
+      "yoy_growth": 0.6372
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 2100591000.0,
+      "prev_year_free_cash_flow": 1141231000.0,
+      "yoy_growth": 0.8406
+    }
+  ],
+  "quarterly_eps": [
+    {
+      "symbol": "PLTR",
+      "report_date": "2019-03-31T00:00:00.000",
+      "eps": -0.0848,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2019-06-30T00:00:00.000",
+      "eps": -0.0776,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2019-09-30T00:00:00.000",
+      "eps": -0.081,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2019-12-31T00:00:00.000",
+      "eps": -0.0923,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2020-03-31T00:00:00.000",
+      "eps": -0.0314,
+      "prev_year_eps": -0.0848,
+      "yoy_growth": 0.6297
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2020-06-30T00:00:00.000",
+      "eps": -0.064,
+      "prev_year_eps": -0.0776,
+      "yoy_growth": 0.1753
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2020-09-30T00:00:00.000",
+      "eps": -0.4942,
+      "prev_year_eps": -0.081,
+      "yoy_growth": -5.1012
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2020-12-31T00:00:00.000",
+      "eps": -0.0828,
+      "prev_year_eps": -0.0923,
+      "yoy_growth": 0.1029
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2021-03-31T00:00:00.000",
+      "eps": -0.0678,
+      "prev_year_eps": -0.0314,
+      "yoy_growth": -1.1592
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2021-06-30T00:00:00.000",
+      "eps": -0.0731,
+      "prev_year_eps": -0.064,
+      "yoy_growth": -0.1422
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2021-09-30T00:00:00.000",
+      "eps": -0.052,
+      "prev_year_eps": -0.4942,
+      "yoy_growth": 0.8948
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2021-12-31T00:00:00.000",
+      "eps": -0.0776,
+      "prev_year_eps": -0.0828,
+      "yoy_growth": 0.0628
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2022-03-31T00:00:00.000",
+      "eps": -0.0498,
+      "prev_year_eps": -0.0678,
+      "yoy_growth": 0.2655
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2022-06-30T00:00:00.000",
+      "eps": -0.0873,
+      "prev_year_eps": -0.0731,
+      "yoy_growth": -0.1943
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2022-09-30T00:00:00.000",
+      "eps": -0.0598,
+      "prev_year_eps": -0.052,
+      "yoy_growth": -0.15
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2022-12-31T00:00:00.000",
+      "eps": 0.014,
+      "prev_year_eps": -0.0776,
+      "yoy_growth": 1.1804
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2023-03-31T00:00:00.000",
+      "eps": 0.0076,
+      "prev_year_eps": -0.0498,
+      "yoy_growth": 1.1526
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2023-06-30T00:00:00.000",
+      "eps": 0.0124,
+      "prev_year_eps": -0.0873,
+      "yoy_growth": 1.142
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2023-09-30T00:00:00.000",
+      "eps": 0.0308,
+      "prev_year_eps": -0.0598,
+      "yoy_growth": 1.5151
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "eps": 0.0396,
+      "prev_year_eps": 0.014,
+      "yoy_growth": 1.8286
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2024-03-31T00:00:00.000",
+      "eps": 0.044,
+      "prev_year_eps": 0.0076,
+      "yoy_growth": 4.7895
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2024-06-30T00:00:00.000",
+      "eps": 0.0556,
+      "prev_year_eps": 0.0124,
+      "yoy_growth": 3.4839
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2024-09-30T00:00:00.000",
+      "eps": 0.0584,
+      "prev_year_eps": 0.0308,
+      "yoy_growth": 0.8961
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "eps": 0.0312,
+      "prev_year_eps": 0.0396,
+      "yoy_growth": -0.2121
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2025-03-31T00:00:00.000",
+      "eps": 0.0838,
+      "prev_year_eps": 0.044,
+      "yoy_growth": 0.9045
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2025-06-30T00:00:00.000",
+      "eps": 0.1275,
+      "prev_year_eps": 0.0556,
+      "yoy_growth": 1.2932
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2025-09-30T00:00:00.000",
+      "eps": 0.185,
+      "prev_year_eps": 0.0584,
+      "yoy_growth": 2.1678
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "eps": 0.2365,
+      "prev_year_eps": 0.0312,
+      "yoy_growth": 6.5801
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2026-03-31T00:00:00.000",
+      "eps": 0.3386,
+      "prev_year_eps": 0.0838,
+      "yoy_growth": 3.0406
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 import { AIStructuredData } from "@/components/AIStructuredData";
 import { generateAIOptimizedMetadata } from "@/lib/seo";
 import { profile, profileSameAs } from "@/lib/profile";
-import About from "@/components/About";
+import { AboutV3 } from "@/components/about/AboutV3";
 
 export const metadata = generateAIOptimizedMetadata({
   title: "About",
@@ -28,7 +28,7 @@ export const metadata = generateAIOptimizedMetadata({
     credentials: profile.credentials,
   },
   canonicalUrl: "https://isaacavazquez.com/about",
-  dateModified: "2025-02-05",
+  dateModified: "2026-05-27",
 });
 
 export default function AboutPage() {
@@ -90,7 +90,7 @@ export default function AboutPage() {
         }}
       />
 
-      <About />
+      <AboutV3 />
     </>
   );
 }

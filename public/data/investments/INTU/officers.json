@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "INTU",
+    "name": "Anne-Sophie  Seigneurbieux",
+    "title": "Senior Vice President of Investor Relations, Corporate & Strategic Finance",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "INTU",
+    "name": "Mr. Alex G. Balazs",
+    "title": "Executive VP & CTO",
+    "age": 53,
+    "born": 1972,
+    "pay": 1704000,
+    "exercised": 5925961,
+    "unexercised": 2139095,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "INTU",
+    "name": "Mr. Mark  Notarainni",
+    "title": "Executive VP & GM of Consumer Group",
+    "age": 55,
+    "born": 1970,
+    "pay": 1704000,
+    "exercised": 3361494,
+    "unexercised": 9355770,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "INTU",
+    "name": "Mr. Sandeep Singh Aujla",
+    "title": "Executive VP & CFO",
+    "age": 49,
+    "born": 1976,
+    "pay": 1771300,
+    "exercised": 4101986,
+    "unexercised": 883111,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "INTU",
+    "name": "Mr. Sasan K. Goodarzi",
+    "title": "CEO, President & Chairman",
+    "age": 57,
+    "born": 1968,
+    "pay": 3910000,
+    "exercised": 43560552,
+    "unexercised": 62610408,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "INTU",
+    "name": "Mr. Scott D. Cook",
+    "title": "Founder & Director",
+    "age": 73,
+    "born": 1952,
+    "pay": 1300000,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "INTU",
+    "name": "Ms. Caryl  Hilliard",
+    "title": "Executive VP and Chief People & Places Officer",
+    "age": 59,
+    "born": 1966,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "INTU",
+    "name": "Ms. Kerry J. McLean J.D.",
+    "title": "Executive VP, General Counsel & Corporate Secretary",
+    "age": 61,
+    "born": 1964,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "INTU",
+    "name": "Ms. Lauren D. Hotz",
+    "title": "Senior VP & Chief Accounting Officer",
+    "age": 49,
+    "born": 1976,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "INTU",
+    "name": "Ms. Shveta  Mujumdar",
+    "title": "Vice President of Corporate Development",
+    "age": 46,
+    "born": 1979,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  }
+]

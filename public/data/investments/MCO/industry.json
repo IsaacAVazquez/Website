@@ -1,0 +1,1370 @@
+{
+  "ttm_pe": [],
+  "ps_ratio": [],
+  "pb_ratio": [],
+  "roe": [
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 12069317000.0,
+      "total_avg_equity": 107441765500.0,
+      "industry_roe": 0.1123
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 12088333000.0,
+      "total_avg_equity": 107529907500.0,
+      "industry_roe": 0.1124
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 12088333000.0,
+      "total_avg_equity": 107529907500.0,
+      "industry_roe": 0.1124
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 12699706000.0,
+      "total_avg_equity": 109498837500.0,
+      "industry_roe": 0.116
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 12700734000.0,
+      "total_avg_equity": 109500493000.0,
+      "industry_roe": 0.116
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 13569235000.0,
+      "total_avg_equity": 111307093000.0,
+      "industry_roe": 0.1219
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 15430917000.0,
+      "total_avg_equity": 117288373000.0,
+      "industry_roe": 0.1316
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 15433114000.0,
+      "total_avg_equity": 117291556000.0,
+      "industry_roe": 0.1316
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 15103206000.0,
+      "total_avg_equity": 117381613500.0,
+      "industry_roe": 0.1287
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 18932687000.0,
+      "total_avg_equity": 122232747500.0,
+      "industry_roe": 0.1549
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 18931965000.0,
+      "total_avg_equity": 122234638500.0,
+      "industry_roe": 0.1549
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 18935885000.0,
+      "total_avg_equity": 122311641500.0,
+      "industry_roe": 0.1548
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 18434093000.0,
+      "total_avg_equity": 124391173000.0,
+      "industry_roe": 0.1482
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 18433260000.0,
+      "total_avg_equity": 124393067000.0,
+      "industry_roe": 0.1482
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 18423667000.0,
+      "total_avg_equity": 124453227500.0,
+      "industry_roe": 0.148
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 33296402616.783512,
+      "total_avg_equity": 127102138604.56058,
+      "industry_roe": 0.262
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 33296975616.783512,
+      "total_avg_equity": 127105248604.56058,
+      "industry_roe": 0.262
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 33361095616.783512,
+      "total_avg_equity": 127160414604.56058,
+      "industry_roe": 0.2624
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 34444298600.895355,
+      "total_avg_equity": 128526484712.32637,
+      "industry_roe": 0.268
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 34444295600.895355,
+      "total_avg_equity": 128528828712.32637,
+      "industry_roe": 0.268
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 34446853600.895355,
+      "total_avg_equity": 128552242212.32637,
+      "industry_roe": 0.268
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 33709213864.85234,
+      "total_avg_equity": 128129970257.14525,
+      "industry_roe": 0.2631
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 33726053864.85234,
+      "total_avg_equity": 128131469257.14525,
+      "industry_roe": 0.2632
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 34168987864.85234,
+      "total_avg_equity": 128161215757.14525,
+      "industry_roe": 0.2666
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 49617833063.85234,
+      "total_avg_equity": 128121426807.14525,
+      "industry_roe": 0.3873
+    }
+  ],
+  "roa": [
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 12069317000.0,
+      "total_avg_assets": 627179127500.0,
+      "industry_roa": 0.0192
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 12088333000.0,
+      "total_avg_assets": 627313302500.0,
+      "industry_roa": 0.0193
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 12088333000.0,
+      "total_avg_assets": 627313302500.0,
+      "industry_roa": 0.0193
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 12699706000.0,
+      "total_avg_assets": 577090197500.0,
+      "industry_roa": 0.022
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 12700734000.0,
+      "total_avg_assets": 577090471500.0,
+      "industry_roa": 0.022
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 13569235000.0,
+      "total_avg_assets": 581093604500.0,
+      "industry_roa": 0.0234
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 15430917000.0,
+      "total_avg_assets": 642671799500.0,
+      "industry_roa": 0.024
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 15433114000.0,
+      "total_avg_assets": 642674617000.0,
+      "industry_roa": 0.024
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 15103206000.0,
+      "total_avg_assets": 642691209500.0,
+      "industry_roa": 0.0235
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 18932687000.0,
+      "total_avg_assets": 593762972500.0,
+      "industry_roa": 0.0319
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 18931965000.0,
+      "total_avg_assets": 593765501000.0,
+      "industry_roa": 0.0319
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 18935885000.0,
+      "total_avg_assets": 593886347000.0,
+      "industry_roa": 0.0319
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 18434093000.0,
+      "total_avg_assets": 574533942000.0,
+      "industry_roa": 0.0321
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 18433260000.0,
+      "total_avg_assets": 574535692000.0,
+      "industry_roa": 0.0321
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 18423667000.0,
+      "total_avg_assets": 574592021500.0,
+      "industry_roa": 0.0321
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 33296402616.783512,
+      "total_avg_assets": 596177784195.6143,
+      "industry_roa": 0.0558
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 33296975616.783512,
+      "total_avg_assets": 596180336695.6143,
+      "industry_roa": 0.0559
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 33361095616.783512,
+      "total_avg_assets": 596159864195.6143,
+      "industry_roa": 0.056
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 34444298600.895355,
+      "total_avg_assets": 469032454274.95776,
+      "industry_roa": 0.0734
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 34444295600.895355,
+      "total_avg_assets": 469034102274.95776,
+      "industry_roa": 0.0734
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 34446853600.895355,
+      "total_avg_assets": 469088786774.95776,
+      "industry_roa": 0.0734
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 33709213864.85234,
+      "total_avg_assets": 485011952654.69116,
+      "industry_roa": 0.0695
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 33726053864.85234,
+      "total_avg_assets": 485013951654.69116,
+      "industry_roa": 0.0695
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 34168987864.85234,
+      "total_avg_assets": 485062134654.69116,
+      "industry_roa": 0.0704
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 49617833063.85234,
+      "total_avg_assets": 519588904858.69116,
+      "industry_roa": 0.0955
+    }
+  ],
+  "equity_multiplier": [
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roe": 0.1123,
+      "industry_roa": 0.0192,
+      "industry_equity_multiplier": 5.85
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roe": 0.1124,
+      "industry_roa": 0.0193,
+      "industry_equity_multiplier": 5.82
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roe": 0.1124,
+      "industry_roa": 0.0193,
+      "industry_equity_multiplier": 5.82
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roe": 0.116,
+      "industry_roa": 0.022,
+      "industry_equity_multiplier": 5.27
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roe": 0.116,
+      "industry_roa": 0.022,
+      "industry_equity_multiplier": 5.27
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roe": 0.1219,
+      "industry_roa": 0.0234,
+      "industry_equity_multiplier": 5.21
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roe": 0.1316,
+      "industry_roa": 0.024,
+      "industry_equity_multiplier": 5.48
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roe": 0.1316,
+      "industry_roa": 0.024,
+      "industry_equity_multiplier": 5.48
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roe": 0.1287,
+      "industry_roa": 0.0235,
+      "industry_equity_multiplier": 5.48
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roe": 0.1549,
+      "industry_roa": 0.0319,
+      "industry_equity_multiplier": 4.86
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roe": 0.1549,
+      "industry_roa": 0.0319,
+      "industry_equity_multiplier": 4.86
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roe": 0.1548,
+      "industry_roa": 0.0319,
+      "industry_equity_multiplier": 4.85
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roe": 0.1482,
+      "industry_roa": 0.0321,
+      "industry_equity_multiplier": 4.62
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roe": 0.1482,
+      "industry_roa": 0.0321,
+      "industry_equity_multiplier": 4.62
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roe": 0.148,
+      "industry_roa": 0.0321,
+      "industry_equity_multiplier": 4.61
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roe": 0.262,
+      "industry_roa": 0.0558,
+      "industry_equity_multiplier": 4.7
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roe": 0.262,
+      "industry_roa": 0.0559,
+      "industry_equity_multiplier": 4.69
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roe": 0.2624,
+      "industry_roa": 0.056,
+      "industry_equity_multiplier": 4.69
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roe": 0.268,
+      "industry_roa": 0.0734,
+      "industry_equity_multiplier": 3.65
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roe": 0.268,
+      "industry_roa": 0.0734,
+      "industry_equity_multiplier": 3.65
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roe": 0.268,
+      "industry_roa": 0.0734,
+      "industry_equity_multiplier": 3.65
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roe": 0.2631,
+      "industry_roa": 0.0695,
+      "industry_equity_multiplier": 3.79
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roe": 0.2632,
+      "industry_roa": 0.0695,
+      "industry_equity_multiplier": 3.79
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roe": 0.2666,
+      "industry_roa": 0.0704,
+      "industry_equity_multiplier": 3.79
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roe": 0.3873,
+      "industry_roa": 0.0955,
+      "industry_equity_multiplier": 4.06
+    }
+  ],
+  "gross_margin": [
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_gross_profit": 2331300000.0,
+      "total_ttm_revenue": 3779100000.0,
+      "industry_gross_margin": 0.6169
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_gross_profit": 2331300000.0,
+      "total_ttm_revenue": 3779100000.0,
+      "industry_gross_margin": 0.6169
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_gross_profit": 2331300000.0,
+      "total_ttm_revenue": 3779100000.0,
+      "industry_gross_margin": 0.6169
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_gross_profit": 11630239000.0,
+      "total_ttm_revenue": 18003120000.0,
+      "industry_gross_margin": 0.646
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_gross_profit": 11630239000.0,
+      "total_ttm_revenue": 18003120000.0,
+      "industry_gross_margin": 0.646
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_gross_profit": 11630239000.0,
+      "total_ttm_revenue": 18003120000.0,
+      "industry_gross_margin": 0.646
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_gross_profit": 31031028000.0,
+      "total_ttm_revenue": 47925131000.0,
+      "industry_gross_margin": 0.6475
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_gross_profit": 31053664000.0,
+      "total_ttm_revenue": 47962618000.0,
+      "industry_gross_margin": 0.6475
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_gross_profit": 31053664000.0,
+      "total_ttm_revenue": 47962618000.0,
+      "industry_gross_margin": 0.6475
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_gross_profit": 32689865000.0,
+      "total_ttm_revenue": 50472829000.0,
+      "industry_gross_margin": 0.6477
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_gross_profit": 32689203000.0,
+      "total_ttm_revenue": 50471970000.0,
+      "industry_gross_margin": 0.6477
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_gross_profit": 34714824000.0,
+      "total_ttm_revenue": 54255719000.0,
+      "industry_gross_margin": 0.6398
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_gross_profit": 38336658000.0,
+      "total_ttm_revenue": 60795466000.0,
+      "industry_gross_margin": 0.6306
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_gross_profit": 38336011000.0,
+      "total_ttm_revenue": 60794697000.0,
+      "industry_gross_margin": 0.6306
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_gross_profit": 37520794000.0,
+      "total_ttm_revenue": 59240455000.0,
+      "industry_gross_margin": 0.6334
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_gross_profit": 44409842000.0,
+      "total_ttm_revenue": 69231723000.0,
+      "industry_gross_margin": 0.6415
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_gross_profit": 44409774000.0,
+      "total_ttm_revenue": 69231559000.0,
+      "industry_gross_margin": 0.6415
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_gross_profit": 44420027000.0,
+      "total_ttm_revenue": 69256274000.0,
+      "industry_gross_margin": 0.6414
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_gross_profit": 45550443000.0,
+      "total_ttm_revenue": 71473150000.0,
+      "industry_gross_margin": 0.6373
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_gross_profit": 45549808000.0,
+      "total_ttm_revenue": 71472534000.0,
+      "industry_gross_margin": 0.6373
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_gross_profit": 45548877000.0,
+      "total_ttm_revenue": 71505346000.0,
+      "industry_gross_margin": 0.637
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_gross_profit": 73060886255.14038,
+      "total_ttm_revenue": 91150950781.47894,
+      "industry_gross_margin": 0.8015
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_gross_profit": 73060535255.14038,
+      "total_ttm_revenue": 91150672781.47894,
+      "industry_gross_margin": 0.8015
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_gross_profit": 73064775255.14038,
+      "total_ttm_revenue": 91185386781.47894,
+      "industry_gross_margin": 0.8013
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_gross_profit": 74313509110.40169,
+      "total_ttm_revenue": 92631520798.76724,
+      "industry_gross_margin": 0.8022
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_gross_profit": 74313307110.40169,
+      "total_ttm_revenue": 92631235798.76724,
+      "industry_gross_margin": 0.8022
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_gross_profit": 74323124110.40169,
+      "total_ttm_revenue": 92670189798.76724,
+      "industry_gross_margin": 0.802
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_gross_profit": 75197251441.57664,
+      "total_ttm_revenue": 93480633078.16528,
+      "industry_gross_margin": 0.8044
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_gross_profit": 75211298441.57664,
+      "total_ttm_revenue": 93479942078.16528,
+      "industry_gross_margin": 0.8046
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_gross_profit": 75224519441.57664,
+      "total_ttm_revenue": 93520301078.16528,
+      "industry_gross_margin": 0.8044
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_gross_profit": 104039240440.57664,
+      "total_ttm_revenue": 112624075555.16528,
+      "industry_gross_margin": 0.9238
+    }
+  ],
+  "ebitda_margin": [
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_ebitda": 737300000.0,
+      "total_ttm_revenue": 3779100000.0,
+      "industry_ebitda_margin": 0.1951
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_ebitda": 737300000.0,
+      "total_ttm_revenue": 3779100000.0,
+      "industry_ebitda_margin": 0.1951
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_ebitda": 737300000.0,
+      "total_ttm_revenue": 3779100000.0,
+      "industry_ebitda_margin": 0.1951
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_ebitda": 9125759000.0,
+      "total_ttm_revenue": 18003120000.0,
+      "industry_ebitda_margin": 0.5069
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_ebitda": 9125759000.0,
+      "total_ttm_revenue": 18003120000.0,
+      "industry_ebitda_margin": 0.5069
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_ebitda": 9125759000.0,
+      "total_ttm_revenue": 18003120000.0,
+      "industry_ebitda_margin": 0.5069
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_ebitda": 22114119000.0,
+      "total_ttm_revenue": 47925131000.0,
+      "industry_ebitda_margin": 0.4614
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_ebitda": 22124669000.0,
+      "total_ttm_revenue": 47962618000.0,
+      "industry_ebitda_margin": 0.4613
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_ebitda": 22124669000.0,
+      "total_ttm_revenue": 47962618000.0,
+      "industry_ebitda_margin": 0.4613
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_ebitda": 23313577000.0,
+      "total_ttm_revenue": 50472829000.0,
+      "industry_ebitda_margin": 0.4619
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_ebitda": 23312623000.0,
+      "total_ttm_revenue": 50471970000.0,
+      "industry_ebitda_margin": 0.4619
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_ebitda": 24763383000.0,
+      "total_ttm_revenue": 54255719000.0,
+      "industry_ebitda_margin": 0.4564
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_ebitda": 27546560000.0,
+      "total_ttm_revenue": 60795466000.0,
+      "industry_ebitda_margin": 0.4531
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_ebitda": 27545587000.0,
+      "total_ttm_revenue": 60794697000.0,
+      "industry_ebitda_margin": 0.4531
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_ebitda": 26978510000.0,
+      "total_ttm_revenue": 59240455000.0,
+      "industry_ebitda_margin": 0.4554
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_ebitda": 32911342000.0,
+      "total_ttm_revenue": 69231723000.0,
+      "industry_ebitda_margin": 0.4754
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_ebitda": 32910676000.0,
+      "total_ttm_revenue": 69231559000.0,
+      "industry_ebitda_margin": 0.4754
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_ebitda": 32918456000.0,
+      "total_ttm_revenue": 69256274000.0,
+      "industry_ebitda_margin": 0.4753
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_ebitda": 32400312000.0,
+      "total_ttm_revenue": 71473150000.0,
+      "industry_ebitda_margin": 0.4533
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_ebitda": 32399611000.0,
+      "total_ttm_revenue": 71472534000.0,
+      "industry_ebitda_margin": 0.4533
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_ebitda": 32395988000.0,
+      "total_ttm_revenue": 71505346000.0,
+      "industry_ebitda_margin": 0.4531
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_ebitda": 51002921139.57746,
+      "total_ttm_revenue": 91150950781.47894,
+      "industry_ebitda_margin": 0.5595
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_ebitda": 51002607139.57746,
+      "total_ttm_revenue": 91150672781.47894,
+      "industry_ebitda_margin": 0.5595
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_ebitda": 51080722139.57746,
+      "total_ttm_revenue": 91185386781.47894,
+      "industry_ebitda_margin": 0.5602
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_ebitda": 52470105851.808075,
+      "total_ttm_revenue": 92631520798.76724,
+      "industry_ebitda_margin": 0.5664
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_ebitda": 52469891851.808075,
+      "total_ttm_revenue": 92631235798.76724,
+      "industry_ebitda_margin": 0.5664
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_ebitda": 52488106851.808075,
+      "total_ttm_revenue": 92670189798.76724,
+      "industry_ebitda_margin": 0.5664
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_ebitda": 51704695713.76741,
+      "total_ttm_revenue": 93480633078.16528,
+      "industry_ebitda_margin": 0.5531
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_ebitda": 51704092713.76741,
+      "total_ttm_revenue": 93479942078.16528,
+      "industry_ebitda_margin": 0.5531
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_ebitda": 52449811713.76741,
+      "total_ttm_revenue": 93520301078.16528,
+      "industry_ebitda_margin": 0.5608
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_ebitda": 71343287906.76743,
+      "total_ttm_revenue": 112624075555.16528,
+      "industry_ebitda_margin": 0.6335
+    }
+  ],
+  "net_margin": [
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": -165800000.0,
+      "total_ttm_revenue": 3779100000.0,
+      "industry_net_margin": -0.0439
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": -165800000.0,
+      "total_ttm_revenue": 3779100000.0,
+      "industry_net_margin": -0.0439
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": -165800000.0,
+      "total_ttm_revenue": 3779100000.0,
+      "industry_net_margin": -0.0439
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 5268892000.0,
+      "total_ttm_revenue": 18003120000.0,
+      "industry_net_margin": 0.2927
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 5268892000.0,
+      "total_ttm_revenue": 18003120000.0,
+      "industry_net_margin": 0.2927
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 5268892000.0,
+      "total_ttm_revenue": 18003120000.0,
+      "industry_net_margin": 0.2927
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 12069317000.0,
+      "total_ttm_revenue": 47925131000.0,
+      "industry_net_margin": 0.2518
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 12088333000.0,
+      "total_ttm_revenue": 47962618000.0,
+      "industry_net_margin": 0.252
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 12088333000.0,
+      "total_ttm_revenue": 47962618000.0,
+      "industry_net_margin": 0.252
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 12699706000.0,
+      "total_ttm_revenue": 50472829000.0,
+      "industry_net_margin": 0.2516
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 12700734000.0,
+      "total_ttm_revenue": 50471970000.0,
+      "industry_net_margin": 0.2516
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 13569235000.0,
+      "total_ttm_revenue": 54255719000.0,
+      "industry_net_margin": 0.2501
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 15430917000.0,
+      "total_ttm_revenue": 60795466000.0,
+      "industry_net_margin": 0.2538
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 15433114000.0,
+      "total_ttm_revenue": 60794697000.0,
+      "industry_net_margin": 0.2539
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 15103206000.0,
+      "total_ttm_revenue": 59240455000.0,
+      "industry_net_margin": 0.2549
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 18932687000.0,
+      "total_ttm_revenue": 69231723000.0,
+      "industry_net_margin": 0.2735
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 18931965000.0,
+      "total_ttm_revenue": 69231559000.0,
+      "industry_net_margin": 0.2735
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 18935885000.0,
+      "total_ttm_revenue": 69256274000.0,
+      "industry_net_margin": 0.2734
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 18434093000.0,
+      "total_ttm_revenue": 71473150000.0,
+      "industry_net_margin": 0.2579
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 18433260000.0,
+      "total_ttm_revenue": 71472534000.0,
+      "industry_net_margin": 0.2579
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 18423667000.0,
+      "total_ttm_revenue": 71505346000.0,
+      "industry_net_margin": 0.2577
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 33296402616.783512,
+      "total_ttm_revenue": 91150950781.47894,
+      "industry_net_margin": 0.3653
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 33296975616.783512,
+      "total_ttm_revenue": 91150672781.47894,
+      "industry_net_margin": 0.3653
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 33361095616.783512,
+      "total_ttm_revenue": 91185386781.47894,
+      "industry_net_margin": 0.3659
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 34444298600.895355,
+      "total_ttm_revenue": 92631520798.76724,
+      "industry_net_margin": 0.3718
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 34444295600.895355,
+      "total_ttm_revenue": 92631235798.76724,
+      "industry_net_margin": 0.3718
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 34446853600.895355,
+      "total_ttm_revenue": 92670189798.76724,
+      "industry_net_margin": 0.3717
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 33709213864.85234,
+      "total_ttm_revenue": 93480633078.16528,
+      "industry_net_margin": 0.3606
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 33726053864.85234,
+      "total_ttm_revenue": 93479942078.16528,
+      "industry_net_margin": 0.3608
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 34168987864.85234,
+      "total_ttm_revenue": 93520301078.16528,
+      "industry_net_margin": 0.3654
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "total_ttm_net_income": 49617833063.85234,
+      "total_ttm_revenue": 112624075555.16528,
+      "industry_net_margin": 0.4406
+    }
+  ],
+  "asset_turnover": [
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roa": 0.0192,
+      "industry_net_margin": 0.2518,
+      "industry_asset_turnover": 0.08
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roa": 0.0193,
+      "industry_net_margin": 0.252,
+      "industry_asset_turnover": 0.08
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roa": 0.0193,
+      "industry_net_margin": 0.252,
+      "industry_asset_turnover": 0.08
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roa": 0.022,
+      "industry_net_margin": 0.2516,
+      "industry_asset_turnover": 0.09
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roa": 0.022,
+      "industry_net_margin": 0.2516,
+      "industry_asset_turnover": 0.09
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roa": 0.0234,
+      "industry_net_margin": 0.2501,
+      "industry_asset_turnover": 0.09
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roa": 0.024,
+      "industry_net_margin": 0.2538,
+      "industry_asset_turnover": 0.09
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roa": 0.024,
+      "industry_net_margin": 0.2539,
+      "industry_asset_turnover": 0.09
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roa": 0.0235,
+      "industry_net_margin": 0.2549,
+      "industry_asset_turnover": 0.09
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roa": 0.0319,
+      "industry_net_margin": 0.2735,
+      "industry_asset_turnover": 0.12
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roa": 0.0319,
+      "industry_net_margin": 0.2735,
+      "industry_asset_turnover": 0.12
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roa": 0.0319,
+      "industry_net_margin": 0.2734,
+      "industry_asset_turnover": 0.12
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roa": 0.0321,
+      "industry_net_margin": 0.2579,
+      "industry_asset_turnover": 0.12
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roa": 0.0321,
+      "industry_net_margin": 0.2579,
+      "industry_asset_turnover": 0.12
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roa": 0.0321,
+      "industry_net_margin": 0.2577,
+      "industry_asset_turnover": 0.12
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roa": 0.0558,
+      "industry_net_margin": 0.3653,
+      "industry_asset_turnover": 0.15
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roa": 0.0559,
+      "industry_net_margin": 0.3653,
+      "industry_asset_turnover": 0.15
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roa": 0.056,
+      "industry_net_margin": 0.3659,
+      "industry_asset_turnover": 0.15
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roa": 0.0734,
+      "industry_net_margin": 0.3718,
+      "industry_asset_turnover": 0.2
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roa": 0.0734,
+      "industry_net_margin": 0.3718,
+      "industry_asset_turnover": 0.2
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roa": 0.0734,
+      "industry_net_margin": 0.3717,
+      "industry_asset_turnover": 0.2
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roa": 0.0695,
+      "industry_net_margin": 0.3606,
+      "industry_asset_turnover": 0.19
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roa": 0.0695,
+      "industry_net_margin": 0.3608,
+      "industry_asset_turnover": 0.19
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roa": 0.0704,
+      "industry_net_margin": 0.3654,
+      "industry_asset_turnover": 0.19
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Financial Data & Stock Exchanges",
+      "industry_roa": 0.0955,
+      "industry_net_margin": 0.4406,
+      "industry_asset_turnover": 0.22
+    }
+  ]
+}

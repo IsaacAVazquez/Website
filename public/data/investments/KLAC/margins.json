@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "KLAC",
+      "report_date": "2022-06-30",
+      "gross_profit": 1508175000.0,
+      "total_revenue": 2486739000.0,
+      "gross_margin": 0.6065
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2023-06-30",
+      "gross_profit": 1392188000.0,
+      "total_revenue": 2355137000.0,
+      "gross_margin": 0.5911
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2023-09-30",
+      "gross_profit": 1450065000.0,
+      "total_revenue": 2396956000.0,
+      "gross_margin": 0.605
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2023-12-31",
+      "gross_profit": 1509980000.0,
+      "total_revenue": 2486726000.0,
+      "gross_margin": 0.6072
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-03-31",
+      "gross_profit": 1365945000.0,
+      "total_revenue": 2359830000.0,
+      "gross_margin": 0.5788
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-06-30",
+      "gross_profit": 1558184000.0,
+      "total_revenue": 2568735000.0,
+      "gross_margin": 0.6066
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-09-30",
+      "gross_profit": 1694110000.0,
+      "total_revenue": 2841541000.0,
+      "gross_margin": 0.5962
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-12-31",
+      "gross_profit": 1855390000.0,
+      "total_revenue": 3076851000.0,
+      "gross_margin": 0.603
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-03-31",
+      "gross_profit": 1887340000.0,
+      "total_revenue": 3063029000.0,
+      "gross_margin": 0.6162
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-06-30",
+      "gross_profit": 1967455000.0,
+      "total_revenue": 12156162000.0,
+      "gross_margin": 0.1618
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-09-30",
+      "gross_profit": 1966626000.0,
+      "total_revenue": 3209696000.0,
+      "gross_margin": 0.6127
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-12-31",
+      "gross_profit": 2025936000.0,
+      "total_revenue": 3297146000.0,
+      "gross_margin": 0.6145
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2026-03-31",
+      "gross_profit": 2087406000.0,
+      "total_revenue": 13096661000.0,
+      "gross_margin": 0.1594
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "KLAC",
+      "report_date": "2019-06-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2020-06-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2021-06-30",
+      "gross_profit": 4146569000.0,
+      "total_revenue": 6918734000.0,
+      "gross_margin": 0.5993
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2022-06-30",
+      "gross_profit": 5619442000.0,
+      "total_revenue": 9211883000.0,
+      "gross_margin": 0.61
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2023-06-30",
+      "gross_profit": 6277749000.0,
+      "total_revenue": 10496056000.0,
+      "gross_margin": 0.5981
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-06-30",
+      "gross_profit": 5884174000.0,
+      "total_revenue": 9812247000.0,
+      "gross_margin": 0.5997
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-06-30",
+      "gross_profit": 7404295000.0,
+      "total_revenue": 12156162000.0,
+      "gross_margin": 0.6091
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "KLAC",
+      "report_date": "2022-06-30",
+      "operating_income": 974516000.0,
+      "total_revenue": 2486739000.0,
+      "operating_margin": 0.3919
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2023-06-30",
+      "operating_income": 824221000.0,
+      "total_revenue": 2355137000.0,
+      "operating_margin": 0.35
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2023-09-30",
+      "operating_income": 899206000.0,
+      "total_revenue": 2396956000.0,
+      "operating_margin": 0.3751
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2023-12-31",
+      "operating_income": 952318000.0,
+      "total_revenue": 2486726000.0,
+      "operating_margin": 0.383
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-03-31",
+      "operating_income": 806841000.0,
+      "total_revenue": 2359830000.0,
+      "operating_margin": 0.3419
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-06-30",
+      "operating_income": 977319000.0,
+      "total_revenue": 2568735000.0,
+      "operating_margin": 0.3805
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-09-30",
+      "operating_income": 1119923000.0,
+      "total_revenue": 2841541000.0,
+      "operating_margin": 0.3941
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-12-31",
+      "operating_income": 1242152000.0,
+      "total_revenue": 3076851000.0,
+      "operating_margin": 0.4037
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-03-31",
+      "operating_income": 1300392000.0,
+      "total_revenue": 3063029000.0,
+      "operating_margin": 0.4245
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-06-30",
+      "operating_income": 5014227000.0,
+      "total_revenue": 12156162000.0,
+      "operating_margin": 0.4125
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-09-30",
+      "operating_income": 1337177000.0,
+      "total_revenue": 3209696000.0,
+      "operating_margin": 0.4166
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-12-31",
+      "operating_income": 1362146000.0,
+      "total_revenue": 3297146000.0,
+      "operating_margin": 0.4131
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2026-03-31",
+      "operating_income": 5458592000.0,
+      "total_revenue": 13096661000.0,
+      "operating_margin": 0.4168
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "KLAC",
+      "report_date": "2019-06-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2020-06-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2021-06-30",
+      "operating_income": 2488480000.0,
+      "total_revenue": 6918734000.0,
+      "operating_margin": 0.3597
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2022-06-30",
+      "operating_income": 3654181000.0,
+      "total_revenue": 9211883000.0,
+      "operating_margin": 0.3967
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2023-06-30",
+      "operating_income": 3994696000.0,
+      "total_revenue": 10496056000.0,
+      "operating_margin": 0.3806
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-06-30",
+      "operating_income": 3635684000.0,
+      "total_revenue": 9812247000.0,
+      "operating_margin": 0.3705
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-06-30",
+      "operating_income": 5014227000.0,
+      "total_revenue": 12156162000.0,
+      "operating_margin": 0.4125
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "KLAC",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 805374000.0,
+      "total_revenue": 2486739000.0,
+      "net_margin": 0.3239
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 684654000.0,
+      "total_revenue": 2355137000.0,
+      "net_margin": 0.2907
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 741375000.0,
+      "total_revenue": 2396956000.0,
+      "net_margin": 0.3093
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 582534000.0,
+      "total_revenue": 2486726000.0,
+      "net_margin": 0.2343
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 601541000.0,
+      "total_revenue": 2359830000.0,
+      "net_margin": 0.2549
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 836446000.0,
+      "total_revenue": 2568735000.0,
+      "net_margin": 0.3256
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 945851000.0,
+      "total_revenue": 2841541000.0,
+      "net_margin": 0.3329
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 824527000.0,
+      "total_revenue": 3076851000.0,
+      "net_margin": 0.268
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1088416000.0,
+      "total_revenue": 3063029000.0,
+      "net_margin": 0.3553
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1202849000.0,
+      "total_revenue": 12156162000.0,
+      "net_margin": 0.0989
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1121040000.0,
+      "total_revenue": 3209696000.0,
+      "net_margin": 0.3493
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1145682000.0,
+      "total_revenue": 3297146000.0,
+      "net_margin": 0.3475
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1200990000.0,
+      "total_revenue": 13096661000.0,
+      "net_margin": 0.0917
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "KLAC",
+      "report_date": "2019-06-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2020-06-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2021-06-30",
+      "net_income_common_stockholders": 2078292000.0,
+      "total_revenue": 6918734000.0,
+      "net_margin": 0.3004
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 3321807000.0,
+      "total_revenue": 9211883000.0,
+      "net_margin": 0.3606
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 3387277000.0,
+      "total_revenue": 10496056000.0,
+      "net_margin": 0.3227
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 2761896000.0,
+      "total_revenue": 9812247000.0,
+      "net_margin": 0.2815
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 4061643000.0,
+      "total_revenue": 12156162000.0,
+      "net_margin": 0.3341
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "KLAC",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 2486739000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2023-06-30",
+      "ebitda": 953810000.0,
+      "total_revenue": 2355137000.0,
+      "ebitda_margin": 0.405
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2023-09-30",
+      "ebitda": 1028348000.0,
+      "total_revenue": 2396956000.0,
+      "ebitda_margin": 0.429
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2023-12-31",
+      "ebitda": 864535000.0,
+      "total_revenue": 2486726000.0,
+      "ebitda_margin": 0.3477
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-03-31",
+      "ebitda": 881252000.0,
+      "total_revenue": 2359830000.0,
+      "ebitda_margin": 0.3734
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-06-30",
+      "ebitda": 1128880000.0,
+      "total_revenue": 2568735000.0,
+      "ebitda_margin": 0.4395
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-09-30",
+      "ebitda": 1256681000.0,
+      "total_revenue": 2841541000.0,
+      "ebitda_margin": 0.4423
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-12-31",
+      "ebitda": 1151432000.0,
+      "total_revenue": 3076851000.0,
+      "ebitda_margin": 0.3742
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-03-31",
+      "ebitda": 1434413000.0,
+      "total_revenue": 3063029000.0,
+      "ebitda_margin": 0.4683
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-06-30",
+      "ebitda": 1498176000.0,
+      "total_revenue": 12156162000.0,
+      "ebitda_margin": 0.1232
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-09-30",
+      "ebitda": 1477567000.0,
+      "total_revenue": 3209696000.0,
+      "ebitda_margin": 0.4603
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-12-31",
+      "ebitda": 1499239000.0,
+      "total_revenue": 3297146000.0,
+      "ebitda_margin": 0.4547
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2026-03-31",
+      "ebitda": 1586272000.0,
+      "total_revenue": 13096661000.0,
+      "ebitda_margin": 0.1211
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "KLAC",
+      "report_date": "2019-06-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2020-06-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2021-06-30",
+      "ebitda": 2851117000.0,
+      "total_revenue": 6918734000.0,
+      "ebitda_margin": 0.4121
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2022-06-30",
+      "ebitda": 4012920000.0,
+      "total_revenue": 9211883000.0,
+      "ebitda_margin": 0.4356
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2023-06-30",
+      "ebitda": 4501243000.0,
+      "total_revenue": 10496056000.0,
+      "ebitda_margin": 0.4289
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-06-30",
+      "ebitda": 3903015000.0,
+      "total_revenue": 9812247000.0,
+      "ebitda_margin": 0.3978
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-06-30",
+      "ebitda": 5340702000.0,
+      "total_revenue": 12156162000.0,
+      "ebitda_margin": 0.4393
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "KLAC",
+      "report_date": "2022-06-30",
+      "free_cash_flow": -1513244000.0,
+      "total_revenue": 2486739000.0,
+      "fcf_margin": -0.6085
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 880432000.0,
+      "total_revenue": 2355137000.0,
+      "fcf_margin": 0.3738
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 815695000.0,
+      "total_revenue": 2396956000.0,
+      "fcf_margin": 0.3403
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 545441000.0,
+      "total_revenue": 2486726000.0,
+      "fcf_margin": 0.2193
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 838185000.0,
+      "total_revenue": 2359830000.0,
+      "fcf_margin": 0.3552
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 831870000.0,
+      "total_revenue": 2568735000.0,
+      "fcf_margin": 0.3238
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 934845000.0,
+      "total_revenue": 2841541000.0,
+      "fcf_margin": 0.329
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 757192000.0,
+      "total_revenue": 3076851000.0,
+      "fcf_margin": 0.2461
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 990024000.0,
+      "total_revenue": 3063029000.0,
+      "fcf_margin": 0.3232
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 1062483000.0,
+      "total_revenue": 12156162000.0,
+      "fcf_margin": 0.0874
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 1065697000.0,
+      "total_revenue": 3209696000.0,
+      "fcf_margin": 0.332
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 1262031000.0,
+      "total_revenue": 3297146000.0,
+      "fcf_margin": 0.3828
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 622264000.0,
+      "total_revenue": 13096661000.0,
+      "fcf_margin": 0.0475
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "KLAC",
+      "report_date": "2019-06-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2020-06-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2021-06-30",
+      "free_cash_flow": 1953398000.0,
+      "total_revenue": 6918734000.0,
+      "fcf_margin": 0.2823
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 3005382000.0,
+      "total_revenue": 9211883000.0,
+      "fcf_margin": 0.3263
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 3328214000.0,
+      "total_revenue": 10496056000.0,
+      "fcf_margin": 0.3171
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 3031191000.0,
+      "total_revenue": 9812247000.0,
+      "fcf_margin": 0.3089
+    },
+    {
+      "symbol": "KLAC",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 3741694000.0,
+      "total_revenue": 12156162000.0,
+      "fcf_margin": 0.3078
+    }
+  ]
+}

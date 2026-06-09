@@ -21,7 +21,7 @@ export default function About() {
         {/* Page heading */}
         <motion.div
           className="space-y-3 pt-4"
-          initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: shouldReduceMotion ? 0 : 0.5 }}
         >
@@ -42,7 +42,7 @@ export default function About() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: shouldReduceMotion ? 0 : 0.5, delay: 0.1 }}
           className="w-full"
@@ -110,7 +110,7 @@ export default function About() {
                 id="overview-panel"
                 role="tabpanel"
                 aria-labelledby="overview-tab"
-                initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 16 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: shouldReduceMotion ? 0 : -16 }}
                 transition={{ duration: shouldReduceMotion ? 0 : 0.25 }}
@@ -124,7 +124,7 @@ export default function About() {
                 id="journey-panel"
                 role="tabpanel"
                 aria-labelledby="journey-tab"
-                initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 16 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: shouldReduceMotion ? 0 : -16 }}
                 transition={{ duration: shouldReduceMotion ? 0 : 0.25 }}

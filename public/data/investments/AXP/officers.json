@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "AXP",
+    "name": "Mr. Christophe Y. Le Caillec",
+    "title": "Chief Financial Officer",
+    "age": 58,
+    "born": 1967,
+    "pay": 6992536,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "AXP",
+    "name": "Mr. Howard Martin Grosfield",
+    "title": "Group President of US Consumer Services",
+    "age": 56,
+    "born": 1969,
+    "pay": 6975740,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "AXP",
+    "name": "Mr. Kartik  Ramachandran",
+    "title": "Senior VP & Head of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "AXP",
+    "name": "Mr. Ravikumar  Radhakrishnan",
+    "title": "Executive VP & CIO",
+    "age": 52,
+    "born": 1973,
+    "pay": 7427926,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "AXP",
+    "name": "Mr. Raymond Donald Joabar",
+    "title": "Group President of Global Commercial Services",
+    "age": 59,
+    "born": 1966,
+    "pay": 6363786,
+    "exercised": 3000551,
+    "unexercised": 8343986,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "AXP",
+    "name": "Mr. Stephen Joseph Squeri",
+    "title": "Chairman & CEO",
+    "age": 65,
+    "born": 1960,
+    "pay": 17287408,
+    "exercised": 22249908,
+    "unexercised": 36281056,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "AXP",
+    "name": "Ms. Denise  Pickett",
+    "title": "President of Enterprise Shared Services",
+    "age": 59,
+    "born": 1966,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "AXP",
+    "name": "Ms. Elizabeth  Rutledge",
+    "title": "Chief Marketing Officer",
+    "age": 62,
+    "born": 1963,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "AXP",
+    "name": "Ms. Glenda G. McNeal",
+    "title": "Chief Partner Officer",
+    "age": 64,
+    "born": 1961,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "AXP",
+    "name": "Ms. Laureen E. Seeger",
+    "title": "Chief Legal Officer",
+    "age": 63,
+    "born": 1962,
+    "pay": 6155660,
+    "exercised": 5433533,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  }
+]

@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "ZTS",
+      "report_date": "2022-06-30",
+      "gross_profit": 1427000000.0,
+      "total_revenue": 2052000000.0,
+      "gross_margin": 0.6954
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-03-31",
+      "gross_profit": 1412000000.0,
+      "total_revenue": 2000000000.0,
+      "gross_margin": 0.706
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-06-30",
+      "gross_profit": 1573000000.0,
+      "total_revenue": 2180000000.0,
+      "gross_margin": 0.7216
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-09-30",
+      "gross_profit": 1513000000.0,
+      "total_revenue": 2151000000.0,
+      "gross_margin": 0.7034
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-12-31",
+      "gross_profit": 1485000000.0,
+      "total_revenue": 2213000000.0,
+      "gross_margin": 0.671
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-03-31",
+      "gross_profit": 1547000000.0,
+      "total_revenue": 2190000000.0,
+      "gross_margin": 0.7064
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-06-30",
+      "gross_profit": 1693000000.0,
+      "total_revenue": 2361000000.0,
+      "gross_margin": 0.7171
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-09-30",
+      "gross_profit": 1687000000.0,
+      "total_revenue": 2388000000.0,
+      "gross_margin": 0.7064
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-12-31",
+      "gross_profit": 1610000000.0,
+      "total_revenue": 2317000000.0,
+      "gross_margin": 0.6949
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-03-31",
+      "gross_profit": 1580000000.0,
+      "total_revenue": 2198000000.0,
+      "gross_margin": 0.7188
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-06-30",
+      "gross_profit": 6706000000.0,
+      "total_revenue": 9385000000.0,
+      "gross_margin": 0.7145
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-09-30",
+      "gross_profit": 1717000000.0,
+      "total_revenue": 2400000000.0,
+      "gross_margin": 0.7154
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-12-31",
+      "gross_profit": 1675000000.0,
+      "total_revenue": 2387000000.0,
+      "gross_margin": 0.7017
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2026-03-31",
+      "gross_profit": 6842000000.0,
+      "total_revenue": 9531000000.0,
+      "gross_margin": 0.7179
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "ZTS",
+      "report_date": "2019-12-31",
+      "gross_profit": 4268000000.0,
+      "total_revenue": 6260000000.0,
+      "gross_margin": 0.6818
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2020-12-31",
+      "gross_profit": 4618000000.0,
+      "total_revenue": 6675000000.0,
+      "gross_margin": 0.6918
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2021-12-31",
+      "gross_profit": 5473000000.0,
+      "total_revenue": 7776000000.0,
+      "gross_margin": 0.7038
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2022-12-31",
+      "gross_profit": 5626000000.0,
+      "total_revenue": 8080000000.0,
+      "gross_margin": 0.6963
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-12-31",
+      "gross_profit": 5983000000.0,
+      "total_revenue": 8544000000.0,
+      "gross_margin": 0.7003
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-12-31",
+      "gross_profit": 6537000000.0,
+      "total_revenue": 9256000000.0,
+      "gross_margin": 0.7062
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-12-31",
+      "gross_profit": 6801000000.0,
+      "total_revenue": 9467000000.0,
+      "gross_margin": 0.7184
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "ZTS",
+      "report_date": "2022-06-30",
+      "operating_income": 726000000.0,
+      "total_revenue": 2052000000.0,
+      "operating_margin": 0.3538
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-03-31",
+      "operating_income": 728000000.0,
+      "total_revenue": 2000000000.0,
+      "operating_margin": 0.364
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-06-30",
+      "operating_income": 834000000.0,
+      "total_revenue": 2180000000.0,
+      "operating_margin": 0.3826
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-09-30",
+      "operating_income": 798000000.0,
+      "total_revenue": 2151000000.0,
+      "operating_margin": 0.371
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-12-31",
+      "operating_income": 709000000.0,
+      "total_revenue": 2213000000.0,
+      "operating_margin": 0.3204
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-03-31",
+      "operating_income": 801000000.0,
+      "total_revenue": 2190000000.0,
+      "operating_margin": 0.3658
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-06-30",
+      "operating_income": 906000000.0,
+      "total_revenue": 2361000000.0,
+      "operating_margin": 0.3837
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-09-30",
+      "operating_income": 920000000.0,
+      "total_revenue": 2388000000.0,
+      "operating_margin": 0.3853
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-12-31",
+      "operating_income": 765000000.0,
+      "total_revenue": 2317000000.0,
+      "operating_margin": 0.3302
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-03-31",
+      "operating_income": 812000000.0,
+      "total_revenue": 2198000000.0,
+      "operating_margin": 0.3694
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-06-30",
+      "operating_income": 3520000000.0,
+      "total_revenue": 9385000000.0,
+      "operating_margin": 0.3751
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-09-30",
+      "operating_income": 936000000.0,
+      "total_revenue": 2400000000.0,
+      "operating_margin": 0.39
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-12-31",
+      "operating_income": 826000000.0,
+      "total_revenue": 2387000000.0,
+      "operating_margin": 0.346
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2026-03-31",
+      "operating_income": 3607000000.0,
+      "total_revenue": 9531000000.0,
+      "operating_margin": 0.3784
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "ZTS",
+      "report_date": "2019-12-31",
+      "operating_income": 2018000000.0,
+      "total_revenue": 6260000000.0,
+      "operating_margin": 0.3224
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2020-12-31",
+      "operating_income": 2269000000.0,
+      "total_revenue": 6675000000.0,
+      "operating_margin": 0.3399
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2021-12-31",
+      "operating_income": 2803000000.0,
+      "total_revenue": 7776000000.0,
+      "operating_margin": 0.3605
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2022-12-31",
+      "operating_income": 2928000000.0,
+      "total_revenue": 8080000000.0,
+      "operating_margin": 0.3624
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-12-31",
+      "operating_income": 3069000000.0,
+      "total_revenue": 8544000000.0,
+      "operating_margin": 0.3592
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-12-31",
+      "operating_income": 3392000000.0,
+      "total_revenue": 9256000000.0,
+      "operating_margin": 0.3665
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-12-31",
+      "operating_income": 3597000000.0,
+      "total_revenue": 9467000000.0,
+      "operating_margin": 0.38
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "ZTS",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 529000000.0,
+      "total_revenue": 2052000000.0,
+      "net_margin": 0.2578
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": 552000000.0,
+      "total_revenue": 2000000000.0,
+      "net_margin": 0.276
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 671000000.0,
+      "total_revenue": 2180000000.0,
+      "net_margin": 0.3078
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 596000000.0,
+      "total_revenue": 2151000000.0,
+      "net_margin": 0.2771
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 525000000.0,
+      "total_revenue": 2213000000.0,
+      "net_margin": 0.2372
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 599000000.0,
+      "total_revenue": 2190000000.0,
+      "net_margin": 0.2735
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 624000000.0,
+      "total_revenue": 2361000000.0,
+      "net_margin": 0.2643
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 682000000.0,
+      "total_revenue": 2388000000.0,
+      "net_margin": 0.2856
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 581000000.0,
+      "total_revenue": 2317000000.0,
+      "net_margin": 0.2508
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 602000000.0,
+      "total_revenue": 2198000000.0,
+      "net_margin": 0.2739
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 718000000.0,
+      "total_revenue": 9385000000.0,
+      "net_margin": 0.0765
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 721000000.0,
+      "total_revenue": 2400000000.0,
+      "net_margin": 0.3004
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 603000000.0,
+      "total_revenue": 2387000000.0,
+      "net_margin": 0.2526
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 601000000.0,
+      "total_revenue": 9531000000.0,
+      "net_margin": 0.0631
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "ZTS",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": 1500000000.0,
+      "total_revenue": 6260000000.0,
+      "net_margin": 0.2396
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 1638000000.0,
+      "total_revenue": 6675000000.0,
+      "net_margin": 0.2454
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 2037000000.0,
+      "total_revenue": 7776000000.0,
+      "net_margin": 0.262
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 2114000000.0,
+      "total_revenue": 8080000000.0,
+      "net_margin": 0.2616
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 2344000000.0,
+      "total_revenue": 8544000000.0,
+      "net_margin": 0.2743
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 2486000000.0,
+      "total_revenue": 9256000000.0,
+      "net_margin": 0.2686
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 2673000000.0,
+      "total_revenue": 9467000000.0,
+      "net_margin": 0.2823
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "ZTS",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 2052000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-03-31",
+      "ebitda": 880000000.0,
+      "total_revenue": 2000000000.0,
+      "ebitda_margin": 0.44
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-06-30",
+      "ebitda": 1051000000.0,
+      "total_revenue": 2180000000.0,
+      "ebitda_margin": 0.4821
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-09-30",
+      "ebitda": 900000000.0,
+      "total_revenue": 2151000000.0,
+      "ebitda_margin": 0.4184
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-12-31",
+      "ebitda": 835000000.0,
+      "total_revenue": 2213000000.0,
+      "ebitda_margin": 0.3773
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-03-31",
+      "ebitda": 931000000.0,
+      "total_revenue": 2190000000.0,
+      "ebitda_margin": 0.4251
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-06-30",
+      "ebitda": 966000000.0,
+      "total_revenue": 2361000000.0,
+      "ebitda_margin": 0.4091
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-09-30",
+      "ebitda": 1052000000.0,
+      "total_revenue": 2388000000.0,
+      "ebitda_margin": 0.4405
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-12-31",
+      "ebitda": 906000000.0,
+      "total_revenue": 2317000000.0,
+      "ebitda_margin": 0.391
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-03-31",
+      "ebitda": 946000000.0,
+      "total_revenue": 2198000000.0,
+      "ebitda_margin": 0.4304
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-06-30",
+      "ebitda": 4019000000.0,
+      "total_revenue": 9385000000.0,
+      "ebitda_margin": 0.4282
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-09-30",
+      "ebitda": 1069000000.0,
+      "total_revenue": 2400000000.0,
+      "ebitda_margin": 0.4454
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-12-31",
+      "ebitda": 939000000.0,
+      "total_revenue": 2387000000.0,
+      "ebitda_margin": 0.3934
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2026-03-31",
+      "ebitda": 4062000000.0,
+      "total_revenue": 9531000000.0,
+      "ebitda_margin": 0.4262
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "ZTS",
+      "report_date": "2019-12-31",
+      "ebitda": 2179000000.0,
+      "total_revenue": 6260000000.0,
+      "ebitda_margin": 0.3481
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2020-12-31",
+      "ebitda": 2668000000.0,
+      "total_revenue": 6675000000.0,
+      "ebitda_margin": 0.3997
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2021-12-31",
+      "ebitda": 3160000000.0,
+      "total_revenue": 7776000000.0,
+      "ebitda_margin": 0.4064
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2022-12-31",
+      "ebitda": 3342000000.0,
+      "total_revenue": 8080000000.0,
+      "ebitda_margin": 0.4136
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-12-31",
+      "ebitda": 3666000000.0,
+      "total_revenue": 8544000000.0,
+      "ebitda_margin": 0.4291
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-12-31",
+      "ebitda": 3855000000.0,
+      "total_revenue": 9256000000.0,
+      "ebitda_margin": 0.4165
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-12-31",
+      "ebitda": 4069000000.0,
+      "total_revenue": 9467000000.0,
+      "ebitda_margin": 0.4298
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "ZTS",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 190000000.0,
+      "total_revenue": 2052000000.0,
+      "fcf_margin": 0.0926
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": 2000000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 17000000.0,
+      "total_revenue": 2180000000.0,
+      "fcf_margin": 0.0078
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 579000000.0,
+      "total_revenue": 2151000000.0,
+      "fcf_margin": 0.2692
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 699000000.0,
+      "total_revenue": 2213000000.0,
+      "fcf_margin": 0.3159
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 455000000.0,
+      "total_revenue": 2190000000.0,
+      "fcf_margin": 0.2078
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 370000000.0,
+      "total_revenue": 2361000000.0,
+      "fcf_margin": 0.1567
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 784000000.0,
+      "total_revenue": 2388000000.0,
+      "fcf_margin": 0.3283
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 689000000.0,
+      "total_revenue": 2317000000.0,
+      "fcf_margin": 0.2974
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 337000000.0,
+      "total_revenue": 2198000000.0,
+      "fcf_margin": 0.1533
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 409000000.0,
+      "total_revenue": 9385000000.0,
+      "fcf_margin": 0.0436
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 805000000.0,
+      "total_revenue": 2400000000.0,
+      "fcf_margin": 0.3354
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 732000000.0,
+      "total_revenue": 2387000000.0,
+      "fcf_margin": 0.3067
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 291000000.0,
+      "total_revenue": 9531000000.0,
+      "fcf_margin": 0.0305
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "ZTS",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": 6260000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 1673000000.0,
+      "total_revenue": 6675000000.0,
+      "fcf_margin": 0.2506
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 1736000000.0,
+      "total_revenue": 7776000000.0,
+      "fcf_margin": 0.2233
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 1326000000.0,
+      "total_revenue": 8080000000.0,
+      "fcf_margin": 0.1641
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 1621000000.0,
+      "total_revenue": 8544000000.0,
+      "fcf_margin": 0.1897
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 2298000000.0,
+      "total_revenue": 9256000000.0,
+      "fcf_margin": 0.2483
+    },
+    {
+      "symbol": "ZTS",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 2283000000.0,
+      "total_revenue": 9467000000.0,
+      "fcf_margin": 0.2412
+    }
+  ]
+}

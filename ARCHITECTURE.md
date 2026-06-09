@@ -2,7 +2,7 @@
 
 High-level system architecture for the current live application.
 
-**Last updated:** 2026-04-10
+**Last updated:** 2026-06-08
 
 ---
 
@@ -15,8 +15,8 @@ This repo is a single Next.js app that serves multiple product surfaces:
 3. fantasy football analytics tools
 4. an investment research platform
 5. a seasonal March Madness editorial analysis route
-6. football dashboards — Premier League (`/premier-league`) and La Liga (`/la-liga`)
-7. standalone data tools for news, space launches, polling, and fintech calculators
+6. sports dashboards — Premier League (`/premier-league`), La Liga (`/la-liga`), MLB (`/mlb`), NBA (`/nba`), NFL (`/nfl`), golf (`/golf`), Formula 1 (`/formula-1`), and Fantasy Formula 1 (`/fantasy-formula-1`)
+7. standalone data tools for AI tools, frontier models, news, space launches, polling, personal logs, and fintech calculators
 
 The architecture is intentionally mixed:
 
@@ -57,8 +57,9 @@ src/app/layout.tsx
 ### Fantasy football
 
 - mixed server/client rendering
-- chart-heavy UI
-- SQLite-backed data flows plus sample fallbacks and scheduled refresh tools
+- generated static snapshots in `public/data/fantasy/`
+- `/api/fantasy-data` server fallback over the same snapshot files
+- weekly GitHub Actions refresh through `npm run update:fantasy`
 
 ### Investments
 
@@ -90,9 +91,15 @@ Update workflow:
 
 ### Other standalone tools
 
+- `/mlb`, `/nba`, and `/nfl` use committed TypeScript snapshots and matching `/api/{league}/*` routes
+- `/golf` uses the manually maintained `src/data/golfSnapshot.ts`
+- `/formula-1` and `/fantasy-formula-1` use `src/data/formula1Snapshot.ts`
+- `/ai-dev-tools` and `/frontier-models` are live AI/knowledge surfaces; frontier model data is generated from `scripts/data/frontierModels.source.ts`
+- `/github-trending-pulse` uses `src/data/githubTrendingSnapshot.ts`
 - `/news-pulse` uses `/api/news-pulse` and `src/lib/news-pulse-utils.ts`
 - `/spacex-mission-control` uses `src/components/spacex/` and `/api/spacex/*`
 - `/polling-aggregator` uses a committed polling snapshot in `src/data/pollingSnapshot.ts`
+- `/food-map`, `/recipe-finder`, `/wine-cellar`, `/museum-log`, `/now`, and `/changelog` are live personal or utility surfaces
 - `/fintech-tools/budget-planner` uses `src/hooks/useBudgetPlanner.ts`
 - `/fintech-tools/interchange-iq` is a client-side fee analyzer
 
@@ -113,6 +120,18 @@ Update workflow:
 
 These are committed TypeScript files rebuilt by `scripts/buildPremierLeagueSnapshot.ts` and `scripts/updateLaLigaSnapshot.ts`. The API routes for each dashboard read from these files, not from `football-data.org` at runtime.
 
+### Other dashboard snapshots
+
+- `src/data/mlbSnapshot.ts`
+- `src/data/nbaSnapshot.ts`
+- `src/data/nflSnapshot.ts`
+- `src/data/golfSnapshot.ts`
+- `src/data/formula1Snapshot.ts`
+- `src/data/githubTrendingSnapshot.ts`
+- `src/data/frontierModelsSnapshot.ts`
+- `src/data/spacexSnapshot.generated.json`
+- `src/data/spacexImageManifest.generated.json`
+
 ### Writing content
 
 - `content/blog/*.mdx`
@@ -120,9 +139,10 @@ These are committed TypeScript files rebuilt by `scripts/buildPremierLeagueSnaps
 
 ### Fantasy football
 
-- SQLite and supporting ingestion/cache layers
-- sample-data fallbacks
-- scheduled update route for refresh flows
+- generated TypeScript position data in `src/data/fantasyPositionData.generated.ts`
+- generated public JSON snapshots in `public/data/fantasy/`
+- snapshot reader in `src/lib/fantasySnapshotServer.ts`
+- public API fallback at `/api/fantasy-data`
 
 ### Investments
 
@@ -138,10 +158,12 @@ All API handlers live under `src/app/api/`.
 Important groups:
 
 - auth: `/api/auth/[...nextauth]`
-- fantasy football: `/api/fantasy-data`, `/api/fantasy-pros-session`, `/api/fantasy-pros-free`, `/api/data-manager`, `/api/data-metadata`, `/api/sample-data`, `/api/scheduled-update`
+- fantasy football: `/api/fantasy-data`
 - investments: `/api/investments/index`, `/api/investments/quotes`, `/api/investments/data/[symbol]`, `/api/stocks`
 - football: `/api/premier-league/summary`, `/api/premier-league/teams/[teamId]`, `/api/la-liga/summary`, `/api/la-liga/teams/[teamId]`
-- content/utilities: `/api/news-pulse`, `/api/spacex/summary`, `/api/spacex/launches`, `/api/spacex/launches/[id]`, `/api/rss`, `/api/search`, `/api/scrape`
+- US sports and golf: `/api/mlb/summary`, `/api/mlb/teams/[teamId]`, `/api/nba/summary`, `/api/nba/teams/[teamId]`, `/api/nfl/summary`, `/api/nfl/teams/[teamId]`, `/api/golf/summary`, `/api/golf/players/[playerId]`
+- jobs/email: `/api/mba-jobs`, `/api/mba-jobs/email`
+- content/utilities: `/api/news-pulse`, `/api/spacex/summary`, `/api/spacex/launches`, `/api/spacex/launches/[id]`, `/api/rss`, `/api/search`
 
 Current caveat:
 

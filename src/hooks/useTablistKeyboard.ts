@@ -10,13 +10,12 @@ import { useCallback, type KeyboardEvent } from "react";
  */
 export function useTablistKeyboard<T>(
   items: ReadonlyArray<T>,
-  getKey: (item: T) => string,
   onSelect: (item: T) => void,
 ) {
   return useCallback(
     (event: KeyboardEvent<HTMLButtonElement>, index: number) => {
       const last = items.length - 1;
-      let nextIndex: number | null = null;
+      let nextIndex!: number;
 
       switch (event.key) {
         case "ArrowRight":
@@ -43,13 +42,13 @@ export function useTablistKeyboard<T>(
       event.preventDefault();
       const target = event.currentTarget;
       const list = target.closest('[role="tablist"]');
-      if (!list || nextIndex === null) return;
+      if (!list) return;
       const next = list.querySelectorAll<HTMLButtonElement>('[role="tab"]')[nextIndex];
       if (next) {
         next.focus();
         onSelect(items[nextIndex]);
       }
     },
-    [items, getKey, onSelect],
+    [items, onSelect],
   );
 }

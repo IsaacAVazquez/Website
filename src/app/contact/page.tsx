@@ -1,4 +1,4 @@
-import { ContactContent } from "@/components/ContactContent";
+import { ContactV3 } from "@/components/contact/ContactV3";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { StructuredData } from "@/components/StructuredData";
 
@@ -7,7 +7,7 @@ export const metadata = constructMetadata({
   description:
     "Get in touch about product roles, analytics work, or fintech-focused projects.",
   canonicalUrl: "/contact",
-  dateModified: "2026-03-16",
+  dateModified: "2026-05-26",
 });
 
 export default function Contact() {
@@ -43,7 +43,7 @@ export default function Contact() {
         }}
       />
 
-      <ContactContent />
+      <ContactV3 />
     </>
   );
 }

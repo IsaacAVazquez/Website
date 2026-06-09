@@ -18,6 +18,13 @@ import {
   LeaderList,
   type LeaderEntry,
 } from "@/components/football";
+import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
+import {
+  Article,
+  Briefcase,
+  ChartBar,
+  User,
+} from "@/components/ui/ServerIcons";
 import type {
   MlbHittingLeaders,
   MlbLeader,
@@ -190,6 +197,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
   useEffect(() => {
     if (!selectedRow) return;
     if (teamSnapshots[selectedRow.id]) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- Reset loading/error flags when cached snapshot exists for the selected team
       setLoadingTeamId(null);
       setTeamSnapshotError(null);
       return;
@@ -288,6 +296,79 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
 
   const hasStandings = standings.length > 0 && standings.some((row) => row.wins + row.losses > 0);
 
+  // Stats panel cells
+  const worstRecord = useMemo(() => {
+    if (standings.length === 0) return null;
+    return [...standings].sort((a, b) => a.pct - b.pct || a.wins - b.wins)[0] ?? null;
+  }, [standings]);
+
+  // Tightest division: smallest games-back among 2nd-place teams
+  const tightestDivision = useMemo(() => {
+    const seconds = standings.filter((row) => row.divisionRank === 2 && row.gamesBack > 0);
+    if (seconds.length === 0) return null;
+    return [...seconds].sort((a, b) => a.gamesBack - b.gamesBack)[0] ?? null;
+  }, [standings]);
+
+  const avgGamesPlayed = useMemo(() => {
+    if (standings.length === 0) return 0;
+    return Math.round(
+      standings.reduce((acc, row) => acc + row.wins + row.losses, 0) / standings.length
+    );
+  }, [standings]);
+
+  const totalRegularSeasonGames = 162;
+
+  const statsPanelCells: HomeStatsCell[] = [
+    {
+      label: "Best record",
+      tooltip: "Club with the highest winning percentage across both leagues.",
+      value: leagueLeader ? `${leagueLeader.shortName} · ${formatRecord(leagueLeader)}` : "—",
+      sub: leagueLeader ? `${formatFixed(leagueLeader.pct, 3)} W%` : undefined,
+    },
+    {
+      label: "AL leader",
+      tooltip: "Top American League club by winning percentage.",
+      value: alLeader ? `${alLeader.shortName} · ${formatRecord(alLeader)}` : "—",
+      sub: alLeader ? `${formatFixed(alLeader.pct, 3)} W%` : undefined,
+    },
+    {
+      label: "NL leader",
+      tooltip: "Top National League club by winning percentage.",
+      value: nlLeader ? `${nlLeader.shortName} · ${formatRecord(nlLeader)}` : "—",
+      sub: nlLeader ? `${formatFixed(nlLeader.pct, 3)} W%` : undefined,
+    },
+    {
+      label: "Hottest streak",
+      tooltip: "Club currently riding the longest active winning streak.",
+      value: hottest ? `${hottest.shortName} · ${hottest.streak}` : "—",
+      sub: hottest ? `Last 10: ${hottest.last10}` : "No active win streaks",
+    },
+    {
+      label: "Worst record",
+      tooltip: "Club with the lowest winning percentage across both leagues.",
+      value: worstRecord ? `${worstRecord.shortName} · ${formatRecord(worstRecord)}` : "—",
+      sub: worstRecord ? `${formatFixed(worstRecord.pct, 3)} W%` : undefined,
+    },
+    {
+      label: "Tightest division",
+      tooltip: "Division where the second-place club is closest to first.",
+      value: tightestDivision
+        ? `${tightestDivision.division.replace("AL ", "AL ").replace("NL ", "NL ")} · ${tightestDivision.gamesBack.toFixed(1)} GB`
+        : "—",
+      sub: tightestDivision ? `${tightestDivision.shortName} chasing` : undefined,
+    },
+    {
+      label: "Through games",
+      tooltip: "Average games played across all 30 clubs in this snapshot.",
+      value: `${avgGamesPlayed} / ${totalRegularSeasonGames}`,
+    },
+    {
+      label: "Snapshot",
+      tooltip: "Date the most recent snapshot was generated.",
+      value: snapshotDateLabel,
+    },
+  ];
+
   return (
     <div className="home-page min-h-screen">
       <div className="home-shell home-section space-y-5 sm:space-y-6">
@@ -301,7 +382,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
               Major League Baseball compressed into one view. Division standings, AL and NL splits, and the wild card race, refreshed from a curated MLB Stats API snapshot.
             </p>
           </div>
-          <div className="flex flex-wrap gap-1.5 text-[11px] text-[var(--home-ink-muted)]">
+          <div className="flex flex-wrap gap-1.5 text-2xs text-[var(--home-ink-muted)]">
             {[
               `Season ${summary.season}`,
               ...(summary.updatedAt && summary.updatedAt > "1970-01-02"
@@ -317,6 +398,22 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
             ))}
           </div>
         </div>
+
+        {/* Dense stats panel */}
+        <HomeStatsPanel
+          id="mlb-stats-panel"
+          title="MLB at a glance"
+          meta={`Live · refreshed ${snapshotDateLabel}`}
+          cells={statsPanelCells}
+          pills={[
+            { label: "Standings", href: "#mlb-standings", icon: ChartBar },
+            { label: "Wild card", href: "?view=wildcard", icon: Briefcase },
+            { label: "American League", href: "?view=al", icon: ChartBar },
+            { label: "National League", href: "?view=nl", icon: ChartBar },
+            { label: "Hot streaks", href: "#mlb-standings", icon: User },
+            { label: "Article", href: "/writing", icon: Article },
+          ]}
+        />
 
         <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
           <StatCard
@@ -349,7 +446,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
           />
         </div>
 
-        <div className="grid gap-5 md:grid-cols-[minmax(0,1fr)_280px] lg:grid-cols-[minmax(0,1fr)_320px]">
+        <div id="mlb-standings" className="grid gap-5 md:grid-cols-[minmax(0,1fr)_280px] lg:grid-cols-[minmax(0,1fr)_320px]">
           <section className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,white)] p-5 sm:p-6 shadow-[var(--shadow-sm)]">
             <div className="flex items-center justify-between border-b border-[var(--home-rule)] pb-4">
               <h2 className="text-lg font-bold text-[var(--home-ink)]">Standings</h2>
@@ -497,23 +594,23 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                       </h2>
                       <div className="mt-1.5 flex flex-wrap gap-1.5">
                         <span
-                          className="inline-flex items-center rounded-full border px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em]"
+                          className="inline-flex items-center rounded-full border px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em]"
                           style={getDivisionPillStyle(selectedRow.league)}
                         >
                           {selectedRow.division || `${selectedRow.league} club`}
                         </span>
-                        <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                        <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
                           {formatRecord(selectedRow)}
                         </span>
                         {selectedRow.streak && (
-                          <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                          <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
                             {selectedRow.streak}
                           </span>
                         )}
                       </div>
                     </div>
                     <div className="flex-shrink-0 rounded-xl bg-[var(--home-haze)] px-3 py-2 text-center text-[var(--home-paper)] shadow-sm">
-                      <p className="text-[10px] uppercase tracking-[0.14em] opacity-80">Div</p>
+                      <p className="text-3xs uppercase tracking-[0.14em] opacity-80">Div</p>
                       <p className="text-xl font-bold">{selectedRow.divisionRank || "—"}</p>
                     </div>
                   </div>
@@ -530,7 +627,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                       ] as const
                     ).map(([label, value]) => (
                       <div key={label} className="flex items-baseline justify-between gap-2">
-                        <dt className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                        <dt className="text-2xs font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
                           {label}
                         </dt>
                         <dd className="text-sm font-bold text-[var(--home-ink)]">{value}</dd>
@@ -540,7 +637,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
 
                   {(teamSnapshot?.form?.sequence?.length ?? 0) > 0 && (
                     <div className="mt-4 border-t border-[var(--home-rule)] pt-4">
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                      <p className="text-2xs font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
                         Last 5
                       </p>
                       <div className="mt-2 flex gap-1.5">

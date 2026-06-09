@@ -8,6 +8,8 @@
  * (current, change, changePercent, high, low, open, prevClose, timestamp)
  */
 
+import { readFileSync } from "fs";
+import path from "path";
 import type { StockQuote } from "@/types/investment";
 
 const FINNHUB_API_KEY = process.env.FINNHUB_API_KEY ?? "";
@@ -24,8 +26,72 @@ export function isRateLimited(): boolean {
   return Date.now() < rateLimitedUntil;
 }
 
+/**
+ * Strict symbol shape. Forbids leading dots/dashes and consecutive
+ * separators; requires at least one alphanumeric and capped at 10 chars.
+ * Examples accepted: AAPL, BRK-B, BRK.B, BF.B
+ * Examples rejected: .AAPL, -AAPL, AA..PL, AAPL., "AAPL "
+ */
 export function isValidSymbol(symbol: string): boolean {
-  return /^[A-Z]{1,5}(-[A-Z])?(\.[A-Z]{1,2})?$/.test(symbol);
+  if (typeof symbol !== "string" || symbol.length === 0 || symbol.length > 10) {
+    return false;
+  }
+  return /^[A-Z][A-Z0-9]*([.-][A-Z0-9]+)*$/.test(symbol);
+}
+
+// ---------------------------------------------------------------------------
+// Allowlist of curated symbols
+// ---------------------------------------------------------------------------
+// Loaded once from public/data/investments/index.json at module init time
+// (server-only) and cached for the life of the process. The allowlist is the
+// authoritative gate for the unauthenticated /api/investments/quotes and
+// /api/stocks proxies — only symbols Isaac has chosen to research can hit
+// the paid Finnhub key.
+const INDEX_JSON_PATH = path.join(
+  process.cwd(),
+  "public",
+  "data",
+  "investments",
+  "index.json"
+);
+
+let cachedAllowlist: Set<string> | null = null;
+
+function loadAllowlist(): Set<string> {
+  if (cachedAllowlist) {
+    return cachedAllowlist;
+  }
+  try {
+    const raw = readFileSync(INDEX_JSON_PATH, "utf8");
+    const parsed = JSON.parse(raw) as { symbols?: unknown };
+    const symbols = Array.isArray(parsed.symbols)
+      ? parsed.symbols.filter((s): s is string => typeof s === "string")
+      : [];
+    cachedAllowlist = new Set(symbols.map((s) => s.toUpperCase()));
+  } catch (error) {
+    // If the index is missing or unreadable we fail closed — no symbols
+    // are allowed through the proxy.
+    console.error("finnhub: failed to load investments allowlist:", error);
+    cachedAllowlist = new Set<string>();
+  }
+  return cachedAllowlist;
+}
+
+export function isAllowedSymbol(symbol: string): boolean {
+  if (!isValidSymbol(symbol)) {
+    return false;
+  }
+  return loadAllowlist().has(symbol.toUpperCase());
+}
+
+export function getAllowedSymbols(): ReadonlySet<string> {
+  return loadAllowlist();
+}
+
+// Test-only: reset the cached allowlist so tests can force a re-read.
+// Not exported through the module's public consumers.
+export function __resetAllowlistCacheForTests(): void {
+  cachedAllowlist = null;
 }
 
 function errorQuote(symbol: string, message: string): StockQuote {

@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "BLK",
+    "name": "Dr. Bennett W. Golub Ph.D.",
+    "title": "Co-Founder",
+    "age": 67,
+    "born": 1958,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "BLK",
+    "name": "Mr. Adebayo O. Ogunlesi J.D.",
+    "title": "Chairman & CEO Global Infrastructure Partners, Senior MD & Member of Board of Director",
+    "age": 71,
+    "born": 1954,
+    "pay": 4038215,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "BLK",
+    "name": "Mr. Laurence Douglas Fink",
+    "title": "Founder, CEO & Chairman",
+    "age": 73,
+    "born": 1952,
+    "pay": 13149385,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "BLK",
+    "name": "Mr. Marc David Comerchero CPA",
+    "title": "MD & Chief Accounting Officer",
+    "age": 52,
+    "born": 1973,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "BLK",
+    "name": "Mr. Mark  McKenna",
+    "title": "Founder, MD, Global Head of Event Driven Equity Strategies & Portfolio Manager",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "BLK",
+    "name": "Mr. Martin S. Small",
+    "title": "Senior MD, CFO & Global Head of Corporate Strategy",
+    "age": 49,
+    "born": 1976,
+    "pay": 5774350,
+    "exercised": 0,
+    "unexercised": 15060851,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "BLK",
+    "name": "Mr. Pablo A. Goldberg",
+    "title": "MD, Head of Research, Portfolio Manager & Senior Strategist",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "BLK",
+    "name": "Mr. Rich  Kushel",
+    "title": "Senior MD & Head of the Portfolio Management Group",
+    "age": null,
+    "born": null,
+    "pay": 4188855,
+    "exercised": 24951468,
+    "unexercised": 11136800,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "BLK",
+    "name": "Mr. Robert Lawrence Goldstein",
+    "title": "Senior MD & COO",
+    "age": 51,
+    "born": 1974,
+    "pay": 5814205,
+    "exercised": 0,
+    "unexercised": 30175160,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "BLK",
+    "name": "Mr. Robert Steven Kapito",
+    "title": "President & Member of Board of Directors",
+    "age": 69,
+    "born": 1956,
+    "pay": 8642500,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  }
+]

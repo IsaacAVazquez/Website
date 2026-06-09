@@ -1,0 +1,293 @@
+name: Refresh SpaceX Snapshots
+
+on:
+  # SpaceX launch windows and Launch Library media can move during the day.
+  # Two runs keep the dashboard fresh without creating an hourly Actions load.
+  schedule:
+    - cron: "25 9,21 * * *"
+  workflow_dispatch:
+
+# Don't stack a manual dispatch on top of a scheduled run.
+concurrency:
+  group: refresh-spacex
+  cancel-in-progress: false
+
+jobs:
+  refresh-spacex:
+    name: Refresh SpaceX Snapshots
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    permissions:
+      contents: write
+      issues: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline --no-audit --fund=false
+
+      - name: Refresh SpaceX image snapshots
+        run: npm run update:spacex-images
+        env:
+          NODE_ENV: production
+
+      - name: Refresh SpaceX data snapshot
+        run: npm run update:spacex
+        env:
+          NODE_ENV: production
+
+      - name: Verify SpaceX snapshot quality
+        id: verify_quality
+        run: |
+          node -e "
+          const fs = require('fs');
+          const path = require('path');
+
+          const SNAPSHOT_PATH = 'src/data/spacexSnapshot.generated.json';
+          const MANIFEST_PATH = 'src/data/spacexImageManifest.generated.json';
+          const REFERENCE_INDEX_PATH = 'public/data/spacex/image-reference-index.json';
+          const MIN_UPCOMING = 1;
+          const MIN_PAST = 10;
+          const MIN_DETAILS = 5;
+          const MIN_MANIFEST_IMAGES = 5;
+          const MIN_REFERENCE_LAUNCHES = 10;
+
+          function readJson(filePath) {
+            if (!fs.existsSync(filePath)) {
+              console.error('::error::Required SpaceX artifact is missing at ' + filePath);
+              process.exit(1);
+            }
+
+            try {
+              return JSON.parse(fs.readFileSync(filePath, 'utf8'));
+            } catch (err) {
+              console.error('::error::Failed to parse ' + filePath + ': ' + String(err));
+              process.exit(1);
+            }
+          }
+
+          const snapshot = readJson(SNAPSHOT_PATH);
+          const manifest = readJson(MANIFEST_PATH);
+          const referenceIndex = readJson(REFERENCE_INDEX_PATH);
+
+          const upcoming = Array.isArray(snapshot.upcomingLaunches) ? snapshot.upcomingLaunches.length : 0;
+          const past = Array.isArray(snapshot.pastLaunches) ? snapshot.pastLaunches.length : 0;
+          const detailCount = snapshot.launchDetails ? Object.keys(snapshot.launchDetails).length : 0;
+          const manifestEntries = Object.entries(manifest).filter(([, localPath]) =>
+            typeof localPath === 'string' && localPath.startsWith('/data/spacex/images/')
+          );
+          const referenceLaunches = referenceIndex && typeof referenceIndex === 'object'
+            ? Object.keys(referenceIndex).length
+            : 0;
+
+          const missingImages = [];
+          for (const [, localPath] of manifestEntries) {
+            const filePath = path.join('public', localPath.replace(/^\/+/, ''));
+            if (!fs.existsSync(filePath)) {
+              missingImages.push(localPath);
+            }
+          }
+
+          console.log('Upcoming launches:', upcoming);
+          console.log('Past launches:', past);
+          console.log('Launch details:', detailCount);
+          console.log('Manifest images:', manifestEntries.length);
+          console.log('Reference launches:', referenceLaunches);
+
+          if (!snapshot.summary) {
+            console.error('::error::SpaceX snapshot summary is missing.');
+            process.exit(1);
+          }
+
+          if (upcoming < MIN_UPCOMING) {
+            console.error('::error::SpaceX snapshot has only ' + upcoming + ' upcoming launches.');
+            process.exit(1);
+          }
+
+          if (past < MIN_PAST) {
+            console.error('::error::SpaceX snapshot has only ' + past + ' past launches.');
+            process.exit(1);
+          }
+
+          if (detailCount < MIN_DETAILS) {
+            console.error('::error::SpaceX snapshot has only ' + detailCount + ' hydrated launch details.');
+            process.exit(1);
+          }
+
+          if (manifestEntries.length < MIN_MANIFEST_IMAGES) {
+            console.error('::error::SpaceX image manifest has only ' + manifestEntries.length + ' local image entries.');
+            process.exit(1);
+          }
+
+          if (referenceLaunches < MIN_REFERENCE_LAUNCHES) {
+            console.error('::error::SpaceX image reference index has only ' + referenceLaunches + ' launches.');
+            process.exit(1);
+          }
+
+          if (missingImages.length > 0) {
+            console.error('::error::SpaceX image manifest references missing local files: ' + missingImages.slice(0, 10).join(', '));
+            process.exit(1);
+          }
+
+          fs.writeFileSync(
+            process.env.GITHUB_OUTPUT,
+            'upcoming=' + upcoming + '\n' +
+              'past=' + past + '\n' +
+              'details=' + detailCount + '\n' +
+              'manifest_images=' + manifestEntries.length + '\n' +
+              'reference_launches=' + referenceLaunches + '\n',
+            { flag: 'a' }
+          );
+          "
+
+      - name: Check for SpaceX snapshot changes
+        id: check_changes
+        run: |
+          if [ -z "$(git status --porcelain -- src/data/spacexSnapshot.generated.json src/data/spacexImageManifest.generated.json public/data/spacex/image-reference-index.json public/data/spacex/images)" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No changes detected in SpaceX snapshot artifacts."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "Changes detected in SpaceX snapshot artifacts."
+          fi
+
+      - name: Commit and push refreshed snapshots
+        if: steps.check_changes.outputs.changed == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add \
+            src/data/spacexSnapshot.generated.json \
+            src/data/spacexImageManifest.generated.json \
+            public/data/spacex/image-reference-index.json \
+            public/data/spacex/images
+          git commit -m "chore: refresh spacex snapshots [automated] [skip ci]"
+          # Retry on push rejection. Main can move during the refresh, so
+          # rebase the single snapshot commit onto the latest origin/main and
+          # try again. Bail on a real conflict.
+          for attempt in 1 2 3 4 5; do
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "Push attempt $attempt rejected. Rebasing onto latest origin/main..."
+            git fetch origin main
+            if ! git rebase origin/main; then
+              git rebase --abort
+              echo "Rebase conflict. Failing the run."
+              exit 1
+            fi
+            sleep $((attempt * 3))
+          done
+          echo "Push failed after 5 attempts."
+          exit 1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create job summary
+        if: always()
+        run: |
+          echo "## SpaceX Snapshot Refresh" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Status:** ${{ job.status }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Run Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Schedule:** Daily at 09:25 and 21:25 UTC" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          if [ -n "${{ steps.verify_quality.outputs.upcoming }}" ]; then
+            echo "**Upcoming launches:** ${{ steps.verify_quality.outputs.upcoming }}" >> "$GITHUB_STEP_SUMMARY"
+            echo "**Past launches:** ${{ steps.verify_quality.outputs.past }}" >> "$GITHUB_STEP_SUMMARY"
+            echo "**Launch details:** ${{ steps.verify_quality.outputs.details }}" >> "$GITHUB_STEP_SUMMARY"
+            echo "**Manifest images:** ${{ steps.verify_quality.outputs.manifest_images }}" >> "$GITHUB_STEP_SUMMARY"
+            echo "**Reference launches:** ${{ steps.verify_quality.outputs.reference_launches }}" >> "$GITHUB_STEP_SUMMARY"
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ "${{ steps.check_changes.outputs.changed }}" = "true" ]; then
+            echo "SpaceX snapshot artifacts changed and were committed." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "SpaceX snapshot artifacts were already up to date." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Notify on failure via GitHub issue
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const today = new Date().toISOString().slice(0, 10);
+            const title = `SpaceX refresh failed ${today}`;
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const body = [
+              `The **Refresh SpaceX Snapshots** workflow failed on ${today}.`,
+              ``,
+              `**Run:** ${runUrl}`,
+              `**Commit:** ${context.sha}`,
+              `**Trigger:** ${context.eventName}`,
+              ``,
+              `Check the run logs to diagnose. Common causes:`,
+              `- Launch Library API outage, timeout, or rate limiting`,
+              `- Image download failure degraded the manifest or reference index`,
+              `- Quality gate caught a degraded snapshot`,
+              `- Git push rejected after 5 retries`,
+              ``,
+              `This issue will be updated if the next run also fails, and auto-closed on the first successful run.`
+            ].join('\n');
+            const existing = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'spacex-refresh-failure',
+              per_page: 5,
+            });
+            if (existing.data.length > 0) {
+              const issue = existing.data[0];
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: `Failed again on ${today}. Run: ${runUrl}`,
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body,
+                labels: ['spacex-refresh-failure', 'automation'],
+              });
+            }
+
+      - name: Close resolved failure issues
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const existing = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'spacex-refresh-failure',
+              per_page: 10,
+            });
+            for (const issue of existing.data) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: `Refresh succeeded at ${new Date().toISOString()}. Auto-closing.`,
+              });
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                state: 'closed',
+              });
+            }

@@ -122,9 +122,18 @@ def df_to_json(obj) -> object:
 
 
 def write_json(path: Path, data) -> None:
+    """Atomically write `data` as JSON to `path`.
+
+    Writes to a sibling ``<path>.tmp`` first, then ``os.replace`` over the
+    destination. ``os.replace`` is atomic on POSIX and (since Python 3.3)
+    on Windows, so a crash mid-write can never leave a half-written file
+    in place — which the previous direct-open implementation could.
+    """
     path.parent.mkdir(parents=True, exist_ok=True)
-    with open(path, "w", encoding="utf-8") as f:
+    tmp_path = path.with_suffix(path.suffix + ".tmp")
+    with open(tmp_path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, default=str)
+    os.replace(tmp_path, path)
 
 
 def pick_string(record: dict, keys: list[str]) -> str | None:

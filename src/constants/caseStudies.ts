@@ -93,11 +93,11 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     slug: "fantasy-football-analytics",
     title: "Fantasy Football Analytics Platform",
     description:
-      "Full-stack fantasy football platform with live tier rankings, D3 visualizations, and an automated data pipeline.",
+      "Fantasy football platform with snapshot-backed consensus rankings, tier views, scoring toggles, and a manual draft assistant fed by an automated weekly data pipeline.",
     role: "Solo Builder",
-    timeline: "2024–2025",
-    tools: ["Next.js", "D3.js", "TypeScript", "SQLite"],
-    metrics: "Live platform · 2026 season coming soon",
+    timeline: "2024–2026",
+    tools: ["Next.js", "TypeScript", "React", "GitHub Actions"],
+    metrics: "Live · Weekly FantasyPros snapshots · PPR / Half / Standard",
     github: "https://github.com/IsaacAVazquez",
     link: "/fantasy-football",
     featured: true,
@@ -105,9 +105,9 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 
     overview: {
       summary:
-        "I built a fantasy football platform that combines tier rankings, visualizations, and automated data refreshes into a single weekly workflow.",
+        "I built a fantasy football platform that combines consensus rankings, tier views, and an automated weekly data refresh into a single workflow.",
       impact:
-        "Gives players one place to move from raw rankings to lineup and waiver decisions with less tab-hopping.",
+        "Gives players one place to move from raw rankings to draft decisions with less tab-hopping, and keeps data freshness explicit instead of implied.",
     },
     problem: {
       context:
@@ -220,6 +220,99 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     northStarMetric: "",
     tradeoffs: [],
     retrospective: "",
+  },
+
+  "pulse-dashboards": {
+    slug: "pulse-dashboards",
+    title: "Pulse Dashboards",
+    description:
+      "I designed and shipped a family of live dashboards that turn fragmented sports, media, developer, and political data into fast, deep-linkable product surfaces.",
+    role: "Product Designer, Full-Stack Developer, and Data UX Builder",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "Snapshot pipelines", "Dashboard UX"],
+    metrics: "9 live dashboards · Shared interaction model · Deep-linkable state",
+    github: "https://github.com/IsaacAVazquez",
+    featured: true,
+
+    overview: {
+      summary:
+        "I built the Pulse dashboard family to package live context into one scan instead of forcing users across standings pages, schedules, leaderboards, and news tabs.",
+      impact:
+        "Users get a faster read on what changed, what matters now, and where to click next without stitching the context together themselves.",
+    },
+    problem: {
+      context:
+        "Most live data products answer only one slice of the question. A standings table shows rank, a schedule shows timing, a leaderboard shows leaders, and an article explains one angle, but the user still has to assemble the actual state by hand.",
+      painPoints: [
+        "Season pressure, trend shifts, and next-step context are usually split across multiple screens.",
+        "Generic data products optimize for completeness, not for quick orientation.",
+        "Without deep-linkable state, sharing a specific view usually means sending instructions instead of a usable link.",
+      ],
+      stakes:
+        "If the product does not compress the state cleanly, the dashboards become nice-looking reference pages instead of tools people return to when they need a fast answer.",
+    },
+    process: {
+      approach:
+        "I treated the dashboards as one product family rather than unrelated pages. The goal was a shared interaction model with domain-specific framing layered on top, so each surface could feel familiar without flattening the subject matter.",
+      methodology: [
+        "Mapped the recurring user question for each domain before choosing the view model, filters, and summary hierarchy.",
+        "Built each route around a compact first screen that surfaces pressure, movement, and the most likely next interaction.",
+        "Standardized URL state, snapshot handling, and card patterns so the family feels coherent even when the inputs differ.",
+        "Used snapshot or lightweight live fetch paths depending on the domain so the surfaces stay fast and operationally simple.",
+      ],
+      decisions: [
+        "Kept the primary scan state visible before deeper drilldowns so the user gets value without committing to a long session.",
+        "Preferred shareable route state over session-only filters so a specific league, team, or segment view can travel in a link.",
+        "Used editorial framing and pressure cues instead of raw tables alone so the dashboards answer why the data matters now.",
+      ],
+      collaboration:
+        "This was solo product, design, data, and implementation work. I used the repeated pattern across routes to tighten the product system with each new dashboard.",
+    },
+    result: {
+      outcomes: [
+        "Shipped nine live Pulse dashboards across news, developer trends, and multiple sports surfaces under one shared product system.",
+        "Made standings pressure, leaderboard movement, and cross-source comparison easier to scan in a few seconds instead of through tab-hopping.",
+        "Created deep-linkable views so a specific team, league slice, or comparison state can be shared directly.",
+        "Established a reusable dashboard pattern that made it faster to launch new Pulse surfaces without rebuilding the interaction model from scratch.",
+      ],
+      lessonsLearned: [
+        "A dashboard family needs consistency in navigation and state, but the narrative frame still has to match the domain.",
+        "Users care less about the full dataset than about whether the default view answers the first real question quickly.",
+        "Snapshot-driven architecture is often the right tradeoff when the product value is orientation, not millisecond-level live precision.",
+      ],
+    },
+    userSegments: [
+      "Fans who want a fast read on standings pressure, form, and leaderboards.",
+      "Readers and analysts comparing how a live information cycle is shifting.",
+      "People who want a shareable link to the exact view they are discussing.",
+    ],
+    northStarMetric:
+      "Time to useful context from landing on the dashboard to understanding what changed and why it matters.",
+    tradeoffs: [
+      {
+        decision: "Shared system versus custom one-off route design",
+        optionChosen: "A common Pulse interaction model with domain-specific framing",
+        optionRejected: "Designing every dashboard from scratch",
+        reasoning:
+          "The shared model keeps the family learnable and faster to extend, while domain-specific framing preserves what is unique about each subject.",
+      },
+      {
+        decision: "Snapshot-backed data versus fully live runtime dependencies",
+        optionChosen: "Use snapshots where the product needs fast orientation and stable delivery",
+        optionRejected: "Rely on live third-party APIs for every route",
+        reasoning:
+          "Snapshots reduce operational fragility and keep performance predictable, which matters more here than second-by-second freshness.",
+      },
+      {
+        decision: "Editorial framing versus raw data density",
+        optionChosen: "Lead with pressure, movement, and likely user questions",
+        optionRejected: "Show every table first and let the user infer the story",
+        reasoning:
+          "The value of these dashboards is fast orientation. The interface has to tell the user why the data matters, not just expose it.",
+      },
+    ],
+    retrospective:
+      "If I keep extending the family, I would add a shared landing surface that shows the entire Pulse system in one place. Right now the common product logic is strong, but the family is still discovered route by route instead of through a dedicated hub.",
   },
 
   "decision-lab": {
@@ -583,6 +676,39 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     retrospective: "",
   },
 
+  "fantasy-formula-1-optimizer": {
+    slug: "fantasy-formula-1-optimizer",
+    title: "Fantasy Formula 1 Optimizer",
+    description:
+      "Practical Fantasy Formula 1 team optimizer with model-based prices, five-driver and two-constructor lineup constraints, locked picks, and local browser persistence.",
+    role: "Full-Stack Developer & Designer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "OpenF1 API", "Optimization UX"],
+    metrics: "$100m budget model · 5 drivers + 2 constructors · Local lineup persistence",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/fantasy-formula-1",
+    featured: true,
+
+    overview: {
+      summary:
+        "I built a Fantasy Formula 1 optimizer that turns the existing OpenF1 snapshot into a practical team-building surface with transparent pricing and projection assumptions.",
+      impact:
+        "Gives F1 fantasy players a faster way to compare lineup tradeoffs before a race weekend without pretending unofficial model data is official scoring.",
+    },
+    problem: {
+      context:
+        "Fantasy Formula 1 decisions usually mix official-game constraints, subjective form reads, and scattered race context with little visibility into why a lineup works.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
+
   "pga-tour-pulse": {
     slug: "pga-tour-pulse",
     title: "PGA Tour Pulse",
@@ -605,6 +731,39 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     problem: {
       context:
         "Most tour leaderboards make it hard to compare round-by-round movement, cut-line pressure, and player form on a single screen.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
+
+  "world-cup-pulse": {
+    slug: "world-cup-pulse",
+    title: "World Cup Pulse",
+    description:
+      "Snapshot-backed 2026 FIFA World Cup dashboard covering all 12 group tables, the expanded 32-team knockout bracket, the full match schedule, and host venues across the United States, Canada, and Mexico.",
+    role: "Full-Stack Developer & Designer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "ESPN API", "Snapshot pipeline"],
+    metrics: "Group standings · 32-team knockout bracket · Schedule & host venues",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/world-cup-2026",
+    featured: true,
+
+    overview: {
+      summary:
+        "I built a 2026 FIFA World Cup dashboard that turns a curated ESPN snapshot into one deep-linkable surface for group standings, the new 32-team knockout bracket, and the full three-country schedule.",
+      impact:
+        "Makes the largest World Cup ever legible on a single screen, from group qualifying math to the bracket, without juggling separate live sites.",
+    },
+    problem: {
+      context:
+        "The 48-team format spreads 104 matches across 16 cities and three countries, and most trackers scatter standings, fixtures, and the bracket across separate pages.",
       painPoints: [],
       stakes: "",
     },
@@ -858,6 +1017,7 @@ const PORTFOLIO_PROJECT_ORDER = [
   "investment-analytics-platform",
   "interchange-iq",
   "news-pulse-dashboard",
+  "pulse-dashboards",
   "ai-dev-tool-ecosystem",
   "frontier-model-tracker",
   "github-trending-pulse",
@@ -872,9 +1032,11 @@ const PORTFOLIO_PROJECT_ORDER = [
   "spacex-mission-control",
   "premier-league-pulse",
   "la-liga-pulse",
+  "world-cup-pulse",
   "fantasy-football-analytics",
   "nfl-pulse",
   "formula-1-pulse",
+  "fantasy-formula-1-optimizer",
   "pga-tour-pulse",
   "mlb-pulse",
   "nba-pulse",
@@ -898,6 +1060,21 @@ export function getProjectCardProblem(study: CaseStudyData): string {
     study.overview.impact.trim() ||
     study.description
   );
+}
+
+export function getProjectCardOutcome(study: CaseStudyData): string {
+  for (const value of [
+    study.overview.impact,
+    study.result.outcomes[0],
+    study.metrics,
+    study.description,
+  ]) {
+    if (value?.trim()) {
+      return value.trim();
+    }
+  }
+
+  return "";
 }
 
 /** Get featured case studies (for homepage) */

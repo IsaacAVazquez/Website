@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "REGN",
+      "report_date": "2022-06-30",
+      "gross_profit": 2560100000.0,
+      "total_revenue": 2857200000.0,
+      "gross_margin": 0.896
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2022-09-30",
+      "gross_profit": 2618400000.0,
+      "total_revenue": 2936200000.0,
+      "gross_margin": 0.8918
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2023-06-30",
+      "gross_profit": 2753200000.0,
+      "total_revenue": 3158100000.0,
+      "gross_margin": 0.8718
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2023-09-30",
+      "gross_profit": 2926300000.0,
+      "total_revenue": 3362700000.0,
+      "gross_margin": 0.8702
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2023-12-31",
+      "gross_profit": 2917300000.0,
+      "total_revenue": 3434300000.0,
+      "gross_margin": 0.8495
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2024-03-31",
+      "gross_profit": 2711200000.0,
+      "total_revenue": 3145000000.0,
+      "gross_margin": 0.8621
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2024-06-30",
+      "gross_profit": 3066900000.0,
+      "total_revenue": 3547100000.0,
+      "gross_margin": 0.8646
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2024-09-30",
+      "gross_profit": 3229600000.0,
+      "total_revenue": 3720700000.0,
+      "gross_margin": 0.868
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2024-12-31",
+      "gross_profit": 3223800000.0,
+      "total_revenue": 3789200000.0,
+      "gross_margin": 0.8508
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2025-03-31",
+      "gross_profit": 2564400000.0,
+      "total_revenue": 3028700000.0,
+      "gross_margin": 0.8467
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2025-06-30",
+      "gross_profit": 12163200000.0,
+      "total_revenue": 14214200000.0,
+      "gross_margin": 0.8557
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2025-09-30",
+      "gross_profit": 3232700000.0,
+      "total_revenue": 3754300000.0,
+      "gross_margin": 0.8611
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2025-12-31",
+      "gross_profit": 3299700000.0,
+      "total_revenue": 3884300000.0,
+      "gross_margin": 0.8495
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2026-03-31",
+      "gross_profit": 12613800000.0,
+      "total_revenue": 14919600000.0,
+      "gross_margin": 0.8455
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "REGN",
+      "report_date": "2019-12-31",
+      "gross_profit": 7081200000.0,
+      "total_revenue": 7863400000.0,
+      "gross_margin": 0.9005
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2020-12-31",
+      "gross_profit": 7377200000.0,
+      "total_revenue": 8497100000.0,
+      "gross_margin": 0.8682
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2021-12-31",
+      "gross_profit": 13634200000.0,
+      "total_revenue": 16071700000.0,
+      "gross_margin": 0.8483
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2022-12-31",
+      "gross_profit": 10612500000.0,
+      "total_revenue": 12172900000.0,
+      "gross_margin": 0.8718
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2023-12-31",
+      "gross_profit": 11301400000.0,
+      "total_revenue": 13117200000.0,
+      "gross_margin": 0.8616
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2024-12-31",
+      "gross_profit": 12231500000.0,
+      "total_revenue": 14202000000.0,
+      "gross_margin": 0.8613
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2025-12-31",
+      "gross_profit": 12242200000.0,
+      "total_revenue": 14342900000.0,
+      "gross_margin": 0.8535
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "REGN",
+      "report_date": "2022-06-30",
+      "operating_income": 1306900000.0,
+      "total_revenue": 2857200000.0,
+      "operating_margin": 0.4574
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2022-09-30",
+      "operating_income": 1223700000.0,
+      "total_revenue": 2936200000.0,
+      "operating_margin": 0.4168
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2023-06-30",
+      "operating_income": 1016500000.0,
+      "total_revenue": 3158100000.0,
+      "operating_margin": 0.3219
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2023-09-30",
+      "operating_income": 1211000000.0,
+      "total_revenue": 3362700000.0,
+      "operating_margin": 0.3601
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2023-12-31",
+      "operating_income": 1002900000.0,
+      "total_revenue": 3434300000.0,
+      "operating_margin": 0.292
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2024-03-31",
+      "operating_income": 751400000.0,
+      "total_revenue": 3145000000.0,
+      "operating_margin": 0.2389
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2024-06-30",
+      "operating_income": 1069600000.0,
+      "total_revenue": 3547100000.0,
+      "operating_margin": 0.3015
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2024-09-30",
+      "operating_income": 1179500000.0,
+      "total_revenue": 3720700000.0,
+      "operating_margin": 0.317
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2024-12-31",
+      "operating_income": 990200000.0,
+      "total_revenue": 3789200000.0,
+      "operating_margin": 0.2613
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2025-03-31",
+      "operating_income": 591700000.0,
+      "total_revenue": 3028700000.0,
+      "operating_margin": 0.1954
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2025-06-30",
+      "operating_income": 3840900000.0,
+      "total_revenue": 14214200000.0,
+      "operating_margin": 0.2702
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2025-09-30",
+      "operating_income": 1109900000.0,
+      "total_revenue": 3754300000.0,
+      "operating_margin": 0.2956
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2025-12-31",
+      "operating_income": 898600000.0,
+      "total_revenue": 3884300000.0,
+      "operating_margin": 0.2313
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2026-03-31",
+      "operating_income": 3842800000.0,
+      "total_revenue": 14919600000.0,
+      "operating_margin": 0.2576
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "REGN",
+      "report_date": "2019-12-31",
+      "operating_income": 2209800000.0,
+      "total_revenue": 7863400000.0,
+      "operating_margin": 0.281
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2020-12-31",
+      "operating_income": 3576600000.0,
+      "total_revenue": 8497100000.0,
+      "operating_margin": 0.4209
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2021-12-31",
+      "operating_income": 8994800000.0,
+      "total_revenue": 16071700000.0,
+      "operating_margin": 0.5597
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2022-12-31",
+      "operating_income": 4738900000.0,
+      "total_revenue": 12172900000.0,
+      "operating_margin": 0.3893
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2023-12-31",
+      "operating_income": 4047100000.0,
+      "total_revenue": 13117200000.0,
+      "operating_margin": 0.3085
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2024-12-31",
+      "operating_income": 3990700000.0,
+      "total_revenue": 14202000000.0,
+      "operating_margin": 0.281
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2025-12-31",
+      "operating_income": 3702000000.0,
+      "total_revenue": 14342900000.0,
+      "operating_margin": 0.2581
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "REGN",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 852100000.0,
+      "total_revenue": 2857200000.0,
+      "net_margin": 0.2982
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": 1315700000.0,
+      "total_revenue": 2936200000.0,
+      "net_margin": 0.4481
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 968400000.0,
+      "total_revenue": 3158100000.0,
+      "net_margin": 0.3066
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1007800000.0,
+      "total_revenue": 3362700000.0,
+      "net_margin": 0.2997
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1159600000.0,
+      "total_revenue": 3434300000.0,
+      "net_margin": 0.3377
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 722000000.0,
+      "total_revenue": 3145000000.0,
+      "net_margin": 0.2296
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1432300000.0,
+      "total_revenue": 3547100000.0,
+      "net_margin": 0.4038
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1340600000.0,
+      "total_revenue": 3720700000.0,
+      "net_margin": 0.3603
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 917700000.0,
+      "total_revenue": 3789200000.0,
+      "net_margin": 0.2422
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 808700000.0,
+      "total_revenue": 3028700000.0,
+      "net_margin": 0.267
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1391600000.0,
+      "total_revenue": 14214200000.0,
+      "net_margin": 0.0979
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1460000000.0,
+      "total_revenue": 3754300000.0,
+      "net_margin": 0.3889
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 844600000.0,
+      "total_revenue": 3884300000.0,
+      "net_margin": 0.2174
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 727200000.0,
+      "total_revenue": 14919600000.0,
+      "net_margin": 0.0487
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "REGN",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": 2115800000.0,
+      "total_revenue": 7863400000.0,
+      "net_margin": 0.2691
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 3513200000.0,
+      "total_revenue": 8497100000.0,
+      "net_margin": 0.4135
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 8075300000.0,
+      "total_revenue": 16071700000.0,
+      "net_margin": 0.5025
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 4338400000.0,
+      "total_revenue": 12172900000.0,
+      "net_margin": 0.3564
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 3953600000.0,
+      "total_revenue": 13117200000.0,
+      "net_margin": 0.3014
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 4412600000.0,
+      "total_revenue": 14202000000.0,
+      "net_margin": 0.3107
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 4504900000.0,
+      "total_revenue": 14342900000.0,
+      "net_margin": 0.3141
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "REGN",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 2857200000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2022-09-30",
+      "ebitda": 1617700000.0,
+      "total_revenue": 2936200000.0,
+      "ebitda_margin": 0.551
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2023-06-30",
+      "ebitda": 1204900000.0,
+      "total_revenue": 3158100000.0,
+      "ebitda_margin": 0.3815
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2023-09-30",
+      "ebitda": 1234000000.0,
+      "total_revenue": 3362700000.0,
+      "ebitda_margin": 0.367
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2023-12-31",
+      "ebitda": 1278900000.0,
+      "total_revenue": 3434300000.0,
+      "ebitda_margin": 0.3724
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2024-03-31",
+      "ebitda": 830900000.0,
+      "total_revenue": 3145000000.0,
+      "ebitda_margin": 0.2642
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2024-06-30",
+      "ebitda": 1763600000.0,
+      "total_revenue": 3547100000.0,
+      "ebitda_margin": 0.4972
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2024-09-30",
+      "ebitda": 1628500000.0,
+      "total_revenue": 3720700000.0,
+      "ebitda_margin": 0.4377
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2024-12-31",
+      "ebitda": 1095000000.0,
+      "total_revenue": 3789200000.0,
+      "ebitda_margin": 0.289
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2025-03-31",
+      "ebitda": 1040600000.0,
+      "total_revenue": 3028700000.0,
+      "ebitda_margin": 0.3436
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2025-06-30",
+      "ebitda": 1657400000.0,
+      "total_revenue": 14214200000.0,
+      "ebitda_margin": 0.1166
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2025-09-30",
+      "ebitda": 1919300000.0,
+      "total_revenue": 3754300000.0,
+      "ebitda_margin": 0.5112
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2025-12-31",
+      "ebitda": 1200900000.0,
+      "total_revenue": 3884300000.0,
+      "ebitda_margin": 0.3092
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2026-03-31",
+      "ebitda": 967300000.0,
+      "total_revenue": 14919600000.0,
+      "ebitda_margin": 0.0648
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "REGN",
+      "report_date": "2019-12-31",
+      "ebitda": 2209800000.0,
+      "total_revenue": 7863400000.0,
+      "ebitda_margin": 0.281
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2020-12-31",
+      "ebitda": 4103200000.0,
+      "total_revenue": 8497100000.0,
+      "ebitda_margin": 0.4829
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2021-12-31",
+      "ebitda": 9669300000.0,
+      "total_revenue": 16071700000.0,
+      "ebitda_margin": 0.6016
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2022-12-31",
+      "ebitda": 5259600000.0,
+      "total_revenue": 12172900000.0,
+      "ebitda_margin": 0.4321
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2023-12-31",
+      "ebitda": 4693300000.0,
+      "total_revenue": 13117200000.0,
+      "ebitda_margin": 0.3578
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2024-12-31",
+      "ebitda": 5318000000.0,
+      "total_revenue": 14202000000.0,
+      "ebitda_margin": 0.3745
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2025-12-31",
+      "ebitda": 5818200000.0,
+      "total_revenue": 14342900000.0,
+      "ebitda_margin": 0.4057
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "REGN",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 410800000.0,
+      "total_revenue": 2857200000.0,
+      "fcf_margin": 0.1438
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": 2936200000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 888500000.0,
+      "total_revenue": 3158100000.0,
+      "fcf_margin": 0.2813
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 914400000.0,
+      "total_revenue": 3362700000.0,
+      "fcf_margin": 0.2719
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 776200000.0,
+      "total_revenue": 3434300000.0,
+      "fcf_margin": 0.226
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 1350700000.0,
+      "total_revenue": 3145000000.0,
+      "fcf_margin": 0.4295
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 143100000.0,
+      "total_revenue": 3547100000.0,
+      "fcf_margin": 0.0403
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 1049300000.0,
+      "total_revenue": 3720700000.0,
+      "fcf_margin": 0.282
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 995800000.0,
+      "total_revenue": 3789200000.0,
+      "fcf_margin": 0.2628
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 773600000.0,
+      "total_revenue": 3028700000.0,
+      "fcf_margin": 0.2554
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 737600000.0,
+      "total_revenue": 14214200000.0,
+      "fcf_margin": 0.0519
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 1374000000.0,
+      "total_revenue": 3754300000.0,
+      "fcf_margin": 0.366
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 880000000.0,
+      "total_revenue": 3884300000.0,
+      "fcf_margin": 0.2266
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 799400000.0,
+      "total_revenue": 14919600000.0,
+      "fcf_margin": 0.0536
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "REGN",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": 7863400000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 2003500000.0,
+      "total_revenue": 8497100000.0,
+      "fcf_margin": 0.2358
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 6529400000.0,
+      "total_revenue": 16071700000.0,
+      "fcf_margin": 0.4063
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 3398000000.0,
+      "total_revenue": 12172900000.0,
+      "fcf_margin": 0.2791
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 3667600000.0,
+      "total_revenue": 13117200000.0,
+      "fcf_margin": 0.2796
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 3538900000.0,
+      "total_revenue": 14202000000.0,
+      "fcf_margin": 0.2492
+    },
+    {
+      "symbol": "REGN",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 3765200000.0,
+      "total_revenue": 14342900000.0,
+      "fcf_margin": 0.2625
+    }
+  ]
+}

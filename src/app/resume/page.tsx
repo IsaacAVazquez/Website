@@ -22,7 +22,7 @@ export default function ResumePage() {
       {/* Breadcrumb Structured Data */}
       <StructuredData 
         type="BreadcrumbList" 
-        data={{ items: (generateBreadcrumbStructuredData(breadcrumbs) as any).itemListElement }}
+        data={{ items: generateBreadcrumbStructuredData(breadcrumbs).itemListElement }}
       />
       
       {/* Resume/Professional Profile Schema */}

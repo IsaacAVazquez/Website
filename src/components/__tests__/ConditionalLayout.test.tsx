@@ -18,7 +18,7 @@ jest.mock("@/components/Footer", () => ({
 
 const mockUsePathname = usePathname as jest.MockedFunction<typeof usePathname>;
 
-globalThis.IS_REACT_ACT_ENVIRONMENT = true;
+(globalThis as Record<string, unknown>).IS_REACT_ACT_ENVIRONMENT = true;
 
 describe("ConditionalLayout", () => {
   let container: HTMLDivElement;
@@ -87,6 +87,21 @@ describe("ConditionalLayout", () => {
     expect(container.querySelector('[data-testid="route-content"]')).toBeTruthy();
   });
 
+  it("treats /fantasy-formula-1 as a self-shell route", () => {
+    mockUsePathname.mockReturnValue("/fantasy-formula-1");
+
+    act(() => {
+      root.render(
+        <ConditionalLayout>
+          <div data-testid="route-content">Page content</div>
+        </ConditionalLayout>
+      );
+    });
+
+    expect(container.querySelector("main > .max-w-4xl")).toBeNull();
+    expect(container.querySelector('[data-testid="route-content"]')).toBeTruthy();
+  });
+
   it("treats /golf as a self-shell route", () => {
     mockUsePathname.mockReturnValue("/golf");
 
@@ -104,6 +119,21 @@ describe("ConditionalLayout", () => {
 
   it("treats /decision-lab as a self-shell route", () => {
     mockUsePathname.mockReturnValue("/decision-lab");
+
+    act(() => {
+      root.render(
+        <ConditionalLayout>
+          <div data-testid="route-content">Page content</div>
+        </ConditionalLayout>
+      );
+    });
+
+    expect(container.querySelector("main > .max-w-4xl")).toBeNull();
+    expect(container.querySelector('[data-testid="route-content"]')).toBeTruthy();
+  });
+
+  it("treats /world-cup-2026 as a self-shell route", () => {
+    mockUsePathname.mockReturnValue("/world-cup-2026");
 
     act(() => {
       root.render(

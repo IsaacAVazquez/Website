@@ -1,0 +1,1265 @@
+{
+  "ttm_pe": [],
+  "ps_ratio": [],
+  "pb_ratio": [],
+  "roe": [
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 174371486452.39456,
+      "total_avg_equity": 1255752468349.8423,
+      "industry_roe": 0.1389
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 174371486452.39456,
+      "total_avg_equity": 1255752468349.8423,
+      "industry_roe": 0.1389
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 174371486452.39456,
+      "total_avg_equity": 1255752468349.8423,
+      "industry_roe": 0.1389
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 160929981037.8858,
+      "total_avg_equity": 1282279550821.0134,
+      "industry_roe": 0.1255
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 160929981037.8858,
+      "total_avg_equity": 1282279550821.0134,
+      "industry_roe": 0.1255
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 160929981037.8858,
+      "total_avg_equity": 1282279550821.0134,
+      "industry_roe": 0.1255
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 238839954233.72818,
+      "total_avg_equity": 1361474461120.3647,
+      "industry_roe": 0.1754
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 238839954233.72818,
+      "total_avg_equity": 1361474461120.3647,
+      "industry_roe": 0.1754
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 238839954233.72818,
+      "total_avg_equity": 1361474461120.3647,
+      "industry_roe": 0.1754
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 199106751769.6538,
+      "total_avg_equity": 1387980503364.3667,
+      "industry_roe": 0.1435
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 199106751769.6538,
+      "total_avg_equity": 1387980503364.3667,
+      "industry_roe": 0.1435
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 199106751769.6538,
+      "total_avg_equity": 1387980503364.3667,
+      "industry_roe": 0.1435
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 181001351697.72556,
+      "total_avg_equity": 1435748877012.1704,
+      "industry_roe": 0.1261
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 181001351697.72556,
+      "total_avg_equity": 1435748877012.1704,
+      "industry_roe": 0.1261
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 181001351697.72556,
+      "total_avg_equity": 1435748877012.1704,
+      "industry_roe": 0.1261
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 272073426629.43903,
+      "total_avg_equity": 1524241534164.703,
+      "industry_roe": 0.1785
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 272073426629.43903,
+      "total_avg_equity": 1524241534164.703,
+      "industry_roe": 0.1785
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 272073426629.43903,
+      "total_avg_equity": 1524241534164.703,
+      "industry_roe": 0.1785
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 273693599092.2466,
+      "total_avg_equity": 1524969320696.611,
+      "industry_roe": 0.1795
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 273693599092.2466,
+      "total_avg_equity": 1524969320696.611,
+      "industry_roe": 0.1795
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 273693599092.2466,
+      "total_avg_equity": 1524969320696.611,
+      "industry_roe": 0.1795
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 276261585652.3977,
+      "total_avg_equity": 1528096510333.0151,
+      "industry_roe": 0.1808
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 276261585652.3977,
+      "total_avg_equity": 1528096510333.0151,
+      "industry_roe": 0.1808
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 276261585652.3977,
+      "total_avg_equity": 1528096510333.0151,
+      "industry_roe": 0.1808
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 297434651178.42456,
+      "total_avg_equity": 1529953163763.596,
+      "industry_roe": 0.1944
+    }
+  ],
+  "roa": [
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 174371486452.39456,
+      "total_avg_assets": 3235955050427.89,
+      "industry_roa": 0.0539
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 174371486452.39456,
+      "total_avg_assets": 3235955050427.89,
+      "industry_roa": 0.0539
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 174371486452.39456,
+      "total_avg_assets": 3235955050427.89,
+      "industry_roa": 0.0539
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 160929981037.8858,
+      "total_avg_assets": 3152760261596.045,
+      "industry_roa": 0.051
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 160929981037.8858,
+      "total_avg_assets": 3152760261596.045,
+      "industry_roa": 0.051
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 160929981037.8858,
+      "total_avg_assets": 3152760261596.045,
+      "industry_roa": 0.051
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 238839954233.72818,
+      "total_avg_assets": 3298537552731.2603,
+      "industry_roa": 0.0724
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 238839954233.72818,
+      "total_avg_assets": 3298537552731.2603,
+      "industry_roa": 0.0724
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 238839954233.72818,
+      "total_avg_assets": 3298537552731.2603,
+      "industry_roa": 0.0724
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 199106751769.6538,
+      "total_avg_assets": 3299466085325.9116,
+      "industry_roa": 0.0603
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 199106751769.6538,
+      "total_avg_assets": 3299466085325.9116,
+      "industry_roa": 0.0603
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 199106751769.6538,
+      "total_avg_assets": 3299466085325.9116,
+      "industry_roa": 0.0603
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 181001351697.72556,
+      "total_avg_assets": 3240060053530.627,
+      "industry_roa": 0.0559
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 181001351697.72556,
+      "total_avg_assets": 3240060053530.627,
+      "industry_roa": 0.0559
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 181001351697.72556,
+      "total_avg_assets": 3240060053530.627,
+      "industry_roa": 0.0559
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 272073426629.43903,
+      "total_avg_assets": 3868755110884.2075,
+      "industry_roa": 0.0703
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 272073426629.43903,
+      "total_avg_assets": 3868755110884.2075,
+      "industry_roa": 0.0703
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 272073426629.43903,
+      "total_avg_assets": 3868755110884.2075,
+      "industry_roa": 0.0703
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 273693599092.2466,
+      "total_avg_assets": 3892926566999.8315,
+      "industry_roa": 0.0703
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 273693599092.2466,
+      "total_avg_assets": 3892926566999.8315,
+      "industry_roa": 0.0703
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 273693599092.2466,
+      "total_avg_assets": 3892926566999.8315,
+      "industry_roa": 0.0703
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 276261585652.3977,
+      "total_avg_assets": 3924668397970.671,
+      "industry_roa": 0.0704
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 276261585652.3977,
+      "total_avg_assets": 3924668397970.671,
+      "industry_roa": 0.0704
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 276261585652.3977,
+      "total_avg_assets": 3924668397970.671,
+      "industry_roa": 0.0704
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 297434651178.42456,
+      "total_avg_assets": 3931129831568.316,
+      "industry_roa": 0.0757
+    }
+  ],
+  "equity_multiplier": [
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roe": 0.1389,
+      "industry_roa": 0.0539,
+      "industry_equity_multiplier": 2.58
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roe": 0.1389,
+      "industry_roa": 0.0539,
+      "industry_equity_multiplier": 2.58
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roe": 0.1389,
+      "industry_roa": 0.0539,
+      "industry_equity_multiplier": 2.58
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roe": 0.1255,
+      "industry_roa": 0.051,
+      "industry_equity_multiplier": 2.46
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roe": 0.1255,
+      "industry_roa": 0.051,
+      "industry_equity_multiplier": 2.46
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roe": 0.1255,
+      "industry_roa": 0.051,
+      "industry_equity_multiplier": 2.46
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roe": 0.1754,
+      "industry_roa": 0.0724,
+      "industry_equity_multiplier": 2.42
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roe": 0.1754,
+      "industry_roa": 0.0724,
+      "industry_equity_multiplier": 2.42
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roe": 0.1754,
+      "industry_roa": 0.0724,
+      "industry_equity_multiplier": 2.42
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roe": 0.1435,
+      "industry_roa": 0.0603,
+      "industry_equity_multiplier": 2.38
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roe": 0.1435,
+      "industry_roa": 0.0603,
+      "industry_equity_multiplier": 2.38
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roe": 0.1435,
+      "industry_roa": 0.0603,
+      "industry_equity_multiplier": 2.38
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roe": 0.1261,
+      "industry_roa": 0.0559,
+      "industry_equity_multiplier": 2.26
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roe": 0.1261,
+      "industry_roa": 0.0559,
+      "industry_equity_multiplier": 2.26
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roe": 0.1261,
+      "industry_roa": 0.0559,
+      "industry_equity_multiplier": 2.26
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roe": 0.1785,
+      "industry_roa": 0.0703,
+      "industry_equity_multiplier": 2.54
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roe": 0.1785,
+      "industry_roa": 0.0703,
+      "industry_equity_multiplier": 2.54
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roe": 0.1785,
+      "industry_roa": 0.0703,
+      "industry_equity_multiplier": 2.54
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roe": 0.1795,
+      "industry_roa": 0.0703,
+      "industry_equity_multiplier": 2.55
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roe": 0.1795,
+      "industry_roa": 0.0703,
+      "industry_equity_multiplier": 2.55
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roe": 0.1795,
+      "industry_roa": 0.0703,
+      "industry_equity_multiplier": 2.55
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roe": 0.1808,
+      "industry_roa": 0.0704,
+      "industry_equity_multiplier": 2.57
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roe": 0.1808,
+      "industry_roa": 0.0704,
+      "industry_equity_multiplier": 2.57
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roe": 0.1808,
+      "industry_roa": 0.0704,
+      "industry_equity_multiplier": 2.57
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roe": 0.1944,
+      "industry_roa": 0.0757,
+      "industry_equity_multiplier": 2.57
+    }
+  ],
+  "gross_margin": [
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_gross_profit": 146669065.2459697,
+      "total_ttm_revenue": 377671348.50896007,
+      "industry_gross_margin": 0.3884
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_gross_profit": 146669065.2459697,
+      "total_ttm_revenue": 377671348.50896007,
+      "industry_gross_margin": 0.3884
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_gross_profit": 146669065.2459697,
+      "total_ttm_revenue": 377671348.50896007,
+      "industry_gross_margin": 0.3884
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_gross_profit": 147429408.85072654,
+      "total_ttm_revenue": 375206131.66006166,
+      "industry_gross_margin": 0.3929
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_gross_profit": 147429408.85072654,
+      "total_ttm_revenue": 375206131.66006166,
+      "industry_gross_margin": 0.3929
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_gross_profit": 147429408.85072654,
+      "total_ttm_revenue": 375206131.66006166,
+      "industry_gross_margin": 0.3929
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_gross_profit": 151317347.33178324,
+      "total_ttm_revenue": 391475543.1293953,
+      "industry_gross_margin": 0.3865
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_gross_profit": 151317347.33178324,
+      "total_ttm_revenue": 391475543.1293953,
+      "industry_gross_margin": 0.3865
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_gross_profit": 151317347.33178324,
+      "total_ttm_revenue": 391475543.1293953,
+      "industry_gross_margin": 0.3865
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_gross_profit": 158894780.8333676,
+      "total_ttm_revenue": 379800358.9975473,
+      "industry_gross_margin": 0.4184
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_gross_profit": 158894780.8333676,
+      "total_ttm_revenue": 379800358.9975473,
+      "industry_gross_margin": 0.4184
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_gross_profit": 158894780.8333676,
+      "total_ttm_revenue": 379800358.9975473,
+      "industry_gross_margin": 0.4184
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_gross_profit": 160495814.28650108,
+      "total_ttm_revenue": 388392217.87740266,
+      "industry_gross_margin": 0.4132
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_gross_profit": 160495814.28650108,
+      "total_ttm_revenue": 388392217.87740266,
+      "industry_gross_margin": 0.4132
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_gross_profit": 160495814.28650108,
+      "total_ttm_revenue": 388392217.87740266,
+      "industry_gross_margin": 0.4132
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_gross_profit": 263705253.39858618,
+      "total_ttm_revenue": 598004972.894968,
+      "industry_gross_margin": 0.441
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_gross_profit": 263705253.39858618,
+      "total_ttm_revenue": 598004972.894968,
+      "industry_gross_margin": 0.441
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_gross_profit": 263705253.39858618,
+      "total_ttm_revenue": 598004972.894968,
+      "industry_gross_margin": 0.441
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_gross_profit": 306752705.1998764,
+      "total_ttm_revenue": 665164862.4603198,
+      "industry_gross_margin": 0.4612
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_gross_profit": 306752705.1998764,
+      "total_ttm_revenue": 665164862.4603198,
+      "industry_gross_margin": 0.4612
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_gross_profit": 306752705.1998764,
+      "total_ttm_revenue": 665164862.4603198,
+      "industry_gross_margin": 0.4612
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_gross_profit": 566872973.5566959,
+      "total_ttm_revenue": 785548345.2209088,
+      "industry_gross_margin": 0.7216
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_gross_profit": 566872973.5566959,
+      "total_ttm_revenue": 785548345.2209088,
+      "industry_gross_margin": 0.7216
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_gross_profit": 566872973.5566959,
+      "total_ttm_revenue": 785548345.2209088,
+      "industry_gross_margin": 0.7216
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_gross_profit": 672988973.5566959,
+      "total_ttm_revenue": 788675345.2209088,
+      "industry_gross_margin": 0.8533
+    }
+  ],
+  "ebitda_margin": [
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_ebitda": 4053552.895592611,
+      "total_ttm_revenue": 377671348.50896007,
+      "industry_ebitda_margin": 0.0107
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_ebitda": 4053552.895592611,
+      "total_ttm_revenue": 377671348.50896007,
+      "industry_ebitda_margin": 0.0107
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_ebitda": 4053552.895592611,
+      "total_ttm_revenue": 377671348.50896007,
+      "industry_ebitda_margin": 0.0107
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_ebitda": 16966507.04535447,
+      "total_ttm_revenue": 375206131.66006166,
+      "industry_ebitda_margin": 0.0452
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_ebitda": 16966507.04535447,
+      "total_ttm_revenue": 375206131.66006166,
+      "industry_ebitda_margin": 0.0452
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_ebitda": 16966507.04535447,
+      "total_ttm_revenue": 375206131.66006166,
+      "industry_ebitda_margin": 0.0452
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_ebitda": 21659130.137084004,
+      "total_ttm_revenue": 391475543.1293953,
+      "industry_ebitda_margin": 0.0553
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_ebitda": 21659130.137084004,
+      "total_ttm_revenue": 391475543.1293953,
+      "industry_ebitda_margin": 0.0553
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_ebitda": 21659130.137084004,
+      "total_ttm_revenue": 391475543.1293953,
+      "industry_ebitda_margin": 0.0553
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_ebitda": 24411559.172935423,
+      "total_ttm_revenue": 379800358.9975473,
+      "industry_ebitda_margin": 0.0643
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_ebitda": 24411559.172935423,
+      "total_ttm_revenue": 379800358.9975473,
+      "industry_ebitda_margin": 0.0643
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_ebitda": 24411559.172935423,
+      "total_ttm_revenue": 379800358.9975473,
+      "industry_ebitda_margin": 0.0643
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_ebitda": 28595996.034587212,
+      "total_ttm_revenue": 388392217.87740266,
+      "industry_ebitda_margin": 0.0736
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_ebitda": 28595996.034587212,
+      "total_ttm_revenue": 388392217.87740266,
+      "industry_ebitda_margin": 0.0736
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_ebitda": 28595996.034587212,
+      "total_ttm_revenue": 388392217.87740266,
+      "industry_ebitda_margin": 0.0736
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_ebitda": 112131502.41890103,
+      "total_ttm_revenue": 598004972.894968,
+      "industry_ebitda_margin": 0.1875
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_ebitda": 112131502.41890103,
+      "total_ttm_revenue": 598004972.894968,
+      "industry_ebitda_margin": 0.1875
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_ebitda": 112131502.41890103,
+      "total_ttm_revenue": 598004972.894968,
+      "industry_ebitda_margin": 0.1875
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_ebitda": 146408886.22237828,
+      "total_ttm_revenue": 665164862.4603198,
+      "industry_ebitda_margin": 0.2201
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_ebitda": 146408886.22237828,
+      "total_ttm_revenue": 665164862.4603198,
+      "industry_ebitda_margin": 0.2201
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_ebitda": 146408886.22237828,
+      "total_ttm_revenue": 665164862.4603198,
+      "industry_ebitda_margin": 0.2201
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_ebitda": 164939771.00960535,
+      "total_ttm_revenue": 785548345.2209088,
+      "industry_ebitda_margin": 0.21
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_ebitda": 164939771.00960535,
+      "total_ttm_revenue": 785548345.2209088,
+      "industry_ebitda_margin": 0.21
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_ebitda": 164939771.00960535,
+      "total_ttm_revenue": 785548345.2209088,
+      "industry_ebitda_margin": 0.21
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_ebitda": 166238771.00960535,
+      "total_ttm_revenue": 788675345.2209088,
+      "industry_ebitda_margin": 0.2108
+    }
+  ],
+  "net_margin": [
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 5081558000.0,
+      "total_ttm_revenue": 49136498000.0,
+      "industry_net_margin": 0.1034
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 5081558000.0,
+      "total_ttm_revenue": 49136498000.0,
+      "industry_net_margin": 0.1034
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 5081558000.0,
+      "total_ttm_revenue": 49136498000.0,
+      "industry_net_margin": 0.1034
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 174371486452.39456,
+      "total_ttm_revenue": 983988190625.1046,
+      "industry_net_margin": 0.1772
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 174371486452.39456,
+      "total_ttm_revenue": 983988190625.1046,
+      "industry_net_margin": 0.1772
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 174371486452.39456,
+      "total_ttm_revenue": 983988190625.1046,
+      "industry_net_margin": 0.1772
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 160929981037.8858,
+      "total_ttm_revenue": 975689458289.9198,
+      "industry_net_margin": 0.1649
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 160929981037.8858,
+      "total_ttm_revenue": 975689458289.9198,
+      "industry_net_margin": 0.1649
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 160929981037.8858,
+      "total_ttm_revenue": 975689458289.9198,
+      "industry_net_margin": 0.1649
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 238839954233.72818,
+      "total_ttm_revenue": 1093057611508.4858,
+      "industry_net_margin": 0.2185
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 238839954233.72818,
+      "total_ttm_revenue": 1093057611508.4858,
+      "industry_net_margin": 0.2185
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 238839954233.72818,
+      "total_ttm_revenue": 1093057611508.4858,
+      "industry_net_margin": 0.2185
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 199106751769.6538,
+      "total_ttm_revenue": 1025822913031.4714,
+      "industry_net_margin": 0.1941
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 199106751769.6538,
+      "total_ttm_revenue": 1025822913031.4714,
+      "industry_net_margin": 0.1941
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 199106751769.6538,
+      "total_ttm_revenue": 1025822913031.4714,
+      "industry_net_margin": 0.1941
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 181001351697.72556,
+      "total_ttm_revenue": 1021275150860.1354,
+      "industry_net_margin": 0.1772
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 181001351697.72556,
+      "total_ttm_revenue": 1021275150860.1354,
+      "industry_net_margin": 0.1772
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 181001351697.72556,
+      "total_ttm_revenue": 1021275150860.1354,
+      "industry_net_margin": 0.1772
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 272129997629.43903,
+      "total_ttm_revenue": 1097916516195.4697,
+      "industry_net_margin": 0.2479
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 272129997629.43903,
+      "total_ttm_revenue": 1097916516195.4697,
+      "industry_net_margin": 0.2479
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 272129997629.43903,
+      "total_ttm_revenue": 1097916516195.4697,
+      "industry_net_margin": 0.2479
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 273766064092.2466,
+      "total_ttm_revenue": 1094573144249.3501,
+      "industry_net_margin": 0.2501
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 273766064092.2466,
+      "total_ttm_revenue": 1094573144249.3501,
+      "industry_net_margin": 0.2501
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 273766064092.2466,
+      "total_ttm_revenue": 1094573144249.3501,
+      "industry_net_margin": 0.2501
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 276344334652.3977,
+      "total_ttm_revenue": 1097803614665.096,
+      "industry_net_margin": 0.2517
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 276344334652.3977,
+      "total_ttm_revenue": 1097803614665.096,
+      "industry_net_margin": 0.2517
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 276344334652.3977,
+      "total_ttm_revenue": 1097803614665.096,
+      "industry_net_margin": 0.2517
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "total_ttm_net_income": 297519855178.42456,
+      "total_ttm_revenue": 1135819936215.1392,
+      "industry_net_margin": 0.2619
+    }
+  ],
+  "asset_turnover": [
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roa": 0.0539,
+      "industry_net_margin": 0.1772,
+      "industry_asset_turnover": 0.3
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roa": 0.0539,
+      "industry_net_margin": 0.1772,
+      "industry_asset_turnover": 0.3
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roa": 0.0539,
+      "industry_net_margin": 0.1772,
+      "industry_asset_turnover": 0.3
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roa": 0.051,
+      "industry_net_margin": 0.1649,
+      "industry_asset_turnover": 0.31
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roa": 0.051,
+      "industry_net_margin": 0.1649,
+      "industry_asset_turnover": 0.31
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roa": 0.051,
+      "industry_net_margin": 0.1649,
+      "industry_asset_turnover": 0.31
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roa": 0.0724,
+      "industry_net_margin": 0.2185,
+      "industry_asset_turnover": 0.33
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roa": 0.0724,
+      "industry_net_margin": 0.2185,
+      "industry_asset_turnover": 0.33
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roa": 0.0724,
+      "industry_net_margin": 0.2185,
+      "industry_asset_turnover": 0.33
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roa": 0.0603,
+      "industry_net_margin": 0.1941,
+      "industry_asset_turnover": 0.31
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roa": 0.0603,
+      "industry_net_margin": 0.1941,
+      "industry_asset_turnover": 0.31
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roa": 0.0603,
+      "industry_net_margin": 0.1941,
+      "industry_asset_turnover": 0.31
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roa": 0.0559,
+      "industry_net_margin": 0.1772,
+      "industry_asset_turnover": 0.32
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roa": 0.0559,
+      "industry_net_margin": 0.1772,
+      "industry_asset_turnover": 0.32
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roa": 0.0559,
+      "industry_net_margin": 0.1772,
+      "industry_asset_turnover": 0.32
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roa": 0.0703,
+      "industry_net_margin": 0.2479,
+      "industry_asset_turnover": 0.28
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roa": 0.0703,
+      "industry_net_margin": 0.2479,
+      "industry_asset_turnover": 0.28
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roa": 0.0703,
+      "industry_net_margin": 0.2479,
+      "industry_asset_turnover": 0.28
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roa": 0.0703,
+      "industry_net_margin": 0.2501,
+      "industry_asset_turnover": 0.28
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roa": 0.0703,
+      "industry_net_margin": 0.2501,
+      "industry_asset_turnover": 0.28
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roa": 0.0703,
+      "industry_net_margin": 0.2501,
+      "industry_asset_turnover": 0.28
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roa": 0.0704,
+      "industry_net_margin": 0.2517,
+      "industry_asset_turnover": 0.28
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roa": 0.0704,
+      "industry_net_margin": 0.2517,
+      "industry_asset_turnover": 0.28
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roa": 0.0704,
+      "industry_net_margin": 0.2517,
+      "industry_asset_turnover": 0.28
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Insurance-Diversified",
+      "industry_roa": 0.0757,
+      "industry_net_margin": 0.2619,
+      "industry_asset_turnover": 0.29
+    }
+  ]
+}

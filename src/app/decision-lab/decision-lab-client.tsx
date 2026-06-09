@@ -9,7 +9,6 @@ import {
   IconChartScatter,
   IconLink,
   IconRefresh,
-  IconScale,
   IconTarget,
 } from "@tabler/icons-react";
 import {
@@ -25,6 +24,7 @@ import {
   normalizeDecisionLabState,
   type DecisionLabState,
 } from "./decision-lab-state";
+import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
 
 interface DecisionLabClientProps {
   initialState: DecisionLabState;
@@ -43,7 +43,7 @@ const fadeIn = {
 };
 
 const noMotion = {
-  hidden: { opacity: 1, y: 0 },
+  hidden: { opacity: 0, y: 12 },
   visible: { opacity: 1, y: 0, transition: { duration: 0 } },
 };
 
@@ -430,51 +430,41 @@ function DecisionLabWorkbench({
     borderColor: tone.ring,
   };
 
+  const presetDelta =
+    (draftState.impact - activePreset.impact) +
+    (draftState.confidence - activePreset.confidence) +
+    (draftState.effort - activePreset.effort) +
+    (draftState.reversibility - activePreset.reversibility);
+
+  const decisionStatsCells: HomeStatsCell[] = [
+    { label: "Impact", value: draftState.impact },
+    { label: "Confidence", value: draftState.confidence },
+    { label: "Effort", value: draftState.effort, sub: "Lower is better" },
+    { label: "Reversibility", value: draftState.reversibility },
+    { label: "Weighted score", value: evaluation.weightedScore },
+    {
+      label: "Verdict",
+      value: recommendationCopy[evaluation.recommendation],
+      tone: evaluation.recommendation === "ship" ? "good" : "default",
+    },
+    { label: "Active preset", value: activePreset.name },
+    {
+      label: "Delta from preset",
+      value: hasPresetOverride ? `${presetDelta > 0 ? "+" : ""}${presetDelta}` : "—",
+      sub: hasPresetOverride ? "Sum across axes" : "Matches preset",
+    },
+  ];
+
   return (
     <section className="home-page min-h-screen" aria-label="Decision Lab" data-testid="decision-lab-shell">
-      <div className="tool-page-stack px-4 py-8 sm:px-6 lg:px-8">
-        <motion.div variants={variants} initial="hidden" animate="visible">
-          <div className="tool-shell" data-testid="decision-lab-shell-grid">
-            {/* Sidebar */}
-            <aside className="tool-sidebar" aria-label="Decision Lab navigation">
-              <div className="tool-brand">
-                <div className="tool-brand-mark" aria-hidden="true">
-                  <IconScale size={18} />
-                </div>
-                <div className="tool-brand-name">
-                  Decision Lab
-                  <small>Bet triage</small>
-                </div>
-              </div>
-
-              <nav className="flex flex-col gap-1.5" aria-label="Scenario presets">
-                {DECISION_PRESETS.map((preset) => {
-                  const isActive = preset.id === draftState.preset;
-                  return (
-                    <button
-                      key={preset.id}
-                      type="button"
-                      className="tool-nav-link"
-                      aria-current={isActive ? "true" : undefined}
-                      onClick={() => handlePresetChange(preset.id)}
-                    >
-                      <IconTarget size={16} aria-hidden="true" />
-                      <span className="truncate">{preset.name}</span>
-                      {isActive ? <span className="tool-nav-pill">On</span> : null}
-                    </button>
-                  );
-                })}
-              </nav>
-
-              <div className="tool-sidebar-footer">
-                <IconLink size={14} aria-hidden="true" />
-                <span>Saved in URL</span>
-              </div>
-            </aside>
-
-            {/* Main */}
-            <div className="tool-main" id="hero">
-              <div className="tool-topbar">
+      <div className="home-shell home-section">
+        <motion.div
+          variants={variants}
+          initial="hidden"
+          animate="visible"
+          className="flex flex-col gap-6"
+        >
+          <div className="tool-topbar" id="hero">
                 <div>
                   <p className="tool-crumbs">
                     Decision Lab / <strong>{crumbLabel}</strong>
@@ -529,7 +519,21 @@ function DecisionLabWorkbench({
                 </span>
               </div>
 
-              <div className="mt-5 flex flex-col gap-5">
+              <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,320px)]">
+                <div className="flex flex-col gap-5">
+                <HomeStatsPanel
+                  id="decision-lab-stats"
+                  title="Decision at a glance"
+                  meta={`Score ${evaluation.weightedScore} · ${recommendationCopy[evaluation.recommendation]}`}
+                  hideLiveDot
+                  cells={decisionStatsCells}
+                  pills={[
+                    { label: "Presets", href: "#hero" },
+                    { label: "Sliders", href: "#hero" },
+                    { label: "Verdict", href: "#hero" },
+                  ]}
+                />
+
                 {/* Hero verdict card */}
                 <div className="tool-card tool-card-hero" style={heroStyle}>
                   <div className="flex flex-wrap items-start justify-between gap-4">
@@ -630,10 +634,12 @@ function DecisionLabWorkbench({
                   <DecisionMatrix state={draftState} />
                 </div>
               </div>
-            </div>
 
             {/* Rail */}
-            <aside className="tool-rail" aria-label="Verdict rail">
+            <aside
+              aria-label="Verdict rail"
+              className="flex flex-col gap-4 rounded-[1.5rem] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_74%,var(--home-elev-mix))] p-5 shadow-[var(--shadow-sm)] lg:sticky lg:top-24 lg:self-start lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto"
+            >
               <section>
                 <p className="tool-rail-label">
                   <IconBolt size={12} aria-hidden="true" />
@@ -705,7 +711,7 @@ function DecisionLabWorkbench({
                       >
                         <span className="block truncate">{preset.name}</span>
                         <span
-                          className="block truncate text-[11px] font-normal"
+                          className="block truncate text-2xs font-normal"
                           style={{ color: "var(--home-ink-muted)" }}
                         >
                           {preset.outcomeHint}
@@ -740,7 +746,7 @@ function DecisionLabWorkbench({
                     Copy link
                   </button>
                   <p
-                    className="m-0 text-[11px] leading-snug"
+                    className="m-0 text-2xs leading-snug"
                     style={{ color: "var(--home-ink-muted)" }}
                   >
                     {copyStatus === "copied"

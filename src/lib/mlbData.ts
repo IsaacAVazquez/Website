@@ -351,32 +351,50 @@ function dateOffsetIso(days: number): string {
   return date.toISOString().slice(0, 10);
 }
 
-async function fetchStatsApiJson<T>(path: string, revalidateSeconds: number): Promise<T> {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
-  try {
-    const response = await fetch(`${MLB_STATS_BASE_URL}${path}`, {
-      signal: controller.signal,
-      next: { revalidate: revalidateSeconds },
-    });
-    if (!response.ok) {
-      if (response.status === 404) {
-        throw createMlbDataError("Requested MLB resource was not found.", 404);
-      }
-      throw createMlbDataError(
-        "Unable to load MLB data from the upstream provider.",
-        response.status >= 500 ? 503 : 502
-      );
+async function fetchStatsApiJsonOnce<T>(path: string, revalidateSeconds: number): Promise<T> {
+  const response = await fetch(`${MLB_STATS_BASE_URL}${path}`, {
+    signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
+    next: { revalidate: revalidateSeconds },
+  });
+  if (!response.ok) {
+    if (response.status === 404) {
+      throw createMlbDataError("Requested MLB resource was not found.", 404);
     }
-    return (await response.json()) as T;
-  } catch (error) {
-    if (error instanceof Error && error.name === "AbortError") {
-      throw createMlbDataError("MLB data provider timed out.", 504);
-    }
-    throw error;
-  } finally {
-    clearTimeout(timeout);
+    throw createMlbDataError(
+      "Unable to load MLB data from the upstream provider.",
+      response.status >= 500 ? 503 : 502
+    );
   }
+  return (await response.json()) as T;
+}
+
+/**
+ * Wraps the per-attempt fetch in a 3-attempt retry. Backs off on 5xx and on
+ * network/timeout errors, but NOT on 4xx (client-side errors won't recover).
+ * Mirrors the pattern in src/lib/nflData.ts (`fetchTextOnce` + `fetchText`).
+ */
+async function fetchStatsApiJson<T>(path: string, revalidateSeconds: number): Promise<T> {
+  let lastError: unknown;
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    try {
+      return await fetchStatsApiJsonOnce<T>(path, revalidateSeconds);
+    } catch (error) {
+      lastError = error;
+      if (error instanceof Error && (error.name === "AbortError" || error.name === "TimeoutError")) {
+        if (attempt < 2) {
+          await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
+          continue;
+        }
+        throw createMlbDataError("MLB data provider timed out.", 504);
+      }
+      const status = (error as MlbDataError).status;
+      if (typeof status === "number" && status >= 400 && status < 500) throw error;
+      if (attempt < 2) {
+        await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
+      }
+    }
+  }
+  throw lastError;
 }
 
 function buildQueryString(params: Record<string, string | number>): string {
@@ -637,23 +655,24 @@ export async function buildMlbSnapshot(options?: { skipTeamSnapshots?: boolean }
   const summary = await getMlbSummary();
   const teamLookup = new Map(summary.teams.map((team) => [team.id, team]));
   const generatedAt = new Date().toISOString();
-  let teamSnapshots: Record<string, MlbTeamSnapshot> = {};
+  let teamSnapshots: Record<string, MlbTeamSnapshot>;
 
   if (options?.skipTeamSnapshots) {
     teamSnapshots = readExistingTeamSnapshots(MLB_SNAPSHOT_PATH);
     console.log(`  Preserved ${Object.keys(teamSnapshots).length} existing team snapshots.`);
   } else {
-    const entries: Array<[string, MlbTeamSnapshot]> = [];
+    // Start from the prior snapshots so a per-team failure preserves that
+    // team's previous data instead of dropping it from the snapshot.
+    teamSnapshots = { ...readExistingTeamSnapshots(MLB_SNAPSHOT_PATH) };
     for (const team of summary.teams) {
       await delay(TEAM_FETCH_DELAY_MS);
       try {
         const snap = await getMlbTeamSnapshot(team.id, teamLookup);
-        entries.push([team.id, { ...snap, generatedAt }]);
+        teamSnapshots[team.id] = { ...snap, generatedAt };
       } catch (err) {
-        console.warn(`  Skipping team ${team.id} (${team.shortName}): ${(err as Error).message}`);
+        console.warn(`  Skipping team ${team.id} (${team.shortName}): ${(err as Error).message} — keeping previous snapshot if any.`);
       }
     }
-    teamSnapshots = Object.fromEntries(entries);
   }
 
   return {

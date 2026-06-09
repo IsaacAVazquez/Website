@@ -1,0 +1,976 @@
+{
+  "ttm_pe": [],
+  "ps_ratio": [],
+  "pb_ratio": [],
+  "roe": [
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 923495151477.2651,
+      "total_avg_equity": 8903404849238.242,
+      "industry_roe": 0.1037
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 956625319034.154,
+      "total_avg_equity": 9223223756094.174,
+      "industry_roe": 0.1037
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 956625319034.154,
+      "total_avg_equity": 9223223756094.174,
+      "industry_roe": 0.1037
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 949212357099.0325,
+      "total_avg_equity": 9256989941198.344,
+      "industry_roe": 0.1025
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 947235258134.2013,
+      "total_avg_equity": 9258831323151.078,
+      "industry_roe": 0.1023
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 947235258134.2013,
+      "total_avg_equity": 9258831323151.078,
+      "industry_roe": 0.1023
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 938937254821.525,
+      "total_avg_equity": 9463443018996.074,
+      "industry_roe": 0.0992
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 940351054219.1136,
+      "total_avg_equity": 9467683650521.031,
+      "industry_roe": 0.0993
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 940351054219.1136,
+      "total_avg_equity": 9467683650521.031,
+      "industry_roe": 0.0993
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1044895031635.8115,
+      "total_avg_equity": 9423600359785.305,
+      "industry_roe": 0.1109
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1044718973002.4062,
+      "total_avg_equity": 9419805628646.465,
+      "industry_roe": 0.1109
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1044718973002.4062,
+      "total_avg_equity": 9419805628646.465,
+      "industry_roe": 0.1109
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1068677834805.0518,
+      "total_avg_equity": 9492307867301.414,
+      "industry_roe": 0.1126
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1076882237714.6674,
+      "total_avg_equity": 9513314066911.145,
+      "industry_roe": 0.1132
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1076882237714.6674,
+      "total_avg_equity": 9513314066911.145,
+      "industry_roe": 0.1132
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1902523053081.0447,
+      "total_avg_equity": 10693186815917.836,
+      "industry_roe": 0.1779
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1920167262153.3438,
+      "total_avg_equity": 10792872257131.408,
+      "industry_roe": 0.1779
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1920167262153.3438,
+      "total_avg_equity": 10792872257131.408,
+      "industry_roe": 0.1779
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1960834452776.4202,
+      "total_avg_equity": 10793739628874.764,
+      "industry_roe": 0.1817
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1962181613227.8364,
+      "total_avg_equity": 10803016400101.223,
+      "industry_roe": 0.1816
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1962181613227.8364,
+      "total_avg_equity": 10803016400101.223,
+      "industry_roe": 0.1816
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1980394792510.983,
+      "total_avg_equity": 10859343889021.48,
+      "industry_roe": 0.1824
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 2017233499781.595,
+      "total_avg_equity": 10876872756499.143,
+      "industry_roe": 0.1855
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 2017233499781.595,
+      "total_avg_equity": 10876872756499.143,
+      "industry_roe": 0.1855
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 2881450654174.5107,
+      "total_avg_equity": 10883162985460.033,
+      "industry_roe": 0.2648
+    }
+  ],
+  "roa": [
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 923495151477.2651,
+      "total_avg_assets": 107184803491984.14,
+      "industry_roa": 0.0086
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 956625319034.154,
+      "total_avg_assets": 112747626715807.95,
+      "industry_roa": 0.0085
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 956625319034.154,
+      "total_avg_assets": 112747626715807.95,
+      "industry_roa": 0.0085
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 949212357099.0325,
+      "total_avg_assets": 112890859260985.9,
+      "industry_roa": 0.0084
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 947235258134.2013,
+      "total_avg_assets": 112946334232107.94,
+      "industry_roa": 0.0084
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 947235258134.2013,
+      "total_avg_assets": 112946334232107.94,
+      "industry_roa": 0.0084
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 938937254821.525,
+      "total_avg_assets": 114606082422311.16,
+      "industry_roa": 0.0082
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 940351054219.1136,
+      "total_avg_assets": 114621809248935.61,
+      "industry_roa": 0.0082
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 940351054219.1136,
+      "total_avg_assets": 114621809248935.61,
+      "industry_roa": 0.0082
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1044895031635.8115,
+      "total_avg_assets": 114265222426293.66,
+      "industry_roa": 0.0091
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1044718973002.4062,
+      "total_avg_assets": 114167403504219.64,
+      "industry_roa": 0.0092
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1044718973002.4062,
+      "total_avg_assets": 114167403504219.64,
+      "industry_roa": 0.0092
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1068677834805.0518,
+      "total_avg_assets": 116732446558822.56,
+      "industry_roa": 0.0092
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1076882237714.6674,
+      "total_avg_assets": 117025348364150.16,
+      "industry_roa": 0.0092
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1076882237714.6674,
+      "total_avg_assets": 117025348364150.16,
+      "industry_roa": 0.0092
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1902523053081.0447,
+      "total_avg_assets": 137308903068823.1,
+      "industry_roa": 0.0139
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1920167262153.3438,
+      "total_avg_assets": 138969131872859.94,
+      "industry_roa": 0.0138
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1920167262153.3438,
+      "total_avg_assets": 138969131872859.94,
+      "industry_roa": 0.0138
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1960834452776.4202,
+      "total_avg_assets": 137687821098136.14,
+      "industry_roa": 0.0142
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1962181613227.8364,
+      "total_avg_assets": 137802971192794.44,
+      "industry_roa": 0.0142
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1962181613227.8364,
+      "total_avg_assets": 137802971192794.44,
+      "industry_roa": 0.0142
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1980394792510.983,
+      "total_avg_assets": 139730631017710.9,
+      "industry_roa": 0.0142
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 2017233499781.595,
+      "total_avg_assets": 140036460327444.16,
+      "industry_roa": 0.0144
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 2017233499781.595,
+      "total_avg_assets": 140036460327444.16,
+      "industry_roa": 0.0144
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 2881450654174.5107,
+      "total_avg_assets": 144487882673400.25,
+      "industry_roa": 0.0199
+    }
+  ],
+  "equity_multiplier": [
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roe": 0.1037,
+      "industry_roa": 0.0086,
+      "industry_equity_multiplier": 12.06
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roe": 0.1037,
+      "industry_roa": 0.0085,
+      "industry_equity_multiplier": 12.2
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roe": 0.1037,
+      "industry_roa": 0.0085,
+      "industry_equity_multiplier": 12.2
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roe": 0.1025,
+      "industry_roa": 0.0084,
+      "industry_equity_multiplier": 12.2
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roe": 0.1023,
+      "industry_roa": 0.0084,
+      "industry_equity_multiplier": 12.18
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roe": 0.1023,
+      "industry_roa": 0.0084,
+      "industry_equity_multiplier": 12.18
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roe": 0.0992,
+      "industry_roa": 0.0082,
+      "industry_equity_multiplier": 12.1
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roe": 0.0993,
+      "industry_roa": 0.0082,
+      "industry_equity_multiplier": 12.11
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roe": 0.0993,
+      "industry_roa": 0.0082,
+      "industry_equity_multiplier": 12.11
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roe": 0.1109,
+      "industry_roa": 0.0091,
+      "industry_equity_multiplier": 12.19
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roe": 0.1109,
+      "industry_roa": 0.0092,
+      "industry_equity_multiplier": 12.05
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roe": 0.1109,
+      "industry_roa": 0.0092,
+      "industry_equity_multiplier": 12.05
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roe": 0.1126,
+      "industry_roa": 0.0092,
+      "industry_equity_multiplier": 12.24
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roe": 0.1132,
+      "industry_roa": 0.0092,
+      "industry_equity_multiplier": 12.3
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roe": 0.1132,
+      "industry_roa": 0.0092,
+      "industry_equity_multiplier": 12.3
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roe": 0.1779,
+      "industry_roa": 0.0139,
+      "industry_equity_multiplier": 12.8
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roe": 0.1779,
+      "industry_roa": 0.0138,
+      "industry_equity_multiplier": 12.89
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roe": 0.1779,
+      "industry_roa": 0.0138,
+      "industry_equity_multiplier": 12.89
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roe": 0.1817,
+      "industry_roa": 0.0142,
+      "industry_equity_multiplier": 12.8
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roe": 0.1816,
+      "industry_roa": 0.0142,
+      "industry_equity_multiplier": 12.79
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roe": 0.1816,
+      "industry_roa": 0.0142,
+      "industry_equity_multiplier": 12.79
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roe": 0.1824,
+      "industry_roa": 0.0142,
+      "industry_equity_multiplier": 12.85
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roe": 0.1855,
+      "industry_roa": 0.0144,
+      "industry_equity_multiplier": 12.88
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roe": 0.1855,
+      "industry_roa": 0.0144,
+      "industry_equity_multiplier": 12.88
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roe": 0.2648,
+      "industry_roa": 0.0199,
+      "industry_equity_multiplier": 13.31
+    }
+  ],
+  "gross_margin": [],
+  "ebitda_margin": [],
+  "net_margin": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 6049819445.799956,
+      "total_ttm_revenue": 27923641714.401546,
+      "industry_net_margin": 0.2167
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 6049819445.799956,
+      "total_ttm_revenue": 27923641714.401546,
+      "industry_net_margin": 0.2167
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 6049819445.799956,
+      "total_ttm_revenue": 27923641714.401546,
+      "industry_net_margin": 0.2167
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 5535426163.834784,
+      "total_ttm_revenue": 26130011051.25017,
+      "industry_net_margin": 0.2118
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 5535426163.834784,
+      "total_ttm_revenue": 26130011051.25017,
+      "industry_net_margin": 0.2118
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 5535426163.834784,
+      "total_ttm_revenue": 26130011051.25017,
+      "industry_net_margin": 0.2118
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 34335081620.763775,
+      "total_ttm_revenue": 126618385919.09573,
+      "industry_net_margin": 0.2712
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 34335081620.763775,
+      "total_ttm_revenue": 126618385919.09573,
+      "industry_net_margin": 0.2712
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 34335081620.763775,
+      "total_ttm_revenue": 126618385919.09573,
+      "industry_net_margin": 0.2712
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 379102913339.1784,
+      "total_ttm_revenue": 1507468825367.6023,
+      "industry_net_margin": 0.2515
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 379102913339.1784,
+      "total_ttm_revenue": 1507468825367.6023,
+      "industry_net_margin": 0.2515
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 379102913339.1784,
+      "total_ttm_revenue": 1507468825367.6023,
+      "industry_net_margin": 0.2515
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 923495151477.2651,
+      "total_ttm_revenue": 3592186670902.2676,
+      "industry_net_margin": 0.2571
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 956625319034.154,
+      "total_ttm_revenue": 3736794851190.5537,
+      "industry_net_margin": 0.256
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 956625319034.154,
+      "total_ttm_revenue": 3736794851190.5537,
+      "industry_net_margin": 0.256
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 949212357099.0325,
+      "total_ttm_revenue": 3816851943939.7456,
+      "industry_net_margin": 0.2487
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 947235258134.2013,
+      "total_ttm_revenue": 3817963619247.1274,
+      "industry_net_margin": 0.2481
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 947235258134.2013,
+      "total_ttm_revenue": 3817963619247.1274,
+      "industry_net_margin": 0.2481
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 938937254821.525,
+      "total_ttm_revenue": 3862545033458.2163,
+      "industry_net_margin": 0.2431
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 940351054219.1136,
+      "total_ttm_revenue": 3864167714532.0913,
+      "industry_net_margin": 0.2434
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 940351054219.1136,
+      "total_ttm_revenue": 3864167714532.0913,
+      "industry_net_margin": 0.2434
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1044895031635.8115,
+      "total_ttm_revenue": 3936772922792.473,
+      "industry_net_margin": 0.2654
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1044718973002.4062,
+      "total_ttm_revenue": 3936147421933.3223,
+      "industry_net_margin": 0.2654
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1044718973002.4062,
+      "total_ttm_revenue": 3936147421933.3223,
+      "industry_net_margin": 0.2654
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1068677834805.0518,
+      "total_ttm_revenue": 4003659142130.53,
+      "industry_net_margin": 0.2669
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1076882237714.6674,
+      "total_ttm_revenue": 4014463622194.8765,
+      "industry_net_margin": 0.2683
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1076882237714.6674,
+      "total_ttm_revenue": 4014463622194.8765,
+      "industry_net_margin": 0.2683
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1902523053081.0447,
+      "total_ttm_revenue": 5879070913005.795,
+      "industry_net_margin": 0.3236
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1920167262153.3438,
+      "total_ttm_revenue": 5929976883568.671,
+      "industry_net_margin": 0.3238
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1920167262153.3438,
+      "total_ttm_revenue": 5929976883568.671,
+      "industry_net_margin": 0.3238
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1960834452776.4202,
+      "total_ttm_revenue": 6007529620860.627,
+      "industry_net_margin": 0.3264
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1962181613227.8364,
+      "total_ttm_revenue": 6011214286629.578,
+      "industry_net_margin": 0.3264
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1962181613227.8364,
+      "total_ttm_revenue": 6011214286629.578,
+      "industry_net_margin": 0.3264
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 1980394792510.983,
+      "total_ttm_revenue": 6121622897399.114,
+      "industry_net_margin": 0.3235
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 2017233499781.595,
+      "total_ttm_revenue": 6262811960727.681,
+      "industry_net_margin": 0.3221
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 2017233499781.595,
+      "total_ttm_revenue": 6262811960727.681,
+      "industry_net_margin": 0.3221
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "total_ttm_net_income": 2881450654174.5107,
+      "total_ttm_revenue": 7925847337196.632,
+      "industry_net_margin": 0.3636
+    }
+  ],
+  "asset_turnover": [
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roa": 0.0086,
+      "industry_net_margin": 0.2571,
+      "industry_asset_turnover": 0.03
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roa": 0.0085,
+      "industry_net_margin": 0.256,
+      "industry_asset_turnover": 0.03
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roa": 0.0085,
+      "industry_net_margin": 0.256,
+      "industry_asset_turnover": 0.03
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roa": 0.0084,
+      "industry_net_margin": 0.2487,
+      "industry_asset_turnover": 0.03
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roa": 0.0084,
+      "industry_net_margin": 0.2481,
+      "industry_asset_turnover": 0.03
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roa": 0.0084,
+      "industry_net_margin": 0.2481,
+      "industry_asset_turnover": 0.03
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roa": 0.0082,
+      "industry_net_margin": 0.2431,
+      "industry_asset_turnover": 0.03
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roa": 0.0082,
+      "industry_net_margin": 0.2434,
+      "industry_asset_turnover": 0.03
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roa": 0.0082,
+      "industry_net_margin": 0.2434,
+      "industry_asset_turnover": 0.03
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roa": 0.0091,
+      "industry_net_margin": 0.2654,
+      "industry_asset_turnover": 0.03
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roa": 0.0092,
+      "industry_net_margin": 0.2654,
+      "industry_asset_turnover": 0.03
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roa": 0.0092,
+      "industry_net_margin": 0.2654,
+      "industry_asset_turnover": 0.03
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roa": 0.0092,
+      "industry_net_margin": 0.2669,
+      "industry_asset_turnover": 0.03
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roa": 0.0092,
+      "industry_net_margin": 0.2683,
+      "industry_asset_turnover": 0.03
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roa": 0.0092,
+      "industry_net_margin": 0.2683,
+      "industry_asset_turnover": 0.03
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roa": 0.0139,
+      "industry_net_margin": 0.3236,
+      "industry_asset_turnover": 0.04
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roa": 0.0138,
+      "industry_net_margin": 0.3238,
+      "industry_asset_turnover": 0.04
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roa": 0.0138,
+      "industry_net_margin": 0.3238,
+      "industry_asset_turnover": 0.04
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roa": 0.0142,
+      "industry_net_margin": 0.3264,
+      "industry_asset_turnover": 0.04
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roa": 0.0142,
+      "industry_net_margin": 0.3264,
+      "industry_asset_turnover": 0.04
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roa": 0.0142,
+      "industry_net_margin": 0.3264,
+      "industry_asset_turnover": 0.04
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roa": 0.0142,
+      "industry_net_margin": 0.3235,
+      "industry_asset_turnover": 0.04
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roa": 0.0144,
+      "industry_net_margin": 0.3221,
+      "industry_asset_turnover": 0.04
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roa": 0.0144,
+      "industry_net_margin": 0.3221,
+      "industry_asset_turnover": 0.04
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Banks-Diversified",
+      "industry_roa": 0.0199,
+      "industry_net_margin": 0.3636,
+      "industry_asset_turnover": 0.05
+    }
+  ]
+}

@@ -4,7 +4,6 @@ import { SpaceXMissionControlClient } from "./spacex-mission-control-client";
 import { loadMissionControlInitialData } from "./spacex-mission-control-data";
 import { normalizeMissionControlState } from "./spacex-mission-control-state";
 
-// eslint-disable-next-line react-refresh/only-export-components -- Next.js route modules export metadata alongside the page component.
 export const metadata = constructMetadata({
   title: "SpaceX Mission Control",
   description:
@@ -51,6 +50,7 @@ export default async function SpaceXMissionControlPage({
 }: SpaceXMissionControlPageProps) {
   const initialState = normalizeMissionControlState(await searchParams);
   const initialData = await loadMissionControlInitialData(initialState);
+  // eslint-disable-next-line react-hooks/purity -- Server component (async); Date.now() is evaluated once per request, not during a client render
   const renderedAtMs = Date.now();
   const breadcrumbs = [
     { name: "Home", url: "/" },

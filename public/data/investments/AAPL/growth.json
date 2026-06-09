@@ -1,0 +1,1613 @@
+{
+  "quarterly_revenue": [
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-06-30T00:00:00.000",
+      "revenue": 82959000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-06-30T00:00:00.000",
+      "revenue": 81797000000.0,
+      "prev_year_revenue": 82959000000.0,
+      "yoy_growth": -0.014
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-09-30T00:00:00.000",
+      "revenue": 89498000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 119575000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-03-31T00:00:00.000",
+      "revenue": 90753000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-06-30T00:00:00.000",
+      "revenue": 85777000000.0,
+      "prev_year_revenue": 81797000000.0,
+      "yoy_growth": 0.0487
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-09-30T00:00:00.000",
+      "revenue": 94930000000.0,
+      "prev_year_revenue": 89498000000.0,
+      "yoy_growth": 0.0607
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 124300000000.0,
+      "prev_year_revenue": 119575000000.0,
+      "yoy_growth": 0.0395
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-03-31T00:00:00.000",
+      "revenue": 95359000000.0,
+      "prev_year_revenue": 90753000000.0,
+      "yoy_growth": 0.0508
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-06-30T00:00:00.000",
+      "revenue": 94036000000.0,
+      "prev_year_revenue": 85777000000.0,
+      "yoy_growth": 0.0963
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-09-30T00:00:00.000",
+      "revenue": 102466000000.0,
+      "prev_year_revenue": 94930000000.0,
+      "yoy_growth": 0.0794
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 143756000000.0,
+      "prev_year_revenue": 124300000000.0,
+      "yoy_growth": 0.1565
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2026-03-31T00:00:00.000",
+      "revenue": 111184000000.0,
+      "prev_year_revenue": 95359000000.0,
+      "yoy_growth": 0.166
+    }
+  ],
+  "annual_revenue": [
+    {
+      "symbol": "AAPL",
+      "report_date": "2019-09-30T00:00:00.000",
+      "revenue": 260174000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2020-09-30T00:00:00.000",
+      "revenue": 274515000000.0,
+      "prev_year_revenue": 260174000000.0,
+      "yoy_growth": 0.0551
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2021-09-30T00:00:00.000",
+      "revenue": 365817000000.0,
+      "prev_year_revenue": 274515000000.0,
+      "yoy_growth": 0.3326
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-09-30T00:00:00.000",
+      "revenue": 394328000000.0,
+      "prev_year_revenue": 365817000000.0,
+      "yoy_growth": 0.0779
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-09-30T00:00:00.000",
+      "revenue": 383285000000.0,
+      "prev_year_revenue": 394328000000.0,
+      "yoy_growth": -0.028
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-09-30T00:00:00.000",
+      "revenue": 391035000000.0,
+      "prev_year_revenue": 383285000000.0,
+      "yoy_growth": 0.0202
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-09-30T00:00:00.000",
+      "revenue": 416161000000.0,
+      "prev_year_revenue": 391035000000.0,
+      "yoy_growth": 0.0643
+    }
+  ],
+  "quarterly_operating_income": [
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-06-30T00:00:00.000",
+      "operating_income": 23076000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-06-30T00:00:00.000",
+      "operating_income": 22998000000.0,
+      "prev_year_operating_income": 23076000000.0,
+      "yoy_growth": -0.0034
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-09-30T00:00:00.000",
+      "operating_income": 26969000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 40373000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-03-31T00:00:00.000",
+      "operating_income": 27900000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-06-30T00:00:00.000",
+      "operating_income": 25352000000.0,
+      "prev_year_operating_income": 22998000000.0,
+      "yoy_growth": 0.1024
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-09-30T00:00:00.000",
+      "operating_income": 29591000000.0,
+      "prev_year_operating_income": 26969000000.0,
+      "yoy_growth": 0.0972
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 42832000000.0,
+      "prev_year_operating_income": 40373000000.0,
+      "yoy_growth": 0.0609
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-03-31T00:00:00.000",
+      "operating_income": 29589000000.0,
+      "prev_year_operating_income": 27900000000.0,
+      "yoy_growth": 0.0605
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-06-30T00:00:00.000",
+      "operating_income": 28202000000.0,
+      "prev_year_operating_income": 25352000000.0,
+      "yoy_growth": 0.1124
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-09-30T00:00:00.000",
+      "operating_income": 32427000000.0,
+      "prev_year_operating_income": 29591000000.0,
+      "yoy_growth": 0.0958
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 50852000000.0,
+      "prev_year_operating_income": 42832000000.0,
+      "yoy_growth": 0.1872
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2026-03-31T00:00:00.000",
+      "operating_income": 35885000000.0,
+      "prev_year_operating_income": 29589000000.0,
+      "yoy_growth": 0.2128
+    }
+  ],
+  "annual_operating_income": [
+    {
+      "symbol": "AAPL",
+      "report_date": "2019-09-30T00:00:00.000",
+      "operating_income": 63930000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2020-09-30T00:00:00.000",
+      "operating_income": 66288000000.0,
+      "prev_year_operating_income": 63930000000.0,
+      "yoy_growth": 0.0369
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2021-09-30T00:00:00.000",
+      "operating_income": 108949000000.0,
+      "prev_year_operating_income": 66288000000.0,
+      "yoy_growth": 0.6436
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-09-30T00:00:00.000",
+      "operating_income": 119437000000.0,
+      "prev_year_operating_income": 108949000000.0,
+      "yoy_growth": 0.0963
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-09-30T00:00:00.000",
+      "operating_income": 114301000000.0,
+      "prev_year_operating_income": 119437000000.0,
+      "yoy_growth": -0.043
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-09-30T00:00:00.000",
+      "operating_income": 123216000000.0,
+      "prev_year_operating_income": 114301000000.0,
+      "yoy_growth": 0.078
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-09-30T00:00:00.000",
+      "operating_income": 133050000000.0,
+      "prev_year_operating_income": 123216000000.0,
+      "yoy_growth": 0.0798
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-06-30T00:00:00.000",
+      "ebitda": 26050000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-09-30T00:00:00.000",
+      "ebitda": 30653000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 43221000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-03-31T00:00:00.000",
+      "ebitda": 30736000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-06-30T00:00:00.000",
+      "ebitda": 28202000000.0,
+      "prev_year_ebitda": 26050000000.0,
+      "yoy_growth": 0.0826
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-09-30T00:00:00.000",
+      "ebitda": 32502000000.0,
+      "prev_year_ebitda": 30653000000.0,
+      "yoy_growth": 0.0603
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 45912000000.0,
+      "prev_year_ebitda": 43221000000.0,
+      "yoy_growth": 0.0623
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-03-31T00:00:00.000",
+      "ebitda": 32250000000.0,
+      "prev_year_ebitda": 30736000000.0,
+      "yoy_growth": 0.0493
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-06-30T00:00:00.000",
+      "ebitda": 31032000000.0,
+      "prev_year_ebitda": 28202000000.0,
+      "yoy_growth": 0.1003
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-09-30T00:00:00.000",
+      "ebitda": 35554000000.0,
+      "prev_year_ebitda": 32502000000.0,
+      "yoy_growth": 0.0939
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 54066000000.0,
+      "prev_year_ebitda": 45912000000.0,
+      "yoy_growth": 0.1776
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2026-03-31T00:00:00.000",
+      "ebitda": 39324000000.0,
+      "prev_year_ebitda": 32250000000.0,
+      "yoy_growth": 0.2193
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "AAPL",
+      "report_date": "2020-09-30T00:00:00.000",
+      "ebitda": 81020000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2021-09-30T00:00:00.000",
+      "ebitda": 123136000000.0,
+      "prev_year_ebitda": 81020000000.0,
+      "yoy_growth": 0.5198
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-09-30T00:00:00.000",
+      "ebitda": 130541000000.0,
+      "prev_year_ebitda": 123136000000.0,
+      "yoy_growth": 0.0601
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-09-30T00:00:00.000",
+      "ebitda": 125820000000.0,
+      "prev_year_ebitda": 130541000000.0,
+      "yoy_growth": -0.0362
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-09-30T00:00:00.000",
+      "ebitda": 134661000000.0,
+      "prev_year_ebitda": 125820000000.0,
+      "yoy_growth": 0.0703
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-09-30T00:00:00.000",
+      "ebitda": 144748000000.0,
+      "prev_year_ebitda": 134661000000.0,
+      "yoy_growth": 0.0749
+    }
+  ],
+  "quarterly_net_income": [
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-06-30T00:00:00.000",
+      "net_income_common_stockholders": 19442000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-06-30T00:00:00.000",
+      "net_income_common_stockholders": 19881000000.0,
+      "prev_year_net_income_common_stockholders": 19442000000.0,
+      "yoy_growth": 0.0226
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-09-30T00:00:00.000",
+      "net_income_common_stockholders": 22956000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 33916000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-03-31T00:00:00.000",
+      "net_income_common_stockholders": 23636000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-06-30T00:00:00.000",
+      "net_income_common_stockholders": 21448000000.0,
+      "prev_year_net_income_common_stockholders": 19881000000.0,
+      "yoy_growth": 0.0788
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-09-30T00:00:00.000",
+      "net_income_common_stockholders": 14736000000.0,
+      "prev_year_net_income_common_stockholders": 22956000000.0,
+      "yoy_growth": -0.3581
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 36330000000.0,
+      "prev_year_net_income_common_stockholders": 33916000000.0,
+      "yoy_growth": 0.0712
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-03-31T00:00:00.000",
+      "net_income_common_stockholders": 24780000000.0,
+      "prev_year_net_income_common_stockholders": 23636000000.0,
+      "yoy_growth": 0.0484
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-06-30T00:00:00.000",
+      "net_income_common_stockholders": 23434000000.0,
+      "prev_year_net_income_common_stockholders": 21448000000.0,
+      "yoy_growth": 0.0926
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-09-30T00:00:00.000",
+      "net_income_common_stockholders": 27466000000.0,
+      "prev_year_net_income_common_stockholders": 14736000000.0,
+      "yoy_growth": 0.8639
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 42097000000.0,
+      "prev_year_net_income_common_stockholders": 36330000000.0,
+      "yoy_growth": 0.1587
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2026-03-31T00:00:00.000",
+      "net_income_common_stockholders": 29578000000.0,
+      "prev_year_net_income_common_stockholders": 24780000000.0,
+      "yoy_growth": 0.1936
+    }
+  ],
+  "annual_net_income": [
+    {
+      "symbol": "AAPL",
+      "report_date": "2019-09-30T00:00:00.000",
+      "net_income_common_stockholders": 55256000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2020-09-30T00:00:00.000",
+      "net_income_common_stockholders": 57411000000.0,
+      "prev_year_net_income_common_stockholders": 55256000000.0,
+      "yoy_growth": 0.039
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2021-09-30T00:00:00.000",
+      "net_income_common_stockholders": 94680000000.0,
+      "prev_year_net_income_common_stockholders": 57411000000.0,
+      "yoy_growth": 0.6492
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-09-30T00:00:00.000",
+      "net_income_common_stockholders": 99803000000.0,
+      "prev_year_net_income_common_stockholders": 94680000000.0,
+      "yoy_growth": 0.0541
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-09-30T00:00:00.000",
+      "net_income_common_stockholders": 96995000000.0,
+      "prev_year_net_income_common_stockholders": 99803000000.0,
+      "yoy_growth": -0.0281
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-09-30T00:00:00.000",
+      "net_income_common_stockholders": 93736000000.0,
+      "prev_year_net_income_common_stockholders": 96995000000.0,
+      "yoy_growth": -0.0336
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-09-30T00:00:00.000",
+      "net_income_common_stockholders": 112010000000.0,
+      "prev_year_net_income_common_stockholders": 93736000000.0,
+      "yoy_growth": 0.195
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-06-30T00:00:00.000",
+      "free_cash_flow": 20790000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-06-30T00:00:00.000",
+      "free_cash_flow": 24287000000.0,
+      "prev_year_free_cash_flow": 20790000000.0,
+      "yoy_growth": 0.1682
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-09-30T00:00:00.000",
+      "free_cash_flow": 19435000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 37503000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-03-31T00:00:00.000",
+      "free_cash_flow": 20694000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-06-30T00:00:00.000",
+      "free_cash_flow": 26707000000.0,
+      "prev_year_free_cash_flow": 24287000000.0,
+      "yoy_growth": 0.0996
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-09-30T00:00:00.000",
+      "free_cash_flow": 23903000000.0,
+      "prev_year_free_cash_flow": 19435000000.0,
+      "yoy_growth": 0.2299
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 26995000000.0,
+      "prev_year_free_cash_flow": 37503000000.0,
+      "yoy_growth": -0.2802
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-03-31T00:00:00.000",
+      "free_cash_flow": 20881000000.0,
+      "prev_year_free_cash_flow": 20694000000.0,
+      "yoy_growth": 0.009
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-06-30T00:00:00.000",
+      "free_cash_flow": 24405000000.0,
+      "prev_year_free_cash_flow": 26707000000.0,
+      "yoy_growth": -0.0862
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-09-30T00:00:00.000",
+      "free_cash_flow": 26486000000.0,
+      "prev_year_free_cash_flow": 23903000000.0,
+      "yoy_growth": 0.1081
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 51552000000.0,
+      "prev_year_free_cash_flow": 26995000000.0,
+      "yoy_growth": 0.9097
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2026-03-31T00:00:00.000",
+      "free_cash_flow": 26731000000.0,
+      "prev_year_free_cash_flow": 20881000000.0,
+      "yoy_growth": 0.2802
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "AAPL",
+      "report_date": "2020-09-30T00:00:00.000",
+      "free_cash_flow": 73365000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2021-09-30T00:00:00.000",
+      "free_cash_flow": 92953000000.0,
+      "prev_year_free_cash_flow": 73365000000.0,
+      "yoy_growth": 0.267
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-09-30T00:00:00.000",
+      "free_cash_flow": 111443000000.0,
+      "prev_year_free_cash_flow": 92953000000.0,
+      "yoy_growth": 0.1989
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-09-30T00:00:00.000",
+      "free_cash_flow": 99584000000.0,
+      "prev_year_free_cash_flow": 111443000000.0,
+      "yoy_growth": -0.1064
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-09-30T00:00:00.000",
+      "free_cash_flow": 108807000000.0,
+      "prev_year_free_cash_flow": 99584000000.0,
+      "yoy_growth": 0.0926
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-09-30T00:00:00.000",
+      "free_cash_flow": 98767000000.0,
+      "prev_year_free_cash_flow": 108807000000.0,
+      "yoy_growth": -0.0923
+    }
+  ],
+  "quarterly_eps": [
+    {
+      "symbol": "AAPL",
+      "report_date": "1993-12-31T00:00:00.000",
+      "eps": 0.003,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "1994-03-31T00:00:00.000",
+      "eps": 0.0104,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "1994-06-30T00:00:00.000",
+      "eps": 0.0104,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "1994-09-30T00:00:00.000",
+      "eps": 0.0087,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "1994-12-31T00:00:00.000",
+      "eps": 0.0138,
+      "prev_year_eps": 0.003,
+      "yoy_growth": 3.6
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "1995-03-31T00:00:00.000",
+      "eps": 0.0054,
+      "prev_year_eps": 0.0104,
+      "yoy_growth": -0.4808
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "1995-06-30T00:00:00.000",
+      "eps": 0.0075,
+      "prev_year_eps": 0.0104,
+      "yoy_growth": -0.2788
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "1995-09-30T00:00:00.000",
+      "eps": 0.0044,
+      "prev_year_eps": 0.0087,
+      "yoy_growth": -0.4943
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "1995-12-31T00:00:00.000",
+      "eps": -0.005,
+      "prev_year_eps": 0.0138,
+      "yoy_growth": -1.3623
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "1996-03-31T00:00:00.000",
+      "eps": -0.0534,
+      "prev_year_eps": 0.0054,
+      "yoy_growth": -10.8889
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "1996-06-30T00:00:00.000",
+      "eps": -0.0023,
+      "prev_year_eps": 0.0075,
+      "yoy_growth": -1.3067
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "1996-09-30T00:00:00.000",
+      "eps": 0.0018,
+      "prev_year_eps": 0.0044,
+      "yoy_growth": -0.5909
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "1996-12-31T00:00:00.000",
+      "eps": -0.0086,
+      "prev_year_eps": -0.005,
+      "yoy_growth": -0.72
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "1997-03-31T00:00:00.000",
+      "eps": -0.0504,
+      "prev_year_eps": -0.0534,
+      "yoy_growth": 0.0562
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "1997-06-30T00:00:00.000",
+      "eps": -0.0039,
+      "prev_year_eps": -0.0023,
+      "yoy_growth": -0.6957
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "1997-09-30T00:00:00.000",
+      "eps": -0.0114,
+      "prev_year_eps": 0.0018,
+      "yoy_growth": -7.3333
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "1997-12-31T00:00:00.000",
+      "eps": 0.003,
+      "prev_year_eps": -0.0086,
+      "yoy_growth": 1.3488
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "1998-03-31T00:00:00.000",
+      "eps": 0.0034,
+      "prev_year_eps": -0.0504,
+      "yoy_growth": 1.0675
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "1998-06-30T00:00:00.000",
+      "eps": 0.0058,
+      "prev_year_eps": -0.0039,
+      "yoy_growth": 2.4872
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "1998-09-30T00:00:00.000",
+      "eps": 0.0061,
+      "prev_year_eps": -0.0114,
+      "yoy_growth": 1.5351
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "1998-12-31T00:00:00.000",
+      "eps": 0.0085,
+      "prev_year_eps": 0.003,
+      "yoy_growth": 1.8333
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "1999-03-31T00:00:00.000",
+      "eps": 0.0075,
+      "prev_year_eps": 0.0034,
+      "yoy_growth": 1.2059
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "1999-06-30T00:00:00.000",
+      "eps": 0.0107,
+      "prev_year_eps": 0.0058,
+      "yoy_growth": 0.8448
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "1999-09-30T00:00:00.000",
+      "eps": 0.0056,
+      "prev_year_eps": 0.0061,
+      "yoy_growth": -0.082
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "1999-12-31T00:00:00.000",
+      "eps": 0.0092,
+      "prev_year_eps": 0.0085,
+      "yoy_growth": 0.0824
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2000-03-31T00:00:00.000",
+      "eps": 0.0114,
+      "prev_year_eps": 0.0075,
+      "yoy_growth": 0.52
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2000-06-30T00:00:00.000",
+      "eps": 0.0098,
+      "prev_year_eps": 0.0107,
+      "yoy_growth": -0.0841
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2000-09-30T00:00:00.000",
+      "eps": 0.0084,
+      "prev_year_eps": 0.0056,
+      "yoy_growth": 0.5
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2000-12-31T00:00:00.000",
+      "eps": -0.0104,
+      "prev_year_eps": 0.0092,
+      "yoy_growth": -2.1304
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2001-03-31T00:00:00.000",
+      "eps": 0.0021,
+      "prev_year_eps": 0.0114,
+      "yoy_growth": -0.8158
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2001-06-30T00:00:00.000",
+      "eps": 0.003,
+      "prev_year_eps": 0.0098,
+      "yoy_growth": -0.6939
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2001-09-30T00:00:00.000",
+      "eps": 0.0034,
+      "prev_year_eps": 0.0084,
+      "yoy_growth": -0.5952
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2001-12-31T00:00:00.000",
+      "eps": 0.002,
+      "prev_year_eps": -0.0104,
+      "yoy_growth": 1.1923
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2002-03-31T00:00:00.000",
+      "eps": 0.002,
+      "prev_year_eps": 0.0021,
+      "yoy_growth": -0.0476
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2002-06-30T00:00:00.000",
+      "eps": 0.0016,
+      "prev_year_eps": 0.003,
+      "yoy_growth": -0.4667
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2002-09-30T00:00:00.000",
+      "eps": -0.0022,
+      "prev_year_eps": 0.0034,
+      "yoy_growth": -1.6471
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2002-12-31T00:00:00.000",
+      "eps": -0.0004,
+      "prev_year_eps": 0.002,
+      "yoy_growth": -1.2
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2003-03-31T00:00:00.000",
+      "eps": 0.0007,
+      "prev_year_eps": 0.002,
+      "yoy_growth": -0.65
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2003-06-30T00:00:00.000",
+      "eps": 0.0009,
+      "prev_year_eps": 0.0016,
+      "yoy_growth": -0.4375
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2003-09-30T00:00:00.000",
+      "eps": 0.002,
+      "prev_year_eps": -0.0022,
+      "yoy_growth": 1.9091
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2003-12-31T00:00:00.000",
+      "eps": 0.003,
+      "prev_year_eps": -0.0004,
+      "yoy_growth": 8.5
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2004-03-31T00:00:00.000",
+      "eps": 0.0021,
+      "prev_year_eps": 0.0007,
+      "yoy_growth": 2.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2004-06-30T00:00:00.000",
+      "eps": 0.0028,
+      "prev_year_eps": 0.0009,
+      "yoy_growth": 2.1111
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2004-09-30T00:00:00.000",
+      "eps": 0.0046,
+      "prev_year_eps": 0.002,
+      "yoy_growth": 1.3
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2004-12-31T00:00:00.000",
+      "eps": 0.0125,
+      "prev_year_eps": 0.003,
+      "yoy_growth": 3.1667
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2005-03-31T00:00:00.000",
+      "eps": 0.0121,
+      "prev_year_eps": 0.0021,
+      "yoy_growth": 4.7619
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2005-06-30T00:00:00.000",
+      "eps": 0.0132,
+      "prev_year_eps": 0.0028,
+      "yoy_growth": 3.7143
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2005-09-30T00:00:00.000",
+      "eps": 0.0175,
+      "prev_year_eps": 0.0046,
+      "yoy_growth": 2.8043
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2005-12-31T00:00:00.000",
+      "eps": 0.0232,
+      "prev_year_eps": 0.0125,
+      "yoy_growth": 0.856
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2006-03-31T00:00:00.000",
+      "eps": 0.0168,
+      "prev_year_eps": 0.0121,
+      "yoy_growth": 0.3884
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2006-06-30T00:00:00.000",
+      "eps": 0.0192,
+      "prev_year_eps": 0.0132,
+      "yoy_growth": 0.4545
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2006-09-30T00:00:00.000",
+      "eps": 0.0221,
+      "prev_year_eps": 0.0175,
+      "yoy_growth": 0.2629
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2006-12-31T00:00:00.000",
+      "eps": 0.0407,
+      "prev_year_eps": 0.0232,
+      "yoy_growth": 0.7543
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2007-03-31T00:00:00.000",
+      "eps": 0.0311,
+      "prev_year_eps": 0.0168,
+      "yoy_growth": 0.8512
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2007-06-30T00:00:00.000",
+      "eps": 0.0328,
+      "prev_year_eps": 0.0192,
+      "yoy_growth": 0.7083
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2007-09-30T00:00:00.000",
+      "eps": 0.0361,
+      "prev_year_eps": 0.0221,
+      "yoy_growth": 0.6335
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2007-12-31T00:00:00.000",
+      "eps": 0.0629,
+      "prev_year_eps": 0.0407,
+      "yoy_growth": 0.5455
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2008-03-31T00:00:00.000",
+      "eps": 0.0414,
+      "prev_year_eps": 0.0311,
+      "yoy_growth": 0.3312
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2008-06-30T00:00:00.000",
+      "eps": 0.0424,
+      "prev_year_eps": 0.0328,
+      "yoy_growth": 0.2927
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2008-09-30T00:00:00.000",
+      "eps": 0.045,
+      "prev_year_eps": 0.0361,
+      "yoy_growth": 0.2465
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2008-12-31T00:00:00.000",
+      "eps": 0.0636,
+      "prev_year_eps": 0.0629,
+      "yoy_growth": 0.0111
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2009-03-31T00:00:00.000",
+      "eps": 0.0475,
+      "prev_year_eps": 0.0414,
+      "yoy_growth": 0.1473
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2009-06-30T00:00:00.000",
+      "eps": 0.0483,
+      "prev_year_eps": 0.0424,
+      "yoy_growth": 0.1392
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2009-09-30T00:00:00.000",
+      "eps": 0.065,
+      "prev_year_eps": 0.045,
+      "yoy_growth": 0.4444
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2009-12-31T00:00:00.000",
+      "eps": 0.1311,
+      "prev_year_eps": 0.0636,
+      "yoy_growth": 1.0613
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2010-03-31T00:00:00.000",
+      "eps": 0.1189,
+      "prev_year_eps": 0.0475,
+      "yoy_growth": 1.5032
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2010-06-30T00:00:00.000",
+      "eps": 0.1253,
+      "prev_year_eps": 0.0483,
+      "yoy_growth": 1.5942
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2010-09-30T00:00:00.000",
+      "eps": 0.1657,
+      "prev_year_eps": 0.065,
+      "yoy_growth": 1.5492
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2010-12-31T00:00:00.000",
+      "eps": 0.2296,
+      "prev_year_eps": 0.1311,
+      "yoy_growth": 0.7513
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2011-03-31T00:00:00.000",
+      "eps": 0.2286,
+      "prev_year_eps": 0.1189,
+      "yoy_growth": 0.9226
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2011-06-30T00:00:00.000",
+      "eps": 0.2783,
+      "prev_year_eps": 0.1253,
+      "yoy_growth": 1.2211
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2011-09-30T00:00:00.000",
+      "eps": 0.2518,
+      "prev_year_eps": 0.1657,
+      "yoy_growth": 0.5196
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2011-12-31T00:00:00.000",
+      "eps": 0.4954,
+      "prev_year_eps": 0.2296,
+      "yoy_growth": 1.1577
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2012-03-31T00:00:00.000",
+      "eps": 0.4393,
+      "prev_year_eps": 0.2286,
+      "yoy_growth": 0.9217
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2012-06-30T00:00:00.000",
+      "eps": 0.3328,
+      "prev_year_eps": 0.2783,
+      "yoy_growth": 0.1958
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2012-09-30T00:00:00.000",
+      "eps": 0.3096,
+      "prev_year_eps": 0.2518,
+      "yoy_growth": 0.2295
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2012-12-31T00:00:00.000",
+      "eps": 0.4932,
+      "prev_year_eps": 0.4954,
+      "yoy_growth": -0.0044
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2013-03-31T00:00:00.000",
+      "eps": 0.3604,
+      "prev_year_eps": 0.4393,
+      "yoy_growth": -0.1796
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2013-06-30T00:00:00.000",
+      "eps": 0.2666,
+      "prev_year_eps": 0.3328,
+      "yoy_growth": -0.1989
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2013-09-30T00:00:00.000",
+      "eps": 0.295,
+      "prev_year_eps": 0.3096,
+      "yoy_growth": -0.0472
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2013-12-31T00:00:00.000",
+      "eps": 0.5179,
+      "prev_year_eps": 0.4932,
+      "yoy_growth": 0.0501
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2014-03-31T00:00:00.000",
+      "eps": 0.415,
+      "prev_year_eps": 0.3604,
+      "yoy_growth": 0.1515
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2014-06-30T00:00:00.000",
+      "eps": 0.32,
+      "prev_year_eps": 0.2666,
+      "yoy_growth": 0.2003
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2014-09-30T00:00:00.000",
+      "eps": 0.355,
+      "prev_year_eps": 0.295,
+      "yoy_growth": 0.2034
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2014-12-31T00:00:00.000",
+      "eps": 0.765,
+      "prev_year_eps": 0.5179,
+      "yoy_growth": 0.4771
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2015-03-31T00:00:00.000",
+      "eps": 0.5825,
+      "prev_year_eps": 0.415,
+      "yoy_growth": 0.4036
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2015-06-30T00:00:00.000",
+      "eps": 0.4625,
+      "prev_year_eps": 0.32,
+      "yoy_growth": 0.4453
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2015-09-30T00:00:00.000",
+      "eps": 0.49,
+      "prev_year_eps": 0.355,
+      "yoy_growth": 0.3803
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2015-12-31T00:00:00.000",
+      "eps": 0.82,
+      "prev_year_eps": 0.765,
+      "yoy_growth": 0.0719
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2016-03-31T00:00:00.000",
+      "eps": 0.475,
+      "prev_year_eps": 0.5825,
+      "yoy_growth": -0.1845
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2016-06-30T00:00:00.000",
+      "eps": 0.355,
+      "prev_year_eps": 0.4625,
+      "yoy_growth": -0.2324
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2016-09-30T00:00:00.000",
+      "eps": 0.4175,
+      "prev_year_eps": 0.49,
+      "yoy_growth": -0.148
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2016-12-31T00:00:00.000",
+      "eps": 0.84,
+      "prev_year_eps": 0.82,
+      "yoy_growth": 0.0244
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2017-03-31T00:00:00.000",
+      "eps": 0.525,
+      "prev_year_eps": 0.475,
+      "yoy_growth": 0.1053
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2017-06-30T00:00:00.000",
+      "eps": 0.4175,
+      "prev_year_eps": 0.355,
+      "yoy_growth": 0.1761
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2017-09-30T00:00:00.000",
+      "eps": 0.5175,
+      "prev_year_eps": 0.4175,
+      "yoy_growth": 0.2395
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2017-12-31T00:00:00.000",
+      "eps": 0.9725,
+      "prev_year_eps": 0.84,
+      "yoy_growth": 0.1577
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2018-03-31T00:00:00.000",
+      "eps": 0.6825,
+      "prev_year_eps": 0.525,
+      "yoy_growth": 0.3
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2018-06-30T00:00:00.000",
+      "eps": 0.585,
+      "prev_year_eps": 0.4175,
+      "yoy_growth": 0.4012
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2018-09-30T00:00:00.000",
+      "eps": 0.7275,
+      "prev_year_eps": 0.5175,
+      "yoy_growth": 0.4058
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2018-12-31T00:00:00.000",
+      "eps": 1.0457,
+      "prev_year_eps": 0.9725,
+      "yoy_growth": 0.0753
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2019-03-31T00:00:00.000",
+      "eps": 0.6149,
+      "prev_year_eps": 0.6825,
+      "yoy_growth": -0.099
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2019-06-30T00:00:00.000",
+      "eps": 0.5457,
+      "prev_year_eps": 0.585,
+      "yoy_growth": -0.0672
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2019-09-30T00:00:00.000",
+      "eps": 0.7569,
+      "prev_year_eps": 0.7275,
+      "yoy_growth": 0.0404
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2019-12-31T00:00:00.000",
+      "eps": 1.2479,
+      "prev_year_eps": 1.0457,
+      "yoy_growth": 0.1934
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2020-03-31T00:00:00.000",
+      "eps": 0.6385,
+      "prev_year_eps": 0.6149,
+      "yoy_growth": 0.0384
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2020-06-30T00:00:00.000",
+      "eps": 0.646,
+      "prev_year_eps": 0.5457,
+      "yoy_growth": 0.1838
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2020-09-30T00:00:00.000",
+      "eps": 0.7344,
+      "prev_year_eps": 0.7569,
+      "yoy_growth": -0.0297
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2020-12-31T00:00:00.000",
+      "eps": 1.6802,
+      "prev_year_eps": 1.2479,
+      "yoy_growth": 0.3464
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2021-03-31T00:00:00.000",
+      "eps": 1.3958,
+      "prev_year_eps": 0.6385,
+      "yoy_growth": 1.1861
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2021-06-30T00:00:00.000",
+      "eps": 1.2957,
+      "prev_year_eps": 0.646,
+      "yoy_growth": 1.0057
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2021-09-30T00:00:00.000",
+      "eps": 1.2354,
+      "prev_year_eps": 0.7344,
+      "yoy_growth": 0.6822
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2021-12-31T00:00:00.000",
+      "eps": 2.0963,
+      "prev_year_eps": 1.6802,
+      "yoy_growth": 0.2476
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-03-31T00:00:00.000",
+      "eps": 1.5247,
+      "prev_year_eps": 1.3958,
+      "yoy_growth": 0.0923
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-06-30T00:00:00.000",
+      "eps": 1.1955,
+      "prev_year_eps": 1.2957,
+      "yoy_growth": -0.0773
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-09-30T00:00:00.000",
+      "eps": 1.2855,
+      "prev_year_eps": 1.2354,
+      "yoy_growth": 0.0406
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-12-31T00:00:00.000",
+      "eps": 1.8801,
+      "prev_year_eps": 2.0963,
+      "yoy_growth": -0.1031
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-03-31T00:00:00.000",
+      "eps": 1.5246,
+      "prev_year_eps": 1.5247,
+      "yoy_growth": -0.0001
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-06-30T00:00:00.000",
+      "eps": 1.2603,
+      "prev_year_eps": 1.1955,
+      "yoy_growth": 0.0542
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-09-30T00:00:00.000",
+      "eps": 1.4647,
+      "prev_year_eps": 1.2855,
+      "yoy_growth": 0.1394
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-12-31T00:00:00.000",
+      "eps": 2.1774,
+      "prev_year_eps": 1.8801,
+      "yoy_growth": 0.1581
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-03-31T00:00:00.000",
+      "eps": 1.5284,
+      "prev_year_eps": 1.5246,
+      "yoy_growth": 0.0025
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-06-30T00:00:00.000",
+      "eps": 1.3974,
+      "prev_year_eps": 1.2603,
+      "yoy_growth": 0.1088
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-09-30T00:00:00.000",
+      "eps": 0.9668,
+      "prev_year_eps": 1.4647,
+      "yoy_growth": -0.3399
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-12-31T00:00:00.000",
+      "eps": 2.3979,
+      "prev_year_eps": 2.1774,
+      "yoy_growth": 0.1013
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-03-31T00:00:00.000",
+      "eps": 1.6458,
+      "prev_year_eps": 1.5284,
+      "yoy_growth": 0.0768
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-06-30T00:00:00.000",
+      "eps": 1.5677,
+      "prev_year_eps": 1.3974,
+      "yoy_growth": 0.1219
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-09-30T00:00:00.000",
+      "eps": 1.8479,
+      "prev_year_eps": 0.9668,
+      "yoy_growth": 0.9114
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-12-31T00:00:00.000",
+      "eps": 2.8424,
+      "prev_year_eps": 2.3979,
+      "yoy_growth": 0.1854
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2026-03-31T00:00:00.000",
+      "eps": 2.0086,
+      "prev_year_eps": 1.6458,
+      "yoy_growth": 0.2204
+    }
+  ]
+}

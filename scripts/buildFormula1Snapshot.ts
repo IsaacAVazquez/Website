@@ -73,7 +73,12 @@ export const formula1Snapshot: Formula1Snapshot = ${JSON.stringify(snapshot, nul
 `;
 
   await fs.mkdir(path.dirname(snapshotPath), { recursive: true });
-  await fs.writeFile(snapshotPath, fileContents, "utf8");
+  // Atomic write: write to .tmp then rename. Renames are atomic on POSIX, so
+  // the destination file is never observed in a half-written state if the
+  // process is killed mid-write.
+  const tmpPath = `${snapshotPath}.tmp`;
+  await fs.writeFile(tmpPath, fileContents, "utf8");
+  await fs.rename(tmpPath, snapshotPath);
 
   logger.log(
     `Formula 1 snapshot written: ${snapshot.meetings.length} meetings, ${snapshot.driverStandings.length} drivers, ${snapshot.constructorStandings.length} constructors.`

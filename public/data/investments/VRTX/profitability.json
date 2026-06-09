@@ -1,0 +1,528 @@
+{
+  "roe": [
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 915700000.0,
+      "beginning_stockholders_equity": 14432300000.0,
+      "ending_stockholders_equity": 15470200000.0,
+      "avg_equity": 14951250000.0,
+      "roe": 0.0612
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1035300000.0,
+      "beginning_stockholders_equity": 15470200000.0,
+      "ending_stockholders_equity": 16512800000.0,
+      "avg_equity": 15991500000.0,
+      "roe": 0.0647
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 968800000.0,
+      "beginning_stockholders_equity": 16512800000.0,
+      "ending_stockholders_equity": 17580400000.0,
+      "avg_equity": 17046600000.0,
+      "roe": 0.0568
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1099600000.0,
+      "beginning_stockholders_equity": 17580400000.0,
+      "ending_stockholders_equity": 18546600000.0,
+      "avg_equity": 18063500000.0,
+      "roe": 0.0609
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": -3593600000.0,
+      "beginning_stockholders_equity": 18546600000.0,
+      "ending_stockholders_equity": 14774700000.0,
+      "avg_equity": 16660650000.0,
+      "roe": -0.2157
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1045400000.0,
+      "beginning_stockholders_equity": 14774700000.0,
+      "ending_stockholders_equity": 15630900000.0,
+      "avg_equity": 15202800000.0,
+      "roe": 0.0688
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 913000000.0,
+      "beginning_stockholders_equity": 15630900000.0,
+      "ending_stockholders_equity": 16409600000.0,
+      "avg_equity": 16020250000.0,
+      "roe": 0.057
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 646300000.0,
+      "beginning_stockholders_equity": 16409600000.0,
+      "ending_stockholders_equity": 16496300000.0,
+      "avg_equity": 16452950000.0,
+      "roe": 0.0393
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 3637600000.0,
+      "beginning_stockholders_equity": 16496300000.0,
+      "ending_stockholders_equity": 17175400000.0,
+      "avg_equity": 16835850000.0,
+      "roe": 0.2161
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1082900000.0,
+      "beginning_stockholders_equity": 17175400000.0,
+      "ending_stockholders_equity": 17318800000.0,
+      "avg_equity": 17247100000.0,
+      "roe": 0.0628
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1191100000.0,
+      "beginning_stockholders_equity": 17318800000.0,
+      "ending_stockholders_equity": 18665800000.0,
+      "avg_equity": 17992300000.0,
+      "roe": 0.0662
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 4338300000.0,
+      "beginning_stockholders_equity": 18665800000.0,
+      "ending_stockholders_equity": 19361900000.0,
+      "avg_equity": 19013850000.0,
+      "roe": 0.2282
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 915700000.0,
+      "beginning_total_assets": 18974200000.0,
+      "ending_total_assets": 20349200000.0,
+      "avg_assets": 19661700000.0,
+      "roa": 0.0466
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1035300000.0,
+      "beginning_total_assets": 20349200000.0,
+      "ending_total_assets": 21726200000.0,
+      "avg_assets": 21037700000.0,
+      "roa": 0.0492
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 968800000.0,
+      "beginning_total_assets": 21726200000.0,
+      "ending_total_assets": 22730200000.0,
+      "avg_assets": 22228200000.0,
+      "roa": 0.0436
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1099600000.0,
+      "beginning_total_assets": 22730200000.0,
+      "ending_total_assets": 23917400000.0,
+      "avg_assets": 23323800000.0,
+      "roa": 0.0471
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": -3593600000.0,
+      "beginning_total_assets": 23917400000.0,
+      "ending_total_assets": 20132100000.0,
+      "avg_assets": 22024750000.0,
+      "roa": -0.1632
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1045400000.0,
+      "beginning_total_assets": 20132100000.0,
+      "ending_total_assets": 22240200000.0,
+      "avg_assets": 21186150000.0,
+      "roa": 0.0493
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 913000000.0,
+      "beginning_total_assets": 22240200000.0,
+      "ending_total_assets": 22533200000.0,
+      "avg_assets": 22386700000.0,
+      "roa": 0.0408
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 646300000.0,
+      "beginning_total_assets": 22533200000.0,
+      "ending_total_assets": 22880500000.0,
+      "avg_assets": 22706850000.0,
+      "roa": 0.0285
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 3637600000.0,
+      "beginning_total_assets": 22880500000.0,
+      "ending_total_assets": 24036700000.0,
+      "avg_assets": 23458600000.0,
+      "roa": 0.1551
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1082900000.0,
+      "beginning_total_assets": 24036700000.0,
+      "ending_total_assets": 24862300000.0,
+      "avg_assets": 24449500000.0,
+      "roa": 0.0443
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1191100000.0,
+      "beginning_total_assets": 24862300000.0,
+      "ending_total_assets": 25643000000.0,
+      "avg_assets": 25252650000.0,
+      "roa": 0.0472
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 4338300000.0,
+      "beginning_total_assets": 25643000000.0,
+      "ending_total_assets": 26484400000.0,
+      "avg_assets": 26063700000.0,
+      "roa": 0.1664
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-06-30",
+      "ebit": 1172700000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 926433000.0,
+      "beginning_invested_capital": 14432300000.0,
+      "ending_invested_capital": 15470200000.0,
+      "avg_invested_capital": 14951250000.0,
+      "roic": 0.062
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-09-30",
+      "ebit": 1190100000.0,
+      "tax_rate_for_calcs": 0.12,
+      "nopat": 1047288000.0,
+      "beginning_invested_capital": 15470200000.0,
+      "ending_invested_capital": 16512800000.0,
+      "avg_invested_capital": 15991500000.0,
+      "roic": 0.0655
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-12-31",
+      "ebit": 1158200000.0,
+      "tax_rate_for_calcs": 0.16,
+      "nopat": 972888000.0,
+      "beginning_invested_capital": 16512800000.0,
+      "ending_invested_capital": 17580400000.0,
+      "avg_invested_capital": 17046600000.0,
+      "roic": 0.0571
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-03-31",
+      "ebit": 1289500000.0,
+      "tax_rate_for_calcs": 0.14,
+      "nopat": 1108970000.0,
+      "beginning_invested_capital": 17580400000.0,
+      "ending_invested_capital": 18546600000.0,
+      "avg_invested_capital": 18063500000.0,
+      "roic": 0.0614
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-06-30",
+      "ebit": -3381300000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": -2671227000.0,
+      "beginning_invested_capital": 18546600000.0,
+      "ending_invested_capital": 14774700000.0,
+      "avg_invested_capital": 16660650000.0,
+      "roic": -0.1603
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-09-30",
+      "ebit": 1231600000.0,
+      "tax_rate_for_calcs": 0.15,
+      "nopat": 1046860000.0,
+      "beginning_invested_capital": 14774700000.0,
+      "ending_invested_capital": 15630900000.0,
+      "avg_invested_capital": 15202800000.0,
+      "roic": 0.0689
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-12-31",
+      "ebit": 1139300000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 911440000.0,
+      "beginning_invested_capital": 15630900000.0,
+      "ending_invested_capital": 16409600000.0,
+      "avg_invested_capital": 16020250000.0,
+      "roic": 0.0569
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-03-31",
+      "ebit": 1031100000.0,
+      "tax_rate_for_calcs": 0.12,
+      "nopat": 907368000.0,
+      "beginning_invested_capital": 16409600000.0,
+      "ending_invested_capital": 16496300000.0,
+      "avg_invested_capital": 16452950000.0,
+      "roic": 0.0551
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-06-30",
+      "ebit": 4391000000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 3556710000.0,
+      "beginning_invested_capital": 16496300000.0,
+      "ending_invested_capital": 17175400000.0,
+      "avg_invested_capital": 16835850000.0,
+      "roic": 0.2113
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-09-30",
+      "ebit": 1302100000.0,
+      "tax_rate_for_calcs": 0.17,
+      "nopat": 1080743000.0,
+      "beginning_invested_capital": 17175400000.0,
+      "ending_invested_capital": 17318800000.0,
+      "avg_invested_capital": 17247100000.0,
+      "roic": 0.0627
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-12-31",
+      "ebit": 1334300000.0,
+      "tax_rate_for_calcs": 0.11,
+      "nopat": 1187527000.0,
+      "beginning_invested_capital": 17318800000.0,
+      "ending_invested_capital": 18665800000.0,
+      "avg_invested_capital": 17992300000.0,
+      "roic": 0.066
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2026-03-31",
+      "ebit": 4764200000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 3906644000.0,
+      "beginning_invested_capital": 18665800000.0,
+      "ending_invested_capital": 19361900000.0,
+      "avg_invested_capital": 19013850000.0,
+      "roic": 0.2055
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-06-30T00:00:00.000",
+      "roe": 0.0612,
+      "roa": 0.0466,
+      "equity_multiplier": 1.31
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.0647,
+      "roa": 0.0492,
+      "equity_multiplier": 1.32
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.0568,
+      "roa": 0.0436,
+      "equity_multiplier": 1.3
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.0609,
+      "roa": 0.0471,
+      "equity_multiplier": 1.29
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": -0.2157,
+      "roa": -0.1632,
+      "equity_multiplier": 1.32
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.0688,
+      "roa": 0.0493,
+      "equity_multiplier": 1.4
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.057,
+      "roa": 0.0408,
+      "equity_multiplier": 1.4
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.0393,
+      "roa": 0.0285,
+      "equity_multiplier": 1.38
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.2161,
+      "roa": 0.1551,
+      "equity_multiplier": 1.39
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.0628,
+      "roa": 0.0443,
+      "equity_multiplier": 1.42
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.0662,
+      "roa": 0.0472,
+      "equity_multiplier": 1.4
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.2282,
+      "roa": 0.1664,
+      "equity_multiplier": 1.37
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-06-30T00:00:00.000",
+      "roa": 0.0466,
+      "net_margin": 0.3673,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0492,
+      "net_margin": 0.4169,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0436,
+      "net_margin": 0.3848,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0471,
+      "net_margin": 0.4087,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": -0.1632,
+      "net_margin": -1.3583,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0493,
+      "net_margin": 0.3771,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0408,
+      "net_margin": 0.3135,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0285,
+      "net_margin": 0.2333,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.1551,
+      "net_margin": 0.3186,
+      "asset_turnover": 0.49
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0443,
+      "net_margin": 0.352,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0472,
+      "net_margin": 0.3734,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "VRTX",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.1664,
+      "net_margin": 0.3551,
+      "asset_turnover": 0.47
+    }
+  ]
+}

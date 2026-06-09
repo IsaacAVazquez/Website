@@ -102,14 +102,12 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
 
     // Read CSS variable colors from the DOM
     const computedStyle = getComputedStyle(document.documentElement);
-    const colorPrimary =
-      computedStyle.getPropertyValue("--color-primary").trim() || "#2563EB";
-    const textTertiary =
-      computedStyle.getPropertyValue("--text-tertiary").trim() || "#64748B";
-    const textSecondary =
-      computedStyle.getPropertyValue("--text-secondary").trim() || "#475569";
-    const borderPrimary =
-      computedStyle.getPropertyValue("--border-primary").trim() || "#E2E8F0";
+    const homeHaze =
+      computedStyle.getPropertyValue("--home-haze").trim() || "#5672F8";
+    const homeInkMuted =
+      computedStyle.getPropertyValue("--home-ink-muted").trim() || "#615B52";
+    const homeRule =
+      computedStyle.getPropertyValue("--home-rule").trim() || "rgba(18,17,15,0.12)";
 
     // X axis
     root
@@ -121,10 +119,10 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
           .ticks(Math.min(data.length, 6))
           .tickFormat((d) => d3.timeFormat("%b %d")(d as Date))
       )
-      .call((g) => g.select(".domain").attr("stroke", borderPrimary))
-      .call((g) => g.selectAll(".tick line").attr("stroke", borderPrimary))
+      .call((g) => g.select(".domain").attr("stroke", homeRule))
+      .call((g) => g.selectAll(".tick line").attr("stroke", homeRule))
       .call((g) =>
-        g.selectAll(".tick text").attr("fill", textTertiary).style("font-size", "11px")
+        g.selectAll(".tick text").attr("fill", homeInkMuted).style("font-size", "11px")
       );
 
     // Y axis
@@ -136,10 +134,10 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
           .ticks(5)
           .tickFormat((d) => `$${d3.format(",.0f")(d as number)}`)
       )
-      .call((g) => g.select(".domain").attr("stroke", borderPrimary))
-      .call((g) => g.selectAll(".tick line").attr("stroke", borderPrimary))
+      .call((g) => g.select(".domain").attr("stroke", homeRule))
+      .call((g) => g.selectAll(".tick line").attr("stroke", homeRule))
       .call((g) =>
-        g.selectAll(".tick text").attr("fill", textTertiary).style("font-size", "11px")
+        g.selectAll(".tick text").attr("fill", homeInkMuted).style("font-size", "11px")
       );
 
     // Area fill for value line
@@ -154,7 +152,7 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
       .append("path")
       .datum(data)
       .attr("d", area)
-      .attr("fill", colorPrimary)
+      .attr("fill", homeHaze)
       .attr("fill-opacity", 0.12);
 
     // Value line (solid)
@@ -169,7 +167,7 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
       .datum(data)
       .attr("d", valueLine)
       .attr("fill", "none")
-      .attr("stroke", colorPrimary)
+      .attr("stroke", homeHaze)
       .attr("stroke-width", 2);
 
     // Cost basis line (dashed)
@@ -184,7 +182,7 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
       .datum(data)
       .attr("d", costLine)
       .attr("fill", "none")
-      .attr("stroke", textTertiary)
+      .attr("stroke", homeInkMuted)
       .attr("stroke-width", 1.5)
       .attr("stroke-dasharray", "6 3");
 
@@ -205,7 +203,7 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
       .append("line")
       .attr("y1", 0)
       .attr("y2", innerHeight)
-      .attr("stroke", borderPrimary)
+      .attr("stroke", homeRule)
       .attr("stroke-width", 1)
       .style("opacity", 0)
       .style("pointer-events", "none");
@@ -213,7 +211,7 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
     const hoverDot = root
       .append("circle")
       .attr("r", 4)
-      .attr("fill", colorPrimary)
+      .attr("fill", homeHaze)
       .attr("stroke", "white")
       .attr("stroke-width", 2)
       .style("opacity", 0)
@@ -245,7 +243,7 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
 
         tooltip.style.opacity = "1";
         tooltip.innerHTML = `
-          <div style="font-size:11px;color:${textSecondary};margin-bottom:2px;">
+          <div style="font-size:11px;color:${homeInkMuted};margin-bottom:2px;">
             ${d3.timeFormat("%b %d, %Y")(d.date)}
           </div>
           <div style="font-size:13px;font-weight:600;color:var(--home-ink);">

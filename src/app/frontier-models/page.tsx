@@ -5,7 +5,6 @@ import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { FrontierModelsClient } from "./frontier-models-client";
 import { normalizeFrontierModelsState } from "./frontier-models-state";
 
-// eslint-disable-next-line react-refresh/only-export-components -- Next.js route modules export metadata alongside the page component.
 export const metadata = constructMetadata({
   title: "Frontier Model Tracker",
   description:

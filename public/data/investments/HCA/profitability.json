@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "HCA",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1079000000.0,
+      "beginning_stockholders_equity": -2303000000.0,
+      "ending_stockholders_equity": -2477000000.0,
+      "avg_equity": -2390000000.0,
+      "roe": -0.4515
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1607000000.0,
+      "beginning_stockholders_equity": -2477000000.0,
+      "ending_stockholders_equity": -1774000000.0,
+      "avg_equity": -2125500000.0,
+      "roe": -0.7561
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1591000000.0,
+      "beginning_stockholders_equity": -1774000000.0,
+      "ending_stockholders_equity": -1615000000.0,
+      "avg_equity": -1694500000.0,
+      "roe": -0.9389
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1461000000.0,
+      "beginning_stockholders_equity": -1615000000.0,
+      "ending_stockholders_equity": -1600000000.0,
+      "avg_equity": -1607500000.0,
+      "roe": -0.9089
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1270000000.0,
+      "beginning_stockholders_equity": -1600000000.0,
+      "ending_stockholders_equity": -2182000000.0,
+      "avg_equity": -1891000000.0,
+      "roe": -0.6716
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1438000000.0,
+      "beginning_stockholders_equity": -2182000000.0,
+      "ending_stockholders_equity": -2499000000.0,
+      "avg_equity": -2340500000.0,
+      "roe": -0.6144
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1610000000.0,
+      "beginning_stockholders_equity": -2499000000.0,
+      "ending_stockholders_equity": -3519000000.0,
+      "avg_equity": -3009000000.0,
+      "roe": -0.5351
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1653000000.0,
+      "beginning_stockholders_equity": -3519000000.0,
+      "ending_stockholders_equity": -4394000000.0,
+      "avg_equity": -3956500000.0,
+      "roe": -0.4178
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1643000000.0,
+      "beginning_stockholders_equity": -4394000000.0,
+      "ending_stockholders_equity": -5335000000.0,
+      "avg_equity": -4864500000.0,
+      "roe": -0.3378
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1878000000.0,
+      "beginning_stockholders_equity": -5335000000.0,
+      "ending_stockholders_equity": -6027000000.0,
+      "avg_equity": -5681000000.0,
+      "roe": -0.3306
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1620000000.0,
+      "beginning_stockholders_equity": -6027000000.0,
+      "ending_stockholders_equity": -6303000000.0,
+      "avg_equity": -6165000000.0,
+      "roe": -0.2628
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "HCA",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1079000000.0,
+      "beginning_total_assets": 53594000000.0,
+      "ending_total_assets": 54589000000.0,
+      "avg_assets": 54091500000.0,
+      "roa": 0.0199
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1607000000.0,
+      "beginning_total_assets": 54589000000.0,
+      "ending_total_assets": 56211000000.0,
+      "avg_assets": 55400000000.0,
+      "roa": 0.029
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1591000000.0,
+      "beginning_total_assets": 56211000000.0,
+      "ending_total_assets": 56962000000.0,
+      "avg_assets": 56586500000.0,
+      "roa": 0.0281
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1461000000.0,
+      "beginning_total_assets": 56962000000.0,
+      "ending_total_assets": 57379000000.0,
+      "avg_assets": 57170500000.0,
+      "roa": 0.0256
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1270000000.0,
+      "beginning_total_assets": 57379000000.0,
+      "ending_total_assets": 59459000000.0,
+      "avg_assets": 58419000000.0,
+      "roa": 0.0217
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1438000000.0,
+      "beginning_total_assets": 59459000000.0,
+      "ending_total_assets": 59513000000.0,
+      "avg_assets": 59486000000.0,
+      "roa": 0.0242
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1610000000.0,
+      "beginning_total_assets": 59513000000.0,
+      "ending_total_assets": 59798000000.0,
+      "avg_assets": 59655500000.0,
+      "roa": 0.027
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1653000000.0,
+      "beginning_total_assets": 59798000000.0,
+      "ending_total_assets": 59536000000.0,
+      "avg_assets": 59667000000.0,
+      "roa": 0.0277
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1643000000.0,
+      "beginning_total_assets": 59536000000.0,
+      "ending_total_assets": 59747000000.0,
+      "avg_assets": 59641500000.0,
+      "roa": 0.0275
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1878000000.0,
+      "beginning_total_assets": 59747000000.0,
+      "ending_total_assets": 60720000000.0,
+      "avg_assets": 60233500000.0,
+      "roa": 0.0312
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1620000000.0,
+      "beginning_total_assets": 60720000000.0,
+      "ending_total_assets": 61450000000.0,
+      "avg_assets": 61085000000.0,
+      "roa": 0.0265
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "HCA",
+      "report_date": "2023-09-30",
+      "ebit": 2113000000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 1648140000.0,
+      "beginning_invested_capital": 36629000000.0,
+      "ending_invested_capital": 36869000000.0,
+      "avg_invested_capital": 36749000000.0,
+      "roic": 0.0448
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2023-12-31",
+      "ebit": 2836000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 2240440000.0,
+      "beginning_invested_capital": 36869000000.0,
+      "ending_invested_capital": 37819000000.0,
+      "avg_invested_capital": 37344000000.0,
+      "roic": 0.06
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2024-03-31",
+      "ebit": 2759000000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 2207200000.0,
+      "beginning_invested_capital": 37819000000.0,
+      "ending_invested_capital": 38576000000.0,
+      "avg_invested_capital": 38197500000.0,
+      "roic": 0.0578
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2024-06-30",
+      "ebit": 2743000000.0,
+      "tax_rate_for_calcs": 0.27,
+      "nopat": 2002390000.0,
+      "beginning_invested_capital": 38576000000.0,
+      "ending_invested_capital": 39280000000.0,
+      "avg_invested_capital": 38928000000.0,
+      "roic": 0.0514
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2024-09-30",
+      "ebit": 2421000000.0,
+      "tax_rate_for_calcs": 0.25,
+      "nopat": 1815750000.0,
+      "beginning_invested_capital": 39280000000.0,
+      "ending_invested_capital": 40783000000.0,
+      "avg_invested_capital": 40031500000.0,
+      "roic": 0.0454
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2024-12-31",
+      "ebit": 2661000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 2102190000.0,
+      "beginning_invested_capital": 40783000000.0,
+      "ending_invested_capital": 40532000000.0,
+      "avg_invested_capital": 40657500000.0,
+      "roic": 0.0517
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2025-03-31",
+      "ebit": 2874000000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 2241720000.0,
+      "beginning_invested_capital": 40532000000.0,
+      "ending_invested_capital": 41057000000.0,
+      "avg_invested_capital": 40794500000.0,
+      "roic": 0.055
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2025-06-30",
+      "ebit": 2983000000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 2326740000.0,
+      "beginning_invested_capital": 41057000000.0,
+      "ending_invested_capital": 40089000000.0,
+      "avg_invested_capital": 40573000000.0,
+      "roic": 0.0573
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2025-09-30",
+      "ebit": 2979000000.0,
+      "tax_rate_for_calcs": 0.24,
+      "nopat": 2264040000.0,
+      "beginning_invested_capital": 40089000000.0,
+      "ending_invested_capital": 39176000000.0,
+      "avg_invested_capital": 39632500000.0,
+      "roic": 0.0571
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2025-12-31",
+      "ebit": 3244000000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 2627640000.0,
+      "beginning_invested_capital": 39176000000.0,
+      "ending_invested_capital": 40465000000.0,
+      "avg_invested_capital": 39820500000.0,
+      "roic": 0.066
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2026-03-31",
+      "ebit": 2871000000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 2296800000.0,
+      "beginning_invested_capital": 40465000000.0,
+      "ending_invested_capital": 41720000000.0,
+      "avg_invested_capital": 41092500000.0,
+      "roic": 0.0559
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "HCA",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": -0.4515,
+      "roa": 0.0199,
+      "equity_multiplier": -22.69
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": -0.7561,
+      "roa": 0.029,
+      "equity_multiplier": -26.07
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": -0.9389,
+      "roa": 0.0281,
+      "equity_multiplier": -33.41
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": -0.9089,
+      "roa": 0.0256,
+      "equity_multiplier": -35.5
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": -0.6716,
+      "roa": 0.0217,
+      "equity_multiplier": -30.95
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": -0.6144,
+      "roa": 0.0242,
+      "equity_multiplier": -25.39
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": -0.5351,
+      "roa": 0.027,
+      "equity_multiplier": -19.82
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": -0.4178,
+      "roa": 0.0277,
+      "equity_multiplier": -15.08
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": -0.3378,
+      "roa": 0.0275,
+      "equity_multiplier": -12.28
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": -0.3306,
+      "roa": 0.0312,
+      "equity_multiplier": -10.6
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": -0.2628,
+      "roa": 0.0265,
+      "equity_multiplier": -9.92
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "HCA",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0199,
+      "net_margin": 0.0666,
+      "asset_turnover": 0.3
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.029,
+      "net_margin": 0.0929,
+      "asset_turnover": 0.31
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0281,
+      "net_margin": 0.0918,
+      "asset_turnover": 0.31
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0256,
+      "net_margin": 0.0835,
+      "asset_turnover": 0.31
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0217,
+      "net_margin": 0.0726,
+      "asset_turnover": 0.3
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0242,
+      "net_margin": 0.0786,
+      "asset_turnover": 0.31
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.027,
+      "net_margin": 0.0879,
+      "asset_turnover": 0.31
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0277,
+      "net_margin": 0.0227,
+      "asset_turnover": 1.22
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0275,
+      "net_margin": 0.0857,
+      "asset_turnover": 0.32
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0312,
+      "net_margin": 0.0962,
+      "asset_turnover": 0.32
+    },
+    {
+      "symbol": "HCA",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0265,
+      "net_margin": 0.0212,
+      "asset_turnover": 1.25
+    }
+  ]
+}

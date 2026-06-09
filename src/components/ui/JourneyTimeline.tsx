@@ -14,17 +14,17 @@ interface TimelineItemProps {
   isLast: boolean;
 }
 
+const renderTimelineIcon = (company: string) => {
+  const lower = company.toLowerCase();
+  const className = "w-5 h-5";
+  const style = { color: "var(--home-ink-muted)" } as const;
+  if (lower.includes("florida state")) return <IconSchool className={className} style={style} />;
+  if (lower.includes("open progress")) return <IconTrendingUp className={className} style={style} />;
+  if (lower.includes("berkeley") || lower.includes("haas")) return <IconRocket className={className} style={style} />;
+  return <IconBriefcase className={className} style={style} />;
+};
+
 const TimelineItem = ({ item, isLast }: TimelineItemProps) => {
-  const getIcon = () => {
-    const company = item.company.toLowerCase();
-    if (company.includes("florida state")) return IconSchool;
-    if (company.includes("open progress")) return IconTrendingUp;
-    if (company.includes("berkeley") || company.includes("haas")) return IconRocket;
-    return IconBriefcase;
-  };
-
-  const Icon = getIcon();
-
   return (
     <div className="flex gap-6">
       {/* Left: logo + connecting line */}
@@ -45,7 +45,7 @@ const TimelineItem = ({ item, isLast }: TimelineItemProps) => {
               className="object-contain"
             />
           ) : (
-            <Icon className="w-5 h-5" style={{ color: "var(--home-ink-muted)" }} />
+            renderTimelineIcon(item.company)
           )}
         </div>
         {!isLast && (

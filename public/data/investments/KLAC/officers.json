@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "KLAC",
+    "name": "Dr. Ben Bin-Ming Tsai",
+    "title": "CTO & Executive VP of Corporate Alliances",
+    "age": 66,
+    "born": 1959,
+    "pay": 998019,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "KLAC",
+    "name": "Mr. Ahmad A. Khan",
+    "title": "President of Semiconductor Products & Customers",
+    "age": 51,
+    "born": 1974,
+    "pay": 2215707,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "KLAC",
+    "name": "Mr. Bren D. Higgins",
+    "title": "Executive VP & CFO",
+    "age": 55,
+    "born": 1970,
+    "pay": 2218065,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "KLAC",
+    "name": "Mr. Brian W. Lorig",
+    "title": "Executive Vice President of KLA Global Services",
+    "age": 51,
+    "born": 1974,
+    "pay": 1332995,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "KLAC",
+    "name": "Mr. John  Van Camp",
+    "title": "Executive VP & Chief Human Resources Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "KLAC",
+    "name": "Mr. Kevin M. Kessel C.F.A.",
+    "title": "Vice President of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "KLAC",
+    "name": "Mr. Richard P. Wallace",
+    "title": "President, CEO & Executive Director",
+    "age": 65,
+    "born": 1960,
+    "pay": 4944883,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "KLAC",
+    "name": "Mr. Virendra A. Kirloskar",
+    "title": "Senior VP & Chief Accounting Officer",
+    "age": 62,
+    "born": 1963,
+    "pay": 455182,
+    "exercised": 3040,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "KLAC",
+    "name": "Ms. Mary Beth Wilkinson",
+    "title": "Executive VP, Chief Legal Officer & Corporate Secretary",
+    "age": 52,
+    "born": 1973,
+    "pay": 1205871,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "KLAC",
+    "name": "Ms. Randi  Polanich",
+    "title": "Senior VP & Chief Communications Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  }
+]

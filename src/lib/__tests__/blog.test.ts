@@ -13,26 +13,20 @@ jest.mock('remark-html', () => jest.fn());
 import fs from 'fs';
 import matter from 'gray-matter';
 import { remark } from 'remark';
+import remarkGfm from 'remark-gfm';
 import remarkHtml from 'remark-html';
 import {
   getBlogPostSlugs,
   getBlogPostBySlug,
-  getAllBlogPosts,
-  getBlogPostsByCategory,
-  getBlogPostsByTag,
-  getFeaturedBlogPosts,
   getLatestBlogPostPreviews,
-  searchBlogPosts,
-  getAllCategories,
-  getAllTags,
-  getRelatedBlogPosts,
   BlogPost,
 } from '../blog';
 
 const mockFs = fs as jest.Mocked<typeof fs>;
 const mockMatter = matter as unknown as jest.Mock;
-const mockRemark = remark as jest.Mock;
-const mockRemarkHtml = remarkHtml as jest.Mock;
+const mockRemark = remark as unknown as jest.Mock;
+const mockRemarkGfm = remarkGfm as unknown as jest.Mock;
+const mockRemarkHtml = remarkHtml as unknown as jest.Mock;
 
 function makeFrontmatter(overrides: Partial<BlogPost> = {}) {
   return {
@@ -47,7 +41,11 @@ function makeFrontmatter(overrides: Partial<BlogPost> = {}) {
   };
 }
 
-function setupMockFile(slug: string, frontmatter: ReturnType<typeof makeFrontmatter>, content = 'Hello world content') {
+function setupMockFile(
+  slug: string,
+  frontmatter: Partial<ReturnType<typeof makeFrontmatter>>,
+  content = 'Hello world content',
+) {
   mockMatter.mockReturnValue({ data: frontmatter, content });
 }
 
@@ -144,16 +142,14 @@ describe('getBlogPostBySlug', () => {
   });
 
   it('defaults author to "Isaac Vazquez" when not in frontmatter', async () => {
-    const fm = makeFrontmatter();
-    delete (fm as any).author;
+    const { author: _author, ...fm } = makeFrontmatter();
     setupMockFile('no-author', fm);
     const result = await getBlogPostBySlug('no-author');
     expect(result!.author).toBe('Isaac Vazquez');
   });
 
   it('defaults featured to false when not in frontmatter', async () => {
-    const fm = makeFrontmatter();
-    delete (fm as any).featured;
+    const { featured: _featured, ...fm } = makeFrontmatter();
     setupMockFile('no-featured', fm);
     const result = await getBlogPostBySlug('no-featured');
     expect(result!.featured).toBe(false);
@@ -167,13 +163,14 @@ describe('getBlogPostBySlug', () => {
     expect(result).toBeNull();
   });
 
-  it('renders markdown with sanitization enabled', async () => {
+  it('renders markdown through the configured remark plugins', async () => {
     mockRemark.mockClear();
 
     await getBlogPostBySlug('test-post');
     const processor = mockRemark.mock.results.at(-1)?.value;
 
-    expect(processor.use).toHaveBeenCalledWith(mockRemarkHtml, { sanitize: true });
+    expect(processor.use).toHaveBeenNthCalledWith(1, mockRemarkGfm);
+    expect(processor.use).toHaveBeenNthCalledWith(2, mockRemarkHtml);
   });
 });
 

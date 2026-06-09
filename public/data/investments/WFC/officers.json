@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "WFC",
+    "name": "Mr. Charles W. Scharf",
+    "title": "CEO & Chairman",
+    "age": 60,
+    "born": 1965,
+    "pay": 12595544,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "WFC",
+    "name": "Mr. David  Owen",
+    "title": "Chief Administrative Officer & Head of Global Operations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "WFC",
+    "name": "Mr. Fernando S. Rivas",
+    "title": "Senior EVP & CEO of Corporate & Investment Banking",
+    "age": 50,
+    "born": 1975,
+    "pay": 7996000,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "WFC",
+    "name": "Mr. John M. Campbell",
+    "title": "Director of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "WFC",
+    "name": "Mr. Kleber R. Santos",
+    "title": "Senior EVP, Co-CEO of Consumer Banking & Lending",
+    "age": 51,
+    "born": 1974,
+    "pay": 8271000,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "WFC",
+    "name": "Mr. Michael P. Santomassimo",
+    "title": "Senior EVP & CFO",
+    "age": 50,
+    "born": 1975,
+    "pay": 6646000,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "WFC",
+    "name": "Mr. Scott E. Powell",
+    "title": "Senior EVP & COO",
+    "age": 63,
+    "born": 1962,
+    "pay": 4616050,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "WFC",
+    "name": "Ms. Bridget E. Engle",
+    "title": "Senior EVP & Head of Technology",
+    "age": 61,
+    "born": 1964,
+    "pay": 3740947,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "WFC",
+    "name": "Ms. Ellen Reilly Patterson Esq., J.D.",
+    "title": "Senior EVP & General Counsel",
+    "age": 51,
+    "born": 1974,
+    "pay": 5571000,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "WFC",
+    "name": "Ms. Muneera S. Carr",
+    "title": "Chief Accounting Officer, Executive VP & Controller",
+    "age": 56,
+    "born": 1969,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  }
+]

@@ -1,0 +1,101 @@
+[
+  {
+    "symbol": "BRK-B",
+    "name": "Mr. Adam M. Johnson",
+    "title": "President of Consumer Products, Service & Retailing",
+    "age": 53,
+    "born": 1972,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "BRK-B",
+    "name": "Mr. Ajit  Jain",
+    "title": "Vice Chairman of Insurance Operations & Director",
+    "age": 73,
+    "born": 1952,
+    "pay": 22017500,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "BRK-B",
+    "name": "Mr. Daniel Jerome Jaksich",
+    "title": "VP, Controller & Principal Accounting Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "BRK-B",
+    "name": "Mr. Gregory Edward Abel",
+    "title": "CEO, President & Director",
+    "age": 63,
+    "born": 1962,
+    "pay": 22017500,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "BRK-B",
+    "name": "Mr. Kerby S. Ham",
+    "title": "Treasurer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "BRK-B",
+    "name": "Mr. Marc David Hamburg",
+    "title": "Senior VP, CFO & Secretary",
+    "age": 75,
+    "born": 1950,
+    "pay": 4330000,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "BRK-B",
+    "name": "Mr. Michael J. O'Sullivan J.D.",
+    "title": "Senior VP & General Counsel",
+    "age": 59,
+    "born": 1966,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "BRK-B",
+    "name": "Mr. Peter James Eastwood",
+    "title": "CEO & President of Specialty Insurance",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "BRK-B",
+    "name": "Ms. Kara Lee Raiguel",
+    "title": "CEO & President of General Re Unit",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  }
+]

@@ -1,6 +1,6 @@
 "use client";
 
-import { startTransition, useEffect, useMemo } from "react";
+import { startTransition, useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   Boxes,
@@ -12,8 +12,8 @@ import {
   Terminal,
 } from "lucide-react";
 import { EmptyPanel } from "@/components/football/EmptyPanel";
-import { MetricCard } from "@/components/football/MetricCard";
-import { BrandGithub } from "@/components/ui/ServerIcons";
+import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
+import { BrandGithub, ChartBar, FileText, Briefcase, Database } from "@/components/ui/ServerIcons";
 import {
   AI_DEV_TOOL_CADENCE_LABELS,
   AI_DEV_TOOL_CATEGORY_LABELS,
@@ -173,7 +173,71 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
       tool.modelSupport === "local-models"
   ).length;
   const pricedCount = aiDevTools.filter((tool) => tool.pricingSummary.length > 0).length;
+  const ideEditorCount = aiDevTools.filter(
+    (tool) => tool.category === "ide" || tool.category === "editor-extension"
+  ).length;
+  const cloudAgentCount = aiDevTools.filter((tool) => tool.category === "cloud-agent").length;
+  const terminalAgentCount = aiDevTools.filter((tool) => tool.category === "terminal-agent").length;
+
+  const [renderedAtMs] = useState<number>(() => Date.now());
+  const latestReleaseAge = useMemo(() => {
+    let mostRecent = 0;
+    for (const tool of aiDevTools) {
+      if (!tool.latestRelease) continue;
+      const t = new Date(tool.latestRelease).getTime();
+      if (Number.isFinite(t) && t > mostRecent) mostRecent = t;
+    }
+    if (mostRecent === 0) return "—";
+    const days = Math.max(0, Math.round((renderedAtMs - mostRecent) / (1000 * 60 * 60 * 24)));
+    if (days === 0) return "Today";
+    if (days === 1) return "1d ago";
+    return `${days}d ago`;
+  }, [renderedAtMs]);
+
   const updatedAt = formatGeneratedAt(AI_DEV_TOOLS_GENERATED_AT);
+
+  const aiDevCells: HomeStatsCell[] = [
+    {
+      label: "Tools tracked",
+      value: <span className="tabular-nums">{aiDevTools.length}</span>,
+      sub: "Across categories and pricing tiers",
+    },
+    {
+      label: "Open or public",
+      value: <span className="tabular-nums">{openOrPublicCount}</span>,
+      sub: "Public repo or open source",
+    },
+    {
+      label: "Multi-model",
+      value: <span className="tabular-nums">{multiModelCount}</span>,
+      sub: "Curated, BYOK, or local models",
+    },
+    {
+      label: "Priced",
+      value: <span className="tabular-nums">{pricedCount}</span>,
+      sub: "With current pricing notes",
+    },
+    {
+      label: "IDE or editor extensions",
+      value: <span className="tabular-nums">{ideEditorCount}</span>,
+      sub: "Live inside the editor",
+    },
+    {
+      label: "Cloud agents",
+      value: <span className="tabular-nums">{cloudAgentCount}</span>,
+      sub: "Run autonomously off-machine",
+    },
+    {
+      label: "Terminal agents",
+      value: <span className="tabular-nums">{terminalAgentCount}</span>,
+      sub: "Driven from the command line",
+    },
+    {
+      label: "Latest release age",
+      value: latestReleaseAge,
+      sub: "Most recent ship date",
+    },
+  ];
 
   function updateFilter(partial: Partial<AiDevToolsRouteState>) {
     const clearsSelection =
@@ -225,23 +289,19 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
         </div>
       </header>
 
-      <section className="grid gap-3 sm:grid-cols-3">
-        <MetricCard
-          label="Tools tracked"
-          value={aiDevTools.length.toString()}
-          detail={`${pricedCount} with current pricing notes`}
-        />
-        <MetricCard
-          label="Open or public"
-          value={openOrPublicCount.toString()}
-          detail="Repos where stars or release cadence can be inspected"
-        />
-        <MetricCard
-          label="Multi-model"
-          value={multiModelCount.toString()}
-          detail="Curated, BYOK, or local model support"
-        />
-      </section>
+      <HomeStatsPanel
+        id="ai-dev-tools-stats"
+        title="AI dev tools at a glance"
+        meta={`Updated ${updatedAt}`}
+        cells={aiDevCells}
+        pills={[
+          { label: "All tools", href: "/ai-dev-tools", icon: ChartBar },
+          { label: "Cloud agents", href: "/ai-dev-tools?category=cloud-agent", icon: Database },
+          { label: "Terminal agents", href: "/ai-dev-tools?category=terminal-agent", icon: FileText },
+          { label: "Editor extensions", href: "/ai-dev-tools?category=editor-extension", icon: Briefcase },
+          { label: "GitHub", href: "https://github.com/", icon: BrandGithub, external: true },
+        ]}
+      />
 
       <section className="home-card p-4 sm:p-5">
         <div className="grid gap-4 lg:grid-cols-[minmax(16rem,0.9fr)_minmax(0,1.6fr)]">
@@ -338,7 +398,7 @@ interface FilterSelectProps {
 function FilterSelect({ label, value, options, onChange }: FilterSelectProps) {
   return (
     <label className="inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 text-sm font-semibold text-[var(--home-ink-muted)]">
-      <span className="text-[11px] uppercase tracking-[0.16em]">{label}</span>
+      <span className="text-2xs uppercase tracking-[0.16em]">{label}</span>
       <select
         value={value}
         onChange={(event) => onChange(event.target.value)}
@@ -375,7 +435,7 @@ function ToolDirectoryTable({
                 <th
                   key={heading}
                   scope="col"
-                  className="px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]"
+                  className="px-4 py-3 text-left text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]"
                 >
                   {heading}
                 </th>
@@ -392,6 +452,15 @@ function ToolDirectoryTable({
                     isSelected ? "bg-[var(--home-paper-alt)]" : ""
                   }`}
                   onClick={() => onSelect(tool.id)}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      event.preventDefault();
+                      onSelect(tool.id);
+                    }
+                  }}
+                  role="button"
+                  tabIndex={0}
+                  aria-pressed={isSelected}
                 >
                   <td className="min-w-[17rem] px-4 py-4 align-top">
                     <button
@@ -467,7 +536,7 @@ function ToolDetail({ tool }: { tool: AiDevTool | null }) {
             <ToolCategoryIcon category={tool.category} className="h-5 w-5" />
           </span>
           <div>
-            <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]">
+            <p className="mb-1 text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]">
               {tool.company}
             </p>
             <h2 className="mb-0 text-2xl font-semibold text-[var(--home-ink)]">
@@ -511,7 +580,7 @@ function ToolDetail({ tool }: { tool: AiDevTool | null }) {
       </div>
 
       <div className="mt-5 border-t border-[var(--home-rule)] pt-4">
-        <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]">
+        <p className="mb-2 text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]">
           Sources
         </p>
         <div className="flex flex-col gap-2">
@@ -547,7 +616,7 @@ function ToolDetail({ tool }: { tool: AiDevTool | null }) {
 function DetailRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-3">
-      <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
+      <p className="mb-1 text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
         {label}
       </p>
       <p className="mb-0 text-sm leading-6 text-[var(--home-ink)]">{value}</p>

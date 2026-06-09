@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "GILD",
+      "report_date": "2022-06-30",
+      "gross_profit": 4818000000.0,
+      "total_revenue": 6260000000.0,
+      "gross_margin": 0.7696
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2022-09-30",
+      "gross_profit": 5647000000.0,
+      "total_revenue": 7042000000.0,
+      "gross_margin": 0.8019
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2022-12-31",
+      "gross_profit": 5993000000.0,
+      "total_revenue": 7389000000.0,
+      "gross_margin": 0.8111
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2023-03-31",
+      "gross_profit": 4951000000.0,
+      "total_revenue": 6352000000.0,
+      "gross_margin": 0.7794
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2023-06-30",
+      "gross_profit": 5157000000.0,
+      "total_revenue": 6599000000.0,
+      "gross_margin": 0.7815
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2023-09-30",
+      "gross_profit": 5485000000.0,
+      "total_revenue": 7050000000.0,
+      "gross_margin": 0.778
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2023-12-31",
+      "gross_profit": 5024000000.0,
+      "total_revenue": 7114000000.0,
+      "gross_margin": 0.7062
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-03-31",
+      "gross_profit": 5134000000.0,
+      "total_revenue": 6686000000.0,
+      "gross_margin": 0.7679
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-06-30",
+      "gross_profit": 5409000000.0,
+      "total_revenue": 6953000000.0,
+      "gross_margin": 0.7779
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-09-30",
+      "gross_profit": 5971000000.0,
+      "total_revenue": 7545000000.0,
+      "gross_margin": 0.7914
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-12-31",
+      "gross_profit": 5988000000.0,
+      "total_revenue": 7569000000.0,
+      "gross_margin": 0.7911
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-03-31",
+      "gross_profit": 5127000000.0,
+      "total_revenue": 6667000000.0,
+      "gross_margin": 0.769
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-06-30",
+      "gross_profit": 22667000000.0,
+      "total_revenue": 28863000000.0,
+      "gross_margin": 0.7853
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-09-30",
+      "gross_profit": 6200000000.0,
+      "total_revenue": 7769000000.0,
+      "gross_margin": 0.798
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-12-31",
+      "gross_profit": 6300000000.0,
+      "total_revenue": 7924000000.0,
+      "gross_margin": 0.7951
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2026-03-31",
+      "gross_profit": 23596000000.0,
+      "total_revenue": 29735000000.0,
+      "gross_margin": 0.7935
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "GILD",
+      "report_date": "2019-12-31",
+      "gross_profit": 17774000000.0,
+      "total_revenue": 22449000000.0,
+      "gross_margin": 0.7918
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2020-12-31",
+      "gross_profit": 20117000000.0,
+      "total_revenue": 24689000000.0,
+      "gross_margin": 0.8148
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2021-12-31",
+      "gross_profit": 20704000000.0,
+      "total_revenue": 27305000000.0,
+      "gross_margin": 0.7582
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2022-12-31",
+      "gross_profit": 21624000000.0,
+      "total_revenue": 27281000000.0,
+      "gross_margin": 0.7926
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2023-12-31",
+      "gross_profit": 20618000000.0,
+      "total_revenue": 27116000000.0,
+      "gross_margin": 0.7604
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-12-31",
+      "gross_profit": 22503000000.0,
+      "total_revenue": 28754000000.0,
+      "gross_margin": 0.7826
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-12-31",
+      "gross_profit": 23208000000.0,
+      "total_revenue": 29442000000.0,
+      "gross_margin": 0.7883
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "GILD",
+      "report_date": "2022-06-30",
+      "operating_income": 2359000000.0,
+      "total_revenue": 6260000000.0,
+      "operating_margin": 0.3768
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2022-09-30",
+      "operating_income": 3285000000.0,
+      "total_revenue": 7042000000.0,
+      "operating_margin": 0.4665
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2022-12-31",
+      "operating_income": 5125000000.0,
+      "total_revenue": 7389000000.0,
+      "operating_margin": 0.6936
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2023-03-31",
+      "operating_income": 2185000000.0,
+      "total_revenue": 6352000000.0,
+      "operating_margin": 0.344
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2023-06-30",
+      "operating_income": 1901000000.0,
+      "total_revenue": 6599000000.0,
+      "operating_margin": 0.2881
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2023-09-30",
+      "operating_income": 2713000000.0,
+      "total_revenue": 7050000000.0,
+      "operating_margin": 0.3848
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2023-12-31",
+      "operating_income": 2008000000.0,
+      "total_revenue": 7114000000.0,
+      "operating_margin": 0.2823
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-03-31",
+      "operating_income": 2239000000.0,
+      "total_revenue": 6686000000.0,
+      "operating_margin": 0.3349
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-06-30",
+      "operating_income": 2681000000.0,
+      "total_revenue": 6953000000.0,
+      "operating_margin": 0.3856
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-09-30",
+      "operating_income": 3143000000.0,
+      "total_revenue": 7545000000.0,
+      "operating_margin": 0.4166
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-12-31",
+      "operating_income": 2440000000.0,
+      "total_revenue": 7569000000.0,
+      "operating_margin": 0.3224
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-03-31",
+      "operating_income": 2490000000.0,
+      "total_revenue": 6667000000.0,
+      "operating_margin": 0.3735
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-06-30",
+      "operating_income": 10799000000.0,
+      "total_revenue": 28863000000.0,
+      "operating_margin": 0.3741
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-09-30",
+      "operating_income": 3497000000.0,
+      "total_revenue": 7769000000.0,
+      "operating_margin": 0.4501
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-12-31",
+      "operating_income": 2988000000.0,
+      "total_revenue": 7924000000.0,
+      "operating_margin": 0.3771
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2026-03-31",
+      "operating_income": 11903000000.0,
+      "total_revenue": 29735000000.0,
+      "operating_margin": 0.4003
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "GILD",
+      "report_date": "2019-12-31",
+      "operating_income": 4287000000.0,
+      "total_revenue": 22449000000.0,
+      "operating_margin": 0.191
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2020-12-31",
+      "operating_income": 9927000000.0,
+      "total_revenue": 24689000000.0,
+      "operating_margin": 0.4021
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2021-12-31",
+      "operating_income": 10857000000.0,
+      "total_revenue": 27305000000.0,
+      "operating_margin": 0.3976
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2022-12-31",
+      "operating_income": 10974000000.0,
+      "total_revenue": 27281000000.0,
+      "operating_margin": 0.4023
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2023-12-31",
+      "operating_income": 8838000000.0,
+      "total_revenue": 27116000000.0,
+      "operating_margin": 0.3259
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-12-31",
+      "operating_income": 10596000000.0,
+      "total_revenue": 28754000000.0,
+      "operating_margin": 0.3685
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-12-31",
+      "operating_income": 11701000000.0,
+      "total_revenue": 29442000000.0,
+      "operating_margin": 0.3974
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "GILD",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 1144000000.0,
+      "total_revenue": 6260000000.0,
+      "net_margin": 0.1827
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": 1789000000.0,
+      "total_revenue": 7042000000.0,
+      "net_margin": 0.254
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 1640000000.0,
+      "total_revenue": 7389000000.0,
+      "net_margin": 0.222
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": 1010000000.0,
+      "total_revenue": 6352000000.0,
+      "net_margin": 0.159
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 1045000000.0,
+      "total_revenue": 6599000000.0,
+      "net_margin": 0.1584
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 2180000000.0,
+      "total_revenue": 7050000000.0,
+      "net_margin": 0.3092
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1429000000.0,
+      "total_revenue": 7114000000.0,
+      "net_margin": 0.2009
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": -4170000000.0,
+      "total_revenue": 6686000000.0,
+      "net_margin": -0.6237
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1614000000.0,
+      "total_revenue": 6953000000.0,
+      "net_margin": 0.2321
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1253000000.0,
+      "total_revenue": 7545000000.0,
+      "net_margin": 0.1661
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1783000000.0,
+      "total_revenue": 7569000000.0,
+      "net_margin": 0.2356
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1315000000.0,
+      "total_revenue": 6667000000.0,
+      "net_margin": 0.1972
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1960000000.0,
+      "total_revenue": 28863000000.0,
+      "net_margin": 0.0679
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 3052000000.0,
+      "total_revenue": 7769000000.0,
+      "net_margin": 0.3928
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 2183000000.0,
+      "total_revenue": 7924000000.0,
+      "net_margin": 0.2755
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 2021000000.0,
+      "total_revenue": 29735000000.0,
+      "net_margin": 0.068
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "GILD",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": 5386000000.0,
+      "total_revenue": 22449000000.0,
+      "net_margin": 0.2399
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 123000000.0,
+      "total_revenue": 24689000000.0,
+      "net_margin": 0.005
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 6225000000.0,
+      "total_revenue": 27305000000.0,
+      "net_margin": 0.228
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 4592000000.0,
+      "total_revenue": 27281000000.0,
+      "net_margin": 0.1683
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 5665000000.0,
+      "total_revenue": 27116000000.0,
+      "net_margin": 0.2089
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 480000000.0,
+      "total_revenue": 28754000000.0,
+      "net_margin": 0.0167
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 8510000000.0,
+      "total_revenue": 29442000000.0,
+      "net_margin": 0.289
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "GILD",
+      "report_date": "2022-06-30",
+      "ebitda": 1745000000.0,
+      "total_revenue": 6260000000.0,
+      "ebitda_margin": 0.2788
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2022-09-30",
+      "ebitda": 2661000000.0,
+      "total_revenue": 7042000000.0,
+      "ebitda_margin": 0.3779
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2022-12-31",
+      "ebitda": 2785000000.0,
+      "total_revenue": 7389000000.0,
+      "ebitda_margin": 0.3769
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2023-03-31",
+      "ebitda": 2170000000.0,
+      "total_revenue": 6352000000.0,
+      "ebitda_margin": 0.3416
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2023-06-30",
+      "ebitda": 2499000000.0,
+      "total_revenue": 6599000000.0,
+      "ebitda_margin": 0.3787
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2023-09-30",
+      "ebitda": 3234000000.0,
+      "total_revenue": 7050000000.0,
+      "ebitda_margin": 0.4587
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2023-12-31",
+      "ebitda": 2593000000.0,
+      "total_revenue": 7114000000.0,
+      "ebitda_margin": 0.3645
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-03-31",
+      "ebitda": -3542000000.0,
+      "total_revenue": 6686000000.0,
+      "ebitda_margin": -0.5298
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-06-30",
+      "ebitda": 2984000000.0,
+      "total_revenue": 6953000000.0,
+      "ebitda_margin": 0.4292
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-09-30",
+      "ebitda": 1884000000.0,
+      "total_revenue": 7545000000.0,
+      "ebitda_margin": 0.2497
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-12-31",
+      "ebitda": 3109000000.0,
+      "total_revenue": 7569000000.0,
+      "ebitda_margin": 0.4108
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-03-31",
+      "ebitda": 2605000000.0,
+      "total_revenue": 6667000000.0,
+      "ebitda_margin": 0.3907
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-06-30",
+      "ebitda": 10969000000.0,
+      "total_revenue": 28863000000.0,
+      "ebitda_margin": 0.38
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-09-30",
+      "ebitda": 4583000000.0,
+      "total_revenue": 7769000000.0,
+      "ebitda_margin": 0.5899
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-12-31",
+      "ebitda": 3020000000.0,
+      "total_revenue": 7924000000.0,
+      "ebitda_margin": 0.3811
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2026-03-31",
+      "ebitda": 14484000000.0,
+      "total_revenue": 29735000000.0,
+      "ebitda_margin": 0.4871
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "GILD",
+      "report_date": "2019-12-31",
+      "ebitda": 6155000000.0,
+      "total_revenue": 22449000000.0,
+      "ebitda_margin": 0.2742
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2020-12-31",
+      "ebitda": 4133000000.0,
+      "total_revenue": 24689000000.0,
+      "ebitda_margin": 0.1674
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2021-12-31",
+      "ebitda": 11329000000.0,
+      "total_revenue": 27305000000.0,
+      "ebitda_margin": 0.4149
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2022-12-31",
+      "ebitda": 8852000000.0,
+      "total_revenue": 27281000000.0,
+      "ebitda_margin": 0.3245
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2023-12-31",
+      "ebitda": 10496000000.0,
+      "total_revenue": 27116000000.0,
+      "ebitda_margin": 0.3871
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-12-31",
+      "ebitda": 4434000000.0,
+      "total_revenue": 28754000000.0,
+      "ebitda_margin": 0.1542
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-12-31",
+      "ebitda": 13580000000.0,
+      "total_revenue": 29442000000.0,
+      "ebitda_margin": 0.4612
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "GILD",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 1802000000.0,
+      "total_revenue": 6260000000.0,
+      "fcf_margin": 0.2879
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": 7042000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": 7389000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": 6352000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 2199000000.0,
+      "total_revenue": 6599000000.0,
+      "fcf_margin": 0.3332
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 1633000000.0,
+      "total_revenue": 7050000000.0,
+      "fcf_margin": 0.2316
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 1954000000.0,
+      "total_revenue": 7114000000.0,
+      "fcf_margin": 0.2747
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 2114000000.0,
+      "total_revenue": 6686000000.0,
+      "fcf_margin": 0.3162
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 1195000000.0,
+      "total_revenue": 6953000000.0,
+      "fcf_margin": 0.1719
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 4168000000.0,
+      "total_revenue": 7545000000.0,
+      "fcf_margin": 0.5524
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 2828000000.0,
+      "total_revenue": 7569000000.0,
+      "fcf_margin": 0.3736
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 1653000000.0,
+      "total_revenue": 6667000000.0,
+      "fcf_margin": 0.2479
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 720000000.0,
+      "total_revenue": 28863000000.0,
+      "fcf_margin": 0.0249
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 3961000000.0,
+      "total_revenue": 7769000000.0,
+      "fcf_margin": 0.5098
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 3122000000.0,
+      "total_revenue": 7924000000.0,
+      "fcf_margin": 0.394
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 2427000000.0,
+      "total_revenue": 29735000000.0,
+      "fcf_margin": 0.0816
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "GILD",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": 22449000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 7518000000.0,
+      "total_revenue": 24689000000.0,
+      "fcf_margin": 0.3045
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 10805000000.0,
+      "total_revenue": 27305000000.0,
+      "fcf_margin": 0.3957
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 8344000000.0,
+      "total_revenue": 27281000000.0,
+      "fcf_margin": 0.3059
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 7421000000.0,
+      "total_revenue": 27116000000.0,
+      "fcf_margin": 0.2737
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 10305000000.0,
+      "total_revenue": 28754000000.0,
+      "fcf_margin": 0.3584
+    },
+    {
+      "symbol": "GILD",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 9456000000.0,
+      "total_revenue": 29442000000.0,
+      "fcf_margin": 0.3212
+    }
+  ]
+}

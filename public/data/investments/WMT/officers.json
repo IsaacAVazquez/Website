@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "WMT",
+    "name": "Mr. C. Douglas McMillon",
+    "title": "Executive Officer",
+    "age": 59,
+    "born": 1966,
+    "pay": 5974047,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "WMT",
+    "name": "Mr. Daniel  Danker",
+    "title": "Executive Vice President of AI Acceleration, Product & Design",
+    "age": 44,
+    "born": 1981,
+    "pay": 6391483,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "WMT",
+    "name": "Mr. Dwayne M. Milum",
+    "title": "Senior VP, Controller & Principal Accounting Officer",
+    "age": 49,
+    "born": 1976,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "WMT",
+    "name": "Mr. John David Rainey Jr.",
+    "title": "Executive VP & CFO",
+    "age": 55,
+    "born": 1970,
+    "pay": 3389258,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "WMT",
+    "name": "Mr. John R. Furner",
+    "title": "President, CEO & Director",
+    "age": 50,
+    "born": 1975,
+    "pay": 4563578,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "WMT",
+    "name": "Mr. Suresh  Kumar Ph.D.",
+    "title": "Executive VP, Global CTO & Chief Development Officer",
+    "age": 59,
+    "born": 1966,
+    "pay": 3536455,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "WMT",
+    "name": "Ms. Allyson  Park",
+    "title": "Senior VP & Chief Communications Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "WMT",
+    "name": "Ms. Donna Catherine Morris",
+    "title": "Executive VP & Chief People Officer",
+    "age": 58,
+    "born": 1967,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "WMT",
+    "name": "Ms. Erin Nealy Cox J.D.",
+    "title": "Executive VP of Global Governance, Chief Legal Officer & Corporate Secretary",
+    "age": 55,
+    "born": 1970,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "WMT",
+    "name": "Ms. Stephanie  Wissink",
+    "title": "Senior Vice President of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  }
+]

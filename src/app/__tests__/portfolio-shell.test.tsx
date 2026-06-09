@@ -20,12 +20,13 @@ jest.mock("@/constants/caseStudies", () => {
 });
 
 jest.mock("@/lib/blog", () => ({
+  getAllBlogPostPreviews: () => [{ slug: "post-a" }],
   getLatestBlogPostPreviews: () => [{ slug: "post-a" }],
   getHomepageProofOfWorkBlogPostPreviews: () => [{ slug: "post-a" }],
 }));
 
-jest.mock("@/components/home/HomePageContent", () => ({
-  HomePageContent: () => (
+jest.mock("@/components/home/HomePageV3", () => ({
+  HomePageV3: () => (
     <div data-testid="home-page-content">
       <section data-testid="hero">
         <h1>Editorial Home</h1>
@@ -42,6 +43,14 @@ jest.mock("@/components/home/HomePageContent", () => ({
       <section>
         <h2>Contact</h2>
       </section>
+    </div>
+  ),
+}));
+
+jest.mock("@/components/portfolio/PortfolioV3", () => ({
+  PortfolioV3: () => (
+    <div data-testid="portfolio-page-content">
+      <h1>All projects across product, analytics, and tooling.</h1>
     </div>
   ),
 }));
@@ -63,7 +72,7 @@ describe("Portfolio shell page semantics", () => {
     expect(
       screen.getByRole("heading", {
         level: 1,
-        name: /product work across fintech, analytics, and civic technology/i,
+        name: /all projects across product, analytics, and tooling/i,
       })
     ).toBeVisible();
     expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);

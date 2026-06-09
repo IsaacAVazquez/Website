@@ -1,0 +1,363 @@
+{
+  "roe": [
+    {
+      "symbol": "USB",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1412000000.0,
+      "beginning_stockholders_equity": 53019000000.0,
+      "ending_stockholders_equity": 53113000000.0,
+      "avg_equity": 53066000000.0,
+      "roe": 0.0266
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 766000000.0,
+      "beginning_stockholders_equity": 53113000000.0,
+      "ending_stockholders_equity": 55306000000.0,
+      "avg_equity": 54209500000.0,
+      "roe": 0.0141
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1209000000.0,
+      "beginning_stockholders_equity": 55306000000.0,
+      "ending_stockholders_equity": 55568000000.0,
+      "avg_equity": 55437000000.0,
+      "roe": 0.0218
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1518000000.0,
+      "beginning_stockholders_equity": 55568000000.0,
+      "ending_stockholders_equity": 56420000000.0,
+      "avg_equity": 55994000000.0,
+      "roe": 0.0271
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1601000000.0,
+      "beginning_stockholders_equity": 56420000000.0,
+      "ending_stockholders_equity": 58859000000.0,
+      "avg_equity": 57639500000.0,
+      "roe": 0.0278
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1581000000.0,
+      "beginning_stockholders_equity": 58859000000.0,
+      "ending_stockholders_equity": 58578000000.0,
+      "avg_equity": 58718500000.0,
+      "roe": 0.0269
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1603000000.0,
+      "beginning_stockholders_equity": 58578000000.0,
+      "ending_stockholders_equity": 60096000000.0,
+      "avg_equity": 59337000000.0,
+      "roe": 0.027
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 6518000000.0,
+      "beginning_stockholders_equity": 60096000000.0,
+      "ending_stockholders_equity": 61438000000.0,
+      "avg_equity": 60767000000.0,
+      "roe": 0.1073
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1893000000.0,
+      "beginning_stockholders_equity": 61438000000.0,
+      "ending_stockholders_equity": 63340000000.0,
+      "avg_equity": 62389000000.0,
+      "roe": 0.0303
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1965000000.0,
+      "beginning_stockholders_equity": 63340000000.0,
+      "ending_stockholders_equity": 65193000000.0,
+      "avg_equity": 64266500000.0,
+      "roe": 0.0306
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 7432000000.0,
+      "beginning_stockholders_equity": 65193000000.0,
+      "ending_stockholders_equity": 65786000000.0,
+      "avg_equity": 65489500000.0,
+      "roe": 0.1135
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "USB",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1412000000.0,
+      "beginning_total_assets": 680825000000.0,
+      "ending_total_assets": 668039000000.0,
+      "avg_assets": 674432000000.0,
+      "roa": 0.0021
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 766000000.0,
+      "beginning_total_assets": 668039000000.0,
+      "ending_total_assets": 663491000000.0,
+      "avg_assets": 665765000000.0,
+      "roa": 0.0012
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1209000000.0,
+      "beginning_total_assets": 663491000000.0,
+      "ending_total_assets": 683606000000.0,
+      "avg_assets": 673548500000.0,
+      "roa": 0.0018
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1518000000.0,
+      "beginning_total_assets": 683606000000.0,
+      "ending_total_assets": 680058000000.0,
+      "avg_assets": 681832000000.0,
+      "roa": 0.0022
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1601000000.0,
+      "beginning_total_assets": 680058000000.0,
+      "ending_total_assets": 686469000000.0,
+      "avg_assets": 683263500000.0,
+      "roa": 0.0023
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1581000000.0,
+      "beginning_total_assets": 686469000000.0,
+      "ending_total_assets": 678318000000.0,
+      "avg_assets": 682393500000.0,
+      "roa": 0.0023
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1603000000.0,
+      "beginning_total_assets": 678318000000.0,
+      "ending_total_assets": 676489000000.0,
+      "avg_assets": 677403500000.0,
+      "roa": 0.0024
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 6518000000.0,
+      "beginning_total_assets": 676489000000.0,
+      "ending_total_assets": 686370000000.0,
+      "avg_assets": 681429500000.0,
+      "roa": 0.0096
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1893000000.0,
+      "beginning_total_assets": 686370000000.0,
+      "ending_total_assets": 695357000000.0,
+      "avg_assets": 690863500000.0,
+      "roa": 0.0027
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1965000000.0,
+      "beginning_total_assets": 695357000000.0,
+      "ending_total_assets": 692345000000.0,
+      "avg_assets": 693851000000.0,
+      "roa": 0.0028
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 7432000000.0,
+      "beginning_total_assets": 692345000000.0,
+      "ending_total_assets": 700998000000.0,
+      "avg_assets": 696671500000.0,
+      "roa": 0.0107
+    }
+  ],
+  "roic": [],
+  "equityMultiplier": [
+    {
+      "symbol": "USB",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.0266,
+      "roa": 0.0021,
+      "equity_multiplier": 12.67
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.0141,
+      "roa": 0.0012,
+      "equity_multiplier": 11.75
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.0218,
+      "roa": 0.0018,
+      "equity_multiplier": 12.11
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.0271,
+      "roa": 0.0022,
+      "equity_multiplier": 12.32
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.0278,
+      "roa": 0.0023,
+      "equity_multiplier": 12.09
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.0269,
+      "roa": 0.0023,
+      "equity_multiplier": 11.7
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.027,
+      "roa": 0.0024,
+      "equity_multiplier": 11.25
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.1073,
+      "roa": 0.0096,
+      "equity_multiplier": 11.18
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.0303,
+      "roa": 0.0027,
+      "equity_multiplier": 11.22
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.0306,
+      "roa": 0.0028,
+      "equity_multiplier": 10.93
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.1135,
+      "roa": 0.0107,
+      "equity_multiplier": 10.61
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "USB",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0021,
+      "net_margin": 0.2017,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0012,
+      "net_margin": 0.1138,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0018,
+      "net_margin": 0.1809,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0022,
+      "net_margin": 0.222,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0023,
+      "net_margin": 0.2343,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0023,
+      "net_margin": 0.2265,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0024,
+      "net_margin": 0.2314,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0096,
+      "net_margin": 0.9345,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0027,
+      "net_margin": 0.2593,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0028,
+      "net_margin": 0.2678,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "USB",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0107,
+      "net_margin": 1.0237,
+      "asset_turnover": 0.01
+    }
+  ]
+}

@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "NVO",
+      "report_date": "2022-06-30",
+      "gross_profit": 35196000000.0,
+      "total_revenue": 41265000000.0,
+      "gross_margin": 0.8529
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2022-12-31",
+      "gross_profit": 39830000000.0,
+      "total_revenue": 48092000000.0,
+      "gross_margin": 0.8282
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2023-06-30",
+      "gross_profit": 46444000000.0,
+      "total_revenue": 54300000000.0,
+      "gross_margin": 0.8553
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2023-09-30",
+      "gross_profit": 49018000000.0,
+      "total_revenue": 58731000000.0,
+      "gross_margin": 0.8346
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2023-12-31",
+      "gross_profit": 55849000000.0,
+      "total_revenue": 65863000000.0,
+      "gross_margin": 0.848
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2024-03-31",
+      "gross_profit": 55433000000.0,
+      "total_revenue": 65349000000.0,
+      "gross_margin": 0.8483
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2024-06-30",
+      "gross_profit": 57786000000.0,
+      "total_revenue": 68060000000.0,
+      "gross_margin": 0.849
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2024-09-30",
+      "gross_profit": 60003000000.0,
+      "total_revenue": 71311000000.0,
+      "gross_margin": 0.8414
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2024-12-31",
+      "gross_profit": 72659000000.0,
+      "total_revenue": 85683000000.0,
+      "gross_margin": 0.848
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2025-03-31",
+      "gross_profit": 65197000000.0,
+      "total_revenue": 78087000000.0,
+      "gross_margin": 0.8349
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2025-06-30",
+      "gross_profit": 261870000000.0,
+      "total_revenue": 311938000000.0,
+      "gross_margin": 0.8395
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2025-09-30",
+      "gross_profit": 57072000000.0,
+      "total_revenue": 74976000000.0,
+      "gross_margin": 0.7612
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2025-12-31",
+      "gross_profit": 63996000000.0,
+      "total_revenue": 79144000000.0,
+      "gross_margin": 0.8086
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2026-03-31",
+      "gross_profit": 268304000000.0,
+      "total_revenue": 327800000000.0,
+      "gross_margin": 0.8185
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "NVO",
+      "report_date": "2019-12-31",
+      "gross_profit": 101933000000.0,
+      "total_revenue": 122021000000.0,
+      "gross_margin": 0.8354
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2020-12-31",
+      "gross_profit": 106014000000.0,
+      "total_revenue": 126946000000.0,
+      "gross_margin": 0.8351
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2021-12-31",
+      "gross_profit": 117142000000.0,
+      "total_revenue": 140800000000.0,
+      "gross_margin": 0.832
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2022-12-31",
+      "gross_profit": 148506000000.0,
+      "total_revenue": 176954000000.0,
+      "gross_margin": 0.8392
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2023-12-31",
+      "gross_profit": 196496000000.0,
+      "total_revenue": 232261000000.0,
+      "gross_margin": 0.846
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2024-12-31",
+      "gross_profit": 245881000000.0,
+      "total_revenue": 290403000000.0,
+      "gross_margin": 0.8467
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2025-12-31",
+      "gross_profit": 250276000000.0,
+      "total_revenue": 309064000000.0,
+      "gross_margin": 0.8098
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "NVO",
+      "report_date": "2022-06-30",
+      "operating_income": 18391000000.0,
+      "total_revenue": 41265000000.0,
+      "operating_margin": 0.4457
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2022-12-31",
+      "operating_income": 17087000000.0,
+      "total_revenue": 48092000000.0,
+      "operating_margin": 0.3553
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2023-06-30",
+      "operating_income": 23888000000.0,
+      "total_revenue": 54300000000.0,
+      "operating_margin": 0.4399
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2023-09-30",
+      "operating_income": 26913000000.0,
+      "total_revenue": 58731000000.0,
+      "operating_margin": 0.4582
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2023-12-31",
+      "operating_income": 26766000000.0,
+      "total_revenue": 65863000000.0,
+      "operating_margin": 0.4064
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2024-03-31",
+      "operating_income": 31846000000.0,
+      "total_revenue": 65349000000.0,
+      "operating_margin": 0.4873
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2024-06-30",
+      "operating_income": 25934000000.0,
+      "total_revenue": 68060000000.0,
+      "operating_margin": 0.381
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2024-09-30",
+      "operating_income": 33822000000.0,
+      "total_revenue": 71311000000.0,
+      "operating_margin": 0.4743
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2024-12-31",
+      "operating_income": 36737000000.0,
+      "total_revenue": 85683000000.0,
+      "operating_margin": 0.4288
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2025-03-31",
+      "operating_income": 38791000000.0,
+      "total_revenue": 78087000000.0,
+      "operating_margin": 0.4968
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2025-06-30",
+      "operating_income": 142799000000.0,
+      "total_revenue": 311938000000.0,
+      "operating_margin": 0.4578
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2025-09-30",
+      "operating_income": 23682000000.0,
+      "total_revenue": 74976000000.0,
+      "operating_margin": 0.3159
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2025-12-31",
+      "operating_income": 31736000000.0,
+      "total_revenue": 79144000000.0,
+      "operating_margin": 0.401
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2026-03-31",
+      "operating_income": 148485000000.0,
+      "total_revenue": 327800000000.0,
+      "operating_margin": 0.453
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "NVO",
+      "report_date": "2019-12-31",
+      "operating_income": 52483000000.0,
+      "total_revenue": 122021000000.0,
+      "operating_margin": 0.4301
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2020-12-31",
+      "operating_income": 54126000000.0,
+      "total_revenue": 126946000000.0,
+      "operating_margin": 0.4264
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2021-12-31",
+      "operating_income": 58644000000.0,
+      "total_revenue": 140800000000.0,
+      "operating_margin": 0.4165
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2022-12-31",
+      "operating_income": 74809000000.0,
+      "total_revenue": 176954000000.0,
+      "operating_margin": 0.4228
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2023-12-31",
+      "operating_income": 102574000000.0,
+      "total_revenue": 232261000000.0,
+      "operating_margin": 0.4416
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2024-12-31",
+      "operating_income": 128339000000.0,
+      "total_revenue": 290403000000.0,
+      "operating_margin": 0.4419
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2025-12-31",
+      "operating_income": 127658000000.0,
+      "total_revenue": 309064000000.0,
+      "operating_margin": 0.413
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "NVO",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 13318000000.0,
+      "total_revenue": 41265000000.0,
+      "net_margin": 0.3227
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 13592000000.0,
+      "total_revenue": 48092000000.0,
+      "net_margin": 0.2826
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 19428000000.0,
+      "total_revenue": 54300000000.0,
+      "net_margin": 0.3578
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 22478000000.0,
+      "total_revenue": 58731000000.0,
+      "net_margin": 0.3827
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 21963000000.0,
+      "total_revenue": 65863000000.0,
+      "net_margin": 0.3335
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 25407000000.0,
+      "total_revenue": 65349000000.0,
+      "net_margin": 0.3888
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 20050000000.0,
+      "total_revenue": 68060000000.0,
+      "net_margin": 0.2946
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 27301000000.0,
+      "total_revenue": 71311000000.0,
+      "net_margin": 0.3828
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 28230000000.0,
+      "total_revenue": 85683000000.0,
+      "net_margin": 0.3295
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 29034000000.0,
+      "total_revenue": 78087000000.0,
+      "net_margin": 0.3718
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 26503000000.0,
+      "total_revenue": 311938000000.0,
+      "net_margin": 0.085
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 20006000000.0,
+      "total_revenue": 74976000000.0,
+      "net_margin": 0.2668
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 26891000000.0,
+      "total_revenue": 79144000000.0,
+      "net_margin": 0.3398
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 48557000000.0,
+      "total_revenue": 327800000000.0,
+      "net_margin": 0.1481
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "NVO",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": 38951000000.0,
+      "total_revenue": 122021000000.0,
+      "net_margin": 0.3192
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 42138000000.0,
+      "total_revenue": 126946000000.0,
+      "net_margin": 0.3319
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 47757000000.0,
+      "total_revenue": 140800000000.0,
+      "net_margin": 0.3392
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 55525000000.0,
+      "total_revenue": 176954000000.0,
+      "net_margin": 0.3138
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 83683000000.0,
+      "total_revenue": 232261000000.0,
+      "net_margin": 0.3603
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 100988000000.0,
+      "total_revenue": 290403000000.0,
+      "net_margin": 0.3478
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 102434000000.0,
+      "total_revenue": 309064000000.0,
+      "net_margin": 0.3314
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "NVO",
+      "report_date": "2022-06-30",
+      "ebitda": 21683000000.0,
+      "total_revenue": 41265000000.0,
+      "ebitda_margin": 0.5255
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2022-12-31",
+      "ebitda": 10314000000.0,
+      "total_revenue": 48092000000.0,
+      "ebitda_margin": 0.2145
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2023-06-30",
+      "ebitda": 26712000000.0,
+      "total_revenue": 54300000000.0,
+      "ebitda_margin": 0.4919
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2023-09-30",
+      "ebitda": 32756000000.0,
+      "total_revenue": 58731000000.0,
+      "ebitda_margin": 0.5577
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2023-12-31",
+      "ebitda": 28511000000.0,
+      "total_revenue": 65863000000.0,
+      "ebitda_margin": 0.4329
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2024-03-31",
+      "ebitda": 36906000000.0,
+      "total_revenue": 65349000000.0,
+      "ebitda_margin": 0.5648
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2024-06-30",
+      "ebitda": 35739000000.0,
+      "total_revenue": 68060000000.0,
+      "ebitda_margin": 0.5251
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2024-09-30",
+      "ebitda": 37355000000.0,
+      "total_revenue": 71311000000.0,
+      "ebitda_margin": 0.5238
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2024-12-31",
+      "ebitda": 45848000000.0,
+      "total_revenue": 85683000000.0,
+      "ebitda_margin": 0.5351
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2025-03-31",
+      "ebitda": 46046000000.0,
+      "total_revenue": 78087000000.0,
+      "ebitda_margin": 0.5897
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2025-06-30",
+      "ebitda": 154373000000.0,
+      "total_revenue": 311938000000.0,
+      "ebitda_margin": 0.4949
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2025-09-30",
+      "ebitda": 31439000000.0,
+      "total_revenue": 74976000000.0,
+      "ebitda_margin": 0.4193
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2025-12-31",
+      "ebitda": 37298000000.0,
+      "total_revenue": 79144000000.0,
+      "ebitda_margin": 0.4713
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2026-03-31",
+      "ebitda": 179890000000.0,
+      "total_revenue": 327800000000.0,
+      "ebitda_margin": 0.5488
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "NVO",
+      "report_date": "2019-12-31",
+      "ebitda": 54434000000.0,
+      "total_revenue": 122021000000.0,
+      "ebitda_margin": 0.4461
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2020-12-31",
+      "ebitda": 59273000000.0,
+      "total_revenue": 126946000000.0,
+      "ebitda_margin": 0.4669
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2021-12-31",
+      "ebitda": 65394000000.0,
+      "total_revenue": 140800000000.0,
+      "ebitda_margin": 0.4644
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2022-12-31",
+      "ebitda": 76802000000.0,
+      "total_revenue": 176954000000.0,
+      "ebitda_margin": 0.434
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2023-12-31",
+      "ebitda": 114629000000.0,
+      "total_revenue": 232261000000.0,
+      "ebitda_margin": 0.4935
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2024-12-31",
+      "ebitda": 147938000000.0,
+      "total_revenue": 290403000000.0,
+      "ebitda_margin": 0.5094
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2025-12-31",
+      "ebitda": 156729000000.0,
+      "total_revenue": 309064000000.0,
+      "ebitda_margin": 0.5071
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "NVO",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 21386000000.0,
+      "total_revenue": 41265000000.0,
+      "fcf_margin": 0.5183
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": 48092000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 21542000000.0,
+      "total_revenue": 54300000000.0,
+      "fcf_margin": 0.3967
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 30342000000.0,
+      "total_revenue": 58731000000.0,
+      "fcf_margin": 0.5166
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2023-12-31",
+      "free_cash_flow": -6885000000.0,
+      "total_revenue": 65863000000.0,
+      "fcf_margin": -0.1045
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 5305000000.0,
+      "total_revenue": 65349000000.0,
+      "fcf_margin": 0.0812
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 37265000000.0,
+      "total_revenue": 68060000000.0,
+      "fcf_margin": 0.5475
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 31346000000.0,
+      "total_revenue": 71311000000.0,
+      "fcf_margin": 0.4396
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2024-12-31",
+      "free_cash_flow": -4257000000.0,
+      "total_revenue": 85683000000.0,
+      "fcf_margin": -0.0497
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 10144000000.0,
+      "total_revenue": 78087000000.0,
+      "fcf_margin": 0.1299
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 24371000000.0,
+      "total_revenue": 311938000000.0,
+      "fcf_margin": 0.0781
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 30692000000.0,
+      "total_revenue": 74976000000.0,
+      "fcf_margin": 0.4094
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2025-12-31",
+      "free_cash_flow": -36218000000.0,
+      "total_revenue": 79144000000.0,
+      "fcf_margin": -0.4576
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 12045000000.0,
+      "total_revenue": 327800000000.0,
+      "fcf_margin": 0.0367
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "NVO",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": 122021000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 29870000000.0,
+      "total_revenue": 126946000000.0,
+      "fcf_margin": 0.2353
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 47615000000.0,
+      "total_revenue": 140800000000.0,
+      "fcf_margin": 0.3382
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 64134000000.0,
+      "total_revenue": 176954000000.0,
+      "fcf_margin": 0.3624
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 70012000000.0,
+      "total_revenue": 232261000000.0,
+      "fcf_margin": 0.3014
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 69659000000.0,
+      "total_revenue": 290403000000.0,
+      "fcf_margin": 0.2399
+    },
+    {
+      "symbol": "NVO",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 28989000000.0,
+      "total_revenue": 309064000000.0,
+      "fcf_margin": 0.0938
+    }
+  ]
+}

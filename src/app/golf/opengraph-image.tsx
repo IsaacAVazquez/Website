@@ -1,4 +1,3 @@
-/* eslint-disable react-refresh/only-export-components -- Next.js route modules export runtime metadata alongside the image component. */
 import { createEditorialOgImage } from "@/lib/og";
 
 export const runtime = "edge";

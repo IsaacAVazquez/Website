@@ -59,8 +59,17 @@ export function createEmptyNbaTeamSnapshot(): NbaTeamSnapshot {
   };
 }
 
+// NBA snapshot keys are lowercase 2-4 character abbreviations (e.g. "lal",
+// "bos"). The regex check runs before membership so a malformed id can be
+// rejected as a 400 by route handlers without touching the snapshot dict.
+const NBA_TEAM_ID_PATTERN = /^[a-z0-9]{2,4}$/i;
+
+export function isNbaTeamIdShape(teamId: string): boolean {
+  return NBA_TEAM_ID_PATTERN.test(teamId);
+}
+
 export function isValidNbaTeamId(teamId: string): boolean {
-  return teamId in nbaSnapshot.teamSnapshots;
+  return NBA_TEAM_ID_PATTERN.test(teamId) && teamId in nbaSnapshot.teamSnapshots;
 }
 
 export async function getNbaSummarySnapshot(): Promise<NbaSummarySnapshot> {

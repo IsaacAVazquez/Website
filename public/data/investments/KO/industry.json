@@ -1,0 +1,1307 @@
+{
+  "ttm_pe": [],
+  "ps_ratio": [],
+  "pb_ratio": [],
+  "roe": [
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 16813307996.79633,
+      "total_avg_equity": 71608986226.27701,
+      "industry_roe": 0.2348
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 16990039996.79633,
+      "total_avg_equity": 72099779726.27701,
+      "industry_roe": 0.2356
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 16990039996.79633,
+      "total_avg_equity": 72099779726.27701,
+      "industry_roe": 0.2356
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 26437325608.668224,
+      "total_avg_equity": 89493812347.44562,
+      "industry_roe": 0.2954
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 26444474608.668224,
+      "total_avg_equity": 89389901847.44562,
+      "industry_roe": 0.2958
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 26444474608.668224,
+      "total_avg_equity": 89389901847.44562,
+      "industry_roe": 0.2958
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 26094850654.253098,
+      "total_avg_equity": 89790205668.34732,
+      "industry_roe": 0.2906
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 26096699654.253098,
+      "total_avg_equity": 89838505168.34732,
+      "industry_roe": 0.2905
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 26096699654.253098,
+      "total_avg_equity": 89838505168.34732,
+      "industry_roe": 0.2905
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 25728369421.277294,
+      "total_avg_equity": 87982396766.26237,
+      "industry_roe": 0.2924
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 25728420421.277294,
+      "total_avg_equity": 88027088266.26237,
+      "industry_roe": 0.2923
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 25728420421.277294,
+      "total_avg_equity": 88027088266.26237,
+      "industry_roe": 0.2923
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 26093535498.692253,
+      "total_avg_equity": 92119783054.67236,
+      "industry_roe": 0.2833
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 26094575498.692253,
+      "total_avg_equity": 92015206554.67236,
+      "industry_roe": 0.2836
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 26094575498.692253,
+      "total_avg_equity": 92015206554.67236,
+      "industry_roe": 0.2836
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 45538236571.325516,
+      "total_avg_equity": 102671666412.10399,
+      "industry_roe": 0.4435
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 45537216571.325516,
+      "total_avg_equity": 102728507412.10399,
+      "industry_roe": 0.4433
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 45537216571.325516,
+      "total_avg_equity": 102728507412.10399,
+      "industry_roe": 0.4433
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 46283326827.83885,
+      "total_avg_equity": 106225245269.01567,
+      "industry_roe": 0.4357
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 46284053827.83885,
+      "total_avg_equity": 106268854269.01567,
+      "industry_roe": 0.4355
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 46284053827.83885,
+      "total_avg_equity": 106268854269.01567,
+      "industry_roe": 0.4355
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 48411567493.55526,
+      "total_avg_equity": 108862956390.2763,
+      "industry_roe": 0.4447
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 48560017493.55526,
+      "total_avg_equity": 108904739390.2763,
+      "industry_roe": 0.4459
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 48560017493.55526,
+      "total_avg_equity": 108904739390.2763,
+      "industry_roe": 0.4459
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 70179417228.89319,
+      "total_avg_equity": 111341584545.51392,
+      "industry_roe": 0.6303
+    }
+  ],
+  "roa": [
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 16813307996.79633,
+      "total_avg_assets": 189812599818.01886,
+      "industry_roa": 0.0886
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 16990039996.79633,
+      "total_avg_assets": 190517879818.01886,
+      "industry_roa": 0.0892
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 16990039996.79633,
+      "total_avg_assets": 190517879818.01886,
+      "industry_roa": 0.0892
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 26437325608.668224,
+      "total_avg_assets": 289641692537.757,
+      "industry_roa": 0.0913
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 26444474608.668224,
+      "total_avg_assets": 289534141537.757,
+      "industry_roa": 0.0913
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 26444474608.668224,
+      "total_avg_assets": 289534141537.757,
+      "industry_roa": 0.0913
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 26094850654.253098,
+      "total_avg_assets": 293283826232.4359,
+      "industry_roa": 0.089
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 26096699654.253098,
+      "total_avg_assets": 293324757232.4359,
+      "industry_roa": 0.089
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 26096699654.253098,
+      "total_avg_assets": 293324757232.4359,
+      "industry_roa": 0.089
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 25728369421.277294,
+      "total_avg_assets": 290378448282.7412,
+      "industry_roa": 0.0886
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 25728420421.277294,
+      "total_avg_assets": 290421874782.7412,
+      "industry_roa": 0.0886
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 25728420421.277294,
+      "total_avg_assets": 290421874782.7412,
+      "industry_roa": 0.0886
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 26093535498.692253,
+      "total_avg_assets": 311061986774.5051,
+      "industry_roa": 0.0839
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 26094575498.692253,
+      "total_avg_assets": 310977616274.5051,
+      "industry_roa": 0.0839
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 26094575498.692253,
+      "total_avg_assets": 310977616274.5051,
+      "industry_roa": 0.0839
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 45538236571.325516,
+      "total_avg_assets": 337335965870.9161,
+      "industry_roa": 0.135
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 45537216571.325516,
+      "total_avg_assets": 337385849870.9161,
+      "industry_roa": 0.135
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 45537216571.325516,
+      "total_avg_assets": 337385849870.9161,
+      "industry_roa": 0.135
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 46283326827.83885,
+      "total_avg_assets": 341143499681.02246,
+      "industry_roa": 0.1357
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 46284053827.83885,
+      "total_avg_assets": 341167396681.02246,
+      "industry_roa": 0.1357
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 46284053827.83885,
+      "total_avg_assets": 341167396681.02246,
+      "industry_roa": 0.1357
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 48411567493.55526,
+      "total_avg_assets": 344028311521.2312,
+      "industry_roa": 0.1407
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 48560017493.55526,
+      "total_avg_assets": 344089480021.2312,
+      "industry_roa": 0.1411
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 48560017493.55526,
+      "total_avg_assets": 344089480021.2312,
+      "industry_roa": 0.1411
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 70179417228.89319,
+      "total_avg_assets": 360235538588.76904,
+      "industry_roa": 0.1948
+    }
+  ],
+  "equity_multiplier": [
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roe": 0.2348,
+      "industry_roa": 0.0886,
+      "industry_equity_multiplier": 2.65
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roe": 0.2356,
+      "industry_roa": 0.0892,
+      "industry_equity_multiplier": 2.64
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roe": 0.2356,
+      "industry_roa": 0.0892,
+      "industry_equity_multiplier": 2.64
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roe": 0.2954,
+      "industry_roa": 0.0913,
+      "industry_equity_multiplier": 3.24
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roe": 0.2958,
+      "industry_roa": 0.0913,
+      "industry_equity_multiplier": 3.24
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roe": 0.2958,
+      "industry_roa": 0.0913,
+      "industry_equity_multiplier": 3.24
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roe": 0.2906,
+      "industry_roa": 0.089,
+      "industry_equity_multiplier": 3.27
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roe": 0.2905,
+      "industry_roa": 0.089,
+      "industry_equity_multiplier": 3.26
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roe": 0.2905,
+      "industry_roa": 0.089,
+      "industry_equity_multiplier": 3.26
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roe": 0.2924,
+      "industry_roa": 0.0886,
+      "industry_equity_multiplier": 3.3
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roe": 0.2923,
+      "industry_roa": 0.0886,
+      "industry_equity_multiplier": 3.3
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roe": 0.2923,
+      "industry_roa": 0.0886,
+      "industry_equity_multiplier": 3.3
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roe": 0.2833,
+      "industry_roa": 0.0839,
+      "industry_equity_multiplier": 3.38
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roe": 0.2836,
+      "industry_roa": 0.0839,
+      "industry_equity_multiplier": 3.38
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roe": 0.2836,
+      "industry_roa": 0.0839,
+      "industry_equity_multiplier": 3.38
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roe": 0.4435,
+      "industry_roa": 0.135,
+      "industry_equity_multiplier": 3.29
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roe": 0.4433,
+      "industry_roa": 0.135,
+      "industry_equity_multiplier": 3.28
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roe": 0.4433,
+      "industry_roa": 0.135,
+      "industry_equity_multiplier": 3.28
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roe": 0.4357,
+      "industry_roa": 0.1357,
+      "industry_equity_multiplier": 3.21
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roe": 0.4355,
+      "industry_roa": 0.1357,
+      "industry_equity_multiplier": 3.21
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roe": 0.4355,
+      "industry_roa": 0.1357,
+      "industry_equity_multiplier": 3.21
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roe": 0.4447,
+      "industry_roa": 0.1407,
+      "industry_equity_multiplier": 3.16
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roe": 0.4459,
+      "industry_roa": 0.1411,
+      "industry_equity_multiplier": 3.16
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roe": 0.4459,
+      "industry_roa": 0.1411,
+      "industry_equity_multiplier": 3.16
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roe": 0.6303,
+      "industry_roa": 0.1948,
+      "industry_equity_multiplier": 3.24
+    }
+  ],
+  "gross_margin": [
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_gross_profit": 180729000.0,
+      "total_ttm_revenue": 493612000.0,
+      "industry_gross_margin": 0.3661
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_gross_profit": 602569000.0,
+      "total_ttm_revenue": 1674690000.0,
+      "industry_gross_margin": 0.3598
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_gross_profit": 602569000.0,
+      "total_ttm_revenue": 1674690000.0,
+      "industry_gross_margin": 0.3598
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_gross_profit": 52943996218.38504,
+      "total_ttm_revenue": 99584623678.21082,
+      "industry_gross_margin": 0.5316
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_gross_profit": 52950607218.38504,
+      "total_ttm_revenue": 99595239678.21082,
+      "industry_gross_margin": 0.5317
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_gross_profit": 52950607218.38504,
+      "total_ttm_revenue": 99595239678.21082,
+      "industry_gross_margin": 0.5317
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_gross_profit": 104986454460.30798,
+      "total_ttm_revenue": 196376358736.89328,
+      "industry_gross_margin": 0.5346
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_gross_profit": 104994405460.30798,
+      "total_ttm_revenue": 196381591736.89328,
+      "industry_gross_margin": 0.5346
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_gross_profit": 104994405460.30798,
+      "total_ttm_revenue": 196381591736.89328,
+      "industry_gross_margin": 0.5346
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_gross_profit": 105023520474.97964,
+      "total_ttm_revenue": 196213455734.24713,
+      "industry_gross_margin": 0.5353
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_gross_profit": 105025013474.97964,
+      "total_ttm_revenue": 196204583734.24713,
+      "industry_gross_margin": 0.5353
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_gross_profit": 105025013474.97964,
+      "total_ttm_revenue": 196204583734.24713,
+      "industry_gross_margin": 0.5353
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_gross_profit": 106074061233.76636,
+      "total_ttm_revenue": 197749624699.4123,
+      "industry_gross_margin": 0.5364
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_gross_profit": 106075980233.76636,
+      "total_ttm_revenue": 197746609699.4123,
+      "industry_gross_margin": 0.5364
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_gross_profit": 106075980233.76636,
+      "total_ttm_revenue": 197746609699.4123,
+      "industry_gross_margin": 0.5364
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_gross_profit": 109507678593.27971,
+      "total_ttm_revenue": 206275964978.25302,
+      "industry_gross_margin": 0.5309
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_gross_profit": 109511805593.27971,
+      "total_ttm_revenue": 206292278978.25302,
+      "industry_gross_margin": 0.5309
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_gross_profit": 109511805593.27971,
+      "total_ttm_revenue": 206292278978.25302,
+      "industry_gross_margin": 0.5309
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_gross_profit": 162514145636.10898,
+      "total_ttm_revenue": 238501321463.12445,
+      "industry_gross_margin": 0.6814
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_gross_profit": 162517176636.10898,
+      "total_ttm_revenue": 238502363463.12445,
+      "industry_gross_margin": 0.6814
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_gross_profit": 162517176636.10898,
+      "total_ttm_revenue": 238502363463.12445,
+      "industry_gross_margin": 0.6814
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_gross_profit": 164289024108.4329,
+      "total_ttm_revenue": 242369791914.2846,
+      "industry_gross_margin": 0.6778
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_gross_profit": 164288858108.4329,
+      "total_ttm_revenue": 242366920914.2846,
+      "industry_gross_margin": 0.6779
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_gross_profit": 164288858108.4329,
+      "total_ttm_revenue": 242366920914.2846,
+      "industry_gross_margin": 0.6779
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_gross_profit": 166855501425.54,
+      "total_ttm_revenue": 246942375953.5649,
+      "industry_gross_margin": 0.6757
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_gross_profit": 167204012425.54,
+      "total_ttm_revenue": 246939911953.5649,
+      "industry_gross_margin": 0.6771
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_gross_profit": 167204012425.54,
+      "total_ttm_revenue": 246939911953.5649,
+      "industry_gross_margin": 0.6771
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_gross_profit": 217096832466.2681,
+      "total_ttm_revenue": 268735594596.80725,
+      "industry_gross_margin": 0.8078
+    }
+  ],
+  "ebitda_margin": [
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_ebitda": 58611000.0,
+      "total_ttm_revenue": 493612000.0,
+      "industry_ebitda_margin": 0.1187
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_ebitda": 295916000.0,
+      "total_ttm_revenue": 1674690000.0,
+      "industry_ebitda_margin": 0.1767
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_ebitda": 295916000.0,
+      "total_ttm_revenue": 1674690000.0,
+      "industry_ebitda_margin": 0.1767
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_ebitda": 26044351246.399612,
+      "total_ttm_revenue": 99584623678.21082,
+      "industry_ebitda_margin": 0.2615
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_ebitda": 26040644246.399612,
+      "total_ttm_revenue": 99595239678.21082,
+      "industry_ebitda_margin": 0.2615
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_ebitda": 26040644246.399612,
+      "total_ttm_revenue": 99595239678.21082,
+      "industry_ebitda_margin": 0.2615
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_ebitda": 43657195928.66182,
+      "total_ttm_revenue": 196376358736.89328,
+      "industry_ebitda_margin": 0.2223
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_ebitda": 43664043928.66182,
+      "total_ttm_revenue": 196381591736.89328,
+      "industry_ebitda_margin": 0.2223
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_ebitda": 43664043928.66182,
+      "total_ttm_revenue": 196381591736.89328,
+      "industry_ebitda_margin": 0.2223
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_ebitda": 43409114629.78233,
+      "total_ttm_revenue": 196213455734.24713,
+      "industry_ebitda_margin": 0.2212
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_ebitda": 43412837629.78233,
+      "total_ttm_revenue": 196204583734.24713,
+      "industry_ebitda_margin": 0.2213
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_ebitda": 43412837629.78233,
+      "total_ttm_revenue": 196204583734.24713,
+      "industry_ebitda_margin": 0.2213
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_ebitda": 43047310315.089584,
+      "total_ttm_revenue": 197749624699.4123,
+      "industry_ebitda_margin": 0.2177
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_ebitda": 43049342315.089584,
+      "total_ttm_revenue": 197746609699.4123,
+      "industry_ebitda_margin": 0.2177
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_ebitda": 43049342315.089584,
+      "total_ttm_revenue": 197746609699.4123,
+      "industry_ebitda_margin": 0.2177
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_ebitda": 45128576632.35271,
+      "total_ttm_revenue": 206275964978.25302,
+      "industry_ebitda_margin": 0.2188
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_ebitda": 45138635632.35271,
+      "total_ttm_revenue": 206292278978.25302,
+      "industry_ebitda_margin": 0.2188
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_ebitda": 45138635632.35271,
+      "total_ttm_revenue": 206292278978.25302,
+      "industry_ebitda_margin": 0.2188
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_ebitda": 74932961524.42204,
+      "total_ttm_revenue": 238501321463.12445,
+      "industry_ebitda_margin": 0.3142
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_ebitda": 74934234524.42204,
+      "total_ttm_revenue": 238502363463.12445,
+      "industry_ebitda_margin": 0.3142
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_ebitda": 74934234524.42204,
+      "total_ttm_revenue": 238502363463.12445,
+      "industry_ebitda_margin": 0.3142
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_ebitda": 75967014654.08807,
+      "total_ttm_revenue": 242369791914.2846,
+      "industry_ebitda_margin": 0.3134
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_ebitda": 75967639654.08807,
+      "total_ttm_revenue": 242366920914.2846,
+      "industry_ebitda_margin": 0.3134
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_ebitda": 75967639654.08807,
+      "total_ttm_revenue": 242366920914.2846,
+      "industry_ebitda_margin": 0.3134
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_ebitda": 78814530749.69173,
+      "total_ttm_revenue": 246942375953.5649,
+      "industry_ebitda_margin": 0.3192
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_ebitda": 79018721749.69173,
+      "total_ttm_revenue": 246939911953.5649,
+      "industry_ebitda_margin": 0.32
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_ebitda": 79018721749.69173,
+      "total_ttm_revenue": 246939911953.5649,
+      "industry_ebitda_margin": 0.32
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_ebitda": 109858267229.71155,
+      "total_ttm_revenue": 268735594596.80725,
+      "industry_ebitda_margin": 0.4088
+    }
+  ],
+  "net_margin": [
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 46629000.0,
+      "total_ttm_revenue": 493612000.0,
+      "industry_net_margin": 0.0945
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 215943000.0,
+      "total_ttm_revenue": 1674690000.0,
+      "industry_net_margin": 0.1289
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 215943000.0,
+      "total_ttm_revenue": 1674690000.0,
+      "industry_net_margin": 0.1289
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 16982621996.79633,
+      "total_ttm_revenue": 99584623678.21082,
+      "industry_net_margin": 0.1705
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 16990039996.79633,
+      "total_ttm_revenue": 99595239678.21082,
+      "industry_net_margin": 0.1706
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 16990039996.79633,
+      "total_ttm_revenue": 99595239678.21082,
+      "industry_net_margin": 0.1706
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 26579225608.668224,
+      "total_ttm_revenue": 196376358736.89328,
+      "industry_net_margin": 0.1353
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 26586374608.668224,
+      "total_ttm_revenue": 196381591736.89328,
+      "industry_net_margin": 0.1354
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 26586374608.668224,
+      "total_ttm_revenue": 196381591736.89328,
+      "industry_net_margin": 0.1354
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 26239750654.253098,
+      "total_ttm_revenue": 196213455734.24713,
+      "industry_net_margin": 0.1337
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 26241599654.253098,
+      "total_ttm_revenue": 196204583734.24713,
+      "industry_net_margin": 0.1337
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 26241599654.253098,
+      "total_ttm_revenue": 196204583734.24713,
+      "industry_net_margin": 0.1337
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 25711969421.277294,
+      "total_ttm_revenue": 197749624699.4123,
+      "industry_net_margin": 0.13
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 25712020421.277294,
+      "total_ttm_revenue": 197746609699.4123,
+      "industry_net_margin": 0.13
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 25712020421.277294,
+      "total_ttm_revenue": 197746609699.4123,
+      "industry_net_margin": 0.13
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 26093535498.692253,
+      "total_ttm_revenue": 206275964978.25302,
+      "industry_net_margin": 0.1265
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 26094575498.692253,
+      "total_ttm_revenue": 206292278978.25302,
+      "industry_net_margin": 0.1265
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 26094575498.692253,
+      "total_ttm_revenue": 206292278978.25302,
+      "industry_net_margin": 0.1265
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 45538236571.325516,
+      "total_ttm_revenue": 238501321463.12445,
+      "industry_net_margin": 0.1909
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 45537216571.325516,
+      "total_ttm_revenue": 238502363463.12445,
+      "industry_net_margin": 0.1909
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 45537216571.325516,
+      "total_ttm_revenue": 238502363463.12445,
+      "industry_net_margin": 0.1909
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 46283326827.83885,
+      "total_ttm_revenue": 242369791914.2846,
+      "industry_net_margin": 0.191
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 46284053827.83885,
+      "total_ttm_revenue": 242366920914.2846,
+      "industry_net_margin": 0.191
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 46284053827.83885,
+      "total_ttm_revenue": 242366920914.2846,
+      "industry_net_margin": 0.191
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 48411567493.55526,
+      "total_ttm_revenue": 246942375953.5649,
+      "industry_net_margin": 0.196
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 48560017493.55526,
+      "total_ttm_revenue": 246939911953.5649,
+      "industry_net_margin": 0.1966
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 48560017493.55526,
+      "total_ttm_revenue": 246939911953.5649,
+      "industry_net_margin": 0.1966
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "total_ttm_net_income": 70179417228.89319,
+      "total_ttm_revenue": 268735594596.80725,
+      "industry_net_margin": 0.2611
+    }
+  ],
+  "asset_turnover": [
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roa": 0.0886,
+      "industry_net_margin": 0.1705,
+      "industry_asset_turnover": 0.52
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roa": 0.0892,
+      "industry_net_margin": 0.1706,
+      "industry_asset_turnover": 0.52
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roa": 0.0892,
+      "industry_net_margin": 0.1706,
+      "industry_asset_turnover": 0.52
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roa": 0.0913,
+      "industry_net_margin": 0.1353,
+      "industry_asset_turnover": 0.67
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roa": 0.0913,
+      "industry_net_margin": 0.1354,
+      "industry_asset_turnover": 0.67
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roa": 0.0913,
+      "industry_net_margin": 0.1354,
+      "industry_asset_turnover": 0.67
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roa": 0.089,
+      "industry_net_margin": 0.1337,
+      "industry_asset_turnover": 0.67
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roa": 0.089,
+      "industry_net_margin": 0.1337,
+      "industry_asset_turnover": 0.67
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roa": 0.089,
+      "industry_net_margin": 0.1337,
+      "industry_asset_turnover": 0.67
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roa": 0.0886,
+      "industry_net_margin": 0.13,
+      "industry_asset_turnover": 0.68
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roa": 0.0886,
+      "industry_net_margin": 0.13,
+      "industry_asset_turnover": 0.68
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roa": 0.0886,
+      "industry_net_margin": 0.13,
+      "industry_asset_turnover": 0.68
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roa": 0.0839,
+      "industry_net_margin": 0.1265,
+      "industry_asset_turnover": 0.66
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roa": 0.0839,
+      "industry_net_margin": 0.1265,
+      "industry_asset_turnover": 0.66
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roa": 0.0839,
+      "industry_net_margin": 0.1265,
+      "industry_asset_turnover": 0.66
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roa": 0.135,
+      "industry_net_margin": 0.1909,
+      "industry_asset_turnover": 0.71
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roa": 0.135,
+      "industry_net_margin": 0.1909,
+      "industry_asset_turnover": 0.71
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roa": 0.135,
+      "industry_net_margin": 0.1909,
+      "industry_asset_turnover": 0.71
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roa": 0.1357,
+      "industry_net_margin": 0.191,
+      "industry_asset_turnover": 0.71
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roa": 0.1357,
+      "industry_net_margin": 0.191,
+      "industry_asset_turnover": 0.71
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roa": 0.1357,
+      "industry_net_margin": 0.191,
+      "industry_asset_turnover": 0.71
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roa": 0.1407,
+      "industry_net_margin": 0.196,
+      "industry_asset_turnover": 0.72
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roa": 0.1411,
+      "industry_net_margin": 0.1966,
+      "industry_asset_turnover": 0.72
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roa": 0.1411,
+      "industry_net_margin": 0.1966,
+      "industry_asset_turnover": 0.72
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Beverages-Non-Alcoholic",
+      "industry_roa": 0.1948,
+      "industry_net_margin": 0.2611,
+      "industry_asset_turnover": 0.75
+    }
+  ]
+}

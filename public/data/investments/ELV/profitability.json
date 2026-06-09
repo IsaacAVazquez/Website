@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "ELV",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1289000000.0,
+      "beginning_stockholders_equity": 38205000000.0,
+      "ending_stockholders_equity": 38423000000.0,
+      "avg_equity": 38314000000.0,
+      "roe": 0.0336
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 856000000.0,
+      "beginning_stockholders_equity": 38423000000.0,
+      "ending_stockholders_equity": 39306000000.0,
+      "avg_equity": 38864500000.0,
+      "roe": 0.022
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 2246000000.0,
+      "beginning_stockholders_equity": 39306000000.0,
+      "ending_stockholders_equity": 40608000000.0,
+      "avg_equity": 39957000000.0,
+      "roe": 0.0562
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 2300000000.0,
+      "beginning_stockholders_equity": 40608000000.0,
+      "ending_stockholders_equity": 42191000000.0,
+      "avg_equity": 41399500000.0,
+      "roe": 0.0556
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1016000000.0,
+      "beginning_stockholders_equity": 42191000000.0,
+      "ending_stockholders_equity": 43775000000.0,
+      "avg_equity": 42983000000.0,
+      "roe": 0.0236
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 418000000.0,
+      "beginning_stockholders_equity": 43775000000.0,
+      "ending_stockholders_equity": 41315000000.0,
+      "avg_equity": 42545000000.0,
+      "roe": 0.0098
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 2183000000.0,
+      "beginning_stockholders_equity": 41315000000.0,
+      "ending_stockholders_equity": 42503000000.0,
+      "avg_equity": 41909000000.0,
+      "roe": 0.0521
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 5360000000.0,
+      "beginning_stockholders_equity": 42503000000.0,
+      "ending_stockholders_equity": 43722000000.0,
+      "avg_equity": 43112500000.0,
+      "roe": 0.1243
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1189000000.0,
+      "beginning_stockholders_equity": 43722000000.0,
+      "ending_stockholders_equity": 43953000000.0,
+      "avg_equity": 43837500000.0,
+      "roe": 0.0271
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 547000000.0,
+      "beginning_stockholders_equity": 43953000000.0,
+      "ending_stockholders_equity": 43882000000.0,
+      "avg_equity": 43917500000.0,
+      "roe": 0.0125
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 5243000000.0,
+      "beginning_stockholders_equity": 43882000000.0,
+      "ending_stockholders_equity": 43902000000.0,
+      "avg_equity": 43892000000.0,
+      "roe": 0.1195
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "ELV",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1289000000.0,
+      "beginning_total_assets": 109168000000.0,
+      "ending_total_assets": 110478000000.0,
+      "avg_assets": 109823000000.0,
+      "roa": 0.0117
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 856000000.0,
+      "beginning_total_assets": 110478000000.0,
+      "ending_total_assets": 108928000000.0,
+      "avg_assets": 109703000000.0,
+      "roa": 0.0078
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 2246000000.0,
+      "beginning_total_assets": 108928000000.0,
+      "ending_total_assets": 111894000000.0,
+      "avg_assets": 110411000000.0,
+      "roa": 0.0203
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 2300000000.0,
+      "beginning_total_assets": 111894000000.0,
+      "ending_total_assets": 112988000000.0,
+      "avg_assets": 112441000000.0,
+      "roa": 0.0205
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1016000000.0,
+      "beginning_total_assets": 112988000000.0,
+      "ending_total_assets": 116533000000.0,
+      "avg_assets": 114760500000.0,
+      "roa": 0.0089
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 418000000.0,
+      "beginning_total_assets": 116533000000.0,
+      "ending_total_assets": 116889000000.0,
+      "avg_assets": 116711000000.0,
+      "roa": 0.0036
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 2183000000.0,
+      "beginning_total_assets": 116889000000.0,
+      "ending_total_assets": 119717000000.0,
+      "avg_assets": 118303000000.0,
+      "roa": 0.0185
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 5360000000.0,
+      "beginning_total_assets": 119717000000.0,
+      "ending_total_assets": 121938000000.0,
+      "avg_assets": 120827500000.0,
+      "roa": 0.0444
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1189000000.0,
+      "beginning_total_assets": 121938000000.0,
+      "ending_total_assets": 122749000000.0,
+      "avg_assets": 122343500000.0,
+      "roa": 0.0097
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 547000000.0,
+      "beginning_total_assets": 122749000000.0,
+      "ending_total_assets": 121494000000.0,
+      "avg_assets": 122121500000.0,
+      "roa": 0.0045
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 5243000000.0,
+      "beginning_total_assets": 121494000000.0,
+      "ending_total_assets": 125827000000.0,
+      "avg_assets": 123660500000.0,
+      "roa": 0.0424
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "ELV",
+      "report_date": "2023-09-30",
+      "ebit": 1913000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 1511270000.0,
+      "beginning_invested_capital": 63329000000.0,
+      "ending_invested_capital": 63267000000.0,
+      "avg_invested_capital": 63298000000.0,
+      "roic": 0.0239
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2023-12-31",
+      "ebit": 1260000000.0,
+      "tax_rate_for_calcs": 0.17,
+      "nopat": 1045800000.0,
+      "beginning_invested_capital": 63267000000.0,
+      "ending_invested_capital": 64426000000.0,
+      "avg_invested_capital": 63846500000.0,
+      "roic": 0.0164
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-03-31",
+      "ebit": 3204000000.0,
+      "tax_rate_for_calcs": 0.24,
+      "nopat": 2435040000.0,
+      "beginning_invested_capital": 64426000000.0,
+      "ending_invested_capital": 67059000000.0,
+      "avg_invested_capital": 65742500000.0,
+      "roic": 0.037
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-06-30",
+      "ebit": 3266000000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 2514820000.0,
+      "beginning_invested_capital": 67059000000.0,
+      "ending_invested_capital": 69877000000.0,
+      "avg_invested_capital": 68468000000.0,
+      "roic": 0.0367
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-09-30",
+      "ebit": 1673000000.0,
+      "tax_rate_for_calcs": 0.27,
+      "nopat": 1221290000.0,
+      "beginning_invested_capital": 69877000000.0,
+      "ending_invested_capital": 70923000000.0,
+      "avg_invested_capital": 70400000000.0,
+      "roic": 0.0173
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-12-31",
+      "ebit": 946000000.0,
+      "tax_rate_for_calcs": 0.32,
+      "nopat": 643280000.0,
+      "beginning_invested_capital": 70923000000.0,
+      "ending_invested_capital": 72547000000.0,
+      "avg_invested_capital": 71735000000.0,
+      "roic": 0.009
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-03-31",
+      "ebit": 3141000000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 2449980000.0,
+      "beginning_invested_capital": 72547000000.0,
+      "ending_invested_capital": 72506000000.0,
+      "avg_invested_capital": 72526500000.0,
+      "roic": 0.0338
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-06-30",
+      "ebit": 2633000000.0,
+      "tax_rate_for_calcs": 0.24,
+      "nopat": 2001080000.0,
+      "beginning_invested_capital": 72506000000.0,
+      "ending_invested_capital": 73908000000.0,
+      "avg_invested_capital": 73207000000.0,
+      "roic": 0.0273
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-09-30",
+      "ebit": 1757000000.0,
+      "tax_rate_for_calcs": 0.16,
+      "nopat": 1475880000.0,
+      "beginning_invested_capital": 73908000000.0,
+      "ending_invested_capital": 76055000000.0,
+      "avg_invested_capital": 74981500000.0,
+      "roic": 0.0197
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-12-31",
+      "ebit": 581000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 458990000.0,
+      "beginning_invested_capital": 76055000000.0,
+      "ending_invested_capital": 75928000000.0,
+      "avg_invested_capital": 75991500000.0,
+      "roic": 0.006
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2026-03-31",
+      "ebit": 2661000000.0,
+      "tax_rate_for_calcs": 0.16,
+      "nopat": 2235240000.0,
+      "beginning_invested_capital": 75928000000.0,
+      "ending_invested_capital": 75744000000.0,
+      "avg_invested_capital": 75836000000.0,
+      "roic": 0.0295
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "ELV",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.0336,
+      "roa": 0.0117,
+      "equity_multiplier": 2.87
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.022,
+      "roa": 0.0078,
+      "equity_multiplier": 2.82
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.0562,
+      "roa": 0.0203,
+      "equity_multiplier": 2.77
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.0556,
+      "roa": 0.0205,
+      "equity_multiplier": 2.71
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.0236,
+      "roa": 0.0089,
+      "equity_multiplier": 2.65
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.0098,
+      "roa": 0.0036,
+      "equity_multiplier": 2.72
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.0521,
+      "roa": 0.0185,
+      "equity_multiplier": 2.82
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.1243,
+      "roa": 0.0444,
+      "equity_multiplier": 2.8
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.0271,
+      "roa": 0.0097,
+      "equity_multiplier": 2.79
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.0125,
+      "roa": 0.0045,
+      "equity_multiplier": 2.78
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.1195,
+      "roa": 0.0424,
+      "equity_multiplier": 2.82
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "ELV",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0117,
+      "net_margin": 0.0301,
+      "asset_turnover": 0.39
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0078,
+      "net_margin": 0.0201,
+      "asset_turnover": 0.39
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0203,
+      "net_margin": 0.0528,
+      "asset_turnover": 0.38
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0205,
+      "net_margin": 0.0527,
+      "asset_turnover": 0.39
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0089,
+      "net_margin": 0.0225,
+      "asset_turnover": 0.4
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0036,
+      "net_margin": 0.0092,
+      "asset_turnover": 0.39
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0185,
+      "net_margin": 0.0447,
+      "asset_turnover": 0.41
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0444,
+      "net_margin": 0.1077,
+      "asset_turnover": 0.41
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0097,
+      "net_margin": 0.0234,
+      "asset_turnover": 0.41
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0045,
+      "net_margin": 0.011,
+      "asset_turnover": 0.41
+    },
+    {
+      "symbol": "ELV",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0424,
+      "net_margin": 0.1045,
+      "asset_turnover": 0.41
+    }
+  ]
+}

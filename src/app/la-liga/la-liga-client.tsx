@@ -17,6 +17,14 @@ import {
   FixtureCard,
   LeaderList,
 } from "@/components/football";
+import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
+import {
+  Article,
+  Briefcase,
+  Calendar,
+  ChartBar,
+  User,
+} from "@/components/ui/ServerIcons";
 import type {
   LaLigaClub,
   LaLigaLeader,
@@ -191,6 +199,7 @@ export function LaLigaClient({
 
   useEffect(() => {
     if (teamSnapshots[selectedClub.id]) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- Reset loading/error flags when cached snapshot exists for the selected club
       setLoadingClubId(null);
       setTeamSnapshotError(null);
       return;
@@ -264,6 +273,67 @@ export function LaLigaClient({
   const upcomingFixtures = (teamSnapshot?.upcomingFixtures ?? []).slice(0, 3);
   const [activeDetailTab, setActiveDetailTab] = useState<"club" | "fixtures" | "scorers">("club");
 
+  // Stats panel cells
+  const topScorerEntry = summary.scorers[0] ?? null;
+  const topScorerClub = topScorerEntry ? clubLookup.get(topScorerEntry.clubId) ?? topScorerEntry.clubCode : null;
+  const goalsForLeader = useMemo(
+    () => [...clubs].sort((a, b) => b.goalsFor - a.goalsFor || a.position - b.position)[0] ?? null,
+    [clubs]
+  );
+  const bestDefense = useMemo(
+    () => [...clubs].sort((a, b) => a.goalsAgainst - b.goalsAgainst || a.position - b.position)[0] ?? null,
+    [clubs]
+  );
+  const totalMatchdays = 38;
+
+  const statsPanelCells: HomeStatsCell[] = [
+    {
+      label: "Title leader",
+      tooltip: "Club currently top of the table and their points total.",
+      value: leader ? `${leader.shortName} · ${leader.points} pts` : "—",
+      sub: leader && runnerUp ? `${leader.points - runnerUp.points} clear of ${runnerUp.shortName}` : undefined,
+    },
+    {
+      label: "Top-four gap",
+      tooltip: "Points buffer the fourth-placed club holds over the fifth-placed club.",
+      value: fourthPlace && fifthPlace ? `+${fourthPlace.points - fifthPlace.points} pts` : "—",
+      sub: "Champions League line",
+    },
+    {
+      label: "Europe line gap",
+      tooltip: "Points cushion the sixth-placed club holds over the seventh-placed club.",
+      value: sixthPlace && seventhPlace ? `+${sixthPlace.points - seventhPlace.points} pts` : "—",
+      sub: "Europa / Conference",
+    },
+    {
+      label: "Relegation gap",
+      tooltip: "Points the seventeenth-placed club holds over the eighteenth-placed club.",
+      value: safetyLine && dropLine ? `+${safetyLine.points - dropLine.points} pt` : "—",
+      sub: "Safety margin",
+    },
+    {
+      label: "Top scorer",
+      tooltip: "Leading goalscorer in La Liga this season.",
+      value: topScorerEntry ? `${topScorerEntry.name} · ${topScorerEntry.total}` : "—",
+      sub: topScorerClub ?? undefined,
+    },
+    {
+      label: "Most goals scored",
+      tooltip: "Club with the highest goals-for total this season.",
+      value: goalsForLeader ? `${goalsForLeader.shortName} · ${goalsForLeader.goalsFor}` : "—",
+    },
+    {
+      label: "Best defense",
+      tooltip: "Club with the fewest goals conceded this season.",
+      value: bestDefense ? `${bestDefense.shortName} · ${bestDefense.goalsAgainst}` : "—",
+    },
+    {
+      label: "Matchday",
+      tooltip: "Current matchday position within the 38-game season.",
+      value: summary.matchday ? `${summary.matchday} of ${totalMatchdays}` : `— of ${totalMatchdays}`,
+    },
+  ];
+
   return (
     <div className="home-page min-h-screen">
       <div className="home-shell home-section space-y-5 sm:space-y-6">
@@ -278,7 +348,7 @@ export function LaLigaClient({
               La Liga&apos;s title race compressed into one view. Top-four gaps, European qualification pressure, and relegation context, updated weekly.
             </p>
           </div>
-          <div className="flex flex-wrap gap-1.5 text-[11px] text-[var(--home-ink-muted)]">
+          <div className="flex flex-wrap gap-1.5 text-2xs text-[var(--home-ink-muted)]">
             {[
               `Season ${summary.season}`,
               `Matchday ${summary.matchday}`,
@@ -290,6 +360,22 @@ export function LaLigaClient({
             ))}
           </div>
         </div>
+
+        {/* Dense stats panel */}
+        <HomeStatsPanel
+          id="laliga-stats-panel"
+          title="La Liga at a glance"
+          meta={`Live · refreshed ${snapshotDateLabel}`}
+          cells={statsPanelCells}
+          pills={[
+            { label: "Standings", href: "#laliga-standings", icon: ChartBar },
+            { label: "Top scorers", href: "?view=table", icon: User },
+            { label: "Recent fixtures", href: "?view=table", icon: Calendar },
+            { label: "Upcoming fixtures", href: "?view=table", icon: Calendar },
+            { label: "Club detail", href: "?view=table", icon: Briefcase },
+            { label: "Article", href: "/writing", icon: Article },
+          ]}
+        />
 
         {/* Key gaps */}
         <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
@@ -324,7 +410,7 @@ export function LaLigaClient({
         </div>
 
         {/* Main standings + sidebar */}
-        <div className="grid gap-5 md:grid-cols-[minmax(0,1fr)_280px] lg:grid-cols-[minmax(0,1fr)_320px]">
+        <div id="laliga-standings" className="grid gap-5 md:grid-cols-[minmax(0,1fr)_280px] lg:grid-cols-[minmax(0,1fr)_320px]">
           <section className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,white)] p-5 sm:p-6 shadow-[var(--shadow-sm)]">
             <div className="flex items-center justify-between border-b border-[var(--home-rule)] pb-4">
               <h2 className="text-lg font-bold text-[var(--home-ink)]">Standings</h2>
@@ -447,21 +533,21 @@ export function LaLigaClient({
                   </h2>
                   <div className="mt-1.5 flex flex-wrap gap-1.5">
                     <span
-                      className="inline-flex items-center rounded-full border px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em]"
+                      className="inline-flex items-center rounded-full border px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em]"
                       style={getZonePillStyle(selectedZone)}
                     >
                       {getZoneLabel(selectedZone)}
                     </span>
-                    <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                    <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
                       {selectedClub.points} pts
                     </span>
-                    <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                    <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
                       {38 - selectedClub.played} left
                     </span>
                   </div>
                 </div>
                 <div className="flex-shrink-0 rounded-xl bg-[var(--home-haze)] px-3 py-2 text-center text-[var(--home-paper)] shadow-sm">
-                  <p className="text-[10px] uppercase tracking-[0.14em] opacity-80">Pos</p>
+                  <p className="text-3xs uppercase tracking-[0.14em] opacity-80">Pos</p>
                   <p className="text-xl font-bold">{selectedClub.position}</p>
                 </div>
               </div>
@@ -476,7 +562,7 @@ export function LaLigaClient({
                   ["GA/m", formatFixed(selectedClub.goalsAgainst / selectedClub.played)],
                 ] as const).map(([label, value]) => (
                   <div key={label} className="flex items-baseline justify-between gap-2">
-                    <dt className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">{label}</dt>
+                    <dt className="text-2xs font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">{label}</dt>
                     <dd className="text-sm font-bold text-[var(--home-ink)]">{value}</dd>
                   </div>
                 ))}
@@ -484,7 +570,7 @@ export function LaLigaClient({
 
               {formSequence.length > 0 && (
                 <div className="mt-4 border-t border-[var(--home-rule)] pt-4">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">Form</p>
+                  <p className="text-2xs font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">Form</p>
                   <div className="mt-2 flex gap-1.5">
                     {formSequence.slice(-5).map((result, i) => (
                       <TeamResultPill key={i} result={result} />

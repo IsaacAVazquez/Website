@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "TMO",
+    "name": "Dr. Karen E. Nelson Ph.D.",
+    "title": "Chief Scientific Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "TMO",
+    "name": "Mr. Alan J. Malus",
+    "title": "Senior Vice President of Strategy & Corporate Development",
+    "age": 65,
+    "born": 1960,
+    "pay": 1773415,
+    "exercised": 18061844,
+    "unexercised": 8719081,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "TMO",
+    "name": "Mr. Gianluca  Pettiti",
+    "title": "President, COO & President of Products and Technologies",
+    "age": 46,
+    "born": 1979,
+    "pay": 2423267,
+    "exercised": 879812,
+    "unexercised": 7666719,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "TMO",
+    "name": "Mr. James R. Meyer",
+    "title": "Senior VP & CFO",
+    "age": 45,
+    "born": 1980,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "TMO",
+    "name": "Mr. Joseph R. Holmes",
+    "title": "VP & Chief Accounting Officer",
+    "age": 45,
+    "born": 1980,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "TMO",
+    "name": "Mr. Marc N. Casper",
+    "title": "Chairman & CEO",
+    "age": 57,
+    "born": 1968,
+    "pay": 6241762,
+    "exercised": 18755732,
+    "unexercised": 30512976,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "TMO",
+    "name": "Mr. Rafael  Tejada",
+    "title": "Vice President of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "TMO",
+    "name": "Mr. Ryan J. Snyder",
+    "title": "Senior VP & Chief Information Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "TMO",
+    "name": "Mr. Thomas Bailey Shropshire Jr.",
+    "title": "Senior VP and General Counsel",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "TMO",
+    "name": "Ms. Sandy B. Pound",
+    "title": "VP & Chief Communications Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  }
+]

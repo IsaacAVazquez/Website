@@ -5,7 +5,9 @@
 import { MBA_ROLE_FAMILIES, MBA_ROLE_FAMILY_LABELS } from "@/constants/mba-role-taxonomy";
 import type {
   MBACategoryFilter,
+  MBAExternalLeadsState,
   MBAJobsSearchState,
+  MBAJobsView,
   MBARoleFamilyFilter,
   MBARoleTypeFilter,
   MBASortOrder,
@@ -13,10 +15,22 @@ import type {
 
 export const MBA_JOBS_ROUTE = "/mba-internship-notifications";
 
+export const VIEW_OPTIONS = ["feed", "applications"] as const;
+export const EXTERNAL_OPTIONS = ["off", "on"] as const;
 export const SORT_OPTIONS = ["relevance", "newest", "oldest"] as const;
 export const CATEGORY_OPTIONS = ["all", "big-tech", "fintech", "startup"] as const;
 export const ROLE_TYPE_OPTIONS = ["all", "internship", "full-time"] as const;
 export const ROLE_FAMILY_OPTIONS = ["all", ...MBA_ROLE_FAMILIES] as const;
+
+export const VIEW_LABELS: Record<MBAJobsView, string> = {
+  feed: "Role feed",
+  applications: "Application pipeline",
+};
+
+export const EXTERNAL_LABELS: Record<MBAExternalLeadsState, string> = {
+  off: "Direct feeds",
+  on: "Direct + external leads",
+};
 
 export const SORT_LABELS: Record<MBASortOrder, string> = {
   relevance: "Best match",
@@ -42,6 +56,8 @@ export const ROLE_FAMILY_LABELS: Record<MBARoleFamilyFilter, string> =
   MBA_ROLE_FAMILY_LABELS;
 
 export const DEFAULT_MBA_JOBS_STATE: MBAJobsSearchState = {
+  view: "feed",
+  external: "off",
   q: "",
   location: "",
   sort: "relevance",
@@ -70,6 +86,8 @@ function isValidOption<T extends string>(
 }
 
 export function normalizeMBAJobsState(input: SearchParamInput): MBAJobsSearchState {
+  const rawView = readParam(input, "view");
+  const rawExternal = readParam(input, "external");
   const rawQuery = readParam(input, "q");
   const rawLocation = readParam(input, "location");
   const rawSort = readParam(input, "sort");
@@ -77,6 +95,12 @@ export function normalizeMBAJobsState(input: SearchParamInput): MBAJobsSearchSta
   const rawRoleType = readParam(input, "roleType");
   const rawRoleFamily = readParam(input, "roleFamily");
   return {
+    view: isValidOption(rawView, VIEW_OPTIONS)
+      ? rawView
+      : DEFAULT_MBA_JOBS_STATE.view,
+    external: isValidOption(rawExternal, EXTERNAL_OPTIONS)
+      ? rawExternal
+      : DEFAULT_MBA_JOBS_STATE.external,
     q: rawQuery?.trim() ?? DEFAULT_MBA_JOBS_STATE.q,
     location: rawLocation?.trim() ?? DEFAULT_MBA_JOBS_STATE.location,
     sort: isValidOption(rawSort, SORT_OPTIONS)
@@ -98,6 +122,9 @@ export function buildMBAJobsHref(state: MBAJobsSearchState): string {
   const params = new URLSearchParams();
   const query = state.q.trim();
   const location = state.location.trim();
+  if (state.view !== DEFAULT_MBA_JOBS_STATE.view) params.set("view", state.view);
+  if (state.external !== DEFAULT_MBA_JOBS_STATE.external)
+    params.set("external", state.external);
   if (query) params.set("q", query);
   if (location) params.set("location", location);
   if (state.sort !== DEFAULT_MBA_JOBS_STATE.sort) params.set("sort", state.sort);

@@ -1,0 +1,1480 @@
+{
+  "quarterly_revenue": [
+    {
+      "symbol": "TSM",
+      "report_date": "2022-06-30T00:00:00.000",
+      "revenue": 534140808000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2022-09-30T00:00:00.000",
+      "revenue": 613142743000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-06-30T00:00:00.000",
+      "revenue": 480841000000.0,
+      "prev_year_revenue": 534140808000.0,
+      "yoy_growth": -0.0998
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-09-30T00:00:00.000",
+      "revenue": 546733000000.0,
+      "prev_year_revenue": 613142743000.0,
+      "yoy_growth": -0.1083
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 625529000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-03-31T00:00:00.000",
+      "revenue": 592644201000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-06-30T00:00:00.000",
+      "revenue": 673510177000.0,
+      "prev_year_revenue": 480841000000.0,
+      "yoy_growth": 0.4007
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-09-30T00:00:00.000",
+      "revenue": 759692143000.0,
+      "prev_year_revenue": 546733000000.0,
+      "yoy_growth": 0.3895
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 868461179000.0,
+      "prev_year_revenue": 625529000000.0,
+      "yoy_growth": 0.3884
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-03-31T00:00:00.000",
+      "revenue": 839253664000.0,
+      "prev_year_revenue": 592644201000.0,
+      "yoy_growth": 0.4161
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-06-30T00:00:00.000",
+      "revenue": 933791869000.0,
+      "prev_year_revenue": 673510177000.0,
+      "yoy_growth": 0.3865
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-09-30T00:00:00.000",
+      "revenue": 989918318000.0,
+      "prev_year_revenue": 759692143000.0,
+      "yoy_growth": 0.3031
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 1046090449000.0,
+      "prev_year_revenue": 868461179000.0,
+      "yoy_growth": 0.2045
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2026-03-31T00:00:00.000",
+      "revenue": 1134103440000.0,
+      "prev_year_revenue": 839253664000.0,
+      "yoy_growth": 0.3513
+    }
+  ],
+  "annual_revenue": [
+    {
+      "symbol": "TSM",
+      "report_date": "2020-12-31T00:00:00.000",
+      "revenue": 1339254800000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2021-12-31T00:00:00.000",
+      "revenue": 1587415000000.0,
+      "prev_year_revenue": 1339254800000.0,
+      "yoy_growth": 0.1853
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2022-12-31T00:00:00.000",
+      "revenue": 2263891300000.0,
+      "prev_year_revenue": 1587415000000.0,
+      "yoy_growth": 0.4261
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 2161735800000.0,
+      "prev_year_revenue": 2263891300000.0,
+      "yoy_growth": -0.0451
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 2894307700000.0,
+      "prev_year_revenue": 2161735800000.0,
+      "yoy_growth": 0.3389
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 3809054300000.0,
+      "prev_year_revenue": 2894307700000.0,
+      "yoy_growth": 0.3161
+    }
+  ],
+  "quarterly_operating_income": [
+    {
+      "symbol": "TSM",
+      "report_date": "2022-06-30T00:00:00.000",
+      "operating_income": 262123749000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2022-09-30T00:00:00.000",
+      "operating_income": 310324214000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-06-30T00:00:00.000",
+      "operating_income": 201958000000.0,
+      "prev_year_operating_income": 262123749000.0,
+      "yoy_growth": -0.2295
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-09-30T00:00:00.000",
+      "operating_income": 228065000000.0,
+      "prev_year_operating_income": 310324214000.0,
+      "yoy_growth": -0.2651
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 260205000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-03-31T00:00:00.000",
+      "operating_income": 249011733000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-06-30T00:00:00.000",
+      "operating_income": 286556000000.0,
+      "prev_year_operating_income": 201958000000.0,
+      "yoy_growth": 0.4189
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-09-30T00:00:00.000",
+      "operating_income": 360766289000.0,
+      "prev_year_operating_income": 228065000000.0,
+      "yoy_growth": 0.5819
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 425698231000.0,
+      "prev_year_operating_income": 260205000000.0,
+      "yoy_growth": 0.636
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-03-31T00:00:00.000",
+      "operating_income": 407089168000.0,
+      "prev_year_operating_income": 249011733000.0,
+      "yoy_growth": 0.6348
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-06-30T00:00:00.000",
+      "operating_income": 463440498000.0,
+      "prev_year_operating_income": 286556000000.0,
+      "yoy_growth": 0.6173
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-09-30T00:00:00.000",
+      "operating_income": 500685080000.0,
+      "prev_year_operating_income": 360766289000.0,
+      "yoy_growth": 0.3878
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 564880854000.0,
+      "prev_year_operating_income": 425698231000.0,
+      "yoy_growth": 0.327
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2026-03-31T00:00:00.000",
+      "operating_income": 658948859000.0,
+      "prev_year_operating_income": 407089168000.0,
+      "yoy_growth": 0.6187
+    }
+  ],
+  "annual_operating_income": [
+    {
+      "symbol": "TSM",
+      "report_date": "2020-12-31T00:00:00.000",
+      "operating_income": 566784600000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2021-12-31T00:00:00.000",
+      "operating_income": 649983600000.0,
+      "prev_year_operating_income": 566784600000.0,
+      "yoy_growth": 0.1468
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2022-12-31T00:00:00.000",
+      "operating_income": 1121226500000.0,
+      "prev_year_operating_income": 649983600000.0,
+      "yoy_growth": 0.725
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 921429900000.0,
+      "prev_year_operating_income": 1121226500000.0,
+      "yoy_growth": -0.1782
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 1322003100000.0,
+      "prev_year_operating_income": 921429900000.0,
+      "yoy_growth": 0.4347
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 1936095600000.0,
+      "prev_year_operating_income": 1322003100000.0,
+      "yoy_growth": 0.4645
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "TSM",
+      "report_date": "2022-09-30T00:00:00.000",
+      "ebitda": 425406551000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-06-30T00:00:00.000",
+      "ebitda": 325897688000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-09-30T00:00:00.000",
+      "ebitda": 375345162000.0,
+      "prev_year_ebitda": 425406551000.0,
+      "yoy_growth": -0.1177
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 410853000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-03-31T00:00:00.000",
+      "ebitda": 428264621000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-06-30T00:00:00.000",
+      "ebitda": 474115309000.0,
+      "prev_year_ebitda": 325897688000.0,
+      "yoy_growth": 0.4548
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-09-30T00:00:00.000",
+      "ebitda": 386822642000.0,
+      "prev_year_ebitda": 375345162000.0,
+      "yoy_growth": 0.0306
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 621700871000.0,
+      "prev_year_ebitda": 410853000000.0,
+      "yoy_growth": 0.5132
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-03-31T00:00:00.000",
+      "ebitda": 608711765000.0,
+      "prev_year_ebitda": 428264621000.0,
+      "yoy_growth": 0.4213
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-06-30T00:00:00.000",
+      "ebitda": 684784211000.0,
+      "prev_year_ebitda": 474115309000.0,
+      "yoy_growth": 0.4443
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-09-30T00:00:00.000",
+      "ebitda": 691114862000.0,
+      "prev_year_ebitda": 386822642000.0,
+      "yoy_growth": 0.7866
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 757510662000.0,
+      "prev_year_ebitda": 621700871000.0,
+      "yoy_growth": 0.2184
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2026-03-31T00:00:00.000",
+      "ebitda": 855966986000.0,
+      "prev_year_ebitda": 608711765000.0,
+      "yoy_growth": 0.4062
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "TSM",
+      "report_date": "2020-12-31T00:00:00.000",
+      "ebitda": 918552400000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2021-12-31T00:00:00.000",
+      "ebitda": 1090845100000.0,
+      "prev_year_ebitda": 918552400000.0,
+      "yoy_growth": 0.1876
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2022-12-31T00:00:00.000",
+      "ebitda": 1593076500000.0,
+      "prev_year_ebitda": 1090845100000.0,
+      "yoy_growth": 0.4604
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 1523506800000.0,
+      "prev_year_ebitda": 1593076500000.0,
+      "yoy_growth": -0.0437
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 2079132000000.0,
+      "prev_year_ebitda": 1523506800000.0,
+      "yoy_growth": 0.3647
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 2742121500000.0,
+      "prev_year_ebitda": 2079132000000.0,
+      "yoy_growth": 0.3189
+    }
+  ],
+  "quarterly_net_income": [
+    {
+      "symbol": "TSM",
+      "report_date": "2022-06-30T00:00:00.000",
+      "net_income_common_stockholders": 237027317000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2022-09-30T00:00:00.000",
+      "net_income_common_stockholders": 280865780000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-06-30T00:00:00.000",
+      "net_income_common_stockholders": 181799000000.0,
+      "prev_year_net_income_common_stockholders": 237027317000.0,
+      "yoy_growth": -0.233
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-09-30T00:00:00.000",
+      "net_income_common_stockholders": 211000000000.0,
+      "prev_year_net_income_common_stockholders": 280865780000.0,
+      "yoy_growth": -0.2488
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 238712000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-03-31T00:00:00.000",
+      "net_income_common_stockholders": 225484877000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-06-30T00:00:00.000",
+      "net_income_common_stockholders": 247845528000.0,
+      "prev_year_net_income_common_stockholders": 181799000000.0,
+      "yoy_growth": 0.3633
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-09-30T00:00:00.000",
+      "net_income_common_stockholders": 325257571000.0,
+      "prev_year_net_income_common_stockholders": 211000000000.0,
+      "yoy_growth": 0.5415
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 359792224000.0,
+      "prev_year_net_income_common_stockholders": 238712000000.0,
+      "yoy_growth": 0.5072
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-03-31T00:00:00.000",
+      "net_income_common_stockholders": 361564128000.0,
+      "prev_year_net_income_common_stockholders": 225484877000.0,
+      "yoy_growth": 0.6035
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-06-30T00:00:00.000",
+      "net_income_common_stockholders": 398273102000.0,
+      "prev_year_net_income_common_stockholders": 247845528000.0,
+      "yoy_growth": 0.6069
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-09-30T00:00:00.000",
+      "net_income_common_stockholders": 452301407000.0,
+      "prev_year_net_income_common_stockholders": 325257571000.0,
+      "yoy_growth": 0.3906
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 485465363000.0,
+      "prev_year_net_income_common_stockholders": 359792224000.0,
+      "yoy_growth": 0.3493
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2026-03-31T00:00:00.000",
+      "net_income_common_stockholders": 572479752000.0,
+      "prev_year_net_income_common_stockholders": 361564128000.0,
+      "yoy_growth": 0.5833
+    }
+  ],
+  "annual_net_income": [
+    {
+      "symbol": "TSM",
+      "report_date": "2020-12-31T00:00:00.000",
+      "net_income_common_stockholders": 510744000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2021-12-31T00:00:00.000",
+      "net_income_common_stockholders": 592359200000.0,
+      "prev_year_net_income_common_stockholders": 510744000000.0,
+      "yoy_growth": 0.1598
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2022-12-31T00:00:00.000",
+      "net_income_common_stockholders": 992923400000.0,
+      "prev_year_net_income_common_stockholders": 592359200000.0,
+      "yoy_growth": 0.6762
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 851740000000.0,
+      "prev_year_net_income_common_stockholders": 992923400000.0,
+      "yoy_growth": -0.1422
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 1158380200000.0,
+      "prev_year_net_income_common_stockholders": 851740000000.0,
+      "yoy_growth": 0.36
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 1697604000000.0,
+      "prev_year_net_income_common_stockholders": 1158380200000.0,
+      "yoy_growth": 0.4655
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "TSM",
+      "report_date": "2022-06-30T00:00:00.000",
+      "free_cash_flow": 117904136000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-03-31T00:00:00.000",
+      "free_cash_flow": 82439768000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-06-30T00:00:00.000",
+      "free_cash_flow": -85234311000.0,
+      "prev_year_free_cash_flow": 117904136000.0,
+      "yoy_growth": -1.7229
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-09-30T00:00:00.000",
+      "free_cash_flow": 66838184000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 224669000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-03-31T00:00:00.000",
+      "free_cash_flow": 252951313000.0,
+      "prev_year_free_cash_flow": 82439768000.0,
+      "yoy_growth": 2.0683
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-06-30T00:00:00.000",
+      "free_cash_flow": 168958547000.0,
+      "prev_year_free_cash_flow": -85234311000.0,
+      "yoy_growth": 2.9823
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-09-30T00:00:00.000",
+      "free_cash_flow": 184088649000.0,
+      "prev_year_free_cash_flow": 66838184000.0,
+      "yoy_growth": 1.7542
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 255196991000.0,
+      "prev_year_free_cash_flow": 224669000000.0,
+      "yoy_growth": 0.1359
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-03-31T00:00:00.000",
+      "free_cash_flow": 292450115000.0,
+      "prev_year_free_cash_flow": 252951313000.0,
+      "yoy_growth": 0.1562
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-06-30T00:00:00.000",
+      "free_cash_flow": 197501479000.0,
+      "prev_year_free_cash_flow": 168958547000.0,
+      "yoy_growth": 0.1689
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-09-30T00:00:00.000",
+      "free_cash_flow": 138385742000.0,
+      "prev_year_free_cash_flow": 184088649000.0,
+      "yoy_growth": -0.2483
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 364041064000.0,
+      "prev_year_free_cash_flow": 255196991000.0,
+      "yoy_growth": 0.4265
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2026-03-31T00:00:00.000",
+      "free_cash_flow": 347270237000.0,
+      "prev_year_free_cash_flow": 292450115000.0,
+      "yoy_growth": 0.1875
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "TSM",
+      "report_date": "2020-12-31T00:00:00.000",
+      "free_cash_flow": 305885100000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2021-12-31T00:00:00.000",
+      "free_cash_flow": 262724300000.0,
+      "prev_year_free_cash_flow": 305885100000.0,
+      "yoy_growth": -0.1411
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2022-12-31T00:00:00.000",
+      "free_cash_flow": 520972800000.0,
+      "prev_year_free_cash_flow": 262724300000.0,
+      "yoy_growth": 0.983
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 286568900000.0,
+      "prev_year_free_cash_flow": 520972800000.0,
+      "yoy_growth": -0.4499
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 861195500000.0,
+      "prev_year_free_cash_flow": 286568900000.0,
+      "yoy_growth": 2.0052
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 992378400000.0,
+      "prev_year_free_cash_flow": 861195500000.0,
+      "yoy_growth": 0.1523
+    }
+  ],
+  "quarterly_eps": [
+    {
+      "symbol": "TSM",
+      "report_date": "1999-03-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "1999-06-30T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "1999-09-30T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "1999-12-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2000-03-31T00:00:00.000",
+      "eps": 0.0805,
+      "prev_year_eps": 0.0,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2000-06-30T00:00:00.000",
+      "eps": 0.0626,
+      "prev_year_eps": 0.0,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2000-09-30T00:00:00.000",
+      "eps": 0.1345,
+      "prev_year_eps": 0.0,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2000-12-31T00:00:00.000",
+      "eps": 0.1369,
+      "prev_year_eps": 0.0,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2001-03-31T00:00:00.000",
+      "eps": 0.0524,
+      "prev_year_eps": 0.0805,
+      "yoy_growth": -0.3491
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2001-06-30T00:00:00.000",
+      "eps": 0.0191,
+      "prev_year_eps": 0.0626,
+      "yoy_growth": -0.6949
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2001-09-30T00:00:00.000",
+      "eps": 0.0058,
+      "prev_year_eps": 0.1345,
+      "yoy_growth": -0.9569
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2001-12-31T00:00:00.000",
+      "eps": 0.0261,
+      "prev_year_eps": 0.1369,
+      "yoy_growth": -0.8093
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2002-03-31T00:00:00.000",
+      "eps": 0.0374,
+      "prev_year_eps": 0.0524,
+      "yoy_growth": -0.2863
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2002-06-30T00:00:00.000",
+      "eps": 0.0494,
+      "prev_year_eps": 0.0191,
+      "yoy_growth": 1.5864
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2002-09-30T00:00:00.000",
+      "eps": 0.0185,
+      "prev_year_eps": 0.0058,
+      "yoy_growth": 2.1897
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2002-12-31T00:00:00.000",
+      "eps": 0.0138,
+      "prev_year_eps": 0.0261,
+      "yoy_growth": -0.4713
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2003-03-31T00:00:00.000",
+      "eps": 0.0245,
+      "prev_year_eps": 0.0374,
+      "yoy_growth": -0.3449
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2003-06-30T00:00:00.000",
+      "eps": 0.0596,
+      "prev_year_eps": 0.0494,
+      "yoy_growth": 0.2065
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2003-09-30T00:00:00.000",
+      "eps": 0.0875,
+      "prev_year_eps": 0.0185,
+      "yoy_growth": 3.7297
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2003-12-31T00:00:00.000",
+      "eps": 0.0928,
+      "prev_year_eps": 0.0138,
+      "yoy_growth": 5.7246
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2004-03-31T00:00:00.000",
+      "eps": 0.1114,
+      "prev_year_eps": 0.0245,
+      "yoy_growth": 3.5469
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2004-06-30T00:00:00.000",
+      "eps": 0.1204,
+      "prev_year_eps": 0.0596,
+      "yoy_growth": 1.0201
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2004-09-30T00:00:00.000",
+      "eps": 0.1613,
+      "prev_year_eps": 0.0875,
+      "yoy_growth": 0.8434
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2004-12-31T00:00:00.000",
+      "eps": 0.133,
+      "prev_year_eps": 0.0928,
+      "yoy_growth": 0.4332
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2005-03-31T00:00:00.000",
+      "eps": 0.1041,
+      "prev_year_eps": 0.1114,
+      "yoy_growth": -0.0655
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2005-06-30T00:00:00.000",
+      "eps": 0.1082,
+      "prev_year_eps": 0.1204,
+      "yoy_growth": -0.1013
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2005-09-30T00:00:00.000",
+      "eps": 0.1466,
+      "prev_year_eps": 0.1613,
+      "yoy_growth": -0.0911
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2005-12-31T00:00:00.000",
+      "eps": 0.1958,
+      "prev_year_eps": 0.133,
+      "yoy_growth": 0.4722
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2006-03-31T00:00:00.000",
+      "eps": 0.1955,
+      "prev_year_eps": 0.1041,
+      "yoy_growth": 0.878
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2006-06-30T00:00:00.000",
+      "eps": 0.1929,
+      "prev_year_eps": 0.1082,
+      "yoy_growth": 0.7828
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2006-09-30T00:00:00.000",
+      "eps": 0.1894,
+      "prev_year_eps": 0.1466,
+      "yoy_growth": 0.292
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2006-12-31T00:00:00.000",
+      "eps": 0.153,
+      "prev_year_eps": 0.1958,
+      "yoy_growth": -0.2186
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2007-03-31T00:00:00.000",
+      "eps": 0.1092,
+      "prev_year_eps": 0.1955,
+      "yoy_growth": -0.4414
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2007-06-30T00:00:00.000",
+      "eps": 0.1419,
+      "prev_year_eps": 0.1929,
+      "yoy_growth": -0.2644
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2007-09-30T00:00:00.000",
+      "eps": 0.1729,
+      "prev_year_eps": 0.1894,
+      "yoy_growth": -0.0871
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2007-12-31T00:00:00.000",
+      "eps": 0.1999,
+      "prev_year_eps": 0.153,
+      "yoy_growth": 0.3065
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2008-03-31T00:00:00.000",
+      "eps": 0.1726,
+      "prev_year_eps": 0.1092,
+      "yoy_growth": 0.5806
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2008-06-30T00:00:00.000",
+      "eps": 0.1822,
+      "prev_year_eps": 0.1419,
+      "yoy_growth": 0.284
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2008-09-30T00:00:00.000",
+      "eps": 0.1787,
+      "prev_year_eps": 0.1729,
+      "yoy_growth": 0.0335
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2008-12-31T00:00:00.000",
+      "eps": 0.0739,
+      "prev_year_eps": 0.1999,
+      "yoy_growth": -0.6303
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2009-03-31T00:00:00.000",
+      "eps": 0.0088,
+      "prev_year_eps": 0.1726,
+      "yoy_growth": -0.949
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2009-06-30T00:00:00.000",
+      "eps": 0.1416,
+      "prev_year_eps": 0.1822,
+      "yoy_growth": -0.2228
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2009-09-30T00:00:00.000",
+      "eps": 0.1807,
+      "prev_year_eps": 0.1787,
+      "yoy_growth": 0.0112
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2009-12-31T00:00:00.000",
+      "eps": 0.1951,
+      "prev_year_eps": 0.0739,
+      "yoy_growth": 1.6401
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2010-03-31T00:00:00.000",
+      "eps": 0.2037,
+      "prev_year_eps": 0.0088,
+      "yoy_growth": 22.1477
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2010-06-30T00:00:00.000",
+      "eps": 0.2435,
+      "prev_year_eps": 0.1416,
+      "yoy_growth": 0.7196
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2010-09-30T00:00:00.000",
+      "eps": 0.2837,
+      "prev_year_eps": 0.1807,
+      "yoy_growth": 0.57
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2010-12-31T00:00:00.000",
+      "eps": 0.2589,
+      "prev_year_eps": 0.1951,
+      "yoy_growth": 0.327
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2011-03-31T00:00:00.000",
+      "eps": 0.2389,
+      "prev_year_eps": 0.2037,
+      "yoy_growth": 0.1728
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2011-06-30T00:00:00.000",
+      "eps": 0.241,
+      "prev_year_eps": 0.2435,
+      "yoy_growth": -0.0103
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2011-09-30T00:00:00.000",
+      "eps": 0.2005,
+      "prev_year_eps": 0.2837,
+      "yoy_growth": -0.2933
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2011-12-31T00:00:00.000",
+      "eps": 0.2016,
+      "prev_year_eps": 0.2589,
+      "yoy_growth": -0.2213
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2012-03-31T00:00:00.000",
+      "eps": 0.2172,
+      "prev_year_eps": 0.2389,
+      "yoy_growth": -0.0908
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2012-06-30T00:00:00.000",
+      "eps": 0.2717,
+      "prev_year_eps": 0.241,
+      "yoy_growth": 0.1274
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2012-09-30T00:00:00.000",
+      "eps": 0.3182,
+      "prev_year_eps": 0.2005,
+      "yoy_growth": 0.587
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2012-12-31T00:00:00.000",
+      "eps": 0.2744,
+      "prev_year_eps": 0.2016,
+      "yoy_growth": 0.3611
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2013-03-31T00:00:00.000",
+      "eps": 0.2596,
+      "prev_year_eps": 0.2172,
+      "yoy_growth": 0.1952
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2013-06-30T00:00:00.000",
+      "eps": 0.3351,
+      "prev_year_eps": 0.2717,
+      "yoy_growth": 0.2333
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2013-09-30T00:00:00.000",
+      "eps": 0.3349,
+      "prev_year_eps": 0.3182,
+      "yoy_growth": 0.0525
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2013-12-31T00:00:00.000",
+      "eps": 0.2928,
+      "prev_year_eps": 0.2744,
+      "yoy_growth": 0.0671
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2014-03-31T00:00:00.000",
+      "eps": 0.3056,
+      "prev_year_eps": 0.2596,
+      "yoy_growth": 0.1772
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2014-06-30T00:00:00.000",
+      "eps": 0.382,
+      "prev_year_eps": 0.3351,
+      "yoy_growth": 0.14
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2014-09-30T00:00:00.000",
+      "eps": 0.4899,
+      "prev_year_eps": 0.3349,
+      "yoy_growth": 0.4628
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2014-12-31T00:00:00.000",
+      "eps": 0.4996,
+      "prev_year_eps": 0.2928,
+      "yoy_growth": 0.7063
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2015-03-31T00:00:00.000",
+      "eps": 0.4838,
+      "prev_year_eps": 0.3056,
+      "yoy_growth": 0.5831
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2015-06-30T00:00:00.000",
+      "eps": 0.496,
+      "prev_year_eps": 0.382,
+      "yoy_growth": 0.2984
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2015-09-30T00:00:00.000",
+      "eps": 0.455,
+      "prev_year_eps": 0.4899,
+      "yoy_growth": -0.0712
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2015-12-31T00:00:00.000",
+      "eps": 0.4306,
+      "prev_year_eps": 0.4996,
+      "yoy_growth": -0.1381
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2016-03-31T00:00:00.000",
+      "eps": 0.3772,
+      "prev_year_eps": 0.4838,
+      "yoy_growth": -0.2203
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2016-06-30T00:00:00.000",
+      "eps": 0.4319,
+      "prev_year_eps": 0.496,
+      "yoy_growth": -0.1292
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2016-09-30T00:00:00.000",
+      "eps": 0.588,
+      "prev_year_eps": 0.455,
+      "yoy_growth": 0.2923
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2016-12-31T00:00:00.000",
+      "eps": 0.6076,
+      "prev_year_eps": 0.4306,
+      "yoy_growth": 0.4111
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2017-03-31T00:00:00.000",
+      "eps": 0.544,
+      "prev_year_eps": 0.3772,
+      "yoy_growth": 0.4422
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2017-06-30T00:00:00.000",
+      "eps": 0.4232,
+      "prev_year_eps": 0.4319,
+      "yoy_growth": -0.0201
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2017-09-30T00:00:00.000",
+      "eps": 0.5733,
+      "prev_year_eps": 0.588,
+      "yoy_growth": -0.025
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2017-12-31T00:00:00.000",
+      "eps": 0.6358,
+      "prev_year_eps": 0.6076,
+      "yoy_growth": 0.0464
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2018-03-31T00:00:00.000",
+      "eps": 0.5903,
+      "prev_year_eps": 0.544,
+      "yoy_growth": 0.0851
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2018-06-30T00:00:00.000",
+      "eps": 0.4687,
+      "prev_year_eps": 0.4232,
+      "yoy_growth": 0.1075
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2018-09-30T00:00:00.000",
+      "eps": 0.56,
+      "prev_year_eps": 0.5733,
+      "yoy_growth": -0.0232
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2018-12-31T00:00:00.000",
+      "eps": 0.6248,
+      "prev_year_eps": 0.6358,
+      "yoy_growth": -0.0173
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2019-03-31T00:00:00.000",
+      "eps": 0.3841,
+      "prev_year_eps": 0.5903,
+      "yoy_growth": -0.3493
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2019-06-30T00:00:00.000",
+      "eps": 0.4135,
+      "prev_year_eps": 0.4687,
+      "yoy_growth": -0.1178
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2019-09-30T00:00:00.000",
+      "eps": 0.6247,
+      "prev_year_eps": 0.56,
+      "yoy_growth": 0.1155
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2019-12-31T00:00:00.000",
+      "eps": 0.7337,
+      "prev_year_eps": 0.6248,
+      "yoy_growth": 0.1743
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2020-03-31T00:00:00.000",
+      "eps": 0.7492,
+      "prev_year_eps": 0.3841,
+      "yoy_growth": 0.9505
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2020-06-30T00:00:00.000",
+      "eps": 0.7796,
+      "prev_year_eps": 0.4135,
+      "yoy_growth": 0.8854
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2020-09-30T00:00:00.000",
+      "eps": 0.9027,
+      "prev_year_eps": 0.6247,
+      "yoy_growth": 0.445
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2020-12-31T00:00:00.000",
+      "eps": 0.9668,
+      "prev_year_eps": 0.7337,
+      "yoy_growth": 0.3177
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2021-03-31T00:00:00.000",
+      "eps": 0.9593,
+      "prev_year_eps": 0.7492,
+      "yoy_growth": 0.2804
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2021-06-30T00:00:00.000",
+      "eps": 0.9262,
+      "prev_year_eps": 0.7796,
+      "yoy_growth": 0.188
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2021-09-30T00:00:00.000",
+      "eps": 1.0817,
+      "prev_year_eps": 0.9027,
+      "yoy_growth": 0.1983
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2021-12-31T00:00:00.000",
+      "eps": 1.1517,
+      "prev_year_eps": 0.9668,
+      "yoy_growth": 0.1912
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2022-03-31T00:00:00.000",
+      "eps": 1.3955,
+      "prev_year_eps": 0.9593,
+      "yoy_growth": 0.4547
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2022-06-30T00:00:00.000",
+      "eps": 1.5521,
+      "prev_year_eps": 0.9262,
+      "yoy_growth": 0.6758
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2022-09-30T00:00:00.000",
+      "eps": 1.781,
+      "prev_year_eps": 1.0817,
+      "yoy_growth": 0.6465
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2022-12-31T00:00:00.000",
+      "eps": 1.8193,
+      "prev_year_eps": 1.1517,
+      "yoy_growth": 0.5797
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-03-31T00:00:00.000",
+      "eps": 1.3127,
+      "prev_year_eps": 1.3955,
+      "yoy_growth": -0.0593
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-06-30T00:00:00.000",
+      "eps": 1.1413,
+      "prev_year_eps": 1.5521,
+      "yoy_growth": -0.2647
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-09-30T00:00:00.000",
+      "eps": 1.2836,
+      "prev_year_eps": 1.781,
+      "yoy_growth": -0.2793
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-12-31T00:00:00.000",
+      "eps": 1.4448,
+      "prev_year_eps": 1.8193,
+      "yoy_growth": -0.2058
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-03-31T00:00:00.000",
+      "eps": 1.383,
+      "prev_year_eps": 1.3127,
+      "yoy_growth": 0.0536
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-06-30T00:00:00.000",
+      "eps": 1.4774,
+      "prev_year_eps": 1.1413,
+      "yoy_growth": 0.2945
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-09-30T00:00:00.000",
+      "eps": 1.9406,
+      "prev_year_eps": 1.2836,
+      "yoy_growth": 0.5118
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-12-31T00:00:00.000",
+      "eps": 2.2344,
+      "prev_year_eps": 1.4448,
+      "yoy_growth": 0.5465
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-03-31T00:00:00.000",
+      "eps": 2.1198,
+      "prev_year_eps": 1.383,
+      "yoy_growth": 0.5328
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-06-30T00:00:00.000",
+      "eps": 2.4865,
+      "prev_year_eps": 1.4774,
+      "yoy_growth": 0.683
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-09-30T00:00:00.000",
+      "eps": 2.9148,
+      "prev_year_eps": 1.9406,
+      "yoy_growth": 0.502
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-12-31T00:00:00.000",
+      "eps": 3.1416,
+      "prev_year_eps": 2.2344,
+      "yoy_growth": 0.406
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2026-03-31T00:00:00.000",
+      "eps": 3.4892,
+      "prev_year_eps": 2.1198,
+      "yoy_growth": 0.646
+    }
+  ]
+}

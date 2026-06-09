@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "IBM",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1704000000.0,
+      "beginning_stockholders_equity": 22201000000.0,
+      "ending_stockholders_equity": 23081000000.0,
+      "avg_equity": 22641000000.0,
+      "roe": 0.0753
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 3288000000.0,
+      "beginning_stockholders_equity": 23081000000.0,
+      "ending_stockholders_equity": 22533000000.0,
+      "avg_equity": 22807000000.0,
+      "roe": 0.1442
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1605000000.0,
+      "beginning_stockholders_equity": 22533000000.0,
+      "ending_stockholders_equity": 23261000000.0,
+      "avg_equity": 22897000000.0,
+      "roe": 0.0701
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1834000000.0,
+      "beginning_stockholders_equity": 23261000000.0,
+      "ending_stockholders_equity": 24026000000.0,
+      "avg_equity": 23643500000.0,
+      "roe": 0.0776
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": -330000000.0,
+      "beginning_stockholders_equity": 24026000000.0,
+      "ending_stockholders_equity": 24448000000.0,
+      "avg_equity": 24237000000.0,
+      "roe": -0.0136
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 2914000000.0,
+      "beginning_stockholders_equity": 24448000000.0,
+      "ending_stockholders_equity": 27307000000.0,
+      "avg_equity": 25877500000.0,
+      "roe": 0.1126
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1055000000.0,
+      "beginning_stockholders_equity": 27307000000.0,
+      "ending_stockholders_equity": 26880000000.0,
+      "avg_equity": 27093500000.0,
+      "roe": 0.0389
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 2194000000.0,
+      "beginning_stockholders_equity": 26880000000.0,
+      "ending_stockholders_equity": 27509000000.0,
+      "avg_equity": 27194500000.0,
+      "roe": 0.0807
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1744000000.0,
+      "beginning_stockholders_equity": 27509000000.0,
+      "ending_stockholders_equity": 27905000000.0,
+      "avg_equity": 27707000000.0,
+      "roe": 0.0629
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 5600000000.0,
+      "beginning_stockholders_equity": 27905000000.0,
+      "ending_stockholders_equity": 32648000000.0,
+      "avg_equity": 30276500000.0,
+      "roe": 0.185
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1216000000.0,
+      "beginning_stockholders_equity": 32648000000.0,
+      "ending_stockholders_equity": 32974000000.0,
+      "avg_equity": 32811000000.0,
+      "roe": 0.0371
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "IBM",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1704000000.0,
+      "beginning_total_assets": 132213000000.0,
+      "ending_total_assets": 129321000000.0,
+      "avg_assets": 130767000000.0,
+      "roa": 0.013
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 3288000000.0,
+      "beginning_total_assets": 129321000000.0,
+      "ending_total_assets": 135241000000.0,
+      "avg_assets": 132281000000.0,
+      "roa": 0.0249
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1605000000.0,
+      "beginning_total_assets": 135241000000.0,
+      "ending_total_assets": 137169000000.0,
+      "avg_assets": 136205000000.0,
+      "roa": 0.0118
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1834000000.0,
+      "beginning_total_assets": 137169000000.0,
+      "ending_total_assets": 133848000000.0,
+      "avg_assets": 135508500000.0,
+      "roa": 0.0135
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": -330000000.0,
+      "beginning_total_assets": 133848000000.0,
+      "ending_total_assets": 134339000000.0,
+      "avg_assets": 134093500000.0,
+      "roa": -0.0025
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 2914000000.0,
+      "beginning_total_assets": 134339000000.0,
+      "ending_total_assets": 137175000000.0,
+      "avg_assets": 135757000000.0,
+      "roa": 0.0215
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1055000000.0,
+      "beginning_total_assets": 137175000000.0,
+      "ending_total_assets": 145667000000.0,
+      "avg_assets": 141421000000.0,
+      "roa": 0.0075
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 2194000000.0,
+      "beginning_total_assets": 145667000000.0,
+      "ending_total_assets": 148585000000.0,
+      "avg_assets": 147126000000.0,
+      "roa": 0.0149
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1744000000.0,
+      "beginning_total_assets": 148585000000.0,
+      "ending_total_assets": 146312000000.0,
+      "avg_assets": 147448500000.0,
+      "roa": 0.0118
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 5600000000.0,
+      "beginning_total_assets": 146312000000.0,
+      "ending_total_assets": 151880000000.0,
+      "avg_assets": 149096000000.0,
+      "roa": 0.0376
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1216000000.0,
+      "beginning_total_assets": 151880000000.0,
+      "ending_total_assets": 156229000000.0,
+      "avg_assets": 154054500000.0,
+      "roa": 0.0079
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "IBM",
+      "report_date": "2023-09-30",
+      "ebit": 2285000000.0,
+      "tax_rate_for_calcs": 0.09,
+      "nopat": 2079350000.0,
+      "beginning_invested_capital": 79677000000.0,
+      "ending_invested_capital": 78322000000.0,
+      "avg_invested_capital": 78999500000.0,
+      "roic": 0.0263
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2023-12-31",
+      "ebit": 4164000000.0,
+      "tax_rate_for_calcs": 0.13,
+      "nopat": 3622680000.0,
+      "beginning_invested_capital": 78322000000.0,
+      "ending_invested_capital": 79080000000.0,
+      "avg_invested_capital": 78701000000.0,
+      "roic": 0.046
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-03-31",
+      "ebit": 1506000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 1189740000.0,
+      "beginning_invested_capital": 79080000000.0,
+      "ending_invested_capital": 82765000000.0,
+      "avg_invested_capital": 80922500000.0,
+      "roic": 0.0147
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-06-30",
+      "ebit": 2646000000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 2169720000.0,
+      "beginning_invested_capital": 82765000000.0,
+      "ending_invested_capital": 80557000000.0,
+      "avg_invested_capital": 81661000000.0,
+      "roic": 0.0266
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-09-30",
+      "ebit": -373000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": -294670000.0,
+      "beginning_invested_capital": 80557000000.0,
+      "ending_invested_capital": 81027000000.0,
+      "avg_invested_capital": 80792000000.0,
+      "roic": -0.0036
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-12-31",
+      "ebit": 3730000000.0,
+      "tax_rate_for_calcs": 0.11,
+      "nopat": 3319700000.0,
+      "beginning_invested_capital": 81027000000.0,
+      "ending_invested_capital": 82280000000.0,
+      "avg_invested_capital": 81653500000.0,
+      "roic": 0.0407
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-03-31",
+      "ebit": 1613000000.0,
+      "tax_rate_for_calcs": 0.09,
+      "nopat": 1467830000.0,
+      "beginning_invested_capital": 82280000000.0,
+      "ending_invested_capital": 90164000000.0,
+      "avg_invested_capital": 86222000000.0,
+      "roic": 0.017
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-06-30",
+      "ebit": 3107000000.0,
+      "tax_rate_for_calcs": 0.16,
+      "nopat": 2609880000.0,
+      "beginning_invested_capital": 90164000000.0,
+      "ending_invested_capital": 91673000000.0,
+      "avg_invested_capital": 90918500000.0,
+      "roic": 0.0287
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-09-30",
+      "ebit": 2922000000.0,
+      "tax_rate_for_calcs": 0.28,
+      "nopat": 2103840000.0,
+      "beginning_invested_capital": 91673000000.0,
+      "ending_invested_capital": 91021000000.0,
+      "avg_invested_capital": 91347000000.0,
+      "roic": 0.023
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-12-31",
+      "ebit": 4621000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 3650590000.0,
+      "beginning_invested_capital": 91021000000.0,
+      "ending_invested_capital": 93908000000.0,
+      "avg_invested_capital": 92464500000.0,
+      "roic": 0.0395
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2026-03-31",
+      "ebit": 1860000000.0,
+      "tax_rate_for_calcs": 0.12,
+      "nopat": 1636800000.0,
+      "beginning_invested_capital": 93908000000.0,
+      "ending_invested_capital": 99335000000.0,
+      "avg_invested_capital": 96621500000.0,
+      "roic": 0.0169
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "IBM",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.0753,
+      "roa": 0.013,
+      "equity_multiplier": 5.79
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.1442,
+      "roa": 0.0249,
+      "equity_multiplier": 5.79
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.0701,
+      "roa": 0.0118,
+      "equity_multiplier": 5.94
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.0776,
+      "roa": 0.0135,
+      "equity_multiplier": 5.75
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": -0.0136,
+      "roa": -0.0025,
+      "equity_multiplier": 5.44
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.1126,
+      "roa": 0.0215,
+      "equity_multiplier": 5.24
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.0389,
+      "roa": 0.0075,
+      "equity_multiplier": 5.19
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.0807,
+      "roa": 0.0149,
+      "equity_multiplier": 5.42
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.0629,
+      "roa": 0.0118,
+      "equity_multiplier": 5.33
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.185,
+      "roa": 0.0376,
+      "equity_multiplier": 4.92
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.0371,
+      "roa": 0.0079,
+      "equity_multiplier": 4.7
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "IBM",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.013,
+      "net_margin": 0.1155,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0249,
+      "net_margin": 0.1892,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0118,
+      "net_margin": 0.111,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0135,
+      "net_margin": 0.1163,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": -0.0025,
+      "net_margin": -0.022,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0215,
+      "net_margin": 0.166,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0075,
+      "net_margin": 0.0726,
+      "asset_turnover": 0.1
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0149,
+      "net_margin": 0.1292,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0118,
+      "net_margin": 0.1068,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0376,
+      "net_margin": 0.2845,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0079,
+      "net_margin": 0.0764,
+      "asset_turnover": 0.1
+    }
+  ]
+}

@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "CME",
+      "report_date": "2022-06-30",
+      "gross_profit": 1051900000.0,
+      "total_revenue": 1237200000.0,
+      "gross_margin": 0.8502
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2023-03-31",
+      "gross_profit": 1237100000.0,
+      "total_revenue": 1441600000.0,
+      "gross_margin": 0.8581
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2023-06-30",
+      "gross_profit": 1154500000.0,
+      "total_revenue": 1360200000.0,
+      "gross_margin": 0.8488
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2023-09-30",
+      "gross_profit": 1132300000.0,
+      "total_revenue": 1337800000.0,
+      "gross_margin": 0.8464
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2023-12-31",
+      "gross_profit": 1226400000.0,
+      "total_revenue": 1439300000.0,
+      "gross_margin": 0.8521
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2024-03-31",
+      "gross_profit": 1281900000.0,
+      "total_revenue": 1487900000.0,
+      "gross_margin": 0.8615
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2024-06-30",
+      "gross_profit": 1327800000.0,
+      "total_revenue": 1532500000.0,
+      "gross_margin": 0.8664
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2024-09-30",
+      "gross_profit": 1365600000.0,
+      "total_revenue": 1584400000.0,
+      "gross_margin": 0.8619
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2024-12-31",
+      "gross_profit": 1304500000.0,
+      "total_revenue": 1525300000.0,
+      "gross_margin": 0.8552
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2025-03-31",
+      "gross_profit": 1435600000.0,
+      "total_revenue": 1642300000.0,
+      "gross_margin": 0.8741
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2025-06-30",
+      "gross_profit": 5576100000.0,
+      "total_revenue": 6444000000.0,
+      "gross_margin": 0.8653
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2025-09-30",
+      "gross_profit": 1300000000.0,
+      "total_revenue": 1537600000.0,
+      "gross_margin": 0.8455
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2025-12-31",
+      "gross_profit": 1407600000.0,
+      "total_revenue": 1648700000.0,
+      "gross_margin": 0.8538
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2026-03-31",
+      "gross_profit": 5835100000.0,
+      "total_revenue": 6758400000.0,
+      "gross_margin": 0.8634
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "CME",
+      "report_date": "2019-12-31",
+      "gross_profit": 3969300000.0,
+      "total_revenue": 4868000000.0,
+      "gross_margin": 0.8154
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2020-12-31",
+      "gross_profit": 4027100000.0,
+      "total_revenue": 4883600000.0,
+      "gross_margin": 0.8246
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2021-12-31",
+      "gross_profit": 3852700000.0,
+      "total_revenue": 4689700000.0,
+      "gross_margin": 0.8215
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2022-12-31",
+      "gross_profit": 4266300000.0,
+      "total_revenue": 5019400000.0,
+      "gross_margin": 0.85
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2023-12-31",
+      "gross_profit": 4750300000.0,
+      "total_revenue": 5578900000.0,
+      "gross_margin": 0.8515
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2024-12-31",
+      "gross_profit": 5279800000.0,
+      "total_revenue": 6130100000.0,
+      "gross_margin": 0.8613
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2025-12-31",
+      "gross_profit": 5613600000.0,
+      "total_revenue": 6520600000.0,
+      "gross_margin": 0.8609
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "CME",
+      "report_date": "2022-06-30",
+      "operating_income": 749700000.0,
+      "total_revenue": 1237200000.0,
+      "operating_margin": 0.606
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2023-03-31",
+      "operating_income": 913700000.0,
+      "total_revenue": 1441600000.0,
+      "operating_margin": 0.6338
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2023-06-30",
+      "operating_income": 838600000.0,
+      "total_revenue": 1360200000.0,
+      "operating_margin": 0.6165
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2023-09-30",
+      "operating_income": 820200000.0,
+      "total_revenue": 1337800000.0,
+      "operating_margin": 0.6131
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2023-12-31",
+      "operating_income": 863200000.0,
+      "total_revenue": 1439300000.0,
+      "operating_margin": 0.5997
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2024-03-31",
+      "operating_income": 959600000.0,
+      "total_revenue": 1487900000.0,
+      "operating_margin": 0.6449
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2024-06-30",
+      "operating_income": 1000600000.0,
+      "total_revenue": 1532500000.0,
+      "operating_margin": 0.6529
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2024-09-30",
+      "operating_income": 1024200000.0,
+      "total_revenue": 1584400000.0,
+      "operating_margin": 0.6464
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2024-12-31",
+      "operating_income": 947100000.0,
+      "total_revenue": 1525300000.0,
+      "operating_margin": 0.6209
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2025-03-31",
+      "operating_income": 1108000000.0,
+      "total_revenue": 1642300000.0,
+      "operating_margin": 0.6747
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2025-06-30",
+      "operating_income": 1129300000.0,
+      "total_revenue": 6444000000.0,
+      "operating_margin": 0.1752
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2025-09-30",
+      "operating_income": 972600000.0,
+      "total_revenue": 1537600000.0,
+      "operating_margin": 0.6325
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2025-12-31",
+      "operating_income": 1019600000.0,
+      "total_revenue": 1648700000.0,
+      "operating_margin": 0.6184
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2026-03-31",
+      "operating_income": 1309700000.0,
+      "total_revenue": 6758400000.0,
+      "operating_margin": 0.1938
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "CME",
+      "report_date": "2019-12-31",
+      "operating_income": 2587800000.0,
+      "total_revenue": 4868000000.0,
+      "operating_margin": 0.5316
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2020-12-31",
+      "operating_income": 2637400000.0,
+      "total_revenue": 4883600000.0,
+      "operating_margin": 0.5401
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2021-12-31",
+      "operating_income": 2645200000.0,
+      "total_revenue": 4689700000.0,
+      "operating_margin": 0.564
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2022-12-31",
+      "operating_income": 3015900000.0,
+      "total_revenue": 5019400000.0,
+      "operating_margin": 0.6008
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2023-12-31",
+      "operating_income": 3435700000.0,
+      "total_revenue": 5578900000.0,
+      "operating_margin": 0.6158
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2024-12-31",
+      "operating_income": 3931500000.0,
+      "total_revenue": 6130100000.0,
+      "operating_margin": 0.6413
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2025-12-31",
+      "operating_income": 4229500000.0,
+      "total_revenue": 6520600000.0,
+      "operating_margin": 0.6486
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "CME",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 662500000.0,
+      "total_revenue": 1237200000.0,
+      "net_margin": 0.5355
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": 872700000.0,
+      "total_revenue": 1441600000.0,
+      "net_margin": 0.6054
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 767800000.0,
+      "total_revenue": 1360200000.0,
+      "net_margin": 0.5645
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 740800000.0,
+      "total_revenue": 1337800000.0,
+      "net_margin": 0.5537
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 804300000.0,
+      "total_revenue": 1439300000.0,
+      "net_margin": 0.5588
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 844400000.0,
+      "total_revenue": 1487900000.0,
+      "net_margin": 0.5675
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 872100000.0,
+      "total_revenue": 1532500000.0,
+      "net_margin": 0.5691
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 901300000.0,
+      "total_revenue": 1584400000.0,
+      "net_margin": 0.5689
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 863700000.0,
+      "total_revenue": 1525300000.0,
+      "net_margin": 0.5662
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 944200000.0,
+      "total_revenue": 1642300000.0,
+      "net_margin": 0.5749
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 3721400000.0,
+      "total_revenue": 6444000000.0,
+      "net_margin": 0.5775
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 896600000.0,
+      "total_revenue": 1537600000.0,
+      "net_margin": 0.5831
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1168000000.0,
+      "total_revenue": 1648700000.0,
+      "net_margin": 0.7084
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 4244800000.0,
+      "total_revenue": 6758400000.0,
+      "net_margin": 0.6281
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "CME",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": 2116500000.0,
+      "total_revenue": 4868000000.0,
+      "net_margin": 0.4348
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 2105200000.0,
+      "total_revenue": 4883600000.0,
+      "net_margin": 0.4311
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 2617100000.0,
+      "total_revenue": 4689700000.0,
+      "net_margin": 0.5581
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 2657200000.0,
+      "total_revenue": 5019400000.0,
+      "net_margin": 0.5294
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 3185600000.0,
+      "total_revenue": 5578900000.0,
+      "net_margin": 0.571
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 3481500000.0,
+      "total_revenue": 6130100000.0,
+      "net_margin": 0.5679
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 4021000000.0,
+      "total_revenue": 6520600000.0,
+      "net_margin": 0.6167
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "CME",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 1237200000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2023-03-31",
+      "ebitda": 1285500000.0,
+      "total_revenue": 1441600000.0,
+      "ebitda_margin": 0.8917
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2023-06-30",
+      "ebitda": 1145900000.0,
+      "total_revenue": 1360200000.0,
+      "ebitda_margin": 0.8424
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2023-09-30",
+      "ebitda": 1102200000.0,
+      "total_revenue": 1337800000.0,
+      "ebitda_margin": 0.8239
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2023-12-31",
+      "ebitda": 1132000000.0,
+      "total_revenue": 1439300000.0,
+      "ebitda_margin": 0.7865
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2024-03-31",
+      "ebitda": 1238600000.0,
+      "total_revenue": 1487900000.0,
+      "ebitda_margin": 0.8324
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2024-06-30",
+      "ebitda": 1278800000.0,
+      "total_revenue": 1532500000.0,
+      "ebitda_margin": 0.8345
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2024-09-30",
+      "ebitda": 1301000000.0,
+      "total_revenue": 1584400000.0,
+      "ebitda_margin": 0.8211
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2024-12-31",
+      "ebitda": 1220700000.0,
+      "total_revenue": 1525300000.0,
+      "ebitda_margin": 0.8003
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2025-03-31",
+      "ebitda": 1369000000.0,
+      "total_revenue": 1642300000.0,
+      "ebitda_margin": 0.8336
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2025-06-30",
+      "ebitda": 5348400000.0,
+      "total_revenue": 6444000000.0,
+      "ebitda_margin": 0.83
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2025-09-30",
+      "ebitda": 1303600000.0,
+      "total_revenue": 1537600000.0,
+      "ebitda_margin": 0.8478
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2025-12-31",
+      "ebitda": 1704500000.0,
+      "total_revenue": 1648700000.0,
+      "ebitda_margin": 1.0338
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2026-03-31",
+      "ebitda": 6103600000.0,
+      "total_revenue": 6758400000.0,
+      "ebitda_margin": 0.9031
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "CME",
+      "report_date": "2019-12-31",
+      "ebitda": 3340900000.0,
+      "total_revenue": 4868000000.0,
+      "ebitda_margin": 0.6863
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2020-12-31",
+      "ebitda": 3352700000.0,
+      "total_revenue": 4883600000.0,
+      "ebitda_margin": 0.6865
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2021-12-31",
+      "ebitda": 3925900000.0,
+      "total_revenue": 4689700000.0,
+      "ebitda_margin": 0.8371
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2022-12-31",
+      "ebitda": 4015600000.0,
+      "total_revenue": 5019400000.0,
+      "ebitda_margin": 0.8
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2023-12-31",
+      "ebitda": 4665600000.0,
+      "total_revenue": 5578900000.0,
+      "ebitda_margin": 0.8363
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2024-12-31",
+      "ebitda": 5039100000.0,
+      "total_revenue": 6130100000.0,
+      "ebitda_margin": 0.822
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2025-12-31",
+      "ebitda": 5834800000.0,
+      "total_revenue": 6520600000.0,
+      "ebitda_margin": 0.8948
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "CME",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 599700000.0,
+      "total_revenue": 1237200000.0,
+      "fcf_margin": 0.4847
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2022-09-30",
+      "free_cash_flow": 633800000.0,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": 1441600000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 629900000.0,
+      "total_revenue": 1360200000.0,
+      "fcf_margin": 0.4631
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 836800000.0,
+      "total_revenue": 1337800000.0,
+      "fcf_margin": 0.6255
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 1023500000.0,
+      "total_revenue": 1439300000.0,
+      "fcf_margin": 0.7111
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 872900000.0,
+      "total_revenue": 1487900000.0,
+      "fcf_margin": 0.5867
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 758700000.0,
+      "total_revenue": 1532500000.0,
+      "fcf_margin": 0.4951
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 973200000.0,
+      "total_revenue": 1584400000.0,
+      "fcf_margin": 0.6142
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 991700000.0,
+      "total_revenue": 1525300000.0,
+      "fcf_margin": 0.6502
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 1102400000.0,
+      "total_revenue": 1642300000.0,
+      "fcf_margin": 0.6713
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 1040100000.0,
+      "total_revenue": 6444000000.0,
+      "fcf_margin": 0.1614
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 949700000.0,
+      "total_revenue": 1537600000.0,
+      "fcf_margin": 0.6177
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 1101400000.0,
+      "total_revenue": 1648700000.0,
+      "fcf_margin": 0.668
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 1238100000.0,
+      "total_revenue": 6758400000.0,
+      "fcf_margin": 0.1832
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "CME",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": 4868000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 2518100000.0,
+      "total_revenue": 4883600000.0,
+      "fcf_margin": 0.5156
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 2275200000.0,
+      "total_revenue": 4689700000.0,
+      "fcf_margin": 0.4851
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 2966300000.0,
+      "total_revenue": 5019400000.0,
+      "fcf_margin": 0.591
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 3377400000.0,
+      "total_revenue": 5578900000.0,
+      "fcf_margin": 0.6054
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 3596500000.0,
+      "total_revenue": 6130100000.0,
+      "fcf_margin": 0.5867
+    },
+    {
+      "symbol": "CME",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 4193600000.0,
+      "total_revenue": 6520600000.0,
+      "fcf_margin": 0.6431
+    }
+  ]
+}

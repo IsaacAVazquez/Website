@@ -4,6 +4,7 @@ import {
   Briefcase,
   Article,
   ChartBar,
+  Target,
   FileText,
   Mail,
 } from "@/components/ui/ServerIcons";
@@ -34,6 +35,11 @@ export const navLinks: Navlink[] = [
     href: "/investments",
     label: "Investments",
     icon: ChartBar,
+  },
+  {
+    href: "/fantasy-football",
+    label: "Fantasy",
+    icon: Target,
   },
   {
     href: "/resume",

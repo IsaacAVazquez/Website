@@ -2,7 +2,7 @@
 
 Current component map for the live application.
 
-**Last updated:** 2026-04-14
+**Last updated:** 2026-06-08
 
 ---
 
@@ -42,13 +42,11 @@ Current component map for the live application.
 
 Representative live components:
 
-- `FantasyFootballLandingContent`
-- `TierDisplay`
-- `TierChartEnhanced`
-- `RBTiersChart`
-- `PositionSelector`
-- `EnhancedPlayerCard`
-- `DataFreshnessIndicator`
+- `src/app/fantasy-football/fantasy-football-client.tsx`
+- `src/app/fantasy-football/draft-tracker/draft-tracker-client.tsx`
+- `src/app/fantasy-football/draft-tracker/components/DraftBoard.tsx`
+- `src/app/fantasy-football/draft-tracker/components/DraftSetup.tsx`
+- `src/components/fantasy/TierBreakdown.tsx`
 
 These are used across `/fantasy-football/*` routes.
 
@@ -80,7 +78,7 @@ Main components:
 
 ### Football dashboards
 
-Shared components for both `/premier-league` and `/la-liga` dashboards. All live in `src/components/football/`.
+Shared components for `/premier-league`, `/la-liga`, `/mlb`, `/nba`, and `/nfl` dashboards. All live in `src/components/football/`.
 
 | Component | File | Role |
 |----------|------|------|

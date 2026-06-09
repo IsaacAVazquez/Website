@@ -16,7 +16,7 @@ jest.mock("@/components/ui/DeferredThemeToggle", () => ({
   ),
 }));
 
-globalThis.IS_REACT_ACT_ENVIRONMENT = true;
+(globalThis as Record<string, unknown>).IS_REACT_ACT_ENVIRONMENT = true;
 
 const mockUsePathname = usePathname as jest.MockedFunction<typeof usePathname>;
 

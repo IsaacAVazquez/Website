@@ -18,7 +18,6 @@ import {
   MapPin,
   NotebookPen,
   Plus,
-  Save,
   Search,
   Star,
   Ticket,
@@ -62,6 +61,7 @@ import {
   TYPE_FILTER_OPTIONS,
   TYPE_LABEL,
 } from "./museum-log-helpers";
+import { HomeStatsPanel } from "@/components/home/HomeStatsPanel";
 
 interface Props {
   initialState: MuseumRouteState;
@@ -120,7 +120,7 @@ function RatingPill({ rating, label }: { rating: number; label?: string }) {
 
 function TagChip({ children }: { children: ReactNode }) {
   return (
-    <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] px-2.5 py-0.5 text-[11px] font-medium uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+    <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] px-2.5 py-0.5 text-2xs font-medium uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
       {children}
     </span>
   );
@@ -154,12 +154,12 @@ function MuseumCoverArt({ museum }: { museum: Museum }) {
       aria-hidden="true"
     >
       <span
-        className="absolute left-3 top-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]"
+        className="absolute left-3 top-3 text-3xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]"
       >
         {TYPE_LABEL[museum.type]}
       </span>
       <span
-        className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-full bg-[var(--home-paper)] px-2 py-0.5 text-[10px] font-semibold text-[var(--home-ink)]"
+        className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-full bg-[var(--home-paper)] px-2 py-0.5 text-3xs font-semibold text-[var(--home-ink)]"
         style={{ border: "1px solid var(--home-rule)" }}
       >
         <Star size={10} fill="currentColor" strokeWidth={0} />
@@ -401,7 +401,7 @@ function DiscoverView({
   return (
     <div className="space-y-5">
       <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-4 py-3 shadow-[var(--shadow-sm)]">
-        <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
+        <span className="inline-flex items-center gap-1.5 text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
           <Filter size={12} /> Filters
         </span>
 
@@ -418,7 +418,7 @@ function DiscoverView({
           onChange={(value) => onChangeFilter({ region: value as MuseumRegionFilter })}
         />
 
-        <span className="ml-auto inline-flex items-center gap-2 text-[11px] text-[var(--home-ink-muted)]">
+        <span className="ml-auto inline-flex items-center gap-2 text-2xs text-[var(--home-ink-muted)]">
           Sort
           <div className="flex gap-1 rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] p-1">
             {SORT_OPTIONS.map((sortKey) => {
@@ -429,7 +429,7 @@ function DiscoverView({
                   type="button"
                   onClick={() => onChangeFilter({ sort: sortKey as MuseumSort })}
                   aria-pressed={active}
-                  className="rounded-full px-3 py-1 text-[11px] font-semibold transition-colors"
+                  className="rounded-full px-3 py-1 text-2xs font-semibold transition-colors"
                   style={{
                     background: active ? "var(--home-ink)" : "transparent",
                     color: active ? "var(--home-paper)" : "var(--home-ink-muted)",
@@ -822,7 +822,7 @@ function ListPreviewCard({
         {previewInitials.map((p) => (
           <div
             key={p.id}
-            className="flex aspect-square items-center justify-center rounded-lg text-[11px] font-bold tracking-tight text-[var(--home-ink)]"
+            className="flex aspect-square items-center justify-center rounded-lg text-2xs font-bold tracking-tight text-[var(--home-ink)]"
             style={{
               background: `linear-gradient(160deg, color-mix(in srgb, ${hueByType[p.type]} 60%, var(--home-paper)), var(--home-paper-alt))`,
               border: "1px solid var(--home-rule)",
@@ -834,12 +834,12 @@ function ListPreviewCard({
       </div>
       <div className="flex items-start justify-between gap-2">
         <h3 className="text-base font-semibold leading-snug text-[var(--home-ink)]">{list.title}</h3>
-        <span className="inline-flex items-center gap-1 rounded-full bg-[var(--home-paper)] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]" style={{ border: "1px solid var(--home-rule)" }}>
+        <span className="inline-flex items-center gap-1 rounded-full bg-[var(--home-paper)] px-2 py-0.5 text-3xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]" style={{ border: "1px solid var(--home-rule)" }}>
           <ListPlus size={10} /> {list.museumIds.length}
         </span>
       </div>
       <p className="text-sm leading-6 text-[var(--home-ink-muted)] line-clamp-3">{list.description}</p>
-      <p className="mt-auto text-[11px] text-[var(--home-ink-muted)]">
+      <p className="mt-auto text-2xs text-[var(--home-ink-muted)]">
         Updated {formatShortDate(list.updatedAt)}
       </p>
     </button>
@@ -1049,7 +1049,7 @@ function MuseumDetailView({
                     </div>
                     <p className="mt-1 text-sm text-[var(--home-ink-muted)]">{ex.blurb}</p>
                     {ex.ticketed && (
-                      <p className="mt-2 inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                      <p className="mt-2 inline-flex items-center gap-1 text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                         <Ticket size={12} /> Timed entry / extra ticket
                       </p>
                     )}
@@ -1229,59 +1229,6 @@ function RateAndLogForm({
   );
 }
 
-// ─── Your log strip (personal stats from localStorage) ───────────────────────
-
-function YourLogStrip({
-  visitedCount,
-  watchlistCount,
-  likedCount,
-  averageUserRating,
-}: {
-  visitedCount: number;
-  watchlistCount: number;
-  likedCount: number;
-  averageUserRating: number | null;
-}) {
-  return (
-    <div className="tool-card">
-      <div className="tool-stats-grid">
-        <div className="tool-stat-cell">
-          <p className="tool-stat-label">Visited</p>
-          <p className="tool-stat-val">{visitedCount}</p>
-          <p className="tool-stat-delta">
-            {visitedCount === 0 ? "Log your first to start tracking." : "Saved locally."}
-          </p>
-        </div>
-        <div className="tool-stat-cell">
-          <p className="tool-stat-label">Watchlist</p>
-          <p className="tool-stat-val">{watchlistCount}</p>
-          <p className="tool-stat-delta">
-            {watchlistCount === 0 ? "Save museums for later." : "Saved for next time."}
-          </p>
-        </div>
-        <div className="tool-stat-cell">
-          <p className="tool-stat-label">Liked</p>
-          <p className="tool-stat-val">{likedCount}</p>
-          <p className="tool-stat-delta">
-            {likedCount === 0 ? "Heart your favorites." : "Personal favorites."}
-          </p>
-        </div>
-        <div className="tool-stat-cell">
-          <p className="tool-stat-label">Average rating</p>
-          <p className="tool-stat-val">
-            {averageUserRating !== null ? `${averageUserRating.toFixed(1)} ★` : "—"}
-          </p>
-          <p className="tool-stat-delta">
-            {averageUserRating !== null
-              ? "Across every visit you've logged."
-              : "Rate visits to see your average."}
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 // ─── Main client component ───────────────────────────────────────────────────
 
 export function MuseumLogClient({ initialState, snapshot }: Props) {
@@ -1387,6 +1334,10 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
     if (userState.visited.length === 0) return null;
     return averageRating(userState.visited.map((v) => v.rating));
   }, [userState.visited]);
+  const lastVisitedDate = useMemo(() => {
+    if (userState.visited.length === 0) return null;
+    return [...userState.visited].sort((a, b) => b.date.localeCompare(a.date))[0]?.date ?? null;
+  }, [userState.visited]);
 
   function logQuickVisit(museum: Museum) {
     logVisit({
@@ -1470,46 +1421,55 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
       : MUSEUM_VIEW_LABELS[activeView];
 
   return (
-    <section className="home-page min-h-screen">
-      <div className="tool-page-stack mx-auto w-full max-w-[1280px] px-4 pb-14 pt-8 sm:px-6 sm:pb-16 sm:pt-10 lg:px-8">
-        <div className="tool-shell" data-testid="museum-log-shell">
-          <aside className="tool-sidebar" aria-label="Museum Log navigation">
-            <div className="tool-brand">
-              <div className="tool-brand-mark" aria-hidden="true">ML</div>
-              <div className="tool-brand-name">
-                Museum Log
-                <small>Personal tracker</small>
-              </div>
-            </div>
+    <section
+      className="home-page min-h-screen"
+      data-testid="museum-log-shell"
+    >
+      <div className="home-shell home-section">
+        <div className="flex flex-col gap-6">
+          {/* In-page section nav (replaces sidebar) */}
+          <nav className="flex flex-wrap gap-2" aria-label="Section navigation">
+            {navItems.map((item) => {
+              const Icon = item.icon;
+              const isActive = item.id === activeView;
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => handleViewChange(item.id)}
+                  aria-current={isActive ? "true" : undefined}
+                  aria-pressed={isActive}
+                  className="inline-flex min-h-touch items-center gap-2 rounded-full border px-4 py-1.5 text-sm font-semibold transition-[border-color,background-color,color] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                  style={{
+                    borderColor: isActive ? "var(--home-ink)" : "var(--home-rule)",
+                    background: isActive
+                      ? "var(--home-ink)"
+                      : "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))",
+                    color: isActive ? "var(--home-paper)" : "var(--home-ink-muted)",
+                    fontFamily: "var(--font-home-sans)",
+                  }}
+                >
+                  <Icon size={16} aria-hidden />
+                  {item.label}
+                  {item.pill ? (
+                    <span
+                      className="ml-1 rounded-full px-2 py-0.5 text-2xs font-bold tracking-[0.04em]"
+                      style={{
+                        background: isActive
+                          ? "color-mix(in srgb, var(--home-paper) 22%, transparent)"
+                          : "color-mix(in srgb, var(--home-acid) 40%, transparent)",
+                        color: isActive ? "var(--home-paper)" : "var(--home-ink)",
+                      }}
+                    >
+                      {item.pill}
+                    </span>
+                  ) : null}
+                </button>
+              );
+            })}
+          </nav>
 
-            <nav className="flex flex-col gap-1.5" aria-label="Section navigation">
-              {navItems.map((item) => {
-                const Icon = item.icon;
-                const isActive = item.id === activeView;
-                return (
-                  <button
-                    key={item.id}
-                    type="button"
-                    onClick={() => handleViewChange(item.id)}
-                    aria-current={isActive ? "true" : undefined}
-                    className="tool-nav-link"
-                  >
-                    <Icon size={18} aria-hidden />
-                    {item.label}
-                    {item.pill ? <span className="tool-nav-pill">{item.pill}</span> : null}
-                  </button>
-                );
-              })}
-            </nav>
-
-            <div className="tool-sidebar-footer">
-              <Save size={14} aria-hidden="true" />
-              <span>Saved in your browser</span>
-            </div>
-          </aside>
-
-          <main className="tool-main">
-            <div className="tool-topbar">
+          <div className="tool-topbar">
               <div>
                 <p className="tool-crumbs">
                   Museum Log / <strong>{currentViewLabel}</strong>
@@ -1547,22 +1507,65 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
               <span className="tool-meta-chip-meta">Updated {lastUpdated}</span>
             </div>
 
-            <div className="mt-5 space-y-5">
-              {hydrated ? (
-                <YourLogStrip
-                  visitedCount={userState.visited.length}
-                  watchlistCount={userState.watchlist.length}
-                  likedCount={userState.liked.length}
-                  averageUserRating={averageUserRating}
-                />
-              ) : (
-                <YourLogStrip
-                  visitedCount={0}
-                  watchlistCount={0}
-                  likedCount={0}
-                  averageUserRating={null}
-                />
-              )}
+            <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,320px)]">
+              <div className="space-y-5">
+              <HomeStatsPanel
+                id="museum-log-stats"
+                title="Your log at a glance"
+                meta={`Updated ${lastUpdated}`}
+                hideLiveDot
+                cells={[
+                  {
+                    label: "Visited",
+                    value: hydrated ? userState.visited.length.toLocaleString() : "—",
+                    sub: hydrated && userState.visited.length === 0 ? "Log your first" : undefined,
+                  },
+                  {
+                    label: "Watchlist",
+                    value: hydrated ? userState.watchlist.length.toLocaleString() : "—",
+                  },
+                  {
+                    label: "Liked",
+                    value: hydrated ? userState.liked.length.toLocaleString() : "—",
+                  },
+                  {
+                    label: "Average rating",
+                    value:
+                      hydrated && averageUserRating !== null
+                        ? `${averageUserRating.toFixed(1)} ★`
+                        : "—",
+                    sub:
+                      hydrated && averageUserRating !== null
+                        ? "Across logged visits"
+                        : "Rate visits to see",
+                  },
+                  {
+                    label: "Catalog size",
+                    value: snapshot.museums.length.toLocaleString(),
+                    sub: "Museums in dataset",
+                  },
+                  {
+                    label: "Reviews",
+                    value: snapshot.reviews.length.toLocaleString(),
+                    sub: "Curator reviews",
+                  },
+                  {
+                    label: "Visits logged",
+                    value: snapshot.visitLog.length.toLocaleString(),
+                    sub: "Includes repeats",
+                  },
+                  {
+                    label: "Last visited",
+                    value:
+                      hydrated && lastVisitedDate ? formatShortDate(lastVisitedDate) : "—",
+                  },
+                ]}
+                pills={[
+                  { label: "Discover", href: "/museum-log?view=discover" },
+                  { label: "Journal", href: "/museum-log?view=journal" },
+                  { label: "Lists", href: "/museum-log?view=lists" },
+                ]}
+              />
 
               {activeView === "discover" && (
                 <DiscoverView
@@ -1608,9 +1611,11 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
                 />
               )}
             </div>
-          </main>
 
-          <aside className="tool-rail" aria-label="Museum Log side panel">
+          <aside
+            aria-label="Museum Log side panel"
+            className="flex flex-col gap-4 rounded-[1.5rem] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_74%,var(--home-elev-mix))] p-5 shadow-[var(--shadow-sm)] lg:sticky lg:top-24 lg:self-start lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto"
+          >
             {selectedMuseum ? (
               <section>
                 <p className="tool-rail-label">
@@ -1674,7 +1679,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
                                 {row.museum.city}
                               </span>
                             </span>
-                            <span className="text-[11px] text-[var(--home-ink-muted)] tabular-nums">
+                            <span className="text-2xs text-[var(--home-ink-muted)] tabular-nums">
                               {formatShortDate(row.date)}
                             </span>
                           </button>
@@ -1763,6 +1768,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
             </p>
           </section>
         )}
+        </div>
       </div>
     </section>
   );

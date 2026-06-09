@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "BSX",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 505000000.0,
+      "beginning_stockholders_equity": 18226000000.0,
+      "ending_stockholders_equity": 18885000000.0,
+      "avg_equity": 18555500000.0,
+      "roe": 0.0272
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 505000000.0,
+      "beginning_stockholders_equity": 18885000000.0,
+      "ending_stockholders_equity": 19281000000.0,
+      "avg_equity": 19083000000.0,
+      "roe": 0.0265
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 495000000.0,
+      "beginning_stockholders_equity": 19281000000.0,
+      "ending_stockholders_equity": 19925000000.0,
+      "avg_equity": 19603000000.0,
+      "roe": 0.0253
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 324000000.0,
+      "beginning_stockholders_equity": 19925000000.0,
+      "ending_stockholders_equity": 20372000000.0,
+      "avg_equity": 20148500000.0,
+      "roe": 0.0161
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 469000000.0,
+      "beginning_stockholders_equity": 20372000000.0,
+      "ending_stockholders_equity": 20708000000.0,
+      "avg_equity": 20540000000.0,
+      "roe": 0.0228
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 565000000.0,
+      "beginning_stockholders_equity": 20708000000.0,
+      "ending_stockholders_equity": 21770000000.0,
+      "avg_equity": 21239000000.0,
+      "roe": 0.0266
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 674000000.0,
+      "beginning_stockholders_equity": 21770000000.0,
+      "ending_stockholders_equity": 22212000000.0,
+      "avg_equity": 21991000000.0,
+      "roe": 0.0306
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 797000000.0,
+      "beginning_stockholders_equity": 22212000000.0,
+      "ending_stockholders_equity": 22418000000.0,
+      "avg_equity": 22315000000.0,
+      "roe": 0.0357
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 755000000.0,
+      "beginning_stockholders_equity": 22418000000.0,
+      "ending_stockholders_equity": 23395000000.0,
+      "avg_equity": 22906500000.0,
+      "roe": 0.033
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 672000000.0,
+      "beginning_stockholders_equity": 23395000000.0,
+      "ending_stockholders_equity": 24232000000.0,
+      "avg_equity": 23813500000.0,
+      "roe": 0.0282
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1341000000.0,
+      "beginning_stockholders_equity": 24232000000.0,
+      "ending_stockholders_equity": 25864000000.0,
+      "avg_equity": 25048000000.0,
+      "roe": 0.0535
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "BSX",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 505000000.0,
+      "beginning_total_assets": 33601000000.0,
+      "ending_total_assets": 34043000000.0,
+      "avg_assets": 33822000000.0,
+      "roa": 0.0149
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 505000000.0,
+      "beginning_total_assets": 34043000000.0,
+      "ending_total_assets": 35136000000.0,
+      "avg_assets": 34589500000.0,
+      "roa": 0.0146
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 495000000.0,
+      "beginning_total_assets": 35136000000.0,
+      "ending_total_assets": 36669000000.0,
+      "avg_assets": 35902500000.0,
+      "roa": 0.0138
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 324000000.0,
+      "beginning_total_assets": 36669000000.0,
+      "ending_total_assets": 37108000000.0,
+      "avg_assets": 36888500000.0,
+      "roa": 0.0088
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 469000000.0,
+      "beginning_total_assets": 37108000000.0,
+      "ending_total_assets": 38078000000.0,
+      "avg_assets": 37593000000.0,
+      "roa": 0.0125
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 565000000.0,
+      "beginning_total_assets": 38078000000.0,
+      "ending_total_assets": 39395000000.0,
+      "avg_assets": 38736500000.0,
+      "roa": 0.0146
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 674000000.0,
+      "beginning_total_assets": 39395000000.0,
+      "ending_total_assets": 40140000000.0,
+      "avg_assets": 39767500000.0,
+      "roa": 0.0169
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 797000000.0,
+      "beginning_total_assets": 40140000000.0,
+      "ending_total_assets": 41559000000.0,
+      "avg_assets": 40849500000.0,
+      "roa": 0.0195
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 755000000.0,
+      "beginning_total_assets": 41559000000.0,
+      "ending_total_assets": 42707000000.0,
+      "avg_assets": 42133000000.0,
+      "roa": 0.0179
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 672000000.0,
+      "beginning_total_assets": 42707000000.0,
+      "ending_total_assets": 43673000000.0,
+      "avg_assets": 43190000000.0,
+      "roa": 0.0156
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1341000000.0,
+      "beginning_total_assets": 43673000000.0,
+      "ending_total_assets": 44351000000.0,
+      "avg_assets": 44012000000.0,
+      "roa": 0.0305
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "BSX",
+      "report_date": "2023-09-30",
+      "ebit": 676000000.0,
+      "tax_rate_for_calcs": 0.17,
+      "nopat": 561080000.0,
+      "beginning_invested_capital": 27274000000.0,
+      "ending_invested_capital": 27780000000.0,
+      "avg_invested_capital": 27527000000.0,
+      "roic": 0.0204
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2023-12-31",
+      "ebit": 570000000.0,
+      "tax_rate_for_calcs": 0.0,
+      "nopat": 570000000.0,
+      "beginning_invested_capital": 27780000000.0,
+      "ending_invested_capital": 28378000000.0,
+      "avg_invested_capital": 28079000000.0,
+      "roic": 0.0203
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2024-03-31",
+      "ebit": 677000000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 548370000.0,
+      "beginning_invested_capital": 28378000000.0,
+      "ending_invested_capital": 30540000000.0,
+      "avg_invested_capital": 29459000000.0,
+      "roic": 0.0186
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2024-06-30",
+      "ebit": 497000000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 382690000.0,
+      "beginning_invested_capital": 30540000000.0,
+      "ending_invested_capital": 30939000000.0,
+      "avg_invested_capital": 30739500000.0,
+      "roic": 0.0124
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2024-09-30",
+      "ebit": 748000000.0,
+      "tax_rate_for_calcs": 0.3,
+      "nopat": 523600000.0,
+      "beginning_invested_capital": 30939000000.0,
+      "ending_invested_capital": 31589000000.0,
+      "avg_invested_capital": 31264000000.0,
+      "roic": 0.0167
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2024-12-31",
+      "ebit": 665000000.0,
+      "tax_rate_for_calcs": 0.04,
+      "nopat": 638400000.0,
+      "beginning_invested_capital": 31589000000.0,
+      "ending_invested_capital": 32390000000.0,
+      "avg_invested_capital": 31989500000.0,
+      "roic": 0.02
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2025-03-31",
+      "ebit": 887000000.0,
+      "tax_rate_for_calcs": 0.17,
+      "nopat": 736210000.0,
+      "beginning_invested_capital": 32390000000.0,
+      "ending_invested_capital": 33395000000.0,
+      "avg_invested_capital": 32892500000.0,
+      "roic": 0.0224
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2025-06-30",
+      "ebit": 3331000000.0,
+      "tax_rate_for_calcs": 0.17,
+      "nopat": 2764730000.0,
+      "beginning_invested_capital": 33395000000.0,
+      "ending_invested_capital": 33879000000.0,
+      "avg_invested_capital": 33637000000.0,
+      "roic": 0.0822
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2025-09-30",
+      "ebit": 1026000000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 820800000.0,
+      "beginning_invested_capital": 33879000000.0,
+      "ending_invested_capital": 34871000000.0,
+      "avg_invested_capital": 34375000000.0,
+      "roic": 0.0239
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2025-12-31",
+      "ebit": 790000000.0,
+      "tax_rate_for_calcs": 0.04,
+      "nopat": 758400000.0,
+      "beginning_invested_capital": 34871000000.0,
+      "ending_invested_capital": 35543000000.0,
+      "avg_invested_capital": 35207000000.0,
+      "roic": 0.0215
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2026-03-31",
+      "ebit": 4099000000.0,
+      "tax_rate_for_calcs": 0.05,
+      "nopat": 3894050000.0,
+      "beginning_invested_capital": 35543000000.0,
+      "ending_invested_capital": 36769000000.0,
+      "avg_invested_capital": 36156000000.0,
+      "roic": 0.1077
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "BSX",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.0272,
+      "roa": 0.0149,
+      "equity_multiplier": 1.83
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.0265,
+      "roa": 0.0146,
+      "equity_multiplier": 1.82
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.0253,
+      "roa": 0.0138,
+      "equity_multiplier": 1.83
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.0161,
+      "roa": 0.0088,
+      "equity_multiplier": 1.83
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.0228,
+      "roa": 0.0125,
+      "equity_multiplier": 1.82
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.0266,
+      "roa": 0.0146,
+      "equity_multiplier": 1.82
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.0306,
+      "roa": 0.0169,
+      "equity_multiplier": 1.81
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.0357,
+      "roa": 0.0195,
+      "equity_multiplier": 1.83
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.033,
+      "roa": 0.0179,
+      "equity_multiplier": 1.84
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.0282,
+      "roa": 0.0156,
+      "equity_multiplier": 1.81
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.0535,
+      "roa": 0.0305,
+      "equity_multiplier": 1.75
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "BSX",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0149,
+      "net_margin": 0.1432,
+      "asset_turnover": 0.1
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0146,
+      "net_margin": 0.1356,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0138,
+      "net_margin": 0.1284,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0088,
+      "net_margin": 0.0786,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0125,
+      "net_margin": 0.1114,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0146,
+      "net_margin": 0.1239,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0169,
+      "net_margin": 0.1445,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0195,
+      "net_margin": 0.0431,
+      "asset_turnover": 0.45
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0179,
+      "net_margin": 0.1491,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0156,
+      "net_margin": 0.1271,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "BSX",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0305,
+      "net_margin": 0.0651,
+      "asset_turnover": 0.47
+    }
+  ]
+}

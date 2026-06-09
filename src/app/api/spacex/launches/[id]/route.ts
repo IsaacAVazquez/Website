@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getMissionLaunchDetail, isValidMissionLaunchId } from "@/lib/spacexData";
+import { logger } from "@/lib/logger";
 
 export async function GET(
   _request: Request,
@@ -28,7 +29,7 @@ export async function GET(
         : err.message || "Unable to load launch detail";
 
     if (err.status !== 429 && status >= 500) {
-      console.error("SpaceX launch detail API error:", error);
+      logger.error("SpaceX launch detail API error", error);
     }
 
     return NextResponse.json(

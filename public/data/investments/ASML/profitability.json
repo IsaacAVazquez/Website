@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "ASML",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1893400000.0,
+      "beginning_stockholders_equity": 10604900000.0,
+      "ending_stockholders_equity": 11994900000.0,
+      "avg_equity": 11299900000.0,
+      "roe": 0.1676
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 2048100000.0,
+      "beginning_stockholders_equity": 11994900000.0,
+      "ending_stockholders_equity": 13452400000.0,
+      "avg_equity": 12723650000.0,
+      "roe": 0.161
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1223800000.0,
+      "beginning_stockholders_equity": 13452400000.0,
+      "ending_stockholders_equity": 13794100000.0,
+      "avg_equity": 13623250000.0,
+      "roe": 0.0898
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1577900000.0,
+      "beginning_stockholders_equity": 13794100000.0,
+      "ending_stockholders_equity": 14711200000.0,
+      "avg_equity": 14252650000.0,
+      "roe": 0.1107
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 2076500000.0,
+      "beginning_stockholders_equity": 14711200000.0,
+      "ending_stockholders_equity": 16151600000.0,
+      "avg_equity": 15431400000.0,
+      "roe": 0.1346
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 2693400000.0,
+      "beginning_stockholders_equity": 16151600000.0,
+      "ending_stockholders_equity": 18476800000.0,
+      "avg_equity": 17314200000.0,
+      "roe": 0.1556
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 2355000000.0,
+      "beginning_stockholders_equity": 18476800000.0,
+      "ending_stockholders_equity": 17500700000.0,
+      "avg_equity": 17988750000.0,
+      "roe": 0.1309
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 2676200000.0,
+      "beginning_stockholders_equity": 17500700000.0,
+      "ending_stockholders_equity": 17618200000.0,
+      "avg_equity": 17559450000.0,
+      "roe": 0.1524
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 2124500000.0,
+      "beginning_stockholders_equity": 17618200000.0,
+      "ending_stockholders_equity": 18993500000.0,
+      "avg_equity": 18305850000.0,
+      "roe": 0.1161
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 2839600000.0,
+      "beginning_stockholders_equity": 18993500000.0,
+      "ending_stockholders_equity": 19612200000.0,
+      "avg_equity": 19302850000.0,
+      "roe": 0.1471
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 2756700000.0,
+      "beginning_stockholders_equity": 19612200000.0,
+      "ending_stockholders_equity": 20829500000.0,
+      "avg_equity": 20220850000.0,
+      "roe": 0.1363
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "ASML",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1893400000.0,
+      "beginning_total_assets": 36928500000.0,
+      "ending_total_assets": 37513500000.0,
+      "avg_assets": 37221000000.0,
+      "roa": 0.0509
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 2048100000.0,
+      "beginning_total_assets": 37513500000.0,
+      "ending_total_assets": 39957500000.0,
+      "avg_assets": 38735500000.0,
+      "roa": 0.0529
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1223800000.0,
+      "beginning_total_assets": 39957500000.0,
+      "ending_total_assets": 39042600000.0,
+      "avg_assets": 39500050000.0,
+      "roa": 0.031
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1577900000.0,
+      "beginning_total_assets": 39042600000.0,
+      "ending_total_assets": 40741000000.0,
+      "avg_assets": 39891800000.0,
+      "roa": 0.0396
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 2076500000.0,
+      "beginning_total_assets": 40741000000.0,
+      "ending_total_assets": 41766100000.0,
+      "avg_assets": 41253550000.0,
+      "roa": 0.0503
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 2693400000.0,
+      "beginning_total_assets": 41766100000.0,
+      "ending_total_assets": 48589600000.0,
+      "avg_assets": 45177850000.0,
+      "roa": 0.0596
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 2355000000.0,
+      "beginning_total_assets": 48589600000.0,
+      "ending_total_assets": 45478800000.0,
+      "avg_assets": 47034200000.0,
+      "roa": 0.0501
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 2676200000.0,
+      "beginning_total_assets": 45478800000.0,
+      "ending_total_assets": 44849100000.0,
+      "avg_assets": 45163950000.0,
+      "roa": 0.0593
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 2124500000.0,
+      "beginning_total_assets": 44849100000.0,
+      "ending_total_assets": 45097100000.0,
+      "avg_assets": 44973100000.0,
+      "roa": 0.0472
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 2839600000.0,
+      "beginning_total_assets": 45097100000.0,
+      "ending_total_assets": 50566600000.0,
+      "avg_assets": 47831850000.0,
+      "roa": 0.0594
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 2756700000.0,
+      "beginning_total_assets": 50566600000.0,
+      "ending_total_assets": 48060500000.0,
+      "avg_assets": 49313550000.0,
+      "roa": 0.0559
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "ASML",
+      "report_date": "2023-09-30",
+      "ebit": 2182400000.0,
+      "tax_rate_for_calcs": 0.16,
+      "nopat": 1833216000.0,
+      "beginning_invested_capital": 4517800000.0,
+      "ending_invested_capital": 4522300000.0,
+      "avg_invested_capital": 4520050000.0,
+      "roic": 0.4056
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2023-12-31",
+      "ebit": 2585800000.0,
+      "tax_rate_for_calcs": 0.16,
+      "nopat": 2172072000.0,
+      "beginning_invested_capital": 4522300000.0,
+      "ending_invested_capital": 18084000000.0,
+      "avg_invested_capital": 11303150000.0,
+      "roic": 0.1922
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-03-31",
+      "ebit": 1391400000.0,
+      "tax_rate_for_calcs": 0.16,
+      "nopat": 1168776000.0,
+      "beginning_invested_capital": 18084000000.0,
+      "ending_invested_capital": 4612000000.0,
+      "avg_invested_capital": 11348000000.0,
+      "roic": 0.103
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-06-30",
+      "ebit": 1834600000.0,
+      "tax_rate_for_calcs": 0.16,
+      "nopat": 1541064000.0,
+      "beginning_invested_capital": 4612000000.0,
+      "ending_invested_capital": 4608200000.0,
+      "avg_invested_capital": 4610100000.0,
+      "roic": 0.3343
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-09-30",
+      "ebit": 2441200000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 2001784000.0,
+      "beginning_invested_capital": 4608200000.0,
+      "ending_invested_capital": 4692200000.0,
+      "avg_invested_capital": 4650200000.0,
+      "roic": 0.4305
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-12-31",
+      "ebit": 3537800000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 2759484000.0,
+      "beginning_invested_capital": 4692200000.0,
+      "ending_invested_capital": 23164400000.0,
+      "avg_invested_capital": 13928300000.0,
+      "roic": 0.1981
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-03-31",
+      "ebit": 2737900000.0,
+      "tax_rate_for_calcs": 0.17,
+      "nopat": 2272457000.0,
+      "beginning_invested_capital": 23164400000.0,
+      "ending_invested_capital": 3681000000.0,
+      "avg_invested_capital": 13422700000.0,
+      "roic": 0.1693
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-06-30",
+      "ebit": 3274100000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 2684762000.0,
+      "beginning_invested_capital": 3681000000.0,
+      "ending_invested_capital": 3698900000.0,
+      "avg_invested_capital": 3689950000.0,
+      "roic": 0.7276
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-09-30",
+      "ebit": 2468400000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 2024088000.0,
+      "beginning_invested_capital": 3698900000.0,
+      "ending_invested_capital": 2704700000.0,
+      "avg_invested_capital": 3201800000.0,
+      "roic": 0.6322
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-12-31",
+      "ebit": 3431100000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 2813502000.0,
+      "beginning_invested_capital": 2704700000.0,
+      "ending_invested_capital": 24003100000.0,
+      "avg_invested_capital": 13353900000.0,
+      "roic": 0.2107
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2026-03-31",
+      "ebit": 3157800000.0,
+      "tax_rate_for_calcs": 0.17,
+      "nopat": 2620974000.0,
+      "beginning_invested_capital": 24003100000.0,
+      "ending_invested_capital": 2705600000.0,
+      "avg_invested_capital": 13354350000.0,
+      "roic": 0.1963
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "ASML",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.1676,
+      "roa": 0.0509,
+      "equity_multiplier": 3.29
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.161,
+      "roa": 0.0529,
+      "equity_multiplier": 3.04
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.0898,
+      "roa": 0.031,
+      "equity_multiplier": 2.9
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.1107,
+      "roa": 0.0396,
+      "equity_multiplier": 2.8
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.1346,
+      "roa": 0.0503,
+      "equity_multiplier": 2.68
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.1556,
+      "roa": 0.0596,
+      "equity_multiplier": 2.61
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.1309,
+      "roa": 0.0501,
+      "equity_multiplier": 2.61
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.1524,
+      "roa": 0.0593,
+      "equity_multiplier": 2.57
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.1161,
+      "roa": 0.0472,
+      "equity_multiplier": 2.46
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.1471,
+      "roa": 0.0594,
+      "equity_multiplier": 2.48
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.1363,
+      "roa": 0.0559,
+      "equity_multiplier": 2.44
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "ASML",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0509,
+      "net_margin": 0.2837,
+      "asset_turnover": 0.18
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0529,
+      "net_margin": 0.283,
+      "asset_turnover": 0.19
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.031,
+      "net_margin": 0.2313,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0396,
+      "net_margin": 0.2528,
+      "asset_turnover": 0.16
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0503,
+      "net_margin": 0.2781,
+      "asset_turnover": 0.18
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0596,
+      "net_margin": 0.2908,
+      "asset_turnover": 0.2
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0501,
+      "net_margin": 0.3042,
+      "asset_turnover": 0.16
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0593,
+      "net_margin": 0.3479,
+      "asset_turnover": 0.17
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0472,
+      "net_margin": 0.2827,
+      "asset_turnover": 0.17
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0594,
+      "net_margin": 0.2922,
+      "asset_turnover": 0.2
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0559,
+      "net_margin": 0.3144,
+      "asset_turnover": 0.18
+    }
+  ]
+}

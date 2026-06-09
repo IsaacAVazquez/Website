@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "ISRG",
+      "report_date": "2022-06-30",
+      "gross_profit": 1023300000.0,
+      "total_revenue": 1522100000.0,
+      "gross_margin": 0.6723
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2023-06-30",
+      "gross_profit": 1171900000.0,
+      "total_revenue": 1755900000.0,
+      "gross_margin": 0.6674
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2023-09-30",
+      "gross_profit": 1167200000.0,
+      "total_revenue": 1743700000.0,
+      "gross_margin": 0.6694
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2023-12-31",
+      "gross_profit": 1277400000.0,
+      "total_revenue": 1928300000.0,
+      "gross_margin": 0.6624
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-03-31",
+      "gross_profit": 1245400000.0,
+      "total_revenue": 1890600000.0,
+      "gross_margin": 0.6587
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-06-30",
+      "gross_profit": 1372700000.0,
+      "total_revenue": 2009900000.0,
+      "gross_margin": 0.683
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-09-30",
+      "gross_profit": 1373900000.0,
+      "total_revenue": 2038100000.0,
+      "gross_margin": 0.6741
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-12-31",
+      "gross_profit": 1642200000.0,
+      "total_revenue": 2413500000.0,
+      "gross_margin": 0.6804
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-03-31",
+      "gross_profit": 1457700000.0,
+      "total_revenue": 2253400000.0,
+      "gross_margin": 0.6469
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-06-30",
+      "gross_profit": 1617900000.0,
+      "total_revenue": 2440000000.0,
+      "gross_margin": 0.6631
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-09-30",
+      "gross_profit": 1662400000.0,
+      "total_revenue": 2505100000.0,
+      "gross_margin": 0.6636
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-12-31",
+      "gross_profit": 1904300000.0,
+      "total_revenue": 2866200000.0,
+      "gross_margin": 0.6644
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2026-03-31",
+      "gross_profit": 1830500000.0,
+      "total_revenue": 2770800000.0,
+      "gross_margin": 0.6606
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "ISRG",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2020-12-31",
+      "gross_profit": 2861200000.0,
+      "total_revenue": 4358400000.0,
+      "gross_margin": 0.6565
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2021-12-31",
+      "gross_profit": 3958500000.0,
+      "total_revenue": 5710100000.0,
+      "gross_margin": 0.6932
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2022-12-31",
+      "gross_profit": 4196000000.0,
+      "total_revenue": 6222200000.0,
+      "gross_margin": 0.6744
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2023-12-31",
+      "gross_profit": 4729500000.0,
+      "total_revenue": 7124100000.0,
+      "gross_margin": 0.6639
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-12-31",
+      "gross_profit": 5634200000.0,
+      "total_revenue": 8352100000.0,
+      "gross_margin": 0.6746
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-12-31",
+      "gross_profit": 6642300000.0,
+      "total_revenue": 10064700000.0,
+      "gross_margin": 0.66
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "ISRG",
+      "report_date": "2022-06-30",
+      "operating_income": 397600000.0,
+      "total_revenue": 1522100000.0,
+      "operating_margin": 0.2612
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2023-06-30",
+      "operating_income": 463200000.0,
+      "total_revenue": 1755900000.0,
+      "operating_margin": 0.2638
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2023-09-30",
+      "operating_income": 465800000.0,
+      "total_revenue": 1743700000.0,
+      "operating_margin": 0.2671
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2023-12-31",
+      "operating_income": 450200000.0,
+      "total_revenue": 1928300000.0,
+      "operating_margin": 0.2335
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-03-31",
+      "operating_income": 469400000.0,
+      "total_revenue": 1890600000.0,
+      "operating_margin": 0.2483
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-06-30",
+      "operating_income": 567300000.0,
+      "total_revenue": 2009900000.0,
+      "operating_margin": 0.2823
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-09-30",
+      "operating_income": 577300000.0,
+      "total_revenue": 2038100000.0,
+      "operating_margin": 0.2833
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-12-31",
+      "operating_income": 734900000.0,
+      "total_revenue": 2413500000.0,
+      "operating_margin": 0.3045
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-03-31",
+      "operating_income": 578100000.0,
+      "total_revenue": 2253400000.0,
+      "operating_margin": 0.2565
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-06-30",
+      "operating_income": 2633700000.0,
+      "total_revenue": 2440000000.0,
+      "operating_margin": 1.0794
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-09-30",
+      "operating_income": 759700000.0,
+      "total_revenue": 2505100000.0,
+      "operating_margin": 0.3033
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-12-31",
+      "operating_income": 864300000.0,
+      "total_revenue": 2866200000.0,
+      "operating_margin": 0.3015
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2026-03-31",
+      "operating_income": 3222700000.0,
+      "total_revenue": 2770800000.0,
+      "operating_margin": 1.1631
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "ISRG",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2020-12-31",
+      "operating_income": 1049800000.0,
+      "total_revenue": 4358400000.0,
+      "operating_margin": 0.2409
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2021-12-31",
+      "operating_income": 1821000000.0,
+      "total_revenue": 5710100000.0,
+      "operating_margin": 0.3189
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2022-12-31",
+      "operating_income": 1577100000.0,
+      "total_revenue": 6222200000.0,
+      "operating_margin": 0.2535
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2023-12-31",
+      "operating_income": 1766800000.0,
+      "total_revenue": 7124100000.0,
+      "operating_margin": 0.248
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-12-31",
+      "operating_income": 2348900000.0,
+      "total_revenue": 8352100000.0,
+      "operating_margin": 0.2812
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-12-31",
+      "operating_income": 2945500000.0,
+      "total_revenue": 10064700000.0,
+      "operating_margin": 0.2927
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "ISRG",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 307800000.0,
+      "total_revenue": 1522100000.0,
+      "net_margin": 0.2022
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 420800000.0,
+      "total_revenue": 1755900000.0,
+      "net_margin": 0.2396
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 415700000.0,
+      "total_revenue": 1743700000.0,
+      "net_margin": 0.2384
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 606200000.0,
+      "total_revenue": 1928300000.0,
+      "net_margin": 0.3144
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 544900000.0,
+      "total_revenue": 1890600000.0,
+      "net_margin": 0.2882
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 526900000.0,
+      "total_revenue": 2009900000.0,
+      "net_margin": 0.2622
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 565100000.0,
+      "total_revenue": 2038100000.0,
+      "net_margin": 0.2773
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 685700000.0,
+      "total_revenue": 2413500000.0,
+      "net_margin": 0.2841
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 698400000.0,
+      "total_revenue": 2253400000.0,
+      "net_margin": 0.3099
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 2607600000.0,
+      "total_revenue": 2440000000.0,
+      "net_margin": 1.0687
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 704400000.0,
+      "total_revenue": 2505100000.0,
+      "net_margin": 0.2812
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 794800000.0,
+      "total_revenue": 2866200000.0,
+      "net_margin": 0.2773
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 2979100000.0,
+      "total_revenue": 2770800000.0,
+      "net_margin": 1.0752
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "ISRG",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 1060600000.0,
+      "total_revenue": 4358400000.0,
+      "net_margin": 0.2433
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 1704600000.0,
+      "total_revenue": 5710100000.0,
+      "net_margin": 0.2985
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 1322300000.0,
+      "total_revenue": 6222200000.0,
+      "net_margin": 0.2125
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1798000000.0,
+      "total_revenue": 7124100000.0,
+      "net_margin": 0.2524
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 2322600000.0,
+      "total_revenue": 8352100000.0,
+      "net_margin": 0.2781
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 2856000000.0,
+      "total_revenue": 10064700000.0,
+      "net_margin": 0.2838
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "ISRG",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 1522100000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2023-06-30",
+      "ebitda": 560500000.0,
+      "total_revenue": 1755900000.0,
+      "ebitda_margin": 0.3192
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2023-09-30",
+      "ebitda": 574400000.0,
+      "total_revenue": 1743700000.0,
+      "ebitda_margin": 0.3294
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2023-12-31",
+      "ebitda": 573400000.0,
+      "total_revenue": 1928300000.0,
+      "ebitda_margin": 0.2974
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-03-31",
+      "ebitda": 578700000.0,
+      "total_revenue": 1890600000.0,
+      "ebitda_margin": 0.3061
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-06-30",
+      "ebitda": 679100000.0,
+      "total_revenue": 2009900000.0,
+      "ebitda_margin": 0.3379
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-09-30",
+      "ebitda": 693500000.0,
+      "total_revenue": 2038100000.0,
+      "ebitda_margin": 0.3403
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-12-31",
+      "ebitda": 859600000.0,
+      "total_revenue": 2413500000.0,
+      "ebitda_margin": 0.3562
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-03-31",
+      "ebitda": 727700000.0,
+      "total_revenue": 2253400000.0,
+      "ebitda_margin": 0.3229
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-06-30",
+      "ebitda": 3170800000.0,
+      "total_revenue": 2440000000.0,
+      "ebitda_margin": 1.2995
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-09-30",
+      "ebitda": 919700000.0,
+      "total_revenue": 2505100000.0,
+      "ebitda_margin": 0.3671
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-12-31",
+      "ebitda": 1085200000.0,
+      "total_revenue": 2866200000.0,
+      "ebitda_margin": 0.3786
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2026-03-31",
+      "ebitda": 3950200000.0,
+      "total_revenue": 2770800000.0,
+      "ebitda_margin": 1.4257
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "ISRG",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2020-12-31",
+      "ebitda": 1326000000.0,
+      "total_revenue": 4358400000.0,
+      "ebitda_margin": 0.3042
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2021-12-31",
+      "ebitda": 2131200000.0,
+      "total_revenue": 5710100000.0,
+      "ebitda_margin": 0.3732
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2022-12-31",
+      "ebitda": 1942900000.0,
+      "total_revenue": 6222200000.0,
+      "ebitda_margin": 0.3123
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2023-12-31",
+      "ebitda": 2221600000.0,
+      "total_revenue": 7124100000.0,
+      "ebitda_margin": 0.3118
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-12-31",
+      "ebitda": 2848600000.0,
+      "total_revenue": 8352100000.0,
+      "ebitda_margin": 0.3411
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-12-31",
+      "ebitda": 3622600000.0,
+      "total_revenue": 10064700000.0,
+      "ebitda_margin": 0.3599
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "ISRG",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 316200000.0,
+      "total_revenue": 1522100000.0,
+      "fcf_margin": 0.2077
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2022-09-30",
+      "free_cash_flow": 214100000.0,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 487400000.0,
+      "total_revenue": 1755900000.0,
+      "fcf_margin": 0.2776
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 292100000.0,
+      "total_revenue": 1743700000.0,
+      "fcf_margin": 0.1675
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2023-12-31",
+      "free_cash_flow": -207200000.0,
+      "total_revenue": 1928300000.0,
+      "fcf_margin": -0.1075
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 23500000.0,
+      "total_revenue": 1890600000.0,
+      "fcf_margin": 0.0124
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 311100000.0,
+      "total_revenue": 2009900000.0,
+      "fcf_margin": 0.1548
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 458600000.0,
+      "total_revenue": 2038100000.0,
+      "fcf_margin": 0.225
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 510600000.0,
+      "total_revenue": 2413500000.0,
+      "fcf_margin": 0.2116
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 465000000.0,
+      "total_revenue": 2253400000.0,
+      "fcf_margin": 0.2064
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 560100000.0,
+      "total_revenue": 2440000000.0,
+      "fcf_margin": 0.2295
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 735600000.0,
+      "total_revenue": 2505100000.0,
+      "fcf_margin": 0.2936
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 730000000.0,
+      "total_revenue": 2866200000.0,
+      "fcf_margin": 0.2547
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 808600000.0,
+      "total_revenue": 2770800000.0,
+      "fcf_margin": 0.2918
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "ISRG",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 1143300000.0,
+      "total_revenue": 4358400000.0,
+      "fcf_margin": 0.2623
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 1749900000.0,
+      "total_revenue": 5710100000.0,
+      "fcf_margin": 0.3065
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 958400000.0,
+      "total_revenue": 6222200000.0,
+      "fcf_margin": 0.154
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 749600000.0,
+      "total_revenue": 7124100000.0,
+      "fcf_margin": 0.1052
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 1303800000.0,
+      "total_revenue": 8352100000.0,
+      "fcf_margin": 0.1561
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 2490700000.0,
+      "total_revenue": 10064700000.0,
+      "fcf_margin": 0.2475
+    }
+  ]
+}

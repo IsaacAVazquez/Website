@@ -1,0 +1,1587 @@
+{
+  "ttm_pe": [],
+  "ps_ratio": [],
+  "pb_ratio": [],
+  "roe": [
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 330245000.0,
+      "total_avg_equity": 2113265000.0,
+      "industry_roe": 0.1563
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 330245000.0,
+      "total_avg_equity": 2113265000.0,
+      "industry_roe": 0.1563
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 330245000.0,
+      "total_avg_equity": 2113265000.0,
+      "industry_roe": 0.1563
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 9420368261.794914,
+      "total_avg_equity": 102887360949.69026,
+      "industry_roe": 0.0916
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 9760268261.794914,
+      "total_avg_equity": 110553360949.69026,
+      "industry_roe": 0.0883
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 9575919261.794914,
+      "total_avg_equity": 110870055949.69026,
+      "industry_roe": 0.0864
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 8250563805.764466,
+      "total_avg_equity": 110989684997.74104,
+      "industry_roe": 0.0743
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 8269963805.764466,
+      "total_avg_equity": 111061584997.74104,
+      "industry_roe": 0.0745
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 8211281805.764466,
+      "total_avg_equity": 111043793997.74104,
+      "industry_roe": 0.0739
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 5786291019.703657,
+      "total_avg_equity": 116580332086.4934,
+      "industry_roe": 0.0496
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 5819291019.703657,
+      "total_avg_equity": 116731682086.4934,
+      "industry_roe": 0.0499
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 5837601019.703657,
+      "total_avg_equity": 116635511086.4934,
+      "industry_roe": 0.05
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 5188457278.617776,
+      "total_avg_equity": 111978934782.28656,
+      "industry_roe": 0.0463
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 5211557278.617776,
+      "total_avg_equity": 112055184782.28656,
+      "industry_roe": 0.0465
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 5394886278.617776,
+      "total_avg_equity": 112048179782.28656,
+      "industry_roe": 0.0481
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 5347124001.339529,
+      "total_avg_equity": 114813698729.37518,
+      "industry_roe": 0.0466
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 5345924001.339529,
+      "total_avg_equity": 114954648729.37518,
+      "industry_roe": 0.0465
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 5353323001.339529,
+      "total_avg_equity": 114948696729.37518,
+      "industry_roe": 0.0466
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 13652918916.935026,
+      "total_avg_equity": 129067031608.65068,
+      "industry_roe": 0.1058
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 13516824916.935026,
+      "total_avg_equity": 129144284608.65068,
+      "industry_roe": 0.1047
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 13518719916.935026,
+      "total_avg_equity": 129137320108.65068,
+      "industry_roe": 0.1047
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 15324363597.062634,
+      "total_avg_equity": 149909046368.6782,
+      "industry_roe": 0.1022
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 15282369597.062634,
+      "total_avg_equity": 149853457368.6782,
+      "industry_roe": 0.102
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 15286757597.062634,
+      "total_avg_equity": 149851747368.6782,
+      "industry_roe": 0.102
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 14101398618.772118,
+      "total_avg_equity": 150713361436.68246,
+      "industry_roe": 0.0936
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 14275210618.772118,
+      "total_avg_equity": 151157794936.68246,
+      "industry_roe": 0.0944
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 14248230618.772118,
+      "total_avg_equity": 151154856936.68246,
+      "industry_roe": 0.0943
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 17486613618.93154,
+      "total_avg_equity": 152166325474.28394,
+      "industry_roe": 0.1149
+    }
+  ],
+  "roa": [
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 330245000.0,
+      "total_avg_assets": 6631470500.0,
+      "industry_roa": 0.0498
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 330245000.0,
+      "total_avg_assets": 6631470500.0,
+      "industry_roa": 0.0498
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 330245000.0,
+      "total_avg_assets": 6631470500.0,
+      "industry_roa": 0.0498
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 9420368261.794914,
+      "total_avg_assets": 206597895955.37842,
+      "industry_roa": 0.0456
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 9760268261.794914,
+      "total_avg_assets": 218470245955.37842,
+      "industry_roa": 0.0447
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 9575919261.794914,
+      "total_avg_assets": 218876055955.37842,
+      "industry_roa": 0.0438
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 8250563805.764466,
+      "total_avg_assets": 220584987630.9078,
+      "industry_roa": 0.0374
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 8269963805.764466,
+      "total_avg_assets": 220596087630.9078,
+      "industry_roa": 0.0375
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 8211281805.764466,
+      "total_avg_assets": 220586903130.9078,
+      "industry_roa": 0.0372
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 5786291019.703657,
+      "total_avg_assets": 222609949692.99487,
+      "industry_roa": 0.026
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 5819291019.703657,
+      "total_avg_assets": 222900399692.99487,
+      "industry_roa": 0.0261
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 5837601019.703657,
+      "total_avg_assets": 222811970192.99487,
+      "industry_roa": 0.0262
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 5188457278.617776,
+      "total_avg_assets": 220495960801.06717,
+      "industry_roa": 0.0235
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 5211557278.617776,
+      "total_avg_assets": 220456860801.06717,
+      "industry_roa": 0.0236
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 5394886278.617776,
+      "total_avg_assets": 220450207801.06717,
+      "industry_roa": 0.0245
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 5347124001.339529,
+      "total_avg_assets": 229293285516.01334,
+      "industry_roa": 0.0233
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 5345924001.339529,
+      "total_avg_assets": 229419285516.01334,
+      "industry_roa": 0.0233
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 5353323001.339529,
+      "total_avg_assets": 229404628516.01334,
+      "industry_roa": 0.0233
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 13652918916.935026,
+      "total_avg_assets": 253844968461.65747,
+      "industry_roa": 0.0538
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 13516824916.935026,
+      "total_avg_assets": 254123993461.65747,
+      "industry_roa": 0.0532
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 13518719916.935026,
+      "total_avg_assets": 254115703461.65747,
+      "industry_roa": 0.0532
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 15324363597.062634,
+      "total_avg_assets": 281667033504.1634,
+      "industry_roa": 0.0544
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 15282369597.062634,
+      "total_avg_assets": 281613056504.1634,
+      "industry_roa": 0.0543
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 15286757597.062634,
+      "total_avg_assets": 281612008504.1634,
+      "industry_roa": 0.0543
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 14101398618.772118,
+      "total_avg_assets": 280528737443.1545,
+      "industry_roa": 0.0503
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 14275210618.772118,
+      "total_avg_assets": 280799332443.1545,
+      "industry_roa": 0.0508
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 14248230618.772118,
+      "total_avg_assets": 280792195443.1545,
+      "industry_roa": 0.0507
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 17486613618.93154,
+      "total_avg_assets": 280672835069.26135,
+      "industry_roa": 0.0623
+    }
+  ],
+  "equity_multiplier": [
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roe": 0.1563,
+      "industry_roa": 0.0498,
+      "industry_equity_multiplier": 3.14
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roe": 0.1563,
+      "industry_roa": 0.0498,
+      "industry_equity_multiplier": 3.14
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roe": 0.1563,
+      "industry_roa": 0.0498,
+      "industry_equity_multiplier": 3.14
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roe": 0.0916,
+      "industry_roa": 0.0456,
+      "industry_equity_multiplier": 2.01
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roe": 0.0883,
+      "industry_roa": 0.0447,
+      "industry_equity_multiplier": 1.98
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roe": 0.0864,
+      "industry_roa": 0.0438,
+      "industry_equity_multiplier": 1.97
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roe": 0.0743,
+      "industry_roa": 0.0374,
+      "industry_equity_multiplier": 1.99
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roe": 0.0745,
+      "industry_roa": 0.0375,
+      "industry_equity_multiplier": 1.99
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roe": 0.0739,
+      "industry_roa": 0.0372,
+      "industry_equity_multiplier": 1.99
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roe": 0.0496,
+      "industry_roa": 0.026,
+      "industry_equity_multiplier": 1.91
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roe": 0.0499,
+      "industry_roa": 0.0261,
+      "industry_equity_multiplier": 1.91
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roe": 0.05,
+      "industry_roa": 0.0262,
+      "industry_equity_multiplier": 1.91
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roe": 0.0463,
+      "industry_roa": 0.0235,
+      "industry_equity_multiplier": 1.97
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roe": 0.0465,
+      "industry_roa": 0.0236,
+      "industry_equity_multiplier": 1.97
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roe": 0.0481,
+      "industry_roa": 0.0245,
+      "industry_equity_multiplier": 1.96
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roe": 0.0466,
+      "industry_roa": 0.0233,
+      "industry_equity_multiplier": 2.0
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roe": 0.0465,
+      "industry_roa": 0.0233,
+      "industry_equity_multiplier": 2.0
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roe": 0.0466,
+      "industry_roa": 0.0233,
+      "industry_equity_multiplier": 2.0
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roe": 0.1058,
+      "industry_roa": 0.0538,
+      "industry_equity_multiplier": 1.97
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roe": 0.1047,
+      "industry_roa": 0.0532,
+      "industry_equity_multiplier": 1.97
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roe": 0.1047,
+      "industry_roa": 0.0532,
+      "industry_equity_multiplier": 1.97
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roe": 0.1022,
+      "industry_roa": 0.0544,
+      "industry_equity_multiplier": 1.88
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roe": 0.102,
+      "industry_roa": 0.0543,
+      "industry_equity_multiplier": 1.88
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roe": 0.102,
+      "industry_roa": 0.0543,
+      "industry_equity_multiplier": 1.88
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roe": 0.0936,
+      "industry_roa": 0.0503,
+      "industry_equity_multiplier": 1.86
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roe": 0.0944,
+      "industry_roa": 0.0508,
+      "industry_equity_multiplier": 1.86
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roe": 0.0943,
+      "industry_roa": 0.0507,
+      "industry_equity_multiplier": 1.86
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roe": 0.1149,
+      "industry_roa": 0.0623,
+      "industry_equity_multiplier": 1.84
+    }
+  ],
+  "gross_margin": [
+    {
+      "report_date": "2023-01-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 2179700000.0,
+      "total_ttm_revenue": 3379800000.0,
+      "industry_gross_margin": 0.6449
+    },
+    {
+      "report_date": "2023-02-28T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 2179700000.0,
+      "total_ttm_revenue": 3379800000.0,
+      "industry_gross_margin": 0.6449
+    },
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 6876642000.0,
+      "total_ttm_revenue": 12014982000.0,
+      "industry_gross_margin": 0.5723
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 6876642000.0,
+      "total_ttm_revenue": 12014982000.0,
+      "industry_gross_margin": 0.5723
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 6876642000.0,
+      "total_ttm_revenue": 12014982000.0,
+      "industry_gross_margin": 0.5723
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 6914741000.0,
+      "total_ttm_revenue": 12099175000.0,
+      "industry_gross_margin": 0.5715
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 6914741000.0,
+      "total_ttm_revenue": 12099175000.0,
+      "industry_gross_margin": 0.5715
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 6914741000.0,
+      "total_ttm_revenue": 12099175000.0,
+      "industry_gross_margin": 0.5715
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 9427827000.0,
+      "total_ttm_revenue": 16890005000.0,
+      "industry_gross_margin": 0.5582
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 9427827000.0,
+      "total_ttm_revenue": 16890005000.0,
+      "industry_gross_margin": 0.5582
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 9427827000.0,
+      "total_ttm_revenue": 16890005000.0,
+      "industry_gross_margin": 0.5582
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 9454938000.0,
+      "total_ttm_revenue": 16896447000.0,
+      "industry_gross_margin": 0.5596
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 9454938000.0,
+      "total_ttm_revenue": 16896447000.0,
+      "industry_gross_margin": 0.5596
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 9454938000.0,
+      "total_ttm_revenue": 16896447000.0,
+      "industry_gross_margin": 0.5596
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 54006375193.53395,
+      "total_ttm_revenue": 110132211885.08315,
+      "industry_gross_margin": 0.4904
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 54298175193.53395,
+      "total_ttm_revenue": 110483911885.08315,
+      "industry_gross_margin": 0.4915
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 54452873193.53395,
+      "total_ttm_revenue": 110787825885.08315,
+      "industry_gross_margin": 0.4915
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 55070343269.246506,
+      "total_ttm_revenue": 110440904743.9623,
+      "industry_gross_margin": 0.4986
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 55123343269.246506,
+      "total_ttm_revenue": 110513504743.9623,
+      "industry_gross_margin": 0.4988
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 55120007269.246506,
+      "total_ttm_revenue": 110502316743.9623,
+      "industry_gross_margin": 0.4988
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 56469062619.7682,
+      "total_ttm_revenue": 111895163035.15875,
+      "industry_gross_margin": 0.5047
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 56552569619.7682,
+      "total_ttm_revenue": 112032286035.15875,
+      "industry_gross_margin": 0.5048
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 56552213619.7682,
+      "total_ttm_revenue": 112026058035.15875,
+      "industry_gross_margin": 0.5048
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 56886019301.603806,
+      "total_ttm_revenue": 112113213504.3409,
+      "industry_gross_margin": 0.5074
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 56928086301.603806,
+      "total_ttm_revenue": 112153126504.3409,
+      "industry_gross_margin": 0.5076
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 56931082301.603806,
+      "total_ttm_revenue": 112149948504.3409,
+      "industry_gross_margin": 0.5076
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 57901754764.62878,
+      "total_ttm_revenue": 115581306426.31578,
+      "industry_gross_margin": 0.501
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 57955890764.62878,
+      "total_ttm_revenue": 115648185426.31578,
+      "industry_gross_margin": 0.5011
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 57959593764.62878,
+      "total_ttm_revenue": 115657363426.31578,
+      "industry_gross_margin": 0.5011
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 76824217821.45998,
+      "total_ttm_revenue": 148833605579.4325,
+      "industry_gross_margin": 0.5162
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 76857868821.45998,
+      "total_ttm_revenue": 148897694579.4325,
+      "industry_gross_margin": 0.5162
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 76863001821.45998,
+      "total_ttm_revenue": 148905914579.4325,
+      "industry_gross_margin": 0.5162
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 77809133389.3859,
+      "total_ttm_revenue": 150813445197.44305,
+      "industry_gross_margin": 0.5159
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 77787827389.3859,
+      "total_ttm_revenue": 150868000197.44305,
+      "industry_gross_margin": 0.5156
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 77792704389.3859,
+      "total_ttm_revenue": 150874588197.44305,
+      "industry_gross_margin": 0.5156
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 77796328237.80067,
+      "total_ttm_revenue": 151451542255.22632,
+      "industry_gross_margin": 0.5137
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 77865595237.80067,
+      "total_ttm_revenue": 151579573255.22632,
+      "industry_gross_margin": 0.5137
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 77997075237.80067,
+      "total_ttm_revenue": 151585992255.22632,
+      "industry_gross_margin": 0.5145
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_gross_profit": 92889005577.3525,
+      "total_ttm_revenue": 191622681815.86148,
+      "industry_gross_margin": 0.4847
+    }
+  ],
+  "ebitda_margin": [
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_ebitda": 1558494000.0,
+      "total_ttm_revenue": 8719375000.0,
+      "industry_ebitda_margin": 0.1787
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_ebitda": 1558494000.0,
+      "total_ttm_revenue": 8719375000.0,
+      "industry_ebitda_margin": 0.1787
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_ebitda": 1558494000.0,
+      "total_ttm_revenue": 8719375000.0,
+      "industry_ebitda_margin": 0.1787
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_ebitda": 2780766000.0,
+      "total_ttm_revenue": 13510205000.0,
+      "industry_ebitda_margin": 0.2058
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_ebitda": 2780766000.0,
+      "total_ttm_revenue": 13510205000.0,
+      "industry_ebitda_margin": 0.2058
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_ebitda": 2780766000.0,
+      "total_ttm_revenue": 13510205000.0,
+      "industry_ebitda_margin": 0.2058
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_ebitda": 2764602000.0,
+      "total_ttm_revenue": 13516647000.0,
+      "industry_ebitda_margin": 0.2045
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_ebitda": 2764602000.0,
+      "total_ttm_revenue": 13516647000.0,
+      "industry_ebitda_margin": 0.2045
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_ebitda": 2764602000.0,
+      "total_ttm_revenue": 13516647000.0,
+      "industry_ebitda_margin": 0.2045
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_ebitda": 20219658798.124187,
+      "total_ttm_revenue": 106752411885.08315,
+      "industry_ebitda_margin": 0.1894
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_ebitda": 21189058798.124187,
+      "total_ttm_revenue": 110483911885.08315,
+      "industry_ebitda_margin": 0.1918
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_ebitda": 21182926798.124187,
+      "total_ttm_revenue": 110787825885.08315,
+      "industry_ebitda_margin": 0.1912
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_ebitda": 20139679867.591995,
+      "total_ttm_revenue": 110440904743.9623,
+      "industry_ebitda_margin": 0.1824
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_ebitda": 20180779867.591995,
+      "total_ttm_revenue": 110513504743.9623,
+      "industry_ebitda_margin": 0.1826
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_ebitda": 20181895867.591995,
+      "total_ttm_revenue": 110502316743.9623,
+      "industry_ebitda_margin": 0.1826
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_ebitda": 20470871757.275555,
+      "total_ttm_revenue": 111895163035.15875,
+      "industry_ebitda_margin": 0.1829
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_ebitda": 20466112757.275555,
+      "total_ttm_revenue": 112032286035.15875,
+      "industry_ebitda_margin": 0.1827
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_ebitda": 20467931757.275555,
+      "total_ttm_revenue": 112026058035.15875,
+      "industry_ebitda_margin": 0.1827
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_ebitda": 20001961337.31551,
+      "total_ttm_revenue": 112113213504.3409,
+      "industry_ebitda_margin": 0.1784
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_ebitda": 20024082337.31551,
+      "total_ttm_revenue": 112153126504.3409,
+      "industry_ebitda_margin": 0.1785
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_ebitda": 20027829337.31551,
+      "total_ttm_revenue": 112149948504.3409,
+      "industry_ebitda_margin": 0.1786
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_ebitda": 21176430541.678665,
+      "total_ttm_revenue": 115581306426.31578,
+      "industry_ebitda_margin": 0.1832
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_ebitda": 21149991541.678665,
+      "total_ttm_revenue": 115648185426.31578,
+      "industry_ebitda_margin": 0.1829
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_ebitda": 21151179541.678665,
+      "total_ttm_revenue": 115657363426.31578,
+      "industry_ebitda_margin": 0.1829
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_ebitda": 33774719647.84464,
+      "total_ttm_revenue": 148833828301.4325,
+      "industry_ebitda_margin": 0.2269
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_ebitda": 33760433647.84464,
+      "total_ttm_revenue": 148897917301.4325,
+      "industry_ebitda_margin": 0.2267
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_ebitda": 33760481647.84464,
+      "total_ttm_revenue": 148906137301.4325,
+      "industry_ebitda_margin": 0.2267
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_ebitda": 34764143055.17384,
+      "total_ttm_revenue": 150813837541.44305,
+      "industry_ebitda_margin": 0.2305
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_ebitda": 34705093055.17384,
+      "total_ttm_revenue": 150868392541.44305,
+      "industry_ebitda_margin": 0.23
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_ebitda": 34706557055.17384,
+      "total_ttm_revenue": 150874980541.44305,
+      "industry_ebitda_margin": 0.23
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_ebitda": 35496330153.65057,
+      "total_ttm_revenue": 151451892255.22632,
+      "industry_ebitda_margin": 0.2344
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_ebitda": 36297540153.65057,
+      "total_ttm_revenue": 151579923255.22632,
+      "industry_ebitda_margin": 0.2395
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_ebitda": 36297031153.65057,
+      "total_ttm_revenue": 151586342255.22632,
+      "industry_ebitda_margin": 0.2394
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_ebitda": 46651376858.66583,
+      "total_ttm_revenue": 191623887815.86148,
+      "industry_ebitda_margin": 0.2435
+    }
+  ],
+  "net_margin": [
+    {
+      "report_date": "2023-01-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 375200000.0,
+      "total_ttm_revenue": 3379800000.0,
+      "industry_net_margin": 0.111
+    },
+    {
+      "report_date": "2023-02-28T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 375200000.0,
+      "total_ttm_revenue": 3379800000.0,
+      "industry_net_margin": 0.111
+    },
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 1045554000.0,
+      "total_ttm_revenue": 12014982000.0,
+      "industry_net_margin": 0.087
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 1045554000.0,
+      "total_ttm_revenue": 12014982000.0,
+      "industry_net_margin": 0.087
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 1045554000.0,
+      "total_ttm_revenue": 12014982000.0,
+      "industry_net_margin": 0.087
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 1030821000.0,
+      "total_ttm_revenue": 12099175000.0,
+      "industry_net_margin": 0.0852
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 1030821000.0,
+      "total_ttm_revenue": 12099175000.0,
+      "industry_net_margin": 0.0852
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 1030821000.0,
+      "total_ttm_revenue": 12099175000.0,
+      "industry_net_margin": 0.0852
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 1530285000.0,
+      "total_ttm_revenue": 16890005000.0,
+      "industry_net_margin": 0.0906
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 1530285000.0,
+      "total_ttm_revenue": 16890005000.0,
+      "industry_net_margin": 0.0906
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 1530285000.0,
+      "total_ttm_revenue": 16890005000.0,
+      "industry_net_margin": 0.0906
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 1665598000.0,
+      "total_ttm_revenue": 16896447000.0,
+      "industry_net_margin": 0.0986
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 1665598000.0,
+      "total_ttm_revenue": 16896447000.0,
+      "industry_net_margin": 0.0986
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 1665598000.0,
+      "total_ttm_revenue": 16896447000.0,
+      "industry_net_margin": 0.0986
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 10843568261.794914,
+      "total_ttm_revenue": 110132211885.08315,
+      "industry_net_margin": 0.0985
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 10808268261.794914,
+      "total_ttm_revenue": 110483911885.08315,
+      "industry_net_margin": 0.0978
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 10623919261.794914,
+      "total_ttm_revenue": 110787825885.08315,
+      "industry_net_margin": 0.0959
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 9292728626.764465,
+      "total_ttm_revenue": 110440904743.9623,
+      "industry_net_margin": 0.0841
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 9312128626.764465,
+      "total_ttm_revenue": 110513504743.9623,
+      "industry_net_margin": 0.0843
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 9253446626.764465,
+      "total_ttm_revenue": 110502316743.9623,
+      "industry_net_margin": 0.0837
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 6947291019.703657,
+      "total_ttm_revenue": 111895163035.15875,
+      "industry_net_margin": 0.0621
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 6886624019.703657,
+      "total_ttm_revenue": 112032286035.15875,
+      "industry_net_margin": 0.0615
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 6904934019.703657,
+      "total_ttm_revenue": 112026058035.15875,
+      "industry_net_margin": 0.0616
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 6112790278.617776,
+      "total_ttm_revenue": 112113213504.3409,
+      "industry_net_margin": 0.0545
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 6134488278.617776,
+      "total_ttm_revenue": 112153126504.3409,
+      "industry_net_margin": 0.0547
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 6317817278.617776,
+      "total_ttm_revenue": 112149948504.3409,
+      "industry_net_margin": 0.0563
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 7142055001.339529,
+      "total_ttm_revenue": 115581306426.31578,
+      "industry_net_margin": 0.0618
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 7109789001.339529,
+      "total_ttm_revenue": 115648185426.31578,
+      "industry_net_margin": 0.0615
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 7117188001.339529,
+      "total_ttm_revenue": 115657363426.31578,
+      "industry_net_margin": 0.0615
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 15369783916.935024,
+      "total_ttm_revenue": 148833828301.4325,
+      "industry_net_margin": 0.1033
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 15359824916.935024,
+      "total_ttm_revenue": 148897917301.4325,
+      "industry_net_margin": 0.1032
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 15361719916.935024,
+      "total_ttm_revenue": 148906137301.4325,
+      "industry_net_margin": 0.1032
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 15324363597.062634,
+      "total_ttm_revenue": 150813837541.44305,
+      "industry_net_margin": 0.1016
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 15282369597.062634,
+      "total_ttm_revenue": 150868392541.44305,
+      "industry_net_margin": 0.1013
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 15286757597.062634,
+      "total_ttm_revenue": 150874980541.44305,
+      "industry_net_margin": 0.1013
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 14101398618.772118,
+      "total_ttm_revenue": 151451892255.22632,
+      "industry_net_margin": 0.0931
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 14275210618.772118,
+      "total_ttm_revenue": 151579923255.22632,
+      "industry_net_margin": 0.0942
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 14248230618.772118,
+      "total_ttm_revenue": 151586342255.22632,
+      "industry_net_margin": 0.094
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "total_ttm_net_income": 17486613618.93154,
+      "total_ttm_revenue": 191623887815.86148,
+      "industry_net_margin": 0.0913
+    }
+  ],
+  "asset_turnover": [
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roa": 0.0498,
+      "industry_net_margin": 0.0986,
+      "industry_asset_turnover": 0.51
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roa": 0.0498,
+      "industry_net_margin": 0.0986,
+      "industry_asset_turnover": 0.51
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roa": 0.0498,
+      "industry_net_margin": 0.0986,
+      "industry_asset_turnover": 0.51
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roa": 0.0456,
+      "industry_net_margin": 0.0985,
+      "industry_asset_turnover": 0.46
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roa": 0.0447,
+      "industry_net_margin": 0.0978,
+      "industry_asset_turnover": 0.46
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roa": 0.0438,
+      "industry_net_margin": 0.0959,
+      "industry_asset_turnover": 0.46
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roa": 0.0374,
+      "industry_net_margin": 0.0841,
+      "industry_asset_turnover": 0.44
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roa": 0.0375,
+      "industry_net_margin": 0.0843,
+      "industry_asset_turnover": 0.44
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roa": 0.0372,
+      "industry_net_margin": 0.0837,
+      "industry_asset_turnover": 0.44
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roa": 0.026,
+      "industry_net_margin": 0.0621,
+      "industry_asset_turnover": 0.42
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roa": 0.0261,
+      "industry_net_margin": 0.0615,
+      "industry_asset_turnover": 0.42
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roa": 0.0262,
+      "industry_net_margin": 0.0616,
+      "industry_asset_turnover": 0.43
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roa": 0.0235,
+      "industry_net_margin": 0.0545,
+      "industry_asset_turnover": 0.43
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roa": 0.0236,
+      "industry_net_margin": 0.0547,
+      "industry_asset_turnover": 0.43
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roa": 0.0245,
+      "industry_net_margin": 0.0563,
+      "industry_asset_turnover": 0.44
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roa": 0.0233,
+      "industry_net_margin": 0.0618,
+      "industry_asset_turnover": 0.38
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roa": 0.0233,
+      "industry_net_margin": 0.0615,
+      "industry_asset_turnover": 0.38
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roa": 0.0233,
+      "industry_net_margin": 0.0615,
+      "industry_asset_turnover": 0.38
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roa": 0.0538,
+      "industry_net_margin": 0.1033,
+      "industry_asset_turnover": 0.52
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roa": 0.0532,
+      "industry_net_margin": 0.1032,
+      "industry_asset_turnover": 0.52
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roa": 0.0532,
+      "industry_net_margin": 0.1032,
+      "industry_asset_turnover": 0.52
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roa": 0.0544,
+      "industry_net_margin": 0.1016,
+      "industry_asset_turnover": 0.54
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roa": 0.0543,
+      "industry_net_margin": 0.1013,
+      "industry_asset_turnover": 0.54
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roa": 0.0543,
+      "industry_net_margin": 0.1013,
+      "industry_asset_turnover": 0.54
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roa": 0.0503,
+      "industry_net_margin": 0.0931,
+      "industry_asset_turnover": 0.54
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roa": 0.0508,
+      "industry_net_margin": 0.0942,
+      "industry_asset_turnover": 0.54
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roa": 0.0507,
+      "industry_net_margin": 0.094,
+      "industry_asset_turnover": 0.54
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Medical Instruments & Supplies",
+      "industry_roa": 0.0623,
+      "industry_net_margin": 0.0913,
+      "industry_asset_turnover": 0.68
+    }
+  ]
+}

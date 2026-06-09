@@ -629,7 +629,8 @@ function pickVehicleImage(launch: RawLl2Launch): string | null {
   return (
     launch.image ??
     pickSpacecraftImage(launch) ??
-    launch.rocket?.configuration?.image_url
+    launch.rocket?.configuration?.image_url ??
+    null
   );
 }
 

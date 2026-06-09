@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "ISRG",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 415700000.0,
+      "beginning_stockholders_equity": 11879100000.0,
+      "ending_stockholders_equity": 12539000000.0,
+      "avg_equity": 12209050000.0,
+      "roe": 0.034
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 606200000.0,
+      "beginning_stockholders_equity": 12539000000.0,
+      "ending_stockholders_equity": 13307600000.0,
+      "avg_equity": 12923300000.0,
+      "roe": 0.0469
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 544900000.0,
+      "beginning_stockholders_equity": 13307600000.0,
+      "ending_stockholders_equity": 13962600000.0,
+      "avg_equity": 13635100000.0,
+      "roe": 0.04
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 526900000.0,
+      "beginning_stockholders_equity": 13962600000.0,
+      "ending_stockholders_equity": 14708300000.0,
+      "avg_equity": 14335450000.0,
+      "roe": 0.0368
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 565100000.0,
+      "beginning_stockholders_equity": 14708300000.0,
+      "ending_stockholders_equity": 15583300000.0,
+      "avg_equity": 15145800000.0,
+      "roe": 0.0373
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 685700000.0,
+      "beginning_stockholders_equity": 15583300000.0,
+      "ending_stockholders_equity": 16433700000.0,
+      "avg_equity": 16008500000.0,
+      "roe": 0.0428
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 698400000.0,
+      "beginning_stockholders_equity": 16433700000.0,
+      "ending_stockholders_equity": 17106400000.0,
+      "avg_equity": 16770050000.0,
+      "roe": 0.0416
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 2607600000.0,
+      "beginning_stockholders_equity": 17106400000.0,
+      "ending_stockholders_equity": 17845700000.0,
+      "avg_equity": 17476050000.0,
+      "roe": 0.1492
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 704400000.0,
+      "beginning_stockholders_equity": 17845700000.0,
+      "ending_stockholders_equity": 16929700000.0,
+      "avg_equity": 17387700000.0,
+      "roe": 0.0405
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 794800000.0,
+      "beginning_stockholders_equity": 16929700000.0,
+      "ending_stockholders_equity": 17824000000.0,
+      "avg_equity": 17376850000.0,
+      "roe": 0.0457
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 2979100000.0,
+      "beginning_stockholders_equity": 17824000000.0,
+      "ending_stockholders_equity": 17474500000.0,
+      "avg_equity": 17649250000.0,
+      "roe": 0.1688
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "ISRG",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 415700000.0,
+      "beginning_total_assets": 13903300000.0,
+      "ending_total_assets": 14712700000.0,
+      "avg_assets": 14308000000.0,
+      "roa": 0.0291
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 606200000.0,
+      "beginning_total_assets": 14712700000.0,
+      "ending_total_assets": 15441500000.0,
+      "avg_assets": 15077100000.0,
+      "roa": 0.0402
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 544900000.0,
+      "beginning_total_assets": 15441500000.0,
+      "ending_total_assets": 15828000000.0,
+      "avg_assets": 15634750000.0,
+      "roa": 0.0349
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 526900000.0,
+      "beginning_total_assets": 15828000000.0,
+      "ending_total_assets": 16649900000.0,
+      "avg_assets": 16238950000.0,
+      "roa": 0.0324
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 565100000.0,
+      "beginning_total_assets": 16649900000.0,
+      "ending_total_assets": 17743400000.0,
+      "avg_assets": 17196650000.0,
+      "roa": 0.0329
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 685700000.0,
+      "beginning_total_assets": 17743400000.0,
+      "ending_total_assets": 18743200000.0,
+      "avg_assets": 18243300000.0,
+      "roa": 0.0376
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 698400000.0,
+      "beginning_total_assets": 18743200000.0,
+      "ending_total_assets": 19220400000.0,
+      "avg_assets": 18981800000.0,
+      "roa": 0.0368
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 2607600000.0,
+      "beginning_total_assets": 19220400000.0,
+      "ending_total_assets": 20163200000.0,
+      "avg_assets": 19691800000.0,
+      "roa": 0.1324
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 704400000.0,
+      "beginning_total_assets": 20163200000.0,
+      "ending_total_assets": 19351800000.0,
+      "avg_assets": 19757500000.0,
+      "roa": 0.0357
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 794800000.0,
+      "beginning_total_assets": 19351800000.0,
+      "ending_total_assets": 20458700000.0,
+      "avg_assets": 19905250000.0,
+      "roa": 0.0399
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 2979100000.0,
+      "beginning_total_assets": 20458700000.0,
+      "ending_total_assets": 20111000000.0,
+      "avg_assets": 20284850000.0,
+      "roa": 0.1469
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "ISRG",
+      "report_date": "2023-09-30",
+      "ebit": 465800000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 372640000.0,
+      "beginning_invested_capital": 11879100000.0,
+      "ending_invested_capital": 12539000000.0,
+      "avg_invested_capital": 12209050000.0,
+      "roic": 0.0305
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2023-12-31",
+      "ebit": 450200000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 355658000.0,
+      "beginning_invested_capital": 12539000000.0,
+      "ending_invested_capital": 13307600000.0,
+      "avg_invested_capital": 12923300000.0,
+      "roic": 0.0275
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-03-31",
+      "ebit": 469400000.0,
+      "tax_rate_for_calcs": 0.02,
+      "nopat": 460012000.0,
+      "beginning_invested_capital": 13307600000.0,
+      "ending_invested_capital": 13962600000.0,
+      "avg_invested_capital": 13635100000.0,
+      "roic": 0.0337
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-06-30",
+      "ebit": 567300000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 459513000.0,
+      "beginning_invested_capital": 13962600000.0,
+      "ending_invested_capital": 14708300000.0,
+      "avg_invested_capital": 14335450000.0,
+      "roic": 0.0321
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-09-30",
+      "ebit": 577300000.0,
+      "tax_rate_for_calcs": 0.15,
+      "nopat": 490705000.0,
+      "beginning_invested_capital": 14708300000.0,
+      "ending_invested_capital": 15583300000.0,
+      "avg_invested_capital": 15145800000.0,
+      "roic": 0.0324
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-12-31",
+      "ebit": 734900000.0,
+      "tax_rate_for_calcs": 0.15,
+      "nopat": 624665000.0,
+      "beginning_invested_capital": 15583300000.0,
+      "ending_invested_capital": 16433700000.0,
+      "avg_invested_capital": 16008500000.0,
+      "roic": 0.039
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-03-31",
+      "ebit": 578100000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 456699000.0,
+      "beginning_invested_capital": 16433700000.0,
+      "ending_invested_capital": 17106400000.0,
+      "avg_invested_capital": 16770050000.0,
+      "roic": 0.0272
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-06-30",
+      "ebit": 743400000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 594720000.0,
+      "beginning_invested_capital": 17106400000.0,
+      "ending_invested_capital": 17845700000.0,
+      "avg_invested_capital": 17476050000.0,
+      "roic": 0.034
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-09-30",
+      "ebit": 759700000.0,
+      "tax_rate_for_calcs": 0.17,
+      "nopat": 630551000.0,
+      "beginning_invested_capital": 17845700000.0,
+      "ending_invested_capital": 16929700000.0,
+      "avg_invested_capital": 17387700000.0,
+      "roic": 0.0363
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-12-31",
+      "ebit": 864300000.0,
+      "tax_rate_for_calcs": 0.16,
+      "nopat": 726012000.0,
+      "beginning_invested_capital": 16929700000.0,
+      "ending_invested_capital": 17824000000.0,
+      "avg_invested_capital": 17376850000.0,
+      "roic": 0.0418
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2026-03-31",
+      "ebit": 855300000.0,
+      "tax_rate_for_calcs": 0.12,
+      "nopat": 752664000.0,
+      "beginning_invested_capital": 17824000000.0,
+      "ending_invested_capital": 17474500000.0,
+      "avg_invested_capital": 17649250000.0,
+      "roic": 0.0426
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "ISRG",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.034,
+      "roa": 0.0291,
+      "equity_multiplier": 1.17
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.0469,
+      "roa": 0.0402,
+      "equity_multiplier": 1.17
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.04,
+      "roa": 0.0349,
+      "equity_multiplier": 1.15
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.0368,
+      "roa": 0.0324,
+      "equity_multiplier": 1.14
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.0373,
+      "roa": 0.0329,
+      "equity_multiplier": 1.13
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.0428,
+      "roa": 0.0376,
+      "equity_multiplier": 1.14
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.0416,
+      "roa": 0.0368,
+      "equity_multiplier": 1.13
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.1492,
+      "roa": 0.1324,
+      "equity_multiplier": 1.13
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.0405,
+      "roa": 0.0357,
+      "equity_multiplier": 1.13
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.0457,
+      "roa": 0.0399,
+      "equity_multiplier": 1.15
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.1688,
+      "roa": 0.1469,
+      "equity_multiplier": 1.15
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "ISRG",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0291,
+      "net_margin": 0.2384,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0402,
+      "net_margin": 0.3144,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0349,
+      "net_margin": 0.2882,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0324,
+      "net_margin": 0.2622,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0329,
+      "net_margin": 0.2773,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0376,
+      "net_margin": 0.2841,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0368,
+      "net_margin": 0.3099,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.1324,
+      "net_margin": 1.0687,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0357,
+      "net_margin": 0.2812,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0399,
+      "net_margin": 0.2773,
+      "asset_turnover": 0.14
+    },
+    {
+      "symbol": "ISRG",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.1469,
+      "net_margin": 1.0752,
+      "asset_turnover": 0.14
+    }
+  ]
+}

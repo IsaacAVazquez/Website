@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "SHOP",
+    "name": "Darryl  Arvai",
+    "title": "VP & Corporate Controller",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "SHOP",
+    "name": "Michael L. Johnson",
+    "title": "Corporate Secretary",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "SHOP",
+    "name": "Mr. Harley  Finkelstein",
+    "title": "President",
+    "age": 42,
+    "born": 1983,
+    "pay": 1018193,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "SHOP",
+    "name": "Mr. Jeff J. Hoffmeister CPA",
+    "title": "Chief Financial Officer",
+    "age": 55,
+    "born": 1970,
+    "pay": 1000000,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "SHOP",
+    "name": "Mr. Tobias  Lutke",
+    "title": "Founder, Chairman, CEO and Head of R&D",
+    "age": 44,
+    "born": 1981,
+    "pay": 1,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "SHOP",
+    "name": "Ms. Bharati  Balakrishnan",
+    "title": "Country Head & Director- India",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "SHOP",
+    "name": "Ms. Carrie  Gillard",
+    "title": "Director of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "SHOP",
+    "name": "Ms. Jean  Niehaus",
+    "title": "General Counsel",
+    "age": 42,
+    "born": 1983,
+    "pay": 451250,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "SHOP",
+    "name": "Ms. Jessica Rose Hertz",
+    "title": "Chief Operating Officer",
+    "age": 43,
+    "born": 1982,
+    "pay": 1000000,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  },
+  {
+    "symbol": "SHOP",
+    "name": "Ms. Vanessa  Lee",
+    "title": "Product Director",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-08"
+  }
+]

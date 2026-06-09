@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "AMD",
+      "report_date": "2022-06-30",
+      "gross_profit": 3028000000.0,
+      "total_revenue": 6550000000.0,
+      "gross_margin": 0.4623
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2022-09-30",
+      "gross_profit": 2354000000.0,
+      "total_revenue": 5565000000.0,
+      "gross_margin": 0.423
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2022-12-31",
+      "gross_profit": 2403000000.0,
+      "total_revenue": 5599000000.0,
+      "gross_margin": 0.4292
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2023-03-31",
+      "gross_profit": 2359000000.0,
+      "total_revenue": 5353000000.0,
+      "gross_margin": 0.4407
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2023-06-30",
+      "gross_profit": 2443000000.0,
+      "total_revenue": 5359000000.0,
+      "gross_margin": 0.4559
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2023-09-30",
+      "gross_profit": 2747000000.0,
+      "total_revenue": 5800000000.0,
+      "gross_margin": 0.4736
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2023-12-31",
+      "gross_profit": 2911000000.0,
+      "total_revenue": 6168000000.0,
+      "gross_margin": 0.472
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2024-03-31",
+      "gross_profit": 2560000000.0,
+      "total_revenue": 5473000000.0,
+      "gross_margin": 0.4678
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2024-06-30",
+      "gross_profit": 2864000000.0,
+      "total_revenue": 5835000000.0,
+      "gross_margin": 0.4908
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2024-09-30",
+      "gross_profit": 3419000000.0,
+      "total_revenue": 6819000000.0,
+      "gross_margin": 0.5014
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2024-12-31",
+      "gross_profit": 3882000000.0,
+      "total_revenue": 7658000000.0,
+      "gross_margin": 0.5069
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2025-03-31",
+      "gross_profit": 3736000000.0,
+      "total_revenue": 7438000000.0,
+      "gross_margin": 0.5023
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2025-06-30",
+      "gross_profit": 14096000000.0,
+      "total_revenue": 7685000000.0,
+      "gross_margin": 1.8342
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2025-09-30",
+      "gross_profit": 4780000000.0,
+      "total_revenue": 9246000000.0,
+      "gross_margin": 0.517
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2025-12-31",
+      "gross_profit": 5577000000.0,
+      "total_revenue": 10270000000.0,
+      "gross_margin": 0.543
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2026-03-31",
+      "gross_profit": 18832000000.0,
+      "total_revenue": 10253000000.0,
+      "gross_margin": 1.8367
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "AMD",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2020-12-31",
+      "gross_profit": 4347000000.0,
+      "total_revenue": 9763000000.0,
+      "gross_margin": 0.4453
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2021-12-31",
+      "gross_profit": 7929000000.0,
+      "total_revenue": 16434000000.0,
+      "gross_margin": 0.4825
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2022-12-31",
+      "gross_profit": 10603000000.0,
+      "total_revenue": 23601000000.0,
+      "gross_margin": 0.4493
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2023-12-31",
+      "gross_profit": 10460000000.0,
+      "total_revenue": 22680000000.0,
+      "gross_margin": 0.4612
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2024-12-31",
+      "gross_profit": 12725000000.0,
+      "total_revenue": 25785000000.0,
+      "gross_margin": 0.4935
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2025-12-31",
+      "gross_profit": 17152000000.0,
+      "total_revenue": 34639000000.0,
+      "gross_margin": 0.4952
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "AMD",
+      "report_date": "2022-06-30",
+      "operating_income": 526000000.0,
+      "total_revenue": 6550000000.0,
+      "operating_margin": 0.0803
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2022-09-30",
+      "operating_income": -64000000.0,
+      "total_revenue": 5565000000.0,
+      "operating_margin": -0.0115
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2022-12-31",
+      "operating_income": -149000000.0,
+      "total_revenue": 5599000000.0,
+      "operating_margin": -0.0266
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2023-03-31",
+      "operating_income": -145000000.0,
+      "total_revenue": 5353000000.0,
+      "operating_margin": -0.0271
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2023-06-30",
+      "operating_income": -20000000.0,
+      "total_revenue": 5359000000.0,
+      "operating_margin": -0.0037
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2023-09-30",
+      "operating_income": 224000000.0,
+      "total_revenue": 5800000000.0,
+      "operating_margin": 0.0386
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2023-12-31",
+      "operating_income": 342000000.0,
+      "total_revenue": 6168000000.0,
+      "operating_margin": 0.0554
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2024-03-31",
+      "operating_income": 36000000.0,
+      "total_revenue": 5473000000.0,
+      "operating_margin": 0.0066
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2024-06-30",
+      "operating_income": 269000000.0,
+      "total_revenue": 5835000000.0,
+      "operating_margin": 0.0461
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2024-09-30",
+      "operating_income": 724000000.0,
+      "total_revenue": 6819000000.0,
+      "operating_margin": 0.1062
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2024-12-31",
+      "operating_income": 1057000000.0,
+      "total_revenue": 7658000000.0,
+      "operating_margin": 0.138
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2025-03-31",
+      "operating_income": 806000000.0,
+      "total_revenue": 7438000000.0,
+      "operating_margin": 0.1084
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2025-06-30",
+      "operating_income": -134000000.0,
+      "total_revenue": 7685000000.0,
+      "operating_margin": -0.0174
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2025-09-30",
+      "operating_income": 1270000000.0,
+      "total_revenue": 9246000000.0,
+      "operating_margin": 0.1374
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2025-12-31",
+      "operating_income": 1752000000.0,
+      "total_revenue": 10270000000.0,
+      "operating_margin": 0.1706
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2026-03-31",
+      "operating_income": 1476000000.0,
+      "total_revenue": 10253000000.0,
+      "operating_margin": 0.144
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "AMD",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2020-12-31",
+      "operating_income": 1369000000.0,
+      "total_revenue": 9763000000.0,
+      "operating_margin": 0.1402
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2021-12-31",
+      "operating_income": 3648000000.0,
+      "total_revenue": 16434000000.0,
+      "operating_margin": 0.222
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2022-12-31",
+      "operating_income": 1264000000.0,
+      "total_revenue": 23601000000.0,
+      "operating_margin": 0.0536
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2023-12-31",
+      "operating_income": 401000000.0,
+      "total_revenue": 22680000000.0,
+      "operating_margin": 0.0177
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2024-12-31",
+      "operating_income": 2086000000.0,
+      "total_revenue": 25785000000.0,
+      "operating_margin": 0.0809
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2025-12-31",
+      "operating_income": 3694000000.0,
+      "total_revenue": 34639000000.0,
+      "operating_margin": 0.1066
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "AMD",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 447000000.0,
+      "total_revenue": 6550000000.0,
+      "net_margin": 0.0682
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": 66000000.0,
+      "total_revenue": 5565000000.0,
+      "net_margin": 0.0119
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 21000000.0,
+      "total_revenue": 5599000000.0,
+      "net_margin": 0.0038
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": -139000000.0,
+      "total_revenue": 5353000000.0,
+      "net_margin": -0.026
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 27000000.0,
+      "total_revenue": 5359000000.0,
+      "net_margin": 0.005
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 299000000.0,
+      "total_revenue": 5800000000.0,
+      "net_margin": 0.0516
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 667000000.0,
+      "total_revenue": 6168000000.0,
+      "net_margin": 0.1081
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 123000000.0,
+      "total_revenue": 5473000000.0,
+      "net_margin": 0.0225
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 265000000.0,
+      "total_revenue": 5835000000.0,
+      "net_margin": 0.0454
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 771000000.0,
+      "total_revenue": 6819000000.0,
+      "net_margin": 0.1131
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 482000000.0,
+      "total_revenue": 7658000000.0,
+      "net_margin": 0.0629
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 709000000.0,
+      "total_revenue": 7438000000.0,
+      "net_margin": 0.0953
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 2834000000.0,
+      "total_revenue": 7685000000.0,
+      "net_margin": 0.3688
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1243000000.0,
+      "total_revenue": 9246000000.0,
+      "net_margin": 0.1344
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1511000000.0,
+      "total_revenue": 10270000000.0,
+      "net_margin": 0.1471
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 5009000000.0,
+      "total_revenue": 10253000000.0,
+      "net_margin": 0.4885
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "AMD",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 2490000000.0,
+      "total_revenue": 9763000000.0,
+      "net_margin": 0.255
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 3162000000.0,
+      "total_revenue": 16434000000.0,
+      "net_margin": 0.1924
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 1320000000.0,
+      "total_revenue": 23601000000.0,
+      "net_margin": 0.0559
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 854000000.0,
+      "total_revenue": 22680000000.0,
+      "net_margin": 0.0377
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1641000000.0,
+      "total_revenue": 25785000000.0,
+      "net_margin": 0.0636
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 4335000000.0,
+      "total_revenue": 34639000000.0,
+      "net_margin": 0.1251
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "AMD",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 6550000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2022-09-30",
+      "ebitda": 548000000.0,
+      "total_revenue": 5565000000.0,
+      "ebitda_margin": 0.0985
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2022-12-31",
+      "ebitda": 1128000000.0,
+      "total_revenue": 5599000000.0,
+      "ebitda_margin": 0.2015
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2023-03-31",
+      "ebitda": 904000000.0,
+      "total_revenue": 5353000000.0,
+      "ebitda_margin": 0.1689
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2023-06-30",
+      "ebitda": 899000000.0,
+      "total_revenue": 5359000000.0,
+      "ebitda_margin": 0.1678
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2023-09-30",
+      "ebitda": 1131000000.0,
+      "total_revenue": 5800000000.0,
+      "ebitda_margin": 0.195
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2023-12-31",
+      "ebitda": 1215000000.0,
+      "total_revenue": 6168000000.0,
+      "ebitda_margin": 0.197
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2024-03-31",
+      "ebitda": 873000000.0,
+      "total_revenue": 5473000000.0,
+      "ebitda_margin": 0.1595
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2024-06-30",
+      "ebitda": 1093000000.0,
+      "total_revenue": 5835000000.0,
+      "ebitda_margin": 0.1873
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2024-09-30",
+      "ebitda": 1516000000.0,
+      "total_revenue": 6819000000.0,
+      "ebitda_margin": 0.2223
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2024-12-31",
+      "ebitda": 1694000000.0,
+      "total_revenue": 7658000000.0,
+      "ebitda_margin": 0.2212
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2025-03-31",
+      "ebitda": 1587000000.0,
+      "total_revenue": 7438000000.0,
+      "ebitda_margin": 0.2134
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2025-06-30",
+      "ebitda": 5600000000.0,
+      "total_revenue": 7685000000.0,
+      "ebitda_margin": 0.7287
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2025-09-30",
+      "ebitda": 2106000000.0,
+      "total_revenue": 9246000000.0,
+      "ebitda_margin": 0.2278
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2025-12-31",
+      "ebitda": 2861000000.0,
+      "total_revenue": 10270000000.0,
+      "ebitda_margin": 0.2786
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2026-03-31",
+      "ebitda": 8086000000.0,
+      "total_revenue": 10253000000.0,
+      "ebitda_margin": 0.7886
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "AMD",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2020-12-31",
+      "ebitda": 1676000000.0,
+      "total_revenue": 9763000000.0,
+      "ebitda_margin": 0.1717
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2021-12-31",
+      "ebitda": 4166000000.0,
+      "total_revenue": 16434000000.0,
+      "ebitda_margin": 0.2535
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2022-12-31",
+      "ebitda": 5534000000.0,
+      "total_revenue": 23601000000.0,
+      "ebitda_margin": 0.2345
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2023-12-31",
+      "ebitda": 4051000000.0,
+      "total_revenue": 22680000000.0,
+      "ebitda_margin": 0.1786
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2024-12-31",
+      "ebitda": 5145000000.0,
+      "total_revenue": 25785000000.0,
+      "ebitda_margin": 0.1995
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2025-12-31",
+      "ebitda": 7275000000.0,
+      "total_revenue": 34639000000.0,
+      "ebitda_margin": 0.21
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "AMD",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 1038000000.0,
+      "total_revenue": 6550000000.0,
+      "fcf_margin": 0.1585
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": 5565000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": 5599000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": 5353000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 254000000.0,
+      "total_revenue": 5359000000.0,
+      "fcf_margin": 0.0474
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 297000000.0,
+      "total_revenue": 5800000000.0,
+      "fcf_margin": 0.0512
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 242000000.0,
+      "total_revenue": 6168000000.0,
+      "fcf_margin": 0.0392
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 379000000.0,
+      "total_revenue": 5473000000.0,
+      "fcf_margin": 0.0692
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 439000000.0,
+      "total_revenue": 5835000000.0,
+      "fcf_margin": 0.0752
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 496000000.0,
+      "total_revenue": 6819000000.0,
+      "fcf_margin": 0.0727
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 1091000000.0,
+      "total_revenue": 7658000000.0,
+      "fcf_margin": 0.1425
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 727000000.0,
+      "total_revenue": 7438000000.0,
+      "fcf_margin": 0.0977
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 4043000000.0,
+      "total_revenue": 7685000000.0,
+      "fcf_margin": 0.5261
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 1901000000.0,
+      "total_revenue": 9246000000.0,
+      "fcf_margin": 0.2056
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 2378000000.0,
+      "total_revenue": 10270000000.0,
+      "fcf_margin": 0.2315
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 8574000000.0,
+      "total_revenue": 10253000000.0,
+      "fcf_margin": 0.8362
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "AMD",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 777000000.0,
+      "total_revenue": 9763000000.0,
+      "fcf_margin": 0.0796
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 3220000000.0,
+      "total_revenue": 16434000000.0,
+      "fcf_margin": 0.1959
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 3115000000.0,
+      "total_revenue": 23601000000.0,
+      "fcf_margin": 0.132
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 1121000000.0,
+      "total_revenue": 22680000000.0,
+      "fcf_margin": 0.0494
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 2405000000.0,
+      "total_revenue": 25785000000.0,
+      "fcf_margin": 0.0933
+    },
+    {
+      "symbol": "AMD",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 6735000000.0,
+      "total_revenue": 34639000000.0,
+      "fcf_margin": 0.1944
+    }
+  ]
+}

@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "SCHW",
+      "report_date": "2022-06-30",
+      "gross_profit": null,
+      "total_revenue": 5093000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": 5497000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2023-06-30",
+      "gross_profit": null,
+      "total_revenue": 4656000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2023-09-30",
+      "gross_profit": null,
+      "total_revenue": 4606000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2023-12-31",
+      "gross_profit": null,
+      "total_revenue": 4459000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2024-03-31",
+      "gross_profit": null,
+      "total_revenue": 4744000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2024-06-30",
+      "gross_profit": null,
+      "total_revenue": 4690000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2024-09-30",
+      "gross_profit": null,
+      "total_revenue": 4847000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2024-12-31",
+      "gross_profit": null,
+      "total_revenue": 5329000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2025-03-31",
+      "gross_profit": null,
+      "total_revenue": 5599000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2025-06-30",
+      "gross_profit": null,
+      "total_revenue": 5851000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2025-09-30",
+      "gross_profit": null,
+      "total_revenue": 6135000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2025-12-31",
+      "gross_profit": null,
+      "total_revenue": 6336000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2026-03-31",
+      "gross_profit": null,
+      "total_revenue": 6482000000.0,
+      "gross_margin": null
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "SCHW",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2020-12-31",
+      "gross_profit": null,
+      "total_revenue": 11691000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2021-12-31",
+      "gross_profit": null,
+      "total_revenue": 18520000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": 20762000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2023-12-31",
+      "gross_profit": null,
+      "total_revenue": 18837000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2024-12-31",
+      "gross_profit": null,
+      "total_revenue": 19606000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2025-12-31",
+      "gross_profit": null,
+      "total_revenue": 23921000000.0,
+      "gross_margin": null
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "SCHW",
+      "report_date": "2022-06-30",
+      "operating_income": null,
+      "total_revenue": 5093000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": 5497000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2023-06-30",
+      "operating_income": null,
+      "total_revenue": 4656000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2023-09-30",
+      "operating_income": null,
+      "total_revenue": 4606000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2023-12-31",
+      "operating_income": null,
+      "total_revenue": 4459000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2024-03-31",
+      "operating_income": null,
+      "total_revenue": 4744000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2024-06-30",
+      "operating_income": null,
+      "total_revenue": 4690000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2024-09-30",
+      "operating_income": null,
+      "total_revenue": 4847000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2024-12-31",
+      "operating_income": null,
+      "total_revenue": 5329000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2025-03-31",
+      "operating_income": null,
+      "total_revenue": 5599000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2025-06-30",
+      "operating_income": null,
+      "total_revenue": 5851000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2025-09-30",
+      "operating_income": null,
+      "total_revenue": 6135000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2025-12-31",
+      "operating_income": null,
+      "total_revenue": 6336000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2026-03-31",
+      "operating_income": null,
+      "total_revenue": 6482000000.0,
+      "operating_margin": null
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "SCHW",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2020-12-31",
+      "operating_income": null,
+      "total_revenue": 11691000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2021-12-31",
+      "operating_income": null,
+      "total_revenue": 18520000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": 20762000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2023-12-31",
+      "operating_income": null,
+      "total_revenue": 18837000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2024-12-31",
+      "operating_income": null,
+      "total_revenue": 19606000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2025-12-31",
+      "operating_income": null,
+      "total_revenue": 23921000000.0,
+      "operating_margin": null
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "SCHW",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 1652000000.0,
+      "total_revenue": 5093000000.0,
+      "net_margin": 0.3244
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 1821000000.0,
+      "total_revenue": 5497000000.0,
+      "net_margin": 0.3313
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 1173000000.0,
+      "total_revenue": 4656000000.0,
+      "net_margin": 0.2519
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1017000000.0,
+      "total_revenue": 4606000000.0,
+      "net_margin": 0.2208
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 926000000.0,
+      "total_revenue": 4459000000.0,
+      "net_margin": 0.2077
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1251000000.0,
+      "total_revenue": 4744000000.0,
+      "net_margin": 0.2637
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1211000000.0,
+      "total_revenue": 4690000000.0,
+      "net_margin": 0.2582
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1299000000.0,
+      "total_revenue": 4847000000.0,
+      "net_margin": 0.268
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1717000000.0,
+      "total_revenue": 5329000000.0,
+      "net_margin": 0.3222
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1796000000.0,
+      "total_revenue": 5599000000.0,
+      "net_margin": 0.3208
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 6789000000.0,
+      "total_revenue": 5851000000.0,
+      "net_margin": 1.1603
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 2277000000.0,
+      "total_revenue": 6135000000.0,
+      "net_margin": 0.3711
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 2367000000.0,
+      "total_revenue": 6336000000.0,
+      "net_margin": 0.3736
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 9018000000.0,
+      "total_revenue": 6482000000.0,
+      "net_margin": 1.3912
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "SCHW",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 3043000000.0,
+      "total_revenue": 11691000000.0,
+      "net_margin": 0.2603
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 5360000000.0,
+      "total_revenue": 18520000000.0,
+      "net_margin": 0.2894
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 6635000000.0,
+      "total_revenue": 20762000000.0,
+      "net_margin": 0.3196
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 4649000000.0,
+      "total_revenue": 18837000000.0,
+      "net_margin": 0.2468
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 5478000000.0,
+      "total_revenue": 19606000000.0,
+      "net_margin": 0.2794
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 8417000000.0,
+      "total_revenue": 23921000000.0,
+      "net_margin": 0.3519
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "SCHW",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 5093000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": 5497000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2023-06-30",
+      "ebitda": null,
+      "total_revenue": 4656000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2023-09-30",
+      "ebitda": null,
+      "total_revenue": 4606000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2023-12-31",
+      "ebitda": null,
+      "total_revenue": 4459000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2024-03-31",
+      "ebitda": null,
+      "total_revenue": 4744000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2024-06-30",
+      "ebitda": null,
+      "total_revenue": 4690000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2024-09-30",
+      "ebitda": null,
+      "total_revenue": 4847000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2024-12-31",
+      "ebitda": null,
+      "total_revenue": 5329000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2025-03-31",
+      "ebitda": null,
+      "total_revenue": 5599000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2025-06-30",
+      "ebitda": null,
+      "total_revenue": 5851000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2025-09-30",
+      "ebitda": null,
+      "total_revenue": 6135000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2025-12-31",
+      "ebitda": null,
+      "total_revenue": 6336000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2026-03-31",
+      "ebitda": null,
+      "total_revenue": 6482000000.0,
+      "ebitda_margin": null
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "SCHW",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2020-12-31",
+      "ebitda": null,
+      "total_revenue": 11691000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2021-12-31",
+      "ebitda": null,
+      "total_revenue": 18520000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": 20762000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2023-12-31",
+      "ebitda": null,
+      "total_revenue": 18837000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2024-12-31",
+      "ebitda": null,
+      "total_revenue": 19606000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2025-12-31",
+      "ebitda": null,
+      "total_revenue": 23921000000.0,
+      "ebitda_margin": null
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "SCHW",
+      "report_date": "2022-06-30",
+      "free_cash_flow": -8184000000.0,
+      "total_revenue": 5093000000.0,
+      "fcf_margin": -1.6069
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2022-09-30",
+      "free_cash_flow": 8822000000.0,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": 5497000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2023-06-30",
+      "free_cash_flow": -5455000000.0,
+      "total_revenue": 4656000000.0,
+      "fcf_margin": -1.1716
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2023-09-30",
+      "free_cash_flow": -5250000000.0,
+      "total_revenue": 4606000000.0,
+      "fcf_margin": -1.1398
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 19974000000.0,
+      "total_revenue": 4459000000.0,
+      "fcf_margin": 4.4795
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2024-03-31",
+      "free_cash_flow": -1498000000.0,
+      "total_revenue": 4744000000.0,
+      "fcf_margin": -0.3158
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2024-06-30",
+      "free_cash_flow": -4341000000.0,
+      "total_revenue": 4690000000.0,
+      "fcf_margin": -0.9256
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 18970000000.0,
+      "total_revenue": 4847000000.0,
+      "fcf_margin": 3.9138
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2024-12-31",
+      "free_cash_flow": -11081000000.0,
+      "total_revenue": 5329000000.0,
+      "fcf_margin": -2.0794
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 6242000000.0,
+      "total_revenue": 5599000000.0,
+      "fcf_margin": 1.1148
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 17180000000.0,
+      "total_revenue": 5851000000.0,
+      "fcf_margin": 2.9363
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 393000000.0,
+      "total_revenue": 6135000000.0,
+      "fcf_margin": 0.0641
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2025-12-31",
+      "free_cash_flow": -921000000.0,
+      "total_revenue": 6336000000.0,
+      "fcf_margin": -0.1454
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 9723000000.0,
+      "total_revenue": 6482000000.0,
+      "fcf_margin": 1.5
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "SCHW",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 6221000000.0,
+      "total_revenue": 11691000000.0,
+      "fcf_margin": 0.5321
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 1202000000.0,
+      "total_revenue": 18520000000.0,
+      "fcf_margin": 0.0649
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 1086000000.0,
+      "total_revenue": 20762000000.0,
+      "fcf_margin": 0.0523
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 18887000000.0,
+      "total_revenue": 18837000000.0,
+      "fcf_margin": 1.0027
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 2050000000.0,
+      "total_revenue": 19606000000.0,
+      "fcf_margin": 0.1046
+    },
+    {
+      "symbol": "SCHW",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 8763000000.0,
+      "total_revenue": 23921000000.0,
+      "fcf_margin": 0.3663
+    }
+  ]
+}

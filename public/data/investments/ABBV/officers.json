@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "ABBV",
+    "name": "Dr. Azita  Saleki-Gerhardt Ph.D.",
+    "title": "Executive VP & COO",
+    "age": 62,
+    "born": 1963,
+    "pay": 4072891,
+    "exercised": 6082652,
+    "unexercised": 35551848,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "ABBV",
+    "name": "Dr. Roopal B. Thakkar M.D.",
+    "title": "Executive VP of Research & Development and Chief Scientific Officer",
+    "age": 53,
+    "born": 1972,
+    "pay": 3555921,
+    "exercised": 0,
+    "unexercised": 4641851,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "ABBV",
+    "name": "Mr. Demetris D. Crum",
+    "title": "Executive VP & Chief Human Resources Officer",
+    "age": 44,
+    "born": 1981,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "ABBV",
+    "name": "Mr. Jeffrey Ryan Stewart",
+    "title": "Executive VP & Chief Commercial Officer",
+    "age": 56,
+    "born": 1969,
+    "pay": 5003102,
+    "exercised": 3353224,
+    "unexercised": 19454704,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "ABBV",
+    "name": "Mr. Perry C. Siatis",
+    "title": "Executive VP, General Counsel & Secretary",
+    "age": 50,
+    "born": 1975,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "ABBV",
+    "name": "Mr. Robert A. Michael CPA",
+    "title": "CEO & Chairman of the Board",
+    "age": 55,
+    "born": 1970,
+    "pay": 7416293,
+    "exercised": 0,
+    "unexercised": 38921088,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "ABBV",
+    "name": "Mr. Scott T. Reents",
+    "title": "Executive VP & CFO",
+    "age": 57,
+    "born": 1968,
+    "pay": 3946913,
+    "exercised": 0,
+    "unexercised": 13317257,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "ABBV",
+    "name": "Mr. Wulff-Erik  von Borcke",
+    "title": "Senior VP & President of Oncology",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "ABBV",
+    "name": "Ms. Elizabeth  Shea",
+    "title": "Senior Vice President of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  },
+  {
+    "symbol": "ABBV",
+    "name": "Ms. Linda  Ray",
+    "title": "Senior VP & Chief Information Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-05-25"
+  }
+]

@@ -64,8 +64,17 @@ export function createEmptyMlbTeamSnapshot(): MlbTeamSnapshot {
   };
 }
 
+// Regex shape check (MLB ids are positive integers, max 5 digits) runs before
+// membership so a malformed id can be rejected as a 400 by route handlers
+// without touching the snapshot dictionary.
+const MLB_TEAM_ID_PATTERN = /^[1-9]\d{0,4}$/;
+
+export function isMlbTeamIdShape(teamId: string): boolean {
+  return MLB_TEAM_ID_PATTERN.test(teamId);
+}
+
 export function isValidMlbTeamId(teamId: string): boolean {
-  return teamId in mlbSnapshot.teamSnapshots;
+  return MLB_TEAM_ID_PATTERN.test(teamId) && teamId in mlbSnapshot.teamSnapshots;
 }
 
 export async function getMlbSummarySnapshot(): Promise<MlbSummarySnapshot> {

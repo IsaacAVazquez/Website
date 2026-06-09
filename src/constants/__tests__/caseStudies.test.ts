@@ -1,9 +1,14 @@
-import { getHomepageFeaturedCaseStudies, getPortfolioProjects } from "../caseStudies";
+import {
+  getHomepageFeaturedCaseStudies,
+  getPortfolioProjects,
+  getProjectCardOutcome,
+} from "../caseStudies";
 
 const expectedPortfolioSlugs = [
   "investment-analytics-platform",
   "interchange-iq",
   "news-pulse-dashboard",
+  "pulse-dashboards",
   "ai-dev-tool-ecosystem",
   "frontier-model-tracker",
   "github-trending-pulse",
@@ -18,9 +23,11 @@ const expectedPortfolioSlugs = [
   "spacex-mission-control",
   "premier-league-pulse",
   "la-liga-pulse",
+  "world-cup-pulse",
   "fantasy-football-analytics",
   "nfl-pulse",
   "formula-1-pulse",
+  "fantasy-formula-1-optimizer",
   "pga-tour-pulse",
   "mlb-pulse",
   "nba-pulse",
@@ -61,9 +68,11 @@ describe("caseStudies helpers", () => {
         "/spacex-mission-control",
         "/premier-league",
         "/la-liga",
+        "/world-cup-2026",
         "/fantasy-football",
         "/nfl",
         "/formula-1",
+        "/fantasy-formula-1",
         "/golf",
         "/mlb",
         "/nba",
@@ -80,5 +89,16 @@ describe("caseStudies helpers", () => {
       "news-pulse-dashboard",
       "interchange-iq",
     ]);
+  });
+
+  it("uses user-facing impact for portfolio card outcomes", () => {
+    const pulseDashboards = getPortfolioProjects().find(
+      (project) => project.slug === "pulse-dashboards"
+    );
+
+    expect(pulseDashboards).toBeDefined();
+    expect(getProjectCardOutcome(pulseDashboards!)).toBe(
+      "Users get a faster read on what changed, what matters now, and where to click next without stitching the context together themselves."
+    );
   });
 });

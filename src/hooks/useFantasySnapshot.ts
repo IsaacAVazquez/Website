@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { fantasySnapshotRevision } from "@/data/fantasySnapshotRevision.generated";
+import { logger } from "@/lib/logger";
 import {
   FantasyRoutePosition,
   FantasyRouteScoring,
@@ -52,6 +53,35 @@ function cacheNormalizedFantasySnapshot(
   return normalizedSnapshot;
 }
 
+async function fetchStaticFantasySnapshot(scoring: FantasyRouteScoring): Promise<unknown> {
+  const response = await fetch(`/data/fantasy/${scoring}.json?v=${fantasySnapshotRevision}`, {
+    cache: "force-cache",
+  });
+
+  if (!response.ok) {
+    throw new Error(`Static fantasy snapshot fetch failed (${response.status})`);
+  }
+
+  return response.json();
+}
+
+async function fetchApiFantasySnapshot(scoring: FantasyRouteScoring): Promise<unknown> {
+  const response = await fetch(`/api/fantasy-data?scoring=${scoring}&all=true`, {
+    cache: "no-store",
+  });
+
+  if (!response.ok) {
+    throw new Error(`API fantasy snapshot fetch failed (${response.status})`);
+  }
+
+  const payload = (await response.json()) as { success?: boolean; data?: unknown };
+  if (!payload?.success || !payload.data) {
+    throw new Error("API fantasy snapshot returned no data");
+  }
+
+  return payload.data;
+}
+
 async function loadFantasySnapshot(scoring: FantasyRouteScoring): Promise<FantasySnapshot> {
   const cacheKey = getFantasySnapshotCacheKey(scoring);
   const cachedSnapshot = snapshotCache.get(cacheKey);
@@ -64,16 +94,21 @@ async function loadFantasySnapshot(scoring: FantasyRouteScoring): Promise<Fantas
     return inflightRequest;
   }
 
-  const request = fetch(`/data/fantasy/${scoring}.json?v=${fantasySnapshotRevision}`, {
-    cache: "force-cache",
-  })
-    .then(async (response) => {
-      if (!response.ok) {
-        throw new Error("Fantasy rankings are unavailable right now.");
+  // Try the static JSON first (cheap, CDN-cacheable). On any failure — typically
+  // a missing snapshot file during a botched deploy — fall back to the API
+  // route, which reads the same files server-side and so should agree on shape.
+  // Only surface a user-visible error when both paths fail.
+  const request = fetchStaticFantasySnapshot(scoring)
+    .catch(async (staticError) => {
+      try {
+        return await fetchApiFantasySnapshot(scoring);
+      } catch (apiError) {
+        logger.warn("Fantasy snapshot static fetch failed", staticError);
+        logger.warn("Fantasy snapshot API fallback failed", apiError);
+        throw new Error("Fantasy rankings are unavailable right now.", { cause: apiError });
       }
-
-      return cacheNormalizedFantasySnapshot(scoring, await response.json());
     })
+    .then((rawSnapshot) => cacheNormalizedFantasySnapshot(scoring, rawSnapshot))
     .finally(() => {
       inflightSnapshotRequests.delete(cacheKey);
     });

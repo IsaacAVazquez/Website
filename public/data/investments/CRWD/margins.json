@@ -1,0 +1,862 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "CRWD",
+      "report_date": "2022-04-30",
+      "gross_profit": 361002000.0,
+      "total_revenue": 487834000.0,
+      "gross_margin": 0.74
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2022-07-31",
+      "gross_profit": 394586000.0,
+      "total_revenue": 535153000.0,
+      "gross_margin": 0.7373
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2022-10-31",
+      "gross_profit": 422654000.0,
+      "total_revenue": 580882000.0,
+      "gross_margin": 0.7276
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2023-01-31",
+      "gross_profit": 461763000.0,
+      "total_revenue": 637367000.0,
+      "gross_margin": 0.7245
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2023-04-30",
+      "gross_profit": 523350000.0,
+      "total_revenue": 692580000.0,
+      "gross_margin": 0.7557
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2023-07-31",
+      "gross_profit": 548709000.0,
+      "total_revenue": 731626000.0,
+      "gross_margin": 0.75
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2023-10-31",
+      "gross_profit": 591010000.0,
+      "total_revenue": 786014000.0,
+      "gross_margin": 0.7519
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-01-31",
+      "gross_profit": 636763000.0,
+      "total_revenue": 845335000.0,
+      "gross_margin": 0.7533
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-04-30",
+      "gross_profit": 696033000.0,
+      "total_revenue": 921036000.0,
+      "gross_margin": 0.7557
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-07-31",
+      "gross_profit": 726471000.0,
+      "total_revenue": 963872000.0,
+      "gross_margin": 0.7537
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-10-31",
+      "gross_profit": 755091000.0,
+      "total_revenue": 1010178000.0,
+      "gross_margin": 0.7475
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-01-31",
+      "gross_profit": 784548000.0,
+      "total_revenue": 1058538000.0,
+      "gross_margin": 0.7412
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-04-30",
+      "gross_profit": 815559000.0,
+      "total_revenue": 1103434000.0,
+      "gross_margin": 0.7391
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-07-31",
+      "gross_profit": 858669000.0,
+      "total_revenue": 1168952000.0,
+      "gross_margin": 0.7346
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-10-31",
+      "gross_profit": 926439000.0,
+      "total_revenue": 1234244000.0,
+      "gross_margin": 0.7506
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-01-31",
+      "gross_profit": 993677000.0,
+      "total_revenue": 1305375000.0,
+      "gross_margin": 0.7612
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-04-30",
+      "gross_profit": 1043352000.0,
+      "total_revenue": 1385629000.0,
+      "gross_margin": 0.753
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "CRWD",
+      "report_date": "2020-01-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2021-01-31",
+      "gross_profit": 644893000.0,
+      "total_revenue": 874438000.0,
+      "gross_margin": 0.7375
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2022-01-31",
+      "gross_profit": 1068373000.0,
+      "total_revenue": 1451594000.0,
+      "gross_margin": 0.736
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2023-01-31",
+      "gross_profit": 1640005000.0,
+      "total_revenue": 2241236000.0,
+      "gross_margin": 0.7317
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-01-31",
+      "gross_profit": 2296626000.0,
+      "total_revenue": 3055555000.0,
+      "gross_margin": 0.7516
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-01-31",
+      "gross_profit": 2963452000.0,
+      "total_revenue": 3953624000.0,
+      "gross_margin": 0.7496
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-01-31",
+      "gross_profit": 3593076000.0,
+      "total_revenue": 4812005000.0,
+      "gross_margin": 0.7467
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "CRWD",
+      "report_date": "2022-04-30",
+      "operating_income": -23883000.0,
+      "total_revenue": 487834000.0,
+      "operating_margin": -0.049
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2022-07-31",
+      "operating_income": -48307000.0,
+      "total_revenue": 535153000.0,
+      "operating_margin": -0.0903
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2022-10-31",
+      "operating_income": -56422000.0,
+      "total_revenue": 580882000.0,
+      "operating_margin": -0.0971
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2023-01-31",
+      "operating_income": -61500000.0,
+      "total_revenue": 637367000.0,
+      "operating_margin": -0.0965
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2023-04-30",
+      "operating_income": -19456000.0,
+      "total_revenue": 692580000.0,
+      "operating_margin": -0.0281
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2023-07-31",
+      "operating_income": -15373000.0,
+      "total_revenue": 731626000.0,
+      "operating_margin": -0.021
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2023-10-31",
+      "operating_income": 3163000.0,
+      "total_revenue": 786014000.0,
+      "operating_margin": 0.004
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-01-31",
+      "operating_income": 29671000.0,
+      "total_revenue": 845335000.0,
+      "operating_margin": 0.0351
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-04-30",
+      "operating_income": 6936000.0,
+      "total_revenue": 921036000.0,
+      "operating_margin": 0.0075
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-07-31",
+      "operating_income": 13658000.0,
+      "total_revenue": 963872000.0,
+      "operating_margin": 0.0142
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-10-31",
+      "operating_income": -55723000.0,
+      "total_revenue": 1010178000.0,
+      "operating_margin": -0.0552
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-01-31",
+      "operating_income": -85301000.0,
+      "total_revenue": 1058538000.0,
+      "operating_margin": -0.0806
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-04-30",
+      "operating_income": -118713000.0,
+      "total_revenue": 1103434000.0,
+      "operating_margin": -0.1076
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-07-31",
+      "operating_income": -112979000.0,
+      "total_revenue": 1168952000.0,
+      "operating_margin": -0.0966
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-10-31",
+      "operating_income": -69443000.0,
+      "total_revenue": 1234244000.0,
+      "operating_margin": -0.0563
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-01-31",
+      "operating_income": 13786000.0,
+      "total_revenue": 1305375000.0,
+      "operating_margin": 0.0106
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-04-30",
+      "operating_income": -30600000.0,
+      "total_revenue": 1385629000.0,
+      "operating_margin": -0.0221
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "CRWD",
+      "report_date": "2020-01-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2021-01-31",
+      "operating_income": -92529000.0,
+      "total_revenue": 874438000.0,
+      "operating_margin": -0.1058
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2022-01-31",
+      "operating_income": -142548000.0,
+      "total_revenue": 1451594000.0,
+      "operating_margin": -0.0982
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2023-01-31",
+      "operating_income": -190112000.0,
+      "total_revenue": 2241236000.0,
+      "operating_margin": -0.0848
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-01-31",
+      "operating_income": -19141000.0,
+      "total_revenue": 3055555000.0,
+      "operating_margin": -0.0063
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-01-31",
+      "operating_income": -116400000.0,
+      "total_revenue": 3953624000.0,
+      "operating_margin": -0.0294
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-01-31",
+      "operating_income": -293292000.0,
+      "total_revenue": 4812005000.0,
+      "operating_margin": -0.061
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "CRWD",
+      "report_date": "2022-04-30",
+      "net_income_common_stockholders": -31523000.0,
+      "total_revenue": 487834000.0,
+      "net_margin": -0.0646
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2022-07-31",
+      "net_income_common_stockholders": -49285000.0,
+      "total_revenue": 535153000.0,
+      "net_margin": -0.0921
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2022-10-31",
+      "net_income_common_stockholders": -54956000.0,
+      "total_revenue": 580882000.0,
+      "net_margin": -0.0946
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2023-01-31",
+      "net_income_common_stockholders": -47481000.0,
+      "total_revenue": 637367000.0,
+      "net_margin": -0.0745
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2023-04-30",
+      "net_income_common_stockholders": 491000.0,
+      "total_revenue": 692580000.0,
+      "net_margin": 0.0007
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2023-07-31",
+      "net_income_common_stockholders": 8472000.0,
+      "total_revenue": 731626000.0,
+      "net_margin": 0.0116
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2023-10-31",
+      "net_income_common_stockholders": 26665000.0,
+      "total_revenue": 786014000.0,
+      "net_margin": 0.0339
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-01-31",
+      "net_income_common_stockholders": 53699000.0,
+      "total_revenue": 845335000.0,
+      "net_margin": 0.0635
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-04-30",
+      "net_income_common_stockholders": 42820000.0,
+      "total_revenue": 921036000.0,
+      "net_margin": 0.0465
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-07-31",
+      "net_income_common_stockholders": 47013000.0,
+      "total_revenue": 963872000.0,
+      "net_margin": 0.0488
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-10-31",
+      "net_income_common_stockholders": -16822000.0,
+      "total_revenue": 1010178000.0,
+      "net_margin": -0.0167
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-01-31",
+      "net_income_common_stockholders": -92282000.0,
+      "total_revenue": 1058538000.0,
+      "net_margin": -0.0872
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-04-30",
+      "net_income_common_stockholders": -104264000.0,
+      "total_revenue": 1103434000.0,
+      "net_margin": -0.0945
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-07-31",
+      "net_income_common_stockholders": -77675000.0,
+      "total_revenue": 1168952000.0,
+      "net_margin": -0.0664
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-10-31",
+      "net_income_common_stockholders": -33997000.0,
+      "total_revenue": 1234244000.0,
+      "net_margin": -0.0275
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-01-31",
+      "net_income_common_stockholders": 59377000.0,
+      "total_revenue": 1305375000.0,
+      "net_margin": 0.0455
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-04-30",
+      "net_income_common_stockholders": 27774000.0,
+      "total_revenue": 1385629000.0,
+      "net_margin": 0.02
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "CRWD",
+      "report_date": "2020-01-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2021-01-31",
+      "net_income_common_stockholders": -92629000.0,
+      "total_revenue": 874438000.0,
+      "net_margin": -0.1059
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2022-01-31",
+      "net_income_common_stockholders": -234802000.0,
+      "total_revenue": 1451594000.0,
+      "net_margin": -0.1618
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2023-01-31",
+      "net_income_common_stockholders": -183245000.0,
+      "total_revenue": 2241236000.0,
+      "net_margin": -0.0818
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-01-31",
+      "net_income_common_stockholders": 72181000.0,
+      "total_revenue": 3055555000.0,
+      "net_margin": 0.0236
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-01-31",
+      "net_income_common_stockholders": -15241000.0,
+      "total_revenue": 3953624000.0,
+      "net_margin": -0.0039
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-01-31",
+      "net_income_common_stockholders": -162502000.0,
+      "total_revenue": 4812005000.0,
+      "net_margin": -0.0338
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "CRWD",
+      "report_date": "2022-04-30",
+      "ebitda": null,
+      "total_revenue": 487834000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2022-07-31",
+      "ebitda": -15291000.0,
+      "total_revenue": 535153000.0,
+      "ebitda_margin": -0.0286
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2022-10-31",
+      "ebitda": -15805000.0,
+      "total_revenue": 580882000.0,
+      "ebitda_margin": -0.0272
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2023-01-31",
+      "ebitda": -9416000.0,
+      "total_revenue": 637367000.0,
+      "ebitda_margin": -0.0148
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2023-04-30",
+      "ebitda": 41878000.0,
+      "total_revenue": 692580000.0,
+      "ebitda_margin": 0.0605
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2023-07-31",
+      "ebitda": 53408000.0,
+      "total_revenue": 731626000.0,
+      "ebitda_margin": 0.073
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2023-10-31",
+      "ebitda": 81200000.0,
+      "total_revenue": 786014000.0,
+      "ebitda_margin": 0.1033
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-01-31",
+      "ebitda": 117341000.0,
+      "total_revenue": 845335000.0,
+      "ebitda_margin": 0.1388
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-04-30",
+      "ebitda": 109126000.0,
+      "total_revenue": 921036000.0,
+      "ebitda_margin": 0.1185
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-07-31",
+      "ebitda": 116737000.0,
+      "total_revenue": 963872000.0,
+      "ebitda_margin": 0.1211
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-10-31",
+      "ebitda": 51297000.0,
+      "total_revenue": 1010178000.0,
+      "ebitda_margin": 0.0508
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-01-31",
+      "ebitda": 17641000.0,
+      "total_revenue": 1058538000.0,
+      "ebitda_margin": 0.0167
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-04-30",
+      "ebitda": -13172000.0,
+      "total_revenue": 1103434000.0,
+      "ebitda_margin": -0.0119
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-07-31",
+      "ebitda": 3187000.0,
+      "total_revenue": 1168952000.0,
+      "ebitda_margin": 0.0027
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-10-31",
+      "ebitda": 55512000.0,
+      "total_revenue": 1234244000.0,
+      "ebitda_margin": 0.045
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-01-31",
+      "ebitda": 142899000.0,
+      "total_revenue": 1305375000.0,
+      "ebitda_margin": 0.1095
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-04-30",
+      "ebitda": 133106000.0,
+      "total_revenue": 1385629000.0,
+      "ebitda_margin": 0.0961
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "CRWD",
+      "report_date": "2020-01-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2021-01-31",
+      "ebitda": -46152000.0,
+      "total_revenue": 874438000.0,
+      "ebitda_margin": -0.0528
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2022-01-31",
+      "ebitda": -65982000.0,
+      "total_revenue": 1451594000.0,
+      "ebitda_margin": -0.0455
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2023-01-31",
+      "ebitda": -40754000.0,
+      "total_revenue": 2241236000.0,
+      "ebitda_margin": -0.0182
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-01-31",
+      "ebitda": 276681000.0,
+      "total_revenue": 3055555000.0,
+      "ebitda_margin": 0.0906
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-01-31",
+      "ebitda": 298831000.0,
+      "total_revenue": 3953624000.0,
+      "ebitda_margin": 0.0756
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-01-31",
+      "ebitda": 182483000.0,
+      "total_revenue": 4812005000.0,
+      "ebitda_margin": 0.0379
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "CRWD",
+      "report_date": "2022-04-30",
+      "free_cash_flow": 156832000.0,
+      "total_revenue": 487834000.0,
+      "fcf_margin": 0.3215
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2022-07-31",
+      "free_cash_flow": 135757000.0,
+      "total_revenue": 535153000.0,
+      "fcf_margin": 0.2537
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2022-10-31",
+      "free_cash_flow": null,
+      "total_revenue": 580882000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2023-01-31",
+      "free_cash_flow": null,
+      "total_revenue": 637367000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2023-04-30",
+      "free_cash_flow": null,
+      "total_revenue": 692580000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2023-07-31",
+      "free_cash_flow": 188791000.0,
+      "total_revenue": 731626000.0,
+      "fcf_margin": 0.258
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2023-10-31",
+      "free_cash_flow": 239598000.0,
+      "total_revenue": 786014000.0,
+      "fcf_margin": 0.3048
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-01-31",
+      "free_cash_flow": 272980000.0,
+      "total_revenue": 845335000.0,
+      "fcf_margin": 0.3229
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-04-30",
+      "free_cash_flow": 323066000.0,
+      "total_revenue": 921036000.0,
+      "fcf_margin": 0.3508
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-07-31",
+      "free_cash_flow": 272871000.0,
+      "total_revenue": 963872000.0,
+      "fcf_margin": 0.2831
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-10-31",
+      "free_cash_flow": 231161000.0,
+      "total_revenue": 1010178000.0,
+      "fcf_margin": 0.2288
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-01-31",
+      "free_cash_flow": 240808000.0,
+      "total_revenue": 1058538000.0,
+      "fcf_margin": 0.2275
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-04-30",
+      "free_cash_flow": 280919000.0,
+      "total_revenue": 1103434000.0,
+      "fcf_margin": 0.2546
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-07-31",
+      "free_cash_flow": 285046000.0,
+      "total_revenue": 1168952000.0,
+      "fcf_margin": 0.2438
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-10-31",
+      "free_cash_flow": 297376000.0,
+      "total_revenue": 1234244000.0,
+      "fcf_margin": 0.2409
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-01-31",
+      "free_cash_flow": 378149000.0,
+      "total_revenue": 1305375000.0,
+      "fcf_margin": 0.2897
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-04-30",
+      "free_cash_flow": 470742000.0,
+      "total_revenue": 1385629000.0,
+      "fcf_margin": 0.3397
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "CRWD",
+      "report_date": "2020-01-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2021-01-31",
+      "free_cash_flow": 292723000.0,
+      "total_revenue": 874438000.0,
+      "fcf_margin": 0.3348
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2022-01-31",
+      "free_cash_flow": 441095000.0,
+      "total_revenue": 1451594000.0,
+      "fcf_margin": 0.3039
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2023-01-31",
+      "free_cash_flow": 674570000.0,
+      "total_revenue": 2241236000.0,
+      "fcf_margin": 0.301
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-01-31",
+      "free_cash_flow": 929095000.0,
+      "total_revenue": 3055555000.0,
+      "fcf_margin": 0.3041
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-01-31",
+      "free_cash_flow": 1067906000.0,
+      "total_revenue": 3953624000.0,
+      "fcf_margin": 0.2701
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-01-31",
+      "free_cash_flow": 1241490000.0,
+      "total_revenue": 4812005000.0,
+      "fcf_margin": 0.258
+    }
+  ]
+}

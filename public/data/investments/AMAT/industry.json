@@ -1,0 +1,1706 @@
+{
+  "ttm_pe": [],
+  "ps_ratio": [],
+  "pb_ratio": [],
+  "roe": [
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": -16889000.0,
+      "total_avg_equity": 580087500.0,
+      "industry_roe": -0.0291
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": -16889000.0,
+      "total_avg_equity": 580087500.0,
+      "industry_roe": -0.0291
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": -16889000.0,
+      "total_avg_equity": 580087500.0,
+      "industry_roe": -0.0291
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 203278000.0,
+      "total_avg_equity": 1362422000.0,
+      "industry_roe": 0.1492
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 203278000.0,
+      "total_avg_equity": 1362422000.0,
+      "industry_roe": 0.1492
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 218681000.0,
+      "total_avg_equity": 1443470500.0,
+      "industry_roe": 0.1515
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 15953621124.352331,
+      "total_avg_equity": 51208925116.58031,
+      "industry_roe": 0.3115
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 23221175124.352333,
+      "total_avg_equity": 69431831116.5803,
+      "industry_roe": 0.3344
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 23238928124.352333,
+      "total_avg_equity": 69446651616.5803,
+      "industry_roe": 0.3346
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 23008925519.597343,
+      "total_avg_equity": 71179284440.99379,
+      "industry_roe": 0.3233
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 23157663519.597343,
+      "total_avg_equity": 72142048940.99379,
+      "industry_roe": 0.321
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 23153649519.597343,
+      "total_avg_equity": 72150998440.99379,
+      "industry_roe": 0.3209
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 23855423511.895454,
+      "total_avg_equity": 75167977196.41461,
+      "industry_roe": 0.3174
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 23589320511.895454,
+      "total_avg_equity": 75826299696.41461,
+      "industry_roe": 0.3111
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 23582203511.895454,
+      "total_avg_equity": 75826320196.41461,
+      "industry_roe": 0.311
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 24069860170.655567,
+      "total_avg_equity": 76087315051.50885,
+      "industry_roe": 0.3163
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 23292904170.655567,
+      "total_avg_equity": 76295043551.50885,
+      "industry_roe": 0.3053
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 23293732170.655567,
+      "total_avg_equity": 76308106051.50885,
+      "industry_roe": 0.3053
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 25570754941.541077,
+      "total_avg_equity": 78105167940.79002,
+      "industry_roe": 0.3274
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 25971968941.541077,
+      "total_avg_equity": 78598536940.79002,
+      "industry_roe": 0.3304
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 25944084941.541077,
+      "total_avg_equity": 78620922940.79002,
+      "industry_roe": 0.33
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 57165758730.59657,
+      "total_avg_equity": 101831220609.24329,
+      "industry_roe": 0.5614
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 57243155730.59657,
+      "total_avg_equity": 102227245109.24329,
+      "industry_roe": 0.56
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 57240411730.59657,
+      "total_avg_equity": 102227355609.24329,
+      "industry_roe": 0.5599
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 58594182579.2778,
+      "total_avg_equity": 117128152620.09737,
+      "industry_roe": 0.5003
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 58797078579.2778,
+      "total_avg_equity": 117433469120.09737,
+      "industry_roe": 0.5007
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 58794876579.2778,
+      "total_avg_equity": 117438174620.09737,
+      "industry_roe": 0.5006
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 60023283294.566315,
+      "total_avg_equity": 115249866334.67432,
+      "industry_roe": 0.5208
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 60808740294.566315,
+      "total_avg_equity": 116082342334.67432,
+      "industry_roe": 0.5238
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 60797967294.566315,
+      "total_avg_equity": 116085680834.67432,
+      "industry_roe": 0.5237
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 79641409893.22095,
+      "total_avg_equity": 118303774287.93272,
+      "industry_roe": 0.6732
+    }
+  ],
+  "roa": [
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": -16889000.0,
+      "total_avg_assets": 1039063000.0,
+      "industry_roa": -0.0163
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": -16889000.0,
+      "total_avg_assets": 1039063000.0,
+      "industry_roa": -0.0163
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": -16889000.0,
+      "total_avg_assets": 1039063000.0,
+      "industry_roa": -0.0163
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 203278000.0,
+      "total_avg_assets": 2170212500.0,
+      "industry_roa": 0.0937
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 203278000.0,
+      "total_avg_assets": 2170212500.0,
+      "industry_roa": 0.0937
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 218681000.0,
+      "total_avg_assets": 2270082000.0,
+      "industry_roa": 0.0963
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 15953621124.352331,
+      "total_avg_assets": 118079357259.06735,
+      "industry_roa": 0.1351
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 23221175124.352333,
+      "total_avg_assets": 151479707259.06735,
+      "industry_roa": 0.1533
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 23238928124.352333,
+      "total_avg_assets": 151496528259.06735,
+      "industry_roa": 0.1534
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 23008925519.597343,
+      "total_avg_assets": 152956928519.9186,
+      "industry_roa": 0.1504
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 23157663519.597343,
+      "total_avg_assets": 153997721019.9186,
+      "industry_roa": 0.1504
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 23153649519.597343,
+      "total_avg_assets": 154004549019.9186,
+      "industry_roa": 0.1503
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 23855423511.895454,
+      "total_avg_assets": 158673824518.76465,
+      "industry_roa": 0.1503
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 23589320511.895454,
+      "total_avg_assets": 159518851518.76465,
+      "industry_roa": 0.1479
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 23582203511.895454,
+      "total_avg_assets": 159517271018.76465,
+      "industry_roa": 0.1478
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 24069860170.655567,
+      "total_avg_assets": 158547809795.0052,
+      "industry_roa": 0.1518
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 23292904170.655567,
+      "total_avg_assets": 158223016295.0052,
+      "industry_roa": 0.1472
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 23293732170.655567,
+      "total_avg_assets": 158237837795.0052,
+      "industry_roa": 0.1472
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 25570754941.541077,
+      "total_avg_assets": 159996621326.32892,
+      "industry_roa": 0.1598
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 25971968941.541077,
+      "total_avg_assets": 161024937826.32892,
+      "industry_roa": 0.1613
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 25944084941.541077,
+      "total_avg_assets": 161059806826.32892,
+      "industry_roa": 0.1611
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 57165758730.59657,
+      "total_avg_assets": 218537777183.00983,
+      "industry_roa": 0.2616
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 57243155730.59657,
+      "total_avg_assets": 219279106683.00983,
+      "industry_roa": 0.2611
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 57240411730.59657,
+      "total_avg_assets": 219275107683.00983,
+      "industry_roa": 0.261
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 58594182579.2778,
+      "total_avg_assets": 241090922450.64523,
+      "industry_roa": 0.243
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 58797078579.2778,
+      "total_avg_assets": 241653431950.64523,
+      "industry_roa": 0.2433
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 58794876579.2778,
+      "total_avg_assets": 241657416450.64523,
+      "industry_roa": 0.2433
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 60023283294.566315,
+      "total_avg_assets": 246317482459.76447,
+      "industry_roa": 0.2437
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 60808740294.566315,
+      "total_avg_assets": 247214435459.76447,
+      "industry_roa": 0.246
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 60797967294.566315,
+      "total_avg_assets": 247220041959.76447,
+      "industry_roa": 0.2459
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 79641409893.22095,
+      "total_avg_assets": 243191807005.27765,
+      "industry_roa": 0.3275
+    }
+  ],
+  "equity_multiplier": [
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roe": -0.0291,
+      "industry_roa": -0.0163,
+      "industry_equity_multiplier": 1.79
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roe": -0.0291,
+      "industry_roa": -0.0163,
+      "industry_equity_multiplier": 1.79
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roe": -0.0291,
+      "industry_roa": -0.0163,
+      "industry_equity_multiplier": 1.79
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roe": 0.1492,
+      "industry_roa": 0.0937,
+      "industry_equity_multiplier": 1.59
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roe": 0.1492,
+      "industry_roa": 0.0937,
+      "industry_equity_multiplier": 1.59
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roe": 0.1515,
+      "industry_roa": 0.0963,
+      "industry_equity_multiplier": 1.57
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roe": 0.3115,
+      "industry_roa": 0.1351,
+      "industry_equity_multiplier": 2.31
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roe": 0.3344,
+      "industry_roa": 0.1533,
+      "industry_equity_multiplier": 2.18
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roe": 0.3346,
+      "industry_roa": 0.1534,
+      "industry_equity_multiplier": 2.18
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roe": 0.3233,
+      "industry_roa": 0.1504,
+      "industry_equity_multiplier": 2.15
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roe": 0.321,
+      "industry_roa": 0.1504,
+      "industry_equity_multiplier": 2.13
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roe": 0.3209,
+      "industry_roa": 0.1503,
+      "industry_equity_multiplier": 2.14
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roe": 0.3174,
+      "industry_roa": 0.1503,
+      "industry_equity_multiplier": 2.11
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roe": 0.3111,
+      "industry_roa": 0.1479,
+      "industry_equity_multiplier": 2.1
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roe": 0.311,
+      "industry_roa": 0.1478,
+      "industry_equity_multiplier": 2.1
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roe": 0.3163,
+      "industry_roa": 0.1518,
+      "industry_equity_multiplier": 2.08
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roe": 0.3053,
+      "industry_roa": 0.1472,
+      "industry_equity_multiplier": 2.07
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roe": 0.3053,
+      "industry_roa": 0.1472,
+      "industry_equity_multiplier": 2.07
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roe": 0.3274,
+      "industry_roa": 0.1598,
+      "industry_equity_multiplier": 2.05
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roe": 0.3304,
+      "industry_roa": 0.1613,
+      "industry_equity_multiplier": 2.05
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roe": 0.33,
+      "industry_roa": 0.1611,
+      "industry_equity_multiplier": 2.05
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roe": 0.5614,
+      "industry_roa": 0.2616,
+      "industry_equity_multiplier": 2.15
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roe": 0.56,
+      "industry_roa": 0.2611,
+      "industry_equity_multiplier": 2.14
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roe": 0.5599,
+      "industry_roa": 0.261,
+      "industry_equity_multiplier": 2.15
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roe": 0.5003,
+      "industry_roa": 0.243,
+      "industry_equity_multiplier": 2.06
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roe": 0.5007,
+      "industry_roa": 0.2433,
+      "industry_equity_multiplier": 2.06
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roe": 0.5006,
+      "industry_roa": 0.2433,
+      "industry_equity_multiplier": 2.06
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roe": 0.5208,
+      "industry_roa": 0.2437,
+      "industry_equity_multiplier": 2.14
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roe": 0.5238,
+      "industry_roa": 0.246,
+      "industry_equity_multiplier": 2.13
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roe": 0.5237,
+      "industry_roa": 0.2459,
+      "industry_equity_multiplier": 2.13
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roe": 0.6732,
+      "industry_roa": 0.3275,
+      "industry_equity_multiplier": 2.06
+    }
+  ],
+  "gross_margin": [
+    {
+      "report_date": "2023-01-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 208934000.0,
+      "total_ttm_revenue": 337606000.0,
+      "industry_gross_margin": 0.6189
+    },
+    {
+      "report_date": "2023-02-28T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 208934000.0,
+      "total_ttm_revenue": 337606000.0,
+      "industry_gross_margin": 0.6189
+    },
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 3367113000.0,
+      "total_ttm_revenue": 7144239000.0,
+      "industry_gross_margin": 0.4713
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 3348085000.0,
+      "total_ttm_revenue": 7116076000.0,
+      "industry_gross_margin": 0.4705
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 3348085000.0,
+      "total_ttm_revenue": 7116076000.0,
+      "industry_gross_margin": 0.4705
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 3206568000.0,
+      "total_ttm_revenue": 6799982000.0,
+      "industry_gross_margin": 0.4716
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 3193966000.0,
+      "total_ttm_revenue": 6781219000.0,
+      "industry_gross_margin": 0.471
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 3193966000.0,
+      "total_ttm_revenue": 6781219000.0,
+      "industry_gross_margin": 0.471
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 3319623000.0,
+      "total_ttm_revenue": 7016476000.0,
+      "industry_gross_margin": 0.4731
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 3634090000.0,
+      "total_ttm_revenue": 7876050000.0,
+      "industry_gross_margin": 0.4614
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 3634090000.0,
+      "total_ttm_revenue": 7876050000.0,
+      "industry_gross_margin": 0.4614
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 4322854000.0,
+      "total_ttm_revenue": 10376098000.0,
+      "industry_gross_margin": 0.4166
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 4307240000.0,
+      "total_ttm_revenue": 10349637000.0,
+      "industry_gross_margin": 0.4162
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 4342814000.0,
+      "total_ttm_revenue": 10421524000.0,
+      "industry_gross_margin": 0.4167
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 35588903350.60449,
+      "total_ttm_revenue": 77890708858.37651,
+      "industry_gross_margin": 0.4569
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 48077393350.60449,
+      "total_ttm_revenue": 104371733858.37651,
+      "industry_gross_margin": 0.4606
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 48074362350.60449,
+      "total_ttm_revenue": 104366064858.37651,
+      "industry_gross_margin": 0.4606
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 47830710950.31056,
+      "total_ttm_revenue": 104033711597.34418,
+      "industry_gross_margin": 0.4598
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 48048326950.31056,
+      "total_ttm_revenue": 104375092597.34418,
+      "industry_gross_margin": 0.4603
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 48045423950.31056,
+      "total_ttm_revenue": 104367587597.34418,
+      "industry_gross_margin": 0.4603
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 49533749559.58897,
+      "total_ttm_revenue": 107410832500.8377,
+      "industry_gross_margin": 0.4612
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 49717234559.58897,
+      "total_ttm_revenue": 107760045500.8377,
+      "industry_gross_margin": 0.4614
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 49711676559.58897,
+      "total_ttm_revenue": 107752067500.8377,
+      "industry_gross_margin": 0.4614
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 50466778869.92716,
+      "total_ttm_revenue": 108985930535.9001,
+      "industry_gross_margin": 0.4631
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 50774586869.92716,
+      "total_ttm_revenue": 109473133535.9001,
+      "industry_gross_margin": 0.4638
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 50778613869.92716,
+      "total_ttm_revenue": 109483877535.9001,
+      "industry_gross_margin": 0.4638
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 53959952576.984634,
+      "total_ttm_revenue": 114825010836.63069,
+      "industry_gross_margin": 0.4699
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 54308983576.984634,
+      "total_ttm_revenue": 115304401836.63069,
+      "industry_gross_margin": 0.471
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 54329492576.984634,
+      "total_ttm_revenue": 115324754836.63069,
+      "industry_gross_margin": 0.4711
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 112853049645.71115,
+      "total_ttm_revenue": 250073770489.20148,
+      "industry_gross_margin": 0.4513
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 113223256645.71115,
+      "total_ttm_revenue": 250628967489.20148,
+      "industry_gross_margin": 0.4518
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 113219897645.71115,
+      "total_ttm_revenue": 250626817489.20148,
+      "industry_gross_margin": 0.4517
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 114510513188.30923,
+      "total_ttm_revenue": 252710657606.71655,
+      "industry_gross_margin": 0.4531
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 114448283188.30923,
+      "total_ttm_revenue": 252484598606.71655,
+      "industry_gross_margin": 0.4533
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 114445428188.30923,
+      "total_ttm_revenue": 252481029606.71655,
+      "industry_gross_margin": 0.4533
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 116198248007.0599,
+      "total_ttm_revenue": 255652989555.0921,
+      "industry_gross_margin": 0.4545
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 116148947007.0599,
+      "total_ttm_revenue": 256165925555.0921,
+      "industry_gross_margin": 0.4534
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 116155668007.0599,
+      "total_ttm_revenue": 256157931555.0921,
+      "industry_gross_margin": 0.4535
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 150239242034.2771,
+      "total_ttm_revenue": 347754048300.0342,
+      "industry_gross_margin": 0.432
+    },
+    {
+      "report_date": "2026-04-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_gross_profit": 160963242034.2771,
+      "total_ttm_revenue": 369678048300.0342,
+      "industry_gross_margin": 0.4354
+    }
+  ],
+  "ebitda_margin": [
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_ebitda": -82837000.0,
+      "total_ttm_revenue": 309443000.0,
+      "industry_ebitda_margin": -0.2677
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_ebitda": -82837000.0,
+      "total_ttm_revenue": 309443000.0,
+      "industry_ebitda_margin": -0.2677
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_ebitda": 1254919000.0,
+      "total_ttm_revenue": 6799982000.0,
+      "industry_ebitda_margin": 0.1845
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_ebitda": 1245889000.0,
+      "total_ttm_revenue": 6781219000.0,
+      "industry_ebitda_margin": 0.1837
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_ebitda": 1245889000.0,
+      "total_ttm_revenue": 6781219000.0,
+      "industry_ebitda_margin": 0.1837
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_ebitda": 1250671000.0,
+      "total_ttm_revenue": 7016476000.0,
+      "industry_ebitda_margin": 0.1782
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_ebitda": 1581377000.0,
+      "total_ttm_revenue": 7876050000.0,
+      "industry_ebitda_margin": 0.2008
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_ebitda": 1581377000.0,
+      "total_ttm_revenue": 7876050000.0,
+      "industry_ebitda_margin": 0.2008
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_ebitda": 1889852000.0,
+      "total_ttm_revenue": 10376098000.0,
+      "industry_ebitda_margin": 0.1821
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_ebitda": 1886313000.0,
+      "total_ttm_revenue": 10349637000.0,
+      "industry_ebitda_margin": 0.1823
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_ebitda": 1900593000.0,
+      "total_ttm_revenue": 10421524000.0,
+      "industry_ebitda_margin": 0.1824
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_ebitda": 23030244778.929188,
+      "total_ttm_revenue": 77890708858.37651,
+      "industry_ebitda_margin": 0.2957
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_ebitda": 31987622778.929188,
+      "total_ttm_revenue": 104371733858.37651,
+      "industry_ebitda_margin": 0.3065
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_ebitda": 31984783778.929188,
+      "total_ttm_revenue": 104366064858.37651,
+      "industry_ebitda_margin": 0.3065
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_ebitda": 31590472291.068752,
+      "total_ttm_revenue": 104033711597.34418,
+      "industry_ebitda_margin": 0.3037
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_ebitda": 31703364291.068752,
+      "total_ttm_revenue": 104375092597.34418,
+      "industry_ebitda_margin": 0.3037
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_ebitda": 31699664291.068752,
+      "total_ttm_revenue": 104367587597.34418,
+      "industry_ebitda_margin": 0.3037
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_ebitda": 32827216284.597343,
+      "total_ttm_revenue": 107410832500.8377,
+      "industry_ebitda_margin": 0.3056
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_ebitda": 32525889284.597343,
+      "total_ttm_revenue": 107760045500.8377,
+      "industry_ebitda_margin": 0.3018
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_ebitda": 32519491284.597343,
+      "total_ttm_revenue": 107752067500.8377,
+      "industry_ebitda_margin": 0.3018
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_ebitda": 33303636288.241417,
+      "total_ttm_revenue": 108985930535.9001,
+      "industry_ebitda_margin": 0.3056
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_ebitda": 33178875288.241417,
+      "total_ttm_revenue": 109473133535.9001,
+      "industry_ebitda_margin": 0.3031
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_ebitda": 33180340288.241417,
+      "total_ttm_revenue": 109483877535.9001,
+      "industry_ebitda_margin": 0.3031
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_ebitda": 35955119764.528625,
+      "total_ttm_revenue": 114825010836.63069,
+      "industry_ebitda_margin": 0.3131
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_ebitda": 36265148764.528625,
+      "total_ttm_revenue": 115304401836.63069,
+      "industry_ebitda_margin": 0.3145
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_ebitda": 36262718764.528625,
+      "total_ttm_revenue": 115324754836.63069,
+      "industry_ebitda_margin": 0.3144
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_ebitda": 79006047969.70963,
+      "total_ttm_revenue": 250073770489.20148,
+      "industry_ebitda_margin": 0.3159
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_ebitda": 79619684969.70963,
+      "total_ttm_revenue": 250628967489.20148,
+      "industry_ebitda_margin": 0.3177
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_ebitda": 79616034969.70963,
+      "total_ttm_revenue": 250626817489.20148,
+      "industry_ebitda_margin": 0.3177
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_ebitda": 80661224873.88174,
+      "total_ttm_revenue": 252710657606.71655,
+      "industry_ebitda_margin": 0.3192
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_ebitda": 81069795873.88174,
+      "total_ttm_revenue": 252484598606.71655,
+      "industry_ebitda_margin": 0.3211
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_ebitda": 81066425873.88174,
+      "total_ttm_revenue": 252481029606.71655,
+      "industry_ebitda_margin": 0.3211
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_ebitda": 81613938724.60544,
+      "total_ttm_revenue": 255652989555.0921,
+      "industry_ebitda_margin": 0.3192
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_ebitda": 81807868724.60544,
+      "total_ttm_revenue": 256165925555.0921,
+      "industry_ebitda_margin": 0.3194
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_ebitda": 81804709724.60544,
+      "total_ttm_revenue": 256157931555.0921,
+      "industry_ebitda_margin": 0.3194
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_ebitda": 105471569572.15608,
+      "total_ttm_revenue": 347754048300.0342,
+      "industry_ebitda_margin": 0.3033
+    },
+    {
+      "report_date": "2026-04-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_ebitda": 114125569572.15608,
+      "total_ttm_revenue": 369678048300.0342,
+      "industry_ebitda_margin": 0.3087
+    }
+  ],
+  "net_margin": [
+    {
+      "report_date": "2023-01-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": -65386000.0,
+      "total_ttm_revenue": 337606000.0,
+      "industry_net_margin": -0.1937
+    },
+    {
+      "report_date": "2023-02-28T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": -65386000.0,
+      "total_ttm_revenue": 337606000.0,
+      "industry_net_margin": -0.1937
+    },
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 1195356000.0,
+      "total_ttm_revenue": 7144239000.0,
+      "industry_net_margin": 0.1673
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 1170276000.0,
+      "total_ttm_revenue": 7116076000.0,
+      "industry_net_margin": 0.1645
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 1170276000.0,
+      "total_ttm_revenue": 7116076000.0,
+      "industry_net_margin": 0.1645
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 945809000.0,
+      "total_ttm_revenue": 6799982000.0,
+      "industry_net_margin": 0.1391
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 938261000.0,
+      "total_ttm_revenue": 6781219000.0,
+      "industry_net_margin": 0.1384
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 938261000.0,
+      "total_ttm_revenue": 6781219000.0,
+      "industry_net_margin": 0.1384
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 931710000.0,
+      "total_ttm_revenue": 7016476000.0,
+      "industry_net_margin": 0.1328
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 1035294000.0,
+      "total_ttm_revenue": 7876050000.0,
+      "industry_net_margin": 0.1314
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 1035294000.0,
+      "total_ttm_revenue": 7876050000.0,
+      "industry_net_margin": 0.1314
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 1011371000.0,
+      "total_ttm_revenue": 10376098000.0,
+      "industry_net_margin": 0.0975
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 974063000.0,
+      "total_ttm_revenue": 10349637000.0,
+      "industry_net_margin": 0.0941
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 989466000.0,
+      "total_ttm_revenue": 10421524000.0,
+      "industry_net_margin": 0.0949
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 15921883124.352331,
+      "total_ttm_revenue": 77890708858.37651,
+      "industry_net_margin": 0.2044
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 23221175124.352333,
+      "total_ttm_revenue": 104371733858.37651,
+      "industry_net_margin": 0.2225
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 23238928124.352333,
+      "total_ttm_revenue": 104366064858.37651,
+      "industry_net_margin": 0.2227
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 23008925519.597343,
+      "total_ttm_revenue": 104033711597.34418,
+      "industry_net_margin": 0.2212
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 23157663519.597343,
+      "total_ttm_revenue": 104375092597.34418,
+      "industry_net_margin": 0.2219
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 23153649519.597343,
+      "total_ttm_revenue": 104367587597.34418,
+      "industry_net_margin": 0.2218
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 23855423511.895454,
+      "total_ttm_revenue": 107410832500.8377,
+      "industry_net_margin": 0.2221
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 23589320511.895454,
+      "total_ttm_revenue": 107760045500.8377,
+      "industry_net_margin": 0.2189
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 23582203511.895454,
+      "total_ttm_revenue": 107752067500.8377,
+      "industry_net_margin": 0.2189
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 24069860170.655567,
+      "total_ttm_revenue": 108985930535.9001,
+      "industry_net_margin": 0.2209
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 23292904170.655567,
+      "total_ttm_revenue": 109473133535.9001,
+      "industry_net_margin": 0.2128
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 23293732170.655567,
+      "total_ttm_revenue": 109483877535.9001,
+      "industry_net_margin": 0.2128
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 25570754941.541077,
+      "total_ttm_revenue": 114825010836.63069,
+      "industry_net_margin": 0.2227
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 25971968941.541077,
+      "total_ttm_revenue": 115304401836.63069,
+      "industry_net_margin": 0.2252
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 25944084941.541077,
+      "total_ttm_revenue": 115324754836.63069,
+      "industry_net_margin": 0.225
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 57650758730.59657,
+      "total_ttm_revenue": 250073770489.20148,
+      "industry_net_margin": 0.2305
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 57728155730.59657,
+      "total_ttm_revenue": 250628967489.20148,
+      "industry_net_margin": 0.2303
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 57725411730.59657,
+      "total_ttm_revenue": 250626817489.20148,
+      "industry_net_margin": 0.2303
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 58594182579.2778,
+      "total_ttm_revenue": 252710657606.71655,
+      "industry_net_margin": 0.2319
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 58797078579.2778,
+      "total_ttm_revenue": 252484598606.71655,
+      "industry_net_margin": 0.2329
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 58794876579.2778,
+      "total_ttm_revenue": 252481029606.71655,
+      "industry_net_margin": 0.2329
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 60023283294.566315,
+      "total_ttm_revenue": 255652989555.0921,
+      "industry_net_margin": 0.2348
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 60808740294.566315,
+      "total_ttm_revenue": 256165925555.0921,
+      "industry_net_margin": 0.2374
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 60797967294.566315,
+      "total_ttm_revenue": 256157931555.0921,
+      "industry_net_margin": 0.2373
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 79641409893.22095,
+      "total_ttm_revenue": 347754048300.0342,
+      "industry_net_margin": 0.229
+    },
+    {
+      "report_date": "2026-04-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_ttm_net_income": 86012409893.22095,
+      "total_ttm_revenue": 369678048300.0342,
+      "industry_net_margin": 0.2327
+    }
+  ],
+  "asset_turnover": [
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roa": -0.0163,
+      "industry_net_margin": 0.1328,
+      "industry_asset_turnover": -0.12
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roa": -0.0163,
+      "industry_net_margin": 0.1314,
+      "industry_asset_turnover": -0.12
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roa": -0.0163,
+      "industry_net_margin": 0.1314,
+      "industry_asset_turnover": -0.12
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roa": 0.0937,
+      "industry_net_margin": 0.0975,
+      "industry_asset_turnover": 0.96
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roa": 0.0937,
+      "industry_net_margin": 0.0941,
+      "industry_asset_turnover": 1.0
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roa": 0.0963,
+      "industry_net_margin": 0.0949,
+      "industry_asset_turnover": 1.01
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roa": 0.1351,
+      "industry_net_margin": 0.2044,
+      "industry_asset_turnover": 0.66
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roa": 0.1533,
+      "industry_net_margin": 0.2225,
+      "industry_asset_turnover": 0.69
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roa": 0.1534,
+      "industry_net_margin": 0.2227,
+      "industry_asset_turnover": 0.69
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roa": 0.1504,
+      "industry_net_margin": 0.2212,
+      "industry_asset_turnover": 0.68
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roa": 0.1504,
+      "industry_net_margin": 0.2219,
+      "industry_asset_turnover": 0.68
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roa": 0.1503,
+      "industry_net_margin": 0.2218,
+      "industry_asset_turnover": 0.68
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roa": 0.1503,
+      "industry_net_margin": 0.2221,
+      "industry_asset_turnover": 0.68
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roa": 0.1479,
+      "industry_net_margin": 0.2189,
+      "industry_asset_turnover": 0.68
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roa": 0.1478,
+      "industry_net_margin": 0.2189,
+      "industry_asset_turnover": 0.68
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roa": 0.1518,
+      "industry_net_margin": 0.2209,
+      "industry_asset_turnover": 0.69
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roa": 0.1472,
+      "industry_net_margin": 0.2128,
+      "industry_asset_turnover": 0.69
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roa": 0.1472,
+      "industry_net_margin": 0.2128,
+      "industry_asset_turnover": 0.69
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roa": 0.1598,
+      "industry_net_margin": 0.2227,
+      "industry_asset_turnover": 0.72
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roa": 0.1613,
+      "industry_net_margin": 0.2252,
+      "industry_asset_turnover": 0.72
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roa": 0.1611,
+      "industry_net_margin": 0.225,
+      "industry_asset_turnover": 0.72
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roa": 0.2616,
+      "industry_net_margin": 0.2305,
+      "industry_asset_turnover": 1.13
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roa": 0.2611,
+      "industry_net_margin": 0.2303,
+      "industry_asset_turnover": 1.13
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roa": 0.261,
+      "industry_net_margin": 0.2303,
+      "industry_asset_turnover": 1.13
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roa": 0.243,
+      "industry_net_margin": 0.2319,
+      "industry_asset_turnover": 1.05
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roa": 0.2433,
+      "industry_net_margin": 0.2329,
+      "industry_asset_turnover": 1.04
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roa": 0.2433,
+      "industry_net_margin": 0.2329,
+      "industry_asset_turnover": 1.04
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roa": 0.2437,
+      "industry_net_margin": 0.2348,
+      "industry_asset_turnover": 1.04
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roa": 0.246,
+      "industry_net_margin": 0.2374,
+      "industry_asset_turnover": 1.04
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roa": 0.2459,
+      "industry_net_margin": 0.2373,
+      "industry_asset_turnover": 1.04
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "industry_roa": 0.3275,
+      "industry_net_margin": 0.229,
+      "industry_asset_turnover": 1.43
+    }
+  ]
+}

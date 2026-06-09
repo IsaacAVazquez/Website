@@ -1,0 +1,1559 @@
+{
+  "ttm_pe": [],
+  "ps_ratio": [],
+  "pb_ratio": [],
+  "roe": [
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 468281000.0,
+      "total_avg_equity": 4229050500.0,
+      "industry_roe": 0.1107
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 468281000.0,
+      "total_avg_equity": 4229050500.0,
+      "industry_roe": 0.1107
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 468281000.0,
+      "total_avg_equity": 4229050500.0,
+      "industry_roe": 0.1107
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 88795484729.44206,
+      "total_avg_equity": 572023026546.4363,
+      "industry_roe": 0.1552
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 88795484729.44206,
+      "total_avg_equity": 572023026546.4363,
+      "industry_roe": 0.1552
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 88795484729.44206,
+      "total_avg_equity": 572023026546.4363,
+      "industry_roe": 0.1552
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 86078870100.2325,
+      "total_avg_equity": 571044328989.6836,
+      "industry_roe": 0.1507
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 86078870100.2325,
+      "total_avg_equity": 571044328989.6836,
+      "industry_roe": 0.1507
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 86078870100.2325,
+      "total_avg_equity": 571044328989.6836,
+      "industry_roe": 0.1507
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 87407353766.31023,
+      "total_avg_equity": 604150493640.6481,
+      "industry_roe": 0.1447
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 87407353766.31023,
+      "total_avg_equity": 604150493640.6481,
+      "industry_roe": 0.1447
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 87407353766.31023,
+      "total_avg_equity": 604150493640.6481,
+      "industry_roe": 0.1447
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 92019313773.1007,
+      "total_avg_equity": 599923720150.3396,
+      "industry_roe": 0.1534
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 92019313773.1007,
+      "total_avg_equity": 599923720150.3396,
+      "industry_roe": 0.1534
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 92019313773.1007,
+      "total_avg_equity": 599923720150.3396,
+      "industry_roe": 0.1534
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 92130707394.73564,
+      "total_avg_equity": 611241819381.8833,
+      "industry_roe": 0.1507
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 92130707394.73564,
+      "total_avg_equity": 611241819381.8833,
+      "industry_roe": 0.1507
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 92130707394.73564,
+      "total_avg_equity": 611241819381.8833,
+      "industry_roe": 0.1507
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 111817562258.22615,
+      "total_avg_equity": 777321827230.8684,
+      "industry_roe": 0.1438
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 111817562258.22615,
+      "total_avg_equity": 777321827230.8684,
+      "industry_roe": 0.1438
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 111817562258.22615,
+      "total_avg_equity": 777321827230.8684,
+      "industry_roe": 0.1438
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 123228077466.53531,
+      "total_avg_equity": 782872823451.811,
+      "industry_roe": 0.1574
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 123228077466.53531,
+      "total_avg_equity": 782872823451.811,
+      "industry_roe": 0.1574
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 123228077466.53531,
+      "total_avg_equity": 782872823451.811,
+      "industry_roe": 0.1574
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 133816662889.26265,
+      "total_avg_equity": 796861773470.2975,
+      "industry_roe": 0.1679
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 133816662889.26265,
+      "total_avg_equity": 796861773470.2975,
+      "industry_roe": 0.1679
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 133816662889.26265,
+      "total_avg_equity": 796861773470.2975,
+      "industry_roe": 0.1679
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 173045891589.26266,
+      "total_avg_equity": 935884231463.2975,
+      "industry_roe": 0.1849
+    }
+  ],
+  "roa": [
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 468281000.0,
+      "total_avg_assets": 28531561500.0,
+      "industry_roa": 0.0164
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 468281000.0,
+      "total_avg_assets": 28531561500.0,
+      "industry_roa": 0.0164
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 468281000.0,
+      "total_avg_assets": 28531561500.0,
+      "industry_roa": 0.0164
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 88795484729.44206,
+      "total_avg_assets": 4378889105284.4873,
+      "industry_roa": 0.0203
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 88795484729.44206,
+      "total_avg_assets": 4378889105284.4873,
+      "industry_roa": 0.0203
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 88795484729.44206,
+      "total_avg_assets": 4378889105284.4873,
+      "industry_roa": 0.0203
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 86078870100.2325,
+      "total_avg_assets": 4398317521040.998,
+      "industry_roa": 0.0196
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 86078870100.2325,
+      "total_avg_assets": 4398317521040.998,
+      "industry_roa": 0.0196
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 86078870100.2325,
+      "total_avg_assets": 4398317521040.998,
+      "industry_roa": 0.0196
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 87407353766.31023,
+      "total_avg_assets": 4465637529651.87,
+      "industry_roa": 0.0196
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 87407353766.31023,
+      "total_avg_assets": 4465637529651.87,
+      "industry_roa": 0.0196
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 87407353766.31023,
+      "total_avg_assets": 4465637529651.87,
+      "industry_roa": 0.0196
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 92019313773.1007,
+      "total_avg_assets": 4493022948401.758,
+      "industry_roa": 0.0205
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 92019313773.1007,
+      "total_avg_assets": 4493022948401.758,
+      "industry_roa": 0.0205
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 92019313773.1007,
+      "total_avg_assets": 4493022948401.758,
+      "industry_roa": 0.0205
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 92130707394.73564,
+      "total_avg_assets": 4514688667073.03,
+      "industry_roa": 0.0204
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 92130707394.73564,
+      "total_avg_assets": 4514688667073.03,
+      "industry_roa": 0.0204
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 92130707394.73564,
+      "total_avg_assets": 4514688667073.03,
+      "industry_roa": 0.0204
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 111817562258.22615,
+      "total_avg_assets": 5116222213963.615,
+      "industry_roa": 0.0219
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 111817562258.22615,
+      "total_avg_assets": 5116222213963.615,
+      "industry_roa": 0.0219
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 111817562258.22615,
+      "total_avg_assets": 5116222213963.615,
+      "industry_roa": 0.0219
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 123228077466.53531,
+      "total_avg_assets": 5146767241262.964,
+      "industry_roa": 0.0239
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 123228077466.53531,
+      "total_avg_assets": 5146767241262.964,
+      "industry_roa": 0.0239
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 123228077466.53531,
+      "total_avg_assets": 5146767241262.964,
+      "industry_roa": 0.0239
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 133816662889.26265,
+      "total_avg_assets": 5233192717260.937,
+      "industry_roa": 0.0256
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 133816662889.26265,
+      "total_avg_assets": 5233192717260.937,
+      "industry_roa": 0.0256
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 133816662889.26265,
+      "total_avg_assets": 5233192717260.937,
+      "industry_roa": 0.0256
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 173045891589.26266,
+      "total_avg_assets": 5797388523704.437,
+      "industry_roa": 0.0298
+    }
+  ],
+  "equity_multiplier": [
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roe": 0.1107,
+      "industry_roa": 0.0164,
+      "industry_equity_multiplier": 6.75
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roe": 0.1107,
+      "industry_roa": 0.0164,
+      "industry_equity_multiplier": 6.75
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roe": 0.1107,
+      "industry_roa": 0.0164,
+      "industry_equity_multiplier": 6.75
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roe": 0.1552,
+      "industry_roa": 0.0203,
+      "industry_equity_multiplier": 7.65
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roe": 0.1552,
+      "industry_roa": 0.0203,
+      "industry_equity_multiplier": 7.65
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roe": 0.1552,
+      "industry_roa": 0.0203,
+      "industry_equity_multiplier": 7.65
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roe": 0.1507,
+      "industry_roa": 0.0196,
+      "industry_equity_multiplier": 7.69
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roe": 0.1507,
+      "industry_roa": 0.0196,
+      "industry_equity_multiplier": 7.69
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roe": 0.1507,
+      "industry_roa": 0.0196,
+      "industry_equity_multiplier": 7.69
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roe": 0.1447,
+      "industry_roa": 0.0196,
+      "industry_equity_multiplier": 7.38
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roe": 0.1447,
+      "industry_roa": 0.0196,
+      "industry_equity_multiplier": 7.38
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roe": 0.1447,
+      "industry_roa": 0.0196,
+      "industry_equity_multiplier": 7.38
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roe": 0.1534,
+      "industry_roa": 0.0205,
+      "industry_equity_multiplier": 7.48
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roe": 0.1534,
+      "industry_roa": 0.0205,
+      "industry_equity_multiplier": 7.48
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roe": 0.1534,
+      "industry_roa": 0.0205,
+      "industry_equity_multiplier": 7.48
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roe": 0.1507,
+      "industry_roa": 0.0204,
+      "industry_equity_multiplier": 7.39
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roe": 0.1507,
+      "industry_roa": 0.0204,
+      "industry_equity_multiplier": 7.39
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roe": 0.1507,
+      "industry_roa": 0.0204,
+      "industry_equity_multiplier": 7.39
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roe": 0.1438,
+      "industry_roa": 0.0219,
+      "industry_equity_multiplier": 6.57
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roe": 0.1438,
+      "industry_roa": 0.0219,
+      "industry_equity_multiplier": 6.57
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roe": 0.1438,
+      "industry_roa": 0.0219,
+      "industry_equity_multiplier": 6.57
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roe": 0.1574,
+      "industry_roa": 0.0239,
+      "industry_equity_multiplier": 6.59
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roe": 0.1574,
+      "industry_roa": 0.0239,
+      "industry_equity_multiplier": 6.59
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roe": 0.1574,
+      "industry_roa": 0.0239,
+      "industry_equity_multiplier": 6.59
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roe": 0.1679,
+      "industry_roa": 0.0256,
+      "industry_equity_multiplier": 6.56
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roe": 0.1679,
+      "industry_roa": 0.0256,
+      "industry_equity_multiplier": 6.56
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roe": 0.1679,
+      "industry_roa": 0.0256,
+      "industry_equity_multiplier": 6.56
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roe": 0.1849,
+      "industry_roa": 0.0298,
+      "industry_equity_multiplier": 6.2
+    }
+  ],
+  "gross_margin": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_gross_profit": 1321455000.0,
+      "total_ttm_revenue": 2831842000.0,
+      "industry_gross_margin": 0.4666
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_gross_profit": 1321455000.0,
+      "total_ttm_revenue": 2831842000.0,
+      "industry_gross_margin": 0.4666
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_gross_profit": 1321455000.0,
+      "total_ttm_revenue": 2831842000.0,
+      "industry_gross_margin": 0.4666
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_gross_profit": 1373370000.0,
+      "total_ttm_revenue": 2934848000.0,
+      "industry_gross_margin": 0.468
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_gross_profit": 1373370000.0,
+      "total_ttm_revenue": 2934848000.0,
+      "industry_gross_margin": 0.468
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_gross_profit": 1373370000.0,
+      "total_ttm_revenue": 2934848000.0,
+      "industry_gross_margin": 0.468
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_gross_profit": 1438725000.0,
+      "total_ttm_revenue": 3049006000.0,
+      "industry_gross_margin": 0.4719
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_gross_profit": 1438725000.0,
+      "total_ttm_revenue": 3049006000.0,
+      "industry_gross_margin": 0.4719
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_gross_profit": 1438725000.0,
+      "total_ttm_revenue": 3049006000.0,
+      "industry_gross_margin": 0.4719
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_gross_profit": 28241417000.0,
+      "total_ttm_revenue": 36620256000.0,
+      "industry_gross_margin": 0.7712
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_gross_profit": 28241417000.0,
+      "total_ttm_revenue": 36620256000.0,
+      "industry_gross_margin": 0.7712
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_gross_profit": 28241417000.0,
+      "total_ttm_revenue": 36620256000.0,
+      "industry_gross_margin": 0.7712
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_gross_profit": 77521178576.14641,
+      "total_ttm_revenue": 120039258822.00111,
+      "industry_gross_margin": 0.6458
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_gross_profit": 77521178576.14641,
+      "total_ttm_revenue": 120039258822.00111,
+      "industry_gross_margin": 0.6458
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_gross_profit": 77521178576.14641,
+      "total_ttm_revenue": 120039258822.00111,
+      "industry_gross_margin": 0.6458
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_gross_profit": 79702726610.76266,
+      "total_ttm_revenue": 122999945112.22324,
+      "industry_gross_margin": 0.648
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_gross_profit": 79702726610.76266,
+      "total_ttm_revenue": 122999945112.22324,
+      "industry_gross_margin": 0.648
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_gross_profit": 79702726610.76266,
+      "total_ttm_revenue": 122999945112.22324,
+      "industry_gross_margin": 0.648
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_gross_profit": 82104854199.14105,
+      "total_ttm_revenue": 126378721533.86885,
+      "industry_gross_margin": 0.6497
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_gross_profit": 82104854199.14105,
+      "total_ttm_revenue": 126378721533.86885,
+      "industry_gross_margin": 0.6497
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_gross_profit": 82104854199.14105,
+      "total_ttm_revenue": 126378721533.86885,
+      "industry_gross_margin": 0.6497
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_gross_profit": 84529078638.04385,
+      "total_ttm_revenue": 129682289396.33093,
+      "industry_gross_margin": 0.6518
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_gross_profit": 84529078638.04385,
+      "total_ttm_revenue": 129682289396.33093,
+      "industry_gross_margin": 0.6518
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_gross_profit": 84529078638.04385,
+      "total_ttm_revenue": 129682289396.33093,
+      "industry_gross_margin": 0.6518
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_gross_profit": 86981650732.53433,
+      "total_ttm_revenue": 132404031552.23793,
+      "industry_gross_margin": 0.6569
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_gross_profit": 86981650732.53433,
+      "total_ttm_revenue": 132404031552.23793,
+      "industry_gross_margin": 0.6569
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_gross_profit": 86981650732.53433,
+      "total_ttm_revenue": 132404031552.23793,
+      "industry_gross_margin": 0.6569
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_gross_profit": 122332801195.5021,
+      "total_ttm_revenue": 191375043798.65286,
+      "industry_gross_margin": 0.6392
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_gross_profit": 122332801195.5021,
+      "total_ttm_revenue": 191375043798.65286,
+      "industry_gross_margin": 0.6392
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_gross_profit": 122332801195.5021,
+      "total_ttm_revenue": 191375043798.65286,
+      "industry_gross_margin": 0.6392
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_gross_profit": 126257288030.77252,
+      "total_ttm_revenue": 196302180389.60025,
+      "industry_gross_margin": 0.6432
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_gross_profit": 126257288030.77252,
+      "total_ttm_revenue": 196302180389.60025,
+      "industry_gross_margin": 0.6432
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_gross_profit": 126257288030.77252,
+      "total_ttm_revenue": 196302180389.60025,
+      "industry_gross_margin": 0.6432
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_gross_profit": 133826186285.6881,
+      "total_ttm_revenue": 201189802742.41077,
+      "industry_gross_margin": 0.6652
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_gross_profit": 133826186285.6881,
+      "total_ttm_revenue": 201189802742.41077,
+      "industry_gross_margin": 0.6652
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_gross_profit": 133826186285.6881,
+      "total_ttm_revenue": 201189802742.41077,
+      "industry_gross_margin": 0.6652
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_gross_profit": 173625378133.68808,
+      "total_ttm_revenue": 268926947427.41077,
+      "industry_gross_margin": 0.6456
+    }
+  ],
+  "ebitda_margin": [
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_ebitda": 782207000.0,
+      "total_ttm_revenue": 2934848000.0,
+      "industry_ebitda_margin": 0.2665
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_ebitda": 782207000.0,
+      "total_ttm_revenue": 2934848000.0,
+      "industry_ebitda_margin": 0.2665
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_ebitda": 782207000.0,
+      "total_ttm_revenue": 2934848000.0,
+      "industry_ebitda_margin": 0.2665
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_ebitda": 895935000.0,
+      "total_ttm_revenue": 3049006000.0,
+      "industry_ebitda_margin": 0.2938
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_ebitda": 895935000.0,
+      "total_ttm_revenue": 3049006000.0,
+      "industry_ebitda_margin": 0.2938
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_ebitda": 895935000.0,
+      "total_ttm_revenue": 3049006000.0,
+      "industry_ebitda_margin": 0.2938
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_ebitda": 24706386000.0,
+      "total_ttm_revenue": 36620256000.0,
+      "industry_ebitda_margin": 0.6747
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_ebitda": 24706386000.0,
+      "total_ttm_revenue": 36620256000.0,
+      "industry_ebitda_margin": 0.6747
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_ebitda": 24706386000.0,
+      "total_ttm_revenue": 36620256000.0,
+      "industry_ebitda_margin": 0.6747
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_ebitda": 52954735919.683525,
+      "total_ttm_revenue": 120331701822.00111,
+      "industry_ebitda_margin": 0.4401
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_ebitda": 52954735919.683525,
+      "total_ttm_revenue": 120331701822.00111,
+      "industry_ebitda_margin": 0.4401
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_ebitda": 52954735919.683525,
+      "total_ttm_revenue": 120331701822.00111,
+      "industry_ebitda_margin": 0.4401
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_ebitda": 54208820519.00969,
+      "total_ttm_revenue": 123238867112.22324,
+      "industry_ebitda_margin": 0.4399
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_ebitda": 54208820519.00969,
+      "total_ttm_revenue": 123238867112.22324,
+      "industry_ebitda_margin": 0.4399
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_ebitda": 54208820519.00969,
+      "total_ttm_revenue": 123238867112.22324,
+      "industry_ebitda_margin": 0.4399
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_ebitda": 54990893149.86496,
+      "total_ttm_revenue": 126614645533.86885,
+      "industry_ebitda_margin": 0.4343
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_ebitda": 54990893149.86496,
+      "total_ttm_revenue": 126614645533.86885,
+      "industry_ebitda_margin": 0.4343
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_ebitda": 54990893149.86496,
+      "total_ttm_revenue": 126614645533.86885,
+      "industry_ebitda_margin": 0.4343
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_ebitda": 56077327724.30238,
+      "total_ttm_revenue": 129685117396.33093,
+      "industry_ebitda_margin": 0.4324
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_ebitda": 56077327724.30238,
+      "total_ttm_revenue": 129685117396.33093,
+      "industry_ebitda_margin": 0.4324
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_ebitda": 56077327724.30238,
+      "total_ttm_revenue": 129685117396.33093,
+      "industry_ebitda_margin": 0.4324
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_ebitda": 57401478710.19656,
+      "total_ttm_revenue": 132406859552.23793,
+      "industry_ebitda_margin": 0.4335
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_ebitda": 57401478710.19656,
+      "total_ttm_revenue": 132406859552.23793,
+      "industry_ebitda_margin": 0.4335
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_ebitda": 57401478710.19656,
+      "total_ttm_revenue": 132406859552.23793,
+      "industry_ebitda_margin": 0.4335
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_ebitda": 60946611077.08415,
+      "total_ttm_revenue": 191388483480.65286,
+      "industry_ebitda_margin": 0.3184
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_ebitda": 60946611077.08415,
+      "total_ttm_revenue": 191388483480.65286,
+      "industry_ebitda_margin": 0.3184
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_ebitda": 60946611077.08415,
+      "total_ttm_revenue": 191388483480.65286,
+      "industry_ebitda_margin": 0.3184
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_ebitda": 62534783495.0941,
+      "total_ttm_revenue": 196315762495.60025,
+      "industry_ebitda_margin": 0.3185
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_ebitda": 62534783495.0941,
+      "total_ttm_revenue": 196315762495.60025,
+      "industry_ebitda_margin": 0.3185
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_ebitda": 62534783495.0941,
+      "total_ttm_revenue": 196315762495.60025,
+      "industry_ebitda_margin": 0.3185
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_ebitda": 63998398781.64005,
+      "total_ttm_revenue": 201196716742.41077,
+      "industry_ebitda_margin": 0.3181
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_ebitda": 63998398781.64005,
+      "total_ttm_revenue": 201196716742.41077,
+      "industry_ebitda_margin": 0.3181
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_ebitda": 63998398781.64005,
+      "total_ttm_revenue": 201196716742.41077,
+      "industry_ebitda_margin": 0.3181
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_ebitda": 69524996327.64006,
+      "total_ttm_revenue": 268933861427.41077,
+      "industry_ebitda_margin": 0.2585
+    }
+  ],
+  "net_margin": [
+    {
+      "report_date": "2023-03-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 668636459.0,
+      "total_ttm_revenue": 5935671389.0,
+      "industry_net_margin": 0.1126
+    },
+    {
+      "report_date": "2023-04-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 668636459.0,
+      "total_ttm_revenue": 5935671389.0,
+      "industry_net_margin": 0.1126
+    },
+    {
+      "report_date": "2023-05-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 668636459.0,
+      "total_ttm_revenue": 5935671389.0,
+      "industry_net_margin": 0.1126
+    },
+    {
+      "report_date": "2023-06-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 522390207.0,
+      "total_ttm_revenue": 5764847931.0,
+      "industry_net_margin": 0.0906
+    },
+    {
+      "report_date": "2023-07-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 522390207.0,
+      "total_ttm_revenue": 5764847931.0,
+      "industry_net_margin": 0.0906
+    },
+    {
+      "report_date": "2023-08-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 522390207.0,
+      "total_ttm_revenue": 5764847931.0,
+      "industry_net_margin": 0.0906
+    },
+    {
+      "report_date": "2023-09-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 669600626.0,
+      "total_ttm_revenue": 6211623014.0,
+      "industry_net_margin": 0.1078
+    },
+    {
+      "report_date": "2023-10-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 669600626.0,
+      "total_ttm_revenue": 6211623014.0,
+      "industry_net_margin": 0.1078
+    },
+    {
+      "report_date": "2023-11-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 669600626.0,
+      "total_ttm_revenue": 6211623014.0,
+      "industry_net_margin": 0.1078
+    },
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 21219801827.326015,
+      "total_ttm_revenue": 56625715513.43675,
+      "industry_net_margin": 0.3747
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 21219801827.326015,
+      "total_ttm_revenue": 56625715513.43675,
+      "industry_net_margin": 0.3747
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 21219801827.326015,
+      "total_ttm_revenue": 56625715513.43675,
+      "industry_net_margin": 0.3747
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 88795484729.44206,
+      "total_ttm_revenue": 484700206051.09503,
+      "industry_net_margin": 0.1832
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 88795484729.44206,
+      "total_ttm_revenue": 484700206051.09503,
+      "industry_net_margin": 0.1832
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 88795484729.44206,
+      "total_ttm_revenue": 484700206051.09503,
+      "industry_net_margin": 0.1832
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 86078870100.2325,
+      "total_ttm_revenue": 492841952101.9813,
+      "industry_net_margin": 0.1747
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 86078870100.2325,
+      "total_ttm_revenue": 492841952101.9813,
+      "industry_net_margin": 0.1747
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 86078870100.2325,
+      "total_ttm_revenue": 492841952101.9813,
+      "industry_net_margin": 0.1747
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 87409717641.31023,
+      "total_ttm_revenue": 502532564424.80084,
+      "industry_net_margin": 0.1739
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 87409717641.31023,
+      "total_ttm_revenue": 502532564424.80084,
+      "industry_net_margin": 0.1739
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 87409717641.31023,
+      "total_ttm_revenue": 502532564424.80084,
+      "industry_net_margin": 0.1739
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 92130191701.1007,
+      "total_ttm_revenue": 511317991442.3402,
+      "industry_net_margin": 0.1802
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 92130191701.1007,
+      "total_ttm_revenue": 511317991442.3402,
+      "industry_net_margin": 0.1802
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 92130191701.1007,
+      "total_ttm_revenue": 511317991442.3402,
+      "industry_net_margin": 0.1802
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 92272673609.73564,
+      "total_ttm_revenue": 519095525308.63806,
+      "industry_net_margin": 0.1778
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 92272673609.73564,
+      "total_ttm_revenue": 519095525308.63806,
+      "industry_net_margin": 0.1778
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 92272673609.73564,
+      "total_ttm_revenue": 519095525308.63806,
+      "industry_net_margin": 0.1778
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 111969429217.22615,
+      "total_ttm_revenue": 609018924355.7463,
+      "industry_net_margin": 0.1839
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 111969429217.22615,
+      "total_ttm_revenue": 609018924355.7463,
+      "industry_net_margin": 0.1839
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 111969429217.22615,
+      "total_ttm_revenue": 609018924355.7463,
+      "industry_net_margin": 0.1839
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 123228077466.53531,
+      "total_ttm_revenue": 648611369535.4963,
+      "industry_net_margin": 0.19
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 123228077466.53531,
+      "total_ttm_revenue": 648611369535.4963,
+      "industry_net_margin": 0.19
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 123228077466.53531,
+      "total_ttm_revenue": 648611369535.4963,
+      "industry_net_margin": 0.19
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 133816662889.26265,
+      "total_ttm_revenue": 692922654366.1917,
+      "industry_net_margin": 0.1931
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 133816662889.26265,
+      "total_ttm_revenue": 692922654366.1917,
+      "industry_net_margin": 0.1931
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 133816662889.26265,
+      "total_ttm_revenue": 692922654366.1917,
+      "industry_net_margin": 0.1931
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Credit Services",
+      "total_ttm_net_income": 173036628072.26266,
+      "total_ttm_revenue": 807442205866.1918,
+      "industry_net_margin": 0.2143
+    }
+  ],
+  "asset_turnover": [
+    {
+      "report_date": "2023-12-31T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roa": 0.0164,
+      "industry_net_margin": 0.3747,
+      "industry_asset_turnover": 0.04
+    },
+    {
+      "report_date": "2024-01-31T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roa": 0.0164,
+      "industry_net_margin": 0.3747,
+      "industry_asset_turnover": 0.04
+    },
+    {
+      "report_date": "2024-02-29T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roa": 0.0164,
+      "industry_net_margin": 0.3747,
+      "industry_asset_turnover": 0.04
+    },
+    {
+      "report_date": "2024-03-31T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roa": 0.0203,
+      "industry_net_margin": 0.1832,
+      "industry_asset_turnover": 0.11
+    },
+    {
+      "report_date": "2024-04-30T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roa": 0.0203,
+      "industry_net_margin": 0.1832,
+      "industry_asset_turnover": 0.11
+    },
+    {
+      "report_date": "2024-05-31T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roa": 0.0203,
+      "industry_net_margin": 0.1832,
+      "industry_asset_turnover": 0.11
+    },
+    {
+      "report_date": "2024-06-30T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roa": 0.0196,
+      "industry_net_margin": 0.1747,
+      "industry_asset_turnover": 0.11
+    },
+    {
+      "report_date": "2024-07-31T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roa": 0.0196,
+      "industry_net_margin": 0.1747,
+      "industry_asset_turnover": 0.11
+    },
+    {
+      "report_date": "2024-08-31T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roa": 0.0196,
+      "industry_net_margin": 0.1747,
+      "industry_asset_turnover": 0.11
+    },
+    {
+      "report_date": "2024-09-30T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roa": 0.0196,
+      "industry_net_margin": 0.1739,
+      "industry_asset_turnover": 0.11
+    },
+    {
+      "report_date": "2024-10-31T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roa": 0.0196,
+      "industry_net_margin": 0.1739,
+      "industry_asset_turnover": 0.11
+    },
+    {
+      "report_date": "2024-11-30T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roa": 0.0196,
+      "industry_net_margin": 0.1739,
+      "industry_asset_turnover": 0.11
+    },
+    {
+      "report_date": "2024-12-31T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roa": 0.0205,
+      "industry_net_margin": 0.1802,
+      "industry_asset_turnover": 0.11
+    },
+    {
+      "report_date": "2025-01-31T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roa": 0.0205,
+      "industry_net_margin": 0.1802,
+      "industry_asset_turnover": 0.11
+    },
+    {
+      "report_date": "2025-02-28T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roa": 0.0205,
+      "industry_net_margin": 0.1802,
+      "industry_asset_turnover": 0.11
+    },
+    {
+      "report_date": "2025-03-31T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roa": 0.0204,
+      "industry_net_margin": 0.1778,
+      "industry_asset_turnover": 0.11
+    },
+    {
+      "report_date": "2025-04-30T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roa": 0.0204,
+      "industry_net_margin": 0.1778,
+      "industry_asset_turnover": 0.11
+    },
+    {
+      "report_date": "2025-05-31T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roa": 0.0204,
+      "industry_net_margin": 0.1778,
+      "industry_asset_turnover": 0.11
+    },
+    {
+      "report_date": "2025-06-30T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roa": 0.0219,
+      "industry_net_margin": 0.1839,
+      "industry_asset_turnover": 0.12
+    },
+    {
+      "report_date": "2025-07-31T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roa": 0.0219,
+      "industry_net_margin": 0.1839,
+      "industry_asset_turnover": 0.12
+    },
+    {
+      "report_date": "2025-08-31T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roa": 0.0219,
+      "industry_net_margin": 0.1839,
+      "industry_asset_turnover": 0.12
+    },
+    {
+      "report_date": "2025-09-30T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roa": 0.0239,
+      "industry_net_margin": 0.19,
+      "industry_asset_turnover": 0.13
+    },
+    {
+      "report_date": "2025-10-31T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roa": 0.0239,
+      "industry_net_margin": 0.19,
+      "industry_asset_turnover": 0.13
+    },
+    {
+      "report_date": "2025-11-30T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roa": 0.0239,
+      "industry_net_margin": 0.19,
+      "industry_asset_turnover": 0.13
+    },
+    {
+      "report_date": "2025-12-31T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roa": 0.0256,
+      "industry_net_margin": 0.1931,
+      "industry_asset_turnover": 0.13
+    },
+    {
+      "report_date": "2026-01-31T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roa": 0.0256,
+      "industry_net_margin": 0.1931,
+      "industry_asset_turnover": 0.13
+    },
+    {
+      "report_date": "2026-02-28T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roa": 0.0256,
+      "industry_net_margin": 0.1931,
+      "industry_asset_turnover": 0.13
+    },
+    {
+      "report_date": "2026-03-31T00:00:00.000",
+      "industry": "Credit Services",
+      "industry_roa": 0.0298,
+      "industry_net_margin": 0.2143,
+      "industry_asset_turnover": 0.14
+    }
+  ]
+}

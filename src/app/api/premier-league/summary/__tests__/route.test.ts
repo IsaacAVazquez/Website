@@ -42,6 +42,7 @@ describe("GET /api/premier-league/summary", () => {
         winner: null,
       },
       standings: [],
+      scorers: [],
       recentFixtures: [],
       upcomingFixtures: [],
       teams: [],
@@ -72,5 +73,7 @@ describe("GET /api/premier-league/summary", () => {
     expect(body.error).toMatch(/not available/i);
     expect(body.standings).toEqual([]);
     expect(body.teams).toEqual([]);
+    // Errors must NOT be cached by the CDN.
+    expect(response.headers.get("Cache-Control")).toBe("no-store");
   });
 });
