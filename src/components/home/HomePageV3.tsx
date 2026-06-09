@@ -135,7 +135,7 @@ export function HomePageV3({
   return (
     <div className={styles.page}>
       {/* Hero (acid band) */}
-      <section className={styles["h-hero"]} aria-labelledby="home-hero-wordmark">
+      <section className={styles["h-hero"]} aria-labelledby="home-hero-wordmark" data-testid="hero">
         <div className={styles.shell}>
           <div className={styles["h-hero-top"]}>
             <div className={styles["h-kicker-row"]}>
@@ -292,7 +292,7 @@ export function HomePageV3({
             </Link>
           </div>
 
-          <div className={styles["h-proj-grid"]}>
+          <div className={styles["h-proj-grid"]} data-testid="home-projects">
             {featuredProjects.slice(0, 3).map((project, index) => {
               const href = project.link ?? `/portfolio/${project.slug}`;
               const isInternal = href.startsWith("/");
@@ -403,7 +403,7 @@ export function HomePageV3({
             </Link>
           </div>
 
-          <div className={styles["h-write-grid"]}>
+          <div className={styles["h-write-grid"]} data-testid="home-writing">
             {writingCards.map((post, index) => {
               const tagTone = TAG_VARIANTS[index % TAG_VARIANTS.length];
               const id = String(index + 1).padStart(2, "0");
