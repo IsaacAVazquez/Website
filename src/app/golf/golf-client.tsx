@@ -1109,7 +1109,7 @@ export function GolfClient({
                               className="rounded-[18px] border px-4 py-3"
                               style={{
                                 borderColor: "var(--home-rule)",
-                                background: "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))",
+                                background: "var(--home-paper-raised)",
                               }}
                             >
                               <div className="flex items-center justify-between gap-3">

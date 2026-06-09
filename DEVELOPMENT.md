@@ -2,7 +2,7 @@
 
 Current development setup and workflow notes.
 
-**Last updated:** 2026-04-10
+**Last updated:** 2026-06-08
 
 ---
 
@@ -38,11 +38,18 @@ npm run lint
 npm test
 npm run test:e2e
 npm run update:fantasy
-npm run update:fantasy-rb
 npm run update:investments
 npm run update:football      # full football snapshot refresh (~16 min, both leagues)
 npm run update:premier-league  # PL snapshot only
 npm run update:la-liga       # La Liga snapshot only
+npm run update:mlb
+npm run update:nba
+npm run update:nfl
+npm run update:formula-1
+npm run update:frontier-models
+npm run update:github-trending
+npm run update:spacex
+npm run update:spacex-images
 ```
 
 Additional useful scripts:
@@ -70,8 +77,8 @@ Important current routes:
 - fantasy football routes
 - investments route
 - March Madness route
-- Premier League and La Liga dashboards
-- standalone routes for News Pulse, SpaceX Mission Control, Polling Aggregator, and fintech tools
+- Premier League, La Liga, MLB, NBA, NFL, golf, Formula 1, and Fantasy Formula 1 dashboards
+- standalone routes for AI tools, frontier models, News Pulse, SpaceX Mission Control, Polling Aggregator, personal logs, and fintech tools
 - search and admin
 
 ### Shared shell
@@ -113,8 +120,9 @@ Do not assume old doc paths are current. Check the actual route tree first.
 
 ### Fantasy football
 
-- database and ingestion logic are server-side
-- there are sample data fallbacks for degraded environments
+- public rankings read generated snapshots in `public/data/fantasy/`
+- `npm run update:fantasy` regenerates both TypeScript position data and published JSON snapshots
+- `/api/fantasy-data` is a server-side fallback over the same snapshot files
 
 ### Football dashboards (Premier League + La Liga)
 
@@ -142,6 +150,18 @@ git push
 `prebuild` runs `scripts/updateFootballSnapshots.ts --league-only` before `next build`, which refreshes the faster standings/fixtures/scorers path. The checked-in GitHub Actions workflows also refresh Premier League and La Liga snapshots daily and commit changes when the data moves. Full local team fixture/form refreshes still use `npm run update:football`.
 
 Requires `FOOTBALL_DATA_API_TOKEN` in `.env.local` (free tier, 10 req/min limit). Without it, the dashboard still loads from the last committed snapshot.
+
+### US sports dashboards
+
+MLB, NBA, and NFL also read from committed TypeScript snapshot files:
+
+```bash
+npm run update:mlb
+npm run update:nba
+npm run update:nfl
+```
+
+These commands use public data sources and do not require auth tokens. Golf is manually maintained in `src/data/golfSnapshot.ts`; there is no golf update script.
 
 ---
 

@@ -2,7 +2,7 @@
 
 Current API route inventory for the app.
 
-**Last updated:** 2026-04-14
+**Last updated:** 2026-06-08
 
 ---
 
@@ -18,13 +18,7 @@ Current API route inventory for the app.
 
 | Route | Methods | Notes |
 |------|---------|-------|
-| `/api/fantasy-data` | GET | Main fantasy data route |
-| `/api/fantasy-pros-free` | GET | Public/free fantasy data path |
-| `/api/fantasy-pros-session` | GET, POST | Session-backed FantasyPros flow |
-| `/api/data-manager` | GET, POST, DELETE | Fantasy data management utilities |
-| `/api/data-metadata` | GET | Freshness and metadata |
-| `/api/sample-data` | GET | Fallback sample data |
-| `/api/scheduled-update` | GET, POST | Scheduled refresh readiness and execution route |
+| `/api/fantasy-data` | GET | Snapshot-backed fantasy data route reading `public/data/fantasy/*.json` |
 
 ### Investments
 
@@ -39,10 +33,18 @@ Current API route inventory for the app.
 
 | Route | Methods | Notes |
 |------|---------|-------|
+| `/api/golf/summary` | GET | Golf dashboard summary payload from the committed golf snapshot |
+| `/api/golf/players/[playerId]` | GET | Golf player detail payload from the committed golf snapshot |
 | `/api/premier-league/summary` | GET | Snapshot-backed league table, fixtures, and club options for the Premier League tool |
 | `/api/premier-league/teams/[teamId]` | GET | Snapshot-backed Premier League club drilldown payload |
 | `/api/la-liga/summary` | GET | Snapshot-backed league table, fixtures, and club options for the La Liga tool |
 | `/api/la-liga/teams/[teamId]` | GET | Snapshot-backed La Liga club drilldown payload |
+| `/api/mlb/summary` | GET | Snapshot-backed MLB standings, fixtures, and leaders payload |
+| `/api/mlb/teams/[teamId]` | GET | Snapshot-backed MLB team drilldown payload |
+| `/api/nba/summary` | GET | Snapshot-backed NBA standings, scoreboard, and leaders payload |
+| `/api/nba/teams/[teamId]` | GET | Snapshot-backed NBA team drilldown payload |
+| `/api/nfl/summary` | GET | Snapshot-backed NFL standings, schedule, and leaders payload |
+| `/api/nfl/teams/[teamId]` | GET | Snapshot-backed NFL team drilldown payload |
 
 ### MBA internship notifications
 
@@ -61,7 +63,6 @@ Current API route inventory for the app.
 | `/api/spacex/launches/[id]` | GET | SpaceX launch detail payload |
 | `/api/rss` | GET | RSS feed |
 | `/api/search` | GET | Limited search endpoint; not comprehensive site search |
-| `/api/scrape` | GET, POST | Utility scraping endpoint |
 
 ---
 
@@ -85,12 +86,28 @@ The live pattern is:
 - `/api/investments/quotes`
 - `/api/investments/data/[symbol]`
 
-Football dashboard routes are separate from the investments surface:
+Sports dashboard routes are separate from the investments surface:
 
 - `/api/premier-league/summary`
 - `/api/premier-league/teams/[teamId]`
 - `/api/la-liga/summary`
 - `/api/la-liga/teams/[teamId]`
+- `/api/mlb/summary`
+- `/api/mlb/teams/[teamId]`
+- `/api/nba/summary`
+- `/api/nba/teams/[teamId]`
+- `/api/nfl/summary`
+- `/api/nfl/teams/[teamId]`
+- `/api/golf/summary`
+- `/api/golf/players/[playerId]`
+
+### Fantasy data
+
+The live fantasy API surface is intentionally narrow:
+
+- `/api/fantasy-data` reads the generated static snapshots in `public/data/fantasy/`
+- scheduled fantasy refreshes happen through `.github/workflows/update-fantasy.yml`
+- there are no live `/api/fantasy-pros-*`, `/api/data-manager`, `/api/data-metadata`, `/api/sample-data`, or `/api/scheduled-update` routes in the current app tree
 
 ### Admin auth
 
@@ -124,19 +141,21 @@ Use these as the actual source of truth:
 
 - `src/app/api/auth/[...nextauth]/route.ts`
 - `src/app/api/fantasy-data/route.ts`
-- `src/app/api/fantasy-pros-free/route.ts`
-- `src/app/api/fantasy-pros-session/route.ts`
-- `src/app/api/data-manager/route.ts`
-- `src/app/api/data-metadata/route.ts`
-- `src/app/api/sample-data/route.ts`
-- `src/app/api/scheduled-update/route.ts`
 - `src/app/api/investments/index/route.ts`
 - `src/app/api/investments/quotes/route.ts`
 - `src/app/api/investments/data/[symbol]/route.ts`
+- `src/app/api/golf/summary/route.ts`
+- `src/app/api/golf/players/[playerId]/route.ts`
 - `src/app/api/premier-league/summary/route.ts`
 - `src/app/api/premier-league/teams/[teamId]/route.ts`
 - `src/app/api/la-liga/summary/route.ts`
 - `src/app/api/la-liga/teams/[teamId]/route.ts`
+- `src/app/api/mlb/summary/route.ts`
+- `src/app/api/mlb/teams/[teamId]/route.ts`
+- `src/app/api/nba/summary/route.ts`
+- `src/app/api/nba/teams/[teamId]/route.ts`
+- `src/app/api/nfl/summary/route.ts`
+- `src/app/api/nfl/teams/[teamId]/route.ts`
 - `src/app/api/news-pulse/route.ts`
 - `src/app/api/spacex/summary/route.ts`
 - `src/app/api/spacex/launches/route.ts`
@@ -146,7 +165,6 @@ Use these as the actual source of truth:
 - `src/app/api/mba-jobs/email/route.ts`
 - `src/app/api/rss/route.ts`
 - `src/app/api/search/route.ts`
-- `src/app/api/scrape/route.ts`
 
 ---
 

@@ -399,7 +399,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                             style={getPillStyle(active, unavailable)}
                           >
                             <span>{FANTASY_POSITION_LABELS[position]}</span>
-                            {unavailable && <span className="ml-2 text-[11px] uppercase tracking-[0.12em]">NA</span>}
+                            {unavailable && <span className="ml-2 text-2xs uppercase tracking-[0.12em]">NA</span>}
                           </button>
                         );
                       })}
@@ -563,7 +563,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                     {isLoading
                       ? "Loading players..."
                       : currentSliceUnavailable
-                        ? "Unavailable"
+                        ? "Board unavailable"
                         : `${filteredPlayers.length} players shown`}
                   </p>
                 </div>
@@ -641,7 +641,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                           <div className="flex flex-wrap items-center gap-2">
                             <p className="truncate text-base font-semibold">{player.name}</p>
                             <span
-                              className="inline-flex min-h-[32px] items-center rounded-full border px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em]"
+                              className="inline-flex min-h-[32px] items-center rounded-full border px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em]"
                               style={getPositionTone(player.position)}
                             >
                               {player.position}

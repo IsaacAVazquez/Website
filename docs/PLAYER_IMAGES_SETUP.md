@@ -1,56 +1,35 @@
 # Player Images Setup
 
-Current reference for the fantasy player-image asset system.
+Historical reference for a removed fantasy player-image asset workflow.
 
-**Last updated:** 2026-03-17
-
----
-
-## What Exists Today
-
-The live fantasy UI uses checked-in player image assets and mapping files:
-
-- image files under `public/player-images/`
-- primary mapping in `src/data/player-images.json`
-- team-change overrides in `src/data/player-team-updates.json`
-- runtime resolver in `src/lib/playerImageService.ts`
-
-These assets are already part of the repo and are used by fantasy UI components during rendering.
+**Last updated:** 2026-06-08
 
 ---
 
-## Runtime Usage
+## Status
 
-Current usage points include:
+The current app tree does not include the older player-image mapping system documented here previously:
 
-- `src/lib/playerImageService.ts`
-- `src/components/ui/LazyPlayerImage.tsx`
-- `src/components/TierDisplay.tsx`
-- `src/components/TierChartEnhanced.tsx`
+- no `public/player-images/` directory
+- no `src/data/player-images.json`
+- no `src/data/player-team-updates.json`
+- no `src/lib/playerImageService.ts`
 
-The service normalizes player names and team abbreviations before mapping to a local image path.
-
----
-
-## Important Limitation
-
-There is no maintained `npm run scrape-player-images` command in the current `package.json`.
-
-That means the repo currently documents a checked-in asset workflow, not a polished one-command refresh pipeline.
-
-If player-image assets need to be refreshed:
-
-- update the source files intentionally
-- keep `src/data/player-images.json` aligned with `public/player-images/`
-- verify the affected fantasy UI locally before shipping
+`src/components/ui/LazyPlayerImage.tsx` still exists as a reusable image component, but it is not proof of an active fantasy player-image refresh pipeline.
 
 ---
 
-## Validation Tips
+## Current Fantasy Context
 
-- check image URLs in the browser network panel
-- verify a few known players across different teams and naming variations
-- confirm mobile layouts still work when images are present or missing
+The live fantasy football surface is snapshot-backed:
+
+- `npm run update:fantasy`
+- `src/data/fantasyPositionData.generated.ts`
+- `src/data/fantasySnapshotRevision.generated.ts`
+- `public/data/fantasy/{ppr,half_ppr,standard}.json`
+- `/api/fantasy-data`
+
+If player images are reintroduced, document the new source files, refresh workflow, and runtime usage points in this file before treating it as an operational guide again.
 
 ---
 
@@ -58,4 +37,4 @@ If player-image assets need to be refreshed:
 
 - `docs/FANTASY_PLATFORM_SETUP.md`
 - `docs/AUTOMATION_SCRIPTS.md`
-- `src/lib/playerImageService.ts`
+- `COMPONENTS.md`

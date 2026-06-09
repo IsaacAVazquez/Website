@@ -96,7 +96,7 @@ function GrowthChart({ data }: { data: { label: string; growth: number }[] }) {
       .call(d3.axisBottom(x).tickSize(0))
       .call((ax) => ax.select(".domain").remove())
       .selectAll("text")
-      .attr("fill", "color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))")
+      .attr("fill", "var(--home-ink-soft)")
       .attr("font-size", "10px")
       .attr("transform", "rotate(-35)")
       .attr("text-anchor", "end")
@@ -112,7 +112,7 @@ function GrowthChart({ data }: { data: { label: string; growth: number }[] }) {
       )
       .call((ax) => ax.select(".domain").remove())
       .selectAll("text")
-      .attr("fill", "color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))")
+      .attr("fill", "var(--home-ink-soft)")
       .attr("font-size", "10px");
 
     g.selectAll(".tick line")
@@ -132,7 +132,7 @@ export function GrowthPanel({ symbol }: Props) {
       <h3 className="text-sm font-semibold text-[var(--home-ink)] mb-3">YoY Growth</h3>
 
       {isLoading && (
-        <div className="h-48 rounded bg-[var(--neutral-200)] animate-pulse" />
+        <div className="h-48 rounded bg-[var(--home-stone)] animate-pulse" />
       )}
 
       {!isLoading && (error || metrics.length === 0) && (
@@ -145,7 +145,7 @@ export function GrowthPanel({ symbol }: Props) {
           <div className="mt-3 grid grid-cols-2 sm:grid-cols-3 gap-2">
             {metrics.map((m) => (
               <div key={m.label} className="text-center">
-                <p className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] truncate">{m.label}</p>
+                <p className="text-xs text-[var(--home-ink-soft)] truncate">{m.label}</p>
                 <p
                   className={`text-sm font-semibold ${
                     m.growth >= 0 ? "text-[var(--color-success)]" : "text-[var(--color-error)]"

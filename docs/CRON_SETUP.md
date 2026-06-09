@@ -2,7 +2,7 @@
 
 Current reference for how scheduled data refreshes work across the site.
 
-**Last updated:** 2026-05-03
+**Last updated:** 2026-06-08
 
 ---
 
@@ -25,13 +25,18 @@ Each workflow lives in `.github/workflows/update-*.yml`. They all support `workf
 | --- | --- | --- |
 | `update-fantasy.yml` | `0 17 * * 3` (Wed 17:00) | Fantasy football snapshots in `public/data/fantasy/*.json` via `npm run update:fantasy`. |
 | `update-investments.yml` | `15 22 * * 1,4` (Mon & Thu 22:15) | Investments index + per-symbol snapshots via `npm run update:investments`. |
-| `update-premier-league.yml` | `15 6 * * *` (daily 06:15) | Premier League snapshot in `src/data/premierLeagueSnapshot.ts`. |
-| `update-la-liga.yml` | `30 6 * * *` (daily 06:30) | La Liga snapshot in `src/data/laLigaSnapshot.ts`. |
+| `update-premier-league.yml` | `15 6 * 1-5,8-12 *` (daily January-May and August-December 06:15) | Premier League snapshot in `src/data/premierLeagueSnapshot.ts`. |
+| `update-la-liga.yml` | `30 6 * 1-5,8-12 *` (daily January-May and August-December 06:30) | La Liga snapshot in `src/data/laLigaSnapshot.ts`. |
 | `update-github-trending.yml` | `45 7 * * *` (daily 07:45) | GitHub trending snapshot in `src/data/githubTrendingSnapshot.ts`. |
+| `update-formula-1.yml` | `10 8 * * *` (daily 08:10) | Formula 1 snapshot in `src/data/formula1Snapshot.ts`. |
+| `update-spacex.yml` | `25 9,21 * * *` (daily 09:25 and 21:25) | SpaceX data, image manifest, reference index, and cached image artifacts. |
+| `update-mlb.yml` | `5 10 * 4-10 *` (daily April through October 10:05) | MLB snapshot in `src/data/mlbSnapshot.ts`. |
+| `update-nba.yml` | `20 10 15-31 10 *` and `20 10 * 1-6,11-12 *` (mid-October through June 10:20) | NBA snapshot in `src/data/nbaSnapshot.ts`. |
+| `update-nfl.yml` | `35 10 * 1-2,9-12 2` (Tuesdays September through February 10:35) | NFL snapshot in `src/data/nflSnapshot.ts`. |
 
 Workflows commit regenerated snapshots back to `main` using the default `GITHUB_TOKEN`. Look for commits authored by `github-actions[bot]`.
 
-Snapshots that do **not** have a dedicated workflow (NBA, NFL, MLB, Formula 1, SpaceX) are refreshed manually with the matching `npm run update:*` command and then committed by hand. See `CLAUDE.md` for the full per-surface command list.
+Snapshots that do **not** have a dedicated workflow, such as the manually maintained golf snapshot, are refreshed by hand and committed normally. See `CLAUDE.md` for the full per-surface command list.
 
 ---
 
@@ -39,7 +44,7 @@ Snapshots that do **not** have a dedicated workflow (NBA, NFL, MLB, Formula 1, S
 
 - Build hook URL is configured in **Netlify → Site configuration → Build hooks**.
 - A scheduled job on **cron-job.org** sends a `POST` to that URL daily.
-- Each ping triggers a Netlify deploy. Netlify's `prebuild` step (`scripts/buildFootballSnapshot.ts --league-only`) refreshes Premier League and La Liga league-level snapshots before `next build` runs.
+- Each ping triggers a Netlify deploy. Netlify's `prebuild` step (`tsx scripts/updateFootballSnapshots.ts --league-only`) refreshes Premier League and La Liga league-level snapshots before `next build` runs.
 - Per-team snapshots (sidebar fixtures, form strip) only refresh when `npm run update:football` runs locally and the resulting snapshots are committed.
 
 This pipeline keeps standings, scorers, and fixtures current without any manual action.
@@ -72,8 +77,8 @@ After running, commit the regenerated `src/data/*.ts` or `public/data/**` files.
 
 | Variable | Used by |
 | --- | --- |
-| `FOOTBALL_DATA_API_TOKEN` | `update:football`, `update:premier-league`, `update:la-liga` (free tier, 10 req/min). Set in `.env.local` and in Netlify env. |
-| `FANTASYPROS_USERNAME`, `FANTASYPROS_PASSWORD` | `update:fantasy` if scraping protected pages. |
+| `FOOTBALL_DATA_API_TOKEN` | `update:football`, `update:premier-league`, `update:la-liga` (free tier, 10 req/min). Set in `.env.local`, GitHub Actions secrets for the league workflows, and Netlify env if the build-hook prebuild refresh is active. |
+| `GITHUB_TOKEN` or `GH_TOKEN` | Optional local higher-rate-limit token for `npm run update:github-trending`; GitHub Actions provides `GITHUB_TOKEN`. |
 | `NEXTAUTH_SECRET`, `NEXTAUTH_URL`, `ADMIN_USERNAME`, `ADMIN_PASSWORD` | `/admin` auth (NextAuth v4). Not used by scheduled refresh. |
 
 `CRON_SECRET` previously gated the retired Netlify scheduled-fantasy function and is no longer required for scheduled refresh. It may still be referenced by older docs; treat any such mention as historical.

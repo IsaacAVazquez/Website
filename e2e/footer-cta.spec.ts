@@ -14,7 +14,7 @@ test.describe("Footer CTA cleanup", () => {
     const footer = page.getByRole("contentinfo");
     await expect(footer).toHaveAttribute("data-footer-variant", "compact");
     await expect(
-      footer.getByRole("heading", { name: /thanks for taking a look\./i })
+      footer.getByRole("heading", { name: /building something that needs judgment and follow-through/i })
     ).toHaveCount(0);
   });
 
@@ -29,7 +29,7 @@ test.describe("Footer CTA cleanup", () => {
     const footer = page.getByRole("contentinfo");
     await expect(footer).toHaveAttribute("data-footer-variant", "compact");
     await expect(
-      footer.getByRole("heading", { name: /thanks for taking a look\./i })
+      footer.getByRole("heading", { name: /building something that needs judgment and follow-through/i })
     ).toHaveCount(0);
   });
 
@@ -43,7 +43,7 @@ test.describe("Footer CTA cleanup", () => {
     const footer = page.getByRole("contentinfo");
     await expect(footer).toHaveAttribute("data-footer-variant", "full");
     await expect(
-      footer.getByRole("heading", { name: /thanks for taking a look\./i })
+      footer.getByRole("heading", { name: /building something that needs judgment and follow-through/i })
     ).toBeVisible();
   });
 
@@ -58,7 +58,7 @@ test.describe("Footer CTA cleanup", () => {
     const footer = page.getByRole("contentinfo");
     await expect(footer).toHaveAttribute("data-footer-variant", "full");
     await expect(
-      footer.getByRole("heading", { name: /thanks for taking a look\./i })
+      footer.getByRole("heading", { name: /building something that needs judgment and follow-through/i })
     ).toBeVisible();
   });
 });

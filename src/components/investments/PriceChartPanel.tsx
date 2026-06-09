@@ -116,7 +116,7 @@ export function PriceChartPanel({ symbol }: Props) {
           .attr("stroke-opacity", "0.4")
       )
       .selectAll("text")
-      .attr("fill", "color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))")
+      .attr("fill", "var(--home-ink-soft)")
       .attr("font-size", "10px")
       .attr("dx", "-4px");
 
@@ -126,7 +126,7 @@ export function PriceChartPanel({ symbol }: Props) {
       .attr("x", -pInnerH / 2)
       .attr("y", -48)
       .attr("text-anchor", "middle")
-      .attr("fill", "color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))")
+      .attr("fill", "var(--home-ink-soft)")
       .attr("font-size", "10px")
       .text("Price (USD)");
 
@@ -164,13 +164,13 @@ export function PriceChartPanel({ symbol }: Props) {
       .call(d3.axisBottom(xScale).ticks(5))
       .call((ax) => ax.select(".domain").remove())
       .selectAll("text")
-      .attr("fill", "color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))")
+      .attr("fill", "var(--home-ink-soft)")
       .attr("font-size", "10px");
 
     // Hairline + tooltip on hover
     const hairline = pg
       .append("line")
-      .attr("stroke", "color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))")
+      .attr("stroke", "var(--home-ink-soft)")
       .attr("stroke-dasharray", "3,3")
       .attr("y1", 0)
       .attr("y2", pInnerH)
@@ -250,7 +250,7 @@ export function PriceChartPanel({ symbol }: Props) {
       .call(d3.axisBottom(vxScale).ticks(5))
       .call((ax) => ax.select(".domain").remove())
       .selectAll("text")
-      .attr("fill", "color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))")
+      .attr("fill", "var(--home-ink-soft)")
       .attr("font-size", "10px");
 
     // Volume label
@@ -259,7 +259,7 @@ export function PriceChartPanel({ symbol }: Props) {
       .attr("x", -vInnerH / 2)
       .attr("y", -48)
       .attr("text-anchor", "middle")
-      .attr("fill", "color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))")
+      .attr("fill", "var(--home-ink-soft)")
       .attr("font-size", "9px")
       .text("Volume");
   }, [slicedData, symbol]);
@@ -272,7 +272,7 @@ export function PriceChartPanel({ symbol }: Props) {
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
         <div>
           <h3 className="text-sm font-semibold text-[var(--home-ink)]">Price History</h3>
-          <p className="mt-1 text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+          <p className="mt-1 text-xs text-[var(--home-ink-soft)]">
             Trend and volume from the curated research snapshot.
           </p>
           <p className="mt-2 text-xs text-[var(--home-ink-muted)]">
@@ -303,8 +303,8 @@ export function PriceChartPanel({ symbol }: Props) {
 
       {isLoading && (
         <div className="space-y-3">
-          <div className="h-[260px] rounded bg-[var(--neutral-200)] animate-pulse" />
-          <div className="h-[80px] rounded bg-[var(--neutral-200)] animate-pulse" />
+          <div className="h-[260px] rounded bg-[var(--home-stone)] animate-pulse" />
+          <div className="h-[80px] rounded bg-[var(--home-stone)] animate-pulse" />
         </div>
       )}
 
@@ -318,7 +318,7 @@ export function PriceChartPanel({ symbol }: Props) {
           <svg ref={volumeRef} className="mt-2 w-full" />
           <div
             ref={tooltipRef}
-            className="absolute pointer-events-none hidden z-10 bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] border border-[var(--home-rule)] rounded px-2 py-1 text-xs text-[var(--home-ink)] shadow-md whitespace-nowrap"
+            className="absolute pointer-events-none hidden z-10 bg-[var(--home-paper-raised)] border border-[var(--home-rule)] rounded px-2 py-1 text-xs text-[var(--home-ink)] shadow-md whitespace-nowrap"
           />
         </div>
       )}

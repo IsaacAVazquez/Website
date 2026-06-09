@@ -130,7 +130,7 @@ export function MissionImageFrame({
         >
           <div className="flex flex-col items-center gap-3">
             <Rocket className="h-7 w-7 text-[var(--home-haze)]" />
-            <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+            <span className="font-mono text-3xs font-semibold uppercase tracking-[0.28em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
               {getInitials(name)}
             </span>
           </div>

@@ -2,7 +2,7 @@
 
 Current environment variable reference for local development and Netlify deployment.
 
-**Last updated:** 2026-04-10
+**Last updated:** 2026-06-08
 
 ---
 
@@ -33,14 +33,17 @@ The admin surface uses credential auth, not a multi-user identity provider.
 
 ## Fantasy Operations
 
+The current public fantasy workflow is snapshot-backed and does not require local secrets. `npm run update:fantasy` reads public sources and regenerates checked-in artifacts.
+
+There are no live `/api/fantasy-pros-*`, `/api/data-manager`, or `/api/scheduled-update` routes in the current app tree.
+
+---
+
+## Operations
+
 | Variable | Required | Purpose |
 | --- | --- | --- |
-| `CRON_SECRET` | yes for scheduled updates | Bearer token for `/api/scheduled-update` |
-| `FANTASYPROS_USERNAME` | optional for public pages, required for session refresh flows | FantasyPros login |
-| `FANTASYPROS_PASSWORD` | optional for public pages, required for session refresh flows | FantasyPros login |
-| `FANTASYPROS_API_KEY` | optional | FantasyPros API key used by older or operational FantasyPros API helper paths |
-
-Public fantasy pages can still function without every FantasyPros credential because not every fantasy path depends on that provider.
+| `CRON_SECRET` | yes for Netlify cache purge | Bearer token for `netlify/functions/purge-cache.ts` |
 
 ---
 
@@ -78,7 +81,7 @@ These usually come from the hosting platform and do not need to be set manually 
 
 ## Local Development
 
-Recommended minimum local set:
+Useful local template for broader coverage:
 
 ```bash
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
@@ -91,7 +94,7 @@ CRON_SECRET=replace-me
 MBA_DIGEST_ALLOWED_RECIPIENTS=you@example.com,@example.edu
 ```
 
-Add `RESEND_API_KEY` only if you are testing email delivery. Add `FOOTBALL_DATA_API_TOKEN` only if you are testing `npm run update:football`, `npm run update:premier-league`, or `npm run update:la-liga`, and add FantasyPros credentials or `FANTASYPROS_API_KEY` only if you are testing FantasyPros-backed refreshes.
+Add `RESEND_API_KEY` only if you are testing email delivery. Add `FOOTBALL_DATA_API_TOKEN` only if you are testing `npm run update:football`, `npm run update:premier-league`, or `npm run update:la-liga`.
 
 ---
 
@@ -103,7 +106,7 @@ Set production values in the Netlify dashboard. Keep them aligned with:
 - the active custom domain
 - the build and cron workflows
 
-If auth or scheduled updates break only in production, verify the deployed env vars before debugging the application code.
+If auth, email delivery, cache purge, or data refresh workflows break only in production, verify the deployed env vars before debugging the application code.
 
 ---
 

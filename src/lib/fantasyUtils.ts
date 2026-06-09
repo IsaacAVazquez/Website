@@ -129,8 +129,6 @@ export function getSourceKindLabel(
       return "Shared consensus";
     case "derived_flex":
       return "Derived flex board";
-    case "derived_overall":
-      return "Derived overall board";
     default:
       return "Unavailable";
   }

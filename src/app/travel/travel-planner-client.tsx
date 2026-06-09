@@ -878,7 +878,7 @@ function ActiveTripView({
                           >
                             {activity.title}
                           </p>
-                          <p className="mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[11px] uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                          <p className="mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-2xs uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
                             <span>{ACTIVITY_CATEGORY_LABELS[activity.category]}</span>
                             {activity.time ? (
                               <>
@@ -962,7 +962,7 @@ function ActiveTripView({
                     <p className="text-[13.5px] font-semibold text-[var(--home-ink)]">
                       {entry.title}
                     </p>
-                    <p className="mt-0.5 flex items-center gap-2 text-[11px] uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                    <p className="mt-0.5 flex items-center gap-2 text-2xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                       <span>{formatDayHeading(entry.date)}</span>
                       <span aria-hidden="true">·</span>
                       <span
@@ -1035,7 +1035,7 @@ function ActiveTripView({
                   className="min-w-0 flex-1 text-left"
                 >
                   <p className="truncate text-[13.5px] font-semibold text-[var(--home-ink)]">
-                    {other.name} {isActive ? <span className="text-[11px] font-medium text-[var(--home-haze)]">· active</span> : null}
+                    {other.name} {isActive ? <span className="text-2xs font-medium text-[var(--home-haze)]">· active</span> : null}
                   </p>
                   <p className="mt-0.5 truncate text-[11.5px] text-[var(--home-ink-muted)]">
                     {other.destination || "No destination"} ·{" "}

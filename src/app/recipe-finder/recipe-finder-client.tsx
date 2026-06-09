@@ -305,7 +305,7 @@ export function RecipeFinderClient() {
                       : "var(--home-rule)",
                     background: isActive
                       ? "var(--home-ink)"
-                      : "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))",
+                      : "var(--home-paper-raised)",
                     color: isActive ? "var(--home-paper)" : "var(--home-ink-muted)",
                     fontFamily: "var(--font-home-sans)",
                   }}
@@ -317,7 +317,7 @@ export function RecipeFinderClient() {
                   <span>{VIEW_LABELS[id]}</span>
                   {id === "pantry" && hasPantry ? (
                     <span
-                      className="ml-1 rounded-full px-2 py-0.5 text-[11px] font-bold tracking-[0.04em]"
+                      className="ml-1 rounded-full px-2 py-0.5 text-2xs font-bold tracking-[0.04em]"
                       style={{
                         background: isActive
                           ? "color-mix(in srgb, var(--home-paper) 22%, transparent)"
@@ -435,7 +435,7 @@ export function RecipeFinderClient() {
                   ))}
                 </select>
                 {view === "vegetarian" ? (
-                  <p className="mt-2 text-[11px] text-[var(--home-ink-muted)]">
+                  <p className="mt-2 text-2xs text-[var(--home-ink-muted)]">
                     Vegetarian view is active. Switch to All recipes to use other diets.
                   </p>
                 ) : null}
@@ -452,7 +452,7 @@ export function RecipeFinderClient() {
                       key={pick}
                       type="button"
                       onClick={() => addIngredient(pick)}
-                      className="inline-flex min-h-touch items-center rounded-full border border-dashed border-[var(--home-rule)] bg-transparent px-3 py-1 text-[11px] font-medium text-[var(--home-ink-muted)] transition-colors hover:border-[var(--home-haze)] hover:text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                      className="inline-flex min-h-touch items-center rounded-full border border-dashed border-[var(--home-rule)] bg-transparent px-3 py-1 text-2xs font-medium text-[var(--home-ink-muted)] transition-colors hover:border-[var(--home-haze)] hover:text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
                     >
                       + {pick}
                     </button>
@@ -571,7 +571,7 @@ function PantryEditor({
             <button
               type="button"
               onClick={onClear}
-              className="inline-flex min-h-touch items-center gap-1 rounded-full border border-[var(--home-rule)] bg-transparent px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+              className="inline-flex min-h-touch items-center gap-1 rounded-full border border-[var(--home-rule)] bg-transparent px-3 py-1 text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
             >
               <Trash2 className="h-3 w-3" aria-hidden="true" />
               Clear
@@ -642,7 +642,7 @@ function RecipeCard({ match, hasPantry, isOpen, onToggle }: RecipeCardProps) {
         className="flex w-full items-start justify-between gap-4 px-5 py-5 text-left sm:px-6"
       >
         <div className="min-w-0 flex-1">
-          <div className="mb-1.5 flex flex-wrap items-center gap-2 text-[10px] font-mono font-semibold uppercase tracking-[0.22em] text-[var(--home-ink-muted)]">
+          <div className="mb-1.5 flex flex-wrap items-center gap-2 text-3xs font-mono font-semibold uppercase tracking-[0.22em] text-[var(--home-ink-muted)]">
             <span>{recipe.cuisine}</span>
             <span aria-hidden="true">·</span>
             <span>{recipe.category}</span>
@@ -694,7 +694,7 @@ function RecipeCard({ match, hasPantry, isOpen, onToggle }: RecipeCardProps) {
           >
             {hasPantry ? formatPercent(matchScore) : "—"}
           </span>
-          <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--home-ink-muted)]">
+          <span className="font-mono text-3xs uppercase tracking-[0.18em] text-[var(--home-ink-muted)]">
             {isOpen ? "Hide" : "Open"}
           </span>
         </div>
@@ -707,7 +707,7 @@ function RecipeCard({ match, hasPantry, isOpen, onToggle }: RecipeCardProps) {
         >
           <div className="grid gap-6 md:grid-cols-2">
             <div>
-              <h4 className="mb-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--home-ink-muted)]">
+              <h4 className="mb-3 font-mono text-2xs font-semibold uppercase tracking-[0.22em] text-[var(--home-ink-muted)]">
                 Ingredients
               </h4>
               <ul className="space-y-1.5 text-sm">
@@ -728,13 +728,13 @@ function RecipeCard({ match, hasPantry, isOpen, onToggle }: RecipeCardProps) {
                       <span>
                         {ingredient.display}
                         {isStaple && (
-                          <span className="ml-2 rounded-full border border-[var(--home-rule)] px-1.5 py-0.5 text-[10px] uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
+                          <span className="ml-2 rounded-full border border-[var(--home-rule)] px-1.5 py-0.5 text-3xs uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
                             staple
                           </span>
                         )}
                         {isMissing && hasPantry && (
                           <span
-                            className="ml-2 rounded-full px-1.5 py-0.5 text-[10px] uppercase tracking-[0.16em]"
+                            className="ml-2 rounded-full px-1.5 py-0.5 text-3xs uppercase tracking-[0.16em]"
                             style={{
                               border:
                                 "1px solid color-mix(in srgb, var(--home-haze) 40%, var(--home-rule))",
@@ -751,13 +751,13 @@ function RecipeCard({ match, hasPantry, isOpen, onToggle }: RecipeCardProps) {
               </ul>
             </div>
             <div>
-              <h4 className="mb-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--home-ink-muted)]">
+              <h4 className="mb-3 font-mono text-2xs font-semibold uppercase tracking-[0.22em] text-[var(--home-ink-muted)]">
                 Instructions
               </h4>
               <ol className="space-y-2 text-sm text-[var(--home-ink)]">
                 {recipe.instructions.map((step, index) => (
                   <li key={index} className="flex gap-3">
-                    <span className="font-mono text-[11px] font-bold text-[var(--home-haze)]">
+                    <span className="font-mono text-2xs font-bold text-[var(--home-haze)]">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     <span>{step}</span>
@@ -772,7 +772,7 @@ function RecipeCard({ match, hasPantry, isOpen, onToggle }: RecipeCardProps) {
               {recipe.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-full border border-[var(--home-rule)] bg-transparent px-2.5 py-0.5 text-[11px] text-[var(--home-ink-muted)]"
+                  className="rounded-full border border-[var(--home-rule)] bg-transparent px-2.5 py-0.5 text-2xs text-[var(--home-ink-muted)]"
                 >
                   {tag}
                 </span>

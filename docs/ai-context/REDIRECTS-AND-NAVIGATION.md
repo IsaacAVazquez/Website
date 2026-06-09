@@ -2,7 +2,7 @@
 
 Current nav model, redirect table, and shell notes.
 
-**Last updated:** 2026-04-10
+**Last updated:** 2026-06-08
 
 ---
 
@@ -100,4 +100,4 @@ Defined in `next.config.mjs`.
 - `/writing` is the canonical writing route
 - `Projects` is the public-facing nav label even though the route stays `/portfolio`
 - `Writing` is again a promoted global-nav item
-- `/formula-1`, `/premier-league`, `/la-liga`, `/news-pulse`, `/spacex-mission-control`, `/polling-aggregator`, and `/fintech-tools/*` are live routes but not promoted in the global header
+- `/formula-1`, `/fantasy-formula-1`, `/premier-league`, `/la-liga`, `/mlb`, `/nba`, `/nfl`, `/golf`, `/ai-dev-tools`, `/frontier-models`, `/decision-lab`, `/food-map`, `/recipe-finder`, `/wine-cellar`, `/news-pulse`, `/spacex-mission-control`, `/polling-aggregator`, `/mba-internship-notifications`, `/museum-log`, `/now`, `/changelog`, and `/fintech-tools/*` are live routes but not promoted in the global header

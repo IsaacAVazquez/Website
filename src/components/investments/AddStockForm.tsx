@@ -23,7 +23,7 @@ function Field({
       <input
         id={id}
         name={id}
-        className="min-h-[44px] w-full px-3 py-2 text-sm rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-[var(--home-ink)] placeholder:text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] focus:outline-none focus:ring-2 focus:ring-[var(--home-haze)] focus:border-transparent transition"
+        className="min-h-[44px] w-full px-3 py-2 text-sm rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-[var(--home-ink)] placeholder:text-[var(--home-ink-soft)] focus:outline-none focus:ring-2 focus:ring-[var(--home-haze)] focus:border-transparent transition"
         {...props}
       />
     </label>
@@ -82,13 +82,13 @@ export function AddStockForm({ onAdd }: Props) {
       <div className="mb-5 flex items-center justify-between">
         <div>
           <h3 className="text-sm font-semibold text-[var(--home-ink)]">Add Position</h3>
-          <p className="mt-1 text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+          <p className="mt-1 text-xs text-[var(--home-ink-soft)]">
             Save a holding locally to include it in portfolio analytics.
           </p>
         </div>
         <button
           onClick={() => { setOpen(false); setError(null); }}
-          className="text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] hover:text-[var(--home-ink)] transition min-h-[44px] min-w-[44px] flex items-center justify-center"
+          className="text-[var(--home-ink-soft)] hover:text-[var(--home-ink)] transition min-h-[44px] min-w-[44px] flex items-center justify-center"
           aria-label="Close add stock form"
         >
           <IconX size={18} />

@@ -29,14 +29,14 @@ export function DCFPanel({ symbol }: Props) {
   return (
     <WarmCard padding="sm">
       <h3 className="text-sm font-semibold text-[var(--home-ink)] mb-1">DCF Fair Value</h3>
-      <p className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] mb-4">
+      <p className="text-xs text-[var(--home-ink-soft)] mb-4">
         Discounted cash flow estimate, for informational purposes only.
       </p>
 
       {isLoading && (
         <div className="space-y-3">
           {Array.from({ length: 4 }).map((_, i) => (
-            <div key={i} className="h-8 rounded bg-[var(--neutral-200)] animate-pulse" />
+            <div key={i} className="h-8 rounded bg-[var(--home-stone)] animate-pulse" />
           ))}
         </div>
       )}
@@ -50,19 +50,19 @@ export function DCFPanel({ symbol }: Props) {
           {/* Key values */}
           <div className="grid grid-cols-3 gap-3 mb-4">
             <div className="text-center">
-              <p className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] mb-1">Fair Value</p>
+              <p className="text-xs text-[var(--home-ink-soft)] mb-1">Fair Value</p>
               <p className="text-lg font-bold text-[var(--home-ink)]">
                 {fmt(data.fairValue, "currency")}
               </p>
             </div>
             <div className="text-center">
-              <p className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] mb-1">Current Price</p>
+              <p className="text-xs text-[var(--home-ink-soft)] mb-1">Current Price</p>
               <p className="text-lg font-bold text-[var(--home-ink)]">
                 {fmt(data.currentPrice, "currency")}
               </p>
             </div>
             <div className="text-center">
-              <p className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] mb-1">Upside</p>
+              <p className="text-xs text-[var(--home-ink-soft)] mb-1">Upside</p>
               <p
                 className={`text-lg font-bold ${
                   upside >= 0 ? "text-[var(--color-success)]" : "text-[var(--color-error)]"
@@ -110,8 +110,8 @@ export function DCFPanel({ symbol }: Props) {
 
           {/* Disclaimer */}
           <div className="mt-4 flex items-start gap-1.5 p-2.5 rounded-lg bg-[var(--home-paper-alt)]">
-            <IconInfoCircle size={14} className="text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] shrink-0 mt-0.5" />
-            <p className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] leading-relaxed">
+            <IconInfoCircle size={14} className="text-[var(--home-ink-soft)] shrink-0 mt-0.5" />
+            <p className="text-xs text-[var(--home-ink-soft)] leading-relaxed">
               DCF estimates are based on analyst projections and model assumptions. Not financial
               advice. Past performance is not indicative of future results.
             </p>
