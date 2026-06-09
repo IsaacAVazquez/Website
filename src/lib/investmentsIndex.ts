@@ -47,6 +47,8 @@ export function normalizeInvestmentIndexEntry(
     longName,
     searchText:
       rawSearchText === symbolOnlySearchText ? fallbackSearchText : rawSearchText,
+    ...(entry.stale ? { stale: true } : {}),
+    ...(entry.asOf ? { asOf: entry.asOf } : {}),
   };
 }
 
@@ -73,6 +75,8 @@ export function normalizeInvestmentsIndex(index: InvestmentsIndex): InvestmentsI
         shortName: entry.shortName || base?.shortName || entry.symbol,
         longName: entry.longName || base?.longName || entry.shortName || entry.symbol,
         searchText: entry.searchText,
+        stale: entry.stale,
+        asOf: entry.asOf,
       })
     );
   });

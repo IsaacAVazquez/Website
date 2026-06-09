@@ -204,6 +204,48 @@ def build_index_entry(symbol: str, info_payload) -> dict[str, str]:
     }
 
 
+def stale_entry_from_prior_snapshot(symbol: str, out_dir: Path) -> dict | None:
+    """Recover an index entry from a previously-built snapshot on disk.
+
+    When this run's fetch fails for a symbol, a good snapshot from an earlier
+    run usually still sits in ``<out_dir>/snapshot.json`` (snapshots are never
+    deleted). Rather than dropping the symbol from the index entirely — which
+    makes it vanish from search *and* 404 on deep-link — we keep it servable by
+    re-emitting its entry flagged ``stale`` with the date it was last built.
+
+    Returns ``None`` when there is no usable prior snapshot (no file, parse
+    error, or empty ``sections``), in which case the symbol stays in ``failed``.
+    """
+    snapshot_path = out_dir / "snapshot.json"
+    if not snapshot_path.exists():
+        return None
+    try:
+        with open(snapshot_path, "r", encoding="utf-8") as f:
+            snapshot = json.load(f)
+    except (OSError, json.JSONDecodeError):
+        return None
+
+    sections = snapshot.get("sections")
+    if not isinstance(sections, dict) or not sections:
+        return None
+
+    info_payload = None
+    info_path = out_dir / "info.json"
+    if info_path.exists():
+        try:
+            with open(info_path, "r", encoding="utf-8") as f:
+                info_payload = json.load(f)
+        except (OSError, json.JSONDecodeError):
+            info_payload = None
+
+    entry = build_index_entry(symbol, info_payload)
+    freshness = snapshot.get("freshness")
+    as_of = freshness.get("snapshotBuiltAt") if isinstance(freshness, dict) else None
+    entry["stale"] = True
+    entry["asOf"] = as_of or snapshot.get("lastUpdated")
+    return entry
+
+
 # ---------------------------------------------------------------------------
 # Fetch helpers — map real API methods to output file names
 # ---------------------------------------------------------------------------
@@ -483,7 +525,31 @@ def main() -> None:
     # The downstream TypeScript builder and CI verify step only read
     # `index.failed` as `string[]`. Keep that contract while still surfacing
     # the richer reasons in the run log for humans triaging.
+    #
+    # Resilience: before declaring a symbol unavailable, fall back to any good
+    # snapshot already on disk from an earlier run (mirrors the "keep previous
+    # snapshot on failed fetch" pattern used by the other dashboards). Recovered
+    # symbols re-enter `symbols`/`entries` flagged stale, so they stay
+    # searchable and servable rather than disappearing on a partial run.
+    still_failed: list[dict[str, str]] = []
+    recovered: list[str] = []
+    for item in failed:
+        symbol = item["symbol"]
+        stale_entry = stale_entry_from_prior_snapshot(symbol, OUTPUT_DIR / symbol)
+        if stale_entry is not None:
+            successful.append(symbol)
+            entries.append(stale_entry)
+            recovered.append(symbol)
+        else:
+            still_failed.append(item)
+    failed = still_failed
     failed_symbols = [item["symbol"] for item in failed]
+
+    if recovered:
+        print(
+            f"Recovered {len(recovered)} symbol(s) from prior snapshots "
+            f"(served stale): {', '.join(recovered)}"
+        )
 
     index_data = {
         "symbols": successful,

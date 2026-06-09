@@ -70,7 +70,15 @@ export function NumberField({
           max={max}
           step={step}
           onChange={(e) => commit(e.target.value)}
-          onBlur={() => setText(String(asPercent ? value * 100 : value))}
+          onBlur={() => {
+            // Only canonicalize the buffer when it's empty, unparseable, or has
+            // drifted from the committed value — otherwise a valid in-progress
+            // entry like "5." (which already commits to 5) gets clobbered.
+            const parsed = asPercent ? Number(text) / 100 : Number(text);
+            if (text.trim() === "" || Number.isNaN(parsed) || Math.abs(parsed - value) > 1e-9) {
+              setText(String(asPercent ? value * 100 : value));
+            }
+          }}
         />
         {suffix ? <span className="invest-retire-affix invest-retire-affix-suffix">{suffix}</span> : null}
       </span>

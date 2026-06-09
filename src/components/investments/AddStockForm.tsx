@@ -37,22 +37,28 @@ export function AddStockForm({ onAdd }: Props) {
   const [cost, setCost] = useState("");
   const [date, setDate] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const [errorField, setErrorField] = useState<"symbol" | "shares" | "cost" | null>(null);
 
-  function validate(): string | null {
+  function clearError() {
+    setError(null);
+    setErrorField(null);
+  }
+
+  function validate(): { field: "symbol" | "shares" | "cost"; message: string } | null {
     const sym = symbol.trim().toUpperCase();
-    if (!sym) return "Symbol is required.";
-    if (!SYMBOL_RE.test(sym)) return "Invalid symbol format (e.g. AAPL, BRK-B).";
+    if (!sym) return { field: "symbol", message: "Symbol is required." };
+    if (!SYMBOL_RE.test(sym)) return { field: "symbol", message: "Invalid symbol format (e.g. AAPL, BRK-B)." };
     const sh = parseFloat(shares);
-    if (!shares || isNaN(sh) || sh <= 0) return "Shares must be a positive number.";
+    if (!shares || isNaN(sh) || sh <= 0) return { field: "shares", message: "Shares must be a positive number." };
     const c = parseFloat(cost);
-    if (!cost || isNaN(c) || c <= 0) return "Average cost must be a positive number.";
+    if (!cost || isNaN(c) || c <= 0) return { field: "cost", message: "Average cost must be a positive number." };
     return null;
   }
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     const err = validate();
-    if (err) { setError(err); return; }
+    if (err) { setError(err.message); setErrorField(err.field); return; }
 
     onAdd({
       symbol: symbol.trim().toUpperCase(),
@@ -65,7 +71,7 @@ export function AddStockForm({ onAdd }: Props) {
     setShares("");
     setCost("");
     setDate("");
-    setError(null);
+    clearError();
     setOpen(false);
   }
 
@@ -87,7 +93,7 @@ export function AddStockForm({ onAdd }: Props) {
           </p>
         </div>
         <button
-          onClick={() => { setOpen(false); setError(null); }}
+          onClick={() => { setOpen(false); clearError(); }}
           className="text-[var(--home-ink-soft)] hover:text-[var(--home-ink)] transition min-h-[44px] min-w-[44px] flex items-center justify-center"
           aria-label="Close add stock form"
         >
@@ -101,30 +107,36 @@ export function AddStockForm({ onAdd }: Props) {
             label="Symbol"
             id="add-symbol"
             value={symbol}
-            onChange={(e) => { setSymbol(e.target.value.toUpperCase()); setError(null); }}
+            onChange={(e) => { setSymbol(e.target.value.toUpperCase()); clearError(); }}
             placeholder="AAPL"
             autoFocus
             autoComplete="off"
+            aria-invalid={errorField === "symbol" ? true : undefined}
+            aria-describedby={errorField === "symbol" ? "add-form-error" : undefined}
           />
           <Field
             label="Shares"
             id="add-shares"
             type="number"
             value={shares}
-            onChange={(e) => { setShares(e.target.value); setError(null); }}
+            onChange={(e) => { setShares(e.target.value); clearError(); }}
             placeholder="10"
             min="0"
             step="any"
+            aria-invalid={errorField === "shares" ? true : undefined}
+            aria-describedby={errorField === "shares" ? "add-form-error" : undefined}
           />
           <Field
             label="Avg Cost ($)"
             id="add-cost"
             type="number"
             value={cost}
-            onChange={(e) => { setCost(e.target.value); setError(null); }}
+            onChange={(e) => { setCost(e.target.value); clearError(); }}
             placeholder="150.00"
             min="0"
             step="any"
+            aria-invalid={errorField === "cost" ? true : undefined}
+            aria-describedby={errorField === "cost" ? "add-form-error" : undefined}
           />
           <Field
             label="Purchase Date (optional)"
@@ -136,7 +148,7 @@ export function AddStockForm({ onAdd }: Props) {
         </div>
 
         {error && (
-          <p role="alert" className="mb-4 text-xs text-[var(--color-error)]">
+          <p id="add-form-error" role="alert" className="mb-4 text-xs text-[var(--color-error)]">
             {error}
           </p>
         )}
@@ -149,7 +161,7 @@ export function AddStockForm({ onAdd }: Props) {
             type="button"
             variant="ghost"
             size="sm"
-            onClick={() => { setOpen(false); setError(null); }}
+            onClick={() => { setOpen(false); clearError(); }}
             ariaLabel="Cancel"
           >
             Cancel

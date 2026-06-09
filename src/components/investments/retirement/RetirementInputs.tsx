@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { IconTrash, IconPlus, IconRefresh, IconWallet } from "@tabler/icons-react";
 import type { UseRetirementPlanReturn } from "@/hooks/useRetirementPlan";
 import type { AccountType, RetirementResult, WithdrawalStrategy } from "@/lib/retirement";
@@ -44,6 +44,8 @@ export function RetirementInputs({ controller, result, portfolioValue }: Props) 
     reset,
   } = controller;
 
+  const [confirmReset, setConfirmReset] = useState(false);
+
   const primary = plan.accounts[0];
   const totalBalance = plan.accounts.reduce((s, a) => s + (a.balance || 0), 0);
   const totalContribution = plan.accounts.reduce(
@@ -69,9 +71,35 @@ export function RetirementInputs({ controller, result, portfolioValue }: Props) 
           <IconWallet size={12} aria-hidden="true" className="mr-1.5 inline align-middle" />
           Your numbers
         </p>
-        <button type="button" className="invest-retire-reset" onClick={reset}>
-          <IconRefresh size={13} aria-hidden="true" /> Reset
-        </button>
+        {confirmReset ? (
+          <span className="invest-retire-reset-confirm">
+            <button
+              type="button"
+              className="invest-retire-reset is-confirm"
+              onClick={() => {
+                reset();
+                setConfirmReset(false);
+              }}
+            >
+              <IconRefresh size={13} aria-hidden="true" /> Reset plan?
+            </button>
+            <button
+              type="button"
+              className="invest-retire-reset"
+              onClick={() => setConfirmReset(false)}
+            >
+              Cancel
+            </button>
+          </span>
+        ) : (
+          <button
+            type="button"
+            className="invest-retire-reset"
+            onClick={() => setConfirmReset(true)}
+          >
+            <IconRefresh size={13} aria-hidden="true" /> Reset
+          </button>
+        )}
       </div>
 
       {/* ── Quick start — instant first number ── */}
