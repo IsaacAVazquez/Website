@@ -1,6 +1,6 @@
 "use client";
 
-import { startTransition, useEffect, type KeyboardEvent } from "react";
+import { startTransition, useEffect } from "react";
 import {
   Activity,
   ArrowDownUp,
@@ -110,16 +110,6 @@ function getStartupsForSegment(
   return snapshot.startups.filter((startup) => allowed.has(startup.id));
 }
 
-function handleRowKeyDown(
-  event: KeyboardEvent<HTMLTableRowElement>,
-  onToggle: () => void
-) {
-  if (event.key === "Enter" || event.key === " ") {
-    event.preventDefault();
-    onToggle();
-  }
-}
-
 export function TechStartupClient({
   initialState,
   snapshot,
@@ -203,7 +193,12 @@ export function TechStartupClient({
             and a momentum score from a checked-in snapshot.
           </p>
           <div className="flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
-            <span className="inline-flex min-h-[32px] items-center gap-2 rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3">
+            {/* Relative to Date.now(), so server and client renders can
+                differ by a minute — suppress the inevitable mismatch. */}
+            <span
+              suppressHydrationWarning
+              className="inline-flex min-h-[32px] items-center gap-2 rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3"
+            >
               <RefreshCw aria-hidden="true" size={14} />
               Updated {relativeAge(snapshot.generatedAt)}
             </span>
@@ -324,7 +319,7 @@ export function TechStartupClient({
       <section className="home-card space-y-5 p-5 sm:p-6" aria-label="Startup filters">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div
-            role="tablist"
+            role="group"
             aria-label="Group startups by"
             className="inline-flex rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-1"
           >
@@ -335,8 +330,7 @@ export function TechStartupClient({
                 <button
                   key={kind}
                   type="button"
-                  role="tab"
-                  aria-selected={isActive}
+                  aria-pressed={isActive}
                   title={`Group startups by ${TECH_STARTUP_KIND_LABELS[kind].toLowerCase()}`}
                   onClick={() => setKind(kind)}
                   className={`inline-flex min-h-[44px] items-center gap-2 rounded-full px-4 text-sm font-semibold transition-[background-color,color,box-shadow] ${
@@ -353,7 +347,7 @@ export function TechStartupClient({
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
-            <span className="inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
+            <span className="inline-flex items-center gap-1 text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
               <ArrowDownUp aria-hidden="true" size={14} />
               Sort
             </span>
@@ -473,19 +467,19 @@ function StartupTable({
           </caption>
           <thead>
             <tr className="border-b border-[var(--home-rule)] bg-[var(--home-paper-alt)]">
-              <th scope="col" className="px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
+              <th scope="col" className="px-4 py-3 text-left text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
                 Startup
               </th>
-              <th scope="col" className="px-4 py-3 text-right text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
+              <th scope="col" className="px-4 py-3 text-right text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
                 Valuation
               </th>
-              <th scope="col" className="px-4 py-3 text-right text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
+              <th scope="col" className="px-4 py-3 text-right text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
                 Raised
               </th>
-              <th scope="col" className="px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
+              <th scope="col" className="px-4 py-3 text-left text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
                 Latest round
               </th>
-              <th scope="col" className="px-4 py-3 text-right text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
+              <th scope="col" className="px-4 py-3 text-right text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
                 Site
               </th>
             </tr>
@@ -535,14 +529,13 @@ function StartupRow({
 
   return (
     <>
+      {/* The row stays clickable for pointer users, but the accessible
+          expand/collapse control is a real button on the name — role="button"
+          on a <tr> breaks table semantics and nests the Visit link inside an
+          interactive element. */}
       <tr
-        tabIndex={0}
-        role="button"
-        aria-expanded={isExpanded}
-        aria-controls={detailId}
         onClick={onToggle}
-        onKeyDown={(event) => handleRowKeyDown(event, onToggle)}
-        className="cursor-pointer border-b border-[var(--home-rule)] transition-[background-color] hover:bg-[var(--home-paper-alt)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+        className="cursor-pointer border-b border-[var(--home-rule)] transition-[background-color] hover:bg-[var(--home-paper-alt)]"
       >
         <td className="px-4 py-4 align-top">
           <div className="flex gap-3">
@@ -550,8 +543,19 @@ function StartupRow({
               {rank}
             </span>
             <div className="min-w-0">
-              <p className="mb-1 max-w-none font-semibold leading-5 text-[var(--home-ink)]">
-                {startup.name}
+              <p className="mb-1 max-w-none leading-5">
+                <button
+                  type="button"
+                  aria-expanded={isExpanded}
+                  aria-controls={isExpanded ? detailId : undefined}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    onToggle();
+                  }}
+                  className="text-left font-semibold text-[var(--home-ink)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                >
+                  {startup.name}
+                </button>
               </p>
               <p className="mb-0 line-clamp-2 max-w-[44rem] text-sm leading-6 text-[var(--home-ink-muted)]">
                 {startup.description}
@@ -610,7 +614,7 @@ function StartupRow({
               <div className="space-y-4">
                 <dl className="grid grid-cols-2 gap-x-5 gap-y-3 text-sm sm:grid-cols-3">
                   <div>
-                    <dt className="inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                    <dt className="inline-flex items-center gap-1 text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                       <MapPin aria-hidden="true" size={12} />
                       Headquarters
                     </dt>
@@ -619,7 +623,7 @@ function StartupRow({
                     </dd>
                   </div>
                   <div>
-                    <dt className="inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                    <dt className="inline-flex items-center gap-1 text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                       <Building2 aria-hidden="true" size={12} />
                       Founded
                     </dt>
@@ -628,7 +632,7 @@ function StartupRow({
                     </dd>
                   </div>
                   <div>
-                    <dt className="inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                    <dt className="inline-flex items-center gap-1 text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                       <Users aria-hidden="true" size={12} />
                       Employees
                     </dt>
@@ -638,7 +642,7 @@ function StartupRow({
                   </div>
                 </dl>
                 <div>
-                  <p className="mb-2 inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                  <p className="mb-2 inline-flex items-center gap-1 text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                     <Tags aria-hidden="true" size={12} />
                     Focus
                   </p>
@@ -654,7 +658,7 @@ function StartupRow({
                   </div>
                 </div>
                 <div>
-                  <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                  <p className="mb-2 text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                     Notable investors
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -671,7 +675,7 @@ function StartupRow({
               </div>
               <dl className="grid grid-cols-2 gap-x-5 gap-y-3 text-sm">
                 <div>
-                  <dt className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                  <dt className="text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                     Latest round
                   </dt>
                   <dd className="m-0 mt-1 text-[var(--home-ink)]">
@@ -679,7 +683,7 @@ function StartupRow({
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                  <dt className="text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                     Round size
                   </dt>
                   <dd className="m-0 mt-1 font-mono text-[var(--home-ink)]">
@@ -687,7 +691,7 @@ function StartupRow({
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                  <dt className="text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                     Announced
                   </dt>
                   <dd className="m-0 mt-1 font-mono text-[var(--home-ink)]">
@@ -695,7 +699,7 @@ function StartupRow({
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                  <dt className="text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                     Momentum
                   </dt>
                   <dd className="m-0 mt-1 font-mono text-[var(--home-ink)]">
@@ -703,7 +707,7 @@ function StartupRow({
                   </dd>
                 </div>
                 <div className="col-span-2">
-                  <dt className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                  <dt className="text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                     Round led by
                   </dt>
                   <dd className="m-0 mt-1 text-[var(--home-ink)]">

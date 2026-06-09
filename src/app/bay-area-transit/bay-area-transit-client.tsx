@@ -41,10 +41,9 @@ import {
 } from "@/components/home/HomeStatsPanel";
 import {
   Article,
-  Briefcase,
   Calendar,
   ChartBar,
-  User,
+  FileText,
 } from "@/components/ui/ServerIcons";
 
 interface BayAreaTransitClientProps {
@@ -53,11 +52,15 @@ interface BayAreaTransitClientProps {
   initialStationBoard: TransitStationBoard | null;
 }
 
+// Pinned to Pacific time: BART timestamps belong to the Bay Area, and a fixed
+// zone keeps the server-rendered text identical to the client's (no hydration
+// mismatch from the server running in UTC).
 const LAST_UPDATED_FORMATTER = new Intl.DateTimeFormat("en-US", {
   month: "short",
   day: "numeric",
   hour: "numeric",
   minute: "2-digit",
+  timeZone: "America/Los_Angeles",
 });
 
 function formatGeneratedAt(value: string | null | undefined): string {
@@ -137,7 +140,11 @@ async function fetchTransitStationBoard(
   };
 
   if (!response.ok) {
-    throw new Error(payload.error || "Unable to load station board.");
+    const error = new Error(payload.error || "Unable to load station board.") as Error & {
+      status?: number;
+    };
+    error.status = response.status;
+    throw error;
   }
 
   return payload;
@@ -287,13 +294,14 @@ function StationRow({
       </span>
       <span className="flex shrink-0 items-center gap-1.5">
         {station.lines.map((colorName) => {
-          const hex = LINE_COLOR_HEX[colorName] ?? "#888888";
+          const hex = lineColorHex(colorName);
           return (
             <span
               key={`${station.id}-${colorName}`}
               className="h-3 w-3 rounded-full"
               style={swatchStyle(hex)}
               title={`${colorName} line`}
+              role="img"
               aria-label={`${colorName} line`}
             />
           );
@@ -306,15 +314,20 @@ function StationRow({
 // Fallback hex for line color dots in the station directory, where we only carry
 // color names. The line cards use the snapshot's exact hex values.
 const LINE_COLOR_HEX: Record<string, string> = {
-  Yellow: "#ffff33",
-  Orange: "#ff9933",
-  Green: "#339933",
-  Red: "#ff0000",
-  Blue: "#0099cc",
-  Beige: "#d5cfa3",
-  Purple: "#c463c5",
-  White: "#e5e5e5",
+  yellow: "#ffff33",
+  orange: "#ff9933",
+  green: "#339933",
+  red: "#ff0000",
+  blue: "#0099cc",
+  beige: "#d5cfa3",
+  purple: "#c463c5",
+  white: "#e5e5e5",
 };
+
+/** Case-insensitive so live BART casing ("YELLOW") still resolves a color. */
+function lineColorHex(colorName: string): string {
+  return LINE_COLOR_HEX[colorName.trim().toLowerCase()] ?? "#888888";
+}
 
 function DepartureRow({
   destination,
@@ -499,21 +512,45 @@ export function BayAreaTransitClient({
           return next;
         });
       })
-      .catch((error: Error) => {
-        if (!cancelled && error.name !== "AbortError") {
-          setStationBoardErrors((current) => ({
-            ...current,
-            [selectedStationId]:
-              error.message || "Unable to load station board.",
-          }));
+      .catch((error: Error & { status?: number }) => {
+        if (cancelled || error.name === "AbortError") {
+          return;
         }
+        if (error.status === 404) {
+          // The station is real (it's in the directory) — the snapshot just
+          // has no departures for it. Render the neutral empty state, not a
+          // red error.
+          setStationBoards((current) =>
+            current[selectedStationId]
+              ? current
+              : {
+                  ...current,
+                  [selectedStationId]: {
+                    id: selectedStationId,
+                    abbr: selectedStationId.toUpperCase(),
+                    name:
+                      summary.stations.find(
+                        (station) => station.id === selectedStationId
+                      )?.name ?? selectedStationId.toUpperCase(),
+                    departures: [],
+                    generatedAt: summary.system?.generatedAt ?? "",
+                  },
+                }
+          );
+          return;
+        }
+        setStationBoardErrors((current) => ({
+          ...current,
+          [selectedStationId]:
+            error.message || "Unable to load station board.",
+        }));
       });
 
     return () => {
       cancelled = true;
       controller.abort();
     };
-  }, [stationBoardErrors, stationBoards, selectedStationId]);
+  }, [stationBoardErrors, stationBoards, selectedStationId, summary]);
 
   function navigate(nextState: TransitRouteState) {
     const href = buildTransitHref(nextState, searchParams);
@@ -725,10 +762,21 @@ export function BayAreaTransitClient({
           meta={`Snapshot · refreshed ${formatGeneratedAt(system.generatedAt)}`}
           cells={statsPanelCells}
           pills={[
-            { label: "Lines", href: "?view=lines", icon: ChartBar },
-            { label: "Departures", href: "?view=stations", icon: Calendar },
-            { label: "Alerts", href: "?view=advisories", icon: Briefcase },
-            { label: "Stations", href: "?view=stations", icon: User },
+            {
+              label: "Lines",
+              href: buildTransitHref({ view: "lines", station: routeState.station }),
+              icon: ChartBar,
+            },
+            {
+              label: "Departures",
+              href: buildTransitHref({ view: "stations", station: routeState.station }),
+              icon: Calendar,
+            },
+            {
+              label: "Alerts",
+              href: buildTransitHref({ view: "advisories", station: routeState.station }),
+              icon: FileText,
+            },
             { label: "Writing", href: "/writing", icon: Article },
           ]}
         />
@@ -740,16 +788,41 @@ export function BayAreaTransitClient({
               role="tablist"
               aria-label="Transit view switcher"
             >
-              {TRANSIT_VIEW_OPTIONS.map((view) => (
+              {TRANSIT_VIEW_OPTIONS.map((view, index) => (
                 <button
                   key={view}
                   type="button"
                   role="tab"
                   id={`transit-tab-${view}`}
-                  aria-controls={`transit-tabpanel-${view}`}
+                  // Only the active tab's panel is rendered, so inactive tabs
+                  // must not reference panel ids that don't exist.
+                  aria-controls={
+                    routeState.view === view ? `transit-tabpanel-${view}` : undefined
+                  }
                   aria-selected={routeState.view === view}
                   tabIndex={routeState.view === view ? 0 : -1}
                   onClick={() => handleViewChange(view)}
+                  // Roving tabindex needs the arrow keys, or keyboard users can
+                  // never reach the inactive tabs.
+                  onKeyDown={(event) => {
+                    let nextIndex: number | null = null;
+                    if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+                      nextIndex = (index + 1) % TRANSIT_VIEW_OPTIONS.length;
+                    } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+                      nextIndex =
+                        (index - 1 + TRANSIT_VIEW_OPTIONS.length) %
+                        TRANSIT_VIEW_OPTIONS.length;
+                    } else if (event.key === "Home") {
+                      nextIndex = 0;
+                    } else if (event.key === "End") {
+                      nextIndex = TRANSIT_VIEW_OPTIONS.length - 1;
+                    }
+                    if (nextIndex === null) return;
+                    event.preventDefault();
+                    const nextView = TRANSIT_VIEW_OPTIONS[nextIndex];
+                    handleViewChange(nextView);
+                    document.getElementById(`transit-tab-${nextView}`)?.focus();
+                  }}
                   className="min-h-[44px] rounded-full border px-4 py-2.5 text-sm font-semibold transition-colors"
                   style={getViewButtonStyle(routeState.view === view)}
                 >
@@ -1009,7 +1082,7 @@ export function BayAreaTransitClient({
                         <span
                           className="h-2.5 w-2.5 rounded-full"
                           style={swatchStyle(
-                            LINE_COLOR_HEX[colorName] ?? "#888888"
+                            lineColorHex(colorName)
                           )}
                           aria-hidden="true"
                         />

@@ -24,6 +24,8 @@ const STATIC_ROUTE_LASTMOD = {
   "/now": "2026-04-13",
   "/recipe-finder": "2026-04-04",
   "/wine-cellar": "2026-04-04",
+  "/bay-area-transit": readBayAreaTransitLastmod(),
+  "/changelog": "2026-04-13",
   "/github-trending-pulse": readGitHubTrendingLastmod(),
   "/tech-startup-tracker": readTechStartupLastmod(),
   "/investments": readInvestmentsLastmod(),
@@ -125,6 +127,12 @@ function readGitHubTrendingLastmod() {
 function readTechStartupLastmod() {
   return toIsoString(
     readFirstMatch("src/data/techStartupSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
+  );
+}
+
+function readBayAreaTransitLastmod() {
+  return toIsoString(
+    readFirstMatch("src/data/bayAreaTransitSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
   );
 }
 
