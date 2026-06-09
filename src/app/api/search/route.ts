@@ -386,6 +386,18 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       tags: ['Golf', 'PGA Tour', 'Sports Data', 'Dashboard', 'Next.js'],
     },
     {
+      id: 'page-travel-planner',
+      title: 'Travel Planner',
+      excerpt:
+        'Browser-persisted travel planner for trip dates, day-by-day itineraries, stop check-off, and per-day journaling.',
+      content:
+        'Travel planner trip itinerary vacation planning trip tracker travel journal day-by-day activities browser local storage no account Next.js TypeScript',
+      url: '/travel',
+      type: 'project',
+      category: 'Personal Productivity Tools',
+      tags: ['Travel', 'Itinerary', 'Journal', 'Personal Productivity', 'Next.js'],
+    },
+    {
       id: 'page-ai-dev-tools',
       title: 'AI Dev Tool Ecosystem',
       excerpt:
@@ -471,7 +483,10 @@ function calculateRelevanceScore(content: SearchableContent, query: string): num
   // Content matches (lowest weight but important for comprehensive search)
   const contentLower = content.content.toLowerCase();
   queryWords.forEach(word => {
-    const regex = new RegExp(`\\b${word}\\b`, 'gi');
+    // Escape regex metacharacters so queries like "c++" or "(" don't throw
+    // (an unescaped RegExp would crash the whole request with a 500).
+    const escapedWord = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const regex = new RegExp(`\\b${escapedWord}\\b`, 'gi');
     const matches = contentLower.match(regex);
     if (matches) {
       score += matches.length * 2; // Multiple occurrences increase score
