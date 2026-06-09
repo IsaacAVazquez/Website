@@ -563,7 +563,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                     {isLoading
                       ? "Loading players..."
                       : currentSliceUnavailable
-                        ? "Unavailable"
+                        ? "Board unavailable"
                         : `${filteredPlayers.length} players shown`}
                   </p>
                 </div>
