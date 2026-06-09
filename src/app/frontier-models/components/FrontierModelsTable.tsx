@@ -113,7 +113,7 @@ export function FrontierModelsTable({
                     key={column.key}
                     scope="col"
                     aria-sort={ariaSort}
-                    className={`px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)] ${
+                    className={`px-4 py-3 text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)] ${
                       column.align === "right" ? "text-right" : "text-left"
                     }`}
                   >
@@ -123,7 +123,7 @@ export function FrontierModelsTable({
                       className="inline-flex min-h-[44px] items-center gap-1.5 text-left text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-ink)]"
                     >
                       <span>{column.label}</span>
-                      <span aria-hidden="true" className="text-[10px]">
+                      <span aria-hidden="true" className="text-3xs">
                         {isActive ? (sortDirection === "asc" ? "▲" : "▼") : "↕"}
                       </span>
                     </button>
@@ -132,7 +132,7 @@ export function FrontierModelsTable({
               })}
               <th
                 scope="col"
-                className="px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]"
+                className="px-4 py-3 text-left text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]"
               >
                 Modalities
               </th>
@@ -181,14 +181,14 @@ function FrontierRow({ model, isExpanded, onToggle, onKeyDown }: FrontierRowProp
       >
         <td className="px-4 py-3">
           <div className="flex flex-col">
-            <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]">
+            <span className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]">
               {model.providerLabel}
             </span>
             <span className="mt-1 flex items-center gap-2 text-base font-semibold text-[var(--home-ink)]">
               {model.name}
               {model.reasoning ? (
                 <span
-                  className="inline-flex items-center gap-1 rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]"
+                  className="inline-flex items-center gap-1 rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2 py-0.5 text-3xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]"
                   title="Supports extended-thinking / reasoning mode"
                 >
                   <Sparkles aria-hidden="true" size={11} />
@@ -215,7 +215,7 @@ function FrontierRow({ model, isExpanded, onToggle, onKeyDown }: FrontierRowProp
             {model.modalities.map((modality) => (
               <span
                 key={modality}
-                className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] px-2 py-0.5 text-[11px] font-medium text-[var(--home-ink-muted)]"
+                className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] px-2 py-0.5 text-2xs font-medium text-[var(--home-ink-muted)]"
               >
                 {FRONTIER_MODALITY_LABELS[modality]}
               </span>
@@ -232,7 +232,7 @@ function FrontierRow({ model, isExpanded, onToggle, onKeyDown }: FrontierRowProp
               </p>
               <dl className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-[var(--home-ink-muted)]">
                 <div>
-                  <dt className="text-[11px] font-semibold uppercase tracking-[0.14em]">
+                  <dt className="text-2xs font-semibold uppercase tracking-[0.14em]">
                     Max output
                   </dt>
                   <dd className="m-0 font-mono text-[var(--home-ink)]">
@@ -240,7 +240,7 @@ function FrontierRow({ model, isExpanded, onToggle, onKeyDown }: FrontierRowProp
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-[11px] font-semibold uppercase tracking-[0.14em]">
+                  <dt className="text-2xs font-semibold uppercase tracking-[0.14em]">
                     Knowledge cutoff
                   </dt>
                   <dd className="m-0 font-mono text-[var(--home-ink)]">
@@ -248,7 +248,7 @@ function FrontierRow({ model, isExpanded, onToggle, onKeyDown }: FrontierRowProp
                   </dd>
                 </div>
                 <div className="col-span-2">
-                  <dt className="text-[11px] font-semibold uppercase tracking-[0.14em]">
+                  <dt className="text-2xs font-semibold uppercase tracking-[0.14em]">
                     Modalities
                   </dt>
                   <dd className="m-0 mt-1 flex flex-wrap gap-1.5">

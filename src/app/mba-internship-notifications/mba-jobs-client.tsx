@@ -8,7 +8,6 @@ import {
   useRef,
   useState,
   type CSSProperties,
-  type ReactNode,
 } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -47,7 +46,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ChevronDown } from "lucide-react";
 import {
-  MBA_APPLICATION_PRIORITIES,
   MBA_APPLICATION_PRIORITY_LABELS,
   MBA_APPLICATION_STATUSES,
   MBA_APPLICATION_STATUS_LABELS,
@@ -90,6 +88,17 @@ import {
   SORT_OPTIONS,
   VIEW_LABELS,
 } from "./mba-jobs-state";
+import dynamic from "next/dynamic";
+import {
+  applicationInputClass,
+  applicationInputStyle,
+  type ApplicationFormState,
+} from "./application-form";
+
+// Interaction-gated dialogs are code-split so their chunks load only when a
+// user opens them — keeping them out of this large client page's initial bundle.
+const EmailDigestDialog = dynamic(() => import("./EmailDigestDialog"));
+const ApplicationEditDialog = dynamic(() => import("./ApplicationEditDialog"));
 
 // ---------------------------------------------------------------------------
 // Motion variants
@@ -1121,141 +1130,6 @@ function EmailDigestButton({
 }
 
 // ---------------------------------------------------------------------------
-// Email dialog (simple inline form)
-// ---------------------------------------------------------------------------
-
-function EmailDigestDialog({
-  isOpen,
-  onClose,
-  onSubmit,
-  sending,
-}: {
-  isOpen: boolean;
-  onClose: () => void;
-  onSubmit: (email: string) => void;
-  sending: boolean;
-}) {
-  const [email, setEmail] = useState("");
-  const dialogRef = useRef<HTMLDivElement | null>(null);
-  const triggerRef = useRef<Element | null>(null);
-
-  // Trap focus within the dialog while open and restore it on close.
-  useEffect(() => {
-    if (!isOpen) return;
-
-    triggerRef.current = document.activeElement;
-    const dialog: HTMLDivElement | null = dialogRef.current;
-    if (!dialog) return;
-    const dialogEl: HTMLDivElement = dialog;
-
-    const focusable = dialogEl.querySelectorAll<HTMLElement>(
-      'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])',
-    );
-    focusable[0]?.focus();
-
-    function handleKey(event: KeyboardEvent) {
-      if (event.key === "Escape" && !sending) {
-        event.preventDefault();
-        onClose();
-        return;
-      }
-      if (event.key !== "Tab") return;
-      const items = dialogEl.querySelectorAll<HTMLElement>(
-        'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])',
-      );
-      if (items.length === 0) return;
-      const first = items[0];
-      const last = items[items.length - 1];
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
-        first.focus();
-      }
-    }
-
-    document.addEventListener("keydown", handleKey);
-    return () => {
-      document.removeEventListener("keydown", handleKey);
-      if (triggerRef.current instanceof HTMLElement) {
-        triggerRef.current.focus();
-      }
-    };
-  }, [isOpen, onClose, sending]);
-
-  if (!isOpen) return null;
-  return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      style={{ background: "rgba(0,0,0,0.45)" }}
-      role="presentation"
-      onClick={(event) => {
-        if (event.target === event.currentTarget && !sending) onClose();
-      }}
-    >
-      <div
-        ref={dialogRef}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="email-digest-title"
-        aria-describedby="email-digest-description"
-        className="home-card w-full max-w-sm p-6 sm:p-7"
-        style={{ background: "var(--home-paper)" }}
-      >
-        <h2
-          id="email-digest-title"
-          className="mb-3 text-lg font-semibold"
-          style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink)" }}
-        >
-          Send email digest
-        </h2>
-        <p
-          id="email-digest-description"
-          className="mb-4 text-sm"
-          style={{ color: "var(--home-ink-muted)" }}
-        >
-          Enter your email to receive the current job list as a digest.
-        </p>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="you@example.com"
-          className="mb-4 w-full rounded-xl border px-4 py-3 text-sm outline-none focus-visible:border-[var(--home-haze)] focus-visible:ring-2 focus-visible:ring-[color-mix(in_srgb,var(--home-haze)_35%,transparent)]"
-          style={{
-            background: "var(--home-paper-alt)",
-            borderColor: "var(--home-rule)",
-            color: "var(--home-ink)",
-          }}
-          disabled={sending}
-          autoComplete="email"
-          aria-label="Your email address"
-        />
-        <div className="flex gap-3">
-          <button
-            type="button"
-            onClick={() => onSubmit(email)}
-            disabled={sending || !email.includes("@")}
-            className="home-button home-button-primary flex-1 disabled:opacity-50"
-          >
-            {sending ? "Sending…" : "Send"}
-          </button>
-          <button
-            type="button"
-            onClick={onClose}
-            disabled={sending}
-            className="home-button home-button-secondary"
-          >
-            Cancel
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// ---------------------------------------------------------------------------
 // Company filter strip
 // ---------------------------------------------------------------------------
 
@@ -1460,327 +1334,6 @@ function CompanyFilterStrip({
           </div>
         </div>
       )}
-    </div>
-  );
-}
-
-interface ApplicationFormState {
-  companyName: string;
-  title: string;
-  location: string;
-  department: string;
-  applyUrl: string;
-  sourceUrl: string;
-  status: MBAApplicationStatus;
-  priority: MBAApplicationPriority;
-  contact: string;
-  followUpDate: string;
-  deadline: string;
-  notes: string;
-}
-
-const EMPTY_APPLICATION_FORM: ApplicationFormState = {
-  companyName: "",
-  title: "",
-  location: "",
-  department: "",
-  applyUrl: "",
-  sourceUrl: "",
-  status: "saved",
-  priority: "medium",
-  contact: "",
-  followUpDate: "",
-  deadline: "",
-  notes: "",
-};
-
-function getApplicationFormState(
-  application: MBATrackedApplication | null
-): ApplicationFormState {
-  if (!application) return EMPTY_APPLICATION_FORM;
-  return {
-    companyName: application.jobSnapshot.companyName,
-    title: application.jobSnapshot.title,
-    location: application.jobSnapshot.location,
-    department: application.jobSnapshot.department,
-    applyUrl: application.jobSnapshot.applyUrl,
-    sourceUrl: application.sourceUrl,
-    status: application.status,
-    priority: application.priority,
-    contact: application.contact,
-    followUpDate: application.followUpDate ?? "",
-    deadline: application.deadline ?? "",
-    notes: application.notes,
-  };
-}
-
-function FormField({
-  label,
-  children,
-}: {
-  label: string;
-  children: ReactNode;
-}) {
-  return (
-    <label className="block space-y-2">
-      <span className="home-meta mb-0">{label}</span>
-      {children}
-    </label>
-  );
-}
-
-const applicationInputClass =
-  "w-full min-h-[44px] rounded-[0.9rem] border px-3 py-2 text-sm outline-none transition-[border-color,box-shadow] duration-200 ease focus-visible:border-[var(--home-haze)] focus-visible:ring-2 focus-visible:ring-[color-mix(in_srgb,var(--home-haze)_35%,transparent)]";
-
-const applicationInputStyle: CSSProperties = {
-  background: "var(--home-paper-alt)",
-  borderColor: "var(--home-rule)",
-  color: "var(--home-ink)",
-  fontFamily: "var(--font-home-sans)",
-};
-
-function ApplicationEditDialog({
-  isOpen,
-  application,
-  onClose,
-  onSave,
-}: {
-  isOpen: boolean;
-  application: MBATrackedApplication | null;
-  onClose: () => void;
-  onSave: (form: ApplicationFormState, application: MBATrackedApplication | null) => void;
-}) {
-  const [form, setForm] = useState<ApplicationFormState>(() =>
-    getApplicationFormState(application)
-  );
-  const dialogRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    if (!isOpen) return;
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- Dialog form mirrors the selected application each time it opens.
-    setForm(getApplicationFormState(application));
-  }, [application, isOpen]);
-
-  useEffect(() => {
-    if (!isOpen) return;
-    const dialog = dialogRef.current;
-    dialog?.querySelector<HTMLElement>("input, select, textarea, button")?.focus();
-
-    function handleKey(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        event.preventDefault();
-        onClose();
-      }
-    }
-
-    document.addEventListener("keydown", handleKey);
-    return () => document.removeEventListener("keydown", handleKey);
-  }, [isOpen, onClose]);
-
-  if (!isOpen) return null;
-
-  const canSave = form.companyName.trim() && form.title.trim();
-
-  return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto p-4"
-      style={{ background: "rgba(0,0,0,0.45)" }}
-      role="presentation"
-      onClick={(event) => {
-        if (event.target === event.currentTarget) onClose();
-      }}
-    >
-      <div
-        ref={dialogRef}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="application-dialog-title"
-        className="home-card max-h-[90vh] w-full max-w-2xl overflow-y-auto p-6 sm:p-7"
-        style={{ background: "var(--home-paper)" }}
-      >
-        <div className="flex items-start justify-between gap-4">
-          <div>
-            <p className="home-kicker mb-2">Application tracker</p>
-            <h2
-              id="application-dialog-title"
-              className="mb-0 text-xl font-semibold"
-              style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink)" }}
-            >
-              {application ? "Edit application" : "Add application"}
-            </h2>
-          </div>
-          <button
-            type="button"
-            onClick={onClose}
-            className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full"
-            aria-label="Close application dialog"
-            style={{ color: "var(--home-ink-muted)" }}
-          >
-            <X className="h-4 w-4" aria-hidden="true" />
-          </button>
-        </div>
-
-        <div className="mt-6 grid gap-4 sm:grid-cols-2">
-          <FormField label="Company">
-            <input
-              value={form.companyName}
-              onChange={(event) =>
-                setForm((current) => ({ ...current, companyName: event.target.value }))
-              }
-              className={applicationInputClass}
-              style={applicationInputStyle}
-            />
-          </FormField>
-          <FormField label="Role">
-            <input
-              value={form.title}
-              onChange={(event) =>
-                setForm((current) => ({ ...current, title: event.target.value }))
-              }
-              className={applicationInputClass}
-              style={applicationInputStyle}
-            />
-          </FormField>
-          <FormField label="Location">
-            <input
-              value={form.location}
-              onChange={(event) =>
-                setForm((current) => ({ ...current, location: event.target.value }))
-              }
-              className={applicationInputClass}
-              style={applicationInputStyle}
-            />
-          </FormField>
-          <FormField label="Department">
-            <input
-              value={form.department}
-              onChange={(event) =>
-                setForm((current) => ({ ...current, department: event.target.value }))
-              }
-              className={applicationInputClass}
-              style={applicationInputStyle}
-            />
-          </FormField>
-          <FormField label="Application URL">
-            <input
-              value={form.applyUrl}
-              onChange={(event) =>
-                setForm((current) => ({ ...current, applyUrl: event.target.value }))
-              }
-              className={applicationInputClass}
-              style={applicationInputStyle}
-              inputMode="url"
-            />
-          </FormField>
-          <FormField label="Source URL">
-            <input
-              value={form.sourceUrl}
-              onChange={(event) =>
-                setForm((current) => ({ ...current, sourceUrl: event.target.value }))
-              }
-              className={applicationInputClass}
-              style={applicationInputStyle}
-              inputMode="url"
-            />
-          </FormField>
-          <FormField label="Status">
-            <select
-              value={form.status}
-              onChange={(event) =>
-                setForm((current) => ({
-                  ...current,
-                  status: event.target.value as MBAApplicationStatus,
-                }))
-              }
-              className={applicationInputClass}
-              style={applicationInputStyle}
-            >
-              {MBA_APPLICATION_STATUSES.map((status) => (
-                <option key={status} value={status}>
-                  {MBA_APPLICATION_STATUS_LABELS[status]}
-                </option>
-              ))}
-            </select>
-          </FormField>
-          <FormField label="Priority">
-            <select
-              value={form.priority}
-              onChange={(event) =>
-                setForm((current) => ({
-                  ...current,
-                  priority: event.target.value as MBAApplicationPriority,
-                }))
-              }
-              className={applicationInputClass}
-              style={applicationInputStyle}
-            >
-              {MBA_APPLICATION_PRIORITIES.map((priority) => (
-                <option key={priority} value={priority}>
-                  {MBA_APPLICATION_PRIORITY_LABELS[priority]}
-                </option>
-              ))}
-            </select>
-          </FormField>
-          <FormField label="Follow-up date">
-            <input
-              type="date"
-              value={form.followUpDate}
-              onChange={(event) =>
-                setForm((current) => ({ ...current, followUpDate: event.target.value }))
-              }
-              className={applicationInputClass}
-              style={applicationInputStyle}
-            />
-          </FormField>
-          <FormField label="Deadline">
-            <input
-              type="date"
-              value={form.deadline}
-              onChange={(event) =>
-                setForm((current) => ({ ...current, deadline: event.target.value }))
-              }
-              className={applicationInputClass}
-              style={applicationInputStyle}
-            />
-          </FormField>
-          <FormField label="Contact">
-            <input
-              value={form.contact}
-              onChange={(event) =>
-                setForm((current) => ({ ...current, contact: event.target.value }))
-              }
-              className={applicationInputClass}
-              style={applicationInputStyle}
-            />
-          </FormField>
-          <div className="sm:col-span-2">
-            <FormField label="Notes">
-              <textarea
-                value={form.notes}
-                onChange={(event) =>
-                  setForm((current) => ({ ...current, notes: event.target.value }))
-                }
-                className={`${applicationInputClass} min-h-28 resize-y`}
-                style={applicationInputStyle}
-              />
-            </FormField>
-          </div>
-        </div>
-
-        <div className="mt-6 flex flex-wrap justify-end gap-3">
-          <button type="button" onClick={onClose} className="home-button home-button-secondary">
-            Cancel
-          </button>
-          <button
-            type="button"
-            onClick={() => onSave(form, application)}
-            disabled={!canSave}
-            className="home-button home-button-primary disabled:opacity-50"
-          >
-            Save application
-          </button>
-        </div>
-      </div>
     </div>
   );
 }
@@ -2519,21 +2072,25 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
 
   return (
     <>
-      <EmailDigestDialog
-        isOpen={emailDialogOpen}
-        onClose={() => setEmailDialogOpen(false)}
-        onSubmit={handleEmailSend}
-        sending={emailSending}
-      />
-      <ApplicationEditDialog
-        isOpen={applicationDialogOpen}
-        application={editingApplication}
-        onClose={() => {
-          setApplicationDialogOpen(false);
-          setEditingApplication(null);
-        }}
-        onSave={handleSaveApplication}
-      />
+      {emailDialogOpen && (
+        <EmailDigestDialog
+          isOpen
+          onClose={() => setEmailDialogOpen(false)}
+          onSubmit={handleEmailSend}
+          sending={emailSending}
+        />
+      )}
+      {applicationDialogOpen && (
+        <ApplicationEditDialog
+          isOpen
+          application={editingApplication}
+          onClose={() => {
+            setApplicationDialogOpen(false);
+            setEditingApplication(null);
+          }}
+          onSave={handleSaveApplication}
+        />
+      )}
 
       <section className="home-page min-h-screen" aria-label="MBA role tracker">
         <div className="home-shell home-section space-y-8 sm:space-y-10">

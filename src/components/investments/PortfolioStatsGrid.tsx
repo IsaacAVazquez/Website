@@ -236,7 +236,7 @@ export function PortfolioStatsGrid({ summary, holdings }: Props) {
         />
         <StatCell
           label="Top-3 concentration"
-          hint="Combined allocation of your three largest positions — a quick read on portfolio shape."
+          hint="Combined allocation of your three largest positions, a quick read on portfolio shape."
           value={`${stats.concentration.toFixed(1)}%`}
           sub={
             stats.positions <= 3

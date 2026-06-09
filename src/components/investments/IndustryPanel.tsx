@@ -56,7 +56,7 @@ export function IndustryPanel({ symbol }: Props) {
       {isLoading && (
         <div className="space-y-2">
           {Array.from({ length: 6 }).map((_, i) => (
-            <div key={i} className="h-10 rounded bg-[var(--neutral-200)] animate-pulse" />
+            <div key={i} className="h-10 rounded bg-[var(--home-stone)] animate-pulse" />
           ))}
         </div>
       )}

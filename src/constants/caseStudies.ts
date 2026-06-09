@@ -550,7 +550,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     slug: "frontier-model-tracker",
     title: "Frontier Model Tracker",
     description:
-      "Curated dashboard of leading large language models with context windows, pricing, modality coverage, and editorial notes — built to make AI tier-collapse readable in seconds.",
+      "Curated dashboard of leading large language models with context windows, pricing, modality coverage, and editorial notes, built to make AI tier-collapse readable in seconds.",
     role: "Product Designer & Developer",
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "D3.js", "Tailwind CSS"],
@@ -944,7 +944,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     slug: "wine-cellar",
     title: "Wine Cellar",
     description:
-      "Personal wine reviewing app for logging tastings, rating bottles, and tracking the wines you've poured — saved locally in your browser.",
+      "Personal wine reviewing app for logging tastings, rating bottles, and tracking the wines you've poured. Saved locally in your browser.",
     role: "Product Builder & Designer",
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "Local persistence", "Editorial UX"],

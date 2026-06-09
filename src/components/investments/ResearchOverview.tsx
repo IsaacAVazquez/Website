@@ -160,7 +160,7 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
         className="overflow-hidden rounded-[30px] border-[color-mix(in_srgb,var(--home-haze)_16%,var(--home-rule))] shadow-[var(--shadow-sm)]"
       >
         <div className="p-5 sm:p-6">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
+          <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
             About
           </p>
           <p className="mt-3 text-sm leading-[1.7] text-[var(--home-ink-muted)] w-full max-w-full overflow-hidden text-ellipsis ">
@@ -187,7 +187,7 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
           className="rounded-[30px] shadow-[var(--shadow-sm)]"
         >
           <div className="p-5 sm:p-6">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
+            <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
               Leadership
             </p>
             <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
@@ -205,7 +205,7 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
                     </p>
                   ) : null}
                   {officer.totalPay ? (
-                    <p className="mt-1.5 text-[11px] font-medium text-[var(--home-haze)]">
+                    <p className="mt-1.5 text-2xs font-medium text-[var(--home-haze)]">
                       {formatPay(officer.totalPay)}
                     </p>
                   ) : null}
@@ -223,7 +223,7 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
           padding="sm"
           className="rounded-[30px] border-[color-mix(in_srgb,var(--color-success)_18%,var(--home-rule))] shadow-[var(--shadow-sm)]"
         >
-          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
+          <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
             Signals
           </p>
           <div className="mt-4 space-y-3">
@@ -248,7 +248,7 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
         {/* News */}
         {newsItems.length > 0 ? (
           <WarmCard padding="sm" className="rounded-[30px] shadow-[var(--shadow-sm)]">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
+            <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
               Latest News
             </p>
             <div className="mt-3 max-h-[400px] overflow-y-auto pr-1">
@@ -259,7 +259,7 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
           </WarmCard>
         ) : !showNews ? (
           <WarmCard padding="sm" className="rounded-[30px] shadow-[var(--shadow-sm)]">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
+            <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
               Snapshot Mode
             </p>
             <p className="mt-3 text-sm leading-6 text-[var(--home-ink-muted)]">

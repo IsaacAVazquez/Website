@@ -27,7 +27,7 @@ export function StatCard({
     return (
       <div className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-4 py-4 shadow-[var(--shadow-sm)]">
         <div className="flex items-center justify-between gap-3">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
+          <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
             {eyebrow}
           </p>
           <span className="text-[var(--home-haze)]">{icon}</span>

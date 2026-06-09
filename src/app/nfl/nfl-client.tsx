@@ -374,7 +374,7 @@ export function NflClient({
               The NFL season compressed into one view. Conference seedings, division leaders, the playoff cutoff, and stat leaders, refreshed from a curated NFLverse snapshot.
             </p>
           </div>
-          <div className="flex flex-wrap gap-1.5 text-[11px] text-[var(--home-ink-muted)]">
+          <div className="flex flex-wrap gap-1.5 text-2xs text-[var(--home-ink-muted)]">
             {[
               `Season ${summary.season}`,
               summary.week ? `Through Week ${summary.week}` : "Final regular season",
@@ -579,21 +579,21 @@ export function NflClient({
                   </h2>
                   <div className="mt-1.5 flex flex-wrap gap-1.5">
                     <span
-                      className="inline-flex items-center rounded-full border px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em]"
+                      className="inline-flex items-center rounded-full border px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em]"
                       style={getZonePillStyle(selectedZone)}
                     >
                       {getZoneLabel(selectedZone)}
                     </span>
-                    <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                    <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
                       {formatRecord(selectedTeam)}
                     </span>
-                    <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                    <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
                       {selectedTeam.division}
                     </span>
                   </div>
                 </div>
                 <div className="flex-shrink-0 rounded-xl bg-[var(--home-haze)] px-3 py-2 text-center text-[var(--home-paper)] shadow-sm">
-                  <p className="text-[10px] uppercase tracking-[0.14em] opacity-80">Seed</p>
+                  <p className="text-3xs uppercase tracking-[0.14em] opacity-80">Seed</p>
                   <p className="text-xl font-bold">{selectedTeam.seed ?? "—"}</p>
                 </div>
               </div>
@@ -622,7 +622,7 @@ export function NflClient({
                   ] as const
                 ).map(([label, value]) => (
                   <div key={label} className="flex items-baseline justify-between gap-2">
-                    <dt className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                    <dt className="text-2xs font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
                       {label}
                     </dt>
                     <dd className="text-sm font-bold text-[var(--home-ink)]">{value}</dd>
@@ -632,7 +632,7 @@ export function NflClient({
 
               {formSequence.length > 0 && (
                 <div className="mt-4 border-t border-[var(--home-rule)] pt-4">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                  <p className="text-2xs font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
                     Form (last 5)
                   </p>
                   <div className="mt-2 flex gap-1.5">

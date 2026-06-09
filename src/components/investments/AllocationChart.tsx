@@ -154,7 +154,7 @@ export function AllocationChart({ holdings }: Props) {
               />
               <span className="font-medium text-[var(--home-ink)] w-14 shrink-0">{h.symbol}</span>
               <div
-                className="flex-1 h-1 rounded-full bg-[var(--neutral-200)] overflow-hidden"
+                className="flex-1 h-1 rounded-full bg-[var(--home-stone)] overflow-hidden"
                 role="progressbar"
                 aria-valuenow={Math.round(h.allocationPercent ?? 0)}
                 aria-valuemin={0}

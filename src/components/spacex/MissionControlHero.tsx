@@ -111,7 +111,7 @@ export function MissionControlHero({
       >
         <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div className="space-y-3">
-            <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--home-ink-soft)]">
+            <p className="font-mono text-2xs font-semibold uppercase tracking-[0.22em] text-[var(--home-ink-soft)]">
               Mission control unavailable
             </p>
             <h2 className="text-3xl font-bold tracking-[-0.04em] text-[var(--home-ink)] sm:text-4xl">
@@ -149,7 +149,7 @@ export function MissionControlHero({
       <div className="grid gap-5 lg:grid-cols-[minmax(0,1.24fr)_220px]">
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-3">
-            <span className="rounded-full border border-[color-mix(in_srgb,var(--home-haze)_25%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-paper)_78%,transparent)] px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--home-haze)]">
+            <span className="rounded-full border border-[color-mix(in_srgb,var(--home-haze)_25%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-paper)_78%,transparent)] px-3 py-1 font-mono text-2xs font-semibold uppercase tracking-[0.22em] text-[var(--home-haze)]">
               {summary?.heroMode === "fallback" ? "Latest completed mission" : "Next mission"}
             </span>
             <span className="rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-3 py-1 text-xs font-medium text-[var(--home-ink-muted)]">
@@ -177,7 +177,7 @@ export function MissionControlHero({
 
           <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:max-w-[700px] xl:grid-cols-4">
             <div className="rounded-[22px] border border-[var(--home-rule)] bg-[var(--home-paper-raised)]/90 p-3.5">
-              <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--home-ink-soft)]">
+              <p className="font-mono text-3xs font-semibold uppercase tracking-[0.2em] text-[var(--home-ink-soft)]">
                 Rocket
               </p>
               <p className="mt-2 text-sm font-semibold text-[var(--home-ink)]">
@@ -185,7 +185,7 @@ export function MissionControlHero({
               </p>
             </div>
             <div className="rounded-[22px] border border-[var(--home-rule)] bg-[var(--home-paper-raised)]/90 p-3.5">
-              <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--home-ink-soft)]">
+              <p className="font-mono text-3xs font-semibold uppercase tracking-[0.2em] text-[var(--home-ink-soft)]">
                 Launchpad
               </p>
               <p className="mt-2 text-sm font-semibold text-[var(--home-ink)]">
@@ -193,7 +193,7 @@ export function MissionControlHero({
               </p>
             </div>
             <div className="rounded-[22px] border border-[var(--home-rule)] bg-[var(--home-paper-raised)]/90 p-3.5">
-              <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--home-ink-soft)]">
+              <p className="font-mono text-3xs font-semibold uppercase tracking-[0.2em] text-[var(--home-ink-soft)]">
                 Payloads
               </p>
               <p className="mt-2 text-sm font-semibold text-[var(--home-ink)]">
@@ -201,7 +201,7 @@ export function MissionControlHero({
               </p>
             </div>
             <div className="rounded-[22px] border border-[var(--home-rule)] bg-[var(--home-paper-raised)]/90 p-3.5">
-              <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--home-ink-soft)]">
+              <p className="font-mono text-3xs font-semibold uppercase tracking-[0.2em] text-[var(--home-ink-soft)]">
                 Location
               </p>
               <p className="mt-2 text-sm font-semibold text-[var(--home-ink)]">
@@ -252,7 +252,7 @@ export function MissionControlHero({
           <div className="rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper-raised)]/90 p-4 shadow-[var(--shadow-sm)]">
             <div className="flex items-center gap-2">
               <CalendarDays className="h-4 w-4 text-[var(--home-haze)]" />
-              <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--home-ink-soft)]">
+              <p className="font-mono text-3xs font-semibold uppercase tracking-[0.2em] text-[var(--home-ink-soft)]">
                 Mission timing
               </p>
             </div>

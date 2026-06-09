@@ -75,7 +75,7 @@ function StandaloneMetric({
 }) {
   return (
     <div className="rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-4 py-3">
-      <p className="flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
+      <p className="flex items-center gap-1 text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
         {label}
         <MetricTooltip term={label} />
       </p>
@@ -189,7 +189,7 @@ export function ValuationRatiosPanel({
       {isLoading && (
         <div className="space-y-2">
           {Array.from({ length: 5 }).map((_, i) => (
-            <div key={i} className="h-10 rounded bg-[var(--neutral-200)] animate-pulse" />
+            <div key={i} className="h-10 rounded bg-[var(--home-stone)] animate-pulse" />
           ))}
         </div>
       )}

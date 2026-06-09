@@ -303,8 +303,8 @@ export function PriceChartPanel({ symbol }: Props) {
 
       {isLoading && (
         <div className="space-y-3">
-          <div className="h-[260px] rounded bg-[var(--neutral-200)] animate-pulse" />
-          <div className="h-[80px] rounded bg-[var(--neutral-200)] animate-pulse" />
+          <div className="h-[260px] rounded bg-[var(--home-stone)] animate-pulse" />
+          <div className="h-[80px] rounded bg-[var(--home-stone)] animate-pulse" />
         </div>
       )}
 

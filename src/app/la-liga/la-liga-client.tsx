@@ -348,7 +348,7 @@ export function LaLigaClient({
               La Liga&apos;s title race compressed into one view. Top-four gaps, European qualification pressure, and relegation context, updated weekly.
             </p>
           </div>
-          <div className="flex flex-wrap gap-1.5 text-[11px] text-[var(--home-ink-muted)]">
+          <div className="flex flex-wrap gap-1.5 text-2xs text-[var(--home-ink-muted)]">
             {[
               `Season ${summary.season}`,
               `Matchday ${summary.matchday}`,
@@ -533,21 +533,21 @@ export function LaLigaClient({
                   </h2>
                   <div className="mt-1.5 flex flex-wrap gap-1.5">
                     <span
-                      className="inline-flex items-center rounded-full border px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em]"
+                      className="inline-flex items-center rounded-full border px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em]"
                       style={getZonePillStyle(selectedZone)}
                     >
                       {getZoneLabel(selectedZone)}
                     </span>
-                    <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                    <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
                       {selectedClub.points} pts
                     </span>
-                    <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                    <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
                       {38 - selectedClub.played} left
                     </span>
                   </div>
                 </div>
                 <div className="flex-shrink-0 rounded-xl bg-[var(--home-haze)] px-3 py-2 text-center text-[var(--home-paper)] shadow-sm">
-                  <p className="text-[10px] uppercase tracking-[0.14em] opacity-80">Pos</p>
+                  <p className="text-3xs uppercase tracking-[0.14em] opacity-80">Pos</p>
                   <p className="text-xl font-bold">{selectedClub.position}</p>
                 </div>
               </div>
@@ -562,7 +562,7 @@ export function LaLigaClient({
                   ["GA/m", formatFixed(selectedClub.goalsAgainst / selectedClub.played)],
                 ] as const).map(([label, value]) => (
                   <div key={label} className="flex items-baseline justify-between gap-2">
-                    <dt className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">{label}</dt>
+                    <dt className="text-2xs font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">{label}</dt>
                     <dd className="text-sm font-bold text-[var(--home-ink)]">{value}</dd>
                   </div>
                 ))}
@@ -570,7 +570,7 @@ export function LaLigaClient({
 
               {formSequence.length > 0 && (
                 <div className="mt-4 border-t border-[var(--home-rule)] pt-4">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">Form</p>
+                  <p className="text-2xs font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">Form</p>
                   <div className="mt-2 flex gap-1.5">
                     {formSequence.slice(-5).map((result, i) => (
                       <TeamResultPill key={i} result={result} />

@@ -711,7 +711,7 @@ function DecisionLabWorkbench({
                       >
                         <span className="block truncate">{preset.name}</span>
                         <span
-                          className="block truncate text-[11px] font-normal"
+                          className="block truncate text-2xs font-normal"
                           style={{ color: "var(--home-ink-muted)" }}
                         >
                           {preset.outcomeHint}
@@ -746,14 +746,14 @@ function DecisionLabWorkbench({
                     Copy link
                   </button>
                   <p
-                    className="m-0 text-[11px] leading-snug"
+                    className="m-0 text-2xs leading-snug"
                     style={{ color: "var(--home-ink-muted)" }}
                   >
                     {copyStatus === "copied"
                       ? "Link copied"
                       : copyStatus === "error"
                         ? "Copy failed"
-                        : "Copy to share — every slider change is encoded."}
+                        : "Copy to share. Every slider change is encoded."}
                   </p>
                 </div>
               </div>

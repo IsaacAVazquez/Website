@@ -336,7 +336,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
               Conference standings compressed into one view. Top-six seeding, play-in pressure, and league stat leaders refreshed from the latest snapshot.
             </p>
           </div>
-          <div className="flex flex-wrap gap-1.5 text-[11px] text-[var(--home-ink-muted)]">
+          <div className="flex flex-wrap gap-1.5 text-2xs text-[var(--home-ink-muted)]">
             {[
               `Season ${summary.season}`,
               `${eastTeams.length + westTeams.length} teams`,
@@ -509,7 +509,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
                               size="sm"
                             />
                             <span className="font-semibold text-[var(--home-ink)]">{team.shortName}</span>
-                            <span className="text-[10px] uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                            <span className="text-3xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                               {team.conference === "east" ? "E" : "W"}
                             </span>
                           </button>
@@ -559,21 +559,21 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
                   </h2>
                   <div className="mt-1.5 flex flex-wrap gap-1.5">
                     <span
-                      className="inline-flex items-center rounded-full border px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em]"
+                      className="inline-flex items-center rounded-full border px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em]"
                       style={getZonePillStyle(selectedZone)}
                     >
                       {getZoneLabel(selectedZone)}
                     </span>
-                    <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                    <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
                       {selectedTeam.wins}-{selectedTeam.losses}
                     </span>
-                    <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                    <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
                       {remainingGames} left
                     </span>
                   </div>
                 </div>
                 <div className="flex-shrink-0 rounded-xl bg-[var(--home-haze)] px-3 py-2 text-center text-[var(--home-paper)] shadow-sm">
-                  <p className="text-[10px] uppercase tracking-[0.14em] opacity-80">Seed</p>
+                  <p className="text-3xs uppercase tracking-[0.14em] opacity-80">Seed</p>
                   <p className="text-xl font-bold">{selectedTeam.conferenceSeed}</p>
                 </div>
               </div>
@@ -595,7 +595,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
                   ] as const
                 ).map(([label, value]) => (
                   <div key={label} className="flex items-baseline justify-between gap-2">
-                    <dt className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                    <dt className="text-2xs font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
                       {label}
                     </dt>
                     <dd className="text-sm font-bold text-[var(--home-ink)]">{value}</dd>
@@ -605,7 +605,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
 
               {formSequence.length > 0 && (
                 <div className="mt-4 border-t border-[var(--home-rule)] pt-4">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                  <p className="text-2xs font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
                     Form
                   </p>
                   <div className="mt-2 flex gap-1.5">

@@ -188,13 +188,13 @@ function Skeleton() {
   return (
     <div className="space-y-6 animate-pulse">
       <div className="flex justify-center">
-        <div className="w-[320px] h-[320px] rounded-full bg-[var(--neutral-200)]" />
+        <div className="w-[320px] h-[320px] rounded-full bg-[var(--home-stone)]" />
       </div>
       {[1, 2, 3, 4].map((i) => (
         <div key={i} className="rounded-xl border border-[var(--home-rule)] p-5 space-y-3">
-          <div className="h-4 w-32 rounded bg-[var(--neutral-200)]" />
+          <div className="h-4 w-32 rounded bg-[var(--home-stone)]" />
           {[1, 2, 3, 4].map((j) => (
-            <div key={j} className="h-8 rounded bg-[var(--neutral-200)]" />
+            <div key={j} className="h-8 rounded bg-[var(--home-stone)]" />
           ))}
         </div>
       ))}
@@ -325,7 +325,7 @@ export function ComparisonTab() {
       <div className="rounded-[28px] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-4 shadow-[var(--shadow-sm)] sm:p-5">
         <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-end">
           <div className="flex flex-col gap-2">
-            <label className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
+            <label className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
               Stock A
             </label>
             <select
@@ -345,7 +345,7 @@ export function ComparisonTab() {
           </div>
 
           <div className="flex flex-col gap-2">
-            <label className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
+            <label className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
               Stock B
             </label>
             <select

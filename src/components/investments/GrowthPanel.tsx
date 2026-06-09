@@ -132,7 +132,7 @@ export function GrowthPanel({ symbol }: Props) {
       <h3 className="text-sm font-semibold text-[var(--home-ink)] mb-3">YoY Growth</h3>
 
       {isLoading && (
-        <div className="h-48 rounded bg-[var(--neutral-200)] animate-pulse" />
+        <div className="h-48 rounded bg-[var(--home-stone)] animate-pulse" />
       )}
 
       {!isLoading && (error || metrics.length === 0) && (

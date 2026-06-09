@@ -18,7 +18,7 @@ function Bar({ value, max = 100 }: { value: number | undefined; max?: number }) 
   const pct = Math.min(Math.max((value ?? 0) / max, 0), 1) * 100;
   const positive = (value ?? 0) >= 0;
   return (
-    <div className="h-1.5 rounded-full bg-[var(--neutral-200)] overflow-hidden flex-1">
+    <div className="h-1.5 rounded-full bg-[var(--home-stone)] overflow-hidden flex-1">
       <div
         className="h-full rounded-full transition-all duration-500"
         style={{
@@ -66,7 +66,7 @@ export function ProfitabilityPanel({ symbol }: Props) {
       {isLoading ? (
         <div className="space-y-2">
           {Array.from({ length: 8 }).map((_, i) => (
-            <div key={i} className="h-8 rounded bg-[var(--neutral-200)] animate-pulse" />
+            <div key={i} className="h-8 rounded bg-[var(--home-stone)] animate-pulse" />
           ))}
         </div>
       ) : (
