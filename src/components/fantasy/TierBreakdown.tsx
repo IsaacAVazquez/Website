@@ -141,7 +141,7 @@ export function TierBreakdown({ players, position, getPublishedRank }: TierBreak
                     className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-sm"
                     style={{
                       borderColor: "var(--home-rule)",
-                      background: "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))",
+                      background: "var(--home-paper-raised)",
                       color: "var(--home-ink)",
                     }}
                   >

@@ -1336,7 +1336,7 @@ function CompanyFilterStrip({
             className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border"
             style={{
               borderColor: "var(--home-rule)",
-              background: "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))",
+              background: "var(--home-paper-raised)",
             }}
             aria-hidden="true"
           >

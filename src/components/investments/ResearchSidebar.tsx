@@ -132,9 +132,9 @@ export function ResearchSidebar({ symbol, onSymbolChange, isInPortfolio = false 
   return (
     <div className="space-y-3">
       {/* Search */}
-      <div className="rounded-[28px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] p-4 shadow-[var(--shadow-sm)]">
+      <div className="rounded-[28px] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-4 shadow-[var(--shadow-sm)]">
         <div className="mb-2 flex items-center justify-between gap-2">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
             Research Symbol
           </p>
           {isInPortfolio ? (
@@ -155,7 +155,7 @@ export function ResearchSidebar({ symbol, onSymbolChange, isInPortfolio = false 
       {symbol ? (
         <>
           {/* Company identity + stance */}
-          <div className="rounded-[28px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] p-4 shadow-[var(--shadow-sm)]">
+          <div className="rounded-[28px] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-4 shadow-[var(--shadow-sm)]">
             <p className="text-sm font-semibold leading-snug text-[var(--home-ink)]">
               {[displayName || symbol, symbol !== (displayName || symbol) ? symbol : null, info?.sector, info?.industry].filter(Boolean).join(" · ")}
             </p>
@@ -167,8 +167,8 @@ export function ResearchSidebar({ symbol, onSymbolChange, isInPortfolio = false 
           </div>
 
           {/* Live price */}
-          <div className="rounded-[28px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] p-4 shadow-[var(--shadow-sm)]">
-            <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+          <div className="rounded-[28px] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-4 shadow-[var(--shadow-sm)]">
+            <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
               Latest Price
             </p>
             <div className="flex items-baseline gap-3">
@@ -213,8 +213,8 @@ export function ResearchSidebar({ symbol, onSymbolChange, isInPortfolio = false 
           </div>
 
           {/* Key metrics */}
-          <div className="rounded-[28px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] p-4 shadow-[var(--shadow-sm)]">
-            <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+          <div className="rounded-[28px] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-4 shadow-[var(--shadow-sm)]">
+            <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
               Key Metrics
             </p>
             <dl>
@@ -246,12 +246,12 @@ export function ResearchSidebar({ symbol, onSymbolChange, isInPortfolio = false 
           </div>
 
           {/* Dataset freshness */}
-          <div className="rounded-[28px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] px-4 py-3 shadow-[var(--shadow-sm)]">
+          <div className="rounded-[28px] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-4 py-3 shadow-[var(--shadow-sm)]">
             <DataFreshnessIndicator lastUpdated={dataFreshnessLastUpdated} mode="dataset" />
           </div>
         </>
       ) : (
-        <div className="rounded-[28px] border border-dashed border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] px-5 py-10 text-center shadow-[var(--shadow-sm)]">
+        <div className="rounded-[28px] border border-dashed border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-5 py-10 text-center shadow-[var(--shadow-sm)]">
           <p className="text-sm text-[var(--home-ink-muted)]">
             Enter a ticker to see metrics and research data.
           </p>

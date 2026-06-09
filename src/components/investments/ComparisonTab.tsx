@@ -322,10 +322,10 @@ export function ComparisonTab() {
   // ── Render ─────────────────────────────────────────────────────────────
   return (
     <div className="space-y-6">
-      <div className="rounded-[28px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] p-4 shadow-[var(--shadow-sm)] sm:p-5">
+      <div className="rounded-[28px] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-4 shadow-[var(--shadow-sm)] sm:p-5">
         <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-end">
           <div className="flex flex-col gap-2">
-            <label className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+            <label className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
               Stock A
             </label>
             <select
@@ -340,12 +340,12 @@ export function ComparisonTab() {
             </select>
           </div>
 
-          <div className="flex min-h-[46px] items-center justify-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-4 text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+          <div className="flex min-h-[46px] items-center justify-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-4 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
             vs
           </div>
 
           <div className="flex flex-col gap-2">
-            <label className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+            <label className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
               Stock B
             </label>
             <select
@@ -369,7 +369,7 @@ export function ComparisonTab() {
         <Skeleton />
       ) : (
         <>
-          <div className="rounded-[28px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] p-5 shadow-[var(--shadow-sm)] sm:p-6">
+          <div className="rounded-[28px] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-5 shadow-[var(--shadow-sm)] sm:p-6">
             <ComparisonRadarChart
               data={radarData}
               symbolA={symbolA}

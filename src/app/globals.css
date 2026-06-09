@@ -182,6 +182,16 @@
    * you'd otherwise hardcode `white` or `black` inside a color-mix().
    */
   --home-elev-mix: white;
+
+  /*
+   * Derived surface + text tokens. Declared once here: their color-mix()
+   * references resolve lazily against the themed --home-* values above, so a
+   * single declaration tracks both light and dark automatically.
+   *   --home-ink-soft     → muted eyebrow / label text
+   *   --home-paper-raised → lifted card surface, one step above --home-paper
+   */
+  --home-ink-soft: color-mix(in srgb, var(--home-ink) 45%, var(--home-paper));
+  --home-paper-raised: color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix));
 }
 
 .dark {

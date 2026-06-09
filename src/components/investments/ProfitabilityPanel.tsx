@@ -73,7 +73,7 @@ export function ProfitabilityPanel({ symbol }: Props) {
         <>
           {prof && !prof.error && (
             <div className="mb-4">
-              <p className="text-xs font-medium text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] uppercase tracking-wide mb-2">Returns</p>
+              <p className="text-xs font-medium text-[var(--home-ink-soft)] uppercase tracking-wide mb-2">Returns</p>
               <MetricRow label="Return on Equity (ROE)" value={prof.roe} max={50} />
               <MetricRow label="Return on Assets (ROA)" value={prof.roa} max={30} />
               <MetricRow label="Return on Inv. Capital" value={prof.roic} max={40} />
@@ -84,7 +84,7 @@ export function ProfitabilityPanel({ symbol }: Props) {
 
           {margins && !margins.error && (
             <div>
-              <p className="text-xs font-medium text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] uppercase tracking-wide mb-2">Margins (latest)</p>
+              <p className="text-xs font-medium text-[var(--home-ink-soft)] uppercase tracking-wide mb-2">Margins (latest)</p>
               <MetricRow label="Gross Margin" value={margins.grossMargin} />
               <MetricRow label="Operating Margin" value={margins.operatingMargin} />
               <MetricRow label="Net Margin" value={margins.netMargin} />

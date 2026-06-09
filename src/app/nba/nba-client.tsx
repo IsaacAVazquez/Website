@@ -445,7 +445,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
                     style={getViewButtonStyle(isActive)}
                   >
                     <span className="text-[var(--home-ink)]">{option.label}</span>
-                    <span className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+                    <span className="text-xs text-[var(--home-ink-soft)]">
                       {filterTeamsForView(option.id).length}
                     </span>
                   </button>
@@ -461,7 +461,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
             >
               <table className="min-w-full border-separate border-spacing-y-2" aria-label="NBA standings">
                 <thead>
-                  <tr className="text-left text-xs uppercase tracking-[0.14em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+                  <tr className="text-left text-xs uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
                     <th className="px-3 py-2 font-semibold">Seed</th>
                     <th className="px-3 py-2 font-semibold">Team</th>
                     <th className="hidden px-3 py-2 font-semibold sm:table-cell">Record</th>

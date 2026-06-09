@@ -468,7 +468,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                     style={getViewButtonStyle(isActive)}
                   >
                     <span className="text-[var(--home-ink)]">{option.label}</span>
-                    <span className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+                    <span className="text-xs text-[var(--home-ink-soft)]">
                       {filterStandingsForView(option.id).length}
                     </span>
                   </button>
@@ -499,7 +499,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                     aria-label={`${groupName} standings`}
                   >
                     <thead>
-                      <tr className="text-left text-xs uppercase tracking-[0.14em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+                      <tr className="text-left text-xs uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
                         <th className="px-3 py-2 font-semibold">Pos</th>
                         <th className="px-3 py-2 font-semibold">Team</th>
                         <th className="px-3 py-2 font-semibold">W-L</th>

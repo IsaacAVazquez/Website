@@ -40,7 +40,7 @@ function NewsCard({ item }: { item: NewsItem }) {
             className="inline-flex items-start gap-1 text-sm font-medium text-[var(--home-ink)] hover:text-[var(--home-haze)] transition line-clamp-2"
           >
             <span>{item.title}</span>
-            <IconExternalLink size={12} className="mt-1 shrink-0 text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]" />
+            <IconExternalLink size={12} className="mt-1 shrink-0 text-[var(--home-ink-soft)]" />
           </a>
         ) : (
           <p className="text-sm font-medium leading-6 text-[var(--home-ink)] line-clamp-2">{item.title}</p>
@@ -160,7 +160,7 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
         className="overflow-hidden rounded-[30px] border-[color-mix(in_srgb,var(--home-haze)_16%,var(--home-rule))] shadow-[var(--shadow-sm)]"
       >
         <div className="p-5 sm:p-6">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
             About
           </p>
           <p className="mt-3 text-sm leading-[1.7] text-[var(--home-ink-muted)] w-full max-w-full overflow-hidden text-ellipsis ">
@@ -187,7 +187,7 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
           className="rounded-[30px] shadow-[var(--shadow-sm)]"
         >
           <div className="p-5 sm:p-6">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
               Leadership
             </p>
             <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
@@ -223,7 +223,7 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
           padding="sm"
           className="rounded-[30px] border-[color-mix(in_srgb,var(--color-success)_18%,var(--home-rule))] shadow-[var(--shadow-sm)]"
         >
-          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
             Signals
           </p>
           <div className="mt-4 space-y-3">
@@ -248,7 +248,7 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
         {/* News */}
         {newsItems.length > 0 ? (
           <WarmCard padding="sm" className="rounded-[30px] shadow-[var(--shadow-sm)]">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
               Latest News
             </p>
             <div className="mt-3 max-h-[400px] overflow-y-auto pr-1">
@@ -259,7 +259,7 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
           </WarmCard>
         ) : !showNews ? (
           <WarmCard padding="sm" className="rounded-[30px] shadow-[var(--shadow-sm)]">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
               Snapshot Mode
             </p>
             <p className="mt-3 text-sm leading-6 text-[var(--home-ink-muted)]">

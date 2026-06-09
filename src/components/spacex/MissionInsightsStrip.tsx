@@ -18,15 +18,15 @@ export function MissionInsightsStrip({
         ? Array.from({ length: 4 }, (_, index) => (
             <div
               key={index}
-              className="h-[94px] animate-pulse rounded-[22px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))]/85"
+              className="h-[94px] animate-pulse rounded-[22px] border border-[var(--home-rule)] bg-[var(--home-paper-raised)]/85"
             />
           ))
         : insights.map((insight) => (
             <article
               key={insight.id}
-              className="rounded-[22px] border border-[color-mix(in_srgb,var(--home-haze)_10%,var(--home-rule))] bg-[linear-gradient(150deg,color-mix(in_srgb,var(--home-haze)_6%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix)))_0%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))_100%)] p-3.5 shadow-[var(--shadow-sm)]"
+              className="rounded-[22px] border border-[color-mix(in_srgb,var(--home-haze)_10%,var(--home-rule))] bg-[linear-gradient(150deg,color-mix(in_srgb,var(--home-haze)_6%,var(--home-paper-raised))_0%,var(--home-paper-raised)_100%)] p-3.5 shadow-[var(--shadow-sm)]"
             >
-              <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+              <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--home-ink-soft)]">
                 {insight.label}
               </p>
               <p className="mt-2 text-[1.75rem] font-bold tracking-[-0.04em] text-[var(--home-ink)]">

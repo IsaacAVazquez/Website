@@ -32,11 +32,11 @@ function CompareRow({ label, value, industryAvg }: { label: string; value: numbe
       <span className="text-sm text-[var(--home-ink-muted)] flex-1">{label}</span>
       <div className="flex items-center gap-4 shrink-0">
         <div className="text-right">
-          <p className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">Stock</p>
+          <p className="text-xs text-[var(--home-ink-soft)]">Stock</p>
           <p className="text-sm font-semibold text-[var(--home-ink)]">{fmt(value)}</p>
         </div>
         <div className="text-right">
-          <p className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">Industry</p>
+          <p className="text-xs text-[var(--home-ink-soft)]">Industry</p>
           <p className="text-sm text-[var(--home-ink-muted)]">{fmt(industryAvg)}</p>
         </div>
         {hasComparison && (
@@ -74,8 +74,8 @@ function StandaloneMetric({
   detail?: string;
 }) {
   return (
-    <div className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] px-4 py-3">
-      <p className="flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+    <div className="rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-4 py-3">
+      <p className="flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
         {label}
         <MetricTooltip term={label} />
       </p>
@@ -124,7 +124,7 @@ export function ValuationRatiosPanel({
         <h3 className="text-sm font-semibold text-[var(--home-ink)] mb-1">
           Valuation Snapshot
         </h3>
-        <p className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] mb-4">
+        <p className="text-xs text-[var(--home-ink-soft)] mb-4">
           Standalone valuation view when industry comparison data is unavailable
           for this curated research symbol.
         </p>
@@ -182,7 +182,7 @@ export function ValuationRatiosPanel({
   return (
     <WarmCard padding="sm">
       <h3 className="text-sm font-semibold text-[var(--home-ink)] mb-1">Valuation vs Industry</h3>
-      <p className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] mb-3">
+      <p className="text-xs text-[var(--home-ink-soft)] mb-3">
         Comparing this stock&apos;s valuation ratios against its industry average.
       </p>
 

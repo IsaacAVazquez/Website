@@ -44,7 +44,7 @@ export function ComparisonMetricTable({ title, rows, symbolA, symbolB }: Props) 
         <table className="w-full text-sm" aria-label={`${title} comparison`}>
           <thead>
             <tr className="border-b border-[var(--home-rule)]">
-              <th className="text-left py-2 pr-4 text-xs font-medium text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] w-1/2">
+              <th className="text-left py-2 pr-4 text-xs font-medium text-[var(--home-ink-soft)] w-1/2">
                 Metric
               </th>
               <th className="text-right py-2 px-3 text-xs font-medium text-[var(--home-haze)] whitespace-nowrap">

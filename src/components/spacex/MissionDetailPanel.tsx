@@ -64,11 +64,11 @@ export function MissionDetailPanel({
     <aside
       data-testid="mission-detail-panel"
       aria-label="Mission detail panel"
-      className="rounded-[30px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))]/92 p-4 shadow-[var(--shadow-md)] sm:p-5"
+      className="rounded-[30px] border border-[var(--home-rule)] bg-[var(--home-paper-raised)]/92 p-4 shadow-[var(--shadow-md)] sm:p-5"
     >
       <div className="flex flex-col gap-4 border-b border-[var(--home-rule)] pb-5">
         <div>
-          <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+          <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--home-ink-soft)]">
             Mission detail
           </p>
           <h2 className="mt-2 text-2xl font-bold tracking-[-0.04em] text-[var(--home-ink)]">
@@ -149,7 +149,7 @@ export function MissionDetailPanel({
         <div className="mt-5 space-y-4">
           <div className="grid gap-3 sm:grid-cols-2">
             <div className="rounded-[22px] border border-[var(--home-rule)] bg-[var(--home-paper)] p-4">
-              <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+              <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--home-ink-soft)]">
                 Launch status
               </p>
               <p className="mt-2 text-sm font-semibold text-[var(--home-ink)]">
@@ -163,7 +163,7 @@ export function MissionDetailPanel({
               </p>
             </div>
             <div className="rounded-[22px] border border-[var(--home-rule)] bg-[var(--home-paper)] p-4">
-              <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+              <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--home-ink-soft)]">
                 Launch site
               </p>
               <p className="mt-2 text-sm font-semibold text-[var(--home-ink)]">
@@ -238,13 +238,13 @@ export function MissionDetailPanel({
                 </div>
                 <div className="grid gap-3">
                   <div className="rounded-[18px] bg-[var(--home-paper-alt)] p-3">
-                    <p className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">Cost per launch</p>
+                    <p className="text-xs text-[var(--home-ink-soft)]">Cost per launch</p>
                     <p className="mt-1 text-sm font-semibold text-[var(--home-ink)]">
                       {formatCurrencyCompact(launch.rocket.costPerLaunch)}
                     </p>
                   </div>
                   <div className="rounded-[18px] bg-[var(--home-paper-alt)] p-3">
-                    <p className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">Success rate</p>
+                    <p className="text-xs text-[var(--home-ink-soft)]">Success rate</p>
                     <p className="mt-1 text-sm font-semibold text-[var(--home-ink)]">
                       {launch.rocket.successRatePct ?? "Unavailable"}%
                     </p>
@@ -294,7 +294,7 @@ export function MissionDetailPanel({
             </div>
             <div className="mt-4 grid gap-4 lg:grid-cols-2">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
                   Crew manifest
                 </p>
                 {launch.crew.length > 0 ? (
@@ -322,7 +322,7 @@ export function MissionDetailPanel({
               </div>
 
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
                   Core manifest
                 </p>
                 {launch.cores.length > 0 ? (
@@ -378,13 +378,13 @@ export function MissionDetailPanel({
                   </div>
                   <div className="mt-4 grid gap-3 sm:grid-cols-2">
                     <div className="rounded-[18px] bg-[var(--home-paper-alt)] p-3">
-                      <p className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">Customers</p>
+                      <p className="text-xs text-[var(--home-ink-soft)]">Customers</p>
                       <p className="mt-1 text-sm text-[var(--home-ink)]">
                         {payload.customers.length > 0 ? payload.customers.join(", ") : "None listed"}
                       </p>
                     </div>
                     <div className="rounded-[18px] bg-[var(--home-paper-alt)] p-3">
-                      <p className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">Manufacturers</p>
+                      <p className="text-xs text-[var(--home-ink-soft)]">Manufacturers</p>
                       <p className="mt-1 text-sm text-[var(--home-ink)]">
                         {payload.manufacturers.length > 0 ? payload.manufacturers.join(", ") : "None listed"}
                       </p>
@@ -459,13 +459,13 @@ export function MissionDetailPanel({
             </h3>
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
               <div className="rounded-[18px] bg-[var(--home-paper-alt)] p-3">
-                <p className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">Crew records</p>
+                <p className="text-xs text-[var(--home-ink-soft)]">Crew records</p>
                 <p className="mt-1 text-sm font-semibold text-[var(--home-ink)]">
                   {launch.crew.length > 0 ? `${launch.crew.length} populated` : "None listed"}
                 </p>
               </div>
               <div className="rounded-[18px] bg-[var(--home-paper-alt)] p-3">
-                <p className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">Payload records</p>
+                <p className="text-xs text-[var(--home-ink-soft)]">Payload records</p>
                 <p className="mt-1 text-sm font-semibold text-[var(--home-ink)]">
                   {launch.payloads.length > 0 ? `${launch.payloads.length} populated` : "None listed"}
                 </p>

@@ -51,7 +51,7 @@ export function StaticHeader() {
       <header
       className={cn(
         "sticky top-0 z-50 w-full transition-[background-color,border-color,box-shadow] duration-300 header-home",
-        isScrolled && "border-b shadow-sm"
+        isScrolled && "border-b shadow-[var(--shadow-sm)]"
       )}
       style={{
         backgroundColor: isScrolled
@@ -117,7 +117,7 @@ export function StaticHeader() {
         )}
       >
         <div className="page-shell pb-5">
-          <div className="rounded-2xl border p-3 shadow-sm header-home-menu">
+          <div className="rounded-2xl border p-3 shadow-[var(--shadow-md)] header-home-menu">
             <ul className="space-y-1" aria-label="Mobile navigation">
               {navLinks.map((link) => {
                 const active = isRouteActive(pathname, link.href);
