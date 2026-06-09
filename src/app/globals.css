@@ -111,9 +111,9 @@
   --color-primary: var(--home-haze);
   --color-secondary: var(--home-haze);
   --color-accent: var(--home-haze);
-  --color-success: #059669;
-  --color-warning: #D97706;
-  --color-error: #DC2626;
+  --color-success: var(--home-positive);
+  --color-warning: var(--home-warning);
+  --color-error: var(--home-negative);
 
   --neutral-50: #F8FAFC;
   --neutral-100: #F1F5F9;
@@ -204,6 +204,22 @@
    */
   --home-ink-soft: color-mix(in srgb, var(--home-ink) 45%, var(--home-paper));
   --home-paper-raised: color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix));
+
+  /*
+   * Semantic status tones in the --home-* family. These are the canonical
+   * names for new code; --color-success/warning/error alias to them as part
+   * of the legacy safety net above.
+   */
+  --home-positive: #059669;
+  --home-warning: #D97706;
+  --home-negative: #DC2626;
+
+  /* Travel planner category tints (decorative icon chips only). */
+  --travel-transit: #3B6EA5;
+  --travel-lodging: #7C5CBF;
+  --travel-food: #B8860B;
+  --travel-sight: #2F7D4F;
+  --travel-activity: #C2410C;
 }
 
 .dark {
@@ -226,9 +242,16 @@
    */
   --surface-overlay: rgba(0, 0, 0, 0.55);
 
-  --color-success: #34D399;
-  --color-warning: #FBBF24;
-  --color-error: #F87171;
+  --home-positive: #34D399;
+  --home-warning: #FBBF24;
+  --home-negative: #F87171;
+
+  /* Brighter travel category tints so the icon chips read on dark paper. */
+  --travel-transit: #7FA8D9;
+  --travel-lodging: #B19BE3;
+  --travel-food: #DDB44E;
+  --travel-sight: #6FBC8F;
+  --travel-activity: #EE8F5C;
 
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.2);

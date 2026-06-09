@@ -62,8 +62,11 @@ export interface TripSummary {
   daysUntilStart: number;
   activitiesTotal: number;
   activitiesCompleted: number;
+  /** Number of overlapping pairs of timed stops across the trip. */
   conflictCount: number;
   journalCount: number;
   dayBuckets: TripDayBucket[];
   upcomingActivities: TripActivity[];
+  /** True when the trip spans more days than the itinerary renders. */
+  itineraryTruncated: boolean;
 }

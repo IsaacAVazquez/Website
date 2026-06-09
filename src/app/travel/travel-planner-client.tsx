@@ -36,11 +36,13 @@ import {
   ACTIVITY_CATEGORY_LABELS,
   JOURNAL_MOODS,
   JOURNAL_MOOD_LABELS,
+  MAX_ITINERARY_DAYS,
   formatActivityTimeRange,
   formatDayHeading,
   formatTripDateRange,
   getDefaultActivityDate,
   getTodayKey,
+  isIsoDate,
 } from "@/lib/travelPlanner";
 import {
   type ActivityDraft,
@@ -64,11 +66,11 @@ const STATUS_LABELS = {
 } as const;
 
 const MOOD_TONE: Record<JournalEntry["mood"], string> = {
-  amazing: "var(--color-success, #2f7d4f)",
+  amazing: "var(--home-positive)",
   good: "var(--home-haze)",
   neutral: "var(--home-ink-muted)",
-  rough: "var(--color-warning, #b8860b)",
-  tired: "var(--color-error, #b3322c)",
+  rough: "var(--home-warning)",
+  tired: "var(--home-negative)",
 };
 
 const MOOD_ICON: Record<JournalEntry["mood"], LucideIcon> = {
@@ -80,11 +82,11 @@ const MOOD_ICON: Record<JournalEntry["mood"], LucideIcon> = {
 };
 
 const CATEGORY_META: Record<ActivityCategory, { icon: LucideIcon; tint: string }> = {
-  transit: { icon: Train, tint: "#3b6ea5" },
-  lodging: { icon: BedDouble, tint: "#7c5cbf" },
-  food: { icon: UtensilsCrossed, tint: "#b8860b" },
-  sight: { icon: Landmark, tint: "#2f7d4f" },
-  activity: { icon: Ticket, tint: "#c2410c" },
+  transit: { icon: Train, tint: "var(--travel-transit)" },
+  lodging: { icon: BedDouble, tint: "var(--travel-lodging)" },
+  food: { icon: UtensilsCrossed, tint: "var(--travel-food)" },
+  sight: { icon: Landmark, tint: "var(--travel-sight)" },
+  activity: { icon: Ticket, tint: "var(--travel-activity)" },
   other: { icon: MapPin, tint: "var(--home-ink-muted)" },
 };
 
@@ -242,10 +244,17 @@ export function TravelPlannerClient() {
     setShowTripForm(false);
   }
 
+  const endTimeInvalid = Boolean(
+    activityDraft.time &&
+      activityDraft.endTime &&
+      activityDraft.endTime <= activityDraft.time
+  );
+
   function handleSubmitActivity(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!activeTrip) return;
     if (!activityDraft.title.trim() || !activityDraft.date) return;
+    if (endTimeInvalid) return;
 
     if (editingActivityId) {
       updateActivity(activeTrip.id, editingActivityId, activityDraft);
@@ -319,7 +328,7 @@ export function TravelPlannerClient() {
 
               <div className="flex flex-wrap items-center gap-2">
                 {trips.length > 0 ? (
-                  <label className="flex items-center gap-2 rounded-full border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-3 py-1.5 text-[12px] font-semibold text-[var(--home-ink)] shadow-[var(--shadow-sm)]">
+                  <label className="flex min-h-touch items-center gap-2 rounded-full border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-3 py-1.5 text-[12px] font-semibold text-[var(--home-ink)] shadow-[var(--shadow-sm)]">
                     <CalendarDays className="h-3.5 w-3.5 text-[var(--home-haze)]" aria-hidden="true" />
                     <span className="sr-only">Active trip</span>
                     <select
@@ -521,6 +530,7 @@ export function TravelPlannerClient() {
                         value={activityDraft.endTime}
                         min={activityDraft.time || undefined}
                         disabled={!activityDraft.time}
+                        aria-invalid={endTimeInvalid || undefined}
                         onChange={(event) =>
                           setActivityDraft((draft) => ({ ...draft, endTime: event.target.value }))
                         }
@@ -528,6 +538,12 @@ export function TravelPlannerClient() {
                       />
                     </label>
                   </div>
+                  {endTimeInvalid ? (
+                    <p role="alert" className="text-[11.5px] font-medium text-[var(--home-negative)]">
+                      The end time has to come after the start. Overnight stops
+                      need one entry per day.
+                    </p>
+                  ) : null}
                   <label className="block">
                     <span className={fieldLabel}>Category</span>
                     <select
@@ -811,65 +827,7 @@ function ActiveTripView({
           ) : null}
         </div>
 
-        <div className="mt-4 grid gap-3 sm:grid-cols-2">
-          <label className="block">
-            <span className={fieldLabel}>Trip name</span>
-            <input
-              type="text"
-              value={trip.name}
-              onChange={(event) => onUpdateField({ name: event.target.value })}
-              className={fieldInput}
-            />
-          </label>
-          <label className="block">
-            <span className={fieldLabel}>Destination</span>
-            <input
-              type="text"
-              value={trip.destination}
-              onChange={(event) => onUpdateField({ destination: event.target.value })}
-              className={fieldInput}
-            />
-          </label>
-          <label className="block">
-            <span className={fieldLabel}>Start date</span>
-            <input
-              type="date"
-              value={trip.startDate}
-              onChange={(event) => onUpdateField({ startDate: event.target.value })}
-              className={fieldInput}
-            />
-          </label>
-          <label className="block">
-            <span className={fieldLabel}>End date</span>
-            <input
-              type="date"
-              value={trip.endDate}
-              min={trip.startDate}
-              onChange={(event) => onUpdateField({ endDate: event.target.value })}
-              className={fieldInput}
-            />
-          </label>
-          <label className="block">
-            <span className={fieldLabel}>Budget (USD)</span>
-            <input
-              type="number"
-              min="0"
-              step="50"
-              value={String(trip.budget)}
-              onChange={(event) => onUpdateField({ budget: Number(event.target.value) || 0 })}
-              className={`${fieldInput} [font-variant-numeric:tabular-nums]`}
-            />
-          </label>
-          <label className="block sm:col-span-2">
-            <span className={fieldLabel}>Trip notes</span>
-            <textarea
-              value={trip.notes}
-              onChange={(event) => onUpdateField({ notes: event.target.value })}
-              placeholder="Hotels, packing list, must-see places…"
-              className={textareaInput}
-            />
-          </label>
-        </div>
+        <TripDetailsFields trip={trip} onUpdateField={onUpdateField} />
       </section>
 
       <section
@@ -898,7 +856,7 @@ function ActiveTripView({
               aria-label="Itinerary completion"
             >
               <div
-                className="h-full rounded-full bg-[var(--color-success,#2f7d4f)] transition-[width] duration-500"
+                className="h-full rounded-full bg-[var(--home-positive)] transition-[width] duration-500"
                 style={{
                   width: `${Math.round(
                     (summary.activitiesCompleted / summary.activitiesTotal) * 100
@@ -907,6 +865,14 @@ function ActiveTripView({
               />
             </div>
           </div>
+        ) : null}
+
+        {summary.itineraryTruncated ? (
+          <p className="mt-3 rounded-xl border border-dashed border-[var(--home-rule)] px-3 py-2 text-[12px] text-[var(--home-ink-muted)]">
+            This trip spans {summary.daysTotal.toLocaleString("en-US")} days, so
+            the itinerary shows the first {MAX_ITINERARY_DAYS}. Double-check the
+            trip dates if that looks off.
+          </p>
         ) : null}
 
         {summary.activitiesTotal === 0 ? (
@@ -955,10 +921,10 @@ function ActiveTripView({
                               ? `Mark ${activity.title} as not done`
                               : `Mark ${activity.title} as done`
                           }
-                          className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full text-[var(--home-ink-muted)] transition hover:text-[var(--home-haze)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                          className="-my-2 -ml-2 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-[var(--home-ink-muted)] transition hover:text-[var(--home-haze)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
                         >
                           {activity.completed ? (
-                            <CheckCircle2 className="h-5 w-5 text-[var(--color-success,#2f7d4f)]" />
+                            <CheckCircle2 className="h-5 w-5 text-[var(--home-positive)]" />
                           ) : (
                             <Circle className="h-5 w-5" />
                           )}
@@ -984,7 +950,7 @@ function ActiveTripView({
                             </p>
                             {hasConflict ? (
                               <span
-                                className="inline-flex items-center gap-1 rounded-full border border-[var(--color-warning,#b8860b)] px-1.5 py-0.5 text-[9.5px] font-semibold uppercase tracking-[0.1em] text-[var(--color-warning,#b8860b)]"
+                                className="inline-flex items-center gap-1 rounded-full border border-[var(--home-warning)] px-1.5 py-0.5 text-[9.5px] font-semibold uppercase tracking-[0.1em] text-[var(--home-warning)]"
                                 title="Overlaps another stop on this day"
                               >
                                 <AlertTriangle className="h-3 w-3" aria-hidden="true" />
@@ -993,7 +959,7 @@ function ActiveTripView({
                             ) : null}
                           </div>
                           <p className="mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-2xs uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
-                            <span style={{ color: categoryMeta.tint }}>
+                            <span className="font-semibold">
                               {ACTIVITY_CATEGORY_LABELS[activity.category]}
                             </span>
                             {activity.time ? (
@@ -1028,7 +994,7 @@ function ActiveTripView({
                           <button
                             type="button"
                             onClick={() => onRemoveActivity(activity.id)}
-                            className="inline-flex min-h-touch items-center justify-center rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-2.5 text-[11.5px] font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--color-error)] hover:text-[var(--color-error)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                            className="inline-flex min-h-touch items-center justify-center rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-2.5 text-[11.5px] font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--home-negative)] hover:text-[var(--home-negative)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
                             aria-label={`Delete ${activity.title}`}
                           >
                             <Trash2 className="h-3.5 w-3.5" />
@@ -1105,7 +1071,7 @@ function ActiveTripView({
                       type="button"
                       onClick={() => onRemoveJournal(entry.id)}
                       aria-label={`Delete journal entry ${entry.title}`}
-                      className="inline-flex min-h-touch items-center justify-center rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-[12px] font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--color-error)] hover:text-[var(--color-error)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                      className="inline-flex min-h-touch items-center justify-center rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-[12px] font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--home-negative)] hover:text-[var(--home-negative)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
                     >
                       <Trash2 className="h-3.5 w-3.5" />
                     </button>
@@ -1170,7 +1136,7 @@ function ActiveTripView({
                     onRemoveTrip(other.id);
                   }}
                   aria-label={`Delete trip ${other.name}`}
-                  className="inline-flex min-h-touch items-center justify-center rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-[12px] font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--color-error)] hover:text-[var(--color-error)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                  className="inline-flex min-h-touch items-center justify-center rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-[12px] font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--home-negative)] hover:text-[var(--home-negative)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
                 >
                   <Trash2 className="h-3.5 w-3.5" />
                 </button>
@@ -1179,6 +1145,123 @@ function ActiveTripView({
           })}
         </ul>
       </section>
+    </div>
+  );
+}
+
+interface TripDetailsFieldsProps {
+  trip: Trip;
+  onUpdateField: ActiveTripViewProps["onUpdateField"];
+}
+
+function tripFieldDraft(trip: Trip) {
+  return {
+    name: trip.name,
+    destination: trip.destination,
+    startDate: trip.startDate,
+    endDate: trip.endDate,
+    budget: String(trip.budget),
+    notes: trip.notes,
+  };
+}
+
+function TripDetailsFields({ trip, onUpdateField }: TripDetailsFieldsProps) {
+  // Edits buffer locally and commit on blur (dates commit as soon as they are
+  // valid again), so the sanitize-on-parse store never sees partial input:
+  // typing spaces or clearing a date can't mangle or delete the stored trip.
+  const [draft, setDraft] = useState(() => tripFieldDraft(trip));
+  const [lastTripId, setLastTripId] = useState(trip.id);
+  if (lastTripId !== trip.id) {
+    setLastTripId(trip.id);
+    setDraft(tripFieldDraft(trip));
+  }
+
+  function setDraftField(field: keyof ReturnType<typeof tripFieldDraft>, value: string) {
+    setDraft((current) => ({ ...current, [field]: value }));
+  }
+
+  function handleDateChange(field: "startDate" | "endDate", value: string) {
+    setDraft((current) => {
+      const next = { ...current, [field]: value };
+      if (field === "startDate" && isIsoDate(value) && next.endDate < value) {
+        next.endDate = value;
+      }
+      return next;
+    });
+    if (isIsoDate(value)) onUpdateField({ [field]: value });
+  }
+
+  function handleDateBlur(field: "startDate" | "endDate") {
+    setDraft((current) =>
+      isIsoDate(current[field]) ? current : { ...current, [field]: trip[field] }
+    );
+  }
+
+  return (
+    <div className="mt-4 grid gap-3 sm:grid-cols-2">
+      <label className="block">
+        <span className={fieldLabel}>Trip name</span>
+        <input
+          type="text"
+          value={draft.name}
+          onChange={(event) => setDraftField("name", event.target.value)}
+          onBlur={() => onUpdateField({ name: draft.name })}
+          className={fieldInput}
+        />
+      </label>
+      <label className="block">
+        <span className={fieldLabel}>Destination</span>
+        <input
+          type="text"
+          value={draft.destination}
+          onChange={(event) => setDraftField("destination", event.target.value)}
+          onBlur={() => onUpdateField({ destination: draft.destination })}
+          className={fieldInput}
+        />
+      </label>
+      <label className="block">
+        <span className={fieldLabel}>Start date</span>
+        <input
+          type="date"
+          value={draft.startDate}
+          onChange={(event) => handleDateChange("startDate", event.target.value)}
+          onBlur={() => handleDateBlur("startDate")}
+          className={fieldInput}
+        />
+      </label>
+      <label className="block">
+        <span className={fieldLabel}>End date</span>
+        <input
+          type="date"
+          value={draft.endDate}
+          min={draft.startDate}
+          onChange={(event) => handleDateChange("endDate", event.target.value)}
+          onBlur={() => handleDateBlur("endDate")}
+          className={fieldInput}
+        />
+      </label>
+      <label className="block">
+        <span className={fieldLabel}>Budget (USD)</span>
+        <input
+          type="number"
+          min="0"
+          step="50"
+          value={draft.budget}
+          onChange={(event) => setDraftField("budget", event.target.value)}
+          onBlur={() => onUpdateField({ budget: Number(draft.budget) || 0 })}
+          className={`${fieldInput} [font-variant-numeric:tabular-nums]`}
+        />
+      </label>
+      <label className="block sm:col-span-2">
+        <span className={fieldLabel}>Trip notes</span>
+        <textarea
+          value={draft.notes}
+          onChange={(event) => setDraftField("notes", event.target.value)}
+          onBlur={() => onUpdateField({ notes: draft.notes })}
+          placeholder="Hotels, packing list, must-see places…"
+          className={textareaInput}
+        />
+      </label>
     </div>
   );
 }
