@@ -276,7 +276,7 @@ export function TravelPlannerClient() {
             </div>
           </aside>
 
-          <main className="tool-main">
+          <div className="tool-main">
             <div className="tool-topbar">
               <div className="min-w-0">
                 <p className="tool-crumbs">
@@ -424,7 +424,7 @@ export function TravelPlannerClient() {
             ) : (
               <EmptyState onStart={() => setShowTripForm(true)} />
             )}
-          </main>
+          </div>
 
           <aside className="tool-rail" aria-label="Quick actions">
             <section aria-labelledby="rail-add-activity">
