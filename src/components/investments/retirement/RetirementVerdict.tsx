@@ -20,6 +20,9 @@ export function RetirementVerdict({ result }: Props) {
   const successPct = Math.round(monteCarlo.successRate * 100);
   const copy = VERDICT_COPY[verdict];
   const meetsThreshold = monteCarlo.successRate >= input.assumptions.successThreshold;
+  // Fixed-percent never runs the balance to zero; its "shortfall" is the year
+  // the draw stops funding the target lifestyle, so the labels read differently.
+  const isFixedPercent = input.assumptions.withdrawalStrategy === "fixed-percent";
 
   const projected = monteCarlo.balanceAtRetirement.p50;
   const surplus = projected - targetNestEgg;
@@ -85,19 +88,26 @@ export function RetirementVerdict({ result }: Props) {
           <span className="invest-retire-stat-meta">vs. target at retirement</span>
         </div>
         <div>
-          <dt>If money runs out</dt>
-          <dd>{depletion ? `age ${depletion}` : "lasts"}</dd>
+          <dt>{isFixedPercent ? "If spending dips" : "If money runs out"}</dt>
+          <dd>{depletion ? `age ${depletion}` : isFixedPercent ? "holds" : "lasts"}</dd>
           <span className="invest-retire-stat-meta">
-            {depletion ? "median of shortfall paths" : `funded to ${input.horizonAge}`}
+            {depletion
+              ? "median of shortfall paths"
+              : isFixedPercent
+                ? `on target to ${input.horizonAge}`
+                : `funded to ${input.horizonAge}`}
           </span>
         </div>
       </dl>
 
       {deterministic.depletionAge ? (
         <p className="invest-retire-verdict-note">
-          On a single average-return path the portfolio is exhausted around age{" "}
-          {deterministic.depletionAge}. Monte Carlo (above) is the more honest read — a range, not a
-          point estimate.
+          On a single average-return path{" "}
+          {isFixedPercent
+            ? "spending falls below your target"
+            : "the portfolio is exhausted"}{" "}
+          around age {deterministic.depletionAge}. Monte Carlo (above) is the more honest read — a
+          range, not a point estimate.
         </p>
       ) : null}
     </section>
