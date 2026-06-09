@@ -144,7 +144,7 @@ export default function AdminPage() {
               Signed in
             </h1>
             <p className="mt-2 text-sm" style={{ color: 'var(--home-ink-muted)' }}>
-              Welcome back. Data refreshes run from GitHub Actions on a schedule — trigger them manually below if needed.
+              Welcome back. Data refreshes run from GitHub Actions on a schedule. Trigger them manually below if needed.
             </p>
           </div>
           <ModernButton onClick={() => signOut({ callbackUrl: '/' })} variant="secondary" size="sm">

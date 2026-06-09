@@ -41,6 +41,7 @@ const STATIC_ROUTE_LASTMOD = {
   "/fintech-tools/budget-planner": "2026-04-03",
   "/fintech-tools/interchange-iq": "2026-04-02",
   "/food-map": "2026-04-28",
+  "/travel": "2026-05-04",
 };
 
 // Fantasy tier positions live behind /fantasy-football/tiers/[position].

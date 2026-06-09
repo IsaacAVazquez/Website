@@ -426,7 +426,7 @@ function DecisionLabWorkbench({
   ];
 
   const heroStyle: CSSProperties = {
-    background: `linear-gradient(140deg, ${tone.tint} 0%, color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix)) 70%)`,
+    background: `linear-gradient(140deg, ${tone.tint} 0%, var(--home-paper-raised) 70%)`,
     borderColor: tone.ring,
   };
 
@@ -479,7 +479,7 @@ function DecisionLabWorkbench({
                   className="inline-flex min-h-touch items-center gap-2 rounded-full border px-4 py-2 text-[12.5px] font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-55"
                   style={{
                     borderColor: "var(--home-rule)",
-                    background: "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))",
+                    background: "var(--home-paper-raised)",
                     color: "var(--home-ink)",
                   }}
                 >
@@ -653,7 +653,7 @@ function DecisionLabWorkbench({
                       style={{
                         gridTemplateColumns: "auto 1fr auto",
                         borderColor: "var(--home-rule)",
-                        background: "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))",
+                        background: "var(--home-paper-raised)",
                         color: "var(--home-ink)",
                       }}
                     >
@@ -705,7 +705,7 @@ function DecisionLabWorkbench({
                             : "var(--home-rule)",
                           background: isActive
                             ? "color-mix(in srgb, var(--home-haze) 14%, var(--home-paper))"
-                            : "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))",
+                            : "var(--home-paper-raised)",
                           color: "var(--home-ink)",
                         }}
                       >
@@ -753,7 +753,7 @@ function DecisionLabWorkbench({
                       ? "Link copied"
                       : copyStatus === "error"
                         ? "Copy failed"
-                        : "Copy to share — every slider change is encoded."}
+                        : "Copy to share. Every slider change is encoded."}
                   </p>
                 </div>
               </div>

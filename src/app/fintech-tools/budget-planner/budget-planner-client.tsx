@@ -486,7 +486,7 @@ export function BudgetPlannerClient() {
                             id={`category-${category.id}-error`}
                             className="text-2xs text-[var(--color-error)]"
                           >
-                            Name a category — empty fields fall back to "Untitled".
+                            Name a category. Empty fields fall back to "Untitled".
                           </span>
                         ) : null}
 
@@ -782,7 +782,7 @@ export function BudgetPlannerClient() {
 
             <p className="tool-rail-foot">
               <PiggyBank size={14} aria-hidden="true" />
-              Saved in your browser — no account, no server.
+              Saved in your browser. No account, no server.
             </p>
           </aside>
         </div>

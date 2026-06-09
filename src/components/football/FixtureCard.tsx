@@ -71,7 +71,7 @@ export function FixtureCard({
       <div className="flex flex-wrap items-start justify-between gap-3">
         {!compact && (
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
               {fixture.matchday ? `${periodLabel} ${fixture.matchday}` : fallbackLabel}
             </p>
             <p className="mt-1 flex items-center gap-2 text-sm text-[var(--home-ink-muted)]">
@@ -83,7 +83,7 @@ export function FixtureCard({
           </div>
         )}
         {compact && (
-          <p className="flex items-center gap-1.5 text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+          <p className="flex items-center gap-1.5 text-xs text-[var(--home-ink-soft)]">
             <Clock3 className="h-3 w-3" />
             {fixture.status === "FINISHED" ? "Final" : formatFixtureDateTime(fixture.utcDate)}
           </p>

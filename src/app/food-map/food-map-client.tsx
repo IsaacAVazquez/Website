@@ -115,7 +115,7 @@ function NeighborhoodChips({
                 : "var(--home-rule)",
               background: isActive
                 ? `color-mix(in srgb, ${neighborhood.accent} 18%, var(--home-paper))`
-                : "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))",
+                : "var(--home-paper-raised)",
               color: "var(--home-ink)",
             }}
           >
@@ -157,7 +157,7 @@ function CuisineChips({
                 : "var(--home-rule)",
               background: isActive
                 ? "color-mix(in srgb, var(--home-haze) 14%, var(--home-paper))"
-                : "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))",
+                : "var(--home-paper-raised)",
               color: "var(--home-ink)",
             }}
           >
@@ -406,7 +406,7 @@ function PlaceCard({
           className="resume-chip"
           style={{
             borderColor: "var(--home-rule)",
-            background: "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))",
+            background: "var(--home-paper-raised)",
           }}
         >
           {place.price}
@@ -541,7 +541,7 @@ function ShortlistsRail({
                       style={{
                         border: "1px solid var(--home-rule)",
                         background:
-                          "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))",
+                          "var(--home-paper-raised)",
                       }}
                       aria-label={`Pick ${place.name}`}
                     >

@@ -550,7 +550,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     slug: "frontier-model-tracker",
     title: "Frontier Model Tracker",
     description:
-      "Curated dashboard of leading large language models with context windows, pricing, modality coverage, and editorial notes — built to make AI tier-collapse readable in seconds.",
+      "Curated dashboard of leading large language models with context windows, pricing, modality coverage, and editorial notes, built to make AI tier-collapse readable in seconds.",
     role: "Product Designer & Developer",
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "D3.js", "Tailwind CSS"],
@@ -808,6 +808,39 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     retrospective: "",
   },
 
+  "bay-area-transit-pulse": {
+    slug: "bay-area-transit-pulse",
+    title: "Bay Area Transit Pulse",
+    description:
+      "Snapshot-backed BART dashboard for the Bay Area with the line map, per-station departure boards, and active service alerts on one deep-linkable screen.",
+    role: "Full-Stack Developer & Designer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "BART API", "Snapshot pipeline"],
+    metrics: "Line directory · Per-station departures · Service alerts",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/bay-area-transit",
+    featured: false,
+
+    overview: {
+      summary:
+        "I built a BART dashboard that turns a checked-in snapshot of the BART public API into one calm surface for the line map, the next trains at any station, and live service alerts.",
+      impact:
+        "Puts the line map, station departures, and service alerts on a single screen instead of three separate apps.",
+    },
+    problem: {
+      context:
+        "Checking whether a train is coming usually means bouncing between a route map, a station page, and a separate alerts feed, and none of them share a view.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
+
   "mlb-pulse": {
     slug: "mlb-pulse",
     title: "MLB Pulse",
@@ -977,7 +1010,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     slug: "wine-cellar",
     title: "Wine Cellar",
     description:
-      "Personal wine reviewing app for logging tastings, rating bottles, and tracking the wines you've poured — saved locally in your browser.",
+      "Personal wine reviewing app for logging tastings, rating bottles, and tracking the wines you've poured. Saved locally in your browser.",
     role: "Product Builder & Designer",
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "Local persistence", "Editorial UX"],
@@ -1038,6 +1071,39 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     tradeoffs: [],
     retrospective: "",
   },
+
+  "travel-planner": {
+    slug: "travel-planner",
+    title: "Travel Planner",
+    description:
+      "Browser-persisted trip planner that turns dates into a day-by-day itinerary you can check off and journal against, with no account required.",
+    role: "Product Builder & Designer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "Local persistence", "Itinerary UX"],
+    metrics: "Day-by-day itinerary · Stop check-off · Per-trip journal",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/travel",
+    featured: true,
+
+    overview: {
+      summary:
+        "I built a travel planner that lays a trip's dates out as a day-by-day itinerary, lets you check off stops, and keeps a journal entry per day.",
+      impact:
+        "Keeps trip planning, the live itinerary, and the trip diary on one surface instead of scattered across notes apps.",
+    },
+    problem: {
+      context:
+        "Trip planning usually splits across a notes app, a calendar, and a separate journal, so nothing stays in sync once the trip starts.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
 };
 
 const HOMEPAGE_FEATURED_SLUGS = [
@@ -1060,10 +1126,12 @@ const PORTFOLIO_PROJECT_ORDER = [
   "museum-log",
   "wine-cellar",
   "recipe-finder",
+  "travel-planner",
   "budget-planner",
   "mba-role-tracker",
   "polling-aggregator",
   "spacex-mission-control",
+  "bay-area-transit-pulse",
   "premier-league-pulse",
   "la-liga-pulse",
   "world-cup-pulse",

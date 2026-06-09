@@ -86,7 +86,10 @@ async function loadFantasySnapshot(scoring: FantasyRouteScoring): Promise<Fantas
   const cacheKey = getFantasySnapshotCacheKey(scoring);
   const cachedSnapshot = snapshotCache.get(cacheKey);
   if (cachedSnapshot) {
-    return cacheNormalizedFantasySnapshot(scoring, cachedSnapshot);
+    // The cache only ever holds normalized snapshots (the sole writer is
+    // cacheNormalizedFantasySnapshot), so return the hit directly instead of
+    // re-normalizing it on every read.
+    return cachedSnapshot;
   }
 
   const inflightRequest = inflightSnapshotRequests.get(cacheKey);
@@ -124,8 +127,7 @@ export function useFantasySnapshot({
 }: UseFantasySnapshotOptions): UseFantasySnapshotResult {
   const cacheKey = getFantasySnapshotCacheKey(scoring);
   const [snapshot, setSnapshot] = useState<FantasySnapshot | null>(() => {
-    const cachedSnapshot = snapshotCache.get(cacheKey);
-    return cachedSnapshot ? cacheNormalizedFantasySnapshot(scoring, cachedSnapshot) : null;
+    return snapshotCache.get(cacheKey) ?? null;
   });
   const [isLoading, setIsLoading] = useState(snapshotCache.get(cacheKey) === undefined);
   const [error, setError] = useState<string | null>(null);
@@ -136,7 +138,7 @@ export function useFantasySnapshot({
     async function loadSnapshot() {
       const cachedSnapshot = snapshotCache.get(cacheKey);
       if (cachedSnapshot) {
-        setSnapshot(cacheNormalizedFantasySnapshot(scoring, cachedSnapshot));
+        setSnapshot(cachedSnapshot);
         setIsLoading(false);
         setError(null);
         return;

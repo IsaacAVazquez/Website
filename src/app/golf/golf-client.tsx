@@ -465,8 +465,16 @@ function MobileLeaderboardCards({
                 detail={row.status}
                 valueColor={getScoreToParColor(row.today)}
               />
-              <StatBlock label="R1" value={`${row.roundScores[0]}`} detail="Opening round" />
-              <StatBlock label="R2" value={`${row.roundScores[1]}`} detail="Second round" />
+              <StatBlock
+                label="R1"
+                value={row.roundScores[0] != null ? String(row.roundScores[0]) : "—"}
+                detail="Opening round"
+              />
+              <StatBlock
+                label="R2"
+                value={row.roundScores[1] != null ? String(row.roundScores[1]) : "—"}
+                detail="Second round"
+              />
               <StatBlock label="Thru" value={row.thru} detail="Tournament status" />
             </div>
           </button>
@@ -1101,7 +1109,7 @@ export function GolfClient({
                               className="rounded-[18px] border px-4 py-3"
                               style={{
                                 borderColor: "var(--home-rule)",
-                                background: "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))",
+                                background: "var(--home-paper-raised)",
                               }}
                             >
                               <div className="flex items-center justify-between gap-3">

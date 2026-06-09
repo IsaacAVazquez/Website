@@ -3,8 +3,10 @@ import type { ReactNode } from "react";
 /**
  * Unified stat card used by both the Premier League and La Liga dashboards.
  *
- * - variant="compact"  → PL style: rounded-2xl, surface-elevated, metric at text-lg
- * - variant="full"     → La Liga style: rounded-3xl, surface-secondary, title + metric at text-3xl
+ * Both variants share the canonical card radius (var(--radius-2xl)) and the
+ * theme-aware --shadow-sm token; they differ in surface, density, and scale:
+ * - variant="compact"  → PL style: raised surface, metric at text-lg
+ * - variant="full"     → La Liga style: paper-alt surface, title + metric at text-3xl
  */
 export function StatCard({
   eyebrow,
@@ -23,9 +25,9 @@ export function StatCard({
 }) {
   if (variant === "compact") {
     return (
-      <div className="rounded-[1.6rem] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] px-4 py-4 shadow-[var(--shadow-sm)]">
+      <div className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-4 py-4 shadow-[var(--shadow-sm)]">
         <div className="flex items-center justify-between gap-3">
-          <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+          <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
             {eyebrow}
           </p>
           <span className="text-[var(--home-haze)]">{icon}</span>
@@ -37,12 +39,12 @@ export function StatCard({
   }
 
   return (
-    <div className="rounded-[1.6rem] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-5 shadow-[var(--shadow-sm)]">
+    <div className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-5 shadow-[var(--shadow-sm)]">
       <div className="flex items-center justify-between gap-3">
-        <span className="text-xs font-semibold uppercase tracking-[0.14em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+        <span className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
           {eyebrow}
         </span>
-        <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[var(--home-paper)] text-[var(--home-haze)] shadow-sm">
+        <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[var(--home-paper)] text-[var(--home-haze)] shadow-[var(--shadow-sm)]">
           {icon}
         </span>
       </div>

@@ -21,7 +21,6 @@ export type FantasyRouteScoring = (typeof FANTASY_ROUTE_SCORING)[number];
 export type FantasySnapshotPosition = Extract<Position, "QB" | "RB" | "WR" | "TE" | "K" | "DST" | "FLEX">;
 export type FantasySnapshotSliceSourceKind =
   | "overall_consensus"
-  | "derived_overall"
   | "position_consensus"
   | "shared_position_consensus"
   | "derived_flex"

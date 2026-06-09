@@ -35,7 +35,7 @@ export const metadata = constructMetadata({
     context:
       "Museum Log is a Letterboxd-style museum tracker by Isaac Vazquez. Users browse a curated museum catalog, read curator reviews, save museums to a watchlist, log visits, and rate exhibits. Personal state is stored locally in the browser.",
     summary:
-      "A Letterboxd for museums — browse, review, list, and log museum visits with deep-linked views.",
+      "A Letterboxd for museums. Browse, review, list, and log museum visits with deep-linked views.",
     primaryFocus:
       "Curated museum catalog, curator reviews, themed lists, and a personal visit log + watchlist.",
   },
@@ -73,7 +73,7 @@ export default async function MuseumLogPage({ searchParams }: MuseumLogPageProps
         data={{
           name: "Museum Log",
           description:
-            "A Letterboxd-style museum tracker — curated catalog, curator reviews, themed lists, and a personal visit log + watchlist.",
+            "A Letterboxd-style museum tracker with a curated catalog, curator reviews, themed lists, and a personal visit log and watchlist.",
           url: "https://isaacavazquez.com/museum-log",
           applicationCategory: "LifestyleApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
