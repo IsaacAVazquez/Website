@@ -773,7 +773,7 @@ function ThirdPlaceRace({
         <>
           <table className="mt-4 w-full border-separate border-spacing-y-1.5 text-sm">
             <thead>
-              <tr className="text-left text-[11px] uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+              <tr className="text-left text-2xs uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
                 <th className="px-2 py-1 font-semibold">#</th>
                 <th className="px-2 py-1 font-semibold">Team</th>
                 <th className="px-2 py-1 text-center font-semibold">Grp</th>
