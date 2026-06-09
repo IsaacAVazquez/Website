@@ -391,7 +391,7 @@ export function GitHubTrendingClient({
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
-            <span className="inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
+            <span className="inline-flex items-center gap-1 text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
               <ArrowDownUp aria-hidden="true" size={14} />
               Sort
             </span>
@@ -501,22 +501,22 @@ function RepositoryTable({
           </caption>
           <thead>
             <tr className="border-b border-[var(--home-rule)] bg-[var(--home-paper-alt)]">
-              <th scope="col" className="px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
+              <th scope="col" className="px-4 py-3 text-left text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
                 Repository
               </th>
-              <th scope="col" className="px-4 py-3 text-right text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
+              <th scope="col" className="px-4 py-3 text-right text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
                 +7d
               </th>
-              <th scope="col" className="px-4 py-3 text-right text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
+              <th scope="col" className="px-4 py-3 text-right text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
                 Stars
               </th>
-              <th scope="col" className="px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
+              <th scope="col" className="px-4 py-3 text-left text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
                 Language
               </th>
-              <th scope="col" className="px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
+              <th scope="col" className="px-4 py-3 text-left text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
                 Pushed
               </th>
-              <th scope="col" className="px-4 py-3 text-right text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
+              <th scope="col" className="px-4 py-3 text-right text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
                 Link
               </th>
             </tr>
@@ -654,7 +654,7 @@ function RepoRow({
               </div>
               <dl className="grid grid-cols-2 gap-x-5 gap-y-3 text-sm">
                 <div>
-                  <dt className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                  <dt className="text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                     Forks
                   </dt>
                   <dd className="m-0 mt-1 inline-flex items-center gap-1 font-mono text-[var(--home-ink)]">
@@ -663,7 +663,7 @@ function RepoRow({
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                  <dt className="text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                     Issues
                   </dt>
                   <dd className="m-0 mt-1 font-mono text-[var(--home-ink)]">
@@ -671,7 +671,7 @@ function RepoRow({
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                  <dt className="text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                     License
                   </dt>
                   <dd className="m-0 mt-1 font-mono text-[var(--home-ink)]">
@@ -679,7 +679,7 @@ function RepoRow({
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                  <dt className="text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                     Score
                   </dt>
                   <dd className="m-0 mt-1 font-mono text-[var(--home-ink)]">

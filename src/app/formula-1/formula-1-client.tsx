@@ -214,6 +214,7 @@ function CountryFlag({
       src={flagUrl}
       alt={`${countryName} flag`}
       loading="lazy"
+      decoding="async"
       className="h-4 w-7 flex-shrink-0 rounded-[3px] border border-[var(--home-rule)] object-cover"
     />
   );
@@ -231,7 +232,7 @@ function DriverHeadshot({
   if (!url) {
     return (
       <div
-        className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border bg-[var(--home-paper-alt)] text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--home-ink-muted)]"
+        className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border bg-[var(--home-paper-alt)] text-3xs font-semibold uppercase tracking-[0.08em] text-[var(--home-ink-muted)]"
         style={{ borderColor: teamColor ?? "var(--home-rule)" }}
         aria-hidden="true"
       >
@@ -250,6 +251,7 @@ function DriverHeadshot({
       src={url}
       alt={name}
       loading="lazy"
+      decoding="async"
       className="h-9 w-9 flex-shrink-0 rounded-full border bg-[var(--home-paper-alt)] object-cover object-top"
       style={{ borderColor: teamColor ?? "var(--home-rule)" }}
     />
@@ -541,6 +543,7 @@ function MeetingDetailPanel({
               src={meeting.circuitImage}
               alt={`${meeting.circuitShortName} circuit map`}
               loading="lazy"
+              decoding="async"
               className="hidden h-20 w-24 flex-shrink-0 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] object-contain p-2 sm:block"
             />
           ) : null}

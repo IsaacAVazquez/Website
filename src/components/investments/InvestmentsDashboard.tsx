@@ -266,7 +266,7 @@ export function InvestmentsDashboard({
                 No positions yet
               </p>
               <p className="mx-auto max-w-xs text-sm text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
-                Add your first stock using the form on the right. Holdings are saved in your browser and persist across visits.
+                Add your first stock with the Add a holding form. Holdings are saved in your browser and persist across visits.
               </p>
             </div>
           )}
@@ -334,7 +334,7 @@ export function InvestmentsDashboard({
 
         <p className="mt-auto flex items-center gap-2 text-[11.5px] text-[var(--home-ink-muted)]">
           <IconHelp size={14} aria-hidden="true" />
-          Holdings live only in your browser — no logins, no cloud sync.
+          Holdings live only in your browser. No logins, no cloud sync.
         </p>
       </aside>
     </div>

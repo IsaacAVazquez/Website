@@ -244,7 +244,7 @@ Inside tool mode, an empty state is one card, not a marketing landing page.
 
 ## Footer / page CTA
 
-Tool pages still get the project's standard footer (the "Thanks for taking a look" CTA + site footer). That sits **outside** the shell, in `tool-page-stack` as the last sibling. It is editorial, not tool — that's intentional. Once the user finishes interacting with the tool, the footer pivots back to the portfolio frame.
+Tool pages still get the project's standard footer (the shared contact CTA + site footer). That sits **outside** the shell, in `tool-page-stack` as the last sibling. It is editorial, not tool — that's intentional. Once the user finishes interacting with the tool, the footer pivots back to the portfolio frame.
 
 ---
 
@@ -256,7 +256,7 @@ Tool pages still get the project's standard footer (the "Thanks for taking a loo
 4. Main: topbar (crumbs + small H1 + optional search/refresh) → freshness/meta chip → hero card → stats grid card → list/table card.
 5. Rail: primary "create/add" form → secondary breakdown/chart → recent activity → pinned help.
 6. Below the shell, only break out a separate band if there's a deep-dive view that needs full width.
-7. Keep the editorial site footer and "Thanks for taking a look" CTA at the bottom of `tool-page-stack` (outside the shell).
+7. Keep the editorial site footer and shared contact CTA at the bottom of `tool-page-stack` (outside the shell).
 
 The visible difference vs. the old layout: roughly **30-40% less vertical real estate** for the same content, and a clear sense that the user is operating a product rather than scrolling through a marketing page.
 

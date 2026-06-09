@@ -242,7 +242,7 @@ export function ResearchAssetHeader({
     },
     {
       label: "ROIC",
-      hint: "Return on invested capital — how efficiently the business converts capital to profit.",
+      hint: "Return on invested capital. How efficiently the business converts capital to profit.",
       value: formatPercent1(profitability?.roic),
       tone:
         profitability?.roic === undefined

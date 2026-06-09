@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
+/*
+ * Register micro-type sizes as first-class utilities. Tailwind v4 only emits a
+ * `text-*` utility for sizes declared in `@theme`, so these belong here (not in
+ * the `:root` block or tailwind.config.ts, neither of which registers utilities
+ * under this setup). Fixed rem values: these labels are intentionally small and
+ * should not scale. `text-3xs` = 10px, `text-2xs` = 11px.
+ */
+@theme {
+  --text-3xs: 0.625rem;
+  --text-2xs: 0.6875rem;
+}
+
 @layer base, components, utilities;
 
 @layer base {
@@ -613,7 +625,7 @@
   }
 
   .section-kicker {
-    @apply inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em];
+    @apply inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-2xs font-semibold uppercase tracking-[0.16em];
     color: var(--color-primary);
     border-color: color-mix(in srgb, var(--color-primary) 25%, var(--border-primary));
     background: color-mix(in srgb, var(--color-primary) 8%, var(--surface-secondary));
@@ -2414,26 +2426,23 @@ img {
 }
 @media (max-width: 1280px) {
   .invest-shell { grid-template-columns: 200px minmax(0, 1fr); }
-  /* Reflow the rail (add holding, allocation, movers) into a full-width row
-     beneath the sidebar + main rather than hiding it — otherwise there is no
-     way to add a holding or see allocation on tablet/phone. */
+  /* The rail holds the "Add a holding" form, allocation chart, and movers.
+     Don't hide it on narrower screens — reflow it into a full-width band below
+     the main column, otherwise there is no way to add a holding on tablet or
+     mobile and the empty-state instructions point at nothing. */
   .invest-rail {
     grid-column: 1 / -1;
-    border-left: none;
+    border-left: 0;
     border-top: 1px solid var(--home-rule);
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 22px 26px;
+    align-items: start;
   }
-  .invest-rail > section { flex: 1 1 240px; min-width: 0; }
-  .invest-rail > p { flex-basis: 100%; }
 }
 @media (max-width: 900px) {
   .invest-shell { grid-template-columns: 1fr; border-radius: 20px; }
   .invest-sidebar { display: none !important; }
-  /* Single column on phones — stack the rail sections vertically again. */
-  .invest-rail { flex-direction: column; }
-  .invest-rail > section { flex: 1 1 auto; }
 }
 
 /* Drop sparkline column on narrower main columns to keep the P/L + actions columns visible */
@@ -4325,5 +4334,11 @@ input[type="range"]:focus-visible::-moz-range-thumb {
 @media (prefers-reduced-motion: reduce) {
   .invest-retire-lever-skeleton {
     animation: none;
+  }
+  /* Stop the looping skeleton/spinner animations across the investments
+     surface for motion-sensitive users (the static state stays legible). */
+  .invest-page-stack .animate-pulse,
+  .invest-page-stack .animate-spin {
+    animation: none !important;
   }
 }

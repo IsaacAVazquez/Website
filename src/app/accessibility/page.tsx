@@ -71,7 +71,7 @@ const assessmentApproach = [
 
 const knownLimitations = [
   "Broader screen reader testing with multiple assistive technologies",
-  "AAA contrast (7:1) for every text element — primary and secondary meet AAA today, tertiary meets AA",
+  "AAA contrast (7:1) for every text element. Primary and secondary meet AAA today, tertiary meets AA",
   "More public-facing keyboard shortcut documentation",
 ];
 
