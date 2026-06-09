@@ -78,13 +78,23 @@ export function InvestmentsDashboard({
   const filterInputRef = useRef<HTMLInputElement | null>(null);
 
   // ⌘K / Ctrl+K focuses the holdings filter (matching the keyboard hint).
+  // Leave the shortcut alone while the user is typing somewhere else — other
+  // inputs keep their own behavior and the browser keeps its default.
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
-        e.preventDefault();
-        filterInputRef.current?.focus();
-        filterInputRef.current?.select();
-      }
+      if (!(e.metaKey || e.ctrlKey) || e.key.toLowerCase() !== "k") return;
+      const target = e.target as HTMLElement | null;
+      const isEditable =
+        !!target &&
+        (target.isContentEditable ||
+          target.tagName === "INPUT" ||
+          target.tagName === "TEXTAREA" ||
+          target.tagName === "SELECT") &&
+        target !== filterInputRef.current;
+      if (isEditable) return;
+      e.preventDefault();
+      filterInputRef.current?.focus();
+      filterInputRef.current?.select();
     }
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);

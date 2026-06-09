@@ -75,9 +75,15 @@ export function simulatePath(
   let depletionAge: number | null = null;
   let balanceAtRetirementNominal = totalBalance(balances);
 
-  // Guardrails carries spend forward year to year; initialized at retirement.
+  // Guardrails carries spend forward year to year; initialized on the first
+  // decumulation year (which is the retirement year unless the stored plan
+  // already has currentAge past retirementAge).
   let guardrailSpend = 0;
   let guardrailInitialRate = 0;
+  let guardrailInitialized = false;
+  // The guardrails inflation rule reacts to the return the retiree has already
+  // experienced, so it keys off the prior year's return.
+  let previousReturn: number | null = null;
 
   for (let t = 0; t <= totalYears; t++) {
     const age = currentAge + t;
@@ -104,6 +110,22 @@ export function simulatePath(
         balances[account.type] += annual;
         contribution += annual;
       }
+      // One-time lumpy expenses can land before retirement too (tuition, a
+      // roof). They draw down the portfolio through the same tax-aware
+      // withdrawal as decumulation-era ones instead of being silently ignored.
+      let lumpy = 0;
+      for (const expense of input.lumpyExpenses) {
+        if (expense.age === age) lumpy += expense.amount * inflationFactor;
+      }
+      if (lumpy > 0) {
+        const result = withdrawForYear(balances, lumpy, age, assumptions.taxRates, rmdAge);
+        spending = lumpy;
+        withdrawal = result.gross;
+        taxes = result.taxes;
+        if (result.depleted && depletionAge === null) {
+          depletionAge = age;
+        }
+      }
     } else {
       // ── Decumulation ──────────────────────────────────────────────────────
       const real = otherIncomeRealAtAge(input.otherIncome, age);
@@ -121,14 +143,18 @@ export function simulatePath(
       if (strategy === "fixed-percent") {
         baseSpend = swr * startBalance;
       } else if (strategy === "guardrails") {
-        if (age === retirementAge) {
+        if (!guardrailInitialized) {
+          guardrailInitialized = true;
           guardrailSpend = input.desiredAnnualSpend * inflationFactor;
           guardrailInitialRate = startBalance > 0 ? guardrailSpend / startBalance : 0;
         } else {
-          // Inflation rule: skip the raise after a down year if we're overspending.
+          // Inflation rule: skip the raise after a down year if we're
+          // overspending. Keyed off last year's (already experienced) return —
+          // this year's hasn't happened when the withdrawal is taken.
           const currentRate = startBalance > 0 ? guardrailSpend / startBalance : Infinity;
           const overspending = currentRate > guardrailInitialRate;
-          if (!(r < 0 && overspending)) {
+          const afterDownYear = previousReturn !== null && previousReturn < 0;
+          if (!(afterDownYear && overspending)) {
             guardrailSpend *= 1 + infl;
           }
           // Capital-preservation and prosperity guardrails (±20% band, ±10% step).
@@ -164,11 +190,13 @@ export function simulatePath(
         depletionAge = age;
       }
       // Fixed-percent never depletes the balance, so depletion can't measure
-      // success. Flag the first year the real portfolio draw can no longer fund
-      // the desired lifestyle as the funding-shortfall point instead.
+      // success. Flag the first year total real income — the portfolio draw
+      // plus Social Security, pension, and part-time income — can no longer
+      // fund the desired lifestyle as the funding-shortfall point instead.
       if (strategy === "fixed-percent" && depletionAge === null) {
         const realDraw = (swr * startBalance) / inflationFactor;
-        if (realDraw < FIXED_PERCENT_SPEND_FLOOR * input.desiredAnnualSpend) {
+        const realOtherIncome = otherIncome / inflationFactor;
+        if (realDraw + realOtherIncome < FIXED_PERCENT_SPEND_FLOOR * input.desiredAnnualSpend) {
           depletionAge = age;
         }
       }
@@ -178,6 +206,7 @@ export function simulatePath(
     for (const key of ["taxable", "traditional", "roth", "hsa"] as const) {
       balances[key] = Math.max(0, balances[key] * (1 + r));
     }
+    previousReturn = r;
 
     const endBalance = totalBalance(balances);
     if (realOut) {

@@ -49,7 +49,7 @@ function loadPlan(): RetirementPlanInput | null {
     if (!parsed || parsed.version !== STORAGE_VERSION || !parsed.plan) return null;
     // Merge over defaults so newly-added fields are always present.
     const base = createDefaultPlan();
-    return {
+    const merged = {
       ...base,
       ...parsed.plan,
       otherIncome: { ...base.otherIncome, ...parsed.plan.otherIncome },
@@ -60,6 +60,11 @@ function loadPlan(): RetirementPlanInput | null {
         taxRates: { ...base.assumptions.taxRates, ...parsed.plan.assumptions?.taxRates },
       },
     };
+    // The inputs clamp these relationships at edit time, but a stored plan can
+    // still violate them (e.g. current age raised past a saved retirement age).
+    merged.retirementAge = Math.max(merged.retirementAge, merged.currentAge + 1);
+    merged.horizonAge = Math.max(merged.horizonAge, merged.retirementAge + 1);
+    return merged;
   } catch {
     return null;
   }
@@ -92,6 +97,8 @@ export interface UseRetirementPlanReturn {
   ready: boolean;
   /** True while the (debounced) projection catches up to the latest inputs. */
   isComputing: boolean;
+  /** True when the engine failed on the current inputs (not just still computing). */
+  hasError: boolean;
   updatePlan: (updates: Partial<RetirementPlanInput>) => void;
   updateAssumptions: (updates: Partial<RetirementAssumptions>) => void;
   updateAllocation: (updates: Partial<AllocationInput>) => void;
@@ -134,13 +141,15 @@ export function useRetirementPlan(seed?: RetirementSeed): UseRetirementPlanRetur
     return () => clearTimeout(handle);
   }, [plan, ready]);
 
-  // Fast path — verdict, chart, and assumptions paint immediately.
-  const core = useMemo(() => {
-    if (!ready) return null;
+  // Fast path — verdict, chart, and assumptions paint immediately. An engine
+  // failure must be distinguishable from "still computing", or the UI shows a
+  // permanent loading state.
+  const { core, hasError } = useMemo(() => {
+    if (!ready) return { core: null, hasError: false };
     try {
-      return projectCore(debouncedPlan);
+      return { core: projectCore(debouncedPlan, new Date().getFullYear()), hasError: false };
     } catch {
-      return null;
+      return { core: null, hasError: true };
     }
   }, [debouncedPlan, ready]);
 
@@ -156,7 +165,10 @@ export function useRetirementPlan(seed?: RetirementSeed): UseRetirementPlanRetur
     if (!core) return;
     const handle = setTimeout(() => {
       try {
-        setLeverState({ plan: debouncedPlan, levers: computeLevers(debouncedPlan) });
+        setLeverState({
+          plan: debouncedPlan,
+          levers: computeLevers(debouncedPlan, new Date().getFullYear()),
+        });
       } catch {
         setLeverState({ plan: debouncedPlan, levers: [] });
       }
@@ -171,7 +183,7 @@ export function useRetirementPlan(seed?: RetirementSeed): UseRetirementPlanRetur
   }, [core, leverState, debouncedPlan]);
 
   const leversReady = leverState.plan === debouncedPlan;
-  const isComputing = ready && (debouncedPlan !== plan || !leversReady);
+  const isComputing = ready && !hasError && (debouncedPlan !== plan || !leversReady);
 
   // ─── Mutators ──────────────────────────────────────────────────────────────
 
@@ -261,6 +273,7 @@ export function useRetirementPlan(seed?: RetirementSeed): UseRetirementPlanRetur
     result,
     ready,
     isComputing,
+    hasError,
     updatePlan,
     updateAssumptions,
     updateAllocation,

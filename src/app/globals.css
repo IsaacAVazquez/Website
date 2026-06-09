@@ -2459,19 +2459,8 @@ img {
 }
 @media (max-width: 1280px) {
   .invest-shell { grid-template-columns: 200px minmax(0, 1fr); }
-  /* The rail holds the "Add a holding" form, allocation chart, and movers.
-     Don't hide it on narrower screens — reflow it into a full-width band below
-     the main column, otherwise there is no way to add a holding on tablet or
-     mobile and the empty-state instructions point at nothing. */
-  .invest-rail {
-    grid-column: 1 / -1;
-    border-left: 0;
-    border-top: 1px solid var(--home-rule);
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 22px 26px;
-    align-items: start;
-  }
+  /* The rail's full-width reflow lives next to the base .invest-rail rule
+     further down — it must come after it in source order to win the cascade. */
 }
 @media (max-width: 900px) {
   .invest-shell { grid-template-columns: 1fr; border-radius: 20px; }
@@ -3198,6 +3187,22 @@ img {
   background: color-mix(in srgb, var(--home-paper) 96%, var(--home-elev-mix));
   display: flex; flex-direction: column; gap: 16px;
   align-self: stretch;
+}
+@media (max-width: 1280px) {
+  /* The rail holds the "Add a holding" form, allocation chart, and movers.
+     Don't hide it on narrower screens — reflow it into a full-width band below
+     the main column, otherwise there is no way to add a holding on tablet or
+     mobile and the empty-state instructions point at nothing. (This block must
+     come after the base rule above; same specificity, later source wins.) */
+  .invest-rail {
+    grid-column: 1 / -1;
+    border-left: 0;
+    border-top: 1px solid var(--home-rule);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 22px 26px;
+    align-items: start;
+  }
 }
 .invest-rail-section-label {
   font-size: 10.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;

@@ -20,7 +20,7 @@ interface Props {
 export function RetirementPlanner({ portfolioValue, seedAllocation }: Props) {
   const seed: RetirementSeed = { portfolioValue, allocation: seedAllocation };
   const controller = useRetirementPlan(seed);
-  const { result, ready, isComputing } = controller;
+  const { result, ready, isComputing, hasError } = controller;
 
   return (
     <section
@@ -58,6 +58,11 @@ export function RetirementPlanner({ portfolioValue, seedAllocation }: Props) {
               <RetirementProjectionChart result={result} />
               <RetirementLevers result={result} />
             </>
+          ) : hasError ? (
+            <div className="invest-retire-loading" role="alert">
+              The projection couldn't run with these inputs. Adjust the plan
+              values, or use Reset to start over.
+            </div>
           ) : (
             <div className="invest-retire-loading" role="status">
               Crunching scenarios…

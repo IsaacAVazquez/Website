@@ -317,6 +317,54 @@ describe("fixed-percent funding shortfall", () => {
     const path = simulatePath(plan, new Array(years + 1).fill(0.08), REF_YEAR);
     expect(path.depletionAge).toBeNull();
   });
+
+  it("counts guaranteed income toward the lifestyle floor", () => {
+    // Same shrinking portfolio as the flagged case, but Social Security covers
+    // most of the lifestyle on its own — total income never drops below 80% of
+    // the desired spend, so no shortfall should be flagged.
+    const plan = planWith({
+      ...common,
+      otherIncome: {
+        ...base.otherIncome,
+        socialSecurityAnnual: 30000,
+        socialSecurityClaimAge: 65,
+        socialSecurityCola: true,
+      },
+      assumptions: fixedPercent,
+    });
+    const years = common.horizonAge - common.currentAge;
+    const path = simulatePath(plan, new Array(years + 1).fill(0), REF_YEAR);
+    expect(path.depletionAge).toBeNull();
+  });
+});
+
+describe("pre-retirement lumpy expenses", () => {
+  it("draws down the portfolio when an expense lands before retirement", () => {
+    const base = createDefaultPlan();
+    const common = {
+      currentAge: 50,
+      retirementAge: 60,
+      horizonAge: 70,
+      desiredAnnualSpend: 0,
+      preMedicareHealthcare: 0,
+      accounts: [
+        { id: "a", type: "taxable" as const, balance: 100_000, annualContribution: 0, employerMatch: 0 },
+      ],
+      otherIncome: { ...base.otherIncome, socialSecurityAnnual: 0 },
+      assumptions: { ...base.assumptions, inflation: 0, taxRates: noTaxRates() },
+    };
+    const years = common.horizonAge - common.currentAge;
+
+    const without = simulatePath(planWith(common), new Array(years + 1).fill(0), REF_YEAR);
+    const withExpense = simulatePath(
+      planWith({ ...common, lumpyExpenses: [{ id: "roof", label: "Roof", age: 55, amount: 40_000 }] }),
+      new Array(years + 1).fill(0),
+      REF_YEAR
+    );
+
+    expect(without.endingBalanceNominal).toBe(100_000);
+    expect(withExpense.endingBalanceNominal).toBe(60_000);
+  });
 });
 
 describe("deterministic projection shape", () => {
