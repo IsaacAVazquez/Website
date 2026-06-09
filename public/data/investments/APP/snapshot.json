@@ -1,10 +1,10 @@
 {
   "symbol": "APP",
-  "lastUpdated": "2026-06-05T00:00:31.538495+00:00",
+  "lastUpdated": "2026-06-09T00:00:39.728571+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-05T00:00:31.538495+00:00",
+    "snapshotBuiltAt": "2026-06-09T00:00:39.728571+00:00",
     "sections": {
-      "price": "2026-06-03"
+      "price": "2026-06-05"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.3361,
-      "ttmPe": 50.36,
-      "marketCap": 191764344785,
-      "psRatio": 31.11,
-      "pbRatio": 81.14,
-      "pegRatio": 0.72
+      "ttmPe": 49.15,
+      "marketCap": 187185489400,
+      "psRatio": 30.37,
+      "pbRatio": 79.2,
+      "pegRatio": 0.71
     },
     "profitability": {
       "roe": 53.6,
@@ -734,7 +734,7 @@
           "2025-12-31": "338159000.0",
           "2025-09-30": "338531000.0",
           "2025-06-30": "338617184.0",
-          "2025-03-31": "339837000.0",
+          "2025-03-31": "339837238.0",
           "2024-12-31": "339168374.0",
           "2024-09-30": "336931269.0",
           "2024-06-30": "335681788.0",
@@ -754,7 +754,7 @@
           "2025-12-31": "339898000.0",
           "2025-09-30": "340974000.0",
           "2025-06-30": "342194433.0",
-          "2025-03-31": "344878000.0",
+          "2025-03-31": "344877542.0",
           "2024-12-31": "346423848.0",
           "2024-09-30": "348225463.0",
           "2024-06-30": "347964201.0",
@@ -5518,22 +5518,6 @@
     },
     "price": [
       {
-        "date": "2025-06-03",
-        "open": 401.91,
-        "high": 408,
-        "low": 390.41,
-        "close": 398.51,
-        "volume": 4651300
-      },
-      {
-        "date": "2025-06-04",
-        "open": 398.39,
-        "high": 417.45,
-        "low": 398.21,
-        "close": 416.52,
-        "volume": 4804600
-      },
-      {
         "date": "2025-06-05",
         "open": 414.17,
         "high": 428.99,
@@ -7527,11 +7511,27 @@
       },
       {
         "date": "2026-06-03",
-        "open": 594.7966,
-        "high": 599.6418,
+        "open": 594.8,
+        "high": 599.642,
         "low": 565.04,
         "close": 570.83,
-        "volume": 3394670
+        "volume": 3456200
+      },
+      {
+        "date": "2026-06-04",
+        "open": 572.4,
+        "high": 587,
+        "low": 554.23,
+        "close": 558.87,
+        "volume": 4960400
+      },
+      {
+        "date": "2026-06-05",
+        "open": 577.915,
+        "high": 595,
+        "low": 548.78,
+        "close": 557.2,
+        "volume": 5543100
       }
     ],
     "officers": [
@@ -7570,7 +7570,7 @@
       },
       {
         "name": "Ms. Victoria Valenzuela",
-        "title": "Chief Administrative, Secretary & Legal Officer",
+        "title": "Chief Administrative, Secretary, Legal Officer & Director",
         "age": 51,
         "yearBorn": 1974,
         "totalPay": 457000
@@ -7579,18 +7579,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 50.36,
-        "industryAvg": 46.9
+        "value": 49.15,
+        "industryAvg": 46.03
       },
       {
         "metric": "P/S Ratio",
-        "value": 31.11,
-        "industryAvg": 5.09
+        "value": 30.37,
+        "industryAvg": 5
       },
       {
         "metric": "P/B Ratio",
-        "value": 81.14,
-        "industryAvg": 8.31
+        "value": 79.2,
+        "industryAvg": 8.18
       },
       {
         "metric": "ROE",
@@ -7610,7 +7610,7 @@
       {
         "metric": "EBITDA Margin",
         "value": 82.28999999999999,
-        "industryAvg": 16.81
+        "industryAvg": 16.8
       },
       {
         "metric": "Net Margin",

@@ -1,0 +1,60 @@
+---
+title: "Building a World Cup Dashboard for the First 48-Team Tournament"
+excerpt: "I built a 2026 World Cup hub because the expanded format scatters 104 matches across three countries. Here is what I chose to show, what I left out, and why it runs on a checked-in snapshot instead of a live feed."
+publishedAt: "2026-06-08"
+category: "Sports Analytics"
+tags: ["World Cup", "FIFA World Cup 2026", "Sports Analytics", "Next.js", "Sports Data", "Product Design", "Dashboard"]
+featured: false
+archiveBucket: "Sports & Fantasy"
+author: "Isaac Vazquez"
+cta:
+  eyebrow: "Related tool"
+  title: "Open World Cup Pulse"
+  description: "The live dashboard is the fastest way to see the group tables, the new 32-team bracket, and the full schedule in one place."
+  href: "/world-cup-2026"
+  actionLabel: "Open the dashboard"
+seo:
+  title: "Building a 2026 World Cup Dashboard for the 48-Team Format"
+  description: "How I built World Cup Pulse, a snapshot-driven 2026 FIFA World Cup dashboard with group tables, the new 32-team knockout bracket, and the full three-country schedule."
+  keywords: ["2026 World Cup dashboard", "World Cup tracker", "48 team World Cup format", "FIFA World Cup 2026 schedule", "World Cup group standings", "snapshot driven dashboard"]
+---
+
+# Building a World Cup Dashboard for the First 48-Team Tournament
+
+If you want to see the product before reading the breakdown, open [World Cup Pulse](/world-cup-2026).
+
+The 2026 World Cup is the biggest one ever held, and that is exactly what makes it hard to follow. There are 48 teams, 12 groups, and 104 matches spread across three countries and four time zones over 39 days. The old mental model, where you could glance at eight tidy groups and more or less hold the whole thing in your head, does not survive contact with this format. I wanted a single screen that made the tournament legible again, so I built one. The goal was not to recreate a broadcaster's second-screen experience. It was to answer the questions I actually ask during a World Cup, which are who is going through, who plays next, and what the bracket looks like once the chaos settles.
+
+## The problem is that the tournament is now too big to skim
+
+When a competition grows by half, the interface around it usually does not. Most trackers still present the World Cup the way they presented the 32-team version, which means group tables on one page, a fixture list on another, and a bracket that only materializes once the knockouts begin. That was tolerable when there were eight groups. With twelve groups and a brand new Round of 32, the cost of jumping between pages adds up fast, and the part that matters most, the qualifying math, is the part that gets buried.
+
+What I find genuinely new about 2026 is the third-place calculation. The top two from every group advance, which is familiar, but so do the eight best third-placed teams out of twelve. That means a team can finish its group stage and still not know whether it has qualified, because its fate depends on results in groups it is not even playing in. Any dashboard worth building has to make that ambiguity visible instead of pretending the table is final the moment the last group game ends.
+
+## Why it runs on a checked-in snapshot
+
+The most important architectural decision was to not build this as a live feed. The dashboard reads from a snapshot that lives in the repository as a plain TypeScript file. A scheduled job pulls fresh data from ESPN's public World Cup endpoints, regenerates that file, and commits it. The running site never makes a third-party call at request time.
+
+That sounds like a limitation, but for this kind of product it is a feature. The page renders instantly because the data is already there. It cannot get rate limited in the middle of a match, and a flaky upstream response cannot take the whole surface down. I already use this pattern for the other sports dashboards I have built, and it has held up well precisely because it decouples "the data is being refreshed" from "the page is being viewed." The refresh can fail quietly and retry later while the last good snapshot keeps serving.
+
+I also made the refresh conservative on purpose. If a fetch fails or comes back empty, the script keeps the previous snapshot rather than overwriting good data with nothing. Wiping the board because ESPN had a bad thirty seconds would be the worst possible failure mode for something people check during a live tournament, so the pipeline is built to prefer stale-but-correct over fresh-but-broken.
+
+## Designing for the weeks before the first whistle
+
+A World Cup dashboard has an awkward problem that a Premier League dashboard does not. For most of its life it is showing a tournament that has not started, then it has to gracefully turn into a live product overnight. I did not want a page that looked broken until June 11 and then suddenly worked.
+
+So the snapshot ships with the facts that are already settled. The three host nations, the sixteen host cities and their stadiums, the format, the dates, and the match count are all fixed long before any ball is kicked, and those carry the page on their own. Before the group stage begins, the dashboard is a tournament hub that explains how 2026 works and where it is being played. Once results start landing, the same surface fills in with group tables, the bracket, and a schedule grouped by day. The structure does not change. The data simply arrives.
+
+## What I chose to leave out
+
+The temptation with a tournament this large is to show everything, and I think that instinct is usually wrong. I deliberately kept the surface to three views. There is a group stage view with all twelve tables, a knockout view that builds the bracket round by round, and a schedule view that splits recent results from upcoming matches. Selecting any team pins its standing, recent form, and next fixtures to the side so you can follow one country without losing the wider picture.
+
+I left out individual player dashboards, expected-goals overlays, and the deep statistical tables that some sites lead with. Not because that data is uninteresting, but because it competes for attention with the thing the tournament is actually about, which is who survives and who goes home. A World Cup is a knockout story wearing a group-stage costume for ten days. The interface should keep pointing at that story rather than drowning it in metrics.
+
+The other restraint worth mentioning is that everything stays deep-linkable. The view you are on and the team you have selected live in the URL, so a link to "Group F with Brazil pinned" is just a link. That is a small thing, but it is the kind of small thing that decides whether a tool gets shared during a tournament or forgotten after one visit.
+
+## What I would build again
+
+The pattern I keep coming back to across these projects is that curation plus a snapshot beats raw real-time access for anything people read more than they transact on. The reliability you get from owning your data at build time is worth more than the bragging rights of a live socket, and the editorial clarity you get from choosing three views instead of thirty is worth more than feature parity with a broadcaster.
+
+You can explore the full thing at [World Cup Pulse](/world-cup-2026). The quickest way to understand the design is to pick a group, pin a team, and then jump to the bracket view and watch how the same selection carries across. That continuity is the point of the project, and it is the part that the 48-team format made genuinely worth building.

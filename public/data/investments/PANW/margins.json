@@ -87,9 +87,9 @@
     {
       "symbol": "PANW",
       "report_date": "2025-04-30",
-      "gross_profit": 1669700000.0,
+      "gross_profit": 1670000000.0,
       "total_revenue": 2289000000.0,
-      "gross_margin": 0.7294
+      "gross_margin": 0.7296
     },
     {
       "symbol": "PANW",
@@ -111,6 +111,13 @@
       "gross_profit": 1909000000.0,
       "total_revenue": 2594000000.0,
       "gross_margin": 0.7359
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2026-04-30",
+      "gross_profit": 2028000000.0,
+      "total_revenue": 3002000000.0,
+      "gross_margin": 0.6755
     }
   ],
   "annual_gross": [
@@ -252,9 +259,9 @@
     {
       "symbol": "PANW",
       "report_date": "2025-04-30",
-      "operating_income": 218800000.0,
+      "operating_income": 219000000.0,
       "total_revenue": 2289000000.0,
-      "operating_margin": 0.0956
+      "operating_margin": 0.0957
     },
     {
       "symbol": "PANW",
@@ -276,6 +283,13 @@
       "operating_income": 397000000.0,
       "total_revenue": 2594000000.0,
       "operating_margin": 0.153
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2026-04-30",
+      "operating_income": -183000000.0,
+      "total_revenue": 3002000000.0,
+      "operating_margin": -0.061
     }
   ],
   "annual_operating": [
@@ -417,7 +431,7 @@
     {
       "symbol": "PANW",
       "report_date": "2025-04-30",
-      "net_income_common_stockholders": 262100000.0,
+      "net_income_common_stockholders": 262000000.0,
       "total_revenue": 2289000000.0,
       "net_margin": 0.1145
     },
@@ -441,6 +455,13 @@
       "net_income_common_stockholders": 432000000.0,
       "total_revenue": 2594000000.0,
       "net_margin": 0.1665
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2026-04-30",
+      "net_income_common_stockholders": -177000000.0,
+      "total_revenue": 3002000000.0,
+      "net_margin": -0.059
     }
   ],
   "annual_net": [
@@ -582,9 +603,9 @@
     {
       "symbol": "PANW",
       "report_date": "2025-04-30",
-      "ebitda": 399600000.0,
+      "ebitda": 400000000.0,
       "total_revenue": 2289000000.0,
-      "ebitda_margin": 0.1746
+      "ebitda_margin": 0.1747
     },
     {
       "symbol": "PANW",
@@ -606,6 +627,13 @@
       "ebitda": 640000000.0,
       "total_revenue": 2594000000.0,
       "ebitda_margin": 0.2467
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2026-04-30",
+      "ebitda": 178000000.0,
+      "total_revenue": 3002000000.0,
+      "ebitda_margin": 0.0593
     }
   ],
   "annual_ebitda": [
@@ -747,9 +775,9 @@
     {
       "symbol": "PANW",
       "report_date": "2025-04-30",
-      "free_cash_flow": 560300000.0,
+      "free_cash_flow": 560000000.0,
       "total_revenue": 2289000000.0,
-      "fcf_margin": 0.2448
+      "fcf_margin": 0.2446
     },
     {
       "symbol": "PANW",
@@ -771,6 +799,13 @@
       "free_cash_flow": 384000000.0,
       "total_revenue": 2594000000.0,
       "fcf_margin": 0.148
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2026-04-30",
+      "free_cash_flow": 788000000.0,
+      "total_revenue": 3002000000.0,
+      "fcf_margin": 0.2625
     }
   ],
   "annual_fcf": [

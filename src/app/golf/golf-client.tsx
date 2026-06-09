@@ -116,9 +116,21 @@ function formatGeneratedAt(value: string | null | undefined): string {
 }
 
 function formatDateRange(startDate: string, endDate: string): string {
-  return `${DATE_RANGE_FORMATTER.format(new Date(startDate))} – ${DATE_RANGE_FORMATTER.format(
-    new Date(endDate)
-  )}`;
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+  const startValid = !Number.isNaN(start.getTime());
+  const endValid = !Number.isNaN(end.getTime());
+
+  if (startValid && endValid) {
+    return `${DATE_RANGE_FORMATTER.format(start)} – ${DATE_RANGE_FORMATTER.format(end)}`;
+  }
+  if (endValid) {
+    return DATE_RANGE_FORMATTER.format(end);
+  }
+  if (startValid) {
+    return DATE_RANGE_FORMATTER.format(start);
+  }
+  return "Dates TBD";
 }
 
 function getViewButtonStyle(isActive: boolean): CSSProperties {

@@ -8,7 +8,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-04"
+    "report_date": "2026-06-08"
   },
   {
     "symbol": "IBM",
@@ -19,7 +19,7 @@
     "pay": 7351817,
     "exercised": 0,
     "unexercised": 33839440,
-    "report_date": "2026-06-04"
+    "report_date": "2026-06-08"
   },
   {
     "symbol": "IBM",
@@ -30,7 +30,7 @@
     "pay": 3672470,
     "exercised": 0,
     "unexercised": 16222157,
-    "report_date": "2026-06-04"
+    "report_date": "2026-06-08"
   },
   {
     "symbol": "IBM",
@@ -41,7 +41,7 @@
     "pay": 4113265,
     "exercised": 0,
     "unexercised": 20841604,
-    "report_date": "2026-06-04"
+    "report_date": "2026-06-08"
   },
   {
     "symbol": "IBM",
@@ -52,7 +52,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-04"
+    "report_date": "2026-06-08"
   },
   {
     "symbol": "IBM",
@@ -63,7 +63,7 @@
     "pay": 3702023,
     "exercised": 0,
     "unexercised": 17113948,
-    "report_date": "2026-06-04"
+    "report_date": "2026-06-08"
   },
   {
     "symbol": "IBM",
@@ -74,7 +74,7 @@
     "pay": 3138695,
     "exercised": 0,
     "unexercised": 856166,
-    "report_date": "2026-06-04"
+    "report_date": "2026-06-08"
   },
   {
     "symbol": "IBM",
@@ -85,7 +85,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-04"
+    "report_date": "2026-06-08"
   },
   {
     "symbol": "IBM",
@@ -96,7 +96,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-04"
+    "report_date": "2026-06-08"
   },
   {
     "symbol": "IBM",
@@ -107,6 +107,6 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-04"
+    "report_date": "2026-06-08"
   }
 ]

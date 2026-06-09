@@ -50,6 +50,7 @@ npm run update:mlb
 npm run update:nba
 npm run update:nfl
 npm run update:formula-1
+npm run update:golf
 npm run update:github-trending
 npm run update:spacex
 npm run lint
@@ -92,6 +93,7 @@ Note: `prebuild` automatically runs a league-only football snapshot refresh; `po
 - `/nba`
 - `/nfl`
 - `/golf`
+- `/world-cup-2026`
 
 ### Fantasy football
 
@@ -146,7 +148,7 @@ Redirects:
 
 `src/components/StaticHeader.tsx` uses `src/constants/navlinks.tsx`.
 
-All 7 links are active in the nav: Home, About, Projects, Writing, Investments, Resume, Contact.
+All 8 links are active in the nav: Home, About, Projects, Writing, Investments, Fantasy, Resume, Contact. The Fantasy link points to `/fantasy-football`.
 
 ### Layout
 
@@ -198,6 +200,15 @@ This is intentional to avoid stacked closing CTAs.
   - `/api/investments/quotes`
   - `/api/investments/data/[symbol]`
 
+#### Retirement planner
+
+- Surfaced as the `#retirement` band inside the investments dashboard (`InvestmentsDashboard.tsx`); reachable from the sidebar nav. Offers the live portfolio value as a one-click starting balance.
+- **Pure engine:** `src/lib/retirement/*` — framework-free and unit-tested. `project(input)` / `projectCore(input)` return `{ deterministic, monteCarlo, levers, verdict, targetNestEgg, assumptions }`. Expected return + volatility are **derived from the allocation** via dated capital-market assumptions (`capitalMarketAssumptions.ts`), never a single hardcoded number. Two-phase projection (accumulation/decumulation), seeded Monte Carlo (1,000 trials) with confidence bands, coarse account-aware taxes + RMDs, Social Security claim mechanics, and fixed-real / guardrails / fixed-% withdrawal strategies.
+- **CMAs are illustrative and tagged for verification** (`CMA_VERIFIED = false` in `capitalMarketAssumptions.ts`). Re-pin them to a dated primary source before relying on the figures; the UI discloses the source + as-of date + unverified state.
+- **State:** browser-local via `useRetirementPlan` (localStorage key `retirement_plan`), mirroring `useInvestments`. The headline (verdict/chart) computes synchronously; the heavier lever sensitivity runs off the critical path and fills in after paint.
+- **UI:** `src/components/investments/retirement/*` — progressive-disclosure inputs, honest "N of 100 scenarios" framing, D3 confidence-band chart, levers panel, editable assumptions footer, and the educational disclaimer (all output is illustrative, not advice).
+- Output is **educational only** — keep the disclaimer and assumption disclosure intact (compliance, spec §9).
+
 ### NFL Dashboard
 
 `/nfl` is a snapshot-driven NFL dashboard following the same pattern as the Premier League and La Liga. Data comes from public NFLverse CSVs (no API key required) and is committed to the repo as TypeScript.
@@ -221,6 +232,24 @@ NFL is intentionally **not** wired into the Netlify `prebuild` step. The snapsho
 **Shared football components:** Reuses `src/components/football/*` (FixtureCard accepts an optional `periodLabel` prop, set to `"Week"` for NFL).
 
 **State / route:** `?view=` (`league`, `afc`, `nfc`, `playoffs`) and `?team=<lowercase abbr>` (e.g., `kc`, `buf`).
+
+### World Cup Dashboard
+
+`/world-cup-2026` ("World Cup Pulse") is a snapshot-driven 2026 FIFA World Cup hub following the same pattern as the soccer and NFL dashboards. It reuses the shared `src/components/football/*` components. Data comes from ESPN's public `soccer/fifa.world` endpoints (no API key required) and is committed to the repo as TypeScript.
+
+**Snapshot file:** `src/data/worldCupSnapshot.ts`
+
+The dynamic sections (groups, knockout rounds, fixtures, scorers, team options, team snapshots) ship **empty in the seed** and are filled by the update script. The `tournament` block carries the stable pre-confirmed facts (host nations, 16 venues, format, dates, match counts), so the page is a useful tournament hub before kickoff and progressively becomes a full live dashboard.
+
+**Data sources (ESPN site API):**
+- Standings (group tables): `https://site.api.espn.com/apis/v2/sports/soccer/fifa.world/standings`
+- Scoreboard (fixtures/scores): `https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=YYYYMMDD-YYYYMMDD` (paged across the tournament window)
+
+**Build logic / update script:** `src/lib/worldCupData.ts` → `scripts/buildWorldCupSnapshot.ts` (`npm run update:world-cup`). A failed or empty fetch keeps the previous snapshot rather than wiping it (shared `readGeneratedSnapshot` fallback). `.github/workflows/update-world-cup.yml` refreshes it every six hours during June and July.
+
+**Accessors / API:** `src/lib/worldCupSnapshot.ts`; routes `/api/world-cup/summary` and `/api/world-cup/teams/[teamId]` (keyed by lowercased team slug, e.g. `brazil`).
+
+**State / route:** `?view=` (`groups`, `knockout`, `schedule`) and `?team=<slug>` for the team detail panel.
 
 ### Football Dashboards (Premier League + La Liga)
 
@@ -282,14 +311,14 @@ The `/nba` route follows the same snapshot-driven pattern as the soccer dashboar
 
 ### Other standalone data tools
 
-- `/mlb` reads from `src/data/mlbSnapshot.ts` with deep-linkable route state. Snapshot is built by `npm run update:mlb` against the public MLB Stats API (`https://statsapi.mlb.com/api/v1`); no auth token required. `.github/workflows/update-mlb.yml` refreshes it daily April through October. Shares the football components in `src/components/football/`.
+- `/mlb` reads from `src/data/mlbSnapshot.ts` with deep-linkable route state. Snapshot is built by `npm run update:mlb` against the public MLB Stats API (`https://statsapi.mlb.com/api/v1`); no auth token required. `.github/workflows/update-mlb.yml` refreshes it daily March through November (covering Opening Day and the World Series). Shares the football components in `src/components/football/`.
 - `/formula-1` reads from `src/data/formula1Snapshot.ts` with deep-linkable route state; `.github/workflows/update-formula-1.yml` refreshes it daily
 - `/fantasy-formula-1` reads from `src/data/formula1Snapshot.ts` and keeps user lineups in versioned browser-local storage
 - `/github-trending-pulse` reads from `src/data/githubTrendingSnapshot.ts`, generated by `scripts/buildGitHubTrendingSnapshot.ts` from the public GitHub Search API
 - `/news-pulse` reads from `src/lib/news-pulse-utils.ts` through `/api/news-pulse`
 - `/spacex-mission-control` reads from SpaceX data helpers and `/api/spacex/*` routes; `.github/workflows/update-spacex.yml` refreshes data and image artifacts twice daily
 - `/polling-aggregator` reads from `src/data/pollingSnapshot.ts` with deep-linkable route state
-- `/golf` reads from `src/data/golfSnapshot.ts`. **Manually maintained — no build script, no GitHub workflow.** To refresh, hand-edit the snapshot (tournament metadata, leaderboard, round scores). A scraped automation against the public ESPN golf endpoints (`https://site.api.espn.com/apis/site/v2/sports/golf/leaderboard`) would be doable but hasn't been built; the dashboard intentionally tracks specific events Isaac follows rather than every tour stop.
+- `/golf` reads from `src/data/golfSnapshot.ts` with deep-linkable route state. Snapshot is built by `npm run update:golf` (`scripts/buildGolfSnapshot.ts` → `src/lib/golfData.ts`) against the public ESPN golf leaderboard endpoint (`https://site.api.espn.com/apis/site/v2/sports/golf/leaderboard`); no auth token required. It tracks whichever PGA Tour event ESPN is featuring (in-progress event preferred, else most recent). `.github/workflows/update-golf.yml` refreshes it daily at 08:40 UTC. Like Formula 1, a failed fetch keeps the previous snapshot rather than wiping it. To pin a specific event instead, run the script manually or hand-edit the snapshot.
 - `/fintech-tools/budget-planner` uses `src/hooks/useBudgetPlanner.ts`
 - `/fintech-tools/interchange-iq` is a client-side fee analyzer under `src/app/fintech-tools/interchange-iq`
 

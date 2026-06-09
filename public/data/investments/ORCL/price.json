@@ -1,24 +1,6 @@
 [
   {
     "symbol": "ORCL",
-    "report_date": "2025-06-03",
-    "open": 166.8,
-    "close": 169.14,
-    "high": 169.33,
-    "low": 166.59,
-    "volume": 7155300
-  },
-  {
-    "symbol": "ORCL",
-    "report_date": "2025-06-04",
-    "open": 169.71,
-    "close": 168.1,
-    "high": 170.48,
-    "low": 167.57,
-    "volume": 6375800
-  },
-  {
-    "symbol": "ORCL",
     "report_date": "2025-06-05",
     "open": 169.0,
     "close": 171.14,
@@ -2263,8 +2245,26 @@
     "report_date": "2026-06-03",
     "open": 240.48,
     "close": 230.33,
-    "high": 240.48,
-    "low": 227.605,
-    "volume": 22677033
+    "high": 240.51,
+    "low": 227.61,
+    "volume": 23644700
+  },
+  {
+    "symbol": "ORCL",
+    "report_date": "2026-06-04",
+    "open": 227.0,
+    "close": 236.34,
+    "high": 238.95,
+    "low": 224.0,
+    "volume": 19993800
+  },
+  {
+    "symbol": "ORCL",
+    "report_date": "2026-06-05",
+    "open": 229.49,
+    "close": 213.68,
+    "high": 231.44,
+    "low": 209.45,
+    "volume": 28891400
   }
 ]

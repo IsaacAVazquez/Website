@@ -47,6 +47,7 @@ const orderedPortfolioTitles = [
   "SpaceX Mission Control",
   "Premier League Pulse",
   "La Liga Pulse",
+  "World Cup Pulse",
   "Fantasy Football Analytics Platform",
   "NFL Pulse",
   "Formula 1 Pulse",

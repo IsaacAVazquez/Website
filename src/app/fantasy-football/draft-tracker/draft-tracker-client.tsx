@@ -253,6 +253,7 @@ export function DraftTrackerClient() {
             ) : (
               <DraftBoard
                 players={snapshot?.overall ?? []}
+                snapshot={snapshot}
                 draftedPlayerIds={draftedPlayerIds}
                 onDraftPlayer={draftPlayer}
                 currentPick={draftState.currentPick}

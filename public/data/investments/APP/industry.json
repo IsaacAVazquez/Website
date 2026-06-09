@@ -5571,6 +5571,20 @@
       "total_market_cap": 231471850894.0,
       "total_ttm_net_income": 4935794788.0,
       "industry_pe": 46.9
+    },
+    {
+      "report_date": "2026-06-04T00:00:00.000",
+      "industry": "Advertising Agencies",
+      "total_market_cap": 228529314802.0,
+      "total_ttm_net_income": 4935794788.0,
+      "industry_pe": 46.3
+    },
+    {
+      "report_date": "2026-06-05T00:00:00.000",
+      "industry": "Advertising Agencies",
+      "total_market_cap": 227177802607.0,
+      "total_ttm_net_income": 4935794788.0,
+      "industry_pe": 46.03
     }
   ],
   "ps_ratio": [
@@ -9512,1639 +9526,1653 @@
       "report_date": "2025-06-30T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 193039780848.37,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 3.82
     },
     {
       "report_date": "2025-07-01T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 190045913017.71002,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 3.76
     },
     {
       "report_date": "2025-07-02T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 190460997516.96,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 3.77
     },
     {
       "report_date": "2025-07-03T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 192842443681.8,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 3.82
     },
     {
       "report_date": "2025-07-07T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 193074489513.91,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 3.82
     },
     {
       "report_date": "2025-07-08T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 193462088518.15997,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 3.83
     },
     {
       "report_date": "2025-07-09T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 196227577662.28998,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 3.88
     },
     {
       "report_date": "2025-07-10T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 194932608616.37,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 3.86
     },
     {
       "report_date": "2025-07-11T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 189666336292.67,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 3.75
     },
     {
       "report_date": "2025-07-14T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 196908656691.27002,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 3.9
     },
     {
       "report_date": "2025-07-15T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 197616689659.00003,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 3.91
     },
     {
       "report_date": "2025-07-16T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 200171698384.28003,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 3.96
     },
     {
       "report_date": "2025-07-17T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 202264687390.9,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 4.0
     },
     {
       "report_date": "2025-07-18T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 201805045535.29,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 3.99
     },
     {
       "report_date": "2025-07-21T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 202136484345.91003,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 4.0
     },
     {
       "report_date": "2025-07-22T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 199030278955.22998,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 3.94
     },
     {
       "report_date": "2025-07-23T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 205677435944.61002,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 4.07
     },
     {
       "report_date": "2025-07-24T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 204670532175.59,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 4.05
     },
     {
       "report_date": "2025-07-25T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 206647490189.16998,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 4.09
     },
     {
       "report_date": "2025-07-28T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 209511603816.47998,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 4.15
     },
     {
       "report_date": "2025-07-29T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 203788030962.15997,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 4.03
     },
     {
       "report_date": "2025-07-30T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 204691149719.41998,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 4.05
     },
     {
       "report_date": "2025-07-31T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 214032696859.83002,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 4.24
     },
     {
       "report_date": "2025-08-01T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 208921868880.3,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 4.14
     },
     {
       "report_date": "2025-08-04T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 216715884209.68,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 4.29
     },
     {
       "report_date": "2025-08-05T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 210022750415.36002,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 4.16
     },
     {
       "report_date": "2025-08-06T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 215557131456.25,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 4.27
     },
     {
       "report_date": "2025-08-07T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 230621980289.13,
-      "total_ttm_revenue": 50520418547.97,
-      "industry_ps_ratio": 4.56
+      "total_ttm_revenue": 50518488547.97,
+      "industry_ps_ratio": 4.57
     },
     {
       "report_date": "2025-08-08T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 220494933488.12997,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 4.36
     },
     {
       "report_date": "2025-08-11T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 222885099460.47,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 4.41
     },
     {
       "report_date": "2025-08-12T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 224007444951.42004,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 4.43
     },
     {
       "report_date": "2025-08-13T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 218819872787.16,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 4.33
     },
     {
       "report_date": "2025-08-14T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 212243962897.15002,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 4.2
     },
     {
       "report_date": "2025-08-15T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 215050825034.63,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 4.26
     },
     {
       "report_date": "2025-08-18T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 216582113651.51,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 4.29
     },
     {
       "report_date": "2025-08-19T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 206506556482.04,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 4.09
     },
     {
       "report_date": "2025-08-20T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 206278383631.98,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 4.08
     },
     {
       "report_date": "2025-08-21T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 208411223967.53,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 4.13
     },
     {
       "report_date": "2025-08-22T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 218131523405.87997,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 4.32
     },
     {
       "report_date": "2025-08-25T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 220625920199.42,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 4.37
     },
     {
       "report_date": "2025-08-26T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 226349641822.19,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 4.48
     },
     {
       "report_date": "2025-08-27T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 224749523214.73,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 4.45
     },
     {
       "report_date": "2025-08-28T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 233003553867.14,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 4.61
     },
     {
       "report_date": "2025-08-29T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 231072116207.04996,
-      "total_ttm_revenue": 50520418547.97,
+      "total_ttm_revenue": 50518488547.97,
       "industry_ps_ratio": 4.57
     },
     {
       "report_date": "2025-09-02T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 231152778922.32,
-      "total_ttm_revenue": 50520556545.97,
+      "total_ttm_revenue": 50518626545.97,
       "industry_ps_ratio": 4.58
     },
     {
       "report_date": "2025-09-03T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 232861332427.21997,
-      "total_ttm_revenue": 50520556545.97,
+      "total_ttm_revenue": 50518626545.97,
       "industry_ps_ratio": 4.61
     },
     {
       "report_date": "2025-09-04T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 236500073311.35,
-      "total_ttm_revenue": 50520556545.97,
+      "total_ttm_revenue": 50518626545.97,
       "industry_ps_ratio": 4.68
     },
     {
       "report_date": "2025-09-05T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 233611682887.55997,
-      "total_ttm_revenue": 50520556545.97,
+      "total_ttm_revenue": 50518626545.97,
       "industry_ps_ratio": 4.62
     },
     {
       "report_date": "2025-09-08T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 252951757507.99,
-      "total_ttm_revenue": 50520556545.97,
+      "total_ttm_revenue": 50518626545.97,
       "industry_ps_ratio": 5.01
     },
     {
       "report_date": "2025-09-09T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 256113537760.05002,
-      "total_ttm_revenue": 50520556545.97,
+      "total_ttm_revenue": 50518626545.97,
       "industry_ps_ratio": 5.07
     },
     {
       "report_date": "2025-09-10T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 255006953438.97995,
-      "total_ttm_revenue": 50520556545.97,
+      "total_ttm_revenue": 50518626545.97,
       "industry_ps_ratio": 5.05
     },
     {
       "report_date": "2025-09-11T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 256941498644.40997,
-      "total_ttm_revenue": 50520556545.97,
+      "total_ttm_revenue": 50518626545.97,
       "industry_ps_ratio": 5.09
     },
     {
       "report_date": "2025-09-12T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 259882346045.59,
-      "total_ttm_revenue": 50520556545.97,
+      "total_ttm_revenue": 50518626545.97,
       "industry_ps_ratio": 5.14
     },
     {
       "report_date": "2025-09-15T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 263792373057.21,
-      "total_ttm_revenue": 50520556545.97,
+      "total_ttm_revenue": 50518626545.97,
       "industry_ps_ratio": 5.22
     },
     {
       "report_date": "2025-09-16T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 267024809694.39,
-      "total_ttm_revenue": 50520556545.97,
+      "total_ttm_revenue": 50518626545.97,
       "industry_ps_ratio": 5.29
     },
     {
       "report_date": "2025-09-17T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 268248599126.92,
-      "total_ttm_revenue": 50520556545.97,
+      "total_ttm_revenue": 50518626545.97,
       "industry_ps_ratio": 5.31
     },
     {
       "report_date": "2025-09-18T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 272634820669.85004,
-      "total_ttm_revenue": 50520556545.97,
+      "total_ttm_revenue": 50518626545.97,
       "industry_ps_ratio": 5.4
     },
     {
       "report_date": "2025-09-19T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 282094067486.26,
-      "total_ttm_revenue": 50520556545.97,
+      "total_ttm_revenue": 50518626545.97,
       "industry_ps_ratio": 5.58
     },
     {
       "report_date": "2025-09-22T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 280477677800.54,
-      "total_ttm_revenue": 50520556545.97,
+      "total_ttm_revenue": 50518626545.97,
       "industry_ps_ratio": 5.55
     },
     {
       "report_date": "2025-09-23T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 283702061445.97,
-      "total_ttm_revenue": 50520556545.97,
+      "total_ttm_revenue": 50518626545.97,
       "industry_ps_ratio": 5.62
     },
     {
       "report_date": "2025-09-24T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 281106172858.7999,
-      "total_ttm_revenue": 50520556545.97,
+      "total_ttm_revenue": 50518626545.97,
       "industry_ps_ratio": 5.56
     },
     {
       "report_date": "2025-09-25T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 279749333280.74994,
-      "total_ttm_revenue": 50520556545.97,
+      "total_ttm_revenue": 50518626545.97,
       "industry_ps_ratio": 5.54
     },
     {
       "report_date": "2025-09-26T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 290480237162.25,
-      "total_ttm_revenue": 50520556545.97,
+      "total_ttm_revenue": 50518626545.97,
       "industry_ps_ratio": 5.75
     },
     {
       "report_date": "2025-09-29T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 306893661258.15,
-      "total_ttm_revenue": 50520556545.97,
+      "total_ttm_revenue": 50518626545.97,
       "industry_ps_ratio": 6.07
     },
     {
       "report_date": "2025-09-30T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 309072158634.69,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 6.01
     },
     {
       "report_date": "2025-10-01T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 302596637797.26996,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 5.89
     },
     {
       "report_date": "2025-10-02T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 295975687489.87,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 5.76
     },
     {
       "report_date": "2025-10-03T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 296331083551.57,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 5.77
     },
     {
       "report_date": "2025-10-06T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 264882917003.24002,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 5.15
     },
     {
       "report_date": "2025-10-07T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 280440369334.5,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 5.46
     },
     {
       "report_date": "2025-10-08T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 280034063752.75,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 5.45
     },
     {
       "report_date": "2025-10-09T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 269188254712.83002,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 5.24
     },
     {
       "report_date": "2025-10-10T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 257073960341.11,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 5.0
     },
     {
       "report_date": "2025-10-13T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 263441566048.03003,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 5.13
     },
     {
       "report_date": "2025-10-14T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 264102495744.66,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 5.14
     },
     {
       "report_date": "2025-10-15T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 268764340602.02002,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 5.23
     },
     {
       "report_date": "2025-10-16T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 268494205260.50003,
-      "total_ttm_revenue": 51387968587.369995,
-      "industry_ps_ratio": 5.22
+      "total_ttm_revenue": 51386038587.369995,
+      "industry_ps_ratio": 5.23
     },
     {
       "report_date": "2025-10-17T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 266559446200.86,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 5.19
     },
     {
       "report_date": "2025-10-20T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 257058153982.12,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 5.0
     },
     {
       "report_date": "2025-10-21T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 253663570843.02005,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 4.94
     },
     {
       "report_date": "2025-10-22T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 258611097414.65002,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 5.03
     },
     {
       "report_date": "2025-10-23T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 266793439839.62,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 5.19
     },
     {
       "report_date": "2025-10-24T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 275867307418.86,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 5.37
     },
     {
       "report_date": "2025-10-27T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 284413190852.54,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 5.53
     },
     {
       "report_date": "2025-10-28T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 277009085540.62,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 5.39
     },
     {
       "report_date": "2025-10-29T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 276776898878.12,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 5.39
     },
     {
       "report_date": "2025-10-30T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 272324529134.68002,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 5.3
     },
     {
       "report_date": "2025-10-31T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 278372456581.56006,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 5.42
     },
     {
       "report_date": "2025-11-03T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 275331360649.5,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 5.36
     },
     {
       "report_date": "2025-11-04T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 266288528803.12,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 5.18
     },
     {
       "report_date": "2025-11-05T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 269521545159.18002,
-      "total_ttm_revenue": 51387968587.369995,
-      "industry_ps_ratio": 5.24
+      "total_ttm_revenue": 51386038587.369995,
+      "industry_ps_ratio": 5.25
     },
     {
       "report_date": "2025-11-06T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 269656106917.50003,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 5.25
     },
     {
       "report_date": "2025-11-07T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 267691112447.58002,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 5.21
     },
     {
       "report_date": "2025-11-10T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 278159993671.69006,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 5.41
     },
     {
       "report_date": "2025-11-11T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 260163129925.93002,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 5.06
     },
     {
       "report_date": "2025-11-12T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 256560929008.21002,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 4.99
     },
     {
       "report_date": "2025-11-13T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 245669034771.01004,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 4.78
     },
     {
       "report_date": "2025-11-14T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 245329893751.82004,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 4.77
     },
     {
       "report_date": "2025-11-17T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 238160968220.14996,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 4.63
     },
     {
       "report_date": "2025-11-18T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 234020631304.53,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 4.55
     },
     {
       "report_date": "2025-11-19T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 234690499385.27002,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 4.57
     },
     {
       "report_date": "2025-11-20T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 230380995093.14,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 4.48
     },
     {
       "report_date": "2025-11-21T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 233319556360.54,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 4.54
     },
     {
       "report_date": "2025-11-24T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 246534156168.26,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 4.8
     },
     {
       "report_date": "2025-11-25T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 244738779064.5,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 4.76
     },
     {
       "report_date": "2025-11-26T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 262464639474.72,
-      "total_ttm_revenue": 51387968587.369995,
+      "total_ttm_revenue": 51386038587.369995,
       "industry_ps_ratio": 5.11
     },
     {
       "report_date": "2025-11-28T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 258285708166.81998,
-      "total_ttm_revenue": 41177568587.37,
+      "total_ttm_revenue": 41175638587.37,
       "industry_ps_ratio": 6.27
     },
     {
       "report_date": "2025-12-01T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 266531516405.02997,
-      "total_ttm_revenue": 41177586631.37,
+      "total_ttm_revenue": 41175656631.37,
       "industry_ps_ratio": 6.47
     },
     {
       "report_date": "2025-12-02T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 276750481350.39,
-      "total_ttm_revenue": 41177586631.37,
+      "total_ttm_revenue": 41175656631.37,
       "industry_ps_ratio": 6.72
     },
     {
       "report_date": "2025-12-03T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 279051238485.63,
-      "total_ttm_revenue": 41177586631.37,
+      "total_ttm_revenue": 41175656631.37,
       "industry_ps_ratio": 6.78
     },
     {
       "report_date": "2025-12-04T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 286481767481.01996,
-      "total_ttm_revenue": 41177586631.37,
+      "total_ttm_revenue": 41175656631.37,
       "industry_ps_ratio": 6.96
     },
     {
       "report_date": "2025-12-05T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 290724636573.36,
-      "total_ttm_revenue": 41177586631.37,
+      "total_ttm_revenue": 41175656631.37,
       "industry_ps_ratio": 7.06
     },
     {
       "report_date": "2025-12-08T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 289480503327.76,
-      "total_ttm_revenue": 41177586631.37,
+      "total_ttm_revenue": 41175656631.37,
       "industry_ps_ratio": 7.03
     },
     {
       "report_date": "2025-12-09T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 301565068442.94,
-      "total_ttm_revenue": 41177586631.37,
+      "total_ttm_revenue": 41175656631.37,
       "industry_ps_ratio": 7.32
     },
     {
       "report_date": "2025-12-10T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 295713131609.1,
-      "total_ttm_revenue": 41177586631.37,
+      "total_ttm_revenue": 41175656631.37,
       "industry_ps_ratio": 7.18
     },
     {
       "report_date": "2025-12-11T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 300165687976.92004,
-      "total_ttm_revenue": 41177586631.37,
+      "total_ttm_revenue": 41175656631.37,
       "industry_ps_ratio": 7.29
     },
     {
       "report_date": "2025-12-12T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 284297302386.19,
-      "total_ttm_revenue": 41177586631.37,
+      "total_ttm_revenue": 41175656631.37,
       "industry_ps_ratio": 6.9
     },
     {
       "report_date": "2025-12-15T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 285466803550.94,
-      "total_ttm_revenue": 41177586631.37,
+      "total_ttm_revenue": 41175656631.37,
       "industry_ps_ratio": 6.93
     },
     {
       "report_date": "2025-12-16T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 286824824862.12,
-      "total_ttm_revenue": 41177585924.37,
+      "total_ttm_revenue": 41175655924.37,
       "industry_ps_ratio": 6.97
     },
     {
       "report_date": "2025-12-17T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 280600057129.88,
-      "total_ttm_revenue": 41177585924.37,
+      "total_ttm_revenue": 41175655924.37,
       "industry_ps_ratio": 6.81
     },
     {
       "report_date": "2025-12-18T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 293027797320.62,
-      "total_ttm_revenue": 41177585924.37,
+      "total_ttm_revenue": 41175655924.37,
       "industry_ps_ratio": 7.12
     },
     {
       "report_date": "2025-12-19T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 301450647298.32,
-      "total_ttm_revenue": 41177585924.37,
+      "total_ttm_revenue": 41175655924.37,
       "industry_ps_ratio": 7.32
     },
     {
       "report_date": "2025-12-22T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 305500384132.48004,
-      "total_ttm_revenue": 41177585924.37,
+      "total_ttm_revenue": 41175655924.37,
       "industry_ps_ratio": 7.42
     },
     {
       "report_date": "2025-12-23T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 303557083512.52,
-      "total_ttm_revenue": 41177585924.37,
+      "total_ttm_revenue": 41175655924.37,
       "industry_ps_ratio": 7.37
     },
     {
       "report_date": "2025-12-24T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 303980920106.12006,
-      "total_ttm_revenue": 41177585924.37,
+      "total_ttm_revenue": 41175655924.37,
       "industry_ps_ratio": 7.38
     },
     {
       "report_date": "2025-12-26T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 297914710978.18,
-      "total_ttm_revenue": 40586919924.37,
+      "total_ttm_revenue": 40584989924.37,
       "industry_ps_ratio": 7.34
     },
     {
       "report_date": "2025-12-29T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 292803758535.78,
-      "total_ttm_revenue": 40586919924.37,
+      "total_ttm_revenue": 40584989924.37,
       "industry_ps_ratio": 7.21
     },
     {
       "report_date": "2025-12-30T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 290981388616.32,
-      "total_ttm_revenue": 40586919924.37,
+      "total_ttm_revenue": 40584989924.37,
       "industry_ps_ratio": 7.17
     },
     {
       "report_date": "2025-12-31T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 284016138440.10004,
-      "total_ttm_revenue": 42796365856.51,
+      "total_ttm_revenue": 42794435856.51,
       "industry_ps_ratio": 6.64
     },
     {
       "report_date": "2026-01-02T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 264980748739.30002,
-      "total_ttm_revenue": 42796365856.51,
+      "total_ttm_revenue": 42794435856.51,
       "industry_ps_ratio": 6.19
     },
     {
       "report_date": "2026-01-05T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 270426887357.94,
-      "total_ttm_revenue": 42796365856.51,
+      "total_ttm_revenue": 42794435856.51,
       "industry_ps_ratio": 6.32
     },
     {
       "report_date": "2026-01-06T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 265449926015.27997,
-      "total_ttm_revenue": 42796365856.51,
+      "total_ttm_revenue": 42794435856.51,
       "industry_ps_ratio": 6.2
     },
     {
       "report_date": "2026-01-07T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 269540777683.12003,
-      "total_ttm_revenue": 42796365856.51,
+      "total_ttm_revenue": 42794435856.51,
       "industry_ps_ratio": 6.3
     },
     {
       "report_date": "2026-01-08T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 263722078032.12,
-      "total_ttm_revenue": 42796365856.51,
+      "total_ttm_revenue": 42794435856.51,
       "industry_ps_ratio": 6.16
     },
     {
       "report_date": "2026-01-09T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 274434780450.11002,
-      "total_ttm_revenue": 42796365856.51,
+      "total_ttm_revenue": 42794435856.51,
       "industry_ps_ratio": 6.41
     },
     {
       "report_date": "2026-01-12T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 277813245581.36,
-      "total_ttm_revenue": 42796365856.51,
+      "total_ttm_revenue": 42794435856.51,
       "industry_ps_ratio": 6.49
     },
     {
       "report_date": "2026-01-13T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 280970904037.18005,
-      "total_ttm_revenue": 42796365856.51,
+      "total_ttm_revenue": 42794435856.51,
       "industry_ps_ratio": 6.57
     },
     {
       "report_date": "2026-01-14T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 264398503927.03998,
-      "total_ttm_revenue": 42796365856.51,
+      "total_ttm_revenue": 42794435856.51,
       "industry_ps_ratio": 6.18
     },
     {
       "report_date": "2026-01-15T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 260757971227.6,
-      "total_ttm_revenue": 42796365856.51,
+      "total_ttm_revenue": 42794435856.51,
       "industry_ps_ratio": 6.09
     },
     {
       "report_date": "2026-01-16T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 247051070414.3,
-      "total_ttm_revenue": 42796365856.51,
+      "total_ttm_revenue": 42794435856.51,
       "industry_ps_ratio": 5.77
     },
     {
       "report_date": "2026-01-20T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 244848234151.13995,
-      "total_ttm_revenue": 42796365856.51,
+      "total_ttm_revenue": 42794435856.51,
       "industry_ps_ratio": 5.72
     },
     {
       "report_date": "2026-01-21T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 234429952037.74997,
-      "total_ttm_revenue": 42796365856.51,
+      "total_ttm_revenue": 42794435856.51,
       "industry_ps_ratio": 5.48
     },
     {
       "report_date": "2026-01-22T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 232129886896.05,
-      "total_ttm_revenue": 42796365856.51,
+      "total_ttm_revenue": 42794435856.51,
       "industry_ps_ratio": 5.42
     },
     {
       "report_date": "2026-01-23T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 232852710208.89,
-      "total_ttm_revenue": 42796365856.51,
+      "total_ttm_revenue": 42794435856.51,
       "industry_ps_ratio": 5.44
     },
     {
       "report_date": "2026-01-26T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 235500294797.62997,
-      "total_ttm_revenue": 42796365856.51,
+      "total_ttm_revenue": 42794435856.51,
       "industry_ps_ratio": 5.5
     },
     {
       "report_date": "2026-01-27T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 236589474770.68,
-      "total_ttm_revenue": 42796365856.51,
+      "total_ttm_revenue": 42794435856.51,
       "industry_ps_ratio": 5.53
     },
     {
       "report_date": "2026-01-28T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 235604784774.86996,
-      "total_ttm_revenue": 42796365856.51,
+      "total_ttm_revenue": 42794435856.51,
       "industry_ps_ratio": 5.51
     },
     {
       "report_date": "2026-01-29T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 244149486824.46,
-      "total_ttm_revenue": 42796365856.51,
-      "industry_ps_ratio": 5.7
+      "total_ttm_revenue": 42794435856.51,
+      "industry_ps_ratio": 5.71
     },
     {
       "report_date": "2026-01-30T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 211135064242.24997,
-      "total_ttm_revenue": 42796365856.51,
+      "total_ttm_revenue": 42794435856.51,
       "industry_ps_ratio": 4.93
     },
     {
       "report_date": "2026-02-02T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 214086627997.83,
-      "total_ttm_revenue": 42796365856.51,
+      "total_ttm_revenue": 42794435856.51,
       "industry_ps_ratio": 5.0
     },
     {
       "report_date": "2026-02-03T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 201873272607.91003,
-      "total_ttm_revenue": 42796365856.51,
+      "total_ttm_revenue": 42794435856.51,
       "industry_ps_ratio": 4.72
     },
     {
       "report_date": "2026-02-04T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 177031169086.81,
-      "total_ttm_revenue": 42796365856.51,
+      "total_ttm_revenue": 42794435856.51,
       "industry_ps_ratio": 4.14
     },
     {
       "report_date": "2026-02-05T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 172014709686.13,
-      "total_ttm_revenue": 42796365856.51,
+      "total_ttm_revenue": 42794435856.51,
       "industry_ps_ratio": 4.02
     },
     {
       "report_date": "2026-02-06T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 183590635239.09998,
-      "total_ttm_revenue": 42796365856.51,
+      "total_ttm_revenue": 42794435856.51,
       "industry_ps_ratio": 4.29
     },
     {
       "report_date": "2026-02-09T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 202006491643.06998,
-      "total_ttm_revenue": 42796365856.51,
+      "total_ttm_revenue": 42794435856.51,
       "industry_ps_ratio": 4.72
     },
     {
       "report_date": "2026-02-10T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 207731339385.34003,
-      "total_ttm_revenue": 42796365856.51,
+      "total_ttm_revenue": 42794435856.51,
       "industry_ps_ratio": 4.85
     },
     {
       "report_date": "2026-02-11T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 200389651301.44,
-      "total_ttm_revenue": 42796365856.51,
+      "total_ttm_revenue": 42794435856.51,
       "industry_ps_ratio": 4.68
     },
     {
       "report_date": "2026-02-12T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 168500424334.21,
-      "total_ttm_revenue": 42796365856.51,
+      "total_ttm_revenue": 42794435856.51,
       "industry_ps_ratio": 3.94
     },
     {
       "report_date": "2026-02-13T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 176595453054.4,
-      "total_ttm_revenue": 42796365856.51,
+      "total_ttm_revenue": 42794435856.51,
       "industry_ps_ratio": 4.13
     },
     {
       "report_date": "2026-02-17T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 171064552640.19,
-      "total_ttm_revenue": 42796365856.51,
+      "total_ttm_revenue": 42794435856.51,
       "industry_ps_ratio": 4.0
     },
     {
       "report_date": "2026-02-18T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 181478247206.40997,
-      "total_ttm_revenue": 42796365856.51,
+      "total_ttm_revenue": 42794435856.51,
       "industry_ps_ratio": 4.24
     },
     {
       "report_date": "2026-02-19T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 187300733126.56998,
-      "total_ttm_revenue": 42796365856.51,
+      "total_ttm_revenue": 42794435856.51,
       "industry_ps_ratio": 4.38
     },
     {
       "report_date": "2026-02-20T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 190212997417.71,
-      "total_ttm_revenue": 42796365856.51,
+      "total_ttm_revenue": 42794435856.51,
       "industry_ps_ratio": 4.44
     },
     {
       "report_date": "2026-02-23T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 175521062248.65,
-      "total_ttm_revenue": 42749398856.51,
+      "total_ttm_revenue": 42747468856.51,
       "industry_ps_ratio": 4.11
     },
     {
       "report_date": "2026-02-24T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 180735917600.71002,
-      "total_ttm_revenue": 42749398856.51,
+      "total_ttm_revenue": 42747468856.51,
       "industry_ps_ratio": 4.23
     },
     {
       "report_date": "2026-02-25T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 190701205997.61,
-      "total_ttm_revenue": 42749398856.51,
+      "total_ttm_revenue": 42747468856.51,
       "industry_ps_ratio": 4.46
     },
     {
       "report_date": "2026-02-26T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 199019824276.25998,
-      "total_ttm_revenue": 42749398856.51,
+      "total_ttm_revenue": 42747468856.51,
       "industry_ps_ratio": 4.66
     },
     {
       "report_date": "2026-02-27T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 195832913854.63998,
-      "total_ttm_revenue": 42749398856.51,
+      "total_ttm_revenue": 42747468856.51,
       "industry_ps_ratio": 4.58
     },
     {
       "report_date": "2026-03-02T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 195540012800.97003,
-      "total_ttm_revenue": 42749409924.51,
+      "total_ttm_revenue": 42747479924.51,
       "industry_ps_ratio": 4.57
     },
     {
       "report_date": "2026-03-03T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 198176963656.20004,
-      "total_ttm_revenue": 42749409924.51,
+      "total_ttm_revenue": 42747479924.51,
       "industry_ps_ratio": 4.64
     },
     {
       "report_date": "2026-03-04T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 213660612217.86002,
-      "total_ttm_revenue": 42749409924.51,
+      "total_ttm_revenue": 42747479924.51,
       "industry_ps_ratio": 5.0
     },
     {
       "report_date": "2026-03-05T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 224476062877.66,
-      "total_ttm_revenue": 42749409924.51,
+      "total_ttm_revenue": 42747479924.51,
       "industry_ps_ratio": 5.25
     },
     {
       "report_date": "2026-03-06T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 221942295784.35,
-      "total_ttm_revenue": 42749409924.51,
+      "total_ttm_revenue": 42747479924.51,
       "industry_ps_ratio": 5.19
     },
     {
       "report_date": "2026-03-09T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 224024052212.61,
-      "total_ttm_revenue": 42749409924.51,
+      "total_ttm_revenue": 42747479924.51,
       "industry_ps_ratio": 5.24
     },
     {
       "report_date": "2026-03-10T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 209334403566.07004,
-      "total_ttm_revenue": 42749409924.51,
+      "total_ttm_revenue": 42747479924.51,
       "industry_ps_ratio": 4.9
     },
     {
       "report_date": "2026-03-11T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 203596752601.26,
-      "total_ttm_revenue": 42749409924.51,
+      "total_ttm_revenue": 42747479924.51,
       "industry_ps_ratio": 4.76
     },
     {
       "report_date": "2026-03-12T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 198320805079.32,
-      "total_ttm_revenue": 42749409924.51,
+      "total_ttm_revenue": 42747479924.51,
       "industry_ps_ratio": 4.64
     },
     {
       "report_date": "2026-03-13T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 201684355488.75,
-      "total_ttm_revenue": 42749409924.51,
+      "total_ttm_revenue": 42747479924.51,
       "industry_ps_ratio": 4.72
     },
     {
       "report_date": "2026-03-16T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 200155149146.61002,
-      "total_ttm_revenue": 42749409924.51,
+      "total_ttm_revenue": 42747479924.51,
       "industry_ps_ratio": 4.68
     },
     {
       "report_date": "2026-03-17T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 201143441777.57,
-      "total_ttm_revenue": 42749409924.51,
+      "total_ttm_revenue": 42747479924.51,
       "industry_ps_ratio": 4.71
     },
     {
       "report_date": "2026-03-18T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 194198584982.83002,
-      "total_ttm_revenue": 42749409924.51,
+      "total_ttm_revenue": 42747479924.51,
       "industry_ps_ratio": 4.54
     },
     {
       "report_date": "2026-03-19T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 193169778548.35007,
-      "total_ttm_revenue": 42749409924.51,
+      "total_ttm_revenue": 42747479924.51,
       "industry_ps_ratio": 4.52
     },
     {
       "report_date": "2026-03-20T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 193963430568.85,
-      "total_ttm_revenue": 42749409924.51,
+      "total_ttm_revenue": 42747479924.51,
       "industry_ps_ratio": 4.54
     },
     {
       "report_date": "2026-03-23T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 199799935014.75003,
-      "total_ttm_revenue": 42749409924.51,
+      "total_ttm_revenue": 42747479924.51,
       "industry_ps_ratio": 4.67
     },
     {
       "report_date": "2026-03-24T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 191114682208.84998,
-      "total_ttm_revenue": 42749409924.51,
+      "total_ttm_revenue": 42747479924.51,
       "industry_ps_ratio": 4.47
     },
     {
       "report_date": "2026-03-25T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 191273724984.88995,
-      "total_ttm_revenue": 42749409924.51,
+      "total_ttm_revenue": 42747479924.51,
       "industry_ps_ratio": 4.47
     },
     {
       "report_date": "2026-03-26T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 175670703163.78998,
-      "total_ttm_revenue": 42749409924.51,
+      "total_ttm_revenue": 42747479924.51,
       "industry_ps_ratio": 4.11
     },
     {
       "report_date": "2026-03-27T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 171404860211.4,
-      "total_ttm_revenue": 42749409924.51,
+      "total_ttm_revenue": 42747479924.51,
       "industry_ps_ratio": 4.01
     },
     {
       "report_date": "2026-03-30T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 169229957797.15002,
-      "total_ttm_revenue": 42749409924.51,
+      "total_ttm_revenue": 42747479924.51,
       "industry_ps_ratio": 3.96
     },
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 179971722576.27008,
-      "total_ttm_revenue": 46357933283.64,
+      "total_ttm_revenue": 46358507359.64,
       "industry_ps_ratio": 3.88
     },
     {
       "report_date": "2026-04-01T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 176206308453.65005,
-      "total_ttm_revenue": 46357933283.64,
+      "total_ttm_revenue": 46358507359.64,
       "industry_ps_ratio": 3.8
     },
     {
       "report_date": "2026-04-02T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 175775924148.11002,
-      "total_ttm_revenue": 46357933283.64,
+      "total_ttm_revenue": 46358507359.64,
       "industry_ps_ratio": 3.79
     },
     {
       "report_date": "2026-04-06T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 185208861531.61002,
-      "total_ttm_revenue": 46357933283.64,
+      "total_ttm_revenue": 46358507359.64,
       "industry_ps_ratio": 4.0
     },
     {
       "report_date": "2026-04-07T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 183602148479.61005,
-      "total_ttm_revenue": 46357933283.64,
+      "total_ttm_revenue": 46358507359.64,
       "industry_ps_ratio": 3.96
     },
     {
       "report_date": "2026-04-08T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 177450170680.71002,
-      "total_ttm_revenue": 46357933283.64,
+      "total_ttm_revenue": 46358507359.64,
       "industry_ps_ratio": 3.83
     },
     {
       "report_date": "2026-04-09T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 172861283955.01,
-      "total_ttm_revenue": 46357933283.64,
+      "total_ttm_revenue": 46358507359.64,
       "industry_ps_ratio": 3.73
     },
     {
       "report_date": "2026-04-10T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 176558588466.22003,
-      "total_ttm_revenue": 46357933283.64,
+      "total_ttm_revenue": 46358507359.64,
       "industry_ps_ratio": 3.81
     },
     {
       "report_date": "2026-04-13T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 186534670307.12003,
-      "total_ttm_revenue": 46357933283.64,
+      "total_ttm_revenue": 46358507359.64,
       "industry_ps_ratio": 4.02
     },
     {
       "report_date": "2026-04-14T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 192159428267.11,
-      "total_ttm_revenue": 46357933283.64,
+      "total_ttm_revenue": 46358507359.64,
       "industry_ps_ratio": 4.15
     },
     {
       "report_date": "2026-04-15T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 203906673482.45,
-      "total_ttm_revenue": 46357933283.64,
+      "total_ttm_revenue": 46358507359.64,
       "industry_ps_ratio": 4.4
     },
     {
       "report_date": "2026-04-16T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 205218436186.65,
-      "total_ttm_revenue": 46357933283.64,
+      "total_ttm_revenue": 46358507359.64,
       "industry_ps_ratio": 4.43
     },
     {
       "report_date": "2026-04-17T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 208966845886.55005,
-      "total_ttm_revenue": 46357933283.64,
+      "total_ttm_revenue": 46358507359.64,
       "industry_ps_ratio": 4.51
     },
     {
       "report_date": "2026-04-20T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 214392023698.74997,
-      "total_ttm_revenue": 46357833699.64,
+      "total_ttm_revenue": 46358407775.64,
       "industry_ps_ratio": 4.62
     },
     {
       "report_date": "2026-04-21T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 207597663311.28998,
-      "total_ttm_revenue": 46357833699.64,
+      "total_ttm_revenue": 46358407775.64,
       "industry_ps_ratio": 4.48
     },
     {
       "report_date": "2026-04-22T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 209218798099.19003,
-      "total_ttm_revenue": 46357833699.64,
+      "total_ttm_revenue": 46358407775.64,
       "industry_ps_ratio": 4.51
     },
     {
       "report_date": "2026-04-23T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 198037634473.38998,
-      "total_ttm_revenue": 46357833699.64,
+      "total_ttm_revenue": 46358407775.64,
       "industry_ps_ratio": 4.27
     },
     {
       "report_date": "2026-04-24T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 196741968511.18997,
-      "total_ttm_revenue": 46357833699.64,
+      "total_ttm_revenue": 46358407775.64,
       "industry_ps_ratio": 4.24
     },
     {
       "report_date": "2026-04-27T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 200517700587.62997,
-      "total_ttm_revenue": 46357833699.64,
+      "total_ttm_revenue": 46358407775.64,
       "industry_ps_ratio": 4.33
     },
     {
       "report_date": "2026-04-28T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 197000328387.47,
-      "total_ttm_revenue": 46357833699.64,
+      "total_ttm_revenue": 46358407775.64,
       "industry_ps_ratio": 4.25
     },
     {
       "report_date": "2026-04-29T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 195293832097.50998,
-      "total_ttm_revenue": 46357833699.64,
+      "total_ttm_revenue": 46358407775.64,
       "industry_ps_ratio": 4.21
     },
     {
       "report_date": "2026-04-30T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 195746491524.02002,
-      "total_ttm_revenue": 46357833699.64,
+      "total_ttm_revenue": 46358407775.64,
       "industry_ps_ratio": 4.22
     },
     {
       "report_date": "2026-05-01T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 201059460446.12003,
-      "total_ttm_revenue": 46357833699.64,
+      "total_ttm_revenue": 46358407775.64,
       "industry_ps_ratio": 4.34
     },
     {
       "report_date": "2026-05-04T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 205696219463.71,
-      "total_ttm_revenue": 46357833699.64,
+      "total_ttm_revenue": 46358407775.64,
       "industry_ps_ratio": 4.44
     },
     {
       "report_date": "2026-05-05T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 207578871671.33002,
-      "total_ttm_revenue": 46357833699.64,
+      "total_ttm_revenue": 46358407775.64,
       "industry_ps_ratio": 4.48
     },
     {
       "report_date": "2026-05-06T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 203937527337.3,
-      "total_ttm_revenue": 46357833699.64,
+      "total_ttm_revenue": 46358407775.64,
       "industry_ps_ratio": 4.4
     },
     {
       "report_date": "2026-05-07T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 213876751124.8,
-      "total_ttm_revenue": 46357833699.64,
+      "total_ttm_revenue": 46358407775.64,
       "industry_ps_ratio": 4.61
     },
     {
       "report_date": "2026-05-08T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 203395515421.69998,
-      "total_ttm_revenue": 46357833699.64,
+      "total_ttm_revenue": 46358407775.64,
       "industry_ps_ratio": 4.39
     },
     {
       "report_date": "2026-05-11T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 205317952871.25998,
-      "total_ttm_revenue": 46357833699.64,
+      "total_ttm_revenue": 46358407775.64,
       "industry_ps_ratio": 4.43
     },
     {
       "report_date": "2026-05-12T00:00:00.000",
       "industry": "Advertising Agencies",
       "total_market_cap": 209296495924.30997,
-      "total_ttm_revenue": 46357833699.64,
+      "total_ttm_revenue": 46358407775.64,
       "industry_ps_ratio": 4.51
     },
     {
       "report_date": "2026-05-13T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_market_cap": 195665133859.31,
-      "total_ttm_revenue": 46357833699.64,
-      "industry_ps_ratio": 4.22
+      "total_market_cap": 196009903973.81,
+      "total_ttm_revenue": 46358407775.64,
+      "industry_ps_ratio": 4.23
     },
     {
       "report_date": "2026-05-14T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_market_cap": 205405583128.86,
-      "total_ttm_revenue": 46357833699.64,
-      "industry_ps_ratio": 4.43
+      "total_market_cap": 205741021119.96,
+      "total_ttm_revenue": 46358407775.64,
+      "industry_ps_ratio": 4.44
     },
     {
       "report_date": "2026-05-15T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_market_cap": 210839291383.37994,
-      "total_ttm_revenue": 46357833699.64,
-      "industry_ps_ratio": 4.55
+      "total_market_cap": 211166952604.97995,
+      "total_ttm_revenue": 46358407775.64,
+      "industry_ps_ratio": 4.56
     },
     {
       "report_date": "2026-05-18T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_market_cap": 209417585649.01,
-      "total_ttm_revenue": 46357833699.64,
+      "total_market_cap": 209731536714.01,
+      "total_ttm_revenue": 46358407775.64,
       "industry_ps_ratio": 4.52
     },
     {
       "report_date": "2026-05-19T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_market_cap": 203423930372.02997,
-      "total_ttm_revenue": 46357833699.64,
+      "total_market_cap": 203732927346.82996,
+      "total_ttm_revenue": 46358407775.64,
       "industry_ps_ratio": 4.39
     },
     {
       "report_date": "2026-05-20T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_market_cap": 205187124272.27,
-      "total_ttm_revenue": 46357833699.64,
+      "total_market_cap": 205563059070.47,
+      "total_ttm_revenue": 46358407775.64,
       "industry_ps_ratio": 4.43
     },
     {
       "report_date": "2026-05-21T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_market_cap": 207280832736.25995,
-      "total_ttm_revenue": 46357833699.64,
-      "industry_ps_ratio": 4.47
+      "total_market_cap": 207658553311.15997,
+      "total_ttm_revenue": 46358407775.64,
+      "industry_ps_ratio": 4.48
     },
     {
       "report_date": "2026-05-22T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_market_cap": 206953799028.76,
-      "total_ttm_revenue": 46357833699.64,
-      "industry_ps_ratio": 4.46
+      "total_market_cap": 207312797751.16,
+      "total_ttm_revenue": 46358407775.64,
+      "industry_ps_ratio": 4.47
     },
     {
       "report_date": "2026-05-26T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_market_cap": 217578147044.37,
-      "total_ttm_revenue": 46357833699.64,
-      "industry_ps_ratio": 4.69
+      "total_market_cap": 217951835220.27,
+      "total_ttm_revenue": 46358407775.64,
+      "industry_ps_ratio": 4.7
     },
     {
       "report_date": "2026-05-27T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_market_cap": 235970451197.53992,
-      "total_ttm_revenue": 46357833699.64,
-      "industry_ps_ratio": 5.09
+      "total_market_cap": 236340337397.23993,
+      "total_ttm_revenue": 46358407775.64,
+      "industry_ps_ratio": 5.1
     },
     {
       "report_date": "2026-05-28T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_market_cap": 246154551354.62,
-      "total_ttm_revenue": 46357833699.64,
-      "industry_ps_ratio": 5.31
+      "total_market_cap": 246524207131.52,
+      "total_ttm_revenue": 46358407775.64,
+      "industry_ps_ratio": 5.32
     },
     {
       "report_date": "2026-05-29T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_market_cap": 250336038357.46,
-      "total_ttm_revenue": 46357833699.64,
-      "industry_ps_ratio": 5.4
+      "total_market_cap": 250685877773.56,
+      "total_ttm_revenue": 46358407775.64,
+      "industry_ps_ratio": 5.41
     },
     {
       "report_date": "2026-06-01T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_market_cap": 252802882630.84998,
-      "total_ttm_revenue": 46357833699.64,
-      "industry_ps_ratio": 5.45
+      "total_market_cap": 253153874160.94998,
+      "total_ttm_revenue": 46358407775.64,
+      "industry_ps_ratio": 5.46
     },
     {
       "report_date": "2026-06-02T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_market_cap": 248643379436.47995,
-      "total_ttm_revenue": 46357833699.64,
-      "industry_ps_ratio": 5.36
+      "total_market_cap": 248981121655.57996,
+      "total_ttm_revenue": 46358407775.64,
+      "industry_ps_ratio": 5.37
     },
     {
       "report_date": "2026-06-03T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_market_cap": 235773977664.49,
-      "total_ttm_revenue": 46357833699.64,
+      "total_market_cap": 236110971009.49,
+      "total_ttm_revenue": 46358407775.64,
       "industry_ps_ratio": 5.09
+    },
+    {
+      "report_date": "2026-06-04T00:00:00.000",
+      "industry": "Advertising Agencies",
+      "total_market_cap": 233222187588.29,
+      "total_ttm_revenue": 46358407775.64,
+      "industry_ps_ratio": 5.03
+    },
+    {
+      "report_date": "2026-06-05T00:00:00.000",
+      "industry": "Advertising Agencies",
+      "total_market_cap": 231820375876.14996,
+      "total_ttm_revenue": 46351180348.64,
+      "industry_ps_ratio": 5.0
     }
   ],
   "pb_ratio": [
@@ -18039,9 +18067,23 @@
     {
       "report_date": "2026-06-03T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_market_cap": 249102692684.81,
+      "total_market_cap": 249102706245.34,
       "total_bve": 29993385165.650005,
       "industry_pb_ratio": 8.31
+    },
+    {
+      "report_date": "2026-06-04T00:00:00.000",
+      "industry": "Advertising Agencies",
+      "total_market_cap": 246450752903.63998,
+      "total_bve": 29993385165.650005,
+      "industry_pb_ratio": 8.22
+    },
+    {
+      "report_date": "2026-06-05T00:00:00.000",
+      "industry": "Advertising Agencies",
+      "total_market_cap": 245251138923.15997,
+      "total_bve": 29979474454.650005,
+      "industry_pb_ratio": 8.18
     }
   ],
   "roe": [
@@ -18237,71 +18279,71 @@
     {
       "report_date": "2025-06-30T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_net_income": 4044062636.5892897,
+      "total_ttm_net_income": 4044101636.5892897,
       "total_avg_equity": 17886255486.853653,
       "industry_roe": 0.2261
     },
     {
       "report_date": "2025-07-31T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_net_income": 4044062636.5892897,
+      "total_ttm_net_income": 4044101636.5892897,
       "total_avg_equity": 17886255486.853653,
       "industry_roe": 0.2261
     },
     {
       "report_date": "2025-08-31T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_net_income": 4043002416.5892897,
+      "total_ttm_net_income": 4043041416.5892897,
       "total_avg_equity": 17878112464.853653,
       "industry_roe": 0.2261
     },
     {
       "report_date": "2025-09-30T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_net_income": 4757380234.971115,
+      "total_ttm_net_income": 4757419234.971115,
       "total_avg_equity": 18267395419.417515,
       "industry_roe": 0.2604
     },
     {
       "report_date": "2025-10-31T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_net_income": 4757380234.971115,
+      "total_ttm_net_income": 4757419234.971115,
       "total_avg_equity": 18267395419.417515,
       "industry_roe": 0.2604
     },
     {
       "report_date": "2025-11-30T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_net_income": 4757429834.971115,
+      "total_ttm_net_income": 4757468834.971115,
       "total_avg_equity": 18267507472.917515,
       "industry_roe": 0.2604
     },
     {
       "report_date": "2025-12-31T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_net_income": 3937046252.4646273,
+      "total_ttm_net_income": 3937085252.4646273,
       "total_avg_equity": 21987848359.256485,
       "industry_roe": 0.1791
     },
     {
       "report_date": "2026-01-31T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_net_income": 3937046252.4646273,
+      "total_ttm_net_income": 3937085252.4646273,
       "total_avg_equity": 21987848359.256485,
       "industry_roe": 0.1791
     },
     {
       "report_date": "2026-02-28T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_net_income": 3936616956.4646273,
+      "total_ttm_net_income": 3936655956.4646273,
       "total_avg_equity": 21987549392.256485,
       "industry_roe": 0.179
     },
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_net_income": 4579226888.202616,
-      "total_avg_equity": 21221293944.765087,
+      "total_ttm_net_income": 4579576299.202616,
+      "total_avg_equity": 21216888808.265087,
       "industry_roe": 0.2158
     }
   ],
@@ -18498,71 +18540,71 @@
     {
       "report_date": "2025-06-30T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_net_income": 4044062636.5892897,
+      "total_ttm_net_income": 4044101636.5892897,
       "total_avg_assets": 87993260553.00256,
       "industry_roa": 0.046
     },
     {
       "report_date": "2025-07-31T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_net_income": 4044062636.5892897,
+      "total_ttm_net_income": 4044101636.5892897,
       "total_avg_assets": 87993260553.00256,
       "industry_roa": 0.046
     },
     {
       "report_date": "2025-08-31T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_net_income": 4043002416.5892897,
+      "total_ttm_net_income": 4043041416.5892897,
       "total_avg_assets": 87993308079.50256,
       "industry_roa": 0.0459
     },
     {
       "report_date": "2025-09-30T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_net_income": 4757380234.971115,
+      "total_ttm_net_income": 4757419234.971115,
       "total_avg_assets": 89806096901.73505,
       "industry_roa": 0.053
     },
     {
       "report_date": "2025-10-31T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_net_income": 4757380234.971115,
+      "total_ttm_net_income": 4757419234.971115,
       "total_avg_assets": 89806096901.73505,
       "industry_roa": 0.053
     },
     {
       "report_date": "2025-11-30T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_net_income": 4757429834.971115,
+      "total_ttm_net_income": 4757468834.971115,
       "total_avg_assets": 89806101767.23505,
       "industry_roa": 0.053
     },
     {
       "report_date": "2025-12-31T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_net_income": 3937046252.4646273,
+      "total_ttm_net_income": 3937085252.4646273,
       "total_avg_assets": 101576419149.95518,
       "industry_roa": 0.0388
     },
     {
       "report_date": "2026-01-31T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_net_income": 3937046252.4646273,
+      "total_ttm_net_income": 3937085252.4646273,
       "total_avg_assets": 101576419149.95518,
       "industry_roa": 0.0388
     },
     {
       "report_date": "2026-02-28T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_net_income": 3936616956.4646273,
+      "total_ttm_net_income": 3936655956.4646273,
       "total_avg_assets": 101576427436.45518,
       "industry_roa": 0.0388
     },
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_net_income": 4579226888.202616,
-      "total_avg_assets": 99730311776.36014,
+      "total_ttm_net_income": 4579576299.202616,
+      "total_avg_assets": 99716352542.36014,
       "industry_roa": 0.0459
     }
   ],
@@ -19020,71 +19062,71 @@
     {
       "report_date": "2025-06-30T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_gross_profit": 18712538610.694405,
-      "total_ttm_revenue": 54047471537.96548,
+      "total_ttm_gross_profit": 18711976610.694405,
+      "total_ttm_revenue": 54045541537.96548,
       "industry_gross_margin": 0.3462
     },
     {
       "report_date": "2025-07-31T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_gross_profit": 18712538610.694405,
-      "total_ttm_revenue": 54047471537.96548,
+      "total_ttm_gross_profit": 18711976610.694405,
+      "total_ttm_revenue": 54045541537.96548,
       "industry_gross_margin": 0.3462
     },
     {
       "report_date": "2025-08-31T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_gross_profit": 18712563989.694405,
-      "total_ttm_revenue": 54047609535.96548,
+      "total_ttm_gross_profit": 18712001989.694405,
+      "total_ttm_revenue": 54045679535.96548,
       "industry_gross_margin": 0.3462
     },
     {
       "report_date": "2025-09-30T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_gross_profit": 19382444820.183838,
-      "total_ttm_revenue": 54890763432.36569,
+      "total_ttm_gross_profit": 19381882820.183838,
+      "total_ttm_revenue": 54888833432.36569,
       "industry_gross_margin": 0.3531
     },
     {
       "report_date": "2025-10-31T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_gross_profit": 19382444820.183838,
-      "total_ttm_revenue": 54890763432.36569,
+      "total_ttm_gross_profit": 19381882820.183838,
+      "total_ttm_revenue": 54888833432.36569,
       "industry_gross_margin": 0.3531
     },
     {
       "report_date": "2025-11-30T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_gross_profit": 19382451669.183838,
-      "total_ttm_revenue": 54890781476.36569,
+      "total_ttm_gross_profit": 19381889669.183838,
+      "total_ttm_revenue": 54888851476.36569,
       "industry_gross_margin": 0.3531
     },
     {
       "report_date": "2025-12-31T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_gross_profit": 18643325541.999096,
-      "total_ttm_revenue": 57100227820.50058,
+      "total_ttm_gross_profit": 18642763541.999096,
+      "total_ttm_revenue": 57098297820.50058,
       "industry_gross_margin": 0.3265
     },
     {
       "report_date": "2026-01-31T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_gross_profit": 18643325541.999096,
-      "total_ttm_revenue": 57100227820.50058,
+      "total_ttm_gross_profit": 18642763541.999096,
+      "total_ttm_revenue": 57098297820.50058,
       "industry_gross_margin": 0.3265
     },
     {
       "report_date": "2026-02-28T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_gross_profit": 18643339489.999096,
-      "total_ttm_revenue": 57100238888.50058,
+      "total_ttm_gross_profit": 18642777489.999096,
+      "total_ttm_revenue": 57098308888.50058,
       "industry_gross_margin": 0.3265
     },
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_gross_profit": 19793051006.045753,
-      "total_ttm_revenue": 60708762382.6304,
+      "total_ttm_gross_profit": 19789515763.045753,
+      "total_ttm_revenue": 60709336458.6304,
       "industry_gross_margin": 0.326
     }
   ],
@@ -19260,72 +19302,72 @@
     {
       "report_date": "2025-06-30T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_ebitda": 9589160326.68489,
-      "total_ttm_revenue": 54047472547.96548,
+      "total_ttm_ebitda": 9589197326.68489,
+      "total_ttm_revenue": 54045542547.96548,
       "industry_ebitda_margin": 0.1774
     },
     {
       "report_date": "2025-07-31T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_ebitda": 9589160326.68489,
-      "total_ttm_revenue": 54047472547.96548,
+      "total_ttm_ebitda": 9589197326.68489,
+      "total_ttm_revenue": 54045542547.96548,
       "industry_ebitda_margin": 0.1774
     },
     {
       "report_date": "2025-08-31T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_ebitda": 9588852092.68489,
-      "total_ttm_revenue": 54047610545.96548,
+      "total_ttm_ebitda": 9588889092.68489,
+      "total_ttm_revenue": 54045680545.96548,
       "industry_ebitda_margin": 0.1774
     },
     {
       "report_date": "2025-09-30T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_ebitda": 10305999004.36116,
-      "total_ttm_revenue": 54890764587.36569,
+      "total_ttm_ebitda": 10306036004.36116,
+      "total_ttm_revenue": 54888834587.36569,
       "industry_ebitda_margin": 0.1878
     },
     {
       "report_date": "2025-10-31T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_ebitda": 10305999004.36116,
-      "total_ttm_revenue": 54890764587.36569,
+      "total_ttm_ebitda": 10306036004.36116,
+      "total_ttm_revenue": 54888834587.36569,
       "industry_ebitda_margin": 0.1878
     },
     {
       "report_date": "2025-11-30T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_ebitda": 10306009654.36116,
-      "total_ttm_revenue": 54890782631.36569,
+      "total_ttm_ebitda": 10306046654.36116,
+      "total_ttm_revenue": 54888852631.36569,
       "industry_ebitda_margin": 0.1878
     },
     {
       "report_date": "2025-12-31T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_ebitda": 9288688864.384708,
-      "total_ttm_revenue": 57100228563.50058,
+      "total_ttm_ebitda": 9288725864.384708,
+      "total_ttm_revenue": 57098298563.50058,
       "industry_ebitda_margin": 0.1627
     },
     {
       "report_date": "2026-01-31T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_ebitda": 9288688864.384708,
-      "total_ttm_revenue": 57100228563.50058,
+      "total_ttm_ebitda": 9288725864.384708,
+      "total_ttm_revenue": 57098298563.50058,
       "industry_ebitda_margin": 0.1627
     },
     {
       "report_date": "2026-02-28T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_ebitda": 9288245645.384708,
-      "total_ttm_revenue": 57100239631.50058,
+      "total_ttm_ebitda": 9288282645.384708,
+      "total_ttm_revenue": 57098309631.50058,
       "industry_ebitda_margin": 0.1627
     },
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_ebitda": 10203055386.229332,
-      "total_ttm_revenue": 60708762990.6304,
-      "industry_ebitda_margin": 0.1681
+      "total_ttm_ebitda": 10200088199.229332,
+      "total_ttm_revenue": 60709337066.6304,
+      "industry_ebitda_margin": 0.168
     }
   ],
   "net_margin": [
@@ -19521,71 +19563,71 @@
     {
       "report_date": "2025-06-30T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_net_income": 4043854490.5892897,
-      "total_ttm_revenue": 54047472547.96548,
+      "total_ttm_net_income": 4043893490.5892897,
+      "total_ttm_revenue": 54045542547.96548,
       "industry_net_margin": 0.0748
     },
     {
       "report_date": "2025-07-31T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_net_income": 4043854490.5892897,
-      "total_ttm_revenue": 54047472547.96548,
+      "total_ttm_net_income": 4043893490.5892897,
+      "total_ttm_revenue": 54045542547.96548,
       "industry_net_margin": 0.0748
     },
     {
       "report_date": "2025-08-31T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_net_income": 4042794270.5892897,
-      "total_ttm_revenue": 54047610545.96548,
+      "total_ttm_net_income": 4042833270.5892897,
+      "total_ttm_revenue": 54045680545.96548,
       "industry_net_margin": 0.0748
     },
     {
       "report_date": "2025-09-30T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_net_income": 4757380234.971115,
-      "total_ttm_revenue": 54890764587.36569,
+      "total_ttm_net_income": 4757419234.971115,
+      "total_ttm_revenue": 54888834587.36569,
       "industry_net_margin": 0.0867
     },
     {
       "report_date": "2025-10-31T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_net_income": 4757380234.971115,
-      "total_ttm_revenue": 54890764587.36569,
+      "total_ttm_net_income": 4757419234.971115,
+      "total_ttm_revenue": 54888834587.36569,
       "industry_net_margin": 0.0867
     },
     {
       "report_date": "2025-11-30T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_net_income": 4757429834.971115,
-      "total_ttm_revenue": 54890782631.36569,
+      "total_ttm_net_income": 4757468834.971115,
+      "total_ttm_revenue": 54888852631.36569,
       "industry_net_margin": 0.0867
     },
     {
       "report_date": "2025-12-31T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_net_income": 3937046252.4646273,
-      "total_ttm_revenue": 57100228563.50058,
-      "industry_net_margin": 0.0689
+      "total_ttm_net_income": 3937085252.4646273,
+      "total_ttm_revenue": 57098298563.50058,
+      "industry_net_margin": 0.069
     },
     {
       "report_date": "2026-01-31T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_net_income": 3937046252.4646273,
-      "total_ttm_revenue": 57100228563.50058,
-      "industry_net_margin": 0.0689
+      "total_ttm_net_income": 3937085252.4646273,
+      "total_ttm_revenue": 57098298563.50058,
+      "industry_net_margin": 0.069
     },
     {
       "report_date": "2026-02-28T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_net_income": 3936616956.4646273,
-      "total_ttm_revenue": 57100239631.50058,
+      "total_ttm_net_income": 3936655956.4646273,
+      "total_ttm_revenue": 57098309631.50058,
       "industry_net_margin": 0.0689
     },
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Advertising Agencies",
-      "total_ttm_net_income": 4579226888.202616,
-      "total_ttm_revenue": 60708762990.6304,
+      "total_ttm_net_income": 4579576299.202616,
+      "total_ttm_revenue": 60709337066.6304,
       "industry_net_margin": 0.0754
     }
   ],
@@ -19825,14 +19867,14 @@
       "report_date": "2025-12-31T00:00:00.000",
       "industry": "Advertising Agencies",
       "industry_roa": 0.0388,
-      "industry_net_margin": 0.0689,
+      "industry_net_margin": 0.069,
       "industry_asset_turnover": 0.56
     },
     {
       "report_date": "2026-01-31T00:00:00.000",
       "industry": "Advertising Agencies",
       "industry_roa": 0.0388,
-      "industry_net_margin": 0.0689,
+      "industry_net_margin": 0.069,
       "industry_asset_turnover": 0.56
     },
     {

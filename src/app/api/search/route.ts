@@ -161,13 +161,13 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       id: 'page-fantasy-football',
       title: 'Fantasy Football Analytics Platform',
       excerpt:
-        'Advanced fantasy football analytics with tier charts, clustering, and draft tooling.',
+        'Snapshot-backed fantasy football rankings with consensus tiers, scoring toggles, and a manual draft assistant.',
       content:
-        'Fantasy football analytics data visualization D3 React TypeScript clustering tier charts draft tools waiver wire',
+        'Fantasy football rankings FantasyPros consensus tiers PPR half PPR standard scoring overall position QB RB WR TE draft assistant snake draft waiver',
       url: '/fantasy-football',
       type: 'project',
       category: 'Fantasy Football Analytics',
-      tags: ['Fantasy Football', 'Analytics', 'Data Visualization', 'React', 'TypeScript'],
+      tags: ['Fantasy Football', 'Rankings', 'Draft Tools', 'Next.js', 'TypeScript'],
     },
     {
       id: 'page-news-pulse',
@@ -336,6 +336,18 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       type: 'project',
       category: 'Sports Data Tools',
       tags: ['NFL', 'Football', 'Sports Data', 'Dashboard'],
+    },
+    {
+      id: 'page-world-cup-2026',
+      title: 'World Cup Pulse',
+      excerpt:
+        '2026 FIFA World Cup dashboard with group standings, the 32-team knockout bracket, the full match schedule, and host venues across the United States, Canada, and Mexico.',
+      content:
+        'World Cup 2026 FIFA soccer football groups standings knockout bracket round of 32 schedule fixtures host cities venues United States Canada Mexico dashboard',
+      url: '/world-cup-2026',
+      type: 'project',
+      category: 'Sports Data Tools',
+      tags: ['World Cup', 'FIFA', 'Soccer', 'Football', 'Sports Data', 'Dashboard'],
     },
     {
       id: 'page-interchange-iq',

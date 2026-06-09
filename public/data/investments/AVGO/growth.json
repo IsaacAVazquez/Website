@@ -765,9 +765,9 @@
     {
       "symbol": "AVGO",
       "report_date": "2008-10-31T00:00:00.000",
-      "eps": 0.0086,
+      "eps": 0.0073,
       "prev_year_eps": -0.001,
-      "yoy_growth": 9.6
+      "yoy_growth": 8.3
     },
     {
       "symbol": "AVGO",
@@ -794,8 +794,8 @@
       "symbol": "AVGO",
       "report_date": "2009-10-31T00:00:00.000",
       "eps": -0.009,
-      "prev_year_eps": 0.0086,
-      "yoy_growth": -2.0465
+      "prev_year_eps": 0.0073,
+      "yoy_growth": -2.2329
     },
     {
       "symbol": "AVGO",
@@ -1251,6 +1251,13 @@
       "eps": 1.5035,
       "prev_year_eps": 1.1379,
       "yoy_growth": 0.3213
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-04-30T00:00:00.000",
+      "eps": 1.91,
+      "prev_year_eps": 1.0288,
+      "yoy_growth": 0.8565
     }
   ]
 }

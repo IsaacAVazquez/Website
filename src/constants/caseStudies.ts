@@ -93,11 +93,11 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     slug: "fantasy-football-analytics",
     title: "Fantasy Football Analytics Platform",
     description:
-      "Full-stack fantasy football platform with live tier rankings, D3 visualizations, and an automated data pipeline.",
+      "Fantasy football platform with snapshot-backed consensus rankings, tier views, scoring toggles, and a manual draft assistant fed by an automated weekly data pipeline.",
     role: "Solo Builder",
-    timeline: "2024–2025",
-    tools: ["Next.js", "D3.js", "TypeScript", "SQLite"],
-    metrics: "Live platform · 2026 season coming soon",
+    timeline: "2024–2026",
+    tools: ["Next.js", "TypeScript", "React", "GitHub Actions"],
+    metrics: "Live · Weekly FantasyPros snapshots · PPR / Half / Standard",
     github: "https://github.com/IsaacAVazquez",
     link: "/fantasy-football",
     featured: true,
@@ -105,9 +105,9 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 
     overview: {
       summary:
-        "I built a fantasy football platform that combines tier rankings, visualizations, and automated data refreshes into a single weekly workflow.",
+        "I built a fantasy football platform that combines consensus rankings, tier views, and an automated weekly data refresh into a single workflow.",
       impact:
-        "Gives players one place to move from raw rankings to lineup and waiver decisions with less tab-hopping.",
+        "Gives players one place to move from raw rankings to draft decisions with less tab-hopping, and keeps data freshness explicit instead of implied.",
     },
     problem: {
       context:
@@ -742,6 +742,39 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     retrospective: "",
   },
 
+  "world-cup-pulse": {
+    slug: "world-cup-pulse",
+    title: "World Cup Pulse",
+    description:
+      "Snapshot-backed 2026 FIFA World Cup dashboard covering all 12 group tables, the expanded 32-team knockout bracket, the full match schedule, and host venues across the United States, Canada, and Mexico.",
+    role: "Full-Stack Developer & Designer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "ESPN API", "Snapshot pipeline"],
+    metrics: "Group standings · 32-team knockout bracket · Schedule & host venues",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/world-cup-2026",
+    featured: true,
+
+    overview: {
+      summary:
+        "I built a 2026 FIFA World Cup dashboard that turns a curated ESPN snapshot into one deep-linkable surface for group standings, the new 32-team knockout bracket, and the full three-country schedule.",
+      impact:
+        "Makes the largest World Cup ever legible on a single screen, from group qualifying math to the bracket, without juggling separate live sites.",
+    },
+    problem: {
+      context:
+        "The 48-team format spreads 104 matches across 16 cities and three countries, and most trackers scatter standings, fixtures, and the bracket across separate pages.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
+
   "mlb-pulse": {
     slug: "mlb-pulse",
     title: "MLB Pulse",
@@ -999,6 +1032,7 @@ const PORTFOLIO_PROJECT_ORDER = [
   "spacex-mission-control",
   "premier-league-pulse",
   "la-liga-pulse",
+  "world-cup-pulse",
   "fantasy-football-analytics",
   "nfl-pulse",
   "formula-1-pulse",

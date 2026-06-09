@@ -19,7 +19,38 @@ import {
 import { Player } from "@/types";
 
 export const SNAPSHOT_SEASON = new Date().getUTCFullYear();
-export const SNAPSHOT_WEEK = 0;
+
+const MS_PER_DAY = 86_400_000;
+const NFL_REGULAR_SEASON_WEEKS = 18;
+
+/**
+ * Derives the NFL regular-season week for a season from the calendar so a
+ * snapshot built mid-season isn't perpetually stamped "Preseason" (week 0).
+ *
+ * Week 1 kicks off the Thursday after Labor Day (the first Monday of
+ * September). Before that we're in the offseason/preseason and report week 0;
+ * after kickoff we count regular-season weeks and hold at the final week
+ * through the playoffs until the next season opens. This is calendar-derived,
+ * not schedule-aware, so it can be off by a day or two around week
+ * boundaries — close enough for a freshness label, and self-contained.
+ */
+export function getNflRegularSeasonWeek(season: number, now: Date = new Date()): number {
+  // First Monday of September (Labor Day), evaluated in UTC.
+  const septFirst = new Date(Date.UTC(season, 8, 1));
+  const offsetToMonday = (8 - septFirst.getUTCDay()) % 7;
+  const laborDay = new Date(Date.UTC(season, 8, 1 + offsetToMonday));
+  // Week 1's Thursday opener is three days after the Labor Day Monday.
+  const week1Kickoff = laborDay.getTime() + 3 * MS_PER_DAY;
+
+  if (now.getTime() < week1Kickoff) {
+    return 0;
+  }
+
+  const weeksElapsed = Math.floor((now.getTime() - week1Kickoff) / (7 * MS_PER_DAY));
+  return Math.min(NFL_REGULAR_SEASON_WEEKS, weeksElapsed + 1);
+}
+
+export const SNAPSHOT_WEEK = getNflRegularSeasonWeek(SNAPSHOT_SEASON);
 export const SNAPSHOT_SOURCE = DEFAULT_FANTASY_SNAPSHOT_SOURCE;
 export const FANTASY_SNAPSHOT_POSITION_ORDER = ["QB", "RB", "WR", "TE", "K", "DST"] as const;
 
