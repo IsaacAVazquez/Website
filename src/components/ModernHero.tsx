@@ -29,7 +29,7 @@ export function ModernHero() {
           <div className="grid items-start gap-8 lg:grid-cols-[1.28fr_0.72fr] lg:gap-12 xl:gap-16">
             <div className="space-y-6">
               <div className="space-y-5">
-                <p className="text-sm font-medium uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+                <p className="text-sm font-medium uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
                   Berkeley, CA · UC Berkeley Haas MBA Candidate
                 </p>
 

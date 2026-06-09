@@ -70,10 +70,10 @@ export function IndustryPanel({ symbol }: Props) {
           <table className="w-full text-sm min-w-[400px]" aria-label="Industry comparison table">
             <thead>
               <tr className="border-b border-[var(--home-rule)]">
-                <th className="text-left py-2 text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] font-medium">Metric</th>
-                <th className="text-right py-2 text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] font-medium">This Stock</th>
-                <th className="text-right py-2 text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] font-medium">Industry Avg</th>
-                <th className="text-right py-2 text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] font-medium">vs Avg</th>
+                <th className="text-left py-2 text-[var(--home-ink-soft)] font-medium">Metric</th>
+                <th className="text-right py-2 text-[var(--home-ink-soft)] font-medium">This Stock</th>
+                <th className="text-right py-2 text-[var(--home-ink-soft)] font-medium">Industry Avg</th>
+                <th className="text-right py-2 text-[var(--home-ink-soft)] font-medium">vs Avg</th>
               </tr>
             </thead>
             <tbody>
