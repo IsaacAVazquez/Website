@@ -284,7 +284,7 @@ export async function buildBayAreaTransitSnapshotData(): Promise<TransitSnapshot
     });
 
   // 5. Elevator outages.
-  let elevator: TransitElevatorStatus[] = [];
+  let elevator: TransitElevatorStatus[];
   try {
     const elevatorResponse = await fetchBartJson<{
       root?: { bsa?: BartAdvisory | BartAdvisory[] | null } | null;
