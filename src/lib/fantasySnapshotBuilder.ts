@@ -18,10 +18,22 @@ import {
 } from "@/lib/fantasyPositionData";
 import { Player } from "@/types";
 
-export const SNAPSHOT_SEASON = new Date().getUTCFullYear();
-
 const MS_PER_DAY = 86_400_000;
 const NFL_REGULAR_SEASON_WEEKS = 18;
+
+/**
+ * The NFL season a snapshot belongs to. The season is named for the year it
+ * kicks off in, but it runs into the next calendar year — a snapshot built in
+ * January is the *previous* year's season (championship weeks, playoffs), not
+ * a brand-new "Preseason". Roll to the new season in March, matching the
+ * draft tracker's `getCurrentDraftSeason`.
+ */
+export function getSnapshotSeason(now: Date = new Date()): number {
+  const year = now.getUTCFullYear();
+  return now.getUTCMonth() >= 2 ? year : year - 1;
+}
+
+export const SNAPSHOT_SEASON = getSnapshotSeason();
 
 /**
  * Derives the NFL regular-season week for a season from the calendar so a

@@ -408,43 +408,91 @@ export function optimizeFantasyFormula1Lineups(
     .map((combo) => summarizeCombination([...lockedConstructors, ...combo]))
     .filter((combo) => combo.price <= FANTASY_FORMULA1_BUDGET)
     .sort((left, right) => right.projectedPoints - left.projectedPoints);
-  const candidates: FantasyFormula1OptimizationCandidate[] = [];
+
+  const limit = Math.max(0, maxResults);
+  if (limit === 0 || constructorCombinations.length === 0) {
+    return [];
+  }
+
+  // The unlocked cross product is ~26k driver combos × 55 constructor pairs
+  // (~1.4M lineups) and runs on the render path. Both lists are sorted by
+  // projected points, so a small sorted top-k plus early breaks visits only a
+  // sliver of it while returning exactly what the full sort-and-slice did.
+  const top: FantasyFormula1OptimizationCandidate[] = [];
+  const bestConstructorPoints = constructorCombinations[0].projectedPoints;
 
   for (const drivers of driverCombinations) {
+    if (
+      top.length === limit &&
+      roundToTenths(drivers.projectedPoints + bestConstructorPoints) <
+        top[top.length - 1].projectedPoints
+    ) {
+      // Even the best constructor pairing can't beat the current kth-best
+      // lineup, and every later driver combination scores lower still.
+      break;
+    }
     for (const constructors of constructorCombinations) {
+      const projectedPoints = roundToTenths(
+        drivers.projectedPoints + constructors.projectedPoints
+      );
+      if (top.length === limit && projectedPoints < top[top.length - 1].projectedPoints) {
+        break;
+      }
       const totalPrice = roundToTenths(drivers.price + constructors.price);
       if (totalPrice > FANTASY_FORMULA1_BUDGET) {
         continue;
       }
 
-      const candidateAssets = [...drivers.assets, ...constructors.assets];
-      const projectedPoints = roundToTenths(
-        drivers.projectedPoints + constructors.projectedPoints
+      insertTopCandidate(
+        top,
+        {
+          drivers: drivers.assets,
+          constructors: constructors.assets,
+          assets: [...drivers.assets, ...constructors.assets],
+          totalPrice,
+          projectedPoints,
+          valueRating: totalPrice > 0 ? roundToTenths((projectedPoints / totalPrice) * 10) : 0,
+          budgetRemaining: roundToTenths(FANTASY_FORMULA1_BUDGET - totalPrice),
+          isComplete: true,
+          isOverBudget: false,
+          rank: 0,
+        },
+        limit
       );
-      candidates.push({
-        drivers: drivers.assets,
-        constructors: constructors.assets,
-        assets: candidateAssets,
-        totalPrice,
-        projectedPoints,
-        valueRating: totalPrice > 0 ? roundToTenths((projectedPoints / totalPrice) * 10) : 0,
-        budgetRemaining: roundToTenths(FANTASY_FORMULA1_BUDGET - totalPrice),
-        isComplete: true,
-        isOverBudget: false,
-        rank: 0,
-      });
     }
   }
 
-  return candidates
-    .sort(
-      (left, right) =>
-        right.projectedPoints - left.projectedPoints ||
-        right.valueRating - left.valueRating ||
-        left.budgetRemaining - right.budgetRemaining
-    )
-    .slice(0, maxResults)
-    .map((candidate, index) => ({ ...candidate, rank: index + 1 }));
+  return top.map((candidate, index) => ({ ...candidate, rank: index + 1 }));
+}
+
+function compareCandidates(
+  left: FantasyFormula1OptimizationCandidate,
+  right: FantasyFormula1OptimizationCandidate
+): number {
+  return (
+    right.projectedPoints - left.projectedPoints ||
+    right.valueRating - left.valueRating ||
+    left.budgetRemaining - right.budgetRemaining
+  );
+}
+
+/**
+ * Keeps `top` sorted best-first and at most `limit` long. Equal candidates
+ * insert after existing ones, matching the stable sort the full enumeration
+ * used to rely on.
+ */
+function insertTopCandidate(
+  top: FantasyFormula1OptimizationCandidate[],
+  candidate: FantasyFormula1OptimizationCandidate,
+  limit: number
+): void {
+  let index = top.length;
+  while (index > 0 && compareCandidates(candidate, top[index - 1]) < 0) {
+    index -= 1;
+  }
+  if (index === top.length && top.length >= limit) return;
+  top.splice(index, 0, candidate);
+  if (top.length > limit) top.pop();
 }
 
 export function sanitizeFantasyFormula1Lineup(
@@ -452,10 +500,13 @@ export function sanitizeFantasyFormula1Lineup(
   assets: FantasyFormula1Asset[]
 ): FantasyFormula1Lineup {
   const assetMap = getFantasyFormula1AssetMap(assets);
-  const driverIds = lineup.driverIds
+  // Dedupe persisted ids: a tampered or corrupt payload with the same driver
+  // twice would otherwise count as a "complete" lineup with double-counted
+  // price and projection.
+  const driverIds = Array.from(new Set(lineup.driverIds))
     .filter((id) => assetMap.get(id)?.kind === "driver")
     .slice(0, FANTASY_FORMULA1_DRIVER_SLOTS);
-  const constructorIds = lineup.constructorIds
+  const constructorIds = Array.from(new Set(lineup.constructorIds))
     .filter((id) => assetMap.get(id)?.kind === "constructor")
     .slice(0, FANTASY_FORMULA1_CONSTRUCTOR_SLOTS);
   const selectedIds = new Set([...driverIds, ...constructorIds]);

@@ -478,7 +478,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
 
             <article className="home-card p-5 sm:p-6" aria-labelledby="rankings-board-heading">
               <div
-                className="sticky top-20 z-20 flex flex-col gap-3 border-b pb-4 pt-1 sm:flex-row sm:items-end sm:justify-between"
+                className="z-20 flex flex-col gap-3 border-b pb-4 pt-1 sm:sticky sm:top-20 sm:flex-row sm:items-end sm:justify-between"
                 style={{
                   borderColor: "var(--home-rule)",
                   background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
@@ -511,7 +511,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                             aria-checked={active}
                             onClick={() => persistDensity(option)}
                             disabled={currentSliceUnavailable}
-                            className="inline-flex min-h-[40px] items-center rounded-full px-3.5 py-1.5 text-sm transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-60"
+                            className="inline-flex min-h-[44px] items-center rounded-full px-3.5 py-1.5 text-sm transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-60"
                             style={
                               active
                                 ? { background: "var(--home-ink)", color: "var(--home-paper)" }
@@ -543,7 +543,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                           aria-checked={active}
                           onClick={() => updateRouteState({ view: option })}
                           disabled={currentSliceUnavailable}
-                          className="inline-flex min-h-[40px] items-center rounded-full px-3.5 py-1.5 text-sm transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-60"
+                          className="inline-flex min-h-[44px] items-center rounded-full px-3.5 py-1.5 text-sm transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-60"
                           style={
                             active
                               ? { background: "var(--home-ink)", color: "var(--home-paper)" }
