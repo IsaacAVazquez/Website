@@ -32,7 +32,7 @@ export function MissionVehiclePhoto({
         className="absolute inset-0 bg-[linear-gradient(180deg,color-mix(in_srgb,var(--home-paper)_10%,transparent)_0%,transparent_36%,color-mix(in_srgb,var(--home-paper)_78%,transparent)_100%)]"
       />
       <div className="absolute inset-x-0 top-0 flex justify-between p-4">
-        <span className="rounded-full border border-[color-mix(in_srgb,var(--home-paper)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-paper)_74%,transparent)] px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-white">
+        <span className="rounded-full border border-[color-mix(in_srgb,var(--home-paper)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-paper)_74%,transparent)] px-3 py-1 font-mono text-3xs font-semibold uppercase tracking-[0.22em] text-white">
           {label}
         </span>
       </div>

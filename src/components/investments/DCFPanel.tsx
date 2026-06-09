@@ -36,7 +36,7 @@ export function DCFPanel({ symbol }: Props) {
       {isLoading && (
         <div className="space-y-3">
           {Array.from({ length: 4 }).map((_, i) => (
-            <div key={i} className="h-8 rounded bg-[var(--neutral-200)] animate-pulse" />
+            <div key={i} className="h-8 rounded bg-[var(--home-stone)] animate-pulse" />
           ))}
         </div>
       )}

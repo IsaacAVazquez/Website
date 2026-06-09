@@ -146,7 +146,7 @@ export function TierBreakdown({ players, position, getPublishedRank }: TierBreak
                     }}
                   >
                     <span
-                      className="inline-flex min-w-[2rem] items-center justify-center rounded-full border px-2 py-0.5 text-[11px] font-semibold"
+                      className="inline-flex min-w-[2rem] items-center justify-center rounded-full border px-2 py-0.5 text-2xs font-semibold"
                       style={getPositionTone(player.position)}
                       aria-hidden="true"
                     >
@@ -159,7 +159,7 @@ export function TierBreakdown({ players, position, getPublishedRank }: TierBreak
                       </span>
                     )}
                     {player.byeWeek && (
-                      <span className="text-[11px]" style={{ color: "var(--home-ink-muted)" }}>
+                      <span className="text-2xs" style={{ color: "var(--home-ink-muted)" }}>
                         Bye {player.byeWeek}
                       </span>
                     )}

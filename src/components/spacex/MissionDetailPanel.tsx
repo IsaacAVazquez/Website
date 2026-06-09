@@ -68,7 +68,7 @@ export function MissionDetailPanel({
     >
       <div className="flex flex-col gap-4 border-b border-[var(--home-rule)] pb-5">
         <div>
-          <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+          <p className="font-mono text-2xs font-semibold uppercase tracking-[0.22em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
             Mission detail
           </p>
           <h2 className="mt-2 text-2xl font-bold tracking-[-0.04em] text-[var(--home-ink)]">
@@ -149,7 +149,7 @@ export function MissionDetailPanel({
         <div className="mt-5 space-y-4">
           <div className="grid gap-3 sm:grid-cols-2">
             <div className="rounded-[22px] border border-[var(--home-rule)] bg-[var(--home-paper)] p-4">
-              <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+              <p className="font-mono text-3xs font-semibold uppercase tracking-[0.2em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                 Launch status
               </p>
               <p className="mt-2 text-sm font-semibold text-[var(--home-ink)]">
@@ -163,7 +163,7 @@ export function MissionDetailPanel({
               </p>
             </div>
             <div className="rounded-[22px] border border-[var(--home-rule)] bg-[var(--home-paper)] p-4">
-              <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+              <p className="font-mono text-3xs font-semibold uppercase tracking-[0.2em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                 Launch site
               </p>
               <p className="mt-2 text-sm font-semibold text-[var(--home-ink)]">

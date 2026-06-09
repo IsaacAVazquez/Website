@@ -111,7 +111,7 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
                 <div className="invest-ticker-name">Edit position</div>
               </div>
             </div>
-            <label className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+            <label className="text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
               Shares
               <input
                 type="number"
@@ -122,7 +122,7 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
                 className="ml-2 w-28 rounded-full border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-3 py-1.5 text-sm text-[var(--home-ink)] focus:outline-none focus:ring-2 focus:ring-[var(--home-haze)]/40"
               />
             </label>
-            <label className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+            <label className="text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
               Avg cost
               <input
                 type="number"
@@ -194,7 +194,7 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
             />
           </svg>
         ) : (
-          <span className="text-[11px] text-[var(--home-ink-muted)]">—</span>
+          <span className="text-2xs text-[var(--home-ink-muted)]">—</span>
         )}
       </td>
       <td className="num" style={{ color: "var(--home-ink-muted)", fontWeight: 600 }}>
@@ -218,7 +218,7 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
         >
           {fmtSignedCurrency(holding.gainLoss)}
         </div>
-        <div className="text-[11px] text-[var(--home-ink-muted)]">
+        <div className="text-2xs text-[var(--home-ink-muted)]">
           {fmtPercent(holding.gainLossPercent)}
         </div>
       </td>

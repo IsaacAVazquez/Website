@@ -231,7 +231,7 @@ function DriverHeadshot({
   if (!url) {
     return (
       <div
-        className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border bg-[var(--home-paper-alt)] text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--home-ink-muted)]"
+        className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border bg-[var(--home-paper-alt)] text-3xs font-semibold uppercase tracking-[0.08em] text-[var(--home-ink-muted)]"
         style={{ borderColor: teamColor ?? "var(--home-rule)" }}
         aria-hidden="true"
       >
