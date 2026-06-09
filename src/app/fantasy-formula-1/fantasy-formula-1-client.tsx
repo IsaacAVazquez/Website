@@ -129,6 +129,7 @@ function AssetAvatar({ asset }: { asset: FantasyFormula1Asset }) {
         src={asset.headshotUrl}
         alt={asset.name}
         loading="lazy"
+        decoding="async"
         className="h-10 w-10 flex-shrink-0 rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] object-cover object-top"
       />
     );
