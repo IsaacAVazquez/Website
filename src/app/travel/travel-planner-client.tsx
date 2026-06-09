@@ -3,20 +3,31 @@
 import { type FormEvent, useMemo, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import {
+  BedDouble,
   BookOpen,
   Bookmark,
   CalendarDays,
   CheckCircle2,
   Circle,
   Compass,
+  Frown,
+  Landmark,
   ListChecks,
+  type LucideIcon,
   Map,
   MapPin,
+  Meh,
+  Moon,
   NotebookPen,
   Plane,
   Plus,
+  Smile,
   Sparkles,
+  Star,
+  Ticket,
+  Train,
   Trash2,
+  UtensilsCrossed,
 } from "lucide-react";
 import { getReducedMotionVariants, fadeInVariants } from "@/components/investments/animations";
 import {
@@ -36,7 +47,7 @@ import {
   useTravelPlanner,
 } from "@/hooks/useTravelPlanner";
 import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
-import type { JournalEntry, Trip, TripActivity } from "@/types/travel";
+import type { ActivityCategory, JournalEntry, Trip, TripActivity } from "@/types/travel";
 
 const NAV_ITEMS = [
   { id: "overview", label: "Overview", icon: Compass, href: "#section-overview" },
@@ -57,6 +68,23 @@ const MOOD_TONE: Record<JournalEntry["mood"], string> = {
   neutral: "var(--home-ink-muted)",
   rough: "var(--color-warning, #b8860b)",
   tired: "var(--color-error, #b3322c)",
+};
+
+const MOOD_ICON: Record<JournalEntry["mood"], LucideIcon> = {
+  amazing: Star,
+  good: Smile,
+  neutral: Meh,
+  rough: Frown,
+  tired: Moon,
+};
+
+const CATEGORY_META: Record<ActivityCategory, { icon: LucideIcon; tint: string }> = {
+  transit: { icon: Train, tint: "#3b6ea5" },
+  lodging: { icon: BedDouble, tint: "#7c5cbf" },
+  food: { icon: UtensilsCrossed, tint: "#b8860b" },
+  sight: { icon: Landmark, tint: "#2f7d4f" },
+  activity: { icon: Ticket, tint: "#c2410c" },
+  other: { icon: MapPin, tint: "var(--home-ink-muted)" },
 };
 
 function emptyActivityDraft(date: string): ActivityDraft {
@@ -828,6 +856,28 @@ function ActiveTripView({
           </p>
         </div>
 
+        {summary.activitiesTotal > 0 ? (
+          <div className="mt-3">
+            <div
+              className="h-1.5 w-full overflow-hidden rounded-full bg-[var(--home-rule)]"
+              role="progressbar"
+              aria-valuemin={0}
+              aria-valuemax={summary.activitiesTotal}
+              aria-valuenow={summary.activitiesCompleted}
+              aria-label="Itinerary completion"
+            >
+              <div
+                className="h-full rounded-full bg-[var(--color-success,#2f7d4f)] transition-[width] duration-500"
+                style={{
+                  width: `${Math.round(
+                    (summary.activitiesCompleted / summary.activitiesTotal) * 100
+                  )}%`,
+                }}
+              />
+            </div>
+          </div>
+        ) : null}
+
         {summary.activitiesTotal === 0 ? (
           <div className="tool-empty mt-4">
             <p className="text-[13.5px] font-semibold text-[var(--home-ink)]">No stops yet</p>
@@ -852,7 +902,10 @@ function ActiveTripView({
                   </p>
                 ) : (
                   <ul className="divide-y divide-[var(--home-rule)] rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper)]">
-                    {bucket.activities.map((activity) => (
+                    {bucket.activities.map((activity) => {
+                      const categoryMeta = CATEGORY_META[activity.category];
+                      const CategoryIcon = categoryMeta.icon;
+                      return (
                       <li key={activity.id} className="flex items-start gap-3 px-3 py-2.5">
                         <button
                           type="button"
@@ -870,6 +923,16 @@ function ActiveTripView({
                             <Circle className="h-5 w-5" />
                           )}
                         </button>
+                        <span
+                          aria-hidden="true"
+                          className="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg"
+                          style={{
+                            color: categoryMeta.tint,
+                            backgroundColor: `color-mix(in srgb, ${categoryMeta.tint} 14%, transparent)`,
+                          }}
+                        >
+                          <CategoryIcon className="h-4 w-4" />
+                        </span>
                         <div className="min-w-0 flex-1">
                           <p
                             className={`text-[13.5px] font-semibold text-[var(--home-ink)] ${
@@ -879,7 +942,9 @@ function ActiveTripView({
                             {activity.title}
                           </p>
                           <p className="mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[11px] uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
-                            <span>{ACTIVITY_CATEGORY_LABELS[activity.category]}</span>
+                            <span style={{ color: categoryMeta.tint }}>
+                              {ACTIVITY_CATEGORY_LABELS[activity.category]}
+                            </span>
                             {activity.time ? (
                               <>
                                 <span aria-hidden="true">·</span>
@@ -919,7 +984,8 @@ function ActiveTripView({
                           </button>
                         </div>
                       </li>
-                    ))}
+                      );
+                    })}
                   </ul>
                 )}
               </div>
@@ -952,7 +1018,9 @@ function ActiveTripView({
           </div>
         ) : (
           <ul className="mt-4 flex flex-col gap-3">
-            {journalSorted.map((entry) => (
+            {journalSorted.map((entry) => {
+              const MoodIcon = MOOD_ICON[entry.mood];
+              return (
               <li
                 key={entry.id}
                 className="rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-3"
@@ -969,11 +1037,7 @@ function ActiveTripView({
                         className="inline-flex items-center gap-1.5"
                         style={{ color: MOOD_TONE[entry.mood] }}
                       >
-                        <span
-                          aria-hidden="true"
-                          className="inline-block h-1.5 w-1.5 rounded-full"
-                          style={{ backgroundColor: MOOD_TONE[entry.mood] }}
-                        />
+                        <MoodIcon aria-hidden="true" className="h-3.5 w-3.5" />
                         {JOURNAL_MOOD_LABELS[entry.mood]}
                       </span>
                     </p>
@@ -1002,7 +1066,8 @@ function ActiveTripView({
                   </p>
                 ) : null}
               </li>
-            ))}
+              );
+            })}
           </ul>
         )}
       </section>
