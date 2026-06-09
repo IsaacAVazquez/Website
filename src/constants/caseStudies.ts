@@ -643,6 +643,39 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     retrospective: "",
   },
 
+  "tech-startup-tracker": {
+    slug: "tech-startup-tracker",
+    title: "Tech Startup Tracker",
+    description:
+      "Curated dashboard of notable private tech companies by sector and funding stage, with valuations, total raised, latest rounds, and a momentum score from a checked-in snapshot.",
+    role: "Full-Stack Developer & Designer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "Snapshot pipeline", "Data design"],
+    metrics: "28 startups · 6 sectors · Sector & stage views",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/tech-startup-tracker",
+    featured: true,
+
+    overview: {
+      summary:
+        "I built a startup-landscape dashboard that organizes notable private tech companies by sector and funding stage, with valuations, total raised, and a momentum score from a curated snapshot.",
+      impact:
+        "Turns scattered funding headlines into a single deep-linkable view, with a transparent as-of date and disclosure rather than implied precision.",
+    },
+    problem: {
+      context:
+        "Startup funding data is fragmented across paywalled databases and one-off press releases, with no fast way to compare companies across sectors and stages.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
+
   "formula-1-pulse": {
     slug: "formula-1-pulse",
     title: "Formula 1 Pulse",
@@ -1021,6 +1054,7 @@ const PORTFOLIO_PROJECT_ORDER = [
   "ai-dev-tool-ecosystem",
   "frontier-model-tracker",
   "github-trending-pulse",
+  "tech-startup-tracker",
   "decision-lab",
   "food-map",
   "museum-log",
