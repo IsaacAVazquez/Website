@@ -93,6 +93,7 @@ Note: `prebuild` automatically runs a league-only football snapshot refresh; `po
 - `/nba`
 - `/nfl`
 - `/golf`
+- `/earthquake-pulse`
 - `/world-cup-2026`
 
 ### Fantasy football
@@ -319,6 +320,7 @@ The `/nba` route follows the same snapshot-driven pattern as the soccer dashboar
 - `/spacex-mission-control` reads from SpaceX data helpers and `/api/spacex/*` routes; `.github/workflows/update-spacex.yml` refreshes data and image artifacts twice daily
 - `/polling-aggregator` reads from `src/data/pollingSnapshot.ts` with deep-linkable route state
 - `/golf` reads from `src/data/golfSnapshot.ts` with deep-linkable route state. Snapshot is built by `npm run update:golf` (`scripts/buildGolfSnapshot.ts` → `src/lib/golfData.ts`) against the public ESPN golf leaderboard endpoint (`https://site.api.espn.com/apis/site/v2/sports/golf/leaderboard`); no auth token required. It tracks whichever PGA Tour event ESPN is featuring (in-progress event preferred, else most recent). `.github/workflows/update-golf.yml` refreshes it daily at 08:40 UTC. Like Formula 1, a failed fetch keeps the previous snapshot rather than wiping it. To pin a specific event instead, run the script manually or hand-edit the snapshot.
+- `/earthquake-pulse` ("Earthquake Pulse") reads from `src/data/earthquakeSnapshot.ts` with deep-linkable route state (`?view=recent|significant|regions` and `?quake=<usgs-id>`). The snapshot is built by `npm run update:earthquake` (`scripts/buildEarthquakeSnapshot.ts` → `src/lib/earthquakeData.ts`) from the public USGS Earthquake Hazards Program GeoJSON feeds (`all_day`, `2.5_week`, `significant_month` under `https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/`); no auth token required. The seed ships **empty** and is filled by `.github/workflows/update-earthquake.yml`, which refreshes it hourly. Like Formula 1 and golf, a failed/empty fetch keeps the previous snapshot rather than wiping it (shared `readGeneratedSnapshot` fallback). Accessors live in `src/lib/earthquakeSnapshot.ts`; the read API is `/api/earthquake-pulse/summary`. Reuses the editorial shell + `HomeStatsPanel`; everything needed for the detail panel is embedded in the summary (`quakeDetails`), so no per-event fetch is required.
 - `/fintech-tools/budget-planner` uses `src/hooks/useBudgetPlanner.ts`
 - `/fintech-tools/interchange-iq` is a client-side fee analyzer under `src/app/fintech-tools/interchange-iq`
 
@@ -368,6 +370,7 @@ Live routes under `src/app/api/`:
 - `/api/nba/teams/[teamId]`
 - `/api/nfl/summary`
 - `/api/nfl/teams/[teamId]`
+- `/api/earthquake-pulse/summary`
 - `/api/mba-jobs`
 - `/api/mba-jobs/email`
 - `/api/news-pulse`

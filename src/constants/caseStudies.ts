@@ -742,6 +742,39 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     retrospective: "",
   },
 
+  "earthquake-pulse": {
+    slug: "earthquake-pulse",
+    title: "Earthquake Pulse",
+    description:
+      "Snapshot-backed global earthquake monitor: the past 24 hours of seismic activity, significant quakes worldwide, magnitude distribution, and the busiest regions on one deep-linkable screen.",
+    role: "Full-Stack Developer & Designer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "USGS GeoJSON", "Snapshot pipeline"],
+    metrics: "24h seismic pulse · Significant worldwide quakes · Region & magnitude breakdowns",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/earthquake-pulse",
+    featured: true,
+
+    overview: {
+      summary:
+        "I built a global earthquake dashboard that turns checked-in USGS GeoJSON snapshots into one calm, deep-linkable surface for recent activity, significant events, and regional breakdowns.",
+      impact:
+        "Makes the planet's last day of seismic activity legible at a glance — what just moved, what was big enough to matter, and where the ground is busiest — without juggling separate live feeds.",
+    },
+    problem: {
+      context:
+        "Raw USGS feeds are comprehensive but firehose-shaped; most people just want a fast read on what's recent, what's significant, and where activity is concentrated.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
+
   "world-cup-pulse": {
     slug: "world-cup-pulse",
     title: "World Cup Pulse",
@@ -1038,6 +1071,7 @@ const PORTFOLIO_PROJECT_ORDER = [
   "formula-1-pulse",
   "fantasy-formula-1-optimizer",
   "pga-tour-pulse",
+  "earthquake-pulse",
   "mlb-pulse",
   "nba-pulse",
   "march-madness-2026",

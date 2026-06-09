@@ -13,6 +13,7 @@ const STATIC_ROUTE_LASTMOD = {
   "/portfolio": "2026-04-04",
   "/writing": "2026-04-13",
   "/golf": "2026-04-16",
+  "/earthquake-pulse": readEarthquakeLastmod(),
   "/decision-lab": "2026-04-04",
   "/formula-1": "2026-04-04",
   "/fantasy-formula-1": readFormula1Lastmod(),
@@ -106,6 +107,12 @@ function readWorldCupLastmod() {
 function readFormula1Lastmod() {
   return toIsoString(
     readFirstMatch("src/data/formula1Snapshot.ts", /"generatedAt":\s*"([^"]+)"/)
+  );
+}
+
+function readEarthquakeLastmod() {
+  return toIsoString(
+    readFirstMatch("src/data/earthquakeSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
   );
 }
 
