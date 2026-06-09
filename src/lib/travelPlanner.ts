@@ -142,6 +142,62 @@ export function formatActivityTime(time: string): string {
   return TIME_FORMATTER.format(date);
 }
 
+export function formatActivityTimeRange(time: string, endTime: string): string {
+  const start = formatActivityTime(time);
+  if (!start) return "";
+  const end = formatActivityTime(endTime);
+  return end ? `${start} – ${end}` : start;
+}
+
+function timeToMinutes(value: string): number | null {
+  if (!isHourMinute(value)) return null;
+  const [hours, minutes] = value.split(":").map(Number);
+  return hours * 60 + minutes;
+}
+
+/**
+ * Returns the ids of activities that overlap another timed stop on the same
+ * day. Stops without a start time, or with only a start (no duration), can't
+ * conflict — we only flag genuine time-window overlaps.
+ */
+export function findOverlappingActivityIds(activities: TripActivity[]): Set<string> {
+  const conflicts = new Set<string>();
+  const byDay = new Map<string, TripActivity[]>();
+  for (const activity of activities) {
+    const list = byDay.get(activity.date);
+    if (list) list.push(activity);
+    else byDay.set(activity.date, [activity]);
+  }
+
+  for (const dayActivities of byDay.values()) {
+    const windows = dayActivities
+      .map((activity) => {
+        const start = timeToMinutes(activity.time);
+        if (start === null) return null;
+        const end = timeToMinutes(activity.endTime);
+        return { id: activity.id, start, end: end ?? start };
+      })
+      .filter((window): window is { id: string; start: number; end: number } => window !== null)
+      .sort((left, right) => left.start - right.start);
+
+    for (let i = 0; i < windows.length; i += 1) {
+      for (let j = i + 1; j < windows.length; j += 1) {
+        // Sorted by start, so once the next window starts at/after this one
+        // ends there can be no further overlaps for `i`.
+        if (windows[j].start >= windows[i].end) break;
+        // Zero-length windows (start only) touching at the same minute don't overlap.
+        if (windows[i].end === windows[i].start && windows[j].start === windows[i].start) {
+          continue;
+        }
+        conflicts.add(windows[i].id);
+        conflicts.add(windows[j].id);
+      }
+    }
+  }
+
+  return conflicts;
+}
+
 export function getTripStatus(trip: Pick<Trip, "startDate" | "endDate">, today = getTodayKey()): TripStatus {
   if (today < trip.startDate) return "planned";
   if (today > trip.endDate) return "completed";
@@ -172,10 +228,16 @@ function sanitizeActivity(input: unknown): TripActivity | null {
       ? (input.category as ActivityCategory)
       : "other";
 
+  const time = isHourMinute(input.time) ? input.time : "";
+  const endTimeRaw = isHourMinute(input.endTime) ? input.endTime : "";
+  // An end time only makes sense alongside a start, and never before it.
+  const endTime = time && endTimeRaw && endTimeRaw > time ? endTimeRaw : "";
+
   return {
     id: typeof input.id === "string" && input.id ? input.id : createId("act"),
     date: input.date,
-    time: isHourMinute(input.time) ? input.time : "",
+    time,
+    endTime,
     title: clampString(input.title, 140, "Untitled stop"),
     location: clampString(input.location, 140),
     category,
@@ -290,10 +352,15 @@ export function createTrip(input: CreateTripInput): Trip {
 }
 
 export function createActivity(input: Omit<TripActivity, "id" | "completed">): TripActivity {
+  const time = isHourMinute(input.time) ? input.time : "";
+  const endTimeRaw = isHourMinute(input.endTime) ? input.endTime : "";
+  const endTime = time && endTimeRaw && endTimeRaw > time ? endTimeRaw : "";
+
   return {
     id: createId("act"),
     date: isIsoDate(input.date) ? input.date : getTodayKey(),
-    time: isHourMinute(input.time) ? input.time : "",
+    time,
+    endTime,
     title: clampString(input.title, 140, "Untitled stop"),
     location: clampString(input.location, 140),
     category: input.category,
@@ -346,9 +413,18 @@ export function calculateTripSummary(trip: Trip, today = getTodayKey()): TripSum
     }
   }
 
+  const conflictIds = findOverlappingActivityIds(sortedActivities);
+
   const dayBuckets: TripDayBucket[] = Array.from(dayLookup.entries())
     .sort((left, right) => left[0].localeCompare(right[0]))
-    .map(([date, activities]) => ({ date, activities }));
+    .map(([date, activities]) => ({
+      date,
+      activities,
+      completed: activities.filter((activity) => activity.completed).length,
+      conflictIds: activities
+        .filter((activity) => conflictIds.has(activity.id))
+        .map((activity) => activity.id),
+    }));
 
   const upcomingActivities = sortedActivities
     .filter((activity) => !activity.completed && activity.date >= today)
@@ -363,6 +439,7 @@ export function calculateTripSummary(trip: Trip, today = getTodayKey()): TripSum
     daysUntilStart,
     activitiesTotal: sortedActivities.length,
     activitiesCompleted,
+    conflictCount: conflictIds.size,
     journalCount: trip.journal.length,
     dayBuckets,
     upcomingActivities,
