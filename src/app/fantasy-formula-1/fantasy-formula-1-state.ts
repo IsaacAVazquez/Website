@@ -109,10 +109,10 @@ export function buildFantasyFormula1Href(
     params.set("sort", state.sort);
   }
 
-  if (state.focus === DEFAULT_FANTASY_FORMULA1_STATE.focus) {
-    params.delete("focus");
-  } else {
+  if (state.focus && state.focus !== DEFAULT_FANTASY_FORMULA1_STATE.focus) {
     params.set("focus", state.focus);
+  } else {
+    params.delete("focus");
   }
 
   const query = params.toString();

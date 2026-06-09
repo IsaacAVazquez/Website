@@ -89,7 +89,7 @@ export function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailMo
               className="w-full max-w-4xl max-h-[90vh] overflow-y-auto"
             >
               {/* Header */}
-              <div className="sticky top-0 bg-white/95 dark:bg-[var(--neutral-900)]/95 backdrop-blur-sm border-b-2 border-[var(--home-rule)] p-6 flex items-center justify-between">
+              <div className="sticky top-0 bg-white/95 dark:bg-[var(--home-dark-panel)]/95 backdrop-blur-sm border-b-2 border-[var(--home-rule)] p-6 flex items-center justify-between">
                 <div className="flex items-center gap-4">
                   <div className="p-3 rounded-lg bg-gradient-to-br from-[var(--home-haze)] to-[var(--home-haze)]">
                     <IconComponent className="w-6 h-6 text-white" />

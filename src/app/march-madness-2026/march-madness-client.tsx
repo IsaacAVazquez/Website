@@ -71,7 +71,7 @@ function Tag({ children, color = "gray" }: { children: ReactNode; color?: string
 
   return (
     <span
-      className={`inline-flex items-center rounded-full border px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] ${
+      className={`inline-flex items-center rounded-full border px-2 py-1 text-3xs font-semibold uppercase tracking-[0.14em] ${
         colorClasses[color] ?? colorClasses.gray
       }`}
     >
@@ -91,7 +91,7 @@ function SectionIntro({
 }) {
   return (
     <div className="space-y-3">
-      <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-amber-300">
+      <p className="text-2xs font-semibold uppercase tracking-[0.2em] text-amber-300">
         {eyebrow}
       </p>
       <div className="space-y-2">
@@ -148,7 +148,7 @@ function TeamRow({
           : "border-l-2 border-transparent bg-white/[0.03]"
       }`}
     >
-      <span className="w-5 shrink-0 text-right text-[11px] font-medium text-slate-500">
+      <span className="w-5 shrink-0 text-right text-2xs font-medium text-slate-500">
         {seed ?? ""}
       </span>
       <span className={`min-w-0 flex-1 text-sm font-semibold ${win ? "text-white" : "text-slate-400"}`}>
@@ -213,7 +213,7 @@ function Matchup2({
 
 function RoundLabel({ children }: { children: ReactNode }) {
   return (
-    <p className="mb-3 mt-5 border-b border-amber-400/10 pb-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-amber-300">
+    <p className="mb-3 mt-5 border-b border-amber-400/10 pb-2 text-2xs font-semibold uppercase tracking-[0.2em] text-amber-300">
       {children}
     </p>
   );
@@ -404,7 +404,7 @@ function RankingsSection() {
                 ))}
                 <td className="px-2 py-3">
                   <span
-                    className={`inline-flex rounded-full border px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] ${
+                    className={`inline-flex rounded-full border px-2 py-1 text-3xs font-semibold uppercase tracking-[0.14em] ${
                       ranking.trap === "Trapezoid"
                         ? "border-emerald-400/20 bg-emerald-500/15 text-emerald-200"
                         : ranking.trap === "—"
@@ -437,7 +437,7 @@ function SCurveSection() {
       ].map(({ label, data, positive }) => (
         <div key={label} className="rounded-[24px] border border-white/10 bg-white/[0.03] p-4">
           <p
-            className={`mb-4 text-[11px] font-semibold uppercase tracking-[0.16em] ${
+            className={`mb-4 text-2xs font-semibold uppercase tracking-[0.16em] ${
               positive ? "text-emerald-300" : "text-rose-300"
             }`}
           >
@@ -518,7 +518,7 @@ function TZSection() {
       </div>
 
       <div>
-        <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-rose-300">
+        <p className="mb-3 text-2xs font-semibold uppercase tracking-[0.16em] text-rose-300">
           Bracket Flips
         </p>
         <div className="space-y-3">
@@ -540,7 +540,7 @@ function TZSection() {
       </div>
 
       <div>
-        <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400">
+        <p className="mb-3 text-2xs font-semibold uppercase tracking-[0.16em] text-slate-400">
           Other Impacts
         </p>
         <div className="space-y-3">
@@ -740,7 +740,7 @@ function PicksSection() {
         return (
           <div key={group} className="space-y-3">
             <div>
-              <p className={`text-[11px] font-semibold uppercase tracking-[0.18em] ${meta.headingClass}`}>
+              <p className={`text-2xs font-semibold uppercase tracking-[0.18em] ${meta.headingClass}`}>
                 {meta.label}
               </p>
               <p className="mt-1 text-sm text-slate-400">{meta.sublabel}</p>
@@ -764,7 +764,7 @@ function PicksSection() {
                 >
                   <div className="flex flex-wrap items-start gap-2">
                     <span
-                      className={`inline-flex rounded-full border px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] ${badgeClasses[item.badge]}`}
+                      className={`inline-flex rounded-full border px-2 py-1 text-3xs font-semibold uppercase tracking-[0.14em] ${badgeClasses[item.badge]}`}
                     >
                       {item.badge}
                     </span>
@@ -789,7 +789,7 @@ function PicksSection() {
       })}
 
       <div className="rounded-[24px] border border-white/10 bg-white/[0.03] px-4 py-4">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">Legend</p>
+        <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-slate-500">Legend</p>
         <div className="mt-3 flex flex-wrap gap-3">
           {[
             { label: "FLIP", className: badgeClasses.FLIP, desc: "Time zone penalty reversal" },
@@ -803,7 +803,7 @@ function PicksSection() {
               className="flex items-center gap-2 rounded-full border border-white/10 bg-black/10 px-3 py-2"
             >
               <span
-                className={`inline-flex rounded-full border px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] ${legendItem.className}`}
+                className={`inline-flex rounded-full border px-2 py-1 text-3xs font-semibold uppercase tracking-[0.14em] ${legendItem.className}`}
               >
                 {legendItem.label}
               </span>
@@ -905,7 +905,7 @@ export function MarchMadnessClient({
             <SurfaceCard className="relative overflow-hidden p-6 sm:p-8">
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(245,158,11,0.16),transparent_34%)]" />
               <div className="relative space-y-6">
-                <div className="flex flex-wrap items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-amber-300">
+                <div className="flex flex-wrap items-center gap-3 text-2xs font-semibold uppercase tracking-[0.22em] text-amber-300">
                   <span>2026 NCAA Tournament</span>
                   <span className="h-1 w-1 rounded-full bg-amber-300/60" />
                   <time dateTime={MARCH_MADNESS_UPDATED_AT}>{MARCH_MADNESS_UPDATED_LABEL}</time>
@@ -979,7 +979,7 @@ export function MarchMadnessClient({
             </SurfaceCard>
 
             <SurfaceCard className="bg-[linear-gradient(135deg,rgba(8,18,12,0.96),rgba(9,18,28,0.92))] p-6 sm:p-7">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-300">
+              <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-emerald-300">
                 National Champion Pick
               </p>
               <h2 className="mt-3 text-3xl font-bold tracking-tight text-white">Duke Blue Devils</h2>
@@ -1000,7 +1000,7 @@ export function MarchMadnessClient({
                     className="rounded-[20px] border border-white/10 bg-white/[0.05] px-4 py-3"
                   >
                     <p className="font-mono text-xl font-semibold tabular-nums text-amber-300">{value}</p>
-                    <p className="mt-1 text-[11px] uppercase tracking-[0.14em] text-slate-500">{label}</p>
+                    <p className="mt-1 text-2xs uppercase tracking-[0.14em] text-slate-500">{label}</p>
                   </div>
                 ))}
               </div>
@@ -1036,7 +1036,7 @@ export function MarchMadnessClient({
           <SurfaceCard className="space-y-5 p-5 sm:p-6">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400">
+                <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-slate-400">
                   Share Layer
                 </p>
                 <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white">
@@ -1053,7 +1053,7 @@ export function MarchMadnessClient({
 
             <div className="grid gap-4 lg:grid-cols-2">
               <div className="rounded-[24px] border border-amber-400/20 bg-amber-500/[0.08] p-5">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-amber-300">
+                <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-amber-300">
                   Bracket Thesis
                 </p>
                 <p className="mt-4 text-2xl font-semibold leading-tight text-white">
@@ -1063,7 +1063,7 @@ export function MarchMadnessClient({
               </div>
 
               <div className="rounded-[24px] border border-rose-400/20 bg-rose-500/[0.08] p-5">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-rose-300">
+                <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-rose-300">
                   Best Upset Share Card
                 </p>
                 <p className="mt-4 text-2xl font-semibold leading-tight text-white">UCF over UCLA</p>
@@ -1111,7 +1111,7 @@ export function MarchMadnessClient({
                   key={item.label}
                   className="rounded-[22px] border border-white/10 bg-white/[0.03] p-4"
                 >
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
+                  <p className="text-2xs font-semibold uppercase tracking-[0.14em] text-slate-500">
                     {item.label}
                   </p>
                   <p className="mt-2 text-sm text-slate-300">{item.matchup}</p>

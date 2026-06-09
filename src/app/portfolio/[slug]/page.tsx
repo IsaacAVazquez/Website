@@ -42,7 +42,7 @@ export async function generateMetadata({
         ...caseStudy.tools.slice(0, 3),
       ],
       contentType: "Case Study",
-      context: `PM case study: ${caseStudy.role} — ${caseStudy.overview.summary}. Key metrics: ${caseStudy.metrics}.`,
+      context: `PM case study by ${caseStudy.role}. ${caseStudy.overview.summary}. Key metrics include ${caseStudy.metrics}.`,
       summary: caseStudy.overview.summary,
     },
   });

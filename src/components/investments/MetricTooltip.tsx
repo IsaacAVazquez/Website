@@ -17,7 +17,7 @@ export const METRIC_DEFINITIONS: Record<string, string> = {
   "PEG Ratio": "Price/Earnings-to-Growth. P/E adjusted for expected growth rate. Under 1 is often considered attractive.",
 
   // Market & capital
-  "Market Cap": "Total market value of all outstanding shares — price × shares outstanding.",
+  "Market Cap": "Total market value of all outstanding shares, equal to price multiplied by shares outstanding.",
   "52W Range": "The stock's highest and lowest closing price over the trailing 52 weeks.",
 
   // Risk
@@ -26,15 +26,15 @@ export const METRIC_DEFINITIONS: Record<string, string> = {
 
   // Margins & returns
   "Net Margin": "Percentage of revenue that becomes net profit after all expenses and taxes.",
-  "FCF Margin": "Free Cash Flow margin — cash generated after capital expenditures, as a percentage of revenue.",
+  "FCF Margin": "Free Cash Flow margin. Cash generated after capital expenditures, as a percentage of revenue.",
   "Gross Margin": "Revenue minus cost of goods sold, as a percentage of revenue.",
-  "Operating Margin": "Operating profit as a percentage of revenue — before interest and taxes.",
+  "Operating Margin": "Operating profit as a percentage of revenue, before interest and taxes.",
   "EBITDA Margin": "Earnings before interest, taxes, depreciation, and amortization, as a percentage of revenue.",
   "ROIC": "Return on Invested Capital. Measures how efficiently the company converts invested capital into profit. Above 10% is generally strong.",
   "Return on Inv. Capital": "Return on Invested Capital. Measures how efficiently the company converts invested capital into profit. Above 10% is generally strong.",
   "ROE": "Return on Equity. Net income as a percentage of shareholder equity.",
   "Return on Equity (ROE)": "Net income as a percentage of shareholder equity. Measures how effectively management uses equity to generate profit.",
-  "ROA": "Return on Assets. Net income relative to total assets — a measure of asset efficiency.",
+  "ROA": "Return on Assets. Net income relative to total assets, a measure of asset efficiency.",
   "Return on Assets (ROA)": "Net income relative to total assets. Measures how efficiently the company uses its assets to generate earnings.",
   "Asset Turnover": "Revenue divided by total assets. Shows how efficiently the company generates revenue from its asset base.",
   "Equity Multiplier": "Total assets divided by shareholder equity. A higher value indicates more financial leverage.",
@@ -43,12 +43,12 @@ export const METRIC_DEFINITIONS: Record<string, string> = {
   "DCF Upside": "Model-implied return vs. the current market price, based on a Discounted Cash Flow valuation.",
   "Fair Value": "The DCF model's estimate of intrinsic value per share.",
   "DCF Fair Value": "The DCF model's estimate of intrinsic value per share.",
-  "WACC": "Weighted Average Cost of Capital — the discount rate used in the DCF model. Reflects the blended cost of equity and debt financing.",
+  "WACC": "Weighted Average Cost of Capital. The discount rate used in the DCF model. Reflects the blended cost of equity and debt financing.",
 
   // Growth
-  "YoY": "Year-over-Year — the percentage change compared to the same period a year ago.",
-  "QoQ": "Quarter-over-Quarter — the percentage change compared to the immediately preceding quarter.",
-  "TTM": "Trailing Twelve Months — a rolling 12-month window of the most recent available data.",
+  "YoY": "Year-over-Year. The percentage change compared to the same period a year ago.",
+  "QoQ": "Quarter-over-Quarter. The percentage change compared to the immediately preceding quarter.",
+  "TTM": "Trailing Twelve Months. A rolling 12-month window of the most recent available data.",
 };
 
 interface Props {
@@ -67,7 +67,7 @@ export function MetricTooltip({ term, definition }: Props) {
       </span>
       <span
         role="tooltip"
-        className="pointer-events-none absolute bottom-full left-0 z-50 mb-2 w-52 rounded-2xl bg-[var(--home-ink)] px-3 py-2.5 text-[11px] leading-snug text-[var(--home-paper)] opacity-0 shadow-lg transition-opacity duration-150 group-hover:opacity-100"
+        className="pointer-events-none absolute bottom-full left-0 z-50 mb-2 w-52 rounded-2xl bg-[var(--home-ink)] px-3 py-2.5 text-2xs leading-snug text-[var(--home-paper)] opacity-0 shadow-lg transition-opacity duration-150 group-hover:opacity-100"
       >
         {text}
         <span className="absolute left-3 top-full border-4 border-transparent border-t-[var(--home-ink)]" />

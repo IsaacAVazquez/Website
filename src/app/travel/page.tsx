@@ -1,4 +1,3 @@
-/* eslint-disable react-refresh/only-export-components */
 import { StructuredData } from "@/components/StructuredData";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { TravelPlannerClient } from "./travel-planner-client";
