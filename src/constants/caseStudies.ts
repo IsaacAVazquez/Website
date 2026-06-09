@@ -775,6 +775,39 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     retrospective: "",
   },
 
+  "bay-area-transit-pulse": {
+    slug: "bay-area-transit-pulse",
+    title: "Bay Area Transit Pulse",
+    description:
+      "Snapshot-backed BART dashboard for the Bay Area with the line map, per-station departure boards, and active service alerts on one deep-linkable screen.",
+    role: "Full-Stack Developer & Designer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "BART API", "Snapshot pipeline"],
+    metrics: "Line directory · Per-station departures · Service alerts",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/bay-area-transit",
+    featured: false,
+
+    overview: {
+      summary:
+        "I built a BART dashboard that turns a checked-in snapshot of the BART public API into one calm surface for the line map, the next trains at any station, and live service alerts.",
+      impact:
+        "Puts the line map, station departures, and service alerts on a single screen instead of three separate apps.",
+    },
+    problem: {
+      context:
+        "Checking whether a train is coming usually means bouncing between a route map, a station page, and a separate alerts feed, and none of them share a view.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
+
   "mlb-pulse": {
     slug: "mlb-pulse",
     title: "MLB Pulse",
@@ -1030,6 +1063,7 @@ const PORTFOLIO_PROJECT_ORDER = [
   "mba-role-tracker",
   "polling-aggregator",
   "spacex-mission-control",
+  "bay-area-transit-pulse",
   "premier-league-pulse",
   "la-liga-pulse",
   "world-cup-pulse",
