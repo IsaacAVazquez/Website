@@ -251,6 +251,8 @@ The dynamic sections (groups, knockout rounds, fixtures, scorers, team options, 
 
 **State / route:** `?view=` (`groups`, `knockout`, `schedule`) and `?team=<slug>` for the team detail panel.
 
+**Derived UI:** the group-stage view also surfaces the 2026-specific "third-place race" (the eight best third-placed teams that reach the Round of 32), computed client-side from the group standings by the pure, unit-tested helper `src/lib/worldCupStandings.ts` (`getThirdPlaceRace`). The header shows a mounted-only kickoff countdown before the tournament starts.
+
 ### Football Dashboards (Premier League + La Liga)
 
 Both dashboards are snapshot-driven. Data is fetched from `football-data.org` by local scripts and committed as TypeScript files. The app reads those files at build time — no live API calls at runtime.

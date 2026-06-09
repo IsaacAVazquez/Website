@@ -5,10 +5,12 @@ import { useRouter, useSearchParams } from "next/navigation";
 import {
   CalendarDays,
   CircleAlert,
+  Clock,
   Flag,
   Globe,
   ListOrdered,
   MapPin,
+  Medal,
   Trophy,
   Users,
   X,
@@ -31,6 +33,12 @@ import type {
   WorldCupTeamSnapshot,
   WorldCupView,
 } from "@/types/worldCup";
+import {
+  getThirdPlaceRace,
+  hasThirdPlaceRaceStarted,
+  THIRD_PLACE_QUALIFY_COUNT,
+  type ThirdPlaceRow,
+} from "@/lib/worldCupStandings";
 import {
   buildWorldCupHref,
   normalizeTeamParam,
@@ -89,6 +97,40 @@ function formatTournamentWindow(start: string, end: string): string {
     timeZone: "UTC",
   }).format(startDate);
   return `${startLabel} – ${formatLongDate(end)}`;
+}
+
+const DAY_MS = 24 * 60 * 60 * 1000;
+
+/**
+ * Whole days between now and kickoff, computed after mount so the count never
+ * triggers a server/client hydration mismatch. Returns null until mounted and 0
+ * once the tournament has started.
+ */
+function useDaysUntilKickoff(startDate: string): number | null {
+  const [days, setDays] = useState<number | null>(null);
+  useEffect(() => {
+    const start = new Date(`${startDate}T00:00:00.000Z`).getTime();
+    if (Number.isNaN(start)) return;
+    const update = () => {
+      const diff = start - Date.now();
+      setDays(diff > 0 ? Math.ceil(diff / DAY_MS) : 0);
+    };
+    update();
+    const timer = window.setInterval(update, 60 * 60 * 1000);
+    return () => window.clearInterval(timer);
+  }, [startDate]);
+  return days;
+}
+
+function KickoffCountdown({ startDate }: { startDate: string }) {
+  const days = useDaysUntilKickoff(startDate);
+  if (days === null || days <= 0) return null;
+  return (
+    <span className="inline-flex flex-shrink-0 items-center gap-1.5 self-start rounded-full border border-[color-mix(in_srgb,var(--home-haze)_35%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-haze)_10%,var(--home-paper-alt))] px-3 py-1 text-xs font-semibold text-[var(--home-ink)]">
+      <Clock className="h-3.5 w-3.5 text-[var(--home-haze)]" />
+      {days === 1 ? "Kicks off tomorrow" : `Kicks off in ${days} days`}
+    </span>
+  );
 }
 
 async function fetchWorldCupTeamSnapshot(
@@ -312,16 +354,19 @@ export function WorldCupClient({
 
         {/* Status line */}
         <SurfaceCard className="p-4 sm:p-5">
-          <div className="flex items-start gap-3">
-            <Trophy className="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--home-haze)]" />
-            <div>
-              <p className="text-sm font-semibold text-[var(--home-ink)]">
-                {tournament.name} · {tournament.phase}
-              </p>
-              <p className="mt-1 text-sm leading-6 text-[var(--home-ink-muted)]">
-                {tournament.status}
-              </p>
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+            <div className="flex items-start gap-3">
+              <Trophy className="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--home-haze)]" />
+              <div>
+                <p className="text-sm font-semibold text-[var(--home-ink)]">
+                  {tournament.name} · {tournament.phase}
+                </p>
+                <p className="mt-1 text-sm leading-6 text-[var(--home-ink-muted)]">
+                  {tournament.status}
+                </p>
+              </div>
             </div>
+            <KickoffCountdown startDate={tournament.startDate} />
           </div>
         </SurfaceCard>
 
@@ -517,6 +562,9 @@ function GroupsView({
   selectedTeamId: string | null;
   onOpenTeam: (teamId: string) => void;
 }) {
+  const thirdPlaceRace = useMemo(() => getThirdPlaceRace(groups), [groups]);
+  const raceStarted = hasThirdPlaceRaceStarted(thirdPlaceRace);
+
   if (groups.length === 0) {
     return (
       <EmptyPanel
@@ -527,15 +575,45 @@ function GroupsView({
   }
 
   return (
-    <div className="grid gap-4 lg:grid-cols-2">
-      {groups.map((group) => (
-        <GroupTable
-          key={group.letter || group.name}
-          group={group}
-          selectedTeamId={selectedTeamId}
-          onOpenTeam={onOpenTeam}
+    <div className="space-y-5">
+      <QualificationLegend />
+      <div className="grid gap-4 lg:grid-cols-2">
+        {groups.map((group) => (
+          <GroupTable
+            key={group.letter || group.name}
+            group={group}
+            selectedTeamId={selectedTeamId}
+            onOpenTeam={onOpenTeam}
+          />
+        ))}
+      </div>
+      <ThirdPlaceRace
+        rows={thirdPlaceRace}
+        started={raceStarted}
+        selectedTeamId={selectedTeamId}
+        onOpenTeam={onOpenTeam}
+      />
+    </div>
+  );
+}
+
+function QualificationLegend() {
+  return (
+    <div className="flex flex-wrap items-center gap-x-5 gap-y-2 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-4 py-3 text-xs text-[var(--home-ink-muted)]">
+      <span className="flex items-center gap-1.5">
+        <span
+          className="h-2 w-2 flex-shrink-0 rounded-full"
+          style={{ backgroundColor: "var(--home-moss)" }}
         />
-      ))}
+        Top two advance to the Round of 32
+      </span>
+      <span className="flex items-center gap-1.5">
+        <span
+          className="h-2 w-2 flex-shrink-0 rounded-full"
+          style={{ backgroundColor: "var(--home-acid)" }}
+        />
+        Third place enters the eight-team wildcard race
+      </span>
     </div>
   );
 }
@@ -581,7 +659,18 @@ function GroupTable({
         <tbody>
           {group.standings.map((row, index) => {
             const isSelected = row.teamId === selectedTeamId;
-            const advances = index < 2;
+            const dotColor =
+              index < 2
+                ? "var(--home-moss)"
+                : index === 2
+                  ? "var(--home-acid)"
+                  : "var(--home-rule)";
+            const dotTitle =
+              index < 2
+                ? "In a direct qualifying place"
+                : index === 2
+                  ? "In the third-place wildcard race"
+                  : "";
             return (
               <tr
                 key={row.teamId}
@@ -599,12 +688,8 @@ function GroupTable({
                   <span className="flex items-center gap-1.5">
                     <span
                       className="h-1.5 w-1.5 flex-shrink-0 rounded-full"
-                      style={{
-                        backgroundColor: advances
-                          ? "var(--home-moss)"
-                          : "var(--home-rule)",
-                      }}
-                      title={advances ? "In a qualifying place" : ""}
+                      style={{ backgroundColor: dotColor }}
+                      title={dotTitle}
                     />
                     <span className="font-semibold text-[var(--home-ink)]">
                       {row.rank}
@@ -646,6 +731,130 @@ function GroupTable({
           })}
         </tbody>
       </table>
+    </SurfaceCard>
+  );
+}
+
+function ThirdPlaceRace({
+  rows,
+  started,
+  selectedTeamId,
+  onOpenTeam,
+}: {
+  rows: ThirdPlaceRow[];
+  started: boolean;
+  selectedTeamId: string | null;
+  onOpenTeam: (teamId: string) => void;
+}) {
+  if (rows.length === 0) return null;
+
+  return (
+    <SurfaceCard className="p-5 sm:p-6">
+      <div className="flex items-center justify-between border-b border-[var(--home-rule)] pb-4">
+        <div className="flex items-center gap-2">
+          <Medal className="h-5 w-5 flex-shrink-0 text-[var(--home-haze)]" />
+          <h2 className="text-lg font-bold text-[var(--home-ink)]">
+            Third-place race
+          </h2>
+        </div>
+        <span className="text-sm text-[var(--home-ink-muted)]">
+          Best {THIRD_PLACE_QUALIFY_COUNT} of {rows.length} advance
+        </span>
+      </div>
+
+      {!started ? (
+        <p className="mt-4 text-sm leading-6 text-[var(--home-ink-muted)]">
+          For the first time the World Cup keeps eight third-placed teams. Once
+          the group matches begin, the side that finishes third in every group is
+          ranked here by points, then goal difference, then goals scored, and the
+          best eight join the top two from each group in the Round of 32.
+        </p>
+      ) : (
+        <>
+          <table className="mt-4 w-full border-separate border-spacing-y-1.5 text-sm">
+            <thead>
+              <tr className="text-left text-[11px] uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                <th className="px-2 py-1 font-semibold">#</th>
+                <th className="px-2 py-1 font-semibold">Team</th>
+                <th className="px-2 py-1 text-center font-semibold">Grp</th>
+                <th className="px-2 py-1 text-center font-semibold">P</th>
+                <th className="px-2 py-1 text-center font-semibold">GD</th>
+                <th className="px-2 py-1 text-center font-semibold">Pts</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((row) => {
+                const isSelected = row.teamId === selectedTeamId;
+                return (
+                  <tr
+                    key={row.teamId}
+                    className="border border-[var(--home-rule)]"
+                    style={
+                      isSelected
+                        ? {
+                            background:
+                              "color-mix(in srgb, var(--home-haze) 9%, var(--home-paper-alt))",
+                          }
+                        : { background: "var(--home-paper-alt)" }
+                    }
+                  >
+                    <td className="rounded-l-xl px-2 py-2 align-middle">
+                      <span className="flex items-center gap-1.5">
+                        <span
+                          className="h-1.5 w-1.5 flex-shrink-0 rounded-full"
+                          style={{
+                            backgroundColor: row.qualifies
+                              ? "var(--home-moss)"
+                              : "var(--home-rule)",
+                          }}
+                          title={
+                            row.qualifies
+                              ? "In a qualifying place"
+                              : "Outside the cut"
+                          }
+                        />
+                        <span className="font-semibold text-[var(--home-ink)]">
+                          {row.rank}
+                        </span>
+                      </span>
+                    </td>
+                    <td className="px-2 py-2 align-middle">
+                      <button
+                        type="button"
+                        onClick={() => onOpenTeam(row.teamId)}
+                        className="flex min-h-[36px] w-full items-center gap-2 rounded-lg text-left transition hover:text-[var(--home-haze)]"
+                      >
+                        <CrestAvatar crest={row.crest} name={row.name} size="sm" />
+                        <span className="truncate font-semibold text-[var(--home-ink)]">
+                          {row.code || row.name}
+                        </span>
+                      </button>
+                    </td>
+                    <td className="px-2 py-2 text-center align-middle text-[var(--home-ink-muted)]">
+                      {row.group}
+                    </td>
+                    <td className="px-2 py-2 text-center align-middle text-[var(--home-ink-muted)]">
+                      {row.played}
+                    </td>
+                    <td className="px-2 py-2 text-center align-middle text-[var(--home-ink-muted)]">
+                      {row.goalDifference > 0
+                        ? `+${row.goalDifference}`
+                        : row.goalDifference}
+                    </td>
+                    <td className="rounded-r-xl px-2 py-2 text-center align-middle font-bold text-[var(--home-ink)]">
+                      {row.points}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+          <p className="mt-3 text-xs leading-5 text-[var(--home-ink-muted)]">
+            The top {THIRD_PLACE_QUALIFY_COUNT} third-placed teams reach the Round
+            of 32. The order stays provisional until every group has finished.
+          </p>
+        </>
+      )}
     </SurfaceCard>
   );
 }
