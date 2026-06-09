@@ -5,7 +5,7 @@ import { WineCellarClient } from "./wine-cellar-client";
 export const metadata = constructMetadata({
   title: "Wine Cellar",
   description:
-    "Personal wine reviewing app for logging tastings, rating bottles, and tracking the wines you've poured — saved locally in your browser.",
+    "Personal wine reviewing app for logging tastings, rating bottles, and tracking the wines you've poured. Saved locally in your browser.",
   canonicalUrl: "/wine-cellar",
   dateModified: "2026-04-28",
   aiMetadata: {
@@ -55,7 +55,7 @@ export default function WineCellarPage() {
         data={{
           name: "Wine Cellar",
           description:
-            "Personal wine reviewing app for logging tastings, rating bottles, and tracking your cellar — saved locally in your browser.",
+            "Personal wine reviewing app for logging tastings, rating bottles, and tracking your cellar. Saved locally in your browser.",
           url: "https://isaacavazquez.com/wine-cellar",
           applicationCategory: "LifestyleApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
