@@ -2426,7 +2426,19 @@ img {
 }
 @media (max-width: 1280px) {
   .invest-shell { grid-template-columns: 200px minmax(0, 1fr); }
-  .invest-rail { display: none !important; }
+  /* The rail holds the "Add a holding" form, allocation chart, and movers.
+     Don't hide it on narrower screens — reflow it into a full-width band below
+     the main column, otherwise there is no way to add a holding on tablet or
+     mobile and the empty-state instructions point at nothing. */
+  .invest-rail {
+    grid-column: 1 / -1;
+    border-left: 0;
+    border-top: 1px solid var(--home-rule);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 22px 26px;
+    align-items: start;
+  }
 }
 @media (max-width: 900px) {
   .invest-shell { grid-template-columns: 1fr; border-radius: 20px; }
@@ -4310,5 +4322,11 @@ input[type="range"]:focus-visible::-moz-range-thumb {
 @media (prefers-reduced-motion: reduce) {
   .invest-retire-lever-skeleton {
     animation: none;
+  }
+  /* Stop the looping skeleton/spinner animations across the investments
+     surface for motion-sensitive users (the static state stays legible). */
+  .invest-page-stack .animate-pulse,
+  .invest-page-stack .animate-spin {
+    animation: none !important;
   }
 }

@@ -219,18 +219,25 @@ export function PortfolioHeroCard({
       .attr("fill", "none")
       .attr("stroke", "var(--home-haze)")
       .attr("stroke-opacity", 0.5);
-    pulse
-      .append("animate")
-      .attr("attributeName", "r")
-      .attr("values", "6;14;6")
-      .attr("dur", "2.4s")
-      .attr("repeatCount", "indefinite");
-    pulse
-      .append("animate")
-      .attr("attributeName", "stroke-opacity")
-      .attr("values", "0.55;0;0.55")
-      .attr("dur", "2.4s")
-      .attr("repeatCount", "indefinite");
+    // SMIL animations can't be disabled via CSS, so honor reduced-motion here.
+    const prefersReducedMotion =
+      typeof window !== "undefined" &&
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!prefersReducedMotion) {
+      pulse
+        .append("animate")
+        .attr("attributeName", "r")
+        .attr("values", "6;14;6")
+        .attr("dur", "2.4s")
+        .attr("repeatCount", "indefinite");
+      pulse
+        .append("animate")
+        .attr("attributeName", "stroke-opacity")
+        .attr("values", "0.55;0;0.55")
+        .attr("dur", "2.4s")
+        .attr("repeatCount", "indefinite");
+    }
 
     const yAxisG = d3
       .select(svg)
