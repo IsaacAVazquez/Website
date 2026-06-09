@@ -13,7 +13,7 @@ export const formula1Snapshot: Formula1Snapshot = {
     "constructorStandings": "https://api.openf1.org/v1/championship_teams?session_key=11299"
   },
   "season": 2026,
-  "generatedAt": "2026-06-08T12:41:56.596Z",
+  "generatedAt": "2026-06-09T11:28:15.249Z",
   "defaultMeetingKey": "1287",
   "standingsMeetingKey": "1286",
   "meetings": [

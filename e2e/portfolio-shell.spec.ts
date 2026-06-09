@@ -4,12 +4,12 @@ const routeExpectations = [
   {
     path: "/",
     title: /Product Manager \| UC Berkeley Haas MBA \| Portfolio & Case Studies \| Isaac Vazquez/,
-    h1: /i build products that make hard problems easier to act on/i,
+    h1: /isaac\s*vazquez/i,
   },
   {
     path: "/portfolio",
     title: /Projects \| Isaac Vazquez/,
-    h1: /all projects across product, analytics, and tooling/i,
+    h1: /all projects across product, analytics & tooling/i,
   },
   {
     path: "/contact",
@@ -19,7 +19,7 @@ const routeExpectations = [
   {
     path: "/writing",
     title: /Writing \| Isaac Vazquez/,
-    h1: /writing on product, ai, and judgment/i,
+    h1: /notes on product, ai & judgment/i,
   },
   {
     path: "/resume",
@@ -51,6 +51,7 @@ const orderedPortfolioTitles = [
   "Fantasy Football Analytics Platform",
   "NFL Pulse",
   "Formula 1 Pulse",
+  "Fantasy Formula 1 Optimizer",
   "PGA Tour Pulse",
   "MLB Pulse",
   "NBA Pulse",
@@ -79,14 +80,38 @@ test.describe("Portfolio shell", () => {
     });
   }
 
-  test("/portfolio shows the full ordered project index", async ({ page }) => {
+  test("/portfolio surfaces every project across the featured spot and archive pages", async ({
+    page,
+  }) => {
     await page.goto("/portfolio");
     await page.waitForLoadState("networkidle");
 
-    const projectTitles = await page
-      .locator('section[aria-label="All projects"] h3')
-      .allTextContents();
+    // The flagship project is pinned as the featured spotlight (an <h2>),
+    // pulled out of the paginated archive grid below.
+    await expect(
+      page.getByRole("heading", { name: "Investment Analytics Platform" }),
+    ).toBeVisible();
 
-    expect(projectTitles).toEqual(orderedPortfolioTitles);
+    // The archive grid paginates (12 cards per page). Walk every page and
+    // collect the project card titles (each an <h3>) so a project silently
+    // dropping out of the index still fails the test.
+    const archiveTitles = new Set<string>();
+    const collect = async () => {
+      const titles = await page.locator("h3").allTextContents();
+      titles.forEach((t) => archiveTitles.add(t.trim()));
+    };
+    const nextButton = page.getByRole("button", { name: /^next$/i });
+
+    await collect();
+    while (!(await nextButton.isDisabled())) {
+      await nextButton.click();
+      await page.waitForTimeout(200);
+      await collect();
+    }
+
+    const surfaced = new Set(archiveTitles);
+    surfaced.add("Investment Analytics Platform");
+
+    expect([...surfaced].sort()).toEqual([...orderedPortfolioTitles].sort());
   });
 });

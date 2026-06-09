@@ -29,6 +29,8 @@ export function CrestAvatar({
       <img
         src={crest}
         alt={`${name} crest`}
+        loading="lazy"
+        decoding="async"
         className={cn(
           "rounded-full border border-[var(--home-rule)] bg-white object-contain p-1",
           dimensionClass

@@ -136,16 +136,13 @@ These routes manage more of their own spacing and width:
 - `/writing/[slug]`
 - `/resume`
 - `/spacex-mission-control`
-<<<<<<< HEAD
 - `/wine-cellar`
-=======
 - `/world-cup-2026`
->>>>>>> deb110b23d963f2ced13f361fb9f660c3cb6ecc7
 
 ### Footer variants
 
 - `/` and `/contact` use the compact footer
-- most other routes use the full `Thanks for taking a look.` footer
+- most other routes use the full footer, which closes with the shared contact CTA (`ContactCta`, headline `Building something that needs judgment and follow-through?`) — the same updated CTA used at the bottom of the home page
 
 ---
 

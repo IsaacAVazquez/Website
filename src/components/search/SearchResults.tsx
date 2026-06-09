@@ -246,7 +246,7 @@ function SearchResultCard({ result, query }: SearchResultCardProps) {
             {result.tags.slice(0, 4).map((tag) => (
               <span
                 key={tag}
-                className="inline-flex items-center rounded-full px-2.5 py-0.5 text-[11px] font-semibold"
+                className="inline-flex items-center rounded-full px-2.5 py-0.5 text-2xs font-semibold"
                 style={tagPillStyle}
               >
                 {tag}
@@ -254,7 +254,7 @@ function SearchResultCard({ result, query }: SearchResultCardProps) {
             ))}
             {result.tags.length > 4 && (
               <span
-                className="inline-flex items-center rounded-full px-2.5 py-0.5 text-[11px] font-semibold"
+                className="inline-flex items-center rounded-full px-2.5 py-0.5 text-2xs font-semibold"
                 style={tagPillStyle}
               >
                 +{result.tags.length - 4} more

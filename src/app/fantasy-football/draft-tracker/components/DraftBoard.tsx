@@ -293,14 +293,14 @@ export function DraftBoard({
                       <div className="flex flex-wrap items-center gap-2">
                         <p className="truncate text-base font-semibold">{player.name}</p>
                         <span
-                          className="inline-flex min-h-[32px] items-center rounded-full border px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em]"
+                          className="inline-flex min-h-[32px] items-center rounded-full border px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em]"
                           style={getPositionTone(player.position)}
                         >
                           {player.position}
                         </span>
                         {fitsCurrentNeed && (
                           <span
-                            className="inline-flex min-h-[32px] items-center rounded-full border px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em]"
+                            className="inline-flex min-h-[32px] items-center rounded-full border px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em]"
                             style={{
                               borderColor: "color-mix(in srgb, var(--color-success) 28%, var(--home-rule))",
                               background: "color-mix(in srgb, var(--color-success) 10%, var(--home-paper))",

@@ -641,7 +641,7 @@ export function InterchangeIQClient() {
                     lineHeight: 1.55,
                   }}
                 >
-                  At your current card mix, Stripe IC+ never beats Stripe flat — the markup plus
+                  At your current card mix, Stripe IC+ never beats Stripe flat. The markup plus
                   blended interchange exceeds the flat rate at every ticket size.
                 </p>
               )}
@@ -859,7 +859,7 @@ export function InterchangeIQClient() {
         >
           Interchange rates based on published 2024 Visa/Mastercard US schedules and Amex OptBlue
           program averages. Processor fees from public pricing pages. For educational purposes
-          only — actual rates vary by industry, card type, and negotiated terms.
+          only. Actual rates vary by industry, card type, and negotiated terms.
         </p>
       </section>
         </div>
