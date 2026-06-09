@@ -327,8 +327,11 @@ export async function buildGolfSnapshotData(): Promise<GolfSnapshot> {
     "";
   const statusType = competition.status?.type ?? event.status?.type;
   const period = competition.status?.period ?? event.status?.period ?? null;
-  const year = event.startDate
-    ? new Date(event.startDate).getFullYear()
+  // Guard NaN: an invalid (not just missing) startDate must not produce a
+  // "tournament-NaN" id.
+  const startYear = event.startDate ? new Date(event.startDate).getFullYear() : NaN;
+  const year = Number.isFinite(startYear)
+    ? startYear
     : new Date(generatedAt).getFullYear();
 
   const tournament: GolfTournament = {
@@ -338,8 +341,12 @@ export async function buildGolfSnapshotData(): Promise<GolfSnapshot> {
     course: course?.name ?? "",
     coursePar,
     location,
-    startDate: (event.startDate ?? "").slice(0, 10),
-    endDate: (event.endDate ?? "").slice(0, 10),
+    startDate: Number.isFinite(Date.parse(event.startDate ?? ""))
+      ? (event.startDate ?? "").slice(0, 10)
+      : "",
+    endDate: Number.isFinite(Date.parse(event.endDate ?? ""))
+      ? (event.endDate ?? "").slice(0, 10)
+      : "",
     roundLabel: period ? `Round ${period}` : "",
     status: statusType?.detail ?? statusType?.description ?? "",
     fieldSize: competitors.length,

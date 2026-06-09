@@ -697,6 +697,12 @@ function KnockoutView({
   );
 }
 
+function worldCupFixtureLabel(fixture: unknown): string {
+  const { stage, group } = fixture as { stage?: string | null; group?: string | null };
+  if (group) return `Group ${group}`;
+  return stage || "World Cup match";
+}
+
 function ScheduleView({
   recentFixtures,
   upcomingFixtures,
@@ -723,6 +729,7 @@ function ScheduleView({
           description="Upcoming matches"
           fixtures={upcomingFixtures}
           onOpenTeam={onOpenTeam}
+          getFallbackLabel={worldCupFixtureLabel}
         />
       )}
       {recentFixtures.length > 0 && (
@@ -731,6 +738,7 @@ function ScheduleView({
           description="Latest results"
           fixtures={recentFixtures}
           onOpenTeam={onOpenTeam}
+          getFallbackLabel={worldCupFixtureLabel}
         />
       )}
     </div>

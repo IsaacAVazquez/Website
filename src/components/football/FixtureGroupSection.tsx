@@ -32,12 +32,15 @@ export function FixtureGroupSection({
   fixtures,
   contextTeamId,
   onOpenTeam,
+  getFallbackLabel,
 }: {
   title: string;
   description: string;
   fixtures: GenericFixture[];
   contextTeamId?: string | null;
   onOpenTeam?: (teamId: string) => void;
+  /** Per-fixture eyebrow label when the fixture has no matchday. */
+  getFallbackLabel?: (fixture: GenericFixture) => string | undefined;
 }) {
   const groups = groupFixturesByDay(fixtures);
 
@@ -66,6 +69,7 @@ export function FixtureGroupSection({
                     fixture={fixture}
                     contextTeamId={contextTeamId}
                     onOpenTeam={onOpenTeam}
+                    fallbackLabel={getFallbackLabel?.(fixture)}
                   />
                 ))}
               </div>
