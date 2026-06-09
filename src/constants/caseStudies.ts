@@ -1038,6 +1038,39 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     tradeoffs: [],
     retrospective: "",
   },
+
+  "travel-planner": {
+    slug: "travel-planner",
+    title: "Travel Planner",
+    description:
+      "Browser-persisted trip planner that turns dates into a day-by-day itinerary you can check off and journal against, with no account required.",
+    role: "Product Builder & Designer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "Local persistence", "Itinerary UX"],
+    metrics: "Day-by-day itinerary · Stop check-off · Per-trip journal",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/travel",
+    featured: true,
+
+    overview: {
+      summary:
+        "I built a travel planner that lays a trip's dates out as a day-by-day itinerary, lets you check off stops, and keeps a journal entry per day.",
+      impact:
+        "Keeps trip planning, the live itinerary, and the trip diary on one surface instead of scattered across notes apps.",
+    },
+    problem: {
+      context:
+        "Trip planning usually splits across a notes app, a calendar, and a separate journal, so nothing stays in sync once the trip starts.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
 };
 
 const HOMEPAGE_FEATURED_SLUGS = [
@@ -1059,6 +1092,7 @@ const PORTFOLIO_PROJECT_ORDER = [
   "museum-log",
   "wine-cellar",
   "recipe-finder",
+  "travel-planner",
   "budget-planner",
   "mba-role-tracker",
   "polling-aggregator",

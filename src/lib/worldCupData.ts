@@ -191,9 +191,11 @@ function classifyStage(headline: string | null | undefined): StageInfo {
   if (groupLetter) {
     return { stage: `Group ${groupLetter}`, group: groupLetter, knockout: null };
   }
-  // Check the final before the generic round matchers so "Final" doesn't get
-  // swallowed by "semiFINAL"/"quarterFINAL"; iterate most-specific first.
-  for (const round of [...KNOCKOUT_ROUNDS].reverse()) {
+  // Test specific rounds before the generic "final" matcher: /final/i also
+  // matches the "final" inside "quarterfinal"/"semifinal", so quarter/semi/third
+  // must win first. KNOCKOUT_ROUNDS is ordered specific -> generic, so iterate
+  // it as-is (reversing it would let "Final" swallow QF/SF/3rd-place).
+  for (const round of KNOCKOUT_ROUNDS) {
     if (round.test.test(text)) {
       return {
         stage: round.name,
@@ -428,11 +430,24 @@ function computePhase(
         "Group standings, the bracket, and scorers fill in here once the tournament kicks off on June 11.",
     };
   }
-  const finalFixture = fixtures.find((fixture) => fixture.stage === "Final");
+  // Pick the latest-dated "Final" so a single fixture is selected even if the
+  // feed ever labels more than one match "Final" (and so we never mistake an
+  // earlier-round match for the final).
+  const finalFixture = fixtures
+    .filter((fixture) => fixture.stage === "Final")
+    .sort((a, b) => new Date(b.utcDate).getTime() - new Date(a.utcDate).getTime())[0];
   if (finalFixture && finalFixture.status === "FINISHED") {
     return { phase: "Complete", status: "The tournament is complete." };
   }
-  const hasKnockout = fixtures.some((fixture) => fixture.group === null && fixture.stage !== "Group stage");
+  // ESPN publishes the full bracket skeleton (SCHEDULED placeholders) before the
+  // group stage even starts, so require a knockout fixture that has actually
+  // kicked off before declaring the knockout phase.
+  const hasKnockout = fixtures.some(
+    (fixture) =>
+      fixture.group === null &&
+      fixture.stage !== "Group stage" &&
+      fixture.status !== "SCHEDULED"
+  );
   const anyStarted = fixtures.some((fixture) => fixture.status !== "SCHEDULED");
   if (hasKnockout && anyStarted) {
     return {
@@ -498,7 +513,12 @@ export async function buildWorldCupSnapshotData(): Promise<WorldCupSnapshot> {
   groups.sort((a, b) => a.letter.localeCompare(b.letter));
 
   // Fall back to fixtures for team options when standings are unavailable.
+  // Only group-stage fixtures carry real teams; knockout fixtures use ESPN
+  // bracket placeholders ("QF W1", "1E", "3RD A/B/C") that must not become
+  // selectable teams. Every real team appears in group-stage fixtures, so this
+  // still fully populates the fallback.
   for (const fixture of fixtures) {
+    if (!fixture.group) continue;
     for (const team of [fixture.homeTeam, fixture.awayTeam]) {
       if (!team.id || teamOptionById.has(team.id)) continue;
       teamOptionById.set(team.id, {

@@ -42,6 +42,7 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
     "/recipe-finder",
     "/resume",
     "/spacex-mission-control",
+    "/travel",
     "/wine-cellar",
     "/world-cup-2026",
     "/writing",

@@ -319,7 +319,7 @@ function ProjectCard({
         </div>
         <div className={styles.spotlightRight}>
           <div>
-            <h3>{study.title}</h3>
+            <h3 data-testid="portfolio-card-title">{study.title}</h3>
             <p style={{ marginTop: 14 }}>{summary}</p>
           </div>
           <div className={styles.cardFootRow}>
@@ -355,7 +355,7 @@ function ProjectCard({
         <span>{study.timeline}</span>
       </div>
       <div className={styles.cardImg} aria-hidden="true" />
-      <h3>{study.title}</h3>
+      <h3 data-testid="portfolio-card-title">{study.title}</h3>
       <p>{summary}</p>
       <div className={styles.cardFootRow}>
         <div className={styles.cardTagRow}>
