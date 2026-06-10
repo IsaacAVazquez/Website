@@ -7,28 +7,28 @@ import { generateBreadcrumbStructuredData } from "@/lib/seo";
 // Hand-curated snapshot of what I'm focused on right now.
 // Refresh when anything here goes stale — this page is meant to feel
 // current, not archival.
-const NOW_UPDATED = "2026-04-21";
-const NOW_UPDATED_LABEL = "April 2026";
+const NOW_UPDATED = "2026-06-10";
+const NOW_UPDATED_LABEL = "June 2026";
 const NOW_LOCATION = "Berkeley, CA";
 
 const focus = [
   {
     kicker: "Primary focus",
-    title: "Haas MBA, year one",
+    title: "Haas MBA, between years",
     detail:
-      "Finishing core coursework, recruiting for product internships, and running the MBA internship tracker as a side tool for my cohort.",
+      "First year is in the books. I'm spending the summer putting the coursework to work and keeping the MBA internship tracker sharp for the next recruiting cycle.",
   },
   {
     kicker: "Building",
-    title: "This site, in public",
+    title: "World Cup Pulse",
     detail:
-      "Shipping experimental dashboards, refining the writing archive, and treating the portfolio itself as a product. See the changelog for what's new.",
+      "A tournament hub for the first 48-team World Cup, live for the June 11 kickoff. Group tables, the knockout bracket, and the third-place race, refreshed every six hours.",
   },
   {
     kicker: "Writing",
-    title: "Agentic AI and PM workflows",
+    title: "Two series at once",
     detail:
-      "Working through a series on agentic product decisions, including when agents help, when they get in the way, and what it means for PM craft.",
+      "A daily countdown through the top ten World Cup contenders, alongside the ongoing agentic AI series on evals, costs, and what agents change about PM craft.",
   },
 ];
 
@@ -52,6 +52,11 @@ const reading = [
 
 const building = [
   {
+    label: "World Cup 2026 hub",
+    href: "/world-cup-2026",
+    detail: "Groups, knockout rounds, and the third-place race for all 48 teams.",
+  },
+  {
     label: "MBA internship tracker",
     href: "/mba-internship-notifications",
     detail: "Role aggregation and notifications for my cohort.",
@@ -59,17 +64,12 @@ const building = [
   {
     label: "Investments research",
     href: "/investments",
-    detail: "Portfolio tracker with a researcher sidebar for each symbol.",
+    detail: "Portfolio tracker with a researcher sidebar and a new retirement planner.",
   },
   {
-    label: "Football dashboards",
-    href: "/premier-league",
-    detail: "Weekly snapshots for Premier League and La Liga.",
-  },
-  {
-    label: "March Madness 2026",
-    href: "/march-madness-2026",
-    detail: "Seasonal bracket tooling, wrapping for the year.",
+    label: "Bay Area Transit Pulse",
+    href: "/bay-area-transit",
+    detail: "Live BART departures, lines, and advisories for my home system.",
   },
 ];
 
