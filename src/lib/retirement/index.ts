@@ -21,10 +21,14 @@ import {
   CMA_VERIFIED,
 } from "./capitalMarketAssumptions";
 
-function verdictFor(successRate: number): Verdict {
-  if (successRate >= 0.9) return "on-track";
-  if (successRate >= 0.8) return "good";
-  if (successRate >= 0.65) return "fair";
+function verdictFor(successRate: number, threshold: number): Verdict {
+  // Tie the verdict to the user's own on-track threshold so the badge, gauge
+  // tone, and the "you're meeting it" copy always agree. A fixed 0.9/0.8 ladder
+  // would label an 0.82 success "Looking good" even when the user set a 0.95
+  // target (and conversely call it a miss when their bar is only 0.70).
+  if (successRate >= threshold) return "on-track";
+  if (successRate >= threshold - 0.1) return "good";
+  if (successRate >= threshold - 0.25) return "fair";
   return "at-risk";
 }
 
@@ -64,7 +68,7 @@ export function projectCore(input: RetirementPlanInput, referenceYear?: number):
     safeWithdrawalRate: swr,
     deterministic,
     monteCarlo,
-    verdict: verdictFor(monteCarlo.successRate),
+    verdict: verdictFor(monteCarlo.successRate, input.assumptions.successThreshold),
     assumptions: {
       cmaSource: CMA_SOURCE,
       cmaAsOf: CMA_AS_OF,

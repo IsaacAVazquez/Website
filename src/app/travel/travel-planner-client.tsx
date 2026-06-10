@@ -3,20 +3,32 @@
 import { type FormEvent, useMemo, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import {
+  AlertTriangle,
+  BedDouble,
   BookOpen,
   Bookmark,
   CalendarDays,
   CheckCircle2,
   Circle,
   Compass,
+  Frown,
+  Landmark,
   ListChecks,
+  type LucideIcon,
   Map,
   MapPin,
+  Meh,
+  Moon,
   NotebookPen,
   Plane,
   Plus,
+  Smile,
   Sparkles,
+  Star,
+  Ticket,
+  Train,
   Trash2,
+  UtensilsCrossed,
 } from "lucide-react";
 import { getReducedMotionVariants, fadeInVariants } from "@/components/investments/animations";
 import {
@@ -24,7 +36,7 @@ import {
   ACTIVITY_CATEGORY_LABELS,
   JOURNAL_MOODS,
   JOURNAL_MOOD_LABELS,
-  formatActivityTime,
+  formatActivityTimeRange,
   formatDayHeading,
   formatTripDateRange,
   getDefaultActivityDate,
@@ -36,7 +48,7 @@ import {
   useTravelPlanner,
 } from "@/hooks/useTravelPlanner";
 import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
-import type { JournalEntry, Trip, TripActivity } from "@/types/travel";
+import type { ActivityCategory, JournalEntry, Trip, TripActivity } from "@/types/travel";
 
 const NAV_ITEMS = [
   { id: "overview", label: "Overview", icon: Compass, href: "#section-overview" },
@@ -59,10 +71,28 @@ const MOOD_TONE: Record<JournalEntry["mood"], string> = {
   tired: "var(--color-error, #b3322c)",
 };
 
+const MOOD_ICON: Record<JournalEntry["mood"], LucideIcon> = {
+  amazing: Star,
+  good: Smile,
+  neutral: Meh,
+  rough: Frown,
+  tired: Moon,
+};
+
+const CATEGORY_META: Record<ActivityCategory, { icon: LucideIcon; tint: string }> = {
+  transit: { icon: Train, tint: "#3b6ea5" },
+  lodging: { icon: BedDouble, tint: "#7c5cbf" },
+  food: { icon: UtensilsCrossed, tint: "#b8860b" },
+  sight: { icon: Landmark, tint: "#2f7d4f" },
+  activity: { icon: Ticket, tint: "#c2410c" },
+  other: { icon: MapPin, tint: "var(--home-ink-muted)" },
+};
+
 function emptyActivityDraft(date: string): ActivityDraft {
   return {
     date,
     time: "",
+    endTime: "",
     title: "",
     location: "",
     category: "activity",
@@ -181,6 +211,7 @@ export function TravelPlannerClient() {
     setActivityDraft({
       date: activity.date,
       time: activity.time,
+      endTime: activity.endTime,
       title: activity.title,
       location: activity.location,
       category: activity.category,
@@ -276,7 +307,7 @@ export function TravelPlannerClient() {
             </div>
           </aside>
 
-          <main className="tool-main">
+          <div className="tool-main">
             <div className="tool-topbar">
               <div className="min-w-0">
                 <p className="tool-crumbs">
@@ -424,7 +455,7 @@ export function TravelPlannerClient() {
             ) : (
               <EmptyState onStart={() => setShowTripForm(true)} />
             )}
-          </main>
+          </div>
 
           <aside className="tool-rail" aria-label="Quick actions">
             <section aria-labelledby="rail-add-activity">
@@ -449,29 +480,51 @@ export function TravelPlannerClient() {
                       className={fieldInput}
                     />
                   </label>
+                  <label className="block">
+                    <span className={fieldLabel}>Date</span>
+                    <input
+                      type="date"
+                      value={activityDraft.date}
+                      min={activeTrip?.startDate}
+                      max={activeTrip?.endDate}
+                      onChange={(event) =>
+                        setActivityDraft((draft) => ({ ...draft, date: event.target.value }))
+                      }
+                      className={fieldInput}
+                    />
+                  </label>
                   <div className="grid grid-cols-2 gap-2">
                     <label className="block">
-                      <span className={fieldLabel}>Date</span>
+                      <span className={fieldLabel}>Starts</span>
                       <input
-                        type="date"
-                        value={activityDraft.date}
-                        min={activeTrip?.startDate}
-                        max={activeTrip?.endDate}
+                        type="time"
+                        value={activityDraft.time}
                         onChange={(event) =>
-                          setActivityDraft((draft) => ({ ...draft, date: event.target.value }))
+                          setActivityDraft((draft) => {
+                            const time = event.target.value;
+                            return {
+                              ...draft,
+                              time,
+                              // Drop an end that's no longer after the start.
+                              endTime:
+                                time && draft.endTime > time ? draft.endTime : "",
+                            };
+                          })
                         }
                         className={fieldInput}
                       />
                     </label>
                     <label className="block">
-                      <span className={fieldLabel}>Time</span>
+                      <span className={fieldLabel}>Ends</span>
                       <input
                         type="time"
-                        value={activityDraft.time}
+                        value={activityDraft.endTime}
+                        min={activityDraft.time || undefined}
+                        disabled={!activityDraft.time}
                         onChange={(event) =>
-                          setActivityDraft((draft) => ({ ...draft, time: event.target.value }))
+                          setActivityDraft((draft) => ({ ...draft, endTime: event.target.value }))
                         }
-                        className={fieldInput}
+                        className={`${fieldInput} disabled:cursor-not-allowed disabled:opacity-50`}
                       />
                     </label>
                   </div>
@@ -668,6 +721,7 @@ function ActiveTripView({
   onSelectTrip,
   onRemoveTrip,
 }: ActiveTripViewProps) {
+  const today = getTodayKey();
   const journalSorted = useMemo(
     () =>
       [...trip.journal].sort((left, right) => {
@@ -696,7 +750,12 @@ function ActiveTripView({
     {
       label: "Stops",
       value: `${summary.activitiesCompleted} / ${summary.activitiesTotal}`,
-      sub: summary.activitiesTotal === 0 ? "Add your first stop" : "Completed",
+      sub:
+        summary.activitiesTotal === 0
+          ? "Add your first stop"
+          : summary.conflictCount > 0
+            ? `${summary.conflictCount} time overlap${summary.conflictCount === 1 ? "" : "s"}`
+            : "Completed",
     },
     {
       label: "Journal",
@@ -828,6 +887,28 @@ function ActiveTripView({
           </p>
         </div>
 
+        {summary.activitiesTotal > 0 ? (
+          <div className="mt-3">
+            <div
+              className="h-1.5 w-full overflow-hidden rounded-full bg-[var(--home-rule)]"
+              role="progressbar"
+              aria-valuemin={0}
+              aria-valuemax={summary.activitiesTotal}
+              aria-valuenow={summary.activitiesCompleted}
+              aria-label="Itinerary completion"
+            >
+              <div
+                className="h-full rounded-full bg-[var(--color-success,#2f7d4f)] transition-[width] duration-500"
+                style={{
+                  width: `${Math.round(
+                    (summary.activitiesCompleted / summary.activitiesTotal) * 100
+                  )}%`,
+                }}
+              />
+            </div>
+          </div>
+        ) : null}
+
         {summary.activitiesTotal === 0 ? (
           <div className="tool-empty mt-4">
             <p className="text-[13.5px] font-semibold text-[var(--home-ink)]">No stops yet</p>
@@ -838,12 +919,20 @@ function ActiveTripView({
             {summary.dayBuckets.map((bucket) => (
               <div key={bucket.date} className="flex flex-col gap-2">
                 <header className="flex items-baseline justify-between gap-2">
-                  <h3 className="text-[13px] font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
-                    {formatDayHeading(bucket.date)}
+                  <h3 className="flex items-center gap-2 text-[13px] font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                    <span className={bucket.date === today ? "text-[var(--home-ink)]" : undefined}>
+                      {formatDayHeading(bucket.date)}
+                    </span>
+                    {bucket.date === today ? (
+                      <span className="rounded-full bg-[var(--home-ink)] px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-[0.12em] text-[var(--home-paper)]">
+                        Today
+                      </span>
+                    ) : null}
                   </h3>
                   <span className="text-[11.5px] text-[var(--home-ink-muted)] [font-variant-numeric:tabular-nums]">
-                    {bucket.activities.length}{" "}
-                    {bucket.activities.length === 1 ? "stop" : "stops"}
+                    {bucket.activities.length === 0
+                      ? "0 stops"
+                      : `${bucket.completed}/${bucket.activities.length} done`}
                   </span>
                 </header>
                 {bucket.activities.length === 0 ? (
@@ -852,7 +941,11 @@ function ActiveTripView({
                   </p>
                 ) : (
                   <ul className="divide-y divide-[var(--home-rule)] rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper)]">
-                    {bucket.activities.map((activity) => (
+                    {bucket.activities.map((activity) => {
+                      const categoryMeta = CATEGORY_META[activity.category];
+                      const CategoryIcon = categoryMeta.icon;
+                      const hasConflict = bucket.conflictIds.includes(activity.id);
+                      return (
                       <li key={activity.id} className="flex items-start gap-3 px-3 py-2.5">
                         <button
                           type="button"
@@ -870,20 +963,43 @@ function ActiveTripView({
                             <Circle className="h-5 w-5" />
                           )}
                         </button>
+                        <span
+                          aria-hidden="true"
+                          className="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg"
+                          style={{
+                            color: categoryMeta.tint,
+                            backgroundColor: `color-mix(in srgb, ${categoryMeta.tint} 14%, transparent)`,
+                          }}
+                        >
+                          <CategoryIcon className="h-4 w-4" />
+                        </span>
                         <div className="min-w-0 flex-1">
-                          <p
-                            className={`text-[13.5px] font-semibold text-[var(--home-ink)] ${
-                              activity.completed ? "line-through opacity-60" : ""
-                            }`}
-                          >
-                            {activity.title}
-                          </p>
+                          <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                            <p
+                              className={`text-[13.5px] font-semibold text-[var(--home-ink)] ${
+                                activity.completed ? "line-through opacity-60" : ""
+                              }`}
+                            >
+                              {activity.title}
+                            </p>
+                            {hasConflict ? (
+                              <span
+                                className="inline-flex items-center gap-1 rounded-full border border-[var(--color-warning,#b8860b)] px-1.5 py-0.5 text-[9.5px] font-semibold uppercase tracking-[0.1em] text-[var(--color-warning,#b8860b)]"
+                                title="Overlaps another stop on this day"
+                              >
+                                <AlertTriangle className="h-3 w-3" aria-hidden="true" />
+                                Overlap
+                              </span>
+                            ) : null}
+                          </div>
                           <p className="mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-2xs uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
-                            <span>{ACTIVITY_CATEGORY_LABELS[activity.category]}</span>
+                            <span style={{ color: categoryMeta.tint }}>
+                              {ACTIVITY_CATEGORY_LABELS[activity.category]}
+                            </span>
                             {activity.time ? (
                               <>
                                 <span aria-hidden="true">·</span>
-                                <span>{formatActivityTime(activity.time)}</span>
+                                <span>{formatActivityTimeRange(activity.time, activity.endTime)}</span>
                               </>
                             ) : null}
                             {activity.location ? (
@@ -919,7 +1035,8 @@ function ActiveTripView({
                           </button>
                         </div>
                       </li>
-                    ))}
+                      );
+                    })}
                   </ul>
                 )}
               </div>
@@ -952,7 +1069,9 @@ function ActiveTripView({
           </div>
         ) : (
           <ul className="mt-4 flex flex-col gap-3">
-            {journalSorted.map((entry) => (
+            {journalSorted.map((entry) => {
+              const MoodIcon = MOOD_ICON[entry.mood];
+              return (
               <li
                 key={entry.id}
                 className="rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-3"
@@ -969,11 +1088,7 @@ function ActiveTripView({
                         className="inline-flex items-center gap-1.5"
                         style={{ color: MOOD_TONE[entry.mood] }}
                       >
-                        <span
-                          aria-hidden="true"
-                          className="inline-block h-1.5 w-1.5 rounded-full"
-                          style={{ backgroundColor: MOOD_TONE[entry.mood] }}
-                        />
+                        <MoodIcon aria-hidden="true" className="h-3.5 w-3.5" />
                         {JOURNAL_MOOD_LABELS[entry.mood]}
                       </span>
                     </p>
@@ -1002,7 +1117,8 @@ function ActiveTripView({
                   </p>
                 ) : null}
               </li>
-            ))}
+              );
+            })}
           </ul>
         )}
       </section>

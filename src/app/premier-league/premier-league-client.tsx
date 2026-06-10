@@ -494,7 +494,7 @@ export function PremierLeagueClient({
                     style={getViewButtonStyle(isActive)}
                   >
                     <span className="text-[var(--home-ink)]">{PREMIER_LEAGUE_VIEW_LABELS[key]}</span>
-                    <span className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">{count}</span>
+                    <span className="text-xs text-[var(--home-ink-soft)]">{count}</span>
                   </button>
                 );
               })}
@@ -508,7 +508,7 @@ export function PremierLeagueClient({
             >
               <table className="min-w-full border-separate border-spacing-y-2" aria-label="Premier League standings">
                 <thead>
-                  <tr className="text-left text-xs uppercase tracking-[0.14em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+                  <tr className="text-left text-xs uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
                     <th className="px-3 py-2 font-semibold">Pos</th>
                     <th className="px-3 py-2 font-semibold">Club</th>
                     <th className="hidden px-3 py-2 font-semibold sm:table-cell">Record</th>
@@ -861,7 +861,7 @@ function ClubLeaderCard({
 }) {
   return (
     <div className="rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4">
-      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
         {title}
       </p>
       {leader ? (
@@ -870,7 +870,7 @@ function ClubLeaderCard({
           <p className="mt-1 text-sm text-[var(--home-ink-muted)]">
             {leader.total} {statLabel.toLowerCase()} in {leader.appearances} matches
           </p>
-          <p className="mt-2 text-xs font-medium uppercase tracking-[0.12em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+          <p className="mt-2 text-xs font-medium uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
             {formatFixed(leader.perMatch)} per match
           </p>
         </>

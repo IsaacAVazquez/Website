@@ -27,7 +27,7 @@ export function LeaderList({
             className="flex items-center justify-between gap-4 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-4 py-3"
           >
             <div className="flex min-w-0 items-center gap-3">
-              <div className="inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[var(--home-paper)] text-sm font-bold text-[var(--home-haze)] shadow-sm">
+              <div className="inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[var(--home-paper)] text-sm font-bold text-[var(--home-haze)] shadow-[var(--shadow-sm)]">
                 {leader.rank}
               </div>
               <div className="min-w-0">
@@ -39,7 +39,7 @@ export function LeaderList({
             </div>
             <div className="text-right">
               <p className="text-lg font-bold text-[var(--home-ink)]">{leader.total}</p>
-              <p className="text-xs uppercase tracking-[0.12em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+              <p className="text-xs uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
                 {statLabel}
               </p>
             </div>

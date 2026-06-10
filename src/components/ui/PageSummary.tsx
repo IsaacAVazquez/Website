@@ -78,7 +78,7 @@ export function PageSummary({
         {/* Additional Context */}
         {context && (
           <div className="pt-4 border-t border-[var(--home-rule)]">
-            <div className="flex items-start gap-2 text-sm text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+            <div className="flex items-start gap-2 text-sm text-[var(--home-ink-soft)]">
               <IconInfoCircle className="w-4 h-4 mt-0.5 flex-shrink-0" aria-hidden="true" />
               <div>{context}</div>
             </div>
@@ -129,7 +129,7 @@ export function PageSummary({
       {/* Additional Context */}
       {context && (
         <div className="mt-4 pt-4 border-t border-[var(--home-rule)]">
-          <div className="text-sm text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+          <div className="text-sm text-[var(--home-ink-soft)]">
             {context}
           </div>
         </div>

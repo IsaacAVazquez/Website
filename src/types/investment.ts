@@ -222,6 +222,11 @@ export interface InvestmentIndexEntry {
   shortName: string;
   longName: string;
   searchText: string;
+  /** True when the entry is served from a prior snapshot because the latest
+   * fetch failed for this symbol. */
+  stale?: boolean;
+  /** ISO date the served snapshot was built/last updated (for stale entries). */
+  asOf?: string | null;
 }
 
 // ============================================================

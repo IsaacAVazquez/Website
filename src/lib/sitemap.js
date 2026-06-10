@@ -26,6 +26,7 @@ const STATIC_ROUTE_LASTMOD = {
   "/recipe-finder": "2026-04-04",
   "/wine-cellar": "2026-04-04",
   "/github-trending-pulse": readGitHubTrendingLastmod(),
+  "/tech-startup-tracker": readTechStartupLastmod(),
   "/investments": readInvestmentsLastmod(),
   "/news-pulse": "2026-04-01",
   "/spacex-mission-control": "2026-04-01",
@@ -41,6 +42,7 @@ const STATIC_ROUTE_LASTMOD = {
   "/fintech-tools/budget-planner": "2026-04-03",
   "/fintech-tools/interchange-iq": "2026-04-02",
   "/food-map": "2026-04-28",
+  "/travel": "2026-05-04",
 };
 
 // Fantasy tier positions live behind /fantasy-football/tiers/[position].
@@ -124,6 +126,12 @@ function readFantasyLastmod() {
 function readGitHubTrendingLastmod() {
   return toIsoString(
     readFirstMatch("src/data/githubTrendingSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
+  );
+}
+
+function readTechStartupLastmod() {
+  return toIsoString(
+    readFirstMatch("src/data/techStartupSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
   );
 }
 

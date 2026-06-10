@@ -286,7 +286,7 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
         </h3>
         <div
           className="py-12 text-center text-sm"
-          style={{ color: "color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))" }}
+          style={{ color: "var(--home-ink-soft)" }}
         >
           Performance tracking starts after 2 days of data
         </div>
@@ -304,7 +304,7 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
           >
             Portfolio Performance
           </h3>
-          <p className="mt-1 text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+          <p className="mt-1 text-xs text-[var(--home-ink-soft)]">
             Value versus cost basis across the saved snapshot history.
           </p>
         </div>
@@ -323,7 +323,7 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
                 color:
                   selectedRange === r.label
                     ? "#ffffff"
-                    : "color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))",
+                    : "var(--home-ink-soft)",
               }}
               aria-label={`Show ${r.label} range`}
               aria-pressed={selectedRange === r.label}
@@ -343,7 +343,7 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
         style={{
           opacity: 0,
           padding: "8px 10px",
-            backgroundColor: "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))",
+            backgroundColor: "var(--home-paper-raised)",
             border: "1px solid var(--home-rule)",
             zIndex: 10,
           }}
@@ -352,9 +352,9 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
 
       {/* Legend */}
       <div
-        className="mt-3 flex flex-wrap items-center gap-5 border-t border-[var(--home-rule)] pt-3 text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]"
+        className="mt-3 flex flex-wrap items-center gap-5 border-t border-[var(--home-rule)] pt-3 text-xs text-[var(--home-ink-soft)]"
         style={{
-          color: "color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))",
+          color: "var(--home-ink-soft)",
         }}
       >
         <div className="flex items-center gap-1.5">
@@ -377,7 +377,7 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
               y1="1"
               x2="20"
               y2="1"
-              stroke="color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))"
+              stroke="var(--home-ink-soft)"
               strokeWidth="1.5"
               strokeDasharray="4 2"
             />

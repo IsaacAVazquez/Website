@@ -279,6 +279,46 @@ describe("money-runs-out case", () => {
   });
 });
 
+describe("fixed-percent funding shortfall", () => {
+  const base = createDefaultPlan();
+  const common = {
+    currentAge: 65,
+    retirementAge: 65,
+    horizonAge: 80,
+    desiredAnnualSpend: 40000,
+    preMedicareHealthcare: 0,
+    accounts: [
+      { id: "a", type: "taxable" as const, balance: 1_000_000, annualContribution: 0, employerMatch: 0 },
+    ],
+    otherIncome: { ...base.otherIncome, socialSecurityAnnual: 0 },
+  };
+  const fixedPercent = {
+    ...base.assumptions,
+    withdrawalStrategy: "fixed-percent" as const,
+    withdrawalRateOverride: 0.04,
+    inflation: 0,
+    taxRates: noTaxRates(),
+  };
+
+  it("flags the year the real draw drops below 80% of desired spend", () => {
+    const plan = planWith({ ...common, assumptions: fixedPercent });
+    const years = common.horizonAge - common.currentAge;
+    // Zero return + a 4% draw shrinks the balance ~4%/yr, so the 4% draw (starts
+    // at the desired 40k) crosses 80% of 40k = 32k in year 6 → age 71. Without
+    // the shortfall rule a fixed-percent path would never deplete (depletionAge
+    // null) and report a vacuous 100% success.
+    const path = simulatePath(plan, new Array(years + 1).fill(0), REF_YEAR);
+    expect(path.depletionAge).toBe(71);
+  });
+
+  it("reports no shortfall when growth keeps the draw above the floor", () => {
+    const plan = planWith({ ...common, assumptions: fixedPercent });
+    const years = common.horizonAge - common.currentAge;
+    const path = simulatePath(plan, new Array(years + 1).fill(0.08), REF_YEAR);
+    expect(path.depletionAge).toBeNull();
+  });
+});
+
 describe("deterministic projection shape", () => {
   it("returns a value at every age through the horizon", () => {
     const plan = createDefaultPlan();

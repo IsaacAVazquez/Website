@@ -61,12 +61,12 @@ export function ExpertSignal({
   if (variant === "inline") {
     return (
       <span className={`inline-flex items-center gap-2 text-sm ${className}`}>
-        <span className="text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+        <span className="text-[var(--home-ink-soft)]">
           {displayIcon}
         </span>
         <span className="text-[var(--home-ink)]">
           {label}
-          {value && <span className="text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] ml-1">· {value}</span>}
+          {value && <span className="text-[var(--home-ink-soft)] ml-1">· {value}</span>}
         </span>
         {verified && (
           <IconCheck className="w-3.5 h-3.5 text-green-600 dark:text-green-400" aria-label="Verified" />
@@ -89,7 +89,7 @@ export function ExpertSignal({
             {label}
           </p>
           {value && (
-            <p className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+            <p className="text-xs text-[var(--home-ink-soft)]">
               {value}
             </p>
           )}
@@ -120,7 +120,7 @@ export function ExpertSignal({
                 {label}
               </h3>
               {value && (
-                <p className="text-sm text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+                <p className="text-sm text-[var(--home-ink-soft)]">
                   {value}
                 </p>
               )}

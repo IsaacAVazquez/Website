@@ -129,7 +129,7 @@ export function Breadcrumbs({
         aria-label="Breadcrumb"
         className={`py-4 ${className}`}
       >
-        <ol className="flex flex-wrap items-center gap-2 p-3 bg-[var(--home-paper)]/60 rounded-xl border border-[var(--home-rule)] backdrop-blur-sm shadow-sm">
+        <ol className="flex flex-wrap items-center gap-2 p-3 bg-[var(--home-paper)]/60 rounded-xl border border-[var(--home-rule)] backdrop-blur-sm shadow-[var(--shadow-sm)]">
           {breadcrumbs.map((item, index) => (
             <li key={item.href} className="flex items-center">
               {index > 0 && (

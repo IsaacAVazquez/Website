@@ -137,7 +137,7 @@ export function MetricCallout({
         variantStyles.bg,
         variantStyles.border,
         sizeStyles.padding,
-        "hover:shadow-lg hover:-translate-y-1",
+        "hover:shadow-[var(--shadow-lg)] hover:-translate-y-1",
         className
       )}
     >
