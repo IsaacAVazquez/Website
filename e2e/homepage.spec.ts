@@ -1,5 +1,18 @@
 import { test, expect } from '@playwright/test'
 
+// The header renders every entry in src/constants/navlinks.tsx (8 links) in both
+// the desktop and mobile menus. Keep this in sync with that file.
+const NAV_LABELS = [
+  'Home',
+  'About',
+  'Projects',
+  'Writing',
+  'Investments',
+  'Fantasy',
+  'Resume',
+  'Contact',
+]
+
 test.describe('Homepage', () => {
   test('should load successfully', async ({ page }) => {
     await page.goto('/')
@@ -9,28 +22,15 @@ test.describe('Homepage', () => {
   test('should display hero section', async ({ page }) => {
     await page.goto('/')
 
-    await expect(page.locator('[data-testid="hero"]')).toBeVisible()
+    await expect(page.getByTestId('hero')).toBeVisible()
   })
 
   test('should have functional desktop navigation', async ({ page }) => {
     await page.goto('/')
 
-    await page.waitForLoadState('networkidle')
-
-    const navLabels = await page
-      .getByLabel('Primary navigation')
-      .getByRole('link')
-      .allTextContents()
-
-    expect(navLabels).toEqual([
-      'Home',
-      'About',
-      'Projects',
-      'Writing',
-      'Investments',
-      'Resume',
-      'Contact',
-    ])
+    await expect(
+      page.getByLabel('Primary navigation').getByRole('link')
+    ).toHaveText(NAV_LABELS)
   })
 
   test('should have functional mobile navigation', async ({ page }) => {
@@ -39,33 +39,20 @@ test.describe('Homepage', () => {
 
     await page.getByRole('button', { name: /open navigation menu/i }).click()
 
-    const navLabels = await page
-      .getByLabel('Mobile navigation')
-      .getByRole('link')
-      .allTextContents()
-
-    expect(navLabels).toEqual([
-      'Home',
-      'About',
-      'Projects',
-      'Writing',
-      'Investments',
-      'Resume',
-      'Contact',
-    ])
+    await expect(
+      page.getByLabel('Mobile navigation').getByRole('link')
+    ).toHaveText(NAV_LABELS)
   })
 
-  test('should use the homepage hero and primary CTAs', async ({ page }) => {
+  test('shows the editorial hero and primary CTAs', async ({ page }) => {
     await page.goto('/')
-    const hero = page.getByTestId('hero')
 
     await expect(
-      hero.getByRole('heading', {
-        name: /i build products that make hard problems easier to act on/i,
-      })
+      page.getByRole('heading', { level: 1, name: /isaac vazquez/i })
     ).toBeVisible()
-    await expect(hero.getByRole('link', { name: /view projects/i })).toBeVisible()
-    await expect(hero.getByRole('link', { name: /read writing/i })).toBeVisible()
+    // The primary CTAs sit in the bio band just under the hero wordmark.
+    await expect(page.getByRole('link', { name: /view projects/i }).first()).toBeVisible()
+    await expect(page.getByRole('link', { name: /read writing/i }).first()).toBeVisible()
     await expect(page.getByTestId('home-projects')).toBeVisible()
     await expect(page.getByTestId('home-writing')).toBeVisible()
     await expect(page.getByRole('button', { name: /theme:/i }).first()).toBeVisible()
@@ -84,35 +71,32 @@ test.describe('Homepage', () => {
     // Tab to focus on skip link (if present)
     await page.keyboard.press('Tab')
 
-    // Check if skip link exists
     const skipLink = page.getByRole('link', { name: /skip to content/i })
-    if (await skipLink.count() > 0) {
+    if ((await skipLink.count()) > 0) {
       await expect(skipLink).toBeVisible()
     }
   })
 
-  test('keeps the primary homepage CTA in the initial mobile viewport', async ({ page }) => {
+  test('keeps the hero heading in the initial mobile viewport', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 })
     await page.goto('/')
 
-    const heroHeading = page.getByRole('heading', {
-      level: 1,
-      name: /i build products that make hard problems easier to act on/i,
-    })
-    const primaryCta = page.getByRole('link', { name: /view projects/i })
+    const heroHeading = page.getByRole('heading', { level: 1, name: /isaac vazquez/i })
+    await expect(heroHeading).toBeVisible()
 
+    // The whole heading box must fit inside the initial 844px viewport —
+    // asserting only `y < 844` would pass for any heading near the top.
     const headingBox = await heroHeading.boundingBox()
-    const ctaBox = await primaryCta.boundingBox()
-
     expect(headingBox).not.toBeNull()
-    expect(ctaBox).not.toBeNull()
-    expect((headingBox?.y ?? 9999) < 650).toBe(true)
-    expect((ctaBox?.y ?? 9999) + (ctaBox?.height ?? 0) <= 844).toBe(true)
+    expect(headingBox!.y).toBeGreaterThanOrEqual(0)
+    expect(headingBox!.y + headingBox!.height).toBeLessThanOrEqual(844)
+
+    // The primary "View projects" CTA is present further down the page.
+    await expect(page.getByRole('link', { name: /view projects/i }).first()).toBeVisible()
   })
 
   test('shows the editorial sections and card links', async ({ page }) => {
     await page.goto('/')
-    await page.waitForLoadState('networkidle')
 
     await expect(
       page.getByRole('heading', {
@@ -121,12 +105,12 @@ test.describe('Homepage', () => {
     ).toBeVisible()
     await expect(
       page.getByRole('heading', {
-        name: /writing that shows how i think about pm, ai workflows, and fintech tools/i,
+        name: /writing on pm, ai workflows, and fintech tools/i,
       })
     ).toBeVisible()
     await expect(
       page.getByRole('heading', {
-        name: /if you're building something that needs judgment and follow-through, i'd like to hear about it/i,
+        name: /building something that needs judgment and follow-through/i,
       })
     ).toBeVisible()
 
@@ -140,26 +124,23 @@ test.describe('Homepage', () => {
     })
 
     await page.goto('/')
-    await page.waitForLoadState('networkidle')
 
     await expect(page.locator('html')).toHaveClass(/dark/)
     await expect(page.getByTestId('hero')).toBeVisible()
     await expect(page.getByTestId('home-writing')).toBeVisible()
   })
 
-  test('disables decorative homepage motion when reduced motion is requested', async ({ page }) => {
+  test('keeps homepage content visible when reduced motion is requested', async ({ page }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' })
     await page.goto('/')
-    await page.waitForLoadState('networkidle')
 
-    const styles = await page.evaluate(() => {
-      const reveal = document.querySelector('.home-reveal')
-
-      return {
-        revealOpacity: reveal ? window.getComputedStyle(reveal).opacity : null,
-      }
-    })
-
-    expect(styles.revealOpacity).toBe('1')
+    // Hero and marquee motion are decorative; with reduced motion the hero and
+    // the editorial sections must still render their content (not stay hidden).
+    await expect(page.getByTestId('hero')).toBeVisible()
+    await expect(
+      page.getByRole('heading', {
+        name: /product surfaces that show how i think in practice/i,
+      })
+    ).toBeVisible()
   })
 })

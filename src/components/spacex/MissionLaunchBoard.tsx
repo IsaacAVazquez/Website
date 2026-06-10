@@ -33,11 +33,11 @@ export function MissionLaunchBoard({
     <section
       data-testid="mission-board"
       aria-label="Mission board"
-      className="rounded-[30px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))]/92 p-4 shadow-[var(--shadow-md)] sm:p-5"
+      className="rounded-[30px] border border-[var(--home-rule)] bg-[var(--home-paper-raised)]/92 p-4 shadow-[var(--shadow-md)] sm:p-5"
     >
       <div className="mb-5 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
         <div>
-          <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+          <p className="font-mono text-2xs font-semibold uppercase tracking-[0.22em] text-[var(--home-ink-soft)]">
             Launch board
           </p>
           <h2 className="mt-2 text-2xl font-bold tracking-[-0.04em] text-[var(--home-ink)]">
@@ -82,7 +82,7 @@ export function MissionLaunchBoard({
           <button
             type="button"
             onClick={onRetry}
-            className="tap-target mt-4 rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] px-4 py-3 text-sm font-semibold text-[var(--home-ink)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)]"
+            className="tap-target mt-4 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-4 py-3 text-sm font-semibold text-[var(--home-ink)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)]"
           >
             Retry board
           </button>
@@ -146,10 +146,10 @@ export function MissionLaunchBoard({
                     <div className="flex flex-wrap items-center justify-between gap-3">
                       <div className="min-w-0">
                         <div className="flex flex-wrap items-center gap-2">
-                          <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+                          <span className="font-mono text-2xs font-semibold uppercase tracking-[0.2em] text-[var(--home-ink-soft)]">
                             Flight #{launch.flightNumber}
                           </span>
-                          <span className="rounded-full border border-[var(--home-rule)] px-2 py-1 text-[11px] font-medium text-[var(--home-ink-muted)]">
+                          <span className="rounded-full border border-[var(--home-rule)] px-2 py-1 text-2xs font-medium text-[var(--home-ink-muted)]">
                             {launch.upcoming ? "Upcoming" : launch.success === true ? "Successful" : launch.success === false ? "Failed" : "Status pending"}
                           </span>
                         </div>

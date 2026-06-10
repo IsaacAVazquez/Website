@@ -8,7 +8,7 @@
     "pay": 1,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-04"
+    "report_date": "2026-06-08"
   },
   {
     "symbol": "GOOGL",
@@ -19,7 +19,7 @@
     "pay": 1015596,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-04"
+    "report_date": "2026-06-08"
   },
   {
     "symbol": "GOOGL",
@@ -30,7 +30,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-04"
+    "report_date": "2026-06-08"
   },
   {
     "symbol": "GOOGL",
@@ -41,7 +41,7 @@
     "pay": 1623997,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-04"
+    "report_date": "2026-06-08"
   },
   {
     "symbol": "GOOGL",
@@ -52,7 +52,7 @@
     "pay": 1,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-04"
+    "report_date": "2026-06-08"
   },
   {
     "symbol": "GOOGL",
@@ -63,7 +63,7 @@
     "pay": 10906079,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-04"
+    "report_date": "2026-06-08"
   },
   {
     "symbol": "GOOGL",
@@ -74,7 +74,7 @@
     "pay": 1087961,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-04"
+    "report_date": "2026-06-08"
   },
   {
     "symbol": "GOOGL",
@@ -85,18 +85,18 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-04"
+    "report_date": "2026-06-08"
   },
   {
     "symbol": "GOOGL",
-    "name": "Ms. Ivy  Ross",
-    "title": "VP & Head of Design for all Hardware Products",
-    "age": 69,
-    "born": 1956,
+    "name": "Ms. Marsida  Saraci",
+    "title": "Principal Accounting Officer, VP & Controller",
+    "age": 46,
+    "born": 1979,
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-04"
+    "report_date": "2026-06-08"
   },
   {
     "symbol": "GOOGL",
@@ -107,6 +107,6 @@
     "pay": 1015596,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-04"
+    "report_date": "2026-06-08"
   }
 ]

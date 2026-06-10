@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import {
   IconBookmark,
   IconChartArcs3,
@@ -9,6 +9,7 @@ import {
   IconHelp,
   IconHome,
   IconList,
+  IconPigMoney,
   IconReportMoney,
   IconSearch,
   IconWallet,
@@ -20,6 +21,7 @@ import { DataFreshnessIndicator } from "./DataFreshnessIndicator";
 import { HoldingsTable } from "./HoldingsTable";
 import { ResearchSection } from "./ResearchSection";
 import { StockSearch } from "./StockSearch";
+import { RetirementPlanner } from "./retirement/RetirementPlanner";
 import { useInvestments } from "@/hooks/useInvestments";
 import type { ResearchTab } from "@/app/investments/investments-state";
 
@@ -73,6 +75,30 @@ export function InvestmentsDashboard({
   const [searchQuery, setSearchQuery] = useState("");
   const addHoldingRef = useRef<HTMLDivElement | null>(null);
   const researchSectionRef = useRef<HTMLDivElement | null>(null);
+  const filterInputRef = useRef<HTMLInputElement | null>(null);
+
+  // ⌘K / Ctrl+K focuses the holdings filter (matching the keyboard hint).
+  // Leave the shortcut alone while the user is typing somewhere else — other
+  // inputs keep their own behavior and the browser keeps its default.
+  useEffect(() => {
+    function onKeyDown(e: KeyboardEvent) {
+      if (!(e.metaKey || e.ctrlKey) || e.key.toLowerCase() !== "k") return;
+      const target = e.target as HTMLElement | null;
+      const isEditable =
+        !!target &&
+        (target.isContentEditable ||
+          target.tagName === "INPUT" ||
+          target.tagName === "TEXTAREA" ||
+          target.tagName === "SELECT") &&
+        target !== filterInputRef.current;
+      if (isEditable) return;
+      e.preventDefault();
+      filterInputRef.current?.focus();
+      filterInputRef.current?.select();
+    }
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
 
   const filteredHoldings = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
@@ -105,6 +131,7 @@ export function InvestmentsDashboard({
       { id: "stats", label: "Portfolio stats", href: "#portfolio-stats", icon: IconCircleHalf },
       { id: "performance", label: "Performance", href: "#hero", icon: IconChartLine },
       { id: "research", label: "Research", href: "#research-section", icon: IconReportMoney },
+      { id: "retirement", label: "Retirement", href: "#retirement", icon: IconPigMoney },
     ],
     [enhancedHoldings.length],
   );
@@ -174,6 +201,7 @@ export function InvestmentsDashboard({
           <label className="invest-search" aria-label="Filter holdings">
             <IconSearch size={14} aria-hidden="true" />
             <input
+              ref={filterInputRef}
               type="search"
               placeholder="Filter holdings…"
               value={searchQuery}
@@ -247,8 +275,8 @@ export function InvestmentsDashboard({
               <p className="mb-2 text-sm font-semibold text-[var(--home-ink)]">
                 No positions yet
               </p>
-              <p className="mx-auto max-w-xs text-sm text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
-                Add your first stock using the form on the right. Holdings are saved in your browser and persist across visits.
+              <p className="mx-auto max-w-xs text-sm text-[var(--home-ink-soft)]">
+                Add your first stock with the Add a holding form. Holdings are saved in your browser and persist across visits.
               </p>
             </div>
           )}
@@ -316,7 +344,7 @@ export function InvestmentsDashboard({
 
         <p className="mt-auto flex items-center gap-2 text-[11.5px] text-[var(--home-ink-muted)]">
           <IconHelp size={14} aria-hidden="true" />
-          Holdings live only in your browser — no logins, no cloud sync.
+          Holdings live only in your browser. No logins, no cloud sync.
         </p>
       </aside>
     </div>
@@ -346,6 +374,11 @@ export function InvestmentsDashboard({
         portfolioSymbols={portfolioSymbols}
       />
     </section>
+
+    {/* Retirement planner — projects whether the portfolio + savings last
+        through retirement, with allocation-derived Monte Carlo. Offers the
+        live portfolio value as a one-click starting balance. */}
+    <RetirementPlanner portfolioValue={summary.totalValue > 0 ? summary.totalValue : undefined} />
     </div>
   );
 }

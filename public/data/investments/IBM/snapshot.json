@@ -1,10 +1,10 @@
 {
   "symbol": "IBM",
-  "lastUpdated": "2026-06-05T00:00:31.538495+00:00",
+  "lastUpdated": "2026-06-09T00:00:39.728571+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-05T00:00:31.538495+00:00",
+    "snapshotBuiltAt": "2026-06-09T00:00:39.728571+00:00",
     "sections": {
-      "price": "2026-06-03"
+      "price": "2026-06-05"
     }
   },
   "source": "prefetched",
@@ -33,7 +33,7 @@
       "country": "United States",
       "industry": "Information Technology Services",
       "sector": "Technology",
-      "longBusinessSummary": "International Business Machines Corporation, together with its subsidiaries, provides integrated solutions and services in the Americas, Europe, the Middle East, Africa, and the Asia Pacific. It operates through Software, Consulting, Infrastructure, and Financing segments. The Software segment offers hybrid cloud and AI platforms that allow clients to realize their digital and AI transformations across the applications, data, and environments in which they operate. The Consulting segment delivers strategy and technology services and intelligent operations, providing business transformation, technology implementation, managed services, application modernization, and AI-powered solutions. The Infrastructure segment provides on-premises and cloud-based server, and storage solutions, as well as life-cycle services for hybrid cloud infrastructure deployment. Its Financing segment offers client and commercial financing, and facilitates IBM clients' acquisition of hardware, software, and services. It has strategic partnerships with various companies, including hyperscalers, service providers, global system integrators, and software and hardware vendors that include Adobe, Amazon Web Services, Microsoft, Oracle, Salesforce, Samsung Electronics and SAP, and others. Additionally, the company operate a data streaming platform. The company has a strategic collaboration with Arm Holdings plc for the development of new dual-architecture hardware that helps enterprises run future AI and data intensive workloads. The company was formerly known as Computing-Tabulating-Recording Co. International Business Machines Corporation was incorporated in 1911 and is headquartered in Armonk, New York.",
+      "longBusinessSummary": "International Business Machines Corporation, together with its subsidiaries, provides integrated solutions and services in the Americas, Europe, the Middle East, Africa, and the Asia Pacific. It operates through Software, Consulting, Infrastructure, and Financing segments. The Software segment offers hybrid cloud and AI platforms that allow clients to realize their digital and AI transformations across the applications, data, and environments in which they operate. The Consulting segment delivers strategy and technology services and intelligent operations, providing business transformation, technology implementation, managed services, application modernization, and AI-powered solutions. The Infrastructure segment provides on-premises and cloud-based server, and storage solutions, as well as life-cycle services for hybrid cloud infrastructure deployment. Its Financing segment offers client and commercial financing, and facilitates IBM clients' acquisition of hardware, software, and services. It has strategic partnerships with various companies, including hyperscalers, service providers, global system integrators, and software and hardware vendors that include Adobe, Amazon Web Services, Microsoft, Oracle, Salesforce, Samsung Electronics and SAP, and others. Additionally, the company operate a data streaming platform. The company has a strategic collaboration with Arm Holdings plc for the development of new dual-architecture hardware that helps enterprises run future AI and data intensive workloads; and strategic partnership with three.ws to advance ai-powered 3d agent technology. The company was formerly known as Computing-Tabulating-Recording Co. International Business Machines Corporation was incorporated in 1911 and is headquartered in Armonk, New York.",
       "fullTimeEmployees": 264300,
       "website": "https://www.ibm.com",
       "shortName": "International Business Machines",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.3093,
-      "ttmPe": 27.02,
-      "marketCap": 287292200000,
-      "psRatio": 4.17,
-      "pbRatio": 8.71,
-      "pegRatio": 1.87
+      "ttmPe": 25.19,
+      "marketCap": 267749600000,
+      "psRatio": 3.89,
+      "pbRatio": 8.12,
+      "pegRatio": 1.74
     },
     "profitability": {
       "roe": 3.71,
@@ -6355,22 +6355,6 @@
     },
     "price": [
       {
-        "date": "2025-06-03",
-        "open": 263.35,
-        "high": 265.56,
-        "low": 262.58,
-        "close": 265.2,
-        "volume": 2494700
-      },
-      {
-        "date": "2025-06-04",
-        "open": 264.9,
-        "high": 267,
-        "low": 264.79,
-        "close": 265.52,
-        "volume": 2588600
-      },
-      {
         "date": "2025-06-05",
         "open": 265.2,
         "high": 267.51,
@@ -8364,11 +8348,27 @@
       },
       {
         "date": "2026-06-03",
-        "open": 318.295,
-        "high": 318.295,
-        "low": 302.5301,
+        "open": 318.3,
+        "high": 318.3,
+        "low": 302.53,
         "close": 305.63,
-        "volume": 13648193
+        "volume": 13926600
+      },
+      {
+        "date": "2026-06-04",
+        "open": 307.43,
+        "high": 310.44,
+        "low": 300.18,
+        "close": 301.77,
+        "volume": 9608100
+      },
+      {
+        "date": "2026-06-05",
+        "open": 300,
+        "high": 302.3,
+        "low": 281.07,
+        "close": 284.84,
+        "volume": 12477700
       }
     ],
     "officers": [
@@ -8433,43 +8433,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 27.02,
-        "industryAvg": 17.35
+        "value": 25.19,
+        "industryAvg": 16.95
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.17,
-        "industryAvg": 1.65
+        "value": 3.89,
+        "industryAvg": 1.59
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.71,
-        "industryAvg": 3.85
+        "value": 8.12,
+        "industryAvg": 3.72
       },
       {
         "metric": "ROE",
         "value": 3.71,
-        "industryAvg": 17.62
+        "industryAvg": 17.599999999999998
       },
       {
         "metric": "ROA",
         "value": 0.79,
-        "industryAvg": 6.0600000000000005
+        "industryAvg": 6.05
       },
       {
         "metric": "Gross Margin",
         "value": 56.230000000000004,
-        "industryAvg": 32
+        "industryAvg": 31.990000000000002
       },
       {
         "metric": "EBITDA Margin",
         "value": 19.689999999999998,
-        "industryAvg": 16.34
+        "industryAvg": 16.33
       },
       {
         "metric": "Net Margin",
         "value": 7.64,
-        "industryAvg": 8.110000000000001
+        "industryAvg": 8.1
       }
     ]
   }

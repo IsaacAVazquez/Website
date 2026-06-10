@@ -1,10 +1,10 @@
 {
   "symbol": "GOOGL",
-  "lastUpdated": "2026-06-05T00:00:31.538495+00:00",
+  "lastUpdated": "2026-06-09T00:00:39.728571+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-05T00:00:31.538495+00:00",
+    "snapshotBuiltAt": "2026-06-09T00:00:39.728571+00:00",
     "sections": {
-      "price": "2026-06-03"
+      "price": "2026-06-05"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 13.109,
-      "ttmPe": 27.39,
-      "marketCap": 4349323313358,
-      "psRatio": 10.29,
-      "pbRatio": 9.08,
-      "pegRatio": 0.33
+      "ttmPe": 28.11,
+      "marketCap": 4464904651026,
+      "psRatio": 10.57,
+      "pbRatio": 9.33,
+      "pegRatio": 0.34
     },
     "profitability": {
       "roe": 14.000000000000002,
@@ -5595,22 +5595,6 @@
     },
     "price": [
       {
-        "date": "2025-06-03",
-        "open": 167.49,
-        "high": 168.48,
-        "low": 165.28,
-        "close": 166.18,
-        "volume": 45084900
-      },
-      {
-        "date": "2025-06-04",
-        "open": 166.74,
-        "high": 168.22,
-        "low": 166.36,
-        "close": 168.05,
-        "volume": 26900800
-      },
-      {
         "date": "2025-06-05",
         "open": 170.34,
         "high": 170.93,
@@ -7608,7 +7592,23 @@
         "high": 366.45,
         "low": 358.08,
         "close": 358.99,
-        "volume": 52636770
+        "volume": 55441600
+      },
+      {
+        "date": "2026-06-04",
+        "open": 358.9,
+        "high": 373.25,
+        "low": 358.21,
+        "close": 372.19,
+        "volume": 44055500
+      },
+      {
+        "date": "2026-06-05",
+        "open": 366.34,
+        "high": 372.08,
+        "low": 364.12,
+        "close": 368.53,
+        "volume": 37375600
       }
     ],
     "officers": [
@@ -7667,10 +7667,10 @@
         "yearBorn": 1966
       },
       {
-        "name": "Ms. Ivy Ross",
-        "title": "VP & Head of Design for all Hardware Products",
-        "age": 69,
-        "yearBorn": 1956
+        "name": "Ms. Marsida Saraci",
+        "title": "Principal Accounting Officer, VP & Controller",
+        "age": 46,
+        "yearBorn": 1979
       },
       {
         "name": "Ms. Ruth M. Porat",
@@ -7683,43 +7683,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 27.39,
-        "industryAvg": 26.38
+        "value": 28.11,
+        "industryAvg": 26.76
       },
       {
         "metric": "P/S Ratio",
-        "value": 10.29,
-        "industryAvg": 8.93
+        "value": 10.57,
+        "industryAvg": 9.07
       },
       {
         "metric": "P/B Ratio",
-        "value": 9.08,
-        "industryAvg": 7.7
+        "value": 9.33,
+        "industryAvg": 7.86
       },
       {
         "metric": "ROE",
         "value": 14.000000000000002,
-        "industryAvg": 31.869999999999997
+        "industryAvg": 31.759999999999998
       },
       {
         "metric": "ROA",
         "value": 9.629999999999999,
-        "industryAvg": 21.310000000000002
+        "industryAvg": 21.23
       },
       {
         "metric": "Gross Margin",
         "value": 62.45,
-        "industryAvg": 63.129999999999995
+        "industryAvg": 63.13999999999999
       },
       {
         "metric": "EBITDA Margin",
         "value": 76.82,
-        "industryAvg": 47.02
+        "industryAvg": 46.97
       },
       {
         "metric": "Net Margin",
         "value": 56.940000000000005,
-        "industryAvg": 33.19
+        "industryAvg": 33.129999999999995
       }
     ]
   }

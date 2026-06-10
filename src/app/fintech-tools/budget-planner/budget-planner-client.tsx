@@ -239,7 +239,7 @@ export function BudgetPlannerClient() {
   // Field styling reused across rail + main forms. Tightened to fit the 290px
   // rail without horizontal scroll.
   const fieldLabel =
-    "block text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]";
+    "block text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]";
   const fieldInput =
     "mt-1.5 w-full min-h-touch rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-[13px] text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2";
   const numericInput = `${fieldInput} [font-variant-numeric:tabular-nums]`;
@@ -484,9 +484,9 @@ export function BudgetPlannerClient() {
                         {empty ? (
                           <span
                             id={`category-${category.id}-error`}
-                            className="text-[11px] text-[var(--color-error)]"
+                            className="text-2xs text-[var(--color-error)]"
                           >
-                            Name a category — empty fields fall back to "Untitled".
+                            Name a category. Empty fields fall back to "Untitled".
                           </span>
                         ) : null}
 
@@ -522,7 +522,7 @@ export function BudgetPlannerClient() {
                         {hasLinkedExpenses ? (
                           <p
                             id={`category-${category.id}-delete-help`}
-                            className="text-[11px] text-[var(--home-ink-muted)]"
+                            className="text-2xs text-[var(--home-ink-muted)]"
                           >
                             Remove linked expenses before deleting this category.
                           </p>
@@ -587,7 +587,7 @@ export function BudgetPlannerClient() {
                             <p className="truncate text-[13.5px] font-semibold text-[var(--home-ink)]">
                               {expense.note || expense.categoryName}
                             </p>
-                            <p className="mt-0.5 text-[11px] uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                            <p className="mt-0.5 text-2xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                               <span>{expense.categoryName}</span>
                               <span aria-hidden="true"> · </span>
                               <span title={expense.date}>{formatExpenseDate(expense.date)}</span>
@@ -782,7 +782,7 @@ export function BudgetPlannerClient() {
 
             <p className="tool-rail-foot">
               <PiggyBank size={14} aria-hidden="true" />
-              Saved in your browser — no account, no server.
+              Saved in your browser. No account, no server.
             </p>
           </aside>
         </div>

@@ -214,6 +214,7 @@ function CountryFlag({
       src={flagUrl}
       alt={`${countryName} flag`}
       loading="lazy"
+      decoding="async"
       className="h-4 w-7 flex-shrink-0 rounded-[3px] border border-[var(--home-rule)] object-cover"
     />
   );
@@ -231,7 +232,7 @@ function DriverHeadshot({
   if (!url) {
     return (
       <div
-        className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border bg-[var(--home-paper-alt)] text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--home-ink-muted)]"
+        className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border bg-[var(--home-paper-alt)] text-3xs font-semibold uppercase tracking-[0.08em] text-[var(--home-ink-muted)]"
         style={{ borderColor: teamColor ?? "var(--home-rule)" }}
         aria-hidden="true"
       >
@@ -250,6 +251,7 @@ function DriverHeadshot({
       src={url}
       alt={name}
       loading="lazy"
+      decoding="async"
       className="h-9 w-9 flex-shrink-0 rounded-full border bg-[var(--home-paper-alt)] object-cover object-top"
       style={{ borderColor: teamColor ?? "var(--home-rule)" }}
     />
@@ -338,12 +340,12 @@ function DriverStandingsTable({
       <table className="w-full min-w-[580px] border-separate border-spacing-y-2">
         <thead>
           <tr className="text-left text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
-            <th className="px-3 py-2">Pos</th>
-            <th className="px-3 py-2">Driver</th>
-            <th className="px-3 py-2">Team</th>
-            <th className="px-3 py-2">Last race</th>
-            <th className="px-3 py-2">Move</th>
-            <th className="px-3 py-2 text-right">Pts</th>
+            <th scope="col" className="px-3 py-2">Pos</th>
+            <th scope="col" className="px-3 py-2">Driver</th>
+            <th scope="col" className="px-3 py-2">Team</th>
+            <th scope="col" className="px-3 py-2">Last race</th>
+            <th scope="col" className="px-3 py-2">Move</th>
+            <th scope="col" className="px-3 py-2 text-right">Pts</th>
           </tr>
         </thead>
         <tbody>
@@ -418,11 +420,11 @@ function ConstructorStandingsTable({
       <table className="w-full min-w-[500px] border-separate border-spacing-y-2">
         <thead>
           <tr className="text-left text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
-            <th className="px-3 py-2">Pos</th>
-            <th className="px-3 py-2">Team</th>
-            <th className="px-3 py-2">Last race</th>
-            <th className="px-3 py-2">Move</th>
-            <th className="px-3 py-2 text-right">Pts</th>
+            <th scope="col" className="px-3 py-2">Pos</th>
+            <th scope="col" className="px-3 py-2">Team</th>
+            <th scope="col" className="px-3 py-2">Last race</th>
+            <th scope="col" className="px-3 py-2">Move</th>
+            <th scope="col" className="px-3 py-2 text-right">Pts</th>
           </tr>
         </thead>
         <tbody>
@@ -541,6 +543,7 @@ function MeetingDetailPanel({
               src={meeting.circuitImage}
               alt={`${meeting.circuitShortName} circuit map`}
               loading="lazy"
+              decoding="async"
               className="hidden h-20 w-24 flex-shrink-0 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] object-contain p-2 sm:block"
             />
           ) : null}
@@ -934,7 +937,8 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
   ];
 
   return (
-    <div className="home-shell home-section space-y-6 sm:space-y-8">
+    <div className="home-page min-h-screen">
+      <div className="home-shell home-section space-y-6 sm:space-y-8">
       <section
         className="overflow-hidden rounded-[32px] border p-6 sm:p-8 lg:p-10"
         style={{
@@ -1240,6 +1244,7 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
           </p>
         </article>
       </section>
+      </div>
     </div>
   );
 }

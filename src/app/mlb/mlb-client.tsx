@@ -382,7 +382,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
               Major League Baseball compressed into one view. Division standings, AL and NL splits, and the wild card race, refreshed from a curated MLB Stats API snapshot.
             </p>
           </div>
-          <div className="flex flex-wrap gap-1.5 text-[11px] text-[var(--home-ink-muted)]">
+          <div className="flex flex-wrap gap-1.5 text-2xs text-[var(--home-ink-muted)]">
             {[
               `Season ${summary.season}`,
               ...(summary.updatedAt && summary.updatedAt > "1970-01-02"
@@ -468,7 +468,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                     style={getViewButtonStyle(isActive)}
                   >
                     <span className="text-[var(--home-ink)]">{option.label}</span>
-                    <span className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+                    <span className="text-xs text-[var(--home-ink-soft)]">
                       {filterStandingsForView(option.id).length}
                     </span>
                   </button>
@@ -491,7 +491,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
             >
               {groupedStandings.map(([groupName, rows]) => (
                 <div key={groupName}>
-                  <p className="px-1 text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                  <p className="px-1 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
                     {groupName}
                   </p>
                   <table
@@ -499,15 +499,15 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                     aria-label={`${groupName} standings`}
                   >
                     <thead>
-                      <tr className="text-left text-xs uppercase tracking-[0.14em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                        <th className="px-3 py-2 font-semibold">Pos</th>
-                        <th className="px-3 py-2 font-semibold">Team</th>
-                        <th className="px-3 py-2 font-semibold">W-L</th>
-                        <th className="hidden px-3 py-2 font-semibold sm:table-cell">PCT</th>
-                        <th className="hidden px-3 py-2 font-semibold md:table-cell">GB</th>
-                        <th className="hidden px-3 py-2 font-semibold lg:table-cell">RS</th>
-                        <th className="hidden px-3 py-2 font-semibold lg:table-cell">RA</th>
-                        <th className="hidden px-3 py-2 font-semibold xl:table-cell">L10</th>
+                      <tr className="text-left text-xs uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
+                        <th scope="col" className="px-3 py-2 font-semibold">Pos</th>
+                        <th scope="col" className="px-3 py-2 font-semibold">Team</th>
+                        <th scope="col" className="px-3 py-2 font-semibold">W-L</th>
+                        <th scope="col" className="hidden px-3 py-2 font-semibold sm:table-cell">PCT</th>
+                        <th scope="col" className="hidden px-3 py-2 font-semibold md:table-cell">GB</th>
+                        <th scope="col" className="hidden px-3 py-2 font-semibold lg:table-cell">RS</th>
+                        <th scope="col" className="hidden px-3 py-2 font-semibold lg:table-cell">RA</th>
+                        <th scope="col" className="hidden px-3 py-2 font-semibold xl:table-cell">L10</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -594,23 +594,23 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                       </h2>
                       <div className="mt-1.5 flex flex-wrap gap-1.5">
                         <span
-                          className="inline-flex items-center rounded-full border px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em]"
+                          className="inline-flex items-center rounded-full border px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em]"
                           style={getDivisionPillStyle(selectedRow.league)}
                         >
                           {selectedRow.division || `${selectedRow.league} club`}
                         </span>
-                        <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                        <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
                           {formatRecord(selectedRow)}
                         </span>
                         {selectedRow.streak && (
-                          <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                          <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
                             {selectedRow.streak}
                           </span>
                         )}
                       </div>
                     </div>
                     <div className="flex-shrink-0 rounded-xl bg-[var(--home-haze)] px-3 py-2 text-center text-[var(--home-paper)] shadow-sm">
-                      <p className="text-[10px] uppercase tracking-[0.14em] opacity-80">Div</p>
+                      <p className="text-3xs uppercase tracking-[0.14em] opacity-80">Div</p>
                       <p className="text-xl font-bold">{selectedRow.divisionRank || "—"}</p>
                     </div>
                   </div>
@@ -627,7 +627,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                       ] as const
                     ).map(([label, value]) => (
                       <div key={label} className="flex items-baseline justify-between gap-2">
-                        <dt className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                        <dt className="text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
                           {label}
                         </dt>
                         <dd className="text-sm font-bold text-[var(--home-ink)]">{value}</dd>
@@ -637,7 +637,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
 
                   {(teamSnapshot?.form?.sequence?.length ?? 0) > 0 && (
                     <div className="mt-4 border-t border-[var(--home-rule)] pt-4">
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                      <p className="text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
                         Last 5
                       </p>
                       <div className="mt-2 flex gap-1.5">
@@ -709,7 +709,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
               <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                 <div className="space-y-5">
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
                       Performance
                     </p>
                     <div className="mt-3 grid grid-cols-2 gap-3">
@@ -758,7 +758,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
 
                 {(teamSnapshot?.recentGames.length ?? 0) > 0 && (
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
                       Recent results
                     </p>
                     <div className="mt-3 space-y-2">
@@ -776,7 +776,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
 
                 {(teamSnapshot?.upcomingGames.length ?? 0) > 0 && (
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
                       Upcoming games
                     </p>
                     <div className="mt-3 space-y-2">
@@ -798,7 +798,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
               <div className="grid gap-6 md:grid-cols-2">
                 {summary.recentGames.length > 0 && (
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
                       Recent slate
                     </p>
                     <h3 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">Latest results</h3>
@@ -811,7 +811,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                 )}
                 {summary.upcomingGames.length > 0 && (
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
                       Next up
                     </p>
                     <h3 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">Upcoming games</h3>
@@ -905,7 +905,7 @@ function LeagueLeaders({
         <div key={group.title}>
           <div className="flex items-start justify-between gap-3">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
                 Leaderboard
               </p>
               <h3 className="mt-2 text-xl font-bold text-[var(--home-ink)]">{group.title}</h3>

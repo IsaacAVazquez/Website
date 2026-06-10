@@ -2,7 +2,47 @@
  * @jest-environment node
  */
 import { FANTASY_SNAPSHOT_SCHEMA_VERSION } from "@/lib/fantasy";
-import { buildFantasySnapshot } from "@/lib/fantasySnapshotBuilder";
+import {
+  buildFantasySnapshot,
+  getNflRegularSeasonWeek,
+  getSnapshotSeason,
+} from "@/lib/fantasySnapshotBuilder";
+
+const NFL_WEEKS = 18;
+
+describe("getSnapshotSeason", () => {
+  it("keeps the in-progress season through the January playoffs", () => {
+    expect(getSnapshotSeason(new Date(Date.UTC(2027, 0, 6)))).toBe(2026); // championship week
+    expect(getSnapshotSeason(new Date(Date.UTC(2027, 1, 10)))).toBe(2026); // post-Super Bowl
+  });
+
+  it("rolls to the new season in March", () => {
+    expect(getSnapshotSeason(new Date(Date.UTC(2027, 2, 1)))).toBe(2027);
+    expect(getSnapshotSeason(new Date(Date.UTC(2026, 8, 10)))).toBe(2026); // in-season
+  });
+});
+
+describe("getNflRegularSeasonWeek", () => {
+  it("reports week 0 during the offseason and before Week 1 kickoff", () => {
+    expect(getNflRegularSeasonWeek(2026, new Date(Date.UTC(2026, 5, 8)))).toBe(0); // June
+    expect(getNflRegularSeasonWeek(2026, new Date(Date.UTC(2026, 8, 1)))).toBe(0); // Sep 1, before kickoff
+  });
+
+  it("counts up through the regular season", () => {
+    const earlyOctober = getNflRegularSeasonWeek(2026, new Date(Date.UTC(2026, 9, 1)));
+    const lateNovember = getNflRegularSeasonWeek(2026, new Date(Date.UTC(2026, 10, 25)));
+
+    expect(earlyOctober).toBeGreaterThanOrEqual(3);
+    expect(earlyOctober).toBeLessThanOrEqual(6);
+    expect(lateNovember).toBeGreaterThan(earlyOctober);
+    expect(lateNovember).toBeLessThanOrEqual(NFL_WEEKS);
+  });
+
+  it("caps at the final regular-season week through the playoffs and offseason rollover", () => {
+    expect(getNflRegularSeasonWeek(2026, new Date(Date.UTC(2026, 11, 25)))).toBeGreaterThanOrEqual(15); // late December
+    expect(getNflRegularSeasonWeek(2026, new Date(Date.UTC(2027, 1, 1)))).toBe(NFL_WEEKS); // following February
+  });
+});
 
 describe("fantasySnapshotBuilder", () => {
   it("publishes sourced overall and position availability for every scoring format", () => {

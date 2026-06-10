@@ -1,8 +1,10 @@
 # CLAUDE.md
 
-Comprehensive repo context for agents and collaborators working in `/Users/isaacvazquez/Website`.
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-**Last updated:** 2026-05-04
+Comprehensive repo context for agents and collaborators. `AGENTS.md` is the shorter start-here companion; this file holds the deeper implementation context.
+
+**Last updated:** 2026-06-10
 
 ---
 
@@ -14,9 +16,10 @@ This codebase is a multi-surface Next.js 16 site for Isaac Vazquez. It combines 
 2. **Writing surface** — long-form MDX posts under `/writing`
 3. **Fantasy football analytics** — rankings, tiers, and draft tooling
 4. **Investments + seasonal experiments** — `/investments` and `/march-madness-2026`
-5. **Experimental dashboards** — standalone tools like `/formula-1`, `/fantasy-formula-1`, `/premier-league`, `/la-liga`, `/mlb`, `/nba`, `/nfl`, `/polling-aggregator`, `/news-pulse`, `/github-trending-pulse`, and `/spacex-mission-control`
+5. **Experimental dashboards** — standalone tools like `/formula-1`, `/fantasy-formula-1`, `/premier-league`, `/la-liga`, `/mlb`, `/nba`, `/nfl`, `/golf`, `/world-cup-2026`, `/earthquake-pulse`, `/bay-area-transit`, `/polling-aggregator`, `/news-pulse`, `/github-trending-pulse`, `/tech-startup-tracker`, and `/spacex-mission-control`
 6. **Fintech tools** — standalone calculators under `/fintech-tools/*`
 7. **MBA internship tracker** — live role aggregator at `/mba-internship-notifications`, surfaced through the projects section
+8. **Personal interest tools** — browser-persisted surfaces like `/travel`, `/food-map`, `/recipe-finder`, `/wine-cellar`, and `/museum-log`
 
 The site is not a generic blog template. It is a portfolio-first experience with secondary authority-building content.
 
@@ -50,12 +53,18 @@ npm run update:mlb
 npm run update:nba
 npm run update:nfl
 npm run update:formula-1
+npm run update:golf
+npm run update:world-cup
+npm run update:earthquake
+npm run update:bay-area-transit
+npm run update:tech-startups
+npm run update:frontier-models
 npm run update:github-trending
 npm run update:spacex
 npm run lint
 ```
 
-Note: `prebuild` automatically runs a league-only football snapshot refresh; `postbuild` runs `next-sitemap`.
+Note: `prebuild` automatically runs a league-only football snapshot refresh; `postbuild` runs `next-sitemap` and `scripts/patch-nft-sharp.mjs`.
 
 ---
 
@@ -92,6 +101,10 @@ Note: `prebuild` automatically runs a league-only football snapshot refresh; `po
 - `/nba`
 - `/nfl`
 - `/golf`
+- `/earthquake-pulse`
+- `/world-cup-2026`
+- `/tech-startup-tracker`
+- `/bay-area-transit`
 
 ### Fantasy football
 
@@ -111,6 +124,7 @@ Note: `prebuild` automatically runs a league-only football snapshot refresh; `po
 - `/food-map`
 - `/recipe-finder`
 - `/wine-cellar`
+- `/travel`
 
 ### Other live routes
 
@@ -146,7 +160,7 @@ Redirects:
 
 `src/components/StaticHeader.tsx` uses `src/constants/navlinks.tsx`.
 
-All 7 links are active in the nav: Home, About, Projects, Writing, Investments, Resume, Contact.
+All 8 links are active in the nav: Home, About, Projects, Writing, Investments, Fantasy, Resume, Contact. The Fantasy link points to `/fantasy-football`.
 
 ### Layout
 
@@ -169,7 +183,7 @@ This is intentional to avoid stacked closing CTAs.
 
 - Shared fallback: `src/components/RouteErrorBoundary.tsx` (editorial-styled, calls `logger.error`, exposes `reset()` retry).
 - Top-level catch-all: `src/app/error.tsx` covers anything below.
-- Per-route boundaries on snapshot-driven dashboards that need bespoke surface labels: `/nba`, `/nfl`, `/mlb`, `/formula-1`, `/premier-league`, `/la-liga`, `/spacex-mission-control`, `/news-pulse`, `/investments`.
+- Per-route boundaries on snapshot-driven dashboards that need bespoke surface labels: `/nba`, `/nfl`, `/mlb`, `/formula-1`, `/fantasy-formula-1`, `/premier-league`, `/la-liga`, `/world-cup-2026`, `/earthquake-pulse`, `/bay-area-transit`, `/tech-startup-tracker`, `/spacex-mission-control`, `/news-pulse`, `/investments`.
 - When adding a new data-fetching dashboard route, drop in an `error.tsx` that re-exports `RouteErrorBoundary` with a `surfaceName`.
 
 ---
@@ -197,6 +211,16 @@ This is intentional to avoid stacked closing CTAs.
   - `/api/investments/index`
   - `/api/investments/quotes`
   - `/api/investments/data/[symbol]`
+- `npm run update:investments` runs a Python fetch (`scripts/fetch_investments_data.py`, expects a `.venv`) followed by `scripts/buildInvestmentsSnapshots.ts`; `.github/workflows/update-investments.yml` refreshes the committed snapshots twice a week (Mon + Thu, 22:15 UTC)
+
+#### Retirement planner
+
+- Surfaced as the `#retirement` band inside the investments dashboard (`InvestmentsDashboard.tsx`); reachable from the sidebar nav. Offers the live portfolio value as a one-click starting balance.
+- **Pure engine:** `src/lib/retirement/*` — framework-free and unit-tested. `project(input)` / `projectCore(input)` return `{ deterministic, monteCarlo, levers, verdict, targetNestEgg, assumptions }`. Expected return + volatility are **derived from the allocation** via dated capital-market assumptions (`capitalMarketAssumptions.ts`), never a single hardcoded number. Two-phase projection (accumulation/decumulation), seeded Monte Carlo (1,000 trials) with confidence bands, coarse account-aware taxes + RMDs, Social Security claim mechanics, and fixed-real / guardrails / fixed-% withdrawal strategies.
+- **CMAs are illustrative and tagged for verification** (`CMA_VERIFIED = false` in `capitalMarketAssumptions.ts`). Re-pin them to a dated primary source before relying on the figures; the UI discloses the source + as-of date + unverified state.
+- **State:** browser-local via `useRetirementPlan` (localStorage key `retirement_plan`), mirroring `useInvestments`. The headline (verdict/chart) computes synchronously; the heavier lever sensitivity runs off the critical path and fills in after paint.
+- **UI:** `src/components/investments/retirement/*` — progressive-disclosure inputs, honest "N of 100 scenarios" framing, D3 confidence-band chart, levers panel, editable assumptions footer, and the educational disclaimer (all output is illustrative, not advice).
+- Output is **educational only** — keep the disclaimer and assumption disclosure intact (compliance, spec §9).
 
 ### NFL Dashboard
 
@@ -221,6 +245,26 @@ NFL is intentionally **not** wired into the Netlify `prebuild` step. The snapsho
 **Shared football components:** Reuses `src/components/football/*` (FixtureCard accepts an optional `periodLabel` prop, set to `"Week"` for NFL).
 
 **State / route:** `?view=` (`league`, `afc`, `nfc`, `playoffs`) and `?team=<lowercase abbr>` (e.g., `kc`, `buf`).
+
+### World Cup Dashboard
+
+`/world-cup-2026` ("World Cup Pulse") is a snapshot-driven 2026 FIFA World Cup hub following the same pattern as the soccer and NFL dashboards. It reuses the shared `src/components/football/*` components. Data comes from ESPN's public `soccer/fifa.world` endpoints (no API key required) and is committed to the repo as TypeScript.
+
+**Snapshot file:** `src/data/worldCupSnapshot.ts`
+
+The dynamic sections (groups, knockout rounds, fixtures, scorers, team options, team snapshots) ship **empty in the seed** and are filled by the update script. The `tournament` block carries the stable pre-confirmed facts (host nations, 16 venues, format, dates, match counts), so the page is a useful tournament hub before kickoff and progressively becomes a full live dashboard.
+
+**Data sources (ESPN site API):**
+- Standings (group tables): `https://site.api.espn.com/apis/v2/sports/soccer/fifa.world/standings`
+- Scoreboard (fixtures/scores): `https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=YYYYMMDD-YYYYMMDD` (paged across the tournament window)
+
+**Build logic / update script:** `src/lib/worldCupData.ts` → `scripts/buildWorldCupSnapshot.ts` (`npm run update:world-cup`). A failed or empty fetch keeps the previous snapshot rather than wiping it (shared `readGeneratedSnapshot` fallback). `.github/workflows/update-world-cup.yml` refreshes it every six hours during June and July.
+
+**Accessors / API:** `src/lib/worldCupSnapshot.ts`; routes `/api/world-cup/summary` and `/api/world-cup/teams/[teamId]` (keyed by lowercased team slug, e.g. `brazil`).
+
+**State / route:** `?view=` (`groups`, `knockout`, `schedule`) and `?team=<slug>` for the team detail panel.
+
+**Derived UI:** the group-stage view also surfaces the 2026-specific "third-place race" (the eight best third-placed teams that reach the Round of 32), computed client-side from the group standings by the pure, unit-tested helper `src/lib/worldCupStandings.ts` (`getThirdPlaceRace`). The header shows a mounted-only kickoff countdown before the tournament starts.
 
 ### Football Dashboards (Premier League + La Liga)
 
@@ -280,16 +324,40 @@ The `/nba` route follows the same snapshot-driven pattern as the soccer dashboar
 - `/api/nba/summary` — conference standings, leaders, scoreboard slate
 - `/api/nba/teams/[teamId]` — team schedule + form, keyed by lowercased ESPN abbreviation
 
+### Bay Area Transit Dashboard
+
+`/bay-area-transit` ("Bay Area Transit Pulse") is a snapshot-driven BART dashboard. It is the Bay Area civic surface in the Pulse family and follows the same pattern as the sports dashboards. Data comes from BART's public legacy API (no token required — the published demo key `MW9S-E7SL-26DU-VV8V` is baked into the builder) and is committed to the repo as TypeScript.
+
+**Snapshot file:** `src/data/bayAreaTransitSnapshot.ts` (ships with a hand-authored seed, `system.seed = true`, so the page is useful before the first live refresh; the seed is replaced wholesale on update).
+
+**Data sources (BART public API, `https://api.bart.gov/api`):**
+- Stations: `stn.aspx?cmd=stns`
+- Lines/routes: `route.aspx?cmd=routes` plus `route.aspx?cmd=routeinfo&route=<n>` per route (derives the station→lines mapping)
+- Service advisories: `bsa.aspx?cmd=bsa`
+- Elevator outages: `bsa.aspx?cmd=elev`
+- Real-time departures for every station in one call: `etd.aspx?cmd=etd&orig=ALL`
+
+**Build logic / update script:** `src/lib/bayAreaTransitData.ts` → `scripts/buildBayAreaTransitSnapshot.ts` (`npm run update:bay-area-transit`). A failed or thin fetch keeps the previous snapshot rather than wiping it (shared `readGeneratedSnapshot` fallback). `.github/workflows/update-bay-area-transit.yml` refreshes it every six hours.
+
+**Accessors / API:** `src/lib/bayAreaTransitSnapshot.ts`; routes `/api/bay-area-transit/summary` and `/api/bay-area-transit/stations/[stationId]` (keyed by lowercased BART abbreviation, e.g. `embr`).
+
+**State / route:** `?view=` (`lines`, `stations`, `advisories`) and `?station=<abbr>` for the per-station departure board.
+
 ### Other standalone data tools
 
-- `/mlb` reads from `src/data/mlbSnapshot.ts` with deep-linkable route state. Snapshot is built by `npm run update:mlb` against the public MLB Stats API (`https://statsapi.mlb.com/api/v1`); no auth token required. `.github/workflows/update-mlb.yml` refreshes it daily April through October. Shares the football components in `src/components/football/`.
+- `/mlb` reads from `src/data/mlbSnapshot.ts` with deep-linkable route state. Snapshot is built by `npm run update:mlb` against the public MLB Stats API (`https://statsapi.mlb.com/api/v1`); no auth token required. `.github/workflows/update-mlb.yml` refreshes it daily March through November (covering Opening Day and the World Series). Shares the football components in `src/components/football/`.
 - `/formula-1` reads from `src/data/formula1Snapshot.ts` with deep-linkable route state; `.github/workflows/update-formula-1.yml` refreshes it daily
 - `/fantasy-formula-1` reads from `src/data/formula1Snapshot.ts` and keeps user lineups in versioned browser-local storage
 - `/github-trending-pulse` reads from `src/data/githubTrendingSnapshot.ts`, generated by `scripts/buildGitHubTrendingSnapshot.ts` from the public GitHub Search API
+- `/tech-startup-tracker` reads from `src/data/techStartupSnapshot.ts` with deep-linkable route state (`?view=` sector/stage, `?segment=`, `?sort=`, `?startup=`). Unlike the API-backed dashboards, the dataset is **editorially curated** — figures are approximate, compiled from public reporting, and tagged with an `asOf` date plus a `verified: false` flag and an on-page disclosure (mirroring the retirement planner's unverified-CMA approach). The snapshot is generated by `npm run update:tech-startups` (`scripts/buildTechStartupSnapshot.ts` → `src/lib/techStartups.ts`), which processes a hand-maintained seed into derived momentum scores, sector/stage segments, and totals. To refresh, edit the `SEED`/`AS_OF` in the script and re-run; there is no GitHub Action because there is no live source to poll.
 - `/news-pulse` reads from `src/lib/news-pulse-utils.ts` through `/api/news-pulse`
 - `/spacex-mission-control` reads from SpaceX data helpers and `/api/spacex/*` routes; `.github/workflows/update-spacex.yml` refreshes data and image artifacts twice daily
 - `/polling-aggregator` reads from `src/data/pollingSnapshot.ts` with deep-linkable route state
-- `/golf` reads from `src/data/golfSnapshot.ts`. **Manually maintained — no build script, no GitHub workflow.** To refresh, hand-edit the snapshot (tournament metadata, leaderboard, round scores). A scraped automation against the public ESPN golf endpoints (`https://site.api.espn.com/apis/site/v2/sports/golf/leaderboard`) would be doable but hasn't been built; the dashboard intentionally tracks specific events Isaac follows rather than every tour stop.
+- `/golf` reads from `src/data/golfSnapshot.ts` with deep-linkable route state. Snapshot is built by `npm run update:golf` (`scripts/buildGolfSnapshot.ts` → `src/lib/golfData.ts`) against the public ESPN golf leaderboard endpoint (`https://site.api.espn.com/apis/site/v2/sports/golf/leaderboard`); no auth token required. It tracks whichever PGA Tour event ESPN is featuring (in-progress event preferred, else most recent). `.github/workflows/update-golf.yml` refreshes it daily at 08:40 UTC. Like Formula 1, a failed fetch keeps the previous snapshot rather than wiping it. To pin a specific event instead, run the script manually or hand-edit the snapshot. Accessors live in `src/lib/golfSnapshot.ts`; API routes are `/api/golf/summary` and `/api/golf/players/[playerId]` (400 for malformed ids, 404 for valid-shape unknown ids; errors are never CDN-cached).
+- `/earthquake-pulse` ("Earthquake Pulse") reads from `src/data/earthquakeSnapshot.ts` with deep-linkable route state (`?view=recent|significant|regions` and `?quake=<usgs-id>`). The snapshot is built by `npm run update:earthquake` (`scripts/buildEarthquakeSnapshot.ts` → `src/lib/earthquakeData.ts`) from the public USGS Earthquake Hazards Program GeoJSON feeds (`all_day`, `2.5_week`, `significant_month` under `https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/`); no auth token required. The seed ships **empty** and is filled by `.github/workflows/update-earthquake.yml`, which refreshes it hourly. Like Formula 1 and golf, a failed/empty fetch keeps the previous snapshot rather than wiping it (shared `readGeneratedSnapshot` fallback). Accessors live in `src/lib/earthquakeSnapshot.ts`; the read API is `/api/earthquake-pulse/summary`. Reuses the editorial shell + `HomeStatsPanel`; everything needed for the detail panel is embedded in the summary (`quakeDetails`), so no per-event fetch is required.
+- `/frontier-models` reads from `src/data/frontierModelsSnapshot.ts`. Like the tech startup tracker, the dataset is **editorially curated**: the hand-maintained source lives in `scripts/data/frontierModels.source.ts` and `npm run update:frontier-models` (`scripts/buildFrontierModelsSnapshot.ts` → `src/lib/frontierModels.ts`) regenerates the snapshot. No GitHub Action — refresh by editing the source file and re-running.
+- `/museum-log` reads from `src/data/museumSnapshot.ts`; `/recipe-finder` reads from `src/data/recipesSnapshot.ts` (both curated, no update workflow)
+- `/travel` is a browser-persisted travel planner (trips, day-by-day itineraries, per-trip journal). No snapshot or API: state lives in localStorage via `src/hooks/useTravelPlanner.ts`, with pure helpers and the storage key in `src/lib/travelPlanner.ts` and types in `src/types/travel.ts`.
 - `/fintech-tools/budget-planner` uses `src/hooks/useBudgetPlanner.ts`
 - `/fintech-tools/interchange-iq` is a client-side fee analyzer under `src/app/fintech-tools/interchange-iq`
 
@@ -339,6 +407,13 @@ Live routes under `src/app/api/`:
 - `/api/nba/teams/[teamId]`
 - `/api/nfl/summary`
 - `/api/nfl/teams/[teamId]`
+- `/api/golf/summary`
+- `/api/golf/players/[playerId]`
+- `/api/world-cup/summary`
+- `/api/world-cup/teams/[teamId]`
+- `/api/earthquake-pulse/summary`
+- `/api/bay-area-transit/summary`
+- `/api/bay-area-transit/stations/[stationId]`
 - `/api/mba-jobs`
 - `/api/mba-jobs/email`
 - `/api/news-pulse`
@@ -386,6 +461,17 @@ The repo uses:
 - Jest for unit/integration coverage
 - Playwright for browser coverage
 
+Common commands:
+
+```bash
+npm test                                 # full Jest suite
+npx jest src/lib/__tests__/foo.test.ts   # single Jest file
+npx jest -t "name of test"               # single test by name
+npm run test:e2e                         # Playwright (default project subset)
+npm run test:e2e:full                    # full browser matrix (E2E_FULL_MATRIX=1)
+npx playwright test e2e/homepage.spec.ts # single Playwright spec
+```
+
 Key current facts:
 
 - Jest coverage thresholds are low and pragmatic, not strict enterprise thresholds
@@ -400,6 +486,7 @@ Read `TESTING.md` before expanding coverage.
 
 Treat the following as current source of truth:
 
+- `AGENTS.md` (start-here operational context for agents)
 - `AGENT.md`
 - `README.md`
 - `PAGES.md`

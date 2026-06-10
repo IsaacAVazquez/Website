@@ -21,7 +21,6 @@ export type FantasyRouteScoring = (typeof FANTASY_ROUTE_SCORING)[number];
 export type FantasySnapshotPosition = Extract<Position, "QB" | "RB" | "WR" | "TE" | "K" | "DST" | "FLEX">;
 export type FantasySnapshotSliceSourceKind =
   | "overall_consensus"
-  | "derived_overall"
   | "position_consensus"
   | "shared_position_consensus"
   | "derived_flex"
@@ -390,7 +389,7 @@ function normalizeRawSliceMetadata(
       : fallback.available;
   const sourceKind =
     rawSlice.sourceKind &&
-    ["overall_consensus", "derived_overall", "position_consensus", "shared_position_consensus", "derived_flex", "unavailable"].includes(
+    ["overall_consensus", "position_consensus", "shared_position_consensus", "derived_flex", "unavailable"].includes(
       rawSlice.sourceKind
     )
       ? rawSlice.sourceKind

@@ -5571,6 +5571,20 @@
       "total_market_cap": 2653233484426.75,
       "total_ttm_net_income": 46799008266.979996,
       "industry_pe": 56.69
+    },
+    {
+      "report_date": "2026-06-04T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_market_cap": 2663079698452.25,
+      "total_ttm_net_income": 46799008266.979996,
+      "industry_pe": 56.9
+    },
+    {
+      "report_date": "2026-06-05T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_market_cap": 2439179753042.0,
+      "total_ttm_net_income": 46799008266.979996,
+      "industry_pe": 52.12
     }
   ],
   "ps_ratio": [
@@ -11275,170 +11289,184 @@
     {
       "report_date": "2026-04-30T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
-      "total_market_cap": 2184165804837.73,
-      "total_ttm_revenue": 173443885212.47998,
+      "total_market_cap": 2184174088357.73,
+      "total_ttm_revenue": 173458370212.47998,
       "industry_ps_ratio": 12.59
     },
     {
       "report_date": "2026-05-01T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
-      "total_market_cap": 2182079406947.0,
-      "total_ttm_revenue": 173443885212.47998,
+      "total_market_cap": 2182088022771.0,
+      "total_ttm_revenue": 173458370212.47998,
       "industry_ps_ratio": 12.58
     },
     {
       "report_date": "2026-05-04T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
-      "total_market_cap": 2143178457256.75,
-      "total_ttm_revenue": 173443885212.47998,
+      "total_market_cap": 2143186971944.75,
+      "total_ttm_revenue": 173458370212.47998,
       "industry_ps_ratio": 12.36
     },
     {
       "report_date": "2026-05-05T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2238834781957.0,
-      "total_ttm_revenue": 173443885212.47998,
+      "total_ttm_revenue": 173458370212.47998,
       "industry_ps_ratio": 12.91
     },
     {
       "report_date": "2026-05-06T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2374348991012.8696,
-      "total_ttm_revenue": 173443885212.47998,
+      "total_ttm_revenue": 173458370212.47998,
       "industry_ps_ratio": 13.69
     },
     {
       "report_date": "2026-05-07T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2299669774559.33,
-      "total_ttm_revenue": 173443885212.47998,
+      "total_ttm_revenue": 173458370212.47998,
       "industry_ps_ratio": 13.26
     },
     {
       "report_date": "2026-05-08T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2415792077425.7197,
-      "total_ttm_revenue": 173443885212.47998,
+      "total_ttm_revenue": 173458370212.47998,
       "industry_ps_ratio": 13.93
     },
     {
       "report_date": "2026-05-11T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2407884749476.42,
-      "total_ttm_revenue": 173443885212.47998,
+      "total_ttm_revenue": 173458370212.47998,
       "industry_ps_ratio": 13.88
     },
     {
       "report_date": "2026-05-12T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2341603182848.93,
-      "total_ttm_revenue": 173443885212.47998,
+      "total_ttm_revenue": 173458370212.47998,
       "industry_ps_ratio": 13.5
     },
     {
       "report_date": "2026-05-13T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2407571040902.7603,
-      "total_ttm_revenue": 173443885212.47998,
+      "total_ttm_revenue": 173458370212.47998,
       "industry_ps_ratio": 13.88
     },
     {
       "report_date": "2026-05-14T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2420430550554.07,
-      "total_ttm_revenue": 173443885212.47998,
-      "industry_ps_ratio": 13.96
+      "total_ttm_revenue": 173458370212.47998,
+      "industry_ps_ratio": 13.95
     },
     {
       "report_date": "2026-05-15T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2319353766865.64,
-      "total_ttm_revenue": 173443885212.47998,
+      "total_ttm_revenue": 173458370212.47998,
       "industry_ps_ratio": 13.37
     },
     {
       "report_date": "2026-05-18T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2247603351614.56,
-      "total_ttm_revenue": 173443885212.47998,
+      "total_ttm_revenue": 173458370212.47998,
       "industry_ps_ratio": 12.96
     },
     {
       "report_date": "2026-05-19T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2226605077049.35,
-      "total_ttm_revenue": 173443885212.47998,
+      "total_ttm_revenue": 173458370212.47998,
       "industry_ps_ratio": 12.84
     },
     {
       "report_date": "2026-05-20T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2355288675529.1904,
-      "total_ttm_revenue": 173443885212.47998,
+      "total_ttm_revenue": 173458370212.47998,
       "industry_ps_ratio": 13.58
     },
     {
       "report_date": "2026-05-21T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2404355372198.72,
-      "total_ttm_revenue": 173443885212.47998,
+      "total_ttm_revenue": 173458370212.47998,
       "industry_ps_ratio": 13.86
     },
     {
       "report_date": "2026-05-22T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2461603198001.16,
-      "total_ttm_revenue": 173443885212.47998,
+      "total_ttm_revenue": 173458370212.47998,
       "industry_ps_ratio": 14.19
     },
     {
       "report_date": "2026-05-26T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2530368010002.4097,
-      "total_ttm_revenue": 173443885212.47998,
+      "total_ttm_revenue": 173458370212.47998,
       "industry_ps_ratio": 14.59
     },
     {
       "report_date": "2026-05-27T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2478906046917.56,
-      "total_ttm_revenue": 173443885212.47998,
+      "total_ttm_revenue": 173458370212.47998,
       "industry_ps_ratio": 14.29
     },
     {
       "report_date": "2026-05-28T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2476009402673.21,
-      "total_ttm_revenue": 173443885212.47998,
-      "industry_ps_ratio": 14.28
+      "total_ttm_revenue": 173458370212.47998,
+      "industry_ps_ratio": 14.27
     },
     {
       "report_date": "2026-05-29T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2479842179714.04,
-      "total_ttm_revenue": 173443885212.47998,
+      "total_ttm_revenue": 173458370212.47998,
       "industry_ps_ratio": 14.3
     },
     {
       "report_date": "2026-06-01T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2502988551548.7896,
-      "total_ttm_revenue": 173443885212.47998,
+      "total_ttm_revenue": 173458370212.47998,
       "industry_ps_ratio": 14.43
     },
     {
       "report_date": "2026-06-02T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2622065596588.4497,
-      "total_ttm_revenue": 173443885212.47998,
+      "total_ttm_revenue": 173458370212.47998,
       "industry_ps_ratio": 15.12
     },
     {
       "report_date": "2026-06-03T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2677934400183.1997,
-      "total_ttm_revenue": 173443885212.47998,
+      "total_ttm_revenue": 173458370212.47998,
       "industry_ps_ratio": 15.44
+    },
+    {
+      "report_date": "2026-06-04T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_market_cap": 2687766120223.26,
+      "total_ttm_revenue": 173458370212.47998,
+      "industry_ps_ratio": 15.5
+    },
+    {
+      "report_date": "2026-06-05T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_market_cap": 2460652283358.26,
+      "total_ttm_revenue": 173458370212.47998,
+      "industry_ps_ratio": 14.19
     }
   ],
   "pb_ratio": [
@@ -17886,743 +17914,757 @@
       "report_date": "2025-12-31T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 1768710878705.19,
-      "total_bve": 138136545587.25995,
-      "industry_pb_ratio": 12.8
+      "total_bve": 138111837287.07996,
+      "industry_pb_ratio": 12.81
     },
     {
       "report_date": "2026-01-02T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 1884558979871.19,
-      "total_bve": 138136545587.25995,
-      "industry_pb_ratio": 13.64
+      "total_bve": 138111837287.07996,
+      "industry_pb_ratio": 13.65
     },
     {
       "report_date": "2026-01-05T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 1981580692065.42,
-      "total_bve": 138136545587.25995,
+      "total_bve": 138111837287.07996,
       "industry_pb_ratio": 14.35
     },
     {
       "report_date": "2026-01-06T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2026350071717.42,
-      "total_bve": 138136545587.25995,
+      "total_bve": 138111837287.07996,
       "industry_pb_ratio": 14.67
     },
     {
       "report_date": "2026-01-07T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2012370197666.89,
-      "total_bve": 138136545587.25995,
+      "total_bve": 138111837287.07996,
       "industry_pb_ratio": 14.57
     },
     {
       "report_date": "2026-01-08T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 1963378399879.42,
-      "total_bve": 138136545587.25995,
-      "industry_pb_ratio": 14.21
+      "total_bve": 138111837287.07996,
+      "industry_pb_ratio": 14.22
     },
     {
       "report_date": "2026-01-09T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2082624151033.19,
-      "total_bve": 138136545587.25995,
+      "total_bve": 138111837287.07996,
       "industry_pb_ratio": 15.08
     },
     {
       "report_date": "2026-01-12T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2106417304430.69,
-      "total_bve": 138136545587.25995,
+      "total_bve": 138111837287.07996,
       "industry_pb_ratio": 15.25
     },
     {
       "report_date": "2026-01-13T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2096809650935.39,
-      "total_bve": 138136545587.25995,
+      "total_bve": 138111837287.07996,
       "industry_pb_ratio": 15.18
     },
     {
       "report_date": "2026-01-14T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2076622285479.19,
-      "total_bve": 138136545587.25995,
-      "industry_pb_ratio": 15.03
+      "total_bve": 138111837287.07996,
+      "industry_pb_ratio": 15.04
     },
     {
       "report_date": "2026-01-15T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2189181174924.0,
-      "total_bve": 138136545587.25995,
+      "total_bve": 138111837287.07996,
       "industry_pb_ratio": 15.85
     },
     {
       "report_date": "2026-01-16T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2227769266527.6797,
-      "total_bve": 138136545587.25995,
+      "total_bve": 138111837287.07996,
       "industry_pb_ratio": 16.13
     },
     {
       "report_date": "2026-01-20T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2171777975971.55,
-      "total_bve": 138136545587.25995,
+      "total_bve": 138111837287.07996,
       "industry_pb_ratio": 15.72
     },
     {
       "report_date": "2026-01-21T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2222861218562.25,
-      "total_bve": 138136545587.25995,
+      "total_bve": 138111837287.07996,
       "industry_pb_ratio": 16.09
     },
     {
       "report_date": "2026-01-22T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2243975798167.66,
-      "total_bve": 138136545587.25995,
-      "industry_pb_ratio": 16.24
+      "total_bve": 138111837287.07996,
+      "industry_pb_ratio": 16.25
     },
     {
       "report_date": "2026-01-23T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2251247867747.66,
-      "total_bve": 138136545587.25995,
+      "total_bve": 138111837287.07996,
       "industry_pb_ratio": 16.3
     },
     {
       "report_date": "2026-01-26T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2284265937614.16,
-      "total_bve": 138136545587.25995,
+      "total_bve": 138111837287.07996,
       "industry_pb_ratio": 16.54
     },
     {
       "report_date": "2026-01-27T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2366049316991.16,
-      "total_bve": 138136545587.25995,
+      "total_bve": 138111837287.07996,
       "industry_pb_ratio": 17.13
     },
     {
       "report_date": "2026-01-28T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2404056292420.16,
-      "total_bve": 138136545587.25995,
-      "industry_pb_ratio": 17.4
+      "total_bve": 138111837287.07996,
+      "industry_pb_ratio": 17.41
     },
     {
       "report_date": "2026-01-29T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2437968487966.66,
-      "total_bve": 138136545587.25995,
+      "total_bve": 138111837287.07996,
       "industry_pb_ratio": 17.65
     },
     {
       "report_date": "2026-01-30T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2326059759429.8003,
-      "total_bve": 138136545587.25995,
+      "total_bve": 138111837287.07996,
       "industry_pb_ratio": 16.84
     },
     {
       "report_date": "2026-02-02T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2333214665701.06,
-      "total_bve": 139481022587.25995,
+      "total_bve": 139456314287.07996,
       "industry_pb_ratio": 16.73
     },
     {
       "report_date": "2026-02-03T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2269676808664.0596,
-      "total_bve": 139481022587.25995,
-      "industry_pb_ratio": 16.27
+      "total_bve": 139456314287.07996,
+      "industry_pb_ratio": 16.28
     },
     {
       "report_date": "2026-02-04T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2176984013001.0598,
-      "total_bve": 139481022587.25995,
+      "total_bve": 139456314287.07996,
       "industry_pb_ratio": 15.61
     },
     {
       "report_date": "2026-02-05T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2184331512834.3599,
-      "total_bve": 139481022587.25995,
+      "total_bve": 139456314287.07996,
       "industry_pb_ratio": 15.66
     },
     {
       "report_date": "2026-02-06T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2332376769298.38,
-      "total_bve": 139481022587.25995,
+      "total_bve": 139456314287.07996,
       "industry_pb_ratio": 16.72
     },
     {
       "report_date": "2026-02-09T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2365798357475.6104,
-      "total_bve": 139481022587.25995,
+      "total_bve": 139456314287.07996,
       "industry_pb_ratio": 16.96
     },
     {
       "report_date": "2026-02-10T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2347810912577.91,
-      "total_bve": 139481022587.25995,
-      "industry_pb_ratio": 16.83
+      "total_bve": 139456314287.07996,
+      "industry_pb_ratio": 16.84
     },
     {
       "report_date": "2026-02-11T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2414956228755.71,
-      "total_bve": 139481022587.25995,
-      "industry_pb_ratio": 17.31
+      "total_bve": 139456314287.07996,
+      "industry_pb_ratio": 17.32
     },
     {
       "report_date": "2026-02-12T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2353744277459.58,
-      "total_bve": 139481022587.25995,
+      "total_bve": 139456314287.07996,
       "industry_pb_ratio": 16.88
     },
     {
       "report_date": "2026-02-13T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2390616069884.71,
-      "total_bve": 139481022587.25995,
+      "total_bve": 139456314287.07996,
       "industry_pb_ratio": 17.14
     },
     {
       "report_date": "2026-02-17T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2401194958365.25,
-      "total_bve": 139481022587.25995,
+      "total_bve": 139456314287.07996,
       "industry_pb_ratio": 17.22
     },
     {
       "report_date": "2026-02-18T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2447173185869.0103,
-      "total_bve": 139481022587.25995,
-      "industry_pb_ratio": 17.54
+      "total_bve": 139456314287.07996,
+      "industry_pb_ratio": 17.55
     },
     {
       "report_date": "2026-02-19T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2421789760923.43,
-      "total_bve": 139481022587.25995,
-      "industry_pb_ratio": 17.36
+      "total_bve": 139456314287.07996,
+      "industry_pb_ratio": 17.37
     },
     {
       "report_date": "2026-02-20T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2449230983800.41,
-      "total_bve": 139481022587.25995,
+      "total_bve": 139456314287.07996,
       "industry_pb_ratio": 17.56
     },
     {
       "report_date": "2026-02-23T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2439811868647.81,
-      "total_bve": 139481022587.25995,
-      "industry_pb_ratio": 17.49
+      "total_bve": 139456314287.07996,
+      "industry_pb_ratio": 17.5
     },
     {
       "report_date": "2026-02-24T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2472046660686.66,
-      "total_bve": 139481022587.25995,
-      "industry_pb_ratio": 17.72
+      "total_bve": 139456314287.07996,
+      "industry_pb_ratio": 17.73
     },
     {
       "report_date": "2026-02-25T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2540107142026.24,
-      "total_bve": 139481022587.25995,
+      "total_bve": 139456314287.07996,
       "industry_pb_ratio": 18.21
     },
     {
       "report_date": "2026-02-26T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2441895880148.17,
-      "total_bve": 139481022587.25995,
+      "total_bve": 139456314287.07996,
       "industry_pb_ratio": 17.51
     },
     {
       "report_date": "2026-02-27T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2415314244343.44,
-      "total_bve": 139481022587.25995,
+      "total_bve": 139456314287.07996,
       "industry_pb_ratio": 17.32
     },
     {
       "report_date": "2026-03-02T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2389140400950.3403,
-      "total_bve": 139489869587.25995,
+      "total_bve": 139465161287.07996,
       "industry_pb_ratio": 17.13
     },
     {
       "report_date": "2026-03-03T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2287416406689.54,
-      "total_bve": 139489869587.25995,
+      "total_bve": 139465161287.07996,
       "industry_pb_ratio": 16.4
     },
     {
       "report_date": "2026-03-04T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2338854881542.33,
-      "total_bve": 139489869587.25995,
+      "total_bve": 139465161287.07996,
       "industry_pb_ratio": 16.77
     },
     {
       "report_date": "2026-03-05T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2275828471384.04,
-      "total_bve": 139489869587.25995,
+      "total_bve": 139465161287.07996,
       "industry_pb_ratio": 16.32
     },
     {
       "report_date": "2026-03-06T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2154318024199.4001,
-      "total_bve": 139489869587.25995,
-      "industry_pb_ratio": 15.44
+      "total_bve": 139465161287.07996,
+      "industry_pb_ratio": 15.45
     },
     {
       "report_date": "2026-03-09T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2241942152920.66,
-      "total_bve": 139489869587.25995,
-      "industry_pb_ratio": 16.07
+      "total_bve": 139465161287.07996,
+      "industry_pb_ratio": 16.08
     },
     {
       "report_date": "2026-03-10T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2291131193326.13,
-      "total_bve": 139489869587.25995,
+      "total_bve": 139465161287.07996,
       "industry_pb_ratio": 16.43
     },
     {
       "report_date": "2026-03-11T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2292869829284.24,
-      "total_bve": 139489869587.25995,
+      "total_bve": 139465161287.07996,
       "industry_pb_ratio": 16.44
     },
     {
       "report_date": "2026-03-12T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2228936821634.0205,
-      "total_bve": 139489869587.25995,
+      "total_bve": 139465161287.07996,
       "industry_pb_ratio": 15.98
     },
     {
       "report_date": "2026-03-13T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2221678504769.0,
-      "total_bve": 139489869587.25995,
+      "total_bve": 139465161287.07996,
       "industry_pb_ratio": 15.93
     },
     {
       "report_date": "2026-03-16T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2281785255182.2,
-      "total_bve": 139489869587.25995,
+      "total_bve": 139465161287.07996,
       "industry_pb_ratio": 16.36
     },
     {
       "report_date": "2026-03-17T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2310578849745.61,
-      "total_bve": 139489869587.25995,
-      "industry_pb_ratio": 16.56
+      "total_bve": 139465161287.07996,
+      "industry_pb_ratio": 16.57
     },
     {
       "report_date": "2026-03-18T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2275826415956.5,
-      "total_bve": 139489869587.25995,
+      "total_bve": 139465161287.07996,
       "industry_pb_ratio": 16.32
     },
     {
       "report_date": "2026-03-19T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2317499060620.3496,
-      "total_bve": 139489869587.25995,
-      "industry_pb_ratio": 16.61
+      "total_bve": 139465161287.07996,
+      "industry_pb_ratio": 16.62
     },
     {
       "report_date": "2026-03-20T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2253169151526.7,
-      "total_bve": 139489869587.25995,
-      "industry_pb_ratio": 16.15
+      "total_bve": 139465161287.07996,
+      "industry_pb_ratio": 16.16
     },
     {
       "report_date": "2026-03-23T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2326156689532.6797,
-      "total_bve": 139489869587.25995,
+      "total_bve": 139465161287.07996,
       "industry_pb_ratio": 16.68
     },
     {
       "report_date": "2026-03-24T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2369554532767.87,
-      "total_bve": 139489869587.25995,
+      "total_bve": 139465161287.07996,
       "industry_pb_ratio": 16.99
     },
     {
       "report_date": "2026-03-25T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2361994760438.08,
-      "total_bve": 139489869587.25995,
-      "industry_pb_ratio": 16.93
+      "total_bve": 139465161287.07996,
+      "industry_pb_ratio": 16.94
     },
     {
       "report_date": "2026-03-26T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2205425230247.37,
-      "total_bve": 139489869587.25995,
+      "total_bve": 139465161287.07996,
       "industry_pb_ratio": 15.81
     },
     {
       "report_date": "2026-03-27T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2171498535996.88,
-      "total_bve": 139489869587.25995,
+      "total_bve": 139465161287.07996,
       "industry_pb_ratio": 15.57
     },
     {
       "report_date": "2026-03-30T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2085622968285.62,
-      "total_bve": 139489869587.25995,
+      "total_bve": 139465161287.07996,
       "industry_pb_ratio": 14.95
     },
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2206963407280.2,
-      "total_bve": 572337946632.56,
+      "total_bve": 572313238332.38,
       "industry_pb_ratio": 3.86
     },
     {
       "report_date": "2026-04-01T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2261954817553.6,
-      "total_bve": 142867946632.56,
-      "industry_pb_ratio": 15.83
+      "total_bve": 142843238332.38,
+      "industry_pb_ratio": 15.84
     },
     {
       "report_date": "2026-04-02T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2234679484301.0703,
-      "total_bve": 572337946632.56,
+      "total_bve": 572313238332.38,
       "industry_pb_ratio": 3.9
     },
     {
       "report_date": "2026-04-06T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2235826875730.2,
-      "total_bve": 142867880632.56,
+      "total_bve": 142843172332.38,
       "industry_pb_ratio": 15.65
     },
     {
       "report_date": "2026-04-07T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2240729477124.3,
-      "total_bve": 572337880632.56,
+      "total_bve": 572313172332.38,
       "industry_pb_ratio": 3.92
     },
     {
       "report_date": "2026-04-08T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2418651360954.7,
-      "total_bve": 142867880632.56,
+      "total_bve": 142843172332.38,
       "industry_pb_ratio": 16.93
     },
     {
       "report_date": "2026-04-09T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2486381625173.6,
-      "total_bve": 142867880632.56,
-      "industry_pb_ratio": 17.4
+      "total_bve": 142843172332.38,
+      "industry_pb_ratio": 17.41
     },
     {
       "report_date": "2026-04-10T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2497152912988.7,
-      "total_bve": 142867880632.56,
+      "total_bve": 142843172332.38,
       "industry_pb_ratio": 17.48
     },
     {
       "report_date": "2026-04-13T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2556649264247.75,
-      "total_bve": 142867880632.56,
+      "total_bve": 142843172332.38,
       "industry_pb_ratio": 17.9
     },
     {
       "report_date": "2026-04-14T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2606170038301.05,
-      "total_bve": 142867880632.56,
+      "total_bve": 142843172332.38,
       "industry_pb_ratio": 18.24
     },
     {
       "report_date": "2026-04-15T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2576303385559.35,
-      "total_bve": 572337880632.56,
+      "total_bve": 572313172332.38,
       "industry_pb_ratio": 4.5
     },
     {
       "report_date": "2026-04-16T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2525478273165.35,
-      "total_bve": 572337880632.56,
+      "total_bve": 572313172332.38,
       "industry_pb_ratio": 4.41
     },
     {
       "report_date": "2026-04-17T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2584303461836.95,
-      "total_bve": 142867880632.56,
+      "total_bve": 142843172332.38,
       "industry_pb_ratio": 18.09
     },
     {
       "report_date": "2026-04-20T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2587587071634.65,
-      "total_bve": 572337880632.56,
+      "total_bve": 572313172332.38,
       "industry_pb_ratio": 4.52
     },
     {
       "report_date": "2026-04-21T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2558042152051.22,
-      "total_bve": 572337880632.56,
+      "total_bve": 572313172332.38,
       "industry_pb_ratio": 4.47
     },
     {
       "report_date": "2026-04-22T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2585534288744.85,
-      "total_bve": 142867880632.56,
+      "total_bve": 142843172332.38,
       "industry_pb_ratio": 18.1
     },
     {
       "report_date": "2026-04-23T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2544619844739.15,
-      "total_bve": 142867880632.56,
+      "total_bve": 142843172332.38,
       "industry_pb_ratio": 17.81
     },
     {
       "report_date": "2026-04-24T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2646725020514.39,
-      "total_bve": 142867880632.56,
+      "total_bve": 142843172332.38,
       "industry_pb_ratio": 18.53
     },
     {
       "report_date": "2026-04-27T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2599256961220.73,
-      "total_bve": 572337880632.56,
+      "total_bve": 572313172332.38,
       "industry_pb_ratio": 4.54
     },
     {
       "report_date": "2026-04-28T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2504056583633.04,
-      "total_bve": 142867880632.56,
+      "total_bve": 142843172332.38,
       "industry_pb_ratio": 17.53
     },
     {
       "report_date": "2026-04-29T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2511750842957.1797,
-      "total_bve": 572337880632.56,
+      "total_bve": 572313172332.38,
       "industry_pb_ratio": 4.39
     },
     {
       "report_date": "2026-04-30T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
-      "total_market_cap": 2562827507226.6704,
-      "total_bve": 574529880632.56,
+      "total_market_cap": 2562835790746.6704,
+      "total_bve": 574516201332.38,
       "industry_pb_ratio": 4.46
     },
     {
       "report_date": "2026-05-01T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
-      "total_market_cap": 2549725321018.0903,
-      "total_bve": 145059880632.56,
+      "total_market_cap": 2549733936842.0903,
+      "total_bve": 145046201332.38,
       "industry_pb_ratio": 17.58
     },
     {
       "report_date": "2026-05-04T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
-      "total_market_cap": 2509447080796.0,
-      "total_bve": 145059880632.56,
+      "total_market_cap": 2509455595484.0,
+      "total_bve": 145046201332.38,
       "industry_pb_ratio": 17.3
     },
     {
       "report_date": "2026-05-05T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2616595957958.3,
-      "total_bve": 574529880632.56,
+      "total_bve": 574516201332.38,
       "industry_pb_ratio": 4.55
     },
     {
       "report_date": "2026-05-06T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2762422546366.82,
-      "total_bve": 574529880632.56,
+      "total_bve": 574516201332.38,
       "industry_pb_ratio": 4.81
     },
     {
       "report_date": "2026-05-07T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2677957904580.53,
-      "total_bve": 574529880632.56,
+      "total_bve": 574516201332.38,
       "industry_pb_ratio": 4.66
     },
     {
       "report_date": "2026-05-08T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2804985992693.5396,
-      "total_bve": 574529880632.56,
+      "total_bve": 574516201332.38,
       "industry_pb_ratio": 4.88
     },
     {
       "report_date": "2026-05-11T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2778492326144.96,
-      "total_bve": 574529880632.56,
+      "total_bve": 574516201332.38,
       "industry_pb_ratio": 4.84
     },
     {
       "report_date": "2026-05-12T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2707577298634.68,
-      "total_bve": 574529880632.56,
+      "total_bve": 574516201332.38,
       "industry_pb_ratio": 4.71
     },
     {
       "report_date": "2026-05-13T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2772306150839.8105,
-      "total_bve": 574529880632.56,
+      "total_bve": 574516201332.38,
       "industry_pb_ratio": 4.83
     },
     {
       "report_date": "2026-05-14T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2782218925783.82,
-      "total_bve": 574529880632.56,
+      "total_bve": 574516201332.38,
       "industry_pb_ratio": 4.84
     },
     {
       "report_date": "2026-05-15T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2659395060013.89,
-      "total_bve": 574529880632.56,
+      "total_bve": 574516201332.38,
       "industry_pb_ratio": 4.63
     },
     {
       "report_date": "2026-05-18T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2582582043746.87,
-      "total_bve": 574529880632.56,
+      "total_bve": 574516201332.38,
       "industry_pb_ratio": 4.5
     },
     {
       "report_date": "2026-05-19T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2555749979410.5,
-      "total_bve": 574529880632.56,
+      "total_bve": 574516201332.38,
       "industry_pb_ratio": 4.45
     },
     {
       "report_date": "2026-05-20T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2690244289286.04,
-      "total_bve": 574529880632.56,
+      "total_bve": 574516201332.38,
       "industry_pb_ratio": 4.68
     },
     {
       "report_date": "2026-05-21T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2750172847375.2803,
-      "total_bve": 574529880632.56,
+      "total_bve": 574516201332.38,
       "industry_pb_ratio": 4.79
     },
     {
       "report_date": "2026-05-22T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2804077859968.62,
-      "total_bve": 574529880632.56,
+      "total_bve": 574516201332.38,
       "industry_pb_ratio": 4.88
     },
     {
       "report_date": "2026-05-26T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2875948165794.8496,
-      "total_bve": 574529880632.56,
+      "total_bve": 574516201332.38,
       "industry_pb_ratio": 5.01
     },
     {
       "report_date": "2026-05-27T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2827100330099.5,
-      "total_bve": 574529880632.56,
+      "total_bve": 574516201332.38,
       "industry_pb_ratio": 4.92
     },
     {
       "report_date": "2026-05-28T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2822309308812.03,
-      "total_bve": 574529880632.56,
+      "total_bve": 574516201332.38,
       "industry_pb_ratio": 4.91
     },
     {
       "report_date": "2026-05-29T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2819991062992.07,
-      "total_bve": 574529880632.56,
+      "total_bve": 574516201332.38,
       "industry_pb_ratio": 4.91
     },
     {
       "report_date": "2026-06-01T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2840217003967.3096,
-      "total_bve": 574529880632.56,
+      "total_bve": 574516201332.38,
       "industry_pb_ratio": 4.94
     },
     {
       "report_date": "2026-06-02T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 2961238200660.9795,
-      "total_bve": 574529880632.56,
+      "total_bve": 574516201332.38,
       "industry_pb_ratio": 5.15
     },
     {
       "report_date": "2026-06-03T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
       "total_market_cap": 3022738309041.6797,
-      "total_bve": 574529880632.56,
+      "total_bve": 574516201332.38,
       "industry_pb_ratio": 5.26
+    },
+    {
+      "report_date": "2026-06-04T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_market_cap": 3036564943227.7896,
+      "total_bve": 574516201332.38,
+      "industry_pb_ratio": 5.29
+    },
+    {
+      "report_date": "2026-06-05T00:00:00.000",
+      "industry": "Semiconductor Equipment & Materials",
+      "total_market_cap": 2790570896039.0396,
+      "total_bve": 574516201332.38,
+      "industry_pb_ratio": 4.86
     }
   ],
   "roe": [
@@ -18846,8 +18888,8 @@
     {
       "report_date": "2026-04-30T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
-      "total_ttm_net_income": 46001474776.97341,
-      "total_avg_equity": 119673987287.93272,
+      "total_ttm_net_income": 46007709776.97341,
+      "total_avg_equity": 119681403787.93272,
       "industry_roe": 0.3844
     }
   ],
@@ -19072,8 +19114,8 @@
     {
       "report_date": "2026-04-30T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
-      "total_ttm_net_income": 46001474776.97341,
-      "total_avg_assets": 244805087505.27765,
+      "total_ttm_net_income": 46007709776.97341,
+      "total_avg_assets": 244805463005.27765,
       "industry_roa": 0.1879
     }
   ],
@@ -19580,8 +19622,8 @@
     {
       "report_date": "2026-04-30T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
-      "total_ttm_gross_profit": 84980260587.15814,
-      "total_ttm_revenue": 173443885212.4797,
+      "total_ttm_gross_profit": 84987313587.15814,
+      "total_ttm_revenue": 173458370212.4797,
       "industry_gross_margin": 0.49
     }
   ],
@@ -19841,8 +19883,8 @@
     {
       "report_date": "2026-04-30T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
-      "total_ttm_ebitda": 61305263694.31973,
-      "total_ttm_revenue": 173443885212.4797,
+      "total_ttm_ebitda": 61311324694.31973,
+      "total_ttm_revenue": 173458370212.4797,
       "industry_ebitda_margin": 0.3535
     }
   ],
@@ -20123,8 +20165,8 @@
     {
       "report_date": "2026-04-30T00:00:00.000",
       "industry": "Semiconductor Equipment & Materials",
-      "total_ttm_net_income": 46001474776.97341,
-      "total_ttm_revenue": 173443885212.4797,
+      "total_ttm_net_income": 46007709776.97341,
+      "total_ttm_revenue": 173458370212.4797,
       "industry_net_margin": 0.2652
     }
   ],

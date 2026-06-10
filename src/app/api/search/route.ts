@@ -161,13 +161,13 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       id: 'page-fantasy-football',
       title: 'Fantasy Football Analytics Platform',
       excerpt:
-        'Advanced fantasy football analytics with tier charts, clustering, and draft tooling.',
+        'Snapshot-backed fantasy football rankings with consensus tiers, scoring toggles, and a manual draft assistant.',
       content:
-        'Fantasy football analytics data visualization D3 React TypeScript clustering tier charts draft tools waiver wire',
+        'Fantasy football rankings FantasyPros consensus tiers PPR half PPR standard scoring overall position QB RB WR TE draft assistant snake draft waiver',
       url: '/fantasy-football',
       type: 'project',
       category: 'Fantasy Football Analytics',
-      tags: ['Fantasy Football', 'Analytics', 'Data Visualization', 'React', 'TypeScript'],
+      tags: ['Fantasy Football', 'Rankings', 'Draft Tools', 'Next.js', 'TypeScript'],
     },
     {
       id: 'page-news-pulse',
@@ -338,6 +338,42 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       tags: ['NFL', 'Football', 'Sports Data', 'Dashboard'],
     },
     {
+      id: 'page-world-cup-2026',
+      title: 'World Cup Pulse',
+      excerpt:
+        '2026 FIFA World Cup dashboard with group standings, the 32-team knockout bracket, the full match schedule, and host venues across the United States, Canada, and Mexico.',
+      content:
+        'World Cup 2026 FIFA soccer football groups standings knockout bracket round of 32 schedule fixtures host cities venues United States Canada Mexico dashboard',
+      url: '/world-cup-2026',
+      type: 'project',
+      category: 'Sports Data Tools',
+      tags: ['World Cup', 'FIFA', 'Soccer', 'Football', 'Sports Data', 'Dashboard'],
+    },
+    {
+      id: 'page-bay-area-transit',
+      title: 'Bay Area Transit Pulse',
+      excerpt:
+        'Snapshot-backed BART dashboard with every line, station-by-station departure boards, and live service advisories.',
+      content:
+        'Bay Area Transit Pulse BART trains lines stations departures advisories elevator outages San Francisco Oakland civic dashboard',
+      url: '/bay-area-transit',
+      type: 'project',
+      category: 'Civic Data Tools',
+      tags: ['BART', 'Transit', 'Bay Area', 'Civic Data', 'Dashboard'],
+    },
+    {
+      id: 'page-tech-startup-tracker',
+      title: 'Tech Startup Tracker',
+      excerpt:
+        'Curated tracker of notable private tech companies with valuations, funding rounds, momentum scores, and sector and stage segments.',
+      content:
+        'Tech startup tracker private companies valuations funding rounds momentum sectors stages venture capital market intelligence dashboard',
+      url: '/tech-startup-tracker',
+      type: 'project',
+      category: 'Market Intelligence Tools',
+      tags: ['Startups', 'Venture Capital', 'Valuations', 'Market Intelligence', 'Dashboard'],
+    },
+    {
       id: 'page-interchange-iq',
       title: 'Interchange IQ',
       excerpt:
@@ -372,6 +408,30 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       type: 'project',
       category: 'Sports Data Tools',
       tags: ['Golf', 'PGA Tour', 'Sports Data', 'Dashboard', 'Next.js'],
+    },
+    {
+      id: 'page-earthquake-pulse',
+      title: 'Earthquake Pulse',
+      excerpt:
+        'Snapshot-backed global earthquake monitor for the past 24 hours of seismic activity, significant worldwide quakes, and regional breakdowns.',
+      content:
+        'earthquake pulse USGS seismic monitor magnitude depth tsunami significant quakes regions distribution global geojson dashboard Next.js TypeScript',
+      url: '/earthquake-pulse',
+      type: 'project',
+      category: 'Data Tools',
+      tags: ['Earthquakes', 'USGS', 'Data Visualization', 'Dashboard', 'Next.js'],
+    },
+    {
+      id: 'page-travel-planner',
+      title: 'Travel Planner',
+      excerpt:
+        'Browser-persisted travel planner for trip dates, day-by-day itineraries, stop check-off, and per-day journaling.',
+      content:
+        'Travel planner trip itinerary vacation planning trip tracker travel journal day-by-day activities browser local storage no account Next.js TypeScript',
+      url: '/travel',
+      type: 'project',
+      category: 'Personal Productivity Tools',
+      tags: ['Travel', 'Itinerary', 'Journal', 'Personal Productivity', 'Next.js'],
     },
     {
       id: 'page-ai-dev-tools',
@@ -459,7 +519,10 @@ function calculateRelevanceScore(content: SearchableContent, query: string): num
   // Content matches (lowest weight but important for comprehensive search)
   const contentLower = content.content.toLowerCase();
   queryWords.forEach(word => {
-    const regex = new RegExp(`\\b${word}\\b`, 'gi');
+    // Escape regex metacharacters so queries like "c++" or "(" don't throw
+    // (an unescaped RegExp would crash the whole request with a 500).
+    const escapedWord = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const regex = new RegExp(`\\b${escapedWord}\\b`, 'gi');
     const matches = contentLower.match(regex);
     if (matches) {
       score += matches.length * 2; // Multiple occurrences increase score

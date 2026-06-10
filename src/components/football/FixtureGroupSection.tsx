@@ -32,19 +32,22 @@ export function FixtureGroupSection({
   fixtures,
   contextTeamId,
   onOpenTeam,
+  getFallbackLabel,
 }: {
   title: string;
   description: string;
   fixtures: GenericFixture[];
   contextTeamId?: string | null;
   onOpenTeam?: (teamId: string) => void;
+  /** Per-fixture eyebrow label when the fixture has no matchday. */
+  getFallbackLabel?: (fixture: GenericFixture) => string | undefined;
 }) {
   const groups = groupFixturesByDay(fixtures);
 
   return (
     <SurfaceCard className="p-5 sm:p-6">
       <div className="flex flex-col gap-2 border-b border-[var(--home-rule)] pb-5">
-        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
           {title}
         </p>
         <h3 className="text-xl font-semibold text-[var(--home-ink)]">{description}</h3>
@@ -56,7 +59,7 @@ export function FixtureGroupSection({
         ) : (
           groups.map((group) => (
             <div key={group.label}>
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
                 {group.label}
               </p>
               <div className="space-y-3">
@@ -66,6 +69,7 @@ export function FixtureGroupSection({
                     fixture={fixture}
                     contextTeamId={contextTeamId}
                     onOpenTeam={onOpenTeam}
+                    fallbackLabel={getFallbackLabel?.(fixture)}
                   />
                 ))}
               </div>

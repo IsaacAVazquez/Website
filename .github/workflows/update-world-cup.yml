@@ -1,0 +1,254 @@
+name: Refresh World Cup Snapshot
+
+on:
+  # The 2026 FIFA World Cup runs June 11 – July 19. Refresh every six hours
+  # across June and July to keep group standings, fixtures, and the bracket
+  # current. ESPN's site API needs no token. Outside those months there is
+  # nothing to refresh, so the schedule stays dormant.
+  schedule:
+    - cron: "20 */6 * 6,7 *"
+  workflow_dispatch:
+
+# Don't stack a manual dispatch on top of a scheduled run.
+concurrency:
+  group: refresh-world-cup
+  cancel-in-progress: false
+
+jobs:
+  refresh-world-cup:
+    name: Refresh World Cup Snapshot
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    permissions:
+      contents: write
+      issues: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline --no-audit --fund=false
+
+      - name: Refresh World Cup snapshot
+        run: npm run update:world-cup
+        env:
+          NODE_ENV: production
+
+      - name: Verify World Cup snapshot quality
+        id: verify_quality
+        run: |
+          node -e "
+          const fs = require('fs');
+
+          const SNAPSHOT_PATH = 'src/data/worldCupSnapshot.ts';
+
+          if (!fs.existsSync(SNAPSHOT_PATH)) {
+            console.error('::error::Snapshot file is missing at ' + SNAPSHOT_PATH);
+            process.exit(1);
+          }
+
+          const source = fs.readFileSync(SNAPSHOT_PATH, 'utf8');
+          const match = source.match(
+            /export const worldCupSnapshot: WorldCupSnapshot = (\{[\s\S]*\});\s*$/
+          );
+          if (!match) {
+            console.error('::error::Could not parse snapshot export from ' + SNAPSHOT_PATH);
+            process.exit(1);
+          }
+
+          let snapshot;
+          try {
+            snapshot = JSON.parse(match[1]);
+          } catch (err) {
+            console.error('::error::JSON.parse failed on World Cup snapshot body: ' + String(err));
+            process.exit(1);
+          }
+
+          const tournament = snapshot.tournament || null;
+          const groups = Array.isArray(snapshot.groups) ? snapshot.groups.length : 0;
+          const teams = Array.isArray(snapshot.teamOptions) ? snapshot.teamOptions.length : 0;
+          const upcoming = Array.isArray(snapshot.upcomingFixtures) ? snapshot.upcomingFixtures.length : 0;
+          const recent = Array.isArray(snapshot.recentFixtures) ? snapshot.recentFixtures.length : 0;
+
+          console.log('Tournament:', tournament && tournament.name);
+          console.log('Phase:', tournament && tournament.phase);
+          console.log('Groups:', groups, 'Teams:', teams, 'Upcoming:', upcoming, 'Recent:', recent);
+
+          // The tournament block must always survive. Empty groups/fixtures are
+          // legitimate before kickoff, so they are reported but never fail the run.
+          if (!tournament || !tournament.name) {
+            console.error('::error::World Cup snapshot has no tournament block.');
+            process.exit(1);
+          }
+
+          fs.writeFileSync(
+            process.env.GITHUB_OUTPUT,
+            'phase=' + ((tournament && tournament.phase) || '') + '\n' +
+              'groups=' + groups + '\n' +
+              'teams=' + teams + '\n' +
+              'fixtures=' + (upcoming + recent) + '\n',
+            { flag: 'a' }
+          );
+          "
+
+      - name: Check for snapshot changes
+        id: check_changes
+        run: |
+          if [ -z "$(git status --porcelain -- src/data/worldCupSnapshot.ts)" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No changes detected in src/data/worldCupSnapshot.ts"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "Changes detected in src/data/worldCupSnapshot.ts"
+          fi
+
+      - name: Commit and push refreshed snapshot
+        if: steps.check_changes.outputs.changed == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add src/data/worldCupSnapshot.ts
+          git commit -m "chore: refresh World Cup snapshot [automated] [skip ci]"
+          # Retry on push rejection. Main can move during the refresh, so rebase
+          # the single snapshot commit onto the latest origin/main and try again.
+          for attempt in 1 2 3 4 5; do
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "Push attempt $attempt rejected. Rebasing onto latest origin/main..."
+            git fetch origin main
+            if ! git rebase origin/main; then
+              git rebase --abort
+              echo "Rebase conflict. Failing the run."
+              exit 1
+            fi
+            sleep $((attempt * 3))
+          done
+          echo "Push failed after 5 attempts."
+          exit 1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Snapshot commits carry [skip ci], so without this the live site only
+      # picks up the refresh on the daily cron-job.org build hook — up to a
+      # day behind a six-hour cadence. Optional: a no-op until the
+      # NETLIFY_BUILD_HOOK secret is configured.
+      - name: Trigger Netlify deploy
+        if: steps.check_changes.outputs.changed == 'true'
+        env:
+          NETLIFY_BUILD_HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
+        run: |
+          if [ -z "$NETLIFY_BUILD_HOOK" ]; then
+            echo "NETLIFY_BUILD_HOOK secret not configured; skipping deploy trigger."
+            exit 0
+          fi
+          curl -fsS -X POST -d '{}' "$NETLIFY_BUILD_HOOK" \
+            && echo "Netlify build hook triggered." \
+            || echo "::warning::Netlify build hook request failed; the daily scheduled rebuild will pick up the snapshot."
+
+      - name: Create job summary
+        if: always()
+        run: |
+          echo "## World Cup Snapshot Refresh" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Status:** ${{ job.status }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Run Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          if [ -n "${{ steps.verify_quality.outputs.teams }}" ]; then
+            echo "**Phase:** ${{ steps.verify_quality.outputs.phase }}" >> "$GITHUB_STEP_SUMMARY"
+            echo "**Groups:** ${{ steps.verify_quality.outputs.groups }}" >> "$GITHUB_STEP_SUMMARY"
+            echo "**Teams:** ${{ steps.verify_quality.outputs.teams }}" >> "$GITHUB_STEP_SUMMARY"
+            echo "**Fixtures:** ${{ steps.verify_quality.outputs.fixtures }}" >> "$GITHUB_STEP_SUMMARY"
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ "${{ steps.check_changes.outputs.changed }}" = "true" ]; then
+            echo "World Cup snapshot changed and was committed." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "World Cup snapshot was already up to date." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Notify on failure via GitHub issue
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const today = new Date().toISOString().slice(0, 10);
+            const title = `World Cup refresh failed ${today}`;
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const body = [
+              `The **Refresh World Cup Snapshot** workflow failed on ${today}.`,
+              ``,
+              `**Run:** ${runUrl}`,
+              `**Commit:** ${context.sha}`,
+              `**Trigger:** ${context.eventName}`,
+              ``,
+              `Check the run logs to diagnose. Common causes:`,
+              `- ESPN soccer API outage or timeout`,
+              `- Quality gate could not parse the snapshot`,
+              `- Git push rejected after 5 retries`,
+              ``,
+              `The refresh keeps the previous snapshot when ESPN is unreachable, so a transient outage will not wipe the data.`,
+              ``,
+              `This issue will be updated if the next run also fails, and auto-closed on the first successful run.`
+            ].join('\n');
+            const existing = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'world-cup-refresh-failure',
+              per_page: 5,
+            });
+            if (existing.data.length > 0) {
+              const issue = existing.data[0];
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: `Failed again on ${today}. Run: ${runUrl}`,
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body,
+                labels: ['world-cup-refresh-failure', 'automation'],
+              });
+            }
+
+      - name: Close resolved failure issues
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const existing = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'world-cup-refresh-failure',
+              per_page: 10,
+            });
+            for (const issue of existing.data) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: `Refresh succeeded at ${new Date().toISOString()}. Auto-closing.`,
+              });
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                state: 'closed',
+              });
+            }

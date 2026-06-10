@@ -80,30 +80,30 @@
     {
       "symbol": "AVGO",
       "report_date": "2008-10-31",
-      "eps": 0.0086,
-      "tailing_eps": 0.035,
-      "update_time": "2026-05-16"
+      "eps": 0.0073,
+      "tailing_eps": 0.0337,
+      "update_time": "2026-06-06"
     },
     {
       "symbol": "AVGO",
       "report_date": "2009-01-31",
       "eps": 0.0027,
-      "tailing_eps": 0.0361,
-      "update_time": "2026-05-16"
+      "tailing_eps": 0.0348,
+      "update_time": "2026-06-06"
     },
     {
       "symbol": "AVGO",
       "report_date": "2009-04-30",
       "eps": -0.0147,
-      "tailing_eps": 0.0145,
-      "update_time": "2026-05-16"
+      "tailing_eps": 0.0132,
+      "update_time": "2026-06-06"
     },
     {
       "symbol": "AVGO",
       "report_date": "2009-07-31",
       "eps": 0.001,
-      "tailing_eps": -0.0024,
-      "update_time": "2026-05-16"
+      "tailing_eps": -0.0037,
+      "update_time": "2026-06-06"
     },
     {
       "symbol": "AVGO",
@@ -566,6 +566,13 @@
       "eps": 1.5035,
       "tailing_eps": 5.1264,
       "update_time": "2026-05-16"
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-04-30",
+      "eps": 1.91,
+      "tailing_eps": 6.0076,
+      "update_time": "2026-06-06"
     }
   ],
   "ttmPe": [
@@ -574,7 +581,7 @@
       "report_date": "2009-08-06T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.618,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -582,7 +589,7 @@
       "report_date": "2009-08-07T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.643,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -590,7 +597,7 @@
       "report_date": "2009-08-10T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.597,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -598,7 +605,7 @@
       "report_date": "2009-08-11T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.567,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -606,7 +613,7 @@
       "report_date": "2009-08-12T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.6,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -614,7 +621,7 @@
       "report_date": "2009-08-13T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.655,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -622,7 +629,7 @@
       "report_date": "2009-08-14T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.66,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -630,7 +637,7 @@
       "report_date": "2009-08-17T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.622,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -638,7 +645,7 @@
       "report_date": "2009-08-18T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.707,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -646,7 +653,7 @@
       "report_date": "2009-08-19T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.789,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -654,7 +661,7 @@
       "report_date": "2009-08-20T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.776,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -662,7 +669,7 @@
       "report_date": "2009-08-21T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.782,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -670,7 +677,7 @@
       "report_date": "2009-08-24T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.75,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -678,7 +685,7 @@
       "report_date": "2009-08-25T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.785,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -686,7 +693,7 @@
       "report_date": "2009-08-26T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.785,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -694,7 +701,7 @@
       "report_date": "2009-08-27T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.816,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -702,7 +709,7 @@
       "report_date": "2009-08-28T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.847,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -710,7 +717,7 @@
       "report_date": "2009-08-31T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.82,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -718,7 +725,7 @@
       "report_date": "2009-09-01T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.785,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -726,7 +733,7 @@
       "report_date": "2009-09-02T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.768,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -734,7 +741,7 @@
       "report_date": "2009-09-03T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.745,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -742,7 +749,7 @@
       "report_date": "2009-09-04T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.776,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -750,7 +757,7 @@
       "report_date": "2009-09-08T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.77,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -758,7 +765,7 @@
       "report_date": "2009-09-09T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.726,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -766,7 +773,7 @@
       "report_date": "2009-09-10T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.705,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -774,7 +781,7 @@
       "report_date": "2009-09-11T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.688,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -782,7 +789,7 @@
       "report_date": "2009-09-14T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.665,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -790,7 +797,7 @@
       "report_date": "2009-09-15T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.718,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -798,7 +805,7 @@
       "report_date": "2009-09-16T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.758,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -806,7 +813,7 @@
       "report_date": "2009-09-17T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.664,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -814,7 +821,7 @@
       "report_date": "2009-09-18T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.62,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -822,7 +829,7 @@
       "report_date": "2009-09-21T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.661,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -830,7 +837,7 @@
       "report_date": "2009-09-22T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.725,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -838,7 +845,7 @@
       "report_date": "2009-09-23T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.74,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -846,7 +853,7 @@
       "report_date": "2009-09-24T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.749,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -854,7 +861,7 @@
       "report_date": "2009-09-25T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.713,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -862,7 +869,7 @@
       "report_date": "2009-09-28T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.765,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -870,7 +877,7 @@
       "report_date": "2009-09-29T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.703,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -878,7 +885,7 @@
       "report_date": "2009-09-30T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.707,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -886,7 +893,7 @@
       "report_date": "2009-10-01T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.631,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -894,7 +901,7 @@
       "report_date": "2009-10-02T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.609,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -902,7 +909,7 @@
       "report_date": "2009-10-05T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.649,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -910,7 +917,7 @@
       "report_date": "2009-10-06T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.647,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -918,7 +925,7 @@
       "report_date": "2009-10-07T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.613,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -926,7 +933,7 @@
       "report_date": "2009-10-08T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.601,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -934,7 +941,7 @@
       "report_date": "2009-10-09T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.625,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -942,7 +949,7 @@
       "report_date": "2009-10-12T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.634,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -950,7 +957,7 @@
       "report_date": "2009-10-13T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.653,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -958,7 +965,7 @@
       "report_date": "2009-10-14T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.686,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -966,7 +973,7 @@
       "report_date": "2009-10-15T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.716,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -974,7 +981,7 @@
       "report_date": "2009-10-16T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.643,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -982,7 +989,7 @@
       "report_date": "2009-10-19T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.624,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -990,7 +997,7 @@
       "report_date": "2009-10-20T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.653,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -998,7 +1005,7 @@
       "report_date": "2009-10-21T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.649,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -1006,7 +1013,7 @@
       "report_date": "2009-10-22T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.628,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -1014,7 +1021,7 @@
       "report_date": "2009-10-23T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.605,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -1022,7 +1029,7 @@
       "report_date": "2009-10-26T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.584,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -1030,7 +1037,7 @@
       "report_date": "2009-10-27T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.545,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -1038,7 +1045,7 @@
       "report_date": "2009-10-28T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.493,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -1046,7 +1053,7 @@
       "report_date": "2009-10-29T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.504,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -1054,7 +1061,7 @@
       "report_date": "2009-10-30T00:00:00.000",
       "eps_report_date": "2009-07-31T00:00:00.000",
       "close_price": 1.5,
-      "ttm_eps": -0.0024,
+      "ttm_eps": -0.0037,
       "ttm_pe": null
     },
     {
@@ -34236,194 +34243,210 @@
     {
       "symbol": "AVGO",
       "report_date": "2026-04-30T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 417.43,
-      "ttm_eps": 5.1264,
-      "ttm_pe": 81.43
+      "ttm_eps": 6.0076,
+      "ttm_pe": 69.48
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-01T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 421.28,
-      "ttm_eps": 5.1264,
-      "ttm_pe": 82.18
+      "ttm_eps": 6.0076,
+      "ttm_pe": 70.12
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-04T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 416.5,
-      "ttm_eps": 5.1264,
-      "ttm_pe": 81.25
+      "ttm_eps": 6.0076,
+      "ttm_pe": 69.33
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-05T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 427.36,
-      "ttm_eps": 5.1264,
-      "ttm_pe": 83.36
+      "ttm_eps": 6.0076,
+      "ttm_pe": 71.14
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-06T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 425.44,
-      "ttm_eps": 5.1264,
-      "ttm_pe": 82.99
+      "ttm_eps": 6.0076,
+      "ttm_pe": 70.82
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-07T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 412.56,
-      "ttm_eps": 5.1264,
-      "ttm_pe": 80.48
+      "ttm_eps": 6.0076,
+      "ttm_pe": 68.67
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-08T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 430.0,
-      "ttm_eps": 5.1264,
-      "ttm_pe": 83.88
+      "ttm_eps": 6.0076,
+      "ttm_pe": 71.58
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-11T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 428.43,
-      "ttm_eps": 5.1264,
-      "ttm_pe": 83.57
+      "ttm_eps": 6.0076,
+      "ttm_pe": 71.31
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-12T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 419.3,
-      "ttm_eps": 5.1264,
-      "ttm_pe": 81.79
+      "ttm_eps": 6.0076,
+      "ttm_pe": 69.79
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-13T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 416.79,
-      "ttm_eps": 5.1264,
-      "ttm_pe": 81.3
+      "ttm_eps": 6.0076,
+      "ttm_pe": 69.38
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-14T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 439.79,
-      "ttm_eps": 5.1264,
-      "ttm_pe": 85.79
+      "ttm_eps": 6.0076,
+      "ttm_pe": 73.21
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-15T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 425.19,
-      "ttm_eps": 5.1264,
-      "ttm_pe": 82.94
+      "ttm_eps": 6.0076,
+      "ttm_pe": 70.78
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-18T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 420.71,
-      "ttm_eps": 5.1264,
-      "ttm_pe": 82.07
+      "ttm_eps": 6.0076,
+      "ttm_pe": 70.03
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-19T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 411.07,
-      "ttm_eps": 5.1264,
-      "ttm_pe": 80.19
+      "ttm_eps": 6.0076,
+      "ttm_pe": 68.42
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-20T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 417.76,
-      "ttm_eps": 5.1264,
-      "ttm_pe": 81.49
+      "ttm_eps": 6.0076,
+      "ttm_pe": 69.54
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-21T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 414.57,
-      "ttm_eps": 5.1264,
-      "ttm_pe": 80.87
+      "ttm_eps": 6.0076,
+      "ttm_pe": 69.01
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-22T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 414.14,
-      "ttm_eps": 5.1264,
-      "ttm_pe": 80.79
+      "ttm_eps": 6.0076,
+      "ttm_pe": 68.94
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-26T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 422.01,
-      "ttm_eps": 5.1264,
-      "ttm_pe": 82.32
+      "ttm_eps": 6.0076,
+      "ttm_pe": 70.25
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-27T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 421.86,
-      "ttm_eps": 5.1264,
-      "ttm_pe": 82.29
+      "ttm_eps": 6.0076,
+      "ttm_pe": 70.22
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-28T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 426.58,
-      "ttm_eps": 5.1264,
-      "ttm_pe": 83.21
+      "ttm_eps": 6.0076,
+      "ttm_pe": 71.01
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-29T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 446.77,
-      "ttm_eps": 5.1264,
-      "ttm_pe": 87.15
+      "ttm_eps": 6.0076,
+      "ttm_pe": 74.37
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-06-01T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 459.97,
-      "ttm_eps": 5.1264,
-      "ttm_pe": 89.73
+      "ttm_eps": 6.0076,
+      "ttm_pe": 76.56
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-06-02T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 481.57,
-      "ttm_eps": 5.1264,
-      "ttm_pe": 93.94
+      "ttm_eps": 6.0076,
+      "ttm_pe": 80.16
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-06-03T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 479.23,
-      "ttm_eps": 5.1264,
-      "ttm_pe": 93.48
+      "ttm_eps": 6.0076,
+      "ttm_pe": 79.77
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-06-04T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 418.91,
+      "ttm_eps": 6.0076,
+      "ttm_pe": 69.73
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-06-05T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 385.73,
+      "ttm_eps": 6.0076,
+      "ttm_pe": 64.21
     }
   ],
   "marketCap": [
@@ -68282,6 +68305,22 @@
       "close_price": 479.23,
       "shares_outstanding": 4734668200,
       "market_capitalization": 2268995041486.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-06-04T00:00:00.000",
+      "shares_report_date": "2026-02-27T00:00:00.000",
+      "close_price": 418.91,
+      "shares_outstanding": 4734668200,
+      "market_capitalization": 1983399855662.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-06-05T00:00:00.000",
+      "shares_report_date": "2026-02-27T00:00:00.000",
+      "close_price": 385.73,
+      "shares_outstanding": 4734668200,
+      "market_capitalization": 1826303564786.0
     }
   ],
   "psRatio": [
@@ -73534,6 +73573,26 @@
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 68282000000.0,
       "ps_ratio": 33.23
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-06-04T00:00:00.000",
+      "market_capitalization": 1983399855662.0,
+      "fiscal_quarter": "2026-01-31T00:00:00.000",
+      "ttm_revenue": 68282000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 68282000000.0,
+      "ps_ratio": 29.05
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-06-05T00:00:00.000",
+      "market_capitalization": 1826303564786.0,
+      "fiscal_quarter": "2026-01-31T00:00:00.000",
+      "ttm_revenue": 68282000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 68282000000.0,
+      "ps_ratio": 26.75
     }
   ],
   "pbRatio": [
@@ -83796,6 +83855,26 @@
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 79872000000.0,
       "pb_ratio": 28.41
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-06-04T00:00:00.000",
+      "market_capitalization": 1983399855662.0,
+      "fiscal_quarter": "2026-01-31T00:00:00.000",
+      "book_value_of_equity": 79872000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 79872000000.0,
+      "pb_ratio": 24.83
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-06-05T00:00:00.000",
+      "market_capitalization": 1826303564786.0,
+      "fiscal_quarter": "2026-01-31T00:00:00.000",
+      "book_value_of_equity": 79872000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 79872000000.0,
+      "pb_ratio": 22.87
     }
   ],
   "pegRatio": [
@@ -121533,241 +121612,261 @@
       "symbol": "AVGO",
       "report_date": "2026-04-30T00:00:00.000",
       "close_price": 417.43,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 5.1264,
-      "ttm_pe": 81.43,
-      "eps_yoy_growth": 0.3213,
-      "peg_ratio": 2.53
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 6.0076,
+      "ttm_pe": 69.48,
+      "eps_yoy_growth": 0.8565,
+      "peg_ratio": 0.81
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-01T00:00:00.000",
       "close_price": 421.28,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 5.1264,
-      "ttm_pe": 82.18,
-      "eps_yoy_growth": 0.3213,
-      "peg_ratio": 2.56
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 6.0076,
+      "ttm_pe": 70.12,
+      "eps_yoy_growth": 0.8565,
+      "peg_ratio": 0.82
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-04T00:00:00.000",
       "close_price": 416.5,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 5.1264,
-      "ttm_pe": 81.25,
-      "eps_yoy_growth": 0.3213,
-      "peg_ratio": 2.53
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 6.0076,
+      "ttm_pe": 69.33,
+      "eps_yoy_growth": 0.8565,
+      "peg_ratio": 0.81
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-05T00:00:00.000",
       "close_price": 427.36,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 5.1264,
-      "ttm_pe": 83.36,
-      "eps_yoy_growth": 0.3213,
-      "peg_ratio": 2.59
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 6.0076,
+      "ttm_pe": 71.14,
+      "eps_yoy_growth": 0.8565,
+      "peg_ratio": 0.83
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-06T00:00:00.000",
       "close_price": 425.44,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 5.1264,
-      "ttm_pe": 82.99,
-      "eps_yoy_growth": 0.3213,
-      "peg_ratio": 2.58
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 6.0076,
+      "ttm_pe": 70.82,
+      "eps_yoy_growth": 0.8565,
+      "peg_ratio": 0.83
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-07T00:00:00.000",
       "close_price": 412.56,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 5.1264,
-      "ttm_pe": 80.48,
-      "eps_yoy_growth": 0.3213,
-      "peg_ratio": 2.5
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 6.0076,
+      "ttm_pe": 68.67,
+      "eps_yoy_growth": 0.8565,
+      "peg_ratio": 0.8
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-08T00:00:00.000",
       "close_price": 430.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 5.1264,
-      "ttm_pe": 83.88,
-      "eps_yoy_growth": 0.3213,
-      "peg_ratio": 2.61
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 6.0076,
+      "ttm_pe": 71.58,
+      "eps_yoy_growth": 0.8565,
+      "peg_ratio": 0.84
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-11T00:00:00.000",
       "close_price": 428.43,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 5.1264,
-      "ttm_pe": 83.57,
-      "eps_yoy_growth": 0.3213,
-      "peg_ratio": 2.6
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 6.0076,
+      "ttm_pe": 71.31,
+      "eps_yoy_growth": 0.8565,
+      "peg_ratio": 0.83
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-12T00:00:00.000",
       "close_price": 419.3,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 5.1264,
-      "ttm_pe": 81.79,
-      "eps_yoy_growth": 0.3213,
-      "peg_ratio": 2.55
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 6.0076,
+      "ttm_pe": 69.79,
+      "eps_yoy_growth": 0.8565,
+      "peg_ratio": 0.81
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-13T00:00:00.000",
       "close_price": 416.79,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 5.1264,
-      "ttm_pe": 81.3,
-      "eps_yoy_growth": 0.3213,
-      "peg_ratio": 2.53
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 6.0076,
+      "ttm_pe": 69.38,
+      "eps_yoy_growth": 0.8565,
+      "peg_ratio": 0.81
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-14T00:00:00.000",
       "close_price": 439.79,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 5.1264,
-      "ttm_pe": 85.79,
-      "eps_yoy_growth": 0.3213,
-      "peg_ratio": 2.67
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 6.0076,
+      "ttm_pe": 73.21,
+      "eps_yoy_growth": 0.8565,
+      "peg_ratio": 0.85
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-15T00:00:00.000",
       "close_price": 425.19,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 5.1264,
-      "ttm_pe": 82.94,
-      "eps_yoy_growth": 0.3213,
-      "peg_ratio": 2.58
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 6.0076,
+      "ttm_pe": 70.78,
+      "eps_yoy_growth": 0.8565,
+      "peg_ratio": 0.83
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-18T00:00:00.000",
       "close_price": 420.71,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 5.1264,
-      "ttm_pe": 82.07,
-      "eps_yoy_growth": 0.3213,
-      "peg_ratio": 2.55
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 6.0076,
+      "ttm_pe": 70.03,
+      "eps_yoy_growth": 0.8565,
+      "peg_ratio": 0.82
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-19T00:00:00.000",
       "close_price": 411.07,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 5.1264,
-      "ttm_pe": 80.19,
-      "eps_yoy_growth": 0.3213,
-      "peg_ratio": 2.5
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 6.0076,
+      "ttm_pe": 68.42,
+      "eps_yoy_growth": 0.8565,
+      "peg_ratio": 0.8
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-20T00:00:00.000",
       "close_price": 417.76,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 5.1264,
-      "ttm_pe": 81.49,
-      "eps_yoy_growth": 0.3213,
-      "peg_ratio": 2.54
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 6.0076,
+      "ttm_pe": 69.54,
+      "eps_yoy_growth": 0.8565,
+      "peg_ratio": 0.81
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-21T00:00:00.000",
       "close_price": 414.57,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 5.1264,
-      "ttm_pe": 80.87,
-      "eps_yoy_growth": 0.3213,
-      "peg_ratio": 2.52
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 6.0076,
+      "ttm_pe": 69.01,
+      "eps_yoy_growth": 0.8565,
+      "peg_ratio": 0.81
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-22T00:00:00.000",
       "close_price": 414.14,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 5.1264,
-      "ttm_pe": 80.79,
-      "eps_yoy_growth": 0.3213,
-      "peg_ratio": 2.51
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 6.0076,
+      "ttm_pe": 68.94,
+      "eps_yoy_growth": 0.8565,
+      "peg_ratio": 0.8
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-26T00:00:00.000",
       "close_price": 422.01,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 5.1264,
-      "ttm_pe": 82.32,
-      "eps_yoy_growth": 0.3213,
-      "peg_ratio": 2.56
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 6.0076,
+      "ttm_pe": 70.25,
+      "eps_yoy_growth": 0.8565,
+      "peg_ratio": 0.82
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-27T00:00:00.000",
       "close_price": 421.86,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 5.1264,
-      "ttm_pe": 82.29,
-      "eps_yoy_growth": 0.3213,
-      "peg_ratio": 2.56
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 6.0076,
+      "ttm_pe": 70.22,
+      "eps_yoy_growth": 0.8565,
+      "peg_ratio": 0.82
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-28T00:00:00.000",
       "close_price": 426.58,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 5.1264,
-      "ttm_pe": 83.21,
-      "eps_yoy_growth": 0.3213,
-      "peg_ratio": 2.59
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 6.0076,
+      "ttm_pe": 71.01,
+      "eps_yoy_growth": 0.8565,
+      "peg_ratio": 0.83
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-29T00:00:00.000",
       "close_price": 446.77,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 5.1264,
-      "ttm_pe": 87.15,
-      "eps_yoy_growth": 0.3213,
-      "peg_ratio": 2.71
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 6.0076,
+      "ttm_pe": 74.37,
+      "eps_yoy_growth": 0.8565,
+      "peg_ratio": 0.87
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-06-01T00:00:00.000",
       "close_price": 459.97,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 5.1264,
-      "ttm_pe": 89.73,
-      "eps_yoy_growth": 0.3213,
-      "peg_ratio": 2.79
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 6.0076,
+      "ttm_pe": 76.56,
+      "eps_yoy_growth": 0.8565,
+      "peg_ratio": 0.89
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-06-02T00:00:00.000",
       "close_price": 481.57,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 5.1264,
-      "ttm_pe": 93.94,
-      "eps_yoy_growth": 0.3213,
-      "peg_ratio": 2.92
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 6.0076,
+      "ttm_pe": 80.16,
+      "eps_yoy_growth": 0.8565,
+      "peg_ratio": 0.94
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-06-03T00:00:00.000",
       "close_price": 479.23,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_eps": 5.1264,
-      "ttm_pe": 93.48,
-      "eps_yoy_growth": 0.3213,
-      "peg_ratio": 2.91
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 6.0076,
+      "ttm_pe": 79.77,
+      "eps_yoy_growth": 0.8565,
+      "peg_ratio": 0.93
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-06-04T00:00:00.000",
+      "close_price": 418.91,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 6.0076,
+      "ttm_pe": 69.73,
+      "eps_yoy_growth": 0.8565,
+      "peg_ratio": 0.81
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-06-05T00:00:00.000",
+      "close_price": 385.73,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 6.0076,
+      "ttm_pe": 64.21,
+      "eps_yoy_growth": 0.8565,
+      "peg_ratio": 0.75
     }
   ]
 }

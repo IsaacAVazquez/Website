@@ -208,7 +208,7 @@ export function StockResearch({
               <p className="text-sm font-semibold text-[var(--home-ink)]">
                 Start with a ticker symbol
               </p>
-              <p className="mt-2 text-sm text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+              <p className="mt-2 text-sm text-[var(--home-ink-soft)]">
                 Search a ticker or company name in the bar above to start researching.
               </p>
             </div>
@@ -217,7 +217,7 @@ export function StockResearch({
               <p className="text-sm font-semibold text-[var(--home-ink)]">
                 Loading research data…
               </p>
-              <p className="mt-2 text-sm text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+              <p className="mt-2 text-sm text-[var(--home-ink-soft)]">
                 Pulling the latest curated snapshot for {symbol.toUpperCase()}.
               </p>
             </div>

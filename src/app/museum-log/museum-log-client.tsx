@@ -120,7 +120,7 @@ function RatingPill({ rating, label }: { rating: number; label?: string }) {
 
 function TagChip({ children }: { children: ReactNode }) {
   return (
-    <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] px-2.5 py-0.5 text-[11px] font-medium uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+    <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] px-2.5 py-0.5 text-2xs font-medium uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
       {children}
     </span>
   );
@@ -154,12 +154,12 @@ function MuseumCoverArt({ museum }: { museum: Museum }) {
       aria-hidden="true"
     >
       <span
-        className="absolute left-3 top-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]"
+        className="absolute left-3 top-3 text-3xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]"
       >
         {TYPE_LABEL[museum.type]}
       </span>
       <span
-        className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-full bg-[var(--home-paper)] px-2 py-0.5 text-[10px] font-semibold text-[var(--home-ink)]"
+        className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-full bg-[var(--home-paper)] px-2 py-0.5 text-3xs font-semibold text-[var(--home-ink)]"
         style={{ border: "1px solid var(--home-rule)" }}
       >
         <Star size={10} fill="currentColor" strokeWidth={0} />
@@ -401,7 +401,7 @@ function DiscoverView({
   return (
     <div className="space-y-5">
       <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-4 py-3 shadow-[var(--shadow-sm)]">
-        <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
+        <span className="inline-flex items-center gap-1.5 text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
           <Filter size={12} /> Filters
         </span>
 
@@ -418,7 +418,7 @@ function DiscoverView({
           onChange={(value) => onChangeFilter({ region: value as MuseumRegionFilter })}
         />
 
-        <span className="ml-auto inline-flex items-center gap-2 text-[11px] text-[var(--home-ink-muted)]">
+        <span className="ml-auto inline-flex items-center gap-2 text-2xs text-[var(--home-ink-muted)]">
           Sort
           <div className="flex gap-1 rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] p-1">
             {SORT_OPTIONS.map((sortKey) => {
@@ -429,7 +429,7 @@ function DiscoverView({
                   type="button"
                   onClick={() => onChangeFilter({ sort: sortKey as MuseumSort })}
                   aria-pressed={active}
-                  className="rounded-full px-3 py-1 text-[11px] font-semibold transition-colors"
+                  className="rounded-full px-3 py-1 text-2xs font-semibold transition-colors"
                   style={{
                     background: active ? "var(--home-ink)" : "transparent",
                     color: active ? "var(--home-paper)" : "var(--home-ink-muted)",
@@ -822,7 +822,7 @@ function ListPreviewCard({
         {previewInitials.map((p) => (
           <div
             key={p.id}
-            className="flex aspect-square items-center justify-center rounded-lg text-[11px] font-bold tracking-tight text-[var(--home-ink)]"
+            className="flex aspect-square items-center justify-center rounded-lg text-2xs font-bold tracking-tight text-[var(--home-ink)]"
             style={{
               background: `linear-gradient(160deg, color-mix(in srgb, ${hueByType[p.type]} 60%, var(--home-paper)), var(--home-paper-alt))`,
               border: "1px solid var(--home-rule)",
@@ -834,12 +834,12 @@ function ListPreviewCard({
       </div>
       <div className="flex items-start justify-between gap-2">
         <h3 className="text-base font-semibold leading-snug text-[var(--home-ink)]">{list.title}</h3>
-        <span className="inline-flex items-center gap-1 rounded-full bg-[var(--home-paper)] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]" style={{ border: "1px solid var(--home-rule)" }}>
+        <span className="inline-flex items-center gap-1 rounded-full bg-[var(--home-paper)] px-2 py-0.5 text-3xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]" style={{ border: "1px solid var(--home-rule)" }}>
           <ListPlus size={10} /> {list.museumIds.length}
         </span>
       </div>
       <p className="text-sm leading-6 text-[var(--home-ink-muted)] line-clamp-3">{list.description}</p>
-      <p className="mt-auto text-[11px] text-[var(--home-ink-muted)]">
+      <p className="mt-auto text-2xs text-[var(--home-ink-muted)]">
         Updated {formatShortDate(list.updatedAt)}
       </p>
     </button>
@@ -1049,7 +1049,7 @@ function MuseumDetailView({
                     </div>
                     <p className="mt-1 text-sm text-[var(--home-ink-muted)]">{ex.blurb}</p>
                     {ex.ticketed && (
-                      <p className="mt-2 inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                      <p className="mt-2 inline-flex items-center gap-1 text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                         <Ticket size={12} /> Timed entry / extra ticket
                       </p>
                     )}
@@ -1444,7 +1444,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
                     borderColor: isActive ? "var(--home-ink)" : "var(--home-rule)",
                     background: isActive
                       ? "var(--home-ink)"
-                      : "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))",
+                      : "var(--home-paper-raised)",
                     color: isActive ? "var(--home-paper)" : "var(--home-ink-muted)",
                     fontFamily: "var(--font-home-sans)",
                   }}
@@ -1453,7 +1453,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
                   {item.label}
                   {item.pill ? (
                     <span
-                      className="ml-1 rounded-full px-2 py-0.5 text-[11px] font-bold tracking-[0.04em]"
+                      className="ml-1 rounded-full px-2 py-0.5 text-2xs font-bold tracking-[0.04em]"
                       style={{
                         background: isActive
                           ? "color-mix(in srgb, var(--home-paper) 22%, transparent)"
@@ -1660,7 +1660,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
                   </p>
                   {recentlyVisited.length === 0 ? (
                     <p className="text-[12px] text-[var(--home-ink-muted)]">
-                      No visits logged yet — log one from any museum card.
+                      No visits logged yet. Log one from any museum card.
                     </p>
                   ) : (
                     <ul className="flex flex-col gap-2">
@@ -1679,7 +1679,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
                                 {row.museum.city}
                               </span>
                             </span>
-                            <span className="text-[11px] text-[var(--home-ink-muted)] tabular-nums">
+                            <span className="text-2xs text-[var(--home-ink-muted)] tabular-nums">
                               {formatShortDate(row.date)}
                             </span>
                           </button>
@@ -1729,7 +1729,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
 
             <p className="tool-rail-foot">
               <HelpCircle size={14} aria-hidden="true" />
-              Visits, watchlist, and likes live only in your browser — no logins, no cloud sync.
+              Visits, watchlist, and likes live only in your browser. No logins, no cloud sync.
             </p>
           </aside>
         </div>

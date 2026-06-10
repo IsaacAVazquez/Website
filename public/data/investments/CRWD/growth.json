@@ -111,6 +111,13 @@
       "revenue": 1305375000.0,
       "prev_year_revenue": 1058538000.0,
       "yoy_growth": 0.2332
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-04-30T00:00:00.000",
+      "revenue": 1385629000.0,
+      "prev_year_revenue": 1103434000.0,
+      "yoy_growth": 0.2557
     }
   ],
   "annual_revenue": [
@@ -245,9 +252,9 @@
     {
       "symbol": "CRWD",
       "report_date": "2025-04-30T00:00:00.000",
-      "operating_income": -124656000.0,
+      "operating_income": -118713000.0,
       "prev_year_operating_income": 6936000.0,
-      "yoy_growth": -18.9723
+      "yoy_growth": -18.1155
     },
     {
       "symbol": "CRWD",
@@ -269,6 +276,13 @@
       "operating_income": 13786000.0,
       "prev_year_operating_income": -85301000.0,
       "yoy_growth": 1.1616
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-04-30T00:00:00.000",
+      "operating_income": -30600000.0,
+      "prev_year_operating_income": -118713000.0,
+      "yoy_growth": 0.7422
     }
   ],
   "annual_operating_income": [
@@ -396,9 +410,9 @@
     {
       "symbol": "CRWD",
       "report_date": "2025-04-30T00:00:00.000",
-      "ebitda": -19115000.0,
+      "ebitda": -13172000.0,
       "prev_year_ebitda": 109126000.0,
-      "yoy_growth": -1.1752
+      "yoy_growth": -1.1207
     },
     {
       "symbol": "CRWD",
@@ -420,6 +434,13 @@
       "ebitda": 142899000.0,
       "prev_year_ebitda": 17641000.0,
       "yoy_growth": 7.1004
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-04-30T00:00:00.000",
+      "ebitda": 133106000.0,
+      "prev_year_ebitda": -13172000.0,
+      "yoy_growth": 11.1052
     }
   ],
   "annual_ebitda": [
@@ -554,9 +575,9 @@
     {
       "symbol": "CRWD",
       "report_date": "2025-04-30T00:00:00.000",
-      "net_income_common_stockholders": -110207000.0,
+      "net_income_common_stockholders": -104264000.0,
       "prev_year_net_income_common_stockholders": 42820000.0,
-      "yoy_growth": -3.5737
+      "yoy_growth": -3.4349
     },
     {
       "symbol": "CRWD",
@@ -578,6 +599,13 @@
       "net_income_common_stockholders": 59377000.0,
       "prev_year_net_income_common_stockholders": -92282000.0,
       "yoy_growth": 1.6434
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-04-30T00:00:00.000",
+      "net_income_common_stockholders": 27774000.0,
+      "prev_year_net_income_common_stockholders": -104264000.0,
+      "yoy_growth": 1.2664
     }
   ],
   "annual_net_income": [
@@ -715,6 +743,13 @@
       "free_cash_flow": 378149000.0,
       "prev_year_free_cash_flow": 240808000.0,
       "yoy_growth": 0.5703
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-04-30T00:00:00.000",
+      "free_cash_flow": 470742000.0,
+      "prev_year_free_cash_flow": 280919000.0,
+      "yoy_growth": 0.6757
     }
   ],
   "annual_fcf": [

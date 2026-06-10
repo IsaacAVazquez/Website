@@ -16,9 +16,11 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
   const selfShellRoutes = new Set([
     "/about",
     "/ai-dev-tools",
+    "/bay-area-transit",
     "/changelog",
     "/contact",
     "/decision-lab",
+    "/earthquake-pulse",
     "/fantasy-formula-1",
     "/fantasy-football",
     "/fantasy-football/draft-tracker",
@@ -41,7 +43,10 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
     "/recipe-finder",
     "/resume",
     "/spacex-mission-control",
+    "/tech-startup-tracker",
+    "/travel",
     "/wine-cellar",
+    "/world-cup-2026",
     "/writing",
   ]);
   const isSelfShellRoute =

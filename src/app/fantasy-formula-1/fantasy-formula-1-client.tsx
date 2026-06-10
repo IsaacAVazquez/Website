@@ -129,6 +129,7 @@ function AssetAvatar({ asset }: { asset: FantasyFormula1Asset }) {
         src={asset.headshotUrl}
         alt={asset.name}
         loading="lazy"
+        decoding="async"
         className="h-10 w-10 flex-shrink-0 rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] object-cover object-top"
       />
     );
@@ -229,6 +230,10 @@ function BudgetMeter({ summary }: { summary: FantasyFormula1LineupSummary }) {
       </div>
       <div
         className="h-3 overflow-hidden rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)]"
+        role="meter"
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-valuenow={Math.round(usedPercent)}
         aria-label={`Budget used ${Math.round(usedPercent)} percent`}
       >
         <div
@@ -561,14 +566,14 @@ function AssetsTable({
       <table className="w-full min-w-[760px] border-separate border-spacing-y-2">
         <thead>
           <tr className="text-left text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
-            <th className="px-3 py-2">Asset</th>
-            <th className="px-3 py-2">Type</th>
-            <th className="px-3 py-2">Price</th>
-            <th className="px-3 py-2">Projection</th>
-            <th className="px-3 py-2">Value</th>
-            <th className="px-3 py-2">Form</th>
-            <th className="px-3 py-2">Risk</th>
-            <th className="px-3 py-2 text-right">Team</th>
+            <th scope="col" className="px-3 py-2">Asset</th>
+            <th scope="col" className="px-3 py-2">Type</th>
+            <th scope="col" className="px-3 py-2">Price</th>
+            <th scope="col" className="px-3 py-2">Projection</th>
+            <th scope="col" className="px-3 py-2">Value</th>
+            <th scope="col" className="px-3 py-2">Form</th>
+            <th scope="col" className="px-3 py-2">Risk</th>
+            <th scope="col" className="px-3 py-2 text-right">Team</th>
           </tr>
         </thead>
         <tbody>
@@ -616,6 +621,7 @@ function AssetsTable({
                     title={asset.riskReason}
                   >
                     {asset.risk}
+                    <span className="sr-only">. {asset.riskReason}</span>
                   </span>
                 </td>
                 <td className="rounded-r-2xl border-y border-r border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-3 py-3 text-right">

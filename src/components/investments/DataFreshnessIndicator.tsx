@@ -76,7 +76,7 @@ export function DataFreshnessIndicator({
           className="w-2 h-2 rounded-full"
           style={{ backgroundColor: "var(--color-error)" }}
         />
-        <span className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+        <span className="text-xs text-[var(--home-ink-soft)]">
           {mode === "dataset"
             ? "No dataset"
             : mode === "price"
@@ -86,12 +86,12 @@ export function DataFreshnessIndicator({
         {onRefresh && (
           <button
             onClick={onRefresh}
-            className="inline-flex min-h-[36px] min-w-[36px] items-center justify-center rounded-full text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] transition hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
+            className="inline-flex min-h-[36px] min-w-[36px] items-center justify-center rounded-full text-[var(--home-ink-soft)] transition hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
             aria-label="Refresh data"
           >
             <IconRefresh
               size={14}
-              className={`text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] ${isRefreshing ? "animate-spin" : ""}`}
+              className={`text-[var(--home-ink-soft)] ${isRefreshing ? "animate-spin" : ""}`}
             />
           </button>
         )}
@@ -117,18 +117,18 @@ export function DataFreshnessIndicator({
         className="w-2 h-2 rounded-full"
         style={{ backgroundColor: color }}
       />
-      <span className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+      <span className="text-xs text-[var(--home-ink-soft)]">
         {displayedLabel}
       </span>
       {onRefresh && (
         <button
           onClick={onRefresh}
-          className="inline-flex min-h-[36px] min-w-[36px] items-center justify-center rounded-full text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] transition hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
+          className="inline-flex min-h-[36px] min-w-[36px] items-center justify-center rounded-full text-[var(--home-ink-soft)] transition hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
           aria-label="Refresh data"
         >
           <IconRefresh
             size={14}
-            className={`text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] ${isRefreshing ? "animate-spin" : ""}`}
+            className={`text-[var(--home-ink-soft)] ${isRefreshing ? "animate-spin" : ""}`}
           />
         </button>
       )}

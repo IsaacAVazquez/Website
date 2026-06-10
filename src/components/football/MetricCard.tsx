@@ -20,7 +20,7 @@ export function MetricCard({ label, value, detail, icon, className = "" }: Metri
     return (
       <article className={`home-card p-5 sm:p-6 ${className}`.trim()}>
         <div className="flex items-center justify-between gap-3">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]">
+          <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]">
             {label}
           </p>
           {icon ? <span className="text-[var(--home-ink-muted)]">{icon}</span> : null}
@@ -36,8 +36,8 @@ export function MetricCard({ label, value, detail, icon, className = "" }: Metri
   }
 
   return (
-    <div className={`rounded-[1.6rem] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4 shadow-[var(--shadow-sm)] ${className}`.trim()}>
-      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+    <div className={`rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4 shadow-[var(--shadow-sm)] ${className}`.trim()}>
+      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
         {label}
       </p>
       <p className="mt-2 text-xl font-bold tabular-nums text-[var(--home-ink)]">{value}</p>

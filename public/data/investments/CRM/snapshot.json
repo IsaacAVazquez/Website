@@ -1,10 +1,10 @@
 {
   "symbol": "CRM",
-  "lastUpdated": "2026-06-05T00:00:31.538495+00:00",
+  "lastUpdated": "2026-06-09T00:00:39.728571+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-05T00:00:31.538495+00:00",
+    "snapshotBuiltAt": "2026-06-09T00:00:39.728571+00:00",
     "sections": {
-      "price": "2026-06-03"
+      "price": "2026-06-05"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.6388,
-      "ttmPe": 22.06,
-      "marketCap": 156109590000,
-      "psRatio": 3.64,
-      "pbRatio": 4.56,
-      "pegRatio": 0.42
+      "ttmPe": 21.49,
+      "marketCap": 152055540000,
+      "psRatio": 3.55,
+      "pbRatio": 4.44,
+      "pegRatio": 0.41
     },
     "profitability": {
       "roe": 4.51,
@@ -5387,22 +5387,6 @@
     },
     "price": [
       {
-        "date": "2025-06-03",
-        "open": 262,
-        "high": 264.75,
-        "low": 261.36,
-        "close": 264.47,
-        "volume": 7838500
-      },
-      {
-        "date": "2025-06-04",
-        "open": 264.19,
-        "high": 265.5,
-        "low": 261.62,
-        "close": 263.17,
-        "volume": 7372500
-      },
-      {
         "date": "2025-06-05",
         "open": 263.71,
         "high": 268.75,
@@ -7398,16 +7382,28 @@
         "date": "2026-06-03",
         "open": 197.27,
         "high": 197.68,
-        "low": 189.732,
+        "low": 189.73,
         "close": 190.61,
-        "volume": 13965525
+        "volume": 14154400
+      },
+      {
+        "date": "2026-06-04",
+        "open": 197.81,
+        "high": 198.09,
+        "low": 186.11,
+        "close": 188.75,
+        "volume": 14453600
+      },
+      {
+        "date": "2026-06-05",
+        "open": 189.8,
+        "high": 192.51,
+        "low": 184.83,
+        "close": 185.66,
+        "volume": 13163100
       }
     ],
     "officers": [
-      {
-        "name": "Mr. Andy White",
-        "title": "Senior Vice President of Technology"
-      },
       {
         "name": "Mr. David Schmaier",
         "title": "President and Chief Strategy Officer",
@@ -7465,28 +7461,35 @@
         "title": "Executive VP & Chief Accounting Officer",
         "age": 51,
         "yearBorn": 1974
+      },
+      {
+        "name": "Ms. Robin L. Washington CPA",
+        "title": "President, Chief Operating & Financial Officer and Director",
+        "age": 62,
+        "yearBorn": 1963,
+        "totalPay": 11668529
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.06,
-        "industryAvg": 25.59
+        "value": 21.49,
+        "industryAvg": 25.13
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.64,
-        "industryAvg": 4.51
+        "value": 3.55,
+        "industryAvg": 4.42
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.56,
-        "industryAvg": 4.88
+        "value": 4.44,
+        "industryAvg": 4.79
       },
       {
         "metric": "ROE",
         "value": 4.51,
-        "industryAvg": -0.2
+        "industryAvg": -0.21
       },
       {
         "metric": "ROA",
@@ -7501,12 +7504,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 36.14,
-        "industryAvg": 21.16
+        "industryAvg": 21.14
       },
       {
         "metric": "Net Margin",
         "value": 18.93,
-        "industryAvg": -0.25
+        "industryAvg": -0.26
       }
     ]
   }

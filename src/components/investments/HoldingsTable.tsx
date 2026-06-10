@@ -3,6 +3,11 @@
 import React, { useState } from "react";
 import { IconCheck, IconPencil, IconSearch, IconTrash, IconX } from "@tabler/icons-react";
 import { useStockData } from "@/hooks/useStockData";
+import {
+  formatCurrency,
+  formatPercent,
+  formatSignedCurrency,
+} from "@/lib/investmentFormatting";
 import type { EnhancedHolding, PriceData, StockPrice } from "@/types/investment";
 
 interface Props {
@@ -22,25 +27,6 @@ const TICKER_COLORS = [
   "#3F4B57", // slate
   "#4A6CF0", // azure
 ];
-
-function fmtCurrency(n: number, fractionDigits = 2): string {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    minimumFractionDigits: fractionDigits,
-    maximumFractionDigits: fractionDigits,
-  }).format(n);
-}
-
-function fmtSignedCurrency(n: number): string {
-  const sign = n > 0 ? "+" : n < 0 ? "−" : "";
-  return `${sign}${fmtCurrency(Math.abs(n))}`;
-}
-
-function fmtPercent(n: number): string {
-  const sign = n > 0 ? "+" : n < 0 ? "−" : "";
-  return `${sign}${Math.abs(n).toFixed(2)}%`;
-}
 
 function sparkPath(data: number[], w = 86, h = 26): string {
   if (data.length < 2) return "";
@@ -97,6 +83,16 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
     setEditing(false);
   }
 
+  function handleEditKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleSave();
+    } else if (e.key === "Escape") {
+      e.preventDefault();
+      handleCancelEdit();
+    }
+  }
+
   if (editing) {
     return (
       <tr>
@@ -111,7 +107,7 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
                 <div className="invest-ticker-name">Edit position</div>
               </div>
             </div>
-            <label className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+            <label className="text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
               Shares
               <input
                 type="number"
@@ -119,10 +115,12 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
                 min="0"
                 value={editShares}
                 onChange={(e) => setEditShares(e.target.value)}
+                onKeyDown={handleEditKeyDown}
+                autoFocus
                 className="ml-2 w-28 rounded-full border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-3 py-1.5 text-sm text-[var(--home-ink)] focus:outline-none focus:ring-2 focus:ring-[var(--home-haze)]/40"
               />
             </label>
-            <label className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+            <label className="text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
               Avg cost
               <input
                 type="number"
@@ -130,6 +128,7 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
                 min="0"
                 value={editCost}
                 onChange={(e) => setEditCost(e.target.value)}
+                onKeyDown={handleEditKeyDown}
                 className="ml-2 w-28 rounded-full border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-3 py-1.5 text-sm text-[var(--home-ink)] focus:outline-none focus:ring-2 focus:ring-[var(--home-haze)]/40"
               />
             </label>
@@ -172,13 +171,13 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
           </div>
         </div>
       </td>
-      <td className="num">{fmtCurrency(holding.currentPrice)}</td>
+      <td className="num">{formatCurrency(holding.currentPrice)}</td>
       <td className="num">
         <span
           className={dayPositive ? "text-[var(--color-success)]" : "text-[var(--color-error)]"}
           style={{ fontWeight: 600 }}
         >
-          {fmtPercent(holding.dayChangePercent)}
+          {formatPercent(holding.dayChangePercent)}
         </span>
       </td>
       <td className="col-trend">
@@ -194,11 +193,11 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
             />
           </svg>
         ) : (
-          <span className="text-[11px] text-[var(--home-ink-muted)]">—</span>
+          <span className="text-2xs text-[var(--home-ink-muted)]">—</span>
         )}
       </td>
       <td className="num" style={{ color: "var(--home-ink-muted)", fontWeight: 600 }}>
-        {fmtCurrency(holding.currentValue)}
+        {formatCurrency(holding.currentValue)}
       </td>
       <td>
         <div className="invest-alloc-bar">
@@ -216,10 +215,10 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
           className={plPositive ? "text-[var(--color-success)]" : "text-[var(--color-error)]"}
           style={{ fontWeight: 600 }}
         >
-          {fmtSignedCurrency(holding.gainLoss)}
+          {formatSignedCurrency(holding.gainLoss)}
         </div>
-        <div className="text-[11px] text-[var(--home-ink-muted)]">
-          {fmtPercent(holding.gainLossPercent)}
+        <div className="text-2xs text-[var(--home-ink-muted)]">
+          {formatPercent(holding.gainLossPercent)}
         </div>
       </td>
       <td>

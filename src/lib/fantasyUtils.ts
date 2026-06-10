@@ -74,7 +74,7 @@ export function formatOwnership(ownership: number | undefined): string {
     return "Not listed";
   }
 
-  return `${ownership?.toFixed(1)}% rostered`;
+  return `${ownership?.toFixed(1)}%`;
 }
 
 export function getPositionTone(position: string): CSSProperties {
@@ -129,8 +129,6 @@ export function getSourceKindLabel(
       return "Shared consensus";
     case "derived_flex":
       return "Derived flex board";
-    case "derived_overall":
-      return "Derived overall board";
     default:
       return "Unavailable";
   }

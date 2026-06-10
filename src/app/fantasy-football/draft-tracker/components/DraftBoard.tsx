@@ -2,11 +2,14 @@
 
 import { useMemo, useState, type CSSProperties } from "react";
 import { Player, TeamRoster } from "@/types";
+import type { FantasySnapshot } from "@/lib/fantasy";
 import { useDebounce } from "@/hooks/useDebounce";
 import { formatRange, formatRankValue, getPositionTone } from "@/lib/fantasyUtils";
+import { DraftTierColumns } from "./DraftTierColumns";
 
 interface DraftBoardProps {
   players: Player[];
+  snapshot: FantasySnapshot | null;
   draftedPlayerIds: Set<string>;
   onDraftPlayer: (player: Player) => void;
   currentPick: number;
@@ -17,6 +20,7 @@ interface DraftBoardProps {
 }
 
 type BoardFilter = "ALL" | "QB" | "RB" | "WR" | "TE" | "K" | "DST" | "FLEX";
+type BoardView = "list" | "columns";
 
 const POSITION_LABELS: { value: BoardFilter; label: string }[] = [
   { value: "ALL", label: "All" },
@@ -84,6 +88,7 @@ function getFilterStyle(active: boolean): CSSProperties {
 
 export function DraftBoard({
   players,
+  snapshot,
   draftedPlayerIds,
   onDraftPlayer,
   currentPick,
@@ -92,6 +97,7 @@ export function DraftBoard({
   isDraftComplete,
   userTeam,
 }: DraftBoardProps) {
+  const [boardView, setBoardView] = useState<BoardView>("list");
   const [selectedPosition, setSelectedPosition] = useState<BoardFilter>("ALL");
   const [searchQuery, setSearchQuery] = useState("");
   const debouncedSearch = useDebounce(searchQuery, 200);
@@ -125,19 +131,54 @@ export function DraftBoard({
       <div className="flex flex-col gap-3 border-b pb-4" style={{ borderColor: "var(--home-rule)" }}>
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <p className="home-kicker mb-1">Best Available</p>
+            <p className="home-kicker mb-1">Draft Board</p>
             <h2 className="text-2xl font-semibold">
               Pick #{currentPick} on the clock: Team {currentTeamNumber}
             </h2>
           </div>
-          <div
-            className="rounded-full border px-3 py-1.5 text-sm font-medium"
-            style={{
-              borderColor: "var(--home-rule)",
-              background: "color-mix(in srgb, var(--home-paper-alt) 52%, var(--home-elev-mix))",
-            }}
-          >
-            {isUserPick ? "Your pick is live" : "Log the room's next selection"}
+          <div className="flex flex-wrap items-center gap-3">
+            <div
+              className="flex rounded-full border p-1 text-sm font-semibold"
+              style={{
+                borderColor: "var(--home-rule)",
+                background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
+              }}
+              role="radiogroup"
+              aria-label="Draft board view"
+            >
+              {([
+                { value: "list", label: "Best available" },
+                { value: "columns", label: "Tier columns" },
+              ] as const).map((option) => {
+                const active = boardView === option.value;
+                return (
+                  <button
+                    key={option.value}
+                    type="button"
+                    role="radio"
+                    aria-checked={active}
+                    onClick={() => setBoardView(option.value)}
+                    className="inline-flex min-h-[44px] items-center rounded-full px-3.5 py-1.5 text-sm transition-colors duration-200"
+                    style={
+                      active
+                        ? { background: "var(--home-ink)", color: "var(--home-paper)" }
+                        : { color: "var(--home-ink-muted)" }
+                    }
+                  >
+                    {option.label}
+                  </button>
+                );
+              })}
+            </div>
+            <div
+              className="rounded-full border px-3 py-1.5 text-sm font-medium"
+              style={{
+                borderColor: "var(--home-rule)",
+                background: "color-mix(in srgb, var(--home-paper-alt) 52%, var(--home-elev-mix))",
+              }}
+            >
+              {isUserPick ? "Your pick is live" : "Log the room's next selection"}
+            </div>
           </div>
         </div>
 
@@ -157,6 +198,15 @@ export function DraftBoard({
         </div>
       </div>
 
+      {boardView === "columns" ? (
+        <DraftTierColumns
+          snapshot={snapshot}
+          draftedPlayerIds={draftedPlayerIds}
+          onDraftPlayer={onDraftPlayer}
+          isDraftComplete={isDraftComplete}
+          rosterNeeds={rosterNeeds}
+        />
+      ) : (
       <div className="mt-5 grid gap-4 xl:grid-cols-[minmax(0,1fr)_17rem]">
         <div className="grid gap-4">
           <label className="grid gap-2 text-sm" htmlFor="draft-board-search">
@@ -243,14 +293,14 @@ export function DraftBoard({
                       <div className="flex flex-wrap items-center gap-2">
                         <p className="truncate text-base font-semibold">{player.name}</p>
                         <span
-                          className="inline-flex min-h-[32px] items-center rounded-full border px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em]"
+                          className="inline-flex min-h-[32px] items-center rounded-full border px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em]"
                           style={getPositionTone(player.position)}
                         >
                           {player.position}
                         </span>
                         {fitsCurrentNeed && (
                           <span
-                            className="inline-flex min-h-[32px] items-center rounded-full border px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em]"
+                            className="inline-flex min-h-[32px] items-center rounded-full border px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em]"
                             style={{
                               borderColor: "color-mix(in srgb, var(--color-success) 28%, var(--home-rule))",
                               background: "color-mix(in srgb, var(--color-success) 10%, var(--home-paper))",
@@ -343,6 +393,7 @@ export function DraftBoard({
           </div>
         </div>
       </div>
+      )}
     </div>
   );
 }

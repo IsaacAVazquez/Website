@@ -133,7 +133,7 @@ export function ResearchSection({
         </p>
         <p className="mx-auto mt-2 max-w-md text-sm text-[var(--home-ink-muted)]">
           Click <strong className="text-[var(--home-ink)]">Research</strong> on any holding above
-          to load the deep-dive — fundamentals, valuation, growth, DCF, and price chart.
+          to load the deep-dive view with fundamentals, valuation, growth, DCF, and a price chart.
         </p>
       </section>
     );
@@ -150,7 +150,7 @@ export function ResearchSection({
           <p className="text-sm font-semibold text-[var(--home-ink)]">
             Loading research data…
           </p>
-          <p className="mt-2 text-sm text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+          <p className="mt-2 text-sm text-[var(--home-ink-soft)]">
             Pulling the latest curated snapshot for {symbol.toUpperCase()}.
           </p>
         </div>

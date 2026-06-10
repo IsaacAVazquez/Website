@@ -2,6 +2,12 @@
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import * as d3 from "d3";
+import { useReducedMotion } from "framer-motion";
+import {
+  formatBalance,
+  formatPercent,
+  formatSignedCurrency,
+} from "@/lib/investmentFormatting";
 import type { PortfolioSummary as PortfolioSummaryType } from "@/types/investment";
 import type { PortfolioSnapshot } from "./PortfolioPerformanceChart";
 
@@ -23,35 +29,6 @@ const RANGES = [
 ] as const;
 
 type RangeLabel = (typeof RANGES)[number]["label"];
-
-function formatBalance(n: number): { whole: string; cents: string } {
-  if (!Number.isFinite(n)) return { whole: "$0", cents: ".00" };
-  const sign = n < 0 ? "−" : "";
-  const abs = Math.abs(n);
-  const whole = Math.floor(abs);
-  const cents = Math.round((abs - whole) * 100);
-  return {
-    whole: `${sign}$${whole.toLocaleString("en-US")}`,
-    cents: `.${cents.toString().padStart(2, "0")}`,
-  };
-}
-
-function formatSignedCurrency(n: number): string {
-  const sign = n > 0 ? "+" : n < 0 ? "−" : "";
-  const abs = Math.abs(n);
-  return `${sign}${new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  }).format(abs)}`;
-}
-
-function formatPercent(n: number): string {
-  if (!Number.isFinite(n)) return "—";
-  const sign = n > 0 ? "+" : n < 0 ? "−" : "";
-  return `${sign}${Math.abs(n).toFixed(2)}%`;
-}
 
 function formatRefreshLabel(lastUpdated: Date | null | undefined): string {
   if (!lastUpdated) return "Refresh data";
@@ -75,6 +52,7 @@ export function PortfolioHeroCard({
   const containerRef = useRef<HTMLDivElement | null>(null);
   const svgRef = useRef<SVGSVGElement | null>(null);
   const [width, setWidth] = useState(0);
+  const shouldReduceMotion = useReducedMotion();
 
   const filteredSnapshots = useMemo(() => {
     const r = RANGES.find((x) => x.label === range);
@@ -219,18 +197,23 @@ export function PortfolioHeroCard({
       .attr("fill", "none")
       .attr("stroke", "var(--home-haze)")
       .attr("stroke-opacity", 0.5);
-    pulse
-      .append("animate")
-      .attr("attributeName", "r")
-      .attr("values", "6;14;6")
-      .attr("dur", "2.4s")
-      .attr("repeatCount", "indefinite");
-    pulse
-      .append("animate")
-      .attr("attributeName", "stroke-opacity")
-      .attr("values", "0.55;0;0.55")
-      .attr("dur", "2.4s")
-      .attr("repeatCount", "indefinite");
+    // Skip the looping SMIL pulse for users who prefer reduced motion; the
+    // static ring above still marks the latest point. (CSS `animation:none`
+    // can't reliably stop SVG SMIL <animate>, so we gate at the source.)
+    if (!shouldReduceMotion) {
+      pulse
+        .append("animate")
+        .attr("attributeName", "r")
+        .attr("values", "6;14;6")
+        .attr("dur", "2.4s")
+        .attr("repeatCount", "indefinite");
+      pulse
+        .append("animate")
+        .attr("attributeName", "stroke-opacity")
+        .attr("values", "0.55;0;0.55")
+        .attr("dur", "2.4s")
+        .attr("repeatCount", "indefinite");
+    }
 
     const yAxisG = d3
       .select(svg)
@@ -264,7 +247,7 @@ export function PortfolioHeroCard({
         .style("font", "10.5px var(--font-mono)")
         .text(d3.timeFormat("%b %d")(d));
     });
-  }, [filteredSnapshots, snapshots.length, width, range]);
+  }, [filteredSnapshots, snapshots.length, width, range, shouldReduceMotion]);
 
   if (isLoading && snapshots.length === 0 && summary.totalValue === 0) {
     return (

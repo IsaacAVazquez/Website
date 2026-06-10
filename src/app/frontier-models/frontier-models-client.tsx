@@ -338,7 +338,7 @@ interface FilterGroupProps {
 function FilterGroup({ label, options, value, onChange }: FilterGroupProps) {
   return (
     <div className="flex flex-wrap items-center gap-2">
-      <span className="min-w-[88px] text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]">
+      <span className="min-w-[88px] text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]">
         {label}
       </span>
       <div className="flex flex-wrap gap-1.5">

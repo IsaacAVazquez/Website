@@ -5,30 +5,15 @@ import type {
   EnhancedHolding,
   PortfolioSummary as PortfolioSummaryType,
 } from "@/types/investment";
+import {
+  formatCurrency,
+  formatPercent,
+  formatSignedCurrency,
+} from "@/lib/investmentFormatting";
 
 interface Props {
   summary: PortfolioSummaryType;
   holdings: EnhancedHolding[];
-}
-
-function formatCurrency(n: number, fractionDigits = 2): string {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    minimumFractionDigits: fractionDigits,
-    maximumFractionDigits: fractionDigits,
-  }).format(n);
-}
-
-function formatSignedCurrency(n: number): string {
-  const sign = n > 0 ? "+" : n < 0 ? "−" : "";
-  return `${sign}${formatCurrency(Math.abs(n))}`;
-}
-
-function formatPercent(n: number): string {
-  if (!Number.isFinite(n)) return "—";
-  const sign = n > 0 ? "+" : n < 0 ? "−" : "";
-  return `${sign}${Math.abs(n).toFixed(2)}%`;
 }
 
 interface ComputedStats {
@@ -236,7 +221,7 @@ export function PortfolioStatsGrid({ summary, holdings }: Props) {
         />
         <StatCell
           label="Top-3 concentration"
-          hint="Combined allocation of your three largest positions — a quick read on portfolio shape."
+          hint="Combined allocation of your three largest positions, a quick read on portfolio shape."
           value={`${stats.concentration.toFixed(1)}%`}
           sub={
             stats.positions <= 3

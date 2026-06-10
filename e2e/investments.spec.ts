@@ -216,7 +216,6 @@ test.describe("Investments", () => {
   test("is discoverable from main navigation", async ({ page }, testInfo) => {
     await routeInvestmentsFixtures(page);
     await page.goto("/");
-    await page.waitForLoadState("networkidle");
 
     if (testInfo.project.name.includes("Mobile")) {
       await page.getByRole("button", { name: /open navigation menu/i }).click();
@@ -397,7 +396,7 @@ test.describe("Investments", () => {
     const section = page.getByTestId("home-projects");
 
     await expect(section).toBeVisible();
-    await expect(section.getByRole("heading", { name: /product surfaces that show how i think in practice/i })).toBeVisible();
+    await expect(page.getByRole("heading", { name: /product surfaces that show how i think in practice/i })).toBeVisible();
 
     const titles = await section.getByRole("heading", { level: 3 }).allTextContents();
     expect(titles.slice(0, 3)).toEqual([

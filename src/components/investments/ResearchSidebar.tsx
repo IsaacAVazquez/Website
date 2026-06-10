@@ -132,14 +132,14 @@ export function ResearchSidebar({ symbol, onSymbolChange, isInPortfolio = false 
   return (
     <div className="space-y-3">
       {/* Search */}
-      <div className="rounded-[28px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] p-4 shadow-[var(--shadow-sm)]">
+      <div className="rounded-[28px] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-4 shadow-[var(--shadow-sm)]">
         <div className="mb-2 flex items-center justify-between gap-2">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+          <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
             Research Symbol
           </p>
           {isInPortfolio ? (
             <span
-              className="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-semibold"
+              className="inline-flex items-center rounded-full px-2 py-0.5 text-3xs font-semibold"
               style={{
                 backgroundColor: "color-mix(in srgb, var(--color-success) 15%, transparent)",
                 color: "var(--color-success)",
@@ -155,7 +155,7 @@ export function ResearchSidebar({ symbol, onSymbolChange, isInPortfolio = false 
       {symbol ? (
         <>
           {/* Company identity + stance */}
-          <div className="rounded-[28px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] p-4 shadow-[var(--shadow-sm)]">
+          <div className="rounded-[28px] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-4 shadow-[var(--shadow-sm)]">
             <p className="text-sm font-semibold leading-snug text-[var(--home-ink)]">
               {[displayName || symbol, symbol !== (displayName || symbol) ? symbol : null, info?.sector, info?.industry].filter(Boolean).join(" · ")}
             </p>
@@ -167,8 +167,8 @@ export function ResearchSidebar({ symbol, onSymbolChange, isInPortfolio = false 
           </div>
 
           {/* Live price */}
-          <div className="rounded-[28px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] p-4 shadow-[var(--shadow-sm)]">
-            <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+          <div className="rounded-[28px] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-4 shadow-[var(--shadow-sm)]">
+            <p className="mb-2 text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
               Latest Price
             </p>
             <div className="flex items-baseline gap-3">
@@ -195,7 +195,7 @@ export function ResearchSidebar({ symbol, onSymbolChange, isInPortfolio = false 
                 mode={livePrice !== undefined ? priceFreshnessMode : "price"}
               />
             </div>
-            <p className="mt-1 text-[11px] text-[var(--home-ink-muted)]">
+            <p className="mt-1 text-2xs text-[var(--home-ink-muted)]">
               {livePrice !== undefined
                 ? `Historical chart through ${formatHistoryAsOf(historicalPriceAsOf)}.`
                 : historicalPriceAsOf
@@ -203,18 +203,18 @@ export function ResearchSidebar({ symbol, onSymbolChange, isInPortfolio = false 
                   : "Live pricing is temporarily unavailable."}
             </p>
             {quoteError && livePrice === undefined ? (
-              <p className="mt-1 text-[11px] font-medium text-[var(--color-warning)]">{quoteError}</p>
+              <p className="mt-1 text-2xs font-medium text-[var(--color-warning)]">{quoteError}</p>
             ) : null}
             {historyFreshness.isStale ? (
-              <p className="mt-1 text-[11px] font-medium text-[var(--color-warning)]">
+              <p className="mt-1 text-2xs font-medium text-[var(--color-warning)]">
                 Historical series trails the dataset by {historyFreshness.lagDays} days.
               </p>
             ) : null}
           </div>
 
           {/* Key metrics */}
-          <div className="rounded-[28px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] p-4 shadow-[var(--shadow-sm)]">
-            <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+          <div className="rounded-[28px] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-4 shadow-[var(--shadow-sm)]">
+            <p className="mb-2 text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
               Key Metrics
             </p>
             <dl>
@@ -246,12 +246,12 @@ export function ResearchSidebar({ symbol, onSymbolChange, isInPortfolio = false 
           </div>
 
           {/* Dataset freshness */}
-          <div className="rounded-[28px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] px-4 py-3 shadow-[var(--shadow-sm)]">
+          <div className="rounded-[28px] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-4 py-3 shadow-[var(--shadow-sm)]">
             <DataFreshnessIndicator lastUpdated={dataFreshnessLastUpdated} mode="dataset" />
           </div>
         </>
       ) : (
-        <div className="rounded-[28px] border border-dashed border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] px-5 py-10 text-center shadow-[var(--shadow-sm)]">
+        <div className="rounded-[28px] border border-dashed border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-5 py-10 text-center shadow-[var(--shadow-sm)]">
           <p className="text-sm text-[var(--home-ink-muted)]">
             Enter a ticker to see metrics and research data.
           </p>

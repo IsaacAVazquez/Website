@@ -3,7 +3,7 @@
 Current route inventory and page ownership for the live app.
 
 **Framework:** Next.js 16 App Router
-**Last updated:** 2026-06-08
+**Last updated:** 2026-06-10
 
 ---
 
@@ -44,7 +44,11 @@ Current route inventory and page ownership for the live app.
 | `/mlb` | `src/app/mlb/page.tsx` | Snapshot-backed MLB dashboard |
 | `/nba` | `src/app/nba/page.tsx` | Snapshot-backed NBA dashboard |
 | `/nfl` | `src/app/nfl/page.tsx` | Snapshot-backed NFL dashboard |
-| `/golf` | `src/app/golf/page.tsx` | Manually maintained golf dashboard |
+| `/golf` | `src/app/golf/page.tsx` | Snapshot-backed PGA Tour leaderboard dashboard (`npm run update:golf`, daily GitHub Actions refresh) |
+| `/earthquake-pulse` | `src/app/earthquake-pulse/page.tsx` | Snapshot-backed global earthquake monitor (USGS feeds) |
+| `/world-cup-2026` | `src/app/world-cup-2026/page.tsx` | Snapshot-backed 2026 FIFA World Cup hub (groups, knockout bracket, schedule, venues) |
+| `/tech-startup-tracker` | `src/app/tech-startup-tracker/page.tsx` | Curated tech startup funding tracker (sector/stage, valuations, momentum) |
+| `/bay-area-transit` | `src/app/bay-area-transit/page.tsx` | Snapshot-backed BART dashboard (lines, station departures, advisories) |
 | `/news-pulse` | `src/app/news-pulse/page.tsx` | News Pulse dashboard |
 | `/spacex-mission-control` | `src/app/spacex-mission-control/page.tsx` | SpaceX Mission Control dashboard |
 | `/polling-aggregator` | `src/app/polling-aggregator/page.tsx` | Snapshot-backed political polling dashboard |
@@ -56,6 +60,7 @@ Current route inventory and page ownership for the live app.
 | `/recipe-finder` | `src/app/recipe-finder/page.tsx` | Recipe finder |
 | `/wine-cellar` | `src/app/wine-cellar/page.tsx` | Wine cellar |
 | `/museum-log` | `src/app/museum-log/page.tsx` | Museum visit log |
+| `/travel` | `src/app/travel/page.tsx` | Browser-persisted travel planner (trips, day-by-day itineraries, journaling) via `useTravelPlanner` |
 
 ### Fantasy football
 
@@ -104,9 +109,11 @@ These routes manage more of their own spacing and width:
 
 - `/about`
 - `/ai-dev-tools`
+- `/bay-area-transit`
 - `/changelog`
 - `/contact`
 - `/decision-lab`
+- `/earthquake-pulse`
 - `/fantasy-formula-1`
 - `/fantasy-football`
 - `/fantasy-football/draft-tracker`
@@ -132,12 +139,15 @@ These routes manage more of their own spacing and width:
 - `/writing/[slug]`
 - `/resume`
 - `/spacex-mission-control`
+- `/tech-startup-tracker`
+- `/travel`
 - `/wine-cellar`
+- `/world-cup-2026`
 
 ### Footer variants
 
 - `/` and `/contact` use the compact footer
-- most other routes use the full `Thanks for taking a look.` footer
+- most other routes use the full footer, which closes with the shared contact CTA (`ContactCta`, headline `Building something that needs judgment and follow-through?`) — the same updated CTA used at the bottom of the home page
 
 ---
 
@@ -148,9 +158,10 @@ These routes manage more of their own spacing and width:
 - `/march-madness-2026` is a first-class route and should be documented anywhere route inventories or SEO coverage are described
 - `/formula-1` is a live off-nav Formula 1 dashboard with a self-managed shell
 - `/fantasy-formula-1` is a live off-nav Fantasy Formula 1 optimizer with a self-managed shell
-- `/premier-league`, `/la-liga`, `/mlb`, `/nba`, `/nfl`, and `/golf` are live off-nav sports data dashboards
+- `/premier-league`, `/la-liga`, `/mlb`, `/nba`, `/nfl`, `/golf`, and `/world-cup-2026` are live off-nav sports data dashboards
+- `/bay-area-transit` is the live off-nav Bay Area civic transit dashboard, `/earthquake-pulse` is the live USGS earthquake monitor, and `/tech-startup-tracker` is a live curated startup funding tracker
 - `/ai-dev-tools`, `/frontier-models`, `/decision-lab`, `/news-pulse`, `/github-trending-pulse`, `/spacex-mission-control`, `/polling-aggregator`, `/mba-internship-notifications`, and `/fintech-tools/*` are live standalone tool surfaces even though they are not promoted in the global header
-- `/food-map`, `/recipe-finder`, `/wine-cellar`, `/museum-log`, `/now`, and `/changelog` are live personal or utility surfaces
+- `/food-map`, `/recipe-finder`, `/wine-cellar`, `/museum-log`, `/travel`, `/now`, and `/changelog` are live personal or utility surfaces
 - `/search` exists, but its data quality is limited by the current hardcoded search API
 - there is no live `/admin/analytics` page in the current app tree
 

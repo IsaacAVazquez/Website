@@ -1,10 +1,11 @@
 name: Refresh MLB Snapshot
 
 on:
-  # Daily during the main MLB window. Manual dispatch covers late March,
-  # November postseason edge cases, and off-season ad hoc refreshes.
+  # Daily March through November, covering Opening Day (late March) and the
+  # World Series (early November) on top of the regular season. Manual dispatch
+  # covers off-season ad hoc refreshes.
   schedule:
-    - cron: "5 10 * 4-10 *"
+    - cron: "5 10 * 3-11 *"
   workflow_dispatch:
 
 # Don't stack a manual dispatch on top of a scheduled run.
@@ -176,7 +177,7 @@ jobs:
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "**Status:** ${{ job.status }}" >> "$GITHUB_STEP_SUMMARY"
           echo "**Run Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Schedule:** Daily at 10:05 UTC, April through October" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Schedule:** Daily at 10:05 UTC, March through November" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
           if [ -n "${{ steps.verify_quality.outputs.teams }}" ]; then
             echo "**Teams:** ${{ steps.verify_quality.outputs.teams }}" >> "$GITHUB_STEP_SUMMARY"

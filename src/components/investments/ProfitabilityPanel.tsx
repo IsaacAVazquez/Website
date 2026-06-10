@@ -18,7 +18,7 @@ function Bar({ value, max = 100 }: { value: number | undefined; max?: number }) 
   const pct = Math.min(Math.max((value ?? 0) / max, 0), 1) * 100;
   const positive = (value ?? 0) >= 0;
   return (
-    <div className="h-1.5 rounded-full bg-[var(--neutral-200)] overflow-hidden flex-1">
+    <div className="h-1.5 rounded-full bg-[var(--home-stone)] overflow-hidden flex-1">
       <div
         className="h-full rounded-full transition-all duration-500"
         style={{
@@ -66,14 +66,14 @@ export function ProfitabilityPanel({ symbol }: Props) {
       {isLoading ? (
         <div className="space-y-2">
           {Array.from({ length: 8 }).map((_, i) => (
-            <div key={i} className="h-8 rounded bg-[var(--neutral-200)] animate-pulse" />
+            <div key={i} className="h-8 rounded bg-[var(--home-stone)] animate-pulse" />
           ))}
         </div>
       ) : (
         <>
           {prof && !prof.error && (
             <div className="mb-4">
-              <p className="text-xs font-medium text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] uppercase tracking-wide mb-2">Returns</p>
+              <p className="text-xs font-medium text-[var(--home-ink-soft)] uppercase tracking-wide mb-2">Returns</p>
               <MetricRow label="Return on Equity (ROE)" value={prof.roe} max={50} />
               <MetricRow label="Return on Assets (ROA)" value={prof.roa} max={30} />
               <MetricRow label="Return on Inv. Capital" value={prof.roic} max={40} />
@@ -84,7 +84,7 @@ export function ProfitabilityPanel({ symbol }: Props) {
 
           {margins && !margins.error && (
             <div>
-              <p className="text-xs font-medium text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] uppercase tracking-wide mb-2">Margins (latest)</p>
+              <p className="text-xs font-medium text-[var(--home-ink-soft)] uppercase tracking-wide mb-2">Margins (latest)</p>
               <MetricRow label="Gross Margin" value={margins.grossMargin} />
               <MetricRow label="Operating Margin" value={margins.operatingMargin} />
               <MetricRow label="Net Margin" value={margins.netMargin} />

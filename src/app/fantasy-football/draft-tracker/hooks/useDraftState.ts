@@ -97,6 +97,15 @@ const generateDraftId = (): string => {
   return `draft_${Date.now()}_${Math.random().toString(36).slice(2, 11)}`;
 };
 
+// Escape a single CSV field per RFC 4180: wrap in quotes and double any
+// embedded quotes when the value contains a comma, quote, or newline. NFL
+// player names are usually comma-free, but this keeps the export from breaking
+// on the occasional edge case.
+const escapeCsvValue = (value: string | number): string => {
+  const stringValue = String(value);
+  return /[",\n\r]/.test(stringValue) ? `"${stringValue.replace(/"/g, '""')}"` : stringValue;
+};
+
 export const useDraftState = () => {
   const [draftState, setDraftState] = useState<DraftState>(() => {
     // Initialize with default state
@@ -339,11 +348,13 @@ export const useDraftState = () => {
           : '',
       ]);
 
+      // CRLF row endings per RFC 4180, and a UTF-8 BOM so Excel on Windows
+      // doesn't garble accented player names.
       const csvContent = [csvHeaders, ...csvRows]
-        .map(row => row.join(','))
-        .join('\n');
+        .map(row => row.map(escapeCsvValue).join(','))
+        .join('\r\n');
 
-      const blob = new Blob([csvContent], { type: 'text/csv' });
+      const blob = new Blob(['\uFEFF', csvContent], { type: 'text/csv;charset=utf-8' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;

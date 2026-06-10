@@ -101,7 +101,7 @@ export function WritingPreview() {
                         {post.excerpt}
                       </p>
                     )}
-                    <div className="flex items-center gap-3 text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+                    <div className="flex items-center gap-3 text-xs text-[var(--home-ink-soft)]">
                       {post.publishedAt && (
                         <span>
                           {new Date(post.publishedAt).toLocaleDateString(

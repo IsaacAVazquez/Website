@@ -1,0 +1,240 @@
+name: Refresh Golf Snapshot
+
+on:
+  # Daily pass. Golf data changes in bursts on tournament weekends, but a daily
+  # run keeps the featured-event leaderboard current without spending runner
+  # minutes all week. ESPN's site API needs no token.
+  schedule:
+    - cron: "40 8 * * *"
+  workflow_dispatch:
+
+# Don't stack a manual dispatch on top of a scheduled run.
+concurrency:
+  group: refresh-golf
+  cancel-in-progress: false
+
+jobs:
+  refresh-golf:
+    name: Refresh Golf Snapshot
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    permissions:
+      contents: write
+      issues: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline --no-audit --fund=false
+
+      - name: Refresh golf snapshot
+        run: npm run update:golf
+        env:
+          NODE_ENV: production
+
+      - name: Verify golf snapshot quality
+        id: verify_quality
+        run: |
+          node -e "
+          const fs = require('fs');
+
+          const SNAPSHOT_PATH = 'src/data/golfSnapshot.ts';
+          const MIN_PLAYERS = 5;
+
+          if (!fs.existsSync(SNAPSHOT_PATH)) {
+            console.error('::error::Snapshot file is missing at ' + SNAPSHOT_PATH);
+            process.exit(1);
+          }
+
+          const source = fs.readFileSync(SNAPSHOT_PATH, 'utf8');
+          const match = source.match(
+            /export const golfSnapshot: GolfSnapshot = (\{[\s\S]*\});\s*$/
+          );
+          if (!match) {
+            console.error('::error::Could not parse snapshot export from ' + SNAPSHOT_PATH);
+            process.exit(1);
+          }
+
+          let snapshot;
+          try {
+            snapshot = JSON.parse(match[1]);
+          } catch (err) {
+            console.error('::error::JSON.parse failed on golf snapshot body: ' + String(err));
+            process.exit(1);
+          }
+
+          const summary = snapshot.summary ?? {};
+          const tournament = summary.tournament ?? null;
+          const leaderboard = Array.isArray(summary.leaderboard) ? summary.leaderboard.length : 0;
+          const players = Array.isArray(summary.players) ? summary.players.length : 0;
+
+          console.log('Tournament:', tournament && tournament.name);
+          console.log('Leaderboard entries:', leaderboard);
+          console.log('Player options:', players);
+          console.log('Generated at:', tournament && tournament.generatedAt);
+
+          if (!tournament || !tournament.name) {
+            console.error('::error::Golf snapshot has no tournament.');
+            process.exit(1);
+          }
+
+          if (leaderboard < MIN_PLAYERS) {
+            console.error('::error::Refusing to commit a degraded golf snapshot. Expected at least ' + MIN_PLAYERS + ' players, got ' + leaderboard + '.');
+            process.exit(1);
+          }
+
+          fs.writeFileSync(
+            process.env.GITHUB_OUTPUT,
+            'tournament=' + ((tournament && tournament.name) || '') + '\n' +
+              'leaderboard=' + leaderboard + '\n' +
+              'players=' + players + '\n',
+            { flag: 'a' }
+          );
+          "
+
+      - name: Check for snapshot changes
+        id: check_changes
+        run: |
+          if [ -z "$(git status --porcelain -- src/data/golfSnapshot.ts)" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No changes detected in src/data/golfSnapshot.ts"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "Changes detected in src/data/golfSnapshot.ts"
+          fi
+
+      - name: Commit and push refreshed snapshot
+        if: steps.check_changes.outputs.changed == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add src/data/golfSnapshot.ts
+          git commit -m "chore: refresh golf snapshot [automated] [skip ci]"
+          # Retry on push rejection. Main can move during the refresh, so
+          # rebase the single snapshot commit onto the latest origin/main and
+          # try again. Bail on a real conflict.
+          for attempt in 1 2 3 4 5; do
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "Push attempt $attempt rejected. Rebasing onto latest origin/main..."
+            git fetch origin main
+            if ! git rebase origin/main; then
+              git rebase --abort
+              echo "Rebase conflict. Failing the run."
+              exit 1
+            fi
+            sleep $((attempt * 3))
+          done
+          echo "Push failed after 5 attempts."
+          exit 1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create job summary
+        if: always()
+        run: |
+          echo "## Golf Snapshot Refresh" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Status:** ${{ job.status }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Run Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Schedule:** Daily at 08:40 UTC" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          if [ -n "${{ steps.verify_quality.outputs.leaderboard }}" ]; then
+            echo "**Tournament:** ${{ steps.verify_quality.outputs.tournament }}" >> "$GITHUB_STEP_SUMMARY"
+            echo "**Leaderboard entries:** ${{ steps.verify_quality.outputs.leaderboard }}" >> "$GITHUB_STEP_SUMMARY"
+            echo "**Player options:** ${{ steps.verify_quality.outputs.players }}" >> "$GITHUB_STEP_SUMMARY"
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ "${{ steps.check_changes.outputs.changed }}" = "true" ]; then
+            echo "Golf snapshot changed and was committed." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Golf snapshot was already up to date." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Notify on failure via GitHub issue
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const today = new Date().toISOString().slice(0, 10);
+            const title = `Golf refresh failed ${today}`;
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const body = [
+              `The **Refresh Golf Snapshot** workflow failed on ${today}.`,
+              ``,
+              `**Run:** ${runUrl}`,
+              `**Commit:** ${context.sha}`,
+              `**Trigger:** ${context.eventName}`,
+              ``,
+              `Check the run logs to diagnose. Common causes:`,
+              `- ESPN golf API outage or timeout`,
+              `- Quality gate caught a degraded snapshot`,
+              `- Git push rejected after 5 retries`,
+              ``,
+              `The refresh keeps the previous snapshot when ESPN is unreachable, so a transient outage will not wipe the leaderboard.`,
+              ``,
+              `This issue will be updated if the next run also fails, and auto-closed on the first successful run.`
+            ].join('\n');
+            const existing = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'golf-refresh-failure',
+              per_page: 5,
+            });
+            if (existing.data.length > 0) {
+              const issue = existing.data[0];
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: `Failed again on ${today}. Run: ${runUrl}`,
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body,
+                labels: ['golf-refresh-failure', 'automation'],
+              });
+            }
+
+      - name: Close resolved failure issues
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const existing = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'golf-refresh-failure',
+              per_page: 10,
+            });
+            for (const issue of existing.data) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: `Refresh succeeded at ${new Date().toISOString()}. Auto-closing.`,
+              });
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                state: 'closed',
+              });
+            }

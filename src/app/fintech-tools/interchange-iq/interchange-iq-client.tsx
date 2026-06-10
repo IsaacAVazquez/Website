@@ -253,7 +253,7 @@ export function InterchangeIQClient() {
                     borderColor: isActive ? "var(--home-ink)" : "var(--home-rule)",
                     background: isActive
                       ? "var(--home-ink)"
-                      : "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))",
+                      : "var(--home-paper-raised)",
                     color: isActive ? "var(--home-paper)" : "var(--home-ink-muted)",
                     fontFamily: "var(--font-home-sans)",
                   }}
@@ -281,7 +281,7 @@ export function InterchangeIQClient() {
                 fontFamily: "var(--font-home-sans)",
                 color: "var(--home-ink)",
                 borderColor: "var(--home-rule)",
-                background: "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))",
+                background: "var(--home-paper-raised)",
                 minHeight: 32,
               }}
               aria-label="Reset all inputs to defaults"
@@ -549,7 +549,7 @@ export function InterchangeIQClient() {
                     lineHeight: 1.55,
                   }}
                 >
-                  At your current card mix, Stripe IC+ never beats Stripe flat — the markup plus
+                  At your current card mix, Stripe IC+ never beats Stripe flat. The markup plus
                   blended interchange exceeds the flat rate at every ticket size.
                 </p>
               )}
@@ -767,7 +767,7 @@ export function InterchangeIQClient() {
         >
           Interchange rates based on published 2024 Visa/Mastercard US schedules and Amex OptBlue
           program averages. Processor fees from public pricing pages. For educational purposes
-          only — actual rates vary by industry, card type, and negotiated terms.
+          only. Actual rates vary by industry, card type, and negotiated terms.
         </p>
       </section>
         </div>

@@ -70,7 +70,7 @@ export function AllocationChart({ holdings }: Props) {
       .join("path")
       .attr("d", arc)
       .attr("fill", (_, i) => PALETTE[i % PALETTE.length])
-      .attr("stroke", "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))")
+      .attr("stroke", "var(--home-paper-raised)")
       .attr("stroke-width", 2)
       .style("cursor", "pointer")
       .style("transition", "opacity 0.15s ease");
@@ -127,7 +127,7 @@ export function AllocationChart({ holdings }: Props) {
     <WarmCard padding="sm" ariaLabel="Portfolio allocation chart" className="rounded-[28px] shadow-[var(--shadow-sm)]">
       <div className="mb-4">
         <h3 className="text-sm font-semibold text-[var(--home-ink)]">Allocation</h3>
-        <p className="mt-1 text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+        <p className="mt-1 text-xs text-[var(--home-ink-soft)]">
           Position weights based on current market value.
         </p>
       </div>
@@ -154,7 +154,7 @@ export function AllocationChart({ holdings }: Props) {
               />
               <span className="font-medium text-[var(--home-ink)] w-14 shrink-0">{h.symbol}</span>
               <div
-                className="flex-1 h-1 rounded-full bg-[var(--neutral-200)] overflow-hidden"
+                className="flex-1 h-1 rounded-full bg-[var(--home-stone)] overflow-hidden"
                 role="progressbar"
                 aria-valuenow={Math.round(h.allocationPercent ?? 0)}
                 aria-valuemin={0}

@@ -13,6 +13,7 @@ const STATIC_ROUTE_LASTMOD = {
   "/portfolio": "2026-04-04",
   "/writing": "2026-04-13",
   "/golf": "2026-04-16",
+  "/earthquake-pulse": readEarthquakeLastmod(),
   "/decision-lab": "2026-04-04",
   "/formula-1": "2026-04-04",
   "/fantasy-formula-1": readFormula1Lastmod(),
@@ -24,7 +25,10 @@ const STATIC_ROUTE_LASTMOD = {
   "/now": "2026-04-13",
   "/recipe-finder": "2026-04-04",
   "/wine-cellar": "2026-04-04",
+  "/bay-area-transit": readBayAreaTransitLastmod(),
+  "/changelog": "2026-04-13",
   "/github-trending-pulse": readGitHubTrendingLastmod(),
+  "/tech-startup-tracker": readTechStartupLastmod(),
   "/investments": readInvestmentsLastmod(),
   "/news-pulse": "2026-04-01",
   "/spacex-mission-control": "2026-04-01",
@@ -32,6 +36,7 @@ const STATIC_ROUTE_LASTMOD = {
   "/premier-league": readPremierLeagueLastmod(),
   "/la-liga": readLaLigaLastmod(),
   "/nfl": readNflLastmod(),
+  "/world-cup-2026": readWorldCupLastmod(),
   "/march-madness-2026": "2026-03-17",
   "/fantasy-football": readFantasyLastmod(),
   "/fantasy-football/draft-tracker": readFantasyLastmod(),
@@ -39,6 +44,7 @@ const STATIC_ROUTE_LASTMOD = {
   "/fintech-tools/budget-planner": "2026-04-03",
   "/fintech-tools/interchange-iq": "2026-04-02",
   "/food-map": "2026-04-28",
+  "/travel": "2026-05-04",
 };
 
 // Fantasy tier positions live behind /fantasy-football/tiers/[position].
@@ -94,9 +100,23 @@ function readNflLastmod() {
   );
 }
 
+function readWorldCupLastmod() {
+  // The tournament block is first in the file, so the first generatedAt match is
+  // the tournament-level timestamp (per-team snapshots also carry one).
+  return toIsoString(
+    readFirstMatch("src/data/worldCupSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
+  );
+}
+
 function readFormula1Lastmod() {
   return toIsoString(
     readFirstMatch("src/data/formula1Snapshot.ts", /"generatedAt":\s*"([^"]+)"/)
+  );
+}
+
+function readEarthquakeLastmod() {
+  return toIsoString(
+    readFirstMatch("src/data/earthquakeSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
   );
 }
 
@@ -108,6 +128,18 @@ function readFantasyLastmod() {
 function readGitHubTrendingLastmod() {
   return toIsoString(
     readFirstMatch("src/data/githubTrendingSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
+  );
+}
+
+function readTechStartupLastmod() {
+  return toIsoString(
+    readFirstMatch("src/data/techStartupSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
+  );
+}
+
+function readBayAreaTransitLastmod() {
+  return toIsoString(
+    readFirstMatch("src/data/bayAreaTransitSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
   );
 }
 
@@ -197,18 +229,26 @@ function getBlogRouteEntries() {
     return [];
   }
 
+  // Future-dated posts (staggered series) stay out of the sitemap until their
+  // publish date arrives — search engines distrust future lastmod values, and
+  // the listing pages apply the same cutoff (see isBlogPostPublished).
+  const today = new Date().toISOString().slice(0, 10);
+
   return fs
     .readdirSync(contentDirectory)
     .filter((file) => file.endsWith(".mdx") || file.endsWith(".md"))
     .map((file) => {
       const slug = file.replace(/\.(mdx|md)$/, "");
       const { data } = matter(readFile(path.join("content/blog", file)));
+      if (data.publishedAt && String(data.publishedAt).slice(0, 10) > today) {
+        return null;
+      }
       return {
         loc: `/writing/${slug}`,
         lastmod: toIsoString(data.updatedAt || data.publishedAt),
       };
     })
-    .filter((entry) => entry.lastmod);
+    .filter((entry) => entry && entry.lastmod);
 }
 
 function getPublicSitemapEntries() {

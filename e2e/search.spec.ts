@@ -7,7 +7,6 @@ test.describe("Search", () => {
     await page.goto(
       "/search?q=fantasy&type=project&category=Fantasy%20Football%20Analytics"
     );
-    await page.waitForLoadState("networkidle");
 
     const input = page.getByRole("textbox", { name: /search content/i });
 

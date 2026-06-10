@@ -90,6 +90,13 @@
       "revenue": 2594000000.0,
       "prev_year_revenue": 2257000000.0,
       "yoy_growth": 0.1493
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2026-04-30T00:00:00.000",
+      "revenue": 3002000000.0,
+      "prev_year_revenue": 2289000000.0,
+      "yoy_growth": 0.3115
     }
   ],
   "annual_revenue": [
@@ -210,9 +217,9 @@
     {
       "symbol": "PANW",
       "report_date": "2025-04-30T00:00:00.000",
-      "operating_income": 218800000.0,
+      "operating_income": 219000000.0,
       "prev_year_operating_income": 176700000.0,
-      "yoy_growth": 0.2383
+      "yoy_growth": 0.2394
     },
     {
       "symbol": "PANW",
@@ -234,6 +241,13 @@
       "operating_income": 397000000.0,
       "prev_year_operating_income": 241000000.0,
       "yoy_growth": 0.6473
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2026-04-30T00:00:00.000",
+      "operating_income": -183000000.0,
+      "prev_year_operating_income": 219000000.0,
+      "yoy_growth": -1.8356
     }
   ],
   "annual_operating_income": [
@@ -347,9 +361,9 @@
     {
       "symbol": "PANW",
       "report_date": "2025-04-30T00:00:00.000",
-      "ebitda": 399600000.0,
+      "ebitda": 400000000.0,
       "prev_year_ebitda": 327000000.0,
-      "yoy_growth": 0.222
+      "yoy_growth": 0.2232
     },
     {
       "symbol": "PANW",
@@ -371,6 +385,13 @@
       "ebitda": 640000000.0,
       "prev_year_ebitda": 413000000.0,
       "yoy_growth": 0.5496
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2026-04-30T00:00:00.000",
+      "ebitda": 178000000.0,
+      "prev_year_ebitda": 400000000.0,
+      "yoy_growth": -0.555
     }
   ],
   "annual_ebitda": [
@@ -484,9 +505,9 @@
     {
       "symbol": "PANW",
       "report_date": "2025-04-30T00:00:00.000",
-      "net_income_common_stockholders": 262100000.0,
+      "net_income_common_stockholders": 262000000.0,
       "prev_year_net_income_common_stockholders": 278800000.0,
-      "yoy_growth": -0.0599
+      "yoy_growth": -0.0603
     },
     {
       "symbol": "PANW",
@@ -508,6 +529,13 @@
       "net_income_common_stockholders": 432000000.0,
       "prev_year_net_income_common_stockholders": 267000000.0,
       "yoy_growth": 0.618
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2026-04-30T00:00:00.000",
+      "net_income_common_stockholders": -177000000.0,
+      "prev_year_net_income_common_stockholders": 262000000.0,
+      "yoy_growth": -1.6756
     }
   ],
   "annual_net_income": [
@@ -628,9 +656,9 @@
     {
       "symbol": "PANW",
       "report_date": "2025-04-30T00:00:00.000",
-      "free_cash_flow": 560300000.0,
+      "free_cash_flow": 560000000.0,
       "prev_year_free_cash_flow": 491500000.0,
-      "yoy_growth": 0.14
+      "yoy_growth": 0.1394
     },
     {
       "symbol": "PANW",
@@ -652,6 +680,13 @@
       "free_cash_flow": 384000000.0,
       "prev_year_free_cash_flow": 509000000.0,
       "yoy_growth": -0.2456
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2026-04-30T00:00:00.000",
+      "free_cash_flow": 788000000.0,
+      "prev_year_free_cash_flow": 560000000.0,
+      "yoy_growth": 0.4071
     }
   ],
   "annual_fcf": [
@@ -1125,6 +1160,13 @@
       "eps": 0.6076,
       "prev_year_eps": 0.377,
       "yoy_growth": 0.6117
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2026-04-30T00:00:00.000",
+      "eps": -0.221,
+      "prev_year_eps": 0.3705,
+      "yoy_growth": -1.5965
     }
   ]
 }

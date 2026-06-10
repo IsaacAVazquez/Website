@@ -2,7 +2,7 @@
 
 Fast route reference for the current app.
 
-**Last updated:** 2026-06-08
+**Last updated:** 2026-06-10
 
 ---
 
@@ -31,6 +31,10 @@ Fast route reference for the current app.
 | `/nba` | `src/app/nba/page.tsx` | Server page -> NBA dashboard client |
 | `/nfl` | `src/app/nfl/page.tsx` | Server page -> NFL dashboard client |
 | `/golf` | `src/app/golf/page.tsx` | Server page -> golf dashboard client |
+| `/earthquake-pulse` | `src/app/earthquake-pulse/page.tsx` | Server page -> earthquake dashboard client |
+| `/world-cup-2026` | `src/app/world-cup-2026/page.tsx` | Server page -> World Cup dashboard client |
+| `/bay-area-transit` | `src/app/bay-area-transit/page.tsx` | Server page -> BART dashboard client |
+| `/tech-startup-tracker` | `src/app/tech-startup-tracker/page.tsx` | Server page -> startup tracker client |
 | `/march-madness-2026` | `src/app/march-madness-2026/page.tsx` | Async server page -> `MarchMadnessClient` |
 | `/news-pulse` | `src/app/news-pulse/page.tsx` | Server page -> `NewsPulseClient` |
 | `/spacex-mission-control` | `src/app/spacex-mission-control/page.tsx` | Server page -> SpaceX client dashboard |
@@ -43,6 +47,7 @@ Fast route reference for the current app.
 | `/recipe-finder` | `src/app/recipe-finder/page.tsx` | Server page for recipe finder content |
 | `/wine-cellar` | `src/app/wine-cellar/page.tsx` | Server page for wine cellar content |
 | `/museum-log` | `src/app/museum-log/page.tsx` | Server page for museum log content |
+| `/travel` | `src/app/travel/page.tsx` | Server page -> `TravelPlannerClient` (browser-persisted planner) |
 | `/fantasy-football` | `src/app/fantasy-football/page.tsx` | Server page -> fantasy client UI |
 | `/fantasy-football/tiers/[position]` | `src/app/fantasy-football/tiers/[position]/page.tsx` | Redirect page to the canonical fantasy board |
 | `/fantasy-football/rb-tiers` | `src/app/fantasy-football/rb-tiers/page.tsx` | Redirect page to the canonical RB board |
@@ -63,9 +68,11 @@ There is no live `/admin/analytics` route in the current app tree.
 - self-shell routes:
 - `/about`
 - `/ai-dev-tools`
+- `/bay-area-transit`
 - `/changelog`
 - `/contact`
 - `/decision-lab`
+- `/earthquake-pulse`
 - `/fantasy-formula-1`
 - `/fantasy-football`
 - `/fantasy-football/draft-tracker`
@@ -89,7 +96,10 @@ There is no live `/admin/analytics` route in the current app tree.
 - `/recipe-finder`
 - `/resume`
 - `/spacex-mission-control`
+- `/tech-startup-tracker`
+- `/travel`
 - `/wine-cellar`
+- `/world-cup-2026`
 - `/writing`
 - `/writing/[slug]`
 
@@ -163,9 +173,13 @@ Footer behavior:
 - `/spacex-mission-control` is a live route backed by `/api/spacex/*`
 - `/polling-aggregator` is a live route backed by `src/data/pollingSnapshot.ts`
 - `/mlb`, `/nba`, and `/nfl` are live sports dashboards backed by committed TypeScript snapshots and matching `/api/{league}/*` routes
-- `/golf` is a live sports dashboard backed by the manually maintained `src/data/golfSnapshot.ts`
+- `/golf` is a live sports dashboard backed by `src/data/golfSnapshot.ts`, rebuilt by `npm run update:golf`
+- `/world-cup-2026` is a live World Cup hub backed by `src/data/worldCupSnapshot.ts` and `/api/world-cup/*`
+- `/bay-area-transit` is a live BART dashboard backed by `src/data/bayAreaTransitSnapshot.ts` and `/api/bay-area-transit/*`
+- `/earthquake-pulse` is a live USGS earthquake monitor backed by `src/data/earthquakeSnapshot.ts` and `/api/earthquake-pulse/summary`
+- `/tech-startup-tracker` is a live curated startup funding tracker backed by `src/data/techStartupSnapshot.ts`
 - `/ai-dev-tools` and `/frontier-models` are live AI/knowledge surfaces
-- `/decision-lab`, `/food-map`, `/recipe-finder`, `/wine-cellar`, `/museum-log`, `/now`, and `/changelog` are live personal or utility surfaces
+- `/decision-lab`, `/food-map`, `/recipe-finder`, `/wine-cellar`, `/museum-log`, `/travel`, `/now`, and `/changelog` are live personal or utility surfaces
 - `/fintech-tools/budget-planner` and `/fintech-tools/interchange-iq` are live fintech tool routes
 - `/mba-internship-notifications` is a live route backed by `/api/mba-jobs` that polls Greenhouse, Lever, Ashby, and direct-HTML job boards across 32 tech companies for MBA internships and full-time business roles
 

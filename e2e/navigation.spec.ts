@@ -10,7 +10,6 @@ async function clickAndWaitForURL(page: Page, link: Locator, url: RegExp) {
 test.describe('Navigation', () => {
   test('should navigate through the header destinations', async ({ page }, testInfo) => {
     await page.goto('/')
-    await page.waitForLoadState('networkidle')
 
     if (testInfo.project.name.includes('Mobile')) {
       await page.getByRole('button', { name: /open navigation menu/i }).click()
@@ -40,7 +39,6 @@ test.describe('Navigation', () => {
     )
 
     await page.goto('/')
-    await page.waitForLoadState('networkidle')
     await clickAndWaitForURL(
       page,
       page.getByLabel('Primary navigation').getByRole('link', { name: /^About$/i }),
@@ -48,7 +46,6 @@ test.describe('Navigation', () => {
     )
 
     await page.goto('/')
-    await page.waitForLoadState('networkidle')
     await clickAndWaitForURL(
       page,
       page.getByLabel('Primary navigation').getByRole('link', { name: /^Investments$/i }),
@@ -56,7 +53,6 @@ test.describe('Navigation', () => {
     )
 
     await page.goto('/')
-    await page.waitForLoadState('networkidle')
     await clickAndWaitForURL(
       page,
       page.getByLabel('Primary navigation').getByRole('link', { name: /^Resume$/i }),
@@ -64,7 +60,6 @@ test.describe('Navigation', () => {
     )
 
     await page.goto('/')
-    await page.waitForLoadState('networkidle')
     await clickAndWaitForURL(
       page,
       page.getByLabel('Primary navigation').getByRole('link', { name: /^Contact$/i }),
@@ -76,7 +71,6 @@ test.describe('Navigation', () => {
     test.skip(testInfo.project.name.includes('Mobile'), 'Desktop-only navigation assertion')
 
     await page.goto('/portfolio')
-    await page.waitForLoadState('networkidle')
 
     await expect(page.getByLabel('Primary navigation').getByRole('link', { name: 'Projects' })).toHaveAttribute('aria-current', 'page')
   })
@@ -84,7 +78,6 @@ test.describe('Navigation', () => {
   test('should navigate using browser back button', async ({ page }, testInfo) => {
     test.skip(testInfo.project.name.includes('Mobile'), 'Desktop header coverage only')
     await page.goto('/')
-    await page.waitForLoadState('networkidle')
 
     await clickAndWaitForURL(
       page,
@@ -99,7 +92,6 @@ test.describe('Navigation', () => {
   test('should expose Home in the mobile menu and avoid horizontal overflow', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 })
     await page.goto('/')
-    await page.waitForLoadState('networkidle')
 
     await page.getByRole('button', { name: /open navigation menu/i }).click()
 

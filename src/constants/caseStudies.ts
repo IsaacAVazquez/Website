@@ -93,11 +93,11 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     slug: "fantasy-football-analytics",
     title: "Fantasy Football Analytics Platform",
     description:
-      "Full-stack fantasy football platform with live tier rankings, D3 visualizations, and an automated data pipeline.",
+      "Fantasy football platform with snapshot-backed consensus rankings, tier views, scoring toggles, and a manual draft assistant fed by an automated weekly data pipeline.",
     role: "Solo Builder",
-    timeline: "2024–2025",
-    tools: ["Next.js", "D3.js", "TypeScript", "SQLite"],
-    metrics: "Live platform · 2026 season coming soon",
+    timeline: "2024–2026",
+    tools: ["Next.js", "TypeScript", "React", "GitHub Actions"],
+    metrics: "Live · Weekly FantasyPros snapshots · PPR / Half / Standard",
     github: "https://github.com/IsaacAVazquez",
     link: "/fantasy-football",
     featured: true,
@@ -105,9 +105,9 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 
     overview: {
       summary:
-        "I built a fantasy football platform that combines tier rankings, visualizations, and automated data refreshes into a single weekly workflow.",
+        "I built a fantasy football platform that combines consensus rankings, tier views, and an automated weekly data refresh into a single workflow.",
       impact:
-        "Gives players one place to move from raw rankings to lineup and waiver decisions with less tab-hopping.",
+        "Gives players one place to move from raw rankings to draft decisions with less tab-hopping, and keeps data freshness explicit instead of implied.",
     },
     problem: {
       context:
@@ -550,7 +550,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     slug: "frontier-model-tracker",
     title: "Frontier Model Tracker",
     description:
-      "Curated dashboard of leading large language models with context windows, pricing, modality coverage, and editorial notes — built to make AI tier-collapse readable in seconds.",
+      "Curated dashboard of leading large language models with context windows, pricing, modality coverage, and editorial notes, built to make AI tier-collapse readable in seconds.",
     role: "Product Designer & Developer",
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "D3.js", "Tailwind CSS"],
@@ -632,6 +632,39 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     problem: {
       context:
         "GitHub discovery is noisy when popular projects, freshly active repos, and topic-specific momentum all sit in different search paths.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
+
+  "tech-startup-tracker": {
+    slug: "tech-startup-tracker",
+    title: "Tech Startup Tracker",
+    description:
+      "Curated dashboard of notable private tech companies by sector and funding stage, with valuations, total raised, latest rounds, and a momentum score from a checked-in snapshot.",
+    role: "Full-Stack Developer & Designer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "Snapshot pipeline", "Data design"],
+    metrics: "28 startups · 6 sectors · Sector & stage views",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/tech-startup-tracker",
+    featured: true,
+
+    overview: {
+      summary:
+        "I built a startup-landscape dashboard that organizes notable private tech companies by sector and funding stage, with valuations, total raised, and a momentum score from a curated snapshot.",
+      impact:
+        "Turns scattered funding headlines into a single deep-linkable view, with a transparent as-of date and disclosure rather than implied precision.",
+    },
+    problem: {
+      context:
+        "Startup funding data is fragmented across paywalled databases and one-off press releases, with no fast way to compare companies across sectors and stages.",
       painPoints: [],
       stakes: "",
     },
@@ -731,6 +764,105 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     problem: {
       context:
         "Most tour leaderboards make it hard to compare round-by-round movement, cut-line pressure, and player form on a single screen.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
+
+  "earthquake-pulse": {
+    slug: "earthquake-pulse",
+    title: "Earthquake Pulse",
+    description:
+      "Snapshot-backed global earthquake monitor: the past 24 hours of seismic activity, significant quakes worldwide, magnitude distribution, and the busiest regions on one deep-linkable screen.",
+    role: "Full-Stack Developer & Designer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "USGS GeoJSON", "Snapshot pipeline"],
+    metrics: "24h seismic pulse · Significant worldwide quakes · Region & magnitude breakdowns",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/earthquake-pulse",
+    featured: true,
+
+    overview: {
+      summary:
+        "I built a global earthquake dashboard that turns checked-in USGS GeoJSON snapshots into one calm, deep-linkable surface for recent activity, significant events, and regional breakdowns.",
+      impact:
+        "Makes the planet's last day of seismic activity legible at a glance — what just moved, what was big enough to matter, and where the ground is busiest — without juggling separate live feeds.",
+    },
+    problem: {
+      context:
+        "Raw USGS feeds are comprehensive but firehose-shaped; most people just want a fast read on what's recent, what's significant, and where activity is concentrated.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
+
+  "world-cup-pulse": {
+    slug: "world-cup-pulse",
+    title: "World Cup Pulse",
+    description:
+      "Snapshot-backed 2026 FIFA World Cup dashboard covering all 12 group tables, the expanded 32-team knockout bracket, the full match schedule, and host venues across the United States, Canada, and Mexico.",
+    role: "Full-Stack Developer & Designer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "ESPN API", "Snapshot pipeline"],
+    metrics: "Group standings · 32-team knockout bracket · Schedule & host venues",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/world-cup-2026",
+    featured: true,
+
+    overview: {
+      summary:
+        "I built a 2026 FIFA World Cup dashboard that turns a curated ESPN snapshot into one deep-linkable surface for group standings, the new 32-team knockout bracket, and the full three-country schedule.",
+      impact:
+        "Makes the largest World Cup ever legible on a single screen, from group qualifying math to the bracket, without juggling separate live sites.",
+    },
+    problem: {
+      context:
+        "The 48-team format spreads 104 matches across 16 cities and three countries, and most trackers scatter standings, fixtures, and the bracket across separate pages.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
+
+  "bay-area-transit-pulse": {
+    slug: "bay-area-transit-pulse",
+    title: "Bay Area Transit Pulse",
+    description:
+      "Snapshot-backed BART dashboard for the Bay Area with the line map, per-station departure boards, and active service alerts on one deep-linkable screen.",
+    role: "Full-Stack Developer & Designer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "BART API", "Snapshot pipeline"],
+    metrics: "Line directory · Per-station departures · Service alerts",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/bay-area-transit",
+    featured: false,
+
+    overview: {
+      summary:
+        "I built a BART dashboard that turns a checked-in snapshot of the BART public API into one calm surface for the line map, the next trains at any station, and live service alerts.",
+      impact:
+        "Puts the line map, station departures, and service alerts on a single screen instead of three separate apps.",
+    },
+    problem: {
+      context:
+        "Checking whether a train is coming usually means bouncing between a route map, a station page, and a separate alerts feed, and none of them share a view.",
       painPoints: [],
       stakes: "",
     },
@@ -911,7 +1043,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     slug: "wine-cellar",
     title: "Wine Cellar",
     description:
-      "Personal wine reviewing app for logging tastings, rating bottles, and tracking the wines you've poured — saved locally in your browser.",
+      "Personal wine reviewing app for logging tastings, rating bottles, and tracking the wines you've poured. Saved locally in your browser.",
     role: "Product Builder & Designer",
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "Local persistence", "Editorial UX"],
@@ -972,6 +1104,39 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     tradeoffs: [],
     retrospective: "",
   },
+
+  "travel-planner": {
+    slug: "travel-planner",
+    title: "Travel Planner",
+    description:
+      "Browser-persisted trip planner that turns dates into a day-by-day itinerary you can check off and journal against, with no account required.",
+    role: "Product Builder & Designer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "Local persistence", "Itinerary UX"],
+    metrics: "Day-by-day itinerary · Stop check-off · Per-trip journal",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/travel",
+    featured: true,
+
+    overview: {
+      summary:
+        "I built a travel planner that lays a trip's dates out as a day-by-day itinerary, lets you check off stops, and keeps a journal entry per day.",
+      impact:
+        "Keeps trip planning, the live itinerary, and the trip diary on one surface instead of scattered across notes apps.",
+    },
+    problem: {
+      context:
+        "Trip planning usually splits across a notes app, a calendar, and a separate journal, so nothing stays in sync once the trip starts.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
 };
 
 const HOMEPAGE_FEATURED_SLUGS = [
@@ -988,22 +1153,27 @@ const PORTFOLIO_PROJECT_ORDER = [
   "ai-dev-tool-ecosystem",
   "frontier-model-tracker",
   "github-trending-pulse",
+  "tech-startup-tracker",
   "decision-lab",
   "food-map",
   "museum-log",
   "wine-cellar",
   "recipe-finder",
+  "travel-planner",
   "budget-planner",
   "mba-role-tracker",
   "polling-aggregator",
   "spacex-mission-control",
+  "bay-area-transit-pulse",
   "premier-league-pulse",
   "la-liga-pulse",
+  "world-cup-pulse",
   "fantasy-football-analytics",
   "nfl-pulse",
   "formula-1-pulse",
   "fantasy-formula-1-optimizer",
   "pga-tour-pulse",
+  "earthquake-pulse",
   "mlb-pulse",
   "nba-pulse",
   "march-madness-2026",

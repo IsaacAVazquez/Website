@@ -116,9 +116,21 @@ function formatGeneratedAt(value: string | null | undefined): string {
 }
 
 function formatDateRange(startDate: string, endDate: string): string {
-  return `${DATE_RANGE_FORMATTER.format(new Date(startDate))} – ${DATE_RANGE_FORMATTER.format(
-    new Date(endDate)
-  )}`;
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+  const startValid = !Number.isNaN(start.getTime());
+  const endValid = !Number.isNaN(end.getTime());
+
+  if (startValid && endValid) {
+    return `${DATE_RANGE_FORMATTER.format(start)} – ${DATE_RANGE_FORMATTER.format(end)}`;
+  }
+  if (endValid) {
+    return DATE_RANGE_FORMATTER.format(end);
+  }
+  if (startValid) {
+    return DATE_RANGE_FORMATTER.format(start);
+  }
+  return "Dates TBD";
 }
 
 function getViewButtonStyle(isActive: boolean): CSSProperties {
@@ -453,8 +465,16 @@ function MobileLeaderboardCards({
                 detail={row.status}
                 valueColor={getScoreToParColor(row.today)}
               />
-              <StatBlock label="R1" value={`${row.roundScores[0]}`} detail="Opening round" />
-              <StatBlock label="R2" value={`${row.roundScores[1]}`} detail="Second round" />
+              <StatBlock
+                label="R1"
+                value={row.roundScores[0] != null ? String(row.roundScores[0]) : "—"}
+                detail="Opening round"
+              />
+              <StatBlock
+                label="R2"
+                value={row.roundScores[1] != null ? String(row.roundScores[1]) : "—"}
+                detail="Second round"
+              />
               <StatBlock label="Thru" value={row.thru} detail="Tournament status" />
             </div>
           </button>
@@ -1089,7 +1109,7 @@ export function GolfClient({
                               className="rounded-[18px] border px-4 py-3"
                               style={{
                                 borderColor: "var(--home-rule)",
-                                background: "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))",
+                                background: "var(--home-paper-raised)",
                               }}
                             >
                               <div className="flex items-center justify-between gap-3">
