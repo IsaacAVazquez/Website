@@ -251,7 +251,7 @@ export function PortfolioHeroCard({
 
   if (isLoading && snapshots.length === 0 && summary.totalValue === 0) {
     return (
-      <div className="invest-hero">
+      <div id="performance" className="invest-hero scroll-mt-28">
         <div className="invest-hero-left">
           <span className="invest-hero-eyebrow">
             <span className="invest-hero-livedot" aria-hidden="true" />
@@ -271,7 +271,7 @@ export function PortfolioHeroCard({
   const dayPositive = summary.dayChange >= 0;
 
   return (
-    <section className="invest-hero" aria-label="Portfolio total value">
+    <section id="performance" className="invest-hero scroll-mt-28" aria-label="Portfolio total value">
       <div className="invest-hero-left">
         <span className="invest-hero-eyebrow">
           <span className="invest-hero-livedot" aria-hidden="true" />

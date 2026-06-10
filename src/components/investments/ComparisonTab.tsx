@@ -312,8 +312,10 @@ export function ComparisonTab() {
   ];
 
   const dcfRows: MetricRow[] = [
-    { label: "DCF Fair Value",   valueA: fmt(dcfA?.fairValue, "currency"),  valueB: fmt(dcfB?.fairValue, "currency"),  higherIsBetter: true },
-    { label: "Current Price",    valueA: fmt(dcfA?.currentPrice, "currency"), valueB: fmt(dcfB?.currentPrice, "currency"), higherIsBetter: false },
+    // Absolute per-share prices aren't comparable across two different
+    // companies, so neither side gets a "better" flag.
+    { label: "DCF Fair Value",   valueA: fmt(dcfA?.fairValue, "currency"),  valueB: fmt(dcfB?.fairValue, "currency"),  higherIsBetter: null },
+    { label: "Current Price",    valueA: fmt(dcfA?.currentPrice, "currency"), valueB: fmt(dcfB?.currentPrice, "currency"), higherIsBetter: null },
     { label: "DCF Upside %",     valueA: fmt(dcfA?.upside, "percent"),      valueB: fmt(dcfB?.upside, "percent"),      higherIsBetter: true },
     { label: "WACC",             valueA: fmt(dcfA?.wacc, "percent"),        valueB: fmt(dcfB?.wacc, "percent"),        higherIsBetter: false },
     { label: "Beta (5Y)",        valueA: fmt(betaA?.beta5y),                valueB: fmt(betaB?.beta5y),                higherIsBetter: false },

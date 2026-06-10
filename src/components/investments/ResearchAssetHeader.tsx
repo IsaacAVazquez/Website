@@ -2,7 +2,6 @@
 
 import React from "react";
 import {
-  IconBookmark,
   IconExternalLink,
   IconFileText,
   IconPlus,
@@ -329,11 +328,7 @@ export function ResearchAssetHeader({
         <div className="research-asset-meta">
           <div className="research-asset-titleline">
             <h1>{displayName}</h1>
-            <span className="research-ticker-pill">
-              {upper}
-              {info?.industry || info?.sector ? " · " : null}
-              {info?.industry || info?.sector || ""}
-            </span>
+            <span className="research-ticker-pill">{upper}</span>
             {isInPortfolio ? (
               <span className="research-badge-pill held">
                 Held
@@ -428,13 +423,6 @@ export function ResearchAssetHeader({
         >
           <IconFileText size={14} aria-hidden="true" />
           SEC filings
-        </a>
-        <a
-          href="#thesis-notes"
-          className="invest-ghost"
-        >
-          <IconBookmark size={14} aria-hidden="true" />
-          Research notes
         </a>
         <span className="invest-ghost research-asset-actions-clock" aria-hidden="true">
           <IconRefresh size={14} aria-hidden="true" />

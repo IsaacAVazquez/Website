@@ -9,9 +9,9 @@ import { MetricTooltip } from "./MetricTooltip";
 
 interface Props { symbol: string }
 
-function fmt(n: number | undefined): string {
+function fmt(n: number | undefined, unit: "percent" | "ratio" = "percent"): string {
   if (n === undefined || n === null || isNaN(n)) return "—";
-  return `${n.toFixed(2)}%`;
+  return unit === "ratio" ? `${n.toFixed(2)}×` : `${n.toFixed(2)}%`;
 }
 
 function Bar({ value, max = 100 }: { value: number | undefined; max?: number }) {
@@ -31,7 +31,17 @@ function Bar({ value, max = 100 }: { value: number | undefined; max?: number }) 
   );
 }
 
-function MetricRow({ label, value, max }: { label: string; value: number | undefined; max?: number }) {
+function MetricRow({
+  label,
+  value,
+  max,
+  unit = "percent",
+}: {
+  label: string;
+  value: number | undefined;
+  max?: number;
+  unit?: "percent" | "ratio";
+}) {
   const positive = (value ?? 0) >= 0;
   return (
     <div className="flex items-center gap-3 py-2 border-b border-[var(--home-rule)] last:border-0">
@@ -45,7 +55,7 @@ function MetricRow({ label, value, max }: { label: string; value: number | undef
           positive ? "text-[var(--color-success)]" : "text-[var(--color-error)]"
         }`}
       >
-        {fmt(value)}
+        {fmt(value, unit)}
       </span>
     </div>
   );
@@ -77,8 +87,8 @@ export function ProfitabilityPanel({ symbol }: Props) {
               <MetricRow label="Return on Equity (ROE)" value={prof.roe} max={50} />
               <MetricRow label="Return on Assets (ROA)" value={prof.roa} max={30} />
               <MetricRow label="Return on Inv. Capital" value={prof.roic} max={40} />
-              <MetricRow label="Asset Turnover" value={prof.assetTurnover} max={3} />
-              <MetricRow label="Equity Multiplier" value={prof.equityMultiplier} max={10} />
+              <MetricRow label="Asset Turnover" value={prof.assetTurnover} max={2} unit="ratio" />
+              <MetricRow label="Equity Multiplier" value={prof.equityMultiplier} max={10} unit="ratio" />
             </div>
           )}
 

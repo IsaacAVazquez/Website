@@ -33,8 +33,8 @@ function LeverRow({ lever, threshold }: { lever: LeverEffect; threshold: number 
         </div>
         <span className="invest-retire-lever-delta" style={{ color: tone }}>
           <DeltaIcon delta={lever.delta} />
-          {pp > 0 ? "+" : ""}
-          {pp} pp
+          {pp > 0 ? "+" : pp < 0 ? "−" : ""}
+          {Math.abs(pp)} pp
         </span>
       </div>
       <p className="invest-retire-lever-desc">{lever.description}</p>

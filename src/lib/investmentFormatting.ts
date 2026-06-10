@@ -33,6 +33,30 @@ export function formatPercent(n: number): string {
 }
 
 /**
+ * Whether a lower value is the favorable side for an industry-comparison
+ * metric. Valuation multiples (P/E, P/S, P/B, PEG) and discount/risk rates
+ * read "cheaper/safer is better"; profitability and growth metrics read
+ * "higher is better".
+ */
+export function isLowerBetterMetric(label: string): boolean {
+  return /p\/e|p\/s|p\/b|peg|wacc|beta/i.test(label);
+}
+
+/** Whether an industry-comparison metric is expressed in percentage units. */
+export function isPercentMetric(label: string): boolean {
+  return /margin|\broe\b|\broa\b|\broic\b|growth|yield|upside|wacc/i.test(label);
+}
+
+/**
+ * `37.18` for ratio metrics, `26.60%` for percentage metrics, `—` for missing
+ * values — keeps the industry-comparison tables honest about units.
+ */
+export function formatComparisonMetricValue(label: string, n: number | undefined): string {
+  if (n === undefined || n === null || !Number.isFinite(n)) return "—";
+  return isPercentMetric(label) ? `${n.toFixed(2)}%` : n.toFixed(2);
+}
+
+/**
  * Splits a balance into a whole-dollar part and a cents part so the hero card
  * can render them at different type sizes (e.g. `$12,345` + `.67`).
  */

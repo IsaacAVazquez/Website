@@ -3,6 +3,10 @@
 import React from "react";
 import { WarmCard } from "@/components/ui/WarmCard";
 import { useStockData } from "@/hooks/useStockData";
+import {
+  formatComparisonMetricValue,
+  isLowerBetterMetric,
+} from "@/lib/investmentFormatting";
 import type { BetaData, DcfData, Fundamentals, IndustryData, WaccData } from "@/types/investment";
 import { ErrorState } from "./ErrorState";
 import { MetricTooltip } from "./MetricTooltip";
@@ -19,35 +23,37 @@ interface IndustryRow {
   [key: string]: unknown;
 }
 
-function fmt(n: number | undefined): string {
-  if (n === undefined || n === null || isNaN(n)) return "—";
-  return n.toFixed(2);
-}
-
 function CompareRow({ label, value, industryAvg }: { label: string; value: number | undefined; industryAvg: number | undefined }) {
   const hasComparison = value !== undefined && industryAvg !== undefined && !isNaN(value) && !isNaN(industryAvg);
-  const better = hasComparison ? value <= industryAvg : null; // lower P/E = better (rule of thumb)
+  const isAbove = hasComparison && value > industryAvg;
+  // Favorable side depends on the metric: below-average P/E reads cheap, but
+  // below-average ROE or margin is a weakness.
+  const favorable = hasComparison
+    ? isLowerBetterMetric(label)
+      ? !isAbove
+      : value >= industryAvg
+    : null;
   return (
     <div className="flex items-center gap-3 py-2.5 border-b border-[var(--home-rule)] last:border-0">
       <span className="text-sm text-[var(--home-ink-muted)] flex-1">{label}</span>
       <div className="flex items-center gap-4 shrink-0">
         <div className="text-right">
           <p className="text-xs text-[var(--home-ink-soft)]">Stock</p>
-          <p className="text-sm font-semibold text-[var(--home-ink)]">{fmt(value)}</p>
+          <p className="text-sm font-semibold text-[var(--home-ink)]">{formatComparisonMetricValue(label, value)}</p>
         </div>
         <div className="text-right">
           <p className="text-xs text-[var(--home-ink-soft)]">Industry</p>
-          <p className="text-sm text-[var(--home-ink-muted)]">{fmt(industryAvg)}</p>
+          <p className="text-sm text-[var(--home-ink-muted)]">{formatComparisonMetricValue(label, industryAvg)}</p>
         </div>
         {hasComparison && (
           <span
             className={`text-xs font-medium px-1.5 py-0.5 rounded ${
-              better
+              favorable
                 ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400"
                 : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"
             }`}
           >
-            {better ? "Below" : "Above"}
+            {isAbove ? "Above" : "Below"}
           </span>
         )}
       </div>
@@ -168,6 +174,8 @@ export function ValuationRatiosPanel({
             value={
               fundamentals?.marketCap !== undefined
                 ? new Intl.NumberFormat("en-US", {
+                    style: "currency",
+                    currency: "USD",
                     notation: "compact",
                     maximumFractionDigits: 2,
                   }).format(fundamentals.marketCap)

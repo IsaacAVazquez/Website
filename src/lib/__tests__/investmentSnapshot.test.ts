@@ -110,6 +110,13 @@ describe("buildInvestmentSnapshot", () => {
       },
     });
     expect(snapshot.sections.fundamentals).toMatchObject({ ttmPe: 28.4 });
+    // Return metrics are scaled from fractions to percentage units; the equity
+    // multiplier and asset turnover are plain ratios and pass through as-is.
+    expect(snapshot.sections.profitability).toMatchObject({
+      roe: 33,
+      equityMultiplier: 2.7,
+      assetTurnover: 0.8,
+    });
     expect(prices[0]).toMatchObject({
       date: "2025-02-18",
       close: 148,

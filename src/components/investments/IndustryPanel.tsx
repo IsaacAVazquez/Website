@@ -3,6 +3,10 @@
 import React from "react";
 import { WarmCard } from "@/components/ui/WarmCard";
 import { useStockData } from "@/hooks/useStockData";
+import {
+  formatComparisonMetricValue,
+  isLowerBetterMetric,
+} from "@/lib/investmentFormatting";
 import type { IndustryData } from "@/types/investment";
 import { ErrorState } from "./ErrorState";
 
@@ -26,19 +30,22 @@ function extractRows(raw: unknown): Row[] {
   }));
 }
 
-function Indicator({ value, avg }: { value: number | undefined; avg: number | undefined }) {
+function Indicator({ metric, value, avg }: { metric: string; value: number | undefined; avg: number | undefined }) {
   if (value === undefined || avg === undefined || isNaN(value) || isNaN(avg)) return null;
   const pct = avg !== 0 ? ((value - avg) / Math.abs(avg)) * 100 : 0;
-  const above = pct > 0;
+  // Whether sitting above the industry average is favorable depends on the
+  // metric: a high P/E reads expensive, a high ROE or margin reads strong.
+  const favorable = isLowerBetterMetric(metric) ? pct < 0 : pct > 0;
+  const tone =
+    pct === 0
+      ? "bg-[var(--home-paper-alt)] text-[var(--home-ink-muted)]"
+      : favorable
+        ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400"
+        : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400";
+  const sign = pct > 0 ? "+" : pct < 0 ? "−" : "";
   return (
-    <span
-      className={`ml-2 inline-flex items-center text-xs font-medium px-1.5 py-0.5 rounded ${
-        above
-          ? "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"
-          : "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400"
-      }`}
-    >
-      {above ? "+" : ""}{pct.toFixed(1)}% vs industry
+    <span className={`ml-2 inline-flex items-center text-xs font-medium px-1.5 py-0.5 rounded ${tone}`}>
+      {sign}{Math.abs(pct).toFixed(1)}% vs industry
     </span>
   );
 }
@@ -81,13 +88,13 @@ export function IndustryPanel({ symbol }: Props) {
                 <tr key={i} className="border-b border-[var(--home-rule)] last:border-0 hover:bg-[var(--home-paper-alt)] transition-colors">
                   <td className="py-2.5 text-[var(--home-ink-muted)]">{row.metric}</td>
                   <td className="py-2.5 text-right font-medium text-[var(--home-ink)]">
-                    {row.value !== undefined ? row.value.toFixed(2) : "—"}
+                    {formatComparisonMetricValue(row.metric, row.value)}
                   </td>
                   <td className="py-2.5 text-right text-[var(--home-ink-muted)]">
-                    {row.industryAvg !== undefined ? row.industryAvg.toFixed(2) : "—"}
+                    {formatComparisonMetricValue(row.metric, row.industryAvg)}
                   </td>
                   <td className="py-2.5 text-right">
-                    <Indicator value={row.value} avg={row.industryAvg} />
+                    <Indicator metric={row.metric} value={row.value} avg={row.industryAvg} />
                   </td>
                 </tr>
               ))}

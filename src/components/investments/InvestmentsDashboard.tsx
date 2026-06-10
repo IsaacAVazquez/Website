@@ -134,7 +134,7 @@ export function InvestmentsDashboard({
       },
       { id: "allocation", label: "Allocation", href: "#allocation", icon: IconChartArcs3 },
       { id: "stats", label: "Portfolio stats", href: "#portfolio-stats", icon: IconCircleHalf },
-      { id: "performance", label: "Performance", href: "#hero", icon: IconChartLine },
+      { id: "performance", label: "Performance", href: "#performance", icon: IconChartLine },
       { id: "research", label: "Research", href: "#research-section", icon: IconReportMoney },
       { id: "retirement", label: "Retirement", href: "#retirement", icon: IconPigMoney },
     ],
