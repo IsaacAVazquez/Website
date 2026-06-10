@@ -1,6 +1,14 @@
 "use client";
 
-import React, { useState, useEffect, useLayoutEffect, useMemo, useRef, useCallback } from "react";
+import React, {
+  useState,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useCallback,
+  useSyncExternalStore,
+} from "react";
 import { createPortal } from "react-dom";
 import { IconSearch, IconAlertCircle } from "@tabler/icons-react";
 import { useDebounce } from "@/hooks/useDebounce";
@@ -13,6 +21,8 @@ interface Props {
 }
 
 const VALID_SYMBOL_PATTERN = /^[A-Z0-9.-]{1,10}$/;
+
+const emptySubscribe = () => () => {};
 
 function normalizeQuery(value: string): string {
   return value
@@ -43,17 +53,19 @@ export function StockSearch({ value, onChange }: Props) {
   const [showDropdown, setShowDropdown] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
   const [dropdownStyle, setDropdownStyle] = useState<React.CSSProperties>({});
-  const [mounted, setMounted] = useState(false);
+  // Hydration flag via useSyncExternalStore: a one-shot setState inside the
+  // first passive effect gets dropped after hydration on this tree
+  // (React 19.2 + Next 16), which left the portal permanently unrendered.
+  const mounted = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
 
   const debouncedInput = useDebounce(input, 200);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- One-shot mount flag to gate portal rendering until after hydration
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     getClientInvestmentsIndex()
