@@ -2,7 +2,7 @@
 
 Current component map for the live application.
 
-**Last updated:** 2026-06-08
+**Last updated:** 2026-06-10
 
 ---
 
@@ -17,6 +17,8 @@ Current component map for the live application.
 | `Footer` | `src/components/Footer.tsx` | Full or compact footer |
 | `Providers` | `src/components/Providers.tsx` | Theme provider wrapper |
 | `ThemeProvider` | `src/components/ThemeProvider.tsx` | `next-themes` wrapper |
+| `RouteErrorBoundary` | `src/components/RouteErrorBoundary.tsx` | Shared editorial-styled error fallback re-exported by per-route `error.tsx` files |
+| `ContactCta` | `src/components/ContactCta.tsx` | Shared closing contact CTA used by the full footer |
 
 ### Homepage and portfolio
 
@@ -76,9 +78,11 @@ Main components:
 - `IndustryPanel`
 - `NewsPanel`
 
+Retirement planner components live in `src/components/investments/retirement/` (verdict headline, D3 confidence-band chart, levers panel, editable assumptions footer). They sit on the pure engine in `src/lib/retirement/` and `useRetirementPlan` browser-local state.
+
 ### Football dashboards
 
-Shared components for `/premier-league`, `/la-liga`, `/mlb`, `/nba`, and `/nfl` dashboards. All live in `src/components/football/`.
+Shared components for the `/premier-league`, `/la-liga`, `/mlb`, `/nba`, `/nfl`, and `/world-cup-2026` dashboards. All live in `src/components/football/`.
 
 | Component | File | Role |
 |----------|------|------|
@@ -103,6 +107,11 @@ Shared components for `/premier-league`, `/la-liga`, `/mlb`, `/nba`, and `/nfl` 
 | Budget Planner | `src/app/fintech-tools/budget-planner/*`, `src/hooks/useBudgetPlanner.ts` | Client-side budget planning tool |
 | Interchange IQ | `src/app/fintech-tools/interchange-iq/*` | Client-side interchange fee analyzer |
 | MBA Role Tracker | `src/app/mba-internship-notifications/*`, `src/constants/mba-companies.ts`, `src/lib/mba-job-matching.ts`, `src/types/mba-jobs.ts` | Client shell (`MBAJobsClient`) plus deep-link state helper (`mba-jobs-state.ts`) backed by `/api/mba-jobs`; uses `src/app/api/mba-jobs/email` for Resend digests |
+| World Cup Pulse | `src/app/world-cup-2026/*`, `src/data/worldCupSnapshot.ts`, `src/lib/worldCupSnapshot.ts` | Snapshot-backed 2026 FIFA World Cup hub reusing `src/components/football/*` |
+| Bay Area Transit Pulse | `src/app/bay-area-transit/*`, `src/data/bayAreaTransitSnapshot.ts`, `src/lib/bayAreaTransitSnapshot.ts` | Snapshot-backed BART dashboard with lines, station departure boards, and advisories |
+| Tech Startup Tracker | `src/app/tech-startup-tracker/*`, `src/data/techStartupSnapshot.ts`, `src/lib/techStartups.ts` | Editorially curated startup funding tracker with deep-linkable sector/stage state |
+| Travel Planner | `src/app/travel/*`, `src/hooks/useTravelPlanner.ts` | Browser-persisted trip planner client (`travel-planner-client.tsx`) for itineraries and journaling |
+| Golf | `src/app/golf/*`, `src/data/golfSnapshot.ts` | Snapshot-backed PGA Tour leaderboard dashboard |
 
 ---
 

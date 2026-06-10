@@ -57,9 +57,9 @@ npm run update:golf
 npm run update:world-cup
 npm run update:earthquake
 npm run update:bay-area-transit
-npm run update:github-trending
 npm run update:tech-startups
 npm run update:frontier-models
+npm run update:github-trending
 npm run update:spacex
 npm run lint
 ```
@@ -405,13 +405,13 @@ Live routes under `src/app/api/`:
 - `/api/nba/teams/[teamId]`
 - `/api/nfl/summary`
 - `/api/nfl/teams/[teamId]`
-- `/api/earthquake-pulse/summary`
-- `/api/bay-area-transit/summary`
-- `/api/bay-area-transit/stations/[stationId]`
 - `/api/golf/summary`
 - `/api/golf/players/[playerId]`
 - `/api/world-cup/summary`
 - `/api/world-cup/teams/[teamId]`
+- `/api/earthquake-pulse/summary`
+- `/api/bay-area-transit/summary`
+- `/api/bay-area-transit/stations/[stationId]`
 - `/api/mba-jobs`
 - `/api/mba-jobs/email`
 - `/api/news-pulse`
