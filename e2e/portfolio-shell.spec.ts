@@ -11,7 +11,6 @@ test.describe("Portfolio shell", () => {
   for (const path of routes) {
     test(`${path} has a title, exactly one h1, and one main landmark`, async ({ page }) => {
       await page.goto(path);
-      await page.waitForLoadState("networkidle");
 
       await expect(page).toHaveTitle(/Isaac Vazquez/);
       await expect(page.locator("h1")).toHaveCount(1);
@@ -31,7 +30,6 @@ test.describe("Portfolio shell", () => {
 
   test("/portfolio renders the masthead, the pinned featured project, and the card index", async ({ page }) => {
     await page.goto("/portfolio");
-    await page.waitForLoadState("networkidle");
 
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
     // Investment Analytics Platform is pinned as the featured spotlight.

@@ -3,8 +3,7 @@ import { test, expect } from '@playwright/test'
 test.describe('Writing / Blog', () => {
   test('/blog redirects to /writing', async ({ page }) => {
     await page.goto('/blog')
-    await page.waitForLoadState('networkidle')
-    expect(page.url()).toContain('/writing')
+    await expect(page).toHaveURL(/\/writing/)
   })
 
   test('/writing page loads without error', async ({ page }) => {
@@ -14,7 +13,6 @@ test.describe('Writing / Blog', () => {
 
   test('/writing page has a visible heading', async ({ page }) => {
     await page.goto('/writing')
-    await page.waitForLoadState('networkidle')
 
     const heading = page.locator('h1').first()
     await expect(heading).toBeVisible()
@@ -30,7 +28,6 @@ test.describe('Writing / Blog', () => {
 test.describe('Dark mode toggle', () => {
   test('theme toggle button exists on homepage', async ({ page }) => {
     await page.goto('/')
-    await page.waitForLoadState('networkidle')
 
     // Look for a theme or dark mode toggle button
     const toggleButton = page
@@ -47,7 +44,6 @@ test.describe('Dark mode toggle', () => {
 
   test('dark class can be toggled on the html element', async ({ page }) => {
     await page.goto('/')
-    await page.waitForLoadState('networkidle')
 
     const toggleButton = page
       .getByRole('button', { name: /theme|dark|light/i })
@@ -72,8 +68,6 @@ test.describe('Search page', () => {
     const response = await page.goto('/search?q=resume&type=page')
     expect(response?.status()).toBeLessThan(400)
 
-    await page.waitForLoadState('networkidle')
-
     const searchInput = page.getByRole('textbox').first()
     await expect(searchInput).toBeVisible()
     await expect(searchInput).toHaveValue('resume')
@@ -82,7 +76,6 @@ test.describe('Search page', () => {
 
   test('/search page has a visible input', async ({ page }) => {
     await page.goto('/search')
-    await page.waitForLoadState('networkidle')
 
     const searchInput = page
       .getByRole('searchbox')
@@ -113,7 +106,6 @@ test.describe('Static pages', () => {
 
   test('/about page has a visible h1', async ({ page }) => {
     await page.goto('/about')
-    await page.waitForLoadState('networkidle')
     const h1 = page.locator('h1').first()
     await expect(h1).toBeVisible()
   })
@@ -122,13 +114,11 @@ test.describe('Static pages', () => {
 test.describe('Legacy URL redirects', () => {
   test('/cv redirects to /resume', async ({ page }) => {
     await page.goto('/cv')
-    await page.waitForLoadState('networkidle')
-    expect(page.url()).toContain('/resume')
+    await expect(page).toHaveURL(/\/resume/)
   })
 
   test('/work redirects to /portfolio', async ({ page }) => {
     await page.goto('/work')
-    await page.waitForLoadState('networkidle')
-    expect(page.url()).toContain('/portfolio')
+    await expect(page).toHaveURL(/\/portfolio/)
   })
 })

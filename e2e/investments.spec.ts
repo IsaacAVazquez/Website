@@ -216,7 +216,6 @@ test.describe("Investments", () => {
   test("is discoverable from main navigation", async ({ page }, testInfo) => {
     await routeInvestmentsFixtures(page);
     await page.goto("/");
-    await page.waitForLoadState("networkidle");
 
     if (testInfo.project.name.includes("Mobile")) {
       await page.getByRole("button", { name: /open navigation menu/i }).click();

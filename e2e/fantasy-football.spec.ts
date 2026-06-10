@@ -27,7 +27,6 @@ async function selectScoring(
 test.describe("Fantasy football rankings", () => {
   test("loads the canonical rankings board and supports PPR position switching", async ({ page }) => {
     await page.goto("/fantasy-football");
-    await page.waitForLoadState("networkidle");
     const shell = page.locator('[data-testid="fantasy-football-shell"]');
 
     await expect(page.getByRole("heading", { name: /Rankings first\. Draft utility second\./i })).toBeVisible();
@@ -43,7 +42,6 @@ test.describe("Fantasy football rankings", () => {
 
   test("supports deep-linked position and scoring params", async ({ page }) => {
     await page.goto("/fantasy-football?position=te&scoring=half_ppr");
-    await page.waitForLoadState("networkidle");
 
     await expect(page).toHaveURL(/position=te/);
     await expect(page).toHaveURL(/scoring=half_ppr/);
@@ -55,7 +53,6 @@ test.describe("Fantasy football rankings", () => {
     page,
   }) => {
     await page.goto("/fantasy-football?position=rb&scoring=standard");
-    await page.waitForLoadState("networkidle");
     const shell = page.locator('[data-testid="fantasy-football-shell"]');
 
     await expect(page.getByRole("heading", { name: /RB rankings/i })).toBeVisible();
@@ -78,7 +75,6 @@ test.describe("Fantasy football rankings", () => {
 
   test("repeated switching uses stable static data without rate-limit failures", async ({ page }) => {
     await page.goto("/fantasy-football?position=overall&scoring=standard");
-    await page.waitForLoadState("networkidle");
     const shell = page.locator('[data-testid="fantasy-football-shell"]');
 
     for (const target of ["RB", "WR", "QB", "TE"]) {
@@ -100,7 +96,6 @@ test.describe("Fantasy football rankings", () => {
 
   test("keeps the aside sticky on desktop and stacked on mobile", async ({ page, isMobile }) => {
     await page.goto("/fantasy-football?position=wr&scoring=ppr");
-    await page.waitForLoadState("networkidle");
 
     const aside = page.locator('[data-testid="fantasy-football-shell"] aside');
     await expect(aside).toBeVisible();
@@ -118,7 +113,6 @@ test.describe("Fantasy football rankings", () => {
 test.describe("Fantasy football draft tracker", () => {
   test("loads, records picks, and persists after reload", async ({ page }) => {
     await page.goto("/fantasy-football/draft-tracker");
-    await page.waitForLoadState("networkidle");
 
     await expect(page.getByRole("heading", { name: /Manual draft tracking that actually stays usable\./i })).toBeVisible();
     await page.getByRole("button", { name: /Start draft assistant/i }).click();
@@ -131,7 +125,6 @@ test.describe("Fantasy football draft tracker", () => {
     await expect(page.getByRole("button", { name: "Log pick" }).first().locator("..")).toContainText(/Tier/i);
 
     await page.reload();
-    await page.waitForLoadState("networkidle");
 
     await expect(page.getByText(/2 of \d+ picks logged/i)).toBeVisible();
     await expect(page.getByText("No Data Available")).toHaveCount(0);
@@ -141,21 +134,18 @@ test.describe("Fantasy football draft tracker", () => {
 test.describe("Fantasy redirects", () => {
   test("/fantasy-football/rb-tiers redirects to the canonical board", async ({ page }) => {
     await page.goto("/fantasy-football/rb-tiers");
-    await page.waitForLoadState("networkidle");
 
     await expect(page).toHaveURL(/\/fantasy-football\?position=rb&scoring=ppr/);
   });
 
   test("/fantasy-football/tiers/qb redirects to the canonical board", async ({ page }) => {
     await page.goto("/fantasy-football/tiers/qb");
-    await page.waitForLoadState("networkidle");
 
     await expect(page).toHaveURL(/\/fantasy-football\?position=qb&scoring=ppr/);
   });
 
   test("/qb shortcut redirects to the canonical board", async ({ page }) => {
     await page.goto("/qb");
-    await page.waitForLoadState("networkidle");
 
     await expect(page).toHaveURL(/\/fantasy-football\?position=qb&scoring=ppr/);
   });

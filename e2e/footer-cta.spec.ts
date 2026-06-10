@@ -3,7 +3,6 @@ import { test, expect } from "@playwright/test";
 test.describe("Footer CTA cleanup", () => {
   test("uses the compact footer on the homepage", async ({ page }) => {
     await page.goto("/");
-    await page.waitForLoadState("networkidle");
 
     await expect(
       page.getByRole("heading", {
@@ -20,7 +19,6 @@ test.describe("Footer CTA cleanup", () => {
 
   test("uses the compact footer on the contact page", async ({ page }) => {
     await page.goto("/contact");
-    await page.waitForLoadState("networkidle");
 
     await expect(
       page.getByRole("heading", { name: /get in touch\./i })
@@ -35,7 +33,6 @@ test.describe("Footer CTA cleanup", () => {
 
   test("relies on the footer as the single closing CTA on the portfolio page", async ({ page }) => {
     await page.goto("/portfolio");
-    await page.waitForLoadState("networkidle");
 
     await expect(page.getByText(/continue the conversation/i)).toHaveCount(0);
     await expect(page.getByText(/start a conversation/i)).toHaveCount(0);
@@ -55,7 +52,6 @@ test.describe("Footer CTA cleanup", () => {
 
   test("uses the footer sign-off on writing detail pages", async ({ page }) => {
     await page.goto("/writing/2026-march-madness-bracket-analysis");
-    await page.waitForLoadState("networkidle");
 
     await expect(
       page.getByText(/interested in learning more about product management or working together\?/i)
