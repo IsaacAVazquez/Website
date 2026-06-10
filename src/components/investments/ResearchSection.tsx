@@ -3,6 +3,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { ResearchAssetHeader } from "./ResearchAssetHeader";
+import { ResearchPosition } from "./ResearchPosition";
 import { ResearchOverview } from "./ResearchOverview";
 import { FinancialStatementsPanel } from "./FinancialStatementsPanel";
 import { ValuationRatiosPanel } from "./ValuationRatiosPanel";
@@ -21,6 +22,7 @@ import { useTablistKeyboard } from "@/hooks/useTablistKeyboard";
 import { getClientInvestmentsIndex } from "@/lib/investmentsClientData";
 import type {
   CompanyInfo,
+  EnhancedHolding,
   InvestmentCapabilities,
   InvestmentsIndex,
 } from "@/types/investment";
@@ -31,6 +33,7 @@ interface Props {
   activeTab: ResearchTab;
   onTabChange: (tab: ResearchTab) => void;
   portfolioSymbols?: string[];
+  position?: EnhancedHolding | null;
 }
 
 const TABS: { key: ResearchTab; label: string }[] = [
@@ -73,6 +76,7 @@ export function ResearchSection({
   activeTab,
   onTabChange,
   portfolioSymbols = [],
+  position = null,
 }: Props) {
   const [, setDatasetLastUpdated] = useState<string | null>(null);
   const shouldReduceMotion = useReducedMotion();
@@ -174,7 +178,13 @@ export function ResearchSection({
         </div>
       ) : (
         <>
-          <ResearchAssetHeader symbol={symbol} isInPortfolio={isInPortfolio} />
+          <ResearchAssetHeader
+            symbol={symbol}
+            isInPortfolio={isInPortfolio}
+            portfolioShares={position?.shares ?? null}
+          />
+
+          {position ? <ResearchPosition position={position} /> : null}
 
           {visibleTabs.length > 0 ? (
             <div
@@ -233,7 +243,12 @@ export function ResearchSection({
               )}
               {resolvedActiveTab === "industry" && <IndustryPanel symbol={symbol} />}
               {resolvedActiveTab === "dcf" && <DCFPanel symbol={symbol} />}
-              {resolvedActiveTab === "chart" && <PriceChartPanel symbol={symbol} />}
+              {resolvedActiveTab === "chart" && (
+                <PriceChartPanel
+                  symbol={symbol}
+                  costBasis={position?.averageCost ?? null}
+                />
+              )}
               {resolvedActiveTab === "compare" && <ComparisonTab />}
             </motion.div>
           </AnimatePresence>

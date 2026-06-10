@@ -1677,43 +1677,54 @@
     transform-origin: center;
   }
 
+  /* v3 editorial-brutalism header — hard ink rule, mono nav, acid active */
   .header-home {
-    border-bottom-color: color-mix(in srgb, var(--home-stone) 70%, transparent);
+    border-bottom-color: var(--home-ink);
   }
 
   .header-home-brand {
-    font-family: var(--font-home-sans);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-display);
     font-size: 1.05rem;
     font-weight: 700;
-    letter-spacing: -0.06em;
+    letter-spacing: -0.04em;
     text-transform: uppercase;
     color: var(--home-ink);
+  }
+
+  .header-home-brand::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background: var(--home-acid);
+    flex-shrink: 0;
   }
 
   .header-home-link {
-    border: 1px solid transparent;
-    border-radius: 999px;
-    font-family: var(--font-home-sans);
-    font-size: 0.76rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
+    font-family: var(--font-jetbrains-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
+    color: var(--home-ink-muted);
+    border-left: 1px solid color-mix(in srgb, var(--home-ink) 8%, transparent);
+    transition: color 160ms ease, background 160ms ease;
+  }
+
+  .header-home-nav-list > li:first-child .header-home-link {
+    border-left: 0;
   }
 
   .header-home-link[aria-current="page"] {
-    border-color: color-mix(in srgb, var(--home-ink) 14%, var(--home-stone));
-    background: color-mix(in srgb, var(--home-paper) 78%, transparent);
-    color: var(--home-ink);
-  }
-
-  .header-home-link:not([aria-current="page"]) {
-    color: var(--home-ink-muted);
+    background: var(--home-acid);
+    color: #12110f;
   }
 
   .header-home-link:not([aria-current="page"]):hover,
   .header-home-link:not([aria-current="page"]):focus-visible {
-    border-color: color-mix(in srgb, var(--home-ink) 12%, var(--home-stone));
-    background: color-mix(in srgb, var(--home-acid) 18%, var(--home-paper));
+    background: color-mix(in srgb, var(--home-paper) 72%, white);
     color: var(--home-ink);
   }
 
@@ -1736,9 +1747,10 @@
     box-shadow: var(--shadow-lg);
   }
 
+  /* v3 editorial-brutalism contentinfo — hard ink rule, mono colophon, acid block */
   .footer-home {
-    border-top-color: var(--home-rule);
-    background: color-mix(in srgb, var(--home-paper) 94%, var(--surface-primary));
+    border-top-color: var(--home-ink);
+    background: var(--home-paper);
   }
 
   .footer-home-panel {
@@ -1755,15 +1767,71 @@
     color: var(--home-ink);
   }
 
-  .footer-home-icon {
-    border-color: color-mix(in srgb, var(--home-stone) 76%, var(--home-ink) 16%);
+  .footer-home-colophon {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-jetbrains-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--home-ink);
+  }
+
+  .footer-home-colophon::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: var(--home-acid);
+    flex-shrink: 0;
+  }
+
+  .footer-home-links {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .footer-home-links a {
+    font-family: var(--font-jetbrains-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     color: var(--home-ink-muted);
+    padding: 4px 12px;
+    border-left: 1px solid color-mix(in srgb, var(--home-ink) 16%, transparent);
+    transition: color 160ms ease;
+    white-space: nowrap;
+  }
+
+  .footer-home-links a:first-child {
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .footer-home-links a:hover,
+  .footer-home-links a:focus-visible {
+    color: var(--home-ink);
+  }
+
+  .footer-home-links a.is-strong {
+    color: var(--home-ink);
+    font-weight: 600;
+  }
+
+  .footer-home-icon {
+    border: 1px solid var(--home-ink);
+    border-radius: 0;
+    color: var(--home-ink);
+    background: transparent;
   }
 
   .footer-home-icon:hover,
   .footer-home-icon:focus-visible {
-    background: color-mix(in srgb, var(--home-acid) 18%, var(--home-paper));
-    color: var(--home-ink);
+    background: var(--home-ink);
+    color: var(--home-paper);
   }
 
   .dark .home-card {

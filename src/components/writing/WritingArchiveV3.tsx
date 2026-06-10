@@ -200,9 +200,26 @@ export function WritingArchiveV3({
     return items;
   }, [featured, posts.length, sinceLabel, clusters, buckets]);
 
-  // Spotlight cadence — every 6th card slot is a spotlight (essay only).
-  const isSpotlightSlot = (i: number) =>
-    i > 0 && i % 6 === 1 && !isNote(visible[i]);
+  // Spotlight cadence — one spotlight per 6-card window, anchored at slot 1.
+  // Within each window we slide to the nearest essay so the signature ink card
+  // lands on substantial content; if the window is all notes we still spotlight
+  // the anchor so the cadence (and the card) never silently disappears.
+  const spotlightSlots = useMemo(() => {
+    const picks = new Set<number>();
+    for (let anchor = 1; anchor < visible.length; anchor += 6) {
+      const windowEnd = Math.min(anchor + 6, visible.length);
+      let chosen = -1;
+      for (let j = anchor; j < windowEnd; j++) {
+        if (!picks.has(j) && !isNote(visible[j])) {
+          chosen = j;
+          break;
+        }
+      }
+      if (chosen === -1) chosen = anchor;
+      picks.add(chosen);
+    }
+    return picks;
+  }, [visible]);
 
   return (
     <div className={styles["wr-page"]}>
@@ -386,7 +403,7 @@ export function WritingArchiveV3({
                   const cover = COVER_VARIANTS[idx % COVER_VARIANTS.length];
                   const id = String(idx + 2).padStart(2, "0"); // featured = 01
                   const tone = toneClassFor(post);
-                  const spotlight = isSpotlightSlot(i);
+                  const spotlight = spotlightSlots.has(i);
 
                   if (spotlight) {
                     const spotTone =
