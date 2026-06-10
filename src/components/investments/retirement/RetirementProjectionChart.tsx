@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import * as d3 from "d3";
+import { select, scaleLinear, max, area, line, curveMonotoneX } from "d3";
 import type { RetirementResult } from "@/lib/retirement";
 import { formatCompactCurrency } from "@/lib/retirement";
 
@@ -25,19 +25,18 @@ export function RetirementProjectionChart({ result }: Props) {
 
   useEffect(() => {
     if (!ref.current || bands.length === 0) return;
-    const svg = d3.select(ref.current);
+    const svg = select(ref.current);
     svg.selectAll("*").remove();
 
     const innerW = W - MARGIN.left - MARGIN.right;
     const innerH = H - MARGIN.top - MARGIN.bottom;
 
-    const x = d3
-      .scaleLinear()
+    const x = scaleLinear()
       .domain([bands[0].age, bands[bands.length - 1].age])
       .range([0, innerW]);
 
-    const maxY = d3.max(bands, (b) => b.p90) ?? 1;
-    const y = d3.scaleLinear().domain([0, maxY * 1.05]).nice().range([innerH, 0]);
+    const maxY = max(bands, (b) => b.p90) ?? 1;
+    const y = scaleLinear().domain([0, maxY * 1.05]).nice().range([innerH, 0]);
 
     const g = svg.append("g").attr("transform", `translate(${MARGIN.left},${MARGIN.top})`);
 
@@ -90,30 +89,27 @@ export function RetirementProjectionChart({ result }: Props) {
       .text("age →");
 
     // Outer band (p10–p90).
-    const outerArea = d3
-      .area<(typeof bands)[number]>()
+    const outerArea = area<(typeof bands)[number]>()
       .x((d) => x(d.age))
       .y0((d) => y(d.p10))
       .y1((d) => y(d.p90))
-      .curve(d3.curveMonotoneX);
+      .curve(curveMonotoneX);
 
     // Inner band (p25–p75).
-    const innerArea = d3
-      .area<(typeof bands)[number]>()
+    const innerArea = area<(typeof bands)[number]>()
       .x((d) => x(d.age))
       .y0((d) => y(d.p25))
       .y1((d) => y(d.p75))
-      .curve(d3.curveMonotoneX);
+      .curve(curveMonotoneX);
 
     g.append("path").datum(bands).attr("d", outerArea).attr("fill", ACCENT).attr("opacity", 0.12);
     g.append("path").datum(bands).attr("d", innerArea).attr("fill", ACCENT).attr("opacity", 0.2);
 
     // Median line.
-    const median = d3
-      .line<(typeof bands)[number]>()
+    const median = line<(typeof bands)[number]>()
       .x((d) => x(d.age))
       .y((d) => y(d.p50))
-      .curve(d3.curveMonotoneX);
+      .curve(curveMonotoneX);
     g.append("path")
       .datum(bands)
       .attr("d", median)

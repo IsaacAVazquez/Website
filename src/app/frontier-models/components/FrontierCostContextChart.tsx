@@ -1,6 +1,6 @@
 "use client";
 
-import * as d3 from "d3";
+import { select, extent, scaleLog, axisBottom, axisLeft } from "d3";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   blendedPricePerMTokens,
@@ -88,10 +88,9 @@ export function FrontierCostContextChart({
     const innerWidth = width - MARGIN.left - MARGIN.right;
     const innerHeight = HEIGHT - MARGIN.top - MARGIN.bottom;
 
-    d3.select(svg).selectAll("*").remove();
+    select(svg).selectAll("*").remove();
 
-    const root = d3
-      .select(svg)
+    const root = select(svg)
       .attr("width", width)
       .attr("height", HEIGHT)
       .attr("role", "img")
@@ -104,27 +103,23 @@ export function FrontierCostContextChart({
       .append("g")
       .attr("transform", `translate(${MARGIN.left},${MARGIN.top})`);
 
-    const xExtent = d3.extent(plotted, (d) => d.x) as [number, number];
-    const yExtent = d3.extent(plotted, (d) => d.y) as [number, number];
+    const xExtent = extent(plotted, (d) => d.x) as [number, number];
+    const yExtent = extent(plotted, (d) => d.y) as [number, number];
 
-    const xScale = d3
-      .scaleLog()
+    const xScale = scaleLog()
       .domain([Math.max(1000, xExtent[0] * 0.8), xExtent[1] * 1.2])
       .range([0, innerWidth]);
-    const yScale = d3
-      .scaleLog()
+    const yScale = scaleLog()
       .domain([Math.max(0.05, yExtent[0] * 0.6), yExtent[1] * 1.4])
       .range([innerHeight, 0]);
 
     const axisColor = "color-mix(in srgb, var(--home-ink) 55%, var(--home-paper))";
     const gridColor = "color-mix(in srgb, var(--home-ink) 12%, var(--home-paper))";
 
-    const xAxis = d3
-      .axisBottom(xScale)
+    const xAxis = axisBottom(xScale)
       .ticks(5, ".2s")
       .tickFormat((value) => formatTokenCount(Number(value)));
-    const yAxis = d3
-      .axisLeft(yScale)
+    const yAxis = axisLeft(yScale)
       .ticks(5, ".2s")
       .tickFormat((value) => `$${Number(value).toFixed(Number(value) < 1 ? 2 : 0)}`);
 
@@ -147,8 +142,7 @@ export function FrontierCostContextChart({
       .attr("class", "grid-x")
       .attr("transform", `translate(0,${innerHeight})`)
       .call(
-        d3
-          .axisBottom(xScale)
+        axisBottom(xScale)
           .ticks(5)
           .tickSize(-innerHeight)
           .tickFormat(() => "")

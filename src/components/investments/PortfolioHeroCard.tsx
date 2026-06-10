@@ -1,7 +1,19 @@
 "use client";
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import * as d3 from "d3";
+import {
+  select,
+  scaleTime,
+  scaleLinear,
+  extent,
+  min,
+  max,
+  area as d3Area,
+  line as d3Line,
+  curveMonotoneX,
+  format,
+  timeFormat,
+} from "d3";
 import { useReducedMotion } from "framer-motion";
 import {
   formatBalance,
@@ -81,11 +93,10 @@ export function PortfolioHeroCard({
     const innerW = Math.max(40, width - MARGIN.left - MARGIN.right);
     const innerH = HEIGHT - MARGIN.top - MARGIN.bottom;
 
-    d3.select(svg).selectAll("*").remove();
+    select(svg).selectAll("*").remove();
 
     if (filteredSnapshots.length < 2) {
-      const root = d3
-        .select(svg)
+      const root = select(svg)
         .attr("width", width)
         .attr("height", HEIGHT)
         .append("g")
@@ -109,26 +120,23 @@ export function PortfolioHeroCard({
 
     const data = filteredSnapshots.map((s) => ({ date: new Date(s.date), value: s.totalValue }));
 
-    const xScale = d3
-      .scaleTime()
-      .domain(d3.extent(data, (d) => d.date) as [Date, Date])
+    const xScale = scaleTime()
+      .domain(extent(data, (d) => d.date) as [Date, Date])
       .range([0, innerW]);
-    const yMin = d3.min(data, (d) => d.value) as number;
-    const yMax = d3.max(data, (d) => d.value) as number;
+    const yMin = min(data, (d) => d.value) as number;
+    const yMax = max(data, (d) => d.value) as number;
     const yPad = (yMax - yMin) * 0.12 || 1;
-    const yScale = d3
-      .scaleLinear()
+    const yScale = scaleLinear()
       .domain([yMin - yPad, yMax + yPad])
       .range([innerH, 0]);
 
-    const root = d3
-      .select(svg)
+    const root = select(svg)
       .attr("width", width)
       .attr("height", HEIGHT)
       .append("g")
       .attr("transform", `translate(${MARGIN.left},${MARGIN.top})`);
 
-    const defs = d3.select(svg).append("defs");
+    const defs = select(svg).append("defs");
     const fillId = `inv-hero-fill-${range}`;
     const strokeId = `inv-hero-stroke-${range}`;
     const fillGrad = defs
@@ -162,19 +170,17 @@ export function PortfolioHeroCard({
         .attr("stroke-dasharray", "3 4");
     });
 
-    const area = d3
-      .area<(typeof data)[number]>()
+    const area = d3Area<(typeof data)[number]>()
       .x((d) => xScale(d.date))
       .y0(innerH)
       .y1((d) => yScale(d.value))
-      .curve(d3.curveMonotoneX);
+      .curve(curveMonotoneX);
     root.append("path").datum(data).attr("d", area).attr("fill", `url(#${fillId})`);
 
-    const line = d3
-      .line<(typeof data)[number]>()
+    const line = d3Line<(typeof data)[number]>()
       .x((d) => xScale(d.date))
       .y((d) => yScale(d.value))
-      .curve(d3.curveMonotoneX);
+      .curve(curveMonotoneX);
     root
       .append("path")
       .datum(data)
@@ -215,8 +221,7 @@ export function PortfolioHeroCard({
         .attr("repeatCount", "indefinite");
     }
 
-    const yAxisG = d3
-      .select(svg)
+    const yAxisG = select(svg)
       .append("g")
       .attr("transform", `translate(${width - MARGIN.right + 8},${MARGIN.top})`);
     const tickValues = yScale.ticks(4);
@@ -228,11 +233,10 @@ export function PortfolioHeroCard({
         .attr("dominant-baseline", "middle")
         .attr("fill", "color-mix(in srgb, var(--home-ink) 38%, var(--home-paper))")
         .style("font", "10.5px var(--font-mono)")
-        .text(`$${d3.format(".2~s")(v).replace("G", "B")}`);
+        .text(`$${format(".2~s")(v).replace("G", "B")}`);
     });
 
-    const xAxisG = d3
-      .select(svg)
+    const xAxisG = select(svg)
       .append("g")
       .attr("transform", `translate(${MARGIN.left},${HEIGHT - 6})`);
     const tickCount = Math.min(data.length, 5);
@@ -245,7 +249,7 @@ export function PortfolioHeroCard({
         .attr("text-anchor", "middle")
         .attr("fill", "color-mix(in srgb, var(--home-ink) 38%, var(--home-paper))")
         .style("font", "10.5px var(--font-mono)")
-        .text(d3.timeFormat("%b %d")(d));
+        .text(timeFormat("%b %d")(d));
     });
   }, [filteredSnapshots, snapshots.length, width, range, shouldReduceMotion]);
 
