@@ -63,39 +63,47 @@ export function DraftTrackerClient() {
   const draftStatsCells: HomeStatsCell[] = [
     {
       label: "Current pick",
+      tooltip: "Overall pick number on the clock right now.",
       value: draftState.currentPick.toLocaleString(),
       sub: `of ${totalPicks}`,
     },
     {
       label: "Round",
+      tooltip: "Current round out of the rounds configured for this room.",
       value: `${draftState.currentRound}`,
       sub: `of ${draftState.settings.rounds}`,
     },
     {
       label: "On the clock",
+      tooltip: "Team whose pick gets logged next.",
       value: currentTeamName,
       sub: isUserPick ? "Your pick" : undefined,
     },
     {
       label: "Picks made",
+      tooltip: "Picks logged in this room so far.",
       value: draftState.picks.length.toLocaleString(),
     },
     {
       label: "Total picks",
+      tooltip: "Teams times rounds from the room settings.",
       value: `${draftState.settings.totalTeams} × ${draftState.settings.rounds}`,
       sub: totalPicks.toLocaleString(),
     },
     {
       label: "Completion",
+      tooltip: "Share of the total picks already logged.",
       value: `${completionPercentage}%`,
       tone: completionPercentage > 0 ? "good" : "default",
     },
     {
       label: "Your team",
+      tooltip: "The roster this assistant tracks as yours.",
       value: userTeamName,
     },
     {
       label: "Best available",
+      tooltip: "Undrafted players left on the overall consensus board.",
       value: bestAvailableCount > 0 ? bestAvailableCount.toLocaleString() : "—",
       sub: "Players left on board",
     },

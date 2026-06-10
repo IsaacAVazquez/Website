@@ -253,39 +253,47 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
   const fantasyStatsCells: HomeStatsCell[] = [
     {
       label: "Players visible",
+      tooltip: "Players on this board after the position, scoring, and search filters.",
       value: currentSliceUnavailable ? "—" : filteredPlayers.length.toLocaleString(),
       sub: currentSliceUnavailable ? "Board unavailable" : "After filters",
     },
     {
       label: "Active position",
+      tooltip: "The position board currently in view.",
       value: FANTASY_POSITION_LABELS[routeState.position],
       sub: "Switch via pills",
     },
     {
       label: "Scoring format",
+      tooltip: "Scoring rules behind the consensus ranks on this board.",
       value: selectedScoringLabel,
     },
     {
       label: "Tier count",
+      tooltip: "Highest tier number FantasyPros publishes for this board.",
       value: maxTier > 0 ? maxTier : "—",
       sub: maxTier > 0 ? "Highest tier in view" : "Not published",
     },
     {
       label: "Search hits",
+      tooltip: "Players matching the current search text.",
       value: trimmedQuery ? filteredPlayers.length.toLocaleString() : "—",
       sub: trimmedQuery ? `Query "${trimmedQuery}"` : "Type to filter",
     },
     {
       label: "Snapshot week",
+      tooltip: "Season and week the published snapshot covers.",
       value: snapshotWeekLabel,
     },
     {
       label: "Source updated",
+      tooltip: "When FantasyPros last refreshed the source consensus.",
       value: formatUpdatedAt(currentSourceUpdatedAt),
       sub: currentSourceKindLabel,
     },
     {
       label: "Built",
+      tooltip: "When this site last rebuilt its committed snapshot from the source.",
       value: formatUpdatedAt(metadata?.generatedAt),
       sub: "Snapshot generated",
     },
@@ -633,7 +641,10 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                       >
                         <div>
                           <p className={cellLabelClassName}>Rank</p>
-                          <p className={rankValueClassName}>
+                          <p
+                            className={rankValueClassName}
+                            title="Published FantasyPros consensus rank on this board"
+                          >
                             {getPublishedBoardRank(player, routeState.position)}
                           </p>
                         </div>
@@ -655,12 +666,22 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
 
                         <div>
                           <p className={cellLabelClassName}>Tier</p>
-                          <p className="text-sm font-semibold">{player.tier ? `Tier ${player.tier}` : "Not listed"}</p>
+                          <p
+                            className="text-sm font-semibold"
+                            title="FantasyPros consensus tier. Gaps between tiers mark the value drop-offs"
+                          >
+                            {player.tier ? `Tier ${player.tier}` : "Not listed"}
+                          </p>
                         </div>
 
                         <div>
                           <p className={cellLabelClassName}>Expert range</p>
-                          <p className="text-sm font-semibold tabular-nums">{formatRange(player)}</p>
+                          <p
+                            className="text-sm font-semibold tabular-nums"
+                            title="Best and worst rank across the experts in the consensus"
+                          >
+                            {formatRange(player)}
+                          </p>
                         </div>
 
                         <div>
