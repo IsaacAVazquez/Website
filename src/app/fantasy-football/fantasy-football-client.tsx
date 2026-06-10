@@ -1,6 +1,6 @@
 "use client";
 
-import { startTransition, useEffect, useMemo, useState, useSyncExternalStore, type CSSProperties } from "react";
+import { Fragment, startTransition, useEffect, useMemo, useState, useSyncExternalStore, type CSSProperties, type ReactNode } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { motion, useReducedMotion } from "framer-motion";
@@ -15,6 +15,7 @@ import {
   getFantasyWeekLabel,
 } from "@/lib/fantasy";
 import {
+  FANTASY_AVG_RANK_TOOLTIP,
   FANTASY_CHIP_CLASS,
   formatOwnership,
   formatRange,
@@ -24,6 +25,7 @@ import {
   getSourceKindLabel,
 } from "@/lib/fantasyUtils";
 import { TierBreakdown } from "@/components/fantasy";
+import { MetricTooltip } from "@/components/investments/MetricTooltip";
 import { Player } from "@/types";
 import { buildFantasyHref, FantasySearchState, normalizeFantasyState } from "./fantasy-state";
 import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
@@ -84,8 +86,8 @@ function getPublishedBoardRank(player: Player, position: FantasyRoutePosition): 
   return formatRankValue(rankValue);
 }
 
-function getPlayerDescriptor(player: Player, position: FantasyRoutePosition): string {
-  const parts = [player.team];
+function getPlayerDescriptor(player: Player, position: FantasyRoutePosition): ReactNode {
+  const parts: ReactNode[] = [player.team];
   const isOverallView = position === "overall" || position === "flex";
 
   // Overall/flex boards lead with the player's position rank (e.g. "RB3");
@@ -95,10 +97,22 @@ function getPlayerDescriptor(player: Player, position: FantasyRoutePosition): st
   }
 
   if (Number.isFinite(player.rankAverage)) {
-    parts.push(`Avg ${Number(player.rankAverage).toFixed(2)}`);
+    parts.push(
+      <span className="inline-flex items-center">
+        Avg {Number(player.rankAverage).toFixed(2)}
+        <MetricTooltip term="Average rank" definition={FANTASY_AVG_RANK_TOOLTIP} />
+      </span>
+    );
   }
 
-  return parts.filter(Boolean).join(" • ");
+  // Render the parts inline, separated by bullets, so the "Avg" segment can
+  // carry its own explanatory tooltip instead of being flattened into a string.
+  return parts.filter(Boolean).map((part, index) => (
+    <Fragment key={index}>
+      {index > 0 ? " • " : ""}
+      {part}
+    </Fragment>
+  ));
 }
 
 type FantasyBoardDensity = "comfortable" | "compact";
