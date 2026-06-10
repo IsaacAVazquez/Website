@@ -562,20 +562,20 @@ function GroupTable({
       <table className="mt-3 w-full border-separate border-spacing-y-1.5 text-sm">
         <thead>
           <tr className="text-left text-2xs uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
-            <th className="px-2 py-1 font-semibold">#</th>
-            <th className="px-2 py-1 font-semibold">Team</th>
-            <th className="px-2 py-1 text-center font-semibold">P</th>
-            <th className="hidden px-2 py-1 text-center font-semibold sm:table-cell">
+            <th scope="col" className="px-2 py-1 font-semibold">#</th>
+            <th scope="col" className="px-2 py-1 font-semibold">Team</th>
+            <th scope="col" className="px-2 py-1 text-center font-semibold">P</th>
+            <th scope="col" className="hidden px-2 py-1 text-center font-semibold sm:table-cell">
               W
             </th>
-            <th className="hidden px-2 py-1 text-center font-semibold sm:table-cell">
+            <th scope="col" className="hidden px-2 py-1 text-center font-semibold sm:table-cell">
               D
             </th>
-            <th className="hidden px-2 py-1 text-center font-semibold sm:table-cell">
+            <th scope="col" className="hidden px-2 py-1 text-center font-semibold sm:table-cell">
               L
             </th>
-            <th className="px-2 py-1 text-center font-semibold">GD</th>
-            <th className="px-2 py-1 text-center font-semibold">Pts</th>
+            <th scope="col" className="px-2 py-1 text-center font-semibold">GD</th>
+            <th scope="col" className="px-2 py-1 text-center font-semibold">Pts</th>
           </tr>
         </thead>
         <tbody>

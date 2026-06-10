@@ -2751,7 +2751,7 @@ img {
   transition: background 160ms ease, transform 160ms ease;
   display: inline-flex; align-items: center; gap: 8px;
   text-decoration: none;
-  min-height: 36px;
+  min-height: 44px;
 }
 .invest-ghost:hover {
   background: color-mix(in srgb, var(--home-acid) 22%, transparent);

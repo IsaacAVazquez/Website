@@ -340,12 +340,12 @@ function DriverStandingsTable({
       <table className="w-full min-w-[580px] border-separate border-spacing-y-2">
         <thead>
           <tr className="text-left text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
-            <th className="px-3 py-2">Pos</th>
-            <th className="px-3 py-2">Driver</th>
-            <th className="px-3 py-2">Team</th>
-            <th className="px-3 py-2">Last race</th>
-            <th className="px-3 py-2">Move</th>
-            <th className="px-3 py-2 text-right">Pts</th>
+            <th scope="col" className="px-3 py-2">Pos</th>
+            <th scope="col" className="px-3 py-2">Driver</th>
+            <th scope="col" className="px-3 py-2">Team</th>
+            <th scope="col" className="px-3 py-2">Last race</th>
+            <th scope="col" className="px-3 py-2">Move</th>
+            <th scope="col" className="px-3 py-2 text-right">Pts</th>
           </tr>
         </thead>
         <tbody>
@@ -420,11 +420,11 @@ function ConstructorStandingsTable({
       <table className="w-full min-w-[500px] border-separate border-spacing-y-2">
         <thead>
           <tr className="text-left text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
-            <th className="px-3 py-2">Pos</th>
-            <th className="px-3 py-2">Team</th>
-            <th className="px-3 py-2">Last race</th>
-            <th className="px-3 py-2">Move</th>
-            <th className="px-3 py-2 text-right">Pts</th>
+            <th scope="col" className="px-3 py-2">Pos</th>
+            <th scope="col" className="px-3 py-2">Team</th>
+            <th scope="col" className="px-3 py-2">Last race</th>
+            <th scope="col" className="px-3 py-2">Move</th>
+            <th scope="col" className="px-3 py-2 text-right">Pts</th>
           </tr>
         </thead>
         <tbody>
@@ -937,7 +937,8 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
   ];
 
   return (
-    <div className="home-shell home-section space-y-6 sm:space-y-8">
+    <div className="home-page min-h-screen">
+      <div className="home-shell home-section space-y-6 sm:space-y-8">
       <section
         className="overflow-hidden rounded-[32px] border p-6 sm:p-8 lg:p-10"
         style={{
@@ -1243,6 +1244,7 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
           </p>
         </article>
       </section>
+      </div>
     </div>
   );
 }

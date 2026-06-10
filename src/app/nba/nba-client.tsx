@@ -462,14 +462,14 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
               <table className="min-w-full border-separate border-spacing-y-2" aria-label="NBA standings">
                 <thead>
                   <tr className="text-left text-xs uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
-                    <th className="px-3 py-2 font-semibold">Seed</th>
-                    <th className="px-3 py-2 font-semibold">Team</th>
-                    <th className="hidden px-3 py-2 font-semibold sm:table-cell">Record</th>
-                    <th className="px-3 py-2 font-semibold">W%</th>
-                    <th className="hidden px-3 py-2 font-semibold md:table-cell">GB</th>
-                    <th className="hidden px-3 py-2 font-semibold lg:table-cell">PF</th>
-                    <th className="hidden px-3 py-2 font-semibold lg:table-cell">PA</th>
-                    <th className="px-3 py-2 font-semibold">Diff</th>
+                    <th scope="col" className="px-3 py-2 font-semibold">Seed</th>
+                    <th scope="col" className="px-3 py-2 font-semibold">Team</th>
+                    <th scope="col" className="hidden px-3 py-2 font-semibold sm:table-cell">Record</th>
+                    <th scope="col" className="px-3 py-2 font-semibold">W%</th>
+                    <th scope="col" className="hidden px-3 py-2 font-semibold md:table-cell">GB</th>
+                    <th scope="col" className="hidden px-3 py-2 font-semibold lg:table-cell">PF</th>
+                    <th scope="col" className="hidden px-3 py-2 font-semibold lg:table-cell">PA</th>
+                    <th scope="col" className="px-3 py-2 font-semibold">Diff</th>
                   </tr>
                 </thead>
                 <tbody>

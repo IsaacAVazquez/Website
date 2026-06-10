@@ -566,14 +566,14 @@ function AssetsTable({
       <table className="w-full min-w-[760px] border-separate border-spacing-y-2">
         <thead>
           <tr className="text-left text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
-            <th className="px-3 py-2">Asset</th>
-            <th className="px-3 py-2">Type</th>
-            <th className="px-3 py-2">Price</th>
-            <th className="px-3 py-2">Projection</th>
-            <th className="px-3 py-2">Value</th>
-            <th className="px-3 py-2">Form</th>
-            <th className="px-3 py-2">Risk</th>
-            <th className="px-3 py-2 text-right">Team</th>
+            <th scope="col" className="px-3 py-2">Asset</th>
+            <th scope="col" className="px-3 py-2">Type</th>
+            <th scope="col" className="px-3 py-2">Price</th>
+            <th scope="col" className="px-3 py-2">Projection</th>
+            <th scope="col" className="px-3 py-2">Value</th>
+            <th scope="col" className="px-3 py-2">Form</th>
+            <th scope="col" className="px-3 py-2">Risk</th>
+            <th scope="col" className="px-3 py-2 text-right">Team</th>
           </tr>
         </thead>
         <tbody>
