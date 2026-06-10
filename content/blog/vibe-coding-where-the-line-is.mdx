@@ -1,0 +1,40 @@
+---
+title: "Vibe Coding Works Until It Doesn't, and I Can Tell You Where the Line Is"
+excerpt: "I vibe code parts of this site and I am glad I do. But after a year of watching AI-generated code succeed and fail in different settings, the boundary between where vibe coding is the right call and where it quietly builds a liability is clearer than the discourse suggests."
+publishedAt: "2026-03-20"
+category: "Software Development"
+tags: ["Vibe Coding", "AI Coding", "Software Engineering", "Code Quality", "AI Coding Tools", "Technical Debt", "Engineering Judgment"]
+featured: false
+author: "Isaac Vazquez"
+cluster: "Systems & Quality"
+seo:
+  title: "Vibe Coding vs Software Engineering: Where the Line Actually Is"
+  description: "When is vibe coding the right approach and when does it create real risk? A practitioner's view on the boundary between AI-assisted prototyping and production engineering, drawn from a year of building both ways."
+  keywords: ["vibe coding", "AI coding tools", "AI generated code", "software engineering", "technical debt", "code review AI", "AI pair programming", "production code quality"]
+---
+
+# Vibe Coding Works Until It Doesn't, and I Can Tell You Where the Line Is
+
+I want to start with a confession that makes this article more credible, not less. Large parts of this website were vibe coded. I described what I wanted, an AI wrote most of the code, I looked at the result rather than the diff, and I shipped it. The Formula 1 dashboard, the transit board, several of the data pipelines behind the sports pages. If I had built all of that the traditional way, most of it would not exist, because the cost in evenings and weekends would have exceeded what a portfolio side project is worth.
+
+So I am not here to tell you vibe coding is irresponsible. I am here to tell you where it stops working, because after a year of building this way on my own projects while spending my career around production systems and QA discipline, I think the line is much more specific than either the boosters or the skeptics make it sound.
+
+## The variable that actually matters is the cost of being wrong
+
+The discourse keeps trying to draw the line by project type. Prototypes yes, production no. Side projects yes, work no. I do not think that holds up. The variable that actually matters is the cost of an undetected mistake, and that cost varies wildly even within a single project.
+
+When my F1 dashboard renders a standings table slightly wrong, the cost is that I notice it and fix it. Nobody is harmed, nothing is lost, and the feedback loop is me looking at a page. That is the perfect environment for vibe coding, and verifying the output by inspection is genuinely sufficient. The code can be mediocre under the hood and it does not matter, because the blast radius of a defect is one person's mild annoyance.
+
+Now move the same approach to code that handles money, authentication, user data, or anything with a write path to a system other people depend on. The cost of an undetected mistake is no longer mild annoyance. It is a security incident, a corrupted dataset, a compliance problem. And here is the thing the boosters skip past. Vibe coding's entire premise is that you do not deeply review the code. The moment a defect can be expensive and invisible at the same time, the premise collapses. You cannot inspect your way to confidence about a subtle authorization bug by clicking around the UI, because the UI looks identical whether the bug exists or not.
+
+That is my actual line. Not prototype versus production. Visible failures versus invisible ones. Vibe coding is appropriate exactly where failures announce themselves and cheap where they do not need to be caught immediately. It is inappropriate wherever a failure can be silent and costly, no matter how unimportant the project otherwise seems.
+
+## What changes when you cross the line
+
+What I found is that crossing the line does not mean abandoning AI assistance. I use AI heavily on the careful side of the line too. What changes is who carries the understanding. On the vibe side, the AI understands the code and I understand the behavior. On the engineering side, I have to understand the code, and the AI becomes a very fast collaborator whose output I read the way I would read a pull request from a new teammate. Capable, fast, and not yet trusted.
+
+This sounds like a small shift and it is actually the whole difference. Reading AI-generated code carefully is slower than not reading it, obviously, but it is still dramatically faster than writing everything yourself, and it preserves the thing that matters in systems with real stakes, which is that a human can reason about what the system does when something goes wrong at 2 a.m. The teams I have seen get into trouble are not the ones using AI to write code. They are the ones who let the understanding evaporate, where nobody on the team can explain why a module works the way it does because nobody ever read it. That is not a tooling problem. That is an ownership problem wearing a tooling costume.
+
+There is a QA instinct that transfers directly here. In testing, you allocate scrutiny by risk, not uniformly. Nobody manually retests the marketing page with the rigor they apply to the payment flow. Vibe coding deserves the same risk-tiered treatment. The question to ask before any piece of work is not whether AI should write the code. It is what happens if this code is wrong in a way I do not notice, and how long would it take me to find out. If the answers are nothing much and immediately, vibe away. If the answers are something serious and possibly never, slow down and read.
+
+I would also argue the line moves over time, in one direction. Models keep getting better at exactly the failure modes that used to require human review, and the tooling around generated code, the tests, the static analysis, the agent-driven verification, keeps tightening the loop. Things I would not have vibe coded a year ago, I vibe code now. But the structure of the argument does not change as the line moves. There will always be a region where failures are silent and expensive, and in that region, somebody still has to actually understand the code. For the foreseeable future, that somebody is you.

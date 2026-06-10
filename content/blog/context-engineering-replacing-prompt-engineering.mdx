@@ -1,0 +1,46 @@
+---
+title: "Context Engineering Is What Prompt Engineering Wanted to Be"
+excerpt: "The skill that actually separates good AI products from bad ones in 2026 is not clever prompting. It is deciding what the model sees, in what order, and what it never sees at all. Here is how I think about context engineering after a year of building with agents."
+publishedAt: "2026-03-12"
+category: "Agentic AI"
+tags: ["AI", "Context Engineering", "Prompt Engineering", "Agentic AI", "LLM", "AI Products", "Context Windows", "RAG"]
+featured: false
+author: "Isaac Vazquez"
+cluster: "Agentic AI"
+seo:
+  title: "Context Engineering vs Prompt Engineering: What Actually Matters in 2026"
+  description: "Prompt engineering has given way to context engineering as the core skill for building AI products. What context engineering actually involves, why it matters more than prompt wording, and how to apply it to agent systems."
+  keywords: ["context engineering", "prompt engineering", "context window management", "AI agents", "LLM context", "agentic AI", "AI product development", "context rot"]
+---
+
+# Context Engineering Is What Prompt Engineering Wanted to Be
+
+Two years ago, prompt engineering was being sold as a career. There were courses, certifications, job listings with the phrase in the title, and a small cottage industry of people sharing magic incantations that supposedly made models behave. I was skeptical of most of it at the time, and I think that skepticism has aged well. The wording of an individual prompt matters far less than people claimed, and it matters less every time models get better at understanding intent.
+
+But something real was hiding inside that hype, and it has a better name now. Context engineering is the discipline of deciding what information a model has access to at the moment it produces an answer. Not how you phrase the request. What the model can actually see. After a year of building agent workflows for my own projects and watching teams ship them at work, I would argue this is the single highest-leverage skill in AI product development right now, and it is almost entirely unrelated to the prompt-wording tricks that used to dominate the conversation.
+
+## Why the framing shifted
+
+The shift happened because the systems changed. When the interface was a single question and a single answer, the prompt was the whole input, so obsessing over its wording made a kind of sense. Agent systems broke that model. An agent running a twenty-step task is accumulating context the entire way. Tool results, file contents, earlier reasoning, error messages, retrieved documents. By step fifteen, the original instruction is a small fraction of what the model is looking at, and the quality of the output depends on the quality of everything else in the window.
+
+What I found building my own agent workflows is that almost every failure I initially blamed on the model was actually a context failure. The agent that confidently used a stale API signature had a six-month-old document in its retrieval set. The agent that lost track of the task halfway through had a context window full of verbose tool output burying the instruction. The agent that contradicted itself was carrying two conflicting versions of the same fact from different sources, with no signal about which one to trust. None of these get fixed by rewording the prompt. All of them get fixed by changing what the model sees.
+
+There is a name floating around for the degradation that happens when context windows fill up with low-quality material, and I think context rot is the right one. Models do not weigh every token in the window equally, and they do not gracefully ignore irrelevant material. Irrelevant context is not neutral. It actively competes with the relevant context for the model's attention, and past a certain point, more information makes answers worse. The teams that internalize this build very different systems from the teams that assume a bigger window means you can stop curating.
+
+## What the work actually looks like
+
+So what does context engineering involve in practice? In my experience it comes down to a handful of decisions that most teams make implicitly and badly, and that good teams make explicitly.
+
+The first is selection. Of everything you could put in front of the model, what earns a place? The instinct is to include everything that might be relevant, because leaving something out feels like the bigger risk. I think that instinct is wrong most of the time. A retrieval system that returns the three most relevant documents will usually beat one that returns fifteen, even though the fifteen contain more total information, because the model's effective attention is a scarce resource and you are spending it either way.
+
+The second is compression. Long-running agents have to summarize their own history or they drown in it. The interesting design question is what survives the summary. A good compression step preserves decisions, constraints, and open questions while discarding the play-by-play. A bad one preserves the play-by-play and loses the constraint that actually mattered, which is how you get an agent that re-litigates a decision it already made an hour ago.
+
+The third is freshness and authority. When two pieces of context conflict, which one wins? Most systems have no answer to this, so the model improvises, and it improvises inconsistently. The fix is structural. Date your documents, rank your sources, and make the hierarchy explicit in how context gets assembled. This is boring data plumbing, and it moves output quality more than any prompt revision I have ever made.
+
+What is interesting here is how little of this resembles the prompt engineering era. Nobody is debating whether to say please. The work looks like information architecture, retrieval tuning, and pipeline design. It looks like engineering, because it is.
+
+## Where I would push back on the hype
+
+Context engineering is now getting its own hype cycle, and the pattern from the prompt era is repeating, so it is worth being clear about limits. Better context does not fix a model that lacks the underlying capability for a task. It does not substitute for evals, and teams that tune context without a measurement loop are just generating vibes with extra steps. And there is a real ceiling on how much curation effort makes sense for low-stakes use cases. A casual chat interface does not need the context discipline of an agent that touches production systems.
+
+But for anything agentic, anything long-running, anything where the model acts rather than just answers, I would put context design at the center of the build. The prompt is one input among many, and usually not the one that decides whether the thing works. The window is the product. What you let into it is the job.

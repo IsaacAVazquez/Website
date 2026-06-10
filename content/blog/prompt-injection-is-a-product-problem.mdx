@@ -1,0 +1,34 @@
+---
+title: "Prompt Injection Is a Product Problem, Not Just a Security Problem"
+excerpt: "Every team shipping agents treats prompt injection as something the security review will catch. I think that framing guarantees it ships. The realistic defenses are product decisions about what an agent is allowed to do, and those decisions belong to the people designing the product."
+publishedAt: "2026-05-06"
+category: "Agentic AI"
+tags: ["AI Security", "Prompt Injection", "AI Agents", "Agentic AI", "Product Management", "AI Risk", "LLM Security"]
+featured: false
+author: "Isaac Vazquez"
+cluster: "Agentic AI"
+seo:
+  title: "Prompt Injection in AI Agents: Why It's a Product Design Problem"
+  description: "Prompt injection cannot be fully patched, which makes it a product design problem rather than a pure security problem. How agent permissions, blast radius, and human-in-the-loop decisions determine real-world exposure."
+  keywords: ["prompt injection", "AI agent security", "agentic AI risk", "LLM security", "AI product design", "agent permissions", "indirect prompt injection", "AI safety product"]
+---
+
+# Prompt Injection Is a Product Problem, Not Just a Security Problem
+
+There is a category error happening in how teams ship AI agents, and I keep watching it play out the same way. The product team designs an agent with broad capabilities, the security team gets it late in the cycle, somebody asks about prompt injection, and the answer that comes back is some combination of we have guardrails, the model provider handles that, and we will monitor it. Everyone involved is treating prompt injection like a vulnerability class that gets patched, the way SQL injection eventually was. Find the sanitization layer, apply it, move on.
+
+I would argue that mental model is wrong in a way that matters, and the teams that understand why are making structurally different products. SQL injection was solvable because there is a hard boundary between code and data, and parameterized queries enforce it. Language models do not have that boundary. Instructions and content arrive in the same channel, as the same kind of tokens, and the model's entire job is to be influenced by what it reads. An agent that reads an email, a web page, a support ticket, or a document is consuming text that some untrusted party authored, and there is no parameterized-query equivalent that makes the untrusted part inert. Model providers keep improving resistance, and the improvements are real, but resistance is not immunity, and every serious treatment of the problem I have read lands in the same place. You cannot reduce the probability of a successful injection to zero.
+
+Once you accept that, the interesting question changes shape. If some injections will succeed, the variable you actually control is what a successful injection can do. And that variable is not set by the security team. It is set by product decisions about what the agent can access and what actions it can take without a human in the loop. Which is why I think prompt injection is a product problem wearing a security costume.
+
+## Blast radius is a design decision
+
+Walk through what actually determines the damage when an injection lands. An agent that can read your email and also send email can be turned into an exfiltration tool by a single crafted message. An agent that can read your email but only draft replies for your approval cannot, no matter how completely the injection succeeds, because the harmful action routes through a human. The difference between those two products is not a guardrail or a filter. It is a capability decision somebody made in a product spec, probably without thinking of it as a security decision at all.
+
+This is the pattern I would push every team to internalize. The lethal combination, and the security researchers who coined that framing have it exactly right, is an agent that simultaneously reads untrusted content, accesses private data, and can communicate externally or take irreversible actions. Remove any leg of that triangle and the worst outcomes mostly collapse. Keep all three and no amount of guardrail prompting saves you, because you have built a confused deputy and handed it the keys.
+
+What I found designing my own agent workflows is that the triangle framing converts an intractable security question into a tractable product one. I stopped asking whether an agent could be injected, because the answer is always eventually yes. I started asking which legs of the triangle each workflow actually needs. The research agent that reads the open web gets no private data access. The agent that touches my data gets no autonomous outbound channel. Drafts, not sends. Proposals, not executions. Read-only by default, with writes gated behind approval for anything I would mind losing. None of this is sophisticated security engineering. All of it is product design, and every choice traded some convenience for a smaller blast radius.
+
+The objection is obvious. Human-in-the-loop friction is exactly what agents were supposed to eliminate, and if every action needs approval, what did we build? I think this objection mistakes a spectrum for a binary. The design skill is matching autonomy to consequence. Let the agent act freely where actions are reversible and visible, batch its irreversible actions into a reviewable queue, and reserve genuine human gates for the narrow set of operations that can move money, leak data, or speak to the outside world in your name. Most workflows, honestly examined, need far fewer ungated dangerous actions than their first design assumes. The agent that does ninety percent of the work and asks permission for the dangerous ten percent is still transformative. It is also still a product people can trust, which is the asset teams underprice until an incident spends it.
+
+So where does that leave the division of labor? Security teams should absolutely keep doing what they do, red-teaming the agents, monitoring for anomalous tool use, tracking the research. But if you are a PM shipping an agent, the highest-leverage security work available to anyone in the building is sitting in your spec. Which sources does it read, which systems can it touch, which actions are autonomous, what is the blast radius when, not if, something gets through. Those questions cannot be retrofitted by a security review in week eleven, because by then the answers are load-bearing features. Ask them in week one, while they are still cheap. The teams treating injection as someone else's patch to wait for are going to keep shipping the lethal triangle and calling it a productivity feature. I would rather ship the agent whose worst day is survivable.
