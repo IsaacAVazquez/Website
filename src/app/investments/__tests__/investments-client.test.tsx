@@ -152,4 +152,27 @@ describe("InvestmentsClient", () => {
     );
     expect(container.querySelector('[data-testid="research-props"]')?.textContent).toBe(":overview");
   });
+
+  it("keeps a clean /investments visit clean without rewriting the URL", async () => {
+    currentSearchParams = new URLSearchParams();
+
+    await act(async () => {
+      root.render(<InvestmentsClient initialState={DEFAULT_INVESTMENTS_STATE} />);
+    });
+    await flushPromises();
+
+    expect(mockReplace).not.toHaveBeenCalled();
+    expect(container.querySelector('[data-testid="research-props"]')?.textContent).toBe(":overview");
+  });
+
+  it("settles without replacing once the URL already matches the canonical href", async () => {
+    currentSearchParams = new URLSearchParams("section=overview");
+
+    await act(async () => {
+      root.render(<InvestmentsClient initialState={DEFAULT_INVESTMENTS_STATE} />);
+    });
+    await flushPromises();
+
+    expect(mockReplace).not.toHaveBeenCalled();
+  });
 });
