@@ -4,7 +4,8 @@ import { useMemo, useState, type CSSProperties } from "react";
 import { Player, TeamRoster } from "@/types";
 import type { FantasySnapshot } from "@/lib/fantasy";
 import { useDebounce } from "@/hooks/useDebounce";
-import { FANTASY_CHIP_CLASS, formatRange, formatRankValue, getPositionTone } from "@/lib/fantasyUtils";
+import { FANTASY_AVG_RANK_TOOLTIP, FANTASY_CHIP_CLASS, formatRange, formatRankValue, getPositionTone } from "@/lib/fantasyUtils";
+import { MetricTooltip } from "@/components/investments/MetricTooltip";
 import { DraftTierColumns } from "./DraftTierColumns";
 
 interface DraftBoardProps {
@@ -312,7 +313,13 @@ export function DraftBoard({
                       </div>
                       <p className="mt-1 text-sm" style={{ color: "var(--home-ink-muted)" }}>
                         {player.team}
-                        {Number.isFinite(player.rankAverage) ? ` • Avg ${Number(player.rankAverage).toFixed(2)}` : ""}
+                        {Number.isFinite(player.rankAverage) ? (
+                          <span className="inline-flex items-center">
+                            {" • Avg "}
+                            {Number(player.rankAverage).toFixed(2)}
+                            <MetricTooltip term="Average rank" definition={FANTASY_AVG_RANK_TOOLTIP} />
+                          </span>
+                        ) : null}
                         {player.positionRank ? ` • ${player.position}${player.positionRank}` : ""}
                       </p>
                     </div>

@@ -3,6 +3,16 @@ import type { CSSProperties } from "react";
 import type { FantasySnapshotSliceMetadata } from "@/lib/fantasy";
 import type { Player } from "@/types";
 
+/**
+ * Plain-language explanation of the "Avg" value shown next to each player.
+ * Shared by the rankings board and the draft tracker so both surfaces tell the
+ * same story. The number is FantasyPros' `rank_ave` — the mean of every
+ * expert's individual ranking, distinct from the consensus rank in the
+ * headline.
+ */
+export const FANTASY_AVG_RANK_TOOLTIP =
+  "The average of every expert's rank for this player. FantasyPros polls dozens of analysts, and this is the mean of their individual rankings. Lower is better, so 1.00 would mean every expert ranked the player first.";
+
 export function formatUpdatedAt(timestamp: string | null | undefined): string {
   if (!timestamp) {
     return "Unavailable";
