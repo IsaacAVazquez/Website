@@ -11,98 +11,21 @@ import {
   IconCirclePercentage,
 } from "@tabler/icons-react";
 import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
-
-// ─── Interchange rate data (US, representative 2024 published values) ─────────
-// Source: Visa/Mastercard published interchange tables; Amex OptBlue program
-const INTERCHANGE = {
-  visa_mc_credit: { rate: 0.0165, fixed: 0.10 }, // ~1.65% + $0.10 blended consumer credit
-  visa_mc_debit:  { rate: 0.0025, fixed: 0.22 }, // Reg E cap (large-bank debit): 0.05% + $0.22
-  amex:           { rate: 0.023,  fixed: 0.00 }, // ~2.30% Amex OptBlue blended average
-};
-
-// ─── Processor pricing (current public rates, 2024/2025) ─────────────────────
-interface FlatProcessor {
-  id: string;
-  name: string;
-  model: "Flat Rate";
-  pctRate: number;
-  fixedFee: number;
-  note: string;
-}
-interface ICPlusProcessor {
-  id: string;
-  name: string;
-  model: "Interchange+";
-  markupPct: number;
-  markupFixed: number;
-  note: string;
-}
-type Processor = FlatProcessor | ICPlusProcessor;
-
-const PROCESSORS: Processor[] = [
-  { id: "stripe",      name: "Stripe",       model: "Flat Rate",    pctRate: 0.029,  fixedFee: 0.30,  note: "Standard online card rate" },
-  { id: "square",      name: "Square",       model: "Flat Rate",    pctRate: 0.026,  fixedFee: 0.10,  note: "Card-present; online is 2.9%+$0.30" },
-  { id: "shopify",     name: "Shopify",      model: "Flat Rate",    pctRate: 0.029,  fixedFee: 0.30,  note: "Shopify Payments basic plan" },
-  { id: "paypal",      name: "PayPal",       model: "Flat Rate",    pctRate: 0.0349, fixedFee: 0.49,  note: "Standard checkout rate" },
-  { id: "stripe_ic",   name: "Stripe IC+",   model: "Interchange+", markupPct: 0.0025, markupFixed: 0.10, note: "Custom pricing; typically $250k+/yr volume" },
-  { id: "adyen",       name: "Adyen",        model: "Interchange+", markupPct: 0.003,  markupFixed: 0.13, note: "Processing markup + blended scheme fees" },
-  { id: "checkout",    name: "Checkout.com", model: "Interchange+", markupPct: 0.0025, markupFixed: 0.10, note: "Enterprise tier; volume minimums apply" },
-];
+import {
+  buildCardMix,
+  calcProcessorResults,
+  calcStripeBreakevenTicket,
+  DEFAULT_INTERCHANGE_AMEX_OF_CREDIT,
+  DEFAULT_INTERCHANGE_CREDIT_PCT,
+  DEFAULT_INTERCHANGE_TICKET,
+  DEFAULT_INTERCHANGE_VOLUME,
+} from "@/lib/interchangeIq";
 
 // ─── Defaults + types ────────────────────────────────────────────────────────
-const DEFAULT_VOLUME = 50_000;
-const DEFAULT_TICKET = 85;
-const DEFAULT_CREDIT_PCT = 65;
-const DEFAULT_AMEX_OF_CREDIT = 18;
-
-interface CardMix {
-  creditFraction: number;
-  debitFraction:  number;
-  amexFraction:   number;
-}
-
-interface ProcessorResult {
-  id: string;
-  name: string;
-  model: "Flat Rate" | "Interchange+";
-  monthlyFee: number;
-  effectiveRate: number;
-  txCount: number;
-  perTxAvg: number;
-  note: string;
-}
-
-// ─── Calculation ──────────────────────────────────────────────────────────────
-function calcInterchange(volume: number, txCount: number, mix: CardMix): number {
-  return (
-    mix.creditFraction * (INTERCHANGE.visa_mc_credit.rate * volume + INTERCHANGE.visa_mc_credit.fixed * txCount) +
-    mix.debitFraction  * (INTERCHANGE.visa_mc_debit.rate  * volume + INTERCHANGE.visa_mc_debit.fixed  * txCount) +
-    mix.amexFraction   * (INTERCHANGE.amex.rate           * volume + INTERCHANGE.amex.fixed           * txCount)
-  );
-}
-
-function calcResults(volume: number, avgTicket: number, mix: CardMix): ProcessorResult[] {
-  const txCount = volume / avgTicket;
-  const interchange = calcInterchange(volume, txCount, mix);
-
-  return PROCESSORS.map((p): ProcessorResult => {
-    const fee =
-      p.model === "Flat Rate"
-        ? p.pctRate * volume + p.fixedFee * txCount
-        : interchange + p.markupPct * volume + p.markupFixed * txCount;
-
-    return {
-      id: p.id,
-      name: p.name,
-      model: p.model,
-      monthlyFee: fee,
-      effectiveRate: volume > 0 ? fee / volume : 0,
-      txCount,
-      perTxAvg: txCount > 0 ? fee / txCount : 0,
-      note: p.note,
-    };
-  }).sort((a, b) => a.monthlyFee - b.monthlyFee);
-}
+const DEFAULT_VOLUME = DEFAULT_INTERCHANGE_VOLUME;
+const DEFAULT_TICKET = DEFAULT_INTERCHANGE_TICKET;
+const DEFAULT_CREDIT_PCT = DEFAULT_INTERCHANGE_CREDIT_PCT;
+const DEFAULT_AMEX_OF_CREDIT = DEFAULT_INTERCHANGE_AMEX_OF_CREDIT;
 
 // ─── Formatting ───────────────────────────────────────────────────────────────
 const fmtFull = (n: number) =>
@@ -214,17 +137,12 @@ export function InterchangeIQClient() {
   const [showInfo,      setShowInfo]      = useState(false);
   const [activeView,    setActiveView]    = useState<ViewKey>("all-processors");
 
-  const cardMix = useMemo<CardMix>(() => {
-    const creditFrac = creditPct / 100;
-    const amexFrac   = creditFrac * (amexOfCredit / 100);
-    return {
-      creditFraction: creditFrac - amexFrac,
-      debitFraction:  1 - creditFrac,
-      amexFraction:   amexFrac,
-    };
-  }, [creditPct, amexOfCredit]);
+  const cardMix = useMemo(
+    () => buildCardMix(creditPct, amexOfCredit),
+    [creditPct, amexOfCredit]
+  );
 
-  const results  = useMemo(() => calcResults(monthlyVolume, avgTicket, cardMix), [monthlyVolume, avgTicket, cardMix]);
+  const results  = useMemo(() => calcProcessorResults(monthlyVolume, avgTicket, cardMix), [monthlyVolume, avgTicket, cardMix]);
   const cheapest = results[0];
   const worst    = results[results.length - 1];
   const bestFlat = results.find((r) => r.model === "Flat Rate")!;
@@ -232,17 +150,7 @@ export function InterchangeIQClient() {
   const savings  = bestFlat.monthlyFee - bestIC.monthlyFee;
   const savingsVsWorst = worst.monthlyFee - cheapest.monthlyFee;
 
-  // Breakeven: avg ticket above which Stripe IC+ beats Stripe flat for this card mix
-  const interchangeEffRate =
-    cardMix.creditFraction * INTERCHANGE.visa_mc_credit.rate +
-    cardMix.debitFraction  * INTERCHANGE.visa_mc_debit.rate  +
-    cardMix.amexFraction   * INTERCHANGE.amex.rate;
-
-  const stripeFlat = PROCESSORS.find((p) => p.id === "stripe") as FlatProcessor;
-  const stripeIC   = PROCESSORS.find((p) => p.id === "stripe_ic") as ICPlusProcessor;
-  const rateDiff   = stripeFlat.pctRate - (interchangeEffRate + stripeIC.markupPct);
-  const fixedDiff  = stripeFlat.fixedFee - stripeIC.markupFixed;
-  const breakevenTicket = rateDiff > 0 ? fixedDiff / rateDiff : null;
+  const breakevenTicket = calcStripeBreakevenTicket(cardMix);
 
   const cardMixLabel =
     cardMix.creditFraction > cardMix.debitFraction && cardMix.creditFraction > cardMix.amexFraction

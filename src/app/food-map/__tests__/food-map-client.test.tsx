@@ -22,6 +22,12 @@ jest.mock("framer-motion", () => ({
   useReducedMotion: () => true,
 }));
 
+// The Leaflet map loads from a CDN at runtime; mock it so tests stay
+// deterministic and don't touch the network.
+jest.mock("../food-map-leaflet", () => ({
+  FoodMapLeaflet: () => <div data-testid="food-map-leaflet" />,
+}));
+
 describe("FoodMapClient", () => {
   beforeEach(() => {
     currentSearchParams = new URLSearchParams();
@@ -29,32 +35,41 @@ describe("FoodMapClient", () => {
     mockPush.mockReset();
   });
 
-  it("renders the default surface with all 12 spots and the empty pick panel", () => {
+  it("renders the default Austin surface with the curator legend", () => {
     render(<FoodMapClient initialState={DEFAULT_FOOD_MAP_STATE} />);
 
     expect(
-      screen.getByRole("heading", {
-        level: 1,
-        name: /^food map$/i,
-      })
+      screen.getByRole("heading", { level: 1, name: /^food map$/i })
     ).toBeVisible();
-    expect(screen.getByText(/Showing 12 of 12 spots\./i)).toBeVisible();
+    expect(screen.getByText(/Showing 12 of 12 in Austin\./i)).toBeVisible();
     expect(
-      screen.getByText(/Tap a pin or a card to see why it earns the spot\./i)
+      screen.getByText(/Pins are colored by who recommends them\./i)
     ).toBeVisible();
+    // "Anthony Bourdain" appears both as a filter chip and in the legend.
+    expect(screen.getAllByText(/Anthony Bourdain/i).length).toBeGreaterThan(0);
   });
 
-  it("toggles a cuisine chip into the URL", () => {
+  it("switches the city into the URL", () => {
     render(<FoodMapClient initialState={DEFAULT_FOOD_MAP_STATE} />);
 
-    fireEvent.click(screen.getByRole("button", { name: /^barbecue$/i }));
+    fireEvent.click(screen.getByRole("radio", { name: /tokyo/i }));
 
-    expect(mockReplace).toHaveBeenCalledWith("/food-map?cuisine=barbecue", {
+    expect(mockReplace).toHaveBeenCalledWith("/food-map?city=tokyo", {
       scroll: false,
     });
   });
 
-  it("selects a place from the shortlist and clears it again", () => {
+  it("toggles a curator chip into the URL", () => {
+    render(<FoodMapClient initialState={DEFAULT_FOOD_MAP_STATE} />);
+
+    fireEvent.click(screen.getByRole("button", { name: /anthony bourdain/i }));
+
+    expect(mockReplace).toHaveBeenCalledWith("/food-map?curator=bourdain", {
+      scroll: false,
+    });
+  });
+
+  it("selects a place from the URL and clears it again", () => {
     currentSearchParams = new URLSearchParams("pick=franklin-barbecue");
 
     render(<FoodMapClient initialState={DEFAULT_FOOD_MAP_STATE} />);
@@ -69,7 +84,8 @@ describe("FoodMapClient", () => {
   });
 
   it("shows the empty-state copy when filters exclude every spot", () => {
-    currentSearchParams = new URLSearchParams("cuisine=pizza&meal=breakfast");
+    // Austin has no sushi spots.
+    currentSearchParams = new URLSearchParams("cuisine=sushi");
 
     render(<FoodMapClient initialState={DEFAULT_FOOD_MAP_STATE} />);
 

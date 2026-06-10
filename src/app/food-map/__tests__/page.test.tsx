@@ -23,6 +23,10 @@ jest.mock("framer-motion", () => ({
   useReducedMotion: () => true,
 }));
 
+jest.mock("../food-map-leaflet", () => ({
+  FoodMapLeaflet: () => <div data-testid="food-map-leaflet" />,
+}));
+
 describe("FoodMapPage", () => {
   beforeEach(() => {
     currentSearchParams = new URLSearchParams();
@@ -41,7 +45,7 @@ describe("FoodMapPage", () => {
       })
     ).toBeVisible();
     expect(
-      screen.getByText(/Tap a pin or a card to see why it earns the spot\./i)
+      screen.getByText(/Pins are colored by who recommends them\./i)
     ).toBeVisible();
   });
 });
