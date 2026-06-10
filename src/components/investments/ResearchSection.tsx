@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { ResearchAssetHeader } from "./ResearchAssetHeader";
 import { ResearchPosition } from "./ResearchPosition";
@@ -19,12 +19,10 @@ import {
 } from "./animations";
 import { useStockData } from "@/hooks/useStockData";
 import { useTablistKeyboard } from "@/hooks/useTablistKeyboard";
-import { getClientInvestmentsIndex } from "@/lib/investmentsClientData";
 import type {
   CompanyInfo,
   EnhancedHolding,
   InvestmentCapabilities,
-  InvestmentsIndex,
 } from "@/types/investment";
 import type { ResearchTab } from "@/app/investments/investments-state";
 
@@ -78,7 +76,6 @@ export function ResearchSection({
   portfolioSymbols = [],
   position = null,
 }: Props) {
-  const [, setDatasetLastUpdated] = useState<string | null>(null);
   const shouldReduceMotion = useReducedMotion();
   const {
     error: symbolError,
@@ -89,14 +86,6 @@ export function ResearchSection({
   } = useStockData<CompanyInfo>(symbol || null, "info");
 
   const v = shouldReduceMotion ? getReducedMotionVariants() : { fadeInVariants };
-
-  useEffect(() => {
-    getClientInvestmentsIndex()
-      .then((data: InvestmentsIndex) => {
-        if (data.lastUpdated) setDatasetLastUpdated(data.lastUpdated);
-      })
-      .catch(() => {});
-  }, []);
 
   const hasResearchContext = source !== null && !symbolError;
   const visibleTabs = useMemo(

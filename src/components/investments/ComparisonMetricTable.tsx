@@ -8,7 +8,8 @@ export interface MetricRow {
   label: string;
   valueA: string | number | null | undefined;
   valueB: string | number | null | undefined;
-  higherIsBetter: boolean;
+  /** `null` for metrics with no meaningful "winner" (e.g. absolute prices). */
+  higherIsBetter: boolean | null;
 }
 
 interface Props {
@@ -26,8 +27,9 @@ function formatValue(v: string | number | null | undefined): string {
 function compareValues(
   a: string | number | null | undefined,
   b: string | number | null | undefined,
-  higherIsBetter: boolean
+  higherIsBetter: boolean | null
 ): "a" | "b" | "tie" | "none" {
+  if (higherIsBetter === null) return "none";
   const numA = typeof a === "number" ? a : parseFloat(String(a ?? ""));
   const numB = typeof b === "number" ? b : parseFloat(String(b ?? ""));
   if (isNaN(numA) || isNaN(numB)) return "none";

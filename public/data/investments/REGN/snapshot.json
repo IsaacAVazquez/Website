@@ -48,8 +48,8 @@
       "roe": 2.32,
       "roa": 1.79,
       "roic": 2.18,
-      "equityMultiplier": 130,
-      "assetTurnover": 37
+      "equityMultiplier": 1.3,
+      "assetTurnover": 0.37
     },
     "margins": [
       {

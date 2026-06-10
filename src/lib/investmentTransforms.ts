@@ -75,14 +75,17 @@ export function transformSection(section: string, raw: unknown): unknown {
     const roe = latest(d.roe, "roe");
     const roa = latest(d.roa, "roa");
     const roic = latest(d.roic, "roic");
+    // Equity multiplier and asset turnover are plain ratios (e.g. 3.9×, 0.8×),
+    // not fractions of one — unlike the return metrics, they must not be
+    // scaled to percentage units.
     const equityMultiplier = latest(d.equityMultiplier, "equity_multiplier");
     const assetTurnover = latest(d.assetTurnover, "asset_turnover");
     return {
       roe: roe !== undefined ? roe * 100 : undefined,
       roa: roa !== undefined ? roa * 100 : undefined,
       roic: roic !== undefined ? roic * 100 : undefined,
-      equityMultiplier: equityMultiplier !== undefined ? equityMultiplier * 100 : undefined,
-      assetTurnover: assetTurnover !== undefined ? assetTurnover * 100 : undefined,
+      equityMultiplier,
+      assetTurnover,
     };
   }
 

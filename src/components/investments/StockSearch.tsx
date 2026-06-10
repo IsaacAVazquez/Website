@@ -292,8 +292,8 @@ className="m-0 list-none p-0 box-border overflow-hidden rounded-2xl border borde
                   onMouseDown={() => selectEntry(entry)}
                   className={`flex min-h-[52px] w-full flex-col items-start justify-center px-3 py-2 text-left text-sm transition ${
                     indexPosition === activeIndex
-                      ? "bg-[var(--home-paper-alt)] text-[var(--home-ink)]"
-                      : "text-[var(--home-ink)] hover:bg-[var(--home-paper-alt)]"
+                      ? "bg-[color-mix(in_srgb,var(--home-haze)_14%,var(--home-paper-alt))] text-[var(--home-ink)]"
+                      : "text-[var(--home-ink)] hover:bg-[color-mix(in_srgb,var(--home-ink)_6%,var(--home-paper-alt))]"
                   }`}
                 >
                   <span className="font-semibold">{entry.symbol}</span>

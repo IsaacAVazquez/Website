@@ -112,7 +112,7 @@ function buildSignals({
         dcf.upside >= 15
           ? `Model implies ${formatPercent(dcf.upside, true)} upside.`
           : dcf.upside <= -10
-            ? `Model implies ${formatPercent(dcf.upside, true)} downside.`
+            ? `Model implies ${formatPercent(Math.abs(dcf.upside))} downside.`
             : `Model sits near fair value at ${formatPercent(dcf.upside, true)}.`,
     });
   }

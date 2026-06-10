@@ -238,7 +238,7 @@ export function PortfolioStatsGrid({ summary, holdings }: Props) {
         <a href="#holdings-list" className="invest-ghost">
           Per-position detail
         </a>
-        <a href="#hero" className="invest-ghost">
+        <a href="#performance" className="invest-ghost">
           Performance over time
         </a>
         <a href="#add-holding" className="invest-ghost">

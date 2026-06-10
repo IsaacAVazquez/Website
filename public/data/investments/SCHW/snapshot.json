@@ -47,8 +47,8 @@
     "profitability": {
       "roe": 18.279999999999998,
       "roa": 1.83,
-      "equityMultiplier": 999,
-      "assetTurnover": 1
+      "equityMultiplier": 9.99,
+      "assetTurnover": 0.01
     },
     "margins": [
       {
