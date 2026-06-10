@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import {
   type CaseStudyData,
@@ -212,44 +212,6 @@ function ChevronRight({ size = 14 }: { size?: number }) {
   );
 }
 
-function MailIcon({ size = 14 }: { size?: number }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
-      <path d="M3 7l9 6l9 -6" />
-    </svg>
-  );
-}
-
-function DocIcon({ size = 14 }: { size?: number }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M14 3v4a1 1 0 0 0 1 1h4" />
-      <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
-    </svg>
-  );
-}
-
 function toneClass(tone: ToneVariant): string {
   switch (tone) {
     case "is-acid":
@@ -452,59 +414,6 @@ export function PortfolioV3({ projects }: Props) {
   const visible = archive.slice(pageStart, pageStart + PAGE_SIZE);
   const showingFrom = archive.length === 0 ? 0 : pageStart + 1;
   const showingTo = Math.min(page * PAGE_SIZE, archive.length);
-
-  // CTA panel diagonal alignment. The `.cta::before` paints an acid wedge
-  // anchored to the right 42% of the panel via a clip-path that traces from
-  // (66.4%, 0) to (58%, 100%) in panel-relative coords. Each split button
-  // needs its overlay clip to start where the diagonal actually crosses
-  // *that* button. Compute it from real DOM rects on mount + every resize
-  // so the cuts track viewport, breakpoint switches (grid 2-col → 1-col),
-  // and font-size changes.
-  const ctaRef = useRef<HTMLElement | null>(null);
-  useEffect(() => {
-    const panel = ctaRef.current;
-    if (!panel) return;
-
-    // Panel-relative x% where the diagonal sits at panel-y=0 and panel-y=100%.
-    const DIAG_X_TOP = 66.4;
-    const DIAG_X_BOT = 58;
-
-    const clamp = (v: number) => Math.max(0, Math.min(100, v));
-
-    const update = () => {
-      const panelRect = panel.getBoundingClientRect();
-      if (panelRect.width === 0 || panelRect.height === 0) return;
-
-      const diagXAtY = (yFrac: number) =>
-        panelRect.left +
-        (panelRect.width *
-          (DIAG_X_TOP - yFrac * (DIAG_X_TOP - DIAG_X_BOT))) /
-          100;
-
-      const buttons = panel.querySelectorAll<HTMLElement>("[data-cta-btn]");
-      buttons.forEach((btn) => {
-        const r = btn.getBoundingClientRect();
-        const yTop = (r.top - panelRect.top) / panelRect.height;
-        const yBot = (r.bottom - panelRect.top) / panelRect.height;
-        const cutTop = ((diagXAtY(yTop) - r.left) / r.width) * 100;
-        const cutBot = ((diagXAtY(yBot) - r.left) / r.width) * 100;
-        btn.style.setProperty("--cut-top", `${clamp(cutTop).toFixed(2)}%`);
-        btn.style.setProperty("--cut-bot", `${clamp(cutBot).toFixed(2)}%`);
-      });
-    };
-
-    update();
-    const observer = new ResizeObserver(update);
-    observer.observe(panel);
-    // Window resize covers cases the panel itself doesn't (e.g., column
-    // collapse at the 880px breakpoint which can keep panel width the same
-    // but reflow button positions).
-    window.addEventListener("resize", update);
-    return () => {
-      observer.disconnect();
-      window.removeEventListener("resize", update);
-    };
-  }, []);
 
   // Stat strip — total counts driven by real data.
   const totalProjects = projects.length;
@@ -796,56 +705,9 @@ export function PortfolioV3({ projects }: Props) {
           </section>
         </div>
 
-        {/* CTA */}
-        <section className={styles.cta} ref={ctaRef}>
-          <div className={styles.shell}>
-            <div className={styles.ctaGrid}>
-              <div>
-                <span className={styles.ctaKicker}>
-                  Have a project · Currently open
-                </span>
-                <h2>
-                  Looking for product work where <em>judgment</em> has to ship?
-                </h2>
-                <p>
-                  Especially interested in fintech, analytics, AI workflows,
-                  and decision tools where clear thinking has to survive real
-                  delivery — not just a deck.
-                </p>
-              </div>
-              <div className={styles.ctaActions}>
-                {[
-                  { href: "/contact", label: "Send email", icon: <MailIcon size={14} /> },
-                  { href: "/writing", label: "Read writing", icon: <ArrowRight size={14} /> },
-                  { href: "/resume", label: "View résumé", icon: <DocIcon size={14} /> },
-                ].map((action) => (
-                  // Two stacked spans render the same content with INVERSE brand
-                  // colors. The overlay span is clip-pathed to show only on the
-                  // LEFT side of the panel's acid diagonal, the base span fills
-                  // the whole button (so it shows through on the right). The
-                  // diagonal aligns by hand-tuned `--cut-top` / `--cut-bot` per
-                  // button row in portfolio.module.css.
-                  <Link
-                    key={action.href}
-                    className={styles.btnSwap}
-                    href={action.href}
-                    aria-label={action.label}
-                    data-cta-btn
-                  >
-                    <span className={styles.btnSwapBase} aria-hidden="true">
-                      {action.label}
-                      {action.icon}
-                    </span>
-                    <span className={styles.btnSwapOverlay} aria-hidden="true">
-                      {action.label}
-                      {action.icon}
-                    </span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* The closing CTA is the footer's ContactCta (full footer variant) —
+            no inline CTA band here, or the page ends with two stacked,
+            near-identical panels. */}
       </div>
     </div>
   );

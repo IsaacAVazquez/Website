@@ -444,7 +444,7 @@ export function WorldCupClient({
                     <p className="text-lg font-bold text-[var(--home-ink)]">
                       {scorer.goals}
                     </p>
-                    <p className="text-xs uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                    <p className="text-xs uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
                       goals
                     </p>
                   </div>
@@ -467,7 +467,7 @@ export function WorldCupClient({
           <div className="mt-5 space-y-6">
             {venuesByCountry.map(([country, venues]) => (
               <div key={country}>
-                <p className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                <p className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
                   <Flag className="h-3.5 w-3.5" />
                   {country} · {venues.length}
                 </p>
@@ -555,13 +555,13 @@ function GroupTable({
         <h3 className="text-base font-bold text-[var(--home-ink)]">
           {group.name}
         </h3>
-        <span className="text-xs uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+        <span className="text-xs uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
           {group.standings.length} teams
         </span>
       </div>
       <table className="mt-3 w-full border-separate border-spacing-y-1.5 text-sm">
         <thead>
-          <tr className="text-left text-2xs uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+          <tr className="text-left text-2xs uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
             <th scope="col" className="px-2 py-1 font-semibold">#</th>
             <th scope="col" className="px-2 py-1 font-semibold">Team</th>
             <th scope="col" className="px-2 py-1 text-center font-semibold">P</th>
@@ -697,6 +697,12 @@ function KnockoutView({
   );
 }
 
+function worldCupFixtureLabel(fixture: unknown): string {
+  const { stage, group } = fixture as { stage?: string | null; group?: string | null };
+  if (group) return `Group ${group}`;
+  return stage || "World Cup match";
+}
+
 function ScheduleView({
   recentFixtures,
   upcomingFixtures,
@@ -723,6 +729,7 @@ function ScheduleView({
           description="Upcoming matches"
           fixtures={upcomingFixtures}
           onOpenTeam={onOpenTeam}
+          getFallbackLabel={worldCupFixtureLabel}
         />
       )}
       {recentFixtures.length > 0 && (
@@ -731,6 +738,7 @@ function ScheduleView({
           description="Latest results"
           fixtures={recentFixtures}
           onOpenTeam={onOpenTeam}
+          getFallbackLabel={worldCupFixtureLabel}
         />
       )}
     </div>
@@ -744,7 +752,7 @@ function FormatCard({
 }) {
   return (
     <SurfaceCard className="p-5">
-      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
         How 2026 works
       </p>
       <h2 className="mt-2 text-lg font-bold text-[var(--home-ink)]">
@@ -763,7 +771,7 @@ function FormatCard({
           ] as const
         ).map(([label, value]) => (
           <div key={label} className="flex items-baseline justify-between gap-2">
-            <dt className="text-2xs font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+            <dt className="text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
               {label}
             </dt>
             <dd className="text-sm font-bold text-[var(--home-ink)]">{value}</dd>
@@ -771,7 +779,7 @@ function FormatCard({
         ))}
       </dl>
       <div className="mt-4 flex flex-wrap gap-2 border-t border-[var(--home-rule)] pt-4">
-        <span className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+        <span className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
           <CalendarDays className="h-3.5 w-3.5" />
           {formatTournamentWindow(tournament.startDate, tournament.endDate)}
         </span>
@@ -845,7 +853,7 @@ function TeamDetailCard({
             ] as const
           ).map(([label, value]) => (
             <div key={label}>
-              <dt className="text-3xs font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+              <dt className="text-3xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
                 {label}
               </dt>
               <dd className="text-sm font-bold text-[var(--home-ink)]">{value}</dd>
@@ -856,7 +864,7 @@ function TeamDetailCard({
 
       {form.length > 0 && (
         <div className="mt-4 border-t border-[var(--home-rule)] pt-4">
-          <p className="text-2xs font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+          <p className="text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
             Form (last 5)
           </p>
           <div className="mt-2 flex gap-1.5">
@@ -869,7 +877,7 @@ function TeamDetailCard({
 
       {recent.length > 0 && (
         <div className="mt-4 border-t border-[var(--home-rule)] pt-4">
-          <p className="mb-2 text-2xs font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+          <p className="mb-2 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
             Recent results
           </p>
           <div className="space-y-2">
@@ -888,7 +896,7 @@ function TeamDetailCard({
 
       {upcoming.length > 0 && (
         <div className="mt-4 border-t border-[var(--home-rule)] pt-4">
-          <p className="mb-2 text-2xs font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+          <p className="mb-2 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
             Upcoming
           </p>
           <div className="space-y-2">

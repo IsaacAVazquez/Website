@@ -2,9 +2,25 @@
  * @jest-environment node
  */
 import { FANTASY_SNAPSHOT_SCHEMA_VERSION } from "@/lib/fantasy";
-import { buildFantasySnapshot, getNflRegularSeasonWeek } from "@/lib/fantasySnapshotBuilder";
+import {
+  buildFantasySnapshot,
+  getNflRegularSeasonWeek,
+  getSnapshotSeason,
+} from "@/lib/fantasySnapshotBuilder";
 
 const NFL_WEEKS = 18;
+
+describe("getSnapshotSeason", () => {
+  it("keeps the in-progress season through the January playoffs", () => {
+    expect(getSnapshotSeason(new Date(Date.UTC(2027, 0, 6)))).toBe(2026); // championship week
+    expect(getSnapshotSeason(new Date(Date.UTC(2027, 1, 10)))).toBe(2026); // post-Super Bowl
+  });
+
+  it("rolls to the new season in March", () => {
+    expect(getSnapshotSeason(new Date(Date.UTC(2027, 2, 1)))).toBe(2027);
+    expect(getSnapshotSeason(new Date(Date.UTC(2026, 8, 10)))).toBe(2026); // in-season
+  });
+});
 
 describe("getNflRegularSeasonWeek", () => {
   it("reports week 0 during the offseason and before Week 1 kickoff", () => {

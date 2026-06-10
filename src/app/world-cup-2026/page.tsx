@@ -11,7 +11,7 @@ import { normalizeWorldCupState } from "./world-cup-state";
 export const metadata = constructMetadata({
   title: "World Cup Pulse",
   description:
-    "Interactive 2026 FIFA World Cup dashboard with group standings, the expanded 32-team knockout bracket, the full match schedule across the United States, Canada, and Mexico, and host venue context.",
+    "Interactive 2026 FIFA World Cup dashboard with group standings, the expanded 32-team knockout bracket, the match schedule across the United States, Canada, and Mexico, and host venue context.",
   canonicalUrl: "/world-cup-2026",
   image: "/world-cup-2026/opengraph-image",
   dateModified: worldCupSnapshot.tournament.generatedAt.slice(0, 10),
@@ -79,7 +79,7 @@ export default async function WorldCupPage({ searchParams }: WorldCupPageProps) 
         data={{
           name: "World Cup Pulse",
           description:
-            "Interactive 2026 FIFA World Cup dashboard with group standings, the 32-team knockout bracket, the full match schedule, and host venues, backed by a curated ESPN snapshot.",
+            "Interactive 2026 FIFA World Cup dashboard with group standings, the 32-team knockout bracket, the match schedule, and host venues, backed by a curated ESPN snapshot.",
           url: "https://isaacavazquez.com/world-cup-2026",
           applicationCategory: "SportsApplication",
           programmingLanguage: ["TypeScript", "Next.js"],

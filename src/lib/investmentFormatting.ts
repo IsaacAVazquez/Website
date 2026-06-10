@@ -39,9 +39,11 @@ export function formatPercent(n: number): string {
 export function formatBalance(n: number): { whole: string; cents: string } {
   if (!Number.isFinite(n)) return { whole: "$0", cents: ".00" };
   const sign = n < 0 ? "−" : "";
-  const abs = Math.abs(n);
-  const whole = Math.floor(abs);
-  const cents = Math.round((abs - whole) * 100);
+  // Round to total cents first so 12.999 carries into the whole-dollar part
+  // ($13.00) instead of rendering "$12.100".
+  const totalCents = Math.round(Math.abs(n) * 100);
+  const whole = Math.floor(totalCents / 100);
+  const cents = totalCents % 100;
   return {
     whole: `${sign}$${whole.toLocaleString("en-US")}`,
     cents: `.${cents.toString().padStart(2, "0")}`,

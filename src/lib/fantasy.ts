@@ -389,7 +389,7 @@ function normalizeRawSliceMetadata(
       : fallback.available;
   const sourceKind =
     rawSlice.sourceKind &&
-    ["overall_consensus", "derived_overall", "position_consensus", "shared_position_consensus", "derived_flex", "unavailable"].includes(
+    ["overall_consensus", "position_consensus", "shared_position_consensus", "derived_flex", "unavailable"].includes(
       rawSlice.sourceKind
     )
       ? rawSlice.sourceKind

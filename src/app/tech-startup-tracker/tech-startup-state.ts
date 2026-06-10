@@ -85,19 +85,27 @@ export function resolveTechStartupState(
     : DEFAULT_TECH_STARTUP_STATE.kind;
   const segments = kind === "sector" ? snapshot.sectors : snapshot.stages;
   const validSegments = new Set(segments.map((segment) => segment.key));
-  const validStartupIds = new Set(snapshot.startups.map((startup) => startup.id));
+  const segment =
+    state.segment === "all" || validSegments.has(state.segment)
+      ? state.segment
+      : "all";
+  // Validate the selection against the *visible* segment, not all startups —
+  // a deep link like ?segment=sector-fintech&startup=openai would otherwise
+  // keep the param while expanding nothing.
+  const visibleStartupIds = new Set(
+    segment === "all"
+      ? snapshot.startups.map((startup) => startup.id)
+      : segments.find((entry) => entry.key === segment)?.startupIds ?? []
+  );
 
   return {
     kind,
-    segment:
-      state.segment === "all" || validSegments.has(state.segment)
-        ? state.segment
-        : "all",
+    segment,
     sort: VALID_SORTS.has(state.sort)
       ? state.sort
       : DEFAULT_TECH_STARTUP_STATE.sort,
     selectedStartupId:
-      state.selectedStartupId && validStartupIds.has(state.selectedStartupId)
+      state.selectedStartupId && visibleStartupIds.has(state.selectedStartupId)
         ? state.selectedStartupId
         : null,
   };

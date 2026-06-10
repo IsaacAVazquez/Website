@@ -34,6 +34,7 @@ Primary live routes:
 - `/nba`
 - `/nfl`
 - `/golf`
+- `/earthquake-pulse`
 - `/world-cup-2026`
 - `/bay-area-transit`
 - `/writing` and `/writing/[slug]`
@@ -99,6 +100,7 @@ Self-shell routes currently include:
 - `/changelog`
 - `/contact`
 - `/decision-lab`
+- `/earthquake-pulse`
 - `/fantasy-formula-1`
 - `/fantasy-football`
 - `/fantasy-football/draft-tracker`
@@ -164,6 +166,7 @@ Confirm live API routes from `src/app/api/**/route.ts`. Current routes:
 
 - `/api/auth/[...nextauth]`
 - `/api/bay-area-transit/summary` and `/api/bay-area-transit/stations/[stationId]`
+- `/api/earthquake-pulse/summary`
 - `/api/fantasy-data`
 - `/api/golf/summary` and `/api/golf/players/[playerId]`
 - `/api/investments/index`, `/api/investments/quotes`, `/api/investments/data/[symbol]`
