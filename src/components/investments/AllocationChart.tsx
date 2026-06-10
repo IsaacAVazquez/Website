@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import * as d3 from "d3";
+import { select, pie as d3Pie, arc as d3Arc } from "d3";
+import type { PieArcDatum } from "d3";
 import { WarmCard } from "@/components/ui/WarmCard";
 import type { EnhancedHolding } from "@/types/investment";
 
@@ -31,7 +32,7 @@ export function AllocationChart({ holdings }: Props) {
     const radius = size / 2;
     const innerRadius = radius * 0.55;
 
-    d3.select(svgRef.current).selectAll("*").remove();
+    select(svgRef.current).selectAll("*").remove();
 
     const totalForLabel = data.reduce((s, h) => s + h.currentValue, 0);
     const summaryParts = data
@@ -42,8 +43,7 @@ export function AllocationChart({ holdings }: Props) {
       { style: "currency", currency: "USD", maximumFractionDigits: 0 },
     ).format(totalForLabel)}. Top: ${summaryParts.join(", ")}.`;
 
-    const svg = d3
-      .select(svgRef.current)
+    const svg = select(svgRef.current)
       .attr("width", size)
       .attr("height", size)
       .attr("role", "img")
@@ -51,21 +51,20 @@ export function AllocationChart({ holdings }: Props) {
 
     const g = svg.append("g").attr("transform", `translate(${radius},${radius})`);
 
-    const pie = d3
-      .pie<EnhancedHolding>()
+    const pie = d3Pie<EnhancedHolding>()
       .value((d) => d.allocationPercent ?? 0)
       .sort(null);
 
-    const arc = d3.arc<d3.PieArcDatum<EnhancedHolding>>()
+    const arc = d3Arc<PieArcDatum<EnhancedHolding>>()
       .innerRadius(innerRadius)
       .outerRadius(radius - 4);
 
-    const hoverArc = d3.arc<d3.PieArcDatum<EnhancedHolding>>()
+    const hoverArc = d3Arc<PieArcDatum<EnhancedHolding>>()
       .innerRadius(innerRadius)
       .outerRadius(radius - 1);
 
     const arcs = g
-      .selectAll<SVGPathElement, d3.PieArcDatum<EnhancedHolding>>("path")
+      .selectAll<SVGPathElement, PieArcDatum<EnhancedHolding>>("path")
       .data(pie(data))
       .join("path")
       .attr("d", arc)
@@ -78,7 +77,7 @@ export function AllocationChart({ holdings }: Props) {
     // Hover interactions
     arcs
       .on("mouseenter", function (event, d) {
-        d3.select(this).attr("d", hoverArc(d) ?? "");
+        select(this).attr("d", hoverArc(d) ?? "");
         if (!tooltipRef.current) return;
         const tooltip = tooltipRef.current;
         tooltip.style.display = "block";
@@ -93,7 +92,7 @@ export function AllocationChart({ holdings }: Props) {
         tooltipRef.current.style.top = `${event.clientY - rect.top - 32}px`;
       })
       .on("mouseleave", function (event, d) {
-        d3.select(this).attr("d", arc(d) ?? "");
+        select(this).attr("d", arc(d) ?? "");
         if (tooltipRef.current) tooltipRef.current.style.display = "none";
       });
 

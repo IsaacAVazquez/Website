@@ -72,6 +72,22 @@ export interface GitHubTrendingSnapshot {
   totals: GitHubTrendingSnapshotTotals;
 }
 
+/**
+ * Subset of repository fields the dashboard UI actually renders. The full
+ * snapshot keeps build-side bookkeeping (starHistory alone is ~half the
+ * serialized payload) that must not be shipped to the browser in the RSC
+ * payload — the page passes this trimmed view to the client component.
+ */
+export type GitHubTrendingClientRepository = Omit<
+  GitHubTrendingRepository,
+  "nodeId" | "homepageUrl" | "watchers" | "createdAt" | "updatedAt" | "starHistory"
+>;
+
+export interface GitHubTrendingClientSnapshot
+  extends Omit<GitHubTrendingSnapshot, "repositories"> {
+  repositories: GitHubTrendingClientRepository[];
+}
+
 export interface GitHubTrendingRouteState {
   kind: GitHubTrendingSegmentKind;
   segment: string;

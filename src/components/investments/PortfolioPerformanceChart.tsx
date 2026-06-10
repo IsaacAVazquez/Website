@@ -1,6 +1,22 @@
 "use client";
 
-import * as d3 from "d3";
+import {
+  select,
+  scaleTime,
+  scaleLinear,
+  extent,
+  min,
+  max,
+  axisBottom,
+  axisLeft,
+  timeFormat,
+  format,
+  area as d3Area,
+  line,
+  curveMonotoneX,
+  bisector,
+  pointer,
+} from "d3";
 import React, { useRef, useEffect, useState, useCallback } from "react";
 import { WarmCard } from "@/components/ui/WarmCard";
 
@@ -68,10 +84,9 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
     const innerHeight = HEIGHT - MARGIN.top - MARGIN.bottom;
 
     // Clear previous content
-    d3.select(svg).selectAll("*").remove();
+    select(svg).selectAll("*").remove();
 
-    const root = d3
-      .select(svg)
+    const root = select(svg)
       .attr("width", width)
       .attr("height", HEIGHT)
       .append("g")
@@ -85,18 +100,16 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
     }));
 
     // Scales
-    const xScale = d3
-      .scaleTime()
-      .domain(d3.extent(data, (d) => d.date) as [Date, Date])
+    const xScale = scaleTime()
+      .domain(extent(data, (d) => d.date) as [Date, Date])
       .range([0, innerWidth]);
 
     const allValues = data.flatMap((d) => [d.value, d.cost]);
-    const yMin = d3.min(allValues) as number;
-    const yMax = d3.max(allValues) as number;
+    const yMin = min(allValues) as number;
+    const yMax = max(allValues) as number;
     const yPadding = (yMax - yMin) * 0.1 || 1;
 
-    const yScale = d3
-      .scaleLinear()
+    const yScale = scaleLinear()
       .domain([yMin - yPadding, yMax + yPadding])
       .range([innerHeight, 0]);
 
@@ -114,10 +127,9 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
       .append("g")
       .attr("transform", `translate(0,${innerHeight})`)
       .call(
-        d3
-          .axisBottom(xScale)
+        axisBottom(xScale)
           .ticks(Math.min(data.length, 6))
-          .tickFormat((d) => d3.timeFormat("%b %d")(d as Date))
+          .tickFormat((d) => timeFormat("%b %d")(d as Date))
       )
       .call((g) => g.select(".domain").attr("stroke", homeRule))
       .call((g) => g.selectAll(".tick line").attr("stroke", homeRule))
@@ -129,10 +141,9 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
     root
       .append("g")
       .call(
-        d3
-          .axisLeft(yScale)
+        axisLeft(yScale)
           .ticks(5)
-          .tickFormat((d) => `$${d3.format(",.0f")(d as number)}`)
+          .tickFormat((d) => `$${format(",.0f")(d as number)}`)
       )
       .call((g) => g.select(".domain").attr("stroke", homeRule))
       .call((g) => g.selectAll(".tick line").attr("stroke", homeRule))
@@ -141,12 +152,11 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
       );
 
     // Area fill for value line
-    const area = d3
-      .area<(typeof data)[number]>()
+    const area = d3Area<(typeof data)[number]>()
       .x((d) => xScale(d.date))
       .y0(innerHeight)
       .y1((d) => yScale(d.value))
-      .curve(d3.curveMonotoneX);
+      .curve(curveMonotoneX);
 
     root
       .append("path")
@@ -156,11 +166,10 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
       .attr("fill-opacity", 0.12);
 
     // Value line (solid)
-    const valueLine = d3
-      .line<(typeof data)[number]>()
+    const valueLine = line<(typeof data)[number]>()
       .x((d) => xScale(d.date))
       .y((d) => yScale(d.value))
-      .curve(d3.curveMonotoneX);
+      .curve(curveMonotoneX);
 
     root
       .append("path")
@@ -171,11 +180,10 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
       .attr("stroke-width", 2);
 
     // Cost basis line (dashed)
-    const costLine = d3
-      .line<(typeof data)[number]>()
+    const costLine = line<(typeof data)[number]>()
       .x((d) => xScale(d.date))
       .y((d) => yScale(d.cost))
-      .curve(d3.curveMonotoneX);
+      .curve(curveMonotoneX);
 
     root
       .append("path")
@@ -190,7 +198,7 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
     const tooltip = tooltipRef.current;
     if (!tooltip) return;
 
-    const bisect = d3.bisector<(typeof data)[number], Date>((d) => d.date).left;
+    const bisect = bisector<(typeof data)[number], Date>((d) => d.date).left;
 
     const hoverRect = root
       .append("rect")
@@ -219,7 +227,7 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
 
     hoverRect
       .on("mousemove", (event: MouseEvent) => {
-        const [mx] = d3.pointer(event);
+        const [mx] = pointer(event);
         const dateAtMouse = xScale.invert(mx);
         const idx = bisect(data, dateAtMouse, 1);
         const d0 = data[idx - 1];
@@ -244,13 +252,13 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
         tooltip.style.opacity = "1";
         tooltip.innerHTML = `
           <div style="font-size:11px;color:${homeInkMuted};margin-bottom:2px;">
-            ${d3.timeFormat("%b %d, %Y")(d.date)}
+            ${timeFormat("%b %d, %Y")(d.date)}
           </div>
           <div style="font-size:13px;font-weight:600;color:var(--home-ink);">
-            $${d3.format(",.2f")(d.value)}
+            $${format(",.2f")(d.value)}
           </div>
           <div style="font-size:11px;color:${gainColor};margin-top:1px;">
-            ${sign}$${d3.format(",.2f")(gainLoss)} (${sign}${gainLossPct.toFixed(1)}%)
+            ${sign}$${format(",.2f")(gainLoss)} (${sign}${gainLossPct.toFixed(1)}%)
           </div>
         `;
 

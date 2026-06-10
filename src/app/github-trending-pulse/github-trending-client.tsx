@@ -22,11 +22,11 @@ import {
   sortGitHubTrendingRepositories,
 } from "@/lib/githubTrending";
 import type {
-  GitHubTrendingRepository,
+  GitHubTrendingClientRepository,
   GitHubTrendingRouteState,
   GitHubTrendingSegment,
   GitHubTrendingSegmentKind,
-  GitHubTrendingSnapshot,
+  GitHubTrendingClientSnapshot,
   GitHubTrendingSortKey,
 } from "@/types/githubTrending";
 import {
@@ -41,7 +41,7 @@ import {
 
 interface GitHubTrendingClientProps {
   initialState: GitHubTrendingRouteState;
-  snapshot: GitHubTrendingSnapshot;
+  snapshot: GitHubTrendingClientSnapshot;
 }
 
 const DATE_TIME_FORMATTER = new Intl.DateTimeFormat("en-US", {
@@ -70,13 +70,13 @@ function formatShortDate(isoOrDateKey: string): string {
   return DATE_FORMATTER.format(date);
 }
 
-function formatDelta(repo: GitHubTrendingRepository): string {
+function formatDelta(repo: GitHubTrendingClientRepository): string {
   if (repo.weeklyStarsStatus === "baseline") return "Baseline";
   const value = formatGitHubCompactNumber(repo.weeklyStars);
   return repo.weeklyStars > 0 ? `+${value}` : value;
 }
 
-function statusLabel(repo: GitHubTrendingRepository, windowDays: number): string {
+function statusLabel(repo: GitHubTrendingClientRepository, windowDays: number): string {
   if (repo.weeklyStarsStatus === "measured") {
     return `${windowDays}d measured`;
   }
@@ -86,11 +86,11 @@ function statusLabel(repo: GitHubTrendingRepository, windowDays: number): string
   return "New baseline";
 }
 
-function getSegments(snapshot: GitHubTrendingSnapshot, kind: GitHubTrendingSegmentKind) {
+function getSegments(snapshot: GitHubTrendingClientSnapshot, kind: GitHubTrendingSegmentKind) {
   return kind === "language" ? snapshot.languages : snapshot.topics;
 }
 
-function buildSegmentLookup(snapshot: GitHubTrendingSnapshot) {
+function buildSegmentLookup(snapshot: GitHubTrendingClientSnapshot) {
   return new Map(
     [...snapshot.languages, ...snapshot.topics].map((segment) => [
       segment.key,
@@ -100,10 +100,10 @@ function buildSegmentLookup(snapshot: GitHubTrendingSnapshot) {
 }
 
 function getReposForSegment(
-  snapshot: GitHubTrendingSnapshot,
+  snapshot: GitHubTrendingClientSnapshot,
   kind: GitHubTrendingSegmentKind,
   segmentKey: string
-): GitHubTrendingRepository[] {
+): GitHubTrendingClientRepository[] {
   const segments = getSegments(snapshot, kind);
   if (segmentKey === "all") {
     const allowed = new Set(segments.flatMap((segment) => segment.repoIds));
@@ -477,7 +477,7 @@ export function GitHubTrendingClient({
 }
 
 interface RepositoryTableProps {
-  repositories: GitHubTrendingRepository[];
+  repositories: GitHubTrendingClientRepository[];
   selectedRepoId: number | null;
   segmentLookup: Map<string, GitHubTrendingSegment>;
   windowDays: number;
@@ -549,7 +549,7 @@ function RepositoryTable({
 }
 
 interface RepoRowProps {
-  repo: GitHubTrendingRepository;
+  repo: GitHubTrendingClientRepository;
   rank: number;
   isExpanded: boolean;
   matchedSegments: GitHubTrendingSegment[];
@@ -697,7 +697,7 @@ function RepoRow({
 
 interface SegmentSummaryProps {
   segments: GitHubTrendingSegment[];
-  repositories: GitHubTrendingRepository[];
+  repositories: GitHubTrendingClientRepository[];
   selectedSegment: string;
   onSelectSegment: (segment: string) => void;
 }

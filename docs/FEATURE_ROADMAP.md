@@ -23,7 +23,7 @@ Show how total portfolio value has changed over time. Use existing `price.json` 
 holding to reconstruct historical daily values (shares × historical close). Render as a D3
 line chart on the Portfolio tab with 1M / 3M / 6M / 1Y / All range buttons. Annotate
 buy/sell events as dots on the line.
-- **Data available:** `public/data/investments/{symbol}/price.json` (daily OHLCV since 1994)
+- **Data available:** `data/investments-raw/{symbol}/price.json` (daily OHLCV since 1994)
 - **Files:** new `src/components/investments/PortfolioChartPanel.tsx`, edit `investments-client.tsx`
 
 ### P1-B: Sector & Industry Allocation
@@ -39,7 +39,7 @@ concentrated the portfolio is in Tech vs Financials vs Consumer, etc.
 Add a risk metrics row to PortfolioSummary: portfolio beta (weighted avg of holdings),
 largest single-position concentration %, and a simple diversification score. Beta per stock
 already in `beta.json`.
-- **Data available:** `public/data/investments/{symbol}/beta.json` → `beta5y`
+- **Data available:** `data/investments-raw/{symbol}/beta.json` → `beta5y`
 - **Files:** edit `src/components/investments/PortfolioSummary.tsx`
 
 ---

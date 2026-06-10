@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useEffect } from "react";
-import * as d3 from "d3";
+import { select, scaleLinear, extent, line, area, curveMonotoneX } from "d3";
 
 interface SparklineProps {
   data: number[];
@@ -23,35 +23,31 @@ export function Sparkline({
   useEffect(() => {
     if (!svgRef.current || data.length < 2) return;
 
-    const svg = d3.select(svgRef.current);
+    const svg = select(svgRef.current);
     svg.selectAll("*").remove();
 
     const margin = 2;
     const innerWidth = width - margin * 2;
     const innerHeight = height - margin * 2;
 
-    const xScale = d3
-      .scaleLinear()
+    const xScale = scaleLinear()
       .domain([0, data.length - 1])
       .range([margin, margin + innerWidth]);
 
-    const yScale = d3
-      .scaleLinear()
-      .domain(d3.extent(data) as [number, number])
+    const yScale = scaleLinear()
+      .domain(extent(data) as [number, number])
       .range([margin + innerHeight, margin]);
 
-    const lineGenerator = d3
-      .line<number>()
+    const lineGenerator = line<number>()
       .x((_, i) => xScale(i))
       .y((d) => yScale(d))
-      .curve(d3.curveMonotoneX);
+      .curve(curveMonotoneX);
 
-    const areaGenerator = d3
-      .area<number>()
+    const areaGenerator = area<number>()
       .x((_, i) => xScale(i))
       .y0(margin + innerHeight)
       .y1((d) => yScale(d))
-      .curve(d3.curveMonotoneX);
+      .curve(curveMonotoneX);
 
     const color = isUp ? "var(--color-success)" : "var(--color-error)";
 

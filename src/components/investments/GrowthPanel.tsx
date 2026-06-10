@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import * as d3 from "d3";
+import { select, scaleBand, scaleLinear, max, axisBottom, axisLeft } from "d3";
 import { WarmCard } from "@/components/ui/WarmCard";
 import { useStockData } from "@/hooks/useStockData";
 import { ErrorState } from "./ErrorState";
@@ -50,10 +50,9 @@ function GrowthChart({ data }: { data: { label: string; growth: number }[] }) {
     const innerW = width - margin.left - margin.right;
     const innerH = height - margin.top - margin.bottom;
 
-    d3.select(svgRef.current).selectAll("*").remove();
+    select(svgRef.current).selectAll("*").remove();
 
-    const svg = d3
-      .select(svgRef.current)
+    const svg = select(svgRef.current)
       .attr("width", width)
       .attr("height", height)
       .attr("role", "img")
@@ -61,14 +60,13 @@ function GrowthChart({ data }: { data: { label: string; growth: number }[] }) {
 
     const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
 
-    const x = d3
-      .scaleBand()
+    const x = scaleBand()
       .domain(data.map((d) => d.label))
       .range([0, innerW])
       .padding(0.25);
 
-    const maxAbs = d3.max(data, (d) => Math.abs(d.growth)) ?? 50;
-    const y = d3.scaleLinear().domain([-maxAbs * 1.1, maxAbs * 1.1]).nice().range([innerH, 0]);
+    const maxAbs = max(data, (d) => Math.abs(d.growth)) ?? 50;
+    const y = scaleLinear().domain([-maxAbs * 1.1, maxAbs * 1.1]).nice().range([innerH, 0]);
 
     // Zero line
     g.append("line")
@@ -93,7 +91,7 @@ function GrowthChart({ data }: { data: { label: string; growth: number }[] }) {
     // X axis
     g.append("g")
       .attr("transform", `translate(0,${innerH})`)
-      .call(d3.axisBottom(x).tickSize(0))
+      .call(axisBottom(x).tickSize(0))
       .call((ax) => ax.select(".domain").remove())
       .selectAll("text")
       .attr("fill", "var(--home-ink-soft)")
@@ -105,7 +103,7 @@ function GrowthChart({ data }: { data: { label: string; growth: number }[] }) {
     // Y axis
     g.append("g")
       .call(
-        d3.axisLeft(y)
+        axisLeft(y)
           .tickFormat((v) => `${Number(v).toFixed(0)}%`)
           .ticks(5)
           .tickSize(-innerW)

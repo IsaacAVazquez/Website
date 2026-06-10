@@ -257,11 +257,11 @@ npm run update:investments
 Inputs and outputs:
 
 - input symbols: `scripts/investments_symbols.txt`
-- raw fetch output: `public/data/investments/{SYMBOL}/*.json`
+- raw fetch output: `data/investments-raw/{SYMBOL}/*.json` (script-only, never deployed)
 - index file: `public/data/investments/index.json`
 - compacted snapshot output: `public/data/investments/{SYMBOL}/snapshot.json`
 
-The snapshot builder removes legacy per-section JSON files after writing `snapshot.json`.
+Only the index and the compacted snapshots live under `public/` (and ship with deploys); the raw per-section files stay in `data/investments-raw/`. Symbols with no raw sections on disk are stale-served: the builder keeps their committed snapshot instead of failing.
 
 ### Football dashboard data workflow
 
@@ -402,7 +402,7 @@ Checked-in operational workflows:
 Current behavior:
 
 - `test.yml` runs unit tests, build, sharded Chromium Playwright E2E, and lint on pushes to `main` or `develop`, plus pull requests targeting `main` or `develop`; full-matrix Playwright runs only on pushes to `main`
-- `update-investments.yml` runs on manual dispatch and on Mondays and Thursdays at `22:15 UTC`, then commits refreshed files under `public/data/investments` when the curated dataset changes
+- `update-investments.yml` runs on manual dispatch and on Mondays and Thursdays at `22:15 UTC`, then commits refreshed files under `public/data/investments` and `data/investments-raw` when the curated dataset changes
 - `update-premier-league.yml` runs on manual dispatch and daily at `06:15 UTC` during the season (August through May; skipped June and July), then commits `src/data/premierLeagueSnapshot.ts` when it changes
 - `update-la-liga.yml` runs on manual dispatch and daily at `06:30 UTC` during the season (August through May; skipped June and July), then commits `src/data/laLigaSnapshot.ts` when it changes
 - `update-fantasy.yml` runs on manual dispatch and on Wednesdays at `17:00 UTC`, then commits the generated fantasy snapshot artifacts when they change

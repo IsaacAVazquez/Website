@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import * as d3 from "d3";
+import { select, line } from "d3";
 
 export interface RadarDimension {
   dimension: string;
@@ -35,7 +35,7 @@ export function ComparisonRadarChart({ data, symbolA, symbolB }: Props) {
     const n = data.length;
     const angleSlice = (Math.PI * 2) / n;
 
-    const svg = d3.select(svgRef.current);
+    const svg = select(svgRef.current);
     svg.selectAll("*").remove();
 
     const g = svg.append("g").attr("transform", `translate(${cx},${cy})`);
@@ -90,7 +90,7 @@ export function ComparisonRadarChart({ data, symbolA, symbolB }: Props) {
         const r = (score / 100) * radius;
         return [r * Math.cos(angle), r * Math.sin(angle)] as [number, number];
       });
-      return d3.line()(points.concat([points[0]])) ?? "";
+      return line()(points.concat([points[0]])) ?? "";
     }
 
     const scoresA = data.map((d) => d.scoreA);

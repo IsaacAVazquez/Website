@@ -1,7 +1,21 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import * as d3 from "d3";
+import {
+  select,
+  scaleTime,
+  scaleLinear,
+  min,
+  max,
+  axisBottom,
+  axisLeft,
+  timeParse,
+  area as d3Area,
+  line as d3Line,
+  curveMonotoneX,
+  bisector,
+  pointer,
+} from "d3";
 import { WarmCard } from "@/components/ui/WarmCard";
 import { useStockData } from "@/hooks/useStockData";
 import { formatHistoryAsOf, getHistoricalPriceFreshness } from "@/lib/investmentsHistory";
@@ -88,7 +102,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
   useEffect(() => {
     if (!priceRef.current || !volumeRef.current || slicedData.length === 0) return;
 
-    const parseDate = d3.timeParse("%Y-%m-%d");
+    const parseDate = timeParse("%Y-%m-%d");
     const entries = slicedData
       .map((d) => ({ ...d, parsedDate: parseDate(d.date) }))
       .filter((d): d is typeof d & { parsedDate: Date } => d.parsedDate !== null);
@@ -106,7 +120,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
     const pInnerW = pWidth - pMargin.left - pMargin.right;
     const pInnerH = pHeight - pMargin.top - pMargin.bottom;
 
-    const pSvg = d3.select(priceRef.current);
+    const pSvg = select(priceRef.current);
     pSvg.selectAll("*").remove();
     pSvg
       .attr("width", pWidth)
@@ -116,8 +130,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
 
     const pg = pSvg.append("g").attr("transform", `translate(${pMargin.left},${pMargin.top})`);
 
-    const xScale = d3
-      .scaleTime()
+    const xScale = scaleTime()
       .domain([dates[0], dates[dates.length - 1]])
       .range([0, pInnerW]);
 
@@ -128,16 +141,15 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
     if (showMA) {
       for (const e of entries) if (e.ma50 !== null) domainValues.push(e.ma50);
     }
-    const minClose = d3.min(domainValues) ?? 0;
-    const maxClose = d3.max(domainValues) ?? 0;
-    const yScale = d3
-      .scaleLinear()
+    const minClose = min(domainValues) ?? 0;
+    const maxClose = max(domainValues) ?? 0;
+    const yScale = scaleLinear()
       .domain([minClose * 0.97, maxClose * 1.03])
       .range([pInnerH, 0]);
 
     // Gridlines
     pg.append("g")
-      .call(d3.axisLeft(yScale).tickSize(-pInnerW).ticks(5))
+      .call(axisLeft(yScale).tickSize(-pInnerW).ticks(5))
       .call((ax) => ax.select(".domain").remove())
       .call((ax) =>
         ax
@@ -161,12 +173,11 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
       .text("Price (USD)");
 
     // Area fill
-    const area = d3
-      .area<(typeof entries)[0]>()
+    const area = d3Area<(typeof entries)[0]>()
       .x((d) => xScale(d.parsedDate))
       .y0(pInnerH)
       .y1((d) => yScale(d.close))
-      .curve(d3.curveMonotoneX);
+      .curve(curveMonotoneX);
 
     pg.append("path")
       .datum(entries)
@@ -175,11 +186,10 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
       .attr("fill-opacity", "0.12");
 
     // Line
-    const line = d3
-      .line<(typeof entries)[0]>()
+    const line = d3Line<(typeof entries)[0]>()
       .x((d) => xScale(d.parsedDate))
       .y((d) => yScale(d.close))
-      .curve(d3.curveMonotoneX);
+      .curve(curveMonotoneX);
 
     pg.append("path")
       .datum(entries)
@@ -191,12 +201,11 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
     // 50-day moving average (dashed, neutral) — only the points that have a
     // warmed-up average are drawn.
     if (showMA) {
-      const maLine = d3
-        .line<(typeof entries)[0]>()
+      const maLine = d3Line<(typeof entries)[0]>()
         .defined((d) => d.ma50 !== null)
         .x((d) => xScale(d.parsedDate))
         .y((d) => yScale(d.ma50 as number))
-        .curve(d3.curveMonotoneX);
+        .curve(curveMonotoneX);
 
       pg.append("path")
         .datum(entries)
@@ -234,7 +243,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
     // X axis
     pg.append("g")
       .attr("transform", `translate(0,${pInnerH})`)
-      .call(d3.axisBottom(xScale).ticks(5))
+      .call(axisBottom(xScale).ticks(5))
       .call((ax) => ax.select(".domain").remove())
       .selectAll("text")
       .attr("fill", "var(--home-ink-soft)")
@@ -249,7 +258,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
       .attr("y2", pInnerH)
       .attr("opacity", 0);
 
-    const bisectDate = d3.bisector<(typeof entries)[0], Date>((d) => d.parsedDate).left;
+    const bisectDate = bisector<(typeof entries)[0], Date>((d) => d.parsedDate).left;
 
     pg.append("rect")
       .attr("width", pInnerW)
@@ -258,7 +267,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
       .attr("pointer-events", "all")
       .on("mousemove", function (event) {
         if (!tooltipRef.current || !priceRef.current) return;
-        const [mx] = d3.pointer(event);
+        const [mx] = pointer(event);
         const hovered = xScale.invert(mx);
         const idx = Math.max(
           0,
@@ -289,20 +298,18 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
     const vInnerW = vWidth - vMargin.left - vMargin.right;
     const vInnerH = vHeight - vMargin.top - vMargin.bottom;
 
-    const vSvg = d3.select(volumeRef.current);
+    const vSvg = select(volumeRef.current);
     vSvg.selectAll("*").remove();
     vSvg.attr("width", vWidth).attr("height", vHeight);
 
     const vg = vSvg.append("g").attr("transform", `translate(${vMargin.left},${vMargin.top})`);
 
-    const vxScale = d3
-      .scaleTime()
+    const vxScale = scaleTime()
       .domain([dates[0], dates[dates.length - 1]])
       .range([0, vInnerW]);
 
-    const vyScale = d3
-      .scaleLinear()
-      .domain([0, d3.max(volumes) ?? 0])
+    const vyScale = scaleLinear()
+      .domain([0, max(volumes) ?? 0])
       .range([vInnerH, 0]);
 
     const barWidth = Math.max(1, vInnerW / entries.length - 0.5);
@@ -320,7 +327,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
     // X axis on volume chart
     vg.append("g")
       .attr("transform", `translate(0,${vInnerH})`)
-      .call(d3.axisBottom(vxScale).ticks(5))
+      .call(axisBottom(vxScale).ticks(5))
       .call((ax) => ax.select(".domain").remove())
       .selectAll("text")
       .attr("fill", "var(--home-ink-soft)")
