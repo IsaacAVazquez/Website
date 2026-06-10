@@ -16,7 +16,7 @@ This codebase is a multi-surface Next.js 16 site for Isaac Vazquez. It combines 
 2. **Writing surface** — long-form MDX posts under `/writing`
 3. **Fantasy football analytics** — rankings, tiers, and draft tooling
 4. **Investments + seasonal experiments** — `/investments` and `/march-madness-2026`
-5. **Experimental dashboards** — standalone tools like `/formula-1`, `/fantasy-formula-1`, `/premier-league`, `/la-liga`, `/mlb`, `/nba`, `/nfl`, `/golf`, `/world-cup-2026`, `/bay-area-transit`, `/polling-aggregator`, `/news-pulse`, `/github-trending-pulse`, `/tech-startup-tracker`, and `/spacex-mission-control`
+5. **Experimental dashboards** — standalone tools like `/formula-1`, `/fantasy-formula-1`, `/premier-league`, `/la-liga`, `/mlb`, `/nba`, `/nfl`, `/golf`, `/world-cup-2026`, `/earthquake-pulse`, `/bay-area-transit`, `/polling-aggregator`, `/news-pulse`, `/github-trending-pulse`, `/tech-startup-tracker`, and `/spacex-mission-control`
 6. **Fintech tools** — standalone calculators under `/fintech-tools/*`
 7. **MBA internship tracker** — live role aggregator at `/mba-internship-notifications`, surfaced through the projects section
 8. **Personal interest tools** — browser-persisted surfaces like `/travel`, `/food-map`, `/recipe-finder`, `/wine-cellar`, and `/museum-log`
@@ -55,6 +55,7 @@ npm run update:nfl
 npm run update:formula-1
 npm run update:golf
 npm run update:world-cup
+npm run update:earthquake
 npm run update:bay-area-transit
 npm run update:github-trending
 npm run update:tech-startups
@@ -100,6 +101,7 @@ Note: `prebuild` automatically runs a league-only football snapshot refresh; `po
 - `/nba`
 - `/nfl`
 - `/golf`
+- `/earthquake-pulse`
 - `/world-cup-2026`
 - `/tech-startup-tracker`
 - `/bay-area-transit`
@@ -181,7 +183,7 @@ This is intentional to avoid stacked closing CTAs.
 
 - Shared fallback: `src/components/RouteErrorBoundary.tsx` (editorial-styled, calls `logger.error`, exposes `reset()` retry).
 - Top-level catch-all: `src/app/error.tsx` covers anything below.
-- Per-route boundaries on snapshot-driven dashboards that need bespoke surface labels: `/nba`, `/nfl`, `/mlb`, `/formula-1`, `/fantasy-formula-1`, `/premier-league`, `/la-liga`, `/world-cup-2026`, `/bay-area-transit`, `/tech-startup-tracker`, `/spacex-mission-control`, `/news-pulse`, `/investments`.
+- Per-route boundaries on snapshot-driven dashboards that need bespoke surface labels: `/nba`, `/nfl`, `/mlb`, `/formula-1`, `/fantasy-formula-1`, `/premier-league`, `/la-liga`, `/world-cup-2026`, `/earthquake-pulse`, `/bay-area-transit`, `/tech-startup-tracker`, `/spacex-mission-control`, `/news-pulse`, `/investments`.
 - When adding a new data-fetching dashboard route, drop in an `error.tsx` that re-exports `RouteErrorBoundary` with a `surfaceName`.
 
 ---
@@ -350,6 +352,7 @@ The `/nba` route follows the same snapshot-driven pattern as the soccer dashboar
 - `/spacex-mission-control` reads from SpaceX data helpers and `/api/spacex/*` routes; `.github/workflows/update-spacex.yml` refreshes data and image artifacts twice daily
 - `/polling-aggregator` reads from `src/data/pollingSnapshot.ts` with deep-linkable route state
 - `/golf` reads from `src/data/golfSnapshot.ts` with deep-linkable route state. Snapshot is built by `npm run update:golf` (`scripts/buildGolfSnapshot.ts` → `src/lib/golfData.ts`) against the public ESPN golf leaderboard endpoint (`https://site.api.espn.com/apis/site/v2/sports/golf/leaderboard`); no auth token required. It tracks whichever PGA Tour event ESPN is featuring (in-progress event preferred, else most recent). `.github/workflows/update-golf.yml` refreshes it daily at 08:40 UTC. Like Formula 1, a failed fetch keeps the previous snapshot rather than wiping it. To pin a specific event instead, run the script manually or hand-edit the snapshot. Accessors live in `src/lib/golfSnapshot.ts`; API routes are `/api/golf/summary` and `/api/golf/players/[playerId]` (400 for malformed ids, 404 for valid-shape unknown ids; errors are never CDN-cached).
+- `/earthquake-pulse` ("Earthquake Pulse") reads from `src/data/earthquakeSnapshot.ts` with deep-linkable route state (`?view=recent|significant|regions` and `?quake=<usgs-id>`). The snapshot is built by `npm run update:earthquake` (`scripts/buildEarthquakeSnapshot.ts` → `src/lib/earthquakeData.ts`) from the public USGS Earthquake Hazards Program GeoJSON feeds (`all_day`, `2.5_week`, `significant_month` under `https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/`); no auth token required. The seed ships **empty** and is filled by `.github/workflows/update-earthquake.yml`, which refreshes it hourly. Like Formula 1 and golf, a failed/empty fetch keeps the previous snapshot rather than wiping it (shared `readGeneratedSnapshot` fallback). Accessors live in `src/lib/earthquakeSnapshot.ts`; the read API is `/api/earthquake-pulse/summary`. Reuses the editorial shell + `HomeStatsPanel`; everything needed for the detail panel is embedded in the summary (`quakeDetails`), so no per-event fetch is required.
 - `/frontier-models` reads from `src/data/frontierModelsSnapshot.ts`. Like the tech startup tracker, the dataset is **editorially curated**: the hand-maintained source lives in `scripts/data/frontierModels.source.ts` and `npm run update:frontier-models` (`scripts/buildFrontierModelsSnapshot.ts` → `src/lib/frontierModels.ts`) regenerates the snapshot. No GitHub Action — refresh by editing the source file and re-running.
 - `/museum-log` reads from `src/data/museumSnapshot.ts`; `/recipe-finder` reads from `src/data/recipesSnapshot.ts` (both curated, no update workflow)
 - `/travel` is a browser-persisted travel planner (trips, day-by-day itineraries, per-trip journal). No snapshot or API: state lives in localStorage via `src/hooks/useTravelPlanner.ts`, with pure helpers and the storage key in `src/lib/travelPlanner.ts` and types in `src/types/travel.ts`.
@@ -402,6 +405,7 @@ Live routes under `src/app/api/`:
 - `/api/nba/teams/[teamId]`
 - `/api/nfl/summary`
 - `/api/nfl/teams/[teamId]`
+- `/api/earthquake-pulse/summary`
 - `/api/bay-area-transit/summary`
 - `/api/bay-area-transit/stations/[stationId]`
 - `/api/golf/summary`
