@@ -1,0 +1,19 @@
+---
+title: Design tokens, performance, and a fix sweep
+publishedAt: "2026-06-09"
+category: Update
+summary: Off-system colors moved onto design tokens, dashboards gained loading states and lazy-loaded panels, and a long list of fixes landed across recently shipped surfaces.
+tags:
+  - design
+  - performance
+---
+
+With so many surfaces shipping in quick succession, this was the consolidation pass:
+
+- **Design tokens everywhere** — off-system colors and micro-typography moved onto the editorial tokens, card radius and shadows unified, and broken color-mix utilities fixed.
+- **Performance** — dashboards gained proper loading states, the MBA tracker's dialogs and team crests now lazy-load, and the snapshot refresh pipelines were hardened so golf and friends keep themselves current.
+- **Accessibility** — table headers across eight sports dashboards now announce column associations to screen readers, nested landmark elements on /writing and /travel are gone, keyboard access works on the transit and startup dashboards, and a stray sub-44px control got brought up to the touch-target standard.
+- **Fixes across the board** — the retirement planner now counts guaranteed income in its success metric, the World Cup dashboard classifies fixtures by date correctly, and the investments URL-sync loop on bare /investments visits is gone.
+- **Tests** — new unit coverage across March Madness, MLB, NBA, NFL, the museum log, polling, recipes, wine cellar, and Interchange IQ.
+
+Shipping fast only works if you stop and pay this bill regularly.

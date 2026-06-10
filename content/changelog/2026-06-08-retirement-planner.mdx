@@ -1,0 +1,18 @@
+---
+title: Retirement planner inside the investments dashboard
+publishedAt: "2026-06-08"
+category: Feature
+summary: A full retirement projection engine joined the investments surface, with allocation-derived return assumptions, Monte Carlo confidence bands, and honest framing throughout.
+tags:
+  - investments
+  - retirement
+---
+
+The [investments dashboard](/investments#retirement) picked up a retirement planner, and I tried to build it the way I wish these tools worked:
+
+- **Returns derive from your allocation.** Expected return and volatility come from dated capital-market assumptions applied to your stock/bond mix, never a single hardcoded growth number.
+- **Monte Carlo with honest framing.** A seeded 1,000-trial simulation renders as confidence bands, and the verdict reads as "N of 100 scenarios" rather than a false-precision percentage.
+- **Two-phase projection** across accumulation and decumulation, with coarse account-aware taxes, RMDs, Social Security claim mechanics, and a choice of withdrawal strategies.
+- **Levers, not lectures.** A sensitivity panel shows which inputs actually move your outcome, computed off the critical path so the headline renders fast.
+
+It can pull your live portfolio value as the starting balance with one click. All of it is educational output, not advice, and the assumptions are disclosed and editable right on the page.
