@@ -1,6 +1,6 @@
 import { StructuredData } from "@/components/StructuredData";
 import { githubTrendingSnapshot } from "@/data/githubTrendingSnapshot";
-import { getGitHubTrendingSnapshot } from "@/lib/githubTrendingSnapshot";
+import { getGitHubTrendingClientSnapshot } from "@/lib/githubTrendingSnapshot";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { GitHubTrendingClient } from "./github-trending-client";
 import { normalizeGitHubTrendingState } from "./github-trending-state";
@@ -52,7 +52,9 @@ export default async function GitHubTrendingPulsePage({
   searchParams,
 }: GitHubTrendingPageProps) {
   const initialState = normalizeGitHubTrendingState(await searchParams);
-  const snapshot = await getGitHubTrendingSnapshot();
+  // Trimmed view: the full snapshot's build bookkeeping (starHistory alone is
+  // ~half the serialized weight) must not ship in the RSC payload.
+  const snapshot = await getGitHubTrendingClientSnapshot();
   const breadcrumbs = [
     { name: "Home", url: "/" },
     { name: "GitHub Trending Pulse", url: "/github-trending-pulse" },

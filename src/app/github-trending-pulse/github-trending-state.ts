@@ -2,7 +2,7 @@ import type { ReadonlyURLSearchParams } from "next/navigation";
 import type {
   GitHubTrendingRouteState,
   GitHubTrendingSegmentKind,
-  GitHubTrendingSnapshot,
+  GitHubTrendingClientSnapshot,
   GitHubTrendingSortKey,
 } from "@/types/githubTrending";
 
@@ -87,7 +87,7 @@ export function normalizeGitHubTrendingState(
 
 export function resolveGitHubTrendingState(
   state: GitHubTrendingRouteState,
-  snapshot: GitHubTrendingSnapshot
+  snapshot: GitHubTrendingClientSnapshot
 ): GitHubTrendingRouteState {
   const segments = state.kind === "language" ? snapshot.languages : snapshot.topics;
   const validSegments = new Set(segments.map((segment) => segment.key));

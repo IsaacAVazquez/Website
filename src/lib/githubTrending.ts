@@ -277,10 +277,12 @@ export function buildGitHubTrendingSnapshot({
   };
 }
 
-export function sortGitHubTrendingRepositories(
-  repositories: GitHubTrendingRepository[],
-  sortKey: "momentum" | "stars" | "updated"
-): GitHubTrendingRepository[] {
+export function sortGitHubTrendingRepositories<
+  T extends Pick<
+    GitHubTrendingRepository,
+    "stars" | "weeklyStars" | "pushedAt" | "trendScore"
+  >,
+>(repositories: T[], sortKey: "momentum" | "stars" | "updated"): T[] {
   const sorted = [...repositories];
   sorted.sort((a, b) => {
     if (sortKey === "stars") {
