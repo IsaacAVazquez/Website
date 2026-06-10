@@ -56,6 +56,9 @@ tsconfig.tsbuildinfo
 *.tsbuildinfo
 bundle-analyzer-report.html
 
+# OpenNext Cloudflare adapter build output (generated; never commit)
+.open-next/
+
 # Temporary files
 tmp/
 temp/
