@@ -115,6 +115,11 @@ export function InvestmentsDashboard({
     [enhancedHoldings],
   );
 
+  const researchPosition = useMemo(
+    () => enhancedHoldings.find((h) => h.symbol === researchSymbol) ?? null,
+    [enhancedHoldings, researchSymbol],
+  );
+
   const isEmpty = enhancedHoldings.length === 0;
 
   const navItems: NavItem[] = useMemo(
@@ -372,6 +377,7 @@ export function InvestmentsDashboard({
         activeTab={researchTab}
         onTabChange={onResearchTabChange}
         portfolioSymbols={portfolioSymbols}
+        position={researchPosition}
       />
     </section>
 

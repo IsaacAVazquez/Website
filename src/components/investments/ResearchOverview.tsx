@@ -28,10 +28,24 @@ function formatDate(raw: string | undefined): string {
   return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 }
 
+function newsMonogram(item: NewsItem): string {
+  const source = item.publisher?.trim() || item.title?.trim() || "";
+  const words = source.split(/\s+/).filter(Boolean);
+  if (words.length === 0) return "•";
+  if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
+  return (words[0][0] + words[1][0]).toUpperCase();
+}
+
 function NewsCard({ item }: { item: NewsItem }) {
   return (
-    <div className="py-3 border-b border-[var(--home-rule)] last:border-0">
-      <div className="min-w-0">
+    <div className="flex items-start gap-3 py-3 border-b border-[var(--home-rule)] last:border-0">
+      <div
+        aria-hidden="true"
+        className="mt-0.5 grid h-10 w-10 shrink-0 place-items-center rounded-[10px] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-xs font-semibold tracking-[0.04em] text-[var(--home-ink-muted)]"
+      >
+        {newsMonogram(item)}
+      </div>
+      <div className="min-w-0 flex-1">
         {item.link ? (
           <a
             href={item.link}
@@ -45,12 +59,20 @@ function NewsCard({ item }: { item: NewsItem }) {
         ) : (
           <p className="text-sm font-medium leading-6 text-[var(--home-ink)] line-clamp-2">{item.title}</p>
         )}
-        <div className="mt-1 flex items-center gap-2">
+        <div className="mt-1.5 flex items-center gap-2">
           {item.publisher ? (
             <span className="text-xs text-[var(--home-ink-muted)]">{item.publisher}</span>
           ) : null}
+          {item.publisher && item.reportDate ? (
+            <span aria-hidden="true" className="text-[var(--home-ink-soft)]">·</span>
+          ) : null}
           {item.reportDate ? (
-            <span className="text-xs text-[var(--home-ink-muted)]">{formatDate(item.reportDate)}</span>
+            <span
+              className="text-[0.7rem] uppercase tracking-[0.04em] text-[var(--home-ink-soft)]"
+              style={{ fontFamily: "var(--font-jetbrains-mono, monospace)" }}
+            >
+              {formatDate(item.reportDate)}
+            </span>
           ) : null}
         </div>
       </div>

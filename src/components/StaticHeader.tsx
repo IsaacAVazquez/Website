@@ -50,8 +50,8 @@ export function StaticHeader() {
       ) : null}
       <header
       className={cn(
-        "sticky top-0 z-50 w-full transition-[background-color,border-color,box-shadow] duration-300 header-home",
-        isScrolled && "border-b shadow-[var(--shadow-sm)]"
+        "sticky top-0 z-50 w-full border-b transition-[background-color,border-color,box-shadow] duration-300 header-home",
+        isScrolled && "shadow-[var(--shadow-sm)]"
       )}
       style={{
         backgroundColor: isScrolled
@@ -64,14 +64,14 @@ export function StaticHeader() {
         <div className="flex min-h-[72px] items-center justify-between gap-4 py-3">
           <Link
             href="/"
-            className="header-home-brand min-h-[44px] rounded-xl px-1 py-1 transition-colors hover:text-[var(--home-haze)]"
+            className="header-home-brand min-h-[44px] px-1 py-1"
             onClick={closeMobileMenu}
           >
             Isaac Vazquez
           </Link>
 
           <div className="hidden lg:flex items-center gap-3">
-            <ul className="flex items-center gap-1" aria-label="Primary navigation">
+            <ul className="header-home-nav-list flex items-center gap-0" aria-label="Primary navigation">
               {navLinks.map((link) => {
                 const active = isRouteActive(pathname, link.href);
 

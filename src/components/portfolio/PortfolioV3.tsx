@@ -51,6 +51,9 @@ const PULSE = new Set([
   "pulse-dashboards",
   "news-pulse-dashboard",
   "github-trending-pulse",
+  "bay-area-transit-pulse",
+  "earthquake-pulse",
+  "tech-startup-tracker",
 ]);
 const SPORTS = new Set([
   "premier-league-pulse",
@@ -61,6 +64,8 @@ const SPORTS = new Set([
   "nba-pulse",
   "pga-tour-pulse",
   "formula-1-pulse",
+  "fantasy-formula-1-optimizer",
+  "world-cup-pulse",
   "march-madness-2026",
   "spacex-mission-control",
 ]);
@@ -78,6 +83,7 @@ const LIFESTYLE = new Set([
   "museum-log",
   "wine-cellar",
   "recipe-finder",
+  "travel-planner",
 ]);
 
 const CATEGORY_DEFS: Category[] = [
