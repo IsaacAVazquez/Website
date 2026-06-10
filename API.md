@@ -48,12 +48,13 @@ Current API route inventory for the app.
 | `/api/world-cup/summary` | GET | Snapshot-backed 2026 FIFA World Cup groups, knockout rounds, fixtures, and scorers |
 | `/api/world-cup/teams/[teamId]` | GET | Snapshot-backed World Cup team drilldown payload, keyed by lowercased team slug |
 
-### Civic / transit
+### Civic / transit / geo
 
 | Route | Methods | Notes |
 |------|---------|-------|
 | `/api/bay-area-transit/summary` | GET | Snapshot-backed BART lines, advisories, and system status |
 | `/api/bay-area-transit/stations/[stationId]` | GET | Snapshot-backed per-station departure board, keyed by lowercased BART abbreviation |
+| `/api/earthquake-pulse/summary` | GET | Snapshot-backed USGS earthquake feed summary (detail payloads embedded; no per-event route) |
 
 ### MBA internship notifications
 
@@ -113,6 +114,7 @@ Sports dashboard routes are separate from the investments surface:
 - `/api/world-cup/teams/[teamId]`
 - `/api/bay-area-transit/summary`
 - `/api/bay-area-transit/stations/[stationId]`
+- `/api/earthquake-pulse/summary`
 
 ### Fantasy data
 
@@ -173,6 +175,7 @@ Use these as the actual source of truth:
 - `src/app/api/world-cup/teams/[teamId]/route.ts`
 - `src/app/api/bay-area-transit/summary/route.ts`
 - `src/app/api/bay-area-transit/stations/[stationId]/route.ts`
+- `src/app/api/earthquake-pulse/summary/route.ts`
 - `src/app/api/news-pulse/route.ts`
 - `src/app/api/spacex/summary/route.ts`
 - `src/app/api/spacex/launches/route.ts`

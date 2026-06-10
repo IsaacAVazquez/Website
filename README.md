@@ -15,7 +15,7 @@ This repo powers a multi-surface personal site with several live product areas:
 - **Writing** — MDX-backed long-form posts under `/writing`
 - **Fantasy football** — rankings, tier charts, and draft tooling
 - **Investments and seasonal analysis** — `/investments` and `/march-madness-2026`
-- **Sports and data dashboards** — off-nav products like `/premier-league`, `/la-liga`, `/mlb`, `/nba`, `/nfl`, `/golf`, `/world-cup-2026`, `/bay-area-transit`, `/tech-startup-tracker`, `/polling-aggregator`, `/news-pulse`, and `/spacex-mission-control`
+- **Sports and data dashboards** — off-nav products like `/premier-league`, `/la-liga`, `/mlb`, `/nba`, `/nfl`, `/golf`, `/world-cup-2026`, `/earthquake-pulse`, `/bay-area-transit`, `/tech-startup-tracker`, `/polling-aggregator`, `/news-pulse`, and `/spacex-mission-control`
 - **Fintech tools** — standalone calculators under `/fintech-tools/*`
 
 The site is portfolio-first. `Writing` is live and promoted in the global header.
@@ -57,6 +57,7 @@ The site is portfolio-first. `Writing` is live and promoted in the global header
 | `/nfl` | NFL dashboard |
 | `/golf` | PGA Tour dashboard |
 | `/world-cup-2026` | 2026 FIFA World Cup hub |
+| `/earthquake-pulse` | USGS earthquake monitor |
 | `/bay-area-transit` | BART transit dashboard |
 | `/tech-startup-tracker` | Curated startup funding tracker |
 | `/writing` | Writing index |
@@ -123,6 +124,7 @@ npm run update:nba
 npm run update:nfl
 npm run update:formula-1
 npm run update:golf
+npm run update:earthquake
 npm run update:world-cup
 npm run update:bay-area-transit
 npm run update:tech-startups
@@ -173,7 +175,7 @@ CRON_SECRET=...               # protects the Netlify purge-cache function
 - `ProjectsContent.tsx` and `WritingPreview.tsx` still exist, but they are not the primary live path for the current shell
 - `/api/search` is limited and mostly hardcoded; do not treat it as comprehensive site search
 - `/investments` uses `InvestmentsClient` plus targeted routes under `/api/investments/index`, `/api/investments/quotes`, and `/api/investments/data/[symbol]`
-- `/premier-league`, `/la-liga`, `/mlb`, `/nba`, `/nfl`, `/golf`, `/world-cup-2026`, and `/bay-area-transit` read from committed TypeScript snapshots, not live third-party API calls at runtime
+- `/premier-league`, `/la-liga`, `/mlb`, `/nba`, `/nfl`, `/golf`, `/world-cup-2026`, `/earthquake-pulse`, and `/bay-area-transit` read from committed TypeScript snapshots, not live third-party API calls at runtime
 
 ---
 

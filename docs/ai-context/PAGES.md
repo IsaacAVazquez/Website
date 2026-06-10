@@ -31,6 +31,7 @@ Fast route reference for the current app.
 | `/nba` | `src/app/nba/page.tsx` | Server page -> NBA dashboard client |
 | `/nfl` | `src/app/nfl/page.tsx` | Server page -> NFL dashboard client |
 | `/golf` | `src/app/golf/page.tsx` | Server page -> golf dashboard client |
+| `/earthquake-pulse` | `src/app/earthquake-pulse/page.tsx` | Server page -> earthquake dashboard client |
 | `/world-cup-2026` | `src/app/world-cup-2026/page.tsx` | Server page -> World Cup dashboard client |
 | `/bay-area-transit` | `src/app/bay-area-transit/page.tsx` | Server page -> BART dashboard client |
 | `/tech-startup-tracker` | `src/app/tech-startup-tracker/page.tsx` | Server page -> startup tracker client |
@@ -71,6 +72,7 @@ There is no live `/admin/analytics` route in the current app tree.
 - `/changelog`
 - `/contact`
 - `/decision-lab`
+- `/earthquake-pulse`
 - `/fantasy-formula-1`
 - `/fantasy-football`
 - `/fantasy-football/draft-tracker`
@@ -174,6 +176,7 @@ Footer behavior:
 - `/golf` is a live sports dashboard backed by `src/data/golfSnapshot.ts`, rebuilt by `npm run update:golf`
 - `/world-cup-2026` is a live World Cup hub backed by `src/data/worldCupSnapshot.ts` and `/api/world-cup/*`
 - `/bay-area-transit` is a live BART dashboard backed by `src/data/bayAreaTransitSnapshot.ts` and `/api/bay-area-transit/*`
+- `/earthquake-pulse` is a live USGS earthquake monitor backed by `src/data/earthquakeSnapshot.ts` and `/api/earthquake-pulse/summary`
 - `/tech-startup-tracker` is a live curated startup funding tracker backed by `src/data/techStartupSnapshot.ts`
 - `/ai-dev-tools` and `/frontier-models` are live AI/knowledge surfaces
 - `/decision-lab`, `/food-map`, `/recipe-finder`, `/wine-cellar`, `/museum-log`, `/travel`, `/now`, and `/changelog` are live personal or utility surfaces

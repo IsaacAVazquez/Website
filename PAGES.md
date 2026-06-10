@@ -45,6 +45,7 @@ Current route inventory and page ownership for the live app.
 | `/nba` | `src/app/nba/page.tsx` | Snapshot-backed NBA dashboard |
 | `/nfl` | `src/app/nfl/page.tsx` | Snapshot-backed NFL dashboard |
 | `/golf` | `src/app/golf/page.tsx` | Snapshot-backed PGA Tour leaderboard dashboard (`npm run update:golf`, daily GitHub Actions refresh) |
+| `/earthquake-pulse` | `src/app/earthquake-pulse/page.tsx` | Snapshot-backed global earthquake monitor (USGS feeds) |
 | `/world-cup-2026` | `src/app/world-cup-2026/page.tsx` | Snapshot-backed 2026 FIFA World Cup hub (groups, knockout bracket, schedule, venues) |
 | `/tech-startup-tracker` | `src/app/tech-startup-tracker/page.tsx` | Curated tech startup funding tracker (sector/stage, valuations, momentum) |
 | `/bay-area-transit` | `src/app/bay-area-transit/page.tsx` | Snapshot-backed BART dashboard (lines, station departures, advisories) |
@@ -112,6 +113,7 @@ These routes manage more of their own spacing and width:
 - `/changelog`
 - `/contact`
 - `/decision-lab`
+- `/earthquake-pulse`
 - `/fantasy-formula-1`
 - `/fantasy-football`
 - `/fantasy-football/draft-tracker`
@@ -157,7 +159,7 @@ These routes manage more of their own spacing and width:
 - `/formula-1` is a live off-nav Formula 1 dashboard with a self-managed shell
 - `/fantasy-formula-1` is a live off-nav Fantasy Formula 1 optimizer with a self-managed shell
 - `/premier-league`, `/la-liga`, `/mlb`, `/nba`, `/nfl`, `/golf`, and `/world-cup-2026` are live off-nav sports data dashboards
-- `/bay-area-transit` is the live off-nav Bay Area civic transit dashboard, and `/tech-startup-tracker` is a live curated startup funding tracker
+- `/bay-area-transit` is the live off-nav Bay Area civic transit dashboard, `/earthquake-pulse` is the live USGS earthquake monitor, and `/tech-startup-tracker` is a live curated startup funding tracker
 - `/ai-dev-tools`, `/frontier-models`, `/decision-lab`, `/news-pulse`, `/github-trending-pulse`, `/spacex-mission-control`, `/polling-aggregator`, `/mba-internship-notifications`, and `/fintech-tools/*` are live standalone tool surfaces even though they are not promoted in the global header
 - `/food-map`, `/recipe-finder`, `/wine-cellar`, `/museum-log`, `/travel`, `/now`, and `/changelog` are live personal or utility surfaces
 - `/search` exists, but its data quality is limited by the current hardcoded search API

@@ -95,6 +95,7 @@ The 2026 World Cup hub uses `src/data/worldCupSnapshot.ts`, rebuilt by `npm run 
 ## Civic And Curated Tool Pipelines
 
 - `/bay-area-transit` uses `src/data/bayAreaTransitSnapshot.ts`, rebuilt by `npm run update:bay-area-transit` from BART's public legacy API; `.github/workflows/update-bay-area-transit.yml` refreshes it every six hours. Runtime routes under `/api/bay-area-transit/*` read the committed snapshot.
+- `/earthquake-pulse` uses `src/data/earthquakeSnapshot.ts`, rebuilt by `npm run update:earthquake` from public USGS GeoJSON feeds; `.github/workflows/update-earthquake.yml` refreshes it hourly. `/api/earthquake-pulse/summary` reads the committed snapshot, with event detail embedded in the summary payload.
 - `/tech-startup-tracker` uses the editorially curated `src/data/techStartupSnapshot.ts`, rebuilt by `npm run update:tech-startups` from a hand-maintained seed in `scripts/buildTechStartupSnapshot.ts`. There is no scheduled workflow because there is no live source to poll.
 
 ---

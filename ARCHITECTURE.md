@@ -16,7 +16,7 @@ This repo is a single Next.js app that serves multiple product surfaces:
 4. an investment research platform
 5. a seasonal March Madness editorial analysis route
 6. sports dashboards — Premier League (`/premier-league`), La Liga (`/la-liga`), MLB (`/mlb`), NBA (`/nba`), NFL (`/nfl`), golf (`/golf`), the 2026 World Cup (`/world-cup-2026`), Formula 1 (`/formula-1`), and Fantasy Formula 1 (`/fantasy-formula-1`)
-7. standalone data tools for AI tools, frontier models, news, space launches, polling, Bay Area transit (`/bay-area-transit`), startup funding (`/tech-startup-tracker`), personal logs and planners (including `/travel`), and fintech calculators
+7. standalone data tools for AI tools, frontier models, news, space launches, polling, earthquakes (`/earthquake-pulse`), Bay Area transit (`/bay-area-transit`), startup funding (`/tech-startup-tracker`), personal logs and planners (including `/travel`), and fintech calculators
 
 The architecture is intentionally mixed:
 
@@ -95,6 +95,7 @@ Update workflow:
 - `/golf` uses `src/data/golfSnapshot.ts`, rebuilt by `npm run update:golf` from ESPN's public golf leaderboard endpoint
 - `/world-cup-2026` uses `src/data/worldCupSnapshot.ts` and `/api/world-cup/*`, rebuilt by `npm run update:world-cup` from ESPN's public World Cup endpoints
 - `/bay-area-transit` uses `src/data/bayAreaTransitSnapshot.ts` and `/api/bay-area-transit/*`, rebuilt by `npm run update:bay-area-transit` from BART's public API
+- `/earthquake-pulse` uses `src/data/earthquakeSnapshot.ts` and `/api/earthquake-pulse/summary`, rebuilt by `npm run update:earthquake` from public USGS GeoJSON feeds
 - `/tech-startup-tracker` uses the editorially curated `src/data/techStartupSnapshot.ts`, rebuilt by `npm run update:tech-startups` from a hand-maintained seed
 - `/travel` is a browser-persisted travel planner backed by `src/hooks/useTravelPlanner.ts`
 - `/formula-1` and `/fantasy-formula-1` use `src/data/formula1Snapshot.ts`
@@ -131,6 +132,7 @@ These are committed TypeScript files rebuilt by `scripts/buildPremierLeagueSnaps
 - `src/data/nflSnapshot.ts`
 - `src/data/golfSnapshot.ts`
 - `src/data/worldCupSnapshot.ts`
+- `src/data/earthquakeSnapshot.ts`
 - `src/data/bayAreaTransitSnapshot.ts`
 - `src/data/formula1Snapshot.ts`
 - `src/data/githubTrendingSnapshot.ts`
@@ -173,7 +175,7 @@ Important groups:
 - football: `/api/premier-league/summary`, `/api/premier-league/teams/[teamId]`, `/api/la-liga/summary`, `/api/la-liga/teams/[teamId]`
 - US sports and golf: `/api/mlb/summary`, `/api/mlb/teams/[teamId]`, `/api/nba/summary`, `/api/nba/teams/[teamId]`, `/api/nfl/summary`, `/api/nfl/teams/[teamId]`, `/api/golf/summary`, `/api/golf/players/[playerId]`
 - World Cup: `/api/world-cup/summary`, `/api/world-cup/teams/[teamId]`
-- transit: `/api/bay-area-transit/summary`, `/api/bay-area-transit/stations/[stationId]`
+- transit and geo: `/api/bay-area-transit/summary`, `/api/bay-area-transit/stations/[stationId]`, `/api/earthquake-pulse/summary`
 - jobs/email: `/api/mba-jobs`, `/api/mba-jobs/email`
 - content/utilities: `/api/news-pulse`, `/api/spacex/summary`, `/api/spacex/launches`, `/api/spacex/launches/[id]`, `/api/rss`, `/api/search`
 

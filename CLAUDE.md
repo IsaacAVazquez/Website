@@ -51,6 +51,7 @@ npm run update:nba
 npm run update:nfl
 npm run update:formula-1
 npm run update:golf
+npm run update:earthquake
 npm run update:world-cup
 npm run update:bay-area-transit
 npm run update:tech-startups
@@ -97,6 +98,7 @@ Note: `prebuild` automatically runs a league-only football snapshot refresh; `po
 - `/nba`
 - `/nfl`
 - `/golf`
+- `/earthquake-pulse`
 - `/world-cup-2026`
 - `/tech-startup-tracker`
 - `/bay-area-transit`
@@ -178,7 +180,7 @@ This is intentional to avoid stacked closing CTAs.
 
 - Shared fallback: `src/components/RouteErrorBoundary.tsx` (editorial-styled, calls `logger.error`, exposes `reset()` retry).
 - Top-level catch-all: `src/app/error.tsx` covers anything below.
-- Per-route boundaries on snapshot-driven dashboards that need bespoke surface labels: `/nba`, `/nfl`, `/mlb`, `/formula-1`, `/fantasy-formula-1`, `/premier-league`, `/la-liga`, `/world-cup-2026`, `/bay-area-transit`, `/tech-startup-tracker`, `/spacex-mission-control`, `/news-pulse`, `/investments`.
+- Per-route boundaries on snapshot-driven dashboards that need bespoke surface labels: `/nba`, `/nfl`, `/mlb`, `/formula-1`, `/fantasy-formula-1`, `/premier-league`, `/la-liga`, `/world-cup-2026`, `/earthquake-pulse`, `/bay-area-transit`, `/tech-startup-tracker`, `/spacex-mission-control`, `/news-pulse`, `/investments`.
 - When adding a new data-fetching dashboard route, drop in an `error.tsx` that re-exports `RouteErrorBoundary` with a `surfaceName`.
 
 ---
@@ -346,6 +348,7 @@ The `/nba` route follows the same snapshot-driven pattern as the soccer dashboar
 - `/spacex-mission-control` reads from SpaceX data helpers and `/api/spacex/*` routes; `.github/workflows/update-spacex.yml` refreshes data and image artifacts twice daily
 - `/polling-aggregator` reads from `src/data/pollingSnapshot.ts` with deep-linkable route state
 - `/golf` reads from `src/data/golfSnapshot.ts` with deep-linkable route state. Snapshot is built by `npm run update:golf` (`scripts/buildGolfSnapshot.ts` → `src/lib/golfData.ts`) against the public ESPN golf leaderboard endpoint (`https://site.api.espn.com/apis/site/v2/sports/golf/leaderboard`); no auth token required. It tracks whichever PGA Tour event ESPN is featuring (in-progress event preferred, else most recent). `.github/workflows/update-golf.yml` refreshes it daily at 08:40 UTC. Like Formula 1, a failed fetch keeps the previous snapshot rather than wiping it. To pin a specific event instead, run the script manually or hand-edit the snapshot.
+- `/earthquake-pulse` ("Earthquake Pulse") reads from `src/data/earthquakeSnapshot.ts` with deep-linkable route state (`?view=recent|significant|regions` and `?quake=<usgs-id>`). The snapshot is built by `npm run update:earthquake` (`scripts/buildEarthquakeSnapshot.ts` → `src/lib/earthquakeData.ts`) from the public USGS Earthquake Hazards Program GeoJSON feeds (`all_day`, `2.5_week`, `significant_month` under `https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/`); no auth token required. The seed ships **empty** and is filled by `.github/workflows/update-earthquake.yml`, which refreshes it hourly. Like Formula 1 and golf, a failed/empty fetch keeps the previous snapshot rather than wiping it (shared `readGeneratedSnapshot` fallback). Accessors live in `src/lib/earthquakeSnapshot.ts`; the read API is `/api/earthquake-pulse/summary`. Reuses the editorial shell + `HomeStatsPanel`; everything needed for the detail panel is embedded in the summary (`quakeDetails`), so no per-event fetch is required.
 - `/fintech-tools/budget-planner` uses `src/hooks/useBudgetPlanner.ts`
 - `/fintech-tools/interchange-iq` is a client-side fee analyzer under `src/app/fintech-tools/interchange-iq`
 
@@ -399,6 +402,7 @@ Live routes under `src/app/api/`:
 - `/api/golf/players/[playerId]`
 - `/api/world-cup/summary`
 - `/api/world-cup/teams/[teamId]`
+- `/api/earthquake-pulse/summary`
 - `/api/bay-area-transit/summary`
 - `/api/bay-area-transit/stations/[stationId]`
 - `/api/mba-jobs`

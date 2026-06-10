@@ -108,6 +108,7 @@ Page-level clients live at `src/app/premier-league/premier-league-client.tsx` an
 - `src/app/golf/*` plus `src/data/golfSnapshot.ts`
 - `src/app/world-cup-2026/*` plus `src/data/worldCupSnapshot.ts`
 - `src/app/bay-area-transit/*` plus `src/data/bayAreaTransitSnapshot.ts`
+- `src/app/earthquake-pulse/*` plus `src/data/earthquakeSnapshot.ts`
 - `src/app/tech-startup-tracker/*` plus `src/data/techStartupSnapshot.ts`
 - `src/app/travel/*` plus `src/hooks/useTravelPlanner.ts`
 - `src/app/polling-aggregator/*` plus `src/data/pollingSnapshot.ts`
