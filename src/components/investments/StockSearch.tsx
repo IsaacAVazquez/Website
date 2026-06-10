@@ -43,17 +43,11 @@ export function StockSearch({ value, onChange }: Props) {
   const [showDropdown, setShowDropdown] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
   const [dropdownStyle, setDropdownStyle] = useState<React.CSSProperties>({});
-  const [mounted, setMounted] = useState(false);
 
   const debouncedInput = useDebounce(input, 200);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- One-shot mount flag to gate portal rendering until after hydration
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     getClientInvestmentsIndex()
@@ -260,8 +254,11 @@ export function StockSearch({ value, onChange }: Props) {
         />
       </div>
 
-      {mounted &&
-        showDropdown &&
+      {/* The portal can only render after user interaction (showDropdown starts
+          false), so no SSR/hydration gate is needed. A mount-flag gate here
+          previously kept the dropdown from ever rendering: the flag's setState
+          from the initial effect flush was dropped on this page. */}
+      {showDropdown &&
         suggestions.length > 0 &&
         createPortal(
 <ul
