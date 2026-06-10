@@ -139,6 +139,23 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      # Snapshot commits carry [skip ci], so without this the live site only
+      # picks up the refresh on the daily cron-job.org build hook — up to a
+      # day behind a six-hour cadence. Optional: a no-op until the
+      # NETLIFY_BUILD_HOOK secret is configured.
+      - name: Trigger Netlify deploy
+        if: steps.check_changes.outputs.changed == 'true'
+        env:
+          NETLIFY_BUILD_HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
+        run: |
+          if [ -z "$NETLIFY_BUILD_HOOK" ]; then
+            echo "NETLIFY_BUILD_HOOK secret not configured; skipping deploy trigger."
+            exit 0
+          fi
+          curl -fsS -X POST -d '{}' "$NETLIFY_BUILD_HOOK" \
+            && echo "Netlify build hook triggered." \
+            || echo "::warning::Netlify build hook request failed; the daily scheduled rebuild will pick up the snapshot."
+
       - name: Create job summary
         if: always()
         run: |

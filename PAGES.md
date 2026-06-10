@@ -44,11 +44,11 @@ Current route inventory and page ownership for the live app.
 | `/mlb` | `src/app/mlb/page.tsx` | Snapshot-backed MLB dashboard |
 | `/nba` | `src/app/nba/page.tsx` | Snapshot-backed NBA dashboard |
 | `/nfl` | `src/app/nfl/page.tsx` | Snapshot-backed NFL dashboard |
-| `/golf` | `src/app/golf/page.tsx` | Manually maintained golf dashboard |
+| `/golf` | `src/app/golf/page.tsx` | Snapshot-backed golf dashboard (refreshed daily by `npm run update:golf` / GitHub Actions) |
 | `/earthquake-pulse` | `src/app/earthquake-pulse/page.tsx` | Snapshot-backed global earthquake monitor (USGS feeds) |
 | `/world-cup-2026` | `src/app/world-cup-2026/page.tsx` | Snapshot-backed 2026 FIFA World Cup hub (groups, knockout bracket, schedule, venues) |
 | `/tech-startup-tracker` | `src/app/tech-startup-tracker/page.tsx` | Curated tech startup funding tracker (sector/stage, valuations, momentum) |
-| `/bay-area-transit` | `src/app/bay-area-transit/page.tsx` | Snapshot-backed BART transit dashboard |
+| `/bay-area-transit` | `src/app/bay-area-transit/page.tsx` | Snapshot-backed BART dashboard (lines, station departures, advisories) |
 | `/news-pulse` | `src/app/news-pulse/page.tsx` | News Pulse dashboard |
 | `/spacex-mission-control` | `src/app/spacex-mission-control/page.tsx` | SpaceX Mission Control dashboard |
 | `/polling-aggregator` | `src/app/polling-aggregator/page.tsx` | Snapshot-backed political polling dashboard |
@@ -60,6 +60,7 @@ Current route inventory and page ownership for the live app.
 | `/recipe-finder` | `src/app/recipe-finder/page.tsx` | Recipe finder |
 | `/wine-cellar` | `src/app/wine-cellar/page.tsx` | Wine cellar |
 | `/museum-log` | `src/app/museum-log/page.tsx` | Museum visit log |
+| `/travel` | `src/app/travel/page.tsx` | Browser-local travel planner (trips, itineraries, journaling) |
 
 ### Fantasy football
 
@@ -108,6 +109,7 @@ These routes manage more of their own spacing and width:
 
 - `/about`
 - `/ai-dev-tools`
+- `/bay-area-transit`
 - `/changelog`
 - `/contact`
 - `/decision-lab`
@@ -136,6 +138,7 @@ These routes manage more of their own spacing and width:
 - `/writing/[slug]`
 - `/resume`
 - `/spacex-mission-control`
+- `/travel`
 - `/wine-cellar`
 - `/world-cup-2026`
 

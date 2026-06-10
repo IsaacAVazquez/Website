@@ -350,6 +350,30 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       tags: ['World Cup', 'FIFA', 'Soccer', 'Football', 'Sports Data', 'Dashboard'],
     },
     {
+      id: 'page-bay-area-transit',
+      title: 'Bay Area Transit Pulse',
+      excerpt:
+        'Snapshot-backed BART dashboard with every line, station-by-station departure boards, and live service advisories.',
+      content:
+        'Bay Area Transit Pulse BART trains lines stations departures advisories elevator outages San Francisco Oakland civic dashboard',
+      url: '/bay-area-transit',
+      type: 'project',
+      category: 'Civic Data Tools',
+      tags: ['BART', 'Transit', 'Bay Area', 'Civic Data', 'Dashboard'],
+    },
+    {
+      id: 'page-tech-startup-tracker',
+      title: 'Tech Startup Tracker',
+      excerpt:
+        'Curated tracker of notable private tech companies with valuations, funding rounds, momentum scores, and sector and stage segments.',
+      content:
+        'Tech startup tracker private companies valuations funding rounds momentum sectors stages venture capital market intelligence dashboard',
+      url: '/tech-startup-tracker',
+      type: 'project',
+      category: 'Market Intelligence Tools',
+      tags: ['Startups', 'Venture Capital', 'Valuations', 'Market Intelligence', 'Dashboard'],
+    },
+    {
       id: 'page-interchange-iq',
       title: 'Interchange IQ',
       excerpt:

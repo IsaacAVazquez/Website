@@ -150,7 +150,7 @@ export function ResearchSection({
           <p className="text-sm font-semibold text-[var(--home-ink)]">
             Loading research data…
           </p>
-          <p className="mt-2 text-sm text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+          <p className="mt-2 text-sm text-[var(--home-ink-soft)]">
             Pulling the latest curated snapshot for {symbol.toUpperCase()}.
           </p>
         </div>
