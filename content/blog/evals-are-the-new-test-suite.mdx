@@ -1,0 +1,34 @@
+---
+title: "Evals Are the New Test Suite, and Most Teams Are Shipping Without One"
+excerpt: "If your product has a model in it and you cannot answer whether this week's version is better than last week's, you are not doing engineering, you are doing vibes. A QA practitioner's case for treating evals with the same seriousness as tests, and a realistic way to start."
+publishedAt: "2026-05-21"
+category: "QA Engineering"
+tags: ["Evals", "AI Testing", "QA Engineering", "LLM Evaluation", "AI Quality", "Software Testing", "Agentic AI", "AI Products"]
+featured: false
+author: "Isaac Vazquez"
+cluster: "Systems & Quality"
+seo:
+  title: "LLM Evals Explained: Why Evals Are the New Test Suite"
+  description: "Why AI evals deserve the same rigor as automated tests, how eval discipline parallels QA practice, and a pragmatic path to building your first eval set from production failures rather than benchmarks."
+  keywords: ["LLM evals", "AI evaluation", "eval driven development", "AI testing", "QA for AI", "model evaluation", "AI quality assurance", "LLM testing best practices"]
+---
+
+# Evals Are the New Test Suite, and Most Teams Are Shipping Without One
+
+I spent years of my career in QA, and there is a specific feeling I remember from auditing a codebase with no tests. Everything works, everyone is shipping, and the whole thing is one refactor away from nobody knowing what broke. I get that exact feeling now when I ask teams with AI features a simple question. Is the version you shipped this week better than the version you shipped last month? The teams with eval discipline answer with numbers. Most teams answer with anecdotes, and an anecdote about model quality is worth roughly what an anecdote about code correctness was worth in 2010, which is nothing you would bet a release on.
+
+The analogy between evals and tests is common now, and I want to take it more seriously than it usually gets taken, because I think it is almost exactly right, and the places where it bends are instructive.
+
+A test suite exists because human memory and manual checking do not scale with a codebase. An eval suite exists because human judgment about model output does not scale with a product. Both convert quality from an opinion into a measurement. Both are most valuable not when you write the code but when you change it, because their real product is the confidence to move. Teams without tests stop refactoring out of fear. Teams without evals stop upgrading models, stop touching prompts, stop restructuring context, out of the same fear, and in 2026 that fear has a price tag, because models improve every few months and capturing those improvements requires changing exactly the things you are afraid to touch. I have watched teams stay on a model two generations old, paying more for worse output, because nobody could prove the upgrade would not break something. That is what shipping without evals actually costs. Not bad quality necessarily, but frozen quality.
+
+Where the analogy bends is determinism, and this is where test-trained instincts need adjustment rather than abandonment. A test asserts that given this input, the output equals that. Model outputs are distributions, so an eval asserts something statistical. Given these hundred inputs, the output meets the bar at least ninety-five times, scored by exact match where the task allows it, by checkable properties where it does not, and by a judge model where the criteria are genuinely qualitative. The judge-model move makes traditional QA people flinch, an LLM grading an LLM, but the flinch is manageable. You validate the judge against a sample of human labels until you trust its agreement rate, then spot-check it on a schedule, which is exactly the trust-but-verify structure QA has always applied to any automated oracle. None of this is conceptually harder than property-based testing. It is just unfamiliar.
+
+## Start from failures, not benchmarks
+
+The practical question is where eval cases come from, and here I have a strong opinion shaped by years of writing regression suites. The worst way to start is downloading a public benchmark, because public benchmarks measure the model, not your product, and your product is a specific model wrapped in specific prompts and context doing a specific job. The best eval cases come from the same place the best regression tests always came from, which is failures. Every time your AI feature produces something wrong, weird, or embarrassing, that input belongs in the eval set with a note about what good looks like. Twenty cases harvested from real production failures will tell you more about a prompt change than ten thousand rows of generic benchmark, because they encode the actual ways your actual product breaks.
+
+This means the honest starting point is unglamorous. Log your model interactions. Read them, which almost nobody does and which remains the single highest-yield quality activity available. Collect the failures into a labeled set, write a script that runs the set against any candidate change and reports a score, and wire that script into the same place your tests run, so a prompt change that tanks the eval score gets caught with the same ceremony as a code change that breaks the build. That is a real eval pipeline. It can be built in a week by one person, it does not require an evals platform or a vendor, and every sophisticated setup I respect started as exactly this and grew.
+
+What I would resist is the version of eval culture that turns into benchmark theater, where the number becomes the product and the cases drift away from anything users experience. Tests have the same disease, suites with thousands of assertions and no opinion, green builds over broken features. The defense is the same in both worlds. The suite stays small enough to maintain, anchored to real failures, and pruned when cases stop discriminating. An eval set you do not trust is worse than none, because it converts vibes into false confidence, which is vibes with better branding.
+
+The thing I keep coming back to is that QA went through this entire argument once before. Automated testing was once a luxury for teams with slack, then a best practice, then simply what engineering means, and the teams that resisted did not get a vote in the end. Evals are partway through the same arc, and the gap between teams that measure model quality and teams that feel it is already visible in who upgrades fearlessly and who freezes. If your product has a model in it, the eval suite is not an AI nicety. It is the test suite. Build it like one.

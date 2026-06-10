@@ -47,23 +47,27 @@ export function InvestmentsClient({
     };
   }, []);
 
-  // Keep URL in sync with normalized route state. Compare canonical hrefs:
-  // comparing raw param values treated an absent param (null) as different
-  // from the default ("" / "overview"), so a bare /investments fired a
-  // router.replace on every render. That is an endless refetch of the dynamic
-  // route, and each one flashes the route loading state and remounts the page.
+  // Keep URL in sync with normalized route state. A clean visit with no
+  // managed params keeps its clean URL; once managed (or legacy `view`)
+  // params exist, rewrite only when the URL differs from the canonical href,
+  // so the replace settles instead of looping on absent-vs-empty params.
   useEffect(() => {
+    if (!hasManagedParams && searchParams.get("view") === null) {
+      return;
+    }
+
+    const query = searchParams.toString();
+    const currentHref = query ? `/investments?${query}` : "/investments";
     const canonicalHref = buildInvestmentsHref(routeState, searchParams);
-    const currentQuery = searchParams.toString();
-    const currentHref = `/investments${currentQuery ? `?${currentQuery}` : ""}`;
-    if (currentHref === canonicalHref) {
+
+    if (canonicalHref === currentHref) {
       return;
     }
 
     startTransition(() => {
       router.replace(canonicalHref, { scroll: false });
     });
-  }, [routeState, router, searchParams]);
+  }, [hasManagedParams, routeState, router, searchParams]);
 
   function updateRouteState(nextState: Partial<InvestmentsSearchState>) {
     const href = buildInvestmentsHref(

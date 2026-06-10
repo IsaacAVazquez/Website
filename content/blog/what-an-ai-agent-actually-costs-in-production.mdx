@@ -1,0 +1,36 @@
+---
+title: "What an AI Agent Actually Costs in Production, From Someone Who Pays the Bills"
+excerpt: "Token prices keep falling and agent bills keep rising, and the gap between those two facts is where most cost models fall apart. A breakdown of where agent spend actually comes from, why per-token math misleads, and the levers that move the bill."
+publishedAt: "2026-05-14"
+category: "Agentic AI"
+tags: ["AI Agents", "AI Costs", "Model Economics", "Agentic AI", "Unit Economics", "Inference Costs", "AI Products", "Token Pricing"]
+featured: false
+author: "Isaac Vazquez"
+cluster: "Agentic AI"
+seo:
+  title: "AI Agent Production Costs: What Agents Really Cost to Run in 2026"
+  description: "Why AI agent costs keep surprising teams even as token prices fall. A practical breakdown of agent cost drivers, including iteration counts, context accumulation, retries, and caching, with the levers that actually reduce spend."
+  keywords: ["AI agent costs", "AI inference costs", "agent unit economics", "token pricing 2026", "AI cost optimization", "prompt caching", "agentic AI production", "LLM cost management"]
+---
+
+# What an AI Agent Actually Costs in Production, From Someone Who Pays the Bills
+
+There is a conversation happening on a loop right now between finance teams and product teams, and it goes like this. Finance says token prices have fallen something like ninety percent in two years, so why did our AI spend triple? Product says usage grew. Both are telling the truth and neither has actually explained the bill. I run agents at small scale for my own projects and have watched the same dynamics at much larger scale, and I want to lay out where agent costs actually come from, because the mental model most teams carry, price per token times tokens per request, is the wrong one, and it produces forecasts that miss by multiples.
+
+The core issue is that an agent is not a request. A chat completion is one model call with a bounded input and output, and per-token math describes it fine. An agent is a loop. It reads context, calls a tool, reads the result, decides, calls another tool, and iterates until done, and every iteration re-sends an expanding context window. Two things about that loop break naive cost models. The iteration count is variable and unbounded by anything except your configuration, and the context grows as the loop runs, which means cost per step rises through the task. A task that takes three steps and a task that takes thirty are the same product feature with an order of magnitude between their costs, and you mostly do not control which one a given user request turns out to be.
+
+What I found instrumenting my own workflows is that the distribution of cost across tasks is brutally skewed. The median agent run is cheap and getting cheaper, exactly as the falling token prices promise. The tail is where the money goes. The run that hits a confusing error and retries its way through forty steps, the research task that pulls in ten large documents and then carries them through every subsequent call, the loop that gets stuck and burns its entire step budget before failing. A small fraction of runs routinely accounts for the majority of spend, which means your average cost per task is nearly useless for forecasting and your tail behavior is everything. Budgeting agents on average cost is like budgeting a hospital on the average patient.
+
+## The levers that actually move the bill
+
+So what moves the number? In rough order of how much they have mattered in practice, for me and for the production deployments I have seen up close.
+
+Caching is first and it is not close. Agent loops re-send the same system prompt, tool definitions, and accumulated history on every iteration, which makes them close to the ideal case for prompt caching. Cached input tokens are typically priced at a tenth of fresh ones, and an agent that structures its context to maximize cache hits can cut total spend by well over half without changing behavior at all. This is the single most boring and most effective line item in agent economics, and teams skip it because it is plumbing rather than strategy.
+
+Model routing is second. The instinct to run the whole agent on the frontier model is understandable, because the frontier model fails least, and a failed run is wasted spend plus a retry. But most agent loops contain a lot of low-judgment steps, formatting results, extracting fields, deciding whether a tool result is an error, and routing those to a model that costs a twentieth as much is nearly free quality-wise. The pattern that has settled in as best practice is a strong model for planning and recovery, a cheap model for mechanical steps. Where I would push back on the cost-cutting instinct is downgrading the planner, because a worse planner produces longer loops, and longer loops eat the savings. Cheaper steps, yes. Cheaper judgment, usually a false economy.
+
+Context discipline is third, and it compounds with both of the above. Every tool result you let into the window gets paid for on every subsequent step, so verbose tool output is not a one-time cost, it is a subscription. Summarizing or truncating results before they enter the loop, and compacting history as tasks run long, attacks the quadratic-ish growth that makes long runs disproportionately expensive. This is the same context engineering work that improves output quality, which is a happy alignment. The cheap agent and the good agent are substantially the same agent.
+
+And then there are step budgets, which are less a cost optimization than a survival requirement. Every production agent needs a hard ceiling on iterations and spend per task, because the failure mode of an agent without one is not a bad answer, it is an unbounded bill attached to a stuck loop. Set the ceiling, log what hits it, and treat every budget-exhausted run as a defect to investigate, because the tail of your cost distribution is made entirely of these.
+
+Where does this leave the unit economics question? In a much better place than the panicked version of the conversation suggests, honestly. Falling token prices are real, caching is real, routing is real, and an agent feature that was uneconomic eighteen months ago is frequently viable now with the same architecture and a quarter of the cost. What has not arrived, and what I would stop waiting for, is the version where costs are low enough that you can stop thinking about them. Agents convert money into iteration, and products built on them need someone who understands the loop well enough to know which iterations are worth buying. That is not a finance question. That is the product job now.
