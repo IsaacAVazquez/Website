@@ -386,6 +386,18 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       tags: ['Golf', 'PGA Tour', 'Sports Data', 'Dashboard', 'Next.js'],
     },
     {
+      id: 'page-earthquake-pulse',
+      title: 'Earthquake Pulse',
+      excerpt:
+        'Snapshot-backed global earthquake monitor for the past 24 hours of seismic activity, significant worldwide quakes, and regional breakdowns.',
+      content:
+        'earthquake pulse USGS seismic monitor magnitude depth tsunami significant quakes regions distribution global geojson dashboard Next.js TypeScript',
+      url: '/earthquake-pulse',
+      type: 'project',
+      category: 'Data Tools',
+      tags: ['Earthquakes', 'USGS', 'Data Visualization', 'Dashboard', 'Next.js'],
+    },
+    {
       id: 'page-travel-planner',
       title: 'Travel Planner',
       excerpt:
