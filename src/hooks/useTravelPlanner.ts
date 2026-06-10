@@ -7,6 +7,7 @@ import {
   createActivity,
   createJournalEntry,
   createTrip,
+  isIsoDate,
   loadTrips,
   parseTrips,
   saveTrips,
@@ -55,6 +56,7 @@ export interface NewTripInput {
 export interface ActivityDraft {
   date: string;
   time: string;
+  endTime: string;
   title: string;
   location: string;
   category: TripActivity["category"];
@@ -122,6 +124,10 @@ export function useTravelPlanner() {
   ) {
     updateTrip(tripId, (trip) => {
       const next: Trip = { ...trip, ...fields };
+      // A cleared or partially-typed date input must never poison stored
+      // state — keep the previous valid date instead.
+      if (!isIsoDate(next.startDate)) next.startDate = trip.startDate;
+      if (!isIsoDate(next.endDate)) next.endDate = trip.endDate;
       if (next.endDate < next.startDate) next.endDate = next.startDate;
       return next;
     });
@@ -143,6 +149,11 @@ export function useTravelPlanner() {
           ? {
               ...activity,
               ...draft,
+              date: isIsoDate(draft.date) ? draft.date : activity.date,
+              endTime:
+                draft.time && draft.endTime && draft.endTime > draft.time
+                  ? draft.endTime
+                  : "",
               title: draft.title.trim() || "Untitled stop",
               location: draft.location.trim(),
               notes: draft.notes.trim(),
@@ -186,6 +197,7 @@ export function useTravelPlanner() {
           ? {
               ...entry,
               ...draft,
+              date: isIsoDate(draft.date) ? draft.date : entry.date,
               title: draft.title.trim() || "Untitled entry",
               body: draft.body.trim(),
             }

@@ -643,6 +643,39 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     retrospective: "",
   },
 
+  "tech-startup-tracker": {
+    slug: "tech-startup-tracker",
+    title: "Tech Startup Tracker",
+    description:
+      "Curated dashboard of notable private tech companies by sector and funding stage, with valuations, total raised, latest rounds, and a momentum score from a checked-in snapshot.",
+    role: "Full-Stack Developer & Designer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "Snapshot pipeline", "Data design"],
+    metrics: "28 startups · 6 sectors · Sector & stage views",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/tech-startup-tracker",
+    featured: true,
+
+    overview: {
+      summary:
+        "I built a startup-landscape dashboard that organizes notable private tech companies by sector and funding stage, with valuations, total raised, and a momentum score from a curated snapshot.",
+      impact:
+        "Turns scattered funding headlines into a single deep-linkable view, with a transparent as-of date and disclosure rather than implied precision.",
+    },
+    problem: {
+      context:
+        "Startup funding data is fragmented across paywalled databases and one-off press releases, with no fast way to compare companies across sectors and stages.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
+
   "formula-1-pulse": {
     slug: "formula-1-pulse",
     title: "Formula 1 Pulse",
@@ -731,6 +764,39 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     problem: {
       context:
         "Most tour leaderboards make it hard to compare round-by-round movement, cut-line pressure, and player form on a single screen.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
+
+  "earthquake-pulse": {
+    slug: "earthquake-pulse",
+    title: "Earthquake Pulse",
+    description:
+      "Snapshot-backed global earthquake monitor: the past 24 hours of seismic activity, significant quakes worldwide, magnitude distribution, and the busiest regions on one deep-linkable screen.",
+    role: "Full-Stack Developer & Designer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "USGS GeoJSON", "Snapshot pipeline"],
+    metrics: "24h seismic pulse · Significant worldwide quakes · Region & magnitude breakdowns",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/earthquake-pulse",
+    featured: true,
+
+    overview: {
+      summary:
+        "I built a global earthquake dashboard that turns checked-in USGS GeoJSON snapshots into one calm, deep-linkable surface for recent activity, significant events, and regional breakdowns.",
+      impact:
+        "Makes the planet's last day of seismic activity legible at a glance — what just moved, what was big enough to matter, and where the ground is busiest — without juggling separate live feeds.",
+    },
+    problem: {
+      context:
+        "Raw USGS feeds are comprehensive but firehose-shaped; most people just want a fast read on what's recent, what's significant, and where activity is concentrated.",
       painPoints: [],
       stakes: "",
     },
@@ -1038,6 +1104,39 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     tradeoffs: [],
     retrospective: "",
   },
+
+  "travel-planner": {
+    slug: "travel-planner",
+    title: "Travel Planner",
+    description:
+      "Browser-persisted trip planner that turns dates into a day-by-day itinerary you can check off and journal against, with no account required.",
+    role: "Product Builder & Designer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "Local persistence", "Itinerary UX"],
+    metrics: "Day-by-day itinerary · Stop check-off · Per-trip journal",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/travel",
+    featured: true,
+
+    overview: {
+      summary:
+        "I built a travel planner that lays a trip's dates out as a day-by-day itinerary, lets you check off stops, and keeps a journal entry per day.",
+      impact:
+        "Keeps trip planning, the live itinerary, and the trip diary on one surface instead of scattered across notes apps.",
+    },
+    problem: {
+      context:
+        "Trip planning usually splits across a notes app, a calendar, and a separate journal, so nothing stays in sync once the trip starts.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
 };
 
 const HOMEPAGE_FEATURED_SLUGS = [
@@ -1054,11 +1153,13 @@ const PORTFOLIO_PROJECT_ORDER = [
   "ai-dev-tool-ecosystem",
   "frontier-model-tracker",
   "github-trending-pulse",
+  "tech-startup-tracker",
   "decision-lab",
   "food-map",
   "museum-log",
   "wine-cellar",
   "recipe-finder",
+  "travel-planner",
   "budget-planner",
   "mba-role-tracker",
   "polling-aggregator",
@@ -1072,6 +1173,7 @@ const PORTFOLIO_PROJECT_ORDER = [
   "formula-1-pulse",
   "fantasy-formula-1-optimizer",
   "pga-tour-pulse",
+  "earthquake-pulse",
   "mlb-pulse",
   "nba-pulse",
   "march-madness-2026",

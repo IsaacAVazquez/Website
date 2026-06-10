@@ -6,9 +6,10 @@
 // and — where it's a clean single dial — how far you'd have to push it to hit
 // the "on track" threshold.
 //
-// Lever recomputation uses a smaller simulation count for snappiness; the
-// baseline it's compared against is computed at the same count so deltas are
-// apples-to-apples.
+// Lever rows run at the same simulation count as the headline gauge so their
+// absolute "→ X% success" figures agree with it; only the threshold solving
+// ("how far would you have to push") uses a smaller count, since binary search
+// multiplies the cost and those rows report a dial position, not a rate.
 // ============================================================
 
 import type {
@@ -21,7 +22,7 @@ import { computePortfolioAssumptions } from "./assumptions";
 import { runMonteCarlo } from "./monteCarlo";
 import { formatCurrency, formatPercent } from "./format";
 
-const LEVER_SIMS = 400;
+const LEVER_SIMS = 1000;
 const TO_REACH_SIMS = 250;
 const SAVE_MORE_STEP = 5000;
 const RETIRE_LATER_STEP = 2;

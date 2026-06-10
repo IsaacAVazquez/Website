@@ -52,14 +52,14 @@ export const ModernButton = React.memo(function ModernButton({
     primary: cn(
       "bg-[var(--home-ink)] hover:bg-[color-mix(in_srgb,var(--home-ink)_88%,var(--home-paper))]",
       "text-[var(--home-paper)]",
-      "shadow-sm hover:shadow-md"
+      "shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow-md)]"
     ),
     secondary: cn(
       "bg-[color-mix(in_srgb,var(--home-paper-alt)_78%,white)]",
       "hover:bg-[color-mix(in_srgb,var(--home-paper-alt)_90%,white)]",
       "text-[var(--home-ink)]",
       "border border-[var(--home-rule)]",
-      "shadow-sm hover:shadow-md"
+      "shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow-md)]"
     ),
     outline: cn(
       "border border-[var(--home-rule)]",
@@ -75,7 +75,7 @@ export const ModernButton = React.memo(function ModernButton({
     accent: cn(
       "bg-[var(--home-haze)] hover:bg-[color-mix(in_srgb,var(--home-haze)_88%,var(--home-ink))]",
       "text-[var(--home-paper)]",
-      "shadow-sm hover:shadow-md"
+      "shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow-md)]"
     ),
   };
 

@@ -58,7 +58,7 @@ describe("useDraftState", () => {
     const OriginalBlob = global.Blob;
     class MockBlob {
       constructor(parts: BlobPart[]) {
-        csvParts.push(String(parts[0]));
+        csvParts.push(parts.map(String).join(""));
       }
     }
     global.Blob = MockBlob as unknown as typeof Blob;
@@ -92,9 +92,12 @@ describe("useDraftState", () => {
 
       const csvText = csvParts[0];
 
+      // UTF-8 BOM so Excel on Windows reads accented names correctly.
+      expect(csvText.startsWith("\uFEFF")).toBe(true);
       expect(csvText).toContain('"Smith, Jr."');
-      // The comma inside the quoted name must not create an extra column.
-      const dataRow = csvText.split("\n")[1];
+      // RFC 4180 CRLF row endings, and the comma inside the quoted name must
+      // not create an extra column.
+      const dataRow = csvText.split("\r\n")[1];
       expect(dataRow.startsWith("1,1,Team 1,\"Smith, Jr.\",RB,ATL,1,Tier 2,1-3")).toBe(true);
     } finally {
       global.Blob = OriginalBlob;

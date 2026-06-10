@@ -12,6 +12,7 @@ export interface TripActivity {
   id: string;
   date: string;
   time: string;
+  endTime: string;
   title: string;
   location: string;
   category: ActivityCategory;
@@ -49,6 +50,9 @@ export interface Trip {
 export interface TripDayBucket {
   date: string;
   activities: TripActivity[];
+  completed: number;
+  /** Activity ids that overlap another timed stop on the same day. */
+  conflictIds: string[];
 }
 
 export interface TripSummary {
@@ -58,7 +62,11 @@ export interface TripSummary {
   daysUntilStart: number;
   activitiesTotal: number;
   activitiesCompleted: number;
+  /** Number of overlapping pairs of timed stops across the trip. */
+  conflictCount: number;
   journalCount: number;
   dayBuckets: TripDayBucket[];
   upcomingActivities: TripActivity[];
+  /** True when the trip spans more days than the itinerary renders. */
+  itineraryTruncated: boolean;
 }

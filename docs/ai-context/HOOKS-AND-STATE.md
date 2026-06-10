@@ -2,7 +2,7 @@
 
 Current hook inventory and state ownership.
 
-**Last updated:** 2026-04-10
+**Last updated:** 2026-06-10
 
 ---
 
@@ -10,16 +10,21 @@ Current hook inventory and state ownership.
 
 | Hook | File | Main Use |
 |------|------|----------|
+| `useBudgetPlanner` | `src/hooks/useBudgetPlanner.ts` | Budget planner state and calculations |
 | `useDebounce` | `src/hooks/useDebounce.ts` | Debounced inputs |
-| `useAllFantasyData` | `src/hooks/useAllFantasyData.ts` | Fantasy multi-position data |
-| `useOverallFantasyData` | `src/hooks/useOverallFantasyData.ts` | Overall fantasy rankings |
-| `useUnifiedFantasyData` | `src/hooks/useUnifiedFantasyData.ts` | Fantasy route data layer |
 | `useFantasySnapshot` | `src/hooks/useFantasySnapshot.ts` | Published fantasy snapshot loading |
 | `useInvestments` | `src/hooks/useInvestments.ts` | Portfolio holdings + quote enrichment |
 | `useLiveQuote` | `src/hooks/useLiveQuote.ts` | Current quote fetch state |
+| `useMBAApplications` | `src/hooks/useMBAApplications.ts` | Browser-local application tracking for the MBA role tracker |
+| `useMBAJobs` | `src/hooks/useMBAJobs.ts` | MBA job fetch state plus seen-job and watched-company persistence |
+| `useMuseumLog` | `src/hooks/useMuseumLog.ts` | Browser-local museum visit state for `/museum-log` |
+| `useRetirementPlan` | `src/hooks/useRetirementPlan.ts` | Browser-local retirement plan inputs (localStorage key `retirement_plan`) |
 | `useStockData` | `src/hooks/useStockData.ts` | Per-symbol research section data |
-| `useBudgetPlanner` | `src/hooks/useBudgetPlanner.ts` | Budget planner state and calculations |
-| `usePlayerImageCache` | `src/hooks/usePlayerImageCache.tsx` | Fantasy image caching context |
+| `useTablistKeyboard` | `src/hooks/useTablistKeyboard.ts` | Roving keyboard navigation for horizontal tablists (WCAG 2.1) |
+| `useTravelPlanner` | `src/hooks/useTravelPlanner.ts` | Browser-local trip, itinerary, and journal state for `/travel` |
+| `useWineCellar` | `src/hooks/useWineCellar.ts` | Browser-local wine cellar state for `/wine-cellar` |
+
+Hooks that no longer exist (do not reference as live): `useAllFantasyData`, `useOverallFantasyData`, `useUnifiedFantasyData`, `usePlayerImageCache`.
 
 ---
 
@@ -54,32 +59,40 @@ Used by the investments research panels.
 
 Owns current quote loading for UI that needs live quote enrichment separate from curated historical snapshot data.
 
+### `useRetirementPlan`
+
+Owns the browser-local retirement plan inputs consumed by `src/components/investments/retirement/*`. Mirrors the `useInvestments` localStorage pattern; the pure projection engine lives in `src/lib/retirement/` and is framework-free.
+
 ---
 
 ## Fantasy Football State
 
-### `useUnifiedFantasyData`
-
-Primary hook for the fantasy product surface.
-
-Used for:
-
-- rankings
-- tier data
-- loading/error state
-- refresh behavior
-
-### `useAllFantasyData` and `useOverallFantasyData`
-
-Supplementary fantasy hooks used by specific ranking or aggregated flows.
-
 ### `useFantasySnapshot`
 
-Loads the published fantasy snapshot JSON used by the public rankings and draft tracker surfaces.
+The single client-side entry point for fantasy data. Loads the published snapshot JSON from `public/data/fantasy/` (cache-busted by `src/data/fantasySnapshotRevision.generated.ts`) and serves the rankings, tier, and draft-tracker surfaces.
 
-### `usePlayerImageCache`
+---
 
-Context-based helper for cached player images on fantasy surfaces.
+## MBA Role Tracker State
+
+### `useMBAJobs`
+
+Owns job fetch state against `/api/mba-jobs`, plus browser-local persistence for seen job IDs and watched companies.
+
+### `useMBAApplications`
+
+Owns browser-local application status tracking layered onto the same surface.
+
+---
+
+## Personal Surface State
+
+These hooks follow the same browser-local pattern (localStorage, no account):
+
+- `useTravelPlanner` — trips, day-by-day itineraries, and journal entries for `/travel`
+- `useWineCellar` — bottle inventory state for `/wine-cellar`
+- `useMuseumLog` — visit log state for `/museum-log` (key `museum_log_user_state_v1`)
+- `useBudgetPlanner` — client-side state and calculations for `/fintech-tools/budget-planner`
 
 ---
 
@@ -93,9 +106,9 @@ Used in search-like UIs where input throttling matters:
 - investment symbol search
 - similar interactive input flows
 
-### `useBudgetPlanner`
+### `useTablistKeyboard`
 
-Owns the client-side state and calculations for `/fintech-tools/budget-planner`.
+Returns an `onKeyDown` handler for roving tablist keyboard navigation (ArrowLeft/Right wrap, Home/End jump, Enter/Space activate). Used by portfolio, writing archive, and investments research tab UIs.
 
 ---
 

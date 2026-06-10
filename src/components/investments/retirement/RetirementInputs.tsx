@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { IconTrash, IconPlus, IconRefresh, IconWallet } from "@tabler/icons-react";
 import type { UseRetirementPlanReturn } from "@/hooks/useRetirementPlan";
 import type { AccountType, RetirementResult, WithdrawalStrategy } from "@/lib/retirement";
@@ -44,6 +44,8 @@ export function RetirementInputs({ controller, result, portfolioValue }: Props) 
     reset,
   } = controller;
 
+  const [confirmReset, setConfirmReset] = useState(false);
+
   const primary = plan.accounts[0];
   const totalBalance = plan.accounts.reduce((s, a) => s + (a.balance || 0), 0);
   const totalContribution = plan.accounts.reduce(
@@ -69,9 +71,35 @@ export function RetirementInputs({ controller, result, portfolioValue }: Props) 
           <IconWallet size={12} aria-hidden="true" className="mr-1.5 inline align-middle" />
           Your numbers
         </p>
-        <button type="button" className="invest-retire-reset" onClick={reset}>
-          <IconRefresh size={13} aria-hidden="true" /> Reset
-        </button>
+        {confirmReset ? (
+          <span className="invest-retire-reset-confirm">
+            <button
+              type="button"
+              className="invest-retire-reset is-confirm"
+              onClick={() => {
+                reset();
+                setConfirmReset(false);
+              }}
+            >
+              <IconRefresh size={13} aria-hidden="true" /> Reset plan?
+            </button>
+            <button
+              type="button"
+              className="invest-retire-reset"
+              onClick={() => setConfirmReset(false)}
+            >
+              Cancel
+            </button>
+          </span>
+        ) : (
+          <button
+            type="button"
+            className="invest-retire-reset"
+            onClick={() => setConfirmReset(true)}
+          >
+            <IconRefresh size={13} aria-hidden="true" /> Reset
+          </button>
+        )}
       </div>
 
       {/* ── Quick start — instant first number ── */}
@@ -163,7 +191,9 @@ export function RetirementInputs({ controller, result, portfolioValue }: Props) 
             onChange={(v) => updateOtherIncome({ pensionStartAge: Math.round(v) })} />
           <NumberField label="Part-time income / yr" value={plan.otherIncome.partTimeAnnual} prefix="$" min={0} step={500}
             onChange={(v) => updateOtherIncome({ partTimeAnnual: v })} />
-          <NumberField label="Part-time until age" value={plan.otherIncome.partTimeEndAge} min={plan.retirementAge} max={90}
+          <NumberField label="Part-time from age" value={plan.otherIncome.partTimeStartAge} min={plan.retirementAge} max={90}
+            onChange={(v) => updateOtherIncome({ partTimeStartAge: Math.round(v) })} hint="Bridges an early retirement" />
+          <NumberField label="Part-time until age" value={plan.otherIncome.partTimeEndAge} min={plan.otherIncome.partTimeStartAge} max={90}
             onChange={(v) => updateOtherIncome({ partTimeEndAge: Math.round(v) })} />
         </div>
       </Collapsible>
@@ -197,9 +227,9 @@ export function RetirementInputs({ controller, result, portfolioValue }: Props) 
       {/* ── Assumptions ── */}
       <Collapsible title="Assumptions" summary="returns, inflation, taxes, withdrawal rule">
         <div className="invest-retire-grid-2">
-          <SelectField label="Filing status" value={plan.filingStatus}
-            options={[{ value: "single", label: "Single" }, { value: "married", label: "Married" }]}
-            onChange={(v) => updatePlan({ filingStatus: v })} />
+          {/* Filing status is intentionally not collected: taxes are modeled
+              as flat effective rates (below), so a status select would imply
+              bracket-level precision the engine doesn't have. */}
           <SelectField label="Withdrawal strategy" value={plan.assumptions.withdrawalStrategy} options={STRATEGIES}
             onChange={(v) => updateAssumptions({ withdrawalStrategy: v })} />
           <NumberField label="Inflation" value={plan.assumptions.inflation} suffix="%" min={0} max={10} step={0.1} asPercent

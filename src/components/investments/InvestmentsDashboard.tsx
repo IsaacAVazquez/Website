@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import {
   IconBookmark,
   IconChartArcs3,
@@ -75,6 +75,30 @@ export function InvestmentsDashboard({
   const [searchQuery, setSearchQuery] = useState("");
   const addHoldingRef = useRef<HTMLDivElement | null>(null);
   const researchSectionRef = useRef<HTMLDivElement | null>(null);
+  const filterInputRef = useRef<HTMLInputElement | null>(null);
+
+  // ⌘K / Ctrl+K focuses the holdings filter (matching the keyboard hint).
+  // Leave the shortcut alone while the user is typing somewhere else — other
+  // inputs keep their own behavior and the browser keeps its default.
+  useEffect(() => {
+    function onKeyDown(e: KeyboardEvent) {
+      if (!(e.metaKey || e.ctrlKey) || e.key.toLowerCase() !== "k") return;
+      const target = e.target as HTMLElement | null;
+      const isEditable =
+        !!target &&
+        (target.isContentEditable ||
+          target.tagName === "INPUT" ||
+          target.tagName === "TEXTAREA" ||
+          target.tagName === "SELECT") &&
+        target !== filterInputRef.current;
+      if (isEditable) return;
+      e.preventDefault();
+      filterInputRef.current?.focus();
+      filterInputRef.current?.select();
+    }
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
 
   const filteredHoldings = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
@@ -177,6 +201,7 @@ export function InvestmentsDashboard({
           <label className="invest-search" aria-label="Filter holdings">
             <IconSearch size={14} aria-hidden="true" />
             <input
+              ref={filterInputRef}
               type="search"
               placeholder="Filter holdings…"
               value={searchQuery}
@@ -250,7 +275,7 @@ export function InvestmentsDashboard({
               <p className="mb-2 text-sm font-semibold text-[var(--home-ink)]">
                 No positions yet
               </p>
-              <p className="mx-auto max-w-xs text-sm text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+              <p className="mx-auto max-w-xs text-sm text-[var(--home-ink-soft)]">
                 Add your first stock with the Add a holding form. Holdings are saved in your browser and persist across visits.
               </p>
             </div>

@@ -430,7 +430,7 @@ export function LaLigaClient({
                     style={getViewButtonStyle(isActive)}
                   >
                     <span className="text-[var(--home-ink)]">{option.label}</span>
-                    <span className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">{filterClubsForView(option.id).length}</span>
+                    <span className="text-xs text-[var(--home-ink-soft)]">{filterClubsForView(option.id).length}</span>
                   </button>
                 );
               })}
@@ -444,15 +444,15 @@ export function LaLigaClient({
             >
               <table className="min-w-full border-separate border-spacing-y-2" aria-label="La Liga standings">
                 <thead>
-                  <tr className="text-left text-xs uppercase tracking-[0.14em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                    <th className="px-3 py-2 font-semibold">Pos</th>
-                    <th className="px-3 py-2 font-semibold">Club</th>
-                    <th className="hidden px-3 py-2 font-semibold sm:table-cell">Record</th>
-                    <th className="px-3 py-2 font-semibold">Pts</th>
-                    <th className="hidden px-3 py-2 font-semibold md:table-cell">PPG</th>
-                    <th className="hidden px-3 py-2 font-semibold lg:table-cell">GF</th>
-                    <th className="hidden px-3 py-2 font-semibold lg:table-cell">GA</th>
-                    <th className="px-3 py-2 font-semibold">GD</th>
+                  <tr className="text-left text-xs uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
+                    <th scope="col" className="px-3 py-2 font-semibold">Pos</th>
+                    <th scope="col" className="px-3 py-2 font-semibold">Club</th>
+                    <th scope="col" className="hidden px-3 py-2 font-semibold sm:table-cell">Record</th>
+                    <th scope="col" className="px-3 py-2 font-semibold">Pts</th>
+                    <th scope="col" className="hidden px-3 py-2 font-semibold md:table-cell">PPG</th>
+                    <th scope="col" className="hidden px-3 py-2 font-semibold lg:table-cell">GF</th>
+                    <th scope="col" className="hidden px-3 py-2 font-semibold lg:table-cell">GA</th>
+                    <th scope="col" className="px-3 py-2 font-semibold">GD</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -562,7 +562,7 @@ export function LaLigaClient({
                   ["GA/m", formatFixed(selectedClub.goalsAgainst / selectedClub.played)],
                 ] as const).map(([label, value]) => (
                   <div key={label} className="flex items-baseline justify-between gap-2">
-                    <dt className="text-2xs font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">{label}</dt>
+                    <dt className="text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">{label}</dt>
                     <dd className="text-sm font-bold text-[var(--home-ink)]">{value}</dd>
                   </div>
                 ))}
@@ -570,7 +570,7 @@ export function LaLigaClient({
 
               {formSequence.length > 0 && (
                 <div className="mt-4 border-t border-[var(--home-rule)] pt-4">
-                  <p className="text-2xs font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">Form</p>
+                  <p className="text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">Form</p>
                   <div className="mt-2 flex gap-1.5">
                     {formSequence.slice(-5).map((result, i) => (
                       <TeamResultPill key={i} result={result} />
@@ -639,7 +639,7 @@ export function LaLigaClient({
               <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                 <div className="space-y-5">
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">Performance</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">Performance</p>
                     <div className="mt-3 grid grid-cols-2 gap-3">
                       <MetricCard label="PPG" value={formatFixed(selectedClub.points / selectedClub.played)} />
                       <MetricCard label="Record" value={`${selectedClub.won}-${selectedClub.drawn}-${selectedClub.lost}`} />
@@ -687,7 +687,7 @@ export function LaLigaClient({
 
                 {recentFixtures.length > 0 && (
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">Recent results</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">Recent results</p>
                     <div className="mt-3 space-y-2">
                       {recentFixtures.map((fixture) => (
                         <FixtureCard
@@ -703,7 +703,7 @@ export function LaLigaClient({
 
                 {upcomingFixtures.length > 0 && (
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">Upcoming fixtures</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">Upcoming fixtures</p>
                     <div className="mt-3 space-y-2">
                       {upcomingFixtures.map((fixture) => (
                         <FixtureCard
@@ -723,7 +723,7 @@ export function LaLigaClient({
               <div className="grid gap-6 md:grid-cols-2">
                 {summary.recentFixtures.length > 0 && (
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">Recent slate</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">Recent slate</p>
                     <h3 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">Latest results</h3>
                     <div className="mt-4 space-y-3">
                       {summary.recentFixtures.map((f) => (
@@ -734,7 +734,7 @@ export function LaLigaClient({
                 )}
                 {summary.upcomingFixtures.length > 0 && (
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">Next up</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">Next up</p>
                     <h3 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">Upcoming fixtures</h3>
                     <div className="mt-4 space-y-3">
                       {summary.upcomingFixtures.map((f) => (
@@ -751,7 +751,7 @@ export function LaLigaClient({
                 <div>
                   <div className="flex items-start justify-between gap-3">
                     <div>
-                      <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">Goals leaderboard</p>
+                      <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">Goals leaderboard</p>
                       <h3 className="mt-2 text-xl font-bold text-[var(--home-ink)]">Top scorers</h3>
                     </div>
                     <a
@@ -804,7 +804,7 @@ function ClubLeaderCard({
 }) {
   return (
     <div className="rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4">
-      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
         {title}
       </p>
       {leader ? (
@@ -813,7 +813,7 @@ function ClubLeaderCard({
           <p className="mt-1 text-sm text-[var(--home-ink-muted)]">
             {leader.total} {statLabel.toLowerCase()} in {leader.appearances} matches
           </p>
-          <p className="mt-2 text-xs font-medium uppercase tracking-[0.12em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+          <p className="mt-2 text-xs font-medium uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
             {formatFixed(leader.perMatch)} per match
           </p>
         </>

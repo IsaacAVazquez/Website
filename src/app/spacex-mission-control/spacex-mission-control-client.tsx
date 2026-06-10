@@ -533,7 +533,7 @@ export function SpaceXMissionControlClient({
     >
       <div className="mx-auto w-full max-w-[1700px] px-4 pb-10 pt-6 sm:px-6 sm:pb-12 sm:pt-8 lg:px-8 xl:px-10 2xl:px-12">
         <motion.div
-          className="mb-5 overflow-hidden rounded-[32px] border border-[color-mix(in_srgb,var(--home-haze)_14%,var(--home-rule))] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--home-haze)_7%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix)))_0%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))_50%,color-mix(in_srgb,var(--home-moss)_8%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix)))_100%)] p-5 shadow-[var(--shadow-md)] sm:p-6"
+          className="mb-5 overflow-hidden rounded-[32px] border border-[color-mix(in_srgb,var(--home-haze)_14%,var(--home-rule))] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--home-haze)_7%,var(--home-paper-raised))_0%,var(--home-paper-raised)_50%,color-mix(in_srgb,var(--home-moss)_8%,var(--home-paper-raised))_100%)] p-5 shadow-[var(--shadow-md)] sm:p-6"
           {...motionProps}
         >
           <div className="min-w-0">
@@ -541,7 +541,7 @@ export function SpaceXMissionControlClient({
               <span className="rounded-full border border-[color-mix(in_srgb,var(--home-haze)_24%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-paper)_72%,transparent)] px-3 py-1 font-mono text-2xs font-semibold uppercase tracking-[0.22em] text-[var(--home-haze)]">
                 SpaceX Mission Control
               </span>
-              <span className="rounded-full border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] px-3 py-1 text-xs font-medium text-[var(--home-ink-muted)]">
+              <span className="rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-3 py-1 text-xs font-medium text-[var(--home-ink-muted)]">
                 Local API backed
               </span>
             </div>
@@ -559,7 +559,7 @@ export function SpaceXMissionControlClient({
               <button
                 type="button"
                 onClick={handleRetryAll}
-                className="tap-target inline-flex items-center gap-2 rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] px-4 py-3 text-sm font-semibold text-[var(--home-ink)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)]"
+                className="tap-target inline-flex items-center gap-2 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-4 py-3 text-sm font-semibold text-[var(--home-ink)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)]"
               >
                 <RefreshCcw className="h-4 w-4" />
                 Refresh data

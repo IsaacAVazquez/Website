@@ -18,6 +18,16 @@ interface NumberFieldProps {
   asPercent?: boolean;
 }
 
+/**
+ * Render a stored value for the text buffer. Rounding strips float artifacts
+ * (a stored 6.6% hydrates as 0.066, and 0.066 * 100 === 6.600000000000001)
+ * without losing legitimate precision.
+ */
+function displayValue(value: number, asPercent: boolean): string {
+  const display = asPercent ? value * 100 : value;
+  return String(parseFloat(display.toFixed(6)));
+}
+
 export function NumberField({
   label,
   value,
@@ -32,7 +42,7 @@ export function NumberField({
 }: NumberFieldProps) {
   const id = useId();
   // Local text buffer so the field can be cleared/typed without snapping.
-  const [text, setText] = useState(() => String(asPercent ? value * 100 : value));
+  const [text, setText] = useState(() => displayValue(value, asPercent));
   const [syncedValue, setSyncedValue] = useState(value);
 
   // Reflect *external* value changes (reset, portfolio seed) during render
@@ -41,7 +51,7 @@ export function NumberField({
     setSyncedValue(value);
     const parsed = asPercent ? Number(text) / 100 : Number(text);
     if (Number.isNaN(parsed) || Math.abs(parsed - value) > 1e-9) {
-      setText(String(asPercent ? value * 100 : value));
+      setText(displayValue(value, asPercent));
     }
   }
 
@@ -70,7 +80,15 @@ export function NumberField({
           max={max}
           step={step}
           onChange={(e) => commit(e.target.value)}
-          onBlur={() => setText(String(asPercent ? value * 100 : value))}
+          onBlur={() => {
+            // Only canonicalize the buffer when it's empty, unparseable, or has
+            // drifted from the committed value — otherwise a valid in-progress
+            // entry like "5." (which already commits to 5) gets clobbered.
+            const parsed = asPercent ? Number(text) / 100 : Number(text);
+            if (text.trim() === "" || Number.isNaN(parsed) || Math.abs(parsed - value) > 1e-9) {
+              setText(displayValue(value, asPercent));
+            }
+          }}
         />
         {suffix ? <span className="invest-retire-affix invest-retire-affix-suffix">{suffix}</span> : null}
       </span>

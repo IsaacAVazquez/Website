@@ -89,7 +89,7 @@ function StatementTable({
 
   const table = normalize(data, period);
   if (!table) {
-    return <p className="text-sm text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] py-4">No data available.</p>;
+    return <p className="text-sm text-[var(--home-ink-soft)] py-4">No data available.</p>;
   }
 
   // Identify the label column (first string column) vs numeric period columns
@@ -101,13 +101,13 @@ function StatementTable({
       <table className="w-full text-xs min-w-[480px]" aria-label={`${section.replace("_", " ")} statement`}>
         <thead>
           <tr className="border-b border-[var(--home-rule)]">
-            <th className="text-left py-2 px-2 text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] font-medium w-40 sticky left-0 bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))]">
+            <th className="text-left py-2 px-2 text-[var(--home-ink-soft)] font-medium w-40 sticky left-0 bg-[var(--home-paper-raised)]">
               Metric
             </th>
             {periodCols.map((col) => (
               <th
                 key={col}
-                className="text-right py-2 px-2 text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] font-medium whitespace-nowrap"
+                className="text-right py-2 px-2 text-[var(--home-ink-soft)] font-medium whitespace-nowrap"
               >
                 {String(col)}
               </th>
@@ -120,7 +120,7 @@ function StatementTable({
               key={i}
               className="border-b border-[var(--home-rule)] last:border-0 hover:bg-[var(--home-paper-alt)] transition-colors"
             >
-              <td className="py-2 px-2 text-[var(--home-ink-muted)] font-medium sticky left-0 bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] whitespace-nowrap">
+              <td className="py-2 px-2 text-[var(--home-ink-muted)] font-medium sticky left-0 bg-[var(--home-paper-raised)] whitespace-nowrap">
                 {String(row[labelCol] ?? "")}
               </td>
               {periodCols.map((col) => {
@@ -179,7 +179,7 @@ export function FinancialStatementsPanel({ symbol }: Props) {
               className={`px-3 py-1.5 text-xs font-medium rounded-md transition capitalize min-h-[36px] ${
                 period === p
                   ? "bg-[var(--home-stone)] text-[var(--home-ink)]"
-                  : "text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] hover:bg-[var(--home-paper-alt)]"
+                  : "text-[var(--home-ink-soft)] hover:bg-[var(--home-paper-alt)]"
               }`}
             >
               {p.charAt(0).toUpperCase() + p.slice(1)}

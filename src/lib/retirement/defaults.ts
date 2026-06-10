@@ -9,6 +9,15 @@ import type { RetirementPlanInput, RetirementTaxRates } from "./types";
 export const DEFAULT_SAFE_WITHDRAWAL_RATE = 0.04;
 
 /**
+ * Fixed-percent withdrawals never run the balance to zero (you only ever draw a
+ * share of what remains), so a depletion-based success rate would be a
+ * meaningless ~100%. Instead we treat a path as a *funding shortfall* once the
+ * real annual portfolio draw falls below this fraction of the desired lifestyle
+ * spend — i.e. the year the strategy stops actually paying for the target life.
+ */
+export const FIXED_PERCENT_SPEND_FLOOR = 0.8;
+
+/**
  * Coarse effective tax rates by account type (spec §4.7, v1 flat-rate approach):
  *  - taxable: long-term cap gains (~15%) on roughly half the withdrawal (gains slice)
  *  - traditional: a blended effective ordinary-income rate in retirement
