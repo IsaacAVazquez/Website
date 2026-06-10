@@ -146,7 +146,7 @@ export function TierBreakdown({ players, position, getPublishedRank }: TierBreak
                     }}
                   >
                     <span
-                      className="inline-flex min-w-[2rem] items-center justify-center rounded-full border px-2 py-0.5 text-2xs font-semibold"
+                      className="inline-flex min-w-[2rem] items-center justify-center rounded-full border px-2 py-0.5 text-2xs font-semibold tabular-nums"
                       style={getPositionTone(player.position)}
                       aria-hidden="true"
                     >

@@ -15,6 +15,7 @@ import {
   getFantasyWeekLabel,
 } from "@/lib/fantasy";
 import {
+  FANTASY_CHIP_CLASS,
   formatOwnership,
   formatRange,
   formatRankValue,
@@ -296,20 +297,20 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
   // since the cells stack into a single column.
   const rowClassName = isCompact
     ? "grid gap-x-4 gap-y-1 rounded-[1.25rem] border px-4 py-2.5 md:grid-cols-[56px_minmax(0,1.6fr)_minmax(0,0.9fr)_minmax(0,1fr)_minmax(0,1fr)] md:items-center"
-    : "grid gap-4 rounded-[1.5rem] border px-4 py-4 md:grid-cols-[64px_minmax(0,1.6fr)_minmax(0,0.9fr)_minmax(0,1fr)_minmax(0,1fr)] md:items-center";
+    : "grid gap-4 rounded-[1.5rem] border px-4 py-3 md:grid-cols-[64px_minmax(0,1.6fr)_minmax(0,0.9fr)_minmax(0,1fr)_minmax(0,1fr)] md:items-center";
   const rankValueClassName = isCompact
     ? "text-xl font-semibold tabular-nums"
     : "text-2xl font-semibold tabular-nums";
   const cellLabelClassName = isCompact ? "home-kicker mb-1 md:hidden" : "home-kicker mb-1";
-  const skeletonHeightClass = isCompact ? "h-[68px]" : "h-[104px]";
+  const skeletonHeightClass = isCompact ? "h-[76px]" : "h-[96px]";
 
   return (
     <section
-      className="home-page min-h-screen"
+      className="home-page home-dash min-h-screen"
       aria-label="Fantasy football rankings"
       data-testid="fantasy-football-shell"
     >
-      <div className="home-shell home-section space-y-5 sm:space-y-6">
+      <div className="home-shell home-shell-wide home-section space-y-4 sm:space-y-5">
         <motion.div
           className="space-y-4 pt-2"
           variants={variants}
@@ -367,7 +368,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
           </article>
         )}
 
-        <div className="grid gap-5 lg:grid-cols-[minmax(0,1.18fr)_minmax(18rem,22rem)]">
+        <div className="grid gap-5 lg:grid-cols-[minmax(0,1.18fr)_minmax(18rem,22rem)] min-[1440px]:grid-cols-[minmax(0,1.2fr)_minmax(20rem,26rem)]">
           <div className="grid gap-5">
             <article className="home-card p-5 sm:p-6">
               <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_18rem]">
@@ -641,7 +642,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                           <div className="flex flex-wrap items-center gap-2">
                             <p className="truncate text-base font-semibold">{player.name}</p>
                             <span
-                              className="inline-flex min-h-[32px] items-center rounded-full border px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em]"
+                              className={FANTASY_CHIP_CLASS}
                               style={getPositionTone(player.position)}
                             >
                               {player.position}

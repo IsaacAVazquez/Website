@@ -109,8 +109,8 @@ export function DraftTrackerClient() {
   }
 
   return (
-    <section className="home-page min-h-screen">
-      <div className="home-shell home-section space-y-5 sm:space-y-6">
+    <section className="home-page home-dash min-h-screen">
+      <div className="home-shell home-shell-wide home-section space-y-4 sm:space-y-5">
         <Breadcrumbs customItems={DRAFT_TRACKER_BREADCRUMBS} className="pt-2" />
         <div className="space-y-4">
           <div className="space-y-3">
@@ -139,7 +139,7 @@ export function DraftTrackerClient() {
 
           <div className="flex flex-wrap gap-2 text-sm">
             <span
-              className="inline-flex min-h-[44px] items-center rounded-full border px-4 py-2 font-medium"
+              className="inline-flex items-center rounded-full border px-3 py-1.5 text-sm font-medium"
               style={{
                 borderColor: "var(--home-rule)",
                 background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
@@ -148,7 +148,7 @@ export function DraftTrackerClient() {
               {metadata ? `${metadata.season} ${getFantasyWeekLabel(metadata.week)}` : "Loading snapshot"}
             </span>
             <span
-              className="inline-flex min-h-[44px] items-center rounded-full border px-4 py-2 font-medium"
+              className="inline-flex items-center rounded-full border px-3 py-1.5 text-sm font-medium"
               style={{
                 borderColor: "var(--home-rule)",
                 background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
@@ -157,7 +157,7 @@ export function DraftTrackerClient() {
               Source updated {formatUpdatedAt(overallSliceMetadata?.updatedAt ?? metadata?.upstreamUpdatedAt)}
             </span>
             <span
-              className="inline-flex min-h-[44px] items-center rounded-full border px-4 py-2 font-medium"
+              className="inline-flex items-center rounded-full border px-3 py-1.5 text-sm font-medium"
               style={{
                 borderColor: "var(--home-rule)",
                 background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
@@ -166,7 +166,7 @@ export function DraftTrackerClient() {
               Built {formatUpdatedAt(metadata?.generatedAt)}
             </span>
             <span
-              className="inline-flex min-h-[44px] items-center rounded-full border px-4 py-2 font-medium"
+              className="inline-flex items-center rounded-full border px-3 py-1.5 text-sm font-medium"
               style={{
                 borderColor: "var(--home-rule)",
                 background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
@@ -205,7 +205,7 @@ export function DraftTrackerClient() {
           </article>
         )}
 
-        <div className="grid gap-5 lg:grid-cols-[minmax(0,1.18fr)_minmax(18rem,22rem)]">
+        <div className="grid gap-5 lg:grid-cols-[minmax(0,1.18fr)_minmax(18rem,22rem)] min-[1440px]:grid-cols-[minmax(0,1.2fr)_minmax(20rem,26rem)]">
           <div className="grid gap-5">
             <article className="home-card p-5 sm:p-6">
               <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_18rem]">

@@ -4,7 +4,7 @@ import { useMemo, useState, type CSSProperties } from "react";
 import { Player, TeamRoster } from "@/types";
 import type { FantasySnapshot } from "@/lib/fantasy";
 import { useDebounce } from "@/hooks/useDebounce";
-import { formatRange, formatRankValue, getPositionTone } from "@/lib/fantasyUtils";
+import { FANTASY_CHIP_CLASS, formatRange, formatRankValue, getPositionTone } from "@/lib/fantasyUtils";
 import { DraftTierColumns } from "./DraftTierColumns";
 
 interface DraftBoardProps {
@@ -186,7 +186,7 @@ export function DraftBoard({
           {rosterNeeds.slice(0, 3).map((need) => (
             <span
               key={`need-${need}`}
-              className="inline-flex min-h-[36px] items-center rounded-full border px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em]"
+              className={FANTASY_CHIP_CLASS}
               style={{
                 borderColor: "color-mix(in srgb, var(--color-success) 28%, var(--home-rule))",
                 background: "color-mix(in srgb, var(--color-success) 10%, var(--home-paper))",
@@ -278,7 +278,7 @@ export function DraftBoard({
                 return (
                   <div
                     key={player.id}
-                    className="grid gap-4 rounded-[1.5rem] border px-4 py-4 sm:grid-cols-[72px_minmax(0,1.45fr)_110px_140px_auto] sm:items-center"
+                    className="grid gap-4 rounded-[1.5rem] border px-4 py-3 sm:grid-cols-[72px_minmax(0,1.45fr)_110px_140px_auto] sm:items-center"
                     style={{
                       borderColor: "var(--home-rule)",
                       background: "color-mix(in srgb, var(--home-paper-alt) 42%, var(--home-elev-mix))",
@@ -293,14 +293,14 @@ export function DraftBoard({
                       <div className="flex flex-wrap items-center gap-2">
                         <p className="truncate text-base font-semibold">{player.name}</p>
                         <span
-                          className="inline-flex min-h-[32px] items-center rounded-full border px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em]"
+                          className={FANTASY_CHIP_CLASS}
                           style={getPositionTone(player.position)}
                         >
                           {player.position}
                         </span>
                         {fitsCurrentNeed && (
                           <span
-                            className="inline-flex min-h-[32px] items-center rounded-full border px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em]"
+                            className={FANTASY_CHIP_CLASS}
                             style={{
                               borderColor: "color-mix(in srgb, var(--color-success) 28%, var(--home-rule))",
                               background: "color-mix(in srgb, var(--color-success) 10%, var(--home-paper))",

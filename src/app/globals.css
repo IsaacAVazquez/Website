@@ -792,6 +792,25 @@
     color: var(--home-ink);
   }
 
+  /*
+   * Data-dashboard opt-out: inside a dashboard surface, paragraphs and lists
+   * are UI labels, values, and rows — not prose — so the base typography
+   * margins (p margin-bottom, ul padding/margins) only add phantom space.
+   * Margin/padding utilities still win via the utilities layer.
+   */
+  .home-dash p {
+    margin-bottom: 0;
+    max-inline-size: none;
+  }
+  .home-dash ul,
+  .home-dash ol {
+    margin-bottom: 0;
+    padding-left: 0;
+  }
+  .home-dash li {
+    margin-bottom: 0;
+  }
+
   .home-shell,
   .home-shell-tight,
   .home-shell-narrow {
@@ -812,8 +831,10 @@
     max-width: 76rem;
   }
 
-  /* Investments dashboard density override: widen past .home-shell on xl+ screens. */
+  /* Wide data-dashboard override: widen past .home-shell on xl+ screens.
+     .home-shell-investments is the legacy alias; prefer .home-shell-wide. */
   @media (min-width: 1440px) {
+    .home-shell.home-shell-wide,
     .home-shell.home-shell-investments {
       max-width: 1680px;
     }
