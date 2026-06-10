@@ -462,14 +462,14 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
               <table className="min-w-full border-separate border-spacing-y-2" aria-label="NBA standings">
                 <thead>
                   <tr className="text-left text-xs uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
-                    <th className="px-3 py-2 font-semibold">Seed</th>
-                    <th className="px-3 py-2 font-semibold">Team</th>
-                    <th className="hidden px-3 py-2 font-semibold sm:table-cell">Record</th>
-                    <th className="px-3 py-2 font-semibold">W%</th>
-                    <th className="hidden px-3 py-2 font-semibold md:table-cell">GB</th>
-                    <th className="hidden px-3 py-2 font-semibold lg:table-cell">PF</th>
-                    <th className="hidden px-3 py-2 font-semibold lg:table-cell">PA</th>
-                    <th className="px-3 py-2 font-semibold">Diff</th>
+                    <th scope="col" className="px-3 py-2 font-semibold">Seed</th>
+                    <th scope="col" className="px-3 py-2 font-semibold">Team</th>
+                    <th scope="col" className="hidden px-3 py-2 font-semibold sm:table-cell">Record</th>
+                    <th scope="col" className="px-3 py-2 font-semibold">W%</th>
+                    <th scope="col" className="hidden px-3 py-2 font-semibold md:table-cell">GB</th>
+                    <th scope="col" className="hidden px-3 py-2 font-semibold lg:table-cell">PF</th>
+                    <th scope="col" className="hidden px-3 py-2 font-semibold lg:table-cell">PA</th>
+                    <th scope="col" className="px-3 py-2 font-semibold">Diff</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -595,7 +595,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
                   ] as const
                 ).map(([label, value]) => (
                   <div key={label} className="flex items-baseline justify-between gap-2">
-                    <dt className="text-2xs font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                    <dt className="text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
                       {label}
                     </dt>
                     <dd className="text-sm font-bold text-[var(--home-ink)]">{value}</dd>
@@ -605,7 +605,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
 
               {formSequence.length > 0 && (
                 <div className="mt-4 border-t border-[var(--home-rule)] pt-4">
-                  <p className="text-2xs font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                  <p className="text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
                     Form
                   </p>
                   <div className="mt-2 flex gap-1.5">
@@ -674,7 +674,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
               <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                 <div className="space-y-5">
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
                       Performance
                     </p>
                     <div className="mt-3 grid grid-cols-2 gap-3">
@@ -729,7 +729,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
 
                 {recentFixtures.length > 0 && (
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
                       Recent results
                     </p>
                     <div className="mt-3 space-y-2">
@@ -747,7 +747,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
 
                 {upcomingFixtures.length > 0 && (
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
                       Upcoming games
                     </p>
                     <div className="mt-3 space-y-2">
@@ -769,7 +769,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
               <div className="grid gap-6 md:grid-cols-2">
                 {summary.recentFixtures.length > 0 && (
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
                       Recent slate
                     </p>
                     <h3 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">Latest results</h3>
@@ -782,7 +782,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
                 )}
                 {summary.upcomingFixtures.length > 0 && (
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
                       Next up
                     </p>
                     <h3 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">Upcoming games</h3>
@@ -801,7 +801,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
                 <div>
                   <div className="flex items-start justify-between gap-3">
                     <div>
-                      <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                      <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
                         Points
                       </p>
                       <h3 className="mt-2 text-xl font-bold text-[var(--home-ink)]">Top scorers</h3>
@@ -823,7 +823,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
                   />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
                     Rebounds
                   </p>
                   <h3 className="mt-2 text-xl font-bold text-[var(--home-ink)]">Top rebounders</h3>
@@ -834,7 +834,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
                   />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
                     Assists
                   </p>
                   <h3 className="mt-2 text-xl font-bold text-[var(--home-ink)]">Top playmakers</h3>
@@ -1087,7 +1087,7 @@ function TeamLeaderCard({
 }) {
   return (
     <div className="rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4">
-      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
         {title}
       </p>
       {leader ? (
@@ -1096,7 +1096,7 @@ function TeamLeaderCard({
           <p className="mt-1 text-sm text-[var(--home-ink-muted)]">
             {leader.total.toFixed(1)} {statLabel.toLowerCase()} per game
           </p>
-          <p className="mt-2 text-xs font-medium uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+          <p className="mt-2 text-xs font-medium uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
             {leader.teamAbbreviation}
           </p>
         </>

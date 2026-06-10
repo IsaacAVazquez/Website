@@ -36,12 +36,18 @@ test.describe("Footer CTA cleanup", () => {
 
     await expect(page.getByText(/continue the conversation/i)).toHaveCount(0);
     await expect(page.getByText(/start a conversation/i)).toHaveCount(0);
+    // The page must not stack its own CTA band above the footer's.
+    await expect(
+      page.getByRole("heading", { name: /looking for product work/i })
+    ).toHaveCount(0);
 
     const footer = page.getByRole("contentinfo");
     await expect(footer).toHaveAttribute("data-footer-variant", "full");
     await expect(
       footer.getByRole("heading", { name: /building something that needs judgment and follow-through/i })
     ).toBeVisible();
+    // Exactly one contact CTA panel on the page — the footer's.
+    await expect(page.locator("#contact")).toHaveCount(1);
   });
 
   test("uses the footer sign-off on writing detail pages", async ({ page }) => {

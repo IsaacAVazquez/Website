@@ -491,7 +491,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
             >
               {groupedStandings.map(([groupName, rows]) => (
                 <div key={groupName}>
-                  <p className="px-1 text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                  <p className="px-1 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
                     {groupName}
                   </p>
                   <table
@@ -500,14 +500,14 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                   >
                     <thead>
                       <tr className="text-left text-xs uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
-                        <th className="px-3 py-2 font-semibold">Pos</th>
-                        <th className="px-3 py-2 font-semibold">Team</th>
-                        <th className="px-3 py-2 font-semibold">W-L</th>
-                        <th className="hidden px-3 py-2 font-semibold sm:table-cell">PCT</th>
-                        <th className="hidden px-3 py-2 font-semibold md:table-cell">GB</th>
-                        <th className="hidden px-3 py-2 font-semibold lg:table-cell">RS</th>
-                        <th className="hidden px-3 py-2 font-semibold lg:table-cell">RA</th>
-                        <th className="hidden px-3 py-2 font-semibold xl:table-cell">L10</th>
+                        <th scope="col" className="px-3 py-2 font-semibold">Pos</th>
+                        <th scope="col" className="px-3 py-2 font-semibold">Team</th>
+                        <th scope="col" className="px-3 py-2 font-semibold">W-L</th>
+                        <th scope="col" className="hidden px-3 py-2 font-semibold sm:table-cell">PCT</th>
+                        <th scope="col" className="hidden px-3 py-2 font-semibold md:table-cell">GB</th>
+                        <th scope="col" className="hidden px-3 py-2 font-semibold lg:table-cell">RS</th>
+                        <th scope="col" className="hidden px-3 py-2 font-semibold lg:table-cell">RA</th>
+                        <th scope="col" className="hidden px-3 py-2 font-semibold xl:table-cell">L10</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -627,7 +627,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                       ] as const
                     ).map(([label, value]) => (
                       <div key={label} className="flex items-baseline justify-between gap-2">
-                        <dt className="text-2xs font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                        <dt className="text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
                           {label}
                         </dt>
                         <dd className="text-sm font-bold text-[var(--home-ink)]">{value}</dd>
@@ -637,7 +637,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
 
                   {(teamSnapshot?.form?.sequence?.length ?? 0) > 0 && (
                     <div className="mt-4 border-t border-[var(--home-rule)] pt-4">
-                      <p className="text-2xs font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                      <p className="text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
                         Last 5
                       </p>
                       <div className="mt-2 flex gap-1.5">
@@ -709,7 +709,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
               <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                 <div className="space-y-5">
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
                       Performance
                     </p>
                     <div className="mt-3 grid grid-cols-2 gap-3">
@@ -758,7 +758,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
 
                 {(teamSnapshot?.recentGames.length ?? 0) > 0 && (
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
                       Recent results
                     </p>
                     <div className="mt-3 space-y-2">
@@ -776,7 +776,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
 
                 {(teamSnapshot?.upcomingGames.length ?? 0) > 0 && (
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
                       Upcoming games
                     </p>
                     <div className="mt-3 space-y-2">
@@ -798,7 +798,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
               <div className="grid gap-6 md:grid-cols-2">
                 {summary.recentGames.length > 0 && (
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
                       Recent slate
                     </p>
                     <h3 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">Latest results</h3>
@@ -811,7 +811,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                 )}
                 {summary.upcomingGames.length > 0 && (
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
                       Next up
                     </p>
                     <h3 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">Upcoming games</h3>
@@ -905,7 +905,7 @@ function LeagueLeaders({
         <div key={group.title}>
           <div className="flex items-start justify-between gap-3">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
                 Leaderboard
               </p>
               <h3 className="mt-2 text-xl font-bold text-[var(--home-ink)]">{group.title}</h3>

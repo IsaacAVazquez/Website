@@ -348,11 +348,13 @@ export const useDraftState = () => {
           : '',
       ]);
 
+      // CRLF row endings per RFC 4180, and a UTF-8 BOM so Excel on Windows
+      // doesn't garble accented player names.
       const csvContent = [csvHeaders, ...csvRows]
         .map(row => row.map(escapeCsvValue).join(','))
-        .join('\n');
+        .join('\r\n');
 
-      const blob = new Blob([csvContent], { type: 'text/csv' });
+      const blob = new Blob(['\uFEFF', csvContent], { type: 'text/csv;charset=utf-8' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;

@@ -1,6 +1,14 @@
 "use client";
 
-import React, { useState, useEffect, useLayoutEffect, useMemo, useRef, useCallback } from "react";
+import React, {
+  useState,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useCallback,
+  useSyncExternalStore,
+} from "react";
 import { createPortal } from "react-dom";
 import { IconSearch, IconAlertCircle } from "@tabler/icons-react";
 import { useDebounce } from "@/hooks/useDebounce";
@@ -13,6 +21,8 @@ interface Props {
 }
 
 const VALID_SYMBOL_PATTERN = /^[A-Z0-9.-]{1,10}$/;
+
+const emptySubscribe = () => () => {};
 
 function normalizeQuery(value: string): string {
   return value
@@ -43,6 +53,14 @@ export function StockSearch({ value, onChange }: Props) {
   const [showDropdown, setShowDropdown] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
   const [dropdownStyle, setDropdownStyle] = useState<React.CSSProperties>({});
+  // Hydration flag via useSyncExternalStore: a one-shot setState inside the
+  // first passive effect gets dropped after hydration on this tree
+  // (React 19.2 + Next 16), which left the portal permanently unrendered.
+  const mounted = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
 
   const debouncedInput = useDebounce(input, 200);
 
@@ -220,7 +238,7 @@ export function StockSearch({ value, onChange }: Props) {
       <div className="relative">
         <IconSearch
           size={16}
-          className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]"
+          className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-[var(--home-ink-soft)]"
         />
 
         <input
@@ -241,7 +259,7 @@ export function StockSearch({ value, onChange }: Props) {
           placeholder="Search symbol or company…"
           autoComplete="off"
           spellCheck={false}
-          className="box-border w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] py-3 pl-9 pr-4 text-sm text-[var(--home-ink)] transition placeholder:text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[var(--home-haze)]"
+          className="box-border w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] py-3 pl-9 pr-4 text-sm text-[var(--home-ink)] transition placeholder:text-[var(--home-ink-soft)] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[var(--home-haze)]"
           aria-label="Search stock symbol"
           aria-autocomplete="list"
           aria-controls="stock-search-listbox"
@@ -254,11 +272,8 @@ export function StockSearch({ value, onChange }: Props) {
         />
       </div>
 
-      {/* The portal can only render after user interaction (showDropdown starts
-          false), so no SSR/hydration gate is needed. A mount-flag gate here
-          previously kept the dropdown from ever rendering: the flag's setState
-          from the initial effect flush was dropped on this page. */}
-      {showDropdown &&
+      {mounted &&
+        showDropdown &&
         suggestions.length > 0 &&
         createPortal(
 <ul

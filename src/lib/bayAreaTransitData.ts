@@ -101,6 +101,14 @@ function slugify(value: string): string {
     .replace(/-+$/g, "");
 }
 
+/** "YELLOW" / "yellow" → "Yellow" (the casing the seed and UI color map use). */
+function titleCaseColor(value: string): string {
+  return value
+    .trim()
+    .toLowerCase()
+    .replace(/(^|[\s-])[a-z]/g, (char) => char.toUpperCase());
+}
+
 /** BART wraps some text fields in `{ "#cdata-section": "…" }`. Unwrap to string. */
 function readCdata(value: Cdata): string {
   if (value == null) return "";
@@ -203,6 +211,10 @@ export async function buildBayAreaTransitSnapshotData(): Promise<TransitSnapshot
   const stationLineNames = new Map<string, Set<string>>();
   const lines: TransitLine[] = [];
   const seenLineIds = new Set<string>();
+  // BART returns each colored line as two route records, one per direction
+  // ("Antioch to SFO" and "SFO to Antioch"). One card per line, not per
+  // direction — the second direction only contributes to the station mapping.
+  const seenLineColors = new Set<string>();
 
   for (const route of rawRoutes) {
     let detail: BartRoute = route;
@@ -216,13 +228,30 @@ export async function buildBayAreaTransitSnapshotData(): Promise<TransitSnapshot
     }
 
     const name = detail.name ?? route.name ?? "BART Line";
+    // The live feed reports colors in uppercase ("YELLOW"); normalize to the
+    // Title Case the seed and the client's color map use.
+    const colorName = titleCaseColor(detail.color ?? route.color ?? "");
+    const configStations = asArray(detail.config?.station).filter(Boolean);
+
+    if (colorName) {
+      for (const stationAbbr of configStations) {
+        const key = stationAbbr.toUpperCase();
+        if (!stationLineNames.has(key)) stationLineNames.set(key, new Set());
+        stationLineNames.get(key)!.add(colorName);
+      }
+    }
+
+    const directionKey = colorName || slugify(name);
+    if (directionKey && seenLineColors.has(directionKey)) {
+      await delay(ROUTE_REQUEST_SPACING_MS);
+      continue;
+    }
+    if (directionKey) seenLineColors.add(directionKey);
+
     let id = slugify(name);
     if (!id) id = slugify(route.abbr ?? route.number ?? "line");
     if (seenLineIds.has(id)) id = `${id}-${route.number}`;
     seenLineIds.add(id);
-
-    const colorName = (detail.color ?? route.color ?? "").trim();
-    const configStations = asArray(detail.config?.station).filter(Boolean);
 
     lines.push({
       id,
@@ -234,14 +263,6 @@ export async function buildBayAreaTransitSnapshotData(): Promise<TransitSnapshot
       destination: detail.destination ?? "",
       stationCount: configStations.length || toNumber(detail.num_stns),
     });
-
-    if (colorName) {
-      for (const stationAbbr of configStations) {
-        const key = stationAbbr.toUpperCase();
-        if (!stationLineNames.has(key)) stationLineNames.set(key, new Set());
-        stationLineNames.get(key)!.add(colorName);
-      }
-    }
 
     await delay(ROUTE_REQUEST_SPACING_MS);
   }

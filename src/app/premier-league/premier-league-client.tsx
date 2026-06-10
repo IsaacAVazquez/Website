@@ -509,14 +509,14 @@ export function PremierLeagueClient({
               <table className="min-w-full border-separate border-spacing-y-2" aria-label="Premier League standings">
                 <thead>
                   <tr className="text-left text-xs uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
-                    <th className="px-3 py-2 font-semibold">Pos</th>
-                    <th className="px-3 py-2 font-semibold">Club</th>
-                    <th className="hidden px-3 py-2 font-semibold sm:table-cell">Record</th>
-                    <th className="px-3 py-2 font-semibold">Pts</th>
-                    <th className="hidden px-3 py-2 font-semibold md:table-cell">PPG</th>
-                    <th className="hidden px-3 py-2 font-semibold lg:table-cell">GF</th>
-                    <th className="hidden px-3 py-2 font-semibold lg:table-cell">GA</th>
-                    <th className="px-3 py-2 font-semibold">GD</th>
+                    <th scope="col" className="px-3 py-2 font-semibold">Pos</th>
+                    <th scope="col" className="px-3 py-2 font-semibold">Club</th>
+                    <th scope="col" className="hidden px-3 py-2 font-semibold sm:table-cell">Record</th>
+                    <th scope="col" className="px-3 py-2 font-semibold">Pts</th>
+                    <th scope="col" className="hidden px-3 py-2 font-semibold md:table-cell">PPG</th>
+                    <th scope="col" className="hidden px-3 py-2 font-semibold lg:table-cell">GF</th>
+                    <th scope="col" className="hidden px-3 py-2 font-semibold lg:table-cell">GA</th>
+                    <th scope="col" className="px-3 py-2 font-semibold">GD</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -616,7 +616,7 @@ export function PremierLeagueClient({
                     ["GA/m", formatFixed(selectedRow.goalsAgainst / selectedRow.playedGames)],
                   ] as const).map(([label, value]) => (
                     <div key={label} className="flex items-baseline justify-between gap-2">
-                      <dt className="text-2xs font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">{label}</dt>
+                      <dt className="text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">{label}</dt>
                       <dd className="text-sm font-bold text-[var(--home-ink)]">{value}</dd>
                     </div>
                   ))}
@@ -624,7 +624,7 @@ export function PremierLeagueClient({
 
                 {teamSnapshot && teamSnapshot.form.sequence.length > 0 && (
                   <div className="mt-4 border-t border-[var(--home-rule)] pt-4">
-                    <p className="text-2xs font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">Form</p>
+                    <p className="text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">Form</p>
                     <div className="mt-2 flex gap-1.5">
                       {teamSnapshot.form.sequence.map((result, i) => (
                         <TeamResultPill key={`${result}-${i}`} result={result} />
@@ -696,7 +696,7 @@ export function PremierLeagueClient({
               <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                 <div className="space-y-5">
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">Performance</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">Performance</p>
                     <div className="mt-3 grid grid-cols-2 gap-3">
                       <MetricCard label="PPG" value={formatFixed(selectedRow.points / selectedRow.playedGames)} />
                       <MetricCard label="Record" value={`${selectedRow.won}-${selectedRow.draw}-${selectedRow.lost}`} />
@@ -746,7 +746,7 @@ export function PremierLeagueClient({
 
                 {recentFixtures.length > 0 && (
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">Recent results</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">Recent results</p>
                     <div className="mt-3 space-y-2">
                       {recentFixtures.map((fixture) => (
                         <FixtureCard
@@ -762,7 +762,7 @@ export function PremierLeagueClient({
 
                 {upcomingFixtures.length > 0 && (
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">Upcoming fixtures</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">Upcoming fixtures</p>
                     <div className="mt-3 space-y-2">
                       {upcomingFixtures.map((fixture) => (
                         <FixtureCard
@@ -782,7 +782,7 @@ export function PremierLeagueClient({
               <div className="grid gap-6 md:grid-cols-2">
                 {summary.recentFixtures.length > 0 && (
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">Recent slate</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">Recent slate</p>
                     <h3 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">Latest results</h3>
                     <div className="mt-4 space-y-3">
                       {summary.recentFixtures.slice(0, 8).map((f) => (
@@ -793,7 +793,7 @@ export function PremierLeagueClient({
                 )}
                 {summary.upcomingFixtures.length > 0 && (
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">Next up</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">Next up</p>
                     <h3 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">Upcoming fixtures</h3>
                     <div className="mt-4 space-y-3">
                       {summary.upcomingFixtures.slice(0, 8).map((f) => (
@@ -810,7 +810,7 @@ export function PremierLeagueClient({
                 <div>
                   <div className="flex items-start justify-between gap-3">
                     <div>
-                      <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">Goals leaderboard</p>
+                      <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">Goals leaderboard</p>
                       <h3 className="mt-2 text-xl font-bold text-[var(--home-ink)]">Top scorers</h3>
                     </div>
                     <a

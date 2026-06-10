@@ -158,7 +158,7 @@ export function DraftBoard({
                     role="radio"
                     aria-checked={active}
                     onClick={() => setBoardView(option.value)}
-                    className="inline-flex min-h-[40px] items-center rounded-full px-3.5 py-1.5 text-sm transition-colors duration-200"
+                    className="inline-flex min-h-[44px] items-center rounded-full px-3.5 py-1.5 text-sm transition-colors duration-200"
                     style={
                       active
                         ? { background: "var(--home-ink)", color: "var(--home-paper)" }

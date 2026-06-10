@@ -13,6 +13,7 @@ const STATIC_ROUTE_LASTMOD = {
   "/portfolio": "2026-04-04",
   "/writing": "2026-04-13",
   "/golf": "2026-04-16",
+  "/earthquake-pulse": readEarthquakeLastmod(),
   "/decision-lab": "2026-04-04",
   "/formula-1": "2026-04-04",
   "/fantasy-formula-1": readFormula1Lastmod(),
@@ -24,6 +25,8 @@ const STATIC_ROUTE_LASTMOD = {
   "/now": "2026-04-13",
   "/recipe-finder": "2026-04-04",
   "/wine-cellar": "2026-04-04",
+  "/bay-area-transit": readBayAreaTransitLastmod(),
+  "/changelog": "2026-04-13",
   "/github-trending-pulse": readGitHubTrendingLastmod(),
   "/tech-startup-tracker": readTechStartupLastmod(),
   "/investments": readInvestmentsLastmod(),
@@ -111,6 +114,12 @@ function readFormula1Lastmod() {
   );
 }
 
+function readEarthquakeLastmod() {
+  return toIsoString(
+    readFirstMatch("src/data/earthquakeSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
+  );
+}
+
 function readFantasyLastmod() {
   const source = JSON.parse(readFile("public/data/fantasy/ppr.json"));
   return toIsoString(source.generatedAt);
@@ -125,6 +134,12 @@ function readGitHubTrendingLastmod() {
 function readTechStartupLastmod() {
   return toIsoString(
     readFirstMatch("src/data/techStartupSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
+  );
+}
+
+function readBayAreaTransitLastmod() {
+  return toIsoString(
+    readFirstMatch("src/data/bayAreaTransitSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
   );
 }
 
@@ -214,18 +229,26 @@ function getBlogRouteEntries() {
     return [];
   }
 
+  // Future-dated posts (staggered series) stay out of the sitemap until their
+  // publish date arrives — search engines distrust future lastmod values, and
+  // the listing pages apply the same cutoff (see isBlogPostPublished).
+  const today = new Date().toISOString().slice(0, 10);
+
   return fs
     .readdirSync(contentDirectory)
     .filter((file) => file.endsWith(".mdx") || file.endsWith(".md"))
     .map((file) => {
       const slug = file.replace(/\.(mdx|md)$/, "");
       const { data } = matter(readFile(path.join("content/blog", file)));
+      if (data.publishedAt && String(data.publishedAt).slice(0, 10) > today) {
+        return null;
+      }
       return {
         loc: `/writing/${slug}`,
         lastmod: toIsoString(data.updatedAt || data.publishedAt),
       };
     })
-    .filter((entry) => entry.lastmod);
+    .filter((entry) => entry && entry.lastmod);
 }
 
 function getPublicSitemapEntries() {

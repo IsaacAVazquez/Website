@@ -201,7 +201,7 @@ export function DraftTierColumns({
                 {visibleGroups.map((group) => (
                   <div key={String(group.tier)} className="grid gap-1.5">
                     <p className="home-kicker mb-0">
-                      {group.tier === "untiered" ? "Unranked" : `Tier ${group.tier}`}
+                      {group.tier === "untiered" ? "Untiered" : `Tier ${group.tier}`}
                     </p>
                     {group.players.map((player) => (
                       <button
@@ -213,7 +213,7 @@ export function DraftTierColumns({
                         aria-label={`Draft ${player.name}, ${column.label}${
                           player.positionRank ? ` ${player.positionRank}` : ""
                         }`}
-                        className="flex min-h-[40px] w-full items-center justify-between gap-2 rounded-[0.9rem] border px-3 py-2 text-left text-sm transition-[background-color,border-color,color] duration-200 hover:border-[var(--home-ink)] disabled:cursor-not-allowed disabled:opacity-60"
+                        className="flex min-h-[44px] w-full items-center justify-between gap-2 rounded-[0.9rem] border px-3 py-2 text-left text-sm transition-[background-color,border-color,color] duration-200 hover:border-[var(--home-ink)] disabled:cursor-not-allowed disabled:opacity-60"
                         style={{
                           borderColor: "var(--home-rule)",
                           background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",

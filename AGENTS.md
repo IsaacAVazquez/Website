@@ -2,7 +2,7 @@
 
 Operational context for agents working in this repo. Start here, then read `CLAUDE.md` for deeper implementation context.
 
-**Last updated:** 2026-06-08
+**Last updated:** 2026-06-10
 
 ---
 
@@ -14,7 +14,8 @@ This repo is a Next.js 16 personal site with several live product surfaces:
 - writing and long-form content
 - fantasy football analytics
 - investments and seasonal analysis experiments
-- standalone sports, political, space, news, and fintech data tools
+- standalone sports, political, space, news, transit, and fintech data tools
+- personal-interest tools such as travel planning, food, recipes, wine, and museums
 
 Primary live routes:
 
@@ -26,12 +27,16 @@ Primary live routes:
 - `/formula-1`
 - `/fantasy-formula-1`
 - `/github-trending-pulse`
+- `/tech-startup-tracker`
 - `/premier-league`
 - `/la-liga`
 - `/mlb`
 - `/nba`
 - `/nfl`
 - `/golf`
+- `/earthquake-pulse`
+- `/world-cup-2026`
+- `/bay-area-transit`
 - `/writing` and `/writing/[slug]`
 - `/resume`
 - `/contact`
@@ -42,6 +47,7 @@ Primary live routes:
 - `/decision-lab`
 - `/food-map`
 - `/recipe-finder`
+- `/travel`
 - `/wine-cellar`
 - `/news-pulse`
 - `/spacex-mission-control`
@@ -68,15 +74,16 @@ Canonical redirects:
 
 ## Navigation And Shell
 
-Promoted header items:
+Promoted header items (from `src/constants/navlinks.tsx`):
 
 1. `Home`
 2. `About`
-3. `Projects`
+3. `Projects` (points to `/portfolio`)
 4. `Writing`
 5. `Investments`
-6. `Resume`
-7. `Contact`
+6. `Fantasy` (points to `/fantasy-football`)
+7. `Resume`
+8. `Contact`
 
 Shared shell files:
 
@@ -89,9 +96,11 @@ Self-shell routes currently include:
 
 - `/about`
 - `/ai-dev-tools`
+- `/bay-area-transit`
 - `/changelog`
 - `/contact`
 - `/decision-lab`
+- `/earthquake-pulse`
 - `/fantasy-formula-1`
 - `/fantasy-football`
 - `/fantasy-football/draft-tracker`
@@ -115,7 +124,10 @@ Self-shell routes currently include:
 - `/recipe-finder`
 - `/resume`
 - `/spacex-mission-control`
+- `/tech-startup-tracker`
+- `/travel`
 - `/wine-cellar`
+- `/world-cup-2026`
 - `/writing`
 - `/writing/[slug]`
 
@@ -148,6 +160,33 @@ Footer variants:
 
 ---
 
+## API Surface
+
+Confirm live API routes from `src/app/api/**/route.ts`. Current routes:
+
+- `/api/auth/[...nextauth]`
+- `/api/bay-area-transit/summary` and `/api/bay-area-transit/stations/[stationId]`
+- `/api/earthquake-pulse/summary`
+- `/api/fantasy-data`
+- `/api/golf/summary` and `/api/golf/players/[playerId]`
+- `/api/investments/index`, `/api/investments/quotes`, `/api/investments/data/[symbol]`
+- `/api/la-liga/summary` and `/api/la-liga/teams/[teamId]`
+- `/api/mba-jobs` and `/api/mba-jobs/email`
+- `/api/mlb/summary` and `/api/mlb/teams/[teamId]`
+- `/api/nba/summary` and `/api/nba/teams/[teamId]`
+- `/api/news-pulse`
+- `/api/nfl/summary` and `/api/nfl/teams/[teamId]`
+- `/api/premier-league/summary` and `/api/premier-league/teams/[teamId]`
+- `/api/rss`
+- `/api/search`
+- `/api/spacex/summary`, `/api/spacex/launches`, `/api/spacex/launches/[id]`
+- `/api/stocks`
+- `/api/world-cup/summary` and `/api/world-cup/teams/[teamId]`
+
+The dashboard APIs read committed snapshot files; they do not call external services at request time.
+
+---
+
 ## Core Workflows
 
 ### Local setup
@@ -161,7 +200,9 @@ npm run dev
 - Prefer Node 20 locally to match GitHub Actions.
 - `npm run update:investments` also requires `.venv/bin/python3`.
 - `npm run update:football`, `npm run update:premier-league`, and `npm run update:la-liga` use `FOOTBALL_DATA_API_TOKEN` only when rebuilding checked-in football snapshots.
-- `npm run update:mlb`, `npm run update:nba`, and `npm run update:nfl` use public sports data sources and do not require auth tokens.
+- `npm run update:mlb`, `npm run update:nba`, `npm run update:nfl`, `npm run update:golf`, and `npm run update:world-cup` use public sports data sources and do not require auth tokens.
+- `npm run update:bay-area-transit` uses BART's public legacy API with the published demo key baked into the builder; no token setup required.
+- `npm run update:tech-startups` processes a hand-maintained seed inside `scripts/buildTechStartupSnapshot.ts`; there is no live source to poll.
 - `npm run update:formula-1` reads historical OpenF1 endpoints and does not require an API key.
 - `npm run update:github-trending` reads the public GitHub Search API. GitHub Actions passes `GITHUB_TOKEN` for higher rate limits.
 - `npm run update:spacex` and `npm run update:spacex-images` read public Launch Library / SpaceDevs endpoints and do not require an API key.
@@ -271,11 +312,15 @@ The MLB, NBA, and NFL dashboards read committed TypeScript snapshots at runtime.
 - `npm run update:mlb` writes `src/data/mlbSnapshot.ts` from the public MLB Stats API; pass `-- --league-only` to skip per-team snapshots.
 - `npm run update:nba` writes `src/data/nbaSnapshot.ts` from ESPN public NBA endpoints; pass `-- --league-only` to skip per-team snapshots.
 - `npm run update:nfl` writes `src/data/nflSnapshot.ts` from NFLverse open data; pass `-- --league-only` to skip per-team snapshots and player leaders.
+- `npm run update:golf` writes `src/data/golfSnapshot.ts` from the public ESPN golf leaderboard endpoint; a failed fetch keeps the previous snapshot.
+- `npm run update:world-cup` writes `src/data/worldCupSnapshot.ts` from ESPN's public `soccer/fifa.world` endpoints; a failed or empty fetch keeps the previous snapshot.
 
 ### Other data refresh workflows
 
 - `npm run update:formula-1` writes `src/data/formula1Snapshot.ts` from OpenF1 data and keeps the existing snapshot if refresh fails.
+- `npm run update:bay-area-transit` writes `src/data/bayAreaTransitSnapshot.ts` from BART's public API (stations, lines, advisories, elevator outages, real-time departures); a failed or thin fetch keeps the previous snapshot.
 - `npm run update:github-trending` writes `src/data/githubTrendingSnapshot.ts` from the GitHub Search API; use `GITHUB_TOKEN` or `GH_TOKEN` locally for higher rate limits.
+- `npm run update:tech-startups` writes `src/data/techStartupSnapshot.ts` from the hand-maintained seed in `scripts/buildTechStartupSnapshot.ts`. The dataset is editorially curated with an `asOf` date and `verified: false` flag; refresh it by editing the seed, not by polling an API.
 - `npm run update:frontier-models` writes `src/data/frontierModelsSnapshot.ts` from the curated source file in `scripts/data/`.
 - `npm run update:spacex` and its alias `npm run update:spacex-data` write `src/data/spacexSnapshot.generated.json`.
 - `npm run update:spacex-images` writes `src/data/spacexImageManifest.generated.json`, `public/data/spacex/image-reference-index.json`, and cached image files under `public/data/spacex/images/`.
@@ -320,9 +365,13 @@ The MLB, NBA, and NFL dashboards read committed TypeScript snapshots at runtime.
 | `npm run update:mlb` | Rebuild the checked-in MLB snapshot |
 | `npm run update:nba` | Rebuild the checked-in NBA snapshot |
 | `npm run update:nfl` | Rebuild the checked-in NFL snapshot |
+| `npm run update:golf` | Rebuild the checked-in golf leaderboard snapshot |
+| `npm run update:world-cup` | Rebuild the checked-in World Cup 2026 snapshot |
+| `npm run update:bay-area-transit` | Rebuild the checked-in Bay Area Transit (BART) snapshot |
 | `npm run update:formula-1` | Rebuild the checked-in Formula 1 snapshot |
 | `npm run update:frontier-models` | Rebuild the checked-in Frontier Models snapshot |
 | `npm run update:github-trending` | Rebuild the checked-in GitHub Trending Pulse snapshot |
+| `npm run update:tech-startups` | Rebuild the checked-in tech startup tracker snapshot from its curated seed |
 | `npm run update:spacex` | Rebuild the checked-in SpaceX Mission Control data snapshot |
 | `npm run update:spacex-data` | Alias of `npm run update:spacex` |
 | `npm run update:spacex-images` | Rebuild cached SpaceX image snapshots and manifests |
@@ -345,14 +394,17 @@ Checked-in operational workflows:
 - `.github/workflows/update-mlb.yml`
 - `.github/workflows/update-nba.yml`
 - `.github/workflows/update-nfl.yml`
+- `.github/workflows/update-golf.yml`
+- `.github/workflows/update-world-cup.yml`
+- `.github/workflows/update-bay-area-transit.yml`
 - `netlify/functions/purge-cache.ts`
 
 Current behavior:
 
 - `test.yml` runs unit tests, build, sharded Chromium Playwright E2E, and lint on pushes to `main` or `develop`, plus pull requests targeting `main` or `develop`; full-matrix Playwright runs only on pushes to `main`
 - `update-investments.yml` runs on manual dispatch and on Mondays and Thursdays at `22:15 UTC`, then commits refreshed files under `public/data/investments` when the curated dataset changes
-- `update-premier-league.yml` runs on manual dispatch and daily at `06:15 UTC`, then commits `src/data/premierLeagueSnapshot.ts` when it changes
-- `update-la-liga.yml` runs on manual dispatch and daily at `06:30 UTC`, then commits `src/data/laLigaSnapshot.ts` when it changes
+- `update-premier-league.yml` runs on manual dispatch and daily at `06:15 UTC` during the season (August through May; skipped June and July), then commits `src/data/premierLeagueSnapshot.ts` when it changes
+- `update-la-liga.yml` runs on manual dispatch and daily at `06:30 UTC` during the season (August through May; skipped June and July), then commits `src/data/laLigaSnapshot.ts` when it changes
 - `update-fantasy.yml` runs on manual dispatch and on Wednesdays at `17:00 UTC`, then commits the generated fantasy snapshot artifacts when they change
 - `update-github-trending.yml` runs on manual dispatch and daily at `07:45 UTC`, then commits `src/data/githubTrendingSnapshot.ts` when tracked repositories change
 - `update-formula-1.yml` runs on manual dispatch and daily at `08:10 UTC`, then commits `src/data/formula1Snapshot.ts` when it changes
@@ -360,6 +412,10 @@ Current behavior:
 - `update-mlb.yml` runs on manual dispatch and daily April through October at `10:05 UTC`, then commits `src/data/mlbSnapshot.ts` when it changes
 - `update-nba.yml` runs on manual dispatch and daily from mid-October through June at `10:20 UTC`, then commits `src/data/nbaSnapshot.ts` when it changes
 - `update-nfl.yml` runs on manual dispatch and Tuesdays September through February at `10:35 UTC`, then commits `src/data/nflSnapshot.ts` when it changes
+- `update-golf.yml` runs on manual dispatch and daily at `08:40 UTC`, then commits `src/data/golfSnapshot.ts` when it changes
+- `update-world-cup.yml` runs on manual dispatch and every six hours during June and July, then commits `src/data/worldCupSnapshot.ts` when it changes
+- `update-bay-area-transit.yml` runs on manual dispatch and every six hours year-round, then commits `src/data/bayAreaTransitSnapshot.ts` when it changes
+- The tech startup tracker has no workflow by design — its dataset is editorially curated, so refreshes happen by editing the seed and running `npm run update:tech-startups` locally
 - A daily cron-job.org ping to the Netlify build hook triggers production deploys; `prebuild` refreshes Premier League and La Liga league-level snapshots with `tsx scripts/updateFootballSnapshots.ts --league-only`
 - `purge-cache.ts` is protected by `Authorization: Bearer <CRON_SECRET>` or `x-cron-secret` and calls Netlify Durable Cache purge; query-string secrets are intentionally rejected
 - Historical caveat: `vercel.json` still declares a cron for `/api/scheduled-update`, but no matching route exists. Treat that config as historical until confirmed.

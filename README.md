@@ -3,7 +3,7 @@
 Portfolio, writing, fantasy football analytics, investment research, and standalone data tools built on Next.js 16.
 
 **Live:** [isaacavazquez.com](https://isaacavazquez.com)
-**Last updated:** 2026-06-08
+**Last updated:** 2026-06-10
 
 ---
 
@@ -15,7 +15,7 @@ This repo powers a multi-surface personal site with several live product areas:
 - **Writing** — MDX-backed long-form posts under `/writing`
 - **Fantasy football** — rankings, tier charts, and draft tooling
 - **Investments and seasonal analysis** — `/investments` and `/march-madness-2026`
-- **Sports and data dashboards** — off-nav products like `/premier-league`, `/la-liga`, `/mlb`, `/nba`, `/nfl`, `/golf`, `/polling-aggregator`, `/news-pulse`, and `/spacex-mission-control`
+- **Sports and data dashboards** — off-nav products like `/premier-league`, `/la-liga`, `/mlb`, `/nba`, `/nfl`, `/golf`, `/world-cup-2026`, `/earthquake-pulse`, `/bay-area-transit`, `/tech-startup-tracker`, `/polling-aggregator`, `/news-pulse`, and `/spacex-mission-control`
 - **Fintech tools** — standalone calculators under `/fintech-tools/*`
 
 The site is portfolio-first. `Writing` is live and promoted in the global header.
@@ -56,6 +56,10 @@ The site is portfolio-first. `Writing` is live and promoted in the global header
 | `/nba` | NBA dashboard |
 | `/nfl` | NFL dashboard |
 | `/golf` | PGA Tour dashboard |
+| `/world-cup-2026` | 2026 FIFA World Cup hub |
+| `/earthquake-pulse` | USGS earthquake monitor |
+| `/bay-area-transit` | BART transit dashboard |
+| `/tech-startup-tracker` | Curated startup funding tracker |
 | `/writing` | Writing index |
 | `/writing/[slug]` | Article page |
 | `/march-madness-2026` | Seasonal bracket analysis |
@@ -74,6 +78,7 @@ The site is portfolio-first. `Writing` is live and promoted in the global header
 | `/decision-lab` | Decision-modeling sandbox |
 | `/mba-internship-notifications` | MBA role tracker across tech company job boards |
 | `/museum-log` | Museum visit log |
+| `/travel` | Browser-persisted travel planner |
 | `/now` | Current focus / status page |
 | `/changelog` | Site changelog |
 | `/resume` | Resume |
@@ -118,6 +123,11 @@ npm run update:mlb
 npm run update:nba
 npm run update:nfl
 npm run update:formula-1
+npm run update:golf
+npm run update:earthquake
+npm run update:world-cup
+npm run update:bay-area-transit
+npm run update:tech-startups
 npm run update:frontier-models
 npm run update:github-trending
 npm run update:spacex
@@ -159,13 +169,13 @@ CRON_SECRET=...               # protects the Netlify purge-cache function
 
 ## Important Repo Facts
 
-- Global nav is `Home / About / Projects / Writing / Investments / Resume / Contact`
+- Global nav is `Home / About / Projects / Writing / Investments / Fantasy / Resume / Contact`
 - `Writing` is live and intentionally promoted in the header
 - `/portfolio` renders directly from `src/app/portfolio/page.tsx`
 - `ProjectsContent.tsx` and `WritingPreview.tsx` still exist, but they are not the primary live path for the current shell
 - `/api/search` is limited and mostly hardcoded; do not treat it as comprehensive site search
 - `/investments` uses `InvestmentsClient` plus targeted routes under `/api/investments/index`, `/api/investments/quotes`, and `/api/investments/data/[symbol]`
-- `/premier-league`, `/la-liga`, `/mlb`, `/nba`, and `/nfl` read from committed TypeScript snapshots, not live third-party API calls at runtime
+- `/premier-league`, `/la-liga`, `/mlb`, `/nba`, `/nfl`, `/golf`, `/world-cup-2026`, `/earthquake-pulse`, and `/bay-area-transit` read from committed TypeScript snapshots, not live third-party API calls at runtime
 
 ---
 

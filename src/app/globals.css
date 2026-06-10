@@ -111,9 +111,9 @@
   --color-primary: var(--home-haze);
   --color-secondary: var(--home-haze);
   --color-accent: var(--home-haze);
-  --color-success: #059669;
-  --color-warning: #D97706;
-  --color-error: #DC2626;
+  --color-success: var(--home-positive);
+  --color-warning: var(--home-warning);
+  --color-error: var(--home-negative);
 
   --neutral-50: #F8FAFC;
   --neutral-100: #F1F5F9;
@@ -204,6 +204,22 @@
    */
   --home-ink-soft: color-mix(in srgb, var(--home-ink) 45%, var(--home-paper));
   --home-paper-raised: color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix));
+
+  /*
+   * Semantic status tones in the --home-* family. These are the canonical
+   * names for new code; --color-success/warning/error alias to them as part
+   * of the legacy safety net above.
+   */
+  --home-positive: #059669;
+  --home-warning: #D97706;
+  --home-negative: #DC2626;
+
+  /* Travel planner category tints (decorative icon chips only). */
+  --travel-transit: #3B6EA5;
+  --travel-lodging: #7C5CBF;
+  --travel-food: #B8860B;
+  --travel-sight: #2F7D4F;
+  --travel-activity: #C2410C;
 }
 
 .dark {
@@ -226,9 +242,16 @@
    */
   --surface-overlay: rgba(0, 0, 0, 0.55);
 
-  --color-success: #34D399;
-  --color-warning: #FBBF24;
-  --color-error: #F87171;
+  --home-positive: #34D399;
+  --home-warning: #FBBF24;
+  --home-negative: #F87171;
+
+  /* Brighter travel category tints so the icon chips read on dark paper. */
+  --travel-transit: #7FA8D9;
+  --travel-lodging: #B19BE3;
+  --travel-food: #DDB44E;
+  --travel-sight: #6FBC8F;
+  --travel-activity: #EE8F5C;
 
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
@@ -1848,7 +1871,15 @@
 }
 
 .skeleton {
-  background: linear-gradient(90deg, var(--neutral-200) 0%, var(--neutral-300) 50%, var(--neutral-200) 100%);
+  /* Shimmer derived from the editorial palette (the old slate --neutral-*
+     grays read cold against the warm paper). Tracks light/dark automatically
+     through the themed --home-* values. */
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--home-ink) 8%, var(--home-paper)) 0%,
+    color-mix(in srgb, var(--home-ink) 15%, var(--home-paper)) 50%,
+    color-mix(in srgb, var(--home-ink) 8%, var(--home-paper)) 100%
+  );
   background-size: 200% 100%;
   animation: skeleton-loading 1.5s ease-in-out infinite;
 }
@@ -2436,19 +2467,8 @@ img {
 }
 @media (max-width: 1280px) {
   .invest-shell { grid-template-columns: 200px minmax(0, 1fr); }
-  /* The rail holds the "Add a holding" form, allocation chart, and movers.
-     Don't hide it on narrower screens — reflow it into a full-width band below
-     the main column, otherwise there is no way to add a holding on tablet or
-     mobile and the empty-state instructions point at nothing. */
-  .invest-rail {
-    grid-column: 1 / -1;
-    border-left: 0;
-    border-top: 1px solid var(--home-rule);
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 22px 26px;
-    align-items: start;
-  }
+  /* The rail's full-width reflow lives next to the base .invest-rail rule
+     further down — it must come after it in source order to win the cascade. */
 }
 @media (max-width: 900px) {
   .invest-shell { grid-template-columns: 1fr; border-radius: 20px; }
@@ -2731,7 +2751,7 @@ img {
   transition: background 160ms ease, transform 160ms ease;
   display: inline-flex; align-items: center; gap: 8px;
   text-decoration: none;
-  min-height: 36px;
+  min-height: 44px;
 }
 .invest-ghost:hover {
   background: color-mix(in srgb, var(--home-acid) 22%, transparent);
@@ -3175,6 +3195,22 @@ img {
   background: color-mix(in srgb, var(--home-paper) 96%, var(--home-elev-mix));
   display: flex; flex-direction: column; gap: 16px;
   align-self: stretch;
+}
+@media (max-width: 1280px) {
+  /* The rail holds the "Add a holding" form, allocation chart, and movers.
+     Don't hide it on narrower screens — reflow it into a full-width band below
+     the main column, otherwise there is no way to add a holding on tablet or
+     mobile and the empty-state instructions point at nothing. (This block must
+     come after the base rule above; same specificity, later source wins.) */
+  .invest-rail {
+    grid-column: 1 / -1;
+    border-left: 0;
+    border-top: 1px solid var(--home-rule);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 22px 26px;
+    align-items: start;
+  }
 }
 .invest-rail-section-label {
   font-size: 10.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;

@@ -2,7 +2,7 @@
 
 Current component ownership reference.
 
-**Last updated:** 2026-06-08
+**Last updated:** 2026-06-10
 
 ---
 
@@ -15,6 +15,7 @@ Current component ownership reference.
 | `Footer` | `src/components/Footer.tsx` | `full` and `compact` variants |
 | `Providers` | `src/components/Providers.tsx` | Root provider wrapper |
 | `ThemeProvider` | `src/components/ThemeProvider.tsx` | Theme context |
+| `RouteErrorBoundary` | `src/components/RouteErrorBoundary.tsx` | Shared error fallback re-exported by per-route `error.tsx` files |
 
 ---
 
@@ -76,12 +77,13 @@ Top-level ownership:
 
 - `src/app/investments/investments-client.tsx` is the route shell
 - it lazy-loads `PortfolioTracker` and `StockResearch`
+- retirement planner UI lives in `src/components/investments/retirement/` on top of the pure engine in `src/lib/retirement/`
 
 ---
 
 ## Football Dashboards
 
-Shared components for `/premier-league`, `/la-liga`, `/mlb`, `/nba`, and `/nfl` live in `src/components/football/`:
+Shared components for `/premier-league`, `/la-liga`, `/mlb`, `/nba`, `/nfl`, and `/world-cup-2026` live in `src/components/football/`:
 
 - `FixtureCard`
 - `FixtureGroupSection`
@@ -104,6 +106,11 @@ Page-level clients live at `src/app/premier-league/premier-league-client.tsx` an
 - `src/components/spacex/*` plus `src/app/spacex-mission-control/*`
 - `src/app/mlb/*`, `src/app/nba/*`, `src/app/nfl/*`, and `src/components/football/*`
 - `src/app/golf/*` plus `src/data/golfSnapshot.ts`
+- `src/app/world-cup-2026/*` plus `src/data/worldCupSnapshot.ts`
+- `src/app/bay-area-transit/*` plus `src/data/bayAreaTransitSnapshot.ts`
+- `src/app/earthquake-pulse/*` plus `src/data/earthquakeSnapshot.ts`
+- `src/app/tech-startup-tracker/*` plus `src/data/techStartupSnapshot.ts`
+- `src/app/travel/*` plus `src/hooks/useTravelPlanner.ts`
 - `src/app/polling-aggregator/*` plus `src/data/pollingSnapshot.ts`
 - `src/app/fintech-tools/budget-planner/*` plus `src/hooks/useBudgetPlanner.ts`
 - `src/app/fintech-tools/interchange-iq/*`

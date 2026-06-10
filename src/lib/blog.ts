@@ -280,13 +280,26 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
   }
 }
 
+/**
+ * True once a post's publishedAt date has arrived (UTC). Future-dated posts —
+ * e.g. a staggered countdown series — stay out of listings, the sitemap, and
+ * RSS until a build runs on or after their date; the site rebuilds at least
+ * daily, so each post surfaces on schedule. Direct slug access still works.
+ */
+export function isBlogPostPublished(
+  post: Pick<BlogPostPreview, "publishedAt">,
+  today: string = new Date().toISOString().slice(0, 10)
+): boolean {
+  return post.publishedAt.slice(0, 10) <= today;
+}
+
 export function getAllBlogPostPreviews(): BlogPostPreview[] {
   const slugs = getBlogPostSlugs();
   const previews: BlogPostPreview[] = [];
 
   for (const slug of slugs) {
     const preview = getBlogPostPreviewBySlug(slug);
-    if (preview) {
+    if (preview && isBlogPostPublished(preview)) {
       previews.push(preview);
     }
   }
@@ -300,7 +313,7 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
 
   for (const slug of slugs) {
     const post = await getBlogPostBySlug(slug);
-    if (post) {
+    if (post && isBlogPostPublished(post)) {
       posts.push(post);
     }
   }

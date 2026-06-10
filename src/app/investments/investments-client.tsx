@@ -47,19 +47,27 @@ export function InvestmentsClient({
     };
   }, []);
 
-  // Keep URL in sync with normalized route state.
+  // Keep URL in sync with normalized route state. A clean visit with no
+  // managed params keeps its clean URL; once managed (or legacy `view`)
+  // params exist, rewrite only when the URL differs from the canonical href,
+  // so the replace settles instead of looping on absent-vs-empty params.
   useEffect(() => {
-    if (
-      searchParams.get("symbol") === routeState.symbol &&
-      searchParams.get("section") === routeState.section
-    ) {
+    if (!hasManagedParams && searchParams.get("view") === null) {
+      return;
+    }
+
+    const query = searchParams.toString();
+    const currentHref = query ? `/investments?${query}` : "/investments";
+    const canonicalHref = buildInvestmentsHref(routeState, searchParams);
+
+    if (canonicalHref === currentHref) {
       return;
     }
 
     startTransition(() => {
-      router.replace(buildInvestmentsHref(routeState, searchParams), { scroll: false });
+      router.replace(canonicalHref, { scroll: false });
     });
-  }, [routeState, router, searchParams]);
+  }, [hasManagedParams, routeState, router, searchParams]);
 
   function updateRouteState(nextState: Partial<InvestmentsSearchState>) {
     const href = buildInvestmentsHref(
