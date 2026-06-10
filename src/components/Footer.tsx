@@ -40,12 +40,16 @@ export const Footer = ({ variant = "full" }: FooterProps) => {
 
       <div className={`page-shell ${isCompact ? "py-4 md:py-5" : "py-6 md:py-8"}`}>
         <div
-          className="flex flex-col gap-5 border-t pt-6 sm:flex-row sm:items-center sm:justify-between"
-          style={{ borderTopColor: "var(--home-rule)" }}
+          className="flex flex-col gap-5 border-t pt-6 sm:flex-row sm:items-start sm:justify-between"
+          style={{ borderTopColor: "var(--home-ink)" }}
         >
-          <div className="space-y-1 text-sm footer-home-text">
-            <p className="font-medium footer-home-text-strong">Isaac Vazquez</p>
-            <p>Building products where clear thinking and reliable execution move the needle.</p>
+          <div className="space-y-1.5">
+            <p className="footer-home-colophon">
+              &copy; {new Date().getFullYear()} Isaac Vazquez
+            </p>
+            <p className="text-sm footer-home-text" style={{ maxWidth: "38ch" }}>
+              Building products where clear thinking and reliable execution move the needle.
+            </p>
           </div>
 
           <div className="flex flex-col gap-4 sm:items-end">
@@ -57,40 +61,21 @@ export const Footer = ({ variant = "full" }: FooterProps) => {
                   aria-label={link.label}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border transition-colors footer-home-icon"
+                  className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center transition-colors footer-home-icon"
                 >
                   <link.icon size={18} aria-hidden="true" />
                 </a>
               ))}
             </nav>
 
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm footer-home-text">
-              <span>{new Date().getFullYear()}</span>
-              <Link
-                href="/now"
-                className="transition-colors hover:text-[var(--home-ink)]"
-              >
-                Now
-              </Link>
-              <Link
-                href="/changelog"
-                className="transition-colors hover:text-[var(--home-ink)]"
-              >
-                Changelog
-              </Link>
-              <Link
-                href="/accessibility"
-                className="transition-colors hover:text-[var(--home-ink)]"
-              >
-                Accessibility
-              </Link>
-              <a
-                href="https://isaacavazquez.com"
-                className="font-medium transition-colors footer-home-text-strong hover:text-[var(--home-haze)]"
-              >
+            <nav aria-label="Footer links" className="footer-home-links">
+              <Link href="/now">Now</Link>
+              <Link href="/changelog">Changelog</Link>
+              <Link href="/accessibility">Accessibility</Link>
+              <a href="https://isaacavazquez.com" className="is-strong">
                 isaacavazquez.com
               </a>
-            </div>
+            </nav>
           </div>
         </div>
       </div>
