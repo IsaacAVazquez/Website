@@ -32,9 +32,13 @@ function flushPromises() {
   });
 }
 
+// Fake-timer fast-forward past StockSearch's 200ms input debounce. Callers
+// must enable jest.useFakeTimers() before typing so the debounce timer is
+// registered against the fake clock.
 function waitForDebounce() {
   return act(async () => {
-    await new Promise((resolve) => setTimeout(resolve, 250));
+    jest.advanceTimersByTime(250);
+    await Promise.resolve();
   });
 }
 
@@ -201,6 +205,7 @@ describe("investments UI", () => {
   afterEach(() => {
     act(() => root.unmount());
     container.remove();
+    jest.useRealTimers();
   });
 
   it("shows the search control and empty state before a symbol is selected", async () => {
@@ -246,6 +251,7 @@ describe("investments UI", () => {
 
     expect(input).not.toBeNull();
 
+    jest.useFakeTimers();
     await act(async () => {
       if (!input) return;
       setInputValue(input, "visa");
@@ -282,6 +288,7 @@ describe("investments UI", () => {
 
     expect(input).not.toBeNull();
 
+    jest.useFakeTimers();
     await act(async () => {
       if (!input) return;
       setInputValue(input, "SHOP");
