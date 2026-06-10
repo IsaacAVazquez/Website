@@ -500,14 +500,14 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                   >
                     <thead>
                       <tr className="text-left text-xs uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
-                        <th className="px-3 py-2 font-semibold">Pos</th>
-                        <th className="px-3 py-2 font-semibold">Team</th>
-                        <th className="px-3 py-2 font-semibold">W-L</th>
-                        <th className="hidden px-3 py-2 font-semibold sm:table-cell">PCT</th>
-                        <th className="hidden px-3 py-2 font-semibold md:table-cell">GB</th>
-                        <th className="hidden px-3 py-2 font-semibold lg:table-cell">RS</th>
-                        <th className="hidden px-3 py-2 font-semibold lg:table-cell">RA</th>
-                        <th className="hidden px-3 py-2 font-semibold xl:table-cell">L10</th>
+                        <th scope="col" className="px-3 py-2 font-semibold">Pos</th>
+                        <th scope="col" className="px-3 py-2 font-semibold">Team</th>
+                        <th scope="col" className="px-3 py-2 font-semibold">W-L</th>
+                        <th scope="col" className="hidden px-3 py-2 font-semibold sm:table-cell">PCT</th>
+                        <th scope="col" className="hidden px-3 py-2 font-semibold md:table-cell">GB</th>
+                        <th scope="col" className="hidden px-3 py-2 font-semibold lg:table-cell">RS</th>
+                        <th scope="col" className="hidden px-3 py-2 font-semibold lg:table-cell">RA</th>
+                        <th scope="col" className="hidden px-3 py-2 font-semibold xl:table-cell">L10</th>
                       </tr>
                     </thead>
                     <tbody>

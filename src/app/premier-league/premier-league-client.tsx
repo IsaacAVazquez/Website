@@ -509,14 +509,14 @@ export function PremierLeagueClient({
               <table className="min-w-full border-separate border-spacing-y-2" aria-label="Premier League standings">
                 <thead>
                   <tr className="text-left text-xs uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
-                    <th className="px-3 py-2 font-semibold">Pos</th>
-                    <th className="px-3 py-2 font-semibold">Club</th>
-                    <th className="hidden px-3 py-2 font-semibold sm:table-cell">Record</th>
-                    <th className="px-3 py-2 font-semibold">Pts</th>
-                    <th className="hidden px-3 py-2 font-semibold md:table-cell">PPG</th>
-                    <th className="hidden px-3 py-2 font-semibold lg:table-cell">GF</th>
-                    <th className="hidden px-3 py-2 font-semibold lg:table-cell">GA</th>
-                    <th className="px-3 py-2 font-semibold">GD</th>
+                    <th scope="col" className="px-3 py-2 font-semibold">Pos</th>
+                    <th scope="col" className="px-3 py-2 font-semibold">Club</th>
+                    <th scope="col" className="hidden px-3 py-2 font-semibold sm:table-cell">Record</th>
+                    <th scope="col" className="px-3 py-2 font-semibold">Pts</th>
+                    <th scope="col" className="hidden px-3 py-2 font-semibold md:table-cell">PPG</th>
+                    <th scope="col" className="hidden px-3 py-2 font-semibold lg:table-cell">GF</th>
+                    <th scope="col" className="hidden px-3 py-2 font-semibold lg:table-cell">GA</th>
+                    <th scope="col" className="px-3 py-2 font-semibold">GD</th>
                   </tr>
                 </thead>
                 <tbody>
