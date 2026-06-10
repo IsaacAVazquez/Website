@@ -258,6 +258,23 @@ function DriverHeadshot({
   );
 }
 
+function CircuitMarker({ meeting }: { meeting: Formula1MeetingSummary }) {
+  return (
+    <div
+      className="hidden h-20 w-24 flex-shrink-0 flex-col items-center justify-center gap-2 rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_82%,var(--home-elev-mix))] p-3 text-center sm:flex"
+      aria-label={`${meeting.circuitShortName} circuit marker`}
+    >
+      <MapPinned size={18} className="text-[var(--home-ink-muted)]" aria-hidden="true" />
+      <span
+        className="max-w-full text-[0.65rem] font-semibold uppercase leading-tight text-[var(--home-ink-muted)]"
+        style={{ overflowWrap: "anywhere" }}
+      >
+        {meeting.circuitShortName}
+      </span>
+    </div>
+  );
+}
+
 function ViewToggle({
   view,
   activeView,
@@ -538,15 +555,7 @@ function MeetingDetailPanel({
     <section className="home-card p-5 sm:p-6">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div className="flex min-w-0 items-start gap-4">
-          {meeting.circuitImage ? (
-            <img
-              src={meeting.circuitImage}
-              alt={`${meeting.circuitShortName} circuit map`}
-              loading="lazy"
-              decoding="async"
-              className="hidden h-20 w-24 flex-shrink-0 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] object-contain p-2 sm:block"
-            />
-          ) : null}
+          <CircuitMarker meeting={meeting} />
           <div className="min-w-0">
             <div className="flex items-center gap-2">
               <p className="home-kicker mb-0">{getMeetingStatusCopy(meeting)}</p>
