@@ -165,6 +165,7 @@ export function DraftTierColumns({
                 {isNeed && (
                   <span
                     className={FANTASY_CHIP_CLASS}
+                    title="Your roster still has an open starting spot at this position"
                     style={{
                       borderColor: "color-mix(in srgb, var(--color-success) 28%, var(--home-rule))",
                       background: "color-mix(in srgb, var(--color-success) 10%, var(--home-paper))",
@@ -174,7 +175,11 @@ export function DraftTierColumns({
                   </span>
                 )}
               </div>
-              <span className="text-xs font-semibold tabular-nums" style={{ color: "var(--home-ink-muted)" }}>
+              <span
+                className="text-xs font-semibold tabular-nums"
+                title="Undrafted players left at this position"
+                style={{ color: "var(--home-ink-muted)" }}
+              >
                 {column.available.length} left
               </span>
             </header>
@@ -182,6 +187,7 @@ export function DraftTierColumns({
             {isCliff && topGroup.tier !== "untiered" && (
               <p
                 className={`mt-3 self-start ${FANTASY_CHIP_CLASS}`}
+                title="The current tier is nearly empty. Expect a value drop once it clears"
                 style={{
                   borderColor: "color-mix(in srgb, var(--color-warning) 32%, var(--home-rule))",
                   background: "color-mix(in srgb, var(--color-warning) 12%, var(--home-paper))",

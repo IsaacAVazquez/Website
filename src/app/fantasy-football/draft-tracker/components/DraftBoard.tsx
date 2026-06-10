@@ -187,6 +187,7 @@ export function DraftBoard({
             <span
               key={`need-${need}`}
               className={FANTASY_CHIP_CLASS}
+              title="Your roster still has an open starting spot at this position"
               style={{
                 borderColor: "color-mix(in srgb, var(--color-success) 28%, var(--home-rule))",
                 background: "color-mix(in srgb, var(--color-success) 10%, var(--home-paper))",
@@ -286,7 +287,12 @@ export function DraftBoard({
                   >
                     <div>
                       <p className="home-kicker mb-1">Rank</p>
-                      <p className="text-2xl font-semibold">{formatRankValue(player.rankEcr ?? player.averageRank)}</p>
+                      <p
+                        className="text-2xl font-semibold"
+                        title="Published FantasyPros overall consensus rank"
+                      >
+                        {formatRankValue(player.rankEcr ?? player.averageRank)}
+                      </p>
                     </div>
 
                     <div className="min-w-0">
@@ -301,6 +307,7 @@ export function DraftBoard({
                         {fitsCurrentNeed && (
                           <span
                             className={FANTASY_CHIP_CLASS}
+                            title="Fills a starting spot your roster still needs"
                             style={{
                               borderColor: "color-mix(in srgb, var(--color-success) 28%, var(--home-rule))",
                               background: "color-mix(in srgb, var(--color-success) 10%, var(--home-paper))",
@@ -319,12 +326,22 @@ export function DraftBoard({
 
                     <div>
                       <p className="home-kicker mb-1">Tier</p>
-                      <p className="text-sm font-semibold">{player.tier ? `Tier ${player.tier}` : "Not listed"}</p>
+                      <p
+                        className="text-sm font-semibold"
+                        title="FantasyPros consensus tier. Gaps between tiers mark the value drop-offs"
+                      >
+                        {player.tier ? `Tier ${player.tier}` : "Not listed"}
+                      </p>
                     </div>
 
                     <div>
                       <p className="home-kicker mb-1">Expert range</p>
-                      <p className="text-sm font-semibold">{formatRange(player)}</p>
+                      <p
+                        className="text-sm font-semibold"
+                        title="Best and worst rank across the experts in the consensus"
+                      >
+                        {formatRange(player)}
+                      </p>
                     </div>
 
                     <button

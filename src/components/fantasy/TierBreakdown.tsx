@@ -126,7 +126,11 @@ export function TierBreakdown({ players, position, getPublishedRank }: TierBreak
                 }
 
                 return (
-                  <p className="text-xs font-semibold uppercase tracking-[0.12em]" style={{ color: "var(--home-ink-muted)" }}>
+                  <p
+                    className="text-xs font-semibold uppercase tracking-[0.12em]"
+                    title="Published consensus ranks covered by this tier"
+                    style={{ color: "var(--home-ink-muted)" }}
+                  >
                     Ranks {formatRankValue(rankedPlayers[0].rank)}–
                     {formatRankValue(rankedPlayers[rankedPlayers.length - 1].rank)}
                   </p>
