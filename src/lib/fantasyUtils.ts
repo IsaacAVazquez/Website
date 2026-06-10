@@ -77,6 +77,13 @@ export function formatOwnership(ownership: number | undefined): string {
   return `${ownership?.toFixed(1)}%`;
 }
 
+/**
+ * Natural-height label chip shared across fantasy surfaces (matches the /nfl
+ * badge recipe). Interactive pills keep min-h-[44px] separately for touch targets.
+ */
+export const FANTASY_CHIP_CLASS =
+  "inline-flex items-center rounded-full border px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em]";
+
 export function getPositionTone(position: string): CSSProperties {
   switch (position) {
     case "QB":

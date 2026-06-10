@@ -7,7 +7,7 @@ import {
   type FantasyRoutePosition,
   type FantasySnapshot,
 } from "@/lib/fantasy";
-import { formatRankValue, getPositionTone } from "@/lib/fantasyUtils";
+import { FANTASY_CHIP_CLASS, formatRankValue, getPositionTone } from "@/lib/fantasyUtils";
 import type { Player } from "@/types";
 
 interface DraftTierColumnsProps {
@@ -157,14 +157,14 @@ export function DraftTierColumns({
             >
               <div className="flex items-center gap-2">
                 <span
-                  className="inline-flex min-h-[28px] items-center rounded-full border px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em]"
+                  className={FANTASY_CHIP_CLASS}
                   style={getPositionTone(column.label)}
                 >
                   {column.label}
                 </span>
                 {isNeed && (
                   <span
-                    className="inline-flex min-h-[28px] items-center rounded-full border px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em]"
+                    className={FANTASY_CHIP_CLASS}
                     style={{
                       borderColor: "color-mix(in srgb, var(--color-success) 28%, var(--home-rule))",
                       background: "color-mix(in srgb, var(--color-success) 10%, var(--home-paper))",
@@ -181,7 +181,7 @@ export function DraftTierColumns({
 
             {isCliff && topGroup.tier !== "untiered" && (
               <p
-                className="mt-3 inline-flex items-center self-start rounded-full border px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em]"
+                className={`mt-3 self-start ${FANTASY_CHIP_CLASS}`}
                 style={{
                   borderColor: "color-mix(in srgb, var(--color-warning) 32%, var(--home-rule))",
                   background: "color-mix(in srgb, var(--color-warning) 12%, var(--home-paper))",
