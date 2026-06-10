@@ -49,7 +49,7 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   return !!value && typeof value === "object" && !Array.isArray(value);
 }
 
-function isIsoDate(value: unknown): value is string {
+export function isIsoDate(value: unknown): value is string {
   return typeof value === "string" && /^\d{4}-\d{2}-\d{2}$/.test(value);
 }
 
@@ -66,7 +66,8 @@ function createId(prefix: "trip" | "act" | "jrn") {
 
 function clampString(value: unknown, max: number, fallback = ""): string {
   if (typeof value !== "string") return fallback;
-  return value.trim().slice(0, max);
+  const trimmed = value.trim().slice(0, max);
+  return trimmed || fallback;
 }
 
 function sanitizeNumber(value: unknown): number {
@@ -155,13 +156,22 @@ function timeToMinutes(value: string): number | null {
   return hours * 60 + minutes;
 }
 
+export interface ActivityOverlaps {
+  ids: Set<string>;
+  pairCount: number;
+}
+
 /**
- * Returns the ids of activities that overlap another timed stop on the same
- * day. Stops without a start time, or with only a start (no duration), can't
- * conflict — we only flag genuine time-window overlaps.
+ * Flags activities whose time windows overlap another stop on the same day.
+ * Windows are half-open ([start, end)), so a stop that begins exactly when
+ * another ends doesn't conflict. A stop with only a start time occupies that
+ * single minute, so it conflicts with anything else scheduled across it —
+ * including another start-only stop at the same minute. The result is
+ * independent of how the stops happen to be ordered or titled.
  */
-export function findOverlappingActivityIds(activities: TripActivity[]): Set<string> {
+export function findActivityOverlaps(activities: TripActivity[]): ActivityOverlaps {
   const conflicts = new Set<string>();
+  let pairCount = 0;
   const byDay = new Map<string, TripActivity[]>();
   for (const activity of activities) {
     const list = byDay.get(activity.date);
@@ -175,7 +185,9 @@ export function findOverlappingActivityIds(activities: TripActivity[]): Set<stri
         const start = timeToMinutes(activity.time);
         if (start === null) return null;
         const end = timeToMinutes(activity.endTime);
-        return { id: activity.id, start, end: end ?? start };
+        // Start-only stops occupy one minute so the overlap test below stays
+        // uniform (every window has end > start).
+        return { id: activity.id, start, end: end !== null && end > start ? end : start + 1 };
       })
       .filter((window): window is { id: string; start: number; end: number } => window !== null)
       .sort((left, right) => left.start - right.start);
@@ -185,17 +197,18 @@ export function findOverlappingActivityIds(activities: TripActivity[]): Set<stri
         // Sorted by start, so once the next window starts at/after this one
         // ends there can be no further overlaps for `i`.
         if (windows[j].start >= windows[i].end) break;
-        // Zero-length windows (start only) touching at the same minute don't overlap.
-        if (windows[i].end === windows[i].start && windows[j].start === windows[i].start) {
-          continue;
-        }
         conflicts.add(windows[i].id);
         conflicts.add(windows[j].id);
+        pairCount += 1;
       }
     }
   }
 
-  return conflicts;
+  return { ids: conflicts, pairCount };
+}
+
+export function findOverlappingActivityIds(activities: TripActivity[]): Set<string> {
+  return findActivityOverlaps(activities).ids;
 }
 
 export function getTripStatus(trip: Pick<Trip, "startDate" | "endDate">, today = getTodayKey()): TripStatus {
@@ -204,6 +217,12 @@ export function getTripStatus(trip: Pick<Trip, "startDate" | "endDate">, today =
   return "active";
 }
 
+/**
+ * Upper bound on rendered itinerary days. A typo'd year in a date input can
+ * otherwise ask for tens of thousands of day sections and hang the tab.
+ */
+export const MAX_ITINERARY_DAYS = 366;
+
 export function getDayKeysBetween(startKey: string, endKey: string): string[] {
   const start = parseDateKey(startKey);
   const end = parseDateKey(endKey);
@@ -211,7 +230,7 @@ export function getDayKeysBetween(startKey: string, endKey: string): string[] {
 
   const keys: string[] = [];
   const cursor = new Date(start);
-  while (cursor.getTime() <= end.getTime()) {
+  while (cursor.getTime() <= end.getTime() && keys.length < MAX_ITINERARY_DAYS) {
     keys.push(getTodayKey(cursor));
     cursor.setDate(cursor.getDate() + 1);
   }
@@ -220,7 +239,6 @@ export function getDayKeysBetween(startKey: string, endKey: string): string[] {
 
 function sanitizeActivity(input: unknown): TripActivity | null {
   if (!isRecord(input)) return null;
-  if (!isIsoDate(input.date)) return null;
 
   const category =
     typeof input.category === "string" &&
@@ -235,7 +253,9 @@ function sanitizeActivity(input: unknown): TripActivity | null {
 
   return {
     id: typeof input.id === "string" && input.id ? input.id : createId("act"),
-    date: input.date,
+    // Repair rather than discard: a malformed stored date must never silently
+    // delete a stop the user created.
+    date: isIsoDate(input.date) ? input.date : getTodayKey(),
     time,
     endTime,
     title: clampString(input.title, 140, "Untitled stop"),
@@ -248,7 +268,6 @@ function sanitizeActivity(input: unknown): TripActivity | null {
 
 function sanitizeJournalEntry(input: unknown): JournalEntry | null {
   if (!isRecord(input)) return null;
-  if (!isIsoDate(input.date)) return null;
 
   const mood =
     typeof input.mood === "string" && (JOURNAL_MOODS as string[]).includes(input.mood)
@@ -257,7 +276,9 @@ function sanitizeJournalEntry(input: unknown): JournalEntry | null {
 
   return {
     id: typeof input.id === "string" && input.id ? input.id : createId("jrn"),
-    date: input.date,
+    // Repair rather than discard: journal text is irreplaceable, so a bad
+    // date falls back to today instead of dropping the entry.
+    date: isIsoDate(input.date) ? input.date : getTodayKey(),
     title: clampString(input.title, 160, "Untitled entry"),
     body: clampString(input.body, 4000),
     mood,
@@ -266,11 +287,13 @@ function sanitizeJournalEntry(input: unknown): JournalEntry | null {
 
 function sanitizeTrip(input: unknown): Trip | null {
   if (!isRecord(input)) return null;
-  if (!isIsoDate(input.startDate) || !isIsoDate(input.endDate)) return null;
 
-  const startDate = input.startDate;
-  const endDate =
-    input.endDate >= startDate ? (input.endDate as string) : startDate;
+  // Repair rather than discard: a malformed date (for example a cleared date
+  // input that slipped into storage) must never delete the whole trip.
+  const startRaw = isIsoDate(input.startDate) ? input.startDate : null;
+  const endRaw = isIsoDate(input.endDate) ? input.endDate : null;
+  const startDate = startRaw ?? endRaw ?? getTodayKey();
+  const endDate = endRaw && endRaw >= startDate ? endRaw : startDate;
 
   const activities = Array.isArray(input.activities)
     ? input.activities
@@ -413,7 +436,8 @@ export function calculateTripSummary(trip: Trip, today = getTodayKey()): TripSum
     }
   }
 
-  const conflictIds = findOverlappingActivityIds(sortedActivities);
+  const overlaps = findActivityOverlaps(sortedActivities);
+  const conflictIds = overlaps.ids;
 
   const dayBuckets: TripDayBucket[] = Array.from(dayLookup.entries())
     .sort((left, right) => left[0].localeCompare(right[0]))
@@ -439,10 +463,11 @@ export function calculateTripSummary(trip: Trip, today = getTodayKey()): TripSum
     daysUntilStart,
     activitiesTotal: sortedActivities.length,
     activitiesCompleted,
-    conflictCount: conflictIds.size,
+    conflictCount: overlaps.pairCount,
     journalCount: trip.journal.length,
     dayBuckets,
     upcomingActivities,
+    itineraryTruncated: daysTotal > MAX_ITINERARY_DAYS,
   };
 }
 
