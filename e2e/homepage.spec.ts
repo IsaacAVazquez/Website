@@ -28,14 +28,9 @@ test.describe('Homepage', () => {
   test('should have functional desktop navigation', async ({ page }) => {
     await page.goto('/')
 
-    await page.waitForLoadState('networkidle')
-
-    const navLabels = await page
-      .getByLabel('Primary navigation')
-      .getByRole('link')
-      .allTextContents()
-
-    expect(navLabels).toEqual(NAV_LABELS)
+    await expect(
+      page.getByLabel('Primary navigation').getByRole('link')
+    ).toHaveText(NAV_LABELS)
   })
 
   test('should have functional mobile navigation', async ({ page }) => {
@@ -44,17 +39,13 @@ test.describe('Homepage', () => {
 
     await page.getByRole('button', { name: /open navigation menu/i }).click()
 
-    const navLabels = await page
-      .getByLabel('Mobile navigation')
-      .getByRole('link')
-      .allTextContents()
-
-    expect(navLabels).toEqual(NAV_LABELS)
+    await expect(
+      page.getByLabel('Mobile navigation').getByRole('link')
+    ).toHaveText(NAV_LABELS)
   })
 
   test('shows the editorial hero and primary CTAs', async ({ page }) => {
     await page.goto('/')
-    await page.waitForLoadState('networkidle')
 
     await expect(
       page.getByRole('heading', { level: 1, name: /isaac vazquez/i })
@@ -103,7 +94,6 @@ test.describe('Homepage', () => {
 
   test('shows the editorial sections and card links', async ({ page }) => {
     await page.goto('/')
-    await page.waitForLoadState('networkidle')
 
     await expect(
       page.getByRole('heading', {
@@ -131,7 +121,6 @@ test.describe('Homepage', () => {
     })
 
     await page.goto('/')
-    await page.waitForLoadState('networkidle')
 
     await expect(page.locator('html')).toHaveClass(/dark/)
     await expect(page.getByTestId('hero')).toBeVisible()
@@ -141,7 +130,6 @@ test.describe('Homepage', () => {
   test('keeps homepage content visible when reduced motion is requested', async ({ page }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' })
     await page.goto('/')
-    await page.waitForLoadState('networkidle')
 
     // Hero and marquee motion are decorative; with reduced motion the hero and
     // the editorial sections must still render their content (not stay hidden).

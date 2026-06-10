@@ -3,7 +3,6 @@ import { expect, test } from "@playwright/test";
 test.describe("March Madness", () => {
   test("loads the default route with metadata and no horizontal overflow", async ({ page }) => {
     await page.goto("/march-madness-2026");
-    await page.waitForLoadState("networkidle");
 
     await expect(
       page.getByRole("heading", { name: /march madness bracket analysis/i }).first()
@@ -37,10 +36,8 @@ test.describe("March Madness", () => {
 
   test("supports hero CTAs and deep-link states", async ({ page }) => {
     await page.goto("/march-madness-2026");
-    await page.waitForLoadState("networkidle");
 
     await page.getByRole("link", { name: /see best upsets/i }).click();
-    await page.waitForLoadState("networkidle");
     await expect(page).toHaveURL(/view=picks/);
     await expect(page.getByText(/time zone upsets/i)).toBeVisible();
 
@@ -50,22 +47,18 @@ test.describe("March Madness", () => {
     await expect(page.getByRole("heading", { name: /why this model is different/i })).toBeVisible();
 
     await page.goto("/march-madness-2026?view=analytics&analytics=s-curve");
-    await page.waitForLoadState("networkidle");
     await expect(page.getByRole("heading", { name: /S-curve seed errors/i })).toBeVisible();
     await expect(page.getByText(/Vanderbilt \+5/i).first()).toBeVisible();
 
     await page.goto("/march-madness-2026?view=bracket&region=west");
-    await page.waitForLoadState("networkidle");
     await expect(page.getByText("San Jose, CA (PT)", { exact: true })).toBeVisible();
 
     await page.goto("/march-madness-2026?view=picks");
-    await page.waitForLoadState("networkidle");
     await expect(page.getByText(/analytics upsets/i)).toBeVisible();
   });
 
   test("links to the companion article from the bracket tool", async ({ page }) => {
     await page.goto("/march-madness-2026");
-    await page.waitForLoadState("networkidle");
 
     const articleCard = page.getByRole("link", { name: /read the companion article/i });
 
