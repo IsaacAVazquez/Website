@@ -127,7 +127,10 @@ export function DraftTierColumns({
   }
 
   return (
-    <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-4" aria-label="Tier columns by position">
+    <div
+      className="mt-5 grid scroll-mt-28 gap-4 sm:grid-cols-2 xl:grid-cols-4"
+      aria-label="Tier columns by position"
+    >
       {columns.map((column) => {
         const isNeed = rosterNeeds.includes(column.label);
         const topGroup = column.groups[0];
@@ -142,7 +145,7 @@ export function DraftTierColumns({
         return (
           <section
             key={column.route}
-            className="flex flex-col rounded-[1.5rem] border p-4"
+            className="flex min-w-0 flex-col rounded-[1.5rem] border p-4"
             style={{
               borderColor: isNeed
                 ? "color-mix(in srgb, var(--color-success) 30%, var(--home-rule))"
@@ -152,10 +155,10 @@ export function DraftTierColumns({
             aria-label={`${column.label} tier column`}
           >
             <header
-              className="flex items-center justify-between gap-2 border-b pb-3"
+              className="flex items-start justify-between gap-2 border-b pb-3"
               style={{ borderColor: "var(--home-rule)" }}
             >
-              <div className="flex items-center gap-2">
+              <div className="flex min-w-0 flex-wrap items-center gap-2">
                 <span
                   className={FANTASY_CHIP_CLASS}
                   style={getPositionTone(column.label)}
@@ -176,7 +179,7 @@ export function DraftTierColumns({
                 )}
               </div>
               <span
-                className="text-xs font-semibold tabular-nums"
+                className="shrink-0 text-xs font-semibold tabular-nums"
                 title="Undrafted players left at this position"
                 style={{ color: "var(--home-ink-muted)" }}
               >
@@ -219,7 +222,7 @@ export function DraftTierColumns({
                         aria-label={`Draft ${player.name}, ${column.label}${
                           player.positionRank ? ` ${player.positionRank}` : ""
                         }`}
-                        className="flex min-h-[44px] w-full items-center justify-between gap-2 rounded-[0.9rem] border px-3 py-2 text-left text-sm transition-[background-color,border-color,color] duration-200 hover:border-[var(--home-ink)] disabled:cursor-not-allowed disabled:opacity-60"
+                        className="grid min-h-[44px] w-full grid-cols-[minmax(0,1fr)_auto] items-center gap-2 rounded-[0.9rem] border px-3 py-2 text-left text-sm transition-[background-color,border-color,color] duration-200 hover:border-[var(--home-ink)] disabled:cursor-not-allowed disabled:opacity-60"
                         style={{
                           borderColor: "var(--home-rule)",
                           background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
@@ -227,7 +230,7 @@ export function DraftTierColumns({
                         }}
                       >
                         <span className="min-w-0 truncate font-semibold">{player.name}</span>
-                        <span className="flex shrink-0 items-center gap-2">
+                        <span className="grid shrink-0 grid-cols-[auto_auto] items-center gap-2">
                           <span className="text-xs" style={{ color: "var(--home-ink-muted)" }}>
                             {player.team}
                           </span>

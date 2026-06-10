@@ -325,11 +325,11 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
   // when the snapshot actually carries ADP data, so the grid widens with it.
   const rowClassName = isCompact
     ? adpAvailable
-      ? "grid gap-x-4 gap-y-1 rounded-[1.25rem] border px-4 py-2.5 md:grid-cols-[56px_minmax(0,1.6fr)_minmax(0,0.9fr)_minmax(0,1fr)_minmax(0,0.9fr)_minmax(0,1fr)] md:items-center"
-      : "grid gap-x-4 gap-y-1 rounded-[1.25rem] border px-4 py-2.5 md:grid-cols-[56px_minmax(0,1.6fr)_minmax(0,0.9fr)_minmax(0,1fr)_minmax(0,1fr)] md:items-center"
+      ? "grid gap-3 rounded-[1.25rem] border px-4 py-3 md:grid-cols-[3.5rem_minmax(8rem,1.6fr)_5rem_7rem_5.5rem_6rem] md:items-center md:gap-x-4"
+      : "grid gap-3 rounded-[1.25rem] border px-4 py-3 md:grid-cols-[3.5rem_minmax(8rem,1.6fr)_5rem_7rem_6rem] md:items-center md:gap-x-4"
     : adpAvailable
-      ? "grid gap-4 rounded-[1.5rem] border px-4 py-3 md:grid-cols-[64px_minmax(0,1.6fr)_minmax(0,0.9fr)_minmax(0,1fr)_minmax(0,0.9fr)_minmax(0,1fr)] md:items-center"
-      : "grid gap-4 rounded-[1.5rem] border px-4 py-3 md:grid-cols-[64px_minmax(0,1.6fr)_minmax(0,0.9fr)_minmax(0,1fr)_minmax(0,1fr)] md:items-center";
+      ? "grid gap-4 rounded-[1.5rem] border px-4 py-4 md:grid-cols-[4rem_minmax(9rem,1.6fr)_5rem_7rem_5.5rem_6rem] md:items-center md:gap-x-5"
+      : "grid gap-4 rounded-[1.5rem] border px-4 py-4 md:grid-cols-[4rem_minmax(9rem,1.6fr)_5rem_7rem_6rem] md:items-center md:gap-x-5";
   const rankValueClassName = isCompact
     ? "text-xl font-semibold tabular-nums"
     : "text-2xl font-semibold tabular-nums";
@@ -509,9 +509,12 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
               </div>
             </article>
 
-            <article className="home-card p-5 sm:p-6" aria-labelledby="rankings-board-heading">
+            <article
+              className="home-card scroll-mt-28 p-5 sm:p-6"
+              aria-labelledby="rankings-board-heading"
+            >
               <div
-                className="z-20 flex flex-col gap-3 border-b pb-4 pt-1 sm:sticky sm:top-20 sm:flex-row sm:items-end sm:justify-between"
+                className="z-20 -mx-5 flex flex-col gap-3 border-b px-5 pb-4 pt-1 sm:sticky sm:top-20 sm:-mx-6 sm:flex-row sm:items-end sm:justify-between sm:px-6"
                 style={{
                   borderColor: "var(--home-rule)",
                   background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
@@ -523,7 +526,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                     {FANTASY_POSITION_LABELS[routeState.position]} rankings
                   </h2>
                 </div>
-                <div className="flex flex-wrap items-center gap-3">
+                <div className="grid gap-2 sm:flex sm:flex-wrap sm:items-center sm:justify-end sm:gap-3">
                   {routeState.view === "list" && (
                     <div
                       className="flex rounded-full border p-1 text-sm font-semibold"
@@ -590,7 +593,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                   </div>
                   <p
                     aria-live="polite"
-                    className="text-sm"
+                    className="text-sm sm:min-w-[8.5rem] sm:text-right"
                     style={{ color: "var(--home-ink-muted)" }}
                   >
                     {isLoading
@@ -663,103 +666,113 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                         }}
                         aria-label={`${player.name}, ${player.position}, rank ${getPublishedBoardRank(player, routeState.position)}`}
                       >
-                        <div>
-                          <p className={cellLabelClassName}>Rank</p>
-                          <p
-                            className={rankValueClassName}
-                            title="Published FantasyPros consensus rank on this board"
-                          >
-                            {getPublishedBoardRank(player, routeState.position)}
-                          </p>
-                        </div>
-
-                        <div className="min-w-0">
-                          <div className="flex flex-wrap items-center gap-2">
-                            <p className="truncate text-base font-semibold">{player.name}</p>
-                            <span
-                              className={FANTASY_CHIP_CLASS}
-                              style={getPositionTone(player.position)}
+                        <div className="flex min-w-0 items-start gap-3 md:contents">
+                          <div className="shrink-0">
+                            <p className={cellLabelClassName}>Rank</p>
+                            <p
+                              className={rankValueClassName}
+                              title="Published FantasyPros consensus rank on this board"
                             >
-                              {player.position}
-                            </span>
-                          </div>
-                          <p className="mt-1 text-sm" style={{ color: "var(--home-ink-muted)" }}>
-                            {getPlayerDescriptor(player, routeState.position)}
-                          </p>
-                        </div>
-
-                        <div>
-                          <p className={cellLabelClassName}>Tier</p>
-                          <p
-                            className="text-sm font-semibold"
-                            title="FantasyPros consensus tier. Gaps between tiers mark the value drop-offs"
-                          >
-                            {player.tier ? `Tier ${player.tier}` : "Not listed"}
-                          </p>
-                        </div>
-
-                        <div>
-                          <p className={cellLabelClassName}>Expert range</p>
-                          <p
-                            className="text-sm font-semibold tabular-nums"
-                            title="Best and worst rank across the experts in the consensus"
-                          >
-                            {formatRange(player)}
-                          </p>
-                        </div>
-
-                        {adpAvailable && (
-                          <div>
-                            <p className={cellLabelClassName}>ADP</p>
-                            <p className="text-sm font-semibold tabular-nums" title={FANTASY_ADP_TOOLTIP}>
-                              {formatAdp(player.adp)}
+                              {getPublishedBoardRank(player, routeState.position)}
                             </p>
-                            {(() => {
-                              const valueVsAdp = getValueVsAdp(player);
-                              if (!valueVsAdp?.signal) {
-                                return null;
-                              }
-
-                              return (
-                                <span
-                                  className={`${FANTASY_CHIP_CLASS} mt-1`}
-                                  title={
-                                    valueVsAdp.signal === "value"
-                                      ? "Drafters take this player well after where the experts rank him"
-                                      : "Drafters take this player well before where the experts rank him"
-                                  }
-                                  style={
-                                    valueVsAdp.signal === "value"
-                                      ? {
-                                          borderColor:
-                                            "color-mix(in srgb, var(--color-success) 28%, var(--home-rule))",
-                                          background:
-                                            "color-mix(in srgb, var(--color-success) 10%, var(--home-paper))",
-                                        }
-                                      : {
-                                          borderColor:
-                                            "color-mix(in srgb, var(--color-warning) 30%, var(--home-rule))",
-                                          background:
-                                            "color-mix(in srgb, var(--color-warning) 12%, var(--home-paper))",
-                                        }
-                                  }
-                                >
-                                  {valueVsAdp.signal === "value" ? "Value" : "Reach"}{" "}
-                                  {valueVsAdp.delta > 0 ? `+${valueVsAdp.delta}` : valueVsAdp.delta}
-                                </span>
-                              );
-                            })()}
                           </div>
-                        )}
 
-                        <div>
-                          <p className={cellLabelClassName}>Rostered</p>
-                          <p className="text-sm font-semibold" title="Share of leagues where this player is on a roster">
-                            {formatOwnership(player.ownership)}
-                          </p>
-                          <p className="mt-1 text-xs" style={{ color: "var(--home-ink-muted)" }}>
-                            {player.byeWeek ? `Bye ${player.byeWeek}` : "Bye not listed"}
-                          </p>
+                          <div className="min-w-0 flex-1">
+                            <div className="flex min-w-0 flex-wrap items-center gap-2">
+                              <p className="min-w-0 truncate text-base font-semibold">{player.name}</p>
+                              <span
+                                className={FANTASY_CHIP_CLASS}
+                                style={getPositionTone(player.position)}
+                              >
+                                {player.position}
+                              </span>
+                            </div>
+                            <p className="mt-1 text-sm" style={{ color: "var(--home-ink-muted)" }}>
+                              {getPlayerDescriptor(player, routeState.position)}
+                            </p>
+                          </div>
+                        </div>
+
+                        <div
+                          className="grid grid-cols-2 gap-3 border-t pt-3 md:contents"
+                          style={{ borderColor: "var(--home-rule)" }}
+                        >
+                          <div className="min-w-0">
+                            <p className={cellLabelClassName}>Tier</p>
+                            <p
+                              className="truncate text-sm font-semibold"
+                              title="FantasyPros consensus tier. Gaps between tiers mark value drop-offs"
+                            >
+                              {player.tier ? `Tier ${player.tier}` : "Not listed"}
+                            </p>
+                          </div>
+
+                          <div className="min-w-0">
+                            <p className={cellLabelClassName}>Expert range</p>
+                            <p
+                              className="truncate text-sm font-semibold tabular-nums"
+                              title="Best and worst rank across the experts in the consensus"
+                            >
+                              {formatRange(player)}
+                            </p>
+                          </div>
+
+                          {adpAvailable && (
+                            <div className="min-w-0">
+                              <p className={cellLabelClassName}>ADP</p>
+                              <p className="text-sm font-semibold tabular-nums" title={FANTASY_ADP_TOOLTIP}>
+                                {formatAdp(player.adp)}
+                              </p>
+                              {(() => {
+                                const valueVsAdp = getValueVsAdp(player);
+                                if (!valueVsAdp?.signal) {
+                                  return null;
+                                }
+
+                                return (
+                                  <span
+                                    className={`${FANTASY_CHIP_CLASS} mt-1`}
+                                    title={
+                                      valueVsAdp.signal === "value"
+                                        ? "Drafters take this player well after where the experts rank him"
+                                        : "Drafters take this player well before where the experts rank him"
+                                    }
+                                    style={
+                                      valueVsAdp.signal === "value"
+                                        ? {
+                                            borderColor:
+                                              "color-mix(in srgb, var(--color-success) 28%, var(--home-rule))",
+                                            background:
+                                              "color-mix(in srgb, var(--color-success) 10%, var(--home-paper))",
+                                          }
+                                        : {
+                                            borderColor:
+                                              "color-mix(in srgb, var(--color-warning) 30%, var(--home-rule))",
+                                            background:
+                                              "color-mix(in srgb, var(--color-warning) 12%, var(--home-paper))",
+                                          }
+                                    }
+                                  >
+                                    {valueVsAdp.signal === "value" ? "Value" : "Reach"}{" "}
+                                    {valueVsAdp.delta > 0 ? `+${valueVsAdp.delta}` : valueVsAdp.delta}
+                                  </span>
+                                );
+                              })()}
+                            </div>
+                          )}
+
+                          <div className="min-w-0">
+                            <p className={cellLabelClassName}>Rostered</p>
+                            <p
+                              className="text-sm font-semibold"
+                              title="Share of leagues where this player is on a roster"
+                            >
+                              {formatOwnership(player.ownership)}
+                            </p>
+                            <p className="mt-1 text-xs" style={{ color: "var(--home-ink-muted)" }}>
+                              {player.byeWeek ? `Bye ${player.byeWeek}` : "Bye not listed"}
+                            </p>
+                          </div>
                         </div>
                       </li>
                     ))}

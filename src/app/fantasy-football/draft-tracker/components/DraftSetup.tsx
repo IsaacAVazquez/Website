@@ -73,7 +73,7 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
   }
 
   return (
-    <div className="home-card p-5 sm:p-6">
+    <div className="home-card scroll-mt-28 p-5 sm:p-6">
       <div className="border-b pb-4" style={{ borderColor: "var(--home-rule)" }}>
         <p className="home-kicker mb-1">Draft Setup</p>
         <h2 className="text-2xl font-semibold">Configure the room before picks start.</h2>
@@ -93,7 +93,7 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
             onChange={(event) => updateField("leagueName", event.target.value.slice(0, 60))}
             autoComplete="organization"
             maxLength={60}
-            className="min-h-[48px] rounded-[1.2rem] border px-4 text-sm transition-[background-color,border-color,box-shadow] duration-200"
+            className="min-h-[48px] w-full rounded-[1.2rem] border px-4 text-sm transition-[background-color,border-color,box-shadow] duration-200"
             style={getFieldStyle()}
             placeholder="Home league"
           />
@@ -106,7 +106,7 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
             name="totalTeams"
             value={formState.totalTeams}
             onChange={(event) => updateField("totalTeams", Number(event.target.value))}
-            className="min-h-[48px] rounded-[1.2rem] border px-4 text-sm transition-[background-color,border-color,box-shadow] duration-200"
+            className="min-h-[48px] w-full rounded-[1.2rem] border px-4 text-sm transition-[background-color,border-color,box-shadow] duration-200"
             style={getFieldStyle()}
           >
             {[8, 10, 12, 14, 16].map((teamCount) => (
@@ -124,7 +124,7 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
             name="userTeam"
             value={formState.userTeam}
             onChange={(event) => updateField("userTeam", Number(event.target.value))}
-            className="min-h-[48px] rounded-[1.2rem] border px-4 text-sm transition-[background-color,border-color,box-shadow] duration-200"
+            className="min-h-[48px] w-full rounded-[1.2rem] border px-4 text-sm transition-[background-color,border-color,box-shadow] duration-200"
             style={getFieldStyle()}
           >
             {Array.from({ length: formState.totalTeams }, (_, index) => index + 1).map((slot) => (
@@ -142,7 +142,7 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
             name="rounds"
             value={formState.rounds}
             onChange={(event) => updateField("rounds", Number(event.target.value))}
-            className="min-h-[48px] rounded-[1.2rem] border px-4 text-sm transition-[background-color,border-color,box-shadow] duration-200"
+            className="min-h-[48px] w-full rounded-[1.2rem] border px-4 text-sm transition-[background-color,border-color,box-shadow] duration-200"
             style={getFieldStyle()}
           >
             {[13, 14, 15, 16, 17, 18].map((roundCount) => (
@@ -157,7 +157,7 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
       <div className="mt-5 grid gap-4 md:grid-cols-2">
         <fieldset className="grid gap-2 text-sm">
           <legend className="home-kicker mb-0">Draft order</legend>
-          <div className="grid gap-2 sm:grid-cols-2">
+          <div className="grid auto-rows-fr gap-2 sm:grid-cols-2">
             {[
               { value: "snake" as const, label: "Snake", description: "Reverse order each round." },
               { value: "linear" as const, label: "Linear", description: "Same order every round." },
@@ -168,7 +168,7 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
                   key={option.value}
                   type="button"
                   onClick={() => updateField("draftType", option.value)}
-                  className="rounded-[1.2rem] border px-4 py-3 text-left transition-[background-color,border-color,color,box-shadow] duration-200"
+                  className="min-h-[76px] rounded-[1.2rem] border px-4 py-3 text-left transition-[background-color,border-color,color,box-shadow] duration-200"
                   style={getOptionStyle(active)}
                 >
                   <span className="block text-sm font-semibold">{option.label}</span>
@@ -186,7 +186,7 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
 
         <fieldset className="grid gap-2 text-sm">
           <legend className="home-kicker mb-0">Scoring</legend>
-          <div className="grid gap-2">
+          <div className="grid auto-rows-fr gap-2">
             {SCORING_OPTIONS.map((option) => {
               const active = formState.scoringFormat === option.value;
               return (
@@ -194,7 +194,7 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
                   key={option.value}
                   type="button"
                   onClick={() => updateField("scoringFormat", option.value)}
-                  className="rounded-[1.2rem] border px-4 py-3 text-left transition-[background-color,border-color,color,box-shadow] duration-200"
+                  className="min-h-[72px] rounded-[1.2rem] border px-4 py-3 text-left transition-[background-color,border-color,color,box-shadow] duration-200"
                   style={getOptionStyle(active)}
                 >
                   <span className="block text-sm font-semibold">{option.label}</span>
@@ -212,7 +212,7 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
       </div>
 
       <div
-        className="mt-6 flex flex-wrap items-center justify-between gap-3 rounded-[1.3rem] border px-4 py-4"
+        className="mt-6 grid gap-3 rounded-[1.3rem] border px-4 py-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center"
         style={{
           borderColor: "var(--home-rule)",
           background: "color-mix(in srgb, var(--home-paper-alt) 52%, var(--home-elev-mix))",
@@ -227,7 +227,7 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
           onClick={handleStartDraft}
           disabled={isStarting}
           aria-busy={isStarting}
-          className="min-h-[48px] rounded-full border px-4 py-3 text-sm font-semibold transition-[background-color,border-color,color,box-shadow,opacity] duration-200 disabled:cursor-not-allowed disabled:opacity-70"
+          className="inline-flex min-h-[48px] w-full items-center justify-center rounded-full border px-4 py-3 text-sm font-semibold transition-[background-color,border-color,color,box-shadow,opacity] duration-200 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
           style={{
             borderColor: "var(--home-ink)",
             background: "var(--home-ink)",

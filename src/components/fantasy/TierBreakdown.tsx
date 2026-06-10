@@ -82,7 +82,7 @@ export function TierBreakdown({ players, position, getPublishedRank }: TierBreak
   const positionLabel = FANTASY_POSITION_LABELS[position];
 
   return (
-    <div className="grid gap-4" aria-label={`${positionLabel} tier breakdown`}>
+    <div className="grid scroll-mt-28 gap-4" aria-label={`${positionLabel} tier breakdown`}>
       {groups.map((group, index) => {
         const isUntiered = group.tier === "untiered";
         const accent = isUntiered ? "6%" : tierAccent(index, Math.max(tieredGroups.length, 1));
@@ -101,8 +101,8 @@ export function TierBreakdown({ players, position, getPublishedRank }: TierBreak
             }}
             aria-label={label}
           >
-            <header className="flex flex-wrap items-baseline justify-between gap-3">
-              <div className="flex items-baseline gap-3">
+            <header className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
+              <div className="flex flex-wrap items-baseline gap-3">
                 <p className="home-kicker mb-0">{label}</p>
                 <p className="text-sm font-semibold" style={{ color: "var(--home-ink-muted)" }}>
                   {description}
@@ -138,11 +138,11 @@ export function TierBreakdown({ players, position, getPublishedRank }: TierBreak
               })()}
             </header>
 
-            <ul role="list" className="mt-4 flex flex-wrap gap-2">
+            <ul role="list" className="mt-4 grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
               {group.players.map((player) => (
-                <li key={player.id}>
+                <li key={player.id} className="min-w-0">
                   <span
-                    className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-sm"
+                    className="grid min-h-[38px] grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 rounded-full border px-3 py-1.5 text-sm"
                     style={{
                       borderColor: "var(--home-rule)",
                       background: "var(--home-paper-raised)",
@@ -156,15 +156,14 @@ export function TierBreakdown({ players, position, getPublishedRank }: TierBreak
                     >
                       {getPublishedRank(player)}
                     </span>
-                    <span className="font-semibold">{player.name}</span>
+                    <span className="min-w-0 truncate font-semibold">{player.name}</span>
                     {player.team && (
-                      <span className="text-xs font-medium uppercase tracking-[0.1em]" style={{ color: "var(--home-ink-muted)" }}>
+                      <span
+                        className="shrink-0 text-xs font-medium uppercase tracking-[0.1em]"
+                        style={{ color: "var(--home-ink-muted)" }}
+                      >
                         {player.team}
-                      </span>
-                    )}
-                    {player.byeWeek && (
-                      <span className="text-2xs" style={{ color: "var(--home-ink-muted)" }}>
-                        Bye {player.byeWeek}
+                        {player.byeWeek ? ` · Bye ${player.byeWeek}` : ""}
                       </span>
                     )}
                     {Number.isFinite(player.adp) && (
