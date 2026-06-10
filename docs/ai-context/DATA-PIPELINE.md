@@ -2,7 +2,7 @@
 
 Current high-level data flow reference.
 
-**Last updated:** 2026-06-08
+**Last updated:** 2026-06-10
 
 ---
 
@@ -86,7 +86,16 @@ Update paths:
 
 Runtime API routes under `/api/mlb/*`, `/api/nba/*`, and `/api/nfl/*` read those snapshots. The matching GitHub Actions workflows refresh and commit snapshots on their seasonal schedules.
 
-Golf uses the manually maintained `src/data/golfSnapshot.ts`; there is no golf update script or scheduled workflow.
+Golf uses `src/data/golfSnapshot.ts`, rebuilt by `npm run update:golf` (`scripts/buildGolfSnapshot.ts`) from ESPN's public golf leaderboard endpoint; `.github/workflows/update-golf.yml` refreshes it daily. A failed fetch keeps the previous snapshot.
+
+The 2026 World Cup hub uses `src/data/worldCupSnapshot.ts`, rebuilt by `npm run update:world-cup` from ESPN's public `soccer/fifa.world` endpoints; `.github/workflows/update-world-cup.yml` refreshes it every six hours during June and July. Runtime routes under `/api/world-cup/*` read the committed snapshot.
+
+---
+
+## Civic And Curated Tool Pipelines
+
+- `/bay-area-transit` uses `src/data/bayAreaTransitSnapshot.ts`, rebuilt by `npm run update:bay-area-transit` from BART's public legacy API; `.github/workflows/update-bay-area-transit.yml` refreshes it every six hours. Runtime routes under `/api/bay-area-transit/*` read the committed snapshot.
+- `/tech-startup-tracker` uses the editorially curated `src/data/techStartupSnapshot.ts`, rebuilt by `npm run update:tech-startups` from a hand-maintained seed in `scripts/buildTechStartupSnapshot.ts`. There is no scheduled workflow because there is no live source to poll.
 
 ---
 
@@ -140,8 +149,10 @@ March Madness is split between:
 - `/github-trending-pulse` reads `src/data/githubTrendingSnapshot.ts`, rebuilt by `npm run update:github-trending`
 - `/frontier-models` reads `src/data/frontierModelsSnapshot.ts`, rebuilt from `scripts/data/frontierModels.source.ts`
 - `/polling-aggregator` reads `src/data/pollingSnapshot.ts`
-- `/museum-log` reads `src/data/museumSnapshot.ts`
+- `/museum-log` reads `src/data/museumSnapshot.ts`, with personal visit state browser-local via `src/hooks/useMuseumLog.ts`
 - `/recipe-finder` reads `src/data/recipesSnapshot.ts` through `src/lib/recipes.ts`
+- `/travel` keeps all trip, itinerary, and journal state browser-local via `src/hooks/useTravelPlanner.ts`; there is no server data source
+- `/wine-cellar` keeps cellar state browser-local via `src/hooks/useWineCellar.ts`
 - `/fintech-tools/budget-planner` uses `src/hooks/useBudgetPlanner.ts`
 - `/fintech-tools/interchange-iq` is client-side and does not depend on a checked-in data refresh script
 

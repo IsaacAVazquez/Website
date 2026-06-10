@@ -2,7 +2,7 @@
 
 Operational context for agents working in this repo. Start here, then read `CLAUDE.md` for deeper implementation context.
 
-**Last updated:** 2026-06-08
+**Last updated:** 2026-06-10
 
 ---
 
@@ -32,6 +32,9 @@ Primary live routes:
 - `/nba`
 - `/nfl`
 - `/golf`
+- `/world-cup-2026`
+- `/bay-area-transit`
+- `/tech-startup-tracker`
 - `/writing` and `/writing/[slug]`
 - `/resume`
 - `/contact`
@@ -50,6 +53,7 @@ Primary live routes:
 - `/polling-aggregator`
 - `/mba-internship-notifications`
 - `/museum-log`
+- `/travel`
 - `/now`
 - `/changelog`
 - `/search`
@@ -75,8 +79,9 @@ Promoted header items:
 3. `Projects`
 4. `Writing`
 5. `Investments`
-6. `Resume`
-7. `Contact`
+6. `Fantasy`
+7. `Resume`
+8. `Contact`
 
 Shared shell files:
 
@@ -89,6 +94,7 @@ Self-shell routes currently include:
 
 - `/about`
 - `/ai-dev-tools`
+- `/bay-area-transit`
 - `/changelog`
 - `/contact`
 - `/decision-lab`
@@ -115,7 +121,10 @@ Self-shell routes currently include:
 - `/recipe-finder`
 - `/resume`
 - `/spacex-mission-control`
+- `/tech-startup-tracker`
+- `/travel`
 - `/wine-cellar`
+- `/world-cup-2026`
 - `/writing`
 - `/writing/[slug]`
 

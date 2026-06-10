@@ -2,7 +2,7 @@
 
 Current API route map.
 
-**Last updated:** 2026-06-08
+**Last updated:** 2026-06-10
 
 ---
 
@@ -11,6 +11,8 @@ Current API route map.
 | Endpoint | Methods | Purpose |
 |---------|---------|---------|
 | `/api/auth/[...nextauth]` | GET, POST | Admin auth |
+| `/api/bay-area-transit/stations/[stationId]` | GET | Snapshot-backed BART per-station departure board |
+| `/api/bay-area-transit/summary` | GET | Snapshot-backed BART lines, advisories, and system status |
 | `/api/fantasy-data` | GET | Snapshot-backed fantasy data route reading `public/data/fantasy/*.json` |
 | `/api/golf/players/[playerId]` | GET | Snapshot-backed golf player detail payload |
 | `/api/golf/summary` | GET | Snapshot-backed golf dashboard summary |
@@ -36,6 +38,8 @@ Current API route map.
 | `/api/spacex/launches/[id]` | GET | SpaceX launch detail payload |
 | `/api/spacex/summary` | GET | SpaceX Mission Control summary payload |
 | `/api/stocks` | GET | Quote source for investments flows |
+| `/api/world-cup/summary` | GET | Snapshot-backed World Cup groups, knockout rounds, fixtures, and scorers |
+| `/api/world-cup/teams/[teamId]` | GET | Snapshot-backed World Cup team drilldown payload |
 
 ---
 
@@ -45,7 +49,7 @@ Current API route map.
 - `/api/search` is not a full dynamic site index
 - `/api/rss` is still a small writing feed route
 - `/api/premier-league/*` and `/api/la-liga/*` read committed snapshots, not `football-data.org` directly at runtime
-- `/api/mlb/*`, `/api/nba/*`, `/api/nfl/*`, and `/api/golf/*` also read committed snapshots at runtime
+- `/api/mlb/*`, `/api/nba/*`, `/api/nfl/*`, `/api/golf/*`, `/api/world-cup/*`, and `/api/bay-area-transit/*` also read committed snapshots at runtime
 - `/api/fantasy-data` reads generated static snapshots; there are no live `/api/fantasy-pros-*`, `/api/data-manager`, `/api/data-metadata`, `/api/sample-data`, or `/api/scheduled-update` routes
 - `/api/mba-jobs` fetches live from public job boards at request time with a 30-minute `s-maxage` and 8s per-target timeout; `/api/mba-jobs/email` requires `RESEND_API_KEY` and `MBA_DIGEST_ALLOWED_RECIPIENTS`
 - auth is still NextAuth credentials-based

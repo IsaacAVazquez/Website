@@ -2,7 +2,7 @@
 
 Current API route inventory for the app.
 
-**Last updated:** 2026-06-08
+**Last updated:** 2026-06-10
 
 ---
 
@@ -45,6 +45,15 @@ Current API route inventory for the app.
 | `/api/nba/teams/[teamId]` | GET | Snapshot-backed NBA team drilldown payload |
 | `/api/nfl/summary` | GET | Snapshot-backed NFL standings, schedule, and leaders payload |
 | `/api/nfl/teams/[teamId]` | GET | Snapshot-backed NFL team drilldown payload |
+| `/api/world-cup/summary` | GET | Snapshot-backed 2026 FIFA World Cup groups, knockout rounds, fixtures, and scorers |
+| `/api/world-cup/teams/[teamId]` | GET | Snapshot-backed World Cup team drilldown payload, keyed by lowercased team slug |
+
+### Civic / transit
+
+| Route | Methods | Notes |
+|------|---------|-------|
+| `/api/bay-area-transit/summary` | GET | Snapshot-backed BART lines, advisories, and system status |
+| `/api/bay-area-transit/stations/[stationId]` | GET | Snapshot-backed per-station departure board, keyed by lowercased BART abbreviation |
 
 ### MBA internship notifications
 
@@ -100,6 +109,10 @@ Sports dashboard routes are separate from the investments surface:
 - `/api/nfl/teams/[teamId]`
 - `/api/golf/summary`
 - `/api/golf/players/[playerId]`
+- `/api/world-cup/summary`
+- `/api/world-cup/teams/[teamId]`
+- `/api/bay-area-transit/summary`
+- `/api/bay-area-transit/stations/[stationId]`
 
 ### Fantasy data
 
@@ -156,6 +169,10 @@ Use these as the actual source of truth:
 - `src/app/api/nba/teams/[teamId]/route.ts`
 - `src/app/api/nfl/summary/route.ts`
 - `src/app/api/nfl/teams/[teamId]/route.ts`
+- `src/app/api/world-cup/summary/route.ts`
+- `src/app/api/world-cup/teams/[teamId]/route.ts`
+- `src/app/api/bay-area-transit/summary/route.ts`
+- `src/app/api/bay-area-transit/stations/[stationId]/route.ts`
 - `src/app/api/news-pulse/route.ts`
 - `src/app/api/spacex/summary/route.ts`
 - `src/app/api/spacex/launches/route.ts`

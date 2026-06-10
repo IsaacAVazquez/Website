@@ -2,7 +2,7 @@
 
 Comprehensive repo context for agents and collaborators working in `/Users/isaacvazquez/Website`.
 
-**Last updated:** 2026-05-04
+**Last updated:** 2026-06-10
 
 ---
 
@@ -51,7 +51,10 @@ npm run update:nba
 npm run update:nfl
 npm run update:formula-1
 npm run update:golf
+npm run update:world-cup
 npm run update:bay-area-transit
+npm run update:tech-startups
+npm run update:frontier-models
 npm run update:github-trending
 npm run update:spacex
 npm run lint
@@ -116,6 +119,7 @@ Note: `prebuild` automatically runs a league-only football snapshot refresh; `po
 - `/food-map`
 - `/recipe-finder`
 - `/wine-cellar`
+- `/travel`
 
 ### Other live routes
 
@@ -174,7 +178,7 @@ This is intentional to avoid stacked closing CTAs.
 
 - Shared fallback: `src/components/RouteErrorBoundary.tsx` (editorial-styled, calls `logger.error`, exposes `reset()` retry).
 - Top-level catch-all: `src/app/error.tsx` covers anything below.
-- Per-route boundaries on snapshot-driven dashboards that need bespoke surface labels: `/nba`, `/nfl`, `/mlb`, `/formula-1`, `/premier-league`, `/la-liga`, `/spacex-mission-control`, `/news-pulse`, `/investments`.
+- Per-route boundaries on snapshot-driven dashboards that need bespoke surface labels: `/nba`, `/nfl`, `/mlb`, `/formula-1`, `/fantasy-formula-1`, `/premier-league`, `/la-liga`, `/world-cup-2026`, `/bay-area-transit`, `/tech-startup-tracker`, `/spacex-mission-control`, `/news-pulse`, `/investments`.
 - When adding a new data-fetching dashboard route, drop in an `error.tsx` that re-exports `RouteErrorBoundary` with a `surfaceName`.
 
 ---
@@ -391,6 +395,10 @@ Live routes under `src/app/api/`:
 - `/api/nba/teams/[teamId]`
 - `/api/nfl/summary`
 - `/api/nfl/teams/[teamId]`
+- `/api/golf/summary`
+- `/api/golf/players/[playerId]`
+- `/api/world-cup/summary`
+- `/api/world-cup/teams/[teamId]`
 - `/api/bay-area-transit/summary`
 - `/api/bay-area-transit/stations/[stationId]`
 - `/api/mba-jobs`
