@@ -2,8 +2,11 @@
 """
 Investment data pipeline using defeatbeta-api.
 Reads symbols from scripts/investments_symbols.txt, fetches financial data,
-and writes raw per-ticker JSON files to public/data/investments/{SYMBOL}/
-before the snapshot builder compacts them into snapshot.json artifacts.
+and writes raw per-ticker JSON files to data/investments-raw/{SYMBOL}/
+before the snapshot builder compacts them into snapshot.json artifacts under
+public/data/investments/{SYMBOL}/. Only the compacted snapshots and the
+index are deployed; the raw files stay out of public/ so they never ship
+with the site.
 
 Usage:
     .venv/bin/python3 scripts/fetch_investments_data.py
@@ -54,7 +57,11 @@ SCRIPT_DIR = Path(__file__).parent
 PROJECT_ROOT = SCRIPT_DIR.parent
 SYMBOLS_FILE = SCRIPT_DIR / "investments_symbols.txt"
 COMPANY_NAMES_FILE = PROJECT_ROOT / "src" / "data" / "investmentCompanyNames.json"
-OUTPUT_DIR = PROJECT_ROOT / "public" / "data" / "investments"
+# Raw per-section fetch output. Script-only input for the snapshot builder —
+# intentionally outside public/ so it is never deployed (~300 MB).
+OUTPUT_DIR = PROJECT_ROOT / "data" / "investments-raw"
+# Deployed artifacts: index.json + per-symbol snapshot.json live here.
+PUBLIC_DIR = PROJECT_ROOT / "public" / "data" / "investments"
 
 
 # ---------------------------------------------------------------------------
@@ -204,19 +211,20 @@ def build_index_entry(symbol: str, info_payload) -> dict[str, str]:
     }
 
 
-def stale_entry_from_prior_snapshot(symbol: str, out_dir: Path) -> dict | None:
+def stale_entry_from_prior_snapshot(symbol: str) -> dict | None:
     """Recover an index entry from a previously-built snapshot on disk.
 
     When this run's fetch fails for a symbol, a good snapshot from an earlier
-    run usually still sits in ``<out_dir>/snapshot.json`` (snapshots are never
-    deleted). Rather than dropping the symbol from the index entirely — which
-    makes it vanish from search *and* 404 on deep-link — we keep it servable by
-    re-emitting its entry flagged ``stale`` with the date it was last built.
+    run usually still sits in ``PUBLIC_DIR/<symbol>/snapshot.json`` (snapshots
+    are never deleted). Rather than dropping the symbol from the index entirely
+    — which makes it vanish from search *and* 404 on deep-link — we keep it
+    servable by re-emitting its entry flagged ``stale`` with the date it was
+    last built.
 
     Returns ``None`` when there is no usable prior snapshot (no file, parse
     error, or empty ``sections``), in which case the symbol stays in ``failed``.
     """
-    snapshot_path = out_dir / "snapshot.json"
+    snapshot_path = PUBLIC_DIR / symbol / "snapshot.json"
     if not snapshot_path.exists():
         return None
     try:
@@ -230,7 +238,7 @@ def stale_entry_from_prior_snapshot(symbol: str, out_dir: Path) -> dict | None:
         return None
 
     info_payload = None
-    info_path = out_dir / "info.json"
+    info_path = OUTPUT_DIR / symbol / "info.json"
     if info_path.exists():
         try:
             with open(info_path, "r", encoding="utf-8") as f:
@@ -535,7 +543,7 @@ def main() -> None:
     recovered: list[str] = []
     for item in failed:
         symbol = item["symbol"]
-        stale_entry = stale_entry_from_prior_snapshot(symbol, OUTPUT_DIR / symbol)
+        stale_entry = stale_entry_from_prior_snapshot(symbol)
         if stale_entry is not None:
             successful.append(symbol)
             entries.append(stale_entry)
@@ -557,7 +565,7 @@ def main() -> None:
         "lastUpdated": datetime.now(timezone.utc).isoformat(),
         "entries": entries,
     }
-    write_json(OUTPUT_DIR / "index.json", index_data)
+    write_json(PUBLIC_DIR / "index.json", index_data)
 
     print("=" * 60)
     print(f"Done. {len(successful)}/{len(symbols)} symbols processed.")

@@ -212,6 +212,7 @@ This is intentional to avoid stacked closing CTAs.
   - `/api/investments/quotes`
   - `/api/investments/data/[symbol]`
 - `npm run update:investments` runs a Python fetch (`scripts/fetch_investments_data.py`, expects a `.venv`) followed by `scripts/buildInvestmentsSnapshots.ts`; `.github/workflows/update-investments.yml` refreshes the committed snapshots twice a week (Mon + Thu, 22:15 UTC)
+- raw per-symbol fetch output lives in `data/investments-raw/{SYMBOL}/*.json` (script-only, never deployed); only `index.json` and the per-symbol `snapshot.json` files under `public/data/investments/` ship with the site
 
 #### Retirement planner
 

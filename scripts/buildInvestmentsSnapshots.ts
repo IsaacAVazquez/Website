@@ -20,7 +20,10 @@ type RawSectionName =
   | "officers";
 
 const PROJECT_ROOT = process.cwd();
-const DATA_DIR = path.join(PROJECT_ROOT, "public", "data", "investments");
+// Raw per-section fetch output (script-only, never deployed).
+const RAW_DIR = path.join(PROJECT_ROOT, "data", "investments-raw");
+// Deployed artifacts: index.json + per-symbol snapshot.json.
+const PUBLIC_DIR = path.join(PROJECT_ROOT, "public", "data", "investments");
 const RAW_SECTIONS: RawSectionName[] = [
   "info",
   "fundamentals",
@@ -81,11 +84,11 @@ async function buildSymbolSnapshot(
   symbol: string,
   lastUpdated: string | null
 ): Promise<void> {
-  const symbolDir = path.join(DATA_DIR, symbol);
+  const rawSymbolDir = path.join(RAW_DIR, symbol);
   const rawSections = await RAW_SECTIONS.reduce<Promise<Record<string, unknown>>>(
     async (promise, section) => {
       const acc = await promise;
-      const data = await readJson<unknown>(path.join(symbolDir, `${section}.json`));
+      const data = await readJson<unknown>(path.join(rawSymbolDir, `${section}.json`));
       if (data !== undefined) {
         acc[section] = data;
       }
@@ -98,25 +101,41 @@ async function buildSymbolSnapshot(
     (section) => rawSections[section] === undefined
   );
   if (missingRequiredSections.length > 0) {
+    // Stale-served symbols (recovered by fetch_investments_data.py from a
+    // prior snapshot when their fetch failed) have no raw sections on disk.
+    // Keep serving the committed snapshot instead of failing the whole build.
+    if (Object.keys(rawSections).length === 0) {
+      const priorSnapshot = await readJson<unknown>(
+        path.join(PUBLIC_DIR, symbol, "snapshot.json")
+      );
+      if (priorSnapshot !== undefined) {
+        console.warn(
+          `[${symbol}] No raw sections on disk — keeping the existing snapshot (stale-served).`
+        );
+        return;
+      }
+    }
     throw new Error(
       `Missing raw sections for ${symbol}: ${missingRequiredSections.join(", ")}. Run fetch_investments_data.py before building snapshots.`
     );
   }
 
   const snapshot = buildInvestmentSnapshot(symbol, lastUpdated, rawSections);
+  const publicSymbolDir = path.join(PUBLIC_DIR, symbol);
+  await fs.mkdir(publicSymbolDir, { recursive: true });
   await writeJsonAtomic(
-    path.join(symbolDir, "snapshot.json"),
+    path.join(publicSymbolDir, "snapshot.json"),
     `${JSON.stringify(snapshot, null, 2)}\n`
   );
   // NOTE: previously we deleted every per-section raw file here ("legacy
   // cleanup"). That meant any future bug in buildInvestmentSnapshot forced
-  // a full ~25-min Python re-fetch to recover. We now keep the raw files
-  // on disk so a snapshot rebuild is a fast local-only operation. Disk
-  // usage for the curated universe is small (~a few MB).
+  // a full ~25-min Python re-fetch to recover. We keep the raw files in
+  // data/investments-raw/ so a snapshot rebuild is a fast local-only
+  // operation — and out of public/ so they never ship with a deploy.
 }
 
 async function main() {
-  const index = await readJson<InvestmentsIndex>(path.join(DATA_DIR, "index.json"));
+  const index = await readJson<InvestmentsIndex>(path.join(PUBLIC_DIR, "index.json"));
   if (!index) {
     throw new Error("Missing public/data/investments/index.json");
   }
