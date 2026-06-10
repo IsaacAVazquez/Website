@@ -1,8 +1,10 @@
 # CLAUDE.md
 
-Comprehensive repo context for agents and collaborators working in `/Users/isaacvazquez/Website`.
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-**Last updated:** 2026-05-04
+Comprehensive repo context for agents and collaborators. `AGENTS.md` is the shorter start-here companion; this file holds the deeper implementation context.
+
+**Last updated:** 2026-06-10
 
 ---
 
@@ -14,9 +16,10 @@ This codebase is a multi-surface Next.js 16 site for Isaac Vazquez. It combines 
 2. **Writing surface** — long-form MDX posts under `/writing`
 3. **Fantasy football analytics** — rankings, tiers, and draft tooling
 4. **Investments + seasonal experiments** — `/investments` and `/march-madness-2026`
-5. **Experimental dashboards** — standalone tools like `/formula-1`, `/fantasy-formula-1`, `/premier-league`, `/la-liga`, `/mlb`, `/nba`, `/nfl`, `/polling-aggregator`, `/news-pulse`, `/github-trending-pulse`, `/tech-startup-tracker`, and `/spacex-mission-control`
+5. **Experimental dashboards** — standalone tools like `/formula-1`, `/fantasy-formula-1`, `/premier-league`, `/la-liga`, `/mlb`, `/nba`, `/nfl`, `/golf`, `/world-cup-2026`, `/bay-area-transit`, `/polling-aggregator`, `/news-pulse`, `/github-trending-pulse`, `/tech-startup-tracker`, and `/spacex-mission-control`
 6. **Fintech tools** — standalone calculators under `/fintech-tools/*`
 7. **MBA internship tracker** — live role aggregator at `/mba-internship-notifications`, surfaced through the projects section
+8. **Personal interest tools** — browser-persisted surfaces like `/travel`, `/food-map`, `/recipe-finder`, `/wine-cellar`, and `/museum-log`
 
 The site is not a generic blog template. It is a portfolio-first experience with secondary authority-building content.
 
@@ -51,13 +54,16 @@ npm run update:nba
 npm run update:nfl
 npm run update:formula-1
 npm run update:golf
+npm run update:world-cup
 npm run update:bay-area-transit
 npm run update:github-trending
+npm run update:tech-startups
+npm run update:frontier-models
 npm run update:spacex
 npm run lint
 ```
 
-Note: `prebuild` automatically runs a league-only football snapshot refresh; `postbuild` runs `next-sitemap`.
+Note: `prebuild` automatically runs a league-only football snapshot refresh; `postbuild` runs `next-sitemap` and `scripts/patch-nft-sharp.mjs`.
 
 ---
 
@@ -116,6 +122,7 @@ Note: `prebuild` automatically runs a league-only football snapshot refresh; `po
 - `/food-map`
 - `/recipe-finder`
 - `/wine-cellar`
+- `/travel`
 
 ### Other live routes
 
@@ -174,7 +181,7 @@ This is intentional to avoid stacked closing CTAs.
 
 - Shared fallback: `src/components/RouteErrorBoundary.tsx` (editorial-styled, calls `logger.error`, exposes `reset()` retry).
 - Top-level catch-all: `src/app/error.tsx` covers anything below.
-- Per-route boundaries on snapshot-driven dashboards that need bespoke surface labels: `/nba`, `/nfl`, `/mlb`, `/formula-1`, `/premier-league`, `/la-liga`, `/spacex-mission-control`, `/news-pulse`, `/investments`.
+- Per-route boundaries on snapshot-driven dashboards that need bespoke surface labels: `/nba`, `/nfl`, `/mlb`, `/formula-1`, `/fantasy-formula-1`, `/premier-league`, `/la-liga`, `/world-cup-2026`, `/bay-area-transit`, `/tech-startup-tracker`, `/spacex-mission-control`, `/news-pulse`, `/investments`.
 - When adding a new data-fetching dashboard route, drop in an `error.tsx` that re-exports `RouteErrorBoundary` with a `surfaceName`.
 
 ---
@@ -202,6 +209,7 @@ This is intentional to avoid stacked closing CTAs.
   - `/api/investments/index`
   - `/api/investments/quotes`
   - `/api/investments/data/[symbol]`
+- `npm run update:investments` runs a Python fetch (`scripts/fetch_investments_data.py`, expects a `.venv`) followed by `scripts/buildInvestmentsSnapshots.ts`; `.github/workflows/update-investments.yml` refreshes the committed snapshots twice a week (Mon + Thu, 22:15 UTC)
 
 #### Retirement planner
 
@@ -341,7 +349,10 @@ The `/nba` route follows the same snapshot-driven pattern as the soccer dashboar
 - `/news-pulse` reads from `src/lib/news-pulse-utils.ts` through `/api/news-pulse`
 - `/spacex-mission-control` reads from SpaceX data helpers and `/api/spacex/*` routes; `.github/workflows/update-spacex.yml` refreshes data and image artifacts twice daily
 - `/polling-aggregator` reads from `src/data/pollingSnapshot.ts` with deep-linkable route state
-- `/golf` reads from `src/data/golfSnapshot.ts` with deep-linkable route state. Snapshot is built by `npm run update:golf` (`scripts/buildGolfSnapshot.ts` → `src/lib/golfData.ts`) against the public ESPN golf leaderboard endpoint (`https://site.api.espn.com/apis/site/v2/sports/golf/leaderboard`); no auth token required. It tracks whichever PGA Tour event ESPN is featuring (in-progress event preferred, else most recent). `.github/workflows/update-golf.yml` refreshes it daily at 08:40 UTC. Like Formula 1, a failed fetch keeps the previous snapshot rather than wiping it. To pin a specific event instead, run the script manually or hand-edit the snapshot.
+- `/golf` reads from `src/data/golfSnapshot.ts` with deep-linkable route state. Snapshot is built by `npm run update:golf` (`scripts/buildGolfSnapshot.ts` → `src/lib/golfData.ts`) against the public ESPN golf leaderboard endpoint (`https://site.api.espn.com/apis/site/v2/sports/golf/leaderboard`); no auth token required. It tracks whichever PGA Tour event ESPN is featuring (in-progress event preferred, else most recent). `.github/workflows/update-golf.yml` refreshes it daily at 08:40 UTC. Like Formula 1, a failed fetch keeps the previous snapshot rather than wiping it. To pin a specific event instead, run the script manually or hand-edit the snapshot. Accessors live in `src/lib/golfSnapshot.ts`; API routes are `/api/golf/summary` and `/api/golf/players/[playerId]` (400 for malformed ids, 404 for valid-shape unknown ids; errors are never CDN-cached).
+- `/frontier-models` reads from `src/data/frontierModelsSnapshot.ts`. Like the tech startup tracker, the dataset is **editorially curated**: the hand-maintained source lives in `scripts/data/frontierModels.source.ts` and `npm run update:frontier-models` (`scripts/buildFrontierModelsSnapshot.ts` → `src/lib/frontierModels.ts`) regenerates the snapshot. No GitHub Action — refresh by editing the source file and re-running.
+- `/museum-log` reads from `src/data/museumSnapshot.ts`; `/recipe-finder` reads from `src/data/recipesSnapshot.ts` (both curated, no update workflow)
+- `/travel` is a browser-persisted travel planner (trips, day-by-day itineraries, per-trip journal). No snapshot or API: state lives in localStorage via `src/hooks/useTravelPlanner.ts`, with pure helpers and the storage key in `src/lib/travelPlanner.ts` and types in `src/types/travel.ts`.
 - `/fintech-tools/budget-planner` uses `src/hooks/useBudgetPlanner.ts`
 - `/fintech-tools/interchange-iq` is a client-side fee analyzer under `src/app/fintech-tools/interchange-iq`
 
@@ -393,6 +404,10 @@ Live routes under `src/app/api/`:
 - `/api/nfl/teams/[teamId]`
 - `/api/bay-area-transit/summary`
 - `/api/bay-area-transit/stations/[stationId]`
+- `/api/golf/summary`
+- `/api/golf/players/[playerId]`
+- `/api/world-cup/summary`
+- `/api/world-cup/teams/[teamId]`
 - `/api/mba-jobs`
 - `/api/mba-jobs/email`
 - `/api/news-pulse`
@@ -440,6 +455,17 @@ The repo uses:
 - Jest for unit/integration coverage
 - Playwright for browser coverage
 
+Common commands:
+
+```bash
+npm test                                 # full Jest suite
+npx jest src/lib/__tests__/foo.test.ts   # single Jest file
+npx jest -t "name of test"               # single test by name
+npm run test:e2e                         # Playwright (default project subset)
+npm run test:e2e:full                    # full browser matrix (E2E_FULL_MATRIX=1)
+npx playwright test e2e/homepage.spec.ts # single Playwright spec
+```
+
 Key current facts:
 
 - Jest coverage thresholds are low and pragmatic, not strict enterprise thresholds
@@ -454,6 +480,7 @@ Read `TESTING.md` before expanding coverage.
 
 Treat the following as current source of truth:
 
+- `AGENTS.md` (start-here operational context for agents)
 - `AGENT.md`
 - `README.md`
 - `PAGES.md`
