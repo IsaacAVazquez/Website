@@ -15,14 +15,17 @@ import {
   getFantasyWeekLabel,
 } from "@/lib/fantasy";
 import {
+  FANTASY_ADP_TOOLTIP,
   FANTASY_AVG_RANK_TOOLTIP,
   FANTASY_CHIP_CLASS,
+  formatAdp,
   formatOwnership,
   formatRange,
   formatRankValue,
   formatUpdatedAt,
   getPositionTone,
   getSourceKindLabel,
+  getValueVsAdp,
 } from "@/lib/fantasyUtils";
 import { TierBreakdown } from "@/components/fantasy";
 import { MetricTooltip } from "@/components/investments/MetricTooltip";
@@ -216,6 +219,8 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
   });
 
   const currentSliceUnavailable = Boolean(sliceMetadata && !sliceMetadata.available);
+  const adpSource = metadata?.adpSource ?? null;
+  const adpAvailable = Boolean(adpSource);
   const selectedScoringLabel = FANTASY_SCORING_LABELS[routeState.scoring];
   const currentSourceUpdatedAt = sliceMetadata?.updatedAt ?? metadata?.upstreamUpdatedAt ?? null;
   const currentSourceKindLabel = getSourceKindLabel(sliceMetadata?.sourceKind);
@@ -316,10 +321,15 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
   const isCompact = density === "compact";
   // Compact trims vertical rhythm and, on desktop where the columns are
   // self-evident, drops the per-cell kicker labels. Mobile keeps the labels
-  // since the cells stack into a single column.
+  // since the cells stack into a single column. The ADP column only renders
+  // when the snapshot actually carries ADP data, so the grid widens with it.
   const rowClassName = isCompact
-    ? "grid gap-x-4 gap-y-1 rounded-[1.25rem] border px-4 py-2.5 md:grid-cols-[56px_minmax(0,1.6fr)_minmax(0,0.9fr)_minmax(0,1fr)_minmax(0,1fr)] md:items-center"
-    : "grid gap-4 rounded-[1.5rem] border px-4 py-3 md:grid-cols-[64px_minmax(0,1.6fr)_minmax(0,0.9fr)_minmax(0,1fr)_minmax(0,1fr)] md:items-center";
+    ? adpAvailable
+      ? "grid gap-x-4 gap-y-1 rounded-[1.25rem] border px-4 py-2.5 md:grid-cols-[56px_minmax(0,1.6fr)_minmax(0,0.9fr)_minmax(0,1fr)_minmax(0,0.9fr)_minmax(0,1fr)] md:items-center"
+      : "grid gap-x-4 gap-y-1 rounded-[1.25rem] border px-4 py-2.5 md:grid-cols-[56px_minmax(0,1.6fr)_minmax(0,0.9fr)_minmax(0,1fr)_minmax(0,1fr)] md:items-center"
+    : adpAvailable
+      ? "grid gap-4 rounded-[1.5rem] border px-4 py-3 md:grid-cols-[64px_minmax(0,1.6fr)_minmax(0,0.9fr)_minmax(0,1fr)_minmax(0,0.9fr)_minmax(0,1fr)] md:items-center"
+      : "grid gap-4 rounded-[1.5rem] border px-4 py-3 md:grid-cols-[64px_minmax(0,1.6fr)_minmax(0,0.9fr)_minmax(0,1fr)_minmax(0,1fr)] md:items-center";
   const rankValueClassName = isCompact
     ? "text-xl font-semibold tabular-nums"
     : "text-2xl font-semibold tabular-nums";
@@ -698,6 +708,50 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                           </p>
                         </div>
 
+                        {adpAvailable && (
+                          <div>
+                            <p className={cellLabelClassName}>ADP</p>
+                            <p className="text-sm font-semibold tabular-nums" title={FANTASY_ADP_TOOLTIP}>
+                              {formatAdp(player.adp)}
+                            </p>
+                            {(() => {
+                              const valueVsAdp = getValueVsAdp(player);
+                              if (!valueVsAdp?.signal) {
+                                return null;
+                              }
+
+                              return (
+                                <span
+                                  className={`${FANTASY_CHIP_CLASS} mt-1`}
+                                  title={
+                                    valueVsAdp.signal === "value"
+                                      ? "Drafters take this player well after where the experts rank him"
+                                      : "Drafters take this player well before where the experts rank him"
+                                  }
+                                  style={
+                                    valueVsAdp.signal === "value"
+                                      ? {
+                                          borderColor:
+                                            "color-mix(in srgb, var(--color-success) 28%, var(--home-rule))",
+                                          background:
+                                            "color-mix(in srgb, var(--color-success) 10%, var(--home-paper))",
+                                        }
+                                      : {
+                                          borderColor:
+                                            "color-mix(in srgb, var(--color-warning) 30%, var(--home-rule))",
+                                          background:
+                                            "color-mix(in srgb, var(--color-warning) 12%, var(--home-paper))",
+                                        }
+                                  }
+                                >
+                                  {valueVsAdp.signal === "value" ? "Value" : "Reach"}{" "}
+                                  {valueVsAdp.delta > 0 ? `+${valueVsAdp.delta}` : valueVsAdp.delta}
+                                </span>
+                              );
+                            })()}
+                          </div>
+                        )}
+
                         <div>
                           <p className={cellLabelClassName}>Rostered</p>
                           <p className="text-sm font-semibold" title="Share of leagues where this player is on a roster">
@@ -745,10 +799,29 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                   <p className="home-kicker mb-1">Snapshot built</p>
                   <p className="text-sm font-semibold">{formatUpdatedAt(metadata?.generatedAt)}</p>
                 </div>
+                {adpSource && (
+                  <div
+                    className="rounded-[1.2rem] border px-4 py-3"
+                    style={{
+                      borderColor: "var(--home-rule)",
+                      background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
+                    }}
+                  >
+                    <p className="home-kicker mb-1">ADP source</p>
+                    <p className="text-sm font-semibold">{adpSource.provider}</p>
+                    <p className="mt-1 text-xs" style={{ color: "var(--home-ink-muted)" }}>
+                      {adpSource.asOf ? `As of ${formatUpdatedAt(adpSource.asOf)}` : "Sample date not published"}
+                      {adpSource.sampleSize
+                        ? ` from ${adpSource.sampleSize.toLocaleString()} mock drafts`
+                        : ""}
+                    </p>
+                  </div>
+                )}
               </div>
               <p className="mt-4 text-sm leading-7" style={{ color: "var(--home-ink-muted)" }}>
-                The board only publishes fields the source actually exposes: consensus rank, tier,
-                range, ownership, and freshness.
+                {adpAvailable
+                  ? "Consensus ranks, tiers, ranges, and ownership come from FantasyPros. ADP is layered on from the mock-draft source named above, with its own as-of date, and players without a clean match simply show no ADP."
+                  : "The board only publishes fields the source actually exposes: consensus rank, tier, range, ownership, and freshness."}
               </p>
             </article>
 
@@ -799,8 +872,8 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
               <p className="home-kicker mb-1">Draft Assistant</p>
               <h3 className="text-xl font-semibold">Track the room without leaving the board.</h3>
               <p className="mt-3 text-sm leading-7" style={{ color: "var(--home-ink-muted)" }}>
-                Use the same snapshot inside the draft assistant, log picks manually, and keep roster
-                pressure visible without pretending unsupported ADP or projection data exists.
+                Use the same snapshot inside the draft assistant, log picks manually, and let it flag
+                steals, reaches, and position runs against the same attributed ADP shown here.
               </p>
               <Link
                 href="/fantasy-football/draft-tracker"

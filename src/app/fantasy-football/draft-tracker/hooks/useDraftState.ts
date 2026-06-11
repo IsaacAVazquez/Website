@@ -333,7 +333,7 @@ export const useDraftState = () => {
     };
 
     if (format === 'csv') {
-      const csvHeaders = ['Pick', 'Round', 'Team', 'Player', 'Position', 'NFL Team', 'Consensus Rank', 'Tier', 'Expert Range'];
+      const csvHeaders = ['Pick', 'Round', 'Team', 'Player', 'Position', 'NFL Team', 'Consensus Rank', 'Tier', 'Expert Range', 'ADP'];
       const csvRows = draftState.picks.map(pick => [
         pick.pickNumber,
         pick.round,
@@ -345,6 +345,9 @@ export const useDraftState = () => {
         pick.player.tier ? `Tier ${pick.player.tier}` : '',
         pick.player.minRank !== undefined && pick.player.maxRank !== undefined
           ? `${pick.player.minRank}-${pick.player.maxRank}`
+          : '',
+        typeof pick.player.adp === 'number' && Number.isFinite(pick.player.adp)
+          ? pick.player.adp.toFixed(1)
           : '',
       ]);
 

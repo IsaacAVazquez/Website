@@ -158,18 +158,21 @@ export interface DraftState {
 
 export interface DraftAnalytics {
   bestValue: DraftPick[]; // Best picks based on ADP vs draft position
-  reaches: DraftPick[]; // Players drafted significantly above ADP  
+  reaches: DraftPick[]; // Players drafted significantly above ADP
   steals: DraftPick[]; // Players drafted significantly below ADP
   positionRunAnalysis: {
     position: Position;
     startRound: number;
     endRound: number;
     playersSelected: number;
+    startPick?: number;
+    endPick?: number;
   }[];
   teamStrengths: {
     teamNumber: number;
     strengths: Position[];
     weaknesses: Position[];
     overallGrade: string;
+    valueTotal?: number; // Net pick-number-vs-baseline value across the team's picks
   }[];
 }

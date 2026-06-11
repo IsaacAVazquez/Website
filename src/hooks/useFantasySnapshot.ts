@@ -198,6 +198,7 @@ export function useFantasySnapshot({
       playerCount: players.length,
       slice,
       slices: snapshot.sliceMetadata,
+      adpSource: snapshot.adpSource,
     };
   }, [all, players.length, position, snapshot]);
 

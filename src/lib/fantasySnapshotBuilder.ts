@@ -3,6 +3,7 @@ import {
   FANTASY_SNAPSHOT_SCHEMA_VERSION,
   FANTASY_POSITION_LABELS,
   FANTASY_SCORING_LABELS,
+  FantasyAdpSourceMetadata,
   FantasyRoutePosition,
   FantasyRouteScoring,
   FantasySnapshot,
@@ -11,6 +12,13 @@ import {
   publishFantasyPlayer,
   routeScoringToScoringFormat,
 } from "@/lib/fantasy";
+import { getFantasyAdpDataset } from "@/lib/fantasyAdpData";
+import {
+  buildFantasyAdpIndex,
+  matchPlayerAdp,
+  type FantasyAdpIndex,
+} from "@/lib/fantasyAdpMatcher";
+import { FANTASY_ADP_PROVIDER, FANTASY_ADP_PROVIDER_URL } from "@/lib/fantasyAdpSource";
 import {
   getFantasyOverallData,
   getFantasyPositionData,
@@ -132,12 +140,22 @@ function getSliceUpdatedAt(players: Player[]): string | null {
   return null;
 }
 
-function normalizeSourcedPlayers(players: Player[], positionOverride?: Player["position"]): Player[] {
+function normalizeSourcedPlayers(
+  players: Player[],
+  positionOverride?: Player["position"],
+  adpIndex?: FantasyAdpIndex | null
+): Player[] {
   return dedupePlayers(players)
-    .map((player) =>
-      publishFantasyPlayer({
+    .map((player) => {
+      const position = positionOverride ?? player.position;
+      const adpEntry = adpIndex
+        ? matchPlayerAdp({ name: player.name, team: player.team, position }, adpIndex)
+        : null;
+
+      return publishFantasyPlayer({
         ...player,
-        position: positionOverride ?? player.position,
+        position,
+        adp: adpEntry?.adp,
         averageRank: numericRank(player.rankEcr ?? player.averageRank),
         rankEcr: numericOptionalValue(player.rankEcr ?? player.averageRank),
         rankAverage: numericOptionalValue(player.rankAverage),
@@ -159,17 +177,21 @@ function normalizeSourcedPlayers(players: Player[], positionOverride?: Player["p
           typeof player.ownership === "number" && Number.isFinite(player.ownership)
             ? player.ownership
             : undefined,
-      })
-    )
+      });
+    })
     .sort((left, right) => numericRank(left.averageRank) - numericRank(right.averageRank));
 }
 
-function buildPositionSlice(players: Player[], position: Player["position"]): Player[] {
-  return normalizeSourcedPlayers(players, position);
+function buildPositionSlice(
+  players: Player[],
+  position: Player["position"],
+  adpIndex?: FantasyAdpIndex | null
+): Player[] {
+  return normalizeSourcedPlayers(players, position, adpIndex);
 }
 
-function buildOverallSlice(players: Player[]): Player[] {
-  return normalizeSourcedPlayers(players);
+function buildOverallSlice(players: Player[], adpIndex?: FantasyAdpIndex | null): Player[] {
+  return normalizeSourcedPlayers(players, undefined, adpIndex);
 }
 
 function buildFlexSlice(overallPlayers: Player[]): Player[] {
@@ -241,6 +263,8 @@ export function buildFantasySnapshot(scoring: FantasyRouteScoring): FantasySnaps
   const generatedAt = new Date().toISOString();
   const scoringFormat = routeScoringToScoringFormat(scoring);
   const sourceMetadata = getFantasyPositionDataMetadata(scoringFormat);
+  const adpDataset = getFantasyAdpDataset(scoringFormat);
+  const adpIndex = adpDataset.entries.length > 0 ? buildFantasyAdpIndex(adpDataset.entries) : null;
 
   const sliceMetadata = {
     overall: buildUnavailableSlice(buildUnavailableReason(scoring, "overall")).metadata,
@@ -264,7 +288,7 @@ export function buildFantasySnapshot(scoring: FantasyRouteScoring): FantasySnaps
   } satisfies FantasySnapshot["positions"];
 
   const overallSourcePlayers = getFantasyOverallData(scoringFormat);
-  const overallPlayers = buildOverallSlice(overallSourcePlayers);
+  const overallPlayers = buildOverallSlice(overallSourcePlayers, adpIndex);
   const overallUpdatedAt = getSliceUpdatedAt(overallPlayers) ?? sourceMetadata.upstreamUpdatedAt;
 
   sliceMetadata.overall =
@@ -280,7 +304,7 @@ export function buildFantasySnapshot(scoring: FantasyRouteScoring): FantasySnaps
       continue;
     }
 
-    const builtPlayers = buildPositionSlice(sourcePlayers, position);
+    const builtPlayers = buildPositionSlice(sourcePlayers, position, adpIndex);
     const updatedAt = getSliceUpdatedAt(builtPlayers);
     positions[position] = builtPlayers;
     sliceMetadata[routePosition] = buildAvailableSlice(
@@ -304,6 +328,24 @@ export function buildFantasySnapshot(scoring: FantasyRouteScoring): FantasySnaps
     ).metadata;
   }
 
+  const matchedPlayerIds = new Set<string>();
+  for (const player of [overallPlayers, ...Object.values(positions)].flat()) {
+    if (typeof player.adp === "number" && Number.isFinite(player.adp)) {
+      matchedPlayerIds.add(player.id);
+    }
+  }
+
+  const adpSource: FantasyAdpSourceMetadata | null =
+    adpIndex && matchedPlayerIds.size > 0
+      ? {
+          provider: FANTASY_ADP_PROVIDER,
+          url: adpDataset.sourceUrl || FANTASY_ADP_PROVIDER_URL,
+          asOf: adpDataset.asOf,
+          sampleSize: adpDataset.sampleSize,
+          matchedCount: matchedPlayerIds.size,
+        }
+      : null;
+
   return {
     schemaVersion: FANTASY_SNAPSHOT_SCHEMA_VERSION,
     season: SNAPSHOT_SEASON,
@@ -312,6 +354,7 @@ export function buildFantasySnapshot(scoring: FantasyRouteScoring): FantasySnaps
     upstreamUpdatedAt: overallUpdatedAt,
     scoringFormat,
     source: SNAPSHOT_SOURCE,
+    adpSource,
     positions,
     overall: overallPlayers,
     sliceMetadata,

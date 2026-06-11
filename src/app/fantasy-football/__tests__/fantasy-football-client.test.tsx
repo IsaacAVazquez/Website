@@ -261,8 +261,121 @@ describe("FantasyFootballClient", () => {
     expect(screen.getAllByText("Tier 1").length).toBeGreaterThan(0);
     expect(screen.getAllByText("Tier 2").length).toBeGreaterThan(0);
     expect(screen.getAllByText("Expert range").length).toBeGreaterThan(0);
+    // No adpSource in the snapshot means the ADP column stays hidden.
     expect(screen.queryByText(/^ADP$/)).not.toBeInTheDocument();
     expect(screen.queryByText(/^Proj\. Pts$/)).not.toBeInTheDocument();
+  });
+
+  it("renders the ADP column, value signals, and source disclosure when the snapshot carries ADP", () => {
+    currentSearchParams = new URLSearchParams("position=rb&scoring=ppr");
+    const adpSource = {
+      provider: "Fantasy Football Calculator",
+      url: "https://example.test/adp/ppr",
+      asOf: "2026-06-07T00:00:00.000Z",
+      sampleSize: 421,
+      matchedCount: 180,
+    };
+
+    mockUseFantasySnapshot.mockReturnValue({
+      players: [
+        {
+          id: "rb-1",
+          name: "Bijan Robinson",
+          team: "ATL",
+          position: "RB",
+          averageRank: 1,
+          rankEcr: 1,
+          rankAverage: 1.2,
+          standardDeviation: 0.1,
+          tier: 1,
+          positionRank: 1,
+          minRank: 1,
+          maxRank: 2,
+          adp: 2.2,
+        },
+        {
+          // Drafters take him 14 spots later than the experts rank him.
+          id: "rb-2",
+          name: "Value Back",
+          team: "GB",
+          position: "RB",
+          averageRank: 20,
+          rankEcr: 20,
+          rankAverage: 20.5,
+          standardDeviation: 1.0,
+          tier: 3,
+          positionRank: 20,
+          minRank: 16,
+          maxRank: 25,
+          adp: 34.1,
+        },
+        {
+          // No matched ADP reading at all.
+          id: "rb-3",
+          name: "Unmatched Back",
+          team: "NYJ",
+          position: "RB",
+          averageRank: 30,
+          rankEcr: 30,
+          rankAverage: 30.5,
+          standardDeviation: 1.4,
+          tier: 4,
+          positionRank: 30,
+          minRank: 26,
+          maxRank: 36,
+        },
+      ],
+      snapshot: null,
+      metadata: {
+        season: 2026,
+        week: 0,
+        generatedAt: "2026-06-08T16:00:00.000Z",
+        upstreamUpdatedAt: "2026-06-08T15:29:20.000Z",
+        scoringFormat: "PPR",
+        source: "snapshot",
+        position: "rb",
+        playerCount: 3,
+        slice: {
+          available: true,
+          sourceKind: "position_consensus",
+          rangeKind: "position",
+          playerCount: 3,
+          updatedAt: "2026-06-08T15:29:20.000Z",
+        },
+        slices: buildSliceMetadataMap(),
+        adpSource,
+      },
+      sliceMetadata: {
+        available: true,
+        sourceKind: "position_consensus",
+        rangeKind: "position",
+        playerCount: 3,
+        updatedAt: "2026-06-08T15:29:20.000Z",
+      },
+      sliceMetadataMap: buildSliceMetadataMap(),
+      isLoading: false,
+      error: null,
+    });
+
+    render(
+      <FantasyFootballClient
+        initialState={{
+          position: "rb",
+          scoring: "ppr",
+          view: "list",
+        }}
+      />
+    );
+
+    expect(screen.getAllByText(/^ADP$/).length).toBeGreaterThan(0);
+    expect(screen.getByText("2.2")).toBeVisible();
+    expect(screen.getByText(/Value \+14/)).toBeVisible();
+    // The unmatched player shows the blank marker instead of a fabricated number.
+    expect(screen.getAllByText("--").length).toBeGreaterThan(0);
+    // Provenance is disclosed in the freshness rail.
+    expect(screen.getByText("ADP source")).toBeVisible();
+    expect(screen.getByText("Fantasy Football Calculator")).toBeVisible();
+    expect(screen.getByText(/from 421 mock drafts/)).toBeVisible();
   });
 
   it("preserves the published rank when search filters the board down to one player", () => {

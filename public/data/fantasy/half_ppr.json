@@ -1,11 +1,12 @@
 {
-  "schemaVersion": 5,
+  "schemaVersion": 6,
   "season": 2026,
   "week": 0,
-  "generatedAt": "2026-06-08T17:55:29.383Z",
+  "generatedAt": "2026-06-11T17:07:58.036Z",
   "upstreamUpdatedAt": "2026-06-08T17:04:34.000Z",
   "scoringFormat": "HALF_PPR",
   "source": "Published fantasy rankings snapshot generated from FantasyPros public consensus pages. Overall boards come from the public overall consensus page for each scoring format, while flex is derived locally from the published overall board.",
+  "adpSource": null,
   "positions": {
     "QB": [
       {

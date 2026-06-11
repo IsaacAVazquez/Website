@@ -3,10 +3,12 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { Download, RotateCcw, Undo2 } from "lucide-react";
+import { DraftAnalyticsPanel } from "./components/DraftAnalyticsPanel";
 import { DraftBoard } from "./components/DraftBoard";
 import { DraftSetup } from "./components/DraftSetup";
 import { useDraftState } from "./hooks/useDraftState";
 import { useFantasySnapshot } from "@/hooks/useFantasySnapshot";
+import { computeDraftAnalytics } from "@/lib/draftAnalytics";
 import {
   FANTASY_SCORING_LABELS,
   getFantasyWeekLabel,
@@ -52,6 +54,11 @@ export function DraftTrackerClient() {
   );
 
   const recentPicks = useMemo(() => draftState.picks.slice(-12).reverse(), [draftState.picks]);
+  const analytics = useMemo(
+    () => computeDraftAnalytics(draftState.picks, draftState.teams),
+    [draftState.picks, draftState.teams]
+  );
+  const adpAvailable = Boolean(snapshot?.adpSource);
   const totalPicks = draftState.settings.totalTeams * draftState.settings.rounds;
   const completionPercentage = Math.round((draftState.picks.length / totalPicks) * 100);
 
@@ -140,8 +147,8 @@ export function DraftTrackerClient() {
               style={{ color: "var(--home-ink-muted)" }}
             >
               Log every pick, keep the board on the same published snapshot as the public rankings,
-              and keep roster pressure visible without pretending unsupported projection or ADP data
-              exists.
+              and watch for steals, reaches, and position runs against attributed mock-draft ADP
+              while the room is still on the clock.
             </p>
           </div>
 
@@ -259,21 +266,44 @@ export function DraftTrackerClient() {
                 onStartDraft={startDraft}
               />
             ) : (
-              <DraftBoard
-                players={snapshot?.overall ?? []}
-                snapshot={snapshot}
-                draftedPlayerIds={draftedPlayerIds}
-                onDraftPlayer={draftPlayer}
-                currentPick={draftState.currentPick}
-                currentTeamNumber={currentTeamNumber}
-                isUserPick={isUserPick}
-                isDraftComplete={isDraftComplete}
-                userTeam={userTeam}
-              />
+              <>
+                {isDraftComplete && (
+                  <DraftAnalyticsPanel
+                    analytics={analytics}
+                    picks={draftState.picks}
+                    currentPick={draftState.currentPick}
+                    isDraftComplete
+                    userTeamNumber={draftState.settings.userTeam}
+                    adpAvailable={adpAvailable}
+                  />
+                )}
+                <DraftBoard
+                  players={snapshot?.overall ?? []}
+                  snapshot={snapshot}
+                  draftedPlayerIds={draftedPlayerIds}
+                  onDraftPlayer={draftPlayer}
+                  currentPick={draftState.currentPick}
+                  currentRound={draftState.currentRound}
+                  currentTeamNumber={currentTeamNumber}
+                  isUserPick={isUserPick}
+                  isDraftComplete={isDraftComplete}
+                  userTeam={userTeam}
+                />
+              </>
             )}
           </div>
 
           <aside className="grid gap-5 lg:sticky lg:top-24 lg:self-start">
+            {!showSetup && !isDraftComplete && !rankingsUnavailable && (
+              <DraftAnalyticsPanel
+                analytics={analytics}
+                picks={draftState.picks}
+                currentPick={draftState.currentPick}
+                isDraftComplete={false}
+                userTeamNumber={draftState.settings.userTeam}
+                adpAvailable={adpAvailable}
+              />
+            )}
             <article className="home-card p-5 sm:p-6">
               <p className="home-kicker mb-1">Progress</p>
               <h3 className="text-2xl font-semibold">

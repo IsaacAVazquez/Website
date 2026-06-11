@@ -4,7 +4,8 @@ import { useMemo, useState, type CSSProperties } from "react";
 import { Player, TeamRoster } from "@/types";
 import type { FantasySnapshot } from "@/lib/fantasy";
 import { useDebounce } from "@/hooks/useDebounce";
-import { FANTASY_AVG_RANK_TOOLTIP, FANTASY_CHIP_CLASS, formatRange, formatRankValue, getPositionTone } from "@/lib/fantasyUtils";
+import { getReachStealThreshold, ROSTER_STARTER_TARGETS } from "@/lib/draftAnalytics";
+import { FANTASY_AVG_RANK_TOOLTIP, FANTASY_CHIP_CLASS, formatAdp, formatRange, formatRankValue, getPositionTone } from "@/lib/fantasyUtils";
 import { MetricTooltip } from "@/components/investments/MetricTooltip";
 import { DraftTierColumns } from "./DraftTierColumns";
 
@@ -14,6 +15,7 @@ interface DraftBoardProps {
   draftedPlayerIds: Set<string>;
   onDraftPlayer: (player: Player) => void;
   currentPick: number;
+  currentRound: number;
   currentTeamNumber: number;
   isUserPick: boolean;
   isDraftComplete: boolean;
@@ -40,16 +42,8 @@ function getRosterNeedOrder(userTeam: TeamRoster | undefined): string[] {
   }
 
   const counts = userTeam.positionCounts;
-  const targets: Record<keyof typeof counts, number> = {
-    QB: 1,
-    RB: 2,
-    WR: 2,
-    TE: 1,
-    K: 1,
-    DST: 1,
-  };
 
-  return Object.entries(targets)
+  return Object.entries(ROSTER_STARTER_TARGETS)
     .map(([position, target]) => ({
       position,
       gap: target - counts[position as keyof typeof counts],
@@ -93,6 +87,7 @@ export function DraftBoard({
   draftedPlayerIds,
   onDraftPlayer,
   currentPick,
+  currentRound,
   currentTeamNumber,
   isUserPick,
   isDraftComplete,
@@ -276,6 +271,9 @@ export function DraftBoard({
             ) : (
               bestAvailable.map((player) => {
                 const fitsCurrentNeed = rosterNeeds.includes(player.position);
+                const isValueAtCurrentPick =
+                  Number.isFinite(player.adp) &&
+                  currentPick - (player.adp as number) >= getReachStealThreshold(currentRound);
 
                 return (
                   <div
@@ -317,6 +315,18 @@ export function DraftBoard({
                             Priority
                           </span>
                         )}
+                        {isValueAtCurrentPick && (
+                          <span
+                            className={FANTASY_CHIP_CLASS}
+                            title={`Mock drafters usually take this player around pick ${formatAdp(player.adp)}, well before pick ${currentPick}`}
+                            style={{
+                              borderColor: "color-mix(in srgb, var(--home-acid) 38%, var(--home-rule))",
+                              background: "color-mix(in srgb, var(--home-acid) 18%, var(--home-paper))",
+                            }}
+                          >
+                            Value at #{currentPick}
+                          </span>
+                        )}
                       </div>
                       <p className="mt-1 text-sm" style={{ color: "var(--home-ink-muted)" }}>
                         {player.team}
@@ -328,6 +338,7 @@ export function DraftBoard({
                           </span>
                         ) : null}
                         {player.positionRank ? ` • ${player.position}${player.positionRank}` : ""}
+                        {Number.isFinite(player.adp) ? ` • ADP ${formatAdp(player.adp)}` : ""}
                       </p>
                     </div>
 

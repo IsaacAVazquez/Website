@@ -95,11 +95,45 @@ jobs:
           console.log('All scoring formats cleared the overall and per-position floors. Quality gate passed.');
           "
 
+      # ADP is a soft signal layered on top of the consensus boards. Its fetch
+      # script never fails the run by design, so check coverage here and warn
+      # (never fail) when ADP is missing or matched thinly.
+      - name: Check ADP coverage (soft warning)
+        run: |
+          node -e "
+          const fs = require('fs');
+          const path = require('path');
+
+          const MIN_COVERAGE = 0.6;
+          const DATA_DIR = path.join('public', 'data', 'fantasy');
+          const formats = ['ppr', 'half_ppr', 'standard'];
+
+          for (const format of formats) {
+            try {
+              const snapshot = JSON.parse(fs.readFileSync(path.join(DATA_DIR, format + '.json'), 'utf8'));
+              const overallCount = Array.isArray(snapshot.overall) ? snapshot.overall.length : 0;
+              if (!snapshot.adpSource) {
+                console.log('::warning::' + format + ' snapshot has no ADP data (adpSource is null). The boards still work; ADP surfaces are hidden.');
+                continue;
+              }
+              const coverage = overallCount > 0 ? snapshot.adpSource.matchedCount / overallCount : 0;
+              const pct = Math.round(coverage * 100);
+              console.log(format + ': ADP matched ' + snapshot.adpSource.matchedCount + ' players (' + pct + '% of overall), asOf ' + snapshot.adpSource.asOf);
+              if (coverage < MIN_COVERAGE) {
+                console.log('::warning::' + format + ' ADP coverage is ' + pct + '%, below the ' + (MIN_COVERAGE * 100) + '% comfort floor. Check the matcher or the upstream feed.');
+              }
+            } catch (err) {
+              console.log('::warning::' + format + ' ADP coverage check failed to parse the snapshot: ' + err.message);
+            }
+          }
+          "
+
       - name: Check for snapshot changes
         id: check_changes
         run: |
           if git diff --quiet -- \
             src/data/fantasyPositionData.generated.ts \
+            src/data/fantasyAdpData.generated.ts \
             src/data/fantasySnapshotRevision.generated.ts \
             public/data/fantasy/ppr.json \
             public/data/fantasy/half_ppr.json \
@@ -118,6 +152,7 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add \
             src/data/fantasyPositionData.generated.ts \
+            src/data/fantasyAdpData.generated.ts \
             src/data/fantasySnapshotRevision.generated.ts \
             public/data/fantasy/ppr.json \
             public/data/fantasy/half_ppr.json \
@@ -158,6 +193,7 @@ jobs:
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "### Public artifacts" >> "$GITHUB_STEP_SUMMARY"
           echo "- src/data/fantasyPositionData.generated.ts" >> "$GITHUB_STEP_SUMMARY"
+          echo "- src/data/fantasyAdpData.generated.ts" >> "$GITHUB_STEP_SUMMARY"
           echo "- src/data/fantasySnapshotRevision.generated.ts" >> "$GITHUB_STEP_SUMMARY"
           echo "- public/data/fantasy/ppr.json" >> "$GITHUB_STEP_SUMMARY"
           echo "- public/data/fantasy/half_ppr.json" >> "$GITHUB_STEP_SUMMARY"
@@ -182,6 +218,8 @@ jobs:
               `- FantasyPros HTML structure changed (\`var ecrData\` extraction failed)`,
               `- Sustained 429s exceeded retry budget`,
               `- Quality gate caught a degraded snapshot (thin overall board or an empty/short position board)`,
+              ``,
+              `Note: ADP fetch failures are non-fatal by design — they only surface as warnings, never as a failed run.`,
               ``,
               `This issue will be updated if the next run also fails, and auto-closed on the first successful run.`
             ].join('\n');

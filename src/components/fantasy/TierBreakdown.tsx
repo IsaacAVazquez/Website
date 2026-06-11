@@ -3,7 +3,7 @@
 import { useMemo } from "react";
 
 import { FANTASY_POSITION_LABELS, type FantasyRoutePosition } from "@/lib/fantasy";
-import { formatRankValue, getPositionTone } from "@/lib/fantasyUtils";
+import { formatAdp, formatRankValue, getPositionTone } from "@/lib/fantasyUtils";
 import type { Player } from "@/types";
 
 interface TierBreakdownProps {
@@ -165,6 +165,15 @@ export function TierBreakdown({ players, position, getPublishedRank }: TierBreak
                     {player.byeWeek && (
                       <span className="text-2xs" style={{ color: "var(--home-ink-muted)" }}>
                         Bye {player.byeWeek}
+                      </span>
+                    )}
+                    {Number.isFinite(player.adp) && (
+                      <span
+                        className="text-2xs"
+                        title="Average draft position from recent mock drafts"
+                        style={{ color: "var(--home-ink-muted)" }}
+                      >
+                        ADP {formatAdp(player.adp)}
                       </span>
                     )}
                   </span>

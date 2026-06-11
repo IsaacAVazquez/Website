@@ -11,6 +11,7 @@ describe("fantasy workflow", () => {
 
     expect(workflow).toContain("npm run update:fantasy");
     expect(workflow).toContain("src/data/fantasyPositionData.generated.ts");
+    expect(workflow).toContain("src/data/fantasyAdpData.generated.ts");
     expect(workflow).toContain("src/data/fantasySnapshotRevision.generated.ts");
     expect(workflow).toContain("public/data/fantasy/ppr.json");
     expect(workflow).toContain("public/data/fantasy/half_ppr.json");

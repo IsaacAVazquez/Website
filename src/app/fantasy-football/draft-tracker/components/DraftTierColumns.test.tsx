@@ -58,6 +58,7 @@ function buildSnapshot(positions: {
     upstreamUpdatedAt: "2026-06-01T00:00:00.000Z",
     scoringFormat: "PPR",
     source: "test",
+    adpSource: null,
     positions: {
       QB: positions.QB ?? [],
       RB: positions.RB ?? [],

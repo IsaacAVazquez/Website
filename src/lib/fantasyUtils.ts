@@ -88,6 +88,55 @@ export function formatOwnership(ownership: number | undefined): string {
 }
 
 /**
+ * Plain-language explanation of the ADP value shown on the rankings board.
+ * ADP comes from a different upstream than the consensus ranks, so the copy
+ * names the distinction: experts versus actual drafters.
+ */
+export const FANTASY_ADP_TOOLTIP =
+  "Average draft position from recent 12-team mock drafts on Fantasy Football Calculator. It shows where real drafters take this player, while the consensus rank shows where experts say he should go. A big gap between the two is a value or reach signal.";
+
+export function formatAdp(adp: number | undefined): string {
+  if (!Number.isFinite(adp)) {
+    return "--";
+  }
+
+  return adp!.toFixed(1);
+}
+
+/**
+ * How far consensus rank and market ADP must disagree before the board flags
+ * it. Ten spots is roughly a full round in a 10-team league — enough that the
+ * gap is a real signal rather than ordinary week-to-week noise.
+ */
+export const ADP_SIGNAL_THRESHOLD = 10;
+
+/**
+ * Compares a player's consensus rank to where drafters actually take him.
+ * Positive delta means the market drafts him later than the experts rank him
+ * (a value), negative means earlier (a reach). Returns null when the player
+ * has no ADP reading or no usable rank.
+ */
+export function getValueVsAdp(
+  player: Player
+): { delta: number; signal: "value" | "reach" | null } | null {
+  const rank =
+    typeof player.rankEcr === "number" && Number.isFinite(player.rankEcr)
+      ? player.rankEcr
+      : typeof player.averageRank === "number" && Number.isFinite(player.averageRank)
+        ? player.averageRank
+        : null;
+
+  if (rank === null || !Number.isFinite(player.adp)) {
+    return null;
+  }
+
+  const delta = Math.round((player.adp as number) - rank);
+  const signal = delta >= ADP_SIGNAL_THRESHOLD ? "value" : delta <= -ADP_SIGNAL_THRESHOLD ? "reach" : null;
+
+  return { delta, signal };
+}
+
+/**
  * Natural-height label chip shared across fantasy surfaces (matches the /nfl
  * badge recipe). Interactive pills keep min-h-[44px] separately for touch targets.
  */

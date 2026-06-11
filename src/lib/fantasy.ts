@@ -12,7 +12,7 @@ export const FANTASY_ROUTE_POSITIONS = [
 ] as const;
 
 export const FANTASY_ROUTE_SCORING = ["ppr", "half_ppr", "standard"] as const;
-export const FANTASY_SNAPSHOT_SCHEMA_VERSION = 5;
+export const FANTASY_SNAPSHOT_SCHEMA_VERSION = 6;
 export const DEFAULT_FANTASY_SNAPSHOT_SOURCE =
   "Published fantasy rankings snapshot generated from FantasyPros public consensus pages. Overall boards come from the public overall consensus page for each scoring format, while flex is derived locally from the published overall board.";
 
@@ -38,6 +38,20 @@ export interface FantasySnapshotSliceMetadata {
 
 export type FantasySnapshotSliceMap = Record<FantasyRoutePosition, FantasySnapshotSliceMetadata>;
 
+/**
+ * Provenance for the ADP readings layered onto the consensus board. ADP comes
+ * from a different upstream than the rankings, so it carries its own source
+ * attribution and as-of date; `null` means the snapshot ships without ADP and
+ * the UI hides every ADP surface.
+ */
+export interface FantasyAdpSourceMetadata {
+  provider: string;
+  url: string;
+  asOf: string | null;
+  sampleSize: number | null;
+  matchedCount: number;
+}
+
 export interface FantasySnapshot {
   schemaVersion: number;
   season: number;
@@ -46,6 +60,7 @@ export interface FantasySnapshot {
   upstreamUpdatedAt: string | null;
   scoringFormat: ScoringFormat;
   source: string;
+  adpSource: FantasyAdpSourceMetadata | null;
   positions: Record<FantasySnapshotPosition, Player[]>;
   overall: Player[];
   sliceMetadata: FantasySnapshotSliceMap;
@@ -62,6 +77,7 @@ export interface FantasySnapshotMetadata {
   playerCount: number;
   slice: FantasySnapshotSliceMetadata | null;
   slices?: FantasySnapshotSliceMap;
+  adpSource?: FantasyAdpSourceMetadata | null;
 }
 
 export interface FantasyPositionResponse {
@@ -105,10 +121,11 @@ type RawFantasySnapshotSliceMetadata = Partial<FantasySnapshotSliceMetadata> & {
   updatedAt?: unknown;
 };
 
-type RawFantasySnapshot = Partial<FantasySnapshot> & {
+type RawFantasySnapshot = Partial<Omit<FantasySnapshot, "adpSource">> & {
   positions?: Partial<Record<FantasySnapshotPosition, unknown>>;
   sliceMetadata?: Partial<Record<FantasyRoutePosition, RawFantasySnapshotSliceMetadata>>;
   upstreamUpdatedAt?: unknown;
+  adpSource?: unknown;
 };
 
 export function normalizeFantasyRoutePosition(rawPosition: string | null | undefined): FantasyRoutePosition {
@@ -212,6 +229,35 @@ function normalizeOptionalTimestamp(value: unknown): string | null {
   return Number.isNaN(date.getTime()) ? null : date.toISOString();
 }
 
+/**
+ * Validates the ADP provenance block from a raw snapshot. Anything malformed
+ * (including snapshots from schema 5 and earlier, which predate ADP) collapses
+ * to `null` so the UI cleanly hides ADP rather than rendering unattributed data.
+ */
+function normalizeAdpSourceMetadata(value: unknown): FantasyAdpSourceMetadata | null {
+  if (!value || typeof value !== "object") {
+    return null;
+  }
+
+  const raw = value as Partial<FantasyAdpSourceMetadata>;
+  if (typeof raw.provider !== "string" || !raw.provider) {
+    return null;
+  }
+
+  const matchedCount = isFiniteNumber(raw.matchedCount) ? Math.max(0, raw.matchedCount) : 0;
+  if (matchedCount <= 0) {
+    return null;
+  }
+
+  return {
+    provider: raw.provider,
+    url: typeof raw.url === "string" ? raw.url : "",
+    asOf: normalizeOptionalTimestamp(raw.asOf),
+    sampleSize: isFiniteNumber(raw.sampleSize) ? raw.sampleSize : null,
+    matchedCount,
+  };
+}
+
 export function publishFantasyPlayer(player: Player): Player {
   const publishedPlayer: Partial<Player> = {
     id: player.id,
@@ -252,6 +298,10 @@ export function publishFantasyPlayer(player: Player): Player {
 
   if (isFiniteNumber(player.ownership)) {
     publishedPlayer.ownership = player.ownership;
+  }
+
+  if (isFiniteNumber(player.adp)) {
+    publishedPlayer.adp = player.adp;
   }
 
   const updatedAt = normalizeOptionalTimestamp(player.lastUpdated);
@@ -533,6 +583,7 @@ export function normalizeFantasySnapshot(
       typeof input.source === "string" && input.source
         ? input.source
         : DEFAULT_FANTASY_SNAPSHOT_SOURCE,
+    adpSource: normalizeAdpSourceMetadata(input.adpSource),
     positions,
     overall: sliceMetadata.overall.available ? overallPlayers : [],
     sliceMetadata,
