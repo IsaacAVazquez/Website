@@ -1,0 +1,124 @@
+/**
+ * Representative Fantasy Football Calculator ADP payload, authored from the
+ * documented response shape (https://fantasyfootballcalculator.com/resources/adp-api).
+ * Covers the cases the parser and matcher must handle: a DEF entry, a PK
+ * kicker, a suffixed name, a team that lags a real-world trade, and a junk
+ * entry without an ADP value.
+ */
+export const ADP_SOURCE_PAYLOAD_FIXTURE = {
+  status: "Success",
+  meta: {
+    type: "PPR",
+    teams: 12,
+    rounds: 15,
+    total_drafts: 421,
+    start_date: "2026-05-01",
+    end_date: "2026-06-07",
+  },
+  players: [
+    {
+      player_id: 1,
+      name: "Ja'Marr Chase",
+      position: "WR",
+      team: "CIN",
+      adp: 1.4,
+      adp_formatted: "1.01",
+      times_drafted: 410,
+      high: 1,
+      low: 3,
+      stdev: 0.7,
+      bye: 10,
+    },
+    {
+      player_id: 2,
+      name: "Bijan Robinson",
+      position: "RB",
+      team: "ATL",
+      adp: 2.2,
+      adp_formatted: "1.02",
+      times_drafted: 402,
+      high: 1,
+      low: 5,
+      stdev: 1.1,
+      bye: 5,
+    },
+    {
+      player_id: 3,
+      name: "Marvin Harrison Jr.",
+      position: "WR",
+      team: "ARI",
+      adp: 28.6,
+      adp_formatted: "3.05",
+      times_drafted: 388,
+      high: 19,
+      low: 41,
+      stdev: 4.8,
+      bye: 8,
+    },
+    {
+      // Team lags a trade: the consensus source already lists him on HOU.
+      player_id: 4,
+      name: "Kenneth Walker",
+      position: "RB",
+      team: "SEA",
+      adp: 44.9,
+      adp_formatted: "4.09",
+      times_drafted: 351,
+      high: 31,
+      low: 60,
+      stdev: 6.2,
+      bye: 9,
+    },
+    {
+      player_id: 5,
+      name: "Harrison Butker",
+      position: "PK",
+      team: "KC",
+      adp: 158.3,
+      adp_formatted: "14.03",
+      times_drafted: 204,
+      high: 130,
+      low: 178,
+      stdev: 10.4,
+      bye: 6,
+    },
+    {
+      player_id: 6,
+      name: "Pittsburgh Defense",
+      position: "DEF",
+      team: "PIT",
+      adp: 162.8,
+      adp_formatted: "14.07",
+      times_drafted: 198,
+      high: 140,
+      low: 180,
+      stdev: 9.1,
+      bye: 7,
+    },
+    {
+      // No usable ADP value; the parser must drop it rather than guess.
+      player_id: 7,
+      name: "Practice Squad Guy",
+      position: "WR",
+      team: "FA",
+      adp: null,
+    },
+    {
+      // Unsupported position; skipped.
+      player_id: 8,
+      name: "Some Linebacker",
+      position: "LB",
+      team: "BUF",
+      adp: 200.1,
+    },
+  ],
+};
+
+// Jest treats every file under __tests__ as a suite, so the fixture carries a
+// self-test, matching fantasyProsPublicSource.fixture.ts.
+describe("adpSource fixture", () => {
+  it("exports the representative ADP payload", () => {
+    expect(ADP_SOURCE_PAYLOAD_FIXTURE.meta.total_drafts).toBe(421);
+    expect(ADP_SOURCE_PAYLOAD_FIXTURE.players.some((player) => player.position === "DEF")).toBe(true);
+  });
+});

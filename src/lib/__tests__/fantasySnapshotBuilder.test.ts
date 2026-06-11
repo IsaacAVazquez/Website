@@ -97,7 +97,9 @@ describe("fantasySnapshotBuilder", () => {
     expect(Number(topQuarterback.maxRank)).toBeGreaterThanOrEqual(Number(topQuarterback.minRank));
   });
 
-  it("does not publish synthetic projections, expert rank arrays, or empty adp placeholders", () => {
+  it("never publishes synthetic projections or expert rank arrays, and omits adp when the dataset is empty", () => {
+    // The committed ADP seed in this repo state is empty, so no player should
+    // carry an adp field and the snapshot should disclose no ADP source.
     const snapshot = buildFantasySnapshot("ppr");
     const firstOverallPlayer = snapshot.overall[0];
     const firstPositionPlayer = snapshot.positions.RB[0];
@@ -109,6 +111,51 @@ describe("fantasySnapshotBuilder", () => {
     expect("projectedPoints" in firstPositionPlayer).toBe(false);
     expect("expertRanks" in firstPositionPlayer).toBe(false);
     expect("adp" in firstPositionPlayer).toBe(false);
+    expect(snapshot.adpSource).toBeNull();
+  });
+
+  it("attaches matched adp readings and discloses the adp source when a dataset is present", () => {
+    jest.resetModules();
+    jest.doMock("@/lib/fantasyAdpData", () => ({
+      getFantasyAdpDataset: () => ({
+        entries: [
+          { name: "Josh Allen", team: "BUF", position: "QB", adp: 22.4 },
+          { name: "Nobody Matched", team: "FA", position: "WR", adp: 199.9 },
+        ],
+        asOf: "2026-06-07T00:00:00.000Z",
+        sampleSize: 421,
+        sourceUrl: "https://example.test/adp/ppr",
+      }),
+    }));
+
+    try {
+      jest.isolateModules(() => {
+        const {
+          buildFantasySnapshot: buildAdpFantasySnapshot,
+          // eslint-disable-next-line @typescript-eslint/no-require-imports -- jest.isolateModules requires a synchronous callback; dynamic import() would not work here
+        } = require("../fantasySnapshotBuilder") as typeof import("../fantasySnapshotBuilder");
+        const snapshot = buildAdpFantasySnapshot("ppr");
+
+        const joshAllen = snapshot.positions.QB.find((player) => player.name === "Josh Allen");
+        expect(joshAllen?.adp).toBe(22.4);
+
+        // Players without a matched reading carry no adp field at all.
+        const unmatched = snapshot.positions.QB.find((player) => player.name !== "Josh Allen");
+        expect(unmatched).toBeDefined();
+        expect(unmatched && "adp" in unmatched).toBe(false);
+
+        expect(snapshot.adpSource).toMatchObject({
+          url: "https://example.test/adp/ppr",
+          asOf: "2026-06-07T00:00:00.000Z",
+          sampleSize: 421,
+        });
+        expect(snapshot.adpSource?.provider).toBeTruthy();
+        expect(snapshot.adpSource?.matchedCount).toBeGreaterThan(0);
+      });
+    } finally {
+      jest.dontMock("@/lib/fantasyAdpData");
+      jest.resetModules();
+    }
   });
 
   it("derives flex from the sourced overall board and preserves eligible positions", () => {
