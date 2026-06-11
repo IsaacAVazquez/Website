@@ -64,7 +64,7 @@ export function StaticHeader() {
         <div className="flex min-h-[72px] items-center justify-between gap-4 py-3">
           <Link
             href="/"
-            className="header-home-brand min-h-[44px] px-1 py-1"
+            className="header-home-brand inline-flex min-h-[44px] items-center gap-3 px-1 py-1"
             onClick={closeMobileMenu}
           >
             Isaac Vazquez

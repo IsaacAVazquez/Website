@@ -7,10 +7,23 @@ import {
   LEAD_GEN_INTERNAL_LINK_RULES,
 } from "../blog-config";
 
-function readLeadGenPost(slug: string) {
-  const filePath = path.join(process.cwd(), "content/blog", `${slug}.mdx`);
+const blogDirectory = path.join(process.cwd(), "content/blog");
+
+function readBlogPost(slug: string) {
+  const filePath = path.join(blogDirectory, `${slug}.mdx`);
   const fileContents = fs.readFileSync(filePath, "utf8");
   return matter(fileContents);
+}
+
+function readLeadGenPost(slug: string) {
+  return readBlogPost(slug);
+}
+
+function getWorldCupPostSlugs() {
+  return fs
+    .readdirSync(blogDirectory)
+    .filter((file) => file.includes("world-cup") && file.endsWith(".mdx"))
+    .map((file) => file.replace(/\.mdx$/, ""));
 }
 
 describe("lead-gen blog content rules", () => {
@@ -39,6 +52,20 @@ describe("lead-gen blog content rules", () => {
       expect(writingLinks.length).toBeGreaterThanOrEqual(
         LEAD_GEN_INTERNAL_LINK_RULES.minRelatedWritingLinks
       );
+    }
+  });
+});
+
+describe("World Cup blog content rules", () => {
+  it("uses explicit object cover metadata for every World Cup article", () => {
+    const slugs = getWorldCupPostSlugs();
+
+    expect(slugs.length).toBeGreaterThan(0);
+
+    for (const slug of slugs) {
+      const { data } = readBlogPost(slug);
+
+      expect(data.coverImage).toBe(`/writing/${slug}/opengraph-image`);
     }
   });
 });
