@@ -198,15 +198,42 @@ export default async function BlogPostPage({ params }: PageProps) {
                 </div>
               ) : null}
 
-              <div className="relative aspect-[1200/630] overflow-hidden rounded-[1.6rem] border border-[var(--home-rule)] bg-[var(--home-paper-alt)]">
-                <Image
-                  src={post.coverImage}
-                  alt={post.title}
-                  fill
-                  priority
-                  sizes="(min-width: 1280px) 72rem, 100vw"
-                  className="object-cover"
-                />
+              <div>
+                <div className="relative aspect-[1200/630] overflow-hidden rounded-[1.6rem] border border-[var(--home-rule)] bg-[var(--home-paper-alt)]">
+                  <Image
+                    src={post.coverImage}
+                    alt={post.coverImageAlt || post.title}
+                    fill
+                    priority
+                    sizes="(min-width: 1280px) 72rem, 100vw"
+                    className="object-cover"
+                  />
+                </div>
+                {post.coverImageCredit ? (
+                  <p
+                    className="mt-2"
+                    style={{
+                      fontFamily: "var(--font-home-sans)",
+                      fontSize: "0.76rem",
+                      lineHeight: 1.45,
+                      color: "var(--home-ink-muted)",
+                    }}
+                  >
+                    Photo by{" "}
+                    {post.coverImageCreditUrl ? (
+                      <a
+                        href={post.coverImageCreditUrl}
+                        className="home-inline-link"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {post.coverImageCredit}
+                      </a>
+                    ) : (
+                      <span>{post.coverImageCredit}</span>
+                    )}
+                  </p>
+                ) : null}
               </div>
             </header>
 

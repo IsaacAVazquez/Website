@@ -25,6 +25,9 @@ export interface BlogPost {
   wordCount: number;
   author: string;
   coverImage: string;
+  coverImageAlt?: string;
+  coverImageCredit?: string;
+  coverImageCreditUrl?: string;
   cluster?: BlogCluster;
   archiveBucket?: BlogArchiveBucket;
   cta?: BlogPostCTA;
@@ -48,6 +51,9 @@ export interface BlogPostPreview {
   wordCount: number;
   author: string;
   coverImage: string;
+  coverImageAlt?: string;
+  coverImageCredit?: string;
+  coverImageCreditUrl?: string;
   cluster?: BlogCluster;
   archiveBucket?: BlogArchiveBucket;
   cta?: BlogPostCTA;
@@ -63,6 +69,9 @@ export interface BlogPostMetadata {
   featured?: boolean;
   author?: string;
   coverImage?: string;
+  coverImageAlt?: string;
+  coverImageCredit?: string;
+  coverImageCreditUrl?: string;
   cluster?: BlogCluster;
   archiveBucket?: BlogArchiveBucket;
   cta?: BlogPostCTA;
@@ -208,6 +217,9 @@ function buildBlogPostPreview(
     wordCount: calculateWordCount(content),
     author: metadata.author || "Isaac Vazquez",
     coverImage: getBlogCoverImageUrl(slug, metadata.coverImage),
+    coverImageAlt: metadata.coverImageAlt,
+    coverImageCredit: metadata.coverImageCredit,
+    coverImageCreditUrl: metadata.coverImageCreditUrl,
     cluster: metadata.cluster,
     archiveBucket: metadata.archiveBucket,
     cta: metadata.cta,
@@ -269,6 +281,9 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
       wordCount: calculateWordCount(content),
       author: metadata.author || "Isaac Vazquez",
       coverImage: getBlogCoverImageUrl(slug, metadata.coverImage),
+      coverImageAlt: metadata.coverImageAlt,
+      coverImageCredit: metadata.coverImageCredit,
+      coverImageCreditUrl: metadata.coverImageCreditUrl,
       cluster: metadata.cluster,
       archiveBucket: metadata.archiveBucket,
       cta: metadata.cta,

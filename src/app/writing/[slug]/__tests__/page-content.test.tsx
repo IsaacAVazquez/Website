@@ -46,6 +46,9 @@ describe("Writing article page", () => {
       wordCount: 800,
       author: "Isaac Vazquez",
       coverImage: "/writing/test-post/opengraph-image",
+      coverImageAlt: "Custom cover image alt",
+      coverImageCredit: "Test Photographer, CC BY 4.0 via Wikimedia Commons",
+      coverImageCreditUrl: "https://commons.wikimedia.org/wiki/File:Test.jpg",
       cluster: "PM Workflows",
       cta: undefined,
       seo: {
@@ -62,6 +65,12 @@ describe("Writing article page", () => {
 
     expect(screen.getByText("PM Workflows")).toBeVisible();
     expect(screen.getByRole("heading", { level: 1, name: "Test Post" })).toBeVisible();
+    expect(screen.getByRole("img", { name: "Custom cover image alt" })).toBeVisible();
+    expect(
+      screen.getByRole("link", {
+        name: "Test Photographer, CC BY 4.0 via Wikimedia Commons",
+      })
+    ).toHaveAttribute("href", "https://commons.wikimedia.org/wiki/File:Test.jpg");
   });
 
   it("falls back to the archive bucket label when a post is not in a lead pillar", async () => {
