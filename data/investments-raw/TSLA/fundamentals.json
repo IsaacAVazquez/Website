@@ -32556,6 +32556,30 @@
       "close_price": 391.0,
       "ttm_eps": 1.0946,
       "ttm_pe": 357.21
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-06-08T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 408.95,
+      "ttm_eps": 1.0946,
+      "ttm_pe": 373.61
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-06-09T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 396.68,
+      "ttm_eps": 1.0946,
+      "ttm_pe": 362.4
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-06-10T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 381.59,
+      "ttm_eps": 1.0946,
+      "ttm_pe": 348.61
     }
   ],
   "marketCap": [
@@ -64630,6 +64654,30 @@
       "close_price": 391.0,
       "shares_outstanding": 3755723900,
       "market_capitalization": 1468488044900.0
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-06-08T00:00:00.000",
+      "shares_report_date": "2026-04-16T00:00:00.000",
+      "close_price": 408.95,
+      "shares_outstanding": 3755723900,
+      "market_capitalization": 1535903288905.0
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-06-09T00:00:00.000",
+      "shares_report_date": "2026-04-16T00:00:00.000",
+      "close_price": 396.68,
+      "shares_outstanding": 3755723900,
+      "market_capitalization": 1489820556652.0
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-06-10T00:00:00.000",
+      "shares_report_date": "2026-04-16T00:00:00.000",
+      "close_price": 381.59,
+      "shares_outstanding": 3755723900,
+      "market_capitalization": 1433146683001.0
     }
   ],
   "psRatio": [
@@ -70112,6 +70160,36 @@
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 97879000000.0,
       "ps_ratio": 15.0
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-06-08T00:00:00.000",
+      "market_capitalization": 1535903288905.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 97879000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 97879000000.0,
+      "ps_ratio": 15.69
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-06-09T00:00:00.000",
+      "market_capitalization": 1489820556652.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 97879000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 97879000000.0,
+      "ps_ratio": 15.22
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-06-10T00:00:00.000",
+      "market_capitalization": 1433146683001.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 97879000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 97879000000.0,
+      "ps_ratio": 14.64
     }
   ],
   "pbRatio": [
@@ -79984,6 +80062,36 @@
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 84116000000.0,
       "pb_ratio": 17.46
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-06-08T00:00:00.000",
+      "market_capitalization": 1535903288905.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 84116000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 84116000000.0,
+      "pb_ratio": 18.26
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-06-09T00:00:00.000",
+      "market_capitalization": 1489820556652.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 84116000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 84116000000.0,
+      "pb_ratio": 17.71
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-06-10T00:00:00.000",
+      "market_capitalization": 1433146683001.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 84116000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 84116000000.0,
+      "pb_ratio": 17.04
     }
   ],
   "pegRatio": [
@@ -94896,6 +95004,36 @@
       "ttm_pe": 357.21,
       "eps_yoy_growth": 0.1601,
       "peg_ratio": 22.31
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-06-08T00:00:00.000",
+      "close_price": 408.95,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 1.0946,
+      "ttm_pe": 373.61,
+      "eps_yoy_growth": 0.1601,
+      "peg_ratio": 23.34
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-06-09T00:00:00.000",
+      "close_price": 396.68,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 1.0946,
+      "ttm_pe": 362.4,
+      "eps_yoy_growth": 0.1601,
+      "peg_ratio": 22.64
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-06-10T00:00:00.000",
+      "close_price": 381.59,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 1.0946,
+      "ttm_pe": 348.61,
+      "eps_yoy_growth": 0.1601,
+      "peg_ratio": 21.77
     }
   ]
 }

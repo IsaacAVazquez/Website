@@ -1,10 +1,10 @@
 {
   "symbol": "NOW",
-  "lastUpdated": "2026-06-09T00:00:39.728571+00:00",
+  "lastUpdated": "2026-06-12T00:17:25.864748+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-09T00:00:39.728571+00:00",
+    "snapshotBuiltAt": "2026-06-12T00:17:25.864748+00:00",
     "sections": {
-      "price": "2026-06-05"
+      "price": "2026-06-10"
     }
   },
   "source": "prefetched",
@@ -18,11 +18,11 @@
     "income_statement": true,
     "balance_sheet": true,
     "cash_flow": true,
-    "wacc": false,
+    "wacc": true,
     "industry": true,
-    "beta": false,
-    "news": false,
-    "dcf": false,
+    "beta": true,
+    "news": true,
+    "dcf": true,
     "officers": true,
     "compare": true
   },
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.6811,
-      "ttmPe": 66.89,
-      "marketCap": 115970584600,
-      "psRatio": 8.31,
-      "pbRatio": 9.89,
-      "pegRatio": 25.34
+      "ttmPe": 63.09,
+      "marketCap": 109380526480,
+      "psRatio": 7.84,
+      "pbRatio": 9.33,
+      "pegRatio": 23.9
     },
     "profitability": {
       "roe": 3.8,
@@ -5112,31 +5112,18 @@
         }
       ]
     },
+    "wacc": {
+      "wacc": 12.25,
+      "costOfEquity": 12.520000000000001,
+      "costOfDebt": 0.25,
+      "taxRate": 30,
+      "beta": 0.9577,
+      "marketCap": 109380526480
+    },
+    "beta": {
+      "beta5y": 0.9577
+    },
     "price": [
-      {
-        "date": "2025-06-05",
-        "open": 205.462,
-        "high": 206.288,
-        "low": 202.834,
-        "close": 203.52,
-        "volume": 4512000
-      },
-      {
-        "date": "2025-06-06",
-        "open": 205.246,
-        "high": 206.92,
-        "low": 203.268,
-        "close": 206.042,
-        "volume": 4798500
-      },
-      {
-        "date": "2025-06-09",
-        "open": 206.2,
-        "high": 206.896,
-        "low": 203.612,
-        "close": 205.372,
-        "volume": 4539000
-      },
       {
         "date": "2025-06-10",
         "open": 204.228,
@@ -7127,7 +7114,113 @@
         "high": 121.2,
         "low": 111.56,
         "close": 112.45,
-        "volume": 31294900
+        "volume": 31452000
+      },
+      {
+        "date": "2026-06-08",
+        "open": 111.69,
+        "high": 115.36,
+        "low": 111.2,
+        "close": 114.19,
+        "volume": 19737700
+      },
+      {
+        "date": "2026-06-09",
+        "open": 110.31,
+        "high": 112.39,
+        "low": 103.08,
+        "close": 106.97,
+        "volume": 35706900
+      },
+      {
+        "date": "2026-06-10",
+        "open": 105.28,
+        "high": 109.795,
+        "low": 104.75,
+        "close": 106.06,
+        "volume": 19847953
+      }
+    ],
+    "news": [
+      {
+        "uuid": "8d6cb477-7d0e-3a04-b813-06e376e58079",
+        "title": "Top Research Reports for Bank of America, Accenture & ServiceNow",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-13",
+        "link": "https://finance.yahoo.com/news/top-research-reports-bank-america-213100463.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "644dc4ab-8f9c-34c1-ae91-e583b8825450",
+        "title": "US High Growth Tech Stocks Including 3 Promising Picks",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-04-10",
+        "link": "https://finance.yahoo.com/news/us-high-growth-tech-stocks-113829612.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3d018e47-3ca3-3120-a73e-e863c577b5fe",
+        "title": "Top Research Reports for Visa, ServiceNow & Progressive",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-22",
+        "link": "https://finance.yahoo.com/news/top-research-reports-visa-servicenow-204900265.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "e3daf31a-2695-3357-ba2d-3bfe949cf310",
+        "title": "The Zacks Analyst Blog Highlights Visa, ServiceNow, The Progressive, The Monarch Cement and Precipio",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-22",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-visa-125900502.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "14cc12eb-ef79-3791-82e3-45049c7a3c2c",
+        "title": "1 Profitable Stock Worth Your Attention and 2 to Turn Down",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/1-profitable-stock-worth-attention-044357125.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "da78ab04-9824-38ae-919d-0f45264f5e66",
+        "title": "Nebius Group Stock Earns 84 RS Rating",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/m/da78ab04-9824-38ae-919d-0f45264f5e66/nebius-group-stock-earns-84.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0d66b766-bead-3972-a483-2318d3521577",
+        "title": "Nice enters partnership with ServiceNow for customer service fulfillment",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-08",
+        "link": "https://finance.yahoo.com/news/nice-enters-partnership-servicenow-customer-151028608.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9f38eca9-f098-3ec9-8940-f848a225631e",
+        "title": "Zoom, ServiceNow plan to integrate Zoom CX with ServiceNow CRM, ITSM",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-08",
+        "link": "https://finance.yahoo.com/news/zoom-servicenow-plan-integrate-zoom-150553095.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "994a5e6b-ad52-3bb3-b8a4-56347c6d7387",
+        "title": "High Growth Tech Stocks in the US To Watch This May 2025",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/news/high-growth-tech-stocks-us-113821187.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6307e6d8-6f83-3de1-9858-027b24361de9",
+        "title": "1 High-Flying Stock with Exciting Potential and 2 to Keep Off Your Radar",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/news/1-high-flying-stock-exciting-043642353.html",
+        "type": "STORY"
       }
     ],
     "officers": [
@@ -7193,44 +7286,55 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 66.89,
-        "industryAvg": 25.14
+        "value": 63.09,
+        "industryAvg": 24.14
       },
       {
         "metric": "P/S Ratio",
-        "value": 8.31,
-        "industryAvg": 4.39
+        "value": 7.84,
+        "industryAvg": 4.48
       },
       {
         "metric": "P/B Ratio",
-        "value": 9.89,
-        "industryAvg": 4.79
+        "value": 9.33,
+        "industryAvg": 4.68
       },
       {
         "metric": "ROE",
         "value": 3.8,
-        "industryAvg": -0.21
+        "industryAvg": -0.15
       },
       {
         "metric": "ROA",
         "value": 1.8599999999999999,
-        "industryAvg": -0.11
+        "industryAvg": -0.08
       },
       {
         "metric": "Gross Margin",
         "value": 75.07000000000001,
-        "industryAvg": 63.33
+        "industryAvg": 63.32
       },
       {
         "metric": "EBITDA Margin",
         "value": 24.85,
-        "industryAvg": 21.14
+        "industryAvg": 21.12
       },
       {
         "metric": "Net Margin",
         "value": 12.44,
-        "industryAvg": -0.26
+        "industryAvg": -0.19
       }
-    ]
+    ],
+    "dcf": {
+      "fairValue": 18.6,
+      "currentPrice": 106.06,
+      "upside": -82.46,
+      "wacc": 12.25,
+      "growthEstimates": {
+        "Near-term growth (Yrs 1-3)": 2.64,
+        "Terminal growth": 3
+      },
+      "recommendation": "Sell"
+    }
   }
 }

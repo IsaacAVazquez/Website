@@ -1,10 +1,10 @@
 {
   "symbol": "ASML",
-  "lastUpdated": "2026-06-09T00:00:39.728571+00:00",
+  "lastUpdated": "2026-06-12T00:17:25.864748+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-09T00:00:39.728571+00:00",
+    "snapshotBuiltAt": "2026-06-12T00:17:25.864748+00:00",
     "sections": {
-      "price": "2026-06-05"
+      "price": "2026-06-10"
     }
   },
   "source": "prefetched",
@@ -18,11 +18,11 @@
     "income_statement": true,
     "balance_sheet": true,
     "cash_flow": true,
-    "wacc": false,
+    "wacc": true,
     "industry": true,
-    "beta": false,
-    "news": false,
-    "dcf": false,
+    "beta": true,
+    "news": true,
+    "dcf": true,
     "officers": true,
     "compare": true
   },
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 29.9963,
-      "ttmPe": 54.73,
-      "marketCap": 632755654798,
-      "psRatio": 16.39,
-      "pbRatio": 26.51,
-      "pegRatio": 1.69
+      "ttmPe": 57.81,
+      "marketCap": 668387482621.23,
+      "psRatio": 17.31,
+      "pbRatio": 28,
+      "pegRatio": 1.78
     },
     "profitability": {
       "roe": 13.63,
@@ -5723,31 +5723,18 @@
         }
       ]
     },
+    "wacc": {
+      "wacc": 18.96,
+      "costOfEquity": 19.09,
+      "costOfDebt": 0.25,
+      "taxRate": 15,
+      "beta": 1.7472,
+      "marketCap": 668387482621.23
+    },
+    "beta": {
+      "beta5y": 1.7472
+    },
     "price": [
-      {
-        "date": "2025-06-05",
-        "open": 754.13,
-        "high": 756.46,
-        "low": 744,
-        "close": 747.76,
-        "volume": 1506500
-      },
-      {
-        "date": "2025-06-06",
-        "open": 756.06,
-        "high": 762.1,
-        "low": 752.8,
-        "close": 753.02,
-        "volume": 1345100
-      },
-      {
-        "date": "2025-06-09",
-        "open": 757.06,
-        "high": 782.2,
-        "low": 757.06,
-        "close": 770.2,
-        "volume": 1769400
-      },
       {
         "date": "2025-06-10",
         "open": 779.11,
@@ -7738,7 +7725,113 @@
         "high": 1705.48,
         "low": 1638.38,
         "close": 1641.74,
-        "volume": 2740200
+        "volume": 2744600
+      },
+      {
+        "date": "2026-06-08",
+        "open": 1732.79,
+        "high": 1769.49,
+        "low": 1719.02,
+        "close": 1749.04,
+        "volume": 2062100
+      },
+      {
+        "date": "2026-06-09",
+        "open": 1776.62,
+        "high": 1831.11,
+        "low": 1676.28,
+        "close": 1777.77,
+        "volume": 3148600
+      },
+      {
+        "date": "2026-06-10",
+        "open": 1746.01,
+        "high": 1811.7727,
+        "low": 1724.05,
+        "close": 1734.1899,
+        "volume": 2568886
+      }
+    ],
+    "news": [
+      {
+        "uuid": "73eb7132-8152-3289-9543-118239a25687",
+        "title": "4 Semiconductor Stocks to Buy as Sales Surge on AI Optimism",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-09",
+        "link": "https://finance.yahoo.com/news/4-semiconductor-stocks-buy-sales-133900450.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b88e69e0-63a1-385b-9d7e-35702f916343",
+        "title": "Nvidia, AMD see charges due to new China export rules: Morning Buzz",
+        "publisher": "TipRanks",
+        "reportDate": "2025-04-18",
+        "link": "https://finance.yahoo.com/news/nvidia-amd-see-charges-due-160543145.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "63222fb5-788c-3553-aec1-2c4b23c1c3ba",
+        "title": "4 Semiconductor Stocks to Grab Now as Revenues Skyrocket in Q1",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/news/4-semiconductor-stocks-grab-now-152400615.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "a5d3b2ef-3102-3909-9bea-0379f0618824",
+        "title": "Nomad Foods and Dell Technologies have been highlighted as Zacks Bull and Bear of the Day",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/nomad-foods-dell-technologies-highlighted-122400355.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "11eb025a-55e2-3b0e-8da0-b983f6938f41",
+        "title": "Is ASML Holding (ASML) One of the Best Technology Stocks to Buy for Long-Term Investment?",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/asml-holding-asml-one-best-130913011.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ae218db3-d1c0-3daa-806d-17ed6f4613bc",
+        "title": "Tariffs Could Shake Up Semiconductor Supply Chains. Here Are 2 Companies Investors Should Keep Their Eyes On.",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-15",
+        "link": "https://finance.yahoo.com/m/ae218db3-d1c0-3daa-806d-17ed6f4613bc/tariffs-could-shake-up.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "e231ab5c-2365-359e-bf5f-39f819b835f3",
+        "title": "Grim Economic Outlook Overtakes Solid Earnings as Tariff Disruptions Surface",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-17",
+        "link": "https://finance.yahoo.com/news/grim-outlooks-over-results-tariff-110000070.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "30a661b0-7097-3005-ba16-36806316ceb2",
+        "title": "Jim Cramer Notes ASML Holding (ASML)’s “Last Couple Quarters Have Been Weak”",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-18",
+        "link": "https://finance.yahoo.com/news/jim-cramer-notes-asml-holding-105653668.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "565bcd88-476f-35bb-b736-8293be6c6500",
+        "title": "Beyond Tariffs: Why Berenberg Still Sees a “Buy” in ASML’s Future",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/beyond-tariffs-why-berenberg-still-200027130.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "cf65fdbe-ff73-3e8d-9162-f16a47573a8b",
+        "title": "ASML Holding N.V. (ASML) is Attracting Investor Attention: Here is What You Should Know",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/asml-holding-n-v-asml-130014706.html",
+        "type": "STORY"
       }
     ],
     "officers": [
@@ -7755,21 +7848,21 @@
         "title": "President, CEO and Chair of the Board of Management",
         "age": 52,
         "yearBorn": 1973,
-        "totalPay": 4358054
+        "totalPay": 4363577
       },
       {
         "name": "Mr. Frederic J. M. Schneider-Maunoury",
         "title": "Executive VP, COO & Member of the Management Board",
         "age": 64,
         "yearBorn": 1961,
-        "totalPay": 2583958
+        "totalPay": 2587233
       },
       {
         "name": "Mr. James P. Koonmen",
         "title": "Executive VP, Chief Customer Officer & Member of Management Board",
         "age": 58,
         "yearBorn": 1967,
-        "totalPay": 2751000
+        "totalPay": 2754486
       },
       {
         "name": "Mr. Marco J. A. Pieters",
@@ -7780,7 +7873,7 @@
         "title": "Executive VP, CFO & Member of the Management Board",
         "age": 60,
         "yearBorn": 1965,
-        "totalPay": 2565526
+        "totalPay": 2568778
       },
       {
         "name": "Mr. Ron Kool",
@@ -7791,7 +7884,7 @@
         "title": "Executive VP, Chief Strategic Sourcing & Procurement Officer and Member of Management Board",
         "age": 58,
         "yearBorn": 1967,
-        "totalPay": 2695703
+        "totalPay": 2699120
       },
       {
         "name": "Ms. Cristina Monteiro",
@@ -7801,18 +7894,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 54.73,
-        "industryAvg": 52.12
+        "value": 57.81,
+        "industryAvg": 55.55
       },
       {
         "metric": "P/S Ratio",
-        "value": 16.39,
-        "industryAvg": 14.19
+        "value": 17.31,
+        "industryAvg": 14.53
       },
       {
         "metric": "P/B Ratio",
-        "value": 26.51,
-        "industryAvg": 4.86
+        "value": 28,
+        "industryAvg": 3.8
       },
       {
         "metric": "ROE",
@@ -7839,6 +7932,17 @@
         "value": 31.44,
         "industryAvg": 26.52
       }
-    ]
+    ],
+    "dcf": {
+      "fairValue": 308.48,
+      "currentPrice": 1734.19,
+      "upside": -82.21,
+      "wacc": 18.96,
+      "growthEstimates": {
+        "Near-term growth (Yrs 1-3)": 32.42,
+        "Terminal growth": 3
+      },
+      "recommendation": "Sell"
+    }
   }
 }

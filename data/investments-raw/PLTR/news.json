@@ -1,3 +1,92 @@
-{
-  "error": "Query failed: Binder Error: Referenced column \"related_symbols\" not found in FROM clause!\nCandidate bindings: \"report_date\", \"news\""
-}
+[
+  {
+    "uuid": "5af5f21a-c494-3b85-940a-105f80e91ef5",
+    "symbol": "PLTR",
+    "title": "AI is Taking Over Aviation--And These Two Companies Just Hit the Accelerator",
+    "publisher": "GuruFocus.com",
+    "report_date": "2025-03-14",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/ai-taking-over-aviation-two-164103071.html"
+  },
+  {
+    "uuid": "944b24c7-5dc1-3bf4-a1c9-ea3e0b527d80",
+    "symbol": "PLTR",
+    "title": "Palantir (PLTR) Joins Forces with Ondas to Elevate AI-Powered Autonomous Drones",
+    "publisher": "Insider Monkey",
+    "report_date": "2025-03-14",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/palantir-pltr-joins-forces-ondas-151809996.html"
+  },
+  {
+    "uuid": "ffe8bfcd-dec1-3b98-8125-d65c4ffa8e9b",
+    "symbol": "PLTR",
+    "title": "Palantir Strikes AI Partnerships With Archer Aviation, Databricks",
+    "publisher": "MT Newswires",
+    "report_date": "2025-03-14",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/palantir-strikes-ai-partnerships-archer-192210992.html"
+  },
+  {
+    "uuid": "384d50eb-a71b-3f94-9719-35d091f66c88",
+    "symbol": "PLTR",
+    "title": "Alibaba & Baidu, metal miners, Palantir: Market Minute",
+    "publisher": "Yahoo Finance Video",
+    "report_date": "2025-04-15",
+    "type": "VIDEO",
+    "link": "https://finance.yahoo.com/video/alibaba-baidu-metal-miners-palantir-162056753.html"
+  },
+  {
+    "uuid": "05dbfc24-c26d-3a9b-8683-7997581c6245",
+    "symbol": "PLTR",
+    "title": "Stock Market Today: Dow Jones, S&P 500 Close Lower; But This Recent IPO Name Bolts Higher For 3rd Straight Day (Live Coverage)",
+    "publisher": "Investor's Business Daily",
+    "report_date": "2025-04-16",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/05dbfc24-c26d-3a9b-8683-7997581c6245/stock-market-today%3A-dow.html"
+  },
+  {
+    "uuid": "8160e52d-cd6f-3863-88f0-84ffdfc30d93",
+    "symbol": "PLTR",
+    "title": "Red Cat Holdings Inc (RCAT) Q3 2025 Earnings Call Highlights: Drone Production Takes Flight ...",
+    "publisher": "GuruFocus.com",
+    "report_date": "2025-04-22",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/red-cat-holdings-inc-rcat-202546195.html"
+  },
+  {
+    "uuid": "41a981eb-4e4e-360c-aa94-5be79c525776",
+    "symbol": "PLTR",
+    "title": "Q4 Earnings Outperformers: Health Catalyst (NASDAQ:HCAT) And The Rest Of The Data Analytics Stocks",
+    "publisher": "StockStory",
+    "report_date": "2025-04-25",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/q4-earnings-outperformers-health-catalyst-090618289.html"
+  },
+  {
+    "uuid": "7471054a-ba86-377d-bdd6-83da67d5d125",
+    "symbol": "PLTR",
+    "title": "2 Surging  Stocks to Consider Right Now and 1 to Approach with Caution",
+    "publisher": "StockStory",
+    "report_date": "2025-05-01",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/2-surging-stocks-consider-now-043951765.html"
+  },
+  {
+    "uuid": "5f3936c2-86dc-3310-a7c4-553590e3dde3",
+    "symbol": "PLTR",
+    "title": "Palantir declines, Lemonade lifts guidance, Celsius Q1 miss",
+    "publisher": "Yahoo Finance Video",
+    "report_date": "2025-05-06",
+    "type": "VIDEO",
+    "link": "https://finance.yahoo.com/video/palantir-declines-lemonade-lifts-guidance-151158298.html"
+  },
+  {
+    "uuid": "da78ab04-9824-38ae-919d-0f45264f5e66",
+    "symbol": "PLTR",
+    "title": "Nebius Group Stock Earns 84 RS Rating",
+    "publisher": "Investor's Business Daily",
+    "report_date": "2025-05-06",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/da78ab04-9824-38ae-919d-0f45264f5e66/nebius-group-stock-earns-84.html"
+  }
+]

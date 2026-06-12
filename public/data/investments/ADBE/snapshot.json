@@ -1,10 +1,10 @@
 {
   "symbol": "ADBE",
-  "lastUpdated": "2026-06-09T00:00:39.728571+00:00",
+  "lastUpdated": "2026-06-12T00:17:25.864748+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-09T00:00:39.728571+00:00",
+    "snapshotBuiltAt": "2026-06-12T00:17:25.864748+00:00",
     "sections": {
-      "price": "2026-06-05"
+      "price": "2026-06-10"
     }
   },
   "source": "prefetched",
@@ -18,11 +18,11 @@
     "income_statement": true,
     "balance_sheet": true,
     "cash_flow": true,
-    "wacc": false,
+    "wacc": true,
     "industry": true,
-    "beta": false,
-    "news": false,
-    "dcf": false,
+    "beta": true,
+    "news": true,
+    "dcf": true,
     "officers": true,
     "compare": true
   },
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 17.1669,
-      "ttmPe": 14.65,
-      "marketCap": 101632048000,
-      "psRatio": 4.16,
-      "pbRatio": 8.89,
-      "pegRatio": 1.31
+      "ttmPe": 13.59,
+      "marketCap": 94332196000,
+      "psRatio": 3.86,
+      "pbRatio": 8.25,
+      "pegRatio": 1.22
     },
     "profitability": {
       "roe": 16.39,
@@ -5684,31 +5684,18 @@
         }
       ]
     },
+    "wacc": {
+      "wacc": 15.17,
+      "costOfEquity": 16.189999999999998,
+      "costOfDebt": 0.95,
+      "taxRate": 22,
+      "beta": 1.3985,
+      "marketCap": 94332196000
+    },
+    "beta": {
+      "beta5y": 1.3985
+    },
     "price": [
-      {
-        "date": "2025-06-05",
-        "open": 415,
-        "high": 421.48,
-        "low": 413.98,
-        "close": 415.2,
-        "volume": 2275500
-      },
-      {
-        "date": "2025-06-06",
-        "open": 417.54,
-        "high": 419.65,
-        "low": 415.28,
-        "close": 416.92,
-        "volume": 2146900
-      },
-      {
-        "date": "2025-06-09",
-        "open": 417.3,
-        "high": 419,
-        "low": 415.15,
-        "close": 416.26,
-        "volume": 3034200
-      },
       {
         "date": "2025-06-10",
         "open": 416.61,
@@ -7699,7 +7686,113 @@
         "high": 262.53,
         "low": 249.05,
         "close": 251.44,
-        "volume": 4902600
+        "volume": 4909200
+      },
+      {
+        "date": "2026-06-08",
+        "open": 249.06,
+        "high": 250.74,
+        "low": 244.25,
+        "close": 244.99,
+        "volume": 4728000
+      },
+      {
+        "date": "2026-06-09",
+        "open": 242.98,
+        "high": 245.25,
+        "low": 233.33,
+        "close": 237.88,
+        "volume": 6741400
+      },
+      {
+        "date": "2026-06-10",
+        "open": 232.02,
+        "high": 238.51,
+        "low": 231.74,
+        "close": 233.38,
+        "volume": 4799317
+      }
+    ],
+    "news": [
+      {
+        "uuid": "6458fbb9-5bcd-3a5a-ab78-d5793d8dce15",
+        "title": "Closing Bell Movers: Intel spikes 11% after naming new CEO",
+        "publisher": "TipRanks",
+        "reportDate": "2025-03-14",
+        "link": "https://finance.yahoo.com/news/closing-bell-movers-intel-spikes-232012583.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "f463d70e-5913-3081-8c7e-7bdd1b9a3be6",
+        "title": "Will PRGS' AI-Powered Upgrades to Sitefinity Drive the Stock Upward?",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-15",
+        "link": "https://finance.yahoo.com/news/prgs-ai-powered-upgrades-sitefinity-145600061.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3cca5d7e-b3a9-3933-8885-41389a3f5b7b",
+        "title": "Design Software Stocks Q1 Teardown: Unity (NYSE:U) Vs The Rest",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/news/design-software-stocks-q1-teardown-033427103.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "284e5b4c-3410-3beb-9df4-567c37f2948e",
+        "title": "Q1 Design Software Earnings Review: First Prize Goes to Procore (NYSE:PCOR)",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/q1-design-software-earnings-review-033224575.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "e8cd8339-b5fc-33ea-9c48-a60b4315b2e0",
+        "title": "Reflecting On Design Software Stocks’ Q1 Earnings: Cadence (NASDAQ:CDNS)",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-15",
+        "link": "https://finance.yahoo.com/news/reflecting-design-software-stocks-q1-033243608.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "23c53cf9-283f-37bb-a15c-0d15dc0da9b8",
+        "title": "Salesforce vs. Adobe: Which Cloud Software Stock Has an Edge?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-29",
+        "link": "https://finance.yahoo.com/news/salesforce-vs-adobe-cloud-software-132400143.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b77d1727-4d59-3130-983d-a06105fa7081",
+        "title": "Should You Invest in Adobe (ADBE) Based on Bullish Wall Street Views?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-30",
+        "link": "https://finance.yahoo.com/news/invest-adobe-adbe-based-bullish-133009472.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "59b99a57-d7ad-34d0-856d-87429aba674f",
+        "title": "3 Tech Stocks You Can Buy and Hold for the Next Decade",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-30",
+        "link": "https://finance.yahoo.com/m/59b99a57-d7ad-34d0-856d-87429aba674f/3-tech-stocks-you-can-buy-and.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "bc3d4456-aa33-362d-8cac-8dbf5605d6c3",
+        "title": "2 Cheap Tech Stocks to Buy Right Now",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-30",
+        "link": "https://finance.yahoo.com/m/bc3d4456-aa33-362d-8cac-8dbf5605d6c3/2-cheap-tech-stocks-to-buy.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "55c8b36c-2510-38f3-854f-062fb0af6334",
+        "title": "5 Brilliant Stocks to Buy in June",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-06-01",
+        "link": "https://finance.yahoo.com/m/55c8b36c-2510-38f3-854f-062fb0af6334/5-brilliant-stocks-to-buy-in.html",
+        "type": "STORY"
       }
     ],
     "officers": [
@@ -7768,44 +7861,55 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 14.65,
-        "industryAvg": 25.14
+        "value": 13.59,
+        "industryAvg": 24.14
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.16,
-        "industryAvg": 4.42
+        "value": 3.86,
+        "industryAvg": 4.48
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.89,
-        "industryAvg": 4.78
+        "value": 8.25,
+        "industryAvg": 4.68
       },
       {
         "metric": "ROE",
         "value": 16.39,
-        "industryAvg": -0.21
+        "industryAvg": -0.15
       },
       {
         "metric": "ROA",
         "value": 6.38,
-        "industryAvg": -0.11
+        "industryAvg": -0.08
       },
       {
         "metric": "Gross Margin",
         "value": 89.62,
-        "industryAvg": 63.33
+        "industryAvg": 63.32
       },
       {
         "metric": "EBITDA Margin",
         "value": 41.56,
-        "industryAvg": 21.14
+        "industryAvg": 21.12
       },
       {
         "metric": "Net Margin",
         "value": 29.520000000000003,
-        "industryAvg": -0.26
+        "industryAvg": -0.19
       }
-    ]
+    ],
+    "dcf": {
+      "fairValue": 167.06,
+      "currentPrice": 233.38,
+      "upside": -28.42,
+      "wacc": 15.17,
+      "growthEstimates": {
+        "Near-term growth (Yrs 1-3)": 11.16,
+        "Terminal growth": 3
+      },
+      "recommendation": "Sell"
+    }
   }
 }

@@ -1,10 +1,10 @@
 {
   "symbol": "SHOP",
-  "lastUpdated": "2026-06-09T00:00:39.728571+00:00",
+  "lastUpdated": "2026-06-12T00:17:25.864748+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-09T00:00:39.728571+00:00",
+    "snapshotBuiltAt": "2026-06-12T00:17:25.864748+00:00",
     "sections": {
-      "price": "2026-06-05"
+      "price": "2026-06-10"
     }
   },
   "source": "prefetched",
@@ -18,11 +18,11 @@
     "income_statement": true,
     "balance_sheet": true,
     "cash_flow": true,
-    "wacc": false,
+    "wacc": true,
     "industry": true,
-    "beta": false,
-    "news": false,
-    "dcf": false,
+    "beta": true,
+    "news": true,
+    "dcf": true,
     "officers": true,
     "compare": true
   },
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.0172,
-      "ttmPe": 107.69,
-      "marketCap": 142145084884,
-      "psRatio": 11.49,
-      "pbRatio": 11.37,
-      "pegRatio": 7.02
+      "ttmPe": 106.37,
+      "marketCap": 140406227720,
+      "psRatio": 11.35,
+      "pbRatio": 11.23,
+      "pegRatio": 6.94
     },
     "profitability": {
       "roe": -4.47,
@@ -5619,31 +5619,18 @@
         }
       ]
     },
+    "wacc": {
+      "wacc": 25.52,
+      "costOfEquity": 25.740000000000002,
+      "costOfDebt": 0.02,
+      "taxRate": 40,
+      "beta": 2.5464,
+      "marketCap": 140406227720
+    },
+    "beta": {
+      "beta5y": 2.5464
+    },
     "price": [
-      {
-        "date": "2025-06-05",
-        "open": 104,
-        "high": 106.56,
-        "low": 103.1,
-        "close": 105.03,
-        "volume": 11085300
-      },
-      {
-        "date": "2025-06-06",
-        "open": 106.991,
-        "high": 112.08,
-        "low": 106.66,
-        "close": 111.41,
-        "volume": 8736300
-      },
-      {
-        "date": "2025-06-09",
-        "open": 110.42,
-        "high": 111,
-        "low": 107.76,
-        "close": 107.8,
-        "volume": 7738800
-      },
       {
         "date": "2025-06-10",
         "open": 108.36,
@@ -7634,7 +7621,113 @@
         "high": 115.9,
         "low": 108.29,
         "close": 109.54,
-        "volume": 8093800
+        "volume": 8104600
+      },
+      {
+        "date": "2026-06-08",
+        "open": 113.58,
+        "high": 114.88,
+        "low": 110.52,
+        "close": 110.78,
+        "volume": 7011600
+      },
+      {
+        "date": "2026-06-09",
+        "open": 111,
+        "high": 116.96,
+        "low": 107.19,
+        "close": 110.42,
+        "volume": 7820100
+      },
+      {
+        "date": "2026-06-10",
+        "open": 108.77,
+        "high": 110.25,
+        "low": 106.4,
+        "close": 108.2,
+        "volume": 7308120
+      }
+    ],
+    "news": [
+      {
+        "uuid": "38689cc4-c97f-34bb-9040-f7a0e66c93a0",
+        "title": "3 Brilliant Stocks Down 51% to 77% to Buy Right Now",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-04-12",
+        "link": "https://finance.yahoo.com/m/38689cc4-c97f-34bb-9040-f7a0e66c93a0/3-brilliant-stocks-down-51%25.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "585d7010-b707-3a2f-a43a-bdd082df3457",
+        "title": "Shopify initiated, Comcast downgraded: Wall Street’s top analyst calls",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/shopify-initiated-comcast-downgraded-wall-134119180.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2c7705bb-7fc7-3f89-919a-6f977813128a",
+        "title": "Shopify Inc to Join the Nasdaq-100 Index® Beginning May 19, 2025",
+        "publisher": "GlobeNewswire",
+        "reportDate": "2025-05-10",
+        "link": "https://finance.yahoo.com/news/shopify-inc-join-nasdaq-100-000000866.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "127420de-f523-347a-ac88-313c41c0756c",
+        "title": "Trump announces trade deal, BoE lowers Bank Rate: Morning Buzz",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-10",
+        "link": "https://finance.yahoo.com/news/trump-announces-trade-deal-boe-160158579.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "66866936-5cb5-36c2-84ed-a79cc17df6da",
+        "title": "Exploring High Growth US Tech Stocks for May 2025",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/news/exploring-high-growth-us-tech-113900064.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "c7534cd2-6874-332c-b15b-f41ab84cd81f",
+        "title": "Shopify vs. Etsy: Which E-Commerce Stock Has More Fuel for Growth?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/news/shopify-vs-etsy-e-commerce-174500079.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9944686b-4442-372b-a74b-bf3518df25fd",
+        "title": "Global-e, Shopify Extend Strategic Partnership With New Agreement",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/global-e-shopify-extend-strategic-114530731.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "25174632-8fd0-3328-a62c-38f47f75fa5d",
+        "title": "Global E Online Ltd (GLBE) Q1 2025 Earnings Call Highlights: Strong Growth Amid Strategic ...",
+        "publisher": "GuruFocus.com",
+        "reportDate": "2025-05-15",
+        "link": "https://finance.yahoo.com/news/global-e-online-ltd-glbe-071033254.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ed5b8fe6-852d-3ae8-9ff6-b9972a28ef8c",
+        "title": "Fluent Inc (FLNT) Q1 2025 Earnings Call Highlights: Strategic Growth in Commerce Media Amid ...",
+        "publisher": "GuruFocus.com",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/news/fluent-inc-flnt-q1-2025-071433299.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "07d95502-4bf7-3210-b285-7676a0a51628",
+        "title": "Fox Corp. Readies Fox One Streaming Service",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-17",
+        "link": "https://finance.yahoo.com/m/07d95502-4bf7-3210-b285-7676a0a51628/fox-corp.-readies-fox-one.html",
+        "type": "STORY"
       }
     ],
     "officers": [
@@ -7697,44 +7790,55 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 107.69,
-        "industryAvg": 25.13
+        "value": 106.37,
+        "industryAvg": 24.14
       },
       {
         "metric": "P/S Ratio",
-        "value": 11.49,
-        "industryAvg": 4.42
+        "value": 11.35,
+        "industryAvg": 4.48
       },
       {
         "metric": "P/B Ratio",
-        "value": 11.37,
-        "industryAvg": 4.79
+        "value": 11.23,
+        "industryAvg": 4.68
       },
       {
         "metric": "ROE",
         "value": -4.47,
-        "industryAvg": -0.21
+        "industryAvg": -0.15
       },
       {
         "metric": "ROA",
         "value": -3.9600000000000004,
-        "industryAvg": -0.11
+        "industryAvg": -0.08
       },
       {
         "metric": "Gross Margin",
         "value": 48.77,
-        "industryAvg": 63.33
+        "industryAvg": 63.32
       },
       {
         "metric": "EBITDA Margin",
         "value": 15.93,
-        "industryAvg": 21.14
+        "industryAvg": 21.12
       },
       {
         "metric": "Net Margin",
         "value": -18.33,
-        "industryAvg": -0.26
+        "industryAvg": -0.19
       }
-    ]
+    ],
+    "dcf": {
+      "fairValue": 5.65,
+      "currentPrice": 108.2,
+      "upside": -94.78,
+      "wacc": 25.52,
+      "growthEstimates": {
+        "Near-term growth (Yrs 1-3)": 15.33,
+        "Terminal growth": 3
+      },
+      "recommendation": "Sell"
+    }
   }
 }

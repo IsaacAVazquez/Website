@@ -22596,6 +22596,30 @@
       "close_price": 109.54,
       "ttm_eps": 1.0172,
       "ttm_pe": 107.69
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-06-08T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 110.78,
+      "ttm_eps": 1.0172,
+      "ttm_pe": 108.91
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-06-09T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 110.42,
+      "ttm_eps": 1.0172,
+      "ttm_pe": 108.55
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-06-10T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 108.2,
+      "ttm_eps": 1.0172,
+      "ttm_pe": 106.37
     }
   ],
   "marketCap": [
@@ -44822,6 +44846,30 @@
       "close_price": 109.54,
       "shares_outstanding": 1297654600,
       "market_capitalization": 142145084884.0
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-06-08T00:00:00.000",
+      "shares_report_date": "2026-05-01T00:00:00.000",
+      "close_price": 110.78,
+      "shares_outstanding": 1297654600,
+      "market_capitalization": 143754176588.0
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-06-09T00:00:00.000",
+      "shares_report_date": "2026-05-01T00:00:00.000",
+      "close_price": 110.42,
+      "shares_outstanding": 1297654600,
+      "market_capitalization": 143287020932.0
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-06-10T00:00:00.000",
+      "shares_report_date": "2026-05-01T00:00:00.000",
+      "close_price": 108.2,
+      "shares_outstanding": 1297654600,
+      "market_capitalization": 140406227720.0
     }
   ],
   "psRatio": [
@@ -50304,6 +50352,36 @@
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 12366000000.0,
       "ps_ratio": 11.49
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-06-08T00:00:00.000",
+      "market_capitalization": 143754176588.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 12366000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 11.62
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-06-09T00:00:00.000",
+      "market_capitalization": 143287020932.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 12366000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 11.59
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-06-10T00:00:00.000",
+      "market_capitalization": 140406227720.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 12366000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 12366000000.0,
+      "ps_ratio": 11.35
     }
   ],
   "pbRatio": [
@@ -60176,6 +60254,36 @@
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 12501000000.0,
       "pb_ratio": 11.37
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-06-08T00:00:00.000",
+      "market_capitalization": 143754176588.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 12501000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 12501000000.0,
+      "pb_ratio": 11.5
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-06-09T00:00:00.000",
+      "market_capitalization": 143287020932.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 12501000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 12501000000.0,
+      "pb_ratio": 11.46
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-06-10T00:00:00.000",
+      "market_capitalization": 140406227720.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 12501000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 12501000000.0,
+      "pb_ratio": 11.23
     }
   ],
   "pegRatio": [
@@ -70038,6 +70146,36 @@
       "ttm_pe": 107.69,
       "eps_yoy_growth": 0.1533,
       "peg_ratio": 7.02
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-06-08T00:00:00.000",
+      "close_price": 110.78,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 1.0172,
+      "ttm_pe": 108.91,
+      "eps_yoy_growth": 0.1533,
+      "peg_ratio": 7.1
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-06-09T00:00:00.000",
+      "close_price": 110.42,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 1.0172,
+      "ttm_pe": 108.55,
+      "eps_yoy_growth": 0.1533,
+      "peg_ratio": 7.08
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2026-06-10T00:00:00.000",
+      "close_price": 108.2,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 1.0172,
+      "ttm_pe": 106.37,
+      "eps_yoy_growth": 0.1533,
+      "peg_ratio": 6.94
     }
   ]
 }

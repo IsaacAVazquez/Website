@@ -1,3 +1,92 @@
-{
-  "error": "Query failed: Binder Error: Referenced column \"related_symbols\" not found in FROM clause!\nCandidate bindings: \"report_date\", \"news\""
-}
+[
+  {
+    "uuid": "9671109d-3475-3910-b206-7de494fe37dc",
+    "symbol": "AMZN",
+    "title": "One-Time Amazon Takeover Target iRobot Warns Doubt on Future",
+    "publisher": "Bloomberg",
+    "report_date": "2025-03-12",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/one-time-amazon-takeover-target-125946201.html"
+  },
+  {
+    "uuid": "ed50c2b8-db3e-337c-9a32-5264eaa77397",
+    "symbol": "AMZN",
+    "title": "iRobot stock dives on its 'substantial doubt' of surviving in 2025",
+    "publisher": "Yahoo Finance Video",
+    "report_date": "2025-03-13",
+    "type": "VIDEO",
+    "link": "https://finance.yahoo.com/video/irobot-stock-dives-substantial-doubt-192908228.html"
+  },
+  {
+    "uuid": "94ecea1b-28cf-3159-aeeb-c2ed83b84ea4",
+    "symbol": "AMZN",
+    "title": "Game On: Discord reportedly in talks for IPO in 2025",
+    "publisher": "TipRanks",
+    "report_date": "2025-03-13",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/game-discord-reportedly-talks-ipo-163531942.html"
+  },
+  {
+    "uuid": "0ed5f0fd-d31a-398c-a525-af185fbf4ff7",
+    "symbol": "AMZN",
+    "title": "Nuclear Energy Stock Talen Soars Amid Bullish Initiation",
+    "publisher": "Investor's Business Daily",
+    "report_date": "2025-03-13",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/0ed5f0fd-d31a-398c-a525-af185fbf4ff7/nuclear-energy-stock-talen.html"
+  },
+  {
+    "uuid": "891b2f8b-8934-31f4-a960-9cf39bc9c7b0",
+    "symbol": "AMZN",
+    "title": "Applied Optoelectronics Stock Soars on Amazon Deal Giving Option to Buy Shares",
+    "publisher": "Investopedia",
+    "report_date": "2025-03-14",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/891b2f8b-8934-31f4-a960-9cf39bc9c7b0/applied-optoelectronics-stock.html"
+  },
+  {
+    "uuid": "6fcd2f65-19d3-3a5e-bbb6-16e11d9681e6",
+    "symbol": "AMZN",
+    "title": "Fabrinet price target raised to $350 from $300 at Northland",
+    "publisher": "TipRanks",
+    "report_date": "2025-03-15",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/fabrinet-price-target-raised-350-131658137.html"
+  },
+  {
+    "uuid": "c09a1433-b20e-3bc0-bcb3-b814db29ea56",
+    "symbol": "AMZN",
+    "title": "Amazon eyes sales of used cars, Automotive News reports",
+    "publisher": "TipRanks",
+    "report_date": "2025-03-20",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/amazon-eyes-sales-used-cars-150601629.html"
+  },
+  {
+    "uuid": "ff8e2b33-3385-33a7-9436-6ba55d8d7847",
+    "symbol": "AMZN",
+    "title": "Analysts remain bullish on Carvana as Amazon eyes used-car sales",
+    "publisher": "TipRanks",
+    "report_date": "2025-03-21",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/analysts-remain-bullish-carvana-amazon-150615298.html"
+  },
+  {
+    "uuid": "74494b18-0d82-31fa-92d1-51c5358f52e1",
+    "symbol": "AMZN",
+    "title": "SERV Plunges 53% in 3 Months: Should You Buy, Sell or Hold the Stock?",
+    "publisher": "Zacks",
+    "report_date": "2025-03-26",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/serv-plunges-53-3-months-135000194.html"
+  },
+  {
+    "uuid": "7552e49e-e751-42bd-b4c1-a1893353c694",
+    "symbol": "AMZN",
+    "title": "CoreWeave co-founder: We don't understand the AI bubble fears",
+    "publisher": "Yahoo Finance",
+    "report_date": "2025-03-29",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/coreweave-co-founder-we-dont-understand-the-ai-bubble-fears-164641776.html"
+  }
+]

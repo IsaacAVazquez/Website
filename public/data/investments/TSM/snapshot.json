@@ -1,10 +1,10 @@
 {
   "symbol": "TSM",
-  "lastUpdated": "2026-06-09T00:00:39.728571+00:00",
+  "lastUpdated": "2026-06-12T00:17:25.864748+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-09T00:00:39.728571+00:00",
+    "snapshotBuiltAt": "2026-06-12T00:17:25.864748+00:00",
     "sections": {
-      "price": "2026-06-05"
+      "price": "2026-06-10"
     }
   },
   "source": "prefetched",
@@ -18,11 +18,11 @@
     "income_statement": true,
     "balance_sheet": true,
     "cash_flow": true,
-    "wacc": false,
+    "wacc": true,
     "industry": true,
-    "beta": false,
-    "news": false,
-    "dcf": false,
+    "beta": true,
+    "news": true,
+    "dcf": true,
     "officers": true,
     "compare": true
   },
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 12.0321,
-      "ttmPe": 34.51,
-      "marketCap": 2153268410580,
-      "psRatio": 16.81,
-      "pbRatio": 11.71,
+      "ttmPe": 33.97,
+      "marketCap": 2119971247500,
+      "psRatio": 16.55,
+      "pbRatio": 11.53,
       "pegRatio": 0.53
     },
     "profitability": {
@@ -6707,31 +6707,18 @@
         }
       ]
     },
+    "wacc": {
+      "wacc": 15.659999999999998,
+      "costOfEquity": 15.909999999999998,
+      "costOfDebt": 0.25,
+      "taxRate": 17,
+      "beta": 1.3658,
+      "marketCap": 2119971247500
+    },
+    "beta": {
+      "beta5y": 1.3658
+    },
     "price": [
-      {
-        "date": "2025-06-05",
-        "open": 204.88,
-        "high": 205.76,
-        "low": 202.28,
-        "close": 203.34,
-        "volume": 12214300
-      },
-      {
-        "date": "2025-06-06",
-        "open": 203.58,
-        "high": 206.29,
-        "low": 203.23,
-        "close": 205.18,
-        "volume": 8532000
-      },
-      {
-        "date": "2025-06-09",
-        "open": 206.4,
-        "high": 209.27,
-        "low": 205.87,
-        "close": 207,
-        "volume": 11472300
-      },
       {
         "date": "2025-06-10",
         "open": 211.61,
@@ -8722,14 +8709,120 @@
         "high": 433.9,
         "low": 412.79,
         "close": 415.17,
-        "volume": 19590800
+        "volume": 19644200
+      },
+      {
+        "date": "2026-06-08",
+        "open": 423.77,
+        "high": 433.81,
+        "low": 422.53,
+        "close": 426.8,
+        "volume": 11245400
+      },
+      {
+        "date": "2026-06-09",
+        "open": 430.88,
+        "high": 438.16,
+        "low": 405.51,
+        "close": 427.92,
+        "volume": 21180500
+      },
+      {
+        "date": "2026-06-10",
+        "open": 413.955,
+        "high": 426.32,
+        "low": 407.7,
+        "close": 408.75,
+        "volume": 12030856
+      }
+    ],
+    "news": [
+      {
+        "uuid": "b88e69e0-63a1-385b-9d7e-35702f916343",
+        "title": "Nvidia, AMD see charges due to new China export rules: Morning Buzz",
+        "publisher": "TipRanks",
+        "reportDate": "2025-04-18",
+        "link": "https://finance.yahoo.com/news/nvidia-amd-see-charges-due-160543145.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2311a7ae-c932-3ba8-b63a-7ac67bc07f0f",
+        "title": "Pinnacle West Capital Corp (PNW) Q1 2025 Earnings Call Highlights: Navigating Challenges with ...",
+        "publisher": "GuruFocus.com",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/pinnacle-west-capital-corp-pnw-071523898.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ae218db3-d1c0-3daa-806d-17ed6f4613bc",
+        "title": "Tariffs Could Shake Up Semiconductor Supply Chains. Here Are 2 Companies Investors Should Keep Their Eyes On.",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-15",
+        "link": "https://finance.yahoo.com/m/ae218db3-d1c0-3daa-806d-17ed6f4613bc/tariffs-could-shake-up.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "8b53a7c6-db22-3bb9-89cb-af0a8019620d",
+        "title": "5 Monster Stocks to Hold for the Next 10 Years",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/m/8b53a7c6-db22-3bb9-89cb-af0a8019620d/5-monster-stocks-to-hold-for.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "317a251a-6367-3ed3-9fab-03d96cf60441",
+        "title": "3 Stocks Billionaire Stanley Druckenmiller Is Buying Hand Over Fist",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/m/317a251a-6367-3ed3-9fab-03d96cf60441/3-stocks-billionaire-stanley.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "64e5e8c8-9419-31b4-98a7-2a132ace987c",
+        "title": "3 No-Brainer Artificial Intelligence (AI) Growth Stocks to Buy With $250 Right Now",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/m/64e5e8c8-9419-31b4-98a7-2a132ace987c/3-no-brainer-artificial.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "609db436-516e-32d0-a23d-27cf3f8cf4b4",
+        "title": "Notable open interest changes for May 29th",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-30",
+        "link": "https://finance.yahoo.com/news/notable-open-interest-changes-may-130050555.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "5104baf1-a7b2-3c68-af66-0a502166bcb2",
+        "title": "TSMC Stock Maintains High-Conviction AI Play Status With $220 Price Target",
+        "publisher": "TipRanks",
+        "reportDate": "2025-06-01",
+        "link": "https://finance.yahoo.com/news/tsmc-stock-maintains-high-conviction-183500555.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "55c8b36c-2510-38f3-854f-062fb0af6334",
+        "title": "5 Brilliant Stocks to Buy in June",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-06-01",
+        "link": "https://finance.yahoo.com/m/55c8b36c-2510-38f3-854f-062fb0af6334/5-brilliant-stocks-to-buy-in.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "65c3f4d0-00d0-3282-9934-73a9a98f80bf",
+        "title": "3 Top Artificial Intelligence Stocks to Buy Right Now",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-06-02",
+        "link": "https://finance.yahoo.com/m/65c3f4d0-00d0-3282-9934-73a9a98f80bf/3-top-artificial-intelligence.html",
+        "type": "STORY"
       }
     ],
     "officers": [
       {
         "name": "Dr. C. C. Wei Ph.D.",
         "title": "Chairman & CEO",
-        "totalPay": 65189243
+        "totalPay": 65111130
       },
       {
         "name": "Dr. Horng-Dar Lin",
@@ -8754,7 +8847,7 @@
       {
         "name": "Mr. Jen-Chau Huang",
         "title": "Senior VP & CFO",
-        "totalPay": 9444131
+        "totalPay": 9432815
       },
       {
         "name": "Mr. Pei-Hong Chen",
@@ -8772,44 +8865,55 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 34.51,
-        "industryAvg": 36.38
+        "value": 33.97,
+        "industryAvg": 34.69
       },
       {
         "metric": "P/S Ratio",
-        "value": 16.81,
-        "industryAvg": 14.43
+        "value": 16.55,
+        "industryAvg": 14.48
       },
       {
         "metric": "P/B Ratio",
-        "value": 11.71,
-        "industryAvg": 12
+        "value": 11.53,
+        "industryAvg": 12.06
       },
       {
         "metric": "ROE",
         "value": 10.18,
-        "industryAvg": 34.36
+        "industryAvg": 34.58
       },
       {
         "metric": "ROA",
         "value": 6.9,
-        "industryAvg": 21.310000000000002
+        "industryAvg": 21.5
       },
       {
         "metric": "Gross Margin",
         "value": 66.25,
-        "industryAvg": 59.12
+        "industryAvg": 59.21999999999999
       },
       {
         "metric": "EBITDA Margin",
         "value": 75.48,
-        "industryAvg": 56.00000000000001
+        "industryAvg": 56.11000000000001
       },
       {
         "metric": "Net Margin",
         "value": 50.480000000000004,
-        "industryAvg": 37.34
+        "industryAvg": 37.51
       }
-    ]
+    ],
+    "dcf": {
+      "fairValue": 203.82,
+      "currentPrice": 408.75,
+      "upside": -50.14,
+      "wacc": 15.66,
+      "growthEstimates": {
+        "Near-term growth (Yrs 1-3)": 50,
+        "Terminal growth": 3
+      },
+      "recommendation": "Sell"
+    }
   }
 }

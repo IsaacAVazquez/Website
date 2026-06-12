@@ -1,3 +1,92 @@
-{
-  "error": "Query failed: Binder Error: Referenced column \"related_symbols\" not found in FROM clause!\nCandidate bindings: \"report_date\", \"news\""
-}
+[
+  {
+    "uuid": "b88e69e0-63a1-385b-9d7e-35702f916343",
+    "symbol": "TSM",
+    "title": "Nvidia, AMD see charges due to new China export rules: Morning Buzz",
+    "publisher": "TipRanks",
+    "report_date": "2025-04-18",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/nvidia-amd-see-charges-due-160543145.html"
+  },
+  {
+    "uuid": "2311a7ae-c932-3ba8-b63a-7ac67bc07f0f",
+    "symbol": "TSM",
+    "title": "Pinnacle West Capital Corp (PNW) Q1 2025 Earnings Call Highlights: Navigating Challenges with ...",
+    "publisher": "GuruFocus.com",
+    "report_date": "2025-05-02",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/pinnacle-west-capital-corp-pnw-071523898.html"
+  },
+  {
+    "uuid": "ae218db3-d1c0-3daa-806d-17ed6f4613bc",
+    "symbol": "TSM",
+    "title": "Tariffs Could Shake Up Semiconductor Supply Chains. Here Are 2 Companies Investors Should Keep Their Eyes On.",
+    "publisher": "Motley Fool",
+    "report_date": "2025-05-15",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/ae218db3-d1c0-3daa-806d-17ed6f4613bc/tariffs-could-shake-up.html"
+  },
+  {
+    "uuid": "8b53a7c6-db22-3bb9-89cb-af0a8019620d",
+    "symbol": "TSM",
+    "title": "5 Monster Stocks to Hold for the Next 10 Years",
+    "publisher": "Motley Fool",
+    "report_date": "2025-05-20",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/8b53a7c6-db22-3bb9-89cb-af0a8019620d/5-monster-stocks-to-hold-for.html"
+  },
+  {
+    "uuid": "317a251a-6367-3ed3-9fab-03d96cf60441",
+    "symbol": "TSM",
+    "title": "3 Stocks Billionaire Stanley Druckenmiller Is Buying Hand Over Fist",
+    "publisher": "Motley Fool",
+    "report_date": "2025-05-22",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/317a251a-6367-3ed3-9fab-03d96cf60441/3-stocks-billionaire-stanley.html"
+  },
+  {
+    "uuid": "64e5e8c8-9419-31b4-98a7-2a132ace987c",
+    "symbol": "TSM",
+    "title": "3 No-Brainer Artificial Intelligence (AI) Growth Stocks to Buy With $250 Right Now",
+    "publisher": "Motley Fool",
+    "report_date": "2025-05-23",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/64e5e8c8-9419-31b4-98a7-2a132ace987c/3-no-brainer-artificial.html"
+  },
+  {
+    "uuid": "609db436-516e-32d0-a23d-27cf3f8cf4b4",
+    "symbol": "TSM",
+    "title": "Notable open interest changes for May 29th",
+    "publisher": "TipRanks",
+    "report_date": "2025-05-30",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/notable-open-interest-changes-may-130050555.html"
+  },
+  {
+    "uuid": "5104baf1-a7b2-3c68-af66-0a502166bcb2",
+    "symbol": "TSM",
+    "title": "TSMC Stock Maintains High-Conviction AI Play Status With $220 Price Target",
+    "publisher": "TipRanks",
+    "report_date": "2025-06-01",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/tsmc-stock-maintains-high-conviction-183500555.html"
+  },
+  {
+    "uuid": "55c8b36c-2510-38f3-854f-062fb0af6334",
+    "symbol": "TSM",
+    "title": "5 Brilliant Stocks to Buy in June",
+    "publisher": "Motley Fool",
+    "report_date": "2025-06-01",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/55c8b36c-2510-38f3-854f-062fb0af6334/5-brilliant-stocks-to-buy-in.html"
+  },
+  {
+    "uuid": "65c3f4d0-00d0-3282-9934-73a9a98f80bf",
+    "symbol": "TSM",
+    "title": "3 Top Artificial Intelligence Stocks to Buy Right Now",
+    "publisher": "Motley Fool",
+    "report_date": "2025-06-02",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/65c3f4d0-00d0-3282-9934-73a9a98f80bf/3-top-artificial-intelligence.html"
+  }
+]

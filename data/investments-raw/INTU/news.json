@@ -1,3 +1,92 @@
-{
-  "error": "Query failed: Binder Error: Referenced column \"related_symbols\" not found in FROM clause!\nCandidate bindings: \"report_date\", \"news\""
-}
+[
+  {
+    "uuid": "34b8e363-7325-3e39-b405-f6a4852e1afd",
+    "symbol": "INTU",
+    "title": "Trump Trade: President said to end IRS Direct File, block DeepSeek",
+    "publisher": "TipRanks",
+    "report_date": "2025-04-18",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/trump-trade-president-said-end-155538080.html"
+  },
+  {
+    "uuid": "111c553b-0121-3d0d-b238-d8a74d35873e",
+    "symbol": "INTU",
+    "title": "3 Stocks Estimated To Be Trading At Discounts Of Up To 18.7%",
+    "publisher": "Simply Wall St.",
+    "report_date": "2025-05-02",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/3-stocks-estimated-trading-discounts-113925208.html"
+  },
+  {
+    "uuid": "9d54a96f-d9f3-3fb9-8a73-6121c7b8a108",
+    "symbol": "INTU",
+    "title": "Sell in May and Go Away? 9 Reasons to Ignore This Terrible Advice",
+    "publisher": "InvestorPlace",
+    "report_date": "2025-05-12",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/sell-may-away-9-reasons-160000108.html"
+  },
+  {
+    "uuid": "96094c8f-b2a6-3d7e-9a23-dc0257b0a13f",
+    "symbol": "INTU",
+    "title": "Intuit Earnings: What To Look For From INTU",
+    "publisher": "StockStory",
+    "report_date": "2025-05-21",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/intuit-earnings-look-intu-070058991.html"
+  },
+  {
+    "uuid": "319684ea-ed04-3cd3-abf1-dde606bed5e9",
+    "symbol": "INTU",
+    "title": "A Nuclear Power Play And TurboTax Stock Reach New Highs",
+    "publisher": "Investor's Business Daily",
+    "report_date": "2025-05-24",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/319684ea-ed04-3cd3-abf1-dde606bed5e9/a-nuclear-power-play-and.html"
+  },
+  {
+    "uuid": "c3246dd1-b5ee-35cf-a98e-0a19e0048374",
+    "symbol": "INTU",
+    "title": "Stocks to Watch: Apple, Booz Allen,  Constellation Energy, Intuit",
+    "publisher": "The Wall Street Journal",
+    "report_date": "2025-05-24",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/c3246dd1-b5ee-35cf-a98e-0a19e0048374/stocks-to-watch%3A-apple%2C-booz.html"
+  },
+  {
+    "uuid": "22e9d305-bd7c-306e-820a-25234c2b03d9",
+    "symbol": "INTU",
+    "title": "Morning Movers: Apple slips following President Trump tariff threat",
+    "publisher": "TipRanks",
+    "report_date": "2025-05-24",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/morning-movers-apple-slips-following-131522487.html"
+  },
+  {
+    "uuid": "99a5b781-cc62-3939-ae81-f87ab95339fa",
+    "symbol": "INTU",
+    "title": "Nuclear rally, Deckers Outdoor, Intuit gains: Trending Tickers",
+    "publisher": "Yahoo Finance Video",
+    "report_date": "2025-05-24",
+    "type": "VIDEO",
+    "link": "https://finance.yahoo.com/video/nuclear-rally-deckers-outdoor-intuit-195330148.html"
+  },
+  {
+    "uuid": "3024a26e-773e-3ff1-9165-4dedc0d118e5",
+    "symbol": "INTU",
+    "title": "US High Growth Tech Stocks to Watch in May 2025",
+    "publisher": "Simply Wall St.",
+    "report_date": "2025-05-27",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/us-high-growth-tech-stocks-113809175.html"
+  },
+  {
+    "uuid": "a0c5cbe2-b276-3715-afc5-cb59b6cbeb14",
+    "symbol": "INTU",
+    "title": "Company News for May 27, 2025",
+    "publisher": "Zacks",
+    "report_date": "2025-05-27",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/company-news-may-27-2025-132300202.html"
+  }
+]

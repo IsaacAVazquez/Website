@@ -1,10 +1,10 @@
 {
   "symbol": "META",
-  "lastUpdated": "2026-06-09T00:00:39.728571+00:00",
+  "lastUpdated": "2026-06-12T00:17:25.864748+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-09T00:00:39.728571+00:00",
+    "snapshotBuiltAt": "2026-06-12T00:17:25.864748+00:00",
     "sections": {
-      "price": "2026-06-05"
+      "price": "2026-06-10"
     }
   },
   "source": "prefetched",
@@ -18,11 +18,11 @@
     "income_statement": true,
     "balance_sheet": true,
     "cash_flow": true,
-    "wacc": false,
+    "wacc": true,
     "industry": true,
-    "beta": false,
-    "news": false,
-    "dcf": false,
+    "beta": true,
+    "news": true,
+    "dcf": true,
     "officers": true,
     "compare": true
   },
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 27.5066,
-      "ttmPe": 21.56,
-      "marketCap": 1505285016900,
-      "psRatio": 7,
-      "pbRatio": 6.18,
-      "pegRatio": 0.35
+      "ttmPe": 20.76,
+      "marketCap": 1449388935834,
+      "psRatio": 6.74,
+      "pbRatio": 5.95,
+      "pegRatio": 0.33
     },
     "profitability": {
       "roe": 11.62,
@@ -5391,31 +5391,18 @@
         }
       ]
     },
+    "wacc": {
+      "wacc": 13.950000000000001,
+      "costOfEquity": 14.760000000000002,
+      "costOfDebt": 0.65,
+      "taxRate": 40,
+      "beta": 1.2277,
+      "marketCap": 1449388935834
+    },
+    "beta": {
+      "beta5y": 1.2277
+    },
     "price": [
-      {
-        "date": "2025-06-05",
-        "open": 691.66,
-        "high": 694.38,
-        "low": 682.25,
-        "close": 684.62,
-        "volume": 13083100
-      },
-      {
-        "date": "2025-06-06",
-        "open": 696.17,
-        "high": 702.81,
-        "low": 691.87,
-        "close": 697.71,
-        "volume": 11728000
-      },
-      {
-        "date": "2025-06-09",
-        "open": 698.46,
-        "high": 705.19,
-        "low": 693.94,
-        "close": 694.06,
-        "volume": 12773200
-      },
       {
         "date": "2025-06-10",
         "open": 701.35,
@@ -7406,7 +7393,113 @@
         "high": 629.15,
         "low": 582.91,
         "close": 593,
-        "volume": 30000600
+        "volume": 30091600
+      },
+      {
+        "date": "2026-06-08",
+        "open": 592,
+        "high": 592,
+        "low": 579.22,
+        "close": 585.39,
+        "volume": 19512400
+      },
+      {
+        "date": "2026-06-09",
+        "open": 591,
+        "high": 597.63,
+        "low": 581.01,
+        "close": 584.59,
+        "volume": 16950700
+      },
+      {
+        "date": "2026-06-10",
+        "open": 580.73,
+        "high": 591.3,
+        "low": 570.6,
+        "close": 570.98,
+        "volume": 16735589
+      }
+    ],
+    "news": [
+      {
+        "uuid": "d8228d64-aea0-39e3-aab8-0938e1665d49",
+        "title": "H.C. Wainwright ‘strong Core Scientific bulls’ as CoreWeave IPO approaches",
+        "publisher": "TipRanks",
+        "reportDate": "2025-03-12",
+        "link": "https://finance.yahoo.com/news/h-c-wainwright-strong-core-154557609.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0ed5f0fd-d31a-398c-a525-af185fbf4ff7",
+        "title": "Nuclear Energy Stock Talen Soars Amid Bullish Initiation",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-03-13",
+        "link": "https://finance.yahoo.com/m/0ed5f0fd-d31a-398c-a525-af185fbf4ff7/nuclear-energy-stock-talen.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "bbf455ff-77a4-32a7-81aa-06dd1d624504",
+        "title": "The Zacks Analyst Blog Highlights Apple, Meta Platforms, Chevron, Taylor Devices and GSI Technology",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-21",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-apple-085500208.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2cfa6437-c187-3ab8-9ea8-027695257bb0",
+        "title": "Top Research Reports for Apple, Meta Platforms & Chevron",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-21",
+        "link": "https://finance.yahoo.com/news/top-research-reports-apple-meta-213400955.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "124a6d52-1c44-41a7-a9cd-0c3fa0be6445",
+        "title": "Delaware passes law designed to stop more Elon Musks from leaving state",
+        "publisher": "Yahoo Finance",
+        "reportDate": "2025-03-27",
+        "link": "https://finance.yahoo.com/news/delaware-passes-law-designed-to-stop-more-elon-musks-from-leaving-state-164403802.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0b443ff0-85a6-3c59-b7be-44fe4724309f",
+        "title": "Closing Bell Movers: GameStop gains 7% on earnings, bitcoin announcement",
+        "publisher": "TipRanks",
+        "reportDate": "2025-03-27",
+        "link": "https://finance.yahoo.com/news/closing-bell-movers-gamestop-gains-000022309.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "c62e9c41-40df-38ca-9602-fb9728a49ea5",
+        "title": "Trump Trade: Tariff plan still being worked on ahead of unveiling",
+        "publisher": "TipRanks",
+        "reportDate": "2025-04-03",
+        "link": "https://finance.yahoo.com/news/trump-trade-tariff-plan-still-141558122.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "38e5c5c8-57d9-3b7a-88ec-e4a4c84f7823",
+        "title": "China announces retaliatory tariffs, U.S. unemployment rises: Morning Buzz",
+        "publisher": "TipRanks",
+        "reportDate": "2025-04-06",
+        "link": "https://finance.yahoo.com/news/china-announces-retaliatory-tariffs-u-161032836.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "28227079-ab70-3c38-9f3d-57dcd02e20b1",
+        "title": "Trump Trade: Trump claims ‘no inflation,’ Medicare won’t cover obesity drugs",
+        "publisher": "TipRanks",
+        "reportDate": "2025-04-08",
+        "link": "https://finance.yahoo.com/news/trump-trade-trump-claims-no-142755841.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "64d4bfcd-43e2-378b-b296-4658e7d214e7",
+        "title": "National Fuel Gas Company and Century Communities have been highlighted as Zacks Bull and Bear of the Day",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-29",
+        "link": "https://finance.yahoo.com/news/national-fuel-gas-company-century-121800183.html",
+        "type": "STORY"
       }
     ],
     "officers": [
@@ -7479,18 +7572,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21.56,
-        "industryAvg": 26.76
+        "value": 20.76,
+        "industryAvg": 25.77
       },
       {
         "metric": "P/S Ratio",
-        "value": 7,
-        "industryAvg": 9.07
+        "value": 6.74,
+        "industryAvg": 8.86
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.18,
-        "industryAvg": 7.86
+        "value": 5.95,
+        "industryAvg": 7.76
       },
       {
         "metric": "ROE",
@@ -7517,6 +7610,17 @@
         "value": 47.54,
         "industryAvg": 33.129999999999995
       }
-    ]
+    ],
+    "dcf": {
+      "fairValue": 543.55,
+      "currentPrice": 570.98,
+      "upside": -4.8,
+      "wacc": 13.95,
+      "growthEstimates": {
+        "Near-term growth (Yrs 1-3)": 50,
+        "Terminal growth": 3
+      },
+      "recommendation": "Hold"
+    }
   }
 }

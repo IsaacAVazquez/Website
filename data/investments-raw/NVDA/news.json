@@ -1,3 +1,92 @@
-{
-  "error": "Query failed: Binder Error: Referenced column \"related_symbols\" not found in FROM clause!\nCandidate bindings: \"report_date\", \"news\""
-}
+[
+  {
+    "uuid": "a8f7471f-5c09-39d9-bcb3-873f4ec162ac",
+    "symbol": "NVDA",
+    "title": "Nvidia, Tesla, Intel, Palantir, iRobot: Stocks to watch today",
+    "publisher": "Quartz",
+    "report_date": "2025-03-12",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/nvidia-tesla-intel-palantir-irobot-124500397.html"
+  },
+  {
+    "uuid": "ac5a45d5-14ed-389f-9be0-1e190de10f03",
+    "symbol": "NVDA",
+    "title": "Quantum computing, Affirm, Netflix upgrade: Market Minute",
+    "publisher": "Yahoo Finance Video",
+    "report_date": "2025-03-17",
+    "type": "VIDEO",
+    "link": "https://finance.yahoo.com/video/quantum-computing-affirm-netflix-upgrade-150947409.html"
+  },
+  {
+    "uuid": "e37b5c05-c0ba-3ba2-b7bf-9747f8b9e7e7",
+    "symbol": "NVDA",
+    "title": "Tap Billion-Dollar AI Opportunity in Oncology: Stocks in the Spotlight",
+    "publisher": "Zacks",
+    "report_date": "2025-03-20",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/tap-billion-dollar-ai-opportunity-181300418.html"
+  },
+  {
+    "uuid": "0f7139d3-271d-3e22-b37b-14abca6b8855",
+    "symbol": "NVDA",
+    "title": "These Stocks Moved the Most Today: Nvidia, Tesla, Rivian, Accenture, Carvana, D-Wave Quantum, and More",
+    "publisher": "Barrons.com",
+    "report_date": "2025-03-21",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/0f7139d3-271d-3e22-b37b-14abca6b8855/these-stocks-moved-the-most.html"
+  },
+  {
+    "uuid": "9fa0933e-573c-36a8-8e69-eacfa956fa70",
+    "symbol": "NVDA",
+    "title": "Accenture reports Q2 beat, Apple TV+ losing $1B annually: Morning Buzz",
+    "publisher": "TipRanks",
+    "report_date": "2025-03-22",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/accenture-reports-q2-beat-apple-161626223.html"
+  },
+  {
+    "uuid": "6847b701-a805-3273-8363-1f5569a55995",
+    "symbol": "NVDA",
+    "title": "Stereotaxis Jumps 15% on NVIDIA's AI-Driven Collaboration: Is It a Buy Now?",
+    "publisher": "Zacks",
+    "report_date": "2025-03-22",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/stereotaxis-jumps-15-nvidias-ai-160200798.html"
+  },
+  {
+    "uuid": "9c9222ce-74c7-3222-a9d9-ab586c63ce81",
+    "symbol": "NVDA",
+    "title": "Nvidia\u2019s Support Boosts Stereotaxis (STXS) in Advancing Robotic Surgery",
+    "publisher": "Insider Monkey",
+    "report_date": "2025-03-24",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/nvidia-support-boosts-stereotaxis-stxs-213924601.html"
+  },
+  {
+    "uuid": "9603d02d-962a-36da-ac81-d16892a33a25",
+    "symbol": "NVDA",
+    "title": "Lumentum Stock, Coherent Upgraded On View Nvidia Threat Overblown",
+    "publisher": "Investor's Business Daily",
+    "report_date": "2025-03-24",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/9603d02d-962a-36da-ac81-d16892a33a25/lumentum-stock%2C-coherent.html"
+  },
+  {
+    "uuid": "ad5ec0a2-bfd3-335a-9331-f25c38ccafe5",
+    "symbol": "NVDA",
+    "title": "The Zacks Analyst Blog Highlights Microsoft, NVIDIA, Alphabet and Cooper-Standard",
+    "publisher": "Zacks",
+    "report_date": "2025-03-26",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-144500495.html"
+  },
+  {
+    "uuid": "b8f4eb3b-6cfb-3bc7-9dd5-91c82b5bacff",
+    "symbol": "NVDA",
+    "title": "Top Research Reports for Microsoft, NVIDIA & Alphabet",
+    "publisher": "Zacks",
+    "report_date": "2025-03-26",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/top-research-reports-microsoft-nvidia-210900965.html"
+  }
+]

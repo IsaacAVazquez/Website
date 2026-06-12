@@ -28424,6 +28424,30 @@
       "close_price": 112.45,
       "ttm_eps": 1.6811,
       "ttm_pe": 66.89
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2026-06-08T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 114.19,
+      "ttm_eps": 1.6811,
+      "ttm_pe": 67.93
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2026-06-09T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 106.97,
+      "ttm_eps": 1.6811,
+      "ttm_pe": 63.63
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2026-06-10T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 106.06,
+      "ttm_eps": 1.6811,
+      "ttm_pe": 63.09
     }
   ],
   "marketCap": [
@@ -56450,6 +56474,30 @@
       "close_price": 112.45,
       "shares_outstanding": 1031308000,
       "market_capitalization": 115970584600.0
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2026-06-08T00:00:00.000",
+      "shares_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 114.19,
+      "shares_outstanding": 1031308000,
+      "market_capitalization": 117765060520.0
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2026-06-09T00:00:00.000",
+      "shares_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 106.97,
+      "shares_outstanding": 1031308000,
+      "market_capitalization": 110319016760.0
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2026-06-10T00:00:00.000",
+      "shares_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 106.06,
+      "shares_outstanding": 1031308000,
+      "market_capitalization": 109380526480.0
     }
   ],
   "psRatio": [
@@ -61932,6 +61980,36 @@
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 13960000000.0,
       "ps_ratio": 8.31
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2026-06-08T00:00:00.000",
+      "market_capitalization": 117765060520.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 13960000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 8.44
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2026-06-09T00:00:00.000",
+      "market_capitalization": 110319016760.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 13960000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 7.9
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2026-06-10T00:00:00.000",
+      "market_capitalization": 109380526480.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 13960000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 13960000000.0,
+      "ps_ratio": 7.84
     }
   ],
   "pbRatio": [
@@ -71804,6 +71882,36 @@
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 11728000000.0,
       "pb_ratio": 9.89
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2026-06-08T00:00:00.000",
+      "market_capitalization": 117765060520.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 11728000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 11728000000.0,
+      "pb_ratio": 10.04
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2026-06-09T00:00:00.000",
+      "market_capitalization": 110319016760.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 11728000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 11728000000.0,
+      "pb_ratio": 9.41
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2026-06-10T00:00:00.000",
+      "market_capitalization": 109380526480.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 11728000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 11728000000.0,
+      "pb_ratio": 9.33
     }
   ],
   "pegRatio": [
@@ -89236,6 +89344,36 @@
       "ttm_pe": 66.89,
       "eps_yoy_growth": 0.0264,
       "peg_ratio": 25.34
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2026-06-08T00:00:00.000",
+      "close_price": 114.19,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 1.6811,
+      "ttm_pe": 67.93,
+      "eps_yoy_growth": 0.0264,
+      "peg_ratio": 25.73
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2026-06-09T00:00:00.000",
+      "close_price": 106.97,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 1.6811,
+      "ttm_pe": 63.63,
+      "eps_yoy_growth": 0.0264,
+      "peg_ratio": 24.1
+    },
+    {
+      "symbol": "NOW",
+      "report_date": "2026-06-10T00:00:00.000",
+      "close_price": 106.06,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 1.6811,
+      "ttm_pe": 63.09,
+      "eps_yoy_growth": 0.0264,
+      "peg_ratio": 23.9
     }
   ]
 }

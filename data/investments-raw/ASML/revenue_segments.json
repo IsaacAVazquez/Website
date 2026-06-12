@@ -1,11 +1,11 @@
 {
   "by_segment": {
-    "error": "Query failed: Binder Error: Referenced column \"breakdown_type\" not found in FROM clause!\nCandidate bindings: \"breakdown\", \"breakdown_name\", \"period_type\", \"value_type\", \"report_date\""
+    "error": "'Ticker' object has no attribute 'revenue_by_segment'"
   },
   "by_geography": {
-    "error": "Query failed: Binder Error: Referenced column \"breakdown_type\" not found in FROM clause!\nCandidate bindings: \"breakdown\", \"breakdown_name\", \"period_type\", \"value_type\", \"report_date\""
+    "error": "'Ticker' object has no attribute 'revenue_by_geography'"
   },
   "by_product": {
-    "error": "Query failed: Binder Error: Referenced column \"breakdown_type\" not found in FROM clause!\nCandidate bindings: \"breakdown\", \"breakdown_name\", \"period_type\", \"value_type\", \"report_date\""
+    "error": "'Ticker' object has no attribute 'revenue_by_product'"
   }
 }

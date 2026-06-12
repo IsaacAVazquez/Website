@@ -1,3 +1,92 @@
-{
-  "error": "Query failed: Binder Error: Referenced column \"related_symbols\" not found in FROM clause!\nCandidate bindings: \"report_date\", \"news\""
-}
+[
+  {
+    "uuid": "38689cc4-c97f-34bb-9040-f7a0e66c93a0",
+    "symbol": "SHOP",
+    "title": "3 Brilliant Stocks Down 51% to 77% to Buy Right Now",
+    "publisher": "Motley Fool",
+    "report_date": "2025-04-12",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/38689cc4-c97f-34bb-9040-f7a0e66c93a0/3-brilliant-stocks-down-51%25.html"
+  },
+  {
+    "uuid": "585d7010-b707-3a2f-a43a-bdd082df3457",
+    "symbol": "SHOP",
+    "title": "Shopify initiated, Comcast downgraded: Wall Street\u2019s top analyst calls",
+    "publisher": "TipRanks",
+    "report_date": "2025-05-07",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/shopify-initiated-comcast-downgraded-wall-134119180.html"
+  },
+  {
+    "uuid": "2c7705bb-7fc7-3f89-919a-6f977813128a",
+    "symbol": "SHOP",
+    "title": "Shopify Inc to Join the Nasdaq-100 Index\u00ae Beginning May 19, 2025",
+    "publisher": "GlobeNewswire",
+    "report_date": "2025-05-10",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/shopify-inc-join-nasdaq-100-000000866.html"
+  },
+  {
+    "uuid": "127420de-f523-347a-ac88-313c41c0756c",
+    "symbol": "SHOP",
+    "title": "Trump announces trade deal, BoE lowers Bank Rate: Morning Buzz",
+    "publisher": "TipRanks",
+    "report_date": "2025-05-10",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/trump-announces-trade-deal-boe-160158579.html"
+  },
+  {
+    "uuid": "66866936-5cb5-36c2-84ed-a79cc17df6da",
+    "symbol": "SHOP",
+    "title": "Exploring High Growth US Tech Stocks for May 2025",
+    "publisher": "Simply Wall St.",
+    "report_date": "2025-05-13",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/exploring-high-growth-us-tech-113900064.html"
+  },
+  {
+    "uuid": "c7534cd2-6874-332c-b15b-f41ab84cd81f",
+    "symbol": "SHOP",
+    "title": "Shopify vs. Etsy: Which E-Commerce Stock Has More Fuel for Growth?",
+    "publisher": "Zacks",
+    "report_date": "2025-05-13",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/shopify-vs-etsy-e-commerce-174500079.html"
+  },
+  {
+    "uuid": "9944686b-4442-372b-a74b-bf3518df25fd",
+    "symbol": "SHOP",
+    "title": "Global-e, Shopify Extend Strategic Partnership With New Agreement",
+    "publisher": "MT Newswires",
+    "report_date": "2025-05-14",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/global-e-shopify-extend-strategic-114530731.html"
+  },
+  {
+    "uuid": "25174632-8fd0-3328-a62c-38f47f75fa5d",
+    "symbol": "SHOP",
+    "title": "Global E Online Ltd (GLBE) Q1 2025 Earnings Call Highlights: Strong Growth Amid Strategic ...",
+    "publisher": "GuruFocus.com",
+    "report_date": "2025-05-15",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/global-e-online-ltd-glbe-071033254.html"
+  },
+  {
+    "uuid": "ed5b8fe6-852d-3ae8-9ff6-b9972a28ef8c",
+    "symbol": "SHOP",
+    "title": "Fluent Inc (FLNT) Q1 2025 Earnings Call Highlights: Strategic Growth in Commerce Media Amid ...",
+    "publisher": "GuruFocus.com",
+    "report_date": "2025-05-16",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/fluent-inc-flnt-q1-2025-071433299.html"
+  },
+  {
+    "uuid": "07d95502-4bf7-3210-b285-7676a0a51628",
+    "symbol": "SHOP",
+    "title": "Fox Corp. Readies Fox One Streaming Service",
+    "publisher": "Motley Fool",
+    "report_date": "2025-05-17",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/07d95502-4bf7-3210-b285-7676a0a51628/fox-corp.-readies-fox-one.html"
+  }
+]

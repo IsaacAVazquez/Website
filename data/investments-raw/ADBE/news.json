@@ -1,3 +1,92 @@
-{
-  "error": "Query failed: Binder Error: Referenced column \"related_symbols\" not found in FROM clause!\nCandidate bindings: \"report_date\", \"news\""
-}
+[
+  {
+    "uuid": "6458fbb9-5bcd-3a5a-ab78-d5793d8dce15",
+    "symbol": "ADBE",
+    "title": "Closing Bell Movers: Intel spikes 11% after naming new CEO",
+    "publisher": "TipRanks",
+    "report_date": "2025-03-14",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/closing-bell-movers-intel-spikes-232012583.html"
+  },
+  {
+    "uuid": "f463d70e-5913-3081-8c7e-7bdd1b9a3be6",
+    "symbol": "ADBE",
+    "title": "Will PRGS' AI-Powered Upgrades to Sitefinity Drive the Stock Upward?",
+    "publisher": "Zacks",
+    "report_date": "2025-04-15",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/prgs-ai-powered-upgrades-sitefinity-145600061.html"
+  },
+  {
+    "uuid": "3cca5d7e-b3a9-3933-8885-41389a3f5b7b",
+    "symbol": "ADBE",
+    "title": "Design Software Stocks Q1 Teardown: Unity (NYSE:U) Vs The Rest",
+    "publisher": "StockStory",
+    "report_date": "2025-05-09",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/design-software-stocks-q1-teardown-033427103.html"
+  },
+  {
+    "uuid": "284e5b4c-3410-3beb-9df4-567c37f2948e",
+    "symbol": "ADBE",
+    "title": "Q1 Design Software Earnings Review: First Prize Goes to Procore (NYSE:PCOR)",
+    "publisher": "StockStory",
+    "report_date": "2025-05-14",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/q1-design-software-earnings-review-033224575.html"
+  },
+  {
+    "uuid": "e8cd8339-b5fc-33ea-9c48-a60b4315b2e0",
+    "symbol": "ADBE",
+    "title": "Reflecting On Design Software Stocks\u2019 Q1 Earnings: Cadence (NASDAQ:CDNS)",
+    "publisher": "StockStory",
+    "report_date": "2025-05-15",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/reflecting-design-software-stocks-q1-033243608.html"
+  },
+  {
+    "uuid": "23c53cf9-283f-37bb-a15c-0d15dc0da9b8",
+    "symbol": "ADBE",
+    "title": "Salesforce vs. Adobe: Which Cloud Software Stock Has an Edge?",
+    "publisher": "Zacks",
+    "report_date": "2025-05-29",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/salesforce-vs-adobe-cloud-software-132400143.html"
+  },
+  {
+    "uuid": "b77d1727-4d59-3130-983d-a06105fa7081",
+    "symbol": "ADBE",
+    "title": "Should You Invest in Adobe (ADBE) Based on Bullish Wall Street Views?",
+    "publisher": "Zacks",
+    "report_date": "2025-05-30",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/invest-adobe-adbe-based-bullish-133009472.html"
+  },
+  {
+    "uuid": "59b99a57-d7ad-34d0-856d-87429aba674f",
+    "symbol": "ADBE",
+    "title": "3 Tech Stocks You Can Buy and Hold for the Next Decade",
+    "publisher": "Motley Fool",
+    "report_date": "2025-05-30",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/59b99a57-d7ad-34d0-856d-87429aba674f/3-tech-stocks-you-can-buy-and.html"
+  },
+  {
+    "uuid": "bc3d4456-aa33-362d-8cac-8dbf5605d6c3",
+    "symbol": "ADBE",
+    "title": "2 Cheap Tech Stocks to Buy Right Now",
+    "publisher": "Motley Fool",
+    "report_date": "2025-05-30",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/bc3d4456-aa33-362d-8cac-8dbf5605d6c3/2-cheap-tech-stocks-to-buy.html"
+  },
+  {
+    "uuid": "55c8b36c-2510-38f3-854f-062fb0af6334",
+    "symbol": "ADBE",
+    "title": "5 Brilliant Stocks to Buy in June",
+    "publisher": "Motley Fool",
+    "report_date": "2025-06-01",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/55c8b36c-2510-38f3-854f-062fb0af6334/5-brilliant-stocks-to-buy-in.html"
+  }
+]

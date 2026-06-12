@@ -1,3 +1,92 @@
-{
-  "error": "Query failed: Binder Error: Referenced column \"related_symbols\" not found in FROM clause!\nCandidate bindings: \"report_date\", \"news\""
-}
+[
+  {
+    "uuid": "d8228d64-aea0-39e3-aab8-0938e1665d49",
+    "symbol": "META",
+    "title": "H.C. Wainwright \u2018strong Core Scientific bulls\u2019 as CoreWeave IPO approaches",
+    "publisher": "TipRanks",
+    "report_date": "2025-03-12",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/h-c-wainwright-strong-core-154557609.html"
+  },
+  {
+    "uuid": "0ed5f0fd-d31a-398c-a525-af185fbf4ff7",
+    "symbol": "META",
+    "title": "Nuclear Energy Stock Talen Soars Amid Bullish Initiation",
+    "publisher": "Investor's Business Daily",
+    "report_date": "2025-03-13",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/0ed5f0fd-d31a-398c-a525-af185fbf4ff7/nuclear-energy-stock-talen.html"
+  },
+  {
+    "uuid": "bbf455ff-77a4-32a7-81aa-06dd1d624504",
+    "symbol": "META",
+    "title": "The Zacks Analyst Blog Highlights Apple, Meta Platforms, Chevron, Taylor Devices and GSI Technology",
+    "publisher": "Zacks",
+    "report_date": "2025-03-21",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-apple-085500208.html"
+  },
+  {
+    "uuid": "2cfa6437-c187-3ab8-9ea8-027695257bb0",
+    "symbol": "META",
+    "title": "Top Research Reports for Apple, Meta Platforms & Chevron",
+    "publisher": "Zacks",
+    "report_date": "2025-03-21",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/top-research-reports-apple-meta-213400955.html"
+  },
+  {
+    "uuid": "124a6d52-1c44-41a7-a9cd-0c3fa0be6445",
+    "symbol": "META",
+    "title": "Delaware passes law designed to stop more Elon Musks from leaving state",
+    "publisher": "Yahoo Finance",
+    "report_date": "2025-03-27",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/delaware-passes-law-designed-to-stop-more-elon-musks-from-leaving-state-164403802.html"
+  },
+  {
+    "uuid": "0b443ff0-85a6-3c59-b7be-44fe4724309f",
+    "symbol": "META",
+    "title": "Closing Bell Movers: GameStop gains 7% on earnings, bitcoin announcement",
+    "publisher": "TipRanks",
+    "report_date": "2025-03-27",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/closing-bell-movers-gamestop-gains-000022309.html"
+  },
+  {
+    "uuid": "c62e9c41-40df-38ca-9602-fb9728a49ea5",
+    "symbol": "META",
+    "title": "Trump Trade: Tariff plan still being worked on ahead of unveiling",
+    "publisher": "TipRanks",
+    "report_date": "2025-04-03",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/trump-trade-tariff-plan-still-141558122.html"
+  },
+  {
+    "uuid": "38e5c5c8-57d9-3b7a-88ec-e4a4c84f7823",
+    "symbol": "META",
+    "title": "China announces retaliatory tariffs, U.S. unemployment rises: Morning Buzz",
+    "publisher": "TipRanks",
+    "report_date": "2025-04-06",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/china-announces-retaliatory-tariffs-u-161032836.html"
+  },
+  {
+    "uuid": "28227079-ab70-3c38-9f3d-57dcd02e20b1",
+    "symbol": "META",
+    "title": "Trump Trade: Trump claims \u2018no inflation,\u2019 Medicare won\u2019t cover obesity drugs",
+    "publisher": "TipRanks",
+    "report_date": "2025-04-08",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/trump-trade-trump-claims-no-142755841.html"
+  },
+  {
+    "uuid": "64d4bfcd-43e2-378b-b296-4658e7d214e7",
+    "symbol": "META",
+    "title": "National Fuel Gas Company and Century Communities have been highlighted as Zacks Bull and Bear of the Day",
+    "publisher": "Zacks",
+    "report_date": "2025-04-29",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/national-fuel-gas-company-century-121800183.html"
+  }
+]

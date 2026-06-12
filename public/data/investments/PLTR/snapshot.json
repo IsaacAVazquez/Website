@@ -1,10 +1,10 @@
 {
   "symbol": "PLTR",
-  "lastUpdated": "2026-06-09T00:00:39.728571+00:00",
+  "lastUpdated": "2026-06-12T00:17:25.864748+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-09T00:00:39.728571+00:00",
+    "snapshotBuiltAt": "2026-06-12T00:17:25.864748+00:00",
     "sections": {
-      "price": "2026-06-05"
+      "price": "2026-06-10"
     }
   },
   "source": "prefetched",
@@ -18,11 +18,11 @@
     "income_statement": true,
     "balance_sheet": true,
     "cash_flow": true,
-    "wacc": false,
+    "wacc": true,
     "industry": true,
-    "beta": false,
-    "news": false,
-    "dcf": false,
+    "beta": true,
+    "news": true,
+    "dcf": true,
     "officers": true,
     "compare": true
   },
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 0.8876,
-      "ttmPe": 152.69,
-      "marketCap": 324907695360,
-      "psRatio": 62.19,
-      "pbRatio": 38.45,
-      "pegRatio": 0.5
+      "ttmPe": 146.7,
+      "marketCap": 312153995520,
+      "psRatio": 59.75,
+      "pbRatio": 36.94,
+      "pegRatio": 0.48
     },
     "profitability": {
       "roe": 10.99,
@@ -4964,31 +4964,18 @@
         }
       ]
     },
+    "wacc": {
+      "wacc": 17.47,
+      "costOfEquity": 17.48,
+      "costOfDebt": 0.06,
+      "taxRate": 9,
+      "beta": 1.5544,
+      "marketCap": 312153995520
+    },
+    "beta": {
+      "beta5y": 1.5544
+    },
     "price": [
-      {
-        "date": "2025-06-05",
-        "open": 129.27,
-        "high": 132.85,
-        "low": 118.93,
-        "close": 119.91,
-        "volume": 131055900
-      },
-      {
-        "date": "2025-06-06",
-        "open": 123.73,
-        "high": 128.13,
-        "low": 121.92,
-        "close": 127.72,
-        "volume": 87175100
-      },
-      {
-        "date": "2025-06-09",
-        "open": 127.075,
-        "high": 132.23,
-        "low": 124.8,
-        "close": 132.06,
-        "volume": 74785600
-      },
       {
         "date": "2025-06-10",
         "open": 131.02,
@@ -6979,7 +6966,113 @@
         "high": 141.97,
         "low": 134.025,
         "close": 135.53,
-        "volume": 38108100
+        "volume": 38283500
+      },
+      {
+        "date": "2026-06-08",
+        "open": 135.68,
+        "high": 137.76,
+        "low": 135.28,
+        "close": 136.47,
+        "volume": 26978900
+      },
+      {
+        "date": "2026-06-09",
+        "open": 134.87,
+        "high": 136.99,
+        "low": 127.35,
+        "close": 132.07,
+        "volume": 38563400
+      },
+      {
+        "date": "2026-06-10",
+        "open": 129.325,
+        "high": 133.185,
+        "low": 128.8,
+        "close": 130.21,
+        "volume": 29150613
+      }
+    ],
+    "news": [
+      {
+        "uuid": "5af5f21a-c494-3b85-940a-105f80e91ef5",
+        "title": "AI is Taking Over Aviation--And These Two Companies Just Hit the Accelerator",
+        "publisher": "GuruFocus.com",
+        "reportDate": "2025-03-14",
+        "link": "https://finance.yahoo.com/news/ai-taking-over-aviation-two-164103071.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "944b24c7-5dc1-3bf4-a1c9-ea3e0b527d80",
+        "title": "Palantir (PLTR) Joins Forces with Ondas to Elevate AI-Powered Autonomous Drones",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-03-14",
+        "link": "https://finance.yahoo.com/news/palantir-pltr-joins-forces-ondas-151809996.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ffe8bfcd-dec1-3b98-8125-d65c4ffa8e9b",
+        "title": "Palantir Strikes AI Partnerships With Archer Aviation, Databricks",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-03-14",
+        "link": "https://finance.yahoo.com/news/palantir-strikes-ai-partnerships-archer-192210992.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "384d50eb-a71b-3f94-9719-35d091f66c88",
+        "title": "Alibaba & Baidu, metal miners, Palantir: Market Minute",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-04-15",
+        "link": "https://finance.yahoo.com/video/alibaba-baidu-metal-miners-palantir-162056753.html",
+        "type": "VIDEO"
+      },
+      {
+        "uuid": "05dbfc24-c26d-3a9b-8683-7997581c6245",
+        "title": "Stock Market Today: Dow Jones, S&P 500 Close Lower; But This Recent IPO Name Bolts Higher For 3rd Straight Day (Live Coverage)",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/m/05dbfc24-c26d-3a9b-8683-7997581c6245/stock-market-today%3A-dow.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "8160e52d-cd6f-3863-88f0-84ffdfc30d93",
+        "title": "Red Cat Holdings Inc (RCAT) Q3 2025 Earnings Call Highlights: Drone Production Takes Flight ...",
+        "publisher": "GuruFocus.com",
+        "reportDate": "2025-04-22",
+        "link": "https://finance.yahoo.com/news/red-cat-holdings-inc-rcat-202546195.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "41a981eb-4e4e-360c-aa94-5be79c525776",
+        "title": "Q4 Earnings Outperformers: Health Catalyst (NASDAQ:HCAT) And The Rest Of The Data Analytics Stocks",
+        "publisher": "StockStory",
+        "reportDate": "2025-04-25",
+        "link": "https://finance.yahoo.com/news/q4-earnings-outperformers-health-catalyst-090618289.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "7471054a-ba86-377d-bdd6-83da67d5d125",
+        "title": "2 Surging  Stocks to Consider Right Now and 1 to Approach with Caution",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/news/2-surging-stocks-consider-now-043951765.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "5f3936c2-86dc-3310-a7c4-553590e3dde3",
+        "title": "Palantir declines, Lemonade lifts guidance, Celsius Q1 miss",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/video/palantir-declines-lemonade-lifts-guidance-151158298.html",
+        "type": "VIDEO"
+      },
+      {
+        "uuid": "da78ab04-9824-38ae-919d-0f45264f5e66",
+        "title": "Nebius Group Stock Earns 84 RS Rating",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/m/da78ab04-9824-38ae-919d-0f45264f5e66/nebius-group-stock-earns-84.html",
+        "type": "STORY"
       }
     ],
     "officers": [
@@ -7050,44 +7143,55 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 152.69,
-        "industryAvg": 29.35
+        "value": 146.7,
+        "industryAvg": 28.13
       },
       {
         "metric": "P/S Ratio",
-        "value": 62.19,
-        "industryAvg": 6.37
+        "value": 59.75,
+        "industryAvg": 6.08
       },
       {
         "metric": "P/B Ratio",
-        "value": 38.45,
-        "industryAvg": 7.78
+        "value": 36.94,
+        "industryAvg": 7.44
       },
       {
         "metric": "ROE",
         "value": 10.99,
-        "industryAvg": 26.56
+        "industryAvg": 26.58
       },
       {
         "metric": "ROA",
         "value": 9.120000000000001,
-        "industryAvg": 10.39
+        "industryAvg": 10.4
       },
       {
         "metric": "Gross Margin",
         "value": 86.78,
-        "industryAvg": 49.51
+        "industryAvg": 49.53
       },
       {
         "metric": "EBITDA Margin",
         "value": 46.6,
-        "industryAvg": 33.57
+        "industryAvg": 33.589999999999996
       },
       {
         "metric": "Net Margin",
         "value": 53.32,
-        "industryAvg": 18.7
+        "industryAvg": 18.709999999999997
       }
-    ]
+    ],
+    "dcf": {
+      "fairValue": 13.04,
+      "currentPrice": 130.21,
+      "upside": -89.99,
+      "wacc": 17.47,
+      "growthEstimates": {
+        "Near-term growth (Yrs 1-3)": 50,
+        "Terminal growth": 3
+      },
+      "recommendation": "Sell"
+    }
   }
 }

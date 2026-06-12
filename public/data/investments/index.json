@@ -152,7 +152,7 @@
     "ECL"
   ],
   "failed": [],
-  "lastUpdated": "2026-06-09T00:00:39.728571+00:00",
+  "lastUpdated": "2026-06-12T00:17:25.864748+00:00",
   "entries": [
     {
       "symbol": "AAPL",
@@ -278,19 +278,25 @@
       "symbol": "ANET",
       "shortName": "Arista Networks, Inc.",
       "longName": "Arista Networks, Inc.",
-      "searchText": "anet arista networks, inc. arista networks, inc."
+      "searchText": "anet arista networks, inc. arista networks, inc.",
+      "stale": true,
+      "asOf": "2026-06-09T00:00:39.728571+00:00"
     },
     {
       "symbol": "PANW",
       "shortName": "Palo Alto Networks, Inc.",
       "longName": "Palo Alto Networks, Inc.",
-      "searchText": "panw palo alto networks, inc. palo alto networks, inc."
+      "searchText": "panw palo alto networks, inc. palo alto networks, inc.",
+      "stale": true,
+      "asOf": "2026-06-09T00:00:39.728571+00:00"
     },
     {
       "symbol": "CRWD",
       "shortName": "CrowdStrike Holdings, Inc.",
       "longName": "CrowdStrike Holdings, Inc.",
-      "searchText": "crwd crowdstrike holdings, inc. crowdstrike holdings, inc."
+      "searchText": "crwd crowdstrike holdings, inc. crowdstrike holdings, inc.",
+      "stale": true,
+      "asOf": "2026-06-09T00:00:39.728571+00:00"
     },
     {
       "symbol": "NET",

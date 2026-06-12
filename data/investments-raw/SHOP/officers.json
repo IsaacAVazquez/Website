@@ -8,7 +8,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-08"
+    "report_date": "2026-06-11"
   },
   {
     "symbol": "SHOP",
@@ -19,7 +19,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-08"
+    "report_date": "2026-06-11"
   },
   {
     "symbol": "SHOP",
@@ -30,7 +30,7 @@
     "pay": 1018193,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-08"
+    "report_date": "2026-06-11"
   },
   {
     "symbol": "SHOP",
@@ -41,7 +41,7 @@
     "pay": 1000000,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-08"
+    "report_date": "2026-06-11"
   },
   {
     "symbol": "SHOP",
@@ -52,7 +52,7 @@
     "pay": 1,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-08"
+    "report_date": "2026-06-11"
   },
   {
     "symbol": "SHOP",
@@ -63,7 +63,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-08"
+    "report_date": "2026-06-11"
   },
   {
     "symbol": "SHOP",
@@ -74,7 +74,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-08"
+    "report_date": "2026-06-11"
   },
   {
     "symbol": "SHOP",
@@ -85,7 +85,7 @@
     "pay": 451250,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-08"
+    "report_date": "2026-06-11"
   },
   {
     "symbol": "SHOP",
@@ -96,7 +96,7 @@
     "pay": 1000000,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-08"
+    "report_date": "2026-06-11"
   },
   {
     "symbol": "SHOP",
@@ -107,6 +107,6 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-08"
+    "report_date": "2026-06-11"
   }
 ]

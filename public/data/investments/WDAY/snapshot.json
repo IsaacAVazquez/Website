@@ -1,10 +1,10 @@
 {
   "symbol": "WDAY",
-  "lastUpdated": "2026-06-09T00:00:39.728571+00:00",
+  "lastUpdated": "2026-06-12T00:17:25.864748+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-09T00:00:39.728571+00:00",
+    "snapshotBuiltAt": "2026-06-12T00:17:25.864748+00:00",
     "sections": {
-      "price": "2026-06-05"
+      "price": "2026-06-10"
     }
   },
   "source": "prefetched",
@@ -18,11 +18,11 @@
     "income_statement": true,
     "balance_sheet": true,
     "cash_flow": true,
-    "wacc": false,
+    "wacc": true,
     "industry": true,
-    "beta": false,
-    "news": false,
-    "dcf": false,
+    "beta": true,
+    "news": true,
+    "dcf": true,
     "officers": true,
     "compare": true
   },
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.2054,
-      "ttmPe": 45.01,
-      "marketCap": 35633336580,
-      "psRatio": 3.62,
-      "pbRatio": 5.33,
-      "pegRatio": 0.18
+      "ttmPe": 42.89,
+      "marketCap": 33951447045,
+      "psRatio": 3.45,
+      "pbRatio": 5.08,
+      "pegRatio": 0.17
     },
     "profitability": {
       "roe": 3.06,
@@ -5610,31 +5610,18 @@
         }
       ]
     },
+    "wacc": {
+      "wacc": 12.11,
+      "costOfEquity": 13.420000000000002,
+      "costOfDebt": 0.6799999999999999,
+      "taxRate": 37,
+      "beta": 1.0664,
+      "marketCap": 33951447045
+    },
+    "beta": {
+      "beta5y": 1.0664
+    },
     "price": [
-      {
-        "date": "2025-06-05",
-        "open": 249.48,
-        "high": 250.82,
-        "low": 246.72,
-        "close": 250.1,
-        "volume": 1736400
-      },
-      {
-        "date": "2025-06-06",
-        "open": 251.66,
-        "high": 253.78,
-        "low": 250.15,
-        "close": 252.72,
-        "volume": 1393000
-      },
-      {
-        "date": "2025-06-09",
-        "open": 252.72,
-        "high": 253.43,
-        "low": 250.54,
-        "close": 252.9,
-        "volume": 1225400
-      },
       {
         "date": "2025-06-10",
         "open": 252.74,
@@ -7625,7 +7612,113 @@
         "high": 151.5,
         "low": 143.53,
         "close": 144.28,
-        "volume": 4595500
+        "volume": 4596200
+      },
+      {
+        "date": "2026-06-08",
+        "open": 142.5,
+        "high": 145.48,
+        "low": 141.14,
+        "close": 143.76,
+        "volume": 2952800
+      },
+      {
+        "date": "2026-06-09",
+        "open": 140.29,
+        "high": 140.79,
+        "low": 134.83,
+        "close": 140.23,
+        "volume": 5213600
+      },
+      {
+        "date": "2026-06-10",
+        "open": 137.03,
+        "high": 141.19,
+        "low": 136.19,
+        "close": 137.47,
+        "volume": 3422736
+      }
+    ],
+    "news": [
+      {
+        "uuid": "70d1b6e4-1cc9-3a97-ade4-a2871cc1b912",
+        "title": "3 Growth Companies With High Insider Ownership And Up To 17% Revenue Growth",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-03-18",
+        "link": "https://finance.yahoo.com/news/3-growth-companies-high-insider-170527599.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "c379775d-f1bf-3562-9caf-de135c73adfb",
+        "title": "Empire State Realty Signs Expanded Lease Renewal With Workday",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-04-17",
+        "link": "https://finance.yahoo.com/news/empire-state-realty-signs-expanded-141350545.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "eaa374c7-a678-35c8-a550-1c816b5b5914",
+        "title": "Q4 Earnings Outperformers: Global Business Travel (NYSE:GBTG) And The Rest Of The Finance and HR Software Stocks",
+        "publisher": "StockStory",
+        "reportDate": "2025-04-25",
+        "link": "https://finance.yahoo.com/news/q4-earnings-outperformers-global-business-090403373.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "836570ed-3143-3114-8b6f-2c34c054ade9",
+        "title": "Q4 Earnings Roundup: BlackLine (NASDAQ:BL) And The Rest Of The Finance and HR Software Segment",
+        "publisher": "StockStory",
+        "reportDate": "2025-04-28",
+        "link": "https://finance.yahoo.com/news/q4-earnings-roundup-blackline-nasdaq-090641058.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2fae365c-0712-3e30-af4b-66d48d70dceb",
+        "title": "Workday Stock Gets Relative Strength Rating Bump",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/m/2fae365c-0712-3e30-af4b-66d48d70dceb/workday-stock-gets-relative.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "486a80d9-2bf3-3134-9df8-009a24b27b46",
+        "title": "High Growth Tech Stocks In The US For May 2025",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-15",
+        "link": "https://finance.yahoo.com/news/high-growth-tech-stocks-us-113808972.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "94139704-21ee-3af5-b212-f69daba9fba1",
+        "title": "May 2025's Value Stocks Estimated Below Intrinsic Worth",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/news/may-2025s-value-stocks-estimated-174453050.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "c074565c-4cb5-3217-8af8-b0965a1b5c85",
+        "title": "TaskUs and Boot Barn have been highlighted as Zacks Bull and Bear of the Day",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/news/taskus-boot-barn-highlighted-zacks-122200832.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "bcea9ee1-b289-34d6-ac7e-7fb6c77aec1c",
+        "title": "Workday Unveils Illuminate AI Agents to Accelerate Workflows",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/workday-unveils-illuminate-ai-agents-155300453.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3cde1379-a5ed-38e8-912f-564b5cfa411a",
+        "title": "Quantum stocks, MNTN IPO, Workday earnings: Trending tickers",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/video/quantum-stocks-mntn-ipo-workday-144923004.html",
+        "type": "VIDEO"
       }
     ],
     "officers": [
@@ -7694,44 +7787,55 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 45.01,
-        "industryAvg": 25.14
+        "value": 42.89,
+        "industryAvg": 24.14
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.62,
-        "industryAvg": 4.42
+        "value": 3.45,
+        "industryAvg": 4.48
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.33,
-        "industryAvg": 4.79
+        "value": 5.08,
+        "industryAvg": 4.68
       },
       {
         "metric": "ROE",
         "value": 3.06,
-        "industryAvg": -0.21
+        "industryAvg": -0.15
       },
       {
         "metric": "ROA",
         "value": 1.3,
-        "industryAvg": -0.11
+        "industryAvg": -0.08
       },
       {
         "metric": "Gross Margin",
         "value": 76.24,
-        "industryAvg": 63.33
+        "industryAvg": 63.32
       },
       {
         "metric": "EBITDA Margin",
         "value": 18.61,
-        "industryAvg": 21.14
+        "industryAvg": 21.12
       },
       {
         "metric": "Net Margin",
         "value": 8.73,
-        "industryAvg": -0.26
+        "industryAvg": -0.19
       }
-    ]
+    ],
+    "dcf": {
+      "fairValue": 76.9,
+      "currentPrice": 137.47,
+      "upside": -44.06,
+      "wacc": 12.11,
+      "growthEstimates": {
+        "Near-term growth (Yrs 1-3)": 50,
+        "Terminal growth": 3
+      },
+      "recommendation": "Sell"
+    }
   }
 }

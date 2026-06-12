@@ -1,3 +1,92 @@
-{
-  "error": "Query failed: Binder Error: Referenced column \"related_symbols\" not found in FROM clause!\nCandidate bindings: \"report_date\", \"news\""
-}
+[
+  {
+    "uuid": "1ca10e63-99ac-35a3-ab34-01466ad66eac",
+    "symbol": "APP",
+    "title": "Insider-Led Growth Companies To Watch Now",
+    "publisher": "Simply Wall St.",
+    "report_date": "2025-03-14",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/insider-led-growth-companies-watch-110530195.html"
+  },
+  {
+    "uuid": "9b64a868-14bf-30f3-beaf-c95828dfc897",
+    "symbol": "APP",
+    "title": "3 Stocks Estimated To Be Undervalued By Up To 37.7%",
+    "publisher": "Simply Wall St.",
+    "report_date": "2025-04-04",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/3-stocks-estimated-undervalued-37-110746862.html"
+  },
+  {
+    "uuid": "38e5c5c8-57d9-3b7a-88ec-e4a4c84f7823",
+    "symbol": "APP",
+    "title": "China announces retaliatory tariffs, U.S. unemployment rises: Morning Buzz",
+    "publisher": "TipRanks",
+    "report_date": "2025-04-06",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/china-announces-retaliatory-tariffs-u-161032836.html"
+  },
+  {
+    "uuid": "63036907-3b52-3cd0-a689-ec0a587cb6b6",
+    "symbol": "APP",
+    "title": "Prada to acquire Versace, CarMax reports mixed Q4 results: Morning Buzz",
+    "publisher": "TipRanks",
+    "report_date": "2025-04-12",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/prada-acquire-versace-carmax-reports-160529246.html"
+  },
+  {
+    "uuid": "8e259a69-a5b0-35ec-92c8-ea6c792fa74a",
+    "symbol": "APP",
+    "title": "May 2025's Noteworthy Stocks Estimated Below Intrinsic Value",
+    "publisher": "Simply Wall St.",
+    "report_date": "2025-05-06",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/may-2025s-noteworthy-stocks-estimated-113752266.html"
+  },
+  {
+    "uuid": "8fa6c2c1-86af-370d-83a0-3208f9d3adbd",
+    "symbol": "APP",
+    "title": "AppLovin (APP) Q1 Earnings and Revenues Top Estimates",
+    "publisher": "Zacks",
+    "report_date": "2025-05-08",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/applovin-app-q1-earnings-revenues-223508754.html"
+  },
+  {
+    "uuid": "2e38cec8-2dfe-3e4e-8f7e-13dab3783f67",
+    "symbol": "APP",
+    "title": "Stock Market Today: Dow Jones Finishes 250 Points Higher On U.S.-UK Trade Deal; Boeing Soars Past Buy Point, Bitcoin Races Past $100,000 (Live Coverage)",
+    "publisher": "Investor's Business Daily",
+    "report_date": "2025-05-09",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/2e38cec8-2dfe-3e4e-8f7e-13dab3783f67/stock-market-today%3A-dow-jones.html"
+  },
+  {
+    "uuid": "7819af77-417f-3d71-9d63-7f5d4b07b431",
+    "symbol": "APP",
+    "title": "AI Just Shook a Stock Market Giant",
+    "publisher": "InvestorPlace",
+    "report_date": "2025-05-11",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/ai-just-shook-stock-market-160000124.html"
+  },
+  {
+    "uuid": "8c072163-2a7e-3c84-beb1-b67a93e95bc7",
+    "symbol": "APP",
+    "title": "2 Growth Stocks to Add to Your Roster and 1 to Question",
+    "publisher": "StockStory",
+    "report_date": "2025-05-13",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/2-growth-stocks-add-roster-043858572.html"
+  },
+  {
+    "uuid": "dc48d557-054f-397b-8829-98d079bcf829",
+    "symbol": "APP",
+    "title": "Q1 Earnings Roundup: Zeta (NYSE:ZETA) And The Rest Of The Advertising Software Segment",
+    "publisher": "StockStory",
+    "report_date": "2025-05-14",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/q1-earnings-roundup-zeta-nyse-033302977.html"
+  }
+]

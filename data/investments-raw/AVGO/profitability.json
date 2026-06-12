@@ -89,6 +89,15 @@
       "ending_stockholders_equity": 79872000000.0,
       "avg_equity": 80582000000.0,
       "roe": 0.0912
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-04-30",
+      "net_income_common_stockholders": 9310000000.0,
+      "beginning_stockholders_equity": 79872000000.0,
+      "ending_stockholders_equity": 87691000000.0,
+      "avg_equity": 83781500000.0,
+      "roe": 0.1111
     }
   ],
   "roa": [
@@ -181,6 +190,15 @@
       "ending_total_assets": 169903000000.0,
       "avg_assets": 170497500000.0,
       "roa": 0.0431
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-04-30",
+      "net_income_common_stockholders": 9310000000.0,
+      "beginning_total_assets": 169903000000.0,
+      "ending_total_assets": 179158000000.0,
+      "avg_assets": 174530500000.0,
+      "roa": 0.0533
     }
   ],
   "roic": [
@@ -293,6 +311,17 @@
       "ending_invested_capital": 145929000000.0,
       "avg_invested_capital": 146178500000.0,
       "roic": 0.0554
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-04-30",
+      "ebit": 10906000000.0,
+      "tax_rate_for_calcs": 0.08,
+      "nopat": 10033520000.0,
+      "beginning_invested_capital": 145929000000.0,
+      "ending_invested_capital": 152598000000.0,
+      "avg_invested_capital": 149263500000.0,
+      "roic": 0.0672
     }
   ],
   "equityMultiplier": [
@@ -365,6 +394,13 @@
       "roe": 0.0912,
       "roa": 0.0431,
       "equity_multiplier": 2.12
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-04-30T00:00:00.000",
+      "roe": 0.1111,
+      "roa": 0.0533,
+      "equity_multiplier": 2.08
     }
   ],
   "assetTurnover": [
@@ -437,6 +473,13 @@
       "roa": 0.0431,
       "net_margin": 0.3806,
       "asset_turnover": 0.11
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-04-30T00:00:00.000",
+      "roa": 0.0533,
+      "net_margin": 0.4196,
+      "asset_turnover": 0.13
     }
   ]
 }

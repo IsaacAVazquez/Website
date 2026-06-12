@@ -1,3 +1,92 @@
-{
-  "error": "Query failed: Binder Error: Referenced column \"related_symbols\" not found in FROM clause!\nCandidate bindings: \"report_date\", \"news\""
-}
+[
+  {
+    "uuid": "791519a1-e270-3c1a-9fdf-51d5a0e8c894",
+    "symbol": "IBM",
+    "title": "Sector Update: Tech Stocks Advance Premarket Tuesday",
+    "publisher": "MT Newswires",
+    "report_date": "2025-04-08",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/sector-tech-stocks-advance-premarket-130736749.html"
+  },
+  {
+    "uuid": "4ba03559-5a9b-37f4-b1d2-b650532132d3",
+    "symbol": "IBM",
+    "title": "Trump Trade: Trump considers cutting tariffs on Chinese imports",
+    "publisher": "TipRanks",
+    "report_date": "2025-04-24",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/trump-trade-trump-considers-cutting-142559288.html"
+  },
+  {
+    "uuid": "4a30b335-de2e-3cd0-a8c2-834c25ca6035",
+    "symbol": "IBM",
+    "title": "Charter to combine with Cox, Take-Two reports mixed Q4 results: Morning Buzz",
+    "publisher": "TipRanks",
+    "report_date": "2025-05-18",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/charter-combine-cox-two-reports-160646050.html"
+  },
+  {
+    "uuid": "0b304d52-c065-3315-bbba-616f0808e2a1",
+    "symbol": "IBM",
+    "title": "IONQ Stock Surges on Strategic Quantum Acquisitions",
+    "publisher": "TipRanks",
+    "report_date": "2025-05-23",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/ionq-stock-surges-strategic-quantum-173000536.html"
+  },
+  {
+    "uuid": "3b4ae1bc-4527-32a4-b8c6-8d2bf7f11bbf",
+    "symbol": "IBM",
+    "title": "8 Quantum Computing Stocks to Buy Now",
+    "publisher": "Motley Fool",
+    "report_date": "2025-05-26",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/3b4ae1bc-4527-32a4-b8c6-8d2bf7f11bbf/8-quantum-computing-stocks-to.html"
+  },
+  {
+    "uuid": "4ab4396f-fdc0-3b99-9dbb-382198772aee",
+    "symbol": "IBM",
+    "title": "Deutsche Bank Accelerates Digital Transformation with IBM's Software Portfolio",
+    "publisher": "PR Newswire",
+    "report_date": "2025-05-27",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/deutsche-bank-accelerates-digital-transformation-120000101.html"
+  },
+  {
+    "uuid": "6dd67bf6-faa3-387e-93bc-b081fa3a14da",
+    "symbol": "IBM",
+    "title": "Herbalife and Abercrombie and Fitch have been highlighted as Zacks Bull and Bear of the Day",
+    "publisher": "Zacks",
+    "report_date": "2025-05-28",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/herbalife-abercrombie-fitch-highlighted-zacks-133500305.html"
+  },
+  {
+    "uuid": "4108daec-5933-31f7-9e1f-5d8cb6c5e76b",
+    "symbol": "IBM",
+    "title": "Rigetti vs. IBM: Which Quantum Computing Stock Has Better Prospects?",
+    "publisher": "Zacks",
+    "report_date": "2025-05-28",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/rigetti-vs-ibm-quantum-computing-161500616.html"
+  },
+  {
+    "uuid": "b9e1e75a-3e78-34ce-ab3b-49b85252d95f",
+    "symbol": "IBM",
+    "title": "Why Is Seagate (STX) Up 28.9% Since Last Earnings Report?",
+    "publisher": "Zacks",
+    "report_date": "2025-05-29",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/why-seagate-stx-28-9-153058868.html"
+  },
+  {
+    "uuid": "c628ffa8-a332-30d8-9ff4-04a1d3217ed0",
+    "symbol": "IBM",
+    "title": "IT Services & Consulting Stocks Q1 Teardown: IBM (NYSE:IBM) Vs The Rest",
+    "publisher": "StockStory",
+    "report_date": "2025-06-02",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/services-consulting-stocks-q1-teardown-033305852.html"
+  }
+]

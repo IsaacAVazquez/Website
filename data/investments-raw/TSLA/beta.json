@@ -1,3 +1,9 @@
-{
-  "error": "unconverted data remains: T05:35:41Z"
-}
+[
+  {
+    "symbol": "TSLA",
+    "report_date": "2026-06-11",
+    "beta": 1.7861,
+    "period": "5y",
+    "benchmark": "SPY"
+  }
+]

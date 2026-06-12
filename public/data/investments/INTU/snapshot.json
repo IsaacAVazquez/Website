@@ -1,10 +1,10 @@
 {
   "symbol": "INTU",
-  "lastUpdated": "2026-06-09T00:00:39.728571+00:00",
+  "lastUpdated": "2026-06-12T00:17:25.864748+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-09T00:00:39.728571+00:00",
+    "snapshotBuiltAt": "2026-06-12T00:17:25.864748+00:00",
     "sections": {
-      "price": "2026-06-05"
+      "price": "2026-06-10"
     }
   },
   "source": "prefetched",
@@ -18,11 +18,11 @@
     "income_statement": true,
     "balance_sheet": true,
     "cash_flow": true,
-    "wacc": false,
+    "wacc": true,
     "industry": true,
-    "beta": false,
-    "news": false,
-    "dcf": false,
+    "beta": true,
+    "news": true,
+    "dcf": true,
     "officers": true,
     "compare": true
   },
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 16.5147,
-      "ttmPe": 17.97,
-      "marketCap": 81174840120,
-      "psRatio": 3.88,
-      "pbRatio": 3.93,
-      "pegRatio": 1.63
+      "ttmPe": 17.21,
+      "marketCap": 77744686140,
+      "psRatio": 3.72,
+      "pbRatio": 3.77,
+      "pegRatio": 1.56
     },
     "profitability": {
       "roe": 15.440000000000001,
@@ -6187,31 +6187,18 @@
         }
       ]
     },
+    "wacc": {
+      "wacc": 11.709999999999999,
+      "costOfEquity": 12.68,
+      "costOfDebt": 1.01,
+      "taxRate": 24,
+      "beta": 0.9769,
+      "marketCap": 77744686140
+    },
+    "beta": {
+      "beta5y": 0.9769
+    },
     "price": [
-      {
-        "date": "2025-06-05",
-        "open": 766.07,
-        "high": 773.45,
-        "low": 763.81,
-        "close": 766.64,
-        "volume": 1242200
-      },
-      {
-        "date": "2025-06-06",
-        "open": 770.14,
-        "high": 771.86,
-        "low": 764.27,
-        "close": 771.58,
-        "volume": 1475300
-      },
-      {
-        "date": "2025-06-09",
-        "open": 770.22,
-        "high": 772,
-        "low": 762.64,
-        "close": 764.38,
-        "volume": 1342400
-      },
       {
         "date": "2025-06-10",
         "open": 762.36,
@@ -8202,7 +8189,113 @@
         "high": 307,
         "low": 293.67,
         "close": 296.76,
-        "volume": 6301700
+        "volume": 6306300
+      },
+      {
+        "date": "2026-06-08",
+        "open": 295.2,
+        "high": 306.04,
+        "low": 291.24,
+        "close": 305.51,
+        "volume": 5587400
+      },
+      {
+        "date": "2026-06-09",
+        "open": 299.1,
+        "high": 308.74,
+        "low": 291.18,
+        "close": 293.78,
+        "volume": 4917400
+      },
+      {
+        "date": "2026-06-10",
+        "open": 286.72,
+        "high": 292.382,
+        "low": 281.93,
+        "close": 284.22,
+        "volume": 6118289
+      }
+    ],
+    "news": [
+      {
+        "uuid": "34b8e363-7325-3e39-b405-f6a4852e1afd",
+        "title": "Trump Trade: President said to end IRS Direct File, block DeepSeek",
+        "publisher": "TipRanks",
+        "reportDate": "2025-04-18",
+        "link": "https://finance.yahoo.com/news/trump-trade-president-said-end-155538080.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "111c553b-0121-3d0d-b238-d8a74d35873e",
+        "title": "3 Stocks Estimated To Be Trading At Discounts Of Up To 18.7%",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/3-stocks-estimated-trading-discounts-113925208.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9d54a96f-d9f3-3fb9-8a73-6121c7b8a108",
+        "title": "Sell in May and Go Away? 9 Reasons to Ignore This Terrible Advice",
+        "publisher": "InvestorPlace",
+        "reportDate": "2025-05-12",
+        "link": "https://finance.yahoo.com/news/sell-may-away-9-reasons-160000108.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "96094c8f-b2a6-3d7e-9a23-dc0257b0a13f",
+        "title": "Intuit Earnings: What To Look For From INTU",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/intuit-earnings-look-intu-070058991.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "319684ea-ed04-3cd3-abf1-dde606bed5e9",
+        "title": "A Nuclear Power Play And TurboTax Stock Reach New Highs",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/m/319684ea-ed04-3cd3-abf1-dde606bed5e9/a-nuclear-power-play-and.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "c3246dd1-b5ee-35cf-a98e-0a19e0048374",
+        "title": "Stocks to Watch: Apple, Booz Allen,  Constellation Energy, Intuit",
+        "publisher": "The Wall Street Journal",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/m/c3246dd1-b5ee-35cf-a98e-0a19e0048374/stocks-to-watch%3A-apple%2C-booz.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "22e9d305-bd7c-306e-820a-25234c2b03d9",
+        "title": "Morning Movers: Apple slips following President Trump tariff threat",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/news/morning-movers-apple-slips-following-131522487.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "99a5b781-cc62-3939-ae81-f87ab95339fa",
+        "title": "Nuclear rally, Deckers Outdoor, Intuit gains: Trending Tickers",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/video/nuclear-rally-deckers-outdoor-intuit-195330148.html",
+        "type": "VIDEO"
+      },
+      {
+        "uuid": "3024a26e-773e-3ff1-9165-4dedc0d118e5",
+        "title": "US High Growth Tech Stocks to Watch in May 2025",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-27",
+        "link": "https://finance.yahoo.com/news/us-high-growth-tech-stocks-113809175.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "a0c5cbe2-b276-3715-afc5-cb59b6cbeb14",
+        "title": "Company News for May 27, 2025",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-27",
+        "link": "https://finance.yahoo.com/news/company-news-may-27-2025-132300202.html",
+        "type": "STORY"
       }
     ],
     "officers": [
@@ -8273,44 +8366,55 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.97,
-        "industryAvg": 25.13
+        "value": 17.21,
+        "industryAvg": 24.14
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.88,
-        "industryAvg": 4.42
+        "value": 3.72,
+        "industryAvg": 4.48
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.93,
-        "industryAvg": 4.79
+        "value": 3.77,
+        "industryAvg": 4.68
       },
       {
         "metric": "ROE",
         "value": 15.440000000000001,
-        "industryAvg": -0.21
+        "industryAvg": -0.15
       },
       {
         "metric": "ROA",
         "value": 8.32,
-        "industryAvg": -0.11
+        "industryAvg": -0.08
       },
       {
         "metric": "Gross Margin",
         "value": 83.94,
-        "industryAvg": 63.33
+        "industryAvg": 63.32
       },
       {
         "metric": "EBITDA Margin",
         "value": 50.56,
-        "industryAvg": 21.14
+        "industryAvg": 21.12
       },
       {
         "metric": "Net Margin",
         "value": 35.8,
-        "industryAvg": -0.26
+        "industryAvg": -0.19
       }
-    ]
+    ],
+    "dcf": {
+      "fairValue": 224.84,
+      "currentPrice": 284.22,
+      "upside": -20.89,
+      "wacc": 11.71,
+      "growthEstimates": {
+        "Near-term growth (Yrs 1-3)": 11.01,
+        "Terminal growth": 3
+      },
+      "recommendation": "Sell"
+    }
   }
 }
