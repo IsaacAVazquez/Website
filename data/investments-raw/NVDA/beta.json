@@ -1,3 +1,9 @@
-{
-  "error": "unconverted data remains: T05:35:41Z"
-}
+[
+  {
+    "symbol": "NVDA",
+    "report_date": "2026-06-11",
+    "beta": 2.1847,
+    "period": "5y",
+    "benchmark": "SPY"
+  }
+]

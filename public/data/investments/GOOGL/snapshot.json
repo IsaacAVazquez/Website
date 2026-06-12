@@ -1,10 +1,10 @@
 {
   "symbol": "GOOGL",
-  "lastUpdated": "2026-06-09T00:00:39.728571+00:00",
+  "lastUpdated": "2026-06-12T00:17:25.864748+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-09T00:00:39.728571+00:00",
+    "snapshotBuiltAt": "2026-06-12T00:17:25.864748+00:00",
     "sections": {
-      "price": "2026-06-05"
+      "price": "2026-06-10"
     }
   },
   "source": "prefetched",
@@ -18,11 +18,11 @@
     "income_statement": true,
     "balance_sheet": true,
     "cash_flow": true,
-    "wacc": false,
+    "wacc": true,
     "industry": true,
-    "beta": false,
-    "news": false,
-    "dcf": false,
+    "beta": true,
+    "news": true,
+    "dcf": true,
     "officers": true,
     "compare": true
   },
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 13.109,
-      "ttmPe": 28.11,
-      "marketCap": 4464904651026,
-      "psRatio": 10.57,
-      "pbRatio": 9.33,
-      "pegRatio": 0.34
+      "ttmPe": 27.19,
+      "marketCap": 4317702003996,
+      "psRatio": 10.22,
+      "pbRatio": 9.02,
+      "pegRatio": 0.33
     },
     "profitability": {
       "roe": 14.000000000000002,
@@ -5593,31 +5593,18 @@
         }
       ]
     },
+    "wacc": {
+      "wacc": 14.530000000000001,
+      "costOfEquity": 14.82,
+      "costOfDebt": 0.59,
+      "taxRate": 19,
+      "beta": 1.2346,
+      "marketCap": 4317702003996
+    },
+    "beta": {
+      "beta5y": 1.2346
+    },
     "price": [
-      {
-        "date": "2025-06-05",
-        "open": 170.34,
-        "high": 170.93,
-        "low": 167.59,
-        "close": 168.21,
-        "volume": 36379100
-      },
-      {
-        "date": "2025-06-06",
-        "open": 170.83,
-        "high": 174.5,
-        "low": 170.83,
-        "close": 173.68,
-        "volume": 35731800
-      },
-      {
-        "date": "2025-06-09",
-        "open": 174.54,
-        "high": 176.47,
-        "low": 174.37,
-        "close": 176.09,
-        "volume": 28935900
-      },
       {
         "date": "2025-06-10",
         "open": 176.2,
@@ -7608,7 +7595,113 @@
         "high": 372.08,
         "low": 364.12,
         "close": 368.53,
-        "volume": 37375600
+        "volume": 37471200
+      },
+      {
+        "date": "2026-06-08",
+        "open": 365.18,
+        "high": 366.2,
+        "low": 360.53,
+        "close": 363.31,
+        "volume": 27942500
+      },
+      {
+        "date": "2026-06-09",
+        "open": 367.09,
+        "high": 372.08,
+        "low": 357.3,
+        "close": 364.26,
+        "volume": 29496500
+      },
+      {
+        "date": "2026-06-10",
+        "open": 362.985,
+        "high": 368.555,
+        "low": 355.23,
+        "close": 356.38,
+        "volume": 31693010
+      }
+    ],
+    "news": [
+      {
+        "uuid": "68d1700b-06f5-4e90-a749-44c97737ad1c",
+        "title": "How Waymo got the edge on the competition and Tesla's robotaxi (so far)",
+        "publisher": "Yahoo Finance",
+        "reportDate": "2025-06-13",
+        "link": "https://finance.yahoo.com/news/how-waymo-got-the-edge-on-the-competition-and-teslas-robotaxi-so-far-090019552.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "343df9a5-0920-3bee-8ef5-51237a31223f",
+        "title": "3 Cheap Tech Stocks to Buy Right Now",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-06-17",
+        "link": "https://finance.yahoo.com/m/343df9a5-0920-3bee-8ef5-51237a31223f/3-cheap-tech-stocks-to-buy.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0cd3518a-5a9f-38ba-bfd6-367caceadf00",
+        "title": "Top Research Reports for Alphabet, IBM & RTX",
+        "publisher": "Zacks",
+        "reportDate": "2025-06-17",
+        "link": "https://finance.yahoo.com/news/top-research-reports-alphabet-ibm-202800489.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "02c8aab7-95f3-3bc3-8d8f-fe9613fea494",
+        "title": "Zacks Investment Ideas feature highlights: Tesla, Li Auto, Nio, BYD and Alphabet",
+        "publisher": "Zacks",
+        "reportDate": "2025-06-17",
+        "link": "https://finance.yahoo.com/news/zacks-investment-ideas-feature-highlights-124900266.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "239097ec-365f-3453-b91e-0c08a6414799",
+        "title": "3 Top Quantum Computing Stocks to Buy in 2025",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-06-17",
+        "link": "https://finance.yahoo.com/m/239097ec-365f-3453-b91e-0c08a6414799/3-top-quantum-computing.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1f65352e-e780-3b0a-9802-fdd0d6359ce8",
+        "title": "Streaming Surpasses Combined Cable, Broadcast Viewing for First Time in May, Nielsen Reports",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-06-17",
+        "link": "https://finance.yahoo.com/news/streaming-surpasses-combined-cable-broadcast-140549520.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "677e87f7-6d9d-30bd-a846-ca2e9cd5608e",
+        "title": "Sector Update: Consumer",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-06-18",
+        "link": "https://finance.yahoo.com/news/sector-consumer-192818246.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "31850e85-b8d2-37c3-962b-d509fb5b370d",
+        "title": "Sector Update: Consumer Stocks Decline Late Afternoon",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-06-18",
+        "link": "https://finance.yahoo.com/news/sector-consumer-stocks-decline-afternoon-194457472.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "58844064-6ec3-3b70-b13a-3eee7607b6b5",
+        "title": "Adobe vs. Apple: Which AI-Driven Tech Stock is a Better Buy Now?",
+        "publisher": "Zacks",
+        "reportDate": "2025-06-19",
+        "link": "https://finance.yahoo.com/news/adobe-vs-apple-ai-driven-172200197.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "5aaffa19-4a82-37d7-9153-92797cff77b1",
+        "title": "Down 25%, Is Now the Time to Pounce on IonQ Stock for Just $40?",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-06-19",
+        "link": "https://finance.yahoo.com/m/5aaffa19-4a82-37d7-9153-92797cff77b1/down-25%25%2C-is-now-the-time-to.html",
+        "type": "STORY"
       }
     ],
     "officers": [
@@ -7683,18 +7776,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 28.11,
-        "industryAvg": 26.76
+        "value": 27.19,
+        "industryAvg": 25.77
       },
       {
         "metric": "P/S Ratio",
-        "value": 10.57,
-        "industryAvg": 9.07
+        "value": 10.22,
+        "industryAvg": 8.86
       },
       {
         "metric": "P/B Ratio",
-        "value": 9.33,
-        "industryAvg": 7.86
+        "value": 9.02,
+        "industryAvg": 7.76
       },
       {
         "metric": "ROE",
@@ -7721,6 +7814,17 @@
         "value": 56.940000000000005,
         "industryAvg": 33.129999999999995
       }
-    ]
+    ],
+    "dcf": {
+      "fairValue": 245.26,
+      "currentPrice": 356.38,
+      "upside": -31.18,
+      "wacc": 14.53,
+      "growthEstimates": {
+        "Near-term growth (Yrs 1-3)": 50,
+        "Terminal growth": 3
+      },
+      "recommendation": "Sell"
+    }
   }
 }

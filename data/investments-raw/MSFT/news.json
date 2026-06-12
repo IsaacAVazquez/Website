@@ -1,3 +1,92 @@
-{
-  "error": "Query failed: Binder Error: Referenced column \"related_symbols\" not found in FROM clause!\nCandidate bindings: \"report_date\", \"news\""
-}
+[
+  {
+    "uuid": "d8228d64-aea0-39e3-aab8-0938e1665d49",
+    "symbol": "MSFT",
+    "title": "H.C. Wainwright \u2018strong Core Scientific bulls\u2019 as CoreWeave IPO approaches",
+    "publisher": "TipRanks",
+    "report_date": "2025-03-12",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/h-c-wainwright-strong-core-154557609.html"
+  },
+  {
+    "uuid": "94ecea1b-28cf-3159-aeeb-c2ed83b84ea4",
+    "symbol": "MSFT",
+    "title": "Game On: Discord reportedly in talks for IPO in 2025",
+    "publisher": "TipRanks",
+    "report_date": "2025-03-13",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/game-discord-reportedly-talks-ipo-163531942.html"
+  },
+  {
+    "uuid": "dfc96f53-7bf6-377c-a902-238d0488fc2c",
+    "symbol": "MSFT",
+    "title": "Trump Trade: Binance founder denies report on Trump talks",
+    "publisher": "TipRanks",
+    "report_date": "2025-03-15",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/trump-trade-binance-founder-denies-140515998.html"
+  },
+  {
+    "uuid": "9fa0933e-573c-36a8-8e69-eacfa956fa70",
+    "symbol": "MSFT",
+    "title": "Accenture reports Q2 beat, Apple TV+ losing $1B annually: Morning Buzz",
+    "publisher": "TipRanks",
+    "report_date": "2025-03-22",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/accenture-reports-q2-beat-apple-161626223.html"
+  },
+  {
+    "uuid": "ad5ec0a2-bfd3-335a-9331-f25c38ccafe5",
+    "symbol": "MSFT",
+    "title": "The Zacks Analyst Blog Highlights Microsoft, NVIDIA, Alphabet and Cooper-Standard",
+    "publisher": "Zacks",
+    "report_date": "2025-03-26",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-144500495.html"
+  },
+  {
+    "uuid": "b8f4eb3b-6cfb-3bc7-9dd5-91c82b5bacff",
+    "symbol": "MSFT",
+    "title": "Top Research Reports for Microsoft, NVIDIA & Alphabet",
+    "publisher": "Zacks",
+    "report_date": "2025-03-26",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/top-research-reports-microsoft-nvidia-210900965.html"
+  },
+  {
+    "uuid": "7552e49e-e751-42bd-b4c1-a1893353c694",
+    "symbol": "MSFT",
+    "title": "CoreWeave co-founder: We don't understand the AI bubble fears",
+    "publisher": "Yahoo Finance",
+    "report_date": "2025-03-29",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/coreweave-co-founder-we-dont-understand-the-ai-bubble-fears-164641776.html"
+  },
+  {
+    "uuid": "63036907-3b52-3cd0-a689-ec0a587cb6b6",
+    "symbol": "MSFT",
+    "title": "Prada to acquire Versace, CarMax reports mixed Q4 results: Morning Buzz",
+    "publisher": "TipRanks",
+    "report_date": "2025-04-12",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/prada-acquire-versace-carmax-reports-160529246.html"
+  },
+  {
+    "uuid": "d68057b5-24de-3c56-807d-4600b3b8e3c0",
+    "symbol": "MSFT",
+    "title": "Can Strong Recurring Revenue Growth Push SPNS Stock Higher in 2025?",
+    "publisher": "Zacks",
+    "report_date": "2025-04-17",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/strong-recurring-revenue-growth-push-145000806.html"
+  },
+  {
+    "uuid": "836eb8f3-945b-380a-ab7d-7ff792ec7976",
+    "symbol": "MSFT",
+    "title": "Pros Holdings (PRO) Earnings Expected to Grow: What to Know Ahead of Next Week's Release",
+    "publisher": "Zacks",
+    "report_date": "2025-04-24",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/pros-holdings-pro-earnings-expected-140158934.html"
+  }
+]

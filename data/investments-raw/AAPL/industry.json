@@ -3982,6 +3982,27 @@
       "total_market_cap": 4516103446055.0,
       "total_ttm_net_income": 122600860648.0,
       "industry_pe": 36.84
+    },
+    {
+      "report_date": "2026-06-08T00:00:00.000",
+      "industry": "Consumer Electronics",
+      "total_market_cap": 4430910661137.0,
+      "total_ttm_net_income": 122600860648.0,
+      "industry_pe": 36.14
+    },
+    {
+      "report_date": "2026-06-09T00:00:00.000",
+      "industry": "Consumer Electronics",
+      "total_market_cap": 4269545780114.0,
+      "total_ttm_net_income": 122600860648.0,
+      "industry_pe": 34.82
+    },
+    {
+      "report_date": "2026-06-10T00:00:00.000",
+      "industry": "Consumer Electronics",
+      "total_market_cap": 4284590031433.0,
+      "total_ttm_net_income": 122600860648.0,
+      "industry_pe": 34.95
     }
   ],
   "ps_ratio": [
@@ -9245,331 +9266,352 @@
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 3967363938986.0,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 3967289974461.0,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 6.34
     },
     {
       "report_date": "2026-04-01T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4005534298310.67,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4005461819265.67,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 6.4
     },
     {
       "report_date": "2026-04-02T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4002553008772.9,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4002479415617.9,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 6.4
     },
     {
       "report_date": "2026-04-06T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4052541628826.69,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4052462898386.69,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 6.48
     },
     {
       "report_date": "2026-04-07T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 3965895150087.24,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 3965820257137.24,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 6.34
     },
     {
       "report_date": "2026-04-08T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4057033213875.61,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4056961910835.61,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 6.48
     },
     {
       "report_date": "2026-04-09T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4086707275384.88,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4086631763484.88,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 6.53
     },
     {
       "report_date": "2026-04-10T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4069045143780.78,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4068964308910.78,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 6.5
     },
     {
       "report_date": "2026-04-13T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4059473412664.8,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4059390163889.8,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 6.49
     },
     {
       "report_date": "2026-04-14T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4050550530995.86,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4050463135255.86,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 6.47
     },
     {
       "report_date": "2026-04-15T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4166538150501.78,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4166451435606.78,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 6.66
     },
     {
       "report_date": "2026-04-16T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4126219040368.8,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4126132201683.8,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 6.59
     },
     {
       "report_date": "2026-04-17T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4229248917511.33,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4229147842976.33,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 6.76
     },
     {
       "report_date": "2026-04-20T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4271732722326.37,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4271639941721.37,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 6.83
     },
     {
       "report_date": "2026-04-21T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4162022792040.88,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4161930073330.88,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 6.65
     },
     {
       "report_date": "2026-04-22T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4265551707175.84,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4265449642320.84,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 6.82
     },
     {
       "report_date": "2026-04-23T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4263671885942.12,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4263569635402.12,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 6.81
     },
     {
       "report_date": "2026-04-24T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4233429599281.6304,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4233325863261.6304,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 6.77
     },
     {
       "report_date": "2026-04-27T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4176354515144.93,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4176249974489.93,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 6.67
     },
     {
       "report_date": "2026-04-28T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4219035916744.94,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4218931437984.94,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 6.74
     },
     {
       "report_date": "2026-04-29T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4213975239149.87,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4213871812604.87,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 6.73
     },
     {
       "report_date": "2026-04-30T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4227580539229.8,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4227472408664.8,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 6.76
     },
     {
       "report_date": "2026-05-01T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4352970500374.92,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4352856427889.92,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 6.96
     },
     {
       "report_date": "2026-05-04T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4306889572616.94,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4306778099721.94,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 6.88
     },
     {
       "report_date": "2026-05-05T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4419131320901.92,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4419022633281.92,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 7.06
     },
     {
       "report_date": "2026-05-06T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4481294240173.99,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4481182767278.99,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 7.16
     },
     {
       "report_date": "2026-05-07T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4458858094217.2,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4458765561192.2,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 7.13
     },
     {
       "report_date": "2026-05-08T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4550190363885.16,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4550113799770.16,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 7.27
     },
     {
       "report_date": "2026-05-11T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4555694145174.9,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4555624265719.9,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 7.28
     },
     {
       "report_date": "2026-05-12T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4599111721052.2,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4599052611327.2,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 7.35
     },
     {
       "report_date": "2026-05-13T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4664906390554.439,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4664842453019.439,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 7.46
     },
     {
       "report_date": "2026-05-14T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4648162975481.83,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4648093776871.83,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 7.43
     },
     {
       "report_date": "2026-05-15T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4685103828864.649,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4685040386489.649,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 7.49
     },
     {
       "report_date": "2026-05-18T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4644726005994.311,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4644659964029.311,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 7.42
     },
     {
       "report_date": "2026-05-19T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4661660541663.439,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4661603474473.439,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 7.45
     },
     {
       "report_date": "2026-05-20T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4709277930921.24,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4709223401426.24,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 7.53
     },
     {
       "report_date": "2026-05-21T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4753572926925.61,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4753517221425.61,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 7.6
     },
     {
       "report_date": "2026-05-22T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4802879595643.88,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4802826242153.88,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 7.68
     },
     {
       "report_date": "2026-05-26T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4795561832666.41,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4795507365066.41,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 7.66
     },
     {
       "report_date": "2026-05-27T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4839562290699.99,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4839507823099.99,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 7.73
     },
     {
       "report_date": "2026-05-28T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4848929376340.09,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4848876827485.09,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 7.75
     },
     {
       "report_date": "2026-05-29T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4849875660661.62,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4849825154341.62,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 7.75
     },
     {
       "report_date": "2026-06-01T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4778187077001.07,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4778140965226.07,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 7.64
     },
     {
       "report_date": "2026-06-02T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4911657531891.09,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4911610491691.09,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 7.85
     },
     {
       "report_date": "2026-06-03T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4829027000184.13,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4828984911584.13,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 7.72
     },
     {
       "report_date": "2026-06-04T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4842906058828.52,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4842866074658.52,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 7.74
     },
     {
       "report_date": "2026-06-05T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4781027607781.82,
-      "total_ttm_revenue": 625707495333.98,
+      "total_market_cap": 4780989294776.82,
+      "total_ttm_revenue": 625720505333.98,
       "industry_ps_ratio": 7.64
+    },
+    {
+      "report_date": "2026-06-08T00:00:00.000",
+      "industry": "Consumer Electronics",
+      "total_market_cap": 4699829235805.399,
+      "total_ttm_revenue": 625720505333.98,
+      "industry_ps_ratio": 7.51
+    },
+    {
+      "report_date": "2026-06-09T00:00:00.000",
+      "industry": "Consumer Electronics",
+      "total_market_cap": 4526802819257.13,
+      "total_ttm_revenue": 625720505333.98,
+      "industry_ps_ratio": 7.23
+    },
+    {
+      "report_date": "2026-06-10T00:00:00.000",
+      "industry": "Consumer Electronics",
+      "total_market_cap": 4412120984305.51,
+      "total_ttm_revenue": 548530968658.64,
+      "industry_ps_ratio": 8.04
     }
   ],
   "pb_ratio": [
@@ -16156,331 +16198,352 @@
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 3975431219299.0,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 3975357254774.0,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 17.94
     },
     {
       "report_date": "2026-04-01T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4013854870672.0,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4013782391627.0,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 18.11
     },
     {
       "report_date": "2026-04-02T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4011067027861.6,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4010993434706.6,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 18.1
     },
     {
       "report_date": "2026-04-06T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4061304660244.8,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4061225929804.8,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 18.33
     },
     {
       "report_date": "2026-04-07T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 3974663777441.7,
-      "total_bve": 221624739793.91,
-      "industry_pb_ratio": 17.93
+      "total_market_cap": 3974588884491.7,
+      "total_bve": 221604374793.91,
+      "industry_pb_ratio": 17.94
     },
     {
       "report_date": "2026-04-08T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4065799473384.4,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4065728170344.4,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 18.35
     },
     {
       "report_date": "2026-04-09T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4095478542958.0,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4095403031058.0,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 18.48
     },
     {
       "report_date": "2026-04-10T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4077355950328.9,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4077275115458.9,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 18.4
     },
     {
       "report_date": "2026-04-13T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4067756971183.0,
-      "total_bve": 221624739793.91,
-      "industry_pb_ratio": 18.35
+      "total_market_cap": 4067673722408.0,
+      "total_bve": 221604374793.91,
+      "industry_pb_ratio": 18.36
     },
     {
       "report_date": "2026-04-14T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4059272036928.7,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4059184641188.7,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 18.32
     },
     {
       "report_date": "2026-04-15T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4175244551288.8,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4175157836393.8,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 18.84
     },
     {
       "report_date": "2026-04-16T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4135038696414.0,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4134951857729.0,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 18.66
     },
     {
       "report_date": "2026-04-17T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4237675323305.9,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4237574248770.9,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 19.12
     },
     {
       "report_date": "2026-04-20T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4280157815482.5,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4280065034877.5,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 19.31
     },
     {
       "report_date": "2026-04-21T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4171012631896.6,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4170919913186.6,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 18.82
     },
     {
       "report_date": "2026-04-22T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4274679796780.0,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4274577731925.0,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 19.29
     },
     {
       "report_date": "2026-04-23T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4272708935859.1,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4272606685319.1,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 19.28
     },
     {
       "report_date": "2026-04-24T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4242460134786.1,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4242356398766.1,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 19.14
     },
     {
       "report_date": "2026-04-27T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4185301443488.6,
-      "total_bve": 221624739793.91,
-      "industry_pb_ratio": 18.88
+      "total_market_cap": 4185196902833.6,
+      "total_bve": 221604374793.91,
+      "industry_pb_ratio": 18.89
     },
     {
       "report_date": "2026-04-28T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4228065266084.5,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4227960787324.5,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 19.08
     },
     {
       "report_date": "2026-04-29T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4223007468919.0,
-      "total_bve": 221624739793.91,
-      "industry_pb_ratio": 19.05
+      "total_market_cap": 4222904042374.0,
+      "total_bve": 221604374793.91,
+      "industry_pb_ratio": 19.06
     },
     {
       "report_date": "2026-04-30T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4236548542450.5,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4236440411885.5,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 19.12
     },
     {
       "report_date": "2026-05-01T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4361923846269.0,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4361809773784.0,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 19.68
     },
     {
       "report_date": "2026-05-04T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4316548418495.0,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4316436945600.0,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 19.48
     },
     {
       "report_date": "2026-05-05T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4428281124454.5,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4428172436834.5,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 19.98
     },
     {
       "report_date": "2026-05-06T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4490454129715.4,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4490342656820.4,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 20.26
     },
     {
       "report_date": "2026-05-07T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4468020606819.0,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4467928073794.0,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 20.16
     },
     {
       "report_date": "2026-05-08T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4560282033780.2,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4560205469665.2,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 20.58
     },
     {
       "report_date": "2026-05-11T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4565794467943.0,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4565724588488.0,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 20.6
     },
     {
       "report_date": "2026-05-12T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4609244632513.7,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4609185522788.7,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 20.8
     },
     {
       "report_date": "2026-05-13T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4675108174393.0,
-      "total_bve": 221624739793.91,
-      "industry_pb_ratio": 21.09
+      "total_market_cap": 4675044236858.0,
+      "total_bve": 221604374793.91,
+      "industry_pb_ratio": 21.1
     },
     {
       "report_date": "2026-05-14T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4658362914335.699,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4658293715725.699,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 21.02
     },
     {
       "report_date": "2026-05-15T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4695832220902.9,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4695768778527.9,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 21.19
     },
     {
       "report_date": "2026-05-18T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4655463584111.5,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4655397542146.5,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 21.01
     },
     {
       "report_date": "2026-05-19T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4672415347282.1,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4672358280092.1,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 21.08
     },
     {
       "report_date": "2026-05-20T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4720037476922.6,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4719982947427.6,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 21.3
     },
     {
       "report_date": "2026-05-21T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4764146981941.2,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4764091276441.2,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 21.5
     },
     {
       "report_date": "2026-05-22T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4813202379629.4,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4813149026139.4,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 21.72
     },
     {
       "report_date": "2026-05-26T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4805697324032.8,
-      "total_bve": 221624739793.91,
-      "industry_pb_ratio": 21.68
+      "total_market_cap": 4805642856432.8,
+      "total_bve": 221604374793.91,
+      "industry_pb_ratio": 21.69
     },
     {
       "report_date": "2026-05-27T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4849817006630.8,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4849762539030.8,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 21.88
     },
     {
       "report_date": "2026-05-28T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4859191786191.0,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4859139237336.0,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 21.93
     },
     {
       "report_date": "2026-05-29T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4860132391132.0,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4860081884812.0,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 21.93
     },
     {
       "report_date": "2026-06-01T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4788244147130.5,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4788198035355.5,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 21.61
     },
     {
       "report_date": "2026-06-02T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4921708366601.0,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4921661326401.0,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 22.21
     },
     {
       "report_date": "2026-06-03T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4839342979462.5,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4839300890862.5,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 21.84
     },
     {
       "report_date": "2026-06-04T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4853408831803.4,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4853368847633.4,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 21.9
     },
     {
       "report_date": "2026-06-05T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_market_cap": 4790723081876.101,
-      "total_bve": 221624739793.91,
+      "total_market_cap": 4790684768871.101,
+      "total_bve": 221604374793.91,
       "industry_pb_ratio": 21.62
+    },
+    {
+      "report_date": "2026-06-08T00:00:00.000",
+      "industry": "Consumer Electronics",
+      "total_market_cap": 4709567284754.101,
+      "total_bve": 221604374793.91,
+      "industry_pb_ratio": 21.25
+    },
+    {
+      "report_date": "2026-06-09T00:00:00.000",
+      "industry": "Consumer Electronics",
+      "total_market_cap": 4536165853658.4,
+      "total_bve": 221604374793.91,
+      "industry_pb_ratio": 20.47
+    },
+    {
+      "report_date": "2026-06-10T00:00:00.000",
+      "industry": "Consumer Electronics",
+      "total_market_cap": 4411964273387.239,
+      "total_bve": 163912496613.6,
+      "industry_pb_ratio": 26.92
     }
   ],
   "roe": [
@@ -16662,8 +16725,8 @@
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_ttm_net_income": 119564328610.95029,
-      "total_avg_equity": 195922716973.40976,
+      "total_ttm_net_income": 119564426610.95029,
+      "total_avg_equity": 195909211973.40976,
       "industry_roe": 0.6103
     }
   ],
@@ -16846,8 +16909,8 @@
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_ttm_net_income": 119564328610.95029,
-      "total_avg_assets": 699251598519.3715,
+      "total_ttm_net_income": 119564426610.95029,
+      "total_avg_assets": 699250587019.3715,
       "industry_roa": 0.171
     }
   ],
@@ -17291,8 +17354,8 @@
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_ttm_gross_profit": 267143390782.96368,
-      "total_ttm_revenue": 625707495333.9799,
+      "total_ttm_gross_profit": 267148466782.96368,
+      "total_ttm_revenue": 625720505333.9799,
       "industry_gross_margin": 0.4269
     }
   ],
@@ -17531,8 +17594,8 @@
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_ttm_ebitda": 198021372111.70453,
-      "total_ttm_revenue": 625707495333.9799,
+      "total_ttm_ebitda": 198021951111.70453,
+      "total_ttm_revenue": 625720505333.9799,
       "industry_ebitda_margin": 0.3165
     }
   ],
@@ -17792,8 +17855,8 @@
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Consumer Electronics",
-      "total_ttm_net_income": 119564328610.95029,
-      "total_ttm_revenue": 625707495333.9799,
+      "total_ttm_net_income": 119564426610.95029,
+      "total_ttm_revenue": 625720505333.9799,
       "industry_net_margin": 0.1911
     }
   ],

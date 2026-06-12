@@ -1,3 +1,92 @@
-{
-  "error": "Query failed: Binder Error: Referenced column \"related_symbols\" not found in FROM clause!\nCandidate bindings: \"report_date\", \"news\""
-}
+[
+  {
+    "uuid": "165f6e57-3343-3dd2-a85b-a91349831079",
+    "symbol": "CRM",
+    "title": "5 Stocks That Recently Hiked Their Dividend Amid Market Mayhem",
+    "publisher": "Zacks",
+    "report_date": "2025-04-04",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/5-stocks-recently-hiked-dividend-120800238.html"
+  },
+  {
+    "uuid": "c7a1c75c-8fcd-3f45-9b0c-7d2cd1078b5d",
+    "symbol": "CRM",
+    "title": "Top Stock Reports for T-Mobile, Salesforce & Alibaba",
+    "publisher": "Zacks",
+    "report_date": "2025-04-12",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/top-stock-reports-t-mobile-210700019.html"
+  },
+  {
+    "uuid": "81642af4-ced3-3d45-9193-8b555ec1bcc9",
+    "symbol": "CRM",
+    "title": "The Zacks Analyst Blog T-Mobile, Salesforce, Alibaba and Old Point Financial",
+    "publisher": "Zacks",
+    "report_date": "2025-04-14",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/zacks-analyst-blog-t-mobile-061100219.html"
+  },
+  {
+    "uuid": "52de5af1-3d7d-30fa-a1f9-ad8fa917fa28",
+    "symbol": "CRM",
+    "title": "RH, Boot Barn, Ollie's, Universal Health Services, and Salesforce Shares Plummet, What You Need To Know",
+    "publisher": "StockStory",
+    "report_date": "2025-04-22",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/rh-boot-barn-ollies-universal-163852886.html"
+  },
+  {
+    "uuid": "df3945aa-0fd1-34d9-8a4f-aa0c9a0cdb45",
+    "symbol": "CRM",
+    "title": "Trump and MBS Tout $1 Trillion Pledge as Details Remain Elusive",
+    "publisher": "Bloomberg",
+    "report_date": "2025-05-14",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/trump-mbs-tout-1-trillion-174902305.html"
+  },
+  {
+    "uuid": "ca06a274-32e3-3e67-865f-0b228b4d8f22",
+    "symbol": "CRM",
+    "title": "White House calls out Boeing, GE Vernova exports in Saudi Arabia pact",
+    "publisher": "TipRanks",
+    "report_date": "2025-05-14",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/white-house-calls-boeing-ge-142742667.html"
+  },
+  {
+    "uuid": "851bde49-85bc-3725-b986-588b4c4f177a",
+    "symbol": "CRM",
+    "title": "3 of Wall Street\u2019s Favorite Stocks Walking a Fine Line",
+    "publisher": "StockStory",
+    "report_date": "2025-05-15",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/3-wall-street-favorite-stocks-043420661.html"
+  },
+  {
+    "uuid": "93033419-17f6-3633-b9ed-fb89d19717f8",
+    "symbol": "CRM",
+    "title": "3 Volatile Stocks Walking a Fine Line",
+    "publisher": "StockStory",
+    "report_date": "2025-05-19",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/3-volatile-stocks-walking-fine-043633076.html"
+  },
+  {
+    "uuid": "3b4d0821-7c9c-3cf8-964d-d99cc9ab3503",
+    "symbol": "CRM",
+    "title": "Takeda Taps Salesforce (CRM) for AI-Driven Customer Experience Platform",
+    "publisher": "Insider Monkey",
+    "report_date": "2025-05-21",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/takeda-taps-salesforce-crm-ai-173342909.html"
+  },
+  {
+    "uuid": "dd9e1206-7f9f-30a5-8c2a-d095e81c7ffa",
+    "symbol": "CRM",
+    "title": "3 S&P 500 Stocks Facing Headwinds",
+    "publisher": "StockStory",
+    "report_date": "2025-05-21",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/3-p-500-stocks-facing-043804051.html"
+  }
+]

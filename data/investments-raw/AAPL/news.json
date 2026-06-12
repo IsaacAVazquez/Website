@@ -1,3 +1,92 @@
-{
-  "error": "Query failed: Binder Error: Referenced column \"related_symbols\" not found in FROM clause!\nCandidate bindings: \"report_date\", \"news\""
-}
+[
+  {
+    "uuid": "08501801-66ee-3113-a401-9e991895ffc1",
+    "symbol": "AAPL",
+    "title": "Autodesk in proxy fight, General Mills reports mixed Q3: Morning Buzz",
+    "publisher": "TipRanks",
+    "report_date": "2025-03-21",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/autodesk-proxy-fight-general-mills-160527898.html"
+  },
+  {
+    "uuid": "bbf455ff-77a4-32a7-81aa-06dd1d624504",
+    "symbol": "AAPL",
+    "title": "The Zacks Analyst Blog Highlights Apple, Meta Platforms, Chevron, Taylor Devices and GSI Technology",
+    "publisher": "Zacks",
+    "report_date": "2025-03-21",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-apple-085500208.html"
+  },
+  {
+    "uuid": "2cfa6437-c187-3ab8-9ea8-027695257bb0",
+    "symbol": "AAPL",
+    "title": "Top Research Reports for Apple, Meta Platforms & Chevron",
+    "publisher": "Zacks",
+    "report_date": "2025-03-21",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/top-research-reports-apple-meta-213400955.html"
+  },
+  {
+    "uuid": "9fa0933e-573c-36a8-8e69-eacfa956fa70",
+    "symbol": "AAPL",
+    "title": "Accenture reports Q2 beat, Apple TV+ losing $1B annually: Morning Buzz",
+    "publisher": "TipRanks",
+    "report_date": "2025-03-22",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/accenture-reports-q2-beat-apple-161626223.html"
+  },
+  {
+    "uuid": "e9a0aef3-35a5-38f5-9261-c0e9da5f0052",
+    "symbol": "AAPL",
+    "title": "Rocket acquires Mr. Cooper, Musk\u2019s xAI acquires X: Morning Buzz",
+    "publisher": "TipRanks",
+    "report_date": "2025-04-02",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/rocket-acquires-mr-cooper-musk-161611941.html"
+  },
+  {
+    "uuid": "c07186bd-ab8b-341a-9671-4e5f35d63de2",
+    "symbol": "AAPL",
+    "title": "Stocks sell off on tariffs, Apple & Lululemon fall: Market Minute",
+    "publisher": "Yahoo Finance Video",
+    "report_date": "2025-04-03",
+    "type": "VIDEO",
+    "link": "https://finance.yahoo.com/video/stocks-sell-off-tariffs-apple-152838684.html"
+  },
+  {
+    "uuid": "28227079-ab70-3c38-9f3d-57dcd02e20b1",
+    "symbol": "AAPL",
+    "title": "Trump Trade: Trump claims \u2018no inflation,\u2019 Medicare won\u2019t cover obesity drugs",
+    "publisher": "TipRanks",
+    "report_date": "2025-04-08",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/trump-trade-trump-claims-no-142755841.html"
+  },
+  {
+    "uuid": "3dd6bfc5-7a32-3bb1-ac51-b90243ef10ad",
+    "symbol": "AAPL",
+    "title": "Trump Trade: U.S. President threatens additional tariffs on China of 50%",
+    "publisher": "TipRanks",
+    "report_date": "2025-04-09",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/trump-trade-u-president-threatens-142054741.html"
+  },
+  {
+    "uuid": "63036907-3b52-3cd0-a689-ec0a587cb6b6",
+    "symbol": "AAPL",
+    "title": "Prada to acquire Versace, CarMax reports mixed Q4 results: Morning Buzz",
+    "publisher": "TipRanks",
+    "report_date": "2025-04-12",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/prada-acquire-versace-carmax-reports-160529246.html"
+  },
+  {
+    "uuid": "14994a53-0cf2-37e2-adcc-a14ff49a9edd",
+    "symbol": "AAPL",
+    "title": "Top Premarket Gainers",
+    "publisher": "MT Newswires",
+    "report_date": "2025-04-14",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/top-premarket-gainers-124855383.html"
+  }
+]

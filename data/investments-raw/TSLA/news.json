@@ -1,3 +1,92 @@
-{
-  "error": "Query failed: Binder Error: Referenced column \"related_symbols\" not found in FROM clause!\nCandidate bindings: \"report_date\", \"news\""
-}
+[
+  {
+    "uuid": "a8f7471f-5c09-39d9-bcb3-873f4ec162ac",
+    "symbol": "TSLA",
+    "title": "Nvidia, Tesla, Intel, Palantir, iRobot: Stocks to watch today",
+    "publisher": "Quartz",
+    "report_date": "2025-03-12",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/nvidia-tesla-intel-palantir-irobot-124500397.html"
+  },
+  {
+    "uuid": "26157f11-598f-327a-b7ba-12b2b3093c24",
+    "symbol": "TSLA",
+    "title": "Progressive and A-Mark Precious Metals have been highlighted as Zacks Bull and Bear of the Day",
+    "publisher": "Zacks",
+    "report_date": "2025-03-13",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/progressive-mark-precious-metals-highlighted-140700609.html"
+  },
+  {
+    "uuid": "7d67bd1f-8418-3ff8-8aa0-b96f1b3aa824",
+    "symbol": "TSLA",
+    "title": "3 Growth Companies With High Insider Ownership Achieving 17% Revenue Growth",
+    "publisher": "Simply Wall St.",
+    "report_date": "2025-03-17",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/3-growth-companies-high-insider-110542482.html"
+  },
+  {
+    "uuid": "1eac3fd0-d535-3986-a8bc-8e910f52e36e",
+    "symbol": "TSLA",
+    "title": "Stocks to Watch Thursday:  Accenture, IBM, Tesla, PDD",
+    "publisher": "The Wall Street Journal",
+    "report_date": "2025-03-20",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/1eac3fd0-d535-3986-a8bc-8e910f52e36e/stocks-to-watch-thursday%3A-.html"
+  },
+  {
+    "uuid": "0f7139d3-271d-3e22-b37b-14abca6b8855",
+    "symbol": "TSLA",
+    "title": "These Stocks Moved the Most Today: Nvidia, Tesla, Rivian, Accenture, Carvana, D-Wave Quantum, and More",
+    "publisher": "Barrons.com",
+    "report_date": "2025-03-21",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/0f7139d3-271d-3e22-b37b-14abca6b8855/these-stocks-moved-the-most.html"
+  },
+  {
+    "uuid": "08501801-66ee-3113-a401-9e991895ffc1",
+    "symbol": "TSLA",
+    "title": "Autodesk in proxy fight, General Mills reports mixed Q3: Morning Buzz",
+    "publisher": "TipRanks",
+    "report_date": "2025-03-21",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/autodesk-proxy-fight-general-mills-160527898.html"
+  },
+  {
+    "uuid": "9fa0933e-573c-36a8-8e69-eacfa956fa70",
+    "symbol": "TSLA",
+    "title": "Accenture reports Q2 beat, Apple TV+ losing $1B annually: Morning Buzz",
+    "publisher": "TipRanks",
+    "report_date": "2025-03-22",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/accenture-reports-q2-beat-apple-161626223.html"
+  },
+  {
+    "uuid": "124a6d52-1c44-41a7-a9cd-0c3fa0be6445",
+    "symbol": "TSLA",
+    "title": "Delaware passes law designed to stop more Elon Musks from leaving state",
+    "publisher": "Yahoo Finance",
+    "report_date": "2025-03-27",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/delaware-passes-law-designed-to-stop-more-elon-musks-from-leaving-state-164403802.html"
+  },
+  {
+    "uuid": "d78ee080-3dfe-3cef-a098-70895a1e8223",
+    "symbol": "TSLA",
+    "title": "The Zacks Analyst Blog Highlights Tesla, The Home Depot, Boston Scientific, Frequency Electronics and Bridger Aerospace",
+    "publisher": "Zacks",
+    "report_date": "2025-03-27",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-tesla-090000244.html"
+  },
+  {
+    "uuid": "5946fb3a-51f3-3de2-9938-a56fb2e43f64",
+    "symbol": "TSLA",
+    "title": "Trump Trade: Trump told auto CEOs not to raise prices for tariffs",
+    "publisher": "TipRanks",
+    "report_date": "2025-03-30",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/trump-trade-trump-told-auto-161023234.html"
+  }
+]

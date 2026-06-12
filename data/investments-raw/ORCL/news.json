@@ -1,3 +1,92 @@
-{
-  "error": "Query failed: Binder Error: Referenced column \"related_symbols\" not found in FROM clause!\nCandidate bindings: \"report_date\", \"news\""
-}
+[
+  {
+    "uuid": "dfc96f53-7bf6-377c-a902-238d0488fc2c",
+    "symbol": "ORCL",
+    "title": "Trump Trade: Binance founder denies report on Trump talks",
+    "publisher": "TipRanks",
+    "report_date": "2025-03-15",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/trump-trade-binance-founder-denies-140515998.html"
+  },
+  {
+    "uuid": "08501801-66ee-3113-a401-9e991895ffc1",
+    "symbol": "ORCL",
+    "title": "Autodesk in proxy fight, General Mills reports mixed Q3: Morning Buzz",
+    "publisher": "TipRanks",
+    "report_date": "2025-03-21",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/autodesk-proxy-fight-general-mills-160527898.html"
+  },
+  {
+    "uuid": "c16c56ae-6575-3d0b-a403-71bd79459a65",
+    "symbol": "ORCL",
+    "title": "Lululemon reports Q4 beat, CoreWeave IPO priced at $40: Morning Buzz",
+    "publisher": "TipRanks",
+    "report_date": "2025-03-30",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/lululemon-reports-q4-beat-coreweave-160526047.html"
+  },
+  {
+    "uuid": "c62e9c41-40df-38ca-9602-fb9728a49ea5",
+    "symbol": "ORCL",
+    "title": "Trump Trade: Tariff plan still being worked on ahead of unveiling",
+    "publisher": "TipRanks",
+    "report_date": "2025-04-03",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/trump-trade-tariff-plan-still-141558122.html"
+  },
+  {
+    "uuid": "38e5c5c8-57d9-3b7a-88ec-e4a4c84f7823",
+    "symbol": "ORCL",
+    "title": "China announces retaliatory tariffs, U.S. unemployment rises: Morning Buzz",
+    "publisher": "TipRanks",
+    "report_date": "2025-04-06",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/china-announces-retaliatory-tariffs-u-161032836.html"
+  },
+  {
+    "uuid": "f463d70e-5913-3081-8c7e-7bdd1b9a3be6",
+    "symbol": "ORCL",
+    "title": "Will PRGS' AI-Powered Upgrades to Sitefinity Drive the Stock Upward?",
+    "publisher": "Zacks",
+    "report_date": "2025-04-15",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/prgs-ai-powered-upgrades-sitefinity-145600061.html"
+  },
+  {
+    "uuid": "2fa586c6-fea0-3ed3-9dbe-a55dc20b7137",
+    "symbol": "ORCL",
+    "title": "Olo jumps after Bloomberg says company exploring possible sale",
+    "publisher": "TipRanks",
+    "report_date": "2025-05-02",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/olo-jumps-bloomberg-says-company-155559972.html"
+  },
+  {
+    "uuid": "853459fc-a326-3b0c-b0f7-fc98e76b003b",
+    "symbol": "ORCL",
+    "title": "Why Oracle Stock Was on Fire Today",
+    "publisher": "Motley Fool",
+    "report_date": "2025-05-02",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/853459fc-a326-3b0c-b0f7-fc98e76b003b/why-oracle-stock-was-on-fire.html"
+  },
+  {
+    "uuid": "df3945aa-0fd1-34d9-8a4f-aa0c9a0cdb45",
+    "symbol": "ORCL",
+    "title": "Trump and MBS Tout $1 Trillion Pledge as Details Remain Elusive",
+    "publisher": "Bloomberg",
+    "report_date": "2025-05-14",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/trump-mbs-tout-1-trillion-174902305.html"
+  },
+  {
+    "uuid": "ca06a274-32e3-3e67-865f-0b228b4d8f22",
+    "symbol": "ORCL",
+    "title": "White House calls out Boeing, GE Vernova exports in Saudi Arabia pact",
+    "publisher": "TipRanks",
+    "report_date": "2025-05-14",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/white-house-calls-boeing-ge-142742667.html"
+  }
+]

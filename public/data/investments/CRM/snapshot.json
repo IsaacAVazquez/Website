@@ -1,10 +1,10 @@
 {
   "symbol": "CRM",
-  "lastUpdated": "2026-06-09T00:00:39.728571+00:00",
+  "lastUpdated": "2026-06-12T00:17:25.864748+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-09T00:00:39.728571+00:00",
+    "snapshotBuiltAt": "2026-06-12T00:17:25.864748+00:00",
     "sections": {
-      "price": "2026-06-05"
+      "price": "2026-06-10"
     }
   },
   "source": "prefetched",
@@ -18,11 +18,11 @@
     "income_statement": true,
     "balance_sheet": true,
     "cash_flow": true,
-    "wacc": false,
+    "wacc": true,
     "industry": true,
-    "beta": false,
-    "news": false,
-    "dcf": false,
+    "beta": true,
+    "news": true,
+    "dcf": true,
     "officers": true,
     "compare": true
   },
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.6388,
-      "ttmPe": 21.49,
-      "marketCap": 152055540000,
-      "psRatio": 3.55,
-      "pbRatio": 4.44,
-      "pegRatio": 0.41
+      "ttmPe": 19.79,
+      "marketCap": 139983480000,
+      "psRatio": 3.27,
+      "pbRatio": 4.09,
+      "pegRatio": 0.38
     },
     "profitability": {
       "roe": 4.51,
@@ -5385,31 +5385,18 @@
         }
       ]
     },
+    "wacc": {
+      "wacc": 11.01,
+      "costOfEquity": 14.13,
+      "costOfDebt": 0.76,
+      "taxRate": 23,
+      "beta": 1.1515,
+      "marketCap": 139983480000
+    },
+    "beta": {
+      "beta5y": 1.1515
+    },
     "price": [
-      {
-        "date": "2025-06-05",
-        "open": 263.71,
-        "high": 268.75,
-        "low": 263.64,
-        "close": 267.14,
-        "volume": 8642900
-      },
-      {
-        "date": "2025-06-06",
-        "open": 269.97,
-        "high": 274.9,
-        "low": 268.21,
-        "close": 274.51,
-        "volume": 7507000
-      },
-      {
-        "date": "2025-06-09",
-        "open": 272.85,
-        "high": 274.2,
-        "low": 269.66,
-        "close": 272.25,
-        "volume": 5728300
-      },
       {
         "date": "2025-06-10",
         "open": 272.07,
@@ -7400,7 +7387,113 @@
         "high": 192.51,
         "low": 184.83,
         "close": 185.66,
-        "volume": 13163100
+        "volume": 13183900
+      },
+      {
+        "date": "2026-06-08",
+        "open": 183.91,
+        "high": 185.02,
+        "low": 181.71,
+        "close": 182.55,
+        "volume": 11177800
+      },
+      {
+        "date": "2026-06-09",
+        "open": 179.5,
+        "high": 182.46,
+        "low": 171.56,
+        "close": 175.35,
+        "volume": 15417900
+      },
+      {
+        "date": "2026-06-10",
+        "open": 170.6,
+        "high": 175.53,
+        "low": 170.06,
+        "close": 170.92,
+        "volume": 10726391
+      }
+    ],
+    "news": [
+      {
+        "uuid": "165f6e57-3343-3dd2-a85b-a91349831079",
+        "title": "5 Stocks That Recently Hiked Their Dividend Amid Market Mayhem",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-04",
+        "link": "https://finance.yahoo.com/news/5-stocks-recently-hiked-dividend-120800238.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "c7a1c75c-8fcd-3f45-9b0c-7d2cd1078b5d",
+        "title": "Top Stock Reports for T-Mobile, Salesforce & Alibaba",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-12",
+        "link": "https://finance.yahoo.com/news/top-stock-reports-t-mobile-210700019.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "81642af4-ced3-3d45-9193-8b555ec1bcc9",
+        "title": "The Zacks Analyst Blog T-Mobile, Salesforce, Alibaba and Old Point Financial",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-14",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-t-mobile-061100219.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "52de5af1-3d7d-30fa-a1f9-ad8fa917fa28",
+        "title": "RH, Boot Barn, Ollie's, Universal Health Services, and Salesforce Shares Plummet, What You Need To Know",
+        "publisher": "StockStory",
+        "reportDate": "2025-04-22",
+        "link": "https://finance.yahoo.com/news/rh-boot-barn-ollies-universal-163852886.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "df3945aa-0fd1-34d9-8a4f-aa0c9a0cdb45",
+        "title": "Trump and MBS Tout $1 Trillion Pledge as Details Remain Elusive",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/trump-mbs-tout-1-trillion-174902305.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ca06a274-32e3-3e67-865f-0b228b4d8f22",
+        "title": "White House calls out Boeing, GE Vernova exports in Saudi Arabia pact",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/white-house-calls-boeing-ge-142742667.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "851bde49-85bc-3725-b986-588b4c4f177a",
+        "title": "3 of Wall Street’s Favorite Stocks Walking a Fine Line",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-15",
+        "link": "https://finance.yahoo.com/news/3-wall-street-favorite-stocks-043420661.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "93033419-17f6-3633-b9ed-fb89d19717f8",
+        "title": "3 Volatile Stocks Walking a Fine Line",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-19",
+        "link": "https://finance.yahoo.com/news/3-volatile-stocks-walking-fine-043633076.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3b4d0821-7c9c-3cf8-964d-d99cc9ab3503",
+        "title": "Takeda Taps Salesforce (CRM) for AI-Driven Customer Experience Platform",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/takeda-taps-salesforce-crm-ai-173342909.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "dd9e1206-7f9f-30a5-8c2a-d095e81c7ffa",
+        "title": "3 S&P 500 Stocks Facing Headwinds",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/3-p-500-stocks-facing-043804051.html",
+        "type": "STORY"
       }
     ],
     "officers": [
@@ -7473,44 +7566,55 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21.49,
-        "industryAvg": 25.13
+        "value": 19.79,
+        "industryAvg": 24.14
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.55,
-        "industryAvg": 4.42
+        "value": 3.27,
+        "industryAvg": 4.48
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.44,
-        "industryAvg": 4.79
+        "value": 4.09,
+        "industryAvg": 4.68
       },
       {
         "metric": "ROE",
         "value": 4.51,
-        "industryAvg": -0.21
+        "industryAvg": -0.15
       },
       {
         "metric": "ROA",
         "value": 1.92,
-        "industryAvg": -0.11
+        "industryAvg": -0.08
       },
       {
         "metric": "Gross Margin",
         "value": 76.92,
-        "industryAvg": 63.33
+        "industryAvg": 63.32
       },
       {
         "metric": "EBITDA Margin",
         "value": 36.14,
-        "industryAvg": 21.14
+        "industryAvg": 21.12
       },
       {
         "metric": "Net Margin",
         "value": 18.93,
-        "industryAvg": -0.26
+        "industryAvg": -0.19
       }
-    ]
+    ],
+    "dcf": {
+      "fairValue": 237.16,
+      "currentPrice": 170.92,
+      "upside": 38.75,
+      "wacc": 11.01,
+      "growthEstimates": {
+        "Near-term growth (Yrs 1-3)": 50,
+        "Terminal growth": 3
+      },
+      "recommendation": "Buy"
+    }
   }
 }

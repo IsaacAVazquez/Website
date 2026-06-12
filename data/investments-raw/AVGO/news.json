@@ -1,3 +1,92 @@
-{
-  "error": "Query failed: Binder Error: Referenced column \"related_symbols\" not found in FROM clause!\nCandidate bindings: \"report_date\", \"news\""
-}
+[
+  {
+    "uuid": "9603d02d-962a-36da-ac81-d16892a33a25",
+    "symbol": "AVGO",
+    "title": "Lumentum Stock, Coherent Upgraded On View Nvidia Threat Overblown",
+    "publisher": "Investor's Business Daily",
+    "report_date": "2025-03-24",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/9603d02d-962a-36da-ac81-d16892a33a25/lumentum-stock%2C-coherent.html"
+  },
+  {
+    "uuid": "bdd2f53e-7937-3c0a-87c4-34339baee64a",
+    "symbol": "AVGO",
+    "title": "The Zacks Analyst Blog Highlights: Broadcom, UnitedHealth, Toyota Motor and Perma-Pipe International",
+    "publisher": "Zacks",
+    "report_date": "2025-04-07",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-broadcom-102000160.html"
+  },
+  {
+    "uuid": "791519a1-e270-3c1a-9fdf-51d5a0e8c894",
+    "symbol": "AVGO",
+    "title": "Sector Update: Tech Stocks Advance Premarket Tuesday",
+    "publisher": "MT Newswires",
+    "report_date": "2025-04-08",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/sector-tech-stocks-advance-premarket-130736749.html"
+  },
+  {
+    "uuid": "59f41afe-47ed-3525-a213-59bda68ab896",
+    "symbol": "AVGO",
+    "title": "Nvidia, Broadcom, and Marvell Lead Oppenheimer's Top Semiconductor  Picks",
+    "publisher": "GuruFocus.com",
+    "report_date": "2025-04-16",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/nvidia-broadcom-marvell-lead-oppenheimers-174146995.html"
+  },
+  {
+    "uuid": "761edc42-ab58-33d6-9f30-1c0cee9b7e21",
+    "symbol": "AVGO",
+    "title": "If the Stock Market Continues Sinking, Here's How I'd Invest My Next $500",
+    "publisher": "Motley Fool",
+    "report_date": "2025-04-21",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/761edc42-ab58-33d6-9f30-1c0cee9b7e21/if-the-stock-market-continues.html"
+  },
+  {
+    "uuid": "1a4ad937-a6fe-3efc-ad47-22885a44cffe",
+    "symbol": "AVGO",
+    "title": "The Zacks Analyst Blog Highlights Microsoft, Broadcom, McDonald's and Kingsway Financial Services",
+    "publisher": "Zacks",
+    "report_date": "2025-04-29",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-104100632.html"
+  },
+  {
+    "uuid": "b5e9e2b7-0579-37ff-b792-e96b7564d257",
+    "symbol": "AVGO",
+    "title": "Top Analyst Reports for Microsoft, Broadcom & McDonald's",
+    "publisher": "Zacks",
+    "report_date": "2025-04-29",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/top-analyst-reports-microsoft-broadcom-222200614.html"
+  },
+  {
+    "uuid": "4c58ef15-e26e-34f1-987f-ae177b43ce8c",
+    "symbol": "AVGO",
+    "title": "Logitech's Q4 Earnings Surpass Estimates, Revenues Match",
+    "publisher": "Zacks",
+    "report_date": "2025-04-30",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/logitechs-q4-earnings-surpass-estimates-105700866.html"
+  },
+  {
+    "uuid": "73d77903-1789-3f6d-8e02-290b9b88ddee",
+    "symbol": "AVGO",
+    "title": "Broadcom and JinkoSolar have been highlighted as Zacks Bull and Bear of the Day",
+    "publisher": "Zacks",
+    "report_date": "2025-05-02",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/broadcom-jinkosolar-highlighted-zacks-bull-122300113.html"
+  },
+  {
+    "uuid": "bd6cc94d-3305-3d22-8368-0b54f4f8d1b4",
+    "symbol": "AVGO",
+    "title": "Best Growth Stocks to Buy for May 5th",
+    "publisher": "Zacks",
+    "report_date": "2025-05-05",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/best-growth-stocks-buy-may-113100956.html"
+  }
+]

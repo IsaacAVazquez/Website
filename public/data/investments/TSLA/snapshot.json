@@ -1,10 +1,10 @@
 {
   "symbol": "TSLA",
-  "lastUpdated": "2026-06-09T00:00:39.728571+00:00",
+  "lastUpdated": "2026-06-12T00:17:25.864748+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-09T00:00:39.728571+00:00",
+    "snapshotBuiltAt": "2026-06-12T00:17:25.864748+00:00",
     "sections": {
-      "price": "2026-06-05"
+      "price": "2026-06-10"
     }
   },
   "source": "prefetched",
@@ -18,11 +18,11 @@
     "income_statement": true,
     "balance_sheet": true,
     "cash_flow": true,
-    "wacc": false,
+    "wacc": true,
     "industry": true,
-    "beta": false,
-    "news": false,
-    "dcf": false,
+    "beta": true,
+    "news": true,
+    "dcf": true,
     "officers": true,
     "compare": true
   },
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.0946,
-      "ttmPe": 357.21,
-      "marketCap": 1468488044900,
-      "psRatio": 15,
-      "pbRatio": 17.46,
-      "pegRatio": 22.31
+      "ttmPe": 348.61,
+      "marketCap": 1433146683001,
+      "psRatio": 14.64,
+      "pbRatio": 17.04,
+      "pegRatio": 21.77
     },
     "profitability": {
       "roe": 0.5700000000000001,
@@ -5780,31 +5780,18 @@
         }
       ]
     },
+    "wacc": {
+      "wacc": 19.2,
+      "costOfEquity": 19.41,
+      "costOfDebt": 0.58,
+      "taxRate": 34,
+      "beta": 1.7861,
+      "marketCap": 1433146683001
+    },
+    "beta": {
+      "beta5y": 1.7861
+    },
     "price": [
-      {
-        "date": "2025-06-05",
-        "open": 322.49,
-        "high": 324.55,
-        "low": 273.21,
-        "close": 284.7,
-        "volume": 287499800
-      },
-      {
-        "date": "2025-06-06",
-        "open": 298.83,
-        "high": 305.5,
-        "low": 291.14,
-        "close": 295.14,
-        "volume": 164747700
-      },
-      {
-        "date": "2025-06-09",
-        "open": 285.96,
-        "high": 309.83,
-        "low": 281.85,
-        "close": 308.58,
-        "volume": 140908900
-      },
       {
         "date": "2025-06-10",
         "open": 314.94,
@@ -7795,7 +7782,113 @@
         "high": 424.68,
         "low": 388.59,
         "close": 391,
-        "volume": 63128800
+        "volume": 63420200
+      },
+      {
+        "date": "2026-06-08",
+        "open": 396.33,
+        "high": 412.94,
+        "low": 394.72,
+        "close": 408.95,
+        "volume": 50328800
+      },
+      {
+        "date": "2026-06-09",
+        "open": 411.03,
+        "high": 418.5,
+        "low": 384.24,
+        "close": 396.68,
+        "volume": 59804800
+      },
+      {
+        "date": "2026-06-10",
+        "open": 391.41,
+        "high": 397.09,
+        "low": 380.15,
+        "close": 381.59,
+        "volume": 49166017
+      }
+    ],
+    "news": [
+      {
+        "uuid": "a8f7471f-5c09-39d9-bcb3-873f4ec162ac",
+        "title": "Nvidia, Tesla, Intel, Palantir, iRobot: Stocks to watch today",
+        "publisher": "Quartz",
+        "reportDate": "2025-03-12",
+        "link": "https://finance.yahoo.com/news/nvidia-tesla-intel-palantir-irobot-124500397.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "26157f11-598f-327a-b7ba-12b2b3093c24",
+        "title": "Progressive and A-Mark Precious Metals have been highlighted as Zacks Bull and Bear of the Day",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-13",
+        "link": "https://finance.yahoo.com/news/progressive-mark-precious-metals-highlighted-140700609.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "7d67bd1f-8418-3ff8-8aa0-b96f1b3aa824",
+        "title": "3 Growth Companies With High Insider Ownership Achieving 17% Revenue Growth",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-03-17",
+        "link": "https://finance.yahoo.com/news/3-growth-companies-high-insider-110542482.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1eac3fd0-d535-3986-a8bc-8e910f52e36e",
+        "title": "Stocks to Watch Thursday:  Accenture, IBM, Tesla, PDD",
+        "publisher": "The Wall Street Journal",
+        "reportDate": "2025-03-20",
+        "link": "https://finance.yahoo.com/m/1eac3fd0-d535-3986-a8bc-8e910f52e36e/stocks-to-watch-thursday%3A-.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0f7139d3-271d-3e22-b37b-14abca6b8855",
+        "title": "These Stocks Moved the Most Today: Nvidia, Tesla, Rivian, Accenture, Carvana, D-Wave Quantum, and More",
+        "publisher": "Barrons.com",
+        "reportDate": "2025-03-21",
+        "link": "https://finance.yahoo.com/m/0f7139d3-271d-3e22-b37b-14abca6b8855/these-stocks-moved-the-most.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "08501801-66ee-3113-a401-9e991895ffc1",
+        "title": "Autodesk in proxy fight, General Mills reports mixed Q3: Morning Buzz",
+        "publisher": "TipRanks",
+        "reportDate": "2025-03-21",
+        "link": "https://finance.yahoo.com/news/autodesk-proxy-fight-general-mills-160527898.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9fa0933e-573c-36a8-8e69-eacfa956fa70",
+        "title": "Accenture reports Q2 beat, Apple TV+ losing $1B annually: Morning Buzz",
+        "publisher": "TipRanks",
+        "reportDate": "2025-03-22",
+        "link": "https://finance.yahoo.com/news/accenture-reports-q2-beat-apple-161626223.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "124a6d52-1c44-41a7-a9cd-0c3fa0be6445",
+        "title": "Delaware passes law designed to stop more Elon Musks from leaving state",
+        "publisher": "Yahoo Finance",
+        "reportDate": "2025-03-27",
+        "link": "https://finance.yahoo.com/news/delaware-passes-law-designed-to-stop-more-elon-musks-from-leaving-state-164403802.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d78ee080-3dfe-3cef-a098-70895a1e8223",
+        "title": "The Zacks Analyst Blog Highlights Tesla, The Home Depot, Boston Scientific, Frequency Electronics and Bridger Aerospace",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-27",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-tesla-090000244.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "5946fb3a-51f3-3de2-9938-a56fb2e43f64",
+        "title": "Trump Trade: Trump told auto CEOs not to raise prices for tariffs",
+        "publisher": "TipRanks",
+        "reportDate": "2025-03-30",
+        "link": "https://finance.yahoo.com/news/trump-trade-trump-told-auto-161023234.html",
+        "type": "STORY"
       }
     ],
     "officers": [
@@ -7854,44 +7947,55 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 357.21,
-        "industryAvg": 26.57
+        "value": 348.61,
+        "industryAvg": 51.55
       },
       {
         "metric": "P/S Ratio",
-        "value": 15,
-        "industryAvg": 1.23
+        "value": 14.64,
+        "industryAvg": 1.93
       },
       {
         "metric": "P/B Ratio",
-        "value": 17.46,
-        "industryAvg": 1.88
+        "value": 17.04,
+        "industryAvg": 3.16
       },
       {
         "metric": "ROE",
         "value": 0.5700000000000001,
-        "industryAvg": 5.04
+        "industryAvg": 5.0200000000000005
       },
       {
         "metric": "ROA",
         "value": 0.33999999999999997,
-        "industryAvg": 1.7000000000000002
+        "industryAvg": 1.69
       },
       {
         "metric": "Gross Margin",
         "value": 21.08,
-        "industryAvg": 15.120000000000001
+        "industryAvg": 15.110000000000001
       },
       {
         "metric": "EBITDA Margin",
         "value": 10.85,
-        "industryAvg": 10.02
+        "industryAvg": 10.01
       },
       {
         "metric": "Net Margin",
         "value": 2.13,
-        "industryAvg": 2.8400000000000003
+        "industryAvg": 2.83
       }
-    ]
+    ],
+    "dcf": {
+      "fairValue": 8.62,
+      "currentPrice": 381.59,
+      "upside": -97.74,
+      "wacc": 19.2,
+      "growthEstimates": {
+        "Near-term growth (Yrs 1-3)": 16.01,
+        "Terminal growth": 3
+      },
+      "recommendation": "Sell"
+    }
   }
 }

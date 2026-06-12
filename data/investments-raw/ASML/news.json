@@ -1,3 +1,92 @@
-{
-  "error": "Query failed: Binder Error: Referenced column \"related_symbols\" not found in FROM clause!\nCandidate bindings: \"report_date\", \"news\""
-}
+[
+  {
+    "uuid": "73eb7132-8152-3289-9543-118239a25687",
+    "symbol": "ASML",
+    "title": "4 Semiconductor Stocks to Buy as Sales Surge on AI Optimism",
+    "publisher": "Zacks",
+    "report_date": "2025-04-09",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/4-semiconductor-stocks-buy-sales-133900450.html"
+  },
+  {
+    "uuid": "b88e69e0-63a1-385b-9d7e-35702f916343",
+    "symbol": "ASML",
+    "title": "Nvidia, AMD see charges due to new China export rules: Morning Buzz",
+    "publisher": "TipRanks",
+    "report_date": "2025-04-18",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/nvidia-amd-see-charges-due-160543145.html"
+  },
+  {
+    "uuid": "63222fb5-788c-3553-aec1-2c4b23c1c3ba",
+    "symbol": "ASML",
+    "title": "4 Semiconductor Stocks to Grab Now as Revenues Skyrocket in Q1",
+    "publisher": "Zacks",
+    "report_date": "2025-05-06",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/4-semiconductor-stocks-grab-now-152400615.html"
+  },
+  {
+    "uuid": "a5d3b2ef-3102-3909-9bea-0379f0618824",
+    "symbol": "ASML",
+    "title": "Nomad Foods and Dell Technologies have been highlighted as Zacks Bull and Bear of the Day",
+    "publisher": "Zacks",
+    "report_date": "2025-05-07",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/nomad-foods-dell-technologies-highlighted-122400355.html"
+  },
+  {
+    "uuid": "11eb025a-55e2-3b0e-8da0-b983f6938f41",
+    "symbol": "ASML",
+    "title": "Is ASML Holding (ASML) One of the Best Technology Stocks to Buy for Long-Term Investment?",
+    "publisher": "Insider Monkey",
+    "report_date": "2025-05-14",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/asml-holding-asml-one-best-130913011.html"
+  },
+  {
+    "uuid": "ae218db3-d1c0-3daa-806d-17ed6f4613bc",
+    "symbol": "ASML",
+    "title": "Tariffs Could Shake Up Semiconductor Supply Chains. Here Are 2 Companies Investors Should Keep Their Eyes On.",
+    "publisher": "Motley Fool",
+    "report_date": "2025-05-15",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/ae218db3-d1c0-3daa-806d-17ed6f4613bc/tariffs-could-shake-up.html"
+  },
+  {
+    "uuid": "e231ab5c-2365-359e-bf5f-39f819b835f3",
+    "symbol": "ASML",
+    "title": "Grim Economic Outlook\u00a0Overtakes Solid Earnings\u00a0as Tariff Disruptions Surface",
+    "publisher": "Bloomberg",
+    "report_date": "2025-05-17",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/grim-outlooks-over-results-tariff-110000070.html"
+  },
+  {
+    "uuid": "30a661b0-7097-3005-ba16-36806316ceb2",
+    "symbol": "ASML",
+    "title": "Jim Cramer Notes ASML Holding (ASML)\u2019s \u201cLast Couple Quarters Have Been Weak\u201d",
+    "publisher": "Insider Monkey",
+    "report_date": "2025-05-18",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/jim-cramer-notes-asml-holding-105653668.html"
+  },
+  {
+    "uuid": "565bcd88-476f-35bb-b736-8293be6c6500",
+    "symbol": "ASML",
+    "title": "Beyond Tariffs: Why Berenberg Still Sees a \u201cBuy\u201d in ASML\u2019s Future",
+    "publisher": "Insider Monkey",
+    "report_date": "2025-05-21",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/beyond-tariffs-why-berenberg-still-200027130.html"
+  },
+  {
+    "uuid": "cf65fdbe-ff73-3e8d-9162-f16a47573a8b",
+    "symbol": "ASML",
+    "title": "ASML Holding N.V. (ASML) is Attracting Investor Attention: Here is What You Should Know",
+    "publisher": "Zacks",
+    "report_date": "2025-05-21",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/asml-holding-n-v-asml-130014706.html"
+  }
+]

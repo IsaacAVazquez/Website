@@ -111,6 +111,13 @@
       "gross_profit": 13157000000.0,
       "total_revenue": 19311000000.0,
       "gross_margin": 0.6813
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-04-30",
+      "gross_profit": 15415000000.0,
+      "total_revenue": 22187000000.0,
+      "gross_margin": 0.6948
     }
   ],
   "annual_gross": [
@@ -276,6 +283,13 @@
       "operating_income": 8666000000.0,
       "total_revenue": 19311000000.0,
       "operating_margin": 0.4488
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-04-30",
+      "operating_income": 10859000000.0,
+      "total_revenue": 22187000000.0,
+      "operating_margin": 0.4894
     }
   ],
   "annual_operating": [
@@ -441,6 +455,13 @@
       "net_income_common_stockholders": 7349000000.0,
       "total_revenue": 19311000000.0,
       "net_margin": 0.3806
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-04-30",
+      "net_income_common_stockholders": 9310000000.0,
+      "total_revenue": 22187000000.0,
+      "net_margin": 0.4196
     }
   ],
   "annual_net": [
@@ -606,6 +627,13 @@
       "ebitda": 11149000000.0,
       "total_revenue": 19311000000.0,
       "ebitda_margin": 0.5773
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-04-30",
+      "ebitda": 13071000000.0,
+      "total_revenue": 22187000000.0,
+      "ebitda_margin": 0.5891
     }
   ],
   "annual_ebitda": [
@@ -771,6 +799,13 @@
       "free_cash_flow": 8010000000.0,
       "total_revenue": 19311000000.0,
       "fcf_margin": 0.4148
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-04-30",
+      "free_cash_flow": 10262000000.0,
+      "total_revenue": 22187000000.0,
+      "fcf_margin": 0.4625
     }
   ],
   "annual_fcf": [

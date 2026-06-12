@@ -90,6 +90,13 @@
       "revenue": 19311000000.0,
       "prev_year_revenue": 14916000000.0,
       "yoy_growth": 0.2947
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-04-30T00:00:00.000",
+      "revenue": 22187000000.0,
+      "prev_year_revenue": 15004000000.0,
+      "yoy_growth": 0.4787
     }
   ],
   "annual_revenue": [
@@ -227,6 +234,13 @@
       "operating_income": 8666000000.0,
       "prev_year_operating_income": 6432000000.0,
       "yoy_growth": 0.3473
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-04-30T00:00:00.000",
+      "operating_income": 10859000000.0,
+      "prev_year_operating_income": 5915000000.0,
+      "yoy_growth": 0.8358
     }
   ],
   "annual_operating_income": [
@@ -357,6 +371,13 @@
       "ebitda": 11149000000.0,
       "prev_year_ebitda": 8537000000.0,
       "yoy_growth": 0.306
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-04-30T00:00:00.000",
+      "ebitda": 13071000000.0,
+      "prev_year_ebitda": 8020000000.0,
+      "yoy_growth": 0.6298
     }
   ],
   "annual_ebitda": [
@@ -494,6 +515,13 @@
       "net_income_common_stockholders": 7349000000.0,
       "prev_year_net_income_common_stockholders": 5503000000.0,
       "yoy_growth": 0.3355
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-04-30T00:00:00.000",
+      "net_income_common_stockholders": 9310000000.0,
+      "prev_year_net_income_common_stockholders": 4965000000.0,
+      "yoy_growth": 0.8751
     }
   ],
   "annual_net_income": [
@@ -638,6 +666,13 @@
       "free_cash_flow": 8010000000.0,
       "prev_year_free_cash_flow": 6013000000.0,
       "yoy_growth": 0.3321
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-04-30T00:00:00.000",
+      "free_cash_flow": 10262000000.0,
+      "prev_year_free_cash_flow": 6411000000.0,
+      "yoy_growth": 0.6007
     }
   ],
   "annual_fcf": [
@@ -1255,9 +1290,9 @@
     {
       "symbol": "AVGO",
       "report_date": "2026-04-30T00:00:00.000",
-      "eps": 1.91,
+      "eps": 1.9094,
       "prev_year_eps": 1.0288,
-      "yoy_growth": 0.8565
+      "yoy_growth": 0.8559
     }
   ]
 }

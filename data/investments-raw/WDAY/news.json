@@ -1,3 +1,92 @@
-{
-  "error": "Query failed: Binder Error: Referenced column \"related_symbols\" not found in FROM clause!\nCandidate bindings: \"report_date\", \"news\""
-}
+[
+  {
+    "uuid": "70d1b6e4-1cc9-3a97-ade4-a2871cc1b912",
+    "symbol": "WDAY",
+    "title": "3 Growth Companies With High Insider Ownership And Up To 17% Revenue Growth",
+    "publisher": "Simply Wall St.",
+    "report_date": "2025-03-18",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/3-growth-companies-high-insider-170527599.html"
+  },
+  {
+    "uuid": "c379775d-f1bf-3562-9caf-de135c73adfb",
+    "symbol": "WDAY",
+    "title": "Empire State Realty Signs Expanded Lease Renewal With Workday",
+    "publisher": "MT Newswires",
+    "report_date": "2025-04-17",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/empire-state-realty-signs-expanded-141350545.html"
+  },
+  {
+    "uuid": "eaa374c7-a678-35c8-a550-1c816b5b5914",
+    "symbol": "WDAY",
+    "title": "Q4 Earnings Outperformers: Global Business Travel (NYSE:GBTG) And The Rest Of The Finance and HR Software Stocks",
+    "publisher": "StockStory",
+    "report_date": "2025-04-25",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/q4-earnings-outperformers-global-business-090403373.html"
+  },
+  {
+    "uuid": "836570ed-3143-3114-8b6f-2c34c054ade9",
+    "symbol": "WDAY",
+    "title": "Q4 Earnings Roundup: BlackLine (NASDAQ:BL) And The Rest Of The Finance and HR Software Segment",
+    "publisher": "StockStory",
+    "report_date": "2025-04-28",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/q4-earnings-roundup-blackline-nasdaq-090641058.html"
+  },
+  {
+    "uuid": "2fae365c-0712-3e30-af4b-66d48d70dceb",
+    "symbol": "WDAY",
+    "title": "Workday Stock Gets Relative Strength Rating Bump",
+    "publisher": "Investor's Business Daily",
+    "report_date": "2025-05-07",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/2fae365c-0712-3e30-af4b-66d48d70dceb/workday-stock-gets-relative.html"
+  },
+  {
+    "uuid": "486a80d9-2bf3-3134-9df8-009a24b27b46",
+    "symbol": "WDAY",
+    "title": "High Growth Tech Stocks In The US For May 2025",
+    "publisher": "Simply Wall St.",
+    "report_date": "2025-05-15",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/high-growth-tech-stocks-us-113808972.html"
+  },
+  {
+    "uuid": "94139704-21ee-3af5-b212-f69daba9fba1",
+    "symbol": "WDAY",
+    "title": "May 2025's Value Stocks Estimated Below Intrinsic Worth",
+    "publisher": "Simply Wall St.",
+    "report_date": "2025-05-16",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/may-2025s-value-stocks-estimated-174453050.html"
+  },
+  {
+    "uuid": "c074565c-4cb5-3217-8af8-b0965a1b5c85",
+    "symbol": "WDAY",
+    "title": "TaskUs and Boot Barn have been highlighted as Zacks Bull and Bear of the Day",
+    "publisher": "Zacks",
+    "report_date": "2025-05-20",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/taskus-boot-barn-highlighted-zacks-122200832.html"
+  },
+  {
+    "uuid": "bcea9ee1-b289-34d6-ac7e-7fb6c77aec1c",
+    "symbol": "WDAY",
+    "title": "Workday Unveils Illuminate AI Agents to Accelerate Workflows",
+    "publisher": "Zacks",
+    "report_date": "2025-05-21",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/workday-unveils-illuminate-ai-agents-155300453.html"
+  },
+  {
+    "uuid": "3cde1379-a5ed-38e8-912f-564b5cfa411a",
+    "symbol": "WDAY",
+    "title": "Quantum stocks, MNTN IPO, Workday earnings: Trending tickers",
+    "publisher": "Yahoo Finance Video",
+    "report_date": "2025-05-23",
+    "type": "VIDEO",
+    "link": "https://finance.yahoo.com/video/quantum-stocks-mntn-ipo-workday-144923004.html"
+  }
+]

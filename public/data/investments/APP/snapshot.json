@@ -1,10 +1,10 @@
 {
   "symbol": "APP",
-  "lastUpdated": "2026-06-09T00:00:39.728571+00:00",
+  "lastUpdated": "2026-06-12T00:17:25.864748+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-09T00:00:39.728571+00:00",
+    "snapshotBuiltAt": "2026-06-12T00:17:25.864748+00:00",
     "sections": {
-      "price": "2026-06-05"
+      "price": "2026-06-10"
     }
   },
   "source": "prefetched",
@@ -18,11 +18,11 @@
     "income_statement": true,
     "balance_sheet": true,
     "cash_flow": true,
-    "wacc": false,
+    "wacc": true,
     "industry": true,
-    "beta": false,
-    "news": false,
-    "dcf": false,
+    "beta": true,
+    "news": true,
+    "dcf": true,
     "officers": true,
     "compare": true
   },
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.3361,
-      "ttmPe": 49.15,
-      "marketCap": 187185489400,
-      "psRatio": 30.37,
-      "pbRatio": 79.2,
-      "pegRatio": 0.71
+      "ttmPe": 43.49,
+      "marketCap": 165611454710,
+      "psRatio": 26.87,
+      "pbRatio": 70.07,
+      "pegRatio": 0.62
     },
     "profitability": {
       "roe": 53.6,
@@ -5516,31 +5516,18 @@
         }
       ]
     },
+    "wacc": {
+      "wacc": 24.77,
+      "costOfEquity": 25.27,
+      "costOfDebt": 1.46,
+      "taxRate": 16,
+      "beta": 2.4898,
+      "marketCap": 165611454710
+    },
+    "beta": {
+      "beta5y": 2.4898
+    },
     "price": [
-      {
-        "date": "2025-06-05",
-        "open": 414.17,
-        "high": 428.99,
-        "low": 406.78,
-        "close": 414.14,
-        "volume": 5973700
-      },
-      {
-        "date": "2025-06-06",
-        "open": 421,
-        "high": 426.52,
-        "low": 413.23,
-        "close": 417.89,
-        "volume": 5495500
-      },
-      {
-        "date": "2025-06-09",
-        "open": 401.25,
-        "high": 404.5,
-        "low": 382.85,
-        "close": 383.6,
-        "volume": 7829200
-      },
       {
         "date": "2025-06-10",
         "open": 390,
@@ -7531,7 +7518,113 @@
         "high": 595,
         "low": 548.78,
         "close": 557.2,
-        "volume": 5543100
+        "volume": 5547000
+      },
+      {
+        "date": "2026-06-08",
+        "open": 558.59,
+        "high": 573.7,
+        "low": 557.42,
+        "close": 563.69,
+        "volume": 3896100
+      },
+      {
+        "date": "2026-06-09",
+        "open": 558.16,
+        "high": 567.66,
+        "low": 502.81,
+        "close": 520.84,
+        "volume": 4442000
+      },
+      {
+        "date": "2026-06-10",
+        "open": 507.9,
+        "high": 517.015,
+        "low": 492.63,
+        "close": 492.98,
+        "volume": 4827965
+      }
+    ],
+    "news": [
+      {
+        "uuid": "1ca10e63-99ac-35a3-ab34-01466ad66eac",
+        "title": "Insider-Led Growth Companies To Watch Now",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-03-14",
+        "link": "https://finance.yahoo.com/news/insider-led-growth-companies-watch-110530195.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9b64a868-14bf-30f3-beaf-c95828dfc897",
+        "title": "3 Stocks Estimated To Be Undervalued By Up To 37.7%",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-04-04",
+        "link": "https://finance.yahoo.com/news/3-stocks-estimated-undervalued-37-110746862.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "38e5c5c8-57d9-3b7a-88ec-e4a4c84f7823",
+        "title": "China announces retaliatory tariffs, U.S. unemployment rises: Morning Buzz",
+        "publisher": "TipRanks",
+        "reportDate": "2025-04-06",
+        "link": "https://finance.yahoo.com/news/china-announces-retaliatory-tariffs-u-161032836.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "63036907-3b52-3cd0-a689-ec0a587cb6b6",
+        "title": "Prada to acquire Versace, CarMax reports mixed Q4 results: Morning Buzz",
+        "publisher": "TipRanks",
+        "reportDate": "2025-04-12",
+        "link": "https://finance.yahoo.com/news/prada-acquire-versace-carmax-reports-160529246.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "8e259a69-a5b0-35ec-92c8-ea6c792fa74a",
+        "title": "May 2025's Noteworthy Stocks Estimated Below Intrinsic Value",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/news/may-2025s-noteworthy-stocks-estimated-113752266.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "8fa6c2c1-86af-370d-83a0-3208f9d3adbd",
+        "title": "AppLovin (APP) Q1 Earnings and Revenues Top Estimates",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-08",
+        "link": "https://finance.yahoo.com/news/applovin-app-q1-earnings-revenues-223508754.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2e38cec8-2dfe-3e4e-8f7e-13dab3783f67",
+        "title": "Stock Market Today: Dow Jones Finishes 250 Points Higher On U.S.-UK Trade Deal; Boeing Soars Past Buy Point, Bitcoin Races Past $100,000 (Live Coverage)",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/m/2e38cec8-2dfe-3e4e-8f7e-13dab3783f67/stock-market-today%3A-dow-jones.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "7819af77-417f-3d71-9d63-7f5d4b07b431",
+        "title": "AI Just Shook a Stock Market Giant",
+        "publisher": "InvestorPlace",
+        "reportDate": "2025-05-11",
+        "link": "https://finance.yahoo.com/news/ai-just-shook-stock-market-160000124.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "8c072163-2a7e-3c84-beb1-b67a93e95bc7",
+        "title": "2 Growth Stocks to Add to Your Roster and 1 to Question",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/news/2-growth-stocks-add-roster-043858572.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "dc48d557-054f-397b-8829-98d079bcf829",
+        "title": "Q1 Earnings Roundup: Zeta (NYSE:ZETA) And The Rest Of The Advertising Software Segment",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/q1-earnings-roundup-zeta-nyse-033302977.html",
+        "type": "STORY"
       }
     ],
     "officers": [
@@ -7579,44 +7672,55 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 49.15,
-        "industryAvg": 46.03
+        "value": 43.49,
+        "industryAvg": 41.56
       },
       {
         "metric": "P/S Ratio",
-        "value": 30.37,
-        "industryAvg": 5
+        "value": 26.87,
+        "industryAvg": 4.54
       },
       {
         "metric": "P/B Ratio",
-        "value": 79.2,
-        "industryAvg": 8.18
+        "value": 70.07,
+        "industryAvg": 8.02
       },
       {
         "metric": "ROE",
         "value": 53.6,
-        "industryAvg": 21.58
+        "industryAvg": 22.49
       },
       {
         "metric": "ROA",
         "value": 16.11,
-        "industryAvg": 4.590000000000001
+        "industryAvg": 4.53
       },
       {
         "metric": "Gross Margin",
         "value": 88.94999999999999,
-        "industryAvg": 32.6
+        "industryAvg": 33.239999999999995
       },
       {
         "metric": "EBITDA Margin",
         "value": 82.28999999999999,
-        "industryAvg": 16.8
+        "industryAvg": 17.02
       },
       {
         "metric": "Net Margin",
         "value": 65.44,
-        "industryAvg": 7.539999999999999
+        "industryAvg": 7.489999999999999
       }
-    ]
+    ],
+    "dcf": {
+      "fairValue": 107.02,
+      "currentPrice": 492.98,
+      "upside": -78.29,
+      "wacc": 24.77,
+      "growthEstimates": {
+        "Near-term growth (Yrs 1-3)": 50,
+        "Terminal growth": 3
+      },
+      "recommendation": "Sell"
+    }
   }
 }

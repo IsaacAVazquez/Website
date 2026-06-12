@@ -570,9 +570,9 @@
     {
       "symbol": "AVGO",
       "report_date": "2026-04-30",
-      "eps": 1.91,
-      "tailing_eps": 6.0076,
-      "update_time": "2026-06-06"
+      "eps": 1.9094,
+      "tailing_eps": 6.007,
+      "update_time": "2026-06-11"
     }
   ],
   "ttmPe": [
@@ -34245,31 +34245,31 @@
       "report_date": "2026-04-30T00:00:00.000",
       "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 417.43,
-      "ttm_eps": 6.0076,
-      "ttm_pe": 69.48
+      "ttm_eps": 6.007,
+      "ttm_pe": 69.49
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-01T00:00:00.000",
       "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 421.28,
-      "ttm_eps": 6.0076,
-      "ttm_pe": 70.12
+      "ttm_eps": 6.007,
+      "ttm_pe": 70.13
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-04T00:00:00.000",
       "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 416.5,
-      "ttm_eps": 6.0076,
-      "ttm_pe": 69.33
+      "ttm_eps": 6.007,
+      "ttm_pe": 69.34
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-05T00:00:00.000",
       "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 427.36,
-      "ttm_eps": 6.0076,
+      "ttm_eps": 6.007,
       "ttm_pe": 71.14
     },
     {
@@ -34277,7 +34277,7 @@
       "report_date": "2026-05-06T00:00:00.000",
       "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 425.44,
-      "ttm_eps": 6.0076,
+      "ttm_eps": 6.007,
       "ttm_pe": 70.82
     },
     {
@@ -34285,15 +34285,15 @@
       "report_date": "2026-05-07T00:00:00.000",
       "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 412.56,
-      "ttm_eps": 6.0076,
-      "ttm_pe": 68.67
+      "ttm_eps": 6.007,
+      "ttm_pe": 68.68
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-08T00:00:00.000",
       "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 430.0,
-      "ttm_eps": 6.0076,
+      "ttm_eps": 6.007,
       "ttm_pe": 71.58
     },
     {
@@ -34301,23 +34301,23 @@
       "report_date": "2026-05-11T00:00:00.000",
       "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 428.43,
-      "ttm_eps": 6.0076,
-      "ttm_pe": 71.31
+      "ttm_eps": 6.007,
+      "ttm_pe": 71.32
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-12T00:00:00.000",
       "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 419.3,
-      "ttm_eps": 6.0076,
-      "ttm_pe": 69.79
+      "ttm_eps": 6.007,
+      "ttm_pe": 69.8
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-13T00:00:00.000",
       "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 416.79,
-      "ttm_eps": 6.0076,
+      "ttm_eps": 6.007,
       "ttm_pe": 69.38
     },
     {
@@ -34325,7 +34325,7 @@
       "report_date": "2026-05-14T00:00:00.000",
       "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 439.79,
-      "ttm_eps": 6.0076,
+      "ttm_eps": 6.007,
       "ttm_pe": 73.21
     },
     {
@@ -34333,7 +34333,7 @@
       "report_date": "2026-05-15T00:00:00.000",
       "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 425.19,
-      "ttm_eps": 6.0076,
+      "ttm_eps": 6.007,
       "ttm_pe": 70.78
     },
     {
@@ -34341,31 +34341,31 @@
       "report_date": "2026-05-18T00:00:00.000",
       "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 420.71,
-      "ttm_eps": 6.0076,
-      "ttm_pe": 70.03
+      "ttm_eps": 6.007,
+      "ttm_pe": 70.04
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-19T00:00:00.000",
       "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 411.07,
-      "ttm_eps": 6.0076,
-      "ttm_pe": 68.42
+      "ttm_eps": 6.007,
+      "ttm_pe": 68.43
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-20T00:00:00.000",
       "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 417.76,
-      "ttm_eps": 6.0076,
-      "ttm_pe": 69.54
+      "ttm_eps": 6.007,
+      "ttm_pe": 69.55
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-21T00:00:00.000",
       "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 414.57,
-      "ttm_eps": 6.0076,
+      "ttm_eps": 6.007,
       "ttm_pe": 69.01
     },
     {
@@ -34373,7 +34373,7 @@
       "report_date": "2026-05-22T00:00:00.000",
       "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 414.14,
-      "ttm_eps": 6.0076,
+      "ttm_eps": 6.007,
       "ttm_pe": 68.94
     },
     {
@@ -34381,7 +34381,7 @@
       "report_date": "2026-05-26T00:00:00.000",
       "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 422.01,
-      "ttm_eps": 6.0076,
+      "ttm_eps": 6.007,
       "ttm_pe": 70.25
     },
     {
@@ -34389,15 +34389,15 @@
       "report_date": "2026-05-27T00:00:00.000",
       "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 421.86,
-      "ttm_eps": 6.0076,
-      "ttm_pe": 70.22
+      "ttm_eps": 6.007,
+      "ttm_pe": 70.23
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-28T00:00:00.000",
       "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 426.58,
-      "ttm_eps": 6.0076,
+      "ttm_eps": 6.007,
       "ttm_pe": 71.01
     },
     {
@@ -34405,7 +34405,7 @@
       "report_date": "2026-05-29T00:00:00.000",
       "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 446.77,
-      "ttm_eps": 6.0076,
+      "ttm_eps": 6.007,
       "ttm_pe": 74.37
     },
     {
@@ -34413,40 +34413,64 @@
       "report_date": "2026-06-01T00:00:00.000",
       "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 459.97,
-      "ttm_eps": 6.0076,
-      "ttm_pe": 76.56
+      "ttm_eps": 6.007,
+      "ttm_pe": 76.57
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-06-02T00:00:00.000",
       "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 481.57,
-      "ttm_eps": 6.0076,
-      "ttm_pe": 80.16
+      "ttm_eps": 6.007,
+      "ttm_pe": 80.17
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-06-03T00:00:00.000",
       "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 479.23,
-      "ttm_eps": 6.0076,
-      "ttm_pe": 79.77
+      "ttm_eps": 6.007,
+      "ttm_pe": 79.78
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-06-04T00:00:00.000",
       "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 418.91,
-      "ttm_eps": 6.0076,
-      "ttm_pe": 69.73
+      "ttm_eps": 6.007,
+      "ttm_pe": 69.74
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-06-05T00:00:00.000",
       "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 385.73,
-      "ttm_eps": 6.0076,
+      "ttm_eps": 6.007,
       "ttm_pe": 64.21
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-06-08T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 396.6,
+      "ttm_eps": 6.007,
+      "ttm_pe": 66.02
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-06-09T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 392.16,
+      "ttm_eps": 6.007,
+      "ttm_pe": 65.28
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-06-10T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 372.1,
+      "ttm_eps": 6.007,
+      "ttm_pe": 61.94
     }
   ],
   "marketCap": [
@@ -68117,210 +68141,234 @@
     {
       "symbol": "AVGO",
       "report_date": "2026-04-30T00:00:00.000",
-      "shares_report_date": "2026-02-27T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 417.43,
-      "shares_outstanding": 4734668200,
-      "market_capitalization": 1976392546726.0
+      "shares_outstanding": 4758000000,
+      "market_capitalization": 1986131940000.0
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-01T00:00:00.000",
-      "shares_report_date": "2026-02-27T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 421.28,
-      "shares_outstanding": 4734668200,
-      "market_capitalization": 1994621019296.0
+      "shares_outstanding": 4758000000,
+      "market_capitalization": 2004450240000.0
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-04T00:00:00.000",
-      "shares_report_date": "2026-02-27T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 416.5,
-      "shares_outstanding": 4734668200,
-      "market_capitalization": 1971989305300.0
+      "shares_outstanding": 4758000000,
+      "market_capitalization": 1981707000000.0
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-05T00:00:00.000",
-      "shares_report_date": "2026-02-27T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 427.36,
-      "shares_outstanding": 4734668200,
-      "market_capitalization": 2023407801952.0
+      "shares_outstanding": 4758000000,
+      "market_capitalization": 2033378880000.0
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-06T00:00:00.000",
-      "shares_report_date": "2026-02-27T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 425.44,
-      "shares_outstanding": 4734668200,
-      "market_capitalization": 2014317239008.0
+      "shares_outstanding": 4758000000,
+      "market_capitalization": 2024243520000.0
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-07T00:00:00.000",
-      "shares_report_date": "2026-02-27T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 412.56,
-      "shares_outstanding": 4734668200,
-      "market_capitalization": 1953334712592.0
+      "shares_outstanding": 4758000000,
+      "market_capitalization": 1962960480000.0
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-08T00:00:00.000",
-      "shares_report_date": "2026-02-27T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 430.0,
-      "shares_outstanding": 4734668200,
-      "market_capitalization": 2035907326000.0
+      "shares_outstanding": 4758000000,
+      "market_capitalization": 2045940000000.0
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-11T00:00:00.000",
-      "shares_report_date": "2026-02-27T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 428.43,
-      "shares_outstanding": 4734668200,
-      "market_capitalization": 2028473896926.0
+      "shares_outstanding": 4758000000,
+      "market_capitalization": 2038469940000.0
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-12T00:00:00.000",
-      "shares_report_date": "2026-02-27T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 419.3,
-      "shares_outstanding": 4734668200,
-      "market_capitalization": 1985246376260.0
+      "shares_outstanding": 4758000000,
+      "market_capitalization": 1995029400000.0
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-13T00:00:00.000",
-      "shares_report_date": "2026-02-27T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 416.79,
-      "shares_outstanding": 4734668200,
-      "market_capitalization": 1973362359078.0
+      "shares_outstanding": 4758000000,
+      "market_capitalization": 1983086820000.0
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-14T00:00:00.000",
-      "shares_report_date": "2026-02-27T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 439.79,
-      "shares_outstanding": 4734668200,
-      "market_capitalization": 2082259727678.0
+      "shares_outstanding": 4758000000,
+      "market_capitalization": 2092520820000.0
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-15T00:00:00.000",
-      "shares_report_date": "2026-02-27T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 425.19,
-      "shares_outstanding": 4734668200,
-      "market_capitalization": 2013133571958.0
+      "shares_outstanding": 4758000000,
+      "market_capitalization": 2023054020000.0
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-18T00:00:00.000",
-      "shares_report_date": "2026-02-27T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 420.71,
-      "shares_outstanding": 4734668200,
-      "market_capitalization": 1991922258422.0
+      "shares_outstanding": 4758000000,
+      "market_capitalization": 2001738180000.0
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-19T00:00:00.000",
-      "shares_report_date": "2026-02-27T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 411.07,
-      "shares_outstanding": 4734668200,
-      "market_capitalization": 1946280056974.0
+      "shares_outstanding": 4758000000,
+      "market_capitalization": 1955871060000.0
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-20T00:00:00.000",
-      "shares_report_date": "2026-02-27T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 417.76,
-      "shares_outstanding": 4734668200,
-      "market_capitalization": 1977954987232.0
+      "shares_outstanding": 4758000000,
+      "market_capitalization": 1987702080000.0
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-21T00:00:00.000",
-      "shares_report_date": "2026-02-27T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 414.57,
-      "shares_outstanding": 4734668200,
-      "market_capitalization": 1962851395674.0
+      "shares_outstanding": 4758000000,
+      "market_capitalization": 1972524060000.0
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-22T00:00:00.000",
-      "shares_report_date": "2026-02-27T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 414.14,
-      "shares_outstanding": 4734668200,
-      "market_capitalization": 1960815488348.0
+      "shares_outstanding": 4758000000,
+      "market_capitalization": 1970478120000.0
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-26T00:00:00.000",
-      "shares_report_date": "2026-02-27T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 422.01,
-      "shares_outstanding": 4734668200,
-      "market_capitalization": 1998077327082.0
+      "shares_outstanding": 4758000000,
+      "market_capitalization": 2007923580000.0
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-27T00:00:00.000",
-      "shares_report_date": "2026-02-27T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 421.86,
-      "shares_outstanding": 4734668200,
-      "market_capitalization": 1997367126852.0
+      "shares_outstanding": 4758000000,
+      "market_capitalization": 2007209880000.0
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-28T00:00:00.000",
-      "shares_report_date": "2026-02-27T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 426.58,
-      "shares_outstanding": 4734668200,
-      "market_capitalization": 2019714760756.0
+      "shares_outstanding": 4758000000,
+      "market_capitalization": 2029667640000.0
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-29T00:00:00.000",
-      "shares_report_date": "2026-02-27T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 446.77,
-      "shares_outstanding": 4734668200,
-      "market_capitalization": 2115307711714.0
+      "shares_outstanding": 4758000000,
+      "market_capitalization": 2125731660000.0
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-06-01T00:00:00.000",
-      "shares_report_date": "2026-02-27T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 459.97,
-      "shares_outstanding": 4734668200,
-      "market_capitalization": 2177805331954.0
+      "shares_outstanding": 4758000000,
+      "market_capitalization": 2188537260000.0
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-06-02T00:00:00.000",
-      "shares_report_date": "2026-02-27T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 481.57,
-      "shares_outstanding": 4734668200,
-      "market_capitalization": 2280074165074.0
+      "shares_outstanding": 4758000000,
+      "market_capitalization": 2291310060000.0
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-06-03T00:00:00.000",
-      "shares_report_date": "2026-02-27T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 479.23,
-      "shares_outstanding": 4734668200,
-      "market_capitalization": 2268995041486.0
+      "shares_outstanding": 4758000000,
+      "market_capitalization": 2280176340000.0
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-06-04T00:00:00.000",
-      "shares_report_date": "2026-02-27T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 418.91,
-      "shares_outstanding": 4734668200,
-      "market_capitalization": 1983399855662.0
+      "shares_outstanding": 4758000000,
+      "market_capitalization": 1993173780000.0
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-06-05T00:00:00.000",
-      "shares_report_date": "2026-02-27T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 385.73,
-      "shares_outstanding": 4734668200,
-      "market_capitalization": 1826303564786.0
+      "shares_outstanding": 4758000000,
+      "market_capitalization": 1835303340000.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-06-08T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 396.6,
+      "shares_outstanding": 4758000000,
+      "market_capitalization": 1887022800000.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-06-09T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 392.16,
+      "shares_outstanding": 4758000000,
+      "market_capitalization": 1865897280000.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-06-10T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 372.1,
+      "shares_outstanding": 4758000000,
+      "market_capitalization": 1770451800000.0
     }
   ],
   "psRatio": [
@@ -73337,262 +73385,292 @@
     {
       "symbol": "AVGO",
       "report_date": "2026-04-30T00:00:00.000",
-      "market_capitalization": 1976392546726.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 68282000000.0,
+      "market_capitalization": 1986131940000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 75465000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 68282000000.0,
-      "ps_ratio": 28.94
+      "ttm_revenue_usd": 75465000000.0,
+      "ps_ratio": 26.32
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-01T00:00:00.000",
-      "market_capitalization": 1994621019296.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 68282000000.0,
+      "market_capitalization": 2004450240000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 75465000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 68282000000.0,
-      "ps_ratio": 29.21
+      "ttm_revenue_usd": 75465000000.0,
+      "ps_ratio": 26.56
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-04T00:00:00.000",
-      "market_capitalization": 1971989305300.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 68282000000.0,
+      "market_capitalization": 1981707000000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 75465000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 68282000000.0,
-      "ps_ratio": 28.88
+      "ttm_revenue_usd": 75465000000.0,
+      "ps_ratio": 26.26
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-05T00:00:00.000",
-      "market_capitalization": 2023407801952.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 68282000000.0,
+      "market_capitalization": 2033378880000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 75465000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 68282000000.0,
-      "ps_ratio": 29.63
+      "ttm_revenue_usd": 75465000000.0,
+      "ps_ratio": 26.94
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-06T00:00:00.000",
-      "market_capitalization": 2014317239008.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 68282000000.0,
+      "market_capitalization": 2024243520000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 75465000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 68282000000.0,
-      "ps_ratio": 29.5
+      "ttm_revenue_usd": 75465000000.0,
+      "ps_ratio": 26.82
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-07T00:00:00.000",
-      "market_capitalization": 1953334712592.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 68282000000.0,
+      "market_capitalization": 1962960480000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 75465000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 68282000000.0,
-      "ps_ratio": 28.61
+      "ttm_revenue_usd": 75465000000.0,
+      "ps_ratio": 26.01
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-08T00:00:00.000",
-      "market_capitalization": 2035907326000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 68282000000.0,
+      "market_capitalization": 2045940000000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 75465000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 68282000000.0,
-      "ps_ratio": 29.82
+      "ttm_revenue_usd": 75465000000.0,
+      "ps_ratio": 27.11
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-11T00:00:00.000",
-      "market_capitalization": 2028473896926.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 68282000000.0,
+      "market_capitalization": 2038469940000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 75465000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 68282000000.0,
-      "ps_ratio": 29.71
+      "ttm_revenue_usd": 75465000000.0,
+      "ps_ratio": 27.01
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-12T00:00:00.000",
-      "market_capitalization": 1985246376260.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 68282000000.0,
+      "market_capitalization": 1995029400000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 75465000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 68282000000.0,
-      "ps_ratio": 29.07
+      "ttm_revenue_usd": 75465000000.0,
+      "ps_ratio": 26.44
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-13T00:00:00.000",
-      "market_capitalization": 1973362359078.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 68282000000.0,
+      "market_capitalization": 1983086820000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 75465000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 68282000000.0,
-      "ps_ratio": 28.9
+      "ttm_revenue_usd": 75465000000.0,
+      "ps_ratio": 26.28
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-14T00:00:00.000",
-      "market_capitalization": 2082259727678.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 68282000000.0,
+      "market_capitalization": 2092520820000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 75465000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 68282000000.0,
-      "ps_ratio": 30.5
+      "ttm_revenue_usd": 75465000000.0,
+      "ps_ratio": 27.73
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-15T00:00:00.000",
-      "market_capitalization": 2013133571958.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 68282000000.0,
+      "market_capitalization": 2023054020000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 75465000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 68282000000.0,
-      "ps_ratio": 29.48
+      "ttm_revenue_usd": 75465000000.0,
+      "ps_ratio": 26.81
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-18T00:00:00.000",
-      "market_capitalization": 1991922258422.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 68282000000.0,
+      "market_capitalization": 2001738180000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 75465000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 68282000000.0,
-      "ps_ratio": 29.17
+      "ttm_revenue_usd": 75465000000.0,
+      "ps_ratio": 26.53
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-19T00:00:00.000",
-      "market_capitalization": 1946280056974.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 68282000000.0,
+      "market_capitalization": 1955871060000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 75465000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 68282000000.0,
-      "ps_ratio": 28.5
+      "ttm_revenue_usd": 75465000000.0,
+      "ps_ratio": 25.92
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-20T00:00:00.000",
-      "market_capitalization": 1977954987232.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 68282000000.0,
+      "market_capitalization": 1987702080000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 75465000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 68282000000.0,
-      "ps_ratio": 28.97
+      "ttm_revenue_usd": 75465000000.0,
+      "ps_ratio": 26.34
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-21T00:00:00.000",
-      "market_capitalization": 1962851395674.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 68282000000.0,
+      "market_capitalization": 1972524060000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 75465000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 68282000000.0,
-      "ps_ratio": 28.75
+      "ttm_revenue_usd": 75465000000.0,
+      "ps_ratio": 26.14
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-22T00:00:00.000",
-      "market_capitalization": 1960815488348.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 68282000000.0,
+      "market_capitalization": 1970478120000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 75465000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 68282000000.0,
-      "ps_ratio": 28.72
+      "ttm_revenue_usd": 75465000000.0,
+      "ps_ratio": 26.11
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-26T00:00:00.000",
-      "market_capitalization": 1998077327082.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 68282000000.0,
+      "market_capitalization": 2007923580000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 75465000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 68282000000.0,
-      "ps_ratio": 29.26
+      "ttm_revenue_usd": 75465000000.0,
+      "ps_ratio": 26.61
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-27T00:00:00.000",
-      "market_capitalization": 1997367126852.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 68282000000.0,
+      "market_capitalization": 2007209880000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 75465000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 68282000000.0,
-      "ps_ratio": 29.25
+      "ttm_revenue_usd": 75465000000.0,
+      "ps_ratio": 26.6
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-28T00:00:00.000",
-      "market_capitalization": 2019714760756.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 68282000000.0,
+      "market_capitalization": 2029667640000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 75465000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 68282000000.0,
-      "ps_ratio": 29.58
+      "ttm_revenue_usd": 75465000000.0,
+      "ps_ratio": 26.9
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-29T00:00:00.000",
-      "market_capitalization": 2115307711714.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 68282000000.0,
+      "market_capitalization": 2125731660000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 75465000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 68282000000.0,
-      "ps_ratio": 30.98
+      "ttm_revenue_usd": 75465000000.0,
+      "ps_ratio": 28.17
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-06-01T00:00:00.000",
-      "market_capitalization": 2177805331954.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 68282000000.0,
+      "market_capitalization": 2188537260000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 75465000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 68282000000.0,
-      "ps_ratio": 31.89
+      "ttm_revenue_usd": 75465000000.0,
+      "ps_ratio": 29.0
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-06-02T00:00:00.000",
-      "market_capitalization": 2280074165074.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 68282000000.0,
+      "market_capitalization": 2291310060000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 75465000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 68282000000.0,
-      "ps_ratio": 33.39
+      "ttm_revenue_usd": 75465000000.0,
+      "ps_ratio": 30.36
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-06-03T00:00:00.000",
-      "market_capitalization": 2268995041486.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 68282000000.0,
+      "market_capitalization": 2280176340000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 75465000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 68282000000.0,
-      "ps_ratio": 33.23
+      "ttm_revenue_usd": 75465000000.0,
+      "ps_ratio": 30.22
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-06-04T00:00:00.000",
-      "market_capitalization": 1983399855662.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 68282000000.0,
+      "market_capitalization": 1993173780000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 75465000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 68282000000.0,
-      "ps_ratio": 29.05
+      "ttm_revenue_usd": 75465000000.0,
+      "ps_ratio": 26.41
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-06-05T00:00:00.000",
-      "market_capitalization": 1826303564786.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "ttm_revenue": 68282000000.0,
+      "market_capitalization": 1835303340000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 75465000000.0,
       "exchange_rate": 1.0,
-      "ttm_revenue_usd": 68282000000.0,
-      "ps_ratio": 26.75
+      "ttm_revenue_usd": 75465000000.0,
+      "ps_ratio": 24.32
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-06-08T00:00:00.000",
+      "market_capitalization": 1887022800000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 75465000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 75465000000.0,
+      "ps_ratio": 25.01
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-06-09T00:00:00.000",
+      "market_capitalization": 1865897280000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 75465000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 75465000000.0,
+      "ps_ratio": 24.73
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-06-10T00:00:00.000",
+      "market_capitalization": 1770451800000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 75465000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 75465000000.0,
+      "ps_ratio": 23.46
     }
   ],
   "pbRatio": [
@@ -83619,262 +83697,292 @@
     {
       "symbol": "AVGO",
       "report_date": "2026-04-30T00:00:00.000",
-      "market_capitalization": 1976392546726.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 79872000000.0,
+      "market_capitalization": 1986131940000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 87691000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 79872000000.0,
-      "pb_ratio": 24.74
+      "book_value_of_equity_usd": 87691000000.0,
+      "pb_ratio": 22.65
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-01T00:00:00.000",
-      "market_capitalization": 1994621019296.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 79872000000.0,
+      "market_capitalization": 2004450240000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 87691000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 79872000000.0,
-      "pb_ratio": 24.97
+      "book_value_of_equity_usd": 87691000000.0,
+      "pb_ratio": 22.86
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-04T00:00:00.000",
-      "market_capitalization": 1971989305300.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 79872000000.0,
+      "market_capitalization": 1981707000000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 87691000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 79872000000.0,
-      "pb_ratio": 24.69
+      "book_value_of_equity_usd": 87691000000.0,
+      "pb_ratio": 22.6
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-05T00:00:00.000",
-      "market_capitalization": 2023407801952.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 79872000000.0,
+      "market_capitalization": 2033378880000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 87691000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 79872000000.0,
-      "pb_ratio": 25.33
+      "book_value_of_equity_usd": 87691000000.0,
+      "pb_ratio": 23.19
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-06T00:00:00.000",
-      "market_capitalization": 2014317239008.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 79872000000.0,
+      "market_capitalization": 2024243520000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 87691000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 79872000000.0,
-      "pb_ratio": 25.22
+      "book_value_of_equity_usd": 87691000000.0,
+      "pb_ratio": 23.08
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-07T00:00:00.000",
-      "market_capitalization": 1953334712592.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 79872000000.0,
+      "market_capitalization": 1962960480000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 87691000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 79872000000.0,
-      "pb_ratio": 24.46
+      "book_value_of_equity_usd": 87691000000.0,
+      "pb_ratio": 22.38
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-08T00:00:00.000",
-      "market_capitalization": 2035907326000.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 79872000000.0,
+      "market_capitalization": 2045940000000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 87691000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 79872000000.0,
-      "pb_ratio": 25.49
+      "book_value_of_equity_usd": 87691000000.0,
+      "pb_ratio": 23.33
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-11T00:00:00.000",
-      "market_capitalization": 2028473896926.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 79872000000.0,
+      "market_capitalization": 2038469940000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 87691000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 79872000000.0,
-      "pb_ratio": 25.4
+      "book_value_of_equity_usd": 87691000000.0,
+      "pb_ratio": 23.25
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-12T00:00:00.000",
-      "market_capitalization": 1985246376260.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 79872000000.0,
+      "market_capitalization": 1995029400000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 87691000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 79872000000.0,
-      "pb_ratio": 24.86
+      "book_value_of_equity_usd": 87691000000.0,
+      "pb_ratio": 22.75
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-13T00:00:00.000",
-      "market_capitalization": 1973362359078.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 79872000000.0,
+      "market_capitalization": 1983086820000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 87691000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 79872000000.0,
-      "pb_ratio": 24.71
+      "book_value_of_equity_usd": 87691000000.0,
+      "pb_ratio": 22.61
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-14T00:00:00.000",
-      "market_capitalization": 2082259727678.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 79872000000.0,
+      "market_capitalization": 2092520820000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 87691000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 79872000000.0,
-      "pb_ratio": 26.07
+      "book_value_of_equity_usd": 87691000000.0,
+      "pb_ratio": 23.86
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-15T00:00:00.000",
-      "market_capitalization": 2013133571958.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 79872000000.0,
+      "market_capitalization": 2023054020000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 87691000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 79872000000.0,
-      "pb_ratio": 25.2
+      "book_value_of_equity_usd": 87691000000.0,
+      "pb_ratio": 23.07
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-18T00:00:00.000",
-      "market_capitalization": 1991922258422.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 79872000000.0,
+      "market_capitalization": 2001738180000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 87691000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 79872000000.0,
-      "pb_ratio": 24.94
+      "book_value_of_equity_usd": 87691000000.0,
+      "pb_ratio": 22.83
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-19T00:00:00.000",
-      "market_capitalization": 1946280056974.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 79872000000.0,
+      "market_capitalization": 1955871060000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 87691000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 79872000000.0,
-      "pb_ratio": 24.37
+      "book_value_of_equity_usd": 87691000000.0,
+      "pb_ratio": 22.3
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-20T00:00:00.000",
-      "market_capitalization": 1977954987232.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 79872000000.0,
+      "market_capitalization": 1987702080000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 87691000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 79872000000.0,
-      "pb_ratio": 24.76
+      "book_value_of_equity_usd": 87691000000.0,
+      "pb_ratio": 22.67
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-21T00:00:00.000",
-      "market_capitalization": 1962851395674.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 79872000000.0,
+      "market_capitalization": 1972524060000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 87691000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 79872000000.0,
-      "pb_ratio": 24.57
+      "book_value_of_equity_usd": 87691000000.0,
+      "pb_ratio": 22.49
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-22T00:00:00.000",
-      "market_capitalization": 1960815488348.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 79872000000.0,
+      "market_capitalization": 1970478120000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 87691000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 79872000000.0,
-      "pb_ratio": 24.55
+      "book_value_of_equity_usd": 87691000000.0,
+      "pb_ratio": 22.47
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-26T00:00:00.000",
-      "market_capitalization": 1998077327082.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 79872000000.0,
+      "market_capitalization": 2007923580000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 87691000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 79872000000.0,
-      "pb_ratio": 25.02
+      "book_value_of_equity_usd": 87691000000.0,
+      "pb_ratio": 22.9
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-27T00:00:00.000",
-      "market_capitalization": 1997367126852.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 79872000000.0,
+      "market_capitalization": 2007209880000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 87691000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 79872000000.0,
-      "pb_ratio": 25.01
+      "book_value_of_equity_usd": 87691000000.0,
+      "pb_ratio": 22.89
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-28T00:00:00.000",
-      "market_capitalization": 2019714760756.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 79872000000.0,
+      "market_capitalization": 2029667640000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 87691000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 79872000000.0,
-      "pb_ratio": 25.29
+      "book_value_of_equity_usd": 87691000000.0,
+      "pb_ratio": 23.15
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-29T00:00:00.000",
-      "market_capitalization": 2115307711714.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 79872000000.0,
+      "market_capitalization": 2125731660000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 87691000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 79872000000.0,
-      "pb_ratio": 26.48
+      "book_value_of_equity_usd": 87691000000.0,
+      "pb_ratio": 24.24
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-06-01T00:00:00.000",
-      "market_capitalization": 2177805331954.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 79872000000.0,
+      "market_capitalization": 2188537260000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 87691000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 79872000000.0,
-      "pb_ratio": 27.27
+      "book_value_of_equity_usd": 87691000000.0,
+      "pb_ratio": 24.96
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-06-02T00:00:00.000",
-      "market_capitalization": 2280074165074.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 79872000000.0,
+      "market_capitalization": 2291310060000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 87691000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 79872000000.0,
-      "pb_ratio": 28.55
+      "book_value_of_equity_usd": 87691000000.0,
+      "pb_ratio": 26.13
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-06-03T00:00:00.000",
-      "market_capitalization": 2268995041486.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 79872000000.0,
+      "market_capitalization": 2280176340000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 87691000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 79872000000.0,
-      "pb_ratio": 28.41
+      "book_value_of_equity_usd": 87691000000.0,
+      "pb_ratio": 26.0
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-06-04T00:00:00.000",
-      "market_capitalization": 1983399855662.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 79872000000.0,
+      "market_capitalization": 1993173780000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 87691000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 79872000000.0,
-      "pb_ratio": 24.83
+      "book_value_of_equity_usd": 87691000000.0,
+      "pb_ratio": 22.73
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-06-05T00:00:00.000",
-      "market_capitalization": 1826303564786.0,
-      "fiscal_quarter": "2026-01-31T00:00:00.000",
-      "book_value_of_equity": 79872000000.0,
+      "market_capitalization": 1835303340000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 87691000000.0,
       "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 79872000000.0,
-      "pb_ratio": 22.87
+      "book_value_of_equity_usd": 87691000000.0,
+      "pb_ratio": 20.93
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-06-08T00:00:00.000",
+      "market_capitalization": 1887022800000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 87691000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 87691000000.0,
+      "pb_ratio": 21.52
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-06-09T00:00:00.000",
+      "market_capitalization": 1865897280000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 87691000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 87691000000.0,
+      "pb_ratio": 21.28
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-06-10T00:00:00.000",
+      "market_capitalization": 1770451800000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 87691000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 87691000000.0,
+      "pb_ratio": 20.19
     }
   ],
   "pegRatio": [
@@ -121613,9 +121721,9 @@
       "report_date": "2026-04-30T00:00:00.000",
       "close_price": 417.43,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
-      "ttm_eps": 6.0076,
-      "ttm_pe": 69.48,
-      "eps_yoy_growth": 0.8565,
+      "ttm_eps": 6.007,
+      "ttm_pe": 69.49,
+      "eps_yoy_growth": 0.8559,
       "peg_ratio": 0.81
     },
     {
@@ -121623,9 +121731,9 @@
       "report_date": "2026-05-01T00:00:00.000",
       "close_price": 421.28,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
-      "ttm_eps": 6.0076,
-      "ttm_pe": 70.12,
-      "eps_yoy_growth": 0.8565,
+      "ttm_eps": 6.007,
+      "ttm_pe": 70.13,
+      "eps_yoy_growth": 0.8559,
       "peg_ratio": 0.82
     },
     {
@@ -121633,9 +121741,9 @@
       "report_date": "2026-05-04T00:00:00.000",
       "close_price": 416.5,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
-      "ttm_eps": 6.0076,
-      "ttm_pe": 69.33,
-      "eps_yoy_growth": 0.8565,
+      "ttm_eps": 6.007,
+      "ttm_pe": 69.34,
+      "eps_yoy_growth": 0.8559,
       "peg_ratio": 0.81
     },
     {
@@ -121643,9 +121751,9 @@
       "report_date": "2026-05-05T00:00:00.000",
       "close_price": 427.36,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
-      "ttm_eps": 6.0076,
+      "ttm_eps": 6.007,
       "ttm_pe": 71.14,
-      "eps_yoy_growth": 0.8565,
+      "eps_yoy_growth": 0.8559,
       "peg_ratio": 0.83
     },
     {
@@ -121653,9 +121761,9 @@
       "report_date": "2026-05-06T00:00:00.000",
       "close_price": 425.44,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
-      "ttm_eps": 6.0076,
+      "ttm_eps": 6.007,
       "ttm_pe": 70.82,
-      "eps_yoy_growth": 0.8565,
+      "eps_yoy_growth": 0.8559,
       "peg_ratio": 0.83
     },
     {
@@ -121663,9 +121771,9 @@
       "report_date": "2026-05-07T00:00:00.000",
       "close_price": 412.56,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
-      "ttm_eps": 6.0076,
-      "ttm_pe": 68.67,
-      "eps_yoy_growth": 0.8565,
+      "ttm_eps": 6.007,
+      "ttm_pe": 68.68,
+      "eps_yoy_growth": 0.8559,
       "peg_ratio": 0.8
     },
     {
@@ -121673,9 +121781,9 @@
       "report_date": "2026-05-08T00:00:00.000",
       "close_price": 430.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
-      "ttm_eps": 6.0076,
+      "ttm_eps": 6.007,
       "ttm_pe": 71.58,
-      "eps_yoy_growth": 0.8565,
+      "eps_yoy_growth": 0.8559,
       "peg_ratio": 0.84
     },
     {
@@ -121683,9 +121791,9 @@
       "report_date": "2026-05-11T00:00:00.000",
       "close_price": 428.43,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
-      "ttm_eps": 6.0076,
-      "ttm_pe": 71.31,
-      "eps_yoy_growth": 0.8565,
+      "ttm_eps": 6.007,
+      "ttm_pe": 71.32,
+      "eps_yoy_growth": 0.8559,
       "peg_ratio": 0.83
     },
     {
@@ -121693,19 +121801,19 @@
       "report_date": "2026-05-12T00:00:00.000",
       "close_price": 419.3,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
-      "ttm_eps": 6.0076,
-      "ttm_pe": 69.79,
-      "eps_yoy_growth": 0.8565,
-      "peg_ratio": 0.81
+      "ttm_eps": 6.007,
+      "ttm_pe": 69.8,
+      "eps_yoy_growth": 0.8559,
+      "peg_ratio": 0.82
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-13T00:00:00.000",
       "close_price": 416.79,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
-      "ttm_eps": 6.0076,
+      "ttm_eps": 6.007,
       "ttm_pe": 69.38,
-      "eps_yoy_growth": 0.8565,
+      "eps_yoy_growth": 0.8559,
       "peg_ratio": 0.81
     },
     {
@@ -121713,19 +121821,19 @@
       "report_date": "2026-05-14T00:00:00.000",
       "close_price": 439.79,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
-      "ttm_eps": 6.0076,
+      "ttm_eps": 6.007,
       "ttm_pe": 73.21,
-      "eps_yoy_growth": 0.8565,
-      "peg_ratio": 0.85
+      "eps_yoy_growth": 0.8559,
+      "peg_ratio": 0.86
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-15T00:00:00.000",
       "close_price": 425.19,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
-      "ttm_eps": 6.0076,
+      "ttm_eps": 6.007,
       "ttm_pe": 70.78,
-      "eps_yoy_growth": 0.8565,
+      "eps_yoy_growth": 0.8559,
       "peg_ratio": 0.83
     },
     {
@@ -121733,9 +121841,9 @@
       "report_date": "2026-05-18T00:00:00.000",
       "close_price": 420.71,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
-      "ttm_eps": 6.0076,
-      "ttm_pe": 70.03,
-      "eps_yoy_growth": 0.8565,
+      "ttm_eps": 6.007,
+      "ttm_pe": 70.04,
+      "eps_yoy_growth": 0.8559,
       "peg_ratio": 0.82
     },
     {
@@ -121743,9 +121851,9 @@
       "report_date": "2026-05-19T00:00:00.000",
       "close_price": 411.07,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
-      "ttm_eps": 6.0076,
-      "ttm_pe": 68.42,
-      "eps_yoy_growth": 0.8565,
+      "ttm_eps": 6.007,
+      "ttm_pe": 68.43,
+      "eps_yoy_growth": 0.8559,
       "peg_ratio": 0.8
     },
     {
@@ -121753,9 +121861,9 @@
       "report_date": "2026-05-20T00:00:00.000",
       "close_price": 417.76,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
-      "ttm_eps": 6.0076,
-      "ttm_pe": 69.54,
-      "eps_yoy_growth": 0.8565,
+      "ttm_eps": 6.007,
+      "ttm_pe": 69.55,
+      "eps_yoy_growth": 0.8559,
       "peg_ratio": 0.81
     },
     {
@@ -121763,9 +121871,9 @@
       "report_date": "2026-05-21T00:00:00.000",
       "close_price": 414.57,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
-      "ttm_eps": 6.0076,
+      "ttm_eps": 6.007,
       "ttm_pe": 69.01,
-      "eps_yoy_growth": 0.8565,
+      "eps_yoy_growth": 0.8559,
       "peg_ratio": 0.81
     },
     {
@@ -121773,19 +121881,19 @@
       "report_date": "2026-05-22T00:00:00.000",
       "close_price": 414.14,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
-      "ttm_eps": 6.0076,
+      "ttm_eps": 6.007,
       "ttm_pe": 68.94,
-      "eps_yoy_growth": 0.8565,
-      "peg_ratio": 0.8
+      "eps_yoy_growth": 0.8559,
+      "peg_ratio": 0.81
     },
     {
       "symbol": "AVGO",
       "report_date": "2026-05-26T00:00:00.000",
       "close_price": 422.01,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
-      "ttm_eps": 6.0076,
+      "ttm_eps": 6.007,
       "ttm_pe": 70.25,
-      "eps_yoy_growth": 0.8565,
+      "eps_yoy_growth": 0.8559,
       "peg_ratio": 0.82
     },
     {
@@ -121793,9 +121901,9 @@
       "report_date": "2026-05-27T00:00:00.000",
       "close_price": 421.86,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
-      "ttm_eps": 6.0076,
-      "ttm_pe": 70.22,
-      "eps_yoy_growth": 0.8565,
+      "ttm_eps": 6.007,
+      "ttm_pe": 70.23,
+      "eps_yoy_growth": 0.8559,
       "peg_ratio": 0.82
     },
     {
@@ -121803,9 +121911,9 @@
       "report_date": "2026-05-28T00:00:00.000",
       "close_price": 426.58,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
-      "ttm_eps": 6.0076,
+      "ttm_eps": 6.007,
       "ttm_pe": 71.01,
-      "eps_yoy_growth": 0.8565,
+      "eps_yoy_growth": 0.8559,
       "peg_ratio": 0.83
     },
     {
@@ -121813,9 +121921,9 @@
       "report_date": "2026-05-29T00:00:00.000",
       "close_price": 446.77,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
-      "ttm_eps": 6.0076,
+      "ttm_eps": 6.007,
       "ttm_pe": 74.37,
-      "eps_yoy_growth": 0.8565,
+      "eps_yoy_growth": 0.8559,
       "peg_ratio": 0.87
     },
     {
@@ -121823,9 +121931,9 @@
       "report_date": "2026-06-01T00:00:00.000",
       "close_price": 459.97,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
-      "ttm_eps": 6.0076,
-      "ttm_pe": 76.56,
-      "eps_yoy_growth": 0.8565,
+      "ttm_eps": 6.007,
+      "ttm_pe": 76.57,
+      "eps_yoy_growth": 0.8559,
       "peg_ratio": 0.89
     },
     {
@@ -121833,9 +121941,9 @@
       "report_date": "2026-06-02T00:00:00.000",
       "close_price": 481.57,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
-      "ttm_eps": 6.0076,
-      "ttm_pe": 80.16,
-      "eps_yoy_growth": 0.8565,
+      "ttm_eps": 6.007,
+      "ttm_pe": 80.17,
+      "eps_yoy_growth": 0.8559,
       "peg_ratio": 0.94
     },
     {
@@ -121843,9 +121951,9 @@
       "report_date": "2026-06-03T00:00:00.000",
       "close_price": 479.23,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
-      "ttm_eps": 6.0076,
-      "ttm_pe": 79.77,
-      "eps_yoy_growth": 0.8565,
+      "ttm_eps": 6.007,
+      "ttm_pe": 79.78,
+      "eps_yoy_growth": 0.8559,
       "peg_ratio": 0.93
     },
     {
@@ -121853,9 +121961,9 @@
       "report_date": "2026-06-04T00:00:00.000",
       "close_price": 418.91,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
-      "ttm_eps": 6.0076,
-      "ttm_pe": 69.73,
-      "eps_yoy_growth": 0.8565,
+      "ttm_eps": 6.007,
+      "ttm_pe": 69.74,
+      "eps_yoy_growth": 0.8559,
       "peg_ratio": 0.81
     },
     {
@@ -121863,10 +121971,40 @@
       "report_date": "2026-06-05T00:00:00.000",
       "close_price": 385.73,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
-      "ttm_eps": 6.0076,
+      "ttm_eps": 6.007,
       "ttm_pe": 64.21,
-      "eps_yoy_growth": 0.8565,
+      "eps_yoy_growth": 0.8559,
       "peg_ratio": 0.75
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-06-08T00:00:00.000",
+      "close_price": 396.6,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 6.007,
+      "ttm_pe": 66.02,
+      "eps_yoy_growth": 0.8559,
+      "peg_ratio": 0.77
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-06-09T00:00:00.000",
+      "close_price": 392.16,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 6.007,
+      "ttm_pe": 65.28,
+      "eps_yoy_growth": 0.8559,
+      "peg_ratio": 0.76
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-06-10T00:00:00.000",
+      "close_price": 372.1,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 6.007,
+      "ttm_pe": 61.94,
+      "eps_yoy_growth": 0.8559,
+      "peg_ratio": 0.72
     }
   ]
 }

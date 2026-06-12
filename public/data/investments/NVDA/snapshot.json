@@ -1,10 +1,10 @@
 {
   "symbol": "NVDA",
-  "lastUpdated": "2026-06-09T00:00:39.728571+00:00",
+  "lastUpdated": "2026-06-12T00:17:25.864748+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-09T00:00:39.728571+00:00",
+    "snapshotBuiltAt": "2026-06-12T00:17:25.864748+00:00",
     "sections": {
-      "price": "2026-06-05"
+      "price": "2026-06-10"
     }
   },
   "source": "prefetched",
@@ -18,11 +18,11 @@
     "income_statement": true,
     "balance_sheet": true,
     "cash_flow": true,
-    "wacc": false,
+    "wacc": true,
     "industry": true,
-    "beta": false,
-    "news": false,
-    "dcf": false,
+    "beta": true,
+    "news": true,
+    "dcf": true,
     "officers": true,
     "compare": true
   },
@@ -33,7 +33,7 @@
       "country": "United States",
       "industry": "Semiconductors",
       "sector": "Technology",
-      "longBusinessSummary": "NVIDIA Corporation operates as a data center scale AI infrastructure company. The company operates through two segments, Compute & Networking, and Graphics segments. The Compute & Networking segment provides data center accelerated computing and networking platforms and artificial intelligence solutions and software, and automotive platforms and autonomous and electric vehicle solutions, including software. The Graphics segment offers GeForce GPUs for gaming and PCs; Quadro/NVIDIA RTX GPUs for enterprise workstation graphics. The company's products are used in gaming, professional visualization, data center, and automotive markets. The company sells its products to original equipment manufacturers, original device manufacturers, system integrators and distributors, independent software vendors, cloud service providers, add-in board manufacturers, distributors, automotive manufacturers and tier-1 automotive suppliers, and other ecosystem participants worldwide. It has a collaboration with Tech Mahindra Limited to develop artificial intelligence powered telco network operations reasoning agent. The company has a strategic partnership with Lumentum Holdings Inc. to develop optics technologies for AI and data centers. It also has a strategic partnership with Nebius Group N.V. to develop and deploy hyperscale cloud for the artificial intelligence market; and has a strategic partnership with IREN Limited to accelerate deployment of up to 5 gigawatts of infrastructure. NVIDIA Corporation was incorporated in 1993 and is headquartered in Santa Clara, California.",
+      "longBusinessSummary": "NVIDIA Corporation operates as a data center scale AI infrastructure company. The company operates through two segments, Compute & Networking, and Graphics segments. The Compute & Networking segment provides data center accelerated computing and networking platforms and artificial intelligence solutions and software, and automotive platforms and autonomous and electric vehicle solutions, including software. The Graphics segment offers GeForce GPUs for gaming and PCs; Quadro/NVIDIA RTX GPUs for enterprise workstation graphics. The company's products are used in gaming, professional visualization, data center, and automotive markets. The company sells its products to original equipment manufacturers, original device manufacturers, system integrators and distributors, independent software vendors, cloud service providers, add-in board manufacturers, distributors, automotive manufacturers and tier-1 automotive suppliers, and other ecosystem participants worldwide. The company has a strategic collaboration with Tech Mahindra Limited, Lumentum Holdings Inc., Nebius Group N.V., IREN Limited, and SK hynix Inc. NVIDIA Corporation was incorporated in 1993 and is headquartered in Santa Clara, California.",
       "fullTimeEmployees": 42000,
       "website": "https://www.nvidia.com",
       "shortName": "NVIDIA Corporation",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.5299,
-      "ttmPe": 31.41,
-      "marketCap": 4967727100000,
-      "psRatio": 19.6,
-      "pbRatio": 25.41,
-      "pegRatio": 0.15
+      "ttmPe": 30.69,
+      "marketCap": 4854372820000,
+      "psRatio": 19.15,
+      "pbRatio": 24.83,
+      "pegRatio": 0.14
     },
     "profitability": {
       "roe": 33.06,
@@ -5691,31 +5691,18 @@
         }
       ]
     },
+    "wacc": {
+      "wacc": 22.67,
+      "costOfEquity": 22.73,
+      "costOfDebt": 0.83,
+      "taxRate": 17,
+      "beta": 2.1847,
+      "marketCap": 4854372820000
+    },
+    "beta": {
+      "beta5y": 2.1847
+    },
     "price": [
-      {
-        "date": "2025-06-05",
-        "open": 142.17,
-        "high": 144,
-        "low": 138.83,
-        "close": 139.99,
-        "volume": 231397900
-      },
-      {
-        "date": "2025-06-06",
-        "open": 142.51,
-        "high": 143.27,
-        "low": 141.51,
-        "close": 141.72,
-        "volume": 153986200
-      },
-      {
-        "date": "2025-06-09",
-        "open": 143.19,
-        "high": 145,
-        "low": 141.94,
-        "close": 142.63,
-        "volume": 185114500
-      },
       {
         "date": "2025-06-10",
         "open": 142.69,
@@ -7706,7 +7693,113 @@
         "high": 214.87,
         "low": 204.33,
         "close": 205.1,
-        "volume": 218529000
+        "volume": 219655500
+      },
+      {
+        "date": "2026-06-08",
+        "open": 210.18,
+        "high": 210.47,
+        "low": 206,
+        "close": 208.64,
+        "volume": 138372800
+      },
+      {
+        "date": "2026-06-09",
+        "open": 210.62,
+        "high": 211.4,
+        "low": 199.34,
+        "close": 208.19,
+        "volume": 180327000
+      },
+      {
+        "date": "2026-06-10",
+        "open": 204.425,
+        "high": 207.22,
+        "low": 199.92,
+        "close": 200.42,
+        "volume": 150398224
+      }
+    ],
+    "news": [
+      {
+        "uuid": "a8f7471f-5c09-39d9-bcb3-873f4ec162ac",
+        "title": "Nvidia, Tesla, Intel, Palantir, iRobot: Stocks to watch today",
+        "publisher": "Quartz",
+        "reportDate": "2025-03-12",
+        "link": "https://finance.yahoo.com/news/nvidia-tesla-intel-palantir-irobot-124500397.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ac5a45d5-14ed-389f-9be0-1e190de10f03",
+        "title": "Quantum computing, Affirm, Netflix upgrade: Market Minute",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-03-17",
+        "link": "https://finance.yahoo.com/video/quantum-computing-affirm-netflix-upgrade-150947409.html",
+        "type": "VIDEO"
+      },
+      {
+        "uuid": "e37b5c05-c0ba-3ba2-b7bf-9747f8b9e7e7",
+        "title": "Tap Billion-Dollar AI Opportunity in Oncology: Stocks in the Spotlight",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-20",
+        "link": "https://finance.yahoo.com/news/tap-billion-dollar-ai-opportunity-181300418.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0f7139d3-271d-3e22-b37b-14abca6b8855",
+        "title": "These Stocks Moved the Most Today: Nvidia, Tesla, Rivian, Accenture, Carvana, D-Wave Quantum, and More",
+        "publisher": "Barrons.com",
+        "reportDate": "2025-03-21",
+        "link": "https://finance.yahoo.com/m/0f7139d3-271d-3e22-b37b-14abca6b8855/these-stocks-moved-the-most.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9fa0933e-573c-36a8-8e69-eacfa956fa70",
+        "title": "Accenture reports Q2 beat, Apple TV+ losing $1B annually: Morning Buzz",
+        "publisher": "TipRanks",
+        "reportDate": "2025-03-22",
+        "link": "https://finance.yahoo.com/news/accenture-reports-q2-beat-apple-161626223.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6847b701-a805-3273-8363-1f5569a55995",
+        "title": "Stereotaxis Jumps 15% on NVIDIA's AI-Driven Collaboration: Is It a Buy Now?",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-22",
+        "link": "https://finance.yahoo.com/news/stereotaxis-jumps-15-nvidias-ai-160200798.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9c9222ce-74c7-3222-a9d9-ab586c63ce81",
+        "title": "Nvidia’s Support Boosts Stereotaxis (STXS) in Advancing Robotic Surgery",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-03-24",
+        "link": "https://finance.yahoo.com/news/nvidia-support-boosts-stereotaxis-stxs-213924601.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9603d02d-962a-36da-ac81-d16892a33a25",
+        "title": "Lumentum Stock, Coherent Upgraded On View Nvidia Threat Overblown",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-03-24",
+        "link": "https://finance.yahoo.com/m/9603d02d-962a-36da-ac81-d16892a33a25/lumentum-stock%2C-coherent.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ad5ec0a2-bfd3-335a-9331-f25c38ccafe5",
+        "title": "The Zacks Analyst Blog Highlights Microsoft, NVIDIA, Alphabet and Cooper-Standard",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-26",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-144500495.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b8f4eb3b-6cfb-3bc7-9dd5-91c82b5bacff",
+        "title": "Top Research Reports for Microsoft, NVIDIA & Alphabet",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-26",
+        "link": "https://finance.yahoo.com/news/top-research-reports-microsoft-nvidia-210900965.html",
+        "type": "STORY"
       }
     ],
     "officers": [
@@ -7774,44 +7867,55 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 31.41,
-        "industryAvg": 36.38
+        "value": 30.69,
+        "industryAvg": 34.69
       },
       {
         "metric": "P/S Ratio",
-        "value": 19.6,
-        "industryAvg": 14.43
+        "value": 19.15,
+        "industryAvg": 14.48
       },
       {
         "metric": "P/B Ratio",
-        "value": 25.41,
-        "industryAvg": 12
+        "value": 24.83,
+        "industryAvg": 12.06
       },
       {
         "metric": "ROE",
         "value": 33.06,
-        "industryAvg": 34.36
+        "industryAvg": 34.58
       },
       {
         "metric": "ROA",
         "value": 25.019999999999996,
-        "industryAvg": 21.310000000000002
+        "industryAvg": 21.5
       },
       {
         "metric": "Gross Margin",
         "value": 74.92999999999999,
-        "industryAvg": 59.12
+        "industryAvg": 59.21999999999999
       },
       {
         "metric": "EBITDA Margin",
         "value": 87,
-        "industryAvg": 56.00000000000001
+        "industryAvg": 56.11000000000001
       },
       {
         "metric": "Net Margin",
         "value": 71.46000000000001,
-        "industryAvg": 37.34
+        "industryAvg": 37.51
       }
-    ]
+    ],
+    "dcf": {
+      "fairValue": 68.85,
+      "currentPrice": 200.42,
+      "upside": -65.65,
+      "wacc": 22.67,
+      "growthEstimates": {
+        "Near-term growth (Yrs 1-3)": 50,
+        "Terminal growth": 3
+      },
+      "recommendation": "Sell"
+    }
   }
 }
