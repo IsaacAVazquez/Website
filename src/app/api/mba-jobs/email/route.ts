@@ -321,7 +321,21 @@ export async function POST(request: NextRequest) {
     }
   }
 
+  // Validate the jobs payload BEFORE reserving any daily slots. Reserving
+  // first would let a request with valid recipients but invalid jobs (a 400)
+  // permanently consume global daily slots, letting repeated bad requests
+  // exhaust the per-day cap.
+  const jobs = normalizeJobs(body.jobs);
+  if (!jobs) {
+    return json(
+      { error: `Provide 1-${MAX_DIGEST_JOBS} valid jobs for the digest.` },
+      { status: 400 }
+    );
+  }
+
   // Hardcoded per-day ceiling across all IPs. Independent of env allowlist.
+  // Reserved last, immediately before the send, so only requests that are
+  // otherwise valid consume slots.
   if (!tryReserveDailyRecipientSlots(recipients.length)) {
     return json(
       {
@@ -334,14 +348,6 @@ export async function POST(request: NextRequest) {
   // Backward-compat: existing call sites send a single recipient and expect
   // the response to mention that recipient, so keep `to` for downstream use.
   const to = recipients[0];
-
-  const jobs = normalizeJobs(body.jobs);
-  if (!jobs) {
-    return json(
-      { error: `Provide 1-${MAX_DIGEST_JOBS} valid jobs for the digest.` },
-      { status: 400 }
-    );
-  }
 
   const resend = new Resend(apiKey);
   const subject =

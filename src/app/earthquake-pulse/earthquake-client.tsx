@@ -216,7 +216,7 @@ function QuakeRow({
           className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm"
           style={{ color: "var(--home-ink-muted)", fontFamily: "var(--font-home-sans)" }}
         >
-          <span className="inline-flex items-center gap-1">
+          <span className="inline-flex items-center gap-1" suppressHydrationWarning>
             <Clock3 className="h-3.5 w-3.5" aria-hidden="true" />
             {formatTimeAgo(quake.time)}
           </span>
@@ -426,7 +426,8 @@ function QuakeDetailPanel({ quake }: { quake: QuakeEvent | null }) {
             className="mb-0 text-sm"
             style={{ color: "var(--home-ink-muted)", fontFamily: "var(--font-home-sans)" }}
           >
-            {formatTimestamp(quake.time)} · {formatTimeAgo(quake.time)}
+            {formatTimestamp(quake.time)} ·{" "}
+            <span suppressHydrationWarning>{formatTimeAgo(quake.time)}</span>
           </p>
         </div>
         <span

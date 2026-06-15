@@ -518,7 +518,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
                           {team.wins}-{team.losses}
                         </td>
                         <td className="px-3 py-3 align-middle text-sm font-semibold text-[var(--home-ink)]">
-                          {team.winPercent ? team.winPercent.toFixed(3).replace(/^0/, "") : "—"}
+                          {Number.isFinite(team.winPercent) ? team.winPercent.toFixed(3).replace(/^0/, "") : "—"}
                         </td>
                         <td className="hidden px-3 py-3 align-middle text-sm text-[var(--home-ink-muted)] md:table-cell">
                           {formatGamesBack(team.gamesBack)}
@@ -583,7 +583,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
                   [
                     [
                       "Win %",
-                      selectedTeam.winPercent
+                      Number.isFinite(selectedTeam.winPercent)
                         ? selectedTeam.winPercent.toFixed(3).replace(/^0/, "")
                         : "—",
                     ],
@@ -681,7 +681,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
                       <MetricCard
                         label="Win %"
                         value={
-                          selectedTeam.winPercent
+                          Number.isFinite(selectedTeam.winPercent)
                             ? selectedTeam.winPercent.toFixed(3).replace(/^0/, "")
                             : "—"
                         }
@@ -1094,7 +1094,7 @@ function TeamLeaderCard({
         <>
           <p className="mt-2 text-lg font-bold text-[var(--home-ink)]">{leader.name}</p>
           <p className="mt-1 text-sm text-[var(--home-ink-muted)]">
-            {leader.total.toFixed(1)} {statLabel.toLowerCase()} per game
+            {leader.perGame.toFixed(1)} {statLabel.toLowerCase()} per game
           </p>
           <p className="mt-2 text-xs font-medium uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
             {leader.teamAbbreviation}

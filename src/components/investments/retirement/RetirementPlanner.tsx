@@ -71,12 +71,11 @@ export function RetirementPlanner({ portfolioValue, seedAllocation }: Props) {
         </div>
       </div>
 
-      {ready && result ? (
-        <>
-          <RetirementAssumptions result={result} />
-          <RetirementDisclaimer />
-        </>
-      ) : null}
+      {ready && result ? <RetirementAssumptions result={result} /> : null}
+      {/* The educational disclaimer carries no data dependency and must stay
+          present on every output state — including loading and error — per the
+          compliance requirement that all projections ship with it. */}
+      <RetirementDisclaimer />
     </section>
   );
 }

@@ -370,9 +370,15 @@ function normalizeStandingEntry(
   const losses = statNumber(pickStat(entry.stats, "losses"));
   const winPercent = statNumber(pickStat(entry.stats, "winPercent", "winpercent"));
   const gamesBack = statNumber(pickStat(entry.stats, "gamesBehind", "gamesback"));
-  const pointsFor = statNumber(pickStat(entry.stats, "pointsFor", "avgPointsFor"));
-  const pointsAgainst = statNumber(pickStat(entry.stats, "pointsAgainst", "avgPointsAgainst"));
-  const pointDiff = statNumber(pickStat(entry.stats, "pointDifferential", "differential"));
+  // The UI labels these "PF/g" / "per game" / "net rating per game", so prefer
+  // the per-game average fields and fall back to the season total only when an
+  // average isn't published.
+  const pointsFor = statNumber(pickStat(entry.stats, "avgPointsFor", "pointsFor"));
+  const pointsAgainst = statNumber(pickStat(entry.stats, "avgPointsAgainst", "pointsAgainst"));
+  const pointDiff = statNumber(
+    pickStat(entry.stats, "avgPointDifferential", "pointDifferential", "differential"),
+    pointsFor - pointsAgainst
+  );
   const conferenceSeed = statNumber(
     pickStat(entry.stats, "playoffSeed", "conferenceRank", "rank"),
     position

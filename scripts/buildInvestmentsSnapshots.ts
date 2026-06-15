@@ -140,9 +140,32 @@ async function main() {
     throw new Error("Missing public/data/investments/index.json");
   }
 
-  await Promise.all(
+  // Use allSettled so one failing symbol does not abort the others and leave
+  // the deployed public/data/investments set half-applied. Successful symbols
+  // still complete; failures are collected, logged, and surfaced via a
+  // non-zero exit code so CI does not silently pass a partial refresh.
+  const results = await Promise.allSettled(
     index.symbols.map((symbol) => buildSymbolSnapshot(symbol, index.lastUpdated))
   );
+
+  const failures = results.flatMap((result, i) =>
+    result.status === "rejected"
+      ? [{ symbol: index.symbols[i], reason: result.reason as unknown }]
+      : []
+  );
+
+  if (failures.length > 0) {
+    for (const { symbol, reason } of failures) {
+      console.error(
+        `[${symbol}] Failed to build snapshot:`,
+        reason instanceof Error ? reason.message : reason
+      );
+    }
+    console.error(
+      `Investment snapshot build completed with ${failures.length} of ${index.symbols.length} symbol(s) failing.`
+    );
+    process.exitCode = 1;
+  }
 }
 
 main().catch((error) => {

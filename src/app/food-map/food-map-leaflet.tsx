@@ -73,6 +73,9 @@ export function FoodMapLeaflet({
   const mapRef = useRef<LeafletMap | null>(null);
   const groupRef = useRef<LeafletLayerGroup | null>(null);
   const markersRef = useRef<Map<string, LeafletMarker>>(new Map());
+  // Tracks the last spot set we fit the viewport to, so re-styling the active
+  // pin doesn't refit the bounds and fight the separate fly-to effect.
+  const fittedKeyRef = useRef<string | null>(null);
   // Keep the latest click handler without re-running the map-init effect.
   const selectRef = useRef(onSelectSpot);
   useEffect(() => {
@@ -141,17 +144,23 @@ export function FoodMapLeaflet({
       markersRef.current.set(spot.id, marker);
     });
 
-    if (spots.length > 0) {
-      map.fitBounds(
-        spots.map((s) => s.coords),
-        { padding: [48, 48], maxZoom: 14 }
-      );
-    } else {
-      map.setView(center, zoom);
+    // Only refit the viewport when the spot set actually changed. A pure
+    // active-pin change re-styles markers but must not move the camera (that's
+    // handled by the fly-to effect below).
+    if (fittedKeyRef.current !== spotsKey) {
+      fittedKeyRef.current = spotsKey;
+      if (spots.length > 0) {
+        map.fitBounds(
+          spots.map((s) => s.coords),
+          { padding: [48, 48], maxZoom: 14 }
+        );
+      } else {
+        map.setView(center, zoom);
+      }
     }
     // center/zoom are derived from the same filter change; intentionally omitted.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [spotsKey, status]);
+  }, [spotsKey, status, activeSpotId]);
 
   // Fly to + open the active spot when it changes (e.g. clicked in the list).
   useEffect(() => {

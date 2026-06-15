@@ -35,10 +35,10 @@ export async function GET() {
     ${posts.map(post => `
     <item>
       <title>${escapeXml(post.title)}</title>
-      <link>${baseUrl}/writing/${post.slug}</link>
+      <link>${baseUrl}/writing/${escapeXml(post.slug)}</link>
       <description>${escapeXml(post.seo?.description || post.excerpt || post.title)}</description>
       <pubDate>${new Date(post.publishedAt).toUTCString()}</pubDate>
-      <guid isPermaLink="true">${baseUrl}/writing/${post.slug}</guid>
+      <guid isPermaLink="true">${baseUrl}/writing/${escapeXml(post.slug)}</guid>
     </item>
     `).join('')}
   </channel>

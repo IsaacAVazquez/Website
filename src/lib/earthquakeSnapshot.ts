@@ -45,9 +45,12 @@ export function isQuakeIdShape(quakeId: string): boolean {
 }
 
 export function isValidQuakeId(quakeId: string): boolean {
+  // Use hasOwn (not `in`) so prototype keys like "constructor"/"toString" — which
+  // pass the case-insensitive shape regex — don't resolve through the prototype
+  // chain and turn a 404 into a cacheable 200 serializing a built-in.
   return (
     QUAKE_ID_PATTERN.test(quakeId) &&
-    quakeId in earthquakeSnapshot.summary.quakeDetails
+    Object.hasOwn(earthquakeSnapshot.summary.quakeDetails, quakeId)
   );
 }
 
@@ -56,7 +59,9 @@ export async function getEarthquakeSummary(): Promise<EarthquakeSummary> {
 }
 
 export async function getQuakeEvent(quakeId: string): Promise<QuakeEvent> {
-  const event = earthquakeSnapshot.summary.quakeDetails[quakeId];
+  const event = Object.hasOwn(earthquakeSnapshot.summary.quakeDetails, quakeId)
+    ? earthquakeSnapshot.summary.quakeDetails[quakeId]
+    : undefined;
 
   if (!event) {
     throw createEarthquakeSnapshotError("Earthquake event was not found.", 404);

@@ -84,9 +84,12 @@ export function isWorldCupTeamIdShape(teamId: string): boolean {
 }
 
 export function isValidWorldCupTeamId(teamId: string): boolean {
+  // Use hasOwn (not `in`) so prototype keys like "constructor"/"toString" — which
+  // pass the case-insensitive shape regex — don't resolve through the prototype
+  // chain and turn a 404 into a cacheable 200 serializing a built-in.
   return (
     WORLD_CUP_TEAM_ID_PATTERN.test(teamId) &&
-    teamId in worldCupSnapshot.teamSnapshots
+    Object.hasOwn(worldCupSnapshot.teamSnapshots, teamId)
   );
 }
 
@@ -97,7 +100,9 @@ export async function getWorldCupSummarySnapshot(): Promise<WorldCupSummarySnaps
 export async function getWorldCupTeamSnapshot(
   teamId: string
 ): Promise<WorldCupTeamSnapshot> {
-  const snapshot = worldCupSnapshot.teamSnapshots[teamId];
+  const snapshot = Object.hasOwn(worldCupSnapshot.teamSnapshots, teamId)
+    ? worldCupSnapshot.teamSnapshots[teamId]
+    : undefined;
   if (!snapshot) {
     throw createWorldCupSnapshotError(
       "World Cup team snapshot was not found.",

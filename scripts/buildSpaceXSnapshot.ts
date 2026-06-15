@@ -60,8 +60,15 @@ export async function buildSpaceXSnapshot(
   } catch (error) {
     const err = error as Error & { status?: number };
 
-    if (err.status === 429 && hasSnapshotContents(existingSnapshot)) {
-      logger.log("SpaceX snapshot refresh hit rate limiting. Keeping the existing snapshot.");
+    // Any fetch failure (rate limiting, 5xx, network/timeout) should preserve
+    // a good existing snapshot rather than crashing the build. We only rethrow
+    // when there is no usable snapshot to fall back to.
+    if (hasSnapshotContents(existingSnapshot)) {
+      const reason =
+        err.status === 429
+          ? "hit rate limiting"
+          : `failed (${err.status ? `HTTP ${err.status}` : err.message || "network error"})`;
+      logger.log(`SpaceX snapshot refresh ${reason}. Keeping the existing snapshot.`);
       return {
         snapshotPath,
         snapshot: existingSnapshot as MissionControlSnapshot,

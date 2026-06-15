@@ -587,7 +587,8 @@ export async function GET(request: NextRequest) {
     const query = searchParams.get('q') || '';
     const type = searchParams.get('type') || 'all';
     const category = searchParams.get('category') || 'all';
-    const limit = parseInt(searchParams.get('limit') || '50');
+    const parsedLimit = Number.parseInt(searchParams.get('limit') ?? '', 10);
+    const limit = Number.isFinite(parsedLimit) ? Math.min(Math.max(parsedLimit, 1), 100) : 50;
 
     // Get all searchable content
     const allContent = await getAllSearchableContent();

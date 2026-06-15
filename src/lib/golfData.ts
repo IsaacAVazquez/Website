@@ -372,10 +372,26 @@ export async function buildGolfSnapshotData(): Promise<GolfSnapshot> {
 
     const country = athlete.flag?.alt ?? athlete.citizenship ?? "";
     const position = competitor.status?.position?.displayName ?? "—";
+    const roundScores = (competitor.linescores ?? [])
+      .map((line) => line.value)
+      .filter((value): value is number => typeof value === "number" && value > 0);
+    // ESPN's `competitor.score` is the cumulative STROKE total, not a to-par
+    // value, so it can't be stored directly. Prefer an explicit to-par stat when
+    // one is present; otherwise derive it from completed rounds
+    // (cumulativeStrokes - coursePar * roundsPlayed). A player with no completed
+    // rounds keeps 0 rather than a bogus negative number.
+    const explicitToPar = findStat(competitor.statistics, [
+      "scoretopar",
+      "topar",
+    ]);
+    const cumulativeStrokes =
+      competitor.score != null ? parseToPar(competitor.score) : null;
+    const roundsPlayed = roundScores.length;
     const totalToPar =
-      competitor.score != null
-        ? parseToPar(competitor.score)
-        : findStat(competitor.statistics, ["scoretopar", "topar", "score"]) ?? 0;
+      explicitToPar ??
+      (cumulativeStrokes != null && roundsPlayed > 0
+        ? cumulativeStrokes - coursePar * roundsPlayed
+        : findStat(competitor.statistics, ["score"]) ?? 0);
     const today = toNumber(competitor.status?.today);
     const thru = formatThru(competitor.status);
     const movement =
@@ -384,9 +400,6 @@ export async function buildGolfSnapshotData(): Promise<GolfSnapshot> {
       competitor.status?.type?.description ??
       competitor.status?.displayValue ??
       (competitor.status?.type?.state === "pre" ? "Scheduled" : "");
-    const roundScores = (competitor.linescores ?? [])
-      .map((line) => line.value)
-      .filter((value): value is number => typeof value === "number" && value > 0);
 
     leaderboard.push({
       playerId: id,
@@ -456,6 +469,20 @@ export async function buildGolfSnapshotData(): Promise<GolfSnapshot> {
       generatedAt,
     };
   }
+
+  // ESPN returns competitors in raw response order, so sort ascending by
+  // to-par (lowest score leads) before deriving hero stats and returning, so
+  // leaderboard[0] is the actual leader. Prefer a numeric finishing position
+  // when one parses cleanly; fall back to to-par for ties / unscored players.
+  const finishingPosition = (entry: GolfLeaderboardEntry): number => {
+    const parsed = Number(entry.position.replace(/[^0-9]/g, ""));
+    return Number.isFinite(parsed) && parsed > 0 ? parsed : Number.POSITIVE_INFINITY;
+  };
+  leaderboard.sort((a, b) => {
+    const posDiff = finishingPosition(a) - finishingPosition(b);
+    if (posDiff !== 0) return posDiff;
+    return a.totalToPar - b.totalToPar;
+  });
 
   const summary: GolfSummary = {
     tournament,

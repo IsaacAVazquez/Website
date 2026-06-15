@@ -223,7 +223,11 @@ export function computeDraftAnalytics(picks: DraftPick[], teams: TeamRoster[]): 
   const teamStrengths = draftedTeams.map((team) => {
     const { strengths, weaknesses } = getTeamStrengthsAndWeaknesses(team);
     const valueTotal = valueTotals.get(team.teamNumber) ?? 0;
-    const rank = rankedTotals.indexOf(valueTotal);
+    // Rank by counting strictly-better teams rather than indexOf, which returns
+    // the first matching index and would hand every tied team the single best
+    // slot (over-grading ties — common early in a draft when many teams sit at
+    // a 0 value total).
+    const rank = rankedTotals.filter((total) => total > valueTotal).length;
     const percentile = rankedTotals.length > 1 ? rank / (rankedTotals.length - 1) : 0;
 
     return {

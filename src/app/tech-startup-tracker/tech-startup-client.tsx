@@ -1,6 +1,6 @@
 "use client";
 
-import { startTransition, useEffect } from "react";
+import { startTransition, useEffect, useState } from "react";
 import {
   Activity,
   ArrowDownUp,
@@ -136,6 +136,16 @@ export function TechStartupClient({
     });
   }, [currentHref, desiredHref, router]);
 
+  // relativeAge() reads Date.now(), so the SSR markup and the first client
+  // render can disagree by a minute. Compute it only after mount and render a
+  // stable placeholder pre-mount so both the header chip and the stats-panel
+  // meta stay hydration-safe.
+  const [relativeUpdated, setRelativeUpdated] = useState("recently");
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Compute the relative timestamp only after mount to avoid SSR/client hydration drift
+    setRelativeUpdated(relativeAge(snapshot.generatedAt));
+  }, [snapshot.generatedAt]);
+
   function navigate(nextState: TechStartupRouteState) {
     const resolvedNext = resolveTechStartupState(nextState, snapshot);
     const href = buildTechStartupHref(resolvedNext, searchParams);
@@ -193,14 +203,11 @@ export function TechStartupClient({
             and a momentum score from a checked-in snapshot.
           </p>
           <div className="flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
-            {/* Relative to Date.now(), so server and client renders can
-                differ by a minute — suppress the inevitable mismatch. */}
-            <span
-              suppressHydrationWarning
-              className="inline-flex min-h-[32px] items-center gap-2 rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3"
-            >
+            {/* relativeUpdated is computed after mount (see effect above), so
+                this stays hydration-safe without relying on Date.now() in SSR. */}
+            <span className="inline-flex min-h-[32px] items-center gap-2 rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3">
               <RefreshCw aria-hidden="true" size={14} />
-              Updated {relativeAge(snapshot.generatedAt)}
+              Updated {relativeUpdated}
             </span>
             <span className="inline-flex min-h-[32px] items-center gap-2 rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3">
               <CalendarClock aria-hidden="true" size={14} />
@@ -242,7 +249,7 @@ export function TechStartupClient({
       <HomeStatsPanel
         id="tech-startup-stats"
         title="Startup landscape at a glance"
-        meta={`Updated ${relativeAge(snapshot.generatedAt)}`}
+        meta={`Updated ${relativeUpdated}`}
         cells={[
           {
             label: "Startups tracked",

@@ -303,7 +303,7 @@ export function filterAndSortWines(
   filtered.sort((left, right) => {
     switch (filters.sort) {
       case "rating": {
-        if (right.rating !== left.rating) return (right.rating - left.rating) * direction;
+        if (left.rating !== right.rating) return (left.rating - right.rating) * direction;
         return right.tastedOn.localeCompare(left.tastedOn);
       }
       case "name": {
@@ -312,13 +312,13 @@ export function filterAndSortWines(
       case "price": {
         const leftPrice = left.price ?? -1;
         const rightPrice = right.price ?? -1;
-        if (leftPrice !== rightPrice) return (rightPrice - leftPrice) * direction;
+        if (leftPrice !== rightPrice) return (leftPrice - rightPrice) * direction;
         return right.tastedOn.localeCompare(left.tastedOn);
       }
       case "tastedOn":
       default: {
         if (left.tastedOn !== right.tastedOn) {
-          return right.tastedOn.localeCompare(left.tastedOn) * direction;
+          return left.tastedOn.localeCompare(right.tastedOn) * direction;
         }
         return right.createdAt.localeCompare(left.createdAt);
       }

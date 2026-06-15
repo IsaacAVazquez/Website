@@ -26,13 +26,21 @@ const UPDATED_FMT = new Intl.DateTimeFormat("en-US", {
   minute: "2-digit",
 });
 
+// Date-only ISO strings ("2026-06-15") parse as UTC midnight, which the local
+// Intl formatters can shift to the previous day. Parse those as local dates so
+// the displayed day matches what the user logged.
+function parseDateOnly(iso: string): Date {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso);
+  return m ? new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3])) : new Date(iso);
+}
+
 export function formatDate(iso: string): string {
-  const d = new Date(iso);
+  const d = parseDateOnly(iso);
   return Number.isNaN(d.getTime()) ? iso : FULL_DATE_FMT.format(d);
 }
 
 export function formatShortDate(iso: string): string {
-  const d = new Date(iso);
+  const d = parseDateOnly(iso);
   return Number.isNaN(d.getTime()) ? iso : SHORT_DATE_FMT.format(d);
 }
 

@@ -304,7 +304,9 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
 
   // Tightest division: smallest games-back among 2nd-place teams
   const tightestDivision = useMemo(() => {
-    const seconds = standings.filter((row) => row.divisionRank === 2 && row.gamesBack > 0);
+    const seconds = standings.filter(
+      (row) => row.divisionRank === 2 && Number.isFinite(row.gamesBack) && row.gamesBack >= 0
+    );
     if (seconds.length === 0) return null;
     return [...seconds].sort((a, b) => a.gamesBack - b.gamesBack)[0] ?? null;
   }, [standings]);

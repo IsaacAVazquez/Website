@@ -52,17 +52,30 @@ function TrendChart({ snapshot }: { snapshot: PollingSnapshot }) {
   const PAD = 12;
   const trend = snapshot.approvalTrend;
 
-  const approvePoints = buildPolyline(trend.map((d) => d.approve), W, H, PAD);
-  const disapprovePoints = buildPolyline(trend.map((d) => d.disapprove), W, H, PAD);
+  if (trend.length < 2) {
+    return (
+      <p className="text-sm text-[var(--home-ink-muted)]">
+        Not enough data to chart the approval trend yet.
+      </p>
+    );
+  }
 
+  // One shared, padded Y-domain across both series so the polylines,
+  // gridlines, and end-dots/labels all sit on the same scale.
   const allVals = trend.flatMap((d) => [d.approve, d.disapprove]);
   const minVal = Math.floor(Math.min(...allVals) - 2);
   const maxVal = Math.ceil(Math.max(...allVals) + 2);
+  const scaleY = (v: number) =>
+    H - PAD - ((v - minVal) / (maxVal - minVal || 1)) * (H - PAD * 2);
+  const scaleX = (i: number) =>
+    PAD + (trend.length === 1 ? 0 : i / (trend.length - 1)) * (W - PAD * 2);
+
+  const approvePoints = buildPolyline(trend.map((d) => d.approve), W, H, PAD, minVal, maxVal);
+  const disapprovePoints = buildPolyline(trend.map((d) => d.disapprove), W, H, PAD, minVal, maxVal);
+
   const first = trend[0];
   const last = trend[trend.length - 1];
-  const chartSummary = first && last
-    ? `Presidential approval trend from ${formatShortDate(first.date)} to ${formatShortDate(last.date)}. Approve: ${first.approve.toFixed(1)}% to ${last.approve.toFixed(1)}%. Disapprove: ${first.disapprove.toFixed(1)}% to ${last.disapprove.toFixed(1)}%.`
-    : "Presidential approval trend chart";
+  const chartSummary = `Presidential approval trend from ${formatShortDate(first.date)} to ${formatShortDate(last.date)}. Approve: ${first.approve.toFixed(1)}% to ${last.approve.toFixed(1)}%. Disapprove: ${first.disapprove.toFixed(1)}% to ${last.disapprove.toFixed(1)}%.`;
 
   return (
     <div className="overflow-x-auto">
@@ -74,7 +87,7 @@ function TrendChart({ snapshot }: { snapshot: PollingSnapshot }) {
       >
         {/* Y-axis gridlines */}
         {[minVal, Math.round((minVal + maxVal) / 2), maxVal].map((val) => {
-          const y = PAD + ((maxVal - val) / (maxVal - minVal)) * (H - PAD * 2);
+          const y = scaleY(val);
           return (
             <g key={val}>
               <line x1={PAD} y1={y} x2={W - PAD} y2={y} stroke="var(--home-rule)" strokeWidth={1} strokeDasharray="3 3" />
@@ -91,15 +104,10 @@ function TrendChart({ snapshot }: { snapshot: PollingSnapshot }) {
 
         {/* Dots + labels — last point only */}
         {(() => {
-          const last = trend[trend.length - 1];
           const lastIdx = trend.length - 1;
-          const allValsLocal = trend.flatMap((d) => [d.approve, d.disapprove]);
-          const minV = Math.min(...allValsLocal);
-          const maxV = Math.max(...allValsLocal);
-          const range = maxV - minV || 1;
-          const ax = PAD + (lastIdx / (trend.length - 1)) * (W - PAD * 2);
-          const ay = H - PAD - ((last.approve - minV) / range) * (H - PAD * 2);
-          const dy = H - PAD - ((last.disapprove - minV) / range) * (H - PAD * 2);
+          const ax = scaleX(lastIdx);
+          const ay = scaleY(last.approve);
+          const dy = scaleY(last.disapprove);
           return (
             <>
               <circle cx={ax} cy={ay} r={4} fill={DEM_COLOR} />
@@ -112,7 +120,7 @@ function TrendChart({ snapshot }: { snapshot: PollingSnapshot }) {
 
         {/* X-axis labels */}
         {trend.map((d, i) => {
-          const x = PAD + (i / (trend.length - 1)) * (W - PAD * 2);
+          const x = scaleX(i);
           return (
             <text key={d.date} x={x} y={H + 20} textAnchor="middle" fontSize={10} fill="var(--home-ink-muted)">
               {formatShortDate(d.date)}

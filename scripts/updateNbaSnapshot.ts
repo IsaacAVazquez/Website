@@ -13,6 +13,16 @@ import { renameSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 config({ path: resolve(__dirname, "../.env.local") });
 import { buildNbaSnapshot } from "../src/lib/nbaData";
+import type { NbaSnapshot } from "../src/types/nba";
+import { readGeneratedSnapshot } from "./snapshotFallback";
+
+function hasNbaContents(snapshot: NbaSnapshot | null | undefined): boolean {
+  return Boolean(
+    snapshot &&
+      (snapshot.teamsByConference.east.length > 0 ||
+        snapshot.teamsByConference.west.length > 0)
+  );
+}
 
 /**
  * Atomic write: write to .tmp then rename. Renames are atomic on POSIX, so the
@@ -32,7 +42,31 @@ async function main() {
       ? "🏀 Fetching NBA snapshot (league-only: standings + leaders + scoreboard)…"
       : "🏀 Fetching NBA snapshot from ESPN…"
   );
-  const snapshot = await buildNbaSnapshot({ skipTeamSnapshots: leagueOnly });
+  const outPath = resolve(__dirname, "../src/data/nbaSnapshot.ts");
+
+  let snapshot: NbaSnapshot;
+  try {
+    snapshot = await buildNbaSnapshot({ skipTeamSnapshots: leagueOnly });
+  } catch (error) {
+    const existing = readGeneratedSnapshot<NbaSnapshot>(outPath, "nbaSnapshot");
+    if (hasNbaContents(existing)) {
+      console.warn(
+        "🏀 NBA snapshot refresh failed; keeping the existing snapshot.",
+        error
+      );
+      return;
+    }
+    throw error;
+  }
+
+  // Guard against an ESPN 200-with-empty-arrays (off-season / schema drift)
+  // overwriting the good committed snapshot with nothing.
+  if (!hasNbaContents(snapshot)) {
+    console.warn(
+      "🏀 NBA snapshot build returned no standings; keeping the existing snapshot."
+    );
+    return;
+  }
 
   const output = `import type { NbaSnapshot } from "@/types/nba";
 
@@ -40,7 +74,6 @@ async function main() {
 export const nbaSnapshot: NbaSnapshot = ${JSON.stringify(snapshot, null, 2)};
 `;
 
-  const outPath = resolve(__dirname, "../src/data/nbaSnapshot.ts");
   writeFileAtomic(outPath, output);
   const east = snapshot.teamsByConference.east.length;
   const west = snapshot.teamsByConference.west.length;
