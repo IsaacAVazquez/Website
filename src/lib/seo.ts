@@ -120,15 +120,6 @@ export function constructMetadata({
   const aiTags = aiMetadata ? generateAIMetaTags(aiMetadata) : {};
   const resolvedTitle = title ?? siteConfig.title;
   const socialTitle = composeSocialTitle(resolvedTitle);
-  // The page-level `title` string is re-wrapped by the root layout's title
-  // template (`%s | Isaac Vazquez`). Some callers (e.g. blog frontmatter
-  // `seo.title`) already include that suffix, which produced a doubled
-  // "… | Isaac Vazquez | Isaac Vazquez" in the <title>/SERP. Strip a trailing
-  // site-name suffix so the template appends it exactly once.
-  const titleSuffix = ` | ${siteConfig.name}`;
-  const templateSafeTitle = resolvedTitle.endsWith(titleSuffix)
-    ? resolvedTitle.slice(0, -titleSuffix.length)
-    : resolvedTitle;
 
   const canonicalPath = canonicalUrl || siteConfig.url;
   const metadataBase = new URL(siteConfig.url);
@@ -174,7 +165,7 @@ export function constructMetadata({
 
   return {
     title: title
-      ? templateSafeTitle
+      ? resolvedTitle
       : {
           default: `${siteConfig.name} – ${siteConfig.title}`,
           template: `%s | ${siteConfig.name}`,
