@@ -55,7 +55,7 @@ jobs:
       # skip `npm ci` entirely (~1-2 min per job across build + e2e shards).
       - name: Cache node_modules
         id: node-modules-cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: node_modules
           key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
@@ -73,7 +73,7 @@ jobs:
       # source the E2E job runs against.
       - name: Cache .next build
         id: next-cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: |
             .next
@@ -106,7 +106,7 @@ jobs:
 
       - name: Cache node_modules
         id: node-modules-cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: node_modules
           key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
@@ -118,7 +118,7 @@ jobs:
       # Reuse the build artifact produced by the `build` job. With the cache
       # warm, `next start` boots immediately and pages render pre-compiled.
       - name: Restore .next build
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: |
             .next
@@ -135,7 +135,7 @@ jobs:
 
       - name: Cache Playwright browsers
         id: playwright-cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/.cache/ms-playwright
           key: playwright-${{ runner.os }}-${{ steps.playwright-version.outputs.value }}-chromium
@@ -179,7 +179,7 @@ jobs:
 
       - name: Cache node_modules
         id: node-modules-cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: node_modules
           key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
@@ -189,7 +189,7 @@ jobs:
         run: npm ci
 
       - name: Restore .next build
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: |
             .next
@@ -204,7 +204,7 @@ jobs:
 
       - name: Cache Playwright browsers
         id: playwright-cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/.cache/ms-playwright
           key: playwright-${{ runner.os }}-${{ steps.playwright-version.outputs.value }}-full
