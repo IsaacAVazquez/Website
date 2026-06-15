@@ -1188,6 +1188,37 @@
       "crew": []
     }
   },
+  "74bf8472-9ba1-42d6-9245-b014f8e91de9": {
+    "launchId": "74bf8472-9ba1-42d6-9245-b014f8e91de9",
+    "launchName": "Falcon 9 Block 5 | Project Starfall Demonstration Mission",
+    "window": "upcoming",
+    "images": {
+      "launch": [
+        {
+          "label": "Falcon 9 Block 5 | Project Starfall Demonstration Mission",
+          "localPath": "/data/spacex/images/038a85be482dfe6c.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_liftof_image_20241206131356.jpg"
+        }
+      ],
+      "patch": [],
+      "rocket": [
+        {
+          "label": "Falcon 9 Block 5",
+          "localPath": "/data/spacex/images/83daf3ce21b64d93.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_image_20230807133459.jpeg"
+        }
+      ],
+      "spacecraft": [],
+      "pad": [
+        {
+          "label": "Space Launch Complex 40",
+          "localPath": "/data/spacex/images/9b1f5cf5035d37b9.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/map_images/pad_80_20200803143323.jpg"
+        }
+      ],
+      "crew": []
+    }
+  },
   "75a35be5-b3bd-4591-b978-9a876da9fa96": {
     "launchId": "75a35be5-b3bd-4591-b978-9a876da9fa96",
     "launchName": "Falcon 9 Block 5 | Starlink Group 17-37",
@@ -1717,7 +1748,7 @@
   "bad5ea8c-8b17-4cb3-a063-d427fb092275": {
     "launchId": "bad5ea8c-8b17-4cb3-a063-d427fb092275",
     "launchName": "Falcon 9 Block 5 | Starlink Group 17-54",
-    "window": "upcoming",
+    "window": "previous",
     "images": {
       "launch": [
         {
