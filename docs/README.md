@@ -2,7 +2,7 @@
 
 Current map of tracked Markdown documentation.
 
-**Last updated:** 2026-06-08
+**Last updated:** 2026-06-16
 
 Tracked Markdown audit scope: `git ls-files '*.md'` returned 216 tracked files before the 2026-04-15 content coverage sync. That sync adds 16 new markdown files under `content/projects/` and `content/sections/`.
 
@@ -41,6 +41,12 @@ AI-oriented technical references:
 - `ai-context/SEO-AND-METADATA.md`
 - `ai-context/STYLING.md`
 
+Subsystem references (current):
+
+- `../SNAPSHOT_DRIVEN_DASHBOARDS.md` — shared snapshot-driven dashboard architecture
+- `../PERSONAL_INTEREST_TOOLS.md` — browser-persisted localStorage tools
+- `../RETIREMENT_PLANNER_ENGINE.md` — pure retirement projection engine (`src/lib/retirement/`)
+
 ---
 
 ## Supporting Operational Docs
@@ -53,6 +59,7 @@ Use these when the task is specifically about setup, deployment, data operations
 - `../TROUBLESHOOTING.md`
 - `AUTOMATION_SCRIPTS.md`
 - `CRON_SETUP.md`
+- `DATA_UPDATE_OPERATIONS.md` (consolidated command → artifact → schedule runbook)
 - `ENVIRONMENT_CONFIGURATION.md`
 - `FANTASY_PLATFORM_SETUP.md`
 - `SECURITY.md`

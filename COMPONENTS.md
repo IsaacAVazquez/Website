@@ -2,7 +2,14 @@
 
 Current component map for the live application.
 
-**Last updated:** 2026-06-10
+**Last updated:** 2026-06-16
+
+> The homepage, about, portfolio, contact, and writing-archive surfaces moved to
+> dedicated `*V3` composition roots in the 2026-05-31 refresh (commit `66063bb`).
+> The older single-purpose homepage components (`ModernHero`, `ThinkingPreview`,
+> `ContactSection`) and the `FeaturedWorkSection`/`ContactContent` names this doc
+> previously listed are no longer wired into any route — see *Legacy Or Unwired
+> Components*.
 
 ---
 
@@ -20,17 +27,20 @@ Current component map for the live application.
 | `RouteErrorBoundary` | `src/components/RouteErrorBoundary.tsx` | Shared editorial-styled error fallback re-exported by per-route `error.tsx` files |
 | `ContactCta` | `src/components/ContactCta.tsx` | Shared closing contact CTA used by the full footer |
 
-### Homepage and portfolio
+### Homepage, about, portfolio, contact, writing
+
+Each of these editorial surfaces renders a single dedicated `*V3` composition
+root (introduced in the 2026-05-31 refresh). The route page is a thin server
+shell that passes data in.
 
 | Component | File | Role |
 |----------|------|------|
-| `ModernHero` | `src/components/ModernHero.tsx` | Homepage hero |
-| `FeaturedWorkSection` | `src/components/FeaturedWorkSection.tsx` | Homepage featured projects |
-| `ThinkingPreview` | `src/components/ThinkingPreview.tsx` | Homepage product-thinking section |
-| `ContactSection` | `src/components/ContactSection.tsx` | Homepage closing contact section |
-| `About` | `src/components/About.tsx` | About page tabbed content |
-| `ContactContent` | `src/components/ContactContent.tsx` | Contact page content |
-| `ProjectDetailModal` | `src/components/ProjectDetailModal.tsx` | Legacy project modal used by non-primary flows |
+| `HomePageV3` | `src/components/home/HomePageV3.tsx` | Homepage composition root (hero, featured work, writing, contact). Props: `featuredProjects`, `recentPosts`, `heroIndex` |
+| `AboutV3` | `src/components/about/AboutV3.tsx` | `/about` content |
+| `PortfolioV3` | `src/components/portfolio/PortfolioV3.tsx` | `/portfolio` project grid and surfacing |
+| `ContactV3` | `src/components/contact/ContactV3.tsx` | `/contact` content |
+| `WritingArchiveV3` | `src/components/writing/WritingArchiveV3.tsx` | `/writing` archive index |
+| `ProjectDetailModal` | `src/components/ProjectDetailModal.tsx` | Legacy project modal, imported only by `ProjectsContent.tsx` (non-primary flow) |
 
 ### Writing and structured data
 
@@ -54,31 +64,23 @@ These are used across `/fantasy-football/*` routes.
 
 ### Investments
 
-The investments surface is split between a client shell and specialized panels.
+`InvestmentsDashboard` (`src/components/investments/InvestmentsDashboard.tsx`) is
+the main shell rendered by `src/app/investments/investments-client.tsx`. It
+composes the portfolio and research surfaces (all under
+`src/components/investments/`):
 
-Main components:
+- Portfolio: `PortfolioSummary`, `PortfolioHeroCard`, `PortfolioStatsGrid`, `HoldingsTable`, `AddStockForm`, `AllocationChart`, `PortfolioPerformanceChart`, `Sparkline`
+- Research: `StockResearch`, `StockSearch`, `ResearchOverview`, `ResearchSidebar`, `ResearchSection`, `ResearchAssetHeader`, `ResearchPosition`
+- Research panels: `PriceChartPanel`, `DCFPanel`, `FinancialStatementsPanel`, `GrowthPanel`, `ValuationRatiosPanel`, `ProfitabilityPanel`, `IndustryPanel`
+- Comparison: `ComparisonTab`, `ComparisonMetricTable`, `ComparisonRadarChart`
+- Freshness / chrome: `DataFreshnessIndicator`, `InvestmentsFreshnessBanner`, `MetricTooltip`, `ErrorState`
 
-- `StockResearch`
-- `PortfolioTracker`
-- `PortfolioSummary`
-- `StockCard`
-- `AddStockForm`
-- `AllocationChart`
-- `PortfolioPerformanceChart`
-- `ResearchOverview`
-- `ResearchSummaryStrip`
-- `ComparisonTab`
-- `PriceChartPanel`
-- `DCFPanel`
-- `FundamentalsPanel`
-- `FinancialStatementsPanel`
-- `GrowthPanel`
-- `ValuationRatiosPanel`
-- `ProfitabilityPanel`
-- `IndustryPanel`
-- `NewsPanel`
-
-Retirement planner components live in `src/components/investments/retirement/` (verdict headline, D3 confidence-band chart, levers panel, editable assumptions footer). They sit on the pure engine in `src/lib/retirement/` and `useRetirementPlan` browser-local state.
+Retirement planner components live in `src/components/investments/retirement/`
+(`RetirementPlanner` shell, `RetirementInputs`/`RetirementFields`,
+`RetirementVerdict`, `RetirementProjectionChart` D3 confidence-band chart,
+`RetirementLevers`, `RetirementAssumptions`, `RetirementDisclaimer`). They sit on
+the pure engine in `src/lib/retirement/` and `useRetirementPlan` browser-local
+state — see `RETIREMENT_PLANNER_ENGINE.md` for the engine reference.
 
 ### Football dashboards
 
@@ -98,6 +100,12 @@ Shared components for the `/premier-league`, `/la-liga`, `/mlb`, `/nba`, `/nfl`,
 | `EmptyPanel` | `src/components/football/EmptyPanel.tsx` | Empty-state placeholder panel |
 
 ### Standalone data tools
+
+Most of these are snapshot-driven dashboards that share one architecture
+(seed → builder → GitHub Action → accessors → API). See
+`SNAPSHOT_DRIVEN_DASHBOARDS.md` for the shared pattern, and
+`PERSONAL_INTEREST_TOOLS.md` for the browser-persisted tools (`/travel`,
+`/wine-cellar`, `/museum-log`, `/recipe-finder`, `/food-map`).
 
 | Area | Primary files | Role |
 |------|---------------|------|
@@ -148,21 +156,17 @@ Styling guidance for these lives in `STYLING.md`.
 
 ### Homepage
 
-The homepage uses:
-
-- `ModernHero`
-- `FeaturedWorkSection`
-- `ThinkingPreview`
-- `ContactSection`
-
-`WritingPreview.tsx` still exists in the repo but is not part of the current homepage.
+`src/app/page.tsx` renders `HomePageV3` (plus the `StructuredData` /
+`AIStructuredData` JSON-LD injectors). `HomePageV3` is a self-contained
+composition; the older `ModernHero` / `ThinkingPreview` / `ContactSection` files
+and `WritingPreview.tsx` still exist in the repo but are no longer wired into the
+homepage.
 
 ### `/investments`
 
-`src/app/investments/investments-client.tsx` is the top-level shell and lazy-loads:
-
-- `PortfolioTracker`
-- `StockResearch`
+`src/app/investments/investments-client.tsx` is the top-level shell; it renders
+`InvestmentsDashboard`, which composes the portfolio and research surfaces listed
+above.
 
 ### `/march-madness-2026`
 
@@ -188,8 +192,13 @@ These files still exist, but should not be described as the primary live path wi
 
 - `src/components/ProjectsContent.tsx`
 - `src/components/WritingPreview.tsx`
+- `src/components/ModernHero.tsx`
+- `src/components/ThinkingPreview.tsx`
+- `src/components/ContactSection.tsx`
+- `src/components/ProjectDetailModal.tsx` (imported only by `ProjectsContent.tsx`)
 
-They remain useful as historical or alternate implementation context.
+They remain useful as historical or alternate implementation context. The
+`*V3` composition roots replaced them on the live routes.
 
 ---
 
