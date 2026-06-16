@@ -103,17 +103,27 @@ function totalMinutes(recipe: RecipeMatch["recipe"]): number {
 }
 
 export function RecipeFinderClient() {
-  const [pantry, setPantry] = useState<string[]>(() => loadPantry());
+  const [pantry, setPantry] = useState<string[]>([]);
+  const [hydrated, setHydrated] = useState(false);
   const [pantryDraft, setPantryDraft] = useState("");
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<RecipeCategory | "all">("all");
-  const [diet, setDiet] = useState<DietTag | "all">("all");
   const [view, setView] = useState<ViewId>("all");
+  const [diet, setDiet] = useState<DietTag | "all">("all");
   const [openRecipeId, setOpenRecipeId] = useState<string | null>(null);
 
+  // Load the saved pantry after mount so the server and first client render
+  // match (both start empty), then flip `hydrated` so the save effect can run.
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- One-time hydration: read the saved pantry after mount so SSR and the first client render match
+    setPantry(loadPantry());
+    setHydrated(true);
+  }, []);
+
+  useEffect(() => {
+    if (!hydrated) return;
     savePantry(pantry);
-  }, [pantry]);
+  }, [pantry, hydrated]);
 
   const ingredientCatalog = useMemo(() => getIngredientCatalog(RECIPES), []);
 

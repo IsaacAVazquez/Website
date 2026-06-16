@@ -82,9 +82,14 @@ function getPillStyle(active: boolean, unavailable = false): CSSProperties {
 
 function getPublishedBoardRank(player: Player, position: FantasyRoutePosition): string {
   const rankValue =
-    position === "overall" || position === "flex"
-      ? player.rankEcr ?? player.averageRank
-      : player.positionRank ?? player.rankEcr ?? player.averageRank;
+    position === "flex"
+      ? // The flex board is re-ranked densely (1..N) into averageRank by the
+        // snapshot builder; rankEcr still carries each player's overall ECR
+        // (gappy, since QB/K/DST are filtered out), so use the dense flex rank.
+        player.averageRank ?? player.rankEcr
+      : position === "overall"
+        ? player.rankEcr ?? player.averageRank
+        : player.positionRank ?? player.rankEcr ?? player.averageRank;
 
   return formatRankValue(rankValue);
 }

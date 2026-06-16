@@ -62,7 +62,13 @@ export function isGolfPlayerIdShape(playerId: string): boolean {
 }
 
 export function isValidGolfPlayerId(playerId: string): boolean {
-  return GOLF_PLAYER_ID_PATTERN.test(playerId) && playerId in golfSnapshot.playerSnapshots;
+  // Use hasOwn (not `in`) so prototype keys like "constructor"/"toString" — which
+  // pass the case-insensitive shape regex — don't resolve through the prototype
+  // chain and turn a 404 into a cacheable 200 serializing a built-in.
+  return (
+    GOLF_PLAYER_ID_PATTERN.test(playerId) &&
+    Object.hasOwn(golfSnapshot.playerSnapshots, playerId)
+  );
 }
 
 export async function getGolfSummary(): Promise<GolfSummary> {
@@ -70,7 +76,9 @@ export async function getGolfSummary(): Promise<GolfSummary> {
 }
 
 export async function getGolfPlayerSnapshot(playerId: string): Promise<GolfPlayerSnapshot> {
-  const snapshot = golfSnapshot.playerSnapshots[playerId];
+  const snapshot = Object.hasOwn(golfSnapshot.playerSnapshots, playerId)
+    ? golfSnapshot.playerSnapshots[playerId]
+    : undefined;
 
   if (!snapshot) {
     throw createGolfSnapshotError("Golf player snapshot was not found.", 404);

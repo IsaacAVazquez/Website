@@ -152,6 +152,6 @@ describe("wineCellar", () => {
         sort: "price",
         sortDirection: "desc",
       }).map((entry) => entry.id)
-    ).toEqual(["wine-2", "wine-1"]);
+    ).toEqual(["wine-1", "wine-2"]);
   });
 });

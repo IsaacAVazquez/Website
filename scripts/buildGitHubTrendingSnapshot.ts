@@ -195,11 +195,32 @@ async function fetchSegment(
     signal: AbortSignal.timeout(15_000),
   });
 
-  const payload = (await response.json()) as GitHubSearchResponse;
-
   if (!response.ok) {
+    // Read the body as text so an HTML rate-limit/error page does not throw a
+    // raw SyntaxError; surface a useful message without assuming valid JSON.
+    let detail = response.statusText;
+    try {
+      const errorBody = await response.text();
+      try {
+        const parsed = JSON.parse(errorBody) as GitHubSearchResponse;
+        detail = parsed.message ?? response.statusText;
+      } catch {
+        // Body was not JSON (e.g. an HTML error page); keep the status text.
+      }
+    } catch {
+      // Ignore body-read failures and fall back to the status text.
+    }
     throw new Error(
-      `GitHub search failed for ${segment.label}: ${payload.message ?? response.statusText}`
+      `GitHub search failed for ${segment.label} (HTTP ${response.status}): ${detail}`
+    );
+  }
+
+  let payload: GitHubSearchResponse;
+  try {
+    payload = (await response.json()) as GitHubSearchResponse;
+  } catch (parseError) {
+    throw new Error(
+      `GitHub search returned unparseable JSON for ${segment.label}: ${String(parseError)}`
     );
   }
 

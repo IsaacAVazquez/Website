@@ -79,16 +79,58 @@ export function normalizeIngredient(raw: string): string {
 }
 
 /**
- * Loose contains-match so "tomato" matches "cherry tomato" and "tomatoes"
- * matches "tomato". Returns true when either side substring-includes the
- * other after normalization.
+ * Head words that turn a phrase into a distinct *derived* product rather than a
+ * variety of its modifier: "rice vinegar" is not "rice", "soy sauce" is not
+ * "soy", "almond milk" is not "almond". When a multi-word ingredient ends in one
+ * of these, a bare modifier (the other word) must not match it — only the head
+ * word itself does. This keeps "chicken breast"/"cherry tomato" matching while
+ * blocking the false positives a raw substring/word-set match would produce.
+ */
+const DERIVED_HEAD_WORDS = new Set([
+  "vinegar",
+  "oil",
+  "sauce",
+  "paste",
+  "powder",
+  "stock",
+  "broth",
+  "milk",
+  "butter",
+  "syrup",
+  "extract",
+  "wine",
+  "juice",
+  "flour",
+]);
+
+/**
+ * Loose whole-word match so "tomato" matches "cherry tomato" and "chicken"
+ * matches "chicken breast", but "rice" does NOT match "rice vinegar". Returns
+ * true when every word of the shorter normalized phrase appears as a standalone
+ * word (not a substring) in the longer phrase, with one guard: a single bare
+ * word never matches a multi-word *derived product* (e.g. a vinegar, oil, or
+ * sauce) unless it is that product's head word.
  */
 export function ingredientsMatch(a: string, b: string): boolean {
   const left = normalizeIngredient(a);
   const right = normalizeIngredient(b);
   if (!left || !right) return false;
   if (left === right) return true;
-  return left.includes(right) || right.includes(left);
+  const leftWords = left.split(" ");
+  const rightWords = right.split(" ");
+  const [shorter, longer] =
+    leftWords.length <= rightWords.length
+      ? [leftWords, rightWords]
+      : [rightWords, leftWords];
+
+  // A bare modifier ("rice") shouldn't match a derived product ("rice vinegar").
+  if (shorter.length === 1 && longer.length > 1) {
+    const head = longer[longer.length - 1];
+    if (DERIVED_HEAD_WORDS.has(head) && shorter[0] !== head) return false;
+  }
+
+  const longerSet = new Set(longer);
+  return shorter.every((word) => longerSet.has(word));
 }
 
 export interface ScoreOptions {

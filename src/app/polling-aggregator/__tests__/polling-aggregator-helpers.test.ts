@@ -54,11 +54,11 @@ describe("polling-aggregator-helpers", () => {
     });
   });
 
-  it("maps values into a compact SVG polyline", () => {
-    expect(buildPolyline([10, 20, 15], 100, 50, 10)).toBe(
+  it("maps values into a compact SVG polyline on a shared Y-domain", () => {
+    expect(buildPolyline([10, 20, 15], 100, 50, 10, 10, 20)).toBe(
       "10.0,40.0 50.0,10.0 90.0,25.0"
     );
-    expect(buildPolyline([12], 100, 50)).toBe("");
-    expect(buildPolyline([5, 5], 20, 20, 0)).toBe("0.0,20.0 20.0,20.0");
+    expect(buildPolyline([12], 100, 50, 8, 0, 100)).toBe("");
+    expect(buildPolyline([5, 5], 20, 20, 0, 5, 5)).toBe("0.0,20.0 20.0,20.0");
   });
 });

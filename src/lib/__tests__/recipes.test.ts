@@ -47,10 +47,14 @@ const recipes: Recipe[] = [
 ];
 
 describe("recipes", () => {
-  it("normalizes and loosely matches pantry ingredients", () => {
+  it("normalizes and whole-word matches pantry ingredients", () => {
     expect(normalizeIngredient("  Cherry-Tomatoes!! ")).toBe("cherry tomatoes");
-    expect(ingredientsMatch("tomatoes", "tomato")).toBe(true);
+    expect(ingredientsMatch("tomato", "cherry tomato")).toBe(true);
+    expect(ingredientsMatch("chicken", "chicken breast")).toBe(true);
     expect(ingredientsMatch("olive oil", "oil")).toBe(true);
+    // Whole-word containment: a substring is no longer enough to match.
+    expect(ingredientsMatch("rice", "rice vinegar")).toBe(false);
+    expect(ingredientsMatch("egg", "eggplant")).toBe(false);
     expect(ingredientsMatch("", "tomato")).toBe(false);
   });
 

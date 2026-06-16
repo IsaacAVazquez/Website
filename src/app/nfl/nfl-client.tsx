@@ -186,8 +186,8 @@ export function NflClient({
   );
   const [loadingTeamId, setLoadingTeamId] = useState<string | null>(null);
   const [teamSnapshotError, setTeamSnapshotError] = useState<string | null>(null);
-  const teamSnapshot = teamSnapshots[selectedTeam.id] ?? null;
-  const isTeamSnapshotLoading = loadingTeamId === selectedTeam.id;
+  const teamSnapshot = selectedTeam ? teamSnapshots[selectedTeam.id] ?? null : null;
+  const isTeamSnapshotLoading = selectedTeam ? loadingTeamId === selectedTeam.id : false;
   const desiredHref = buildNflHref(
     {
       view: routeState.view,
@@ -227,6 +227,7 @@ export function NflClient({
   }
 
   useEffect(() => {
+    if (!selectedTeam) return;
     if (teamSnapshots[selectedTeam.id]) {
       // eslint-disable-next-line react-hooks/set-state-in-effect -- Reset loading/error flags when cached snapshot exists for the selected team
       setLoadingTeamId(null);
@@ -262,9 +263,31 @@ export function NflClient({
       cancelled = true;
       controller.abort();
     };
-  }, [selectedTeam.id, teamSnapshots]);
+  }, [selectedTeam, teamSnapshots]);
 
   const conferenceContext = useMemo(() => buildConferenceContext(teams), [teams]);
+
+  const [activeDetailTab, setActiveDetailTab] = useState<
+    "team" | "fixtures" | "leaders"
+  >("team");
+  const [activeLeaderTab, setActiveLeaderTab] = useState<LeaderCategory>("passing");
+
+  if (!selectedTeam) {
+    return (
+      <div className="home-page min-h-screen">
+        <div className="home-shell home-section space-y-5 sm:space-y-6">
+          <div className="rounded-2xl border border-dashed border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-6 text-sm text-[var(--home-ink-muted)]">
+            <p className="home-kicker mb-2 text-[var(--home-ink)]">NFL Pulse</p>
+            <p className="mb-0">
+              Conference standings, playoff seeding, and stat leaders will
+              appear here once the next snapshot is published.
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   const teamStoryline = getTeamStoryline(selectedTeam, conferenceContext);
   const teamPressurePoints = getTeamPressurePoints(selectedTeam, {
     conferenceContext,
@@ -277,10 +300,6 @@ export function NflClient({
   const recentFixtures = (teamSnapshot?.recentFixtures ?? []).slice(0, 3);
   const upcomingFixtures = (teamSnapshot?.upcomingFixtures ?? []).slice(0, 3);
 
-  const [activeDetailTab, setActiveDetailTab] = useState<
-    "team" | "fixtures" | "leaders"
-  >("team");
-  const [activeLeaderTab, setActiveLeaderTab] = useState<LeaderCategory>("passing");
   const activeLeaderMeta =
     LEADER_TABS.find((tab) => tab.id === activeLeaderTab) ?? LEADER_TABS[0];
   const activeLeaders = summary.leaders[activeLeaderTab] ?? [];
@@ -408,42 +427,50 @@ export function NflClient({
 
         {/* Key gaps */}
         <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-          <StatCard
-            variant="compact"
-            eyebrow="AFC #1 seed"
-            metric={`${afcTopSeed.shortName} · ${formatRecord(afcTopSeed)}`}
-            detail={`${formatDifferential(afcTopSeed.pointDifferential)} pt diff`}
-            icon={<Trophy className="h-4 w-4" />}
-          />
-          <StatCard
-            variant="compact"
-            eyebrow="NFC #1 seed"
-            metric={`${nfcTopSeed.shortName} · ${formatRecord(nfcTopSeed)}`}
-            detail={`${formatDifferential(nfcTopSeed.pointDifferential)} pt diff`}
-            icon={<TrendingUp className="h-4 w-4" />}
-          />
-          <StatCard
-            variant="compact"
-            eyebrow="AFC playoff cutoff"
-            metric={`${afcCutoff.shortName} · ${formatRecord(afcCutoff)}`}
-            detail={
-              afcFirstOut
-                ? `${Math.max(0, afcCutoff.wins - afcFirstOut.wins)} wins clear of ${afcFirstOut.shortName}`
-                : `Last AFC playoff team`
-            }
-            icon={<Shield className="h-4 w-4" />}
-          />
-          <StatCard
-            variant="compact"
-            eyebrow="NFC playoff cutoff"
-            metric={`${nfcCutoff.shortName} · ${formatRecord(nfcCutoff)}`}
-            detail={
-              nfcFirstOut
-                ? `${Math.max(0, nfcCutoff.wins - nfcFirstOut.wins)} wins clear of ${nfcFirstOut.shortName}`
-                : `Last NFC playoff team`
-            }
-            icon={<BarChart3 className="h-4 w-4" />}
-          />
+          {afcTopSeed && (
+            <StatCard
+              variant="compact"
+              eyebrow="AFC #1 seed"
+              metric={`${afcTopSeed.shortName} · ${formatRecord(afcTopSeed)}`}
+              detail={`${formatDifferential(afcTopSeed.pointDifferential)} pt diff`}
+              icon={<Trophy className="h-4 w-4" />}
+            />
+          )}
+          {nfcTopSeed && (
+            <StatCard
+              variant="compact"
+              eyebrow="NFC #1 seed"
+              metric={`${nfcTopSeed.shortName} · ${formatRecord(nfcTopSeed)}`}
+              detail={`${formatDifferential(nfcTopSeed.pointDifferential)} pt diff`}
+              icon={<TrendingUp className="h-4 w-4" />}
+            />
+          )}
+          {afcCutoff && (
+            <StatCard
+              variant="compact"
+              eyebrow="AFC playoff cutoff"
+              metric={`${afcCutoff.shortName} · ${formatRecord(afcCutoff)}`}
+              detail={
+                afcFirstOut
+                  ? `${Math.max(0, afcCutoff.wins - afcFirstOut.wins)} wins clear of ${afcFirstOut.shortName}`
+                  : `Last AFC playoff team`
+              }
+              icon={<Shield className="h-4 w-4" />}
+            />
+          )}
+          {nfcCutoff && (
+            <StatCard
+              variant="compact"
+              eyebrow="NFC playoff cutoff"
+              metric={`${nfcCutoff.shortName} · ${formatRecord(nfcCutoff)}`}
+              detail={
+                nfcFirstOut
+                  ? `${Math.max(0, nfcCutoff.wins - nfcFirstOut.wins)} wins clear of ${nfcFirstOut.shortName}`
+                  : `Last NFC playoff team`
+              }
+              icon={<BarChart3 className="h-4 w-4" />}
+            />
+          )}
         </div>
 
         {/* Main standings + sidebar */}

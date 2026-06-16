@@ -113,13 +113,11 @@ function formatDelta(value: number): string {
 }
 
 function formatGmtOffset(value: string | null): string | null {
-  if (!value) {
-    return null;
-  }
-
-  const trimmed = value.trim();
-  const normalized = trimmed.slice(0, 6);
-  return normalized.startsWith("-") ? `UTC${normalized}` : `UTC+${normalized.slice(-5)}`;
+  if (!value) return null;
+  const match = value.trim().match(/^([+-]?)(\d{1,2}):(\d{2})/);
+  if (!match) return null;
+  const sign = match[1] === "-" ? "-" : "+";
+  return `UTC${sign}${match[2].padStart(2, "0")}:${match[3]}`;
 }
 
 function getMeetingStatusCopy(meeting: Formula1MeetingSummary): string {

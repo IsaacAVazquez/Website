@@ -1739,6 +1739,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
         {routeState.view === "museum" && selectedMuseum && (
           <section className="tool-band" aria-label={`${selectedMuseum.name} detail`}>
             <MuseumDetailView
+              key={selectedMuseum.id}
               museum={selectedMuseum}
               snapshot={snapshot}
               visit={findVisit(selectedMuseum.id)}

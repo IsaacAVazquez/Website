@@ -22,12 +22,19 @@ import { computePortfolioAssumptions } from "./assumptions";
 import { runMonteCarlo } from "./monteCarlo";
 import { formatCurrency, formatPercent } from "./format";
 
-const LEVER_SIMS = 1000;
 const TO_REACH_SIMS = 250;
 const SAVE_MORE_STEP = 5000;
 const RETIRE_LATER_STEP = 2;
 
-function successRate(input: RetirementPlanInput, referenceYear?: number, simulations = LEVER_SIMS): number {
+// Lever rows run at the plan's own simulation count so their absolute
+// "→ X% success" figures agree with the headline gauge (which also uses
+// input.assumptions.simulations) rather than a hardcoded constant that only
+// happens to match the default plan.
+function successRate(
+  input: RetirementPlanInput,
+  referenceYear?: number,
+  simulations = input.assumptions.simulations,
+): number {
   const { expectedReturn, volatility } = computePortfolioAssumptions(input.allocation);
   return runMonteCarlo(input, {
     expectedReturn,

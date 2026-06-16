@@ -40,17 +40,11 @@ const STATIC_ROUTE_LASTMOD = {
   "/march-madness-2026": "2026-03-17",
   "/fantasy-football": readFantasyLastmod(),
   "/fantasy-football/draft-tracker": readFantasyLastmod(),
-  "/fantasy-football/rb-tiers": readFantasyLastmod(),
   "/fintech-tools/budget-planner": "2026-04-03",
   "/fintech-tools/interchange-iq": "2026-04-02",
   "/food-map": "2026-04-28",
   "/travel": "2026-05-04",
 };
-
-// Fantasy tier positions live behind /fantasy-football/tiers/[position].
-// The valid set is the FANTASY_ROUTE_POSITIONS list in src/lib/fantasy.ts;
-// "overall" is included for completeness alongside the per-position routes.
-const FANTASY_TIER_POSITIONS = ["overall", "qb", "rb", "wr", "te", "flex", "k", "dst"];
 
 function readFile(filePath) {
   return fs.readFileSync(path.join(process.cwd(), filePath), "utf8");
@@ -150,12 +144,21 @@ function getStaticRouteEntries() {
   }));
 }
 
-function getFantasyTierEntries() {
-  const lastmod = readFantasyLastmod();
-  return FANTASY_TIER_POSITIONS.map((position) => ({
-    loc: `/fantasy-football/tiers/${position}`,
-    lastmod,
-  }));
+/**
+ * Walk a brace-balanced block starting at `openIndex` (which must point at a
+ * `{`) and return the index of its matching `}`, or -1 if unbalanced.
+ */
+function matchBrace(text, openIndex) {
+  let depth = 0;
+  for (let i = openIndex; i < text.length; i += 1) {
+    const ch = text[i];
+    if (ch === "{") depth += 1;
+    else if (ch === "}") {
+      depth -= 1;
+      if (depth === 0) return i;
+    }
+  }
+  return -1;
 }
 
 /**
@@ -183,20 +186,7 @@ function getPortfolioSlugEntries() {
     return [];
   }
 
-  let depth = 0;
-  let braceEnd = -1;
-  for (let i = braceStart; i < source.length; i += 1) {
-    const ch = source[i];
-    if (ch === "{") depth += 1;
-    else if (ch === "}") {
-      depth -= 1;
-      if (depth === 0) {
-        braceEnd = i;
-        break;
-      }
-    }
-  }
-
+  const braceEnd = matchBrace(source, braceStart);
   if (braceEnd === -1) {
     return [];
   }
@@ -210,6 +200,19 @@ function getPortfolioSlugEntries() {
   const slugs = new Set();
   let match;
   while ((match = slugRegex.exec(objectBody)) !== null) {
+    // Case studies with a top-level `link:` redirect (the [slug] route calls
+    // `redirect(caseStudy.link)` instead of rendering a page), so listing them
+    // in the sitemap just produces "Page with redirect" URLs. Only emit slugs
+    // whose block has no top-level `link` property (4-space indented).
+    const blockBraceStart = objectBody.indexOf("{", match.index + match[0].length - 1);
+    const blockEnd = matchBrace(objectBody, blockBraceStart);
+    if (blockEnd === -1) {
+      continue;
+    }
+    const block = objectBody.slice(blockBraceStart, blockEnd + 1);
+    if (/\n {4}link\s*:/.test(block)) {
+      continue;
+    }
     slugs.add(match[1]);
   }
 
@@ -254,7 +257,6 @@ function getBlogRouteEntries() {
 function getPublicSitemapEntries() {
   const allEntries = [
     ...getStaticRouteEntries(),
-    ...getFantasyTierEntries(),
     ...getPortfolioSlugEntries(),
     ...getBlogRouteEntries(),
   ];

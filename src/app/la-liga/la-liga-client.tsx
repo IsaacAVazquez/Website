@@ -150,8 +150,8 @@ export function LaLigaClient({
   );
   const [loadingClubId, setLoadingClubId] = useState<string | null>(null);
   const [teamSnapshotError, setTeamSnapshotError] = useState<string | null>(null);
-  const teamSnapshot = teamSnapshots[selectedClub.id] ?? null;
-  const isTeamSnapshotLoading = loadingClubId === selectedClub.id;
+  const teamSnapshot = selectedClub ? teamSnapshots[selectedClub.id] ?? null : null;
+  const isTeamSnapshotLoading = selectedClub ? loadingClubId === selectedClub.id : false;
   const desiredHref = buildLaLigaHref(
     {
       view: routeState.view,
@@ -198,7 +198,11 @@ export function LaLigaClient({
   }
 
   useEffect(() => {
-    if (teamSnapshots[selectedClub.id]) {
+    if (!selectedClub) {
+      return;
+    }
+    const clubId = selectedClub.id;
+    if (teamSnapshots[clubId]) {
       // eslint-disable-next-line react-hooks/set-state-in-effect -- Reset loading/error flags when cached snapshot exists for the selected club
       setLoadingClubId(null);
       setTeamSnapshotError(null);
@@ -208,17 +212,17 @@ export function LaLigaClient({
     const controller = new AbortController();
     let cancelled = false;
 
-    setLoadingClubId(selectedClub.id);
+    setLoadingClubId(clubId);
     setTeamSnapshotError(null);
 
-    fetchLaLigaTeamSnapshot(selectedClub.id, controller.signal)
+    fetchLaLigaTeamSnapshot(clubId, controller.signal)
       .then((snapshot) => {
         if (cancelled) {
           return;
         }
 
         setTeamSnapshots((current) => (
-          current[selectedClub.id] ? current : { ...current, [selectedClub.id]: snapshot }
+          current[clubId] ? current : { ...current, [clubId]: snapshot }
         ));
       })
       .catch((error: Error) => {
@@ -228,7 +232,7 @@ export function LaLigaClient({
       })
       .finally(() => {
         if (!cancelled) {
-          setLoadingClubId((current) => (current === selectedClub.id ? null : current));
+          setLoadingClubId((current) => (current === clubId ? null : current));
         }
       });
 
@@ -236,7 +240,33 @@ export function LaLigaClient({
       cancelled = true;
       controller.abort();
     };
-  }, [selectedClub.id, teamSnapshots]);
+  }, [selectedClub, teamSnapshots]);
+
+  const [activeDetailTab, setActiveDetailTab] = useState<"club" | "fixtures" | "scorers">("club");
+  const goalsForLeader = useMemo(
+    () => [...clubs].sort((a, b) => b.goalsFor - a.goalsFor || a.position - b.position)[0] ?? null,
+    [clubs]
+  );
+  const bestDefense = useMemo(
+    () => [...clubs].sort((a, b) => a.goalsAgainst - b.goalsAgainst || a.position - b.position)[0] ?? null,
+    [clubs]
+  );
+
+  if (clubs.length < 18 || !selectedClub) {
+    return (
+      <div className="home-page min-h-screen">
+        <div className="home-shell home-section space-y-5 sm:space-y-6">
+          <div className="rounded-2xl border border-dashed border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-6 text-sm text-[var(--home-ink-muted)]">
+            <p className="home-kicker mb-2 text-[var(--home-ink)]">La Liga Pulse</p>
+            <p className="mb-0">
+              Standings, European places, and scorer leaders will appear here
+              once the next snapshot is published.
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   const leader = clubs[0];
   const runnerUp = clubs[1];
@@ -271,19 +301,10 @@ export function LaLigaClient({
   const formSequence = teamSnapshot?.form?.sequence ?? [];
   const recentFixtures = (teamSnapshot?.recentFixtures ?? []).slice(0, 3);
   const upcomingFixtures = (teamSnapshot?.upcomingFixtures ?? []).slice(0, 3);
-  const [activeDetailTab, setActiveDetailTab] = useState<"club" | "fixtures" | "scorers">("club");
 
   // Stats panel cells
   const topScorerEntry = summary.scorers[0] ?? null;
   const topScorerClub = topScorerEntry ? clubLookup.get(topScorerEntry.clubId) ?? topScorerEntry.clubCode : null;
-  const goalsForLeader = useMemo(
-    () => [...clubs].sort((a, b) => b.goalsFor - a.goalsFor || a.position - b.position)[0] ?? null,
-    [clubs]
-  );
-  const bestDefense = useMemo(
-    () => [...clubs].sort((a, b) => a.goalsAgainst - b.goalsAgainst || a.position - b.position)[0] ?? null,
-    [clubs]
-  );
   const totalMatchdays = 38;
 
   const statsPanelCells: HomeStatsCell[] = [
@@ -382,29 +403,29 @@ export function LaLigaClient({
           <StatCard
             variant="compact"
             eyebrow="Leader"
-            metric={`${leader.shortName} · ${leader.points} pts`}
-            detail={`${leader.points - runnerUp.points} clear of ${runnerUp.shortName}`}
+            metric={`${leader?.shortName ?? "—"} · ${leader?.points ?? "—"} pts`}
+            detail={leader && runnerUp ? `${leader.points - runnerUp.points} clear of ${runnerUp.shortName}` : "Standings loading"}
             icon={<Trophy className="h-4 w-4" />}
           />
           <StatCard
             variant="compact"
             eyebrow="Top-four line"
-            metric={`+${fourthPlace.points - fifthPlace.points} pts`}
-            detail={`${fourthPlace.shortName} over ${fifthPlace.shortName}`}
+            metric={fourthPlace && fifthPlace ? `+${fourthPlace.points - fifthPlace.points} pts` : "—"}
+            detail={fourthPlace && fifthPlace ? `${fourthPlace.shortName} over ${fifthPlace.shortName}` : ""}
             icon={<TrendingUp className="h-4 w-4" />}
           />
           <StatCard
             variant="compact"
             eyebrow="Europe line"
-            metric={`+${sixthPlace.points - seventhPlace.points} pts`}
-            detail={`${sixthPlace.shortName} over ${seventhPlace.shortName}`}
+            metric={sixthPlace && seventhPlace ? `+${sixthPlace.points - seventhPlace.points} pts` : "—"}
+            detail={sixthPlace && seventhPlace ? `${sixthPlace.shortName} over ${seventhPlace.shortName}` : ""}
             icon={<BarChart3 className="h-4 w-4" />}
           />
           <StatCard
             variant="compact"
             eyebrow="Safety line"
-            metric={`+${safetyLine.points - dropLine.points} pt`}
-            detail={`${safetyLine.shortName} over ${dropLine.shortName}`}
+            metric={safetyLine && dropLine ? `+${safetyLine.points - dropLine.points} pt` : "—"}
+            detail={safetyLine && dropLine ? `${safetyLine.shortName} over ${dropLine.shortName}` : ""}
             icon={<Shield className="h-4 w-4" />}
           />
         </div>

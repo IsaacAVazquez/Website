@@ -127,15 +127,22 @@ export function getRowStyle(isSelected: boolean): CSSProperties {
 
 interface Point { x: number; y: number }
 
+/**
+ * Maps a series into an SVG polyline using a *shared* Y-domain so multiple
+ * series (e.g. approve + disapprove) align on one scale. The caller computes
+ * `minVal`/`maxVal` across every series and passes the same values for each
+ * polyline, the gridlines, and the end-dots so the chart is internally
+ * consistent.
+ */
 export function buildPolyline(
   values: number[],
   width: number,
   height: number,
-  padding = 8
+  padding: number,
+  minVal: number,
+  maxVal: number
 ): string {
   if (values.length < 2) return "";
-  const minVal = Math.min(...values);
-  const maxVal = Math.max(...values);
   const range = maxVal - minVal || 1;
   const pts: Point[] = values.map((v, i) => ({
     x: padding + (i / (values.length - 1)) * (width - padding * 2),
