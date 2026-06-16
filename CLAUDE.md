@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Comprehensive repo context for agents and collaborators. `AGENTS.md` is the shorter start-here companion; this file holds the deeper implementation context.
 
-**Last updated:** 2026-06-10
+**Last updated:** 2026-06-16
 
 ---
 
@@ -503,6 +503,13 @@ Treat the following as current source of truth:
 - `WRITING_VOICE.md`
 - `docs/README.md`
 - `docs/ai-context/*`
+
+Subsystem references (current):
+
+- `SNAPSHOT_DRIVEN_DASHBOARDS.md` — the shared snapshot → builder → GitHub Action → accessors → API pattern used by 15+ data dashboards
+- `PERSONAL_INTEREST_TOOLS.md` — the browser-persisted localStorage tools (`/travel`, `/wine-cellar`, `/museum-log`, `/recipe-finder`, `/food-map`)
+- `RETIREMENT_PLANNER_ENGINE.md` — the pure projection/Monte Carlo engine in `src/lib/retirement/`
+- `docs/DATA_UPDATE_OPERATIONS.md` — consolidated command → artifact → schedule runbook for every data refresh
 
 Treat older plans, redesign specs, and reference templates as historical unless they explicitly say they are current. `SEO.md` (listed above) is the current SEO reference — older root-level SEO audit/summary docs are historical.
 

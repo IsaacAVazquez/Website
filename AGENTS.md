@@ -2,7 +2,7 @@
 
 Operational context for agents working in this repo. Start here, then read `CLAUDE.md` for deeper implementation context.
 
-**Last updated:** 2026-06-10
+**Last updated:** 2026-06-16
 
 ---
 
@@ -397,6 +397,7 @@ Checked-in operational workflows:
 - `.github/workflows/update-golf.yml`
 - `.github/workflows/update-world-cup.yml`
 - `.github/workflows/update-bay-area-transit.yml`
+- `.github/workflows/update-earthquake.yml`
 - `netlify/functions/purge-cache.ts`
 
 Current behavior:
@@ -415,6 +416,7 @@ Current behavior:
 - `update-golf.yml` runs on manual dispatch and daily at `08:40 UTC`, then commits `src/data/golfSnapshot.ts` when it changes
 - `update-world-cup.yml` runs on manual dispatch and every six hours during June and July, then commits `src/data/worldCupSnapshot.ts` when it changes
 - `update-bay-area-transit.yml` runs on manual dispatch and every six hours year-round, then commits `src/data/bayAreaTransitSnapshot.ts` when it changes
+- `update-earthquake.yml` runs on manual dispatch and hourly (minute 20), then commits `src/data/earthquakeSnapshot.ts` when it changes
 - The tech startup tracker has no workflow by design — its dataset is editorially curated, so refreshes happen by editing the seed and running `npm run update:tech-startups` locally
 - A daily cron-job.org ping to the Netlify build hook triggers production deploys; `prebuild` refreshes Premier League and La Liga league-level snapshots with `tsx scripts/updateFootballSnapshots.ts --league-only`
 - `purge-cache.ts` is protected by `Authorization: Bearer <CRON_SECRET>` or `x-cron-secret` and calls Netlify Durable Cache purge; query-string secrets are intentionally rejected
@@ -444,5 +446,12 @@ For public fantasy updates, GitHub Actions is the source of truth.
 - `STYLING.md`
 - `WRITING_VOICE.md`
 - `docs/README.md`
+
+Subsystem references:
+
+- `SNAPSHOT_DRIVEN_DASHBOARDS.md` — shared snapshot-driven dashboard pattern
+- `PERSONAL_INTEREST_TOOLS.md` — browser-persisted localStorage tools
+- `RETIREMENT_PLANNER_ENGINE.md` — pure retirement projection engine
+- `docs/DATA_UPDATE_OPERATIONS.md` — command → artifact → schedule runbook
 
 Older plans, redesign notes, and summary docs are kept for history. Check `docs/README.md` before treating a markdown file as current.
