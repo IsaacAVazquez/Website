@@ -76,12 +76,19 @@ describe("fantasySnapshotBuilder", () => {
     expect(pprSnapshot.sliceMetadata.k.sourceKind).toBe("shared_position_consensus");
     expect(pprSnapshot.sliceMetadata.dst.sourceKind).toBe("shared_position_consensus");
 
-    expect(pprSnapshot.positions.QB).toEqual(halfPprSnapshot.positions.QB);
-    expect(pprSnapshot.positions.QB).toEqual(standardSnapshot.positions.QB);
-    expect(pprSnapshot.positions.K).toEqual(halfPprSnapshot.positions.K);
-    expect(pprSnapshot.positions.K).toEqual(standardSnapshot.positions.K);
-    expect(pprSnapshot.positions.DST).toEqual(halfPprSnapshot.positions.DST);
-    expect(pprSnapshot.positions.DST).toEqual(standardSnapshot.positions.DST);
+    // The QB/K/DST consensus is scoring-agnostic, but ADP is layered on per
+    // scoring format (Fantasy Football Calculator publishes separate
+    // ppr/half-ppr/standard feeds), so the boards can differ only in their
+    // adp overlay. Compare the consensus with the adp field stripped.
+    const withoutAdp = <T extends { adp?: number }>(players: T[]) =>
+      players.map(({ adp, ...rest }) => rest);
+
+    expect(withoutAdp(pprSnapshot.positions.QB)).toEqual(withoutAdp(halfPprSnapshot.positions.QB));
+    expect(withoutAdp(pprSnapshot.positions.QB)).toEqual(withoutAdp(standardSnapshot.positions.QB));
+    expect(withoutAdp(pprSnapshot.positions.K)).toEqual(withoutAdp(halfPprSnapshot.positions.K));
+    expect(withoutAdp(pprSnapshot.positions.K)).toEqual(withoutAdp(standardSnapshot.positions.K));
+    expect(withoutAdp(pprSnapshot.positions.DST)).toEqual(withoutAdp(halfPprSnapshot.positions.DST));
+    expect(withoutAdp(pprSnapshot.positions.DST)).toEqual(withoutAdp(standardSnapshot.positions.DST));
   });
 
   it("keeps sourced position ranges and freshness metadata", () => {
@@ -98,20 +105,42 @@ describe("fantasySnapshotBuilder", () => {
   });
 
   it("never publishes synthetic projections or expert rank arrays, and omits adp when the dataset is empty", () => {
-    // The committed ADP seed in this repo state is empty, so no player should
-    // carry an adp field and the snapshot should disclose no ADP source.
-    const snapshot = buildFantasySnapshot("ppr");
-    const firstOverallPlayer = snapshot.overall[0];
-    const firstPositionPlayer = snapshot.positions.RB[0];
+    // Mock an empty ADP dataset rather than relying on the committed seed,
+    // which now ships populated. With no entries, no player should carry an
+    // adp field and the snapshot should disclose no ADP source.
+    jest.resetModules();
+    jest.doMock("@/lib/fantasyAdpData", () => ({
+      getFantasyAdpDataset: () => ({
+        entries: [],
+        asOf: null,
+        sampleSize: null,
+        sourceUrl: "",
+      }),
+    }));
 
-    expect(firstOverallPlayer).toBeDefined();
-    expect("projectedPoints" in firstOverallPlayer).toBe(false);
-    expect("expertRanks" in firstOverallPlayer).toBe(false);
-    expect("adp" in firstOverallPlayer).toBe(false);
-    expect("projectedPoints" in firstPositionPlayer).toBe(false);
-    expect("expertRanks" in firstPositionPlayer).toBe(false);
-    expect("adp" in firstPositionPlayer).toBe(false);
-    expect(snapshot.adpSource).toBeNull();
+    try {
+      jest.isolateModules(() => {
+        const {
+          buildFantasySnapshot: buildEmptyAdpSnapshot,
+          // eslint-disable-next-line @typescript-eslint/no-require-imports -- jest.isolateModules requires a synchronous callback; dynamic import() would not work here
+        } = require("../fantasySnapshotBuilder") as typeof import("../fantasySnapshotBuilder");
+        const snapshot = buildEmptyAdpSnapshot("ppr");
+        const firstOverallPlayer = snapshot.overall[0];
+        const firstPositionPlayer = snapshot.positions.RB[0];
+
+        expect(firstOverallPlayer).toBeDefined();
+        expect("projectedPoints" in firstOverallPlayer).toBe(false);
+        expect("expertRanks" in firstOverallPlayer).toBe(false);
+        expect("adp" in firstOverallPlayer).toBe(false);
+        expect("projectedPoints" in firstPositionPlayer).toBe(false);
+        expect("expertRanks" in firstPositionPlayer).toBe(false);
+        expect("adp" in firstPositionPlayer).toBe(false);
+        expect(snapshot.adpSource).toBeNull();
+      });
+    } finally {
+      jest.dontMock("@/lib/fantasyAdpData");
+      jest.resetModules();
+    }
   });
 
   it("attaches matched adp readings and discloses the adp source when a dataset is present", () => {
