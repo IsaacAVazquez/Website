@@ -1713,6 +1713,12 @@
     letter-spacing: -0.04em;
     text-transform: uppercase;
     color: var(--home-ink);
+    /* Baseline-align the display wordmark with the smaller mono nav links.
+       Both sides are center-aligned in equal-height (44px) boxes, but
+       Bricolage's shorter cap-height (~0.66) at 1.05rem leaves its baseline
+       ~0.94px below JetBrains Mono's (~0.73) at 0.8rem. Nudge the lockup up so
+       the letters share a baseline with the nav. Visual-only (no reflow). */
+    transform: translateY(-0.06rem);
   }
 
   .header-home-brand::before {
