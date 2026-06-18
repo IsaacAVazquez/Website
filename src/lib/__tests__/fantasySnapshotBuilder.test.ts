@@ -7,6 +7,7 @@ import {
   getNflRegularSeasonWeek,
   getSnapshotSeason,
 } from "@/lib/fantasySnapshotBuilder";
+import type { Player } from "@/types";
 
 const NFL_WEEKS = 18;
 
@@ -76,12 +77,17 @@ describe("fantasySnapshotBuilder", () => {
     expect(pprSnapshot.sliceMetadata.k.sourceKind).toBe("shared_position_consensus");
     expect(pprSnapshot.sliceMetadata.dst.sourceKind).toBe("shared_position_consensus");
 
-    expect(pprSnapshot.positions.QB).toEqual(halfPprSnapshot.positions.QB);
-    expect(pprSnapshot.positions.QB).toEqual(standardSnapshot.positions.QB);
-    expect(pprSnapshot.positions.K).toEqual(halfPprSnapshot.positions.K);
-    expect(pprSnapshot.positions.K).toEqual(standardSnapshot.positions.K);
-    expect(pprSnapshot.positions.DST).toEqual(halfPprSnapshot.positions.DST);
-    expect(pprSnapshot.positions.DST).toEqual(standardSnapshot.positions.DST);
+    // The QB/K/DST consensus boards are scoring-agnostic, but ADP is matched
+    // per scoring format, so a player's adp reading can differ between formats.
+    // Compare the slices with adp stripped to assert the consensus data is shared.
+    const withoutAdp = (players: Player[]) => players.map(({ adp: _adp, ...rest }) => rest);
+
+    expect(withoutAdp(pprSnapshot.positions.QB)).toEqual(withoutAdp(halfPprSnapshot.positions.QB));
+    expect(withoutAdp(pprSnapshot.positions.QB)).toEqual(withoutAdp(standardSnapshot.positions.QB));
+    expect(withoutAdp(pprSnapshot.positions.K)).toEqual(withoutAdp(halfPprSnapshot.positions.K));
+    expect(withoutAdp(pprSnapshot.positions.K)).toEqual(withoutAdp(standardSnapshot.positions.K));
+    expect(withoutAdp(pprSnapshot.positions.DST)).toEqual(withoutAdp(halfPprSnapshot.positions.DST));
+    expect(withoutAdp(pprSnapshot.positions.DST)).toEqual(withoutAdp(standardSnapshot.positions.DST));
   });
 
   it("keeps sourced position ranges and freshness metadata", () => {
@@ -97,9 +103,12 @@ describe("fantasySnapshotBuilder", () => {
     expect(Number(topQuarterback.maxRank)).toBeGreaterThanOrEqual(Number(topQuarterback.minRank));
   });
 
-  it("never publishes synthetic projections or expert rank arrays, and omits adp when the dataset is empty", () => {
-    // The committed ADP seed in this repo state is empty, so no player should
-    // carry an adp field and the snapshot should disclose no ADP source.
+  it("never publishes synthetic projections or expert rank arrays, and attaches adp from the committed dataset", () => {
+    // Consensus boards never expose synthetic projections or raw expert-rank
+    // arrays. The committed ADP dataset is populated, so the top of the board
+    // carries a matched adp reading and the snapshot discloses its ADP source.
+    // (Per-player adp matching, including unmatched players carrying no adp, is
+    // exercised against a mocked dataset below.)
     const snapshot = buildFantasySnapshot("ppr");
     const firstOverallPlayer = snapshot.overall[0];
     const firstPositionPlayer = snapshot.positions.RB[0];
@@ -107,11 +116,10 @@ describe("fantasySnapshotBuilder", () => {
     expect(firstOverallPlayer).toBeDefined();
     expect("projectedPoints" in firstOverallPlayer).toBe(false);
     expect("expertRanks" in firstOverallPlayer).toBe(false);
-    expect("adp" in firstOverallPlayer).toBe(false);
     expect("projectedPoints" in firstPositionPlayer).toBe(false);
     expect("expertRanks" in firstPositionPlayer).toBe(false);
-    expect("adp" in firstPositionPlayer).toBe(false);
-    expect(snapshot.adpSource).toBeNull();
+    expect("adp" in firstOverallPlayer).toBe(true);
+    expect(snapshot.adpSource).not.toBeNull();
   });
 
   it("attaches matched adp readings and discloses the adp source when a dataset is present", () => {
