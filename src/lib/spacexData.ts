@@ -387,6 +387,15 @@ function clearLaunchLibraryRateLimit() {
   launchLibraryConsecutive429s = 0;
 }
 
+// Optional Launch Library 2 API key. The anonymous tier is throttled hard
+// (and shared CI IPs get 429'd almost immediately), so the refresh job should
+// run authenticated. thespacedevs uses DRF token auth: `Authorization: Token <key>`.
+// Read lazily so a dotenv-loaded value is picked up regardless of import order.
+function getLaunchLibraryAuthHeaders(): Record<string, string> {
+  const token = process.env.SPACEDEVS_API_TOKEN?.trim();
+  return token ? { Authorization: `Token ${token}` } : {};
+}
+
 async function fetchLaunchLibraryJson<T>(
   path: string,
   revalidateSeconds = 120
@@ -403,6 +412,7 @@ async function fetchLaunchLibraryJson<T>(
       signal: controller.signal,
       headers: {
         Accept: "application/json",
+        ...getLaunchLibraryAuthHeaders(),
       },
       next: {
         revalidate: revalidateSeconds,

@@ -205,7 +205,7 @@ npm run dev
 - `npm run update:tech-startups` processes a hand-maintained seed inside `scripts/buildTechStartupSnapshot.ts`; there is no live source to poll.
 - `npm run update:formula-1` reads historical OpenF1 endpoints and does not require an API key.
 - `npm run update:github-trending` reads the public GitHub Search API. GitHub Actions passes `GITHUB_TOKEN` for higher rate limits.
-- `npm run update:spacex` and `npm run update:spacex-images` read public Launch Library / SpaceDevs endpoints and do not require an API key.
+- `npm run update:spacex` and `npm run update:spacex-images` read public Launch Library / SpaceDevs endpoints. An API key is not strictly required, but the anonymous tier is heavily rate limited (shared CI IPs get 429'd fast, which silently freezes the snapshot) — set the optional `SPACEDEVS_API_TOKEN` to authenticate and raise the limit. The `update-spacex.yml` workflow now also fails loudly if the snapshot goes stale (older than 4 days).
 - `npm run update:frontier-models` rebuilds `src/data/frontierModelsSnapshot.ts` from `scripts/data/frontierModels.source.ts`.
 - If the investments fetch step fails on imports, install the Python dependency with `.venv/bin/pip install defeatbeta-api`.
 

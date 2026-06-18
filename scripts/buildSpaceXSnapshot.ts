@@ -1,6 +1,13 @@
+import { config } from "dotenv";
 import { promises as fs } from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+// Load SPACEDEVS_API_TOKEN (and any other secrets) from .env.local for local
+// runs. The token is read lazily at fetch time, so this only needs to run
+// before main() — not before the lib import.
+config({
+  path: path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../.env.local"),
+});
 import { buildMissionControlSnapshot } from "../src/lib/spacexData";
 import type { MissionControlSnapshot } from "../src/types/spacex";
 

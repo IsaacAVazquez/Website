@@ -41,11 +41,13 @@ jobs:
         run: npm run update:spacex-images
         env:
           NODE_ENV: production
+          SPACEDEVS_API_TOKEN: ${{ secrets.SPACEDEVS_API_TOKEN }}
 
       - name: Refresh SpaceX data snapshot
         run: npm run update:spacex
         env:
           NODE_ENV: production
+          SPACEDEVS_API_TOKEN: ${{ secrets.SPACEDEVS_API_TOKEN }}
 
       - name: Verify SpaceX snapshot quality
         id: verify_quality
@@ -62,6 +64,11 @@ jobs:
           const MIN_DETAILS = 5;
           const MIN_MANIFEST_IMAGES = 5;
           const MIN_REFERENCE_LAUNCHES = 10;
+          // The data fetch falls back to the existing snapshot when the Launch
+          // Library API rate-limits us, which silently freezes the launch data.
+          // Fail loudly (and open an issue) once it goes stale so a sustained
+          // outage can't hide behind a green run.
+          const MAX_SNAPSHOT_AGE_DAYS = 4;
 
           function readJson(filePath) {
             if (!fs.existsSync(filePath)) {
@@ -99,14 +106,32 @@ jobs:
             }
           }
 
+          const generatedAtRaw = snapshot.generatedAt || (snapshot.summary && snapshot.summary.generatedAt) || null;
+          const generatedAtMs = generatedAtRaw ? Date.parse(generatedAtRaw) : NaN;
+          const ageDays = Number.isNaN(generatedAtMs)
+            ? null
+            : (Date.now() - generatedAtMs) / (1000 * 60 * 60 * 24);
+
           console.log('Upcoming launches:', upcoming);
           console.log('Past launches:', past);
           console.log('Launch details:', detailCount);
           console.log('Manifest images:', manifestEntries.length);
           console.log('Reference launches:', referenceLaunches);
+          console.log('Snapshot generatedAt:', generatedAtRaw || '(missing)');
+          console.log('Snapshot age (days):', ageDays === null ? '(unknown)' : ageDays.toFixed(2));
 
           if (!snapshot.summary) {
             console.error('::error::SpaceX snapshot summary is missing.');
+            process.exit(1);
+          }
+
+          if (ageDays === null) {
+            console.error('::error::SpaceX snapshot is missing a parseable generatedAt timestamp.');
+            process.exit(1);
+          }
+
+          if (ageDays > MAX_SNAPSHOT_AGE_DAYS) {
+            console.error('::error::SpaceX snapshot is ' + ageDays.toFixed(1) + ' days old (max ' + MAX_SNAPSHOT_AGE_DAYS + '). The Launch Library refresh is likely failing or rate limited.');
             process.exit(1);
           }
 
@@ -233,7 +258,8 @@ jobs:
               `**Trigger:** ${context.eventName}`,
               ``,
               `Check the run logs to diagnose. Common causes:`,
-              `- Launch Library API outage, timeout, or rate limiting`,
+              `- Launch Library API outage, timeout, or rate limiting (set the SPACEDEVS_API_TOKEN secret to raise the limit)`,
+              `- Snapshot too stale: the data refresh kept old data past the freshness gate, so the launch board is no longer current`,
               `- Image download failure degraded the manifest or reference index`,
               `- Quality gate caught a degraded snapshot`,
               `- Git push rejected after 5 retries`,
