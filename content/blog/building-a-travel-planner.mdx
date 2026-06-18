@@ -1,0 +1,51 @@
+---
+title: "Building a Travel Planner That Stays in Sync Once the Trip Starts"
+excerpt: "I built a browser-saved travel planner that turns a trip's dates into a day-by-day itinerary you can check off and journal against, so planning and the trip diary live in one place."
+publishedAt: "2026-06-04"
+category: "Product Design"
+tags: ["Travel", "Product Design", "Local First", "Itinerary", "Next.js", "Journaling"]
+featured: false
+archiveBucket: "Space & Experiments"
+author: "Isaac Vazquez"
+coverImage: "/writing/building-a-travel-planner/opengraph-image"
+cta:
+  eyebrow: "Related tool"
+  title: "Open the Travel Planner"
+  description: "The live planner is the fastest way to turn a trip's dates into a day-by-day itinerary you can check off and journal against."
+  href: "/travel"
+  actionLabel: "Open the planner"
+seo:
+  title: "Building a Browser-Saved Travel Planner With a Per-Day Journal"
+  description: "How I built a browser-persisted trip planner that turns dates into a day-by-day itinerary you can check off and journal against, with no account required."
+  keywords: ["travel planner", "trip itinerary app", "day by day itinerary", "travel journal", "local first planner", "trip planning tool"]
+---
+
+# Building a Travel Planner That Stays in Sync Once the Trip Starts
+
+If you want to see the product before reading the breakdown, open [the Travel Planner](/travel).
+
+Planning a trip is the easy part. Keeping the plan alive once the trip actually starts is where everything falls apart. The itinerary lived in a notes app, the dates lived in a calendar, and the journal, if it happened at all, lived in some third place I would forget about by day two. By the second morning, none of those were in sync. I would be standing somewhere new with no clear sense of what I had meant to do that day, and no easy way to write down what I actually did. The Travel Planner is the tool I built to collapse all of that into one surface that holds up mid-trip.
+
+## The Problem Is the Trip, Not the Plan
+
+Most trip planning splits naturally across three tools, and that split is the whole problem. You sketch a rough plan in a notes app, you block the dates in a calendar, and you intend to keep some kind of journal in a fourth place you never open. Each of those is fine on its own. The failure is that they do not talk to each other, so the moment the trip begins and reality intervenes, nothing stays current. You skip a stop, you add one on a whim, you have a great meal you want to remember, and none of it makes it back into the plan. The plan becomes a fossil from before you left.
+
+What I wanted was a single surface where the plan, the live checklist, and the diary are the same object. You give it the trip's dates and it lays those dates out as a day-by-day itinerary. As the trip happens, you check off stops you have done, and you keep a journal entry for each day right next to the plan for that day. The planning view and the trip diary stop being separate artifacts. They are two states of the same thing, which is exactly what keeps them in sync when it matters.
+
+## The Decisions That Make It Hold Up
+
+The first decision was to make the dates do the structural work. The moment you set when the trip starts and ends, the planner generates the day-by-day skeleton for you, so you are never staring at a blank document wondering how to organize it. Each day is a slot you fill, which makes planning feel like filling in a frame rather than building one from scratch. It also means the itinerary and the calendar are the same thing by construction, which removes an entire class of "wait, which day was that" confusion before it can start.
+
+The second decision was to give every day both a checklist and a journal entry, sitting together. The checklist is the forward-looking part, the things you mean to do. The journal is the backward-looking part, what actually happened. Putting them on the same day means the tool serves you before the trip and during it without you switching modes. You check off the museum you visited and then, right there, write the line about the unexpected thing you found around the corner. The plan and the memory share a page, which is the only way I have found to actually keep a travel journal going past day two.
+
+## Why It Lives in the Browser
+
+Under the hood, the whole thing is local-first. There is no account. Trips, their day-by-day itineraries, and the per-trip journal all live in the browser, persisted through a dedicated planner hook, with the pure helpers, the storage key, and the type definitions kept in their own separate places in the codebase so the storage layer stays clean and easy to reason about. The deliberate tradeoff is the familiar one for these tools. Your trips do not sync across devices and there is no shared account, which is a genuine cost if you wanted to plan collaboratively or hop between phone and laptop.
+
+I made that trade because the thing that actually matters for a travel planner is that you will open it mid-trip, and local-first storage is what makes that frictionless. There is no login to fumble through on hotel wifi, no sync to wait on, no account to recover. You open the page and your itinerary is just there. A planner you have to sign into is a planner you stop opening once you are tired and in a new time zone, and a travel journal only works if updating it costs almost nothing. Keeping state in the browser is what buys that near-zero friction, and the friction is the whole ballgame.
+
+## What It Taught Me
+
+This one reinforced a belief I keep coming back to, which is that the hard part of personal tools is not the planning, it is the upkeep during the moment that matters. Plenty of products help you plan a trip. Far fewer survive contact with the trip itself, because they ask for too much right when you have the least patience. By putting the plan, the checklist, and the journal on one local-first surface, the Travel Planner stays usable on the road, and that is the only place the test really counts.
+
+You can explore the full planner at [the Travel Planner](/travel). The fastest way to understand it is to set a trip's start and end dates, watch it lay out the days for you, and then check off a stop and jot a journal line on the same day, so you can feel how the plan and the diary live together. If you want a related read, [Building an Investment Research Platform That Prefers Clarity Over Spreadsheet Sprawl](/writing/building-an-investment-research-platform) is the other breakdown where I make the case that browser-local state and a private surface are deliberate product choices.

@@ -1,0 +1,51 @@
+---
+title: "Building a Recruiting Tracker That Watches the Job Boards So I Do Not Have To"
+excerpt: "I built a recruiting-intelligence tracker that monitors public tech-company job boards across Greenhouse, Ashby, and Lever for MBA roles, with manual fallbacks where parsing breaks."
+publishedAt: "2026-06-04"
+category: "Product Design"
+tags: ["Job Search", "Recruiting", "Automation", "Data Product", "Next.js", "Notifications"]
+featured: false
+archiveBucket: "Space & Experiments"
+author: "Isaac Vazquez"
+coverImage: "/writing/building-an-mba-recruiting-tracker/opengraph-image"
+cta:
+  eyebrow: "Related tool"
+  title: "Open the role tracker"
+  description: "The live dashboard is the fastest way to filter current MBA internships and full-time business roles across tracked companies."
+  href: "/mba-internship-notifications"
+  actionLabel: "Open the tracker"
+seo:
+  title: "Building an MBA Recruiting-Intelligence Tracker Across Job Boards"
+  description: "How I built a recruiting tracker that monitors public tech company job boards for MBA internships and full-time business roles across Greenhouse, Ashby, Lever, and manual career-page fallbacks."
+  keywords: ["mba recruiting tracker", "job board aggregator", "greenhouse ashby lever", "internship tracker", "recruiting intelligence", "job alerts"]
+---
+
+# Building a Recruiting Tracker That Watches the Job Boards So I Do Not Have To
+
+If you want to see the product before reading the breakdown, open the [role tracker](/mba-internship-notifications).
+
+I built this for myself before I built it for anyone else. MBA recruiting runs on timing, and timing means checking the same set of company career pages over and over to catch a role the moment it posts. That is a deeply repetitive task, the kind a person should not be doing by hand, and I was doing it by hand. So I turned the chore into a product. The tracker watches public tech-company job boards for MBA internships and full-time business roles across thirty-two companies, surfaces them through live filters, and sends alerts and digests so the watching happens whether or not I remember to open a tab.
+
+## Why Recruiting Monitoring Is Such A Slog
+
+The core problem is fragmentation. There is no single place where MBA-relevant roles live, because every company runs its own hiring stack and posts on its own schedule. Some companies are on Greenhouse, some on Ashby, some on Lever, and some on a bespoke career page that does whatever its team decided to build. From a candidate's seat, that fragmentation turns simple monitoring into a punishing loop of opening tabs, scanning for new postings, filtering out the engineering roles that are not relevant, and trying to remember which pages you already checked today.
+
+None of that is hard. All of it is tedious, and tedious work at scale is exactly where things slip through. You miss a posting because you checked on Tuesday and it went up Wednesday, or because the company you forgot to add to your routine is the one that just opened the role you wanted. The cost of the fragmentation is not intellectual. It is attentional, and attention is the scarce resource during recruiting season.
+
+## Standardizing The Common Boards
+
+The leverage came from the fact that most companies do not actually run unique systems. They run one of a handful of common board platforms, and those platforms expose their postings in structured, parseable ways. Greenhouse, Ashby, and Lever cover a large share of the companies an MBA candidate cares about, and each one can be read programmatically rather than scraped by eye. Once you can read a board as data instead of as a web page, the whole problem changes. You go from manually scanning to letting a monitor diff today's postings against yesterday's and tell you only what is new.
+
+Architecturally the tracker is straightforward, and I kept it that way on purpose. An internal API route does the collection and normalization, and a client shell handles the part the user actually touches, the filter and search state that lets you narrow thirty-two companies down to the roles that fit. The roles flow through live filters, and the alerts and digests sit on top so the monitoring keeps running in the background. The goal was never a clever system. The goal was a reliable one that quietly does the checking I used to do by hand.
+
+## Being Honest About The Engineering Reality
+
+Here is the part I want to be straight about, because it is where a lot of similar tools quietly fail. Not every company exposes a parseable board. Some run career pages that resist clean automated reading, and if I had pretended otherwise, the tracker would have either dropped those companies or, worse, claimed to cover them while silently going stale. So those companies get a manual fallback. Where parsing breaks, a human-maintained path keeps the role in the dataset rather than letting it vanish.
+
+I think this is the right call, even though a fully automated scraper would look more impressive in a description. A thin, reliable aggregator with an honest fallback beats a clever scraper that breaks silently every time, because the failure mode of silent breakage is the worst possible one for a recruiting tool. A missed role is not a minor bug. It is the exact thing the product exists to prevent. I would rather the system admit "this one is checked by hand" than confidently show you a stale page and let you believe you are covered when you are not.
+
+## What Building For Myself Taught Me
+
+Because I built this for my own recruiting first, the design choices stayed honest. I was the user who would feel the pain of a missed posting, so I had no incentive to paper over the hard companies with a scraper that might break. Generalizing it afterward, from one person's routine into a tracker anyone running MBA recruiting could use, mostly meant keeping that same discipline. Cover the boards you can read reliably, be transparent about the ones you cannot, and let the alerts and digests carry the weight so nobody has to remember to check.
+
+That is the same belief that runs under the rest of what I build, which is that good tools reduce decision fatigue before they add decision power. This one does not try to decide where you should apply. It just makes sure you never miss the posting in the first place, which during recruiting season is most of the battle. You can open it at the [role tracker](/mba-internship-notifications), and the fastest way to understand it is to set a filter for the roles you care about and watch how quickly thirty-two companies collapse into a short, current list. If you want an adjacent read, [Building an Investment Research Platform That Prefers Clarity Over Spreadsheet Sprawl](/writing/building-an-investment-research-platform) is the other essay where curation and honest limits do more work than raw coverage.

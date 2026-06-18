@@ -1,0 +1,55 @@
+---
+title: "Building a Premier League Dashboard on a Checked-In Snapshot"
+excerpt: "I built Premier League Pulse to put standings, fixtures, and club form on one deep-linkable screen, fed by a committed snapshot instead of a live API call at request time."
+publishedAt: "2026-06-10"
+category: "Sports Analytics"
+tags: ["Premier League", "Football", "Soccer", "Sports Analytics", "Snapshot Driven", "Next.js", "Dashboard"]
+featured: false
+archiveBucket: "Sports & Fantasy"
+author: "Isaac Vazquez"
+coverImage: "/writing/building-a-premier-league-dashboard/opengraph-image"
+cta:
+  eyebrow: "Related tool"
+  title: "Open Premier League Pulse"
+  description: "The live dashboard is the fastest way to see the table, recent and upcoming fixtures, and club-level form in one place."
+  href: "/premier-league"
+  actionLabel: "Open the dashboard"
+seo:
+  title: "Building Premier League Pulse, a Snapshot-Driven Football Dashboard"
+  description: "How I built Premier League Pulse, a deep-linkable dashboard with standings, recent and upcoming fixtures, and club-level form drilldowns backed by a checked-in snapshot."
+  keywords: ["premier league dashboard", "football standings tracker", "fixtures and form", "football-data.org", "snapshot driven dashboard", "soccer dashboard"]
+---
+
+# Building a Premier League Dashboard on a Checked-In Snapshot
+
+If you want to see the product before reading the breakdown, open [Premier League Pulse](/premier-league).
+
+Premier League Pulse was the first of these football dashboards I built, and in a real sense it is the one that taught me how to build the rest. The question that started it was simple. When I check in on the league, I want three things at once. I want the table, I want to know who played recently and who plays next, and I want to be able to drill into a single club's form without losing the wider view. Those three things almost never live together. The table is on one page, the fixture schedule on another, and a club's recent results on a third, and none of them are linkable in a way that lets you hand someone the exact view you were looking at. I wanted one screen that held the standings, the fixtures, and the club drilldown together, and I wanted any state in it to travel in a URL.
+
+## The table, the fixtures, and the form belong on one screen
+
+The frustration that drove this project is that following a league is inherently a cross-referencing task, and most tools refuse to do the cross-referencing for you. You look at the table, see a club sitting fourth, and immediately want to know two more things. Who do they play next, and how have they been playing lately? Answering that means leaving the table, opening a fixtures page, then opening a club page, and by the time you have done that you have lost the context you started with. The standings tell you where a club is. The fixtures and the form tell you whether that position is about to move. Splitting them across tabs forces you to hold the connection in your head, and the connection is the entire point.
+
+So Premier League Pulse keeps the standings, the recent and upcoming fixtures, and a per-club form drilldown on the same surface. Pick a club and its recent results and next matches come into focus without throwing away the table behind it. The whole design is built so that the question "is this club's position about to change" can be answered in one place rather than three.
+
+## Why it reads from a committed snapshot
+
+The data comes from football-data.org, which on the free tier gives you standings, fixtures, and scorers behind a token, with a rate limit of ten requests per minute. That limit is the architectural fact that shaped everything. Ten requests per minute is plenty for a scheduled job that runs occasionally and is nowhere near enough for a live page that fetches on every visit. So I never built this as a live feed. Local scripts call football-data.org, shape the response, and commit the result as a TypeScript snapshot at `src/data/premierLeagueSnapshot.ts`. The app reads that file at build time, and there is no live API call at runtime at all.
+
+This is the pattern that every other dashboard I have built since then reuses, and Premier League Pulse is where I worked it out. Reading a committed snapshot means the page renders instantly because the data is already in the bundle, a flaky upstream cannot take the surface down during a match window, and the ten-requests-per-minute ceiling never touches anyone actually viewing the page, because the only thing that ever calls the API is a script running on a schedule. The refresh is conservative on purpose, so a failed or thin fetch keeps the previous snapshot rather than wiping a good table with nothing. Owning the data at build time turned a restrictive free tier into a non-issue, which is exactly the kind of constraint that, handled right, makes a product more reliable rather than less.
+
+## Two refresh paths, because not all data changes at the same speed
+
+The piece I am most pleased with is that the data does not all refresh the same way, because it does not all move at the same speed. The standings, the fixtures, and the scorers change with every round of matches and need to stay current. The per-club fixtures and recent form that power the drilldowns are heavier to assemble and change more slowly. Treating them identically would either keep the page stale or waste a lot of build time, so the refresh is split into two paths.
+
+The fast path runs in the Netlify prebuild on every deploy, refreshing the standings, fixtures, and scorers so the headline of the page is current whenever the site rebuilds. The fuller path is a local update that takes around eight minutes and regenerates the per-club fixtures and recent form for the drilldowns, which I run when I want the club-level detail brought fully up to date. To keep the headline current without me lifting a finger, a scheduled job on cron-job.org hits a Netlify build hook once a day, which triggers a rebuild, which runs the fast prebuild refresh, which pulls the latest standings. The standings stay current with zero manual steps, and the heavier club-level snapshot updates on my own cadence when I run the full job. Matching the refresh frequency to how fast each kind of data actually changes is one of those decisions that looks like a detail and turns out to be most of the design.
+
+## Deep links, shared components, and what carried forward
+
+Two things in this build became the template for everything after it. The first is that all of the state is deep-linkable, so the view you are on and the club you have selected live in the URL. A link to the table with a particular club's form pinned is just a link, which is what makes the dashboard something people send each other on a matchday rather than something they visit alone. The second is the shared football component set. The fixture cards, the leaderboards, and the crest avatars I wrote here were deliberately kept generic, and that generality is why La Liga, the NBA, the NFL, and the rest came together so much faster. I did not know when I built this that I was writing a component library for half a dozen future dashboards, but keeping the pieces unopinionated about any single league is what made that reuse possible.
+
+The lesson I carried out of this project is that the right architecture often comes from respecting a constraint instead of fighting it. The ten-requests-per-minute limit could have been an annoyance to engineer around. Treating it as a reason to commit a snapshot instead of fetching live gave me a faster, more reliable product and a pattern I have reused on every sports surface since. The constraint did not limit the product. It designed it.
+
+You can explore the full thing at [Premier League Pulse](/premier-league). The fastest way to understand it is to find a club in the table, pin it to bring up its recent and upcoming fixtures, and notice that the view you are looking at is now a URL you could send to someone. That continuity, the table and the form and the schedule held together in one linkable screen, is what the project was for.
+
+If you want to see how the same snapshot pattern adapted to a knockout tournament with a moving format, the [World Cup dashboard breakdown](/writing/building-a-world-cup-dashboard) is a good next read.

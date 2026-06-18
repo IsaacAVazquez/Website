@@ -1,0 +1,57 @@
+---
+title: "Building an MLB Dashboard That Keeps the Wild Card Race in View"
+excerpt: "I built MLB Pulse to combine division standings, the wild card race, and league-wide leaders into one snapshot-driven screen. Here is what I chose to show and why."
+publishedAt: "2026-06-01"
+category: "Sports Analytics"
+tags: ["MLB", "Baseball", "Sports Analytics", "MLB Stats API", "Snapshot Driven", "Next.js", "Dashboard"]
+featured: false
+archiveBucket: "Sports & Fantasy"
+author: "Isaac Vazquez"
+coverImage: "/writing/building-an-mlb-dashboard/opengraph-image"
+cta:
+  eyebrow: "Related tool"
+  title: "Open MLB Pulse"
+  description: "The live dashboard is the fastest way to see division standings, the wild card race, and league-wide hitting and pitching leaders in one place."
+  href: "/mlb"
+  actionLabel: "Open the dashboard"
+seo:
+  title: "Building MLB Pulse, a Snapshot-Driven Baseball Standings and Leaders Dashboard"
+  description: "How I built MLB Pulse, an MLB dashboard with division standings, AL and NL splits, the wild card race, recent results, and league-wide hitting and pitching leaders."
+  keywords: ["mlb dashboard", "mlb standings", "wild card race", "mlb stats api", "baseball leaders", "snapshot driven dashboard"]
+---
+
+# Building an MLB Dashboard That Keeps the Wild Card Race in View
+
+If you want to see the product before reading the breakdown, open [MLB Pulse](/mlb).
+
+A baseball season is 162 games, and that length is the whole problem. Any single night barely moves the standings, so the day-to-day question is almost never who won, it is whether the slow accumulation has changed anything that matters. By August the thing that actually matters is rarely the division lead, because the division leaders are usually settled. It is the wild card. Three teams in each league get in without winning their division, and the math of who is in, who is half a game back, and who just fell out of the picture is the most alive part of the late season. The trouble is that division standings, wild card context, and the stat leaders almost always sit in separate tabs, with no single view of what is worth caring about this particular week. I built MLB Pulse to put them together, with the wild card race kept in view rather than buried.
+
+## In a 162-game season, the wild card is the story
+
+I want to be careful about why I lead with the wild card rather than the divisions. It is not that the divisions do not matter, it is that for most of the summer they are not where the tension lives. A division race is often a two-team affair that resolves slowly, and by the time you are checking standings obsessively, several divisions already have a comfortable leader. The wild card is different. It pulls teams from across the league into one shared cutoff, it stays unsettled deep into September, and it is where a hot week or a cold week actually changes a team's October. That is the part of the standings most worth surfacing, so it gets pulled forward instead of being computed in your head from a division table.
+
+To make that legible, MLB Pulse carries the division standings with American League and National League splits, the wild card race as its own framed view, and recent results so you can see whether a team's position is the product of momentum or just where it happens to sit today. The league-wide hitting and pitching leaders round it out. Baseball is a sport where the individual leaderboards genuinely add to the standings story, because a team riding a single dominant starter or a hot bat reads very differently once you see the names attached, so the leaders are present rather than hidden behind a separate page.
+
+## Why it reads from a committed snapshot
+
+The data comes from the public MLB Stats API at `statsapi.mlb.com/api/v1`, which is one of the more generous public sports endpoints out there. It serves standings, results, and leaders with no auth token and no gatekeeper, which is exactly what you want for a project like this. I fetch from it, shape the division splits and the wild card race, and commit the result as a TypeScript snapshot at `src/data/mlbSnapshot.ts`. The running site reads that file. It does not call the MLB API when you load the page.
+
+This is the same architecture I use across all of these dashboards, and I keep using it because it keeps paying off. Reading a local snapshot means the page renders instantly, an upstream outage cannot take the surface down during a full slate of evening games, and the data is something I own at build time rather than borrow at request time. The refresh is conservative by design, so a fetch that fails or returns empty keeps the previous snapshot rather than overwriting good standings with nothing. For a product people check during a pennant race, preserving the last good board is far more important than being a few minutes fresher.
+
+The cadence is tuned to the calendar. A GitHub Action refreshes the snapshot daily from March through November, which covers the full arc from Opening Day to the final out of the World Series and then goes quiet for the offseason when nothing is moving. Baseball plays nearly every day during the season, so a daily refresh tracks the standings closely without polling a sport that has gone dormant.
+
+## Reusing the football components for a very different sport
+
+One detail I am quietly proud of is that MLB Pulse runs on the same shared component library as the soccer and basketball dashboards. The fixture cards, the leaderboard lists, and the standings furniture I first wrote for football carry baseball without a rewrite, which is most of the reason a new sport surface comes together quickly instead of becoming its own project. That reuse is only possible because the components were kept generic from the start, leaning on configuration rather than hardcoded assumptions about any one sport. A standings row does not care whether it is describing a football club or a baseball team, and a results card does not care whether the result is a match or a game, as long as the component was not built to assume otherwise.
+
+Like the other dashboards, the route state is deep-linkable, so the view you are on and any team you have focused live in the URL. A link to the National League wild card picture is just a link, which means it gets shared during the stretch run instead of described in a text message. When a specific view travels in a link, the tool earns repeat visits.
+
+## What the build reinforced
+
+The clearest lesson from this one is that the headline of a standings page should match the part of the season that is actually contested. It would have been easy to default to division leaders at the top, because that is how baseball standings have looked for a century. But that layout describes the part of the race that is usually already decided. Building MLB Pulse pushed me to ask what a fan is actually anxious about in August, and the honest answer is the wild card, so the wild card is what gets pulled forward.
+
+The rest is the principle I keep landing on across these projects. Owning the data at build time buys a reliability that a live feed cannot match, reusing generic components buys speed that a bespoke build cannot, and choosing what to put first buys a clarity that raw access never will. The MLB Stats API was always open. The product is the decision about what a 162-game season is really asking you to watch.
+
+You can explore the full thing at [MLB Pulse](/mlb). The fastest way to understand it is to open the wild card view in late summer, find the cutoff, and pin a team sitting just inside or just outside it to see how thin the margins get. That is the part of the season this project exists to keep in front of you.
+
+If you want to see how the same snapshot pattern handles a very different tournament shape, the [World Cup dashboard breakdown](/writing/building-a-world-cup-dashboard) covers a surface that has to be useful before the first game is even played.

@@ -1,0 +1,57 @@
+---
+title: "Building an NBA Dashboard for the Part of the Season That Actually Matters"
+excerpt: "I built NBA Pulse to make conference seeding, the play-in race, and league leaders legible on one screen. Here is the product thinking and why it reads from an ESPN snapshot."
+publishedAt: "2026-05-31"
+category: "Sports Analytics"
+tags: ["NBA", "Basketball", "Sports Analytics", "ESPN API", "Snapshot Driven", "Next.js", "Dashboard"]
+featured: false
+archiveBucket: "Sports & Fantasy"
+author: "Isaac Vazquez"
+coverImage: "/writing/building-an-nba-dashboard/opengraph-image"
+cta:
+  eyebrow: "Related tool"
+  title: "Open NBA Pulse"
+  description: "The live dashboard is the fastest way to see conference standings, playoff seeding, and the play-in race in one view."
+  href: "/nba"
+  actionLabel: "Open the dashboard"
+seo:
+  title: "Building NBA Pulse, a Snapshot-Driven NBA Standings and Play-In Dashboard"
+  description: "How I built NBA Pulse, an NBA dashboard with conference standings, playoff seeding, play-in race context, and snapshot leaderboards for points, rebounds, and assists."
+  keywords: ["nba dashboard", "nba standings", "play-in race", "playoff seeding", "espn nba data", "snapshot driven dashboard"]
+---
+
+# Building an NBA Dashboard for the Part of the Season That Actually Matters
+
+If you want to see the product before reading the breakdown, open [NBA Pulse](/nba).
+
+The NBA regular season is 82 games long, and for most of those games the standings are not telling you anything urgent. Then somewhere around March the table stops being a leaderboard and starts being a countdown. That is the part of the season I care about, and it is the part most dashboards handle worst. They show you a tidy ranked list of all fifteen teams in a conference, which is fine in December and useless in April, because by April the only question that matters is where the lines are drawn. Who has locked a top-six seed and a real playoff spot. Who is fighting through the play-in. Who is about to fall out entirely. I built NBA Pulse to make those lines visible instead of hiding them inside an evenly spaced list.
+
+## The play-in changed what a standings page has to do
+
+For most of the league's history, the regular season had a clean cliff. You finished in the top eight of your conference or your season was over, and seeds nine and ten were just teams running out the string. The play-in tournament rewrote that. Now seeds seven through ten are alive, the seven and eight seeds are playing to avoid a one-loss elimination, and the nine and ten seeds get a genuine path into the bracket. That is a real competitive change, and it should be a real interface change too.
+
+So the central design problem of NBA Pulse was making play-in pressure legible rather than just ranking teams top to bottom. A flat list treats the gap between the sixth and seventh seed as the same as the gap between the second and third, and that is simply false in the modern format. The sixth-to-seventh boundary is the difference between a guaranteed series and a knockout game. The page has to draw that boundary, mark the play-in band, and show the tenth seed as a live participant rather than a team that already lost. The whole reason this surface exists is to make the seeds that used to be dead weight feel like the pressure points they now are.
+
+## Why it reads from an ESPN snapshot
+
+The data comes from ESPN's public NBA endpoints, which cover standings, the scoreboard, the league leaders, and per-team schedules with no token required. I fetch those, derive the conference views and the play-in band, and commit the result as a TypeScript snapshot at `src/data/nbaSnapshot.ts`. The running site reads that file. It does not call ESPN when you load the page.
+
+The reasoning is the same one behind my other sports dashboards, and I am comfortable repeating it because it earns its keep. Reading a local snapshot means the page renders instantly, an upstream hiccup cannot take the surface down during a busy slate, and the data is something I own at build time rather than something I borrow at request time. The refresh is conservative on purpose, so a fetch that fails or comes back empty keeps the previous snapshot rather than wiping a good standings board with nothing. One worthwhile detail specific to this build is the seed. The NBA snapshot ships empty in the repository and is filled in by the update script on first run, so the source of truth is always the live ESPN data shaped by the builder, never a hand-authored guess that could quietly drift out of date.
+
+The cadence matches the sport. A GitHub Action refreshes the snapshot daily from the middle of October through June, which is exactly the window where NBA standings change every night and then go quiet for the summer. A daily refresh is right for a league that plays almost every day. There is no reason to poll harder than the standings actually move.
+
+## Deep links and a thin API, so a view can travel
+
+Two pieces make NBA Pulse feel like a tool rather than a static page. The first is deep-linkable route state. The view you are on lives in the URL, with values for the East, the West, the playoff picture, and the play-in race, and selecting a team pins it through a `team` parameter. That means "the West standings with the play-in band in focus" is a link you can send, not a description you have to type out. When a specific view travels in a link, people share it during the stretch run instead of forgetting it after one visit.
+
+The second is a thin API layer behind the page. There is a `/api/nba/summary` route that returns the conference standings, the leaders, and the day's scoreboard slate, and a `/api/nba/teams/[teamId]` route keyed by the lowercased ESPN abbreviation that returns a single team's schedule and recent form. Those routes read the same committed snapshot the page does, so they inherit the same reliability. Nothing in the request path reaches out to a third party. The API exists to make the data addressable and to power the team drilldown, not to introduce a live dependency I spent the whole snapshot design trying to avoid.
+
+## What the build clarified
+
+The thing I took away from this one is that a format change should drive an interface change, and most products skip that step. The play-in tournament has been around for a few years now, but plenty of standings pages still render the conference the way they did before it existed, as a flat top-to-fifteen list. That is a design that describes the old playoffs. Building NBA Pulse forced me to ask what the standings are actually for in the current format, and the answer is that they are about boundaries, the top-six line and the play-in band, far more than they are about exact ordering.
+
+The rest is the lesson I keep coming back to across these dashboards. Owning your data at build time buys reliability that a live feed cannot, and choosing what to put first buys clarity that raw access cannot. The ESPN endpoints were always available. The product is the decision to lead with the part of the season that actually matters.
+
+You can explore the full thing at [NBA Pulse](/nba). The fastest way to understand it is to open the play-in view late in the season, find the band between the sixth and tenth seeds, and pin a team inside it to see how close the margins really are. That tension is the part of the NBA that this project exists to surface.
+
+If you want to see how the same snapshot pattern handles a very different tournament shape, the [World Cup dashboard breakdown](/writing/building-a-world-cup-dashboard) covers a surface that has to behave before a single game is played.

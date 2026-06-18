@@ -1,0 +1,51 @@
+---
+title: "Building a Fantasy Formula 1 Optimizer Without Pretending It Is Official"
+excerpt: "I built a Fantasy Formula 1 optimizer on the same OpenF1 snapshot, with transparent model prices and honest limits about what unofficial projections can and cannot do."
+publishedAt: "2026-06-08"
+category: "Sports Analytics"
+tags: ["Fantasy Formula 1", "Formula 1", "Optimization", "Sports Analytics", "OpenF1", "Next.js"]
+featured: false
+archiveBucket: "Sports & Fantasy"
+author: "Isaac Vazquez"
+coverImage: "/writing/building-a-fantasy-formula-1-optimizer/opengraph-image"
+cta:
+  eyebrow: "Related tool"
+  title: "Open the Fantasy F1 Optimizer"
+  description: "The live tool is the fastest way to compare lineup tradeoffs under the budget and roster constraints before a race weekend."
+  href: "/fantasy-formula-1"
+  actionLabel: "Open the optimizer"
+seo:
+  title: "Building a Fantasy Formula 1 Optimizer on Transparent Model Pricing"
+  description: "How I built a Fantasy Formula 1 team optimizer with model-based prices, five-driver and two-constructor constraints, locked picks, and local browser persistence."
+  keywords: ["fantasy formula 1", "f1 fantasy optimizer", "lineup optimizer", "openf1", "fantasy f1 prices", "race weekend tool"]
+---
+
+# Building a Fantasy Formula 1 Optimizer Without Pretending It Is Official
+
+If you want to see the product before reading the breakdown, open [the Fantasy F1 Optimizer](/fantasy-formula-1).
+
+Fantasy Formula 1 is a deceptively hard decision under a deceptively simple set of rules. You pick five drivers and two constructors, you stay under a budget, and you try to score the most points across a race weekend. The trouble is that making that pick well requires you to hold three very different things in your head at once, the official game's constraints, your own subjective read on who is in form, and a scattered pile of race context, and almost nothing connects them. I built this optimizer to put those pieces in one place. I also made a decision up front that shaped everything after it, which is that the tool would never pretend its numbers are official.
+
+## The decision is harder than the rules suggest
+
+On paper the constraints are trivial. Five drivers, two constructors, a hundred million dollar budget, done. In practice the budget turns it into a real tradeoff problem, because spending up on a dominant car means saving somewhere else, and the somewhere else is exactly where weekends are won and lost. What makes it genuinely difficult is that the inputs you need to make the call are not in one place. The official game gives you prices and constraints but not much reasoning. Your form read lives in your head. The race context, qualifying pace, track history, recent results, lives across the same scattered set of sites that made the standings hard to follow in the first place.
+
+So the problem this addresses is the assembly problem. Fantasy F1 decisions usually mix official-game constraints, subjective form reads, and scattered race context with very little visibility into why a given lineup actually works. I wanted a surface where you could see the tradeoff, not just submit a guess. The optimizer enforces the five-driver, two-constructor lineup under the budget model, lets you lock picks you have already committed to and optimize around them, and shows you the reasoning, so the output is a lineup you can understand rather than a black box that hands you names.
+
+## Why I refused to fake official pricing
+
+Here is the line I would not cross. This tool is not a clone of the official game, and it does not have access to the official game's scoring or prices, so I refused to present its numbers as if it did. The prices it uses are model-based and unofficial, derived from the data I do have, and the tool says so plainly. That honesty stance is not a disclaimer bolted on at the end. It is the whole point of how the thing is framed.
+
+I think the worst version of a tool like this is the one that launders a homemade model into something that looks authoritative. It would be easy to render a clean price next to each driver and let people assume it matched the official game, and it would be dishonest, because the moment those numbers diverge from the real game the user has been quietly misled. So the optimizer is explicit that it is a way to compare lineup tradeoffs and understand why a lineup works before a race weekend, not a replica of the official game. That framing actually makes it more useful, not less, because once you stop pretending the prices are official you are free to use them for what they are good at, which is relative comparison and reasoning, rather than what they are not, which is exact replication.
+
+## Reusing the snapshot instead of building a pipeline
+
+One of the better engineering decisions was that this tool did not get its own data pipeline. It reads from the exact same OpenF1 snapshot that powers Formula 1 Pulse, the committed TypeScript file at src/data/formula1Snapshot.ts, so it builds on data already in the repository rather than standing up a second fetch path. That means the standings, driver context, and race information behind the optimizer are the same data the main F1 dashboard shows, refreshed by the same scheduled job, with the same conservative behavior of keeping the previous snapshot when a fetch fails.
+
+Reusing the snapshot kept the surface area small and the two products honest with each other. There is no risk of the optimizer and the dashboard disagreeing about the state of the season, because they are reading the same file. It also meant the work here was almost entirely about the optimization and the framing rather than the plumbing, which is exactly where I wanted to spend the time. The lineups themselves persist in versioned browser-local storage, so your draft survives a refresh and stays on your machine, and the versioning means I can evolve the storage shape later without silently corrupting what people have already saved.
+
+## What the constraint taught me
+
+The thing I took away from this build is that the honesty constraint was a feature, not a limitation. By refusing to dress unofficial model data up as official, I had to make the tool good at the thing it could actually be good at, which is helping you reason about a lineup under real constraints rather than handing you a score and asking you to trust it. A tool that says clearly what it does not know is more useful than one that hides the seams, because you can calibrate how much weight to give it.
+
+You can explore the full thing at [the Fantasy F1 Optimizer](/fantasy-formula-1). The fastest way to understand it is to lock the one driver you are certain about, then watch how the budget forces tradeoffs across the rest of the lineup, because that pressure is the whole game and seeing it directly is the reason the tool exists. If you want the context behind the data it runs on, the [Formula 1 dashboard breakdown](/writing/building-a-formula-1-dashboard) covers the snapshot both products share.

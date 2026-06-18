@@ -1,0 +1,51 @@
+---
+title: "Building an Austin Food Map to Replace the Text I Keep Retyping"
+excerpt: "I built a curated Austin food map because a friend asking where to eat wants a short, opinionated answer, not a list of forty options. Here is the restraint behind it."
+publishedAt: "2026-06-06"
+category: "Product Design"
+tags: ["Austin", "Food", "Product Design", "Editorial UX", "Next.js", "Maps"]
+featured: false
+archiveBucket: "Space & Experiments"
+author: "Isaac Vazquez"
+coverImage: "/writing/building-an-austin-food-map/opengraph-image"
+cta:
+  eyebrow: "Related tool"
+  title: "Open the Food Map"
+  description: "The live map is the fastest way to get a short, opinionated Austin shortlist filtered by neighborhood, cuisine, and meal."
+  href: "/food-map"
+  actionLabel: "Open the map"
+seo:
+  title: "Building a Curated Austin Food Map as a Shareable Shortlist"
+  description: "How I built a curated Austin restaurant map for sending friends to the right neighborhood, cuisine, and meal with a single deep-linkable shortlist."
+  keywords: ["austin food map", "austin restaurants", "curated restaurant guide", "deep linkable filters", "food shortlist", "editorial map"]
+---
+
+# Building an Austin Food Map to Replace the Text I Keep Retyping
+
+If you want to see the product before reading the breakdown, open the [Food Map](/food-map).
+
+This started as a text message I had typed too many times. A friend is coming to Austin, they ask where to eat, and I find myself reconstructing the same shortlist from memory, adjusting it slightly for whether they are downtown or east side, whether they want barbecue or tacos, whether it is brunch or a real dinner. It is a small task, but it repeats, and like most things that repeat I eventually wanted to build it once instead of retyping it forever. So I made a curated Austin food map, twelve hand-picked stops across four neighborhoods, that I can filter down and hand off as a single link.
+
+## Why Most Food Guides Are Useless
+
+There are two ways food guides usually fail, and they fail in opposite directions. The first kind is too long. It lists fifty restaurants, ranks none of them with any conviction, and leaves you exactly as undecided as you were before you opened it, because a list of fifty is not a recommendation, it is a phone book. The second kind is too generic. It has clearly never been to most of the places it lists, so it hedges everything, recommends whatever is popular, and tells you nothing a search engine would not. Neither of those is what a friend is actually asking for.
+
+When someone asks where to eat, they do not want comprehensiveness and they do not want safe consensus. They want your opinion. They want the short answer from a person who actually knows the city, the kind you would give over the table, not a directory you would email. The whole premise of this map is that the honest version of that answer is small. It is a handful of places I would genuinely send someone to, organized so they can find the right one for their evening.
+
+## Curation Is The Feature
+
+So the map holds twelve stops, not forty, and that number is the entire point. Every restaurant on it is one I would actually recommend, which means the constraint is doing real work. A bigger list would be easy to assemble and worse to use, because the value here is not coverage, it is conviction. I would rather show you four places I stand behind in a neighborhood than twenty I am hedging on, because the hedging is exactly what makes the big guides useless in the first place.
+
+The four neighborhoods matter for the same reason. Austin is not one food scene, it is several, and where you are staying changes the answer more than almost anything else. By anchoring the twelve stops across four areas, the map respects the fact that a great recommendation is also a convenient one. The best taco place in the city is not the right answer if it is forty minutes from where someone is standing. Curation here is not me being lazy about coverage. It is me being honest that a short, opinionated list is more useful than a long, neutral one, which is the same instinct behind every other tool I build.
+
+## Deep-Linkable Filters Do The Personalizing
+
+The thing that turns the map from a static list into a replacement for my text thread is the filtering. You can narrow by neighborhood, cuisine, and meal, and the filtered state lives in the link. That is the quiet feature that makes the whole thing work. Instead of typing out a custom shortlist for a friend, I set the filters to match their trip, downtown, tacos, dinner, and send them the resulting link. They open it and see exactly the slice I would have hand-written, already narrowed, no message required.
+
+The map itself is hand-drawn in SVG with an editorial feel, and that was a deliberate choice over dropping a generic interactive map into the page. A standard map widget says this is data. A hand-drawn one says this is a guide, made by a person, with a point of view. That tone matters for a product whose entire value is that it feels like a recommendation from someone who knows the city rather than an aggregation of reviews. The look is part of the honesty.
+
+## What This Little Tool Reinforced
+
+A food map is about as low-stakes as a product gets, but it taught the same lesson the more serious tools did. The temptation, always, is to add. More restaurants, more cities, more filters, more data. And almost every time I have resisted that pull, the tool got better, because good tools reduce decision fatigue before they add decision power. Forty restaurants is more information and less help. Twelve, filtered to the three that fit your night, is the actual answer.
+
+So this is a small, opinionated, local-first guide that replaced a chore I kept repeating, and I think the smallness is precisely why it works. You can open it at [Food Map](/food-map), and the fastest way to understand it is to set a neighborhood and a meal and notice how quickly twelve stops become the two or three you would actually go to tonight. If you want an adjacent read, [Building an Investment Research Platform That Prefers Clarity Over Spreadsheet Sprawl](/writing/building-an-investment-research-platform) is the same argument about restraint and curation, just applied to research instead of restaurants.

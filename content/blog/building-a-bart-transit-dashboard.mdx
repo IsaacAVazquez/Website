@@ -1,0 +1,49 @@
+---
+title: "Building a BART Dashboard That Answers One Question: Is a Train Coming"
+excerpt: "I built Bay Area Transit Pulse to put the line map, per-station departures, and service alerts on one screen instead of three separate apps. Here is the build."
+publishedAt: "2026-06-15"
+category: "Civic Data"
+tags: ["BART", "Transit", "Civic Tech", "Snapshot Driven", "Next.js", "Dashboard", "Bay Area"]
+featured: false
+archiveBucket: "Space & Experiments"
+author: "Isaac Vazquez"
+coverImage: "/writing/building-a-bart-transit-dashboard/opengraph-image"
+cta:
+  eyebrow: "Related tool"
+  title: "Open Bay Area Transit Pulse"
+  description: "The live dashboard is the fastest way to see the line map, the next trains at any station, and active service alerts in one place."
+  href: "/bay-area-transit"
+  actionLabel: "Open the dashboard"
+seo:
+  title: "Building Bay Area Transit Pulse, a Snapshot-Driven BART Dashboard"
+  description: "How I built Bay Area Transit Pulse, a BART dashboard with the line map, per-station departure boards, and active service alerts on one deep-linkable screen."
+  keywords: ["bart dashboard", "bay area transit", "station departures", "transit alerts", "bart api", "civic tech dashboard"]
+---
+
+# Building a BART Dashboard That Answers One Question: Is a Train Coming
+
+If you want to see the product before reading the breakdown, open [Bay Area Transit Pulse](/bay-area-transit).
+
+When you are standing on a platform or deciding whether to leave the house, you are really only asking one thing, which is whether a train is coming and when. It sounds trivial, and yet getting that answer reliably usually means bouncing between three different surfaces. You check a route map to remember which line you need, you open a station page to see the next departures, and you go hunting in a separate alerts feed to find out whether anything is broken today. None of those three share a view, and none of them tell you the whole story on their own. I built Bay Area Transit Pulse to collapse that bouncing into a single screen.
+
+## The question is simple, the answer is scattered
+
+BART, like most transit systems, publishes plenty of data. The problem has never been availability. The problem is that the data lives in pieces that were designed to be consumed separately. The line map answers "which train," the departure board answers "when," and the advisories answer "is anything wrong," but a rider in a hurry needs all three at once and gets them one tab at a time. That fragmentation is annoying on a normal day and genuinely costly on a bad one, because the moment service is disrupted is exactly the moment you most need the map, the departures, and the alert in the same glance, and that is the moment the scattered design fails you hardest.
+
+So the dashboard puts them together. It is organized around three views, a lines view that shows the system and how stations connect to the routes that serve them, a stations view that is a real departure board for any station you pick, and an advisories view that surfaces active service alerts and elevator outages in one place. The route state is deep-linkable, so the view you are on and the station you have selected live in the URL. A link to "Embarcadero departures" is just a link with the station abbreviation in it, like embr, which means you can bookmark your home station and land on its board directly. For a tool you use on a phone while walking, that kind of direct linking is not a nicety, it is the whole point.
+
+## Pulling the whole system in one pass
+
+BART exposes a public legacy API that does not even require you to register, because the agency publishes a working demo key, and I baked that key straight into the builder. The builder does a fair amount of stitching to produce a coherent snapshot. It pulls the full station list, then the routes and per-route info, which it uses to derive a station-to-lines mapping so the lines view actually knows which trains serve which stops. It pulls service advisories and elevator outages so the alerts view has something to show, and then it grabs real-time departures for every station in the system in a single call by asking for all origins at once. That last detail matters more than it sounds. Fetching departures station by station would mean dozens of requests and a slow, fragile build, whereas one call for the whole system keeps the pipeline fast and clean.
+
+## The snapshot, plus a seed so it is never blank
+
+The dashboard reads from a committed snapshot rather than calling BART at request time, which is the same pattern I use across this family of tools. A scheduled job refreshes it every six hours, regenerates the file, and commits it, and the running site only ever reads what has been committed. The refresh is conservative on purpose, so if a fetch fails or comes back thin, the script keeps the previous snapshot instead of replacing a good board with a broken one. Departure times are obviously the most perishable part of this data, which is the honest tradeoff of the snapshot approach, but the structure of the system, the stations, the lines, and the connections barely changes, and a steady, correct view of the network beats a live view that occasionally collapses.
+
+The one thing I did differently here is that the snapshot ships with a hand-authored seed flagged as such, so the page is useful from the very first deploy, before any live refresh has run. An empty seed would have meant a blank dashboard until the first scheduled job fired, and for a transit tool that felt wrong. The seed gets replaced wholesale on the first real refresh, but it means the product is never showing nothing.
+
+## What building it reinforced
+
+Civic data is one of my favorite spaces to build in precisely because the agencies have already done the hard part of making the data public. What is so often missing is the small, opinionated layer on top that turns three feeds into one answer. Bay Area Transit Pulse does not generate any new information about BART. It just refuses to make the rider assemble the picture themselves. I think that is where a lot of the value in civic tech actually sits, not in novel data but in respecting the user's time enough to put the map, the departures, and the alerts where a person can read them together. The question was always simple. The work was making the answer simple too.
+
+You can explore the full thing at [Bay Area Transit Pulse](/bay-area-transit). The quickest way to understand it is to open the lines view, pick a station to pull up its departure board, then check advisories to see whether anything is disrupted, all without leaving the page or losing your selection.

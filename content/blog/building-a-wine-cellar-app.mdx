@@ -1,0 +1,51 @@
+---
+title: "Building a Wine Journal That Is Private Enough to Keep Up"
+excerpt: "I built a personal wine reviewing app for logging tastings and rating bottles, saved locally in the browser, because the core need is a private journal, not another social network."
+publishedAt: "2026-06-02"
+category: "Product Design"
+tags: ["Wine", "Product Design", "Local First", "Journaling", "Next.js", "Editorial UX"]
+featured: false
+archiveBucket: "Space & Experiments"
+author: "Isaac Vazquez"
+coverImage: "/writing/building-a-wine-cellar-app/opengraph-image"
+cta:
+  eyebrow: "Related tool"
+  title: "Open the Wine Cellar"
+  description: "The live app is the fastest way to log a tasting, rate a bottle, and keep track of the wines you have poured."
+  href: "/wine-cellar"
+  actionLabel: "Open the Wine Cellar"
+seo:
+  title: "Building a Private, Local-First Wine Journal"
+  description: "How I built a personal wine reviewing app for logging tastings, rating bottles, and tracking the wines you have poured, saved locally in your browser."
+  keywords: ["wine journal app", "tasting notes", "wine rating app", "local first wine log", "private wine journal", "wine cellar tracker"]
+---
+
+# Building a Wine Journal That Is Private Enough to Keep Up
+
+If you want to see the product before reading the breakdown, open [the Wine Cellar](/wine-cellar).
+
+Every wine app I have tried wants to be a social network or a store. You scan a label and the app immediately wants to show you what strangers thought, what it costs, and where to buy more. None of that is what I actually want in the moment. What I want is somewhere to write down that the bottle we opened on a Tuesday was better than I expected, that it went oddly well with leftovers, and that I would buy it again. That is a journal, not a feed. The Wine Cellar is the small, private wine reviewing app I built because I was tired of social features getting in the way of the one thing I came to do.
+
+## The Need Most Wine Apps Talk Past
+
+If you watch how people actually use wine apps, the gap becomes obvious. The heavy social and commerce machinery is built for discovery and purchase, but the recurring need, the thing you reach for over and over, is much simpler. You poured something, you formed an opinion, and you want to remember it before it evaporates by the next morning. Tasting notes are fragile that way. The impression is vivid for about an hour and then it is gone, replaced by a vague sense that you liked it.
+
+So the core job of this product is to catch that impression while it is still sharp. Log the bottle, rate it, and write down whatever you noticed in plain language. No clever guided tasting wheel, no requirement to pick official descriptors, no nudge to share. The value is in having a running record of the wines you have poured and what you honestly thought of each one, in your own words. When you want to repeat a good night or avoid repeating a disappointing bottle, that private record is far more useful than any aggregate score from people whose palates you have never met.
+
+## The Decisions That Keep It Lightweight
+
+The central product decision was to make logging a tasting feel like jotting a note, not filling out a form. The more fields a journal demands, the less often you open it, and a wine journal you only update once a month is barely a journal at all. So the act of adding a bottle and giving it a rating is deliberately quick, because the entire value depends on you doing it consistently. I would rather capture a short, honest note every time than a long, structured entry once in a while and nothing the rest of the year.
+
+The second decision was to leave out everything that pulls toward being a platform. No friend graph, no public profile, no marketplace. Those features make a product look more ambitious on a roadmap, but for this use case they add friction and dilute the point. A private journal is calmer to use. You can be blunt in it. You can write "too sweet, never again" without softening it for an audience, and that honesty is exactly what makes the record useful to you later. Privacy here is not a compliance checkbox. It is part of why the thing gets used at all.
+
+## The Tradeoff I Made With Eyes Open
+
+The Wine Cellar keeps everything in your browser. There is no account and no sync, which means your cellar lives on the device where you built it and does not automatically appear on a new one. I want to be plain about that cost rather than hide it, because it is real. If you switch devices, you start fresh. In return, you get a tool with zero sign-up, zero friction, and a journal that is genuinely yours, sitting on your own machine rather than in someone else's database next to an ad for a wine club.
+
+For a personal journaling surface, I think that is the right trade nearly every time. The whole reason a wine journal works is that it is low-stakes and frictionless. The moment it requires an account, it competes with every other login you are avoiding, and it loses. By staying local-first, it asks nothing of you up front and rewards you the first time you reopen it and find last month's notes waiting. A smaller, private tool you keep up with beats a feature-rich one you abandon.
+
+## What It Reminded Me
+
+Building this reinforced something I keep relearning, which is that the features that make a product impressive in a pitch are often the same ones that make it heavier to live with. People will faithfully maintain a private log of something they enjoy, as long as it stays out of their way. They will not maintain a social profile that feels like an obligation. The Wine Cellar is small on purpose, and that is exactly why it survives contact with a real week.
+
+You can explore the full app at [the Wine Cellar](/wine-cellar). The fastest way to understand it is to log a single bottle, give it a rating, and write one honest line about it, then come back and see how the running list starts to feel like a record of your own taste. If you want a related read, [Building an Investment Research Platform That Prefers Clarity Over Spreadsheet Sprawl](/writing/building-an-investment-research-platform) is the other breakdown where I argue that browser-local state and restraint are the point, not a limitation.

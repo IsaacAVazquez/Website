@@ -1,0 +1,51 @@
+---
+title: "Building a La Liga Dashboard Around the Three Races That Matter"
+excerpt: "I built La Liga Pulse to track the title race, European qualification, and relegation on one screen, with scorer and assist leaderboards alongside. Here is the product thinking."
+publishedAt: "2026-06-09"
+category: "Sports Analytics"
+tags: ["La Liga", "Football", "Soccer", "Sports Analytics", "Snapshot Driven", "Next.js", "Dashboard"]
+featured: false
+archiveBucket: "Sports & Fantasy"
+author: "Isaac Vazquez"
+coverImage: "/writing/building-a-la-liga-dashboard/opengraph-image"
+cta:
+  eyebrow: "Related tool"
+  title: "Open La Liga Pulse"
+  description: "The live dashboard is the fastest way to see the title race, European qualification, relegation, and the scoring leaders in one place."
+  href: "/la-liga"
+  actionLabel: "Open the dashboard"
+seo:
+  title: "Building La Liga Pulse, a Title Race and Relegation Dashboard"
+  description: "How I built La Liga Pulse, an interactive dashboard for title-race context, European qualification pressure, relegation tracking, and curated scorer and assist leaderboards."
+  keywords: ["la liga dashboard", "title race tracker", "relegation battle", "european qualification", "football-data.org", "soccer dashboard"]
+---
+
+# Building a La Liga Dashboard Around the Three Races That Matter
+
+If you want to see the product before reading the breakdown, open [La Liga Pulse](/la-liga).
+
+A league table is one of the most honest objects in sports, and also one of the most misleading. It tells you exactly who is first and who is last, and it tells you almost nothing about where the season is being decided. By matchday 30, a Spanish league season is not one competition. It is three of them happening in the same standings at once, and the gap between second and third place can carry more tension than the gap between first and second. I built La Liga Pulse because I kept finding myself doing the same mental arithmetic every weekend, counting points to the Champions League cutoff and points above the drop, and I wanted a screen that did that counting for me.
+
+## A table tells you rank, not pressure
+
+The problem with the default table is that it flattens everything onto a single axis. Twenty rows, sorted by points, and you are left to remember on your own that rows one through three are fighting for a trophy, that the cluster around fourth and fifth is fighting for Champions League money, and that the bottom three are fighting to still exist in the division next year. The numbers are all there, but the meaning is not. You have to supply the context yourself, every single time you look.
+
+What I wanted to make explicit is that pressure lives at the boundaries, not in the rank. A team sitting comfortably in eighth is in one of the least interesting positions in the league, even though it is closer to the top than the bottom. The interesting rows are the ones sitting one point either side of a line that changes their season. So the design idea worth stating plainly is that the dashboard layers three simultaneous races onto the same standings. The title fight at the top, the European qualification scramble in the middle, and the relegation battle at the bottom each get their own treatment, so a glance tells you where the season is actually being decided rather than just who happens to be ahead.
+
+## Three races on one screen
+
+In practice that means the table is not presented as one undifferentiated list. The top of the standings reads as a title-race surface, with the points context that tells you whether the lead is real or whether one bad weekend reopens it. The middle bands surface the European qualification picture, which in La Liga is genuinely the most crowded and most volatile part of the table most years, with several clubs separated by a couple of points all chasing the same handful of continental spots. The bottom is its own relegation tracker, because the math down there is the math people actually feel, and a single result can swing a club from safe to in trouble.
+
+Alongside the races, the dashboard carries top-ten scorer and assist leaderboards. I think those belong on the same screen rather than a separate stats page, because the individual story and the team story are not really separable in a league like this. The player driving a European push and the table position that push is producing are the same narrative, and putting them next to each other lets you see cause and effect instead of looking them up independently. Club-level form is there too, so when a team is climbing or sliding you can see whether the recent run supports it or whether the standings are lagging behind reality.
+
+## Why it reads from a checked-in snapshot
+
+The data comes from football-data.org, but the running site never calls football-data.org. Instead the dashboard reads from a TypeScript snapshot committed into the repository at src/data/laLigaSnapshot.ts, which is the same build-time snapshot pattern I already use for the Premier League dashboard. A scheduled job fetches the standings, fixtures, scorers, and form, regenerates that file, and commits it. At request time there is no third-party call at all, so the page renders instantly and cannot be taken down by a rate limit or a slow upstream during a Sunday slate when the most people are looking.
+
+The free tier I am pulling from is capped at ten requests a minute, which would be a real constraint if I were fetching live on every page view, and is a complete non-issue when the fetching happens once on a schedule and the result is just a file in the repo. The refresh is also deliberately conservative. If a fetch fails or comes back thin, the script keeps the previous snapshot rather than overwriting good data with nothing, because the worst failure mode for a tool people check during matchweek is a blank board caused by thirty bad seconds upstream. Stale but correct beats fresh but broken every time for a surface like this.
+
+## The restraint that made it useful
+
+The temptation with a league dashboard is to add expected goals, possession maps, pass networks, and every other modern overlay, and I think that instinct usually buries the point. I kept the surface to the three races, the two leaderboards, and club-level form, and I made the views deep-linkable so a particular cut of the table lives in the URL and can just be shared as a link. It reuses the shared football component library that powers the other soccer dashboards, which meant I spent my time on what to show rather than rebuilding fixture cards and leaderboards from scratch.
+
+What this project reinforced is something I keep relearning across these builds, which is that the hard part of a sports dashboard is editorial, not technical. The data was always available. The work was deciding that a table needs to be read as three races instead of one list, and then building an interface that makes that reading automatic. You can explore the full thing at [La Liga Pulse](/la-liga). The fastest way to understand the design is to look at the bottom of the table before the top, because the relegation band is where the format makes the standings come alive, and it is the part I most wanted to stop calculating by hand. If you want to see how the same pattern handles a knockout tournament instead of a league, the [World Cup dashboard breakdown](/writing/building-a-world-cup-dashboard) covers that side of it.

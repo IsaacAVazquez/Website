@@ -1,0 +1,51 @@
+---
+title: "Building a Letterboxd for Museums"
+excerpt: "I built Museum Log because there is no Letterboxd for museums, so visit notes, watchlists, and exhibit memories scatter across spreadsheets, photo albums, and group chats."
+publishedAt: "2026-06-02"
+category: "Product Design"
+tags: ["Museums", "Product Design", "Local First", "Editorial UX", "Next.js", "Tracking"]
+featured: false
+archiveBucket: "Space & Experiments"
+author: "Isaac Vazquez"
+coverImage: "/writing/building-a-museum-log/opengraph-image"
+cta:
+  eyebrow: "Related tool"
+  title: "Open Museum Log"
+  description: "The live app is the fastest way to browse the catalog, save museums to a watchlist, and log visits with your own ratings."
+  href: "/museum-log"
+  actionLabel: "Open Museum Log"
+seo:
+  title: "Building Museum Log, a Letterboxd-Style Tracker for Museums"
+  description: "How I built Museum Log, a Letterboxd-style museum tracker for browsing a curated catalog, reading curator reviews, saving museums to a watchlist, and logging visits with personal ratings."
+  keywords: ["museum tracker", "letterboxd for museums", "visit log", "watchlist app", "curated museum catalog", "local first app"]
+---
+
+# Building a Letterboxd for Museums
+
+If you want to see the product before reading the breakdown, open [Museum Log](/museum-log).
+
+I keep a running mental list of museums I want to visit, and for years that list lived nowhere in particular. Some of it was a half-abandoned spreadsheet, some of it was buried in a camera roll I never scroll back through, and a good amount was just floating in group chats where someone said "you have to see this one" and I never wrote it down. Movies have Letterboxd. Books have Goodreads. Restaurants have a dozen apps fighting over them. Museums have nothing that treats a visit as something worth remembering, planning, and rating. Museum Log is my attempt to give that habit a home.
+
+## The Gap That Was Hiding in Plain Sight
+
+The reason there is no obvious Letterboxd for museums is not that nobody visits museums. It is that the visit gets recorded in fragments and then those fragments never reconnect. The thing you wanted to see lives in one place, the photos from the day you finally went live in another, and the half-formed opinion you had walking out ("the special exhibit was better than the permanent collection") never gets written down at all. So the next time someone asks what to see in a city, you reconstruct it from memory and lose half of it.
+
+What I wanted was a single surface where discovery, planning, and review all sit together. Browse a catalog, read what a curator actually thought, mark the places you want to go, and then come back after a visit and log it with your own rating. The Letterboxd analogy is worth using directly here, because it explains the entire interaction model in one phrase. You browse, you add to a watchlist, you log what you have seen, and the log becomes a quiet record of your own taste over time. Once I had that sentence, the product more or less designed itself.
+
+## The Decisions That Made It Feel Right
+
+The first real decision was to lead with a curated catalog rather than an open submission box or a live API. A curated set of museums with real curator reviews gives the app an editorial point of view from the first screen, which is exactly what makes browsing feel like reading rather than searching. An empty search bar is intimidating. A shelf of places someone has already thought about is an invitation. Curation is doing the same job here that it does in a good bookstore, which is to make the next choice easier instead of handing you the entire inventory and wishing you luck.
+
+The second decision was to keep the two halves of the experience, the editorial catalog and your personal log, clearly distinct but easy to move between. The catalog is the part everyone shares. The watchlist and the visit ratings are yours. Saving a museum to your watchlist is one tap, and logging a visit with a personal rating is the payoff that turns a wish into a memory. I wanted the gap between "I want to go here someday" and "I went, and here is what I thought" to be as short as possible, because that is the gap where most tracking tools lose people. If logging a visit takes effort, you simply stop doing it, and then the tool is just a prettier spreadsheet.
+
+## Why It Stays Local and Curated on Purpose
+
+Museum Log keeps your watchlist and your ratings in the browser. There is no account, no sign-in, and no sync across devices. I want to be honest that this is a real tradeoff and not an accident. The cost is that your log does not follow you to a new phone, and it is not a feed you can show off to friends. What you get in exchange is a private record with zero friction, the kind of thing you will actually keep up with because opening it asks nothing of you. A museum log is a personal artifact more than a social one. The point is not to broadcast where you have been. The point is to remember it, and to make the next trip a little easier to plan.
+
+The catalog being a curated snapshot rather than a live, exhaustive database is the same kind of deliberate limit. I would rather ship a focused set of museums with reviews worth reading than a giant unfiltered index where every entry is a thin stub. Restraint is a feature here, not a missing roadmap item. A tool that shows you fewer things, chosen with care, respects your attention more than one that shows you everything and leaves the sorting to you.
+
+## What It Taught Me
+
+The thing this little project reinforced is that a lot of personal tracking tools fail not because the data is hard, but because the friction is too high and the privacy is too low. People will happily keep a private journal of something they love. They will not maintain a public profile that feels like a chore. By keeping Museum Log local-first and editorially curated, it asks for almost nothing and gives back a quietly satisfying record of your own museum-going. That balance, low friction in, real memory out, is the whole reason it works.
+
+You can explore the full app at [Museum Log](/museum-log). The fastest way to understand it is to browse the catalog, read a curator review, save one museum to your watchlist, and then log a visit with your own rating, so you can feel how discovery and memory live on the same surface. If you want a related read, [Building an Investment Research Platform That Prefers Clarity Over Spreadsheet Sprawl](/writing/building-an-investment-research-platform) is the other project where I argue that curation and restraint are product strategy, not shortcuts.

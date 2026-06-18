@@ -1,0 +1,51 @@
+---
+title: "Building a Formula 1 Dashboard That Compresses the Season Into One Screen"
+excerpt: "I built Formula 1 Pulse to put the next Grand Prix, the championship tables, and race-by-race context in one place, built on a checked-in OpenF1 snapshot."
+publishedAt: "2026-06-08"
+category: "Sports Analytics"
+tags: ["Formula 1", "Motorsport", "Sports Analytics", "OpenF1", "Snapshot Driven", "Next.js", "Dashboard"]
+featured: false
+archiveBucket: "Sports & Fantasy"
+author: "Isaac Vazquez"
+coverImage: "/writing/building-a-formula-1-dashboard/opengraph-image"
+cta:
+  eyebrow: "Related tool"
+  title: "Open Formula 1 Pulse"
+  description: "The live dashboard is the fastest way to see the next Grand Prix, the driver and constructor standings, and race-by-race context in one place."
+  href: "/formula-1"
+  actionLabel: "Open the dashboard"
+seo:
+  title: "Building Formula 1 Pulse, a Snapshot-Driven F1 Standings Dashboard"
+  description: "How I built Formula 1 Pulse, an editorial F1 dashboard with the next Grand Prix, driver and constructor standings, and race-by-race context from a checked-in OpenF1 snapshot."
+  keywords: ["formula 1 dashboard", "f1 standings", "driver championship", "constructor standings", "openf1 api", "snapshot driven dashboard"]
+---
+
+# Building a Formula 1 Dashboard That Compresses the Season Into One Screen
+
+If you want to see the product before reading the breakdown, open [Formula 1 Pulse](/formula-1).
+
+A Formula 1 season is a story told in two registers at once. There is the week-to-week register of which race is next and who is quick right now, and there is the season-long register of the championship math that all of it is feeding into. The strange thing is how rarely you can see both at the same time. To follow F1 properly I would find myself with the calendar open in one tab, the driver standings in another, the constructor standings in a third, and a results page somewhere behind all of them. I built Formula 1 Pulse to collapse those tabs into one screen, because a championship is genuinely easier to read when the next race and the points picture sit next to each other.
+
+## The sport is legible, the interfaces are not
+
+What frustrated me was not the data. F1 results are clean, structured, and unambiguous in a way most sports cannot manage. The frustration was that the pieces lived in separate places, each one perfectly fine on its own and useless for the question I actually had, which was almost always some version of "given where the championship stands, how much does the next race matter." Answering that meant holding the standings in my head while I looked at the calendar, then holding the calendar in my head while I looked at recent results. The information was all available and none of it was assembled.
+
+That fragmentation is the real problem a dashboard like this solves. Standings, driver form, and the race calendar are typically scattered across separate sites with no unified, deep-linkable view, so the synthesis that would make the season readable is left entirely to the reader. I wanted the synthesis built in. The next Grand Prix sits at the top as the immediate thing, the driver and constructor tables carry the season-long stakes, and race-by-race context connects the two so you can see how the last few rounds moved the math rather than treating the standings as a number that appeared from nowhere.
+
+## What goes on the one screen
+
+The design constraint I set was that the answer to "where is the season" should fit without scrolling through four different pages. So the surface leads with the next race, because that is the thing with a date attached and the thing people orient around, and then immediately gives you both championship tables, the drivers and the constructors, because in F1 those two stories diverge in interesting ways and you want them side by side. A driver can be having a great year inside a team that is losing the constructor fight, and seeing both tables together is the only way that tension is visible.
+
+Race-by-race context is the connective tissue. A standings table is a snapshot of an accumulation, and without the races behind it you lose all sense of momentum. By keeping the recent races in view next to the points, the dashboard lets you read direction and not just position, which is the difference between knowing someone is second and knowing they are second and closing fast. Everything stays deep-linkable, so a particular cut of the season lives in the URL and a link to it is just a link, which is the small detail that decides whether something gets shared during a race weekend or forgotten after one visit.
+
+## Built on a checked-in OpenF1 snapshot
+
+The data comes from the OpenF1 API, but the live site never calls it. A scheduled GitHub Action fetches from OpenF1 daily, regenerates a plain TypeScript snapshot committed at src/data/formula1Snapshot.ts, and the running dashboard reads that file with no third-party call at request time. This is the same pattern I lean on across all of these sports surfaces, and the reasons are the same every time. The page renders instantly because the data is already in the bundle, it cannot get rate limited mid-session, and a flaky upstream cannot take the surface down while people are looking at it.
+
+The refresh is conservative in the way that matters. If a fetch fails, the script keeps the previous snapshot instead of overwriting good data with an empty result, so the dashboard prefers stale-but-correct over fresh-but-broken. For something people check around a Grand Prix, a blank standings table caused by thirty bad seconds upstream would be the worst possible outcome, and the pipeline is specifically built to avoid it. The daily cadence also fits the sport. F1 changes once a week at most, so a once-a-day refresh is plenty, and there is no reason to pay the cost and fragility of live fetching for data that only moves on race day.
+
+## What it confirmed for me
+
+The lesson here is one I keep relearning, which is that for a sport this structured the build is mostly about assembly and restraint rather than raw data access. The OpenF1 data was excellent and free. The product work was deciding that the next race, both championship tables, and the recent results belong on one screen, and then resisting the urge to bury that clarity under telemetry charts and sector times that would compete with the championship story the page is actually about.
+
+You can explore the full thing at [Formula 1 Pulse](/formula-1). The fastest way to understand it is to read the next race at the top and then drop straight to the constructor table, because the gap between where a driver sits and where their team sits is the most interesting tension in the sport, and seeing both at once is the entire reason I built the screen this way. The same OpenF1 snapshot also powers a [fantasy Formula 1 optimizer](/writing/building-a-fantasy-formula-1-optimizer), which reuses this data for a very different purpose.

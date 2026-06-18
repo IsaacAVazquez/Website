@@ -1,0 +1,51 @@
+---
+title: "Building a PGA Tour Dashboard That Follows Whatever Event Is Live"
+excerpt: "I built PGA Tour Pulse to make weekend leaderboard scanning, round-by-round movement, and cut-line pressure legible on one screen. Here is why it auto-tracks the featured event."
+publishedAt: "2026-06-07"
+category: "Sports Analytics"
+tags: ["Golf", "PGA Tour", "Sports Analytics", "ESPN API", "Snapshot Driven", "Next.js", "Dashboard"]
+featured: false
+archiveBucket: "Sports & Fantasy"
+author: "Isaac Vazquez"
+coverImage: "/writing/building-a-pga-tour-dashboard/opengraph-image"
+cta:
+  eyebrow: "Related tool"
+  title: "Open PGA Tour Pulse"
+  description: "The live dashboard is the fastest way to scan the leaderboard, round-by-round movement, and cut-line context for the current event."
+  href: "/golf"
+  actionLabel: "Open the dashboard"
+seo:
+  title: "Building PGA Tour Pulse, a Snapshot-Backed Golf Leaderboard Dashboard"
+  description: "How I built PGA Tour Pulse, a tournament dashboard for leaderboard scanning, player drilldowns, round-by-round movement, and weekend cut-line context."
+  keywords: ["pga tour dashboard", "golf leaderboard", "cut line tracker", "round by round", "espn golf data", "snapshot driven dashboard"]
+---
+
+# Building a PGA Tour Dashboard That Follows Whatever Event Is Live
+
+If you want to see the product before reading the breakdown, open [PGA Tour Pulse](/golf).
+
+Golf is the rare sport where the scoreboard is the whole drama, and yet most leaderboards do a strangely poor job of telling the story the scoreboard contains. You can see who is leading. What you usually cannot see, at least not without a lot of scrolling and squinting, is how a player got there. Did the leader card a steady four-under across all four rounds, or did they make the cut on the number and then post a Saturday 64 that nobody saw coming? Where is the cut line, and who is sweating it? I built PGA Tour Pulse because I wanted those three things, the live order, the round-by-round movement, and the cut-line pressure, on one screen instead of three.
+
+## The leaderboard hides the story it is telling
+
+A tournament leaderboard is dense by nature. Seventy or more players, four rounds, a moving cut, and a total that only makes sense once you know the par. Most of the ones I used would show me the current total and maybe today's round, but comparing how players moved across the week meant clicking into each one, and the cut line was often relegated to a thin gray rule that was easy to miss entirely. The result is that the most interesting questions during a weekend, who is charging, who is fading, and who is right on the bubble, were the hardest ones to answer at a glance.
+
+So the product point is simple. Round-by-round movement, cut-line pressure, and player form should be readable on a single screen, not reconstructed by hand from a list of totals. The leaderboard view leads, because that is what you came for, but it carries the per-round splits inline so the shape of a player's week is visible without a click. Player drilldowns are there when you want to follow one name closely, and the cut-line context is treated as a first-class part of the weekend rather than a footnote, because on Friday afternoon the bubble is the most dramatic place on the course.
+
+## Why it tracks the featured event by itself
+
+The decision I am happiest with is that the dashboard does not need to be pointed at a tournament. Every week the PGA Tour plays a different event in a different place, and the last thing I wanted was a tool that required me to remember to update which tournament it was showing. So the update script asks ESPN's public golf leaderboard endpoint what event it is featuring, prefers an in-progress event when one exists, and otherwise falls back to the most recent one. The dashboard always points at the live or latest tournament without any manual pinning.
+
+That auto-tracking is what makes it a tool rather than a one-off page. It means the surface is correct on a random Tuesday between events, where it shows the last completed tournament, and correct on a Sunday afternoon when something is actively being decided, all from the same logic. If I ever do want to pin a specific event for some reason, I can run the script by hand or edit the snapshot, but the normal state is that it follows the tour on its own and I never think about it.
+
+## The snapshot underneath it
+
+None of this fetches live at request time. The data comes from ESPN's public golf leaderboard endpoint with no auth token required, and a GitHub Action runs the builder in src/lib/golfData.ts daily at 08:40 UTC, which writes the result into a committed snapshot at src/data/golfSnapshot.ts. The running site reads that file and makes no third-party call when you load the page. Like the other dashboards in this family, a failed fetch keeps the previous snapshot rather than wiping it, so a bad response from ESPN never blanks a leaderboard that people are actively watching.
+
+On top of the snapshot sit two thin read APIs, /api/golf/summary for the leaderboard slate and /api/golf/players/[playerId] for an individual drilldown. I cared enough about those behaving correctly to be specific about the error contract. A malformed player id returns a 400, a well-formed id that does not match a real player returns a 404, and crucially those error responses are never cached at the CDN. That last detail matters more than it sounds, because a cached 404 is the kind of bug that quietly persists long after the underlying data is fine, and golf data turns over fast enough that I did not want a stale error pinned in front of a player who is now very much on the leaderboard.
+
+## What the build clarified
+
+The thing I keep coming back to is that the engineering here was modest and the product judgment was where the time went. The data was free and public. The work was deciding that round-by-round movement and the cut line deserved to be promoted to the front instead of buried, and deciding that the dashboard should follow the tour automatically so it never goes stale in the way a manually pinned page would. Deep-linkable route state ties it together, so a particular view or a particular player lives in the URL and can be shared as a link during a final round.
+
+You can explore the full thing at [PGA Tour Pulse](/golf). The fastest way to understand it is to open it during a weekend round, read a contender's four-round splits without clicking anything, and then check where they sit relative to the cut line, because that combination of movement and pressure on one screen is the entire reason the project exists. If you want to see how the same snapshot pattern handles a season-long competition instead of a single event, the [Formula 1 dashboard breakdown](/writing/building-a-formula-1-dashboard) covers that case.
