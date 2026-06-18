@@ -378,6 +378,78 @@ describe("FantasyFootballClient", () => {
     expect(screen.getByText(/from 421 mock drafts/)).toBeVisible();
   });
 
+  it("flags ADP carried over from a prior season so it does not read as a broken refresh", () => {
+    currentSearchParams = new URLSearchParams("position=rb&scoring=ppr");
+    mockUseFantasySnapshot.mockReturnValue({
+      players: [
+        {
+          id: "rb-1",
+          name: "Bijan Robinson",
+          team: "ATL",
+          position: "RB",
+          averageRank: 1,
+          rankEcr: 1,
+          rankAverage: 1.2,
+          standardDeviation: 0.1,
+          tier: 1,
+          positionRank: 1,
+          minRank: 1,
+          maxRank: 2,
+          adp: 2.2,
+        },
+      ],
+      snapshot: null,
+      metadata: {
+        season: 2026,
+        week: 0,
+        generatedAt: "2026-06-17T19:27:53.000Z",
+        upstreamUpdatedAt: "2026-06-17T14:38:09.000Z",
+        scoringFormat: "PPR",
+        source: "snapshot",
+        position: "rb",
+        playerCount: 1,
+        slice: {
+          available: true,
+          sourceKind: "position_consensus",
+          rangeKind: "position",
+          playerCount: 1,
+          updatedAt: "2026-06-17T14:38:09.000Z",
+        },
+        slices: buildSliceMetadataMap(),
+        adpSource: {
+          provider: "Fantasy Football Calculator",
+          url: "https://example.test/adp/ppr",
+          asOf: "2025-09-10T00:00:00.000Z",
+          sampleSize: 870,
+          matchedCount: 169,
+        },
+      },
+      sliceMetadata: {
+        available: true,
+        sourceKind: "position_consensus",
+        rangeKind: "position",
+        playerCount: 1,
+        updatedAt: "2026-06-17T14:38:09.000Z",
+      },
+      sliceMetadataMap: buildSliceMetadataMap(),
+      isLoading: false,
+      error: null,
+    });
+
+    render(
+      <FantasyFootballClient
+        initialState={{
+          position: "rb",
+          scoring: "ppr",
+          view: "list",
+        }}
+      />
+    );
+
+    expect(screen.getByText("Prior season")).toBeVisible();
+    expect(screen.getByText(/mock drafts have not started yet/)).toBeVisible();
+  });
+
   it("preserves the published rank when search filters the board down to one player", () => {
     currentSearchParams = new URLSearchParams("position=rb&scoring=standard");
     mockUseFantasySnapshot.mockReturnValue({
