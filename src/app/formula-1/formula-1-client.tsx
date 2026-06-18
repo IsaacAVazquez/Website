@@ -1,19 +1,24 @@
 "use client";
 
-import { startTransition, useEffect, useMemo, type CSSProperties } from "react";
+import {
+  startTransition,
+  useEffect,
+  useMemo,
+  useState,
+  type CSSProperties,
+  type ReactNode,
+} from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   ArrowDown,
   ArrowUp,
   CalendarDays,
+  Clock,
   Flag,
-  Gauge,
   MapPinned,
   Medal,
   Minus,
-  TimerReset,
   Trophy,
-  Users,
 } from "lucide-react";
 import type {
   Formula1ConstructorStanding,
@@ -32,7 +37,6 @@ import {
   normalizeFormula1State,
   resolveFormula1State,
 } from "./formula-1-state";
-import { MetricCard } from "@/components/football/MetricCard";
 import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
 import {
   Article,
@@ -161,6 +165,18 @@ function getTeamAccentStyle(teamColor: string | null): CSSProperties {
   };
 }
 
+function getSessionAccent(type: string): string {
+  const value = type.toLowerCase();
+  if (value.includes("race") && !value.includes("sprint")) return "var(--home-haze)";
+  if (value.includes("sprint")) return "#E8943B";
+  if (value.includes("qualif")) return "var(--home-acid)";
+  return "color-mix(in srgb, var(--home-ink-muted) 70%, var(--home-rule))";
+}
+
+function pad2(value: number): string {
+  return String(Math.max(0, value)).padStart(2, "0");
+}
+
 function PositionChangeIndicator({
   currentPosition,
   previousPosition,
@@ -222,16 +238,20 @@ function DriverHeadshot({
   url,
   name,
   teamColor,
+  size = 36,
 }: {
   url: string | null;
   name: string;
   teamColor: string | null;
+  size?: number;
 }) {
+  const dimension = { width: size, height: size };
+
   if (!url) {
     return (
       <div
-        className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border bg-[var(--home-paper-alt)] text-3xs font-semibold uppercase tracking-[0.08em] text-[var(--home-ink-muted)]"
-        style={{ borderColor: teamColor ?? "var(--home-rule)" }}
+        className="flex flex-shrink-0 items-center justify-center rounded-full border bg-[var(--home-paper-alt)] text-3xs font-semibold uppercase tracking-[0.08em] text-[var(--home-ink-muted)]"
+        style={{ borderColor: teamColor ?? "var(--home-rule)", ...dimension }}
         aria-hidden="true"
       >
         {name
@@ -250,8 +270,57 @@ function DriverHeadshot({
       alt={name}
       loading="lazy"
       decoding="async"
-      className="h-9 w-9 flex-shrink-0 rounded-full border bg-[var(--home-paper-alt)] object-cover object-top"
-      style={{ borderColor: teamColor ?? "var(--home-rule)" }}
+      className="flex-shrink-0 rounded-full border bg-[var(--home-paper-alt)] object-cover object-top"
+      style={{ borderColor: teamColor ?? "var(--home-rule)", ...dimension }}
+    />
+  );
+}
+
+function TeamSwatch({ color }: { color: string | null }) {
+  return (
+    <span
+      className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border"
+      style={{
+        borderColor: color ?? "var(--home-rule)",
+        background: color
+          ? `color-mix(in srgb, ${color} 18%, var(--home-paper-alt))`
+          : "var(--home-paper-alt)",
+      }}
+      aria-hidden="true"
+    >
+      <span
+        className="h-3 w-3 rounded-full"
+        style={{ background: color ?? "var(--home-ink-muted)" }}
+      />
+    </span>
+  );
+}
+
+function TrackOutline({
+  meeting,
+  className = "",
+}: {
+  meeting: Formula1MeetingSummary;
+  className?: string;
+}) {
+  if (meeting.circuitImage) {
+    return (
+      <img
+        src={meeting.circuitImage}
+        alt=""
+        loading="lazy"
+        decoding="async"
+        aria-hidden="true"
+        className={`object-contain opacity-80 dark:invert ${className}`.trim()}
+      />
+    );
+  }
+
+  return (
+    <MapPinned
+      size={26}
+      aria-hidden="true"
+      className={`text-[var(--home-ink-muted)] ${className}`.trim()}
     />
   );
 }
@@ -259,12 +328,12 @@ function DriverHeadshot({
 function CircuitMarker({ meeting }: { meeting: Formula1MeetingSummary }) {
   return (
     <div
-      className="hidden h-20 w-24 flex-shrink-0 flex-col items-center justify-center gap-2 rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_82%,var(--home-elev-mix))] p-3 text-center sm:flex"
+      className="hidden h-20 w-24 flex-shrink-0 flex-col items-center justify-center gap-1.5 rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_82%,var(--home-elev-mix))] p-2.5 text-center sm:flex"
       aria-label={`${meeting.circuitShortName} circuit marker`}
     >
-      <MapPinned size={18} className="text-[var(--home-ink-muted)]" aria-hidden="true" />
+      <TrackOutline meeting={meeting} className="h-9 w-12" />
       <span
-        className="max-w-full text-[0.65rem] font-semibold uppercase leading-tight text-[var(--home-ink-muted)]"
+        className="max-w-full text-[0.62rem] font-semibold uppercase leading-tight text-[var(--home-ink-muted)]"
         style={{ overflowWrap: "anywhere" }}
       >
         {meeting.circuitShortName}
@@ -273,67 +342,283 @@ function CircuitMarker({ meeting }: { meeting: Formula1MeetingSummary }) {
   );
 }
 
-function ViewToggle({
-  view,
-  activeView,
-  onSelect,
-}: {
-  view: Formula1View;
-  activeView: Formula1View;
-  onSelect: (view: Formula1View) => void;
-}) {
-  const isActive = view === activeView;
-
+/**
+ * Five-light F1 start gantry. Purely decorative. The lights "arm" left to
+ * right and the last one keeps a soft glow so the hero reads as a grid that is
+ * about to go green.
+ */
+function StartLights() {
   return (
-    <button
-      type="button"
-      onClick={() => onSelect(view)}
-      className="min-h-[44px] rounded-full border px-4 py-2.5 text-sm font-semibold transition-[border-color,background-color,box-shadow] duration-200"
-      style={
-        isActive
-          ? {
-              borderColor: "color-mix(in srgb, var(--home-haze) 30%, var(--home-rule))",
-              background: "color-mix(in srgb, var(--home-haze) 10%, var(--home-paper-alt))",
-              boxShadow: "var(--shadow-sm)",
-            }
-          : {
-              borderColor: "var(--home-rule)",
-              background: "color-mix(in srgb, var(--home-paper-alt) 80%, var(--home-elev-mix))",
-            }
-      }
-      aria-pressed={isActive}
-    >
-      {FORMULA1_VIEW_LABELS[view]}
-    </button>
+    <span className="inline-flex items-center gap-1.5" aria-hidden="true">
+      {[0, 1, 2, 3, 4].map((index) => (
+        <span
+          key={index}
+          className="h-2 w-2 rounded-full"
+          style={{
+            background:
+              "radial-gradient(circle at 30% 30%, #FF6A5A 0%, #E0271A 60%, #A50E04 100%)",
+            boxShadow:
+              index === 4
+                ? "0 0 8px 1px color-mix(in srgb, #E0271A 60%, transparent)"
+                : "0 0 4px color-mix(in srgb, #E0271A 35%, transparent)",
+          }}
+        />
+      ))}
+    </span>
   );
 }
 
-function StandingsHeader({
-  title,
-  description,
-}: {
-  title: string;
-  description: string;
-}) {
+interface CountdownParts {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+  isPast: boolean;
+}
+
+/**
+ * Live countdown to a race start, computed after mount so the ticking digits
+ * never trip a server/client hydration mismatch. Returns null until mounted.
+ */
+function useCountdown(targetIso: string | null): CountdownParts | null {
+  const [parts, setParts] = useState<CountdownParts | null>(null);
+
+  useEffect(() => {
+    if (!targetIso) return;
+    const target = new Date(targetIso).getTime();
+    if (Number.isNaN(target)) return;
+
+    const update = () => {
+      const diff = target - Date.now();
+      if (diff <= 0) {
+        setParts({ days: 0, hours: 0, minutes: 0, seconds: 0, isPast: true });
+        return;
+      }
+      const totalSeconds = Math.floor(diff / 1000);
+      setParts({
+        days: Math.floor(totalSeconds / 86400),
+        hours: Math.floor((totalSeconds % 86400) / 3600),
+        minutes: Math.floor((totalSeconds % 3600) / 60),
+        seconds: totalSeconds % 60,
+        isPast: false,
+      });
+    };
+
+    update();
+    const timer = window.setInterval(update, 1000);
+    return () => window.clearInterval(timer);
+  }, [targetIso]);
+
+  return parts;
+}
+
+function CountdownCell({ value, label }: { value: string; label: string }) {
   return (
-    <div className="mb-5 flex items-start justify-between gap-4">
-      <div>
-        <p className="home-kicker mb-1">Standings</p>
-        <h2
-          className="text-[1.35rem] font-semibold tracking-[-0.04em] text-[var(--home-ink)]"
-          style={{ fontFamily: "var(--font-home-sans)" }}
-        >
-          {title}
-        </h2>
-      </div>
-      <p className="mb-0 max-w-[34ch] text-sm leading-6 text-[var(--home-ink-muted)]">
-        {description}
+    <div className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_86%,var(--home-elev-mix))] px-2 py-2.5 text-center">
+      <p className="mb-0 text-[1.6rem] font-semibold leading-none tracking-[-0.04em] tabular-nums text-[var(--home-ink)]">
+        {value}
+      </p>
+      <p className="mb-0 mt-1.5 text-[0.6rem] font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
+        {label}
       </p>
     </div>
   );
 }
 
-function DriverStandingsTable({
+function RaceCountdown({ targetIso }: { targetIso: string | null }) {
+  const parts = useCountdown(targetIso);
+
+  if (parts?.isPast) {
+    return (
+      <div className="flex items-center gap-2 rounded-2xl border border-[color-mix(in_srgb,var(--home-acid)_35%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-acid)_14%,var(--home-paper))] px-4 py-3">
+        <span
+          className="h-2.5 w-2.5 flex-shrink-0 rounded-full bg-[#22A06B]"
+          aria-hidden="true"
+        />
+        <p className="mb-0 text-sm font-semibold text-[var(--home-ink)]">
+          Lights out. The race weekend is underway.
+        </p>
+      </div>
+    );
+  }
+
+  const cells = [
+    { label: "Days", value: parts ? pad2(parts.days) : "––" },
+    { label: "Hrs", value: parts ? pad2(parts.hours) : "––" },
+    { label: "Min", value: parts ? pad2(parts.minutes) : "––" },
+    { label: "Sec", value: parts ? pad2(parts.seconds) : "––" },
+  ];
+
+  return (
+    <div>
+      <p className="mb-2 flex items-center gap-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]">
+        <Clock size={13} aria-hidden="true" />
+        Lights out in
+      </p>
+      <div className="grid grid-cols-4 gap-2">
+        {cells.map((cell) => (
+          <CountdownCell key={cell.label} value={cell.value} label={cell.label} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function SeasonProgress({
+  completed,
+  total,
+}: {
+  completed: number;
+  total: number;
+}) {
+  if (total <= 0) {
+    return null;
+  }
+
+  const safeCompleted = Math.min(Math.max(completed, 0), total);
+  const pct = Math.round((safeCompleted / total) * 100);
+
+  return (
+    <div>
+      <div className="mb-2 flex items-baseline justify-between gap-3">
+        <p className="home-kicker mb-0">Season progress</p>
+        <p className="mb-0 text-xs font-semibold tabular-nums text-[var(--home-ink-muted)]">
+          Round {safeCompleted} of {total} · {pct}%
+        </p>
+      </div>
+      <div
+        className="flex items-stretch gap-[3px]"
+        role="img"
+        aria-label={`${safeCompleted} of ${total} rounds complete, ${pct} percent of the season`}
+      >
+        {Array.from({ length: total }).map((_, index) => {
+          const isDone = index < safeCompleted;
+          const isNext = index === safeCompleted;
+          return (
+            <span
+              key={index}
+              className="h-2.5 flex-1 rounded-full"
+              style={{
+                background: isDone
+                  ? "linear-gradient(180deg, color-mix(in srgb, var(--home-acid) 78%, var(--home-ink)) 0%, var(--home-acid) 100%)"
+                  : isNext
+                    ? "color-mix(in srgb, var(--home-haze) 60%, var(--home-paper))"
+                    : "color-mix(in srgb, var(--home-ink) 10%, var(--home-paper-alt))",
+                boxShadow: isNext
+                  ? "0 0 0 1px color-mix(in srgb, var(--home-haze) 45%, transparent)"
+                  : undefined,
+              }}
+            />
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+interface LeaderboardRowData {
+  key: string;
+  position: number;
+  previousPosition: number | null;
+  primary: string;
+  secondary: string | null;
+  badge: string | null;
+  headshotUrl: string | null;
+  teamColor: string | null;
+  points: number;
+  pointsDelta: number;
+}
+
+function LeaderboardRow({
+  row,
+  leaderPoints,
+  showHeadshot,
+}: {
+  row: LeaderboardRowData;
+  leaderPoints: number;
+  showHeadshot: boolean;
+}) {
+  const ratio = leaderPoints > 0 ? row.points / leaderPoints : 0;
+  const pct = row.points <= 0 ? 0 : Math.max(4, Math.round(ratio * 100));
+  const gap = Math.max(0, Math.round(leaderPoints - row.points));
+  const isLeader = row.position === 1;
+  const accent = row.teamColor ?? "var(--home-haze)";
+
+  return (
+    <li
+      className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-3.5 py-3 transition-[border-color,box-shadow] duration-200 hover:border-[color-mix(in_srgb,var(--home-ink)_18%,var(--home-rule))]"
+      style={getTeamAccentStyle(row.teamColor)}
+    >
+      <div className="flex items-center gap-3">
+        <span className="w-6 flex-shrink-0 text-center text-sm font-semibold tabular-nums text-[var(--home-ink)]">
+          {row.position}
+        </span>
+        {showHeadshot ? (
+          <DriverHeadshot
+            url={row.headshotUrl}
+            name={row.primary}
+            teamColor={row.teamColor}
+          />
+        ) : (
+          <TeamSwatch color={row.teamColor} />
+        )}
+        <div className="min-w-0 flex-1">
+          <p className="mb-0 truncate font-semibold text-[var(--home-ink)]">
+            {row.primary}
+          </p>
+          {row.secondary || row.badge ? (
+            <p className="mb-0 truncate text-xs uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+              {row.secondary ?? row.badge}
+            </p>
+          ) : null}
+        </div>
+        <PositionChangeIndicator
+          currentPosition={row.position}
+          previousPosition={row.previousPosition}
+        />
+        <div className="w-12 flex-shrink-0 text-right">
+          <p className="mb-0 text-base font-semibold tabular-nums text-[var(--home-ink)]">
+            {formatPoints(row.points)}
+          </p>
+          <p className="mb-0 text-[0.6rem] font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
+            pts
+          </p>
+        </div>
+      </div>
+      <div className="mt-2.5 flex items-center gap-3">
+        <div
+          className="relative h-1.5 flex-1 overflow-hidden rounded-full"
+          style={{
+            background: "color-mix(in srgb, var(--home-ink) 8%, var(--home-paper-alt))",
+          }}
+        >
+          <span
+            className="absolute inset-y-0 left-0 rounded-full"
+            style={{
+              width: `${pct}%`,
+              background: `linear-gradient(90deg, color-mix(in srgb, ${accent} 45%, transparent), ${accent})`,
+              boxShadow: `0 0 8px color-mix(in srgb, ${accent} 30%, transparent)`,
+            }}
+          />
+        </div>
+        {row.pointsDelta > 0 ? (
+          <span
+            className="inline-flex flex-shrink-0 items-center gap-0.5 text-[0.66rem] font-semibold tabular-nums text-[#22A06B]"
+            title="Points gained at the last race"
+          >
+            <ArrowUp size={11} aria-hidden="true" />
+            {formatDelta(row.pointsDelta)}
+          </span>
+        ) : null}
+        <span className="w-[6.5ch] flex-shrink-0 text-right text-[0.68rem] font-semibold uppercase tracking-[0.08em] tabular-nums text-[var(--home-ink-muted)]">
+          {isLeader ? "Leader" : `−${gap}`}
+        </span>
+      </div>
+    </li>
+  );
+}
+
+function DriverLeaderboard({
   standings,
   limit,
 }: {
@@ -341,6 +626,7 @@ function DriverStandingsTable({
   limit?: number;
 }) {
   const rows = typeof limit === "number" ? standings.slice(0, limit) : standings;
+  const leaderPoints = standings[0]?.points ?? 0;
 
   if (rows.length === 0) {
     return (
@@ -351,69 +637,31 @@ function DriverStandingsTable({
   }
 
   return (
-    <div className="overflow-x-auto">
-      <table className="w-full min-w-[580px] border-separate border-spacing-y-2">
-        <thead>
-          <tr className="text-left text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
-            <th scope="col" className="px-3 py-2">Pos</th>
-            <th scope="col" className="px-3 py-2">Driver</th>
-            <th scope="col" className="px-3 py-2">Team</th>
-            <th scope="col" className="px-3 py-2">Last race</th>
-            <th scope="col" className="px-3 py-2">Move</th>
-            <th scope="col" className="px-3 py-2 text-right">Pts</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((standing) => (
-            <tr
-              key={`${standing.driverNumber}-${standing.position}`}
-              className="rounded-2xl"
-              style={getTeamAccentStyle(standing.teamColor)}
-            >
-              <td className="rounded-l-2xl border-y border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-3 py-3 font-semibold text-[var(--home-ink)]">
-                {standing.position}
-              </td>
-              <td className="border-y border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-3 py-3">
-                <div className="flex min-w-0 items-center gap-3">
-                  <DriverHeadshot
-                    url={standing.headshotUrl}
-                    name={standing.driverName}
-                    teamColor={standing.teamColor}
-                  />
-                  <div className="min-w-0">
-                    <p className="mb-0 truncate font-semibold text-[var(--home-ink)]">
-                      {standing.driverName}
-                    </p>
-                    <p className="mb-0 text-xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
-                      {standing.acronym ?? standing.driverNumber}
-                    </p>
-                  </div>
-                </div>
-              </td>
-              <td className="border-y border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-3 py-3 text-sm text-[var(--home-ink-muted)]">
-                {standing.teamName}
-              </td>
-              <td className="border-y border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-3 py-3 text-sm font-semibold text-[var(--home-ink)]">
-                {formatDelta(standing.pointsDelta)}
-              </td>
-              <td className="border-y border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-3 py-3 text-sm">
-                <PositionChangeIndicator
-                  currentPosition={standing.position}
-                  previousPosition={standing.previousPosition}
-                />
-              </td>
-              <td className="rounded-r-2xl border-y border-r border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-3 py-3 text-right font-semibold text-[var(--home-ink)]">
-                {formatPoints(standing.points)}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <ol className="mt-0 space-y-2.5 pl-0">
+      {rows.map((standing) => (
+        <LeaderboardRow
+          key={`${standing.driverNumber}-${standing.position}`}
+          showHeadshot
+          leaderPoints={leaderPoints}
+          row={{
+            key: `${standing.driverNumber}`,
+            position: standing.position,
+            previousPosition: standing.previousPosition,
+            primary: standing.driverName,
+            secondary: standing.teamName,
+            badge: standing.acronym ?? String(standing.driverNumber),
+            headshotUrl: standing.headshotUrl,
+            teamColor: standing.teamColor,
+            points: standing.points,
+            pointsDelta: standing.pointsDelta,
+          }}
+        />
+      ))}
+    </ol>
   );
 }
 
-function ConstructorStandingsTable({
+function ConstructorLeaderboard({
   standings,
   limit,
 }: {
@@ -421,6 +669,7 @@ function ConstructorStandingsTable({
   limit?: number;
 }) {
   const rows = typeof limit === "number" ? standings.slice(0, limit) : standings;
+  const leaderPoints = standings[0]?.points ?? 0;
 
   if (rows.length === 0) {
     return (
@@ -431,42 +680,60 @@ function ConstructorStandingsTable({
   }
 
   return (
-    <div className="overflow-x-auto">
-      <table className="w-full min-w-[500px] border-separate border-spacing-y-2">
-        <thead>
-          <tr className="text-left text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
-            <th scope="col" className="px-3 py-2">Pos</th>
-            <th scope="col" className="px-3 py-2">Team</th>
-            <th scope="col" className="px-3 py-2">Last race</th>
-            <th scope="col" className="px-3 py-2">Move</th>
-            <th scope="col" className="px-3 py-2 text-right">Pts</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((standing) => (
-            <tr key={`${standing.teamName}-${standing.position}`} style={getTeamAccentStyle(standing.teamColor)}>
-              <td className="rounded-l-2xl border-y border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-3 py-3 font-semibold text-[var(--home-ink)]">
-                {standing.position}
-              </td>
-              <td className="border-y border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-3 py-3 font-semibold text-[var(--home-ink)]">
-                {standing.teamName}
-              </td>
-              <td className="border-y border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-3 py-3 text-sm font-semibold text-[var(--home-ink)]">
-                {formatDelta(standing.pointsDelta)}
-              </td>
-              <td className="border-y border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-3 py-3 text-sm">
-                <PositionChangeIndicator
-                  currentPosition={standing.position}
-                  previousPosition={standing.previousPosition}
-                />
-              </td>
-              <td className="rounded-r-2xl border-y border-r border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-3 py-3 text-right font-semibold text-[var(--home-ink)]">
-                {formatPoints(standing.points)}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <ol className="mt-0 space-y-2.5 pl-0">
+      {rows.map((standing) => (
+        <LeaderboardRow
+          key={`${standing.teamName}-${standing.position}`}
+          showHeadshot={false}
+          leaderPoints={leaderPoints}
+          row={{
+            key: standing.teamName,
+            position: standing.position,
+            previousPosition: standing.previousPosition,
+            primary: standing.teamName,
+            secondary: null,
+            badge: null,
+            headshotUrl: null,
+            teamColor: standing.teamColor,
+            points: standing.points,
+            pointsDelta: standing.pointsDelta,
+          }}
+        />
+      ))}
+    </ol>
+  );
+}
+
+function SectionHeader({
+  kicker,
+  title,
+  description,
+  icon,
+}: {
+  kicker: string;
+  title: string;
+  description: string;
+  icon?: ReactNode;
+}) {
+  return (
+    <div className="mb-5 flex items-start justify-between gap-4">
+      <div className="flex items-start gap-2">
+        {icon ? (
+          <span className="mt-1 text-[var(--home-ink-muted)]">{icon}</span>
+        ) : null}
+        <div>
+          <p className="home-kicker mb-1">{kicker}</p>
+          <h2
+            className="text-[1.35rem] font-semibold tracking-[-0.04em] text-[var(--home-ink)]"
+            style={{ fontFamily: "var(--font-home-sans)" }}
+          >
+            {title}
+          </h2>
+        </div>
+      </div>
+      <p className="mb-0 max-w-[32ch] text-right text-sm leading-6 text-[var(--home-ink-muted)]">
+        {description}
+      </p>
     </div>
   );
 }
@@ -523,21 +790,32 @@ function MeetingSchedule({ meeting }: { meeting: Formula1MeetingSummary }) {
 
   return (
     <ol className="mt-0 space-y-3 pl-0">
-      {meeting.sessions.map((session) => (
-        <li
-          key={session.key}
-          className="flex min-h-[44px] items-center justify-between gap-4 rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-4 py-3"
-        >
-          <div>
-            <p className="mb-0 font-semibold text-[var(--home-ink)]">{session.name}</p>
-            <p className="mb-0 mt-1 text-sm text-[var(--home-ink-muted)]">{session.type}</p>
-          </div>
-          <div className="text-right text-sm text-[var(--home-ink-muted)]">
-            <p className="mb-0">{formatLongDateTimeLabel(session.startAt)}</p>
-            <p className="mb-0 mt-1">{formatLongDateTimeLabel(session.endAt)}</p>
-          </div>
-        </li>
-      ))}
+      {meeting.sessions.map((session) => {
+        const accent = getSessionAccent(session.type);
+        return (
+          <li
+            key={session.key}
+            className="flex min-h-[44px] items-center justify-between gap-4 rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-4 py-3"
+            style={{ borderLeftWidth: "3px", borderLeftColor: accent }}
+          >
+            <div className="flex min-w-0 items-center gap-2.5">
+              <span
+                className="h-2 w-2 flex-shrink-0 rounded-full"
+                style={{ background: accent }}
+                aria-hidden="true"
+              />
+              <div className="min-w-0">
+                <p className="mb-0 truncate font-semibold text-[var(--home-ink)]">{session.name}</p>
+                <p className="mb-0 mt-1 text-sm text-[var(--home-ink-muted)]">{session.type}</p>
+              </div>
+            </div>
+            <div className="flex-shrink-0 text-right text-sm text-[var(--home-ink-muted)]">
+              <p className="mb-0">{formatLongDateTimeLabel(session.startAt)}</p>
+              <p className="mb-0 mt-1">{formatLongDateTimeLabel(session.endAt)}</p>
+            </div>
+          </li>
+        );
+      })}
     </ol>
   );
 }
@@ -581,7 +859,7 @@ function MeetingDetailPanel({
             </span>
           ) : null}
           {meeting.hasSprint ? (
-            <span className="rounded-full border border-[var(--home-rule)] px-3 py-1.5">
+            <span className="rounded-full border border-[color-mix(in_srgb,#E8943B_45%,var(--home-rule))] bg-[color-mix(in_srgb,#E8943B_12%,transparent)] px-3 py-1.5 text-[var(--home-ink)]">
               Sprint weekend
             </span>
           ) : null}
@@ -626,10 +904,13 @@ function MeetingDetailPanel({
   );
 }
 
-const PODIUM_LABELS = ["P1", "P2", "P3"] as const;
-const PODIUM_ACCENTS = ["#D6B65A", "#A4A4AC", "#B07845"] as const;
+const PODIUM_META = [
+  { label: "P1", accent: "#D6B65A", step: "sm:min-h-[8rem]", order: "sm:order-2" },
+  { label: "P2", accent: "#A4A4AC", step: "sm:min-h-[6rem]", order: "sm:order-1" },
+  { label: "P3", accent: "#B07845", step: "sm:min-h-[4.5rem]", order: "sm:order-3" },
+] as const;
 
-function PodiumHighlight({ meeting }: { meeting: Formula1MeetingSummary }) {
+function PodiumDisplay({ meeting }: { meeting: Formula1MeetingSummary }) {
   if (!meeting.resultPublished || meeting.podium.length === 0) {
     return null;
   }
@@ -638,67 +919,71 @@ function PodiumHighlight({ meeting }: { meeting: Formula1MeetingSummary }) {
 
   return (
     <section className="home-card p-5 sm:p-6">
-      <div className="mb-5 flex items-start justify-between gap-4">
-        <div className="flex items-center gap-2">
-          <Medal size={16} className="text-[var(--home-ink-muted)]" />
-          <div>
-            <p className="home-kicker mb-1">Podium</p>
-            <h2
-              className="text-[1.35rem] font-semibold tracking-[-0.04em] text-[var(--home-ink)]"
-              style={{ fontFamily: "var(--font-home-sans)" }}
-            >
-              {meeting.name}
-            </h2>
-          </div>
-        </div>
-        <p className="mb-0 max-w-[28ch] text-right text-sm leading-6 text-[var(--home-ink-muted)]">
-          Top three from the last published classification.
-        </p>
-      </div>
+      <SectionHeader
+        kicker="Podium"
+        title={meeting.name}
+        description="Top three from the last published classification."
+        icon={<Medal size={16} />}
+      />
 
-      <ol className="grid gap-3 pl-0 sm:grid-cols-3">
-        {slots.map((entry, index) => (
-          <li
-            key={`${meeting.key}-podium-${entry.driverNumber}`}
-            className="rounded-2xl border bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] p-4"
-            style={{
-              borderColor: entry.teamColor ?? "var(--home-rule)",
-              borderTopWidth: "3px",
-            }}
-          >
-            <div className="flex items-center justify-between gap-3">
-              <span
-                className="text-xs font-semibold uppercase tracking-[0.16em]"
-                style={{ color: PODIUM_ACCENTS[index] }}
+      <ol className="grid items-end gap-3 pl-0 sm:grid-cols-3">
+        {slots.map((entry, index) => {
+          const meta = PODIUM_META[index] ?? PODIUM_META[2];
+          const teamColor = entry.teamColor ?? "var(--home-rule)";
+          return (
+            <li
+              key={`${meeting.key}-podium-${entry.driverNumber}`}
+              className={`flex flex-col ${meta.order}`}
+            >
+              <div
+                className="rounded-t-2xl border border-b-0 bg-[color-mix(in_srgb,var(--home-paper-alt)_82%,var(--home-elev-mix))] p-4"
+                style={{ borderColor: teamColor, borderTopWidth: "3px" }}
               >
-                {PODIUM_LABELS[index]}
-              </span>
-              <span className="text-xs font-medium uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
-                {formatPoints(entry.points)} pts
-              </span>
-            </div>
-            <div className="mt-3 flex items-center gap-3">
-              <DriverHeadshot
-                url={entry.headshotUrl}
-                name={entry.driverName}
-                teamColor={entry.teamColor}
-              />
-              <div className="min-w-0">
-                <p className="mb-0 truncate font-semibold text-[var(--home-ink)]">
-                  {entry.driverName}
-                </p>
-                <p className="mb-0 text-xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
-                  {entry.teamName ?? "Unknown team"}
-                </p>
+                <div className="flex items-center gap-3">
+                  <DriverHeadshot
+                    url={entry.headshotUrl}
+                    name={entry.driverName}
+                    teamColor={entry.teamColor}
+                    size={44}
+                  />
+                  <div className="min-w-0">
+                    <p className="mb-0 truncate font-semibold text-[var(--home-ink)]">
+                      {entry.driverName}
+                    </p>
+                    <p className="mb-0 text-xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                      {entry.teamName ?? "Unknown team"}
+                    </p>
+                  </div>
+                </div>
+                {entry.gapToLeaderLabel ? (
+                  <p className="mt-3 mb-0 text-xs font-medium text-[var(--home-ink-muted)]">
+                    {entry.gapToLeaderLabel}
+                  </p>
+                ) : null}
               </div>
-            </div>
-            {entry.gapToLeaderLabel ? (
-              <p className="mt-3 mb-0 text-xs font-medium text-[var(--home-ink-muted)]">
-                {entry.gapToLeaderLabel}
-              </p>
-            ) : null}
-          </li>
-        ))}
+              <div
+                className={`flex items-end justify-between gap-2 rounded-b-2xl border border-t-0 px-4 py-3 ${meta.step}`}
+                style={{
+                  borderColor: teamColor,
+                  background: `linear-gradient(180deg, color-mix(in srgb, ${meta.accent} 24%, var(--home-paper-alt)) 0%, color-mix(in srgb, var(--home-paper-alt) 92%, var(--home-elev-mix)) 100%)`,
+                }}
+              >
+                <span
+                  className="text-[2.6rem] font-semibold leading-none tracking-[-0.04em]"
+                  style={{ fontFamily: "var(--font-home-serif)", color: meta.accent }}
+                >
+                  {index + 1}
+                </span>
+                <span className="pb-1 text-right text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                  {meta.label}
+                  <span className="block text-[var(--home-ink)]">
+                    {formatPoints(entry.points)} pts
+                  </span>
+                </span>
+              </div>
+            </li>
+          );
+        })}
       </ol>
     </section>
   );
@@ -806,6 +1091,41 @@ function CalendarTimeline({
   );
 }
 
+function ViewToggle({
+  view,
+  activeView,
+  onSelect,
+}: {
+  view: Formula1View;
+  activeView: Formula1View;
+  onSelect: (view: Formula1View) => void;
+}) {
+  const isActive = view === activeView;
+
+  return (
+    <button
+      type="button"
+      onClick={() => onSelect(view)}
+      className="min-h-[44px] rounded-full border px-4 py-2.5 text-sm font-semibold transition-[border-color,background-color,box-shadow] duration-200"
+      style={
+        isActive
+          ? {
+              borderColor: "color-mix(in srgb, var(--home-haze) 30%, var(--home-rule))",
+              background: "color-mix(in srgb, var(--home-haze) 10%, var(--home-paper-alt))",
+              boxShadow: "var(--shadow-sm)",
+            }
+          : {
+              borderColor: "var(--home-rule)",
+              background: "color-mix(in srgb, var(--home-paper-alt) 80%, var(--home-elev-mix))",
+            }
+      }
+      aria-pressed={isActive}
+    >
+      {FORMULA1_VIEW_LABELS[view]}
+    </button>
+  );
+}
+
 function getRaceStripMeetings(snapshot: Formula1Snapshot, selectedMeeting: Formula1MeetingSummary | null) {
   const completed = snapshot.meetings.filter((meeting) => meeting.status === "completed").slice(-3);
   const upcoming = snapshot.meetings.filter((meeting) => meeting.status === "upcoming").slice(0, 3);
@@ -871,6 +1191,8 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
   );
 
   const highlightMeeting = snapshot.nextMeeting ?? snapshot.lastCompletedMeeting ?? selectedMeeting;
+  const highlightIsUpcoming =
+    highlightMeeting?.status === "upcoming" || highlightMeeting?.status === "live";
   const driverLeader = snapshot.driverStandings[0] ?? null;
   const driverRunnerUp = snapshot.driverStandings[1] ?? null;
   const constructorLeader = snapshot.constructorStandings[0] ?? null;
@@ -979,7 +1301,14 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
               <span className="resume-chip">Updated {formatUpdatedAt(snapshot.generatedAt)}</span>
             </div>
 
-            <div className="mt-6 flex flex-wrap gap-3">
+            <div className="mt-7 max-w-[34rem]">
+              <SeasonProgress
+                completed={snapshot.seasonMetrics.completedRaces}
+                total={snapshot.seasonMetrics.totalRaces}
+              />
+            </div>
+
+            <div className="mt-7 flex flex-wrap gap-3">
               {FORMULA1_VIEW_OPTIONS.map((view) => (
                 <ViewToggle
                   key={view}
@@ -1001,10 +1330,21 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
           </div>
 
           <aside
-            className="rounded-[28px] border p-5 sm:p-6"
+            className="relative overflow-hidden rounded-[28px] border p-5 sm:p-6"
             style={getMeetingToneStyle(highlightMeeting?.status ?? "completed")}
           >
-            <div className="flex items-start justify-between gap-4">
+            {highlightMeeting?.circuitImage ? (
+              <img
+                src={highlightMeeting.circuitImage}
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+                decoding="async"
+                className="pointer-events-none absolute -right-5 -top-5 h-32 w-32 object-contain opacity-[0.08] dark:opacity-[0.16] dark:invert"
+              />
+            ) : null}
+
+            <div className="relative flex items-start justify-between gap-4">
               <div>
                 <p className="home-kicker mb-1">
                   {highlightMeeting ? getMeetingStatusCopy(highlightMeeting) : "Season status"}
@@ -1016,17 +1356,28 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
                   {highlightMeeting?.name ?? "Schedule coming soon"}
                 </h2>
               </div>
-              <Flag className="text-[var(--home-ink-muted)]" size={18} />
+              {highlightIsUpcoming ? <StartLights /> : <Flag className="text-[var(--home-ink-muted)]" size={18} />}
             </div>
 
             {highlightMeeting ? (
-              <>
-                <p className="mt-3 mb-0 text-sm leading-6 text-[var(--home-ink-muted)]">
-                  {highlightMeeting.circuitShortName} in {highlightMeeting.location}. I want the
-                  next jump to the calendar to feel obvious from the first screen.
+              <div className="relative">
+                <p className="mt-3 mb-0 flex items-center gap-2 text-sm leading-6 text-[var(--home-ink-muted)]">
+                  <CountryFlag
+                    flagUrl={highlightMeeting.countryFlag}
+                    countryName={highlightMeeting.countryName}
+                  />
+                  {highlightMeeting.circuitShortName} · {highlightMeeting.location}
                 </p>
 
-                <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                {highlightIsUpcoming ? (
+                  <div className="mt-4">
+                    <RaceCountdown
+                      targetIso={highlightMeeting.raceStartsAt ?? highlightMeeting.startAt}
+                    />
+                  </div>
+                ) : null}
+
+                <div className="mt-4 grid gap-3 sm:grid-cols-2">
                   <div className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_84%,var(--home-elev-mix))] p-4">
                     <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                       Race start
@@ -1046,7 +1397,7 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
                     </p>
                   </div>
                 </div>
-              </>
+              </div>
             ) : (
               <p className="mt-4 mb-0 text-sm leading-6 text-[var(--home-ink-muted)]">
                 The current snapshot does not include a published season schedule yet.
@@ -1070,81 +1421,41 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
         ]}
       />
 
-      <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <MetricCard
-          label="Rounds"
-          value={`${snapshot.seasonMetrics.completedRaces}/${snapshot.seasonMetrics.totalRaces}`}
-          detail="Completed grands prix against the full current-season calendar."
-          icon={<Gauge size={18} />}
-        />
-        <MetricCard
-          label="Driver leader"
-          value={driverLeader ? driverLeader.driverName : "Pending"}
-          detail={
-            driverLeader
-              ? `${formatPoints(driverLeader.points)} points after the latest published race.`
-              : "Driver standings will appear once OpenF1 publishes race-backed tables."
-          }
-          icon={<Trophy size={18} />}
-        />
-        <MetricCard
-          label="Constructor leader"
-          value={constructorLeader ? constructorLeader.teamName : "Pending"}
-          detail={
-            constructorLeader
-              ? `${formatPoints(constructorLeader.points)} points on the team side.`
-              : "Constructor standings will appear with the first published team table."
-          }
-          icon={<Users size={18} />}
-        />
-        <MetricCard
-          label="Sprint weekends"
-          value={String(snapshot.seasonMetrics.sprintWeekends)}
-          detail="Sprint rounds change the rhythm of the calendar, so I call them out directly."
-          icon={<TimerReset size={18} />}
-        />
-      </section>
-
       {resolvedState.view === "overview" ? (
         <>
-          {snapshot.lastCompletedMeeting ? (
-            <PodiumHighlight meeting={snapshot.lastCompletedMeeting} />
-          ) : null}
-
           <section className="grid gap-6 xl:grid-cols-2">
             <article className="home-card p-5 sm:p-6">
-              <StandingsHeader
-                title="Driver table"
-                description="The top five stay on the landing view so the title picture reads in one scan."
+              <SectionHeader
+                kicker="Title race"
+                title="Drivers"
+                description="Bars scale to the leader so the championship spread reads in one look."
+                icon={<Trophy size={16} />}
               />
-              <DriverStandingsTable standings={snapshot.driverStandings} limit={5} />
+              <DriverLeaderboard standings={snapshot.driverStandings} limit={8} />
             </article>
 
             <article className="home-card p-5 sm:p-6">
-              <StandingsHeader
-                title="Constructor table"
-                description="Team movement matters because Sunday points rarely tell the full pressure story alone."
+              <SectionHeader
+                kicker="Title race"
+                title="Constructors"
+                description="Team points against the garage out front, colored by livery."
+                icon={<Flag size={16} />}
               />
-              <ConstructorStandingsTable standings={snapshot.constructorStandings} limit={5} />
+              <ConstructorLeaderboard standings={snapshot.constructorStandings} limit={8} />
             </article>
           </section>
 
+          {snapshot.lastCompletedMeeting ? (
+            <PodiumDisplay meeting={snapshot.lastCompletedMeeting} />
+          ) : null}
+
           <section className="home-card p-5 sm:p-6">
-            <div className="mb-5 flex items-start justify-between gap-4">
-              <div>
-                <p className="home-kicker mb-1">Race strip</p>
-                <h2
-                  className="text-[1.35rem] font-semibold tracking-[-0.04em] text-[var(--home-ink)]"
-                  style={{ fontFamily: "var(--font-home-sans)" }}
-                >
-                  Recent and upcoming weekends
-                </h2>
-              </div>
-              <p className="mb-0 max-w-[30ch] text-sm leading-6 text-[var(--home-ink-muted)]">
-                I mix the latest results with the next stops on the calendar so the season never
-                feels frozen in the past.
-              </p>
-            </div>
+            <SectionHeader
+              kicker="Race strip"
+              title="Recent and upcoming weekends"
+              description="The latest results mixed with the next stops so the season never feels frozen in the past."
+              icon={<CalendarDays size={16} />}
+            />
 
             <MeetingStrip
               meetings={raceStripMeetings}
@@ -1164,21 +1475,25 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
 
       {resolvedState.view === "drivers" ? (
         <section className="home-card p-5 sm:p-6">
-          <StandingsHeader
+          <SectionHeader
+            kicker="Standings"
             title="Driver championship"
-            description="The point delta column is tied to the latest race-backed championship snapshot, not a live-session guess."
+            description="Point bars are tied to the latest race-backed snapshot, not a live-session guess."
+            icon={<Trophy size={16} />}
           />
-          <DriverStandingsTable standings={snapshot.driverStandings} />
+          <DriverLeaderboard standings={snapshot.driverStandings} />
         </section>
       ) : null}
 
       {resolvedState.view === "constructors" ? (
         <section className="home-card p-5 sm:p-6">
-          <StandingsHeader
+          <SectionHeader
+            kicker="Standings"
             title="Constructor championship"
-            description="This view stays team-first so you can read race-to-race movement without hunting through both garage lineups."
+            description="Team-first so you can read race-to-race movement without hunting through both garage lineups."
+            icon={<Flag size={16} />}
           />
-          <ConstructorStandingsTable standings={snapshot.constructorStandings} />
+          <ConstructorLeaderboard standings={snapshot.constructorStandings} />
         </section>
       ) : null}
 
