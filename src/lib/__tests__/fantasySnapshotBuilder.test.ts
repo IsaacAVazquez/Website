@@ -10,6 +10,39 @@ import {
 
 const NFL_WEEKS = 18;
 
+/**
+ * Runs `run` with `getFantasyAdpDataset` mocked to an empty dataset, so tests
+ * that assert the "no ADP" baseline stay deterministic regardless of whatever
+ * the committed generated ADP data currently holds. ADP is a legitimate
+ * per-format overlay (covered by the populated-dataset test below); isolating
+ * it here keeps these assertions about the base consensus rankings only.
+ * Mirrors the isolateModules pattern used by that populated-dataset test.
+ */
+function withEmptyAdp(run: (build: typeof buildFantasySnapshot) => void): void {
+  jest.resetModules();
+  jest.doMock("@/lib/fantasyAdpData", () => ({
+    getFantasyAdpDataset: () => ({
+      entries: [],
+      asOf: null,
+      sampleSize: null,
+      sourceUrl: "",
+    }),
+  }));
+
+  try {
+    jest.isolateModules(() => {
+      const {
+        buildFantasySnapshot: build,
+        // eslint-disable-next-line @typescript-eslint/no-require-imports -- jest.isolateModules requires a synchronous callback; dynamic import() would not work here
+      } = require("../fantasySnapshotBuilder") as typeof import("../fantasySnapshotBuilder");
+      run(build);
+    });
+  } finally {
+    jest.dontMock("@/lib/fantasyAdpData");
+    jest.resetModules();
+  }
+}
+
 describe("getSnapshotSeason", () => {
   it("keeps the in-progress season through the January playoffs", () => {
     expect(getSnapshotSeason(new Date(Date.UTC(2027, 0, 6)))).toBe(2026); // championship week
@@ -68,20 +101,24 @@ describe("fantasySnapshotBuilder", () => {
   });
 
   it("marks qb, k, and dst as shared scoring-agnostic slices across formats", () => {
-    const pprSnapshot = buildFantasySnapshot("ppr");
-    const halfPprSnapshot = buildFantasySnapshot("half_ppr");
-    const standardSnapshot = buildFantasySnapshot("standard");
+    // Format-specific ADP is the one field that legitimately differs across
+    // formats, so isolate it to assert the shared consensus rankings only.
+    withEmptyAdp((build) => {
+      const pprSnapshot = build("ppr");
+      const halfPprSnapshot = build("half_ppr");
+      const standardSnapshot = build("standard");
 
-    expect(pprSnapshot.sliceMetadata.qb.sourceKind).toBe("shared_position_consensus");
-    expect(pprSnapshot.sliceMetadata.k.sourceKind).toBe("shared_position_consensus");
-    expect(pprSnapshot.sliceMetadata.dst.sourceKind).toBe("shared_position_consensus");
+      expect(pprSnapshot.sliceMetadata.qb.sourceKind).toBe("shared_position_consensus");
+      expect(pprSnapshot.sliceMetadata.k.sourceKind).toBe("shared_position_consensus");
+      expect(pprSnapshot.sliceMetadata.dst.sourceKind).toBe("shared_position_consensus");
 
-    expect(pprSnapshot.positions.QB).toEqual(halfPprSnapshot.positions.QB);
-    expect(pprSnapshot.positions.QB).toEqual(standardSnapshot.positions.QB);
-    expect(pprSnapshot.positions.K).toEqual(halfPprSnapshot.positions.K);
-    expect(pprSnapshot.positions.K).toEqual(standardSnapshot.positions.K);
-    expect(pprSnapshot.positions.DST).toEqual(halfPprSnapshot.positions.DST);
-    expect(pprSnapshot.positions.DST).toEqual(standardSnapshot.positions.DST);
+      expect(pprSnapshot.positions.QB).toEqual(halfPprSnapshot.positions.QB);
+      expect(pprSnapshot.positions.QB).toEqual(standardSnapshot.positions.QB);
+      expect(pprSnapshot.positions.K).toEqual(halfPprSnapshot.positions.K);
+      expect(pprSnapshot.positions.K).toEqual(standardSnapshot.positions.K);
+      expect(pprSnapshot.positions.DST).toEqual(halfPprSnapshot.positions.DST);
+      expect(pprSnapshot.positions.DST).toEqual(standardSnapshot.positions.DST);
+    });
   });
 
   it("keeps sourced position ranges and freshness metadata", () => {
@@ -98,20 +135,24 @@ describe("fantasySnapshotBuilder", () => {
   });
 
   it("never publishes synthetic projections or expert rank arrays, and omits adp when the dataset is empty", () => {
-    // The committed ADP seed in this repo state is empty, so no player should
-    // carry an adp field and the snapshot should disclose no ADP source.
-    const snapshot = buildFantasySnapshot("ppr");
-    const firstOverallPlayer = snapshot.overall[0];
-    const firstPositionPlayer = snapshot.positions.RB[0];
+    // Mock an empty ADP dataset so this deterministically exercises the "no ADP"
+    // path regardless of the committed generated ADP data. With no dataset, no
+    // player should carry an adp field and the snapshot discloses no ADP source.
+    // The populated-dataset behavior is covered by the test below.
+    withEmptyAdp((build) => {
+      const snapshot = build("ppr");
+      const firstOverallPlayer = snapshot.overall[0];
+      const firstPositionPlayer = snapshot.positions.RB[0];
 
-    expect(firstOverallPlayer).toBeDefined();
-    expect("projectedPoints" in firstOverallPlayer).toBe(false);
-    expect("expertRanks" in firstOverallPlayer).toBe(false);
-    expect("adp" in firstOverallPlayer).toBe(false);
-    expect("projectedPoints" in firstPositionPlayer).toBe(false);
-    expect("expertRanks" in firstPositionPlayer).toBe(false);
-    expect("adp" in firstPositionPlayer).toBe(false);
-    expect(snapshot.adpSource).toBeNull();
+      expect(firstOverallPlayer).toBeDefined();
+      expect("projectedPoints" in firstOverallPlayer).toBe(false);
+      expect("expertRanks" in firstOverallPlayer).toBe(false);
+      expect("adp" in firstOverallPlayer).toBe(false);
+      expect("projectedPoints" in firstPositionPlayer).toBe(false);
+      expect("expertRanks" in firstPositionPlayer).toBe(false);
+      expect("adp" in firstPositionPlayer).toBe(false);
+      expect(snapshot.adpSource).toBeNull();
+    });
   });
 
   it("attaches matched adp readings and discloses the adp source when a dataset is present", () => {
