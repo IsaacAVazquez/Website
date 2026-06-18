@@ -23,9 +23,13 @@ import {
   formatRange,
   formatRankValue,
   formatUpdatedAt,
+  getFantasyAdpFreshness,
   getPositionTone,
+  getSnapshotStaleness,
+  getSnapshotStalenessLabel,
   getSourceKindLabel,
   getValueVsAdp,
+  type FantasySnapshotStaleness,
 } from "@/lib/fantasyUtils";
 import { TierBreakdown } from "@/components/fantasy";
 import { MetricTooltip } from "@/components/investments/MetricTooltip";
@@ -49,6 +53,38 @@ const noMotion = {
   hidden: { opacity: 0, y: 12 },
   visible: { opacity: 1, y: 0, transition: { duration: 0 } },
 };
+
+const STALENESS_TONE: Record<FantasySnapshotStaleness, CSSProperties> = {
+  fresh: {
+    background: "color-mix(in srgb, var(--color-success) 16%, var(--home-paper))",
+    borderColor: "color-mix(in srgb, var(--color-success) 30%, var(--home-rule))",
+    color: "var(--home-ink)",
+  },
+  aging: {
+    background: "color-mix(in srgb, var(--color-warning) 18%, var(--home-paper))",
+    borderColor: "color-mix(in srgb, var(--color-warning) 32%, var(--home-rule))",
+    color: "var(--home-ink)",
+  },
+  stale: {
+    background: "color-mix(in srgb, var(--color-error) 16%, var(--home-paper))",
+    borderColor: "color-mix(in srgb, var(--color-error) 30%, var(--home-rule))",
+    color: "var(--home-ink)",
+  },
+};
+
+/**
+ * Small chip that buckets a date into fresh/aging/stale against the weekly
+ * refresh cadence. Annotates the "Source updated" and "Snapshot built" dates so
+ * a missed refresh reads as an explicit warning instead of a stale-looking date.
+ */
+function FreshnessChip({ date }: { date: string | null | undefined }) {
+  const staleness = getSnapshotStaleness(date);
+  return (
+    <span className={FANTASY_CHIP_CLASS} style={STALENESS_TONE[staleness]}>
+      {getSnapshotStalenessLabel(staleness)}
+    </span>
+  );
+}
 
 interface FantasyFootballClientProps {
   initialState: FantasySearchState;
@@ -226,6 +262,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
   const currentSliceUnavailable = Boolean(sliceMetadata && !sliceMetadata.available);
   const adpSource = metadata?.adpSource ?? null;
   const adpAvailable = Boolean(adpSource);
+  const adpFreshness = getFantasyAdpFreshness(adpSource?.asOf, metadata?.season);
   const selectedScoringLabel = FANTASY_SCORING_LABELS[routeState.scoring];
   const currentSourceUpdatedAt = sliceMetadata?.updatedAt ?? metadata?.upstreamUpdatedAt ?? null;
   const currentSourceKindLabel = getSourceKindLabel(sliceMetadata?.sourceKind);
@@ -808,7 +845,10 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                     background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
                   }}
                 >
-                  <p className="home-kicker mb-1">Source updated</p>
+                  <div className="mb-1 flex items-center justify-between gap-2">
+                    <p className="home-kicker mb-0">Source updated</p>
+                    <FreshnessChip date={currentSourceUpdatedAt} />
+                  </div>
                   <p className="text-sm font-semibold">{formatUpdatedAt(currentSourceUpdatedAt)}</p>
                 </div>
                 <div
@@ -818,7 +858,10 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                     background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
                   }}
                 >
-                  <p className="home-kicker mb-1">Snapshot built</p>
+                  <div className="mb-1 flex items-center justify-between gap-2">
+                    <p className="home-kicker mb-0">Snapshot built</p>
+                    <FreshnessChip date={metadata?.generatedAt} />
+                  </div>
                   <p className="text-sm font-semibold">{formatUpdatedAt(metadata?.generatedAt)}</p>
                 </div>
                 {adpSource && (
@@ -829,7 +872,14 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                       background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
                     }}
                   >
-                    <p className="home-kicker mb-1">ADP source</p>
+                    <div className="mb-1 flex items-center justify-between gap-2">
+                      <p className="home-kicker mb-0">ADP source</p>
+                      {adpFreshness === "prior-season" && (
+                        <span className={FANTASY_CHIP_CLASS} style={STALENESS_TONE.aging}>
+                          Prior season
+                        </span>
+                      )}
+                    </div>
                     <p className="text-sm font-semibold">{adpSource.provider}</p>
                     <p className="mt-1 text-xs" style={{ color: "var(--home-ink-muted)" }}>
                       {adpSource.asOf ? `As of ${formatUpdatedAt(adpSource.asOf)}` : "Sample date not published"}
@@ -837,6 +887,11 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                         ? ` from ${adpSource.sampleSize.toLocaleString()} mock drafts`
                         : ""}
                     </p>
+                    {adpFreshness === "prior-season" && (
+                      <p className="mt-2 text-xs" style={{ color: "var(--home-ink-muted)" }}>
+                        {`${metadata?.season ?? ""} mock drafts have not started yet, so this carries last season's final ADP. It refreshes automatically once new drafts post.`}
+                      </p>
+                    )}
                   </div>
                 )}
               </div>

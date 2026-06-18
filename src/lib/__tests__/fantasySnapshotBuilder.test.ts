@@ -122,6 +122,40 @@ describe("fantasySnapshotBuilder", () => {
     expect(snapshot.adpSource).not.toBeNull();
   });
 
+  it("omits adp and discloses no source when the dataset is empty", () => {
+    // The degradation path: with an empty ADP dataset (mocked so the assertion
+    // holds regardless of what the committed seed ships), no player carries an
+    // adp field and the snapshot discloses no ADP source.
+    jest.resetModules();
+    jest.doMock("@/lib/fantasyAdpData", () => ({
+      getFantasyAdpDataset: () => ({
+        entries: [],
+        asOf: null,
+        sampleSize: null,
+        sourceUrl: "",
+      }),
+    }));
+
+    try {
+      jest.isolateModules(() => {
+        const {
+          buildFantasySnapshot: buildEmptyAdpSnapshot,
+          // eslint-disable-next-line @typescript-eslint/no-require-imports -- jest.isolateModules requires a synchronous callback; dynamic import() would not work here
+        } = require("../fantasySnapshotBuilder") as typeof import("../fantasySnapshotBuilder");
+        const snapshot = buildEmptyAdpSnapshot("ppr");
+        const firstOverallPlayer = snapshot.overall[0];
+        const firstPositionPlayer = snapshot.positions.RB[0];
+
+        expect("adp" in firstOverallPlayer).toBe(false);
+        expect("adp" in firstPositionPlayer).toBe(false);
+        expect(snapshot.adpSource).toBeNull();
+      });
+    } finally {
+      jest.dontMock("@/lib/fantasyAdpData");
+      jest.resetModules();
+    }
+  });
+
   it("attaches matched adp readings and discloses the adp source when a dataset is present", () => {
     jest.resetModules();
     jest.doMock("@/lib/fantasyAdpData", () => ({

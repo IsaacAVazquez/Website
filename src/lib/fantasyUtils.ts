@@ -59,6 +59,22 @@ export function getSnapshotStaleness(date: Date | string | null | undefined): Fa
   return "stale";
 }
 
+/**
+ * Short, human label for a staleness band. Kept beside getSnapshotStaleness so
+ * the wording and the thresholds evolve together. Used by freshness chips that
+ * annotate the "Source updated" and "Snapshot built" dates.
+ */
+export function getSnapshotStalenessLabel(staleness: FantasySnapshotStaleness): string {
+  switch (staleness) {
+    case "fresh":
+      return "Current";
+    case "aging":
+      return "Aging";
+    case "stale":
+      return "Stale";
+  }
+}
+
 export function formatRankValue(value: number | string | undefined): string {
   if (typeof value === "number") {
     if (!Number.isFinite(value)) {
@@ -134,6 +150,34 @@ export function getValueVsAdp(
   const signal = delta >= ADP_SIGNAL_THRESHOLD ? "value" : delta <= -ADP_SIGNAL_THRESHOLD ? "reach" : null;
 
   return { delta, signal };
+}
+
+export type FantasyAdpFreshness = "current" | "prior-season";
+
+/**
+ * Mock-draft ADP for the upcoming season does not populate until late summer,
+ * so through the spring the upstream feed still serves the previous season's
+ * final board. That carryover lands with an as-of date in a calendar year
+ * before the snapshot season, which the board should label as preseason
+ * carryover rather than letting an honest gap look like a broken refresh.
+ *
+ * Returns "current" whenever there is nothing to flag (no as-of date, no
+ * season, or an unparseable date) so callers never show a false warning.
+ */
+export function getFantasyAdpFreshness(
+  asOf: string | null | undefined,
+  season: number | null | undefined,
+): FantasyAdpFreshness {
+  if (!asOf || typeof season !== "number" || !Number.isFinite(season)) {
+    return "current";
+  }
+
+  const parsed = new Date(asOf);
+  if (Number.isNaN(parsed.getTime())) {
+    return "current";
+  }
+
+  return parsed.getUTCFullYear() < season ? "prior-season" : "current";
 }
 
 /**
