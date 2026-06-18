@@ -1,0 +1,45 @@
+---
+title: "Building a Frontier Model Tracker for a Market That Will Not Hold Still"
+excerpt: "I built a frontier model tracker to make the spec details product teams actually argue about, context window, blended price, modality, and reasoning support, readable in seconds."
+publishedAt: "2026-06-12"
+category: "AI Tools"
+tags: ["LLMs", "Frontier Models", "AI Tools", "Model Economics", "Data Visualization", "Next.js"]
+featured: false
+cluster: "Agentic AI"
+author: "Isaac Vazquez"
+coverImage: "/writing/building-a-frontier-model-tracker/opengraph-image"
+cta:
+  eyebrow: "Related tool"
+  title: "Open the Frontier Model Tracker"
+  description: "The live tracker is the fastest way to compare context window, blended price, modality coverage, and reasoning support across the leading models."
+  href: "/frontier-models"
+  actionLabel: "Open the tracker"
+seo:
+  title: "Building a Frontier Model Tracker for Fast LLM Comparison"
+  description: "How I built a curated dashboard of leading large language models with context windows, pricing, modality coverage, and editorial notes, built to make AI tier collapse readable in seconds."
+  keywords: ["frontier model tracker", "llm comparison", "context window", "model pricing", "modality coverage", "ai model dashboard"]
+---
+
+# Building a Frontier Model Tracker for a Market That Will Not Hold Still
+
+If you want to compare the leading models before reading the breakdown, open the [Frontier Model Tracker](/frontier-models).
+
+Every team I talk to is having the same argument, and they are having it badly. Someone wants to know whether the newest model is worth switching to, someone else has a half-remembered number about context windows, and a third person is quoting a price that was true two months ago. The information exists, but it lives in provider documentation that reads like marketing, scattered across a dozen pages that never line up. I built this tracker because comparing five frontier models otherwise takes a tab graveyard and a spreadsheet, and the spreadsheet is always out of date by the time you finish it.
+
+## The Problem Is That Provider Docs Are Sales Pages
+
+Provider documentation is not written to help you compare. It is written to make one model look like the obvious choice, which means the numbers you actually need are either buried or framed to flatter. Try to answer a simple question across vendors, something like how much context this model holds, what a blended token costs once you account for input and output, whether it handles images and audio or only text, and whether it supports a reasoning mode at all, and you quickly find that no two pages present those facts the same way. You end up normalizing the data in your head, badly, and then arguing from memory. The tracker covers nine models across seven providers and puts those four spec dimensions side by side so the comparison happens on the page instead of in someone's recollection. Context window, blended price, modality coverage, and reasoning support are the details product teams actually argue about, so those are the ones I surfaced first.
+
+## Why I Curated the Data Instead of Wiring an API
+
+There is no clean live API that returns context window, honest blended pricing, and modality coverage for every frontier model in one shape, so I did not pretend there was. The dataset is editorially curated. The hand-maintained source lives in a source file, a build script regenerates the snapshot that ships with the site, and refreshing it means editing the source and re-running the build. There is no GitHub Action because there is nothing live to poll. I want to be plain about the consequence of that choice rather than dress it up. Because the data is curated, the page carries an as-of date and discloses that it is not a live benchmark. That disclosure is not a disclaimer I tucked away to cover myself. It is the honest version of the product. A comparison table that implies real-time precision it does not have is worse than one that tells you exactly how fresh it is and lets you judge accordingly. When the numbers are compiled by hand from public reporting, the right move is to say so on the page, not to imply false precision with a confident-looking dashboard.
+
+## Tier Collapse Is the Reason This Is Worth Building
+
+The thing that makes a side-by-side reference genuinely useful right now is the speed of tier collapse. Capability that was frontier-only a year ago is now mid-tier and cheap, and the gap between the best model and the good-enough model keeps narrowing while prices fall underneath it. That is exactly the condition where a clean comparison earns its keep, because the answer to "which model should we use" changes every quarter and the old intuition goes stale fast. I used D3 for the comparison visuals so the spread is something you can see rather than something you have to compute. When you can look at context window against price across nine models at once, the collapse stops being an abstract claim and becomes a shape on the screen. A model that looked like a splurge six months ago turns out to sit in the cheap cluster now, and that is the kind of thing a table of raw numbers hides but a chart makes obvious.
+
+## What Building It Clarified for Me
+
+The discipline this project forced was deciding what not to include. I could have tried to track benchmark scores, but benchmarks are contested, gameable, and stale almost immediately, and adding them would have made the product feel authoritative in a way the data could not support. So I kept the tracker to the durable specs that teams can actually reason about and reach a decision from, and I let the editorial notes carry the judgment that the numbers alone do not. That restraint is the same lesson I keep relearning across these builds. A focused reference that is honest about its limits is more trustworthy, and therefore more useful, than a sprawling one that overstates what it knows. The tracker is meant to settle the argument quickly and then get out of the way.
+
+You can explore the full comparison at the [Frontier Model Tracker](/frontier-models). The fastest way to understand it is to sort by price and watch where the frontier models actually land against the cheaper ones, because that single view tells you most of what the tier-collapse story is about. If you want the reasoning behind the numbers, [The New Model Economics and the 2026 Tier Collapse](/writing/new-model-economics-tier-collapse-2026) is the argument the tracker is built to make visible, and [Reasoning Model Economics: When Opus Is Worth It and When Sonnet Does the Job](/writing/reasoning-model-economics-when-to-use-which) takes the same comparison down to the decision you make per request.

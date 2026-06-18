@@ -1,0 +1,53 @@
+---
+title: "Building an Earthquake Dashboard That Turns a Firehose Into a Calm Read"
+excerpt: "I built Earthquake Pulse to make the planet's last day of seismic activity legible without juggling raw USGS feeds. Here is what I chose to show and why it stays calm."
+publishedAt: "2026-06-15"
+category: "Data Product"
+tags: ["Earthquakes", "USGS", "Data Visualization", "Snapshot Driven", "Next.js", "Dashboard", "Geoscience"]
+featured: false
+archiveBucket: "Space & Experiments"
+author: "Isaac Vazquez"
+coverImage: "/writing/building-an-earthquake-dashboard/opengraph-image"
+cta:
+  eyebrow: "Related tool"
+  title: "Open Earthquake Pulse"
+  description: "The live dashboard is the fastest way to see the last 24 hours of seismic activity, the significant quakes, and where the ground is busiest."
+  href: "/earthquake-pulse"
+  actionLabel: "Open the dashboard"
+seo:
+  title: "Building Earthquake Pulse, a Snapshot-Driven Global Seismic Dashboard"
+  description: "How I built Earthquake Pulse, a calm, deep-linkable dashboard for the past 24 hours of seismic activity, significant quakes worldwide, magnitude distribution, and busiest regions, from USGS GeoJSON."
+  keywords: ["earthquake dashboard", "usgs feed", "seismic activity tracker", "significant earthquakes", "magnitude distribution", "snapshot driven dashboard"]
+---
+
+# Building an Earthquake Dashboard That Turns a Firehose Into a Calm Read
+
+If you want to see the product before reading the breakdown, open [Earthquake Pulse](/earthquake-pulse).
+
+The ground is more active than most people realize. On an ordinary day the planet records hundreds of earthquakes, and the United States Geological Survey publishes all of them in near real time. That openness is a gift, but it comes packaged as a firehose. If you open the raw USGS feeds expecting an answer, what you get instead is a torrent of events at every magnitude, scattered across every continent and ocean, with no built-in sense of which ones matter. I built Earthquake Pulse because I wanted the opposite experience. I wanted to glance at one screen and immediately know what happened recently, what was actually significant, and where the ground is busiest right now.
+
+## The firehose problem
+
+The USGS data is comprehensive in the truest sense. The feeds cover everything from a magnitude 1.2 tremor that nobody felt to a major event that made the news, and they update constantly. That completeness is exactly what makes the raw feed a poor place to start if you are a person rather than a pipeline. A list of three hundred events sorted by time tells you very little, because the magnitude 2 that just happened sits above the magnitude 6 from an hour ago, and the eye has no easy way to separate signal from noise. Most people do not want every event. They want a fast read on three questions, which are what is recent, what is significant, and where activity is concentrated, and the raw feed answers none of those three on its own.
+
+So the product is organized around exactly those three reads. Earthquake Pulse pulls from the public USGS GeoJSON feeds, specifically the all_day stream for recent activity, the 2.5_week stream for context, and the significant_month stream for the events that genuinely stand out, and it reshapes that into a recent view, a significant view, and a regions view. The regions view is the one I am most attached to, because concentration is the part of seismic activity that a flat list hides completely. A cluster of small quakes in one place can be the more interesting story than a single larger event somewhere remote, and you only see that if the interface groups by where the ground is busy.
+
+## Why it stays calm on purpose
+
+Tone is not a small thing here. A seismic dashboard sits one bad design decision away from feeling like a disaster alert, and I did not want that. Earthquakes are routine planetary behavior, and a product that screams at you about every magnitude 4 is both inaccurate and exhausting. So I leaned the whole surface toward calm. The editorial shell the rest of the site uses carries over here, the same restrained typography and the same shared stats panel, and that consistency does real work. It frames the data as something to read and understand rather than something to panic about. The point of the dashboard is to inform, and informing well means not manufacturing alarm out of ordinary geology.
+
+That restraint shows up in what gets emphasized. Significant events get their own view and their own weight, because those are the ones worth knowing about, but they sit inside the same calm frame as everything else rather than flashing red across the top. I would rather the design earn trust by being steady than grab attention by being loud.
+
+## The snapshot that keeps it honest
+
+Like the other dashboards in this family, Earthquake Pulse does not call the USGS at request time. The data lives in the repository as a plain snapshot file, and a scheduled job refreshes it hourly, fetches the feeds, regenerates the file, and commits it. The running site reads from that committed snapshot and nothing else. The seed ships empty, so the page comes alive only once the first refresh lands, and the refresh is deliberately conservative. If a fetch fails or comes back empty, the script keeps the previous snapshot rather than overwriting good data with nothing. For something people might check after feeling a tremor, the worst failure mode would be a blank board because the upstream feed hiccuped for thirty seconds, so the pipeline always prefers stale-but-correct over fresh-but-broken.
+
+There is a nice secondary benefit to owning the data at build time. Because everything renders from a static snapshot, the page is instant, it cannot get rate limited, and a flaky upstream response can never take the surface down mid-read. The refresh happening in the background is completely decoupled from the page being viewed, which is exactly the property you want for a read-heavy tool.
+
+One detail I am happy with is that opening a single quake requires no extra fetch. Everything the detail panel needs is embedded in the summary payload itself, so clicking into a specific event just reads data that is already loaded. The route state is deep-linkable too, with the view and the selected event living in the URL, so a link to a particular significant quake is just a link. That is what makes the tool shareable. If something notable happens, you can send someone a URL that opens straight to it.
+
+## What it taught me
+
+The lesson I keep relearning across these projects is that the hard part of a data product is rarely access. The USGS gives the data away freely and reliably. The hard part is editorial, which is deciding what to surface, what to suppress, and what tone to set so the output is legible rather than overwhelming. A firehose is not a product. A firehose plus a point of view is. With Earthquake Pulse the point of view is that most people want a calm, fast read on recent, significant, and concentrated activity, and once I committed to that, every other decision got easier. The data was always there. The work was making it quiet enough to actually read.
+
+You can explore the full thing at [Earthquake Pulse](/earthquake-pulse). The quickest way to understand the design is to start on the recent view, switch to significant to see what stands out, then open regions to see where the ground is busiest, and watch how the same calm frame holds across all three. If you want to see how the snapshot pattern looks for a live sporting event instead, the [World Cup dashboard breakdown](/writing/building-a-world-cup-dashboard) walks through the same reliability tradeoffs.

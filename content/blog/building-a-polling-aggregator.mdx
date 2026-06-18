@@ -1,0 +1,51 @@
+---
+title: "Building a Polling Aggregator That Shows Where the Cycle Actually Sits"
+excerpt: "I built a polling aggregator to combine presidential approval, the generic ballot, and the competitive 2026 races into one deep-linkable view instead of scattered single-state pages."
+publishedAt: "2026-06-17"
+category: "Politics"
+tags: ["Polling", "Politics", "Elections 2026", "Data Product", "Snapshot Driven", "Next.js"]
+featured: false
+archiveBucket: "Signals & Commentary"
+author: "Isaac Vazquez"
+coverImage: "/writing/building-a-polling-aggregator/opengraph-image"
+cta:
+  eyebrow: "Related tool"
+  title: "Open the Polling Aggregator"
+  description: "The live dashboard is the fastest way to see presidential approval, the generic ballot, and the competitive 2026 Senate and governor races in one place."
+  href: "/polling-aggregator"
+  actionLabel: "Open the dashboard"
+seo:
+  title: "Building a Polling Aggregator for the 2026 Cycle"
+  description: "How I built a political polling aggregator tracking presidential approval, the generic congressional ballot, and key 2026 Senate and governor race polls in a deep-linkable dashboard."
+  keywords: ["polling aggregator", "presidential approval", "generic ballot", "2026 senate races", "governor race polls", "elections dashboard"]
+---
+
+# Building a Polling Aggregator That Shows Where the Cycle Actually Sits
+
+If you want to see the product before reading the breakdown, open [the Polling Aggregator](/polling-aggregator).
+
+I have spent a meaningful part of my career working on civic and election technology, so the way most people experience polling has always bothered me a little. The numbers are out there in abundance, and yet getting an honest sense of where a cycle actually sits is weirdly hard. You read presidential approval on one site, the generic congressional ballot on another, and individual Senate or governor races on a scatter of single-state pages and partisan blogs, none of which share a frame or a link you can pass to someone. The shape of the cycle, the thing you are really trying to feel out, never lives on one screen. I built this aggregator to put that shape in one place, and to do it in a way that is about legibility rather than advocacy.
+
+## The context is fragmented by design
+
+Polling fragmentation is not anyone's fault exactly, it is just how the ecosystem grew. National toplines like presidential approval and the generic ballot tend to get their own trackers, individual races get covered locally or by interest groups, and the aggregators that do exist are often optimized for a particular kind of reader rather than for someone who just wants the overall picture. The result is that holding the cycle in your head means assembling it yourself from half a dozen sources, each with its own framing, its own time window, and its own implicit lean. That assembly work is exactly the part I think a good product should absorb, because the moment you have to gather the pieces by hand, your read of the cycle is shaped as much by which sources you happened to open as by the underlying numbers.
+
+So the aggregator brings the three layers that actually define a cycle's shape into one view. It tracks presidential approval, which is the gravitational backdrop for everything else, the generic congressional ballot, which is the cleanest national read on the House environment, and the key competitive 2026 Senate and governor races, which is where control actually gets decided. Seeing those together is the point, because approval, the generic ballot, and the marquee races are not independent stories, they move with and against each other, and you only notice that when they sit side by side instead of on three different sites.
+
+## Even-handed by construction
+
+The thing I was most deliberate about is that this is a legibility tool and not a persuasion tool. I have no interest in nudging a reader toward a conclusion, and I think the fastest way to lose a reader's trust on anything political is to let the design do the arguing. So the aggregator just shows where the numbers are, presents the races without editorializing about who deserves to win them, and lets the polls speak for themselves. My background in election technology actually pushes me harder in this direction rather than the other way, because the people who work closest to this data tend to be the most allergic to dashboards that quietly put a thumb on the scale. The value I am trying to deliver is that you can look at the cycle and understand its shape, not that you walk away agreeing with me about it.
+
+## Deep-linkable so the conversation can move
+
+A polling dashboard is only useful if you can point someone at exactly what you are looking at, so the route state is deep-linkable throughout. The view you are on lives in the URL, which means a link to a specific race or a specific layer of the cycle is just a link you can drop into a conversation. That sounds like a minor convenience, and in practice it is the difference between a tool people share during an argument and a tool people glance at once and forget. Political conversations happen in threads and group chats, and a reference you can hand someone, that opens straight to the exact race or topline in question, is worth far more than a homepage they have to navigate themselves. Letting the URL carry the state is how the product stays part of the conversation rather than a dead end.
+
+## Built on a committed snapshot
+
+Like the other dashboards I have built in this family, the aggregator reads from a snapshot committed to the repository rather than calling any third-party service at request time. The polling data lives in the snapshot as plain data, a refresh job updates it, and the running site only ever reads what has been committed. That gives me the reliability properties I care about, instant loads with no live dependency to rate limit or fail mid-read, and it gives me one property that matters even more for political data, which is provenance. Because the figures are committed to the repository, what the page shows is a known, inspectable state rather than whatever a live call happened to return at that second. The refresh stays conservative, so a failed or empty fetch keeps the previous snapshot rather than overwriting it, and that means the board is never showing a half-loaded or blank picture of something as sensitive as where a race stands.
+
+## What it reaffirmed
+
+What this project reaffirmed for me is that with political data the integrity of the presentation is the whole product. The numbers are public, and plenty of people publish them, but the cycle stays illegible because nobody assembles the layers in a frame you can trust and link to. Building the aggregator was mostly an exercise in restraint, in deciding to combine approval, the generic ballot, and the competitive races without dressing them up, and in respecting the reader enough to let them draw their own conclusions. Coming from civic and election technology, that restraint feels less like a constraint and more like the entire job.
+
+You can explore the full thing at [the Polling Aggregator](/polling-aggregator). The quickest way to understand it is to start with presidential approval, move to the generic ballot, then open the competitive 2026 races and notice how they relate, all on one screen you can link straight to.

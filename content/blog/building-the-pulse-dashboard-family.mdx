@@ -1,0 +1,45 @@
+---
+title: "Building the Pulse Dashboards as One Product System, Not Nine Pages"
+excerpt: "I built the Pulse dashboards as a single product family with a shared interaction model and domain-specific framing, so each new surface is faster to ship and easier to learn."
+publishedAt: "2026-06-16"
+category: "Product Design"
+tags: ["Product Design", "Dashboard Design", "Data Product", "Design Systems", "Snapshot Driven", "Next.js"]
+featured: false
+archiveBucket: "Space & Experiments"
+author: "Isaac Vazquez"
+coverImage: "/writing/building-the-pulse-dashboard-family/opengraph-image"
+cta:
+  eyebrow: "Related work"
+  title: "Browse the live projects"
+  description: "The portfolio lists the full set of Pulse dashboards and the rest of the tools."
+  href: "/portfolio"
+  actionLabel: "See the projects"
+seo:
+  title: "Building the Pulse Dashboards as One Product System"
+  description: "How I designed the Pulse dashboard family across sports, media, developer trends, and politics as one shared interaction model with domain-specific framing and a common snapshot architecture."
+  keywords: ["dashboard design system", "product system", "deep linkable state", "snapshot driven dashboards", "data product design", "interaction model"]
+---
+
+# Building the Pulse Dashboards as One Product System, Not Nine Pages
+
+If you want to see the family before reading the breakdown, the [portfolio](/portfolio) lists the full set of live dashboards.
+
+At some point I stopped building individual dashboards and started building a system that happens to render as many dashboards. The Pulse family spans sports, media, developer trends, and politics, and from the outside each surface looks bespoke to its domain. The [NFL](/nfl) page knows about weeks and conferences, the [earthquake](/earthquake-pulse) page knows about magnitude and regions, the [Bay Area transit](/bay-area-transit) page knows about lines and departure boards. Underneath, though, they are the same product. I made that choice early, and it is the reason a new dashboard now takes days instead of weeks, and the reason someone who has used one of them already knows how to use the next.
+
+## One Interaction Model, Many Domains
+
+The shared spine is an interaction model, not a template. Every Pulse dashboard opens on a compact first screen that surfaces pressure and movement before anything else, so the first thing you see is what changed and what is under tension rather than a wall of tables. Every one uses the same deep-linkable URL state, so a view and a selected entity live in the address bar and a link drops someone exactly where you were. They share snapshot handling and a common card and component layer, which is why the [MLB](/mlb), [NBA](/nba), and [Premier League](/premier-league) surfaces feel like cousins even though their data could not be more different. The bet I was making is that a learnable family beats a collection of clever one-offs. Once you understand how to read movement on the [La Liga](/la-liga) page, you understand the [World Cup](/world-cup-2026) page and the [polling aggregator](/polling-aggregator) without relearning anything, and that transfer is worth more than the novelty of designing each from scratch. Designing every dashboard fresh would have produced more variety and a slower, more confusing product. The shared model keeps the family coherent while the domain framing preserves what is genuinely unique to each subject.
+
+## The Architecture Underneath
+
+The reason the interaction model holds across so many surfaces is that the data architecture is one repeated pattern. Each dashboard starts from a committed snapshot, which a builder script regenerates, which a scheduled GitHub Action runs on a cadence that fits the domain, which accessors read, which a thin read API exposes to the page. That pattern now backs more than fifteen dashboards, and its uniformity is the point. When the shape of the data pipeline is identical from [Formula 1](/formula-1) to [golf](/golf) to [GitHub trending](/github-trending-pulse), adding a new surface is mostly a question of writing the builder and the domain framing, because everything downstream already exists. The sameness is not laziness. It is leverage, and it is the difference between a system and a pile of pages.
+
+## The Tradeoffs I Made on Purpose
+
+Two tradeoffs defined the family, and I would make both again. The first is snapshot-backed data over fully live runtime dependencies. These products are read far more than they are transacted on, so second-by-second freshness matters less than predictable performance and operational durability. A snapshot that refreshes on a sensible schedule will never melt down because an upstream API rate-limited me mid-render, and that reliability is worth more to a reader checking the [news pulse](/news-pulse) than a live feed that occasionally fails in their face. The second tradeoff is editorial framing over raw data density. It is tempting to dump every available table and call it thorough, but a good dashboard leads with pressure, movement, and the question the reader is most likely to ask first, and lets the depth sit one layer down for the people who want it. Density feels impressive and reads exhausting. Choosing what to surface first is the actual design work, and it is what separates a dashboard you understand in seconds from one you have to excavate.
+
+## The North Star and the Honest Gap
+
+The metric I kept returning to is time to useful context, the gap between landing on a dashboard and understanding what changed and why it matters. Every decision in the family bends toward shrinking that gap, from the compact first screen to the shared interaction grammar that means you are never learning a new product from zero. That is the thing I am proudest of, and it is also where I want to be honest about what is still missing. The common product logic is strong, but the family is still discovered route by route. There is no shared landing hub that presents the Pulse dashboards as the single system they actually are, so someone who finds the transit page has no obvious path to the rest of them. The product system is real on the inside and invisible on the outside, and closing that gap with a proper hub is the work I have not finished. A system the user cannot see as a system is only doing half its job.
+
+The fastest way to understand the family right now is to open two siblings back to back, say the [NFL](/nfl) dashboard and the [earthquake pulse](/earthquake-pulse), and notice how quickly the second one feels familiar even though the subject is completely different. That recognition is the whole product. If you want the deeper builds, [Building News Pulse: A Dashboard For Comparing How Major Outlets Cover The Same Story](/writing/building-news-pulse-dashboard) and [Building a World Cup Dashboard](/writing/building-a-world-cup-dashboard) each go one level into a single member of the family.

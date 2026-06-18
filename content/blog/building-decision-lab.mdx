@@ -1,0 +1,51 @@
+---
+title: "Building Decision Lab to Force a Plain Ship, Test, or Hold Call"
+excerpt: "I built Decision Lab to keep impact, confidence, effort, and reversibility separate, then collapse them into one explicit recommendation instead of a vague conviction."
+publishedAt: "2026-06-05"
+category: "Product Management"
+tags: ["Product Management", "Decision Making", "Prioritization", "Product Strategy", "Next.js", "Decision Support"]
+featured: false
+cluster: "PM Workflows"
+author: "Isaac Vazquez"
+coverImage: "/writing/building-decision-lab/opengraph-image"
+cta:
+  eyebrow: "Related tool"
+  title: "Open Decision Lab"
+  description: "The live tool is the fastest way to score a product bet on impact, confidence, effort, and reversibility and get a plain ship, test, or hold call."
+  href: "/decision-lab"
+  actionLabel: "Open Decision Lab"
+seo:
+  title: "Building Decision Lab, a Product-Bet Triage Tool"
+  description: "How I built Decision Lab, a product-bet triage tool that scores impact, confidence, effort, and reversibility, then forces a plain ship, test, or hold recommendation with deep-linkable state."
+  keywords: ["product decision tool", "prioritization framework", "ship test hold", "product bet triage", "reversibility", "decision support"]
+---
+
+# Building Decision Lab to Force a Plain Ship, Test, or Hold Call
+
+If you want to see the product before reading the breakdown, open [Decision Lab](/decision-lab).
+
+Product discussions have a failure mode that I have watched play out in too many rooms. Someone has a feeling about a bet, the feeling gets dressed up in confident language, and the group ends up debating conviction instead of reasoning. The trouble is that a product bet is never just one variable. It is a tangle of how much it could move, how sure you are, how much it will cost, and whether you can walk it back. When all of that collapses into a single fuzzy sense of "this feels right," the loudest voice usually wins, and being loud is not the same as being correct. I built Decision Lab to pull those variables back apart and then force a plain call at the end.
+
+## Why One Fuzzy Conviction Is The Enemy
+
+The thing I keep noticing is that it is far easier to argue confidently than to reason clearly. Confidence is a single dial you can turn up in a meeting. Reasoning is several dials that often point in different directions, and holding them in your head at once is genuinely hard. So people compress. They take impact, certainty, cost, and reversibility and mash them into one word, and that compression is where bad decisions hide. A bet that is high impact but also expensive and irreversible gets the same enthusiastic nod as a bet that is high impact, cheap, and easy to undo, even though those two bets deserve completely different treatment.
+
+Decision Lab refuses to let you compress. It asks you to score impact, confidence, effort, and reversibility as four separate inputs, and it keeps them visibly separate so you cannot quietly average them in your head. The point is not to make the decision feel more rigorous. The point is to stop you from skipping straight to a verdict before you have actually looked at the parts.
+
+## Reversibility Is The Input Everyone Forgets
+
+If I had to name the single most underweighted variable in product decisions, it is reversibility, and that is why I gave it equal billing. We spend enormous energy arguing about impact and almost none asking whether a bet is a one-way door or a revolving one. That asymmetry is backwards. A cheap, reversible bet with decent upside should usually just ship, because the cost of being wrong is small and the cost of deliberating is real. An expensive, irreversible bet with the same headline impact deserves a much harder look, because being wrong is permanent and slow to recover from.
+
+Once reversibility sits next to impact as its own number, the conversation changes shape. People stop asking only "how big is this" and start asking "and what happens if we are wrong." That second question is where most of the actual risk lives, and surfacing it explicitly is half of what the tool is for. Two bets with identical impact scores can earn opposite verdicts, and the reason is right there in the reversibility column instead of buried in someone's gut.
+
+## A Deterministic Model, Not A Black Box
+
+The scoring underneath is deterministic, and that was a deliberate constraint rather than a shortcut. I had no interest in building something that takes your inputs, hides them inside an opaque algorithm, and hands back a confident-looking number. That would just be laundering a gut call through a score and giving it false authority. The whole value of the tool depends on the reasoning being inspectable. You should be able to see exactly why a bet landed on ship rather than hold, and you should be able to move an input and watch the verdict move with it.
+
+To make the tool useful out of the box, it ships with six presets that stand in for common bet shapes, so you are not staring at empty fields wondering how to calibrate. State is deep-linkable too, which matters more than it sounds. It means a specific bet, scored exactly the way you scored it, can travel in a link. Instead of relitigating a decision from memory in the next meeting, you send the link and the whole group is looking at the same explicit reasoning. That is the difference between a decision that gets remembered and one that gets re-argued from scratch.
+
+## What It Is Really For
+
+Decision Lab does not make decisions for you, and I would be suspicious of any tool that claimed to. What it does is force the plain call at the end, ship or test or hold, after making you look honestly at the parts that the usual conversation blurs together. The verdict is the easy part. The discipline of keeping impact, confidence, effort, and reversibility separate long enough to actually weigh them is the hard part, and it is the part most teams skip.
+
+This is the same instinct behind the other tools I build, which is that good tools reduce decision fatigue before they add decision power. Decision Lab is not trying to be smarter than you. It is trying to keep you from arguing yourself into a one-way door because the upside sounded exciting. You can open it at [Decision Lab](/decision-lab), and the fastest way to understand it is to load a preset, then drag the reversibility input and watch how the recommendation shifts even when the impact stays the same. If you want an adjacent read, [Building an Investment Research Platform That Prefers Clarity Over Spreadsheet Sprawl](/writing/building-an-investment-research-platform) is the same argument about making a decision workspace legible, applied to investing instead of product bets.

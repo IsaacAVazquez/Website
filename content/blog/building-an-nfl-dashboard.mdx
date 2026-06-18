@@ -1,0 +1,57 @@
+---
+title: "Building an NFL Dashboard That Reads the Whole Season at a Glance"
+excerpt: "I built NFL Pulse to put conference seeding, the division races, and the playoff cutoff on one screen, fed by a checked-in NFLverse snapshot instead of a live feed."
+publishedAt: "2026-05-30"
+category: "Sports Analytics"
+tags: ["NFL", "Sports Analytics", "NFLverse", "Snapshot Driven", "Next.js", "Dashboard", "Sports Data"]
+featured: false
+archiveBucket: "Sports & Fantasy"
+author: "Isaac Vazquez"
+coverImage: "/writing/building-an-nfl-dashboard/opengraph-image"
+cta:
+  eyebrow: "Related tool"
+  title: "Open NFL Pulse"
+  description: "The live dashboard is the fastest way to see conference seeding, the division races, and the playoff cutoff in one place."
+  href: "/nfl"
+  actionLabel: "Open the dashboard"
+seo:
+  title: "Building NFL Pulse, a Snapshot-Driven NFL Standings and Playoff Dashboard"
+  description: "How I built NFL Pulse, an NFL dashboard with conference seeding, division races, playoff cutoff context, point differential, and stat leaders from a checked-in NFLverse snapshot."
+  keywords: ["nfl dashboard", "nfl standings tracker", "nfl playoff picture", "nflverse data", "conference seeding", "snapshot driven dashboard"]
+---
+
+# Building an NFL Dashboard That Reads the Whole Season at a Glance
+
+If you want to see the product before reading the breakdown, open [NFL Pulse](/nfl).
+
+The NFL is a sport you follow through a Sunday, but you understand it through a season. The single most common question I have during the back half of the year is not who won this week. It is where my team actually sits, which means seeding inside the conference, the math of the division race, and how close the playoff cutoff line really is. The problem is that nobody shows you those things together. Standings live in one place, point differential in another, and the stat leaders in a third tab that you only open when someone has a fantasy argument. I built NFL Pulse to collapse all of that into one screen, because the season picture is the thing I actually want and it is the thing that is hardest to assemble in your head.
+
+## The season is the unit, not the week
+
+A weekly score is a fact. Seeding is a story. The reason the NFL feels confusing in November is that the interesting questions are all relative. A 7-4 team is having a great year or a disappointing one depending entirely on the three other teams in its division and the four teams chasing the same wild card slot. You cannot answer that by looking at one row of a table, and most trackers ask you to do exactly that, then jump to a separate page to find the point differential that tells you whether a record is real or lucky.
+
+So NFL Pulse is organized around the things that move seeding rather than the things that fill a box score. It surfaces conference seeding directly, lays out the division races, draws the playoff cutoff line so you can see who is in and who is one result from being out, and carries point differential right alongside the record because differential is the cheapest available signal for whether a team is better than its win total suggests. The passing, rushing, receiving, and sack leaders are there too, but they sit underneath the standings story rather than competing with it. I wanted the first thing you read to be the shape of the season, not a leaderboard.
+
+## Why it reads from a checked-in NFLverse snapshot
+
+The data comes from the public NFLverse CSV files, which is one of the quiet gifts of the football analytics community. Standings, games, team colors and logos, and player stat leaders are all available as plain CSVs with no API key and no rate-limited gateway in front of them. I pull those, shape them, and commit the result as a TypeScript snapshot at `src/data/nflSnapshot.ts`. The running site never makes a third-party call when you load the page. It reads a file that is already in the repository.
+
+That decision is the same one I keep making across these dashboards, and the reasoning holds up every time. The page renders instantly because the data is local. A bad upstream response cannot take the surface down in the middle of a Sunday. And the refresh is deliberately conservative, so if a fetch fails or comes back empty the script keeps the previous snapshot rather than overwriting good standings with nothing. Wiping the board because GitHub had a slow thirty seconds would be the worst failure mode for something people check during a season, so the pipeline always prefers stale-but-correct over fresh-but-broken.
+
+There is one place where NFL Pulse diverges from my other dashboards on purpose. The snapshot is small, so I did not wire it into the Netlify build the way I do with surfaces that need fresh data on every deploy. Rebuilding the whole site to fold in a tiny CSV refresh would be wasteful. Instead a GitHub Action refreshes the snapshot on its own schedule, weekly on Tuesdays during the season, which is exactly when the previous weekend's results have settled and the standings have actually changed. The cadence matches the sport. A league that plays once a week does not need a dashboard that refreshes hourly.
+
+## Reusing the football components, with one honest relabel
+
+I did not build NFL Pulse from a blank canvas. It reuses the shared football component set I wrote for the soccer dashboards, which is most of why a new sport surface takes days instead of weeks. The fixture cards, the leaderboard lists, and the standings furniture are all generic enough to carry a new league without forking. The one place that needed care was vocabulary. A soccer fixture card labels its grouping as a matchday, and the NFL does not have matchdays, it has weeks. So the FixtureCard takes an optional period label, and for NFL I set it to "Week." That is a small thing, but it is the kind of small thing that decides whether a reused component looks native or looks borrowed. I would rather pass one prop than ship a football term into an American football product.
+
+The other piece that carries across is deep-linkable state. The view you are on lives in the URL as `?view=`, with values for the whole league, the AFC, the NFC, and a dedicated playoffs view, and selecting a team pins it through `?team=` keyed to the lowercase abbreviation, so `kc` or `buf` travels in a link. A teammate texting "look at the NFC standings with Buffalo pinned" should be sending a URL, not a screenshot and a description. When a specific view travels in a link, the tool gets shared during the season instead of forgotten after one visit.
+
+## What the build reinforced
+
+The thing this project sharpened for me is that the right refresh cadence is a product decision, not a technical default. It would have been easy to treat NFL data like everything else and refresh it on every deploy, or to chase a live feed because live sounds better. Neither matches how the NFL actually unfolds. The league moves once a week, the standings only change after the weekend, and the snapshot is small enough that a weekly Action is both sufficient and cheaper than the alternatives. Letting the sport set the cadence made the whole pipeline simpler and the data no less current.
+
+The other lesson is the one I keep relearning. Curation beats raw access for anything people read more than they transact on. Choosing to lead with seeding and the cutoff line, rather than dumping every available stat onto the page, is what makes the season legible at a glance. The data was always out there in those NFLverse CSVs. The product is the decision about what to put first.
+
+You can explore the full thing at [NFL Pulse](/nfl). The fastest way to understand it is to open the playoffs view, find the cutoff line, then pin your team and watch its seeding and point differential read together in one place. That combined view is the whole point of the project.
+
+If you want to see how the same snapshot pattern handles a very different tournament shape, the [World Cup dashboard breakdown](/writing/building-a-world-cup-dashboard) covers a surface that has to behave before a single game is played.

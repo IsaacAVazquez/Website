@@ -1,0 +1,51 @@
+---
+title: "Building a Recipe Finder That Starts From What Is Already in the Kitchen"
+excerpt: "I built a pantry-aware recipe finder that ranks recipes by how many of your on-hand ingredients they cover, so the weeknight question takes seconds instead of a long scroll."
+publishedAt: "2026-06-03"
+category: "Product Design"
+tags: ["Cooking", "Recipes", "Product Design", "Search", "Local First", "Next.js"]
+featured: false
+archiveBucket: "Space & Experiments"
+author: "Isaac Vazquez"
+coverImage: "/writing/building-a-pantry-aware-recipe-finder/opengraph-image"
+cta:
+  eyebrow: "Related tool"
+  title: "Open the Recipe Finder"
+  description: "The live tool is the fastest way to rank recipes by how many of your on-hand ingredients they already cover."
+  href: "/recipe-finder"
+  actionLabel: "Open the finder"
+seo:
+  title: "Building a Pantry-Aware Recipe Finder With Client-Side Ranking"
+  description: "How I built a pantry-aware recipe aggregator that ranks recipes by how many of your on-hand ingredients they cover, so weeknight cooking decisions take seconds."
+  keywords: ["recipe finder", "pantry recipes", "what can i cook", "ingredient based search", "recipe ranking", "weeknight cooking"]
+---
+
+# Building a Recipe Finder That Starts From What Is Already in the Kitchen
+
+If you want to see the product before reading the breakdown, open [the Recipe Finder](/recipe-finder).
+
+The worst part of cooking on a weeknight is not the cooking. It is the ten minutes of scrolling beforehand, staring at gorgeous recipes that all require three things you do not have. Every recipe site is built to answer "what looks good," and on a Tuesday at 6pm that is the wrong question. The right question is "what can I actually make right now, with what is already in the kitchen." The Recipe Finder is the tool I built to answer that one, by starting from your pantry instead of from a glossy photo grid.
+
+## The Question Recipe Sites Refuse to Answer
+
+Most recipe products optimize for inspiration. They are designed to make you want to cook, which is a fine goal on a lazy Sunday and a useless one when you are hungry and tired. They sort by popularity or season or some editorial whim, and then they assume you will go acquire whatever the recipe demands. That assumption is the whole problem. On a normal weeknight you are not going to the store. You are working with what is in the cabinet, and you want the path of least resistance to something edible.
+
+Flipping that around turned out to be the entire product. Instead of asking you to chase ingredients, the Recipe Finder asks what you already have and then ranks recipes by how many of those on-hand ingredients each one covers. A recipe that uses eight things you have and one you do not should rise to the top. A recipe that needs a special trip should sink. It is a simple inversion, but it changes the feeling of the tool completely, from a wish list of meals you cannot make tonight to a short, honest ranking of meals you can.
+
+## How the Ranking Actually Works
+
+The mechanic underneath is coverage scoring, and I chose to run it entirely on the client. You enter what is in your pantry, and the tool scores a curated recipe corpus by how much of each recipe your ingredients cover, then orders the results so the most-covered recipes come first. There is no server round trip and no waiting. You add "eggs, spinach, parmesan" and the list reshuffles instantly to put the things you can nearly make on top. Because the scoring is local, it is fast enough to feel like the list is reacting to your kitchen in real time, which is exactly the responsiveness a 6pm decision tool needs.
+
+I deliberately kept the ranking legible rather than clever. It is about coverage, not a black-box recommendation model trying to guess your mood. You can look at a result and immediately understand why it ranked where it did, because it comes down to how many of your ingredients it uses. For a tool whose whole job is to reduce decision fatigue, that transparency matters. A ranking you can reason about is a ranking you can trust, and trust is what lets you stop scrolling and start cooking.
+
+## The Tradeoff Behind the Curated Corpus
+
+The Recipe Finder ranks a curated recipe corpus rather than the entire internet, and the scoring lives in the browser rather than behind an API. That is a real tradeoff, and I made it on purpose. The cost is that the tool does not have exhaustive coverage of every recipe ever published. It is not trying to be a search engine for all of cooking. What you get in exchange is a tool that is fast, private, and free of a heavy backend, one that loads quickly and reshuffles instantly because there is no network in the critical path and no account standing between you and a dinner idea.
+
+For a weeknight decision tool, I think that is clearly the right call. The job is not comprehensiveness. The job is getting you from "what is in the cabinet" to "okay, that, let us make that" in a few seconds. A smaller corpus that ranks instantly and runs entirely on your device serves that job far better than an exhaustive index that needs a backend, a login, and a spinner. Restraint in scope is what buys the speed, and the speed is the entire product.
+
+## What It Taught Me
+
+The lesson I took from this one is that a lot of product value comes from asking a slightly different question than the category usually asks. Recipe sites answer "what is worth cooking." This tool answers "what can I cook right now," and that one substitution does more for the weeknight experience than any amount of additional content would. The build was small, but it was a clean reminder that the right framing often beats more features.
+
+You can explore the full tool at [the Recipe Finder](/recipe-finder). The fastest way to understand it is to type in a handful of things you actually have in the kitchen and watch the list reorder itself to put the meals you can nearly make at the top. If you want a related read, [Building News Pulse: A Dashboard For Comparing How Major Outlets Cover The Same Story](/writing/building-news-pulse-dashboard) is the other breakdown where I argue that a lighter, dependency-light stack is a feature rather than a compromise.

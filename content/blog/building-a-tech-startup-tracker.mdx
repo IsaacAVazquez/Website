@@ -1,0 +1,45 @@
+---
+title: "Building a Tech Startup Tracker With Honest Data, Not Implied Precision"
+excerpt: "I built a startup tracker that organizes notable private companies by sector and stage, with a momentum score and an explicit as-of date instead of pretending the figures are exact."
+publishedAt: "2026-06-14"
+category: "Market Research"
+tags: ["Startups", "Venture Capital", "Market Research", "Data Product", "Snapshot Driven", "Next.js"]
+featured: false
+archiveBucket: "Signals & Commentary"
+author: "Isaac Vazquez"
+coverImage: "/writing/building-a-tech-startup-tracker/opengraph-image"
+cta:
+  eyebrow: "Related tool"
+  title: "Open the Tech Startup Tracker"
+  description: "The live dashboard is the fastest way to compare notable private tech companies by sector, stage, valuation, and momentum."
+  href: "/tech-startup-tracker"
+  actionLabel: "Open the tracker"
+seo:
+  title: "Building a Tech Startup Tracker With Transparent, Dated Data"
+  description: "How I built a curated dashboard of notable private tech companies by sector and funding stage, with valuations, total raised, latest rounds, and a momentum score, tagged with an as-of date and an unverified disclosure."
+  keywords: ["tech startup tracker", "private company valuations", "funding stage", "venture capital data", "startup momentum", "curated data product"]
+---
+
+# Building a Tech Startup Tracker With Honest Data, Not Implied Precision
+
+If you want to explore the dashboard before reading the breakdown, open the [Tech Startup Tracker](/tech-startup-tracker).
+
+Private-company funding data is a mess, and most products that present it pretend otherwise. Valuations get reported once in a press release and then repeated as fact for a year. Total-raised figures are fragmented across paywalled databases that do not agree with each other. The latest round is sometimes confirmed and sometimes a rumor that hardened into a number. I built this tracker because I wanted a clean way to compare notable private tech companies by sector and stage, and because I wanted to do it without the dishonesty that usually comes baked into this kind of dashboard. The hard part was never the layout. It was deciding how to be truthful about data that is inherently approximate.
+
+## Why the Honesty Stance Is the Whole Point
+
+The temptation with a startup tracker is to render every valuation in crisp dollars and let the precision of the typography imply a precision the data does not have. I refused to do that, and the refusal shaped the product more than any design decision. The tracker covers twenty-eight startups across six sectors with valuations, total raised, latest rounds, and a derived momentum score, and the figures are explicitly approximate, compiled from public reporting. The page is tagged with an as-of date and a "not independently verified" flag, with an on-page disclosure that says plainly where the data comes from and what its limits are. That is the same honesty approach I use elsewhere on the site for editorially compiled data, and it is the only stance I think is defensible. When you cannot get authoritative real-time numbers, the right move is to disclose the approximation rather than hide it behind a confident interface. A dashboard that tells you it is a curated snapshot from a specific date is more useful than one that implies a live feed it does not have, because at least you know exactly how much weight the numbers can bear.
+
+## How the Curation Actually Works
+
+Unlike the API-backed dashboards I have built, this one has no live source to poll, so the architecture is deliberately simple. The whole dataset lives in a checked-in snapshot generated from a hand-maintained seed. To refresh it, I edit the seed and the as-of date and re-run the build, and the new snapshot ships with the site. There is no GitHub Action because there is nothing to automate against. That sounds like a limitation, and in one sense it is, but it is also what keeps the product honest. Because every figure passes through a seed I maintain by hand, the as-of date is always accurate, the disclosure always matches reality, and there is no illusion of automation papering over data that a human actually curated. The momentum score is derived from that seed rather than pulled from anywhere authoritative, so it is framed as a directional signal, a way to sort the field by who seems to be accelerating, not a metric anyone should trade on. Calling it what it is felt more useful than dressing it up as something rigorous.
+
+## The Tradeoffs I Chose
+
+I made the route state deep-linkable so you can land directly on a sector or stage view, apply a segment, set a sort, and open a specific startup, because the comparison is more useful when you can share the exact slice you are looking at. The harder tradeoff was scope. Twenty-eight companies is a curated set, not a comprehensive index, and I chose that deliberately. I would rather maintain a smaller list well, with figures I have actually checked against public reporting and a date I can stand behind, than chase coverage of every funded startup and let the data quality rot. A tracker that covers everything and verifies nothing is worse than one that covers a focused set and tells you exactly how fresh and how certain each number is. The constraint is the feature, the same way curation was the strategy in the investment research workspace rather than a compromise.
+
+## What This Reinforced
+
+Building this reinforced something I believe about data products generally. The credibility of a dashboard comes less from the volume of its data than from its honesty about that data's limits. It would have been easy to make this look more authoritative than it is, and that would have made it worse, because the moment a reader caught one stale valuation presented as fact, they would rightly distrust the whole thing. By leading with the as-of date and the unverified flag, the tracker earns the trust it actually deserves and no more, which is the only kind of trust worth having. Precision you cannot back up is not a feature. It is a liability dressed as one.
+
+You can explore the full dashboard at the [Tech Startup Tracker](/tech-startup-tracker). The fastest way to understand it is to sort by momentum within a single sector and read the as-of date at the same time, because that pairing is the entire philosophy of the product in one view. If you want a companion build that wrestles with the same honesty problem from the media side, [Building News Pulse: A Dashboard For Comparing How Major Outlets Cover The Same Story](/writing/building-news-pulse-dashboard) is the closest sibling.
