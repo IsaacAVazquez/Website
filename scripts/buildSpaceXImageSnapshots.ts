@@ -1,10 +1,26 @@
+import { config } from "dotenv";
 import crypto from "crypto";
 import { promises as fs } from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 
+// Load SPACEDEVS_API_TOKEN from .env.local for local runs (read lazily at fetch
+// time). In CI the token is provided via the workflow env block instead.
+config({
+  path: path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../.env.local"),
+});
+
 const LAUNCH_LIBRARY_API_BASE = "https://ll.thespacedevs.com/2.2.0";
 const SPACEX_AGENCY_ID = 121;
+
+// Optional Launch Library 2 API key. Anonymous requests (especially from shared
+// CI IPs) get throttled hard; authenticating with a token raises the limit.
+// thespacedevs uses DRF token auth: `Authorization: Token <key>`. Read lazily so
+// a dotenv-loaded value is picked up regardless of import order.
+function getLaunchLibraryAuthHeaders(): Record<string, string> {
+  const token = process.env.SPACEDEVS_API_TOKEN?.trim();
+  return token ? { Authorization: `Token ${token}` } : {};
+}
 const REQUEST_TIMEOUT_MS = 12000;
 const LIST_FETCH_LIMIT = 30;
 const ACTIVE_WINDOW_LIMIT = 24;
@@ -267,6 +283,7 @@ async function fetchLaunchLibraryJson<T>(
       signal: controller.signal,
       headers: {
         Accept: "application/json",
+        ...getLaunchLibraryAuthHeaders(),
       },
     });
 
