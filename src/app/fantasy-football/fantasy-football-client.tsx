@@ -413,6 +413,20 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
               page shows when the source last moved and when this repo rebuilt the snapshot, so
               freshness is explicit instead of implied.
             </p>
+            <div className="pt-1">
+              <Link
+                href="/fantasy-football/draft-tracker"
+                className="inline-flex min-h-[48px] items-center gap-2 rounded-full border px-5 py-3 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200"
+                style={{
+                  borderColor: "var(--home-ink)",
+                  background: "var(--home-ink)",
+                  color: "var(--home-paper)",
+                }}
+              >
+                Launch draft assistant
+                <ArrowUpRight className="h-4 w-4" />
+              </Link>
+            </div>
           </div>
 
         </motion.div>
@@ -422,16 +436,6 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
           title="Board at a glance"
           meta={`Updated ${formatUpdatedAt(currentSourceUpdatedAt)}`}
           cells={fantasyStatsCells}
-          pills={[
-            { label: "Standard", href: "/fantasy-football?scoring=standard" },
-            { label: "PPR", href: "/fantasy-football?scoring=ppr" },
-            { label: "Half PPR", href: "/fantasy-football?scoring=half_ppr" },
-            { label: "QB", href: "/fantasy-football?position=qb" },
-            { label: "RB", href: "/fantasy-football?position=rb" },
-            { label: "WR", href: "/fantasy-football?position=wr" },
-            { label: "TE", href: "/fantasy-football?position=te" },
-            { label: "Draft assistant", href: "/fantasy-football/draft-tracker" },
-          ]}
         />
 
         {error && (
