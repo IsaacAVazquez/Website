@@ -7,7 +7,7 @@ export const metadata = constructMetadata({
   description:
     "Get in touch about product roles, analytics work, or fintech-focused projects.",
   canonicalUrl: "/contact",
-  dateModified: "2026-05-26",
+  dateModified: "2026-06-18",
 });
 
 export default function Contact() {
