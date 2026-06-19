@@ -229,7 +229,7 @@ A memorable closing statement that encapsulates your message.
 - Have you tried implementing any of these ideas?
 - What challenges are you facing in this area?
 
-[Email me](mailto:isaacavazquez95@gmail.com) or connect on [LinkedIn](https://linkedin.com/in/isaac-vazquez) to continue the conversation.
+[Email me](mailto:isaacavazquez95@gmail.com) or connect on [LinkedIn](https://www.linkedin.com/in/isaac-vazquez/) to continue the conversation.
 
 ---
 

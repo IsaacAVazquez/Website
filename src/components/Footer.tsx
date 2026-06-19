@@ -9,7 +9,7 @@ import { ContactCta } from "@/components/ContactCta";
 
 const socialLinks = [
   {
-    href: "https://linkedin.com/in/isaac-vazquez",
+    href: "https://www.linkedin.com/in/isaac-vazquez/",
     label: "Visit Isaac Vazquez's LinkedIn profile",
     icon: BrandLinkedin,
   },

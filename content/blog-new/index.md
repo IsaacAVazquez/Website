@@ -144,7 +144,7 @@ Get notified when I publish new articles (no spam, just thoughtful content):
 I love hearing from readers. If something I wrote resonated with you, challenged your thinking, or sparked questions, I'd love to hear about it.
 
 **Email:** [isaacavazquez95@gmail.com](mailto:isaacavazquez95@gmail.com)
-**LinkedIn:** [linkedin.com/in/isaac-vazquez](https://linkedin.com/in/isaac-vazquez)
+**LinkedIn:** [linkedin.com/in/isaac-vazquez](https://www.linkedin.com/in/isaac-vazquez/)
 **Twitter/X:** [@IsaacAVazquez](https://twitter.com/IsaacAVazquez)
 
 [Get in Touch →](/contact)

@@ -102,7 +102,7 @@ How quality engineering experience uniquely positions product managers to build 
 I'm always open to conversations about product strategy, civic tech innovation, or building impactful technology.
 
 **Email:** [isaacavazquez95@gmail.com](mailto:isaacavazquez95@gmail.com)
-**LinkedIn:** [linkedin.com/in/isaac-vazquez](https://linkedin.com/in/isaac-vazquez)
+**LinkedIn:** [linkedin.com/in/isaac-vazquez](https://www.linkedin.com/in/isaac-vazquez/)
 **Location:** Berkeley, CA
 
 [Download Resume](/Isaac_Vazquez_Resume.pdf) • [View Projects](/projects) • [Get in Touch](/contact)

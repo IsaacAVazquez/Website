@@ -19,7 +19,7 @@ const contactMethods = [
     icon: BrandLinkedin,
     label: "LinkedIn",
     value: "/in/isaac-vazquez",
-    href: "https://linkedin.com/in/isaac-vazquez",
+    href: "https://www.linkedin.com/in/isaac-vazquez/",
     external: true,
   },
   {

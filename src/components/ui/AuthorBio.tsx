@@ -45,7 +45,7 @@ export function AuthorBio({
     "Cross-functional Leadership",
   ],
   social = {
-    linkedin: "https://linkedin.com/in/isaac-vazquez",
+    linkedin: "https://www.linkedin.com/in/isaac-vazquez/",
     github: "https://github.com/IsaacAVazquez",
     email: "mailto:IsaacVazquez@berkeley.edu",
   },

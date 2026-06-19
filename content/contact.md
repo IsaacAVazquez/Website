@@ -53,7 +53,7 @@ Primary contact method. I typically respond within 24-48 hours.
 ---
 
 ### LinkedIn
-**[linkedin.com/in/isaac-vazquez](https://linkedin.com/in/isaac-vazquez)**
+**[linkedin.com/in/isaac-vazquez](https://www.linkedin.com/in/isaac-vazquez/)**
 
 Best for professional connections, sharing articles, and ongoing conversations about product and tech.
 

@@ -94,7 +94,7 @@ export function ContactCta() {
             </Link>
             <a
               className={`${styles.btn} ${styles.btnGhost}`}
-              href="https://linkedin.com/in/isaac-vazquez"
+              href="https://www.linkedin.com/in/isaac-vazquez/"
               target="_blank"
               rel="noreferrer"
             >
