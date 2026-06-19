@@ -48,7 +48,15 @@ describe("LaLigaClient", () => {
       />
     );
 
-    expect(screen.getByRole("heading", { name: "Real Betis Balompié" })).toBeInTheDocument();
+    // Derive the expected club from the pinned club id ("bet") rather than a
+    // hardcoded name, mirroring the client's selectedClub ?? clubs[0] fallback,
+    // so the test survives snapshot refreshes (club renames / relegation).
+    const expectedClub =
+      laLigaSnapshot.clubs.find((club) => club.id === "bet") ??
+      laLigaSnapshot.clubs[0];
+    expect(
+      screen.getByRole("heading", { name: expectedClub.name })
+    ).toBeInTheDocument();
 
     await user.click(screen.getByRole("button", { name: /relegation fight/i }));
 
