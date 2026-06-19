@@ -1,10 +1,10 @@
 {
   "symbol": "NOW",
-  "lastUpdated": "2026-06-12T00:17:25.864748+00:00",
+  "lastUpdated": "2026-06-19T00:23:44.589850+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-12T00:17:25.864748+00:00",
+    "snapshotBuiltAt": "2026-06-19T00:23:44.589850+00:00",
     "sections": {
-      "price": "2026-06-10"
+      "price": "2026-06-17"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.6811,
-      "ttmPe": 63.09,
-      "marketCap": 109380526480,
-      "psRatio": 7.84,
-      "pbRatio": 9.33,
-      "pegRatio": 23.9
+      "ttmPe": 56.8,
+      "marketCap": 98469287840,
+      "psRatio": 7.05,
+      "pbRatio": 8.4,
+      "pegRatio": 21.52
     },
     "profitability": {
       "roe": 3.8,
@@ -5113,57 +5113,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.25,
-      "costOfEquity": 12.520000000000001,
+      "wacc": 12.29,
+      "costOfEquity": 12.590000000000002,
       "costOfDebt": 0.25,
       "taxRate": 30,
-      "beta": 0.9577,
-      "marketCap": 109380526480
+      "beta": 0.9664,
+      "marketCap": 98469287840
     },
     "beta": {
-      "beta5y": 0.9577
+      "beta5y": 0.9664
     },
     "price": [
-      {
-        "date": "2025-06-10",
-        "open": 204.228,
-        "high": 205.372,
-        "low": 199.824,
-        "close": 201.958,
-        "volume": 5946000
-      },
-      {
-        "date": "2025-06-11",
-        "open": 202.048,
-        "high": 203.544,
-        "low": 200.28,
-        "close": 200.866,
-        "volume": 3714000
-      },
-      {
-        "date": "2025-06-12",
-        "open": 200.52,
-        "high": 203.208,
-        "low": 200.52,
-        "close": 201.474,
-        "volume": 4241000
-      },
-      {
-        "date": "2025-06-13",
-        "open": 199.606,
-        "high": 200.2,
-        "low": 195.638,
-        "close": 197.732,
-        "volume": 6661000
-      },
-      {
-        "date": "2025-06-16",
-        "open": 198.4,
-        "high": 203.394,
-        "low": 198.276,
-        "close": 201.026,
-        "volume": 6154500
-      },
       {
         "date": "2025-06-17",
         "open": 200.77,
@@ -7130,15 +7090,55 @@
         "high": 112.39,
         "low": 103.08,
         "close": 106.97,
-        "volume": 35706900
+        "volume": 35824800
       },
       {
         "date": "2026-06-10",
         "open": 105.28,
-        "high": 109.795,
-        "low": 104.75,
+        "high": 109.8,
+        "low": 104.73,
         "close": 106.06,
-        "volume": 19847953
+        "volume": 20052700
+      },
+      {
+        "date": "2026-06-11",
+        "open": 103.03,
+        "high": 105.12,
+        "low": 101.33,
+        "close": 103.08,
+        "volume": 28321500
+      },
+      {
+        "date": "2026-06-12",
+        "open": 103.38,
+        "high": 103.45,
+        "low": 98.42,
+        "close": 102.15,
+        "volume": 26049400
+      },
+      {
+        "date": "2026-06-15",
+        "open": 104.8,
+        "high": 107.18,
+        "low": 103.35,
+        "close": 104.15,
+        "volume": 23018000
+      },
+      {
+        "date": "2026-06-16",
+        "open": 102.9,
+        "high": 105.66,
+        "low": 101.2,
+        "close": 101.33,
+        "volume": 17198400
+      },
+      {
+        "date": "2026-06-17",
+        "open": 100.68,
+        "high": 102.89,
+        "low": 95.09,
+        "close": 95.48,
+        "volume": 31952100
       }
     ],
     "news": [
@@ -7191,19 +7191,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "0d66b766-bead-3972-a483-2318d3521577",
-        "title": "Nice enters partnership with ServiceNow for customer service fulfillment",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-08",
-        "link": "https://finance.yahoo.com/news/nice-enters-partnership-servicenow-customer-151028608.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9f38eca9-f098-3ec9-8940-f848a225631e",
         "title": "Zoom, ServiceNow plan to integrate Zoom CX with ServiceNow CRM, ITSM",
         "publisher": "TipRanks",
         "reportDate": "2025-05-08",
         "link": "https://finance.yahoo.com/news/zoom-servicenow-plan-integrate-zoom-150553095.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0d66b766-bead-3972-a483-2318d3521577",
+        "title": "Nice enters partnership with ServiceNow for customer service fulfillment",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-08",
+        "link": "https://finance.yahoo.com/news/nice-enters-partnership-servicenow-customer-151028608.html",
         "type": "STORY"
       },
       {
@@ -7286,18 +7286,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 63.09,
-        "industryAvg": 24.14
+        "value": 56.8,
+        "industryAvg": 22.85
       },
       {
         "metric": "P/S Ratio",
-        "value": 7.84,
-        "industryAvg": 4.48
+        "value": 7.05,
+        "industryAvg": 4.05
       },
       {
         "metric": "P/B Ratio",
-        "value": 9.33,
-        "industryAvg": 4.68
+        "value": 8.4,
+        "industryAvg": 4.35
       },
       {
         "metric": "ROE",
@@ -7312,24 +7312,24 @@
       {
         "metric": "Gross Margin",
         "value": 75.07000000000001,
-        "industryAvg": 63.32
+        "industryAvg": 63.39
       },
       {
         "metric": "EBITDA Margin",
         "value": 24.85,
-        "industryAvg": 21.12
+        "industryAvg": 21
       },
       {
         "metric": "Net Margin",
         "value": 12.44,
-        "industryAvg": -0.19
+        "industryAvg": -0.27
       }
     ],
     "dcf": {
-      "fairValue": 18.6,
-      "currentPrice": 106.06,
-      "upside": -82.46,
-      "wacc": 12.25,
+      "fairValue": 18.52,
+      "currentPrice": 95.48,
+      "upside": -80.6,
+      "wacc": 12.29,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 2.64,
         "Terminal growth": 3

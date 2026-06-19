@@ -1,10 +1,10 @@
 {
   "symbol": "AVGO",
-  "lastUpdated": "2026-06-12T00:17:25.864748+00:00",
+  "lastUpdated": "2026-06-19T00:23:44.589850+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-12T00:17:25.864748+00:00",
+    "snapshotBuiltAt": "2026-06-19T00:23:44.589850+00:00",
     "sections": {
-      "price": "2026-06-10"
+      "price": "2026-06-17"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.007,
-      "ttmPe": 61.94,
-      "marketCap": 1770451800000,
-      "psRatio": 23.46,
-      "pbRatio": 20.19,
-      "pegRatio": 0.72
+      "ttmPe": 65.41,
+      "marketCap": 1869418200000,
+      "psRatio": 24.77,
+      "pbRatio": 21.32,
+      "pegRatio": 0.76
     },
     "profitability": {
       "roe": 11.110000000000001,
@@ -6021,57 +6021,17 @@
       ]
     },
     "wacc": {
-      "wacc": 16.13,
-      "costOfEquity": 16.68,
+      "wacc": 15.98,
+      "costOfEquity": 16.5,
       "costOfDebt": 1.2,
       "taxRate": 8,
-      "beta": 1.4584,
-      "marketCap": 1770451800000
+      "beta": 1.4326,
+      "marketCap": 1869418200000
     },
     "beta": {
-      "beta5y": 1.4584
+      "beta5y": 1.4326
     },
     "price": [
-      {
-        "date": "2025-06-10",
-        "open": 244.22,
-        "high": 246.28,
-        "low": 241.4,
-        "close": 244.63,
-        "volume": 25491300
-      },
-      {
-        "date": "2025-06-11",
-        "open": 246.36,
-        "high": 254.77,
-        "low": 243.8,
-        "close": 252.91,
-        "volume": 24599000
-      },
-      {
-        "date": "2025-06-12",
-        "open": 250.19,
-        "high": 257.89,
-        "low": 249.5,
-        "close": 256.07,
-        "volume": 20410900
-      },
-      {
-        "date": "2025-06-13",
-        "open": 250.66,
-        "high": 254,
-        "low": 248.35,
-        "close": 248.7,
-        "volume": 19028400
-      },
-      {
-        "date": "2025-06-16",
-        "open": 250.35,
-        "high": 255.19,
-        "low": 249.57,
-        "close": 252.1,
-        "volume": 20363000
-      },
       {
         "date": "2025-06-17",
         "open": 250.95,
@@ -8038,15 +7998,55 @@
         "high": 407.87,
         "low": 370.33,
         "close": 392.16,
-        "volume": 36948400
+        "volume": 37026900
       },
       {
         "date": "2026-06-10",
-        "open": 381.495,
+        "open": 381.5,
         "high": 385.81,
         "low": 371.17,
         "close": 372.1,
-        "volume": 37424608
+        "volume": 38193500
+      },
+      {
+        "date": "2026-06-11",
+        "open": 372.82,
+        "high": 389.5,
+        "low": 370.55,
+        "close": 385.57,
+        "volume": 35187600
+      },
+      {
+        "date": "2026-06-12",
+        "open": 383.72,
+        "high": 384.98,
+        "low": 377,
+        "close": 382.07,
+        "volume": 27600900
+      },
+      {
+        "date": "2026-06-15",
+        "open": 395.51,
+        "high": 396.2,
+        "low": 388.6,
+        "close": 393.94,
+        "volume": 32394200
+      },
+      {
+        "date": "2026-06-16",
+        "open": 390.21,
+        "high": 391.79,
+        "low": 376.46,
+        "close": 376.71,
+        "volume": 31573700
+      },
+      {
+        "date": "2026-06-17",
+        "open": 388.71,
+        "high": 400.65,
+        "low": 382.65,
+        "close": 392.9,
+        "volume": 39918800
       }
     ],
     "news": [
@@ -8091,19 +8091,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "1a4ad937-a6fe-3efc-ad47-22885a44cffe",
-        "title": "The Zacks Analyst Blog Highlights Microsoft, Broadcom, McDonald's and Kingsway Financial Services",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-29",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-104100632.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b5e9e2b7-0579-37ff-b792-e96b7564d257",
         "title": "Top Analyst Reports for Microsoft, Broadcom & McDonald's",
         "publisher": "Zacks",
         "reportDate": "2025-04-29",
         "link": "https://finance.yahoo.com/news/top-analyst-reports-microsoft-broadcom-222200614.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1a4ad937-a6fe-3efc-ad47-22885a44cffe",
+        "title": "The Zacks Analyst Blog Highlights Microsoft, Broadcom, McDonald's and Kingsway Financial Services",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-29",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-104100632.html",
         "type": "STORY"
       },
       {
@@ -8133,78 +8133,33 @@
     ],
     "officers": [
       {
-        "name": "Dr. Charlie B. Kawwas Ph.D.",
-        "title": "President of Semiconductor Solutions",
-        "age": 54,
-        "yearBorn": 1971,
-        "totalPay": 2093876
-      },
-      {
-        "name": "Mr. Alan Davidson",
-        "title": "Chief Information Officer"
-      },
-      {
-        "name": "Mr. Frank Ostojic",
-        "title": "Senior VP & GM of ASIC Products Division"
-      },
-      {
         "name": "Mr. Hock E. Tan",
         "title": "President, CEO & Executive Director",
         "age": 73,
         "yearBorn": 1952,
         "totalPay": 2926926
-      },
-      {
-        "name": "Mr. Ji Yoo",
-        "title": "Director of Investor Relations"
-      },
-      {
-        "name": "Mr. Mark D. Brazeal J.D.",
-        "title": "Chief Legal & Corporate Affairs Officer",
-        "age": 57,
-        "yearBorn": 1968,
-        "totalPay": 1405063
-      },
-      {
-        "name": "Mr. Ram Velaga",
-        "title": "Senior VP & GM of Core Switching Group"
-      },
-      {
-        "name": "Mr. Rich Nelson",
-        "title": "Senior VP & GM of Broadband Video Group"
-      },
-      {
-        "name": "Ms. Jill Turner",
-        "title": "Vice President of Human Resources"
-      },
-      {
-        "name": "Ms. Kirsten M. Spears",
-        "title": "CFO & Chief Accounting Officer",
-        "age": 61,
-        "yearBorn": 1964,
-        "totalPay": 1027632
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 61.94,
-        "industryAvg": 34.69
+        "value": 65.41,
+        "industryAvg": 43.16
       },
       {
         "metric": "P/S Ratio",
-        "value": 23.46,
-        "industryAvg": 14.48
+        "value": 24.77,
+        "industryAvg": 16.75
       },
       {
         "metric": "P/B Ratio",
-        "value": 20.19,
-        "industryAvg": 12.06
+        "value": 21.32,
+        "industryAvg": 14.4
       },
       {
         "metric": "ROE",
         "value": 11.110000000000001,
-        "industryAvg": 34.58
+        "industryAvg": 34.589999999999996
       },
       {
         "metric": "ROA",
@@ -8228,10 +8183,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 97.88,
-      "currentPrice": 372.1,
-      "upside": -73.7,
-      "wacc": 16.13,
+      "fairValue": 99.09,
+      "currentPrice": 392.9,
+      "upside": -74.78,
+      "wacc": 15.98,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

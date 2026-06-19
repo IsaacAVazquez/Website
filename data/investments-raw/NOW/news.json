@@ -54,15 +54,6 @@
     "link": "https://finance.yahoo.com/m/da78ab04-9824-38ae-919d-0f45264f5e66/nebius-group-stock-earns-84.html"
   },
   {
-    "uuid": "0d66b766-bead-3972-a483-2318d3521577",
-    "symbol": "NOW",
-    "title": "Nice enters partnership with ServiceNow for customer service fulfillment",
-    "publisher": "TipRanks",
-    "report_date": "2025-05-08",
-    "type": "STORY",
-    "link": "https://finance.yahoo.com/news/nice-enters-partnership-servicenow-customer-151028608.html"
-  },
-  {
     "uuid": "9f38eca9-f098-3ec9-8940-f848a225631e",
     "symbol": "NOW",
     "title": "Zoom, ServiceNow plan to integrate Zoom CX with ServiceNow CRM, ITSM",
@@ -70,6 +61,15 @@
     "report_date": "2025-05-08",
     "type": "STORY",
     "link": "https://finance.yahoo.com/news/zoom-servicenow-plan-integrate-zoom-150553095.html"
+  },
+  {
+    "uuid": "0d66b766-bead-3972-a483-2318d3521577",
+    "symbol": "NOW",
+    "title": "Nice enters partnership with ServiceNow for customer service fulfillment",
+    "publisher": "TipRanks",
+    "report_date": "2025-05-08",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/nice-enters-partnership-servicenow-customer-151028608.html"
   },
   {
     "uuid": "994a5e6b-ad52-3bb3-b8a4-56347c6d7387",

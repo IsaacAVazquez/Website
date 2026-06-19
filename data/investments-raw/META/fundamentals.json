@@ -28736,6 +28736,46 @@
       "close_price": 570.98,
       "ttm_eps": 27.5066,
       "ttm_pe": 20.76
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-11T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 568.43,
+      "ttm_eps": 27.5066,
+      "ttm_pe": 20.67
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-12T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 566.98,
+      "ttm_eps": 27.5066,
+      "ttm_pe": 20.61
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-15T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 593.48,
+      "ttm_eps": 27.5066,
+      "ttm_pe": 21.58
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-16T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 600.21,
+      "ttm_eps": 27.5066,
+      "ttm_pe": 21.82
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-17T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 567.58,
+      "ttm_eps": 27.5066,
+      "ttm_pe": 20.63
     }
   ],
   "marketCap": [
@@ -57018,6 +57058,46 @@
       "close_price": 570.98,
       "shares_outstanding": 2538423300,
       "market_capitalization": 1449388935834.0
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-11T00:00:00.000",
+      "shares_report_date": "2026-04-24T00:00:00.000",
+      "close_price": 568.43,
+      "shares_outstanding": 2538423300,
+      "market_capitalization": 1442915956419.0
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-12T00:00:00.000",
+      "shares_report_date": "2026-04-24T00:00:00.000",
+      "close_price": 566.98,
+      "shares_outstanding": 2538423300,
+      "market_capitalization": 1439235242634.0
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-15T00:00:00.000",
+      "shares_report_date": "2026-04-24T00:00:00.000",
+      "close_price": 593.48,
+      "shares_outstanding": 2538423300,
+      "market_capitalization": 1506503460084.0
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-16T00:00:00.000",
+      "shares_report_date": "2026-04-24T00:00:00.000",
+      "close_price": 600.21,
+      "shares_outstanding": 2538423300,
+      "market_capitalization": 1523587048893.0
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-17T00:00:00.000",
+      "shares_report_date": "2026-04-24T00:00:00.000",
+      "close_price": 567.58,
+      "shares_outstanding": 2538423300,
+      "market_capitalization": 1440758296614.0
     }
   ],
   "psRatio": [
@@ -62530,6 +62610,56 @@
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 214962000000.0,
       "ps_ratio": 6.74
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-11T00:00:00.000",
+      "market_capitalization": 1442915956419.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 214962000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 214962000000.0,
+      "ps_ratio": 6.71
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-12T00:00:00.000",
+      "market_capitalization": 1439235242634.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 214962000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 214962000000.0,
+      "ps_ratio": 6.7
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-15T00:00:00.000",
+      "market_capitalization": 1506503460084.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 214962000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 214962000000.0,
+      "ps_ratio": 7.01
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-16T00:00:00.000",
+      "market_capitalization": 1523587048893.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 214962000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 214962000000.0,
+      "ps_ratio": 7.09
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-17T00:00:00.000",
+      "market_capitalization": 1440758296614.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 214962000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 214962000000.0,
+      "ps_ratio": 6.7
     }
   ],
   "pbRatio": [
@@ -72432,6 +72562,56 @@
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 243681000000.0,
       "pb_ratio": 5.95
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-11T00:00:00.000",
+      "market_capitalization": 1442915956419.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 243681000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 243681000000.0,
+      "pb_ratio": 5.92
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-12T00:00:00.000",
+      "market_capitalization": 1439235242634.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 243681000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 243681000000.0,
+      "pb_ratio": 5.91
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-15T00:00:00.000",
+      "market_capitalization": 1506503460084.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 243681000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 243681000000.0,
+      "pb_ratio": 6.18
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-16T00:00:00.000",
+      "market_capitalization": 1523587048893.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 243681000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 243681000000.0,
+      "pb_ratio": 6.25
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-17T00:00:00.000",
+      "market_capitalization": 1440758296614.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 243681000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 243681000000.0,
+      "pb_ratio": 5.91
     }
   ],
   "pegRatio": [
@@ -107172,6 +107352,56 @@
       "fiscal_quarter": "2026-03-31T00:00:00.000",
       "ttm_eps": 27.5066,
       "ttm_pe": 20.76,
+      "eps_yoy_growth": 0.6249,
+      "peg_ratio": 0.33
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-11T00:00:00.000",
+      "close_price": 568.43,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 27.5066,
+      "ttm_pe": 20.67,
+      "eps_yoy_growth": 0.6249,
+      "peg_ratio": 0.33
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-12T00:00:00.000",
+      "close_price": 566.98,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 27.5066,
+      "ttm_pe": 20.61,
+      "eps_yoy_growth": 0.6249,
+      "peg_ratio": 0.33
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-15T00:00:00.000",
+      "close_price": 593.48,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 27.5066,
+      "ttm_pe": 21.58,
+      "eps_yoy_growth": 0.6249,
+      "peg_ratio": 0.35
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-16T00:00:00.000",
+      "close_price": 600.21,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 27.5066,
+      "ttm_pe": 21.82,
+      "eps_yoy_growth": 0.6249,
+      "peg_ratio": 0.35
+    },
+    {
+      "symbol": "META",
+      "report_date": "2026-06-17T00:00:00.000",
+      "close_price": 567.58,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 27.5066,
+      "ttm_pe": 20.63,
       "eps_yoy_growth": 0.6249,
       "peg_ratio": 0.33
     }

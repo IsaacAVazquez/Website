@@ -1,10 +1,10 @@
 {
   "symbol": "ASML",
-  "lastUpdated": "2026-06-12T00:17:25.864748+00:00",
+  "lastUpdated": "2026-06-19T00:23:44.589850+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-12T00:17:25.864748+00:00",
+    "snapshotBuiltAt": "2026-06-19T00:23:44.589850+00:00",
     "sections": {
-      "price": "2026-06-10"
+      "price": "2026-06-17"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 29.9963,
-      "ttmPe": 57.81,
-      "marketCap": 668387482621.23,
-      "psRatio": 17.31,
-      "pbRatio": 28,
-      "pegRatio": 1.78
+      "ttmPe": 62.27,
+      "marketCap": 719894742591,
+      "psRatio": 18.64,
+      "pbRatio": 30.16,
+      "pegRatio": 1.92
     },
     "profitability": {
       "roe": 13.63,
@@ -5724,57 +5724,17 @@
       ]
     },
     "wacc": {
-      "wacc": 18.96,
-      "costOfEquity": 19.09,
+      "wacc": 19.11,
+      "costOfEquity": 19.23,
       "costOfDebt": 0.25,
       "taxRate": 15,
-      "beta": 1.7472,
-      "marketCap": 668387482621.23
+      "beta": 1.7588,
+      "marketCap": 719894742591
     },
     "beta": {
-      "beta5y": 1.7472
+      "beta5y": 1.7588
     },
     "price": [
-      {
-        "date": "2025-06-10",
-        "open": 779.11,
-        "high": 788.29,
-        "low": 776.49,
-        "close": 784.97,
-        "volume": 1715500
-      },
-      {
-        "date": "2025-06-11",
-        "open": 790.05,
-        "high": 797.25,
-        "low": 780.69,
-        "close": 784.09,
-        "volume": 1365900
-      },
-      {
-        "date": "2025-06-12",
-        "open": 785.44,
-        "high": 789.57,
-        "low": 782.34,
-        "close": 786.21,
-        "volume": 999600
-      },
-      {
-        "date": "2025-06-13",
-        "open": 766.89,
-        "high": 772.93,
-        "low": 759.87,
-        "close": 761,
-        "volume": 1742900
-      },
-      {
-        "date": "2025-06-16",
-        "open": 766.37,
-        "high": 779.19,
-        "low": 765.98,
-        "close": 775.23,
-        "volume": 1454500
-      },
       {
         "date": "2025-06-17",
         "open": 766.78,
@@ -7741,15 +7701,55 @@
         "high": 1831.11,
         "low": 1676.28,
         "close": 1777.77,
-        "volume": 3148600
+        "volume": 3151400
       },
       {
         "date": "2026-06-10",
-        "open": 1746.01,
-        "high": 1811.7727,
-        "low": 1724.05,
+        "open": 1746.46,
+        "high": 1812,
+        "low": 1723.21,
         "close": 1734.1899,
-        "volume": 2568886
+        "volume": 2586400
+      },
+      {
+        "date": "2026-06-11",
+        "open": 1780,
+        "high": 1903.5,
+        "low": 1775.1,
+        "close": 1899.48,
+        "volume": 2965600
+      },
+      {
+        "date": "2026-06-12",
+        "open": 1847.62,
+        "high": 1892.8,
+        "low": 1839,
+        "close": 1863.55,
+        "volume": 2529600
+      },
+      {
+        "date": "2026-06-15",
+        "open": 1894.54,
+        "high": 1913.7,
+        "low": 1865,
+        "close": 1892.66,
+        "volume": 2339100
+      },
+      {
+        "date": "2026-06-16",
+        "open": 1872.01,
+        "high": 1881.16,
+        "low": 1802.61,
+        "close": 1803.89,
+        "volume": 1797600
+      },
+      {
+        "date": "2026-06-17",
+        "open": 1897.2,
+        "high": 1938.49,
+        "low": 1865.3199,
+        "close": 1867.83,
+        "volume": 2318300
       }
     ],
     "news": [
@@ -7818,19 +7818,19 @@
         "type": "STORY"
       },
       {
+        "uuid": "bc155dde-75b1-32a4-8e95-930c51b3acb0",
+        "title": "ASML Holding Stock Soars 17% in a Month: Should You Bet on It Now?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/asml-holding-stock-soars-17-131400634.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "565bcd88-476f-35bb-b736-8293be6c6500",
         "title": "Beyond Tariffs: Why Berenberg Still Sees a “Buy” in ASML’s Future",
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/news/beyond-tariffs-why-berenberg-still-200027130.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "cf65fdbe-ff73-3e8d-9162-f16a47573a8b",
-        "title": "ASML Holding N.V. (ASML) is Attracting Investor Attention: Here is What You Should Know",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/asml-holding-n-v-asml-130014706.html",
         "type": "STORY"
       }
     ],
@@ -7848,21 +7848,21 @@
         "title": "President, CEO and Chair of the Board of Management",
         "age": 52,
         "yearBorn": 1973,
-        "totalPay": 4363577
+        "totalPay": 4384497
       },
       {
         "name": "Mr. Frederic J. M. Schneider-Maunoury",
         "title": "Executive VP, COO & Member of the Management Board",
         "age": 64,
         "yearBorn": 1961,
-        "totalPay": 2587233
+        "totalPay": 2599637
       },
       {
         "name": "Mr. James P. Koonmen",
         "title": "Executive VP, Chief Customer Officer & Member of Management Board",
         "age": 58,
         "yearBorn": 1967,
-        "totalPay": 2754486
+        "totalPay": 2767692
       },
       {
         "name": "Mr. Marco J. A. Pieters",
@@ -7873,7 +7873,7 @@
         "title": "Executive VP, CFO & Member of the Management Board",
         "age": 60,
         "yearBorn": 1965,
-        "totalPay": 2568778
+        "totalPay": 2581093
       },
       {
         "name": "Mr. Ron Kool",
@@ -7884,7 +7884,7 @@
         "title": "Executive VP, Chief Strategic Sourcing & Procurement Officer and Member of Management Board",
         "age": 58,
         "yearBorn": 1967,
-        "totalPay": 2699120
+        "totalPay": 2712060
       },
       {
         "name": "Ms. Cristina Monteiro",
@@ -7894,50 +7894,50 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 57.81,
-        "industryAvg": 55.55
+        "value": 62.27,
+        "industryAvg": 56.53
       },
       {
         "metric": "P/S Ratio",
-        "value": 17.31,
-        "industryAvg": 14.53
+        "value": 18.64,
+        "industryAvg": 15.4
       },
       {
         "metric": "P/B Ratio",
-        "value": 28,
-        "industryAvg": 3.8
+        "value": 30.16,
+        "industryAvg": 5.28
       },
       {
         "metric": "ROE",
         "value": 13.63,
-        "industryAvg": 38.440000000000005
+        "industryAvg": 38.45
       },
       {
         "metric": "ROA",
         "value": 5.59,
-        "industryAvg": 18.790000000000003
+        "industryAvg": 18.8
       },
       {
         "metric": "Gross Margin",
         "value": 52.980000000000004,
-        "industryAvg": 49
+        "industryAvg": 48.99
       },
       {
         "metric": "EBITDA Margin",
         "value": 36.02,
-        "industryAvg": 35.35
+        "industryAvg": 35.36
       },
       {
         "metric": "Net Margin",
         "value": 31.44,
-        "industryAvg": 26.52
+        "industryAvg": 26.540000000000003
       }
     ],
     "dcf": {
-      "fairValue": 308.48,
-      "currentPrice": 1734.19,
-      "upside": -82.21,
-      "wacc": 18.96,
+      "fairValue": 305.46,
+      "currentPrice": 1867.83,
+      "upside": -83.65,
+      "wacc": 19.11,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 32.42,
         "Terminal growth": 3

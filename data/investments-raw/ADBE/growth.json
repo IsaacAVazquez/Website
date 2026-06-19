@@ -97,6 +97,13 @@
       "revenue": 6398000000.0,
       "prev_year_revenue": 5714000000.0,
       "yoy_growth": 0.1197
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2026-05-31T00:00:00.000",
+      "revenue": 6618000000.0,
+      "prev_year_revenue": 5873000000.0,
+      "yoy_growth": 0.1269
     }
   ],
   "annual_revenue": [
@@ -241,6 +248,13 @@
       "operating_income": 2418000000.0,
       "prev_year_operating_income": 2163000000.0,
       "yoy_growth": 0.1179
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2026-05-31T00:00:00.000",
+      "operating_income": 2238000000.0,
+      "prev_year_operating_income": 2109000000.0,
+      "yoy_growth": 0.0612
     }
   ],
   "annual_operating_income": [
@@ -378,6 +392,13 @@
       "ebitda": 2659000000.0,
       "prev_year_ebitda": 2461000000.0,
       "yoy_growth": 0.0805
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2026-05-31T00:00:00.000",
+      "ebitda": 2496000000.0,
+      "prev_year_ebitda": 2378000000.0,
+      "yoy_growth": 0.0496
     }
   ],
   "annual_ebitda": [
@@ -522,6 +543,13 @@
       "net_income_common_stockholders": 1889000000.0,
       "prev_year_net_income_common_stockholders": 1811000000.0,
       "yoy_growth": 0.0431
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2026-05-31T00:00:00.000",
+      "net_income_common_stockholders": 1712000000.0,
+      "prev_year_net_income_common_stockholders": 1691000000.0,
+      "yoy_growth": 0.0124
     }
   ],
   "annual_net_income": [
@@ -652,6 +680,13 @@
       "free_cash_flow": 2921000000.0,
       "prev_year_free_cash_flow": 2456000000.0,
       "yoy_growth": 0.1893
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2026-05-31T00:00:00.000",
+      "free_cash_flow": 2107000000.0,
+      "prev_year_free_cash_flow": 2144000000.0,
+      "yoy_growth": -0.0173
     }
   ],
   "annual_fcf": [
@@ -1517,6 +1552,13 @@
       "eps": 4.5961,
       "prev_year_eps": 4.1347,
       "yoy_growth": 0.1116
+    },
+    {
+      "symbol": "ADBE",
+      "report_date": "2026-05-31T00:00:00.000",
+      "eps": 4.2587,
+      "prev_year_eps": 3.9417,
+      "yoy_growth": 0.0804
     }
   ]
 }

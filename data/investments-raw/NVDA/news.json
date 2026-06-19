@@ -54,15 +54,6 @@
     "link": "https://finance.yahoo.com/news/stereotaxis-jumps-15-nvidias-ai-160200798.html"
   },
   {
-    "uuid": "9c9222ce-74c7-3222-a9d9-ab586c63ce81",
-    "symbol": "NVDA",
-    "title": "Nvidia\u2019s Support Boosts Stereotaxis (STXS) in Advancing Robotic Surgery",
-    "publisher": "Insider Monkey",
-    "report_date": "2025-03-24",
-    "type": "STORY",
-    "link": "https://finance.yahoo.com/news/nvidia-support-boosts-stereotaxis-stxs-213924601.html"
-  },
-  {
     "uuid": "9603d02d-962a-36da-ac81-d16892a33a25",
     "symbol": "NVDA",
     "title": "Lumentum Stock, Coherent Upgraded On View Nvidia Threat Overblown",
@@ -70,6 +61,15 @@
     "report_date": "2025-03-24",
     "type": "STORY",
     "link": "https://finance.yahoo.com/m/9603d02d-962a-36da-ac81-d16892a33a25/lumentum-stock%2C-coherent.html"
+  },
+  {
+    "uuid": "9c9222ce-74c7-3222-a9d9-ab586c63ce81",
+    "symbol": "NVDA",
+    "title": "Nvidia\u2019s Support Boosts Stereotaxis (STXS) in Advancing Robotic Surgery",
+    "publisher": "Insider Monkey",
+    "report_date": "2025-03-24",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/nvidia-support-boosts-stereotaxis-stxs-213924601.html"
   },
   {
     "uuid": "ad5ec0a2-bfd3-335a-9331-f25c38ccafe5",

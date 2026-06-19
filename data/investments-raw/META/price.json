@@ -1,51 +1,6 @@
 [
   {
     "symbol": "META",
-    "report_date": "2025-06-10",
-    "open": 701.35,
-    "close": 702.4,
-    "high": 703.23,
-    "low": 691.56,
-    "volume": 10850100
-  },
-  {
-    "symbol": "META",
-    "report_date": "2025-06-11",
-    "open": 703.71,
-    "close": 694.14,
-    "high": 708.87,
-    "low": 691.99,
-    "volume": 9582500
-  },
-  {
-    "symbol": "META",
-    "report_date": "2025-06-12",
-    "open": 693.3,
-    "close": 693.36,
-    "high": 695.38,
-    "low": 687.0,
-    "volume": 7322700
-  },
-  {
-    "symbol": "META",
-    "report_date": "2025-06-13",
-    "open": 687.95,
-    "close": 682.87,
-    "high": 694.57,
-    "low": 681.01,
-    "volume": 9274400
-  },
-  {
-    "symbol": "META",
-    "report_date": "2025-06-16",
-    "open": 699.33,
-    "close": 702.12,
-    "high": 707.15,
-    "low": 693.51,
-    "volume": 13720300
-  },
-  {
-    "symbol": "META",
     "report_date": "2025-06-17",
     "open": 702.0,
     "close": 697.23,
@@ -2256,15 +2211,60 @@
     "close": 584.59,
     "high": 597.63,
     "low": 581.01,
-    "volume": 16950700
+    "volume": 16977400
   },
   {
     "symbol": "META",
     "report_date": "2026-06-10",
     "open": 580.73,
     "close": 570.98,
-    "high": 591.3,
+    "high": 591.32,
     "low": 570.6,
-    "volume": 16735589
+    "volume": 17064000
+  },
+  {
+    "symbol": "META",
+    "report_date": "2026-06-11",
+    "open": 565.83,
+    "close": 568.43,
+    "high": 572.17,
+    "low": 557.01,
+    "volume": 17628000
+  },
+  {
+    "symbol": "META",
+    "report_date": "2026-06-12",
+    "open": 572.95,
+    "close": 566.98,
+    "high": 576.07,
+    "low": 560.9,
+    "volume": 14326400
+  },
+  {
+    "symbol": "META",
+    "report_date": "2026-06-15",
+    "open": 579.9,
+    "close": 593.48,
+    "high": 601.27,
+    "low": 579.3,
+    "volume": 17653300
+  },
+  {
+    "symbol": "META",
+    "report_date": "2026-06-16",
+    "open": 593.65,
+    "close": 600.21,
+    "high": 605.81,
+    "low": 592.0,
+    "volume": 11344400
+  },
+  {
+    "symbol": "META",
+    "report_date": "2026-06-17",
+    "open": 592.0,
+    "close": 567.58,
+    "high": 593.81,
+    "low": 566.19,
+    "volume": 20397900
   }
 ]

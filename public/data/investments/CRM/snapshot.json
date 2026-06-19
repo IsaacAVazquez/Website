@@ -1,10 +1,10 @@
 {
   "symbol": "CRM",
-  "lastUpdated": "2026-06-12T00:17:25.864748+00:00",
+  "lastUpdated": "2026-06-19T00:23:44.589850+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-12T00:17:25.864748+00:00",
+    "snapshotBuiltAt": "2026-06-19T00:23:44.589850+00:00",
     "sections": {
-      "price": "2026-06-10"
+      "price": "2026-06-17"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.6388,
-      "ttmPe": 19.79,
-      "marketCap": 139983480000,
-      "psRatio": 3.27,
-      "pbRatio": 4.09,
-      "pegRatio": 0.38
+      "ttmPe": 17.94,
+      "marketCap": 126961380000,
+      "psRatio": 2.96,
+      "pbRatio": 3.71,
+      "pegRatio": 0.34
     },
     "profitability": {
       "roe": 4.51,
@@ -5386,57 +5386,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.01,
-      "costOfEquity": 14.13,
+      "wacc": 10.89,
+      "costOfEquity": 14.29,
       "costOfDebt": 0.76,
       "taxRate": 23,
-      "beta": 1.1515,
-      "marketCap": 139983480000
+      "beta": 1.17,
+      "marketCap": 126961380000
     },
     "beta": {
-      "beta5y": 1.1515
+      "beta5y": 1.17
     },
     "price": [
-      {
-        "date": "2025-06-10",
-        "open": 272.07,
-        "high": 273.75,
-        "low": 266.84,
-        "close": 268.22,
-        "volume": 6309700
-      },
-      {
-        "date": "2025-06-11",
-        "open": 268.5,
-        "high": 269.51,
-        "low": 265.41,
-        "close": 265.91,
-        "volume": 6568100
-      },
-      {
-        "date": "2025-06-12",
-        "open": 264.7,
-        "high": 269.02,
-        "low": 263.4,
-        "close": 266.91,
-        "volume": 8054000
-      },
-      {
-        "date": "2025-06-13",
-        "open": 263.48,
-        "high": 265.7,
-        "low": 258,
-        "close": 258.4,
-        "volume": 7659300
-      },
-      {
-        "date": "2025-06-16",
-        "open": 260.39,
-        "high": 263.98,
-        "low": 259.96,
-        "close": 263.88,
-        "volume": 7177000
-      },
       {
         "date": "2025-06-17",
         "open": 263.85,
@@ -7403,15 +7363,55 @@
         "high": 182.46,
         "low": 171.56,
         "close": 175.35,
-        "volume": 15417900
+        "volume": 15427800
       },
       {
         "date": "2026-06-10",
         "open": 170.6,
         "high": 175.53,
-        "low": 170.06,
+        "low": 170.03,
         "close": 170.92,
-        "volume": 10726391
+        "volume": 10820500
+      },
+      {
+        "date": "2026-06-11",
+        "open": 168.27,
+        "high": 168.98,
+        "low": 163.31,
+        "close": 166.45,
+        "volume": 16666000
+      },
+      {
+        "date": "2026-06-12",
+        "open": 164.74,
+        "high": 166.54,
+        "low": 161.4,
+        "close": 165.89,
+        "volume": 13589400
+      },
+      {
+        "date": "2026-06-15",
+        "open": 166.03,
+        "high": 169.95,
+        "low": 164.17,
+        "close": 164.55,
+        "volume": 13541800
+      },
+      {
+        "date": "2026-06-16",
+        "open": 164.06,
+        "high": 166.3,
+        "low": 160.5,
+        "close": 161.71,
+        "volume": 16385300
+      },
+      {
+        "date": "2026-06-17",
+        "open": 160.25,
+        "high": 161.43,
+        "low": 154.23,
+        "close": 155.02,
+        "volume": 19932000
       }
     ],
     "news": [
@@ -7448,19 +7448,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "df3945aa-0fd1-34d9-8a4f-aa0c9a0cdb45",
-        "title": "Trump and MBS Tout $1 Trillion Pledge as Details Remain Elusive",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/trump-mbs-tout-1-trillion-174902305.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "ca06a274-32e3-3e67-865f-0b228b4d8f22",
         "title": "White House calls out Boeing, GE Vernova exports in Saudi Arabia pact",
         "publisher": "TipRanks",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/white-house-calls-boeing-ge-142742667.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "df3945aa-0fd1-34d9-8a4f-aa0c9a0cdb45",
+        "title": "Trump and MBS Tout $1 Trillion Pledge as Details Remain Elusive",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/trump-mbs-tout-1-trillion-174902305.html",
         "type": "STORY"
       },
       {
@@ -7480,29 +7480,26 @@
         "type": "STORY"
       },
       {
-        "uuid": "3b4d0821-7c9c-3cf8-964d-d99cc9ab3503",
-        "title": "Takeda Taps Salesforce (CRM) for AI-Driven Customer Experience Platform",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/takeda-taps-salesforce-crm-ai-173342909.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "dd9e1206-7f9f-30a5-8c2a-d095e81c7ffa",
         "title": "3 S&P 500 Stocks Facing Headwinds",
         "publisher": "StockStory",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/news/3-p-500-stocks-facing-043804051.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "3b4d0821-7c9c-3cf8-964d-d99cc9ab3503",
+        "title": "Takeda Taps Salesforce (CRM) for AI-Driven Customer Experience Platform",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/takeda-taps-salesforce-crm-ai-173342909.html",
+        "type": "STORY"
       }
     ],
     "officers": [
       {
-        "name": "Mr. David Schmaier",
-        "title": "President and Chief Strategy Officer",
-        "age": 61,
-        "yearBorn": 1964,
-        "totalPay": 2297750
+        "name": "Mr. Bill Patterson",
+        "title": "Executive VP & GM of CRM Applications"
       },
       {
         "name": "Mr. Marc R. Benioff",
@@ -7526,10 +7523,6 @@
         "totalPay": 2291250
       },
       {
-        "name": "Mr. Patrick Stokes",
-        "title": "President & Chief Marketing Officer"
-      },
-      {
         "name": "Mr. Sabastian V. Niles",
         "title": "President, Chief Legal Officer & Corporate Secretary",
         "age": 45,
@@ -7550,34 +7543,36 @@
         "yearBorn": 1965
       },
       {
-        "name": "Mr. Sundeep G. Reddy",
-        "title": "Executive VP & Chief Accounting Officer",
-        "age": 51,
-        "yearBorn": 1974
+        "name": "Mr. Vala Afshar",
+        "title": "Chief Digital Evangelist"
       },
       {
-        "name": "Ms. Robin L. Washington CPA",
-        "title": "President, Chief Operating & Financial Officer and Director",
-        "age": 62,
-        "yearBorn": 1963,
-        "totalPay": 11668529
+        "name": "Ms. Polly A. Sumner",
+        "title": "Chief Adoption Officer",
+        "age": 48,
+        "yearBorn": 1977,
+        "totalPay": 630000
+      },
+      {
+        "name": "Ms. Suzanne DiBianca",
+        "title": "Executive VP & Chief Impact Officer"
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 19.79,
-        "industryAvg": 24.14
+        "value": 17.94,
+        "industryAvg": 22.85
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.27,
-        "industryAvg": 4.48
+        "value": 2.96,
+        "industryAvg": 4.05
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.09,
-        "industryAvg": 4.68
+        "value": 3.71,
+        "industryAvg": 4.35
       },
       {
         "metric": "ROE",
@@ -7592,24 +7587,24 @@
       {
         "metric": "Gross Margin",
         "value": 76.92,
-        "industryAvg": 63.32
+        "industryAvg": 63.39
       },
       {
         "metric": "EBITDA Margin",
         "value": 36.14,
-        "industryAvg": 21.12
+        "industryAvg": 21
       },
       {
         "metric": "Net Margin",
         "value": 18.93,
-        "industryAvg": -0.19
+        "industryAvg": -0.27
       }
     ],
     "dcf": {
-      "fairValue": 237.16,
-      "currentPrice": 170.92,
-      "upside": 38.75,
-      "wacc": 11.01,
+      "fairValue": 240.93,
+      "currentPrice": 155.02,
+      "upside": 55.42,
+      "wacc": 10.89,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

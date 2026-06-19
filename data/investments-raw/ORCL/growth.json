@@ -1531,6 +1531,13 @@
       "eps": 1.2703,
       "prev_year_eps": 1.0216,
       "yoy_growth": 0.2434
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2026-05-31T00:00:00.000",
+      "eps": 1.45,
+      "prev_year_eps": 1.1937,
+      "yoy_growth": 0.2147
     }
   ]
 }

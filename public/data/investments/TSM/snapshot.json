@@ -1,10 +1,10 @@
 {
   "symbol": "TSM",
-  "lastUpdated": "2026-06-12T00:17:25.864748+00:00",
+  "lastUpdated": "2026-06-19T00:23:44.589850+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-12T00:17:25.864748+00:00",
+    "snapshotBuiltAt": "2026-06-19T00:23:44.589850+00:00",
     "sections": {
-      "price": "2026-06-10"
+      "price": "2026-06-17"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.0321,
-      "ttmPe": 33.97,
-      "marketCap": 2119971247500,
-      "psRatio": 16.55,
-      "pbRatio": 11.53,
-      "pegRatio": 0.53
+      "ttmPe": 35.92,
+      "marketCap": 2241334739100,
+      "psRatio": 17.5,
+      "pbRatio": 12.19,
+      "pegRatio": 0.56
     },
     "profitability": {
       "roe": 10.18,
@@ -6708,57 +6708,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.659999999999998,
+      "wacc": 15.67,
       "costOfEquity": 15.909999999999998,
       "costOfDebt": 0.25,
       "taxRate": 17,
-      "beta": 1.3658,
-      "marketCap": 2119971247500
+      "beta": 1.3624,
+      "marketCap": 2241334739100
     },
     "beta": {
-      "beta5y": 1.3658
+      "beta5y": 1.3624
     },
     "price": [
-      {
-        "date": "2025-06-10",
-        "open": 211.61,
-        "high": 213.23,
-        "low": 209.96,
-        "close": 212.46,
-        "volume": 14514000
-      },
-      {
-        "date": "2025-06-11",
-        "open": 215,
-        "high": 217.43,
-        "low": 212.95,
-        "close": 214.1,
-        "volume": 13326400
-      },
-      {
-        "date": "2025-06-12",
-        "open": 212.92,
-        "high": 215.88,
-        "low": 211.91,
-        "close": 215.43,
-        "volume": 9796100
-      },
-      {
-        "date": "2025-06-13",
-        "open": 210.11,
-        "high": 213.26,
-        "low": 209.4,
-        "close": 211.1,
-        "volume": 10152500
-      },
-      {
-        "date": "2025-06-16",
-        "open": 213,
-        "high": 217.6,
-        "low": 212.73,
-        "close": 215.68,
-        "volume": 10932900
-      },
       {
         "date": "2025-06-17",
         "open": 213.89,
@@ -8725,15 +8685,55 @@
         "high": 438.16,
         "low": 405.51,
         "close": 427.92,
-        "volume": 21180500
+        "volume": 21199500
       },
       {
         "date": "2026-06-10",
-        "open": 413.955,
+        "open": 413.96,
         "high": 426.32,
         "low": 407.7,
         "close": 408.75,
-        "volume": 12030856
+        "volume": 13139700
+      },
+      {
+        "date": "2026-06-11",
+        "open": 413.26,
+        "high": 422.25,
+        "low": 408.86,
+        "close": 421.07,
+        "volume": 13826500
+      },
+      {
+        "date": "2026-06-12",
+        "open": 420.05,
+        "high": 426.94,
+        "low": 417.21,
+        "close": 423.93,
+        "volume": 10362500
+      },
+      {
+        "date": "2026-06-15",
+        "open": 438.68,
+        "high": 442.58,
+        "low": 431.93,
+        "close": 441.4,
+        "volume": 11184900
+      },
+      {
+        "date": "2026-06-16",
+        "open": 436.02,
+        "high": 440.33,
+        "low": 425.2,
+        "close": 425.83,
+        "volume": 10943500
+      },
+      {
+        "date": "2026-06-17",
+        "open": 434.75,
+        "high": 442.5,
+        "low": 431.64,
+        "close": 432.15,
+        "volume": 10911100
       }
     ],
     "news": [
@@ -8794,19 +8794,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "5104baf1-a7b2-3c68-af66-0a502166bcb2",
-        "title": "TSMC Stock Maintains High-Conviction AI Play Status With $220 Price Target",
-        "publisher": "TipRanks",
-        "reportDate": "2025-06-01",
-        "link": "https://finance.yahoo.com/news/tsmc-stock-maintains-high-conviction-183500555.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "55c8b36c-2510-38f3-854f-062fb0af6334",
         "title": "5 Brilliant Stocks to Buy in June",
         "publisher": "Motley Fool",
         "reportDate": "2025-06-01",
         "link": "https://finance.yahoo.com/m/55c8b36c-2510-38f3-854f-062fb0af6334/5-brilliant-stocks-to-buy-in.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "5104baf1-a7b2-3c68-af66-0a502166bcb2",
+        "title": "TSMC Stock Maintains High-Conviction AI Play Status With $220 Price Target",
+        "publisher": "TipRanks",
+        "reportDate": "2025-06-01",
+        "link": "https://finance.yahoo.com/news/tsmc-stock-maintains-high-conviction-183500555.html",
         "type": "STORY"
       },
       {
@@ -8822,7 +8822,7 @@
       {
         "name": "Dr. C. C. Wei Ph.D.",
         "title": "Chairman & CEO",
-        "totalPay": 65111130
+        "totalPay": 65156353
       },
       {
         "name": "Dr. Horng-Dar Lin",
@@ -8847,7 +8847,7 @@
       {
         "name": "Mr. Jen-Chau Huang",
         "title": "Senior VP & CFO",
-        "totalPay": 9432815
+        "totalPay": 9439367
       },
       {
         "name": "Mr. Pei-Hong Chen",
@@ -8865,23 +8865,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 33.97,
-        "industryAvg": 34.69
+        "value": 35.92,
+        "industryAvg": 43.16
       },
       {
         "metric": "P/S Ratio",
-        "value": 16.55,
-        "industryAvg": 14.48
+        "value": 17.5,
+        "industryAvg": 16.75
       },
       {
         "metric": "P/B Ratio",
-        "value": 11.53,
-        "industryAvg": 12.06
+        "value": 12.19,
+        "industryAvg": 14.39
       },
       {
         "metric": "ROE",
         "value": 10.18,
-        "industryAvg": 34.58
+        "industryAvg": 34.589999999999996
       },
       {
         "metric": "ROA",
@@ -8905,10 +8905,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 203.82,
-      "currentPrice": 408.75,
-      "upside": -50.14,
-      "wacc": 15.66,
+      "fairValue": 203.65,
+      "currentPrice": 432.15,
+      "upside": -52.88,
+      "wacc": 15.67,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

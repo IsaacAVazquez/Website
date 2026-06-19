@@ -1,10 +1,10 @@
 {
   "symbol": "META",
-  "lastUpdated": "2026-06-12T00:17:25.864748+00:00",
+  "lastUpdated": "2026-06-19T00:23:44.589850+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-12T00:17:25.864748+00:00",
+    "snapshotBuiltAt": "2026-06-19T00:23:44.589850+00:00",
     "sections": {
-      "price": "2026-06-10"
+      "price": "2026-06-17"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 27.5066,
-      "ttmPe": 20.76,
-      "marketCap": 1449388935834,
-      "psRatio": 6.74,
-      "pbRatio": 5.95,
+      "ttmPe": 20.63,
+      "marketCap": 1440758296614,
+      "psRatio": 6.7,
+      "pbRatio": 5.91,
       "pegRatio": 0.33
     },
     "profitability": {
@@ -5393,56 +5393,16 @@
     },
     "wacc": {
       "wacc": 13.950000000000001,
-      "costOfEquity": 14.760000000000002,
+      "costOfEquity": 14.77,
       "costOfDebt": 0.65,
       "taxRate": 40,
-      "beta": 1.2277,
-      "marketCap": 1449388935834
+      "beta": 1.227,
+      "marketCap": 1440758296614
     },
     "beta": {
-      "beta5y": 1.2277
+      "beta5y": 1.227
     },
     "price": [
-      {
-        "date": "2025-06-10",
-        "open": 701.35,
-        "high": 703.23,
-        "low": 691.56,
-        "close": 702.4,
-        "volume": 10850100
-      },
-      {
-        "date": "2025-06-11",
-        "open": 703.71,
-        "high": 708.87,
-        "low": 691.99,
-        "close": 694.14,
-        "volume": 9582500
-      },
-      {
-        "date": "2025-06-12",
-        "open": 693.3,
-        "high": 695.38,
-        "low": 687,
-        "close": 693.36,
-        "volume": 7322700
-      },
-      {
-        "date": "2025-06-13",
-        "open": 687.95,
-        "high": 694.57,
-        "low": 681.01,
-        "close": 682.87,
-        "volume": 9274400
-      },
-      {
-        "date": "2025-06-16",
-        "open": 699.33,
-        "high": 707.15,
-        "low": 693.51,
-        "close": 702.12,
-        "volume": 13720300
-      },
       {
         "date": "2025-06-17",
         "open": 702,
@@ -7409,15 +7369,55 @@
         "high": 597.63,
         "low": 581.01,
         "close": 584.59,
-        "volume": 16950700
+        "volume": 16977400
       },
       {
         "date": "2026-06-10",
         "open": 580.73,
-        "high": 591.3,
+        "high": 591.32,
         "low": 570.6,
         "close": 570.98,
-        "volume": 16735589
+        "volume": 17064000
+      },
+      {
+        "date": "2026-06-11",
+        "open": 565.83,
+        "high": 572.17,
+        "low": 557.01,
+        "close": 568.43,
+        "volume": 17628000
+      },
+      {
+        "date": "2026-06-12",
+        "open": 572.95,
+        "high": 576.07,
+        "low": 560.9,
+        "close": 566.98,
+        "volume": 14326400
+      },
+      {
+        "date": "2026-06-15",
+        "open": 579.9,
+        "high": 601.27,
+        "low": 579.3,
+        "close": 593.48,
+        "volume": 17653300
+      },
+      {
+        "date": "2026-06-16",
+        "open": 593.65,
+        "high": 605.81,
+        "low": 592,
+        "close": 600.21,
+        "volume": 11344400
+      },
+      {
+        "date": "2026-06-17",
+        "open": 592,
+        "high": 593.81,
+        "low": 566.19,
+        "close": 567.58,
+        "volume": 20397900
       }
     ],
     "news": [
@@ -7454,19 +7454,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "124a6d52-1c44-41a7-a9cd-0c3fa0be6445",
-        "title": "Delaware passes law designed to stop more Elon Musks from leaving state",
-        "publisher": "Yahoo Finance",
-        "reportDate": "2025-03-27",
-        "link": "https://finance.yahoo.com/news/delaware-passes-law-designed-to-stop-more-elon-musks-from-leaving-state-164403802.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "0b443ff0-85a6-3c59-b7be-44fe4724309f",
         "title": "Closing Bell Movers: GameStop gains 7% on earnings, bitcoin announcement",
         "publisher": "TipRanks",
         "reportDate": "2025-03-27",
         "link": "https://finance.yahoo.com/news/closing-bell-movers-gamestop-gains-000022309.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "124a6d52-1c44-41a7-a9cd-0c3fa0be6445",
+        "title": "Delaware passes law designed to stop more Elon Musks from leaving state",
+        "publisher": "Yahoo Finance",
+        "reportDate": "2025-03-27",
+        "link": "https://finance.yahoo.com/news/delaware-passes-law-designed-to-stop-more-elon-musks-from-leaving-state-164403802.html",
         "type": "STORY"
       },
       {
@@ -7572,18 +7572,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.76,
-        "industryAvg": 25.77
+        "value": 20.63,
+        "industryAvg": 26.34
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.74,
-        "industryAvg": 8.86
+        "value": 6.7,
+        "industryAvg": 8.91
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.95,
-        "industryAvg": 7.76
+        "value": 5.91,
+        "industryAvg": 7.73
       },
       {
         "metric": "ROE",
@@ -7613,8 +7613,8 @@
     ],
     "dcf": {
       "fairValue": 543.55,
-      "currentPrice": 570.98,
-      "upside": -4.8,
+      "currentPrice": 567.58,
+      "upside": -4.23,
       "wacc": 13.95,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,

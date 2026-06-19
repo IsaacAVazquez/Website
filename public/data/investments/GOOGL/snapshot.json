@@ -1,10 +1,10 @@
 {
   "symbol": "GOOGL",
-  "lastUpdated": "2026-06-12T00:17:25.864748+00:00",
+  "lastUpdated": "2026-06-19T00:23:44.589850+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-12T00:17:25.864748+00:00",
+    "snapshotBuiltAt": "2026-06-19T00:23:44.589850+00:00",
     "sections": {
-      "price": "2026-06-10"
+      "price": "2026-06-17"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 13.109,
-      "ttmPe": 27.19,
-      "marketCap": 4317702003996,
-      "psRatio": 10.22,
-      "pbRatio": 9.02,
-      "pegRatio": 0.33
+      "ttmPe": 27.75,
+      "marketCap": 4407477445518,
+      "psRatio": 10.43,
+      "pbRatio": 9.21,
+      "pegRatio": 0.34
     },
     "profitability": {
       "roe": 14.000000000000002,
@@ -5598,53 +5598,13 @@
       "costOfEquity": 14.82,
       "costOfDebt": 0.59,
       "taxRate": 19,
-      "beta": 1.2346,
-      "marketCap": 4317702003996
+      "beta": 1.2324,
+      "marketCap": 4407477445518
     },
     "beta": {
-      "beta5y": 1.2346
+      "beta5y": 1.2324
     },
     "price": [
-      {
-        "date": "2025-06-10",
-        "open": 176.2,
-        "high": 181.11,
-        "low": 174.91,
-        "close": 178.6,
-        "volume": 61766100
-      },
-      {
-        "date": "2025-06-11",
-        "open": 179.77,
-        "high": 180.37,
-        "low": 176.75,
-        "close": 177.35,
-        "volume": 31646800
-      },
-      {
-        "date": "2025-06-12",
-        "open": 176.18,
-        "high": 176.72,
-        "low": 174.75,
-        "close": 175.7,
-        "volume": 20941900
-      },
-      {
-        "date": "2025-06-13",
-        "open": 172.44,
-        "high": 177.13,
-        "low": 172.39,
-        "close": 174.67,
-        "volume": 27663100
-      },
-      {
-        "date": "2025-06-16",
-        "open": 174.73,
-        "high": 176.94,
-        "low": 174.65,
-        "close": 176.77,
-        "volume": 27389200
-      },
       {
         "date": "2025-06-17",
         "open": 175.7,
@@ -7611,15 +7571,55 @@
         "high": 372.08,
         "low": 357.3,
         "close": 364.26,
-        "volume": 29496500
+        "volume": 29535100
       },
       {
         "date": "2026-06-10",
-        "open": 362.985,
-        "high": 368.555,
-        "low": 355.23,
+        "open": 363.19,
+        "high": 368.56,
+        "low": 355.2,
         "close": 356.38,
-        "volume": 31693010
+        "volume": 32357100
+      },
+      {
+        "date": "2026-06-11",
+        "open": 355.93,
+        "high": 358.8,
+        "low": 346.36,
+        "close": 357.77,
+        "volume": 35538200
+      },
+      {
+        "date": "2026-06-12",
+        "open": 362.62,
+        "high": 366.57,
+        "low": 354.94,
+        "close": 359.68,
+        "volume": 24704600
+      },
+      {
+        "date": "2026-06-15",
+        "open": 367.93,
+        "high": 372.99,
+        "low": 366.55,
+        "close": 369.35,
+        "volume": 27727500
+      },
+      {
+        "date": "2026-06-16",
+        "open": 369.6,
+        "high": 376,
+        "low": 367.06,
+        "close": 373.25,
+        "volume": 24876100
+      },
+      {
+        "date": "2026-06-17",
+        "open": 369.13,
+        "high": 372.33,
+        "low": 362.02,
+        "close": 363.79,
+        "volume": 24496700
       }
     ],
     "news": [
@@ -7656,19 +7656,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "239097ec-365f-3453-b91e-0c08a6414799",
-        "title": "3 Top Quantum Computing Stocks to Buy in 2025",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/m/239097ec-365f-3453-b91e-0c08a6414799/3-top-quantum-computing.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "1f65352e-e780-3b0a-9802-fdd0d6359ce8",
         "title": "Streaming Surpasses Combined Cable, Broadcast Viewing for First Time in May, Nielsen Reports",
         "publisher": "MT Newswires",
         "reportDate": "2025-06-17",
         "link": "https://finance.yahoo.com/news/streaming-surpasses-combined-cable-broadcast-140549520.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "239097ec-365f-3453-b91e-0c08a6414799",
+        "title": "3 Top Quantum Computing Stocks to Buy in 2025",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-06-17",
+        "link": "https://finance.yahoo.com/m/239097ec-365f-3453-b91e-0c08a6414799/3-top-quantum-computing.html",
         "type": "STORY"
       },
       {
@@ -7688,19 +7688,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "58844064-6ec3-3b70-b13a-3eee7607b6b5",
-        "title": "Adobe vs. Apple: Which AI-Driven Tech Stock is a Better Buy Now?",
-        "publisher": "Zacks",
+        "uuid": "4c10d800-1065-3e25-af9a-f43f0e8b2904",
+        "title": "Japan's TDK acquires US-based smart glasses company SoftEye",
+        "publisher": "Reuters",
         "reportDate": "2025-06-19",
-        "link": "https://finance.yahoo.com/news/adobe-vs-apple-ai-driven-172200197.html",
+        "link": "https://finance.yahoo.com/news/japans-tdk-acquires-us-based-063651794.html",
         "type": "STORY"
       },
       {
-        "uuid": "5aaffa19-4a82-37d7-9153-92797cff77b1",
-        "title": "Down 25%, Is Now the Time to Pounce on IonQ Stock for Just $40?",
-        "publisher": "Motley Fool",
+        "uuid": "cf2e7065-0566-377e-aff0-cd1947c51405",
+        "title": "Magnificent 7 May Need to Make Room for Broadcom",
+        "publisher": "The Daily Upside",
         "reportDate": "2025-06-19",
-        "link": "https://finance.yahoo.com/m/5aaffa19-4a82-37d7-9153-92797cff77b1/down-25%25%2C-is-now-the-time-to.html",
+        "link": "https://finance.yahoo.com/m/cf2e7065-0566-377e-aff0-cd1947c51405/magnificent-7-may-need-to.html",
         "type": "STORY"
       }
     ],
@@ -7776,18 +7776,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 27.19,
-        "industryAvg": 25.77
+        "value": 27.75,
+        "industryAvg": 26.34
       },
       {
         "metric": "P/S Ratio",
-        "value": 10.22,
-        "industryAvg": 8.86
+        "value": 10.43,
+        "industryAvg": 8.91
       },
       {
         "metric": "P/B Ratio",
-        "value": 9.02,
-        "industryAvg": 7.76
+        "value": 9.21,
+        "industryAvg": 7.73
       },
       {
         "metric": "ROE",
@@ -7817,8 +7817,8 @@
     ],
     "dcf": {
       "fairValue": 245.26,
-      "currentPrice": 356.38,
-      "upside": -31.18,
+      "currentPrice": 363.79,
+      "upside": -32.58,
       "wacc": 14.53,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,

@@ -1,10 +1,10 @@
 {
   "symbol": "NVDA",
-  "lastUpdated": "2026-06-12T00:17:25.864748+00:00",
+  "lastUpdated": "2026-06-19T00:23:44.589850+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-12T00:17:25.864748+00:00",
+    "snapshotBuiltAt": "2026-06-19T00:23:44.589850+00:00",
     "sections": {
-      "price": "2026-06-10"
+      "price": "2026-06-17"
     }
   },
   "source": "prefetched",
@@ -33,7 +33,7 @@
       "country": "United States",
       "industry": "Semiconductors",
       "sector": "Technology",
-      "longBusinessSummary": "NVIDIA Corporation operates as a data center scale AI infrastructure company. The company operates through two segments, Compute & Networking, and Graphics segments. The Compute & Networking segment provides data center accelerated computing and networking platforms and artificial intelligence solutions and software, and automotive platforms and autonomous and electric vehicle solutions, including software. The Graphics segment offers GeForce GPUs for gaming and PCs; Quadro/NVIDIA RTX GPUs for enterprise workstation graphics. The company's products are used in gaming, professional visualization, data center, and automotive markets. The company sells its products to original equipment manufacturers, original device manufacturers, system integrators and distributors, independent software vendors, cloud service providers, add-in board manufacturers, distributors, automotive manufacturers and tier-1 automotive suppliers, and other ecosystem participants worldwide. The company has a strategic collaboration with Tech Mahindra Limited, Lumentum Holdings Inc., Nebius Group N.V., IREN Limited, and SK hynix Inc. NVIDIA Corporation was incorporated in 1993 and is headquartered in Santa Clara, California.",
+      "longBusinessSummary": "NVIDIA Corporation operates as a data center scale AI infrastructure company in the United States, Taiwan, China, Hong Kong, Europe, and internationally. It operates through Compute & Networking, and Graphics segments. The Compute & Networking segment provides data center accelerated computing and networking platforms and artificial intelligence solutions and software, and automotive platforms and autonomous and electric vehicle solutions, including software. The Graphics segment offers GeForce GPUs for gaming and PCs; Quadro/NVIDIA RTX GPUs for enterprise workstation graphics. The company's products are used in gaming, professional visualization, data center, and automotive markets. It sells its products to original equipment manufacturers, original device manufacturers, system integrators and distributors, independent software vendors, cloud service providers, add-in board manufacturers, distributors, automotive manufacturers and tier-1 automotive suppliers, and other ecosystem participants. NVIDIA Corporation was incorporated in 1993 and is headquartered in Santa Clara, California.",
       "fullTimeEmployees": 42000,
       "website": "https://www.nvidia.com",
       "shortName": "NVIDIA Corporation",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.5299,
-      "ttmPe": 30.69,
-      "marketCap": 4854372820000,
-      "psRatio": 19.15,
-      "pbRatio": 24.83,
-      "pegRatio": 0.14
+      "ttmPe": 31.34,
+      "marketCap": 4956827650000,
+      "psRatio": 19.55,
+      "pbRatio": 25.36,
+      "pegRatio": 0.15
     },
     "profitability": {
       "roe": 33.06,
@@ -5692,57 +5692,17 @@
       ]
     },
     "wacc": {
-      "wacc": 22.67,
-      "costOfEquity": 22.73,
+      "wacc": 22.8,
+      "costOfEquity": 22.86,
       "costOfDebt": 0.83,
       "taxRate": 17,
-      "beta": 2.1847,
-      "marketCap": 4854372820000
+      "beta": 2.1925,
+      "marketCap": 4956827650000
     },
     "beta": {
-      "beta5y": 2.1847
+      "beta5y": 2.1925
     },
     "price": [
-      {
-        "date": "2025-06-10",
-        "open": 142.69,
-        "high": 144.29,
-        "low": 141.53,
-        "close": 143.96,
-        "volume": 155881900
-      },
-      {
-        "date": "2025-06-11",
-        "open": 144.61,
-        "high": 144.99,
-        "low": 141.87,
-        "close": 142.83,
-        "volume": 167694000
-      },
-      {
-        "date": "2025-06-12",
-        "open": 141.97,
-        "high": 145,
-        "low": 141.85,
-        "close": 145,
-        "volume": 162365000
-      },
-      {
-        "date": "2025-06-13",
-        "open": 142.48,
-        "high": 143.58,
-        "low": 140.85,
-        "close": 141.97,
-        "volume": 180820600
-      },
-      {
-        "date": "2025-06-16",
-        "open": 143.35,
-        "high": 146.18,
-        "low": 143.2,
-        "close": 144.69,
-        "volume": 183133700
-      },
       {
         "date": "2025-06-17",
         "open": 144.49,
@@ -7709,15 +7669,55 @@
         "high": 211.4,
         "low": 199.34,
         "close": 208.19,
-        "volume": 180327000
+        "volume": 180962500
       },
       {
         "date": "2026-06-10",
-        "open": 204.425,
+        "open": 204.43,
         "high": 207.22,
         "low": 199.92,
         "close": 200.42,
-        "volume": 150398224
+        "volume": 161746600
+      },
+      {
+        "date": "2026-06-11",
+        "open": 201.49,
+        "high": 205.66,
+        "low": 199.54,
+        "close": 204.87,
+        "volume": 158643200
+      },
+      {
+        "date": "2026-06-12",
+        "open": 204.86,
+        "high": 207.07,
+        "low": 203.44,
+        "close": 205.19,
+        "volume": 112001800
+      },
+      {
+        "date": "2026-06-15",
+        "open": 208.92,
+        "high": 212.71,
+        "low": 208.34,
+        "close": 212.45,
+        "volume": 149936700
+      },
+      {
+        "date": "2026-06-16",
+        "open": 211.18,
+        "high": 211.49,
+        "low": 207.29,
+        "close": 207.41,
+        "volume": 125694100
+      },
+      {
+        "date": "2026-06-17",
+        "open": 208.53,
+        "high": 209.21,
+        "low": 203.08,
+        "close": 204.65,
+        "volume": 127804800
       }
     ],
     "news": [
@@ -7770,19 +7770,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "9c9222ce-74c7-3222-a9d9-ab586c63ce81",
-        "title": "Nvidia’s Support Boosts Stereotaxis (STXS) in Advancing Robotic Surgery",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-03-24",
-        "link": "https://finance.yahoo.com/news/nvidia-support-boosts-stereotaxis-stxs-213924601.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9603d02d-962a-36da-ac81-d16892a33a25",
         "title": "Lumentum Stock, Coherent Upgraded On View Nvidia Threat Overblown",
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-03-24",
         "link": "https://finance.yahoo.com/m/9603d02d-962a-36da-ac81-d16892a33a25/lumentum-stock%2C-coherent.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9c9222ce-74c7-3222-a9d9-ab586c63ce81",
+        "title": "Nvidia’s Support Boosts Stereotaxis (STXS) in Advancing Robotic Surgery",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-03-24",
+        "link": "https://finance.yahoo.com/news/nvidia-support-boosts-stereotaxis-stxs-213924601.html",
         "type": "STORY"
       },
       {
@@ -7867,23 +7867,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 30.69,
-        "industryAvg": 34.69
+        "value": 31.34,
+        "industryAvg": 43.16
       },
       {
         "metric": "P/S Ratio",
-        "value": 19.15,
-        "industryAvg": 14.48
+        "value": 19.55,
+        "industryAvg": 16.75
       },
       {
         "metric": "P/B Ratio",
-        "value": 24.83,
-        "industryAvg": 12.06
+        "value": 25.36,
+        "industryAvg": 14.39
       },
       {
         "metric": "ROE",
         "value": 33.06,
-        "industryAvg": 34.58
+        "industryAvg": 34.589999999999996
       },
       {
         "metric": "ROA",
@@ -7907,10 +7907,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 68.85,
-      "currentPrice": 200.42,
-      "upside": -65.65,
-      "wacc": 22.67,
+      "fairValue": 68.36,
+      "currentPrice": 204.65,
+      "upside": -66.6,
+      "wacc": 22.8,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

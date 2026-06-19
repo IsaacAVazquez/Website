@@ -1,10 +1,10 @@
 {
   "symbol": "AAPL",
-  "lastUpdated": "2026-06-12T00:17:25.864748+00:00",
+  "lastUpdated": "2026-06-19T00:23:44.589850+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-12T00:17:25.864748+00:00",
+    "snapshotBuiltAt": "2026-06-19T00:23:44.589850+00:00",
     "sections": {
-      "price": "2026-06-10"
+      "price": "2026-06-17"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.2666,
-      "ttmPe": 35.27,
-      "marketCap": 4282539262480,
-      "psRatio": 9.49,
-      "pbRatio": 40.22,
-      "pegRatio": 1.6
+      "ttmPe": 35.8,
+      "marketCap": 4346723008200,
+      "psRatio": 9.63,
+      "pbRatio": 40.82,
+      "pegRatio": 1.62
     },
     "profitability": {
       "roe": 30.39,
@@ -4942,57 +4942,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.270000000000001,
-      "costOfEquity": 13.59,
+      "wacc": 13.25,
+      "costOfEquity": 13.569999999999999,
       "costOfDebt": 0.8999999999999999,
       "taxRate": 15,
-      "beta": 1.0861,
-      "marketCap": 4282539262480
+      "beta": 1.084,
+      "marketCap": 4346723008200
     },
     "beta": {
-      "beta5y": 1.0861
+      "beta5y": 1.084
     },
     "price": [
-      {
-        "date": "2025-06-10",
-        "open": 200.6,
-        "high": 204.35,
-        "low": 200.57,
-        "close": 202.67,
-        "volume": 54672600
-      },
-      {
-        "date": "2025-06-11",
-        "open": 203.5,
-        "high": 204.5,
-        "low": 198.41,
-        "close": 198.78,
-        "volume": 60989900
-      },
-      {
-        "date": "2025-06-12",
-        "open": 199.08,
-        "high": 199.68,
-        "low": 197.36,
-        "close": 199.2,
-        "volume": 43904600
-      },
-      {
-        "date": "2025-06-13",
-        "open": 199.73,
-        "high": 200.37,
-        "low": 195.7,
-        "close": 196.45,
-        "volume": 51447300
-      },
-      {
-        "date": "2025-06-16",
-        "open": 197.3,
-        "high": 198.69,
-        "low": 196.56,
-        "close": 198.42,
-        "volume": 43020700
-      },
       {
         "date": "2025-06-17",
         "open": 197.2,
@@ -6959,18 +6919,66 @@
         "high": 300.75,
         "low": 287.78,
         "close": 290.55,
-        "volume": 70024200
+        "volume": 70108800
       },
       {
         "date": "2026-06-10",
-        "open": 290.765,
-        "high": 294.745,
+        "open": 290.74,
+        "high": 294.75,
         "low": 287.38,
         "close": 291.58,
-        "volume": 49237715
+        "volume": 52793300
+      },
+      {
+        "date": "2026-06-11",
+        "open": 293.72,
+        "high": 297,
+        "low": 289.59,
+        "close": 295.63,
+        "volume": 42572500
+      },
+      {
+        "date": "2026-06-12",
+        "open": 296.03,
+        "high": 297.14,
+        "low": 289.62,
+        "close": 291.13,
+        "volume": 38742100
+      },
+      {
+        "date": "2026-06-15",
+        "open": 294.12,
+        "high": 297.78,
+        "low": 291.7,
+        "close": 296.42,
+        "volume": 45732600
+      },
+      {
+        "date": "2026-06-16",
+        "open": 295.25,
+        "high": 300.48,
+        "low": 293.97,
+        "close": 299.24,
+        "volume": 39874400
+      },
+      {
+        "date": "2026-06-17",
+        "open": 300.85,
+        "high": 302.07,
+        "low": 294.36,
+        "close": 295.95,
+        "volume": 42685500
       }
     ],
     "news": [
+      {
+        "uuid": "2cfa6437-c187-3ab8-9ea8-027695257bb0",
+        "title": "Top Research Reports for Apple, Meta Platforms & Chevron",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-21",
+        "link": "https://finance.yahoo.com/news/top-research-reports-apple-meta-213400955.html",
+        "type": "STORY"
+      },
       {
         "uuid": "08501801-66ee-3113-a401-9e991895ffc1",
         "title": "Autodesk in proxy fight, General Mills reports mixed Q3: Morning Buzz",
@@ -6985,14 +6993,6 @@
         "publisher": "Zacks",
         "reportDate": "2025-03-21",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-apple-085500208.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "2cfa6437-c187-3ab8-9ea8-027695257bb0",
-        "title": "Top Research Reports for Apple, Meta Platforms & Chevron",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-21",
-        "link": "https://finance.yahoo.com/news/top-research-reports-apple-meta-213400955.html",
         "type": "STORY"
       },
       {
@@ -7116,18 +7116,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 35.27,
-        "industryAvg": 34.95
+        "value": 35.8,
+        "industryAvg": 35.47
       },
       {
         "metric": "P/S Ratio",
-        "value": 9.49,
-        "industryAvg": 8.04
+        "value": 9.63,
+        "industryAvg": 7.34
       },
       {
         "metric": "P/B Ratio",
-        "value": 40.22,
-        "industryAvg": 26.92
+        "value": 40.82,
+        "industryAvg": 20.77
       },
       {
         "metric": "ROE",
@@ -7156,10 +7156,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 114.39,
-      "currentPrice": 291.58,
-      "upside": -60.77,
-      "wacc": 13.27,
+      "fairValue": 114.62,
+      "currentPrice": 295.95,
+      "upside": -61.27,
+      "wacc": 13.25,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 22.04,
         "Terminal growth": 3

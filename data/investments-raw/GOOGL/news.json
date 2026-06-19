@@ -36,15 +36,6 @@
     "link": "https://finance.yahoo.com/news/zacks-investment-ideas-feature-highlights-124900266.html"
   },
   {
-    "uuid": "239097ec-365f-3453-b91e-0c08a6414799",
-    "symbol": "GOOGL",
-    "title": "3 Top Quantum Computing Stocks to Buy in 2025",
-    "publisher": "Motley Fool",
-    "report_date": "2025-06-17",
-    "type": "STORY",
-    "link": "https://finance.yahoo.com/m/239097ec-365f-3453-b91e-0c08a6414799/3-top-quantum-computing.html"
-  },
-  {
     "uuid": "1f65352e-e780-3b0a-9802-fdd0d6359ce8",
     "symbol": "GOOGL",
     "title": "Streaming Surpasses Combined Cable, Broadcast Viewing for First Time in May, Nielsen Reports",
@@ -52,6 +43,15 @@
     "report_date": "2025-06-17",
     "type": "STORY",
     "link": "https://finance.yahoo.com/news/streaming-surpasses-combined-cable-broadcast-140549520.html"
+  },
+  {
+    "uuid": "239097ec-365f-3453-b91e-0c08a6414799",
+    "symbol": "GOOGL",
+    "title": "3 Top Quantum Computing Stocks to Buy in 2025",
+    "publisher": "Motley Fool",
+    "report_date": "2025-06-17",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/239097ec-365f-3453-b91e-0c08a6414799/3-top-quantum-computing.html"
   },
   {
     "uuid": "677e87f7-6d9d-30bd-a846-ca2e9cd5608e",
@@ -72,21 +72,21 @@
     "link": "https://finance.yahoo.com/news/sector-consumer-stocks-decline-afternoon-194457472.html"
   },
   {
-    "uuid": "58844064-6ec3-3b70-b13a-3eee7607b6b5",
+    "uuid": "4c10d800-1065-3e25-af9a-f43f0e8b2904",
     "symbol": "GOOGL",
-    "title": "Adobe vs. Apple: Which AI-Driven Tech Stock is a Better Buy Now?",
-    "publisher": "Zacks",
+    "title": "Japan's TDK acquires US-based smart glasses company SoftEye",
+    "publisher": "Reuters",
     "report_date": "2025-06-19",
     "type": "STORY",
-    "link": "https://finance.yahoo.com/news/adobe-vs-apple-ai-driven-172200197.html"
+    "link": "https://finance.yahoo.com/news/japans-tdk-acquires-us-based-063651794.html"
   },
   {
-    "uuid": "5aaffa19-4a82-37d7-9153-92797cff77b1",
+    "uuid": "cf2e7065-0566-377e-aff0-cd1947c51405",
     "symbol": "GOOGL",
-    "title": "Down 25%, Is Now the Time to Pounce on IonQ Stock for Just $40?",
-    "publisher": "Motley Fool",
+    "title": "Magnificent 7 May Need to Make Room for Broadcom",
+    "publisher": "The Daily Upside",
     "report_date": "2025-06-19",
     "type": "STORY",
-    "link": "https://finance.yahoo.com/m/5aaffa19-4a82-37d7-9153-92797cff77b1/down-25%25%2C-is-now-the-time-to.html"
+    "link": "https://finance.yahoo.com/m/cf2e7065-0566-377e-aff0-cd1947c51405/magnificent-7-may-need-to.html"
   }
 ]

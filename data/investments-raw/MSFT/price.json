@@ -1,51 +1,6 @@
 [
   {
     "symbol": "MSFT",
-    "report_date": "2025-06-10",
-    "open": 471.19,
-    "close": 470.92,
-    "high": 472.8,
-    "low": 466.96,
-    "volume": 15375900
-  },
-  {
-    "symbol": "MSFT",
-    "report_date": "2025-06-11",
-    "open": 470.02,
-    "close": 472.62,
-    "high": 475.47,
-    "low": 469.66,
-    "volume": 16399200
-  },
-  {
-    "symbol": "MSFT",
-    "report_date": "2025-06-12",
-    "open": 475.02,
-    "close": 478.87,
-    "high": 480.42,
-    "low": 473.52,
-    "volume": 18950600
-  },
-  {
-    "symbol": "MSFT",
-    "report_date": "2025-06-13",
-    "open": 476.41,
-    "close": 474.96,
-    "high": 479.18,
-    "low": 472.76,
-    "volume": 16814500
-  },
-  {
-    "symbol": "MSFT",
-    "report_date": "2025-06-16",
-    "open": 475.21,
-    "close": 479.14,
-    "high": 480.69,
-    "low": 475.0,
-    "volume": 15626100
-  },
-  {
-    "symbol": "MSFT",
     "report_date": "2025-06-17",
     "open": 475.4,
     "close": 478.04,
@@ -2256,15 +2211,60 @@
     "close": 403.41,
     "high": 411.98,
     "low": 398.48,
-    "volume": 35247200
+    "volume": 35317300
   },
   {
     "symbol": "MSFT",
     "report_date": "2026-06-10",
-    "open": 398.41,
+    "open": 398.55,
     "close": 397.36,
     "high": 405.04,
-    "low": 397.18,
-    "volume": 30387335
+    "low": 397.16,
+    "volume": 32576000
+  },
+  {
+    "symbol": "MSFT",
+    "report_date": "2026-06-11",
+    "open": 395.21,
+    "close": 390.34,
+    "high": 396.85,
+    "low": 384.0,
+    "volume": 47224100
+  },
+  {
+    "symbol": "MSFT",
+    "report_date": "2026-06-12",
+    "open": 391.43,
+    "close": 390.74,
+    "high": 391.74,
+    "low": 382.27,
+    "volume": 34865800
+  },
+  {
+    "symbol": "MSFT",
+    "report_date": "2026-06-15",
+    "open": 396.8,
+    "close": 399.76,
+    "high": 401.75,
+    "low": 392.85,
+    "volume": 32266400
+  },
+  {
+    "symbol": "MSFT",
+    "report_date": "2026-06-16",
+    "open": 395.79,
+    "close": 393.83,
+    "high": 396.84,
+    "low": 390.69,
+    "volume": 31506800
+  },
+  {
+    "symbol": "MSFT",
+    "report_date": "2026-06-17",
+    "open": 390.25,
+    "close": 378.91,
+    "high": 390.37,
+    "low": 377.32,
+    "volume": 41835800
   }
 ]

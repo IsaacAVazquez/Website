@@ -1,51 +1,6 @@
 [
   {
     "symbol": "GOOGL",
-    "report_date": "2025-06-10",
-    "open": 176.2,
-    "close": 178.6,
-    "high": 181.11,
-    "low": 174.91,
-    "volume": 61766100
-  },
-  {
-    "symbol": "GOOGL",
-    "report_date": "2025-06-11",
-    "open": 179.77,
-    "close": 177.35,
-    "high": 180.37,
-    "low": 176.75,
-    "volume": 31646800
-  },
-  {
-    "symbol": "GOOGL",
-    "report_date": "2025-06-12",
-    "open": 176.18,
-    "close": 175.7,
-    "high": 176.72,
-    "low": 174.75,
-    "volume": 20941900
-  },
-  {
-    "symbol": "GOOGL",
-    "report_date": "2025-06-13",
-    "open": 172.44,
-    "close": 174.67,
-    "high": 177.13,
-    "low": 172.39,
-    "volume": 27663100
-  },
-  {
-    "symbol": "GOOGL",
-    "report_date": "2025-06-16",
-    "open": 174.73,
-    "close": 176.77,
-    "high": 176.94,
-    "low": 174.65,
-    "volume": 27389200
-  },
-  {
-    "symbol": "GOOGL",
     "report_date": "2025-06-17",
     "open": 175.7,
     "close": 175.95,
@@ -2256,15 +2211,60 @@
     "close": 364.26,
     "high": 372.08,
     "low": 357.3,
-    "volume": 29496500
+    "volume": 29535100
   },
   {
     "symbol": "GOOGL",
     "report_date": "2026-06-10",
-    "open": 362.985,
+    "open": 363.19,
     "close": 356.38,
-    "high": 368.555,
-    "low": 355.23,
-    "volume": 31693010
+    "high": 368.56,
+    "low": 355.2,
+    "volume": 32357100
+  },
+  {
+    "symbol": "GOOGL",
+    "report_date": "2026-06-11",
+    "open": 355.93,
+    "close": 357.77,
+    "high": 358.8,
+    "low": 346.36,
+    "volume": 35538200
+  },
+  {
+    "symbol": "GOOGL",
+    "report_date": "2026-06-12",
+    "open": 362.62,
+    "close": 359.68,
+    "high": 366.57,
+    "low": 354.94,
+    "volume": 24704600
+  },
+  {
+    "symbol": "GOOGL",
+    "report_date": "2026-06-15",
+    "open": 367.93,
+    "close": 369.35,
+    "high": 372.99,
+    "low": 366.55,
+    "volume": 27727500
+  },
+  {
+    "symbol": "GOOGL",
+    "report_date": "2026-06-16",
+    "open": 369.6,
+    "close": 373.25,
+    "high": 376.0,
+    "low": 367.06,
+    "volume": 24876100
+  },
+  {
+    "symbol": "GOOGL",
+    "report_date": "2026-06-17",
+    "open": 369.13,
+    "close": 363.79,
+    "high": 372.33,
+    "low": 362.02,
+    "volume": 24496700
   }
 ]
