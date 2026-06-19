@@ -94,5 +94,19 @@ async function main() {
 
 main().catch((err) => {
   console.error("Football snapshot update failed:", err);
+  if (leagueOnly) {
+    // Deploy prebuild: a transient football-data.org error must not fail the
+    // whole build. Warn and exit 0 so the deploy proceeds with the committed
+    // snapshot — atomic writes (writeFileAtomic) mean a partial refresh never
+    // corrupts a file — mirroring the "failed fetch keeps the previous
+    // snapshot" pattern the other snapshot dashboards use. Manual full runs
+    // (npm run update:football, no --league-only) still exit 1 so failures
+    // surface locally.
+    const message =
+      "Football snapshot prebuild failed; continuing the build with the committed snapshot.";
+    console.warn(`::warning::${message}`);
+    console.error(`⚠️  ${message}`);
+    process.exit(0);
+  }
   process.exit(1);
 });
