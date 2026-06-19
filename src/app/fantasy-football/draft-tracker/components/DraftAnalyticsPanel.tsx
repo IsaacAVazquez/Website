@@ -2,6 +2,7 @@
 
 import type { DraftAnalytics, DraftPick } from "@/types";
 import {
+  getEmergingRun,
   getLiveDraftSignals,
   getPickDelta,
 } from "@/lib/draftAnalytics";
@@ -14,6 +15,11 @@ interface DraftAnalyticsPanelProps {
   isDraftComplete: boolean;
   userTeamNumber: number;
   adpAvailable: boolean;
+  getTeamName?: (teamNumber: number) => string;
+}
+
+function defaultTeamName(teamNumber: number): string {
+  return `Team ${teamNumber}`;
 }
 
 const STEAL_CHIP_STYLE = {
@@ -41,7 +47,15 @@ function describeBaseline(adpAvailable: boolean): string {
     : "Deltas compare each pick's slot to the published consensus rank. The current snapshot has no ADP data.";
 }
 
-function PickValueRow({ pick, label }: { pick: DraftPick; label: "Steal" | "Reach" }) {
+function PickValueRow({
+  pick,
+  label,
+  teamName,
+}: {
+  pick: DraftPick;
+  label: "Steal" | "Reach";
+  teamName: string;
+}) {
   const delta = getPickDelta(pick) ?? 0;
 
   return (
@@ -59,7 +73,7 @@ function PickValueRow({ pick, label }: { pick: DraftPick; label: "Steal" | "Reac
         </span>
       </div>
       <p className="mt-1 text-xs" style={{ color: "var(--home-ink-muted)" }}>
-        Team {pick.teamNumber} • Pick {pick.pickNumber} • Round {pick.round}
+        {teamName} • Pick {pick.pickNumber} • Round {pick.round}
       </p>
     </div>
   );
@@ -77,15 +91,20 @@ export function DraftAnalyticsPanel({
   isDraftComplete,
   userTeamNumber,
   adpAvailable,
+  getTeamName = defaultTeamName,
 }: DraftAnalyticsPanelProps) {
   if (!isDraftComplete) {
     const { latestFlaggedPick, activeRun } = getLiveDraftSignals(picks, currentPick);
+    // Surface a forming run only when it isn't already the confirmed one, so the
+    // soft and hard signals never describe the same position twice.
+    const emergingRun = getEmergingRun(picks, currentPick);
+    const showEmerging = emergingRun && (!activeRun || activeRun.position !== emergingRun.position);
 
     return (
       <article className="home-card p-5 sm:p-6">
         <p className="home-kicker mb-1">Draft signals</p>
         <div className="mt-3 grid gap-3">
-          {latestFlaggedPick === null && activeRun === null ? (
+          {latestFlaggedPick === null && activeRun === null && !showEmerging ? (
             <p className="text-sm leading-6" style={{ color: "var(--home-ink-muted)" }}>
               Nothing unusual yet. Steals, reaches, and position runs show up here as picks come in.
             </p>
@@ -95,6 +114,7 @@ export function DraftAnalyticsPanel({
                 <PickValueRow
                   pick={latestFlaggedPick.pick}
                   label={latestFlaggedPick.kind === "steal" ? "Steal" : "Reach"}
+                  teamName={getTeamName(latestFlaggedPick.pick.teamNumber)}
                 />
               )}
               {activeRun && (
@@ -105,6 +125,20 @@ export function DraftAnalyticsPanel({
                   <p className="mt-1 text-xs" style={{ color: "var(--home-ink-muted)" }}>
                     {activeRun.playersSelected} {activeRun.position}s gone since pick{" "}
                     {activeRun.startPick}. If you want one, the shelf is emptying.
+                  </p>
+                </div>
+              )}
+              {showEmerging && emergingRun && (
+                <div
+                  className="rounded-[1.2rem] border px-4 py-3"
+                  style={{
+                    borderColor: "color-mix(in srgb, var(--home-acid) 36%, var(--home-rule))",
+                    background: "color-mix(in srgb, var(--home-acid) 10%, var(--home-paper))",
+                  }}
+                >
+                  <p className="text-sm font-semibold">{emergingRun.position}s starting to go</p>
+                  <p className="mt-1 text-xs" style={{ color: "var(--home-ink-muted)" }}>
+                    {emergingRun.count} off the board in the last few picks — a run may be forming.
                   </p>
                 </div>
               )}
@@ -140,7 +174,7 @@ export function DraftAnalyticsPanel({
         <div className="grid gap-3">
           <p className="home-kicker mb-0">Biggest steal</p>
           {biggestSteal ? (
-            <PickValueRow pick={biggestSteal} label="Steal" />
+            <PickValueRow pick={biggestSteal} label="Steal" teamName={getTeamName(biggestSteal.teamNumber)} />
           ) : (
             <p className="text-sm" style={{ color: "var(--home-ink-muted)" }}>
               No pick beat its baseline by enough to count.
@@ -149,7 +183,7 @@ export function DraftAnalyticsPanel({
 
           <p className="home-kicker mb-0 mt-2">Biggest reach</p>
           {biggestReach ? (
-            <PickValueRow pick={biggestReach} label="Reach" />
+            <PickValueRow pick={biggestReach} label="Reach" teamName={getTeamName(biggestReach.teamNumber)} />
           ) : (
             <p className="text-sm" style={{ color: "var(--home-ink-muted)" }}>
               Nobody jumped a player far enough ahead of his baseline to count.
@@ -192,7 +226,7 @@ export function DraftAnalyticsPanel({
               >
                 <div className="min-w-0">
                   <p className="text-sm font-semibold">
-                    Team {team.teamNumber}
+                    {getTeamName(team.teamNumber)}
                     {team.teamNumber === userTeamNumber ? " (you)" : ""}
                   </p>
                   {team.weaknesses.length > 0 && (

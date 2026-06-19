@@ -243,3 +243,84 @@ export function getSourceKindLabel(
       return "Unavailable";
   }
 }
+
+export type FantasyConsensusSpread = "tight" | "mixed" | "volatile";
+
+/**
+ * Expert disagreement (`standardDeviation`) naturally grows with rank — the
+ * top of the board is settled, the deep pool is noisy — so a flat threshold
+ * would mislabel almost every late pick as "volatile". Normalizing the spread
+ * against the player's own rank (with a floor that tames the very top) yields a
+ * scale-aware read on how much the experts actually agree. Thresholds were
+ * tuned against the live PPR board so the labels split roughly 55/40/6.
+ *
+ * Returns null when there is no usable rank or spread to judge.
+ */
+const CONSENSUS_SPREAD_FLOOR = 12;
+const CONSENSUS_SPREAD_MIXED = 0.12;
+const CONSENSUS_SPREAD_VOLATILE = 0.22;
+
+export function getConsensusSpread(
+  player: Player,
+): { level: FantasyConsensusSpread; label: string; ratio: number } | null {
+  const rank =
+    typeof player.rankEcr === "number" && Number.isFinite(player.rankEcr)
+      ? player.rankEcr
+      : typeof player.averageRank === "number" && Number.isFinite(player.averageRank)
+        ? player.averageRank
+        : null;
+
+  if (rank === null || !Number.isFinite(player.standardDeviation)) {
+    return null;
+  }
+
+  const ratio = player.standardDeviation / (rank + CONSENSUS_SPREAD_FLOOR);
+  if (ratio < CONSENSUS_SPREAD_MIXED) {
+    return { level: "tight", label: "Tight consensus", ratio };
+  }
+  if (ratio < CONSENSUS_SPREAD_VOLATILE) {
+    return { level: "mixed", label: "Mixed reads", ratio };
+  }
+  return { level: "volatile", label: "Volatile", ratio };
+}
+
+/**
+ * One ordered list row paired with whether it opens a new tier. The board
+ * renders a labeled separator above any row where `startsTier` is true (the
+ * caller decides whether to suppress the very first one). Players without a
+ * tier never start a break, so an untiered tail flows together.
+ */
+export interface FantasyTierRow {
+  player: Player;
+  tier: number | null;
+  startsTier: boolean;
+}
+
+export function withTierBreaks(players: Player[]): FantasyTierRow[] {
+  let previousTier: number | null = null;
+  return players.map((player) => {
+    const tier = typeof player.tier === "number" && Number.isFinite(player.tier) ? player.tier : null;
+    const startsTier = tier !== null && tier !== previousTier;
+    if (tier !== null) {
+      previousTier = tier;
+    }
+    return { player, tier, startsTier };
+  });
+}
+
+/**
+ * The "cliff" between two tiers: how many ranks drop between the last player of
+ * one tier and the first of the next. A large gap is the classic signal to
+ * reach for the tail of the current tier before it empties. Returns 0 when the
+ * inputs don't describe a real downward step.
+ */
+export function getTierGap(
+  lastRankInTier: number | undefined,
+  firstRankInNextTier: number | undefined,
+): number {
+  if (!Number.isFinite(lastRankInTier) || !Number.isFinite(firstRankInNextTier)) {
+    return 0;
+  }
+  const gap = Math.round((firstRankInNextTier as number) - (lastRankInTier as number));
+  return gap > 0 ? gap : 0;
+}

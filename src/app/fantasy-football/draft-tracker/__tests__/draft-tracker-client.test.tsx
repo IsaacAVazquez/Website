@@ -5,6 +5,26 @@ import { DraftTrackerClient } from "../draft-tracker-client";
 const mockUseDraftState = jest.fn();
 const mockUseFantasySnapshot = jest.fn();
 
+jest.mock("framer-motion", () => ({
+  motion: {
+    div: ({
+      children,
+      initial: _initial,
+      animate: _animate,
+      exit: _exit,
+      transition: _transition,
+      ...props
+    }: React.HTMLAttributes<HTMLDivElement> & {
+      initial?: unknown;
+      animate?: unknown;
+      exit?: unknown;
+      transition?: unknown;
+    }) => <div {...props}>{children}</div>,
+  },
+  AnimatePresence: ({ children }: { children?: React.ReactNode }) => <>{children}</>,
+  useReducedMotion: () => true,
+}));
+
 jest.mock("@/hooks/useFantasySnapshot", () => ({
   useFantasySnapshot: () => mockUseFantasySnapshot(),
 }));
@@ -46,6 +66,12 @@ describe("DraftTrackerClient", () => {
       updateSettings: jest.fn(),
       startDraft: jest.fn(),
       draftPlayer: jest.fn(),
+      undoLastPick: jest.fn(),
+      redoLastPick: jest.fn(),
+      undoToPick: jest.fn(),
+      setTeamName: jest.fn(),
+      getTeamName: (teamNumber: number) => `Team ${teamNumber}`,
+      canRedo: false,
       resetDraft: jest.fn(),
       exportDraftResults: jest.fn(),
       isUserPick: true,
