@@ -211,6 +211,56 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
         </fieldset>
       </div>
 
+      <div className="mt-5 grid gap-4 md:grid-cols-2">
+        <fieldset className="grid gap-2 text-sm">
+          <legend className="home-kicker mb-0">Per-pick timer</legend>
+          <div className="grid auto-rows-fr gap-2 sm:grid-cols-2">
+            {[
+              { value: 0, label: "Off", description: "No clock — log at your own pace." },
+              { value: 90, label: "On", description: "Advisory countdown each pick." },
+            ].map((option) => {
+              const active = (option.value > 0) === ((formState.timerSeconds ?? 0) > 0);
+              return (
+                <button
+                  key={option.label}
+                  type="button"
+                  onClick={() => updateField("timerSeconds", option.value === 0 ? 0 : formState.timerSeconds || 90)}
+                  className="min-h-[72px] rounded-[1.2rem] border px-4 py-3 text-left transition-[background-color,border-color,color,box-shadow] duration-200"
+                  style={getOptionStyle(active)}
+                >
+                  <span className="block text-sm font-semibold">{option.label}</span>
+                  <span
+                    className="mt-1 block text-xs"
+                    style={{ color: active ? "color-mix(in srgb, var(--home-paper) 78%, transparent)" : "var(--home-ink-muted)" }}
+                  >
+                    {option.description}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </fieldset>
+
+        <label className="grid gap-2 text-sm" htmlFor="draft-timer-seconds">
+          <span className="home-kicker mb-0">Seconds per pick</span>
+          <select
+            id="draft-timer-seconds"
+            name="timerSeconds"
+            value={formState.timerSeconds || 90}
+            disabled={(formState.timerSeconds ?? 0) === 0}
+            onChange={(event) => updateField("timerSeconds", Number(event.target.value))}
+            className="min-h-[48px] w-full rounded-[1.2rem] border px-4 text-sm transition-[background-color,border-color,box-shadow] duration-200 disabled:cursor-not-allowed disabled:opacity-60"
+            style={getFieldStyle()}
+          >
+            {[45, 60, 90, 120, 180].map((seconds) => (
+              <option key={seconds} value={seconds}>
+                {seconds} seconds
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+
       <div
         className="mt-6 grid gap-3 rounded-[1.3rem] border px-4 py-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center"
         style={{

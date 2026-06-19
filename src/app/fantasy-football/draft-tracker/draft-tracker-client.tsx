@@ -2,19 +2,23 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { Download, RotateCcw, Undo2 } from "lucide-react";
+import { ChevronDown, Download, Redo2, RotateCcw, Timer, Undo2 } from "lucide-react";
 import { DraftAnalyticsPanel } from "./components/DraftAnalyticsPanel";
 import { DraftBoard } from "./components/DraftBoard";
 import { DraftSetup } from "./components/DraftSetup";
 import { useDraftState } from "./hooks/useDraftState";
+import { useDraftTimer } from "./hooks/useDraftTimer";
 import { useFantasySnapshot } from "@/hooks/useFantasySnapshot";
+import { usePlayerNotes } from "@/hooks/usePlayerNotes";
 import { computeDraftAnalytics } from "@/lib/draftAnalytics";
 import {
   FANTASY_SCORING_LABELS,
   getFantasyWeekLabel,
   scoringFormatToRouteScoring,
 } from "@/lib/fantasy";
-import { formatUpdatedAt } from "@/lib/fantasyUtils";
+import { formatRankValue, formatUpdatedAt } from "@/lib/fantasyUtils";
+import { CompareTray, PlayerDetailDrawer } from "@/components/fantasy";
+import type { Player } from "@/types";
 import { Breadcrumbs } from "@/components/navigation/Breadcrumbs";
 import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
 
@@ -23,6 +27,21 @@ const DRAFT_TRACKER_BREADCRUMBS = [
   { label: "Draft Assistant", href: "/fantasy-football/draft-tracker", isActive: true },
 ];
 
+const TILE_STYLE = {
+  borderColor: "var(--home-rule)",
+  background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
+} as const;
+
+const ACTION_STYLE = {
+  borderColor: "var(--home-rule)",
+  background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
+  color: "var(--home-ink)",
+} as const;
+
+function publishedDraftRank(player: Player): string {
+  return formatRankValue(player.rankEcr ?? player.averageRank);
+}
+
 export function DraftTrackerClient() {
   const {
     draftState,
@@ -30,14 +49,20 @@ export function DraftTrackerClient() {
     startDraft,
     draftPlayer,
     undoLastPick,
+    redoLastPick,
+    undoToPick,
+    setTeamName,
+    getTeamName,
+    canRedo,
     resetDraft,
     exportDraftResults,
     isUserPick,
     isDraftComplete,
     currentTeamName,
-    currentTeamNumber,
     userTeam,
   } = useDraftState();
+
+  const notes = usePlayerNotes();
 
   const scoringKey = scoringFormatToRouteScoring(draftState.settings.scoringFormat);
   const { snapshot, metadata, isLoading, error } = useFantasySnapshot({
@@ -47,6 +72,11 @@ export function DraftTrackerClient() {
   const overallSliceMetadata = snapshot?.sliceMetadata?.overall ?? null;
   const rankingsUnavailable = Boolean(overallSliceMetadata && !overallSliceMetadata.available);
   const showSetup = draftState.picks.length === 0 && !draftState.isActive;
+
+  const [detailPlayer, setDetailPlayer] = useState<Player | null>(null);
+  const [showStats, setShowStats] = useState(false);
+  const [showTeamEditor, setShowTeamEditor] = useState(false);
+  const [exportToast, setExportToast] = useState<string | null>(null);
 
   const draftedPlayerIds = useMemo(
     () => new Set(draftState.picks.map((pick) => pick.player.id)),
@@ -61,6 +91,27 @@ export function DraftTrackerClient() {
   const adpAvailable = Boolean(snapshot?.adpSource);
   const totalPicks = draftState.settings.totalTeams * draftState.settings.rounds;
   const completionPercentage = Math.round((draftState.picks.length / totalPicks) * 100);
+
+  const playerLookup = useMemo(
+    () => new Map((snapshot?.overall ?? []).map((player) => [player.id, player])),
+    [snapshot]
+  );
+  const boardTierCount = useMemo(() => {
+    let max = 0;
+    for (const player of snapshot?.overall ?? []) {
+      if (player.tier && player.tier > max) max = player.tier;
+    }
+    return max;
+  }, [snapshot]);
+
+  const timerEnabled =
+    (draftState.settings.timerSeconds ?? 0) > 0 && !showSetup && !isDraftComplete && !rankingsUnavailable;
+  const timer = useDraftTimer({
+    currentPick: draftState.currentPick,
+    durationSeconds: draftState.settings.timerSeconds ?? 0,
+    enabled: timerEnabled,
+    isActive: draftState.isActive,
+  });
 
   const userTeamName = userTeam?.teamName ?? `Team ${draftState.settings.userTeam}`;
   const bestAvailableCount = (snapshot?.overall ?? []).filter(
@@ -116,10 +167,11 @@ export function DraftTrackerClient() {
     },
   ];
 
-  const [exportToast, setExportToast] = useState<string | null>(null);
-  function handleExport(format: "csv") {
-    exportDraftResults(format);
-    setExportToast(`Exported ${draftState.picks.length} picks as ${format.toUpperCase()}.`);
+  function handleExport(format: "csv" | "recap-csv" | "json") {
+    exportDraftResults(format, { notes: notes.notes });
+    const label =
+      format === "recap-csv" ? "team recap CSV" : format === "json" ? "JSON" : "picks CSV";
+    setExportToast(`Exported ${label}.`);
     window.setTimeout(() => setExportToast(null), 3500);
   }
 
@@ -133,75 +185,86 @@ export function DraftTrackerClient() {
             <h1
               style={{
                 fontFamily: "var(--font-home-sans)",
-                fontSize: "clamp(2.55rem, 6vw, 4.75rem)",
+                fontSize: "clamp(2rem, 4.4vw, 3.2rem)",
                 fontWeight: 600,
                 letterSpacing: "-0.04em",
-                lineHeight: 0.95,
-                maxWidth: "15ch",
+                lineHeight: 0.98,
+                maxWidth: "18ch",
               }}
             >
               Manual draft tracking that actually stays usable.
             </h1>
-            <p
-              className="max-w-[68ch] text-sm leading-7 sm:text-[1rem]"
-              style={{ color: "var(--home-ink-muted)" }}
-            >
-              Log every pick, keep the board on the same published snapshot as the public rankings,
-              and watch for steals, reaches, and position runs against attributed mock-draft ADP
-              while the room is still on the clock.
+            <p className="max-w-[60ch] text-sm leading-7" style={{ color: "var(--home-ink-muted)" }}>
+              Log every pick on the same published snapshot as the rankings, with your shared
+              watchlist, an advisory pick clock, multi-step undo, and steal/reach/run signals against
+              attributed mock-draft ADP.
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-2 text-sm">
-            <span
-              className="inline-flex items-center rounded-full border px-3 py-1.5 text-sm font-medium"
-              style={{
-                borderColor: "var(--home-rule)",
-                background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
-              }}
+          <div className="flex flex-wrap items-center gap-2 text-sm">
+            {[
+              metadata ? `${metadata.season} ${getFantasyWeekLabel(metadata.week)}` : "Loading snapshot",
+              `Source updated ${formatUpdatedAt(overallSliceMetadata?.updatedAt ?? metadata?.upstreamUpdatedAt)}`,
+              `Built ${formatUpdatedAt(metadata?.generatedAt)}`,
+              `${FANTASY_SCORING_LABELS[scoringKey]} scoring`,
+            ].map((label) => (
+              <span
+                key={label}
+                className="inline-flex items-center rounded-full border px-3 py-1.5 text-sm font-medium"
+                style={{
+                  borderColor: "var(--home-rule)",
+                  background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
+                }}
+              >
+                {label}
+              </span>
+            ))}
+            {timerEnabled && (
+              <span
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm font-semibold tabular-nums"
+                style={{
+                  borderColor: timer.isExpired
+                    ? "color-mix(in srgb, var(--color-warning) 40%, var(--home-rule))"
+                    : "var(--home-rule)",
+                  background: timer.isExpired
+                    ? "color-mix(in srgb, var(--color-warning) 16%, var(--home-paper))"
+                    : "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
+                }}
+                aria-live="off"
+              >
+                <Timer className="h-4 w-4" aria-hidden="true" />
+                {timer.isExpired ? "Time's up" : `${timer.secondsLeft}s on the clock`}
+              </span>
+            )}
+            <button
+              type="button"
+              onClick={() => setShowStats((open) => !open)}
+              aria-expanded={showStats}
+              aria-controls="draft-tracker-stats"
+              className="inline-flex min-h-[40px] items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm font-semibold"
+              style={ACTION_STYLE}
             >
-              {metadata ? `${metadata.season} ${getFantasyWeekLabel(metadata.week)}` : "Loading snapshot"}
-            </span>
-            <span
-              className="inline-flex items-center rounded-full border px-3 py-1.5 text-sm font-medium"
-              style={{
-                borderColor: "var(--home-rule)",
-                background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
-              }}
-            >
-              Source updated {formatUpdatedAt(overallSliceMetadata?.updatedAt ?? metadata?.upstreamUpdatedAt)}
-            </span>
-            <span
-              className="inline-flex items-center rounded-full border px-3 py-1.5 text-sm font-medium"
-              style={{
-                borderColor: "var(--home-rule)",
-                background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
-              }}
-            >
-              Built {formatUpdatedAt(metadata?.generatedAt)}
-            </span>
-            <span
-              className="inline-flex items-center rounded-full border px-3 py-1.5 text-sm font-medium"
-              style={{
-                borderColor: "var(--home-rule)",
-                background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
-              }}
-            >
-              {FANTASY_SCORING_LABELS[scoringKey]} scoring
-            </span>
+              Draft at a glance
+              <ChevronDown
+                className="h-4 w-4 transition-transform"
+                style={{ transform: showStats ? "rotate(180deg)" : "none" }}
+              />
+            </button>
           </div>
         </div>
 
-        <HomeStatsPanel
-          id="draft-tracker-stats"
-          title="Draft at a glance"
-          meta={isDraftComplete ? "Draft complete" : `Pick ${draftState.currentPick} of ${totalPicks}`}
-          cells={draftStatsCells}
-          pills={[
-            { label: "Resume rankings", href: "/fantasy-football" },
-            { label: "Draft assistant", href: "/fantasy-football/draft-tracker" },
-          ]}
-        />
+        {showStats && (
+          <HomeStatsPanel
+            id="draft-tracker-stats"
+            title="Draft at a glance"
+            meta={isDraftComplete ? "Draft complete" : `Pick ${draftState.currentPick} of ${totalPicks}`}
+            cells={draftStatsCells}
+            pills={[
+              { label: "Resume rankings", href: "/fantasy-football" },
+              { label: "Draft assistant", href: "/fantasy-football/draft-tracker" },
+            ]}
+          />
+        )}
 
         {error && (
           <article className="home-card p-5 sm:p-6" style={{ borderColor: "var(--color-error)" }}>
@@ -222,35 +285,6 @@ export function DraftTrackerClient() {
 
         <div className="grid gap-5 lg:grid-cols-[minmax(0,1.18fr)_minmax(18rem,22rem)] min-[1440px]:grid-cols-[minmax(0,1.2fr)_minmax(20rem,26rem)]">
           <div className="grid gap-5">
-            <article className="home-card p-5 sm:p-6">
-              <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_18rem]">
-                <div>
-                  <p className="home-kicker mb-1">Room status</p>
-                  <h2 className="text-2xl font-semibold">
-                    {isDraftComplete ? "Draft complete" : currentTeamName}
-                  </h2>
-                  <p className="mt-2 text-sm leading-7" style={{ color: "var(--home-ink-muted)" }}>
-                    The assistant reads the same snapshot as the public rankings board. Best available,
-                    search, and roster pressure all stay on one consistent data source.
-                  </p>
-                </div>
-
-                <div
-                  className="rounded-[1.5rem] border px-4 py-4"
-                  style={{
-                    borderColor: "var(--home-rule)",
-                    background: "color-mix(in srgb, var(--home-paper-alt) 52%, var(--home-elev-mix))",
-                  }}
-                >
-                  <p className="home-kicker mb-1">Snapshot</p>
-                  <p className="text-base font-semibold">Overall consensus board</p>
-                  <p className="mt-2 text-sm leading-6" style={{ color: "var(--home-ink-muted)" }}>
-                    Local persistence is enabled. Room state survives reloads until you reset the draft.
-                  </p>
-                </div>
-              </div>
-            </article>
-
             {rankingsUnavailable ? (
               <div className="home-card p-6 sm:p-8 text-center">
                 <p className="text-xl font-semibold">Draft assistant unavailable for this scoring format</p>
@@ -275,6 +309,7 @@ export function DraftTrackerClient() {
                     isDraftComplete
                     userTeamNumber={draftState.settings.userTeam}
                     adpAvailable={adpAvailable}
+                    getTeamName={getTeamName}
                   />
                 )}
                 <DraftBoard
@@ -282,9 +317,10 @@ export function DraftTrackerClient() {
                   snapshot={snapshot}
                   draftedPlayerIds={draftedPlayerIds}
                   onDraftPlayer={draftPlayer}
+                  onOpenDetail={setDetailPlayer}
                   currentPick={draftState.currentPick}
                   currentRound={draftState.currentRound}
-                  currentTeamNumber={currentTeamNumber}
+                  currentTeamName={currentTeamName}
                   isUserPick={isUserPick}
                   isDraftComplete={isDraftComplete}
                   userTeam={userTeam}
@@ -302,6 +338,7 @@ export function DraftTrackerClient() {
                 isDraftComplete={false}
                 userTeamNumber={draftState.settings.userTeam}
                 adpAvailable={adpAvailable}
+                getTeamName={getTeamName}
               />
             )}
             <article className="home-card p-5 sm:p-6">
@@ -311,10 +348,7 @@ export function DraftTrackerClient() {
               </h3>
 
               <div className="mt-4">
-                <div
-                  className="flex items-center justify-between text-sm"
-                  style={{ color: "var(--home-ink-muted)" }}
-                >
+                <div className="flex items-center justify-between text-sm" style={{ color: "var(--home-ink-muted)" }}>
                   <span>Completion</span>
                   <span>{completionPercentage}%</span>
                 </div>
@@ -326,43 +360,24 @@ export function DraftTrackerClient() {
                     className="h-2 rounded-full"
                     style={{
                       width: `${completionPercentage}%`,
-                      background:
-                        "linear-gradient(90deg, var(--home-haze) 0%, var(--home-acid) 100%)",
+                      background: "linear-gradient(90deg, var(--home-haze) 0%, var(--home-acid) 100%)",
                     }}
                   />
                 </div>
               </div>
 
               <div className="mt-5 grid gap-3">
-                <div
-                  className="rounded-[1.2rem] border px-4 py-3"
-                  style={{
-                    borderColor: "var(--home-rule)",
-                    background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
-                  }}
-                >
+                <div className="rounded-[1.2rem] border px-4 py-3" style={TILE_STYLE}>
                   <p className="home-kicker mb-1">On clock</p>
                   <p className="text-sm font-semibold">{currentTeamName}</p>
                 </div>
-                <div
-                  className="rounded-[1.2rem] border px-4 py-3"
-                  style={{
-                    borderColor: "var(--home-rule)",
-                    background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
-                  }}
-                >
+                <div className="rounded-[1.2rem] border px-4 py-3" style={TILE_STYLE}>
                   <p className="home-kicker mb-1">Current pick</p>
                   <p className="text-sm font-semibold">
                     {draftState.currentPick} / {totalPicks}
                   </p>
                 </div>
-                <div
-                  className="rounded-[1.2rem] border px-4 py-3"
-                  style={{
-                    borderColor: "var(--home-rule)",
-                    background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
-                  }}
-                >
+                <div className="rounded-[1.2rem] border px-4 py-3" style={TILE_STYLE}>
                   <p className="home-kicker mb-1">Round</p>
                   <p className="text-sm font-semibold">
                     {draftState.currentRound} / {draftState.settings.rounds}
@@ -380,19 +395,18 @@ export function DraftTrackerClient() {
                   </p>
                 ) : (
                   userTeam?.picks.map((pick) => (
-                    <div
+                    <button
                       key={pick.pickNumber}
-                      className="rounded-[1.2rem] border px-4 py-3"
-                      style={{
-                        borderColor: "var(--home-rule)",
-                        background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
-                      }}
+                      type="button"
+                      onClick={() => setDetailPlayer(pick.player)}
+                      className="rounded-[1.2rem] border px-4 py-3 text-left"
+                      style={TILE_STYLE}
                     >
                       <p className="text-sm font-semibold">{pick.player.name}</p>
                       <p className="mt-1 text-xs" style={{ color: "var(--home-ink-muted)" }}>
                         Pick {pick.pickNumber} • {pick.player.position} • {pick.player.team}
                       </p>
-                    </div>
+                    </button>
                   ))
                 )}
               </div>
@@ -402,7 +416,7 @@ export function DraftTrackerClient() {
               <div className="flex items-center justify-between gap-2">
                 <p className="home-kicker mb-0">Recent picks</p>
                 <span className="text-xs" style={{ color: "var(--home-ink-muted)" }}>
-                  Newest first
+                  Tap to undo here
                 </span>
               </div>
               <div className="mt-4 grid gap-3">
@@ -414,68 +428,121 @@ export function DraftTrackerClient() {
                   recentPicks.map((pick) => (
                     <div
                       key={`recent-${pick.pickNumber}`}
-                      className="rounded-[1.2rem] border px-4 py-3"
-                      style={{
-                        borderColor: "var(--home-rule)",
-                        background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
-                      }}
+                      className="flex items-center gap-2 rounded-[1.2rem] border px-4 py-3"
+                      style={TILE_STYLE}
                     >
-                      <p className="text-sm font-semibold">{pick.player.name}</p>
-                      <p className="mt-1 text-xs" style={{ color: "var(--home-ink-muted)" }}>
-                        Team {pick.teamNumber} • Pick {pick.pickNumber} • {pick.player.position}
-                      </p>
+                      <button
+                        type="button"
+                        onClick={() => setDetailPlayer(pick.player)}
+                        className="min-w-0 flex-1 text-left"
+                      >
+                        <p className="truncate text-sm font-semibold">{pick.player.name}</p>
+                        <p className="mt-1 text-xs" style={{ color: "var(--home-ink-muted)" }}>
+                          {getTeamName(pick.teamNumber)} • Pick {pick.pickNumber} • {pick.player.position}
+                        </p>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => undoToPick(pick.pickNumber)}
+                        aria-label={`Undo back to pick ${pick.pickNumber}`}
+                        title={`Undo back to pick ${pick.pickNumber}`}
+                        className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border"
+                        style={{ borderColor: "var(--home-rule)", color: "var(--home-ink-muted)" }}
+                      >
+                        <Undo2 size={14} aria-hidden="true" />
+                      </button>
                     </div>
                   ))
                 )}
               </div>
             </article>
 
+            {/* Team naming */}
+            <article className="home-card p-5 sm:p-6">
+              <button
+                type="button"
+                onClick={() => setShowTeamEditor((open) => !open)}
+                aria-expanded={showTeamEditor}
+                className="flex w-full items-center justify-between gap-2"
+              >
+                <span className="home-kicker mb-0">Name the teams</span>
+                <ChevronDown
+                  className="h-4 w-4 transition-transform"
+                  style={{ transform: showTeamEditor ? "rotate(180deg)" : "none" }}
+                />
+              </button>
+              {showTeamEditor && (
+                <div className="mt-4 grid gap-2">
+                  {draftState.teams.map((team) => (
+                    <label key={team.teamNumber} className="grid gap-1 text-xs">
+                      <span style={{ color: "var(--home-ink-muted)" }}>
+                        Slot {team.teamNumber}
+                        {team.teamNumber === draftState.settings.userTeam ? " (you)" : ""}
+                      </span>
+                      <input
+                        value={team.teamName ?? ""}
+                        onChange={(event) => setTeamName(team.teamNumber, event.target.value)}
+                        maxLength={40}
+                        placeholder={`Team ${team.teamNumber}`}
+                        className="min-h-[40px] rounded-[0.9rem] border px-3 text-sm"
+                        style={ACTION_STYLE}
+                      />
+                    </label>
+                  ))}
+                </div>
+              )}
+            </article>
+
             <article className="home-card p-5 sm:p-6">
               <p className="home-kicker mb-1">Actions</p>
               <div className="mt-4 grid gap-3">
+                <div className="grid grid-cols-2 gap-3">
+                  <button
+                    type="button"
+                    onClick={undoLastPick}
+                    disabled={draftState.picks.length === 0}
+                    aria-label={draftState.picks.length === 0 ? "Undo last pick (no picks yet)" : "Undo last pick"}
+                    className="flex min-h-[48px] items-center justify-center gap-2 rounded-full border px-4 py-3 text-sm font-semibold transition-[background-color,border-color,color,box-shadow,opacity] duration-200 disabled:cursor-not-allowed disabled:opacity-50"
+                    style={ACTION_STYLE}
+                  >
+                    <Undo2 className="h-4 w-4" />
+                    Undo
+                  </button>
+                  <button
+                    type="button"
+                    onClick={redoLastPick}
+                    disabled={!canRedo}
+                    aria-label={canRedo ? "Redo the last undone pick" : "Redo (nothing to redo)"}
+                    className="flex min-h-[48px] items-center justify-center gap-2 rounded-full border px-4 py-3 text-sm font-semibold transition-[background-color,border-color,color,box-shadow,opacity] duration-200 disabled:cursor-not-allowed disabled:opacity-50"
+                    style={ACTION_STYLE}
+                  >
+                    <Redo2 className="h-4 w-4" />
+                    Redo
+                  </button>
+                </div>
+                <div className="grid grid-cols-3 gap-2">
+                  {([
+                    { format: "csv", label: "Picks CSV" },
+                    { format: "recap-csv", label: "Recap CSV" },
+                    { format: "json", label: "JSON" },
+                  ] as const).map((option) => (
+                    <button
+                      key={option.format}
+                      type="button"
+                      onClick={() => handleExport(option.format)}
+                      className="flex min-h-[48px] items-center justify-center gap-1.5 rounded-full border px-2 py-3 text-xs font-semibold"
+                      style={ACTION_STYLE}
+                    >
+                      <Download className="h-3.5 w-3.5" />
+                      {option.label}
+                    </button>
+                  ))}
+                </div>
                 <button
                   type="button"
-                  onClick={undoLastPick}
-                  disabled={draftState.picks.length === 0}
-                  aria-label={
-                    draftState.picks.length === 0
-                      ? "Undo last pick (no picks yet)"
-                      : "Undo last pick"
-                  }
-                  className="flex min-h-[48px] items-center justify-center gap-2 rounded-full border px-4 py-3 text-sm font-semibold transition-[background-color,border-color,color,box-shadow,opacity] duration-200 disabled:cursor-not-allowed disabled:opacity-50"
-                  style={{
-                    borderColor: "var(--home-rule)",
-                    background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
-                    color: "var(--home-ink)",
-                  }}
-                >
-                  <Undo2 className="h-4 w-4" />
-                  Undo last pick
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleExport("csv")}
+                  onClick={() => resetDraft()}
                   className="flex min-h-[48px] items-center justify-center gap-2 rounded-full border px-4 py-3 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200"
-                  style={{
-                    borderColor: "var(--home-rule)",
-                    background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
-                    color: "var(--home-ink)",
-                  }}
-                >
-                  <Download className="h-4 w-4" />
-                  Export CSV
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    resetDraft();
-                  }}
-                  className="flex min-h-[48px] items-center justify-center gap-2 rounded-full border px-4 py-3 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200"
-                  style={{
-                    borderColor: "var(--home-ink)",
-                    background: "var(--home-ink)",
-                    color: "var(--home-paper)",
-                  }}
+                  style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
                 >
                   <RotateCcw className="h-4 w-4" />
                   Reset draft
@@ -483,11 +550,7 @@ export function DraftTrackerClient() {
                 <Link
                   href="/fantasy-football"
                   className="flex min-h-[48px] items-center justify-center gap-2 rounded-full border px-4 py-3 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200"
-                  style={{
-                    borderColor: "var(--home-rule)",
-                    background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
-                    color: "var(--home-ink)",
-                  }}
+                  style={ACTION_STYLE}
                 >
                   Back to rankings board
                 </Link>
@@ -513,17 +576,21 @@ export function DraftTrackerClient() {
           {exportToast ? (
             <div
               className="rounded-full border px-4 py-2 text-sm font-semibold shadow-[var(--shadow-md)]"
-              style={{
-                borderColor: "var(--home-rule)",
-                background: "var(--home-ink)",
-                color: "var(--home-paper)",
-              }}
+              style={{ borderColor: "var(--home-rule)", background: "var(--home-ink)", color: "var(--home-paper)" }}
             >
               {exportToast}
             </div>
           ) : null}
         </div>
       </div>
+
+      <PlayerDetailDrawer
+        player={detailPlayer}
+        publishedRank={detailPlayer ? publishedDraftRank(detailPlayer) : undefined}
+        boardTierCount={boardTierCount > 0 ? boardTierCount : undefined}
+        onClose={() => setDetailPlayer(null)}
+      />
+      <CompareTray resolvePlayer={(id) => playerLookup.get(id)} publishedRank={publishedDraftRank} />
     </section>
   );
 }

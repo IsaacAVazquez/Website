@@ -66,6 +66,7 @@ export function PlayerDetailDrawer({ player, publishedRank, boardTierCount, onCl
   // Reset the note draft whenever a different player opens the drawer.
   useEffect(() => {
     if (player) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- seed local draft from the persisted note on open
       setDraftNote(notes.getNote(player.id));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

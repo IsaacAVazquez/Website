@@ -248,6 +248,56 @@ export function computeDraftAnalytics(picks: DraftPick[], teams: TeamRoster[]): 
   };
 }
 
+/** Same-position picks inside the window needed to flag an *emerging* run. */
+export const EMERGING_RUN_MIN_COUNT = 2;
+
+export interface EmergingRun {
+  position: Position;
+  count: number;
+  endPick: number;
+}
+
+/**
+ * A softer, earlier sibling to {@link detectPositionRuns}: two same-position
+ * picks already off the board inside the trailing window — a run *forming*
+ * before it hardens into the confirmed three-pick run. Returns null once a
+ * position reaches the full-run count (that's the hard signal's job) so the two
+ * never describe the same cluster.
+ */
+export function getEmergingRun(
+  picks: DraftPick[],
+  currentPick: number,
+  options: { windowSize?: number } = {}
+): EmergingRun | null {
+  const windowSize = options.windowSize ?? POSITION_RUN_WINDOW;
+  const recent = picks.filter(
+    (pick) => pick.pickNumber < currentPick && pick.pickNumber > currentPick - 1 - windowSize
+  );
+
+  const counts = new Map<Position, { count: number; endPick: number }>();
+  for (const pick of recent) {
+    const position = pick.player.position;
+    if (position === "FLEX" || position === "OVERALL") {
+      continue;
+    }
+    const entry = counts.get(position) ?? { count: 0, endPick: 0 };
+    entry.count += 1;
+    entry.endPick = Math.max(entry.endPick, pick.pickNumber);
+    counts.set(position, entry);
+  }
+
+  let best: EmergingRun | null = null;
+  for (const [position, { count, endPick }] of counts) {
+    if (count >= EMERGING_RUN_MIN_COUNT && count < POSITION_RUN_MIN_COUNT) {
+      if (!best || endPick > best.endPick) {
+        best = { position, count, endPick };
+      }
+    }
+  }
+
+  return best;
+}
+
 /**
  * The most recent flagged pick and any run still forming at the current pick,
  * for the live sidebar during an active draft.

@@ -352,6 +352,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
   // Reset the window whenever the board, scoring, view, or search changes so a
   // narrowed list never starts deep into a stale offset.
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional reset on filter change
     setVisibleCount(RANKINGS_PAGE_SIZE);
   }, [routeState.position, routeState.scoring, routeState.view, searchQuery]);
 
@@ -384,7 +385,6 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
     [queue.queue, playerLookup]
   );
 
-  const trimmedQuery = searchQuery.trim();
   const snapshotWeekLabel = metadata
     ? `${metadata.season} ${getFantasyWeekLabel(metadata.week)}`
     : "Loading";
@@ -730,6 +730,9 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                   players={filteredPlayers}
                   position={routeState.position}
                   getPublishedRank={(player) => getPublishedBoardRank(player, routeState.position)}
+                  onSelectPlayer={setDetailPlayer}
+                  isQueued={(id) => queue.isQueued(id)}
+                  onToggleQueue={(id) => queue.toggle(id)}
                 />
               ) : (
                 <>

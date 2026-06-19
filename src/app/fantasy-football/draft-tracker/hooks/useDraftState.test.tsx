@@ -107,6 +107,84 @@ describe("useDraftState", () => {
     }
   });
 
+  it("redoes the most recently undone pick", () => {
+    const { result } = renderHook(() => useDraftState());
+
+    act(() => {
+      result.current.draftPlayer(SAMPLE_PLAYER);
+    });
+    act(() => {
+      result.current.undoLastPick();
+    });
+
+    expect(result.current.draftState.picks).toHaveLength(0);
+    expect(result.current.canRedo).toBe(true);
+
+    act(() => {
+      result.current.redoLastPick();
+    });
+
+    expect(result.current.draftState.picks).toHaveLength(1);
+    expect(result.current.draftState.picks[0].player.name).toBe("Bijan Robinson");
+    expect(result.current.canRedo).toBe(false);
+  });
+
+  it("clears the redo stack when a fresh pick branches the timeline", () => {
+    const { result } = renderHook(() => useDraftState());
+
+    act(() => {
+      result.current.draftPlayer(SAMPLE_PLAYER);
+    });
+    act(() => {
+      result.current.undoLastPick();
+    });
+    act(() => {
+      result.current.draftPlayer({ ...SAMPLE_PLAYER, id: "other", name: "Other Player" });
+    });
+
+    expect(result.current.canRedo).toBe(false);
+    expect(result.current.draftState.undoHistory).toHaveLength(0);
+  });
+
+  it("undoes back to a target pick in one step", () => {
+    const { result } = renderHook(() => useDraftState());
+
+    act(() => {
+      result.current.draftPlayer({ ...SAMPLE_PLAYER, id: "a", name: "A" });
+    });
+    act(() => {
+      result.current.draftPlayer({ ...SAMPLE_PLAYER, id: "b", name: "B" });
+    });
+    act(() => {
+      result.current.draftPlayer({ ...SAMPLE_PLAYER, id: "c", name: "C" });
+    });
+
+    expect(result.current.draftState.picks).toHaveLength(3);
+
+    act(() => {
+      result.current.undoToPick(2);
+    });
+
+    expect(result.current.draftState.picks).toHaveLength(1);
+    expect(result.current.draftState.currentPick).toBe(2);
+    // Next redo restores the lowest removed pick first.
+    act(() => {
+      result.current.redoLastPick();
+    });
+    expect(result.current.draftState.picks[1].player.name).toBe("B");
+  });
+
+  it("renames a team and resolves it through getTeamName", () => {
+    const { result } = renderHook(() => useDraftState());
+
+    act(() => {
+      result.current.setTeamName(2, "The Commish");
+    });
+
+    expect(result.current.getTeamName(2)).toBe("The Commish");
+    expect(result.current.getTeamName(3)).toBe("Team 3");
+  });
+
   it("persists the draft to localStorage", async () => {
     const { result, unmount } = renderHook(() => useDraftState());
 

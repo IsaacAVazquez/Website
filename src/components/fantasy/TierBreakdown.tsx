@@ -1,15 +1,19 @@
 "use client";
 
 import { useMemo } from "react";
+import { Star } from "lucide-react";
 
 import { FANTASY_POSITION_LABELS, type FantasyRoutePosition } from "@/lib/fantasy";
-import { formatAdp, formatRankValue, getPositionTone } from "@/lib/fantasyUtils";
+import { formatAdp, formatRankValue, getPositionTone, getTierGap } from "@/lib/fantasyUtils";
 import type { Player } from "@/types";
 
 interface TierBreakdownProps {
   players: Player[];
   position: FantasyRoutePosition;
   getPublishedRank: (player: Player) => string;
+  onSelectPlayer?: (player: Player) => void;
+  isQueued?: (id: string) => boolean;
+  onToggleQueue?: (id: string) => void;
 }
 
 interface TierGroup {
@@ -58,7 +62,14 @@ function tierAccent(index: number, total: number): string {
   return `${mixed.toFixed(0)}%`;
 }
 
-export function TierBreakdown({ players, position, getPublishedRank }: TierBreakdownProps) {
+export function TierBreakdown({
+  players,
+  position,
+  getPublishedRank,
+  onSelectPlayer,
+  isQueued,
+  onToggleQueue,
+}: TierBreakdownProps) {
   const groups = useMemo(() => groupByTier(players), [players]);
 
   if (groups.length === 0) {
@@ -81,6 +92,10 @@ export function TierBreakdown({ players, position, getPublishedRank }: TierBreak
   const tieredGroups = groups.filter((group) => group.tier !== "untiered");
   const positionLabel = FANTASY_POSITION_LABELS[position];
 
+  // Numeric published rank for the first/last player in a group, used to surface
+  // the "cliff" between tiers.
+  const numericRank = (player: Player): number => Number.parseFloat(getPublishedRank(player));
+
   return (
     <div className="grid scroll-mt-28 gap-4" aria-label={`${positionLabel} tier breakdown`}>
       {groups.map((group, index) => {
@@ -90,6 +105,17 @@ export function TierBreakdown({ players, position, getPublishedRank }: TierBreak
         const description = isUntiered
           ? "Players without an assigned tier"
           : `${group.players.length} ${group.players.length === 1 ? "player" : "players"}`;
+
+        // Cliff to the previous tier: ranks dropped from the last player of the
+        // prior group to the first player of this one.
+        const previousGroup = index > 0 ? groups[index - 1] : null;
+        const cliff =
+          !isUntiered && previousGroup && previousGroup.tier !== "untiered"
+            ? getTierGap(
+                numericRank(previousGroup.players[previousGroup.players.length - 1]),
+                numericRank(group.players[0])
+              )
+            : 0;
 
         return (
           <section
@@ -107,6 +133,15 @@ export function TierBreakdown({ players, position, getPublishedRank }: TierBreak
                 <p className="text-sm font-semibold" style={{ color: "var(--home-ink-muted)" }}>
                   {description}
                 </p>
+                {cliff > 0 && (
+                  <span
+                    className="text-2xs font-semibold uppercase tracking-[0.12em]"
+                    title="Rank cliff from the previous tier"
+                    style={{ color: "var(--home-ink-muted)" }}
+                  >
+                    ↓ {cliff} {cliff === 1 ? "rank" : "ranks"} from prior tier
+                  </span>
+                )}
               </div>
               {!isUntiered && (() => {
                 // Skip players whose published rank is "--" or otherwise
@@ -138,46 +173,75 @@ export function TierBreakdown({ players, position, getPublishedRank }: TierBreak
               })()}
             </header>
 
-            <ul role="list" className="mt-4 grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
-              {group.players.map((player) => (
-                <li key={player.id} className="min-w-0">
-                  <span
-                    className="grid min-h-[38px] grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 rounded-full border px-3 py-1.5 text-sm"
-                    style={{
-                      borderColor: "var(--home-rule)",
-                      background: "var(--home-paper-raised)",
-                      color: "var(--home-ink)",
-                    }}
-                  >
-                    <span
-                      className="inline-flex min-w-[2rem] items-center justify-center rounded-full border px-2 py-0.5 text-2xs font-semibold tabular-nums"
-                      style={getPositionTone(player.position)}
-                      aria-hidden="true"
+            <ul role="list" className="mt-4 grid gap-2 [grid-template-columns:repeat(auto-fill,minmax(15rem,1fr))]">
+              {group.players.map((player) => {
+                const queued = isQueued?.(player.id) ?? false;
+                const interactive = Boolean(onSelectPlayer);
+                const Pill = interactive ? "button" : "span";
+
+                return (
+                  <li key={player.id} className="min-w-0">
+                    <div
+                      className="flex items-center gap-1.5 rounded-full border pr-1.5"
+                      style={{
+                        borderColor: queued
+                          ? "color-mix(in srgb, var(--home-acid) 55%, var(--home-rule))"
+                          : "var(--home-rule)",
+                        background: "var(--home-paper-raised)",
+                      }}
                     >
-                      {getPublishedRank(player)}
-                    </span>
-                    <span className="min-w-0 truncate font-semibold">{player.name}</span>
-                    {player.team && (
-                      <span
-                        className="shrink-0 text-xs font-medium uppercase tracking-[0.1em]"
-                        style={{ color: "var(--home-ink-muted)" }}
+                      <Pill
+                        {...(interactive
+                          ? { type: "button" as const, onClick: () => onSelectPlayer?.(player), "aria-label": `Open ${player.name} detail` }
+                          : {})}
+                        className={`grid min-h-[38px] min-w-0 flex-1 grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 rounded-full px-3 py-1.5 text-sm ${
+                          interactive ? "text-left" : ""
+                        }`}
+                        style={{ color: "var(--home-ink)" }}
                       >
-                        {player.team}
-                        {player.byeWeek ? ` · Bye ${player.byeWeek}` : ""}
-                      </span>
-                    )}
-                    {Number.isFinite(player.adp) && (
-                      <span
-                        className="text-2xs"
-                        title="Average draft position from recent mock drafts"
-                        style={{ color: "var(--home-ink-muted)" }}
-                      >
-                        ADP {formatAdp(player.adp)}
-                      </span>
-                    )}
-                  </span>
-                </li>
-              ))}
+                        <span
+                          className="inline-flex min-w-[2rem] items-center justify-center rounded-full border px-2 py-0.5 text-2xs font-semibold tabular-nums"
+                          style={getPositionTone(player.position)}
+                          aria-hidden="true"
+                        >
+                          {getPublishedRank(player)}
+                        </span>
+                        <span className="min-w-0 truncate font-semibold">{player.name}</span>
+                        {player.team && (
+                          <span
+                            className="shrink-0 text-xs font-medium uppercase tracking-[0.1em]"
+                            style={{ color: "var(--home-ink-muted)" }}
+                          >
+                            {player.team}
+                            {player.byeWeek ? ` · Bye ${player.byeWeek}` : ""}
+                          </span>
+                        )}
+                      </Pill>
+                      {Number.isFinite(player.adp) && (
+                        <span
+                          className="shrink-0 text-2xs"
+                          title="Average draft position from recent mock drafts"
+                          style={{ color: "var(--home-ink-muted)" }}
+                        >
+                          ADP {formatAdp(player.adp)}
+                        </span>
+                      )}
+                      {onToggleQueue && (
+                        <button
+                          type="button"
+                          onClick={() => onToggleQueue(player.id)}
+                          aria-pressed={queued}
+                          aria-label={queued ? `Remove ${player.name} from queue` : `Add ${player.name} to queue`}
+                          className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full"
+                          style={{ color: queued ? "var(--home-ink)" : "var(--home-ink-muted)" }}
+                        >
+                          <Star size={14} fill={queued ? "currentColor" : "none"} aria-hidden="true" />
+                        </button>
+                      )}
+                    </div>
+                  </li>
+                );
+              })}
             </ul>
           </section>
         );

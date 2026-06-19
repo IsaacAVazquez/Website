@@ -5,7 +5,6 @@ import { X } from "lucide-react";
 import { useEffect } from "react";
 
 import {
-  FANTASY_CHIP_CLASS,
   formatAdp,
   formatOwnership,
   formatRankValue,
