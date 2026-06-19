@@ -650,10 +650,29 @@ export async function buildSpaceXImageSnapshots(
 
   const draftReferences: Array<{ draft: DraftLaunchImageReference; complete: boolean }> = [];
   const currentWindowUrls = new Set<string>();
+  // Launches already captured in the reference index are carried over as-is
+  // rather than re-hydrated. The anonymous Launch Library tier allows only 15
+  // calls/hour per IP, so this spends the detail-call budget only on launches
+  // we have not indexed yet.
+  const carriedReferences = new Map<string, SpaceXLaunchImageReference>();
 
   for (const { launch: listLaunch, window } of launchesById.values()) {
     const launchId = listLaunch.id?.trim();
     if (!launchId) {
+      continue;
+    }
+
+    // Already indexed? Carry the existing reference (and keep its image URLs in
+    // the current window so the manifest and files are preserved) without
+    // spending an API call to re-hydrate it.
+    const carriedReference = existingReferenceIndex[launchId];
+    if (carriedReference) {
+      carriedReferences.set(launchId, carriedReference);
+      for (const role of IMAGE_ROLES) {
+        for (const entry of carriedReference.images[role] ?? []) {
+          currentWindowUrls.add(entry.remoteUrl);
+        }
+      }
       continue;
     }
 
@@ -750,6 +769,13 @@ export async function buildSpaceXImageSnapshots(
   const materializedReferences = new Map<string, SpaceXLaunchImageReference>();
   for (const { draft } of draftReferences) {
     materializedReferences.set(draft.launchId, materializeLaunchReference(draft, finalManifest));
+  }
+  // Re-include carried-over launches so skipping their re-hydration never drops
+  // them (or deletes their image files) on a non-partial rebuild.
+  for (const [carriedLaunchId, carriedReference] of carriedReferences) {
+    if (!materializedReferences.has(carriedLaunchId)) {
+      materializedReferences.set(carriedLaunchId, carriedReference);
+    }
   }
 
   let finalReferenceIndex: SpaceXImageReferenceIndex;
