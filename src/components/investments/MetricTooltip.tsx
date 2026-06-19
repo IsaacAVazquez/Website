@@ -54,11 +54,20 @@ export const METRIC_DEFINITIONS: Record<string, string> = {
 interface Props {
   term: string;
   definition?: string;
+  /**
+   * Which edge the tooltip anchors to. Defaults to "left" (tooltip extends
+   * rightward). Use "right" when the badge sits near the right edge of its
+   * container, so the bubble extends leftward instead of clipping off-screen.
+   */
+  align?: "left" | "right";
 }
 
-export function MetricTooltip({ term, definition }: Props) {
+export function MetricTooltip({ term, definition, align = "left" }: Props) {
   const text = definition ?? METRIC_DEFINITIONS[term];
   if (!text) return null;
+
+  const bubbleAlign = align === "right" ? "right-0" : "left-0";
+  const arrowAlign = align === "right" ? "right-3" : "left-3";
 
   return (
     <span className="group relative ml-0.5 inline-flex cursor-help items-center">
@@ -67,10 +76,10 @@ export function MetricTooltip({ term, definition }: Props) {
       </span>
       <span
         role="tooltip"
-        className="pointer-events-none absolute bottom-full left-0 z-50 mb-2 w-52 rounded-2xl bg-[var(--home-ink)] px-3 py-2.5 text-2xs leading-snug text-[var(--home-paper)] opacity-0 shadow-lg transition-opacity duration-150 group-hover:opacity-100"
+        className={`pointer-events-none absolute bottom-full ${bubbleAlign} z-50 mb-2 w-52 rounded-2xl bg-[var(--home-ink)] px-3 py-2.5 text-2xs leading-snug text-[var(--home-paper)] opacity-0 shadow-lg transition-opacity duration-150 group-hover:opacity-100`}
       >
         {text}
-        <span className="absolute left-3 top-full border-4 border-transparent border-t-[var(--home-ink)]" />
+        <span className={`absolute ${arrowAlign} top-full border-4 border-transparent border-t-[var(--home-ink)]`} />
       </span>
     </span>
   );

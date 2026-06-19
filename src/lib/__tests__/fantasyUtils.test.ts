@@ -1,10 +1,18 @@
 import {
+  FANTASY_BOARD_LEGEND,
+  FANTASY_REACH_TOOLTIP,
+  FANTASY_VALUE_TOOLTIP,
   getFantasyAdpFreshness,
   getSnapshotStaleness,
   getSnapshotStalenessLabel,
+  getValueVsAdp,
 } from "@/lib/fantasyUtils";
+import type { Player } from "@/types";
 
 const MS_PER_DAY = 86_400_000;
+
+/** Minimal Player factory — only the fields getValueVsAdp reads matter here. */
+const playerWith = (fields: Partial<Player>): Player => fields as Player;
 
 describe("getSnapshotStaleness", () => {
   it("buckets a recent date as fresh", () => {
@@ -55,5 +63,65 @@ describe("getFantasyAdpFreshness", () => {
     expect(getFantasyAdpFreshness("2025-09-10T00:00:00.000Z", null)).toBe("current");
     expect(getFantasyAdpFreshness("2025-09-10T00:00:00.000Z", undefined)).toBe("current");
     expect(getFantasyAdpFreshness("not-a-date", 2026)).toBe("current");
+  });
+});
+
+describe("getValueVsAdp", () => {
+  it("flags a value when the market drafts a player later than experts rank him", () => {
+    expect(getValueVsAdp(playerWith({ rankEcr: 20, adp: 35 }))).toEqual({ delta: 15, signal: "value" });
+  });
+
+  it("flags a reach when the market drafts a player earlier than experts rank him", () => {
+    expect(getValueVsAdp(playerWith({ rankEcr: 20, adp: 8 }))).toEqual({ delta: -12, signal: "reach" });
+  });
+
+  it("treats a sub-threshold gap as a delta with no signal", () => {
+    expect(getValueVsAdp(playerWith({ rankEcr: 20, adp: 25 }))).toEqual({ delta: 5, signal: null });
+  });
+
+  it("includes the boundary gap in the signal (>= and <= the threshold)", () => {
+    expect(getValueVsAdp(playerWith({ rankEcr: 20, adp: 30 }))?.signal).toBe("value");
+    expect(getValueVsAdp(playerWith({ rankEcr: 20, adp: 10 }))?.signal).toBe("reach");
+  });
+
+  it("falls back to averageRank when rankEcr is missing", () => {
+    expect(getValueVsAdp(playerWith({ averageRank: 12, adp: 30 }))).toEqual({ delta: 18, signal: "value" });
+  });
+
+  it("returns null when there is no ADP or no usable rank", () => {
+    expect(getValueVsAdp(playerWith({ rankEcr: 20 }))).toBeNull();
+    expect(getValueVsAdp(playerWith({ adp: 30 }))).toBeNull();
+  });
+});
+
+describe("FANTASY_BOARD_LEGEND", () => {
+  it("covers every term a reader meets on the board", () => {
+    const terms = FANTASY_BOARD_LEGEND.map((entry) => entry.term);
+    expect(terms).toEqual(
+      expect.arrayContaining(["Published rank", "Expert range", "Avg", "ADP", "Value", "Reach", "Tiers", "Freshness"])
+    );
+  });
+
+  it("gives every entry a non-empty term and definition", () => {
+    for (const entry of FANTASY_BOARD_LEGEND) {
+      expect(entry.term.trim().length).toBeGreaterThan(0);
+      expect(entry.definition.trim().length).toBeGreaterThan(0);
+    }
+  });
+
+  it("keeps the Value and Reach entries in sync with the inline hover copy", () => {
+    const value = FANTASY_BOARD_LEGEND.find((entry) => entry.term === "Value");
+    const reach = FANTASY_BOARD_LEGEND.find((entry) => entry.term === "Reach");
+    expect(value).toMatchObject({ tone: "value", definition: FANTASY_VALUE_TOOLTIP });
+    expect(reach).toMatchObject({ tone: "reach", definition: FANTASY_REACH_TOOLTIP });
+  });
+
+  it("honors the writing voice (no em dashes, no colon-as-connector labels)", () => {
+    for (const entry of FANTASY_BOARD_LEGEND) {
+      expect(entry.definition).not.toContain("—");
+    }
+    // "Value:" / "Reach:" would be a colon connector; the copy uses "... means ...".
+    expect(FANTASY_VALUE_TOOLTIP).not.toMatch(/^Value:/);
+    expect(FANTASY_REACH_TOOLTIP).not.toMatch(/^Reach:/);
   });
 });

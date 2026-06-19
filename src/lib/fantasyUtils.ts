@@ -152,6 +152,78 @@ export function getValueVsAdp(
   return { delta, signal };
 }
 
+/**
+ * Hover copy for the green "Value" chip. Explains the ADP-vs-consensus gap in
+ * plain language so a drafter does not have to infer what the chip means. Kept
+ * in sync with the "Value" entry in FANTASY_BOARD_LEGEND below.
+ */
+export const FANTASY_VALUE_TOOLTIP =
+  "Value means drafters take this player later than the experts rank him, so you can often get him at a discount. The number is how many draft slots later than his consensus rank he goes on average.";
+
+/** Hover copy for the amber "Reach" chip, the mirror of FANTASY_VALUE_TOOLTIP. */
+export const FANTASY_REACH_TOOLTIP =
+  "Reach means drafters take this player earlier than the experts rank him, so picking him here likely passes up better value. The number is how many draft slots earlier than his consensus rank he goes on average.";
+
+export interface FantasyLegendEntry {
+  /** Short label, matching the wording that appears on the board itself. */
+  term: string;
+  /** Plain-language definition. One or two flowing sentences, never a listicle. */
+  definition: string;
+  /** When set, the legend renders the matching colored board chip beside the term. */
+  tone?: "value" | "reach";
+}
+
+/**
+ * The full key for reading the rankings board, surfaced through the collapsible
+ * "How to read this board" panel. Reuses the same tooltip strings the inline
+ * hovers use so the panel and the per-row hovers never drift apart.
+ */
+export const FANTASY_BOARD_LEGEND: FantasyLegendEntry[] = [
+  {
+    term: "Published rank",
+    definition:
+      "The number on the left of each row. It is the FantasyPros expert consensus rank for the board you are viewing, whether that is overall, a single position, or flex.",
+  },
+  {
+    term: "Expert range",
+    definition:
+      "The highest and lowest rank the experts gave this player. A wide range means the analysts disagree about where he belongs.",
+  },
+  {
+    term: "Avg",
+    definition: FANTASY_AVG_RANK_TOOLTIP,
+  },
+  {
+    term: "ADP",
+    definition: FANTASY_ADP_TOOLTIP,
+  },
+  {
+    term: "Value",
+    tone: "value",
+    definition: FANTASY_VALUE_TOOLTIP,
+  },
+  {
+    term: "Reach",
+    tone: "reach",
+    definition: FANTASY_REACH_TOOLTIP,
+  },
+  {
+    term: "Tiers",
+    definition:
+      "FantasyPros groups players of roughly interchangeable value into tiers. The drop between one tier and the next is where waiting gets expensive, so it is often smarter to draft across a tier break than to reach within one.",
+  },
+  {
+    term: "Rostered",
+    definition:
+      "The share of leagues where this player is already on a roster. A low number on a well-ranked player can flag a sleeper others have not grabbed yet.",
+  },
+  {
+    term: "Freshness",
+    definition:
+      "The Current, Aging, and Stale chips show how recently the source consensus and this site's snapshot were refreshed, so you can judge how current the board is.",
+  },
+];
+
 export type FantasyAdpFreshness = "current" | "prior-season";
 
 /**
