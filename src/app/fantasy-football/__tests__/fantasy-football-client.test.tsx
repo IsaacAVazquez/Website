@@ -21,12 +21,17 @@ jest.mock("framer-motion", () => ({
       children,
       initial: _initial,
       animate: _animate,
+      exit: _exit,
+      transition: _transition,
       ...props
     }: React.HTMLAttributes<HTMLDivElement> & {
       initial?: unknown;
       animate?: unknown;
+      exit?: unknown;
+      transition?: unknown;
     }) => <div {...props}>{children}</div>,
   },
+  AnimatePresence: ({ children }: { children?: React.ReactNode }) => <>{children}</>,
   useReducedMotion: () => true,
 }));
 
