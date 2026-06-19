@@ -1,4 +1,5 @@
 export { TierBreakdown } from "./TierBreakdown";
+export { FantasyBoardLegend } from "./FantasyBoardLegend";
 export { PositionFilterBar, type PositionFilterOption } from "./PositionFilterBar";
 export { RankingsListRow } from "./RankingsListRow";
 export { TierBreakSeparator } from "./TierBreakSeparator";

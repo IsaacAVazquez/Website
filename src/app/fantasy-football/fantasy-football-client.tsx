@@ -43,6 +43,7 @@ import {
 } from "@/lib/fantasyUtils";
 import {
   CompareTray,
+  FantasyBoardLegend,
   PlayerDetailDrawer,
   PositionFilterBar,
   RankingsListRow,
@@ -255,6 +256,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
   const [searchQuery, setSearchQuery] = useState("");
   const [detailPlayer, setDetailPlayer] = useState<Player | null>(null);
   const [showStats, setShowStats] = useState(false);
+  const [showLegend, setShowLegend] = useState(false);
   const [visibleCount, setVisibleCount] = useState(RANKINGS_PAGE_SIZE);
   const sentinelRef = useRef<HTMLDivElement | null>(null);
 
@@ -554,6 +556,20 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                   style={{ transform: showStats ? "rotate(180deg)" : "none" }}
                 />
               </button>
+              <button
+                type="button"
+                onClick={() => setShowLegend((open) => !open)}
+                aria-expanded={showLegend}
+                aria-controls="fantasy-board-legend"
+                className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full border px-4 text-sm font-semibold"
+                style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)", color: "var(--home-ink)" }}
+              >
+                How to read the board
+                <ChevronDown
+                  className="h-4 w-4 transition-transform"
+                  style={{ transform: showLegend ? "rotate(180deg)" : "none" }}
+                />
+              </button>
             </div>
           </div>
         </motion.div>
@@ -566,6 +582,8 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
             cells={fantasyStatsCells}
           />
         )}
+
+        {showLegend && <FantasyBoardLegend id="fantasy-board-legend" />}
 
         {error && (
           <article className="home-card p-5 sm:p-6" style={{ borderColor: "var(--color-error)" }}>

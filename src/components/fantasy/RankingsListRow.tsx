@@ -5,12 +5,15 @@ import type { ReactNode } from "react";
 
 import {
   FANTASY_CHIP_CLASS,
+  FANTASY_REACH_TOOLTIP,
+  FANTASY_VALUE_TOOLTIP,
   formatAdp,
   formatOwnership,
   formatRange,
   getPositionTone,
   getValueVsAdp,
 } from "@/lib/fantasyUtils";
+import { MetricTooltip } from "@/components/investments/MetricTooltip";
 import type { Player } from "@/types";
 
 interface RankingsListRowProps {
@@ -139,6 +142,13 @@ export function RankingsListRow({
                       {valueVsAdp.signal === "value" ? "Value" : "Reach"}{" "}
                       {valueVsAdp.delta > 0 ? `+${valueVsAdp.delta}` : valueVsAdp.delta}
                     </span>
+                  )}
+                  {valueVsAdp?.signal && (
+                    <MetricTooltip
+                      term={valueVsAdp.signal === "value" ? "Value" : "Reach"}
+                      definition={valueVsAdp.signal === "value" ? FANTASY_VALUE_TOOLTIP : FANTASY_REACH_TOOLTIP}
+                      align="right"
+                    />
                   )}
                 </p>
               </div>
