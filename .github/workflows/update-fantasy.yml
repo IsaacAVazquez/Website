@@ -22,12 +22,12 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 1
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: "20"
           cache: "npm"
@@ -148,44 +148,14 @@ jobs:
       - name: Commit and push snapshot updates
         if: steps.check_changes.outputs.changed == 'true'
         run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add \
+          bash scripts/ci/commit-and-push-snapshot.sh \
+            "chore: update fantasy football snapshots [automated] [skip ci]" \
             src/data/fantasyPositionData.generated.ts \
             src/data/fantasyAdpData.generated.ts \
             src/data/fantasySnapshotRevision.generated.ts \
             public/data/fantasy/ppr.json \
             public/data/fantasy/half_ppr.json \
             public/data/fantasy/standard.json
-          git commit -m "chore: update fantasy football snapshots [automated] [skip ci]"
-          # Retry on push rejection — main moves constantly because several
-          # other snapshot bots (earthquake hourly, world cup, transit, etc.)
-          # push to the same branch. The fantasy commit only touches
-          # fantasy-specific files, so a rebase here never truly conflicts; the
-          # failure mode is simply losing the race repeatedly. Retry
-          # persistently with capped exponential backoff plus jitter so we stop
-          # colliding on the same retry window. Bail only on a genuine conflict.
-          max_attempts=8
-          for attempt in $(seq 1 "$max_attempts"); do
-            if git push origin HEAD:main; then
-              echo "Pushed on attempt $attempt."
-              exit 0
-            fi
-            echo "Push attempt $attempt/$max_attempts rejected. Rebasing onto latest origin/main…"
-            git fetch origin main
-            if ! git rebase origin/main; then
-              git rebase --abort || true
-              echo "Rebase hit a genuine conflict — failing the run."
-              exit 1
-            fi
-            if [ "$attempt" -lt "$max_attempts" ]; then
-              backoff=$(( attempt * attempt * 2 ))
-              if [ "$backoff" -gt 30 ]; then backoff=30; fi
-              sleep $(( backoff + (RANDOM % 5) ))
-            fi
-          done
-          echo "Push failed after $max_attempts attempts."
-          exit 1
 
       - name: Create job summary
         if: always()
@@ -211,7 +181,7 @@ jobs:
 
       - name: Notify on failure via GitHub issue
         if: failure()
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const today = new Date().toISOString().slice(0, 10);
@@ -260,7 +230,7 @@ jobs:
 
       - name: Close resolved failure issues
         if: success()
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const existing = await github.rest.issues.listForRepo({

@@ -26,18 +26,18 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 1
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: "20"
           cache: "npm"
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.11"
 
@@ -46,7 +46,7 @@ jobs:
       # pinned defeatbeta-api version so a bump invalidates correctly.
       - name: Cache investments venv
         id: venv-cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: .venv
           key: investments-venv-${{ runner.os }}-py3.11-defeatbeta-api
@@ -68,7 +68,7 @@ jobs:
       # fall back to the most recent cache so we never start cold.
       #
       # Restore + save are split so the save step can run with `if: always()`.
-      # The combined `actions/cache@v4` only saves on job success, which would
+      # The combined `actions/cache@v5` only saves on job success, which would
       # leave the first run (and any subsequent timed-out run) with no cache
       # to restore from on the next attempt — a permanent timeout loop.
       - name: Compute defeatbeta cache key
@@ -77,7 +77,7 @@ jobs:
 
       - name: Restore defeatbeta data cache
         id: dfb-cache
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v5
         with:
           path: /tmp/defeatbeta
           key: defeatbeta-data-${{ runner.os }}-${{ steps.dfb-key.outputs.week }}
@@ -106,7 +106,7 @@ jobs:
       # churn the cache on every run.
       - name: Save defeatbeta data cache
         if: always() && steps.dfb-cache.outputs.cache-hit != 'true'
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@v5
         with:
           path: /tmp/defeatbeta
           key: defeatbeta-data-${{ runner.os }}-${{ steps.dfb-key.outputs.week }}
@@ -185,34 +185,16 @@ jobs:
       - name: Commit and push refreshed investments data
         if: steps.check_changes.outputs.changed == 'true'
         run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add public/data/investments data/investments-raw
-          git commit -m "chore: refresh investments snapshots [automated] [skip ci]"
-          # Retry on push rejection — main can move during the multi-minute
-          # snapshot refresh. Rebase the single snapshot commit onto the
-          # latest origin/main and try again. Bail on a real conflict.
-          for attempt in 1 2 3 4 5; do
-            if git push origin HEAD:main; then
-              exit 0
-            fi
-            echo "Push attempt $attempt rejected. Rebasing onto latest origin/main…"
-            git fetch origin main
-            if ! git rebase origin/main; then
-              git rebase --abort
-              echo "Rebase conflict — failing the run."
-              exit 1
-            fi
-            sleep $((attempt * 3))
-          done
-          echo "Push failed after 5 attempts."
-          exit 1
+          bash scripts/ci/commit-and-push-snapshot.sh \
+            "chore: refresh investments snapshots [automated] [skip ci]" \
+            public/data/investments \
+            data/investments-raw
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Notify on failure via GitHub issue
         if: failure()
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const today = new Date().toISOString().slice(0, 10);
@@ -259,7 +241,7 @@ jobs:
 
       - name: Close resolved failure issues
         if: success()
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const existing = await github.rest.issues.listForRepo({
