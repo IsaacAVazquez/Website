@@ -26,6 +26,14 @@ test.describe('Homepage', () => {
   })
 
   test('should have functional desktop navigation', async ({ page }) => {
+    // The desktop primary nav is hidden below the md breakpoint, where the
+    // hamburger menu takes over (covered by the mobile navigation test below).
+    const viewport = page.viewportSize()
+    test.skip(
+      !!viewport && viewport.width < 768,
+      'Desktop-only nav; the mobile menu is covered by the mobile navigation test'
+    )
+
     await page.goto('/')
 
     await expect(
