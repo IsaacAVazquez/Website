@@ -80,3 +80,6 @@ scripts/player-matching-results.json
 __pycache__/
 *.py[cod]
 *$py.class
+
+# Local Netlify folder
+.netlify
