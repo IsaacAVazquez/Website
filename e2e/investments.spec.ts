@@ -376,7 +376,15 @@ test.describe("Investments", () => {
     const shell = page.locator('[data-testid="investments-shell"]');
     const before = await shell.boundingBox();
 
-    await page.getByRole("link", { name: /^research$/i }).click();
+    // The section sidebar is desktop-only (it collapses to display:none at
+    // mobile widths). Click the nav link where it exists; otherwise reach the
+    // section the way a mobile visitor does, by scrolling it into view.
+    const researchLink = page.getByRole("link", { name: /^research$/i });
+    if (await researchLink.isVisible()) {
+      await researchLink.click();
+    } else {
+      await page.locator("#research-section").scrollIntoViewIfNeeded();
+    }
     await expect(page.locator("#research-section")).toBeInViewport();
 
     const after = await shell.boundingBox();
