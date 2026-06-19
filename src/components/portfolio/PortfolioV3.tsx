@@ -657,30 +657,6 @@ export function PortfolioV3({ projects }: Props) {
         </div>
       </div>
 
-      {/* Marquee band */}
-      <div className={styles.band} aria-hidden="true">
-        <div className={styles.bandInner}>
-          <div className={styles.marquee}>
-            <span className="hot">Latest · Budget Planner ships</span>
-            <span>{liveToolsCount} live tools</span>
-            <span>Pulse dashboards · multiple surfaces</span>
-            <span>Decision Lab · 6 presets</span>
-            <span>Interchange IQ · 7 processors</span>
-            <span>Frontier Models · 7 providers</span>
-            <span>GitHub Trending · 14 segments</span>
-            <span className="hot">Snapshot-driven · deep-linkable</span>
-            <span className="hot">Latest · Budget Planner ships</span>
-            <span>{liveToolsCount} live tools</span>
-            <span>Pulse dashboards · multiple surfaces</span>
-            <span>Decision Lab · 6 presets</span>
-            <span>Interchange IQ · 7 processors</span>
-            <span>Frontier Models · 7 providers</span>
-            <span>GitHub Trending · 14 segments</span>
-            <span className="hot">Snapshot-driven · deep-linkable</span>
-          </div>
-        </div>
-      </div>
-
       <div>
         <div className={styles.shell}>
           {/* Archive */}
@@ -747,6 +723,30 @@ export function PortfolioV3({ projects }: Props) {
                       />
                     );
                   })}
+                </div>
+
+                {/* Marquee band — sits between the project grid and the pager */}
+                <div className={styles.band} aria-hidden="true">
+                  <div className={styles.bandInner}>
+                    <div className={styles.marquee}>
+                      <span className="hot">Latest · Budget Planner ships</span>
+                      <span>{liveToolsCount} live tools</span>
+                      <span>Pulse dashboards · multiple surfaces</span>
+                      <span>Decision Lab · 6 presets</span>
+                      <span>Interchange IQ · 7 processors</span>
+                      <span>Frontier Models · 7 providers</span>
+                      <span>GitHub Trending · 14 segments</span>
+                      <span className="hot">Snapshot-driven · deep-linkable</span>
+                      <span className="hot">Latest · Budget Planner ships</span>
+                      <span>{liveToolsCount} live tools</span>
+                      <span>Pulse dashboards · multiple surfaces</span>
+                      <span>Decision Lab · 6 presets</span>
+                      <span>Interchange IQ · 7 processors</span>
+                      <span>Frontier Models · 7 providers</span>
+                      <span>GitHub Trending · 14 segments</span>
+                      <span className="hot">Snapshot-driven · deep-linkable</span>
+                    </div>
+                  </div>
                 </div>
 
                 {totalPages > 1 ? (
