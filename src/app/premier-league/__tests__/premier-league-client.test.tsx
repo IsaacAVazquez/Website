@@ -32,7 +32,14 @@ describe("PremierLeagueClient", () => {
       />
     );
 
-    expect(screen.getByRole("heading", { name: "Arsenal FC" })).toBeInTheDocument();
+    // Assert against the actual league leader rather than a hardcoded club so
+    // the test survives standings refreshes — the leader sidebar renders
+    // summary.standings[0].team.name in the default state.
+    expect(
+      screen.getByRole("heading", {
+        name: premierLeagueSnapshot.summary.standings[0].team.name,
+      })
+    ).toBeInTheDocument();
     await waitFor(() => expect(mockReplace).not.toHaveBeenCalled());
   });
 
