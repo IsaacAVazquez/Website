@@ -78,7 +78,7 @@ Primary site navigation providing access to main sections and actions.
 [Blog](/blog) • [Writing](/writing) • [Notes](/notes)
 
 **Connect**
-[Contact](/contact) • [LinkedIn](https://linkedin.com/in/isaac-vazquez)
+[Contact](/contact) • [LinkedIn](https://www.linkedin.com/in/isaac-vazquez/)
 ```
 
 ---

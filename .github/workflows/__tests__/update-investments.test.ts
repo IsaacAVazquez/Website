@@ -22,9 +22,11 @@ describe("update-investments workflow contract", () => {
     expect(workflow).toContain("run: npm run update:investments");
   });
 
-  it("stages the public snapshots and raw dataset paths before committing", () => {
+  it("passes the public snapshots and raw dataset paths to the shared commit helper", () => {
     // Raw per-section fetch output lives outside public/ so it never ships
     // with a deploy; both locations must be staged for a refresh commit.
-    expect(workflow).toContain("git add public/data/investments data/investments-raw");
+    expect(workflow).toContain("bash scripts/ci/commit-and-push-snapshot.sh");
+    expect(workflow).toContain("public/data/investments");
+    expect(workflow).toContain("data/investments-raw");
   });
 });

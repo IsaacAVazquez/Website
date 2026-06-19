@@ -25,12 +25,12 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 1
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: "20"
           cache: "npm"
@@ -137,28 +137,9 @@ jobs:
       - name: Commit and push refreshed snapshot
         if: steps.check_changes.outputs.changed == 'true'
         run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add src/data/formula1Snapshot.ts
-          git commit -m "chore: refresh formula 1 snapshot [automated] [skip ci]"
-          # Retry on push rejection. Main can move during the refresh, so
-          # rebase the single snapshot commit onto the latest origin/main and
-          # try again. Bail on a real conflict.
-          for attempt in 1 2 3 4 5; do
-            if git push origin HEAD:main; then
-              exit 0
-            fi
-            echo "Push attempt $attempt rejected. Rebasing onto latest origin/main..."
-            git fetch origin main
-            if ! git rebase origin/main; then
-              git rebase --abort
-              echo "Rebase conflict. Failing the run."
-              exit 1
-            fi
-            sleep $((attempt * 3))
-          done
-          echo "Push failed after 5 attempts."
-          exit 1
+          bash scripts/ci/commit-and-push-snapshot.sh \
+            "chore: refresh formula 1 snapshot [automated] [skip ci]" \
+            src/data/formula1Snapshot.ts
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -187,7 +168,7 @@ jobs:
 
       - name: Notify on failure via GitHub issue
         if: failure()
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const today = new Date().toISOString().slice(0, 10);
@@ -234,7 +215,7 @@ jobs:
 
       - name: Close resolved failure issues
         if: success()
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const existing = await github.rest.issues.listForRepo({

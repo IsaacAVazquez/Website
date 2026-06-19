@@ -16,7 +16,7 @@ export const profile = {
   sameAs: {
     twitter: "https://twitter.com/isaacvazquez",
     github: "https://github.com/IsaacAVazquez",
-    linkedin: "https://linkedin.com/in/isaac-vazquez",
+    linkedin: "https://www.linkedin.com/in/isaac-vazquez/",
   },
   employer: {
     name: "Civitech",

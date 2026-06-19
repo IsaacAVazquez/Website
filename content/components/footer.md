@@ -45,7 +45,7 @@ Building products that bridge technology and human impact.
 ### Connect
 
 **Email:** [isaacavazquez95@gmail.com](mailto:isaacavazquez95@gmail.com)
-**LinkedIn:** [linkedin.com/in/isaac-vazquez](https://linkedin.com/in/isaac-vazquez)
+**LinkedIn:** [linkedin.com/in/isaac-vazquez](https://www.linkedin.com/in/isaac-vazquez/)
 **GitHub:** [github.com/isaacavazquez](https://github.com/isaacavazquez)
 **Twitter:** [@IsaacAVazquez](https://twitter.com/IsaacAVazquez)
 
@@ -75,7 +75,7 @@ _Technology that serves humanity's best interests._
 
 **Isaac Vazquez** — MBA Candidate • Product & Tech Builder
 
-[Email](mailto:isaacavazquez95@gmail.com) • [LinkedIn](https://linkedin.com/in/isaac-vazquez) • [GitHub](https://github.com/isaacavazquez) • [Resume](/Isaac_Vazquez_Resume.pdf)
+[Email](mailto:isaacavazquez95@gmail.com) • [LinkedIn](https://www.linkedin.com/in/isaac-vazquez/) • [GitHub](https://github.com/isaacavazquez) • [Resume](/Isaac_Vazquez_Resume.pdf)
 
 © 2025 Isaac Vazquez • Built with Next.js
 
@@ -99,7 +99,7 @@ Subscribe to get notified about new articles, projects, and insights on product 
 
 **Quick Links:** [About](/about) • [Projects](/projects) • [Blog](/blog) • [Contact](/contact)
 
-**Connect:** [LinkedIn](https://linkedin.com/in/isaac-vazquez) • [GitHub](https://github.com/isaacavazquez) • [Email](mailto:isaacavazquez95@gmail.com)
+**Connect:** [LinkedIn](https://www.linkedin.com/in/isaac-vazquez/) • [GitHub](https://github.com/isaacavazquez) • [Email](mailto:isaacavazquez95@gmail.com)
 
 © 2025 Isaac Vazquez. Building technology that matters.
 

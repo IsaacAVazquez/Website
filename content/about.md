@@ -154,7 +154,7 @@ I'm always open to conversations about:
 - Building impactful technology companies
 
 **Email:** [isaacavazquez95@gmail.com](mailto:isaacavazquez95@gmail.com)
-**LinkedIn:** [linkedin.com/in/isaac-vazquez](https://linkedin.com/in/isaac-vazquez)
+**LinkedIn:** [linkedin.com/in/isaac-vazquez](https://www.linkedin.com/in/isaac-vazquez/)
 **GitHub:** [github.com/isaacavazquez](https://github.com/isaacavazquez)
 **Location:** Berkeley, CA
 

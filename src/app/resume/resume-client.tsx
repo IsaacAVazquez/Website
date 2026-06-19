@@ -138,7 +138,7 @@ export default function Resume() {
                 IsaacVazquez@berkeley.edu
               </a>
               <a
-                href="https://linkedin.com/in/isaac-vazquez"
+                href="https://www.linkedin.com/in/isaac-vazquez/"
                 className="flex items-center gap-2 transition-colors"
                 style={{ color: "var(--home-ink-muted)" }}
                 onMouseEnter={e => (e.currentTarget.style.color = "var(--home-ink)")}

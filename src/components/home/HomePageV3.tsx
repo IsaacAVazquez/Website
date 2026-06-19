@@ -547,7 +547,7 @@ export function HomePageV3({
               </Link>
               <a
                 className={classes(styles["h-btn"], styles["is-ghost-paper"])}
-                href="https://linkedin.com/in/isaac-vazquez"
+                href="https://www.linkedin.com/in/isaac-vazquez/"
                 target="_blank"
                 rel="noreferrer"
               >

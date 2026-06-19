@@ -80,7 +80,7 @@ export function ContactV3() {
           </a>
           <a
             className={styles["c-channel"]}
-            href="https://www.linkedin.com/in/isaac-vazquez"
+            href="https://www.linkedin.com/in/isaac-vazquez/"
             target="_blank"
             rel="noopener noreferrer"
           >
