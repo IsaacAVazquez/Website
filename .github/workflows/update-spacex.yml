@@ -37,14 +37,19 @@ jobs:
       - name: Install dependencies
         run: npm ci --prefer-offline --no-audit --fund=false
 
-      - name: Refresh SpaceX image snapshots
-        run: npm run update:spacex-images
+      # Refresh the launch board BEFORE hydrating images. The anonymous Launch
+      # Library tier allows only 15 calls/hour per IP; the board refresh needs
+      # ~3 calls to update and clear the freshness gate, so running it first
+      # means the board stays current even when the image step exhausts the
+      # remaining budget and falls back to existing image artifacts.
+      - name: Refresh SpaceX data snapshot
+        run: npm run update:spacex
         env:
           NODE_ENV: production
           SPACEDEVS_API_TOKEN: ${{ secrets.SPACEDEVS_API_TOKEN }}
 
-      - name: Refresh SpaceX data snapshot
-        run: npm run update:spacex
+      - name: Refresh SpaceX image snapshots
+        run: npm run update:spacex-images
         env:
           NODE_ENV: production
           SPACEDEVS_API_TOKEN: ${{ secrets.SPACEDEVS_API_TOKEN }}

@@ -35,7 +35,11 @@ const LAUNCH_DETAIL_CACHE_TTL_MS = 300 * 1000;
 const STALE_FALLBACK_TTL_MS = 30 * 60 * 1000;
 const RATE_LIMIT_BASE_BACKOFF_MS = 60 * 1000;
 const RATE_LIMIT_MAX_BACKOFF_MS = 5 * 60 * 1000;
-const SNAPSHOT_DETAIL_LIMIT_PER_STATUS = 10;
+// Per-status cap on hydrated launch details in the snapshot. The anonymous
+// Launch Library tier allows only 15 calls/hour per IP, and each detail is one
+// call (on top of the 2 list calls + 1 agency call). The quality gate needs 5
+// details, so 3 per status keeps the full refresh comfortably under budget.
+const SNAPSHOT_DETAIL_LIMIT_PER_STATUS = 3;
 
 type LaunchCollectionMode = "upcoming" | "previous";
 type MissionControlDataSource = "auto" | "live" | "snapshot";
