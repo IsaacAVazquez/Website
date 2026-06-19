@@ -444,16 +444,18 @@ export function DraftBoard({
                             >
                               <Info size={15} aria-hidden="true" />
                             </button>
-                            <button
-                              type="button"
-                              onClick={() => onDraftPlayer(player)}
-                              disabled={isDraftComplete}
-                              className="inline-flex min-h-[44px] items-center justify-center rounded-full border px-4 text-sm font-semibold whitespace-nowrap transition-[background-color,border-color,color,box-shadow,opacity] duration-200 disabled:cursor-not-allowed disabled:opacity-60"
-                              style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
-                            >
-                              Log pick
-                            </button>
                           </div>
+                          {/* Log pick sits as a direct child of the row so its details
+                              (rank, tier, range) read as one labeled group. */}
+                          <button
+                            type="button"
+                            onClick={() => onDraftPlayer(player)}
+                            disabled={isDraftComplete}
+                            className="inline-flex min-h-[44px] items-center justify-center rounded-full border px-4 text-sm font-semibold whitespace-nowrap transition-[background-color,border-color,color,box-shadow,opacity] duration-200 disabled:cursor-not-allowed disabled:opacity-60"
+                            style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
+                          >
+                            Log pick
+                          </button>
                         </div>
                       </div>
                     );

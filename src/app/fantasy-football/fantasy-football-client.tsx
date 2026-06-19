@@ -638,12 +638,35 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                 onChange={(position) => updateRouteState({ position })}
               />
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <SegmentedToggle
-                  ariaLabel="Scoring format"
-                  options={SCORING_OPTIONS.map((option) => ({ value: option.key, label: option.label }))}
-                  value={routeState.scoring}
-                  onChange={(scoring) => updateRouteState({ scoring })}
-                />
+                {/* Scoring is a toggle-button group (aria-pressed), distinct from
+                    the position radiogroup, so each format reads as an independent
+                    on/off rather than a single-select. */}
+                <div role="group" aria-label="Scoring format" className="flex flex-wrap gap-2">
+                  {SCORING_OPTIONS.map((option) => {
+                    const active = routeState.scoring === option.key;
+                    return (
+                      <button
+                        key={option.key}
+                        type="button"
+                        aria-pressed={active}
+                        disabled={currentSliceUnavailable}
+                        onClick={() => updateRouteState({ scoring: option.key })}
+                        className="inline-flex min-h-[44px] items-center rounded-full border px-4 text-sm font-semibold transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-60"
+                        style={
+                          active
+                            ? { borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }
+                            : {
+                                borderColor: "var(--home-rule)",
+                                background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
+                                color: "var(--home-ink)",
+                              }
+                        }
+                      >
+                        {option.label}
+                      </button>
+                    );
+                  })}
+                </div>
                 <div className="relative sm:max-w-[18rem] sm:flex-1">
                   <label htmlFor="fantasy-search" className="sr-only">
                     Search the current rankings board
