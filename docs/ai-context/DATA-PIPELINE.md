@@ -2,7 +2,7 @@
 
 Current high-level data flow reference.
 
-**Last updated:** 2026-06-10
+**Last updated:** 2026-06-19
 
 ---
 
@@ -100,11 +100,29 @@ The 2026 World Cup hub uses `src/data/worldCupSnapshot.ts`, rebuilt by `npm run 
 
 ---
 
+## Shared Snapshot Commit/Push Step
+
+Every scheduled snapshot workflow ends by committing and pushing the refreshed snapshot through one shared helper:
+
+- `scripts/ci/commit-and-push-snapshot.sh <commit-message> <pathspec...>`
+
+What it does:
+
+- sets the `github-actions[bot]` git identity, stages the given pathspecs, and exits cleanly (no-op) when nothing is staged
+- on a real diff it commits, then pushes to `HEAD:main` with a retry loop (default 8 attempts, override via `SNAPSHOT_PUSH_ATTEMPTS`)
+- on each push rejection it `git fetch origin main` and `git rebase --autostash origin/main`, then retries with capped exponential backoff plus jitter — this absorbs contention from the many snapshot bots pushing to `main` concurrently (e.g. earthquake hourly, world cup, transit)
+- bails (exit 1) only on a genuine rebase conflict or after exhausting all attempts
+
+All 14 `.github/workflows/update-*.yml` workflows route their commit+push through this helper: `update-bay-area-transit`, `update-earthquake`, `update-fantasy`, `update-formula-1`, `update-github-trending`, `update-golf`, `update-investments`, `update-la-liga`, `update-mlb`, `update-nba`, `update-nfl`, `update-premier-league`, `update-spacex`, and `update-world-cup`. The behavior is asserted by `.github/workflows/__tests__/snapshot-workflows.test.ts` and `update-investments.test.ts`.
+
+---
+
 ## Fantasy Football Pipeline
 
 The fantasy stack is generated snapshot first:
 
 - `scripts/buildFantasyPositionData.ts`
+- `scripts/buildFantasyAdpData.ts`
 - `scripts/buildFantasySnapshots.ts`
 - `src/app/api/fantasy-data/route.ts`
 - `src/lib/fantasySnapshotServer.ts`
@@ -113,6 +131,7 @@ The fantasy stack is generated snapshot first:
 Public generated outputs include:
 
 - `src/data/fantasyPositionData.generated.ts`
+- `src/data/fantasyAdpData.generated.ts`
 - `src/data/fantasySnapshotRevision.generated.ts`
 - `public/data/fantasy/ppr.json`
 - `public/data/fantasy/half_ppr.json`

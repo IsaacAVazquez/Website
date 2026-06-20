@@ -2,7 +2,7 @@
 
 Current config-file reference.
 
-**Last updated:** 2026-04-10
+**Last updated:** 2026-06-19
 
 ---
 
@@ -26,12 +26,20 @@ Current config-file reference.
 
 Important current behavior:
 
-- redirects for `/projects`, `/work`, `/blog`, fantasy shortcuts, and typo routes
+- redirects (`async redirects()`) cover:
+  - `/projects`, `/projects/:path*`, `/work` → `/portfolio`
+  - legacy portfolio slugs → `/investments` and `/writing/*` case studies
+  - fantasy shortcuts (`/ff`, `/rankings`, `/qb`, `/rb`, `/wr`, `/te`) and typo routes (`/fantsy-football/*`, `/fantasy-footbal/*`, `/quatrerback`)
+  - `/blog`, `/blog/:slug`, `/blog/posts/:slug`, `/articles/:slug` → `/writing`
+  - contact variations (`/get-in-touch`, `/hire-me`) and resume variations (`/cv`, `/resume.pdf`)
+- `poweredByHeader = false`
+- site-wide security headers via `async headers()` (HSTS, X-Content-Type-Options, X-Frame-Options DENY, Referrer-Policy, Permissions-Policy, X-DNS-Prefetch-Control); a global CSP is still a TODO
+- `compiler.removeConsole` in production
 - `typescript.ignoreBuildErrors = true`
 - `serverExternalPackages = ['better-sqlite3', 'sharp']`
 - tracing excludes heavy image and investments data assets from server bundles
-- image remote patterns include Unsplash and Cloudinary
-- `optimizePackageImports` includes `@tabler/icons-react`, `lucide-react`, and `framer-motion`
+- image remote patterns include Unsplash and Cloudinary; `dangerouslyAllowSVG` is on with an image-scoped CSP (`script-src 'none'; sandbox`) for remote crest/logo SVGs
+- `optimizePackageImports` includes `@tabler/icons-react`, `lucide-react`, and `framer-motion`; `experimental.scrollRestoration` is enabled
 
 If you update routes or package behavior, this file is one of the first places to check.
 
@@ -65,9 +73,9 @@ Important facts:
 
 - `strict: true`
 - `noEmit: true`
-- `module` and `moduleResolution` are `node16`
+- `target: es2022`; `module: esnext`; `moduleResolution: bundler`
 - path alias: `@/* -> ./src/*`
-- excludes `src/data/backup/**/*`
+- excludes `node_modules` and `src/data/backup/**/*`
 
 ---
 
@@ -105,6 +113,15 @@ Posts are discovered from `content/blog/`.
 
 ---
 
+## Build Steps (`package.json`)
+
+- `prebuild`: `tsx scripts/updateFootballSnapshots.ts --league-only` — refreshes Premier League + La Liga standings/scorers/fixtures on every Netlify deploy (~2 min)
+- `build`: `next build --webpack`
+- `postbuild`: `next-sitemap && node scripts/patch-nft-sharp.mjs` — regenerates the sitemap, then patches the function bundle so the optional `sharp` native module never ships
+- `dev` and `build` both pass `--webpack` (Turbopack is not used)
+
+---
+
 ## Middleware
 
-`middleware.ts` only handles `/blog` -> `/writing` redirect coverage. It is not a broad security middleware layer.
+There is no `middleware.ts` in the repo. All redirects (including `/blog` -> `/writing`) are declared in `next.config.mjs` via `async redirects()`. Security headers are likewise applied through `next.config.mjs` `async headers()`, not a middleware layer.

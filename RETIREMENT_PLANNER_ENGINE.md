@@ -5,7 +5,7 @@ Technical reference for the retirement projection engine in
 DOM, no fetch) so it is unit-testable and could run server-side. The UI never
 does math — it calls `project()` and renders the result.
 
-**Last updated:** 2026-06-16
+**Last updated:** 2026-06-19
 
 Surfaced as the `#retirement` band inside the investments dashboard
 (`InvestmentsDashboard.tsx`), backed by browser-local state. Output is
@@ -101,9 +101,10 @@ internally in **nominal** dollars and exposes real values alongside.
 6. **Levers** (`project` only). Four dials, each reporting its marginal effect on
    the success rate and — where it's a clean single dial — how far to push it to
    reach the threshold: `save-more`, `retire-later`, `spend-less`, `more-stocks`.
-   Lever rows run at the headline simulation count (`LEVER_SIMS = 1000`) so their
-   absolute success figures agree with the gauge; only the threshold-solving
-   binary search uses a cheaper `TO_REACH_SIMS = 250`.
+   Lever rows run at the plan's own simulation count
+   (`input.assumptions.simulations`, default **1,000**) so their absolute success
+   figures agree with the gauge; only the threshold-solving binary search uses a
+   cheaper `TO_REACH_SIMS = 250`.
 
 ---
 

@@ -9,7 +9,7 @@ architecture or the per-workflow prose:
 - Per-script and per-workflow detail: `AUTOMATION_SCRIPTS.md`, `CRON_SETUP.md`,
   and the **Automation Surfaces** section of `../AGENTS.md`
 
-**Last updated:** 2026-06-16
+**Last updated:** 2026-06-19
 
 All `update:*` commands write a **committed** artifact (TS snapshot or JSON);
 nothing here runs at request time. A failed/empty fetch **keeps the previous
@@ -28,7 +28,7 @@ changes.
 | Premier League | `update:premier-league` | `buildPremierLeagueSnapshot.ts` | football-data.org *(token)* | `src/data/premierLeagueSnapshot.ts` | `update-premier-league.yml` | daily 06:15 UTC, Aug–May |
 | La Liga | `update:la-liga` | `updateLaLigaSnapshot.ts` | football-data.org *(token)* | `src/data/laLigaSnapshot.ts` | `update-la-liga.yml` | daily 06:30 UTC, Aug–May |
 | NFL | `update:nfl` | `updateNflSnapshot.ts` | NFLverse CSVs | `src/data/nflSnapshot.ts` | `update-nfl.yml` | Tue 10:35 UTC, Sep–Feb |
-| MLB | `update:mlb` | `updateMlbSnapshot.ts` | MLB Stats API | `src/data/mlbSnapshot.ts` | `update-mlb.yml` | daily 10:05 UTC, Apr–Oct |
+| MLB | `update:mlb` | `updateMlbSnapshot.ts` | MLB Stats API | `src/data/mlbSnapshot.ts` | `update-mlb.yml` | daily 10:05 UTC, Mar–Nov |
 | NBA | `update:nba` | `updateNbaSnapshot.ts` | ESPN NBA | `src/data/nbaSnapshot.ts` | `update-nba.yml` | daily 10:20 UTC, mid-Oct–Jun |
 | Golf | `update:golf` | `buildGolfSnapshot.ts` | ESPN golf | `src/data/golfSnapshot.ts` | `update-golf.yml` | daily 08:40 UTC |
 | Formula 1 | `update:formula-1` | `buildFormula1Snapshot.ts` | OpenF1 | `src/data/formula1Snapshot.ts` | `update-formula-1.yml` | daily 08:10 UTC |
@@ -83,6 +83,35 @@ git push
 
 The same shape applies to any surface: run `npm run update:<x>`, then commit the
 changed artifact under `src/data/` or `public/data/`.
+
+---
+
+## How workflows commit (shared CI helper)
+
+All 14 snapshot `update-*.yml` workflows route their git commit + push through one
+shared helper, `scripts/ci/commit-and-push-snapshot.sh`, rather than each
+hand-rolling its own git steps:
+
+```bash
+bash scripts/ci/commit-and-push-snapshot.sh "<commit message>" <pathspec> [pathspec ...]
+```
+
+It sets the `github-actions[bot]` git identity, stages the given pathspecs, and
+**exits 0 cleanly if nothing is staged** (a no-op refresh). On a real diff it
+commits, then pushes to `HEAD:main` with a retry loop (default 8 attempts;
+override via `SNAPSHOT_PUSH_ATTEMPTS`). On each push rejection it
+`git fetch origin main` and `git rebase --autostash origin/main`, then retries
+with capped exponential backoff plus jitter — this absorbs the contention from
+many snapshot bots (earthquake hourly, world cup, transit, etc.) pushing to
+`main` concurrently. It bails (exit 1) only on a genuine rebase conflict or after
+exhausting every attempt. Usage is asserted by
+`.github/workflows/__tests__/snapshot-workflows.test.ts` (and the investments
+variant).
+
+The 14 callers: `update-bay-area-transit`, `update-earthquake`, `update-fantasy`,
+`update-formula-1`, `update-github-trending`, `update-golf`, `update-investments`,
+`update-la-liga`, `update-mlb`, `update-nba`, `update-nfl`, `update-premier-league`,
+`update-spacex`, `update-world-cup`.
 
 ---
 

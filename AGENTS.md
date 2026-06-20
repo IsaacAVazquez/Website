@@ -2,7 +2,7 @@
 
 Operational context for agents working in this repo. Start here, then read `CLAUDE.md` for deeper implementation context.
 
-**Last updated:** 2026-06-16
+**Last updated:** 2026-06-19
 
 ---
 
@@ -155,6 +155,7 @@ Footer variants:
 - Shared portfolio-shell primitives must not use `transition-all`. Transition specific properties instead.
 - Portfolio-shell routes must keep the primary message and main CTA visible in the initial mobile viewport whenever the route has a hero.
 - Portfolio and writing cards should surface role, problem space, and impact in the default scan state.
+- The `/portfolio` index is rendered by `src/components/portfolio/PortfolioV3.tsx`, which carries a client-side project search (tokenized AND match over title, description, role, timeline, metrics, summary, category, and tools) and a marquee band that sits between the project grid and the pager.
 - `/api/search` is still limited and mostly hardcoded. Do not describe it as comprehensive site search.
 - `ProjectsContent.tsx` and `WritingPreview.tsx` still exist, but they are not the primary live path for the current shell.
 
@@ -215,6 +216,10 @@ npm run dev
 - Use `npm test` or targeted Jest runs while iterating.
 - Use `npm run test:e2e` for default Playwright end-to-end coverage; use `npm run test:e2e:full` for the full browser matrix.
 - Use `npm run build` before shipping route, config, or deployment-affecting changes.
+
+### Fantasy surface
+
+The fantasy-football surface pairs a FantasyPros consensus rankings board at `/fantasy-football` (client `fantasy-football-client.tsx`) with a manual draft assistant at `/fantasy-football/draft-tracker`, both reading one snapshot through `useFantasySnapshot`. The rankings board offers a deep-linkable position pill bar and PPR/Half-PPR/Standard scoring selector (`?position=`, `?scoring=`), per-board search, a List/Tiers view toggle (`?view=tiers`), a Comfortable/Compact density control, and ADP Value/Reach chips. Shared presentation components live in `src/components/fantasy/` (barrel `index.ts`); three cross-surface browser-local stores live in `src/hooks/use{PlayerQueue,PlayerNotes,CompareTray}.ts` over `useLocalStorageString.ts`, with parse/serialize helpers and key constants in `src/lib/fantasyLocal.ts`. Board math/formatting/legend copy is in `src/lib/fantasyUtils.ts`; the pure draft signal engine is `src/lib/draftAnalytics.ts`. New localStorage keys: `fantasy-player-queue-v1`, `fantasy-player-notes-v1`, `fantasy-compare-v1`, `fantasy-board-density`; per-season draft state persists under `fantasy-draft-tracker-v2-<season>`.
 
 ### Fantasy data workflow
 
@@ -411,7 +416,7 @@ Current behavior:
 - `update-github-trending.yml` runs on manual dispatch and daily at `07:45 UTC`, then commits `src/data/githubTrendingSnapshot.ts` when tracked repositories change
 - `update-formula-1.yml` runs on manual dispatch and daily at `08:10 UTC`, then commits `src/data/formula1Snapshot.ts` when it changes
 - `update-spacex.yml` runs on manual dispatch and daily at `09:25 UTC` and `21:25 UTC`, then commits SpaceX data, manifest, image reference, and cached image artifacts when they change
-- `update-mlb.yml` runs on manual dispatch and daily April through October at `10:05 UTC`, then commits `src/data/mlbSnapshot.ts` when it changes
+- `update-mlb.yml` runs on manual dispatch and daily March through November at `10:05 UTC`, then commits `src/data/mlbSnapshot.ts` when it changes
 - `update-nba.yml` runs on manual dispatch and daily from mid-October through June at `10:20 UTC`, then commits `src/data/nbaSnapshot.ts` when it changes
 - `update-nfl.yml` runs on manual dispatch and Tuesdays September through February at `10:35 UTC`, then commits `src/data/nflSnapshot.ts` when it changes
 - `update-golf.yml` runs on manual dispatch and daily at `08:40 UTC`, then commits `src/data/golfSnapshot.ts` when it changes
@@ -419,6 +424,7 @@ Current behavior:
 - `update-bay-area-transit.yml` runs on manual dispatch and every six hours year-round, then commits `src/data/bayAreaTransitSnapshot.ts` when it changes
 - `update-earthquake.yml` runs on manual dispatch and hourly (minute 20), then commits `src/data/earthquakeSnapshot.ts` when it changes
 - The tech startup tracker has no workflow by design — its dataset is editorially curated, so refreshes happen by editing the seed and running `npm run update:tech-startups` locally
+- All 14 snapshot `update-*.yml` workflows commit and push through the shared `scripts/ci/commit-and-push-snapshot.sh` helper (usage: `commit-and-push-snapshot.sh <commit-message> <pathspec...>`). It sets the `github-actions[bot]` identity, exits cleanly on a no-op refresh, and pushes to `HEAD:main` with a fetch/`rebase --autostash` retry loop (default 8 attempts, `SNAPSHOT_PUSH_ATTEMPTS` override) plus capped exponential backoff to absorb concurrent snapshot-bot pushes. Behavior is asserted by `.github/workflows/__tests__/snapshot-workflows.test.ts` and `update-investments.test.ts`.
 - A daily cron-job.org ping to the Netlify build hook triggers production deploys; `prebuild` refreshes Premier League and La Liga league-level snapshots with `tsx scripts/updateFootballSnapshots.ts --league-only`
 - `purge-cache.ts` is protected by `Authorization: Bearer <CRON_SECRET>` or `x-cron-secret` and calls Netlify Durable Cache purge; query-string secrets are intentionally rejected
 - Historical caveat: `vercel.json` still declares a cron for `/api/scheduled-update`, but no matching route exists. Treat that config as historical until confirmed.

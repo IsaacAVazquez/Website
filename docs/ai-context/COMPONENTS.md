@@ -2,7 +2,7 @@
 
 Current component ownership reference.
 
-**Last updated:** 2026-06-10
+**Last updated:** 2026-06-19
 
 ---
 
@@ -119,15 +119,42 @@ Page-level clients live at `src/app/premier-league/premier-league-client.tsx` an
 
 ## Fantasy Football
 
-Representative live components:
+Route clients:
 
-- `src/app/fantasy-football/fantasy-football-client.tsx`
-- `src/app/fantasy-football/draft-tracker/draft-tracker-client.tsx`
+- `src/app/fantasy-football/fantasy-football-client.tsx` — rankings board (List/Tiers, position/scoring/search filters, density toggle, infinite-scroll windowing, sidebar, stats panel, legend)
+- `src/app/fantasy-football/draft-tracker/draft-tracker-client.tsx` — draft assistant (reuses snapshot + shared drawer/compare/notes/queue)
 - `src/app/fantasy-football/draft-tracker/components/DraftBoard.tsx`
 - `src/app/fantasy-football/draft-tracker/components/DraftSetup.tsx`
-- `src/components/fantasy/TierBreakdown.tsx`
+- `src/app/fantasy-football/draft-tracker/components/DraftAnalyticsPanel.tsx` — live signals card + completion recap, backed by the pure `draftAnalytics` engine
 
-These work with the generated fantasy snapshots and `/api/fantasy-data` route described elsewhere in `docs/ai-context`.
+Shared presentation components in `src/components/fantasy/` (barrel-exported via `index.ts`):
+
+- `TierBreakdown` — Tiers view (tier-grouped sections, counts, rank ranges, rank-cliff hints)
+- `RankingsListRow` — single List-view row (published rank, position chip, expert range, ADP Value/Reach chip, rostered %/bye, queue + compare toggles, `compact` density)
+- `TierBreakSeparator` — labeled tier-boundary rule injected into the List view
+- `PositionFilterBar` (+ `PositionFilterOption` type) — shared position pill radiogroup with per-slice availability/NA states
+- `FantasyBoardLegend` — collapsible "How to read this board" key keyed to `FANTASY_BOARD_LEGEND`
+- `PlayerDetailDrawer` — shared focus-trapped detail drawer/bottom-sheet (position rank, tier N of M, ADP, distribution bar, editable private note, queue/compare toggles)
+- `RankDistributionBar` — expert best→worst spread with consensus marker and tight/mixed/volatile coloring
+- `CompareTray` — docked bottom bar for the pinned compare selection (up to 3)
+- `CompareModal` — side-by-side compare dialog with per-row winner highlighting
+
+Cross-surface browser-local stores (shared by both clients) in `src/hooks/`:
+
+- `usePlayerQueue` — starred watchlist of player ids (`fantasy-player-queue-v1`)
+- `usePlayerNotes` — private per-player notes, 280-char cap (`fantasy-player-notes-v1`)
+- `useCompareTray` — compare selection, max 3 (`fantasy-compare-v1`)
+- `useLocalStorageString` — low-level reactive single-key localStorage reader the three stores build on
+- list density preference lives inline in `fantasy-football-client.tsx` via `useSyncExternalStore` (`fantasy-board-density`)
+- draft state persists per-season under `fantasy-draft-tracker-v2-<season>`
+
+Supporting libs:
+
+- `src/lib/fantasyUtils.ts` — board math, formatting, and legend copy (`getValueVsAdp`, `getConsensusSpread`, `withTierBreaks`, freshness helpers, `FANTASY_BOARD_LEGEND`)
+- `src/lib/draftAnalytics.ts` — pure steal/reach/position-run engine consumed by `DraftAnalyticsPanel`
+- `src/lib/fantasyLocal.ts` — parse/serialize helpers + storage-key constants for the queue/notes/compare stores
+
+These work with the generated fantasy snapshots (loaded through `useFantasySnapshot`) and `/api/fantasy-data` route described elsewhere in `docs/ai-context`.
 
 ---
 

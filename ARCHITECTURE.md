@@ -2,7 +2,7 @@
 
 High-level system architecture for the current live application.
 
-**Last updated:** 2026-06-10
+**Last updated:** 2026-06-19
 
 ---
 
@@ -60,6 +60,7 @@ src/app/layout.tsx
 - generated static snapshots in `public/data/fantasy/`
 - `/api/fantasy-data` server fallback over the same snapshot files
 - weekly GitHub Actions refresh through `npm run update:fantasy`
+- the rankings board (`/fantasy-football`) and draft assistant (`/fantasy-football/draft-tracker`) share three browser-local stores layered over `src/hooks/useLocalStorageString.ts`, with pure parse/serialize and key constants in `src/lib/fantasyLocal.ts`: a player watchlist (`usePlayerQueue`), per-player notes (`usePlayerNotes`), and the compare selection (`useCompareTray`); list density also persists locally. Shared presentation components live in `src/components/fantasy/`
 
 ### Investments
 
@@ -155,6 +156,7 @@ These are committed TypeScript files rebuilt by `scripts/buildPremierLeagueSnaps
 - generated public JSON snapshots in `public/data/fantasy/`
 - snapshot reader in `src/lib/fantasySnapshotServer.ts`
 - public API fallback at `/api/fantasy-data`
+- browser-local user state (watchlist, notes, compare selection) in `src/lib/fantasyLocal.ts` with `use{PlayerQueue,PlayerNotes,CompareTray}` hooks; not part of the committed snapshot
 
 ### Investments
 

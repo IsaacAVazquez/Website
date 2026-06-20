@@ -3,7 +3,7 @@
 Current route inventory and page ownership for the live app.
 
 **Framework:** Next.js 16 App Router
-**Last updated:** 2026-06-10
+**Last updated:** 2026-06-19
 
 ---
 
@@ -15,7 +15,7 @@ Current route inventory and page ownership for the live app.
 |------|------|-------|
 | `/` | `src/app/page.tsx` | Composes hero, featured projects, product-thinking preview, and homepage contact section |
 | `/about` | `src/app/about/page.tsx` | Renders `About` tabbed client UI |
-| `/portfolio` | `src/app/portfolio/page.tsx` | Renders project cards directly from route code |
+| `/portfolio` | `src/app/portfolio/page.tsx` | Renders project cards directly from route code; `PortfolioV3.tsx` adds a client-side project search/filter, with the marquee band sitting between the project grid and the pager |
 | `/portfolio/[slug]` | `src/app/portfolio/[slug]/page.tsx` | Project detail page |
 | `/resume` | `src/app/resume/page.tsx` | Resume route with client-rendered resume shell |
 | `/contact` | `src/app/contact/page.tsx` | Contact page using `ContactContent` |
@@ -54,7 +54,7 @@ Current route inventory and page ownership for the live app.
 | `/polling-aggregator` | `src/app/polling-aggregator/page.tsx` | Snapshot-backed political polling dashboard |
 | `/fintech-tools/budget-planner` | `src/app/fintech-tools/budget-planner/page.tsx` | Budget planner tool |
 | `/fintech-tools/interchange-iq` | `src/app/fintech-tools/interchange-iq/page.tsx` | Interchange fee analyzer |
-| `/mba-internship-notifications` | `src/app/mba-internship-notifications/page.tsx` | Live MBA role tracker polling 32 tech companies for internships and full-time business roles |
+| `/mba-internship-notifications` | `src/app/mba-internship-notifications/page.tsx` | Live MBA role tracker polling ~28 of 39 tracked companies for internships and full-time business roles |
 | `/decision-lab` | `src/app/decision-lab/page.tsx` | Decision-modeling sandbox |
 | `/food-map` | `src/app/food-map/page.tsx` | Food map |
 | `/recipe-finder` | `src/app/recipe-finder/page.tsx` | Recipe finder |
@@ -66,7 +66,7 @@ Current route inventory and page ownership for the live app.
 
 | Route | File | Notes |
 |------|------|-------|
-| `/fantasy-football` | `src/app/fantasy-football/page.tsx` | Fantasy football landing page |
+| `/fantasy-football` | `src/app/fantasy-football/page.tsx` | FantasyPros consensus rankings board (`fantasy-football-client.tsx`): deep-linkable position pill bar, PPR/Half-PPR/Standard scoring selector, per-board search, List/Tiers view toggle (`?view=tiers`), Comfortable/Compact density, infinite-scroll windowing, shared player detail drawer, compare tray, watchlist queue, private notes, and a freshness/ADP-source sidebar |
 | `/fantasy-football/tiers/[position]` | `src/app/fantasy-football/tiers/[position]/page.tsx` | Redirects to the canonical fantasy board with query parameters |
 | `/fantasy-football/rb-tiers` | `src/app/fantasy-football/rb-tiers/page.tsx` | Redirects to the canonical RB board with query parameters |
 | `/fantasy-football/draft-tracker` | `src/app/fantasy-football/draft-tracker/page.tsx` | Draft tracker |

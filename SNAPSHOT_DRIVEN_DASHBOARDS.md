@@ -4,7 +4,7 @@ How the site's data dashboards work. This is the single most-repeated
 architecture in the repo — 15+ public surfaces share it — so it gets one
 reference instead of being re-explained per route.
 
-**Last updated:** 2026-06-16
+**Last updated:** 2026-06-19
 
 The short version: **no dashboard calls an external API at request time.** A
 local script fetches data, transforms it, and writes a committed snapshot file. A
@@ -23,7 +23,7 @@ For a dashboard `x`:
 |------|------|------|
 | **Seed snapshot** | `src/data/<x>Snapshot.ts` | Committed `export const <x>Snapshot: <Type> = {…}`. Ships with a seed (empty or hand-authored) so the page works before the first refresh. |
 | **Builder** | `scripts/build<X>Snapshot.ts` (often via a `src/lib/<x>Data.ts` fetch/transform) | Fetches the upstream source, shapes it, writes the snapshot file. Run by `npm run update:<x>`. |
-| **GitHub Action** | `.github/workflows/update-<x>.yml` | Runs the builder on a schedule (+ manual dispatch) and commits the snapshot only when it changes. |
+| **GitHub Action** | `.github/workflows/update-<x>.yml` | Runs the builder on a schedule (+ manual dispatch) and commits the snapshot only when it changes, via the shared `scripts/ci/commit-and-push-snapshot.sh`. |
 | **Accessors** | `src/lib/<x>Snapshot.ts` | Pure read helpers the app and API routes call (`get<X>Summary()`, per-entity getters, id validation, empty-state factories). |
 | **API route(s)** | `src/app/api/<x>/summary/route.ts` (+ optional `[id]`) | Thin handlers that return accessor output. They read the committed snapshot, never the upstream source. |
 
@@ -78,6 +78,41 @@ response falls back to the committed snapshot.
 
 ---
 
+## The shared commit/push step (every Action)
+
+All 14 `update-*.yml` workflows route their git commit + push through one shared
+helper, `scripts/ci/commit-and-push-snapshot.sh`, instead of inlining their own
+git plumbing:
+
+```yaml
+- run: |
+    bash scripts/ci/commit-and-push-snapshot.sh \
+      "chore: refresh golf snapshot [automated] [skip ci]" \
+      src/data/golfSnapshot.ts
+```
+
+Usage is `commit-and-push-snapshot.sh <commit-message> <pathspec...>`. The script:
+
+1. Sets the `github-actions[bot]` git identity.
+2. Stages the given pathspecs and **exits 0 cleanly on a no-op refresh** — if
+   `git diff --cached --quiet` finds nothing staged, there's no commit to make.
+3. Commits, then pushes to `HEAD:main` with a **retry loop** (default 8 attempts,
+   override via `SNAPSHOT_PUSH_ATTEMPTS`). On each push rejection it
+   `git fetch origin main` and `git rebase --autostash origin/main`, then retries
+   with capped exponential backoff (`attempt² × 2`, capped at 30s) plus `RANDOM`
+   jitter.
+
+The retry loop exists because `main` moves constantly — many snapshot bots
+(earthquake hourly, world cup, transit, etc.) push to the same branch and collide.
+A refresh commit only touches its own snapshot files, so a rebase never truly
+conflicts; the failure mode is just losing the race repeatedly. The script bails
+(exit 1) only on a **genuine rebase conflict** (it aborts the rebase) or after
+exhausting all attempts. Tests in
+`.github/workflows/__tests__/snapshot-workflows.test.ts` and
+`update-investments.test.ts` assert every workflow uses it.
+
+---
+
 ## Worked example: `/golf` (the simplest one)
 
 1. **Source:** ESPN's public golf leaderboard endpoint, no token.
@@ -85,7 +120,8 @@ response falls back to the committed snapshot.
    from `src/lib/golfData.ts`, JSON-stringifies the result into
    `src/data/golfSnapshot.ts`, with the `readGeneratedSnapshot` fallback above.
 3. **Action:** `.github/workflows/update-golf.yml` runs daily at 08:40 UTC and
-   commits `src/data/golfSnapshot.ts` when it changes.
+   commits `src/data/golfSnapshot.ts` when it changes, via
+   `scripts/ci/commit-and-push-snapshot.sh`.
 4. **Accessors:** `src/lib/golfSnapshot.ts` exposes `getGolfSummary()`,
    `getGolfPlayerSnapshot(id)`, `createEmptyGolfSummary()`, and id validation.
 5. **API:** `/api/golf/summary` and `/api/golf/players/[playerId]`.
@@ -116,7 +152,7 @@ by BART abbr, world-cup `/teams/[teamId]` by team slug.
 | `/premier-league` | `src/data/premierLeagueSnapshot.ts` | `buildPremierLeagueSnapshot.ts` · `update:premier-league` / `update:football` | `update-premier-league.yml` | football-data.org (token) | daily 06:15 UTC, Aug–May |
 | `/la-liga` | `src/data/laLigaSnapshot.ts` | `updateLaLigaSnapshot.ts` · `update:la-liga` / `update:football` | `update-la-liga.yml` | football-data.org (token) | daily 06:30 UTC, Aug–May |
 | `/nfl` | `src/data/nflSnapshot.ts` | `updateNflSnapshot.ts` · `update:nfl` | `update-nfl.yml` | NFLverse CSVs | Tue 10:35 UTC, Sep–Feb |
-| `/mlb` | `src/data/mlbSnapshot.ts` | `updateMlbSnapshot.ts` · `update:mlb` | `update-mlb.yml` | MLB Stats API | daily 10:05 UTC, Apr–Oct |
+| `/mlb` | `src/data/mlbSnapshot.ts` | `updateMlbSnapshot.ts` · `update:mlb` | `update-mlb.yml` | MLB Stats API | daily 10:05 UTC, Mar–Nov |
 | `/nba` | `src/data/nbaSnapshot.ts` | `updateNbaSnapshot.ts` · `update:nba` | `update-nba.yml` | ESPN NBA | daily 10:20 UTC, mid-Oct–Jun |
 | `/golf` | `src/data/golfSnapshot.ts` | `buildGolfSnapshot.ts` · `update:golf` | `update-golf.yml` | ESPN golf | daily 08:40 UTC |
 | `/formula-1`, `/fantasy-formula-1` | `src/data/formula1Snapshot.ts` | `buildFormula1Snapshot.ts` · `update:formula-1` | `update-formula-1.yml` | OpenF1 | daily 08:10 UTC |
@@ -188,7 +224,8 @@ the snapshot type **and** render an on-page disclosure card (mirror `tech-startu
    deep-linkable state; add `src/app/<x>/error.tsx` **and** `src/app/<x>/loading.tsx`
    (curated/unverified data also needs `verified: false` + `asOf` + an on-page disclosure card).
 9. **Action** — `.github/workflows/update-<x>.yml` on a sensible cron + manual
-   dispatch, committing the snapshot only when it changes.
+   dispatch, committing the snapshot only when it changes via the shared
+   `scripts/ci/commit-and-push-snapshot.sh`.
 10. **Docs** — add a row to the table above and to
     `docs/DATA_UPDATE_OPERATIONS.md`; register in `AGENTS.md` Automation Surfaces.
 
