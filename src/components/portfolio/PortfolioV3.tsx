@@ -218,6 +218,48 @@ function ChevronRight({ size = 14 }: { size?: number }) {
   );
 }
 
+function SearchGlyph({ size = 16 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <circle cx="11" cy="11" r="7" />
+      <path d="M21 21l-4.35 -4.35" />
+    </svg>
+  );
+}
+
+// Builds the lowercase haystack a project is searched against — title,
+// description, role, tools, timeline, metrics, the editorial summary, and the
+// project's category label — so a query can match on what a project *is* as
+// well as what it's *called*.
+function matchesQuery(study: CaseStudyData, tokens: string[]): boolean {
+  if (tokens.length === 0) return true;
+  const categoryLabel =
+    CATEGORY_DEFS.find((c) => c.id === classify(study.slug))?.label ?? "";
+  const haystack = [
+    study.title,
+    study.description,
+    study.role,
+    study.timeline,
+    study.metrics,
+    study.overview?.summary ?? "",
+    categoryLabel,
+    ...study.tools,
+  ]
+    .join(" ")
+    .toLowerCase();
+  return tokens.every((token) => haystack.includes(token));
+}
+
 function toneClass(tone: ToneVariant): string {
   switch (tone) {
     case "is-acid":
@@ -340,6 +382,7 @@ export function PortfolioV3({ projects }: Props) {
   const [active, setActive] = useState<CategoryId>("all");
   const [sort, setSort] = useState<SortMode>("newest");
   const [page, setPage] = useState(1);
+  const [query, setQuery] = useState("");
 
   // Counts come from the full project list (including whatever ends up
   // featured) so the chips always show the real number of projects in each
@@ -362,10 +405,14 @@ export function PortfolioV3({ projects }: Props) {
   // archive (the rest). This makes the featured card respond to chip clicks
   // and sort changes — previously it stayed locked on projects[0] forever.
   const filtered = useMemo(() => {
+    const tokens = query.trim().toLowerCase().split(/\s+/).filter(Boolean);
     let list =
       active === "all"
         ? projects
         : projects.filter((p) => classify(p.slug) === active);
+    if (tokens.length > 0) {
+      list = list.filter((p) => matchesQuery(p, tokens));
+    }
     if (sort === "alpha") {
       list = [...list].sort((a, b) => a.title.localeCompare(b.title));
     } else if (sort === "live") {
@@ -378,12 +425,12 @@ export function PortfolioV3({ projects }: Props) {
       );
     }
     return list;
-  }, [projects, active, sort]);
+  }, [projects, active, sort, query]);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- Reset pagination when filter or sort changes
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Reset pagination when filter, sort, or search changes
     setPage(1);
-  }, [active, sort]);
+  }, [active, sort, query]);
 
   // Pin Investment Analytics Platform as the featured spotlight on the
   // "all" and "fintech" tabs — it's the flagship project, and burying it
@@ -459,6 +506,15 @@ export function PortfolioV3({ projects }: Props) {
                 one ships with a reason it exists, a tradeoff it makes, and a
                 surface you can poke at directly.
               </p>
+              <label className={styles.search} aria-label="Search projects">
+                <SearchGlyph size={16} />
+                <input
+                  type="search"
+                  placeholder={`Search ${pad2(totalProjects)} projects`}
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                />
+              </label>
               <div className={styles.statStrip}>
                 <div>
                   <span className="lbl">Projects</span>
@@ -630,84 +686,109 @@ export function PortfolioV3({ projects }: Props) {
               </div>
             </div>
 
-            <div className={styles.grid}>
-              {visible.map((study, i) => {
-                const absoluteIndex = pageStart + i;
-                // Spotlight every 7th card (mirrors the prototype's
-                // is-spotlight cadence on certain projects).
-                const isSpotlight =
-                  absoluteIndex > 0 && absoluteIndex % 7 === 1;
-                return (
-                  <ProjectCard
-                    key={study.slug}
-                    study={study}
-                    index={absoluteIndex}
-                    spotlight={isSpotlight}
-                  />
-                );
-              })}
-            </div>
-
-            {/* Marquee band */}
-            <div className={styles.band} aria-hidden="true">
-              <div className={styles.bandInner}>
-                <div className={styles.marquee}>
-                  <span className="hot">Latest · Budget Planner ships</span>
-                  <span>{liveToolsCount} live tools</span>
-                  <span>Pulse dashboards · multiple surfaces</span>
-                  <span>Decision Lab · 6 presets</span>
-                  <span>Interchange IQ · 7 processors</span>
-                  <span>Frontier Models · 7 providers</span>
-                  <span>GitHub Trending · 14 segments</span>
-                  <span className="hot">Snapshot-driven · deep-linkable</span>
-                  <span className="hot">Latest · Budget Planner ships</span>
-                  <span>{liveToolsCount} live tools</span>
-                  <span>Pulse dashboards · multiple surfaces</span>
-                  <span>Decision Lab · 6 presets</span>
-                  <span>Interchange IQ · 7 processors</span>
-                  <span>Frontier Models · 7 providers</span>
-                  <span>GitHub Trending · 14 segments</span>
-                  <span className="hot">Snapshot-driven · deep-linkable</span>
+            {filtered.length === 0 ? (
+              <div className={styles.empty}>
+                <p className={styles.emptyTitle}>
+                  No projects match{" "}
+                  {query.trim() ? `“${query.trim()}”` : "that filter"} yet.
+                </p>
+                <p className={styles.emptyBody}>
+                  Try a different keyword or category.
+                </p>
+                {query.trim() ? (
+                  <button
+                    type="button"
+                    className={styles.emptyClear}
+                    onClick={() => setQuery("")}
+                  >
+                    Clear search
+                  </button>
+                ) : null}
+              </div>
+            ) : (
+              <>
+                <div className={styles.grid}>
+                  {visible.map((study, i) => {
+                    const absoluteIndex = pageStart + i;
+                    // Spotlight every 7th card (mirrors the prototype's
+                    // is-spotlight cadence on certain projects).
+                    const isSpotlight =
+                      absoluteIndex > 0 && absoluteIndex % 7 === 1;
+                    return (
+                      <ProjectCard
+                        key={study.slug}
+                        study={study}
+                        index={absoluteIndex}
+                        spotlight={isSpotlight}
+                      />
+                    );
+                  })}
                 </div>
-              </div>
-            </div>
 
-            <div className={styles.pager}>
-              <span className={styles.pageInfo}>
-                Page {page} of {totalPages}
-              </span>
-              <div className={styles.pages}>
-                <button
-                  type="button"
-                  onClick={() => setPage(Math.max(1, page - 1))}
-                  disabled={page === 1}
-                >
-                  <ChevronLeft />
-                  Prev
-                </button>
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                  (n) => (
-                    <button
-                      key={n}
-                      type="button"
-                      className={n === page ? styles.pageOn : ""}
-                      onClick={() => setPage(n)}
-                      aria-current={n === page ? "page" : undefined}
-                    >
-                      {pad2(n)}
-                    </button>
-                  ),
-                )}
-                <button
-                  type="button"
-                  onClick={() => setPage(Math.min(totalPages, page + 1))}
-                  disabled={page === totalPages}
-                >
-                  Next
-                  <ChevronRight />
-                </button>
-              </div>
-            </div>
+                {/* Marquee band — sits between the project grid and the pager */}
+                <div className={styles.band} aria-hidden="true">
+                  <div className={styles.bandInner}>
+                    <div className={styles.marquee}>
+                      <span className="hot">Latest · Budget Planner ships</span>
+                      <span>{liveToolsCount} live tools</span>
+                      <span>Pulse dashboards · multiple surfaces</span>
+                      <span>Decision Lab · 6 presets</span>
+                      <span>Interchange IQ · 7 processors</span>
+                      <span>Frontier Models · 7 providers</span>
+                      <span>GitHub Trending · 14 segments</span>
+                      <span className="hot">Snapshot-driven · deep-linkable</span>
+                      <span className="hot">Latest · Budget Planner ships</span>
+                      <span>{liveToolsCount} live tools</span>
+                      <span>Pulse dashboards · multiple surfaces</span>
+                      <span>Decision Lab · 6 presets</span>
+                      <span>Interchange IQ · 7 processors</span>
+                      <span>Frontier Models · 7 providers</span>
+                      <span>GitHub Trending · 14 segments</span>
+                      <span className="hot">Snapshot-driven · deep-linkable</span>
+                    </div>
+                  </div>
+                </div>
+
+                {totalPages > 1 ? (
+                  <div className={styles.pager}>
+                    <span className={styles.pageInfo}>
+                      Page {page} of {totalPages}
+                    </span>
+                    <div className={styles.pages}>
+                      <button
+                        type="button"
+                        onClick={() => setPage(Math.max(1, page - 1))}
+                        disabled={page === 1}
+                      >
+                        <ChevronLeft />
+                        Prev
+                      </button>
+                      {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                        (n) => (
+                          <button
+                            key={n}
+                            type="button"
+                            className={n === page ? styles.pageOn : ""}
+                            onClick={() => setPage(n)}
+                            aria-current={n === page ? "page" : undefined}
+                          >
+                            {pad2(n)}
+                          </button>
+                        ),
+                      )}
+                      <button
+                        type="button"
+                        onClick={() => setPage(Math.min(totalPages, page + 1))}
+                        disabled={page === totalPages}
+                      >
+                        Next
+                        <ChevronRight />
+                      </button>
+                    </div>
+                  </div>
+                ) : null}
+              </>
+            )}
           </section>
         </div>
 
