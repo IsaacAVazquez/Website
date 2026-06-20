@@ -8,6 +8,7 @@ import type {
 } from "@/types/investment";
 import { normalizeInvestmentSnapshot } from "@/lib/investmentFreshness";
 import { normalizeInvestmentsIndex } from "@/lib/investmentsIndex";
+import { getInvestmentsAssetOrigin } from "@/lib/investmentsAssetOrigin";
 
 type PrefetchedReadStatus = "hit" | "missing" | "skipped";
 
@@ -99,19 +100,6 @@ async function readJsonFile<T>(
   }
 }
 
-function getPublicAssetOrigin(options: InvestmentsDataOptions = {}): string | null {
-  const configuredOrigin =
-    options.assetOrigin ??
-    process.env.URL ??
-    process.env.DEPLOY_PRIME_URL ??
-    process.env.DEPLOY_URL ??
-    process.env.SITE_URL ??
-    process.env.NEXT_PUBLIC_SITE_URL ??
-    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null);
-
-  return configuredOrigin ? configuredOrigin.replace(/\/$/, "") : null;
-}
-
 async function fetchPublicJsonFile<T>(
   relativePath: string,
   options: InvestmentsDataOptions = {}
@@ -120,7 +108,7 @@ async function fetchPublicJsonFile<T>(
   status: PrefetchedReadStatus;
   httpStatus?: number;
 }> {
-  const origin = getPublicAssetOrigin(options);
+  const origin = getInvestmentsAssetOrigin(options);
   if (!origin) {
     return {
       data: null,
@@ -166,7 +154,7 @@ async function readInvestmentJson<T>(
       source: "filesystem",
       diagnostics: {
         relativePath,
-        assetOrigin: getPublicAssetOrigin(options),
+        assetOrigin: getInvestmentsAssetOrigin(options),
         filesystem: localFile.status,
         publicAsset: "skipped",
       },
@@ -179,7 +167,7 @@ async function readInvestmentJson<T>(
     source: publicFile.data !== null ? "public" : null,
     diagnostics: {
       relativePath,
-      assetOrigin: getPublicAssetOrigin(options),
+      assetOrigin: getInvestmentsAssetOrigin(options),
       filesystem: localFile.status,
       publicAsset: publicFile.status,
       publicStatus: publicFile.httpStatus,

@@ -62,7 +62,7 @@ export async function GET(
     // Reject symbols outside the curated universe BEFORE doing any
     // filesystem access. The allowlist is loaded once at module init and
     // shared with the quote proxies.
-    if (!isAllowedSymbol(symbol)) {
+    if (!(await isAllowedSymbol(symbol))) {
       return NextResponse.json(
         { error: "Symbol not found" },
         { status: 404, headers: NO_STORE_HEADERS }

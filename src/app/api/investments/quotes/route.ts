@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import type { StockQuote } from "@/types/investment";
-import { isAllowedSymbol, fetchFinnhubQuote } from "@/lib/finnhub";
+import { getAllowedSymbols, fetchFinnhubQuote } from "@/lib/finnhub";
 import { apiRateLimiter, rateLimitResponse } from "@/lib/rateLimit";
 import { logger } from "@/lib/logger";
 
@@ -64,9 +64,10 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const validSymbols = symbolArray.filter(isAllowedSymbol);
+    const allowlist = await getAllowedSymbols();
+    const validSymbols = symbolArray.filter((s) => allowlist.has(s));
     const invalidQuotes: StockQuote[] = symbolArray
-      .filter((s) => !isAllowedSymbol(s))
+      .filter((s) => !allowlist.has(s))
       .map((s) => ({
         symbol: s,
         price: 0,
