@@ -65,6 +65,17 @@ try {
 Builders also **write atomically** (`writeFileAtomic`: write `.tmp`, then
 `renameSync`) so the snapshot is never observed half-written.
 
+A builder that fans out across **many independent upstream calls** (e.g.
+`buildGitHubTrendingSnapshot.ts` hits the GitHub Search API once per tracked
+language/topic) wraps each call in `withRetry` (`scripts/fetchRetry.ts`) so a
+transient blip on one segment doesn't discard the whole refresh. It tolerates a
+few segments failing outright — skipping them and writing the rest fresh — but
+aborts (keeping the previous snapshot) once `MAX_FAILED_SEGMENTS` is exceeded,
+so a broad outage never gets written as a gutted snapshot. The two football
+builders (`buildPremierLeagueSnapshot.ts`, `updateLaLigaSnapshot.ts`) both honor
+the contract identically: a thrown fetch **or** a successful-but-empty standings
+response falls back to the committed snapshot.
+
 ---
 
 ## Worked example: `/golf` (the simplest one)
