@@ -9,11 +9,40 @@ import type {
   GitHubTrendingSegmentKind,
   GitHubTrendingSnapshot,
 } from "../src/types/githubTrending";
+import { withRetry } from "./fetchRetry";
 
 interface BuildOptions {
   projectRoot?: string;
   generatedAt?: string;
   logger?: Pick<Console, "log" | "warn">;
+  /** Injectable for tests; defaults to the global `fetch`. */
+  fetchImpl?: typeof fetch;
+  /** Override the inter-segment pacing delay (ms). Defaults to a token-aware value. */
+  requestDelayMs?: number;
+  /** Attempts per segment fetch before giving up on that segment. */
+  maxFetchAttempts?: number;
+  /** Backoff base (ms) for the per-segment retry. Lowered in tests. */
+  retryBackoffMs?: number;
+}
+
+/**
+ * The GitHub Search API is the only upstream source, so a transient blip on a
+ * single segment must not discard the entire refresh. We retry each segment and
+ * tolerate a few outright failures; only a broad outage (more than this many
+ * failed segments) aborts the run so the previous snapshot is preserved.
+ */
+const MAX_FAILED_SEGMENTS = 3;
+
+/** Error carrying the HTTP status + headers so `withRetry` can classify it. */
+class GitHubSearchHttpError extends Error {
+  constructor(
+    message: string,
+    readonly status: number,
+    readonly headers: Headers
+  ) {
+    super(message);
+    this.name = "GitHubSearchHttpError";
+  }
 }
 
 interface BuildResult {
@@ -179,13 +208,30 @@ async function readPreviousSnapshot(
   }
 }
 
+/**
+ * A GitHub rate-limit response is a 403 with `x-ratelimit-remaining: 0` (primary
+ * limit) or a 403/429 with `retry-after` (secondary limit). `withRetry` only
+ * treats 429/503/5xx as retryable, so we surface rate-limited 403s as 429 to get
+ * the same backoff-and-honor-`Retry-After` behavior.
+ */
+function effectiveStatus(response: Response): number {
+  if (response.status === 403) {
+    const remaining = response.headers.get("x-ratelimit-remaining");
+    if (remaining === "0" || response.headers.get("retry-after")) {
+      return 429;
+    }
+  }
+  return response.status;
+}
+
 async function fetchSegment(
   segment: TrackedSegmentConfig,
   generatedAt: string,
-  token: string | undefined
+  token: string | undefined,
+  fetchImpl: typeof fetch
 ): Promise<GitHubTrendingSourceSegment> {
   const query = buildSearchQuery(segment, generatedAt);
-  const response = await fetch(buildSearchUrl(query), {
+  const response = await fetchImpl(buildSearchUrl(query), {
     headers: {
       Accept: "application/vnd.github+json",
       "X-GitHub-Api-Version": "2022-11-28",
@@ -210,8 +256,10 @@ async function fetchSegment(
     } catch {
       // Ignore body-read failures and fall back to the status text.
     }
-    throw new Error(
-      `GitHub search failed for ${segment.label} (HTTP ${response.status}): ${detail}`
+    throw new GitHubSearchHttpError(
+      `GitHub search failed for ${segment.label} (HTTP ${response.status}): ${detail}`,
+      effectiveStatus(response),
+      response.headers
     );
   }
 
@@ -242,9 +290,13 @@ export async function buildGitHubTrendingSnapshot(
   const generatedAt = options.generatedAt ?? new Date().toISOString();
   const snapshotPath = path.join(projectRoot, ...SNAPSHOT_PATH_SEGMENTS);
   const previousSnapshot = await readPreviousSnapshot(snapshotPath, logger);
+  const fetchImpl = options.fetchImpl ?? fetch;
   const token = getGitHubToken();
-  const delayMs = token ? 250 : 6_500;
+  const delayMs = options.requestDelayMs ?? (token ? 250 : 6_500);
+  const maxAttempts = options.maxFetchAttempts ?? 4;
+  const retryBackoffMs = options.retryBackoffMs ?? 1_500;
   const segments: GitHubTrendingSourceSegment[] = [];
+  const failedSegments: string[] = [];
 
   for (let index = 0; index < TRACKED_SEGMENTS.length; index += 1) {
     const segment = TRACKED_SEGMENTS[index];
@@ -252,7 +304,39 @@ export async function buildGitHubTrendingSnapshot(
       await sleep(delayMs);
     }
     logger.log(`Fetching GitHub trending segment: ${segment.label}`);
-    segments.push(await fetchSegment(segment, generatedAt, token));
+    try {
+      segments.push(
+        await withRetry(
+          `github-trending:${segment.key}`,
+          () => fetchSegment(segment, generatedAt, token, fetchImpl),
+          maxAttempts,
+          retryBackoffMs
+        )
+      );
+    } catch (error) {
+      // A single segment that stays down after retries is skipped rather than
+      // failing the whole refresh — the other segments still get fresh data.
+      failedSegments.push(segment.label);
+      logger.warn(
+        `Skipping GitHub trending segment "${segment.label}" after ${maxAttempts} attempts: ${
+          error instanceof Error ? error.message : String(error)
+        }`
+      );
+    }
+  }
+
+  if (failedSegments.length > MAX_FAILED_SEGMENTS) {
+    // Too much of the source is unavailable to trust a partial refresh; abort so
+    // the previously committed snapshot is kept rather than gutted.
+    throw new Error(
+      `GitHub trending refresh aborted: ${failedSegments.length} of ${TRACKED_SEGMENTS.length} segments failed (${failedSegments.join(", ")}). Keeping the previous snapshot.`
+    );
+  }
+
+  if (failedSegments.length > 0) {
+    logger.warn(
+      `GitHub trending snapshot built with ${failedSegments.length} segment(s) skipped: ${failedSegments.join(", ")}.`
+    );
   }
 
   const snapshot = buildSnapshotData({
