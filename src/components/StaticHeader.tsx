@@ -111,6 +111,11 @@ export function StaticHeader() {
 
       <div
         id="mobile-menu"
+        // Collapsed menu stays in the DOM for the height transition, so mark it
+        // inert + aria-hidden to keep its links out of the tab order and the
+        // accessibility tree until it's actually open.
+        inert={!isMobileMenuOpen}
+        aria-hidden={!isMobileMenuOpen}
         className={cn(
           "overflow-hidden transition-[max-height,opacity] duration-300 ease-out lg:hidden",
           isMobileMenuOpen ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0"

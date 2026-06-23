@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { X } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 import {
   formatAdp,
@@ -70,13 +70,45 @@ function bestIndex(players: Player[], key: string, direction: Direction): number
 
 export function CompareModal({ players, publishedRank, onClose, onRemove }: CompareModalProps) {
   const reduceMotion = useReducedMotion();
+  const panelRef = useRef<HTMLDivElement>(null);
+  const restoreFocusRef = useRef<HTMLElement | null>(null);
 
+  // Capture focus on open, trap Tab within the panel, and restore on close.
   useEffect(() => {
-    function onKey(event: KeyboardEvent) {
-      if (event.key === "Escape") onClose();
+    restoreFocusRef.current = document.activeElement as HTMLElement | null;
+
+    const panel = panelRef.current;
+    panel?.focus();
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        onClose();
+        return;
+      }
+      if (event.key !== "Tab" || !panel) return;
+
+      const focusable = panel.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), textarea, input, [tabindex]:not([tabindex="-1"])',
+      );
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     }
-    document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      restoreFocusRef.current?.focus?.();
+    };
   }, [onClose]);
 
   const scaleMin = Math.min(...players.map((p) => (Number.isFinite(p.minRank) ? (p.minRank as number) : Infinity)));
@@ -151,14 +183,16 @@ export function CompareModal({ players, publishedRank, onClose, onRemove }: Comp
           tabIndex={-1}
         />
         <motion.div
+          ref={panelRef}
           role="dialog"
           aria-modal="true"
           aria-label="Compare players"
+          tabIndex={-1}
           initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 18, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 18, scale: 0.98 }}
           transition={{ duration: reduceMotion ? 0 : 0.22, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="relative max-h-[88vh] w-full max-w-2xl overflow-auto rounded-[1.6rem] border p-5"
+          className="relative max-h-[88vh] w-full max-w-2xl overflow-auto rounded-[1.6rem] border p-5 outline-none"
           style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)", boxShadow: "var(--shadow-xl)" }}
         >
           <div className="mb-4 flex items-center justify-between">
