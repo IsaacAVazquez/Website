@@ -1,5 +1,21 @@
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { createHash, timingSafeEqual } from "crypto";
+
+/**
+ * Constant-time string comparison.
+ *
+ * Both inputs are SHA-256 hashed first so the comparison runs over
+ * fixed-length buffers (timingSafeEqual throws on length mismatch, and
+ * comparing raw lengths would itself leak length information). The hash
+ * keeps the compare time independent of where the first differing byte is,
+ * defeating timing attacks against the credential check.
+ */
+function safeEqual(a: string, b: string): boolean {
+  const ha = createHash("sha256").update(a, "utf8").digest();
+  const hb = createHash("sha256").update(b, "utf8").digest();
+  return timingSafeEqual(ha, hb);
+}
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -10,12 +26,27 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" }
       },
       async authorize(credentials) {
-        // For security, credentials should be stored in environment variables
-        // This is a basic implementation - in production, use proper password hashing
-        if (
-          credentials?.username === process.env.ADMIN_USERNAME &&
-          credentials?.password === process.env.ADMIN_PASSWORD
-        ) {
+        const expectedUsername = process.env.ADMIN_USERNAME;
+        const expectedPassword = process.env.ADMIN_PASSWORD;
+
+        // Fail closed: if the admin credentials are not configured, no login
+        // is possible. This prevents an "undefined === undefined" bypass when
+        // the env vars are absent, and avoids ever authenticating against an
+        // empty secret.
+        if (!expectedUsername || !expectedPassword) {
+          return null;
+        }
+
+        if (!credentials?.username || !credentials?.password) {
+          return null;
+        }
+
+        // Constant-time comparison to avoid leaking timing information about
+        // the configured username/password.
+        const usernameMatches = safeEqual(credentials.username, expectedUsername);
+        const passwordMatches = safeEqual(credentials.password, expectedPassword);
+
+        if (usernameMatches && passwordMatches) {
           return {
             id: "1",
             name: "Admin",
@@ -32,7 +63,9 @@ export const authOptions: NextAuthOptions = {
   },
   session: {
     strategy: "jwt",
-    maxAge: 30 * 24 * 60 * 60, // 30 days
+    // Admin sessions are stateless JWTs with no server-side revocation, so keep
+    // the window short to limit the blast radius of a leaked token.
+    maxAge: 7 * 24 * 60 * 60, // 7 days
   },
   callbacks: {
     async jwt({ token, user }) {

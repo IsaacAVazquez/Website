@@ -52,7 +52,9 @@ function makeRequest(
     headers: {
       "Content-Type": "application/json",
       "User-Agent": `jest-${client}`,
-      "X-Forwarded-For": `192.0.2.${client.length}`,
+      // The per-IP rate limit is keyed on the trusted client IP, so give each
+      // distinct `client` a distinct IP (and a fixed `client` a stable one).
+      "x-nf-client-connection-ip": `ip-${client}`,
       ...headers,
     },
     body: JSON.stringify(body),

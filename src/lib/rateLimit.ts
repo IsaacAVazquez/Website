@@ -93,16 +93,41 @@ export const emailDigestRateLimiter = new RateLimiter({
   uniqueTokenPerInterval: 3 // 3 email sends per client per hour
 });
 
-// Helper function to get client identifier
-export function getClientIdentifier(request: NextRequest): string {
-  // Try to get IP from various headers
-  const forwarded = request.headers.get("x-forwarded-for");
+/**
+ * Resolve the client IP for rate-limiting.
+ *
+ * Prefers `x-nf-client-connection-ip`, which Netlify sets from the real TCP
+ * peer and a client cannot forge. `x-forwarded-for` / `x-real-ip` are only used
+ * as a fallback for non-Netlify/local runs; note the leftmost `x-forwarded-for`
+ * entry is client-supplied and spoofable, so it is intentionally the last
+ * resort. Returns "unknown" when nothing is available (a single shared bucket).
+ */
+export function getClientIp(request: NextRequest): string {
+  const netlifyIp = request.headers.get("x-nf-client-connection-ip");
+  if (netlifyIp) {
+    return netlifyIp.trim();
+  }
+
   const realIp = request.headers.get("x-real-ip");
-  const ip = forwarded?.split(",")[0] || realIp || "unknown";
-  
-  // You could also use a combination of IP + User-Agent for more granular control
+  if (realIp) {
+    return realIp.trim();
+  }
+
+  const forwarded = request.headers.get("x-forwarded-for");
+  return forwarded?.split(",")[0]?.trim() || "unknown";
+}
+
+// Helper function to get client identifier.
+//
+// NOTE: this appends the User-Agent, which a client controls — so it is only
+// suitable for coarse, non-security-critical throttling (a client can multiply
+// its allowance by rotating the UA). For endpoints where the limit is a real
+// abuse control (e.g. sending email), use `getClientIp` instead so the bucket
+// is keyed on identity the client cannot trivially rotate.
+export function getClientIdentifier(request: NextRequest): string {
+  const ip = getClientIp(request);
   const userAgent = request.headers.get("user-agent") || "unknown";
-  
+
   return `${ip}:${userAgent}`;
 }
 

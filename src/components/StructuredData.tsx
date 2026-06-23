@@ -1,4 +1,4 @@
-import { siteConfig } from "@/lib/seo";
+import { siteConfig, safeJsonLd } from "@/lib/seo";
 import { profile, profileSameAs } from "@/lib/profile";
 
 interface StructuredDataProps {
@@ -426,7 +426,7 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
     <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify(getStructuredData()),
+        __html: safeJsonLd(getStructuredData()),
       }}
     />
   );

@@ -567,3 +567,27 @@ export function calculateReadingTime(text: string): number {
   const words = text.trim().split(/\s+/).length;
   return Math.ceil(words / wordsPerMinute);
 }
+
+/**
+ * Serialize a value as JSON for safe injection into a
+ * `<script type="application/ld+json">` block via dangerouslySetInnerHTML.
+ *
+ * `JSON.stringify` does NOT escape `<`, `>`, or `&`, so a value containing
+ * `</script>` (e.g. derived from a URL path or other dynamic data) could break
+ * out of the JSON-LD block and inject markup. Escaping these characters to their
+ * unicode equivalents keeps the output valid JSON while making `</script>`
+ * breakout impossible. Also escapes U+2028/U+2029, which are valid in JSON but
+ * illegal in JavaScript string literals.
+ */
+export function safeJsonLd(data: unknown): string {
+  // U+2028 (line separator) and U+2029 (paragraph separator) are valid in JSON
+  // but are line terminators in JavaScript string literals. Build them from
+  // char codes so this source file contains no raw line-terminator characters.
+  const lineSeparators =
+    String.fromCharCode(0x2028) + String.fromCharCode(0x2029);
+  const unsafe = new RegExp(`[<>&${lineSeparators}]`, "g");
+  return JSON.stringify(data).replace(
+    unsafe,
+    (ch) => "\\u" + ch.charCodeAt(0).toString(16).padStart(4, "0")
+  );
+}
