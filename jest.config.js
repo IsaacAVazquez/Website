@@ -34,10 +34,10 @@ const customJestConfig = {
   // Start at achievable levels; ratchet upward as coverage improves.
   coverageThreshold: {
     global: {
-      branches: 20,
-      functions: 25,
-      lines: 25,
-      statements: 25,
+      branches: 45,
+      functions: 58,
+      lines: 60,
+      statements: 58,
     },
   },
 
