@@ -21,11 +21,15 @@ export interface SearchResult {
   title: string;
   excerpt: string;
   url: string;
-  type: 'blog' | 'project' | 'page';
+  type: 'post' | 'project' | 'page';
   category?: string;
   tags?: string[];
   publishedAt?: string;
-  relevanceScore: number;
+}
+
+interface SearchApiResponse {
+  results?: SearchResult[];
+  total?: number;
 }
 
 export interface SearchState {
@@ -76,6 +80,7 @@ export function SearchInterface({
 }: SearchInterfaceProps) {
   const router = useRouter();
   const pendingUrlSyncKeyRef = useRef<string | null>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const seededState = readSeededSearchState({
     query: initialQuery,
     type: initialType,
@@ -130,7 +135,7 @@ export function SearchInterface({
   const updateURL = useCallback((query: string, type: string, category: string) => {
     pendingUrlSyncKeyRef.current = getSearchStateKey(query, type, category);
     const params = new URLSearchParams();
-    if (query) params.set('q', query);
+    if (query.trim()) params.set('q', query);
     if (type !== 'all') params.set('type', type);
     if (category !== 'all') params.set('category', category);
 
@@ -164,7 +169,7 @@ export function SearchInterface({
         ...(category !== 'all' && { category })
       })}`);
 
-      const data = await response.json();
+      const data: SearchApiResponse = await response.json();
       const searchTime = Date.now() - startTime;
 
       setSearchState(prev => ({
@@ -261,6 +266,9 @@ export function SearchInterface({
       searchTime: 0
     }));
     updateURL("", "all", "all");
+    // The clear (X) button unmounts the moment the query is empty; move focus
+    // back to the input so keyboard/screen-reader users aren't dropped to <body>.
+    inputRef.current?.focus();
   };
 
   const clearFilters = () => {
@@ -286,11 +294,13 @@ export function SearchInterface({
                 aria-hidden="true"
               />
               <input
+                ref={inputRef}
                 type="text"
                 value={searchState.query}
                 onChange={(e) => handleQueryChange(e.target.value)}
-                placeholder="Search for content..."
+                placeholder="Search writing, projects, and tools…"
                 aria-label="Search content"
+                aria-controls="search-results"
                 className="w-full min-h-[44px] pl-12 pr-12 py-3 rounded-xl transition-colors"
                 style={{
                   fontFamily: "var(--font-home-sans)",
@@ -301,9 +311,10 @@ export function SearchInterface({
               />
               {searchState.query && (
                 <button
+                  type="button"
                   onClick={clearSearch}
                   aria-label="Clear search"
-                  className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center justify-center rounded-md transition-colors"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md transition-colors"
                   style={{ color: "var(--home-ink-muted)" }}
                 >
                   <IconX className="w-5 h-5" />
@@ -312,8 +323,11 @@ export function SearchInterface({
             </div>
 
             <button
+              type="button"
               onClick={() => setShowFilters(!showFilters)}
               aria-label={showFilters ? "Hide filters" : "Show filters"}
+              aria-expanded={showFilters}
+              aria-controls="search-filters"
               className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl p-3 transition-colors"
               style={
                 filterActive
@@ -336,13 +350,15 @@ export function SearchInterface({
 
         {/* Filters */}
         {showFilters && (
-          <SearchFilters
-            type={searchState.type}
-            category={searchState.category}
-            onTypeChange={handleTypeChange}
-            onCategoryChange={handleCategoryChange}
-            onClearFilters={clearFilters}
-          />
+          <div id="search-filters">
+            <SearchFilters
+              type={searchState.type}
+              category={searchState.category}
+              onTypeChange={handleTypeChange}
+              onCategoryChange={handleCategoryChange}
+              onClearFilters={clearFilters}
+            />
+          </div>
         )}
 
         {/* Active Filters Display */}
@@ -378,6 +394,7 @@ export function SearchInterface({
               </span>
             )}
             <button
+              type="button"
               onClick={clearFilters}
               className="text-sm underline underline-offset-2"
               style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-haze)" }}
@@ -388,15 +405,28 @@ export function SearchInterface({
         )}
       </article>
 
+      {/* Politely announce loading / result-count / empty states to assistive tech. */}
+      <div role="status" aria-live="polite" aria-atomic="true" className="sr-only">
+        {searchState.isLoading
+          ? "Searching…"
+          : searchState.hasSearched
+            ? searchState.totalResults === 0
+              ? `No results found${searchState.query ? ` for ${searchState.query}` : ""}`
+              : `${searchState.totalResults} result${searchState.totalResults === 1 ? "" : "s"} found`
+            : ""}
+      </div>
+
       {/* Search Results */}
-      <SearchResults
-        query={searchState.query}
-        results={searchState.results}
-        isLoading={searchState.isLoading}
-        hasSearched={searchState.hasSearched}
-        totalResults={searchState.totalResults}
-        searchTime={searchState.searchTime}
-      />
+      <div id="search-results">
+        <SearchResults
+          query={searchState.query}
+          results={searchState.results}
+          isLoading={searchState.isLoading}
+          hasSearched={searchState.hasSearched}
+          totalResults={searchState.totalResults}
+          searchTime={searchState.searchTime}
+        />
+      </div>
 
       {/* Search Tips */}
       {!searchState.hasSearched && !searchState.query && (
@@ -425,6 +455,7 @@ export function SearchInterface({
                 {["product strategy", "fantasy football", "investment research"].map((example) => (
                   <button
                     key={example}
+                    type="button"
                     onClick={() => handleQueryChange(example)}
                     className="block text-left text-sm underline underline-offset-2"
                     style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-haze)" }}

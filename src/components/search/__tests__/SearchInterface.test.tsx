@@ -123,7 +123,11 @@ describe("SearchInterface", () => {
 
     expect(mockFetch).toHaveBeenCalledTimes(1);
     expect(mockPush).not.toHaveBeenCalled();
-    expect(screen.getByText(/1 result found/i)).toBeVisible();
+    // Target the heading specifically: the count is intentionally mirrored in a
+    // visually-hidden aria-live region, so a plain getByText would match twice.
+    expect(
+      screen.getByRole("heading", { name: /1 result found/i })
+    ).toBeVisible();
   });
 
   it("syncs debounced searches and filter changes into the URL, then clears back to /search", async () => {
@@ -188,5 +192,30 @@ describe("SearchInterface", () => {
 
     expect(mockFetch).toHaveBeenCalledTimes(fetchCallsBeforeClear);
     expect(screen.getByText(/search tips/i)).toBeVisible();
+  });
+
+  it("routes the Writing content-type filter to type=post (matching the API taxonomy)", async () => {
+    const user = userEvent.setup({
+      advanceTimers: jest.advanceTimersByTime,
+    });
+
+    render(<SearchHarness />);
+
+    const input = screen.getByRole("textbox", { name: /search content/i });
+    await user.type(input, "ai");
+
+    act(() => {
+      jest.advanceTimersByTime(300);
+    });
+    await waitFor(() => expect(mockFetch).toHaveBeenCalled());
+
+    await user.click(screen.getByRole("button", { name: /show filters/i }));
+    await user.click(screen.getByRole("button", { name: /^writing$/i }));
+
+    await waitFor(() =>
+      expect(mockPush).toHaveBeenLastCalledWith("/search?q=ai&type=post", {
+        scroll: false,
+      })
+    );
   });
 });

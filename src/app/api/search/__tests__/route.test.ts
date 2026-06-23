@@ -133,6 +133,28 @@ describe("GET /api/search", () => {
     ).toBe(true);
   });
 
+  it("filters by an exact (case-insensitive) category and echoes it in filters", async () => {
+    // 'Site' is a curated static-page category, present regardless of the blog mock.
+    const response = await GET(makeRequest("?category=site"));
+    const body = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(body.filters.category).toBe("site");
+    expect(body.results.length).toBeGreaterThan(0);
+    for (const result of body.results) {
+      expect(String(result.category).toLowerCase()).toBe("site");
+    }
+  });
+
+  it("returns nothing for a category that is not present in the corpus", async () => {
+    const response = await GET(makeRequest("?category=NotARealCategory"));
+    const body = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(body.results).toEqual([]);
+    expect(body.total).toBe(0);
+  });
+
   it("clamps the limit parameter into the 1..100 range", async () => {
     // Seed the corpus with many matching posts so the limit is what caps output.
     const previews = Array.from({ length: 10 }, (_, i) => ({

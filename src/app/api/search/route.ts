@@ -586,16 +586,16 @@ function calculateRelevanceScore(content: SearchableContent, query: string): num
     });
   }
 
-  // Content matches (lowest weight but important for comprehensive search)
+  // Content matches (lowest weight but important for comprehensive search).
+  // Count substring occurrences, mirroring the .includes() matching used by
+  // the fields above. This avoids the ASCII-only `\b` word-boundary regex,
+  // which silently dropped tokens with punctuation or accents (e.g. "c++",
+  // ".net", "café") from the content-field score.
   const contentLower = content.content.toLowerCase();
   queryWords.forEach(word => {
-    // Escape regex metacharacters so queries like "c++" or "(" don't throw
-    // (an unescaped RegExp would crash the whole request with a 500).
-    const escapedWord = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    const regex = new RegExp(`\\b${escapedWord}\\b`, 'gi');
-    const matches = contentLower.match(regex);
-    if (matches) {
-      score += matches.length * 2; // Multiple occurrences increase score
+    const occurrences = contentLower.split(word).length - 1;
+    if (occurrences > 0) {
+      score += occurrences * 2; // Multiple occurrences increase score
     }
   });
 
@@ -614,7 +614,9 @@ function calculateRelevanceScore(content: SearchableContent, query: string): num
   return score;
 }
 
-function searchContent(content: SearchableContent[], query: string, type?: string, category?: string): SearchableContent[] {
+type ScoredContent = SearchableContent & { relevanceScore?: number };
+
+function searchContent(content: SearchableContent[], query: string, type?: string, category?: string): ScoredContent[] {
   let filteredContent = content;
 
   // Apply type filter
@@ -629,12 +631,17 @@ function searchContent(content: SearchableContent[], query: string, type?: strin
     );
   }
 
-  // If no query, return filtered content sorted by date
+  // If no query, return the filtered corpus in a stable total order: dated
+  // entries (blog posts) first by recency, then everything else by title.
+  // (Pages and case studies carry no publishedAt, so a "both have dates"
+  // check alone yielded a non-total, input-order-dependent ordering.)
   if (!query.trim()) {
-    return filteredContent.sort((a, b) => {
+    return filteredContent.slice().sort((a, b) => {
       if (a.publishedAt && b.publishedAt) {
         return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
       }
+      if (a.publishedAt) return -1;
+      if (b.publishedAt) return 1;
       return a.title.localeCompare(b.title);
     });
   }
@@ -679,7 +686,7 @@ export async function GET(request: NextRequest) {
       category: item.category,
       tags: item.tags,
       publishedAt: item.publishedAt,
-      relevanceScore: (item as SearchableContent & { relevanceScore?: number }).relevanceScore,
+      relevanceScore: item.relevanceScore,
     }));
 
     return NextResponse.json({
