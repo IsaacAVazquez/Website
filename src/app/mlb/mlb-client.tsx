@@ -36,14 +36,15 @@ import type {
   MlbView,
 } from "@/types/mlb";
 import {
-  buildMlbHref,
-  canonicalizeMlbTeamId,
-  DEFAULT_MLB_STATE,
-  filterStandingsForView,
-  getDefaultTeamForView,
+  buildHref,
+  buildTeamAliasMap,
+  canonicalizeTeamId,
+  filterStandings,
+  getDefaultTeam,
   MLB_ROUTE,
-  normalizeMlbState,
-} from "./mlb-state";
+  normalizeState,
+  resolveDefaultState,
+} from "./mlb-state.core";
 
 interface MlbClientProps {
   initialState: MlbRouteState;
@@ -107,6 +108,13 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
   const currentHref = `${MLB_ROUTE}${currentQuery ? `?${currentQuery}` : ""}`;
 
   const standings = summary.standings;
+  // Route-state helpers operate on the lean `summary` data the server already
+  // sent, so the full mlbSnapshot never enters the client bundle.
+  const aliasMap = useMemo(() => buildTeamAliasMap(summary.teams), [summary.teams]);
+  const defaultState = useMemo(
+    () => resolveDefaultState(standings, summary.teams),
+    [standings, summary.teams]
+  );
   const teamLookup = useMemo(
     () => new Map(summary.teams.map((team) => [team.id, team])),
     [summary.teams]
@@ -163,11 +171,13 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
 
   const hasManagedParams =
     searchParams.get("view") !== null || searchParams.get("team") !== null;
-  const routeState = hasManagedParams ? normalizeMlbState(searchParams) : initialState;
-  const visibleStandings = filterStandingsForView(routeState.view);
+  const routeState = hasManagedParams
+    ? normalizeState(searchParams, defaultState, aliasMap)
+    : initialState;
+  const visibleStandings = filterStandings(standings, routeState.view);
   const selectedTeamId = visibleStandings.some((row) => row.id === routeState.team)
     ? routeState.team
-    : getDefaultTeamForView(routeState.view);
+    : getDefaultTeam(standings, routeState.view, defaultState.team);
   const selectedRow = standingsById.get(selectedTeamId) ?? standings[0];
   const selectedTeam = teamLookup.get(selectedRow?.id ?? "") ?? null;
 
@@ -182,8 +192,10 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
   const teamSnapshot = selectedRow ? teamSnapshots[selectedRow.id] ?? null : null;
   const isTeamSnapshotLoading = selectedRow ? loadingTeamId === selectedRow.id : false;
 
-  const desiredHref = buildMlbHref(
+  const desiredHref = buildHref(
     { view: routeState.view, team: selectedTeamId },
+    defaultState,
+    aliasMap,
     searchParams
   );
 
@@ -230,7 +242,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
   }, [selectedRow, teamSnapshots]);
 
   function navigate(nextState: MlbRouteState) {
-    const href = buildMlbHref(nextState, searchParams);
+    const href = buildHref(nextState, defaultState, aliasMap, searchParams);
     if (href === currentHref) return;
     startTransition(() => {
       router.push(href, { scroll: false });
@@ -238,17 +250,17 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
   }
 
   function handleViewChange(view: MlbView) {
-    const next = filterStandingsForView(view);
+    const next = filterStandings(standings, view);
     const nextTeam = next.some((row) => row.id === selectedTeamId)
       ? selectedTeamId
-      : next[0]?.id ?? DEFAULT_MLB_STATE.team;
+      : next[0]?.id ?? defaultState.team;
     navigate({ view, team: nextTeam });
   }
 
   function handleTeamChange(teamId: string) {
     navigate({
       view: routeState.view,
-      team: canonicalizeMlbTeamId(teamId) ?? DEFAULT_MLB_STATE.team,
+      team: canonicalizeTeamId(teamId, aliasMap) ?? defaultState.team,
     });
   }
 
@@ -471,7 +483,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                   >
                     <span className="text-[var(--home-ink)]">{option.label}</span>
                     <span className="text-xs text-[var(--home-ink-soft)]">
-                      {filterStandingsForView(option.id).length}
+                      {filterStandings(standings, option.id).length}
                     </span>
                   </button>
                 );

@@ -40,14 +40,15 @@ import type {
   NbaView,
 } from "@/types/nba";
 import {
-  buildNbaHref,
-  canonicalizeNbaTeamId,
-  DEFAULT_NBA_STATE,
-  filterTeamsForView,
-  getDefaultTeamForView,
+  buildHref,
+  buildTeamAliasMap,
+  canonicalizeTeamId,
+  filterTeams,
+  getDefaultTeam,
   NBA_ROUTE,
-  normalizeNbaState,
-} from "./nba-state";
+  normalizeState,
+  resolveDefaultState,
+} from "./nba-state.core";
 
 interface NbaClientProps {
   initialState: NbaRouteState;
@@ -82,10 +83,13 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
   const currentQuery = searchParams.toString();
   const currentHref = `${NBA_ROUTE}${currentQuery ? `?${currentQuery}` : ""}`;
 
-  const allTeams = useMemo<NbaTeam[]>(
-    () => [...summary.teamsByConference.east, ...summary.teamsByConference.west],
-    [summary.teamsByConference]
-  );
+  const east = summary.teamsByConference.east;
+  const west = summary.teamsByConference.west;
+  const allTeams = useMemo<NbaTeam[]>(() => [...east, ...west], [east, west]);
+  // Route-state helpers operate on the lean `summary` data the server already
+  // sent, so the full nbaSnapshot never enters the client bundle.
+  const aliasMap = useMemo(() => buildTeamAliasMap(allTeams), [allTeams]);
+  const defaultState = useMemo(() => resolveDefaultState(east, west), [east, west]);
   const teamById = useMemo(() => new Map(allTeams.map((team) => [team.id, team])), [allTeams]);
   const teamLookup = useMemo(
     () => new Map(allTeams.map((team) => [team.id, team.shortName])),
@@ -114,11 +118,11 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
     () =>
       new Map(
         summary.teams.map((team) => [
-          canonicalizeNbaTeamId(team.id) ?? team.id,
+          canonicalizeTeamId(team.id, aliasMap) ?? team.id,
           team.logo,
         ] as const)
       ),
-    [summary.teams]
+    [summary.teams, aliasMap]
   );
   const snapshotDateLabel = useMemo(
     () =>
@@ -132,11 +136,13 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
 
   const hasManagedParams =
     searchParams.get("view") !== null || searchParams.get("team") !== null;
-  const routeState = hasManagedParams ? normalizeNbaState(searchParams) : initialState;
-  const visibleTeams = filterTeamsForView(routeState.view);
+  const routeState = hasManagedParams
+    ? normalizeState(searchParams, defaultState, aliasMap)
+    : initialState;
+  const visibleTeams = filterTeams(east, west, routeState.view);
   const selectedTeamId = visibleTeams.some((team) => team.id === routeState.team)
     ? routeState.team
-    : getDefaultTeamForView(routeState.view);
+    : getDefaultTeam(east, west, routeState.view, defaultState.team);
   const fallbackTeam = allTeams[0];
   const selectedTeam = teamById.get(selectedTeamId) ?? fallbackTeam;
 
@@ -148,8 +154,10 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
   const [activeDetailTab, setActiveDetailTab] = useState<"team" | "schedule" | "leaders">("team");
   const teamSnapshot = selectedTeam ? teamSnapshots[selectedTeam.id] ?? null : null;
   const isTeamSnapshotLoading = selectedTeam ? loadingTeamId === selectedTeam.id : false;
-  const desiredHref = buildNbaHref(
+  const desiredHref = buildHref(
     { view: routeState.view, team: selectedTeamId },
+    defaultState,
+    aliasMap,
     searchParams
   );
 
@@ -161,7 +169,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
   }, [currentHref, desiredHref, router]);
 
   function navigate(nextState: NbaRouteState) {
-    const href = buildNbaHref(nextState, searchParams);
+    const href = buildHref(nextState, defaultState, aliasMap, searchParams);
     if (href === currentHref) return;
     startTransition(() => {
       router.push(href, { scroll: false });
@@ -169,17 +177,17 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
   }
 
   function handleViewChange(view: NbaView) {
-    const nextTeams = filterTeamsForView(view);
+    const nextTeams = filterTeams(east, west, view);
     const nextTeam = nextTeams.some((team) => team.id === selectedTeamId)
       ? selectedTeamId
-      : nextTeams[0]?.id ?? DEFAULT_NBA_STATE.team;
+      : nextTeams[0]?.id ?? defaultState.team;
     navigate({ view, team: nextTeam });
   }
 
   function handleTeamChange(teamId: string) {
     navigate({
       view: routeState.view,
-      team: canonicalizeNbaTeamId(teamId) ?? DEFAULT_NBA_STATE.team,
+      team: canonicalizeTeamId(teamId, aliasMap) ?? defaultState.team,
     });
   }
 
@@ -234,8 +242,8 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
     );
   }
 
-  const eastTeams = summary.teamsByConference.east;
-  const westTeams = summary.teamsByConference.west;
+  const eastTeams = east;
+  const westTeams = west;
   const conferenceTeams = selectedTeam.conference === "east" ? eastTeams : westTeams;
   const conferenceContext = buildConferenceContext(conferenceTeams);
   const selectedZone = getTeamZone(selectedTeam.conferenceSeed);
@@ -446,7 +454,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
                   >
                     <span className="text-[var(--home-ink)]">{option.label}</span>
                     <span className="text-xs text-[var(--home-ink-soft)]">
-                      {filterTeamsForView(option.id).length}
+                      {filterTeams(east, west, option.id).length}
                     </span>
                   </button>
                 );

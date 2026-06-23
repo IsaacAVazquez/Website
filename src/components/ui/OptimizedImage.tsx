@@ -2,7 +2,6 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
-import { motion, useReducedMotion } from 'framer-motion';
 
 interface OptimizedImageProps {
   src: string;
@@ -41,7 +40,6 @@ export function OptimizedImage({
   onLoad,
   onError,
 }: OptimizedImageProps) {
-  const shouldReduceMotion = useReducedMotion();
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(!lazy);
   const [hasError, setHasError] = useState(false);
@@ -124,13 +122,13 @@ export function OptimizedImage({
         />
       )}
 
-      {/* Image */}
+      {/* Image — fade-in is pure CSS (opacity transition); a plain div avoids
+          pulling the framer-motion runtime into every page that renders an
+          image. motion-reduce disables the transition for reduced-motion users. */}
       {isInView && (
-        <motion.div
-          initial={{ opacity: shouldReduceMotion ? 1 : 0 }}
-          animate={{ opacity: isLoaded ? 1 : 0 }}
-          transition={{ duration: shouldReduceMotion ? 0 : 0.3 }}
-          className="relative w-full h-full"
+        <div
+          className="relative w-full h-full transition-opacity duration-300 ease-out motion-reduce:transition-none"
+          style={{ opacity: isLoaded ? 1 : 0 }}
         >
           <Image
             src={src}
@@ -150,7 +148,7 @@ export function OptimizedImage({
             onLoad={handleLoad}
             onError={handleError}
           />
-        </motion.div>
+        </div>
       )}
 
     </div>
