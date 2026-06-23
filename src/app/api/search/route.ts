@@ -457,6 +457,76 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       category: 'Personal',
       tags: ['Austin', 'Food', 'Restaurants', 'City Guide'],
     },
+    {
+      id: 'page-recipe-finder',
+      title: 'Recipe Finder',
+      excerpt:
+        'Browse a curated recipe collection filterable by cuisine, diet, meal, and the ingredients you already have on hand.',
+      content:
+        'Recipe finder cooking recipes cuisine diet meal ingredients kitchen pantry browser local storage personal',
+      url: '/recipe-finder',
+      type: 'project',
+      category: 'Personal',
+      tags: ['Recipes', 'Cooking', 'Food', 'Personal'],
+    },
+    {
+      id: 'page-wine-cellar',
+      title: 'Wine Cellar',
+      excerpt:
+        'Browser-persisted wine cellar log for tracking bottles, regions, vintages, and tasting notes.',
+      content:
+        'Wine cellar bottles tracker regions varietals vintages tasting notes ratings personal collection browser local storage',
+      url: '/wine-cellar',
+      type: 'project',
+      category: 'Personal',
+      tags: ['Wine', 'Cellar', 'Tasting Notes', 'Personal'],
+    },
+    {
+      id: 'page-frontier-models',
+      title: 'Frontier Models Tracker',
+      excerpt:
+        'Curated tracker of frontier AI models across providers — context windows, pricing, modalities, and release timing.',
+      content:
+        'Frontier models AI LLM tracker OpenAI Anthropic Google Meta context window pricing modality benchmarks providers release dates',
+      url: '/frontier-models',
+      type: 'project',
+      category: 'AI Tools',
+      tags: ['AI', 'LLMs', 'Frontier Models', 'Dashboard'],
+    },
+    {
+      id: 'page-decision-lab',
+      title: 'Decision Lab',
+      excerpt:
+        'Interactive decision-support workspace for weighing options against criteria with transparent, adjustable scoring.',
+      content:
+        'Decision lab decision making weighted scoring criteria options tradeoffs analysis framework presets decision support tool',
+      url: '/decision-lab',
+      type: 'project',
+      category: 'Decision Tools',
+      tags: ['Decision Support', 'Analysis', 'Frameworks', 'Tool'],
+    },
+    {
+      id: 'page-now',
+      title: 'Now',
+      excerpt:
+        'What I am focused on right now — current projects, reading, and priorities.',
+      content:
+        'now page current focus projects priorities reading what I am working on status update',
+      url: '/now',
+      type: 'page',
+      category: 'Site',
+    },
+    {
+      id: 'page-changelog',
+      title: 'Changelog',
+      excerpt:
+        'A running log of notable changes, new tools, and updates shipped across the site.',
+      content:
+        'changelog updates releases new tools shipped changes history site log',
+      url: '/changelog',
+      type: 'page',
+      category: 'Site',
+    },
   ];
 
   // De-duplicate by URL when a project case study and a static page entry

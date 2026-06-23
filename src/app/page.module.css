@@ -601,6 +601,77 @@
   color: var(--h-muted);
 }
 
+/* ============== Live tools directory (compact bordered grid) ============== */
+.h-tools-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--h-ink);
+  border-left: 1px solid var(--h-ink);
+}
+.h-tool {
+  grid-column: span 3;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+  border-right: 1px solid var(--h-ink);
+  border-bottom: 1px solid var(--h-ink);
+  padding: clamp(1rem, 1.6vw, 1.4rem);
+  background: var(--h-paper);
+  transition: background 200ms ease;
+  min-height: 7.5rem;
+}
+@media (max-width: 980px) {
+  .h-tool {
+    grid-column: span 4;
+  }
+}
+@media (max-width: 660px) {
+  .h-tool {
+    grid-column: span 6;
+  }
+}
+.h-tool:hover {
+  background: var(--h-paper-soft);
+}
+.h-tool .cat {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--h-muted);
+}
+.h-tool h3 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  color: var(--h-ink);
+  margin: 0;
+  text-wrap: balance;
+  font-variation-settings: "opsz" 32;
+}
+.h-tool .go {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--h-haze);
+  transition: gap 160ms ease;
+}
+.h-tool:hover .go {
+  gap: 10px;
+}
+
 /* ============== Manifesto section (inverted ink with giant numeral) ============== */
 .h-manifesto {
   background: var(--h-ink);

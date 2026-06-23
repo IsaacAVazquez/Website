@@ -34,14 +34,15 @@ import type {
   LaLigaView,
 } from "@/types/la-liga";
 import {
-  buildLaLigaHref,
-  canonicalizeLaLigaClubId,
-  DEFAULT_LA_LIGA_STATE,
-  filterClubsForView,
-  getDefaultClubForView,
+  buildClubAliasMap,
+  buildHref,
+  canonicalizeClubId,
+  filterClubs,
+  getDefaultClub,
   LA_LIGA_ROUTE,
-  normalizeLaLigaState,
-} from "./la-liga-state";
+  normalizeState,
+  resolveDefaultState,
+} from "./la-liga-state.core";
 
 interface LaLigaClientProps {
   initialState: LaLigaRouteState;
@@ -100,6 +101,8 @@ export function LaLigaClient({
   const currentQuery = searchParams.toString();
   const currentHref = `${LA_LIGA_ROUTE}${currentQuery ? `?${currentQuery}` : ""}`;
   const clubs = summary.clubs;
+  const aliasMap = useMemo(() => buildClubAliasMap(summary.teams), [summary.teams]);
+  const defaultState = useMemo(() => resolveDefaultState(summary.clubs), [summary.clubs]);
   const clubById = useMemo(() => new Map(clubs.map((club) => [club.id, club])), [clubs]);
   const clubLookup = useMemo(
     () => new Map(clubs.map((club) => [club.id, club.shortName])),
@@ -125,11 +128,11 @@ export function LaLigaClient({
   const crestByClubId = useMemo(() => (
     new Map(
       summary.teams.map((team) => [
-        canonicalizeLaLigaClubId(team.id) ?? team.id,
+        canonicalizeClubId(team.id, aliasMap) ?? team.id,
         team.crest,
       ] as const)
     )
-  ), [summary.teams]);
+  ), [summary.teams, aliasMap]);
   const snapshotDateLabel = useMemo(() => (
     new Intl.DateTimeFormat("en-US", {
       month: "short",
@@ -139,11 +142,13 @@ export function LaLigaClient({
   ), [summary.updatedAt]);
   const hasManagedParams =
     searchParams.get("view") !== null || searchParams.get("club") !== null;
-  const routeState = hasManagedParams ? normalizeLaLigaState(searchParams) : initialState;
-  const visibleClubs = filterClubsForView(routeState.view);
+  const routeState = hasManagedParams
+    ? normalizeState(searchParams, defaultState, aliasMap)
+    : initialState;
+  const visibleClubs = filterClubs(summary.clubs, routeState.view);
   const selectedClubId = visibleClubs.some((club) => club.id === routeState.club)
     ? routeState.club
-    : getDefaultClubForView(routeState.view);
+    : getDefaultClub(summary.clubs, routeState.view, defaultState.club);
   const selectedClub = clubById.get(selectedClubId) ?? clubs[0];
   const [teamSnapshots, setTeamSnapshots] = useState<Record<string, LaLigaTeamSnapshot>>(
     () => (selectedClubId && initialTeamSnapshot ? { [selectedClubId]: initialTeamSnapshot } : {})
@@ -152,11 +157,13 @@ export function LaLigaClient({
   const [teamSnapshotError, setTeamSnapshotError] = useState<string | null>(null);
   const teamSnapshot = selectedClub ? teamSnapshots[selectedClub.id] ?? null : null;
   const isTeamSnapshotLoading = selectedClub ? loadingClubId === selectedClub.id : false;
-  const desiredHref = buildLaLigaHref(
+  const desiredHref = buildHref(
     {
       view: routeState.view,
       club: selectedClubId,
     },
+    defaultState,
+    aliasMap,
     searchParams
   );
 
@@ -171,7 +178,7 @@ export function LaLigaClient({
   }, [currentHref, desiredHref, router]);
 
   function navigate(nextState: LaLigaRouteState) {
-    const href = buildLaLigaHref(nextState, searchParams);
+    const href = buildHref(nextState, defaultState, aliasMap, searchParams);
     if (href === currentHref) {
       return;
     }
@@ -182,10 +189,10 @@ export function LaLigaClient({
   }
 
   function handleViewChange(view: LaLigaView) {
-    const nextClubs = filterClubsForView(view);
+    const nextClubs = filterClubs(summary.clubs, view);
     const nextClub = nextClubs.some((club) => club.id === selectedClubId)
       ? selectedClubId
-      : nextClubs[0]?.id ?? DEFAULT_LA_LIGA_STATE.club;
+      : nextClubs[0]?.id ?? defaultState.club;
 
     navigate({ view, club: nextClub });
   }
@@ -193,7 +200,7 @@ export function LaLigaClient({
   function handleClubChange(clubId: string) {
     navigate({
       view: routeState.view,
-      club: canonicalizeLaLigaClubId(clubId) ?? DEFAULT_LA_LIGA_STATE.club,
+      club: canonicalizeClubId(clubId, aliasMap) ?? defaultState.club,
     });
   }
 
@@ -451,7 +458,7 @@ export function LaLigaClient({
                     style={getViewButtonStyle(isActive)}
                   >
                     <span className="text-[var(--home-ink)]">{option.label}</span>
-                    <span className="text-xs text-[var(--home-ink-soft)]">{filterClubsForView(option.id).length}</span>
+                    <span className="text-xs text-[var(--home-ink-soft)]">{filterClubs(summary.clubs, option.id).length}</span>
                   </button>
                 );
               })}

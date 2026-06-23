@@ -83,11 +83,13 @@ jobs:
     name: E2E Tests (chromium)
     runs-on: ubuntu-latest
     needs: build
-    # Shard the spec files across N runners. Bump the matrix length to scale.
+    # Shard the spec files across N runners. Bump the matrix length to scale;
+    # the run step derives the divisor from `strategy.job-total`, so adding a
+    # shard number here is the only change needed.
     strategy:
       fail-fast: false
       matrix:
-        shard: [1, 2]
+        shard: [1, 2, 3]
 
     steps:
       - name: Checkout code

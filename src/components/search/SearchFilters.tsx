@@ -68,6 +68,7 @@ export function SearchFilters({
             <button
               key={contentType.id}
               onClick={() => onTypeChange(contentType.id)}
+              aria-pressed={type === contentType.id}
               className="inline-flex min-h-[36px] items-center rounded-full px-3 py-1 text-xs font-semibold transition-colors"
               style={{
                 fontFamily: "var(--font-home-sans)",
@@ -93,6 +94,7 @@ export function SearchFilters({
             <button
               key={cat.id}
               onClick={() => onCategoryChange(cat.id)}
+              aria-pressed={category === cat.id}
               className="inline-flex min-h-[36px] items-center rounded-full px-3 py-1 text-xs font-semibold transition-colors"
               style={{
                 fontFamily: "var(--font-home-sans)",

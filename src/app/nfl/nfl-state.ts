@@ -1,97 +1,40 @@
 import type { ReadonlyURLSearchParams } from "next/navigation";
 import { nflSnapshot } from "@/data/nflSnapshot";
 import type { NFLRouteState, NFLTeamStanding, NFLView } from "@/types/nfl";
+import * as core from "./nfl-state.core";
 
-export const NFL_ROUTE = "/nfl";
+// Snapshot-bound wrappers. These keep the original public API used by the
+// server page and the unit tests, but the heavy `nflSnapshot` import lives
+// ONLY here (server side). The client imports the pure `nfl-state.core`
+// module instead and feeds it the lean `summary` data it already has.
 
-const VALID_VIEWS = new Set<NFLView>(["league", "afc", "nfc", "playoffs"]);
+export const NFL_ROUTE = core.NFL_ROUTE;
 
-const NFL_TEAM_ID_BY_ALIAS = new Map<string, string>(
-  nflSnapshot.teams.flatMap((team) => [
-    [team.id.toLowerCase(), team.id],
-    [team.abbr.toLowerCase(), team.id],
-  ] as const)
+const ALIAS_MAP = core.buildTeamAliasMap(nflSnapshot.teams);
+
+export const DEFAULT_NFL_STATE: NFLRouteState = core.resolveDefaultState(
+  nflSnapshot.teams
 );
 
-type SearchParamInput =
-  | URLSearchParams
-  | ReadonlyURLSearchParams
-  | Record<string, string | string[] | undefined | null>;
-
-type SearchParamRecord = Record<string, string | string[] | undefined | null>;
-
-export const DEFAULT_NFL_STATE: NFLRouteState = {
-  view: "league",
-  team: nflSnapshot.teams[0]?.id ?? "den",
-};
-
 export function canonicalizeNflTeamId(teamId: string | null | undefined): string | null {
-  if (!teamId) return null;
-  return NFL_TEAM_ID_BY_ALIAS.get(teamId.trim().toLowerCase()) ?? null;
-}
-
-function readParam(input: SearchParamInput, key: string): string | null {
-  if ("get" in input && typeof input.get === "function") {
-    return input.get(key);
-  }
-  const rawValue = (input as SearchParamRecord)[key];
-  if (Array.isArray(rawValue)) {
-    return rawValue[0] ?? null;
-  }
-  return rawValue ?? null;
+  return core.canonicalizeTeamId(teamId, ALIAS_MAP);
 }
 
 export function filterTeamsForView(view: NFLView): NFLTeamStanding[] {
-  const all = nflSnapshot.teams;
-  switch (view) {
-    case "afc":
-      return all.filter((team) => team.conference === "AFC");
-    case "nfc":
-      return all.filter((team) => team.conference === "NFC");
-    case "playoffs":
-      return all.filter((team) => team.seed !== null && team.seed >= 1 && team.seed <= 7);
-    case "league":
-    default:
-      return all;
-  }
+  return core.filterTeams(nflSnapshot.teams, view);
 }
 
 export function getDefaultTeamForView(view: NFLView): string {
-  return filterTeamsForView(view)[0]?.id ?? DEFAULT_NFL_STATE.team;
+  return core.getDefaultTeam(nflSnapshot.teams, view, DEFAULT_NFL_STATE.team);
 }
 
-export function normalizeNflState(input: SearchParamInput): NFLRouteState {
-  const view = readParam(input, "view");
-  const team = canonicalizeNflTeamId(readParam(input, "team"));
-  return {
-    view: VALID_VIEWS.has((view ?? "") as NFLView)
-      ? (view as NFLView)
-      : DEFAULT_NFL_STATE.view,
-    team: team ?? DEFAULT_NFL_STATE.team,
-  };
+export function normalizeNflState(input: core.SearchParamInput): NFLRouteState {
+  return core.normalizeState(input, DEFAULT_NFL_STATE, ALIAS_MAP);
 }
 
 export function buildNflHref(
   state: NFLRouteState,
   baseSearchParams?: URLSearchParams | ReadonlyURLSearchParams
 ): string {
-  const params = new URLSearchParams(
-    baseSearchParams ? Array.from(baseSearchParams.entries()) : []
-  );
-  const canonicalTeamId = canonicalizeNflTeamId(state.team) ?? DEFAULT_NFL_STATE.team;
-
-  if (state.view === DEFAULT_NFL_STATE.view) {
-    params.delete("view");
-  } else {
-    params.set("view", state.view);
-  }
-
-  if (canonicalTeamId === DEFAULT_NFL_STATE.team && state.view === DEFAULT_NFL_STATE.view) {
-    params.delete("team");
-  } else {
-    params.set("team", canonicalTeamId);
-  }
-
-  const query = params.toString();
-  return `${NFL_ROUTE}${query ? `?${query}` : ""}`;
+  return core.buildHref(state, DEFAULT_NFL_STATE, ALIAS_MAP, baseSearchParams);
 }

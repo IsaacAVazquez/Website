@@ -6,6 +6,7 @@ import {
   getPortfolioProjects,
 } from "@/constants/caseStudies";
 import { getAllBlogPostPreviews } from "@/lib/blog";
+import { getLiveToolGroups } from "@/constants/toolCategories";
 import { profile, profileSameAs } from "@/lib/profile";
 
 export { metadata } from "./metadata";
@@ -18,7 +19,14 @@ export default function Home() {
   // hosted destination set on the case study.
   const allPosts = getAllBlogPostPreviews();
   const allProjects = getPortfolioProjects();
-  const liveTools = allProjects.filter((p) => Boolean(p.link)).length;
+  // The "Live tools" directory groups every project that ships a real
+  // destination (on-site route or hosted app) by category, so the homepage
+  // surfaces the full breadth of live surfaces rather than the 3 featured cards.
+  const liveToolGroups = getLiveToolGroups(allProjects);
+  const liveTools = liveToolGroups.reduce(
+    (total, group) => total + group.tools.length,
+    0,
+  );
   const heroIndex = {
     projectCount: allProjects.length,
     essayCount: allPosts.length,
@@ -31,6 +39,7 @@ export default function Home() {
         featuredProjects={featuredProjects}
         recentPosts={allPosts}
         heroIndex={heroIndex}
+        liveToolGroups={liveToolGroups}
       />
 
       <StructuredData type="ProfilePage" />

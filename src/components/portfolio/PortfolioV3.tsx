@@ -6,6 +6,12 @@ import {
   type CaseStudyData,
   getProjectCardSummary,
 } from "@/constants/caseStudies";
+import {
+  TOOL_CATEGORY_DEFS as CATEGORY_DEFS,
+  classifyToolSlug as classify,
+  type ToolCategory as Category,
+  type ToolCategoryId,
+} from "@/constants/toolCategories";
 import { useTablistKeyboard } from "@/hooks/useTablistKeyboard";
 import { useTrackedListingSearch } from "@/hooks/useTrackedListingSearch";
 import { trackListingFilter } from "@/lib/analytics";
@@ -17,21 +23,7 @@ interface Props {
 
 type SortMode = "newest" | "alpha" | "live";
 
-type CategoryId =
-  | "all"
-  | "fintech"
-  | "pulse"
-  | "sports"
-  | "ai"
-  | "decision"
-  | "civic"
-  | "lifestyle";
-
-interface Category {
-  id: CategoryId;
-  label: string;
-  slugs: ReadonlySet<string>;
-}
+type CategoryId = "all" | ToolCategoryId;
 
 interface CardMeta {
   category: Exclude<CategoryId, "all">;
@@ -44,61 +36,7 @@ interface CardMeta {
 
 type ToneVariant = "is-acid" | "is-haze" | "is-paper" | "is-outline";
 
-const FINTECH = new Set([
-  "investment-analytics-platform",
-  "interchange-iq",
-  "budget-planner",
-]);
-const PULSE = new Set([
-  "pulse-dashboards",
-  "news-pulse-dashboard",
-  "github-trending-pulse",
-  "bay-area-transit-pulse",
-  "earthquake-pulse",
-  "tech-startup-tracker",
-]);
-const SPORTS = new Set([
-  "premier-league-pulse",
-  "la-liga-pulse",
-  "fantasy-football-analytics",
-  "nfl-pulse",
-  "mlb-pulse",
-  "nba-pulse",
-  "pga-tour-pulse",
-  "formula-1-pulse",
-  "fantasy-formula-1-optimizer",
-  "world-cup-pulse",
-  "march-madness-2026",
-  "spacex-mission-control",
-]);
-const AI = new Set([
-  "frontier-model-tracker",
-  "ai-dev-tool-ecosystem",
-]);
-const DECISION = new Set([
-  "decision-lab",
-  "mba-role-tracker",
-]);
-const CIVIC = new Set(["polling-aggregator"]);
-const LIFESTYLE = new Set([
-  "food-map",
-  "museum-log",
-  "wine-cellar",
-  "recipe-finder",
-  "travel-planner",
-]);
-
-const CATEGORY_DEFS: Category[] = [
-  { id: "fintech", label: "Fintech", slugs: FINTECH },
-  { id: "pulse", label: "Pulse", slugs: PULSE },
-  { id: "sports", label: "Sports", slugs: SPORTS },
-  { id: "ai", label: "AI tooling", slugs: AI },
-  { id: "decision", label: "Decision tools", slugs: DECISION },
-  { id: "civic", label: "Civic / Polls", slugs: CIVIC },
-  { id: "lifestyle", label: "Lifestyle", slugs: LIFESTYLE },
-];
-
-const CAT_TONE: Record<Exclude<CategoryId, "all">, ToneVariant> = {
+const CAT_TONE: Record<ToolCategoryId, ToneVariant> = {
   fintech: "is-acid",
   pulse: "is-haze",
   sports: "is-outline",
@@ -119,16 +57,6 @@ const COVERS = [
 ] as const;
 
 const PAGE_SIZE = 12;
-
-function classify(slug: string): Exclude<CategoryId, "all"> {
-  for (const def of CATEGORY_DEFS) {
-    if (def.slugs.has(slug)) {
-      return def.id as Exclude<CategoryId, "all">;
-    }
-  }
-  // Fallback bucket for slugs that haven't been categorized yet.
-  return "lifestyle";
-}
 
 function getMeta(study: CaseStudyData): CardMeta {
   const category = classify(study.slug);

@@ -1,0 +1,16 @@
+---
+title: Investments goes static, fantasy gets a canonical board
+publishedAt: "2026-03-19"
+category: Update
+summary: Two pieces of foundational rework — the investments research surface moved from heavy live fetches to curated static snapshots (~240 MB down to ~2.2 MB), and fantasy football was rebuilt around one canonical rankings board.
+tags:
+  - investments
+  - fantasy-football
+---
+
+A stretch of less glamorous but important rework that the rest of the site still relies on:
+
+- **Investments went static.** The research surface stopped fanning out through live section APIs and instead reads one curated snapshot per symbol from `/data/investments/*`. Capping price history to a year, trimming news, and dropping transcript artifacts took the published dataset from roughly **240 MB to roughly 2.2 MB**. The page was also repositioned as a public fintech proof point with proper metadata and structured data, and the workspace became URL-backed so research context survives reloads and shares.
+- **Fantasy got a canonical board.** The fantasy experience was rebuilt around a single [`/fantasy-football`](/fantasy-football) rankings board and a simplified [draft tracker](/fantasy-football/draft-tracker), both powered by checked-in snapshots instead of runtime fetch chains. Full PPR, half-PPR, and standard position boards came back, with `FLEX` derived from eligible positions and schema-versioned normalization so stale cached payloads can't crash the app.
+
+The theme across both is the same one that defines the site now: read from a committed snapshot, render fast, keep nothing live that doesn't have to be.

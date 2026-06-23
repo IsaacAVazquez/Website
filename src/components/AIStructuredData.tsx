@@ -21,6 +21,7 @@ import {
   type FAQItem,
   type BreadcrumbItem,
 } from "@/lib/ai-seo";
+import { safeJsonLd } from "@/lib/seo";
 
 interface AIStructuredDataProps {
   schema:
@@ -117,7 +118,7 @@ export function AIStructuredData({ schema }: AIStructuredDataProps) {
     <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify(structuredData, null, 0),
+        __html: safeJsonLd(structuredData),
       }}
       suppressHydrationWarning
     />
