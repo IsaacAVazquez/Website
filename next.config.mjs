@@ -220,12 +220,43 @@ const nextConfig = {
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   // Site-wide security headers. Applied to all routes.
-  // TODO: Add a global Content-Security-Policy header in a future, separately
-  // staged change. CSP requires careful inventory of inline scripts, third-party
-  // tag managers, and analytics endpoints; rolling it out without staging would
-  // break those surfaces. Tracked separately.
+  //
+  // CSP is staged via Content-Security-Policy-Report-Only (below). Report-Only
+  // enforces nothing — the browser still loads every resource and only reports
+  // what a future enforcing policy *would* block. This is the standard, safe
+  // way to inventory inline scripts, third-party tags, and analytics endpoints
+  // before flipping to an enforcing `Content-Security-Policy` header.
+  //
+  // The directives reflect this site's actual runtime surface:
+  //   - fonts are self-hosted by next/font (no runtime fonts.gstatic.com)
+  //   - all external data APIs run at build time, so browser connect is 'self'
+  //   - next-themes + Next bootstrap + JSON-LD need inline <script>
+  //   - Framer Motion + style attributes need inline styles
+  //   - team crests/logos load from many remote CDNs via <img> (img-src https:)
+  //
+  // Once reports confirm no legitimate surface is flagged (and inline scripts
+  // are moved to nonces/hashes to drop 'unsafe-inline'), graduate this to an
+  // enforcing `Content-Security-Policy` header.
   async headers() {
+    const contentSecurityPolicy = [
+      "default-src 'self'",
+      "base-uri 'self'",
+      "object-src 'none'",
+      "frame-ancestors 'none'",
+      "form-action 'self'",
+      "script-src 'self' 'unsafe-inline'",
+      "style-src 'self' 'unsafe-inline'",
+      "img-src 'self' data: blob: https:",
+      "font-src 'self'",
+      "connect-src 'self'",
+      "manifest-src 'self'",
+    ].join("; ");
+
     const securityHeaders = [
+      {
+        key: "Content-Security-Policy-Report-Only",
+        value: contentSecurityPolicy,
+      },
       {
         key: "Strict-Transport-Security",
         value: "max-age=63072000; includeSubDomains; preload",
