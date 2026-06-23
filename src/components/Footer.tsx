@@ -71,6 +71,7 @@ export const Footer = ({ variant = "full" }: FooterProps) => {
             <nav aria-label="Footer links" className="footer-home-links">
               <Link href="/now">Now</Link>
               <Link href="/changelog">Changelog</Link>
+              <Link href="/release-notes">Release Notes</Link>
               <Link href="/accessibility">Accessibility</Link>
               <a href="https://isaacavazquez.com" className="is-strong">
                 isaacavazquez.com
