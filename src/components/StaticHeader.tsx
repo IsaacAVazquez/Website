@@ -114,16 +114,7 @@ export function StaticHeader() {
             Isaac Vazquez
           </Link>
 
-          <div className="hidden lg:flex items-center gap-3">
-            <Link
-              href="/search"
-              aria-label="Search the site (press / or Ctrl+K)"
-              title="Search — press / or ⌘K"
-              className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full transition-colors text-[var(--home-ink)] hover:bg-[var(--home-paper-alt)]"
-              onClick={closeMobileMenu}
-            >
-              <Search className="h-5 w-5" aria-hidden="true" />
-            </Link>
+          <div className="hidden lg:flex items-center gap-2">
             <ul className="header-home-nav-list flex items-center gap-0" aria-label="Primary navigation">
               {navLinks.map((link) => {
                 const active = isRouteActive(pathname, link.href);
@@ -147,10 +138,19 @@ export function StaticHeader() {
                   </li>
                 );
               })}
-              <li>
-                <DeferredThemeToggle className="inline-flex min-h-[44px] items-center px-3" />
-              </li>
             </ul>
+            <div className="header-home-controls flex items-center gap-1">
+              <Link
+                href="/search"
+                aria-label="Search the site (press / or Ctrl+K)"
+                title="Search — press / or ⌘K"
+                className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full transition-colors text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
+                onClick={closeMobileMenu}
+              >
+                <Search className="h-5 w-5" aria-hidden="true" />
+              </Link>
+              <DeferredThemeToggle />
+            </div>
           </div>
 
           <div className="flex items-center gap-2 lg:hidden">
