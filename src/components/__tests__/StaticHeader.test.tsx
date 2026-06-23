@@ -6,6 +6,7 @@ import { StaticHeader } from "@/components/StaticHeader";
 
 jest.mock("next/navigation", () => ({
   usePathname: jest.fn(),
+  useRouter: () => ({ push: jest.fn() }),
 }));
 
 jest.mock("@/components/ui/DeferredThemeToggle", () => ({
@@ -98,6 +99,21 @@ describe("StaticHeader", () => {
     expect(primaryNav?.textContent).toContain("Writing");
     expect(themeButtons.length).toBeGreaterThan(0);
     expect(container.querySelector("header")?.className).toContain("header-home");
+  });
+
+  it("exposes a search affordance outside the navigation link lists", async () => {
+    await act(async () => {
+      root.render(<StaticHeader />);
+    });
+
+    // A visible search trigger must exist (desktop + mobile both link to /search).
+    const searchLinks = container.querySelectorAll('a[href="/search"]');
+    expect(searchLinks.length).toBeGreaterThan(0);
+
+    // It must NOT live inside the labelled nav lists — those stay limited to the
+    // canonical nav entries (asserted by the homepage e2e link-count checks).
+    const primaryNav = container.querySelector('[aria-label="Primary navigation"]');
+    expect(primaryNav?.querySelector('a[href="/search"]')).toBeNull();
   });
 
   it("passes desktop sizing classes to the deferred theme toggle", async () => {

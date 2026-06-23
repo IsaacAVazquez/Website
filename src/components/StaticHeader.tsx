@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { navLinks } from "@/constants/navlinks";
-import { Menu2, X } from "@/components/ui/ServerIcons";
+import { Menu2, Search, X } from "@/components/ui/ServerIcons";
 import { DeferredThemeToggle } from "@/components/ui/DeferredThemeToggle";
 import { cn } from "@/lib/utils";
 
@@ -17,6 +17,7 @@ export function StaticHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,6 +35,41 @@ export function StaticHeader() {
       document.body.style.overflow = "";
     };
   }, [isMobileMenuOpen]);
+
+  // Global search shortcuts: Cmd/Ctrl+K is the conventional "open search"
+  // chord, and "/" is the single-key shortcut common on content sites. "/" is
+  // ignored while the user is typing in a field so it never swallows input.
+  useEffect(() => {
+    const handleKeydown = (event: KeyboardEvent) => {
+      const target = event.target as HTMLElement | null;
+      const isTypingTarget =
+        !!target &&
+        (target.tagName === "INPUT" ||
+          target.tagName === "TEXTAREA" ||
+          target.tagName === "SELECT" ||
+          target.isContentEditable);
+
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        router.push("/search");
+        return;
+      }
+
+      if (
+        event.key === "/" &&
+        !isTypingTarget &&
+        !event.metaKey &&
+        !event.ctrlKey &&
+        !event.altKey
+      ) {
+        event.preventDefault();
+        router.push("/search");
+      }
+    };
+
+    window.addEventListener("keydown", handleKeydown);
+    return () => window.removeEventListener("keydown", handleKeydown);
+  }, [router]);
 
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
@@ -71,6 +107,15 @@ export function StaticHeader() {
           </Link>
 
           <div className="hidden lg:flex items-center gap-3">
+            <Link
+              href="/search"
+              aria-label="Search the site (press / or Ctrl+K)"
+              title="Search — press / or ⌘K"
+              className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full transition-colors text-[var(--home-ink)] hover:bg-[var(--home-paper-alt)]"
+              onClick={closeMobileMenu}
+            >
+              <Search className="h-5 w-5" aria-hidden="true" />
+            </Link>
             <ul className="header-home-nav-list flex items-center gap-0" aria-label="Primary navigation">
               {navLinks.map((link) => {
                 const active = isRouteActive(pathname, link.href);
@@ -94,6 +139,14 @@ export function StaticHeader() {
           </div>
 
           <div className="flex items-center gap-2 lg:hidden">
+            <Link
+              href="/search"
+              aria-label="Search the site"
+              className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border transition-colors header-home-control text-[var(--home-ink)] hover:bg-[var(--home-paper-alt)]"
+              onClick={closeMobileMenu}
+            >
+              <Search className="h-5 w-5" aria-hidden="true" />
+            </Link>
             <DeferredThemeToggle />
             <button
               type="button"
