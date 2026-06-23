@@ -71,6 +71,7 @@ Historical release notes and changelogs:
 
 Planning and strategy references:
 
+- `SPRING_2026_ROADMAP.md` (current cross-site feature/fix roadmap)
 - `2026-seo-opportunity-ai-tech-blogs.md`
 - `content-plan-ai-mba-pm-cluster.md`
 - `SPACEX_API_CODEBASE_README.md`
