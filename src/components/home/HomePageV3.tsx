@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { CaseStudyData } from "@/constants/caseStudies";
+import type { LiveToolGroup } from "@/constants/toolCategories";
 import type { BlogPostPreview } from "@/lib/blog";
 import { publishedDateFormatter } from "@/lib/utils";
 import styles from "@/app/page.module.css";
@@ -13,7 +14,16 @@ interface HomePageV3Props {
     essayCount: number;
     liveToolCount: number;
   };
+  liveToolGroups: LiveToolGroup[];
 }
+
+// Month-and-year label for the most recent published post, used as an honest
+// "Updated" stamp on the practice-stats band (replacing a hardcoded
+// "refreshed today" that was always-on regardless of real freshness).
+const updatedMonthFormatter = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  year: "numeric",
+});
 
 // Three cover variants ship in the CSS module. We cycle through them so
 // each "Selected work" card picks up a distinct treatment without us
@@ -129,8 +139,20 @@ export function HomePageV3({
   featuredProjects,
   recentPosts,
   heroIndex,
+  liveToolGroups,
 }: HomePageV3Props) {
   const writingCards = recentPosts.slice(0, 3);
+  const liveTools = liveToolGroups.flatMap((group) => group.tools);
+
+  // Most recent post timestamp drives the practice-stats "Updated" stamp.
+  // Reduce rather than trust array order so the label is correct regardless of
+  // how previews are sorted upstream.
+  const lastUpdatedTs = recentPosts.reduce((latest, post) => {
+    const ts = Date.parse(post.publishedAt);
+    return Number.isNaN(ts) ? latest : Math.max(latest, ts);
+  }, 0);
+  const lastUpdatedLabel =
+    lastUpdatedTs > 0 ? updatedMonthFormatter.format(lastUpdatedTs) : null;
 
   return (
     <div className={styles.page}>
@@ -349,11 +371,67 @@ export function HomePageV3({
         </div>
       </section>
 
+      {/* Live tools directory — surfaces every live surface by category so the
+          breadth isn't buried behind the 3 featured cards or the nav. */}
+      <section className={styles["h-section"]} id="tools" aria-labelledby="home-tools-heading">
+        <div className={styles.shell}>
+          <div className={styles["h-section-head"]}>
+            <div className={styles.left}>
+              <span className={styles["h-section-kicker"]}>
+                <span className={styles.num}>04</span> Live tools
+              </span>
+              <h2 id="home-tools-heading" className={styles["h-section-title"]}>
+                {heroIndex.liveToolCount} live tools you can <em>poke at</em> directly.
+              </h2>
+            </div>
+            <Link className={styles["h-section-link"]} href="/portfolio">
+              All projects
+              <ArrowRightMd />
+            </Link>
+          </div>
+
+          <div className={styles["h-tools-grid"]} data-testid="home-tools">
+            {liveTools.map((tool) => {
+              const inner = (
+                <>
+                  <span className={styles.cat}>{tool.categoryLabel}</span>
+                  <h3>{tool.title}</h3>
+                  <span className={styles.go}>
+                    {tool.isExternal ? "Visit" : "Open"}
+                    <ArrowRightSm />
+                  </span>
+                </>
+              );
+
+              if (tool.isExternal) {
+                return (
+                  <a
+                    key={tool.slug}
+                    className={styles["h-tool"]}
+                    href={tool.href}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {inner}
+                  </a>
+                );
+              }
+
+              return (
+                <Link key={tool.slug} className={styles["h-tool"]} href={tool.href}>
+                  {inner}
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* Manifesto (inverted ink) */}
       <section className={styles["h-manifesto"]} aria-labelledby="home-manifesto-heading">
         <div className={styles.shell}>
           <div className={styles["h-manifesto-grid"]}>
-            <div className={styles["h-manifesto-num"]}>04</div>
+            <div className={styles["h-manifesto-num"]}>05</div>
             <div className={styles["h-manifesto-body"]}>
               <p
                 id="home-manifesto-heading"
@@ -391,7 +469,7 @@ export function HomePageV3({
           <div className={styles["h-section-head"]}>
             <div className={styles.left}>
               <span className={styles["h-section-kicker"]}>
-                <span className={styles.num}>05</span> Proof of work
+                <span className={styles.num}>06</span> Proof of work
               </span>
               <h2 id="home-writing-heading" className={styles["h-section-title"]}>
                 Writing on PM, <em>AI workflows</em>, and fintech tools.
@@ -447,7 +525,7 @@ export function HomePageV3({
           <div className={styles["h-section-head"]}>
             <div className={styles.left}>
               <span className={styles["h-section-kicker"]}>
-                <span className={styles.num}>06</span> Practice at a glance
+                <span className={styles.num}>07</span> Practice at a glance
               </span>
               <h2 id="home-stats-heading" className={styles["h-section-title"]}>
                 The numbers behind the <em>practice</em>.
@@ -462,7 +540,7 @@ export function HomePageV3({
                 color: "var(--h-muted)",
               }}
             >
-              Live &middot; refreshed today
+              {lastUpdatedLabel ? `Updated · ${lastUpdatedLabel}` : "Updated regularly"}
             </span>
           </div>
 
