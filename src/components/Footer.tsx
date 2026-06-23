@@ -6,6 +6,7 @@ import {
   BrandGithub,
 } from "@/components/ui/ServerIcons";
 import { ContactCta } from "@/components/ContactCta";
+import { trackNavigationClick } from "@/lib/analytics";
 
 const socialLinks = [
   {
@@ -62,6 +63,13 @@ export const Footer = ({ variant = "full" }: FooterProps) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center transition-colors footer-home-icon"
+                  onClick={() =>
+                    trackNavigationClick({
+                      link_text: link.label,
+                      link_url: link.href,
+                      nav_location: "footer_social",
+                    })
+                  }
                 >
                   <link.icon size={18} aria-hidden="true" />
                 </a>
@@ -69,11 +77,37 @@ export const Footer = ({ variant = "full" }: FooterProps) => {
             </nav>
 
             <nav aria-label="Footer links" className="footer-home-links">
-              <Link href="/now">Now</Link>
-              <Link href="/changelog">Changelog</Link>
-              <Link href="/release-notes">Release Notes</Link>
-              <Link href="/accessibility">Accessibility</Link>
-              <a href="https://isaacavazquez.com" className="is-strong">
+              {[
+                { href: "/now", label: "Now", external: false },
+                { href: "/changelog", label: "Changelog", external: false },
+                { href: "/release-notes", label: "Release Notes", external: false },
+                { href: "/accessibility", label: "Accessibility", external: false },
+              ].map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() =>
+                    trackNavigationClick({
+                      link_text: item.label,
+                      link_url: item.href,
+                      nav_location: "footer_links",
+                    })
+                  }
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <a
+                href="https://isaacavazquez.com"
+                className="is-strong"
+                onClick={() =>
+                  trackNavigationClick({
+                    link_text: "isaacavazquez.com",
+                    link_url: "https://isaacavazquez.com",
+                    nav_location: "footer_links",
+                  })
+                }
+              >
                 isaacavazquez.com
               </a>
             </nav>
