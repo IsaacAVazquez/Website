@@ -1,0 +1,19 @@
+---
+title: Rebuilt on Next.js 16 — the foundation
+publishedAt: "2026-01-30"
+category: Foundation
+summary: The ground-up rebuild that everything since is built on — Next.js 16 App Router, a fantasy football analytics platform with D3 tier charts, and a switch from the old warm-orange theme to the blue/slate system.
+tags:
+  - foundation
+  - platform
+---
+
+This is where the current site starts. The whole thing was rebuilt from the ground up rather than patched:
+
+- **Next.js 16 (App Router)** with TypeScript strict mode and Tailwind CSS v4 — the runtime everything since has been built against.
+- **Fantasy football analytics** came back as a first-class platform feature, with D3-powered tier charts, Gaussian mixture clustering for the tiers (`src/lib/gaussianMixture.ts`), and a unified data pipeline behind the rankings.
+- **A new design system** — the old warm orange/sunset palette gave way to the modern blue/slate theme that later became the editorial system.
+
+The plumbing landed at the same time: NextAuth for the `/admin` route, `next-sitemap` in the build pipeline, and Lighthouse and Core Web Vitals monitoring so regressions show up early.
+
+Most of this is invisible from the outside, but every later entry in this log assumes it.
