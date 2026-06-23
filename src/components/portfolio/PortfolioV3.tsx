@@ -7,6 +7,8 @@ import {
   getProjectCardSummary,
 } from "@/constants/caseStudies";
 import { useTablistKeyboard } from "@/hooks/useTablistKeyboard";
+import { useTrackedListingSearch } from "@/hooks/useTrackedListingSearch";
+import { trackListingFilter } from "@/lib/analytics";
 import styles from "@/app/portfolio/portfolio.module.css";
 
 interface Props {
@@ -432,6 +434,9 @@ export function PortfolioV3({ projects }: Props) {
     setPage(1);
   }, [active, sort, query]);
 
+  // Report completed searches to GA4 (no-op unless analytics is enabled).
+  useTrackedListingSearch("portfolio", query, filtered.length);
+
   // Pin Investment Analytics Platform as the featured spotlight on the
   // "all" and "fintech" tabs — it's the flagship project, and burying it
   // in the grid hurts both surfaces. Other category filters fall back to
@@ -548,7 +553,14 @@ export function PortfolioV3({ projects }: Props) {
               aria-selected={active === "all"}
               tabIndex={active === "all" ? 0 : -1}
               className={`${styles.chip} ${active === "all" ? styles.chipOn : ""}`}
-              onClick={() => setActive("all")}
+              onClick={() => {
+                trackListingFilter({
+                  listing_id: "portfolio",
+                  filter_type: "category",
+                  filter_value: "all",
+                });
+                setActive("all");
+              }}
               onKeyDown={(e) => handleChipKeyDown(e, 0)}
             >
               <span>All</span>
@@ -564,7 +576,14 @@ export function PortfolioV3({ projects }: Props) {
                 aria-selected={active === c.id}
                 tabIndex={active === c.id ? 0 : -1}
                 className={`${styles.chip} ${active === c.id ? styles.chipOn : ""}`}
-                onClick={() => setActive(c.id)}
+                onClick={() => {
+                  trackListingFilter({
+                    listing_id: "portfolio",
+                    filter_type: "category",
+                    filter_value: c.id,
+                  });
+                  setActive(c.id);
+                }}
                 onKeyDown={(e) => handleChipKeyDown(e, i + 1)}
               >
                 <span>{c.label}</span>
@@ -676,7 +695,14 @@ export function PortfolioV3({ projects }: Props) {
                 <span>Sort</span>
                 <select
                   value={sort}
-                  onChange={(e) => setSort(e.target.value as SortMode)}
+                  onChange={(e) => {
+                    trackListingFilter({
+                      listing_id: "portfolio",
+                      filter_type: "sort",
+                      filter_value: e.target.value,
+                    });
+                    setSort(e.target.value as SortMode);
+                  }}
                   aria-label="Sort projects"
                 >
                   <option value="newest">Newest first</option>

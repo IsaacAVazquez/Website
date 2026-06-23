@@ -12,6 +12,7 @@ import {
   getRelatedBlogPosts,
 } from "@/lib/blog";
 import { ArrowRight } from "@/components/ui/ServerIcons";
+import { ArticleCodeCopy } from "@/components/analytics/ArticleCodeCopy";
 import { publishedDateFormatter } from "@/lib/utils";
 
 interface PageProps {
@@ -238,9 +239,11 @@ export default async function BlogPostPage({ params }: PageProps) {
             </header>
 
             <div
+              id="article-body"
               className="prose prose-writing dark:prose-invert mb-16 max-w-none"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
+            <ArticleCodeCopy containerSelector="#article-body" location="article" />
 
             {post.cta ? (
               <section

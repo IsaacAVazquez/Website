@@ -3,12 +3,33 @@ import type { NextRequest } from "next/server";
 
 const isProduction = process.env.NODE_ENV === "production";
 
+// Only widen the CSP for Google Analytics when a measurement id is configured.
+// With the env var unset (local dev, CI, tests) the policy stays exactly as it
+// was — no analytics vendor domains are allow-listed.
+const analyticsEnabled = /^G-[A-Z0-9]+$/i.test(
+  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim() ?? "",
+);
+
 function buildContentSecurityPolicy() {
   const scriptSrc = [
     "'self'",
     "'unsafe-inline'",
     ...(isProduction ? [] : ["'unsafe-eval'"]),
     "https://static.cloudflareinsights.com",
+    ...(analyticsEnabled ? ["https://www.googletagmanager.com"] : []),
+  ];
+
+  const connectSrc = [
+    "'self'",
+    "https://api.fantasypros.com",
+    "https://cloudflareinsights.com",
+    ...(analyticsEnabled
+      ? [
+          "https://www.googletagmanager.com",
+          "https://www.google-analytics.com",
+          "https://region1.google-analytics.com",
+        ]
+      : []),
   ];
 
   return [
@@ -17,7 +38,7 @@ function buildContentSecurityPolicy() {
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: https: blob:",
     "font-src 'self'",
-    "connect-src 'self' https://api.fantasypros.com https://cloudflareinsights.com",
+    `connect-src ${connectSrc.join(" ")}`,
     "frame-ancestors 'none'",
     "base-uri 'self'",
     "form-action 'self'",

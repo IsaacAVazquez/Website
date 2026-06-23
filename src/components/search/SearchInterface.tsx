@@ -6,6 +6,8 @@ import { SearchResults } from "./SearchResults";
 import { SearchFilters } from "./SearchFilters";
 import { IconSearch, IconX, IconFilter } from "@tabler/icons-react";
 import { useDebounce } from "@/hooks/useDebounce";
+import { useTrackedListingSearch } from "@/hooks/useTrackedListingSearch";
+import { trackListingFilter } from "@/lib/analytics";
 import { logger } from "@/lib/logger";
 
 export interface SearchInterfaceProps {
@@ -94,6 +96,9 @@ export function SearchInterface({
   const [showFilters, setShowFilters] = useState(false);
   const debouncedQuery = useDebounce(searchState.query, 300);
   const effectiveQuery = searchState.query === "" ? "" : debouncedQuery;
+
+  // Report completed searches to GA4 (no-op unless analytics is enabled).
+  useTrackedListingSearch("site_search", searchState.query, searchState.totalResults);
 
   useEffect(() => {
     const nextSeededState = readSeededSearchState({
@@ -235,10 +240,12 @@ export function SearchInterface({
   };
 
   const handleTypeChange = (type: string) => {
+    trackListingFilter({ listing_id: "site_search", filter_type: "content_type", filter_value: type });
     setSearchState(prev => ({ ...prev, type }));
   };
 
   const handleCategoryChange = (category: string) => {
+    trackListingFilter({ listing_id: "site_search", filter_type: "category", filter_value: category });
     setSearchState(prev => ({ ...prev, category }));
   };
 

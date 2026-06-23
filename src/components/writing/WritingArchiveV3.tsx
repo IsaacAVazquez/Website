@@ -9,6 +9,8 @@ import {
   IconSearch,
 } from "@tabler/icons-react";
 import { useTablistKeyboard } from "@/hooks/useTablistKeyboard";
+import { useTrackedListingSearch } from "@/hooks/useTrackedListingSearch";
+import { trackListingFilter } from "@/lib/analytics";
 import { publishedDateFormatter } from "@/lib/utils";
 import styles from "@/app/writing/writing.module.css";
 
@@ -158,6 +160,9 @@ export function WritingArchiveV3({
     return list;
   }, [posts, filterChips, activeFilter, sort, query]);
 
+  // Report completed searches to GA4 (no-op unless analytics is enabled).
+  useTrackedListingSearch("writing_archive", query, filtered.length);
+
   // Featured = first post in the filtered list, archive = the rest. This
   // makes the featured card respond to chip clicks, search input, and sort
   // changes — previously it stayed locked on posts[0] regardless of filter.
@@ -282,7 +287,14 @@ export function WritingArchiveV3({
                   role="tab"
                   aria-selected={isOn}
                   tabIndex={isOn ? 0 : -1}
-                  onClick={() => setActiveFilter(chip.id)}
+                  onClick={() => {
+                    trackListingFilter({
+                      listing_id: "writing_archive",
+                      filter_type: "topic",
+                      filter_value: chip.id,
+                    });
+                    setActiveFilter(chip.id);
+                  }}
                   onKeyDown={(e) => handleChipKeyDown(e, index)}
                   className={`${styles["wr-chip"]} ${isOn ? styles["wr-chip-on"] : ""}`}
                 >
@@ -377,7 +389,14 @@ export function WritingArchiveV3({
                 <span>Sort</span>
                 <select
                   value={sort}
-                  onChange={(e) => setSort(e.target.value as typeof sort)}
+                  onChange={(e) => {
+                    trackListingFilter({
+                      listing_id: "writing_archive",
+                      filter_type: "sort",
+                      filter_value: e.target.value,
+                    });
+                    setSort(e.target.value as typeof sort);
+                  }}
                   aria-label="Sort articles"
                 >
                   <option value="newest">Newest first</option>

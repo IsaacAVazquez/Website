@@ -7,6 +7,7 @@ import { navLinks } from "@/constants/navlinks";
 import { Menu2, X } from "@/components/ui/ServerIcons";
 import { DeferredThemeToggle } from "@/components/ui/DeferredThemeToggle";
 import { cn } from "@/lib/utils";
+import { trackNavigationClick } from "@/lib/analytics";
 
 function isRouteActive(pathname: string, href: string) {
   if (href === "/") return pathname === "/";
@@ -65,7 +66,14 @@ export function StaticHeader() {
           <Link
             href="/"
             className="header-home-brand inline-flex min-h-[44px] items-center gap-3 px-1 py-1"
-            onClick={closeMobileMenu}
+            onClick={() => {
+              trackNavigationClick({
+                link_text: "Isaac Vazquez",
+                link_url: "/",
+                nav_location: "header_brand",
+              });
+              closeMobileMenu();
+            }}
           >
             Isaac Vazquez
           </Link>
@@ -81,6 +89,13 @@ export function StaticHeader() {
                       href={link.href}
                       aria-current={active ? "page" : undefined}
                       className="inline-flex min-h-[44px] items-center px-4 py-2 header-home-link"
+                      onClick={() =>
+                        trackNavigationClick({
+                          link_text: link.label,
+                          link_url: link.href,
+                          nav_location: "header_primary",
+                        })
+                      }
                     >
                       {link.label}
                     </Link>
@@ -97,7 +112,14 @@ export function StaticHeader() {
             <DeferredThemeToggle />
             <button
               type="button"
-              onClick={() => setIsMobileMenuOpen((current) => !current)}
+              onClick={() => {
+                trackNavigationClick({
+                  link_text: isMobileMenuOpen ? "Close menu" : "Open menu",
+                  link_url: pathname,
+                  nav_location: "header_mobile_toggle",
+                });
+                setIsMobileMenuOpen((current) => !current);
+              }}
               className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border transition-colors header-home-control text-[var(--home-ink)] hover:bg-[var(--home-paper-alt)]"
               aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
               aria-expanded={isMobileMenuOpen}
@@ -127,7 +149,14 @@ export function StaticHeader() {
                     <Link
                       href={link.href}
                       aria-current={active ? "page" : undefined}
-                      onClick={closeMobileMenu}
+                      onClick={() => {
+                        trackNavigationClick({
+                          link_text: link.label,
+                          link_url: link.href,
+                          nav_location: "header_mobile",
+                        });
+                        closeMobileMenu();
+                      }}
                       className={cn(
                         "flex min-h-[48px] items-center gap-3 rounded-xl px-4 py-3 transition-colors header-home-mobile-link",
                         active
