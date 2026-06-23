@@ -1,104 +1,40 @@
 import type { ReadonlyURLSearchParams } from "next/navigation";
 import { laLigaSnapshot } from "@/data/laLigaSnapshot";
 import type { LaLigaClub, LaLigaRouteState, LaLigaView } from "@/types/la-liga";
+import * as core from "./la-liga-state.core";
 
-export const LA_LIGA_ROUTE = "/la-liga";
+// Snapshot-bound wrappers. These keep the original public API used by the
+// server page and the unit tests, but the heavy `laLigaSnapshot` import lives
+// ONLY here (server side). The client imports the pure `la-liga-state.core`
+// module instead and feeds it the lean `summary` data it already has.
 
-const VALID_VIEWS = new Set<LaLigaView>(["table", "title-race", "europe", "relegation"]);
-const LA_LIGA_CLUB_ID_BY_ALIAS = new Map<string, string>(
-  laLigaSnapshot.teams.flatMap((team) => {
-    const canonicalClubId = team.tla?.toLowerCase() || team.id;
-    return [
-      [team.id.toLowerCase(), canonicalClubId],
-      [canonicalClubId, canonicalClubId],
-    ] as const;
-  })
+export const LA_LIGA_ROUTE = core.LA_LIGA_ROUTE;
+
+const ALIAS_MAP = core.buildClubAliasMap(laLigaSnapshot.teams);
+
+export const DEFAULT_LA_LIGA_STATE: LaLigaRouteState = core.resolveDefaultState(
+  laLigaSnapshot.clubs
 );
 
-type SearchParamInput =
-  | URLSearchParams
-  | ReadonlyURLSearchParams
-  | Record<string, string | string[] | undefined | null>;
-
-type SearchParamRecord = Record<string, string | string[] | undefined | null>;
-
-export const DEFAULT_LA_LIGA_STATE: LaLigaRouteState = {
-  view: "table",
-  club: laLigaSnapshot.clubs[0]?.id ?? "barcelona",
-};
-
 export function canonicalizeLaLigaClubId(clubId: string | null): string | null {
-  if (!clubId) {
-    return null;
-  }
-
-  return LA_LIGA_CLUB_ID_BY_ALIAS.get(clubId.trim().toLowerCase()) ?? null;
-}
-
-function readParam(input: SearchParamInput, key: string): string | null {
-  if ("get" in input && typeof input.get === "function") {
-    return input.get(key);
-  }
-
-  const rawValue = (input as SearchParamRecord)[key];
-  if (Array.isArray(rawValue)) {
-    return rawValue[0] ?? null;
-  }
-
-  return rawValue ?? null;
+  return core.canonicalizeClubId(clubId, ALIAS_MAP);
 }
 
 export function filterClubsForView(view: LaLigaView): LaLigaClub[] {
-  switch (view) {
-    case "title-race":
-      return laLigaSnapshot.clubs.slice(0, 4);
-    case "europe":
-      return laLigaSnapshot.clubs.slice(0, 6);
-    case "relegation":
-      return laLigaSnapshot.clubs.slice(-5);
-    case "table":
-    default:
-      return laLigaSnapshot.clubs;
-  }
+  return core.filterClubs(laLigaSnapshot.clubs, view);
 }
 
 export function getDefaultClubForView(view: LaLigaView): string {
-  return filterClubsForView(view)[0]?.id ?? DEFAULT_LA_LIGA_STATE.club;
+  return core.getDefaultClub(laLigaSnapshot.clubs, view, DEFAULT_LA_LIGA_STATE.club);
 }
 
-export function normalizeLaLigaState(input: SearchParamInput): LaLigaRouteState {
-  const view = readParam(input, "view");
-  const club = canonicalizeLaLigaClubId(readParam(input, "club"));
-
-  return {
-    view: VALID_VIEWS.has((view ?? "") as LaLigaView)
-      ? (view as LaLigaView)
-      : DEFAULT_LA_LIGA_STATE.view,
-    club: club ?? DEFAULT_LA_LIGA_STATE.club,
-  };
+export function normalizeLaLigaState(input: core.SearchParamInput): LaLigaRouteState {
+  return core.normalizeState(input, DEFAULT_LA_LIGA_STATE, ALIAS_MAP);
 }
 
 export function buildLaLigaHref(
   state: LaLigaRouteState,
   baseSearchParams?: URLSearchParams | ReadonlyURLSearchParams
 ): string {
-  const params = new URLSearchParams(
-    baseSearchParams ? Array.from(baseSearchParams.entries()) : []
-  );
-  const canonicalClubId = canonicalizeLaLigaClubId(state.club) ?? DEFAULT_LA_LIGA_STATE.club;
-
-  if (state.view === DEFAULT_LA_LIGA_STATE.view) {
-    params.delete("view");
-  } else {
-    params.set("view", state.view);
-  }
-
-  if (canonicalClubId === DEFAULT_LA_LIGA_STATE.club && state.view === DEFAULT_LA_LIGA_STATE.view) {
-    params.delete("club");
-  } else {
-    params.set("club", canonicalClubId);
-  }
-
-  const query = params.toString();
-  return `${LA_LIGA_ROUTE}${query ? `?${query}` : ""}`;
+  return core.buildHref(state, DEFAULT_LA_LIGA_STATE, ALIAS_MAP, baseSearchParams);
 }

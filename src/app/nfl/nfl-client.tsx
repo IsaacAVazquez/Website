@@ -42,14 +42,15 @@ import type {
   NFLView,
 } from "@/types/nfl";
 import {
-  buildNflHref,
-  canonicalizeNflTeamId,
-  DEFAULT_NFL_STATE,
-  filterTeamsForView,
-  getDefaultTeamForView,
+  buildHref,
+  buildTeamAliasMap,
+  canonicalizeTeamId,
+  filterTeams,
+  getDefaultTeam,
   NFL_ROUTE,
-  normalizeNflState,
-} from "./nfl-state";
+  normalizeState,
+  resolveDefaultState,
+} from "./nfl-state.core";
 
 interface NflClientProps {
   initialState: NFLRouteState;
@@ -123,6 +124,8 @@ export function NflClient({
   const currentHref = `${NFL_ROUTE}${currentQuery ? `?${currentQuery}` : ""}`;
 
   const teams = summary.teams;
+  const aliasMap = useMemo(() => buildTeamAliasMap(summary.teams), [summary.teams]);
+  const defaultState = useMemo(() => resolveDefaultState(summary.teams), [summary.teams]);
   const teamById = useMemo(() => new Map(teams.map((team) => [team.id, team])), [teams]);
   const teamShortNameById = useMemo(
     () => new Map(teams.map((team) => [team.id, team.shortName])),
@@ -172,11 +175,13 @@ export function NflClient({
 
   const hasManagedParams =
     searchParams.get("view") !== null || searchParams.get("team") !== null;
-  const routeState = hasManagedParams ? normalizeNflState(searchParams) : initialState;
-  const visibleTeams = filterTeamsForView(routeState.view);
+  const routeState = hasManagedParams
+    ? normalizeState(searchParams, defaultState, aliasMap)
+    : initialState;
+  const visibleTeams = filterTeams(summary.teams, routeState.view);
   const selectedTeamId = visibleTeams.some((team) => team.id === routeState.team)
     ? routeState.team
-    : getDefaultTeamForView(routeState.view);
+    : getDefaultTeam(summary.teams, routeState.view, defaultState.team);
   const selectedTeam = teamById.get(selectedTeamId) ?? teams[0];
   const [teamSnapshots, setTeamSnapshots] = useState<Record<string, NFLTeamSnapshot>>(
     () =>
@@ -188,11 +193,13 @@ export function NflClient({
   const [teamSnapshotError, setTeamSnapshotError] = useState<string | null>(null);
   const teamSnapshot = selectedTeam ? teamSnapshots[selectedTeam.id] ?? null : null;
   const isTeamSnapshotLoading = selectedTeam ? loadingTeamId === selectedTeam.id : false;
-  const desiredHref = buildNflHref(
+  const desiredHref = buildHref(
     {
       view: routeState.view,
       team: selectedTeamId,
     },
+    defaultState,
+    aliasMap,
     searchParams
   );
 
@@ -204,7 +211,7 @@ export function NflClient({
   }, [currentHref, desiredHref, router]);
 
   function navigate(nextState: NFLRouteState) {
-    const href = buildNflHref(nextState, searchParams);
+    const href = buildHref(nextState, defaultState, aliasMap, searchParams);
     if (href === currentHref) return;
     startTransition(() => {
       router.push(href, { scroll: false });
@@ -212,17 +219,17 @@ export function NflClient({
   }
 
   function handleViewChange(view: NFLView) {
-    const nextTeams = filterTeamsForView(view);
+    const nextTeams = filterTeams(summary.teams, view);
     const nextTeam = nextTeams.some((team) => team.id === selectedTeamId)
       ? selectedTeamId
-      : nextTeams[0]?.id ?? DEFAULT_NFL_STATE.team;
+      : nextTeams[0]?.id ?? defaultState.team;
     navigate({ view, team: nextTeam });
   }
 
   function handleTeamChange(teamId: string) {
     navigate({
       view: routeState.view,
-      team: canonicalizeNflTeamId(teamId) ?? DEFAULT_NFL_STATE.team,
+      team: canonicalizeTeamId(teamId, aliasMap) ?? defaultState.team,
     });
   }
 
@@ -495,7 +502,7 @@ export function NflClient({
                   >
                     <span className="text-[var(--home-ink)]">{option.label}</span>
                     <span className="text-xs text-[var(--home-ink-soft)]">
-                      {filterTeamsForView(option.id).length}
+                      {filterTeams(summary.teams, option.id).length}
                     </span>
                   </button>
                 );

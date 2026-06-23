@@ -1,120 +1,45 @@
 import type { ReadonlyURLSearchParams } from "next/navigation";
 import { nbaSnapshot } from "@/data/nbaSnapshot";
 import type { NbaConference, NbaRouteState, NbaTeam, NbaView } from "@/types/nba";
+import * as core from "./nba-state.core";
 
-export const NBA_ROUTE = "/nba";
+// Snapshot-bound wrappers. These keep the original public API used by the
+// server page and the unit tests, but the heavy `nbaSnapshot` import lives
+// ONLY here (server side). The client imports the pure `nba-state.core`
+// module instead and feeds it the lean `summary` data it already has.
 
-const VALID_VIEWS = new Set<NbaView>(["east", "west", "playoff", "play-in"]);
+export const NBA_ROUTE = core.NBA_ROUTE;
 
-const allTeams: NbaTeam[] = [
-  ...nbaSnapshot.teamsByConference.east,
-  ...nbaSnapshot.teamsByConference.west,
-];
+const east = nbaSnapshot.teamsByConference.east;
+const west = nbaSnapshot.teamsByConference.west;
 
-const NBA_TEAM_ID_BY_ALIAS = new Map<string, string>(
-  allTeams.flatMap((team) => {
-    const canonical = team.id.toLowerCase();
-    const aliases = [team.id.toLowerCase(), team.abbreviation.toLowerCase()];
-    return aliases.map((alias) => [alias, canonical] as const);
-  })
-);
+const ALIAS_MAP = core.buildTeamAliasMap([...east, ...west]);
 
-type SearchParamInput =
-  | URLSearchParams
-  | ReadonlyURLSearchParams
-  | Record<string, string | string[] | undefined | null>;
-
-type SearchParamRecord = Record<string, string | string[] | undefined | null>;
-
-export const DEFAULT_NBA_STATE: NbaRouteState = {
-  view: "east",
-  team:
-    nbaSnapshot.teamsByConference.east[0]?.id ??
-    nbaSnapshot.teamsByConference.west[0]?.id ??
-    allTeams[0]?.id ??
-    "bos",
-};
+export const DEFAULT_NBA_STATE: NbaRouteState = core.resolveDefaultState(east, west);
 
 export function canonicalizeNbaTeamId(teamId: string | null): string | null {
-  if (!teamId) return null;
-  return NBA_TEAM_ID_BY_ALIAS.get(teamId.trim().toLowerCase()) ?? null;
-}
-
-function readParam(input: SearchParamInput, key: string): string | null {
-  if ("get" in input && typeof input.get === "function") {
-    return input.get(key);
-  }
-  const rawValue = (input as SearchParamRecord)[key];
-  if (Array.isArray(rawValue)) return rawValue[0] ?? null;
-  return rawValue ?? null;
+  return core.canonicalizeTeamId(teamId, ALIAS_MAP);
 }
 
 export function getConferenceForView(view: NbaView): NbaConference | "both" {
-  switch (view) {
-    case "west":
-      return "west";
-    case "east":
-      return "east";
-    case "playoff":
-    case "play-in":
-    default:
-      return "both";
-  }
+  return core.getConferenceForView(view);
 }
 
 export function filterTeamsForView(view: NbaView): NbaTeam[] {
-  const east = nbaSnapshot.teamsByConference.east;
-  const west = nbaSnapshot.teamsByConference.west;
-
-  switch (view) {
-    case "east":
-      return east;
-    case "west":
-      return west;
-    case "playoff":
-      return [...east.slice(0, 6), ...west.slice(0, 6)];
-    case "play-in":
-      return [...east.slice(6, 10), ...west.slice(6, 10)];
-    default:
-      return [...east, ...west];
-  }
+  return core.filterTeams(east, west, view);
 }
 
 export function getDefaultTeamForView(view: NbaView): string {
-  return filterTeamsForView(view)[0]?.id ?? DEFAULT_NBA_STATE.team;
+  return core.getDefaultTeam(east, west, view, DEFAULT_NBA_STATE.team);
 }
 
-export function normalizeNbaState(input: SearchParamInput): NbaRouteState {
-  const view = readParam(input, "view");
-  const team = canonicalizeNbaTeamId(readParam(input, "team"));
-
-  return {
-    view: VALID_VIEWS.has((view ?? "") as NbaView) ? (view as NbaView) : DEFAULT_NBA_STATE.view,
-    team: team ?? DEFAULT_NBA_STATE.team,
-  };
+export function normalizeNbaState(input: core.SearchParamInput): NbaRouteState {
+  return core.normalizeState(input, DEFAULT_NBA_STATE, ALIAS_MAP);
 }
 
 export function buildNbaHref(
   state: NbaRouteState,
   baseSearchParams?: URLSearchParams | ReadonlyURLSearchParams
 ): string {
-  const params = new URLSearchParams(
-    baseSearchParams ? Array.from(baseSearchParams.entries()) : []
-  );
-  const canonicalTeamId = canonicalizeNbaTeamId(state.team) ?? DEFAULT_NBA_STATE.team;
-
-  if (state.view === DEFAULT_NBA_STATE.view) {
-    params.delete("view");
-  } else {
-    params.set("view", state.view);
-  }
-
-  if (canonicalTeamId === DEFAULT_NBA_STATE.team && state.view === DEFAULT_NBA_STATE.view) {
-    params.delete("team");
-  } else {
-    params.set("team", canonicalTeamId);
-  }
-
-  const query = params.toString();
-  return `${NBA_ROUTE}${query ? `?${query}` : ""}`;
+  return core.buildHref(state, DEFAULT_NBA_STATE, ALIAS_MAP, baseSearchParams);
 }
