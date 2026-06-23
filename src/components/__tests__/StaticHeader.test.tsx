@@ -116,16 +116,20 @@ describe("StaticHeader", () => {
     expect(primaryNav?.querySelector('a[href="/search"]')).toBeNull();
   });
 
-  it("passes desktop sizing classes to the deferred theme toggle", async () => {
+  it("groups the desktop search and theme controls together outside the nav", async () => {
     await act(async () => {
       root.render(<StaticHeader />);
     });
 
-    const desktopThemeButton = container.querySelector(
-      '[aria-label="Primary navigation"] button'
-    );
+    // Search and the theme toggle share one utility cluster to the right of the
+    // segmented nav (the desktop-only `.header-home-controls` group).
+    const controls = container.querySelector(".header-home-controls");
+    expect(controls).not.toBeNull();
+    expect(controls?.querySelector('a[href="/search"]')).not.toBeNull();
+    expect(controls?.querySelector("button")?.textContent).toBe("Theme");
 
-    expect(desktopThemeButton).toHaveClass("min-h-[44px]");
-    expect(desktopThemeButton).toHaveClass("px-3");
+    // The theme toggle no longer lives inside the primary nav link list.
+    const primaryNav = container.querySelector('[aria-label="Primary navigation"]');
+    expect(primaryNav?.querySelector("button")).toBeNull();
   });
 });
