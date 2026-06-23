@@ -24,6 +24,8 @@ module.exports = {
     return {
       loc: entry.loc,
       lastmod: entry.lastmod,
+      changefreq: entry.changefreq,
+      priority: entry.priority,
     };
   },
   additionalPaths: async () => {
