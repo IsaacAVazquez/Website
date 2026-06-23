@@ -2,6 +2,7 @@ import { StructuredData } from "@/components/StructuredData";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { getInvestmentsIndex } from "@/lib/investmentsData";
 import type { InvestmentsIndex } from "@/types/investment";
+import investmentsIndex from "../../../public/data/investments/index.json";
 import { InvestmentsClient } from "./investments-client";
 import { normalizeInvestmentsState } from "./investments-state";
 
@@ -10,7 +11,7 @@ export const metadata = constructMetadata({
   description:
     "Investment research workspace with curated company snapshots, valuation metrics, financial statements, price history, and browser-saved portfolio tracking.",
   canonicalUrl: "/investments",
-  dateModified: "2026-03-16",
+  dateModified: investmentsIndex.lastUpdated.slice(0, 10),
   image: "/investments/opengraph-image",
   aiMetadata: {
     profession: "Product Manager",
@@ -81,6 +82,9 @@ export default async function InvestmentsPage({ searchParams }: InvestmentsPageP
             "Investment research workspace for valuation review, financial statements, curated company snapshots, and browser-saved portfolio tracking.",
           url: "https://isaacavazquez.com/investments",
           image: "https://isaacavazquez.com/investments/opengraph-image",
+          ...(index?.lastUpdated
+            ? { dateModified: index.lastUpdated }
+            : {}),
           applicationCategory: "FinanceApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
           author: "Isaac Vazquez",

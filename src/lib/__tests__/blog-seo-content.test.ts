@@ -3,9 +3,12 @@ import path from "path";
 import matter from "gray-matter";
 import {
   BLOG_CLUSTER_ORDER,
+  BLOG_TOPIC_PAGES,
   LEAD_GEN_BLOG_SLUGS,
   LEAD_GEN_INTERNAL_LINK_RULES,
+  getBlogTopicPageForPost,
 } from "../blog-config";
+import { fitMetaDescription, fitSearchTitle } from "../seo";
 
 const blogDirectory = path.join(process.cwd(), "content/blog");
 
@@ -103,5 +106,60 @@ describe("World Cup blog content rules", () => {
 
       expect(data.coverImage).toBe(`/writing/${slug}/opengraph-image`);
     }
+  });
+});
+
+describe("article search metadata rules", () => {
+  it("fits every article title and description within the configured limits", () => {
+    const files = fs
+      .readdirSync(blogDirectory)
+      .filter((file) => file.endsWith(".mdx") || file.endsWith(".md"));
+
+    for (const file of files) {
+      const { data } = matter(
+        fs.readFileSync(path.join(blogDirectory, file), "utf8")
+      );
+      const title = fitSearchTitle(data.seo?.title || data.title);
+      const description = fitMetaDescription(
+        data.seo?.description || data.excerpt || data.title
+      );
+
+      expect(title.length).toBeLessThanOrEqual(60);
+      expect(description.length).toBeLessThanOrEqual(160);
+    }
+  });
+});
+
+describe("writing topic architecture", () => {
+  it("assigns every article to one crawlable topic page", () => {
+    const files = fs
+      .readdirSync(blogDirectory)
+      .filter((file) => file.endsWith(".mdx") || file.endsWith(".md"));
+
+    expect(new Set(BLOG_TOPIC_PAGES.map((topic) => topic.slug)).size).toBe(
+      BLOG_TOPIC_PAGES.length
+    );
+
+    for (const file of files) {
+      const { data } = matter(
+        fs.readFileSync(path.join(blogDirectory, file), "utf8")
+      );
+      expect(getBlogTopicPageForPost(data)).toBeDefined();
+    }
+  });
+});
+
+describe("primary-source citation rules", () => {
+  it.each([
+    "context-engineering-replacing-prompt-engineering",
+    "evals-are-the-new-test-suite",
+    "is-rag-dead-2026",
+    "prompt-injection-is-a-product-problem",
+    "what-an-ai-agent-actually-costs-in-production",
+  ])("keeps primary-source links in %s", (slug) => {
+    const { content } = readBlogPost(slug);
+    const externalLinks = content.match(/\]\(https:\/\/[^)]+\)/g) || [];
+
+    expect(externalLinks.length).toBeGreaterThan(0);
   });
 });

@@ -2,6 +2,7 @@
 title: "Context Engineering Is What Prompt Engineering Wanted to Be"
 excerpt: "The skill that actually separates good AI products from bad ones in 2026 is not clever prompting. It is deciding what the model sees, in what order, and what it never sees at all. Here is how I think about context engineering after a year of building with agents."
 publishedAt: "2026-03-12"
+updatedAt: "2026-06-22"
 category: "Agentic AI"
 tags: ["AI", "Context Engineering", "Prompt Engineering", "Agentic AI", "LLM", "AI Products", "Context Windows", "RAG"]
 featured: false
@@ -33,7 +34,7 @@ So what does context engineering involve in practice? In my experience it comes 
 
 The first is selection. Of everything you could put in front of the model, what earns a place? The instinct is to include everything that might be relevant, because leaving something out feels like the bigger risk. I think that instinct is wrong most of the time. A retrieval system that returns the three most relevant documents will usually beat one that returns fifteen, even though the fifteen contain more total information, because the model's effective attention is a scarce resource and you are spending it either way.
 
-The second is compression. Long-running agents have to summarize their own history or they drown in it. The interesting design question is what survives the summary. A good compression step preserves decisions, constraints, and open questions while discarding the play-by-play. A bad one preserves the play-by-play and loses the constraint that actually mattered, which is how you get an agent that re-litigates a decision it already made an hour ago.
+The second is compression. Long-running agents have to summarize their own history or they drown in it. The [OpenAI compaction guidance](https://developers.openai.com/api/docs/guides/compaction) treats compaction as a first-class way to reduce context size while preserving the state needed for later turns. The interesting design question is what survives the summary. A good compression step preserves decisions, constraints, and open questions while discarding the play-by-play. A bad one preserves the play-by-play and loses the constraint that actually mattered, which is how you get an agent that re-litigates a decision it already made an hour ago.
 
 The third is freshness and authority. When two pieces of context conflict, which one wins? Most systems have no answer to this, so the model improvises, and it improvises inconsistently. The fix is structural. Date your documents, rank your sources, and make the hierarchy explicit in how context gets assembled. This is boring data plumbing, and it moves output quality more than any prompt revision I have ever made.
 
@@ -44,3 +45,5 @@ What is interesting here is how little of this resembles the prompt engineering 
 Context engineering is now getting its own hype cycle, and the pattern from the prompt era is repeating, so it is worth being clear about limits. Better context does not fix a model that lacks the underlying capability for a task. It does not substitute for evals, and teams that tune context without a measurement loop are just generating vibes with extra steps. And there is a real ceiling on how much curation effort makes sense for low-stakes use cases. A casual chat interface does not need the context discipline of an agent that touches production systems.
 
 But for anything agentic, anything long-running, anything where the model acts rather than just answers, I would put context design at the center of the build. The prompt is one input among many, and usually not the one that decides whether the thing works. The window is the product. What you let into it is the job.
+
+If retrieval is the part you are trying to place inside that architecture, [Is RAG Dead?](/writing/is-rag-dead-2026) is my answer to what long context and agentic search actually changed. If the system is already running and the question is whether a context change helped, [Evals Are the New Test Suite](/writing/evals-are-the-new-test-suite) is the measurement layer I would add next.

@@ -1,6 +1,7 @@
 import { getPortfolioProjects } from "@/constants/caseStudies";
 import { constructMetadata } from "@/lib/seo";
 import { PortfolioV3 } from "@/components/portfolio/PortfolioV3";
+import { AIStructuredData } from "@/components/AIStructuredData";
 
 export const metadata = constructMetadata({
   title: "Projects",
@@ -32,6 +33,30 @@ export const metadata = constructMetadata({
 
 export default function PortfolioPage() {
   const portfolioProjects = getPortfolioProjects();
-  return <PortfolioV3 projects={portfolioProjects} />;
-}
 
+  return (
+    <>
+      <AIStructuredData
+        schema={{
+          type: "ItemList",
+          data: {
+            name: "Isaac Vazquez Projects",
+            description:
+              "Product, analytics, fintech, sports, and decision-support tools built by Isaac Vazquez.",
+            url: "https://isaacavazquez.com/portfolio",
+            items: portfolioProjects.map((project) => ({
+              name: project.title,
+              description: project.overview.summary,
+              url: project.link?.startsWith("http")
+                ? project.link
+                : `https://isaacavazquez.com${
+                    project.link || `/portfolio/${project.slug}`
+                  }`,
+            })),
+          },
+        }}
+      />
+      <PortfolioV3 projects={portfolioProjects} />
+    </>
+  );
+}

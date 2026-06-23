@@ -5,10 +5,43 @@ import {
   Footer,
   type FooterVariant,
 } from "@/components/Footer";
+import { ProjectBuildNote } from "@/components/ProjectBuildNote";
 
 interface ConditionalLayoutProps {
   children: React.ReactNode;
 }
+
+const projectBuildNotes: Record<string, string> = {
+  "/ai-dev-tools": "/writing/mapping-the-ai-dev-tool-ecosystem",
+  "/bay-area-transit": "/writing/building-a-bart-transit-dashboard",
+  "/decision-lab": "/writing/building-decision-lab",
+  "/earthquake-pulse": "/writing/building-an-earthquake-dashboard",
+  "/fantasy-formula-1": "/writing/building-a-fantasy-formula-1-optimizer",
+  "/fantasy-football": "/writing/building-a-fantasy-football-rankings-platform",
+  "/fintech-tools/budget-planner": "/writing/building-a-budget-planner",
+  "/fintech-tools/interchange-iq": "/writing/interchange-iq-payment-fee-analyzer",
+  "/food-map": "/writing/building-an-austin-food-map",
+  "/formula-1": "/writing/building-a-formula-1-dashboard",
+  "/frontier-models": "/writing/building-a-frontier-model-tracker",
+  "/golf": "/writing/building-a-pga-tour-dashboard",
+  "/github-trending-pulse": "/writing/building-a-github-trending-dashboard",
+  "/investments": "/writing/building-an-investment-research-platform",
+  "/la-liga": "/writing/building-a-la-liga-dashboard",
+  "/mba-internship-notifications": "/writing/building-an-mba-recruiting-tracker",
+  "/mlb": "/writing/building-an-mlb-dashboard",
+  "/museum-log": "/writing/building-a-museum-log",
+  "/nba": "/writing/building-an-nba-dashboard",
+  "/news-pulse": "/writing/building-news-pulse-dashboard",
+  "/nfl": "/writing/building-an-nfl-dashboard",
+  "/polling-aggregator": "/writing/building-a-polling-aggregator",
+  "/premier-league": "/writing/building-a-premier-league-dashboard",
+  "/recipe-finder": "/writing/building-a-pantry-aware-recipe-finder",
+  "/spacex-mission-control": "/writing/building-spacex-mission-control",
+  "/tech-startup-tracker": "/writing/building-a-tech-startup-tracker",
+  "/travel": "/writing/building-a-travel-planner",
+  "/wine-cellar": "/writing/building-a-wine-cellar-app",
+  "/world-cup-2026": "/writing/building-a-world-cup-dashboard",
+};
 
 export function ConditionalLayout({ children }: ConditionalLayoutProps) {
   const pathname = usePathname();
@@ -63,6 +96,7 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
   const footerVariant: FooterVariant = compactFooterRoutes.has(pathname)
     ? "compact"
     : "full";
+  const buildNoteHref = projectBuildNotes[pathname];
   return (
     <>
       <div className="min-h-screen">
@@ -81,6 +115,7 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
               {children}
             </div>
           )}
+          {buildNoteHref ? <ProjectBuildNote href={buildNoteHref} /> : null}
         </main>
       </div>
 

@@ -17,6 +17,15 @@ export interface BlogPostCTA {
   actionLabel?: string;
 }
 
+export interface BlogTopicPage {
+  slug: string;
+  label: BlogCluster | BlogArchiveBucket;
+  description: string;
+  seoTitle: string;
+  metaDescription: string;
+  kind: "cluster" | "archive";
+}
+
 export const BLOG_CLUSTER_ORDER: BlogCluster[] = [
   "PM Workflows",
   "Agentic AI",
@@ -78,6 +87,84 @@ export const BLOG_ARCHIVE_BUCKET_DETAILS: Record<
       "Space writing and side-product experiments that started from curiosity and turned into working surfaces.",
   },
 };
+
+export const BLOG_TOPIC_PAGES: BlogTopicPage[] = [
+  {
+    slug: "pm-workflows",
+    label: "PM Workflows",
+    description: BLOG_CLUSTER_DETAILS["PM Workflows"].description,
+    seoTitle: "AI Workflows for Product Managers",
+    metaDescription:
+      "Practical AI workflows for product discovery, research synthesis, PRDs, roadmaps, stakeholder communication, and product decisions.",
+    kind: "cluster",
+  },
+  {
+    slug: "agentic-ai",
+    label: "Agentic AI",
+    description: BLOG_CLUSTER_DETAILS["Agentic AI"].description,
+    seoTitle: "Agentic AI Product Strategy",
+    metaDescription:
+      "Writing on AI agents, orchestration, model economics, evaluation, security, delegation, and production product decisions.",
+    kind: "cluster",
+  },
+  {
+    slug: "fintech-product-pricing",
+    label: "Fintech Product & Pricing",
+    description: BLOG_CLUSTER_DETAILS["Fintech Product & Pricing"].description,
+    seoTitle: "Fintech Product and Pricing",
+    metaDescription:
+      "Product analysis and build notes on investment research, payment processing economics, pricing strategy, and financial decision tools.",
+    kind: "cluster",
+  },
+  {
+    slug: "systems-quality",
+    label: "Systems & Quality",
+    description: BLOG_CLUSTER_DETAILS["Systems & Quality"].description,
+    seoTitle: "Software Systems and Quality Engineering",
+    metaDescription:
+      "Writing on reliability, testing, architecture, AI evaluation, security, and the engineering judgment behind production systems.",
+    kind: "cluster",
+  },
+  {
+    slug: "sports-fantasy",
+    label: "Sports & Fantasy",
+    description: BLOG_ARCHIVE_BUCKET_DETAILS["Sports & Fantasy"].description,
+    seoTitle: "Sports Analytics and Fantasy Strategy",
+    metaDescription:
+      "Sports analytics, fantasy football strategy, World Cup analysis, bracket models, and the data products behind the predictions.",
+    kind: "archive",
+  },
+  {
+    slug: "signals-commentary",
+    label: "Signals & Commentary",
+    description: BLOG_ARCHIVE_BUCKET_DETAILS["Signals & Commentary"].description,
+    seoTitle: "Technology, Markets, and Policy Commentary",
+    metaDescription:
+      "Opinionated analysis of technology, AI infrastructure, markets, policy, careers, and the signals shaping product strategy.",
+    kind: "archive",
+  },
+  {
+    slug: "space-experiments",
+    label: "Space & Experiments",
+    description: BLOG_ARCHIVE_BUCKET_DETAILS["Space & Experiments"].description,
+    seoTitle: "Space Technology and Product Experiments",
+    metaDescription:
+      "Writing on space missions, launch economics, experimental dashboards, and side projects built from technical curiosity.",
+    kind: "archive",
+  },
+];
+
+export function getBlogTopicPage(slug: string): BlogTopicPage | undefined {
+  return BLOG_TOPIC_PAGES.find((topic) => topic.slug === slug);
+}
+
+export function getBlogTopicPageForPost(post?: {
+  cluster?: BlogCluster | null;
+  archiveBucket?: BlogArchiveBucket | null;
+}): BlogTopicPage | undefined {
+  const label = post?.cluster || post?.archiveBucket;
+  return BLOG_TOPIC_PAGES.find((topic) => topic.label === label);
+}
 
 export const HOMEPAGE_PROOF_OF_WORK_SLUGS = [
   "ai-product-discovery-workflow",

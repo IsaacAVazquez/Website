@@ -63,7 +63,7 @@ describe("Writing article page", () => {
 
     render(page);
 
-    expect(screen.getByText("PM Workflows")).toBeVisible();
+    expect(screen.getAllByRole("link", { name: "PM Workflows" })).toHaveLength(2);
     expect(screen.getByRole("heading", { level: 1, name: "Test Post" })).toBeVisible();
     expect(screen.getByRole("img", { name: "Custom cover image alt" })).toBeVisible();
     expect(
@@ -102,7 +102,7 @@ describe("Writing article page", () => {
 
     render(page);
 
-    expect(screen.getByText("Signals & Commentary")).toBeVisible();
+    expect(screen.getAllByRole("link", { name: "Signals & Commentary" })).toHaveLength(2);
     expect(screen.getByRole("heading", { level: 1, name: "Archive Post" })).toBeVisible();
   });
 });

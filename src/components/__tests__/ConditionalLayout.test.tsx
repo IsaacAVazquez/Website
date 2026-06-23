@@ -146,4 +146,22 @@ describe("ConditionalLayout", () => {
     expect(container.querySelector("main > .max-w-4xl")).toBeNull();
     expect(container.querySelector('[data-testid="route-content"]')).toBeTruthy();
   });
+
+  it("links canonical project routes to their build notes", () => {
+    mockUsePathname.mockReturnValue("/news-pulse");
+
+    act(() => {
+      root.render(
+        <ConditionalLayout>
+          <div>Page content</div>
+        </ConditionalLayout>
+      );
+    });
+
+    expect(
+      container.querySelector(
+        'a[href="/writing/building-news-pulse-dashboard"]'
+      )
+    ).toBeTruthy();
+  });
 });

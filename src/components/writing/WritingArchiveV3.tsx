@@ -11,6 +11,7 @@ import {
 import { useTablistKeyboard } from "@/hooks/useTablistKeyboard";
 import { useTrackedListingSearch } from "@/hooks/useTrackedListingSearch";
 import { trackListingFilter } from "@/lib/analytics";
+import { BLOG_TOPIC_PAGES } from "@/lib/blog-config";
 import { publishedDateFormatter } from "@/lib/utils";
 import styles from "@/app/writing/writing.module.css";
 
@@ -532,6 +533,46 @@ export function WritingArchiveV3({
             ) : null}
           </section>
         </div>
+
+        <section
+          className="border-t border-[var(--home-rule)] bg-[var(--home-paper-alt)] py-12"
+          aria-labelledby="writing-topic-pages"
+        >
+          <div className={styles["wr-shell"]}>
+            <p className="home-kicker mb-3">Browse by topic</p>
+            <h2
+              id="writing-topic-pages"
+              className="mb-3 text-3xl font-semibold tracking-[-0.04em] text-[var(--home-ink)]"
+            >
+              Follow one thread through the archive.
+            </h2>
+            <p className="home-body mb-7 max-w-3xl">
+              Each topic page keeps the full set of related articles in one
+              crawlable place, with the newest work first.
+            </p>
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {BLOG_TOPIC_PAGES.map((topic) => (
+                <Link
+                  key={topic.slug}
+                  href={`/writing/topics/${topic.slug}`}
+                  className="home-card group flex min-h-[120px] flex-col justify-between p-5"
+                >
+                  <span className="text-lg font-semibold tracking-[-0.025em] text-[var(--home-ink)]">
+                    {topic.label}
+                  </span>
+                  <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[var(--home-haze)]">
+                    Browse articles
+                    <IconArrowRight
+                      size={14}
+                      aria-hidden="true"
+                      className="transition-transform group-hover:translate-x-1"
+                    />
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
 
         {/* Newsletter CTA */}
         <section className={styles["wr-cta"]} aria-labelledby="wr-cta-title">

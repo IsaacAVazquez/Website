@@ -6,6 +6,29 @@ interface StructuredDataProps {
   data?: Record<string, string | number | boolean | object>;
 }
 
+function normalizePerson(value: unknown) {
+  if (typeof value === "string") {
+    return {
+      "@type": "Person",
+      name: value,
+      url: siteConfig.url,
+    };
+  }
+
+  if (value && typeof value === "object") {
+    return {
+      "@type": "Person",
+      ...(value as Record<string, unknown>),
+    };
+  }
+
+  return {
+    "@type": "Person",
+    name: siteConfig.name,
+    url: siteConfig.url,
+  };
+}
+
 export function StructuredData({ type = "Person", data = {} }: StructuredDataProps) {
   const getStructuredData = () => {
     const baseData = {
@@ -103,52 +126,60 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
           ...data,
         };
 
-      case "WebPage":
+      case "WebPage": {
+        const {
+          author,
+          publisher,
+          datePublished,
+          dateModified,
+          ...webPageData
+        } = data;
+
         return {
           ...baseData,
+          ...webPageData,
           "@type": "WebPage",
           "name": data.title || siteConfig.title,
           "description": data.description || siteConfig.description,
           "url": data.url || siteConfig.url,
-          "author": {
-            "@type": "Person",
-            "name": siteConfig.name,
-          },
-          "publisher": {
-            "@type": "Person",
-            "name": siteConfig.name,
-          },
-          "datePublished": data.datePublished || new Date().toISOString(),
-          "dateModified": data.dateModified || new Date().toISOString(),
-          ...data,
+          "author": normalizePerson(author),
+          "publisher": normalizePerson(publisher),
+          ...(datePublished ? { datePublished } : {}),
+          ...(dateModified ? { dateModified } : {}),
         };
+      }
 
-      case "SoftwareApplication":
+      case "SoftwareApplication": {
+        const {
+          author,
+          dateCreated,
+          dateModified,
+          offers,
+          ...applicationData
+        } = data;
+
         return {
           ...baseData,
+          ...applicationData,
           "@type": "SoftwareApplication",
           "name": data.name || "Project",
           "description": data.description || "",
           "image": data.image,
-          "dateCreated": data.dateCreated,
-          "dateModified": data.dateModified || new Date().toISOString(),
-          "author": {
-            "@type": "Person",
-            "name": siteConfig.name,
-            "url": siteConfig.url,
-          },
+          ...(dateCreated ? { dateCreated } : {}),
+          ...(dateModified ? { dateModified } : {}),
+          "author": normalizePerson(author),
           "keywords": data.keywords,
           "programmingLanguage": data.programmingLanguage,
           "applicationCategory": data.applicationCategory || "WebApplication",
-          "operatingSystem": "Any",
+          "operatingSystem": data.operatingSystem || "Any",
           "url": data.url || siteConfig.url,
-          "offers": {
+          "offers": offers || {
             "@type": "Offer",
             "price": "0",
-            "priceCurrency": "USD"
+            "priceCurrency": "USD",
           },
-          ...data,
         };
+      }
 
       case "BreadcrumbList":
         return {
@@ -158,20 +189,25 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
           ...data,
         };
 
-      case "SportsApplication":
+      case "SportsApplication": {
+        const {
+          author,
+          dateModified,
+          offers,
+          ...sportsApplicationData
+        } = data;
+
         return {
           ...baseData,
+          ...sportsApplicationData,
           "@type": "SoftwareApplication",
           "name": data.name || "Fantasy Football Analytics Tools",
           "description": data.description || "Snapshot-backed fantasy football rankings and a manual draft assistant sourced from FantasyPros consensus pages",
           "applicationCategory": "SportsApplication",
           "operatingSystem": "Any",
-          "url": siteConfig.url,
-          "author": {
-            "@type": "Person",
-            "name": siteConfig.name,
-            "url": siteConfig.url,
-          },
+          "url": data.url || siteConfig.url,
+          "author": normalizePerson(author),
+          ...(dateModified ? { dateModified } : {}),
           "about": {
             "@type": "Thing",
             "name": "Fantasy Football",
@@ -189,13 +225,13 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
             "Manual draft assistant with local persistence"
           ],
           "screenshot": `${siteConfig.url}${siteConfig.ogImage}`,
-          "offers": {
+          "offers": offers || {
             "@type": "Offer",
             "price": "0",
             "priceCurrency": "USD"
           },
-          ...data,
         };
+      }
 
       case "FAQPage":
         return {
@@ -205,24 +241,25 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
           ...data,
         };
 
-      case "CreativeWork":
+      case "CreativeWork": {
+        const {
+          author,
+          creator,
+          dateCreated,
+          dateModified,
+          ...creativeWorkData
+        } = data;
+
         return {
           ...baseData,
+          ...creativeWorkData,
           "@type": "CreativeWork",
           "name": data.name || "Portfolio Project",
           "description": data.description || "",
-          "author": {
-            "@type": "Person",
-            "name": siteConfig.name,
-            "url": siteConfig.url,
-          },
-          "creator": {
-            "@type": "Person",
-            "name": siteConfig.name,
-            "url": siteConfig.url,
-          },
-          "dateCreated": data.dateCreated,
-          "dateModified": data.dateModified || new Date().toISOString(),
+          "author": normalizePerson(author),
+          "creator": normalizePerson(creator),
+          ...(dateCreated ? { dateCreated } : {}),
+          ...(dateModified ? { dateModified } : {}),
           "keywords": data.keywords,
           "about": data.about,
           "image": data.image,
@@ -231,8 +268,8 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
           "isAccessibleForFree": true,
           "learningResourceType": data.learningResourceType || "Project",
           "workExample": data.workExample,
-          ...data,
         };
+      }
 
       case "ProfessionalService":
         return {
@@ -315,25 +352,29 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
         };
 
       case "Article":
-      case "BlogPosting":
+      case "BlogPosting": {
+        const {
+          author,
+          authorName,
+          publisher,
+          datePublished,
+          dateModified,
+          ...articleData
+        } = data;
+
         return {
           ...baseData,
+          ...articleData,
           "@type": type === "BlogPosting" ? "BlogPosting" : "Article",
           "headline": data.headline || data.title,
           "description": data.description,
           "image": data.image,
-          "datePublished": data.datePublished,
-          "dateModified": data.dateModified || data.datePublished,
-          "author": {
-            "@type": "Person",
-            "name": data.authorName || siteConfig.name,
-            "url": siteConfig.url,
-          },
-          "publisher": {
-            "@type": "Person",
-            "name": siteConfig.name,
-            "url": siteConfig.url,
-          },
+          ...(datePublished ? { datePublished } : {}),
+          ...(dateModified || datePublished
+            ? { dateModified: dateModified || datePublished }
+            : {}),
+          "author": normalizePerson(author || authorName),
+          "publisher": normalizePerson(publisher),
           "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": data.url || siteConfig.url,
@@ -342,8 +383,8 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
           "articleSection": data.articleSection,
           "wordCount": data.wordCount,
           "inLanguage": "en-US",
-          ...data,
         };
+      }
 
       case "JobPosting":
         return {

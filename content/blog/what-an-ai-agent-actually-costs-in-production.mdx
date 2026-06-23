@@ -2,6 +2,7 @@
 title: "What an AI Agent Actually Costs in Production, From Someone Who Pays the Bills"
 excerpt: "Token prices keep falling and agent bills keep rising, and the gap between those two facts is where most cost models fall apart. A breakdown of where agent spend actually comes from, why per-token math misleads, and the levers that move the bill."
 publishedAt: "2026-05-14"
+updatedAt: "2026-06-22"
 category: "Agentic AI"
 tags: ["AI Agents", "AI Costs", "Model Economics", "Agentic AI", "Unit Economics", "Inference Costs", "AI Products", "Token Pricing"]
 featured: false
@@ -25,7 +26,7 @@ What I found instrumenting my own workflows is that the distribution of cost acr
 
 So what moves the number? In rough order of how much they have mattered in practice, for me and for the production deployments I have seen up close.
 
-Caching is first and it is not close. Agent loops re-send the same system prompt, tool definitions, and accumulated history on every iteration, which makes them close to the ideal case for prompt caching. Cached input tokens are typically priced at a tenth of fresh ones, and an agent that structures its context to maximize cache hits can cut total spend by well over half without changing behavior at all. This is the single most boring and most effective line item in agent economics, and teams skip it because it is plumbing rather than strategy.
+Caching is first and it is not close. Agent loops re-send the same system prompt, tool definitions, and accumulated history on every iteration, which makes them close to the ideal case for prompt caching. Both [OpenAI](https://developers.openai.com/api/docs/guides/prompt-caching) and [Anthropic](https://platform.claude.com/docs/en/build-with-claude/prompt-caching) document prompt caching as a direct way to reduce repeated-input cost and latency. An agent that structures its stable context to maximize cache hits can cut spend without changing the product behavior at all. This is the single most boring and most effective line item in agent economics, and teams skip it because it is plumbing rather than strategy.
 
 Model routing is second. The instinct to run the whole agent on the frontier model is understandable, because the frontier model fails least, and a failed run is wasted spend plus a retry. But most agent loops contain a lot of low-judgment steps, formatting results, extracting fields, deciding whether a tool result is an error, and routing those to a model that costs a twentieth as much is nearly free quality-wise. The pattern that has settled in as best practice is a strong model for planning and recovery, a cheap model for mechanical steps. Where I would push back on the cost-cutting instinct is downgrading the planner, because a worse planner produces longer loops, and longer loops eat the savings. Cheaper steps, yes. Cheaper judgment, usually a false economy.
 
@@ -34,3 +35,5 @@ Context discipline is third, and it compounds with both of the above. Every tool
 And then there are step budgets, which are less a cost optimization than a survival requirement. Every production agent needs a hard ceiling on iterations and spend per task, because the failure mode of an agent without one is not a bad answer, it is an unbounded bill attached to a stuck loop. Set the ceiling, log what hits it, and treat every budget-exhausted run as a defect to investigate, because the tail of your cost distribution is made entirely of these.
 
 Where does this leave the unit economics question? In a much better place than the panicked version of the conversation suggests, honestly. Falling token prices are real, caching is real, routing is real, and an agent feature that was uneconomic eighteen months ago is frequently viable now with the same architecture and a quarter of the cost. What has not arrived, and what I would stop waiting for, is the version where costs are low enough that you can stop thinking about them. Agents convert money into iteration, and products built on them need someone who understands the loop well enough to know which iterations are worth buying. That is not a finance question. That is the product job now.
+
+For the model-selection side of that decision, [Reasoning Model Economics](/writing/reasoning-model-economics-when-to-use-which) is the more tactical comparison. [The New Model Economics](/writing/new-model-economics-tier-collapse-2026) covers why the architecture now matters more than a simple price-per-token table.

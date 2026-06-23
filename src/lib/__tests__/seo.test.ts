@@ -1,5 +1,7 @@
 import {
   constructMetadata,
+  fitMetaDescription,
+  fitSearchTitle,
   generateAIOptimizedMetadata,
   safeJsonLd,
   siteConfig,
@@ -123,5 +125,25 @@ describe("safeJsonLd", () => {
   it("remains valid JSON that round-trips to the original value", () => {
     const data = { name: "</script>", note: "a & b", n: 42 };
     expect(JSON.parse(safeJsonLd(data))).toEqual(data);
+  });
+});
+
+describe("search metadata fitting", () => {
+  it("keeps titles within the search display budget", () => {
+    const title = fitSearchTitle(
+      "AI Product Manager Interview Questions: What Is Actually Asked in 2026"
+    );
+
+    expect(title.length).toBeLessThanOrEqual(60);
+    expect(title.endsWith("…")).toBe(true);
+  });
+
+  it("keeps descriptions within the search display budget", () => {
+    const description = fitMetaDescription(
+      "A practical explanation of how product teams should evaluate AI agents, including quality, operational risk, model tradeoffs, measurement, security, cost, and where human judgment belongs."
+    );
+
+    expect(description.length).toBeLessThanOrEqual(160);
+    expect(description.endsWith("…")).toBe(true);
   });
 });

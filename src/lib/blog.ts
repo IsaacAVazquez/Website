@@ -4,6 +4,7 @@ import matter from "gray-matter";
 import {
   BLOG_ARCHIVE_BUCKET_ORDER,
   BLOG_CLUSTER_ORDER,
+  getBlogTopicPage,
   HOMEPAGE_PROOF_OF_WORK_SLUGS,
   getBlogCoverImageUrl,
   type BlogArchiveBucket,
@@ -375,6 +376,21 @@ export function getArchiveBlogPostPreviewsByBucket(): Record<
       .sort(compareBlogEntriesByPublishedDateDesc);
     return acc;
   }, {} as Record<BlogArchiveBucket, BlogPostPreview[]>);
+}
+
+export function getBlogPostPreviewsByTopicSlug(
+  topicSlug: string
+): BlogPostPreview[] {
+  const topic = getBlogTopicPage(topicSlug);
+  if (!topic) {
+    return [];
+  }
+
+  return getAllBlogPostPreviews().filter((post) =>
+    topic.kind === "cluster"
+      ? post.cluster === topic.label
+      : post.archiveBucket === topic.label
+  );
 }
 
 export async function getBlogPostsByCategory(category: string): Promise<BlogPost[]> {

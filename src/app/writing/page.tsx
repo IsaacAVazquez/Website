@@ -4,6 +4,7 @@ import {
   getCuratedBlogPostPreviewsByCluster,
 } from "@/lib/blog";
 import { StructuredData } from "@/components/StructuredData";
+import { AIStructuredData } from "@/components/AIStructuredData";
 import {
   BLOG_ARCHIVE_BUCKET_DETAILS,
   BLOG_ARCHIVE_BUCKET_ORDER,
@@ -82,22 +83,6 @@ export default function WritingPage() {
     { name: "Writing", url: "/writing" },
   ];
 
-  const articlesStructuredData = posts.slice(0, 12).map((post) => ({
-    headline: post.title,
-    description: post.excerpt,
-    author: {
-      name: post.author || "Isaac Vazquez",
-      url: "https://isaacavazquez.com",
-    },
-    datePublished: post.publishedAt,
-    dateModified: post.updatedAt || post.publishedAt,
-    keywords: post.tags,
-    articleSection: post.cluster || post.category,
-    wordCount: post.wordCount,
-    url: `https://isaacavazquez.com/writing/${post.slug}`,
-    image: `https://isaacavazquez.com${post.coverImage}`,
-  }));
-
   return (
     <>
       <StructuredData
@@ -109,9 +94,25 @@ export default function WritingPage() {
         }}
       />
 
-      {articlesStructuredData.map((article, index) => (
-        <StructuredData key={index} type="Article" data={article} />
-      ))}
+      <AIStructuredData
+        schema={{
+          type: "ItemList",
+          data: {
+            name: "Isaac Vazquez Writing",
+            description:
+              "Writing on product management, agentic AI, fintech, systems, quality, and the tools Isaac Vazquez builds.",
+            url: "https://isaacavazquez.com/writing",
+            items: posts.map((post) => ({
+              name: post.title,
+              description: post.excerpt,
+              url: `https://isaacavazquez.com/writing/${post.slug}`,
+              image: post.coverImage.startsWith("http")
+                ? post.coverImage
+                : `https://isaacavazquez.com${post.coverImage}`,
+            })),
+          },
+        }}
+      />
 
       <WritingArchiveV3
         posts={posts}

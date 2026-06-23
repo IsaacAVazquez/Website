@@ -70,6 +70,33 @@ export const absoluteUrl = (path?: string) => {
   return `${base}${normalizedPath}`;
 };
 
+function truncateMetadataText(value: string, maxLength: number): string {
+  const normalized = value.replace(/\s+/g, " ").trim();
+  if (normalized.length <= maxLength) {
+    return normalized;
+  }
+
+  const availableLength = maxLength - 1;
+  const candidate = normalized.slice(0, availableLength + 1);
+  const lastSpace = candidate.lastIndexOf(" ");
+  const cutAt =
+    lastSpace >= Math.floor(availableLength * 0.72)
+      ? lastSpace
+      : availableLength;
+
+  return `${candidate
+    .slice(0, cutAt)
+    .replace(/[\s,;:|/-]+$/g, "")}…`;
+}
+
+export function fitSearchTitle(title: string): string {
+  return truncateMetadataText(title.split(" | ")[0], 60);
+}
+
+export function fitMetaDescription(description: string): string {
+  return truncateMetadataText(description, 160);
+}
+
 const composeSocialTitle = (title: string) => {
   return title.toLowerCase().includes(siteConfig.name.toLowerCase())
     ? title

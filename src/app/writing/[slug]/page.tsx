@@ -3,9 +3,18 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { AuthorBio } from "@/components/ui/AuthorBio";
-import { constructMetadata, absoluteUrl, siteConfig } from "@/lib/seo";
+import {
+  constructMetadata,
+  absoluteUrl,
+  fitMetaDescription,
+  fitSearchTitle,
+  siteConfig,
+} from "@/lib/seo";
 import { AIStructuredData } from "@/components/AIStructuredData";
-import { getBlogPostCollectionLabel } from "@/lib/blog-config";
+import {
+  getBlogPostCollectionLabel,
+  getBlogTopicPageForPost,
+} from "@/lib/blog-config";
 import {
   getAllBlogPostPreviews,
   getBlogPostBySlug,
@@ -36,8 +45,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return { title: "Post not found" };
   }
 
-  const metadataTitle = post.seo?.title || post.title;
-  const metadataDescription = post.seo?.description || post.excerpt || post.title;
+  const metadataTitle = fitSearchTitle(post.seo?.title || post.title);
+  const metadataDescription = fitMetaDescription(
+    post.seo?.description || post.excerpt || post.title
+  );
 
   return constructMetadata({
     title: metadataTitle,
@@ -78,9 +89,18 @@ export default async function BlogPostPage({ params }: PageProps) {
     currentIndex >= 0 && currentIndex < allPosts.length - 1
       ? allPosts[currentIndex + 1]
       : null;
+  const topicPage = getBlogTopicPageForPost(post);
   const breadcrumbs = [
     { name: "Home", url: "/" },
     { name: "Writing", url: "/writing" },
+    ...(topicPage
+      ? [
+          {
+            name: topicPage.label,
+            url: `/writing/topics/${topicPage.slug}`,
+          },
+        ]
+      : []),
     { name: post.title, url: `/writing/${slug}` },
   ];
 
@@ -144,6 +164,20 @@ export default async function BlogPostPage({ params }: PageProps) {
                   </Link>
                 </li>
                 <li aria-hidden="true">/</li>
+                {topicPage ? (
+                  <>
+                    <li>
+                      <Link
+                        href={`/writing/topics/${topicPage.slug}`}
+                        className="transition-colors hover:text-[var(--home-ink)]"
+                        style={{ color: "var(--home-ink-muted)" }}
+                      >
+                        {topicPage.label}
+                      </Link>
+                    </li>
+                    <li aria-hidden="true">/</li>
+                  </>
+                ) : null}
                 <li className="max-w-[40ch] truncate" style={{ color: "var(--home-ink)" }}>
                   {post.title}
                 </li>
@@ -151,9 +185,18 @@ export default async function BlogPostPage({ params }: PageProps) {
             </nav>
 
             <header className="mb-10 space-y-5">
-              <span className="home-kicker inline-block">
-                {getBlogPostCollectionLabel(post)}
-              </span>
+              {topicPage ? (
+                <Link
+                  href={`/writing/topics/${topicPage.slug}`}
+                  className="home-kicker inline-block transition-colors hover:text-[var(--home-haze)]"
+                >
+                  {getBlogPostCollectionLabel(post)}
+                </Link>
+              ) : (
+                <span className="home-kicker inline-block">
+                  {getBlogPostCollectionLabel(post)}
+                </span>
+              )}
 
               <h1
                 className="max-w-5xl"
