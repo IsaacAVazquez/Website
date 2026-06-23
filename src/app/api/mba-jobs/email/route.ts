@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
-import { emailDigestRateLimiter, getClientIdentifier, rateLimitResponse } from "@/lib/rateLimit";
+import { emailDigestRateLimiter, getClientIp, rateLimitResponse } from "@/lib/rateLimit";
 import { logger } from "@/lib/logger";
 
 // ---------------------------------------------------------------------------
@@ -264,7 +264,10 @@ export async function POST(request: NextRequest) {
     return json({ error: "Email digest request is too large." }, { status: 413 });
   }
 
-  const clientId = getClientIdentifier(request);
+  // Key the per-IP send limit on the trusted client IP only. Including the
+  // User-Agent here would let an attacker multiply their allowance by rotating
+  // the UA — unacceptable for an endpoint that sends real email.
+  const clientId = `email:${getClientIp(request)}`;
   const rateLimitResult = emailDigestRateLimiter.check(clientId);
   if (!rateLimitResult.success) {
     return rateLimitResponse(rateLimitResult);

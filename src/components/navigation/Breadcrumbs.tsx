@@ -4,6 +4,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { IconChevronRight, IconHome } from "@tabler/icons-react";
+import { safeJsonLd } from "@/lib/seo";
 
 interface BreadcrumbItem {
   label: string;
@@ -121,7 +122,7 @@ export function Breadcrumbs({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateStructuredData())
+          __html: safeJsonLd(generateStructuredData())
         }}
       />
 

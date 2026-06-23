@@ -1,6 +1,7 @@
 import {
   constructMetadata,
   generateAIOptimizedMetadata,
+  safeJsonLd,
   siteConfig,
 } from "../seo";
 
@@ -93,5 +94,34 @@ describe("generateAIOptimizedMetadata", () => {
     expect((metadata.twitter as { title: string }).title).toBe(
       `About | ${siteConfig.name}`
     );
+  });
+});
+
+describe("safeJsonLd", () => {
+  it("escapes < > & so a value cannot break out of a <script> block", () => {
+    const out = safeJsonLd({ name: "</script><script>alert(1)</script>" });
+    expect(out).not.toContain("<");
+    expect(out).not.toContain(">");
+    expect(out).not.toContain("</script>");
+    expect(out).toContain("\\u003c");
+    expect(out).toContain("\\u003e");
+  });
+
+  it("escapes ampersands", () => {
+    expect(safeJsonLd({ v: "a & b" })).toContain("\\u0026");
+  });
+
+  it("escapes the U+2028/U+2029 JS line terminators", () => {
+    const value = `x${String.fromCharCode(0x2028)}y${String.fromCharCode(0x2029)}z`;
+    const out = safeJsonLd({ value });
+    expect(out).toContain("\\u2028");
+    expect(out).toContain("\\u2029");
+    expect(out).not.toContain(String.fromCharCode(0x2028));
+    expect(out).not.toContain(String.fromCharCode(0x2029));
+  });
+
+  it("remains valid JSON that round-trips to the original value", () => {
+    const data = { name: "</script>", note: "a & b", n: 42 };
+    expect(JSON.parse(safeJsonLd(data))).toEqual(data);
   });
 });
