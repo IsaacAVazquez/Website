@@ -222,10 +222,11 @@ Primary npm entry point:
 
 - `npm run update:fantasy`
 
-The command currently runs this two-step pipeline:
+The command currently runs this three-step pipeline:
 
 1. `tsx scripts/buildFantasyPositionData.ts`
-2. `tsx scripts/buildFantasySnapshots.ts`
+2. `tsx scripts/buildFantasyAdpData.ts`
+3. `tsx scripts/buildFantasySnapshots.ts`
 
 Current generated outputs:
 

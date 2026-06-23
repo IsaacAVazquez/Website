@@ -100,3 +100,6 @@ __pycache__/
 
 # Local Netlify folder
 .netlify
+
+# Personal, machine-specific Claude Code memory (see CLAUDE.md)
+CLAUDE.local.md
