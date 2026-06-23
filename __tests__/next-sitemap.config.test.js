@@ -35,7 +35,21 @@ describe("next-sitemap config", () => {
 
     expect(investmentArticle.lastmod).toBe(new Date("2026-04-02T00:00:00.000Z").toISOString());
     expect(investmentsTool.lastmod).toBe(new Date(investmentsIndex.lastUpdated).toISOString());
-    expect(investmentArticle).not.toHaveProperty("priority");
-    expect(investmentArticle).not.toHaveProperty("changefreq");
+  });
+
+  test("assigns content-type priority and changefreq", async () => {
+    const paths = await sitemapConfig.additionalPaths({});
+    const home = paths.find((path) => path.loc === "/");
+    const investmentsHub = paths.find((path) => path.loc === "/investments");
+    const investmentArticle = paths.find(
+      (path) => path.loc === "/writing/building-an-investment-research-platform"
+    );
+
+    // Primary page
+    expect(home).toMatchObject({ priority: 1.0, changefreq: "weekly" });
+    // Section hub
+    expect(investmentsHub).toMatchObject({ priority: 0.8, changefreq: "weekly" });
+    // Individual article
+    expect(investmentArticle).toMatchObject({ priority: 0.6, changefreq: "monthly" });
   });
 });
