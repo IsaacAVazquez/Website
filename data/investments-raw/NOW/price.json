@@ -1,15 +1,6 @@
 [
   {
     "symbol": "NOW",
-    "report_date": "2025-06-17",
-    "open": 200.77,
-    "close": 200.982,
-    "high": 202.4,
-    "low": 199.868,
-    "volume": 4099000
-  },
-  {
-    "symbol": "NOW",
     "report_date": "2025-06-18",
     "open": 200.888,
     "close": 196.416,
@@ -2265,6 +2256,15 @@
     "close": 95.48,
     "high": 102.89,
     "low": 95.09,
-    "volume": 31952100
+    "volume": 32165600
+  },
+  {
+    "symbol": "NOW",
+    "report_date": "2026-06-18",
+    "open": 95.31,
+    "close": 95.04,
+    "high": 96.24,
+    "low": 92.45,
+    "volume": 36337200
   }
 ]

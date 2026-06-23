@@ -1,10 +1,10 @@
 {
   "symbol": "CRWD",
-  "lastUpdated": "2026-06-19T00:23:44.589850+00:00",
+  "lastUpdated": "2026-06-23T00:06:23.255341+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-19T00:23:44.589850+00:00",
+    "snapshotBuiltAt": "2026-06-23T00:06:23.255341+00:00",
     "sections": {
-      "price": "2026-06-05"
+      "price": "2026-06-18"
     }
   },
   "source": "prefetched",
@@ -18,11 +18,11 @@
     "income_statement": true,
     "balance_sheet": true,
     "cash_flow": true,
-    "wacc": false,
+    "wacc": true,
     "industry": true,
-    "beta": false,
-    "news": false,
-    "dcf": false,
+    "beta": true,
+    "news": true,
+    "dcf": true,
     "officers": true,
     "compare": true
   },
@@ -40,11 +40,11 @@
       "longName": "CrowdStrike Holdings, Inc."
     },
     "fundamentals": {
-      "ttmEps": -0.7398,
+      "ttmEps": -0.1885,
       "ttmPe": 783.71,
-      "marketCap": 170180133382,
-      "psRatio": 33.41,
-      "pbRatio": 36.73,
+      "marketCap": 174322209820,
+      "psRatio": 34.22,
+      "pbRatio": 37.62,
       "pegRatio": 1.03
     },
     "profitability": {
@@ -82,7 +82,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": 142.9
+        "yoyGrowth": 125.66
       }
     ],
     "income_statement": {
@@ -5794,79 +5794,18 @@
         }
       ]
     },
+    "wacc": {
+      "wacc": 14.81,
+      "costOfEquity": 14.879999999999999,
+      "costOfDebt": 0.74,
+      "taxRate": 40,
+      "beta": 1.2395,
+      "marketCap": 174322209820
+    },
+    "beta": {
+      "beta5y": 1.2395
+    },
     "price": [
-      {
-        "date": "2025-06-05",
-        "open": 462.325,
-        "high": 468.6,
-        "low": 452.71,
-        "close": 462.94,
-        "volume": 6178300
-      },
-      {
-        "date": "2025-06-06",
-        "open": 463.12,
-        "high": 478.466,
-        "low": 463.12,
-        "close": 468.41,
-        "volume": 4343000
-      },
-      {
-        "date": "2025-06-09",
-        "open": 470.31,
-        "high": 471.77,
-        "low": 458.128,
-        "close": 464.39,
-        "volume": 2724600
-      },
-      {
-        "date": "2025-06-10",
-        "open": 465.49,
-        "high": 470.01,
-        "low": 457.23,
-        "close": 467.65,
-        "volume": 2472500
-      },
-      {
-        "date": "2025-06-11",
-        "open": 466.02,
-        "high": 479.94,
-        "low": 465.552,
-        "close": 476.98,
-        "volume": 2756500
-      },
-      {
-        "date": "2025-06-12",
-        "open": 474.02,
-        "high": 488.736,
-        "low": 473,
-        "close": 481.73,
-        "volume": 3520200
-      },
-      {
-        "date": "2025-06-13",
-        "open": 475,
-        "high": 485.495,
-        "low": 473.06,
-        "close": 480.62,
-        "volume": 2610700
-      },
-      {
-        "date": "2025-06-16",
-        "open": 481.84,
-        "high": 487.46,
-        "low": 477.28,
-        "close": 479.39,
-        "volume": 2710300
-      },
-      {
-        "date": "2025-06-17",
-        "open": 479.45,
-        "high": 493.2,
-        "low": 474,
-        "close": 492.03,
-        "volume": 3398700
-      },
       {
         "date": "2025-06-18",
         "open": 490.71,
@@ -7809,7 +7748,161 @@
         "high": 706.22,
         "low": 670.1,
         "close": 671.02,
-        "volume": 5230200
+        "volume": 5238800
+      },
+      {
+        "date": "2026-06-08",
+        "open": 673.505,
+        "high": 684,
+        "low": 652.01,
+        "close": 658.79,
+        "volume": 3337400
+      },
+      {
+        "date": "2026-06-09",
+        "open": 658.79,
+        "high": 664.87,
+        "low": 617.74,
+        "close": 644.93,
+        "volume": 3740600
+      },
+      {
+        "date": "2026-06-10",
+        "open": 639.03,
+        "high": 662.13,
+        "low": 635.95,
+        "close": 647.74,
+        "volume": 2527400
+      },
+      {
+        "date": "2026-06-11",
+        "open": 645.28,
+        "high": 696.43,
+        "low": 641,
+        "close": 691.53,
+        "volume": 3534000
+      },
+      {
+        "date": "2026-06-12",
+        "open": 690.66,
+        "high": 702.17,
+        "low": 678,
+        "close": 682.8,
+        "volume": 2310900
+      },
+      {
+        "date": "2026-06-15",
+        "open": 692.67,
+        "high": 697.495,
+        "low": 668.86,
+        "close": 692.91,
+        "volume": 2546000
+      },
+      {
+        "date": "2026-06-16",
+        "open": 693.098,
+        "high": 700.87,
+        "low": 665.96,
+        "close": 679.49,
+        "volume": 2144000
+      },
+      {
+        "date": "2026-06-17",
+        "open": 680,
+        "high": 690.93,
+        "low": 670.9,
+        "close": 682.96,
+        "volume": 2098300
+      },
+      {
+        "date": "2026-06-18",
+        "open": 686.75,
+        "high": 695.91,
+        "low": 660.92,
+        "close": 684.86,
+        "volume": 5379400
+      }
+    ],
+    "news": [
+      {
+        "uuid": "23b6fdde-e7c1-3be5-a8c8-a4082cb5644e",
+        "title": "CoreWeave initiated, Carvana upgraded: Wall Street's top analyst calls",
+        "publisher": "The Fly",
+        "reportDate": "2025-03-25",
+        "link": "https://finance.yahoo.com/news/coreweave-initiated-carvana-upgraded-wall-134319612.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "572f1c13-665c-3097-9313-755e76e79d02",
+        "title": "What Wall Street is saying about Alphabet ahead of earnings",
+        "publisher": "TipRanks",
+        "reportDate": "2025-04-25",
+        "link": "https://finance.yahoo.com/news/wall-street-saying-alphabet-ahead-152537404.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2961782b-1d02-3ac3-bbcf-510b5376796d",
+        "title": "3 Market-Beating Stocks with Solid Fundamentals",
+        "publisher": "StockStory",
+        "reportDate": "2025-04-28",
+        "link": "https://finance.yahoo.com/news/3-market-beating-stocks-solid-130318466.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d32199ea-d8ef-3af4-9131-2f631a81e58b",
+        "title": "CrowdStrike vs. Check Point: Which Cybersecurity Stock has an Edge?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/news/crowdstrike-vs-check-point-cybersecurity-163800870.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b8a656c9-c8f8-3705-b0a9-f42021357cbc",
+        "title": "2 High-Flying Stocks for Long-Term Investors and 1 to Avoid",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-19",
+        "link": "https://finance.yahoo.com/news/2-high-flying-stocks-long-043422726.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "8b53a7c6-db22-3bb9-89cb-af0a8019620d",
+        "title": "5 Monster Stocks to Hold for the Next 10 Years",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/m/8b53a7c6-db22-3bb9-89cb-af0a8019620d/5-monster-stocks-to-hold-for.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d99465de-c1cc-3eb1-878a-8ecaff23da20",
+        "title": "S&P 500 Gains & Losses Today: Deckers Outdoor, Ross Stores Stocks Fall as Firms Withhold Outlooks",
+        "publisher": "Investopedia",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/m/d99465de-c1cc-3eb1-878a-8ecaff23da20/s%26p-500-gains-%26-losses-today%3A.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "afdc966c-3c94-3ea3-9b6e-e5fa8d70f65f",
+        "title": "1 S&P 500 Stock on Our Buy List and 2 to Brush Off",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-26",
+        "link": "https://finance.yahoo.com/news/1-p-500-stock-buy-043515117.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ef528610-24d6-3366-b150-fe969e479439",
+        "title": "3 Top Cybersecurity Stocks to Buy in May",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-26",
+        "link": "https://finance.yahoo.com/m/ef528610-24d6-3366-b150-fe969e479439/3-top-cybersecurity-stocks-to.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "a9b85ec2-3f2f-31c5-be59-6d80eef68b97",
+        "title": "BB vs. CRWD: Which Cybersecurity Stock Is the Smarter Buy Now?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-27",
+        "link": "https://finance.yahoo.com/news/bb-vs-crwd-cybersecurity-stock-121000123.html",
+        "type": "STORY"
       }
     ],
     "officers": [
@@ -7871,43 +7964,54 @@
       {
         "metric": "P/E (TTM)",
         "value": 783.71,
-        "industryAvg": 29.35
+        "industryAvg": 49.03
       },
       {
         "metric": "P/S Ratio",
-        "value": 33.41,
-        "industryAvg": 6.37
+        "value": 34.22,
+        "industryAvg": 1.64
       },
       {
         "metric": "P/B Ratio",
-        "value": 36.73,
-        "industryAvg": 7.78
+        "value": 37.62,
+        "industryAvg": 1.84
       },
       {
         "metric": "ROE",
         "value": 0.61,
-        "industryAvg": 26.56
+        "industryAvg": 26.6
       },
       {
         "metric": "ROA",
         "value": 0.25,
-        "industryAvg": 10.39
+        "industryAvg": 10.4
       },
       {
         "metric": "Gross Margin",
         "value": 75.3,
-        "industryAvg": 49.51
+        "industryAvg": 49.53
       },
       {
         "metric": "EBITDA Margin",
         "value": 9.610000000000001,
-        "industryAvg": 33.57
+        "industryAvg": 33.589999999999996
       },
       {
         "metric": "Net Margin",
         "value": 2,
-        "industryAvg": 18.7
+        "industryAvg": 18.72
       }
-    ]
+    ],
+    "dcf": {
+      "fairValue": -3.44,
+      "currentPrice": 684.86,
+      "upside": -100.5,
+      "wacc": 14.81,
+      "growthEstimates": {
+        "Near-term growth (Yrs 1-3)": 50,
+        "Terminal growth": 3
+      },
+      "recommendation": "Sell"
+    }
   }
 }

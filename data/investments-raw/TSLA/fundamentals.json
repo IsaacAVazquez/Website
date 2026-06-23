@@ -32620,6 +32620,14 @@
       "close_price": 396.38,
       "ttm_eps": 1.0946,
       "ttm_pe": 362.12
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-06-18T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 400.49,
+      "ttm_eps": 1.0946,
+      "ttm_pe": 365.88
     }
   ],
   "marketCap": [
@@ -64758,6 +64766,14 @@
       "close_price": 396.38,
       "shares_outstanding": 3755723900,
       "market_capitalization": 1488693839482.0
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-06-18T00:00:00.000",
+      "shares_report_date": "2026-04-16T00:00:00.000",
+      "close_price": 400.49,
+      "shares_outstanding": 3755723900,
+      "market_capitalization": 1504129864711.0
     }
   ],
   "psRatio": [
@@ -70320,6 +70336,16 @@
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 97879000000.0,
       "ps_ratio": 15.21
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-06-18T00:00:00.000",
+      "market_capitalization": 1504129864711.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 97879000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 97879000000.0,
+      "ps_ratio": 15.37
     }
   ],
   "pbRatio": [
@@ -80272,6 +80298,16 @@
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 84116000000.0,
       "pb_ratio": 17.7
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-06-18T00:00:00.000",
+      "market_capitalization": 1504129864711.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 84116000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 84116000000.0,
+      "pb_ratio": 17.88
     }
   ],
   "pegRatio": [
@@ -95264,6 +95300,16 @@
       "ttm_pe": 362.12,
       "eps_yoy_growth": 0.1601,
       "peg_ratio": 22.62
+    },
+    {
+      "symbol": "TSLA",
+      "report_date": "2026-06-18T00:00:00.000",
+      "close_price": 400.49,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 1.0946,
+      "ttm_pe": 365.88,
+      "eps_yoy_growth": 0.1601,
+      "peg_ratio": 22.85
     }
   ]
 }

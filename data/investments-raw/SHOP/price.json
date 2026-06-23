@@ -1,60 +1,6 @@
 [
   {
     "symbol": "SHOP",
-    "report_date": "2025-06-10",
-    "open": 108.36,
-    "close": 110.26,
-    "high": 110.61,
-    "low": 107.35,
-    "volume": 6548500
-  },
-  {
-    "symbol": "SHOP",
-    "report_date": "2025-06-11",
-    "open": 111.625,
-    "close": 114.13,
-    "high": 117.36,
-    "low": 111.29,
-    "volume": 14078100
-  },
-  {
-    "symbol": "SHOP",
-    "report_date": "2025-06-12",
-    "open": 113.25,
-    "close": 109.21,
-    "high": 113.57,
-    "low": 108.87,
-    "volume": 8669300
-  },
-  {
-    "symbol": "SHOP",
-    "report_date": "2025-06-13",
-    "open": 105.53,
-    "close": 105.34,
-    "high": 107.01,
-    "low": 104.66,
-    "volume": 7979400
-  },
-  {
-    "symbol": "SHOP",
-    "report_date": "2025-06-16",
-    "open": 107.96,
-    "close": 108.37,
-    "high": 109.48,
-    "low": 107.01,
-    "volume": 7266600
-  },
-  {
-    "symbol": "SHOP",
-    "report_date": "2025-06-17",
-    "open": 107.3,
-    "close": 106.53,
-    "high": 108.54,
-    "low": 106.34,
-    "volume": 4910900
-  },
-  {
-    "symbol": "SHOP",
     "report_date": "2025-06-18",
     "open": 106.52,
     "close": 105.97,
@@ -2256,15 +2202,69 @@
     "close": 110.42,
     "high": 116.96,
     "low": 107.19,
-    "volume": 7820100
+    "volume": 7829400
   },
   {
     "symbol": "SHOP",
     "report_date": "2026-06-10",
-    "open": 108.77,
+    "open": 108.6,
     "close": 108.2,
     "high": 110.25,
     "low": 106.4,
-    "volume": 7308120
+    "volume": 7390800
+  },
+  {
+    "symbol": "SHOP",
+    "report_date": "2026-06-11",
+    "open": 106.9,
+    "close": 110.47,
+    "high": 110.57,
+    "low": 104.11,
+    "volume": 8245600
+  },
+  {
+    "symbol": "SHOP",
+    "report_date": "2026-06-12",
+    "open": 110.1,
+    "close": 108.24,
+    "high": 111.03,
+    "low": 106.98,
+    "volume": 8805300
+  },
+  {
+    "symbol": "SHOP",
+    "report_date": "2026-06-15",
+    "open": 110.9,
+    "close": 112.49,
+    "high": 115.315,
+    "low": 110.2,
+    "volume": 6830200
+  },
+  {
+    "symbol": "SHOP",
+    "report_date": "2026-06-16",
+    "open": 111.98,
+    "close": 113.23,
+    "high": 114.58,
+    "low": 111.595,
+    "volume": 5486500
+  },
+  {
+    "symbol": "SHOP",
+    "report_date": "2026-06-17",
+    "open": 112.4,
+    "close": 108.09,
+    "high": 114.07,
+    "low": 107.76,
+    "volume": 8775800
+  },
+  {
+    "symbol": "SHOP",
+    "report_date": "2026-06-18",
+    "open": 107.79,
+    "close": 108.85,
+    "high": 109.66,
+    "low": 106.14,
+    "volume": 10064100
   }
 ]

@@ -1,3 +1,92 @@
-{
-  "error": "Query failed: Binder Error: Referenced column \"related_symbols\" not found in FROM clause!\nCandidate bindings: \"report_date\", \"news\""
-}
+[
+  {
+    "uuid": "9fa0933e-573c-36a8-8e69-eacfa956fa70",
+    "symbol": "NET",
+    "title": "Accenture reports Q2 beat, Apple TV+ losing $1B annually: Morning Buzz",
+    "publisher": "TipRanks",
+    "report_date": "2025-03-22",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/accenture-reports-q2-beat-apple-161626223.html"
+  },
+  {
+    "uuid": "f0d701af-1a8e-3de5-aaf8-fe3068fd74f9",
+    "symbol": "NET",
+    "title": "Reddit initiated, Target downgraded: Wall Street\u2019s top analyst calls",
+    "publisher": "TipRanks",
+    "report_date": "2025-04-17",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/reddit-initiated-target-downgraded-wall-150025916.html"
+  },
+  {
+    "uuid": "b88e69e0-63a1-385b-9d7e-35702f916343",
+    "symbol": "NET",
+    "title": "Nvidia, AMD see charges due to new China export rules: Morning Buzz",
+    "publisher": "TipRanks",
+    "report_date": "2025-04-18",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/nvidia-amd-see-charges-due-160543145.html"
+  },
+  {
+    "uuid": "8f40cedc-c801-30e1-a39c-da2e465e0383",
+    "symbol": "NET",
+    "title": "Street Calls of the Week",
+    "publisher": "Investing.com",
+    "report_date": "2025-04-20",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/street-calls-week-104320266.html"
+  },
+  {
+    "uuid": "cbedd284-0619-3204-b5bd-48c9d9eb507c",
+    "symbol": "NET",
+    "title": "3 Growth Companies To Watch With Up To 32% Insider Ownership",
+    "publisher": "Simply Wall St.",
+    "report_date": "2025-04-21",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/3-growth-companies-watch-32-113529082.html"
+  },
+  {
+    "uuid": "f2989b4d-f922-3bb2-ab22-42fd51533aa3",
+    "symbol": "NET",
+    "title": "Cloudflare Stock Rises 8% as Q1 Earnings Match Estimates, Revenues Top",
+    "publisher": "Zacks",
+    "report_date": "2025-05-09",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/cloudflare-stock-rises-8-q1-112800534.html"
+  },
+  {
+    "uuid": "4c073b85-db07-3ce8-8623-986305d7532f",
+    "symbol": "NET",
+    "title": "These Stocks Moved the Most Today: Coinbase, Lyft, Insulet, Microchip, Affirm, Expedia, Trade Desk, Sweetgreen, and More",
+    "publisher": "Barrons.com",
+    "report_date": "2025-05-10",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/4c073b85-db07-3ce8-8623-986305d7532f/these-stocks-moved-the-most.html"
+  },
+  {
+    "uuid": "5562b525-dec4-3b71-9bbe-52383523aa27",
+    "symbol": "NET",
+    "title": "Firing on All Cylinders: Fastly (NYSE:FSLY) Q1 Earnings Lead the Way",
+    "publisher": "StockStory",
+    "report_date": "2025-05-15",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/firing-cylinders-fastly-nyse-fsly-033510342.html"
+  },
+  {
+    "uuid": "1e4714be-2ffe-3084-9187-6ff62e98f0b4",
+    "symbol": "NET",
+    "title": "1 Momentum  Stock with Impressive Fundamentals and 2 to Turn Down",
+    "publisher": "StockStory",
+    "report_date": "2025-05-16",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/1-momentum-stock-impressive-fundamentals-043836692.html"
+  },
+  {
+    "uuid": "8d91a57d-cbba-3a9f-a4cd-b04928415339",
+    "symbol": "NET",
+    "title": "M&A Target Stocks Surge in Bet on Wall Street Dealmaking Rebound",
+    "publisher": "Bloomberg",
+    "report_date": "2025-05-19",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/m-target-stocks-surge-bet-093000098.html"
+  }
+]

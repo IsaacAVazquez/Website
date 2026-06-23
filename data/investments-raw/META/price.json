@@ -1,15 +1,6 @@
 [
   {
     "symbol": "META",
-    "report_date": "2025-06-17",
-    "open": 702.0,
-    "close": 697.23,
-    "high": 705.97,
-    "low": 696.06,
-    "volume": 10066100
-  },
-  {
-    "symbol": "META",
     "report_date": "2025-06-18",
     "open": 698.18,
     "close": 695.77,
@@ -2265,6 +2256,15 @@
     "close": 567.58,
     "high": 593.81,
     "low": 566.19,
-    "volume": 20397900
+    "volume": 20478300
+  },
+  {
+    "symbol": "META",
+    "report_date": "2026-06-18",
+    "open": 572.82,
+    "close": 577.22,
+    "high": 580.22,
+    "low": 563.1,
+    "volume": 28824600
   }
 ]

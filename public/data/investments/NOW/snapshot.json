@@ -1,10 +1,10 @@
 {
   "symbol": "NOW",
-  "lastUpdated": "2026-06-19T00:23:44.589850+00:00",
+  "lastUpdated": "2026-06-23T00:06:23.255341+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-19T00:23:44.589850+00:00",
+    "snapshotBuiltAt": "2026-06-23T00:06:23.255341+00:00",
     "sections": {
-      "price": "2026-06-17"
+      "price": "2026-06-18"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.6811,
-      "ttmPe": 56.8,
-      "marketCap": 98469287840,
-      "psRatio": 7.05,
-      "pbRatio": 8.4,
-      "pegRatio": 21.52
+      "ttmPe": 56.53,
+      "marketCap": 98015512320,
+      "psRatio": 7.02,
+      "pbRatio": 8.36,
+      "pegRatio": 21.41
     },
     "profitability": {
       "roe": 3.8,
@@ -5113,25 +5113,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.29,
-      "costOfEquity": 12.590000000000002,
+      "wacc": 12.2,
+      "costOfEquity": 12.5,
       "costOfDebt": 0.25,
       "taxRate": 30,
-      "beta": 0.9664,
-      "marketCap": 98469287840
+      "beta": 0.956,
+      "marketCap": 98015512320
     },
     "beta": {
-      "beta5y": 0.9664
+      "beta5y": 0.956
     },
     "price": [
-      {
-        "date": "2025-06-17",
-        "open": 200.77,
-        "high": 202.4,
-        "low": 199.868,
-        "close": 200.982,
-        "volume": 4099000
-      },
       {
         "date": "2025-06-18",
         "open": 200.888,
@@ -7138,7 +7130,15 @@
         "high": 102.89,
         "low": 95.09,
         "close": 95.48,
-        "volume": 31952100
+        "volume": 32165600
+      },
+      {
+        "date": "2026-06-18",
+        "open": 95.31,
+        "high": 96.24,
+        "low": 92.45,
+        "close": 95.04,
+        "volume": 36337200
       }
     ],
     "news": [
@@ -7159,19 +7159,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "3d018e47-3ca3-3120-a73e-e863c577b5fe",
-        "title": "Top Research Reports for Visa, ServiceNow & Progressive",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-22",
-        "link": "https://finance.yahoo.com/news/top-research-reports-visa-servicenow-204900265.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "e3daf31a-2695-3357-ba2d-3bfe949cf310",
         "title": "The Zacks Analyst Blog Highlights Visa, ServiceNow, The Progressive, The Monarch Cement and Precipio",
         "publisher": "Zacks",
         "reportDate": "2025-04-22",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-visa-125900502.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3d018e47-3ca3-3120-a73e-e863c577b5fe",
+        "title": "Top Research Reports for Visa, ServiceNow & Progressive",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-22",
+        "link": "https://finance.yahoo.com/news/top-research-reports-visa-servicenow-204900265.html",
         "type": "STORY"
       },
       {
@@ -7191,14 +7191,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "9f38eca9-f098-3ec9-8940-f848a225631e",
-        "title": "Zoom, ServiceNow plan to integrate Zoom CX with ServiceNow CRM, ITSM",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-08",
-        "link": "https://finance.yahoo.com/news/zoom-servicenow-plan-integrate-zoom-150553095.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "0d66b766-bead-3972-a483-2318d3521577",
         "title": "Nice enters partnership with ServiceNow for customer service fulfillment",
         "publisher": "TipRanks",
@@ -7207,11 +7199,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "994a5e6b-ad52-3bb3-b8a4-56347c6d7387",
-        "title": "High Growth Tech Stocks in the US To Watch This May 2025",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/news/high-growth-tech-stocks-us-113821187.html",
+        "uuid": "9f38eca9-f098-3ec9-8940-f848a225631e",
+        "title": "Zoom, ServiceNow plan to integrate Zoom CX with ServiceNow CRM, ITSM",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-08",
+        "link": "https://finance.yahoo.com/news/zoom-servicenow-plan-integrate-zoom-150553095.html",
         "type": "STORY"
       },
       {
@@ -7220,6 +7212,14 @@
         "publisher": "StockStory",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/news/1-high-flying-stock-exciting-043642353.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "994a5e6b-ad52-3bb3-b8a4-56347c6d7387",
+        "title": "High Growth Tech Stocks in the US To Watch This May 2025",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/news/high-growth-tech-stocks-us-113821187.html",
         "type": "STORY"
       }
     ],
@@ -7286,50 +7286,50 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 56.8,
-        "industryAvg": 22.85
+        "value": 56.53,
+        "industryAvg": 24.76
       },
       {
         "metric": "P/S Ratio",
-        "value": 7.05,
-        "industryAvg": 4.05
+        "value": 7.02,
+        "industryAvg": 6.69
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.4,
-        "industryAvg": 4.35
+        "value": 8.36,
+        "industryAvg": 3.74
       },
       {
         "metric": "ROE",
         "value": 3.8,
-        "industryAvg": -0.15
+        "industryAvg": -0.2
       },
       {
         "metric": "ROA",
         "value": 1.8599999999999999,
-        "industryAvg": -0.08
+        "industryAvg": -0.11
       },
       {
         "metric": "Gross Margin",
         "value": 75.07000000000001,
-        "industryAvg": 63.39
+        "industryAvg": 63.129999999999995
       },
       {
         "metric": "EBITDA Margin",
         "value": 24.85,
-        "industryAvg": 21
+        "industryAvg": 20.76
       },
       {
         "metric": "Net Margin",
         "value": 12.44,
-        "industryAvg": -0.27
+        "industryAvg": -0.32
       }
     ],
     "dcf": {
-      "fairValue": 18.52,
-      "currentPrice": 95.48,
-      "upside": -80.6,
-      "wacc": 12.29,
+      "fairValue": 18.7,
+      "currentPrice": 95.04,
+      "upside": -80.32,
+      "wacc": 12.2,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 2.64,
         "Terminal growth": 3

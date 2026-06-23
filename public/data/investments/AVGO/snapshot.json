@@ -1,10 +1,10 @@
 {
   "symbol": "AVGO",
-  "lastUpdated": "2026-06-19T00:23:44.589850+00:00",
+  "lastUpdated": "2026-06-23T00:06:23.255341+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-19T00:23:44.589850+00:00",
+    "snapshotBuiltAt": "2026-06-23T00:06:23.255341+00:00",
     "sections": {
-      "price": "2026-06-17"
+      "price": "2026-06-18"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.007,
-      "ttmPe": 65.41,
-      "marketCap": 1869418200000,
-      "psRatio": 24.77,
-      "pbRatio": 21.32,
-      "pegRatio": 0.76
+      "ttmPe": 68.48,
+      "marketCap": 1957203300000,
+      "psRatio": 25.94,
+      "pbRatio": 22.32,
+      "pegRatio": 0.8
     },
     "profitability": {
       "roe": 11.110000000000001,
@@ -6021,25 +6021,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.98,
-      "costOfEquity": 16.5,
+      "wacc": 15.909999999999998,
+      "costOfEquity": 16.400000000000002,
       "costOfDebt": 1.2,
       "taxRate": 8,
-      "beta": 1.4326,
-      "marketCap": 1869418200000
+      "beta": 1.4198,
+      "marketCap": 1957203300000
     },
     "beta": {
-      "beta5y": 1.4326
+      "beta5y": 1.4198
     },
     "price": [
-      {
-        "date": "2025-06-17",
-        "open": 250.95,
-        "high": 253.96,
-        "low": 247.92,
-        "close": 249.37,
-        "volume": 22014300
-      },
       {
         "date": "2025-06-18",
         "open": 250.89,
@@ -8046,7 +8038,15 @@
         "high": 400.65,
         "low": 382.65,
         "close": 392.9,
-        "volume": 39918800
+        "volume": 40005500
+      },
+      {
+        "date": "2026-06-18",
+        "open": 409.58,
+        "high": 412.7,
+        "low": 405.38,
+        "close": 411.35,
+        "volume": 45076100
       }
     ],
     "news": [
@@ -8091,19 +8091,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "b5e9e2b7-0579-37ff-b792-e96b7564d257",
-        "title": "Top Analyst Reports for Microsoft, Broadcom & McDonald's",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-29",
-        "link": "https://finance.yahoo.com/news/top-analyst-reports-microsoft-broadcom-222200614.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "1a4ad937-a6fe-3efc-ad47-22885a44cffe",
         "title": "The Zacks Analyst Blog Highlights Microsoft, Broadcom, McDonald's and Kingsway Financial Services",
         "publisher": "Zacks",
         "reportDate": "2025-04-29",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-104100632.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b5e9e2b7-0579-37ff-b792-e96b7564d257",
+        "title": "Top Analyst Reports for Microsoft, Broadcom & McDonald's",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-29",
+        "link": "https://finance.yahoo.com/news/top-analyst-reports-microsoft-broadcom-222200614.html",
         "type": "STORY"
       },
       {
@@ -8143,18 +8143,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 65.41,
-        "industryAvg": 43.16
+        "value": 68.48,
+        "industryAvg": 39.32
       },
       {
         "metric": "P/S Ratio",
-        "value": 24.77,
-        "industryAvg": 16.75
+        "value": 25.94,
+        "industryAvg": 15.79
       },
       {
         "metric": "P/B Ratio",
-        "value": 21.32,
-        "industryAvg": 14.4
+        "value": 22.32,
+        "industryAvg": 29.93
       },
       {
         "metric": "ROE",
@@ -8183,10 +8183,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 99.09,
-      "currentPrice": 392.9,
-      "upside": -74.78,
-      "wacc": 15.98,
+      "fairValue": 99.66,
+      "currentPrice": 411.35,
+      "upside": -75.77,
+      "wacc": 15.91,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

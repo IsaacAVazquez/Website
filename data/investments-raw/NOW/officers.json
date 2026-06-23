@@ -8,7 +8,7 @@
     "pay": 4081523,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-18"
+    "report_date": "2026-06-22"
   },
   {
     "symbol": "NOW",
@@ -19,7 +19,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-18"
+    "report_date": "2026-06-22"
   },
   {
     "symbol": "NOW",
@@ -30,7 +30,7 @@
     "pay": 40000,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-18"
+    "report_date": "2026-06-22"
   },
   {
     "symbol": "NOW",
@@ -41,7 +41,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-18"
+    "report_date": "2026-06-22"
   },
   {
     "symbol": "NOW",
@@ -52,7 +52,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-18"
+    "report_date": "2026-06-22"
   },
   {
     "symbol": "NOW",
@@ -63,7 +63,7 @@
     "pay": 2196545,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-18"
+    "report_date": "2026-06-22"
   },
   {
     "symbol": "NOW",
@@ -74,7 +74,7 @@
     "pay": 8069306,
     "exercised": 0,
     "unexercised": 83141472,
-    "report_date": "2026-06-18"
+    "report_date": "2026-06-22"
   },
   {
     "symbol": "NOW",
@@ -85,7 +85,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-18"
+    "report_date": "2026-06-22"
   },
   {
     "symbol": "NOW",
@@ -96,7 +96,7 @@
     "pay": 2166155,
     "exercised": 0,
     "unexercised": 3445640,
-    "report_date": "2026-06-18"
+    "report_date": "2026-06-22"
   },
   {
     "symbol": "NOW",
@@ -107,6 +107,6 @@
     "pay": 1554880,
     "exercised": 0,
     "unexercised": 1722600,
-    "report_date": "2026-06-18"
+    "report_date": "2026-06-22"
   }
 ]

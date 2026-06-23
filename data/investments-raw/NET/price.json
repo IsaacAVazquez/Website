@@ -1,105 +1,6 @@
 [
   {
     "symbol": "NET",
-    "report_date": "2025-06-03",
-    "open": 169.82,
-    "close": 172.57,
-    "high": 173.19,
-    "low": 167.73,
-    "volume": 2724200
-  },
-  {
-    "symbol": "NET",
-    "report_date": "2025-06-04",
-    "open": 172.58,
-    "close": 170.92,
-    "high": 174.487,
-    "low": 170.62,
-    "volume": 2294800
-  },
-  {
-    "symbol": "NET",
-    "report_date": "2025-06-05",
-    "open": 172.0,
-    "close": 176.33,
-    "high": 181.116,
-    "low": 170.74,
-    "volume": 5247500
-  },
-  {
-    "symbol": "NET",
-    "report_date": "2025-06-06",
-    "open": 178.39,
-    "close": 179.67,
-    "high": 181.81,
-    "low": 176.15,
-    "volume": 2773500
-  },
-  {
-    "symbol": "NET",
-    "report_date": "2025-06-09",
-    "open": 180.21,
-    "close": 177.8,
-    "high": 180.21,
-    "low": 173.15,
-    "volume": 2637400
-  },
-  {
-    "symbol": "NET",
-    "report_date": "2025-06-10",
-    "open": 179.48,
-    "close": 179.34,
-    "high": 181.8,
-    "low": 176.29,
-    "volume": 2836300
-  },
-  {
-    "symbol": "NET",
-    "report_date": "2025-06-11",
-    "open": 179.0,
-    "close": 179.71,
-    "high": 181.5,
-    "low": 177.435,
-    "volume": 2259500
-  },
-  {
-    "symbol": "NET",
-    "report_date": "2025-06-12",
-    "open": 176.0,
-    "close": 170.81,
-    "high": 181.49,
-    "low": 168.12,
-    "volume": 7894000
-  },
-  {
-    "symbol": "NET",
-    "report_date": "2025-06-13",
-    "open": 167.125,
-    "close": 171.97,
-    "high": 173.91,
-    "low": 167.125,
-    "volume": 6261000
-  },
-  {
-    "symbol": "NET",
-    "report_date": "2025-06-16",
-    "open": 174.115,
-    "close": 179.27,
-    "high": 179.47,
-    "low": 173.804,
-    "volume": 4303600
-  },
-  {
-    "symbol": "NET",
-    "report_date": "2025-06-17",
-    "open": 178.27,
-    "close": 181.23,
-    "high": 182.59,
-    "low": 176.02,
-    "volume": 3658600
-  },
-  {
-    "symbol": "NET",
     "report_date": "2025-06-18",
     "open": 181.72,
     "close": 181.4,
@@ -2263,8 +2164,107 @@
     "report_date": "2026-06-03",
     "open": 270.0,
     "close": 265.33,
-    "high": 270.0,
+    "high": 270.23,
     "low": 260.74,
-    "volume": 3881387
+    "volume": 3905000
+  },
+  {
+    "symbol": "NET",
+    "report_date": "2026-06-04",
+    "open": 260.0,
+    "close": 268.64,
+    "high": 276.815,
+    "low": 253.94,
+    "volume": 4418500
+  },
+  {
+    "symbol": "NET",
+    "report_date": "2026-06-05",
+    "open": 267.87,
+    "close": 250.11,
+    "high": 268.82,
+    "low": 246.94,
+    "volume": 4735500
+  },
+  {
+    "symbol": "NET",
+    "report_date": "2026-06-08",
+    "open": 253.16,
+    "close": 247.79,
+    "high": 254.7,
+    "low": 246.0,
+    "volume": 3180400
+  },
+  {
+    "symbol": "NET",
+    "report_date": "2026-06-09",
+    "open": 245.895,
+    "close": 236.13,
+    "high": 249.245,
+    "low": 228.03,
+    "volume": 4980400
+  },
+  {
+    "symbol": "NET",
+    "report_date": "2026-06-10",
+    "open": 233.465,
+    "close": 219.67,
+    "high": 236.89,
+    "low": 219.08,
+    "volume": 5552200
+  },
+  {
+    "symbol": "NET",
+    "report_date": "2026-06-11",
+    "open": 218.335,
+    "close": 227.44,
+    "high": 228.82,
+    "low": 216.5,
+    "volume": 3133400
+  },
+  {
+    "symbol": "NET",
+    "report_date": "2026-06-12",
+    "open": 229.95,
+    "close": 228.48,
+    "high": 231.9,
+    "low": 222.02,
+    "volume": 2262000
+  },
+  {
+    "symbol": "NET",
+    "report_date": "2026-06-15",
+    "open": 229.345,
+    "close": 235.71,
+    "high": 239.0,
+    "low": 227.045,
+    "volume": 3359300
+  },
+  {
+    "symbol": "NET",
+    "report_date": "2026-06-16",
+    "open": 233.74,
+    "close": 230.97,
+    "high": 238.83,
+    "low": 229.0,
+    "volume": 2690600
+  },
+  {
+    "symbol": "NET",
+    "report_date": "2026-06-17",
+    "open": 231.13,
+    "close": 226.87,
+    "high": 236.07,
+    "low": 226.85,
+    "volume": 2658700
+  },
+  {
+    "symbol": "NET",
+    "report_date": "2026-06-18",
+    "open": 225.54,
+    "close": 224.06,
+    "high": 225.54,
+    "low": 216.03,
+    "volume": 4440900
   }
 ]

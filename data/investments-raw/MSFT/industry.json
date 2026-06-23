@@ -5641,6 +5641,20 @@
       "total_market_cap": 4558792381858.891,
       "total_ttm_net_income": 168159609513.06,
       "industry_pe": 27.11
+    },
+    {
+      "report_date": "2026-06-18T00:00:00.000",
+      "industry": "Software-Infrastructure",
+      "total_market_cap": 4563958325580.46,
+      "total_ttm_net_income": 168159609513.06,
+      "industry_pe": 27.14
+    },
+    {
+      "report_date": "2026-06-19T00:00:00.000",
+      "industry": "Software-Infrastructure",
+      "total_market_cap": 40000527336.0,
+      "total_ttm_net_income": 815879000.0,
+      "industry_pe": 49.03
     }
   ],
   "ps_ratio": [
@@ -9875,1710 +9889,1724 @@
     {
       "report_date": "2025-06-30T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5894099167771.619,
+      "total_market_cap": 5894101878193.619,
       "total_ttm_revenue": 567050956876.5199,
       "industry_ps_ratio": 10.39
     },
     {
       "report_date": "2025-07-01T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5817470237969.878,
+      "total_market_cap": 5817472878893.878,
       "total_ttm_revenue": 567050956876.5199,
       "industry_ps_ratio": 10.26
     },
     {
       "report_date": "2025-07-02T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5847716913158.76,
+      "total_market_cap": 5847719508909.061,
       "total_ttm_revenue": 567050956876.5199,
       "industry_ps_ratio": 10.31
     },
     {
       "report_date": "2025-07-03T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5967573557169.8,
+      "total_market_cap": 5967576180719.3,
       "total_ttm_revenue": 567050956876.5199,
       "industry_ps_ratio": 10.52
     },
     {
       "report_date": "2025-07-07T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5948214170144.871,
+      "total_market_cap": 5948216984813.871,
       "total_ttm_revenue": 567050956876.5199,
       "industry_ps_ratio": 10.49
     },
     {
       "report_date": "2025-07-08T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5947577159435.148,
+      "total_market_cap": 5947579908081.048,
       "total_ttm_revenue": 567050942850.5199,
       "industry_ps_ratio": 10.49
     },
     {
       "report_date": "2025-07-09T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6020445316624.419,
+      "total_market_cap": 6020448023571.52,
       "total_ttm_revenue": 567050956876.5199,
       "industry_ps_ratio": 10.62
     },
     {
       "report_date": "2025-07-10T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5954188498334.381,
+      "total_market_cap": 5954191271304.58,
       "total_ttm_revenue": 567050956876.5199,
       "industry_ps_ratio": 10.5
     },
     {
       "report_date": "2025-07-11T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5921477672440.0,
+      "total_market_cap": 5921480278615.0,
       "total_ttm_revenue": 567050956876.5199,
       "industry_ps_ratio": 10.44
     },
     {
       "report_date": "2025-07-14T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5947439794504.49,
+      "total_market_cap": 5947442369405.391,
       "total_ttm_revenue": 567050956876.5199,
       "industry_ps_ratio": 10.49
     },
     {
       "report_date": "2025-07-15T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5990553857454.549,
+      "total_market_cap": 5990556654749.049,
       "total_ttm_revenue": 567050956876.5199,
       "industry_ps_ratio": 10.56
     },
     {
       "report_date": "2025-07-16T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6018647834692.642,
+      "total_market_cap": 6018650336620.642,
       "total_ttm_revenue": 567050942850.5199,
       "industry_ps_ratio": 10.61
     },
     {
       "report_date": "2025-07-17T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6119327265408.621,
+      "total_market_cap": 6119330027954.121,
       "total_ttm_revenue": 567050956876.5199,
       "industry_ps_ratio": 10.79
     },
     {
       "report_date": "2025-07-18T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6099539620698.181,
+      "total_market_cap": 6099542223398.28,
       "total_ttm_revenue": 567050942850.5199,
       "industry_ps_ratio": 10.76
     },
     {
       "report_date": "2025-07-21T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6101496780691.509,
+      "total_market_cap": 6101499317368.509,
       "total_ttm_revenue": 567050956876.5199,
       "industry_ps_ratio": 10.76
     },
     {
       "report_date": "2025-07-22T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6043912363374.599,
+      "total_market_cap": 6043914820128.899,
       "total_ttm_revenue": 567050956876.5199,
       "industry_ps_ratio": 10.66
     },
     {
       "report_date": "2025-07-23T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6073438219639.22,
+      "total_market_cap": 6073440617320.22,
       "total_ttm_revenue": 567050942850.5199,
       "industry_ps_ratio": 10.71
     },
     {
       "report_date": "2025-07-24T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6107948056896.868,
+      "total_market_cap": 6107949915968.368,
       "total_ttm_revenue": 567050956876.5199,
       "industry_ps_ratio": 10.77
     },
     {
       "report_date": "2025-07-25T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6151413169436.631,
+      "total_market_cap": 6151415230052.33,
       "total_ttm_revenue": 567050956876.5199,
       "industry_ps_ratio": 10.85
     },
     {
       "report_date": "2025-07-28T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6146587049473.918,
+      "total_market_cap": 6146610198973.918,
       "total_ttm_revenue": 567050956876.5199,
       "industry_ps_ratio": 10.84
     },
     {
       "report_date": "2025-07-29T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6143284705334.16,
+      "total_market_cap": 6143303734223.16,
       "total_ttm_revenue": 567050942850.5199,
       "industry_ps_ratio": 10.83
     },
     {
       "report_date": "2025-07-30T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6142188538859.551,
+      "total_market_cap": 6142250126770.551,
       "total_ttm_revenue": 567050956876.5199,
       "industry_ps_ratio": 10.83
     },
     {
       "report_date": "2025-07-31T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6289456399635.55,
+      "total_market_cap": 6289509654298.55,
       "total_ttm_revenue": 568699398228.5199,
       "industry_ps_ratio": 11.06
     },
     {
       "report_date": "2025-08-01T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6152434147382.82,
+      "total_market_cap": 6152486751010.82,
       "total_ttm_revenue": 568699412254.5199,
       "industry_ps_ratio": 10.82
     },
     {
       "report_date": "2025-08-04T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6301531312181.649,
+      "total_market_cap": 6301586389742.649,
       "total_ttm_revenue": 568699398228.5199,
       "industry_ps_ratio": 11.08
     },
     {
       "report_date": "2025-08-05T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6267635684531.939,
+      "total_market_cap": 6267683210086.939,
       "total_ttm_revenue": 568699398228.5199,
       "industry_ps_ratio": 11.02
     },
     {
       "report_date": "2025-08-06T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6279112799180.931,
+      "total_market_cap": 6279153553971.931,
       "total_ttm_revenue": 568699398228.5199,
       "industry_ps_ratio": 11.04
     },
     {
       "report_date": "2025-08-07T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6200813784125.2705,
+      "total_market_cap": 6200855450365.2705,
       "total_ttm_revenue": 568699412254.5199,
       "industry_ps_ratio": 10.9
     },
     {
       "report_date": "2025-08-08T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6210775427225.96,
+      "total_market_cap": 6210816182016.96,
       "total_ttm_revenue": 568699398228.5199,
       "industry_ps_ratio": 10.92
     },
     {
       "report_date": "2025-08-11T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6203664684474.56,
+      "total_market_cap": 6203705309058.56,
       "total_ttm_revenue": 568699398228.5199,
       "industry_ps_ratio": 10.91
     },
     {
       "report_date": "2025-08-12T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6301876584917.149,
+      "total_market_cap": 6301917600122.149,
       "total_ttm_revenue": 568699412254.5199,
       "industry_ps_ratio": 11.08
     },
     {
       "report_date": "2025-08-13T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6210220124798.352,
+      "total_market_cap": 6210259968140.352,
       "total_ttm_revenue": 827863653254.5199,
       "industry_ps_ratio": 7.5
     },
     {
       "report_date": "2025-08-14T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6194549788178.09,
+      "total_market_cap": 6194596606378.09,
       "total_ttm_revenue": 827863653254.5199,
       "industry_ps_ratio": 7.48
     },
     {
       "report_date": "2025-08-15T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6191745743489.542,
+      "total_market_cap": 6191792129521.542,
       "total_ttm_revenue": 827863653254.5199,
       "industry_ps_ratio": 7.48
     },
     {
       "report_date": "2025-08-18T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6165681926517.17,
+      "total_market_cap": 6165724134925.17,
       "total_ttm_revenue": 827863653254.5199,
       "industry_ps_ratio": 7.45
     },
     {
       "report_date": "2025-08-19T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6018629461755.689,
+      "total_market_cap": 6018672678555.689,
       "total_ttm_revenue": 827863639228.5199,
       "industry_ps_ratio": 7.27
     },
     {
       "report_date": "2025-08-20T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5983132027369.111,
+      "total_market_cap": 5983174667945.111,
       "total_ttm_revenue": 827863653254.5199,
       "industry_ps_ratio": 7.23
     },
     {
       "report_date": "2025-08-21T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5962057078303.12,
+      "total_market_cap": 5962099574823.12,
       "total_ttm_revenue": 827863639228.5199,
       "industry_ps_ratio": 7.2
     },
     {
       "report_date": "2025-08-22T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6026219563204.951,
+      "total_market_cap": 6026261771612.951,
       "total_ttm_revenue": 827863653254.5199,
       "industry_ps_ratio": 7.28
     },
     {
       "report_date": "2025-08-25T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5987159636526.121,
+      "total_market_cap": 5987201268710.121,
       "total_ttm_revenue": 827863653254.5199,
       "industry_ps_ratio": 7.23
     },
     {
       "report_date": "2025-08-26T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5973015269662.31,
+      "total_market_cap": 5973055605342.31,
       "total_ttm_revenue": 827863653254.5199,
-      "industry_ps_ratio": 7.21
+      "industry_ps_ratio": 7.22
     },
     {
       "report_date": "2025-08-27T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6029296848838.32,
+      "total_market_cap": 6029332142558.32,
       "total_ttm_revenue": 827863653254.5199,
       "industry_ps_ratio": 7.28
     },
     {
       "report_date": "2025-08-28T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6091590997457.359,
+      "total_market_cap": 6091626723345.359,
       "total_ttm_revenue": 827863653254.5199,
       "industry_ps_ratio": 7.36
     },
     {
       "report_date": "2025-08-29T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6014544555834.292,
+      "total_market_cap": 6014579417386.292,
       "total_ttm_revenue": 827863653254.5199,
       "industry_ps_ratio": 7.27
     },
     {
       "report_date": "2025-09-02T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5987450006125.63,
+      "total_market_cap": 5987486308237.63,
       "total_ttm_revenue": 829557162254.5199,
       "industry_ps_ratio": 7.22
     },
     {
       "report_date": "2025-09-03T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5974448381138.85,
+      "total_market_cap": 5974483530802.85,
       "total_ttm_revenue": 829557148228.5199,
       "industry_ps_ratio": 7.2
     },
     {
       "report_date": "2025-09-04T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5997295061368.5205,
+      "total_market_cap": 5997331651592.5205,
       "total_ttm_revenue": 829557148228.5199,
       "industry_ps_ratio": 7.23
     },
     {
       "report_date": "2025-09-05T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5934952064039.901,
+      "total_market_cap": 5934988222095.901,
       "total_ttm_revenue": 829557162254.5199,
       "industry_ps_ratio": 7.15
     },
     {
       "report_date": "2025-09-08T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6000200905365.431,
+      "total_market_cap": 6000235622861.431,
       "total_ttm_revenue": 829557162254.5199,
       "industry_ps_ratio": 7.23
     },
     {
       "report_date": "2025-09-09T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6028710874370.91,
+      "total_market_cap": 6028745015642.91,
       "total_ttm_revenue": 829557162254.5199,
       "industry_ps_ratio": 7.27
     },
     {
       "report_date": "2025-09-10T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6258439979960.111,
+      "total_market_cap": 6258472104448.111,
       "total_ttm_revenue": 829557148228.5199,
       "industry_ps_ratio": 7.54
     },
     {
       "report_date": "2025-09-11T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6220949642281.461,
+      "total_market_cap": 6220982342993.461,
       "total_ttm_revenue": 829557148228.5199,
       "industry_ps_ratio": 7.5
     },
     {
       "report_date": "2025-09-12T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6245305796377.301,
+      "total_market_cap": 6245340369817.301,
       "total_ttm_revenue": 829557148228.5199,
       "industry_ps_ratio": 7.53
     },
     {
       "report_date": "2025-09-15T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6330440143307.641,
+      "total_market_cap": 6330474284579.641,
       "total_ttm_revenue": 829557162254.5199,
       "industry_ps_ratio": 7.63
     },
     {
       "report_date": "2025-09-16T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6290332880726.75,
+      "total_market_cap": 6290366013606.75,
       "total_ttm_revenue": 829557162254.5199,
       "industry_ps_ratio": 7.58
     },
     {
       "report_date": "2025-09-17T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6280126875960.661,
+      "total_market_cap": 6280161017232.661,
       "total_ttm_revenue": 829557162254.5199,
       "industry_ps_ratio": 7.57
     },
     {
       "report_date": "2025-09-18T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6327326148765.621,
+      "total_market_cap": 6327360001925.621,
       "total_ttm_revenue": 830172660228.5199,
       "industry_ps_ratio": 7.62
     },
     {
       "report_date": "2025-09-19T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6457284689679.359,
+      "total_market_cap": 6457350999142.359,
       "total_ttm_revenue": 830172674254.5199,
       "industry_ps_ratio": 7.78
     },
     {
       "report_date": "2025-09-22T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6487392573350.721,
+      "total_market_cap": 6487551560222.721,
       "total_ttm_revenue": 830172674254.5199,
       "industry_ps_ratio": 7.81
     },
     {
       "report_date": "2025-09-23T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6393289552017.09,
+      "total_market_cap": 6393406364361.09,
       "total_ttm_revenue": 830172660228.5199,
       "industry_ps_ratio": 7.7
     },
     {
       "report_date": "2025-09-24T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6362973315774.799,
+      "total_market_cap": 6363082359126.799,
       "total_ttm_revenue": 830172674254.5199,
       "industry_ps_ratio": 7.66
     },
     {
       "report_date": "2025-09-25T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6286238718551.389,
+      "total_market_cap": 6286341380231.389,
       "total_ttm_revenue": 830188754254.5199,
       "industry_ps_ratio": 7.57
     },
     {
       "report_date": "2025-09-26T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6297903565147.01,
+      "total_market_cap": 6298001232475.01,
       "total_ttm_revenue": 830189405954.69,
       "industry_ps_ratio": 7.59
     },
     {
       "report_date": "2025-09-29T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6328070099201.5,
+      "total_market_cap": 6328159442609.5,
       "total_ttm_revenue": 830189405954.69,
       "industry_ps_ratio": 7.62
     },
     {
       "report_date": "2025-09-30T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6353249948103.659,
+      "total_market_cap": 6353262246103.659,
       "total_ttm_revenue": 835273758999.09,
       "industry_ps_ratio": 7.61
     },
     {
       "report_date": "2025-10-01T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6398542041428.351,
+      "total_market_cap": 6398556571988.351,
       "total_ttm_revenue": 835273758999.09,
       "industry_ps_ratio": 7.66
     },
     {
       "report_date": "2025-10-02T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6385861053510.7295,
+      "total_market_cap": 6385875394870.7295,
       "total_ttm_revenue": 835273758999.09,
       "industry_ps_ratio": 7.65
     },
     {
       "report_date": "2025-10-03T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6347932555707.271,
+      "total_market_cap": 6347947880907.271,
       "total_ttm_revenue": 835273758999.09,
       "industry_ps_ratio": 7.6
     },
     {
       "report_date": "2025-10-06T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6476814410626.569,
+      "total_market_cap": 6476830454786.569,
       "total_ttm_revenue": 835273758999.09,
       "industry_ps_ratio": 7.75
     },
     {
       "report_date": "2025-10-07T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6408712912661.188,
+      "total_market_cap": 6408727216181.188,
       "total_ttm_revenue": 835273758999.09,
       "industry_ps_ratio": 7.67
     },
     {
       "report_date": "2025-10-08T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6466348032194.34,
+      "total_market_cap": 6466361768114.34,
       "total_ttm_revenue": 835273758999.09,
       "industry_ps_ratio": 7.74
     },
     {
       "report_date": "2025-10-09T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6475608083949.301,
+      "total_market_cap": 6475621933389.301,
       "total_ttm_revenue": 835273758999.09,
       "industry_ps_ratio": 7.75
     },
     {
       "report_date": "2025-10-10T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6303944620659.873,
+      "total_market_cap": 6303958356579.873,
       "total_ttm_revenue": 835273758999.09,
       "industry_ps_ratio": 7.55
     },
     {
       "report_date": "2025-10-13T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6397250111614.109,
+      "total_market_cap": 6397263242094.109,
       "total_ttm_revenue": 835273758999.09,
       "industry_ps_ratio": 7.66
     },
     {
       "report_date": "2025-10-14T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6357859857143.209,
+      "total_market_cap": 6357872987623.209,
       "total_ttm_revenue": 835273758999.09,
       "industry_ps_ratio": 7.61
     },
     {
       "report_date": "2025-10-15T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6371137762400.01,
+      "total_market_cap": 6371151876720.01,
       "total_ttm_revenue": 835273758999.09,
       "industry_ps_ratio": 7.63
     },
     {
       "report_date": "2025-10-16T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6365555157447.719,
+      "total_market_cap": 6365568817687.719,
       "total_ttm_revenue": 835273758999.09,
       "industry_ps_ratio": 7.62
     },
     {
       "report_date": "2025-10-17T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6320600580853.871,
+      "total_market_cap": 6320614619493.871,
       "total_ttm_revenue": 835273746323.09,
       "industry_ps_ratio": 7.57
     },
     {
       "report_date": "2025-10-20T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6328260462814.25,
+      "total_market_cap": 6328427114211.25,
       "total_ttm_revenue": 835273758999.09,
       "industry_ps_ratio": 7.58
     },
     {
       "report_date": "2025-10-21T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6338214819121.98,
+      "total_market_cap": 6338382378700.98,
       "total_ttm_revenue": 835273758999.09,
       "industry_ps_ratio": 7.59
     },
     {
       "report_date": "2025-10-22T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6320806545245.83,
+      "total_market_cap": 6320965931186.83,
       "total_ttm_revenue": 835273758999.09,
       "industry_ps_ratio": 7.57
     },
     {
       "report_date": "2025-10-23T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6373209455471.92,
+      "total_market_cap": 6373356580955.92,
       "total_ttm_revenue": 835273758999.09,
       "industry_ps_ratio": 7.63
     },
     {
       "report_date": "2025-10-24T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6428555542243.188,
+      "total_market_cap": 6428705392273.188,
       "total_ttm_revenue": 835273758999.09,
       "industry_ps_ratio": 7.7
     },
     {
       "report_date": "2025-10-27T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6504471476067.579,
+      "total_market_cap": 6504610882004.579,
       "total_ttm_revenue": 835273746323.09,
       "industry_ps_ratio": 7.79
     },
     {
       "report_date": "2025-10-28T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6580507145431.809,
+      "total_market_cap": 6580651092278.809,
       "total_ttm_revenue": 835273758999.09,
       "industry_ps_ratio": 7.88
     },
     {
       "report_date": "2025-10-29T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6561605308833.849,
+      "total_market_cap": 6561752888408.849,
       "total_ttm_revenue": 835273758999.09,
       "industry_ps_ratio": 7.86
     },
     {
       "report_date": "2025-10-30T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6368316672530.828,
+      "total_market_cap": 6368462889832.828,
       "total_ttm_revenue": 835273758999.09,
       "industry_ps_ratio": 7.62
     },
     {
       "report_date": "2025-10-31T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6382218764360.368,
+      "total_market_cap": 6382355899842.368,
       "total_ttm_revenue": 837383205075.09,
       "industry_ps_ratio": 7.62
     },
     {
       "report_date": "2025-11-03T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6374458119991.066,
+      "total_market_cap": 6374582313879.566,
       "total_ttm_revenue": 834665205075.09,
       "industry_ps_ratio": 7.64
     },
     {
       "report_date": "2025-11-04T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6242953924815.37,
+      "total_market_cap": 6243065177110.37,
       "total_ttm_revenue": 834665192399.09,
       "industry_ps_ratio": 7.48
     },
     {
       "report_date": "2025-11-05T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6193894101269.581,
+      "total_market_cap": 6196761953949.581,
       "total_ttm_revenue": 834665205075.09,
       "industry_ps_ratio": 7.42
     },
     {
       "report_date": "2025-11-06T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6047008145328.109,
+      "total_market_cap": 6049558485747.109,
       "total_ttm_revenue": 834665205075.09,
-      "industry_ps_ratio": 7.24
+      "industry_ps_ratio": 7.25
     },
     {
       "report_date": "2025-11-07T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6046018900856.069,
+      "total_market_cap": 6048261971345.069,
       "total_ttm_revenue": 834665205075.09,
-      "industry_ps_ratio": 7.24
+      "industry_ps_ratio": 7.25
     },
     {
       "report_date": "2025-11-10T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6172691597213.34,
+      "total_market_cap": 6174929546536.84,
       "total_ttm_revenue": 834665205075.09,
       "industry_ps_ratio": 7.4
     },
     {
       "report_date": "2025-11-11T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6164161701697.649,
+      "total_market_cap": 6166251137221.649,
       "total_ttm_revenue": 834665192399.09,
       "industry_ps_ratio": 7.39
     },
     {
       "report_date": "2025-11-12T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6119479310003.908,
+      "total_market_cap": 6121865773126.908,
       "total_ttm_revenue": 834665205075.09,
       "industry_ps_ratio": 7.33
     },
     {
       "report_date": "2025-11-13T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5970911570261.92,
+      "total_market_cap": 5972785916834.92,
       "total_ttm_revenue": 834665205075.09,
-      "industry_ps_ratio": 7.15
+      "industry_ps_ratio": 7.16
     },
     {
       "report_date": "2025-11-14T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6044511099149.9795,
+      "total_market_cap": 6046354718729.9795,
       "total_ttm_revenue": 834665205075.09,
       "industry_ps_ratio": 7.24
     },
     {
       "report_date": "2025-11-17T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5985339980845.859,
+      "total_market_cap": 5987091419446.859,
       "total_ttm_revenue": 834665192399.09,
       "industry_ps_ratio": 7.17
     },
     {
       "report_date": "2025-11-18T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5863705488268.34,
+      "total_market_cap": 5865374988221.34,
       "total_ttm_revenue": 834665205075.09,
       "industry_ps_ratio": 7.03
     },
     {
       "report_date": "2025-11-19T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5820918982562.84,
+      "total_market_cap": 5822455332212.84,
       "total_ttm_revenue": 834665205075.09,
-      "industry_ps_ratio": 6.97
+      "industry_ps_ratio": 6.98
     },
     {
       "report_date": "2025-11-20T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5650385385038.398,
+      "total_market_cap": 5652075369653.398,
       "total_ttm_revenue": 832986485399.09,
-      "industry_ps_ratio": 6.78
+      "industry_ps_ratio": 6.79
     },
     {
       "report_date": "2025-11-21T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5571530261772.279,
+      "total_market_cap": 5573291942704.279,
       "total_ttm_revenue": 832986498075.09,
       "industry_ps_ratio": 6.69
     },
     {
       "report_date": "2025-11-24T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5622833621774.059,
+      "total_market_cap": 5624779664664.059,
       "total_ttm_revenue": 832986498075.09,
       "industry_ps_ratio": 6.75
     },
     {
       "report_date": "2025-11-25T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5653943577209.439,
+      "total_market_cap": 5655920347092.439,
       "total_ttm_revenue": 832986485399.09,
       "industry_ps_ratio": 6.79
     },
     {
       "report_date": "2025-11-26T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5733937663126.689,
+      "total_market_cap": 5735893948347.689,
       "total_ttm_revenue": 832986498075.09,
-      "industry_ps_ratio": 6.88
+      "industry_ps_ratio": 6.89
     },
     {
       "report_date": "2025-11-28T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5794285460387.921,
+      "total_market_cap": 5796303199594.921,
       "total_ttm_revenue": 832092642399.09,
-      "industry_ps_ratio": 6.96
+      "industry_ps_ratio": 6.97
     },
     {
       "report_date": "2025-12-01T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5751758523819.389,
+      "total_market_cap": 5753694324378.389,
       "total_ttm_revenue": 834127560075.09,
       "industry_ps_ratio": 6.9
     },
     {
       "report_date": "2025-12-02T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5799791193967.17,
+      "total_market_cap": 5801757721519.17,
       "total_ttm_revenue": 834127560075.09,
-      "industry_ps_ratio": 6.95
+      "industry_ps_ratio": 6.96
     },
     {
       "report_date": "2025-12-03T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5758941200213.07,
+      "total_market_cap": 5761092089723.07,
       "total_ttm_revenue": 834127560075.09,
-      "industry_ps_ratio": 6.9
+      "industry_ps_ratio": 6.91
     },
     {
       "report_date": "2025-12-04T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5812840559907.589,
+      "total_market_cap": 5814929995431.589,
       "total_ttm_revenue": 834127560075.09,
       "industry_ps_ratio": 6.97
     },
     {
       "report_date": "2025-12-05T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5858685623293.958,
+      "total_market_cap": 5860693120169.958,
       "total_ttm_revenue": 834127560075.09,
-      "industry_ps_ratio": 7.02
+      "industry_ps_ratio": 7.03
     },
     {
       "report_date": "2025-12-08T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5925403238935.23,
+      "total_market_cap": 5927257100846.23,
       "total_ttm_revenue": 834127560075.09,
-      "industry_ps_ratio": 7.1
+      "industry_ps_ratio": 7.11
     },
     {
       "report_date": "2025-12-09T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5941262239847.549,
+      "total_market_cap": 5942941982131.549,
       "total_ttm_revenue": 834127547399.09,
       "industry_ps_ratio": 7.12
     },
     {
       "report_date": "2025-12-10T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5868357222214.448,
+      "total_market_cap": 5870026722167.448,
       "total_ttm_revenue": 834127560075.09,
       "industry_ps_ratio": 7.04
     },
     {
       "report_date": "2025-12-11T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5830528744280.55,
+      "total_market_cap": 5832198244233.55,
       "total_ttm_revenue": 834127560075.09,
       "industry_ps_ratio": 6.99
     },
     {
       "report_date": "2025-12-12T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5735916638652.359,
+      "total_market_cap": 5737534926950.359,
       "total_ttm_revenue": 834127547399.09,
       "industry_ps_ratio": 6.88
     },
     {
       "report_date": "2025-12-15T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5667653589710.89,
+      "total_market_cap": 5669251393346.89,
       "total_ttm_revenue": 834127560075.09,
-      "industry_ps_ratio": 6.79
+      "industry_ps_ratio": 6.8
     },
     {
       "report_date": "2025-12-16T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5706915347737.74,
+      "total_market_cap": 5708380001070.74,
       "total_ttm_revenue": 834127560075.09,
       "industry_ps_ratio": 6.84
     },
     {
       "report_date": "2025-12-17T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5628149759692.947,
+      "total_market_cap": 5629501747384.947,
       "total_ttm_revenue": 834127560075.09,
       "industry_ps_ratio": 6.75
     },
     {
       "report_date": "2025-12-18T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5724668111792.648,
+      "total_market_cap": 5725989372491.648,
       "total_ttm_revenue": 834127560075.09,
       "industry_ps_ratio": 6.86
     },
     {
       "report_date": "2025-12-19T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5808794765184.52,
+      "total_market_cap": 5810054571897.52,
       "total_ttm_revenue": 834127560075.09,
-      "industry_ps_ratio": 6.96
+      "industry_ps_ratio": 6.97
     },
     {
       "report_date": "2025-12-22T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5836186606569.39,
+      "total_market_cap": 5837384959296.39,
       "total_ttm_revenue": 834127547399.09,
       "industry_ps_ratio": 7.0
     },
     {
       "report_date": "2025-12-23T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5828584205401.38,
+      "total_market_cap": 5829838890948.88,
       "total_ttm_revenue": 834127560075.09,
       "industry_ps_ratio": 6.99
     },
     {
       "report_date": "2025-12-24T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5843736981164.08,
+      "total_market_cap": 5845047999532.08,
       "total_ttm_revenue": 834127560075.09,
       "industry_ps_ratio": 7.01
     },
     {
       "report_date": "2025-12-26T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5831604742553.86,
+      "total_market_cap": 5833007941900.86,
       "total_ttm_revenue": 834127560075.09,
       "industry_ps_ratio": 6.99
     },
     {
       "report_date": "2025-12-29T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5800752403627.499,
+      "total_market_cap": 5802073664326.499,
       "total_ttm_revenue": 834127560075.09,
-      "industry_ps_ratio": 6.95
+      "industry_ps_ratio": 6.96
     },
     {
       "report_date": "2025-12-30T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5796147715393.22,
+      "total_market_cap": 5797632853388.22,
       "total_ttm_revenue": 834127560075.09,
       "industry_ps_ratio": 6.95
     },
     {
       "report_date": "2025-12-31T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5730547469252.499,
+      "total_market_cap": 5730676112041.499,
       "total_ttm_revenue": 849020612642.5199,
       "industry_ps_ratio": 6.75
     },
     {
       "report_date": "2026-01-02T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5614881611958.118,
+      "total_market_cap": 5615018774137.118,
       "total_ttm_revenue": 849020400765.5199,
       "industry_ps_ratio": 6.61
     },
     {
       "report_date": "2026-01-05T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5636059113719.47,
+      "total_market_cap": 5636191164264.47,
       "total_ttm_revenue": 848950615447.5199,
       "industry_ps_ratio": 6.64
     },
     {
       "report_date": "2026-01-06T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5714274310686.119,
+      "total_market_cap": 5714407213170.119,
       "total_ttm_revenue": 848950615447.5199,
       "industry_ps_ratio": 6.73
     },
     {
       "report_date": "2026-01-07T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5775046042256.631,
+      "total_market_cap": 5775194279642.631,
       "total_ttm_revenue": 848950615447.5199,
       "industry_ps_ratio": 6.8
     },
     {
       "report_date": "2026-01-08T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5692121196882.471,
+      "total_market_cap": 5692263470695.471,
       "total_ttm_revenue": 848950403570.5199,
-      "industry_ps_ratio": 6.7
+      "industry_ps_ratio": 6.71
     },
     {
       "report_date": "2026-01-09T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5727977107334.778,
+      "total_market_cap": 5728131308293.778,
       "total_ttm_revenue": 848950615447.5199,
       "industry_ps_ratio": 6.75
     },
     {
       "report_date": "2026-01-12T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5744160134501.0,
+      "total_market_cap": 5744316039338.0,
       "total_ttm_revenue": 848950615447.5199,
       "industry_ps_ratio": 6.77
     },
     {
       "report_date": "2026-01-13T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5675817065441.602,
+      "total_market_cap": 5675993842784.102,
       "total_ttm_revenue": 848950615447.5199,
       "industry_ps_ratio": 6.69
     },
     {
       "report_date": "2026-01-14T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5556951208246.162,
+      "total_market_cap": 5557126707680.162,
       "total_ttm_revenue": 848950615447.5199,
       "industry_ps_ratio": 6.55
     },
     {
       "report_date": "2026-01-15T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5516146386605.039,
+      "total_market_cap": 5516326145734.039,
       "total_ttm_revenue": 848950403570.5199,
       "industry_ps_ratio": 6.5
     },
     {
       "report_date": "2026-01-16T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5527838154407.909,
+      "total_market_cap": 5527973612708.909,
       "total_ttm_revenue": 848950615447.5199,
       "industry_ps_ratio": 6.51
     },
     {
       "report_date": "2026-01-20T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5419959531452.26,
+      "total_market_cap": 5420091156027.76,
       "total_ttm_revenue": 848950615447.5199,
       "industry_ps_ratio": 6.38
     },
     {
       "report_date": "2026-01-21T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5319682183107.899,
+      "total_market_cap": 5321241856233.899,
       "total_ttm_revenue": 848950615447.5199,
       "industry_ps_ratio": 6.27
     },
     {
       "report_date": "2026-01-22T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5398783978163.669,
+      "total_market_cap": 5400496560419.669,
       "total_ttm_revenue": 848950403570.5199,
       "industry_ps_ratio": 6.36
     },
     {
       "report_date": "2026-01-23T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5516167888086.751,
+      "total_market_cap": 5518074155240.751,
       "total_ttm_revenue": 848950615447.5199,
       "industry_ps_ratio": 6.5
     },
     {
       "report_date": "2026-01-26T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5582299478302.5205,
+      "total_market_cap": 5584063030268.5205,
       "total_ttm_revenue": 848933366242.5199,
       "industry_ps_ratio": 6.58
     },
     {
       "report_date": "2026-01-27T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5639712935193.649,
+      "total_market_cap": 5640773105161.649,
       "total_ttm_revenue": 848933366242.5199,
       "industry_ps_ratio": 6.64
     },
     {
       "report_date": "2026-01-28T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5611325342176.438,
+      "total_market_cap": 5612365124260.438,
       "total_ttm_revenue": 848950615447.5199,
       "industry_ps_ratio": 6.61
     },
     {
       "report_date": "2026-01-29T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5187195117967.97,
+      "total_market_cap": 5187981070896.17,
       "total_ttm_revenue": 850129896153.1199,
       "industry_ps_ratio": 6.1
     },
     {
       "report_date": "2026-01-30T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5109588708565.9795,
+      "total_market_cap": 5110415437262.179,
       "total_ttm_revenue": 850129896153.1199,
       "industry_ps_ratio": 6.01
     },
     {
       "report_date": "2026-02-02T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5046882355610.201,
+      "total_market_cap": 5047641804289.201,
       "total_ttm_revenue": 852667549580.1199,
       "industry_ps_ratio": 5.92
     },
     {
       "report_date": "2026-02-03T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4912856633664.931,
+      "total_market_cap": 4913582442335.33,
       "total_ttm_revenue": 852667761457.1199,
       "industry_ps_ratio": 5.76
     },
     {
       "report_date": "2026-02-04T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4866021593147.528,
+      "total_market_cap": 4866762692730.929,
       "total_ttm_revenue": 852677527580.1199,
       "industry_ps_ratio": 5.71
     },
     {
       "report_date": "2026-02-05T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4618047611504.372,
+      "total_market_cap": 4618689829850.372,
       "total_ttm_revenue": 852677527580.1199,
       "industry_ps_ratio": 5.42
     },
     {
       "report_date": "2026-02-06T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4748447222716.069,
+      "total_market_cap": 4749114324605.369,
       "total_ttm_revenue": 852677527580.1199,
       "industry_ps_ratio": 5.57
     },
     {
       "report_date": "2026-02-09T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4923191277958.611,
+      "total_market_cap": 4923886638324.311,
       "total_ttm_revenue": 852677527580.1199,
       "industry_ps_ratio": 5.77
     },
     {
       "report_date": "2026-02-10T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4929369253282.75,
+      "total_market_cap": 4930067641342.351,
       "total_ttm_revenue": 852677527580.1199,
       "industry_ps_ratio": 5.78
     },
     {
       "report_date": "2026-02-11T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4857171608125.169,
+      "total_market_cap": 4857915411593.27,
       "total_ttm_revenue": 852677739457.1199,
       "industry_ps_ratio": 5.7
     },
     {
       "report_date": "2026-02-12T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4792671030396.27,
+      "total_market_cap": 4793303818421.37,
       "total_ttm_revenue": 852677739457.1199,
       "industry_ps_ratio": 5.62
     },
     {
       "report_date": "2026-02-13T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4832674726051.51,
+      "total_market_cap": 4833374123342.41,
       "total_ttm_revenue": 852677527580.1199,
       "industry_ps_ratio": 5.67
     },
     {
       "report_date": "2026-02-17T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4740762344007.9,
+      "total_market_cap": 4741440547441.5,
       "total_ttm_revenue": 851374676580.1199,
       "industry_ps_ratio": 5.57
     },
     {
       "report_date": "2026-02-18T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4778960295477.249,
+      "total_market_cap": 4779615286590.948,
       "total_ttm_revenue": 851374676580.1199,
       "industry_ps_ratio": 5.61
     },
     {
       "report_date": "2026-02-19T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4771823156010.537,
+      "total_market_cap": 4772429704021.837,
       "total_ttm_revenue": 851374888457.1199,
-      "industry_ps_ratio": 5.6
+      "industry_ps_ratio": 5.61
     },
     {
       "report_date": "2026-02-20T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4711252888352.68,
+      "total_market_cap": 4711858427132.68,
       "total_ttm_revenue": 851203979457.1199,
-      "industry_ps_ratio": 5.53
+      "industry_ps_ratio": 5.54
     },
     {
       "report_date": "2026-02-23T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4535064314110.971,
+      "total_market_cap": 4535625446713.771,
       "total_ttm_revenue": 851203914457.1199,
       "industry_ps_ratio": 5.33
     },
     {
       "report_date": "2026-02-24T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4595062557461.9,
+      "total_market_cap": 4595693327024.4,
       "total_ttm_revenue": 851203710737.1099,
       "industry_ps_ratio": 5.4
     },
     {
       "report_date": "2026-02-25T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4716560181374.77,
+      "total_market_cap": 4717296920223.77,
       "total_ttm_revenue": 851203922614.1099,
       "industry_ps_ratio": 5.54
     },
     {
       "report_date": "2026-02-26T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4754252212768.609,
+      "total_market_cap": 4755008127012.31,
       "total_ttm_revenue": 851203710737.1099,
       "industry_ps_ratio": 5.59
     },
     {
       "report_date": "2026-02-27T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4656420705280.319,
+      "total_market_cap": 4657176619524.02,
       "total_ttm_revenue": 851203710737.1099,
       "industry_ps_ratio": 5.47
     },
     {
       "report_date": "2026-03-02T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4745614527893.31,
+      "total_market_cap": 4746371451368.31,
       "total_ttm_revenue": 854278187642.1099,
       "industry_ps_ratio": 5.56
     },
     {
       "report_date": "2026-03-03T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4791120679975.339,
+      "total_market_cap": 4791832188041.839,
       "total_ttm_revenue": 854278187642.1099,
       "industry_ps_ratio": 5.61
     },
     {
       "report_date": "2026-03-04T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4848684056559.68,
+      "total_market_cap": 4849449053885.08,
       "total_ttm_revenue": 854278187642.1099,
       "industry_ps_ratio": 5.68
     },
     {
       "report_date": "2026-03-05T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4917897762996.311,
+      "total_market_cap": 4918677898791.21,
       "total_ttm_revenue": 854278187642.1099,
       "industry_ps_ratio": 5.76
     },
     {
       "report_date": "2026-03-06T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4914163765880.76,
+      "total_market_cap": 4914903532423.66,
       "total_ttm_revenue": 854278187642.1099,
       "industry_ps_ratio": 5.75
     },
     {
       "report_date": "2026-03-09T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4914296405908.37,
+      "total_market_cap": 4915048283226.87,
       "total_ttm_revenue": 854278187642.1099,
       "industry_ps_ratio": 5.75
     },
     {
       "report_date": "2026-03-10T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4865717564667.149,
+      "total_market_cap": 4866464395829.149,
       "total_ttm_revenue": 854277975765.1099,
       "industry_ps_ratio": 5.7
     },
     {
       "report_date": "2026-03-11T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4905721678119.78,
+      "total_market_cap": 4906488693907.78,
       "total_ttm_revenue": 854277975765.1099,
       "industry_ps_ratio": 5.74
     },
     {
       "report_date": "2026-03-12T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4870925611964.149,
+      "total_market_cap": 4871692627752.149,
       "total_ttm_revenue": 856488630508.1099,
       "industry_ps_ratio": 5.69
     },
     {
       "report_date": "2026-03-13T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4806928622599.95,
+      "total_market_cap": 4807701693775.75,
       "total_ttm_revenue": 856488630508.1099,
       "industry_ps_ratio": 5.61
     },
     {
       "report_date": "2026-03-16T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4847089949120.131,
+      "total_market_cap": 4847930638793.03,
       "total_ttm_revenue": 856488630508.1099,
       "industry_ps_ratio": 5.66
     },
     {
       "report_date": "2026-03-17T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4853926663086.029,
+      "total_market_cap": 4854744140439.029,
       "total_ttm_revenue": 856488630508.1099,
       "industry_ps_ratio": 5.67
     },
     {
       "report_date": "2026-03-18T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4768214815943.029,
+      "total_market_cap": 4768991924044.029,
       "total_ttm_revenue": 855321882508.1099,
-      "industry_ps_ratio": 5.57
+      "industry_ps_ratio": 5.58
     },
     {
       "report_date": "2026-03-19T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4761065829849.89,
+      "total_market_cap": 4761815688705.79,
       "total_ttm_revenue": 855321882508.1099,
       "industry_ps_ratio": 5.57
     },
     {
       "report_date": "2026-03-20T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4657804643884.109,
+      "total_market_cap": 4658501013481.109,
       "total_ttm_revenue": 855321882508.1099,
       "industry_ps_ratio": 5.45
     },
     {
       "report_date": "2026-03-23T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4722741204915.351,
+      "total_market_cap": 4723455740675.751,
       "total_ttm_revenue": 855321882508.1099,
       "industry_ps_ratio": 5.52
     },
     {
       "report_date": "2026-03-24T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4577562605851.11,
+      "total_market_cap": 4578217596964.811,
       "total_ttm_revenue": 855321882508.1099,
       "industry_ps_ratio": 5.35
     },
     {
       "report_date": "2026-03-25T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4563971051620.461,
+      "total_market_cap": 4564645218128.861,
       "total_ttm_revenue": 855321882508.1099,
       "industry_ps_ratio": 5.34
     },
     {
       "report_date": "2026-03-26T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4494465955959.311,
+      "total_market_cap": 4495081587052.311,
       "total_ttm_revenue": 855321882508.1099,
-      "industry_ps_ratio": 5.25
+      "industry_ps_ratio": 5.26
     },
     {
       "report_date": "2026-03-27T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4361870761743.1094,
+      "total_market_cap": 4362437949733.7095,
       "total_ttm_revenue": 855327589508.1099,
       "industry_ps_ratio": 5.1
     },
     {
       "report_date": "2026-03-30T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4367664713734.3105,
+      "total_market_cap": 4368184467853.8105,
       "total_ttm_revenue": 855327589508.1099,
       "industry_ps_ratio": 5.11
     },
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4527370823050.91,
+      "total_market_cap": 4527420047540.511,
       "total_ttm_revenue": 846440979212.4603,
       "industry_ps_ratio": 5.35
     },
     {
       "report_date": "2026-04-01T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4517992712232.45,
+      "total_market_cap": 4518039631896.45,
       "total_ttm_revenue": 846440979212.4603,
       "industry_ps_ratio": 5.34
     },
     {
       "report_date": "2026-04-02T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4567844146405.55,
+      "total_market_cap": 4567892053851.949,
       "total_ttm_revenue": 845839045212.4603,
       "industry_ps_ratio": 5.4
     },
     {
       "report_date": "2026-04-06T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4560175427215.23,
+      "total_market_cap": 4560218642695.23,
       "total_ttm_revenue": 845839045212.4603,
       "industry_ps_ratio": 5.39
     },
     {
       "report_date": "2026-04-07T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4569169461221.95,
+      "total_market_cap": 4569210042615.551,
       "total_ttm_revenue": 845839045212.4603,
       "industry_ps_ratio": 5.4
     },
     {
       "report_date": "2026-04-08T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4569034620006.841,
+      "total_market_cap": 4569078329378.04,
       "total_ttm_revenue": 845839045212.4603,
       "industry_ps_ratio": 5.4
     },
     {
       "report_date": "2026-04-09T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4479672150857.78,
+      "total_market_cap": 4479719070521.78,
       "total_ttm_revenue": 845839045212.4603,
       "industry_ps_ratio": 5.3
     },
     {
       "report_date": "2026-04-10T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4420679684222.96,
+      "total_market_cap": 4420730966592.561,
       "total_ttm_revenue": 845839045212.4603,
       "industry_ps_ratio": 5.23
     },
     {
       "report_date": "2026-04-13T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4630056150620.881,
+      "total_market_cap": 4630107186044.881,
       "total_ttm_revenue": 845839045212.4603,
       "industry_ps_ratio": 5.47
     },
     {
       "report_date": "2026-04-14T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4725619022776.77,
+      "total_market_cap": 4725665366234.37,
       "total_ttm_revenue": 845839045212.4603,
       "industry_ps_ratio": 5.59
     },
     {
       "report_date": "2026-04-15T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4926421928608.2705,
+      "total_market_cap": 4926469095217.871,
       "total_ttm_revenue": 845839045212.4603,
       "industry_ps_ratio": 5.82
     },
     {
       "report_date": "2026-04-16T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5039716320318.369,
+      "total_market_cap": 5039765874068.769,
       "total_ttm_revenue": 845839045212.4603,
       "industry_ps_ratio": 5.96
     },
     {
       "report_date": "2026-04-17T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5069261326591.04,
+      "total_market_cap": 5069314008319.04,
       "total_ttm_revenue": 845839045212.4603,
       "industry_ps_ratio": 5.99
     },
     {
       "report_date": "2026-04-20T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5060325502650.079,
+      "total_market_cap": 5060375221030.88,
       "total_ttm_revenue": 845838616828.4603,
       "industry_ps_ratio": 5.98
     },
     {
       "report_date": "2026-04-21T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5126605276329.987,
+      "total_market_cap": 5126651702102.788,
       "total_ttm_revenue": 845838404951.4603,
       "industry_ps_ratio": 6.06
     },
     {
       "report_date": "2026-04-22T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5246322911487.239,
+      "total_market_cap": 5246368431792.839,
       "total_ttm_revenue": 845838616828.4603,
       "industry_ps_ratio": 6.2
     },
     {
       "report_date": "2026-04-23T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5015340831547.498,
+      "total_market_cap": 5015384129342.698,
       "total_ttm_revenue": 845838616828.4603,
       "industry_ps_ratio": 5.93
     },
     {
       "report_date": "2026-04-24T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5091458293775.59,
+      "total_market_cap": 5091501920831.59,
       "total_ttm_revenue": 845838616828.4603,
       "industry_ps_ratio": 6.02
     },
     {
       "report_date": "2026-04-27T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5101899824714.011,
+      "total_market_cap": 5101942957878.811,
       "total_ttm_revenue": 845838404951.4603,
       "industry_ps_ratio": 6.03
     },
     {
       "report_date": "2026-04-28T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5099691436245.289,
+      "total_market_cap": 5099732676160.488,
       "total_ttm_revenue": 845838616828.4603,
       "industry_ps_ratio": 6.03
     },
     {
       "report_date": "2026-04-29T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5056281185881.541,
+      "total_market_cap": 5056323166633.541,
       "total_ttm_revenue": 845838616828.4603,
       "industry_ps_ratio": 5.98
     },
     {
       "report_date": "2026-04-30T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4921857071111.818,
-      "total_ttm_revenue": 848684817828.4603,
+      "total_market_cap": 4921895347679.818,
+      "total_ttm_revenue": 848684826806.4603,
       "industry_ps_ratio": 5.8
     },
     {
       "report_date": "2026-05-01T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5045618416563.9,
-      "total_ttm_revenue": 848684817828.4603,
+      "total_market_cap": 5045665336227.9,
+      "total_ttm_revenue": 848684826806.4603,
       "industry_ps_ratio": 5.95
     },
     {
       "report_date": "2026-05-04T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5090782168122.633,
-      "total_ttm_revenue": 848684817828.4603,
+      "total_market_cap": 5090828593895.433,
+      "total_ttm_revenue": 848684826806.4603,
       "industry_ps_ratio": 6.0
     },
     {
       "report_date": "2026-05-05T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5083644915613.369,
-      "total_ttm_revenue": 848684817828.4603,
+      "total_market_cap": 5083687801832.568,
+      "total_ttm_revenue": 848684826806.4603,
       "industry_ps_ratio": 5.99
     },
     {
       "report_date": "2026-05-06T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5126378383552.659,
-      "total_ttm_revenue": 848684817828.4603,
+      "total_market_cap": 5126423656912.659,
+      "total_ttm_revenue": 848684826806.4603,
       "industry_ps_ratio": 6.04
     },
     {
       "report_date": "2026-05-07T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5226803535360.778,
-      "total_ttm_revenue": 848684817828.4603,
+      "total_market_cap": 5226846503895.179,
+      "total_ttm_revenue": 848684826806.4603,
       "industry_ps_ratio": 6.16
     },
     {
       "report_date": "2026-05-08T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5198457378521.061,
-      "total_ttm_revenue": 848684817828.4603,
+      "total_market_cap": 5198500429370.66,
+      "total_ttm_revenue": 848684826806.4603,
       "industry_ps_ratio": 6.13
     },
     {
       "report_date": "2026-05-11T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5171631470856.768,
-      "total_ttm_revenue": 848684817828.4603,
+      "total_market_cap": 5171674686336.768,
+      "total_ttm_revenue": 848684826806.4603,
       "industry_ps_ratio": 6.09
     },
     {
       "report_date": "2026-05-12T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5099658683502.769,
-      "total_ttm_revenue": 848367262828.4603,
+      "total_market_cap": 5099700581939.568,
+      "total_ttm_revenue": 848367271806.4603,
       "industry_ps_ratio": 6.01
     },
     {
       "report_date": "2026-05-13T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5092737472369.819,
-      "total_ttm_revenue": 848367262828.4603,
+      "total_market_cap": 5092777971448.22,
+      "total_ttm_revenue": 848367271806.4603,
       "industry_ps_ratio": 6.0
     },
     {
       "report_date": "2026-05-14T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5176940948992.93,
-      "total_ttm_revenue": 848367262828.4603,
+      "total_market_cap": 5176980871864.93,
+      "total_ttm_revenue": 848367271806.4603,
       "industry_ps_ratio": 6.1
     },
     {
       "report_date": "2026-05-15T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5266236569984.699,
-      "total_ttm_revenue": 848367262828.4603,
+      "total_market_cap": 5266280937877.499,
+      "total_ttm_revenue": 848367271806.4603,
       "industry_ps_ratio": 6.21
     },
     {
       "report_date": "2026-05-18T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5288179083974.41,
-      "total_ttm_revenue": 848367262828.4603,
+      "total_market_cap": 5288223698812.81,
+      "total_ttm_revenue": 848367271806.4603,
       "industry_ps_ratio": 6.23
     },
     {
       "report_date": "2026-05-19T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5218506748948.919,
-      "total_ttm_revenue": 848367262828.4603,
+      "total_market_cap": 5218549717483.318,
+      "total_ttm_revenue": 848367271806.4603,
       "industry_ps_ratio": 6.15
     },
     {
       "report_date": "2026-05-20T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5293342535084.739,
-      "total_ttm_revenue": 848367262828.4603,
+      "total_market_cap": 5293389948639.938,
+      "total_ttm_revenue": 848367271806.4603,
       "industry_ps_ratio": 6.24
     },
     {
       "report_date": "2026-05-21T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5290226339668.91,
-      "total_ttm_revenue": 848367262828.4603,
+      "total_market_cap": 5290274247115.31,
+      "total_ttm_revenue": 848367271806.4603,
       "industry_ps_ratio": 6.24
     },
     {
       "report_date": "2026-05-22T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5321490295667.849,
-      "total_ttm_revenue": 848367262828.4603,
+      "total_market_cap": 5321537297647.049,
+      "total_ttm_revenue": 848367271806.4603,
       "industry_ps_ratio": 6.27
     },
     {
       "report_date": "2026-05-26T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5308454613604.309,
-      "total_ttm_revenue": 848367262828.4603,
+      "total_market_cap": 5308502356420.309,
+      "total_ttm_revenue": 848367271806.4603,
       "industry_ps_ratio": 6.26
     },
     {
       "report_date": "2026-05-27T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5227382974822.19,
-      "total_ttm_revenue": 848367262828.4603,
+      "total_market_cap": 5227430141431.79,
+      "total_ttm_revenue": 848367271806.4603,
       "industry_ps_ratio": 6.16
     },
     {
       "report_date": "2026-05-28T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5423907605892.2705,
-      "total_ttm_revenue": 848340077915.4603,
+      "total_market_cap": 5423953373143.47,
+      "total_ttm_revenue": 848340086893.4603,
       "industry_ps_ratio": 6.39
     },
     {
       "report_date": "2026-05-29T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5765974443211.309,
-      "total_ttm_revenue": 848340077915.4603,
+      "total_market_cap": 5766018152582.508,
+      "total_ttm_revenue": 848340086893.4603,
       "industry_ps_ratio": 6.8
     },
     {
       "report_date": "2026-06-01T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6011452923481.327,
-      "total_ttm_revenue": 848340077915.4603,
+      "total_market_cap": 6011496221276.526,
+      "total_ttm_revenue": 848340086893.4603,
       "industry_ps_ratio": 7.09
     },
     {
       "report_date": "2026-06-02T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5823575396533.43,
-      "total_ttm_revenue": 848340077915.4603,
+      "total_market_cap": 5823616554133.43,
+      "total_ttm_revenue": 848340086893.4603,
       "industry_ps_ratio": 6.86
     },
     {
       "report_date": "2026-06-03T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5610397468413.09,
-      "total_ttm_revenue": 848340077915.4603,
+      "total_market_cap": 5610436650448.289,
+      "total_ttm_revenue": 848340086893.4603,
       "industry_ps_ratio": 6.61
     },
     {
       "report_date": "2026-06-04T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5626977879497.029,
-      "total_ttm_revenue": 848340077915.4603,
+      "total_market_cap": 5627016320695.43,
+      "total_ttm_revenue": 848340086893.4603,
       "industry_ps_ratio": 6.63
     },
     {
       "report_date": "2026-06-05T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5401550475086.351,
-      "total_ttm_revenue": 848340077915.4603,
+      "total_market_cap": 5401583483481.551,
+      "total_ttm_revenue": 848340086893.4603,
       "industry_ps_ratio": 6.37
     },
     {
       "report_date": "2026-06-08T00:00:00.000",
       "industry": "Software-Infrastructure",
       "total_market_cap": 5348136184269.25,
-      "total_ttm_revenue": 848340077915.4603,
+      "total_ttm_revenue": 848340086893.4603,
       "industry_ps_ratio": 6.3
     },
     {
       "report_date": "2026-06-09T00:00:00.000",
       "industry": "Software-Infrastructure",
       "total_market_cap": 5230737223729.92,
-      "total_ttm_revenue": 848340077915.4603,
+      "total_ttm_revenue": 848340086893.4603,
       "industry_ps_ratio": 6.17
     },
     {
       "report_date": "2026-06-10T00:00:00.000",
       "industry": "Software-Infrastructure",
       "total_market_cap": 5154649042707.492,
-      "total_ttm_revenue": 848340077915.4603,
+      "total_ttm_revenue": 848340086893.4603,
       "industry_ps_ratio": 6.08
     },
     {
       "report_date": "2026-06-11T00:00:00.000",
       "industry": "Software-Infrastructure",
       "total_market_cap": 5092171058465.629,
-      "total_ttm_revenue": 848340077915.4603,
+      "total_ttm_revenue": 848340086893.4603,
       "industry_ps_ratio": 6.0
     },
     {
       "report_date": "2026-06-12T00:00:00.000",
       "industry": "Software-Infrastructure",
       "total_market_cap": 5089393013504.939,
-      "total_ttm_revenue": 848340077915.4603,
+      "total_ttm_revenue": 848340086893.4603,
       "industry_ps_ratio": 6.0
     },
     {
       "report_date": "2026-06-15T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5218097934629.658,
-      "total_ttm_revenue": 848332427667.4603,
+      "total_market_cap": 5218205454943.658,
+      "total_ttm_revenue": 848340086893.4603,
       "industry_ps_ratio": 6.15
     },
     {
       "report_date": "2026-06-16T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5146334768397.398,
-      "total_ttm_revenue": 848332427667.4603,
+      "total_market_cap": 5146438040170.398,
+      "total_ttm_revenue": 848340086893.4603,
       "industry_ps_ratio": 6.07
     },
     {
       "report_date": "2026-06-17T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5002483929385.08,
-      "total_ttm_revenue": 848332427667.4603,
+      "total_market_cap": 5002584222831.08,
+      "total_ttm_revenue": 848340086893.4603,
       "industry_ps_ratio": 5.9
+    },
+    {
+      "report_date": "2026-06-18T00:00:00.000",
+      "industry": "Software-Infrastructure",
+      "total_market_cap": 5009590488324.809,
+      "total_ttm_revenue": 848340086893.4603,
+      "industry_ps_ratio": 5.91
+    },
+    {
+      "report_date": "2026-06-19T00:00:00.000",
+      "industry": "Software-Infrastructure",
+      "total_market_cap": 40136476856.14001,
+      "total_ttm_revenue": 24479540080.04,
+      "industry_ps_ratio": 1.64
     }
   ],
   "pb_ratio": [
@@ -15897,2942 +15925,2956 @@
     {
       "report_date": "2024-10-14T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4679881582789.42,
+      "total_market_cap": 4679950696669.42,
       "total_bve": 452435849800.0502,
       "industry_pb_ratio": 10.34
     },
     {
       "report_date": "2024-10-15T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4660784051815.44,
+      "total_market_cap": 4660853763120.841,
       "total_bve": 452435849800.0502,
       "industry_pb_ratio": 10.3
     },
     {
       "report_date": "2024-10-16T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4640899434877.681,
+      "total_market_cap": 4640967855232.98,
       "total_bve": 452435849800.0502,
       "industry_pb_ratio": 10.26
     },
     {
       "report_date": "2024-10-17T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4648935876503.65,
+      "total_market_cap": 4649004296858.951,
       "total_bve": 452435849800.0502,
       "industry_pb_ratio": 10.28
     },
     {
       "report_date": "2024-10-18T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4665600169604.181,
+      "total_market_cap": 4665672462809.78,
       "total_bve": 452435849800.0502,
       "industry_pb_ratio": 10.31
     },
     {
       "report_date": "2024-10-21T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4662453387470.82,
+      "total_market_cap": 4662525680676.42,
       "total_bve": 452435849800.0502,
       "industry_pb_ratio": 10.31
     },
     {
       "report_date": "2024-10-22T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4725527468340.06,
+      "total_market_cap": 4725598470595.56,
       "total_bve": 452435849800.0502,
       "industry_pb_ratio": 10.44
     },
     {
       "report_date": "2024-10-23T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4679088112830.97,
+      "total_market_cap": 4679165569836.97,
       "total_bve": 452435849800.0502,
       "industry_pb_ratio": 10.34
     },
     {
       "report_date": "2024-10-24T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4692005869521.52,
+      "total_market_cap": 4692082035577.419,
       "total_bve": 452435849800.0502,
       "industry_pb_ratio": 10.37
     },
     {
       "report_date": "2024-10-25T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4718009265802.398,
+      "total_market_cap": 4718085431858.299,
       "total_bve": 452435849800.0502,
       "industry_pb_ratio": 10.43
     },
     {
       "report_date": "2024-10-28T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4706102424240.241,
+      "total_market_cap": 4706181172196.341,
       "total_bve": 452435849800.0502,
       "industry_pb_ratio": 10.4
     },
     {
       "report_date": "2024-10-29T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4756686807573.02,
+      "total_market_cap": 4756761682678.82,
       "total_bve": 452435849800.0502,
       "industry_pb_ratio": 10.51
     },
     {
       "report_date": "2024-10-30T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4755923330235.56,
+      "total_market_cap": 4755999496291.46,
       "total_bve": 452435849800.0502,
       "industry_pb_ratio": 10.51
     },
     {
       "report_date": "2024-10-31T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4531476902922.69,
+      "total_market_cap": 4531544032327.89,
       "total_bve": 455059793646.0502,
       "industry_pb_ratio": 9.96
     },
     {
       "report_date": "2024-11-01T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4574829112143.681,
+      "total_market_cap": 4574891077748.48,
       "total_bve": 455059793646.0502,
       "industry_pb_ratio": 10.05
     },
     {
       "report_date": "2024-11-04T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4558215895731.939,
+      "total_market_cap": 4558281734187.04,
       "total_bve": 455059793646.0502,
       "industry_pb_ratio": 10.02
     },
     {
       "report_date": "2024-11-05T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4617384501344.42,
+      "total_market_cap": 4617449048849.42,
       "total_bve": 455059793646.0502,
       "industry_pb_ratio": 10.15
     },
     {
       "report_date": "2024-11-06T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4764757704430.09,
+      "total_market_cap": 4764824833835.29,
       "total_bve": 455059793646.0502,
       "industry_pb_ratio": 10.47
     },
     {
       "report_date": "2024-11-07T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4829576123590.77,
+      "total_market_cap": 4829639380145.67,
       "total_bve": 455059793646.0502,
       "industry_pb_ratio": 10.61
     },
     {
       "report_date": "2024-11-08T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4822064834794.269,
+      "total_market_cap": 4822125509448.969,
       "total_bve": 455059793646.0502,
       "industry_pb_ratio": 10.6
     },
     {
       "report_date": "2024-11-11T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4820004643122.79,
+      "total_market_cap": 4820065317777.489,
       "total_bve": 455059793646.0502,
       "industry_pb_ratio": 10.59
     },
     {
       "report_date": "2024-11-12T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4862291704302.641,
+      "total_market_cap": 4862352378957.34,
       "total_bve": 455059793646.0502,
-      "industry_pb_ratio": 10.68
+      "industry_pb_ratio": 10.69
     },
     {
       "report_date": "2024-11-13T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4881645290078.148,
+      "total_market_cap": 4881708546633.049,
       "total_bve": 455059793646.0502,
       "industry_pb_ratio": 10.73
     },
     {
       "report_date": "2024-11-14T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4865320905687.28,
+      "total_market_cap": 4865381580341.98,
       "total_bve": 455059793646.0502,
       "industry_pb_ratio": 10.69
     },
     {
       "report_date": "2024-11-15T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4764909857372.94,
+      "total_market_cap": 4764965368227.241,
       "total_bve": 455059793646.0502,
       "industry_pb_ratio": 10.47
     },
     {
       "report_date": "2024-11-18T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4774316057912.94,
+      "total_market_cap": 4774371568767.24,
       "total_bve": 455059793646.0502,
       "industry_pb_ratio": 10.49
     },
     {
       "report_date": "2024-11-19T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4817398829467.75,
+      "total_market_cap": 4817468766037.75,
       "total_bve": 455059793646.0502,
       "industry_pb_ratio": 10.59
     },
     {
       "report_date": "2024-11-20T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4804926330898.13,
+      "total_market_cap": 4804997973238.13,
       "total_bve": 455059793646.0502,
       "industry_pb_ratio": 10.56
     },
     {
       "report_date": "2024-11-21T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4815588166057.46,
+      "total_market_cap": 4815658102627.46,
       "total_bve": 455059793646.0502,
       "industry_pb_ratio": 10.58
     },
     {
       "report_date": "2024-11-22T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4858414313796.639,
+      "total_market_cap": 4858480838826.639,
       "total_bve": 455059793646.0502,
       "industry_pb_ratio": 10.68
     },
     {
       "report_date": "2024-11-25T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4864364875869.371,
+      "total_market_cap": 4864431400899.371,
       "total_bve": 455059793646.0502,
       "industry_pb_ratio": 10.69
     },
     {
       "report_date": "2024-11-26T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4948388423090.631,
+      "total_market_cap": 4948451536580.631,
       "total_bve": 455059793646.0502,
       "industry_pb_ratio": 10.87
     },
     {
       "report_date": "2024-11-27T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4874330866073.511,
+      "total_market_cap": 4874392273793.511,
       "total_bve": 455059793646.0502,
       "industry_pb_ratio": 10.71
     },
     {
       "report_date": "2024-11-29T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4890919179079.68,
+      "total_market_cap": 4890982292569.68,
       "total_bve": 455059793646.0502,
       "industry_pb_ratio": 10.75
     },
     {
       "report_date": "2024-12-02T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4950465977585.352,
+      "total_market_cap": 4950529091075.352,
       "total_bve": 457995969646.0502,
       "industry_pb_ratio": 10.81
     },
     {
       "report_date": "2024-12-03T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4968074751080.49,
+      "total_market_cap": 4968124218410.49,
       "total_bve": 457995969646.0502,
       "industry_pb_ratio": 10.85
     },
     {
       "report_date": "2024-12-04T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5056287760269.231,
+      "total_market_cap": 5056340639139.231,
       "total_bve": 457995969646.0502,
       "industry_pb_ratio": 11.04
     },
     {
       "report_date": "2024-12-05T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5076207649658.07,
+      "total_market_cap": 5076262746029.07,
       "total_bve": 457995969646.0502,
       "industry_pb_ratio": 11.08
     },
     {
       "report_date": "2024-12-06T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5117158703728.011,
+      "total_market_cap": 5117208171058.011,
       "total_bve": 457995969646.0502,
       "industry_pb_ratio": 11.17
     },
     {
       "report_date": "2024-12-09T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5104641874556.64,
+      "total_market_cap": 5104686395153.64,
       "total_bve": 457995969646.0502,
       "industry_pb_ratio": 11.15
     },
     {
       "report_date": "2024-12-10T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5026565056871.89,
+      "total_market_cap": 5026604119004.89,
       "total_bve": 457995969646.0502,
       "industry_pb_ratio": 10.98
     },
     {
       "report_date": "2024-12-11T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5095012449506.182,
+      "total_market_cap": 5095053558563.182,
       "total_bve": 457995969646.0502,
       "industry_pb_ratio": 11.12
     },
     {
       "report_date": "2024-12-12T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5090087771632.288,
+      "total_market_cap": 5090124957418.288,
       "total_bve": 457995969646.0502,
       "industry_pb_ratio": 11.11
     },
     {
       "report_date": "2024-12-13T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5062692600003.671,
+      "total_market_cap": 5062729615212.671,
       "total_bve": 457995969646.0502,
       "industry_pb_ratio": 11.05
     },
     {
       "report_date": "2024-12-16T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5107508518577.471,
+      "total_market_cap": 5107544339747.471,
       "total_bve": 457995969646.0502,
       "industry_pb_ratio": 11.15
     },
     {
       "report_date": "2024-12-17T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5109139849758.9,
+      "total_market_cap": 5109178059006.9,
       "total_bve": 457995969646.0502,
       "industry_pb_ratio": 11.16
     },
     {
       "report_date": "2024-12-18T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4915856331127.279,
+      "total_market_cap": 4915895393260.279,
       "total_bve": 457995969646.0502,
       "industry_pb_ratio": 10.73
     },
     {
       "report_date": "2024-12-19T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4923333236880.279,
+      "total_market_cap": 4923376051707.279,
       "total_bve": 457995969646.0502,
       "industry_pb_ratio": 10.75
     },
     {
       "report_date": "2024-12-20T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4950959412460.0,
+      "total_market_cap": 4951002056710.0,
       "total_bve": 457995969646.0502,
       "industry_pb_ratio": 10.81
     },
     {
       "report_date": "2024-12-23T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4936404615253.67,
+      "total_market_cap": 4936448965273.67,
       "total_bve": 457995969646.0502,
       "industry_pb_ratio": 10.78
     },
     {
       "report_date": "2024-12-24T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4987438589654.759,
+      "total_market_cap": 4987481745635.759,
       "total_bve": 457995969646.0502,
       "industry_pb_ratio": 10.89
     },
     {
       "report_date": "2024-12-26T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4978848143255.07,
+      "total_market_cap": 4978893346160.07,
       "total_bve": 457995969646.0502,
       "industry_pb_ratio": 10.87
     },
     {
       "report_date": "2024-12-27T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4893339051101.0205,
+      "total_market_cap": 4893382377659.0205,
       "total_bve": 457995969646.0502,
       "industry_pb_ratio": 10.68
     },
     {
       "report_date": "2024-12-30T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4830578313514.66,
+      "total_market_cap": 4830619934302.66,
       "total_bve": 457995969646.0502,
       "industry_pb_ratio": 10.55
     },
     {
       "report_date": "2024-12-31T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4794924641321.149,
+      "total_market_cap": 4795807966004.149,
       "total_bve": 478073555524.44006,
       "industry_pb_ratio": 10.03
     },
     {
       "report_date": "2025-01-02T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4775113542058.679,
+      "total_market_cap": 4775978204036.679,
       "total_bve": 478073555524.44006,
       "industry_pb_ratio": 9.99
     },
     {
       "report_date": "2025-01-03T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4842966794677.319,
+      "total_market_cap": 4843836727364.319,
       "total_bve": 478073555524.44006,
       "industry_pb_ratio": 10.13
     },
     {
       "report_date": "2025-01-06T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4871368717571.46,
+      "total_market_cap": 4872242820977.46,
       "total_bve": 478073555524.44006,
       "industry_pb_ratio": 10.19
     },
     {
       "report_date": "2025-01-07T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4786535927880.65,
+      "total_market_cap": 4787405640326.65,
       "total_bve": 478073555524.44006,
       "industry_pb_ratio": 10.01
     },
     {
       "report_date": "2025-01-08T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4803749870765.869,
+      "total_market_cap": 4804607945583.869,
       "total_bve": 478073555524.44006,
       "industry_pb_ratio": 10.05
     },
     {
       "report_date": "2025-01-10T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4719258866207.169,
+      "total_market_cap": 4720114745005.169,
       "total_bve": 478073555524.44006,
       "industry_pb_ratio": 9.87
     },
     {
       "report_date": "2025-01-13T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4684305736861.97,
+      "total_market_cap": 4685143611202.97,
       "total_bve": 478073555524.44006,
       "industry_pb_ratio": 9.8
     },
     {
       "report_date": "2025-01-14T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4692455680512.05,
+      "total_market_cap": 4693326271672.05,
       "total_bve": 478073555524.44006,
       "industry_pb_ratio": 9.82
     },
     {
       "report_date": "2025-01-15T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4799492229532.759,
+      "total_market_cap": 4800366114002.759,
       "total_bve": 478073555524.44006,
       "industry_pb_ratio": 10.04
     },
     {
       "report_date": "2025-01-16T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4803498037576.72,
+      "total_market_cap": 4804371702525.72,
       "total_bve": 478073555524.44006,
       "industry_pb_ratio": 10.05
     },
     {
       "report_date": "2025-01-17T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4849640319056.32,
+      "total_market_cap": 4850493125055.32,
       "total_bve": 478073555524.44006,
-      "industry_pb_ratio": 10.14
+      "industry_pb_ratio": 10.15
     },
     {
       "report_date": "2025-01-21T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4902709703216.309,
+      "total_market_cap": 4903577877935.309,
       "total_bve": 478073555524.44006,
       "industry_pb_ratio": 10.26
     },
     {
       "report_date": "2025-01-22T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5086124432494.409,
+      "total_market_cap": 5086987118198.409,
       "total_bve": 478073555524.44006,
       "industry_pb_ratio": 10.64
     },
     {
       "report_date": "2025-01-23T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5103166584086.83,
+      "total_market_cap": 5104020707391.83,
       "total_bve": 478073555524.44006,
-      "industry_pb_ratio": 10.67
+      "industry_pb_ratio": 10.68
     },
     {
       "report_date": "2025-01-24T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5079369421473.929,
+      "total_market_cap": 5080223545228.929,
       "total_bve": 478073555524.44006,
-      "industry_pb_ratio": 10.62
+      "industry_pb_ratio": 10.63
     },
     {
       "report_date": "2025-01-27T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4922224812408.429,
+      "total_market_cap": 4923072128582.429,
       "total_bve": 478073555524.44006,
       "industry_pb_ratio": 10.3
     },
     {
       "report_date": "2025-01-28T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5084342775279.629,
+      "total_market_cap": 5085201289139.629,
       "total_bve": 478073555524.44006,
       "industry_pb_ratio": 10.64
     },
     {
       "report_date": "2025-01-29T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5030108805133.02,
+      "total_market_cap": 5030961171910.02,
       "total_bve": 478073555524.44006,
       "industry_pb_ratio": 10.52
     },
     {
       "report_date": "2025-01-30T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4865489791372.311,
+      "total_market_cap": 4866345011742.311,
       "total_bve": 478073555524.44006,
       "industry_pb_ratio": 10.18
     },
     {
       "report_date": "2025-01-31T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4864811384487.2295,
+      "total_market_cap": 4865657163249.2295,
       "total_bve": 481247673631.44006,
       "industry_pb_ratio": 10.11
     },
     {
       "report_date": "2025-02-03T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4824501432219.06,
+      "total_market_cap": 4825346990605.06,
       "total_bve": 481247673631.44006,
-      "industry_pb_ratio": 10.02
+      "industry_pb_ratio": 10.03
     },
     {
       "report_date": "2025-02-04T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4891003519756.18,
+      "total_market_cap": 4891894361662.18,
       "total_bve": 481247673631.44006,
-      "industry_pb_ratio": 10.16
+      "industry_pb_ratio": 10.17
     },
     {
       "report_date": "2025-02-05T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4920348810713.789,
+      "total_market_cap": 4921249658557.789,
       "total_bve": 481247673631.44006,
-      "industry_pb_ratio": 10.22
+      "industry_pb_ratio": 10.23
     },
     {
       "report_date": "2025-02-06T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4962510473871.6,
+      "total_market_cap": 4963387043993.6,
       "total_bve": 481247673631.44006,
       "industry_pb_ratio": 10.31
     },
     {
       "report_date": "2025-02-07T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4930948739955.029,
+      "total_market_cap": 4931818660372.029,
       "total_bve": 481247673631.44006,
       "industry_pb_ratio": 10.25
     },
     {
       "report_date": "2025-02-10T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4990229552949.219,
+      "total_market_cap": 4991103990151.219,
       "total_bve": 481247673631.44006,
       "industry_pb_ratio": 10.37
     },
     {
       "report_date": "2025-02-11T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4959572163525.89,
+      "total_market_cap": 4960440170576.89,
       "total_bve": 481247673631.44006,
       "industry_pb_ratio": 10.31
     },
     {
       "report_date": "2025-02-12T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4944049897789.38,
+      "total_market_cap": 4944892309719.38,
       "total_bve": 481247673631.44006,
-      "industry_pb_ratio": 10.27
+      "industry_pb_ratio": 10.28
     },
     {
       "report_date": "2025-02-13T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4992053285777.139,
+      "total_market_cap": 4992850937613.139,
       "total_bve": 481247673631.44006,
       "industry_pb_ratio": 10.37
     },
     {
       "report_date": "2025-02-14T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4968272777852.24,
+      "total_market_cap": 4969085705210.24,
       "total_bve": 481247673631.44006,
-      "industry_pb_ratio": 10.32
+      "industry_pb_ratio": 10.33
     },
     {
       "report_date": "2025-02-18T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5025981830556.52,
+      "total_market_cap": 5026764489173.52,
       "total_bve": 481247673631.44006,
-      "industry_pb_ratio": 10.44
+      "industry_pb_ratio": 10.45
     },
     {
       "report_date": "2025-02-19T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5019397740436.709,
+      "total_market_cap": 5020169922619.709,
       "total_bve": 481247673631.44006,
       "industry_pb_ratio": 10.43
     },
     {
       "report_date": "2025-02-20T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4979503837010.049,
+      "total_market_cap": 4980252431533.049,
       "total_bve": 481247673631.44006,
       "industry_pb_ratio": 10.35
     },
     {
       "report_date": "2025-02-21T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4833274855034.649,
+      "total_market_cap": 4834002339854.649,
       "total_bve": 481247673631.44006,
       "industry_pb_ratio": 10.04
     },
     {
       "report_date": "2025-02-24T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4771423699000.1,
+      "total_market_cap": 4772141617026.1,
       "total_bve": 481247673631.44006,
-      "industry_pb_ratio": 9.91
+      "industry_pb_ratio": 9.92
     },
     {
       "report_date": "2025-02-25T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4699339214787.42,
+      "total_market_cap": 4700057605668.42,
       "total_bve": 481247673631.44006,
-      "industry_pb_ratio": 9.76
+      "industry_pb_ratio": 9.77
     },
     {
       "report_date": "2025-02-26T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4739519531013.42,
+      "total_market_cap": 4740226230757.42,
       "total_bve": 481247673631.44006,
       "industry_pb_ratio": 9.85
     },
     {
       "report_date": "2025-02-27T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4633243414035.55,
+      "total_market_cap": 4633927930112.55,
       "total_bve": 481251093580.88007,
       "industry_pb_ratio": 9.63
     },
     {
       "report_date": "2025-02-28T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4681077828306.559,
+      "total_market_cap": 4681759444216.559,
       "total_bve": 484223052580.88007,
       "industry_pb_ratio": 9.67
     },
     {
       "report_date": "2025-03-03T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4580757267298.52,
+      "total_market_cap": 4581424920904.52,
       "total_bve": 484223052580.88007,
       "industry_pb_ratio": 9.46
     },
     {
       "report_date": "2025-03-04T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4567719478881.75,
+      "total_market_cap": 4568392427617.75,
       "total_bve": 484223052580.88007,
       "industry_pb_ratio": 9.43
     },
     {
       "report_date": "2025-03-05T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4689860866104.26,
+      "total_market_cap": 4690538555901.26,
       "total_bve": 484223052580.88007,
       "industry_pb_ratio": 9.69
     },
     {
       "report_date": "2025-03-06T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4569216529693.64,
+      "total_market_cap": 4569883025788.64,
       "total_bve": 484223052580.88007,
       "industry_pb_ratio": 9.44
     },
     {
       "report_date": "2025-03-07T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4558253101199.221,
+      "total_market_cap": 4558938870266.221,
       "total_bve": 484223052580.88007,
       "industry_pb_ratio": 9.41
     },
     {
       "report_date": "2025-03-10T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4362549991299.53,
+      "total_market_cap": 4363206030950.53,
       "total_bve": 484223052580.88007,
       "industry_pb_ratio": 9.01
     },
     {
       "report_date": "2025-03-11T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4371179278059.7896,
+      "total_market_cap": 4371824436003.7896,
       "total_bve": 484223052580.88007,
       "industry_pb_ratio": 9.03
     },
     {
       "report_date": "2025-03-12T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4433496533727.79,
+      "total_market_cap": 4434154027346.79,
       "total_bve": 484223052580.88007,
       "industry_pb_ratio": 9.16
     },
     {
       "report_date": "2025-03-13T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4353595214984.1396,
+      "total_market_cap": 4354223739752.1396,
       "total_bve": 484223052580.88007,
       "industry_pb_ratio": 8.99
     },
     {
       "report_date": "2025-03-14T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4479856334452.23,
+      "total_market_cap": 4480512149818.23,
       "total_bve": 484223052580.88007,
       "industry_pb_ratio": 9.25
     },
     {
       "report_date": "2025-03-17T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4513355797057.32,
+      "total_market_cap": 4514035002466.32,
       "total_bve": 484223052580.88007,
       "industry_pb_ratio": 9.32
     },
     {
       "report_date": "2025-03-18T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4447260344142.059,
+      "total_market_cap": 4447938239927.059,
       "total_bve": 484223052580.88007,
-      "industry_pb_ratio": 9.18
+      "industry_pb_ratio": 9.19
     },
     {
       "report_date": "2025-03-19T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4510621333129.98,
+      "total_market_cap": 4511306109577.98,
       "total_bve": 484223052580.88007,
       "industry_pb_ratio": 9.32
     },
     {
       "report_date": "2025-03-20T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4498588694485.861,
+      "total_market_cap": 4499252019514.861,
       "total_bve": 484223052580.88007,
       "industry_pb_ratio": 9.29
     },
     {
       "report_date": "2025-03-21T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4536484824103.54,
+      "total_market_cap": 4537146050626.54,
       "total_bve": 484223052580.88007,
       "industry_pb_ratio": 9.37
     },
     {
       "report_date": "2025-03-24T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4589184251288.99,
+      "total_market_cap": 4589876725598.99,
       "total_bve": 484223052580.88007,
       "industry_pb_ratio": 9.48
     },
     {
       "report_date": "2025-03-25T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4613003725603.979,
+      "total_market_cap": 4613691265643.979,
       "total_bve": 484223052580.88007,
       "industry_pb_ratio": 9.53
     },
     {
       "report_date": "2025-03-26T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4525527649455.93,
+      "total_market_cap": 4526208156719.93,
       "total_bve": 484223052580.88007,
       "industry_pb_ratio": 9.35
     },
     {
       "report_date": "2025-03-27T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4502187908057.391,
+      "total_market_cap": 4502856672560.391,
       "total_bve": 484223052580.88007,
       "industry_pb_ratio": 9.3
     },
     {
       "report_date": "2025-03-28T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4368282733773.45,
+      "total_market_cap": 4368922614376.45,
       "total_bve": 484223052580.88007,
       "industry_pb_ratio": 9.02
     },
     {
       "report_date": "2025-03-31T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4338945301656.5996,
+      "total_market_cap": 4339735022034.09,
       "total_bve": 508774009303.99,
       "industry_pb_ratio": 8.53
     },
     {
       "report_date": "2025-04-01T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4415636895428.99,
+      "total_market_cap": 4416449955974.211,
       "total_bve": 508774009303.99,
       "industry_pb_ratio": 8.68
     },
     {
       "report_date": "2025-04-02T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4450081385742.66,
+      "total_market_cap": 4450923171203.221,
       "total_bve": 508774009303.99,
       "industry_pb_ratio": 8.75
     },
     {
       "report_date": "2025-04-03T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4285185049339.3604,
+      "total_market_cap": 4285981276399.7803,
       "total_bve": 508785604911.99,
       "industry_pb_ratio": 8.42
     },
     {
       "report_date": "2025-04-04T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4077462395864.54,
+      "total_market_cap": 4078198205006.96,
       "total_bve": 508785604911.99,
-      "industry_pb_ratio": 8.01
+      "industry_pb_ratio": 8.02
     },
     {
       "report_date": "2025-04-07T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4068663874603.97,
+      "total_market_cap": 4069212555796.7,
       "total_bve": 508785604911.99,
       "industry_pb_ratio": 8.0
     },
     {
       "report_date": "2025-04-08T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4025958521386.8696,
+      "total_market_cap": 4026500305018.9297,
       "total_bve": 508801530228.99,
       "industry_pb_ratio": 7.91
     },
     {
       "report_date": "2025-04-09T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4478250978247.561,
+      "total_market_cap": 4478834699646.811,
       "total_bve": 508801530228.99,
       "industry_pb_ratio": 8.8
     },
     {
       "report_date": "2025-04-10T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4339883497129.21,
+      "total_market_cap": 4340423326256.74,
       "total_bve": 508801530228.99,
       "industry_pb_ratio": 8.53
     },
     {
       "report_date": "2025-04-11T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4404968037998.69,
+      "total_market_cap": 4405530018089.121,
       "total_bve": 508801530228.99,
       "industry_pb_ratio": 8.66
     },
     {
       "report_date": "2025-04-14T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4420933040513.98,
+      "total_market_cap": 4421495336027.32,
       "total_bve": 508801530228.99,
       "industry_pb_ratio": 8.69
     },
     {
       "report_date": "2025-04-15T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4430179334995.18,
+      "total_market_cap": 4430727697982.11,
       "total_bve": 508801530228.99,
       "industry_pb_ratio": 8.71
     },
     {
       "report_date": "2025-04-16T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4284096361147.829,
+      "total_market_cap": 4284638907464.999,
       "total_bve": 508801530228.99,
       "industry_pb_ratio": 8.42
     },
     {
       "report_date": "2025-04-17T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4246667650319.2,
+      "total_market_cap": 4247204820116.2,
       "total_bve": 508801530228.99,
       "industry_pb_ratio": 8.35
     },
     {
       "report_date": "2025-04-21T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4127971330016.67,
+      "total_market_cap": 4128492561308.67,
       "total_bve": 508801530228.99,
       "industry_pb_ratio": 8.11
     },
     {
       "report_date": "2025-04-22T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4227510418262.59,
+      "total_market_cap": 4228058097202.39,
       "total_bve": 508801530228.99,
       "industry_pb_ratio": 8.31
     },
     {
       "report_date": "2025-04-23T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4340117263888.5703,
+      "total_market_cap": 4340686398163.5703,
       "total_bve": 508801530228.99,
       "industry_pb_ratio": 8.53
     },
     {
       "report_date": "2025-04-24T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4504385952171.18,
+      "total_market_cap": 4504959809607.18,
       "total_bve": 508801530228.99,
       "industry_pb_ratio": 8.85
     },
     {
       "report_date": "2025-04-25T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4565893451011.951,
+      "total_market_cap": 4566487858575.451,
       "total_bve": 508801530228.99,
       "industry_pb_ratio": 8.97
     },
     {
       "report_date": "2025-04-28T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4573676574100.1,
+      "total_market_cap": 4574267419495.1,
       "total_bve": 508801530228.99,
       "industry_pb_ratio": 8.99
     },
     {
       "report_date": "2025-04-29T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4613912077087.541,
+      "total_market_cap": 4614505752757.541,
       "total_bve": 508801530228.99,
       "industry_pb_ratio": 9.07
     },
     {
       "report_date": "2025-04-30T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4634095162651.529,
+      "total_market_cap": 4634677104718.529,
       "total_bve": 517682636265.99,
       "industry_pb_ratio": 8.95
     },
     {
       "report_date": "2025-05-01T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4869813844178.098,
+      "total_market_cap": 4870399312778.098,
       "total_bve": 517682636265.99,
       "industry_pb_ratio": 9.41
     },
     {
       "report_date": "2025-05-02T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4986684371550.66,
+      "total_market_cap": 4987277973147.66,
       "total_bve": 517682636265.99,
       "industry_pb_ratio": 9.63
     },
     {
       "report_date": "2025-05-05T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4994094713782.85,
+      "total_market_cap": 4994694217093.85,
       "total_bve": 517682636265.99,
       "industry_pb_ratio": 9.65
     },
     {
       "report_date": "2025-05-06T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4931028594134.918,
+      "total_market_cap": 4931621265590.918,
       "total_bve": 517682636265.99,
       "industry_pb_ratio": 9.53
     },
     {
       "report_date": "2025-05-07T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4940399850390.352,
+      "total_market_cap": 4941008232021.352,
       "total_bve": 517682636265.99,
       "industry_pb_ratio": 9.54
     },
     {
       "report_date": "2025-05-08T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5008577243569.48,
+      "total_market_cap": 5009204010121.48,
       "total_bve": 517682636265.99,
-      "industry_pb_ratio": 9.67
+      "industry_pb_ratio": 9.68
     },
     {
       "report_date": "2025-05-09T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5003925587546.819,
+      "total_market_cap": 5004540605732.819,
       "total_bve": 517682636265.99,
       "industry_pb_ratio": 9.67
     },
     {
       "report_date": "2025-05-12T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5149639537346.441,
+      "total_market_cap": 5150287546184.441,
       "total_bve": 517682636265.99,
       "industry_pb_ratio": 9.95
     },
     {
       "report_date": "2025-05-13T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5203663818858.22,
+      "total_market_cap": 5204267058177.22,
       "total_bve": 517682636265.99,
       "industry_pb_ratio": 10.05
     },
     {
       "report_date": "2025-05-14T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5244925218881.78,
+      "total_market_cap": 5245508510105.78,
       "total_bve": 517682636265.99,
       "industry_pb_ratio": 10.13
     },
     {
       "report_date": "2025-05-15T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5225870333844.5205,
+      "total_market_cap": 5226458479659.5205,
       "total_bve": 517682636265.99,
-      "industry_pb_ratio": 10.09
+      "industry_pb_ratio": 10.1
     },
     {
       "report_date": "2025-05-16T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5257178697238.04,
+      "total_market_cap": 5257771332298.04,
       "total_bve": 517682636265.99,
       "industry_pb_ratio": 10.16
     },
     {
       "report_date": "2025-05-19T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5283265927474.71,
+      "total_market_cap": 5283838147204.71,
       "total_bve": 517682636265.99,
       "industry_pb_ratio": 10.21
     },
     {
       "report_date": "2025-05-20T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5279144849118.54,
+      "total_market_cap": 5279723638686.54,
       "total_bve": 517682636265.99,
       "industry_pb_ratio": 10.2
     },
     {
       "report_date": "2025-05-21T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5198140060649.509,
+      "total_market_cap": 5198710842224.509,
       "total_bve": 517682636265.99,
       "industry_pb_ratio": 10.04
     },
     {
       "report_date": "2025-05-22T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5229295263975.56,
+      "total_market_cap": 5229865793712.56,
       "total_bve": 517682636265.99,
       "industry_pb_ratio": 10.1
     },
     {
       "report_date": "2025-05-23T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5194483125730.569,
+      "total_market_cap": 5195052520522.569,
       "total_bve": 517682636265.99,
-      "industry_pb_ratio": 10.03
+      "industry_pb_ratio": 10.04
     },
     {
       "report_date": "2025-05-27T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5320334093298.7295,
+      "total_market_cap": 5320912226748.7295,
       "total_bve": 517682636265.99,
       "industry_pb_ratio": 10.28
     },
     {
       "report_date": "2025-05-28T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5282602803542.05,
+      "total_market_cap": 5283161012495.05,
       "total_bve": 517682636265.99,
-      "industry_pb_ratio": 10.2
+      "industry_pb_ratio": 10.21
     },
     {
       "report_date": "2025-05-29T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5277091076695.741,
+      "total_market_cap": 5277658693267.741,
       "total_bve": 517682636265.99,
       "industry_pb_ratio": 10.19
     },
     {
       "report_date": "2025-05-30T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5336972703120.889,
+      "total_market_cap": 5337539664411.889,
       "total_bve": 517682636265.99,
       "industry_pb_ratio": 10.31
     },
     {
       "report_date": "2025-06-02T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5368216986916.319,
+      "total_market_cap": 5368787832706.319,
       "total_bve": 521429690265.99,
       "industry_pb_ratio": 10.3
     },
     {
       "report_date": "2025-06-03T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5408819375865.169,
+      "total_market_cap": 5409408998364.169,
       "total_bve": 521429690265.99,
       "industry_pb_ratio": 10.37
     },
     {
       "report_date": "2025-06-04T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5405418125040.7,
+      "total_market_cap": 5405993762448.7,
       "total_bve": 521429690265.99,
       "industry_pb_ratio": 10.37
     },
     {
       "report_date": "2025-06-05T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5416620306897.932,
+      "total_market_cap": 5417191001082.932,
       "total_bve": 521429690265.99,
       "industry_pb_ratio": 10.39
     },
     {
       "report_date": "2025-06-06T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5477383621092.42,
+      "total_market_cap": 5477966484456.42,
       "total_bve": 521429690265.99,
-      "industry_pb_ratio": 10.5
+      "industry_pb_ratio": 10.51
     },
     {
       "report_date": "2025-06-09T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5517267518568.21,
+      "total_market_cap": 5517846939405.21,
       "total_bve": 521429690265.99,
       "industry_pb_ratio": 10.58
     },
     {
       "report_date": "2025-06-10T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5502813178450.109,
+      "total_market_cap": 5503403495596.109,
       "total_bve": 521429690265.99,
       "industry_pb_ratio": 10.55
     },
     {
       "report_date": "2025-06-11T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5519276826720.2295,
+      "total_market_cap": 5519858707581.2295,
       "total_bve": 521429690265.99,
-      "industry_pb_ratio": 10.58
+      "industry_pb_ratio": 10.59
     },
     {
       "report_date": "2025-06-12T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5625735801294.31,
+      "total_market_cap": 5626311956895.31,
       "total_bve": 521429690265.99,
       "industry_pb_ratio": 10.79
     },
     {
       "report_date": "2025-06-13T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5625768027403.83,
+      "total_market_cap": 5626337209723.83,
       "total_bve": 521429690265.99,
       "industry_pb_ratio": 10.79
     },
     {
       "report_date": "2025-06-16T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5675373884319.22,
+      "total_market_cap": 5675942259753.22,
       "total_bve": 521429690265.99,
-      "industry_pb_ratio": 10.88
+      "industry_pb_ratio": 10.89
     },
     {
       "report_date": "2025-06-17T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5660768290104.839,
+      "total_market_cap": 5661332642696.339,
       "total_bve": 521429690265.99,
       "industry_pb_ratio": 10.86
     },
     {
       "report_date": "2025-06-18T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5676911760730.61,
+      "total_market_cap": 5677480854823.61,
       "total_bve": 521429690265.99,
       "industry_pb_ratio": 10.89
     },
     {
       "report_date": "2025-06-20T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5630204453923.241,
+      "total_market_cap": 5630767848442.241,
       "total_bve": 521429690265.99,
       "industry_pb_ratio": 10.8
     },
     {
       "report_date": "2025-06-23T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5720630606298.969,
+      "total_market_cap": 5721188502881.77,
       "total_bve": 521429690265.99,
       "industry_pb_ratio": 10.97
     },
     {
       "report_date": "2025-06-24T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5794378270936.169,
+      "total_market_cap": 5794938740284.169,
       "total_bve": 521429690265.99,
       "industry_pb_ratio": 11.11
     },
     {
       "report_date": "2025-06-25T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5788008193362.609,
+      "total_market_cap": 5788567174857.609,
       "total_bve": 521429690265.99,
       "industry_pb_ratio": 11.1
     },
     {
       "report_date": "2025-06-26T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5844130642701.56,
+      "total_market_cap": 5844681995132.36,
       "total_bve": 521429690265.99,
       "industry_pb_ratio": 11.21
     },
     {
       "report_date": "2025-06-27T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5795927484695.04,
+      "total_market_cap": 5796467368094.64,
       "total_bve": 521429690265.99,
       "industry_pb_ratio": 11.12
     },
     {
       "report_date": "2025-06-30T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5848301817435.3,
+      "total_market_cap": 5848840382857.17,
       "total_bve": 549920521189.77,
-      "industry_pb_ratio": 10.63
+      "industry_pb_ratio": 10.64
     },
     {
       "report_date": "2025-07-01T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5773382752669.159,
+      "total_market_cap": 5773942330653.119,
       "total_bve": 549920521189.77,
       "industry_pb_ratio": 10.5
     },
     {
       "report_date": "2025-07-02T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5803563732479.208,
+      "total_market_cap": 5804122338605.509,
       "total_bve": 549920521189.77,
       "industry_pb_ratio": 10.55
     },
     {
       "report_date": "2025-07-03T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5919890278986.609,
+      "total_market_cap": 5920457484738.739,
       "total_bve": 549920521189.77,
-      "industry_pb_ratio": 10.76
+      "industry_pb_ratio": 10.77
     },
     {
       "report_date": "2025-07-07T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5902236371163.37,
+      "total_market_cap": 5902792647827.48,
       "total_bve": 549920521189.77,
       "industry_pb_ratio": 10.73
     },
     {
       "report_date": "2025-07-08T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5905993054949.61,
+      "total_market_cap": 5906561080811.109,
       "total_bve": 549920521189.77,
       "industry_pb_ratio": 10.74
     },
     {
       "report_date": "2025-07-09T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5975312865764.389,
+      "total_market_cap": 5975908418774.899,
       "total_bve": 549920521189.77,
       "industry_pb_ratio": 10.87
     },
     {
       "report_date": "2025-07-10T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5909743735459.181,
+      "total_market_cap": 5910305067186.27,
       "total_bve": 549920521189.77,
       "industry_pb_ratio": 10.75
     },
     {
       "report_date": "2025-07-11T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5879322646756.06,
+      "total_market_cap": 5879857864537.069,
       "total_bve": 549920521189.77,
       "industry_pb_ratio": 10.69
     },
     {
       "report_date": "2025-07-14T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5905381561698.03,
+      "total_market_cap": 5905912346456.13,
       "total_bve": 549920521189.77,
       "industry_pb_ratio": 10.74
     },
     {
       "report_date": "2025-07-15T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5947621010424.08,
+      "total_market_cap": 5948145762459.05,
       "total_bve": 549920521189.77,
       "industry_pb_ratio": 10.82
     },
     {
       "report_date": "2025-07-16T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5977224615744.46,
+      "total_market_cap": 5977749767425.9,
       "total_bve": 549920521189.77,
       "industry_pb_ratio": 10.87
     },
     {
       "report_date": "2025-07-17T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6076663252263.189,
+      "total_market_cap": 6077183336129.359,
       "total_bve": 549920521189.77,
       "industry_pb_ratio": 11.05
     },
     {
       "report_date": "2025-07-18T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6058076146001.24,
+      "total_market_cap": 6058595606680.03,
       "total_bve": 549920521189.77,
       "industry_pb_ratio": 11.02
     },
     {
       "report_date": "2025-07-21T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6059138915618.99,
+      "total_market_cap": 6059666650430.32,
       "total_bve": 549920521189.77,
       "industry_pb_ratio": 11.02
     },
     {
       "report_date": "2025-07-22T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6002478404283.98,
+      "total_market_cap": 6003008839224.49,
       "total_bve": 549920521189.77,
       "industry_pb_ratio": 10.92
     },
     {
       "report_date": "2025-07-23T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6029529397564.199,
+      "total_market_cap": 6030061395128.339,
       "total_bve": 549920521189.77,
-      "industry_pb_ratio": 10.96
+      "industry_pb_ratio": 10.97
     },
     {
       "report_date": "2025-07-24T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6065482871508.64,
+      "total_market_cap": 6066006685320.609,
       "total_bve": 549920521189.77,
       "industry_pb_ratio": 11.03
     },
     {
       "report_date": "2025-07-25T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6109438230105.61,
+      "total_market_cap": 6109966415539.601,
       "total_bve": 549920521189.77,
       "industry_pb_ratio": 11.11
     },
     {
       "report_date": "2025-07-28T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6104028031704.269,
+      "total_market_cap": 6104575915996.618,
       "total_bve": 549920521189.77,
       "industry_pb_ratio": 11.1
     },
     {
       "report_date": "2025-07-29T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6101108154234.64,
+      "total_market_cap": 6101650527890.05,
       "total_bve": 549920521189.77,
-      "industry_pb_ratio": 11.09
+      "industry_pb_ratio": 11.1
     },
     {
       "report_date": "2025-07-30T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6099477645644.57,
+      "total_market_cap": 6100041264590.9,
       "total_bve": 549920521189.77,
       "industry_pb_ratio": 11.09
     },
     {
       "report_date": "2025-07-31T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6248356318895.45,
+      "total_market_cap": 6248898862689.33,
       "total_bve": 568651398260.77,
       "industry_pb_ratio": 10.99
     },
     {
       "report_date": "2025-08-01T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6113895808611.71,
+      "total_market_cap": 6114420876219.71,
       "total_bve": 568651398260.77,
       "industry_pb_ratio": 10.75
     },
     {
       "report_date": "2025-08-04T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6259217829476.051,
+      "total_market_cap": 6259754189107.051,
       "total_bve": 568651398260.77,
       "industry_pb_ratio": 11.01
     },
     {
       "report_date": "2025-08-05T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6225888446296.0,
+      "total_market_cap": 6226404026786.0,
       "total_bve": 568651398260.77,
       "industry_pb_ratio": 10.95
     },
     {
       "report_date": "2025-08-06T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6235655313839.97,
+      "total_market_cap": 6236159946575.97,
       "total_bve": 568651398260.77,
       "industry_pb_ratio": 10.97
     },
     {
       "report_date": "2025-08-07T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6159736150752.1,
+      "total_market_cap": 6160237750002.1,
       "total_bve": 568651398260.77,
       "industry_pb_ratio": 10.83
     },
     {
       "report_date": "2025-08-08T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6169612231744.439,
+      "total_market_cap": 6170067784847.939,
       "total_bve": 568651398260.77,
       "industry_pb_ratio": 10.85
     },
     {
       "report_date": "2025-08-11T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6166793674137.921,
+      "total_market_cap": 6167269865956.921,
       "total_bve": 568651398260.77,
-      "industry_pb_ratio": 10.84
+      "industry_pb_ratio": 10.85
     },
     {
       "report_date": "2025-08-12T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6262764905954.399,
+      "total_market_cap": 6263273279929.399,
       "total_bve": 568651398260.77,
       "industry_pb_ratio": 11.01
     },
     {
       "report_date": "2025-08-13T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6170886089457.54,
+      "total_market_cap": 6171420674059.54,
       "total_bve": 571189572260.77,
       "industry_pb_ratio": 10.8
     },
     {
       "report_date": "2025-08-14T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6155729870175.081,
+      "total_market_cap": 6156262611545.081,
       "total_bve": 571189572260.77,
       "industry_pb_ratio": 10.78
     },
     {
       "report_date": "2025-08-15T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6150060542267.12,
+      "total_market_cap": 6150600509284.12,
       "total_bve": 571189572260.77,
       "industry_pb_ratio": 10.77
     },
     {
       "report_date": "2025-08-18T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6124040721664.81,
+      "total_market_cap": 6124580920102.81,
       "total_bve": 571189572260.77,
       "industry_pb_ratio": 10.72
     },
     {
       "report_date": "2025-08-19T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5979037204824.439,
+      "total_market_cap": 5979570985894.439,
       "total_bve": 571189572260.77,
       "industry_pb_ratio": 10.47
     },
     {
       "report_date": "2025-08-20T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5944963691087.0,
+      "total_market_cap": 5945476823175.5,
       "total_bve": 571189572260.77,
       "industry_pb_ratio": 10.41
     },
     {
       "report_date": "2025-08-21T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5924759984596.759,
+      "total_market_cap": 5925269375776.759,
       "total_bve": 571189572260.77,
       "industry_pb_ratio": 10.37
     },
     {
       "report_date": "2025-08-22T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5987306692139.681,
+      "total_market_cap": 5987830414672.681,
       "total_bve": 571189572260.77,
       "industry_pb_ratio": 10.48
     },
     {
       "report_date": "2025-08-25T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5948666052540.891,
+      "total_market_cap": 5949175739659.891,
       "total_bve": 571189572260.77,
-      "industry_pb_ratio": 10.41
+      "industry_pb_ratio": 10.42
     },
     {
       "report_date": "2025-08-26T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5934415392319.23,
+      "total_market_cap": 5934923086769.23,
       "total_bve": 571189572260.77,
       "industry_pb_ratio": 10.39
     },
     {
       "report_date": "2025-08-27T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5988885520130.68,
+      "total_market_cap": 5989400471535.68,
       "total_bve": 571189572260.77,
-      "industry_pb_ratio": 10.48
+      "industry_pb_ratio": 10.49
     },
     {
       "report_date": "2025-08-28T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6049725979226.529,
+      "total_market_cap": 6050246700064.529,
       "total_bve": 571189572260.77,
       "industry_pb_ratio": 10.59
     },
     {
       "report_date": "2025-08-29T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5972867305544.2,
+      "total_market_cap": 5973382753001.2,
       "total_bve": 571189572260.77,
       "industry_pb_ratio": 10.46
     },
     {
       "report_date": "2025-09-02T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5945819300788.619,
+      "total_market_cap": 5946323657835.619,
       "total_bve": 574917553260.77,
       "industry_pb_ratio": 10.34
     },
     {
       "report_date": "2025-09-03T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5931052275680.499,
+      "total_market_cap": 5931561281654.499,
       "total_bve": 574917553260.77,
       "industry_pb_ratio": 10.32
     },
     {
       "report_date": "2025-09-04T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5953730862863.631,
+      "total_market_cap": 5954227850207.631,
       "total_bve": 574917553260.77,
       "industry_pb_ratio": 10.36
     },
     {
       "report_date": "2025-09-05T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5889149697564.312,
+      "total_market_cap": 5889657391380.312,
       "total_bve": 574917553260.77,
       "industry_pb_ratio": 10.24
     },
     {
       "report_date": "2025-09-08T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5953037890472.651,
+      "total_market_cap": 5953550641268.651,
       "total_bve": 574917553260.77,
-      "industry_pb_ratio": 10.35
+      "industry_pb_ratio": 10.36
     },
     {
       "report_date": "2025-09-09T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5978605839201.469,
+      "total_market_cap": 5979113140618.469,
       "total_bve": 574917553260.77,
       "industry_pb_ratio": 10.4
     },
     {
       "report_date": "2025-09-10T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6211165583090.03,
+      "total_market_cap": 6211649518663.03,
       "total_bve": 574917553260.77,
       "industry_pb_ratio": 10.8
     },
     {
       "report_date": "2025-09-11T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6170688184799.75,
+      "total_market_cap": 6171186851951.75,
       "total_bve": 574917553260.77,
       "industry_pb_ratio": 10.73
     },
     {
       "report_date": "2025-09-12T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6196568858207.34,
+      "total_market_cap": 6197057331227.34,
       "total_bve": 574917553260.77,
       "industry_pb_ratio": 10.78
     },
     {
       "report_date": "2025-09-15T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6281229009974.391,
+      "total_market_cap": 6281714266166.391,
       "total_bve": 574917553260.77,
       "industry_pb_ratio": 10.93
     },
     {
       "report_date": "2025-09-16T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6241205805277.949,
+      "total_market_cap": 6241694462122.949,
       "total_bve": 574920920874.8899,
       "industry_pb_ratio": 10.86
     },
     {
       "report_date": "2025-09-17T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6233287048730.871,
+      "total_market_cap": 6233773697252.871,
       "total_bve": 574920920874.8899,
       "industry_pb_ratio": 10.84
     },
     {
       "report_date": "2025-09-18T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6269709999082.43,
+      "total_market_cap": 6270212139232.43,
       "total_bve": 574920920874.8899,
       "industry_pb_ratio": 10.91
     },
     {
       "report_date": "2025-09-19T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6398720416030.779,
+      "total_market_cap": 6399257565088.779,
       "total_bve": 574920920874.8899,
       "industry_pb_ratio": 11.13
     },
     {
       "report_date": "2025-09-22T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6428062429037.37,
+      "total_market_cap": 6428704322364.37,
       "total_bve": 574920920874.8899,
       "industry_pb_ratio": 11.18
     },
     {
       "report_date": "2025-09-23T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6334548028120.288,
+      "total_market_cap": 6335120828539.288,
       "total_bve": 574920920874.8899,
       "industry_pb_ratio": 11.02
     },
     {
       "report_date": "2025-09-24T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6305426706006.919,
+      "total_market_cap": 6305986632223.919,
       "total_bve": 574920920874.8899,
       "industry_pb_ratio": 10.97
     },
     {
       "report_date": "2025-09-25T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6226950423540.72,
+      "total_market_cap": 6227501879590.72,
       "total_bve": 574920920874.8899,
       "industry_pb_ratio": 10.83
     },
     {
       "report_date": "2025-09-26T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6238211450855.29,
+      "total_market_cap": 6238759072828.29,
       "total_bve": 574925001350.73,
       "industry_pb_ratio": 10.85
     },
     {
       "report_date": "2025-09-29T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6267372805694.569,
+      "total_market_cap": 6267913031967.569,
       "total_bve": 574925001350.73,
       "industry_pb_ratio": 10.9
     },
     {
       "report_date": "2025-09-30T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6296669092582.72,
+      "total_market_cap": 6297127593707.72,
       "total_bve": 601862901714.1598,
       "industry_pb_ratio": 10.46
     },
     {
       "report_date": "2025-10-01T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6346206925511.3,
+      "total_market_cap": 6346665041471.3,
       "total_bve": 601862901714.1598,
-      "industry_pb_ratio": 10.54
+      "industry_pb_ratio": 10.55
     },
     {
       "report_date": "2025-10-02T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6332559356817.22,
+      "total_market_cap": 6333017521552.22,
       "total_bve": 601862901714.1598,
       "industry_pb_ratio": 10.52
     },
     {
       "report_date": "2025-10-03T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6296484031881.081,
+      "total_market_cap": 6296940800706.081,
       "total_bve": 601862901714.1598,
       "industry_pb_ratio": 10.46
     },
     {
       "report_date": "2025-10-06T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6428036125614.97,
+      "total_market_cap": 6428495041249.97,
       "total_bve": 601862901714.1598,
       "industry_pb_ratio": 10.68
     },
     {
       "report_date": "2025-10-07T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6361456813162.829,
+      "total_market_cap": 6361893998257.829,
       "total_bve": 601862901714.1598,
       "industry_pb_ratio": 10.57
     },
     {
       "report_date": "2025-10-08T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6419212834181.881,
+      "total_market_cap": 6419665396001.881,
       "total_bve": 601862901714.1598,
       "industry_pb_ratio": 10.67
     },
     {
       "report_date": "2025-10-09T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6427611412406.19,
+      "total_market_cap": 6428085743471.19,
       "total_bve": 601862901714.1598,
       "industry_pb_ratio": 10.68
     },
     {
       "report_date": "2025-10-10T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6256889756587.852,
+      "total_market_cap": 6257346601957.852,
       "total_bve": 601862901714.1598,
       "industry_pb_ratio": 10.4
     },
     {
       "report_date": "2025-10-13T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6348787633810.1,
+      "total_market_cap": 6349246253490.1,
       "total_bve": 601862901714.1598,
       "industry_pb_ratio": 10.55
     },
     {
       "report_date": "2025-10-14T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6312412901281.649,
+      "total_market_cap": 6312865809561.649,
       "total_bve": 601862901714.1598,
       "industry_pb_ratio": 10.49
     },
     {
       "report_date": "2025-10-15T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6322483300721.12,
+      "total_market_cap": 6322934575116.12,
       "total_bve": 601863586596.1998,
-      "industry_pb_ratio": 10.5
+      "industry_pb_ratio": 10.51
     },
     {
       "report_date": "2025-10-16T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6318463649748.839,
+      "total_market_cap": 6318906616888.839,
       "total_bve": 601863586596.1998,
       "industry_pb_ratio": 10.5
     },
     {
       "report_date": "2025-10-17T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6273889086896.911,
+      "total_market_cap": 6274330766611.911,
       "total_bve": 601863586596.1998,
       "industry_pb_ratio": 10.42
     },
     {
       "report_date": "2025-10-20T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6281902515954.66,
+      "total_market_cap": 6282516084401.66,
       "total_bve": 601863586596.1998,
       "industry_pb_ratio": 10.44
     },
     {
       "report_date": "2025-10-21T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6291252918234.44,
+      "total_market_cap": 6291878817663.44,
       "total_bve": 601863586596.1998,
       "industry_pb_ratio": 10.45
     },
     {
       "report_date": "2025-10-22T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6275225081508.55,
+      "total_market_cap": 6275840665524.55,
       "total_bve": 601863586596.1998,
       "industry_pb_ratio": 10.43
     },
     {
       "report_date": "2025-10-23T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6326882107457.681,
+      "total_market_cap": 6327479481641.681,
       "total_bve": 601863586596.1998,
       "industry_pb_ratio": 10.51
     },
     {
       "report_date": "2025-10-24T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6382891517651.7705,
+      "total_market_cap": 6383497803731.7705,
       "total_bve": 601863586596.1998,
       "industry_pb_ratio": 10.61
     },
     {
       "report_date": "2025-10-27T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6458148819530.06,
+      "total_market_cap": 6458736570367.06,
       "total_bve": 601863586596.1998,
       "industry_pb_ratio": 10.73
     },
     {
       "report_date": "2025-10-28T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6533498962385.789,
+      "total_market_cap": 6534093395907.789,
       "total_bve": 601863586596.1998,
       "industry_pb_ratio": 10.86
     },
     {
       "report_date": "2025-10-29T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6520934679377.501,
+      "total_market_cap": 6521517277252.501,
       "total_bve": 601863586596.1998,
-      "industry_pb_ratio": 10.83
+      "industry_pb_ratio": 10.84
     },
     {
       "report_date": "2025-10-30T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6326302329882.31,
+      "total_market_cap": 6326882613584.31,
       "total_bve": 601863586596.1998,
       "industry_pb_ratio": 10.51
     },
     {
       "report_date": "2025-10-31T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6343884047822.1,
+      "total_market_cap": 6344464320108.1,
       "total_bve": 604663484582.1998,
       "industry_pb_ratio": 10.49
     },
     {
       "report_date": "2025-11-03T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6334666529459.699,
+      "total_market_cap": 6335237930020.199,
       "total_bve": 602969484582.1998,
       "industry_pb_ratio": 10.51
     },
     {
       "report_date": "2025-11-04T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6205766429334.189,
+      "total_market_cap": 6206303820749.189,
       "total_bve": 602969484582.1998,
       "industry_pb_ratio": 10.29
     },
     {
       "report_date": "2025-11-05T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6153595403122.161,
+      "total_market_cap": 6156804406502.161,
       "total_bve": 602969484582.1998,
       "industry_pb_ratio": 10.21
     },
     {
       "report_date": "2025-11-06T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6004445165079.8,
+      "total_market_cap": 6007340247258.8,
       "total_bve": 602969484582.1998,
       "industry_pb_ratio": 9.96
     },
     {
       "report_date": "2025-11-07T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6002888684849.769,
+      "total_market_cap": 6005471709018.769,
       "total_bve": 602969484582.1998,
       "industry_pb_ratio": 9.96
     },
     {
       "report_date": "2025-11-10T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6126395889017.3,
+      "total_market_cap": 6128969961556.8,
       "total_bve": 602969484582.1998,
       "industry_pb_ratio": 10.16
     },
     {
       "report_date": "2025-11-11T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6124657237316.31,
+      "total_market_cap": 6127086387116.31,
       "total_bve": 602969484582.1998,
       "industry_pb_ratio": 10.16
     },
     {
       "report_date": "2025-11-12T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6080357271793.01,
+      "total_market_cap": 6083078900516.01,
       "total_bve": 602969484582.1998,
-      "industry_pb_ratio": 10.08
+      "industry_pb_ratio": 10.09
     },
     {
       "report_date": "2025-11-13T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5932821818078.95,
+      "total_market_cap": 5935025823959.95,
       "total_bve": 602969484582.1998,
       "industry_pb_ratio": 9.84
     },
     {
       "report_date": "2025-11-14T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 6005790735489.8,
+      "total_market_cap": 6007970238881.8,
       "total_bve": 602969484582.1998,
       "industry_pb_ratio": 9.96
     },
     {
       "report_date": "2025-11-17T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5950028147318.5205,
+      "total_market_cap": 5952101823703.5205,
       "total_bve": 602969484582.1998,
       "industry_pb_ratio": 9.87
     },
     {
       "report_date": "2025-11-18T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5823881222913.9795,
+      "total_market_cap": 5825873200054.9795,
       "total_bve": 602969484582.1998,
       "industry_pb_ratio": 9.66
     },
     {
       "report_date": "2025-11-19T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5782244862225.65,
+      "total_market_cap": 5784106322507.65,
       "total_bve": 602969484582.1998,
       "industry_pb_ratio": 9.59
     },
     {
       "report_date": "2025-11-20T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5613197459759.979,
+      "total_market_cap": 5615216385470.979,
       "total_bve": 600520914582.1998,
       "industry_pb_ratio": 9.35
     },
     {
       "report_date": "2025-11-21T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5534659482528.959,
+      "total_market_cap": 5536754174424.959,
       "total_bve": 600520914582.1998,
       "industry_pb_ratio": 9.22
     },
     {
       "report_date": "2025-11-24T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5586256416559.75,
+      "total_market_cap": 5588542413129.75,
       "total_bve": 600520914582.1998,
-      "industry_pb_ratio": 9.3
+      "industry_pb_ratio": 9.31
     },
     {
       "report_date": "2025-11-25T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5616437098336.141,
+      "total_market_cap": 5618780874551.141,
       "total_bve": 600520914582.1998,
-      "industry_pb_ratio": 9.35
+      "industry_pb_ratio": 9.36
     },
     {
       "report_date": "2025-11-26T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5699747978687.4795,
+      "total_market_cap": 5702075579512.4795,
       "total_bve": 600520914582.1998,
-      "industry_pb_ratio": 9.49
+      "industry_pb_ratio": 9.5
     },
     {
       "report_date": "2025-11-28T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5759842036886.439,
+      "total_market_cap": 5762235161565.439,
       "total_bve": 599188253582.1998,
-      "industry_pb_ratio": 9.61
+      "industry_pb_ratio": 9.62
     },
     {
       "report_date": "2025-12-01T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5719940744284.85,
-      "total_bve": 605001920582.1998,
-      "industry_pb_ratio": 9.45
-    },
-    {
-      "report_date": "2025-12-02T00:00:00.000",
-      "industry": "Software-Infrastructure",
-      "total_market_cap": 5767236875066.838,
-      "total_bve": 605001920582.1998,
-      "industry_pb_ratio": 9.53
-    },
-    {
-      "report_date": "2025-12-03T00:00:00.000",
-      "industry": "Software-Infrastructure",
-      "total_market_cap": 5725392210876.82,
+      "total_market_cap": 5722245705811.85,
       "total_bve": 605001920582.1998,
       "industry_pb_ratio": 9.46
     },
     {
+      "report_date": "2025-12-02T00:00:00.000",
+      "industry": "Software-Infrastructure",
+      "total_market_cap": 5769574239414.838,
+      "total_bve": 605001920582.1998,
+      "industry_pb_ratio": 9.54
+    },
+    {
+      "report_date": "2025-12-03T00:00:00.000",
+      "industry": "Software-Infrastructure",
+      "total_market_cap": 5727927583210.82,
+      "total_bve": 605001920582.1998,
+      "industry_pb_ratio": 9.47
+    },
+    {
       "report_date": "2025-12-04T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5777774054025.118,
+      "total_market_cap": 5780249408797.118,
       "total_bve": 605001920582.1998,
       "industry_pb_ratio": 9.55
     },
     {
       "report_date": "2025-12-05T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5821020778498.809,
+      "total_market_cap": 5823410603562.809,
       "total_bve": 605001920582.1998,
-      "industry_pb_ratio": 9.62
+      "industry_pb_ratio": 9.63
     },
     {
       "report_date": "2025-12-08T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5885789660165.489,
+      "total_market_cap": 5888028723112.489,
       "total_bve": 605001920582.1998,
       "industry_pb_ratio": 9.73
     },
     {
       "report_date": "2025-12-09T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5904252234063.519,
+      "total_market_cap": 5906319571423.519,
       "total_bve": 605001920582.1998,
       "industry_pb_ratio": 9.76
     },
     {
       "report_date": "2025-12-10T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5829208531670.829,
+      "total_market_cap": 5831277836303.829,
       "total_bve": 605001920582.1998,
       "industry_pb_ratio": 9.64
     },
     {
       "report_date": "2025-12-11T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5793245175322.579,
+      "total_market_cap": 5795306340219.579,
       "total_bve": 605001920582.1998,
       "industry_pb_ratio": 9.58
     },
     {
       "report_date": "2025-12-12T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5699443513427.97,
+      "total_market_cap": 5701453227265.97,
       "total_bve": 605001920582.1998,
       "industry_pb_ratio": 9.42
     },
     {
       "report_date": "2025-12-15T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5634762864736.999,
+      "total_market_cap": 5636736532652.999,
       "total_bve": 605001920582.1998,
-      "industry_pb_ratio": 9.31
+      "industry_pb_ratio": 9.32
     },
     {
       "report_date": "2025-12-16T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5672224659964.8,
+      "total_market_cap": 5674065416981.8,
       "total_bve": 605001920582.1998,
       "industry_pb_ratio": 9.38
     },
     {
       "report_date": "2025-12-17T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5593004245357.189,
+      "total_market_cap": 5594730660905.189,
       "total_bve": 605001920582.1998,
-      "industry_pb_ratio": 9.24
+      "industry_pb_ratio": 9.25
     },
     {
       "report_date": "2025-12-18T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5689532955817.85,
+      "total_market_cap": 5691229123180.85,
       "total_bve": 605001920582.1998,
-      "industry_pb_ratio": 9.4
+      "industry_pb_ratio": 9.41
     },
     {
       "report_date": "2025-12-19T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5772413587488.219,
+      "total_market_cap": 5774044230997.219,
       "total_bve": 605001920582.1998,
       "industry_pb_ratio": 9.54
     },
     {
       "report_date": "2025-12-22T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5800161793587.58,
+      "total_market_cap": 5801731222514.58,
       "total_bve": 605001920582.1998,
       "industry_pb_ratio": 9.59
     },
     {
       "report_date": "2025-12-23T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5791743763597.7705,
+      "total_market_cap": 5793364258457.2705,
       "total_bve": 605001920582.1998,
-      "industry_pb_ratio": 9.57
+      "industry_pb_ratio": 9.58
     },
     {
       "report_date": "2025-12-24T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5808661010723.931,
+      "total_market_cap": 5810339035423.931,
       "total_bve": 605001920582.1998,
       "industry_pb_ratio": 9.6
     },
     {
       "report_date": "2025-12-26T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5794532412224.061,
+      "total_market_cap": 5796304293731.061,
       "total_bve": 605001920582.1998,
       "industry_pb_ratio": 9.58
     },
     {
       "report_date": "2025-12-29T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5764429827608.68,
+      "total_market_cap": 5766120009871.68,
       "total_bve": 605001920582.1998,
       "industry_pb_ratio": 9.53
     },
     {
       "report_date": "2025-12-30T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5761125283839.969,
+      "total_market_cap": 5762984370882.969,
       "total_bve": 605001920582.1998,
-      "industry_pb_ratio": 9.52
+      "industry_pb_ratio": 9.53
     },
     {
       "report_date": "2025-12-31T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5696394474722.17,
+      "total_market_cap": 5696892576311.17,
       "total_bve": 633527470406.41,
       "industry_pb_ratio": 8.99
     },
     {
       "report_date": "2026-01-02T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5582603158140.658,
+      "total_market_cap": 5583087174074.658,
       "total_bve": 633508082681.41,
       "industry_pb_ratio": 8.81
     },
     {
       "report_date": "2026-01-05T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5605834759735.129,
+      "total_market_cap": 5606308316605.129,
       "total_bve": 633450012406.41,
       "industry_pb_ratio": 8.85
     },
     {
       "report_date": "2026-01-06T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5683844191672.28,
+      "total_market_cap": 5684326135496.28,
       "total_bve": 633450012406.41,
       "industry_pb_ratio": 8.97
     },
     {
       "report_date": "2026-01-07T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5742497410725.71,
+      "total_market_cap": 5743000766076.71,
       "total_bve": 633450012406.41,
       "industry_pb_ratio": 9.07
     },
     {
       "report_date": "2026-01-08T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5661193610340.17,
+      "total_market_cap": 5661681765648.17,
       "total_bve": 633430624681.41,
       "industry_pb_ratio": 8.94
     },
     {
       "report_date": "2026-01-09T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5696585502647.749,
+      "total_market_cap": 5697082182191.749,
       "total_bve": 633450012406.41,
       "industry_pb_ratio": 8.99
     },
     {
       "report_date": "2026-01-12T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5712489420545.85,
+      "total_market_cap": 5712983428797.85,
       "total_bve": 633450012406.41,
       "industry_pb_ratio": 9.02
     },
     {
       "report_date": "2026-01-13T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5644273467803.251,
+      "total_market_cap": 5644782515000.751,
       "total_bve": 633450012406.41,
       "industry_pb_ratio": 8.91
     },
     {
       "report_date": "2026-01-14T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5524711937131.961,
+      "total_market_cap": 5525216303510.961,
       "total_bve": 633450012406.41,
       "industry_pb_ratio": 8.72
     },
     {
       "report_date": "2026-01-15T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5486590236857.769,
+      "total_market_cap": 5487093272436.769,
       "total_bve": 633430624681.41,
       "industry_pb_ratio": 8.66
     },
     {
       "report_date": "2026-01-16T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5498741372377.419,
+      "total_market_cap": 5499184064838.419,
       "total_bve": 633450012406.41,
       "industry_pb_ratio": 8.68
     },
     {
       "report_date": "2026-01-20T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5392155835125.279,
+      "total_market_cap": 5392591534015.779,
       "total_bve": 633450012406.41,
       "industry_pb_ratio": 8.51
     },
     {
       "report_date": "2026-01-21T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5293853360431.06,
+      "total_market_cap": 5295718566262.06,
       "total_bve": 633450012406.41,
       "industry_pb_ratio": 8.36
     },
     {
       "report_date": "2026-01-22T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5370395258531.769,
+      "total_market_cap": 5372426255937.769,
       "total_bve": 633430624681.41,
       "industry_pb_ratio": 8.48
     },
     {
       "report_date": "2026-01-23T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5487839634036.4,
+      "total_market_cap": 5490054836805.4,
       "total_bve": 633450012406.41,
-      "industry_pb_ratio": 8.66
+      "industry_pb_ratio": 8.67
     },
     {
       "report_date": "2026-01-26T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5550140350569.359,
+      "total_market_cap": 5552218671710.359,
       "total_bve": 633420930479.41,
-      "industry_pb_ratio": 8.76
+      "industry_pb_ratio": 8.77
     },
     {
       "report_date": "2026-01-27T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5612444510481.939,
+      "total_market_cap": 5613810942349.939,
       "total_bve": 633420930479.41,
       "industry_pb_ratio": 8.86
     },
     {
       "report_date": "2026-01-28T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5579827539581.409,
+      "total_market_cap": 5581171882110.409,
       "total_bve": 633450012406.41,
       "industry_pb_ratio": 8.81
     },
     {
       "report_date": "2026-01-29T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5158658858689.52,
+      "total_market_cap": 5159729926862.719,
       "total_bve": 634157215211.2701,
-      "industry_pb_ratio": 8.13
+      "industry_pb_ratio": 8.14
     },
     {
       "report_date": "2026-01-30T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5081514406703.76,
+      "total_market_cap": 5082630868879.959,
       "total_bve": 634157215211.2701,
       "industry_pb_ratio": 8.01
     },
     {
       "report_date": "2026-02-02T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5019214633822.571,
+      "total_market_cap": 5020260899201.571,
       "total_bve": 638308004517.2701,
       "industry_pb_ratio": 7.86
     },
     {
       "report_date": "2026-02-03T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4885874844979.899,
+      "total_market_cap": 4886859760940.3,
       "total_bve": 638327392242.2701,
-      "industry_pb_ratio": 7.65
+      "industry_pb_ratio": 7.66
     },
     {
       "report_date": "2026-02-04T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4838881924755.429,
+      "total_market_cap": 4839891368098.829,
       "total_bve": 638308004517.2701,
       "industry_pb_ratio": 7.58
     },
     {
       "report_date": "2026-02-05T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4591076750273.542,
+      "total_market_cap": 4591974429934.542,
       "total_bve": 638308004517.2701,
       "industry_pb_ratio": 7.19
     },
     {
       "report_date": "2026-02-06T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4720464235989.88,
+      "total_market_cap": 4721394091144.181,
       "total_bve": 638308004517.2701,
       "industry_pb_ratio": 7.4
     },
     {
       "report_date": "2026-02-09T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4896504316734.371,
+      "total_market_cap": 4897461215040.07,
       "total_bve": 638308004517.2701,
       "industry_pb_ratio": 7.67
     },
     {
       "report_date": "2026-02-10T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4904476661834.21,
+      "total_market_cap": 4905427594428.81,
       "total_bve": 638308004517.2701,
-      "industry_pb_ratio": 7.68
+      "industry_pb_ratio": 7.69
     },
     {
       "report_date": "2026-02-11T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4831677036086.429,
+      "total_market_cap": 4832600221524.528,
       "total_bve": 638327392242.2701,
       "industry_pb_ratio": 7.57
     },
     {
       "report_date": "2026-02-12T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4757740115298.449,
+      "total_market_cap": 4758545236408.55,
       "total_bve": 638327392242.2701,
       "industry_pb_ratio": 7.45
     },
     {
       "report_date": "2026-02-13T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4797110173479.46,
+      "total_market_cap": 4797984423156.36,
       "total_bve": 638308004517.2701,
       "industry_pb_ratio": 7.52
     },
     {
       "report_date": "2026-02-17T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4707818536682.78,
+      "total_market_cap": 4708668913705.38,
       "total_bve": 635972667517.2701,
       "industry_pb_ratio": 7.4
     },
     {
       "report_date": "2026-02-18T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4745617405720.449,
+      "total_market_cap": 4746446275112.148,
       "total_bve": 635972667517.2701,
       "industry_pb_ratio": 7.46
     },
     {
       "report_date": "2026-02-19T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4736960827675.238,
+      "total_market_cap": 4737740036329.538,
       "total_bve": 635992055242.2701,
       "industry_pb_ratio": 7.45
     },
     {
       "report_date": "2026-02-20T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4679997378611.66,
+      "total_market_cap": 4680762914630.66,
       "total_bve": 635936701242.2701,
       "industry_pb_ratio": 7.36
     },
     {
       "report_date": "2026-02-23T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4503022289440.99,
+      "total_market_cap": 4503732460567.791,
       "total_bve": 635936701242.2701,
       "industry_pb_ratio": 7.08
     },
     {
       "report_date": "2026-02-24T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4561879786472.111,
+      "total_market_cap": 4562659594558.611,
       "total_bve": 635948156154.7301,
       "industry_pb_ratio": 7.17
     },
     {
       "report_date": "2026-02-25T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4686297560147.851,
+      "total_market_cap": 4687186990425.851,
       "total_bve": 635967543879.7301,
       "industry_pb_ratio": 7.37
     },
     {
       "report_date": "2026-02-26T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4720131535769.209,
+      "total_market_cap": 4721043063765.909,
       "total_bve": 635948156154.7301,
       "industry_pb_ratio": 7.42
     },
     {
       "report_date": "2026-02-27T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4623233006124.52,
+      "total_market_cap": 4624140394162.22,
       "total_bve": 635948156154.7301,
       "industry_pb_ratio": 7.27
     },
     {
       "report_date": "2026-03-02T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4711581178844.659,
+      "total_market_cap": 4712490550221.659,
       "total_bve": 644521639112.7301,
       "industry_pb_ratio": 7.31
     },
     {
       "report_date": "2026-03-03T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4754348668122.759,
+      "total_market_cap": 4755220660482.259,
       "total_bve": 644521639112.7301,
       "industry_pb_ratio": 7.38
     },
     {
       "report_date": "2026-03-04T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4812682096636.919,
+      "total_market_cap": 4813610013525.319,
       "total_bve": 644521639112.7301,
       "industry_pb_ratio": 7.47
     },
     {
       "report_date": "2026-03-05T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4879459414205.149,
+      "total_market_cap": 4880410993008.05,
       "total_bve": 644521639112.7301,
       "industry_pb_ratio": 7.57
     },
     {
       "report_date": "2026-03-06T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4875631059740.84,
+      "total_market_cap": 4876542999872.739,
       "total_bve": 644521639112.7301,
-      "industry_pb_ratio": 7.56
+      "industry_pb_ratio": 7.57
     },
     {
       "report_date": "2026-03-09T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4875770450035.199,
+      "total_market_cap": 4876684029281.699,
       "total_bve": 644521639112.7301,
-      "industry_pb_ratio": 7.56
+      "industry_pb_ratio": 7.57
     },
     {
       "report_date": "2026-03-10T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4827027950740.88,
+      "total_market_cap": 4827933074452.88,
       "total_bve": 644502251387.7301,
       "industry_pb_ratio": 7.49
     },
     {
       "report_date": "2026-03-11T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4867552713741.09,
+      "total_market_cap": 4868490685483.09,
       "total_bve": 644502251387.7301,
       "industry_pb_ratio": 7.55
     },
     {
       "report_date": "2026-03-12T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4831848785265.3,
+      "total_market_cap": 4832784808791.3,
       "total_bve": 646338431834.56,
       "industry_pb_ratio": 7.48
     },
     {
       "report_date": "2026-03-13T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4767279192521.38,
+      "total_market_cap": 4768218349111.18,
       "total_bve": 646338431834.56,
       "industry_pb_ratio": 7.38
     },
     {
       "report_date": "2026-03-16T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4805674114000.899,
+      "total_market_cap": 4806668225683.799,
       "total_bve": 646338431834.56,
       "industry_pb_ratio": 7.44
     },
     {
       "report_date": "2026-03-17T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4811935471486.818,
+      "total_market_cap": 4812903448525.818,
       "total_bve": 646338431834.56,
-      "industry_pb_ratio": 7.44
+      "industry_pb_ratio": 7.45
     },
     {
       "report_date": "2026-03-18T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4724795681622.689,
+      "total_market_cap": 4725723532936.689,
       "total_bve": 645169292834.56,
       "industry_pb_ratio": 7.32
     },
     {
       "report_date": "2026-03-19T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4718190939068.45,
+      "total_market_cap": 4719094463461.35,
       "total_bve": 645169292834.56,
       "industry_pb_ratio": 7.31
     },
     {
       "report_date": "2026-03-20T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4616107199303.289,
+      "total_market_cap": 4616957234437.289,
       "total_bve": 645169292834.56,
-      "industry_pb_ratio": 7.15
+      "industry_pb_ratio": 7.16
     },
     {
       "report_date": "2026-03-23T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4684047864239.101,
+      "total_market_cap": 4684916552590.501,
       "total_bve": 645193736834.56,
       "industry_pb_ratio": 7.26
     },
     {
       "report_date": "2026-03-24T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4538711800284.631,
+      "total_market_cap": 4539505845315.33,
       "total_bve": 645193736834.56,
-      "industry_pb_ratio": 7.03
+      "industry_pb_ratio": 7.04
     },
     {
       "report_date": "2026-03-25T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4524876209471.221,
+      "total_market_cap": 4525686751099.621,
       "total_bve": 645193736834.56,
       "industry_pb_ratio": 7.01
     },
     {
       "report_date": "2026-03-26T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4454868281708.869,
+      "total_market_cap": 4455622723191.869,
       "total_bve": 645193736834.56,
-      "industry_pb_ratio": 6.9
+      "industry_pb_ratio": 6.91
     },
     {
       "report_date": "2026-03-27T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4322604518434.6396,
+      "total_market_cap": 4323300045154.2397,
       "total_bve": 645193736834.56,
       "industry_pb_ratio": 6.7
     },
     {
       "report_date": "2026-03-30T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4328540758576.14,
+      "total_market_cap": 4329193234910.64,
       "total_bve": 645193736834.56,
       "industry_pb_ratio": 6.71
     },
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4499852032063.959,
+      "total_market_cap": 4500044247485.56,
       "total_bve": 672034930414.3099,
       "industry_pb_ratio": 6.7
     },
     {
       "report_date": "2026-04-01T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4489792236404.85,
+      "total_market_cap": 4489980297972.85,
       "total_bve": 672034930414.3099,
       "industry_pb_ratio": 6.68
     },
     {
       "report_date": "2026-04-02T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4543468253220.699,
+      "total_market_cap": 4543651654359.1,
       "total_bve": 672034930414.3099,
       "industry_pb_ratio": 6.76
     },
     {
       "report_date": "2026-04-06T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4533983734003.0205,
+      "total_market_cap": 4534172788131.0205,
       "total_bve": 672011919148.3099,
       "industry_pb_ratio": 6.75
     },
     {
       "report_date": "2026-04-07T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4541446678183.32,
+      "total_market_cap": 4541634864436.92,
       "total_bve": 672034930414.3099,
       "industry_pb_ratio": 6.76
     },
     {
       "report_date": "2026-04-08T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4543384501715.591,
+      "total_market_cap": 4543566732570.791,
       "total_bve": 672034930414.3099,
       "industry_pb_ratio": 6.76
     },
     {
       "report_date": "2026-04-09T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4455985130742.551,
+      "total_market_cap": 4456159469986.551,
       "total_bve": 672034930414.3099,
       "industry_pb_ratio": 6.63
     },
     {
       "report_date": "2026-04-10T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4400441827722.199,
+      "total_market_cap": 4400621034303.8,
       "total_bve": 672034930414.3099,
       "industry_pb_ratio": 6.55
     },
     {
       "report_date": "2026-04-13T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4608048596376.34,
+      "total_market_cap": 4608231845384.34,
       "total_bve": 672034930414.3099,
       "industry_pb_ratio": 6.86
     },
     {
       "report_date": "2026-04-14T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4706928973316.03,
+      "total_market_cap": 4707110305833.631,
       "total_bve": 672034930414.3099,
       "industry_pb_ratio": 7.0
     },
     {
       "report_date": "2026-04-15T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4909286439250.11,
+      "total_market_cap": 4909478941027.711,
       "total_bve": 672034930414.3099,
       "industry_pb_ratio": 7.31
     },
     {
       "report_date": "2026-04-16T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5023355356140.209,
+      "total_market_cap": 5023550497376.609,
       "total_bve": 672034930414.3099,
-      "industry_pb_ratio": 7.47
+      "industry_pb_ratio": 7.48
     },
     {
       "report_date": "2026-04-17T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5053939608725.789,
+      "total_market_cap": 5054135607077.789,
       "total_bve": 672034930414.3099,
       "industry_pb_ratio": 7.52
     },
     {
       "report_date": "2026-04-20T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5043323405038.379,
+      "total_market_cap": 5043520224813.18,
       "total_bve": 672034930414.3099,
       "industry_pb_ratio": 7.5
     },
     {
       "report_date": "2026-04-21T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5107796578001.559,
+      "total_market_cap": 5108002973386.358,
       "total_bve": 672015542689.3099,
       "industry_pb_ratio": 7.6
     },
     {
       "report_date": "2026-04-22T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5231352473502.59,
+      "total_market_cap": 5231557458784.189,
       "total_bve": 672034930414.3099,
       "industry_pb_ratio": 7.78
     },
     {
       "report_date": "2026-04-23T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4998275626100.029,
+      "total_market_cap": 4998464763699.2295,
       "total_bve": 672034930414.3099,
       "industry_pb_ratio": 7.44
     },
     {
       "report_date": "2026-04-24T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5075642451499.33,
+      "total_market_cap": 5075836207765.33,
       "total_bve": 672034930414.3099,
       "industry_pb_ratio": 7.55
     },
     {
       "report_date": "2026-04-27T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5086407587263.33,
+      "total_market_cap": 5086601606592.13,
       "total_bve": 671992531423.3099,
       "industry_pb_ratio": 7.57
     },
     {
       "report_date": "2026-04-28T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5081609929192.98,
+      "total_market_cap": 5081798018184.18,
       "total_bve": 672034930414.3099,
       "industry_pb_ratio": 7.56
     },
     {
       "report_date": "2026-04-29T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5040216038077.341,
+      "total_market_cap": 5040405624859.341,
       "total_bve": 672034930414.3099,
       "industry_pb_ratio": 7.5
     },
     {
       "report_date": "2026-04-30T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4906052510951.22,
-      "total_bve": 690383181755.3099,
+      "total_market_cap": 4906239655139.22,
+      "total_bve": 690383149912.3099,
       "industry_pb_ratio": 7.11
     },
     {
       "report_date": "2026-05-01T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5029964374262.011,
-      "total_bve": 690383181755.3099,
+      "total_market_cap": 5030171886696.011,
+      "total_bve": 690383149912.3099,
       "industry_pb_ratio": 7.29
     },
     {
       "report_date": "2026-05-04T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5067011818235.973,
-      "total_bve": 690383181755.3099,
+      "total_market_cap": 5067222377406.772,
+      "total_bve": 690383149912.3099,
       "industry_pb_ratio": 7.34
     },
     {
       "report_date": "2026-05-05T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5057913265420.14,
-      "total_bve": 690383181755.3099,
+      "total_market_cap": 5058125090175.339,
+      "total_bve": 690383149912.3099,
       "industry_pb_ratio": 7.33
     },
     {
       "report_date": "2026-05-06T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5100137397766.608,
-      "total_bve": 690383181755.3099,
+      "total_market_cap": 5100348827740.608,
+      "total_bve": 690383149912.3099,
       "industry_pb_ratio": 7.39
     },
     {
       "report_date": "2026-05-07T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5198419370655.349,
-      "total_bve": 690383181755.3099,
+      "total_market_cap": 5198632036431.749,
+      "total_bve": 690383149912.3099,
       "industry_pb_ratio": 7.53
     },
     {
       "report_date": "2026-05-08T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5169296043357.149,
-      "total_bve": 690383181755.3099,
+      "total_market_cap": 5169513596586.75,
+      "total_bve": 690383149912.3099,
       "industry_pb_ratio": 7.49
     },
     {
       "report_date": "2026-05-11T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5143978703017.889,
-      "total_bve": 690383181755.3099,
+      "total_market_cap": 5144183017071.889,
+      "total_bve": 690383149912.3099,
       "industry_pb_ratio": 7.45
     },
     {
       "report_date": "2026-05-12T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5070653999275.079,
-      "total_bve": 690128005755.3099,
+      "total_market_cap": 5070862054325.88,
+      "total_bve": 690127973912.3099,
       "industry_pb_ratio": 7.35
     },
     {
       "report_date": "2026-05-13T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5063676461722.71,
-      "total_bve": 690128005755.3099,
+      "total_market_cap": 5063873254237.11,
+      "total_bve": 690127973912.3099,
       "industry_pb_ratio": 7.34
     },
     {
       "report_date": "2026-05-14T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5147187740751.76,
-      "total_bve": 690128005755.3099,
+      "total_market_cap": 5147385221569.76,
+      "total_bve": 690127973912.3099,
       "industry_pb_ratio": 7.46
     },
     {
       "report_date": "2026-05-15T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5234351784212.49,
-      "total_bve": 690128005755.3099,
+      "total_market_cap": 5234560538405.29,
+      "total_bve": 690127973912.3099,
       "industry_pb_ratio": 7.58
     },
     {
       "report_date": "2026-05-18T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5254209323542.371,
-      "total_bve": 690128005755.3099,
+      "total_market_cap": 5254424141426.7705,
+      "total_bve": 690127973912.3099,
       "industry_pb_ratio": 7.61
     },
     {
       "report_date": "2026-05-19T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5186264699291.18,
-      "total_bve": 690128005755.3099,
-      "industry_pb_ratio": 7.51
+      "total_market_cap": 5186483687617.58,
+      "total_bve": 690127973912.3099,
+      "industry_pb_ratio": 7.52
     },
     {
       "report_date": "2026-05-20T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5263223028616.4,
-      "total_bve": 690128005755.3099,
+      "total_market_cap": 5263455313533.601,
+      "total_bve": 690127973912.3099,
       "industry_pb_ratio": 7.63
     },
     {
       "report_date": "2026-05-21T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5261433414197.711,
-      "total_bve": 690128005755.3099,
+      "total_market_cap": 5261660376260.11,
+      "total_bve": 690127973912.3099,
       "industry_pb_ratio": 7.62
     },
     {
       "report_date": "2026-05-22T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5292169009242.83,
-      "total_bve": 690128005755.3099,
+      "total_market_cap": 5292399870976.03,
+      "total_bve": 690127973912.3099,
       "industry_pb_ratio": 7.67
     },
     {
       "report_date": "2026-05-26T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5278919180973.009,
-      "total_bve": 690128005755.3099,
+      "total_market_cap": 5279295733127.009,
+      "total_bve": 690127973912.3099,
       "industry_pb_ratio": 7.65
     },
     {
       "report_date": "2026-05-27T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5198035806567.47,
-      "total_bve": 690128005755.3099,
+      "total_market_cap": 5198407656185.07,
+      "total_bve": 690127973912.3099,
       "industry_pb_ratio": 7.53
     },
     {
       "report_date": "2026-05-28T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5392738099243.63,
-      "total_bve": 690107425795.3099,
+      "total_market_cap": 5393113819182.83,
+      "total_bve": 690107393952.3099,
       "industry_pb_ratio": 7.81
     },
     {
       "report_date": "2026-05-29T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5733974049290.449,
-      "total_bve": 690107425795.3099,
+      "total_market_cap": 5734354646537.648,
+      "total_bve": 690107393952.3099,
       "industry_pb_ratio": 8.31
     },
     {
       "report_date": "2026-06-01T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5975763927605.838,
-      "total_bve": 690107425795.3099,
+      "total_market_cap": 5976172561749.038,
+      "total_bve": 690107393952.3099,
       "industry_pb_ratio": 8.66
     },
     {
       "report_date": "2026-06-02T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5789876762291.931,
-      "total_bve": 690107425795.3099,
+      "total_market_cap": 5790289820277.931,
+      "total_bve": 690107393952.3099,
       "industry_pb_ratio": 8.39
     },
     {
       "report_date": "2026-06-03T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5573305183104.95,
-      "total_bve": 690107425795.3099,
+      "total_market_cap": 5573682597723.15,
+      "total_bve": 690107393952.3099,
       "industry_pb_ratio": 8.08
     },
     {
       "report_date": "2026-06-04T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5590494008912.24,
-      "total_bve": 690107425795.3099,
+      "total_market_cap": 5590869860768.641,
+      "total_bve": 690107393952.3099,
       "industry_pb_ratio": 8.1
     },
     {
       "report_date": "2026-06-05T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5363454034362.242,
-      "total_bve": 690107425795.3099,
+      "total_market_cap": 5363787981759.441,
+      "total_bve": 690107393952.3099,
       "industry_pb_ratio": 7.77
     },
     {
       "report_date": "2026-06-08T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5311012885306.091,
-      "total_bve": 690107425795.3099,
+      "total_market_cap": 5311306768974.091,
+      "total_bve": 690107393952.3099,
       "industry_pb_ratio": 7.7
     },
     {
       "report_date": "2026-06-09T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5195027357618.96,
-      "total_bve": 690107425795.3099,
+      "total_market_cap": 5195333194838.96,
+      "total_bve": 690107393952.3099,
       "industry_pb_ratio": 7.53
     },
     {
       "report_date": "2026-06-10T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5118377443031.901,
-      "total_bve": 690107425795.3099,
+      "total_market_cap": 5118700185373.901,
+      "total_bve": 690107393952.3099,
       "industry_pb_ratio": 7.42
     },
     {
       "report_date": "2026-06-11T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5057361082891.91,
-      "total_bve": 690107425795.3099,
+      "total_market_cap": 5057668094817.91,
+      "total_bve": 690107393952.3099,
       "industry_pb_ratio": 7.33
     },
     {
       "report_date": "2026-06-12T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5052271582273.89,
-      "total_bve": 690107425795.3099,
+      "total_market_cap": 5052569154301.89,
+      "total_bve": 690107393952.3099,
       "industry_pb_ratio": 7.32
     },
     {
       "report_date": "2026-06-15T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5185309453709.699,
-      "total_bve": 689898771442.3099,
-      "industry_pb_ratio": 7.52
+      "total_market_cap": 5185720764757.699,
+      "total_bve": 690107393952.3099,
+      "industry_pb_ratio": 7.51
     },
     {
       "report_date": "2026-06-16T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 5115711869262.818,
-      "total_bve": 689898771442.3099,
-      "industry_pb_ratio": 7.42
+      "total_market_cap": 5116102472521.818,
+      "total_bve": 690107393952.3099,
+      "industry_pb_ratio": 7.41
     },
     {
       "report_date": "2026-06-17T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_market_cap": 4971554934598.901,
-      "total_bve": 689898771442.3099,
+      "total_market_cap": 4971919262698.901,
+      "total_bve": 690107393952.3099,
+      "industry_pb_ratio": 7.2
+    },
+    {
+      "report_date": "2026-06-18T00:00:00.000",
+      "industry": "Software-Infrastructure",
+      "total_market_cap": 4976615470033.39,
+      "total_bve": 690098736052.1599,
       "industry_pb_ratio": 7.21
+    },
+    {
+      "report_date": "2026-06-19T00:00:00.000",
+      "industry": "Software-Infrastructure",
+      "total_market_cap": 39936806693.54,
+      "total_bve": 21724717803.87,
+      "industry_pb_ratio": 1.84
     }
   ],
   "roe": [
@@ -19056,8 +19098,8 @@
     {
       "report_date": "2026-04-30T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_ttm_net_income": 172706824085.28668,
-      "total_avg_equity": 649158092809.9932,
+      "total_ttm_net_income": 172706935062.28668,
+      "total_avg_equity": 649158029283.4932,
       "industry_roe": 0.266
     }
   ],
@@ -19282,8 +19324,8 @@
     {
       "report_date": "2026-04-30T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_ttm_net_income": 172706824085.28668,
-      "total_avg_assets": 1659976794357.3447,
+      "total_ttm_net_income": 172706935062.28668,
+      "total_avg_assets": 1659976843093.3447,
       "industry_roa": 0.104
     }
   ],
@@ -19790,8 +19832,8 @@
     {
       "report_date": "2026-04-30T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_ttm_gross_profit": 458065890482.76,
-      "total_ttm_revenue": 924798762410.4473,
+      "total_ttm_gross_profit": 458065880520.76,
+      "total_ttm_revenue": 924798750994.4473,
       "industry_gross_margin": 0.4953
     }
   ],
@@ -20051,8 +20093,8 @@
     {
       "report_date": "2026-04-30T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_ttm_ebitda": 310675995395.70355,
-      "total_ttm_revenue": 924823772182.6265,
+      "total_ttm_ebitda": 310675896367.70355,
+      "total_ttm_revenue": 924823781160.6265,
       "industry_ebitda_margin": 0.3359
     }
   ],
@@ -20333,8 +20375,8 @@
     {
       "report_date": "2026-04-30T00:00:00.000",
       "industry": "Software-Infrastructure",
-      "total_ttm_net_income": 173402723581.0447,
-      "total_ttm_revenue": 926212866977.4594,
+      "total_ttm_net_income": 173402834558.0447,
+      "total_ttm_revenue": 926212875955.4594,
       "industry_net_margin": 0.1872
     }
   ],

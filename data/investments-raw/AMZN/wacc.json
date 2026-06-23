@@ -16,12 +16,12 @@
     "sp500_cagr_end": 2022,
     "sp500_10y_cagr": 0.1041,
     "treasure_10y_yield": 0.0381,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0937,
     "weight_of_equity": 0.9063,
     "cost_of_debt": 0.006,
-    "cost_of_equity": 0.1337,
-    "wacc": 0.1217
+    "cost_of_equity": 0.1332,
+    "wacc": 0.1212
   },
   {
     "symbol": "AMZN",
@@ -40,12 +40,12 @@
     "sp500_cagr_end": 2022,
     "sp500_10y_cagr": 0.1041,
     "treasure_10y_yield": 0.0459,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0946,
     "weight_of_equity": 0.9054,
     "cost_of_debt": 0.0059,
-    "cost_of_equity": 0.1302,
-    "wacc": 0.1183
+    "cost_of_equity": 0.1298,
+    "wacc": 0.118
   },
   {
     "symbol": "AMZN",
@@ -64,12 +64,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0388,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0795,
     "weight_of_equity": 0.9205,
     "cost_of_debt": 0.0053,
-    "cost_of_equity": 0.1266,
-    "wacc": 0.1169
+    "cost_of_equity": 0.1261,
+    "wacc": 0.1164
   },
   {
     "symbol": "AMZN",
@@ -88,12 +88,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.042,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.067,
     "weight_of_equity": 0.933,
     "cost_of_debt": 0.0048,
-    "cost_of_equity": 0.1252,
-    "wacc": 0.1171
+    "cost_of_equity": 0.1247,
+    "wacc": 0.1166
   },
   {
     "symbol": "AMZN",
@@ -112,12 +112,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0436,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.062,
     "weight_of_equity": 0.938,
     "cost_of_debt": 0.0044,
-    "cost_of_equity": 0.1245,
-    "wacc": 0.117
+    "cost_of_equity": 0.124,
+    "wacc": 0.1166
   },
   {
     "symbol": "AMZN",
@@ -136,12 +136,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0381,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0643,
     "weight_of_equity": 0.9357,
     "cost_of_debt": 0.0045,
-    "cost_of_equity": 0.1269,
-    "wacc": 0.119
+    "cost_of_equity": 0.1264,
+    "wacc": 0.1185
   },
   {
     "symbol": "AMZN",
@@ -160,12 +160,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0458,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0533,
     "weight_of_equity": 0.9467,
     "cost_of_debt": 0.0044,
-    "cost_of_equity": 0.1398,
-    "wacc": 0.1326
+    "cost_of_equity": 0.1393,
+    "wacc": 0.1321
   },
   {
     "symbol": "AMZN",
@@ -184,12 +184,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0423,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0619,
     "weight_of_equity": 0.9381,
     "cost_of_debt": 0.0041,
-    "cost_of_equity": 0.1414,
-    "wacc": 0.1328
+    "cost_of_equity": 0.1409,
+    "wacc": 0.1324
   },
   {
     "symbol": "AMZN",
@@ -208,12 +208,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0424,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0542,
     "weight_of_equity": 0.9458,
     "cost_of_debt": 0.0039,
-    "cost_of_equity": 0.1414,
-    "wacc": 0.1339
+    "cost_of_equity": 0.1408,
+    "wacc": 0.1334
   },
   {
     "symbol": "AMZN",
@@ -232,12 +232,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0416,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0546,
     "weight_of_equity": 0.9454,
     "cost_of_debt": 0.004,
-    "cost_of_equity": 0.1417,
-    "wacc": 0.1341
+    "cost_of_equity": 0.1412,
+    "wacc": 0.1337
   },
   {
     "symbol": "AMZN",
@@ -256,12 +256,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0418,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0582,
     "weight_of_equity": 0.9418,
     "cost_of_debt": 0.0044,
-    "cost_of_equity": 0.1677,
-    "wacc": 0.1581
+    "cost_of_equity": 0.167,
+    "wacc": 0.1575
   },
   {
     "symbol": "AMZN",
@@ -280,12 +280,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0857,
     "weight_of_equity": 0.9143,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1672,
-    "wacc": 0.1531
+    "cost_of_equity": 0.1665,
+    "wacc": 0.1525
   },
   {
     "symbol": "AMZN",
@@ -304,12 +304,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0433,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0848,
     "weight_of_equity": 0.9152,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.167,
-    "wacc": 0.1531
+    "cost_of_equity": 0.1664,
+    "wacc": 0.1525
   },
   {
     "symbol": "AMZN",
@@ -328,12 +328,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0431,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0851,
     "weight_of_equity": 0.9149,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1671,
-    "wacc": 0.1531
+    "cost_of_equity": 0.1664,
+    "wacc": 0.1525
   },
   {
     "symbol": "AMZN",
@@ -352,12 +352,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0434,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.084,
     "weight_of_equity": 0.916,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.167,
-    "wacc": 0.1532
+    "cost_of_equity": 0.1663,
+    "wacc": 0.1526
   },
   {
     "symbol": "AMZN",
@@ -376,12 +376,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0433,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0837,
     "weight_of_equity": 0.9163,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.167,
-    "wacc": 0.1533
+    "cost_of_equity": 0.1664,
+    "wacc": 0.1527
   },
   {
     "symbol": "AMZN",
@@ -400,12 +400,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0811,
     "weight_of_equity": 0.9189,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1672,
-    "wacc": 0.1539
+    "cost_of_equity": 0.1665,
+    "wacc": 0.1532
   },
   {
     "symbol": "AMZN",
@@ -424,12 +424,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0771,
     "weight_of_equity": 0.9229,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1672,
-    "wacc": 0.1545
+    "cost_of_equity": 0.1665,
+    "wacc": 0.1539
   },
   {
     "symbol": "AMZN",
@@ -448,12 +448,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0431,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0757,
     "weight_of_equity": 0.9243,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1671,
-    "wacc": 0.1547
+    "cost_of_equity": 0.1664,
+    "wacc": 0.154
   },
   {
     "symbol": "AMZN",
@@ -472,12 +472,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0752,
     "weight_of_equity": 0.9248,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1672,
-    "wacc": 0.1548
+    "cost_of_equity": 0.1665,
+    "wacc": 0.1542
   },
   {
     "symbol": "AMZN",
@@ -496,12 +496,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0727,
     "weight_of_equity": 0.9273,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1674,
-    "wacc": 0.1554
+    "cost_of_equity": 0.1667,
+    "wacc": 0.1548
   },
   {
     "symbol": "AMZN",
@@ -520,12 +520,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0728,
     "weight_of_equity": 0.9272,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1672,
-    "wacc": 0.1552
+    "cost_of_equity": 0.1665,
+    "wacc": 0.1546
   },
   {
     "symbol": "AMZN",
@@ -544,12 +544,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0432,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0725,
     "weight_of_equity": 0.9275,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1671,
-    "wacc": 0.1552
+    "cost_of_equity": 0.1664,
+    "wacc": 0.1545
   },
   {
     "symbol": "AMZN",
@@ -568,12 +568,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0723,
     "weight_of_equity": 0.9277,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1674,
-    "wacc": 0.1555
+    "cost_of_equity": 0.1667,
+    "wacc": 0.1549
   },
   {
     "symbol": "AMZN",
@@ -592,12 +592,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0729,
     "weight_of_equity": 0.9271,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1674,
-    "wacc": 0.1554
+    "cost_of_equity": 0.1667,
+    "wacc": 0.1548
   },
   {
     "symbol": "AMZN",
@@ -616,12 +616,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0724,
     "weight_of_equity": 0.9276,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1672,
-    "wacc": 0.1553
+    "cost_of_equity": 0.1665,
+    "wacc": 0.1547
   },
   {
     "symbol": "AMZN",
@@ -640,12 +640,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.071,
     "weight_of_equity": 0.929,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1672,
-    "wacc": 0.1555
+    "cost_of_equity": 0.1665,
+    "wacc": 0.1549
   },
   {
     "symbol": "AMZN",
@@ -664,12 +664,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0434,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0711,
     "weight_of_equity": 0.9289,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.167,
-    "wacc": 0.1553
+    "cost_of_equity": 0.1663,
+    "wacc": 0.1547
   },
   {
     "symbol": "AMZN",
@@ -688,12 +688,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0431,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0688,
     "weight_of_equity": 0.9312,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1671,
-    "wacc": 0.1558
+    "cost_of_equity": 0.1664,
+    "wacc": 0.1552
   },
   {
     "symbol": "AMZN",
@@ -712,12 +712,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0435,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0695,
     "weight_of_equity": 0.9305,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.167,
-    "wacc": 0.1556
+    "cost_of_equity": 0.1663,
+    "wacc": 0.1549
   },
   {
     "symbol": "AMZN",
@@ -736,12 +736,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0436,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0699,
     "weight_of_equity": 0.9301,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1669,
-    "wacc": 0.1554
+    "cost_of_equity": 0.1662,
+    "wacc": 0.1548
   },
   {
     "symbol": "AMZN",
@@ -760,12 +760,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0442,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0691,
     "weight_of_equity": 0.9309,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1666,
-    "wacc": 0.1553
+    "cost_of_equity": 0.166,
+    "wacc": 0.1547
   },
   {
     "symbol": "AMZN",
@@ -784,12 +784,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.044,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0686,
     "weight_of_equity": 0.9314,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1667,
-    "wacc": 0.1555
+    "cost_of_equity": 0.1661,
+    "wacc": 0.1549
   },
   {
     "symbol": "AMZN",
@@ -808,12 +808,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0439,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0678,
     "weight_of_equity": 0.9322,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1668,
-    "wacc": 0.1557
+    "cost_of_equity": 0.1661,
+    "wacc": 0.155
   },
   {
     "symbol": "AMZN",
@@ -832,12 +832,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0445,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0669,
     "weight_of_equity": 0.9331,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1665,
-    "wacc": 0.1556
+    "cost_of_equity": 0.1658,
+    "wacc": 0.1549
   },
   {
     "symbol": "AMZN",
@@ -856,12 +856,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0443,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0666,
     "weight_of_equity": 0.9334,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1666,
-    "wacc": 0.1557
+    "cost_of_equity": 0.1659,
+    "wacc": 0.155
   },
   {
     "symbol": "AMZN",
@@ -880,12 +880,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0436,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0663,
     "weight_of_equity": 0.9337,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1669,
-    "wacc": 0.156
+    "cost_of_equity": 0.1662,
+    "wacc": 0.1554
   },
   {
     "symbol": "AMZN",
@@ -904,12 +904,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0441,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0671,
     "weight_of_equity": 0.9329,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1667,
-    "wacc": 0.1557
+    "cost_of_equity": 0.166,
+    "wacc": 0.1551
   },
   {
     "symbol": "AMZN",
@@ -928,12 +928,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0438,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0668,
     "weight_of_equity": 0.9332,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1668,
-    "wacc": 0.1559
+    "cost_of_equity": 0.1661,
+    "wacc": 0.1552
   },
   {
     "symbol": "AMZN",
@@ -952,12 +952,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0442,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0676,
     "weight_of_equity": 0.9324,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1666,
-    "wacc": 0.1555
+    "cost_of_equity": 0.166,
+    "wacc": 0.155
   },
   {
     "symbol": "AMZN",
@@ -976,12 +976,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0446,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0684,
     "weight_of_equity": 0.9316,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1665,
-    "wacc": 0.1553
+    "cost_of_equity": 0.1658,
+    "wacc": 0.1547
   },
   {
     "symbol": "AMZN",
@@ -1000,12 +1000,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0446,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0674,
     "weight_of_equity": 0.9326,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1665,
-    "wacc": 0.1555
+    "cost_of_equity": 0.1658,
+    "wacc": 0.1548
   },
   {
     "symbol": "AMZN",
@@ -1024,12 +1024,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0447,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.068,
     "weight_of_equity": 0.932,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1664,
-    "wacc": 0.1553
+    "cost_of_equity": 0.1657,
+    "wacc": 0.1546
   },
   {
     "symbol": "AMZN",
@@ -1048,12 +1048,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0459,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0688,
     "weight_of_equity": 0.9312,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1659,
-    "wacc": 0.1547
+    "cost_of_equity": 0.1652,
+    "wacc": 0.154
   },
   {
     "symbol": "AMZN",
@@ -1072,12 +1072,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0461,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0686,
     "weight_of_equity": 0.9314,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1658,
-    "wacc": 0.1546
+    "cost_of_equity": 0.1651,
+    "wacc": 0.154
   },
   {
     "symbol": "AMZN",
@@ -1096,12 +1096,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0467,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.07,
     "weight_of_equity": 0.93,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1655,
-    "wacc": 0.1541
+    "cost_of_equity": 0.1649,
+    "wacc": 0.1536
   },
   {
     "symbol": "AMZN",
@@ -1120,12 +1120,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0457,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0686,
     "weight_of_equity": 0.9314,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.166,
-    "wacc": 0.1548
+    "cost_of_equity": 0.1653,
+    "wacc": 0.1542
   },
   {
     "symbol": "AMZN",
@@ -1144,12 +1144,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0457,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0678,
     "weight_of_equity": 0.9322,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.166,
-    "wacc": 0.1549
+    "cost_of_equity": 0.1653,
+    "wacc": 0.1543
   },
   {
     "symbol": "AMZN",
@@ -1168,12 +1168,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0456,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0683,
     "weight_of_equity": 0.9317,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.166,
-    "wacc": 0.1549
+    "cost_of_equity": 0.1653,
+    "wacc": 0.1542
   },
   {
     "symbol": "AMZN",
@@ -1192,12 +1192,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.045,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0685,
     "weight_of_equity": 0.9315,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1663,
-    "wacc": 0.1551
+    "cost_of_equity": 0.1656,
+    "wacc": 0.1545
   },
   {
     "symbol": "AMZN",
@@ -1216,12 +1216,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0448,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.067,
     "weight_of_equity": 0.933,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1664,
-    "wacc": 0.1554
+    "cost_of_equity": 0.1657,
+    "wacc": 0.1548
   },
   {
     "symbol": "AMZN",
@@ -1240,12 +1240,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0445,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0665,
     "weight_of_equity": 0.9335,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1665,
-    "wacc": 0.1556
+    "cost_of_equity": 0.1658,
+    "wacc": 0.155
   },
   {
     "symbol": "AMZN",
@@ -1264,12 +1264,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0445,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0672,
     "weight_of_equity": 0.9328,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1665,
-    "wacc": 0.1555
+    "cost_of_equity": 0.1658,
+    "wacc": 0.1549
   },
   {
     "symbol": "AMZN",
@@ -1288,12 +1288,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0447,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0695,
     "weight_of_equity": 0.9305,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1664,
-    "wacc": 0.155
+    "cost_of_equity": 0.1657,
+    "wacc": 0.1544
   },
   {
     "symbol": "AMZN",
@@ -1312,12 +1312,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0446,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0707,
     "weight_of_equity": 0.9293,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1665,
-    "wacc": 0.1549
+    "cost_of_equity": 0.1658,
+    "wacc": 0.1543
   },
   {
     "symbol": "AMZN",
@@ -1336,12 +1336,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0449,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0724,
     "weight_of_equity": 0.9276,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1663,
-    "wacc": 0.1545
+    "cost_of_equity": 0.1657,
+    "wacc": 0.1539
   },
   {
     "symbol": "AMZN",
@@ -1360,12 +1360,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0447,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0714,
     "weight_of_equity": 0.9286,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1664,
-    "wacc": 0.1547
+    "cost_of_equity": 0.1657,
+    "wacc": 0.1541
   },
   {
     "symbol": "AMZN",
@@ -1384,12 +1384,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0455,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0735,
     "weight_of_equity": 0.9265,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1661,
-    "wacc": 0.1541
+    "cost_of_equity": 0.1654,
+    "wacc": 0.1535
   },
   {
     "symbol": "AMZN",
@@ -1408,12 +1408,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0456,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0737,
     "weight_of_equity": 0.9263,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.166,
-    "wacc": 0.154
+    "cost_of_equity": 0.1653,
+    "wacc": 0.1533
   },
   {
     "symbol": "AMZN",
@@ -1432,12 +1432,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0453,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.074,
     "weight_of_equity": 0.926,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1661,
-    "wacc": 0.154
+    "cost_of_equity": 0.1655,
+    "wacc": 0.1535
   },
   {
     "symbol": "AMZN",
@@ -1456,12 +1456,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0455,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0758,
     "weight_of_equity": 0.9242,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1661,
-    "wacc": 0.1537
+    "cost_of_equity": 0.1654,
+    "wacc": 0.1531
   },
   {
     "symbol": "AMZN",
@@ -1480,12 +1480,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0445,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0748,
     "weight_of_equity": 0.9252,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1665,
-    "wacc": 0.1543
+    "cost_of_equity": 0.1658,
+    "wacc": 0.1536
   },
   {
     "symbol": "AMZN",
@@ -1504,12 +1504,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0448,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0756,
     "weight_of_equity": 0.9244,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1664,
-    "wacc": 0.154
+    "cost_of_equity": 0.1657,
+    "wacc": 0.1534
   },
   {
     "symbol": "AMZN",
@@ -1528,12 +1528,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0447,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0735,
     "weight_of_equity": 0.9265,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1664,
-    "wacc": 0.1544
+    "cost_of_equity": 0.1657,
+    "wacc": 0.1537
   },
   {
     "symbol": "AMZN",
@@ -1552,12 +1552,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0443,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0735,
     "weight_of_equity": 0.9265,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1666,
-    "wacc": 0.1546
+    "cost_of_equity": 0.1659,
+    "wacc": 0.1539
   },
   {
     "symbol": "AMZN",
@@ -1576,11 +1576,35 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0449,
-    "beta_5y": 1.449,
+    "beta_5y": 1.441,
     "weight_of_debt": 0.0759,
     "weight_of_equity": 0.9241,
     "cost_of_debt": 0.0038,
-    "cost_of_equity": 0.1663,
-    "wacc": 0.1539
+    "cost_of_equity": 0.1657,
+    "wacc": 0.1533
+  },
+  {
+    "symbol": "AMZN",
+    "report_date": "2026-06-18T00:00:00.000",
+    "market_capitalization": 2628929966266.0,
+    "exchange_rate": 1.0,
+    "total_debt": 209888000000.0,
+    "total_debt_usd": 209888000000.0,
+    "interest_expense": 800000000.0,
+    "interest_expense_usd": 800000000.0,
+    "pretax_income": 39834000000.0,
+    "pretax_income_usd": 39834000000.0,
+    "tax_provision": 9560000000.0,
+    "tax_provision_usd": 9560000000.0,
+    "tax_rate_for_calcs": 0.24,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0446,
+    "beta_5y": 1.441,
+    "weight_of_debt": 0.0739,
+    "weight_of_equity": 0.9261,
+    "cost_of_debt": 0.0038,
+    "cost_of_equity": 0.1658,
+    "wacc": 0.1538
   }
 ]

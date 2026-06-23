@@ -1,3 +1,9 @@
-{
-  "error": "unconverted data remains: T05:15:34Z"
-}
+[
+  {
+    "symbol": "SNPS",
+    "report_date": "2026-06-22",
+    "beta": 1.2205,
+    "period": "5y",
+    "benchmark": "SPY"
+  }
+]

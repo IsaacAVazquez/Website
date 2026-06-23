@@ -1,15 +1,6 @@
 [
   {
     "symbol": "AAPL",
-    "report_date": "2025-06-17",
-    "open": 197.2,
-    "close": 195.64,
-    "high": 198.39,
-    "low": 195.21,
-    "volume": 38856200
-  },
-  {
-    "symbol": "AAPL",
     "report_date": "2025-06-18",
     "open": 195.94,
     "close": 196.58,
@@ -2265,6 +2256,15 @@
     "close": 295.95,
     "high": 302.07,
     "low": 294.36,
-    "volume": 42685500
+    "volume": 42745100
+  },
+  {
+    "symbol": "AAPL",
+    "report_date": "2026-06-18",
+    "open": 298.11,
+    "close": 298.01,
+    "high": 300.57,
+    "low": 295.62,
+    "volume": 85962200
   }
 ]

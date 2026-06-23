@@ -1,15 +1,6 @@
 [
   {
     "symbol": "AMZN",
-    "report_date": "2025-06-17",
-    "open": 215.2,
-    "close": 214.82,
-    "high": 217.41,
-    "low": 214.56,
-    "volume": 32086300
-  },
-  {
-    "symbol": "AMZN",
     "report_date": "2025-06-18",
     "open": 215.09,
     "close": 212.52,
@@ -2265,6 +2256,15 @@
     "close": 237.5,
     "high": 245.91,
     "low": 236.0,
-    "volume": 44636700
+    "volume": 44780800
+  },
+  {
+    "symbol": "AMZN",
+    "report_date": "2026-06-18",
+    "open": 240.12,
+    "close": 244.39,
+    "high": 245.73,
+    "low": 236.02,
+    "volume": 75624400
   }
 ]

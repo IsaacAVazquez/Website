@@ -1,15 +1,6 @@
 [
   {
     "symbol": "ADBE",
-    "report_date": "2025-06-17",
-    "open": 397.28,
-    "close": 382.68,
-    "high": 399.67,
-    "low": 381.8,
-    "volume": 6866300
-  },
-  {
-    "symbol": "ADBE",
     "report_date": "2025-06-18",
     "open": 383.99,
     "close": 378.04,
@@ -2265,6 +2256,15 @@
     "close": 196.28,
     "high": 206.5,
     "low": 195.02,
-    "volume": 10707900
+    "volume": 10731500
+  },
+  {
+    "symbol": "ADBE",
+    "report_date": "2026-06-18",
+    "open": 193.6,
+    "close": 195.16,
+    "high": 196.78,
+    "low": 190.12,
+    "volume": 15852500
   }
 ]

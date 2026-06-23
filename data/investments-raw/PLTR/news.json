@@ -1,14 +1,5 @@
 [
   {
-    "uuid": "5af5f21a-c494-3b85-940a-105f80e91ef5",
-    "symbol": "PLTR",
-    "title": "AI is Taking Over Aviation--And These Two Companies Just Hit the Accelerator",
-    "publisher": "GuruFocus.com",
-    "report_date": "2025-03-14",
-    "type": "STORY",
-    "link": "https://finance.yahoo.com/news/ai-taking-over-aviation-two-164103071.html"
-  },
-  {
     "uuid": "944b24c7-5dc1-3bf4-a1c9-ea3e0b527d80",
     "symbol": "PLTR",
     "title": "Palantir (PLTR) Joins Forces with Ondas to Elevate AI-Powered Autonomous Drones",
@@ -25,6 +16,15 @@
     "report_date": "2025-03-14",
     "type": "STORY",
     "link": "https://finance.yahoo.com/news/palantir-strikes-ai-partnerships-archer-192210992.html"
+  },
+  {
+    "uuid": "5af5f21a-c494-3b85-940a-105f80e91ef5",
+    "symbol": "PLTR",
+    "title": "AI is Taking Over Aviation--And These Two Companies Just Hit the Accelerator",
+    "publisher": "GuruFocus.com",
+    "report_date": "2025-03-14",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/ai-taking-over-aviation-two-164103071.html"
   },
   {
     "uuid": "384d50eb-a71b-3f94-9719-35d091f66c88",
@@ -72,15 +72,6 @@
     "link": "https://finance.yahoo.com/news/2-surging-stocks-consider-now-043951765.html"
   },
   {
-    "uuid": "5f3936c2-86dc-3310-a7c4-553590e3dde3",
-    "symbol": "PLTR",
-    "title": "Palantir declines, Lemonade lifts guidance, Celsius Q1 miss",
-    "publisher": "Yahoo Finance Video",
-    "report_date": "2025-05-06",
-    "type": "VIDEO",
-    "link": "https://finance.yahoo.com/video/palantir-declines-lemonade-lifts-guidance-151158298.html"
-  },
-  {
     "uuid": "da78ab04-9824-38ae-919d-0f45264f5e66",
     "symbol": "PLTR",
     "title": "Nebius Group Stock Earns 84 RS Rating",
@@ -88,5 +79,14 @@
     "report_date": "2025-05-06",
     "type": "STORY",
     "link": "https://finance.yahoo.com/m/da78ab04-9824-38ae-919d-0f45264f5e66/nebius-group-stock-earns-84.html"
+  },
+  {
+    "uuid": "5f3936c2-86dc-3310-a7c4-553590e3dde3",
+    "symbol": "PLTR",
+    "title": "Palantir declines, Lemonade lifts guidance, Celsius Q1 miss",
+    "publisher": "Yahoo Finance Video",
+    "report_date": "2025-05-06",
+    "type": "VIDEO",
+    "link": "https://finance.yahoo.com/video/palantir-declines-lemonade-lifts-guidance-151158298.html"
   }
 ]

@@ -1,10 +1,10 @@
 {
   "symbol": "AAPL",
-  "lastUpdated": "2026-06-19T00:23:44.589850+00:00",
+  "lastUpdated": "2026-06-23T00:06:23.255341+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-19T00:23:44.589850+00:00",
+    "snapshotBuiltAt": "2026-06-23T00:06:23.255341+00:00",
     "sections": {
-      "price": "2026-06-17"
+      "price": "2026-06-18"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.2666,
-      "ttmPe": 35.8,
-      "marketCap": 4346723008200,
-      "psRatio": 9.63,
-      "pbRatio": 40.82,
-      "pegRatio": 1.62
+      "ttmPe": 36.05,
+      "marketCap": 4376978961560,
+      "psRatio": 9.7,
+      "pbRatio": 41.1,
+      "pegRatio": 1.64
     },
     "profitability": {
       "roe": 30.39,
@@ -4942,25 +4942,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.25,
-      "costOfEquity": 13.569999999999999,
+      "wacc": 13.239999999999998,
+      "costOfEquity": 13.56,
       "costOfDebt": 0.8999999999999999,
       "taxRate": 15,
-      "beta": 1.084,
-      "marketCap": 4346723008200
+      "beta": 1.0822,
+      "marketCap": 4376978961560
     },
     "beta": {
-      "beta5y": 1.084
+      "beta5y": 1.0822
     },
     "price": [
-      {
-        "date": "2025-06-17",
-        "open": 197.2,
-        "high": 198.39,
-        "low": 195.21,
-        "close": 195.64,
-        "volume": 38856200
-      },
       {
         "date": "2025-06-18",
         "open": 195.94,
@@ -6967,7 +6959,15 @@
         "high": 302.07,
         "low": 294.36,
         "close": 295.95,
-        "volume": 42685500
+        "volume": 42745100
+      },
+      {
+        "date": "2026-06-18",
+        "open": 298.11,
+        "high": 300.57,
+        "low": 295.62,
+        "close": 298.01,
+        "volume": 85962200
       }
     ],
     "news": [
@@ -7116,50 +7116,50 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 35.8,
-        "industryAvg": 35.47
+        "value": 36.05,
+        "industryAvg": 35.72
       },
       {
         "metric": "P/S Ratio",
-        "value": 9.63,
-        "industryAvg": 7.34
+        "value": 9.7,
+        "industryAvg": 7.37
       },
       {
         "metric": "P/B Ratio",
-        "value": 40.82,
-        "industryAvg": 20.77
+        "value": 41.1,
+        "industryAvg": 21.18
       },
       {
         "metric": "ROE",
         "value": 30.39,
-        "industryAvg": 61.029999999999994
+        "industryAvg": 60.88
       },
       {
         "metric": "ROA",
         "value": 7.88,
-        "industryAvg": 17.1
+        "industryAvg": 17.130000000000003
       },
       {
         "metric": "Gross Margin",
         "value": 49.27,
-        "industryAvg": 42.69
+        "industryAvg": 42.65
       },
       {
         "metric": "EBITDA Margin",
         "value": 35.370000000000005,
-        "industryAvg": 31.65
+        "industryAvg": 31.3
       },
       {
         "metric": "Net Margin",
         "value": 26.6,
-        "industryAvg": 19.11
+        "industryAvg": 18.83
       }
     ],
     "dcf": {
-      "fairValue": 114.62,
-      "currentPrice": 295.95,
-      "upside": -61.27,
-      "wacc": 13.25,
+      "fairValue": 114.73,
+      "currentPrice": 298.01,
+      "upside": -61.5,
+      "wacc": 13.24,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 22.04,
         "Terminal growth": 3

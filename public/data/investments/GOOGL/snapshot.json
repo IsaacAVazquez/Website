@@ -1,10 +1,10 @@
 {
   "symbol": "GOOGL",
-  "lastUpdated": "2026-06-19T00:23:44.589850+00:00",
+  "lastUpdated": "2026-06-23T00:06:23.255341+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-19T00:23:44.589850+00:00",
+    "snapshotBuiltAt": "2026-06-23T00:06:23.255341+00:00",
     "sections": {
-      "price": "2026-06-17"
+      "price": "2026-06-18"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 13.109,
-      "ttmPe": 27.75,
-      "marketCap": 4407477445518,
-      "psRatio": 10.43,
-      "pbRatio": 9.21,
+      "ttmPe": 28.07,
+      "marketCap": 4458846928926,
+      "psRatio": 10.55,
+      "pbRatio": 9.31,
       "pegRatio": 0.34
     },
     "profitability": {
@@ -5594,25 +5594,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.530000000000001,
-      "costOfEquity": 14.82,
+      "wacc": 14.52,
+      "costOfEquity": 14.81,
       "costOfDebt": 0.59,
       "taxRate": 19,
-      "beta": 1.2324,
-      "marketCap": 4407477445518
+      "beta": 1.2304,
+      "marketCap": 4458846928926
     },
     "beta": {
-      "beta5y": 1.2324
+      "beta5y": 1.2304
     },
     "price": [
-      {
-        "date": "2025-06-17",
-        "open": 175.7,
-        "high": 177.36,
-        "low": 174.58,
-        "close": 175.95,
-        "volume": 24973000
-      },
       {
         "date": "2025-06-18",
         "open": 176.01,
@@ -7619,7 +7611,15 @@
         "high": 372.33,
         "low": 362.02,
         "close": 363.79,
-        "volume": 24496700
+        "volume": 24543600
+      },
+      {
+        "date": "2026-06-18",
+        "open": 365.75,
+        "high": 369.48,
+        "low": 358.67,
+        "close": 368.03,
+        "volume": 44470100
       }
     ],
     "news": [
@@ -7632,19 +7632,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "343df9a5-0920-3bee-8ef5-51237a31223f",
-        "title": "3 Cheap Tech Stocks to Buy Right Now",
-        "publisher": "Motley Fool",
+        "uuid": "1f65352e-e780-3b0a-9802-fdd0d6359ce8",
+        "title": "Streaming Surpasses Combined Cable, Broadcast Viewing for First Time in May, Nielsen Reports",
+        "publisher": "MT Newswires",
         "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/m/343df9a5-0920-3bee-8ef5-51237a31223f/3-cheap-tech-stocks-to-buy.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "0cd3518a-5a9f-38ba-bfd6-367caceadf00",
-        "title": "Top Research Reports for Alphabet, IBM & RTX",
-        "publisher": "Zacks",
-        "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/news/top-research-reports-alphabet-ibm-202800489.html",
+        "link": "https://finance.yahoo.com/news/streaming-surpasses-combined-cable-broadcast-140549520.html",
         "type": "STORY"
       },
       {
@@ -7656,11 +7648,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "1f65352e-e780-3b0a-9802-fdd0d6359ce8",
-        "title": "Streaming Surpasses Combined Cable, Broadcast Viewing for First Time in May, Nielsen Reports",
-        "publisher": "MT Newswires",
+        "uuid": "0cd3518a-5a9f-38ba-bfd6-367caceadf00",
+        "title": "Top Research Reports for Alphabet, IBM & RTX",
+        "publisher": "Zacks",
         "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/news/streaming-surpasses-combined-cable-broadcast-140549520.html",
+        "link": "https://finance.yahoo.com/news/top-research-reports-alphabet-ibm-202800489.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "343df9a5-0920-3bee-8ef5-51237a31223f",
+        "title": "3 Cheap Tech Stocks to Buy Right Now",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-06-17",
+        "link": "https://finance.yahoo.com/m/343df9a5-0920-3bee-8ef5-51237a31223f/3-cheap-tech-stocks-to-buy.html",
         "type": "STORY"
       },
       {
@@ -7672,14 +7672,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "677e87f7-6d9d-30bd-a846-ca2e9cd5608e",
-        "title": "Sector Update: Consumer",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-06-18",
-        "link": "https://finance.yahoo.com/news/sector-consumer-192818246.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "31850e85-b8d2-37c3-962b-d509fb5b370d",
         "title": "Sector Update: Consumer Stocks Decline Late Afternoon",
         "publisher": "MT Newswires",
@@ -7688,19 +7680,27 @@
         "type": "STORY"
       },
       {
-        "uuid": "4c10d800-1065-3e25-af9a-f43f0e8b2904",
-        "title": "Japan's TDK acquires US-based smart glasses company SoftEye",
-        "publisher": "Reuters",
-        "reportDate": "2025-06-19",
-        "link": "https://finance.yahoo.com/news/japans-tdk-acquires-us-based-063651794.html",
+        "uuid": "677e87f7-6d9d-30bd-a846-ca2e9cd5608e",
+        "title": "Sector Update: Consumer",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-06-18",
+        "link": "https://finance.yahoo.com/news/sector-consumer-192818246.html",
         "type": "STORY"
       },
       {
-        "uuid": "cf2e7065-0566-377e-aff0-cd1947c51405",
-        "title": "Magnificent 7 May Need to Make Room for Broadcom",
-        "publisher": "The Daily Upside",
+        "uuid": "39f83f45-7225-377c-98bd-298bd43e5330",
+        "title": "2 Ad Tech Stocks That Could Help Make You a Fortune",
+        "publisher": "Motley Fool",
         "reportDate": "2025-06-19",
-        "link": "https://finance.yahoo.com/m/cf2e7065-0566-377e-aff0-cd1947c51405/magnificent-7-may-need-to.html",
+        "link": "https://finance.yahoo.com/m/39f83f45-7225-377c-98bd-298bd43e5330/2-ad-tech-stocks-that-could.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "5aaffa19-4a82-37d7-9153-92797cff77b1",
+        "title": "Down 25%, Is Now the Time to Pounce on IonQ Stock for Just $40?",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-06-19",
+        "link": "https://finance.yahoo.com/m/5aaffa19-4a82-37d7-9153-92797cff77b1/down-25%25%2C-is-now-the-time-to.html",
         "type": "STORY"
       }
     ],
@@ -7776,18 +7776,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 27.75,
-        "industryAvg": 26.34
+        "value": 28.07,
+        "industryAvg": 26.69
       },
       {
         "metric": "P/S Ratio",
-        "value": 10.43,
-        "industryAvg": 8.91
+        "value": 10.55,
+        "industryAvg": 9.03
       },
       {
         "metric": "P/B Ratio",
-        "value": 9.21,
-        "industryAvg": 7.73
+        "value": 9.31,
+        "industryAvg": 1.91
       },
       {
         "metric": "ROE",
@@ -7816,10 +7816,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 245.26,
-      "currentPrice": 363.79,
-      "upside": -32.58,
-      "wacc": 14.53,
+      "fairValue": 245.48,
+      "currentPrice": 368.03,
+      "upside": -33.3,
+      "wacc": 14.52,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

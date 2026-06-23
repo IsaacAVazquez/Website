@@ -1,10 +1,10 @@
 {
   "symbol": "META",
-  "lastUpdated": "2026-06-19T00:23:44.589850+00:00",
+  "lastUpdated": "2026-06-23T00:06:23.255341+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-19T00:23:44.589850+00:00",
+    "snapshotBuiltAt": "2026-06-23T00:06:23.255341+00:00",
     "sections": {
-      "price": "2026-06-17"
+      "price": "2026-06-18"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 27.5066,
-      "ttmPe": 20.63,
-      "marketCap": 1440758296614,
-      "psRatio": 6.7,
-      "pbRatio": 5.91,
-      "pegRatio": 0.33
+      "ttmPe": 20.98,
+      "marketCap": 1465228697226,
+      "psRatio": 6.82,
+      "pbRatio": 6.01,
+      "pegRatio": 0.34
     },
     "profitability": {
       "roe": 11.62,
@@ -5392,25 +5392,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.950000000000001,
-      "costOfEquity": 14.77,
+      "wacc": 13.930000000000001,
+      "costOfEquity": 14.729999999999999,
       "costOfDebt": 0.65,
       "taxRate": 40,
-      "beta": 1.227,
-      "marketCap": 1440758296614
+      "beta": 1.221,
+      "marketCap": 1465228697226
     },
     "beta": {
-      "beta5y": 1.227
+      "beta5y": 1.221
     },
     "price": [
-      {
-        "date": "2025-06-17",
-        "open": 702,
-        "high": 705.97,
-        "low": 696.06,
-        "close": 697.23,
-        "volume": 10066100
-      },
       {
         "date": "2025-06-18",
         "open": 698.18,
@@ -7417,7 +7409,15 @@
         "high": 593.81,
         "low": 566.19,
         "close": 567.58,
-        "volume": 20397900
+        "volume": 20478300
+      },
+      {
+        "date": "2026-06-18",
+        "open": 572.82,
+        "high": 580.22,
+        "low": 563.1,
+        "close": 577.22,
+        "volume": 28824600
       }
     ],
     "news": [
@@ -7438,19 +7438,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "bbf455ff-77a4-32a7-81aa-06dd1d624504",
-        "title": "The Zacks Analyst Blog Highlights Apple, Meta Platforms, Chevron, Taylor Devices and GSI Technology",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-21",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-apple-085500208.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2cfa6437-c187-3ab8-9ea8-027695257bb0",
         "title": "Top Research Reports for Apple, Meta Platforms & Chevron",
         "publisher": "Zacks",
         "reportDate": "2025-03-21",
         "link": "https://finance.yahoo.com/news/top-research-reports-apple-meta-213400955.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "bbf455ff-77a4-32a7-81aa-06dd1d624504",
+        "title": "The Zacks Analyst Blog Highlights Apple, Meta Platforms, Chevron, Taylor Devices and GSI Technology",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-21",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-apple-085500208.html",
         "type": "STORY"
       },
       {
@@ -7572,18 +7572,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.63,
-        "industryAvg": 26.34
+        "value": 20.98,
+        "industryAvg": 26.69
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.7,
-        "industryAvg": 8.91
+        "value": 6.82,
+        "industryAvg": 9.03
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.91,
-        "industryAvg": 7.73
+        "value": 6.01,
+        "industryAvg": 1.91
       },
       {
         "metric": "ROE",
@@ -7612,10 +7612,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 543.55,
-      "currentPrice": 567.58,
-      "upside": -4.23,
-      "wacc": 13.95,
+      "fairValue": 544.6,
+      "currentPrice": 577.22,
+      "upside": -5.65,
+      "wacc": 13.93,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

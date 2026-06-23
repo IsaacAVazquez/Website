@@ -36,15 +36,6 @@
     "link": "https://finance.yahoo.com/m/0f7139d3-271d-3e22-b37b-14abca6b8855/these-stocks-moved-the-most.html"
   },
   {
-    "uuid": "9fa0933e-573c-36a8-8e69-eacfa956fa70",
-    "symbol": "NVDA",
-    "title": "Accenture reports Q2 beat, Apple TV+ losing $1B annually: Morning Buzz",
-    "publisher": "TipRanks",
-    "report_date": "2025-03-22",
-    "type": "STORY",
-    "link": "https://finance.yahoo.com/news/accenture-reports-q2-beat-apple-161626223.html"
-  },
-  {
     "uuid": "6847b701-a805-3273-8363-1f5569a55995",
     "symbol": "NVDA",
     "title": "Stereotaxis Jumps 15% on NVIDIA's AI-Driven Collaboration: Is It a Buy Now?",
@@ -54,13 +45,13 @@
     "link": "https://finance.yahoo.com/news/stereotaxis-jumps-15-nvidias-ai-160200798.html"
   },
   {
-    "uuid": "9603d02d-962a-36da-ac81-d16892a33a25",
+    "uuid": "9fa0933e-573c-36a8-8e69-eacfa956fa70",
     "symbol": "NVDA",
-    "title": "Lumentum Stock, Coherent Upgraded On View Nvidia Threat Overblown",
-    "publisher": "Investor's Business Daily",
-    "report_date": "2025-03-24",
+    "title": "Accenture reports Q2 beat, Apple TV+ losing $1B annually: Morning Buzz",
+    "publisher": "TipRanks",
+    "report_date": "2025-03-22",
     "type": "STORY",
-    "link": "https://finance.yahoo.com/m/9603d02d-962a-36da-ac81-d16892a33a25/lumentum-stock%2C-coherent.html"
+    "link": "https://finance.yahoo.com/news/accenture-reports-q2-beat-apple-161626223.html"
   },
   {
     "uuid": "9c9222ce-74c7-3222-a9d9-ab586c63ce81",
@@ -70,6 +61,15 @@
     "report_date": "2025-03-24",
     "type": "STORY",
     "link": "https://finance.yahoo.com/news/nvidia-support-boosts-stereotaxis-stxs-213924601.html"
+  },
+  {
+    "uuid": "9603d02d-962a-36da-ac81-d16892a33a25",
+    "symbol": "NVDA",
+    "title": "Lumentum Stock, Coherent Upgraded On View Nvidia Threat Overblown",
+    "publisher": "Investor's Business Daily",
+    "report_date": "2025-03-24",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/9603d02d-962a-36da-ac81-d16892a33a25/lumentum-stock%2C-coherent.html"
   },
   {
     "uuid": "ad5ec0a2-bfd3-335a-9331-f25c38ccafe5",

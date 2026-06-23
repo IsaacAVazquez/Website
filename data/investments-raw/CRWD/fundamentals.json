@@ -213,30 +213,37 @@
     {
       "symbol": "CRWD",
       "report_date": "2025-04-30",
-      "eps": -0.4436,
-      "tailing_eps": -0.6744,
-      "update_time": "2026-05-16"
+      "eps": -0.4197,
+      "tailing_eps": -0.6505,
+      "update_time": "2026-06-09"
     },
     {
       "symbol": "CRWD",
       "report_date": "2025-07-31",
       "eps": -0.3108,
-      "tailing_eps": -1.1723,
-      "update_time": "2026-05-16"
+      "tailing_eps": -1.1484,
+      "update_time": "2026-06-09"
     },
     {
       "symbol": "CRWD",
       "report_date": "2025-10-31",
       "eps": -0.1353,
-      "tailing_eps": -1.2391,
-      "update_time": "2026-05-16"
+      "tailing_eps": -1.2152,
+      "update_time": "2026-06-09"
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-01-31",
       "eps": 0.1499,
-      "tailing_eps": -0.7398,
-      "update_time": "2026-05-16"
+      "tailing_eps": -0.7159,
+      "update_time": "2026-06-09"
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-04-30",
+      "eps": 0.1077,
+      "tailing_eps": -0.1885,
+      "update_time": "2026-06-09"
     }
   ],
   "ttmPe": [
@@ -12077,7 +12084,7 @@
       "report_date": "2025-04-30T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 428.87,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12085,7 +12092,7 @@
       "report_date": "2025-05-01T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 431.88,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12093,7 +12100,7 @@
       "report_date": "2025-05-02T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 440.58,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12101,7 +12108,7 @@
       "report_date": "2025-05-05T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 443.47,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12109,7 +12116,7 @@
       "report_date": "2025-05-06T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 443.21,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12117,7 +12124,7 @@
       "report_date": "2025-05-07T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 422.52,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12125,7 +12132,7 @@
       "report_date": "2025-05-08T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 428.63,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12133,7 +12140,7 @@
       "report_date": "2025-05-09T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 410.57,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12141,7 +12148,7 @@
       "report_date": "2025-05-12T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 429.44,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12149,7 +12156,7 @@
       "report_date": "2025-05-13T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 440.2,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12157,7 +12164,7 @@
       "report_date": "2025-05-14T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 435.94,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12165,7 +12172,7 @@
       "report_date": "2025-05-15T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 431.84,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12173,7 +12180,7 @@
       "report_date": "2025-05-16T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 439.26,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12181,7 +12188,7 @@
       "report_date": "2025-05-19T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 444.35,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12189,7 +12196,7 @@
       "report_date": "2025-05-20T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 442.25,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12197,7 +12204,7 @@
       "report_date": "2025-05-21T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 434.74,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12205,7 +12212,7 @@
       "report_date": "2025-05-22T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 444.07,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12213,7 +12220,7 @@
       "report_date": "2025-05-23T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 455.59,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12221,7 +12228,7 @@
       "report_date": "2025-05-27T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 472.22,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12229,7 +12236,7 @@
       "report_date": "2025-05-28T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 468.83,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12237,7 +12244,7 @@
       "report_date": "2025-05-29T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 458.81,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12245,7 +12252,7 @@
       "report_date": "2025-05-30T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 471.37,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12253,7 +12260,7 @@
       "report_date": "2025-06-02T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 479.17,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12261,7 +12268,7 @@
       "report_date": "2025-06-03T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 488.76,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12269,7 +12276,7 @@
       "report_date": "2025-06-04T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 460.56,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12277,7 +12284,7 @@
       "report_date": "2025-06-05T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 462.94,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12285,7 +12292,7 @@
       "report_date": "2025-06-06T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 468.41,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12293,7 +12300,7 @@
       "report_date": "2025-06-09T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 464.39,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12301,7 +12308,7 @@
       "report_date": "2025-06-10T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 467.65,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12309,7 +12316,7 @@
       "report_date": "2025-06-11T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 476.98,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12317,7 +12324,7 @@
       "report_date": "2025-06-12T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 481.73,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12325,7 +12332,7 @@
       "report_date": "2025-06-13T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 480.62,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12333,7 +12340,7 @@
       "report_date": "2025-06-16T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 479.39,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12341,7 +12348,7 @@
       "report_date": "2025-06-17T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 492.03,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12349,7 +12356,7 @@
       "report_date": "2025-06-18T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 485.16,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12357,7 +12364,7 @@
       "report_date": "2025-06-20T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 476.3,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12365,7 +12372,7 @@
       "report_date": "2025-06-23T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 491.81,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12373,7 +12380,7 @@
       "report_date": "2025-06-24T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 485.38,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12381,7 +12388,7 @@
       "report_date": "2025-06-25T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 494.09,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12389,7 +12396,7 @@
       "report_date": "2025-06-26T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 505.22,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12397,7 +12404,7 @@
       "report_date": "2025-06-27T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 499.33,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12405,7 +12412,7 @@
       "report_date": "2025-06-30T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 509.31,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12413,7 +12420,7 @@
       "report_date": "2025-07-01T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 492.07,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12421,7 +12428,7 @@
       "report_date": "2025-07-02T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 496.1,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12429,7 +12436,7 @@
       "report_date": "2025-07-03T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 514.1,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12437,7 +12444,7 @@
       "report_date": "2025-07-07T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 505.46,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12445,7 +12452,7 @@
       "report_date": "2025-07-08T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 507.71,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12453,7 +12460,7 @@
       "report_date": "2025-07-09T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 513.51,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12461,7 +12468,7 @@
       "report_date": "2025-07-10T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 487.11,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12469,7 +12476,7 @@
       "report_date": "2025-07-11T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 478.45,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12477,7 +12484,7 @@
       "report_date": "2025-07-14T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 476.18,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12485,7 +12492,7 @@
       "report_date": "2025-07-15T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 473.28,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12493,7 +12500,7 @@
       "report_date": "2025-07-16T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 470.45,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12501,7 +12508,7 @@
       "report_date": "2025-07-17T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 469.83,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12509,7 +12516,7 @@
       "report_date": "2025-07-18T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 475.96,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12517,7 +12524,7 @@
       "report_date": "2025-07-21T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 481.58,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12525,7 +12532,7 @@
       "report_date": "2025-07-22T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 471.23,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12533,7 +12540,7 @@
       "report_date": "2025-07-23T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 461.52,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12541,7 +12548,7 @@
       "report_date": "2025-07-24T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 462.03,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12549,7 +12556,7 @@
       "report_date": "2025-07-25T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 467.92,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12557,7 +12564,7 @@
       "report_date": "2025-07-28T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 472.18,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12565,7 +12572,7 @@
       "report_date": "2025-07-29T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 465.51,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12573,7 +12580,7 @@
       "report_date": "2025-07-30T00:00:00.000",
       "eps_report_date": "2025-04-30T00:00:00.000",
       "close_price": 463.15,
-      "ttm_eps": -0.6744,
+      "ttm_eps": -0.6505,
       "ttm_pe": null
     },
     {
@@ -12581,7 +12588,7 @@
       "report_date": "2025-07-31T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 454.57,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12589,7 +12596,7 @@
       "report_date": "2025-08-01T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 446.66,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12597,7 +12604,7 @@
       "report_date": "2025-08-04T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 454.86,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12605,7 +12612,7 @@
       "report_date": "2025-08-05T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 441.75,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12613,7 +12620,7 @@
       "report_date": "2025-08-06T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 451.69,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12621,7 +12628,7 @@
       "report_date": "2025-08-07T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 425.0,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12629,7 +12636,7 @@
       "report_date": "2025-08-08T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 424.49,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12637,7 +12644,7 @@
       "report_date": "2025-08-11T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 426.43,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12645,7 +12652,7 @@
       "report_date": "2025-08-12T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 435.8,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12653,7 +12660,7 @@
       "report_date": "2025-08-13T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 432.12,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12661,7 +12668,7 @@
       "report_date": "2025-08-14T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 424.86,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12669,7 +12676,7 @@
       "report_date": "2025-08-15T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 427.9,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12677,7 +12684,7 @@
       "report_date": "2025-08-18T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 426.34,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12685,7 +12692,7 @@
       "report_date": "2025-08-19T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 418.6,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12693,7 +12700,7 @@
       "report_date": "2025-08-20T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 419.17,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12701,7 +12708,7 @@
       "report_date": "2025-08-21T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 414.06,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12709,7 +12716,7 @@
       "report_date": "2025-08-22T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 420.55,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12717,7 +12724,7 @@
       "report_date": "2025-08-25T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 418.83,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12725,7 +12732,7 @@
       "report_date": "2025-08-26T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 417.6,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12733,7 +12740,7 @@
       "report_date": "2025-08-27T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 422.61,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12741,7 +12748,7 @@
       "report_date": "2025-08-28T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 442.0,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12749,7 +12756,7 @@
       "report_date": "2025-08-29T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 423.7,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12757,7 +12764,7 @@
       "report_date": "2025-09-02T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 413.5,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12765,7 +12772,7 @@
       "report_date": "2025-09-03T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 413.2,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12773,7 +12780,7 @@
       "report_date": "2025-09-04T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 412.46,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12781,7 +12788,7 @@
       "report_date": "2025-09-05T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 417.63,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12789,7 +12796,7 @@
       "report_date": "2025-09-08T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 428.06,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12797,7 +12804,7 @@
       "report_date": "2025-09-09T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 423.51,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12805,7 +12812,7 @@
       "report_date": "2025-09-10T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 424.87,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12813,7 +12820,7 @@
       "report_date": "2025-09-11T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 433.38,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12821,7 +12828,7 @@
       "report_date": "2025-09-12T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 436.1,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12829,7 +12836,7 @@
       "report_date": "2025-09-15T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 444.77,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12837,7 +12844,7 @@
       "report_date": "2025-09-16T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 444.98,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12845,7 +12852,7 @@
       "report_date": "2025-09-17T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 445.5,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12853,7 +12860,7 @@
       "report_date": "2025-09-18T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 502.63,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12861,7 +12868,7 @@
       "report_date": "2025-09-19T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 502.55,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12869,7 +12876,7 @@
       "report_date": "2025-09-22T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 493.14,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12877,7 +12884,7 @@
       "report_date": "2025-09-23T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 484.1,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12885,7 +12892,7 @@
       "report_date": "2025-09-24T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 476.33,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12893,7 +12900,7 @@
       "report_date": "2025-09-25T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 473.09,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12901,7 +12908,7 @@
       "report_date": "2025-09-26T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 481.42,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12909,7 +12916,7 @@
       "report_date": "2025-09-29T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 488.45,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12917,7 +12924,7 @@
       "report_date": "2025-09-30T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 490.38,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12925,7 +12932,7 @@
       "report_date": "2025-10-01T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 499.96,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12933,7 +12940,7 @@
       "report_date": "2025-10-02T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 496.8,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12941,7 +12948,7 @@
       "report_date": "2025-10-03T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 489.88,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12949,7 +12956,7 @@
       "report_date": "2025-10-06T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 495.95,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12957,7 +12964,7 @@
       "report_date": "2025-10-07T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 484.62,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12965,7 +12972,7 @@
       "report_date": "2025-10-08T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 509.95,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12973,7 +12980,7 @@
       "report_date": "2025-10-09T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 509.13,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12981,7 +12988,7 @@
       "report_date": "2025-10-10T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 493.66,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12989,7 +12996,7 @@
       "report_date": "2025-10-13T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 508.61,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -12997,7 +13004,7 @@
       "report_date": "2025-10-14T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 488.94,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -13005,7 +13012,7 @@
       "report_date": "2025-10-15T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 489.02,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -13013,7 +13020,7 @@
       "report_date": "2025-10-16T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 482.23,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -13021,7 +13028,7 @@
       "report_date": "2025-10-17T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 484.65,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -13029,7 +13036,7 @@
       "report_date": "2025-10-20T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 503.61,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -13037,7 +13044,7 @@
       "report_date": "2025-10-21T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 503.95,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -13045,7 +13052,7 @@
       "report_date": "2025-10-22T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 500.11,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -13053,7 +13060,7 @@
       "report_date": "2025-10-23T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 521.98,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -13061,7 +13068,7 @@
       "report_date": "2025-10-24T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 527.32,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -13069,7 +13076,7 @@
       "report_date": "2025-10-27T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 529.7,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -13077,7 +13084,7 @@
       "report_date": "2025-10-28T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 546.94,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -13085,7 +13092,7 @@
       "report_date": "2025-10-29T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 545.5,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -13093,7 +13100,7 @@
       "report_date": "2025-10-30T00:00:00.000",
       "eps_report_date": "2025-07-31T00:00:00.000",
       "close_price": 538.68,
-      "ttm_eps": -1.1723,
+      "ttm_eps": -1.1484,
       "ttm_pe": null
     },
     {
@@ -13101,7 +13108,7 @@
       "report_date": "2025-10-31T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 543.01,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13109,7 +13116,7 @@
       "report_date": "2025-11-03T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 551.92,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13117,7 +13124,7 @@
       "report_date": "2025-11-04T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 533.92,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13125,7 +13132,7 @@
       "report_date": "2025-11-05T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 534.14,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13133,7 +13140,7 @@
       "report_date": "2025-11-06T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 532.52,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13141,7 +13148,7 @@
       "report_date": "2025-11-07T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 539.81,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13149,7 +13156,7 @@
       "report_date": "2025-11-10T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 557.53,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13157,7 +13164,7 @@
       "report_date": "2025-11-11T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 556.73,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13165,7 +13172,7 @@
       "report_date": "2025-11-12T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 545.86,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13173,7 +13180,7 @@
       "report_date": "2025-11-13T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 529.78,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13181,7 +13188,7 @@
       "report_date": "2025-11-14T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 537.55,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13189,7 +13196,7 @@
       "report_date": "2025-11-17T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 529.78,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13197,7 +13204,7 @@
       "report_date": "2025-11-18T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 513.67,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13205,7 +13212,7 @@
       "report_date": "2025-11-19T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 520.59,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13213,7 +13220,7 @@
       "report_date": "2025-11-20T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 501.31,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13221,7 +13228,7 @@
       "report_date": "2025-11-21T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 490.67,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13229,7 +13236,7 @@
       "report_date": "2025-11-24T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 506.82,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13237,7 +13244,7 @@
       "report_date": "2025-11-25T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 512.34,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13245,7 +13252,7 @@
       "report_date": "2025-11-26T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 501.54,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13253,7 +13260,7 @@
       "report_date": "2025-11-28T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 509.16,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13261,7 +13268,7 @@
       "report_date": "2025-12-01T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 504.13,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13269,7 +13276,7 @@
       "report_date": "2025-12-02T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 516.55,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13277,7 +13284,7 @@
       "report_date": "2025-12-03T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 524.17,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13285,7 +13292,7 @@
       "report_date": "2025-12-04T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 513.12,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13293,7 +13300,7 @@
       "report_date": "2025-12-05T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 512.03,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13301,7 +13308,7 @@
       "report_date": "2025-12-08T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 515.19,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13309,7 +13316,7 @@
       "report_date": "2025-12-09T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 517.98,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13317,7 +13324,7 @@
       "report_date": "2025-12-10T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 519.54,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13325,7 +13332,7 @@
       "report_date": "2025-12-11T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 517.65,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13333,7 +13340,7 @@
       "report_date": "2025-12-12T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 504.78,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13341,7 +13348,7 @@
       "report_date": "2025-12-15T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 487.47,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13349,7 +13356,7 @@
       "report_date": "2025-12-16T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 488.53,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13357,7 +13364,7 @@
       "report_date": "2025-12-17T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 470.02,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13365,7 +13372,7 @@
       "report_date": "2025-12-18T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 477.26,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13373,7 +13380,7 @@
       "report_date": "2025-12-19T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 481.28,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13381,7 +13388,7 @@
       "report_date": "2025-12-22T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 483.14,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13389,7 +13396,7 @@
       "report_date": "2025-12-23T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 478.84,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13397,7 +13404,7 @@
       "report_date": "2025-12-24T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 477.11,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13405,7 +13412,7 @@
       "report_date": "2025-12-26T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 481.19,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13413,7 +13420,7 @@
       "report_date": "2025-12-29T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 475.91,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13421,7 +13428,7 @@
       "report_date": "2025-12-30T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 475.63,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13429,7 +13436,7 @@
       "report_date": "2025-12-31T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 468.76,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13437,7 +13444,7 @@
       "report_date": "2026-01-02T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 453.58,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13445,7 +13452,7 @@
       "report_date": "2026-01-05T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 456.55,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13453,7 +13460,7 @@
       "report_date": "2026-01-06T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 458.32,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13461,7 +13468,7 @@
       "report_date": "2026-01-07T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 478.91,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13469,7 +13476,7 @@
       "report_date": "2026-01-08T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 463.87,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13477,7 +13484,7 @@
       "report_date": "2026-01-09T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 470.61,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13485,7 +13492,7 @@
       "report_date": "2026-01-12T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 466.99,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13493,7 +13500,7 @@
       "report_date": "2026-01-13T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 468.02,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13501,7 +13508,7 @@
       "report_date": "2026-01-14T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 460.7,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13509,7 +13516,7 @@
       "report_date": "2026-01-15T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 455.0,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13517,7 +13524,7 @@
       "report_date": "2026-01-16T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 453.88,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13525,7 +13532,7 @@
       "report_date": "2026-01-20T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 442.73,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13533,7 +13540,7 @@
       "report_date": "2026-01-21T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 445.88,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13541,7 +13548,7 @@
       "report_date": "2026-01-22T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 453.77,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13549,7 +13556,7 @@
       "report_date": "2026-01-23T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 452.49,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13557,7 +13564,7 @@
       "report_date": "2026-01-26T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 468.33,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13565,7 +13572,7 @@
       "report_date": "2026-01-27T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 476.66,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13573,7 +13580,7 @@
       "report_date": "2026-01-28T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 469.19,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13581,7 +13588,7 @@
       "report_date": "2026-01-29T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 444.62,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13589,7 +13596,7 @@
       "report_date": "2026-01-30T00:00:00.000",
       "eps_report_date": "2025-10-31T00:00:00.000",
       "close_price": 441.405,
-      "ttm_eps": -1.2391,
+      "ttm_eps": -1.2152,
       "ttm_pe": null
     },
     {
@@ -13597,7 +13604,7 @@
       "report_date": "2026-02-02T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 438.85,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13605,7 +13612,7 @@
       "report_date": "2026-02-03T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 421.73,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13613,7 +13620,7 @@
       "report_date": "2026-02-04T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 415.36,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13621,7 +13628,7 @@
       "report_date": "2026-02-05T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 377.16,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13629,7 +13636,7 @@
       "report_date": "2026-02-06T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 395.5,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13637,7 +13644,7 @@
       "report_date": "2026-02-09T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 408.04,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13645,7 +13652,7 @@
       "report_date": "2026-02-10T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 413.39,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13653,7 +13660,7 @@
       "report_date": "2026-02-11T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 415.81,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13661,7 +13668,7 @@
       "report_date": "2026-02-12T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 411.54,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13669,7 +13676,7 @@
       "report_date": "2026-02-13T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 429.64,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13677,7 +13684,7 @@
       "report_date": "2026-02-17T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 414.285,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13685,7 +13692,7 @@
       "report_date": "2026-02-18T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 415.76,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13693,7 +13700,7 @@
       "report_date": "2026-02-19T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 422.14,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13701,7 +13708,7 @@
       "report_date": "2026-02-20T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 388.6,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13709,7 +13716,7 @@
       "report_date": "2026-02-23T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 350.33,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13717,7 +13724,7 @@
       "report_date": "2026-02-24T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 350.25,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13725,7 +13732,7 @@
       "report_date": "2026-02-25T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 363.31,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13733,7 +13740,7 @@
       "report_date": "2026-02-26T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 381.1,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13741,7 +13748,7 @@
       "report_date": "2026-02-27T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 371.98,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13749,7 +13756,7 @@
       "report_date": "2026-03-02T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 384.86,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13757,7 +13764,7 @@
       "report_date": "2026-03-03T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 391.42,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13765,7 +13772,7 @@
       "report_date": "2026-03-04T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 407.68,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13773,7 +13780,7 @@
       "report_date": "2026-03-05T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 426.16,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13781,7 +13788,7 @@
       "report_date": "2026-03-06T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 428.99,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13789,7 +13796,7 @@
       "report_date": "2026-03-09T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 434.13,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13797,7 +13804,7 @@
       "report_date": "2026-03-10T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 436.33,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13805,7 +13812,7 @@
       "report_date": "2026-03-11T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 442.03,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13813,7 +13820,7 @@
       "report_date": "2026-03-12T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 441.54,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13821,7 +13828,7 @@
       "report_date": "2026-03-13T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 441.78,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13829,7 +13836,7 @@
       "report_date": "2026-03-16T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 423.84,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13837,7 +13844,7 @@
       "report_date": "2026-03-17T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 433.2,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13845,7 +13852,7 @@
       "report_date": "2026-03-18T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 435.81,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13853,7 +13860,7 @@
       "report_date": "2026-03-19T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 428.18,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13861,7 +13868,7 @@
       "report_date": "2026-03-20T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 409.0,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13869,7 +13876,7 @@
       "report_date": "2026-03-23T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 413.31,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13877,7 +13884,7 @@
       "report_date": "2026-03-24T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 392.99,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13885,7 +13892,7 @@
       "report_date": "2026-03-25T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 385.86,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13893,7 +13900,7 @@
       "report_date": "2026-03-26T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 392.62,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13901,7 +13908,7 @@
       "report_date": "2026-03-27T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 369.58,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13909,7 +13916,7 @@
       "report_date": "2026-03-30T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 380.06,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13917,7 +13924,7 @@
       "report_date": "2026-03-31T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 390.41,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13925,7 +13932,7 @@
       "report_date": "2026-04-01T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 393.31,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13933,7 +13940,7 @@
       "report_date": "2026-04-02T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 399.12,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13941,7 +13948,7 @@
       "report_date": "2026-04-06T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 398.61,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13949,7 +13956,7 @@
       "report_date": "2026-04-07T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 423.23,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13957,7 +13964,7 @@
       "report_date": "2026-04-08T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 426.51,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13965,7 +13972,7 @@
       "report_date": "2026-04-09T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 394.68,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13973,7 +13980,7 @@
       "report_date": "2026-04-10T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 379.02,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13981,7 +13988,7 @@
       "report_date": "2026-04-13T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 402.24,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13989,7 +13996,7 @@
       "report_date": "2026-04-14T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 398.49,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -13997,7 +14004,7 @@
       "report_date": "2026-04-15T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 411.16,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -14005,7 +14012,7 @@
       "report_date": "2026-04-16T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 418.2,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -14013,7 +14020,7 @@
       "report_date": "2026-04-17T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 423.95,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -14021,7 +14028,7 @@
       "report_date": "2026-04-20T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 433.15,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -14029,7 +14036,7 @@
       "report_date": "2026-04-21T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 449.61,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -14037,7 +14044,7 @@
       "report_date": "2026-04-22T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 466.68,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -14045,7 +14052,7 @@
       "report_date": "2026-04-23T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 445.39,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -14053,7 +14060,7 @@
       "report_date": "2026-04-24T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 448.13,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -14061,7 +14068,7 @@
       "report_date": "2026-04-27T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 454.61,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -14069,7 +14076,7 @@
       "report_date": "2026-04-28T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 454.99,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
@@ -14077,215 +14084,287 @@
       "report_date": "2026-04-29T00:00:00.000",
       "eps_report_date": "2026-01-31T00:00:00.000",
       "close_price": 452.38,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.7159,
       "ttm_pe": null
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-04-30T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 445.75,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.1885,
       "ttm_pe": null
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-01T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 455.64,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.1885,
       "ttm_pe": null
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-04T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 469.24,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.1885,
       "ttm_pe": null
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-05T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 476.53,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.1885,
       "ttm_pe": null
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-06T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 468.07,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.1885,
       "ttm_pe": null
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-07T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 505.72,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.1885,
       "ttm_pe": null
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-08T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 527.77,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.1885,
       "ttm_pe": null
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-11T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 542.26,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.1885,
       "ttm_pe": null
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-12T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 546.18,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.1885,
       "ttm_pe": null
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-13T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 562.57,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.1885,
       "ttm_pe": null
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-14T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 579.95,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.1885,
       "ttm_pe": null
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-15T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 594.08,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.1885,
       "ttm_pe": null
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-18T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 618.83,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.1885,
       "ttm_pe": null
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-19T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 616.88,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.1885,
       "ttm_pe": null
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-20T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 650.11,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.1885,
       "ttm_pe": null
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-21T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 648.23,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.1885,
       "ttm_pe": null
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-22T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 663.46,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.1885,
       "ttm_pe": null
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-26T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 671.55,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.1885,
       "ttm_pe": null
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-27T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 645.36,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.1885,
       "ttm_pe": null
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-28T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 671.0,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.1885,
       "ttm_pe": null
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-29T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 731.0,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.1885,
       "ttm_pe": null
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-06-01T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 782.17,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.1885,
       "ttm_pe": null
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-06-02T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 768.95,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.1885,
       "ttm_pe": null
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-06-03T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 747.61,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.1885,
       "ttm_pe": null
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-06-04T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 719.09,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.1885,
       "ttm_pe": null
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-06-05T00:00:00.000",
-      "eps_report_date": "2026-01-31T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
       "close_price": 671.02,
-      "ttm_eps": -0.7398,
+      "ttm_eps": -0.1885,
+      "ttm_pe": null
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-08T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 658.79,
+      "ttm_eps": -0.1885,
+      "ttm_pe": null
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-09T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 644.93,
+      "ttm_eps": -0.1885,
+      "ttm_pe": null
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-10T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 647.74,
+      "ttm_eps": -0.1885,
+      "ttm_pe": null
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-11T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 691.53,
+      "ttm_eps": -0.1885,
+      "ttm_pe": null
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-12T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 682.8,
+      "ttm_eps": -0.1885,
+      "ttm_pe": null
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-15T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 692.91,
+      "ttm_eps": -0.1885,
+      "ttm_pe": null
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-16T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 679.49,
+      "ttm_eps": -0.1885,
+      "ttm_pe": null
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-17T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 682.96,
+      "ttm_eps": -0.1885,
+      "ttm_pe": null
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-18T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 684.86,
+      "ttm_eps": -0.1885,
       "ttm_pe": null
     }
   ],
@@ -28133,210 +28212,282 @@
     {
       "symbol": "CRWD",
       "report_date": "2026-04-30T00:00:00.000",
-      "shares_report_date": "2026-02-28T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 445.75,
-      "shares_outstanding": 253614100,
-      "market_capitalization": 113048485075.0
+      "shares_outstanding": 254537000,
+      "market_capitalization": 113459867750.0
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-01T00:00:00.000",
-      "shares_report_date": "2026-02-28T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 455.64,
-      "shares_outstanding": 253614100,
-      "market_capitalization": 115556728524.0
+      "shares_outstanding": 254537000,
+      "market_capitalization": 115977238680.0
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-04T00:00:00.000",
-      "shares_report_date": "2026-02-28T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 469.24,
-      "shares_outstanding": 253614100,
-      "market_capitalization": 119005880284.0
+      "shares_outstanding": 254537000,
+      "market_capitalization": 119438941880.0
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-05T00:00:00.000",
-      "shares_report_date": "2026-02-28T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 476.53,
-      "shares_outstanding": 253614100,
-      "market_capitalization": 120854727073.0
+      "shares_outstanding": 254537000,
+      "market_capitalization": 121294516610.0
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-06T00:00:00.000",
-      "shares_report_date": "2026-02-28T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 468.07,
-      "shares_outstanding": 253614100,
-      "market_capitalization": 118709151787.0
+      "shares_outstanding": 254537000,
+      "market_capitalization": 119141133590.0
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-07T00:00:00.000",
-      "shares_report_date": "2026-02-28T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 505.72,
-      "shares_outstanding": 253614100,
-      "market_capitalization": 128257722652.0
+      "shares_outstanding": 254537000,
+      "market_capitalization": 128724451640.0
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-08T00:00:00.000",
-      "shares_report_date": "2026-02-28T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 527.77,
-      "shares_outstanding": 253614100,
-      "market_capitalization": 133849913557.0
+      "shares_outstanding": 254537000,
+      "market_capitalization": 134336992490.0
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-11T00:00:00.000",
-      "shares_report_date": "2026-02-28T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 542.26,
-      "shares_outstanding": 253614100,
-      "market_capitalization": 137524781866.0
+      "shares_outstanding": 254537000,
+      "market_capitalization": 138025233620.0
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-12T00:00:00.000",
-      "shares_report_date": "2026-02-28T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 546.18,
-      "shares_outstanding": 253614100,
-      "market_capitalization": 138518949138.0
+      "shares_outstanding": 254537000,
+      "market_capitalization": 139023018660.0
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-13T00:00:00.000",
-      "shares_report_date": "2026-02-28T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 562.57,
-      "shares_outstanding": 253614100,
-      "market_capitalization": 142675684237.0
+      "shares_outstanding": 254537000,
+      "market_capitalization": 143194880090.0
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-14T00:00:00.000",
-      "shares_report_date": "2026-02-28T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 579.95,
-      "shares_outstanding": 253614100,
-      "market_capitalization": 147083497295.0
+      "shares_outstanding": 254537000,
+      "market_capitalization": 147618733150.0
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-15T00:00:00.000",
-      "shares_report_date": "2026-02-28T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 594.08,
-      "shares_outstanding": 253614100,
-      "market_capitalization": 150667064528.0
+      "shares_outstanding": 254537000,
+      "market_capitalization": 151215340960.0
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-18T00:00:00.000",
-      "shares_report_date": "2026-02-28T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 618.83,
-      "shares_outstanding": 253614100,
-      "market_capitalization": 156944013503.0
+      "shares_outstanding": 254537000,
+      "market_capitalization": 157515131710.0
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-19T00:00:00.000",
-      "shares_report_date": "2026-02-28T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 616.88,
-      "shares_outstanding": 253614100,
-      "market_capitalization": 156449466008.0
+      "shares_outstanding": 254537000,
+      "market_capitalization": 157018784560.0
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-20T00:00:00.000",
-      "shares_report_date": "2026-02-28T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 650.11,
-      "shares_outstanding": 253614100,
-      "market_capitalization": 164877062551.0
+      "shares_outstanding": 254537000,
+      "market_capitalization": 165477049070.0
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-21T00:00:00.000",
-      "shares_report_date": "2026-02-28T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 648.23,
-      "shares_outstanding": 253614100,
-      "market_capitalization": 164400268043.0
+      "shares_outstanding": 254537000,
+      "market_capitalization": 164998519510.0
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-22T00:00:00.000",
-      "shares_report_date": "2026-02-28T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 663.46,
-      "shares_outstanding": 253614100,
-      "market_capitalization": 168262810786.0
+      "shares_outstanding": 254537000,
+      "market_capitalization": 168875118020.0
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-26T00:00:00.000",
-      "shares_report_date": "2026-02-28T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 671.55,
-      "shares_outstanding": 253614100,
-      "market_capitalization": 170314548855.0
+      "shares_outstanding": 254537000,
+      "market_capitalization": 170934322350.0
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-27T00:00:00.000",
-      "shares_report_date": "2026-02-28T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 645.36,
-      "shares_outstanding": 253614100,
-      "market_capitalization": 163672395576.0
+      "shares_outstanding": 254537000,
+      "market_capitalization": 164267998320.0
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-28T00:00:00.000",
-      "shares_report_date": "2026-02-28T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 671.0,
-      "shares_outstanding": 253614100,
-      "market_capitalization": 170175061100.0
+      "shares_outstanding": 254537000,
+      "market_capitalization": 170794327000.0
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-29T00:00:00.000",
-      "shares_report_date": "2026-02-28T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 731.0,
-      "shares_outstanding": 253614100,
-      "market_capitalization": 185391907100.0
+      "shares_outstanding": 254537000,
+      "market_capitalization": 186066547000.0
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-06-01T00:00:00.000",
-      "shares_report_date": "2026-02-28T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 782.17,
-      "shares_outstanding": 253614100,
-      "market_capitalization": 198369340597.0
+      "shares_outstanding": 254537000,
+      "market_capitalization": 199091205290.0
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-06-02T00:00:00.000",
-      "shares_report_date": "2026-02-28T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 768.95,
-      "shares_outstanding": 253614100,
-      "market_capitalization": 195016562195.0
+      "shares_outstanding": 254537000,
+      "market_capitalization": 195726226150.0
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-06-03T00:00:00.000",
-      "shares_report_date": "2026-02-28T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 747.61,
-      "shares_outstanding": 253614100,
-      "market_capitalization": 189604437301.0
+      "shares_outstanding": 254537000,
+      "market_capitalization": 190294406570.0
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-06-04T00:00:00.000",
-      "shares_report_date": "2026-02-28T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 719.09,
-      "shares_outstanding": 253614100,
-      "market_capitalization": 182371363169.0
+      "shares_outstanding": 254537000,
+      "market_capitalization": 183035011330.0
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-06-05T00:00:00.000",
-      "shares_report_date": "2026-02-28T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
       "close_price": 671.02,
-      "shares_outstanding": 253614100,
-      "market_capitalization": 170180133382.0
+      "shares_outstanding": 254537000,
+      "market_capitalization": 170799417740.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-08T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 658.79,
+      "shares_outstanding": 254537000,
+      "market_capitalization": 167686430230.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-09T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 644.93,
+      "shares_outstanding": 254537000,
+      "market_capitalization": 164158547410.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-10T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 647.74,
+      "shares_outstanding": 254537000,
+      "market_capitalization": 164873796380.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-11T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 691.53,
+      "shares_outstanding": 254537000,
+      "market_capitalization": 176019971610.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-12T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 682.8,
+      "shares_outstanding": 254537000,
+      "market_capitalization": 173797863600.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-15T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 692.91,
+      "shares_outstanding": 254537000,
+      "market_capitalization": 176371232670.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-16T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 679.49,
+      "shares_outstanding": 254537000,
+      "market_capitalization": 172955346130.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-17T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 682.96,
+      "shares_outstanding": 254537000,
+      "market_capitalization": 173838589520.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-18T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 684.86,
+      "shares_outstanding": 254537000,
+      "market_capitalization": 174322209820.0
     }
   ],
   "psRatio": [
@@ -36483,147 +36634,287 @@
     {
       "symbol": "CRWD",
       "report_date": "2026-04-30T00:00:00.000",
-      "market_capitalization": 113048485075.0,
+      "market_capitalization": 113459867750.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "ttm_revenue": 5094200000.0,
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 5094200000.0,
-      "ps_ratio": 22.19
+      "ps_ratio": 22.27
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-01T00:00:00.000",
-      "market_capitalization": 115556728524.0,
+      "market_capitalization": 115977238680.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "ttm_revenue": 5094200000.0,
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 5094200000.0,
-      "ps_ratio": 22.68
+      "ps_ratio": 22.77
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-04T00:00:00.000",
-      "market_capitalization": 119005880284.0,
+      "market_capitalization": 119438941880.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "ttm_revenue": 5094200000.0,
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 5094200000.0,
-      "ps_ratio": 23.36
+      "ps_ratio": 23.45
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-05T00:00:00.000",
-      "market_capitalization": 120854727073.0,
+      "market_capitalization": 121294516610.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "ttm_revenue": 5094200000.0,
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 5094200000.0,
-      "ps_ratio": 23.72
+      "ps_ratio": 23.81
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-06T00:00:00.000",
-      "market_capitalization": 118709151787.0,
+      "market_capitalization": 119141133590.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "ttm_revenue": 5094200000.0,
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 5094200000.0,
-      "ps_ratio": 23.3
+      "ps_ratio": 23.39
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-07T00:00:00.000",
-      "market_capitalization": 128257722652.0,
+      "market_capitalization": 128724451640.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "ttm_revenue": 5094200000.0,
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 5094200000.0,
-      "ps_ratio": 25.18
+      "ps_ratio": 25.27
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-08T00:00:00.000",
-      "market_capitalization": 133849913557.0,
+      "market_capitalization": 134336992490.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "ttm_revenue": 5094200000.0,
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 5094200000.0,
-      "ps_ratio": 26.27
+      "ps_ratio": 26.37
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-11T00:00:00.000",
-      "market_capitalization": 137524781866.0,
+      "market_capitalization": 138025233620.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "ttm_revenue": 5094200000.0,
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 5094200000.0,
-      "ps_ratio": 27.0
+      "ps_ratio": 27.09
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-12T00:00:00.000",
-      "market_capitalization": 138518949138.0,
+      "market_capitalization": 139023018660.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "ttm_revenue": 5094200000.0,
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 5094200000.0,
-      "ps_ratio": 27.19
+      "ps_ratio": 27.29
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-13T00:00:00.000",
-      "market_capitalization": 142675684237.0,
+      "market_capitalization": 143194880090.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "ttm_revenue": 5094200000.0,
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 5094200000.0,
-      "ps_ratio": 28.01
+      "ps_ratio": 28.11
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-14T00:00:00.000",
-      "market_capitalization": 147083497295.0,
+      "market_capitalization": 147618733150.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "ttm_revenue": 5094200000.0,
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 5094200000.0,
-      "ps_ratio": 28.87
+      "ps_ratio": 28.98
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-15T00:00:00.000",
-      "market_capitalization": 150667064528.0,
+      "market_capitalization": 151215340960.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "ttm_revenue": 5094200000.0,
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 5094200000.0,
-      "ps_ratio": 29.58
+      "ps_ratio": 29.68
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-18T00:00:00.000",
-      "market_capitalization": 156944013503.0,
+      "market_capitalization": 157515131710.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "ttm_revenue": 5094200000.0,
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 5094200000.0,
-      "ps_ratio": 30.81
+      "ps_ratio": 30.92
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-19T00:00:00.000",
-      "market_capitalization": 156449466008.0,
+      "market_capitalization": 157018784560.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "ttm_revenue": 5094200000.0,
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 5094200000.0,
-      "ps_ratio": 30.71
+      "ps_ratio": 30.82
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-20T00:00:00.000",
-      "market_capitalization": 164877062551.0,
+      "market_capitalization": 165477049070.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 5094200000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 5094200000.0,
+      "ps_ratio": 32.48
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-05-21T00:00:00.000",
+      "market_capitalization": 164998519510.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 5094200000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 5094200000.0,
+      "ps_ratio": 32.39
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-05-22T00:00:00.000",
+      "market_capitalization": 168875118020.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 5094200000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 5094200000.0,
+      "ps_ratio": 33.15
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-05-26T00:00:00.000",
+      "market_capitalization": 170934322350.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 5094200000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 5094200000.0,
+      "ps_ratio": 33.55
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-05-27T00:00:00.000",
+      "market_capitalization": 164267998320.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 5094200000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 5094200000.0,
+      "ps_ratio": 32.25
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-05-28T00:00:00.000",
+      "market_capitalization": 170794327000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 5094200000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 5094200000.0,
+      "ps_ratio": 33.53
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-05-29T00:00:00.000",
+      "market_capitalization": 186066547000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 5094200000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 5094200000.0,
+      "ps_ratio": 36.53
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-01T00:00:00.000",
+      "market_capitalization": 199091205290.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 5094200000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 5094200000.0,
+      "ps_ratio": 39.08
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-02T00:00:00.000",
+      "market_capitalization": 195726226150.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 5094200000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 5094200000.0,
+      "ps_ratio": 38.42
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-03T00:00:00.000",
+      "market_capitalization": 190294406570.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 5094200000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 5094200000.0,
+      "ps_ratio": 37.36
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-04T00:00:00.000",
+      "market_capitalization": 183035011330.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 5094200000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 5094200000.0,
+      "ps_ratio": 35.93
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-05T00:00:00.000",
+      "market_capitalization": 170799417740.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 5094200000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 5094200000.0,
+      "ps_ratio": 33.53
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-08T00:00:00.000",
+      "market_capitalization": 167686430230.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 5094200000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 5094200000.0,
+      "ps_ratio": 32.92
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-09T00:00:00.000",
+      "market_capitalization": 164158547410.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 5094200000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 5094200000.0,
+      "ps_ratio": 32.22
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-10T00:00:00.000",
+      "market_capitalization": 164873796380.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "ttm_revenue": 5094200000.0,
       "exchange_rate": 1.0,
@@ -36632,113 +36923,63 @@
     },
     {
       "symbol": "CRWD",
-      "report_date": "2026-05-21T00:00:00.000",
-      "market_capitalization": 164400268043.0,
+      "report_date": "2026-06-11T00:00:00.000",
+      "market_capitalization": 176019971610.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "ttm_revenue": 5094200000.0,
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 5094200000.0,
-      "ps_ratio": 32.27
+      "ps_ratio": 34.55
     },
     {
       "symbol": "CRWD",
-      "report_date": "2026-05-22T00:00:00.000",
-      "market_capitalization": 168262810786.0,
+      "report_date": "2026-06-12T00:00:00.000",
+      "market_capitalization": 173797863600.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "ttm_revenue": 5094200000.0,
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 5094200000.0,
-      "ps_ratio": 33.03
+      "ps_ratio": 34.12
     },
     {
       "symbol": "CRWD",
-      "report_date": "2026-05-26T00:00:00.000",
-      "market_capitalization": 170314548855.0,
+      "report_date": "2026-06-15T00:00:00.000",
+      "market_capitalization": 176371232670.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "ttm_revenue": 5094200000.0,
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 5094200000.0,
-      "ps_ratio": 33.43
+      "ps_ratio": 34.62
     },
     {
       "symbol": "CRWD",
-      "report_date": "2026-05-27T00:00:00.000",
-      "market_capitalization": 163672395576.0,
+      "report_date": "2026-06-16T00:00:00.000",
+      "market_capitalization": 172955346130.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "ttm_revenue": 5094200000.0,
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 5094200000.0,
-      "ps_ratio": 32.13
+      "ps_ratio": 33.95
     },
     {
       "symbol": "CRWD",
-      "report_date": "2026-05-28T00:00:00.000",
-      "market_capitalization": 170175061100.0,
+      "report_date": "2026-06-17T00:00:00.000",
+      "market_capitalization": 173838589520.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "ttm_revenue": 5094200000.0,
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 5094200000.0,
-      "ps_ratio": 33.41
+      "ps_ratio": 34.12
     },
     {
       "symbol": "CRWD",
-      "report_date": "2026-05-29T00:00:00.000",
-      "market_capitalization": 185391907100.0,
+      "report_date": "2026-06-18T00:00:00.000",
+      "market_capitalization": 174322209820.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "ttm_revenue": 5094200000.0,
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 5094200000.0,
-      "ps_ratio": 36.39
-    },
-    {
-      "symbol": "CRWD",
-      "report_date": "2026-06-01T00:00:00.000",
-      "market_capitalization": 198369340597.0,
-      "fiscal_quarter": "2026-04-30T00:00:00.000",
-      "ttm_revenue": 5094200000.0,
-      "exchange_rate": 1.0,
-      "ttm_revenue_usd": 5094200000.0,
-      "ps_ratio": 38.94
-    },
-    {
-      "symbol": "CRWD",
-      "report_date": "2026-06-02T00:00:00.000",
-      "market_capitalization": 195016562195.0,
-      "fiscal_quarter": "2026-04-30T00:00:00.000",
-      "ttm_revenue": 5094200000.0,
-      "exchange_rate": 1.0,
-      "ttm_revenue_usd": 5094200000.0,
-      "ps_ratio": 38.28
-    },
-    {
-      "symbol": "CRWD",
-      "report_date": "2026-06-03T00:00:00.000",
-      "market_capitalization": 189604437301.0,
-      "fiscal_quarter": "2026-04-30T00:00:00.000",
-      "ttm_revenue": 5094200000.0,
-      "exchange_rate": 1.0,
-      "ttm_revenue_usd": 5094200000.0,
-      "ps_ratio": 37.22
-    },
-    {
-      "symbol": "CRWD",
-      "report_date": "2026-06-04T00:00:00.000",
-      "market_capitalization": 182371363169.0,
-      "fiscal_quarter": "2026-04-30T00:00:00.000",
-      "ttm_revenue": 5094200000.0,
-      "exchange_rate": 1.0,
-      "ttm_revenue_usd": 5094200000.0,
-      "ps_ratio": 35.8
-    },
-    {
-      "symbol": "CRWD",
-      "report_date": "2026-06-05T00:00:00.000",
-      "market_capitalization": 170180133382.0,
-      "fiscal_quarter": "2026-04-30T00:00:00.000",
-      "ttm_revenue": 5094200000.0,
-      "exchange_rate": 1.0,
-      "ttm_revenue_usd": 5094200000.0,
-      "ps_ratio": 33.41
+      "ps_ratio": 34.22
     }
   ],
   "pbRatio": [
@@ -46765,147 +47006,287 @@
     {
       "symbol": "CRWD",
       "report_date": "2026-04-30T00:00:00.000",
-      "market_capitalization": 113048485075.0,
+      "market_capitalization": 113459867750.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "book_value_of_equity": 4633877000.0,
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 4633877000.0,
-      "pb_ratio": 24.4
+      "pb_ratio": 24.48
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-01T00:00:00.000",
-      "market_capitalization": 115556728524.0,
+      "market_capitalization": 115977238680.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "book_value_of_equity": 4633877000.0,
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 4633877000.0,
-      "pb_ratio": 24.94
+      "pb_ratio": 25.03
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-04T00:00:00.000",
-      "market_capitalization": 119005880284.0,
+      "market_capitalization": 119438941880.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "book_value_of_equity": 4633877000.0,
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 4633877000.0,
-      "pb_ratio": 25.68
+      "pb_ratio": 25.78
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-05T00:00:00.000",
-      "market_capitalization": 120854727073.0,
+      "market_capitalization": 121294516610.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "book_value_of_equity": 4633877000.0,
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 4633877000.0,
-      "pb_ratio": 26.08
+      "pb_ratio": 26.18
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-06T00:00:00.000",
-      "market_capitalization": 118709151787.0,
+      "market_capitalization": 119141133590.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "book_value_of_equity": 4633877000.0,
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 4633877000.0,
-      "pb_ratio": 25.62
+      "pb_ratio": 25.71
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-07T00:00:00.000",
-      "market_capitalization": 128257722652.0,
+      "market_capitalization": 128724451640.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "book_value_of_equity": 4633877000.0,
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 4633877000.0,
-      "pb_ratio": 27.68
+      "pb_ratio": 27.78
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-08T00:00:00.000",
-      "market_capitalization": 133849913557.0,
+      "market_capitalization": 134336992490.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "book_value_of_equity": 4633877000.0,
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 4633877000.0,
-      "pb_ratio": 28.89
+      "pb_ratio": 28.99
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-11T00:00:00.000",
-      "market_capitalization": 137524781866.0,
+      "market_capitalization": 138025233620.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "book_value_of_equity": 4633877000.0,
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 4633877000.0,
-      "pb_ratio": 29.68
+      "pb_ratio": 29.79
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-12T00:00:00.000",
-      "market_capitalization": 138518949138.0,
+      "market_capitalization": 139023018660.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "book_value_of_equity": 4633877000.0,
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 4633877000.0,
-      "pb_ratio": 29.89
+      "pb_ratio": 30.0
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-13T00:00:00.000",
-      "market_capitalization": 142675684237.0,
+      "market_capitalization": 143194880090.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "book_value_of_equity": 4633877000.0,
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 4633877000.0,
-      "pb_ratio": 30.79
+      "pb_ratio": 30.9
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-14T00:00:00.000",
-      "market_capitalization": 147083497295.0,
+      "market_capitalization": 147618733150.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "book_value_of_equity": 4633877000.0,
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 4633877000.0,
-      "pb_ratio": 31.74
+      "pb_ratio": 31.86
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-15T00:00:00.000",
-      "market_capitalization": 150667064528.0,
+      "market_capitalization": 151215340960.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "book_value_of_equity": 4633877000.0,
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 4633877000.0,
-      "pb_ratio": 32.51
+      "pb_ratio": 32.63
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-18T00:00:00.000",
-      "market_capitalization": 156944013503.0,
+      "market_capitalization": 157515131710.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "book_value_of_equity": 4633877000.0,
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 4633877000.0,
-      "pb_ratio": 33.87
+      "pb_ratio": 33.99
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-19T00:00:00.000",
-      "market_capitalization": 156449466008.0,
+      "market_capitalization": 157018784560.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "book_value_of_equity": 4633877000.0,
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 4633877000.0,
-      "pb_ratio": 33.76
+      "pb_ratio": 33.88
     },
     {
       "symbol": "CRWD",
       "report_date": "2026-05-20T00:00:00.000",
-      "market_capitalization": 164877062551.0,
+      "market_capitalization": 165477049070.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 4633877000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 4633877000.0,
+      "pb_ratio": 35.71
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-05-21T00:00:00.000",
+      "market_capitalization": 164998519510.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 4633877000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 4633877000.0,
+      "pb_ratio": 35.61
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-05-22T00:00:00.000",
+      "market_capitalization": 168875118020.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 4633877000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 4633877000.0,
+      "pb_ratio": 36.44
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-05-26T00:00:00.000",
+      "market_capitalization": 170934322350.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 4633877000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 4633877000.0,
+      "pb_ratio": 36.89
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-05-27T00:00:00.000",
+      "market_capitalization": 164267998320.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 4633877000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 4633877000.0,
+      "pb_ratio": 35.45
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-05-28T00:00:00.000",
+      "market_capitalization": 170794327000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 4633877000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 4633877000.0,
+      "pb_ratio": 36.86
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-05-29T00:00:00.000",
+      "market_capitalization": 186066547000.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 4633877000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 4633877000.0,
+      "pb_ratio": 40.15
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-01T00:00:00.000",
+      "market_capitalization": 199091205290.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 4633877000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 4633877000.0,
+      "pb_ratio": 42.96
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-02T00:00:00.000",
+      "market_capitalization": 195726226150.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 4633877000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 4633877000.0,
+      "pb_ratio": 42.24
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-03T00:00:00.000",
+      "market_capitalization": 190294406570.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 4633877000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 4633877000.0,
+      "pb_ratio": 41.07
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-04T00:00:00.000",
+      "market_capitalization": 183035011330.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 4633877000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 4633877000.0,
+      "pb_ratio": 39.5
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-05T00:00:00.000",
+      "market_capitalization": 170799417740.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 4633877000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 4633877000.0,
+      "pb_ratio": 36.86
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-08T00:00:00.000",
+      "market_capitalization": 167686430230.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 4633877000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 4633877000.0,
+      "pb_ratio": 36.19
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-09T00:00:00.000",
+      "market_capitalization": 164158547410.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 4633877000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 4633877000.0,
+      "pb_ratio": 35.43
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-10T00:00:00.000",
+      "market_capitalization": 164873796380.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "book_value_of_equity": 4633877000.0,
       "exchange_rate": 1.0,
@@ -46914,113 +47295,63 @@
     },
     {
       "symbol": "CRWD",
-      "report_date": "2026-05-21T00:00:00.000",
-      "market_capitalization": 164400268043.0,
+      "report_date": "2026-06-11T00:00:00.000",
+      "market_capitalization": 176019971610.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "book_value_of_equity": 4633877000.0,
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 4633877000.0,
-      "pb_ratio": 35.48
+      "pb_ratio": 37.99
     },
     {
       "symbol": "CRWD",
-      "report_date": "2026-05-22T00:00:00.000",
-      "market_capitalization": 168262810786.0,
+      "report_date": "2026-06-12T00:00:00.000",
+      "market_capitalization": 173797863600.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "book_value_of_equity": 4633877000.0,
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 4633877000.0,
-      "pb_ratio": 36.31
+      "pb_ratio": 37.51
     },
     {
       "symbol": "CRWD",
-      "report_date": "2026-05-26T00:00:00.000",
-      "market_capitalization": 170314548855.0,
+      "report_date": "2026-06-15T00:00:00.000",
+      "market_capitalization": 176371232670.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "book_value_of_equity": 4633877000.0,
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 4633877000.0,
-      "pb_ratio": 36.75
+      "pb_ratio": 38.06
     },
     {
       "symbol": "CRWD",
-      "report_date": "2026-05-27T00:00:00.000",
-      "market_capitalization": 163672395576.0,
+      "report_date": "2026-06-16T00:00:00.000",
+      "market_capitalization": 172955346130.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "book_value_of_equity": 4633877000.0,
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 4633877000.0,
-      "pb_ratio": 35.32
+      "pb_ratio": 37.32
     },
     {
       "symbol": "CRWD",
-      "report_date": "2026-05-28T00:00:00.000",
-      "market_capitalization": 170175061100.0,
+      "report_date": "2026-06-17T00:00:00.000",
+      "market_capitalization": 173838589520.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "book_value_of_equity": 4633877000.0,
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 4633877000.0,
-      "pb_ratio": 36.72
+      "pb_ratio": 37.51
     },
     {
       "symbol": "CRWD",
-      "report_date": "2026-05-29T00:00:00.000",
-      "market_capitalization": 185391907100.0,
+      "report_date": "2026-06-18T00:00:00.000",
+      "market_capitalization": 174322209820.0,
       "fiscal_quarter": "2026-04-30T00:00:00.000",
       "book_value_of_equity": 4633877000.0,
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 4633877000.0,
-      "pb_ratio": 40.01
-    },
-    {
-      "symbol": "CRWD",
-      "report_date": "2026-06-01T00:00:00.000",
-      "market_capitalization": 198369340597.0,
-      "fiscal_quarter": "2026-04-30T00:00:00.000",
-      "book_value_of_equity": 4633877000.0,
-      "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 4633877000.0,
-      "pb_ratio": 42.81
-    },
-    {
-      "symbol": "CRWD",
-      "report_date": "2026-06-02T00:00:00.000",
-      "market_capitalization": 195016562195.0,
-      "fiscal_quarter": "2026-04-30T00:00:00.000",
-      "book_value_of_equity": 4633877000.0,
-      "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 4633877000.0,
-      "pb_ratio": 42.08
-    },
-    {
-      "symbol": "CRWD",
-      "report_date": "2026-06-03T00:00:00.000",
-      "market_capitalization": 189604437301.0,
-      "fiscal_quarter": "2026-04-30T00:00:00.000",
-      "book_value_of_equity": 4633877000.0,
-      "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 4633877000.0,
-      "pb_ratio": 40.92
-    },
-    {
-      "symbol": "CRWD",
-      "report_date": "2026-06-04T00:00:00.000",
-      "market_capitalization": 182371363169.0,
-      "fiscal_quarter": "2026-04-30T00:00:00.000",
-      "book_value_of_equity": 4633877000.0,
-      "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 4633877000.0,
-      "pb_ratio": 39.36
-    },
-    {
-      "symbol": "CRWD",
-      "report_date": "2026-06-05T00:00:00.000",
-      "market_capitalization": 170180133382.0,
-      "fiscal_quarter": "2026-04-30T00:00:00.000",
-      "book_value_of_equity": 4633877000.0,
-      "exchange_rate": 1.0,
-      "book_value_of_equity_usd": 4633877000.0,
-      "pb_ratio": 36.73
+      "pb_ratio": 37.62
     }
   ],
   "pegRatio": [

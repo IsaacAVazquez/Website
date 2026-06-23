@@ -1,60 +1,6 @@
 [
   {
     "symbol": "IBM",
-    "report_date": "2025-06-10",
-    "open": 273.19,
-    "close": 276.24,
-    "high": 277.47,
-    "low": 272.56,
-    "volume": 5163500
-  },
-  {
-    "symbol": "IBM",
-    "report_date": "2025-06-11",
-    "open": 276.7,
-    "close": 281.52,
-    "high": 281.75,
-    "low": 275.11,
-    "volume": 4656000
-  },
-  {
-    "symbol": "IBM",
-    "report_date": "2025-06-12",
-    "open": 281.53,
-    "close": 281.03,
-    "high": 283.06,
-    "low": 279.83,
-    "volume": 3418000
-  },
-  {
-    "symbol": "IBM",
-    "report_date": "2025-06-13",
-    "open": 278.21,
-    "close": 277.22,
-    "high": 279.84,
-    "low": 275.83,
-    "volume": 3243800
-  },
-  {
-    "symbol": "IBM",
-    "report_date": "2025-06-16",
-    "open": 279.31,
-    "close": 281.83,
-    "high": 284.5,
-    "low": 278.67,
-    "volume": 3685300
-  },
-  {
-    "symbol": "IBM",
-    "report_date": "2025-06-17",
-    "open": 281.15,
-    "close": 283.05,
-    "high": 284.79,
-    "low": 281.0,
-    "volume": 3069600
-  },
-  {
-    "symbol": "IBM",
     "report_date": "2025-06-18",
     "open": 285.0,
     "close": 283.21,
@@ -2256,7 +2202,7 @@
     "close": 277.49,
     "high": 283.59,
     "low": 271.29,
-    "volume": 8998800
+    "volume": 9007900
   },
   {
     "symbol": "IBM",
@@ -2265,6 +2211,60 @@
     "close": 272.36,
     "high": 280.51,
     "low": 271.33,
-    "volume": 5279195
+    "volume": 5497100
+  },
+  {
+    "symbol": "IBM",
+    "report_date": "2026-06-11",
+    "open": 268.0,
+    "close": 274.85,
+    "high": 276.48,
+    "low": 266.5,
+    "volume": 7558300
+  },
+  {
+    "symbol": "IBM",
+    "report_date": "2026-06-12",
+    "open": 278.94,
+    "close": 272.24,
+    "high": 278.94,
+    "low": 267.68,
+    "volume": 5748900
+  },
+  {
+    "symbol": "IBM",
+    "report_date": "2026-06-15",
+    "open": 272.0,
+    "close": 268.71,
+    "high": 272.25,
+    "low": 264.8,
+    "volume": 7178800
+  },
+  {
+    "symbol": "IBM",
+    "report_date": "2026-06-16",
+    "open": 270.87,
+    "close": 270.81,
+    "high": 276.62,
+    "low": 268.61,
+    "volume": 4917600
+  },
+  {
+    "symbol": "IBM",
+    "report_date": "2026-06-17",
+    "open": 266.35,
+    "close": 262.35,
+    "high": 268.87,
+    "low": 261.88,
+    "volume": 5537000
+  },
+  {
+    "symbol": "IBM",
+    "report_date": "2026-06-18",
+    "open": 251.38,
+    "close": 249.1,
+    "high": 252.47,
+    "low": 243.68,
+    "volume": 16619700
   }
 ]

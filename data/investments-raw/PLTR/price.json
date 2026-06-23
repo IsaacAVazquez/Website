@@ -1,60 +1,6 @@
 [
   {
     "symbol": "PLTR",
-    "report_date": "2025-06-10",
-    "open": 131.02,
-    "close": 132.81,
-    "high": 134.07,
-    "low": 129.41,
-    "volume": 69308900
-  },
-  {
-    "symbol": "PLTR",
-    "report_date": "2025-06-11",
-    "open": 133.92,
-    "close": 136.39,
-    "high": 140.0,
-    "low": 132.99,
-    "volume": 97366000
-  },
-  {
-    "symbol": "PLTR",
-    "report_date": "2025-06-12",
-    "open": 136.4,
-    "close": 135.19,
-    "high": 137.1,
-    "low": 134.63,
-    "volume": 56248200
-  },
-  {
-    "symbol": "PLTR",
-    "report_date": "2025-06-13",
-    "open": 133.815,
-    "close": 137.4,
-    "high": 139.99,
-    "low": 133.35,
-    "volume": 93519000
-  },
-  {
-    "symbol": "PLTR",
-    "report_date": "2025-06-16",
-    "open": 140.03,
-    "close": 141.41,
-    "high": 144.86,
-    "low": 139.812,
-    "volume": 80779800
-  },
-  {
-    "symbol": "PLTR",
-    "report_date": "2025-06-17",
-    "open": 141.485,
-    "close": 138.2,
-    "high": 141.69,
-    "low": 136.08,
-    "volume": 70479100
-  },
-  {
-    "symbol": "PLTR",
     "report_date": "2025-06-18",
     "open": 139.04,
     "close": 139.96,
@@ -2256,7 +2202,7 @@
     "close": 132.07,
     "high": 136.99,
     "low": 127.35,
-    "volume": 38563400
+    "volume": 38680000
   },
   {
     "symbol": "PLTR",
@@ -2265,6 +2211,60 @@
     "close": 130.21,
     "high": 133.185,
     "low": 128.8,
-    "volume": 29150613
+    "volume": 30612600
+  },
+  {
+    "symbol": "PLTR",
+    "report_date": "2026-06-11",
+    "open": 128.78,
+    "close": 131.08,
+    "high": 131.52,
+    "low": 127.17,
+    "volume": 27554500
+  },
+  {
+    "symbol": "PLTR",
+    "report_date": "2026-06-12",
+    "open": 130.915,
+    "close": 127.99,
+    "high": 131.09,
+    "low": 126.65,
+    "volume": 35378000
+  },
+  {
+    "symbol": "PLTR",
+    "report_date": "2026-06-15",
+    "open": 130.02,
+    "close": 134.71,
+    "high": 134.98,
+    "low": 129.7,
+    "volume": 41748200
+  },
+  {
+    "symbol": "PLTR",
+    "report_date": "2026-06-16",
+    "open": 134.59,
+    "close": 133.25,
+    "high": 134.59,
+    "low": 129.62,
+    "volume": 30409900
+  },
+  {
+    "symbol": "PLTR",
+    "report_date": "2026-06-17",
+    "open": 131.76,
+    "close": 130.63,
+    "high": 136.1,
+    "low": 129.92,
+    "volume": 32290800
+  },
+  {
+    "symbol": "PLTR",
+    "report_date": "2026-06-18",
+    "open": 130.84,
+    "close": 128.47,
+    "high": 131.43,
+    "low": 125.01,
+    "volume": 55338000
   }
 ]

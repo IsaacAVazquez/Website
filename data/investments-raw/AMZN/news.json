@@ -9,15 +9,6 @@
     "link": "https://finance.yahoo.com/news/one-time-amazon-takeover-target-125946201.html"
   },
   {
-    "uuid": "94ecea1b-28cf-3159-aeeb-c2ed83b84ea4",
-    "symbol": "AMZN",
-    "title": "Game On: Discord reportedly in talks for IPO in 2025",
-    "publisher": "TipRanks",
-    "report_date": "2025-03-13",
-    "type": "STORY",
-    "link": "https://finance.yahoo.com/news/game-discord-reportedly-talks-ipo-163531942.html"
-  },
-  {
     "uuid": "0ed5f0fd-d31a-398c-a525-af185fbf4ff7",
     "symbol": "AMZN",
     "title": "Nuclear Energy Stock Talen Soars Amid Bullish Initiation",
@@ -25,6 +16,15 @@
     "report_date": "2025-03-13",
     "type": "STORY",
     "link": "https://finance.yahoo.com/m/0ed5f0fd-d31a-398c-a525-af185fbf4ff7/nuclear-energy-stock-talen.html"
+  },
+  {
+    "uuid": "94ecea1b-28cf-3159-aeeb-c2ed83b84ea4",
+    "symbol": "AMZN",
+    "title": "Game On: Discord reportedly in talks for IPO in 2025",
+    "publisher": "TipRanks",
+    "report_date": "2025-03-13",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/game-discord-reportedly-talks-ipo-163531942.html"
   },
   {
     "uuid": "ed50c2b8-db3e-337c-9a32-5264eaa77397",

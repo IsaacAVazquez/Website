@@ -1,3 +1,92 @@
-{
-  "error": "Query failed: Binder Error: Referenced column \"related_symbols\" not found in FROM clause!\nCandidate bindings: \"report_date\", \"news\""
-}
+[
+  {
+    "uuid": "06f22786-0792-3a68-a499-16e8809c4f58",
+    "symbol": "SNPS",
+    "title": "Three Stocks That May Be Trading Below Their Estimated Value In April 2025",
+    "publisher": "Simply Wall St.",
+    "report_date": "2025-04-14",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/three-stocks-may-trading-below-113755565.html"
+  },
+  {
+    "uuid": "66866936-5cb5-36c2-84ed-a79cc17df6da",
+    "symbol": "SNPS",
+    "title": "Exploring High Growth US Tech Stocks for May 2025",
+    "publisher": "Simply Wall St.",
+    "report_date": "2025-05-13",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/exploring-high-growth-us-tech-113900064.html"
+  },
+  {
+    "uuid": "480681b2-8308-31c5-a55b-018060897f9c",
+    "symbol": "SNPS",
+    "title": "Nvidia opening up AI ecosystem with these partnerships, like Qualcomm",
+    "publisher": "Yahoo Finance Video",
+    "report_date": "2025-05-20",
+    "type": "VIDEO",
+    "link": "https://finance.yahoo.com/video/nvidia-opening-ai-ecosystem-partnerships-202651675.html"
+  },
+  {
+    "uuid": "9d8cf0c1-0787-3365-9274-7ce14e18b6aa",
+    "symbol": "SNPS",
+    "title": "FTC will Require Synopsys and ANSYS to Divest Assets to Resolve Merger Concerns",
+    "publisher": "Insider Monkey",
+    "report_date": "2025-05-29",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/ftc-require-synopsys-ansys-divest-011750043.html"
+  },
+  {
+    "uuid": "78ac3576-2d73-311d-b281-88d7c914a586",
+    "symbol": "SNPS",
+    "title": "Synopsys Says It Hasn\u2019t Received Notice to Stop Exports to China, Pushing Back on Report",
+    "publisher": "Barrons.com",
+    "report_date": "2025-05-29",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/78ac3576-2d73-311d-b281-88d7c914a586/synopsys-says-it-hasn%E2%80%99t.html"
+  },
+  {
+    "uuid": "251263bb-88cb-3480-a6fc-57ee2d97294b",
+    "symbol": "SNPS",
+    "title": "Trump orders U.S. firms to halt chip software sales to China, says FT",
+    "publisher": "Investing.com",
+    "report_date": "2025-05-29",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/trump-orders-u-firms-halt-195726926.html"
+  },
+  {
+    "uuid": "8e48b696-e22a-3e7f-bdbd-a48a315aab69",
+    "symbol": "SNPS",
+    "title": "US Tightens China Chip Curbs by Targeting Design Software",
+    "publisher": "Bloomberg",
+    "report_date": "2025-05-29",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/us-tightens-china-chip-curbs-045811794.html"
+  },
+  {
+    "uuid": "9c46ac3e-a0bd-3c36-abfa-7e5382addab8",
+    "symbol": "SNPS",
+    "title": "Trump Blocks Chip Design Software Firms From Selling In China",
+    "publisher": "Investor's Business Daily",
+    "report_date": "2025-05-29",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/9c46ac3e-a0bd-3c36-abfa-7e5382addab8/trump-blocks-chip-design.html"
+  },
+  {
+    "uuid": "bb5b7531-d03b-3469-aae0-7b68b87bba87",
+    "symbol": "SNPS",
+    "title": "Synopsys gets conditional FTC approval for Ansys acquisition",
+    "publisher": "Verdict",
+    "report_date": "2025-05-29",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/bb5b7531-d03b-3469-aae0-7b68b87bba87/synopsys-gets-conditional-ftc.html"
+  },
+  {
+    "uuid": "60b652b1-ba1a-3011-9e0c-1f92bb316553",
+    "symbol": "SNPS",
+    "title": "Cadence, Synopsys, Others Reportedly Ordered to Stop Shipments to China",
+    "publisher": "MT Newswires",
+    "report_date": "2025-05-29",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/cadence-synopsys-others-reportedly-ordered-110607594.html"
+  }
+]

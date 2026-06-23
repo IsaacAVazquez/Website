@@ -1,15 +1,6 @@
 [
   {
     "symbol": "NVDA",
-    "report_date": "2025-06-17",
-    "open": 144.49,
-    "close": 144.12,
-    "high": 145.22,
-    "low": 143.78,
-    "volume": 139108000
-  },
-  {
-    "symbol": "NVDA",
     "report_date": "2025-06-18",
     "open": 144.01,
     "close": 145.48,
@@ -2265,6 +2256,15 @@
     "close": 204.65,
     "high": 209.21,
     "low": 203.08,
-    "volume": 127804800
+    "volume": 128363500
+  },
+  {
+    "symbol": "NVDA",
+    "report_date": "2026-06-18",
+    "open": 207.33,
+    "close": 210.69,
+    "high": 211.39,
+    "low": 206.5,
+    "volume": 241272000
   }
 ]

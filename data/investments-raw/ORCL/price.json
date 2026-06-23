@@ -1,15 +1,6 @@
 [
   {
     "symbol": "ORCL",
-    "report_date": "2025-06-17",
-    "open": 210.66,
-    "close": 208.18,
-    "high": 215.88,
-    "low": 207.48,
-    "volume": 17819200
-  },
-  {
-    "symbol": "ORCL",
     "report_date": "2025-06-18",
     "open": 211.09,
     "close": 210.87,
@@ -2265,6 +2256,15 @@
     "close": 183.53,
     "high": 190.19,
     "low": 182.58,
-    "volume": 16546700
+    "volume": 16616600
+  },
+  {
+    "symbol": "ORCL",
+    "report_date": "2026-06-18",
+    "open": 183.01,
+    "close": 184.29,
+    "high": 187.99,
+    "low": 177.7,
+    "volume": 31386100
   }
 ]

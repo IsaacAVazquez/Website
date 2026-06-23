@@ -1,10 +1,10 @@
 {
   "symbol": "PLTR",
-  "lastUpdated": "2026-06-19T00:23:44.589850+00:00",
+  "lastUpdated": "2026-06-23T00:06:23.255341+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-19T00:23:44.589850+00:00",
+    "snapshotBuiltAt": "2026-06-23T00:06:23.255341+00:00",
     "sections": {
-      "price": "2026-06-10"
+      "price": "2026-06-18"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 0.8876,
-      "ttmPe": 146.7,
-      "marketCap": 312153995520,
-      "psRatio": 59.75,
-      "pbRatio": 36.94,
+      "ttmPe": 144.74,
+      "marketCap": 307982672640,
+      "psRatio": 58.95,
+      "pbRatio": 36.45,
       "pegRatio": 0.48
     },
     "profitability": {
@@ -4965,65 +4965,17 @@
       ]
     },
     "wacc": {
-      "wacc": 17.47,
-      "costOfEquity": 17.48,
+      "wacc": 17.349999999999998,
+      "costOfEquity": 17.36,
       "costOfDebt": 0.06,
       "taxRate": 9,
-      "beta": 1.5544,
-      "marketCap": 312153995520
+      "beta": 1.5343,
+      "marketCap": 307982672640
     },
     "beta": {
-      "beta5y": 1.5544
+      "beta5y": 1.5343
     },
     "price": [
-      {
-        "date": "2025-06-10",
-        "open": 131.02,
-        "high": 134.07,
-        "low": 129.41,
-        "close": 132.81,
-        "volume": 69308900
-      },
-      {
-        "date": "2025-06-11",
-        "open": 133.92,
-        "high": 140,
-        "low": 132.99,
-        "close": 136.39,
-        "volume": 97366000
-      },
-      {
-        "date": "2025-06-12",
-        "open": 136.4,
-        "high": 137.1,
-        "low": 134.63,
-        "close": 135.19,
-        "volume": 56248200
-      },
-      {
-        "date": "2025-06-13",
-        "open": 133.815,
-        "high": 139.99,
-        "low": 133.35,
-        "close": 137.4,
-        "volume": 93519000
-      },
-      {
-        "date": "2025-06-16",
-        "open": 140.03,
-        "high": 144.86,
-        "low": 139.812,
-        "close": 141.41,
-        "volume": 80779800
-      },
-      {
-        "date": "2025-06-17",
-        "open": 141.485,
-        "high": 141.69,
-        "low": 136.08,
-        "close": 138.2,
-        "volume": 70479100
-      },
       {
         "date": "2025-06-18",
         "open": 139.04,
@@ -6982,7 +6934,7 @@
         "high": 136.99,
         "low": 127.35,
         "close": 132.07,
-        "volume": 38563400
+        "volume": 38680000
       },
       {
         "date": "2026-06-10",
@@ -6990,18 +6942,58 @@
         "high": 133.185,
         "low": 128.8,
         "close": 130.21,
-        "volume": 29150613
+        "volume": 30612600
+      },
+      {
+        "date": "2026-06-11",
+        "open": 128.78,
+        "high": 131.52,
+        "low": 127.17,
+        "close": 131.08,
+        "volume": 27554500
+      },
+      {
+        "date": "2026-06-12",
+        "open": 130.915,
+        "high": 131.09,
+        "low": 126.65,
+        "close": 127.99,
+        "volume": 35378000
+      },
+      {
+        "date": "2026-06-15",
+        "open": 130.02,
+        "high": 134.98,
+        "low": 129.7,
+        "close": 134.71,
+        "volume": 41748200
+      },
+      {
+        "date": "2026-06-16",
+        "open": 134.59,
+        "high": 134.59,
+        "low": 129.62,
+        "close": 133.25,
+        "volume": 30409900
+      },
+      {
+        "date": "2026-06-17",
+        "open": 131.76,
+        "high": 136.1,
+        "low": 129.92,
+        "close": 130.63,
+        "volume": 32290800
+      },
+      {
+        "date": "2026-06-18",
+        "open": 130.84,
+        "high": 131.43,
+        "low": 125.01,
+        "close": 128.47,
+        "volume": 55338000
       }
     ],
     "news": [
-      {
-        "uuid": "5af5f21a-c494-3b85-940a-105f80e91ef5",
-        "title": "AI is Taking Over Aviation--And These Two Companies Just Hit the Accelerator",
-        "publisher": "GuruFocus.com",
-        "reportDate": "2025-03-14",
-        "link": "https://finance.yahoo.com/news/ai-taking-over-aviation-two-164103071.html",
-        "type": "STORY"
-      },
       {
         "uuid": "944b24c7-5dc1-3bf4-a1c9-ea3e0b527d80",
         "title": "Palantir (PLTR) Joins Forces with Ondas to Elevate AI-Powered Autonomous Drones",
@@ -7016,6 +7008,14 @@
         "publisher": "MT Newswires",
         "reportDate": "2025-03-14",
         "link": "https://finance.yahoo.com/news/palantir-strikes-ai-partnerships-archer-192210992.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "5af5f21a-c494-3b85-940a-105f80e91ef5",
+        "title": "AI is Taking Over Aviation--And These Two Companies Just Hit the Accelerator",
+        "publisher": "GuruFocus.com",
+        "reportDate": "2025-03-14",
+        "link": "https://finance.yahoo.com/news/ai-taking-over-aviation-two-164103071.html",
         "type": "STORY"
       },
       {
@@ -7059,20 +7059,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "5f3936c2-86dc-3310-a7c4-553590e3dde3",
-        "title": "Palantir declines, Lemonade lifts guidance, Celsius Q1 miss",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/video/palantir-declines-lemonade-lifts-guidance-151158298.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "da78ab04-9824-38ae-919d-0f45264f5e66",
         "title": "Nebius Group Stock Earns 84 RS Rating",
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-05-06",
         "link": "https://finance.yahoo.com/m/da78ab04-9824-38ae-919d-0f45264f5e66/nebius-group-stock-earns-84.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "5f3936c2-86dc-3310-a7c4-553590e3dde3",
+        "title": "Palantir declines, Lemonade lifts guidance, Celsius Q1 miss",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/video/palantir-declines-lemonade-lifts-guidance-151158298.html",
+        "type": "VIDEO"
       }
     ],
     "officers": [
@@ -7143,23 +7143,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 146.7,
-        "industryAvg": 28.13
+        "value": 144.74,
+        "industryAvg": 49.03
       },
       {
         "metric": "P/S Ratio",
-        "value": 59.75,
-        "industryAvg": 6.08
+        "value": 58.95,
+        "industryAvg": 1.64
       },
       {
         "metric": "P/B Ratio",
-        "value": 36.94,
-        "industryAvg": 7.44
+        "value": 36.45,
+        "industryAvg": 1.84
       },
       {
         "metric": "ROE",
         "value": 10.99,
-        "industryAvg": 26.58
+        "industryAvg": 26.6
       },
       {
         "metric": "ROA",
@@ -7179,14 +7179,14 @@
       {
         "metric": "Net Margin",
         "value": 53.32,
-        "industryAvg": 18.709999999999997
+        "industryAvg": 18.72
       }
     ],
     "dcf": {
-      "fairValue": 13.04,
-      "currentPrice": 130.21,
-      "upside": -89.99,
-      "wacc": 17.47,
+      "fairValue": 13.15,
+      "currentPrice": 128.47,
+      "upside": -89.76,
+      "wacc": 17.35,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

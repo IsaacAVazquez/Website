@@ -1,15 +1,6 @@
 [
   {
     "symbol": "TSLA",
-    "report_date": "2025-06-17",
-    "open": 326.09,
-    "close": 316.35,
-    "high": 327.26,
-    "low": 314.74,
-    "volume": 88282700
-  },
-  {
-    "symbol": "TSLA",
     "report_date": "2025-06-18",
     "open": 317.31,
     "close": 322.05,
@@ -2265,6 +2256,15 @@
     "close": 396.38,
     "high": 405.94,
     "low": 393.76,
-    "volume": 43376000
+    "volume": 43534300
+  },
+  {
+    "symbol": "TSLA",
+    "report_date": "2026-06-18",
+    "open": 398.1,
+    "close": 400.49,
+    "high": 402.52,
+    "low": 384.7,
+    "volume": 58384700
   }
 ]

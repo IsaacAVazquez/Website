@@ -1,15 +1,6 @@
 [
   {
     "symbol": "TSM",
-    "report_date": "2025-06-17",
-    "open": 213.89,
-    "close": 213.9,
-    "high": 215.94,
-    "low": 213.5,
-    "volume": 8389700
-  },
-  {
-    "symbol": "TSM",
     "report_date": "2025-06-18",
     "open": 214.7,
     "close": 213.5,
@@ -2265,6 +2256,15 @@
     "close": 432.15,
     "high": 442.5,
     "low": 431.64,
-    "volume": 10911100
+    "volume": 10934100
+  },
+  {
+    "symbol": "TSM",
+    "report_date": "2026-06-18",
+    "open": 438.88,
+    "close": 462.12,
+    "high": 465.22,
+    "low": 438.39,
+    "volume": 25817100
   }
 ]

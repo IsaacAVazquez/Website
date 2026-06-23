@@ -1010,9 +1010,9 @@
     {
       "symbol": "CRWD",
       "report_date": "2025-04-30T00:00:00.000",
-      "eps": -0.4436,
+      "eps": -0.4197,
       "prev_year_eps": 0.1712,
-      "yoy_growth": -3.5911
+      "yoy_growth": -3.4515
     },
     {
       "symbol": "CRWD",
@@ -1034,6 +1034,13 @@
       "eps": 0.1499,
       "prev_year_eps": -0.3494,
       "yoy_growth": 1.429
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-04-30T00:00:00.000",
+      "eps": 0.1077,
+      "prev_year_eps": -0.4197,
+      "yoy_growth": 1.2566
     }
   ]
 }

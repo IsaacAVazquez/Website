@@ -1,10 +1,10 @@
 {
   "symbol": "ANET",
-  "lastUpdated": "2026-06-19T00:23:44.589850+00:00",
+  "lastUpdated": "2026-06-23T00:06:23.255341+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-19T00:23:44.589850+00:00",
+    "snapshotBuiltAt": "2026-06-23T00:06:23.255341+00:00",
     "sections": {
-      "price": "2026-06-05"
+      "price": "2026-06-18"
     }
   },
   "source": "prefetched",
@@ -18,10 +18,10 @@
     "income_statement": true,
     "balance_sheet": true,
     "cash_flow": true,
-    "wacc": false,
+    "wacc": true,
     "industry": true,
-    "beta": false,
-    "news": false,
+    "beta": true,
+    "news": true,
     "dcf": false,
     "officers": true,
     "compare": true
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 2.9204,
-      "ttmPe": 52.82,
-      "marketCap": 194252063338,
-      "psRatio": 20.01,
-      "pbRatio": 14.4,
-      "pegRatio": 2.01
+      "ttmPe": 58.1,
+      "marketCap": 213643272098,
+      "psRatio": 22,
+      "pbRatio": 15.84,
+      "pegRatio": 2.22
     },
     "profitability": {
       "roe": 7.91,
@@ -5152,79 +5152,11 @@
         }
       ]
     },
+    "wacc": {},
+    "beta": {
+      "beta5y": 1.5762
+    },
     "price": [
-      {
-        "date": "2025-06-05",
-        "open": 95.65,
-        "high": 96.555,
-        "low": 94.29,
-        "close": 95.18,
-        "volume": 7932600
-      },
-      {
-        "date": "2025-06-06",
-        "open": 96.11,
-        "high": 97.63,
-        "low": 95.26,
-        "close": 97.25,
-        "volume": 6622800
-      },
-      {
-        "date": "2025-06-09",
-        "open": 97.98,
-        "high": 98.825,
-        "low": 96.77,
-        "close": 96.8,
-        "volume": 8000700
-      },
-      {
-        "date": "2025-06-10",
-        "open": 97,
-        "high": 97.471,
-        "low": 92.25,
-        "close": 93.7,
-        "volume": 8785700
-      },
-      {
-        "date": "2025-06-11",
-        "open": 92.725,
-        "high": 94.38,
-        "low": 91.25,
-        "close": 94.21,
-        "volume": 9307500
-      },
-      {
-        "date": "2025-06-12",
-        "open": 94.3,
-        "high": 97.43,
-        "low": 94.22,
-        "close": 95.77,
-        "volume": 8765700
-      },
-      {
-        "date": "2025-06-13",
-        "open": 94.5,
-        "high": 94.94,
-        "low": 92.12,
-        "close": 92.35,
-        "volume": 6217300
-      },
-      {
-        "date": "2025-06-16",
-        "open": 92.7,
-        "high": 95.34,
-        "low": 92.525,
-        "close": 95.09,
-        "volume": 7734700
-      },
-      {
-        "date": "2025-06-17",
-        "open": 94.3,
-        "high": 94.698,
-        "low": 89.54,
-        "close": 89.68,
-        "volume": 11797600
-      },
       {
         "date": "2025-06-18",
         "open": 89.88,
@@ -7167,7 +7099,161 @@
         "high": 161.193,
         "low": 152.19,
         "close": 154.27,
-        "volume": 9076200
+        "volume": 9094700
+      },
+      {
+        "date": "2026-06-08",
+        "open": 157.95,
+        "high": 159.23,
+        "low": 153.253,
+        "close": 156.4,
+        "volume": 6043100
+      },
+      {
+        "date": "2026-06-09",
+        "open": 157.75,
+        "high": 158.99,
+        "low": 145.32,
+        "close": 152.16,
+        "volume": 7334100
+      },
+      {
+        "date": "2026-06-10",
+        "open": 151,
+        "high": 154.97,
+        "low": 149,
+        "close": 151.76,
+        "volume": 6867400
+      },
+      {
+        "date": "2026-06-11",
+        "open": 153.58,
+        "high": 157.07,
+        "low": 150.28,
+        "close": 156.4,
+        "volume": 5326700
+      },
+      {
+        "date": "2026-06-12",
+        "open": 160.11,
+        "high": 165.25,
+        "low": 159.135,
+        "close": 163.24,
+        "volume": 6052500
+      },
+      {
+        "date": "2026-06-15",
+        "open": 165.96,
+        "high": 169.28,
+        "low": 163.51,
+        "close": 169.09,
+        "volume": 7240800
+      },
+      {
+        "date": "2026-06-16",
+        "open": 169.3,
+        "high": 171.21,
+        "low": 166.78,
+        "close": 168.01,
+        "volume": 8090900
+      },
+      {
+        "date": "2026-06-17",
+        "open": 169.89,
+        "high": 171.29,
+        "low": 163.93,
+        "close": 164.93,
+        "volume": 6229500
+      },
+      {
+        "date": "2026-06-18",
+        "open": 171.2,
+        "high": 172,
+        "low": 167.585,
+        "close": 169.67,
+        "volume": 11130400
+      }
+    ],
+    "news": [
+      {
+        "uuid": "b14b5ac5-92f9-366b-92f1-0a73e826b59c",
+        "title": "Viavi Beats Q3 Earnings Estimates on Healthy Revenue Growth",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/viavi-beats-q3-earnings-estimates-124800726.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0c90e5eb-659a-39f1-98de-7eb42486bbac",
+        "title": "Arista Networks (ANET) Q1 Earnings and Revenues Beat Estimates",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/arista-networks-anet-q1-earnings-212003798.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d21b2814-ca31-3e75-9a6e-92a9019bd9c6",
+        "title": "CoreWeave Q1 Revenues Beat Estimates, Earnings Down Y/Y, Stock Tanks",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-15",
+        "link": "https://finance.yahoo.com/news/coreweave-q1-revenues-beat-estimates-115800419.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "7f470365-705f-3dde-a17e-b4e55b7c1005",
+        "title": "Stock Buyback Bonanza: 3 Companies Scooping Up Shares",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/news/stock-buyback-bonanza-3-companies-151500536.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "4da000f1-5e34-311b-ab91-cafccc27f54d",
+        "title": "Zacks Investment Ideas feature highlights: Arista Networks, Apple and Applied Industrial Technologies",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-19",
+        "link": "https://finance.yahoo.com/news/zacks-investment-ideas-feature-highlights-132600703.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "fc02e84f-6989-34d6-a08b-93c18e28509b",
+        "title": "Buy 5 Big AI Laggards of Q1 That Found Wings and Soared Past Month",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-19",
+        "link": "https://finance.yahoo.com/news/buy-5-big-ai-laggards-130000558.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0162258a-bfd3-300c-aea8-d8eeb873a577",
+        "title": "Keysight's Q2 Earnings Beat Estimates, Top Line Surges Y/Y",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/keysights-q2-earnings-beat-estimates-145300675.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "486ffd0f-0e9c-39fa-957a-d17ded0453b9",
+        "title": "Scoop Up These 4 GARP Stocks to Receive Handsome Returns",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/scoop-4-garp-stocks-receive-135600639.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "93feaca0-2a9a-3b4a-b129-14984e730c0e",
+        "title": "Zacks.com featured highlights include GE Aerospace, Brinker International, Arista Networks, Inc. and National Fuel Gas",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/zacks-com-featured-highlights-ge-103600818.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "c5387320-7e0a-3c5c-98ce-eec930f7dbc2",
+        "title": "The New York Times Company Leverages Digital Subscriptions for Growth",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-26",
+        "link": "https://finance.yahoo.com/news/york-times-company-leverages-digital-144500877.html",
+        "type": "STORY"
       }
     ],
     "officers": [
@@ -7229,33 +7315,33 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 52.82,
-        "industryAvg": 41.3
+        "value": 58.1,
+        "industryAvg": 45.89
       },
       {
         "metric": "P/S Ratio",
-        "value": 20.01,
-        "industryAvg": 4.48
+        "value": 22,
+        "industryAvg": 5.02
       },
       {
         "metric": "P/B Ratio",
-        "value": 14.4,
-        "industryAvg": 8.92
+        "value": 15.84,
+        "industryAvg": 11.16
       },
       {
         "metric": "ROE",
         "value": 7.91,
-        "industryAvg": 54.339999999999996
+        "industryAvg": 58.620000000000005
       },
       {
         "metric": "ROA",
         "value": 4.9799999999999995,
-        "industryAvg": 11.3
+        "industryAvg": 11.95
       },
       {
         "metric": "Gross Margin",
         "value": 61.9,
-        "industryAvg": 25.979999999999997
+        "industryAvg": 25.16
       },
       {
         "metric": "EBITDA Margin",
@@ -7265,7 +7351,7 @@
       {
         "metric": "Net Margin",
         "value": 37.76,
-        "industryAvg": 9.98
+        "industryAvg": 10.13
       }
     ]
   }
