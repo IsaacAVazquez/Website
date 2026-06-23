@@ -46,6 +46,105 @@ const STATIC_ROUTE_LASTMOD = {
   "/travel": "2026-05-04",
 };
 
+// --- Priority + changefreq classification -------------------------------
+//
+// Three priority tiers, by content type:
+//   1.0  primary pages       — the canonical, identity-defining surfaces
+//   0.8  section hubs         — pages that aggregate a section's children
+//   0.6  components/articles  — individual dashboards/tools, writing posts,
+//                               case studies, and leaf utility pages
+//
+// changefreq reflects how often each surface *realistically* changes, derived
+// from its data-refresh cadence (see CLAUDE.md). Live data dashboards refresh
+// daily (or hourly), curated/editorial surfaces monthly, identity pages
+// monthly-to-yearly.
+
+const PRIMARY_ROUTES = new Set(["/", "/about", "/resume", "/contact"]);
+
+const SECTION_HUB_ROUTES = new Set([
+  "/portfolio",
+  "/writing",
+  "/fantasy-football",
+  "/investments",
+]);
+
+// Explicit changefreq per static route. Anything not listed here falls back to
+// the per-type default in `classifyEntry` (monthly for articles/case studies).
+const CHANGEFREQ_BY_ROUTE = {
+  "/": "weekly",
+  "/about": "monthly",
+  "/resume": "monthly",
+  "/contact": "yearly",
+  "/accessibility": "yearly",
+  "/portfolio": "weekly",
+  "/writing": "weekly",
+  "/now": "monthly",
+  "/changelog": "weekly",
+  // Fantasy football — weekly FantasyPros + ADP refresh
+  "/fantasy-football": "weekly",
+  "/fantasy-football/draft-tracker": "weekly",
+  // Investments — committed snapshots refresh twice weekly
+  "/investments": "weekly",
+  // Knowledge / editorial surfaces — hand-maintained, refreshed occasionally
+  "/ai-dev-tools": "monthly",
+  "/decision-lab": "monthly",
+  "/frontier-models": "monthly",
+  "/tech-startup-tracker": "monthly",
+  // Seasonal
+  "/march-madness-2026": "monthly",
+  // Live aggregators / daily-refreshed data dashboards
+  "/mba-internship-notifications": "daily",
+  "/news-pulse": "daily",
+  "/spacex-mission-control": "daily",
+  "/github-trending-pulse": "daily",
+  "/formula-1": "daily",
+  "/fantasy-formula-1": "daily",
+  "/golf": "daily",
+  "/premier-league": "daily",
+  "/la-liga": "daily",
+  "/nfl": "daily",
+  "/nba": "daily",
+  "/mlb": "daily",
+  "/world-cup-2026": "daily",
+  "/polling-aggregator": "weekly",
+  // Sub-daily refresh cadence
+  "/earthquake-pulse": "hourly",
+  "/bay-area-transit": "hourly",
+  // Browser-persisted / curated personal-interest + fintech tools
+  "/fintech-tools/budget-planner": "monthly",
+  "/fintech-tools/interchange-iq": "monthly",
+  "/food-map": "monthly",
+  "/recipe-finder": "monthly",
+  "/wine-cellar": "monthly",
+  "/travel": "monthly",
+  "/museum-log": "monthly",
+};
+
+/**
+ * Assign a sitemap `priority` and `changefreq` to a route based on its content
+ * type. Pure function of `loc` so it can be applied to every entry uniformly.
+ */
+function classifyEntry(loc) {
+  let priority;
+  if (PRIMARY_ROUTES.has(loc)) {
+    priority = 1.0;
+  } else if (SECTION_HUB_ROUTES.has(loc)) {
+    priority = 0.8;
+  } else {
+    // Individual components, articles, case studies, and leaf utility pages.
+    priority = 0.6;
+  }
+
+  let changefreq = CHANGEFREQ_BY_ROUTE[loc];
+  if (!changefreq) {
+    // Writing articles and portfolio case studies: published content that is
+    // rarely edited after the fact.
+    changefreq = "monthly";
+  }
+
+  return { priority, changefreq };
+}
+
 function readFile(filePath) {
   return fs.readFileSync(path.join(process.cwd(), filePath), "utf8");
 }
@@ -266,7 +365,9 @@ function getPublicSitemapEntries() {
     dedupedEntries.set(entry.loc, entry);
   }
 
-  return Array.from(dedupedEntries.values()).sort((a, b) => a.loc.localeCompare(b.loc));
+  return Array.from(dedupedEntries.values())
+    .map((entry) => ({ ...entry, ...classifyEntry(entry.loc) }))
+    .sort((a, b) => a.loc.localeCompare(b.loc));
 }
 
 const PUBLIC_SITEMAP_ENTRIES = getPublicSitemapEntries();
