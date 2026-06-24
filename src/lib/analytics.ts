@@ -76,6 +76,8 @@ export type NavLocation =
   | "header_brand"
   | "header_mobile"
   | "header_mobile_toggle"
+  | "header_search_result"
+  | "header_search_view_all"
   | "footer_social"
   | "footer_links";
 
