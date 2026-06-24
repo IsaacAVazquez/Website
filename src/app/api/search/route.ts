@@ -529,14 +529,39 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
     },
   ];
 
-  // De-duplicate by URL when a project case study and a static page entry
-  // both reference the same route — prefer the case study entry.
+  // De-duplicate. A project that ships as both a live tool (static page, e.g.
+  // /fantasy-football) and a written case study (/portfolio/<slug>) carries the
+  // same title under two URLs, so URL-only dedup let both through and the result
+  // list showed the project twice. Collapse by normalized title as well, and
+  // when a title collides prefer the live tool over the case-study writeup (its
+  // URL is the actual product and it carries a specific category + keywords).
+  const norm = (s: string) => s.trim().toLowerCase().replace(/\s+/g, ' ');
   const seenUrls = new Set(content.map((c) => c.url));
+  const titleIndex = new Map<string, number>();
+  content.forEach((c, i) => titleIndex.set(norm(c.title), i));
+
   for (const page of staticPages) {
-    if (!seenUrls.has(page.url)) {
-      content.push(page);
-      seenUrls.add(page.url);
+    const titleKey = norm(page.title);
+    const existingIndex = titleIndex.get(titleKey);
+
+    if (existingIndex !== undefined) {
+      // Same project already indexed (typically as a case study). Swap in the
+      // live-tool entry when the existing one is the /portfolio writeup; either
+      // way, never add a second copy of the same title.
+      const existing = content[existingIndex];
+      if (existing.url.startsWith('/portfolio/') && !page.url.startsWith('/portfolio/')) {
+        seenUrls.delete(existing.url);
+        content[existingIndex] = page;
+        seenUrls.add(page.url);
+      }
+      continue;
     }
+
+    if (seenUrls.has(page.url)) continue;
+
+    content.push(page);
+    titleIndex.set(titleKey, content.length - 1);
+    seenUrls.add(page.url);
   }
 
   return content;
@@ -611,7 +636,23 @@ function calculateRelevanceScore(content: SearchableContent, query: string): num
     }
   }
 
+  // Prioritize project case studies over writing: when an item already matches
+  // the query, give projects a modest edge so they surface above comparable
+  // posts. The bump (12) is smaller than a single title/excerpt hit, so strong
+  // writing matches still win — only near-ties tilt toward projects. Gated on
+  // score > 0 so a non-matching project never enters the results.
+  if (score > 0 && content.type === 'project') {
+    score += 12;
+  }
+
   return score;
+}
+
+// Lower rank sorts first. Projects ahead of writing ahead of utility pages —
+// the stable tiebreak behind the relevance score (see PROJECT boost above).
+const TYPE_RANK: Record<string, number> = { project: 0, post: 1, page: 2 };
+function typeRank(type: string): number {
+  return TYPE_RANK[type] ?? 3;
 }
 
 type ScoredContent = SearchableContent & { relevanceScore?: number };
@@ -653,7 +694,11 @@ function searchContent(content: SearchableContent[], query: string, type?: strin
       relevanceScore: calculateRelevanceScore(item, query)
     }))
     .filter(item => item.relevanceScore > 0)
-    .sort((a, b) => b.relevanceScore - a.relevanceScore);
+    .sort((a, b) =>
+      b.relevanceScore - a.relevanceScore ||
+      typeRank(a.type) - typeRank(b.type) ||
+      a.title.localeCompare(b.title)
+    );
 
   return scoredResults;
 }
@@ -694,7 +739,17 @@ export async function GET(request: NextRequest) {
       total: results.length,
       query,
       filters: { type, category }
-    }, { headers: { 'Cache-Control': 'public, max-age=3600, stale-while-revalidate=86400' } });
+    }, {
+      headers: {
+        'Cache-Control': 'public, max-age=3600, stale-while-revalidate=86400',
+        // Without this, Netlify's edge cache keys /api/search only on Next's
+        // internal params (its default Netlify-Vary), so a single cached
+        // response was served for every q/type/category — search filtering
+        // silently no-op'd in production while working in `next dev`. Vary the
+        // edge cache on the full query string so each search is cached per-query.
+        'Netlify-Vary': 'query',
+      },
+    });
 
   } catch (error) {
     logger.error('Search API error', error);
