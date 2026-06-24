@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   type CaseStudyData,
   getProjectCardSummary,
@@ -294,7 +295,16 @@ function ProjectCard({
         <span className={styles.id}>{`№ ${id}`}</span>
         <span>{study.timeline}</span>
       </div>
-      <div className={styles.cardImg} aria-hidden="true" />
+      <div className={styles.cardImg} aria-hidden="true">
+        <Image
+          src={`/images/projects/${study.slug}.svg`}
+          alt=""
+          fill
+          unoptimized
+          sizes="(max-width: 700px) 90vw, 360px"
+          className={styles.cardImgArt}
+        />
+      </div>
       <h3 data-testid="portfolio-card-title">{study.title}</h3>
       <p>{summary}</p>
       <div className={styles.cardFootRow}>
@@ -594,6 +604,14 @@ export function PortfolioV3({ projects }: Props) {
                   : {})}
               >
                 <div className={styles.featImgInner}></div>
+                <Image
+                  src={`/images/projects/${featured.slug}.svg`}
+                  alt=""
+                  fill
+                  unoptimized
+                  sizes="(max-width: 700px) 90vw, 420px"
+                  className={styles.featImgArt}
+                />
                 <div className={styles.featImgMeta}>
                   <span>Cover · 01</span>
                   <span className="corner">{"↗"}</span>

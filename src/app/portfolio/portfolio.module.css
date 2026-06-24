@@ -455,11 +455,17 @@
   );
   mix-blend-mode: screen;
 }
+.featImgArt {
+  object-fit: contain;
+  padding: 18px;
+  z-index: 1;
+}
 .featImgMeta {
   position: absolute;
   left: 14px;
   right: 14px;
   bottom: 14px;
+  z-index: 2;
   display: flex;
   justify-content: space-between;
   align-items: end;
@@ -708,6 +714,13 @@
   content: "";
   position: absolute;
   inset: 0;
+}
+/* Per-project pixel-art tile, centered as a framed badge over the cover
+   gradient (contain keeps the full tile + frame visible on every aspect). */
+.cardImgArt {
+  object-fit: contain;
+  padding: 10px;
+  z-index: 1;
 }
 .cardImg::after {
   content: "";
