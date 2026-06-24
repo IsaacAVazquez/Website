@@ -63,6 +63,14 @@ const nextConfig = {
         permanent: true,
       },
       {
+        // Pulse Dashboards was a meta write-up of the Pulse family, not a
+        // standalone tool — it lives as a /writing article; the nine dashboards
+        // are each their own portfolio project.
+        source: '/portfolio/pulse-dashboards',
+        destination: '/writing/building-the-pulse-dashboard-family',
+        permanent: true,
+      },
+      {
         source: '/portfolio/performance-intelligence',
         destination: '/writing/proactive-performance-intelligence',
         permanent: true,
