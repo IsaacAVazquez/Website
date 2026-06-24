@@ -191,4 +191,3 @@ re-confirmed). None of these are applied yet — they await go-ahead.
 - **`SNAPSHOT_DRIVEN_DASHBOARDS.md`** — made the `error.tsx` + `loading.tsx` + curated-disclosure
   requirement explicit.
 - **`DARK_MODE_USAGE_GUIDE.md`** — cross-referenced the chart-theming pattern and the elevation rule.
-</content>
