@@ -5,15 +5,11 @@ import type { ReactNode } from "react";
 
 import {
   FANTASY_CHIP_CLASS,
-  FANTASY_REACH_TOOLTIP,
-  FANTASY_VALUE_TOOLTIP,
   formatAdp,
   formatOwnership,
   formatRange,
   getPositionTone,
-  getValueVsAdp,
 } from "@/lib/fantasyUtils";
-import { MetricTooltip } from "@/components/investments/MetricTooltip";
 import type { Player } from "@/types";
 
 interface RankingsListRowProps {
@@ -62,8 +58,6 @@ export function RankingsListRow({
   onToggleQueue,
   onToggleCompare,
 }: RankingsListRowProps) {
-  const valueVsAdp = adpAvailable ? getValueVsAdp(player) : null;
-
   return (
     <li
       className="group relative overflow-hidden rounded-[1.25rem] border border-[color:var(--home-rule)] transition-[border-color,box-shadow,transform] hover:border-[color:var(--home-ink)] hover:shadow-[var(--shadow-md)] motion-safe:hover:-translate-y-0.5"
@@ -109,7 +103,10 @@ export function RankingsListRow({
                   />
                 )}
               </div>
-              <p className="mt-0.5 truncate text-sm" style={{ color: "var(--home-ink-muted)" }}>
+              {/* Not truncated: the Avg+Value pair lives here and must stay
+                  visible. The Avg/Value segment is an inline-flex unit, so it
+                  wraps to the next line together rather than getting clipped. */}
+              <p className="mt-0.5 text-sm" style={{ color: "var(--home-ink-muted)" }}>
                 {descriptor}
               </p>
             </div>
@@ -118,40 +115,7 @@ export function RankingsListRow({
           <div className="flex flex-wrap items-center gap-x-5 gap-y-1 md:shrink-0 md:justify-end">
             <Metric label="Expert range">{formatRange(player)}</Metric>
             {adpAvailable && (
-              <div className="min-w-0">
-                <p className="text-2xs font-semibold uppercase tracking-[0.12em]" style={{ color: "var(--home-ink-muted)" }}>
-                  ADP
-                </p>
-                <p className="flex items-center gap-1.5 text-sm font-semibold tabular-nums">
-                  {formatAdp(player.adp)}
-                  {valueVsAdp?.signal && (
-                    <span
-                      className={FANTASY_CHIP_CLASS}
-                      style={
-                        valueVsAdp.signal === "value"
-                          ? {
-                              borderColor: "color-mix(in srgb, var(--color-success) 28%, var(--home-rule))",
-                              background: "color-mix(in srgb, var(--color-success) 10%, var(--home-paper))",
-                            }
-                          : {
-                              borderColor: "color-mix(in srgb, var(--color-warning) 30%, var(--home-rule))",
-                              background: "color-mix(in srgb, var(--color-warning) 12%, var(--home-paper))",
-                            }
-                      }
-                    >
-                      {valueVsAdp.signal === "value" ? "Value" : "Reach"}{" "}
-                      {valueVsAdp.delta > 0 ? `+${valueVsAdp.delta}` : valueVsAdp.delta}
-                    </span>
-                  )}
-                  {valueVsAdp?.signal && (
-                    <MetricTooltip
-                      term={valueVsAdp.signal === "value" ? "Value" : "Reach"}
-                      definition={valueVsAdp.signal === "value" ? FANTASY_VALUE_TOOLTIP : FANTASY_REACH_TOOLTIP}
-                      align="right"
-                    />
-                  )}
-                </p>
-              </div>
+              <Metric label="ADP">{formatAdp(player.adp)}</Metric>
             )}
             <Metric label="Rostered">
               <span>{formatOwnership(player.ownership)}</span>
@@ -168,7 +132,7 @@ export function RankingsListRow({
             onClick={onToggleQueue}
             aria-pressed={isQueued}
             aria-label={isQueued ? `Remove ${player.name} from queue` : `Add ${player.name} to queue`}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full border transition-colors"
+            className="inline-flex min-h-touch min-w-touch items-center justify-center rounded-full border transition-colors"
             style={
               isQueued
                 ? {
@@ -187,7 +151,7 @@ export function RankingsListRow({
             aria-pressed={inCompare}
             disabled={compareDisabled}
             aria-label={inCompare ? `Remove ${player.name} from compare` : `Add ${player.name} to compare`}
-            className="hidden h-9 w-9 items-center justify-center rounded-full border transition-colors disabled:cursor-not-allowed disabled:opacity-45 sm:inline-flex"
+            className="hidden min-h-touch min-w-touch items-center justify-center rounded-full border transition-colors disabled:cursor-not-allowed disabled:opacity-45 sm:inline-flex"
             style={
               inCompare
                 ? { borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }

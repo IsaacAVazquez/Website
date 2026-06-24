@@ -232,7 +232,7 @@ export function TierBreakdown({
                           onClick={() => onToggleQueue(player.id)}
                           aria-pressed={queued}
                           aria-label={queued ? `Remove ${player.name} from queue` : `Add ${player.name} to queue`}
-                          className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full"
+                          className="inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center rounded-full"
                           style={{ color: queued ? "var(--home-ink)" : "var(--home-ink-muted)" }}
                         >
                           <Star size={14} fill={queued ? "currentColor" : "none"} aria-hidden="true" />

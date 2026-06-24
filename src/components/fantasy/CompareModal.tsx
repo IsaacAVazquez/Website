@@ -235,7 +235,7 @@ export function CompareModal({ players, publishedRank, onClose, onRemove }: Comp
                       type="button"
                       onClick={() => onRemove(player.id)}
                       aria-label={`Remove ${player.name} from compare`}
-                      className="inline-flex h-6 w-6 items-center justify-center rounded-full border"
+                      className="inline-flex min-h-touch min-w-touch items-center justify-center rounded-full border"
                       style={{ borderColor: "var(--home-rule)" }}
                     >
                       <X size={12} aria-hidden="true" />
