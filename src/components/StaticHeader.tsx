@@ -2,10 +2,11 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { navLinks } from "@/constants/navlinks";
 import { Menu2, Search, X } from "@/components/ui/ServerIcons";
 import { DeferredThemeToggle } from "@/components/ui/DeferredThemeToggle";
+import { HeaderSearchPanel } from "@/components/search/HeaderSearchPanel";
 import { cn } from "@/lib/utils";
 import { trackNavigationClick } from "@/lib/analytics";
 
@@ -17,8 +18,14 @@ function isRouteActive(pathname: string, href: string) {
 export function StaticHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const pathname = usePathname();
-  const router = useRouter();
+
+  // Close the search dropdown on navigation so a result click never leaves it open.
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Dismiss the search dropdown when the route changes
+    setIsSearchOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,7 +59,8 @@ export function StaticHeader() {
 
       if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
         event.preventDefault();
-        router.push("/search");
+        setIsMobileMenuOpen(false);
+        setIsSearchOpen(true);
         return;
       }
 
@@ -64,13 +72,14 @@ export function StaticHeader() {
         !event.altKey
       ) {
         event.preventDefault();
-        router.push("/search");
+        setIsMobileMenuOpen(false);
+        setIsSearchOpen(true);
       }
     };
 
     window.addEventListener("keydown", handleKeydown);
     return () => window.removeEventListener("keydown", handleKeydown);
-  }, [router]);
+  }, []);
 
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
@@ -140,28 +149,38 @@ export function StaticHeader() {
               })}
             </ul>
             <div className="header-home-controls flex items-center gap-1">
-              <Link
-                href="/search"
+              <button
+                type="button"
                 aria-label="Search the site (press / or Ctrl+K)"
                 title="Search — press / or ⌘K"
+                aria-haspopup="dialog"
+                aria-expanded={isSearchOpen}
                 className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full transition-colors text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
-                onClick={closeMobileMenu}
+                onClick={() => {
+                  closeMobileMenu();
+                  setIsSearchOpen((current) => !current);
+                }}
               >
                 <Search className="h-5 w-5" aria-hidden="true" />
-              </Link>
+              </button>
               <DeferredThemeToggle />
             </div>
           </div>
 
           <div className="flex items-center gap-2 lg:hidden">
-            <Link
-              href="/search"
+            <button
+              type="button"
               aria-label="Search the site"
+              aria-haspopup="dialog"
+              aria-expanded={isSearchOpen}
               className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border transition-colors header-home-control text-[var(--home-ink)] hover:bg-[var(--home-paper-alt)]"
-              onClick={closeMobileMenu}
+              onClick={() => {
+                closeMobileMenu();
+                setIsSearchOpen((current) => !current);
+              }}
             >
               <Search className="h-5 w-5" aria-hidden="true" />
-            </Link>
+            </button>
             <DeferredThemeToggle />
             <button
               type="button"
@@ -183,6 +202,8 @@ export function StaticHeader() {
           </div>
         </div>
       </nav>
+
+      {isSearchOpen && <HeaderSearchPanel onClose={() => setIsSearchOpen(false)} />}
 
       <div
         id="mobile-menu"

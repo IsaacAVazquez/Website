@@ -30,6 +30,8 @@ import {
 import {
   FANTASY_AVG_RANK_TOOLTIP,
   FANTASY_CHIP_CLASS,
+  FANTASY_REACH_TOOLTIP,
+  FANTASY_VALUE_TOOLTIP,
   formatUpdatedAt,
   formatRankValue,
   getFantasyAdpFreshness,
@@ -38,6 +40,7 @@ import {
   getSnapshotStalenessLabel,
   getSourceKindLabel,
   getTierGap,
+  getValueVsAdp,
   withTierBreaks,
   type FantasySnapshotStaleness,
 } from "@/lib/fantasyUtils";
@@ -126,7 +129,45 @@ function getPublishedBoardRank(player: Player, position: FantasyRoutePosition): 
   return formatRankValue(rankValue);
 }
 
-function getPlayerDescriptor(player: Player, position: FantasyRoutePosition): ReactNode {
+// The ADP value/reach signal as a compact chip. Lives next to "Avg" in the
+// row descriptor (see getPlayerDescriptor) so the two ADP-relative reads sit
+// together instead of being split across the row.
+function ValueReachBadge({ player }: { player: Player }) {
+  const value = getValueVsAdp(player);
+  if (!value?.signal) return null;
+
+  const isValue = value.signal === "value";
+  return (
+    <span className="inline-flex items-center">
+      <span
+        className={FANTASY_CHIP_CLASS}
+        style={
+          isValue
+            ? {
+                borderColor: "color-mix(in srgb, var(--home-positive) 28%, var(--home-rule))",
+                background: "color-mix(in srgb, var(--home-positive) 10%, var(--home-paper))",
+              }
+            : {
+                borderColor: "color-mix(in srgb, var(--home-warning) 30%, var(--home-rule))",
+                background: "color-mix(in srgb, var(--home-warning) 12%, var(--home-paper))",
+              }
+        }
+      >
+        {isValue ? "Value" : "Reach"} {value.delta > 0 ? `+${value.delta}` : value.delta}
+      </span>
+      <MetricTooltip
+        term={isValue ? "Value" : "Reach"}
+        definition={isValue ? FANTASY_VALUE_TOOLTIP : FANTASY_REACH_TOOLTIP}
+      />
+    </span>
+  );
+}
+
+function getPlayerDescriptor(
+  player: Player,
+  position: FantasyRoutePosition,
+  adpAvailable: boolean
+): ReactNode {
   const parts: ReactNode[] = [player.team];
   const isOverallView = position === "overall" || position === "flex";
 
@@ -138,9 +179,12 @@ function getPlayerDescriptor(player: Player, position: FantasyRoutePosition): Re
 
   if (Number.isFinite(player.rankAverage)) {
     parts.push(
-      <span className="inline-flex items-center">
-        Avg {Number(player.rankAverage).toFixed(2)}
-        <MetricTooltip term="Average rank" definition={FANTASY_AVG_RANK_TOOLTIP} />
+      <span className="inline-flex items-center gap-1.5">
+        <span className="inline-flex items-center">
+          Avg {Number(player.rankAverage).toFixed(2)}
+          <MetricTooltip term="Average rank" definition={FANTASY_AVG_RANK_TOOLTIP} />
+        </span>
+        {adpAvailable && <ValueReachBadge player={player} />}
       </span>
     );
   }
@@ -486,7 +530,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
           key={player.id}
           player={player}
           publishedRank={publishedRank}
-          descriptor={getPlayerDescriptor(player, routeState.position)}
+          descriptor={getPlayerDescriptor(player, routeState.position, adpAvailable)}
           adpAvailable={adpAvailable}
           compact={isCompact}
           isQueued={queue.isQueued(player.id)}
@@ -552,7 +596,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
               >
                 Board at a glance
                 <ChevronDown
-                  className="h-4 w-4 transition-transform"
+                  className="h-4 w-4 motion-safe:transition-transform"
                   style={{ transform: showStats ? "rotate(180deg)" : "none" }}
                 />
               </button>
@@ -566,7 +610,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
               >
                 How to read the board
                 <ChevronDown
-                  className="h-4 w-4 transition-transform"
+                  className="h-4 w-4 motion-safe:transition-transform"
                   style={{ transform: showLegend ? "rotate(180deg)" : "none" }}
                 />
               </button>
@@ -729,7 +773,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                   {Array.from({ length: 10 }).map((_, index) => (
                     <div
                       key={`loading-${index}`}
-                      className={`${skeletonHeightClass} animate-pulse rounded-[1.25rem] border`}
+                      className={`${skeletonHeightClass} motion-safe:animate-pulse rounded-[1.25rem] border`}
                       style={{
                         borderColor: "var(--home-rule)",
                         background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",

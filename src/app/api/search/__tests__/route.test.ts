@@ -176,6 +176,23 @@ describe("GET /api/search", () => {
     expect(body.total).toBeGreaterThanOrEqual(10);
   });
 
+  it("collapses a project indexed as both a live tool and a case study into one live-tool result", async () => {
+    const response = await GET(
+      makeRequest("?q=Fantasy%20Football%20Analytics%20Platform")
+    );
+    const body = await response.json();
+
+    expect(response.status).toBe(200);
+    const matches = body.results.filter(
+      (r: { title: string }) => r.title === "Fantasy Football Analytics Platform"
+    );
+    // Was two (case study at /portfolio/... + live tool at /fantasy-football);
+    // dedupe collapses to a single entry, preferring the live tool.
+    expect(matches).toHaveLength(1);
+    expect(matches[0].url).toBe("/fantasy-football");
+    expect(matches[0].id).toBe("page-fantasy-football");
+  });
+
   it("degrades gracefully when the blog corpus loader throws", async () => {
     mockGetAllBlogPostPreviews.mockImplementation(() => {
       throw new Error("boom");

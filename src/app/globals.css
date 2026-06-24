@@ -1745,6 +1745,16 @@
     transition: color 160ms ease, background 160ms ease;
   }
 
+  /* Reset the global prose list spacing (base-layer `ul,ol` margin/padding and
+     `li` margin) that would otherwise leak onto the nav: an inherited 1em
+     bottom margin + 0.25em per-item margin stretched the nav cluster and shoved
+     the whole header row off-center. Keep the nav box exactly link-height. */
+  .header-home-nav-list,
+  .header-home-nav-list > li {
+    margin: 0;
+    padding: 0;
+  }
+
   .header-home-nav-list > li:first-child .header-home-link {
     border-left: 0;
   }

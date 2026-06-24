@@ -106,14 +106,15 @@ describe("StaticHeader", () => {
       root.render(<StaticHeader />);
     });
 
-    // A visible search trigger must exist (desktop + mobile both link to /search).
-    const searchLinks = container.querySelectorAll('a[href="/search"]');
-    expect(searchLinks.length).toBeGreaterThan(0);
+    // Search is a button that opens the in-header dropdown (desktop + mobile),
+    // no longer a link to the dedicated /search page.
+    const searchButtons = container.querySelectorAll('button[aria-label^="Search the site"]');
+    expect(searchButtons.length).toBeGreaterThan(0);
 
     // It must NOT live inside the labelled nav lists — those stay limited to the
     // canonical nav entries (asserted by the homepage e2e link-count checks).
     const primaryNav = container.querySelector('[aria-label="Primary navigation"]');
-    expect(primaryNav?.querySelector('a[href="/search"]')).toBeNull();
+    expect(primaryNav?.querySelector('button[aria-label^="Search the site"]')).toBeNull();
   });
 
   it("groups the desktop search and theme controls together outside the nav", async () => {
@@ -125,11 +126,34 @@ describe("StaticHeader", () => {
     // segmented nav (the desktop-only `.header-home-controls` group).
     const controls = container.querySelector(".header-home-controls");
     expect(controls).not.toBeNull();
-    expect(controls?.querySelector('a[href="/search"]')).not.toBeNull();
-    expect(controls?.querySelector("button")?.textContent).toBe("Theme");
+    expect(controls?.querySelector('button[aria-label^="Search the site"]')).not.toBeNull();
+    const themeButton = Array.from(controls?.querySelectorAll("button") ?? []).find(
+      (button) => button.textContent === "Theme"
+    );
+    expect(themeButton).not.toBeUndefined();
 
     // The theme toggle no longer lives inside the primary nav link list.
     const primaryNav = container.querySelector('[aria-label="Primary navigation"]');
     expect(primaryNav?.querySelector("button")).toBeNull();
+  });
+
+  it("opens the search dropdown from the header search button", async () => {
+    await act(async () => {
+      root.render(<StaticHeader />);
+    });
+
+    expect(container.querySelector('[role="dialog"][aria-label="Site search"]')).toBeNull();
+
+    const searchButton = container.querySelector(
+      'button[aria-label^="Search the site"]'
+    ) as HTMLButtonElement | null;
+    expect(searchButton).not.toBeNull();
+
+    await act(async () => {
+      searchButton?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    });
+
+    expect(container.querySelector('[role="dialog"][aria-label="Site search"]')).not.toBeNull();
+    expect(container.querySelector('input[role="combobox"]')).not.toBeNull();
   });
 });
