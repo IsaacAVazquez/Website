@@ -972,7 +972,9 @@
 }
 .h-bio-grid {
   display: grid;
-  grid-template-columns: 1fr 1.4fr;
+  /* Photo column trimmed from 1fr (~42% of the band) to ~30% so the headshot
+     reads as a framed portrait beside the copy instead of dominating the row. */
+  grid-template-columns: 0.75fr 1.75fr;
   gap: 0;
   border-top: 1px solid var(--h-ink);
 }
