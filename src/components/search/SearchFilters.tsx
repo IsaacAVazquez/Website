@@ -8,20 +8,27 @@ interface SearchFiltersProps {
   onClearFilters: () => void;
 }
 
+// `id` is sent verbatim as the `type` query param. It must match a type the
+// API actually emits ('post' for writing, 'project', 'page') — see /api/search.
 const contentTypes = [
   { id: 'all', label: 'All Content' },
-  { id: 'blog', label: 'Blog Posts' },
+  { id: 'post', label: 'Writing' },
   { id: 'project', label: 'Projects' },
   { id: 'page', label: 'Pages' },
 ];
 
+// `id` is sent verbatim as the `category` query param and the API matches it by
+// case-insensitive EXACT equality. Every id below must match a `category` value
+// emitted by /api/search, or the filter silently returns nothing. Keep this list
+// in sync with the corpus categories rather than inventing display-friendly labels.
 const categories = [
   { id: 'all', label: 'All Categories' },
-  { id: 'Product Strategy', label: 'Product Strategy' },
+  { id: 'Agentic AI', label: 'Agentic AI' },
+  { id: 'Product Management', label: 'Product Management' },
   { id: 'Fantasy Football Analytics', label: 'Fantasy Football' },
-  { id: 'Analytics', label: 'Analytics' },
-  { id: 'Fintech', label: 'Fintech' },
-  { id: 'Sports Data', label: 'Sports Data' },
+  { id: 'Sports Analytics', label: 'Sports Analytics' },
+  { id: 'QA Engineering', label: 'QA Engineering' },
+  { id: 'Fintech Product', label: 'Fintech' },
 ];
 
 function getPillStyle(active: boolean) {
@@ -67,6 +74,7 @@ export function SearchFilters({
           {contentTypes.map((contentType) => (
             <button
               key={contentType.id}
+              type="button"
               onClick={() => onTypeChange(contentType.id)}
               aria-pressed={type === contentType.id}
               className="inline-flex min-h-[36px] items-center rounded-full px-3 py-1 text-xs font-semibold transition-colors"
@@ -93,6 +101,7 @@ export function SearchFilters({
           {categories.map((cat) => (
             <button
               key={cat.id}
+              type="button"
               onClick={() => onCategoryChange(cat.id)}
               aria-pressed={category === cat.id}
               className="inline-flex min-h-[36px] items-center rounded-full px-3 py-1 text-xs font-semibold transition-colors"
@@ -114,6 +123,7 @@ export function SearchFilters({
           style={{ borderTop: "1px solid var(--home-rule)" }}
         >
           <button
+            type="button"
             onClick={onClearFilters}
             className="text-sm underline underline-offset-2"
             style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-haze)" }}

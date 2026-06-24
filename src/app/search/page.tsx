@@ -27,9 +27,9 @@ const topicPills = [
 ];
 
 const popularQueries = [
-  '"Agentic AI for product managers"',
-  '"Investment research platform"',
-  '"Writing better PRDs with AI"',
+  "Agentic AI",
+  "Fantasy football rankings",
+  "Investment research",
 ];
 
 const indexedContent = [

@@ -79,9 +79,9 @@ export function SearchResults({
             style={{ color: "var(--home-ink-muted)" }}
             aria-hidden="true"
           />
-          <h3 className="text-xl mb-0" style={sectionTitleStyle}>
+          <h2 className="text-xl mb-0" style={sectionTitleStyle}>
             No results found
-          </h3>
+          </h2>
           <p className="mb-0 text-base leading-7" style={bodyStyle}>
             {query ? (
               <>
@@ -112,7 +112,9 @@ export function SearchResults({
       <div className="space-y-2">
         <p className="home-kicker mb-0">Results</p>
         <h2 className="text-2xl mb-0" style={sectionTitleStyle}>
-          {totalResults.toLocaleString()} result{totalResults !== 1 ? 's' : ''} found
+          {results.length < totalResults
+            ? `Showing ${results.length.toLocaleString()} of ${totalResults.toLocaleString()} results`
+            : `${totalResults.toLocaleString()} result${totalResults !== 1 ? 's' : ''} found`}
           {query ? (
             <>
               {' '}for &ldquo;<span style={{ color: "var(--home-ink)" }}>{query}</span>&rdquo;
@@ -129,17 +131,6 @@ export function SearchResults({
           <SearchResultCard key={result.id} result={result} query={query} />
         ))}
       </div>
-
-      {results.length < totalResults && (
-        <div className="text-center">
-          <button
-            className="text-sm underline underline-offset-2"
-            style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-haze)" }}
-          >
-            Load more results
-          </button>
-        </div>
-      )}
     </div>
   );
 }
@@ -149,13 +140,20 @@ interface SearchResultCardProps {
   query: string;
 }
 
+const TYPE_LABELS: Record<SearchResult["type"], string> = {
+  post: "Writing",
+  project: "Project",
+  page: "Page",
+};
+
 function SearchResultCard({ result, query }: SearchResultCardProps) {
-  const getTypeIcon = (type: string) => {
+  const getTypeIcon = (type: SearchResult["type"]) => {
     switch (type) {
-      case 'blog':
+      case 'post':
         return <IconFileText className="w-3.5 h-3.5" aria-hidden="true" />;
       case 'project':
         return <IconBriefcase className="w-3.5 h-3.5" aria-hidden="true" />;
+      case 'page':
       default:
         return <IconHome className="w-3.5 h-3.5" aria-hidden="true" />;
     }
@@ -172,8 +170,16 @@ function SearchResultCard({ result, query }: SearchResultCardProps) {
   const highlightQuery = (text: string, q: string): string => {
     const safe = escapeHtml(text);
     if (!q) return safe;
-    const escapedQuery = escapeHtml(q).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    const regex = new RegExp(`(${escapedQuery})`, 'gi');
+    // Highlight per word, mirroring the API matcher (which scores each
+    // whitespace-separated word independently). A single contiguous-phrase
+    // regex left word-matched results — e.g. "fantasy football" against
+    // "Football rankings and fantasy tiers" — with no highlight at all.
+    const words = q
+      .split(/\s+/)
+      .filter(Boolean)
+      .map((word) => escapeHtml(word).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+    if (words.length === 0) return safe;
+    const regex = new RegExp(`(${words.join('|')})`, 'gi');
     return safe.replace(
       regex,
       '<mark style="background-color: color-mix(in srgb, var(--home-acid) 40%, transparent); color: var(--home-ink); padding: 0 2px; border-radius: 2px;">$1</mark>'
@@ -198,7 +204,7 @@ function SearchResultCard({ result, query }: SearchResultCardProps) {
                 style={typePillStyle}
               >
                 {getTypeIcon(result.type)}
-                {result.type.charAt(0).toUpperCase() + result.type.slice(1)}
+                {TYPE_LABELS[result.type]}
               </span>
               {result.category && (
                 <span
