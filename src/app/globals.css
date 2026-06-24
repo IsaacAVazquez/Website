@@ -1712,13 +1712,11 @@
     font-weight: 700;
     letter-spacing: -0.04em;
     text-transform: uppercase;
+    /* line-height:1 collapses the wordmark's line box to the glyph block so it
+       optically centers with the smaller mono nav links — both sides live in
+       equal-height (44px) flex boxes with align-items:center. */
+    line-height: 1;
     color: var(--home-ink);
-    /* Baseline-align the display wordmark with the smaller mono nav links.
-       Both sides are center-aligned in equal-height (44px) boxes, but
-       Bricolage's shorter cap-height (~0.66) at 1.05rem leaves its baseline
-       ~0.94px below JetBrains Mono's (~0.73) at 0.8rem. Nudge the lockup up so
-       the letters share a baseline with the nav. Visual-only (no reflow). */
-    transform: translateY(-0.06rem);
   }
 
   .header-home-brand::before {
@@ -1727,6 +1725,13 @@
     height: 10px;
     background: var(--home-acid);
     flex-shrink: 0;
+  }
+
+  /* Utility cluster (search + theme) sits to the right of the segmented nav,
+     separated by a divider that matches the nav link rules. */
+  .header-home-controls {
+    padding-left: 0.75rem;
+    border-left: 1px solid color-mix(in srgb, var(--home-ink) 8%, transparent);
   }
 
   .header-home-link {
