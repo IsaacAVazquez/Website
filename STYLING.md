@@ -54,7 +54,8 @@ For intermediate tones, use `color-mix()`:
 
 ### Semantic tokens (kept for charts and status indicators)
 
-- `--color-success`, `--color-warning`, `--color-error` — still valid for semantic states
+- `--color-success`, `--color-warning`, `--color-error` — back-compat aliases; in new code prefer the
+  canonical `--home-positive` / `--home-warning` / `--home-negative` (see *Semantic status colors* below)
 - `--color-secondary`, `--color-accent` — available but prefer `--home-haze` / `--home-acid`
 
 ### Legacy aliases (deprecated — do not use in new code)
@@ -75,6 +76,49 @@ These are defined in `globals.css` but resolve to `--home-*` equivalents:
 - shadows: `--shadow-sm` through `--shadow-xl`
 
 Do not hardcode hex colors in components when a token exists.
+
+### Dark-mode elevation (raised surfaces)
+
+To lift a surface one step above its background, **use the theme-aware elevation token**, never a
+literal `white`/`black` mix:
+
+- `--home-paper-raised` = `color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))`
+- `--home-elev-mix` flips per theme — `white` in light, `black` in dark (`globals.css` ~L196 / ~L278)
+
+**Anti-pattern (do not introduce):** `color-mix(in srgb, var(--home-paper) 92%, white)`. Mixing toward a
+literal `white` lightens the surface in *both* themes; in dark mode an elevated panel must darken
+(mix toward black), so a white mix renders the surface wrong. When you need a custom ratio, mix toward
+`var(--home-elev-mix)` (e.g. `color-mix(in srgb, var(--home-paper-alt) 80%, var(--home-elev-mix))`),
+not toward `white`/`black` directly. The shared `SurfaceCard` (football) already does this correctly —
+reuse it before hand-rolling an elevated panel.
+
+### Semantic status colors — canonical names
+
+Prefer the `--home-*` semantic tokens in new code; the `--color-*` names are aliases kept for
+back-compat (`globals.css` aliases `--color-success → var(--home-positive)`, etc.):
+
+| Use | New code | Legacy alias (avoid in new code) |
+|-----|----------|----------------------------------|
+| Positive / gain / success | `--home-positive` | `--color-success` |
+| Negative / loss / error | `--home-negative` | `--color-error` |
+| Warning / caution / tie | `--home-warning` | `--color-warning` |
+
+All three have `.dark` counterparts, so use them for theme-aware gain/loss and status — never hardcode
+green/red hex (e.g. `#22A06B`/`#D54E4E`). Decorative, brand, or categorical colors (medal tones, party
+colors, team crests) may stay raw when no token represents them.
+
+### Charts and D3 (theme-aware series colors)
+
+D3/SVG fills can't read Tailwind classes, so charts must resolve token colors **at render time**:
+
+- Resolve via `getComputedStyle(document.documentElement).getPropertyValue('--home-haze')` inside the
+  render/effect (re-resolve on theme change). `PortfolioPerformanceChart` is the reference
+  implementation; `ComparisonRadarChart` (hardcoded `#2563EB`, stale vs `--home-haze` `#5672F8`) is the
+  anti-pattern.
+- Never bake a token's hex into a constant (it drifts when the token changes and ignores dark mode).
+- Avoid ink-equivalent tones (e.g. `#12110F`) for logo/series tiles — they vanish on dark paper.
+- Investments charts should share **one** categorical palette so a holding keeps one color across the
+  donut, table sparkline, and research header.
 
 ---
 
@@ -131,12 +175,17 @@ Use the `home-*` helpers first for new route work. The older semantic helpers re
 
 ## Typography
 
-Fonts are loaded in `src/app/layout.tsx`:
+Fonts are loaded in `src/app/layout.tsx` (five families, each exposed as a CSS variable):
 
-- Inter
-- JetBrains Mono
-- Instrument Sans
-- Instrument Serif
+| Font | Variable | Role |
+|------|----------|------|
+| `Instrument Sans` | `--font-instrument-sans` → `--font-home-sans` | Primary editorial font — UI, nav, body, cards, dashboards |
+| `Instrument Serif` | `--font-instrument-serif` → `--font-home-serif` | Display/manifesto moments and selective italic emphasis only |
+| `Bricolage Grotesque` | `--font-display` | Drives the V3 editorial-brutalist surfaces (home, about, portfolio, contact, writing wordmarks/section titles) |
+| `JetBrains Mono` | `--font-jetbrains-mono` → `--font-mono` | Code blocks and kicker/meta micro-labels |
+| `Inter` | `--font-inter` | Legacy body fallback; not the default for new components |
+
+> `STYLING.md` previously listed only four fonts and omitted **Bricolage Grotesque** (`--font-display`). The V3 composition roots and their CSS Modules (`page.module.css`, `about.module.css`, `portfolio.module.css`, `contact.module.css`, `writing.module.css`, `ContactCta.module.css`) reach for `var(--font-display)` directly — confirm against `layout.tsx`, which is the source of truth.
 
 Typography is fluid and token-based via:
 
@@ -151,6 +200,18 @@ Typography is fluid and token-based via:
 - `--text-4xl`
 - `--text-5xl`
 - `--text-6xl`
+
+**Micro-type policy (10–13px).** Use the fixed micro tokens for small labels, and **never** ship an
+arbitrary `text-[Npx]` value:
+
+- 10px → `text-3xs`, 11px → `text-2xs` (both fixed/non-fluid by design).
+- 12–14px → `text-xs` (fluid `clamp(0.75rem … 0.875rem)`) when the label may scale.
+- **Token gap:** there is no *fixed* 12px or 13px token, yet `text-[12px]` (×26) and `text-[13px]` (×20)
+  are the most common arbitrary values in the codebase (heaviest in `decision-lab`, `interchange-iq`,
+  `budget-planner`, `formula-1`, `travel`, `museum-log`). For dense labels that must **not** scale at 12px,
+  add a fixed `--text-1xs: 0.75rem` token to the `@theme` block (exposed as `text-1xs`) rather than
+  reintroducing arbitrary px. Pick one policy per label: fluid `text-xs` if scaling is fine, the new fixed
+  token if it must stay put. Either way, retire the `text-[Npx]` literals.
 
 Headings use tighter tracking and balanced wrapping by default.
 

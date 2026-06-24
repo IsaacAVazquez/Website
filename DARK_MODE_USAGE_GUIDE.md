@@ -392,6 +392,40 @@ try {
 transition={{ duration: 0.2 }} // Adjust this value
 ```
 
+### Elevated surface looks wrong in dark mode (mixing toward `white`)
+
+**Problem**: `color-mix(in srgb, var(--home-paper) 92%, white)` lightens the surface in **both**
+themes. In dark mode a raised panel must get *darker*, so this renders inverted.
+
+**Solution**: Use the theme-aware elevation token, which flips white↔black per theme:
+
+```tsx
+// ❌ wrong — lightens in both themes
+className="bg-[color-mix(in_srgb,var(--home-paper)_92%,white)]"
+// ✅ right — theme-aware (--home-elev-mix is white in light, black in dark)
+className="bg-[var(--home-paper-raised)]"
+// custom ratio:
+className="bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))]"
+```
+
+The shared football `SurfaceCard` already does this — reuse it before hand-rolling an elevated panel.
+
+### Chart/SVG colors don't adapt to the theme
+
+**Problem**: D3/SVG fills can't read Tailwind classes, and baking a token's hex into a constant
+(e.g. `const COLOR = "#2563EB"`) ignores dark mode and drifts when the token changes.
+
+**Solution**: Resolve the token at render time and re-resolve on theme change:
+
+```tsx
+const color = getComputedStyle(document.documentElement)
+  .getPropertyValue("--home-haze").trim();
+```
+
+`PortfolioPerformanceChart` is the reference implementation; `ComparisonRadarChart` is the
+anti-pattern. Avoid ink-equivalent tones (`#12110F`) for series/logo tiles — they vanish on dark paper.
+See `STYLING.md` → *Charts and D3* and `DESIGN_CHECKLIST.md` → *Dark mode*.
+
 ---
 
 ## 📊 Performance Considerations

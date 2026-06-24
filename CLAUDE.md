@@ -154,18 +154,28 @@ localStorage via dedicated hooks. Reference: `PERSONAL_INTEREST_TOOLS.md`.
 
 Tokens and helpers live in `src/app/globals.css`. The editorial system is the
 site-wide standard for every live route except `/admin` (which keeps its own aesthetic).
-Reference: `STYLING.md`.
+Reference: `STYLING.md`. **Before merging any UI, run the single pre-merge `DESIGN_CHECKLIST.md`.**
 
 - New code uses the `--home-*` editorial palette directly (`var(--home-paper)`,
   `var(--home-ink)`, `var(--home-haze)`, `var(--home-acid)`). Legacy aliases
-  (`--surface-*`, `--text-*`, `--border-*`, `--color-primary`) exist for compatibility
-  but must not be introduced in new code or docs.
+  (`--surface-*`, `--text-*`, `--border-*`, `--color-primary`, and the
+  `--color-success/-error/-warning` names) exist for compatibility but must not be
+  introduced in new code or docs — use `--home-positive/-negative/-warning` for status.
 - Never hardcode hex colors in components — use the CSS variables.
+- For raised surfaces use `var(--home-paper-raised)` or mix toward `var(--home-elev-mix)`;
+  **never `color-mix(…, white)`** — it lightens in both themes and breaks dark mode.
+- D3/SVG charts resolve token colors at render time via `getComputedStyle` (see
+  `PortfolioPerformanceChart`); never bake a token's hex into a constant.
+- No arbitrary `text-[Npx]` micro-type — use `text-3xs`/`text-2xs` (see `STYLING.md`).
+- CSS-Module surfaces must alias the global tokens (`--x-paper: var(--home-paper)`), never
+  re-declare the palette as fresh hex with its own `.dark` mirror.
 - Use the editorial shell helpers (`.home-page`, `.home-shell`, `.home-section`,
   `.home-card`, `.home-kicker`).
 - Keep light/dark mode support, 44px minimum touch targets, and `prefers-reduced-motion`
   for animated components. Shared portfolio-shell primitives must not use
   `transition-all` — transition specific properties.
+- Framer Motion entrances must honor `useReducedMotion()` — the global CSS guard does
+  **not** stop JS/rAF-driven Framer animation (shared primitives especially, e.g. `PageSummary`).
 
 ---
 
@@ -203,8 +213,8 @@ Current source-of-truth docs:
 
 - `AGENTS.md` (start-here) · `AGENT.md` (compat stub) · `README.md`
 - `PAGES.md` · `COMPONENTS.md` · `ARCHITECTURE.md` · `API.md` · `DEVELOPMENT.md`
-- `TESTING.md` · `STYLING.md` · `SEO.md` · `WRITING_VOICE.md`
-- `docs/README.md` · `docs/ai-context/*`
+- `TESTING.md` · `STYLING.md` · `DESIGN_CHECKLIST.md` · `SEO.md` · `WRITING_VOICE.md`
+- `docs/README.md` · `docs/ai-context/*` · `docs/DESIGN_AUDIT_2026-06.md` (point-in-time audit + fix backlog)
 
 Subsystem references:
 

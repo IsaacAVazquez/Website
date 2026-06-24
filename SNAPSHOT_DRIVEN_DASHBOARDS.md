@@ -146,9 +146,10 @@ For the operational view (command → artifact → schedule in one table) see
 
 ## Per-route error boundaries
 
-Snapshot dashboards drop an `error.tsx` that re-exports the shared
-`RouteErrorBoundary` with a `surfaceName`, so a render failure shows an
-editorial, route-specific fallback instead of the global catch-all:
+Every snapshot dashboard **must** ship a per-route `error.tsx` (re-exporting the shared
+`RouteErrorBoundary` with a bespoke `surfaceName`) **and** a `loading.tsx`
+(`RouteLoadingState`), so a render failure shows an editorial, route-specific fallback
+instead of the global catch-all, and the first paint isn't blank:
 
 ```tsx
 // src/app/<x>/error.tsx
@@ -158,6 +159,15 @@ export default function Error(props) {
   return <RouteErrorBoundary {...props} surfaceName="Golf" />;
 }
 ```
+
+> The 2026-06 design audit found 8 routes missing `error.tsx` (polling-aggregator,
+> github-trending-pulse, fantasy-football, fantasy-football/draft-tracker, frontier-models,
+> march-madness-2026, golf, mba-internship-notifications) — see `docs/DESIGN_AUDIT_2026-06.md`
+> P0-1. Treat this section as a hard requirement, not a nicety.
+
+**Curated/unverified surfaces** must additionally carry `verified: false` + an `asOf` date in
+the snapshot type **and** render an on-page disclosure card (mirror `tech-startup-tracker`).
+`/frontier-models` shipped without these (audit P0-3) — don't repeat that.
 
 ---
 
@@ -175,7 +185,8 @@ export default function Error(props) {
 7. **API** — `src/app/api/<x>/summary/route.ts` (+ `[id]` if there's a detail
    panel; return `400` for malformed ids, `404` for unknown).
 8. **Route** — `src/app/<x>/page.tsx` server shell + client component with
-   deep-linkable state; add `src/app/<x>/error.tsx`.
+   deep-linkable state; add `src/app/<x>/error.tsx` **and** `src/app/<x>/loading.tsx`
+   (curated/unverified data also needs `verified: false` + `asOf` + an on-page disclosure card).
 9. **Action** — `.github/workflows/update-<x>.yml` on a sensible cron + manual
    dispatch, committing the snapshot only when it changes.
 10. **Docs** — add a row to the table above and to
