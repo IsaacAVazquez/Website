@@ -8,7 +8,6 @@ const expectedPortfolioSlugs = [
   "investment-analytics-platform",
   "interchange-iq",
   "news-pulse-dashboard",
-  "pulse-dashboards",
   "ai-dev-tool-ecosystem",
   "frontier-model-tracker",
   "github-trending-pulse",
@@ -100,13 +99,12 @@ describe("caseStudies helpers", () => {
   });
 
   it("uses user-facing impact for portfolio card outcomes", () => {
-    const pulseDashboards = getPortfolioProjects().find(
-      (project) => project.slug === "pulse-dashboards"
+    const project = getPortfolioProjects().find(
+      (p) => p.slug === "investment-analytics-platform"
     );
 
-    expect(pulseDashboards).toBeDefined();
-    expect(getProjectCardOutcome(pulseDashboards!)).toBe(
-      "Users get a faster read on what changed, what matters now, and where to click next without stitching the context together themselves."
-    );
+    expect(project).toBeDefined();
+    // getProjectCardOutcome leads with the overview impact line.
+    expect(getProjectCardOutcome(project!)).toBe(project!.overview.impact);
   });
 });

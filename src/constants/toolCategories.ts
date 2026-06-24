@@ -24,7 +24,6 @@ const FINTECH = new Set([
   "budget-planner",
 ]);
 const PULSE = new Set([
-  "pulse-dashboards",
   "news-pulse-dashboard",
   "github-trending-pulse",
   "bay-area-transit-pulse",

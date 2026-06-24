@@ -48,7 +48,6 @@ content/
 │   ├── pga-tour-pulse.md
 │   ├── polling-aggregator.md
 │   ├── premier-league-pulse.md
-│   ├── pulse-dashboards.md
 │   ├── recipe-finder.md
 │   ├── spacex-mission-control.md
 │   └── wine-cellar.md
@@ -186,7 +185,6 @@ The directory now also includes markdown snapshots for the current live project 
 - `investment-analytics-platform.md`
 - `interchange-iq.md`
 - `news-pulse-dashboard.md`
-- `pulse-dashboards.md`
 - `ai-dev-tool-ecosystem.md`
 - `frontier-model-tracker.md`
 - `github-trending-pulse.md`
