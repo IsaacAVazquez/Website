@@ -8,6 +8,7 @@ const STATIC_ROUTE_LASTMOD = {
   "/about": "2026-04-13",
   "/accessibility": "2025-02-05",
   "/ai-dev-tools": "2026-04-28",
+  "/arcade": "2026-06-25",
   "/contact": "2026-03-16",
   "/resume": "2026-04-13",
   "/portfolio": "2026-04-04",
@@ -87,6 +88,8 @@ const CHANGEFREQ_BY_ROUTE = {
   "/writing": "weekly",
   "/now": "monthly",
   "/changelog": "weekly",
+  // Standalone style-experiment page
+  "/arcade": "monthly",
   // Fantasy football — weekly FantasyPros + ADP refresh
   "/fantasy-football": "weekly",
   "/fantasy-football/draft-tracker": "weekly",
