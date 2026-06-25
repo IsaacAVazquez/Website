@@ -2,7 +2,7 @@
 
 Reference for the SEO architecture in this Next.js 16 App Router project.
 
-**Last updated:** 2026-04-10
+**Last updated:** 2026-06-19
 
 ---
 
@@ -317,34 +317,27 @@ The root layout provides the baseline for every page:
 
 ---
 
-## Sitemap — `next-sitemap.config.js`
+## Sitemap — `next-sitemap.config.js` + `src/lib/sitemap.js`
 
-Runs automatically via `postbuild` script. Generates `public/sitemap.xml`.
+Runs automatically via the `postbuild` script (`next-sitemap && node scripts/patch-nft-sharp.mjs`). Generates `public/sitemap.xml`.
 
-### Priority tiers
+The sitemap is **allowlist-driven**. `next-sitemap.config.js` is a thin wrapper that delegates to `src/lib/sitemap.js`, which builds the canonical entry list (`PUBLIC_SITEMAP_ENTRIES`) and the matching path set (`PUBLIC_SITEMAP_PATHS`). The config's `transform` returns `null` for any URL not in `PUBLIC_SITEMAP_PATHS`, and `additionalPaths` re-emits the curated list, so only explicitly-listed routes ship.
 
-| Priority | Pages |
-|---|---|
-| 1.0 | `/` |
-| 0.95 | `/portfolio` |
-| 0.9 | `/about`, `/resume` |
-| 0.85 | `/investments`, `/writing`, blog posts with "product"/"mba"/"berkeley" in slug |
-| 0.75 | `/march-madness-2026`, standalone dashboards, blog posts with "qa"/"testing"/"quality" in slug |
-| 0.7 | `/contact`, all other blog posts |
-| 0.6 | `/fantasy-football` |
-| 0.5 | `/fantasy-football/tiers/*`, `/fantasy-football/draft-tracker`, `/accessibility` |
+### Output fields
 
-### Dynamic blog discovery
+Each entry emits only `loc` and `lastmod`. There are **no `priority` or `changefreq` values** — the config sets `autoLastmod: false` and the helper supplies an explicit `lastmod` per route. (Earlier versions of this doc described priority tiers; that scheme no longer exists.)
 
-Blog posts are discovered from `content/blog/*.mdx` at build time. Slug keywords determine priority (see above).
+### How `src/lib/sitemap.js` builds the list
 
-### Standalone route note
+`getPublicSitemapEntries()` merges three sources, dedupes by `loc`, and sorts alphabetically:
 
-Routes such as `/premier-league`, `/la-liga`, `/news-pulse`, `/spacex-mission-control`, `/polling-aggregator`, `/fintech-tools/budget-planner`, and `/fintech-tools/interchange-iq` are live app routes. Check `next-sitemap.config.js` and generated sitemap output before assuming each has explicit additional-path configuration.
+1. **Static routes** — the `STATIC_ROUTE_LASTMOD` map. Routes whose content is snapshot-driven derive their `lastmod` from the live snapshot (e.g. `readPremierLeagueLastmod`, `readInvestmentsLastmod`, `readFantasyLastmod`, `readEarthquakeLastmod`); the rest carry a hardcoded date. To add a new static route to the sitemap, add it to this map.
+2. **Portfolio case studies** — `getPortfolioSlugEntries()` regex-extracts top-level slug keys from `src/constants/caseStudies.ts`, skipping any entry with a top-level `link:` redirect (those `[slug]` routes `redirect()` instead of rendering a page).
+3. **Blog posts** — `getBlogRouteEntries()` discovers `content/blog/*.{mdx,md}` at build time, using `updatedAt || publishedAt` for `lastmod` and excluding future-dated posts (their `publishedAt` is later than today).
 
 ### Excluded paths
 
-`/api/*`, `/_next/*`, `/404`, `/admin/*`
+`exclude` in `next-sitemap.config.js`: `/api/*`, `/_next/*`, `/404`, `/admin`, `/admin/*`, `/search`. Combined with the allowlist, anything not in `PUBLIC_SITEMAP_PATHS` is dropped regardless.
 
 ---
 
@@ -562,6 +555,7 @@ const minutes = calculateReadingTime(post.content); // e.g. 4
 | `src/app/metadata.ts` | Homepage metadata config |
 | `src/app/writing/[slug]/page.tsx` | Article pattern reference |
 | `src/app/portfolio/[slug]/page.tsx` | Case study pattern reference |
-| `next-sitemap.config.js` | Sitemap generation and priorities |
+| `next-sitemap.config.js` | Sitemap config wrapper — delegates to `src/lib/sitemap.js` |
+| `src/lib/sitemap.js` | Builds the allowlisted sitemap entries (`loc` + `lastmod`) |
 | `public/robots.txt` | Crawl directives (manually maintained) |
 | `WRITING_VOICE.md` | Voice and tone rules for all user-facing text including meta content |

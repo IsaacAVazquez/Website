@@ -2,7 +2,7 @@
 
 Fast route reference for the current app.
 
-**Last updated:** 2026-06-10
+**Last updated:** 2026-06-19
 
 ---
 
@@ -12,7 +12,7 @@ Fast route reference for the current app.
 |------|------|----------------|
 | `/` | `src/app/page.tsx` | Server page composing client sections |
 | `/about` | `src/app/about/page.tsx` | Server page -> `About` client component |
-| `/portfolio` | `src/app/portfolio/page.tsx` | Server page rendering cards directly |
+| `/portfolio` | `src/app/portfolio/page.tsx` | Server page -> `PortfolioV3` client (searchable, filtered project index) |
 | `/portfolio/[slug]` | `src/app/portfolio/[slug]/page.tsx` | Server detail page |
 | `/resume` | `src/app/resume/page.tsx` | Server page -> client resume UI |
 | `/contact` | `src/app/contact/page.tsx` | Server page -> `ContactContent` |
@@ -120,8 +120,8 @@ Footer behavior:
 
 ### `/portfolio`
 
-- uses ordered helpers from `caseStudiesData`
-- renders the full non-`comingSoon` project index directly from the route
+- server page calls `getPortfolioProjects()` and hands the full non-`comingSoon` project index to the `PortfolioV3` client (`src/components/portfolio/PortfolioV3.tsx`)
+- `PortfolioV3` adds a client-side project search, category filter tablist, a featured project, sortable + paginated grid, and a marquee band that sits between the project grid and the pager
 - cards should make role, problem space, and impact scannable before click-through
 - do not document `ProjectsContent.tsx` as the primary live implementation
 
@@ -167,6 +167,16 @@ Footer behavior:
 - server entry provides metadata plus breadcrumb and sports-application structured data
 - client route supports deep-linked `overview`, `fixtures`, `europe`, `relegation`, and club views through query params
 
+### `/fantasy-football`
+
+- server shell (`page.tsx`) supplies metadata + structured data and hands deep-linked state to the `FantasyFootballClient` rankings board; sibling route `/fantasy-football/draft-tracker` is the manual draft assistant
+- both surfaces read one FantasyPros snapshot through `useFantasySnapshot` (`/data/fantasy/{scoring}.json` with an `/api/fantasy-data` fallback) and share three browser-local stores: watchlist (`fantasy-player-queue-v1`), private notes (`fantasy-player-notes-v1`, 280-char cap), and compare selection (`fantasy-compare-v1`, max 3)
+- rankings board: deep-linkable position pill bar (overall/QB/RB/WR/TE/Flex/K/DST via `?position=`), PPR/Half-PPR/Standard scoring selector (`?scoring=`), per-board search, and a List/Tiers view toggle (`?view=tiers`; list is the default and drops the param) managed by `fantasy-state.ts`
+- List view adds a localStorage-backed Comfortable/Compact density control (`fantasy-board-density`) and 60-row infinite-scroll windowing; rows surface published rank, expert range, rostered %, bye, and — when the snapshot carries ADP — an ADP column with green Value / amber Reach chips at a ±10-spot consensus-vs-market gap
+- shared presentation lives in `src/components/fantasy/` (barrel `index.ts`): `TierBreakdown`, `FantasyBoardLegend`, `PositionFilterBar`, `RankingsListRow`, `TierBreakSeparator`, `PlayerDetailDrawer`, `RankDistributionBar`, `CompareTray`, `CompareModal`; cross-surface stores live in `src/hooks/use{PlayerQueue,PlayerNotes,CompareTray}.ts` over `useLocalStorageString`, with key constants in `src/lib/fantasyLocal.ts`
+- board math/formatting/legend copy lives in `src/lib/fantasyUtils.ts`; the pure draft signal engine (steals/reaches/position-runs) lives in `src/lib/draftAnalytics.ts`
+- the draft assistant reuses the same snapshot, watchlist, notes, drawer, and compare tray, adding an advisory pick clock, multi-step undo/redo, per-team naming, CSV/recap-CSV/JSON export, and per-season state under `fantasy-draft-tracker-v2-<season>`
+
 ### Standalone data tools
 
 - `/news-pulse` is a live route backed by `/api/news-pulse`
@@ -181,7 +191,7 @@ Footer behavior:
 - `/ai-dev-tools` and `/frontier-models` are live AI/knowledge surfaces
 - `/decision-lab`, `/food-map`, `/recipe-finder`, `/wine-cellar`, `/museum-log`, `/travel`, `/now`, and `/changelog` are live personal or utility surfaces
 - `/fintech-tools/budget-planner` and `/fintech-tools/interchange-iq` are live fintech tool routes
-- `/mba-internship-notifications` is a live route backed by `/api/mba-jobs` that polls Greenhouse, Lever, Ashby, and direct-HTML job boards across 32 tech companies for MBA internships and full-time business roles
+- `/mba-internship-notifications` is a live route backed by `/api/mba-jobs` that polls Greenhouse, Lever, Ashby, SmartRecruiters, and direct-HTML job boards across ~28 of 39 tracked companies for MBA internships and full-time business roles
 
 ### `/search`
 

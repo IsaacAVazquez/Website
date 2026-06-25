@@ -2,7 +2,7 @@
 
 Current metadata and structured-data reference.
 
-**Last updated:** 2026-04-10
+**Last updated:** 2026-06-19
 
 ---
 
@@ -76,7 +76,7 @@ Use them for:
 
 ## Sitemap
 
-`next-sitemap.config.js` is the source of truth for sitemap generation.
+`next-sitemap.config.js` drives sitemap generation, but it delegates to helpers in `src/lib/sitemap.js` (required at the top of the config). `src/lib/sitemap.js` owns the per-route `lastmod` logic — a static `STATIC_ROUTE_LASTMOD` map plus per-dashboard `read*Lastmod()` readers that pull dates from the committed snapshots. Update both files together when changing sitemap behavior.
 
 Notable routes to verify in generated sitemap output:
 
@@ -117,4 +117,4 @@ Do not imply that the search API is the foundation of discoverability across the
 - canonical routes prefer `/writing` over `/blog`
 - Netlify and Next config handle redirect support for legacy URLs
 
-Check `next.config.mjs`, `next-sitemap.config.js`, and route metadata exports before updating this doc.
+Check `next.config.mjs`, `next-sitemap.config.js`, `src/lib/sitemap.js`, and route metadata exports before updating this doc.

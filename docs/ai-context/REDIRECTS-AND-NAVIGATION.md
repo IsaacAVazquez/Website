@@ -2,7 +2,7 @@
 
 Current nav model, redirect table, and shell notes.
 
-**Last updated:** 2026-06-10
+**Last updated:** 2026-06-19
 
 ---
 
@@ -75,6 +75,19 @@ Defined in `next.config.mjs`.
 ### Investments
 
 - `/portfolio/investment-analytics-platform` -> `/investments`
+
+### Retired portfolio case studies -> writing
+
+Old `/portfolio/<slug>` case-study URLs now redirect to their writing posts:
+
+- `/portfolio/textout-platform` -> `/writing/textout-platform`
+- `/portfolio/runningmate-platform` -> `/writing/runningmate-platform-launch`
+- `/portfolio/civic-engagement-platform-scale` -> `/writing/scaling-civic-engagement-platform`
+- `/portfolio/campaign-analytics-dashboard` -> `/writing/campaign-self-service-analytics`
+- `/portfolio/qa-automation-framework` -> `/writing/qa-automation-daily-deploys`
+- `/portfolio/performance-intelligence` -> `/writing/proactive-performance-intelligence`
+- `/portfolio/pricing-strategy-initiative` -> `/writing/pricing-strategy-initiative`
+- `/portfolio/digital-acquisition-strategy` -> `/writing/digital-acquisition-strategy`
 
 ### Contact and resume aliases
 

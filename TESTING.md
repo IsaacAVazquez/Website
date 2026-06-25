@@ -2,7 +2,7 @@
 
 Current testing setup for the repo.
 
-**Last updated:** 2026-04-10
+**Last updated:** 2026-06-19
 
 ---
 
@@ -31,6 +31,7 @@ npm run test:watch
 npm run test:coverage
 npm run test:ci
 npm run test:e2e
+npm run test:e2e:full
 npm run test:e2e:ui
 npm run test:e2e:debug
 ```
@@ -56,6 +57,7 @@ Do not document or assume older 70% thresholds.
 
 - `src/components/**/__tests__`
 - `src/hooks/**/__tests__`
+- `src/lib/__tests__/` — pure-logic unit tests (fantasy snapshot/ADP/consensus builders, the investments live-quote allowlist in `finnhub.allowlist.test.ts`, and more)
 - `src/app/fantasy-football/__tests__/` — route state integration tests, including fantasy football client and fantasy state tests
 - `src/app/premier-league/__tests__/` and `src/app/la-liga/__tests__/` — dashboard client and route-state regression tests
 - `src/app/news-pulse/__tests__/`, `src/app/spacex-mission-control/__tests__/`, and `src/app/fintech-tools/budget-planner/__tests__/` — standalone tool coverage
@@ -80,7 +82,9 @@ Defined in `playwright.config.ts`:
 - Mobile Chrome
 - Mobile Safari
 
-Some local environments may only have a subset of browsers installed, so targeted project runs are common during local work.
+By default (CI and local), only Chromium runs so PR feedback stays fast. Set `E2E_FULL_MATRIX=1` — or run `npm run test:e2e:full` — to run the full matrix (Firefox, WebKit, and the mobile projects), used for main-branch / nightly coverage.
+
+Some local environments may only have a subset of browsers installed, so targeted project runs are also common during local work.
 
 ---
 

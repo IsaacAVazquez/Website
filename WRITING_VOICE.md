@@ -1,6 +1,6 @@
 # Writing Voice
 
-**Last updated:** 2026-04-03
+**Last updated:** 2026-06-19
 
 This document governs all writing across the site — UI copy, page descriptions, bios, article content under `content/blog/`, and any other user-facing text. Any agent or collaborator editing, creating, or rewriting text must follow these rules exactly.
 
@@ -55,4 +55,4 @@ The articles below demonstrate the voice correctly. Read them before editing or 
 - `content/blog/rb-vs-wr-draft-strategy-modeling-positional-value.mdx` — data woven into prose, clear positional argument
 - `content/blog/building-an-investment-research-platform.mdx` — product rationale in first person, restraint as a feature
 
-All 22 articles in `content/blog/` were rewritten to this voice in April 2026 and can be used as references.
+The original 22 articles in `content/blog/` were rewritten to this voice in April 2026; the directory has since grown well beyond that. Every article in `content/blog/` follows this voice and can be used as a reference.

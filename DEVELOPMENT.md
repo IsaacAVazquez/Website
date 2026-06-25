@@ -2,7 +2,7 @@
 
 Current development setup and workflow notes.
 
-**Last updated:** 2026-06-08
+**Last updated:** 2026-06-19
 
 ---
 
@@ -46,8 +46,13 @@ npm run update:mlb
 npm run update:nba
 npm run update:nfl
 npm run update:formula-1
+npm run update:golf
+npm run update:earthquake
+npm run update:world-cup
+npm run update:bay-area-transit
 npm run update:frontier-models
 npm run update:github-trending
+npm run update:tech-startups
 npm run update:spacex
 npm run update:spacex-images
 ```
@@ -161,7 +166,7 @@ npm run update:nba
 npm run update:nfl
 ```
 
-These commands use public data sources and do not require auth tokens. Golf is manually maintained in `src/data/golfSnapshot.ts`; there is no golf update script.
+These commands use public data sources and do not require auth tokens. Golf, Formula 1, the World Cup, Earthquake Pulse, and Bay Area Transit follow the same pattern with their own update scripts (`npm run update:golf`, `npm run update:formula-1`, `npm run update:world-cup`, `npm run update:earthquake`, `npm run update:bay-area-transit`), each against a public source with no auth token.
 
 ---
 
@@ -184,6 +189,7 @@ There is no live `/admin/analytics` page in the current route tree.
 - `next-sitemap` runs during postbuild
 - `typescript.ignoreBuildErrors` is still enabled in `next.config.mjs`
 - build-time tracing excludes large optional assets and packages
+- the snapshot-refresh GitHub Actions workflows (all `.github/workflows/update-*.yml`) commit and push their refreshed snapshots through the shared `scripts/ci/commit-and-push-snapshot.sh` helper, which sets the `github-actions[bot]` identity, no-ops cleanly when nothing changed, and retries the push with rebase + backoff so concurrent snapshot bots do not collide on `main`
 
 ---
 

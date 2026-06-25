@@ -2,7 +2,7 @@
 
 Current API route inventory for the app.
 
-**Last updated:** 2026-06-10
+**Last updated:** 2026-06-19
 
 ---
 
@@ -60,7 +60,7 @@ Current API route inventory for the app.
 
 | Route | Methods | Notes |
 |------|---------|-------|
-| `/api/mba-jobs` | GET | Aggregates MBA-relevant postings across Greenhouse, Lever, Ashby, and direct-HTML job boards for 32 tech companies; filters via `src/lib/mba-job-matching.ts`; accepts optional `?companies=` filter |
+| `/api/mba-jobs` | GET | Aggregates MBA-relevant postings across Greenhouse, Lever, Ashby, SmartRecruiters, and direct-HTML job boards (plus optional Adzuna external leads). `src/constants/mba-companies.ts` tracks 39 companies, ~28 actively fetched (the `manual` entries are catalogued, not live-fetched); filters via `src/lib/mba-job-matching.ts`; accepts optional `?companies=` filter |
 | `/api/mba-jobs/email` | POST | Sends a grouped digest of supplied `{ jobs, to }` via Resend; requires `RESEND_API_KEY` and `MBA_DIGEST_ALLOWED_RECIPIENTS` |
 
 ### Content and utilities
