@@ -1,0 +1,220 @@
+/*
+ * Deliberately retro 90s "GeoCities" styling for the 404 page.
+ * This is an intentional one-off that ignores the site's editorial token
+ * system for comedic effect, so the loud hardcoded colors are scoped to this
+ * module and never leak into the global palette. Motion is gated behind
+ * prefers-reduced-motion per the repo accessibility rules.
+ */
+
+.page {
+  /* Classic tiled "stars on black" backdrop, drawn with CSS so we ship no GIF. */
+  background-color: #000033;
+  background-image:
+    radial-gradient(1px 1px at 20px 30px, #fff, transparent),
+    radial-gradient(1px 1px at 70px 80px, #ffff00, transparent),
+    radial-gradient(2px 2px at 120px 40px, #fff, transparent),
+    radial-gradient(1px 1px at 160px 120px, #00ffff, transparent),
+    radial-gradient(1px 1px at 200px 60px, #fff, transparent);
+  background-size: 220px 160px;
+  color: #00ff00;
+  font-family: "Times New Roman", Times, Georgia, serif;
+  min-height: 100vh;
+  padding: 24px 12px 48px;
+  text-align: center;
+  image-rendering: pixelated;
+}
+
+.frame {
+  max-width: 760px;
+  margin: 0 auto;
+  border: 6px ridge #c0c0c0;
+  background: #000080;
+  padding: 16px;
+}
+
+/* WordArt-ish rainbow 404 */
+.bigError {
+  font-family: "Impact", "Arial Black", sans-serif;
+  font-size: clamp(5rem, 22vw, 11rem);
+  line-height: 0.9;
+  margin: 8px 0;
+  letter-spacing: 0.05em;
+  background: linear-gradient(
+    90deg,
+    #ff0000,
+    #ff7f00,
+    #ffff00,
+    #00ff00,
+    #0000ff,
+    #4b0082,
+    #9400d3
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-stroke: 2px #ffffff;
+  text-shadow: 4px 4px 0 #000000;
+}
+
+.heading {
+  font-family: "Comic Sans MS", "Chalkboard SE", cursive, sans-serif;
+  font-size: clamp(1.4rem, 4.5vw, 2.2rem);
+  color: #ffff00;
+  text-shadow: 2px 2px 0 #ff00ff;
+  margin: 12px 0;
+}
+
+.blink {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-weight: bold;
+  font-size: 1.25rem;
+  color: #ff0000;
+  background: #ffff00;
+  padding: 2px 8px;
+  display: inline-block;
+  animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+/* CSS reimplementation of the dear departed <marquee> */
+.marqueeBar {
+  overflow: hidden;
+  white-space: nowrap;
+  background: #800080;
+  border-top: 3px outset #c0c0c0;
+  border-bottom: 3px outset #c0c0c0;
+  margin: 16px 0;
+  padding: 6px 0;
+}
+
+.marqueeTrack {
+  display: inline-block;
+  padding-left: 100%;
+  color: #00ffff;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-weight: bold;
+  font-size: 1.1rem;
+  animation: scrollLeft 14s linear infinite;
+}
+
+@keyframes scrollLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.construction {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  color: #000000;
+  background: repeating-linear-gradient(
+    45deg,
+    #ffcc00,
+    #ffcc00 14px,
+    #000000 14px,
+    #000000 28px
+  );
+  border: 4px ridge #ffcc00;
+  padding: 10px;
+  margin: 16px auto;
+  font-weight: bold;
+  font-size: 1.05rem;
+  max-width: 520px;
+}
+
+.constructionInner {
+  background: #ffff99;
+  padding: 8px;
+  display: block;
+}
+
+.bodyText {
+  font-size: 1.05rem;
+  color: #ffffff;
+  line-height: 1.5;
+  max-width: 60ch;
+  margin: 14px auto;
+}
+
+.linkRow {
+  margin: 18px 0;
+}
+
+.retroLink {
+  color: #00ffff;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 1.1rem;
+  text-decoration: underline;
+  display: inline-block;
+  margin: 6px 10px;
+}
+
+.retroLink:hover {
+  color: #ff00ff;
+  background: #ffff00;
+}
+
+.retroLink:visited {
+  color: #ff69b4;
+}
+
+.divider {
+  display: block;
+  width: 90%;
+  height: 6px;
+  margin: 18px auto;
+  background: linear-gradient(90deg, #ff0000, #00ff00, #0000ff, #ff00ff);
+}
+
+.counter {
+  font-family: "Courier New", monospace;
+  background: #000000;
+  border: 3px inset #00ff00;
+  color: #00ff00;
+  display: inline-block;
+  padding: 4px 10px;
+  letter-spacing: 4px;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.counterLabel {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  color: #ffffff;
+  margin: 14px 0 6px;
+}
+
+.footerNote {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  color: #c0c0c0;
+  font-size: 0.85rem;
+  margin-top: 22px;
+}
+
+.webring {
+  font-family: "Times New Roman", serif;
+  color: #ffff00;
+  margin: 14px 0;
+  font-size: 0.95rem;
+}
+
+/* Respect users who don't want motion: freeze the blink and marquee. */
+@media (prefers-reduced-motion: reduce) {
+  .blink {
+    animation: none;
+  }
+  .marqueeTrack {
+    animation: none;
+    padding-left: 0;
+  }
+  .marqueeBar {
+    white-space: normal;
+  }
+}
