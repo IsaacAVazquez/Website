@@ -1,0 +1,165 @@
+/*
+ * Formula 1 Pulse — route-scoped racing theme.
+ *
+ * The dashboard is built on the editorial `--home-*` system. This module does
+ * NOT re-declare that palette; it aliases it and layers a thin racing identity
+ * on top: the signature F1 red as the local accent, a checkered-flag band, a
+ * carbon-fibre weave, and an arming start-light sequence. Everything degrades
+ * to the editorial look in `prefers-reduced-motion` and supports light/dark.
+ */
+
+.f1 {
+  /* Racing accent — the iconic Formula 1 red. We remap the local meaning of
+     --home-haze (the editorial brand-blue) to red so every accent the
+     dashboard already paints with haze — view toggles, leaderboard bars,
+     season progress "next" marker, links, upcoming-weekend tones — turns red
+     in one place instead of touching dozens of inline styles. */
+  --f1-red: #E10600;
+  --f1-red-bright: #FF2D1A;
+  --f1-carbon: #15161A;
+  --f1-checker: color-mix(in srgb, var(--home-ink) 82%, transparent);
+
+  --home-haze: var(--f1-red);
+}
+
+:global(.dark) .f1 {
+  --f1-red: #FF2D1A;
+  --f1-red-bright: #FF5341;
+  --f1-carbon: #0B0C0E;
+  --f1-checker: color-mix(in srgb, var(--home-ink) 70%, transparent);
+
+  --home-haze: var(--f1-red);
+}
+
+/* Carbon-fibre weave — a fine twill pattern kept low-contrast so it reads as
+   texture, not noise. Sits behind the hero copy. */
+.carbon {
+  position: relative;
+  isolation: isolate;
+}
+
+.carbon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  opacity: 0.5;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      color-mix(in srgb, var(--f1-carbon) 9%, transparent) 0,
+      color-mix(in srgb, var(--f1-carbon) 9%, transparent) 1px,
+      transparent 1px,
+      transparent 5px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      color-mix(in srgb, var(--f1-carbon) 9%, transparent) 0,
+      color-mix(in srgb, var(--f1-carbon) 9%, transparent) 1px,
+      transparent 1px,
+      transparent 5px
+    );
+  background-size: 7px 7px;
+  pointer-events: none;
+}
+
+:global(.dark) .carbon::before {
+  opacity: 0.7;
+}
+
+/* Checkered-flag band — a two-row finish-line checkerboard. Used as a thin
+   accent strip rather than a full fill. */
+.checkers {
+  background-image:
+    repeating-conic-gradient(
+      var(--f1-checker) 0% 25%,
+      transparent 0% 50%
+    );
+  background-size: 14px 14px;
+  background-position: 0 0;
+}
+
+/* The hero's bottom finish-line: a checker strip that fades in from the left so
+   it reads as a flag being waved across the panel. */
+.finishLine {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 12px;
+  opacity: 0.85;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 18%, #000 100%);
+  mask-image: linear-gradient(90deg, transparent, #000 18%, #000 100%);
+  pointer-events: none;
+}
+
+/* Diagonal speed slashes echoing a livery's leading edge. Decorative, anchored
+   to a corner of the hero. */
+.speedLines {
+  position: absolute;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    115deg,
+    color-mix(in srgb, var(--f1-red) 55%, transparent) 0,
+    color-mix(in srgb, var(--f1-red) 55%, transparent) 3px,
+    transparent 3px,
+    transparent 10px
+  );
+  -webkit-mask-image: radial-gradient(circle at 100% 0%, #000, transparent 70%);
+  mask-image: radial-gradient(circle at 100% 0%, #000, transparent 70%);
+}
+
+/* ---- Start-light gantry ---------------------------------------------------
+   Five lights arm left-to-right, hold, then the whole row "goes dark" (lights
+   out) before the loop restarts — the real F1 start procedure in miniature. */
+
+.gantry {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.45rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--f1-carbon) 90%, transparent);
+  border: 1px solid color-mix(in srgb, var(--home-ink) 30%, transparent);
+}
+
+.light {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, #2a0604 70%, var(--f1-carbon));
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.6);
+  animation: f1-light-cycle 5s linear infinite;
+}
+
+.light:nth-child(1) { animation-delay: 0s; }
+.light:nth-child(2) { animation-delay: 0.6s; }
+.light:nth-child(3) { animation-delay: 1.2s; }
+.light:nth-child(4) { animation-delay: 1.8s; }
+.light:nth-child(5) { animation-delay: 2.4s; }
+
+@keyframes f1-light-cycle {
+  /* arm */
+  0%, 4% {
+    background: color-mix(in srgb, #2a0604 70%, var(--f1-carbon));
+    box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.6);
+  }
+  8%, 60% {
+    background: radial-gradient(circle at 30% 30%, var(--f1-red-bright) 0%, var(--f1-red) 55%, #7a0500 100%);
+    box-shadow: 0 0 7px 1px color-mix(in srgb, var(--f1-red) 70%, transparent);
+  }
+  /* lights out — go dark together */
+  64%, 100% {
+    background: color-mix(in srgb, #2a0604 70%, var(--f1-carbon));
+    box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.6);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .light {
+    animation: none;
+    background: radial-gradient(circle at 30% 30%, var(--f1-red-bright) 0%, var(--f1-red) 55%, #7a0500 100%);
+    box-shadow: 0 0 5px color-mix(in srgb, var(--f1-red) 50%, transparent);
+  }
+}

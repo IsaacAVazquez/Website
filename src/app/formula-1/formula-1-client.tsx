@@ -45,6 +45,7 @@ import {
   ChartBar,
   User,
 } from "@/components/ui/ServerIcons";
+import styles from "./formula-1.module.css";
 
 interface Formula1ClientProps {
   initialState: Formula1RouteState;
@@ -343,26 +344,16 @@ function CircuitMarker({ meeting }: { meeting: Formula1MeetingSummary }) {
 }
 
 /**
- * Five-light F1 start gantry. Purely decorative. The lights "arm" left to
- * right and the last one keeps a soft glow so the hero reads as a grid that is
- * about to go green.
+ * Five-light F1 start gantry. Purely decorative. The lights arm left to right,
+ * hold red, then go dark together — the real start procedure in miniature —
+ * looping on a timer. Honors `prefers-reduced-motion` (lights hold lit) via the
+ * CSS module.
  */
 function StartLights() {
   return (
-    <span className="inline-flex items-center gap-1.5" aria-hidden="true">
+    <span className={styles.gantry} aria-hidden="true">
       {[0, 1, 2, 3, 4].map((index) => (
-        <span
-          key={index}
-          className="h-2 w-2 rounded-full"
-          style={{
-            background:
-              "radial-gradient(circle at 30% 30%, #FF6A5A 0%, #E0271A 60%, #A50E04 100%)",
-            boxShadow:
-              index === 4
-                ? "0 0 8px 1px color-mix(in srgb, #E0271A 60%, transparent)"
-                : "0 0 4px color-mix(in srgb, #E0271A 35%, transparent)",
-          }}
-        />
+        <span key={index} className={styles.light} />
       ))}
     </span>
   );
@@ -1266,17 +1257,22 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
   ];
 
   return (
-    <div className="home-page min-h-screen">
+    <div className={`home-page min-h-screen ${styles.f1}`}>
       <div className="home-shell home-section space-y-6 sm:space-y-8">
       <section
-        className="overflow-hidden rounded-[32px] border p-6 sm:p-8 lg:p-10"
+        className={`relative overflow-hidden rounded-[32px] border p-6 sm:p-8 lg:p-10 ${styles.carbon}`}
         style={{
-          borderColor: "color-mix(in srgb, var(--home-haze) 24%, var(--home-rule))",
+          borderColor: "color-mix(in srgb, var(--home-haze) 30%, var(--home-rule))",
           background:
-            "radial-gradient(circle at top right, color-mix(in srgb, var(--home-haze) 18%, transparent) 0%, transparent 38%), linear-gradient(140deg, color-mix(in srgb, var(--home-paper) 94%, var(--home-elev-mix)) 0%, color-mix(in srgb, var(--home-paper-alt) 88%, var(--home-elev-mix)) 100%)",
+            "radial-gradient(circle at top right, color-mix(in srgb, var(--home-haze) 22%, transparent) 0%, transparent 42%), linear-gradient(140deg, color-mix(in srgb, var(--home-paper) 94%, var(--home-elev-mix)) 0%, color-mix(in srgb, var(--home-paper-alt) 88%, var(--home-elev-mix)) 100%)",
           boxShadow: "var(--shadow-sm)",
         }}
       >
+        <span
+          className={styles.speedLines}
+          aria-hidden="true"
+          style={{ top: 0, right: 0, width: "42%", height: "60%" }}
+        />
         <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
           <div>
             <p className="home-kicker mb-2">Formula 1 project</p>
@@ -1405,6 +1401,7 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
             )}
           </aside>
         </div>
+        <span className={`${styles.finishLine} ${styles.checkers}`} aria-hidden="true" />
       </section>
 
       <HomeStatsPanel
