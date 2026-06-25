@@ -2,7 +2,7 @@
 
 Operational context for agents working in this repo. Start here, then read `CLAUDE.md` for deeper implementation context.
 
-**Last updated:** 2026-06-19
+**Last updated:** 2026-06-25
 
 ---
 
@@ -72,7 +72,7 @@ Canonical redirects:
 
 ---
 
-## Navigation And Shell
+## Navigation and Shell
 
 Promoted header items (from `src/constants/navlinks.tsx`):
 
@@ -439,7 +439,7 @@ For public fantasy updates, GitHub Actions is the source of truth.
 
 ---
 
-## Source Of Truth Docs
+## Source of Truth Docs
 
 - `README.md`
 - `AGENTS.md`
