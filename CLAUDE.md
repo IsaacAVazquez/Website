@@ -2,7 +2,7 @@
 
 Deep implementation context for Claude Code and other agents working in this repo.
 
-**Last updated:** 2026-06-23
+**Last updated:** 2026-06-25
 
 ---
 
