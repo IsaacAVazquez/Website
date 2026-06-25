@@ -27,11 +27,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { SOURCE_META } from "@/lib/news-pulse-sources";
-import type { NewsArticle } from "@/lib/news-pulse-utils";
+import type { NewsArticle, TopicCluster } from "@/lib/news-pulse-utils";
 import {
   analyzeSentiment,
   calculateReadingLevel,
   clusterArticlesByStory,
+  extractTopics,
   getOrderedSourcesForArticles,
 } from "@/lib/news-pulse-utils";
 import {
@@ -303,6 +304,8 @@ export function NewsPulseClient({ initialState }: NewsPulseClientProps) {
 
   const lastFetchedRelative = fetchedAt ? timeAgo(fetchedAt) : "—";
 
+  const topicClusters = useMemo(() => extractTopics(articles), [articles]);
+
   const newsCells: HomeStatsCell[] = [
     {
       label: "Headlines in pull",
@@ -336,9 +339,9 @@ export function NewsPulseClient({ initialState }: NewsPulseClientProps) {
       tone: feedErrors.length === 0 && !loading ? "good" : "default",
     },
     {
-      label: "Average reading time",
-      value: "—",
-      sub: "n/a in current snapshot",
+      label: "Trending topics",
+      value: <span className="tabular-nums">{loading ? "—" : topicClusters.length}</span>,
+      sub: "Keywords across 2+ outlets",
     },
     {
       label: "Last fetched",
@@ -483,7 +486,7 @@ export function NewsPulseClient({ initialState }: NewsPulseClientProps) {
         ) : routeState.view === "headlines" ? (
           <HeadlinesView articles={filteredArticles} variants={variants} />
         ) : routeState.view === "coverage" ? (
-          <CoverageView articles={articles} variants={variants} />
+          <CoverageView articles={articles} topics={topicClusters} variants={variants} />
         ) : (
           <AnalysisView articles={articles} variants={variants} />
         )}
@@ -674,15 +677,18 @@ function HeadlinesView({
 
 function CoverageView({
   articles,
+  topics,
   variants,
 }: {
   articles: NewsArticle[];
+  topics: TopicCluster[];
   variants: typeof fadeIn;
 }) {
   const sourceIds = useMemo(() => getOrderedSourcesForArticles(articles), [articles]);
   const storyClusters = useMemo(() => clusterArticlesByStory(articles), [articles]);
+  const maxTopicCount = topics.reduce((max, topic) => Math.max(max, topic.count), 0);
 
-  if (storyClusters.length === 0) {
+  if (topics.length === 0 && storyClusters.length === 0) {
     return (
       <StatusPanel
         title="The cross-outlet overlap is thin right now."
@@ -693,6 +699,73 @@ function CoverageView({
 
   return (
     <motion.div className="space-y-6" variants={variants} initial="hidden" animate="visible">
+      {topics.length > 0 ? (
+        <div className="home-card p-5 sm:p-6">
+          <h2
+            className="text-xl font-semibold"
+            style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink)" }}
+          >
+            Trending topics
+          </h2>
+          <InlineSectionLead kicker="What the newsrooms keep saying">
+            The words showing up across multiple outlets right now, ranked by how many headlines
+            mention them. The dots show which outlets are on each.
+          </InlineSectionLead>
+          <ol className="mt-6 grid gap-2.5">
+            {topics.map((topic, index) => {
+              const pct =
+                maxTopicCount > 0
+                  ? Math.max(8, Math.round((topic.count / maxTopicCount) * 100))
+                  : 0;
+              const coveringSources = sourceIds.filter(
+                (source) => (topic.sources[source] ?? 0) > 0,
+              );
+              return (
+                <li
+                  key={topic.topic}
+                  className="grid items-center gap-3 rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper)] p-3 sm:grid-cols-[1.75rem_minmax(0,1fr)_auto]"
+                >
+                  <span className="font-mono text-sm font-semibold text-[var(--home-ink-muted)]">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <div className="min-w-0">
+                    <div className="flex items-baseline justify-between gap-3">
+                      <span
+                        className="truncate text-sm font-semibold capitalize text-[var(--home-ink)]"
+                        style={{ fontFamily: "var(--font-home-sans)" }}
+                      >
+                        {topic.topic}
+                      </span>
+                      <span className="shrink-0 font-mono text-xs text-[var(--home-ink-muted)]">
+                        {topic.count} headlines
+                      </span>
+                    </div>
+                    <span className="mt-1.5 block h-1.5 overflow-hidden rounded-full bg-[var(--home-rule)]">
+                      <span
+                        className="block h-full rounded-full"
+                        style={{ width: `${pct}%`, background: "var(--home-acid)" }}
+                      />
+                    </span>
+                  </div>
+                  <div className="flex flex-wrap items-center gap-1.5 sm:justify-end">
+                    {coveringSources.map((source) => (
+                      <span
+                        key={source}
+                        className="h-2.5 w-2.5 rounded-full"
+                        style={{ background: SOURCE_META[source].color }}
+                        title={`${SOURCE_META[source].name} · ${topic.sources[source]} headlines`}
+                        aria-hidden="true"
+                      />
+                    ))}
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+      ) : null}
+
+      {storyClusters.length > 0 ? (
       <div className="home-card p-5 sm:p-6">
         <h2
           className="text-xl font-semibold"
@@ -842,6 +915,7 @@ function CoverageView({
           </table>
         </div>
       </div>
+      ) : null}
     </motion.div>
   );
 }

@@ -87,6 +87,70 @@ function formatGeneratedAt(iso: string): string {
   });
 }
 
+type SortKey = "curated" | "stars" | "recent" | "name";
+
+const SORT_OPTIONS: FilterOption[] = [
+  { id: "curated", label: "Curated order" },
+  { id: "stars", label: "GitHub stars" },
+  { id: "recent", label: "Recently shipped" },
+  { id: "name", label: "Name (A–Z)" },
+];
+
+// Lifecycle signal surfaced as a small badge so a tool that's mid-pivot or
+// enterprise-gated reads at a glance, not just in the detail panel.
+const STATUS_BADGES: Record<
+  AiDevTool["status"],
+  { label: string; bg: string; fg: string }
+> = {
+  active: {
+    label: "Active",
+    bg: "color-mix(in srgb, var(--home-positive) 14%, var(--home-paper))",
+    fg: "color-mix(in srgb, var(--home-positive) 55%, var(--home-ink))",
+  },
+  transition: {
+    label: "In transition",
+    bg: "color-mix(in srgb, var(--home-warning) 16%, var(--home-paper))",
+    fg: "color-mix(in srgb, var(--home-warning) 50%, var(--home-ink))",
+  },
+  "enterprise-focused": {
+    label: "Enterprise",
+    bg: "var(--home-paper-alt)",
+    fg: "var(--home-ink-muted)",
+  },
+};
+
+function releaseTimeMs(tool: AiDevTool): number {
+  if (!tool.latestRelease) return 0;
+  const ms = new Date(tool.latestRelease).getTime();
+  return Number.isFinite(ms) ? ms : 0;
+}
+
+function sortTools(tools: AiDevTool[], sort: SortKey): AiDevTool[] {
+  if (sort === "curated") return tools;
+  const copy = [...tools];
+  switch (sort) {
+    case "name":
+      return copy.sort((a, b) => a.name.localeCompare(b.name));
+    case "stars":
+      return copy.sort((a, b) => (b.githubStars ?? -1) - (a.githubStars ?? -1));
+    case "recent":
+      return copy.sort((a, b) => releaseTimeMs(b) - releaseTimeMs(a));
+    default:
+      return copy;
+  }
+}
+
+// Days since the latest release → a freshness tone. Recent ships read as
+// momentum; long gaps read as a watch-out.
+function releaseFreshness(tool: AiDevTool, nowMs: number): { dot: string; title: string } {
+  const ms = releaseTimeMs(tool);
+  if (!ms) return { dot: "var(--home-rule)", title: "No dated release" };
+  const days = Math.max(0, Math.round((nowMs - ms) / 86_400_000));
+  if (days <= 30) return { dot: "var(--home-positive)", title: `Shipped ${days}d ago` };
+  if (days <= 120) return { dot: "var(--home-ink-muted)", title: `Shipped ${days}d ago` };
+  return { dot: "var(--home-warning)", title: `Last ship ${days}d ago` };
+}
+
 interface ToolCategoryIconProps {
   category: AiDevToolCategory;
   className?: string;
@@ -146,6 +210,8 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
     });
   }
 
+  const [sort, setSort] = useState<SortKey>("curated");
+
   const filteredTools = useMemo(
     () =>
       filterAiDevTools(aiDevTools, {
@@ -158,11 +224,18 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
     [state.category, state.model, state.pricing, state.query, state.source]
   );
 
+  const sortedTools = useMemo(() => sortTools(filteredTools, sort), [filteredTools, sort]);
+
+  const maxStars = useMemo(
+    () => sortedTools.reduce((max, tool) => Math.max(max, tool.githubStars ?? 0), 0),
+    [sortedTools]
+  );
+
   const selectedTool = useMemo(
     () => aiDevTools.find((tool) => tool.id === state.selectedToolId) ?? null,
     [state.selectedToolId]
   );
-  const visibleDetailTool = selectedTool ?? filteredTools[0] ?? null;
+  const visibleDetailTool = selectedTool ?? sortedTools[0] ?? null;
   const openOrPublicCount = aiDevTools.filter(
     (tool) => tool.sourceStatus !== "proprietary"
   ).length;
@@ -299,7 +372,7 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
           { label: "Cloud agents", href: "/ai-dev-tools?category=cloud-agent", icon: Database },
           { label: "Terminal agents", href: "/ai-dev-tools?category=terminal-agent", icon: FileText },
           { label: "Editor extensions", href: "/ai-dev-tools?category=editor-extension", icon: Briefcase },
-          { label: "GitHub", href: "https://github.com/", icon: BrandGithub, external: true },
+          { label: "Open source", href: "/ai-dev-tools?source=open-source", icon: BrandGithub },
         ]}
       />
 
@@ -366,16 +439,24 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
             <p className="mb-0 text-sm font-semibold text-[var(--home-ink-muted)]">
               {filteredTools.length} of {aiDevTools.length} tools shown
             </p>
+            <FilterSelect
+              label="Sort"
+              value={sort}
+              options={SORT_OPTIONS}
+              onChange={(value) => setSort(value as SortKey)}
+            />
           </div>
 
-          {filteredTools.length === 0 ? (
+          {sortedTools.length === 0 ? (
             <EmptyPanel
               title="No tools match those filters"
               description="Try a wider category, pricing model, or search term."
             />
           ) : (
-            <ToolDirectoryTable
-              tools={filteredTools}
+            <ToolDirectoryList
+              tools={sortedTools}
+              maxStars={maxStars}
+              nowMs={renderedAtMs}
               selectedToolId={visibleDetailTool?.id ?? null}
               onSelect={(toolId) => navigate({ ...state, selectedToolId: toolId })}
             />
@@ -414,106 +495,133 @@ function FilterSelect({ label, value, options, onChange }: FilterSelectProps) {
   );
 }
 
-interface ToolDirectoryTableProps {
+interface ToolDirectoryListProps {
   tools: AiDevTool[];
+  maxStars: number;
+  nowMs: number;
   selectedToolId: string | null;
   onSelect: (toolId: string) => void;
 }
 
-function ToolDirectoryTable({
+// A responsive directory of row-cards (replaces the old horizontally-scrolling
+// table). Each card reflows from a single column on mobile to a three-up facts
+// grid on larger screens, and encodes GitHub traction (relative bar), release
+// freshness (dot), and lifecycle (badge) so the market is scannable at a glance.
+function ToolDirectoryList({
   tools,
+  maxStars,
+  nowMs,
   selectedToolId,
   onSelect,
-}: ToolDirectoryTableProps) {
+}: ToolDirectoryListProps) {
   return (
-    <div className="home-card min-w-0 overflow-hidden p-0">
-      <div className="max-w-full overflow-x-auto">
-        <table className="w-full min-w-[58rem] border-collapse text-sm">
-          <thead>
-            <tr className="border-b border-[var(--home-rule)] bg-[var(--home-paper-alt)]">
-              {["Tool", "Pricing", "Models", "Stars", "Release cadence"].map((heading) => (
-                <th
-                  key={heading}
-                  scope="col"
-                  className="px-4 py-3 text-left text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]"
-                >
-                  {heading}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {tools.map((tool) => {
-              const isSelected = selectedToolId === tool.id;
-              return (
-                <tr
-                  key={tool.id}
-                  className={`cursor-pointer border-b border-[var(--home-rule)] transition-colors hover:bg-[var(--home-paper-alt)] ${
-                    isSelected ? "bg-[var(--home-paper-alt)]" : ""
-                  }`}
-                  onClick={() => onSelect(tool.id)}
-                  onKeyDown={(event) => {
-                    if (event.key === "Enter" || event.key === " ") {
-                      event.preventDefault();
-                      onSelect(tool.id);
-                    }
-                  }}
-                  role="button"
-                  tabIndex={0}
-                  aria-pressed={isSelected}
-                >
-                  <td className="min-w-[17rem] px-4 py-4 align-top">
-                    <button
-                      type="button"
-                      className="flex min-h-[44px] w-full items-start gap-3 text-left"
-                      onClick={(event) => {
-                        event.stopPropagation();
-                        onSelect(tool.id);
-                      }}
-                    >
-                      <span className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper)] text-[var(--home-ink-muted)]">
-                        <ToolCategoryIcon category={tool.category} />
+    <ul className="grid min-w-0 gap-3">
+      {tools.map((tool) => {
+        const isSelected = selectedToolId === tool.id;
+        const badge = STATUS_BADGES[tool.status];
+        const freshness = releaseFreshness(tool, nowMs);
+        const starPct =
+          maxStars > 0 && tool.githubStars
+            ? Math.max(6, Math.round((tool.githubStars / maxStars) * 100))
+            : 0;
+        return (
+          <li key={tool.id}>
+            <button
+              type="button"
+              onClick={() => onSelect(tool.id)}
+              aria-pressed={isSelected}
+              className="w-full rounded-2xl border bg-[var(--home-paper)] p-4 text-left transition-colors hover:bg-[var(--home-paper-alt)]"
+              style={{
+                borderColor: isSelected ? "var(--home-ink)" : "var(--home-rule)",
+                boxShadow: isSelected ? "inset 3px 0 0 0 var(--home-acid)" : undefined,
+              }}
+            >
+              <div className="flex items-start justify-between gap-3">
+                <div className="flex min-w-0 items-start gap-3">
+                  <span className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-[var(--home-ink-muted)]">
+                    <ToolCategoryIcon category={tool.category} />
+                  </span>
+                  <div className="min-w-0">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="text-base font-semibold text-[var(--home-ink)]">
+                        {tool.name}
                       </span>
-                      <span>
-                        <span className="block text-base font-semibold text-[var(--home-ink)]">
-                          {tool.name}
-                        </span>
-                        <span className="mt-1 block text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
-                          {AI_DEV_TOOL_CATEGORY_LABELS[tool.category]}
-                        </span>
+                      <span
+                        className="inline-flex rounded-full px-2 py-0.5 text-3xs font-semibold uppercase tracking-[0.12em]"
+                        style={{ background: badge.bg, color: badge.fg }}
+                      >
+                        {badge.label}
                       </span>
-                    </button>
-                  </td>
-                  <td className="min-w-[15rem] px-4 py-4 align-top text-[var(--home-ink-muted)]">
-                    <span className="font-semibold text-[var(--home-ink)]">
-                      {AI_DEV_TOOL_PRICING_LABELS[tool.pricingModel]}
+                    </div>
+                    <span className="mt-0.5 block text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
+                      {AI_DEV_TOOL_CATEGORY_LABELS[tool.category]} · {tool.company}
                     </span>
-                    <span className="mt-1 block leading-6">{tool.pricingSummary}</span>
-                  </td>
-                  <td className="min-w-[16rem] px-4 py-4 align-top text-[var(--home-ink-muted)]">
-                    <span className="font-semibold text-[var(--home-ink)]">
-                      {AI_DEV_TOOL_MODEL_LABELS[tool.modelSupport]}
-                    </span>
-                    <span className="mt-1 block leading-6">{tool.modelSummary}</span>
-                  </td>
-                  <td className="px-4 py-4 align-top font-mono text-[var(--home-ink)]">
+                  </div>
+                </div>
+                <div className="shrink-0 text-right">
+                  <span className="block font-mono text-sm font-semibold text-[var(--home-ink)]">
                     {formatGithubStars(tool.githubStars)}
-                  </td>
-                  <td className="min-w-[12rem] px-4 py-4 align-top text-[var(--home-ink-muted)]">
-                    <span className="font-semibold text-[var(--home-ink)]">
-                      {AI_DEV_TOOL_CADENCE_LABELS[tool.releaseCadence]}
+                  </span>
+                  <span className="mt-0.5 block text-3xs uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
+                    GH stars
+                  </span>
+                  {starPct > 0 ? (
+                    <span className="mt-1 ml-auto block h-1 w-16 overflow-hidden rounded-full bg-[var(--home-rule)]">
+                      <span
+                        className="block h-full rounded-full"
+                        style={{ width: `${starPct}%`, background: "var(--home-acid)" }}
+                      />
                     </span>
-                    <span className="mt-1 block">
-                      {formatReleaseDate(tool.latestRelease)}
-                    </span>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-    </div>
+                  ) : null}
+                </div>
+              </div>
+
+              <div className="mt-3 grid gap-3 border-t border-[var(--home-rule)] pt-3 sm:grid-cols-3">
+                <div className="min-w-0">
+                  <span className="block text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
+                    Pricing
+                  </span>
+                  <span className="mt-1 block text-sm font-semibold text-[var(--home-ink)]">
+                    {AI_DEV_TOOL_PRICING_LABELS[tool.pricingModel]}
+                  </span>
+                  <span className="mt-0.5 block line-clamp-2 text-xs leading-5 text-[var(--home-ink-muted)]">
+                    {tool.pricingSummary}
+                  </span>
+                </div>
+                <div className="min-w-0">
+                  <span className="block text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
+                    Models
+                  </span>
+                  <span className="mt-1 block text-sm font-semibold text-[var(--home-ink)]">
+                    {AI_DEV_TOOL_MODEL_LABELS[tool.modelSupport]}
+                  </span>
+                  <span className="mt-0.5 block line-clamp-2 text-xs leading-5 text-[var(--home-ink-muted)]">
+                    {tool.modelSummary}
+                  </span>
+                </div>
+                <div className="min-w-0">
+                  <span className="block text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
+                    Release
+                  </span>
+                  <span className="mt-1 block text-sm font-semibold text-[var(--home-ink)]">
+                    {AI_DEV_TOOL_CADENCE_LABELS[tool.releaseCadence]}
+                  </span>
+                  <span className="mt-0.5 flex items-center gap-1.5 text-xs text-[var(--home-ink-muted)]">
+                    <span
+                      className="inline-block h-1.5 w-1.5 shrink-0 rounded-full"
+                      style={{ background: freshness.dot }}
+                      title={freshness.title}
+                      aria-hidden="true"
+                    />
+                    {formatReleaseDate(tool.latestRelease)}
+                  </span>
+                </div>
+              </div>
+            </button>
+          </li>
+        );
+      })}
+    </ul>
   );
 }
 
