@@ -64,7 +64,9 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const allowlist = await getAllowedSymbols();
+    const allowlist = await getAllowedSymbols({
+      assetOrigin: request.nextUrl.origin,
+    });
     const validSymbols = symbolArray.filter((s) => allowlist.has(s));
     const invalidQuotes: StockQuote[] = symbolArray
       .filter((s) => !allowlist.has(s))
