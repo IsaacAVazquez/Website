@@ -3,6 +3,9 @@ export interface AssetOriginOptions {
   assetOrigin?: string | null;
 }
 
+/** The site's canonical production origin (matches seo.ts). */
+const CANONICAL_PRODUCTION_ORIGIN = "https://isaacavazquez.com";
+
 /**
  * Resolve the origin to fetch committed `/public/data/investments` assets from
  * when they are not present on the local filesystem.
@@ -14,8 +17,10 @@ export interface AssetOriginOptions {
  * is the single source of truth for that origin so the precedence can't drift
  * between the curated-data loader and the Finnhub allowlist.
  *
- * Returns `null` when no origin can be determined (e.g. local dev with the file
- * present on disk, where the HTTP fallback is unnecessary).
+ * Always resolves to an origin: an explicit override or env var when present,
+ * otherwise the canonical production origin. (The disk-first callers only reach
+ * the HTTP fallback when the bundled file is missing, i.e. in the deployed
+ * function, so a non-null origin in local dev is harmless.)
  */
 export function getInvestmentsAssetOrigin(
   options: AssetOriginOptions = {}
@@ -27,7 +32,15 @@ export function getInvestmentsAssetOrigin(
     process.env.DEPLOY_URL ??
     process.env.SITE_URL ??
     process.env.NEXT_PUBLIC_SITE_URL ??
-    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null);
+    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null) ??
+    // Canonical production origin as a last resort. Inside the deployed Netlify
+    // function none of the env vars above are present at runtime, so the origin
+    // resolved to null and the curated-investments loaders failed closed: the
+    // allowlist came back empty (every symbol "not eligible for live pricing")
+    // and the index route 503'd. The committed public assets are identical on
+    // every deploy, so the canonical origin is always a safe source. Mirrors
+    // the same hardcoded fallback in seo.ts.
+    CANONICAL_PRODUCTION_ORIGIN;
 
   return configuredOrigin ? configuredOrigin.replace(/\/$/, "") : null;
 }

@@ -85,11 +85,14 @@ describe("finnhub allowlist resolution", () => {
     mockReadFileSync.mockImplementation(() => {
       throw enoent();
     });
-    // No origin configured → no HTTP fallback available this call.
+    // The bundled file is gone and the public-asset fetch fails too → total miss.
+    global.fetch = jest
+      .fn()
+      .mockRejectedValue(new Error("network down")) as unknown as typeof fetch;
     const firstAttempt = await getAllowedSymbols();
     expect(firstAttempt.size).toBe(0);
 
-    // A later request (origin now resolvable) must recover rather than stay
+    // A later request (asset now reachable) must recover rather than stay
     // wedged on a cached empty set for the life of the process.
     process.env.URL = "https://isaacavazquez.com";
     mockPublicAsset(["AAPL"]);

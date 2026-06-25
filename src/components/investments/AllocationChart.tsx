@@ -44,8 +44,8 @@ export function AllocationChart({ holdings }: Props) {
     ).format(totalForLabel)}. Top: ${summaryParts.join(", ")}.`;
 
     const svg = select(svgRef.current)
-      .attr("width", size)
-      .attr("height", size)
+      .attr("viewBox", `0 0 ${size} ${size}`)
+      .attr("preserveAspectRatio", "xMidYMid meet")
       .attr("role", "img")
       .attr("aria-label", summary);
 
@@ -130,9 +130,9 @@ export function AllocationChart({ holdings }: Props) {
           Position weights based on current market value.
         </p>
       </div>
-      <div className="flex flex-col gap-4 xl:flex-row xl:items-start">
-        <div className="relative shrink-0 self-center">
-          <svg ref={svgRef} />
+      <div className="flex flex-col items-center gap-4 xl:flex-row xl:items-center xl:gap-6">
+        <div className="relative aspect-square w-[200px] shrink-0 sm:w-[220px]">
+          <svg ref={svgRef} className="h-full w-full" />
           <div
             ref={tooltipRef}
             style={{ display: "none", position: "absolute", pointerEvents: "none" }}
