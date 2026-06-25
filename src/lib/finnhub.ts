@@ -11,7 +11,10 @@
 import { readFileSync } from "fs";
 import path from "path";
 import type { StockQuote } from "@/types/investment";
-import { getInvestmentsAssetOrigin } from "@/lib/investmentsAssetOrigin";
+import {
+  getInvestmentsAssetOrigin,
+  type AssetOriginOptions,
+} from "@/lib/investmentsAssetOrigin";
 
 const FINNHUB_API_KEY = process.env.FINNHUB_API_KEY ?? "";
 const TIMEOUT_MS = 8_000;
@@ -81,8 +84,10 @@ function readAllowlistFromDisk(): Set<string> {
   }
 }
 
-async function fetchAllowlistFromPublicAsset(): Promise<Set<string>> {
-  const origin = getInvestmentsAssetOrigin();
+async function fetchAllowlistFromPublicAsset(
+  options?: AssetOriginOptions
+): Promise<Set<string>> {
+  const origin = getInvestmentsAssetOrigin(options);
   if (!origin) {
     return new Set<string>();
   }
@@ -108,7 +113,9 @@ async function fetchAllowlistFromPublicAsset(): Promise<Set<string>> {
  * deliberately NOT cached, so a transient failure can recover on the next
  * request instead of wedging the allowlist closed for the whole process.
  */
-export async function getAllowedSymbols(): Promise<ReadonlySet<string>> {
+export async function getAllowedSymbols(
+  options?: AssetOriginOptions
+): Promise<ReadonlySet<string>> {
   if (cachedAllowlist && cachedAllowlist.size > 0) {
     return cachedAllowlist;
   }
@@ -119,7 +126,7 @@ export async function getAllowedSymbols(): Promise<ReadonlySet<string>> {
     return cachedAllowlist;
   }
 
-  const fromPublic = await fetchAllowlistFromPublicAsset();
+  const fromPublic = await fetchAllowlistFromPublicAsset(options);
   if (fromPublic.size > 0) {
     cachedAllowlist = fromPublic;
     return cachedAllowlist;
@@ -131,11 +138,14 @@ export async function getAllowedSymbols(): Promise<ReadonlySet<string>> {
   return new Set<string>();
 }
 
-export async function isAllowedSymbol(symbol: string): Promise<boolean> {
+export async function isAllowedSymbol(
+  symbol: string,
+  options?: AssetOriginOptions
+): Promise<boolean> {
   if (!isValidSymbol(symbol)) {
     return false;
   }
-  const allowlist = await getAllowedSymbols();
+  const allowlist = await getAllowedSymbols(options);
   return allowlist.has(symbol.toUpperCase());
 }
 
