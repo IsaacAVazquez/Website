@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-26T11:57:57.305Z",
+  "generatedAt": "2026-06-26T22:40:04.082Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-06-26T11:57:53.986Z"
+    "generatedAt": "2026-06-26T22:39:58.862Z"
   },
   "upcomingLaunches": [
     {
@@ -314,25 +314,25 @@
       }
     },
     {
-      "id": "135fb199-a39e-48cc-ba27-0aecd96ba9f8",
-      "name": "Starlink Group 17-48",
+      "id": "62d4cd48-ed28-418b-b58c-526781a50a39",
+      "name": "Starlink Group 10-42",
       "flightNumber": 700,
       "upcoming": true,
       "success": null,
-      "details": "A batch of 24 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-07-06T14:00:00Z",
-      "dateUnix": 1783346400,
-      "dateLocal": "2026-07-06T14:00:00Z",
+      "details": "A batch of 29 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
+      "dateUtc": "2026-07-09T09:05:00Z",
+      "dateUnix": 1783587900,
+      "dateLocal": "2026-07-09T09:05:00Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
       "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "launchpadName": "Space Launch Complex 40",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
       "patchImage": "/data/spacex/images/1927035cad14a77c.png",
       "vehicleImage": "/data/spacex/images/b317ff9ea04bd623.png",
       "crewCount": 0,
-      "payloadCount": 24,
+      "payloadCount": 29,
       "capsuleCount": 0,
       "coreCount": 1,
       "hasExactTime": true,
@@ -354,25 +354,25 @@
       }
     },
     {
-      "id": "62d4cd48-ed28-418b-b58c-526781a50a39",
-      "name": "Starlink Group 10-42",
+      "id": "135fb199-a39e-48cc-ba27-0aecd96ba9f8",
+      "name": "Starlink Group 17-48",
       "flightNumber": 701,
       "upcoming": true,
       "success": null,
-      "details": "A batch of 29 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-07-09T09:05:00Z",
-      "dateUnix": 1783587900,
-      "dateLocal": "2026-07-09T09:05:00Z",
+      "details": "A batch of 24 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
+      "dateUtc": "2026-07-10T14:00:00Z",
+      "dateUnix": 1783692000,
+      "dateLocal": "2026-07-10T14:00:00Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
       "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 40",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
       "patchImage": "/data/spacex/images/1927035cad14a77c.png",
       "vehicleImage": "/data/spacex/images/b317ff9ea04bd623.png",
       "crewCount": 0,
-      "payloadCount": 29,
+      "payloadCount": 24,
       "capsuleCount": 0,
       "coreCount": 1,
       "hasExactTime": true,
