@@ -5648,6 +5648,27 @@
       "total_market_cap": 3645140330000.08,
       "total_ttm_net_income": 148170649190.30997,
       "industry_pe": 24.6
+    },
+    {
+      "report_date": "2026-06-22T00:00:00.000",
+      "industry": "Internet Retail",
+      "total_market_cap": 3488243108278.35,
+      "total_ttm_net_income": 148170649190.30997,
+      "industry_pe": 23.54
+    },
+    {
+      "report_date": "2026-06-23T00:00:00.000",
+      "industry": "Internet Retail",
+      "total_market_cap": 3487923880374.38,
+      "total_ttm_net_income": 148170649190.30997,
+      "industry_pe": 23.54
+    },
+    {
+      "report_date": "2026-06-24T00:00:00.000",
+      "industry": "Internet Retail",
+      "total_market_cap": 3481548536465.5,
+      "total_ttm_net_income": 148170649190.30997,
+      "industry_pe": 23.5
     }
   ],
   "ps_ratio": [
@@ -11306,6 +11327,27 @@
       "total_market_cap": 37929610.519999996,
       "total_ttm_revenue": 1979677.0,
       "industry_ps_ratio": 19.16
+    },
+    {
+      "report_date": "2026-06-22T00:00:00.000",
+      "industry": "Internet Retail",
+      "total_market_cap": 3534512144452.1904,
+      "total_ttm_revenue": 1682859300874.2698,
+      "industry_ps_ratio": 2.1
+    },
+    {
+      "report_date": "2026-06-23T00:00:00.000",
+      "industry": "Internet Retail",
+      "total_market_cap": 3534526606788.61,
+      "total_ttm_revenue": 1682859300874.2698,
+      "industry_ps_ratio": 2.1
+    },
+    {
+      "report_date": "2026-06-24T00:00:00.000",
+      "industry": "Internet Retail",
+      "total_market_cap": 3529665483732.3,
+      "total_ttm_revenue": 1682859300874.2698,
+      "industry_ps_ratio": 2.1
     }
   ],
   "pb_ratio": [
@@ -18574,6 +18616,27 @@
       "total_market_cap": 6322923750.0,
       "total_bve": 668088913.36,
       "industry_pb_ratio": 9.46
+    },
+    {
+      "report_date": "2026-06-22T00:00:00.000",
+      "industry": "Internet Retail",
+      "total_market_cap": 3581492899539.4,
+      "total_bve": 949003271445.73,
+      "industry_pb_ratio": 3.77
+    },
+    {
+      "report_date": "2026-06-23T00:00:00.000",
+      "industry": "Internet Retail",
+      "total_market_cap": 3580582089330.1304,
+      "total_bve": 949003271445.73,
+      "industry_pb_ratio": 3.77
+    },
+    {
+      "report_date": "2026-06-24T00:00:00.000",
+      "industry": "Internet Retail",
+      "total_market_cap": 3574729806749.23,
+      "total_bve": 949003271445.73,
+      "industry_pb_ratio": 3.77
     }
   ],
   "roe": [

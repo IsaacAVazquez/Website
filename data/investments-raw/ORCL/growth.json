@@ -83,6 +83,13 @@
       "revenue": 17190000000.0,
       "prev_year_revenue": 14130000000.0,
       "yoy_growth": 0.2166
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2026-05-31T00:00:00.000",
+      "revenue": 19184000000.0,
+      "prev_year_revenue": 15903000000.0,
+      "yoy_growth": 0.2063
     }
   ],
   "annual_revenue": [
@@ -120,6 +127,13 @@
       "revenue": 57399000000.0,
       "prev_year_revenue": 52961000000.0,
       "yoy_growth": 0.0838
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2026-05-31T00:00:00.000",
+      "revenue": 67357000000.0,
+      "prev_year_revenue": 57399000000.0,
+      "yoy_growth": 0.1735
     }
   ],
   "quarterly_operating_income": [
@@ -206,6 +220,13 @@
       "operating_income": 5637000000.0,
       "prev_year_operating_income": 4449000000.0,
       "yoy_growth": 0.267
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2026-05-31T00:00:00.000",
+      "operating_income": 6955000000.0,
+      "prev_year_operating_income": 5191000000.0,
+      "yoy_growth": 0.3398
     }
   ],
   "annual_operating_income": [
@@ -243,6 +264,13 @@
       "operating_income": 18052000000.0,
       "prev_year_operating_income": 16071000000.0,
       "yoy_growth": 0.1233
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2026-05-31T00:00:00.000",
+      "operating_income": 22444000000.0,
+      "prev_year_operating_income": 18052000000.0,
+      "yoy_growth": 0.2433
     }
   ],
   "quarterly_ebitda": [
@@ -322,6 +350,13 @@
       "ebitda": 8162000000.0,
       "prev_year_ebitda": 5891000000.0,
       "yoy_growth": 0.3855
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2026-05-31T00:00:00.000",
+      "ebitda": 9655000000.0,
+      "prev_year_ebitda": 6826000000.0,
+      "yoy_growth": 0.4144
     }
   ],
   "annual_ebitda": [
@@ -359,6 +394,13 @@
       "ebitda": 23912000000.0,
       "prev_year_ebitda": 21394000000.0,
       "yoy_growth": 0.1177
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2026-05-31T00:00:00.000",
+      "ebitda": 33447000000.0,
+      "prev_year_ebitda": 23912000000.0,
+      "yoy_growth": 0.3988
     }
   ],
   "quarterly_net_income": [
@@ -445,6 +487,13 @@
       "net_income_common_stockholders": 3699000000.0,
       "prev_year_net_income_common_stockholders": 2936000000.0,
       "yoy_growth": 0.2599
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2026-05-31T00:00:00.000",
+      "net_income_common_stockholders": 4223000000.0,
+      "prev_year_net_income_common_stockholders": 3427000000.0,
+      "yoy_growth": 0.2323
     }
   ],
   "annual_net_income": [
@@ -482,6 +531,13 @@
       "net_income_common_stockholders": 12443000000.0,
       "prev_year_net_income_common_stockholders": 10467000000.0,
       "yoy_growth": 0.1888
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2026-05-31T00:00:00.000",
+      "net_income_common_stockholders": 16984000000.0,
+      "prev_year_net_income_common_stockholders": 12443000000.0,
+      "yoy_growth": 0.3649
     }
   ],
   "quarterly_fcf": [
@@ -582,6 +638,13 @@
       "free_cash_flow": -11484000000.0,
       "prev_year_free_cash_flow": 71000000.0,
       "yoy_growth": -162.7465
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2026-05-31T00:00:00.000",
+      "free_cash_flow": -1873000000.0,
+      "prev_year_free_cash_flow": -2923000000.0,
+      "yoy_growth": 0.3592
     }
   ],
   "annual_fcf": [
@@ -619,6 +682,13 @@
       "free_cash_flow": -394000000.0,
       "prev_year_free_cash_flow": 11807000000.0,
       "yoy_growth": -1.0334
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2026-05-31T00:00:00.000",
+      "free_cash_flow": -23686000000.0,
+      "prev_year_free_cash_flow": -394000000.0,
+      "yoy_growth": -59.1168
     }
   ],
   "quarterly_eps": [
@@ -1535,9 +1605,9 @@
     {
       "symbol": "ORCL",
       "report_date": "2026-05-31T00:00:00.000",
-      "eps": 1.45,
+      "eps": 1.4487,
       "prev_year_eps": 1.1937,
-      "yoy_growth": 0.2147
+      "yoy_growth": 0.2136
     }
   ]
 }

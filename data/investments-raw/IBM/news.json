@@ -54,15 +54,6 @@
     "link": "https://finance.yahoo.com/news/deutsche-bank-accelerates-digital-transformation-120000101.html"
   },
   {
-    "uuid": "6dd67bf6-faa3-387e-93bc-b081fa3a14da",
-    "symbol": "IBM",
-    "title": "Herbalife and Abercrombie and Fitch have been highlighted as Zacks Bull and Bear of the Day",
-    "publisher": "Zacks",
-    "report_date": "2025-05-28",
-    "type": "STORY",
-    "link": "https://finance.yahoo.com/news/herbalife-abercrombie-fitch-highlighted-zacks-133500305.html"
-  },
-  {
     "uuid": "4108daec-5933-31f7-9e1f-5d8cb6c5e76b",
     "symbol": "IBM",
     "title": "Rigetti vs. IBM: Which Quantum Computing Stock Has Better Prospects?",
@@ -70,6 +61,15 @@
     "report_date": "2025-05-28",
     "type": "STORY",
     "link": "https://finance.yahoo.com/news/rigetti-vs-ibm-quantum-computing-161500616.html"
+  },
+  {
+    "uuid": "6dd67bf6-faa3-387e-93bc-b081fa3a14da",
+    "symbol": "IBM",
+    "title": "Herbalife and Abercrombie and Fitch have been highlighted as Zacks Bull and Bear of the Day",
+    "publisher": "Zacks",
+    "report_date": "2025-05-28",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/herbalife-abercrombie-fitch-highlighted-zacks-133500305.html"
   },
   {
     "uuid": "b9e1e75a-3e78-34ce-ab3b-49b85252d95f",

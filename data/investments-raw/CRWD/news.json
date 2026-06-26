@@ -63,15 +63,6 @@
     "link": "https://finance.yahoo.com/m/d99465de-c1cc-3eb1-878a-8ecaff23da20/s%26p-500-gains-%26-losses-today%3A.html"
   },
   {
-    "uuid": "afdc966c-3c94-3ea3-9b6e-e5fa8d70f65f",
-    "symbol": "CRWD",
-    "title": "1 S&P 500 Stock on Our Buy List and 2 to Brush Off",
-    "publisher": "StockStory",
-    "report_date": "2025-05-26",
-    "type": "STORY",
-    "link": "https://finance.yahoo.com/news/1-p-500-stock-buy-043515117.html"
-  },
-  {
     "uuid": "ef528610-24d6-3366-b150-fe969e479439",
     "symbol": "CRWD",
     "title": "3 Top Cybersecurity Stocks to Buy in May",
@@ -79,6 +70,15 @@
     "report_date": "2025-05-26",
     "type": "STORY",
     "link": "https://finance.yahoo.com/m/ef528610-24d6-3366-b150-fe969e479439/3-top-cybersecurity-stocks-to.html"
+  },
+  {
+    "uuid": "afdc966c-3c94-3ea3-9b6e-e5fa8d70f65f",
+    "symbol": "CRWD",
+    "title": "1 S&P 500 Stock on Our Buy List and 2 to Brush Off",
+    "publisher": "StockStory",
+    "report_date": "2025-05-26",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/1-p-500-stock-buy-043515117.html"
   },
   {
     "uuid": "a9b85ec2-3f2f-31c5-be59-6d80eef68b97",

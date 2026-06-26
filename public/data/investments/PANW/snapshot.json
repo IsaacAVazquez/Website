@@ -1,10 +1,10 @@
 {
   "symbol": "PANW",
-  "lastUpdated": "2026-06-23T00:06:23.255341+00:00",
+  "lastUpdated": "2026-06-26T00:09:38.526995+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-23T00:06:23.255341+00:00",
+    "snapshotBuiltAt": "2026-06-26T00:09:38.526995+00:00",
     "sections": {
-      "price": "2026-06-18"
+      "price": "2026-06-24"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 1.2157,
-      "ttmPe": 236.72,
-      "marketCap": 233965140000,
-      "psRatio": 22.06,
-      "pbRatio": 8.46,
+      "ttmPe": 234.65,
+      "marketCap": 231916380000,
+      "psRatio": 21.87,
+      "pbRatio": 8.38,
       "pegRatio": 1.64
     },
     "profitability": {
@@ -5413,41 +5413,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.24,
-      "costOfEquity": 12.35,
+      "wacc": 12.2,
+      "costOfEquity": 12.31,
       "costOfDebt": 0,
       "taxRate": 40,
-      "beta": 0.9379,
-      "marketCap": 233965140000
+      "beta": 0.9339,
+      "marketCap": 231916380000
     },
     "beta": {
-      "beta5y": 0.9379
+      "beta5y": 0.9339
     },
     "price": [
-      {
-        "date": "2025-06-18",
-        "open": 202.29,
-        "high": 202.89,
-        "low": 198.88,
-        "close": 199.78,
-        "volume": 3324500
-      },
-      {
-        "date": "2025-06-20",
-        "open": 201.05,
-        "high": 201.05,
-        "low": 197.71,
-        "close": 199.24,
-        "volume": 8289200
-      },
-      {
-        "date": "2025-06-23",
-        "open": 199.56,
-        "high": 203.87,
-        "low": 196,
-        "close": 203.32,
-        "volume": 4478800
-      },
       {
         "date": "2025-06-24",
         "open": 204,
@@ -7439,6 +7415,30 @@
         "low": 276.46,
         "close": 287.78,
         "volume": 12194700
+      },
+      {
+        "date": "2026-06-22",
+        "open": 287.99,
+        "high": 295.75,
+        "low": 284.26,
+        "close": 286.4,
+        "volume": 5855400
+      },
+      {
+        "date": "2026-06-23",
+        "open": 285.72,
+        "high": 292.14,
+        "low": 282.52,
+        "close": 290.92,
+        "volume": 5430500
+      },
+      {
+        "date": "2026-06-24",
+        "open": 289.57,
+        "high": 291,
+        "low": 284.28,
+        "close": 285.26,
+        "volume": 4873906
       }
     ],
     "news": [
@@ -7507,19 +7507,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "09a680da-9506-38ad-9747-6af408c93d73",
-        "title": "Zscaler (ZS) Reports Earnings Tomorrow: What To Expect",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/zscaler-zs-reports-earnings-tomorrow-070335179.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "992777e0-468b-3487-8ba6-3fdf32f0f4c1",
         "title": "Billionaire Stanley Druckenmiller Just Sold One of Wall Street's Hottest Stock-Split Stocks and Is Piling Into a Promising Drugmaker Instead",
         "publisher": "Motley Fool",
         "reportDate": "2025-05-28",
         "link": "https://finance.yahoo.com/m/992777e0-468b-3487-8ba6-3fdf32f0f4c1/billionaire-stanley.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "09a680da-9506-38ad-9747-6af408c93d73",
+        "title": "Zscaler (ZS) Reports Earnings Tomorrow: What To Expect",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/news/zscaler-zs-reports-earnings-tomorrow-070335179.html",
         "type": "STORY"
       }
     ],
@@ -7587,50 +7587,50 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 236.72,
-        "industryAvg": 49.03
+        "value": 234.65,
+        "industryAvg": 25.76
       },
       {
         "metric": "P/S Ratio",
-        "value": 22.06,
-        "industryAvg": 1.64
+        "value": 21.87,
+        "industryAvg": 5.62
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.46,
-        "industryAvg": 1.84
+        "value": 8.38,
+        "industryAvg": 6.84
       },
       {
         "metric": "ROE",
         "value": -0.96,
-        "industryAvg": 26.6
+        "industryAvg": 26.529999999999998
       },
       {
         "metric": "ROA",
         "value": -0.5,
-        "industryAvg": 10.4
+        "industryAvg": 10.32
       },
       {
         "metric": "Gross Margin",
         "value": 67.55,
-        "industryAvg": 49.53
+        "industryAvg": 49.47
       },
       {
         "metric": "EBITDA Margin",
         "value": 5.93,
-        "industryAvg": 33.589999999999996
+        "industryAvg": 33.96
       },
       {
         "metric": "Net Margin",
         "value": -5.8999999999999995,
-        "industryAvg": 18.72
+        "industryAvg": 18.759999999999998
       }
     ],
     "dcf": {
-      "fairValue": 7.07,
-      "currentPrice": 287.78,
-      "upside": -97.54,
-      "wacc": 12.24,
+      "fairValue": 7.1,
+      "currentPrice": 285.26,
+      "upside": -97.51,
+      "wacc": 12.2,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": -30,
         "Terminal growth": 3

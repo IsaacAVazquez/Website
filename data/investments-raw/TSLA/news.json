@@ -36,15 +36,6 @@
     "link": "https://finance.yahoo.com/m/1eac3fd0-d535-3986-a8bc-8e910f52e36e/stocks-to-watch-thursday%3A-.html"
   },
   {
-    "uuid": "08501801-66ee-3113-a401-9e991895ffc1",
-    "symbol": "TSLA",
-    "title": "Autodesk in proxy fight, General Mills reports mixed Q3: Morning Buzz",
-    "publisher": "TipRanks",
-    "report_date": "2025-03-21",
-    "type": "STORY",
-    "link": "https://finance.yahoo.com/news/autodesk-proxy-fight-general-mills-160527898.html"
-  },
-  {
     "uuid": "0f7139d3-271d-3e22-b37b-14abca6b8855",
     "symbol": "TSLA",
     "title": "These Stocks Moved the Most Today: Nvidia, Tesla, Rivian, Accenture, Carvana, D-Wave Quantum, and More",
@@ -52,6 +43,15 @@
     "report_date": "2025-03-21",
     "type": "STORY",
     "link": "https://finance.yahoo.com/m/0f7139d3-271d-3e22-b37b-14abca6b8855/these-stocks-moved-the-most.html"
+  },
+  {
+    "uuid": "08501801-66ee-3113-a401-9e991895ffc1",
+    "symbol": "TSLA",
+    "title": "Autodesk in proxy fight, General Mills reports mixed Q3: Morning Buzz",
+    "publisher": "TipRanks",
+    "report_date": "2025-03-21",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/autodesk-proxy-fight-general-mills-160527898.html"
   },
   {
     "uuid": "9fa0933e-573c-36a8-8e69-eacfa956fa70",

@@ -1,10 +1,10 @@
 {
   "symbol": "AMZN",
-  "lastUpdated": "2026-06-23T00:06:23.255341+00:00",
+  "lastUpdated": "2026-06-26T00:09:38.526995+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-23T00:06:23.255341+00:00",
+    "snapshotBuiltAt": "2026-06-26T00:09:38.526995+00:00",
     "sections": {
-      "price": "2026-06-18"
+      "price": "2026-06-24"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.3676,
-      "ttmPe": 29.21,
-      "marketCap": 2628929966266,
-      "psRatio": 3.54,
-      "pbRatio": 5.95,
-      "pegRatio": 0.39
+      "ttmPe": 28,
+      "marketCap": 2520068019138,
+      "psRatio": 3.39,
+      "pbRatio": 5.7,
+      "pegRatio": 0.37
     },
     "profitability": {
       "roe": 7.090000000000001,
@@ -4892,41 +4892,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.379999999999999,
-      "costOfEquity": 16.580000000000002,
+      "wacc": 15.459999999999999,
+      "costOfEquity": 16.72,
       "costOfDebt": 0.38,
       "taxRate": 24,
-      "beta": 1.441,
-      "marketCap": 2628929966266
+      "beta": 1.4551,
+      "marketCap": 2520068019138
     },
     "beta": {
-      "beta5y": 1.441
+      "beta5y": 1.4551
     },
     "price": [
-      {
-        "date": "2025-06-18",
-        "open": 215.09,
-        "high": 217.96,
-        "low": 212.34,
-        "close": 212.52,
-        "volume": 44360500
-      },
-      {
-        "date": "2025-06-20",
-        "open": 214.68,
-        "high": 214.89,
-        "low": 208.27,
-        "close": 209.69,
-        "volume": 75350700
-      },
-      {
-        "date": "2025-06-23",
-        "open": 209.79,
-        "high": 210.39,
-        "low": 207.31,
-        "close": 208.47,
-        "volume": 37311700
-      },
       {
         "date": "2025-06-24",
         "open": 212.14,
@@ -6918,6 +6894,30 @@
         "low": 236.02,
         "close": 244.39,
         "volume": 75624400
+      },
+      {
+        "date": "2026-06-22",
+        "open": 240.08,
+        "high": 242,
+        "low": 232.24,
+        "close": 232.79,
+        "volume": 68388500
+      },
+      {
+        "date": "2026-06-23",
+        "open": 232.55,
+        "high": 236.87,
+        "low": 232,
+        "close": 234.11,
+        "volume": 60492600
+      },
+      {
+        "date": "2026-06-24",
+        "open": 233.845,
+        "high": 242.4199,
+        "low": 232.95,
+        "close": 234.27,
+        "volume": 62415490
       }
     ],
     "news": [
@@ -6938,20 +6938,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "94ecea1b-28cf-3159-aeeb-c2ed83b84ea4",
-        "title": "Game On: Discord reportedly in talks for IPO in 2025",
-        "publisher": "TipRanks",
-        "reportDate": "2025-03-13",
-        "link": "https://finance.yahoo.com/news/game-discord-reportedly-talks-ipo-163531942.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "ed50c2b8-db3e-337c-9a32-5264eaa77397",
         "title": "iRobot stock dives on its 'substantial doubt' of surviving in 2025",
         "publisher": "Yahoo Finance Video",
         "reportDate": "2025-03-13",
         "link": "https://finance.yahoo.com/video/irobot-stock-dives-substantial-doubt-192908228.html",
         "type": "VIDEO"
+      },
+      {
+        "uuid": "94ecea1b-28cf-3159-aeeb-c2ed83b84ea4",
+        "title": "Game On: Discord reportedly in talks for IPO in 2025",
+        "publisher": "TipRanks",
+        "reportDate": "2025-03-13",
+        "link": "https://finance.yahoo.com/news/game-discord-reportedly-talks-ipo-163531942.html",
+        "type": "STORY"
       },
       {
         "uuid": "891b2f8b-8934-31f4-a960-9cf39bc9c7b0",
@@ -7068,18 +7068,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 29.21,
-        "industryAvg": 24.6
+        "value": 28,
+        "industryAvg": 23.5
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.54,
-        "industryAvg": 19.16
+        "value": 3.39,
+        "industryAvg": 2.1
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.95,
-        "industryAvg": 9.46
+        "value": 5.7,
+        "industryAvg": 3.77
       },
       {
         "metric": "ROE",
@@ -7108,10 +7108,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 145.16,
-      "currentPrice": 244.39,
-      "upside": -40.6,
-      "wacc": 15.38,
+      "fairValue": 144.17,
+      "currentPrice": 234.27,
+      "upside": -38.46,
+      "wacc": 15.46,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

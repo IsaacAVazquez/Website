@@ -14366,6 +14366,30 @@
       "close_price": 684.86,
       "ttm_eps": -0.1885,
       "ttm_pe": null
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-22T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 675.44,
+      "ttm_eps": -0.1885,
+      "ttm_pe": null
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-23T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 680.92,
+      "ttm_eps": -0.1885,
+      "ttm_pe": null
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-24T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 673.02,
+      "ttm_eps": -0.1885,
+      "ttm_pe": null
     }
   ],
   "marketCap": [
@@ -28488,6 +28512,30 @@
       "close_price": 684.86,
       "shares_outstanding": 254537000,
       "market_capitalization": 174322209820.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-22T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 675.44,
+      "shares_outstanding": 254537000,
+      "market_capitalization": 171924471280.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-23T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 680.92,
+      "shares_outstanding": 254537000,
+      "market_capitalization": 173319334040.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-24T00:00:00.000",
+      "shares_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 673.02,
+      "shares_outstanding": 254537000,
+      "market_capitalization": 171308491740.0
     }
   ],
   "psRatio": [
@@ -36980,6 +37028,36 @@
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 5094200000.0,
       "ps_ratio": 34.22
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-22T00:00:00.000",
+      "market_capitalization": 171924471280.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 5094200000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 5094200000.0,
+      "ps_ratio": 33.75
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-23T00:00:00.000",
+      "market_capitalization": 173319334040.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 5094200000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 5094200000.0,
+      "ps_ratio": 34.02
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-24T00:00:00.000",
+      "market_capitalization": 171308491740.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 5094200000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 5094200000.0,
+      "ps_ratio": 33.63
     }
   ],
   "pbRatio": [
@@ -47352,6 +47430,36 @@
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 4633877000.0,
       "pb_ratio": 37.62
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-22T00:00:00.000",
+      "market_capitalization": 171924471280.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 4633877000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 4633877000.0,
+      "pb_ratio": 37.1
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-23T00:00:00.000",
+      "market_capitalization": 173319334040.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 4633877000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 4633877000.0,
+      "pb_ratio": 37.4
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2026-06-24T00:00:00.000",
+      "market_capitalization": 171308491740.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 4633877000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 4633877000.0,
+      "pb_ratio": 36.97
     }
   ],
   "pegRatio": [

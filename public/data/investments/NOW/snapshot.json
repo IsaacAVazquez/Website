@@ -1,10 +1,10 @@
 {
   "symbol": "NOW",
-  "lastUpdated": "2026-06-23T00:06:23.255341+00:00",
+  "lastUpdated": "2026-06-26T00:09:38.526995+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-23T00:06:23.255341+00:00",
+    "snapshotBuiltAt": "2026-06-26T00:09:38.526995+00:00",
     "sections": {
-      "price": "2026-06-18"
+      "price": "2026-06-24"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.6811,
-      "ttmPe": 56.53,
-      "marketCap": 98015512320,
-      "psRatio": 7.02,
-      "pbRatio": 8.36,
-      "pegRatio": 21.41
+      "ttmPe": 55.8,
+      "marketCap": 96736690400,
+      "psRatio": 6.93,
+      "pbRatio": 8.25,
+      "pegRatio": 21.14
     },
     "profitability": {
       "roe": 3.8,
@@ -5113,41 +5113,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.2,
-      "costOfEquity": 12.5,
+      "wacc": 12.43,
+      "costOfEquity": 12.740000000000002,
       "costOfDebt": 0.25,
       "taxRate": 30,
-      "beta": 0.956,
-      "marketCap": 98015512320
+      "beta": 0.9841,
+      "marketCap": 96736690400
     },
     "beta": {
-      "beta5y": 0.956
+      "beta5y": 0.9841
     },
     "price": [
-      {
-        "date": "2025-06-18",
-        "open": 200.888,
-        "high": 201.408,
-        "low": 195.84,
-        "close": 196.416,
-        "volume": 6047500
-      },
-      {
-        "date": "2025-06-20",
-        "open": 197.118,
-        "high": 197.202,
-        "low": 193.09,
-        "close": 194.282,
-        "volume": 10038500
-      },
-      {
-        "date": "2025-06-23",
-        "open": 194.282,
-        "high": 196.266,
-        "low": 191.366,
-        "close": 196.08,
-        "volume": 5499500
-      },
       {
         "date": "2025-06-24",
         "open": 198,
@@ -7139,6 +7115,30 @@
         "low": 92.45,
         "close": 95.04,
         "volume": 36337200
+      },
+      {
+        "date": "2026-06-22",
+        "open": 93.3,
+        "high": 97.44,
+        "low": 91.48,
+        "close": 93.01,
+        "volume": 24940900
+      },
+      {
+        "date": "2026-06-23",
+        "open": 95.14,
+        "high": 97.5,
+        "low": 94.61,
+        "close": 95.94,
+        "volume": 32559700
+      },
+      {
+        "date": "2026-06-24",
+        "open": 94,
+        "high": 96.98,
+        "low": 93.42,
+        "close": 93.8,
+        "volume": 16843189
       }
     ],
     "news": [
@@ -7286,18 +7286,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 56.53,
-        "industryAvg": 24.76
+        "value": 55.8,
+        "industryAvg": 22.7
       },
       {
         "metric": "P/S Ratio",
-        "value": 7.02,
-        "industryAvg": 6.69
+        "value": 6.93,
+        "industryAvg": 3.97
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.36,
-        "industryAvg": 3.74
+        "value": 8.25,
+        "industryAvg": 4.3
       },
       {
         "metric": "ROE",
@@ -7326,10 +7326,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 18.7,
-      "currentPrice": 95.04,
-      "upside": -80.32,
-      "wacc": 12.2,
+      "fairValue": 18.24,
+      "currentPrice": 93.8,
+      "upside": -80.55,
+      "wacc": 12.43,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 2.64,
         "Terminal growth": 3

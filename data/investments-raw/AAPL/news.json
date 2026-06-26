@@ -1,14 +1,5 @@
 [
   {
-    "uuid": "2cfa6437-c187-3ab8-9ea8-027695257bb0",
-    "symbol": "AAPL",
-    "title": "Top Research Reports for Apple, Meta Platforms & Chevron",
-    "publisher": "Zacks",
-    "report_date": "2025-03-21",
-    "type": "STORY",
-    "link": "https://finance.yahoo.com/news/top-research-reports-apple-meta-213400955.html"
-  },
-  {
     "uuid": "08501801-66ee-3113-a401-9e991895ffc1",
     "symbol": "AAPL",
     "title": "Autodesk in proxy fight, General Mills reports mixed Q3: Morning Buzz",
@@ -25,6 +16,15 @@
     "report_date": "2025-03-21",
     "type": "STORY",
     "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-apple-085500208.html"
+  },
+  {
+    "uuid": "2cfa6437-c187-3ab8-9ea8-027695257bb0",
+    "symbol": "AAPL",
+    "title": "Top Research Reports for Apple, Meta Platforms & Chevron",
+    "publisher": "Zacks",
+    "report_date": "2025-03-21",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/top-research-reports-apple-meta-213400955.html"
   },
   {
     "uuid": "9fa0933e-573c-36a8-8e69-eacfa956fa70",
@@ -81,12 +81,12 @@
     "link": "https://finance.yahoo.com/news/prada-acquire-versace-carmax-reports-160529246.html"
   },
   {
-    "uuid": "14994a53-0cf2-37e2-adcc-a14ff49a9edd",
+    "uuid": "6e50f65f-5aca-390e-8e7f-f69216aa062f",
     "symbol": "AAPL",
-    "title": "Top Premarket Gainers",
-    "publisher": "MT Newswires",
+    "title": "Apple upgraded, Wayfair downgraded: Wall Street's top analyst calls",
+    "publisher": "The Fly",
     "report_date": "2025-04-14",
     "type": "STORY",
-    "link": "https://finance.yahoo.com/news/top-premarket-gainers-124855383.html"
+    "link": "https://finance.yahoo.com/news/apple-upgraded-wayfair-downgraded-wall-134329732.html"
   }
 ]

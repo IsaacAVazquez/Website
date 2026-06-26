@@ -1,10 +1,10 @@
 {
   "symbol": "AAPL",
-  "lastUpdated": "2026-06-23T00:06:23.255341+00:00",
+  "lastUpdated": "2026-06-26T00:09:38.526995+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-23T00:06:23.255341+00:00",
+    "snapshotBuiltAt": "2026-06-26T00:09:38.526995+00:00",
     "sections": {
-      "price": "2026-06-18"
+      "price": "2026-06-24"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.2666,
-      "ttmPe": 36.05,
-      "marketCap": 4376978961560,
-      "psRatio": 9.7,
-      "pbRatio": 41.1,
-      "pegRatio": 1.64
+      "ttmPe": 35.45,
+      "marketCap": 4304570296480,
+      "psRatio": 9.54,
+      "pbRatio": 40.42,
+      "pegRatio": 1.61
     },
     "profitability": {
       "roe": 30.39,
@@ -4942,41 +4942,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.239999999999998,
-      "costOfEquity": 13.56,
+      "wacc": 13.28,
+      "costOfEquity": 13.600000000000001,
       "costOfDebt": 0.8999999999999999,
       "taxRate": 15,
-      "beta": 1.0822,
-      "marketCap": 4376978961560
+      "beta": 1.0861,
+      "marketCap": 4304570296480
     },
     "beta": {
-      "beta5y": 1.0822
+      "beta5y": 1.0861
     },
     "price": [
-      {
-        "date": "2025-06-18",
-        "open": 195.94,
-        "high": 197.57,
-        "low": 195.07,
-        "close": 196.58,
-        "volume": 45394700
-      },
-      {
-        "date": "2025-06-20",
-        "open": 198.24,
-        "high": 201.7,
-        "low": 196.86,
-        "close": 201,
-        "volume": 96813500
-      },
-      {
-        "date": "2025-06-23",
-        "open": 201.63,
-        "high": 202.3,
-        "low": 198.96,
-        "close": 201.5,
-        "volume": 55814300
-      },
       {
         "date": "2025-06-24",
         "open": 202.59,
@@ -6968,17 +6944,33 @@
         "low": 295.62,
         "close": 298.01,
         "volume": 85962200
+      },
+      {
+        "date": "2026-06-22",
+        "open": 297.31,
+        "high": 302.42,
+        "low": 296.76,
+        "close": 297.01,
+        "volume": 44879900
+      },
+      {
+        "date": "2026-06-23",
+        "open": 297.54,
+        "high": 301.64,
+        "low": 294.18,
+        "close": 294.3,
+        "volume": 52010900
+      },
+      {
+        "date": "2026-06-24",
+        "open": 295.375,
+        "high": 299.7,
+        "low": 292.94,
+        "close": 293.08,
+        "volume": 46572137
       }
     ],
     "news": [
-      {
-        "uuid": "2cfa6437-c187-3ab8-9ea8-027695257bb0",
-        "title": "Top Research Reports for Apple, Meta Platforms & Chevron",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-21",
-        "link": "https://finance.yahoo.com/news/top-research-reports-apple-meta-213400955.html",
-        "type": "STORY"
-      },
       {
         "uuid": "08501801-66ee-3113-a401-9e991895ffc1",
         "title": "Autodesk in proxy fight, General Mills reports mixed Q3: Morning Buzz",
@@ -6993,6 +6985,14 @@
         "publisher": "Zacks",
         "reportDate": "2025-03-21",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-apple-085500208.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2cfa6437-c187-3ab8-9ea8-027695257bb0",
+        "title": "Top Research Reports for Apple, Meta Platforms & Chevron",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-21",
+        "link": "https://finance.yahoo.com/news/top-research-reports-apple-meta-213400955.html",
         "type": "STORY"
       },
       {
@@ -7044,11 +7044,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "14994a53-0cf2-37e2-adcc-a14ff49a9edd",
-        "title": "Top Premarket Gainers",
-        "publisher": "MT Newswires",
+        "uuid": "6e50f65f-5aca-390e-8e7f-f69216aa062f",
+        "title": "Apple upgraded, Wayfair downgraded: Wall Street's top analyst calls",
+        "publisher": "The Fly",
         "reportDate": "2025-04-14",
-        "link": "https://finance.yahoo.com/news/top-premarket-gainers-124855383.html",
+        "link": "https://finance.yahoo.com/news/apple-upgraded-wayfair-downgraded-wall-134329732.html",
         "type": "STORY"
       }
     ],
@@ -7116,18 +7116,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 36.05,
-        "industryAvg": 35.72
+        "value": 35.45,
+        "industryAvg": 35.13
       },
       {
         "metric": "P/S Ratio",
-        "value": 9.7,
-        "industryAvg": 7.37
+        "value": 9.54,
+        "industryAvg": 7.24
       },
       {
         "metric": "P/B Ratio",
-        "value": 41.1,
-        "industryAvg": 21.18
+        "value": 40.42,
+        "industryAvg": 20.81
       },
       {
         "metric": "ROE",
@@ -7156,10 +7156,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 114.73,
-      "currentPrice": 298.01,
-      "upside": -61.5,
-      "wacc": 13.24,
+      "fairValue": 114.27,
+      "currentPrice": 293.08,
+      "upside": -61.01,
+      "wacc": 13.28,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 22.04,
         "Terminal growth": 3

@@ -45,15 +45,6 @@
     "link": "https://finance.yahoo.com/m/761edc42-ab58-33d6-9f30-1c0cee9b7e21/if-the-stock-market-continues.html"
   },
   {
-    "uuid": "1a4ad937-a6fe-3efc-ad47-22885a44cffe",
-    "symbol": "AVGO",
-    "title": "The Zacks Analyst Blog Highlights Microsoft, Broadcom, McDonald's and Kingsway Financial Services",
-    "publisher": "Zacks",
-    "report_date": "2025-04-29",
-    "type": "STORY",
-    "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-104100632.html"
-  },
-  {
     "uuid": "b5e9e2b7-0579-37ff-b792-e96b7564d257",
     "symbol": "AVGO",
     "title": "Top Analyst Reports for Microsoft, Broadcom & McDonald's",
@@ -61,6 +52,15 @@
     "report_date": "2025-04-29",
     "type": "STORY",
     "link": "https://finance.yahoo.com/news/top-analyst-reports-microsoft-broadcom-222200614.html"
+  },
+  {
+    "uuid": "1a4ad937-a6fe-3efc-ad47-22885a44cffe",
+    "symbol": "AVGO",
+    "title": "The Zacks Analyst Blog Highlights Microsoft, Broadcom, McDonald's and Kingsway Financial Services",
+    "publisher": "Zacks",
+    "report_date": "2025-04-29",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-104100632.html"
   },
   {
     "uuid": "4c58ef15-e26e-34f1-987f-ae177b43ce8c",

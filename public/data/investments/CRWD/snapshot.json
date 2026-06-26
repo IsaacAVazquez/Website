@@ -1,10 +1,10 @@
 {
   "symbol": "CRWD",
-  "lastUpdated": "2026-06-23T00:06:23.255341+00:00",
+  "lastUpdated": "2026-06-26T00:09:38.526995+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-23T00:06:23.255341+00:00",
+    "snapshotBuiltAt": "2026-06-26T00:09:38.526995+00:00",
     "sections": {
-      "price": "2026-06-18"
+      "price": "2026-06-24"
     }
   },
   "source": "prefetched",
@@ -42,9 +42,9 @@
     "fundamentals": {
       "ttmEps": -0.1885,
       "ttmPe": 783.71,
-      "marketCap": 174322209820,
-      "psRatio": 34.22,
-      "pbRatio": 37.62,
+      "marketCap": 171308491740,
+      "psRatio": 33.63,
+      "pbRatio": 36.97,
       "pegRatio": 1.03
     },
     "profitability": {
@@ -5795,41 +5795,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.81,
-      "costOfEquity": 14.879999999999999,
+      "wacc": 14.879999999999999,
+      "costOfEquity": 14.95,
       "costOfDebt": 0.74,
       "taxRate": 40,
-      "beta": 1.2395,
-      "marketCap": 174322209820
+      "beta": 1.2464,
+      "marketCap": 171308491740
     },
     "beta": {
-      "beta5y": 1.2395
+      "beta5y": 1.2464
     },
     "price": [
-      {
-        "date": "2025-06-18",
-        "open": 490.71,
-        "high": 490.71,
-        "low": 478.82,
-        "close": 485.16,
-        "volume": 2830300
-      },
-      {
-        "date": "2025-06-20",
-        "open": 484.54,
-        "high": 490,
-        "low": 474.29,
-        "close": 476.3,
-        "volume": 5183100
-      },
-      {
-        "date": "2025-06-23",
-        "open": 470.755,
-        "high": 494.3,
-        "low": 461.51,
-        "close": 491.81,
-        "volume": 4431700
-      },
       {
         "date": "2025-06-24",
         "open": 490.9,
@@ -7821,6 +7797,30 @@
         "low": 660.92,
         "close": 684.86,
         "volume": 5379400
+      },
+      {
+        "date": "2026-06-22",
+        "open": 685.07,
+        "high": 712.18,
+        "low": 673.195,
+        "close": 675.44,
+        "volume": 3435800
+      },
+      {
+        "date": "2026-06-23",
+        "open": 669.01,
+        "high": 690.9,
+        "low": 662,
+        "close": 680.92,
+        "volume": 2372000
+      },
+      {
+        "date": "2026-06-24",
+        "open": 680.92,
+        "high": 687.1463,
+        "low": 669,
+        "close": 673.02,
+        "volume": 1675082
       }
     ],
     "news": [
@@ -7881,19 +7881,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "afdc966c-3c94-3ea3-9b6e-e5fa8d70f65f",
-        "title": "1 S&P 500 Stock on Our Buy List and 2 to Brush Off",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-26",
-        "link": "https://finance.yahoo.com/news/1-p-500-stock-buy-043515117.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "ef528610-24d6-3366-b150-fe969e479439",
         "title": "3 Top Cybersecurity Stocks to Buy in May",
         "publisher": "Motley Fool",
         "reportDate": "2025-05-26",
         "link": "https://finance.yahoo.com/m/ef528610-24d6-3366-b150-fe969e479439/3-top-cybersecurity-stocks-to.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "afdc966c-3c94-3ea3-9b6e-e5fa8d70f65f",
+        "title": "1 S&P 500 Stock on Our Buy List and 2 to Brush Off",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-26",
+        "link": "https://finance.yahoo.com/news/1-p-500-stock-buy-043515117.html",
         "type": "STORY"
       },
       {
@@ -7964,49 +7964,49 @@
       {
         "metric": "P/E (TTM)",
         "value": 783.71,
-        "industryAvg": 49.03
+        "industryAvg": 25.76
       },
       {
         "metric": "P/S Ratio",
-        "value": 34.22,
-        "industryAvg": 1.64
+        "value": 33.63,
+        "industryAvg": 5.62
       },
       {
         "metric": "P/B Ratio",
-        "value": 37.62,
-        "industryAvg": 1.84
+        "value": 36.97,
+        "industryAvg": 6.84
       },
       {
         "metric": "ROE",
         "value": 0.61,
-        "industryAvg": 26.6
+        "industryAvg": 26.529999999999998
       },
       {
         "metric": "ROA",
         "value": 0.25,
-        "industryAvg": 10.4
+        "industryAvg": 10.32
       },
       {
         "metric": "Gross Margin",
         "value": 75.3,
-        "industryAvg": 49.53
+        "industryAvg": 49.47
       },
       {
         "metric": "EBITDA Margin",
         "value": 9.610000000000001,
-        "industryAvg": 33.589999999999996
+        "industryAvg": 33.96
       },
       {
         "metric": "Net Margin",
         "value": 2,
-        "industryAvg": 18.72
+        "industryAvg": 18.759999999999998
       }
     ],
     "dcf": {
-      "fairValue": -3.44,
-      "currentPrice": 684.86,
-      "upside": -100.5,
-      "wacc": 14.81,
+      "fairValue": -3.42,
+      "currentPrice": 673.02,
+      "upside": -100.51,
+      "wacc": 14.88,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

@@ -18,6 +18,15 @@
     "link": "https://finance.yahoo.com/news/streaming-surpasses-combined-cable-broadcast-140549520.html"
   },
   {
+    "uuid": "239097ec-365f-3453-b91e-0c08a6414799",
+    "symbol": "GOOGL",
+    "title": "3 Top Quantum Computing Stocks to Buy in 2025",
+    "publisher": "Motley Fool",
+    "report_date": "2025-06-17",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/239097ec-365f-3453-b91e-0c08a6414799/3-top-quantum-computing.html"
+  },
+  {
     "uuid": "02c8aab7-95f3-3bc3-8d8f-fe9613fea494",
     "symbol": "GOOGL",
     "title": "Zacks Investment Ideas feature highlights: Tesla, Li Auto, Nio, BYD and Alphabet",
@@ -45,13 +54,13 @@
     "link": "https://finance.yahoo.com/m/343df9a5-0920-3bee-8ef5-51237a31223f/3-cheap-tech-stocks-to-buy.html"
   },
   {
-    "uuid": "239097ec-365f-3453-b91e-0c08a6414799",
+    "uuid": "677e87f7-6d9d-30bd-a846-ca2e9cd5608e",
     "symbol": "GOOGL",
-    "title": "3 Top Quantum Computing Stocks to Buy in 2025",
-    "publisher": "Motley Fool",
-    "report_date": "2025-06-17",
+    "title": "Sector Update: Consumer",
+    "publisher": "MT Newswires",
+    "report_date": "2025-06-18",
     "type": "STORY",
-    "link": "https://finance.yahoo.com/m/239097ec-365f-3453-b91e-0c08a6414799/3-top-quantum-computing.html"
+    "link": "https://finance.yahoo.com/news/sector-consumer-192818246.html"
   },
   {
     "uuid": "31850e85-b8d2-37c3-962b-d509fb5b370d",
@@ -63,15 +72,6 @@
     "link": "https://finance.yahoo.com/news/sector-consumer-stocks-decline-afternoon-194457472.html"
   },
   {
-    "uuid": "677e87f7-6d9d-30bd-a846-ca2e9cd5608e",
-    "symbol": "GOOGL",
-    "title": "Sector Update: Consumer",
-    "publisher": "MT Newswires",
-    "report_date": "2025-06-18",
-    "type": "STORY",
-    "link": "https://finance.yahoo.com/news/sector-consumer-192818246.html"
-  },
-  {
     "uuid": "39f83f45-7225-377c-98bd-298bd43e5330",
     "symbol": "GOOGL",
     "title": "2 Ad Tech Stocks That Could Help Make You a Fortune",
@@ -81,12 +81,12 @@
     "link": "https://finance.yahoo.com/m/39f83f45-7225-377c-98bd-298bd43e5330/2-ad-tech-stocks-that-could.html"
   },
   {
-    "uuid": "5aaffa19-4a82-37d7-9153-92797cff77b1",
+    "uuid": "58844064-6ec3-3b70-b13a-3eee7607b6b5",
     "symbol": "GOOGL",
-    "title": "Down 25%, Is Now the Time to Pounce on IonQ Stock for Just $40?",
-    "publisher": "Motley Fool",
+    "title": "Adobe vs. Apple: Which AI-Driven Tech Stock is a Better Buy Now?",
+    "publisher": "Zacks",
     "report_date": "2025-06-19",
     "type": "STORY",
-    "link": "https://finance.yahoo.com/m/5aaffa19-4a82-37d7-9153-92797cff77b1/down-25%25%2C-is-now-the-time-to.html"
+    "link": "https://finance.yahoo.com/news/adobe-vs-apple-ai-driven-172200197.html"
   }
 ]

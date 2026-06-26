@@ -1,10 +1,10 @@
 {
   "symbol": "META",
-  "lastUpdated": "2026-06-23T00:06:23.255341+00:00",
+  "lastUpdated": "2026-06-26T00:09:38.526995+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-23T00:06:23.255341+00:00",
+    "snapshotBuiltAt": "2026-06-26T00:09:38.526995+00:00",
     "sections": {
-      "price": "2026-06-18"
+      "price": "2026-06-24"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 27.5066,
-      "ttmPe": 20.98,
-      "marketCap": 1465228697226,
-      "psRatio": 6.82,
-      "pbRatio": 6.01,
-      "pegRatio": 0.34
+      "ttmPe": 20.27,
+      "marketCap": 1415602521711,
+      "psRatio": 6.59,
+      "pbRatio": 5.81,
+      "pegRatio": 0.32
     },
     "profitability": {
       "roe": 11.62,
@@ -5392,41 +5392,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.930000000000001,
-      "costOfEquity": 14.729999999999999,
+      "wacc": 14.01,
+      "costOfEquity": 14.85,
       "costOfDebt": 0.65,
       "taxRate": 40,
-      "beta": 1.221,
-      "marketCap": 1465228697226
+      "beta": 1.2344,
+      "marketCap": 1415602521711
     },
     "beta": {
-      "beta5y": 1.221
+      "beta5y": 1.2344
     },
     "price": [
-      {
-        "date": "2025-06-18",
-        "open": 698.18,
-        "high": 701.59,
-        "low": 694.9,
-        "close": 695.77,
-        "volume": 10068300
-      },
-      {
-        "date": "2025-06-20",
-        "open": 700.75,
-        "high": 701.82,
-        "low": 678.67,
-        "close": 682.35,
-        "volume": 22538600
-      },
-      {
-        "date": "2025-06-23",
-        "open": 683.69,
-        "high": 699.05,
-        "low": 678.75,
-        "close": 698.53,
-        "volume": 11080100
-      },
       {
         "date": "2025-06-24",
         "open": 704.89,
@@ -7418,6 +7394,30 @@
         "low": 563.1,
         "close": 577.22,
         "volume": 28824600
+      },
+      {
+        "date": "2026-06-22",
+        "open": 572.02,
+        "high": 575.81,
+        "low": 559.81,
+        "close": 563.85,
+        "volume": 15405500
+      },
+      {
+        "date": "2026-06-23",
+        "open": 562.25,
+        "high": 572.2,
+        "low": 561.02,
+        "close": 562.2,
+        "volume": 13103300
+      },
+      {
+        "date": "2026-06-24",
+        "open": 562.15,
+        "high": 569.04,
+        "low": 555.5503,
+        "close": 557.67,
+        "volume": 13155272
       }
     ],
     "news": [
@@ -7438,14 +7438,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "2cfa6437-c187-3ab8-9ea8-027695257bb0",
-        "title": "Top Research Reports for Apple, Meta Platforms & Chevron",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-21",
-        "link": "https://finance.yahoo.com/news/top-research-reports-apple-meta-213400955.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "bbf455ff-77a4-32a7-81aa-06dd1d624504",
         "title": "The Zacks Analyst Blog Highlights Apple, Meta Platforms, Chevron, Taylor Devices and GSI Technology",
         "publisher": "Zacks",
@@ -7454,11 +7446,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "0b443ff0-85a6-3c59-b7be-44fe4724309f",
-        "title": "Closing Bell Movers: GameStop gains 7% on earnings, bitcoin announcement",
-        "publisher": "TipRanks",
-        "reportDate": "2025-03-27",
-        "link": "https://finance.yahoo.com/news/closing-bell-movers-gamestop-gains-000022309.html",
+        "uuid": "2cfa6437-c187-3ab8-9ea8-027695257bb0",
+        "title": "Top Research Reports for Apple, Meta Platforms & Chevron",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-21",
+        "link": "https://finance.yahoo.com/news/top-research-reports-apple-meta-213400955.html",
         "type": "STORY"
       },
       {
@@ -7467,6 +7459,14 @@
         "publisher": "Yahoo Finance",
         "reportDate": "2025-03-27",
         "link": "https://finance.yahoo.com/news/delaware-passes-law-designed-to-stop-more-elon-musks-from-leaving-state-164403802.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0b443ff0-85a6-3c59-b7be-44fe4724309f",
+        "title": "Closing Bell Movers: GameStop gains 7% on earnings, bitcoin announcement",
+        "publisher": "TipRanks",
+        "reportDate": "2025-03-27",
+        "link": "https://finance.yahoo.com/news/closing-bell-movers-gamestop-gains-000022309.html",
         "type": "STORY"
       },
       {
@@ -7572,18 +7572,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.98,
-        "industryAvg": 26.69
+        "value": 20.27,
+        "industryAvg": 25.19
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.82,
-        "industryAvg": 9.03
+        "value": 6.59,
+        "industryAvg": 8.52
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.01,
-        "industryAvg": 1.91
+        "value": 5.81,
+        "industryAvg": 7.42
       },
       {
         "metric": "ROE",
@@ -7612,10 +7612,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 544.6,
-      "currentPrice": 577.22,
-      "upside": -5.65,
-      "wacc": 13.93,
+      "fairValue": 540.41,
+      "currentPrice": 557.67,
+      "upside": -3.09,
+      "wacc": 14.01,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

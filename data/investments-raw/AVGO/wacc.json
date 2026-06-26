@@ -16,12 +16,12 @@
     "sp500_cagr_end": 2022,
     "sp500_10y_cagr": 0.1041,
     "treasure_10y_yield": 0.0397,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0958,
     "weight_of_equity": 0.9042,
     "cost_of_debt": 0.0103,
-    "cost_of_equity": 0.1311,
-    "wacc": 0.1194
+    "cost_of_equity": 0.1328,
+    "wacc": 0.121
   },
   {
     "symbol": "AVGO",
@@ -40,12 +40,12 @@
     "sp500_cagr_end": 2022,
     "sp500_10y_cagr": 0.1041,
     "treasure_10y_yield": 0.0488,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.1012,
     "weight_of_equity": 0.8988,
     "cost_of_debt": 0.0103,
-    "cost_of_equity": 0.1273,
-    "wacc": 0.1153
+    "cost_of_equity": 0.1287,
+    "wacc": 0.1166
   },
   {
     "symbol": "AVGO",
@@ -64,12 +64,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0399,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.122,
     "weight_of_equity": 0.878,
     "cost_of_debt": 0.0122,
-    "cost_of_equity": 0.1244,
-    "wacc": 0.1106
+    "cost_of_equity": 0.1259,
+    "wacc": 0.112
   },
   {
     "symbol": "AVGO",
@@ -88,12 +88,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0469,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.1091,
     "weight_of_equity": 0.8909,
     "cost_of_debt": 0.0141,
-    "cost_of_equity": 0.1214,
-    "wacc": 0.1094
+    "cost_of_equity": 0.1228,
+    "wacc": 0.1106
   },
   {
     "symbol": "AVGO",
@@ -112,12 +112,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0409,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0853,
     "weight_of_equity": 0.9147,
     "cost_of_debt": 0.0152,
-    "cost_of_equity": 0.124,
-    "wacc": 0.1144
+    "cost_of_equity": 0.1254,
+    "wacc": 0.1157
   },
   {
     "symbol": "AVGO",
@@ -136,12 +136,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0428,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0783,
     "weight_of_equity": 0.9217,
     "cost_of_debt": 0.0136,
-    "cost_of_equity": 0.1232,
-    "wacc": 0.1144
+    "cost_of_equity": 0.1246,
+    "wacc": 0.1157
   },
   {
     "symbol": "AVGO",
@@ -160,12 +160,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0458,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0601,
     "weight_of_equity": 0.9399,
     "cost_of_debt": 0.0131,
-    "cost_of_equity": 0.1379,
-    "wacc": 0.1302
+    "cost_of_equity": 0.1396,
+    "wacc": 0.1318
   },
   {
     "symbol": "AVGO",
@@ -184,12 +184,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0417,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0692,
     "weight_of_equity": 0.9308,
     "cost_of_debt": 0.0114,
-    "cost_of_equity": 0.1397,
-    "wacc": 0.1308
+    "cost_of_equity": 0.1414,
+    "wacc": 0.1324
   },
   {
     "symbol": "AVGO",
@@ -208,12 +208,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0437,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0443,
     "weight_of_equity": 0.9557,
     "cost_of_debt": 0.0126,
-    "cost_of_equity": 0.1388,
-    "wacc": 0.1331
+    "cost_of_equity": 0.1405,
+    "wacc": 0.1347
   },
   {
     "symbol": "AVGO",
@@ -232,12 +232,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0411,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0358,
     "weight_of_equity": 0.9642,
     "cost_of_debt": 0.0117,
-    "cost_of_equity": 0.1399,
-    "wacc": 0.1352
+    "cost_of_equity": 0.1417,
+    "wacc": 0.137
   },
   {
     "symbol": "AVGO",
@@ -256,12 +256,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0404,
     "weight_of_equity": 0.9596,
     "cost_of_debt": 0.0121,
-    "cost_of_equity": 0.1648,
-    "wacc": 0.1586
+    "cost_of_equity": 0.167,
+    "wacc": 0.1607
   },
   {
     "symbol": "AVGO",
@@ -280,12 +280,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.044,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0316,
     "weight_of_equity": 0.9684,
     "cost_of_debt": 0.012,
-    "cost_of_equity": 0.1643,
-    "wacc": 0.1595
+    "cost_of_equity": 0.1664,
+    "wacc": 0.1615
   },
   {
     "symbol": "AVGO",
@@ -304,12 +304,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0439,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0314,
     "weight_of_equity": 0.9686,
     "cost_of_debt": 0.012,
-    "cost_of_equity": 0.1643,
-    "wacc": 0.1595
+    "cost_of_equity": 0.1665,
+    "wacc": 0.1616
   },
   {
     "symbol": "AVGO",
@@ -328,12 +328,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0445,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0317,
     "weight_of_equity": 0.9683,
     "cost_of_debt": 0.012,
-    "cost_of_equity": 0.164,
-    "wacc": 0.1592
+    "cost_of_equity": 0.1662,
+    "wacc": 0.1613
   },
   {
     "symbol": "AVGO",
@@ -352,12 +352,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0443,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0309,
     "weight_of_equity": 0.9691,
     "cost_of_debt": 0.012,
-    "cost_of_equity": 0.1641,
-    "wacc": 0.1594
+    "cost_of_equity": 0.1663,
+    "wacc": 0.1615
   },
   {
     "symbol": "AVGO",
@@ -376,12 +376,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0436,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0311,
     "weight_of_equity": 0.9689,
     "cost_of_debt": 0.012,
-    "cost_of_equity": 0.1644,
-    "wacc": 0.1596
+    "cost_of_equity": 0.1666,
+    "wacc": 0.1618
   },
   {
     "symbol": "AVGO",
@@ -400,12 +400,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0441,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.032,
     "weight_of_equity": 0.968,
     "cost_of_debt": 0.012,
-    "cost_of_equity": 0.1642,
-    "wacc": 0.1593
+    "cost_of_equity": 0.1664,
+    "wacc": 0.1614
   },
   {
     "symbol": "AVGO",
@@ -424,12 +424,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0438,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0307,
     "weight_of_equity": 0.9693,
     "cost_of_debt": 0.012,
-    "cost_of_equity": 0.1643,
-    "wacc": 0.1596
+    "cost_of_equity": 0.1665,
+    "wacc": 0.1617
   },
   {
     "symbol": "AVGO",
@@ -448,12 +448,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0442,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0309,
     "weight_of_equity": 0.9691,
     "cost_of_debt": 0.012,
-    "cost_of_equity": 0.1642,
-    "wacc": 0.1595
+    "cost_of_equity": 0.1663,
+    "wacc": 0.1615
   },
   {
     "symbol": "AVGO",
@@ -472,12 +472,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0446,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0315,
     "weight_of_equity": 0.9685,
     "cost_of_debt": 0.012,
-    "cost_of_equity": 0.164,
-    "wacc": 0.1592
+    "cost_of_equity": 0.1661,
+    "wacc": 0.1612
   },
   {
     "symbol": "AVGO",
@@ -496,12 +496,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0446,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0317,
     "weight_of_equity": 0.9683,
     "cost_of_debt": 0.012,
-    "cost_of_equity": 0.164,
-    "wacc": 0.1592
+    "cost_of_equity": 0.1661,
+    "wacc": 0.1612
   },
   {
     "symbol": "AVGO",
@@ -520,12 +520,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0447,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0301,
     "weight_of_equity": 0.9699,
     "cost_of_debt": 0.012,
-    "cost_of_equity": 0.164,
-    "wacc": 0.1594
+    "cost_of_equity": 0.1661,
+    "wacc": 0.1614
   },
   {
     "symbol": "AVGO",
@@ -544,12 +544,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0459,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0311,
     "weight_of_equity": 0.9689,
     "cost_of_debt": 0.012,
-    "cost_of_equity": 0.1635,
-    "wacc": 0.1588
+    "cost_of_equity": 0.1656,
+    "wacc": 0.1608
   },
   {
     "symbol": "AVGO",
@@ -568,12 +568,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0461,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0314,
     "weight_of_equity": 0.9686,
     "cost_of_debt": 0.012,
-    "cost_of_equity": 0.1634,
-    "wacc": 0.1586
+    "cost_of_equity": 0.1655,
+    "wacc": 0.1606
   },
   {
     "symbol": "AVGO",
@@ -592,12 +592,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0467,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0321,
     "weight_of_equity": 0.9679,
     "cost_of_debt": 0.012,
-    "cost_of_equity": 0.1631,
-    "wacc": 0.1582
+    "cost_of_equity": 0.1652,
+    "wacc": 0.1603
   },
   {
     "symbol": "AVGO",
@@ -616,12 +616,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0457,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0316,
     "weight_of_equity": 0.9684,
     "cost_of_debt": 0.012,
-    "cost_of_equity": 0.1635,
-    "wacc": 0.1587
+    "cost_of_equity": 0.1657,
+    "wacc": 0.1608
   },
   {
     "symbol": "AVGO",
@@ -640,12 +640,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0457,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0319,
     "weight_of_equity": 0.9681,
     "cost_of_debt": 0.012,
-    "cost_of_equity": 0.1635,
-    "wacc": 0.1586
+    "cost_of_equity": 0.1657,
+    "wacc": 0.1608
   },
   {
     "symbol": "AVGO",
@@ -664,12 +664,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0456,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0319,
     "weight_of_equity": 0.9681,
     "cost_of_debt": 0.012,
-    "cost_of_equity": 0.1636,
-    "wacc": 0.1587
+    "cost_of_equity": 0.1657,
+    "wacc": 0.1608
   },
   {
     "symbol": "AVGO",
@@ -688,12 +688,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.045,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0313,
     "weight_of_equity": 0.9687,
     "cost_of_debt": 0.012,
-    "cost_of_equity": 0.1638,
-    "wacc": 0.159
+    "cost_of_equity": 0.166,
+    "wacc": 0.1611
   },
   {
     "symbol": "AVGO",
@@ -712,12 +712,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0448,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0313,
     "weight_of_equity": 0.9687,
     "cost_of_debt": 0.012,
-    "cost_of_equity": 0.1639,
-    "wacc": 0.1591
+    "cost_of_equity": 0.1661,
+    "wacc": 0.1612
   },
   {
     "symbol": "AVGO",
@@ -736,12 +736,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0445,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.031,
     "weight_of_equity": 0.969,
     "cost_of_debt": 0.012,
-    "cost_of_equity": 0.164,
-    "wacc": 0.1593
+    "cost_of_equity": 0.1662,
+    "wacc": 0.1614
   },
   {
     "symbol": "AVGO",
@@ -760,12 +760,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0445,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0296,
     "weight_of_equity": 0.9704,
     "cost_of_debt": 0.012,
-    "cost_of_equity": 0.164,
-    "wacc": 0.1595
+    "cost_of_equity": 0.1662,
+    "wacc": 0.1616
   },
   {
     "symbol": "AVGO",
@@ -784,12 +784,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0447,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0288,
     "weight_of_equity": 0.9712,
     "cost_of_debt": 0.012,
-    "cost_of_equity": 0.164,
-    "wacc": 0.1596
+    "cost_of_equity": 0.1661,
+    "wacc": 0.1616
   },
   {
     "symbol": "AVGO",
@@ -808,12 +808,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0446,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0275,
     "weight_of_equity": 0.9725,
     "cost_of_debt": 0.012,
-    "cost_of_equity": 0.164,
-    "wacc": 0.1598
+    "cost_of_equity": 0.1661,
+    "wacc": 0.1618
   },
   {
     "symbol": "AVGO",
@@ -832,12 +832,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0449,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0277,
     "weight_of_equity": 0.9723,
     "cost_of_debt": 0.012,
-    "cost_of_equity": 0.1639,
-    "wacc": 0.1597
+    "cost_of_equity": 0.166,
+    "wacc": 0.1617
   },
   {
     "symbol": "AVGO",
@@ -856,12 +856,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0447,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0315,
     "weight_of_equity": 0.9685,
     "cost_of_debt": 0.012,
-    "cost_of_equity": 0.164,
-    "wacc": 0.1592
+    "cost_of_equity": 0.1661,
+    "wacc": 0.1612
   },
   {
     "symbol": "AVGO",
@@ -880,12 +880,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0455,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0342,
     "weight_of_equity": 0.9658,
     "cost_of_debt": 0.012,
-    "cost_of_equity": 0.1636,
-    "wacc": 0.1584
+    "cost_of_equity": 0.1657,
+    "wacc": 0.1604
   },
   {
     "symbol": "AVGO",
@@ -904,12 +904,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0456,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0333,
     "weight_of_equity": 0.9667,
     "cost_of_debt": 0.012,
-    "cost_of_equity": 0.1636,
-    "wacc": 0.1585
+    "cost_of_equity": 0.1657,
+    "wacc": 0.1605
   },
   {
     "symbol": "AVGO",
@@ -928,12 +928,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0453,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0336,
     "weight_of_equity": 0.9664,
     "cost_of_debt": 0.012,
-    "cost_of_equity": 0.1637,
-    "wacc": 0.1586
+    "cost_of_equity": 0.1658,
+    "wacc": 0.1606
   },
   {
     "symbol": "AVGO",
@@ -952,12 +952,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0455,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0354,
     "weight_of_equity": 0.9646,
     "cost_of_debt": 0.012,
-    "cost_of_equity": 0.1636,
-    "wacc": 0.1582
+    "cost_of_equity": 0.1657,
+    "wacc": 0.1602
   },
   {
     "symbol": "AVGO",
@@ -976,12 +976,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0445,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0342,
     "weight_of_equity": 0.9658,
     "cost_of_debt": 0.012,
-    "cost_of_equity": 0.164,
-    "wacc": 0.1588
+    "cost_of_equity": 0.1662,
+    "wacc": 0.1609
   },
   {
     "symbol": "AVGO",
@@ -1000,12 +1000,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0448,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0345,
     "weight_of_equity": 0.9655,
     "cost_of_debt": 0.012,
-    "cost_of_equity": 0.1639,
-    "wacc": 0.1586
+    "cost_of_equity": 0.1661,
+    "wacc": 0.1608
   },
   {
     "symbol": "AVGO",
@@ -1024,12 +1024,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0447,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0335,
     "weight_of_equity": 0.9665,
     "cost_of_debt": 0.012,
-    "cost_of_equity": 0.164,
-    "wacc": 0.1589
+    "cost_of_equity": 0.1661,
+    "wacc": 0.1609
   },
   {
     "symbol": "AVGO",
@@ -1048,12 +1048,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0443,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0349,
     "weight_of_equity": 0.9651,
     "cost_of_debt": 0.012,
-    "cost_of_equity": 0.1641,
-    "wacc": 0.1588
+    "cost_of_equity": 0.1663,
+    "wacc": 0.1609
   },
   {
     "symbol": "AVGO",
@@ -1072,12 +1072,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0449,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0336,
     "weight_of_equity": 0.9664,
     "cost_of_debt": 0.012,
-    "cost_of_equity": 0.1639,
-    "wacc": 0.1588
+    "cost_of_equity": 0.166,
+    "wacc": 0.1608
   },
   {
     "symbol": "AVGO",
@@ -1096,11 +1096,83 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0446,
-    "beta_5y": 1.4198,
+    "beta_5y": 1.4452,
     "weight_of_debt": 0.0321,
     "weight_of_equity": 0.9679,
     "cost_of_debt": 0.012,
-    "cost_of_equity": 0.164,
-    "wacc": 0.1591
+    "cost_of_equity": 0.1661,
+    "wacc": 0.1611
+  },
+  {
+    "symbol": "AVGO",
+    "report_date": "2026-06-22T00:00:00.000",
+    "market_capitalization": 1865754540000.0,
+    "exchange_rate": 1.0,
+    "total_debt": 64907000000.0,
+    "total_debt_usd": 64907000000.0,
+    "interest_expense": 776000000.0,
+    "interest_expense_usd": 776000000.0,
+    "pretax_income": 10130000000.0,
+    "pretax_income_usd": 10130000000.0,
+    "tax_provision": 820000000.0,
+    "tax_provision_usd": 820000000.0,
+    "tax_rate_for_calcs": 0.08,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0451,
+    "beta_5y": 1.4452,
+    "weight_of_debt": 0.0336,
+    "weight_of_equity": 0.9664,
+    "cost_of_debt": 0.012,
+    "cost_of_equity": 0.1659,
+    "wacc": 0.1607
+  },
+  {
+    "symbol": "AVGO",
+    "report_date": "2026-06-23T00:00:00.000",
+    "market_capitalization": 1808753700000.0,
+    "exchange_rate": 1.0,
+    "total_debt": 64907000000.0,
+    "total_debt_usd": 64907000000.0,
+    "interest_expense": 776000000.0,
+    "interest_expense_usd": 776000000.0,
+    "pretax_income": 10130000000.0,
+    "pretax_income_usd": 10130000000.0,
+    "tax_provision": 820000000.0,
+    "tax_provision_usd": 820000000.0,
+    "tax_rate_for_calcs": 0.08,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.045,
+    "beta_5y": 1.4452,
+    "weight_of_debt": 0.0346,
+    "weight_of_equity": 0.9654,
+    "cost_of_debt": 0.012,
+    "cost_of_equity": 0.166,
+    "wacc": 0.1606
+  },
+  {
+    "symbol": "AVGO",
+    "report_date": "2026-06-24T00:00:00.000",
+    "market_capitalization": 1817889060000.0,
+    "exchange_rate": 1.0,
+    "total_debt": 64907000000.0,
+    "total_debt_usd": 64907000000.0,
+    "interest_expense": 776000000.0,
+    "interest_expense_usd": 776000000.0,
+    "pretax_income": 10130000000.0,
+    "pretax_income_usd": 10130000000.0,
+    "tax_provision": 820000000.0,
+    "tax_provision_usd": 820000000.0,
+    "tax_rate_for_calcs": 0.08,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0441,
+    "beta_5y": 1.4452,
+    "weight_of_debt": 0.0345,
+    "weight_of_equity": 0.9655,
+    "cost_of_debt": 0.012,
+    "cost_of_equity": 0.1664,
+    "wacc": 0.161
   }
 ]

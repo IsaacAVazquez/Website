@@ -8,7 +8,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-22"
+    "report_date": "2026-06-25"
   },
   {
     "symbol": "INTU",
@@ -19,7 +19,7 @@
     "pay": 1704000,
     "exercised": 5925961,
     "unexercised": 2139095,
-    "report_date": "2026-06-22"
+    "report_date": "2026-06-25"
   },
   {
     "symbol": "INTU",
@@ -30,7 +30,7 @@
     "pay": 1704000,
     "exercised": 3361494,
     "unexercised": 9355770,
-    "report_date": "2026-06-22"
+    "report_date": "2026-06-25"
   },
   {
     "symbol": "INTU",
@@ -41,7 +41,7 @@
     "pay": 1771300,
     "exercised": 4101986,
     "unexercised": 883111,
-    "report_date": "2026-06-22"
+    "report_date": "2026-06-25"
   },
   {
     "symbol": "INTU",
@@ -52,7 +52,7 @@
     "pay": 3910000,
     "exercised": 43560552,
     "unexercised": 62610408,
-    "report_date": "2026-06-22"
+    "report_date": "2026-06-25"
   },
   {
     "symbol": "INTU",
@@ -63,7 +63,7 @@
     "pay": 1300000,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-22"
+    "report_date": "2026-06-25"
   },
   {
     "symbol": "INTU",
@@ -74,7 +74,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-22"
+    "report_date": "2026-06-25"
   },
   {
     "symbol": "INTU",
@@ -85,7 +85,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-22"
+    "report_date": "2026-06-25"
   },
   {
     "symbol": "INTU",
@@ -96,7 +96,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-22"
+    "report_date": "2026-06-25"
   },
   {
     "symbol": "INTU",
@@ -107,6 +107,6 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-22"
+    "report_date": "2026-06-25"
   }
 ]

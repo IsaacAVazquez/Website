@@ -1,10 +1,10 @@
 {
   "symbol": "GOOGL",
-  "lastUpdated": "2026-06-23T00:06:23.255341+00:00",
+  "lastUpdated": "2026-06-26T00:09:38.526995+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-23T00:06:23.255341+00:00",
+    "snapshotBuiltAt": "2026-06-26T00:09:38.526995+00:00",
     "sections": {
-      "price": "2026-06-18"
+      "price": "2026-06-24"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 13.109,
-      "ttmPe": 28.07,
-      "marketCap": 4458846928926,
-      "psRatio": 10.55,
-      "pbRatio": 9.31,
-      "pegRatio": 0.34
+      "ttmPe": 26.34,
+      "marketCap": 4183341727818,
+      "psRatio": 9.9,
+      "pbRatio": 8.74,
+      "pegRatio": 0.32
     },
     "profitability": {
       "roe": 14.000000000000002,
@@ -5594,41 +5594,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.52,
-      "costOfEquity": 14.81,
+      "wacc": 14.64,
+      "costOfEquity": 14.95,
       "costOfDebt": 0.59,
       "taxRate": 19,
-      "beta": 1.2304,
-      "marketCap": 4458846928926
+      "beta": 1.2462,
+      "marketCap": 4183341727818
     },
     "beta": {
-      "beta5y": 1.2304
+      "beta5y": 1.2462
     },
     "price": [
-      {
-        "date": "2025-06-18",
-        "open": 176.01,
-        "high": 176.56,
-        "low": 173.2,
-        "close": 173.32,
-        "volume": 28707500
-      },
-      {
-        "date": "2025-06-20",
-        "open": 173.95,
-        "high": 174.34,
-        "low": 165.46,
-        "close": 166.64,
-        "volume": 75659900
-      },
-      {
-        "date": "2025-06-23",
-        "open": 166.27,
-        "high": 167.34,
-        "low": 162,
-        "close": 165.19,
-        "volume": 57671000
-      },
       {
         "date": "2025-06-24",
         "open": 166.92,
@@ -7620,6 +7596,30 @@
         "low": 358.67,
         "close": 368.03,
         "volume": 44470100
+      },
+      {
+        "date": "2026-06-22",
+        "open": 357.95,
+        "high": 358.92,
+        "low": 341.72,
+        "close": 349.68,
+        "volume": 52814800
+      },
+      {
+        "date": "2026-06-23",
+        "open": 340.69,
+        "high": 349.29,
+        "low": 340.2,
+        "close": 346.13,
+        "volume": 34007700
+      },
+      {
+        "date": "2026-06-24",
+        "open": 348.965,
+        "high": 353.476,
+        "low": 341.93,
+        "close": 345.29,
+        "volume": 41938315
       }
     ],
     "news": [
@@ -7637,6 +7637,14 @@
         "publisher": "MT Newswires",
         "reportDate": "2025-06-17",
         "link": "https://finance.yahoo.com/news/streaming-surpasses-combined-cable-broadcast-140549520.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "239097ec-365f-3453-b91e-0c08a6414799",
+        "title": "3 Top Quantum Computing Stocks to Buy in 2025",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-06-17",
+        "link": "https://finance.yahoo.com/m/239097ec-365f-3453-b91e-0c08a6414799/3-top-quantum-computing.html",
         "type": "STORY"
       },
       {
@@ -7664,11 +7672,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "239097ec-365f-3453-b91e-0c08a6414799",
-        "title": "3 Top Quantum Computing Stocks to Buy in 2025",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/m/239097ec-365f-3453-b91e-0c08a6414799/3-top-quantum-computing.html",
+        "uuid": "677e87f7-6d9d-30bd-a846-ca2e9cd5608e",
+        "title": "Sector Update: Consumer",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-06-18",
+        "link": "https://finance.yahoo.com/news/sector-consumer-192818246.html",
         "type": "STORY"
       },
       {
@@ -7680,14 +7688,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "677e87f7-6d9d-30bd-a846-ca2e9cd5608e",
-        "title": "Sector Update: Consumer",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-06-18",
-        "link": "https://finance.yahoo.com/news/sector-consumer-192818246.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "39f83f45-7225-377c-98bd-298bd43e5330",
         "title": "2 Ad Tech Stocks That Could Help Make You a Fortune",
         "publisher": "Motley Fool",
@@ -7696,11 +7696,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "5aaffa19-4a82-37d7-9153-92797cff77b1",
-        "title": "Down 25%, Is Now the Time to Pounce on IonQ Stock for Just $40?",
-        "publisher": "Motley Fool",
+        "uuid": "58844064-6ec3-3b70-b13a-3eee7607b6b5",
+        "title": "Adobe vs. Apple: Which AI-Driven Tech Stock is a Better Buy Now?",
+        "publisher": "Zacks",
         "reportDate": "2025-06-19",
-        "link": "https://finance.yahoo.com/m/5aaffa19-4a82-37d7-9153-92797cff77b1/down-25%25%2C-is-now-the-time-to.html",
+        "link": "https://finance.yahoo.com/news/adobe-vs-apple-ai-driven-172200197.html",
         "type": "STORY"
       }
     ],
@@ -7776,18 +7776,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 28.07,
-        "industryAvg": 26.69
+        "value": 26.34,
+        "industryAvg": 25.19
       },
       {
         "metric": "P/S Ratio",
-        "value": 10.55,
-        "industryAvg": 9.03
+        "value": 9.9,
+        "industryAvg": 8.52
       },
       {
         "metric": "P/B Ratio",
-        "value": 9.31,
-        "industryAvg": 1.91
+        "value": 8.74,
+        "industryAvg": 7.42
       },
       {
         "metric": "ROE",
@@ -7816,10 +7816,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 245.48,
-      "currentPrice": 368.03,
-      "upside": -33.3,
-      "wacc": 14.52,
+      "fairValue": 242.8,
+      "currentPrice": 345.29,
+      "upside": -29.68,
+      "wacc": 14.64,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

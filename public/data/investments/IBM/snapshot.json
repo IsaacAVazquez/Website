@@ -1,10 +1,10 @@
 {
   "symbol": "IBM",
-  "lastUpdated": "2026-06-23T00:06:23.255341+00:00",
+  "lastUpdated": "2026-06-26T00:09:38.526995+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-23T00:06:23.255341+00:00",
+    "snapshotBuiltAt": "2026-06-26T00:09:38.526995+00:00",
     "sections": {
-      "price": "2026-06-18"
+      "price": "2026-06-24"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.3093,
-      "ttmPe": 22.03,
-      "marketCap": 234154000000,
-      "psRatio": 3.4,
-      "pbRatio": 7.1,
-      "pegRatio": 1.53
+      "ttmPe": 23.25,
+      "marketCap": 247182400000,
+      "psRatio": 3.59,
+      "pbRatio": 7.5,
+      "pegRatio": 1.61
     },
     "profitability": {
       "roe": 3.71,
@@ -6354,41 +6354,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.93,
-      "costOfEquity": 10.12,
+      "wacc": 8.04,
+      "costOfEquity": 10.14,
       "costOfDebt": 0.6799999999999999,
       "taxRate": 12,
-      "beta": 0.6736,
-      "marketCap": 234154000000
+      "beta": 0.6774,
+      "marketCap": 247182400000
     },
     "beta": {
-      "beta5y": 0.6736
+      "beta5y": 0.6774
     },
     "price": [
-      {
-        "date": "2025-06-18",
-        "open": 285,
-        "high": 286.91,
-        "low": 282.94,
-        "close": 283.21,
-        "volume": 3534100
-      },
-      {
-        "date": "2025-06-20",
-        "open": 279.28,
-        "high": 284.12,
-        "low": 277.2,
-        "close": 280.97,
-        "volume": 7677000
-      },
-      {
-        "date": "2025-06-23",
-        "open": 281.65,
-        "high": 289.58,
-        "low": 280.21,
-        "close": 289.18,
-        "volume": 3786200
-      },
       {
         "date": "2025-06-24",
         "open": 290.46,
@@ -8380,6 +8356,30 @@
         "low": 243.68,
         "close": 249.1,
         "volume": 16619700
+      },
+      {
+        "date": "2026-06-22",
+        "open": 248.43,
+        "high": 253.31,
+        "low": 243.81,
+        "close": 252.22,
+        "volume": 9615400
+      },
+      {
+        "date": "2026-06-23",
+        "open": 261.58,
+        "high": 267.53,
+        "low": 255.26,
+        "close": 264.94,
+        "volume": 15686100
+      },
+      {
+        "date": "2026-06-24",
+        "open": 261.843,
+        "high": 265.06,
+        "low": 256.1836,
+        "close": 262.96,
+        "volume": 6596690
       }
     ],
     "news": [
@@ -8432,19 +8432,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "6dd67bf6-faa3-387e-93bc-b081fa3a14da",
-        "title": "Herbalife and Abercrombie and Fitch have been highlighted as Zacks Bull and Bear of the Day",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/herbalife-abercrombie-fitch-highlighted-zacks-133500305.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "4108daec-5933-31f7-9e1f-5d8cb6c5e76b",
         "title": "Rigetti vs. IBM: Which Quantum Computing Stock Has Better Prospects?",
         "publisher": "Zacks",
         "reportDate": "2025-05-28",
         "link": "https://finance.yahoo.com/news/rigetti-vs-ibm-quantum-computing-161500616.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6dd67bf6-faa3-387e-93bc-b081fa3a14da",
+        "title": "Herbalife and Abercrombie and Fitch have been highlighted as Zacks Bull and Bear of the Day",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/news/herbalife-abercrombie-fitch-highlighted-zacks-133500305.html",
         "type": "STORY"
       },
       {
@@ -8526,18 +8526,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.03,
-        "industryAvg": 14.44
+        "value": 23.25,
+        "industryAvg": 14.74
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.4,
-        "industryAvg": 254.69
+        "value": 3.59,
+        "industryAvg": 1.42
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.1,
-        "industryAvg": 282.13
+        "value": 7.5,
+        "industryAvg": 3.32
       },
       {
         "metric": "ROE",
@@ -8566,10 +8566,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 290.27,
-      "currentPrice": 249.1,
-      "upside": 16.53,
-      "wacc": 7.93,
+      "fairValue": 283.88,
+      "currentPrice": 262.96,
+      "upside": 7.96,
+      "wacc": 8.04,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 14.44,
         "Terminal growth": 3

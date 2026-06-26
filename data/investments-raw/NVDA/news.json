@@ -54,15 +54,6 @@
     "link": "https://finance.yahoo.com/news/accenture-reports-q2-beat-apple-161626223.html"
   },
   {
-    "uuid": "9c9222ce-74c7-3222-a9d9-ab586c63ce81",
-    "symbol": "NVDA",
-    "title": "Nvidia\u2019s Support Boosts Stereotaxis (STXS) in Advancing Robotic Surgery",
-    "publisher": "Insider Monkey",
-    "report_date": "2025-03-24",
-    "type": "STORY",
-    "link": "https://finance.yahoo.com/news/nvidia-support-boosts-stereotaxis-stxs-213924601.html"
-  },
-  {
     "uuid": "9603d02d-962a-36da-ac81-d16892a33a25",
     "symbol": "NVDA",
     "title": "Lumentum Stock, Coherent Upgraded On View Nvidia Threat Overblown",
@@ -72,13 +63,13 @@
     "link": "https://finance.yahoo.com/m/9603d02d-962a-36da-ac81-d16892a33a25/lumentum-stock%2C-coherent.html"
   },
   {
-    "uuid": "ad5ec0a2-bfd3-335a-9331-f25c38ccafe5",
+    "uuid": "9c9222ce-74c7-3222-a9d9-ab586c63ce81",
     "symbol": "NVDA",
-    "title": "The Zacks Analyst Blog Highlights Microsoft, NVIDIA, Alphabet and Cooper-Standard",
-    "publisher": "Zacks",
-    "report_date": "2025-03-26",
+    "title": "Nvidia\u2019s Support Boosts Stereotaxis (STXS) in Advancing Robotic Surgery",
+    "publisher": "Insider Monkey",
+    "report_date": "2025-03-24",
     "type": "STORY",
-    "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-144500495.html"
+    "link": "https://finance.yahoo.com/news/nvidia-support-boosts-stereotaxis-stxs-213924601.html"
   },
   {
     "uuid": "b8f4eb3b-6cfb-3bc7-9dd5-91c82b5bacff",
@@ -88,5 +79,14 @@
     "report_date": "2025-03-26",
     "type": "STORY",
     "link": "https://finance.yahoo.com/news/top-research-reports-microsoft-nvidia-210900965.html"
+  },
+  {
+    "uuid": "ad5ec0a2-bfd3-335a-9331-f25c38ccafe5",
+    "symbol": "NVDA",
+    "title": "The Zacks Analyst Blog Highlights Microsoft, NVIDIA, Alphabet and Cooper-Standard",
+    "publisher": "Zacks",
+    "report_date": "2025-03-26",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-144500495.html"
   }
 ]

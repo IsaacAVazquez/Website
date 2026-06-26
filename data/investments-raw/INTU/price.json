@@ -1,33 +1,6 @@
 [
   {
     "symbol": "INTU",
-    "report_date": "2025-06-18",
-    "open": 762.37,
-    "close": 754.83,
-    "high": 765.59,
-    "low": 750.38,
-    "volume": 2223400
-  },
-  {
-    "symbol": "INTU",
-    "report_date": "2025-06-20",
-    "open": 760.66,
-    "close": 761.14,
-    "high": 762.39,
-    "low": 755.05,
-    "volume": 2709400
-  },
-  {
-    "symbol": "INTU",
-    "report_date": "2025-06-23",
-    "open": 759.67,
-    "close": 762.55,
-    "high": 765.0,
-    "low": 754.4,
-    "volume": 1223300
-  },
-  {
-    "symbol": "INTU",
     "report_date": "2025-06-24",
     "open": 769.14,
     "close": 759.03,
@@ -2266,5 +2239,32 @@
     "high": 269.87,
     "low": 259.23,
     "volume": 10059100
+  },
+  {
+    "symbol": "INTU",
+    "report_date": "2026-06-22",
+    "open": 259.42,
+    "close": 257.77,
+    "high": 267.43,
+    "low": 252.84,
+    "volume": 6358200
+  },
+  {
+    "symbol": "INTU",
+    "report_date": "2026-06-23",
+    "open": 262.34,
+    "close": 258.05,
+    "high": 263.67,
+    "low": 255.65,
+    "volume": 5781700
+  },
+  {
+    "symbol": "INTU",
+    "report_date": "2026-06-24",
+    "open": 258.21,
+    "close": 262.235,
+    "high": 270.4599,
+    "low": 256.1501,
+    "volume": 5097800
   }
 ]
