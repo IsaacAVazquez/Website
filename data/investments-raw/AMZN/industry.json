@@ -5669,6 +5669,20 @@
       "total_market_cap": 3481548536465.5,
       "total_ttm_net_income": 148170649190.30997,
       "industry_pe": 23.5
+    },
+    {
+      "report_date": "2026-06-25T00:00:00.000",
+      "industry": "Internet Retail",
+      "total_market_cap": 3374080339591.28,
+      "total_ttm_net_income": 148170649190.30997,
+      "industry_pe": 22.77
+    },
+    {
+      "report_date": "2026-06-26T00:00:00.000",
+      "industry": "Internet Retail",
+      "total_market_cap": 3446069322528.14,
+      "total_ttm_net_income": 148170649190.30997,
+      "industry_pe": 23.26
     }
   ],
   "ps_ratio": [
@@ -11345,9 +11359,23 @@
     {
       "report_date": "2026-06-24T00:00:00.000",
       "industry": "Internet Retail",
-      "total_market_cap": 3529665483732.3,
+      "total_market_cap": 3529665485702.5,
       "total_ttm_revenue": 1682859300874.2698,
       "industry_ps_ratio": 2.1
+    },
+    {
+      "report_date": "2026-06-25T00:00:00.000",
+      "industry": "Internet Retail",
+      "total_market_cap": 3421075409339.17,
+      "total_ttm_revenue": 1682859300874.2698,
+      "industry_ps_ratio": 2.03
+    },
+    {
+      "report_date": "2026-06-26T00:00:00.000",
+      "industry": "Internet Retail",
+      "total_market_cap": 3494149374560.8403,
+      "total_ttm_revenue": 1682859300874.2698,
+      "industry_ps_ratio": 2.08
     }
   ],
   "pb_ratio": [
@@ -18634,9 +18662,23 @@
     {
       "report_date": "2026-06-24T00:00:00.000",
       "industry": "Internet Retail",
-      "total_market_cap": 3574729806749.23,
+      "total_market_cap": 3574729918596.92,
       "total_bve": 949003271445.73,
       "industry_pb_ratio": 3.77
+    },
+    {
+      "report_date": "2026-06-25T00:00:00.000",
+      "industry": "Internet Retail",
+      "total_market_cap": 3463214459844.69,
+      "total_bve": 949003271445.73,
+      "industry_pb_ratio": 3.65
+    },
+    {
+      "report_date": "2026-06-26T00:00:00.000",
+      "industry": "Internet Retail",
+      "total_market_cap": 3534004428665.5703,
+      "total_bve": 949003271445.73,
+      "industry_pb_ratio": 3.72
     }
   ],
   "roe": [

@@ -1,10 +1,10 @@
 {
   "symbol": "PANW",
-  "lastUpdated": "2026-06-26T00:09:38.526995+00:00",
+  "lastUpdated": "2026-06-29T23:40:07.848324+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-26T00:09:38.526995+00:00",
+    "snapshotBuiltAt": "2026-06-29T23:40:07.848324+00:00",
     "sections": {
-      "price": "2026-06-24"
+      "price": "2026-06-26"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 1.2157,
-      "ttmPe": 234.65,
-      "marketCap": 231916380000,
-      "psRatio": 21.87,
-      "pbRatio": 8.38,
+      "ttmPe": 250.23,
+      "marketCap": 247314600000,
+      "psRatio": 23.32,
+      "pbRatio": 8.94,
       "pegRatio": 1.64
     },
     "profitability": {
@@ -5413,33 +5413,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.2,
-      "costOfEquity": 12.31,
+      "wacc": 11.98,
+      "costOfEquity": 12.08,
       "costOfDebt": 0,
       "taxRate": 40,
-      "beta": 0.9339,
-      "marketCap": 231916380000
+      "beta": 0.9067,
+      "marketCap": 247314600000
     },
     "beta": {
-      "beta5y": 0.9339
+      "beta5y": 0.9067
     },
     "price": [
-      {
-        "date": "2025-06-24",
-        "open": 204,
-        "high": 204.8,
-        "low": 201.42,
-        "close": 201.69,
-        "volume": 4951800
-      },
-      {
-        "date": "2025-06-25",
-        "open": 202.8,
-        "high": 204.81,
-        "low": 202.48,
-        "close": 204.3,
-        "volume": 3242300
-      },
       {
         "date": "2025-06-26",
         "open": 204.59,
@@ -7434,11 +7418,27 @@
       },
       {
         "date": "2026-06-24",
-        "open": 289.57,
+        "open": 289.62,
         "high": 291,
         "low": 284.28,
         "close": 285.26,
-        "volume": 4873906
+        "volume": 4895700
+      },
+      {
+        "date": "2026-06-25",
+        "open": 289.01,
+        "high": 295.54,
+        "low": 285.27,
+        "close": 293.09,
+        "volume": 8961300
+      },
+      {
+        "date": "2026-06-26",
+        "open": 295.15,
+        "high": 306.24,
+        "low": 290,
+        "close": 304.2,
+        "volume": 8266600
       }
     ],
     "news": [
@@ -7507,19 +7507,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "992777e0-468b-3487-8ba6-3fdf32f0f4c1",
-        "title": "Billionaire Stanley Druckenmiller Just Sold One of Wall Street's Hottest Stock-Split Stocks and Is Piling Into a Promising Drugmaker Instead",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/m/992777e0-468b-3487-8ba6-3fdf32f0f4c1/billionaire-stanley.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "09a680da-9506-38ad-9747-6af408c93d73",
         "title": "Zscaler (ZS) Reports Earnings Tomorrow: What To Expect",
         "publisher": "StockStory",
         "reportDate": "2025-05-28",
         "link": "https://finance.yahoo.com/news/zscaler-zs-reports-earnings-tomorrow-070335179.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "992777e0-468b-3487-8ba6-3fdf32f0f4c1",
+        "title": "Billionaire Stanley Druckenmiller Just Sold One of Wall Street's Hottest Stock-Split Stocks and Is Piling Into a Promising Drugmaker Instead",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/m/992777e0-468b-3487-8ba6-3fdf32f0f4c1/billionaire-stanley.html",
         "type": "STORY"
       }
     ],
@@ -7587,18 +7587,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 234.65,
-        "industryAvg": 25.76
+        "value": 250.23,
+        "industryAvg": 26.09
       },
       {
         "metric": "P/S Ratio",
-        "value": 21.87,
-        "industryAvg": 5.62
+        "value": 23.32,
+        "industryAvg": 5.7
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.38,
-        "industryAvg": 6.84
+        "value": 8.94,
+        "industryAvg": 6.94
       },
       {
         "metric": "ROE",
@@ -7627,10 +7627,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 7.1,
-      "currentPrice": 285.26,
-      "upside": -97.51,
-      "wacc": 12.2,
+      "fairValue": 7.26,
+      "currentPrice": 304.2,
+      "upside": -97.61,
+      "wacc": 11.98,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": -30,
         "Terminal growth": 3

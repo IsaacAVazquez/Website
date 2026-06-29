@@ -1,10 +1,10 @@
 {
   "symbol": "TSM",
-  "lastUpdated": "2026-06-26T00:09:38.526995+00:00",
+  "lastUpdated": "2026-06-29T23:40:07.848324+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-26T00:09:38.526995+00:00",
+    "snapshotBuiltAt": "2026-06-29T23:40:07.848324+00:00",
     "sections": {
-      "price": "2026-06-24"
+      "price": "2026-06-26"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.0321,
-      "ttmPe": 36.64,
-      "marketCap": 2286353333420,
-      "psRatio": 17.85,
-      "pbRatio": 12.43,
-      "pegRatio": 0.57
+      "ttmPe": 35.93,
+      "marketCap": 2242372033900,
+      "psRatio": 17.51,
+      "pbRatio": 12.2,
+      "pegRatio": 0.56
     },
     "profitability": {
       "roe": 10.18,
@@ -6708,33 +6708,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.58,
-      "costOfEquity": 15.809999999999999,
+      "wacc": 15.6,
+      "costOfEquity": 15.83,
       "costOfDebt": 0.25,
       "taxRate": 17,
-      "beta": 1.3475,
-      "marketCap": 2286353333420
+      "beta": 1.3485,
+      "marketCap": 2242372033900
     },
     "beta": {
-      "beta5y": 1.3475
+      "beta5y": 1.3485
     },
     "price": [
-      {
-        "date": "2025-06-24",
-        "open": 214.39,
-        "high": 220.37,
-        "low": 213.88,
-        "close": 220.09,
-        "volume": 14814700
-      },
-      {
-        "date": "2025-06-25",
-        "open": 220.8,
-        "high": 223.5,
-        "low": 220.8,
-        "close": 222.74,
-        "volume": 9168400
-      },
       {
         "date": "2025-06-26",
         "open": 224.98,
@@ -8729,11 +8713,27 @@
       },
       {
         "date": "2026-06-24",
-        "open": 433.975,
-        "high": 443.845,
-        "low": 432.575,
+        "open": 433.98,
+        "high": 443.86,
+        "low": 432.58,
         "close": 440.83,
-        "volume": 9780068
+        "volume": 9991200
+      },
+      {
+        "date": "2026-06-25",
+        "open": 452.9,
+        "high": 452.9,
+        "low": 432.44,
+        "close": 434.99,
+        "volume": 14769500
+      },
+      {
+        "date": "2026-06-26",
+        "open": 425,
+        "high": 436.13,
+        "low": 419.19,
+        "close": 432.35,
+        "volume": 17951300
       }
     ],
     "news": [
@@ -8794,19 +8794,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "55c8b36c-2510-38f3-854f-062fb0af6334",
-        "title": "5 Brilliant Stocks to Buy in June",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-06-01",
-        "link": "https://finance.yahoo.com/m/55c8b36c-2510-38f3-854f-062fb0af6334/5-brilliant-stocks-to-buy-in.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "5104baf1-a7b2-3c68-af66-0a502166bcb2",
         "title": "TSMC Stock Maintains High-Conviction AI Play Status With $220 Price Target",
         "publisher": "TipRanks",
         "reportDate": "2025-06-01",
         "link": "https://finance.yahoo.com/news/tsmc-stock-maintains-high-conviction-183500555.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "55c8b36c-2510-38f3-854f-062fb0af6334",
+        "title": "5 Brilliant Stocks to Buy in June",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-06-01",
+        "link": "https://finance.yahoo.com/m/55c8b36c-2510-38f3-854f-062fb0af6334/5-brilliant-stocks-to-buy-in.html",
         "type": "STORY"
       },
       {
@@ -8822,7 +8822,7 @@
       {
         "name": "Dr. C. C. Wei Ph.D.",
         "title": "Chairman & CEO",
-        "totalPay": 64780178
+        "totalPay": 64272445
       },
       {
         "name": "Dr. Horng-Dar Lin",
@@ -8847,7 +8847,7 @@
       {
         "name": "Mr. Jen-Chau Huang",
         "title": "Senior VP & CFO",
-        "totalPay": 9384869
+        "totalPay": 9311313
       },
       {
         "name": "Mr. Pei-Hong Chen",
@@ -8865,50 +8865,50 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 36.64,
-        "industryAvg": 42.58
+        "value": 35.93,
+        "industryAvg": 33.78
       },
       {
         "metric": "P/S Ratio",
-        "value": 17.85,
-        "industryAvg": 16.6
+        "value": 17.51,
+        "industryAvg": 14.09
       },
       {
         "metric": "P/B Ratio",
-        "value": 12.43,
-        "industryAvg": 14.21
+        "value": 12.2,
+        "industryAvg": 11.86
       },
       {
         "metric": "ROE",
         "value": 10.18,
-        "industryAvg": 34.589999999999996
+        "industryAvg": 36.52
       },
       {
         "metric": "ROA",
         "value": 6.9,
-        "industryAvg": 21.5
+        "industryAvg": 22.8
       },
       {
         "metric": "Gross Margin",
         "value": 66.25,
-        "industryAvg": 59.21999999999999
+        "industryAvg": 60.45
       },
       {
         "metric": "EBITDA Margin",
         "value": 75.48,
-        "industryAvg": 56.11000000000001
+        "industryAvg": 57.410000000000004
       },
       {
         "metric": "Net Margin",
         "value": 50.480000000000004,
-        "industryAvg": 37.51
+        "industryAvg": 38.92
       }
     ],
     "dcf": {
-      "fairValue": 205.2,
-      "currentPrice": 440.83,
-      "upside": -53.45,
-      "wacc": 15.58,
+      "fairValue": 204.85,
+      "currentPrice": 432.35,
+      "upside": -52.62,
+      "wacc": 15.6,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

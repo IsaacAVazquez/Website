@@ -1,10 +1,10 @@
 {
   "symbol": "INTU",
-  "lastUpdated": "2026-06-26T00:09:38.526995+00:00",
+  "lastUpdated": "2026-06-29T23:40:07.848324+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-26T00:09:38.526995+00:00",
+    "snapshotBuiltAt": "2026-06-29T23:40:07.848324+00:00",
     "sections": {
-      "price": "2026-06-24"
+      "price": "2026-06-26"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 16.5147,
-      "ttmPe": 15.88,
-      "marketCap": 71730975195,
-      "psRatio": 3.43,
-      "pbRatio": 3.48,
-      "pegRatio": 1.44
+      "ttmPe": 16.21,
+      "marketCap": 73231325640,
+      "psRatio": 3.5,
+      "pbRatio": 3.55,
+      "pegRatio": 1.47
     },
     "profitability": {
       "roe": 15.440000000000001,
@@ -6188,33 +6188,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.76,
-      "costOfEquity": 12.82,
+      "wacc": 11.77,
+      "costOfEquity": 12.809999999999999,
       "costOfDebt": 1.01,
       "taxRate": 24,
-      "beta": 0.9943,
-      "marketCap": 71730975195
+      "beta": 0.9934,
+      "marketCap": 73231325640
     },
     "beta": {
-      "beta5y": 0.9943
+      "beta5y": 0.9934
     },
     "price": [
-      {
-        "date": "2025-06-24",
-        "open": 769.14,
-        "high": 771.14,
-        "low": 758.14,
-        "close": 759.03,
-        "volume": 1900400
-      },
-      {
-        "date": "2025-06-25",
-        "open": 758.06,
-        "high": 759.62,
-        "low": 751.06,
-        "close": 757.86,
-        "volume": 1531100
-      },
       {
         "date": "2025-06-26",
         "open": 759.38,
@@ -8209,11 +8193,27 @@
       },
       {
         "date": "2026-06-24",
-        "open": 258.21,
-        "high": 270.4599,
-        "low": 256.1501,
-        "close": 262.235,
-        "volume": 5097800
+        "open": 258.12,
+        "high": 270.46,
+        "low": 256.06,
+        "close": 262.24,
+        "volume": 5249500
+      },
+      {
+        "date": "2026-06-25",
+        "open": 256.27,
+        "high": 262.36,
+        "low": 253.21,
+        "close": 255.07,
+        "volume": 4314600
+      },
+      {
+        "date": "2026-06-26",
+        "open": 260.32,
+        "high": 271.12,
+        "low": 259.38,
+        "close": 267.72,
+        "volume": 10777000
       }
     ],
     "news": [
@@ -8282,19 +8282,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "3024a26e-773e-3ff1-9165-4dedc0d118e5",
-        "title": "US High Growth Tech Stocks to Watch in May 2025",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-27",
-        "link": "https://finance.yahoo.com/news/us-high-growth-tech-stocks-113809175.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "a0c5cbe2-b276-3715-afc5-cb59b6cbeb14",
         "title": "Company News for May 27, 2025",
         "publisher": "Zacks",
         "reportDate": "2025-05-27",
         "link": "https://finance.yahoo.com/news/company-news-may-27-2025-132300202.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3024a26e-773e-3ff1-9165-4dedc0d118e5",
+        "title": "US High Growth Tech Stocks to Watch in May 2025",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-27",
+        "link": "https://finance.yahoo.com/news/us-high-growth-tech-stocks-113809175.html",
         "type": "STORY"
       }
     ],
@@ -8366,18 +8366,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.88,
-        "industryAvg": 22.7
+        "value": 16.21,
+        "industryAvg": 23.3
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.43,
-        "industryAvg": 3.98
+        "value": 3.5,
+        "industryAvg": 4.08
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.48,
-        "industryAvg": 4.3
+        "value": 3.55,
+        "industryAvg": 4.42
       },
       {
         "metric": "ROE",
@@ -8406,10 +8406,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 223.54,
-      "currentPrice": 262.24,
-      "upside": -14.75,
-      "wacc": 11.76,
+      "fairValue": 223.29,
+      "currentPrice": 267.72,
+      "upside": -16.6,
+      "wacc": 11.77,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 11.01,
         "Terminal growth": 3

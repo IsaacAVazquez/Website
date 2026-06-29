@@ -1,24 +1,6 @@
 [
   {
     "symbol": "ANET",
-    "report_date": "2025-06-24",
-    "open": 94.65,
-    "close": 94.97,
-    "high": 95.12,
-    "low": 92.7,
-    "volume": 11279800
-  },
-  {
-    "symbol": "ANET",
-    "report_date": "2025-06-25",
-    "open": 95.64,
-    "close": 96.31,
-    "high": 96.66,
-    "low": 94.5,
-    "volume": 7883500
-  },
-  {
-    "symbol": "ANET",
     "report_date": "2025-06-26",
     "open": 97.33,
     "close": 101.59,
@@ -2263,8 +2245,26 @@
     "report_date": "2026-06-24",
     "open": 162.325,
     "close": 161.74,
-    "high": 165.675,
+    "high": 165.68,
     "low": 160.57,
-    "volume": 3847812
+    "volume": 6350600
+  },
+  {
+    "symbol": "ANET",
+    "report_date": "2026-06-25",
+    "open": 167.76,
+    "close": 165.45,
+    "high": 170.16,
+    "low": 159.46,
+    "volume": 8231200
+  },
+  {
+    "symbol": "ANET",
+    "report_date": "2026-06-26",
+    "open": 159.94,
+    "close": 157.6,
+    "high": 161.23,
+    "low": 154.74,
+    "volume": 11848300
   }
 ]

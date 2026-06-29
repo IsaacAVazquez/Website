@@ -18,15 +18,6 @@
     "link": "https://finance.yahoo.com/news/us-high-growth-tech-stocks-113829612.html"
   },
   {
-    "uuid": "e3daf31a-2695-3357-ba2d-3bfe949cf310",
-    "symbol": "NOW",
-    "title": "The Zacks Analyst Blog Highlights Visa, ServiceNow, The Progressive, The Monarch Cement and Precipio",
-    "publisher": "Zacks",
-    "report_date": "2025-04-22",
-    "type": "STORY",
-    "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-visa-125900502.html"
-  },
-  {
     "uuid": "3d018e47-3ca3-3120-a73e-e863c577b5fe",
     "symbol": "NOW",
     "title": "Top Research Reports for Visa, ServiceNow & Progressive",
@@ -34,6 +25,15 @@
     "report_date": "2025-04-22",
     "type": "STORY",
     "link": "https://finance.yahoo.com/news/top-research-reports-visa-servicenow-204900265.html"
+  },
+  {
+    "uuid": "e3daf31a-2695-3357-ba2d-3bfe949cf310",
+    "symbol": "NOW",
+    "title": "The Zacks Analyst Blog Highlights Visa, ServiceNow, The Progressive, The Monarch Cement and Precipio",
+    "publisher": "Zacks",
+    "report_date": "2025-04-22",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-visa-125900502.html"
   },
   {
     "uuid": "14cc12eb-ef79-3791-82e3-45049c7a3c2c",

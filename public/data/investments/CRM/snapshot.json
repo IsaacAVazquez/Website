@@ -1,10 +1,10 @@
 {
   "symbol": "CRM",
-  "lastUpdated": "2026-06-26T00:09:38.526995+00:00",
+  "lastUpdated": "2026-06-29T23:40:07.848324+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-26T00:09:38.526995+00:00",
+    "snapshotBuiltAt": "2026-06-29T23:40:07.848324+00:00",
     "sections": {
-      "price": "2026-06-24"
+      "price": "2026-06-26"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.6388,
-      "ttmPe": 17.68,
-      "marketCap": 125110440000,
-      "psRatio": 2.92,
-      "pbRatio": 3.65,
-      "pegRatio": 0.34
+      "ttmPe": 18.33,
+      "marketCap": 129705030000,
+      "psRatio": 3.03,
+      "pbRatio": 3.79,
+      "pegRatio": 0.35
     },
     "profitability": {
       "roe": 4.51,
@@ -5386,33 +5386,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.94,
-      "costOfEquity": 14.41,
+      "wacc": 11,
+      "costOfEquity": 14.360000000000001,
       "costOfDebt": 0.76,
       "taxRate": 23,
-      "beta": 1.1821,
-      "marketCap": 125110440000
+      "beta": 1.1756,
+      "marketCap": 129705030000
     },
     "beta": {
-      "beta5y": 1.1821
+      "beta5y": 1.1756
     },
     "price": [
-      {
-        "date": "2025-06-24",
-        "open": 265.71,
-        "high": 273.38,
-        "low": 265.44,
-        "close": 271.17,
-        "volume": 9713900
-      },
-      {
-        "date": "2025-06-25",
-        "open": 272,
-        "high": 274,
-        "low": 266.98,
-        "close": 267.76,
-        "volume": 6074300
-      },
       {
         "date": "2025-06-26",
         "open": 268.78,
@@ -7411,7 +7395,23 @@
         "high": 157.06,
         "low": 150.4,
         "close": 152.76,
-        "volume": 12599096
+        "volume": 13146800
+      },
+      {
+        "date": "2026-06-25",
+        "open": 150.01,
+        "high": 154,
+        "low": 148.78,
+        "close": 150.19,
+        "volume": 11324700
+      },
+      {
+        "date": "2026-06-26",
+        "open": 151.49,
+        "high": 158.46,
+        "low": 151.49,
+        "close": 158.37,
+        "volume": 20231900
       }
     ],
     "news": [
@@ -7480,19 +7480,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "3b4d0821-7c9c-3cf8-964d-d99cc9ab3503",
-        "title": "Takeda Taps Salesforce (CRM) for AI-Driven Customer Experience Platform",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/takeda-taps-salesforce-crm-ai-173342909.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "dd9e1206-7f9f-30a5-8c2a-d095e81c7ffa",
         "title": "3 S&P 500 Stocks Facing Headwinds",
         "publisher": "StockStory",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/news/3-p-500-stocks-facing-043804051.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3b4d0821-7c9c-3cf8-964d-d99cc9ab3503",
+        "title": "Takeda Taps Salesforce (CRM) for AI-Driven Customer Experience Platform",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/takeda-taps-salesforce-crm-ai-173342909.html",
         "type": "STORY"
       }
     ],
@@ -7561,18 +7561,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.68,
-        "industryAvg": 22.7
+        "value": 18.33,
+        "industryAvg": 23.27
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.92,
-        "industryAvg": 3.98
+        "value": 3.03,
+        "industryAvg": 4.08
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.65,
-        "industryAvg": 4.3
+        "value": 3.79,
+        "industryAvg": 4.42
       },
       {
         "metric": "ROE",
@@ -7601,10 +7601,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 239.35,
-      "currentPrice": 152.76,
-      "upside": 56.68,
-      "wacc": 10.94,
+      "fairValue": 237.47,
+      "currentPrice": 158.37,
+      "upside": 49.95,
+      "wacc": 11,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

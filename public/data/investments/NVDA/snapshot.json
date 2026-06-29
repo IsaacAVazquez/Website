@@ -1,10 +1,10 @@
 {
   "symbol": "NVDA",
-  "lastUpdated": "2026-06-26T00:09:38.526995+00:00",
+  "lastUpdated": "2026-06-29T23:40:07.848324+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-26T00:09:38.526995+00:00",
+    "snapshotBuiltAt": "2026-06-29T23:40:07.848324+00:00",
     "sections": {
-      "price": "2026-06-24"
+      "price": "2026-06-26"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 6.5299,
-      "ttmPe": 30.48,
-      "marketCap": 4819979000000,
-      "psRatio": 19.01,
-      "pbRatio": 24.66,
+      "ttmPe": 29.48,
+      "marketCap": 4663269130000,
+      "psRatio": 18.4,
+      "pbRatio": 23.86,
       "pegRatio": 0.14
     },
     "profitability": {
@@ -5692,33 +5692,17 @@
       ]
     },
     "wacc": {
-      "wacc": 22.919999999999998,
-      "costOfEquity": 22.98,
+      "wacc": 23.02,
+      "costOfEquity": 23.080000000000002,
       "costOfDebt": 0.83,
       "taxRate": 17,
-      "beta": 2.195,
-      "marketCap": 4819979000000
+      "beta": 2.2024,
+      "marketCap": 4663269130000
     },
     "beta": {
-      "beta5y": 2.195
+      "beta5y": 2.2024
     },
     "price": [
-      {
-        "date": "2025-06-24",
-        "open": 145.56,
-        "high": 147.96,
-        "low": 145.5,
-        "close": 147.9,
-        "volume": 187566100
-      },
-      {
-        "date": "2025-06-25",
-        "open": 149.27,
-        "high": 154.45,
-        "low": 149.26,
-        "close": 154.31,
-        "volume": 269146500
-      },
       {
         "date": "2025-06-26",
         "open": 155.98,
@@ -7713,11 +7697,27 @@
       },
       {
         "date": "2026-06-24",
-        "open": 200.07,
-        "high": 201.65,
+        "open": 200.12,
+        "high": 201.67,
         "low": 196.58,
         "close": 199,
-        "volume": 149005898
+        "volume": 151810700
+      },
+      {
+        "date": "2026-06-25",
+        "open": 200.08,
+        "high": 200.8,
+        "low": 192.13,
+        "close": 195.74,
+        "volume": 149550000
+      },
+      {
+        "date": "2026-06-26",
+        "open": 193.12,
+        "high": 195.55,
+        "low": 191.22,
+        "close": 192.53,
+        "volume": 178906300
       }
     ],
     "news": [
@@ -7754,19 +7754,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "6847b701-a805-3273-8363-1f5569a55995",
-        "title": "Stereotaxis Jumps 15% on NVIDIA's AI-Driven Collaboration: Is It a Buy Now?",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-22",
-        "link": "https://finance.yahoo.com/news/stereotaxis-jumps-15-nvidias-ai-160200798.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9fa0933e-573c-36a8-8e69-eacfa956fa70",
         "title": "Accenture reports Q2 beat, Apple TV+ losing $1B annually: Morning Buzz",
         "publisher": "TipRanks",
         "reportDate": "2025-03-22",
         "link": "https://finance.yahoo.com/news/accenture-reports-q2-beat-apple-161626223.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6847b701-a805-3273-8363-1f5569a55995",
+        "title": "Stereotaxis Jumps 15% on NVIDIA's AI-Driven Collaboration: Is It a Buy Now?",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-22",
+        "link": "https://finance.yahoo.com/news/stereotaxis-jumps-15-nvidias-ai-160200798.html",
         "type": "STORY"
       },
       {
@@ -7786,19 +7786,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "b8f4eb3b-6cfb-3bc7-9dd5-91c82b5bacff",
-        "title": "Top Research Reports for Microsoft, NVIDIA & Alphabet",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-26",
-        "link": "https://finance.yahoo.com/news/top-research-reports-microsoft-nvidia-210900965.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "ad5ec0a2-bfd3-335a-9331-f25c38ccafe5",
         "title": "The Zacks Analyst Blog Highlights Microsoft, NVIDIA, Alphabet and Cooper-Standard",
         "publisher": "Zacks",
         "reportDate": "2025-03-26",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-144500495.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b8f4eb3b-6cfb-3bc7-9dd5-91c82b5bacff",
+        "title": "Top Research Reports for Microsoft, NVIDIA & Alphabet",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-26",
+        "link": "https://finance.yahoo.com/news/top-research-reports-microsoft-nvidia-210900965.html",
         "type": "STORY"
       }
     ],
@@ -7867,50 +7867,50 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 30.48,
-        "industryAvg": 42.58
+        "value": 29.48,
+        "industryAvg": 33.78
       },
       {
         "metric": "P/S Ratio",
-        "value": 19.01,
-        "industryAvg": 16.6
+        "value": 18.4,
+        "industryAvg": 14.09
       },
       {
         "metric": "P/B Ratio",
-        "value": 24.66,
-        "industryAvg": 14.21
+        "value": 23.86,
+        "industryAvg": 11.86
       },
       {
         "metric": "ROE",
         "value": 33.06,
-        "industryAvg": 34.589999999999996
+        "industryAvg": 36.52
       },
       {
         "metric": "ROA",
         "value": 25.019999999999996,
-        "industryAvg": 21.5
+        "industryAvg": 22.8
       },
       {
         "metric": "Gross Margin",
         "value": 74.92999999999999,
-        "industryAvg": 59.21999999999999
+        "industryAvg": 60.45
       },
       {
         "metric": "EBITDA Margin",
         "value": 87,
-        "industryAvg": 56.11000000000001
+        "industryAvg": 57.410000000000004
       },
       {
         "metric": "Net Margin",
         "value": 71.46000000000001,
-        "industryAvg": 37.51
+        "industryAvg": 38.92
       }
     ],
     "dcf": {
-      "fairValue": 67.92,
-      "currentPrice": 199,
-      "upside": -65.87,
-      "wacc": 22.92,
+      "fairValue": 67.55,
+      "currentPrice": 192.53,
+      "upside": -64.92,
+      "wacc": 23.02,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

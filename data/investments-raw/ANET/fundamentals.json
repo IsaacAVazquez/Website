@@ -24612,6 +24612,22 @@
       "close_price": 161.74,
       "ttm_eps": 2.9204,
       "ttm_pe": 55.38
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2026-06-25T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 165.45,
+      "ttm_eps": 2.9204,
+      "ttm_pe": 56.65
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2026-06-26T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 157.6,
+      "ttm_eps": 2.9204,
+      "ttm_pe": 53.97
     }
   ],
   "marketCap": [
@@ -48854,6 +48870,22 @@
       "close_price": 161.74,
       "shares_outstanding": 1259169400,
       "market_capitalization": 203658058756.0
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2026-06-25T00:00:00.000",
+      "shares_report_date": "2026-04-02T00:00:00.000",
+      "close_price": 165.45,
+      "shares_outstanding": 1259169400,
+      "market_capitalization": 208329577230.0
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2026-06-26T00:00:00.000",
+      "shares_report_date": "2026-04-02T00:00:00.000",
+      "close_price": 157.6,
+      "shares_outstanding": 1259169400,
+      "market_capitalization": 198445097440.0
     }
   ],
   "psRatio": [
@@ -54456,6 +54488,26 @@
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 9709900000.0,
       "ps_ratio": 20.97
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2026-06-25T00:00:00.000",
+      "market_capitalization": 208329577230.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 9709900000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 9709900000.0,
+      "ps_ratio": 21.46
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2026-06-26T00:00:00.000",
+      "market_capitalization": 198445097440.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 9709900000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 9709900000.0,
+      "ps_ratio": 20.44
     }
   ],
   "pbRatio": [
@@ -64448,6 +64500,26 @@
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 13487100000.0,
       "pb_ratio": 15.1
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2026-06-25T00:00:00.000",
+      "market_capitalization": 208329577230.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 13487100000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 13487100000.0,
+      "pb_ratio": 15.45
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2026-06-26T00:00:00.000",
+      "market_capitalization": 198445097440.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 13487100000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 13487100000.0,
+      "pb_ratio": 14.71
     }
   ],
   "pegRatio": [
@@ -94750,6 +94822,26 @@
       "ttm_pe": 55.38,
       "eps_yoy_growth": 0.2622,
       "peg_ratio": 2.11
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2026-06-25T00:00:00.000",
+      "close_price": 165.45,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 2.9204,
+      "ttm_pe": 56.65,
+      "eps_yoy_growth": 0.2622,
+      "peg_ratio": 2.16
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2026-06-26T00:00:00.000",
+      "close_price": 157.6,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 2.9204,
+      "ttm_pe": 53.97,
+      "eps_yoy_growth": 0.2622,
+      "peg_ratio": 2.06
     }
   ]
 }

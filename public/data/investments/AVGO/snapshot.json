@@ -1,10 +1,10 @@
 {
   "symbol": "AVGO",
-  "lastUpdated": "2026-06-26T00:09:38.526995+00:00",
+  "lastUpdated": "2026-06-29T23:40:07.848324+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-26T00:09:38.526995+00:00",
+    "snapshotBuiltAt": "2026-06-29T23:40:07.848324+00:00",
     "sections": {
-      "price": "2026-06-24"
+      "price": "2026-06-26"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.007,
-      "ttmPe": 63.6,
-      "marketCap": 1817889060000,
-      "psRatio": 24.09,
-      "pbRatio": 20.73,
-      "pegRatio": 0.74
+      "ttmPe": 60.77,
+      "marketCap": 1736765160000,
+      "psRatio": 23.01,
+      "pbRatio": 19.81,
+      "pegRatio": 0.71
     },
     "profitability": {
       "roe": 11.110000000000001,
@@ -6021,33 +6021,17 @@
       ]
     },
     "wacc": {
-      "wacc": 16.1,
-      "costOfEquity": 16.64,
+      "wacc": 16.23,
+      "costOfEquity": 16.79,
       "costOfDebt": 1.2,
       "taxRate": 8,
-      "beta": 1.4452,
-      "marketCap": 1817889060000
+      "beta": 1.4617,
+      "marketCap": 1736765160000
     },
     "beta": {
-      "beta5y": 1.4452
+      "beta5y": 1.4617
     },
     "price": [
-      {
-        "date": "2025-06-24",
-        "open": 258.77,
-        "high": 265.87,
-        "low": 258.77,
-        "close": 263.77,
-        "volume": 32764900
-      },
-      {
-        "date": "2025-06-25",
-        "open": 266,
-        "high": 269.87,
-        "low": 263.43,
-        "close": 264.65,
-        "volume": 18894200
-      },
       {
         "date": "2025-06-26",
         "open": 265.08,
@@ -8046,7 +8030,23 @@
         "high": 388.74,
         "low": 376.96,
         "close": 382.07,
-        "volume": 28217995
+        "volume": 29938700
+      },
+      {
+        "date": "2026-06-25",
+        "open": 386.58,
+        "high": 388.8,
+        "low": 372.7,
+        "close": 378.91,
+        "volume": 23353700
+      },
+      {
+        "date": "2026-06-26",
+        "open": 370.45,
+        "high": 373.69,
+        "low": 363.83,
+        "close": 365.02,
+        "volume": 34770800
       }
     ],
     "news": [
@@ -8091,19 +8091,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "b5e9e2b7-0579-37ff-b792-e96b7564d257",
-        "title": "Top Analyst Reports for Microsoft, Broadcom & McDonald's",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-29",
-        "link": "https://finance.yahoo.com/news/top-analyst-reports-microsoft-broadcom-222200614.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "1a4ad937-a6fe-3efc-ad47-22885a44cffe",
         "title": "The Zacks Analyst Blog Highlights Microsoft, Broadcom, McDonald's and Kingsway Financial Services",
         "publisher": "Zacks",
         "reportDate": "2025-04-29",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-104100632.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b5e9e2b7-0579-37ff-b792-e96b7564d257",
+        "title": "Top Analyst Reports for Microsoft, Broadcom & McDonald's",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-29",
+        "link": "https://finance.yahoo.com/news/top-analyst-reports-microsoft-broadcom-222200614.html",
         "type": "STORY"
       },
       {
@@ -8143,50 +8143,50 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 63.6,
-        "industryAvg": 42.58
+        "value": 60.77,
+        "industryAvg": 33.78
       },
       {
         "metric": "P/S Ratio",
-        "value": 24.09,
-        "industryAvg": 16.6
+        "value": 23.01,
+        "industryAvg": 14.09
       },
       {
         "metric": "P/B Ratio",
-        "value": 20.73,
-        "industryAvg": 14.21
+        "value": 19.81,
+        "industryAvg": 11.86
       },
       {
         "metric": "ROE",
         "value": 11.110000000000001,
-        "industryAvg": 34.589999999999996
+        "industryAvg": 36.52
       },
       {
         "metric": "ROA",
         "value": 5.33,
-        "industryAvg": 21.5
+        "industryAvg": 22.8
       },
       {
         "metric": "Gross Margin",
         "value": 69.48,
-        "industryAvg": 59.21999999999999
+        "industryAvg": 60.45
       },
       {
         "metric": "EBITDA Margin",
         "value": 58.91,
-        "industryAvg": 56.11000000000001
+        "industryAvg": 57.410000000000004
       },
       {
         "metric": "Net Margin",
         "value": 41.959999999999994,
-        "industryAvg": 37.51
+        "industryAvg": 38.92
       }
     ],
     "dcf": {
-      "fairValue": 98.12,
-      "currentPrice": 382.07,
-      "upside": -74.32,
-      "wacc": 16.1,
+      "fairValue": 97.09,
+      "currentPrice": 365.02,
+      "upside": -73.4,
+      "wacc": 16.23,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

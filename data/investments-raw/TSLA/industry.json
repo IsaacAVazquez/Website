@@ -4346,6 +4346,20 @@
       "total_market_cap": 2158280413167.0,
       "total_ttm_net_income": 75765143668.18001,
       "industry_pe": 28.49
+    },
+    {
+      "report_date": "2026-06-25T00:00:00.000",
+      "industry": "Auto Manufacturers",
+      "total_market_cap": 2153153766518.0,
+      "total_ttm_net_income": 75765143668.18001,
+      "industry_pe": 28.42
+    },
+    {
+      "report_date": "2026-06-26T00:00:00.000",
+      "industry": "Auto Manufacturers",
+      "total_market_cap": 2185171948941.0,
+      "total_ttm_net_income": 75765143668.18001,
+      "industry_pe": 28.84
     }
   ],
   "ps_ratio": [
@@ -10022,9 +10036,23 @@
     {
       "report_date": "2026-06-24T00:00:00.000",
       "industry": "Auto Manufacturers",
-      "total_market_cap": 2391346840864.79,
+      "total_market_cap": 2391346871255.2,
       "total_ttm_revenue": 1927768115382.24,
       "industry_ps_ratio": 1.24
+    },
+    {
+      "report_date": "2026-06-25T00:00:00.000",
+      "industry": "Auto Manufacturers",
+      "total_market_cap": 2386631691434.5,
+      "total_ttm_revenue": 1927768115382.24,
+      "industry_ps_ratio": 1.24
+    },
+    {
+      "report_date": "2026-06-26T00:00:00.000",
+      "industry": "Auto Manufacturers",
+      "total_market_cap": 2421160182520.0,
+      "total_ttm_revenue": 1927768115382.24,
+      "industry_ps_ratio": 1.26
     }
   ],
   "pb_ratio": [
@@ -17024,9 +17052,23 @@
     {
       "report_date": "2026-06-24T00:00:00.000",
       "industry": "Auto Manufacturers",
-      "total_market_cap": 2466893461575.1104,
+      "total_market_cap": 2466893462959.3,
       "total_bve": 1298613800276.3704,
       "industry_pb_ratio": 1.9
+    },
+    {
+      "report_date": "2026-06-25T00:00:00.000",
+      "industry": "Auto Manufacturers",
+      "total_market_cap": 2462788080426.5996,
+      "total_bve": 1298613800276.3704,
+      "industry_pb_ratio": 1.9
+    },
+    {
+      "report_date": "2026-06-26T00:00:00.000",
+      "industry": "Auto Manufacturers",
+      "total_market_cap": 2497100086413.7,
+      "total_bve": 1298613800276.3704,
+      "industry_pb_ratio": 1.92
     }
   ],
   "roe": [

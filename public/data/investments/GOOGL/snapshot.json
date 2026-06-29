@@ -1,10 +1,10 @@
 {
   "symbol": "GOOGL",
-  "lastUpdated": "2026-06-26T00:09:38.526995+00:00",
+  "lastUpdated": "2026-06-29T23:40:07.848324+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-26T00:09:38.526995+00:00",
+    "snapshotBuiltAt": "2026-06-29T23:40:07.848324+00:00",
     "sections": {
-      "price": "2026-06-24"
+      "price": "2026-06-26"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 13.109,
-      "ttmPe": 26.34,
-      "marketCap": 4183341727818,
-      "psRatio": 9.9,
-      "pbRatio": 8.74,
-      "pegRatio": 0.32
+      "ttmPe": 25.74,
+      "marketCap": 4087629718638,
+      "psRatio": 9.67,
+      "pbRatio": 8.54,
+      "pegRatio": 0.31
     },
     "profitability": {
       "roe": 14.000000000000002,
@@ -5594,33 +5594,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.64,
-      "costOfEquity": 14.95,
+      "wacc": 14.71,
+      "costOfEquity": 15.03,
       "costOfDebt": 0.59,
       "taxRate": 19,
-      "beta": 1.2462,
-      "marketCap": 4183341727818
+      "beta": 1.254,
+      "marketCap": 4087629718638
     },
     "beta": {
-      "beta5y": 1.2462
+      "beta5y": 1.254
     },
     "price": [
-      {
-        "date": "2025-06-24",
-        "open": 166.92,
-        "high": 168.22,
-        "low": 166.13,
-        "close": 166.77,
-        "volume": 40524300
-      },
-      {
-        "date": "2025-06-25",
-        "open": 167.63,
-        "high": 172.36,
-        "low": 167.55,
-        "close": 170.68,
-        "volume": 35479000
-      },
       {
         "date": "2025-06-26",
         "open": 172.43,
@@ -7615,11 +7599,27 @@
       },
       {
         "date": "2026-06-24",
-        "open": 348.965,
-        "high": 353.476,
+        "open": 349.04,
+        "high": 353.48,
         "low": 341.93,
         "close": 345.29,
-        "volume": 41938315
+        "volume": 44997300
+      },
+      {
+        "date": "2026-06-25",
+        "open": 336.73,
+        "high": 345.57,
+        "low": 335.84,
+        "close": 343.71,
+        "volume": 44491400
+      },
+      {
+        "date": "2026-06-26",
+        "open": 342.55,
+        "high": 346.36,
+        "low": 330.2,
+        "close": 337.39,
+        "volume": 114642600
       }
     ],
     "news": [
@@ -7632,14 +7632,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "1f65352e-e780-3b0a-9802-fdd0d6359ce8",
-        "title": "Streaming Surpasses Combined Cable, Broadcast Viewing for First Time in May, Nielsen Reports",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/news/streaming-surpasses-combined-cable-broadcast-140549520.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "239097ec-365f-3453-b91e-0c08a6414799",
         "title": "3 Top Quantum Computing Stocks to Buy in 2025",
         "publisher": "Motley Fool",
@@ -7648,11 +7640,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "02c8aab7-95f3-3bc3-8d8f-fe9613fea494",
-        "title": "Zacks Investment Ideas feature highlights: Tesla, Li Auto, Nio, BYD and Alphabet",
-        "publisher": "Zacks",
+        "uuid": "1f65352e-e780-3b0a-9802-fdd0d6359ce8",
+        "title": "Streaming Surpasses Combined Cable, Broadcast Viewing for First Time in May, Nielsen Reports",
+        "publisher": "MT Newswires",
         "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/news/zacks-investment-ideas-feature-highlights-124900266.html",
+        "link": "https://finance.yahoo.com/news/streaming-surpasses-combined-cable-broadcast-140549520.html",
         "type": "STORY"
       },
       {
@@ -7661,6 +7653,14 @@
         "publisher": "Zacks",
         "reportDate": "2025-06-17",
         "link": "https://finance.yahoo.com/news/top-research-reports-alphabet-ibm-202800489.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "02c8aab7-95f3-3bc3-8d8f-fe9613fea494",
+        "title": "Zacks Investment Ideas feature highlights: Tesla, Li Auto, Nio, BYD and Alphabet",
+        "publisher": "Zacks",
+        "reportDate": "2025-06-17",
+        "link": "https://finance.yahoo.com/news/zacks-investment-ideas-feature-highlights-124900266.html",
         "type": "STORY"
       },
       {
@@ -7688,19 +7688,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "39f83f45-7225-377c-98bd-298bd43e5330",
-        "title": "2 Ad Tech Stocks That Could Help Make You a Fortune",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-06-19",
-        "link": "https://finance.yahoo.com/m/39f83f45-7225-377c-98bd-298bd43e5330/2-ad-tech-stocks-that-could.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "58844064-6ec3-3b70-b13a-3eee7607b6b5",
         "title": "Adobe vs. Apple: Which AI-Driven Tech Stock is a Better Buy Now?",
         "publisher": "Zacks",
         "reportDate": "2025-06-19",
         "link": "https://finance.yahoo.com/news/adobe-vs-apple-ai-driven-172200197.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "4d7fe1de-6ce8-3bad-a565-20d668edb258",
+        "title": "3 Growth Stocks to Buy and Forget About",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-06-19",
+        "link": "https://finance.yahoo.com/m/4d7fe1de-6ce8-3bad-a565-20d668edb258/3-growth-stocks-to-buy-and.html",
         "type": "STORY"
       }
     ],
@@ -7776,18 +7776,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 26.34,
-        "industryAvg": 25.19
+        "value": 25.74,
+        "industryAvg": 24.58
       },
       {
         "metric": "P/S Ratio",
-        "value": 9.9,
-        "industryAvg": 8.52
+        "value": 9.67,
+        "industryAvg": 8.3
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.74,
-        "industryAvg": 7.42
+        "value": 8.54,
+        "industryAvg": 7.21
       },
       {
         "metric": "ROE",
@@ -7816,10 +7816,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 242.8,
-      "currentPrice": 345.29,
-      "upside": -29.68,
-      "wacc": 14.64,
+      "fairValue": 241.26,
+      "currentPrice": 337.39,
+      "upside": -28.49,
+      "wacc": 14.71,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

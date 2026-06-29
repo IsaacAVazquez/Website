@@ -8,7 +8,7 @@
     "pay": 8623000,
     "exercised": 0,
     "unexercised": 4566856704,
-    "report_date": "2026-06-25"
+    "report_date": "2026-06-29"
   },
   {
     "symbol": "PLTR",
@@ -19,7 +19,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-25"
+    "report_date": "2026-06-29"
   },
   {
     "symbol": "PLTR",
@@ -30,7 +30,7 @@
     "pay": 486735,
     "exercised": 13802735,
     "unexercised": 67654728,
-    "report_date": "2026-06-25"
+    "report_date": "2026-06-29"
   },
   {
     "symbol": "PLTR",
@@ -41,7 +41,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-25"
+    "report_date": "2026-06-29"
   },
   {
     "symbol": "PLTR",
@@ -52,7 +52,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-25"
+    "report_date": "2026-06-29"
   },
   {
     "symbol": "PLTR",
@@ -63,7 +63,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-25"
+    "report_date": "2026-06-29"
   },
   {
     "symbol": "PLTR",
@@ -74,7 +74,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-25"
+    "report_date": "2026-06-29"
   },
   {
     "symbol": "PLTR",
@@ -85,7 +85,7 @@
     "pay": 479460,
     "exercised": 37098980,
     "unexercised": 0,
-    "report_date": "2026-06-25"
+    "report_date": "2026-06-29"
   },
   {
     "symbol": "PLTR",
@@ -96,7 +96,7 @@
     "pay": 1209250,
     "exercised": 131851840,
     "unexercised": 62388752,
-    "report_date": "2026-06-25"
+    "report_date": "2026-06-29"
   },
   {
     "symbol": "PLTR",
@@ -107,6 +107,6 @@
     "pay": 1003995,
     "exercised": 318076640,
     "unexercised": 3464737024,
-    "report_date": "2026-06-25"
+    "report_date": "2026-06-29"
   }
 ]

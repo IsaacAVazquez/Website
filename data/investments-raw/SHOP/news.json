@@ -18,15 +18,6 @@
     "link": "https://finance.yahoo.com/news/shopify-initiated-comcast-downgraded-wall-134119180.html"
   },
   {
-    "uuid": "2c7705bb-7fc7-3f89-919a-6f977813128a",
-    "symbol": "SHOP",
-    "title": "Shopify Inc to Join the Nasdaq-100 Index\u00ae Beginning May 19, 2025",
-    "publisher": "GlobeNewswire",
-    "report_date": "2025-05-10",
-    "type": "STORY",
-    "link": "https://finance.yahoo.com/news/shopify-inc-join-nasdaq-100-000000866.html"
-  },
-  {
     "uuid": "127420de-f523-347a-ac88-313c41c0756c",
     "symbol": "SHOP",
     "title": "Trump announces trade deal, BoE lowers Bank Rate: Morning Buzz",
@@ -34,6 +25,15 @@
     "report_date": "2025-05-10",
     "type": "STORY",
     "link": "https://finance.yahoo.com/news/trump-announces-trade-deal-boe-160158579.html"
+  },
+  {
+    "uuid": "2c7705bb-7fc7-3f89-919a-6f977813128a",
+    "symbol": "SHOP",
+    "title": "Shopify Inc to Join the Nasdaq-100 Index\u00ae Beginning May 19, 2025",
+    "publisher": "GlobeNewswire",
+    "report_date": "2025-05-10",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/shopify-inc-join-nasdaq-100-000000866.html"
   },
   {
     "uuid": "66866936-5cb5-36c2-84ed-a79cc17df6da",

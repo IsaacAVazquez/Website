@@ -1,10 +1,10 @@
 {
   "symbol": "TSLA",
-  "lastUpdated": "2026-06-26T00:09:38.526995+00:00",
+  "lastUpdated": "2026-06-29T23:40:07.848324+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-26T00:09:38.526995+00:00",
+    "snapshotBuiltAt": "2026-06-29T23:40:07.848324+00:00",
     "sections": {
-      "price": "2026-06-24"
+      "price": "2026-06-26"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.0946,
-      "ttmPe": 343.08,
-      "marketCap": 1410386996167,
-      "psRatio": 14.41,
-      "pbRatio": 16.77,
-      "pegRatio": 21.43
+      "ttmPe": 346.89,
+      "marketCap": 1426085922069,
+      "psRatio": 14.57,
+      "pbRatio": 16.95,
+      "pegRatio": 21.67
     },
     "profitability": {
       "roe": 0.5700000000000001,
@@ -5785,29 +5785,13 @@
       "costOfEquity": 19.57,
       "costOfDebt": 0.58,
       "taxRate": 34,
-      "beta": 1.792,
-      "marketCap": 1410386996167
+      "beta": 1.7887,
+      "marketCap": 1426085922069
     },
     "beta": {
-      "beta5y": 1.792
+      "beta5y": 1.7887
     },
     "price": [
-      {
-        "date": "2025-06-24",
-        "open": 356.17,
-        "high": 356.26,
-        "low": 340.44,
-        "close": 340.47,
-        "volume": 114736200
-      },
-      {
-        "date": "2025-06-25",
-        "open": 342.7,
-        "high": 343,
-        "low": 320.4,
-        "close": 327.55,
-        "volume": 119845100
-      },
       {
         "date": "2025-06-26",
         "open": 324.61,
@@ -7802,11 +7786,27 @@
       },
       {
         "date": "2026-06-24",
-        "open": 380.008,
+        "open": 380.08,
         "high": 384.58,
         "low": 373.05,
         "close": 375.53,
-        "volume": 35272666
+        "volume": 37081400
+      },
+      {
+        "date": "2026-06-25",
+        "open": 375.27,
+        "high": 379.12,
+        "low": 371.22,
+        "close": 375.12,
+        "volume": 30138800
+      },
+      {
+        "date": "2026-06-26",
+        "open": 370.15,
+        "high": 387.8,
+        "low": 368.6,
+        "close": 379.71,
+        "volume": 53358900
       }
     ],
     "news": [
@@ -7867,19 +7867,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "124a6d52-1c44-41a7-a9cd-0c3fa0be6445",
-        "title": "Delaware passes law designed to stop more Elon Musks from leaving state",
-        "publisher": "Yahoo Finance",
-        "reportDate": "2025-03-27",
-        "link": "https://finance.yahoo.com/news/delaware-passes-law-designed-to-stop-more-elon-musks-from-leaving-state-164403802.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "d78ee080-3dfe-3cef-a098-70895a1e8223",
         "title": "The Zacks Analyst Blog Highlights Tesla, The Home Depot, Boston Scientific, Frequency Electronics and Bridger Aerospace",
         "publisher": "Zacks",
         "reportDate": "2025-03-27",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-tesla-090000244.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "124a6d52-1c44-41a7-a9cd-0c3fa0be6445",
+        "title": "Delaware passes law designed to stop more Elon Musks from leaving state",
+        "publisher": "Yahoo Finance",
+        "reportDate": "2025-03-27",
+        "link": "https://finance.yahoo.com/news/delaware-passes-law-designed-to-stop-more-elon-musks-from-leaving-state-164403802.html",
         "type": "STORY"
       },
       {
@@ -7947,18 +7947,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 343.08,
-        "industryAvg": 28.49
+        "value": 346.89,
+        "industryAvg": 28.84
       },
       {
         "metric": "P/S Ratio",
-        "value": 14.41,
-        "industryAvg": 1.24
+        "value": 14.57,
+        "industryAvg": 1.26
       },
       {
         "metric": "P/B Ratio",
-        "value": 16.77,
-        "industryAvg": 1.9
+        "value": 16.95,
+        "industryAvg": 1.92
       },
       {
         "metric": "ROE",
@@ -7988,8 +7988,8 @@
     ],
     "dcf": {
       "fairValue": 8.53,
-      "currentPrice": 375.53,
-      "upside": -97.73,
+      "currentPrice": 379.71,
+      "upside": -97.75,
       "wacc": 19.36,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 16.01,

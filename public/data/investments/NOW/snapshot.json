@@ -1,10 +1,10 @@
 {
   "symbol": "NOW",
-  "lastUpdated": "2026-06-26T00:09:38.526995+00:00",
+  "lastUpdated": "2026-06-29T23:40:07.848324+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-26T00:09:38.526995+00:00",
+    "snapshotBuiltAt": "2026-06-29T23:40:07.848324+00:00",
     "sections": {
-      "price": "2026-06-24"
+      "price": "2026-06-26"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.6811,
-      "ttmPe": 55.8,
-      "marketCap": 96736690400,
-      "psRatio": 6.93,
-      "pbRatio": 8.25,
-      "pegRatio": 21.14
+      "ttmPe": 58.5,
+      "marketCap": 101418828720,
+      "psRatio": 7.26,
+      "pbRatio": 8.65,
+      "pegRatio": 22.16
     },
     "profitability": {
       "roe": 3.8,
@@ -5113,33 +5113,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.43,
-      "costOfEquity": 12.740000000000002,
+      "wacc": 12.389999999999999,
+      "costOfEquity": 12.68,
       "costOfDebt": 0.25,
       "taxRate": 30,
-      "beta": 0.9841,
-      "marketCap": 96736690400
+      "beta": 0.978,
+      "marketCap": 101418828720
     },
     "beta": {
-      "beta5y": 0.9841
+      "beta5y": 0.978
     },
     "price": [
-      {
-        "date": "2025-06-24",
-        "open": 198,
-        "high": 199.9,
-        "low": 197,
-        "close": 199.264,
-        "volume": 7570000
-      },
-      {
-        "date": "2025-06-25",
-        "open": 199.656,
-        "high": 202.8,
-        "low": 199.63,
-        "close": 201.032,
-        "volume": 5968500
-      },
       {
         "date": "2025-06-26",
         "open": 201.436,
@@ -7135,10 +7119,26 @@
       {
         "date": "2026-06-24",
         "open": 94,
-        "high": 96.98,
+        "high": 96.99,
         "low": 93.42,
         "close": 93.8,
-        "volume": 16843189
+        "volume": 17246400
+      },
+      {
+        "date": "2026-06-25",
+        "open": 91.7,
+        "high": 92.06,
+        "low": 89.39,
+        "close": 89.52,
+        "volume": 23735600
+      },
+      {
+        "date": "2026-06-26",
+        "open": 90.44,
+        "high": 98.92,
+        "low": 90,
+        "close": 98.34,
+        "volume": 27217000
       }
     ],
     "news": [
@@ -7159,19 +7159,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "e3daf31a-2695-3357-ba2d-3bfe949cf310",
-        "title": "The Zacks Analyst Blog Highlights Visa, ServiceNow, The Progressive, The Monarch Cement and Precipio",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-22",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-visa-125900502.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "3d018e47-3ca3-3120-a73e-e863c577b5fe",
         "title": "Top Research Reports for Visa, ServiceNow & Progressive",
         "publisher": "Zacks",
         "reportDate": "2025-04-22",
         "link": "https://finance.yahoo.com/news/top-research-reports-visa-servicenow-204900265.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "e3daf31a-2695-3357-ba2d-3bfe949cf310",
+        "title": "The Zacks Analyst Blog Highlights Visa, ServiceNow, The Progressive, The Monarch Cement and Precipio",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-22",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-visa-125900502.html",
         "type": "STORY"
       },
       {
@@ -7286,18 +7286,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 55.8,
-        "industryAvg": 22.7
+        "value": 58.5,
+        "industryAvg": 23.3
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.93,
-        "industryAvg": 3.97
+        "value": 7.26,
+        "industryAvg": 4.08
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.25,
-        "industryAvg": 4.3
+        "value": 8.65,
+        "industryAvg": 4.42
       },
       {
         "metric": "ROE",
@@ -7326,10 +7326,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 18.24,
-      "currentPrice": 93.8,
-      "upside": -80.55,
-      "wacc": 12.43,
+      "fairValue": 18.32,
+      "currentPrice": 98.34,
+      "upside": -81.37,
+      "wacc": 12.39,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 2.64,
         "Terminal growth": 3

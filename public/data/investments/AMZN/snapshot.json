@@ -1,10 +1,10 @@
 {
   "symbol": "AMZN",
-  "lastUpdated": "2026-06-26T00:09:38.526995+00:00",
+  "lastUpdated": "2026-06-29T23:40:07.848324+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-26T00:09:38.526995+00:00",
+    "snapshotBuiltAt": "2026-06-29T23:40:07.848324+00:00",
     "sections": {
-      "price": "2026-06-24"
+      "price": "2026-06-26"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 8.3676,
-      "ttmPe": 28,
-      "marketCap": 2520068019138,
-      "psRatio": 3.39,
-      "pbRatio": 5.7,
+      "ttmPe": 27.81,
+      "marketCap": 2503071786286,
+      "psRatio": 3.37,
+      "pbRatio": 5.66,
       "pegRatio": 0.37
     },
     "profitability": {
@@ -4892,33 +4892,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.459999999999999,
-      "costOfEquity": 16.72,
+      "wacc": 15.49,
+      "costOfEquity": 16.76,
       "costOfDebt": 0.38,
       "taxRate": 24,
-      "beta": 1.4551,
-      "marketCap": 2520068019138
+      "beta": 1.458,
+      "marketCap": 2503071786286
     },
     "beta": {
-      "beta5y": 1.4551
+      "beta5y": 1.458
     },
     "price": [
-      {
-        "date": "2025-06-24",
-        "open": 212.14,
-        "high": 214.34,
-        "low": 211.05,
-        "close": 212.77,
-        "volume": 38378800
-      },
-      {
-        "date": "2025-06-25",
-        "open": 214.62,
-        "high": 216.03,
-        "low": 211.11,
-        "close": 211.99,
-        "volume": 31755700
-      },
       {
         "date": "2025-06-26",
         "open": 213.12,
@@ -6913,11 +6897,27 @@
       },
       {
         "date": "2026-06-24",
-        "open": 233.845,
-        "high": 242.4199,
+        "open": 233.85,
+        "high": 242.42,
         "low": 232.95,
         "close": 234.27,
-        "volume": 62415490
+        "volume": 70282600
+      },
+      {
+        "date": "2026-06-25",
+        "open": 232.02,
+        "high": 232.32,
+        "low": 225.55,
+        "close": 227.01,
+        "volume": 77674100
+      },
+      {
+        "date": "2026-06-26",
+        "open": 227.21,
+        "high": 233.9,
+        "low": 226.13,
+        "close": 232.69,
+        "volume": 248291300
       }
     ],
     "news": [
@@ -7068,18 +7068,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 28,
-        "industryAvg": 23.5
+        "value": 27.81,
+        "industryAvg": 23.26
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.39,
-        "industryAvg": 2.1
+        "value": 3.37,
+        "industryAvg": 2.08
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.7,
-        "industryAvg": 3.77
+        "value": 5.66,
+        "industryAvg": 3.72
       },
       {
         "metric": "ROE",
@@ -7108,10 +7108,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 144.17,
-      "currentPrice": 234.27,
-      "upside": -38.46,
-      "wacc": 15.46,
+      "fairValue": 143.8,
+      "currentPrice": 232.69,
+      "upside": -38.2,
+      "wacc": 15.49,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

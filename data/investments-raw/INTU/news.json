@@ -72,15 +72,6 @@
     "link": "https://finance.yahoo.com/m/c3246dd1-b5ee-35cf-a98e-0a19e0048374/stocks-to-watch%3A-apple%2C-booz.html"
   },
   {
-    "uuid": "3024a26e-773e-3ff1-9165-4dedc0d118e5",
-    "symbol": "INTU",
-    "title": "US High Growth Tech Stocks to Watch in May 2025",
-    "publisher": "Simply Wall St.",
-    "report_date": "2025-05-27",
-    "type": "STORY",
-    "link": "https://finance.yahoo.com/news/us-high-growth-tech-stocks-113809175.html"
-  },
-  {
     "uuid": "a0c5cbe2-b276-3715-afc5-cb59b6cbeb14",
     "symbol": "INTU",
     "title": "Company News for May 27, 2025",
@@ -88,5 +79,14 @@
     "report_date": "2025-05-27",
     "type": "STORY",
     "link": "https://finance.yahoo.com/news/company-news-may-27-2025-132300202.html"
+  },
+  {
+    "uuid": "3024a26e-773e-3ff1-9165-4dedc0d118e5",
+    "symbol": "INTU",
+    "title": "US High Growth Tech Stocks to Watch in May 2025",
+    "publisher": "Simply Wall St.",
+    "report_date": "2025-05-27",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/us-high-growth-tech-stocks-113809175.html"
   }
 ]
