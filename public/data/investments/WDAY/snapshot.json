@@ -1,10 +1,10 @@
 {
   "symbol": "WDAY",
-  "lastUpdated": "2026-06-23T00:06:23.255341+00:00",
+  "lastUpdated": "2026-06-29T23:40:07.848324+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-23T00:06:23.255341+00:00",
+    "snapshotBuiltAt": "2026-06-29T23:40:07.848324+00:00",
     "sections": {
-      "price": "2026-06-18"
+      "price": "2026-06-26"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.2054,
-      "ttmPe": 36.48,
-      "marketCap": 28878611355,
-      "psRatio": 2.93,
-      "pbRatio": 4.32,
-      "pegRatio": 0.15
+      "ttmPe": 38.75,
+      "marketCap": 30676578435,
+      "psRatio": 3.11,
+      "pbRatio": 4.59,
+      "pegRatio": 0.16
     },
     "profitability": {
       "roe": 3.06,
@@ -5611,57 +5611,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.15,
-      "costOfEquity": 13.69,
+      "wacc": 12.26,
+      "costOfEquity": 13.73,
       "costOfDebt": 0.6799999999999999,
       "taxRate": 37,
-      "beta": 1.0976,
-      "marketCap": 28878611355
+      "beta": 1.1011,
+      "marketCap": 30676578435
     },
     "beta": {
-      "beta5y": 1.0976
+      "beta5y": 1.1011
     },
     "price": [
-      {
-        "date": "2025-06-18",
-        "open": 242.47,
-        "high": 243.48,
-        "low": 236.44,
-        "close": 236.88,
-        "volume": 2472700
-      },
-      {
-        "date": "2025-06-20",
-        "open": 238.66,
-        "high": 241.33,
-        "low": 237.26,
-        "close": 238.19,
-        "volume": 5155600
-      },
-      {
-        "date": "2025-06-23",
-        "open": 236.89,
-        "high": 238.39,
-        "low": 234.13,
-        "close": 236.58,
-        "volume": 1750700
-      },
-      {
-        "date": "2025-06-24",
-        "open": 240,
-        "high": 240.39,
-        "low": 237.57,
-        "close": 239.19,
-        "volume": 2478100
-      },
-      {
-        "date": "2025-06-25",
-        "open": 239.19,
-        "high": 239.57,
-        "low": 233.01,
-        "close": 233.46,
-        "volume": 1958800
-      },
       {
         "date": "2025-06-26",
         "open": 233.92,
@@ -7637,6 +7597,46 @@
         "low": 116.55,
         "close": 116.93,
         "volume": 11755600
+      },
+      {
+        "date": "2026-06-22",
+        "open": 115.05,
+        "high": 120.39,
+        "low": 111.5,
+        "close": 113.04,
+        "volume": 6483300
+      },
+      {
+        "date": "2026-06-23",
+        "open": 117.54,
+        "high": 118.9,
+        "low": 113.28,
+        "close": 115.13,
+        "volume": 5045600
+      },
+      {
+        "date": "2026-06-24",
+        "open": 114.99,
+        "high": 120.5,
+        "low": 113.59,
+        "close": 118.09,
+        "volume": 3327400
+      },
+      {
+        "date": "2026-06-25",
+        "open": 115.77,
+        "high": 119.16,
+        "low": 113.51,
+        "close": 113.77,
+        "volume": 3943100
+      },
+      {
+        "date": "2026-06-26",
+        "open": 116.58,
+        "high": 125.21,
+        "low": 115.05,
+        "close": 124.21,
+        "volume": 10381100
       }
     ],
     "news": [
@@ -7787,18 +7787,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 36.48,
-        "industryAvg": 24.76
+        "value": 38.75,
+        "industryAvg": 23.3
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.93,
-        "industryAvg": 6.69
+        "value": 3.11,
+        "industryAvg": 4.08
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.32,
-        "industryAvg": 3.74
+        "value": 4.59,
+        "industryAvg": 4.42
       },
       {
         "metric": "ROE",
@@ -7827,10 +7827,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 76.54,
-      "currentPrice": 116.93,
-      "upside": -34.54,
-      "wacc": 12.15,
+      "fairValue": 75.59,
+      "currentPrice": 124.21,
+      "upside": -39.14,
+      "wacc": 12.26,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

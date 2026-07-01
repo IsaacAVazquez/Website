@@ -1,51 +1,6 @@
 [
   {
     "symbol": "AVGO",
-    "report_date": "2025-06-18",
-    "open": 250.89,
-    "close": 251.26,
-    "high": 255.64,
-    "low": 249.41,
-    "volume": 30435500
-  },
-  {
-    "symbol": "AVGO",
-    "report_date": "2025-06-20",
-    "open": 253.21,
-    "close": 249.99,
-    "high": 253.52,
-    "low": 244.17,
-    "volume": 42134900
-  },
-  {
-    "symbol": "AVGO",
-    "report_date": "2025-06-23",
-    "open": 249.11,
-    "close": 253.77,
-    "high": 254.21,
-    "low": 246.46,
-    "volume": 19747000
-  },
-  {
-    "symbol": "AVGO",
-    "report_date": "2025-06-24",
-    "open": 258.77,
-    "close": 263.77,
-    "high": 265.87,
-    "low": 258.77,
-    "volume": 32764900
-  },
-  {
-    "symbol": "AVGO",
-    "report_date": "2025-06-25",
-    "open": 266.0,
-    "close": 264.65,
-    "high": 269.87,
-    "low": 263.43,
-    "volume": 18894200
-  },
-  {
-    "symbol": "AVGO",
     "report_date": "2025-06-26",
     "open": 265.08,
     "close": 270.17,
@@ -2266,5 +2221,50 @@
     "high": 412.7,
     "low": 405.38,
     "volume": 45076100
+  },
+  {
+    "symbol": "AVGO",
+    "report_date": "2026-06-22",
+    "open": 413.66,
+    "close": 392.13,
+    "high": 414.64,
+    "low": 391.91,
+    "volume": 26403700
+  },
+  {
+    "symbol": "AVGO",
+    "report_date": "2026-06-23",
+    "open": 377.87,
+    "close": 380.15,
+    "high": 391.02,
+    "low": 376.66,
+    "volume": 33122200
+  },
+  {
+    "symbol": "AVGO",
+    "report_date": "2026-06-24",
+    "open": 386.62,
+    "close": 382.07,
+    "high": 388.74,
+    "low": 376.96,
+    "volume": 29938700
+  },
+  {
+    "symbol": "AVGO",
+    "report_date": "2026-06-25",
+    "open": 386.58,
+    "close": 378.91,
+    "high": 388.8,
+    "low": 372.7,
+    "volume": 23353700
+  },
+  {
+    "symbol": "AVGO",
+    "report_date": "2026-06-26",
+    "open": 370.45,
+    "close": 365.02,
+    "high": 373.69,
+    "low": 363.83,
+    "volume": 34770800
   }
 ]

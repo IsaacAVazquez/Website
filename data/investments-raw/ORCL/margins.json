@@ -111,6 +111,13 @@
       "gross_profit": 11098000000.0,
       "total_revenue": 17190000000.0,
       "gross_margin": 0.6456
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2026-05-31",
+      "gross_profit": 12513000000.0,
+      "total_revenue": 19184000000.0,
+      "gross_margin": 0.6523
     }
   ],
   "annual_gross": [
@@ -162,6 +169,13 @@
       "gross_profit": 40472000000.0,
       "total_revenue": 57399000000.0,
       "gross_margin": 0.7051
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2026-05-31",
+      "gross_profit": 44336000000.0,
+      "total_revenue": 67357000000.0,
+      "gross_margin": 0.6582
     }
   ],
   "quarterly_operating": [
@@ -276,6 +290,13 @@
       "operating_income": 5637000000.0,
       "total_revenue": 17190000000.0,
       "operating_margin": 0.3279
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2026-05-31",
+      "operating_income": 6955000000.0,
+      "total_revenue": 19184000000.0,
+      "operating_margin": 0.3625
     }
   ],
   "annual_operating": [
@@ -327,6 +348,13 @@
       "operating_income": 18052000000.0,
       "total_revenue": 57399000000.0,
       "operating_margin": 0.3145
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2026-05-31",
+      "operating_income": 22444000000.0,
+      "total_revenue": 67357000000.0,
+      "operating_margin": 0.3332
     }
   ],
   "quarterly_net": [
@@ -441,6 +469,13 @@
       "net_income_common_stockholders": 3699000000.0,
       "total_revenue": 17190000000.0,
       "net_margin": 0.2152
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2026-05-31",
+      "net_income_common_stockholders": 4223000000.0,
+      "total_revenue": 19184000000.0,
+      "net_margin": 0.2201
     }
   ],
   "annual_net": [
@@ -492,6 +527,13 @@
       "net_income_common_stockholders": 12443000000.0,
       "total_revenue": 57399000000.0,
       "net_margin": 0.2168
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2026-05-31",
+      "net_income_common_stockholders": 16984000000.0,
+      "total_revenue": 67357000000.0,
+      "net_margin": 0.2521
     }
   ],
   "quarterly_ebitda": [
@@ -606,6 +648,13 @@
       "ebitda": 8162000000.0,
       "total_revenue": 17190000000.0,
       "ebitda_margin": 0.4748
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2026-05-31",
+      "ebitda": 9655000000.0,
+      "total_revenue": 19184000000.0,
+      "ebitda_margin": 0.5033
     }
   ],
   "annual_ebitda": [
@@ -657,6 +706,13 @@
       "ebitda": 23912000000.0,
       "total_revenue": 57399000000.0,
       "ebitda_margin": 0.4166
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2026-05-31",
+      "ebitda": 33447000000.0,
+      "total_revenue": 67357000000.0,
+      "ebitda_margin": 0.4966
     }
   ],
   "quarterly_fcf": [
@@ -771,6 +827,13 @@
       "free_cash_flow": -11484000000.0,
       "total_revenue": 17190000000.0,
       "fcf_margin": -0.6681
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2026-05-31",
+      "free_cash_flow": -1873000000.0,
+      "total_revenue": 19184000000.0,
+      "fcf_margin": -0.0976
     }
   ],
   "annual_fcf": [
@@ -822,6 +885,13 @@
       "free_cash_flow": -394000000.0,
       "total_revenue": 57399000000.0,
       "fcf_margin": -0.0069
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2026-05-31",
+      "free_cash_flow": -23686000000.0,
+      "total_revenue": 67357000000.0,
+      "fcf_margin": -0.3516
     }
   ]
 }

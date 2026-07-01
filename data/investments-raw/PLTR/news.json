@@ -72,15 +72,6 @@
     "link": "https://finance.yahoo.com/news/2-surging-stocks-consider-now-043951765.html"
   },
   {
-    "uuid": "da78ab04-9824-38ae-919d-0f45264f5e66",
-    "symbol": "PLTR",
-    "title": "Nebius Group Stock Earns 84 RS Rating",
-    "publisher": "Investor's Business Daily",
-    "report_date": "2025-05-06",
-    "type": "STORY",
-    "link": "https://finance.yahoo.com/m/da78ab04-9824-38ae-919d-0f45264f5e66/nebius-group-stock-earns-84.html"
-  },
-  {
     "uuid": "5f3936c2-86dc-3310-a7c4-553590e3dde3",
     "symbol": "PLTR",
     "title": "Palantir declines, Lemonade lifts guidance, Celsius Q1 miss",
@@ -88,5 +79,14 @@
     "report_date": "2025-05-06",
     "type": "VIDEO",
     "link": "https://finance.yahoo.com/video/palantir-declines-lemonade-lifts-guidance-151158298.html"
+  },
+  {
+    "uuid": "da78ab04-9824-38ae-919d-0f45264f5e66",
+    "symbol": "PLTR",
+    "title": "Nebius Group Stock Earns 84 RS Rating",
+    "publisher": "Investor's Business Daily",
+    "report_date": "2025-05-06",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/da78ab04-9824-38ae-919d-0f45264f5e66/nebius-group-stock-earns-84.html"
   }
 ]

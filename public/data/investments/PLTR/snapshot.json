@@ -1,10 +1,10 @@
 {
   "symbol": "PLTR",
-  "lastUpdated": "2026-06-23T00:06:23.255341+00:00",
+  "lastUpdated": "2026-06-29T23:40:07.848324+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-23T00:06:23.255341+00:00",
+    "snapshotBuiltAt": "2026-06-29T23:40:07.848324+00:00",
     "sections": {
-      "price": "2026-06-18"
+      "price": "2026-06-26"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 0.8876,
-      "ttmPe": 144.74,
-      "marketCap": 307982672640,
-      "psRatio": 58.95,
-      "pbRatio": 36.45,
-      "pegRatio": 0.48
+      "ttmPe": 127.23,
+      "marketCap": 270728444160,
+      "psRatio": 51.82,
+      "pbRatio": 32.04,
+      "pegRatio": 0.42
     },
     "profitability": {
       "roe": 10.99,
@@ -4965,57 +4965,17 @@
       ]
     },
     "wacc": {
-      "wacc": 17.349999999999998,
-      "costOfEquity": 17.36,
+      "wacc": 17.89,
+      "costOfEquity": 17.9,
       "costOfDebt": 0.06,
       "taxRate": 9,
-      "beta": 1.5343,
-      "marketCap": 307982672640
+      "beta": 1.5921,
+      "marketCap": 270728444160
     },
     "beta": {
-      "beta5y": 1.5343
+      "beta5y": 1.5921
     },
     "price": [
-      {
-        "date": "2025-06-18",
-        "open": 139.04,
-        "high": 140.36,
-        "low": 137.49,
-        "close": 139.96,
-        "volume": 58260200
-      },
-      {
-        "date": "2025-06-20",
-        "open": 140.69,
-        "high": 142.24,
-        "low": 136.742,
-        "close": 137.3,
-        "volume": 87067000
-      },
-      {
-        "date": "2025-06-23",
-        "open": 138.9,
-        "high": 142.15,
-        "low": 135.96,
-        "close": 139.92,
-        "volume": 70501100
-      },
-      {
-        "date": "2025-06-24",
-        "open": 140.98,
-        "high": 143.66,
-        "low": 137.8,
-        "close": 143.23,
-        "volume": 58574200
-      },
-      {
-        "date": "2025-06-25",
-        "open": 144.49,
-        "high": 147.67,
-        "low": 141.53,
-        "close": 142.9,
-        "volume": 61435300
-      },
       {
         "date": "2025-06-26",
         "open": 144.85,
@@ -6991,6 +6951,46 @@
         "low": 125.01,
         "close": 128.47,
         "volume": 55338000
+      },
+      {
+        "date": "2026-06-22",
+        "open": 125.74,
+        "high": 128.87,
+        "low": 119.2,
+        "close": 119.5,
+        "volume": 56924500
+      },
+      {
+        "date": "2026-06-23",
+        "open": 120.15,
+        "high": 120.94,
+        "low": 116.18,
+        "close": 116.7,
+        "volume": 44661900
+      },
+      {
+        "date": "2026-06-24",
+        "open": 114.12,
+        "high": 118,
+        "low": 112.25,
+        "close": 113.5,
+        "volume": 46520700
+      },
+      {
+        "date": "2026-06-25",
+        "open": 111.38,
+        "high": 112.15,
+        "low": 106.37,
+        "close": 107.27,
+        "volume": 61840100
+      },
+      {
+        "date": "2026-06-26",
+        "open": 109.04,
+        "high": 114.08,
+        "low": 108.47,
+        "close": 112.93,
+        "volume": 61176800
       }
     ],
     "news": [
@@ -7059,20 +7059,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "da78ab04-9824-38ae-919d-0f45264f5e66",
-        "title": "Nebius Group Stock Earns 84 RS Rating",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/m/da78ab04-9824-38ae-919d-0f45264f5e66/nebius-group-stock-earns-84.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "5f3936c2-86dc-3310-a7c4-553590e3dde3",
         "title": "Palantir declines, Lemonade lifts guidance, Celsius Q1 miss",
         "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-06",
         "link": "https://finance.yahoo.com/video/palantir-declines-lemonade-lifts-guidance-151158298.html",
         "type": "VIDEO"
+      },
+      {
+        "uuid": "da78ab04-9824-38ae-919d-0f45264f5e66",
+        "title": "Nebius Group Stock Earns 84 RS Rating",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/m/da78ab04-9824-38ae-919d-0f45264f5e66/nebius-group-stock-earns-84.html",
+        "type": "STORY"
       }
     ],
     "officers": [
@@ -7143,50 +7143,50 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 144.74,
-        "industryAvg": 49.03
+        "value": 127.23,
+        "industryAvg": 26.09
       },
       {
         "metric": "P/S Ratio",
-        "value": 58.95,
-        "industryAvg": 1.64
+        "value": 51.82,
+        "industryAvg": 5.7
       },
       {
         "metric": "P/B Ratio",
-        "value": 36.45,
-        "industryAvg": 1.84
+        "value": 32.04,
+        "industryAvg": 6.94
       },
       {
         "metric": "ROE",
         "value": 10.99,
-        "industryAvg": 26.6
+        "industryAvg": 26.529999999999998
       },
       {
         "metric": "ROA",
         "value": 9.120000000000001,
-        "industryAvg": 10.4
+        "industryAvg": 10.32
       },
       {
         "metric": "Gross Margin",
         "value": 86.78,
-        "industryAvg": 49.53
+        "industryAvg": 49.47
       },
       {
         "metric": "EBITDA Margin",
         "value": 46.6,
-        "industryAvg": 33.589999999999996
+        "industryAvg": 33.96
       },
       {
         "metric": "Net Margin",
         "value": 53.32,
-        "industryAvg": 18.72
+        "industryAvg": 18.759999999999998
       }
     ],
     "dcf": {
-      "fairValue": 13.15,
-      "currentPrice": 128.47,
-      "upside": -89.76,
-      "wacc": 17.35,
+      "fairValue": 12.64,
+      "currentPrice": 112.93,
+      "upside": -88.81,
+      "wacc": 17.89,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

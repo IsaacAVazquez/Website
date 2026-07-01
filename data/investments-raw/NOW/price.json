@@ -1,51 +1,6 @@
 [
   {
     "symbol": "NOW",
-    "report_date": "2025-06-18",
-    "open": 200.888,
-    "close": 196.416,
-    "high": 201.408,
-    "low": 195.84,
-    "volume": 6047500
-  },
-  {
-    "symbol": "NOW",
-    "report_date": "2025-06-20",
-    "open": 197.118,
-    "close": 194.282,
-    "high": 197.202,
-    "low": 193.09,
-    "volume": 10038500
-  },
-  {
-    "symbol": "NOW",
-    "report_date": "2025-06-23",
-    "open": 194.282,
-    "close": 196.08,
-    "high": 196.266,
-    "low": 191.366,
-    "volume": 5499500
-  },
-  {
-    "symbol": "NOW",
-    "report_date": "2025-06-24",
-    "open": 198.0,
-    "close": 199.264,
-    "high": 199.9,
-    "low": 197.0,
-    "volume": 7570000
-  },
-  {
-    "symbol": "NOW",
-    "report_date": "2025-06-25",
-    "open": 199.656,
-    "close": 201.032,
-    "high": 202.8,
-    "low": 199.63,
-    "volume": 5968500
-  },
-  {
-    "symbol": "NOW",
     "report_date": "2025-06-26",
     "open": 201.436,
     "close": 202.288,
@@ -2266,5 +2221,50 @@
     "high": 96.24,
     "low": 92.45,
     "volume": 36337200
+  },
+  {
+    "symbol": "NOW",
+    "report_date": "2026-06-22",
+    "open": 93.3,
+    "close": 93.01,
+    "high": 97.44,
+    "low": 91.48,
+    "volume": 24940900
+  },
+  {
+    "symbol": "NOW",
+    "report_date": "2026-06-23",
+    "open": 95.14,
+    "close": 95.94,
+    "high": 97.5,
+    "low": 94.61,
+    "volume": 32559700
+  },
+  {
+    "symbol": "NOW",
+    "report_date": "2026-06-24",
+    "open": 94.0,
+    "close": 93.8,
+    "high": 96.99,
+    "low": 93.42,
+    "volume": 17246400
+  },
+  {
+    "symbol": "NOW",
+    "report_date": "2026-06-25",
+    "open": 91.7,
+    "close": 89.52,
+    "high": 92.06,
+    "low": 89.39,
+    "volume": 23735600
+  },
+  {
+    "symbol": "NOW",
+    "report_date": "2026-06-26",
+    "open": 90.44,
+    "close": 98.34,
+    "high": 98.92,
+    "low": 90.0,
+    "volume": 27217000
   }
 ]

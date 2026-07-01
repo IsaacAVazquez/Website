@@ -1,10 +1,10 @@
 {
   "symbol": "CRM",
-  "lastUpdated": "2026-06-23T00:06:23.255341+00:00",
+  "lastUpdated": "2026-06-29T23:40:07.848324+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-23T00:06:23.255341+00:00",
+    "snapshotBuiltAt": "2026-06-29T23:40:07.848324+00:00",
     "sections": {
-      "price": "2026-06-18"
+      "price": "2026-06-26"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.6388,
-      "ttmPe": 17.57,
-      "marketCap": 124307820000,
-      "psRatio": 2.9,
-      "pbRatio": 3.63,
-      "pegRatio": 0.34
+      "ttmPe": 18.33,
+      "marketCap": 129705030000,
+      "psRatio": 3.03,
+      "pbRatio": 3.79,
+      "pegRatio": 0.35
     },
     "profitability": {
       "roe": 4.51,
@@ -5386,57 +5386,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.81,
-      "costOfEquity": 14.26,
+      "wacc": 11,
+      "costOfEquity": 14.360000000000001,
       "costOfDebt": 0.76,
       "taxRate": 23,
-      "beta": 1.1657,
-      "marketCap": 124307820000
+      "beta": 1.1756,
+      "marketCap": 129705030000
     },
     "beta": {
-      "beta5y": 1.1657
+      "beta5y": 1.1756
     },
     "price": [
-      {
-        "date": "2025-06-18",
-        "open": 264.8,
-        "high": 265.08,
-        "low": 257.47,
-        "close": 259.5,
-        "volume": 7628000
-      },
-      {
-        "date": "2025-06-20",
-        "open": 260.69,
-        "high": 262.87,
-        "low": 259.26,
-        "close": 260.63,
-        "volume": 12859200
-      },
-      {
-        "date": "2025-06-23",
-        "open": 260.64,
-        "high": 264.74,
-        "low": 258.75,
-        "close": 263.41,
-        "volume": 9283800
-      },
-      {
-        "date": "2025-06-24",
-        "open": 265.71,
-        "high": 273.38,
-        "low": 265.44,
-        "close": 271.17,
-        "volume": 9713900
-      },
-      {
-        "date": "2025-06-25",
-        "open": 272,
-        "high": 274,
-        "low": 266.98,
-        "close": 267.76,
-        "volume": 6074300
-      },
       {
         "date": "2025-06-26",
         "open": 268.78,
@@ -7412,6 +7372,46 @@
         "low": 149.8,
         "close": 151.78,
         "volume": 57940800
+      },
+      {
+        "date": "2026-06-22",
+        "open": 150.16,
+        "high": 153.87,
+        "low": 146.32,
+        "close": 150.12,
+        "volume": 20502800
+      },
+      {
+        "date": "2026-06-23",
+        "open": 151.65,
+        "high": 155.18,
+        "low": 150.85,
+        "close": 153.42,
+        "volume": 20720700
+      },
+      {
+        "date": "2026-06-24",
+        "open": 151.81,
+        "high": 157.06,
+        "low": 150.4,
+        "close": 152.76,
+        "volume": 13146800
+      },
+      {
+        "date": "2026-06-25",
+        "open": 150.01,
+        "high": 154,
+        "low": 148.78,
+        "close": 150.19,
+        "volume": 11324700
+      },
+      {
+        "date": "2026-06-26",
+        "open": 151.49,
+        "high": 158.46,
+        "low": 151.49,
+        "close": 158.37,
+        "volume": 20231900
       }
     ],
     "news": [
@@ -7448,19 +7448,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "df3945aa-0fd1-34d9-8a4f-aa0c9a0cdb45",
-        "title": "Trump and MBS Tout $1 Trillion Pledge as Details Remain Elusive",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/trump-mbs-tout-1-trillion-174902305.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "ca06a274-32e3-3e67-865f-0b228b4d8f22",
         "title": "White House calls out Boeing, GE Vernova exports in Saudi Arabia pact",
         "publisher": "TipRanks",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/white-house-calls-boeing-ge-142742667.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "df3945aa-0fd1-34d9-8a4f-aa0c9a0cdb45",
+        "title": "Trump and MBS Tout $1 Trillion Pledge as Details Remain Elusive",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/trump-mbs-tout-1-trillion-174902305.html",
         "type": "STORY"
       },
       {
@@ -7561,18 +7561,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.57,
-        "industryAvg": 24.76
+        "value": 18.33,
+        "industryAvg": 23.27
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.9,
-        "industryAvg": 6.69
+        "value": 3.03,
+        "industryAvg": 4.08
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.63,
-        "industryAvg": 3.74
+        "value": 3.79,
+        "industryAvg": 4.42
       },
       {
         "metric": "ROE",
@@ -7601,10 +7601,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 243.51,
-      "currentPrice": 151.78,
-      "upside": 60.44,
-      "wacc": 10.81,
+      "fairValue": 237.47,
+      "currentPrice": 158.37,
+      "upside": 49.95,
+      "wacc": 11,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

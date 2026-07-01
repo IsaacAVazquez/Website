@@ -27940,6 +27940,46 @@
       "close_price": 116.93,
       "ttm_eps": 3.2054,
       "ttm_pe": 36.48
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-06-22T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 113.04,
+      "ttm_eps": 3.2054,
+      "ttm_pe": 35.27
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-06-23T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 115.13,
+      "ttm_eps": 3.2054,
+      "ttm_pe": 35.92
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-06-24T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 118.09,
+      "ttm_eps": 3.2054,
+      "ttm_pe": 36.84
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-06-25T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 113.77,
+      "ttm_eps": 3.2054,
+      "ttm_pe": 35.49
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-06-26T00:00:00.000",
+      "eps_report_date": "2026-04-30T00:00:00.000",
+      "close_price": 124.21,
+      "ttm_eps": 3.2054,
+      "ttm_pe": 38.75
     }
   ],
   "marketCap": [
@@ -55454,6 +55494,46 @@
       "close_price": 116.93,
       "shares_outstanding": 246973500,
       "market_capitalization": 28878611355.0
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-06-22T00:00:00.000",
+      "shares_report_date": "2026-05-20T00:00:00.000",
+      "close_price": 113.04,
+      "shares_outstanding": 246973500,
+      "market_capitalization": 27917884440.0
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-06-23T00:00:00.000",
+      "shares_report_date": "2026-05-20T00:00:00.000",
+      "close_price": 115.13,
+      "shares_outstanding": 246973500,
+      "market_capitalization": 28434059055.0
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-06-24T00:00:00.000",
+      "shares_report_date": "2026-05-20T00:00:00.000",
+      "close_price": 118.09,
+      "shares_outstanding": 246973500,
+      "market_capitalization": 29165100615.0
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-06-25T00:00:00.000",
+      "shares_report_date": "2026-05-20T00:00:00.000",
+      "close_price": 113.77,
+      "shares_outstanding": 246973500,
+      "market_capitalization": 28098175095.0
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-06-26T00:00:00.000",
+      "shares_report_date": "2026-05-20T00:00:00.000",
+      "close_price": 124.21,
+      "shares_outstanding": 246973500,
+      "market_capitalization": 30676578435.0
     }
   ],
   "psRatio": [
@@ -60816,6 +60896,56 @@
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 9854000000.0,
       "ps_ratio": 2.93
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-06-22T00:00:00.000",
+      "market_capitalization": 27917884440.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 9854000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 9854000000.0,
+      "ps_ratio": 2.83
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-06-23T00:00:00.000",
+      "market_capitalization": 28434059055.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 9854000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 9854000000.0,
+      "ps_ratio": 2.89
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-06-24T00:00:00.000",
+      "market_capitalization": 29165100615.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 9854000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 9854000000.0,
+      "ps_ratio": 2.96
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-06-25T00:00:00.000",
+      "market_capitalization": 28098175095.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 9854000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 9854000000.0,
+      "ps_ratio": 2.85
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-06-26T00:00:00.000",
+      "market_capitalization": 30676578435.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_revenue": 9854000000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 9854000000.0,
+      "ps_ratio": 3.11
     }
   ],
   "pbRatio": [
@@ -71188,6 +71318,56 @@
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 6683000000.0,
       "pb_ratio": 4.32
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-06-22T00:00:00.000",
+      "market_capitalization": 27917884440.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 6683000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 6683000000.0,
+      "pb_ratio": 4.18
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-06-23T00:00:00.000",
+      "market_capitalization": 28434059055.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 6683000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 6683000000.0,
+      "pb_ratio": 4.25
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-06-24T00:00:00.000",
+      "market_capitalization": 29165100615.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 6683000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 6683000000.0,
+      "pb_ratio": 4.36
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-06-25T00:00:00.000",
+      "market_capitalization": 28098175095.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 6683000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 6683000000.0,
+      "pb_ratio": 4.2
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-06-26T00:00:00.000",
+      "market_capitalization": 30676578435.0,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "book_value_of_equity": 6683000000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 6683000000.0,
+      "pb_ratio": 4.59
     }
   ],
   "pegRatio": [
@@ -79040,6 +79220,56 @@
       "ttm_pe": 36.48,
       "eps_yoy_growth": 2.4694,
       "peg_ratio": 0.15
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-06-22T00:00:00.000",
+      "close_price": 113.04,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 3.2054,
+      "ttm_pe": 35.27,
+      "eps_yoy_growth": 2.4694,
+      "peg_ratio": 0.14
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-06-23T00:00:00.000",
+      "close_price": 115.13,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 3.2054,
+      "ttm_pe": 35.92,
+      "eps_yoy_growth": 2.4694,
+      "peg_ratio": 0.15
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-06-24T00:00:00.000",
+      "close_price": 118.09,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 3.2054,
+      "ttm_pe": 36.84,
+      "eps_yoy_growth": 2.4694,
+      "peg_ratio": 0.15
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-06-25T00:00:00.000",
+      "close_price": 113.77,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 3.2054,
+      "ttm_pe": 35.49,
+      "eps_yoy_growth": 2.4694,
+      "peg_ratio": 0.14
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-06-26T00:00:00.000",
+      "close_price": 124.21,
+      "fiscal_quarter": "2026-04-30T00:00:00.000",
+      "ttm_eps": 3.2054,
+      "ttm_pe": 38.75,
+      "eps_yoy_growth": 2.4694,
+      "peg_ratio": 0.16
     }
   ]
 }

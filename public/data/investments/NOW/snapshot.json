@@ -1,10 +1,10 @@
 {
   "symbol": "NOW",
-  "lastUpdated": "2026-06-23T00:06:23.255341+00:00",
+  "lastUpdated": "2026-06-29T23:40:07.848324+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-23T00:06:23.255341+00:00",
+    "snapshotBuiltAt": "2026-06-29T23:40:07.848324+00:00",
     "sections": {
-      "price": "2026-06-18"
+      "price": "2026-06-26"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.6811,
-      "ttmPe": 56.53,
-      "marketCap": 98015512320,
-      "psRatio": 7.02,
-      "pbRatio": 8.36,
-      "pegRatio": 21.41
+      "ttmPe": 58.5,
+      "marketCap": 101418828720,
+      "psRatio": 7.26,
+      "pbRatio": 8.65,
+      "pegRatio": 22.16
     },
     "profitability": {
       "roe": 3.8,
@@ -5113,57 +5113,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.2,
-      "costOfEquity": 12.5,
+      "wacc": 12.389999999999999,
+      "costOfEquity": 12.68,
       "costOfDebt": 0.25,
       "taxRate": 30,
-      "beta": 0.956,
-      "marketCap": 98015512320
+      "beta": 0.978,
+      "marketCap": 101418828720
     },
     "beta": {
-      "beta5y": 0.956
+      "beta5y": 0.978
     },
     "price": [
-      {
-        "date": "2025-06-18",
-        "open": 200.888,
-        "high": 201.408,
-        "low": 195.84,
-        "close": 196.416,
-        "volume": 6047500
-      },
-      {
-        "date": "2025-06-20",
-        "open": 197.118,
-        "high": 197.202,
-        "low": 193.09,
-        "close": 194.282,
-        "volume": 10038500
-      },
-      {
-        "date": "2025-06-23",
-        "open": 194.282,
-        "high": 196.266,
-        "low": 191.366,
-        "close": 196.08,
-        "volume": 5499500
-      },
-      {
-        "date": "2025-06-24",
-        "open": 198,
-        "high": 199.9,
-        "low": 197,
-        "close": 199.264,
-        "volume": 7570000
-      },
-      {
-        "date": "2025-06-25",
-        "open": 199.656,
-        "high": 202.8,
-        "low": 199.63,
-        "close": 201.032,
-        "volume": 5968500
-      },
       {
         "date": "2025-06-26",
         "open": 201.436,
@@ -7139,6 +7099,46 @@
         "low": 92.45,
         "close": 95.04,
         "volume": 36337200
+      },
+      {
+        "date": "2026-06-22",
+        "open": 93.3,
+        "high": 97.44,
+        "low": 91.48,
+        "close": 93.01,
+        "volume": 24940900
+      },
+      {
+        "date": "2026-06-23",
+        "open": 95.14,
+        "high": 97.5,
+        "low": 94.61,
+        "close": 95.94,
+        "volume": 32559700
+      },
+      {
+        "date": "2026-06-24",
+        "open": 94,
+        "high": 96.99,
+        "low": 93.42,
+        "close": 93.8,
+        "volume": 17246400
+      },
+      {
+        "date": "2026-06-25",
+        "open": 91.7,
+        "high": 92.06,
+        "low": 89.39,
+        "close": 89.52,
+        "volume": 23735600
+      },
+      {
+        "date": "2026-06-26",
+        "open": 90.44,
+        "high": 98.92,
+        "low": 90,
+        "close": 98.34,
+        "volume": 27217000
       }
     ],
     "news": [
@@ -7159,19 +7159,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "e3daf31a-2695-3357-ba2d-3bfe949cf310",
-        "title": "The Zacks Analyst Blog Highlights Visa, ServiceNow, The Progressive, The Monarch Cement and Precipio",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-22",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-visa-125900502.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "3d018e47-3ca3-3120-a73e-e863c577b5fe",
         "title": "Top Research Reports for Visa, ServiceNow & Progressive",
         "publisher": "Zacks",
         "reportDate": "2025-04-22",
         "link": "https://finance.yahoo.com/news/top-research-reports-visa-servicenow-204900265.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "e3daf31a-2695-3357-ba2d-3bfe949cf310",
+        "title": "The Zacks Analyst Blog Highlights Visa, ServiceNow, The Progressive, The Monarch Cement and Precipio",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-22",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-visa-125900502.html",
         "type": "STORY"
       },
       {
@@ -7286,18 +7286,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 56.53,
-        "industryAvg": 24.76
+        "value": 58.5,
+        "industryAvg": 23.3
       },
       {
         "metric": "P/S Ratio",
-        "value": 7.02,
-        "industryAvg": 6.69
+        "value": 7.26,
+        "industryAvg": 4.08
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.36,
-        "industryAvg": 3.74
+        "value": 8.65,
+        "industryAvg": 4.42
       },
       {
         "metric": "ROE",
@@ -7326,10 +7326,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 18.7,
-      "currentPrice": 95.04,
-      "upside": -80.32,
-      "wacc": 12.2,
+      "fairValue": 18.32,
+      "currentPrice": 98.34,
+      "upside": -81.37,
+      "wacc": 12.39,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 2.64,
         "Terminal growth": 3

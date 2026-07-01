@@ -8,7 +8,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-22"
+    "report_date": "2026-06-29"
   },
   {
     "symbol": "MSFT",
@@ -19,7 +19,7 @@
     "pay": 4532750,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-22"
+    "report_date": "2026-06-29"
   },
   {
     "symbol": "MSFT",
@@ -30,7 +30,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-22"
+    "report_date": "2026-06-29"
   },
   {
     "symbol": "MSFT",
@@ -41,7 +41,7 @@
     "pay": 4490115,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-22"
+    "report_date": "2026-06-29"
   },
   {
     "symbol": "MSFT",
@@ -52,7 +52,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-22"
+    "report_date": "2026-06-29"
   },
   {
     "symbol": "MSFT",
@@ -63,7 +63,7 @@
     "pay": 12251294,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-22"
+    "report_date": "2026-06-29"
   },
   {
     "symbol": "MSFT",
@@ -74,7 +74,7 @@
     "pay": 2871250,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-22"
+    "report_date": "2026-06-29"
   },
   {
     "symbol": "MSFT",
@@ -85,7 +85,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-22"
+    "report_date": "2026-06-29"
   },
   {
     "symbol": "MSFT",
@@ -96,7 +96,7 @@
     "pay": 4444191,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-22"
+    "report_date": "2026-06-29"
   },
   {
     "symbol": "MSFT",
@@ -107,6 +107,6 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-22"
+    "report_date": "2026-06-29"
   }
 ]

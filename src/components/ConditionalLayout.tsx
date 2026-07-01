@@ -50,6 +50,7 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
     "/about",
     "/accessibility",
     "/ai-dev-tools",
+    "/arcade",
     "/bay-area-transit",
     "/changelog",
     "/contact",

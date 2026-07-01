@@ -1,51 +1,6 @@
 [
   {
     "symbol": "WDAY",
-    "report_date": "2025-06-18",
-    "open": 242.47,
-    "close": 236.88,
-    "high": 243.48,
-    "low": 236.44,
-    "volume": 2472700
-  },
-  {
-    "symbol": "WDAY",
-    "report_date": "2025-06-20",
-    "open": 238.66,
-    "close": 238.19,
-    "high": 241.33,
-    "low": 237.26,
-    "volume": 5155600
-  },
-  {
-    "symbol": "WDAY",
-    "report_date": "2025-06-23",
-    "open": 236.89,
-    "close": 236.58,
-    "high": 238.39,
-    "low": 234.13,
-    "volume": 1750700
-  },
-  {
-    "symbol": "WDAY",
-    "report_date": "2025-06-24",
-    "open": 240.0,
-    "close": 239.19,
-    "high": 240.39,
-    "low": 237.57,
-    "volume": 2478100
-  },
-  {
-    "symbol": "WDAY",
-    "report_date": "2025-06-25",
-    "open": 239.19,
-    "close": 233.46,
-    "high": 239.57,
-    "low": 233.01,
-    "volume": 1958800
-  },
-  {
-    "symbol": "WDAY",
     "report_date": "2025-06-26",
     "open": 233.92,
     "close": 237.21,
@@ -2266,5 +2221,50 @@
     "high": 121.8,
     "low": 116.55,
     "volume": 11755600
+  },
+  {
+    "symbol": "WDAY",
+    "report_date": "2026-06-22",
+    "open": 115.05,
+    "close": 113.04,
+    "high": 120.39,
+    "low": 111.5,
+    "volume": 6483300
+  },
+  {
+    "symbol": "WDAY",
+    "report_date": "2026-06-23",
+    "open": 117.54,
+    "close": 115.13,
+    "high": 118.9,
+    "low": 113.28,
+    "volume": 5045600
+  },
+  {
+    "symbol": "WDAY",
+    "report_date": "2026-06-24",
+    "open": 114.99,
+    "close": 118.09,
+    "high": 120.5,
+    "low": 113.59,
+    "volume": 3327400
+  },
+  {
+    "symbol": "WDAY",
+    "report_date": "2026-06-25",
+    "open": 115.77,
+    "close": 113.77,
+    "high": 119.16,
+    "low": 113.51,
+    "volume": 3943100
+  },
+  {
+    "symbol": "WDAY",
+    "report_date": "2026-06-26",
+    "open": 116.58,
+    "close": 124.21,
+    "high": 125.21,
+    "low": 115.05,
+    "volume": 10381100
   }
 ]

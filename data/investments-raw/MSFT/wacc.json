@@ -16,12 +16,12 @@
     "sp500_cagr_end": 2022,
     "sp500_10y_cagr": 0.1041,
     "treasure_10y_yield": 0.0381,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0231,
     "weight_of_equity": 0.9769,
     "cost_of_debt": 0.008,
-    "cost_of_equity": 0.1117,
-    "wacc": 0.1093
+    "cost_of_equity": 0.1131,
+    "wacc": 0.1106
   },
   {
     "symbol": "MSFT",
@@ -40,12 +40,12 @@
     "sp500_cagr_end": 2022,
     "sp500_10y_cagr": 0.1041,
     "treasure_10y_yield": 0.0459,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.035,
     "weight_of_equity": 0.965,
     "cost_of_debt": 0.0062,
-    "cost_of_equity": 0.1108,
-    "wacc": 0.1071
+    "cost_of_equity": 0.112,
+    "wacc": 0.1083
   },
   {
     "symbol": "MSFT",
@@ -64,12 +64,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0388,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0307,
     "weight_of_equity": 0.9693,
     "cost_of_debt": 0.0103,
-    "cost_of_equity": 0.1064,
-    "wacc": 0.1034
+    "cost_of_equity": 0.1077,
+    "wacc": 0.1047
   },
   {
     "symbol": "MSFT",
@@ -88,12 +88,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.042,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0249,
     "weight_of_equity": 0.9751,
     "cost_of_debt": 0.01,
-    "cost_of_equity": 0.106,
-    "wacc": 0.1036
+    "cost_of_equity": 0.1072,
+    "wacc": 0.1047
   },
   {
     "symbol": "MSFT",
@@ -112,12 +112,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0436,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0198,
     "weight_of_equity": 0.9802,
     "cost_of_debt": 0.0104,
-    "cost_of_equity": 0.1058,
-    "wacc": 0.1039
+    "cost_of_equity": 0.107,
+    "wacc": 0.105
   },
   {
     "symbol": "MSFT",
@@ -136,12 +136,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0381,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0189,
     "weight_of_equity": 0.9811,
     "cost_of_debt": 0.0095,
-    "cost_of_equity": 0.1065,
-    "wacc": 0.1046
+    "cost_of_equity": 0.1078,
+    "wacc": 0.1059
   },
   {
     "symbol": "MSFT",
@@ -160,12 +160,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0458,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0195,
     "weight_of_equity": 0.9805,
     "cost_of_debt": 0.0095,
-    "cost_of_equity": 0.1182,
-    "wacc": 0.116
+    "cost_of_equity": 0.1196,
+    "wacc": 0.1174
   },
   {
     "symbol": "MSFT",
@@ -184,12 +184,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0423,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0212,
     "weight_of_equity": 0.9788,
     "cost_of_debt": 0.0098,
-    "cost_of_equity": 0.1186,
-    "wacc": 0.1163
+    "cost_of_equity": 0.12,
+    "wacc": 0.1176
   },
   {
     "symbol": "MSFT",
@@ -208,12 +208,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0424,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0161,
     "weight_of_equity": 0.9839,
     "cost_of_debt": 0.0102,
-    "cost_of_equity": 0.1186,
-    "wacc": 0.1168
+    "cost_of_equity": 0.12,
+    "wacc": 0.1182
   },
   {
     "symbol": "MSFT",
@@ -232,12 +232,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0416,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0155,
     "weight_of_equity": 0.9845,
     "cost_of_debt": 0.0115,
-    "cost_of_equity": 0.1187,
-    "wacc": 0.117
+    "cost_of_equity": 0.1201,
+    "wacc": 0.1184
   },
   {
     "symbol": "MSFT",
@@ -256,12 +256,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0418,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0158,
     "weight_of_equity": 0.9842,
     "cost_of_debt": 0.0128,
-    "cost_of_equity": 0.1387,
-    "wacc": 0.1367
+    "cost_of_equity": 0.1406,
+    "wacc": 0.1385
   },
   {
     "symbol": "MSFT",
@@ -280,12 +280,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0203,
     "weight_of_equity": 0.9797,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1386,
-    "wacc": 0.136
+    "cost_of_equity": 0.1404,
+    "wacc": 0.1378
   },
   {
     "symbol": "MSFT",
@@ -304,12 +304,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0433,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0203,
     "weight_of_equity": 0.9797,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1385,
-    "wacc": 0.1359
+    "cost_of_equity": 0.1403,
+    "wacc": 0.1377
   },
   {
     "symbol": "MSFT",
@@ -328,12 +328,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0431,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0201,
     "weight_of_equity": 0.9799,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1386,
-    "wacc": 0.136
+    "cost_of_equity": 0.1404,
+    "wacc": 0.1378
   },
   {
     "symbol": "MSFT",
@@ -352,12 +352,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0434,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0201,
     "weight_of_equity": 0.9799,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1385,
-    "wacc": 0.1359
+    "cost_of_equity": 0.1403,
+    "wacc": 0.1377
   },
   {
     "symbol": "MSFT",
@@ -376,12 +376,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0433,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0202,
     "weight_of_equity": 0.9798,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1385,
-    "wacc": 0.1359
+    "cost_of_equity": 0.1403,
+    "wacc": 0.1377
   },
   {
     "symbol": "MSFT",
@@ -400,12 +400,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0201,
     "weight_of_equity": 0.9799,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1386,
-    "wacc": 0.136
+    "cost_of_equity": 0.1404,
+    "wacc": 0.1378
   },
   {
     "symbol": "MSFT",
@@ -424,12 +424,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0201,
     "weight_of_equity": 0.9799,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1386,
-    "wacc": 0.136
+    "cost_of_equity": 0.1404,
+    "wacc": 0.1378
   },
   {
     "symbol": "MSFT",
@@ -448,12 +448,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0431,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0203,
     "weight_of_equity": 0.9797,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1386,
-    "wacc": 0.136
+    "cost_of_equity": 0.1404,
+    "wacc": 0.1378
   },
   {
     "symbol": "MSFT",
@@ -472,12 +472,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0196,
     "weight_of_equity": 0.9804,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1386,
-    "wacc": 0.1361
+    "cost_of_equity": 0.1404,
+    "wacc": 0.1379
   },
   {
     "symbol": "MSFT",
@@ -496,12 +496,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0191,
     "weight_of_equity": 0.9809,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1386,
-    "wacc": 0.1362
+    "cost_of_equity": 0.1404,
+    "wacc": 0.1379
   },
   {
     "symbol": "MSFT",
@@ -520,12 +520,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0429,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0183,
     "weight_of_equity": 0.9817,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1386,
-    "wacc": 0.1363
+    "cost_of_equity": 0.1404,
+    "wacc": 0.138
   },
   {
     "symbol": "MSFT",
@@ -544,12 +544,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0432,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0179,
     "weight_of_equity": 0.9821,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1385,
-    "wacc": 0.1362
+    "cost_of_equity": 0.1404,
+    "wacc": 0.1381
   },
   {
     "symbol": "MSFT",
@@ -568,12 +568,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0178,
     "weight_of_equity": 0.9822,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1386,
-    "wacc": 0.1363
+    "cost_of_equity": 0.1404,
+    "wacc": 0.1381
   },
   {
     "symbol": "MSFT",
@@ -592,12 +592,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0426,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.018,
     "weight_of_equity": 0.982,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1386,
-    "wacc": 0.1363
+    "cost_of_equity": 0.1404,
+    "wacc": 0.1381
   },
   {
     "symbol": "MSFT",
@@ -616,12 +616,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0178,
     "weight_of_equity": 0.9822,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1386,
-    "wacc": 0.1363
+    "cost_of_equity": 0.1404,
+    "wacc": 0.1381
   },
   {
     "symbol": "MSFT",
@@ -640,12 +640,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.043,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0174,
     "weight_of_equity": 0.9826,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1386,
-    "wacc": 0.1364
+    "cost_of_equity": 0.1404,
+    "wacc": 0.1382
   },
   {
     "symbol": "MSFT",
@@ -664,12 +664,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0434,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0181,
     "weight_of_equity": 0.9819,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1385,
-    "wacc": 0.1362
+    "cost_of_equity": 0.1403,
+    "wacc": 0.138
   },
   {
     "symbol": "MSFT",
@@ -688,12 +688,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0431,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0177,
     "weight_of_equity": 0.9823,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1386,
-    "wacc": 0.1363
+    "cost_of_equity": 0.1404,
+    "wacc": 0.1381
   },
   {
     "symbol": "MSFT",
@@ -712,12 +712,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0435,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0177,
     "weight_of_equity": 0.9823,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1385,
-    "wacc": 0.1362
+    "cost_of_equity": 0.1403,
+    "wacc": 0.138
   },
   {
     "symbol": "MSFT",
@@ -736,12 +736,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0436,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0176,
     "weight_of_equity": 0.9824,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1385,
-    "wacc": 0.1363
+    "cost_of_equity": 0.1403,
+    "wacc": 0.138
   },
   {
     "symbol": "MSFT",
@@ -760,12 +760,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0442,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0177,
     "weight_of_equity": 0.9823,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1384,
-    "wacc": 0.1361
+    "cost_of_equity": 0.1402,
+    "wacc": 0.1379
   },
   {
     "symbol": "MSFT",
@@ -784,12 +784,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.044,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0185,
     "weight_of_equity": 0.9815,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1384,
-    "wacc": 0.136
+    "cost_of_equity": 0.1403,
+    "wacc": 0.1379
   },
   {
     "symbol": "MSFT",
@@ -808,12 +808,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0439,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0182,
     "weight_of_equity": 0.9818,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1385,
-    "wacc": 0.1362
+    "cost_of_equity": 0.1403,
+    "wacc": 0.1379
   },
   {
     "symbol": "MSFT",
@@ -832,12 +832,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0445,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0182,
     "weight_of_equity": 0.9818,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1384,
-    "wacc": 0.1361
+    "cost_of_equity": 0.1402,
+    "wacc": 0.1379
   },
   {
     "symbol": "MSFT",
@@ -856,12 +856,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0443,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0183,
     "weight_of_equity": 0.9817,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1384,
-    "wacc": 0.1361
+    "cost_of_equity": 0.1402,
+    "wacc": 0.1378
   },
   {
     "symbol": "MSFT",
@@ -880,12 +880,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0436,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0182,
     "weight_of_equity": 0.9818,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1385,
-    "wacc": 0.1362
+    "cost_of_equity": 0.1403,
+    "wacc": 0.1379
   },
   {
     "symbol": "MSFT",
@@ -904,12 +904,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0441,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0179,
     "weight_of_equity": 0.9821,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1384,
-    "wacc": 0.1361
+    "cost_of_equity": 0.1402,
+    "wacc": 0.1379
   },
   {
     "symbol": "MSFT",
@@ -928,12 +928,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0438,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0181,
     "weight_of_equity": 0.9819,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1385,
-    "wacc": 0.1362
+    "cost_of_equity": 0.1403,
+    "wacc": 0.138
   },
   {
     "symbol": "MSFT",
@@ -952,12 +952,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0442,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0182,
     "weight_of_equity": 0.9818,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1384,
-    "wacc": 0.1361
+    "cost_of_equity": 0.1402,
+    "wacc": 0.1379
   },
   {
     "symbol": "MSFT",
@@ -976,12 +976,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0446,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0185,
     "weight_of_equity": 0.9815,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1384,
-    "wacc": 0.136
+    "cost_of_equity": 0.1402,
+    "wacc": 0.1378
   },
   {
     "symbol": "MSFT",
@@ -1000,12 +1000,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0446,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0186,
     "weight_of_equity": 0.9814,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1384,
-    "wacc": 0.136
+    "cost_of_equity": 0.1402,
+    "wacc": 0.1378
   },
   {
     "symbol": "MSFT",
@@ -1024,12 +1024,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0447,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0184,
     "weight_of_equity": 0.9816,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1384,
-    "wacc": 0.1361
+    "cost_of_equity": 0.1402,
+    "wacc": 0.1378
   },
   {
     "symbol": "MSFT",
@@ -1048,12 +1048,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0459,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0179,
     "weight_of_equity": 0.9821,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1382,
-    "wacc": 0.1359
+    "cost_of_equity": 0.14,
+    "wacc": 0.1377
   },
   {
     "symbol": "MSFT",
@@ -1072,12 +1072,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0461,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0178,
     "weight_of_equity": 0.9822,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1382,
-    "wacc": 0.1359
+    "cost_of_equity": 0.14,
+    "wacc": 0.1377
   },
   {
     "symbol": "MSFT",
@@ -1096,12 +1096,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0467,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.018,
     "weight_of_equity": 0.982,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1381,
-    "wacc": 0.1358
+    "cost_of_equity": 0.1399,
+    "wacc": 0.1376
   },
   {
     "symbol": "MSFT",
@@ -1120,12 +1120,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0457,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0179,
     "weight_of_equity": 0.9821,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1383,
-    "wacc": 0.136
+    "cost_of_equity": 0.14,
+    "wacc": 0.1377
   },
   {
     "symbol": "MSFT",
@@ -1144,12 +1144,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0457,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.018,
     "weight_of_equity": 0.982,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1383,
-    "wacc": 0.136
+    "cost_of_equity": 0.14,
+    "wacc": 0.1377
   },
   {
     "symbol": "MSFT",
@@ -1168,12 +1168,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0456,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.018,
     "weight_of_equity": 0.982,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1383,
-    "wacc": 0.136
+    "cost_of_equity": 0.14,
+    "wacc": 0.1377
   },
   {
     "symbol": "MSFT",
@@ -1192,12 +1192,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.045,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0181,
     "weight_of_equity": 0.9819,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1383,
-    "wacc": 0.136
+    "cost_of_equity": 0.1401,
+    "wacc": 0.1378
   },
   {
     "symbol": "MSFT",
@@ -1216,12 +1216,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0448,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0182,
     "weight_of_equity": 0.9818,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1384,
-    "wacc": 0.1361
+    "cost_of_equity": 0.1401,
+    "wacc": 0.1378
   },
   {
     "symbol": "MSFT",
@@ -1240,12 +1240,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0445,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0176,
     "weight_of_equity": 0.9824,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1384,
-    "wacc": 0.1362
+    "cost_of_equity": 0.1402,
+    "wacc": 0.1379
   },
   {
     "symbol": "MSFT",
@@ -1264,12 +1264,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0445,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0167,
     "weight_of_equity": 0.9833,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1384,
-    "wacc": 0.1363
+    "cost_of_equity": 0.1402,
+    "wacc": 0.138
   },
   {
     "symbol": "MSFT",
@@ -1288,12 +1288,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0447,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0164,
     "weight_of_equity": 0.9836,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1384,
-    "wacc": 0.1363
+    "cost_of_equity": 0.1402,
+    "wacc": 0.1381
   },
   {
     "symbol": "MSFT",
@@ -1312,12 +1312,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0446,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0171,
     "weight_of_equity": 0.9829,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1384,
-    "wacc": 0.1362
+    "cost_of_equity": 0.1402,
+    "wacc": 0.138
   },
   {
     "symbol": "MSFT",
@@ -1336,12 +1336,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0449,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0176,
     "weight_of_equity": 0.9824,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1383,
-    "wacc": 0.1361
+    "cost_of_equity": 0.1401,
+    "wacc": 0.1378
   },
   {
     "symbol": "MSFT",
@@ -1360,12 +1360,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0447,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0176,
     "weight_of_equity": 0.9824,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1384,
-    "wacc": 0.1362
+    "cost_of_equity": 0.1402,
+    "wacc": 0.1379
   },
   {
     "symbol": "MSFT",
@@ -1384,12 +1384,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0455,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0181,
     "weight_of_equity": 0.9819,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1383,
-    "wacc": 0.136
+    "cost_of_equity": 0.14,
+    "wacc": 0.1377
   },
   {
     "symbol": "MSFT",
@@ -1408,12 +1408,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0456,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0183,
     "weight_of_equity": 0.9817,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1383,
-    "wacc": 0.136
+    "cost_of_equity": 0.14,
+    "wacc": 0.1376
   },
   {
     "symbol": "MSFT",
@@ -1432,12 +1432,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0453,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0187,
     "weight_of_equity": 0.9813,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1383,
-    "wacc": 0.1359
+    "cost_of_equity": 0.1401,
+    "wacc": 0.1377
   },
   {
     "symbol": "MSFT",
@@ -1456,12 +1456,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0455,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0189,
     "weight_of_equity": 0.9811,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1383,
-    "wacc": 0.1359
+    "cost_of_equity": 0.14,
+    "wacc": 0.1376
   },
   {
     "symbol": "MSFT",
@@ -1480,12 +1480,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0445,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0193,
     "weight_of_equity": 0.9807,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1384,
-    "wacc": 0.1359
+    "cost_of_equity": 0.1402,
+    "wacc": 0.1377
   },
   {
     "symbol": "MSFT",
@@ -1504,12 +1504,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0448,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0192,
     "weight_of_equity": 0.9808,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1384,
-    "wacc": 0.136
+    "cost_of_equity": 0.1401,
+    "wacc": 0.1376
   },
   {
     "symbol": "MSFT",
@@ -1528,12 +1528,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0447,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0188,
     "weight_of_equity": 0.9812,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1384,
-    "wacc": 0.136
+    "cost_of_equity": 0.1402,
+    "wacc": 0.1378
   },
   {
     "symbol": "MSFT",
@@ -1552,12 +1552,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0443,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0191,
     "weight_of_equity": 0.9809,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1384,
-    "wacc": 0.136
+    "cost_of_equity": 0.1402,
+    "wacc": 0.1377
   },
   {
     "symbol": "MSFT",
@@ -1576,12 +1576,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0449,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0198,
     "weight_of_equity": 0.9802,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1383,
-    "wacc": 0.1358
+    "cost_of_equity": 0.1401,
+    "wacc": 0.1375
   },
   {
     "symbol": "MSFT",
@@ -1600,11 +1600,131 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0446,
-    "beta_5y": 1.1151,
+    "beta_5y": 1.1364,
     "weight_of_debt": 0.0198,
     "weight_of_equity": 0.9802,
     "cost_of_debt": 0.0137,
-    "cost_of_equity": 0.1384,
-    "wacc": 0.1359
+    "cost_of_equity": 0.1402,
+    "wacc": 0.1376
+  },
+  {
+    "symbol": "MSFT",
+    "report_date": "2026-06-22T00:00:00.000",
+    "market_capitalization": 2728761202698.0,
+    "exchange_rate": 1.0,
+    "total_debt": 56965000000.0,
+    "total_debt_usd": 56965000000.0,
+    "interest_expense": 778000000.0,
+    "interest_expense_usd": 778000000.0,
+    "pretax_income": 39340000000.0,
+    "pretax_income_usd": 39340000000.0,
+    "tax_provision": 7562000000.0,
+    "tax_provision_usd": 7562000000.0,
+    "tax_rate_for_calcs": 0.19,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0451,
+    "beta_5y": 1.1364,
+    "weight_of_debt": 0.0204,
+    "weight_of_equity": 0.9796,
+    "cost_of_debt": 0.0137,
+    "cost_of_equity": 0.1401,
+    "wacc": 0.1375
+  },
+  {
+    "symbol": "MSFT",
+    "report_date": "2026-06-23T00:00:00.000",
+    "market_capitalization": 2777788871718.0,
+    "exchange_rate": 1.0,
+    "total_debt": 56965000000.0,
+    "total_debt_usd": 56965000000.0,
+    "interest_expense": 778000000.0,
+    "interest_expense_usd": 778000000.0,
+    "pretax_income": 39340000000.0,
+    "pretax_income_usd": 39340000000.0,
+    "tax_provision": 7562000000.0,
+    "tax_provision_usd": 7562000000.0,
+    "tax_rate_for_calcs": 0.19,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.045,
+    "beta_5y": 1.1364,
+    "weight_of_debt": 0.0201,
+    "weight_of_equity": 0.9799,
+    "cost_of_debt": 0.0137,
+    "cost_of_equity": 0.1401,
+    "wacc": 0.1375
+  },
+  {
+    "symbol": "MSFT",
+    "report_date": "2026-06-24T00:00:00.000",
+    "market_capitalization": 2714795745462.0,
+    "exchange_rate": 1.0,
+    "total_debt": 56965000000.0,
+    "total_debt_usd": 56965000000.0,
+    "interest_expense": 778000000.0,
+    "interest_expense_usd": 778000000.0,
+    "pretax_income": 39340000000.0,
+    "pretax_income_usd": 39340000000.0,
+    "tax_provision": 7562000000.0,
+    "tax_provision_usd": 7562000000.0,
+    "tax_rate_for_calcs": 0.19,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0441,
+    "beta_5y": 1.1364,
+    "weight_of_debt": 0.0206,
+    "weight_of_equity": 0.9794,
+    "cost_of_debt": 0.0137,
+    "cost_of_equity": 0.1402,
+    "wacc": 0.1375
+  },
+  {
+    "symbol": "MSFT",
+    "report_date": "2026-06-25T00:00:00.000",
+    "market_capitalization": 2620974615201.0,
+    "exchange_rate": 1.0,
+    "total_debt": 56965000000.0,
+    "total_debt_usd": 56965000000.0,
+    "interest_expense": 778000000.0,
+    "interest_expense_usd": 778000000.0,
+    "pretax_income": 39340000000.0,
+    "pretax_income_usd": 39340000000.0,
+    "tax_provision": 7562000000.0,
+    "tax_provision_usd": 7562000000.0,
+    "tax_rate_for_calcs": 0.19,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.044,
+    "beta_5y": 1.1364,
+    "weight_of_debt": 0.0213,
+    "weight_of_equity": 0.9787,
+    "cost_of_debt": 0.0137,
+    "cost_of_equity": 0.1403,
+    "wacc": 0.1375
+  },
+  {
+    "symbol": "MSFT",
+    "report_date": "2026-06-26T00:00:00.000",
+    "market_capitalization": 2770583290059.0,
+    "exchange_rate": 1.0,
+    "total_debt": 56965000000.0,
+    "total_debt_usd": 56965000000.0,
+    "interest_expense": 778000000.0,
+    "interest_expense_usd": 778000000.0,
+    "pretax_income": 39340000000.0,
+    "pretax_income_usd": 39340000000.0,
+    "tax_provision": 7562000000.0,
+    "tax_provision_usd": 7562000000.0,
+    "tax_rate_for_calcs": 0.19,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0438,
+    "beta_5y": 1.1364,
+    "weight_of_debt": 0.0201,
+    "weight_of_equity": 0.9799,
+    "cost_of_debt": 0.0137,
+    "cost_of_equity": 0.1403,
+    "wacc": 0.1377
   }
 ]

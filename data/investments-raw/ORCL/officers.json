@@ -8,7 +8,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-22"
+    "report_date": "2026-06-29"
   },
   {
     "symbol": "ORCL",
@@ -19,7 +19,18 @@
     "pay": 658717,
     "exercised": 0,
     "unexercised": 195104000,
-    "report_date": "2026-06-22"
+    "report_date": "2026-06-29"
+  },
+  {
+    "symbol": "ORCL",
+    "name": "Mr. Ken  Bond",
+    "title": "Senior Vice President of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-06-29"
   },
   {
     "symbol": "ORCL",
@@ -30,18 +41,7 @@
     "pay": 5643948,
     "exercised": 230992432,
     "unexercised": 858000000,
-    "report_date": "2026-06-22"
-  },
-  {
-    "symbol": "ORCL",
-    "name": "Mr. Mark  Hura",
-    "title": "President of Global Field Operations",
-    "age": null,
-    "born": null,
-    "pay": null,
-    "exercised": 0,
-    "unexercised": 0,
-    "report_date": "2026-06-22"
+    "report_date": "2026-06-29"
   },
   {
     "symbol": "ORCL",
@@ -52,7 +52,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-22"
+    "report_date": "2026-06-29"
   },
   {
     "symbol": "ORCL",
@@ -63,7 +63,7 @@
     "pay": 990091,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-22"
+    "report_date": "2026-06-29"
   },
   {
     "symbol": "ORCL",
@@ -74,7 +74,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-22"
+    "report_date": "2026-06-29"
   },
   {
     "symbol": "ORCL",
@@ -85,7 +85,7 @@
     "pay": null,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-22"
+    "report_date": "2026-06-29"
   },
   {
     "symbol": "ORCL",
@@ -96,7 +96,7 @@
     "pay": 639362,
     "exercised": 0,
     "unexercised": 0,
-    "report_date": "2026-06-22"
+    "report_date": "2026-06-29"
   },
   {
     "symbol": "ORCL",
@@ -107,6 +107,6 @@
     "pay": 1113417,
     "exercised": 510901632,
     "unexercised": 422698624,
-    "report_date": "2026-06-22"
+    "report_date": "2026-06-29"
   }
 ]

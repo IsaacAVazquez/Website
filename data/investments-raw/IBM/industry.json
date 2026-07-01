@@ -5648,6 +5648,41 @@
       "total_market_cap": 563147648574.6499,
       "total_ttm_net_income": 38995049131.0,
       "industry_pe": 14.44
+    },
+    {
+      "report_date": "2026-06-22T00:00:00.000",
+      "industry": "Information Technology Services",
+      "total_market_cap": 559456291565.9,
+      "total_ttm_net_income": 38995049131.0,
+      "industry_pe": 14.35
+    },
+    {
+      "report_date": "2026-06-23T00:00:00.000",
+      "industry": "Information Technology Services",
+      "total_market_cap": 575015818545.1399,
+      "total_ttm_net_income": 38995049131.0,
+      "industry_pe": 14.75
+    },
+    {
+      "report_date": "2026-06-24T00:00:00.000",
+      "industry": "Information Technology Services",
+      "total_market_cap": 574970528115.22,
+      "total_ttm_net_income": 38995049131.0,
+      "industry_pe": 14.74
+    },
+    {
+      "report_date": "2026-06-25T00:00:00.000",
+      "industry": "Information Technology Services",
+      "total_market_cap": 562075485332.86,
+      "total_ttm_net_income": 38995049131.0,
+      "industry_pe": 14.41
+    },
+    {
+      "report_date": "2026-06-26T00:00:00.000",
+      "industry": "Information Technology Services",
+      "total_market_cap": 583172544200.82,
+      "total_ttm_net_income": 38995049131.0,
+      "industry_pe": 14.96
     }
   ],
   "ps_ratio": [
@@ -10484,820 +10519,820 @@
     {
       "report_date": "2025-12-31T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 896341367357.3601,
-      "total_ttm_revenue": 451736351305.2999,
+      "total_market_cap": 896339975027.3601,
+      "total_ttm_revenue": 451736346755.2999,
       "industry_ps_ratio": 1.98
     },
     {
       "report_date": "2026-01-02T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 887151807282.6501,
-      "total_ttm_revenue": 451736351305.2999,
+      "total_market_cap": 887150414952.6501,
+      "total_ttm_revenue": 451736346755.2999,
       "industry_ps_ratio": 1.96
     },
     {
       "report_date": "2026-01-05T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 862780478855.74,
-      "total_ttm_revenue": 430576351305.3,
+      "total_market_cap": 862779086525.74,
+      "total_ttm_revenue": 430576346755.3,
       "industry_ps_ratio": 2.0
     },
     {
       "report_date": "2026-01-06T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 884157060228.44,
-      "total_ttm_revenue": 430576351305.3,
+      "total_market_cap": 884156132008.44,
+      "total_ttm_revenue": 430576346755.3,
       "industry_ps_ratio": 2.05
     },
     {
       "report_date": "2026-01-07T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 875599657261.42,
-      "total_ttm_revenue": 430576351305.3,
+      "total_market_cap": 875598729041.42,
+      "total_ttm_revenue": 430576346755.3,
       "industry_ps_ratio": 2.03
     },
     {
       "report_date": "2026-01-08T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 891245796072.6001,
-      "total_ttm_revenue": 430576351305.3,
+      "total_market_cap": 891244867852.6001,
+      "total_ttm_revenue": 430576346755.3,
       "industry_ps_ratio": 2.07
     },
     {
       "report_date": "2026-01-09T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 892616352977.2201,
-      "total_ttm_revenue": 430576351305.3,
+      "total_market_cap": 892615424757.2201,
+      "total_ttm_revenue": 430576346755.3,
       "industry_ps_ratio": 2.07
     },
     {
       "report_date": "2026-01-12T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 900826826610.35,
-      "total_ttm_revenue": 430576351305.3,
+      "total_market_cap": 900825898390.35,
+      "total_ttm_revenue": 430576346755.3,
       "industry_ps_ratio": 2.09
     },
     {
       "report_date": "2026-01-13T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 883917940923.43,
-      "total_ttm_revenue": 430576351305.3,
+      "total_market_cap": 883917012703.43,
+      "total_ttm_revenue": 430576346755.3,
       "industry_ps_ratio": 2.05
     },
     {
       "report_date": "2026-01-14T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 908156046548.8201,
-      "total_ttm_revenue": 430576351305.3,
+      "total_market_cap": 908155118328.8201,
+      "total_ttm_revenue": 430576346755.3,
       "industry_ps_ratio": 2.11
     },
     {
       "report_date": "2026-01-15T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 891385518748.4099,
-      "total_ttm_revenue": 430576351305.3,
+      "total_market_cap": 891384590528.4099,
+      "total_ttm_revenue": 430576346755.3,
       "industry_ps_ratio": 2.07
     },
     {
       "report_date": "2026-01-16T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 894408013946.8497,
-      "total_ttm_revenue": 430576351305.3,
+      "total_market_cap": 894407085726.8497,
+      "total_ttm_revenue": 430576346755.3,
       "industry_ps_ratio": 2.08
     },
     {
       "report_date": "2026-01-20T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 857484444486.6299,
-      "total_ttm_revenue": 430576351305.3,
+      "total_market_cap": 857483516266.6299,
+      "total_ttm_revenue": 430576346755.3,
       "industry_ps_ratio": 1.99
     },
     {
       "report_date": "2026-01-21T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 872866821125.3699,
-      "total_ttm_revenue": 430576351305.3,
+      "total_market_cap": 872865892905.3699,
+      "total_ttm_revenue": 430576346755.3,
       "industry_ps_ratio": 2.03
     },
     {
       "report_date": "2026-01-22T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 876844314035.2698,
-      "total_ttm_revenue": 430576351305.3,
+      "total_market_cap": 876843385815.2698,
+      "total_ttm_revenue": 430576346755.3,
       "industry_ps_ratio": 2.04
     },
     {
       "report_date": "2026-01-23T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 870395063113.8799,
-      "total_ttm_revenue": 430576351305.3,
+      "total_market_cap": 870394134893.8799,
+      "total_ttm_revenue": 430576346755.3,
       "industry_ps_ratio": 2.02
     },
     {
       "report_date": "2026-01-26T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 874327901693.8599,
-      "total_ttm_revenue": 430576351305.3,
+      "total_market_cap": 874326973473.8599,
+      "total_ttm_revenue": 430576346755.3,
       "industry_ps_ratio": 2.03
     },
     {
       "report_date": "2026-01-27T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 867084822824.5597,
-      "total_ttm_revenue": 430576351305.3,
+      "total_market_cap": 867083894604.5597,
+      "total_ttm_revenue": 430576346755.3,
       "industry_ps_ratio": 2.01
     },
     {
       "report_date": "2026-01-28T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 858117058480.0597,
-      "total_ttm_revenue": 430576351305.3,
+      "total_market_cap": 858116130260.0597,
+      "total_ttm_revenue": 430576346755.3,
       "industry_ps_ratio": 1.99
     },
     {
       "report_date": "2026-01-29T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 859224847367.9097,
-      "total_ttm_revenue": 430576351305.3,
+      "total_market_cap": 859223919147.9097,
+      "total_ttm_revenue": 430576346755.3,
       "industry_ps_ratio": 2.0
     },
     {
       "report_date": "2026-01-30T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 854061007480.4098,
-      "total_ttm_revenue": 430576351305.3,
+      "total_market_cap": 854060079260.4098,
+      "total_ttm_revenue": 430576346755.3,
       "industry_ps_ratio": 1.98
     },
     {
       "report_date": "2026-02-02T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 869313950069.1299,
-      "total_ttm_revenue": 430488351305.3,
+      "total_market_cap": 869313021849.1299,
+      "total_ttm_revenue": 430488346755.3,
       "industry_ps_ratio": 2.02
     },
     {
       "report_date": "2026-02-03T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 810379076476.9498,
-      "total_ttm_revenue": 430488351305.3,
+      "total_market_cap": 810378148256.9498,
+      "total_ttm_revenue": 430488346755.3,
       "industry_ps_ratio": 1.88
     },
     {
       "report_date": "2026-02-04T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 803889196633.8497,
-      "total_ttm_revenue": 430488351305.3,
+      "total_market_cap": 803888268413.8497,
+      "total_ttm_revenue": 430488346755.3,
       "industry_ps_ratio": 1.87
     },
     {
       "report_date": "2026-02-05T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 795617739048.8497,
-      "total_ttm_revenue": 430488351305.3,
+      "total_market_cap": 795617274938.8497,
+      "total_ttm_revenue": 430488346755.3,
       "industry_ps_ratio": 1.85
     },
     {
       "report_date": "2026-02-06T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 816784510386.5099,
-      "total_ttm_revenue": 430488351305.3,
+      "total_market_cap": 816783582166.5099,
+      "total_ttm_revenue": 430488346755.3,
       "industry_ps_ratio": 1.9
     },
     {
       "report_date": "2026-02-09T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 806287199752.46,
-      "total_ttm_revenue": 430488351305.3,
+      "total_market_cap": 806286271532.46,
+      "total_ttm_revenue": 430488346755.3,
       "industry_ps_ratio": 1.87
     },
     {
       "report_date": "2026-02-10T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 805176538856.6299,
-      "total_ttm_revenue": 430488351305.3,
+      "total_market_cap": 805175610636.6299,
+      "total_ttm_revenue": 430488346755.3,
       "industry_ps_ratio": 1.87
     },
     {
       "report_date": "2026-02-11T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 761742283103.7599,
-      "total_ttm_revenue": 430488351305.3,
+      "total_market_cap": 761741354883.7599,
+      "total_ttm_revenue": 430488346755.3,
       "industry_ps_ratio": 1.77
     },
     {
       "report_date": "2026-02-12T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 728445092442.9498,
-      "total_ttm_revenue": 430488351305.3,
+      "total_market_cap": 728444628332.9498,
+      "total_ttm_revenue": 430488346755.3,
       "industry_ps_ratio": 1.69
     },
     {
       "report_date": "2026-02-13T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 737690416375.03,
-      "total_ttm_revenue": 430488351305.3,
+      "total_market_cap": 737689952265.03,
+      "total_ttm_revenue": 430488346755.3,
       "industry_ps_ratio": 1.71
     },
     {
       "report_date": "2026-02-17T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 725248190658.1299,
-      "total_ttm_revenue": 430486784674.3,
+      "total_market_cap": 725247726548.1299,
+      "total_ttm_revenue": 430486780124.3,
       "industry_ps_ratio": 1.68
     },
     {
       "report_date": "2026-02-18T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 735789207459.4698,
-      "total_ttm_revenue": 430488351305.3,
+      "total_market_cap": 735788743349.4698,
+      "total_ttm_revenue": 430488346755.3,
       "industry_ps_ratio": 1.71
     },
     {
       "report_date": "2026-02-19T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 722245218841.6898,
-      "total_ttm_revenue": 430488351305.3,
+      "total_market_cap": 722244754731.6898,
+      "total_ttm_revenue": 430488346755.3,
       "industry_ps_ratio": 1.68
     },
     {
       "report_date": "2026-02-20T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 721831525523.6599,
-      "total_ttm_revenue": 430488351305.3,
+      "total_market_cap": 721831061413.6599,
+      "total_ttm_revenue": 430488346755.3,
       "industry_ps_ratio": 1.68
     },
     {
       "report_date": "2026-02-23T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 668997067683.7898,
-      "total_ttm_revenue": 430488351305.3,
+      "total_market_cap": 668996603573.7898,
+      "total_ttm_revenue": 430488346755.3,
       "industry_ps_ratio": 1.55
     },
     {
       "report_date": "2026-02-24T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 675029387643.0099,
-      "total_ttm_revenue": 430488351305.3,
+      "total_market_cap": 675028923533.0099,
+      "total_ttm_revenue": 430488346755.3,
       "industry_ps_ratio": 1.57
     },
     {
       "report_date": "2026-02-25T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 681152829888.2798,
-      "total_ttm_revenue": 430488351305.3,
+      "total_market_cap": 681152365778.2798,
+      "total_ttm_revenue": 430488346755.3,
       "industry_ps_ratio": 1.58
     },
     {
       "report_date": "2026-02-26T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 704895274218.9099,
-      "total_ttm_revenue": 430488351305.3,
+      "total_market_cap": 704894810108.9099,
+      "total_ttm_revenue": 430488346755.3,
       "industry_ps_ratio": 1.64
     },
     {
       "report_date": "2026-02-27T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 701916002504.1798,
-      "total_ttm_revenue": 430488351305.3,
+      "total_market_cap": 701915538394.1798,
+      "total_ttm_revenue": 430488346755.3,
       "industry_ps_ratio": 1.63
     },
     {
       "report_date": "2026-03-02T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 697899733094.1699,
-      "total_ttm_revenue": 432052481305.3,
+      "total_market_cap": 697899268984.1699,
+      "total_ttm_revenue": 432052476755.3,
       "industry_ps_ratio": 1.62
     },
     {
       "report_date": "2026-03-03T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 707397664896.88,
-      "total_ttm_revenue": 432052481305.3,
+      "total_market_cap": 707397200786.88,
+      "total_ttm_revenue": 432052476755.3,
       "industry_ps_ratio": 1.64
     },
     {
       "report_date": "2026-03-04T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 714196063981.07,
-      "total_ttm_revenue": 431449265305.3,
+      "total_market_cap": 714195599871.07,
+      "total_ttm_revenue": 431449260755.3,
       "industry_ps_ratio": 1.66
     },
     {
       "report_date": "2026-03-05T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 727668420306.7498,
-      "total_ttm_revenue": 433580807496.74,
+      "total_market_cap": 727667956196.7498,
+      "total_ttm_revenue": 433580802946.74,
       "industry_ps_ratio": 1.68
     },
     {
       "report_date": "2026-03-06T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 728024455353.1399,
-      "total_ttm_revenue": 431449265305.3,
+      "total_market_cap": 728023991243.1399,
+      "total_ttm_revenue": 431449260755.3,
       "industry_ps_ratio": 1.69
     },
     {
       "report_date": "2026-03-09T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 720341830957.9299,
-      "total_ttm_revenue": 433580807496.74,
+      "total_market_cap": 720341366847.9299,
+      "total_ttm_revenue": 433580802946.74,
       "industry_ps_ratio": 1.66
     },
     {
       "report_date": "2026-03-10T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 708053773521.83,
-      "total_ttm_revenue": 433580807496.74,
+      "total_market_cap": 708053309411.83,
+      "total_ttm_revenue": 433580802946.74,
       "industry_ps_ratio": 1.63
     },
     {
       "report_date": "2026-03-11T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 700679734715.99,
-      "total_ttm_revenue": 431449265305.3,
+      "total_market_cap": 700679270605.99,
+      "total_ttm_revenue": 431449260755.3,
       "industry_ps_ratio": 1.62
     },
     {
       "report_date": "2026-03-12T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 688460127673.9899,
-      "total_ttm_revenue": 431449265305.3,
+      "total_market_cap": 688459199453.9899,
+      "total_ttm_revenue": 431449260755.3,
       "industry_ps_ratio": 1.6
     },
     {
       "report_date": "2026-03-13T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 689153860659.0498,
-      "total_ttm_revenue": 433580807496.74,
+      "total_market_cap": 689152932439.0498,
+      "total_ttm_revenue": 433580802946.74,
       "industry_ps_ratio": 1.59
     },
     {
       "report_date": "2026-03-16T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 693194513518.13,
-      "total_ttm_revenue": 433580807496.74,
+      "total_market_cap": 693193585298.13,
+      "total_ttm_revenue": 433580802946.74,
       "industry_ps_ratio": 1.6
     },
     {
       "report_date": "2026-03-17T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 700093595474.9401,
-      "total_ttm_revenue": 433580807496.74,
+      "total_market_cap": 700092667254.9401,
+      "total_ttm_revenue": 433580802946.74,
       "industry_ps_ratio": 1.61
     },
     {
       "report_date": "2026-03-18T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 688585167257.1499,
-      "total_ttm_revenue": 433580807496.74,
+      "total_market_cap": 688584239037.1499,
+      "total_ttm_revenue": 433580802946.74,
       "industry_ps_ratio": 1.59
     },
     {
       "report_date": "2026-03-19T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 694241000513.0698,
-      "total_ttm_revenue": 433580807496.74,
+      "total_market_cap": 694240072293.0698,
+      "total_ttm_revenue": 433580802946.74,
       "industry_ps_ratio": 1.6
     },
     {
       "report_date": "2026-03-20T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 682789831712.1799,
-      "total_ttm_revenue": 433580807496.74,
+      "total_market_cap": 682788903492.1799,
+      "total_ttm_revenue": 433580802946.74,
       "industry_ps_ratio": 1.57
     },
     {
       "report_date": "2026-03-23T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 690815478511.2899,
-      "total_ttm_revenue": 433580807496.74,
+      "total_market_cap": 690815014401.2899,
+      "total_ttm_revenue": 433580802946.74,
       "industry_ps_ratio": 1.59
     },
     {
       "report_date": "2026-03-24T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 672346768568.6198,
-      "total_ttm_revenue": 433580807496.74,
+      "total_market_cap": 672346304458.6198,
+      "total_ttm_revenue": 433580802946.74,
       "industry_ps_ratio": 1.55
     },
     {
       "report_date": "2026-03-25T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 672905216992.36,
-      "total_ttm_revenue": 433580807496.74,
+      "total_market_cap": 672904752882.36,
+      "total_ttm_revenue": 433580802946.74,
       "industry_ps_ratio": 1.55
     },
     {
       "report_date": "2026-03-26T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 673165600955.62,
-      "total_ttm_revenue": 433580807496.74,
+      "total_market_cap": 673165136845.62,
+      "total_ttm_revenue": 433580802946.74,
       "industry_ps_ratio": 1.55
     },
     {
       "report_date": "2026-03-27T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 658381254000.7699,
-      "total_ttm_revenue": 433485400496.74,
+      "total_market_cap": 658380789890.7699,
+      "total_ttm_revenue": 433485395946.74,
       "industry_ps_ratio": 1.52
     },
     {
       "report_date": "2026-03-30T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 663892968160.71,
-      "total_ttm_revenue": 433580807496.74,
+      "total_market_cap": 663892504050.71,
+      "total_ttm_revenue": 433580802946.74,
       "industry_ps_ratio": 1.53
     },
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 673411135305.51,
-      "total_ttm_revenue": 439336302130.82996,
+      "total_market_cap": 673410801902.51,
+      "total_ttm_revenue": 439336297580.82996,
       "industry_ps_ratio": 1.53
     },
     {
       "report_date": "2026-04-01T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 672040496084.69,
-      "total_ttm_revenue": 439336302130.82996,
+      "total_market_cap": 672040184466.19,
+      "total_ttm_revenue": 439336297580.82996,
       "industry_ps_ratio": 1.53
     },
     {
       "report_date": "2026-04-02T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 685107087461.21,
-      "total_ttm_revenue": 439336302130.82996,
+      "total_market_cap": 685106754058.21,
+      "total_ttm_revenue": 439336297580.82996,
       "industry_ps_ratio": 1.56
     },
     {
       "report_date": "2026-04-06T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 682910323735.31,
-      "total_ttm_revenue": 439336302130.82996,
+      "total_market_cap": 682910025187.51,
+      "total_ttm_revenue": 439336297580.82996,
       "industry_ps_ratio": 1.55
     },
     {
       "report_date": "2026-04-07T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 680083040016.87,
-      "total_ttm_revenue": 439336302130.82996,
+      "total_market_cap": 680082767610.47,
+      "total_ttm_revenue": 439336297580.82996,
       "industry_ps_ratio": 1.55
     },
     {
       "report_date": "2026-04-08T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 678514934798.6599,
-      "total_ttm_revenue": 439336302130.82996,
+      "total_market_cap": 678514557826.6599,
+      "total_ttm_revenue": 439336297580.82996,
       "industry_ps_ratio": 1.54
     },
     {
       "report_date": "2026-04-09T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 662813995311.8999,
-      "total_ttm_revenue": 439336302130.82996,
+      "total_market_cap": 662813631410.5999,
+      "total_ttm_revenue": 439336297580.82996,
       "industry_ps_ratio": 1.51
     },
     {
       "report_date": "2026-04-10T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 644554547873.57,
-      "total_ttm_revenue": 439336302130.82996,
+      "total_market_cap": 644554192686.07,
+      "total_ttm_revenue": 439336297580.82996,
       "industry_ps_ratio": 1.47
     },
     {
       "report_date": "2026-04-13T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 673093944626.6699,
-      "total_ttm_revenue": 439336302130.82996,
+      "total_market_cap": 673093606866.7699,
+      "total_ttm_revenue": 439336297580.82996,
       "industry_ps_ratio": 1.53
     },
     {
       "report_date": "2026-04-14T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 676428155448.8398,
-      "total_ttm_revenue": 439336302130.82996,
+      "total_market_cap": 676427839473.4398,
+      "total_ttm_revenue": 439336297580.82996,
       "industry_ps_ratio": 1.54
     },
     {
       "report_date": "2026-04-15T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 687967830113.84,
-      "total_ttm_revenue": 439336302130.82996,
+      "total_market_cap": 687967518495.34,
+      "total_ttm_revenue": 439336297580.82996,
       "industry_ps_ratio": 1.57
     },
     {
       "report_date": "2026-04-16T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 694030956851.96,
-      "total_ttm_revenue": 439336302130.82996,
+      "total_market_cap": 694030710586.96,
+      "total_ttm_revenue": 439336297580.82996,
       "industry_ps_ratio": 1.58
     },
     {
       "report_date": "2026-04-17T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 702634709216.6598,
-      "total_ttm_revenue": 439336302130.82996,
+      "total_market_cap": 702634415025.7598,
+      "total_ttm_revenue": 439336297580.82996,
       "industry_ps_ratio": 1.6
     },
     {
       "report_date": "2026-04-20T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 700058809086.81,
-      "total_ttm_revenue": 439330745305.82996,
+      "total_market_cap": 700058514895.91,
+      "total_ttm_revenue": 439330740755.82996,
       "industry_ps_ratio": 1.59
     },
     {
       "report_date": "2026-04-21T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 699937457673.5599,
-      "total_ttm_revenue": 439330745305.82996,
+      "total_market_cap": 699937189624.0599,
+      "total_ttm_revenue": 439330740755.82996,
       "industry_ps_ratio": 1.59
     },
     {
       "report_date": "2026-04-22T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 690110375784.86,
-      "total_ttm_revenue": 439330745305.82996,
+      "total_market_cap": 690110146947.46,
+      "total_ttm_revenue": 439330740755.82996,
       "industry_ps_ratio": 1.57
     },
     {
       "report_date": "2026-04-23T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 650883893099.76,
-      "total_ttm_revenue": 439330745305.82996,
+      "total_market_cap": 650883607622.66,
+      "total_ttm_revenue": 439330740755.82996,
       "industry_ps_ratio": 1.48
     },
     {
       "report_date": "2026-04-24T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 651258362046.96,
-      "total_ttm_revenue": 439330745305.82996,
+      "total_market_cap": 651258072212.96,
+      "total_ttm_revenue": 439330740755.82996,
       "industry_ps_ratio": 1.48
     },
     {
       "report_date": "2026-04-27T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 641958909371.0599,
-      "total_ttm_revenue": 439330745305.82996,
+      "total_market_cap": 641958619537.0599,
+      "total_ttm_revenue": 439330740755.82996,
       "industry_ps_ratio": 1.46
     },
     {
       "report_date": "2026-04-28T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 646849968782.66,
-      "total_ttm_revenue": 439330745305.82996,
+      "total_market_cap": 646849683305.56,
+      "total_ttm_revenue": 439330740755.82996,
       "industry_ps_ratio": 1.47
     },
     {
       "report_date": "2026-04-29T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 641253593221.5599,
-      "total_ttm_revenue": 439330745305.82996,
+      "total_market_cap": 641253307744.46,
+      "total_ttm_revenue": 439330740755.82996,
       "industry_ps_ratio": 1.46
     },
     {
       "report_date": "2026-04-30T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 645408257432.8799,
-      "total_ttm_revenue": 439359745305.82996,
+      "total_market_cap": 645407945814.3799,
+      "total_ttm_revenue": 439359740755.82996,
       "industry_ps_ratio": 1.47
     },
     {
       "report_date": "2026-05-01T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 646319661139.1799,
-      "total_ttm_revenue": 439359745305.82996,
+      "total_market_cap": 646318946407.2799,
+      "total_ttm_revenue": 439359740755.82996,
       "industry_ps_ratio": 1.47
     },
     {
       "report_date": "2026-05-04T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 643654912530.97,
-      "total_ttm_revenue": 439359745305.82996,
+      "total_market_cap": 643654197799.07,
+      "total_ttm_revenue": 439359740755.82996,
       "industry_ps_ratio": 1.46
     },
     {
       "report_date": "2026-05-05T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 645308729264.7899,
-      "total_ttm_revenue": 439359745305.82996,
+      "total_market_cap": 645307997105.2899,
+      "total_ttm_revenue": 439359740755.82996,
       "industry_ps_ratio": 1.47
     },
     {
       "report_date": "2026-05-06T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 637176361166.0599,
-      "total_ttm_revenue": 439359745305.82996,
+      "total_market_cap": 637175650791.0599,
+      "total_ttm_revenue": 439359740755.82996,
       "industry_ps_ratio": 1.45
     },
     {
       "report_date": "2026-05-07T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 644866558228.1499,
-      "total_ttm_revenue": 439359745305.82996,
+      "total_market_cap": 644865847853.1499,
+      "total_ttm_revenue": 439359740755.82996,
       "industry_ps_ratio": 1.47
     },
     {
       "report_date": "2026-05-08T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 640536435117.9401,
-      "total_ttm_revenue": 439359745305.82996,
+      "total_market_cap": 640535724742.9401,
+      "total_ttm_revenue": 439359740755.82996,
       "industry_ps_ratio": 1.46
     },
     {
       "report_date": "2026-05-11T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 623892756184.22,
-      "total_ttm_revenue": 439359745305.82996,
+      "total_market_cap": 623892045809.22,
+      "total_ttm_revenue": 439359740755.82996,
       "industry_ps_ratio": 1.42
     },
     {
       "report_date": "2026-05-12T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 614076590118.51,
-      "total_ttm_revenue": 439359745305.82996,
+      "total_market_cap": 614075879743.51,
+      "total_ttm_revenue": 439359740755.82996,
       "industry_ps_ratio": 1.4
     },
     {
       "report_date": "2026-05-13T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 599865332631.1,
-      "total_ttm_revenue": 439359745305.82996,
+      "total_market_cap": 599864622256.1,
+      "total_ttm_revenue": 439359740755.82996,
       "industry_ps_ratio": 1.37
     },
     {
       "report_date": "2026-05-14T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 605550138593.0,
-      "total_ttm_revenue": 439359745305.82996,
+      "total_market_cap": 605549428218.0,
+      "total_ttm_revenue": 439359740755.82996,
       "industry_ps_ratio": 1.38
     },
     {
       "report_date": "2026-05-15T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 609339184969.2301,
-      "total_ttm_revenue": 439359745305.82996,
+      "total_market_cap": 609338474594.2301,
+      "total_ttm_revenue": 439359740755.82996,
       "industry_ps_ratio": 1.39
     },
     {
       "report_date": "2026-05-18T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 625292212347.1799,
-      "total_ttm_revenue": 435379345305.82996,
+      "total_market_cap": 625291458403.1799,
+      "total_ttm_revenue": 435379340755.82996,
       "industry_ps_ratio": 1.44
     },
     {
       "report_date": "2026-05-19T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 623422945086.7198,
-      "total_ttm_revenue": 435379345305.82996,
+      "total_market_cap": 623422273923.8198,
+      "total_ttm_revenue": 435379340755.82996,
       "industry_ps_ratio": 1.43
     },
     {
       "report_date": "2026-05-20T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 629544151234.9098,
-      "total_ttm_revenue": 435379345305.82996,
+      "total_market_cap": 629543506213.4098,
+      "total_ttm_revenue": 435379340755.82996,
       "industry_ps_ratio": 1.45
     },
     {
       "report_date": "2026-05-21T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 659320589198.7999,
-      "total_ttm_revenue": 435379345305.82996,
+      "total_market_cap": 659319660978.7999,
+      "total_ttm_revenue": 435379340755.82996,
       "industry_ps_ratio": 1.51
     },
     {
       "report_date": "2026-05-22T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 663804331990.6699,
-      "total_ttm_revenue": 435379345305.82996,
+      "total_market_cap": 663803403770.6699,
+      "total_ttm_revenue": 435379340755.82996,
       "industry_ps_ratio": 1.52
     },
     {
       "report_date": "2026-05-26T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 656040899052.4298,
-      "total_ttm_revenue": 435379345305.82996,
+      "total_market_cap": 656039970832.4298,
+      "total_ttm_revenue": 435379340755.82996,
       "industry_ps_ratio": 1.51
     },
     {
       "report_date": "2026-05-27T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 663993868646.85,
-      "total_ttm_revenue": 435379345305.82996,
+      "total_market_cap": 663992940426.85,
+      "total_ttm_revenue": 435379340755.82996,
       "industry_ps_ratio": 1.53
     },
     {
       "report_date": "2026-05-28T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 682625804923.3398,
-      "total_ttm_revenue": 435379345305.82996,
+      "total_market_cap": 682624876703.3398,
+      "total_ttm_revenue": 435379340755.82996,
       "industry_ps_ratio": 1.57
     },
     {
       "report_date": "2026-05-29T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 721642292287.0701,
-      "total_ttm_revenue": 435379345305.82996,
+      "total_market_cap": 721641364067.0701,
+      "total_ttm_revenue": 435379340755.82996,
       "industry_ps_ratio": 1.66
     },
     {
       "report_date": "2026-06-01T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 761674428251.3701,
-      "total_ttm_revenue": 436369618305.82996,
+      "total_market_cap": 761673500031.3701,
+      "total_ttm_revenue": 436369613755.82996,
       "industry_ps_ratio": 1.75
     },
     {
       "report_date": "2026-06-02T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 757712008079.3201,
-      "total_ttm_revenue": 436369618305.82996,
+      "total_market_cap": 757711079859.3201,
+      "total_ttm_revenue": 436369613755.82996,
       "industry_ps_ratio": 1.74
     },
     {
       "report_date": "2026-06-03T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 719365794902.4299,
-      "total_ttm_revenue": 436369618305.82996,
+      "total_market_cap": 719364866682.4299,
+      "total_ttm_revenue": 436369613755.82996,
       "industry_ps_ratio": 1.65
     },
     {
       "report_date": "2026-06-04T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 717083452472.01,
-      "total_ttm_revenue": 436369618305.82996,
+      "total_market_cap": 717082524252.01,
+      "total_ttm_revenue": 436369613755.82996,
       "industry_ps_ratio": 1.64
     },
     {
       "report_date": "2026-06-05T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 691733081064.09,
-      "total_ttm_revenue": 436369618305.82996,
+      "total_market_cap": 691732152844.09,
+      "total_ttm_revenue": 436369613755.82996,
       "industry_ps_ratio": 1.59
     },
     {
       "report_date": "2026-06-08T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 685554126912.8701,
-      "total_ttm_revenue": 436369618305.82996,
+      "total_market_cap": 685553198692.8701,
+      "total_ttm_revenue": 436369613755.82996,
       "industry_ps_ratio": 1.57
     },
     {
       "report_date": "2026-06-09T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 680795581281.18,
-      "total_ttm_revenue": 436369618305.82996,
+      "total_market_cap": 680795117171.18,
+      "total_ttm_revenue": 436369613755.82996,
       "industry_ps_ratio": 1.56
     },
     {
       "report_date": "2026-06-10T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 665395821314.9801,
-      "total_ttm_revenue": 436369618305.82996,
+      "total_market_cap": 665395357204.9801,
+      "total_ttm_revenue": 436369613755.82996,
       "industry_ps_ratio": 1.52
     },
     {
       "report_date": "2026-06-11T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 667232695877.3,
-      "total_ttm_revenue": 436369618305.82996,
+      "total_market_cap": 667232231767.3,
+      "total_ttm_revenue": 436369613755.82996,
       "industry_ps_ratio": 1.53
     },
     {
       "report_date": "2026-06-12T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 669717914027.99,
-      "total_ttm_revenue": 436369618305.82996,
+      "total_market_cap": 669717449917.99,
+      "total_ttm_revenue": 436369613755.82996,
       "industry_ps_ratio": 1.53
     },
     {
       "report_date": "2026-06-15T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 662850075804.12,
-      "total_ttm_revenue": 436369618305.82996,
+      "total_market_cap": 662849611694.12,
+      "total_ttm_revenue": 436369613755.82996,
       "industry_ps_ratio": 1.52
     },
     {
       "report_date": "2026-06-16T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 667867697134.62,
-      "total_ttm_revenue": 436369618305.82996,
+      "total_market_cap": 667867233024.62,
+      "total_ttm_revenue": 436369613755.82996,
       "industry_ps_ratio": 1.53
     },
     {
       "report_date": "2026-06-17T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 647956892244.9,
-      "total_ttm_revenue": 436369618305.82996,
+      "total_market_cap": 647956428134.9,
+      "total_ttm_revenue": 436369613755.82996,
       "industry_ps_ratio": 1.48
     },
     {
       "report_date": "2026-06-18T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_market_cap": 607594892225.9601,
-      "total_ttm_revenue": 436369618305.82996,
+      "total_market_cap": 607594428115.9601,
+      "total_ttm_revenue": 436369613755.82996,
       "industry_ps_ratio": 1.39
     },
     {
@@ -11306,6 +11341,41 @@
       "total_market_cap": 9801076.0,
       "total_ttm_revenue": 38482.0,
       "industry_ps_ratio": 254.69
+    },
+    {
+      "report_date": "2026-06-22T00:00:00.000",
+      "industry": "Information Technology Services",
+      "total_market_cap": 603214426828.41,
+      "total_ttm_revenue": 436369613755.82996,
+      "industry_ps_ratio": 1.38
+    },
+    {
+      "report_date": "2026-06-23T00:00:00.000",
+      "industry": "Information Technology Services",
+      "total_market_cap": 618237649366.55,
+      "total_ttm_revenue": 436369613755.82996,
+      "industry_ps_ratio": 1.42
+    },
+    {
+      "report_date": "2026-06-24T00:00:00.000",
+      "industry": "Information Technology Services",
+      "total_market_cap": 616014857268.8302,
+      "total_ttm_revenue": 436369613755.82996,
+      "industry_ps_ratio": 1.41
+    },
+    {
+      "report_date": "2026-06-25T00:00:00.000",
+      "industry": "Information Technology Services",
+      "total_market_cap": 601930278711.27,
+      "total_ttm_revenue": 436369613755.82996,
+      "industry_ps_ratio": 1.38
+    },
+    {
+      "report_date": "2026-06-26T00:00:00.000",
+      "industry": "Information Technology Services",
+      "total_market_cap": 623052480619.0499,
+      "total_ttm_revenue": 436369613755.82996,
+      "industry_ps_ratio": 1.43
     }
   ],
   "pb_ratio": [
@@ -18376,197 +18446,197 @@
       "report_date": "2026-05-11T00:00:00.000",
       "industry": "Information Technology Services",
       "total_market_cap": 650548478267.54,
-      "total_bve": 192797913742.83005,
-      "industry_pb_ratio": 3.37
+      "total_bve": 193336439290.73004,
+      "industry_pb_ratio": 3.36
     },
     {
       "report_date": "2026-05-12T00:00:00.000",
       "industry": "Information Technology Services",
       "total_market_cap": 639294517555.1699,
-      "total_bve": 192797913742.83005,
-      "industry_pb_ratio": 3.32
+      "total_bve": 193336439290.73004,
+      "industry_pb_ratio": 3.31
     },
     {
       "report_date": "2026-05-13T00:00:00.000",
       "industry": "Information Technology Services",
       "total_market_cap": 625325532828.4401,
-      "total_bve": 192797913742.83005,
-      "industry_pb_ratio": 3.24
+      "total_bve": 193336439290.73004,
+      "industry_pb_ratio": 3.23
     },
     {
       "report_date": "2026-05-14T00:00:00.000",
       "industry": "Information Technology Services",
       "total_market_cap": 631375662307.4401,
-      "total_bve": 192797913742.83005,
+      "total_bve": 193336439290.73004,
       "industry_pb_ratio": 3.27
     },
     {
       "report_date": "2026-05-15T00:00:00.000",
       "industry": "Information Technology Services",
       "total_market_cap": 633963572665.9701,
-      "total_bve": 192797913742.83005,
-      "industry_pb_ratio": 3.29
+      "total_bve": 193336439290.73004,
+      "industry_pb_ratio": 3.28
     },
     {
       "report_date": "2026-05-18T00:00:00.000",
       "industry": "Information Technology Services",
       "total_market_cap": 650166913781.2,
-      "total_bve": 191008713742.83005,
-      "industry_pb_ratio": 3.4
+      "total_bve": 191547239290.73004,
+      "industry_pb_ratio": 3.39
     },
     {
       "report_date": "2026-05-19T00:00:00.000",
       "industry": "Information Technology Services",
       "total_market_cap": 647624779043.96,
-      "total_bve": 191008713742.83005,
-      "industry_pb_ratio": 3.39
+      "total_bve": 191547239290.73004,
+      "industry_pb_ratio": 3.38
     },
     {
       "report_date": "2026-05-20T00:00:00.000",
       "industry": "Information Technology Services",
       "total_market_cap": 653907671931.1898,
-      "total_bve": 191008713742.83005,
-      "industry_pb_ratio": 3.42
+      "total_bve": 191547239290.73004,
+      "industry_pb_ratio": 3.41
     },
     {
       "report_date": "2026-05-21T00:00:00.000",
       "industry": "Information Technology Services",
       "total_market_cap": 681993964922.7401,
-      "total_bve": 191008713742.83005,
-      "industry_pb_ratio": 3.57
+      "total_bve": 191547239290.73004,
+      "industry_pb_ratio": 3.56
     },
     {
       "report_date": "2026-05-22T00:00:00.000",
       "industry": "Information Technology Services",
       "total_market_cap": 684855450837.37,
-      "total_bve": 191008713742.83005,
-      "industry_pb_ratio": 3.59
+      "total_bve": 191547239290.73004,
+      "industry_pb_ratio": 3.58
     },
     {
       "report_date": "2026-05-26T00:00:00.000",
       "industry": "Information Technology Services",
       "total_market_cap": 676700631289.89,
-      "total_bve": 191008713742.83005,
-      "industry_pb_ratio": 3.54
+      "total_bve": 191547239290.73004,
+      "industry_pb_ratio": 3.53
     },
     {
       "report_date": "2026-05-27T00:00:00.000",
       "industry": "Information Technology Services",
       "total_market_cap": 684486726587.8102,
-      "total_bve": 191008713742.83005,
-      "industry_pb_ratio": 3.58
+      "total_bve": 191547239290.73004,
+      "industry_pb_ratio": 3.57
     },
     {
       "report_date": "2026-05-28T00:00:00.000",
       "industry": "Information Technology Services",
       "total_market_cap": 703350382717.6,
-      "total_bve": 191008713742.83005,
-      "industry_pb_ratio": 3.68
+      "total_bve": 191547239290.73004,
+      "industry_pb_ratio": 3.67
     },
     {
       "report_date": "2026-05-29T00:00:00.000",
       "industry": "Information Technology Services",
       "total_market_cap": 742418064602.8099,
-      "total_bve": 191008713742.83005,
-      "industry_pb_ratio": 3.89
+      "total_bve": 191547239290.73004,
+      "industry_pb_ratio": 3.88
     },
     {
       "report_date": "2026-06-01T00:00:00.000",
       "industry": "Information Technology Services",
       "total_market_cap": 781658580334.56,
-      "total_bve": 191688603742.83005,
-      "industry_pb_ratio": 4.08
+      "total_bve": 192227129290.73004,
+      "industry_pb_ratio": 4.07
     },
     {
       "report_date": "2026-06-02T00:00:00.000",
       "industry": "Information Technology Services",
       "total_market_cap": 777186728892.56,
-      "total_bve": 191688603742.83005,
-      "industry_pb_ratio": 4.05
+      "total_bve": 192227129290.73004,
+      "industry_pb_ratio": 4.04
     },
     {
       "report_date": "2026-06-03T00:00:00.000",
       "industry": "Information Technology Services",
       "total_market_cap": 738083248171.6898,
-      "total_bve": 191688603742.83005,
-      "industry_pb_ratio": 3.85
+      "total_bve": 192227129290.73004,
+      "industry_pb_ratio": 3.84
     },
     {
       "report_date": "2026-06-04T00:00:00.000",
       "industry": "Information Technology Services",
       "total_market_cap": 736683701958.65,
-      "total_bve": 191688603742.83005,
-      "industry_pb_ratio": 3.84
+      "total_bve": 192227129290.73004,
+      "industry_pb_ratio": 3.83
     },
     {
       "report_date": "2026-06-05T00:00:00.000",
       "industry": "Information Technology Services",
       "total_market_cap": 710820474950.83,
-      "total_bve": 191688603742.83005,
-      "industry_pb_ratio": 3.71
+      "total_bve": 192227129290.73004,
+      "industry_pb_ratio": 3.7
     },
     {
       "report_date": "2026-06-08T00:00:00.000",
       "industry": "Information Technology Services",
       "total_market_cap": 704321273021.2101,
-      "total_bve": 191688603742.83005,
-      "industry_pb_ratio": 3.67
+      "total_bve": 192227129290.73004,
+      "industry_pb_ratio": 3.66
     },
     {
       "report_date": "2026-06-09T00:00:00.000",
       "industry": "Information Technology Services",
       "total_market_cap": 699376438952.82,
-      "total_bve": 191688603742.83005,
-      "industry_pb_ratio": 3.65
+      "total_bve": 192227129290.73004,
+      "industry_pb_ratio": 3.64
     },
     {
       "report_date": "2026-06-10T00:00:00.000",
       "industry": "Information Technology Services",
       "total_market_cap": 683719596497.92,
-      "total_bve": 191688603742.83005,
-      "industry_pb_ratio": 3.57
+      "total_bve": 192227129290.73004,
+      "industry_pb_ratio": 3.56
     },
     {
       "report_date": "2026-06-11T00:00:00.000",
       "industry": "Information Technology Services",
       "total_market_cap": 685261788192.0402,
-      "total_bve": 191688603742.83005,
-      "industry_pb_ratio": 3.57
+      "total_bve": 192227129290.73004,
+      "industry_pb_ratio": 3.56
     },
     {
       "report_date": "2026-06-12T00:00:00.000",
       "industry": "Information Technology Services",
       "total_market_cap": 688343788400.3301,
-      "total_bve": 191688603742.83005,
-      "industry_pb_ratio": 3.59
+      "total_bve": 192227129290.73004,
+      "industry_pb_ratio": 3.58
     },
     {
       "report_date": "2026-06-15T00:00:00.000",
       "industry": "Information Technology Services",
       "total_market_cap": 681654414443.06,
-      "total_bve": 191688603742.83005,
-      "industry_pb_ratio": 3.56
+      "total_bve": 192227129290.73004,
+      "industry_pb_ratio": 3.55
     },
     {
       "report_date": "2026-06-16T00:00:00.000",
       "industry": "Information Technology Services",
       "total_market_cap": 687152599175.96,
-      "total_bve": 191688603742.83005,
-      "industry_pb_ratio": 3.58
+      "total_bve": 192227129290.73004,
+      "industry_pb_ratio": 3.57
     },
     {
       "report_date": "2026-06-17T00:00:00.000",
       "industry": "Information Technology Services",
       "total_market_cap": 667289684569.8401,
-      "total_bve": 191688603742.83005,
-      "industry_pb_ratio": 3.48
+      "total_bve": 192227129290.73004,
+      "industry_pb_ratio": 3.47
     },
     {
       "report_date": "2026-06-18T00:00:00.000",
       "industry": "Information Technology Services",
       "total_market_cap": 626950055518.7001,
-      "total_bve": 191688603742.83005,
-      "industry_pb_ratio": 3.27
+      "total_bve": 192227129290.73004,
+      "industry_pb_ratio": 3.26
     },
     {
       "report_date": "2026-06-19T00:00:00.000",
@@ -18574,6 +18644,41 @@
       "total_market_cap": 77374560.0,
       "total_bve": 274253.0,
       "industry_pb_ratio": 282.13
+    },
+    {
+      "report_date": "2026-06-22T00:00:00.000",
+      "industry": "Information Technology Services",
+      "total_market_cap": 623072690956.95,
+      "total_bve": 192227129290.73004,
+      "industry_pb_ratio": 3.24
+    },
+    {
+      "report_date": "2026-06-23T00:00:00.000",
+      "industry": "Information Technology Services",
+      "total_market_cap": 638279792833.99,
+      "total_bve": 192227129290.73004,
+      "industry_pb_ratio": 3.32
+    },
+    {
+      "report_date": "2026-06-24T00:00:00.000",
+      "industry": "Information Technology Services",
+      "total_market_cap": 635342898097.9701,
+      "total_bve": 192227129290.73004,
+      "industry_pb_ratio": 3.31
+    },
+    {
+      "report_date": "2026-06-25T00:00:00.000",
+      "industry": "Information Technology Services",
+      "total_market_cap": 621490456208.71,
+      "total_bve": 192227129290.73004,
+      "industry_pb_ratio": 3.23
+    },
+    {
+      "report_date": "2026-06-26T00:00:00.000",
+      "industry": "Information Technology Services",
+      "total_market_cap": 643602373591.3699,
+      "total_bve": 192227129290.73004,
+      "industry_pb_ratio": 3.35
     }
   ],
   "roe": [
@@ -18811,43 +18916,43 @@
     {
       "report_date": "2025-12-31T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_ttm_net_income": 35016577719.68048,
-      "total_avg_equity": 209647085332.7845,
+      "total_ttm_net_income": 35021157413.68048,
+      "total_avg_equity": 209647611227.2845,
       "industry_roe": 0.167
     },
     {
       "report_date": "2026-01-31T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_ttm_net_income": 35003577719.68048,
-      "total_avg_equity": 209605085332.7845,
+      "total_ttm_net_income": 35008157413.68048,
+      "total_avg_equity": 209605611227.2845,
       "industry_roe": 0.167
     },
     {
       "report_date": "2026-02-28T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_ttm_net_income": 34955364719.68048,
-      "total_avg_equity": 210702909332.7845,
+      "total_ttm_net_income": 34959944413.68048,
+      "total_avg_equity": 210703435227.2845,
       "industry_roe": 0.1659
     },
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_ttm_net_income": 37291226557.20322,
-      "total_avg_equity": 212193122504.1497,
-      "industry_roe": 0.1757
+      "total_ttm_net_income": 37295806251.20322,
+      "total_avg_equity": 212193648398.6497,
+      "industry_roe": 0.1758
     },
     {
       "report_date": "2026-04-30T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_ttm_net_income": 37338226557.20322,
-      "total_avg_equity": 212160622504.1497,
+      "total_ttm_net_income": 37342806251.20322,
+      "total_avg_equity": 212161148398.6497,
       "industry_roe": 0.176
     },
     {
       "report_date": "2026-05-31T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_ttm_net_income": 37479714557.20322,
-      "total_avg_equity": 212820928004.1497,
+      "total_ttm_net_income": 37484294251.20322,
+      "total_avg_equity": 212821453898.6497,
       "industry_roe": 0.1761
     }
   ],
@@ -19086,43 +19191,43 @@
     {
       "report_date": "2025-12-31T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_ttm_net_income": 35016577719.68048,
-      "total_avg_assets": 597322678965.0404,
+      "total_ttm_net_income": 35021157413.68048,
+      "total_avg_assets": 597322059295.5404,
       "industry_roa": 0.0586
     },
     {
       "report_date": "2026-01-31T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_ttm_net_income": 35003577719.68048,
-      "total_avg_assets": 597270678965.0404,
+      "total_ttm_net_income": 35008157413.68048,
+      "total_avg_assets": 597270059295.5404,
       "industry_roa": 0.0586
     },
     {
       "report_date": "2026-02-28T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_ttm_net_income": 34955364719.68048,
-      "total_avg_assets": 601068538465.0404,
+      "total_ttm_net_income": 34959944413.68048,
+      "total_avg_assets": 601067918795.5404,
       "industry_roa": 0.0582
     },
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_ttm_net_income": 37291226557.20322,
-      "total_avg_assets": 616922475038.4794,
-      "industry_roa": 0.0604
+      "total_ttm_net_income": 37295806251.20322,
+      "total_avg_assets": 616921855368.9794,
+      "industry_roa": 0.0605
     },
     {
       "report_date": "2026-04-30T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_ttm_net_income": 37338226557.20322,
-      "total_avg_assets": 616909475038.4794,
+      "total_ttm_net_income": 37342806251.20322,
+      "total_avg_assets": 616908855368.9794,
       "industry_roa": 0.0605
     },
     {
       "report_date": "2026-05-31T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_ttm_net_income": 37479714557.20322,
-      "total_avg_assets": 618797082038.4794,
+      "total_ttm_net_income": 37484294251.20322,
+      "total_avg_assets": 618796462368.9794,
       "industry_roa": 0.0606
     }
   ],
@@ -19382,8 +19487,8 @@
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Information Technology Services",
-      "industry_roe": 0.1757,
-      "industry_roa": 0.0604,
+      "industry_roe": 0.1758,
+      "industry_roa": 0.0605,
       "industry_equity_multiplier": 2.91
     },
     {
@@ -19636,43 +19741,43 @@
     {
       "report_date": "2025-12-31T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_ttm_gross_profit": 145312174832.84235,
-      "total_ttm_revenue": 453867893496.73883,
+      "total_ttm_gross_profit": 145312163057.84235,
+      "total_ttm_revenue": 453867888946.73883,
       "industry_gross_margin": 0.3202
     },
     {
       "report_date": "2026-01-31T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_ttm_gross_profit": 145301174832.84235,
-      "total_ttm_revenue": 453779893496.73883,
+      "total_ttm_gross_profit": 145301163057.84235,
+      "total_ttm_revenue": 453779888946.73883,
       "industry_gross_margin": 0.3202
     },
     {
       "report_date": "2026-02-28T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_ttm_gross_profit": 145818384832.84235,
-      "total_ttm_revenue": 455344023496.73883,
+      "total_ttm_gross_profit": 145818373057.84235,
+      "total_ttm_revenue": 455344018946.73883,
       "industry_gross_margin": 0.3202
     },
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_ttm_gross_profit": 147459911477.41144,
-      "total_ttm_revenue": 461099518130.82184,
+      "total_ttm_gross_profit": 147459899702.41144,
+      "total_ttm_revenue": 461099513580.82184,
       "industry_gross_margin": 0.3198
     },
     {
       "report_date": "2026-04-30T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_ttm_gross_profit": 147499911477.41144,
-      "total_ttm_revenue": 461128518130.82184,
+      "total_ttm_gross_profit": 147499899702.41144,
+      "total_ttm_revenue": 461128513580.82184,
       "industry_gross_margin": 0.3199
     },
     {
       "report_date": "2026-05-31T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_ttm_gross_profit": 147807596477.41144,
-      "total_ttm_revenue": 462118791130.82184,
+      "total_ttm_gross_profit": 147807584702.41144,
+      "total_ttm_revenue": 462118786580.82184,
       "industry_gross_margin": 0.3198
     }
   ],
@@ -19890,43 +19995,43 @@
     {
       "report_date": "2025-12-31T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_ttm_ebitda": 74468944927.91388,
-      "total_ttm_revenue": 453867893496.73883,
+      "total_ttm_ebitda": 74473756222.91388,
+      "total_ttm_revenue": 453867888946.73883,
       "industry_ebitda_margin": 0.1641
     },
     {
       "report_date": "2026-01-31T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_ttm_ebitda": 74469944927.91388,
-      "total_ttm_revenue": 453779893496.73883,
+      "total_ttm_ebitda": 74474756222.91388,
+      "total_ttm_revenue": 453779888946.73883,
       "industry_ebitda_margin": 0.1641
     },
     {
       "report_date": "2026-02-28T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_ttm_ebitda": 74555561927.91388,
-      "total_ttm_revenue": 455344023496.73883,
+      "total_ttm_ebitda": 74560373222.91388,
+      "total_ttm_revenue": 455344018946.73883,
       "industry_ebitda_margin": 0.1637
     },
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_ttm_ebitda": 75222601390.33588,
-      "total_ttm_revenue": 461099518130.82184,
+      "total_ttm_ebitda": 75227412685.33588,
+      "total_ttm_revenue": 461099513580.82184,
       "industry_ebitda_margin": 0.1631
     },
     {
       "report_date": "2026-04-30T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_ttm_ebitda": 75288601390.33588,
-      "total_ttm_revenue": 461128518130.82184,
+      "total_ttm_ebitda": 75293412685.33588,
+      "total_ttm_revenue": 461128513580.82184,
       "industry_ebitda_margin": 0.1633
     },
     {
       "report_date": "2026-05-31T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_ttm_ebitda": 75506273390.33588,
-      "total_ttm_revenue": 462118791130.82184,
+      "total_ttm_ebitda": 75511084685.33588,
+      "total_ttm_revenue": 462118786580.82184,
       "industry_ebitda_margin": 0.1634
     }
   ],
@@ -20165,43 +20270,43 @@
     {
       "report_date": "2025-12-31T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_ttm_net_income": 34961353648.68048,
-      "total_ttm_revenue": 453867893496.73883,
+      "total_ttm_net_income": 34965933342.68048,
+      "total_ttm_revenue": 453867888946.73883,
       "industry_net_margin": 0.077
     },
     {
       "report_date": "2026-01-31T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_ttm_net_income": 34948353648.68048,
-      "total_ttm_revenue": 453779893496.73883,
+      "total_ttm_net_income": 34952933342.68048,
+      "total_ttm_revenue": 453779888946.73883,
       "industry_net_margin": 0.077
     },
     {
       "report_date": "2026-02-28T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_ttm_net_income": 34900140648.68048,
-      "total_ttm_revenue": 455344023496.73883,
-      "industry_net_margin": 0.0766
+      "total_ttm_net_income": 34904720342.68048,
+      "total_ttm_revenue": 455344018946.73883,
+      "industry_net_margin": 0.0767
     },
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_ttm_net_income": 37272720557.20322,
-      "total_ttm_revenue": 461099518130.82184,
+      "total_ttm_net_income": 37277300251.20322,
+      "total_ttm_revenue": 461099513580.82184,
       "industry_net_margin": 0.0808
     },
     {
       "report_date": "2026-04-30T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_ttm_net_income": 37319720557.20322,
-      "total_ttm_revenue": 461128518130.82184,
+      "total_ttm_net_income": 37324300251.20322,
+      "total_ttm_revenue": 461128513580.82184,
       "industry_net_margin": 0.0809
     },
     {
       "report_date": "2026-05-31T00:00:00.000",
       "industry": "Information Technology Services",
-      "total_ttm_net_income": 37461208557.20322,
-      "total_ttm_revenue": 462118791130.82184,
+      "total_ttm_net_income": 37465788251.20322,
+      "total_ttm_revenue": 462118786580.82184,
       "industry_net_margin": 0.0811
     }
   ],
@@ -20455,13 +20560,13 @@
       "report_date": "2026-02-28T00:00:00.000",
       "industry": "Information Technology Services",
       "industry_roa": 0.0582,
-      "industry_net_margin": 0.0766,
+      "industry_net_margin": 0.0767,
       "industry_asset_turnover": 0.76
     },
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Information Technology Services",
-      "industry_roa": 0.0604,
+      "industry_roa": 0.0605,
       "industry_net_margin": 0.0808,
       "industry_asset_turnover": 0.75
     },

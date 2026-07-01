@@ -36,15 +36,6 @@
     "link": "https://finance.yahoo.com/m/1eac3fd0-d535-3986-a8bc-8e910f52e36e/stocks-to-watch-thursday%3A-.html"
   },
   {
-    "uuid": "08501801-66ee-3113-a401-9e991895ffc1",
-    "symbol": "TSLA",
-    "title": "Autodesk in proxy fight, General Mills reports mixed Q3: Morning Buzz",
-    "publisher": "TipRanks",
-    "report_date": "2025-03-21",
-    "type": "STORY",
-    "link": "https://finance.yahoo.com/news/autodesk-proxy-fight-general-mills-160527898.html"
-  },
-  {
     "uuid": "0f7139d3-271d-3e22-b37b-14abca6b8855",
     "symbol": "TSLA",
     "title": "These Stocks Moved the Most Today: Nvidia, Tesla, Rivian, Accenture, Carvana, D-Wave Quantum, and More",
@@ -52,6 +43,15 @@
     "report_date": "2025-03-21",
     "type": "STORY",
     "link": "https://finance.yahoo.com/m/0f7139d3-271d-3e22-b37b-14abca6b8855/these-stocks-moved-the-most.html"
+  },
+  {
+    "uuid": "08501801-66ee-3113-a401-9e991895ffc1",
+    "symbol": "TSLA",
+    "title": "Autodesk in proxy fight, General Mills reports mixed Q3: Morning Buzz",
+    "publisher": "TipRanks",
+    "report_date": "2025-03-21",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/autodesk-proxy-fight-general-mills-160527898.html"
   },
   {
     "uuid": "9fa0933e-573c-36a8-8e69-eacfa956fa70",
@@ -63,15 +63,6 @@
     "link": "https://finance.yahoo.com/news/accenture-reports-q2-beat-apple-161626223.html"
   },
   {
-    "uuid": "124a6d52-1c44-41a7-a9cd-0c3fa0be6445",
-    "symbol": "TSLA",
-    "title": "Delaware passes law designed to stop more Elon Musks from leaving state",
-    "publisher": "Yahoo Finance",
-    "report_date": "2025-03-27",
-    "type": "STORY",
-    "link": "https://finance.yahoo.com/news/delaware-passes-law-designed-to-stop-more-elon-musks-from-leaving-state-164403802.html"
-  },
-  {
     "uuid": "d78ee080-3dfe-3cef-a098-70895a1e8223",
     "symbol": "TSLA",
     "title": "The Zacks Analyst Blog Highlights Tesla, The Home Depot, Boston Scientific, Frequency Electronics and Bridger Aerospace",
@@ -79,6 +70,15 @@
     "report_date": "2025-03-27",
     "type": "STORY",
     "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-tesla-090000244.html"
+  },
+  {
+    "uuid": "124a6d52-1c44-41a7-a9cd-0c3fa0be6445",
+    "symbol": "TSLA",
+    "title": "Delaware passes law designed to stop more Elon Musks from leaving state",
+    "publisher": "Yahoo Finance",
+    "report_date": "2025-03-27",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/delaware-passes-law-designed-to-stop-more-elon-musks-from-leaving-state-164403802.html"
   },
   {
     "uuid": "5946fb3a-51f3-3de2-9938-a56fb2e43f64",

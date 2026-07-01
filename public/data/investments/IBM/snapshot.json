@@ -1,10 +1,10 @@
 {
   "symbol": "IBM",
-  "lastUpdated": "2026-06-23T00:06:23.255341+00:00",
+  "lastUpdated": "2026-06-29T23:40:07.848324+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-23T00:06:23.255341+00:00",
+    "snapshotBuiltAt": "2026-06-29T23:40:07.848324+00:00",
     "sections": {
-      "price": "2026-06-18"
+      "price": "2026-06-26"
     }
   },
   "source": "prefetched",
@@ -33,7 +33,7 @@
       "country": "United States",
       "industry": "Information Technology Services",
       "sector": "Technology",
-      "longBusinessSummary": "International Business Machines Corporation, together with its subsidiaries, provides integrated solutions and services in the Americas, Europe, the Middle East, Africa, and the Asia Pacific. It operates through Software, Consulting, Infrastructure, and Financing segments. The Software segment offers hybrid cloud and AI platforms that allow clients to realize their digital and AI transformations across the applications, data, and environments in which they operate. The Consulting segment delivers strategy and technology services and intelligent operations, providing business transformation, technology implementation, managed services, application modernization, and AI-powered solutions. The Infrastructure segment provides on-premises and cloud-based server, and storage solutions, as well as life-cycle services for hybrid cloud infrastructure deployment. Its Financing segment offers client and commercial financing, and facilitates IBM clients' acquisition of hardware, software, and services. It has strategic partnerships with various companies, including hyperscalers, service providers, global system integrators, and software and hardware vendors that include Adobe, Amazon Web Services, Microsoft, Oracle, Salesforce, Samsung Electronics and SAP, and others. Additionally, the company operate a data streaming platform. The company has a strategic collaboration with Arm Holdings plc for the development of new dual-architecture hardware that helps enterprises run future AI and data intensive workloads; and strategic partnership with three.ws to advance ai-powered 3d agent technology. The company was formerly known as Computing-Tabulating-Recording Co. International Business Machines Corporation was incorporated in 1911 and is headquartered in Armonk, New York.",
+      "longBusinessSummary": "International Business Machines Corporation, together with its subsidiaries, provides integrated solutions and services in the Americas, Europe, the Middle East, Africa, and the Asia Pacific. It operates through Software, Consulting, Infrastructure, and Financing segments. The Software segment offers hybrid cloud and AI platforms that allow clients to realize their digital and AI transformations across the applications, data, and environments in which they operate. The Consulting segment delivers strategy and technology services and intelligent operations, providing business transformation, technology implementation, managed services, application modernization, and AI-powered solutions. The Infrastructure segment provides on-premises and cloud-based server, and storage solutions, as well as life-cycle services for hybrid cloud infrastructure deployment. Its Financing segment offers client and commercial financing, and facilitates IBM clients' acquisition of hardware, software, and services. It has strategic partnerships with various companies, including hyperscalers, service providers, global system integrators, and software and hardware vendors that include Adobe, Amazon Web Services, Microsoft, Oracle, Salesforce, Samsung Electronics and SAP, and others. Additionally, the company operate a data streaming platform. The company has a strategic collaboration with Arm Holdings plc for the development of new dual-architecture hardware that helps enterprises run future AI and data intensive workloads; and strategic partnership with three.ws to advance ai-powered 3d agent technology; has a collaboration with Lightwell to help strengthen open source software supply chain. The company was formerly known as Computing-Tabulating-Recording Co. International Business Machines Corporation was incorporated in 1911 and is headquartered in Armonk, New York.",
       "fullTimeEmployees": 264300,
       "website": "https://www.ibm.com",
       "shortName": "International Business Machines",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.3093,
-      "ttmPe": 22.03,
-      "marketCap": 234154000000,
-      "psRatio": 3.4,
-      "pbRatio": 7.1,
-      "pegRatio": 1.53
+      "ttmPe": 24.02,
+      "marketCap": 255332200000,
+      "psRatio": 3.71,
+      "pbRatio": 7.74,
+      "pegRatio": 1.66
     },
     "profitability": {
       "roe": 3.71,
@@ -6354,57 +6354,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.93,
-      "costOfEquity": 10.12,
+      "wacc": 8.04,
+      "costOfEquity": 10.07,
       "costOfDebt": 0.6799999999999999,
       "taxRate": 12,
-      "beta": 0.6736,
-      "marketCap": 234154000000
+      "beta": 0.6701,
+      "marketCap": 255332200000
     },
     "beta": {
-      "beta5y": 0.6736
+      "beta5y": 0.6701
     },
     "price": [
-      {
-        "date": "2025-06-18",
-        "open": 285,
-        "high": 286.91,
-        "low": 282.94,
-        "close": 283.21,
-        "volume": 3534100
-      },
-      {
-        "date": "2025-06-20",
-        "open": 279.28,
-        "high": 284.12,
-        "low": 277.2,
-        "close": 280.97,
-        "volume": 7677000
-      },
-      {
-        "date": "2025-06-23",
-        "open": 281.65,
-        "high": 289.58,
-        "low": 280.21,
-        "close": 289.18,
-        "volume": 3786200
-      },
-      {
-        "date": "2025-06-24",
-        "open": 290.46,
-        "high": 294.34,
-        "low": 288.41,
-        "close": 293.79,
-        "volume": 4219100
-      },
-      {
-        "date": "2025-06-25",
-        "open": 294.49,
-        "high": 296.16,
-        "low": 289.5,
-        "close": 291.06,
-        "volume": 3862300
-      },
       {
         "date": "2025-06-26",
         "open": 291.8,
@@ -8380,6 +8340,46 @@
         "low": 243.68,
         "close": 249.1,
         "volume": 16619700
+      },
+      {
+        "date": "2026-06-22",
+        "open": 248.43,
+        "high": 253.31,
+        "low": 243.81,
+        "close": 252.22,
+        "volume": 9615400
+      },
+      {
+        "date": "2026-06-23",
+        "open": 261.58,
+        "high": 267.53,
+        "low": 255.26,
+        "close": 264.94,
+        "volume": 15686100
+      },
+      {
+        "date": "2026-06-24",
+        "open": 261.84,
+        "high": 265.07,
+        "low": 256.18,
+        "close": 262.96,
+        "volume": 8149900
+      },
+      {
+        "date": "2026-06-25",
+        "open": 267.67,
+        "high": 268.76,
+        "low": 256,
+        "close": 258.27,
+        "volume": 8520700
+      },
+      {
+        "date": "2026-06-26",
+        "open": 258.94,
+        "high": 273.14,
+        "low": 258.28,
+        "close": 271.63,
+        "volume": 9697900
       }
     ],
     "news": [
@@ -8432,19 +8432,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "6dd67bf6-faa3-387e-93bc-b081fa3a14da",
-        "title": "Herbalife and Abercrombie and Fitch have been highlighted as Zacks Bull and Bear of the Day",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/herbalife-abercrombie-fitch-highlighted-zacks-133500305.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "4108daec-5933-31f7-9e1f-5d8cb6c5e76b",
         "title": "Rigetti vs. IBM: Which Quantum Computing Stock Has Better Prospects?",
         "publisher": "Zacks",
         "reportDate": "2025-05-28",
         "link": "https://finance.yahoo.com/news/rigetti-vs-ibm-quantum-computing-161500616.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6dd67bf6-faa3-387e-93bc-b081fa3a14da",
+        "title": "Herbalife and Abercrombie and Fitch have been highlighted as Zacks Bull and Bear of the Day",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/news/herbalife-abercrombie-fitch-highlighted-zacks-133500305.html",
         "type": "STORY"
       },
       {
@@ -8526,18 +8526,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.03,
-        "industryAvg": 14.44
+        "value": 24.02,
+        "industryAvg": 14.96
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.4,
-        "industryAvg": 254.69
+        "value": 3.71,
+        "industryAvg": 1.43
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.1,
-        "industryAvg": 282.13
+        "value": 7.74,
+        "industryAvg": 3.35
       },
       {
         "metric": "ROE",
@@ -8566,10 +8566,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 290.27,
-      "currentPrice": 249.1,
-      "upside": 16.53,
-      "wacc": 7.93,
+      "fairValue": 283.88,
+      "currentPrice": 271.63,
+      "upside": 4.51,
+      "wacc": 8.04,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 14.44,
         "Terminal growth": 3

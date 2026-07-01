@@ -5648,6 +5648,41 @@
       "total_market_cap": 1404274682183.0,
       "total_ttm_net_income": 30603442465.0,
       "industry_pe": 45.89
+    },
+    {
+      "report_date": "2026-06-22T00:00:00.000",
+      "industry": "Computer Hardware",
+      "total_market_cap": 1434469173990.0,
+      "total_ttm_net_income": 30603442465.0,
+      "industry_pe": 46.87
+    },
+    {
+      "report_date": "2026-06-23T00:00:00.000",
+      "industry": "Computer Hardware",
+      "total_market_cap": 1341749849137.0,
+      "total_ttm_net_income": 30603442465.0,
+      "industry_pe": 43.84
+    },
+    {
+      "report_date": "2026-06-24T00:00:00.000",
+      "industry": "Computer Hardware",
+      "total_market_cap": 1315891620202.0,
+      "total_ttm_net_income": 30603442465.0,
+      "industry_pe": 43.0
+    },
+    {
+      "report_date": "2026-06-25T00:00:00.000",
+      "industry": "Computer Hardware",
+      "total_market_cap": 1382432509134.0,
+      "total_ttm_net_income": 30603442465.0,
+      "industry_pe": 45.17
+    },
+    {
+      "report_date": "2026-06-26T00:00:00.000",
+      "industry": "Computer Hardware",
+      "total_market_cap": 1268683064659.0,
+      "total_ttm_net_income": 30603442465.0,
+      "industry_pe": 41.46
     }
   ],
   "ps_ratio": [
@@ -10911,393 +10946,393 @@
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 646397524638.6799,
-      "total_ttm_revenue": 266293305639.68,
+      "total_market_cap": 646409102692.6799,
+      "total_ttm_revenue": 266311397968.68,
       "industry_ps_ratio": 2.43
     },
     {
       "report_date": "2026-04-01T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 677607844126.0801,
-      "total_ttm_revenue": 266293305639.68,
+      "total_market_cap": 677618755202.0801,
+      "total_ttm_revenue": 266311397968.68,
       "industry_ps_ratio": 2.54
     },
     {
       "report_date": "2026-04-02T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 688060187172.27,
-      "total_ttm_revenue": 266293305639.68,
+      "total_market_cap": 688070499678.27,
+      "total_ttm_revenue": 266311397968.68,
       "industry_ps_ratio": 2.58
     },
     {
       "report_date": "2026-04-06T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 696584830997.77,
-      "total_ttm_revenue": 266293305639.68,
+      "total_market_cap": 696594886973.77,
+      "total_ttm_revenue": 266311397968.68,
       "industry_ps_ratio": 2.62
     },
     {
       "report_date": "2026-04-07T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 712868241375.0701,
-      "total_ttm_revenue": 266293305639.68,
+      "total_market_cap": 712878365759.0701,
+      "total_ttm_revenue": 266311397968.68,
       "industry_ps_ratio": 2.68
     },
     {
       "report_date": "2026-04-08T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 760213995289.5701,
-      "total_ttm_revenue": 266293305639.68,
+      "total_market_cap": 760224855059.5701,
+      "total_ttm_revenue": 266311397968.68,
       "industry_ps_ratio": 2.85
     },
     {
       "report_date": "2026-04-09T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 766809138639.98,
-      "total_ttm_revenue": 266293305639.68,
+      "total_market_cap": 766820220735.98,
+      "total_ttm_revenue": 266311397968.68,
       "industry_ps_ratio": 2.88
     },
     {
       "report_date": "2026-04-10T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 770870416297.48,
-      "total_ttm_revenue": 266293305639.68,
+      "total_market_cap": 770880882721.48,
+      "total_ttm_revenue": 266311397968.68,
       "industry_ps_ratio": 2.89
     },
     {
       "report_date": "2026-04-13T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 808212970306.0801,
-      "total_ttm_revenue": 266293305639.68,
-      "industry_ps_ratio": 3.04
+      "total_market_cap": 808223915586.0801,
+      "total_ttm_revenue": 266311397968.68,
+      "industry_ps_ratio": 3.03
     },
     {
       "report_date": "2026-04-14T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 821772931112.1699,
-      "total_ttm_revenue": 266293305639.68,
+      "total_market_cap": 821783739576.1699,
+      "total_ttm_revenue": 266311397968.68,
       "industry_ps_ratio": 3.09
     },
     {
       "report_date": "2026-04-15T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 812254077407.5701,
-      "total_ttm_revenue": 266293305639.68,
+      "total_market_cap": 812265073993.5701,
+      "total_ttm_revenue": 266311397968.68,
       "industry_ps_ratio": 3.05
     },
     {
       "report_date": "2026-04-16T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 841663241649.87,
-      "total_ttm_revenue": 266293305639.68,
+      "total_market_cap": 841673656767.87,
+      "total_ttm_revenue": 266311397968.68,
       "industry_ps_ratio": 3.16
     },
     {
       "report_date": "2026-04-17T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 856238679955.19,
-      "total_ttm_revenue": 266293305639.68,
+      "total_market_cap": 856249231889.19,
+      "total_ttm_revenue": 266311397968.68,
       "industry_ps_ratio": 3.22
     },
     {
       "report_date": "2026-04-20T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 863500563950.99,
-      "total_ttm_revenue": 266293305639.68,
+      "total_market_cap": 863512142004.99,
+      "total_ttm_revenue": 266311397968.68,
       "industry_ps_ratio": 3.24
     },
     {
       "report_date": "2026-04-21T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 882706282358.1699,
-      "total_ttm_revenue": 266293305639.68,
+      "total_market_cap": 882717706494.1699,
+      "total_ttm_revenue": 266311397968.68,
       "industry_ps_ratio": 3.31
     },
     {
       "report_date": "2026-04-22T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 908720453599.0801,
-      "total_ttm_revenue": 266293305639.68,
+      "total_market_cap": 908729449251.0801,
+      "total_ttm_revenue": 266311397968.68,
       "industry_ps_ratio": 3.41
     },
     {
       "report_date": "2026-04-23T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 895414227174.1699,
-      "total_ttm_revenue": 266293305639.68,
+      "total_market_cap": 895421752054.1699,
+      "total_ttm_revenue": 266311397968.68,
       "industry_ps_ratio": 3.36
     },
     {
       "report_date": "2026-04-24T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 913345780454.57,
-      "total_ttm_revenue": 266293305639.68,
+      "total_market_cap": 913352672560.57,
+      "total_ttm_revenue": 266311397968.68,
       "industry_ps_ratio": 3.43
     },
     {
       "report_date": "2026-04-27T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 921818283760.6599,
-      "total_ttm_revenue": 266293305639.68,
+      "total_market_cap": 921824389174.6599,
+      "total_ttm_revenue": 266311397968.68,
       "industry_ps_ratio": 3.46
     },
     {
       "report_date": "2026-04-28T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 885997484918.77,
-      "total_ttm_revenue": 266293305639.68,
+      "total_market_cap": 886003573230.77,
+      "total_ttm_revenue": 266311397968.68,
       "industry_ps_ratio": 3.33
     },
     {
       "report_date": "2026-04-29T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 920111285456.5701,
-      "total_ttm_revenue": 266293305639.68,
+      "total_market_cap": 920116792300.5701,
+      "total_ttm_revenue": 266311397968.68,
       "industry_ps_ratio": 3.46
     },
     {
       "report_date": "2026-04-30T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 951311194035.27,
-      "total_ttm_revenue": 288221372639.68,
+      "total_market_cap": 951317094225.27,
+      "total_ttm_revenue": 288239464968.68,
       "industry_ps_ratio": 3.3
     },
     {
       "report_date": "2026-05-01T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 976908877209.77,
-      "total_ttm_revenue": 288221372639.68,
+      "total_market_cap": 976915204949.77,
+      "total_ttm_revenue": 288239464968.68,
       "industry_ps_ratio": 3.39
     },
     {
       "report_date": "2026-05-04T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 995828089057.4701,
-      "total_ttm_revenue": 288221372639.68,
-      "industry_ps_ratio": 3.46
+      "total_market_cap": 995834091859.4701,
+      "total_ttm_revenue": 288239464968.68,
+      "industry_ps_ratio": 3.45
     },
     {
       "report_date": "2026-05-05T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1036771612147.19,
-      "total_ttm_revenue": 288221372639.68,
+      "total_market_cap": 1036778196417.19,
+      "total_ttm_revenue": 288239464968.68,
       "industry_ps_ratio": 3.6
     },
     {
       "report_date": "2026-05-06T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1039945595663.2699,
-      "total_ttm_revenue": 288221372639.68,
+      "total_market_cap": 1039951837893.2699,
+      "total_ttm_revenue": 288239464968.68,
       "industry_ps_ratio": 3.61
     },
     {
       "report_date": "2026-05-07T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1002712706604.5701,
-      "total_ttm_revenue": 288221372639.68,
+      "total_market_cap": 1002719496098.5701,
+      "total_ttm_revenue": 288239464968.68,
       "industry_ps_ratio": 3.48
     },
     {
       "report_date": "2026-05-08T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1070442757461.5701,
-      "total_ttm_revenue": 288221372639.68,
+      "total_market_cap": 1070449683771.5701,
+      "total_ttm_revenue": 288239464968.68,
       "industry_ps_ratio": 3.71
     },
     {
       "report_date": "2026-05-11T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1084573456825.55,
-      "total_ttm_revenue": 288221372639.68,
+      "total_market_cap": 1084580434441.55,
+      "total_ttm_revenue": 288239464968.68,
       "industry_ps_ratio": 3.76
     },
     {
       "report_date": "2026-05-12T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1052534925278.06,
-      "total_ttm_revenue": 288221372639.68,
+      "total_market_cap": 1052541355630.06,
+      "total_ttm_revenue": 288239464968.68,
       "industry_ps_ratio": 3.65
     },
     {
       "report_date": "2026-05-13T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1056196046268.37,
-      "total_ttm_revenue": 288221372639.68,
+      "total_market_cap": 1056202938374.37,
+      "total_ttm_revenue": 288239464968.68,
       "industry_ps_ratio": 3.66
     },
     {
       "report_date": "2026-05-14T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1054713199491.86,
-      "total_ttm_revenue": 288221372639.68,
+      "total_market_cap": 1054720416535.86,
+      "total_ttm_revenue": 288239464968.68,
       "industry_ps_ratio": 3.66
     },
     {
       "report_date": "2026-05-15T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1036289519371.06,
-      "total_ttm_revenue": 288221372639.68,
+      "total_market_cap": 1036296120743.06,
+      "total_ttm_revenue": 288239464968.68,
       "industry_ps_ratio": 3.6
     },
     {
       "report_date": "2026-05-18T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 971927709038.26,
-      "total_ttm_revenue": 284558529639.68,
+      "total_market_cap": 971934173594.26,
+      "total_ttm_revenue": 284576621968.68,
       "industry_ps_ratio": 3.42
     },
     {
       "report_date": "2026-05-19T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 972849691424.46,
-      "total_ttm_revenue": 284558529639.68,
+      "total_market_cap": 972855523206.46,
+      "total_ttm_revenue": 284576621968.68,
       "industry_ps_ratio": 3.42
     },
     {
       "report_date": "2026-05-20T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 988068560240.4401,
-      "total_ttm_revenue": 284558529639.68,
+      "total_market_cap": 988074272308.4401,
+      "total_ttm_revenue": 284576621968.68,
       "industry_ps_ratio": 3.47
     },
     {
       "report_date": "2026-05-21T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1057957365107.95,
-      "total_ttm_revenue": 284558529639.68,
+      "total_market_cap": 1057962871951.95,
+      "total_ttm_revenue": 284576621968.68,
       "industry_ps_ratio": 3.72
     },
     {
       "report_date": "2026-05-22T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1095845301887.7699,
-      "total_ttm_revenue": 284558529639.68,
+      "total_market_cap": 1095850979751.7699,
+      "total_ttm_revenue": 284576621968.68,
       "industry_ps_ratio": 3.85
     },
     {
       "report_date": "2026-05-26T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1144441701280.66,
-      "total_ttm_revenue": 284558529639.68,
+      "total_market_cap": 1144446831880.66,
+      "total_ttm_revenue": 284576621968.68,
       "industry_ps_ratio": 4.02
     },
     {
       "report_date": "2026-05-27T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1148893755683.17,
-      "total_ttm_revenue": 284558529639.68,
+      "total_market_cap": 1148901263461.17,
+      "total_ttm_revenue": 284576621968.68,
       "industry_ps_ratio": 4.04
     },
     {
       "report_date": "2026-05-28T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1169596044855.55,
-      "total_ttm_revenue": 284558529639.68,
+      "total_market_cap": 1169602201575.55,
+      "total_ttm_revenue": 284576621968.68,
       "industry_ps_ratio": 4.11
     },
     {
       "report_date": "2026-05-29T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1258882139951.15,
-      "total_ttm_revenue": 284558529639.68,
+      "total_market_cap": 1258888467691.15,
+      "total_ttm_revenue": 284576621968.68,
       "industry_ps_ratio": 4.42
     },
     {
       "report_date": "2026-06-01T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1330020152937.73,
-      "total_ttm_revenue": 284558529639.68,
+      "total_market_cap": 1330026685901.73,
+      "total_ttm_revenue": 284576621968.68,
       "industry_ps_ratio": 4.67
     },
     {
       "report_date": "2026-06-02T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1317640360198.5498,
-      "total_ttm_revenue": 284558529639.68,
+      "total_market_cap": 1317646944468.5498,
+      "total_ttm_revenue": 284576621968.68,
       "industry_ps_ratio": 4.63
     },
     {
       "report_date": "2026-06-03T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1329709563501.95,
-      "total_ttm_revenue": 284558529639.68,
+      "total_market_cap": 1329715686017.95,
+      "total_ttm_revenue": 284576621968.68,
       "industry_ps_ratio": 4.67
     },
     {
       "report_date": "2026-06-04T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1297656719507.0198,
-      "total_ttm_revenue": 284558529639.68,
+      "total_market_cap": 1297663081451.0198,
+      "total_ttm_revenue": 284576621968.68,
       "industry_ps_ratio": 4.56
     },
     {
       "report_date": "2026-06-05T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1182016996449.06,
-      "total_ttm_revenue": 284558529639.68,
+      "total_market_cap": 1182022776925.06,
+      "total_ttm_revenue": 284576621968.68,
       "industry_ps_ratio": 4.15
     },
     {
       "report_date": "2026-06-08T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1218141940613.44,
-      "total_ttm_revenue": 284558529639.68,
+      "total_market_cap": 1218147892109.44,
+      "total_ttm_revenue": 284576621968.68,
       "industry_ps_ratio": 4.28
     },
     {
       "report_date": "2026-06-09T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1183245722064.24,
-      "total_ttm_revenue": 284558529639.68,
+      "total_market_cap": 1183251741968.24,
+      "total_ttm_revenue": 284576621968.68,
       "industry_ps_ratio": 4.16
     },
     {
       "report_date": "2026-06-10T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1149293836387.94,
-      "total_ttm_revenue": 284558529639.68,
+      "total_market_cap": 1149299616863.94,
+      "total_ttm_revenue": 284576621968.68,
       "industry_ps_ratio": 4.04
     },
     {
       "report_date": "2026-06-11T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1234078490700.44,
-      "total_ttm_revenue": 284558529639.68,
+      "total_market_cap": 1234084476400.44,
+      "total_ttm_revenue": 284576621968.68,
       "industry_ps_ratio": 4.34
     },
     {
       "report_date": "2026-06-12T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1285992307033.06,
-      "total_ttm_revenue": 284558529639.68,
+      "total_market_cap": 1285998275631.06,
+      "total_ttm_revenue": 284576621968.68,
       "industry_ps_ratio": 4.52
     },
     {
       "report_date": "2026-06-15T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1375493399341.94,
-      "total_ttm_revenue": 284558529639.68,
+      "total_market_cap": 1375499214021.94,
+      "total_ttm_revenue": 284576621968.68,
       "industry_ps_ratio": 4.83
     },
     {
       "report_date": "2026-06-16T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1360404545650.06,
-      "total_ttm_revenue": 284558529639.68,
+      "total_market_cap": 1360410343228.06,
+      "total_ttm_revenue": 284576621968.68,
       "industry_ps_ratio": 4.78
     },
     {
       "report_date": "2026-06-17T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1376541460371.56,
-      "total_ttm_revenue": 284558529639.68,
+      "total_market_cap": 1376547411867.56,
+      "total_ttm_revenue": 284576621968.68,
       "industry_ps_ratio": 4.84
     },
     {
       "report_date": "2026-06-18T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1427407361082.26,
-      "total_ttm_revenue": 284558529639.68,
+      "total_market_cap": 1427413620414.26,
+      "total_ttm_revenue": 284576621968.68,
       "industry_ps_ratio": 5.02
     },
     {
@@ -11306,6 +11341,41 @@
       "total_market_cap": 351831.06,
       "total_ttm_revenue": 0.0,
       "industry_ps_ratio": null
+    },
+    {
+      "report_date": "2026-06-22T00:00:00.000",
+      "industry": "Computer Hardware",
+      "total_market_cap": 1457157090541.26,
+      "total_ttm_revenue": 284576621968.68,
+      "industry_ps_ratio": 5.12
+    },
+    {
+      "report_date": "2026-06-23T00:00:00.000",
+      "industry": "Computer Hardware",
+      "total_market_cap": 1364388290939.06,
+      "total_ttm_revenue": 284576621968.68,
+      "industry_ps_ratio": 4.79
+    },
+    {
+      "report_date": "2026-06-24T00:00:00.000",
+      "industry": "Computer Hardware",
+      "total_market_cap": 1336798689516.26,
+      "total_ttm_revenue": 284576621968.68,
+      "industry_ps_ratio": 4.7
+    },
+    {
+      "report_date": "2026-06-25T00:00:00.000",
+      "industry": "Computer Hardware",
+      "total_market_cap": 1402348155842.46,
+      "total_ttm_revenue": 284576621968.68,
+      "industry_ps_ratio": 4.93
+    },
+    {
+      "report_date": "2026-06-26T00:00:00.000",
+      "industry": "Computer Hardware",
+      "total_market_cap": 1288869679158.06,
+      "total_ttm_revenue": 284576621968.68,
+      "industry_ps_ratio": 4.53
     }
   ],
   "pb_ratio": [
@@ -18179,394 +18249,429 @@
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 574113588791.1,
-      "total_bve": 108049780493.71002,
-      "industry_pb_ratio": 5.31
+      "total_market_cap": 574334038270.1,
+      "total_bve": 108052828596.71002,
+      "industry_pb_ratio": 5.32
     },
     {
       "report_date": "2026-04-01T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 600578535537.3,
-      "total_bve": 108049780493.71002,
+      "total_market_cap": 600786285563.3,
+      "total_bve": 108052828596.71002,
       "industry_pb_ratio": 5.56
     },
     {
       "report_date": "2026-04-02T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 607502668539.86,
-      "total_bve": 108049780493.71002,
+      "total_market_cap": 607699021620.86,
+      "total_bve": 108052828596.71002,
       "industry_pb_ratio": 5.62
     },
     {
       "report_date": "2026-04-06T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 619327605559.5,
-      "total_bve": 108049780493.71002,
+      "total_market_cap": 619519074235.5,
+      "total_bve": 108052828596.71002,
       "industry_pb_ratio": 5.73
     },
     {
       "report_date": "2026-04-07T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 631990820807.4,
-      "total_bve": 108049780493.71002,
+      "total_market_cap": 632183591991.4,
+      "total_bve": 108052828596.71002,
       "industry_pb_ratio": 5.85
     },
     {
       "report_date": "2026-04-08T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 674355403082.14,
-      "total_bve": 108049780493.71002,
+      "total_market_cap": 674562176227.14,
+      "total_bve": 108052828596.71002,
       "industry_pb_ratio": 6.24
     },
     {
       "report_date": "2026-04-09T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 682927797947.6,
-      "total_bve": 108049780493.71002,
+      "total_market_cap": 683138804243.6,
+      "total_bve": 108052828596.71002,
       "industry_pb_ratio": 6.32
     },
     {
       "report_date": "2026-04-10T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 688720342908.06,
-      "total_bve": 108049780493.71002,
-      "industry_pb_ratio": 6.37
+      "total_market_cap": 688919626632.06,
+      "total_bve": 108052828596.71002,
+      "industry_pb_ratio": 6.38
     },
     {
       "report_date": "2026-04-13T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 717513088980.86,
-      "total_bve": 108049780493.71002,
+      "total_market_cap": 717721490260.86,
+      "total_bve": 108052828596.71002,
       "industry_pb_ratio": 6.64
     },
     {
       "report_date": "2026-04-14T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 734711463165.8,
-      "total_bve": 108049780493.71002,
+      "total_market_cap": 734917259429.8,
+      "total_bve": 108052828596.71002,
       "industry_pb_ratio": 6.8
     },
     {
       "report_date": "2026-04-15T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 730011529617.1001,
-      "total_bve": 108049780493.71002,
+      "total_market_cap": 730220907778.1001,
+      "total_bve": 108052828596.71002,
       "industry_pb_ratio": 6.76
     },
     {
       "report_date": "2026-04-16T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 747981873021.34,
-      "total_bve": 108049780493.71002,
+      "total_market_cap": 748180179864.34,
+      "total_bve": 108052828596.71002,
       "industry_pb_ratio": 6.92
     },
     {
       "report_date": "2026-04-17T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 762100599882.4401,
-      "total_bve": 108049780493.71002,
+      "total_market_cap": 762301511741.4401,
+      "total_bve": 108052828596.71002,
       "industry_pb_ratio": 7.05
     },
     {
       "report_date": "2026-04-20T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 764540855600.34,
-      "total_bve": 108049780493.71002,
+      "total_market_cap": 764761305079.34,
+      "total_bve": 108052828596.71002,
       "industry_pb_ratio": 7.08
     },
     {
       "report_date": "2026-04-21T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 774703109734.5,
-      "total_bve": 108049780493.71002,
+      "total_market_cap": 774920628570.5,
+      "total_bve": 108052828596.71002,
       "industry_pb_ratio": 7.17
     },
     {
       "report_date": "2026-04-22T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 799968160060.04,
-      "total_bve": 108049780493.71002,
-      "industry_pb_ratio": 7.4
+      "total_market_cap": 800139439862.04,
+      "total_bve": 108052828596.71002,
+      "industry_pb_ratio": 7.41
     },
     {
       "report_date": "2026-04-23T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 785333076449.16,
-      "total_bve": 108049780493.71002,
+      "total_market_cap": 785476352329.16,
+      "total_bve": 108052828596.71002,
       "industry_pb_ratio": 7.27
     },
     {
       "report_date": "2026-04-24T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 800243267148.44,
-      "total_bve": 108049780493.71002,
+      "total_market_cap": 800374494829.44,
+      "total_bve": 108052828596.71002,
       "industry_pb_ratio": 7.41
     },
     {
       "report_date": "2026-04-27T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 809245498218.76,
-      "total_bve": 108049780493.71002,
+      "total_market_cap": 809361747057.76,
+      "total_bve": 108052828596.71002,
       "industry_pb_ratio": 7.49
     },
     {
       "report_date": "2026-04-28T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 780474064547.76,
-      "total_bve": 108049780493.71002,
+      "total_market_cap": 780589987759.76,
+      "total_bve": 108052828596.71002,
       "industry_pb_ratio": 7.22
     },
     {
       "report_date": "2026-04-29T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 814738212010.8,
-      "total_bve": 108049780493.71002,
+      "total_market_cap": 814843063904.8,
+      "total_bve": 108052828596.71002,
       "industry_pb_ratio": 7.54
     },
     {
       "report_date": "2026-04-30T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 844191656030.7001,
-      "total_bve": 108046910493.71002,
+      "total_market_cap": 844303997345.7001,
+      "total_bve": 108049958596.71002,
       "industry_pb_ratio": 7.81
     },
     {
       "report_date": "2026-05-01T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 867814198882.7001,
-      "total_bve": 108046910493.71002,
+      "total_market_cap": 867934680872.7001,
+      "total_bve": 108049958596.71002,
       "industry_pb_ratio": 8.03
     },
     {
       "report_date": "2026-05-04T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 886728449579.9,
-      "total_bve": 108046910493.71002,
+      "total_market_cap": 886842744656.9,
+      "total_bve": 108049958596.71002,
       "industry_pb_ratio": 8.21
     },
     {
       "report_date": "2026-05-05T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 923376857970.4199,
-      "total_bve": 108046910493.71002,
+      "total_market_cap": 923502224365.4199,
+      "total_bve": 108049958596.71002,
       "industry_pb_ratio": 8.55
     },
     {
       "report_date": "2026-05-06T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 912191977349.1001,
-      "total_bve": 108046910493.71002,
+      "total_market_cap": 912310831204.1001,
+      "total_bve": 108049958596.71002,
       "industry_pb_ratio": 8.44
     },
     {
       "report_date": "2026-05-07T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 880536842833.0,
-      "total_bve": 108046910493.71002,
+      "total_market_cap": 880666116752.0,
+      "total_bve": 108049958596.71002,
       "industry_pb_ratio": 8.15
     },
     {
       "report_date": "2026-05-08T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 927433633245.1001,
-      "total_bve": 108046910493.71002,
+      "total_market_cap": 927565512180.1001,
+      "total_bve": 108049958596.71002,
       "industry_pb_ratio": 8.58
     },
     {
       "report_date": "2026-05-11T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 951950115966.08,
-      "total_bve": 108046910493.71002,
+      "total_market_cap": 952082971782.08,
+      "total_bve": 108049958596.71002,
       "industry_pb_ratio": 8.81
     },
     {
       "report_date": "2026-05-12T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 925483521762.6,
-      "total_bve": 108046910493.71002,
+      "total_market_cap": 925605957514.6,
+      "total_bve": 108049958596.71002,
       "industry_pb_ratio": 8.57
     },
     {
       "report_date": "2026-05-13T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 926397323385.3,
-      "total_bve": 108046910493.71002,
-      "industry_pb_ratio": 8.57
+      "total_market_cap": 926528551066.3,
+      "total_bve": 108049958596.71002,
+      "industry_pb_ratio": 8.58
     },
     {
       "report_date": "2026-05-14T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 922817440144.8,
-      "total_bve": 108046910493.71002,
+      "total_market_cap": 922954854738.8,
+      "total_bve": 108049958596.71002,
       "industry_pb_ratio": 8.54
     },
     {
       "report_date": "2026-05-15T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 907523211681.5,
-      "total_bve": 108046910493.71002,
+      "total_market_cap": 907648903703.5,
+      "total_bve": 108049958596.71002,
       "industry_pb_ratio": 8.4
     },
     {
       "report_date": "2026-05-18T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 845783230638.8,
-      "total_bve": 106601242493.71002,
-      "industry_pb_ratio": 7.93
+      "total_market_cap": 845906317644.8,
+      "total_bve": 106604290596.71002,
+      "industry_pb_ratio": 7.94
     },
     {
       "report_date": "2026-05-19T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 849203724447.8,
-      "total_bve": 106601242493.71002,
+      "total_market_cap": 849314763254.8,
+      "total_bve": 106604290596.71002,
       "industry_pb_ratio": 7.97
     },
     {
       "report_date": "2026-05-20T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 858317810627.68,
-      "total_bve": 106601242493.71002,
+      "total_market_cap": 858426570045.68,
+      "total_bve": 106604290596.71002,
       "industry_pb_ratio": 8.05
     },
     {
       "report_date": "2026-05-21T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 920747806429.1001,
-      "total_bve": 106601242493.71002,
+      "total_market_cap": 920852658323.1001,
+      "total_bve": 106604290596.71002,
       "industry_pb_ratio": 8.64
     },
     {
       "report_date": "2026-05-22T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 928078647359.12,
-      "total_bve": 106601242493.71002,
+      "total_market_cap": 928186755523.12,
+      "total_bve": 106604290596.71002,
       "industry_pb_ratio": 8.71
     },
     {
       "report_date": "2026-05-26T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 971884532121.6,
-      "total_bve": 106601242493.71002,
+      "total_market_cap": 971982220221.6,
+      "total_bve": 106604290596.71002,
       "industry_pb_ratio": 9.12
     },
     {
       "report_date": "2026-05-27T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 975577117295.02,
-      "total_bve": 106601242493.71002,
+      "total_market_cap": 975720067548.02,
+      "total_bve": 106604290596.71002,
       "industry_pb_ratio": 9.15
     },
     {
       "report_date": "2026-05-28T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 989763342246.8,
-      "total_bve": 106601242493.71002,
-      "industry_pb_ratio": 9.28
+      "total_market_cap": 989880567966.8,
+      "total_bve": 106604290596.71002,
+      "industry_pb_ratio": 9.29
     },
     {
       "report_date": "2026-05-29T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1010438294187.2,
-      "total_bve": 106601242493.71002,
+      "total_market_cap": 1010558776177.2,
+      "total_bve": 106604290596.71002,
       "industry_pb_ratio": 9.48
     },
     {
       "report_date": "2026-06-01T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1050795959614.18,
-      "total_bve": 106601242493.71002,
+      "total_market_cap": 1050920349128.18,
+      "total_bve": 106604290596.71002,
       "industry_pb_ratio": 9.86
     },
     {
       "report_date": "2026-06-02T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1060517743167.9,
-      "total_bve": 106601242493.71002,
+      "total_market_cap": 1060643109562.9,
+      "total_bve": 106604290596.71002,
       "industry_pb_ratio": 9.95
     },
     {
       "report_date": "2026-06-03T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1082451969822.4,
-      "total_bve": 106601242493.71002,
-      "industry_pb_ratio": 10.15
+      "total_market_cap": 1082568544288.4,
+      "total_bve": 106604290596.71002,
+      "industry_pb_ratio": 10.16
     },
     {
       "report_date": "2026-06-04T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1048857160614.78,
-      "total_bve": 106601242493.71002,
+      "total_market_cap": 1048978293858.78,
+      "total_bve": 106604290596.71002,
       "industry_pb_ratio": 9.84
     },
     {
       "report_date": "2026-06-05T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 950702643778.22,
-      "total_bve": 106601242493.71002,
+      "total_market_cap": 950812705704.22,
+      "total_bve": 106604290596.71002,
       "industry_pb_ratio": 8.92
     },
     {
       "report_date": "2026-06-08T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 985338396106.0,
-      "total_bve": 106601242493.71002,
+      "total_market_cap": 985451714302.0,
+      "total_bve": 106604290596.71002,
       "industry_pb_ratio": 9.24
     },
     {
       "report_date": "2026-06-09T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 960512048202.0,
-      "total_bve": 106601242493.71002,
+      "total_market_cap": 960626668906.0,
+      "total_bve": 106604290596.71002,
       "industry_pb_ratio": 9.01
     },
     {
       "report_date": "2026-06-10T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 933220558646.4,
-      "total_bve": 106601242493.71002,
-      "industry_pb_ratio": 8.75
+      "total_market_cap": 933330620572.4,
+      "total_bve": 106604290596.71002,
+      "industry_pb_ratio": 8.76
     },
     {
       "report_date": "2026-06-11T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1004788904302.4,
-      "total_bve": 106601242493.71002,
+      "total_market_cap": 1004902873752.4,
+      "total_bve": 106604290596.71002,
       "industry_pb_ratio": 9.43
     },
     {
       "report_date": "2026-06-12T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1053763856224.0,
-      "total_bve": 106601242493.71002,
+      "total_market_cap": 1053877500047.0,
+      "total_bve": 106604290596.71002,
       "industry_pb_ratio": 9.89
     },
     {
       "report_date": "2026-06-15T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1137901671292.0798,
-      "total_bve": 106601242493.71002,
-      "industry_pb_ratio": 10.67
+      "total_market_cap": 1138012384472.0798,
+      "total_bve": 106604290596.71002,
+      "industry_pb_ratio": 10.68
     },
     {
       "report_date": "2026-06-16T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1125555713422.0,
-      "total_bve": 106601242493.71002,
+      "total_market_cap": 1125666100975.0,
+      "total_bve": 106604290596.71002,
       "industry_pb_ratio": 10.56
     },
     {
       "report_date": "2026-06-17T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1131963208318.7,
-      "total_bve": 106601242493.71002,
+      "total_market_cap": 1132076526514.7,
+      "total_bve": 106604290596.71002,
       "industry_pb_ratio": 10.62
     },
     {
       "report_date": "2026-06-18T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_market_cap": 1190157833850.6,
-      "total_bve": 106601242493.71002,
-      "industry_pb_ratio": 11.16
+      "total_market_cap": 1190277013332.6,
+      "total_bve": 106604290596.71002,
+      "industry_pb_ratio": 11.17
+    },
+    {
+      "report_date": "2026-06-22T00:00:00.000",
+      "industry": "Computer Hardware",
+      "total_market_cap": 1211096355935.2,
+      "total_bve": 106604290596.71002,
+      "industry_pb_ratio": 11.36
+    },
+    {
+      "report_date": "2026-06-23T00:00:00.000",
+      "industry": "Computer Hardware",
+      "total_market_cap": 1111788796635.0,
+      "total_bve": 106604290596.71002,
+      "industry_pb_ratio": 10.43
+    },
+    {
+      "report_date": "2026-06-24T00:00:00.000",
+      "industry": "Computer Hardware",
+      "total_market_cap": 1080393499730.4,
+      "total_bve": 106604290596.71002,
+      "industry_pb_ratio": 10.13
+    },
+    {
+      "report_date": "2026-06-25T00:00:00.000",
+      "industry": "Computer Hardware",
+      "total_market_cap": 1162939237951.8,
+      "total_bve": 106604290596.71002,
+      "industry_pb_ratio": 10.91
+    },
+    {
+      "report_date": "2026-06-26T00:00:00.000",
+      "industry": "Computer Hardware",
+      "total_market_cap": 1056287611288.5,
+      "total_bve": 106604290596.71002,
+      "industry_pb_ratio": 9.91
     }
   ],
   "roe": [
@@ -18741,37 +18846,37 @@
     {
       "report_date": "2025-12-31T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_ttm_net_income": 15944498196.461847,
-      "total_avg_equity": 43459339676.36327,
-      "industry_roe": 0.3669
+      "total_ttm_net_income": 16817278196.461847,
+      "total_avg_equity": 50145006676.36327,
+      "industry_roe": 0.3354
     },
     {
       "report_date": "2026-01-31T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_ttm_net_income": 16659597196.461847,
-      "total_avg_equity": 42432090176.36327,
-      "industry_roe": 0.3926
+      "total_ttm_net_income": 17532377196.461845,
+      "total_avg_equity": 49117757176.36327,
+      "industry_roe": 0.3569
     },
     {
       "report_date": "2026-02-28T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_ttm_net_income": 16659597196.461847,
-      "total_avg_equity": 42432090176.36327,
-      "industry_roe": 0.3926
+      "total_ttm_net_income": 17532377196.461845,
+      "total_avg_equity": 49117757176.36327,
+      "industry_roe": 0.3569
     },
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_ttm_net_income": 26652939690.543938,
-      "total_avg_equity": 48633621510.14618,
-      "industry_roe": 0.548
+      "total_ttm_net_income": 27892817463.543938,
+      "total_avg_equity": 55592751241.14618,
+      "industry_roe": 0.5017
     },
     {
       "report_date": "2026-04-30T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_ttm_net_income": 29209041690.543938,
-      "total_avg_equity": 49829687010.14618,
-      "industry_roe": 0.5862
+      "total_ttm_net_income": 30448919463.543938,
+      "total_avg_equity": 56788816741.14618,
+      "industry_roe": 0.5362
     }
   ],
   "roa": [
@@ -18946,37 +19051,37 @@
     {
       "report_date": "2025-12-31T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_ttm_net_income": 15944498196.461847,
-      "total_avg_assets": 221066077144.31854,
-      "industry_roa": 0.0721
+      "total_ttm_net_income": 16817278196.461847,
+      "total_avg_assets": 240436144644.31854,
+      "industry_roa": 0.0699
     },
     {
       "report_date": "2026-01-31T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_ttm_net_income": 16659597196.461847,
-      "total_avg_assets": 231651579144.31854,
-      "industry_roa": 0.0719
+      "total_ttm_net_income": 17532377196.461845,
+      "total_avg_assets": 251021646644.31854,
+      "industry_roa": 0.0698
     },
     {
       "report_date": "2026-02-28T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_ttm_net_income": 16659597196.461847,
-      "total_avg_assets": 231651579144.31854,
-      "industry_roa": 0.0719
+      "total_ttm_net_income": 17532377196.461845,
+      "total_avg_assets": 251021646644.31854,
+      "industry_roa": 0.0698
     },
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_ttm_net_income": 26652939690.543938,
-      "total_avg_assets": 235056145989.7783,
-      "industry_roa": 0.1134
+      "total_ttm_net_income": 27892817463.543938,
+      "total_avg_assets": 253806057492.7783,
+      "industry_roa": 0.1099
     },
     {
       "report_date": "2026-04-30T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_ttm_net_income": 29209041690.543938,
-      "total_avg_assets": 244394633489.7783,
-      "industry_roa": 0.1195
+      "total_ttm_net_income": 30448919463.543938,
+      "total_avg_assets": 263144544992.7783,
+      "industry_roa": 0.1157
     }
   ],
   "equity_multiplier": [
@@ -19151,37 +19256,37 @@
     {
       "report_date": "2025-12-31T00:00:00.000",
       "industry": "Computer Hardware",
-      "industry_roe": 0.3669,
-      "industry_roa": 0.0721,
-      "industry_equity_multiplier": 5.09
+      "industry_roe": 0.3354,
+      "industry_roa": 0.0699,
+      "industry_equity_multiplier": 4.8
     },
     {
       "report_date": "2026-01-31T00:00:00.000",
       "industry": "Computer Hardware",
-      "industry_roe": 0.3926,
-      "industry_roa": 0.0719,
-      "industry_equity_multiplier": 5.46
+      "industry_roe": 0.3569,
+      "industry_roa": 0.0698,
+      "industry_equity_multiplier": 5.11
     },
     {
       "report_date": "2026-02-28T00:00:00.000",
       "industry": "Computer Hardware",
-      "industry_roe": 0.3926,
-      "industry_roa": 0.0719,
-      "industry_equity_multiplier": 5.46
+      "industry_roe": 0.3569,
+      "industry_roa": 0.0698,
+      "industry_equity_multiplier": 5.11
     },
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Computer Hardware",
-      "industry_roe": 0.548,
-      "industry_roa": 0.1134,
-      "industry_equity_multiplier": 4.83
+      "industry_roe": 0.5017,
+      "industry_roa": 0.1099,
+      "industry_equity_multiplier": 4.57
     },
     {
       "report_date": "2026-04-30T00:00:00.000",
       "industry": "Computer Hardware",
-      "industry_roe": 0.5862,
-      "industry_roa": 0.1195,
-      "industry_equity_multiplier": 4.91
+      "industry_roe": 0.5362,
+      "industry_roa": 0.1157,
+      "industry_equity_multiplier": 4.63
     }
   ],
   "gross_margin": [
@@ -19419,37 +19524,37 @@
     {
       "report_date": "2025-12-31T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_ttm_gross_profit": 61266634790.6904,
-      "total_ttm_revenue": 242865707562.97992,
-      "industry_gross_margin": 0.2523
+      "total_ttm_gross_profit": 63516894790.6904,
+      "total_ttm_revenue": 270922812562.97992,
+      "industry_gross_margin": 0.2344
     },
     {
       "report_date": "2026-01-31T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_ttm_gross_profit": 62454221790.6904,
-      "total_ttm_revenue": 253606004562.97992,
-      "industry_gross_margin": 0.2463
+      "total_ttm_gross_profit": 64704481790.6904,
+      "total_ttm_revenue": 281663109562.9799,
+      "industry_gross_margin": 0.2297
     },
     {
       "report_date": "2026-02-28T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_ttm_gross_profit": 62454221790.6904,
-      "total_ttm_revenue": 253606004562.97992,
-      "industry_gross_margin": 0.2463
+      "total_ttm_gross_profit": 64704481790.6904,
+      "total_ttm_revenue": 281663109562.9799,
+      "industry_gross_margin": 0.2297
     },
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_ttm_gross_profit": 69202738083.51752,
-      "total_ttm_revenue": 266293305639.68408,
-      "industry_gross_margin": 0.2599
+      "total_ttm_gross_profit": 72036677432.51752,
+      "total_ttm_revenue": 300011603968.6841,
+      "industry_gross_margin": 0.2401
     },
     {
       "report_date": "2026-04-30T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_ttm_gross_profit": 72514391083.51752,
-      "total_ttm_revenue": 288221372639.6841,
-      "industry_gross_margin": 0.2516
+      "total_ttm_gross_profit": 75348330432.51752,
+      "total_ttm_revenue": 321939670968.6841,
+      "industry_gross_margin": 0.234
     }
   ],
   "ebitda_margin": [
@@ -19687,37 +19792,37 @@
     {
       "report_date": "2025-12-31T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_ttm_ebitda": 26904719996.93319,
-      "total_ttm_revenue": 242865707562.97992,
-      "industry_ebitda_margin": 0.1108
+      "total_ttm_ebitda": 28114061996.93319,
+      "total_ttm_revenue": 270922812562.97992,
+      "industry_ebitda_margin": 0.1038
     },
     {
       "report_date": "2026-01-31T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_ttm_ebitda": 27751895996.93319,
-      "total_ttm_revenue": 253606004562.97992,
-      "industry_ebitda_margin": 0.1094
+      "total_ttm_ebitda": 28961237996.93319,
+      "total_ttm_revenue": 281663109562.9799,
+      "industry_ebitda_margin": 0.1028
     },
     {
       "report_date": "2026-02-28T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_ttm_ebitda": 27751895996.93319,
-      "total_ttm_revenue": 253606004562.97992,
-      "industry_ebitda_margin": 0.1094
+      "total_ttm_ebitda": 28961237996.93319,
+      "total_ttm_revenue": 281663109562.9799,
+      "industry_ebitda_margin": 0.1028
     },
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_ttm_ebitda": 38143653117.4239,
-      "total_ttm_revenue": 266293305639.68408,
-      "industry_ebitda_margin": 0.1432
+      "total_ttm_ebitda": 39899820482.4239,
+      "total_ttm_revenue": 300011603968.6841,
+      "industry_ebitda_margin": 0.133
     },
     {
       "report_date": "2026-04-30T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_ttm_ebitda": 41130719117.42389,
-      "total_ttm_revenue": 288221372639.6841,
-      "industry_ebitda_margin": 0.1427
+      "total_ttm_ebitda": 42886886482.42389,
+      "total_ttm_revenue": 321939670968.6841,
+      "industry_ebitda_margin": 0.1332
     }
   ],
   "net_margin": [
@@ -19955,37 +20060,37 @@
     {
       "report_date": "2025-12-31T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_ttm_net_income": 15944498196.461847,
-      "total_ttm_revenue": 242865707562.97992,
-      "industry_net_margin": 0.0657
+      "total_ttm_net_income": 16817278196.461847,
+      "total_ttm_revenue": 270922812562.97992,
+      "industry_net_margin": 0.0621
     },
     {
       "report_date": "2026-01-31T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_ttm_net_income": 16659597196.461847,
-      "total_ttm_revenue": 253606004562.97992,
-      "industry_net_margin": 0.0657
+      "total_ttm_net_income": 17532377196.461845,
+      "total_ttm_revenue": 281663109562.9799,
+      "industry_net_margin": 0.0622
     },
     {
       "report_date": "2026-02-28T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_ttm_net_income": 16659597196.461847,
-      "total_ttm_revenue": 253606004562.97992,
-      "industry_net_margin": 0.0657
+      "total_ttm_net_income": 17532377196.461845,
+      "total_ttm_revenue": 281663109562.9799,
+      "industry_net_margin": 0.0622
     },
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_ttm_net_income": 26652939690.543938,
-      "total_ttm_revenue": 266293305639.68408,
-      "industry_net_margin": 0.1001
+      "total_ttm_net_income": 27892817463.543938,
+      "total_ttm_revenue": 300011603968.6841,
+      "industry_net_margin": 0.093
     },
     {
       "report_date": "2026-04-30T00:00:00.000",
       "industry": "Computer Hardware",
-      "total_ttm_net_income": 29209041690.543938,
-      "total_ttm_revenue": 288221372639.6841,
-      "industry_net_margin": 0.1013
+      "total_ttm_net_income": 30448919463.543938,
+      "total_ttm_revenue": 321939670968.6841,
+      "industry_net_margin": 0.0946
     }
   ],
   "asset_turnover": [
@@ -20160,37 +20265,37 @@
     {
       "report_date": "2025-12-31T00:00:00.000",
       "industry": "Computer Hardware",
-      "industry_roa": 0.0721,
-      "industry_net_margin": 0.0657,
-      "industry_asset_turnover": 1.1
+      "industry_roa": 0.0699,
+      "industry_net_margin": 0.0621,
+      "industry_asset_turnover": 1.13
     },
     {
       "report_date": "2026-01-31T00:00:00.000",
       "industry": "Computer Hardware",
-      "industry_roa": 0.0719,
-      "industry_net_margin": 0.0657,
-      "industry_asset_turnover": 1.09
+      "industry_roa": 0.0698,
+      "industry_net_margin": 0.0622,
+      "industry_asset_turnover": 1.12
     },
     {
       "report_date": "2026-02-28T00:00:00.000",
       "industry": "Computer Hardware",
-      "industry_roa": 0.0719,
-      "industry_net_margin": 0.0657,
-      "industry_asset_turnover": 1.09
+      "industry_roa": 0.0698,
+      "industry_net_margin": 0.0622,
+      "industry_asset_turnover": 1.12
     },
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Computer Hardware",
-      "industry_roa": 0.1134,
-      "industry_net_margin": 0.1001,
-      "industry_asset_turnover": 1.13
+      "industry_roa": 0.1099,
+      "industry_net_margin": 0.093,
+      "industry_asset_turnover": 1.18
     },
     {
       "report_date": "2026-04-30T00:00:00.000",
       "industry": "Computer Hardware",
-      "industry_roa": 0.1195,
-      "industry_net_margin": 0.1013,
-      "industry_asset_turnover": 1.18
+      "industry_roa": 0.1157,
+      "industry_net_margin": 0.0946,
+      "industry_asset_turnover": 1.22
     }
   ]
 }
