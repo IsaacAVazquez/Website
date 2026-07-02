@@ -4,6 +4,89 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-06-24
+
+- Redesigned the `/ai-dev-tools` directory from a horizontally-scrolling table into a responsive row-card list (single column on mobile, three-up facts grid on wider screens) with a sort control (curated, GitHub stars, recently shipped, name), relative GitHub-stars bars, release-freshness dots, and lifecycle status badges, and fixed the placeholder GitHub quick-link to an open-source filter.
+- Surfaced a `Trending topics` leaderboard on the `/news-pulse` coverage view (keywords ranked across two or more outlets with a relative count bar and per-outlet coverage dots), replacing the hardcoded `Average reading time` placeholder stat with a real trending-topics count from the already-implemented topic extraction.
+- Restored investments live pricing and the `/api/investments/index` route in production by adding a canonical production-origin fallback (mirroring `seo.ts`) so the deployed Netlify function can reach its own committed public assets when `URL`/`SITE_URL`/`NEXT_PUBLIC_SITE_URL` are unset at runtime, and threaded the request origin through the Finnhub symbol-allowlist lookups used by the quotes, data, and stocks routes.
+- Made the investments allocation donut responsive and centered by switching the D3 SVG from fixed dimensions to a `viewBox` with a responsive box.
+- Synced the source-of-truth documentation set with the current codebase (fantasy-football surface overhaul, cross-surface browser stores, the shared snapshot commit-and-push helper, and a batch of stale-fact corrections).
+
+---
+
+## 2026-06-10
+
+- Filled out the investments research column with real position data only: a holdings card (shares, average cost, market value, total return, day P/L, allocation bar) drawn from the local portfolio, a price chart with a cost-basis reference line, a 50-day moving average, up/down volume coloring, and per-overlay toggle pills, plus restyled news cards with monogram thumbnails and mono timestamps.
+- Swapped the Formula 1 dashboard circuit-map images for a cleaner marker tile, trued the header, footer, projects, and writing pages against the V3 design system, and bumped the primary nav size to balance the header.
+- Published a dozen new writing pieces (a two-part horology history, a researched take on the AI mega-cap rally, a series on building with AI agents, and an early 2026 fantasy football look) and rewrote legacy post SEO descriptions in-voice.
+
+---
+
+## 2026-06-09
+
+- Launched three snapshot-driven dashboards: `/earthquake-pulse` (global USGS seismic activity, hourly refresh), `/bay-area-transit` (BART departures, service advisories, and elevator outages, every six hours), and `/tech-startup-tracker` (an editorially curated, unverified dataset with an on-page as-of disclosure).
+- Upgraded the `/travel` planner with itinerary stop time windows and overlap detection, day category color-coding, an itinerary progress bar, journal mood icons, and a fix for a localStorage bug that could corrupt or delete stored trips.
+- Ran a consolidation pass: moved off-system colors and micro-typography onto the editorial design tokens, unified card radius/shadows, fixed broken color-mix utilities, added dashboard loading states, lazy-loaded the MBA tracker dialogs and team crests, added screen-reader column associations across eight sports dashboards, removed nested landmarks on `/writing` and `/travel`, fixed keyboard access on the transit and startup dashboards, corrected the retirement planner success metric to count guaranteed income, fixed World Cup fixture date classification and the bare `/investments` URL-sync loop, and added unit coverage across several surfaces.
+
+---
+
+## 2026-06-08
+
+- Launched `/world-cup-2026` (World Cup Pulse), a snapshot-driven dashboard that works as a pre-kickoff tournament hub (format, venues, dates) and fills in groups, knockout bracket, schedule, and scorers from ESPN data refreshed every six hours, plus a ten-part contenders countdown series on `/writing`.
+- Added a retirement planner to the investments dashboard (`/investments#retirement`): allocation-derived return and volatility from dated capital-market assumptions, a seeded 1,000-trial Monte Carlo rendered as confidence bands with "N of 100 scenarios" framing, a two-phase accumulation/decumulation projection with coarse account-aware taxes, RMDs, Social Security claim mechanics, and withdrawal strategies, and a sensitivity panel computed off the critical path. Educational output only, with disclosed and editable assumptions.
+- Launched a fantasy Formula 1 lineup optimizer (`/fantasy-formula-1`) with versioned browser-local saved teams, added a tier-grouped position-column board view to `/fantasy-football/draft-tracker`, and gave the rankings page a list density toggle, sticky board header, and compact rows.
+- Rebuilt the `/food-map` on Leaflet as a multi-city, curator-driven surface, launching Miami, Atlanta, Copenhagen, and San Sebastián alongside Austin.
+
+---
+
+## 2026-05-31
+
+- Refreshed the about and portfolio surfaces, added a shared `HomeStatsPanel` feeding the homepage and writing archive, tightened player ID validation and snapshot handling across the sports modules, moved NBA player stats to a newer ESPN endpoint, and aligned UI copy with the writing voice.
+
+---
+
+## 2026-05-04
+
+- Launched the `/travel` planner (trips, day-by-day itineraries, per-trip journal) with all state persisted in localStorage and no backend or account.
+
+---
+
+## 2026-04-29
+
+- Shipped a nine-launch wave: `/nba`, `/mlb`, and `/nfl` dashboards (standings, fixtures, stat leaders from ESPN, the MLB Stats API, and NFLverse), `/github-trending-pulse`, `/frontier-models`, and personal tools `/food-map`, `/wine-cellar`, `/museum-log`, and `/recipe-finder`, each reading from a committed snapshot or curated dataset with no runtime API calls.
+
+---
+
+## 2026-04-26
+
+- Rolled out the V3 editorial design system across the homepage hero, the `/writing` archive layout, and a rebuilt three-column `/investments` dashboard that merges portfolio and research with a hero balance card, a dense key-metrics grid, and a numbers-first asset header.
+
+---
+
+## 2026-04-20
+
+- Refreshed the MBA internship tracker styling to match the editorial system, added compact company filters, expanded role sourcing across more career types, tightened job filtering, and gave the tracker a dedicated homepage feature slot.
+
+---
+
+## 2026-04-10
+
+- Launched the MBA internship notifications dashboard (`/mba-internship-notifications`) with role aggregation and per-company filters, email notifications via Resend, and a lightweight admin layer for curating the source list.
+
+---
+
+## 2026-04-05
+
+- Reorganized the older root-level SEO docs into an archive with `SEO.md` as the single source of truth, updated homepage content, refreshed test mocks to match new component boundaries, and tuned the homepage section width.
+
+---
+
+## 2026-03-28
+
+- Fixed SpaceX mission control (`/spacex-mission-control`) image caching that re-fetched mission art more than needed and a hydration mismatch that flickered the summary panel on first load.
+
+---
+
 ## 2026-03-21
 
 - Fixed a real fantasy football snapshot integrity bug where `overall` boards could drift from the matching positional boards because overall rankings were still sourced from stale checked-in overall files while positional boards were generated from current FantasyPros consensus data.
