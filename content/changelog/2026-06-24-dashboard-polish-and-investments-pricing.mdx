@@ -1,0 +1,17 @@
+---
+title: Dashboard polish and investments live pricing back online
+publishedAt: "2026-06-24"
+category: Update
+summary: The AI dev tools directory and the news pulse coverage view both got real UI passes, and live pricing on the investments dashboard is working in production again.
+tags:
+  - dashboards
+  - investments
+---
+
+A cleanup pass across a few surfaces that had rough edges:
+
+- **[AI dev tools](/ai-dev-tools) directory** — the horizontally-scrolling table is gone, replaced by a row-card list that reads as a single column on mobile and a three-up facts grid on wider screens. There's a sort control now (curated, GitHub stars, recently shipped, or name), and the data actually renders visually, with relative stars bars, release-freshness dots, and lifecycle status badges instead of a wall of cells.
+- **[News pulse](/news-pulse) trending topics** — the coverage view now shows a trending-topics leaderboard, ranking keywords that show up across two or more outlets with a count bar and per-outlet dots. The topic extraction was already there in the code, it just wasn't being rendered.
+- **Investments live pricing** — live prices and the index route were quietly dead in production because the deployed function couldn't find its own public assets when the usual origin environment variables weren't set at runtime. I added a canonical-origin fallback so it can always reach its committed data, and the allocation donut now scales and centers properly instead of sitting off to the side.
+
+The kind of pass that doesn't add features so much as make the existing ones behave.
