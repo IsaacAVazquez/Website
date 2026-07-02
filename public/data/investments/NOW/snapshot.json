@@ -1,10 +1,10 @@
 {
   "symbol": "NOW",
-  "lastUpdated": "2026-06-29T23:40:07.848324+00:00",
+  "lastUpdated": "2026-07-02T23:53:41.175846+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-29T23:40:07.848324+00:00",
+    "snapshotBuiltAt": "2026-07-02T23:53:41.175846+00:00",
     "sections": {
-      "price": "2026-06-26"
+      "price": "2026-07-01"
     }
   },
   "source": "prefetched",
@@ -33,7 +33,7 @@
       "country": "United States",
       "industry": "Software-Application",
       "sector": "Technology",
-      "longBusinessSummary": "ServiceNow, Inc. provides cloud-based solution for digital workflows in the North America, Europe, the Middle East and Africa, Asia Pacific, and internationally. The company provides asset management, integrated risk management, IT service management, Operational Technology management, Security Operations, strategic portfolio management, IT operations management products; customer service management product; field service management applications; and sales and order management services. It also offers human resources delivery; legal and contract operations; workplace service delivery products; app engine product; automation engine; platform privacy and security product; and source-to-pay operations. In addition, the company provides RaptorDB, a database built to manage workloads at scale; ServiceNow Impact that provides customers with software tools, guided plans, and AI-driven recommendations; customer support; and workflow data fabric. It serves government, financial services, healthcare and life science, manufacturing, Public Sector, retail, technology, and Telecom sectors through service providers and resale partners. The company has a strategic collaboration with Cohesity, Inc. to develop, operate, and safeguard autonomous AI agents and data with enterprise-grade reliability. The company was formerly known as Service-now.com and changed its name to ServiceNow, Inc. in May 2012. ServiceNow, Inc. was founded in 2004 and is headquartered in Santa Clara, California.",
+      "longBusinessSummary": "ServiceNow, Inc. provides cloud-based solution for digital workflows in the North America, Europe, the Middle East and Africa, Asia Pacific, and internationally. The company provides asset management, integrated risk management, IT service management, Operational Technology management, Security Operations, strategic portfolio management, IT operations management products; customer service management product; field service management applications; and sales and order management services. It also offers human resources delivery; legal and contract operations; workplace service delivery products; app engine product; automation engine; platform privacy and security product; and source-to-pay operations. In addition, the company provides RaptorDB, a database built to manage workloads at scale; ServiceNow Impact that provides customers with software tools, guided plans, and AI-driven recommendations; customer support; and workflow data fabric. It serves government, financial services, healthcare and life science, manufacturing, Public Sector, retail, technology, and Telecom sectors through service providers and resale partners. The company has a strategic collaboration with Cohesity, Inc. to develop, operate, and safeguard autonomous AI agents and data with enterprise-grade reliability. The company was formerly known as Service-now.com and changed its name to ServiceNow, Inc. in May 2012. ServiceNow, Inc. has a strategic alliance with Accenture for integrated risk management and third-party risk management solutions. ServiceNow, Inc. was founded in 2004 and is headquartered in Santa Clara, California.",
       "fullTimeEmployees": 29187,
       "website": "https://www.servicenow.com",
       "shortName": "ServiceNow, Inc.",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.6811,
-      "ttmPe": 58.5,
-      "marketCap": 101418828720,
-      "psRatio": 7.26,
-      "pbRatio": 8.65,
-      "pegRatio": 22.16
+      "ttmPe": 62.93,
+      "marketCap": 109112386400,
+      "psRatio": 7.82,
+      "pbRatio": 9.3,
+      "pegRatio": 23.84
     },
     "profitability": {
       "roe": 3.8,
@@ -5113,41 +5113,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.389999999999999,
-      "costOfEquity": 12.68,
+      "wacc": 12.07,
+      "costOfEquity": 12.34,
       "costOfDebt": 0.25,
       "taxRate": 30,
-      "beta": 0.978,
-      "marketCap": 101418828720
+      "beta": 0.937,
+      "marketCap": 109112386400
     },
     "beta": {
-      "beta5y": 0.978
+      "beta5y": 0.937
     },
     "price": [
-      {
-        "date": "2025-06-26",
-        "open": 201.436,
-        "high": 202.712,
-        "low": 198.9,
-        "close": 202.288,
-        "volume": 6022000
-      },
-      {
-        "date": "2025-06-27",
-        "open": 202.556,
-        "high": 206.606,
-        "low": 202.414,
-        "close": 204.484,
-        "volume": 7571500
-      },
-      {
-        "date": "2025-06-30",
-        "open": 205.948,
-        "high": 207.274,
-        "low": 203.69,
-        "close": 205.616,
-        "volume": 5046500
-      },
       {
         "date": "2025-07-01",
         "open": 205.452,
@@ -7138,7 +7114,31 @@
         "high": 98.92,
         "low": 90,
         "close": 98.34,
-        "volume": 27217000
+        "volume": 27314900
+      },
+      {
+        "date": "2026-06-29",
+        "open": 100.48,
+        "high": 103.21,
+        "low": 99.47,
+        "close": 99.97,
+        "volume": 25023100
+      },
+      {
+        "date": "2026-06-30",
+        "open": 97.31,
+        "high": 99.64,
+        "low": 96.95,
+        "close": 99.28,
+        "volume": 19433300
+      },
+      {
+        "date": "2026-07-01",
+        "open": 103.6,
+        "high": 106.69,
+        "low": 101.765,
+        "close": 105.8,
+        "volume": 26073200
       }
     ],
     "news": [
@@ -7159,19 +7159,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "3d018e47-3ca3-3120-a73e-e863c577b5fe",
-        "title": "Top Research Reports for Visa, ServiceNow & Progressive",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-22",
-        "link": "https://finance.yahoo.com/news/top-research-reports-visa-servicenow-204900265.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "e3daf31a-2695-3357-ba2d-3bfe949cf310",
         "title": "The Zacks Analyst Blog Highlights Visa, ServiceNow, The Progressive, The Monarch Cement and Precipio",
         "publisher": "Zacks",
         "reportDate": "2025-04-22",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-visa-125900502.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3d018e47-3ca3-3120-a73e-e863c577b5fe",
+        "title": "Top Research Reports for Visa, ServiceNow & Progressive",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-22",
+        "link": "https://finance.yahoo.com/news/top-research-reports-visa-servicenow-204900265.html",
         "type": "STORY"
       },
       {
@@ -7191,14 +7191,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "0d66b766-bead-3972-a483-2318d3521577",
-        "title": "Nice enters partnership with ServiceNow for customer service fulfillment",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-08",
-        "link": "https://finance.yahoo.com/news/nice-enters-partnership-servicenow-customer-151028608.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9f38eca9-f098-3ec9-8940-f848a225631e",
         "title": "Zoom, ServiceNow plan to integrate Zoom CX with ServiceNow CRM, ITSM",
         "publisher": "TipRanks",
@@ -7207,11 +7199,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "6307e6d8-6f83-3de1-9858-027b24361de9",
-        "title": "1 High-Flying Stock with Exciting Potential and 2 to Keep Off Your Radar",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/news/1-high-flying-stock-exciting-043642353.html",
+        "uuid": "0d66b766-bead-3972-a483-2318d3521577",
+        "title": "Nice enters partnership with ServiceNow for customer service fulfillment",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-08",
+        "link": "https://finance.yahoo.com/news/nice-enters-partnership-servicenow-customer-151028608.html",
         "type": "STORY"
       },
       {
@@ -7220,6 +7212,14 @@
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/news/high-growth-tech-stocks-us-113821187.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6307e6d8-6f83-3de1-9858-027b24361de9",
+        "title": "1 High-Flying Stock with Exciting Potential and 2 to Keep Off Your Radar",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/news/1-high-flying-stock-exciting-043642353.html",
         "type": "STORY"
       }
     ],
@@ -7286,18 +7286,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 58.5,
-        "industryAvg": 23.3
+        "value": 62.93,
+        "industryAvg": 24.07
       },
       {
         "metric": "P/S Ratio",
-        "value": 7.26,
-        "industryAvg": 4.08
+        "value": 7.82,
+        "industryAvg": 4.24
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.65,
-        "industryAvg": 4.42
+        "value": 9.3,
+        "industryAvg": 4.58
       },
       {
         "metric": "ROE",
@@ -7317,19 +7317,19 @@
       {
         "metric": "EBITDA Margin",
         "value": 24.85,
-        "industryAvg": 20.76
+        "industryAvg": 20.75
       },
       {
         "metric": "Net Margin",
         "value": 12.44,
-        "industryAvg": -0.32
+        "industryAvg": -0.33
       }
     ],
     "dcf": {
-      "fairValue": 18.32,
-      "currentPrice": 98.34,
-      "upside": -81.37,
-      "wacc": 12.39,
+      "fairValue": 18.97,
+      "currentPrice": 105.8,
+      "upside": -82.07,
+      "wacc": 12.07,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 2.64,
         "Terminal growth": 3

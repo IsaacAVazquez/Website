@@ -1,10 +1,10 @@
 {
   "symbol": "AVGO",
-  "lastUpdated": "2026-06-29T23:40:07.848324+00:00",
+  "lastUpdated": "2026-07-02T23:53:41.175846+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-29T23:40:07.848324+00:00",
+    "snapshotBuiltAt": "2026-07-02T23:53:41.175846+00:00",
     "sections": {
-      "price": "2026-06-26"
+      "price": "2026-07-01"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.007,
-      "ttmPe": 60.77,
-      "marketCap": 1736765160000,
-      "psRatio": 23.01,
-      "pbRatio": 19.81,
-      "pegRatio": 0.71
+      "ttmPe": 61.48,
+      "marketCap": 1757319720000,
+      "psRatio": 23.29,
+      "pbRatio": 20.04,
+      "pegRatio": 0.72
     },
     "profitability": {
       "roe": 11.110000000000001,
@@ -6021,41 +6021,17 @@
       ]
     },
     "wacc": {
-      "wacc": 16.23,
-      "costOfEquity": 16.79,
+      "wacc": 16.04,
+      "costOfEquity": 16.59,
       "costOfDebt": 1.2,
       "taxRate": 8,
-      "beta": 1.4617,
-      "marketCap": 1736765160000
+      "beta": 1.4429,
+      "marketCap": 1757319720000
     },
     "beta": {
-      "beta5y": 1.4617
+      "beta5y": 1.4429
     },
     "price": [
-      {
-        "date": "2025-06-26",
-        "open": 265.08,
-        "high": 271.67,
-        "low": 264.13,
-        "close": 270.17,
-        "volume": 23569600
-      },
-      {
-        "date": "2025-06-27",
-        "open": 270.3,
-        "high": 271.85,
-        "low": 266.88,
-        "close": 269.35,
-        "volume": 27477600
-      },
-      {
-        "date": "2025-06-30",
-        "open": 274.73,
-        "high": 277.71,
-        "low": 272.13,
-        "close": 275.65,
-        "volume": 24708400
-      },
       {
         "date": "2025-07-01",
         "open": 274.4,
@@ -8046,7 +8022,31 @@
         "high": 373.69,
         "low": 363.83,
         "close": 365.02,
-        "volume": 34770800
+        "volume": 34839300
+      },
+      {
+        "date": "2026-06-29",
+        "open": 373.62,
+        "high": 376.21,
+        "low": 360.46,
+        "close": 372.45,
+        "volume": 24285200
+      },
+      {
+        "date": "2026-06-30",
+        "open": 374.79,
+        "high": 379.62,
+        "low": 370.64,
+        "close": 377.75,
+        "volume": 28517400
+      },
+      {
+        "date": "2026-07-01",
+        "open": 371.79,
+        "high": 373.75,
+        "low": 368.03,
+        "close": 369.34,
+        "volume": 23621758
       }
     ],
     "news": [
@@ -8091,19 +8091,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "1a4ad937-a6fe-3efc-ad47-22885a44cffe",
-        "title": "The Zacks Analyst Blog Highlights Microsoft, Broadcom, McDonald's and Kingsway Financial Services",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-29",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-104100632.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b5e9e2b7-0579-37ff-b792-e96b7564d257",
         "title": "Top Analyst Reports for Microsoft, Broadcom & McDonald's",
         "publisher": "Zacks",
         "reportDate": "2025-04-29",
         "link": "https://finance.yahoo.com/news/top-analyst-reports-microsoft-broadcom-222200614.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1a4ad937-a6fe-3efc-ad47-22885a44cffe",
+        "title": "The Zacks Analyst Blog Highlights Microsoft, Broadcom, McDonald's and Kingsway Financial Services",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-29",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-104100632.html",
         "type": "STORY"
       },
       {
@@ -8143,18 +8143,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 60.77,
-        "industryAvg": 33.78
+        "value": 61.48,
+        "industryAvg": 38.83
       },
       {
         "metric": "P/S Ratio",
-        "value": 23.01,
-        "industryAvg": 14.09
+        "value": 23.29,
+        "industryAvg": 15.8
       },
       {
         "metric": "P/B Ratio",
-        "value": 19.81,
-        "industryAvg": 11.86
+        "value": 20.04,
+        "industryAvg": 13.64
       },
       {
         "metric": "ROE",
@@ -8183,10 +8183,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 97.09,
-      "currentPrice": 365.02,
-      "upside": -73.4,
-      "wacc": 16.23,
+      "fairValue": 98.6,
+      "currentPrice": 369.34,
+      "upside": -73.3,
+      "wacc": 16.04,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

@@ -5683,6 +5683,27 @@
       "total_market_cap": 13490642595504.02,
       "total_ttm_net_income": 399381967340.91003,
       "industry_pe": 33.78
+    },
+    {
+      "report_date": "2026-06-29T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_market_cap": 13351780974711.0,
+      "total_ttm_net_income": 339813328369.66003,
+      "industry_pe": 39.29
+    },
+    {
+      "report_date": "2026-06-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_market_cap": 13770305043115.0,
+      "total_ttm_net_income": 339813328369.66003,
+      "industry_pe": 40.52
+    },
+    {
+      "report_date": "2026-07-01T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_market_cap": 13194669457126.0,
+      "total_ttm_net_income": 339813328369.66003,
+      "industry_pe": 38.83
     }
   ],
   "ps_ratio": [
@@ -11093,49 +11114,49 @@
     {
       "report_date": "2026-04-30T00:00:00.000",
       "industry": "Semiconductors",
-      "total_market_cap": 12886351847163.0,
+      "total_market_cap": 12886351987647.0,
       "total_ttm_revenue": 977251340936.05,
       "industry_ps_ratio": 13.19
     },
     {
       "report_date": "2026-05-01T00:00:00.000",
       "industry": "Semiconductors",
-      "total_market_cap": 12954241801986.0,
+      "total_market_cap": 12954241942470.0,
       "total_ttm_revenue": 977251340936.05,
       "industry_ps_ratio": 13.26
     },
     {
       "report_date": "2026-05-04T00:00:00.000",
       "industry": "Semiconductors",
-      "total_market_cap": 12918027487553.0,
+      "total_market_cap": 12918027628037.0,
       "total_ttm_revenue": 977251340936.05,
       "industry_ps_ratio": 13.22
     },
     {
       "report_date": "2026-05-05T00:00:00.000",
       "industry": "Semiconductors",
-      "total_market_cap": 13114657500958.5,
+      "total_market_cap": 13114657641442.5,
       "total_ttm_revenue": 977251340936.05,
       "industry_ps_ratio": 13.42
     },
     {
       "report_date": "2026-05-06T00:00:00.000",
       "industry": "Semiconductors",
-      "total_market_cap": 13740060511413.8,
+      "total_market_cap": 13740060651897.8,
       "total_ttm_revenue": 977251340936.05,
       "industry_ps_ratio": 14.06
     },
     {
       "report_date": "2026-05-07T00:00:00.000",
       "industry": "Semiconductors",
-      "total_market_cap": 13626903258462.7,
+      "total_market_cap": 13626903398946.7,
       "total_ttm_revenue": 977251340936.05,
       "industry_ps_ratio": 13.94
     },
     {
       "report_date": "2026-05-08T00:00:00.000",
       "industry": "Semiconductors",
-      "total_market_cap": 14118196966782.75,
+      "total_market_cap": 14118197107266.75,
       "total_ttm_revenue": 977251340936.05,
       "industry_ps_ratio": 14.45
     },
@@ -11369,6 +11390,27 @@
       "total_market_cap": 14222669797552.889,
       "total_ttm_revenue": 1009406340936.05,
       "industry_ps_ratio": 14.09
+    },
+    {
+      "report_date": "2026-06-29T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_market_cap": 14105825839199.49,
+      "total_ttm_revenue": 881315449335.1901,
+      "industry_ps_ratio": 16.01
+    },
+    {
+      "report_date": "2026-06-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_market_cap": 14569598692622.64,
+      "total_ttm_revenue": 881315449335.1901,
+      "industry_ps_ratio": 16.53
+    },
+    {
+      "report_date": "2026-07-01T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_market_cap": 13924381082518.19,
+      "total_ttm_revenue": 881315449335.1901,
+      "industry_ps_ratio": 15.8
     }
   ],
   "pb_ratio": [
@@ -18672,6 +18714,27 @@
       "total_market_cap": 14537757025455.889,
       "total_bve": 1225905511320.29,
       "industry_pb_ratio": 11.86
+    },
+    {
+      "report_date": "2026-06-29T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_market_cap": 14416111680470.69,
+      "total_bve": 1042037093080.0201,
+      "industry_pb_ratio": 13.83
+    },
+    {
+      "report_date": "2026-06-30T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_market_cap": 14896386052121.64,
+      "total_bve": 1042037093080.0201,
+      "industry_pb_ratio": 14.3
+    },
+    {
+      "report_date": "2026-07-01T00:00:00.000",
+      "industry": "Semiconductors",
+      "total_market_cap": 14209286168008.19,
+      "total_bve": 1042037093080.0201,
+      "industry_pb_ratio": 13.64
     }
   ],
   "roe": [

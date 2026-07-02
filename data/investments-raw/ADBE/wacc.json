@@ -16,12 +16,12 @@
     "sp500_cagr_end": 2022,
     "sp500_10y_cagr": 0.1041,
     "treasure_10y_yield": 0.0409,
-    "beta_5y": 1.4431,
+    "beta_5y": 1.4105,
     "weight_of_debt": 0.0158,
     "weight_of_equity": 0.9842,
     "cost_of_debt": 0.0066,
-    "cost_of_equity": 0.1321,
-    "wacc": 0.1301
+    "cost_of_equity": 0.13,
+    "wacc": 0.128
   },
   {
     "symbol": "ADBE",
@@ -40,12 +40,12 @@
     "sp500_cagr_end": 2022,
     "sp500_10y_cagr": 0.1041,
     "treasure_10y_yield": 0.0437,
-    "beta_5y": 1.4431,
+    "beta_5y": 1.4105,
     "weight_of_debt": 0.0145,
     "weight_of_equity": 0.9855,
     "cost_of_debt": 0.0069,
-    "cost_of_equity": 0.1309,
-    "wacc": 0.1291
+    "cost_of_equity": 0.1289,
+    "wacc": 0.1271
   },
   {
     "symbol": "ADBE",
@@ -64,12 +64,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0425,
-    "beta_5y": 1.4431,
+    "beta_5y": 1.4105,
     "weight_of_debt": 0.0158,
     "weight_of_equity": 0.9842,
     "cost_of_debt": 0.0066,
-    "cost_of_equity": 0.1246,
-    "wacc": 0.1227
+    "cost_of_equity": 0.1228,
+    "wacc": 0.1209
   },
   {
     "symbol": "ADBE",
@@ -88,12 +88,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0451,
-    "beta_5y": 1.4431,
+    "beta_5y": 1.4105,
     "weight_of_debt": 0.0296,
     "weight_of_equity": 0.9704,
     "cost_of_debt": 0.0067,
-    "cost_of_equity": 0.1235,
-    "wacc": 0.12
+    "cost_of_equity": 0.1217,
+    "wacc": 0.1183
   },
   {
     "symbol": "ADBE",
@@ -112,12 +112,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0391,
-    "beta_5y": 1.4431,
+    "beta_5y": 1.4105,
     "weight_of_debt": 0.0232,
     "weight_of_equity": 0.9768,
     "cost_of_debt": 0.0084,
-    "cost_of_equity": 0.1261,
-    "wacc": 0.1233
+    "cost_of_equity": 0.1242,
+    "wacc": 0.1215
   },
   {
     "symbol": "ADBE",
@@ -136,12 +136,12 @@
     "sp500_cagr_end": 2023,
     "sp500_10y_cagr": 0.0994,
     "treasure_10y_yield": 0.0418,
-    "beta_5y": 1.4431,
+    "beta_5y": 1.4105,
     "weight_of_debt": 0.0259,
     "weight_of_equity": 0.9741,
     "cost_of_debt": 0.0083,
-    "cost_of_equity": 0.1249,
-    "wacc": 0.1218
+    "cost_of_equity": 0.123,
+    "wacc": 0.12
   },
   {
     "symbol": "ADBE",
@@ -160,12 +160,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0424,
-    "beta_5y": 1.4431,
+    "beta_5y": 1.4105,
     "weight_of_debt": 0.0333,
     "weight_of_equity": 0.9667,
     "cost_of_debt": 0.0094,
-    "cost_of_equity": 0.141,
-    "wacc": 0.1366
+    "cost_of_equity": 0.1387,
+    "wacc": 0.1343
   },
   {
     "symbol": "ADBE",
@@ -184,12 +184,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0441,
-    "beta_5y": 1.4431,
+    "beta_5y": 1.4105,
     "weight_of_debt": 0.0357,
     "weight_of_equity": 0.9643,
     "cost_of_debt": 0.0104,
-    "cost_of_equity": 0.1402,
-    "wacc": 0.1355
+    "cost_of_equity": 0.138,
+    "wacc": 0.1334
   },
   {
     "symbol": "ADBE",
@@ -208,12 +208,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0423,
-    "beta_5y": 1.4431,
+    "beta_5y": 1.4105,
     "weight_of_debt": 0.0424,
     "weight_of_equity": 0.9576,
     "cost_of_debt": 0.0101,
-    "cost_of_equity": 0.141,
-    "wacc": 0.1354
+    "cost_of_equity": 0.1388,
+    "wacc": 0.1333
   },
   {
     "symbol": "ADBE",
@@ -232,12 +232,12 @@
     "sp500_cagr_end": 2024,
     "sp500_10y_cagr": 0.1107,
     "treasure_10y_yield": 0.0402,
-    "beta_5y": 1.4431,
+    "beta_5y": 1.4105,
     "weight_of_debt": 0.0479,
     "weight_of_equity": 0.9521,
     "cost_of_debt": 0.0099,
-    "cost_of_equity": 0.1419,
-    "wacc": 0.1355
+    "cost_of_equity": 0.1396,
+    "wacc": 0.1333
   },
   {
     "symbol": "ADBE",
@@ -256,12 +256,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0397,
-    "beta_5y": 1.4431,
+    "beta_5y": 1.4105,
     "weight_of_debt": 0.0588,
     "weight_of_equity": 0.9412,
     "cost_of_debt": 0.0095,
-    "cost_of_equity": 0.1681,
-    "wacc": 0.1587
+    "cost_of_equity": 0.1652,
+    "wacc": 0.1559
   },
   {
     "symbol": "ADBE",
@@ -280,12 +280,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0445,
-    "beta_5y": 1.4431,
+    "beta_5y": 1.4105,
     "weight_of_debt": 0.0632,
     "weight_of_equity": 0.9368,
     "cost_of_debt": 0.0092,
-    "cost_of_equity": 0.166,
-    "wacc": 0.156
+    "cost_of_equity": 0.1633,
+    "wacc": 0.1534
   },
   {
     "symbol": "ADBE",
@@ -304,12 +304,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0447,
-    "beta_5y": 1.4431,
+    "beta_5y": 1.4105,
     "weight_of_debt": 0.0607,
     "weight_of_equity": 0.9393,
     "cost_of_debt": 0.0092,
-    "cost_of_equity": 0.1659,
-    "wacc": 0.1563
+    "cost_of_equity": 0.1632,
+    "wacc": 0.1537
   },
   {
     "symbol": "ADBE",
@@ -328,12 +328,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0446,
-    "beta_5y": 1.4431,
+    "beta_5y": 1.4105,
     "weight_of_debt": 0.0633,
     "weight_of_equity": 0.9367,
     "cost_of_debt": 0.0092,
-    "cost_of_equity": 0.166,
-    "wacc": 0.1559
+    "cost_of_equity": 0.1632,
+    "wacc": 0.1533
   },
   {
     "symbol": "ADBE",
@@ -352,12 +352,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0449,
-    "beta_5y": 1.4431,
+    "beta_5y": 1.4105,
     "weight_of_debt": 0.0646,
     "weight_of_equity": 0.9354,
     "cost_of_debt": 0.0092,
-    "cost_of_equity": 0.1658,
-    "wacc": 0.1555
+    "cost_of_equity": 0.1631,
+    "wacc": 0.153
   },
   {
     "symbol": "ADBE",
@@ -376,12 +376,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0447,
-    "beta_5y": 1.4431,
+    "beta_5y": 1.4105,
     "weight_of_debt": 0.0641,
     "weight_of_equity": 0.9359,
     "cost_of_debt": 0.0092,
-    "cost_of_equity": 0.1659,
-    "wacc": 0.1557
+    "cost_of_equity": 0.1632,
+    "wacc": 0.1532
   },
   {
     "symbol": "ADBE",
@@ -400,12 +400,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0455,
-    "beta_5y": 1.4431,
+    "beta_5y": 1.4105,
     "weight_of_debt": 0.0658,
     "weight_of_equity": 0.9342,
     "cost_of_debt": 0.0092,
-    "cost_of_equity": 0.1656,
-    "wacc": 0.1552
+    "cost_of_equity": 0.1629,
+    "wacc": 0.1526
   },
   {
     "symbol": "ADBE",
@@ -424,12 +424,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0456,
-    "beta_5y": 1.4431,
+    "beta_5y": 1.4105,
     "weight_of_debt": 0.0674,
     "weight_of_equity": 0.9326,
     "cost_of_debt": 0.0092,
-    "cost_of_equity": 0.1655,
-    "wacc": 0.1548
+    "cost_of_equity": 0.1628,
+    "wacc": 0.1523
   },
   {
     "symbol": "ADBE",
@@ -448,12 +448,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0453,
-    "beta_5y": 1.4431,
+    "beta_5y": 1.4105,
     "weight_of_debt": 0.0693,
     "weight_of_equity": 0.9307,
     "cost_of_debt": 0.0092,
-    "cost_of_equity": 0.1657,
-    "wacc": 0.1547
+    "cost_of_equity": 0.1629,
+    "wacc": 0.1521
   },
   {
     "symbol": "ADBE",
@@ -472,12 +472,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0455,
-    "beta_5y": 1.4431,
+    "beta_5y": 1.4105,
     "weight_of_debt": 0.0705,
     "weight_of_equity": 0.9295,
     "cost_of_debt": 0.0092,
-    "cost_of_equity": 0.1656,
-    "wacc": 0.1544
+    "cost_of_equity": 0.1629,
+    "wacc": 0.1519
   },
   {
     "symbol": "ADBE",
@@ -496,12 +496,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0445,
-    "beta_5y": 1.4431,
+    "beta_5y": 1.4105,
     "weight_of_debt": 0.0749,
     "weight_of_equity": 0.9251,
     "cost_of_debt": 0.0092,
-    "cost_of_equity": 0.166,
-    "wacc": 0.1541
+    "cost_of_equity": 0.1633,
+    "wacc": 0.1516
   },
   {
     "symbol": "ADBE",
@@ -520,12 +520,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0448,
-    "beta_5y": 1.4431,
+    "beta_5y": 1.4105,
     "weight_of_debt": 0.0799,
     "weight_of_equity": 0.9201,
     "cost_of_debt": 0.0092,
-    "cost_of_equity": 0.1659,
-    "wacc": 0.1532
+    "cost_of_equity": 0.1631,
+    "wacc": 0.1506
   },
   {
     "symbol": "ADBE",
@@ -544,12 +544,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0447,
-    "beta_5y": 1.4431,
+    "beta_5y": 1.4105,
     "weight_of_debt": 0.079,
     "weight_of_equity": 0.921,
     "cost_of_debt": 0.0092,
-    "cost_of_equity": 0.1659,
-    "wacc": 0.1533
+    "cost_of_equity": 0.1632,
+    "wacc": 0.1509
   },
   {
     "symbol": "ADBE",
@@ -568,12 +568,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0443,
-    "beta_5y": 1.4431,
+    "beta_5y": 1.4105,
     "weight_of_debt": 0.0787,
     "weight_of_equity": 0.9213,
     "cost_of_debt": 0.0092,
-    "cost_of_equity": 0.1661,
-    "wacc": 0.1536
+    "cost_of_equity": 0.1633,
+    "wacc": 0.151
   },
   {
     "symbol": "ADBE",
@@ -592,12 +592,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0449,
-    "beta_5y": 1.4431,
+    "beta_5y": 1.4105,
     "weight_of_debt": 0.0827,
     "weight_of_equity": 0.9173,
     "cost_of_debt": 0.0092,
-    "cost_of_equity": 0.1658,
-    "wacc": 0.1527
+    "cost_of_equity": 0.1631,
+    "wacc": 0.1502
   },
   {
     "symbol": "ADBE",
@@ -616,12 +616,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0446,
-    "beta_5y": 1.4431,
+    "beta_5y": 1.4105,
     "weight_of_debt": 0.0832,
     "weight_of_equity": 0.9168,
     "cost_of_debt": 0.0092,
-    "cost_of_equity": 0.166,
-    "wacc": 0.1528
+    "cost_of_equity": 0.1632,
+    "wacc": 0.1502
   },
   {
     "symbol": "ADBE",
@@ -640,12 +640,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0451,
-    "beta_5y": 1.4431,
+    "beta_5y": 1.4105,
     "weight_of_debt": 0.0833,
     "weight_of_equity": 0.9167,
     "cost_of_debt": 0.0092,
-    "cost_of_equity": 0.1657,
-    "wacc": 0.1525
+    "cost_of_equity": 0.163,
+    "wacc": 0.15
   },
   {
     "symbol": "ADBE",
@@ -664,12 +664,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.045,
-    "beta_5y": 1.4431,
+    "beta_5y": 1.4105,
     "weight_of_debt": 0.0823,
     "weight_of_equity": 0.9177,
     "cost_of_debt": 0.0092,
-    "cost_of_equity": 0.1658,
-    "wacc": 0.1527
+    "cost_of_equity": 0.1631,
+    "wacc": 0.1503
   },
   {
     "symbol": "ADBE",
@@ -688,12 +688,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0441,
-    "beta_5y": 1.4431,
+    "beta_5y": 1.4105,
     "weight_of_debt": 0.0826,
     "weight_of_equity": 0.9174,
     "cost_of_debt": 0.0092,
-    "cost_of_equity": 0.1662,
-    "wacc": 0.153
+    "cost_of_equity": 0.1634,
+    "wacc": 0.1505
   },
   {
     "symbol": "ADBE",
@@ -712,12 +712,12 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.044,
-    "beta_5y": 1.4431,
+    "beta_5y": 1.4105,
     "weight_of_debt": 0.0839,
     "weight_of_equity": 0.9161,
     "cost_of_debt": 0.0092,
-    "cost_of_equity": 0.1662,
-    "wacc": 0.1528
+    "cost_of_equity": 0.1635,
+    "wacc": 0.1504
   },
   {
     "symbol": "ADBE",
@@ -736,11 +736,83 @@
     "sp500_cagr_end": 2025,
     "sp500_10y_cagr": 0.1287,
     "treasure_10y_yield": 0.0438,
-    "beta_5y": 1.4431,
+    "beta_5y": 1.4105,
     "weight_of_debt": 0.0803,
     "weight_of_equity": 0.9197,
     "cost_of_debt": 0.0092,
-    "cost_of_equity": 0.1663,
-    "wacc": 0.1535
+    "cost_of_equity": 0.1636,
+    "wacc": 0.151
+  },
+  {
+    "symbol": "ADBE",
+    "report_date": "2026-06-29T00:00:00.000",
+    "market_capitalization": 82365570000.0,
+    "exchange_rate": 1.0,
+    "total_debt": 7065000000.0,
+    "total_debt_usd": 7065000000.0,
+    "interest_expense": 65000000.0,
+    "interest_expense_usd": 65000000.0,
+    "pretax_income": 2238000000.0,
+    "pretax_income_usd": 2238000000.0,
+    "tax_provision": 526000000.0,
+    "tax_provision_usd": 526000000.0,
+    "tax_rate_for_calcs": 0.24,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0438,
+    "beta_5y": 1.4105,
+    "weight_of_debt": 0.079,
+    "weight_of_equity": 0.921,
+    "cost_of_debt": 0.0092,
+    "cost_of_equity": 0.1636,
+    "wacc": 0.1512
+  },
+  {
+    "symbol": "ADBE",
+    "report_date": "2026-06-30T00:00:00.000",
+    "market_capitalization": 81802980000.0,
+    "exchange_rate": 1.0,
+    "total_debt": 7065000000.0,
+    "total_debt_usd": 7065000000.0,
+    "interest_expense": 65000000.0,
+    "interest_expense_usd": 65000000.0,
+    "pretax_income": 2238000000.0,
+    "pretax_income_usd": 2238000000.0,
+    "tax_provision": 526000000.0,
+    "tax_provision_usd": 526000000.0,
+    "tax_rate_for_calcs": 0.24,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0444,
+    "beta_5y": 1.4105,
+    "weight_of_debt": 0.0795,
+    "weight_of_equity": 0.9205,
+    "cost_of_debt": 0.0092,
+    "cost_of_equity": 0.1633,
+    "wacc": 0.1509
+  },
+  {
+    "symbol": "ADBE",
+    "report_date": "2026-07-01T00:00:00.000",
+    "market_capitalization": 84181020000.0,
+    "exchange_rate": 1.0,
+    "total_debt": 7065000000.0,
+    "total_debt_usd": 7065000000.0,
+    "interest_expense": 65000000.0,
+    "interest_expense_usd": 65000000.0,
+    "pretax_income": 2238000000.0,
+    "pretax_income_usd": 2238000000.0,
+    "tax_provision": 526000000.0,
+    "tax_provision_usd": 526000000.0,
+    "tax_rate_for_calcs": 0.24,
+    "sp500_cagr_end": 2025,
+    "sp500_10y_cagr": 0.1287,
+    "treasure_10y_yield": 0.0448,
+    "beta_5y": 1.4105,
+    "weight_of_debt": 0.0774,
+    "weight_of_equity": 0.9226,
+    "cost_of_debt": 0.0092,
+    "cost_of_equity": 0.1631,
+    "wacc": 0.151
   }
 ]

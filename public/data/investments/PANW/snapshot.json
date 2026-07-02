@@ -1,10 +1,10 @@
 {
   "symbol": "PANW",
-  "lastUpdated": "2026-06-29T23:40:07.848324+00:00",
+  "lastUpdated": "2026-07-02T23:53:41.175846+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-29T23:40:07.848324+00:00",
+    "snapshotBuiltAt": "2026-07-02T23:53:41.175846+00:00",
     "sections": {
-      "price": "2026-06-26"
+      "price": "2026-07-01"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 1.2157,
-      "ttmPe": 250.23,
-      "marketCap": 247314600000,
-      "psRatio": 23.32,
-      "pbRatio": 8.94,
+      "ttmPe": 289.58,
+      "marketCap": 286208520000,
+      "psRatio": 26.98,
+      "pbRatio": 10.34,
       "pegRatio": 1.64
     },
     "profitability": {
@@ -5413,41 +5413,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.98,
-      "costOfEquity": 12.08,
+      "wacc": 11.940000000000001,
+      "costOfEquity": 12.030000000000001,
       "costOfDebt": 0,
       "taxRate": 40,
-      "beta": 0.9067,
-      "marketCap": 247314600000
+      "beta": 0.8993,
+      "marketCap": 286208520000
     },
     "beta": {
-      "beta5y": 0.9067
+      "beta5y": 0.8993
     },
     "price": [
-      {
-        "date": "2025-06-26",
-        "open": 204.59,
-        "high": 206.74,
-        "low": 201.54,
-        "close": 202.34,
-        "volume": 5264900
-      },
-      {
-        "date": "2025-06-27",
-        "open": 202.34,
-        "high": 203.26,
-        "low": 198.75,
-        "close": 200.57,
-        "volume": 5346400
-      },
-      {
-        "date": "2025-06-30",
-        "open": 201.24,
-        "high": 204.91,
-        "low": 201.02,
-        "close": 204.64,
-        "volume": 4350800
-      },
       {
         "date": "2025-07-01",
         "open": 203.97,
@@ -7438,7 +7414,31 @@
         "high": 306.24,
         "low": 290,
         "close": 304.2,
-        "volume": 8266600
+        "volume": 8269800
+      },
+      {
+        "date": "2026-06-29",
+        "open": 309.83,
+        "high": 332.88,
+        "low": 305.33,
+        "close": 332,
+        "volume": 10334700
+      },
+      {
+        "date": "2026-06-30",
+        "open": 327.55,
+        "high": 342.48,
+        "low": 327.35,
+        "close": 341.02,
+        "volume": 9634200
+      },
+      {
+        "date": "2026-07-01",
+        "open": 345.545,
+        "high": 358.09,
+        "low": 341,
+        "close": 352.04,
+        "volume": 7229245
       }
     ],
     "news": [
@@ -7467,20 +7467,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "903b328c-0aa3-377c-bff1-9b907a104577",
-        "title": "Alphabet Traders Look to Developer Event to Shift AI Narrative",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/alphabet-traders-look-developer-event-093534219.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "6d123023-ccd7-31dc-bff4-466420d33097",
         "title": "Home Depot earnings, Fedspeak, Google I/O: What to Watch",
         "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-20",
         "link": "https://finance.yahoo.com/video/home-depot-earnings-fedspeak-google-230018667.html",
         "type": "VIDEO"
+      },
+      {
+        "uuid": "903b328c-0aa3-377c-bff1-9b907a104577",
+        "title": "Alphabet Traders Look to Developer Event to Shift AI Narrative",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/news/alphabet-traders-look-developer-event-093534219.html",
+        "type": "STORY"
       },
       {
         "uuid": "f5b81787-2ebe-34d1-92b0-5caff846147b",
@@ -7587,18 +7587,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 250.23,
-        "industryAvg": 26.09
+        "value": 289.58,
+        "industryAvg": 27.08
       },
       {
         "metric": "P/S Ratio",
-        "value": 23.32,
-        "industryAvg": 5.7
+        "value": 26.98,
+        "industryAvg": 5.93
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.94,
-        "industryAvg": 6.94
+        "value": 10.34,
+        "industryAvg": 7.21
       },
       {
         "metric": "ROE",
@@ -7618,7 +7618,7 @@
       {
         "metric": "EBITDA Margin",
         "value": 5.93,
-        "industryAvg": 33.96
+        "industryAvg": 33.97
       },
       {
         "metric": "Net Margin",
@@ -7627,10 +7627,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 7.26,
-      "currentPrice": 304.2,
-      "upside": -97.61,
-      "wacc": 11.98,
+      "fairValue": 7.29,
+      "currentPrice": 352.04,
+      "upside": -97.93,
+      "wacc": 11.94,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": -30,
         "Terminal growth": 3

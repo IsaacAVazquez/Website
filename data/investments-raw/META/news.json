@@ -18,15 +18,6 @@
     "link": "https://finance.yahoo.com/m/0ed5f0fd-d31a-398c-a525-af185fbf4ff7/nuclear-energy-stock-talen.html"
   },
   {
-    "uuid": "bbf455ff-77a4-32a7-81aa-06dd1d624504",
-    "symbol": "META",
-    "title": "The Zacks Analyst Blog Highlights Apple, Meta Platforms, Chevron, Taylor Devices and GSI Technology",
-    "publisher": "Zacks",
-    "report_date": "2025-03-21",
-    "type": "STORY",
-    "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-apple-085500208.html"
-  },
-  {
     "uuid": "2cfa6437-c187-3ab8-9ea8-027695257bb0",
     "symbol": "META",
     "title": "Top Research Reports for Apple, Meta Platforms & Chevron",
@@ -36,13 +27,13 @@
     "link": "https://finance.yahoo.com/news/top-research-reports-apple-meta-213400955.html"
   },
   {
-    "uuid": "124a6d52-1c44-41a7-a9cd-0c3fa0be6445",
+    "uuid": "bbf455ff-77a4-32a7-81aa-06dd1d624504",
     "symbol": "META",
-    "title": "Delaware passes law designed to stop more Elon Musks from leaving state",
-    "publisher": "Yahoo Finance",
-    "report_date": "2025-03-27",
+    "title": "The Zacks Analyst Blog Highlights Apple, Meta Platforms, Chevron, Taylor Devices and GSI Technology",
+    "publisher": "Zacks",
+    "report_date": "2025-03-21",
     "type": "STORY",
-    "link": "https://finance.yahoo.com/news/delaware-passes-law-designed-to-stop-more-elon-musks-from-leaving-state-164403802.html"
+    "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-apple-085500208.html"
   },
   {
     "uuid": "0b443ff0-85a6-3c59-b7be-44fe4724309f",
@@ -52,6 +43,15 @@
     "report_date": "2025-03-27",
     "type": "STORY",
     "link": "https://finance.yahoo.com/news/closing-bell-movers-gamestop-gains-000022309.html"
+  },
+  {
+    "uuid": "124a6d52-1c44-41a7-a9cd-0c3fa0be6445",
+    "symbol": "META",
+    "title": "Delaware passes law designed to stop more Elon Musks from leaving state",
+    "publisher": "Yahoo Finance",
+    "report_date": "2025-03-27",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/delaware-passes-law-designed-to-stop-more-elon-musks-from-leaving-state-164403802.html"
   },
   {
     "uuid": "c62e9c41-40df-38ca-9602-fb9728a49ea5",

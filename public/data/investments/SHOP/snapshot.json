@@ -1,10 +1,10 @@
 {
   "symbol": "SHOP",
-  "lastUpdated": "2026-06-29T23:40:07.848324+00:00",
+  "lastUpdated": "2026-07-02T23:53:41.175846+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-29T23:40:07.848324+00:00",
+    "snapshotBuiltAt": "2026-07-02T23:53:41.175846+00:00",
     "sections": {
-      "price": "2026-06-26"
+      "price": "2026-07-01"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.0172,
-      "ttmPe": 114.88,
-      "marketCap": 151643916556,
-      "psRatio": 12.26,
-      "pbRatio": 12.13,
-      "pegRatio": 7.49
+      "ttmPe": 119.57,
+      "marketCap": 157833728998,
+      "psRatio": 12.76,
+      "pbRatio": 12.63,
+      "pegRatio": 7.8
     },
     "profitability": {
       "roe": -4.47,
@@ -5620,41 +5620,17 @@
       ]
     },
     "wacc": {
-      "wacc": 25.619999999999997,
-      "costOfEquity": 25.82,
+      "wacc": 25.7,
+      "costOfEquity": 25.89,
       "costOfDebt": 0.02,
       "taxRate": 40,
-      "beta": 2.5255,
-      "marketCap": 151643916556
+      "beta": 2.5521,
+      "marketCap": 157833728998
     },
     "beta": {
-      "beta5y": 2.5255
+      "beta5y": 2.5521
     },
     "price": [
-      {
-        "date": "2025-06-26",
-        "open": 113.76,
-        "high": 113.76,
-        "low": 108.33,
-        "close": 113.07,
-        "volume": 11368200
-      },
-      {
-        "date": "2025-06-27",
-        "open": 113.09,
-        "high": 115.06,
-        "low": 111.91,
-        "close": 113.65,
-        "volume": 6377900
-      },
-      {
-        "date": "2025-06-30",
-        "open": 115.09,
-        "high": 116.6,
-        "low": 113.96,
-        "close": 115.35,
-        "volume": 7107500
-      },
       {
         "date": "2025-07-01",
         "open": 114.31,
@@ -7645,7 +7621,31 @@
         "high": 117.87,
         "low": 112.1,
         "close": 116.86,
-        "volume": 9940800
+        "volume": 9946400
+      },
+      {
+        "date": "2026-06-29",
+        "open": 118.38,
+        "high": 120.62,
+        "low": 113.99,
+        "close": 114.21,
+        "volume": 9919000
+      },
+      {
+        "date": "2026-06-30",
+        "open": 113,
+        "high": 116,
+        "low": 112,
+        "close": 114.18,
+        "volume": 6608900
+      },
+      {
+        "date": "2026-07-01",
+        "open": 117.325,
+        "high": 123.7,
+        "low": 117.325,
+        "close": 121.63,
+        "volume": 8191215
       }
     ],
     "news": [
@@ -7682,19 +7682,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "66866936-5cb5-36c2-84ed-a79cc17df6da",
-        "title": "Exploring High Growth US Tech Stocks for May 2025",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/news/exploring-high-growth-us-tech-113900064.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "c7534cd2-6874-332c-b15b-f41ab84cd81f",
         "title": "Shopify vs. Etsy: Which E-Commerce Stock Has More Fuel for Growth?",
         "publisher": "Zacks",
         "reportDate": "2025-05-13",
         "link": "https://finance.yahoo.com/news/shopify-vs-etsy-e-commerce-174500079.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "66866936-5cb5-36c2-84ed-a79cc17df6da",
+        "title": "Exploring High Growth US Tech Stocks for May 2025",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/news/exploring-high-growth-us-tech-113900064.html",
         "type": "STORY"
       },
       {
@@ -7790,18 +7790,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 114.88,
-        "industryAvg": 23.3
+        "value": 119.57,
+        "industryAvg": 24.07
       },
       {
         "metric": "P/S Ratio",
-        "value": 12.26,
-        "industryAvg": 4.08
+        "value": 12.76,
+        "industryAvg": 4.25
       },
       {
         "metric": "P/B Ratio",
-        "value": 12.13,
-        "industryAvg": 4.42
+        "value": 12.63,
+        "industryAvg": 4.58
       },
       {
         "metric": "ROE",
@@ -7821,19 +7821,19 @@
       {
         "metric": "EBITDA Margin",
         "value": 15.93,
-        "industryAvg": 20.76
+        "industryAvg": 20.75
       },
       {
         "metric": "Net Margin",
         "value": -18.33,
-        "industryAvg": -0.32
+        "industryAvg": -0.33
       }
     ],
     "dcf": {
-      "fairValue": 5.62,
-      "currentPrice": 116.86,
-      "upside": -95.19,
-      "wacc": 25.62,
+      "fairValue": 5.6,
+      "currentPrice": 121.63,
+      "upside": -95.39,
+      "wacc": 25.7,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 15.33,
         "Terminal growth": 3

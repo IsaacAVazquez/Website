@@ -18,15 +18,6 @@
     "link": "https://finance.yahoo.com/news/us-high-growth-tech-stocks-113829612.html"
   },
   {
-    "uuid": "3d018e47-3ca3-3120-a73e-e863c577b5fe",
-    "symbol": "NOW",
-    "title": "Top Research Reports for Visa, ServiceNow & Progressive",
-    "publisher": "Zacks",
-    "report_date": "2025-04-22",
-    "type": "STORY",
-    "link": "https://finance.yahoo.com/news/top-research-reports-visa-servicenow-204900265.html"
-  },
-  {
     "uuid": "e3daf31a-2695-3357-ba2d-3bfe949cf310",
     "symbol": "NOW",
     "title": "The Zacks Analyst Blog Highlights Visa, ServiceNow, The Progressive, The Monarch Cement and Precipio",
@@ -34,6 +25,15 @@
     "report_date": "2025-04-22",
     "type": "STORY",
     "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-visa-125900502.html"
+  },
+  {
+    "uuid": "3d018e47-3ca3-3120-a73e-e863c577b5fe",
+    "symbol": "NOW",
+    "title": "Top Research Reports for Visa, ServiceNow & Progressive",
+    "publisher": "Zacks",
+    "report_date": "2025-04-22",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/top-research-reports-visa-servicenow-204900265.html"
   },
   {
     "uuid": "14cc12eb-ef79-3791-82e3-45049c7a3c2c",
@@ -54,15 +54,6 @@
     "link": "https://finance.yahoo.com/m/da78ab04-9824-38ae-919d-0f45264f5e66/nebius-group-stock-earns-84.html"
   },
   {
-    "uuid": "0d66b766-bead-3972-a483-2318d3521577",
-    "symbol": "NOW",
-    "title": "Nice enters partnership with ServiceNow for customer service fulfillment",
-    "publisher": "TipRanks",
-    "report_date": "2025-05-08",
-    "type": "STORY",
-    "link": "https://finance.yahoo.com/news/nice-enters-partnership-servicenow-customer-151028608.html"
-  },
-  {
     "uuid": "9f38eca9-f098-3ec9-8940-f848a225631e",
     "symbol": "NOW",
     "title": "Zoom, ServiceNow plan to integrate Zoom CX with ServiceNow CRM, ITSM",
@@ -72,13 +63,13 @@
     "link": "https://finance.yahoo.com/news/zoom-servicenow-plan-integrate-zoom-150553095.html"
   },
   {
-    "uuid": "6307e6d8-6f83-3de1-9858-027b24361de9",
+    "uuid": "0d66b766-bead-3972-a483-2318d3521577",
     "symbol": "NOW",
-    "title": "1 High-Flying Stock with Exciting Potential and 2 to Keep Off Your Radar",
-    "publisher": "StockStory",
-    "report_date": "2025-05-09",
+    "title": "Nice enters partnership with ServiceNow for customer service fulfillment",
+    "publisher": "TipRanks",
+    "report_date": "2025-05-08",
     "type": "STORY",
-    "link": "https://finance.yahoo.com/news/1-high-flying-stock-exciting-043642353.html"
+    "link": "https://finance.yahoo.com/news/nice-enters-partnership-servicenow-customer-151028608.html"
   },
   {
     "uuid": "994a5e6b-ad52-3bb3-b8a4-56347c6d7387",
@@ -88,5 +79,14 @@
     "report_date": "2025-05-09",
     "type": "STORY",
     "link": "https://finance.yahoo.com/news/high-growth-tech-stocks-us-113821187.html"
+  },
+  {
+    "uuid": "6307e6d8-6f83-3de1-9858-027b24361de9",
+    "symbol": "NOW",
+    "title": "1 High-Flying Stock with Exciting Potential and 2 to Keep Off Your Radar",
+    "publisher": "StockStory",
+    "report_date": "2025-05-09",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/1-high-flying-stock-exciting-043642353.html"
   }
 ]

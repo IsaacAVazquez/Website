@@ -1,10 +1,10 @@
 {
   "symbol": "NVDA",
-  "lastUpdated": "2026-06-29T23:40:07.848324+00:00",
+  "lastUpdated": "2026-07-02T23:53:41.175846+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-29T23:40:07.848324+00:00",
+    "snapshotBuiltAt": "2026-07-02T23:53:41.175846+00:00",
     "sections": {
-      "price": "2026-06-26"
+      "price": "2026-07-01"
     }
   },
   "source": "prefetched",
@@ -33,7 +33,7 @@
       "country": "United States",
       "industry": "Semiconductors",
       "sector": "Technology",
-      "longBusinessSummary": "NVIDIA Corporation operates as a data center scale AI infrastructure company in the United States, Taiwan, China, Hong Kong, Europe, and internationally. It operates through Compute & Networking, and Graphics segments. The Compute & Networking segment provides data center accelerated computing and networking platforms and artificial intelligence solutions and software, and automotive platforms and autonomous and electric vehicle solutions, including software. The Graphics segment offers GeForce GPUs for gaming and PCs; Quadro/NVIDIA RTX GPUs for enterprise workstation graphics. The company's products are used in gaming, professional visualization, data center, and automotive markets. It sells its products to original equipment manufacturers, original device manufacturers, system integrators and distributors, independent software vendors, cloud service providers, add-in board manufacturers, distributors, automotive manufacturers and tier-1 automotive suppliers, and other ecosystem participants. NVIDIA Corporation was incorporated in 1993 and is headquartered in Santa Clara, California.",
+      "longBusinessSummary": "NVIDIA Corporation operates as a data center scale AI infrastructure company in the United States, Taiwan, China, Hong Kong, Europe, and internationally. It operates through Compute & Networking, and Graphics segments. The Compute & Networking segment provides data center accelerated computing and networking platforms and artificial intelligence solutions and software, and automotive platforms and autonomous and electric vehicle solutions, including software. The Graphics segment offers GeForce GPUs for gaming and PCs; Quadro/NVIDIA RTX GPUs for enterprise workstation graphics. The company's products are used in gaming, professional visualization, data center, and automotive markets. It sells its products to original equipment manufacturers, original device manufacturers, system integrators and distributors, independent software vendors, cloud service providers, add-in board manufacturers, distributors, automotive manufacturers and tier-1 automotive suppliers, and other ecosystem participants. NVIDIA Corporation has a strategic collaboration with Palantir Technologies Inc. to deliver an intelligent engine for running NVIDIA AI and Nemotron open models in sovereign environments. NVIDIA Corporation was incorporated in 1993 and is headquartered in Santa Clara, California.",
       "fullTimeEmployees": 42000,
       "website": "https://www.nvidia.com",
       "shortName": "NVIDIA Corporation",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 6.5299,
-      "ttmPe": 29.48,
-      "marketCap": 4663269130000,
-      "psRatio": 18.4,
-      "pbRatio": 23.86,
+      "ttmPe": 30.26,
+      "marketCap": 4785585180000,
+      "psRatio": 18.88,
+      "pbRatio": 24.48,
       "pegRatio": 0.14
     },
     "profitability": {
@@ -5692,41 +5692,17 @@
       ]
     },
     "wacc": {
-      "wacc": 23.02,
-      "costOfEquity": 23.080000000000002,
+      "wacc": 23,
+      "costOfEquity": 23.06,
       "costOfDebt": 0.83,
       "taxRate": 17,
-      "beta": 2.2024,
-      "marketCap": 4663269130000
+      "beta": 2.2141,
+      "marketCap": 4785585180000
     },
     "beta": {
-      "beta5y": 2.2024
+      "beta5y": 2.2141
     },
     "price": [
-      {
-        "date": "2025-06-26",
-        "open": 155.98,
-        "high": 156.72,
-        "low": 154,
-        "close": 155.02,
-        "volume": 198145700
-      },
-      {
-        "date": "2025-06-27",
-        "open": 156.04,
-        "high": 158.71,
-        "low": 155.26,
-        "close": 157.75,
-        "volume": 263234500
-      },
-      {
-        "date": "2025-06-30",
-        "open": 158.4,
-        "high": 158.66,
-        "low": 155.96,
-        "close": 157.99,
-        "volume": 194580300
-      },
       {
         "date": "2025-07-01",
         "open": 156.29,
@@ -7717,7 +7693,31 @@
         "high": 195.55,
         "low": 191.22,
         "close": 192.53,
-        "volume": 178906300
+        "volume": 179304100
+      },
+      {
+        "date": "2026-06-29",
+        "open": 193.85,
+        "high": 196.18,
+        "low": 189.8,
+        "close": 194.97,
+        "volume": 148835700
+      },
+      {
+        "date": "2026-06-30",
+        "open": 197.24,
+        "high": 200.63,
+        "low": 195.11,
+        "close": 200.09,
+        "volume": 166476700
+      },
+      {
+        "date": "2026-07-01",
+        "open": 196.17,
+        "high": 199.85,
+        "low": 193.45,
+        "close": 197.58,
+        "volume": 134672012
       }
     ],
     "news": [
@@ -7754,14 +7754,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "9fa0933e-573c-36a8-8e69-eacfa956fa70",
-        "title": "Accenture reports Q2 beat, Apple TV+ losing $1B annually: Morning Buzz",
-        "publisher": "TipRanks",
-        "reportDate": "2025-03-22",
-        "link": "https://finance.yahoo.com/news/accenture-reports-q2-beat-apple-161626223.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "6847b701-a805-3273-8363-1f5569a55995",
         "title": "Stereotaxis Jumps 15% on NVIDIA's AI-Driven Collaboration: Is It a Buy Now?",
         "publisher": "Zacks",
@@ -7770,11 +7762,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "9603d02d-962a-36da-ac81-d16892a33a25",
-        "title": "Lumentum Stock, Coherent Upgraded On View Nvidia Threat Overblown",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-03-24",
-        "link": "https://finance.yahoo.com/m/9603d02d-962a-36da-ac81-d16892a33a25/lumentum-stock%2C-coherent.html",
+        "uuid": "9fa0933e-573c-36a8-8e69-eacfa956fa70",
+        "title": "Accenture reports Q2 beat, Apple TV+ losing $1B annually: Morning Buzz",
+        "publisher": "TipRanks",
+        "reportDate": "2025-03-22",
+        "link": "https://finance.yahoo.com/news/accenture-reports-q2-beat-apple-161626223.html",
         "type": "STORY"
       },
       {
@@ -7786,11 +7778,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "ad5ec0a2-bfd3-335a-9331-f25c38ccafe5",
-        "title": "The Zacks Analyst Blog Highlights Microsoft, NVIDIA, Alphabet and Cooper-Standard",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-26",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-144500495.html",
+        "uuid": "9603d02d-962a-36da-ac81-d16892a33a25",
+        "title": "Lumentum Stock, Coherent Upgraded On View Nvidia Threat Overblown",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-03-24",
+        "link": "https://finance.yahoo.com/m/9603d02d-962a-36da-ac81-d16892a33a25/lumentum-stock%2C-coherent.html",
         "type": "STORY"
       },
       {
@@ -7799,6 +7791,14 @@
         "publisher": "Zacks",
         "reportDate": "2025-03-26",
         "link": "https://finance.yahoo.com/news/top-research-reports-microsoft-nvidia-210900965.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ad5ec0a2-bfd3-335a-9331-f25c38ccafe5",
+        "title": "The Zacks Analyst Blog Highlights Microsoft, NVIDIA, Alphabet and Cooper-Standard",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-26",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-144500495.html",
         "type": "STORY"
       }
     ],
@@ -7867,18 +7867,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 29.48,
-        "industryAvg": 33.78
+        "value": 30.26,
+        "industryAvg": 38.83
       },
       {
         "metric": "P/S Ratio",
-        "value": 18.4,
-        "industryAvg": 14.09
+        "value": 18.88,
+        "industryAvg": 15.8
       },
       {
         "metric": "P/B Ratio",
-        "value": 23.86,
-        "industryAvg": 11.86
+        "value": 24.48,
+        "industryAvg": 13.64
       },
       {
         "metric": "ROE",
@@ -7907,10 +7907,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 67.55,
-      "currentPrice": 192.53,
-      "upside": -64.92,
-      "wacc": 23.02,
+      "fairValue": 67.62,
+      "currentPrice": 197.58,
+      "upside": -65.78,
+      "wacc": 23,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

@@ -1,33 +1,6 @@
 [
   {
     "symbol": "IBM",
-    "report_date": "2025-06-26",
-    "open": 291.8,
-    "close": 291.93,
-    "high": 292.91,
-    "low": 290.17,
-    "volume": 3621100
-  },
-  {
-    "symbol": "IBM",
-    "report_date": "2025-06-27",
-    "open": 292.97,
-    "close": 289.7,
-    "high": 293.12,
-    "low": 288.52,
-    "volume": 3562500
-  },
-  {
-    "symbol": "IBM",
-    "report_date": "2025-06-30",
-    "open": 290.93,
-    "close": 294.78,
-    "high": 294.81,
-    "low": 290.0,
-    "volume": 3495400
-  },
-  {
-    "symbol": "IBM",
     "report_date": "2025-07-01",
     "open": 294.55,
     "close": 291.2,
@@ -2265,6 +2238,33 @@
     "close": 271.63,
     "high": 273.14,
     "low": 258.28,
-    "volume": 9697900
+    "volume": 9719900
+  },
+  {
+    "symbol": "IBM",
+    "report_date": "2026-06-29",
+    "open": 274.3,
+    "close": 278.0,
+    "high": 278.15,
+    "low": 269.06,
+    "volume": 6464200
+  },
+  {
+    "symbol": "IBM",
+    "report_date": "2026-06-30",
+    "open": 273.21,
+    "close": 281.21,
+    "high": 282.57,
+    "low": 271.12,
+    "volume": 7458400
+  },
+  {
+    "symbol": "IBM",
+    "report_date": "2026-07-01",
+    "open": 279.66,
+    "close": 286.25,
+    "high": 294.46,
+    "low": 279.18,
+    "volume": 5729943
   }
 ]

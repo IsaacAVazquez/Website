@@ -1,10 +1,10 @@
 {
   "symbol": "INTU",
-  "lastUpdated": "2026-06-29T23:40:07.848324+00:00",
+  "lastUpdated": "2026-07-02T23:53:41.175846+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-29T23:40:07.848324+00:00",
+    "snapshotBuiltAt": "2026-07-02T23:53:41.175846+00:00",
     "sections": {
-      "price": "2026-06-26"
+      "price": "2026-07-01"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 16.5147,
-      "ttmPe": 16.21,
-      "marketCap": 73231325640,
-      "psRatio": 3.5,
-      "pbRatio": 3.55,
+      "ttmPe": 16.17,
+      "marketCap": 73056261960,
+      "psRatio": 3.49,
+      "pbRatio": 3.54,
       "pegRatio": 1.47
     },
     "profitability": {
@@ -6188,41 +6188,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.77,
-      "costOfEquity": 12.809999999999999,
+      "wacc": 11.540000000000001,
+      "costOfEquity": 12.559999999999999,
       "costOfDebt": 1.01,
       "taxRate": 24,
-      "beta": 0.9934,
-      "marketCap": 73231325640
+      "beta": 0.9631,
+      "marketCap": 73056261960
     },
     "beta": {
-      "beta5y": 0.9934
+      "beta5y": 0.9631
     },
     "price": [
-      {
-        "date": "2025-06-26",
-        "open": 759.38,
-        "high": 773.38,
-        "low": 758.53,
-        "close": 772.86,
-        "volume": 1420100
-      },
-      {
-        "date": "2025-06-27",
-        "open": 771.16,
-        "high": 787.22,
-        "low": 771.16,
-        "close": 776.57,
-        "volume": 2051800
-      },
-      {
-        "date": "2025-06-30",
-        "open": 782.52,
-        "high": 790.5,
-        "low": 779.13,
-        "close": 787.63,
-        "volume": 1946900
-      },
       {
         "date": "2025-07-01",
         "open": 788.7,
@@ -8213,7 +8189,31 @@
         "high": 271.12,
         "low": 259.38,
         "close": 267.72,
-        "volume": 10777000
+        "volume": 10779200
+      },
+      {
+        "date": "2026-06-29",
+        "open": 274.05,
+        "high": 277.57,
+        "low": 265.23,
+        "close": 266.4,
+        "volume": 5402100
+      },
+      {
+        "date": "2026-06-30",
+        "open": 263.47,
+        "high": 266.11,
+        "low": 259.11,
+        "close": 261,
+        "volume": 5260600
+      },
+      {
+        "date": "2026-07-01",
+        "open": 270.14,
+        "high": 276.15,
+        "low": 266.44,
+        "close": 267.08,
+        "volume": 4631855
       }
     ],
     "news": [
@@ -8250,6 +8250,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "22e9d305-bd7c-306e-820a-25234c2b03d9",
+        "title": "Morning Movers: Apple slips following President Trump tariff threat",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/news/morning-movers-apple-slips-following-131522487.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "319684ea-ed04-3cd3-abf1-dde606bed5e9",
         "title": "A Nuclear Power Play And TurboTax Stock Reach New Highs",
         "publisher": "Investor's Business Daily",
@@ -8258,11 +8266,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "22e9d305-bd7c-306e-820a-25234c2b03d9",
-        "title": "Morning Movers: Apple slips following President Trump tariff threat",
-        "publisher": "TipRanks",
+        "uuid": "c3246dd1-b5ee-35cf-a98e-0a19e0048374",
+        "title": "Stocks to Watch: Apple, Booz Allen,  Constellation Energy, Intuit",
+        "publisher": "The Wall Street Journal",
         "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/news/morning-movers-apple-slips-following-131522487.html",
+        "link": "https://finance.yahoo.com/m/c3246dd1-b5ee-35cf-a98e-0a19e0048374/stocks-to-watch%3A-apple%2C-booz.html",
         "type": "STORY"
       },
       {
@@ -8272,14 +8280,6 @@
         "reportDate": "2025-05-24",
         "link": "https://finance.yahoo.com/video/nuclear-rally-deckers-outdoor-intuit-195330148.html",
         "type": "VIDEO"
-      },
-      {
-        "uuid": "c3246dd1-b5ee-35cf-a98e-0a19e0048374",
-        "title": "Stocks to Watch: Apple, Booz Allen,  Constellation Energy, Intuit",
-        "publisher": "The Wall Street Journal",
-        "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/m/c3246dd1-b5ee-35cf-a98e-0a19e0048374/stocks-to-watch%3A-apple%2C-booz.html",
-        "type": "STORY"
       },
       {
         "uuid": "a0c5cbe2-b276-3715-afc5-cb59b6cbeb14",
@@ -8366,18 +8366,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 16.21,
-        "industryAvg": 23.3
+        "value": 16.17,
+        "industryAvg": 24.07
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.5,
-        "industryAvg": 4.08
+        "value": 3.49,
+        "industryAvg": 4.24
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.55,
-        "industryAvg": 4.42
+        "value": 3.54,
+        "industryAvg": 4.58
       },
       {
         "metric": "ROE",
@@ -8397,19 +8397,19 @@
       {
         "metric": "EBITDA Margin",
         "value": 50.56,
-        "industryAvg": 20.76
+        "industryAvg": 20.75
       },
       {
         "metric": "Net Margin",
         "value": 35.8,
-        "industryAvg": -0.32
+        "industryAvg": -0.33
       }
     ],
     "dcf": {
-      "fairValue": 223.29,
-      "currentPrice": 267.72,
-      "upside": -16.6,
-      "wacc": 11.77,
+      "fairValue": 229.36,
+      "currentPrice": 267.08,
+      "upside": -14.12,
+      "wacc": 11.54,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 11.01,
         "Terminal growth": 3

@@ -1,10 +1,10 @@
 {
   "symbol": "CRM",
-  "lastUpdated": "2026-06-29T23:40:07.848324+00:00",
+  "lastUpdated": "2026-07-02T23:53:41.175846+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-29T23:40:07.848324+00:00",
+    "snapshotBuiltAt": "2026-07-02T23:53:41.175846+00:00",
     "sections": {
-      "price": "2026-06-26"
+      "price": "2026-07-01"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.6388,
-      "ttmPe": 18.33,
-      "marketCap": 129705030000,
-      "psRatio": 3.03,
-      "pbRatio": 3.79,
-      "pegRatio": 0.35
+      "ttmPe": 18.89,
+      "marketCap": 133685370000,
+      "psRatio": 3.12,
+      "pbRatio": 3.9,
+      "pegRatio": 0.36
     },
     "profitability": {
       "roe": 4.51,
@@ -5386,41 +5386,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11,
-      "costOfEquity": 14.360000000000001,
+      "wacc": 10.95,
+      "costOfEquity": 14.2,
       "costOfDebt": 0.76,
       "taxRate": 23,
-      "beta": 1.1756,
-      "marketCap": 129705030000
+      "beta": 1.1585,
+      "marketCap": 133685370000
     },
     "beta": {
-      "beta5y": 1.1756
+      "beta5y": 1.1585
     },
     "price": [
-      {
-        "date": "2025-06-26",
-        "open": 268.78,
-        "high": 271.01,
-        "low": 265.16,
-        "close": 270.74,
-        "volume": 6708000
-      },
-      {
-        "date": "2025-06-27",
-        "open": 271.86,
-        "high": 274.17,
-        "low": 269.43,
-        "close": 273.42,
-        "volume": 21741400
-      },
-      {
-        "date": "2025-06-30",
-        "open": 274.46,
-        "high": 276.38,
-        "low": 270.4,
-        "close": 272.69,
-        "volume": 8541900
-      },
       {
         "date": "2025-07-01",
         "open": 272.08,
@@ -7411,7 +7387,31 @@
         "high": 158.46,
         "low": 151.49,
         "close": 158.37,
-        "volume": 20231900
+        "volume": 21267900
+      },
+      {
+        "date": "2026-06-29",
+        "open": 160.27,
+        "high": 161.76,
+        "low": 157.7,
+        "close": 157.93,
+        "volume": 12664100
+      },
+      {
+        "date": "2026-06-30",
+        "open": 155.09,
+        "high": 157.69,
+        "low": 154.07,
+        "close": 156.66,
+        "volume": 13690500
+      },
+      {
+        "date": "2026-07-01",
+        "open": 162.22,
+        "high": 165.81,
+        "low": 161.2,
+        "close": 163.23,
+        "volume": 13957646
       }
     ],
     "news": [
@@ -7480,19 +7480,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "dd9e1206-7f9f-30a5-8c2a-d095e81c7ffa",
-        "title": "3 S&P 500 Stocks Facing Headwinds",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/3-p-500-stocks-facing-043804051.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "3b4d0821-7c9c-3cf8-964d-d99cc9ab3503",
         "title": "Takeda Taps Salesforce (CRM) for AI-Driven Customer Experience Platform",
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/news/takeda-taps-salesforce-crm-ai-173342909.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "dd9e1206-7f9f-30a5-8c2a-d095e81c7ffa",
+        "title": "3 S&P 500 Stocks Facing Headwinds",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/3-p-500-stocks-facing-043804051.html",
         "type": "STORY"
       }
     ],
@@ -7561,18 +7561,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 18.33,
-        "industryAvg": 23.27
+        "value": 18.89,
+        "industryAvg": 24.07
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.03,
-        "industryAvg": 4.08
+        "value": 3.12,
+        "industryAvg": 4.24
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.79,
-        "industryAvg": 4.42
+        "value": 3.9,
+        "industryAvg": 4.58
       },
       {
         "metric": "ROE",
@@ -7592,19 +7592,19 @@
       {
         "metric": "EBITDA Margin",
         "value": 36.14,
-        "industryAvg": 20.76
+        "industryAvg": 20.75
       },
       {
         "metric": "Net Margin",
         "value": 18.93,
-        "industryAvg": -0.32
+        "industryAvg": -0.33
       }
     ],
     "dcf": {
-      "fairValue": 237.47,
-      "currentPrice": 158.37,
-      "upside": 49.95,
-      "wacc": 11,
+      "fairValue": 239.03,
+      "currentPrice": 163.23,
+      "upside": 46.44,
+      "wacc": 10.95,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

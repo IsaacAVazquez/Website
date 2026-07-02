@@ -72,15 +72,6 @@
     "link": "https://finance.yahoo.com/m/853459fc-a326-3b0c-b0f7-fc98e76b003b/why-oracle-stock-was-on-fire.html"
   },
   {
-    "uuid": "df3945aa-0fd1-34d9-8a4f-aa0c9a0cdb45",
-    "symbol": "ORCL",
-    "title": "Trump and MBS Tout $1 Trillion Pledge as Details Remain Elusive",
-    "publisher": "Bloomberg",
-    "report_date": "2025-05-14",
-    "type": "STORY",
-    "link": "https://finance.yahoo.com/news/trump-mbs-tout-1-trillion-174902305.html"
-  },
-  {
     "uuid": "ca06a274-32e3-3e67-865f-0b228b4d8f22",
     "symbol": "ORCL",
     "title": "White House calls out Boeing, GE Vernova exports in Saudi Arabia pact",
@@ -88,5 +79,14 @@
     "report_date": "2025-05-14",
     "type": "STORY",
     "link": "https://finance.yahoo.com/news/white-house-calls-boeing-ge-142742667.html"
+  },
+  {
+    "uuid": "df3945aa-0fd1-34d9-8a4f-aa0c9a0cdb45",
+    "symbol": "ORCL",
+    "title": "Trump and MBS Tout $1 Trillion Pledge as Details Remain Elusive",
+    "publisher": "Bloomberg",
+    "report_date": "2025-05-14",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/trump-mbs-tout-1-trillion-174902305.html"
   }
 ]

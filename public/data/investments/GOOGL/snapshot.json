@@ -1,10 +1,10 @@
 {
   "symbol": "GOOGL",
-  "lastUpdated": "2026-06-29T23:40:07.848324+00:00",
+  "lastUpdated": "2026-07-02T23:53:41.175846+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-29T23:40:07.848324+00:00",
+    "snapshotBuiltAt": "2026-07-02T23:53:41.175846+00:00",
     "sections": {
-      "price": "2026-06-26"
+      "price": "2026-07-01"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 13.109,
-      "ttmPe": 25.74,
-      "marketCap": 4087629718638,
-      "psRatio": 9.67,
-      "pbRatio": 8.54,
-      "pegRatio": 0.31
+      "ttmPe": 27.55,
+      "marketCap": 4376219599482,
+      "psRatio": 10.36,
+      "pbRatio": 9.14,
+      "pegRatio": 0.34
     },
     "profitability": {
       "roe": 14.000000000000002,
@@ -5594,41 +5594,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.71,
-      "costOfEquity": 15.03,
+      "wacc": 14.49,
+      "costOfEquity": 14.78,
       "costOfDebt": 0.59,
       "taxRate": 19,
-      "beta": 1.254,
-      "marketCap": 4087629718638
+      "beta": 1.2279,
+      "marketCap": 4376219599482
     },
     "beta": {
-      "beta5y": 1.254
+      "beta5y": 1.2279
     },
     "price": [
-      {
-        "date": "2025-06-26",
-        "open": 172.43,
-        "high": 173.69,
-        "low": 169.94,
-        "close": 173.54,
-        "volume": 31796700
-      },
-      {
-        "date": "2025-06-27",
-        "open": 173.54,
-        "high": 178.68,
-        "low": 171.73,
-        "close": 178.53,
-        "volume": 108140200
-      },
-      {
-        "date": "2025-06-30",
-        "open": 180.78,
-        "high": 181.23,
-        "low": 174.58,
-        "close": 176.23,
-        "volume": 63378900
-      },
       {
         "date": "2025-07-01",
         "open": 175.74,
@@ -7619,7 +7595,31 @@
         "high": 346.36,
         "low": 330.2,
         "close": 337.39,
-        "volume": 114642600
+        "volume": 114706300
+      },
+      {
+        "date": "2026-06-29",
+        "open": 341.83,
+        "high": 354.35,
+        "low": 340.67,
+        "close": 353.65,
+        "volume": 34213900
+      },
+      {
+        "date": "2026-06-30",
+        "open": 353.87,
+        "high": 358.62,
+        "low": 350.4,
+        "close": 357.37,
+        "volume": 35237200
+      },
+      {
+        "date": "2026-07-01",
+        "open": 358.24,
+        "high": 362.97,
+        "low": 356.43,
+        "close": 361.21,
+        "volume": 26660281
       }
     ],
     "news": [
@@ -7640,11 +7640,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "1f65352e-e780-3b0a-9802-fdd0d6359ce8",
-        "title": "Streaming Surpasses Combined Cable, Broadcast Viewing for First Time in May, Nielsen Reports",
-        "publisher": "MT Newswires",
+        "uuid": "343df9a5-0920-3bee-8ef5-51237a31223f",
+        "title": "3 Cheap Tech Stocks to Buy Right Now",
+        "publisher": "Motley Fool",
         "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/news/streaming-surpasses-combined-cable-broadcast-140549520.html",
+        "link": "https://finance.yahoo.com/m/343df9a5-0920-3bee-8ef5-51237a31223f/3-cheap-tech-stocks-to-buy.html",
         "type": "STORY"
       },
       {
@@ -7664,11 +7664,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "343df9a5-0920-3bee-8ef5-51237a31223f",
-        "title": "3 Cheap Tech Stocks to Buy Right Now",
-        "publisher": "Motley Fool",
+        "uuid": "1f65352e-e780-3b0a-9802-fdd0d6359ce8",
+        "title": "Streaming Surpasses Combined Cable, Broadcast Viewing for First Time in May, Nielsen Reports",
+        "publisher": "MT Newswires",
         "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/m/343df9a5-0920-3bee-8ef5-51237a31223f/3-cheap-tech-stocks-to-buy.html",
+        "link": "https://finance.yahoo.com/news/streaming-surpasses-combined-cable-broadcast-140549520.html",
         "type": "STORY"
       },
       {
@@ -7688,19 +7688,19 @@
         "type": "STORY"
       },
       {
+        "uuid": "4d96e147-0572-3919-abe2-9e78a89c6f88",
+        "title": "Got $5,000? 3 Tech Stocks to Buy and Hold for the Long Term.",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-06-19",
+        "link": "https://finance.yahoo.com/m/4d96e147-0572-3919-abe2-9e78a89c6f88/got-%245%2C000%3F-3-tech-stocks-to.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "58844064-6ec3-3b70-b13a-3eee7607b6b5",
         "title": "Adobe vs. Apple: Which AI-Driven Tech Stock is a Better Buy Now?",
         "publisher": "Zacks",
         "reportDate": "2025-06-19",
         "link": "https://finance.yahoo.com/news/adobe-vs-apple-ai-driven-172200197.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "4d7fe1de-6ce8-3bad-a565-20d668edb258",
-        "title": "3 Growth Stocks to Buy and Forget About",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-06-19",
-        "link": "https://finance.yahoo.com/m/4d7fe1de-6ce8-3bad-a565-20d668edb258/3-growth-stocks-to-buy-and.html",
         "type": "STORY"
       }
     ],
@@ -7776,18 +7776,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 25.74,
-        "industryAvg": 24.58
+        "value": 27.55,
+        "industryAvg": 26.42
       },
       {
         "metric": "P/S Ratio",
-        "value": 9.67,
-        "industryAvg": 8.3
+        "value": 10.36,
+        "industryAvg": 8.94
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.54,
-        "industryAvg": 7.21
+        "value": 9.14,
+        "industryAvg": 7.77
       },
       {
         "metric": "ROE",
@@ -7816,10 +7816,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 241.26,
-      "currentPrice": 337.39,
-      "upside": -28.49,
-      "wacc": 14.71,
+      "fairValue": 246.16,
+      "currentPrice": 361.21,
+      "upside": -31.85,
+      "wacc": 14.49,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

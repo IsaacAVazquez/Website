@@ -1,10 +1,10 @@
 {
   "symbol": "TSM",
-  "lastUpdated": "2026-06-29T23:40:07.848324+00:00",
+  "lastUpdated": "2026-07-02T23:53:41.175846+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-29T23:40:07.848324+00:00",
+    "snapshotBuiltAt": "2026-07-02T23:53:41.175846+00:00",
     "sections": {
-      "price": "2026-06-26"
+      "price": "2026-07-01"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.0321,
-      "ttmPe": 35.93,
-      "marketCap": 2242372033900,
-      "psRatio": 17.51,
-      "pbRatio": 12.2,
-      "pegRatio": 0.56
+      "ttmPe": 36.92,
+      "marketCap": 2303987345020,
+      "psRatio": 17.99,
+      "pbRatio": 12.53,
+      "pegRatio": 0.57
     },
     "profitability": {
       "roe": 10.18,
@@ -6708,41 +6708,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.6,
-      "costOfEquity": 15.83,
+      "wacc": 15.690000000000001,
+      "costOfEquity": 15.920000000000002,
       "costOfDebt": 0.25,
       "taxRate": 17,
-      "beta": 1.3485,
-      "marketCap": 2242372033900
+      "beta": 1.3635,
+      "marketCap": 2303987345020
     },
     "beta": {
-      "beta5y": 1.3485
+      "beta5y": 1.3635
     },
     "price": [
-      {
-        "date": "2025-06-26",
-        "open": 224.98,
-        "high": 225.22,
-        "low": 222.7,
-        "close": 224.01,
-        "volume": 7982200
-      },
-      {
-        "date": "2025-06-27",
-        "open": 224.3,
-        "high": 228.88,
-        "low": 224.03,
-        "close": 228.57,
-        "volume": 13133000
-      },
-      {
-        "date": "2025-06-30",
-        "open": 227.44,
-        "high": 228.15,
-        "low": 224.8,
-        "close": 226.49,
-        "volume": 9279800
-      },
       {
         "date": "2025-07-01",
         "open": 227.43,
@@ -8733,7 +8709,31 @@
         "high": 436.13,
         "low": 419.19,
         "close": 432.35,
-        "volume": 17951300
+        "volume": 17974100
+      },
+      {
+        "date": "2026-06-29",
+        "open": 437,
+        "high": 456.1,
+        "low": 431.09,
+        "close": 455.1,
+        "volume": 14881400
+      },
+      {
+        "date": "2026-06-30",
+        "open": 455.61,
+        "high": 479,
+        "low": 453,
+        "close": 477.57,
+        "volume": 15074300
+      },
+      {
+        "date": "2026-07-01",
+        "open": 467.67,
+        "high": 468.51,
+        "low": 443.47,
+        "close": 444.23,
+        "volume": 18465871
       }
     ],
     "news": [
@@ -8794,19 +8794,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "5104baf1-a7b2-3c68-af66-0a502166bcb2",
-        "title": "TSMC Stock Maintains High-Conviction AI Play Status With $220 Price Target",
-        "publisher": "TipRanks",
-        "reportDate": "2025-06-01",
-        "link": "https://finance.yahoo.com/news/tsmc-stock-maintains-high-conviction-183500555.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "55c8b36c-2510-38f3-854f-062fb0af6334",
         "title": "5 Brilliant Stocks to Buy in June",
         "publisher": "Motley Fool",
         "reportDate": "2025-06-01",
         "link": "https://finance.yahoo.com/m/55c8b36c-2510-38f3-854f-062fb0af6334/5-brilliant-stocks-to-buy-in.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "5104baf1-a7b2-3c68-af66-0a502166bcb2",
+        "title": "TSMC Stock Maintains High-Conviction AI Play Status With $220 Price Target",
+        "publisher": "TipRanks",
+        "reportDate": "2025-06-01",
+        "link": "https://finance.yahoo.com/news/tsmc-stock-maintains-high-conviction-183500555.html",
         "type": "STORY"
       },
       {
@@ -8822,7 +8822,7 @@
       {
         "name": "Dr. C. C. Wei Ph.D.",
         "title": "Chairman & CEO",
-        "totalPay": 64272445
+        "totalPay": 64510895
       },
       {
         "name": "Dr. Horng-Dar Lin",
@@ -8847,7 +8847,7 @@
       {
         "name": "Mr. Jen-Chau Huang",
         "title": "Senior VP & CFO",
-        "totalPay": 9311313
+        "totalPay": 9345857
       },
       {
         "name": "Mr. Pei-Hong Chen",
@@ -8865,18 +8865,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 35.93,
-        "industryAvg": 33.78
+        "value": 36.92,
+        "industryAvg": 38.83
       },
       {
         "metric": "P/S Ratio",
-        "value": 17.51,
-        "industryAvg": 14.09
+        "value": 17.99,
+        "industryAvg": 15.8
       },
       {
         "metric": "P/B Ratio",
-        "value": 12.2,
-        "industryAvg": 11.86
+        "value": 12.53,
+        "industryAvg": 13.64
       },
       {
         "metric": "ROE",
@@ -8905,10 +8905,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 204.85,
-      "currentPrice": 432.35,
-      "upside": -52.62,
-      "wacc": 15.6,
+      "fairValue": 203.31,
+      "currentPrice": 444.23,
+      "upside": -54.23,
+      "wacc": 15.69,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

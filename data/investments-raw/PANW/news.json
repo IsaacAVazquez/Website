@@ -27,15 +27,6 @@
     "link": "https://finance.yahoo.com/news/high-growth-us-tech-stocks-114513597.html"
   },
   {
-    "uuid": "903b328c-0aa3-377c-bff1-9b907a104577",
-    "symbol": "PANW",
-    "title": "Alphabet Traders Look to Developer Event to Shift AI Narrative",
-    "publisher": "Bloomberg",
-    "report_date": "2025-05-20",
-    "type": "STORY",
-    "link": "https://finance.yahoo.com/news/alphabet-traders-look-developer-event-093534219.html"
-  },
-  {
     "uuid": "6d123023-ccd7-31dc-bff4-466420d33097",
     "symbol": "PANW",
     "title": "Home Depot earnings, Fedspeak, Google I/O: What to Watch",
@@ -43,6 +34,15 @@
     "report_date": "2025-05-20",
     "type": "VIDEO",
     "link": "https://finance.yahoo.com/video/home-depot-earnings-fedspeak-google-230018667.html"
+  },
+  {
+    "uuid": "903b328c-0aa3-377c-bff1-9b907a104577",
+    "symbol": "PANW",
+    "title": "Alphabet Traders Look to Developer Event to Shift AI Narrative",
+    "publisher": "Bloomberg",
+    "report_date": "2025-05-20",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/alphabet-traders-look-developer-event-093534219.html"
   },
   {
     "uuid": "f5b81787-2ebe-34d1-92b0-5caff846147b",

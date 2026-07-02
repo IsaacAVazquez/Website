@@ -36,15 +36,6 @@
     "link": "https://finance.yahoo.com/news/stock-buyback-bonanza-3-companies-151500536.html"
   },
   {
-    "uuid": "4da000f1-5e34-311b-ab91-cafccc27f54d",
-    "symbol": "ANET",
-    "title": "Zacks Investment Ideas feature highlights: Arista Networks, Apple and Applied Industrial Technologies",
-    "publisher": "Zacks",
-    "report_date": "2025-05-19",
-    "type": "STORY",
-    "link": "https://finance.yahoo.com/news/zacks-investment-ideas-feature-highlights-132600703.html"
-  },
-  {
     "uuid": "fc02e84f-6989-34d6-a08b-93c18e28509b",
     "symbol": "ANET",
     "title": "Buy 5 Big AI Laggards of Q1 That Found Wings and Soared Past Month",
@@ -52,6 +43,15 @@
     "report_date": "2025-05-19",
     "type": "STORY",
     "link": "https://finance.yahoo.com/news/buy-5-big-ai-laggards-130000558.html"
+  },
+  {
+    "uuid": "4da000f1-5e34-311b-ab91-cafccc27f54d",
+    "symbol": "ANET",
+    "title": "Zacks Investment Ideas feature highlights: Arista Networks, Apple and Applied Industrial Technologies",
+    "publisher": "Zacks",
+    "report_date": "2025-05-19",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/zacks-investment-ideas-feature-highlights-132600703.html"
   },
   {
     "uuid": "0162258a-bfd3-300c-aea8-d8eeb873a577",

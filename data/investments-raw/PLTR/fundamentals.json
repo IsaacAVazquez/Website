@@ -11732,6 +11732,30 @@
       "close_price": 112.93,
       "ttm_eps": 0.8876,
       "ttm_pe": 127.23
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2026-06-29T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 115.7,
+      "ttm_eps": 0.8876,
+      "ttm_pe": 130.35
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2026-06-30T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 116.67,
+      "ttm_eps": 0.8876,
+      "ttm_pe": 131.44
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2026-07-01T00:00:00.000",
+      "eps_report_date": "2026-03-31T00:00:00.000",
+      "close_price": 125.73,
+      "ttm_eps": 0.8876,
+      "ttm_pe": 141.65
     }
   ],
   "marketCap": [
@@ -23262,6 +23286,30 @@
       "close_price": 112.93,
       "shares_outstanding": 2397312000,
       "market_capitalization": 270728444160.0
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2026-06-29T00:00:00.000",
+      "shares_report_date": "2026-04-27T00:00:00.000",
+      "close_price": 115.7,
+      "shares_outstanding": 2397312000,
+      "market_capitalization": 277368998400.0
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2026-06-30T00:00:00.000",
+      "shares_report_date": "2026-04-27T00:00:00.000",
+      "close_price": 116.67,
+      "shares_outstanding": 2397312000,
+      "market_capitalization": 279694391040.0
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2026-07-01T00:00:00.000",
+      "shares_report_date": "2026-04-27T00:00:00.000",
+      "close_price": 125.73,
+      "shares_outstanding": 2397312000,
+      "market_capitalization": 301414037760.0
     }
   ],
   "psRatio": [
@@ -28884,6 +28932,36 @@
       "exchange_rate": 1.0,
       "ttm_revenue_usd": 5224174000.0,
       "ps_ratio": 51.82
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2026-06-29T00:00:00.000",
+      "market_capitalization": 277368998400.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 5224174000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 5224174000.0,
+      "ps_ratio": 53.09
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2026-06-30T00:00:00.000",
+      "market_capitalization": 279694391040.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 5224174000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 5224174000.0,
+      "ps_ratio": 53.54
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2026-07-01T00:00:00.000",
+      "market_capitalization": 301414037760.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_revenue": 5224174000.0,
+      "exchange_rate": 1.0,
+      "ttm_revenue_usd": 5224174000.0,
+      "ps_ratio": 57.7
     }
   ],
   "pbRatio": [
@@ -38896,6 +38974,36 @@
       "exchange_rate": 1.0,
       "book_value_of_equity_usd": 8449663000.0,
       "pb_ratio": 32.04
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2026-06-29T00:00:00.000",
+      "market_capitalization": 277368998400.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 8449663000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 8449663000.0,
+      "pb_ratio": 32.83
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2026-06-30T00:00:00.000",
+      "market_capitalization": 279694391040.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 8449663000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 8449663000.0,
+      "pb_ratio": 33.1
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2026-07-01T00:00:00.000",
+      "market_capitalization": 301414037760.0,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "book_value_of_equity": 8449663000.0,
+      "exchange_rate": 1.0,
+      "book_value_of_equity_usd": 8449663000.0,
+      "pb_ratio": 35.67
     }
   ],
   "pegRatio": [
@@ -45758,6 +45866,36 @@
       "ttm_pe": 127.23,
       "eps_yoy_growth": 3.0406,
       "peg_ratio": 0.42
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2026-06-29T00:00:00.000",
+      "close_price": 115.7,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 0.8876,
+      "ttm_pe": 130.35,
+      "eps_yoy_growth": 3.0406,
+      "peg_ratio": 0.43
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2026-06-30T00:00:00.000",
+      "close_price": 116.67,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 0.8876,
+      "ttm_pe": 131.44,
+      "eps_yoy_growth": 3.0406,
+      "peg_ratio": 0.43
+    },
+    {
+      "symbol": "PLTR",
+      "report_date": "2026-07-01T00:00:00.000",
+      "close_price": 125.73,
+      "fiscal_quarter": "2026-03-31T00:00:00.000",
+      "ttm_eps": 0.8876,
+      "ttm_pe": 141.65,
+      "eps_yoy_growth": 3.0406,
+      "peg_ratio": 0.47
     }
   ]
 }

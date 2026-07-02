@@ -5683,6 +5683,27 @@
       "total_market_cap": 9913213396397.4,
       "total_ttm_net_income": 403347305733.31995,
       "industry_pe": 24.58
+    },
+    {
+      "report_date": "2026-06-29T00:00:00.000",
+      "industry": "Internet Content & Information",
+      "total_market_cap": 10358078367896.0,
+      "total_ttm_net_income": 403306408733.31995,
+      "industry_pe": 25.68
+    },
+    {
+      "report_date": "2026-06-30T00:00:00.000",
+      "industry": "Internet Content & Information",
+      "total_market_cap": 10432571712299.0,
+      "total_ttm_net_income": 403306408733.31995,
+      "industry_pe": 25.87
+    },
+    {
+      "report_date": "2026-07-01T00:00:00.000",
+      "industry": "Internet Content & Information",
+      "total_market_cap": 10655445565412.92,
+      "total_ttm_net_income": 403306408733.31995,
+      "industry_pe": 26.42
     }
   ],
   "ps_ratio": [
@@ -10946,429 +10967,450 @@
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 8766142600926.989,
-      "total_ttm_revenue": 1197240794515.42,
+      "total_market_cap": 8766142042782.989,
+      "total_ttm_revenue": 1197241993515.42,
       "industry_ps_ratio": 7.32
     },
     {
       "report_date": "2026-04-01T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 8998691415365.91,
-      "total_ttm_revenue": 1197240794515.42,
+      "total_market_cap": 8998690903165.91,
+      "total_ttm_revenue": 1197241993515.42,
       "industry_ps_ratio": 7.52
     },
     {
       "report_date": "2026-04-02T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 8966825545582.629,
-      "total_ttm_revenue": 1197240794515.42,
+      "total_market_cap": 8966825016964.629,
+      "total_ttm_revenue": 1197241993515.42,
       "industry_ps_ratio": 7.49
     },
     {
       "report_date": "2026-04-06T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 9056286895661.94,
-      "total_ttm_revenue": 1197240794515.42,
+      "total_market_cap": 9056286359387.94,
+      "total_ttm_revenue": 1197241993515.42,
       "industry_ps_ratio": 7.56
     },
     {
       "report_date": "2026-04-07T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 9205764664948.01,
-      "total_ttm_revenue": 1197240794515.42,
+      "total_market_cap": 9205764137432.01,
+      "total_ttm_revenue": 1197241993515.42,
       "industry_ps_ratio": 7.69
     },
     {
       "report_date": "2026-04-08T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 9580663935770.59,
-      "total_ttm_revenue": 1197240794515.42,
+      "total_market_cap": 9580663427931.59,
+      "total_ttm_revenue": 1197241993515.42,
       "industry_ps_ratio": 8.0
     },
     {
       "report_date": "2026-04-09T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 9652482394073.818,
-      "total_ttm_revenue": 1197240794515.42,
+      "total_market_cap": 9652481881851.818,
+      "total_ttm_revenue": 1197241993515.42,
       "industry_ps_ratio": 8.06
     },
     {
       "report_date": "2026-04-10T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 9632350703054.318,
-      "total_ttm_revenue": 1197240794515.42,
+      "total_market_cap": 9632350197401.318,
+      "total_ttm_revenue": 1197241993515.42,
       "industry_ps_ratio": 8.05
     },
     {
       "report_date": "2026-04-13T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 9749417026835.098,
-      "total_ttm_revenue": 1197240794515.42,
+      "total_market_cap": 9749416525560.098,
+      "total_ttm_revenue": 1197241993515.42,
       "industry_ps_ratio": 8.14
     },
     {
       "report_date": "2026-04-14T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10109916189138.691,
-      "total_ttm_revenue": 1197240794515.42,
+      "total_market_cap": 10109915717406.691,
+      "total_ttm_revenue": 1197241993515.42,
       "industry_ps_ratio": 8.44
     },
     {
       "report_date": "2026-04-15T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10242365738107.201,
-      "total_ttm_revenue": 1197240794515.42,
+      "total_market_cap": 10242365263093.201,
+      "total_ttm_revenue": 1197241993515.42,
       "industry_ps_ratio": 8.55
     },
     {
       "report_date": "2026-04-16T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10224378848183.709,
-      "total_ttm_revenue": 1197240794515.42,
+      "total_market_cap": 10224378368802.709,
+      "total_ttm_revenue": 1197241993515.42,
       "industry_ps_ratio": 8.54
     },
     {
       "report_date": "2026-04-17T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10417553127396.398,
-      "total_ttm_revenue": 1197240794515.42,
+      "total_market_cap": 10417552641434.398,
+      "total_ttm_revenue": 1197241993515.42,
       "industry_ps_ratio": 8.7
     },
     {
       "report_date": "2026-04-20T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10274919569716.03,
-      "total_ttm_revenue": 1197157333426.42,
+      "total_market_cap": 10274919043232.03,
+      "total_ttm_revenue": 1197158532426.42,
       "industry_ps_ratio": 8.58
     },
     {
       "report_date": "2026-04-21T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10138455975274.549,
-      "total_ttm_revenue": 1197157333426.42,
+      "total_market_cap": 10138455434568.549,
+      "total_ttm_revenue": 1197158532426.42,
       "industry_ps_ratio": 8.47
     },
     {
       "report_date": "2026-04-22T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10314921408067.361,
-      "total_ttm_revenue": 1197157333426.42,
+      "total_market_cap": 10314920855320.361,
+      "total_ttm_revenue": 1197158532426.42,
       "industry_ps_ratio": 8.62
     },
     {
       "report_date": "2026-04-23T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10258262802387.148,
-      "total_ttm_revenue": 1197157333426.42,
+      "total_market_cap": 10258262251835.148,
+      "total_ttm_revenue": 1197158532426.42,
       "industry_ps_ratio": 8.57
     },
     {
       "report_date": "2026-04-24T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10422588132129.23,
-      "total_ttm_revenue": 1197157333426.42,
+      "total_market_cap": 10422587576057.23,
+      "total_ttm_revenue": 1197158532426.42,
       "industry_ps_ratio": 8.71
     },
     {
       "report_date": "2026-04-27T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10578964415436.129,
-      "total_ttm_revenue": 1197157333426.42,
+      "total_market_cap": 10578963776222.129,
+      "total_ttm_revenue": 1197158532426.42,
       "industry_ps_ratio": 8.84
     },
     {
       "report_date": "2026-04-28T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10521654687896.05,
-      "total_ttm_revenue": 1197157333426.42,
+      "total_market_cap": 10521654114308.05,
+      "total_ttm_revenue": 1197158532426.42,
       "industry_ps_ratio": 8.79
     },
     {
       "report_date": "2026-04-29T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10516688447985.0,
-      "total_ttm_revenue": 1197157333426.42,
+      "total_market_cap": 10516687886464.0,
+      "total_ttm_revenue": 1197158532426.42,
       "industry_ps_ratio": 8.78
     },
     {
       "report_date": "2026-04-30T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11215701744698.209,
-      "total_ttm_revenue": 1197157333426.42,
+      "total_market_cap": 11215701159067.209,
+      "total_ttm_revenue": 1197158532426.42,
       "industry_ps_ratio": 9.37
     },
     {
       "report_date": "2026-05-01T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11242620172046.9,
-      "total_ttm_revenue": 1197157333426.42,
+      "total_market_cap": 11242619583142.9,
+      "total_ttm_revenue": 1197158532426.42,
       "industry_ps_ratio": 9.39
     },
     {
       "report_date": "2026-05-04T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11178957822458.049,
-      "total_ttm_revenue": 1197157333426.42,
+      "total_market_cap": 11178957255419.049,
+      "total_ttm_revenue": 1197158532426.42,
       "industry_ps_ratio": 9.34
     },
     {
       "report_date": "2026-05-05T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11280345568766.012,
-      "total_ttm_revenue": 1197157333426.42,
+      "total_market_cap": 11280344977663.012,
+      "total_ttm_revenue": 1197158532426.42,
       "industry_ps_ratio": 9.42
     },
     {
       "report_date": "2026-05-06T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11563719242930.271,
-      "total_ttm_revenue": 1197157333426.42,
+      "total_market_cap": 11563718666012.271,
+      "total_ttm_revenue": 1197158532426.42,
       "industry_ps_ratio": 9.66
     },
     {
       "report_date": "2026-05-07T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11572228794450.64,
-      "total_ttm_revenue": 1197157333426.42,
+      "total_market_cap": 11572228204431.64,
+      "total_ttm_revenue": 1197158532426.42,
       "industry_ps_ratio": 9.67
     },
     {
       "report_date": "2026-05-08T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11609448888898.479,
-      "total_ttm_revenue": 1197157333426.42,
+      "total_market_cap": 11609448312003.479,
+      "total_ttm_revenue": 1197158532426.42,
       "industry_ps_ratio": 9.7
     },
     {
       "report_date": "2026-05-11T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11306584130740.709,
-      "total_ttm_revenue": 1197157333426.42,
+      "total_market_cap": 11306583578992.709,
+      "total_ttm_revenue": 1197158532426.42,
       "industry_ps_ratio": 9.44
     },
     {
       "report_date": "2026-05-12T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11261554552662.54,
-      "total_ttm_revenue": 1197157333426.42,
+      "total_market_cap": 11261553998733.54,
+      "total_ttm_revenue": 1197158532426.42,
       "industry_ps_ratio": 9.41
     },
     {
       "report_date": "2026-05-13T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11681647505170.22,
-      "total_ttm_revenue": 1197157333426.42,
+      "total_market_cap": 11681646899832.22,
+      "total_ttm_revenue": 1197158532426.42,
       "industry_ps_ratio": 9.76
     },
     {
       "report_date": "2026-05-14T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11642542362286.26,
-      "total_ttm_revenue": 1197157333426.42,
+      "total_market_cap": 11642541766789.26,
+      "total_ttm_revenue": 1197158532426.42,
       "industry_ps_ratio": 9.73
     },
     {
       "report_date": "2026-05-15T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11531334005131.06,
-      "total_ttm_revenue": 1197157333426.42,
+      "total_market_cap": 11531333427131.06,
+      "total_ttm_revenue": 1197158532426.42,
       "industry_ps_ratio": 9.63
     },
     {
       "report_date": "2026-05-18T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11535217456359.219,
-      "total_ttm_revenue": 1197155764426.42,
+      "total_market_cap": 11535216775494.219,
+      "total_ttm_revenue": 1197156963426.42,
       "industry_ps_ratio": 9.64
     },
     {
       "report_date": "2026-05-19T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11298491416145.24,
-      "total_ttm_revenue": 1197155764426.42,
+      "total_market_cap": 11298490703560.24,
+      "total_ttm_revenue": 1197156963426.42,
       "industry_ps_ratio": 9.44
     },
     {
       "report_date": "2026-05-20T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11309368836768.58,
-      "total_ttm_revenue": 1197155764426.42,
+      "total_market_cap": 11309368144957.58,
+      "total_ttm_revenue": 1197156963426.42,
       "industry_ps_ratio": 9.45
     },
     {
       "report_date": "2026-05-21T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11300908176185.84,
-      "total_ttm_revenue": 1197155764426.42,
+      "total_market_cap": 11300907469041.84,
+      "total_ttm_revenue": 1197156963426.42,
       "industry_ps_ratio": 9.44
     },
     {
       "report_date": "2026-05-22T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11203997925727.549,
-      "total_ttm_revenue": 1197155764426.42,
+      "total_market_cap": 11203997166043.549,
+      "total_ttm_revenue": 1197156963426.42,
       "industry_ps_ratio": 9.36
     },
     {
       "report_date": "2026-05-26T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11348864422385.7,
-      "total_ttm_revenue": 1197155764426.42,
+      "total_market_cap": 11348863653921.7,
+      "total_ttm_revenue": 1197156963426.42,
       "industry_ps_ratio": 9.48
     },
     {
       "report_date": "2026-05-27T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11407039573370.1,
-      "total_ttm_revenue": 1197155764426.42,
+      "total_market_cap": 11407038815824.1,
+      "total_ttm_revenue": 1197156963426.42,
       "industry_ps_ratio": 9.53
     },
     {
       "report_date": "2026-05-28T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11447327520004.4,
-      "total_ttm_revenue": 1197155764426.42,
+      "total_market_cap": 11447326797480.4,
+      "total_ttm_revenue": 1197156963426.42,
       "industry_ps_ratio": 9.56
     },
     {
       "report_date": "2026-05-29T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11203571972901.691,
-      "total_ttm_revenue": 1197155764426.42,
+      "total_market_cap": 11203571248179.691,
+      "total_ttm_revenue": 1197156963426.42,
       "industry_ps_ratio": 9.36
     },
     {
       "report_date": "2026-06-01T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11033779853767.379,
-      "total_ttm_revenue": 1197155764426.42,
+      "total_market_cap": 11033779123587.379,
+      "total_ttm_revenue": 1197156963426.42,
       "industry_ps_ratio": 9.22
     },
     {
       "report_date": "2026-06-02T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10682280907194.46,
-      "total_ttm_revenue": 1197155764426.42,
+      "total_market_cap": 10682280173761.46,
+      "total_ttm_revenue": 1197156963426.42,
       "industry_ps_ratio": 8.92
     },
     {
       "report_date": "2026-06-03T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10669658937208.1,
-      "total_ttm_revenue": 1197155764426.42,
+      "total_market_cap": 10669658250842.1,
+      "total_ttm_revenue": 1197156963426.42,
       "industry_ps_ratio": 8.91
     },
     {
       "report_date": "2026-06-04T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11015032905931.91,
-      "total_ttm_revenue": 1197155764426.42,
+      "total_market_cap": 11015032199886.91,
+      "total_ttm_revenue": 1197156963426.42,
       "industry_ps_ratio": 9.2
     },
     {
       "report_date": "2026-06-05T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10824435401258.059,
-      "total_ttm_revenue": 1197155764426.42,
+      "total_market_cap": 10824434742248.059,
+      "total_ttm_revenue": 1197156963426.42,
       "industry_ps_ratio": 9.04
     },
     {
       "report_date": "2026-06-08T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10685182811651.75,
-      "total_ttm_revenue": 1197155764426.42,
+      "total_market_cap": 10685182109403.75,
+      "total_ttm_revenue": 1197156963426.42,
       "industry_ps_ratio": 8.93
     },
     {
       "report_date": "2026-06-09T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10703308841761.56,
-      "total_ttm_revenue": 1197155764426.42,
+      "total_market_cap": 10703308169620.56,
+      "total_ttm_revenue": 1197156963426.42,
       "industry_ps_ratio": 8.94
     },
     {
       "report_date": "2026-06-10T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10460632187108.24,
-      "total_ttm_revenue": 1197155764426.42,
+      "total_market_cap": 10460631499654.24,
+      "total_ttm_revenue": 1197156963426.42,
       "industry_ps_ratio": 8.74
     },
     {
       "report_date": "2026-06-11T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10512380974660.52,
-      "total_ttm_revenue": 1197155764426.42,
+      "total_market_cap": 10512380287208.52,
+      "total_ttm_revenue": 1197156963426.42,
       "industry_ps_ratio": 8.78
     },
     {
       "report_date": "2026-06-12T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10546198148726.43,
-      "total_ttm_revenue": 1197155764426.42,
+      "total_market_cap": 10546197463455.43,
+      "total_ttm_revenue": 1197156963426.42,
       "industry_ps_ratio": 8.81
     },
     {
       "report_date": "2026-06-15T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10852478928436.11,
-      "total_ttm_revenue": 1197155764426.42,
+      "total_market_cap": 10852478267281.11,
+      "total_ttm_revenue": 1197156963426.42,
       "industry_ps_ratio": 9.07
     },
     {
       "report_date": "2026-06-16T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10960146980490.44,
-      "total_ttm_revenue": 1197155764426.42,
+      "total_market_cap": 10960146293027.44,
+      "total_ttm_revenue": 1197156963426.42,
       "industry_ps_ratio": 9.16
     },
     {
       "report_date": "2026-06-17T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10649184248771.139,
-      "total_ttm_revenue": 1197155764426.42,
+      "total_market_cap": 10649183553648.139,
+      "total_ttm_revenue": 1197156963426.42,
       "industry_ps_ratio": 8.9
     },
     {
       "report_date": "2026-06-18T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10790064311369.64,
-      "total_ttm_revenue": 1197155764426.42,
+      "total_market_cap": 10790063631585.64,
+      "total_ttm_revenue": 1197156963426.42,
       "industry_ps_ratio": 9.01
     },
     {
       "report_date": "2026-06-22T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10301406800811.61,
-      "total_ttm_revenue": 1197151283397.42,
+      "total_market_cap": 10301406133058.61,
+      "total_ttm_revenue": 1197152482397.42,
       "industry_ps_ratio": 8.6
     },
     {
       "report_date": "2026-06-23T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10221089652385.6,
-      "total_ttm_revenue": 1197151283397.42,
+      "total_market_cap": 10221088986823.6,
+      "total_ttm_revenue": 1197152482397.42,
       "industry_ps_ratio": 8.54
     },
     {
       "report_date": "2026-06-24T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10186208280938.53,
-      "total_ttm_revenue": 1197151283397.42,
+      "total_market_cap": 10186207696338.53,
+      "total_ttm_revenue": 1197152482397.42,
       "industry_ps_ratio": 8.51
     },
     {
       "report_date": "2026-06-25T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10088058841966.059,
-      "total_ttm_revenue": 1197151283397.42,
+      "total_market_cap": 10088058243158.059,
+      "total_ttm_revenue": 1197152482397.42,
       "industry_ps_ratio": 8.43
     },
     {
       "report_date": "2026-06-26T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 9936971717154.71,
-      "total_ttm_revenue": 1197151283397.42,
+      "total_market_cap": 9936971038466.71,
+      "total_ttm_revenue": 1197152482397.42,
       "industry_ps_ratio": 8.3
+    },
+    {
+      "report_date": "2026-06-29T00:00:00.000",
+      "industry": "Internet Content & Information",
+      "total_market_cap": 10382224194206.0,
+      "total_ttm_revenue": 1194902408368.42,
+      "industry_ps_ratio": 8.69
+    },
+    {
+      "report_date": "2026-06-30T00:00:00.000",
+      "industry": "Internet Content & Information",
+      "total_market_cap": 10456629454090.299,
+      "total_ttm_revenue": 1194902408368.42,
+      "industry_ps_ratio": 8.75
+    },
+    {
+      "report_date": "2026-07-01T00:00:00.000",
+      "industry": "Internet Content & Information",
+      "total_market_cap": 10680076976775.932,
+      "total_ttm_revenue": 1194902408368.42,
+      "industry_ps_ratio": 8.94
     }
   ],
   "pb_ratio": [
@@ -18242,393 +18284,393 @@
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 8849193569088.44,
-      "total_bve": 1390273238528.6199,
+      "total_market_cap": 8849193568884.44,
+      "total_bve": 1390274574528.6199,
       "industry_pb_ratio": 6.37
     },
     {
       "report_date": "2026-04-01T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 9081121012492.94,
-      "total_bve": 1390273238528.6199,
+      "total_market_cap": 9081121012284.94,
+      "total_bve": 1390274574528.6199,
       "industry_pb_ratio": 6.53
     },
     {
       "report_date": "2026-04-02T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 9022022937877.59,
-      "total_bve": 1390273238528.6199,
+      "total_market_cap": 9022022937661.59,
+      "total_bve": 1390274574528.6199,
       "industry_pb_ratio": 6.49
     },
     {
       "report_date": "2026-04-06T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 9128177207830.998,
-      "total_bve": 1390273238528.6199,
+      "total_market_cap": 9128177207616.998,
+      "total_bve": 1390274574528.6199,
       "industry_pb_ratio": 6.57
     },
     {
       "report_date": "2026-04-07T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 9277735131846.67,
-      "total_bve": 1390273238528.6199,
+      "total_market_cap": 9277735131638.67,
+      "total_bve": 1390274574528.6199,
       "industry_pb_ratio": 6.67
     },
     {
       "report_date": "2026-04-08T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 9652876569979.307,
-      "total_bve": 1390273238528.6199,
+      "total_market_cap": 9652876569756.307,
+      "total_bve": 1390274574528.6199,
       "industry_pb_ratio": 6.94
     },
     {
       "report_date": "2026-04-09T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 9724536545163.469,
-      "total_bve": 1390273238528.6199,
+      "total_market_cap": 9724536544933.469,
+      "total_bve": 1390274574528.6199,
       "industry_pb_ratio": 6.99
     },
     {
       "report_date": "2026-04-10T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 9704623315058.879,
-      "total_bve": 1390273238528.6199,
+      "total_market_cap": 9704623314833.879,
+      "total_bve": 1390274574528.6199,
       "industry_pb_ratio": 6.98
     },
     {
       "report_date": "2026-04-13T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 9821322282789.701,
-      "total_bve": 1390273238528.6199,
+      "total_market_cap": 9821322282566.701,
+      "total_bve": 1390274574528.6199,
       "industry_pb_ratio": 7.06
     },
     {
       "report_date": "2026-04-14T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10181697779514.91,
-      "total_bve": 1390273238528.6199,
+      "total_market_cap": 10181697779296.91,
+      "total_bve": 1390274574528.6199,
       "industry_pb_ratio": 7.32
     },
     {
       "report_date": "2026-04-15T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10313934068538.89,
-      "total_bve": 1390273238528.6199,
+      "total_market_cap": 10313934068320.89,
+      "total_bve": 1390274574528.6199,
       "industry_pb_ratio": 7.42
     },
     {
       "report_date": "2026-04-16T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10295820033421.49,
-      "total_bve": 1390273238528.6199,
+      "total_market_cap": 10295820033212.49,
+      "total_bve": 1390274574528.6199,
       "industry_pb_ratio": 7.41
     },
     {
       "report_date": "2026-04-17T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10488528900439.94,
-      "total_bve": 1390273238528.6199,
+      "total_market_cap": 10488528900213.94,
+      "total_bve": 1390274574528.6199,
       "industry_pb_ratio": 7.54
     },
     {
       "report_date": "2026-04-20T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10317610315341.47,
-      "total_bve": 1390238790119.6199,
+      "total_market_cap": 10317610315071.47,
+      "total_bve": 1390240126119.6199,
       "industry_pb_ratio": 7.42
     },
     {
       "report_date": "2026-04-21T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10201329420626.23,
-      "total_bve": 1390238790119.6199,
+      "total_market_cap": 10201329420356.23,
+      "total_bve": 1390240126119.6199,
       "industry_pb_ratio": 7.34
     },
     {
       "report_date": "2026-04-22T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10375612172982.678,
-      "total_bve": 1390238790119.6199,
+      "total_market_cap": 10375612172705.678,
+      "total_bve": 1390240126119.6199,
       "industry_pb_ratio": 7.46
     },
     {
       "report_date": "2026-04-23T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10318007522015.488,
-      "total_bve": 1390238790119.6199,
+      "total_market_cap": 10318007521745.488,
+      "total_bve": 1390240126119.6199,
       "industry_pb_ratio": 7.42
     },
     {
       "report_date": "2026-04-24T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10456812242618.129,
-      "total_bve": 1390238790119.6199,
+      "total_market_cap": 10456812242298.129,
+      "total_bve": 1390240126119.6199,
       "industry_pb_ratio": 7.52
     },
     {
       "report_date": "2026-04-27T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10688711082821.52,
-      "total_bve": 1390238790119.6199,
+      "total_market_cap": 10688711082503.52,
+      "total_bve": 1390240126119.6199,
       "industry_pb_ratio": 7.69
     },
     {
       "report_date": "2026-04-28T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10631332979423.84,
-      "total_bve": 1390238790119.6199,
+      "total_market_cap": 10631332979091.84,
+      "total_bve": 1390240126119.6199,
       "industry_pb_ratio": 7.65
     },
     {
       "report_date": "2026-04-29T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10626553358175.59,
-      "total_bve": 1390238790119.6199,
+      "total_market_cap": 10626553357876.59,
+      "total_bve": 1390240126119.6199,
       "industry_pb_ratio": 7.64
     },
     {
       "report_date": "2026-04-30T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11507491296146.85,
-      "total_bve": 1390239482119.6199,
+      "total_market_cap": 11507491295805.85,
+      "total_bve": 1390240818119.6199,
       "industry_pb_ratio": 8.28
     },
     {
       "report_date": "2026-05-01T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11422804141258.54,
-      "total_bve": 1390239482119.6199,
+      "total_market_cap": 11422804140926.54,
+      "total_bve": 1390240818119.6199,
       "industry_pb_ratio": 8.22
     },
     {
       "report_date": "2026-05-04T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11359155826683.969,
-      "total_bve": 1390239482119.6199,
+      "total_market_cap": 11359155826336.969,
+      "total_bve": 1390240818119.6199,
       "industry_pb_ratio": 8.17
     },
     {
       "report_date": "2026-05-05T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11440471737024.248,
-      "total_bve": 1390239482119.6199,
+      "total_market_cap": 11440471736681.248,
+      "total_bve": 1390240818119.6199,
       "industry_pb_ratio": 8.23
     },
     {
       "report_date": "2026-05-06T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11723523621080.58,
-      "total_bve": 1390239482119.6199,
+      "total_market_cap": 11723523620700.58,
+      "total_bve": 1390240818119.6199,
       "industry_pb_ratio": 8.43
     },
     {
       "report_date": "2026-05-07T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11659149555805.25,
-      "total_bve": 1390239482119.6199,
+      "total_market_cap": 11659149555452.25,
+      "total_bve": 1390240818119.6199,
       "industry_pb_ratio": 8.39
     },
     {
       "report_date": "2026-05-08T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11768604056223.889,
-      "total_bve": 1390239482119.6199,
+      "total_market_cap": 11768604055866.889,
+      "total_bve": 1390240818119.6199,
       "industry_pb_ratio": 8.47
     },
     {
       "report_date": "2026-05-11T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11466033218508.879,
-      "total_bve": 1390239482119.6199,
+      "total_market_cap": 11466033218136.879,
+      "total_bve": 1390240818119.6199,
       "industry_pb_ratio": 8.25
     },
     {
       "report_date": "2026-05-12T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11421093407931.709,
-      "total_bve": 1390239482119.6199,
+      "total_market_cap": 11421093407566.709,
+      "total_bve": 1390240818119.6199,
       "industry_pb_ratio": 8.22
     },
     {
       "report_date": "2026-05-13T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11840731278305.32,
-      "total_bve": 1390239482119.6199,
+      "total_market_cap": 11840731277949.32,
+      "total_bve": 1390240818119.6199,
       "industry_pb_ratio": 8.52
     },
     {
       "report_date": "2026-05-14T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11792682489748.36,
-      "total_bve": 1390239482119.6199,
+      "total_market_cap": 11792682489387.36,
+      "total_bve": 1390240818119.6199,
       "industry_pb_ratio": 8.48
     },
     {
       "report_date": "2026-05-15T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11681714802926.68,
-      "total_bve": 1390239482119.6199,
+      "total_market_cap": 11681714802558.68,
+      "total_bve": 1390240818119.6199,
       "industry_pb_ratio": 8.4
     },
     {
       "report_date": "2026-05-18T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11675431286257.838,
-      "total_bve": 1390164649967.6199,
+      "total_market_cap": 11675431285860.838,
+      "total_bve": 1390165985967.6199,
       "industry_pb_ratio": 8.4
     },
     {
       "report_date": "2026-05-19T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11438804529505.36,
-      "total_bve": 1390164649967.6199,
+      "total_market_cap": 11438804529114.36,
+      "total_bve": 1390165985967.6199,
       "industry_pb_ratio": 8.23
     },
     {
       "report_date": "2026-05-20T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11449119109047.7,
-      "total_bve": 1390164649967.6199,
+      "total_market_cap": 11449119108644.7,
+      "total_bve": 1390165985967.6199,
       "industry_pb_ratio": 8.24
     },
     {
       "report_date": "2026-05-21T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11440744285560.459,
-      "total_bve": 1390164649967.6199,
+      "total_market_cap": 11440744285140.459,
+      "total_bve": 1390165985967.6199,
       "industry_pb_ratio": 8.23
     },
     {
       "report_date": "2026-05-22T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11343967172160.908,
-      "total_bve": 1390164649967.6199,
+      "total_market_cap": 11343967171712.908,
+      "total_bve": 1390165985967.6199,
       "industry_pb_ratio": 8.16
     },
     {
       "report_date": "2026-05-26T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11488098380193.309,
-      "total_bve": 1390164649967.6199,
+      "total_market_cap": 11488098379717.309,
+      "total_bve": 1390165985967.6199,
       "industry_pb_ratio": 8.26
     },
     {
       "report_date": "2026-05-27T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11546100410391.709,
-      "total_bve": 1390164649967.6199,
+      "total_market_cap": 11546100409893.709,
+      "total_bve": 1390165985967.6199,
       "industry_pb_ratio": 8.31
     },
     {
       "report_date": "2026-05-28T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11586327973747.908,
-      "total_bve": 1390164649967.6199,
+      "total_market_cap": 11586327973263.908,
+      "total_bve": 1390165985967.6199,
       "industry_pb_ratio": 8.33
     },
     {
       "report_date": "2026-05-29T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11342618322767.2,
-      "total_bve": 1390164649967.6199,
+      "total_market_cap": 11342618322273.2,
+      "total_bve": 1390165985967.6199,
       "industry_pb_ratio": 8.16
     },
     {
       "report_date": "2026-06-01T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11172637603764.748,
-      "total_bve": 1390164649967.6199,
+      "total_market_cap": 11172637603282.748,
+      "total_bve": 1390165985967.6199,
       "industry_pb_ratio": 8.04
     },
     {
       "report_date": "2026-06-02T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10811366730398.33,
-      "total_bve": 1390164649967.6199,
+      "total_market_cap": 10811366729945.33,
+      "total_bve": 1390165985967.6199,
       "industry_pb_ratio": 7.78
     },
     {
       "report_date": "2026-06-03T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10798932411292.719,
-      "total_bve": 1390164649967.6199,
+      "total_market_cap": 10798932410864.719,
+      "total_bve": 1390165985967.6199,
       "industry_pb_ratio": 7.77
     },
     {
       "report_date": "2026-06-04T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11057460016219.28,
-      "total_bve": 1390164649967.6199,
+      "total_market_cap": 11057460015804.28,
+      "total_bve": 1390165985967.6199,
       "industry_pb_ratio": 7.95
     },
     {
       "report_date": "2026-06-05T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10867022828150.678,
-      "total_bve": 1390164649967.6199,
+      "total_market_cap": 10867022827728.678,
+      "total_bve": 1390165985967.6199,
       "industry_pb_ratio": 7.82
     },
     {
       "report_date": "2026-06-08T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10727629689533.809,
-      "total_bve": 1390164649967.6199,
+      "total_market_cap": 10727629689086.809,
+      "total_bve": 1390165985967.6199,
       "industry_pb_ratio": 7.72
     },
     {
       "report_date": "2026-06-09T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10745715897410.87,
-      "total_bve": 1390164649967.6199,
+      "total_market_cap": 10745715896985.87,
+      "total_bve": 1390165985967.6199,
       "industry_pb_ratio": 7.73
     },
     {
       "report_date": "2026-06-10T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10502912567214.05,
-      "total_bve": 1390164649967.6199,
+      "total_market_cap": 10502912566792.05,
+      "total_bve": 1390165985967.6199,
       "industry_pb_ratio": 7.56
     },
     {
       "report_date": "2026-06-11T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10565553453451.078,
-      "total_bve": 1390164649967.6199,
+      "total_market_cap": 10565553453031.078,
+      "total_bve": 1390165985967.6199,
       "industry_pb_ratio": 7.6
     },
     {
       "report_date": "2026-06-12T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10599324108920.191,
-      "total_bve": 1390164649967.6199,
+      "total_market_cap": 10599324108493.191,
+      "total_bve": 1390165985967.6199,
       "industry_pb_ratio": 7.62
     },
     {
       "report_date": "2026-06-15T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10920403171699.37,
-      "total_bve": 1390164649967.6199,
+      "total_market_cap": 10920403171320.37,
+      "total_bve": 1390165985967.6199,
       "industry_pb_ratio": 7.86
     },
     {
       "report_date": "2026-06-16T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 11028143301903.848,
-      "total_bve": 1390164649967.6199,
+      "total_market_cap": 11028143301472.848,
+      "total_bve": 1390165985967.6199,
       "industry_pb_ratio": 7.93
     },
     {
       "report_date": "2026-06-17T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10717499147768.45,
-      "total_bve": 1390164649967.6199,
+      "total_market_cap": 10717499147335.45,
+      "total_bve": 1390165985967.6199,
       "industry_pb_ratio": 7.71
     },
     {
       "report_date": "2026-06-18T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10882606369070.25,
-      "total_bve": 1390164649967.6199,
+      "total_market_cap": 10882606368660.25,
+      "total_bve": 1390165985967.6199,
       "industry_pb_ratio": 7.83
     },
     {
@@ -18641,37 +18683,58 @@
     {
       "report_date": "2026-06-22T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10369856535007.23,
-      "total_bve": 1390164649967.6199,
+      "total_market_cap": 10369856534594.23,
+      "total_bve": 1390165985967.6199,
       "industry_pb_ratio": 7.46
     },
     {
       "report_date": "2026-06-23T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10289522967246.92,
-      "total_bve": 1390164649967.6199,
+      "total_market_cap": 10289522966836.92,
+      "total_bve": 1390165985967.6199,
       "industry_pb_ratio": 7.4
     },
     {
       "report_date": "2026-06-24T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10278635085009.29,
-      "total_bve": 1390164649967.6199,
+      "total_market_cap": 10278635084605.29,
+      "total_bve": 1390165985967.6199,
       "industry_pb_ratio": 7.39
     },
     {
       "report_date": "2026-06-25T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10180324264550.168,
-      "total_bve": 1390164649967.6199,
+      "total_market_cap": 10180324264160.168,
+      "total_bve": 1390165985967.6199,
       "industry_pb_ratio": 7.32
     },
     {
       "report_date": "2026-06-26T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_market_cap": 10028684377475.37,
-      "total_bve": 1390164649967.6199,
+      "total_market_cap": 10028684377067.37,
+      "total_bve": 1390165985967.6199,
       "industry_pb_ratio": 7.21
+    },
+    {
+      "report_date": "2026-06-29T00:00:00.000",
+      "industry": "Internet Content & Information",
+      "total_market_cap": 10473517632747.41,
+      "total_bve": 1385616533967.6199,
+      "industry_pb_ratio": 7.56
+    },
+    {
+      "report_date": "2026-06-30T00:00:00.000",
+      "industry": "Internet Content & Information",
+      "total_market_cap": 10548129616682.76,
+      "total_bve": 1385616533967.6199,
+      "industry_pb_ratio": 7.61
+    },
+    {
+      "report_date": "2026-07-01T00:00:00.000",
+      "industry": "Internet Content & Information",
+      "total_market_cap": 10771518968832.21,
+      "total_bve": 1385616533967.6199,
+      "industry_pb_ratio": 7.77
     }
   ],
   "roe": [
@@ -18930,8 +18993,8 @@
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_ttm_net_income": 396853836773.1789,
-      "total_avg_equity": 1249698474449.2043,
+      "total_ttm_net_income": 396857747773.1789,
+      "total_avg_equity": 1249696606949.2043,
       "industry_roe": 0.3176
     }
   ],
@@ -19191,8 +19254,8 @@
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_ttm_net_income": 396853836773.1789,
-      "total_avg_assets": 1869154518625.0261,
+      "total_ttm_net_income": 396857747773.1789,
+      "total_avg_assets": 1869158855625.0261,
       "industry_roa": 0.2123
     }
   ],
@@ -19713,8 +19776,8 @@
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_ttm_gross_profit": 756219786319.0983,
-      "total_ttm_revenue": 1197735217041.9478,
+      "total_ttm_gross_profit": 756217705319.0983,
+      "total_ttm_revenue": 1197736416041.9478,
       "industry_gross_margin": 0.6314
     }
   ],
@@ -19953,8 +20016,8 @@
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_ttm_ebitda": 562599445302.5997,
-      "total_ttm_revenue": 1197737899888.4155,
+      "total_ttm_ebitda": 562604284302.5997,
+      "total_ttm_revenue": 1197739098888.4155,
       "industry_ebitda_margin": 0.4697
     }
   ],
@@ -20214,8 +20277,8 @@
     {
       "report_date": "2026-03-31T00:00:00.000",
       "industry": "Internet Content & Information",
-      "total_ttm_net_income": 396853836773.1789,
-      "total_ttm_revenue": 1197737899888.4155,
+      "total_ttm_net_income": 396857747773.1789,
+      "total_ttm_revenue": 1197739098888.4155,
       "industry_net_margin": 0.3313
     }
   ],

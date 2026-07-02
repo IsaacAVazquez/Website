@@ -9,15 +9,6 @@
     "link": "https://finance.yahoo.com/news/autodesk-proxy-fight-general-mills-160527898.html"
   },
   {
-    "uuid": "bbf455ff-77a4-32a7-81aa-06dd1d624504",
-    "symbol": "AAPL",
-    "title": "The Zacks Analyst Blog Highlights Apple, Meta Platforms, Chevron, Taylor Devices and GSI Technology",
-    "publisher": "Zacks",
-    "report_date": "2025-03-21",
-    "type": "STORY",
-    "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-apple-085500208.html"
-  },
-  {
     "uuid": "2cfa6437-c187-3ab8-9ea8-027695257bb0",
     "symbol": "AAPL",
     "title": "Top Research Reports for Apple, Meta Platforms & Chevron",
@@ -25,6 +16,15 @@
     "report_date": "2025-03-21",
     "type": "STORY",
     "link": "https://finance.yahoo.com/news/top-research-reports-apple-meta-213400955.html"
+  },
+  {
+    "uuid": "bbf455ff-77a4-32a7-81aa-06dd1d624504",
+    "symbol": "AAPL",
+    "title": "The Zacks Analyst Blog Highlights Apple, Meta Platforms, Chevron, Taylor Devices and GSI Technology",
+    "publisher": "Zacks",
+    "report_date": "2025-03-21",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-apple-085500208.html"
   },
   {
     "uuid": "9fa0933e-573c-36a8-8e69-eacfa956fa70",
@@ -81,12 +81,12 @@
     "link": "https://finance.yahoo.com/news/prada-acquire-versace-carmax-reports-160529246.html"
   },
   {
-    "uuid": "6e50f65f-5aca-390e-8e7f-f69216aa062f",
+    "uuid": "14994a53-0cf2-37e2-adcc-a14ff49a9edd",
     "symbol": "AAPL",
-    "title": "Apple upgraded, Wayfair downgraded: Wall Street's top analyst calls",
-    "publisher": "The Fly",
+    "title": "Top Premarket Gainers",
+    "publisher": "MT Newswires",
     "report_date": "2025-04-14",
     "type": "STORY",
-    "link": "https://finance.yahoo.com/news/apple-upgraded-wayfair-downgraded-wall-134329732.html"
+    "link": "https://finance.yahoo.com/news/top-premarket-gainers-124855383.html"
   }
 ]

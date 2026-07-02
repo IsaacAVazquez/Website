@@ -36,15 +36,6 @@
     "link": "https://finance.yahoo.com/news/shopify-inc-join-nasdaq-100-000000866.html"
   },
   {
-    "uuid": "66866936-5cb5-36c2-84ed-a79cc17df6da",
-    "symbol": "SHOP",
-    "title": "Exploring High Growth US Tech Stocks for May 2025",
-    "publisher": "Simply Wall St.",
-    "report_date": "2025-05-13",
-    "type": "STORY",
-    "link": "https://finance.yahoo.com/news/exploring-high-growth-us-tech-113900064.html"
-  },
-  {
     "uuid": "c7534cd2-6874-332c-b15b-f41ab84cd81f",
     "symbol": "SHOP",
     "title": "Shopify vs. Etsy: Which E-Commerce Stock Has More Fuel for Growth?",
@@ -52,6 +43,15 @@
     "report_date": "2025-05-13",
     "type": "STORY",
     "link": "https://finance.yahoo.com/news/shopify-vs-etsy-e-commerce-174500079.html"
+  },
+  {
+    "uuid": "66866936-5cb5-36c2-84ed-a79cc17df6da",
+    "symbol": "SHOP",
+    "title": "Exploring High Growth US Tech Stocks for May 2025",
+    "publisher": "Simply Wall St.",
+    "report_date": "2025-05-13",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/exploring-high-growth-us-tech-113900064.html"
   },
   {
     "uuid": "9944686b-4442-372b-a74b-bf3518df25fd",
