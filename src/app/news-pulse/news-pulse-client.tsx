@@ -106,8 +106,8 @@ function getSourceBadgeStyle(sourceColor: string): CSSProperties {
 }
 
 function getReadabilityTone(score: number): CSSProperties {
-  if (score >= 70) return { color: "var(--home-moss)" };
-  if (score >= 50) return { color: "var(--home-haze)" };
+  if (score >= 70) return { color: "var(--home-positive)" };
+  if (score >= 50) return { color: "var(--home-signal)" };
   return { color: "var(--home-ink-muted)" };
 }
 
@@ -141,12 +141,12 @@ function SourceDropdown({
       <DropdownMenuTrigger asChild>
         <button
           type="button"
-          className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+          className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
           style={getPillStyle(false)}
           aria-label={`Source selector: ${SOURCE_LABELS[value]}`}
         >
           <span
-            className="text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
+            className="text-2xs font-semibold uppercase tracking-[0.12em]"
             style={{ fontFamily: "var(--font-home-sans)" }}
           >
             Source
@@ -160,7 +160,7 @@ function SourceDropdown({
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="end"
-        className="min-w-[14rem] rounded-[1rem] border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,white)] p-1.5 text-[var(--home-ink)] shadow-[var(--shadow-lg)]"
+        className="min-w-[14rem] rounded-[var(--radius-2xl)] border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-1.5 text-[var(--home-ink)] shadow-[var(--shadow-lg)]"
       >
         <DropdownMenuRadioGroup
           value={value}
@@ -170,7 +170,7 @@ function SourceDropdown({
             <DropdownMenuRadioItem
               key={source}
               value={source}
-              className="rounded-[0.8rem] py-2 pl-8 pr-3 text-sm font-medium focus:bg-[color-mix(in_srgb,var(--home-paper-alt)_90%,white)]"
+              className="rounded-[var(--radius-2xl)] py-2 pl-8 pr-3 text-sm font-medium focus:bg-[color-mix(in_srgb,var(--home-paper-alt)_90%,var(--home-elev-mix))]"
               style={{ fontFamily: "var(--font-home-sans)" }}
             >
               {SOURCE_LABELS[source]}
@@ -415,7 +415,7 @@ export function NewsPulseClient({ initialState }: NewsPulseClientProps) {
         >
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <div
-              className="flex flex-wrap gap-2 rounded-[1.1rem] p-1.5"
+              className="flex flex-wrap gap-2 rounded-[var(--radius-3xl)] p-1.5"
               role="tablist"
               aria-label="News Pulse tabs"
               style={{ width: "fit-content" }}
@@ -446,10 +446,10 @@ export function NewsPulseClient({ initialState }: NewsPulseClientProps) {
           <div
             role="status"
             aria-live="polite"
-            className="home-card flex items-start gap-3 rounded-[1.5rem] px-5 py-4"
+            className="home-card flex items-start gap-3 rounded-[var(--radius-3xl)] px-5 py-4"
             style={{
-              borderColor: "color-mix(in srgb, var(--home-acid) 30%, var(--home-rule))",
-              background: "color-mix(in srgb, var(--home-acid) 10%, var(--home-paper))",
+              borderColor: "color-mix(in srgb, var(--home-signal) 30%, var(--home-rule))",
+              background: "color-mix(in srgb, var(--home-signal) 10%, var(--home-paper))",
             }}
           >
             <div
@@ -458,7 +458,7 @@ export function NewsPulseClient({ initialState }: NewsPulseClientProps) {
             >
               <CircleAlert
                 className="h-4 w-4"
-                style={{ color: "var(--home-acid)" }}
+                style={{ color: "var(--home-signal)" }}
                 aria-hidden="true"
               />
             </div>
@@ -580,7 +580,7 @@ function HeadlinesView({
         >
           <div className="flex items-start justify-between gap-3">
             <span
-              className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
+              className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-2xs font-semibold uppercase tracking-[0.12em]"
               style={getSourceBadgeStyle(article.sourceColor)}
             >
               <span
@@ -592,7 +592,7 @@ function HeadlinesView({
             </span>
 
             <span
-              className="shrink-0 text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
+              className="shrink-0 text-2xs font-semibold uppercase tracking-[0.12em]"
               style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
             >
               {timeAgo(article.pubDate)}
@@ -601,7 +601,7 @@ function HeadlinesView({
 
           <div className="mt-5 flex-1 space-y-3">
             <h2
-              className="text-[1.2rem] leading-[1.15] transition-colors duration-200 ease group-hover:text-[var(--home-haze)]"
+              className="text-lg leading-[1.15] transition-colors duration-200 ease group-hover:text-[var(--home-signal)]"
               style={{
                 fontFamily: "var(--font-home-sans)",
                 fontWeight: 700,
@@ -628,7 +628,7 @@ function HeadlinesView({
           >
             {article.category && article.category !== "General" ? (
               <span
-                className="inline-flex items-center rounded-full px-3 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
+                className="inline-flex items-center rounded-full px-3 py-1 text-2xs font-semibold uppercase tracking-[0.12em]"
                 style={{
                   fontFamily: "var(--font-home-sans)",
                   color: "var(--home-ink)",
@@ -639,7 +639,7 @@ function HeadlinesView({
               </span>
             ) : (
               <span
-                className="text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
+                className="text-2xs font-semibold uppercase tracking-[0.12em]"
                 style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
               >
                 Open feed item
@@ -647,8 +647,8 @@ function HeadlinesView({
             )}
 
             <span
-              className="inline-flex items-center gap-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
-              style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-haze)" }}
+              className="inline-flex items-center gap-1.5 text-2xs font-semibold uppercase tracking-[0.12em]"
+              style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-signal)" }}
             >
               Read headline
               <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
@@ -723,7 +723,7 @@ function CoverageView({
               return (
                 <li
                   key={topic.topic}
-                  className="grid items-center gap-3 rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper)] p-3 sm:grid-cols-[1.75rem_minmax(0,1fr)_auto]"
+                  className="grid items-center gap-3 rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] p-3 sm:grid-cols-[1.75rem_minmax(0,1fr)_auto]"
                 >
                   <span className="font-mono text-sm font-semibold text-[var(--home-ink-muted)]">
                     {String(index + 1).padStart(2, "0")}
@@ -743,7 +743,7 @@ function CoverageView({
                     <span className="mt-1.5 block h-1.5 overflow-hidden rounded-full bg-[var(--home-rule)]">
                       <span
                         className="block h-full rounded-full"
-                        style={{ width: `${pct}%`, background: "var(--home-acid)" }}
+                        style={{ width: `${pct}%`, background: "var(--home-signal)" }}
                       />
                     </span>
                   </div>
@@ -779,7 +779,7 @@ function CoverageView({
         </InlineSectionLead>
 
         <div
-          className="scroll-shadow-x mt-6 overflow-x-auto rounded-[20px]"
+          className="scroll-shadow-x mt-6 overflow-x-auto rounded-[var(--radius-3xl)]"
           role="region"
           aria-label="Story clusters by outlet (scrollable)"
           tabIndex={0}
@@ -799,7 +799,7 @@ function CoverageView({
                 {sourceIds.map((source) => (
                   <th key={source} className="px-3 py-3 text-center">
                     <span
-                      className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
+                      className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-2xs font-semibold uppercase tracking-[0.12em]"
                       style={getSourceBadgeStyle(SOURCE_META[source].color)}
                     >
                       <span
@@ -885,19 +885,19 @@ function CoverageView({
                       className="group inline-flex items-start gap-2 no-underline"
                     >
                       <span
-                        className="text-sm font-semibold transition-colors duration-200 ease group-hover:text-[var(--home-haze)]"
+                        className="text-sm font-semibold transition-colors duration-200 ease group-hover:text-[var(--home-signal)]"
                         style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink)" }}
                       >
                         {cluster.representative.title}
                       </span>
                       <ExternalLink
                         className="mt-0.5 h-3.5 w-3.5 shrink-0"
-                        style={{ color: "var(--home-haze)" }}
+                        style={{ color: "var(--home-signal)" }}
                         aria-hidden="true"
                       />
                     </a>
                     <p
-                      className="mb-0 mt-1 text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
+                      className="mb-0 mt-1 text-2xs font-semibold uppercase tracking-[0.12em]"
                       style={{
                         fontFamily: "var(--font-home-sans)",
                         color: "var(--home-ink-muted)",
@@ -1038,7 +1038,7 @@ function AnalysisView({
                     {SOURCE_META[source].name}
                   </span>
                   <span
-                    className="text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
+                    className="text-2xs font-semibold uppercase tracking-[0.12em]"
                     style={{
                       fontFamily: "var(--font-home-sans)",
                       color: "var(--home-ink-muted)",
@@ -1054,7 +1054,7 @@ function AnalysisView({
                 >
                   <div
                     className="transition-[width] duration-500 ease"
-                    style={{ width: `${positivePercent}%`, background: "var(--home-moss)" }}
+                    style={{ width: `${positivePercent}%`, background: "var(--home-positive)" }}
                     title={`Positive ${positivePercent}%`}
                   />
                   <div
@@ -1064,19 +1064,19 @@ function AnalysisView({
                   />
                   <div
                     className="transition-[width] duration-500 ease"
-                    style={{ width: `${negativePercent}%`, background: "var(--home-haze)" }}
+                    style={{ width: `${negativePercent}%`, background: "var(--home-signal)" }}
                     title={`Negative ${negativePercent}%`}
                   />
                 </div>
 
                 <div
-                  className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
+                  className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-2xs font-semibold uppercase tracking-[0.12em]"
                   style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
                 >
                   <span className="inline-flex items-center gap-1.5">
                     <span
                       className="h-2.5 w-2.5 rounded-full"
-                      style={{ background: "var(--home-moss)" }}
+                      style={{ background: "var(--home-positive)" }}
                       aria-hidden="true"
                     />
                     {positivePercent}% positive
@@ -1092,7 +1092,7 @@ function AnalysisView({
                   <span className="inline-flex items-center gap-1.5">
                     <span
                       className="h-2.5 w-2.5 rounded-full"
-                      style={{ background: "var(--home-haze)" }}
+                      style={{ background: "var(--home-signal)" }}
                       aria-hidden="true"
                     />
                     {negativePercent}% negative
@@ -1182,7 +1182,7 @@ function AnalysisView({
             return (
               <div
                 key={source}
-                className="rounded-[1.25rem] px-4 py-4"
+                className="rounded-[var(--radius-3xl)] px-4 py-4"
                 style={insetPanelStyle}
               >
                 <div className="flex items-center gap-4">
@@ -1205,7 +1205,7 @@ function AnalysisView({
                       {SOURCE_META[source].name}
                     </p>
                     <p
-                      className="mb-0 text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
+                      className="mb-0 text-2xs font-semibold uppercase tracking-[0.12em]"
                       style={{
                         ...getReadabilityTone(averageScore),
                         fontFamily: "var(--font-home-sans)",

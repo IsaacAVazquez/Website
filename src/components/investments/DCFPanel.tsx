@@ -65,7 +65,7 @@ export function DCFPanel({ symbol }: Props) {
               <p className="text-xs text-[var(--home-ink-soft)] mb-1">Upside</p>
               <p
                 className={`text-lg font-bold ${
-                  upside >= 0 ? "text-[var(--color-success)]" : "text-[var(--color-error)]"
+                  upside >= 0 ? "text-[var(--home-positive)]" : "text-[var(--home-negative)]"
                 }`}
               >
                 {upside >= 0 ? "+" : ""}
@@ -80,9 +80,9 @@ export function DCFPanel({ symbol }: Props) {
               <span
                 className={`px-4 py-1.5 rounded-full text-sm font-semibold ${
                   isBuy
-                    ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400"
+                    ? "bg-[color-mix(in_srgb,var(--home-positive)_12%,var(--home-paper-alt))] text-[color-mix(in_srgb,var(--home-positive)_70%,var(--home-ink))]"
                     : isSell
-                    ? "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"
+                    ? "bg-[color-mix(in_srgb,var(--home-negative)_11%,var(--home-paper-alt))] text-[color-mix(in_srgb,var(--home-negative)_70%,var(--home-ink))]"
                     : "bg-[var(--home-paper-alt)] text-[var(--home-ink-muted)]"
                 }`}
               >

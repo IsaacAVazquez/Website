@@ -88,13 +88,13 @@ export function MetricTooltip({ term, definition, align = "left" }: Props) {
             swallow(event);
           }
         }}
-        className="flex h-4 w-4 cursor-help items-center justify-center rounded-full bg-[var(--home-paper-alt)] text-[9px] font-bold leading-none text-[var(--home-ink-muted)] ring-1 ring-[var(--home-rule)] outline-none transition-shadow focus-visible:ring-2 focus-visible:ring-[var(--home-ink)]"
+        className="flex h-4 w-4 cursor-help items-center justify-center rounded-full bg-[var(--home-paper-alt)] text-3xs font-bold leading-none text-[var(--home-ink-muted)] ring-1 ring-[var(--home-rule)] outline-none transition-shadow focus-visible:ring-2 focus-visible:ring-[var(--home-ink)]"
       >
         ?
       </span>
       <span
         role="tooltip"
-        className={`pointer-events-none absolute bottom-full ${bubbleAlign} z-[80] mb-2 w-52 rounded-2xl bg-[var(--home-ink)] px-3 py-2.5 text-2xs leading-snug text-[var(--home-paper)] opacity-0 shadow-lg transition-opacity duration-150 group-hover:opacity-100 group-focus-within:opacity-100`}
+        className={`pointer-events-none absolute bottom-full ${bubbleAlign} z-[80] mb-2 w-52 rounded-[var(--radius-2xl)] bg-[var(--home-ink)] px-3 py-2.5 text-2xs leading-snug text-[var(--home-paper)] opacity-0 shadow-lg transition-opacity duration-150 group-hover:opacity-100 group-focus-within:opacity-100`}
       >
         {text}
         <span className={`absolute ${arrowAlign} top-full border-4 border-transparent border-t-[var(--home-ink)]`} />

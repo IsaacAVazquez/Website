@@ -188,7 +188,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               {topicPage ? (
                 <Link
                   href={`/writing/topics/${topicPage.slug}`}
-                  className="home-kicker inline-block transition-colors hover:text-[var(--home-haze)]"
+                  className="home-kicker inline-block transition-colors hover:text-[var(--home-signal)]"
                 >
                   {getBlogPostCollectionLabel(post)}
                 </Link>
@@ -243,7 +243,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               ) : null}
 
               <div>
-                <div className="relative aspect-[1200/630] overflow-hidden rounded-[1.6rem] border border-[var(--home-rule)] bg-[var(--home-paper-alt)]">
+                <div className="relative aspect-[1200/630] overflow-hidden rounded-[2px] border border-[var(--home-rule)] bg-[var(--home-paper-alt)]">
                   <Image
                     src={post.coverImage}
                     alt={post.coverImageAlt || post.title}
@@ -392,7 +392,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 {olderPost ? (
                   <Link
                     href={`/writing/${olderPost.slug}`}
-                    className="home-card group block h-full p-5 transition-colors hover:border-[var(--home-haze)]"
+                    className="home-card group block h-full p-5 transition-colors hover:border-[var(--home-signal)]"
                     rel="prev"
                   >
                     <p className="home-kicker mb-2">Previous</p>
@@ -406,7 +406,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 {newerPost ? (
                   <Link
                     href={`/writing/${newerPost.slug}`}
-                    className="home-card group block h-full p-5 text-right transition-colors hover:border-[var(--home-haze)]"
+                    className="home-card group block h-full p-5 text-right transition-colors hover:border-[var(--home-signal)]"
                     rel="next"
                   >
                     <p className="home-kicker mb-2">Next</p>

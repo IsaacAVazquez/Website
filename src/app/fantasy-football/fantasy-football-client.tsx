@@ -81,18 +81,18 @@ const noMotion = {
 
 const STALENESS_TONE: Record<FantasySnapshotStaleness, CSSProperties> = {
   fresh: {
-    background: "color-mix(in srgb, var(--color-success) 16%, var(--home-paper))",
-    borderColor: "color-mix(in srgb, var(--color-success) 30%, var(--home-rule))",
+    background: "color-mix(in srgb, var(--home-positive) 16%, var(--home-paper))",
+    borderColor: "color-mix(in srgb, var(--home-positive) 30%, var(--home-rule))",
     color: "var(--home-ink)",
   },
   aging: {
-    background: "color-mix(in srgb, var(--color-warning) 18%, var(--home-paper))",
-    borderColor: "color-mix(in srgb, var(--color-warning) 32%, var(--home-rule))",
+    background: "color-mix(in srgb, var(--home-warning) 18%, var(--home-paper))",
+    borderColor: "color-mix(in srgb, var(--home-warning) 32%, var(--home-rule))",
     color: "var(--home-ink)",
   },
   stale: {
-    background: "color-mix(in srgb, var(--color-error) 16%, var(--home-paper))",
-    borderColor: "color-mix(in srgb, var(--color-error) 30%, var(--home-rule))",
+    background: "color-mix(in srgb, var(--home-negative) 16%, var(--home-paper))",
+    borderColor: "color-mix(in srgb, var(--home-negative) 30%, var(--home-rule))",
     color: "var(--home-ink)",
   },
 };
@@ -630,8 +630,8 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
         {showLegend && <FantasyBoardLegend id="fantasy-board-legend" />}
 
         {error && (
-          <article className="home-card p-5 sm:p-6" style={{ borderColor: "var(--color-error)" }}>
-            <p className="font-semibold" style={{ color: "var(--color-error)" }}>
+          <article className="home-card p-5 sm:p-6" style={{ borderColor: "var(--home-negative)" }}>
+            <p className="font-semibold" style={{ color: "var(--home-negative)" }}>
               {error}
             </p>
           </article>
@@ -745,7 +745,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                     disabled={currentSliceUnavailable}
                     autoComplete="off"
                     placeholder={`Search ${FANTASY_POSITION_LABELS[routeState.position].toLowerCase()} board`}
-                    className="min-h-[48px] w-full rounded-[1.2rem] border px-11 pr-10 text-sm transition-[background-color,border-color,box-shadow] duration-200 placeholder:text-[var(--home-ink-muted)] disabled:cursor-not-allowed disabled:opacity-60"
+                    className="min-h-[48px] w-full rounded-[var(--radius-3xl)] border px-11 pr-10 text-sm transition-[background-color,border-color,box-shadow] duration-200 placeholder:text-[var(--home-ink-muted)] disabled:cursor-not-allowed disabled:opacity-60"
                     style={{
                       borderColor: "var(--home-rule)",
                       background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
@@ -757,10 +757,14 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                       type="button"
                       onClick={() => setSearchQuery("")}
                       aria-label="Clear search"
-                      className="absolute right-2 top-1/2 inline-flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full border"
-                      style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)" }}
+                      className="absolute right-0 top-1/2 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center"
                     >
-                      <X size={14} aria-hidden="true" />
+                      <span
+                        className="inline-flex h-7 w-7 items-center justify-center rounded-full border"
+                        style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)" }}
+                      >
+                        <X size={14} aria-hidden="true" />
+                      </span>
                     </button>
                   )}
                 </div>
@@ -773,7 +777,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                   {Array.from({ length: 10 }).map((_, index) => (
                     <div
                       key={`loading-${index}`}
-                      className={`${skeletonHeightClass} motion-safe:animate-pulse rounded-[1.25rem] border`}
+                      className={`${skeletonHeightClass} motion-safe:animate-pulse rounded-[var(--radius-3xl)] border`}
                       style={{
                         borderColor: "var(--home-rule)",
                         background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
@@ -783,10 +787,10 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                 </div>
               ) : currentSliceUnavailable ? (
                 <div
-                  className="rounded-[1.5rem] border px-5 py-12 text-center"
+                  className="rounded-[var(--radius-3xl)] border px-5 py-12 text-center"
                   style={{
-                    borderColor: "color-mix(in srgb, var(--color-warning) 32%, var(--home-rule))",
-                    background: "color-mix(in srgb, var(--color-warning) 10%, var(--home-paper))",
+                    borderColor: "color-mix(in srgb, var(--home-warning) 32%, var(--home-rule))",
+                    background: "color-mix(in srgb, var(--home-warning) 10%, var(--home-paper))",
                   }}
                 >
                   <p className="text-lg font-semibold">
@@ -799,7 +803,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                 </div>
               ) : filteredPlayers.length === 0 ? (
                 <div
-                  className="rounded-[1.5rem] border px-5 py-12 text-center"
+                  className="rounded-[var(--radius-3xl)] border px-5 py-12 text-center"
                   style={{
                     borderColor: "var(--home-rule)",
                     background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
@@ -846,7 +850,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
           <aside className="grid gap-5 lg:sticky lg:top-24 lg:self-start">
             <article className="home-card p-5 sm:p-6">
               <div className="flex items-center gap-3">
-                <Shield className="h-5 w-5" style={{ color: "var(--home-haze)" }} />
+                <Shield className="h-5 w-5" style={{ color: "var(--home-signal)" }} />
                 <div>
                   <p className="home-kicker mb-0">Freshness</p>
                   <p className="text-sm font-semibold">{currentSourceKindLabel}</p>
@@ -854,7 +858,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
               </div>
               <div className="mt-4 grid gap-3">
                 <div
-                  className="rounded-[1.2rem] border px-4 py-3"
+                  className="rounded-[var(--radius-3xl)] border px-4 py-3"
                   style={{
                     borderColor: "var(--home-rule)",
                     background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
@@ -867,7 +871,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                   <p className="text-sm font-semibold">{formatUpdatedAt(currentSourceUpdatedAt)}</p>
                 </div>
                 <div
-                  className="rounded-[1.2rem] border px-4 py-3"
+                  className="rounded-[var(--radius-3xl)] border px-4 py-3"
                   style={{
                     borderColor: "var(--home-rule)",
                     background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
@@ -881,7 +885,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                 </div>
                 {adpSource && (
                   <div
-                    className="rounded-[1.2rem] border px-4 py-3"
+                    className="rounded-[var(--radius-3xl)] border px-4 py-3"
                     style={{
                       borderColor: "var(--home-rule)",
                       background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
@@ -916,7 +920,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
             <article className="home-card p-5 sm:p-6">
               <div className="flex items-center justify-between gap-3">
                 <div className="flex items-center gap-3">
-                  <Star className="h-5 w-5" style={{ color: "var(--home-acid)" }} fill="currentColor" />
+                  <Star className="h-5 w-5" style={{ color: "var(--home-signal)" }} fill="currentColor" />
                   <div>
                     <p className="home-kicker mb-0">My Queue</p>
                     <p className="text-sm font-semibold">{queue.queue.length} starred</p>
@@ -942,7 +946,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                   queuedPlayers.slice(0, 12).map((player) => (
                     <div
                       key={player.id}
-                      className="flex items-center gap-2 rounded-[1.1rem] border px-3 py-2"
+                      className="flex items-center gap-2 rounded-[var(--radius-3xl)] border px-3 py-2"
                       style={{
                         borderColor: "var(--home-rule)",
                         background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
@@ -965,10 +969,14 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                         type="button"
                         onClick={() => queue.remove(player.id)}
                         aria-label={`Remove ${player.name} from queue`}
-                        className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border"
-                        style={{ borderColor: "var(--home-rule)" }}
+                        className="-my-2 inline-flex h-11 w-11 shrink-0 items-center justify-center"
                       >
-                        <X size={13} aria-hidden="true" />
+                        <span
+                          className="inline-flex h-7 w-7 items-center justify-center rounded-full border"
+                          style={{ borderColor: "var(--home-rule)" }}
+                        >
+                          <X size={13} aria-hidden="true" />
+                        </span>
                       </button>
                     </div>
                   ))
@@ -985,7 +993,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
               className="home-card p-5 sm:p-6"
               style={{
                 background:
-                  "linear-gradient(145deg, color-mix(in srgb, var(--home-haze) 12%, var(--home-paper)) 0%, color-mix(in srgb, var(--home-acid) 14%, var(--home-paper)) 100%)",
+                  "linear-gradient(145deg, color-mix(in srgb, var(--home-signal) 12%, var(--home-paper)) 0%, color-mix(in srgb, var(--home-signal) 14%, var(--home-paper)) 100%)",
               }}
             >
               <p className="home-kicker mb-1">Draft Assistant</p>

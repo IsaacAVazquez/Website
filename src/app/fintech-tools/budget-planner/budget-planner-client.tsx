@@ -48,8 +48,8 @@ function formatSignedCurrency(value: number) {
 }
 
 function getBalanceTone(value: number) {
-  if (value > 0) return "text-[var(--color-success)]";
-  if (value < 0) return "text-[var(--color-error)]";
+  if (value > 0) return "text-[var(--home-positive)]";
+  if (value < 0) return "text-[var(--home-negative)]";
   return "text-[var(--home-ink)]";
 }
 
@@ -239,9 +239,9 @@ export function BudgetPlannerClient() {
   // Field styling reused across rail + main forms. Tightened to fit the 290px
   // rail without horizontal scroll.
   const fieldLabel =
-    "block text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]";
+    "block text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]";
   const fieldInput =
-    "mt-1.5 w-full min-h-touch rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-[13px] text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2";
+    "mt-1.5 w-full min-h-touch rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-xs text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2";
   const numericInput = `${fieldInput} [font-variant-numeric:tabular-nums]`;
 
   return (
@@ -265,7 +265,7 @@ export function BudgetPlannerClient() {
                 <a
                   key={item.id}
                   href={item.href}
-                  className="inline-flex min-h-touch items-center gap-2 rounded-full border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-4 py-1.5 text-sm font-semibold text-[var(--home-ink-muted)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                  className="inline-flex min-h-touch items-center gap-2 rounded-full border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-4 py-1.5 text-sm font-semibold text-[var(--home-ink-muted)] transition hover:border-[var(--home-signal)] hover:text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
                   style={{ fontFamily: "var(--font-home-sans)" }}
                 >
                   <Icon size={16} aria-hidden="true" />
@@ -288,18 +288,18 @@ export function BudgetPlannerClient() {
                   type="button"
                   aria-label="Previous month"
                   onClick={() => handleMonthChange(getAdjacentBudgetMonthKey(activeMonthKey, -1))}
-                  className="inline-flex h-8 w-8 items-center justify-center rounded-full text-[var(--home-ink-muted)] transition hover:bg-[color-mix(in_srgb,var(--home-acid)_18%,transparent)] hover:text-[var(--home-ink)]"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full text-[var(--home-ink-muted)] transition-colors hover:bg-[color-mix(in_srgb,var(--home-signal)_18%,transparent)] hover:text-[var(--home-ink)]"
                 >
                   <ArrowLeft className="h-4 w-4" />
                 </button>
-                <label className="flex items-center gap-1.5 px-2 text-[12px] font-semibold text-[var(--home-ink)]">
-                  <CalendarRange className="h-3.5 w-3.5 text-[var(--home-haze)]" aria-hidden="true" />
+                <label className="flex items-center gap-1.5 px-2 text-1xs font-semibold text-[var(--home-ink)]">
+                  <CalendarRange className="h-3.5 w-3.5 text-[var(--home-signal)]" aria-hidden="true" />
                   <input
                     aria-label="Budget month"
                     type="month"
                     value={activeMonthKey}
                     onChange={(event) => handleMonthChange(event.target.value)}
-                    className="border-0 bg-transparent p-0 text-[12px] font-semibold text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                    className="border-0 bg-transparent p-0 text-1xs font-semibold text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
                     style={{ width: "115px" }}
                   />
                 </label>
@@ -307,7 +307,7 @@ export function BudgetPlannerClient() {
                   type="button"
                   aria-label="Next month"
                   onClick={() => handleMonthChange(getAdjacentBudgetMonthKey(activeMonthKey, 1))}
-                  className="inline-flex h-8 w-8 items-center justify-center rounded-full text-[var(--home-ink-muted)] transition hover:bg-[color-mix(in_srgb,var(--home-acid)_18%,transparent)] hover:text-[var(--home-ink)]"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full text-[var(--home-ink-muted)] transition-colors hover:bg-[color-mix(in_srgb,var(--home-signal)_18%,transparent)] hover:text-[var(--home-ink)]"
                 >
                   <ArrowRight className="h-4 w-4" />
                 </button>
@@ -348,7 +348,7 @@ export function BudgetPlannerClient() {
                   ]}
                 />
                 <div className="mt-3">
-                  <div className="mb-2 flex items-center justify-between text-[10.5px] font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                  <div className="mb-2 flex items-center justify-between text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                     <span>Spend progress</span>
                     <span className="[font-variant-numeric:tabular-nums]">{percentSpent}%</span>
                   </div>
@@ -356,10 +356,10 @@ export function BudgetPlannerClient() {
                     <div
                       className={`h-full rounded-full ${
                         percentSpent >= 100
-                          ? "bg-[var(--color-error)]"
+                          ? "bg-[var(--home-negative)]"
                           : percentSpent >= 85
-                            ? "bg-[var(--color-warning)]"
-                            : "bg-[var(--home-haze)]"
+                            ? "bg-[var(--home-warning)]"
+                            : "bg-[var(--home-signal)]"
                       }`}
                       style={{ width: progressWidth }}
                     />
@@ -418,7 +418,7 @@ export function BudgetPlannerClient() {
                     <p className="tool-section-kicker">Allocation</p>
                     <h2 className="tool-section-title">Categories</h2>
                   </div>
-                  <p className="text-[12px] text-[var(--home-ink-muted)]">
+                  <p className="text-1xs text-[var(--home-ink-muted)]">
                     Budgeted{" "}
                     <span className="font-semibold text-[var(--home-ink)] [font-variant-numeric:tabular-nums]">
                       {formatCurrency(summary.budgetedTotal)}
@@ -449,7 +449,7 @@ export function BudgetPlannerClient() {
                                   renameCategory(category.id, "Untitled");
                                 }
                               }}
-                              className="w-full min-h-touch rounded-lg border border-transparent bg-transparent px-2 py-1 text-[13.5px] font-medium text-[var(--home-ink)] hover:border-[var(--home-rule)] focus-visible:border-[var(--home-rule)] focus-visible:bg-[var(--home-paper)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2 aria-[invalid=true]:border-[var(--color-error)]"
+                              className="w-full min-h-touch rounded-lg border border-transparent bg-transparent px-2 py-1 text-xs font-medium text-[var(--home-ink)] hover:border-[var(--home-rule)] focus-visible:border-[var(--home-rule)] focus-visible:bg-[var(--home-paper)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2 aria-[invalid=true]:border-[var(--home-negative)]"
                             />
                           </label>
                           <label className="block">
@@ -463,7 +463,7 @@ export function BudgetPlannerClient() {
                               onChange={(event) =>
                                 updateCategoryBudget(category.id, Number(event.target.value))
                               }
-                              className="w-full min-h-touch rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-2 py-1 text-[13.5px] font-medium text-[var(--home-ink)] [font-variant-numeric:tabular-nums] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                              className="w-full min-h-touch rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-2 py-1 text-xs font-medium text-[var(--home-ink)] [font-variant-numeric:tabular-nums] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
                             />
                           </label>
                           <button
@@ -474,7 +474,7 @@ export function BudgetPlannerClient() {
                             }
                             disabled={hasLinkedExpenses}
                             onClick={() => removeCategory(category.id)}
-                            className="inline-flex min-h-touch items-center justify-center gap-1.5 rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-[12.5px] font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--color-error)] hover:text-[var(--color-error)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:border-dashed disabled:opacity-40"
+                            className="inline-flex min-h-touch items-center justify-center gap-1.5 rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-1xs font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--home-negative)] hover:text-[var(--home-negative)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:border-dashed disabled:opacity-40"
                           >
                             <Trash2 className="h-3.5 w-3.5" />
                             Delete
@@ -484,13 +484,13 @@ export function BudgetPlannerClient() {
                         {empty ? (
                           <span
                             id={`category-${category.id}-error`}
-                            className="text-2xs text-[var(--color-error)]"
+                            className="text-2xs text-[var(--home-negative)]"
                           >
                             Name a category. Empty fields fall back to "Untitled".
                           </span>
                         ) : null}
 
-                        <div className="flex items-center gap-3 text-[11.5px] text-[var(--home-ink-muted)]">
+                        <div className="flex items-center gap-3 text-2xs text-[var(--home-ink-muted)]">
                           <span className="[font-variant-numeric:tabular-nums]">
                             {formatCurrency(category.spent)} / {formatCurrency(category.budgetedAmount)}
                           </span>
@@ -510,10 +510,10 @@ export function BudgetPlannerClient() {
                           <div
                             className={`h-full rounded-full ${
                               category.overBudget
-                                ? "bg-[var(--color-error)]"
+                                ? "bg-[var(--home-negative)]"
                                 : category.utilization >= 0.85
-                                  ? "bg-[var(--color-warning)]"
-                                  : "bg-[var(--home-haze)]"
+                                  ? "bg-[var(--home-warning)]"
+                                  : "bg-[var(--home-signal)]"
                             }`}
                             style={{ width: utilWidth }}
                           />
@@ -541,12 +541,12 @@ export function BudgetPlannerClient() {
                       value={newCategoryName}
                       onChange={(event) => setNewCategoryName(event.target.value)}
                       placeholder="Add a custom category"
-                      className="w-full min-h-touch rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-[13.5px] text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                      className="w-full min-h-touch rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-xs text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
                     />
                   </label>
                   <button
                     type="submit"
-                    className="inline-flex min-h-touch items-center justify-center gap-2 rounded-lg bg-[var(--home-ink)] px-4 text-[13px] font-semibold text-[var(--home-paper)] shadow-[var(--shadow-sm)] transition hover:bg-[color-mix(in_srgb,var(--home-ink)_88%,var(--home-haze))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                    className="inline-flex min-h-touch items-center justify-center gap-2 rounded-lg bg-[var(--home-ink)] px-4 text-xs font-semibold text-[var(--home-paper)] shadow-[var(--shadow-sm)] transition hover:bg-[color-mix(in_srgb,var(--home-ink)_88%,var(--home-signal))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
                   >
                     <Plus className="h-3.5 w-3.5" />
                     Add category
@@ -565,7 +565,7 @@ export function BudgetPlannerClient() {
                     <p className="tool-section-kicker">Ledger</p>
                     <h2 className="tool-section-title">Expenses ledger</h2>
                   </div>
-                  <p className="text-[12px] text-[var(--home-ink-muted)] [font-variant-numeric:tabular-nums]">
+                  <p className="text-1xs text-[var(--home-ink-muted)] [font-variant-numeric:tabular-nums]">
                     {summary.expenseEntries.length}{" "}
                     {summary.expenseEntries.length === 1 ? "entry" : "entries"}
                   </p>
@@ -573,7 +573,7 @@ export function BudgetPlannerClient() {
 
                 {summary.expenseEntries.length === 0 ? (
                   <div className="tool-empty mt-4">
-                    <p className="text-[13.5px] font-semibold text-[var(--home-ink)]">
+                    <p className="text-xs font-semibold text-[var(--home-ink)]">
                       Ledger is empty
                     </p>
                     <p>Add the first expense using the form on the right.</p>
@@ -584,7 +584,7 @@ export function BudgetPlannerClient() {
                       <li key={expense.id} className="grid gap-2 py-3 first:pt-0">
                         <div className="grid items-center gap-3 sm:grid-cols-[minmax(0,1fr)_auto_auto]">
                           <div className="min-w-0">
-                            <p className="truncate text-[13.5px] font-semibold text-[var(--home-ink)]">
+                            <p className="truncate text-xs font-semibold text-[var(--home-ink)]">
                               {expense.note || expense.categoryName}
                             </p>
                             <p className="mt-0.5 text-2xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
@@ -593,7 +593,7 @@ export function BudgetPlannerClient() {
                               <span title={expense.date}>{formatExpenseDate(expense.date)}</span>
                             </p>
                           </div>
-                          <p className="text-[13.5px] font-semibold text-[var(--home-ink)] [font-variant-numeric:tabular-nums]">
+                          <p className="text-xs font-semibold text-[var(--home-ink)] [font-variant-numeric:tabular-nums]">
                             {formatCurrency(expense.amount)}
                           </p>
                           <div className="flex items-center gap-1.5">
@@ -601,7 +601,7 @@ export function BudgetPlannerClient() {
                               type="button"
                               aria-label={`Edit ${expense.note || expense.categoryName} expense`}
                               onClick={() => handleEditExpense(expense.id)}
-                              className="inline-flex min-h-touch items-center justify-center rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-[12.5px] font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                              className="inline-flex min-h-touch items-center justify-center rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-1xs font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--home-signal)] hover:text-[var(--home-signal)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
                             >
                               Edit
                             </button>
@@ -614,7 +614,7 @@ export function BudgetPlannerClient() {
                                   resetExpenseDraft();
                                 }
                               }}
-                              className="inline-flex min-h-touch items-center justify-center rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-[12.5px] font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--color-error)] hover:text-[var(--color-error)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                              className="inline-flex min-h-touch items-center justify-center rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-1xs font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--home-negative)] hover:text-[var(--home-negative)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
                             >
                               Delete
                             </button>
@@ -629,7 +629,7 @@ export function BudgetPlannerClient() {
 
           <aside
             aria-label="Budget tools"
-            className="flex flex-col gap-4 rounded-[1.5rem] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_74%,var(--home-elev-mix))] p-5 shadow-[var(--shadow-sm)] lg:sticky lg:top-24 lg:self-start lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto"
+            className="flex flex-col gap-4 rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_74%,var(--home-elev-mix))] p-5 shadow-[var(--shadow-sm)] lg:sticky lg:top-24 lg:self-start lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto"
           >
             <section aria-labelledby="rail-add-expense">
               <p className="tool-rail-label" id="rail-add-expense">
@@ -638,7 +638,7 @@ export function BudgetPlannerClient() {
               </p>
               <form
                 onSubmit={handleExpenseSubmit}
-                className="flex flex-col gap-3 rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_94%,var(--home-elev-mix))] p-3 shadow-[var(--shadow-sm)]"
+                className="flex flex-col gap-3 rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_94%,var(--home-elev-mix))] p-3 shadow-[var(--shadow-sm)]"
               >
                 <label className="block">
                   <span className={fieldLabel}>Category</span>
@@ -719,7 +719,7 @@ export function BudgetPlannerClient() {
                     disabled={
                       !resolvedExpenseCategoryId || !expenseDraft.amount || !expenseDraft.date
                     }
-                    className="inline-flex min-h-touch flex-1 items-center justify-center gap-1.5 rounded-lg bg-[var(--home-ink)] px-3 text-[13px] font-semibold text-[var(--home-paper)] shadow-[var(--shadow-sm)] transition hover:bg-[color-mix(in_srgb,var(--home-ink)_88%,var(--home-haze))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    className="inline-flex min-h-touch flex-1 items-center justify-center gap-1.5 rounded-lg bg-[var(--home-ink)] px-3 text-xs font-semibold text-[var(--home-paper)] shadow-[var(--shadow-sm)] transition hover:bg-[color-mix(in_srgb,var(--home-ink)_88%,var(--home-signal))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                   >
                     <Plus className="h-3.5 w-3.5" />
                     {editingExpenseId ? "Save expense" : "Add expense"}
@@ -728,7 +728,7 @@ export function BudgetPlannerClient() {
                     <button
                       type="button"
                       onClick={resetExpenseDraft}
-                      className="inline-flex min-h-touch items-center justify-center rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-[12.5px] font-semibold text-[var(--home-ink-muted)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                      className="inline-flex min-h-touch items-center justify-center rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-1xs font-semibold text-[var(--home-ink-muted)] transition hover:border-[var(--home-signal)] hover:text-[var(--home-signal)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
                     >
                       Cancel
                     </button>
@@ -743,7 +743,7 @@ export function BudgetPlannerClient() {
                 Top categories
               </p>
               {topCategories.length === 0 ? (
-                <p className="text-[12px] leading-6 text-[var(--home-ink-muted)]">
+                <p className="text-1xs leading-6 text-[var(--home-ink-muted)]">
                   No spend yet. Add an expense and the categories with the most movement will
                   surface here.
                 </p>
@@ -753,7 +753,7 @@ export function BudgetPlannerClient() {
                     const utilWidth = `${Math.min(100, Math.max(0, category.utilization * 100))}%`;
                     return (
                       <li key={category.id} className="flex flex-col gap-1.5">
-                        <div className="flex items-baseline justify-between gap-2 text-[12px]">
+                        <div className="flex items-baseline justify-between gap-2 text-1xs">
                           <span className="truncate font-medium text-[var(--home-ink)]">
                             {category.name || "Untitled"}
                           </span>
@@ -765,10 +765,10 @@ export function BudgetPlannerClient() {
                           <div
                             className={`h-full rounded-full ${
                               category.overBudget
-                                ? "bg-[var(--color-error)]"
+                                ? "bg-[var(--home-negative)]"
                                 : category.utilization >= 0.85
-                                  ? "bg-[var(--color-warning)]"
-                                  : "bg-[var(--home-haze)]"
+                                  ? "bg-[var(--home-warning)]"
+                                  : "bg-[var(--home-signal)]"
                             }`}
                             style={{ width: utilWidth }}
                           />

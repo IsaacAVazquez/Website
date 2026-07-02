@@ -40,8 +40,8 @@ function Indicator({ metric, value, avg }: { metric: string; value: number | und
     pct === 0
       ? "bg-[var(--home-paper-alt)] text-[var(--home-ink-muted)]"
       : favorable
-        ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400"
-        : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400";
+        ? "bg-[color-mix(in_srgb,var(--home-positive)_12%,var(--home-paper-alt))] text-[color-mix(in_srgb,var(--home-positive)_70%,var(--home-ink))]"
+        : "bg-[color-mix(in_srgb,var(--home-negative)_11%,var(--home-paper-alt))] text-[color-mix(in_srgb,var(--home-negative)_70%,var(--home-ink))]";
   const sign = pct > 0 ? "+" : pct < 0 ? "−" : "";
   return (
     <span className={`ml-2 inline-flex items-center text-xs font-medium px-1.5 py-0.5 rounded ${tone}`}>

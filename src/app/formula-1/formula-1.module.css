@@ -10,7 +10,7 @@
 
 .f1 {
   /* Racing accent — the iconic Formula 1 red. We remap the local meaning of
-     --home-haze (the editorial brand-blue) to red so every accent the
+     --home-signal (the instrument accent) to red so every accent the
      dashboard already paints with haze — view toggles, leaderboard bars,
      season progress "next" marker, links, upcoming-weekend tones — turns red
      in one place instead of touching dozens of inline styles. */
@@ -19,7 +19,7 @@
   --f1-carbon: #15161A;
   --f1-checker: color-mix(in srgb, var(--home-ink) 82%, transparent);
 
-  --home-haze: var(--f1-red);
+  --home-signal: var(--f1-red);
 }
 
 :global(.dark) .f1 {
@@ -28,7 +28,7 @@
   --f1-carbon: #0B0C0E;
   --f1-checker: color-mix(in srgb, var(--home-ink) 70%, transparent);
 
-  --home-haze: var(--f1-red);
+  --home-signal: var(--f1-red);
 }
 
 /* Carbon-fibre weave — a fine twill pattern kept low-contrast so it reads as
@@ -111,8 +111,9 @@
 }
 
 /* ---- Start-light gantry ---------------------------------------------------
-   Five lights arm left-to-right, hold, then the whole row "goes dark" (lights
-   out) before the loop restarts — the real F1 start procedure in miniature. */
+   Five lights arm left-to-right once on load and hold lit. The instrument
+   motion rules allow a single entrance (nothing loops), so the sequence plays
+   one time and settles into the same lit state reduced-motion users see. */
 
 .gantry {
   display: inline-flex;
@@ -130,7 +131,7 @@
   border-radius: 999px;
   background: color-mix(in srgb, #2a0604 70%, var(--f1-carbon));
   box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.6);
-  animation: f1-light-cycle 5s linear infinite;
+  animation: f1-light-arm 1.4s linear 1 forwards;
 }
 
 .light:nth-child(1) { animation-delay: 0s; }
@@ -139,20 +140,16 @@
 .light:nth-child(4) { animation-delay: 1.8s; }
 .light:nth-child(5) { animation-delay: 2.4s; }
 
-@keyframes f1-light-cycle {
-  /* arm */
-  0%, 4% {
+@keyframes f1-light-arm {
+  /* dark until this light's turn */
+  0%, 70% {
     background: color-mix(in srgb, #2a0604 70%, var(--f1-carbon));
     box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.6);
   }
-  8%, 60% {
+  /* arm and hold */
+  85%, 100% {
     background: radial-gradient(circle at 30% 30%, var(--f1-red-bright) 0%, var(--f1-red) 55%, #7a0500 100%);
     box-shadow: 0 0 7px 1px color-mix(in srgb, var(--f1-red) 70%, transparent);
-  }
-  /* lights out — go dark together */
-  64%, 100% {
-    background: color-mix(in srgb, #2a0604 70%, var(--f1-carbon));
-    box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.6);
   }
 }
 

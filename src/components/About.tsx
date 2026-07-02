@@ -52,7 +52,7 @@ export default function About() {
             <div
               role="tablist"
               aria-label="About sections"
-              className="flex flex-wrap justify-center gap-2 rounded-[1.5rem] p-2"
+              className="flex flex-wrap justify-center gap-2 rounded-[var(--radius-3xl)] p-2"
               style={{
                 border: "1px solid var(--home-rule)",
                 background: "color-mix(in srgb, var(--home-paper-alt) 90%, var(--home-elev-mix))",
@@ -76,7 +76,7 @@ export default function About() {
                       setActiveTab(tabs[prevIndex].id);
                     }
                   }}
-                  className="flex min-h-[44px] items-center gap-2 rounded-xl px-6 py-2.5 font-semibold transition-[background-color,color,box-shadow] duration-200"
+                  className="flex min-h-[44px] items-center gap-2 rounded-[var(--radius-xl)] px-6 py-2.5 font-semibold transition-[background-color,color,box-shadow] duration-200"
                   style={
                     activeTab === tab.id
                       ? {

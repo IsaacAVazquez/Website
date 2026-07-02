@@ -10,12 +10,7 @@ interface Props {
   holdings: EnhancedHolding[];
 }
 
-// Matches the brand palette CSS variables as hex for D3 (which needs hex/rgb)
-const PALETTE = [
-  "#2563EB", "#059669", "#D97706", "#DC2626",
-  "#7C3AED", "#0891B2", "#65A30D", "#EA580C",
-  "#DB2777", "#0D9488",
-];
+import { holdingColor } from "./holdingPalette";
 
 export function AllocationChart({ holdings }: Props) {
   const svgRef = useRef<SVGSVGElement>(null);
@@ -68,8 +63,8 @@ export function AllocationChart({ holdings }: Props) {
       .data(pie(data))
       .join("path")
       .attr("d", arc)
-      .attr("fill", (_, i) => PALETTE[i % PALETTE.length])
-      .attr("stroke", "var(--home-paper-raised)")
+      .attr("fill", (d) => holdingColor(d.data.symbol))
+      .style("stroke", "var(--home-paper-raised)")
       .attr("stroke-width", 2)
       .style("cursor", "pointer")
       .style("transition", "opacity 0.15s ease");
@@ -123,7 +118,7 @@ export function AllocationChart({ holdings }: Props) {
   if (data.length === 0) return null;
 
   return (
-    <WarmCard padding="sm" ariaLabel="Portfolio allocation chart" className="rounded-[28px] shadow-[var(--shadow-sm)]">
+    <WarmCard padding="sm" ariaLabel="Portfolio allocation chart" className="rounded-[var(--radius-3xl)] shadow-[var(--shadow-sm)]">
       <div className="mb-4">
         <h3 className="text-sm font-semibold text-[var(--home-ink)]">Allocation</h3>
         <p className="mt-1 text-xs text-[var(--home-ink-soft)]">
@@ -144,11 +139,11 @@ export function AllocationChart({ holdings }: Props) {
           className="space-y-1.5 text-sm w-full"
           aria-label="Holdings legend with allocation percentages"
         >
-          {data.map((h, i) => (
-            <li key={h.symbol} className="flex items-center gap-2 rounded-[18px] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2.5">
+          {data.map((h) => (
+            <li key={h.symbol} className="flex items-center gap-2 rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2.5">
               <span
                 className="w-2.5 h-2.5 rounded-full shrink-0"
-                style={{ backgroundColor: PALETTE[i % PALETTE.length] }}
+                style={{ backgroundColor: holdingColor(h.symbol) }}
                 aria-hidden="true"
               />
               <span className="font-medium text-[var(--home-ink)] w-14 shrink-0">{h.symbol}</span>
@@ -164,7 +159,7 @@ export function AllocationChart({ holdings }: Props) {
                   className="h-full rounded-full"
                   style={{
                     width: `${Math.min(h.allocationPercent ?? 0, 100)}%`,
-                    backgroundColor: PALETTE[i % PALETTE.length],
+                    backgroundColor: holdingColor(h.symbol),
                   }}
                 />
               </div>

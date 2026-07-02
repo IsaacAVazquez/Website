@@ -13,13 +13,13 @@ export function ModernHero() {
           className="absolute inset-x-0 top-0 h-56 bg-gradient-to-b to-transparent"
           style={{
             backgroundImage:
-              "linear-gradient(to bottom, color-mix(in srgb, var(--home-haze) 12%, transparent), transparent)",
+              "linear-gradient(to bottom, color-mix(in srgb, var(--home-signal) 12%, transparent), transparent)",
           }}
         />
         <div
           className="absolute -left-24 top-24 h-72 w-72 rounded-full blur-3xl"
           style={{
-            background: "color-mix(in srgb, var(--home-haze) 12%, transparent)",
+            background: "color-mix(in srgb, var(--home-signal) 12%, transparent)",
           }}
         />
       </div>
@@ -62,7 +62,7 @@ export function ModernHero() {
                     className="absolute inset-x-10 top-4 h-20 rounded-full blur-3xl"
                     style={{
                       background:
-                        "color-mix(in srgb, var(--home-haze) 14%, transparent)",
+                        "color-mix(in srgb, var(--home-signal) 14%, transparent)",
                     }}
                   />
                   <div className="relative aspect-[4/5] overflow-hidden rounded-[1.4rem] border border-[var(--home-rule)] bg-[var(--home-paper-alt)]">

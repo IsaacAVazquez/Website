@@ -93,8 +93,8 @@ function formatPercent(score: number): string {
 }
 
 function getMatchTone(score: number): string {
-  if (score >= 0.99) return "var(--home-acid)";
-  if (score >= 0.6) return "var(--home-haze)";
+  if (score >= 0.99) return "var(--home-signal)";
+  if (score >= 0.6) return "var(--home-signal)";
   return "var(--home-ink-muted)";
 }
 
@@ -308,7 +308,7 @@ export function RecipeFinderClient() {
                   role="tab"
                   aria-selected={isActive}
                   aria-current={isActive ? "true" : undefined}
-                  className="inline-flex min-h-touch items-center gap-2 rounded-full border px-4 py-1.5 text-sm font-semibold transition-[transform,border-color,background-color,color,box-shadow] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                  className="inline-flex min-h-touch items-center gap-2 rounded-full border px-4 py-1.5 text-sm font-semibold transition-[transform,border-color,background-color,color,box-shadow] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
                   style={{
                     borderColor: isActive
                       ? "var(--home-ink)"
@@ -331,7 +331,7 @@ export function RecipeFinderClient() {
                       style={{
                         background: isActive
                           ? "color-mix(in srgb, var(--home-paper) 22%, transparent)"
-                          : "color-mix(in srgb, var(--home-acid) 40%, transparent)",
+                          : "color-mix(in srgb, var(--home-signal) 40%, transparent)",
                         color: isActive ? "var(--home-paper)" : "var(--home-ink)",
                       }}
                     >
@@ -402,7 +402,7 @@ export function RecipeFinderClient() {
 
             <aside
               aria-label="Pantry editor"
-              className="flex flex-col gap-4 rounded-[1.5rem] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_74%,var(--home-elev-mix))] p-5 shadow-[var(--shadow-sm)] lg:sticky lg:top-24 lg:self-start"
+              className="flex flex-col gap-4 rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_74%,var(--home-elev-mix))] p-5 shadow-[var(--shadow-sm)] lg:sticky lg:top-24 lg:self-start"
             >
               <section aria-labelledby="pantry-heading">
                 <p className="tool-rail-label" id="pantry-heading">
@@ -436,7 +436,7 @@ export function RecipeFinderClient() {
                   value={diet}
                   onChange={(event) => setDiet(event.target.value as DietTag | "all")}
                   disabled={view === "vegetarian"}
-                  className="w-full min-h-touch rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-3 py-2 text-[13px] font-medium text-[var(--home-ink)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
+                  className="w-full min-h-touch rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-3 py-2 text-xs font-medium text-[var(--home-ink)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   {DIET_OPTIONS.map((option) => (
                     <option key={option.value} value={option.value}>
@@ -462,7 +462,7 @@ export function RecipeFinderClient() {
                       key={pick}
                       type="button"
                       onClick={() => addIngredient(pick)}
-                      className="inline-flex min-h-touch items-center rounded-full border border-dashed border-[var(--home-rule)] bg-transparent px-3 py-1 text-2xs font-medium text-[var(--home-ink-muted)] transition-colors hover:border-[var(--home-haze)] hover:text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                      className="inline-flex min-h-touch items-center rounded-full border border-dashed border-[var(--home-rule)] bg-transparent px-3 py-1 text-2xs font-medium text-[var(--home-ink-muted)] transition-colors hover:border-[var(--home-signal)] hover:text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
                     >
                       + {pick}
                     </button>
@@ -523,18 +523,18 @@ function PantryEditor({
               onKeyDown={onKeyDown}
               placeholder="e.g. chicken, lemon"
               autoComplete="off"
-              className="h-10 w-full rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-[13px] text-[var(--home-ink)] placeholder:text-[var(--home-ink-muted)] focus:border-[var(--home-haze)] focus:outline-none focus:ring-2 focus:ring-[var(--home-haze)]/40"
+              className="h-10 w-full rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-xs text-[var(--home-ink)] placeholder:text-[var(--home-ink-muted)] focus:border-[var(--home-signal)] focus:outline-none focus:ring-2 focus:ring-[var(--home-signal)]/40"
             />
             {suggestions.length > 0 && (
-              <ul className="absolute left-0 right-0 top-11 z-10 max-h-56 overflow-auto rounded-[14px] border border-[var(--home-rule)] bg-[var(--home-paper)] py-1 shadow-[var(--shadow-lg)]">
+              <ul className="absolute left-0 right-0 top-11 z-10 max-h-56 overflow-auto rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] py-1 shadow-[var(--shadow-lg)]">
                 {suggestions.map((suggestion) => (
                   <li key={suggestion}>
                     <button
                       type="button"
                       onClick={() => onAdd(suggestion)}
-                      className="flex w-full min-h-touch items-center gap-2 px-3 py-2 text-left text-[13px] text-[var(--home-ink)] transition-colors hover:bg-[var(--home-paper-alt)] focus-visible:outline-none focus-visible:bg-[var(--home-paper-alt)]"
+                      className="flex w-full min-h-touch items-center gap-2 px-3 py-2 text-left text-xs text-[var(--home-ink)] transition-colors hover:bg-[var(--home-paper-alt)] focus-visible:outline-none focus-visible:bg-[var(--home-paper-alt)]"
                     >
-                      <Plus className="h-3 w-3 text-[var(--home-haze)]" aria-hidden="true" />
+                      <Plus className="h-3 w-3 text-[var(--home-signal)]" aria-hidden="true" />
                       {suggestion}
                     </button>
                   </li>
@@ -554,7 +554,7 @@ function PantryEditor({
       </form>
 
       {pantry.length === 0 ? (
-        <p className="mt-3 text-[12.5px] text-[var(--home-ink-muted)]">
+        <p className="mt-3 text-1xs text-[var(--home-ink-muted)]">
           Add a few staples and the recipe list will reorder live.
         </p>
       ) : (
@@ -566,7 +566,7 @@ function PantryEditor({
                   type="button"
                   onClick={() => onRemove(item)}
                   aria-label={`Remove ${item}`}
-                  className="group inline-flex min-h-touch items-center gap-1 rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] px-2.5 py-1 text-[11.5px] font-medium text-[var(--home-ink)] transition-colors hover:border-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                  className="group inline-flex min-h-touch items-center gap-1 rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] px-2.5 py-1 text-2xs font-medium text-[var(--home-ink)] transition-colors hover:border-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
                 >
                   <span>{item}</span>
                   <X
@@ -581,13 +581,13 @@ function PantryEditor({
             <button
               type="button"
               onClick={onClear}
-              className="inline-flex min-h-touch items-center gap-1 rounded-full border border-[var(--home-rule)] bg-transparent px-3 py-1 text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+              className="inline-flex min-h-touch items-center gap-1 rounded-full border border-[var(--home-rule)] bg-transparent px-3 py-1 text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
             >
               <Trash2 className="h-3 w-3" aria-hidden="true" />
               Clear
             </button>
-            <span className="inline-flex items-center gap-1.5 text-[11.5px] text-[var(--home-ink)]">
-              <Sparkles className="h-3 w-3 text-[var(--home-haze)]" aria-hidden="true" />
+            <span className="inline-flex items-center gap-1.5 text-2xs text-[var(--home-ink)]">
+              <Sparkles className="h-3 w-3 text-[var(--home-signal)]" aria-hidden="true" />
               <strong>{cookableNow}</strong> can cook now
             </span>
           </div>
@@ -643,7 +643,7 @@ function RecipeCard({ match, hasPantry, isOpen, onToggle }: RecipeCardProps) {
   const tone = getMatchTone(matchScore);
 
   return (
-    <article className="overflow-hidden rounded-[20px] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] shadow-[var(--shadow-sm)] transition-shadow hover:shadow-[var(--shadow-md)]">
+    <article className="overflow-hidden rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] shadow-[var(--shadow-sm)] transition-shadow hover:shadow-[var(--shadow-md)]">
       <button
         type="button"
         onClick={onToggle}
@@ -747,8 +747,8 @@ function RecipeCard({ match, hasPantry, isOpen, onToggle }: RecipeCardProps) {
                             className="ml-2 rounded-full px-1.5 py-0.5 text-3xs uppercase tracking-[0.16em]"
                             style={{
                               border:
-                                "1px solid color-mix(in srgb, var(--home-haze) 40%, var(--home-rule))",
-                              color: "var(--home-haze)",
+                                "1px solid color-mix(in srgb, var(--home-signal) 40%, var(--home-rule))",
+                              color: "var(--home-signal)",
                             }}
                           >
                             missing
@@ -767,7 +767,7 @@ function RecipeCard({ match, hasPantry, isOpen, onToggle }: RecipeCardProps) {
               <ol className="space-y-2 text-sm text-[var(--home-ink)]">
                 {recipe.instructions.map((step, index) => (
                   <li key={index} className="flex gap-3">
-                    <span className="font-mono text-2xs font-bold text-[var(--home-haze)]">
+                    <span className="font-mono text-2xs font-bold text-[var(--home-signal)]">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     <span>{step}</span>

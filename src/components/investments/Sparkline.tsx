@@ -49,7 +49,7 @@ export function Sparkline({
       .y1((d) => yScale(d))
       .curve(curveMonotoneX);
 
-    const color = isUp ? "var(--color-success)" : "var(--color-error)";
+    const color = isUp ? "var(--home-positive)" : "var(--home-negative)";
 
     svg
       .append("path")

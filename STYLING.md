@@ -2,18 +2,25 @@
 
 Current styling and design-token reference for the live app.
 
-**Last updated:** 2026-04-13
+**Last updated:** 2026-07-02 · **Working Instrument** redesign, phases one and two complete: flagship surfaces rebuilt; every dashboard, tool, and personal surface refreshed to the instrument language (sharp `--radius-*` plates, flat paper, semantic status tokens). `--home-haze`/`--home-acid`/`--home-moss` are token definitions only — zero component usages remain (the scoped F1-red override in `formula-1.module.css` and `/arcade`'s deliberate CRT aesthetic are the two sanctioned exceptions). `tailwind.config.ts` is loaded via `@config` in `globals.css`; `min-h-touch`, class-based `dark:`, and the fluid `text-*` scale are live.
 
 ---
 
 ## Core Principles
 
-- token-driven colors, spacing, type, and shadows via the `--home-*` editorial palette
+- token-driven colors, spacing, type, and shadows via the `--home-*` palette
 - light and dark mode support via CSS variables (every `--home-*` token has a `.dark` counterpart)
-- the editorial system (`--home-paper`, `--home-ink`, `--home-haze`, etc.) is the **site-wide standard** for all routes except `/admin`
-- shared shell helpers (`home-page`, `home-shell`, `home-card`, `home-kicker`) for page rhythm
+- the **Working Instrument** system (limestone paper, graphite ink, one signal-orange accent,
+  hairline rules, mono readouts) is the site-wide standard for all routes except `/admin`
+- one accent: `--home-signal` is reserved for data, state, and action (links, live dots, focus,
+  active states). It is never a decorative wash. `--home-acid` / `--home-haze` / `--home-moss`
+  remain **defined but legacy** — pre-redesign dashboards still read them; do not use them in new code
+- CSS-Module surfaces alias the global tokens (`--x-paper: var(--home-paper)`) — never re-declare
+  the palette as fresh hex (see the flagship modules `page.module.css`, `portfolio.module.css`,
+  `about.module.css`, `contact.module.css` for the reference pattern)
 - accessible focus styles and 44px minimum touch targets
-- restrained motion that respects reduced-motion preferences
+- restrained motion that respects reduced-motion preferences: numbers count up once, lines draw in
+  once, nothing loops, no marquees
 
 Legacy semantic tokens (`--surface-*`, `--text-*`, `--border-*`, `--color-primary`) are aliased to `--home-*` equivalents in `globals.css` for backwards compatibility. New code should use `--home-*` tokens directly. The only route that intentionally uses a different aesthetic is `/admin`.
 
@@ -32,31 +39,39 @@ Legacy semantic tokens (`--surface-*`, `--text-*`, `--border-*`, `--color-primar
 
 Global tokens are defined in `src/app/globals.css`.
 
-### Primary palette (editorial system — use these in new code)
+### Primary palette (Working Instrument — use these in new code)
 
 | Token | Purpose |
 |-------|---------|
-| `--home-paper` | Primary background |
-| `--home-paper-alt` | Secondary/card background |
-| `--home-ink` | Primary text, strong fills |
+| `--home-paper` | Primary background (limestone) |
+| `--home-paper-alt` | Secondary/chip background |
+| `--home-paper-raised` | Lifted panel/card surface (theme-aware elevation) |
+| `--home-ink` | Primary text, strong fills (graphite) |
 | `--home-ink-muted` | Secondary/muted text |
-| `--home-haze` | Accent (links, focus rings, highlights) |
-| `--home-acid` | Accent (charts, badges, gradients) |
-| `--home-moss` | Accent (success-adjacent, nature tones) |
+| `--home-signal` | **The accent.** Data, state, action: links, live dots, active chips, focus |
+| `--home-signal-soft` | Soft signal tint for chips/badges |
 | `--home-stone` | Decorative borders, subtle fills |
-| `--home-rule` | Standard borders and dividers |
+| `--home-rule` | Standard hairline borders and dividers |
 | `--home-dark-paper` / `--home-dark-panel` / `--home-dark-ink` | Dark-section overrides |
 
-For intermediate tones, use `color-mix()`:
+**Legacy accents (token definitions only; do not use):**
+`--home-haze` (blue), `--home-acid` / `--home-acid-soft` (yellow-green), `--home-moss`.
+Phase two migrated every component usage off these (wins/qualification → `--home-positive`,
+ties/deadlines → `--home-warning`, failures → `--home-negative`, categorical chips → ink/stone
+mixes). The definitions remain only as a cascade safety net and can be removed once external
+consumers are ruled out.
+
+For intermediate tones, use `color-mix()` — always mixing toward another token, never toward
+literal `white`/`black`:
 - Tertiary text: `color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))`
-- Elevated surface: `color-mix(in srgb, var(--home-paper) 92%, white)`
-- Softer card bg: `color-mix(in srgb, var(--home-paper-alt) 78%, white)`
+- Elevated surface: `var(--home-paper-raised)` (or mix toward `var(--home-elev-mix)` for a custom ratio)
+- Softer hairline: `color-mix(in srgb, var(--home-rule) 55%, transparent)`
 
 ### Semantic tokens (kept for charts and status indicators)
 
 - `--color-success`, `--color-warning`, `--color-error` — back-compat aliases; in new code prefer the
   canonical `--home-positive` / `--home-warning` / `--home-negative` (see *Semantic status colors* below)
-- `--color-secondary`, `--color-accent` — available but prefer `--home-haze` / `--home-acid`
+- `--color-secondary`, `--color-accent` — back-compat aliases; use `--home-signal` in new code
 
 ### Legacy aliases (deprecated — do not use in new code)
 
@@ -67,13 +82,16 @@ These are defined in `globals.css` but resolve to `--home-*` equivalents:
 - `--text-primary` → `var(--home-ink)`
 - `--text-secondary` → `var(--home-ink-muted)`
 - `--border-primary` → `var(--home-rule)`
-- `--color-primary` → `var(--home-haze)`
+- `--color-primary` → `var(--home-signal)`
 
 ### Other groups
 
 - neutrals: `--neutral-50` through `--neutral-950`
 - spacing: `--space-xs` through `--space-4xl`
 - shadows: `--shadow-sm` through `--shadow-xl`
+- radii: `--radius-sm` (2px) through `--radius-3xl` (8px) — the Working Instrument scale is
+  deliberately sharp; `--radius-pill` stays for genuinely round controls. Do not reintroduce
+  soft 1rem+ card radii.
 
 Do not hardcode hex colors in components when a token exists.
 
@@ -111,10 +129,11 @@ colors, team crests) may stay raw when no token represents them.
 
 D3/SVG fills can't read Tailwind classes, so charts must resolve token colors **at render time**:
 
-- Resolve via `getComputedStyle(document.documentElement).getPropertyValue('--home-haze')` inside the
-  render/effect (re-resolve on theme change). `PortfolioPerformanceChart` is the reference
-  implementation; `ComparisonRadarChart` (hardcoded `#2563EB`, stale vs `--home-haze` `#5672F8`) is the
-  anti-pattern.
+- Resolve via `getComputedStyle(document.documentElement).getPropertyValue('--home-signal')` inside the
+  render/effect, and re-resolve on theme change (`useTheme().resolvedTheme` as an effect dep).
+  Reference implementations: `PortfolioPerformanceChart`, `ComparisonRadarChart`, and
+  `FrontierCostContextChart`. Remember `var()`/`color-mix()` never resolve inside SVG *presentation
+  attributes* — pass concrete resolved values to `.attr()`, or use `.style()`.
 - Never bake a token's hex into a constant (it drifts when the token changes and ignores dark mode).
 - Avoid ink-equivalent tones (e.g. `#12110F`) for logo/series tiles — they vanish on dark paper.
 - Investments charts should share **one** categorical palette so a holding keeps one color across the
@@ -175,17 +194,18 @@ Use the `home-*` helpers first for new route work. The older semantic helpers re
 
 ## Typography
 
-Fonts are loaded in `src/app/layout.tsx` (five families, each exposed as a CSS variable):
+Fonts are loaded in `src/app/layout.tsx` (three families, each exposed as a CSS variable):
 
 | Font | Variable | Role |
 |------|----------|------|
-| `Instrument Sans` | `--font-instrument-sans` → `--font-home-sans` | Primary editorial font — UI, nav, body, cards, dashboards |
-| `Instrument Serif` | `--font-instrument-serif` → `--font-home-serif` | Display/manifesto moments and selective italic emphasis only |
-| `Bricolage Grotesque` | `--font-display` | Drives the V3 editorial-brutalist surfaces (home, about, portfolio, contact, writing wordmarks/section titles) |
-| `JetBrains Mono` | `--font-jetbrains-mono` → `--font-mono` | Code blocks and kicker/meta micro-labels |
-| `Inter` | `--font-inter` | Legacy body fallback; not the default for new components |
+| `Instrument Sans` | `--font-instrument-sans` → `--font-home-sans` | Primary face — display headlines, UI, nav, body, cards, dashboards. Variable weight; instrument display sits around 560–640 with −0.03em tracking |
+| `Instrument Serif` | `--font-instrument-serif` → `--font-home-serif` | One italic gesture per surface (a dek word, a closing statement). Never body copy |
+| `Fragment Mono` | `--font-fragment-mono` → `--font-mono` | Readouts, kickers, micro-labels, code. 400 only — do not fake bold weights |
 
-> `STYLING.md` previously listed only four fonts and omitted **Bricolage Grotesque** (`--font-display`). The V3 composition roots and their CSS Modules (`page.module.css`, `about.module.css`, `portfolio.module.css`, `contact.module.css`, `writing.module.css`, `ContactCta.module.css`) reach for `var(--font-display)` directly — confirm against `layout.tsx`, which is the source of truth.
+**Retired families (2026-07):** Bricolage Grotesque, Inter, and JetBrains Mono no longer load.
+Their old variables (`--font-display`, `--font-inter`, `--font-jetbrains-mono`) are aliased to the
+new stack in `globals.css` as a safety net for pre-redesign surfaces — new code must use
+`--font-home-sans` / `--font-home-serif` / `--font-mono` directly.
 
 Typography is fluid and token-based via:
 
@@ -206,12 +226,9 @@ arbitrary `text-[Npx]` value:
 
 - 10px → `text-3xs`, 11px → `text-2xs` (both fixed/non-fluid by design).
 - 12–14px → `text-xs` (fluid `clamp(0.75rem … 0.875rem)`) when the label may scale.
-- **Token gap:** there is no *fixed* 12px or 13px token, yet `text-[12px]` (×26) and `text-[13px]` (×20)
-  are the most common arbitrary values in the codebase (heaviest in `decision-lab`, `interchange-iq`,
-  `budget-planner`, `formula-1`, `travel`, `museum-log`). For dense labels that must **not** scale at 12px,
-  add a fixed `--text-1xs: 0.75rem` token to the `@theme` block (exposed as `text-1xs`) rather than
-  reintroducing arbitrary px. Pick one policy per label: fluid `text-xs` if scaling is fine, the new fixed
-  token if it must stay put. Either way, retire the `text-[Npx]` literals.
+- `--text-1xs` (fixed 12px) is registered in the `@theme` block for dense labels that must not
+  scale. Pick one policy per label: fluid `text-xs` if scaling is fine, `text-1xs` if it must stay
+  put. The old `text-[12px]`/`text-[13px]` literals were retired in phase two — do not reintroduce them.
 
 Headings use tighter tracking and balanced wrapping by default.
 
@@ -233,28 +250,40 @@ Dark mode is class-based:
 
 Use raw Tailwind `dark:` utilities only when you truly need behavior outside the token system.
 
-## Editorial System (Site-Wide)
+## Working Instrument System (Site-Wide)
 
-The editorial design system is the site-wide standard as of April 2026. All routes (except `/admin`) use the `--home-*` palette, `home-card`/`home-kicker` rhythm, and Instrument Sans typography. The system uses warm paper tones, tight tracked type, and acid/haze accent gradients.
+The Working Instrument design system is the site-wide standard as of July 2026 (phase one shipped
+the flagship surfaces: `/`, `/about`, `/portfolio`, `/resume`, `/contact`, header, footer, and the
+shared ContactCta; phase two propagates it to the dashboards). All routes (except `/admin`) use the
+`--home-*` palette and Instrument Sans typography. The system uses cool limestone paper, graphite
+ink, hairline rules, mono readouts, and exactly one accent reserved for data, state, and action.
 
 **Color tokens (light / dark):**
 
 | Token | Light | Dark |
 |-------|-------|------|
-| `--home-paper` | `#F1EBDE` | `#12110F` |
-| `--home-paper-alt` | `#E7DECD` | `#1A1916` |
-| `--home-ink` | `#12110F` | `#F4EEE1` |
-| `--home-ink-muted` | `#615B52` | `#C6BCA8` |
-| `--home-acid` | `#D7E74F` | `#A8B846` |
-| `--home-acid-soft` | `#EEF49D` | `#596134` |
-| `--home-moss` | `#B8C793` | `#6F7A4F` |
-| `--home-haze` | `#5672F8` | `#6F85FF` |
-| `--home-stone` | `#CAC0AE` | `#4F493F` |
-| `--home-rule` | `rgba(18,17,15,0.12)` | `rgba(244,238,225,0.14)` |
+| `--home-paper` | `#F6F5F1` | `#151412` |
+| `--home-paper-alt` | `#EFEDE6` | `#1C1B18` |
+| `--home-ink` | `#191813` | `#ECEAE2` |
+| `--home-ink-muted` | `#6F6B60` | `#9B9585` |
+| `--home-signal` | `#C93F19` | `#FF6B3B` |
+| `--home-signal-soft` | `#F6E0D7` | `#462214` |
+| `--home-stone` | `#D8D4C9` | `#45423B` |
+| `--home-rule` | `rgba(25,24,19,0.14)` | `rgba(236,234,226,0.16)` |
+| `--home-acid` *(legacy)* | `#D7E74F` | `#A8B846` |
+| `--home-haze` *(legacy)* | `#5672F8` | `#6F85FF` |
+| `--home-moss` *(legacy)* | `#B8C793` | `#6F7A4F` |
 
 **Fonts:**
-- `--font-home-sans` → `Instrument Sans` (UI, nav, body, cards)
-- `--font-home-serif` → `Instrument Serif` (manifesto moments, selective italic emphasis only)
+- `--font-home-sans` → `Instrument Sans` (display + UI + body)
+- `--font-home-serif` → `Instrument Serif` (one italic gesture per surface)
+- `--font-mono` → `Fragment Mono` (readouts, kickers, micro-labels)
+
+**Recurring primitives (currently defined per flagship CSS module; extract when phase two needs
+them shared):** signal-dot kicker, hairline panel (`--home-rule` border + `--home-paper-raised`
+fill + 10px radius), mono readout rows with tabular numerals, stat strips with hairline cell
+dividers, ledger rows (hairline top rule + soft hairline row dividers), and the instrument button
+pair (ink solid that hovers signal, hairline ghost that hovers signal).
 
 ### Layout shells
 
@@ -268,12 +297,11 @@ All shells: `width: 100%; margin-inline: auto; padding-inline: 1rem` (1.5rem @sm
 
 ### Section wrappers
 
-- `.home-page` — root wrapper; multi-stop radial gradient background (acid top-left, haze top-right, paper base)
+- `.home-page` — root wrapper; flat `--home-paper`, no ambient gradients (surfaces earn emphasis through hairlines and type, not washes)
 - `.home-section` — `padding-block: clamp(1.25rem, 2vw, 2rem)` (standard vertical rhythm)
 - `.home-hero-section` — `padding-top: clamp(1.375rem, 2.5vw, 2.375rem)`
 - `.home-contact-section` — `padding-bottom: clamp(1.25rem, 2.5vw, 2rem)`
-- `.home-section-dark` — dark panel with haze radial gradient; use for writing/dark sections
-- `.home-section-acid` — acid-yellow gradient background; use sparingly for accent moments
+
 
 ### Typography
 
@@ -303,15 +331,15 @@ Base: `.home-button` — 48px min-height, pill shape (radius 999px), Instrument 
 
 | Modifier | Style |
 |----------|-------|
-| `.home-button-primary` | ink fill, paper text; hover blends haze |
-| `.home-button-secondary` | paper bg, stone border; hover adds acid tint |
+| `.home-button-primary` | ink fill, paper text; hover blends toward signal |
+| `.home-button-secondary` | paper bg, stone border; hover adds a signal-soft tint |
 | `.home-button-dark` | transparent, dark-ink text; for use on dark sections |
 
 ### Cards
 
 - `.home-card` — 1.6rem radius, paper bg 88%, `shadow-md`, lifts on hover (`translateY(-4px)`, `shadow-lg`)
 - `.home-project-card` — `.home-card` + `padding: 1.5rem`
-- `.home-writing-card` — `.home-card` on dark panel, no shadow by default; hover tints with haze
+- `.home-writing-card` — `.home-card` variant, no shadow by default
 - `.home-note-card` — small inset card, 1.1rem radius, paper-alt bg
 
 ### Writing Archive Cards (`/writing`)
@@ -335,66 +363,50 @@ This note exists because the archive footer regressed during the April 2026 SEO/
 - the bottom row styling drifted from the original spacing and font sizing
 - the fix was to restore the original footer structure and sizing, then add overflow constraints so the entire metadata strip stays on one line
 
-### Hero art panel
-
-- `.home-artboard` — constrained to `min(100%, 44rem)`, centered
-- `.home-art-panel` — 1.22 aspect ratio, 1.8rem radius, split gradient background, `shadow-xl`
-- `.home-art-split-left` / `.home-art-split-right` — acid-left / haze-right radial gradients at the center divide
-- `.home-art-orb-left` / `.home-art-orb-right` — blurred (54px) color orbs for ambient glow
-- `.home-art-caption` — bottom-left pill label inside the art panel
-
 ### Headshot
 
 - `.home-headshot-frame` — `min(100%, 26rem)`, 3/4 aspect ratio, 1.8rem radius, `shadow-xl`
 
-### Spotlight / writing section components
-
-- `.home-spotlight-board` — large card with haze radial + paper gradient, `shadow-xl`
-- `.home-spotlight-note` — pill badge at top of spotlight card
-- `.home-spotlight-poster` — large display text (1.6–3rem), second `<span>` uses Instrument Serif italic
-- `.home-spotlight-tags` — flex pill row at bottom of spotlight card
-
 ### Misc components
 
-- `.home-pill` — acid-tinted pill badge (e.g. "Project 01")
+- `.home-pill` — signal-soft-tinted pill badge (e.g. "Project 01")
 - `.home-pill-dark` — dark variant of pill
-- `.home-inline-link` — icon-paired text link, haze on hover
+- `.home-inline-link` — icon-paired text link, signal on hover
 - `.home-intro-block` — centered grid, used for page-level intro above hero
-- `.home-manifesto-grid` — two-column grid for manifesto + copy pairing
 - `.home-section-intro` — two-column grid for section heading + copy pairing
-- `.home-contact-panel` — bordered rounded panel with haze radial gradient, centered, used for the CTA section
 
 ### Motion
 
 - `.home-reveal` — fade + `translateY(18px)` in via `home-reveal` keyframe (700ms, `easing-smooth`)
 - `.home-reveal-delay-1` / `-delay-2` / `-delay-3` — staggered delays (120ms / 220ms / 320ms)
-- `.home-gradient-drift` — 18s infinite subtle drift on the art background
+- Nothing loops: entrances play once (see the F1 start-light gantry for the pattern)
 
 All motion respects `prefers-reduced-motion`.
 
-### Header overrides (home only)
+### Header (site-wide)
 
-Applied to `StaticHeader` when on `/`:
+Applied to `StaticHeader`:
 
-- `.header-home` — stone border bottom
-- `.header-home-brand` — Instrument Sans 700, uppercase, ink
-- `.header-home-link` — pill nav links; active gets ink border + paper bg; inactive is ink-muted
-- `.header-home-mobile-link` — uppercase Instrument Sans for mobile menu
-- `.header-home-control` — theme toggle border/bg using paper/stone tokens
-- `.header-home-menu` — mobile menu panel in paper tones
+- `.header-home` — hairline `--home-rule` border bottom
+- `.header-home-brand` — Instrument Sans 640, normal case, signal dot prefix
+- `.header-home-link` — quiet sans nav links; active gets an inset 2px `--home-signal` underline; inactive is ink-muted
+- `.header-home-mobile-link` — Instrument Sans 560, normal case, for the mobile menu
+- `.header-home-control` — theme toggle with hairline border, transparent bg
+- `.header-home-menu` — mobile menu panel on `--home-paper-raised`
 
-### Footer overrides (home only)
+### Footer (site-wide)
 
-- `.footer-home` — paper-tinted footer background with home-rule top border
-- `.footer-home-panel` — card panel inside footer (haze gradient + paper bg)
+- `.footer-home` — paper background with hairline top border
+- `.footer-home-panel` — card panel inside footer on `--home-paper-raised`
+- `.footer-home-colophon` — mono colophon with signal dot prefix
 - `.footer-home-text` / `.footer-home-text-strong` — muted / full ink variants
-- `.footer-home-icon` — bordered icon buttons; acid hover tint
+- `.footer-home-icon` — hairline-bordered icon buttons; ink fill on hover
 
 ### Rules
 
 - all routes except `/admin` use the editorial `--home-*` palette — do not introduce a separate token system
 - preserve the theme toggle; dark mode uses the `.dark` counterparts of `--home-*` tokens
-- do not introduce route-wide screenshots as a dependency for homepage cards; stay text-forward unless a later content pass adds curated assets
+- project cards use the committed pixel-art SVG covers (`public/images/projects/{slug}.svg`); do not introduce route-wide page screenshots as a card dependency
 - all motion classes must be paired with reduced-motion guards in CSS (`@media (prefers-reduced-motion: reduce)`)
 
 ---

@@ -224,10 +224,10 @@ export function DraftTrackerClient() {
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm font-semibold tabular-nums"
                 style={{
                   borderColor: timer.isExpired
-                    ? "color-mix(in srgb, var(--color-warning) 40%, var(--home-rule))"
+                    ? "color-mix(in srgb, var(--home-warning) 40%, var(--home-rule))"
                     : "var(--home-rule)",
                   background: timer.isExpired
-                    ? "color-mix(in srgb, var(--color-warning) 16%, var(--home-paper))"
+                    ? "color-mix(in srgb, var(--home-warning) 16%, var(--home-paper))"
                     : "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
                 }}
                 aria-live="off"
@@ -267,15 +267,15 @@ export function DraftTrackerClient() {
         )}
 
         {error && (
-          <article className="home-card p-5 sm:p-6" style={{ borderColor: "var(--color-error)" }}>
-            <p className="font-semibold" style={{ color: "var(--color-error)" }}>
+          <article className="home-card p-5 sm:p-6" style={{ borderColor: "var(--home-negative)" }}>
+            <p className="font-semibold" style={{ color: "var(--home-negative)" }}>
               {error}
             </p>
           </article>
         )}
 
         {rankingsUnavailable && (
-          <article className="home-card p-5 sm:p-6" style={{ borderColor: "var(--color-warning)" }}>
+          <article className="home-card p-5 sm:p-6" style={{ borderColor: "var(--home-warning)" }}>
             <p className="font-semibold">
               {overallSliceMetadata?.reason ??
                 "The current snapshot does not include an overall board for this scoring format."}
@@ -360,24 +360,24 @@ export function DraftTrackerClient() {
                     className="h-2 rounded-full"
                     style={{
                       width: `${completionPercentage}%`,
-                      background: "linear-gradient(90deg, var(--home-haze) 0%, var(--home-acid) 100%)",
+                      background: "var(--home-signal)",
                     }}
                   />
                 </div>
               </div>
 
               <div className="mt-5 grid gap-3">
-                <div className="rounded-[1.2rem] border px-4 py-3" style={TILE_STYLE}>
+                <div className="rounded-[var(--radius-3xl)] border px-4 py-3" style={TILE_STYLE}>
                   <p className="home-kicker mb-1">On clock</p>
                   <p className="text-sm font-semibold">{currentTeamName}</p>
                 </div>
-                <div className="rounded-[1.2rem] border px-4 py-3" style={TILE_STYLE}>
+                <div className="rounded-[var(--radius-3xl)] border px-4 py-3" style={TILE_STYLE}>
                   <p className="home-kicker mb-1">Current pick</p>
                   <p className="text-sm font-semibold">
                     {draftState.currentPick} / {totalPicks}
                   </p>
                 </div>
-                <div className="rounded-[1.2rem] border px-4 py-3" style={TILE_STYLE}>
+                <div className="rounded-[var(--radius-3xl)] border px-4 py-3" style={TILE_STYLE}>
                   <p className="home-kicker mb-1">Round</p>
                   <p className="text-sm font-semibold">
                     {draftState.currentRound} / {draftState.settings.rounds}
@@ -399,7 +399,7 @@ export function DraftTrackerClient() {
                       key={pick.pickNumber}
                       type="button"
                       onClick={() => setDetailPlayer(pick.player)}
-                      className="rounded-[1.2rem] border px-4 py-3 text-left"
+                      className="rounded-[var(--radius-3xl)] border px-4 py-3 text-left"
                       style={TILE_STYLE}
                     >
                       <p className="text-sm font-semibold">{pick.player.name}</p>
@@ -428,7 +428,7 @@ export function DraftTrackerClient() {
                   recentPicks.map((pick) => (
                     <div
                       key={`recent-${pick.pickNumber}`}
-                      className="flex items-center gap-2 rounded-[1.2rem] border px-4 py-3"
+                      className="flex items-center gap-2 rounded-[var(--radius-3xl)] border px-4 py-3"
                       style={TILE_STYLE}
                     >
                       <button
@@ -446,10 +446,14 @@ export function DraftTrackerClient() {
                         onClick={() => undoToPick(pick.pickNumber)}
                         aria-label={`Undo back to pick ${pick.pickNumber}`}
                         title={`Undo back to pick ${pick.pickNumber}`}
-                        className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border"
-                        style={{ borderColor: "var(--home-rule)", color: "var(--home-ink-muted)" }}
+                        className="-my-2 inline-flex h-11 w-11 shrink-0 items-center justify-center"
                       >
-                        <Undo2 size={14} aria-hidden="true" />
+                        <span
+                          className="inline-flex h-8 w-8 items-center justify-center rounded-full border"
+                          style={{ borderColor: "var(--home-rule)", color: "var(--home-ink-muted)" }}
+                        >
+                          <Undo2 size={14} aria-hidden="true" />
+                        </span>
                       </button>
                     </div>
                   ))
@@ -484,7 +488,7 @@ export function DraftTrackerClient() {
                         onChange={(event) => setTeamName(team.teamNumber, event.target.value)}
                         maxLength={40}
                         placeholder={`Team ${team.teamNumber}`}
-                        className="min-h-[40px] rounded-[0.9rem] border px-3 text-sm"
+                        className="min-h-[40px] rounded-[var(--radius-2xl)] border px-3 text-sm"
                         style={ACTION_STYLE}
                       />
                     </label>

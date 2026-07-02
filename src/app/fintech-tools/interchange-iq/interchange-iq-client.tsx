@@ -78,7 +78,7 @@ function Slider({
             fontFamily: "var(--font-home-sans)",
             fontSize: "13px",
             fontWeight: 600,
-            color: "var(--home-haze)",
+            color: "var(--home-signal)",
           }}
         >
           {format(value)}
@@ -97,9 +97,9 @@ function Slider({
         aria-valuetext={format(value)}
         aria-describedby={hintId}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full h-1.5 rounded-full appearance-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+        className="w-full h-1.5 rounded-full appearance-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
         style={{
-          background: `linear-gradient(to right, var(--home-haze) ${pct}%, var(--home-rule) ${pct}%)`,
+          background: `linear-gradient(to right, var(--home-signal) ${pct}%, var(--home-rule) ${pct}%)`,
         }}
       />
       {hint && (
@@ -248,7 +248,7 @@ export function InterchangeIQClient() {
                   href={item.href}
                   aria-current={isActive ? "true" : undefined}
                   onClick={() => setActiveView(item.id)}
-                  className="inline-flex min-h-touch items-center gap-2 rounded-full border px-4 py-1.5 text-sm font-semibold transition-[transform,border-color,background-color,color] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                  className="inline-flex min-h-touch items-center gap-2 rounded-full border px-4 py-1.5 text-sm font-semibold transition-[transform,border-color,background-color,color] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
                   style={{
                     borderColor: isActive ? "var(--home-ink)" : "var(--home-rule)",
                     background: isActive
@@ -276,7 +276,7 @@ export function InterchangeIQClient() {
             <button
               type="button"
               onClick={handleReset}
-              className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-[12.5px] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+              className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-1xs font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
               style={{
                 fontFamily: "var(--font-home-sans)",
                 color: "var(--home-ink)",
@@ -366,7 +366,7 @@ export function InterchangeIQClient() {
                             fontFamily: "var(--font-home-sans)",
                             fontSize: "13.5px",
                             fontWeight: 600,
-                            color: isBest ? "var(--home-haze)" : "var(--home-ink)",
+                            color: isBest ? "var(--home-signal)" : "var(--home-ink)",
                           }}
                         >
                           {r.name}
@@ -396,7 +396,7 @@ export function InterchangeIQClient() {
                               fontWeight: 700,
                               letterSpacing: "0.06em",
                               textTransform: "uppercase",
-                              background: "var(--home-haze)",
+                              background: "var(--home-signal)",
                               color: "var(--home-paper)",
                               borderRadius: 999,
                               padding: "1px 8px",
@@ -412,7 +412,7 @@ export function InterchangeIQClient() {
                           fontFamily: "var(--font-home-sans)",
                           fontSize: "13.5px",
                           fontWeight: 600,
-                          color: isBest ? "var(--home-haze)" : "var(--home-ink)",
+                          color: isBest ? "var(--home-signal)" : "var(--home-ink)",
                         }}
                       >
                         {fmtFull(r.monthlyFee)}
@@ -476,14 +476,14 @@ export function InterchangeIQClient() {
                     ticket exceeds{" "}
                     <strong
                       className="tabular-nums"
-                      style={{ color: "var(--home-haze)", fontWeight: 700 }}
+                      style={{ color: "var(--home-signal)", fontWeight: 700 }}
                     >
                       ${breakevenTicket.toFixed(2)}
                     </strong>
                     . Your current avg ticket is{" "}
                     <strong style={{ color: "var(--home-ink)" }}>${avgTicket}</strong> —{" "}
                     {avgTicket >= breakevenTicket ? (
-                      <span style={{ color: "var(--color-success)" }}>
+                      <span style={{ color: "var(--home-positive)" }}>
                         IC+ wins on unit economics.
                       </span>
                     ) : (
@@ -503,7 +503,7 @@ export function InterchangeIQClient() {
                       style={{
                         width: `${Math.min(100, (breakevenTicket / 500) * 100)}%`,
                         background:
-                          "linear-gradient(90deg, color-mix(in srgb, var(--home-haze) 40%, transparent), var(--home-haze))",
+                          "linear-gradient(90deg, color-mix(in srgb, var(--home-signal) 40%, transparent), var(--home-signal))",
                       }}
                     />
                     <div
@@ -559,7 +559,7 @@ export function InterchangeIQClient() {
         {/* ── Rail ── */}
         <aside
           aria-label="Inputs side panel"
-          className="flex flex-col gap-4 rounded-[1.5rem] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_74%,var(--home-elev-mix))] p-5 shadow-[var(--shadow-sm)] lg:sticky lg:top-24 lg:self-start lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto"
+          className="flex flex-col gap-4 rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_74%,var(--home-elev-mix))] p-5 shadow-[var(--shadow-sm)] lg:sticky lg:top-24 lg:self-start lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto"
         >
           <section>
             <p className="tool-rail-label">
@@ -623,7 +623,7 @@ export function InterchangeIQClient() {
                 aria-label="Learn about card mix"
                 aria-expanded={showInfo}
                 aria-controls="card-mix-info"
-                className="ml-auto rounded-md p-0.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                className="ml-auto rounded-md p-0.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
                 style={{ color: "var(--home-ink-muted)" }}
               >
                 <IconInfoCircle className="h-3.5 w-3.5" />
@@ -676,7 +676,7 @@ export function InterchangeIQClient() {
                       className="h-full rounded-full"
                       style={{
                         width: `${Math.max(row.pct, 0.5)}%`,
-                        background: "var(--home-haze)",
+                        background: "var(--home-signal)",
                         opacity: 0.5 + row.pct / 200,
                       }}
                     />

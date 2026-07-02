@@ -20,10 +20,10 @@ function Bar({ value, max = 100 }: { value: number | undefined; max?: number }) 
   return (
     <div className="h-1.5 rounded-full bg-[var(--home-stone)] overflow-hidden flex-1">
       <div
-        className="h-full rounded-full transition-all duration-500"
+        className="h-full rounded-full transition-[width] duration-500"
         style={{
           width: `${pct}%`,
-          backgroundColor: positive ? "var(--color-success)" : "var(--color-error)",
+          backgroundColor: positive ? "var(--home-positive)" : "var(--home-negative)",
         }}
         aria-hidden="true"
       />
@@ -52,7 +52,7 @@ function MetricRow({
       <Bar value={value} max={max} />
       <span
         className={`text-sm font-medium w-16 text-right shrink-0 ${
-          positive ? "text-[var(--color-success)]" : "text-[var(--color-error)]"
+          positive ? "text-[var(--home-positive)]" : "text-[var(--home-negative)]"
         }`}
       >
         {fmt(value, unit)}

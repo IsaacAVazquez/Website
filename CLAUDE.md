@@ -2,7 +2,7 @@
 
 Deep implementation context for Claude Code and other agents working in this repo.
 
-**Last updated:** 2026-06-30
+**Last updated:** 2026-07-02
 
 ---
 
@@ -156,11 +156,14 @@ Tokens and helpers live in `src/app/globals.css`. The editorial system is the
 site-wide standard for every live route except `/admin` (which keeps its own aesthetic).
 Reference: `STYLING.md`. **Before merging any UI, run the single pre-merge `DESIGN_CHECKLIST.md`.**
 
-- New code uses the `--home-*` editorial palette directly (`var(--home-paper)`,
-  `var(--home-ink)`, `var(--home-haze)`, `var(--home-acid)`). Legacy aliases
-  (`--surface-*`, `--text-*`, `--border-*`, `--color-primary`, and the
-  `--color-success/-error/-warning` names) exist for compatibility but must not be
-  introduced in new code or docs — use `--home-positive/-negative/-warning` for status.
+- New code uses the `--home-*` Working Instrument palette directly (`var(--home-paper)`,
+  `var(--home-ink)`, `var(--home-ink-muted)`, `var(--home-rule)`, and the single accent
+  `var(--home-signal)` — reserved for data, state, and action, never decorative washes).
+  `--home-haze`/`--home-acid`/`--home-moss` survive as token definitions only —
+  phase two removed every component usage; do not add new ones. Legacy aliases (`--surface-*`, `--text-*`, `--border-*`,
+  `--color-primary`, and the `--color-success/-error/-warning` names) exist for compatibility
+  but must not be introduced in new code or docs — use `--home-positive/-negative/-warning`
+  for status.
 - Never hardcode hex colors in components — use the CSS variables.
 - For raised surfaces use `var(--home-paper-raised)` or mix toward `var(--home-elev-mix)`;
   **never `color-mix(…, white)`** — it lightens in both themes and breaks dark mode.

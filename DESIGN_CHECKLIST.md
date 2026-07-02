@@ -22,6 +22,9 @@ across `STYLING.md`, `CLAUDE.md`, `DARK_MODE_USAGE_GUIDE.md`, and `SNAPSHOT_DRIV
 - [ ] **Gain/loss/status use semantic `--home-*` tokens**, not green/red hex: `--home-positive`,
       `--home-negative`, `--home-warning` (each has a `.dark` variant). Do not introduce the legacy
       `--color-success/-error/-warning` aliases in new code.
+- [ ] **One accent.** `--home-signal` is the only accent in new code, and it marks data, state, or
+      action — never a decorative wash or band. `--home-acid`/`--home-haze`/`--home-moss` are token
+      definitions only (zero component usages remain after phase two); do not add new usages.
 - [ ] **CSS-Module surfaces alias the globals** (`--x-paper: var(--home-paper)`) — never re-declare the
       palette as fresh hex with its own `.dark` mirror (that creates a parallel source of truth that drifts).
 - [ ] No raw Tailwind color literals (`text-gray-500`, `bg-slate-100`) where a token exists.
@@ -31,16 +34,22 @@ across `STYLING.md`, `CLAUDE.md`, `DARK_MODE_USAGE_GUIDE.md`, and `SNAPSHOT_DRIV
 - [ ] Every surface has a `.dark` story — verify the page in both themes, not just light.
 - [ ] **D3 / SVG charts resolve series colors at render time** via
       `getComputedStyle(document.documentElement).getPropertyValue('--home-…')`, re-resolved on theme
-      change. Never bake a token's hex into a constant. Reference: `PortfolioPerformanceChart`.
-      Anti-pattern: `ComparisonRadarChart` (`#2563EB`, stale vs `--home-haze`).
+      change (`useTheme().resolvedTheme` as an effect dep). Never bake a token's hex into a constant,
+      and never pass `var()`/`color-mix()` into SVG *presentation attributes* (they don't resolve
+      there — use resolved values or `.style()`). References: `PortfolioPerformanceChart`,
+      `ComparisonRadarChart`, `FrontierCostContextChart`. Investments visuals share one categorical
+      palette: `src/components/investments/holdingPalette.ts`.
 - [ ] Avoid ink-equivalent tones (`#12110F`) for logo/series tiles — they vanish on dark paper.
 
 ## Typography
 
-- [ ] Editorial type uses `Instrument Sans` (`--font-home-sans`); `Instrument Serif` for display/italic;
-      `Bricolage Grotesque` (`--font-display`) for V3 brutalist headings. (See `STYLING.md` for the full table.)
-- [ ] **No arbitrary `text-[Npx]`.** 10px → `text-3xs`, 11px → `text-2xs`, 12–14px → `text-xs`
-      (fluid). For fixed 12px that must not scale, add/use a fixed `text-1xs` token — don't reintroduce px.
+- [ ] Type uses `Instrument Sans` (`--font-home-sans`) for display + body; `Instrument Serif`
+      (`--font-home-serif`) for at most one italic gesture per surface; `Fragment Mono`
+      (`--font-mono`, 400 only) for readouts/kickers/micro-labels. Bricolage Grotesque, Inter, and
+      JetBrains Mono are retired — their variables alias to the new stack; don't reference them in
+      new code. (See `STYLING.md` for the full table.)
+- [ ] **No arbitrary `text-[Npx]`.** 10px → `text-3xs`, 11px → `text-2xs`, fixed 12px → `text-1xs`,
+      12–14px that may scale → `text-xs` (fluid). Don't reintroduce px literals.
 - [ ] Fluid `--text-*` tokens for everything else; headings keep tight tracking + balanced wrapping.
 
 ## Accessibility
@@ -94,5 +103,7 @@ across `STYLING.md`, `CLAUDE.md`, `DARK_MODE_USAGE_GUIDE.md`, and `SNAPSHOT_DRIV
 - [ ] Extends the existing visual language rather than inventing a new one; reuses token helpers
       (`home-card`, `home-kicker`, `SurfaceCard`, etc.) before route-specific styling.
 - [ ] Injected/`dangerouslySetInnerHTML` markup has a defined prose class styling `a/ul/ol/code/strong`
-      with `--home-*` tokens (don't leave links default-blue, e.g. the `.changelog-prose` gap).
-- [ ] `/admin` is the only editorial-exempt route — but a11y/responsive/motion rules still apply to it.
+      with `--home-*` tokens (don't leave links default-blue; `.changelog-prose` in `globals.css` is the
+      reference).
+- [ ] `/admin` is editorial-exempt, and `/arcade` keeps its deliberate retro-CRT aesthetic — but
+      a11y/responsive/motion rules still apply to both.

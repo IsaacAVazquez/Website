@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { IconSparkles, IconInfoCircle } from "@tabler/icons-react";
 import { ReactNode } from "react";
 
@@ -23,6 +23,12 @@ export function PageSummary({
   showIcon = true,
   className = "",
 }: PageSummaryProps) {
+  // Framer entrances must respect prefers-reduced-motion — the global CSS
+  // guard does not stop JS-driven animation (DESIGN_CHECKLIST.md, Motion).
+  const reduceMotion = useReducedMotion();
+  const entrance = reduceMotion
+    ? { initial: false as const }
+    : { initial: { opacity: 0, y: 20 } };
 
   if (variant === "compact") {
     return (
@@ -42,10 +48,10 @@ export function PageSummary({
   if (variant === "featured") {
     return (
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        {...entrance}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className={`card bg-[var(--home-paper-alt)] border-l-4 border-l-[var(--home-haze)] ${className}`}
+        className={`card bg-[var(--home-paper-alt)] border-l-4 border-l-[var(--home-signal)] ${className}`}
       >
         {title && (
           <div className="flex items-center gap-3 mb-4">
@@ -60,8 +66,8 @@ export function PageSummary({
 
         {/* TL;DR Section */}
         {tldr && (
-          <div className="mb-6 pl-4 border-l-2 border-l-[var(--home-haze)]">
-            <p className="text-xs font-semibold text-[var(--home-haze)] uppercase tracking-wider mb-1">
+          <div className="mb-6 pl-4 border-l-2 border-l-[var(--home-signal)]">
+            <p className="text-xs font-semibold text-[var(--home-signal)] uppercase tracking-wider mb-1">
               TL;DR
             </p>
             <div className="text-lg font-medium text-[var(--home-ink)] leading-relaxed">
@@ -90,7 +96,7 @@ export function PageSummary({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      {...entrance}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       className={`card ${className}`}
@@ -111,7 +117,7 @@ export function PageSummary({
 
       {/* TL;DR Section */}
       {tldr && (
-        <div className="mb-4 p-3 bg-[var(--home-paper-alt)] border-l-2 border-l-[var(--home-haze)]">
+        <div className="mb-4 p-3 bg-[var(--home-paper-alt)] border-l-2 border-l-[var(--home-signal)]">
           <p className="text-xs font-semibold text-[var(--home-ink)] uppercase tracking-wider mb-1">
             TL;DR
           </p>

@@ -12,7 +12,7 @@ import {
   BLOG_CLUSTER_ORDER,
 } from "@/lib/blog-config";
 import { generateBreadcrumbStructuredData, constructMetadata } from "@/lib/seo";
-import { WritingArchiveV3 } from "@/components/writing/WritingArchiveV3";
+import { WritingInstrument } from "@/components/writing/WritingInstrument";
 
 export const metadata = constructMetadata({
   title: "Writing",
@@ -114,7 +114,7 @@ export default function WritingPage() {
         }}
       />
 
-      <WritingArchiveV3
+      <WritingInstrument
         posts={posts}
         clusters={clusters}
         buckets={buckets}

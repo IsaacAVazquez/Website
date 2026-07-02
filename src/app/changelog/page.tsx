@@ -77,7 +77,7 @@ export default async function ChangelogPage() {
               <Link
                 href="/now"
                 className="underline underline-offset-2"
-                style={{ color: "var(--home-haze)" }}
+                style={{ color: "var(--home-signal)" }}
               >
                 /now page
               </Link>
@@ -164,7 +164,7 @@ export default async function ChangelogPage() {
             <Link
               href="/now"
               className="underline underline-offset-2"
-              style={{ color: "var(--home-haze)" }}
+              style={{ color: "var(--home-signal)" }}
             >
               /now page
             </Link>{" "}

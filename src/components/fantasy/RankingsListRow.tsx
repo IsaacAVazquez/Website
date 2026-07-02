@@ -60,14 +60,14 @@ export function RankingsListRow({
 }: RankingsListRowProps) {
   return (
     <li
-      className="group relative overflow-hidden rounded-[1.25rem] border border-[color:var(--home-rule)] transition-[border-color,box-shadow,transform] hover:border-[color:var(--home-ink)] hover:shadow-[var(--shadow-md)] motion-safe:hover:-translate-y-0.5"
+      className="group relative overflow-hidden rounded-[var(--radius-3xl)] border border-[color:var(--home-rule)] transition-[border-color,box-shadow,transform] hover:border-[color:var(--home-ink)] hover:shadow-[var(--shadow-md)] motion-safe:hover:-translate-y-0.5"
       style={{ background: "color-mix(in srgb, var(--home-paper-alt) 42%, var(--home-elev-mix))" }}
     >
       {isQueued && (
         <span
           aria-hidden="true"
           className="absolute inset-y-0 left-0 w-1"
-          style={{ background: "var(--home-acid)" }}
+          style={{ background: "var(--home-signal)" }}
         />
       )}
       <div className="flex items-stretch">
@@ -136,8 +136,8 @@ export function RankingsListRow({
             style={
               isQueued
                 ? {
-                    borderColor: "color-mix(in srgb, var(--home-acid) 55%, var(--home-rule))",
-                    background: "color-mix(in srgb, var(--home-acid) 28%, var(--home-paper))",
+                    borderColor: "color-mix(in srgb, var(--home-signal) 55%, var(--home-rule))",
+                    background: "color-mix(in srgb, var(--home-signal) 28%, var(--home-paper))",
                     color: "var(--home-ink)",
                   }
                 : { borderColor: "var(--home-rule)", background: "transparent", color: "var(--home-ink-muted)" }

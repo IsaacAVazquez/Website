@@ -63,9 +63,9 @@ function MissionCountdown({
       role="timer"
       aria-live="polite"
       aria-label={`Time to launch: ${countdown}`}
-      className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-[color-mix(in_srgb,var(--home-moss)_38%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-moss)_14%,var(--home-paper-raised))] px-4 py-2 font-mono text-sm font-semibold tracking-[0.16em] text-[var(--home-ink)]"
+      className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-[color-mix(in_srgb,var(--home-positive)_38%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-positive)_12%,var(--home-paper-raised))] px-4 py-2 font-mono text-sm font-semibold tracking-[0.16em] text-[var(--home-ink)]"
     >
-      <Radar aria-hidden="true" className="h-4 w-4 text-[color-mix(in_srgb,var(--home-moss)_60%,var(--home-ink))]" />
+      <Radar aria-hidden="true" className="h-4 w-4 text-[color-mix(in_srgb,var(--home-positive)_60%,var(--home-ink))]" />
       {countdown}
     </div>
   );
@@ -87,16 +87,16 @@ export function MissionControlHero({
       <section
         data-testid="mission-hero"
         aria-label="Next launch hero"
-        className="rounded-[32px] border border-[var(--home-rule)] bg-[var(--home-paper-raised)]/90 p-6 shadow-[var(--shadow-lg)] sm:p-8"
+        className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)]/90 p-6 shadow-[var(--shadow-lg)] sm:p-8"
       >
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1.25fr)_220px]">
           <div className="space-y-3">
             <div className="h-4 w-32 animate-pulse rounded-full bg-[var(--home-paper-alt)]" />
-            <div className="h-12 w-full animate-pulse rounded-2xl bg-[var(--home-paper-alt)]" />
+            <div className="h-12 w-full animate-pulse rounded-[var(--radius-2xl)] bg-[var(--home-paper-alt)]" />
             <div className="h-5 w-3/4 animate-pulse rounded-full bg-[var(--home-paper-alt)]" />
             <div className="h-5 w-2/3 animate-pulse rounded-full bg-[var(--home-paper-alt)]" />
           </div>
-          <div className="h-[220px] animate-pulse rounded-[28px] bg-[var(--home-paper-alt)]" />
+          <div className="h-[220px] animate-pulse rounded-[var(--radius-3xl)] bg-[var(--home-paper-alt)]" />
         </div>
       </section>
     );
@@ -107,7 +107,7 @@ export function MissionControlHero({
       <section
         data-testid="mission-hero"
         aria-label="Next launch hero"
-        className="rounded-[32px] border border-[color-mix(in_srgb,var(--home-acid)_30%,var(--home-rule))] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--home-acid)_10%,var(--home-paper-raised))_0%,var(--home-paper-raised)_100%)] p-6 shadow-[var(--shadow-lg)] sm:p-8"
+        className="rounded-[var(--radius-3xl)] border border-[color-mix(in_srgb,var(--home-signal)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-signal)_6%,var(--home-paper-raised))] p-6 shadow-[var(--shadow-lg)] sm:p-8"
       >
         <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div className="space-y-3">
@@ -125,7 +125,7 @@ export function MissionControlHero({
           <button
             type="button"
             onClick={onRetry}
-            className="tap-target inline-flex rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-5 py-3 text-sm font-semibold text-[var(--home-ink)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)]"
+            className="tap-target inline-flex rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-5 py-3 text-sm font-semibold text-[var(--home-ink)] transition hover:border-[var(--home-signal)] hover:text-[var(--home-signal)]"
           >
             Retry live data
           </button>
@@ -144,12 +144,12 @@ export function MissionControlHero({
     <section
       data-testid="mission-hero"
       aria-label="Next launch hero"
-      className="overflow-hidden rounded-[32px] border border-[color-mix(in_srgb,var(--home-haze)_16%,var(--home-rule))] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--home-haze)_9%,var(--home-paper-raised))_0%,var(--home-paper-raised)_45%,color-mix(in_srgb,var(--home-moss)_10%,var(--home-paper-raised))_100%)] p-5 shadow-[var(--shadow-lg)] sm:p-6"
+      className="overflow-hidden rounded-[var(--radius-3xl)] border border-[color-mix(in_srgb,var(--home-signal)_16%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-signal)_6%,var(--home-paper-raised))] p-5 shadow-[var(--shadow-lg)] sm:p-6"
     >
       <div className="grid gap-5 lg:grid-cols-[minmax(0,1.24fr)_220px]">
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-3">
-            <span className="rounded-full border border-[color-mix(in_srgb,var(--home-haze)_25%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-paper)_78%,transparent)] px-3 py-1 font-mono text-2xs font-semibold uppercase tracking-[0.22em] text-[var(--home-haze)]">
+            <span className="rounded-full border border-[color-mix(in_srgb,var(--home-signal)_25%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-paper)_78%,transparent)] px-3 py-1 font-mono text-2xs font-semibold uppercase tracking-[0.22em] text-[var(--home-signal)]">
               {summary?.heroMode === "fallback" ? "Latest completed mission" : "Next mission"}
             </span>
             <span className="rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-3 py-1 text-xs font-medium text-[var(--home-ink-muted)]">
@@ -169,14 +169,14 @@ export function MissionControlHero({
               />
             ) : (
               <div className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-4 py-2 text-sm font-semibold text-[var(--home-ink)]">
-                <Clock3 className="h-4 w-4 text-[var(--home-haze)]" />
+                <Clock3 className="h-4 w-4 text-[var(--home-signal)]" />
                 {formatMissionScheduleLabel(heroLaunch)}
               </div>
             )}
           </div>
 
           <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:max-w-[700px] xl:grid-cols-4">
-            <div className="rounded-[22px] border border-[var(--home-rule)] bg-[var(--home-paper-raised)]/90 p-3.5">
+            <div className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)]/90 p-3.5">
               <p className="font-mono text-3xs font-semibold uppercase tracking-[0.2em] text-[var(--home-ink-soft)]">
                 Rocket
               </p>
@@ -184,7 +184,7 @@ export function MissionControlHero({
                 {heroLaunch.rocketName ?? "Unspecified"}
               </p>
             </div>
-            <div className="rounded-[22px] border border-[var(--home-rule)] bg-[var(--home-paper-raised)]/90 p-3.5">
+            <div className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)]/90 p-3.5">
               <p className="font-mono text-3xs font-semibold uppercase tracking-[0.2em] text-[var(--home-ink-soft)]">
                 Launchpad
               </p>
@@ -192,7 +192,7 @@ export function MissionControlHero({
                 {heroLaunch.launchpadName ?? "Unspecified"}
               </p>
             </div>
-            <div className="rounded-[22px] border border-[var(--home-rule)] bg-[var(--home-paper-raised)]/90 p-3.5">
+            <div className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)]/90 p-3.5">
               <p className="font-mono text-3xs font-semibold uppercase tracking-[0.2em] text-[var(--home-ink-soft)]">
                 Payloads
               </p>
@@ -200,7 +200,7 @@ export function MissionControlHero({
                 {heroLaunch.payloadCount}
               </p>
             </div>
-            <div className="rounded-[22px] border border-[var(--home-rule)] bg-[var(--home-paper-raised)]/90 p-3.5">
+            <div className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)]/90 p-3.5">
               <p className="font-mono text-3xs font-semibold uppercase tracking-[0.2em] text-[var(--home-ink-soft)]">
                 Location
               </p>
@@ -211,7 +211,7 @@ export function MissionControlHero({
           </div>
 
           {summary?.heroMessage && (
-            <div className="mt-5 rounded-[22px] border border-[color-mix(in_srgb,var(--home-acid)_28%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-acid)_10%,var(--home-paper))] px-4 py-3 text-sm leading-6 text-[var(--home-ink-muted)]">
+            <div className="mt-5 rounded-[var(--radius-3xl)] border border-[color-mix(in_srgb,var(--home-warning)_28%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-warning)_10%,var(--home-paper))] px-4 py-3 text-sm leading-6 text-[var(--home-ink-muted)]">
               {summary.heroMessage}
             </div>
           )}
@@ -220,7 +220,7 @@ export function MissionControlHero({
             <button
               type="button"
               onClick={onInspect}
-              className="tap-target inline-flex items-center gap-2 rounded-2xl bg-[var(--home-haze)] px-5 py-3 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition hover:bg-[var(--home-haze)]"
+              className="tap-target inline-flex items-center gap-2 rounded-[var(--radius-2xl)] bg-[var(--home-signal)] px-5 py-3 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition hover:bg-[var(--home-signal)]"
             >
               Inspect mission
               <Activity className="h-4 w-4" />
@@ -231,7 +231,7 @@ export function MissionControlHero({
                 href={link.href}
                 target="_blank"
                 rel="noreferrer"
-                className="tap-target inline-flex items-center gap-2 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-5 py-3 text-sm font-semibold text-[var(--home-ink)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)]"
+                className="tap-target inline-flex items-center gap-2 rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-5 py-3 text-sm font-semibold text-[var(--home-ink)] transition hover:border-[var(--home-signal)] hover:text-[var(--home-signal)]"
               >
                 {link.label}
                 <ArrowUpRight className="h-4 w-4" />
@@ -249,9 +249,9 @@ export function MissionControlHero({
             label="Vehicle view"
             dataTestId="mission-hero-visual"
           />
-          <div className="rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper-raised)]/90 p-4 shadow-[var(--shadow-sm)]">
+          <div className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)]/90 p-4 shadow-[var(--shadow-sm)]">
             <div className="flex items-center gap-2">
-              <CalendarDays className="h-4 w-4 text-[var(--home-haze)]" />
+              <CalendarDays className="h-4 w-4 text-[var(--home-signal)]" />
               <p className="font-mono text-3xs font-semibold uppercase tracking-[0.2em] text-[var(--home-ink-soft)]">
                 Mission timing
               </p>
@@ -260,7 +260,7 @@ export function MissionControlHero({
               {formatMissionScheduleLabel(heroLaunch)}
             </p>
             <div className="mt-4 flex items-center gap-2 text-sm text-[var(--home-ink-muted)]">
-              <Rocket className="h-4 w-4 text-[var(--home-haze)]" />
+              <Rocket className="h-4 w-4 text-[var(--home-signal)]" />
               {heroLaunch.rocketName ?? "Rocket TBD"}
             </div>
           </div>

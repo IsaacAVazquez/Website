@@ -35,7 +35,7 @@ export function RouteErrorBoundary({ error, reset, surfaceName }: Props) {
           <button
             type="button"
             onClick={reset}
-            className="mt-6 inline-flex items-center gap-2 rounded-full bg-[var(--home-ink)] px-5 py-2.5 text-sm font-semibold text-[var(--home-paper)] transition hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--home-haze)]"
+            className="mt-6 inline-flex items-center gap-2 rounded-full bg-[var(--home-ink)] px-5 py-2.5 text-sm font-semibold text-[var(--home-paper)] transition hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--home-signal)]"
           >
             Try again
           </button>

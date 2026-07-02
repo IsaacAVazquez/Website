@@ -21,14 +21,14 @@ export function ErrorState({ message, isNotFetched, onRetry }: ErrorStateProps) 
       ) : (
         <IconAlertTriangle
           size={32}
-          style={{ color: "var(--color-error)" }}
+          style={{ color: "var(--home-negative)" }}
           aria-hidden="true"
         />
       )}
 
       <p
         className="text-sm max-w-xs"
-        style={{ color: isNotFetched ? "var(--home-ink-soft)" : "var(--color-error)" }}
+        style={{ color: isNotFetched ? "var(--home-ink-soft)" : "var(--home-negative)" }}
       >
         {message}
       </p>

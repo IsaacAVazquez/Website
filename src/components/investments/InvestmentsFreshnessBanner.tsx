@@ -25,7 +25,7 @@ export function InvestmentsFreshnessBanner({
 
   return (
     <div
-      className="mb-6 flex flex-wrap items-center gap-x-4 gap-y-2 rounded-[20px] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-4 py-3 text-xs shadow-[var(--shadow-sm)] sm:text-[13px]"
+      className="mb-6 flex flex-wrap items-center gap-x-4 gap-y-2 rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-4 py-3 text-xs shadow-[var(--shadow-sm)] sm:text-xs"
       role="status"
       aria-label="Investments data freshness"
     >
@@ -35,7 +35,7 @@ export function InvestmentsFreshnessBanner({
           <span className="font-semibold text-[var(--home-ink)]">{symbolCount}</span>{" "}
           {symbolCount === 1 ? "company" : "companies"}
           {failedCount && failedCount > 0 ? (
-            <span className="ml-1 text-[var(--color-warning)]">
+            <span className="ml-1 text-[var(--home-warning)]">
               ({failedCount} unavailable)
             </span>
           ) : null}
@@ -46,7 +46,7 @@ export function InvestmentsFreshnessBanner({
       </span>
       {isStale && (
         <span
-          className="inline-flex items-center gap-1 rounded-full bg-[color-mix(in_srgb,var(--color-warning)_18%,var(--home-paper))] px-2 py-0.5 text-2xs font-semibold uppercase tracking-wide text-[var(--color-warning)]"
+          className="inline-flex items-center gap-1 rounded-full bg-[color-mix(in_srgb,var(--home-warning)_18%,var(--home-paper))] px-2 py-0.5 text-2xs font-semibold uppercase tracking-wide text-[var(--home-warning)]"
           title="The automated refresh has not produced newer data. Runs weekdays at 22:15 UTC."
         >
           Refresh pending

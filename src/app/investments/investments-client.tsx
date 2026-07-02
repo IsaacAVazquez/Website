@@ -97,7 +97,7 @@ export function InvestmentsClient({
       aria-label="Investments dashboard"
       data-testid="investments-shell"
     >
-      <div className="home-shell home-shell-investments home-section">
+      <div className="home-shell home-shell-wide home-section">
         <InvestmentsDashboard
           researchSymbol={routeState.symbol}
           researchTab={routeState.section}

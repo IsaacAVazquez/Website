@@ -75,10 +75,10 @@ export function TierBreakdown({
   if (groups.length === 0) {
     return (
       <div
-        className="rounded-[1.5rem] border px-5 py-10 text-center"
+        className="rounded-[var(--radius-3xl)] border px-5 py-10 text-center"
         style={{
-          borderColor: "color-mix(in srgb, var(--color-warning) 32%, var(--home-rule))",
-          background: "color-mix(in srgb, var(--color-warning) 10%, var(--home-paper))",
+          borderColor: "color-mix(in srgb, var(--home-warning) 32%, var(--home-rule))",
+          background: "color-mix(in srgb, var(--home-warning) 10%, var(--home-paper))",
         }}
       >
         <p className="text-lg font-semibold">No tier data for this board</p>
@@ -120,10 +120,10 @@ export function TierBreakdown({
         return (
           <section
             key={String(group.tier)}
-            className="rounded-[1.5rem] border px-5 py-5"
+            className="rounded-[var(--radius-3xl)] border px-5 py-5"
             style={{
               borderColor: "var(--home-rule)",
-              background: `color-mix(in srgb, var(--home-acid) ${accent}, var(--home-paper))`,
+              background: `color-mix(in srgb, var(--home-signal) ${accent}, var(--home-paper))`,
             }}
             aria-label={label}
           >
@@ -185,7 +185,7 @@ export function TierBreakdown({
                       className="flex items-center gap-1.5 rounded-full border pr-1.5"
                       style={{
                         borderColor: queued
-                          ? "color-mix(in srgb, var(--home-acid) 55%, var(--home-rule))"
+                          ? "color-mix(in srgb, var(--home-signal) 55%, var(--home-rule))"
                           : "var(--home-rule)",
                         background: "var(--home-paper-raised)",
                       }}

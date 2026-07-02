@@ -23,7 +23,7 @@ function Field({
       <input
         id={id}
         name={id}
-        className="min-h-[44px] w-full px-3 py-2 text-sm rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-[var(--home-ink)] placeholder:text-[var(--home-ink-soft)] focus:outline-none focus:ring-2 focus:ring-[var(--home-haze)] focus:border-transparent transition"
+        className="min-h-[44px] w-full px-3 py-2 text-sm rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-[var(--home-ink)] placeholder:text-[var(--home-ink-soft)] focus:outline-none focus:ring-2 focus:ring-[var(--home-signal)] focus:border-transparent transition"
         {...props}
       />
     </label>
@@ -84,7 +84,7 @@ export function AddStockForm({ onAdd }: Props) {
   }
 
   return (
-    <WarmCard padding="sm" ariaLabel="Add stock form" className="rounded-[28px] shadow-[var(--shadow-sm)]">
+    <WarmCard padding="sm" ariaLabel="Add stock form" className="rounded-[var(--radius-3xl)] shadow-[var(--shadow-sm)]">
       <div className="mb-5 flex items-center justify-between">
         <div>
           <h3 className="text-sm font-semibold text-[var(--home-ink)]">Add Position</h3>
@@ -148,7 +148,7 @@ export function AddStockForm({ onAdd }: Props) {
         </div>
 
         {error && (
-          <p id="add-form-error" role="alert" className="mb-4 text-xs text-[var(--color-error)]">
+          <p id="add-form-error" role="alert" className="mb-4 text-xs text-[var(--home-negative)]">
             {error}
           </p>
         )}

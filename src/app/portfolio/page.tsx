@@ -1,6 +1,6 @@
 import { getPortfolioProjects } from "@/constants/caseStudies";
 import { constructMetadata } from "@/lib/seo";
-import { PortfolioV3 } from "@/components/portfolio/PortfolioV3";
+import { PortfolioInstrument } from "@/components/portfolio/PortfolioInstrument";
 import { AIStructuredData } from "@/components/AIStructuredData";
 
 export const metadata = constructMetadata({
@@ -56,7 +56,7 @@ export default function PortfolioPage() {
           },
         }}
       />
-      <PortfolioV3 projects={portfolioProjects} />
+      <PortfolioInstrument projects={portfolioProjects} />
     </>
   );
 }

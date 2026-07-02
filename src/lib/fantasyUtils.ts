@@ -263,33 +263,33 @@ export function getPositionTone(position: string): CSSProperties {
   switch (position) {
     case "QB":
       return {
-        background: "color-mix(in srgb, var(--home-haze) 14%, var(--home-paper))",
-        borderColor: "color-mix(in srgb, var(--home-haze) 28%, var(--home-rule))",
+        background: "color-mix(in srgb, var(--home-signal) 14%, var(--home-paper))",
+        borderColor: "color-mix(in srgb, var(--home-signal) 28%, var(--home-rule))",
       };
     case "RB":
       return {
-        background: "color-mix(in srgb, var(--color-success) 14%, var(--home-paper))",
-        borderColor: "color-mix(in srgb, var(--color-success) 24%, var(--home-rule))",
+        background: "color-mix(in srgb, var(--home-positive) 14%, var(--home-paper))",
+        borderColor: "color-mix(in srgb, var(--home-positive) 24%, var(--home-rule))",
       };
     case "WR":
       return {
-        background: "color-mix(in srgb, var(--home-acid) 26%, var(--home-paper))",
-        borderColor: "color-mix(in srgb, var(--home-acid) 34%, var(--home-rule))",
+        background: "color-mix(in srgb, var(--home-ink) 10%, var(--home-paper))",
+        borderColor: "color-mix(in srgb, var(--home-ink) 24%, var(--home-rule))",
       };
     case "TE":
       return {
-        background: "color-mix(in srgb, var(--color-warning) 18%, var(--home-paper))",
-        borderColor: "color-mix(in srgb, var(--color-warning) 26%, var(--home-rule))",
+        background: "color-mix(in srgb, var(--home-warning) 18%, var(--home-paper))",
+        borderColor: "color-mix(in srgb, var(--home-warning) 26%, var(--home-rule))",
       };
     case "K":
       return {
-        background: "color-mix(in srgb, var(--home-moss) 22%, var(--home-paper))",
-        borderColor: "color-mix(in srgb, var(--home-moss) 32%, var(--home-rule))",
+        background: "color-mix(in srgb, var(--home-stone) 45%, var(--home-paper))",
+        borderColor: "color-mix(in srgb, var(--home-stone) 60%, var(--home-rule))",
       };
     case "DST":
       return {
-        background: "color-mix(in srgb, var(--home-stone) 50%, var(--home-paper))",
-        borderColor: "color-mix(in srgb, var(--home-stone) 58%, var(--home-rule))",
+        background: "color-mix(in srgb, var(--home-ink) 16%, var(--home-paper))",
+        borderColor: "color-mix(in srgb, var(--home-ink) 34%, var(--home-rule))",
       };
     default:
       return {

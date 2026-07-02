@@ -283,7 +283,7 @@ export function NflClient({
     return (
       <div className="home-page min-h-screen">
         <div className="home-shell home-section space-y-5 sm:space-y-6">
-          <div className="rounded-2xl border border-dashed border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-6 text-sm text-[var(--home-ink-muted)]">
+          <div className="rounded-[var(--radius-2xl)] border border-dashed border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-6 text-sm text-[var(--home-ink-muted)]">
             <p className="home-kicker mb-2 text-[var(--home-ink)]">NFL Pulse</p>
             <p className="mb-0">
               Conference standings, playoff seeding, and stat leaders will
@@ -482,7 +482,7 @@ export function NflClient({
 
         {/* Main standings + sidebar */}
         <div id="nfl-standings" className="grid gap-5 md:grid-cols-[minmax(0,1fr)_280px] lg:grid-cols-[minmax(0,1fr)_320px]">
-          <section className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,white)] p-5 sm:p-6 shadow-[var(--shadow-sm)]">
+          <section className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-5 sm:p-6 shadow-[var(--shadow-sm)]">
             <div className="flex items-center justify-between border-b border-[var(--home-rule)] pb-4">
               <h2 className="text-lg font-bold text-[var(--home-ink)]">Standings</h2>
               <span className="text-sm text-[var(--home-ink-muted)]">{visibleTeams.length} teams</span>
@@ -556,7 +556,7 @@ export function NflClient({
                             onClick={() => handleTeamChange(team.id)}
                             aria-pressed={isSelected}
                             aria-label={`Show ${team.name} details`}
-                            className="flex min-h-[44px] w-full items-center gap-2 rounded-xl text-left"
+                            className="flex min-h-[44px] w-full items-center gap-2 rounded-[var(--radius-xl)] text-left"
                           >
                             <CrestAvatar
                               crest={logoByTeamId.get(team.id) ?? null}
@@ -597,7 +597,7 @@ export function NflClient({
           {/* Compact team sidebar */}
           <aside className="md:sticky md:top-28 md:self-start">
             <section
-              className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,white)] p-5 shadow-[var(--shadow-sm)]"
+              className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-5 shadow-[var(--shadow-sm)]"
               aria-live="polite"
               data-testid="nfl-selected-team"
             >
@@ -626,7 +626,7 @@ export function NflClient({
                     </span>
                   </div>
                 </div>
-                <div className="flex-shrink-0 rounded-xl bg-[var(--home-haze)] px-3 py-2 text-center text-[var(--home-paper)] shadow-sm">
+                <div className="flex-shrink-0 rounded-[var(--radius-xl)] bg-[var(--home-signal)] px-3 py-2 text-center text-[var(--home-paper)] shadow-sm">
                   <p className="text-3xs uppercase tracking-[0.14em] opacity-80">Seed</p>
                   <p className="text-xl font-bold">{selectedTeam.seed ?? "—"}</p>
                 </div>
@@ -695,9 +695,9 @@ export function NflClient({
         </div>
 
         {/* Tabbed detail strip */}
-        <div className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,white)] p-5 sm:p-6 shadow-[var(--shadow-sm)]">
+        <div className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-5 sm:p-6 shadow-[var(--shadow-sm)]">
           <div
-            className="flex gap-2 overflow-x-auto rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,white)] p-1.5"
+            className="flex gap-2 overflow-x-auto rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-1.5"
             role="tablist"
             aria-label="Team and league details"
           >
@@ -719,9 +719,9 @@ export function NflClient({
                   aria-controls="nfl-detail-panel"
                   tabIndex={isActive ? 0 : -1}
                   onClick={() => setActiveDetailTab(tab.id)}
-                  className={`min-h-[44px] whitespace-nowrap rounded-2xl px-5 py-2.5 text-sm font-semibold transition-colors ${
+                  className={`min-h-[44px] whitespace-nowrap rounded-[var(--radius-2xl)] px-5 py-2.5 text-sm font-semibold transition-colors ${
                     isActive
-                      ? "bg-[var(--home-haze)] text-[var(--home-paper)] shadow-sm"
+                      ? "bg-[var(--home-signal)] text-[var(--home-paper)] shadow-sm"
                       : "text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
                   }`}
                 >
@@ -769,7 +769,7 @@ export function NflClient({
                     </div>
                   </div>
 
-                  <div className="rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4">
+                  <div className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4">
                     <p className="text-sm font-semibold text-[var(--home-ink)]">
                       Pressure points
                     </p>
@@ -814,7 +814,7 @@ export function NflClient({
 
                 {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) && (
                   <div
-                    className="rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4"
+                    className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4"
                     role={teamSnapshotError ? "alert" : "status"}
                     aria-live="polite"
                   >
@@ -908,7 +908,7 @@ export function NflClient({
                     </div>
                   </div>
                 ) : (
-                  <div className="rounded-2xl border border-dashed border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-6 text-sm leading-relaxed text-[var(--home-ink-muted)]">
+                  <div className="rounded-[var(--radius-2xl)] border border-dashed border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-6 text-sm leading-relaxed text-[var(--home-ink-muted)]">
                     <p className="flex items-center gap-2 font-semibold text-[var(--home-ink)]">
                       <Flag className="h-4 w-4" />
                       Offseason
@@ -945,7 +945,7 @@ export function NflClient({
                     href={summary.sourceUrls.leaders}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-sm font-medium text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-haze)]"
+                    className="inline-flex min-h-[44px] items-center gap-2 rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-sm font-medium text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-signal)]"
                   >
                     NFLverse source
                     <ExternalLink className="h-4 w-4" />
@@ -982,9 +982,9 @@ export function NflClient({
         </div>
 
         {/* Disclaimer */}
-        <section className="rounded-3xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-5 text-sm text-[var(--home-ink-muted)] shadow-sm">
+        <section className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-5 text-sm text-[var(--home-ink-muted)] shadow-sm">
           <div className="flex items-start gap-3">
-            <CircleAlert className="mt-0.5 h-4 w-4 flex-shrink-0 text-[var(--home-haze)]" />
+            <CircleAlert className="mt-0.5 h-4 w-4 flex-shrink-0 text-[var(--home-signal)]" />
             <p className="mb-0 max-w-none leading-relaxed">
               This page is a curated NFLverse snapshot rather than a live feed. Standings come from the public NFLverse standings dataset, schedule and scores from the NFLverse games table, and stat leaders from the regular-season player stats release linked above.
             </p>
@@ -1007,7 +1007,7 @@ function TeamLeaderCard({
   emptyLabel: string;
 }) {
   return (
-    <div className="rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4">
+    <div className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4">
       <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
         {title}
       </p>
@@ -1049,10 +1049,10 @@ function NflLeaderList({
         return (
           <li
             key={`${unit}-${leader.rank}-${leader.name}`}
-            className="flex items-center justify-between gap-4 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-4 py-3"
+            className="flex items-center justify-between gap-4 rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-4 py-3"
           >
             <div className="flex min-w-0 items-center gap-3">
-              <div className="inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[var(--home-paper)] text-sm font-bold text-[var(--home-haze)] shadow-sm">
+              <div className="inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[var(--home-paper)] text-sm font-bold text-[var(--home-signal)] shadow-sm">
                 {leader.rank}
               </div>
               <div className="min-w-0">
@@ -1154,11 +1154,11 @@ function getZoneLabel(zone: NflZone): string {
 function getZoneDotColor(zone: NflZone): string {
   switch (zone) {
     case "top-seed":
-      return "var(--home-haze)";
+      return "var(--home-signal)";
     case "division":
-      return "var(--home-moss)";
+      return "var(--home-positive)";
     case "wildcard":
-      return "var(--home-acid)";
+      return "color-mix(in srgb, var(--home-positive) 55%, var(--home-ink))";
     case "eliminated":
     default:
       return "var(--home-rule)";
@@ -1169,21 +1169,21 @@ function getZonePillStyle(zone: NflZone): CSSProperties {
   switch (zone) {
     case "top-seed":
       return {
-        color: "var(--home-haze)",
-        borderColor: "color-mix(in srgb, var(--home-haze) 30%, var(--home-rule))",
-        background: "color-mix(in srgb, var(--home-haze) 10%, var(--home-paper-alt))",
+        color: "var(--home-signal)",
+        borderColor: "color-mix(in srgb, var(--home-signal) 30%, var(--home-rule))",
+        background: "color-mix(in srgb, var(--home-signal) 10%, var(--home-paper-alt))",
       };
     case "division":
       return {
-        color: "color-mix(in srgb, var(--home-ink) 75%, var(--home-moss))",
-        borderColor: "color-mix(in srgb, var(--home-moss) 55%, var(--home-rule))",
-        background: "color-mix(in srgb, var(--home-moss) 22%, var(--home-paper-alt))",
+        color: "color-mix(in srgb, var(--home-positive) 60%, var(--home-ink))",
+        borderColor: "color-mix(in srgb, var(--home-positive) 45%, var(--home-rule))",
+        background: "color-mix(in srgb, var(--home-positive) 16%, var(--home-paper-alt))",
       };
     case "wildcard":
       return {
-        color: "color-mix(in srgb, var(--home-ink) 70%, var(--home-acid))",
-        borderColor: "color-mix(in srgb, var(--home-acid) 50%, var(--home-rule))",
-        background: "color-mix(in srgb, var(--home-acid) 22%, var(--home-paper-alt))",
+        color: "color-mix(in srgb, var(--home-positive) 45%, var(--home-ink))",
+        borderColor: "color-mix(in srgb, var(--home-positive) 28%, var(--home-rule))",
+        background: "color-mix(in srgb, var(--home-positive) 9%, var(--home-paper-alt))",
       };
     case "eliminated":
     default:
@@ -1198,8 +1198,8 @@ function getZonePillStyle(zone: NflZone): CSSProperties {
 function getViewButtonStyle(isActive: boolean): CSSProperties {
   if (isActive) {
     return {
-      borderColor: "color-mix(in srgb, var(--home-haze) 35%, var(--home-rule))",
-      background: "color-mix(in srgb, var(--home-haze) 9%, var(--home-paper-alt))",
+      borderColor: "color-mix(in srgb, var(--home-signal) 35%, var(--home-rule))",
+      background: "color-mix(in srgb, var(--home-signal) 9%, var(--home-paper-alt))",
       boxShadow: "var(--shadow-sm)",
     };
   }
@@ -1212,8 +1212,8 @@ function getViewButtonStyle(isActive: boolean): CSSProperties {
 function getTableRowStyle(isSelected: boolean): CSSProperties {
   if (isSelected) {
     return {
-      borderColor: "color-mix(in srgb, var(--home-haze) 35%, var(--home-rule))",
-      background: "color-mix(in srgb, var(--home-haze) 9%, var(--home-paper-alt))",
+      borderColor: "color-mix(in srgb, var(--home-signal) 35%, var(--home-rule))",
+      background: "color-mix(in srgb, var(--home-signal) 9%, var(--home-paper-alt))",
     };
   }
   return {

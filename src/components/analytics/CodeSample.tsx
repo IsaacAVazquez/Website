@@ -45,7 +45,7 @@ export function CodeSample({
 
   return (
     <div
-      className="relative my-4 overflow-hidden rounded-xl"
+      className="relative my-4 overflow-hidden rounded-[var(--radius-xl)]"
       style={{
         background: "var(--home-ink)",
         border: "1px solid var(--home-rule)",

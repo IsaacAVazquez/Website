@@ -49,8 +49,8 @@ function CompareRow({ label, value, industryAvg }: { label: string; value: numbe
           <span
             className={`text-xs font-medium px-1.5 py-0.5 rounded ${
               favorable
-                ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400"
-                : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"
+                ? "bg-[color-mix(in_srgb,var(--home-positive)_12%,var(--home-paper-alt))] text-[color-mix(in_srgb,var(--home-positive)_70%,var(--home-ink))]"
+                : "bg-[color-mix(in_srgb,var(--home-negative)_11%,var(--home-paper-alt))] text-[color-mix(in_srgb,var(--home-negative)_70%,var(--home-ink))]"
             }`}
           >
             {isAbove ? "Above" : "Below"}
@@ -80,7 +80,7 @@ function StandaloneMetric({
   detail?: string;
 }) {
   return (
-    <div className="rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-4 py-3">
+    <div className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-4 py-3">
       <p className="flex items-center gap-1 text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
         {label}
         <MetricTooltip term={label} />

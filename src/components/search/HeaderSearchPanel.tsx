@@ -166,7 +166,7 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
       />
       <div className="page-shell">
         <div
-          className="mt-2 overflow-hidden rounded-2xl border header-home-menu"
+          className="mt-2 overflow-hidden rounded-[var(--radius-2xl)] border header-home-menu"
           role="dialog"
           aria-label="Site search"
         >
@@ -236,7 +236,7 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
                       className="flex items-center gap-3 px-4 py-2.5 transition-colors"
                       style={
                         index === activeIndex
-                          ? { background: "color-mix(in srgb, var(--home-acid) 18%, var(--home-paper))" }
+                          ? { background: "color-mix(in srgb, var(--home-signal) 18%, var(--home-paper))" }
                           : undefined
                       }
                     >

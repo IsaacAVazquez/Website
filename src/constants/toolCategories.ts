@@ -1,14 +1,15 @@
 // Single source of truth for how portfolio projects are bucketed into
-// product categories. Both the /portfolio grid (PortfolioV3) and the homepage
-// "Live tools" directory (HomePageV3) read from here so the two surfaces never
+// product categories. Both the /portfolio grid (PortfolioInstrument) and the homepage
+// "Live tools" directory (HomeInstrument) read from here so the two surfaces never
 // drift on which tool lives in which category.
 
 export type ToolCategoryId =
   | "fintech"
-  | "pulse"
-  | "sports"
   | "ai"
   | "decision"
+  | "pulse"
+  | "science"
+  | "sports"
   | "civic"
   | "lifestyle";
 
@@ -23,12 +24,23 @@ const FINTECH = new Set([
   "interchange-iq",
   "budget-planner",
 ]);
+const AI = new Set([
+  "frontier-model-tracker",
+  "ai-dev-tool-ecosystem",
+  "github-trending-pulse",
+]);
+const DECISION = new Set([
+  "decision-lab",
+  "mba-role-tracker",
+]);
 const PULSE = new Set([
   "news-pulse-dashboard",
-  "github-trending-pulse",
   "bay-area-transit-pulse",
-  "earthquake-pulse",
   "tech-startup-tracker",
+]);
+const SCIENCE = new Set([
+  "spacex-mission-control",
+  "earthquake-pulse",
 ]);
 const SPORTS = new Set([
   "premier-league-pulse",
@@ -42,15 +54,6 @@ const SPORTS = new Set([
   "fantasy-formula-1-optimizer",
   "world-cup-pulse",
   "march-madness-2026",
-  "spacex-mission-control",
-]);
-const AI = new Set([
-  "frontier-model-tracker",
-  "ai-dev-tool-ecosystem",
-]);
-const DECISION = new Set([
-  "decision-lab",
-  "mba-role-tracker",
 ]);
 const CIVIC = new Set(["polling-aggregator"]);
 const LIFESTYLE = new Set([
@@ -62,13 +65,15 @@ const LIFESTYLE = new Set([
 ]);
 
 // Display order is intentional: the strongest product surfaces (fintech,
-// pulse, sports) lead, with the lighter lifestyle tools last.
+// AI/dev, decision) lead, the data pulses and sports follow, and the lighter
+// lifestyle tools close.
 export const TOOL_CATEGORY_DEFS: ToolCategory[] = [
   { id: "fintech", label: "Fintech", slugs: FINTECH },
-  { id: "pulse", label: "Pulse", slugs: PULSE },
-  { id: "sports", label: "Sports", slugs: SPORTS },
-  { id: "ai", label: "AI tooling", slugs: AI },
+  { id: "ai", label: "AI & dev tools", slugs: AI },
   { id: "decision", label: "Decision tools", slugs: DECISION },
+  { id: "pulse", label: "News & data", slugs: PULSE },
+  { id: "science", label: "Science & space", slugs: SCIENCE },
+  { id: "sports", label: "Sports", slugs: SPORTS },
   { id: "civic", label: "Civic / Polls", slugs: CIVIC },
   { id: "lifestyle", label: "Lifestyle", slugs: LIFESTYLE },
 ];

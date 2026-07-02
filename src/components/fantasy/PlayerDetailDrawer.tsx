@@ -31,7 +31,7 @@ interface PlayerDetailDrawerProps {
 function StatCell({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div
-      className="rounded-[1rem] border px-3 py-2.5"
+      className="rounded-[var(--radius-3xl)] border px-3 py-2.5"
       style={{
         borderColor: "var(--home-rule)",
         background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
@@ -146,7 +146,7 @@ export function PlayerDetailDrawer({ player, publishedRank, boardTierCount, onCl
             animate={{ opacity: 1, y: 0 }}
             exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 24 }}
             transition={{ duration: reduceMotion ? 0 : 0.24, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="relative flex max-h-[88vh] w-full flex-col gap-4 overflow-y-auto rounded-t-[1.6rem] border p-5 outline-none sm:max-h-none sm:h-full sm:w-[26rem] sm:rounded-l-[1.6rem] sm:rounded-tr-none"
+            className="relative flex max-h-[88vh] w-full flex-col gap-4 overflow-y-auto rounded-t-[var(--radius-3xl)] border p-5 outline-none sm:max-h-none sm:h-full sm:w-[26rem] sm:rounded-l-[var(--radius-3xl)] sm:rounded-tr-none"
             style={{
               borderColor: "var(--home-rule)",
               background: "var(--home-paper)",
@@ -197,8 +197,8 @@ export function PlayerDetailDrawer({ player, publishedRank, boardTierCount, onCl
                 style={
                   isQueued
                     ? {
-                        borderColor: "color-mix(in srgb, var(--home-acid) 60%, var(--home-rule))",
-                        background: "color-mix(in srgb, var(--home-acid) 30%, var(--home-paper))",
+                        borderColor: "color-mix(in srgb, var(--home-signal) 60%, var(--home-rule))",
+                        background: "color-mix(in srgb, var(--home-signal) 30%, var(--home-paper))",
                         color: "var(--home-ink)",
                       }
                     : { borderColor: "var(--home-rule)", background: "var(--home-paper)", color: "var(--home-ink)" }
@@ -243,7 +243,7 @@ export function PlayerDetailDrawer({ player, publishedRank, boardTierCount, onCl
             {/* ADP + value signal */}
             {Number.isFinite(player.adp) && (
               <div
-                className="flex items-center justify-between rounded-[1rem] border px-3 py-2.5"
+                className="flex items-center justify-between rounded-[var(--radius-3xl)] border px-3 py-2.5"
                 style={{
                   borderColor: "var(--home-rule)",
                   background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
@@ -261,13 +261,13 @@ export function PlayerDetailDrawer({ player, publishedRank, boardTierCount, onCl
                     style={
                       valueSignal.signal === "value"
                         ? {
-                            borderColor: "color-mix(in srgb, var(--color-success) 30%, var(--home-rule))",
-                            background: "color-mix(in srgb, var(--color-success) 12%, var(--home-paper))",
+                            borderColor: "color-mix(in srgb, var(--home-positive) 30%, var(--home-rule))",
+                            background: "color-mix(in srgb, var(--home-positive) 12%, var(--home-paper))",
                             color: "var(--home-ink)",
                           }
                         : {
-                            borderColor: "color-mix(in srgb, var(--color-warning) 32%, var(--home-rule))",
-                            background: "color-mix(in srgb, var(--color-warning) 12%, var(--home-paper))",
+                            borderColor: "color-mix(in srgb, var(--home-warning) 32%, var(--home-rule))",
+                            background: "color-mix(in srgb, var(--home-warning) 12%, var(--home-paper))",
                             color: "var(--home-ink)",
                           }
                     }
@@ -310,7 +310,7 @@ export function PlayerDetailDrawer({ player, publishedRank, boardTierCount, onCl
                 }}
                 rows={2}
                 placeholder="Handcuff for Hall… target round 6… avoid."
-                className="w-full resize-none rounded-[1rem] border px-3 py-2 text-sm outline-none"
+                className="w-full resize-none rounded-[var(--radius-3xl)] border px-3 py-2 text-sm outline-none"
                 style={{
                   borderColor: "var(--home-rule)",
                   background: "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))",

@@ -91,7 +91,7 @@ export function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailMo
               {/* Header */}
               <div className="sticky top-0 bg-white/95 dark:bg-[var(--home-dark-panel)]/95 backdrop-blur-sm border-b-2 border-[var(--home-rule)] p-6 flex items-center justify-between">
                 <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-lg bg-gradient-to-br from-[var(--home-haze)] to-[var(--home-haze)]">
+                  <div className="p-3 rounded-lg bg-gradient-to-br from-[var(--home-signal)] to-[var(--home-signal)]">
                     <IconComponent className="w-6 h-6 text-white" />
                   </div>
                   <div>
@@ -135,7 +135,7 @@ export function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailMo
 
                 {/* Tech Stack */}
                 <div>
-                  <h3 className="text-lg font-semibold text-[var(--home-haze)] mb-3">Technology Stack</h3>
+                  <h3 className="text-lg font-semibold text-[var(--home-signal)] mb-3">Technology Stack</h3>
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech) => (
                       <Badge key={tech} variant="default">
@@ -148,7 +148,7 @@ export function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailMo
                 {/* Metrics - Enhanced with MetricCallout */}
                 {project.detailedMetrics && (
                   <div>
-                    <h3 className="text-lg font-semibold text-[var(--home-haze)] mb-4">Key Metrics & Impact</h3>
+                    <h3 className="text-lg font-semibold text-[var(--home-signal)] mb-4">Key Metrics & Impact</h3>
                     <MetricGrid columns={2}>
                       {project.detailedMetrics.map((metric, index) => (
                         <MetricCallout
@@ -168,11 +168,11 @@ export function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailMo
                 {/* Challenges */}
                 {project.challenges && (
                   <div>
-                    <h3 className="text-lg font-semibold text-[var(--home-haze)] mb-4">Technical Challenges</h3>
+                    <h3 className="text-lg font-semibold text-[var(--home-signal)] mb-4">Technical Challenges</h3>
                     <ul className="space-y-2">
                       {project.challenges.map((challenge, index) => (
                         <li key={index} className="flex items-start gap-3">
-                          <div className="w-2 h-2 rounded-full bg-[var(--color-warning)] mt-2 flex-shrink-0" />
+                          <div className="w-2 h-2 rounded-full bg-[var(--home-warning)] mt-2 flex-shrink-0" />
                           <span className="text-[var(--home-ink-muted)]">{challenge}</span>
                         </li>
                       ))}
@@ -183,11 +183,11 @@ export function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailMo
                 {/* Impact */}
                 {project.impact && (
                   <div>
-                    <h3 className="text-lg font-semibold text-[var(--home-haze)] mb-3 flex items-center gap-2">
-                      <IconTargetArrow className="w-5 h-5 text-[var(--color-success)]" />
+                    <h3 className="text-lg font-semibold text-[var(--home-signal)] mb-3 flex items-center gap-2">
+                      <IconTargetArrow className="w-5 h-5 text-[var(--home-positive)]" />
                       Business Impact
                     </h3>
-                    <div className="p-4 bg-[var(--color-success)]/10 border-2 border-[var(--color-success)]/20 rounded-lg">
+                    <div className="p-4 bg-[var(--home-positive)]/10 border-2 border-[var(--home-positive)]/20 rounded-lg">
                       <p className="text-[var(--home-ink-muted)]">{project.impact}</p>
                     </div>
                   </div>
@@ -197,7 +197,7 @@ export function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailMo
                 {project.problem && (
                   <div className="space-y-6">
                     <div className="border-t-2 border-[var(--home-rule)] pt-6">
-                      <h3 className="text-xl font-bold text-[var(--home-haze)] mb-6">Full Case Study</h3>
+                      <h3 className="text-xl font-bold text-[var(--home-signal)] mb-6">Full Case Study</h3>
 
                       {/* Problem Section */}
                       <div className="mb-8">
@@ -206,7 +206,7 @@ export function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailMo
                           The Problem
                         </h4>
                         <div className="space-y-4">
-                          <div className="p-4 bg-[var(--home-paper-alt)] rounded-lg border-l-4 border-[var(--home-haze)]">
+                          <div className="p-4 bg-[var(--home-paper-alt)] rounded-lg border-l-4 border-[var(--home-signal)]">
                             <p className="text-[var(--home-ink-muted)] leading-relaxed">{project.problem.context}</p>
                           </div>
                           <div>
@@ -214,13 +214,13 @@ export function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailMo
                             <ul className="space-y-2">
                               {project.problem.painPoints.map((point, index) => (
                                 <li key={index} className="flex items-start gap-3">
-                                  <div className="w-2 h-2 rounded-full bg-[var(--home-haze)] mt-2 flex-shrink-0" />
+                                  <div className="w-2 h-2 rounded-full bg-[var(--home-signal)] mt-2 flex-shrink-0" />
                                   <span className="text-[var(--home-ink-muted)]">{point}</span>
                                 </li>
                               ))}
                             </ul>
                           </div>
-                          <div className="p-4 bg-[var(--color-warning)]/10 rounded-lg border-l-4 border-[var(--color-warning)]">
+                          <div className="p-4 bg-[var(--home-warning)]/10 rounded-lg border-l-4 border-[var(--home-warning)]">
                             <p className="text-sm font-semibold text-[var(--home-ink-muted)] mb-1">Stakes:</p>
                             <p className="text-[var(--home-ink-muted)] italic">{project.problem.stakes}</p>
                           </div>
@@ -235,7 +235,7 @@ export function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailMo
                             The Process
                           </h4>
                           <div className="space-y-4">
-                            <div className="p-4 bg-[var(--home-paper-alt)] rounded-lg border-l-4 border-[var(--color-warning)]">
+                            <div className="p-4 bg-[var(--home-paper-alt)] rounded-lg border-l-4 border-[var(--home-warning)]">
                               <p className="text-[var(--home-ink-muted)] leading-relaxed">{project.process.approach}</p>
                             </div>
                             <div>
@@ -243,7 +243,7 @@ export function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailMo
                               <ul className="space-y-2">
                                 {project.process.methodology.map((method, index) => (
                                   <li key={index} className="flex items-start gap-3">
-                                    <div className="w-6 h-6 rounded-full bg-[var(--color-warning)] text-white flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">
+                                    <div className="w-6 h-6 rounded-full bg-[var(--home-warning)] text-white flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">
                                       {index + 1}
                                     </div>
                                     <span className="text-[var(--home-ink-muted)]">{method}</span>
@@ -256,14 +256,14 @@ export function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailMo
                               <ul className="space-y-2">
                                 {project.process.decisions.map((decision, index) => (
                                   <li key={index} className="flex items-start gap-3">
-                                    <div className="w-2 h-2 rounded-full bg-[var(--home-haze)] mt-2 flex-shrink-0" />
+                                    <div className="w-2 h-2 rounded-full bg-[var(--home-signal)] mt-2 flex-shrink-0" />
                                     <span className="text-[var(--home-ink-muted)]">{decision}</span>
                                   </li>
                                 ))}
                               </ul>
                             </div>
                             {project.process.collaboration && (
-                              <div className="p-4 bg-[var(--color-success)]/10 rounded-lg border-l-4 border-[var(--color-success)]">
+                              <div className="p-4 bg-[var(--home-positive)]/10 rounded-lg border-l-4 border-[var(--home-positive)]">
                                 <p className="text-sm font-semibold text-[var(--home-ink-muted)] mb-1">Collaboration:</p>
                                 <p className="text-[var(--home-ink-muted)]">{project.process.collaboration}</p>
                               </div>
@@ -285,7 +285,7 @@ export function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailMo
                               <ul className="space-y-2">
                                 {project.result.outcomes.map((outcome, index) => (
                                   <li key={index} className="flex items-start gap-3">
-                                    <div className="w-6 h-6 rounded-full bg-[var(--color-success)] text-white flex items-center justify-center text-lg flex-shrink-0">
+                                    <div className="w-6 h-6 rounded-full bg-[var(--home-positive)] text-white flex items-center justify-center text-lg flex-shrink-0">
                                       ✓
                                     </div>
                                     <span className="text-[var(--home-ink-muted)] font-medium">{outcome}</span>
@@ -294,10 +294,10 @@ export function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailMo
                               </ul>
                             </div>
                             {project.result.testimonial && (
-                              <div className="p-6 bg-[var(--home-haze)]/5 rounded-lg border-2 border-[var(--home-rule)]">
+                              <div className="p-6 bg-[var(--home-signal)]/5 rounded-lg border-2 border-[var(--home-rule)]">
                                 <p className="text-lg text-[var(--home-ink-muted)] italic mb-4">"{project.result.testimonial.quote}"</p>
                                 <div className="flex items-center gap-3">
-                                  <div className="w-1 h-12 bg-gradient-to-b from-[var(--home-haze)] to-[var(--color-warning)]" />
+                                  <div className="w-1 h-12 bg-gradient-to-b from-[var(--home-signal)] to-[var(--home-warning)]" />
                                   <div>
                                     <p className="font-semibold text-[var(--home-ink)]">{project.result.testimonial.author}</p>
                                     <p className="text-sm text-[var(--home-ink-muted)]">{project.result.testimonial.role}</p>
@@ -311,7 +311,7 @@ export function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailMo
                                 <ul className="space-y-2">
                                   {project.result.lessonsLearned.map((lesson, index) => (
                                     <li key={index} className="flex items-start gap-3">
-                                      <div className="w-2 h-2 rounded-full bg-[var(--color-warning)] mt-2 flex-shrink-0" />
+                                      <div className="w-2 h-2 rounded-full bg-[var(--home-warning)] mt-2 flex-shrink-0" />
                                       <span className="text-[var(--home-ink-muted)]">{lesson}</span>
                                     </li>
                                   ))}

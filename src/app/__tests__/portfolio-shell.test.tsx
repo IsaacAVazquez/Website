@@ -25,20 +25,38 @@ jest.mock("@/lib/blog", () => ({
   getHomepageProofOfWorkBlogPostPreviews: () => [{ slug: "post-a" }],
 }));
 
-jest.mock("@/components/home/HomePageV3", () => ({
-  HomePageV3: () => (
+// Keep Jest away from the committed earthquake snapshot (it is large) — the
+// shell test only cares about page semantics, not the live pulse data.
+jest.mock("@/lib/earthquakeSnapshot", () => ({
+  getEarthquakeSummary: async () => ({
+    generatedAt: "2026-07-01T00:00:00.000Z",
+    feedUpdated: null,
+    heroStats: { total24h: 0, total7d: 0 },
+    recent: [],
+    significant: [],
+    magnitudeBuckets: [],
+    regions: [],
+    quakeDetails: {},
+  }),
+}));
+
+jest.mock("@/components/home/HomeInstrument", () => ({
+  HomeInstrument: () => (
     <div data-testid="home-page-content">
       <section data-testid="hero">
-        <h1>Editorial Home</h1>
+        <h1>I build tools that make hard problems easier to act on.</h1>
       </section>
       <section>
         <h2>Selected work</h2>
       </section>
       <section>
-        <h2>Where I do my best work</h2>
+        <h2>About</h2>
       </section>
       <section>
-        <h2>Latest writing</h2>
+        <h2>Live tools</h2>
+      </section>
+      <section>
+        <h2>Recent writing</h2>
       </section>
       <section>
         <h2>Contact</h2>
@@ -47,8 +65,8 @@ jest.mock("@/components/home/HomePageV3", () => ({
   ),
 }));
 
-jest.mock("@/components/portfolio/PortfolioV3", () => ({
-  PortfolioV3: () => (
+jest.mock("@/components/portfolio/PortfolioInstrument", () => ({
+  PortfolioInstrument: () => (
     <div data-testid="portfolio-page-content">
       <h1>All projects across product, analytics, and tooling.</h1>
     </div>
@@ -56,13 +74,13 @@ jest.mock("@/components/portfolio/PortfolioV3", () => ({
 }));
 
 describe("Portfolio shell page semantics", () => {
-  it("keeps the homepage page component free of nested main landmarks", () => {
-    const { container } = render(<Home />);
+  it("keeps the homepage page component free of nested main landmarks", async () => {
+    const { container } = render(await Home());
 
     expect(container.querySelectorAll("main")).toHaveLength(0);
     expect(screen.getByTestId("hero")).toBeVisible();
     expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
-    expect(screen.getAllByRole("heading", { level: 2 })).toHaveLength(4);
+    expect(screen.getAllByRole("heading", { level: 2 })).toHaveLength(5);
   });
 
   it("keeps the portfolio index page free of nested main landmarks", () => {

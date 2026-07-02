@@ -1,30 +1,19 @@
-/* Shared closing contact CTA — the dark inverse panel with the acid-green
-   diagonal, lifted from the home page's updated CTA so every full-footer page
-   shares the same call to action. Uses the global --home-* editorial tokens
-   (not the home page's module-scoped --h-* namespace) so it renders correctly
-   wherever it is mounted, including inside the site footer. */
+/* Shared closing contact CTA — Working Instrument. A quiet hairline-ruled
+   section on paper: mono kicker with a signal dash, large ink heading with a
+   single serif-italic gesture, and the standard instrument button pair. Uses
+   the global --home-* tokens (not any module-scoped namespace) so it renders
+   correctly wherever it is mounted, including inside the site footer. */
 
 .cta {
-  background: var(--home-ink);
-  color: var(--home-paper);
-  padding: clamp(2.5rem, 5vw, 4.5rem) 0;
+  background: var(--home-paper);
+  color: var(--home-ink);
+  border-top: 1px solid var(--home-rule);
+  padding: clamp(2.75rem, 5vw, 4.5rem) 0;
   position: relative;
-  overflow: hidden;
-}
-.cta::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 42%;
-  background: var(--home-acid);
-  clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%);
-  opacity: 0.92;
 }
 
 .shell {
-  max-width: 92rem;
+  max-width: 88rem;
   margin: 0 auto;
   padding: 0 clamp(1.25rem, 2.5vw, 2.5rem);
   position: relative;
@@ -35,7 +24,6 @@
   grid-template-columns: 1.5fr 1fr;
   gap: clamp(2rem, 4vw, 4rem);
   align-items: center;
-  position: relative;
 }
 @media (max-width: 880px) {
   .grid {
@@ -45,11 +33,11 @@
 
 .kicker {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 500;
+  font-size: 0.7rem;
+  font-weight: 400;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--home-acid);
+  color: var(--home-ink-muted);
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -58,34 +46,33 @@
 .kicker::before {
   content: "";
   width: 18px;
-  height: 1px;
-  background: var(--home-acid);
+  height: 2px;
+  background: var(--home-signal);
 }
 
 .heading {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3.4rem);
-  font-weight: 500;
-  line-height: 1;
-  letter-spacing: -0.04em;
-  color: var(--home-paper);
+  font-family: var(--font-home-sans);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 640;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  color: var(--home-ink);
   margin: 0;
   max-width: 22ch;
   text-wrap: balance;
-  font-variation-settings: "opsz" 72;
 }
 .heading em {
-  font-family: var(--font-instrument-serif);
+  font-family: var(--font-home-serif);
   font-style: italic;
   font-weight: 400;
-  color: var(--home-acid);
+  letter-spacing: -0.01em;
 }
 
 .copy {
   margin: 1.25rem 0 0;
   font-size: 1rem;
   line-height: 1.6;
-  color: var(--home-stone);
+  color: var(--home-ink-muted);
   max-width: 44ch;
 }
 
@@ -93,8 +80,6 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  position: relative;
-  z-index: 1;
 }
 
 .btn {
@@ -102,41 +87,41 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 14px 22px;
-  min-height: 44px;
+  padding: 12px 22px;
+  min-height: 46px;
+  border-radius: 2px;
   border: 1px solid var(--home-ink);
-  font-family: var(--font-display);
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: -0.005em;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
   cursor: pointer;
   text-decoration: none;
-  transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
+  transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
 }
 
-/* The acid diagonal lands behind the actions column, so the primary button
-   becomes solid ink (dark on green, high contrast) and the ghost variants use
-   ink type + ink border to stay legible on the green surface. */
 .btnAcid {
   background: var(--home-ink);
   color: var(--home-paper);
   border-color: var(--home-ink);
 }
-.btnAcid:hover {
-  background: var(--home-paper);
-  color: var(--home-ink);
-  border-color: var(--home-paper);
+.btnAcid:hover,
+.btnAcid:focus-visible {
+  background: var(--home-signal);
+  color: var(--home-paper);
+  border-color: var(--home-signal);
 }
 
 .btnGhost {
   background: transparent;
   color: var(--home-ink);
-  border-color: var(--home-ink);
+  border-color: var(--home-rule);
 }
-.btnGhost:hover {
-  background: var(--home-ink);
-  color: var(--home-paper);
-  border-color: var(--home-ink);
+.btnGhost:hover,
+.btnGhost:focus-visible {
+  color: var(--home-signal);
+  border-color: var(--home-signal);
 }
 
 @media (prefers-reduced-motion: reduce) {

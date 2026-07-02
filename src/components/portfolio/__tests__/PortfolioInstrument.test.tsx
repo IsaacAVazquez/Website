@@ -1,5 +1,5 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
-import { PortfolioV3 } from "../PortfolioV3";
+import { PortfolioInstrument } from "../PortfolioInstrument";
 import type { CaseStudyData } from "@/constants/caseStudies";
 
 // Minimal CaseStudyData factory — only the fields the portfolio card and the
@@ -51,9 +51,9 @@ function searchBox() {
   return within(screen.getByLabelText("Search projects")).getByRole("searchbox");
 }
 
-describe("PortfolioV3 search", () => {
+describe("PortfolioInstrument search", () => {
   it("renders a search input alongside every project", () => {
-    render(<PortfolioV3 projects={projects} />);
+    render(<PortfolioInstrument projects={projects} />);
 
     expect(searchBox()).toBeVisible();
     expect(screen.getByText("Alpha Tool")).toBeInTheDocument();
@@ -62,7 +62,7 @@ describe("PortfolioV3 search", () => {
   });
 
   it("filters projects by title, description, and tools (case-insensitive)", () => {
-    render(<PortfolioV3 projects={projects} />);
+    render(<PortfolioInstrument projects={projects} />);
 
     // Matches Beta on a tool token only present in its tools list.
     fireEvent.change(searchBox(), { target: { value: "POSTGRES" } });
@@ -73,7 +73,7 @@ describe("PortfolioV3 search", () => {
   });
 
   it("shows an empty state with a clear control when nothing matches", () => {
-    render(<PortfolioV3 projects={projects} />);
+    render(<PortfolioInstrument projects={projects} />);
 
     fireEvent.change(searchBox(), { target: { value: "no-such-project" } });
 

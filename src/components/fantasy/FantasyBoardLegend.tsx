@@ -11,12 +11,12 @@ import { FANTASY_BOARD_LEGEND, FANTASY_CHIP_CLASS, type FantasyLegendEntry } fro
  */
 const TONE_STYLE: Record<NonNullable<FantasyLegendEntry["tone"]>, CSSProperties> = {
   value: {
-    borderColor: "color-mix(in srgb, var(--color-success) 28%, var(--home-rule))",
-    background: "color-mix(in srgb, var(--color-success) 10%, var(--home-paper))",
+    borderColor: "color-mix(in srgb, var(--home-positive) 28%, var(--home-rule))",
+    background: "color-mix(in srgb, var(--home-positive) 10%, var(--home-paper))",
   },
   reach: {
-    borderColor: "color-mix(in srgb, var(--color-warning) 30%, var(--home-rule))",
-    background: "color-mix(in srgb, var(--color-warning) 12%, var(--home-paper))",
+    borderColor: "color-mix(in srgb, var(--home-warning) 30%, var(--home-rule))",
+    background: "color-mix(in srgb, var(--home-warning) 12%, var(--home-paper))",
   },
 };
 

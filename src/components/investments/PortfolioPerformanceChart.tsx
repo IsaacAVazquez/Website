@@ -18,6 +18,7 @@ import {
   pointer,
 } from "d3";
 import React, { useRef, useEffect, useState, useCallback } from "react";
+import { useTheme } from "next-themes";
 import { WarmCard } from "@/components/ui/WarmCard";
 
 export interface PortfolioSnapshot {
@@ -49,6 +50,7 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
   const tooltipRef = useRef<HTMLDivElement | null>(null);
   const [selectedRange, setSelectedRange] = useState<string>("All");
   const [containerWidth, setContainerWidth] = useState(0);
+  const { resolvedTheme } = useTheme();
 
   // Observe container width for responsiveness
   useEffect(() => {
@@ -115,8 +117,8 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
 
     // Read CSS variable colors from the DOM
     const computedStyle = getComputedStyle(document.documentElement);
-    const homeHaze =
-      computedStyle.getPropertyValue("--home-haze").trim() || "#5672F8";
+    const homeSignal =
+      computedStyle.getPropertyValue("--home-signal").trim() || "#C93F19";
     const homeInkMuted =
       computedStyle.getPropertyValue("--home-ink-muted").trim() || "#615B52";
     const homeRule =
@@ -162,7 +164,7 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
       .append("path")
       .datum(data)
       .attr("d", area)
-      .attr("fill", homeHaze)
+      .attr("fill", homeSignal)
       .attr("fill-opacity", 0.12);
 
     // Value line (solid)
@@ -176,7 +178,7 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
       .datum(data)
       .attr("d", valueLine)
       .attr("fill", "none")
-      .attr("stroke", homeHaze)
+      .attr("stroke", homeSignal)
       .attr("stroke-width", 2);
 
     // Cost basis line (dashed)
@@ -219,8 +221,8 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
     const hoverDot = root
       .append("circle")
       .attr("r", 4)
-      .attr("fill", homeHaze)
-      .attr("stroke", "white")
+      .attr("fill", homeSignal)
+      .attr("stroke", "var(--home-paper)")
       .attr("stroke-width", 2)
       .style("opacity", 0)
       .style("pointer-events", "none");
@@ -247,7 +249,7 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
         const gainLoss = d.value - d.cost;
         const gainLossPct = d.cost > 0 ? (gainLoss / d.cost) * 100 : 0;
         const sign = gainLoss >= 0 ? "+" : "";
-        const gainColor = gainLoss >= 0 ? "var(--color-success)" : "var(--color-error)";
+        const gainColor = gainLoss >= 0 ? "var(--home-positive)" : "var(--home-negative)";
 
         tooltip.style.opacity = "1";
         tooltip.innerHTML = `
@@ -277,7 +279,7 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
         hoverDot.style("opacity", 0);
         tooltip.style.opacity = "0";
       });
-  }, [filteredSnapshots, containerWidth]);
+  }, [filteredSnapshots, containerWidth, resolvedTheme]);
 
   useEffect(() => {
     drawChart();
@@ -285,7 +287,7 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
 
   if (snapshots.length < 2) {
     return (
-      <WarmCard padding="sm" className="rounded-[28px] shadow-[var(--shadow-sm)]">
+      <WarmCard padding="sm" className="rounded-[var(--radius-3xl)] shadow-[var(--shadow-sm)]">
         <h3
           className="text-base font-semibold mb-0"
           style={{ color: "var(--home-ink)" }}
@@ -303,7 +305,7 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
   }
 
   return (
-    <WarmCard padding="sm" className="rounded-[28px] shadow-[var(--shadow-sm)]">
+    <WarmCard padding="sm" className="rounded-[var(--radius-3xl)] shadow-[var(--shadow-sm)]">
       <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
         <div>
           <h3
@@ -326,11 +328,11 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
               style={{
                 backgroundColor:
                   selectedRange === r.label
-                    ? "var(--home-haze)"
+                    ? "var(--home-signal)"
                     : "var(--home-paper-alt)",
                 color:
                   selectedRange === r.label
-                    ? "#ffffff"
+                    ? "var(--home-paper)"
                     : "var(--home-ink-soft)",
               }}
               aria-label={`Show ${r.label} range`}
@@ -372,7 +374,7 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
               y1="1"
               x2="20"
               y2="1"
-              stroke="var(--home-haze)"
+              stroke="var(--home-signal)"
               strokeWidth="2"
             />
           </svg>

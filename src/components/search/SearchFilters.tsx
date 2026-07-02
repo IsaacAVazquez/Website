@@ -57,7 +57,7 @@ export function SearchFilters({
 
   return (
     <div
-      className="space-y-4 rounded-xl p-4"
+      className="space-y-4 rounded-[var(--radius-xl)] p-4"
       style={{
         background: "color-mix(in srgb, var(--home-paper-alt) 78%, var(--home-elev-mix))",
         border: "1px solid var(--home-rule)",
@@ -126,7 +126,7 @@ export function SearchFilters({
             type="button"
             onClick={onClearFilters}
             className="text-sm underline underline-offset-2"
-            style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-haze)" }}
+            style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-signal)" }}
           >
             Clear all filters
           </button>

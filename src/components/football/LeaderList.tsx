@@ -24,10 +24,10 @@ export function LeaderList({
         return (
           <li
             key={`${statLabel}-${leader.rank}-${leader.name}`}
-            className="flex items-center justify-between gap-4 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-4 py-3"
+            className="flex items-center justify-between gap-4 rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-4 py-3"
           >
             <div className="flex min-w-0 items-center gap-3">
-              <div className="inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[var(--home-paper)] text-sm font-bold text-[var(--home-haze)] shadow-[var(--shadow-sm)]">
+              <div className="inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[var(--home-paper)] text-sm font-bold text-[var(--home-signal)] shadow-[var(--shadow-sm)]">
                 {leader.rank}
               </div>
               <div className="min-w-0">

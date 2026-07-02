@@ -113,8 +113,8 @@ export function getActiveViewStyle(isActive: boolean): CSSProperties {
 export function getRowStyle(isSelected: boolean): CSSProperties {
   if (isSelected) {
     return {
-      borderColor: "color-mix(in srgb, var(--home-haze) 35%, var(--home-rule))",
-      background: "color-mix(in srgb, var(--home-haze) 8%, var(--home-paper-alt))",
+      borderColor: "color-mix(in srgb, var(--home-signal) 35%, var(--home-rule))",
+      background: "color-mix(in srgb, var(--home-signal) 8%, var(--home-paper-alt))",
     };
   }
   return {

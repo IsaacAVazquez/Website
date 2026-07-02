@@ -144,8 +144,8 @@ export function CompareModal({ players, publishedRank, onClose, onRemove }: Comp
                 style={{
                   background:
                     signal.signal === "value"
-                      ? "color-mix(in srgb, var(--color-success) 16%, var(--home-paper))"
-                      : "color-mix(in srgb, var(--color-warning) 16%, var(--home-paper))",
+                      ? "color-mix(in srgb, var(--home-positive) 16%, var(--home-paper))"
+                      : "color-mix(in srgb, var(--home-warning) 16%, var(--home-paper))",
                 }}
               >
                 {signal.signal}
@@ -192,7 +192,7 @@ export function CompareModal({ players, publishedRank, onClose, onRemove }: Comp
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 18, scale: 0.98 }}
           transition={{ duration: reduceMotion ? 0 : 0.22, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="relative max-h-[88vh] w-full max-w-2xl overflow-auto rounded-[1.6rem] border p-5 outline-none"
+          className="relative max-h-[88vh] w-full max-w-2xl overflow-auto rounded-[var(--radius-3xl)] border p-5 outline-none"
           style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)", boxShadow: "var(--shadow-xl)" }}
         >
           <div className="mb-4 flex items-center justify-between">
@@ -221,7 +221,7 @@ export function CompareModal({ players, publishedRank, onClose, onRemove }: Comp
               {players.map((player) => (
                 <div
                   key={player.id}
-                  className="flex flex-col items-start gap-1 rounded-[1rem] border p-2.5"
+                  className="flex flex-col items-start gap-1 rounded-[var(--radius-3xl)] border p-2.5"
                   style={{ borderColor: "var(--home-rule)", background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))" }}
                 >
                   <div className="flex w-full items-start justify-between gap-1">
@@ -265,7 +265,7 @@ export function CompareModal({ players, publishedRank, onClose, onRemove }: Comp
                           color: winner === index ? "var(--home-ink)" : "var(--home-ink)",
                           background:
                             winner === index
-                              ? "color-mix(in srgb, var(--home-acid) 18%, transparent)"
+                              ? "color-mix(in srgb, var(--home-signal) 18%, transparent)"
                               : "transparent",
                         }}
                       >

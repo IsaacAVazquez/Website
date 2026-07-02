@@ -113,7 +113,7 @@ export function DraftTierColumns({
   if (columns.length === 0) {
     return (
       <div
-        className="mt-5 rounded-[1.5rem] border px-5 py-12 text-center"
+        className="mt-5 rounded-[var(--radius-3xl)] border px-5 py-12 text-center"
         style={{
           borderColor: "var(--home-rule)",
           background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
@@ -145,10 +145,10 @@ export function DraftTierColumns({
         return (
           <section
             key={column.route}
-            className="flex min-w-0 flex-col rounded-[1.5rem] border p-4"
+            className="flex min-w-0 flex-col rounded-[var(--radius-3xl)] border p-4"
             style={{
               borderColor: isNeed
-                ? "color-mix(in srgb, var(--color-success) 30%, var(--home-rule))"
+                ? "color-mix(in srgb, var(--home-positive) 30%, var(--home-rule))"
                 : "var(--home-rule)",
               background: "color-mix(in srgb, var(--home-paper-alt) 42%, var(--home-elev-mix))",
             }}
@@ -170,8 +170,8 @@ export function DraftTierColumns({
                     className={FANTASY_CHIP_CLASS}
                     title="Your roster still has an open starting spot at this position"
                     style={{
-                      borderColor: "color-mix(in srgb, var(--color-success) 28%, var(--home-rule))",
-                      background: "color-mix(in srgb, var(--color-success) 10%, var(--home-paper))",
+                      borderColor: "color-mix(in srgb, var(--home-positive) 28%, var(--home-rule))",
+                      background: "color-mix(in srgb, var(--home-positive) 10%, var(--home-paper))",
                     }}
                   >
                     Need
@@ -192,8 +192,8 @@ export function DraftTierColumns({
                 className={`mt-3 self-start ${FANTASY_CHIP_CLASS}`}
                 title="The current tier is nearly empty. Expect a value drop once it clears"
                 style={{
-                  borderColor: "color-mix(in srgb, var(--color-warning) 32%, var(--home-rule))",
-                  background: "color-mix(in srgb, var(--color-warning) 12%, var(--home-paper))",
+                  borderColor: "color-mix(in srgb, var(--home-warning) 32%, var(--home-rule))",
+                  background: "color-mix(in srgb, var(--home-warning) 12%, var(--home-paper))",
                   color: "var(--home-ink)",
                 }}
               >
@@ -222,7 +222,7 @@ export function DraftTierColumns({
                         aria-label={`Draft ${player.name}, ${column.label}${
                           player.positionRank ? ` ${player.positionRank}` : ""
                         }`}
-                        className="grid min-h-[44px] w-full grid-cols-[minmax(0,1fr)_auto] items-center gap-2 rounded-[0.9rem] border px-3 py-2 text-left text-sm transition-[background-color,border-color,color] duration-200 hover:border-[var(--home-ink)] disabled:cursor-not-allowed disabled:opacity-60"
+                        className="grid min-h-[44px] w-full grid-cols-[minmax(0,1fr)_auto] items-center gap-2 rounded-[var(--radius-2xl)] border px-3 py-2 text-left text-sm transition-[background-color,border-color,color] duration-200 hover:border-[var(--home-ink)] disabled:cursor-not-allowed disabled:opacity-60"
                         style={{
                           borderColor: "var(--home-rule)",
                           background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",

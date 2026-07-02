@@ -128,7 +128,7 @@ function StarRating({
   const sizeClass = size === "md" ? "h-5 w-5" : "h-4 w-4";
   return (
     <div
-      className="inline-flex items-center gap-0.5 text-[var(--home-haze)]"
+      className="inline-flex items-center gap-0.5 text-[var(--home-signal)]"
       aria-label={`${value} out of ${totalStars} stars`}
       role="img"
     >
@@ -161,9 +161,9 @@ const SORT_OPTIONS: Array<{ value: WineSortKey; label: string }> = [
 ];
 
 const FORM_INPUT_CLASS =
-  "mt-2 min-h-touch w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-sm font-medium text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2";
+  "mt-2 min-h-touch w-full rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-sm font-medium text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2";
 const FORM_LABEL_CLASS =
-  "text-[10.5px] font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]";
+  "text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]";
 
 export function WineCellarClient() {
   const {
@@ -427,7 +427,7 @@ export function WineCellarClient() {
                               sort: event.target.value as WineSortKey,
                             }))
                           }
-                          className="min-h-touch flex-1 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-sm font-medium text-[var(--home-ink)]"
+                          className="min-h-touch flex-1 rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-sm font-medium text-[var(--home-ink)]"
                         >
                           {SORT_OPTIONS.map((option) => (
                             <option key={option.value} value={option.value}>
@@ -445,7 +445,7 @@ export function WineCellarClient() {
                                 current.sortDirection === "asc" ? "desc" : "asc",
                             }))
                           }
-                          className="inline-flex min-h-touch min-w-touch items-center justify-center rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-sm font-semibold text-[var(--home-ink)] hover:border-[var(--home-haze)] hover:text-[var(--home-haze)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                          className="inline-flex min-h-touch min-w-touch items-center justify-center rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-sm font-semibold text-[var(--home-ink)] hover:border-[var(--home-signal)] hover:text-[var(--home-signal)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
                         >
                           {filters.sortDirection === "asc" ? "↑" : "↓"}
                         </button>
@@ -456,7 +456,7 @@ export function WineCellarClient() {
                     <button
                       type="button"
                       onClick={resetFilters}
-                      className="mt-3 inline-flex w-fit items-center gap-2 rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-1.5 text-xs font-semibold text-[var(--home-ink-muted)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)]"
+                      className="mt-3 inline-flex w-fit items-center gap-2 rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-1.5 text-xs font-semibold text-[var(--home-ink-muted)] transition hover:border-[var(--home-signal)] hover:text-[var(--home-signal)]"
                     >
                       <Filter className="h-3 w-3" />
                       Reset filters
@@ -484,7 +484,7 @@ export function WineCellarClient() {
                   {!hasEntries ? (
                     <div className="tool-empty">
                       <Wine
-                        className="mx-auto h-7 w-7 text-[var(--home-haze)]"
+                        className="mx-auto h-7 w-7 text-[var(--home-signal)]"
                         aria-hidden="true"
                       />
                       <p className="mt-3 text-sm font-semibold text-[var(--home-ink)]">
@@ -504,9 +504,9 @@ export function WineCellarClient() {
                       {visibleEntries.map((entry) => (
                         <li
                           key={entry.id}
-                          className={`rounded-[18px] border bg-[var(--home-paper)] px-4 py-4 transition ${
+                          className={`rounded-[var(--radius-3xl)] border bg-[var(--home-paper)] px-4 py-4 transition ${
                             editingId === entry.id
-                              ? "border-[var(--home-haze)] shadow-[var(--shadow-sm)]"
+                              ? "border-[var(--home-signal)] shadow-[var(--shadow-sm)]"
                               : "border-[var(--home-rule)]"
                           }`}
                         >
@@ -572,7 +572,7 @@ export function WineCellarClient() {
                                   type="button"
                                   aria-label={`Edit ${entry.name}`}
                                   onClick={() => handleEdit(entry.id)}
-                                  className="inline-flex min-h-touch items-center justify-center gap-1.5 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-xs font-semibold text-[var(--home-ink-muted)] hover:border-[var(--home-haze)] hover:text-[var(--home-haze)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                                  className="inline-flex min-h-touch items-center justify-center gap-1.5 rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-xs font-semibold text-[var(--home-ink-muted)] hover:border-[var(--home-signal)] hover:text-[var(--home-signal)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
                                 >
                                   <Pencil className="h-3.5 w-3.5" />
                                   Edit
@@ -581,7 +581,7 @@ export function WineCellarClient() {
                                   type="button"
                                   aria-label={`Delete ${entry.name}`}
                                   onClick={() => handleDelete(entry.id)}
-                                  className="inline-flex min-h-touch items-center justify-center gap-1.5 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-xs font-semibold text-[var(--home-ink-muted)] hover:border-[var(--home-ink)] hover:text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                                  className="inline-flex min-h-touch items-center justify-center gap-1.5 rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-xs font-semibold text-[var(--home-ink-muted)] hover:border-[var(--home-ink)] hover:text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
                                 >
                                   <Trash2 className="h-3.5 w-3.5" />
                                   Delete
@@ -598,7 +598,7 @@ export function WineCellarClient() {
 
             <aside
               aria-label="Wine cellar side panel"
-              className="flex flex-col gap-4 rounded-[1.5rem] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_74%,var(--home-elev-mix))] p-5 shadow-[var(--shadow-sm)] lg:sticky lg:top-24 lg:self-start lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto"
+              className="flex flex-col gap-4 rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_74%,var(--home-elev-mix))] p-5 shadow-[var(--shadow-sm)] lg:sticky lg:top-24 lg:self-start lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto"
             >
               <section id="add-tasting">
                 <p className="tool-rail-label">
@@ -748,7 +748,7 @@ export function WineCellarClient() {
                     </label>
                   </div>
                   <label className="block">
-                    <span className="flex items-center justify-between text-[10.5px] font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                    <span className="flex items-center justify-between text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                       <span>Rating</span>
                       <span className="flex items-center gap-2 text-[var(--home-ink)]">
                         {Number(formDraft.rating || 0).toFixed(1)}
@@ -768,7 +768,7 @@ export function WineCellarClient() {
                           rating: event.target.value,
                         }))
                       }
-                      className="mt-3 w-full accent-[var(--home-haze)]"
+                      className="mt-3 w-full accent-[var(--home-signal)]"
                     />
                   </label>
                   <label className="block">
@@ -785,14 +785,14 @@ export function WineCellarClient() {
                         }))
                       }
                       placeholder="Cherry, leather, dried herbs."
-                      className="mt-2 w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-3 text-sm leading-6 text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                      className="mt-2 w-full rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-3 text-sm leading-6 text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
                     />
                   </label>
                   <div className="flex flex-wrap items-center gap-2 pt-1">
                     <button
                       type="submit"
                       disabled={!formDraft.name.trim()}
-                      className="inline-flex min-h-touch flex-1 items-center justify-center gap-2 rounded-2xl bg-[var(--home-haze)] px-4 py-2.5 text-sm font-semibold text-[var(--home-paper)] shadow-[var(--shadow-sm)] transition hover:opacity-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
+                      className="inline-flex min-h-touch flex-1 items-center justify-center gap-2 rounded-[var(--radius-2xl)] bg-[var(--home-signal)] px-4 py-2.5 text-sm font-semibold text-[var(--home-paper)] shadow-[var(--shadow-sm)] transition hover:opacity-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
                     >
                       <Plus className="h-4 w-4" />
                       {editingId ? "Save tasting" : "Add tasting"}
@@ -801,7 +801,7 @@ export function WineCellarClient() {
                       <button
                         type="button"
                         onClick={resetForm}
-                        className="inline-flex min-h-touch items-center justify-center gap-1.5 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-xs font-semibold text-[var(--home-ink-muted)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)]"
+                        className="inline-flex min-h-touch items-center justify-center gap-1.5 rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-xs font-semibold text-[var(--home-ink-muted)] transition hover:border-[var(--home-signal)] hover:text-[var(--home-signal)]"
                       >
                         <X className="h-3.5 w-3.5" />
                         Cancel
@@ -823,18 +823,18 @@ export function WineCellarClient() {
                         <button
                           type="button"
                           onClick={() => handleEdit(entry.id)}
-                          className="grid w-full grid-cols-[1fr_auto] items-center gap-2 rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-left transition hover:border-[var(--home-haze)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                          className="grid w-full grid-cols-[1fr_auto] items-center gap-2 rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-left transition hover:border-[var(--home-signal)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
                           aria-label={`Edit ${entry.name}`}
                         >
                           <span className="min-w-0">
-                            <span className="block truncate text-[13px] font-semibold text-[var(--home-ink)]">
+                            <span className="block truncate text-xs font-semibold text-[var(--home-ink)]">
                               {entry.name}
                             </span>
                             <span className="block truncate text-2xs uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
                               {formatTastedDate(entry.tastedOn)}
                             </span>
                           </span>
-                          <span className="font-mono text-[12px] font-semibold tabular-nums text-[var(--home-ink)]">
+                          <span className="font-mono text-1xs font-semibold tabular-nums text-[var(--home-ink)]">
                             {entry.rating.toFixed(1)}
                           </span>
                         </button>
@@ -887,7 +887,7 @@ export function WineCellarClient() {
                           </div>
                           <div className="mt-2 h-2 overflow-hidden rounded-full bg-[var(--home-paper-alt)]">
                             <div
-                              className="h-full rounded-full bg-[var(--home-haze)]"
+                              className="h-full rounded-full bg-[var(--home-signal)]"
                               style={{ width: `${Math.min(100, Math.max(0, share))}%` }}
                             />
                           </div>
@@ -910,7 +910,7 @@ export function WineCellarClient() {
                       {summary.topRated.map((entry) => (
                         <li
                           key={entry.id}
-                          className="rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-3"
+                          className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-3"
                         >
                           <div className="flex items-start justify-between gap-3">
                             <div className="min-w-0">
@@ -947,7 +947,7 @@ export function WineCellarClient() {
                       {summary.recent.map((entry) => (
                         <li
                           key={entry.id}
-                          className="rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-3"
+                          className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-3"
                         >
                           <div className="flex items-start justify-between gap-3">
                             <div className="min-w-0">
@@ -971,7 +971,7 @@ export function WineCellarClient() {
                     </ul>
                   )}
                   {summary.topVarietal ? (
-                    <p className="mt-4 rounded-2xl border border-dashed border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-3 text-2xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                    <p className="mt-4 rounded-[var(--radius-2xl)] border border-dashed border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-3 text-2xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                       Most-poured varietal:{" "}
                       <span className="font-semibold text-[var(--home-ink)]">
                         {summary.topVarietal}

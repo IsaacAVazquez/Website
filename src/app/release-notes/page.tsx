@@ -261,7 +261,7 @@ export default function ReleaseNotesPage() {
               <Link
                 href="/changelog"
                 className="underline underline-offset-2"
-                style={{ color: "var(--home-haze)" }}
+                style={{ color: "var(--home-signal)" }}
               >
                 changelog
               </Link>
@@ -269,7 +269,7 @@ export default function ReleaseNotesPage() {
               <Link
                 href="/now"
                 className="underline underline-offset-2"
-                style={{ color: "var(--home-haze)" }}
+                style={{ color: "var(--home-signal)" }}
               >
                 /now page
               </Link>

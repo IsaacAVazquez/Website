@@ -9,6 +9,7 @@ import {
   formatSignedCurrency,
 } from "@/lib/investmentFormatting";
 import type { EnhancedHolding, PriceData, StockPrice } from "@/types/investment";
+import { holdingColor } from "./holdingPalette";
 
 interface Props {
   holdings: EnhancedHolding[];
@@ -17,16 +18,6 @@ interface Props {
   onResearch: (symbol: string) => void;
 }
 
-const TICKER_COLORS = [
-  "#5672F8", // haze
-  "#5C8531", // green
-  "#4D8AD0", // blue
-  "#B22B2F", // red
-  "#1F7A6E", // teal
-  "#6B5A3E", // bronze
-  "#3F4B57", // slate
-  "#4A6CF0", // azure
-];
 
 function sparkPath(data: number[], w = 86, h = 26): string {
   if (data.length < 2) return "";
@@ -117,7 +108,7 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
                 onChange={(e) => setEditShares(e.target.value)}
                 onKeyDown={handleEditKeyDown}
                 autoFocus
-                className="ml-2 w-28 rounded-full border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-3 py-1.5 text-sm text-[var(--home-ink)] focus:outline-none focus:ring-2 focus:ring-[var(--home-haze)]/40"
+                className="ml-2 w-28 rounded-full border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-3 py-1.5 text-sm text-[var(--home-ink)] focus:outline-none focus:ring-2 focus:ring-[var(--home-signal)]/40"
               />
             </label>
             <label className="text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
@@ -129,7 +120,7 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
                 value={editCost}
                 onChange={(e) => setEditCost(e.target.value)}
                 onKeyDown={handleEditKeyDown}
-                className="ml-2 w-28 rounded-full border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-3 py-1.5 text-sm text-[var(--home-ink)] focus:outline-none focus:ring-2 focus:ring-[var(--home-haze)]/40"
+                className="ml-2 w-28 rounded-full border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-3 py-1.5 text-sm text-[var(--home-ink)] focus:outline-none focus:ring-2 focus:ring-[var(--home-signal)]/40"
               />
             </label>
             <div className="invest-row-actions ml-auto">
@@ -174,7 +165,7 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
       <td className="num">{formatCurrency(holding.currentPrice)}</td>
       <td className="num">
         <span
-          className={dayPositive ? "text-[var(--color-success)]" : "text-[var(--color-error)]"}
+          className={dayPositive ? "text-[var(--home-positive)]" : "text-[var(--home-negative)]"}
           style={{ fontWeight: 600 }}
         >
           {formatPercent(holding.dayChangePercent)}
@@ -212,7 +203,7 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
       </td>
       <td className="num">
         <div
-          className={plPositive ? "text-[var(--color-success)]" : "text-[var(--color-error)]"}
+          className={plPositive ? "text-[var(--home-positive)]" : "text-[var(--home-negative)]"}
           style={{ fontWeight: 600 }}
         >
           {formatSignedCurrency(holding.gainLoss)}
@@ -316,11 +307,11 @@ export function HoldingsTable({ holdings, onUpdate, onRemove, onResearch }: Prop
             </tr>
           </thead>
           <tbody>
-            {sorted.map((h, i) => (
+            {sorted.map((h) => (
               <HoldingRow
                 key={h.symbol}
                 holding={h}
-                color={TICKER_COLORS[i % TICKER_COLORS.length]}
+                color={holdingColor(h.symbol)}
                 onUpdate={onUpdate}
                 onRemove={onRemove}
                 onResearch={onResearch}

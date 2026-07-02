@@ -203,8 +203,8 @@ export function DraftBoard({
               className={FANTASY_CHIP_CLASS}
               title="Your roster still has an open starting spot at this position"
               style={{
-                borderColor: "color-mix(in srgb, var(--color-success) 28%, var(--home-rule))",
-                background: "color-mix(in srgb, var(--color-success) 10%, var(--home-paper))",
+                borderColor: "color-mix(in srgb, var(--home-positive) 28%, var(--home-rule))",
+                background: "color-mix(in srgb, var(--home-positive) 10%, var(--home-paper))",
               }}
             >
               Need {need}
@@ -216,14 +216,14 @@ export function DraftBoard({
       {/* Watchlist still on the board */}
       {!isDraftComplete && queuedAvailable.length > 0 && (
         <div
-          className="mt-4 rounded-[1.3rem] border px-4 py-3"
+          className="mt-4 rounded-[var(--radius-3xl)] border px-4 py-3"
           style={{
-            borderColor: "color-mix(in srgb, var(--home-acid) 40%, var(--home-rule))",
-            background: "color-mix(in srgb, var(--home-acid) 12%, var(--home-paper))",
+            borderColor: "color-mix(in srgb, var(--home-signal) 40%, var(--home-rule))",
+            background: "color-mix(in srgb, var(--home-signal) 12%, var(--home-paper))",
           }}
         >
           <div className="mb-2 flex items-center gap-1.5">
-            <Star size={14} fill="currentColor" style={{ color: "var(--home-acid)" }} aria-hidden="true" />
+            <Star size={14} fill="currentColor" style={{ color: "var(--home-signal)" }} aria-hidden="true" />
             <p className="home-kicker mb-0">Your queue · still available ({queuedAvailable.length})</p>
           </div>
           <div className="flex flex-wrap gap-2">
@@ -265,7 +265,7 @@ export function DraftBoard({
                 onChange={(event) => setSearchQuery(event.target.value)}
                 autoComplete="off"
                 placeholder="Search player, team, or position"
-                className="min-h-[48px] rounded-[1.2rem] border px-4 text-sm transition-[background-color,border-color,box-shadow] duration-200"
+                className="min-h-[48px] rounded-[var(--radius-3xl)] border px-4 text-sm transition-[background-color,border-color,box-shadow] duration-200"
                 style={{
                   borderColor: "var(--home-rule)",
                   background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
@@ -290,7 +290,7 @@ export function DraftBoard({
             <div className="grid gap-3">
               {isDraftComplete ? (
                 <div
-                  className="rounded-[1.5rem] border px-5 py-12 text-center"
+                  className="rounded-[var(--radius-3xl)] border px-5 py-12 text-center"
                   style={{
                     borderColor: "var(--home-rule)",
                     background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
@@ -303,7 +303,7 @@ export function DraftBoard({
                 </div>
               ) : bestAvailable.length === 0 ? (
                 <div
-                  className="rounded-[1.5rem] border px-5 py-12 text-center"
+                  className="rounded-[var(--radius-3xl)] border px-5 py-12 text-center"
                   style={{
                     borderColor: "var(--home-rule)",
                     background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
@@ -327,18 +327,18 @@ export function DraftBoard({
                     return (
                       <div
                         key={player.id}
-                        className="relative overflow-hidden rounded-[1.25rem] border"
+                        className="relative overflow-hidden rounded-[var(--radius-3xl)] border"
                         style={{
                           borderColor: fitsCurrentNeed
-                            ? "color-mix(in srgb, var(--color-success) 28%, var(--home-rule))"
+                            ? "color-mix(in srgb, var(--home-positive) 28%, var(--home-rule))"
                             : "var(--home-rule)",
                           background: fitsCurrentNeed
-                            ? "color-mix(in srgb, var(--color-success) 7%, var(--home-paper))"
+                            ? "color-mix(in srgb, var(--home-positive) 7%, var(--home-paper))"
                             : "color-mix(in srgb, var(--home-paper-alt) 42%, var(--home-elev-mix))",
                         }}
                       >
                         {isQueued && (
-                          <span aria-hidden="true" className="absolute inset-y-0 left-0 w-1" style={{ background: "var(--home-acid)" }} />
+                          <span aria-hidden="true" className="absolute inset-y-0 left-0 w-1" style={{ background: "var(--home-signal)" }} />
                         )}
                         <div className="flex flex-col gap-3 px-4 py-3.5 md:flex-row md:items-center md:gap-4">
                           <div className="flex min-w-0 flex-1 items-center gap-3">
@@ -364,8 +364,8 @@ export function DraftBoard({
                                     className={FANTASY_CHIP_CLASS}
                                     title="Fills a starting spot your roster still needs"
                                     style={{
-                                      borderColor: "color-mix(in srgb, var(--color-success) 28%, var(--home-rule))",
-                                      background: "color-mix(in srgb, var(--color-success) 10%, var(--home-paper))",
+                                      borderColor: "color-mix(in srgb, var(--home-positive) 28%, var(--home-rule))",
+                                      background: "color-mix(in srgb, var(--home-positive) 10%, var(--home-paper))",
                                     }}
                                   >
                                     Priority
@@ -376,8 +376,8 @@ export function DraftBoard({
                                     className={FANTASY_CHIP_CLASS}
                                     title={`Mock drafters usually take this player around pick ${formatAdp(player.adp)}, well before pick ${currentPick}`}
                                     style={{
-                                      borderColor: "color-mix(in srgb, var(--home-acid) 38%, var(--home-rule))",
-                                      background: "color-mix(in srgb, var(--home-acid) 18%, var(--home-paper))",
+                                      borderColor: "color-mix(in srgb, var(--home-signal) 38%, var(--home-rule))",
+                                      background: "color-mix(in srgb, var(--home-signal) 18%, var(--home-paper))",
                                     }}
                                   >
                                     Value at #{currentPick}
@@ -411,8 +411,8 @@ export function DraftBoard({
                               style={
                                 isQueued
                                   ? {
-                                      borderColor: "color-mix(in srgb, var(--home-acid) 55%, var(--home-rule))",
-                                      background: "color-mix(in srgb, var(--home-acid) 28%, var(--home-paper))",
+                                      borderColor: "color-mix(in srgb, var(--home-signal) 55%, var(--home-rule))",
+                                      background: "color-mix(in srgb, var(--home-signal) 28%, var(--home-paper))",
                                       color: "var(--home-ink)",
                                     }
                                   : { borderColor: "var(--home-rule)", color: "var(--home-ink-muted)" }
@@ -477,7 +477,7 @@ export function DraftBoard({
 
           <div className="grid gap-4 xl:self-start">
             <div
-              className="rounded-[1.5rem] border p-4"
+              className="rounded-[var(--radius-3xl)] border p-4"
               style={{
                 borderColor: "var(--home-rule)",
                 background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
@@ -491,7 +491,7 @@ export function DraftBoard({
             </div>
 
             <div
-              className="rounded-[1.5rem] border p-4"
+              className="rounded-[var(--radius-3xl)] border p-4"
               style={{
                 borderColor: "var(--home-rule)",
                 background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
@@ -507,10 +507,10 @@ export function DraftBoard({
                   rosterNeeds.map((need) => (
                     <div
                       key={`pressure-${need}`}
-                      className="rounded-[1rem] border px-3 py-2 text-sm font-semibold"
+                      className="rounded-[var(--radius-3xl)] border px-3 py-2 text-sm font-semibold"
                       style={{
-                        borderColor: "color-mix(in srgb, var(--color-success) 28%, var(--home-rule))",
-                        background: "color-mix(in srgb, var(--color-success) 10%, var(--home-paper))",
+                        borderColor: "color-mix(in srgb, var(--home-positive) 28%, var(--home-rule))",
+                        background: "color-mix(in srgb, var(--home-positive) 10%, var(--home-paper))",
                       }}
                     >
                       Prioritize {need}

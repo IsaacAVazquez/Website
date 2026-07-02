@@ -378,7 +378,7 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
 
       <section className="home-card p-4 sm:p-5">
         <div className="grid gap-4 lg:grid-cols-[minmax(16rem,0.9fr)_minmax(0,1.6fr)]">
-          <label className="flex min-h-[44px] items-center gap-3 rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-sm text-[var(--home-ink)]">
+          <label className="flex min-h-[44px] items-center gap-3 rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-sm text-[var(--home-ink)]">
             <Search aria-hidden="true" className="h-4 w-4 text-[var(--home-ink-muted)]" />
             <span className="sr-only">Search tools</span>
             <input
@@ -424,7 +424,7 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
             <button
               type="button"
               onClick={resetFilters}
-              className="inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 text-sm font-semibold text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-ink)]"
+              className="inline-flex min-h-[44px] items-center gap-2 rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 text-sm font-semibold text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-ink)]"
             >
               <RotateCcw aria-hidden="true" className="h-4 w-4" />
               Reset
@@ -478,12 +478,12 @@ interface FilterSelectProps {
 
 function FilterSelect({ label, value, options, onChange }: FilterSelectProps) {
   return (
-    <label className="inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 text-sm font-semibold text-[var(--home-ink-muted)]">
+    <label className="inline-flex min-h-[44px] items-center gap-2 rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 text-sm font-semibold text-[var(--home-ink-muted)]">
       <span className="text-2xs uppercase tracking-[0.16em]">{label}</span>
       <select
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        className="min-h-[36px] bg-transparent text-sm font-semibold text-[var(--home-ink)] focus:outline-none"
+        className="min-h-[44px] bg-transparent text-sm font-semibold text-[var(--home-ink)] focus:outline-none"
       >
         {options.map((option) => (
           <option key={option.id} value={option.id}>
@@ -530,15 +530,15 @@ function ToolDirectoryList({
               type="button"
               onClick={() => onSelect(tool.id)}
               aria-pressed={isSelected}
-              className="w-full rounded-2xl border bg-[var(--home-paper)] p-4 text-left transition-colors hover:bg-[var(--home-paper-alt)]"
+              className="w-full rounded-[var(--radius-2xl)] border bg-[var(--home-paper)] p-4 text-left transition-colors hover:bg-[var(--home-paper-alt)]"
               style={{
                 borderColor: isSelected ? "var(--home-ink)" : "var(--home-rule)",
-                boxShadow: isSelected ? "inset 3px 0 0 0 var(--home-acid)" : undefined,
+                boxShadow: isSelected ? "inset 3px 0 0 0 var(--home-signal)" : undefined,
               }}
             >
               <div className="flex items-start justify-between gap-3">
                 <div className="flex min-w-0 items-start gap-3">
-                  <span className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-[var(--home-ink-muted)]">
+                  <span className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-[var(--home-ink-muted)]">
                     <ToolCategoryIcon category={tool.category} />
                   </span>
                   <div className="min-w-0">
@@ -569,7 +569,7 @@ function ToolDirectoryList({
                     <span className="mt-1 ml-auto block h-1 w-16 overflow-hidden rounded-full bg-[var(--home-rule)]">
                       <span
                         className="block h-full rounded-full"
-                        style={{ width: `${starPct}%`, background: "var(--home-acid)" }}
+                        style={{ width: `${starPct}%`, background: "var(--home-signal)" }}
                       />
                     </span>
                   ) : null}
@@ -640,7 +640,7 @@ function ToolDetail({ tool }: { tool: AiDevTool | null }) {
     <aside className="home-card h-fit min-w-0 p-5 xl:sticky xl:top-24">
       <div className="flex items-start justify-between gap-4">
         <div className="flex items-start gap-3">
-          <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-[var(--home-ink)]">
+          <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-[var(--home-ink)]">
             <ToolCategoryIcon category={tool.category} className="h-5 w-5" />
           </span>
           <div>
@@ -657,7 +657,7 @@ function ToolDetail({ tool }: { tool: AiDevTool | null }) {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`Open ${tool.name}`}
-          className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-ink)]"
+          className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-ink)]"
         >
           <ExternalLink aria-hidden="true" className="h-4 w-4" />
         </a>
@@ -697,7 +697,7 @@ function ToolDetail({ tool }: { tool: AiDevTool | null }) {
               href={tool.githubRepo}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-[var(--home-ink)] transition-colors hover:text-[var(--home-haze)]"
+              className="inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-[var(--home-ink)] transition-colors hover:text-[var(--home-signal)]"
             >
               <BrandGithub aria-hidden="true" className="h-4 w-4" />
               GitHub repo
@@ -709,7 +709,7 @@ function ToolDetail({ tool }: { tool: AiDevTool | null }) {
               href={source.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-[var(--home-ink)] transition-colors hover:text-[var(--home-haze)]"
+              className="inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-[var(--home-ink)] transition-colors hover:text-[var(--home-signal)]"
             >
               <ExternalLink aria-hidden="true" className="h-4 w-4" />
               {source.label}
@@ -723,7 +723,7 @@ function ToolDetail({ tool }: { tool: AiDevTool | null }) {
 
 function DetailRow({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-3">
+    <div className="rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-3">
       <p className="mb-1 text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
         {label}
       </p>

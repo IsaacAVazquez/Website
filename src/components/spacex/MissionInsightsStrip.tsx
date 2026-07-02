@@ -18,13 +18,13 @@ export function MissionInsightsStrip({
         ? Array.from({ length: 4 }, (_, index) => (
             <div
               key={index}
-              className="h-[94px] animate-pulse rounded-[22px] border border-[var(--home-rule)] bg-[var(--home-paper-raised)]/85"
+              className="h-[94px] animate-pulse rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)]/85"
             />
           ))
         : insights.map((insight) => (
             <article
               key={insight.id}
-              className="rounded-[22px] border border-[color-mix(in_srgb,var(--home-haze)_10%,var(--home-rule))] bg-[linear-gradient(150deg,color-mix(in_srgb,var(--home-haze)_6%,var(--home-paper-raised))_0%,var(--home-paper-raised)_100%)] p-3.5 shadow-[var(--shadow-sm)]"
+              className="rounded-[var(--radius-3xl)] border border-[color-mix(in_srgb,var(--home-signal)_10%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-signal)_5%,var(--home-paper-raised))] p-3.5 shadow-[var(--shadow-sm)]"
             >
               <p className="font-mono text-2xs font-semibold uppercase tracking-[0.22em] text-[var(--home-ink-soft)]">
                 {insight.label}

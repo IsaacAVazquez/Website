@@ -60,7 +60,7 @@ export function ThinkingPreview() {
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {pillars.map((pillar) => (
               <WarmCard key={pillar.title} padding="lg" className="h-full">
-                <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--home-paper-alt)] text-[var(--home-haze)]">
+                <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-[var(--radius-2xl)] bg-[var(--home-paper-alt)] text-[var(--home-signal)]">
                   <pillar.icon className="h-6 w-6" />
                 </div>
                 <h3 className="mb-3 text-lg font-bold text-[var(--home-ink)]">

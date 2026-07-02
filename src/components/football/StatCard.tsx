@@ -30,7 +30,7 @@ export function StatCard({
           <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
             {eyebrow}
           </p>
-          <span className="text-[var(--home-haze)]">{icon}</span>
+          <span className="text-[var(--home-signal)]">{icon}</span>
         </div>
         <p className="mt-3 text-lg font-semibold tabular-nums text-[var(--home-ink)]">{metric}</p>
         <p className="mt-1 text-sm leading-6 text-[var(--home-ink-muted)]">{detail}</p>
@@ -44,7 +44,7 @@ export function StatCard({
         <span className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
           {eyebrow}
         </span>
-        <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[var(--home-paper)] text-[var(--home-haze)] shadow-[var(--shadow-sm)]">
+        <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[var(--home-paper)] text-[var(--home-signal)] shadow-[var(--shadow-sm)]">
           {icon}
         </span>
       </div>

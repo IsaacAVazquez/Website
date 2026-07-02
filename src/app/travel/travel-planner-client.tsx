@@ -67,7 +67,7 @@ const STATUS_LABELS = {
 
 const MOOD_TONE: Record<JournalEntry["mood"], string> = {
   amazing: "var(--home-positive)",
-  good: "var(--home-haze)",
+  good: "var(--home-signal)",
   neutral: "var(--home-ink-muted)",
   rough: "var(--home-warning)",
   tired: "var(--home-negative)",
@@ -122,9 +122,9 @@ function formatBudget(value: number) {
 }
 
 const fieldLabel =
-  "block text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]";
+  "block text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]";
 const fieldInput =
-  "mt-1.5 w-full min-h-touch rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-[13px] text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2";
+  "mt-1.5 w-full min-h-touch rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-xs text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2";
 const textareaInput = `${fieldInput} min-h-[88px] resize-y`;
 
 export function TravelPlannerClient() {
@@ -278,7 +278,7 @@ export function TravelPlannerClient() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-[1280px] px-4 pb-14 pt-8 sm:px-6 sm:pb-16 sm:pt-10 lg:px-8">
+    <div className="home-shell home-section">
       <motion.div
         variants={motionVariants}
         initial="hidden"
@@ -328,14 +328,14 @@ export function TravelPlannerClient() {
 
               <div className="flex flex-wrap items-center gap-2">
                 {trips.length > 0 ? (
-                  <label className="flex min-h-touch items-center gap-2 rounded-full border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-3 py-1.5 text-[12px] font-semibold text-[var(--home-ink)] shadow-[var(--shadow-sm)]">
-                    <CalendarDays className="h-3.5 w-3.5 text-[var(--home-haze)]" aria-hidden="true" />
+                  <label className="flex min-h-touch items-center gap-2 rounded-full border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-3 py-1.5 text-1xs font-semibold text-[var(--home-ink)] shadow-[var(--shadow-sm)]">
+                    <CalendarDays className="h-3.5 w-3.5 text-[var(--home-signal)]" aria-hidden="true" />
                     <span className="sr-only">Active trip</span>
                     <select
                       aria-label="Active trip"
                       value={activeTripId ?? ""}
                       onChange={(event) => selectTrip(event.target.value)}
-                      className="border-0 bg-transparent p-0 text-[12px] font-semibold text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                      className="min-h-touch border-0 bg-transparent p-0 text-1xs font-semibold text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
                     >
                       {trips.map((trip) => (
                         <option key={trip.id} value={trip.id}>
@@ -348,7 +348,7 @@ export function TravelPlannerClient() {
                 <button
                   type="button"
                   onClick={() => setShowTripForm((open) => !open)}
-                  className="inline-flex min-h-touch items-center justify-center gap-1.5 rounded-full bg-[var(--home-ink)] px-3 text-[12.5px] font-semibold text-[var(--home-paper)] shadow-[var(--shadow-sm)] transition hover:bg-[color-mix(in_srgb,var(--home-ink)_88%,var(--home-haze))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                  className="inline-flex min-h-touch items-center justify-center gap-1.5 rounded-full bg-[var(--home-ink)] px-3 text-1xs font-semibold text-[var(--home-paper)] shadow-[var(--shadow-sm)] transition hover:bg-[color-mix(in_srgb,var(--home-ink)_88%,var(--home-signal))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
                   aria-expanded={showTripForm}
                 >
                   <Plus className="h-3.5 w-3.5" />
@@ -424,7 +424,7 @@ export function TravelPlannerClient() {
                   <div className="flex flex-wrap gap-2 sm:col-span-2">
                     <button
                       type="submit"
-                      className="inline-flex min-h-touch items-center justify-center gap-1.5 rounded-lg bg-[var(--home-ink)] px-4 text-[13px] font-semibold text-[var(--home-paper)] shadow-[var(--shadow-sm)] transition hover:bg-[color-mix(in_srgb,var(--home-ink)_88%,var(--home-haze))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                      className="inline-flex min-h-touch items-center justify-center gap-1.5 rounded-lg bg-[var(--home-ink)] px-4 text-xs font-semibold text-[var(--home-paper)] shadow-[var(--shadow-sm)] transition hover:bg-[color-mix(in_srgb,var(--home-ink)_88%,var(--home-signal))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
                     >
                       <Plus className="h-3.5 w-3.5" />
                       Save trip
@@ -432,7 +432,7 @@ export function TravelPlannerClient() {
                     <button
                       type="button"
                       onClick={() => setShowTripForm(false)}
-                      className="inline-flex min-h-touch items-center justify-center rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 text-[12.5px] font-semibold text-[var(--home-ink-muted)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                      className="inline-flex min-h-touch items-center justify-center rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 text-1xs font-semibold text-[var(--home-ink-muted)] transition hover:border-[var(--home-signal)] hover:text-[var(--home-signal)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
                     >
                       Cancel
                     </button>
@@ -474,7 +474,7 @@ export function TravelPlannerClient() {
               </p>
               <form
                 onSubmit={handleSubmitActivity}
-                className="flex flex-col gap-3 rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_94%,var(--home-elev-mix))] p-3 shadow-[var(--shadow-sm)]"
+                className="flex flex-col gap-3 rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_94%,var(--home-elev-mix))] p-3 shadow-[var(--shadow-sm)]"
               >
                 <fieldset disabled={!activeTrip} className="contents">
                   <label className="block">
@@ -539,7 +539,7 @@ export function TravelPlannerClient() {
                     </label>
                   </div>
                   {endTimeInvalid ? (
-                    <p role="alert" className="text-[11.5px] font-medium text-[var(--home-negative)]">
+                    <p role="alert" className="text-2xs font-medium text-[var(--home-negative)]">
                       The end time has to come after the start. Overnight stops
                       need one entry per day.
                     </p>
@@ -589,7 +589,7 @@ export function TravelPlannerClient() {
                   <div className="flex flex-wrap gap-2">
                     <button
                       type="submit"
-                      className="inline-flex min-h-touch flex-1 items-center justify-center gap-1.5 rounded-lg bg-[var(--home-ink)] px-3 text-[13px] font-semibold text-[var(--home-paper)] shadow-[var(--shadow-sm)] transition hover:bg-[color-mix(in_srgb,var(--home-ink)_88%,var(--home-haze))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                      className="inline-flex min-h-touch flex-1 items-center justify-center gap-1.5 rounded-lg bg-[var(--home-ink)] px-3 text-xs font-semibold text-[var(--home-paper)] shadow-[var(--shadow-sm)] transition hover:bg-[color-mix(in_srgb,var(--home-ink)_88%,var(--home-signal))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                     >
                       <Plus className="h-3.5 w-3.5" />
                       {editingActivityId ? "Save stop" : "Add stop"}
@@ -598,7 +598,7 @@ export function TravelPlannerClient() {
                       <button
                         type="button"
                         onClick={resetActivityDraft}
-                        className="inline-flex min-h-touch items-center justify-center rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-[12.5px] font-semibold text-[var(--home-ink-muted)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                        className="inline-flex min-h-touch items-center justify-center rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-1xs font-semibold text-[var(--home-ink-muted)] transition hover:border-[var(--home-signal)] hover:text-[var(--home-signal)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
                       >
                         Cancel
                       </button>
@@ -615,7 +615,7 @@ export function TravelPlannerClient() {
               </p>
               <form
                 onSubmit={handleSubmitJournal}
-                className="flex flex-col gap-3 rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_94%,var(--home-elev-mix))] p-3 shadow-[var(--shadow-sm)]"
+                className="flex flex-col gap-3 rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_94%,var(--home-elev-mix))] p-3 shadow-[var(--shadow-sm)]"
               >
                 <fieldset disabled={!activeTrip} className="contents">
                   <div className="grid grid-cols-2 gap-2">
@@ -678,7 +678,7 @@ export function TravelPlannerClient() {
                   <div className="flex flex-wrap gap-2">
                     <button
                       type="submit"
-                      className="inline-flex min-h-touch flex-1 items-center justify-center gap-1.5 rounded-lg bg-[var(--home-ink)] px-3 text-[13px] font-semibold text-[var(--home-paper)] shadow-[var(--shadow-sm)] transition hover:bg-[color-mix(in_srgb,var(--home-ink)_88%,var(--home-haze))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                      className="inline-flex min-h-touch flex-1 items-center justify-center gap-1.5 rounded-lg bg-[var(--home-ink)] px-3 text-xs font-semibold text-[var(--home-paper)] shadow-[var(--shadow-sm)] transition hover:bg-[color-mix(in_srgb,var(--home-ink)_88%,var(--home-signal))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                     >
                       <Plus className="h-3.5 w-3.5" />
                       {editingJournalId ? "Save entry" : "Add entry"}
@@ -687,7 +687,7 @@ export function TravelPlannerClient() {
                       <button
                         type="button"
                         onClick={resetJournalDraft}
-                        className="inline-flex min-h-touch items-center justify-center rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-[12.5px] font-semibold text-[var(--home-ink-muted)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                        className="inline-flex min-h-touch items-center justify-center rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-1xs font-semibold text-[var(--home-ink-muted)] transition hover:border-[var(--home-signal)] hover:text-[var(--home-signal)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
                       >
                         Cancel
                       </button>
@@ -820,7 +820,7 @@ function ActiveTripView({
             <h2 className="tool-section-title">{trip.name}</h2>
           </div>
           {trip.destination ? (
-            <p className="inline-flex items-center gap-1.5 text-[12px] text-[var(--home-ink-muted)]">
+            <p className="inline-flex items-center gap-1.5 text-1xs text-[var(--home-ink-muted)]">
               <MapPin className="h-3.5 w-3.5" aria-hidden="true" />
               {trip.destination}
             </p>
@@ -840,7 +840,7 @@ function ActiveTripView({
             <p className="tool-section-kicker">Day by day</p>
             <h2 className="tool-section-title">Itinerary</h2>
           </div>
-          <p className="text-[12px] text-[var(--home-ink-muted)] [font-variant-numeric:tabular-nums]">
+          <p className="text-1xs text-[var(--home-ink-muted)] [font-variant-numeric:tabular-nums]">
             {summary.activitiesCompleted}/{summary.activitiesTotal} stops checked off
           </p>
         </div>
@@ -868,7 +868,7 @@ function ActiveTripView({
         ) : null}
 
         {summary.itineraryTruncated ? (
-          <p className="mt-3 rounded-xl border border-dashed border-[var(--home-rule)] px-3 py-2 text-[12px] text-[var(--home-ink-muted)]">
+          <p className="mt-3 rounded-[var(--radius-xl)] border border-dashed border-[var(--home-rule)] px-3 py-2 text-1xs text-[var(--home-ink-muted)]">
             This trip spans {summary.daysTotal.toLocaleString("en-US")} days, so
             the itinerary shows the first {MAX_ITINERARY_DAYS}. Double-check the
             trip dates if that looks off.
@@ -877,7 +877,7 @@ function ActiveTripView({
 
         {summary.activitiesTotal === 0 ? (
           <div className="tool-empty mt-4">
-            <p className="text-[13.5px] font-semibold text-[var(--home-ink)]">No stops yet</p>
+            <p className="text-xs font-semibold text-[var(--home-ink)]">No stops yet</p>
             <p>Add the first stop using the "Add stop" panel on the right.</p>
           </div>
         ) : (
@@ -885,28 +885,28 @@ function ActiveTripView({
             {summary.dayBuckets.map((bucket) => (
               <div key={bucket.date} className="flex flex-col gap-2">
                 <header className="flex items-baseline justify-between gap-2">
-                  <h3 className="flex items-center gap-2 text-[13px] font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                  <h3 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                     <span className={bucket.date === today ? "text-[var(--home-ink)]" : undefined}>
                       {formatDayHeading(bucket.date)}
                     </span>
                     {bucket.date === today ? (
-                      <span className="rounded-full bg-[var(--home-ink)] px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-[0.12em] text-[var(--home-paper)]">
+                      <span className="rounded-full bg-[var(--home-ink)] px-1.5 py-0.5 text-3xs font-semibold uppercase tracking-[0.12em] text-[var(--home-paper)]">
                         Today
                       </span>
                     ) : null}
                   </h3>
-                  <span className="text-[11.5px] text-[var(--home-ink-muted)] [font-variant-numeric:tabular-nums]">
+                  <span className="text-2xs text-[var(--home-ink-muted)] [font-variant-numeric:tabular-nums]">
                     {bucket.activities.length === 0
                       ? "0 stops"
                       : `${bucket.completed}/${bucket.activities.length} done`}
                   </span>
                 </header>
                 {bucket.activities.length === 0 ? (
-                  <p className="rounded-xl border border-dashed border-[var(--home-rule)] px-3 py-2 text-[12px] text-[var(--home-ink-muted)]">
+                  <p className="rounded-[var(--radius-xl)] border border-dashed border-[var(--home-rule)] px-3 py-2 text-1xs text-[var(--home-ink-muted)]">
                     Nothing planned yet.
                   </p>
                 ) : (
-                  <ul className="divide-y divide-[var(--home-rule)] rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper)]">
+                  <ul className="divide-y divide-[var(--home-rule)] rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper)]">
                     {bucket.activities.map((activity) => {
                       const categoryMeta = CATEGORY_META[activity.category];
                       const CategoryIcon = categoryMeta.icon;
@@ -921,7 +921,7 @@ function ActiveTripView({
                               ? `Mark ${activity.title} as not done`
                               : `Mark ${activity.title} as done`
                           }
-                          className="-my-2 -ml-2 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-[var(--home-ink-muted)] transition hover:text-[var(--home-haze)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                          className="-my-2 -ml-2 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-[var(--home-ink-muted)] transition hover:text-[var(--home-signal)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
                         >
                           {activity.completed ? (
                             <CheckCircle2 className="h-5 w-5 text-[var(--home-positive)]" />
@@ -942,7 +942,7 @@ function ActiveTripView({
                         <div className="min-w-0 flex-1">
                           <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
                             <p
-                              className={`text-[13.5px] font-semibold text-[var(--home-ink)] ${
+                              className={`text-xs font-semibold text-[var(--home-ink)] ${
                                 activity.completed ? "line-through opacity-60" : ""
                               }`}
                             >
@@ -950,7 +950,7 @@ function ActiveTripView({
                             </p>
                             {hasConflict ? (
                               <span
-                                className="inline-flex items-center gap-1 rounded-full border border-[var(--home-warning)] px-1.5 py-0.5 text-[9.5px] font-semibold uppercase tracking-[0.1em] text-[var(--home-warning)]"
+                                className="inline-flex items-center gap-1 rounded-full border border-[var(--home-warning)] px-1.5 py-0.5 text-3xs font-semibold uppercase tracking-[0.1em] text-[var(--home-warning)]"
                                 title="Overlaps another stop on this day"
                               >
                                 <AlertTriangle className="h-3 w-3" aria-hidden="true" />
@@ -978,7 +978,7 @@ function ActiveTripView({
                             ) : null}
                           </p>
                           {activity.notes ? (
-                            <p className="mt-1 text-[12.5px] text-[var(--home-ink-muted)] whitespace-pre-line">
+                            <p className="mt-1 text-1xs text-[var(--home-ink-muted)] whitespace-pre-line">
                               {activity.notes}
                             </p>
                           ) : null}
@@ -987,14 +987,14 @@ function ActiveTripView({
                           <button
                             type="button"
                             onClick={() => onEditActivity(activity)}
-                            className="inline-flex min-h-touch items-center justify-center rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-2.5 text-[11.5px] font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                            className="inline-flex min-h-touch items-center justify-center rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-2.5 text-2xs font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--home-signal)] hover:text-[var(--home-signal)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
                           >
                             Edit
                           </button>
                           <button
                             type="button"
                             onClick={() => onRemoveActivity(activity.id)}
-                            className="inline-flex min-h-touch items-center justify-center rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-2.5 text-[11.5px] font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--home-negative)] hover:text-[var(--home-negative)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                            className="inline-flex min-h-touch items-center justify-center rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-2.5 text-2xs font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--home-negative)] hover:text-[var(--home-negative)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
                             aria-label={`Delete ${activity.title}`}
                           >
                             <Trash2 className="h-3.5 w-3.5" />
@@ -1021,14 +1021,14 @@ function ActiveTripView({
             <p className="tool-section-kicker">Reflection</p>
             <h2 className="tool-section-title">Journal</h2>
           </div>
-          <p className="text-[12px] text-[var(--home-ink-muted)] [font-variant-numeric:tabular-nums]">
+          <p className="text-1xs text-[var(--home-ink-muted)] [font-variant-numeric:tabular-nums]">
             {trip.journal.length} {trip.journal.length === 1 ? "entry" : "entries"}
           </p>
         </div>
 
         {journalSorted.length === 0 ? (
           <div className="tool-empty mt-4">
-            <p className="text-[13.5px] font-semibold text-[var(--home-ink)]">
+            <p className="text-xs font-semibold text-[var(--home-ink)]">
               Journal is empty
             </p>
             <p>Capture a moment using the journal panel on the right.</p>
@@ -1040,11 +1040,11 @@ function ActiveTripView({
               return (
               <li
                 key={entry.id}
-                className="rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-3"
+                className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-3"
               >
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
                   <div>
-                    <p className="text-[13.5px] font-semibold text-[var(--home-ink)]">
+                    <p className="text-xs font-semibold text-[var(--home-ink)]">
                       {entry.title}
                     </p>
                     <p className="mt-0.5 flex items-center gap-2 text-2xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
@@ -1063,7 +1063,7 @@ function ActiveTripView({
                     <button
                       type="button"
                       onClick={() => onEditJournal(entry)}
-                      className="inline-flex min-h-touch items-center justify-center rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-[12px] font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                      className="inline-flex min-h-touch items-center justify-center rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-1xs font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--home-signal)] hover:text-[var(--home-signal)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
                     >
                       Edit
                     </button>
@@ -1071,14 +1071,14 @@ function ActiveTripView({
                       type="button"
                       onClick={() => onRemoveJournal(entry.id)}
                       aria-label={`Delete journal entry ${entry.title}`}
-                      className="inline-flex min-h-touch items-center justify-center rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-[12px] font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--home-negative)] hover:text-[var(--home-negative)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                      className="inline-flex min-h-touch items-center justify-center rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-1xs font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--home-negative)] hover:text-[var(--home-negative)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
                     >
                       <Trash2 className="h-3.5 w-3.5" />
                     </button>
                   </div>
                 </div>
                 {entry.body ? (
-                  <p className="mt-2 whitespace-pre-line text-[13px] leading-6 text-[var(--home-ink)]">
+                  <p className="mt-2 whitespace-pre-line text-xs leading-6 text-[var(--home-ink)]">
                     {entry.body}
                   </p>
                 ) : null}
@@ -1099,7 +1099,7 @@ function ActiveTripView({
             <p className="tool-section-kicker">Library</p>
             <h2 className="tool-section-title">All trips</h2>
           </div>
-          <p className="text-[12px] text-[var(--home-ink-muted)] [font-variant-numeric:tabular-nums]">
+          <p className="text-1xs text-[var(--home-ink-muted)] [font-variant-numeric:tabular-nums]">
             {trips.length} {trips.length === 1 ? "trip" : "trips"}
           </p>
         </div>
@@ -1116,10 +1116,10 @@ function ActiveTripView({
                   onClick={() => onSelectTrip(other.id)}
                   className="min-w-0 flex-1 text-left"
                 >
-                  <p className="truncate text-[13.5px] font-semibold text-[var(--home-ink)]">
-                    {other.name} {isActive ? <span className="text-2xs font-medium text-[var(--home-haze)]">· active</span> : null}
+                  <p className="truncate text-xs font-semibold text-[var(--home-ink)]">
+                    {other.name} {isActive ? <span className="text-2xs font-medium text-[var(--home-signal)]">· active</span> : null}
                   </p>
-                  <p className="mt-0.5 truncate text-[11.5px] text-[var(--home-ink-muted)]">
+                  <p className="mt-0.5 truncate text-2xs text-[var(--home-ink-muted)]">
                     {other.destination || "No destination"} ·{" "}
                     {formatTripDateRange(other.startDate, other.endDate)}
                   </p>
@@ -1136,7 +1136,7 @@ function ActiveTripView({
                     onRemoveTrip(other.id);
                   }}
                   aria-label={`Delete trip ${other.name}`}
-                  className="inline-flex min-h-touch items-center justify-center rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-[12px] font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--home-negative)] hover:text-[var(--home-negative)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                  className="inline-flex min-h-touch items-center justify-center rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-1xs font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--home-negative)] hover:text-[var(--home-negative)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
                 >
                   <Trash2 className="h-3.5 w-3.5" />
                 </button>
@@ -1269,7 +1269,7 @@ function TripDetailsFields({ trip, onUpdateField }: TripDetailsFieldsProps) {
 function EmptyState({ onStart }: { onStart: () => void }) {
   return (
     <div className="tool-empty mt-2">
-      <p className="text-[14.5px] font-semibold text-[var(--home-ink)]">
+      <p className="text-sm font-semibold text-[var(--home-ink)]">
         No trips yet
       </p>
       <p className="mb-4 mt-1">
@@ -1278,7 +1278,7 @@ function EmptyState({ onStart }: { onStart: () => void }) {
       <button
         type="button"
         onClick={onStart}
-        className="inline-flex min-h-touch items-center justify-center gap-1.5 rounded-lg bg-[var(--home-ink)] px-4 text-[13px] font-semibold text-[var(--home-paper)] shadow-[var(--shadow-sm)] transition hover:bg-[color-mix(in_srgb,var(--home-ink)_88%,var(--home-haze))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+        className="inline-flex min-h-touch items-center justify-center gap-1.5 rounded-lg bg-[var(--home-ink)] px-4 text-xs font-semibold text-[var(--home-paper)] shadow-[var(--shadow-sm)] transition hover:bg-[color-mix(in_srgb,var(--home-ink)_88%,var(--home-signal))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
       >
         <Plus className="h-3.5 w-3.5" />
         Start a trip

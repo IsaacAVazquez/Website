@@ -43,7 +43,7 @@ export function CompareTray({ resolvePlayer, publishedRank }: CompareTrayProps) 
             className="fixed inset-x-0 bottom-0 z-50 flex justify-center px-3 pb-3"
           >
             <div
-              className="flex w-full max-w-3xl flex-wrap items-center gap-2 rounded-[1.4rem] border px-3 py-2.5"
+              className="flex w-full max-w-3xl flex-wrap items-center gap-2 rounded-[var(--radius-3xl)] border px-3 py-2.5"
               style={{
                 borderColor: "var(--home-rule)",
                 background: "color-mix(in srgb, var(--home-paper) 94%, var(--home-elev-mix))",

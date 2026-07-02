@@ -22,9 +22,9 @@ export function Badge({
   const baseClasses = "inline-flex items-center rounded-md font-medium transition-colors";
 
   const variantClasses = {
-    default: "bg-[var(--home-haze)]/10 text-[var(--home-haze)] border border-[var(--home-haze)]/20",
-    success: "bg-[var(--color-success)]/10 text-[var(--color-success)] border border-[var(--color-success)]/20",
-    warning: "bg-[var(--color-warning)]/10 text-[var(--color-warning)] border border-[var(--color-warning)]/20",
+    default: "bg-[var(--home-signal)]/10 text-[var(--home-signal)] border border-[var(--home-signal)]/20",
+    success: "bg-[var(--home-positive)]/10 text-[var(--home-positive)] border border-[var(--home-positive)]/20",
+    warning: "bg-[var(--home-warning)]/10 text-[var(--home-warning)] border border-[var(--home-warning)]/20",
     outline: "border border-[var(--home-rule)] text-[var(--home-ink-muted)]",
   };
 

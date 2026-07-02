@@ -210,7 +210,7 @@ export default function AccessibilityPage() {
                 <a
                   href="mailto:IsaacVazquez@berkeley.edu"
                   className="underline underline-offset-2"
-                  style={{ color: "var(--home-haze)" }}
+                  style={{ color: "var(--home-signal)" }}
                 >
                   IsaacVazquez@berkeley.edu
                 </a>
@@ -220,7 +220,7 @@ export default function AccessibilityPage() {
                 <Link
                   href="/contact"
                   className="underline underline-offset-2"
-                  style={{ color: "var(--home-haze)" }}
+                  style={{ color: "var(--home-signal)" }}
                 >
                   Contact page
                 </Link>
@@ -304,7 +304,7 @@ export default function AccessibilityPage() {
             rel="noopener noreferrer"
             aria-label="W3C Web Accessibility Initiative (opens in a new tab)"
             className="underline underline-offset-2"
-            style={{ color: "var(--home-haze)" }}
+            style={{ color: "var(--home-signal)" }}
           >
             W3C Web Accessibility Initiative
           </a>

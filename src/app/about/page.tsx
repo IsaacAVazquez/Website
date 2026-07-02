@@ -1,7 +1,7 @@
 import { AIStructuredData } from "@/components/AIStructuredData";
 import { generateAIOptimizedMetadata } from "@/lib/seo";
 import { profile, profileSameAs } from "@/lib/profile";
-import { AboutV3 } from "@/components/about/AboutV3";
+import { AboutInstrument } from "@/components/about/AboutInstrument";
 
 export const metadata = generateAIOptimizedMetadata({
   title: "About",
@@ -90,7 +90,7 @@ export default function AboutPage() {
         }}
       />
 
-      <AboutV3 />
+      <AboutInstrument />
     </>
   );
 }

@@ -42,7 +42,7 @@ export const Footer = ({ variant = "full" }: FooterProps) => {
       <div className={`page-shell ${isCompact ? "py-4 md:py-5" : "py-6 md:py-8"}`}>
         <div
           className="flex flex-col gap-5 border-t pt-6 sm:flex-row sm:items-start sm:justify-between"
-          style={{ borderTopColor: "var(--home-ink)" }}
+          style={{ borderTopColor: "var(--home-rule)" }}
         >
           <div className="space-y-1.5">
             <p className="footer-home-colophon">

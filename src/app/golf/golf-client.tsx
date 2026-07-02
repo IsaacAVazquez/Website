@@ -79,7 +79,7 @@ function getScoreToParColor(value: number | null | undefined): string {
     return "var(--home-ink)";
   }
 
-  return value < 0 ? "var(--color-success)" : "var(--color-error)";
+  return value < 0 ? "var(--home-positive)" : "var(--home-negative)";
 }
 
 function MovementGlyph({ movement }: { movement: number }) {
@@ -136,8 +136,8 @@ function formatDateRange(startDate: string, endDate: string): string {
 function getViewButtonStyle(isActive: boolean): CSSProperties {
   if (isActive) {
     return {
-      borderColor: "color-mix(in srgb, var(--color-warning) 36%, var(--home-rule))",
-      background: "color-mix(in srgb, var(--color-warning) 10%, var(--home-paper-alt))",
+      borderColor: "color-mix(in srgb, var(--home-signal) 36%, var(--home-rule))",
+      background: "color-mix(in srgb, var(--home-signal) 10%, var(--home-paper-alt))",
       color: "var(--home-ink)",
       boxShadow: "var(--shadow-sm)",
     };
@@ -153,17 +153,17 @@ function getViewButtonStyle(isActive: boolean): CSSProperties {
 function getMovementStyle(movement: number): CSSProperties {
   if (movement > 0) {
     return {
-      color: "var(--color-success)",
-      borderColor: "color-mix(in srgb, var(--color-success) 28%, var(--home-rule))",
-      background: "color-mix(in srgb, var(--color-success) 10%, var(--home-paper-alt))",
+      color: "var(--home-positive)",
+      borderColor: "color-mix(in srgb, var(--home-positive) 28%, var(--home-rule))",
+      background: "color-mix(in srgb, var(--home-positive) 10%, var(--home-paper-alt))",
     };
   }
 
   if (movement < 0) {
     return {
-      color: "var(--color-error)",
-      borderColor: "color-mix(in srgb, var(--color-error) 28%, var(--home-rule))",
-      background: "color-mix(in srgb, var(--color-error) 10%, var(--home-paper-alt))",
+      color: "var(--home-negative)",
+      borderColor: "color-mix(in srgb, var(--home-negative) 28%, var(--home-rule))",
+      background: "color-mix(in srgb, var(--home-negative) 10%, var(--home-paper-alt))",
     };
   }
 
@@ -189,8 +189,8 @@ function getMovementLabel(movement: number): string {
 function getRowStyle(isSelected: boolean): CSSProperties {
   if (isSelected) {
     return {
-      background: "color-mix(in srgb, var(--color-warning) 7%, var(--home-paper-alt))",
-      borderColor: "color-mix(in srgb, var(--color-warning) 30%, var(--home-rule))",
+      background: "color-mix(in srgb, var(--home-signal) 7%, var(--home-paper-alt))",
+      borderColor: "color-mix(in srgb, var(--home-signal) 30%, var(--home-rule))",
     };
   }
 
@@ -227,7 +227,7 @@ function StatBlock({
 }) {
   return (
     <div
-      className="rounded-[24px] px-5 py-4"
+      className="rounded-[var(--radius-3xl)] px-5 py-4"
       style={{
         background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
         border: "1px solid var(--home-rule)",
@@ -287,7 +287,7 @@ function LeaderboardTable({
   onSelectPlayer: (playerId: string) => void;
 }) {
   return (
-    <div className="hidden overflow-hidden rounded-[28px] border md:block" style={{ borderColor: "var(--home-rule)" }}>
+    <div className="hidden overflow-hidden rounded-[var(--radius-3xl)] border md:block" style={{ borderColor: "var(--home-rule)" }}>
       <table className="w-full border-separate border-spacing-0">
         <caption className="sr-only">PGA Tour Pulse leaderboard with position, total, today&apos;s score, round scores, and movement.</caption>
         <colgroup>
@@ -330,7 +330,7 @@ function LeaderboardTable({
             const firstCellStyle: CSSProperties = {
               ...cellStyle,
               boxShadow: isSelected
-                ? "inset 4px 0 0 0 var(--color-warning)"
+                ? "inset 4px 0 0 0 var(--home-signal)"
                 : undefined,
             };
 
@@ -415,10 +415,10 @@ function MobileLeaderboardCards({
             type="button"
             onClick={() => onSelectPlayer(row.playerId)}
             aria-current={isSelected ? "true" : undefined}
-            className="w-full rounded-[24px] border px-4 py-4 text-left"
+            className="w-full rounded-[var(--radius-3xl)] border px-4 py-4 text-left"
             style={{
               ...getRowStyle(isSelected),
-              boxShadow: isSelected ? "inset 4px 0 0 0 var(--color-warning)" : undefined,
+              boxShadow: isSelected ? "inset 4px 0 0 0 var(--home-signal)" : undefined,
             }}
           >
             <div className="flex items-start justify-between gap-4">
@@ -506,10 +506,10 @@ function PlayerCards({
             type="button"
             onClick={() => onSelectPlayer(row.playerId)}
             aria-current={isSelected ? "true" : undefined}
-            className="rounded-[26px] border px-5 py-5 text-left"
+            className="rounded-[var(--radius-3xl)] border px-5 py-5 text-left"
             style={{
               ...getRowStyle(isSelected),
-              boxShadow: isSelected ? "inset 4px 0 0 0 var(--color-warning)" : undefined,
+              boxShadow: isSelected ? "inset 4px 0 0 0 var(--home-signal)" : undefined,
             }}
           >
             <div className="flex items-start justify-between gap-4">
@@ -766,18 +766,10 @@ export function GolfClient({
     return (
       <section className="home-page min-h-screen">
         <div className="home-shell home-section">
-          <div className="rounded-[28px] border px-6 py-8" style={{ borderColor: "var(--home-rule)" }}>
+          <div className="rounded-[var(--radius-3xl)] border px-6 py-8" style={{ borderColor: "var(--home-rule)" }}>
             <p className="home-kicker">Golf</p>
             <h1
-              className="mb-3"
-              style={{
-                fontFamily: "var(--font-home-sans)",
-                color: "var(--home-ink)",
-                fontSize: "clamp(2.5rem, 5vw, 4rem)",
-                fontWeight: 700,
-                letterSpacing: "-0.06em",
-                lineHeight: 0.94,
-              }}
+              className="mb-3 text-[clamp(2.5rem,5vw,4rem)] font-bold leading-[0.94] tracking-[-0.06em] text-[var(--home-ink)]"
             >
               PGA Tour Pulse
             </h1>
@@ -797,11 +789,10 @@ export function GolfClient({
     <section className="home-page min-h-screen">
       <div className="home-shell home-section space-y-8">
         <div
-          className="overflow-hidden rounded-[34px] border p-6 sm:p-8"
+          className="overflow-hidden rounded-[var(--radius-3xl)] border p-6 sm:p-8"
           style={{
-            borderColor: "color-mix(in srgb, var(--color-warning) 28%, var(--home-rule))",
-            background:
-              "linear-gradient(180deg, color-mix(in srgb, var(--color-warning) 10%, var(--home-elev-mix)), color-mix(in srgb, var(--home-paper-alt) 82%, var(--home-elev-mix)))",
+            borderColor: "color-mix(in srgb, var(--home-signal) 28%, var(--home-rule))",
+            background: "color-mix(in srgb, var(--home-signal) 6%, var(--home-paper-raised))",
           }}
         >
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1.4fr)_minmax(280px,0.8fr)]">
@@ -812,17 +803,7 @@ export function GolfClient({
               </div>
 
               <div className="space-y-3">
-                <h1
-                  className="mb-0"
-                  style={{
-                    fontFamily: "var(--font-home-sans)",
-                    color: "var(--home-ink)",
-                    fontSize: "clamp(2.7rem, 6vw, 5rem)",
-                    fontWeight: 700,
-                    letterSpacing: "-0.08em",
-                    lineHeight: 0.92,
-                  }}
-                >
+                <h1 className="mb-0 max-w-[11ch] text-[clamp(2.7rem,6vw,5rem)] font-bold leading-[0.92] tracking-[-0.08em] text-[var(--home-ink)]">
                   PGA Tour Pulse
                 </h1>
                 <p
@@ -836,7 +817,7 @@ export function GolfClient({
             </div>
 
             <div
-              className="rounded-[28px] border px-5 py-5"
+              className="rounded-[var(--radius-3xl)] border px-5 py-5"
               style={{
                 borderColor: "var(--home-rule)",
                 background: "color-mix(in srgb, var(--home-paper-alt) 86%, var(--home-elev-mix))",
@@ -879,7 +860,7 @@ export function GolfClient({
         <HomeStatsPanel
           id="golf-stats-panel"
           title="PGA Tour at a glance"
-          meta={`Live · refreshed ${formatGeneratedAt(tournament.generatedAt)}`}
+          meta={`Snapshot · refreshed ${formatGeneratedAt(tournament.generatedAt)}`}
           cells={statsPanelCells}
           pills={[
             { label: "Leaderboard", href: "?view=leaderboard", icon: ChartBar },
@@ -955,7 +936,7 @@ export function GolfClient({
             </div>
 
             <div
-              className="rounded-[26px] border px-5 py-5"
+              className="rounded-[var(--radius-3xl)] border px-5 py-5"
               style={{
                 borderColor: "var(--home-rule)",
                 background: "color-mix(in srgb, var(--home-paper-alt) 82%, var(--home-elev-mix))",
@@ -974,9 +955,9 @@ export function GolfClient({
 
           <aside className="space-y-4">
             <div
-              className="rounded-[30px] border px-5 py-5 sm:px-6"
+              className="rounded-[var(--radius-3xl)] border px-5 py-5 sm:px-6"
               style={{
-                borderColor: "color-mix(in srgb, var(--color-warning) 22%, var(--home-rule))",
+                borderColor: "color-mix(in srgb, var(--home-signal) 22%, var(--home-rule))",
                 background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
               }}
             >
@@ -1042,17 +1023,17 @@ export function GolfClient({
 
                   {playerSnapshotError ? (
                     <div
-                      className="mt-5 rounded-[22px] border px-4 py-4"
+                      className="mt-5 rounded-[var(--radius-3xl)] border px-4 py-4"
                       role="alert"
                       style={{
-                        borderColor: "color-mix(in srgb, var(--color-error) 24%, var(--home-rule))",
-                        background: "color-mix(in srgb, var(--color-error) 8%, var(--home-paper-alt))",
+                        borderColor: "color-mix(in srgb, var(--home-negative) 24%, var(--home-rule))",
+                        background: "color-mix(in srgb, var(--home-negative) 8%, var(--home-paper-alt))",
                       }}
                     >
                       <div className="flex items-start gap-3">
                         <CircleAlert
                           className="mt-0.5 h-4 w-4 shrink-0"
-                          style={{ color: "var(--color-error)" }}
+                          style={{ color: "var(--home-negative)" }}
                         />
                         <p
                           className="mb-0 text-sm leading-6"
@@ -1068,7 +1049,7 @@ export function GolfClient({
                     <div className="mt-5 space-y-5">
                       <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-1">
                         <div
-                          className="rounded-[22px] border px-4 py-4"
+                          className="rounded-[var(--radius-3xl)] border px-4 py-4"
                           style={{
                             borderColor: "var(--home-rule)",
                             background: "color-mix(in srgb, var(--home-paper-alt) 88%, var(--home-elev-mix))",
@@ -1095,7 +1076,7 @@ export function GolfClient({
                       </div>
 
                       <div
-                        className="rounded-[22px] border px-4 py-4"
+                        className="rounded-[var(--radius-3xl)] border px-4 py-4"
                         style={{
                           borderColor: "var(--home-rule)",
                           background: "color-mix(in srgb, var(--home-paper-alt) 88%, var(--home-elev-mix))",
@@ -1106,7 +1087,7 @@ export function GolfClient({
                           {playerSnapshot.roundByRound.map((round) => (
                             <div
                               key={round.round}
-                              className="rounded-[18px] border px-4 py-3"
+                              className="rounded-[var(--radius-3xl)] border px-4 py-3"
                               style={{
                                 borderColor: "var(--home-rule)",
                                 background: "var(--home-paper-raised)",
@@ -1135,7 +1116,7 @@ export function GolfClient({
                       </div>
 
                       <div
-                        className="rounded-[22px] border px-4 py-4"
+                        className="rounded-[var(--radius-3xl)] border px-4 py-4"
                         style={{
                           borderColor: "var(--home-rule)",
                           background: "color-mix(in srgb, var(--home-paper-alt) 88%, var(--home-elev-mix))",
@@ -1179,6 +1160,20 @@ export function GolfClient({
             </div>
           </aside>
         </div>
+
+        {/* Data source */}
+        <section className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-5 text-sm text-[var(--home-ink-muted)] shadow-[var(--shadow-sm)]">
+          <div className="flex items-start gap-3">
+            <CircleAlert className="mt-0.5 h-4 w-4 flex-shrink-0 text-[var(--home-signal)]" />
+            <p className="mb-0 max-w-none leading-relaxed">
+              This page is a curated snapshot rather than a live feed. The
+              leaderboard, cut line, and player movement come from ESPN&apos;s
+              public golf leaderboard API and refresh on a schedule, so figures
+              can trail the broadcast. Snapshot refreshed{" "}
+              {formatGeneratedAt(tournament.generatedAt)}.
+            </p>
+          </div>
+        </section>
       </div>
     </section>
   );

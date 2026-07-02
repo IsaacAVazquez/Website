@@ -52,13 +52,13 @@ const metricDefinitions: readonly MetricDefinition[] = [
     key: "impact",
     label: "Impact",
     helper: "How much outcome I expect if this lands.",
-    accent: "var(--home-haze)",
+    accent: "var(--home-signal)",
   },
   {
     key: "confidence",
     label: "Confidence",
     helper: "How much proof I think I have right now.",
-    accent: "var(--home-moss)",
+    accent: "var(--home-positive)",
   },
   {
     key: "effort",
@@ -70,7 +70,7 @@ const metricDefinitions: readonly MetricDefinition[] = [
     key: "reversibility",
     label: "Reversibility",
     helper: "How easy it would be to unwind if I learn I was wrong.",
-    accent: "var(--home-acid)",
+    accent: "var(--home-signal)",
   },
 ] as const;
 
@@ -85,14 +85,14 @@ const recommendationTone: Record<
   { fill: string; tint: string; ring: string }
 > = {
   ship: {
-    fill: "var(--home-haze)",
-    tint: "color-mix(in srgb, var(--home-haze) 16%, var(--home-paper))",
-    ring: "color-mix(in srgb, var(--home-haze) 38%, var(--home-rule))",
+    fill: "var(--home-signal)",
+    tint: "color-mix(in srgb, var(--home-signal) 16%, var(--home-paper))",
+    ring: "color-mix(in srgb, var(--home-signal) 38%, var(--home-rule))",
   },
   test: {
-    fill: "var(--home-acid)",
-    tint: "color-mix(in srgb, var(--home-acid) 22%, var(--home-paper))",
-    ring: "color-mix(in srgb, var(--home-acid) 42%, var(--home-rule))",
+    fill: "var(--home-signal)",
+    tint: "color-mix(in srgb, var(--home-signal) 22%, var(--home-paper))",
+    ring: "color-mix(in srgb, var(--home-signal) 42%, var(--home-rule))",
   },
   hold: {
     fill: "var(--home-stone)",
@@ -161,7 +161,7 @@ function DecisionMatrix({ state }: { state: DecisionLabState }) {
         y1={padding}
         x2={padding + 0.6 * size}
         y2={padding + size}
-        stroke="color-mix(in srgb, var(--home-haze) 45%, var(--home-rule))"
+        stroke="color-mix(in srgb, var(--home-signal) 45%, var(--home-rule))"
         strokeWidth="1.5"
       />
       <line
@@ -169,7 +169,7 @@ function DecisionMatrix({ state }: { state: DecisionLabState }) {
         y1={padding + 0.4 * size}
         x2={padding + size}
         y2={padding + 0.4 * size}
-        stroke="color-mix(in srgb, var(--home-haze) 45%, var(--home-rule))"
+        stroke="color-mix(in srgb, var(--home-signal) 45%, var(--home-rule))"
         strokeWidth="1.5"
       />
 
@@ -187,7 +187,7 @@ function DecisionMatrix({ state }: { state: DecisionLabState }) {
               r={isActive ? 6.5 : 4.5}
               fill={
                 isActive
-                  ? "var(--home-haze)"
+                  ? "var(--home-signal)"
                   : "color-mix(in srgb, var(--home-ink) 55%, var(--home-paper))"
               }
               stroke={isActive ? "var(--home-paper)" : "transparent"}
@@ -273,12 +273,12 @@ function MetricSlider({
       <div className="flex items-baseline justify-between gap-3">
         <label
           htmlFor={inputId}
-          className="text-[13px] font-semibold tracking-[-0.01em]"
+          className="text-xs font-semibold tracking-[-0.01em]"
           style={{ color: "var(--home-ink)" }}
         >
           {label}
         </label>
-        <div className="flex items-center gap-2 text-[11.5px]" style={{ color: "var(--home-ink-muted)" }}>
+        <div className="flex items-center gap-2 text-2xs" style={{ color: "var(--home-ink-muted)" }}>
           <span
             className="rounded-full border px-2 py-0.5 font-semibold tabular-nums"
             style={{
@@ -292,7 +292,7 @@ function MetricSlider({
           <span className="tabular-nums">{deltaLabel}</span>
         </div>
       </div>
-      <p className="m-0 text-[12px] leading-snug" style={{ color: "var(--home-ink-muted)" }}>
+      <p className="m-0 text-1xs leading-snug" style={{ color: "var(--home-ink-muted)" }}>
         {helper}
       </p>
       <input
@@ -397,7 +397,7 @@ function DecisionLabWorkbench({
       weight: 0.35,
       raw: draftState.impact,
       contribution: draftState.impact * 0.35,
-      accent: "var(--home-haze)",
+      accent: "var(--home-signal)",
     },
     {
       axis: "confidence",
@@ -405,7 +405,7 @@ function DecisionLabWorkbench({
       weight: 0.25,
       raw: draftState.confidence,
       contribution: draftState.confidence * 0.25,
-      accent: "var(--home-moss)",
+      accent: "var(--home-positive)",
     },
     {
       axis: "effort",
@@ -421,12 +421,12 @@ function DecisionLabWorkbench({
       weight: 0.15,
       raw: draftState.reversibility,
       contribution: draftState.reversibility * 0.15,
-      accent: "var(--home-acid)",
+      accent: "var(--home-signal)",
     },
   ];
 
   const heroStyle: CSSProperties = {
-    background: `linear-gradient(140deg, ${tone.tint} 0%, var(--home-paper-raised) 70%)`,
+    background: tone.tint,
     borderColor: tone.ring,
   };
 
@@ -476,7 +476,7 @@ function DecisionLabWorkbench({
                   type="button"
                   onClick={handleResetToPreset}
                   disabled={!hasPresetOverride}
-                  className="inline-flex min-h-touch items-center gap-2 rounded-full border px-4 py-2 text-[12.5px] font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-55"
+                  className="inline-flex min-h-touch items-center gap-2 rounded-full border px-4 py-2 text-1xs font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-55"
                   style={{
                     borderColor: "var(--home-rule)",
                     background: "var(--home-paper-raised)",
@@ -540,14 +540,14 @@ function DecisionLabWorkbench({
                     <div className="min-w-0">
                       <p className="tool-section-kicker">Recommendation</p>
                       <p
-                        className="m-0 mt-2 text-[2.4rem] font-semibold leading-none tracking-[-0.05em] tabular-nums"
+                        className="m-0 mt-2 text-3xl font-semibold leading-none tracking-[-0.05em] tabular-nums"
                         style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
                       >
                         {recommendationCopy[evaluation.recommendation]}
                       </p>
                     </div>
                     <div
-                      className="rounded-full px-4 py-2 text-[11.5px] font-semibold tabular-nums"
+                      className="rounded-full px-4 py-2 text-2xs font-semibold tabular-nums"
                       style={{
                         background: tone.tint,
                         border: `1px solid ${tone.ring}`,
@@ -575,13 +575,13 @@ function DecisionLabWorkbench({
                   </p>
 
                   <p
-                    className="mt-3 max-w-2xl text-[13.5px] leading-relaxed"
+                    className="mt-3 max-w-2xl text-xs leading-relaxed"
                     style={{ color: "var(--home-ink)" }}
                   >
                     {evaluation.rationale}
                   </p>
                   <p
-                    className="mt-2 max-w-2xl text-[13px] leading-relaxed"
+                    className="mt-2 max-w-2xl text-xs leading-relaxed"
                     style={{ color: "var(--home-ink-muted)" }}
                   >
                     Decision Lab keeps those axes separate, then forces a plain call.
@@ -598,7 +598,7 @@ function DecisionLabWorkbench({
                       </p>
                       <h2 className="tool-section-title">Score the tradeoff</h2>
                     </div>
-                    <span className="text-[11.5px]" style={{ color: "var(--home-ink-muted)" }}>
+                    <span className="text-2xs" style={{ color: "var(--home-ink-muted)" }}>
                       Active: {activePreset.name}
                     </span>
                   </div>
@@ -627,7 +627,7 @@ function DecisionLabWorkbench({
                       </p>
                       <h2 className="tool-section-title">Confidence vs. impact</h2>
                     </div>
-                    <span className="text-[11.5px]" style={{ color: "var(--home-ink-muted)" }}>
+                    <span className="text-2xs" style={{ color: "var(--home-ink-muted)" }}>
                       Active point updates with the sliders
                     </span>
                   </div>
@@ -638,7 +638,7 @@ function DecisionLabWorkbench({
             {/* Rail */}
             <aside
               aria-label="Verdict rail"
-              className="flex flex-col gap-4 rounded-[1.5rem] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_74%,var(--home-elev-mix))] p-5 shadow-[var(--shadow-sm)] lg:sticky lg:top-24 lg:self-start lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto"
+              className="flex flex-col gap-4 rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_74%,var(--home-elev-mix))] p-5 shadow-[var(--shadow-sm)] lg:sticky lg:top-24 lg:self-start lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto"
             >
               <section>
                 <p className="tool-rail-label">
@@ -649,7 +649,7 @@ function DecisionLabWorkbench({
                   {contributions.map((c) => (
                     <li
                       key={c.axis}
-                      className="grid items-center gap-3 rounded-[14px] border px-3 py-2 text-[12px]"
+                      className="grid items-center gap-3 rounded-[var(--radius-3xl)] border px-3 py-2 text-1xs"
                       style={{
                         gridTemplateColumns: "auto 1fr auto",
                         borderColor: "var(--home-rule)",
@@ -666,7 +666,7 @@ function DecisionLabWorkbench({
                         {c.label}
                       </span>
                       <span
-                        className="tabular-nums text-[11.5px]"
+                        className="tabular-nums text-2xs"
                         style={{ color: "var(--home-ink-muted)" }}
                       >
                         {c.raw} × {c.weight.toFixed(2)} ={" "}
@@ -676,7 +676,7 @@ function DecisionLabWorkbench({
                   ))}
                 </ul>
                 <p
-                  className="mt-3 mb-0 text-[11.5px] leading-snug"
+                  className="mt-3 mb-0 text-2xs leading-snug"
                   style={{ color: "var(--home-ink-muted)" }}
                 >
                   Ship needs score ≥ 68 with impact ≥ 65 and confidence ≥ 60. Test fires when
@@ -698,13 +698,13 @@ function DecisionLabWorkbench({
                         type="button"
                         onClick={() => handlePresetChange(preset.id)}
                         aria-pressed={isActive}
-                        className="min-h-touch rounded-[12px] border px-3 py-2 text-left text-[12.5px] font-semibold transition-colors"
+                        className="min-h-touch rounded-[var(--radius-xl)] border px-3 py-2 text-left text-1xs font-semibold transition-colors"
                         style={{
                           borderColor: isActive
-                            ? "color-mix(in srgb, var(--home-haze) 35%, var(--home-rule))"
+                            ? "color-mix(in srgb, var(--home-signal) 35%, var(--home-rule))"
                             : "var(--home-rule)",
                           background: isActive
-                            ? "color-mix(in srgb, var(--home-haze) 14%, var(--home-paper))"
+                            ? "color-mix(in srgb, var(--home-signal) 14%, var(--home-paper))"
                             : "var(--home-paper-raised)",
                           color: "var(--home-ink)",
                         }}
@@ -725,7 +725,7 @@ function DecisionLabWorkbench({
               <div className="tool-rail-foot">
                 <div className="grid w-full gap-2">
                   <p
-                    className="m-0 flex items-center gap-1.5 text-[10.5px] font-bold uppercase tracking-[0.14em]"
+                    className="m-0 flex items-center gap-1.5 text-2xs font-bold uppercase tracking-[0.14em]"
                     style={{ color: "var(--home-ink-muted)" }}
                   >
                     <IconLink size={11} aria-hidden="true" />
@@ -736,10 +736,10 @@ function DecisionLabWorkbench({
                     onClick={() => {
                       void handleCopyLink();
                     }}
-                    className="min-h-touch rounded-full border px-3 py-1.5 text-[12px] font-semibold transition-colors"
+                    className="min-h-touch rounded-full border px-3 py-1.5 text-1xs font-semibold transition-colors"
                     style={{
-                      borderColor: "color-mix(in srgb, var(--home-haze) 28%, var(--home-rule))",
-                      background: "color-mix(in srgb, var(--home-haze) 12%, var(--home-paper))",
+                      borderColor: "color-mix(in srgb, var(--home-signal) 28%, var(--home-rule))",
+                      background: "color-mix(in srgb, var(--home-signal) 12%, var(--home-paper))",
                       color: "var(--home-ink)",
                     }}
                   >

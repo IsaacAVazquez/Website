@@ -85,7 +85,7 @@ function GrowthChart({ data }: { data: { label: string; growth: number }[] }) {
       .attr("height", (d) => Math.abs(y(d.growth) - y(0)))
       .attr("rx", 3)
       .attr("fill", (d) =>
-        d.growth >= 0 ? "var(--color-success)" : "var(--color-error)"
+        d.growth >= 0 ? "var(--home-positive)" : "var(--home-negative)"
       );
 
     // X axis
@@ -146,7 +146,7 @@ export function GrowthPanel({ symbol }: Props) {
                 <p className="text-xs text-[var(--home-ink-soft)] truncate">{m.label}</p>
                 <p
                   className={`text-sm font-semibold ${
-                    m.growth >= 0 ? "text-[var(--color-success)]" : "text-[var(--color-error)]"
+                    m.growth >= 0 ? "text-[var(--home-positive)]" : "text-[var(--home-negative)]"
                   }`}
                 >
                   {m.growth >= 0 ? "+" : ""}

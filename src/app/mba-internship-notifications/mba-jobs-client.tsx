@@ -156,8 +156,8 @@ function getPostedAtTime(value: string): number {
 const CATEGORY_COLOR: Record<MBACategory | "all", string> = {
   all: "var(--home-ink)",
   "big-tech": "color-mix(in srgb, var(--home-ink) 68%, var(--home-stone) 32%)",
-  fintech: "var(--home-moss)",
-  startup: "var(--home-acid)",
+  fintech: "color-mix(in srgb, var(--home-positive) 60%, var(--home-ink))",
+  startup: "var(--home-signal)",
 };
 
 const CHIP_FONT_FAMILY = "var(--font-home-sans)";
@@ -168,35 +168,35 @@ const ROLE_TYPE_STYLES: Record<
   { accent: string; backgroundWeight: number; borderWeight: number }
 > = {
   internship: {
-    accent: "var(--home-acid)",
+    accent: "var(--home-signal)",
     backgroundWeight: 24,
     borderWeight: 34,
   },
   "full-time": {
-    accent: "var(--home-moss)",
+    accent: "color-mix(in srgb, var(--home-ink) 72%, var(--home-stone))",
     backgroundWeight: 20,
     borderWeight: 30,
   },
   unclear: {
-    accent: "var(--home-haze)",
+    accent: "var(--home-ink-muted)",
     backgroundWeight: 18,
     borderWeight: 28,
   },
 };
 
 const APPLICATION_STATUS_ACCENTS: Record<MBAApplicationStatus, string> = {
-  saved: "var(--home-haze)",
-  applied: "var(--home-moss)",
-  interviewing: "var(--home-acid)",
-  offer: "color-mix(in srgb, var(--home-moss) 70%, var(--home-acid) 30%)",
-  rejected: "var(--home-stone)",
+  saved: "var(--home-ink-muted)",
+  applied: "var(--home-signal)",
+  interviewing: "var(--home-warning)",
+  offer: "var(--home-positive)",
+  rejected: "var(--home-negative)",
   archived: "var(--home-ink-muted)",
 };
 
 const APPLICATION_PRIORITY_ACCENTS: Record<MBAApplicationPriority, string> = {
   low: "var(--home-stone)",
-  medium: "var(--home-haze)",
-  high: "var(--home-acid)",
+  medium: "var(--home-warning)",
+  high: "var(--home-signal)",
 };
 
 const ACTIVE_APPLICATION_STATUSES: MBAApplicationStatus[] = [
@@ -227,12 +227,12 @@ function getChipStyle(
 
 function getRoleFamilyAccent(family: MBAJobRoleFamily): string {
   if (family === "product" || family === "product-marketing") {
-    return "var(--home-haze)";
+    return "var(--home-signal)";
   }
   if (family === "finance" || family === "analytics") {
-    return "var(--home-moss)";
+    return "color-mix(in srgb, var(--home-positive) 55%, var(--home-ink))";
   }
-  return "var(--home-acid)";
+  return "color-mix(in srgb, var(--home-ink) 70%, var(--home-stone))";
 }
 
 function getTrackedCompanyButtonStyle(company: MBACompany, active: boolean): CSSProperties {
@@ -537,7 +537,7 @@ function SectionLead({
 }
 
 function CompanyAvatar({ company }: { company: MBACompany | undefined }) {
-  const color = company?.color ?? "var(--home-haze)";
+  const color = company?.color ?? "var(--home-signal)";
   const initials = company?.logoInitials ?? "??";
   return (
     <div
@@ -553,9 +553,9 @@ function CompanyAvatar({ company }: { company: MBACompany | undefined }) {
 function NewBadge() {
   return (
     <span
-      className="inline-flex items-center rounded-full px-3 py-1 text-[0.68rem] font-bold uppercase tracking-[0.12em]"
+      className="inline-flex items-center rounded-full px-3 py-1 text-2xs font-bold uppercase tracking-[0.12em]"
       style={{
-        background: "var(--home-acid)",
+        background: "var(--home-signal)",
         color: "var(--home-ink)",
         fontFamily: CHIP_FONT_FAMILY,
       }}
@@ -569,7 +569,7 @@ function CategoryChip({ category }: { category: MBACategory }) {
   const color = CATEGORY_COLOR[category];
   return (
     <span
-      className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[0.68rem] font-semibold"
+      className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-2xs font-semibold"
       style={getChipStyle(color, 18, 28)}
     >
       <span
@@ -586,7 +586,7 @@ function RoleTypeChip({ roleType }: { roleType: MBAJobRoleType }) {
   const style = ROLE_TYPE_STYLES[roleType];
   return (
     <span
-      className="inline-flex items-center rounded-full px-3 py-1 text-[0.68rem] font-semibold"
+      className="inline-flex items-center rounded-full px-3 py-1 text-2xs font-semibold"
       style={getChipStyle(
         style.accent,
         style.backgroundWeight,
@@ -603,7 +603,7 @@ function RoleFamilyChip({ family }: { family: MBAJobRoleFamily }) {
 
   return (
     <span
-      className="inline-flex items-center rounded-full px-3 py-1 text-[0.68rem] font-semibold"
+      className="inline-flex items-center rounded-full px-3 py-1 text-2xs font-semibold"
       style={getChipStyle(accent, 18, 28)}
     >
       {MBA_ROLE_FAMILY_LABELS[family]}
@@ -614,7 +614,7 @@ function RoleFamilyChip({ family }: { family: MBAJobRoleFamily }) {
 function ApplicationStatusChip({ status }: { status: MBAApplicationStatus }) {
   return (
     <span
-      className="inline-flex items-center rounded-full px-3 py-1 text-[0.68rem] font-semibold"
+      className="inline-flex items-center rounded-full px-3 py-1 text-2xs font-semibold"
       style={getChipStyle(APPLICATION_STATUS_ACCENTS[status], 18, 30)}
     >
       {MBA_APPLICATION_STATUS_LABELS[status]}
@@ -625,8 +625,8 @@ function ApplicationStatusChip({ status }: { status: MBAApplicationStatus }) {
 function ExternalLeadChip({ sourceName }: { sourceName?: string }) {
   return (
     <span
-      className="inline-flex items-center rounded-full px-3 py-1 text-[0.68rem] font-semibold"
-      style={getChipStyle("var(--home-haze)", 16, 28)}
+      className="inline-flex items-center rounded-full px-3 py-1 text-2xs font-semibold"
+      style={getChipStyle("var(--home-signal)", 16, 28)}
     >
       {sourceName ? `${sourceName} lead` : "External lead"}
     </span>
@@ -636,7 +636,7 @@ function ExternalLeadChip({ sourceName }: { sourceName?: string }) {
 function ApplicationPriorityChip({ priority }: { priority: MBAApplicationPriority }) {
   return (
     <span
-      className="inline-flex items-center rounded-full px-3 py-1 text-[0.68rem] font-semibold"
+      className="inline-flex items-center rounded-full px-3 py-1 text-2xs font-semibold"
       style={getChipStyle(APPLICATION_PRIORITY_ACCENTS[priority], 14, 24)}
     >
       {MBA_APPLICATION_PRIORITY_LABELS[priority]} priority
@@ -734,7 +734,7 @@ function JobCard({
 
         <div className="space-y-3">
           <h3
-            className="mb-0 text-[1.15rem] font-semibold leading-[1.08] tracking-[-0.04em] sm:text-[1.3rem]"
+            className="mb-0 text-lg font-semibold leading-[1.08] tracking-[-0.04em] sm:text-xl"
             style={{
               fontFamily: "var(--font-home-sans)",
               color: "var(--home-ink)",
@@ -995,7 +995,7 @@ function SortDropdown({
           aria-label={`Sort: ${SORT_LABELS[value]}`}
         >
           <span
-            className="text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
+            className="text-2xs font-semibold uppercase tracking-[0.12em]"
             style={{ fontFamily: "var(--font-home-sans)" }}
           >
             Sort
@@ -1006,7 +1006,7 @@ function SortDropdown({
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="end"
-        className="min-w-[12rem] rounded-[1rem] border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,white)] p-1.5 text-[var(--home-ink)] shadow-[var(--shadow-lg)]"
+        className="min-w-[12rem] rounded-[var(--radius-3xl)] border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] p-1.5 text-[var(--home-ink)] shadow-[var(--shadow-lg)]"
       >
         <DropdownMenuRadioGroup
           value={value}
@@ -1016,7 +1016,7 @@ function SortDropdown({
             <DropdownMenuRadioItem
               key={opt}
               value={opt}
-              className="rounded-[0.8rem] py-2 pl-8 pr-3 text-sm font-medium focus:bg-[color-mix(in_srgb,var(--home-paper-alt)_90%,white)]"
+              className="rounded-[var(--radius-2xl)] py-2 pl-8 pr-3 text-sm font-medium focus:bg-[color-mix(in_srgb,var(--home-paper-alt)_90%,var(--home-elev-mix))]"
               style={{ fontFamily: "var(--font-home-sans)" }}
             >
               {SORT_LABELS[opt]}
@@ -1041,9 +1041,9 @@ function NotificationBell({
       <div
         className="inline-flex min-h-[48px] items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold"
         style={{
-          color: "color-mix(in srgb, var(--home-haze) 78%, var(--home-ink))",
-          borderColor: "color-mix(in srgb, var(--home-haze) 40%, var(--home-rule))",
-          background: "color-mix(in srgb, var(--home-haze) 18%, var(--home-paper))",
+          color: "color-mix(in srgb, var(--home-signal) 78%, var(--home-ink))",
+          borderColor: "color-mix(in srgb, var(--home-signal) 40%, var(--home-rule))",
+          background: "color-mix(in srgb, var(--home-signal) 18%, var(--home-paper))",
         }}
       >
         <Bell className="h-4 w-4" aria-hidden="true" />
@@ -1093,14 +1093,14 @@ function EmailDigestButton({
         className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold"
         style={{
           color: result.ok
-            ? "color-mix(in srgb, var(--home-moss) 60%, var(--home-ink))"
-            : "color-mix(in srgb, var(--home-acid) 55%, var(--home-ink))",
+            ? "color-mix(in srgb, var(--home-positive) 60%, var(--home-ink))"
+            : "color-mix(in srgb, var(--home-negative) 55%, var(--home-ink))",
           borderColor: result.ok
-            ? "color-mix(in srgb, var(--home-moss) 36%, var(--home-rule))"
-            : "color-mix(in srgb, var(--home-acid) 32%, var(--home-rule))",
+            ? "color-mix(in srgb, var(--home-positive) 36%, var(--home-rule))"
+            : "color-mix(in srgb, var(--home-negative) 32%, var(--home-rule))",
           background: result.ok
-            ? "color-mix(in srgb, var(--home-moss) 10%, var(--home-paper))"
-            : "color-mix(in srgb, var(--home-acid) 10%, var(--home-paper))",
+            ? "color-mix(in srgb, var(--home-positive) 10%, var(--home-paper))"
+            : "color-mix(in srgb, var(--home-negative) 10%, var(--home-paper))",
         }}
         role="status"
       >
@@ -1108,7 +1108,7 @@ function EmailDigestButton({
         <button
           type="button"
           onClick={onClear}
-          className="ml-1 inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full text-[0.8rem] opacity-70 transition-opacity duration-200 ease hover:opacity-100"
+          className="ml-1 inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full text-xs opacity-70 transition-opacity duration-200 ease hover:opacity-100"
           aria-label="Dismiss"
         >
           ✕
@@ -1175,7 +1175,7 @@ function CompanyFilterStrip({
       <button
         type="button"
         onClick={() => setIsExpanded((current) => !current)}
-        className="flex w-full items-start justify-between gap-4 rounded-[1.2rem] border px-4 py-4 text-left transition-[border-color,background-color] duration-200 ease sm:items-center"
+        className="flex w-full items-start justify-between gap-4 rounded-[var(--radius-3xl)] border px-4 py-4 text-left transition-[border-color,background-color] duration-200 ease sm:items-center"
         style={{
           borderColor: "var(--home-rule)",
           background: "color-mix(in srgb, var(--home-paper-alt) 56%, var(--home-elev-mix))",
@@ -1201,7 +1201,7 @@ function CompanyFilterStrip({
         </div>
         <div className="flex items-center gap-3">
           <span
-            className="hidden text-[0.72rem] font-semibold uppercase tracking-[0.12em] sm:inline"
+            className="hidden text-2xs font-semibold uppercase tracking-[0.12em] sm:inline"
             style={{ color: "var(--home-ink-muted)", fontFamily: CHIP_FONT_FAMILY }}
           >
             {isExpanded ? "Hide list" : "Show list"}
@@ -1237,10 +1237,10 @@ function CompanyFilterStrip({
                 type="button"
                 onClick={onSelectAll}
                 disabled={allOn}
-                className="inline-flex min-h-[44px] items-center rounded-full border px-4 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.12em] transition-[background-color,border-color,color] duration-200 ease disabled:opacity-40"
+                className="inline-flex min-h-[44px] items-center rounded-full border px-4 py-2 text-2xs font-semibold uppercase tracking-[0.12em] transition-[background-color,border-color,color] duration-200 ease disabled:opacity-40"
                 style={{
                   ...getPillStyle(false),
-                  color: "var(--home-haze)",
+                  color: "var(--home-signal)",
                 }}
               >
                 All on
@@ -1249,7 +1249,7 @@ function CompanyFilterStrip({
                 type="button"
                 onClick={onClearAll}
                 disabled={allOff}
-                className="inline-flex min-h-[44px] items-center rounded-full border px-4 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.12em] transition-[background-color,border-color,color] duration-200 ease disabled:opacity-40"
+                className="inline-flex min-h-[44px] items-center rounded-full border px-4 py-2 text-2xs font-semibold uppercase tracking-[0.12em] transition-[background-color,border-color,color] duration-200 ease disabled:opacity-40"
                 style={getPillStyle(false)}
               >
                 All off
@@ -1265,7 +1265,7 @@ function CompanyFilterStrip({
                 <div
                   key={group.category}
                   data-testid={`tracked-companies-${group.category}`}
-                  className="rounded-[1.2rem] border p-3 sm:p-4"
+                  className="rounded-[var(--radius-3xl)] border p-3 sm:p-4"
                   style={{
                     borderColor: "var(--home-rule)",
                     background: "color-mix(in srgb, var(--home-paper-alt) 58%, var(--home-elev-mix))",
@@ -1273,7 +1273,7 @@ function CompanyFilterStrip({
                 >
                   <button
                     type="button"
-                    className="flex min-h-[44px] w-full items-center justify-between gap-3 rounded-[0.9rem] px-2 py-1.5 text-left transition-[background-color] duration-150 ease"
+                    className="flex min-h-[44px] w-full items-center justify-between gap-3 rounded-[var(--radius-2xl)] px-2 py-1.5 text-left transition-[background-color] duration-150 ease"
                     style={{ color: "var(--home-ink)" }}
                     aria-expanded={isGroupExpanded}
                     aria-controls={`tracked-companies-panel-${group.category}`}
@@ -1287,7 +1287,7 @@ function CompanyFilterStrip({
                     <div className="min-w-0">
                       <p className="home-meta mb-0">{group.label}</p>
                       <p
-                        className="mt-1 text-[0.8rem]"
+                        className="mt-1 text-xs"
                         style={{ fontFamily: CHIP_FONT_FAMILY, color: "var(--home-ink-muted)" }}
                       >
                         {watchedCount} / {group.companies.length} watched
@@ -1313,7 +1313,7 @@ function CompanyFilterStrip({
                             key={company.id}
                             type="button"
                             onClick={() => onToggle(company.id)}
-                            className="inline-flex min-h-[44px] w-full items-center gap-2 rounded-[0.95rem] border px-3 py-3 text-left text-[0.8rem] font-semibold transition-[background-color,border-color,color,box-shadow] duration-150 ease"
+                            className="inline-flex min-h-[44px] w-full items-center gap-2 rounded-[var(--radius-2xl)] border px-3 py-3 text-left text-xs font-semibold transition-[background-color,border-color,color,box-shadow] duration-150 ease"
                             style={getTrackedCompanyButtonStyle(company, active)}
                             aria-pressed={active}
                           >
@@ -1355,7 +1355,7 @@ function ApplicationCard({
     application.followUpDate !== null && application.followUpDate <= getTodayDateKey();
   return (
     <article
-      className="rounded-[1.1rem] border p-4"
+      className="rounded-[var(--radius-3xl)] border p-4"
       style={{
         borderColor: "var(--home-rule)",
         background: "color-mix(in srgb, var(--home-paper-alt) 72%, var(--home-elev-mix))",
@@ -1380,9 +1380,9 @@ function ApplicationCard({
         <ApplicationStatusChip status={application.status} />
         {application.followUpDate && (
           <span
-            className="inline-flex items-center gap-1 rounded-full px-3 py-1 text-[0.68rem] font-semibold"
+            className="inline-flex items-center gap-1 rounded-full px-3 py-1 text-2xs font-semibold"
             style={getChipStyle(
-              followUpIsDue ? "var(--home-acid)" : "var(--home-haze)",
+              followUpIsDue ? "var(--home-signal)" : "var(--home-ink-muted)",
               16,
               26
             )}
@@ -1393,8 +1393,8 @@ function ApplicationCard({
         )}
         {application.deadline && (
           <span
-            className="inline-flex items-center gap-1 rounded-full px-3 py-1 text-[0.68rem] font-semibold"
-            style={getChipStyle("var(--home-moss)", 14, 24)}
+            className="inline-flex items-center gap-1 rounded-full px-3 py-1 text-2xs font-semibold"
+            style={getChipStyle("var(--home-warning)", 14, 24)}
           >
             Due {formatDateKey(application.deadline)}
           </span>
@@ -1441,7 +1441,7 @@ function ApplicationCard({
           className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold"
           style={{
             ...getPillStyle(false),
-            color: "color-mix(in srgb, var(--home-acid) 55%, var(--home-ink))",
+            color: "color-mix(in srgb, var(--home-signal) 55%, var(--home-ink))",
           }}
         >
           <Trash2 className="h-3.5 w-3.5" aria-hidden="true" />
@@ -1542,19 +1542,19 @@ function ApplicationPipeline({
       />
       <div className="section-panel space-y-6">
         <div className="grid gap-3 md:grid-cols-3">
-          <div className="rounded-[1rem] border p-4" style={{ borderColor: "var(--home-rule)" }}>
+          <div className="rounded-[var(--radius-3xl)] border p-4" style={{ borderColor: "var(--home-rule)" }}>
             <p className="home-meta mb-0">Active applications</p>
             <p className="mb-0 mt-2 text-2xl font-semibold tabular-nums" style={{ color: "var(--home-ink)" }}>
               {activeCount}
             </p>
           </div>
-          <div className="rounded-[1rem] border p-4" style={{ borderColor: "var(--home-rule)" }}>
+          <div className="rounded-[var(--radius-3xl)] border p-4" style={{ borderColor: "var(--home-rule)" }}>
             <p className="home-meta mb-0">Due today</p>
             <p className="mb-0 mt-2 text-2xl font-semibold tabular-nums" style={{ color: "var(--home-ink)" }}>
               {todayCount}
             </p>
           </div>
-          <div className="rounded-[1rem] border p-4" style={{ borderColor: "var(--home-rule)" }}>
+          <div className="rounded-[var(--radius-3xl)] border p-4" style={{ borderColor: "var(--home-rule)" }}>
             <p className="home-meta mb-0">Overdue follow-ups</p>
             <p className="mb-0 mt-2 text-2xl font-semibold tabular-nums" style={{ color: "var(--home-ink)" }}>
               {overdueCount}
@@ -1575,7 +1575,7 @@ function ApplicationPipeline({
                 onChange={(event) => setQuery(event.target.value)}
                 placeholder="Search company, role, notes, contact..."
                 aria-label="Search applications"
-                className="w-full min-h-[48px] rounded-[1rem] border pl-11 pr-4 text-sm outline-none transition-[border-color,box-shadow] duration-200 ease focus-visible:border-[var(--home-haze)] focus-visible:ring-2 focus-visible:ring-[color-mix(in_srgb,var(--home-haze)_35%,transparent)]"
+                className="w-full min-h-[48px] rounded-[var(--radius-3xl)] border pl-11 pr-4 text-sm outline-none transition-[border-color,box-shadow] duration-200 ease focus-visible:border-[var(--home-signal)] focus-visible:ring-2 focus-visible:ring-[color-mix(in_srgb,var(--home-signal)_35%,transparent)]"
                 style={applicationInputStyle}
               />
             </div>
@@ -1655,7 +1655,7 @@ function ApplicationPipeline({
               return (
                 <div key={status} className="space-y-3">
                   <div
-                    className="flex items-center justify-between rounded-[1rem] border px-3 py-3"
+                    className="flex items-center justify-between rounded-[var(--radius-3xl)] border px-3 py-3"
                     style={{
                       borderColor: "var(--home-rule)",
                       background: "color-mix(in srgb, var(--home-paper-alt) 72%, var(--home-elev-mix))",
@@ -1666,7 +1666,7 @@ function ApplicationPipeline({
                   </div>
                   {statusApplications.length === 0 ? (
                     <div
-                      className="rounded-[1rem] border border-dashed p-4 text-sm"
+                      className="rounded-[var(--radius-3xl)] border border-dashed p-4 text-sm"
                       style={{
                         borderColor: "var(--home-rule)",
                         color: "var(--home-ink-muted)",
@@ -1735,16 +1735,16 @@ function SourceHealthPanel({
           {sourceStatuses.map((source) => {
             const accent =
               source.status === "ok"
-                ? "var(--home-moss)"
+                ? "var(--home-positive)"
                 : source.status === "failed"
-                  ? "var(--home-acid)"
+                  ? "var(--home-negative)"
                   : source.status === "external-disabled"
-                    ? "var(--home-haze)"
+                    ? "var(--home-warning)"
                     : "var(--home-stone)";
             return (
               <span
                 key={`${source.companyId}-${source.status}`}
-                className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-[0.72rem] font-semibold"
+                className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-2xs font-semibold"
                 style={getChipStyle(accent, 14, 24)}
                 title={source.message}
               >
@@ -2138,7 +2138,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
               <div className="space-y-4">
                 <p
                   className="home-kicker mb-0"
-                  style={{ color: "var(--home-acid)", fontFamily: "var(--font-home-sans)" }}
+                  style={{ color: "var(--home-signal)", fontFamily: "var(--font-home-sans)" }}
                 >
                   MBA recruiting
                 </p>
@@ -2152,7 +2152,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
               </div>
               <div className="grid gap-3 self-start sm:grid-cols-2 xl:grid-cols-1">
                 <div
-                  className="rounded-[1.35rem] border p-4"
+                  className="rounded-[var(--radius-3xl)] border p-4"
                   style={{
                     borderColor: "var(--home-rule)",
                     background: "color-mix(in srgb, var(--home-paper-alt) 62%, var(--home-elev-mix))",
@@ -2165,7 +2165,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                   </p>
                 </div>
                 <div
-                  className="rounded-[1.35rem] border p-4"
+                  className="rounded-[var(--radius-3xl)] border p-4"
                   style={{
                     borderColor: "var(--home-rule)",
                     background: "color-mix(in srgb, var(--home-paper-alt) 62%, var(--home-elev-mix))",
@@ -2196,7 +2196,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                 {!isLoading && newJobCount > 0 && (
                   <span
                     className="resume-chip"
-                    style={{ background: "var(--home-acid)", color: "var(--home-ink)" }}
+                    style={{ background: "var(--home-signal)", color: "var(--home-ink)" }}
                   >
                     {newJobCount} new since last visit
                   </span>
@@ -2281,17 +2281,17 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
             <>
           {fetchErrors.length > 0 && !isLoading && (
             <div
-              className="flex items-start gap-3 rounded-[1.5rem] px-5 py-4"
+              className="flex items-start gap-3 rounded-[var(--radius-3xl)] px-5 py-4"
               style={{
-                borderColor: "color-mix(in srgb, var(--home-acid) 32%, var(--home-rule))",
-                background: "color-mix(in srgb, var(--home-acid) 10%, var(--home-paper))",
+                borderColor: "color-mix(in srgb, var(--home-signal) 32%, var(--home-rule))",
+                background: "color-mix(in srgb, var(--home-signal) 10%, var(--home-paper))",
                 border: "1px solid",
               }}
               role="status"
             >
               <CircleAlert
                 className="mt-0.5 h-4 w-4 shrink-0"
-                style={{ color: "color-mix(in srgb, var(--home-acid) 55%, var(--home-ink))" }}
+                style={{ color: "color-mix(in srgb, var(--home-signal) 55%, var(--home-ink))" }}
                 aria-hidden="true"
               />
               <p className="mb-0 text-sm" style={{ color: "var(--home-ink)" }}>
@@ -2329,7 +2329,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                       onChange={(event) => updateRouteState({ q: event.target.value })}
                       placeholder="Search PM, PMM, strategy, ops, growth, finance..."
                       aria-label="Search roles"
-                      className="w-full min-h-[48px] rounded-[1rem] border pl-11 pr-12 text-sm outline-none transition-[border-color,box-shadow] duration-200 ease focus-visible:border-[var(--home-haze)] focus-visible:ring-2 focus-visible:ring-[color-mix(in_srgb,var(--home-haze)_35%,transparent)]"
+                      className="w-full min-h-[48px] rounded-[var(--radius-3xl)] border pl-11 pr-12 text-sm outline-none transition-[border-color,box-shadow] duration-200 ease focus-visible:border-[var(--home-signal)] focus-visible:ring-2 focus-visible:ring-[color-mix(in_srgb,var(--home-signal)_35%,transparent)]"
                       style={{
                         background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
                         borderColor: "var(--home-rule)",
@@ -2346,7 +2346,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                           updateRouteState({ q: "" });
                           searchInputRef.current?.focus();
                         }}
-                        className="absolute right-3 top-1/2 inline-flex min-h-[44px] min-w-[44px] -translate-y-1/2 items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                        className="absolute right-3 top-1/2 inline-flex min-h-[44px] min-w-[44px] -translate-y-1/2 items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
                         aria-label="Clear search"
                         style={{ color: "var(--home-ink-muted)" }}
                       >
@@ -2368,7 +2368,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                       onChange={(event) => updateRouteState({ location: event.target.value })}
                       placeholder="Remote, New York, San Francisco..."
                       aria-label="Filter by location"
-                      className="w-full min-h-[48px] rounded-[1rem] border pl-11 pr-12 text-sm outline-none transition-[border-color,box-shadow] duration-200 ease focus-visible:border-[var(--home-haze)] focus-visible:ring-2 focus-visible:ring-[color-mix(in_srgb,var(--home-haze)_35%,transparent)]"
+                      className="w-full min-h-[48px] rounded-[var(--radius-3xl)] border pl-11 pr-12 text-sm outline-none transition-[border-color,box-shadow] duration-200 ease focus-visible:border-[var(--home-signal)] focus-visible:ring-2 focus-visible:ring-[color-mix(in_srgb,var(--home-signal)_35%,transparent)]"
                       style={{
                         background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
                         borderColor: "var(--home-rule)",
@@ -2385,7 +2385,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                           updateRouteState({ location: "" });
                           locationInputRef.current?.focus();
                         }}
-                        className="absolute right-3 top-1/2 inline-flex min-h-[44px] min-w-[44px] -translate-y-1/2 items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                        className="absolute right-3 top-1/2 inline-flex min-h-[44px] min-w-[44px] -translate-y-1/2 items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
                         aria-label="Clear location filter"
                         style={{ color: "var(--home-ink-muted)" }}
                       >
@@ -2414,7 +2414,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
 
                 {locationOptions.length > 0 && (
                   <div
-                    className="rounded-[1rem] border px-4 py-4"
+                    className="rounded-[var(--radius-3xl)] border px-4 py-4"
                     style={{
                       borderColor: "var(--home-rule)",
                       background: "color-mix(in srgb, var(--home-paper-alt) 62%, var(--home-elev-mix))",
@@ -2423,7 +2423,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                     <div className="flex flex-wrap items-center justify-between gap-2">
                       <p className="home-meta mb-0">Popular locations</p>
                       <p
-                        className="mb-0 text-[0.78rem]"
+                        className="mb-0 text-1xs"
                         style={{ color: "var(--home-ink-muted)", fontFamily: CHIP_FONT_FAMILY }}
                       >
                         {matchingRoleCount} roles before location filtering
@@ -2616,7 +2616,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                     {uiState.external !== DEFAULT_MBA_JOBS_STATE.external && (
                       <span
                         className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
-                        style={getChipStyle("var(--home-haze)", 16, 28)}
+                        style={getChipStyle("var(--home-signal)", 16, 28)}
                       >
                         {EXTERNAL_LABELS[uiState.external]}
                       </span>

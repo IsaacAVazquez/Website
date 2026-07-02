@@ -106,7 +106,7 @@ export function AuthorBio({
               alt={name}
               width={72}
               height={72}
-              className="rounded-xl flex-shrink-0"
+              className="rounded-[var(--radius-xl)] flex-shrink-0"
               itemProp="image"
             />
           )}
@@ -192,7 +192,7 @@ export function AuthorBio({
               alt={name}
               width={100}
               height={100}
-              className="rounded-xl"
+              className="rounded-[var(--radius-xl)]"
               itemProp="image"
             />
           </div>

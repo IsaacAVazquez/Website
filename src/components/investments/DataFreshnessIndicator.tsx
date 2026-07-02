@@ -33,13 +33,13 @@ function getRelativeTime(date: Date): {
 
   let color: string;
   if (diffHours < 1) {
-    color = "var(--color-success)";
+    color = "var(--home-positive)";
   } else if (diffHours < 24) {
-    color = "var(--home-haze)";
+    color = "var(--home-signal)";
   } else if (diffDays < 3) {
-    color = "var(--color-warning)";
+    color = "var(--home-warning)";
   } else {
-    color = "var(--color-error)";
+    color = "var(--home-negative)";
   }
 
   return { label, color, diffDays };
@@ -74,7 +74,7 @@ export function DataFreshnessIndicator({
       <div className="inline-flex items-center gap-2">
         <div
           className="w-2 h-2 rounded-full"
-          style={{ backgroundColor: "var(--color-error)" }}
+          style={{ backgroundColor: "var(--home-negative)" }}
         />
         <span className="text-xs text-[var(--home-ink-soft)]">
           {mode === "dataset"

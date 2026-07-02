@@ -177,7 +177,7 @@ function FrontierRow({ model, isExpanded, onToggle, onKeyDown }: FrontierRowProp
         aria-controls={`frontier-row-detail-${model.id}`}
         onClick={onToggle}
         onKeyDown={onKeyDown}
-        className="cursor-pointer border-b border-[var(--home-rule)] transition-colors hover:bg-[var(--home-paper-alt)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-acid)] focus-visible:ring-offset-2"
+        className="cursor-pointer border-b border-[var(--home-rule)] transition-colors hover:bg-[var(--home-paper-alt)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
       >
         <td className="px-4 py-3">
           <div className="flex flex-col">

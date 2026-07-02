@@ -82,31 +82,31 @@ interface StatCellProps {
 function StatCell({ label, hint, value, sub, tone = "default", subTone = "default" }: StatCellProps) {
   const valueColor =
     tone === "pos"
-      ? "text-[var(--color-success)]"
+      ? "text-[var(--home-positive)]"
       : tone === "neg"
-        ? "text-[var(--color-error)]"
+        ? "text-[var(--home-negative)]"
         : "text-[var(--home-ink)]";
   const subColor =
     subTone === "pos"
-      ? "text-[var(--color-success)]"
+      ? "text-[var(--home-positive)]"
       : subTone === "neg"
-        ? "text-[var(--color-error)]"
+        ? "text-[var(--home-negative)]"
         : "text-[var(--home-ink-muted)]";
   return (
     <div className="flex min-w-0 flex-col gap-1">
       <span
-        className="invest-stats-cell-label w-fit cursor-help text-[12.5px] font-medium text-[var(--home-ink-muted)] [text-decoration-color:color-mix(in_srgb,var(--home-ink)_28%,transparent)] [text-decoration-line:underline] [text-decoration-style:dotted] [text-underline-offset:3px]"
+        className="invest-stats-cell-label w-fit cursor-help text-1xs font-medium text-[var(--home-ink-muted)] [text-decoration-color:color-mix(in_srgb,var(--home-ink)_28%,transparent)] [text-decoration-line:underline] [text-decoration-style:dotted] [text-underline-offset:3px]"
         title={hint}
       >
         {label}
       </span>
       <span
-        className={`truncate text-[17px] font-semibold leading-[1.3] tracking-[-0.01em] tabular-nums ${valueColor}`}
+        className={`truncate text-[1.0625rem] font-semibold leading-[1.3] tracking-[-0.01em] tabular-nums ${valueColor}`}
       >
         {value}
       </span>
       <span
-        className={`invest-stats-cell-sub text-[11.5px] tabular-nums ${subColor}`}
+        className={`invest-stats-cell-sub text-2xs tabular-nums ${subColor}`}
       >
         {sub ?? " "}
       </span>
@@ -122,17 +122,17 @@ export function PortfolioStatsGrid({ summary, holdings }: Props) {
   return (
     <section
       id="portfolio-stats"
-      className="rounded-[28px] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-6 py-6 shadow-[var(--shadow-sm)] sm:px-7 sm:py-7 scroll-mt-28"
+      className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-6 py-6 shadow-[var(--shadow-sm)] sm:px-7 sm:py-7 scroll-mt-28"
     >
       <div className="mb-5 flex items-baseline justify-between gap-4">
-        <h2 className="m-0 text-[16px] font-bold tracking-[-0.02em] text-[var(--home-ink)]">
+        <h2 className="m-0 text-base font-bold tracking-[-0.02em] text-[var(--home-ink)]">
           Portfolio stats
         </h2>
-        <span className="inline-flex items-center gap-1.5 text-[11.5px] text-[var(--home-ink-muted)]">
+        <span className="inline-flex items-center gap-1.5 text-2xs text-[var(--home-ink-muted)]">
           <span
             aria-hidden="true"
-            className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--color-success)]"
-            style={{ boxShadow: "0 0 0 3px color-mix(in srgb, var(--color-success) 18%, transparent)" }}
+            className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--home-positive)]"
+            style={{ boxShadow: "0 0 0 3px color-mix(in srgb, var(--home-positive) 18%, transparent)" }}
           />
           Live across saved positions
         </span>

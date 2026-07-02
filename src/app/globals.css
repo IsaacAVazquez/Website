@@ -1,15 +1,27 @@
 @import "tailwindcss";
 
 /*
+ * Load the JS config. Tailwind v4 does not auto-detect tailwind.config.ts —
+ * without this directive the config (darkMode: "class", min-h/min-w-touch,
+ * the fluid text-* scale, token-mapped shadows/colors) is silently ignored:
+ * `dark:` utilities compile to a prefers-color-scheme media query instead of
+ * following the next-themes `.dark` class, and `min-h-touch` never emits.
+ */
+@config "../../tailwind.config.ts";
+
+/*
  * Register micro-type sizes as first-class utilities. Tailwind v4 only emits a
  * `text-*` utility for sizes declared in `@theme`, so these belong here (not in
  * the `:root` block or tailwind.config.ts, neither of which registers utilities
  * under this setup). Fixed rem values: these labels are intentionally small and
- * should not scale. `text-3xs` = 10px, `text-2xs` = 11px.
+ * should not scale. `text-3xs` = 10px, `text-2xs` = 11px, `text-1xs` = 12px
+ * (the fixed 12px token for dense labels that must not scale — use fluid
+ * `text-xs` when scaling is acceptable).
  */
 @theme {
   --text-3xs: 0.625rem;
   --text-2xs: 0.6875rem;
+  --text-1xs: 0.75rem;
 }
 
 @layer base, components, utilities;
@@ -65,9 +77,19 @@
 }
 
 :root {
-  --font-body: var(--font-inter);
-  --font-heading: var(--font-inter);
-  --font-mono: var(--font-jetbrains-mono);
+  /*
+   * Working Instrument type stack (2026-07 redesign): Instrument Sans carries
+   * display + body, Fragment Mono carries readouts/micro-labels, Instrument
+   * Serif survives for a single italic gesture. Bricolage Grotesque, Inter,
+   * and JetBrains Mono are retired — the aliases below keep any stale
+   * references resolving to the new stack until phase two migrates them.
+   */
+  --font-body: var(--font-instrument-sans);
+  --font-heading: var(--font-instrument-sans);
+  --font-mono: var(--font-fragment-mono);
+  --font-display: var(--font-instrument-sans);
+  --font-inter: var(--font-instrument-sans);
+  --font-jetbrains-mono: var(--font-fragment-mono);
   --font-home-sans: var(--font-instrument-sans);
   --font-home-serif: var(--font-instrument-serif);
 
@@ -101,16 +123,16 @@
    *   - Surfaces      → var(--home-paper) / var(--home-paper-alt)
    *   - Text          → var(--home-ink) / var(--home-ink-muted)
    *   - Borders       → var(--home-rule)
-   *   - Accent        → var(--home-haze)
+   *   - Accent        → var(--home-signal)
    *   - Elevation mix → var(--home-elev-mix) (flips white↔black per theme)
    *
    * Don't introduce new --color-primary / --surface-* / --text-tertiary
    * usages. When you touch a file that still uses them, migrate inline as
    * part of the change.
    * ────────────────────────────────────────────────────────────────────── */
-  --color-primary: var(--home-haze);
+  --color-primary: var(--home-signal);
   --color-secondary: var(--home-haze);
-  --color-accent: var(--home-haze);
+  --color-accent: var(--home-signal);
   --color-success: var(--home-positive);
   --color-warning: var(--home-warning);
   --color-error: var(--home-negative);
@@ -129,8 +151,8 @@
 
   --surface-primary: var(--home-paper);
   --surface-secondary: var(--home-paper-alt);
-  --surface-elevated: color-mix(in srgb, var(--home-paper) 92%, white);
-  --surface-overlay: rgba(18, 17, 15, 0.5);
+  --surface-elevated: color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix));
+  --surface-overlay: rgba(25, 24, 19, 0.5);
 
   --text-primary: var(--home-ink);
   --text-secondary: var(--home-ink-muted);
@@ -140,7 +162,7 @@
 
   --border-primary: var(--home-rule);
   --border-secondary: color-mix(in srgb, var(--home-rule) 60%, transparent);
-  --border-accent: color-mix(in srgb, var(--home-haze) 30%, transparent);
+  --border-accent: color-mix(in srgb, var(--home-signal) 30%, transparent);
 
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
@@ -156,12 +178,18 @@
   --space-3xl: 4rem;
   --space-4xl: 6rem;
 
-  --radius-sm: 0.5rem;
-  --radius-md: 0.75rem;
-  --radius-lg: 1.1rem;
-  --radius-xl: 1.5rem;
-  --radius-2xl: 1.6rem;
-  --radius-3xl: 1.8rem;
+  /*
+   * Working Instrument radii: sharp corners are part of the language.
+   * The scale is kept (sm < md < … < 3xl) but compressed hard so shared
+   * cards and panels read as machined plates, not SaaS blobs. Pills stay
+   * pills where a control is genuinely round.
+   */
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
+  --radius-xl: 6px;
+  --radius-2xl: 6px;
+  --radius-3xl: 8px;
   --radius-pill: 999px;
 
   --transition-fast: 150ms ease;
@@ -170,22 +198,32 @@
   --easing-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --easing-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
-  --home-paper: #F1EBDE;
-  --home-paper-alt: #E7DECD;
-  --home-ink: #12110F;
-  --home-ink-muted: #615B52;
+  /*
+   * Working Instrument palette (2026-07 redesign): cool limestone paper,
+   * graphite ink, and one signal orange reserved for data, state, and action.
+   * --home-signal is the canonical accent for new code. --home-acid,
+   * --home-haze, and --home-moss remain defined as legacy accents so the
+   * pre-redesign dashboards keep rendering until phase two migrates them —
+   * do not use them in new work.
+   */
+  --home-paper: #F6F5F1;
+  --home-paper-alt: #EFEDE6;
+  --home-ink: #191813;
+  --home-ink-muted: #6F6B60;
+  --home-signal: #C93F19;
+  --home-signal-soft: #F6E0D7;
   --home-acid: #D7E74F;
   --home-acid-soft: #EEF49D;
   --home-moss: #B8C793;
   --home-haze: #5672F8;
-  --home-stone: #CAC0AE;
-  --home-rule: rgba(18, 17, 15, 0.12);
-  --home-overlay: rgba(18, 17, 15, 0.08);
-  --home-dark-paper: #12120F;
-  --home-dark-panel: #1B1B17;
-  --home-dark-ink: #F4EEE1;
-  --home-dark-muted: #CFC5B1;
-  --home-dark-rule: rgba(244, 238, 225, 0.12);
+  --home-stone: #D8D4C9;
+  --home-rule: rgba(25, 24, 19, 0.14);
+  --home-overlay: rgba(25, 24, 19, 0.08);
+  --home-dark-paper: #151412;
+  --home-dark-panel: #1C1B18;
+  --home-dark-ink: #ECEAE2;
+  --home-dark-muted: #B4AF9F;
+  --home-dark-rule: rgba(236, 234, 226, 0.14);
 
   /*
    * Theme-aware elevation mix. In light mode, mixing surfaces toward white
@@ -258,22 +296,24 @@
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.2);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
 
-  --home-paper: #12110F;
-  --home-paper-alt: #1A1916;
-  --home-ink: #F4EEE1;
-  --home-ink-muted: #C6BCA8;
+  --home-paper: #151412;
+  --home-paper-alt: #1C1B18;
+  --home-ink: #ECEAE2;
+  --home-ink-muted: #9B9585;
+  --home-signal: #FF6B3B;
+  --home-signal-soft: #462214;
   --home-acid: #A8B846;
   --home-acid-soft: #596134;
   --home-moss: #6F7A4F;
   --home-haze: #6F85FF;
-  --home-stone: #4F493F;
-  --home-rule: rgba(244, 238, 225, 0.14);
-  --home-overlay: rgba(244, 238, 225, 0.08);
-  --home-dark-paper: #0B0B09;
-  --home-dark-panel: #171713;
-  --home-dark-ink: #F6F1E7;
-  --home-dark-muted: #CEC4AE;
-  --home-dark-rule: rgba(246, 241, 231, 0.12);
+  --home-stone: #45423B;
+  --home-rule: rgba(236, 234, 226, 0.16);
+  --home-overlay: rgba(236, 234, 226, 0.08);
+  --home-dark-paper: #0E0D0B;
+  --home-dark-panel: #191815;
+  --home-dark-ink: #F0EEE6;
+  --home-dark-muted: #B6B1A2;
+  --home-dark-rule: rgba(240, 238, 230, 0.12);
 
   --home-elev-mix: black;
 }
@@ -543,6 +583,51 @@
     color: var(--text-secondary);
   }
 
+  /*
+   * Changelog injected-markdown prose. The /changelog page renders entry HTML
+   * via dangerouslySetInnerHTML; without these rules its links/lists/code fall
+   * back to UA defaults (blue links) instead of the token system.
+   */
+  .changelog-prose {
+    color: var(--home-ink-muted);
+  }
+  .changelog-prose p {
+    margin-bottom: 0.9em;
+    max-inline-size: 65ch;
+  }
+  .changelog-prose strong {
+    color: var(--home-ink);
+    font-weight: 600;
+  }
+  .changelog-prose a {
+    color: var(--home-signal);
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, var(--home-signal) 55%, transparent);
+    text-underline-offset: 3px;
+  }
+  .changelog-prose a:hover,
+  .changelog-prose a:focus-visible {
+    text-decoration-color: var(--home-signal);
+  }
+  .changelog-prose ul,
+  .changelog-prose ol {
+    margin: 0.75em 0 0.9em;
+    padding-left: 1.35em;
+  }
+  .changelog-prose li {
+    margin-bottom: 0.3em;
+    color: var(--home-ink-muted);
+  }
+  .changelog-prose :not(pre) > code {
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+    color: var(--home-ink);
+    background: var(--home-paper-alt);
+    border: 1px solid var(--home-rule);
+    border-radius: var(--radius-sm);
+    padding: 0.1em 0.35em;
+  }
+
   .max-inline-size-prose {
     max-inline-size: 65ch;
   }
@@ -624,7 +709,7 @@
   }
 
   .section-panel {
-    background: color-mix(in srgb, var(--home-paper) 92%, white);
+    background: var(--home-paper-raised);
     border: 1px solid var(--home-rule);
     border-radius: 1.5rem;
     box-shadow: var(--shadow-sm);
@@ -638,7 +723,7 @@
   }
 
   .portfolio-card {
-    background: color-mix(in srgb, var(--home-paper) 92%, white);
+    background: var(--home-paper-raised);
     border: 1px solid var(--home-rule);
     border-radius: 1.5rem;
     box-shadow: var(--shadow-sm);
@@ -679,32 +764,18 @@
 
   .resume-panel {
     padding: clamp(1.75rem, 3vw, 2.5rem);
-    background: color-mix(in srgb, var(--home-paper) 92%, white);
+    background: var(--home-paper-raised);
     border: 1px solid var(--home-rule);
-    border-radius: 1.75rem;
-    box-shadow: var(--shadow-md);
-  }
-
-  /*
-   * Inside the resume-panel the wordmark sits within an additional ~80px
-   * of horizontal padding, so the panel cap is slightly tighter than the
-   * home-shell cap to keep the type edge-to-edge inside the card.
-   */
-  .resume-panel .home-wordmark {
-    font-size: clamp(2.2rem, 8.5vw, 7.5rem);
-  }
-
-  .dark .resume-panel {
-    background: color-mix(in srgb, var(--home-paper-alt) 92%, black);
+    border-radius: 0;
   }
 
   .resume-section-title {
     margin-bottom: 2rem;
     font-family: var(--font-home-sans);
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    font-weight: 600;
-    line-height: 0.96;
-    letter-spacing: -0.065em;
+    font-size: clamp(1.9rem, 3.5vw, 3rem);
+    font-weight: 620;
+    line-height: 1.02;
+    letter-spacing: -0.03em;
     color: var(--home-ink);
   }
 
@@ -712,40 +783,40 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    border-radius: 999px;
+    border-radius: 2px;
     padding: 0.75rem 1.5rem;
-    font-family: var(--font-home-sans);
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.09em;
     text-transform: uppercase;
-    border: 1px solid color-mix(in srgb, var(--home-stone) 70%, var(--home-ink) 30%);
+    border: 1px solid var(--home-ink);
     color: var(--home-ink);
-    background: color-mix(in srgb, var(--home-paper) 80%, transparent);
-    transition-property: background-color, border-color, color, box-shadow;
+    background: transparent;
+    transition-property: background-color, border-color, color;
     transition-duration: 200ms;
     transition-timing-function: ease;
   }
 
-  .resume-outline-button:hover {
-    background: var(--home-ink);
+  .resume-outline-button:hover,
+  .resume-outline-button:focus-visible {
+    background: var(--home-signal);
     color: var(--home-paper);
-    border-color: var(--home-ink);
-    box-shadow: var(--shadow-md);
+    border-color: var(--home-signal);
   }
 
   .resume-chip {
     display: inline-flex;
     align-items: center;
-    border-radius: 999px;
+    border-radius: 2px;
     padding: 0.25rem 0.75rem;
-    font-family: var(--font-home-sans);
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    background: color-mix(in srgb, var(--home-acid) 20%, var(--home-paper));
-    border: 1px solid color-mix(in srgb, var(--home-stone) 50%, var(--home-rule));
+    background: var(--home-paper-alt);
+    border: 1px solid var(--home-rule);
     color: var(--home-ink);
     transition-property: background-color, border-color, color;
     transition-duration: 200ms;
@@ -778,17 +849,19 @@
   }
 
   .resume-chip:hover {
-    background: color-mix(in srgb, var(--home-acid) 35%, var(--home-paper));
-    border-color: var(--home-stone);
+    background: var(--home-paper-alt);
+    border-color: var(--home-ink-muted);
   }
 
   .home-page {
+    /*
+     * Working Instrument: flat paper, no ambient gradients. The old acid/haze
+     * radials read as noise against the instrument language — surfaces earn
+     * emphasis through hairlines and type, not washes.
+     */
     position: relative;
     overflow-x: clip;
-    background:
-      radial-gradient(circle at 20% 0%, color-mix(in srgb, var(--home-acid) 18%, transparent), transparent 30%),
-      radial-gradient(circle at 82% 8%, color-mix(in srgb, var(--home-haze) 16%, transparent), transparent 28%),
-      linear-gradient(180deg, var(--home-paper) 0%, color-mix(in srgb, var(--home-paper) 92%, var(--surface-primary)) 100%);
+    background: var(--home-paper);
     color: var(--home-ink);
   }
 
@@ -957,8 +1030,8 @@
     width: 6px;
     height: 6px;
     border-radius: 999px;
-    background: #2BA84A;
-    box-shadow: 0 0 0 3px rgba(43, 168, 74, 0.16);
+    background: var(--home-positive);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--home-positive) 16%, transparent);
   }
   .home-stats-grid {
     display: grid;
@@ -1004,10 +1077,7 @@
     color: color-mix(in srgb, var(--home-ink) 78%, var(--home-ink-muted));
   }
   .home-stats-cell-val-good {
-    color: #1F8F3B;
-  }
-  .dark .home-stats-cell-val-good {
-    color: #4FC273;
+    color: var(--home-positive);
   }
   .home-stats-cell-sub {
     font-family: var(--font-home-sans);
@@ -1039,7 +1109,7 @@
   }
   .home-stats-pill:hover,
   .home-stats-pill:focus-visible {
-    background: color-mix(in srgb, var(--home-acid) 20%, transparent);
+    background: color-mix(in srgb, var(--home-signal-soft) 20%, transparent);
     border-color: color-mix(in srgb, var(--home-ink) 18%, transparent);
     transform: translateY(-1px);
   }
@@ -1151,7 +1221,7 @@
     gap: 8px;
     padding: 9px 14px;
     border-radius: 999px;
-    background: color-mix(in srgb, var(--home-acid) 32%, var(--home-paper));
+    background: color-mix(in srgb, var(--home-signal-soft) 32%, var(--home-paper));
     border: 1px solid color-mix(in srgb, var(--home-ink) 16%, transparent);
     font-family: var(--font-home-sans);
     font-size: 0.78rem;
@@ -1164,8 +1234,8 @@
     width: 7px;
     height: 7px;
     border-radius: 999px;
-    background: #2BA84A;
-    box-shadow: 0 0 0 4px rgba(43, 168, 74, 0.16);
+    background: var(--home-positive);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--home-positive) 16%, transparent);
   }
 
   .home-hero-aside {
@@ -1195,8 +1265,8 @@
   }
   .home-hero-aside-chip:hover,
   .home-hero-aside-chip:focus-visible {
-    border-color: color-mix(in srgb, var(--home-haze) 45%, var(--home-rule));
-    background: color-mix(in srgb, var(--home-acid) 14%, var(--home-paper));
+    border-color: color-mix(in srgb, var(--home-signal) 45%, var(--home-rule));
+    background: color-mix(in srgb, var(--home-signal-soft) 14%, var(--home-paper));
   }
   .home-hero-aside-chip-lbl {
     font-family: var(--font-home-sans);
@@ -1282,7 +1352,7 @@
 
   .home-button-primary:hover,
   .home-button-primary:focus-visible {
-    background: color-mix(in srgb, var(--home-ink) 90%, var(--home-haze));
+    background: color-mix(in srgb, var(--home-ink) 90%, var(--home-signal));
     color: var(--home-paper);
   }
 
@@ -1294,7 +1364,7 @@
 
   .home-button-secondary:hover,
   .home-button-secondary:focus-visible {
-    background: color-mix(in srgb, var(--home-acid) 22%, var(--home-paper));
+    background: color-mix(in srgb, var(--home-signal-soft) 22%, var(--home-paper));
     border-color: color-mix(in srgb, var(--home-ink) 24%, var(--home-stone));
     color: var(--home-ink);
   }
@@ -1309,75 +1379,6 @@
   .home-button-dark:focus-visible {
     background: color-mix(in srgb, var(--home-dark-ink) 10%, transparent);
     color: var(--home-dark-ink);
-  }
-
-  .home-artboard {
-    position: relative;
-    width: min(100%, 44rem);
-    margin-inline: auto;
-  }
-
-  .home-art-panel {
-    position: relative;
-    aspect-ratio: 1.22;
-    overflow: hidden;
-    border: 1px solid color-mix(in srgb, var(--home-stone) 76%, var(--home-haze) 24%);
-    border-radius: 1.8rem;
-    background:
-      linear-gradient(90deg, color-mix(in srgb, var(--home-paper) 10%, transparent) 49.5%, color-mix(in srgb, var(--home-ink) 10%, transparent) 50%, color-mix(in srgb, var(--home-paper) 10%, transparent) 50.5%),
-      linear-gradient(180deg, color-mix(in srgb, var(--home-paper) 72%, white) 0%, color-mix(in srgb, var(--home-paper) 78%, var(--home-paper-alt)) 100%);
-    box-shadow: var(--shadow-xl);
-  }
-
-  .home-art-split,
-  .home-art-orb {
-    position: absolute;
-    inset: 0;
-  }
-
-  .home-art-split-left {
-    right: 50%;
-    background:
-      radial-gradient(circle at 36% 52%, color-mix(in srgb, var(--home-acid) 92%, white) 0%, color-mix(in srgb, var(--home-moss) 72%, white) 22%, transparent 62%);
-  }
-
-  .home-art-split-right {
-    left: 50%;
-    background:
-      radial-gradient(circle at 58% 46%, color-mix(in srgb, var(--home-haze) 92%, white) 0%, color-mix(in srgb, var(--home-acid) 64%, white) 20%, transparent 60%);
-  }
-
-  .home-art-orb {
-    filter: blur(54px);
-    opacity: 0.88;
-  }
-
-  .home-art-orb-left {
-    inset: 12% 46% 14% 6%;
-    background: color-mix(in srgb, var(--home-acid) 58%, transparent);
-  }
-
-  .home-art-orb-right {
-    inset: 12% 6% 16% 48%;
-    background: color-mix(in srgb, var(--home-haze) 58%, transparent);
-  }
-
-  .home-art-caption {
-    position: absolute;
-    left: 1.35rem;
-    bottom: 1.35rem;
-    display: inline-flex;
-    align-items: center;
-    border-radius: 999px;
-    background: color-mix(in srgb, var(--home-paper) 78%, transparent);
-    padding: 0.55rem 0.85rem;
-    font-family: var(--font-home-sans);
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--home-ink);
-    box-shadow: var(--shadow-sm);
   }
 
   .home-section-intro {
@@ -1452,7 +1453,7 @@
     display: inline-flex;
     align-items: center;
     border-radius: 999px;
-    background: color-mix(in srgb, var(--home-acid) 22%, var(--home-paper));
+    background: color-mix(in srgb, var(--home-signal-soft) 22%, var(--home-paper));
     padding: 0.42rem 0.72rem;
     font-family: var(--font-home-sans);
     font-size: 0.68rem;
@@ -1515,116 +1516,6 @@
     color: var(--home-dark-muted);
   }
 
-  .home-section-acid {
-    background:
-      linear-gradient(180deg, color-mix(in srgb, var(--home-acid) 86%, white) 0%, color-mix(in srgb, var(--home-acid) 72%, var(--home-paper-alt)) 100%);
-  }
-
-  .home-spotlight-board {
-    /*
-     * Per the design system handoff: the board owns its own stretch +
-     * spacing rules so consumers don't need a Tailwind `h-full` utility
-     * to fill the grid row. justify-content + gap distribute the note,
-     * poster, and tags from top to bottom; min-height keeps it readable
-     * if the manifesto column happens to be short on a given viewport.
-     */
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 1.25rem;
-    height: 100%;
-    min-height: 22rem;
-    overflow: hidden;
-    border: 1px solid color-mix(in srgb, var(--home-ink) 16%, transparent);
-    border-radius: 1.8rem;
-    background:
-      radial-gradient(120% 90% at 100% 0%, color-mix(in srgb, var(--home-haze) 14%, transparent), transparent 60%),
-      linear-gradient(180deg, color-mix(in srgb, var(--home-paper) 65%, white) 0%, color-mix(in srgb, var(--home-paper-alt) 94%, white) 100%);
-    padding: clamp(1.25rem, 2.5vw, 2rem);
-    box-shadow: var(--shadow-md);
-  }
-
-  .home-spotlight-note {
-    display: inline-flex;
-    border-radius: 999px;
-    background: color-mix(in srgb, var(--home-paper) 78%, transparent);
-    padding: 0.45rem 0.7rem;
-    font-family: var(--font-home-sans);
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--home-ink);
-  }
-
-  .home-spotlight-poster {
-    /* Sits in the flex flow — the board's justify-content distributes the
-       note (top), poster (center), and tags (bottom). No more margin: auto. */
-    display: grid;
-    gap: 0.15rem;
-    font-family: var(--font-home-sans);
-    font-size: clamp(1.6rem, 3.5vw, 3rem);
-    font-weight: 600;
-    line-height: 0.92;
-    letter-spacing: -0.06em;
-    color: var(--home-ink);
-  }
-
-  .home-spotlight-poster span:nth-child(2) {
-    font-family: var(--font-home-serif);
-    font-style: italic;
-  }
-
-  .home-spotlight-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.65rem;
-  }
-
-  .home-spotlight-tags span {
-    display: inline-flex;
-    min-height: 44px;
-    align-items: center;
-    border-radius: 999px;
-    border: 1px solid color-mix(in srgb, var(--home-stone) 72%, var(--home-ink) 18%);
-    padding: 0.6rem 0.95rem;
-    font-family: var(--font-home-sans);
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--home-ink);
-  }
-
-  .home-manifesto-grid {
-    display: grid;
-    gap: 2rem;
-    align-items: start;
-  }
-
-  .home-manifesto {
-    display: grid;
-    gap: 0.2rem;
-    margin-bottom: 0;
-    min-width: 0;
-    font-family: var(--font-home-sans);
-    font-size: clamp(3rem, 7vw, 6.4rem);
-    font-weight: 400;
-    line-height: 0.94;
-    letter-spacing: -0.08em;
-    color: color-mix(in srgb, var(--home-ink) 45%, var(--home-paper));
-    overflow-wrap: anywhere;
-  }
-
-  .home-manifesto em {
-    font-family: var(--font-home-serif);
-    font-style: italic;
-    color: var(--home-ink);
-  }
-
-  .home-manifesto-copy {
-    max-width: 28rem;
-  }
-
   .home-inline-link {
     display: inline-flex;
     align-items: center;
@@ -1640,13 +1531,7 @@
 
   .home-inline-link:hover,
   .home-inline-link:focus-visible {
-    color: color-mix(in srgb, var(--home-haze) 72%, var(--home-ink));
-  }
-
-  .home-section-dark {
-    background:
-      radial-gradient(circle at 18% 14%, color-mix(in srgb, var(--home-haze) 16%, transparent), transparent 28%),
-      linear-gradient(180deg, var(--home-dark-paper) 0%, color-mix(in srgb, var(--home-dark-paper) 88%, black) 100%);
+    color: color-mix(in srgb, var(--home-signal) 72%, var(--home-ink));
   }
 
   .home-writing-card {
@@ -1657,22 +1542,11 @@
   .home-writing-card:hover,
   .home-writing-card:focus-within {
     border-color: color-mix(in srgb, var(--home-dark-ink) 20%, transparent);
-    background: color-mix(in srgb, var(--home-dark-panel) 96%, var(--home-haze));
+    background: color-mix(in srgb, var(--home-dark-panel) 96%, var(--home-signal));
   }
 
   .home-contact-section {
     padding-bottom: clamp(1.25rem, 2.5vw, 2rem);
-  }
-
-  .home-contact-panel {
-    border: 1px solid var(--home-rule);
-    border-radius: 1.85rem;
-    background:
-      radial-gradient(circle at top center, color-mix(in srgb, var(--home-haze) 10%, transparent), transparent 32%),
-      linear-gradient(180deg, color-mix(in srgb, var(--home-paper) 94%, white) 0%, color-mix(in srgb, var(--home-paper-alt) 88%, white) 100%);
-    padding: clamp(1.75rem, 3vw, 3rem);
-    text-align: center;
-    box-shadow: var(--shadow-lg);
   }
 
   .home-reveal {
@@ -1693,27 +1567,29 @@
     animation-delay: 320ms;
   }
 
-  .home-gradient-drift {
-    animation: home-gradient-drift 18s ease-in-out infinite;
-    transform-origin: center;
+  @media (prefers-reduced-motion: reduce) {
+    .home-reveal {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
   }
 
-  /* v3 editorial-brutalism header — hard ink rule, mono nav, acid active */
+  /* Working Instrument header — hairline rule, sans nav, signal underline */
   .header-home {
-    border-bottom-color: var(--home-ink);
+    border-bottom-color: var(--home-rule);
   }
 
   .header-home-brand {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    font-family: var(--font-display);
-    font-size: 1.05rem;
-    font-weight: 700;
-    letter-spacing: -0.04em;
-    text-transform: uppercase;
+    font-family: var(--font-home-sans);
+    font-size: 1rem;
+    font-weight: 640;
+    letter-spacing: -0.015em;
     /* line-height:1 collapses the wordmark's line box to the glyph block so it
-       optically centers with the smaller mono nav links — both sides live in
+       optically centers with the smaller nav links — both sides live in
        equal-height (44px) flex boxes with align-items:center. */
     line-height: 1;
     color: var(--home-ink);
@@ -1721,28 +1597,27 @@
 
   .header-home-brand::before {
     content: "";
-    width: 10px;
-    height: 10px;
-    background: var(--home-acid);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--home-signal);
     flex-shrink: 0;
   }
 
-  /* Utility cluster (search + theme) sits to the right of the segmented nav,
-     separated by a divider that matches the nav link rules. */
+  /* Utility cluster (search + theme) sits to the right of the nav,
+     separated by a hairline divider that matches the site rules. */
   .header-home-controls {
     padding-left: 0.75rem;
-    border-left: 1px solid color-mix(in srgb, var(--home-ink) 8%, transparent);
+    border-left: 1px solid var(--home-rule);
   }
 
   .header-home-link {
-    font-family: var(--font-jetbrains-mono);
-    font-size: 0.8rem;
+    font-family: var(--font-home-sans);
+    font-size: 0.875rem;
     font-weight: 500;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
+    letter-spacing: 0;
     color: var(--home-ink-muted);
-    border-left: 1px solid color-mix(in srgb, var(--home-ink) 8%, transparent);
-    transition: color 160ms ease, background 160ms ease;
+    transition: color 160ms ease, box-shadow 160ms ease;
   }
 
   /* Reset the global prose list spacing (base-layer `ul,ol` margin/padding and
@@ -1755,49 +1630,43 @@
     padding: 0;
   }
 
-  .header-home-nav-list > li:first-child .header-home-link {
-    border-left: 0;
-  }
-
   .header-home-link[aria-current="page"] {
-    background: var(--home-acid);
-    color: #12110f;
+    color: var(--home-ink);
+    box-shadow: inset 0 -2px 0 var(--home-signal);
   }
 
   .header-home-link:not([aria-current="page"]):hover,
   .header-home-link:not([aria-current="page"]):focus-visible {
-    background: color-mix(in srgb, var(--home-paper) 72%, white);
     color: var(--home-ink);
   }
 
   .header-home-mobile-link {
     font-family: var(--font-home-sans);
-    font-size: 0.875rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    font-size: 0.95rem;
+    font-weight: 560;
+    letter-spacing: 0;
   }
 
   .header-home-control {
-    border-color: color-mix(in srgb, var(--home-stone) 72%, var(--home-ink) 18%);
-    background: color-mix(in srgb, var(--home-paper) 80%, transparent);
+    border-color: var(--home-rule);
+    background: transparent;
   }
 
   .header-home-menu {
-    border-color: color-mix(in srgb, var(--home-stone) 76%, var(--home-ink) 16%);
-    background: color-mix(in srgb, var(--home-paper) 92%, white);
+    border-color: var(--home-rule);
+    background: var(--home-paper-raised);
     box-shadow: var(--shadow-lg);
   }
 
-  /* v3 editorial-brutalism contentinfo — hard ink rule, mono colophon, acid block */
+  /* Working Instrument contentinfo — hairline rule, mono colophon, signal dot */
   .footer-home {
-    border-top-color: var(--home-ink);
+    border-top-color: var(--home-rule);
     background: var(--home-paper);
   }
 
   .footer-home-panel {
     border-color: var(--home-rule);
-    background: color-mix(in srgb, var(--home-paper) 92%, white);
+    background: var(--home-paper-raised);
     box-shadow: var(--shadow-sm);
   }
 
@@ -1813,7 +1682,7 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    font-family: var(--font-jetbrains-mono);
+    font-family: var(--font-mono);
     font-size: 0.72rem;
     font-weight: 600;
     letter-spacing: 0.06em;
@@ -1823,9 +1692,10 @@
 
   .footer-home-colophon::before {
     content: "";
-    width: 8px;
-    height: 8px;
-    background: var(--home-acid);
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--home-signal);
     flex-shrink: 0;
   }
 
@@ -1836,14 +1706,14 @@
   }
 
   .footer-home-links a {
-    font-family: var(--font-jetbrains-mono);
+    font-family: var(--font-mono);
     font-size: 0.7rem;
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--home-ink-muted);
     padding: 4px 12px;
-    border-left: 1px solid color-mix(in srgb, var(--home-ink) 16%, transparent);
+    border-left: 1px solid var(--home-rule);
     transition: color 160ms ease;
     white-space: nowrap;
   }
@@ -1864,8 +1734,8 @@
   }
 
   .footer-home-icon {
-    border: 1px solid var(--home-ink);
-    border-radius: 0;
+    border: 1px solid var(--home-rule);
+    border-radius: 8px;
     color: var(--home-ink);
     background: transparent;
   }
@@ -1882,35 +1752,6 @@
 
   .dark .home-note-card {
     background: color-mix(in srgb, var(--home-paper-alt) 92%, black);
-  }
-
-  .dark .home-art-panel {
-    background:
-      linear-gradient(90deg, color-mix(in srgb, var(--home-paper-alt) 26%, transparent) 49.5%, color-mix(in srgb, var(--home-dark-ink) 10%, transparent) 50%, color-mix(in srgb, var(--home-paper-alt) 26%, transparent) 50.5%),
-      linear-gradient(180deg, color-mix(in srgb, var(--home-paper-alt) 94%, black) 0%, color-mix(in srgb, var(--home-paper) 86%, black) 100%);
-  }
-
-  .dark .home-art-caption,
-  .dark .home-spotlight-note {
-    background: color-mix(in srgb, var(--home-paper-alt) 90%, transparent);
-    color: var(--home-dark-ink);
-  }
-
-  .dark .home-section-acid {
-    background:
-      linear-gradient(180deg, color-mix(in srgb, var(--home-acid) 22%, var(--home-paper-alt)) 0%, color-mix(in srgb, var(--home-paper-alt) 94%, black) 100%);
-  }
-
-  .dark .home-spotlight-board {
-    background:
-      radial-gradient(circle at 80% 18%, color-mix(in srgb, var(--home-haze) 24%, transparent), transparent 30%),
-      linear-gradient(180deg, color-mix(in srgb, var(--home-paper-alt) 94%, black) 0%, color-mix(in srgb, var(--home-paper) 90%, black) 100%);
-  }
-
-  .dark .home-contact-panel {
-    background:
-      radial-gradient(circle at top center, color-mix(in srgb, var(--home-haze) 10%, transparent), transparent 32%),
-      linear-gradient(180deg, color-mix(in srgb, var(--home-paper-alt) 94%, black) 0%, color-mix(in srgb, var(--home-paper) 90%, black) 100%);
   }
 
   .dark .footer-home-panel {
@@ -1940,26 +1781,6 @@
     .home-section-intro {
       grid-template-columns: minmax(0, 1fr) minmax(18rem, 30rem);
     }
-
-    .home-manifesto-grid {
-      grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 26rem);
-      gap: 3rem;
-    }
-
-    .home-contact-panel {
-      padding-inline: 4rem;
-    }
-  }
-}
-
-@keyframes home-gradient-drift {
-  0%,
-  100% {
-    transform: scale(1) translate3d(0, 0, 0);
-  }
-
-  50% {
-    transform: scale(1.035) translate3d(1.2%, -1.6%, 0);
   }
 }
 
@@ -2165,7 +1986,7 @@ img {
 .wp-feat-big::before {
   content: ""; position: absolute; right: -60px; top: -60px;
   width: 220px; height: 220px; border-radius: 999px;
-  background: radial-gradient(circle, var(--home-acid) 0%, transparent 65%);
+  background: radial-gradient(circle, var(--home-signal-soft) 0%, transparent 65%);
   opacity: 0.5; pointer-events: none;
 }
 .wp-feat-topline {
@@ -2179,7 +2000,7 @@ img {
   font-size: 10.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
 }
 .wp-feat-pill--editor {
-  background: color-mix(in srgb, var(--home-acid) 32%, transparent);
+  background: color-mix(in srgb, var(--home-signal-soft) 32%, transparent);
   color: var(--home-ink);
   border: 1px solid color-mix(in srgb, var(--home-ink) 14%, transparent);
 }
@@ -2220,8 +2041,8 @@ img {
 .wp-feat-avatar {
   width: 32px; height: 32px; border-radius: 999px;
   background:
-    radial-gradient(circle at 32% 36%, var(--home-acid) 0%, transparent 58%),
-    radial-gradient(circle at 70% 64%, var(--home-haze) 0%, transparent 60%),
+    radial-gradient(circle at 32% 36%, var(--home-signal-soft) 0%, transparent 58%),
+    radial-gradient(circle at 70% 64%, var(--home-signal) 0%, transparent 60%),
     var(--home-ink);
   display: grid; place-items: center;
   color: var(--home-paper); font-weight: 700; font-size: 11px; letter-spacing: -0.04em;
@@ -2254,17 +2075,17 @@ img {
 .wp-feat-small--dark::before {
   content: ""; position: absolute; left: -40px; bottom: -40px;
   width: 180px; height: 180px; border-radius: 999px;
-  background: radial-gradient(circle, var(--home-haze) 0%, transparent 65%);
+  background: radial-gradient(circle, var(--home-signal) 0%, transparent 65%);
   opacity: 0.22; pointer-events: none;
 }
 .wp-feat-small--dark .wp-feat-pill {
-  background: color-mix(in srgb, var(--home-acid) 16%, transparent);
-  color: var(--home-acid);
-  border: 1px solid color-mix(in srgb, var(--home-acid) 24%, transparent);
+  background: color-mix(in srgb, var(--home-signal-soft) 16%, transparent);
+  color: var(--home-signal);
+  border: 1px solid color-mix(in srgb, var(--home-signal-soft) 24%, transparent);
 }
 .wp-feat-small--dark .wp-feat-pill--editor {
-  background: color-mix(in srgb, var(--home-acid) 16%, transparent);
-  color: var(--home-acid);
+  background: color-mix(in srgb, var(--home-signal-soft) 16%, transparent);
+  color: var(--home-signal);
 }
 .wp-feat-small-title {
   font-family: var(--font-home-sans);
@@ -2334,7 +2155,7 @@ img {
   transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
 }
 .wp-chip:hover {
-  background: color-mix(in srgb, var(--home-acid) 16%, transparent);
+  background: color-mix(in srgb, var(--home-signal-soft) 16%, transparent);
   color: var(--home-ink);
 }
 .wp-chip--on {
@@ -2441,8 +2262,8 @@ img {
 .wp-card-img {
   aspect-ratio: 16 / 9;
   background: linear-gradient(135deg,
-    color-mix(in srgb, var(--home-acid) 60%, transparent) 0%,
-    color-mix(in srgb, var(--home-haze) 50%, transparent) 50%,
+    color-mix(in srgb, var(--home-signal-soft) 60%, transparent) 0%,
+    color-mix(in srgb, var(--home-signal) 50%, transparent) 50%,
     color-mix(in srgb, var(--home-ink) 80%, transparent) 100%);
   position: relative;
   display: flex; align-items: flex-end;
@@ -2470,7 +2291,7 @@ img {
 }
 .wp-card-body--noimg { padding: 0; gap: 0.75rem; flex: 1; }
 .wp-card--var-acid .wp-card-img {
-  background: linear-gradient(135deg, var(--home-acid) 0%, var(--home-acid-soft) 60%, var(--home-paper-alt) 100%);
+  background: linear-gradient(135deg, var(--home-signal-soft) 0%, var(--home-signal-soft) 60%, var(--home-paper-alt) 100%);
   color: var(--home-ink);
 }
 .wp-card--var-acid .wp-card-img-pill {
@@ -2480,13 +2301,13 @@ img {
 }
 .wp-card--var-haze .wp-card-img {
   background: linear-gradient(160deg,
-    var(--home-haze) 0%,
-    color-mix(in srgb, var(--home-haze) 40%, var(--home-ink)) 100%);
+    var(--home-signal) 0%,
+    color-mix(in srgb, var(--home-signal) 40%, var(--home-ink)) 100%);
 }
 .wp-card--var-ink .wp-card-img {
   background:
-    radial-gradient(circle at 70% 80%, color-mix(in srgb, var(--home-haze) 70%, transparent) 0%, transparent 55%),
-    radial-gradient(circle at 20% 30%, color-mix(in srgb, var(--home-acid) 50%, transparent) 0%, transparent 55%),
+    radial-gradient(circle at 70% 80%, color-mix(in srgb, var(--home-signal) 70%, transparent) 0%, transparent 55%),
+    radial-gradient(circle at 20% 30%, color-mix(in srgb, var(--home-signal-soft) 50%, transparent) 0%, transparent 55%),
     var(--home-ink);
 }
 
@@ -2509,7 +2330,7 @@ img {
   display: inline-flex; align-items: center; justify-content: center; gap: 6px;
 }
 .wp-pager-btn:hover {
-  background: color-mix(in srgb, var(--home-acid) 18%, transparent);
+  background: color-mix(in srgb, var(--home-signal-soft) 18%, transparent);
   color: var(--home-ink);
 }
 .wp-pager-btn:disabled {
@@ -2553,7 +2374,7 @@ img {
   border-radius: 28px;
   border: 1px solid var(--home-rule);
   background:
-    radial-gradient(circle at 6% -4%, color-mix(in srgb, var(--home-haze) 12%, transparent), transparent 32%),
+    radial-gradient(circle at 6% -4%, color-mix(in srgb, var(--home-signal) 12%, transparent), transparent 32%),
     color-mix(in srgb, var(--home-paper) 96%, var(--home-elev-mix));
   box-shadow: var(--shadow-sm);
   padding: 26px 30px 32px;
@@ -2567,8 +2388,8 @@ img {
   grid-template-columns: 220px minmax(0, 1fr) 290px;
   gap: 0;
   background:
-    radial-gradient(circle at 6% -2%, color-mix(in srgb, var(--home-acid) 18%, transparent), transparent 28%),
-    radial-gradient(circle at 96% 4%, color-mix(in srgb, var(--home-haze) 18%, transparent), transparent 26%),
+    radial-gradient(circle at 6% -2%, color-mix(in srgb, var(--home-signal-soft) 18%, transparent), transparent 28%),
+    radial-gradient(circle at 96% 4%, color-mix(in srgb, var(--home-signal) 18%, transparent), transparent 26%),
     var(--home-paper);
   border-radius: 28px;
   border: 1px solid var(--home-rule);
@@ -2608,8 +2429,8 @@ img {
 .invest-brand-iv {
   width: 34px; height: 34px; border-radius: 12px;
   background:
-    radial-gradient(circle at 32% 36%, var(--home-acid) 0%, transparent 58%),
-    radial-gradient(circle at 70% 64%, var(--home-haze) 0%, transparent 60%),
+    radial-gradient(circle at 32% 36%, var(--home-signal-soft) 0%, transparent 58%),
+    radial-gradient(circle at 70% 64%, var(--home-signal) 0%, transparent 60%),
     var(--home-ink);
   display: grid; place-items: center;
   color: var(--home-paper);
@@ -2647,7 +2468,7 @@ img {
   text-align: left;
 }
 .invest-nav-link:hover {
-  background: color-mix(in srgb, var(--home-acid) 18%, transparent);
+  background: color-mix(in srgb, var(--home-signal-soft) 18%, transparent);
   color: var(--home-ink);
 }
 .invest-nav-link[aria-current="true"],
@@ -2660,7 +2481,7 @@ img {
 .invest-nav-pill {
   margin-left: auto;
   font-size: 11px; font-weight: 700; letter-spacing: 0.04em;
-  background: color-mix(in srgb, var(--home-acid) 40%, transparent);
+  background: color-mix(in srgb, var(--home-signal-soft) 40%, transparent);
   color: var(--home-ink);
   padding: 2px 8px; border-radius: 999px;
 }
@@ -2748,7 +2569,7 @@ img {
   position: absolute;
   inset: -40% -10% auto auto;
   width: 360px; height: 360px;
-  background: radial-gradient(circle, color-mix(in srgb, var(--home-haze) 18%, transparent), transparent 60%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--home-signal) 18%, transparent), transparent 60%);
   filter: blur(20px);
   pointer-events: none;
 }
@@ -2864,13 +2685,13 @@ img {
   min-height: 44px;
 }
 .invest-ghost:hover {
-  background: color-mix(in srgb, var(--home-acid) 22%, transparent);
+  background: color-mix(in srgb, var(--home-signal-soft) 22%, transparent);
 }
 .invest-ghost.is-primary {
   background: var(--home-ink); color: var(--home-paper); border-color: var(--home-ink);
 }
 .invest-ghost.is-primary:hover {
-  background: color-mix(in srgb, var(--home-ink) 90%, var(--home-haze));
+  background: color-mix(in srgb, var(--home-ink) 90%, var(--home-signal));
 }
 
 /* Holdings table */
@@ -2944,7 +2765,7 @@ img {
   transition: background 160ms ease;
 }
 .invest-holdings tbody tr:hover {
-  background: color-mix(in srgb, var(--home-acid) 8%, transparent);
+  background: color-mix(in srgb, var(--home-signal-soft) 8%, transparent);
 }
 .invest-holdings td.num { text-align: right; }
 
@@ -3100,7 +2921,7 @@ img {
   position: absolute;
   right: -10%; top: -60%;
   width: 480px; height: 480px;
-  background: radial-gradient(circle, color-mix(in srgb, var(--home-haze) 14%, transparent), transparent 60%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--home-signal) 14%, transparent), transparent 60%);
   filter: blur(18px);
   pointer-events: none;
 }
@@ -3128,7 +2949,7 @@ img {
   display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
   margin-bottom: 6px;
 }
-.research-asset-titleline h1 {
+.research-asset-titleline h2 {
   margin: 0;
   font-size: clamp(1.5rem, 2vw + 0.6rem, 2.05rem);
   font-weight: 600; letter-spacing: -0.04em; line-height: 1;
@@ -3149,12 +2970,12 @@ img {
   padding: 5px 11px; border-radius: 999px;
 }
 .research-badge-pill.held {
-  background: color-mix(in srgb, var(--home-haze) 12%, transparent);
-  color: var(--home-haze);
-  border: 1px solid color-mix(in srgb, var(--home-haze) 30%, transparent);
+  background: color-mix(in srgb, var(--home-signal) 12%, transparent);
+  color: var(--home-signal);
+  border: 1px solid color-mix(in srgb, var(--home-signal) 30%, transparent);
 }
 .research-badge-pill.tag {
-  background: color-mix(in srgb, var(--home-acid) 32%, transparent);
+  background: color-mix(in srgb, var(--home-signal-soft) 32%, transparent);
   color: var(--home-ink);
 }
 .research-asset-bio {
@@ -3349,7 +3170,7 @@ img {
   color: var(--home-ink);
 }
 .invest-rail-mover:hover {
-  background: color-mix(in srgb, var(--home-acid) 18%, transparent);
+  background: color-mix(in srgb, var(--home-signal-soft) 18%, transparent);
   transform: translateY(-1px);
 }
 .invest-rail-mover-sym {
@@ -3384,8 +3205,8 @@ img {
   grid-template-columns: 220px minmax(0, 1fr) 290px;
   gap: 0;
   background:
-    radial-gradient(circle at 6% -2%, color-mix(in srgb, var(--home-acid) 18%, transparent), transparent 28%),
-    radial-gradient(circle at 96% 4%, color-mix(in srgb, var(--home-haze) 18%, transparent), transparent 26%),
+    radial-gradient(circle at 6% -2%, color-mix(in srgb, var(--home-signal-soft) 18%, transparent), transparent 28%),
+    radial-gradient(circle at 96% 4%, color-mix(in srgb, var(--home-signal) 18%, transparent), transparent 26%),
     var(--home-paper);
   border-radius: 28px;
   border: 1px solid var(--home-rule);
@@ -3410,7 +3231,7 @@ img {
   border-radius: 28px;
   border: 1px solid var(--home-rule);
   background:
-    radial-gradient(circle at 6% -4%, color-mix(in srgb, var(--home-haze) 12%, transparent), transparent 32%),
+    radial-gradient(circle at 6% -4%, color-mix(in srgb, var(--home-signal) 12%, transparent), transparent 32%),
     color-mix(in srgb, var(--home-paper) 96%, var(--home-elev-mix));
   box-shadow: var(--shadow-sm);
   padding: 26px 30px 32px;
@@ -3437,8 +3258,8 @@ img {
 .tool-brand-mark {
   width: 34px; height: 34px; border-radius: 12px;
   background:
-    radial-gradient(circle at 32% 36%, var(--home-acid) 0%, transparent 58%),
-    radial-gradient(circle at 70% 64%, var(--home-haze) 0%, transparent 60%),
+    radial-gradient(circle at 32% 36%, var(--home-signal-soft) 0%, transparent 58%),
+    radial-gradient(circle at 70% 64%, var(--home-signal) 0%, transparent 60%),
     var(--home-ink);
   display: grid; place-items: center;
   color: var(--home-paper);
@@ -3473,7 +3294,7 @@ img {
   min-height: 38px;
 }
 .tool-nav-link:hover {
-  background: color-mix(in srgb, var(--home-acid) 18%, transparent);
+  background: color-mix(in srgb, var(--home-signal-soft) 18%, transparent);
   color: var(--home-ink);
 }
 .tool-nav-link[aria-current="true"],
@@ -3486,7 +3307,7 @@ img {
 .tool-nav-pill {
   margin-left: auto;
   font-size: 11px; font-weight: 700; letter-spacing: 0.04em;
-  background: color-mix(in srgb, var(--home-acid) 40%, transparent);
+  background: color-mix(in srgb, var(--home-signal-soft) 40%, transparent);
   color: var(--home-ink);
   padding: 2px 8px; border-radius: 999px;
 }
@@ -3572,8 +3393,8 @@ img {
 .tool-meta-chip-dot {
   width: 7px; height: 7px;
   border-radius: 999px;
-  background: var(--home-moss);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--home-moss) 18%, transparent);
+  background: var(--home-positive);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--home-positive) 18%, transparent);
 }
 .tool-meta-chip-divider { opacity: 0.5; }
 .tool-meta-chip-spacer { flex: 1; min-width: 8px; }
@@ -3681,14 +3502,6 @@ img {
 .tool-empty p { margin: 0; }
 .tool-empty p + p { margin-top: 6px; color: var(--home-ink-muted); font-size: 13px; }
 
-@media (prefers-reduced-motion: reduce) {
-  .home-reveal,
-  .home-gradient-drift {
-    animation: none !important;
-    opacity: 1 !important;
-    transform: none !important;
-  }
-}
 
 .article-text {
   font-size: var(--text-base);
@@ -3742,7 +3555,7 @@ input[type="range"]::-webkit-slider-thumb {
   width: 22px;
   height: 22px;
   border-radius: 9999px;
-  background: var(--home-haze);
+  background: var(--home-signal);
   border: 4px solid var(--home-paper);
   box-shadow: 0 0 0 1px var(--home-rule), 0 1px 2px rgba(0, 0, 0, 0.12);
   cursor: pointer;
@@ -3754,7 +3567,7 @@ input[type="range"]::-moz-range-thumb {
   width: 22px;
   height: 22px;
   border-radius: 9999px;
-  background: var(--home-haze);
+  background: var(--home-signal);
   border: 4px solid var(--home-paper);
   box-shadow: 0 0 0 1px var(--home-rule), 0 1px 2px rgba(0, 0, 0, 0.12);
   cursor: pointer;
@@ -3762,11 +3575,11 @@ input[type="range"]::-moz-range-thumb {
 }
 
 input[type="range"]:focus-visible::-webkit-slider-thumb {
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--home-haze) 30%, transparent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--home-signal) 30%, transparent);
 }
 
 input[type="range"]:focus-visible::-moz-range-thumb {
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--home-haze) 30%, transparent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--home-signal) 30%, transparent);
 }
 
 @media (hover: hover) {
@@ -3806,7 +3619,7 @@ input[type="range"]:focus-visible::-moz-range-thumb {
   padding: 6px 12px;
 }
 .invest-retire-computing {
-  color: var(--home-acid, var(--home-ink-muted));
+  color: var(--home-signal);
   font-weight: 600;
 }
 .invest-retire-intro {
@@ -3991,8 +3804,8 @@ input[type="range"]:focus-visible::-moz-range-thumb {
 
 .invest-retire-seed {
   align-self: flex-start;
-  border: 1px dashed color-mix(in srgb, var(--home-acid, #2563eb) 50%, var(--home-rule));
-  background: color-mix(in srgb, var(--home-acid, #2563eb) 8%, var(--home-paper));
+  border: 1px dashed color-mix(in srgb, var(--home-signal) 50%, var(--home-rule));
+  background: color-mix(in srgb, var(--home-signal) 8%, var(--home-paper));
   color: var(--home-ink);
   border-radius: 12px;
   padding: 8px 13px;
@@ -4002,7 +3815,7 @@ input[type="range"]:focus-visible::-moz-range-thumb {
   min-height: 44px;
 }
 .invest-retire-seed:hover {
-  background: color-mix(in srgb, var(--home-acid, #2563eb) 14%, var(--home-paper));
+  background: color-mix(in srgb, var(--home-signal) 14%, var(--home-paper));
 }
 
 .invest-retire-accounts,

@@ -33,7 +33,7 @@ export function MissionLaunchBoard({
     <section
       data-testid="mission-board"
       aria-label="Mission board"
-      className="rounded-[30px] border border-[var(--home-rule)] bg-[var(--home-paper-raised)]/92 p-4 shadow-[var(--shadow-md)] sm:p-5"
+      className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)]/92 p-4 shadow-[var(--shadow-md)] sm:p-5"
     >
       <div className="mb-5 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
         <div>
@@ -50,7 +50,7 @@ export function MissionLaunchBoard({
         </div>
 
         <div
-          className="inline-flex flex-wrap gap-2 rounded-[22px] border border-[var(--home-rule)] bg-[var(--home-paper)] p-2"
+          className="inline-flex flex-wrap gap-2 rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] p-2"
           role="tablist"
           aria-label="Mission board status filters"
         >
@@ -61,9 +61,9 @@ export function MissionLaunchBoard({
               role="tab"
               aria-selected={status === option.key}
               onClick={() => onStatusChange(option.key)}
-              className={`tap-target rounded-2xl px-4 py-3 text-sm font-semibold transition ${
+              className={`tap-target rounded-[var(--radius-2xl)] px-4 py-3 text-sm font-semibold transition ${
                 status === option.key
-                  ? "bg-[var(--home-haze)] text-white"
+                  ? "bg-[var(--home-signal)] text-white"
                   : "text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
               }`}
             >
@@ -74,7 +74,7 @@ export function MissionLaunchBoard({
       </div>
 
       {error && launches.length === 0 && !isLoading ? (
-        <div role="alert" className="rounded-[24px] border border-[color-mix(in_srgb,var(--home-acid)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-acid)_9%,var(--home-paper))] p-4">
+        <div role="alert" className="rounded-[var(--radius-3xl)] border border-[color-mix(in_srgb,var(--home-warning)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-warning)_9%,var(--home-paper))] p-4">
           <p className="text-sm font-semibold text-[var(--home-ink)]">
             Mission board unavailable
           </p>
@@ -82,7 +82,7 @@ export function MissionLaunchBoard({
           <button
             type="button"
             onClick={onRetry}
-            className="tap-target mt-4 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-4 py-3 text-sm font-semibold text-[var(--home-ink)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)]"
+            className="tap-target mt-4 rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-4 py-3 text-sm font-semibold text-[var(--home-ink)] transition hover:border-[var(--home-signal)] hover:text-[var(--home-signal)]"
           >
             Retry board
           </button>
@@ -94,16 +94,16 @@ export function MissionLaunchBoard({
           {Array.from({ length: 5 }, (_, index) => (
             <div
               key={index}
-              className="h-[124px] animate-pulse rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper)]"
+              className="h-[124px] animate-pulse rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper)]"
             />
           ))}
         </div>
       ) : null}
 
       {!isLoading && launches.length === 0 ? (
-        <div className="rounded-[24px] border border-dashed border-[var(--home-rule)] bg-[var(--home-paper)] px-5 py-8 text-center">
-          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--home-haze)_10%,var(--home-paper-alt))]">
-            <Radar className="h-6 w-6 text-[var(--home-haze)]" />
+        <div className="rounded-[var(--radius-3xl)] border border-dashed border-[var(--home-rule)] bg-[var(--home-paper)] px-5 py-8 text-center">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--home-signal)_10%,var(--home-paper-alt))]">
+            <Radar className="h-6 w-6 text-[var(--home-signal)]" />
           </div>
           <p className="mt-4 text-lg font-semibold text-[var(--home-ink)]">
             {status === "upcoming"
@@ -128,10 +128,10 @@ export function MissionLaunchBoard({
                 key={launch.id}
                 type="button"
                 onClick={() => onSelectLaunch(launch.id)}
-                className={`w-full rounded-[24px] border p-4 text-left transition sm:p-5 ${
+                className={`w-full rounded-[var(--radius-3xl)] border p-4 text-left transition sm:p-5 ${
                   isSelected
-                    ? "border-[var(--home-haze)] bg-[color-mix(in_srgb,var(--home-haze)_7%,var(--home-paper))] shadow-[var(--shadow-sm)]"
-                    : "border-[var(--home-rule)] bg-[var(--home-paper)] hover:border-[color-mix(in_srgb,var(--home-haze)_26%,var(--home-rule))] hover:bg-[var(--home-paper-alt)]"
+                    ? "border-[var(--home-signal)] bg-[color-mix(in_srgb,var(--home-signal)_7%,var(--home-paper))] shadow-[var(--shadow-sm)]"
+                    : "border-[var(--home-rule)] bg-[var(--home-paper)] hover:border-[color-mix(in_srgb,var(--home-signal)_26%,var(--home-rule))] hover:bg-[var(--home-paper-alt)]"
                 }`}
               >
                 <div className="grid gap-4 md:grid-cols-[92px_minmax(0,1fr)]">
@@ -158,7 +158,7 @@ export function MissionLaunchBoard({
                         </h3>
                       </div>
 
-                      <div className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--home-haze)]">
+                      <div className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--home-signal)]">
                         Open detail
                         {isLoading && isSelected ? (
                           <LoaderCircle className="h-4 w-4 animate-spin" />

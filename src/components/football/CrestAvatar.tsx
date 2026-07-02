@@ -32,7 +32,7 @@ export function CrestAvatar({
         loading="lazy"
         decoding="async"
         className={cn(
-          "rounded-full border border-[var(--home-rule)] bg-white object-contain p-1",
+          "rounded-full border border-[var(--home-rule)] bg-[var(--home-dark-ink)] object-contain p-1",
           dimensionClass
         )}
       />

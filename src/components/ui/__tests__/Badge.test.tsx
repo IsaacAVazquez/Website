@@ -11,22 +11,22 @@ describe('Badge', () => {
   it('applies default variant', () => {
     const { container } = render(<Badge>Default</Badge>)
     const badge = container.firstChild as HTMLElement
-    expect(badge).toHaveClass('bg-[var(--home-haze)]/10')
-    expect(badge).toHaveClass('text-[var(--home-haze)]')
+    expect(badge).toHaveClass('bg-[var(--home-signal)]/10')
+    expect(badge).toHaveClass('text-[var(--home-signal)]')
   })
 
   it('applies success variant correctly', () => {
     const { container } = render(<Badge variant="success">Success</Badge>)
     const badge = container.firstChild as HTMLElement
-    expect(badge).toHaveClass('bg-[var(--color-success)]/10')
-    expect(badge).toHaveClass('text-[var(--color-success)]')
+    expect(badge).toHaveClass('bg-[var(--home-positive)]/10')
+    expect(badge).toHaveClass('text-[var(--home-positive)]')
   })
 
   it('applies warning variant correctly', () => {
     const { container } = render(<Badge variant="warning">Warning</Badge>)
     const badge = container.firstChild as HTMLElement
-    expect(badge).toHaveClass('bg-[var(--color-warning)]/10')
-    expect(badge).toHaveClass('text-[var(--color-warning)]')
+    expect(badge).toHaveClass('bg-[var(--home-warning)]/10')
+    expect(badge).toHaveClass('text-[var(--home-warning)]')
   })
 
   it('applies outline variant correctly', () => {

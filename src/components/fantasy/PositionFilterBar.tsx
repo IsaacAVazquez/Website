@@ -56,8 +56,8 @@ export function PositionFilterBar<T extends string>({
           };
         } else if (isUnavailable) {
           style = {
-            borderColor: "color-mix(in srgb, var(--color-warning) 30%, var(--home-rule))",
-            background: "color-mix(in srgb, var(--color-warning) 8%, var(--home-paper))",
+            borderColor: "color-mix(in srgb, var(--home-warning) 30%, var(--home-rule))",
+            background: "color-mix(in srgb, var(--home-warning) 8%, var(--home-paper))",
             color: "var(--home-ink-muted)",
           };
         } else {

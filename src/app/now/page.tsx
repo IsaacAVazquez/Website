@@ -152,7 +152,7 @@ export default function NowPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline underline-offset-2"
-                style={{ color: "var(--home-haze)" }}
+                style={{ color: "var(--home-signal)" }}
               >
                 /now page movement
               </a>
@@ -225,12 +225,12 @@ export default function NowPage() {
                   <li key={item.href}>
                     <Link
                       href={item.href}
-                      className="group flex flex-col gap-1 rounded-[1.2rem] border px-4 py-3 transition-[border-color,background-color]"
+                      className="group flex flex-col gap-1 rounded-[var(--radius-3xl)] border px-4 py-3 transition-[border-color,background-color]"
                       style={{
                         borderColor:
-                          "color-mix(in srgb, var(--home-rule) 82%, white)",
+                          "color-mix(in srgb, var(--home-rule) 82%, var(--home-elev-mix))",
                         background:
-                          "color-mix(in srgb, var(--home-paper-alt) 76%, white)",
+                          "color-mix(in srgb, var(--home-paper-alt) 76%, var(--home-elev-mix))",
                       }}
                     >
                       <span
@@ -278,7 +278,7 @@ export default function NowPage() {
                 <Link
                   href="/changelog"
                   className="underline underline-offset-2"
-                  style={{ color: "var(--home-haze)" }}
+                  style={{ color: "var(--home-signal)" }}
                 >
                   changelog
                 </Link>{" "}
@@ -286,7 +286,7 @@ export default function NowPage() {
                 <Link
                   href="/writing"
                   className="underline underline-offset-2"
-                  style={{ color: "var(--home-haze)" }}
+                  style={{ color: "var(--home-signal)" }}
                 >
                   writing archive
                 </Link>{" "}
@@ -294,7 +294,7 @@ export default function NowPage() {
                 <Link
                   href="/contact"
                   className="underline underline-offset-2"
-                  style={{ color: "var(--home-haze)" }}
+                  style={{ color: "var(--home-signal)" }}
                 >
                   send a note
                 </Link>

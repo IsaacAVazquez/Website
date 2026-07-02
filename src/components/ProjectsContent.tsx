@@ -605,7 +605,7 @@ export function ProjectsContent() {
             >
               <div className="relative h-full p-6 flex flex-col">
                 <div className="mb-4">
-                  <Icon className="h-8 w-8 text-[var(--home-haze)]" />
+                  <Icon className="h-8 w-8 text-[var(--home-signal)]" />
                 </div>
 
                 <h3 className="font-bold text-xl mb-2 text-[var(--home-ink)]">
@@ -617,7 +617,7 @@ export function ProjectsContent() {
 
                 {project.metrics && (
                   <div className="mb-4">
-                    <span className="text-xs font-semibold text-[var(--home-haze)]">
+                    <span className="text-xs font-semibold text-[var(--home-signal)]">
                       {project.metrics}
                     </span>
                   </div>
@@ -627,7 +627,7 @@ export function ProjectsContent() {
                   {project.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="px-2 py-1 text-xs font-medium rounded-full bg-[var(--home-haze)]/10 text-[var(--home-haze)] border border-[var(--home-haze)]/20"
+                      className="px-2 py-1 text-xs font-medium rounded-full bg-[var(--home-signal)]/10 text-[var(--home-signal)] border border-[var(--home-signal)]/20"
                     >
                       {tech}
                     </span>
@@ -640,10 +640,10 @@ export function ProjectsContent() {
                     project.impact) && (
                     <button
                       onClick={() => openProjectDetail(project)}
-                      className="p-2 rounded-lg bg-[var(--home-paper-raised)] hover:bg-[var(--home-haze)]/10 border border-[var(--home-rule)] hover:border-[var(--home-haze)]/50 transition-all"
+                      className="p-2 rounded-lg bg-[var(--home-paper-raised)] hover:bg-[var(--home-signal)]/10 border border-[var(--home-rule)] hover:border-[var(--home-signal)]/50 transition-[background-color,border-color]"
                       aria-label="View project details"
                     >
-                      <IconEye className="h-4 w-4 text-[var(--home-haze)]" />
+                      <IconEye className="h-4 w-4 text-[var(--home-signal)]" />
                     </button>
                   )}
                   {project.github && (
@@ -651,30 +651,30 @@ export function ProjectsContent() {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 rounded-lg bg-[var(--home-paper-raised)] hover:bg-[var(--home-haze)]/10 border border-[var(--home-rule)] hover:border-[var(--home-haze)]/50 transition-all"
+                      className="p-2 rounded-lg bg-[var(--home-paper-raised)] hover:bg-[var(--home-signal)]/10 border border-[var(--home-rule)] hover:border-[var(--home-signal)]/50 transition-[background-color,border-color]"
                       aria-label="View source code"
                     >
-                      <IconBrandGithub className="h-4 w-4 text-[var(--home-haze)]" />
+                      <IconBrandGithub className="h-4 w-4 text-[var(--home-signal)]" />
                     </a>
                   )}
                   {project.link &&
                     (project.link.startsWith("/") ? (
                       <Link
                         href={project.link}
-                        className="p-2 rounded-lg bg-[var(--home-paper-raised)] hover:bg-[var(--home-haze)]/10 border border-[var(--home-rule)] hover:border-[var(--home-haze)]/50 transition-all"
+                        className="p-2 rounded-lg bg-[var(--home-paper-raised)] hover:bg-[var(--home-signal)]/10 border border-[var(--home-rule)] hover:border-[var(--home-signal)]/50 transition-[background-color,border-color]"
                         aria-label="View live project"
                       >
-                        <IconExternalLink className="h-4 w-4 text-[var(--home-haze)]" />
+                        <IconExternalLink className="h-4 w-4 text-[var(--home-signal)]" />
                       </Link>
                     ) : (
                       <a
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2 rounded-lg bg-[var(--home-paper-raised)] hover:bg-[var(--home-haze)]/10 border border-[var(--home-rule)] hover:border-[var(--home-haze)]/50 transition-all"
+                        className="p-2 rounded-lg bg-[var(--home-paper-raised)] hover:bg-[var(--home-signal)]/10 border border-[var(--home-rule)] hover:border-[var(--home-signal)]/50 transition-[background-color,border-color]"
                         aria-label="View live project"
                       >
-                        <IconExternalLink className="h-4 w-4 text-[var(--home-haze)]" />
+                        <IconExternalLink className="h-4 w-4 text-[var(--home-signal)]" />
                       </a>
                     ))}
                 </div>

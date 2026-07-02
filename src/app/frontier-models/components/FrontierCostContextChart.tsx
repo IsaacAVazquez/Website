@@ -2,6 +2,7 @@
 
 import { select, extent, scaleLog, axisBottom, axisLeft } from "d3";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useTheme } from "next-themes";
 import {
   blendedPricePerMTokens,
   formatPriceUsd,
@@ -44,6 +45,7 @@ export function FrontierCostContextChart({
 }: FrontierCostContextChartProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const svgRef = useRef<SVGSVGElement | null>(null);
+  const { resolvedTheme } = useTheme();
   const [containerWidth, setContainerWidth] = useState(0);
 
   useEffect(() => {
@@ -113,8 +115,14 @@ export function FrontierCostContextChart({
       .domain([Math.max(0.05, yExtent[0] * 0.6), yExtent[1] * 1.4])
       .range([innerHeight, 0]);
 
-    const axisColor = "color-mix(in srgb, var(--home-ink) 55%, var(--home-paper))";
-    const gridColor = "color-mix(in srgb, var(--home-ink) 12%, var(--home-paper))";
+    // SVG presentation attributes can't substitute var()/color-mix(), so
+    // resolve the tokens at render time (re-resolved when the theme flips).
+    const computedStyle = getComputedStyle(document.documentElement);
+    const axisColor =
+      computedStyle.getPropertyValue("--home-ink-muted").trim() || "#6F6B60";
+    const gridColor =
+      computedStyle.getPropertyValue("--home-rule").trim() ||
+      "rgba(25,24,19,0.14)";
 
     const xAxis = axisBottom(xScale)
       .ticks(5, ".2s")
@@ -207,7 +215,7 @@ export function FrontierCostContextChart({
         (d) =>
           `${d.model.providerLabel} ${d.model.name}\nContext: ${formatTokenCount(d.model.contextWindow)}\nBlended price: ${formatPriceUsd(d.y)} / 1M`
       );
-  }, [containerWidth, plotted, selectedModelId, onSelectModel]);
+  }, [containerWidth, plotted, selectedModelId, onSelectModel, resolvedTheme]);
 
   const providersInChart = useMemo(() => {
     const seen = new Map<FrontierProvider, string>();

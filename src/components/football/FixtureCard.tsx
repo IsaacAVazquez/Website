@@ -63,7 +63,7 @@ export function FixtureCard({
   return (
     <div
       className={cn(
-        "rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)]",
+        "rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)]",
         compact ? "px-3 py-2.5" : "px-4 py-4"
       )}
       style={style}
@@ -75,7 +75,7 @@ export function FixtureCard({
               {fixture.matchday ? `${periodLabel} ${fixture.matchday}` : fallbackLabel}
             </p>
             <p className="mt-1 flex items-center gap-2 text-sm text-[var(--home-ink-muted)]">
-              <Clock3 className="h-4 w-4 text-[var(--home-haze)]" />
+              <Clock3 className="h-4 w-4 text-[var(--home-signal)]" />
               {fixture.status === "FINISHED"
                 ? `Final · ${formatFixtureDateTime(fixture.utcDate)}`
                 : formatFixtureDateTime(fixture.utcDate)}
@@ -105,7 +105,7 @@ export function FixtureCard({
                 <button
                   type="button"
                   onClick={() => onOpenTeam(team.id)}
-                  className="flex min-h-[44px] min-w-0 flex-1 items-center gap-3 rounded-xl text-left transition hover:text-[var(--home-haze)]"
+                  className="flex min-h-[44px] min-w-0 flex-1 items-center gap-3 rounded-[var(--radius-xl)] text-left transition-colors hover:text-[var(--home-signal)]"
                 >
                   <CrestAvatar crest={team.crest} name={team.shortName} size="sm" />
                   <span

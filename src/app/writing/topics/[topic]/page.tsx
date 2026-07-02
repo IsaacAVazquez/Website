@@ -111,7 +111,7 @@ export default async function WritingTopicPage({ params }: TopicPageProps) {
           <header className="max-w-5xl border-b border-[var(--home-rule)] pb-10">
             <p className="home-kicker mb-3">Writing topic</p>
             <h1
-              className="mb-5 text-[clamp(2.8rem,8vw,6.5rem)] font-semibold leading-[0.9] tracking-[-0.055em] text-[var(--home-ink)]"
+              className="mb-5 text-[clamp(2.2rem,5vw,4.2rem)] font-semibold leading-[1.0] tracking-[-0.04em] text-[var(--home-ink)]"
               style={{ fontFamily: "var(--font-display)" }}
             >
               {topic.label}
@@ -167,7 +167,7 @@ export default async function WritingTopicPage({ params }: TopicPageProps) {
                 <Link
                   key={candidate.slug}
                   href={`/writing/topics/${candidate.slug}`}
-                  className="inline-flex min-h-[44px] items-center rounded-full border border-[var(--home-rule)] px-4 py-2 text-sm font-semibold text-[var(--home-ink)] transition-colors hover:border-[var(--home-haze)] hover:text-[var(--home-haze)]"
+                  className="inline-flex min-h-[44px] items-center rounded-full border border-[var(--home-rule)] px-4 py-2 text-sm font-semibold text-[var(--home-ink)] transition-colors hover:border-[var(--home-signal)] hover:text-[var(--home-signal)]"
                 >
                   {candidate.label}
                 </Link>

@@ -43,7 +43,7 @@ function ExternalGrid({
           href={link.href}
           target="_blank"
           rel="noreferrer"
-          className="tap-target inline-flex items-center justify-between rounded-[20px] border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-3 text-sm font-semibold text-[var(--home-ink)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)]"
+          className="tap-target inline-flex items-center justify-between rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-3 text-sm font-semibold text-[var(--home-ink)] transition hover:border-[var(--home-signal)] hover:text-[var(--home-signal)]"
         >
           {link.label}
           <ExternalLink className="h-4 w-4" />
@@ -64,7 +64,7 @@ export function MissionDetailPanel({
     <aside
       data-testid="mission-detail-panel"
       aria-label="Mission detail panel"
-      className="rounded-[30px] border border-[var(--home-rule)] bg-[var(--home-paper-raised)]/92 p-4 shadow-[var(--shadow-md)] sm:p-5"
+      className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)]/92 p-4 shadow-[var(--shadow-md)] sm:p-5"
     >
       <div className="flex flex-col gap-4 border-b border-[var(--home-rule)] pb-5">
         <div>
@@ -82,7 +82,7 @@ export function MissionDetailPanel({
         </div>
 
         <div
-          className="inline-flex flex-wrap gap-2 rounded-[22px] border border-[var(--home-rule)] bg-[var(--home-paper)] p-2"
+          className="inline-flex flex-wrap gap-2 rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] p-2"
           role="tablist"
           aria-label="Mission detail panels"
         >
@@ -93,9 +93,9 @@ export function MissionDetailPanel({
               role="tab"
               aria-selected={activePanel === option.key}
               onClick={() => onPanelChange(option.key)}
-              className={`tap-target rounded-2xl px-4 py-3 text-sm font-semibold transition ${
+              className={`tap-target rounded-[var(--radius-2xl)] px-4 py-3 text-sm font-semibold transition ${
                 activePanel === option.key
-                  ? "bg-[var(--home-haze)] text-white"
+                  ? "bg-[var(--home-signal)] text-white"
                   : "text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
               }`}
             >
@@ -109,17 +109,17 @@ export function MissionDetailPanel({
         <div className="space-y-3 py-5">
           <div className="h-5 w-2/3 animate-pulse rounded-full bg-[var(--home-paper-alt)]" />
           <div className="h-5 w-full animate-pulse rounded-full bg-[var(--home-paper-alt)]" />
-          <div className="h-[220px] animate-pulse rounded-[24px] bg-[var(--home-paper-alt)]" />
+          <div className="h-[220px] animate-pulse rounded-[var(--radius-3xl)] bg-[var(--home-paper-alt)]" />
         </div>
       ) : null}
 
       {!isLoading && error ? (
         <div
           role="alert"
-          className="mt-5 rounded-[24px] border border-[color-mix(in_srgb,var(--home-acid)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-acid)_9%,var(--home-paper))] p-4"
+          className="mt-5 rounded-[var(--radius-3xl)] border border-[color-mix(in_srgb,var(--home-warning)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-warning)_9%,var(--home-paper))] p-4"
         >
           <div className="flex items-start gap-3">
-            <AlertTriangle aria-hidden="true" className="mt-0.5 h-5 w-5 text-[color-mix(in_srgb,var(--home-acid)_55%,var(--home-ink))]" />
+            <AlertTriangle aria-hidden="true" className="mt-0.5 h-5 w-5 text-[color-mix(in_srgb,var(--home-warning)_55%,var(--home-ink))]" />
             <div>
               <p className="text-sm font-semibold text-[var(--home-ink)]">
                 Mission detail unavailable
@@ -131,9 +131,9 @@ export function MissionDetailPanel({
       ) : null}
 
       {!isLoading && !error && !launch ? (
-        <div className="mt-5 rounded-[24px] border border-dashed border-[var(--home-rule)] bg-[var(--home-paper)] px-5 py-10 text-center">
-          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--home-haze)_10%,var(--home-paper-alt))]">
-            <Rocket className="h-6 w-6 text-[var(--home-haze)]" />
+        <div className="mt-5 rounded-[var(--radius-3xl)] border border-dashed border-[var(--home-rule)] bg-[var(--home-paper)] px-5 py-10 text-center">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--home-signal)_10%,var(--home-paper-alt))]">
+            <Rocket className="h-6 w-6 text-[var(--home-signal)]" />
           </div>
           <p className="mt-4 text-lg font-semibold text-[var(--home-ink)]">
             Select a mission to inspect its full record.
@@ -148,7 +148,7 @@ export function MissionDetailPanel({
       {!isLoading && !error && launch && activePanel === "overview" ? (
         <div className="mt-5 space-y-4">
           <div className="grid gap-3 sm:grid-cols-2">
-            <div className="rounded-[22px] border border-[var(--home-rule)] bg-[var(--home-paper)] p-4">
+            <div className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] p-4">
               <p className="font-mono text-3xs font-semibold uppercase tracking-[0.2em] text-[var(--home-ink-soft)]">
                 Launch status
               </p>
@@ -162,7 +162,7 @@ export function MissionDetailPanel({
                       : "Status pending"}
               </p>
             </div>
-            <div className="rounded-[22px] border border-[var(--home-rule)] bg-[var(--home-paper)] p-4">
+            <div className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] p-4">
               <p className="font-mono text-3xs font-semibold uppercase tracking-[0.2em] text-[var(--home-ink-soft)]">
                 Launch site
               </p>
@@ -175,7 +175,7 @@ export function MissionDetailPanel({
             </div>
           </div>
 
-          <div className="rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper)] p-5">
+          <div className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] p-5">
             <h3 className="text-lg font-semibold text-[var(--home-ink)]">
               Mission brief
             </h3>
@@ -185,7 +185,7 @@ export function MissionDetailPanel({
           </div>
 
           {launch.failures.length > 0 ? (
-            <div className="rounded-[24px] border border-[color-mix(in_srgb,var(--home-acid)_28%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-acid)_9%,var(--home-paper))] p-5">
+            <div className="rounded-[var(--radius-3xl)] border border-[color-mix(in_srgb,var(--home-warning)_28%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-warning)_9%,var(--home-paper))] p-5">
               <h3 className="text-lg font-semibold text-[var(--home-ink)]">
                 Failure log
               </h3>
@@ -193,7 +193,7 @@ export function MissionDetailPanel({
                 {launch.failures.map((failure, index) => (
                   <div
                     key={`${failure.reason}-${index}`}
-                    className="rounded-[18px] border border-[var(--home-rule)] bg-[var(--home-paper)] p-4"
+                    className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] p-4"
                   >
                     <p className="text-sm font-semibold text-[var(--home-ink)]">
                       {failure.reason ?? "Failure cause unavailable"}
@@ -219,9 +219,9 @@ export function MissionDetailPanel({
             dataTestId="mission-vehicle-photo"
           />
 
-          <div className="rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper)] p-5">
+          <div className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] p-5">
             <div className="flex items-center gap-2">
-              <Rocket className="h-5 w-5 text-[var(--home-haze)]" />
+              <Rocket className="h-5 w-5 text-[var(--home-signal)]" />
               <h3 className="text-lg font-semibold text-[var(--home-ink)]">
                 Rocket
               </h3>
@@ -237,13 +237,13 @@ export function MissionDetailPanel({
                   </p>
                 </div>
                 <div className="grid gap-3">
-                  <div className="rounded-[18px] bg-[var(--home-paper-alt)] p-3">
+                  <div className="rounded-[var(--radius-3xl)] bg-[var(--home-paper-alt)] p-3">
                     <p className="text-xs text-[var(--home-ink-soft)]">Cost per launch</p>
                     <p className="mt-1 text-sm font-semibold text-[var(--home-ink)]">
                       {formatCurrencyCompact(launch.rocket.costPerLaunch)}
                     </p>
                   </div>
-                  <div className="rounded-[18px] bg-[var(--home-paper-alt)] p-3">
+                  <div className="rounded-[var(--radius-3xl)] bg-[var(--home-paper-alt)] p-3">
                     <p className="text-xs text-[var(--home-ink-soft)]">Success rate</p>
                     <p className="mt-1 text-sm font-semibold text-[var(--home-ink)]">
                       {launch.rocket.successRatePct ?? "Unavailable"}%
@@ -258,9 +258,9 @@ export function MissionDetailPanel({
             )}
           </div>
 
-          <div className="rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper)] p-5">
+          <div className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] p-5">
             <div className="flex items-center gap-2">
-              <MapPin className="h-5 w-5 text-[var(--home-haze)]" />
+              <MapPin className="h-5 w-5 text-[var(--home-signal)]" />
               <h3 className="text-lg font-semibold text-[var(--home-ink)]">
                 Launchpad
               </h3>
@@ -285,9 +285,9 @@ export function MissionDetailPanel({
             )}
           </div>
 
-          <div className="rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper)] p-5">
+          <div className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] p-5">
             <div className="flex items-center gap-2">
-              <Users className="h-5 w-5 text-[var(--home-haze)]" />
+              <Users className="h-5 w-5 text-[var(--home-signal)]" />
               <h3 className="text-lg font-semibold text-[var(--home-ink)]">
                 Crew and cores
               </h3>
@@ -302,7 +302,7 @@ export function MissionDetailPanel({
                     {launch.crew.map((member) => (
                       <div
                         key={member.id}
-                        className="rounded-[18px] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-3"
+                        className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-3"
                       >
                         <p className="text-sm font-semibold text-[var(--home-ink)]">
                           {member.name}
@@ -330,7 +330,7 @@ export function MissionDetailPanel({
                     {launch.cores.map((core, index) => (
                       <div
                         key={`${core.id ?? "core"}-${index}`}
-                        className="rounded-[18px] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-3"
+                        className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-3"
                       >
                         <p className="text-sm font-semibold text-[var(--home-ink)]">
                           {core.serial ?? "Unnamed core"} • Flight {core.flight ?? "?"}
@@ -360,7 +360,7 @@ export function MissionDetailPanel({
               {launch.payloads.map((payload) => (
                 <article
                   key={payload.id}
-                  className="rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper)] p-5"
+                  className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] p-5"
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div>
@@ -377,13 +377,13 @@ export function MissionDetailPanel({
                     </span>
                   </div>
                   <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                    <div className="rounded-[18px] bg-[var(--home-paper-alt)] p-3">
+                    <div className="rounded-[var(--radius-3xl)] bg-[var(--home-paper-alt)] p-3">
                       <p className="text-xs text-[var(--home-ink-soft)]">Customers</p>
                       <p className="mt-1 text-sm text-[var(--home-ink)]">
                         {payload.customers.length > 0 ? payload.customers.join(", ") : "None listed"}
                       </p>
                     </div>
-                    <div className="rounded-[18px] bg-[var(--home-paper-alt)] p-3">
+                    <div className="rounded-[var(--radius-3xl)] bg-[var(--home-paper-alt)] p-3">
                       <p className="text-xs text-[var(--home-ink-soft)]">Manufacturers</p>
                       <p className="mt-1 text-sm text-[var(--home-ink)]">
                         {payload.manufacturers.length > 0 ? payload.manufacturers.join(", ") : "None listed"}
@@ -394,7 +394,7 @@ export function MissionDetailPanel({
               ))}
             </div>
           ) : (
-            <div className="rounded-[24px] border border-dashed border-[var(--home-rule)] bg-[var(--home-paper)] px-5 py-10 text-center">
+            <div className="rounded-[var(--radius-3xl)] border border-dashed border-[var(--home-rule)] bg-[var(--home-paper)] px-5 py-10 text-center">
               <p className="text-lg font-semibold text-[var(--home-ink)]">
                 No payloads listed.
               </p>
@@ -404,7 +404,7 @@ export function MissionDetailPanel({
             </div>
           )}
 
-          <div className="mt-4 rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper)] p-5">
+          <div className="mt-4 rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] p-5">
             <h3 className="text-lg font-semibold text-[var(--home-ink)]">
               Capsules
             </h3>
@@ -413,7 +413,7 @@ export function MissionDetailPanel({
                 {launch.capsules.map((capsule) => (
                   <div
                     key={capsule.id}
-                    className="rounded-[18px] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-3"
+                    className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-3"
                   >
                     <p className="text-sm font-semibold text-[var(--home-ink)]">
                       {capsule.serial ?? "Unnamed capsule"}
@@ -435,7 +435,7 @@ export function MissionDetailPanel({
 
       {!isLoading && !error && launch && activePanel === "links" ? (
         <div className="mt-5 space-y-4">
-          <div className="rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper)] p-5">
+          <div className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] p-5">
             <h3 className="text-lg font-semibold text-[var(--home-ink)]">
               Mission references
             </h3>
@@ -453,18 +453,18 @@ export function MissionDetailPanel({
             </div>
           </div>
 
-          <div className="rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper)] p-5">
+          <div className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] p-5">
             <h3 className="text-lg font-semibold text-[var(--home-ink)]">
               Data completeness
             </h3>
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
-              <div className="rounded-[18px] bg-[var(--home-paper-alt)] p-3">
+              <div className="rounded-[var(--radius-3xl)] bg-[var(--home-paper-alt)] p-3">
                 <p className="text-xs text-[var(--home-ink-soft)]">Crew records</p>
                 <p className="mt-1 text-sm font-semibold text-[var(--home-ink)]">
                   {launch.crew.length > 0 ? `${launch.crew.length} populated` : "None listed"}
                 </p>
               </div>
-              <div className="rounded-[18px] bg-[var(--home-paper-alt)] p-3">
+              <div className="rounded-[var(--radius-3xl)] bg-[var(--home-paper-alt)] p-3">
                 <p className="text-xs text-[var(--home-ink-soft)]">Payload records</p>
                 <p className="mt-1 text-sm font-semibold text-[var(--home-ink)]">
                   {launch.payloads.length > 0 ? `${launch.payloads.length} populated` : "None listed"}

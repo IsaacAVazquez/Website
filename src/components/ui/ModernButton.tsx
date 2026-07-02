@@ -43,7 +43,7 @@ export const ModernButton = React.memo(function ModernButton({
     "inline-flex items-center justify-center font-semibold rounded-lg",
     "transition-[background-color,border-color,color,box-shadow,transform] duration-200",
     "disabled:opacity-40 disabled:cursor-not-allowed",
-    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--home-haze)]",
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--home-signal)]",
     !disabled && "active:scale-[0.98]",
     fullWidth && "w-full"
   );
@@ -73,7 +73,7 @@ export const ModernButton = React.memo(function ModernButton({
       "hover:bg-[color-mix(in_srgb,var(--home-paper-alt)_78%,white)]"
     ),
     accent: cn(
-      "bg-[var(--home-haze)] hover:bg-[color-mix(in_srgb,var(--home-haze)_88%,var(--home-ink))]",
+      "bg-[var(--home-signal)] hover:bg-[color-mix(in_srgb,var(--home-signal)_88%,var(--home-ink))]",
       "text-[var(--home-paper)]",
       "shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow-md)]"
     ),

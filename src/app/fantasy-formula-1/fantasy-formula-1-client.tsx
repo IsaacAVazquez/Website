@@ -83,8 +83,8 @@ function formatPoints(value: number): string {
 function getToneStyle(active: boolean): CSSProperties {
   return active
     ? {
-        borderColor: "color-mix(in srgb, var(--home-haze) 35%, var(--home-rule))",
-        background: "color-mix(in srgb, var(--home-haze) 11%, var(--home-paper-alt))",
+        borderColor: "color-mix(in srgb, var(--home-signal) 35%, var(--home-rule))",
+        background: "color-mix(in srgb, var(--home-signal) 11%, var(--home-paper-alt))",
         boxShadow: "var(--shadow-sm)",
       }
     : {
@@ -97,19 +97,19 @@ function getRiskStyle(risk: FantasyFormula1Asset["risk"]): CSSProperties {
   switch (risk) {
     case "low":
       return {
-        borderColor: "color-mix(in srgb, var(--color-success) 35%, var(--home-rule))",
-        background: "color-mix(in srgb, var(--color-success) 10%, var(--home-paper))",
+        borderColor: "color-mix(in srgb, var(--home-positive) 35%, var(--home-rule))",
+        background: "color-mix(in srgb, var(--home-positive) 10%, var(--home-paper))",
       };
     case "medium":
       return {
-        borderColor: "color-mix(in srgb, var(--color-warning) 35%, var(--home-rule))",
-        background: "color-mix(in srgb, var(--color-warning) 9%, var(--home-paper))",
+        borderColor: "color-mix(in srgb, var(--home-warning) 35%, var(--home-rule))",
+        background: "color-mix(in srgb, var(--home-warning) 9%, var(--home-paper))",
       };
     case "high":
     default:
       return {
-        borderColor: "color-mix(in srgb, var(--color-error) 30%, var(--home-rule))",
-        background: "color-mix(in srgb, var(--color-error) 8%, var(--home-paper))",
+        borderColor: "color-mix(in srgb, var(--home-negative) 30%, var(--home-rule))",
+        background: "color-mix(in srgb, var(--home-negative) 8%, var(--home-paper))",
       };
   }
 }
@@ -222,7 +222,7 @@ function BudgetMeter({ summary }: { summary: FantasyFormula1LineupSummary }) {
         </span>
         <span
           className={`font-semibold ${
-            summary.isOverBudget ? "text-[var(--color-error)]" : "text-[var(--home-ink-muted)]"
+            summary.isOverBudget ? "text-[var(--home-negative)]" : "text-[var(--home-ink-muted)]"
           }`}
         >
           {formatMoney(summary.budgetRemaining)} left
@@ -241,8 +241,8 @@ function BudgetMeter({ summary }: { summary: FantasyFormula1LineupSummary }) {
           style={{
             width: `${usedPercent}%`,
             background: summary.isOverBudget
-              ? "var(--color-error)"
-              : "color-mix(in srgb, var(--home-haze) 76%, var(--home-acid))",
+              ? "var(--home-negative)"
+              : "color-mix(in srgb, var(--home-signal) 76%, var(--home-signal))",
           }}
         />
       </div>
@@ -264,7 +264,7 @@ function LineupAssetRow({
   const LockIcon = locked ? Lock : Unlock;
   return (
     <li
-      className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_78%,var(--home-elev-mix))] px-4 py-3"
+      className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_78%,var(--home-elev-mix))] px-4 py-3"
       style={getTeamAccentStyle(asset)}
     >
       <div className="flex items-center justify-between gap-3">
@@ -305,7 +305,7 @@ function LineupAssetRow({
 
 function EmptyLineupSlot({ label }: { label: string }) {
   return (
-    <li className="flex min-h-[68px] items-center rounded-2xl border border-dashed border-[var(--home-rule)] px-4 py-3 text-sm font-medium text-[var(--home-ink-muted)]">
+    <li className="flex min-h-[68px] items-center rounded-[var(--radius-2xl)] border border-dashed border-[var(--home-rule)] px-4 py-3 text-sm font-medium text-[var(--home-ink-muted)]">
       {label}
     </li>
   );
@@ -422,19 +422,19 @@ function RecommendationCard({
         </button>
       </div>
       <div className="mt-4 grid grid-cols-3 gap-2 text-sm">
-        <div className="rounded-2xl border border-[var(--home-rule)] px-3 py-2">
+        <div className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] px-3 py-2">
           <span className="block text-xs uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
             Cost
           </span>
           <strong>{formatMoney(candidate.totalPrice)}</strong>
         </div>
-        <div className="rounded-2xl border border-[var(--home-rule)] px-3 py-2">
+        <div className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] px-3 py-2">
           <span className="block text-xs uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
             Left
           </span>
           <strong>{formatMoney(candidate.budgetRemaining)}</strong>
         </div>
-        <div className="rounded-2xl border border-[var(--home-rule)] px-3 py-2">
+        <div className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] px-3 py-2">
           <span className="block text-xs uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
             Value
           </span>
@@ -586,7 +586,7 @@ function AssetsTable({
 
             return (
               <tr key={asset.id} style={getTeamAccentStyle(asset)}>
-                <td className="rounded-l-2xl border-y border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-3 py-3">
+                <td className="rounded-l-[var(--radius-2xl)] border-y border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-3 py-3">
                   <div className="flex min-w-0 items-center gap-3">
                     <AssetAvatar asset={asset} />
                     <div className="min-w-0">
@@ -624,7 +624,7 @@ function AssetsTable({
                     <span className="sr-only">. {asset.riskReason}</span>
                   </span>
                 </td>
-                <td className="rounded-r-2xl border-y border-r border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-3 py-3 text-right">
+                <td className="rounded-r-[var(--radius-2xl)] border-y border-r border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-3 py-3 text-right">
                   <AssetAction
                     asset={asset}
                     selected={selected}
@@ -664,7 +664,7 @@ function RulesPanel() {
           ].map((item) => (
             <div
               key={item}
-              className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_78%,var(--home-elev-mix))] px-4 py-3 text-sm font-semibold"
+              className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_78%,var(--home-elev-mix))] px-4 py-3 text-sm font-semibold"
             >
               {item}
             </div>
@@ -948,7 +948,7 @@ export function FantasyFormula1Client({
             >
               Build the team before the weekend gets noisy.
             </h1>
-            <p className="max-w-[68ch] text-sm leading-7 text-[var(--home-ink-muted)] sm:text-[1rem]">
+            <p className="max-w-[68ch] text-sm leading-7 text-[var(--home-ink-muted)] sm:text-base">
               I built this as a practical F1 fantasy planning surface. It uses the OpenF1 snapshot,
               transparent model pricing, and official-style roster constraints so the tradeoffs are
               visible before you commit to a lineup.
@@ -970,7 +970,7 @@ export function FantasyFormula1Client({
             aria-label="Current Fantasy Formula 1 model summary"
           >
             <div className="flex items-start gap-3">
-              <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-haze)_12%,var(--home-paper-alt))]">
+              <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-signal)_12%,var(--home-paper-alt))]">
                 <Gauge size={20} aria-hidden="true" />
               </div>
               <div>

@@ -259,7 +259,7 @@ export function StockSearch({ value, onChange }: Props) {
           placeholder="Search symbol or company…"
           autoComplete="off"
           spellCheck={false}
-          className="box-border w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] py-3 pl-9 pr-4 text-sm text-[var(--home-ink)] transition placeholder:text-[var(--home-ink-soft)] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[var(--home-haze)]"
+          className="box-border w-full rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] py-3 pl-9 pr-4 text-sm text-[var(--home-ink)] transition placeholder:text-[var(--home-ink-soft)] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[var(--home-signal)]"
           aria-label="Search stock symbol"
           aria-autocomplete="list"
           aria-controls="stock-search-listbox"
@@ -281,7 +281,7 @@ export function StockSearch({ value, onChange }: Props) {
   role="listbox"
   aria-label="Symbol suggestions"
   style={dropdownStyle}
-className="m-0 list-none p-0 box-border overflow-hidden rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] shadow-lg"
+className="m-0 list-none p-0 box-border overflow-hidden rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] shadow-lg"
 >
             {suggestions.map((entry, indexPosition) => (
               <li key={entry.symbol}>
@@ -292,7 +292,7 @@ className="m-0 list-none p-0 box-border overflow-hidden rounded-2xl border borde
                   onMouseDown={() => selectEntry(entry)}
                   className={`flex min-h-[52px] w-full flex-col items-start justify-center px-3 py-2 text-left text-sm transition ${
                     indexPosition === activeIndex
-                      ? "bg-[color-mix(in_srgb,var(--home-haze)_14%,var(--home-paper-alt))] text-[var(--home-ink)]"
+                      ? "bg-[color-mix(in_srgb,var(--home-signal)_14%,var(--home-paper-alt))] text-[var(--home-ink)]"
                       : "text-[var(--home-ink)] hover:bg-[color-mix(in_srgb,var(--home-ink)_6%,var(--home-paper-alt))]"
                   }`}
                 >
@@ -308,7 +308,7 @@ className="m-0 list-none p-0 box-border overflow-hidden rounded-2xl border borde
         )}
 
       {shouldShowCuratedOnlyHint && (
-        <p className="mt-1.5 flex items-center gap-1.5 text-xs text-[var(--color-warning)]">
+        <p className="mt-1.5 flex items-center gap-1.5 text-xs text-[var(--home-warning)]">
           <IconAlertCircle size={13} />
           <span>
             This workspace currently supports the curated research set only. Pick a ticker from the suggestions.

@@ -47,7 +47,7 @@ describe("polling-aggregator-helpers", () => {
       color: "var(--home-ink-muted)",
     });
     expect(getRowStyle(true)).toMatchObject({
-      borderColor: "color-mix(in srgb, var(--home-haze) 35%, var(--home-rule))",
+      borderColor: "color-mix(in srgb, var(--home-signal) 35%, var(--home-rule))",
     });
     expect(getRowStyle(false)).toMatchObject({
       borderColor: "var(--home-rule)",

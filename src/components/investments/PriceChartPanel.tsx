@@ -182,7 +182,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
     pg.append("path")
       .datum(entries)
       .attr("d", area)
-      .attr("fill", "var(--home-haze)")
+      .attr("fill", "var(--home-signal)")
       .attr("fill-opacity", "0.12");
 
     // Line
@@ -195,7 +195,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
       .datum(entries)
       .attr("d", line)
       .attr("fill", "none")
-      .attr("stroke", "var(--home-haze)")
+      .attr("stroke", "var(--home-signal)")
       .attr("stroke-width", 1.5);
 
     // 50-day moving average (dashed, neutral) — only the points that have a
@@ -227,14 +227,14 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
         .attr("x2", pInnerW)
         .attr("y1", cy)
         .attr("y2", cy)
-        .attr("stroke", "var(--color-success)")
+        .attr("stroke", "var(--home-positive)")
         .attr("stroke-width", 1.25)
         .attr("stroke-dasharray", "2,3");
       pg.append("text")
         .attr("x", pInnerW)
         .attr("y", cy - 4)
         .attr("text-anchor", "end")
-        .attr("fill", "var(--color-success)")
+        .attr("fill", "var(--home-positive)")
         .attr("font-size", "9px")
         .attr("font-family", "var(--font-jetbrains-mono, monospace)")
         .text(`Cost $${(costBasis as number).toFixed(2)}`);
@@ -321,7 +321,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
       .attr("y", (d) => vyScale(d.volume))
       .attr("width", barWidth)
       .attr("height", (d) => vInnerH - vyScale(d.volume))
-      .attr("fill", (d) => (d.up ? "var(--color-success)" : "var(--color-error)"))
+      .attr("fill", (d) => (d.up ? "var(--home-positive)" : "var(--home-negative)"))
       .attr("opacity", "0.45");
 
     // X axis on volume chart
@@ -348,7 +348,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
   const isEmpty = !isLoading && !error && slicedData.length === 0;
 
   return (
-    <WarmCard padding="sm" ariaLabel="Price chart" className="rounded-[28px] shadow-[var(--shadow-sm)]">
+    <WarmCard padding="sm" ariaLabel="Price chart" className="rounded-[var(--radius-3xl)] shadow-[var(--shadow-sm)]">
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
         <div>
           <h3 className="text-sm font-semibold text-[var(--home-ink)]">Price History</h3>
@@ -359,7 +359,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
             Historical series through {formatHistoryAsOf(latestHistoricalDate)}. Live pricing, when available, appears in the research header.
           </p>
           {historyFreshness.isStale ? (
-            <p className="mt-1 text-xs font-medium text-[var(--color-warning)]">
+            <p className="mt-1 text-xs font-medium text-[var(--home-warning)]">
               Historical chart data trails the dataset by {historyFreshness.lagDays} days.
             </p>
           ) : null}
@@ -390,14 +390,14 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
                 aria-pressed={showCostBasis}
                 className={`inline-flex min-h-[44px] items-center gap-2 rounded-full px-3.5 py-2 text-xs font-semibold transition ${
                   showCostBasis
-                    ? "border border-[color-mix(in_srgb,var(--color-success)_45%,var(--home-rule))] bg-[color-mix(in_srgb,var(--color-success)_10%,var(--home-paper-alt))] text-[var(--home-ink)]"
+                    ? "border border-[color-mix(in_srgb,var(--home-positive)_45%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-positive)_10%,var(--home-paper-alt))] text-[var(--home-ink)]"
                     : "border border-[var(--home-rule)] text-[var(--home-ink-soft)] hover:bg-[var(--home-paper-alt)]"
                 }`}
               >
                 <span
                   aria-hidden="true"
                   className="inline-block h-0 w-4 border-t-[1.5px] border-dashed"
-                  style={{ borderColor: "var(--color-success)" }}
+                  style={{ borderColor: "var(--home-positive)" }}
                 />
                 Cost basis
               </button>
@@ -410,7 +410,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
                 onClick={() => setRange(r)}
                 className={`min-h-[44px] min-w-[44px] rounded-full px-3.5 py-2 text-xs font-semibold transition ${
                   range === r
-                    ? "bg-[var(--home-haze)] text-white shadow-[var(--shadow-sm)]"
+                    ? "bg-[var(--home-signal)] text-white shadow-[var(--shadow-sm)]"
                     : "border border-[var(--home-rule)] text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
                 }`}
               >

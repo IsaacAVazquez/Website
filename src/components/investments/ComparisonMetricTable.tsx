@@ -40,7 +40,7 @@ function compareValues(
 
 export function ComparisonMetricTable({ title, rows, symbolA, symbolB }: Props) {
   return (
-    <WarmCard padding="sm" className="rounded-[28px] shadow-[var(--shadow-sm)]">
+    <WarmCard padding="sm" className="rounded-[var(--radius-3xl)] shadow-[var(--shadow-sm)]">
       <h3 className="mb-4 text-sm font-semibold text-[var(--home-ink)]">{title}</h3>
       <div className="overflow-x-auto">
         <table className="w-full text-sm" aria-label={`${title} comparison`}>
@@ -49,10 +49,10 @@ export function ComparisonMetricTable({ title, rows, symbolA, symbolB }: Props) 
               <th className="text-left py-2 pr-4 text-xs font-medium text-[var(--home-ink-soft)] w-1/2">
                 Metric
               </th>
-              <th className="text-right py-2 px-3 text-xs font-medium text-[var(--home-haze)] whitespace-nowrap">
+              <th className="text-right py-2 px-3 text-xs font-medium text-[var(--home-signal)] whitespace-nowrap">
                 {symbolA}
               </th>
-              <th className="text-right py-2 pl-3 text-xs font-medium text-[var(--color-warning)] whitespace-nowrap">
+              <th className="text-right py-2 pl-3 text-xs font-medium text-[var(--home-warning)] whitespace-nowrap">
                 {symbolB}
               </th>
             </tr>
@@ -65,7 +65,7 @@ export function ComparisonMetricTable({ title, rows, symbolA, symbolB }: Props) 
                   <td className="py-2 pr-4 text-[var(--home-ink-muted)]">{row.label}</td>
                   <td className="py-2 px-3 text-right">
                     {winner === "a" ? (
-                      <span className="inline-flex items-center justify-end gap-1 font-semibold text-[var(--color-success)]">
+                      <span className="inline-flex items-center justify-end gap-1 font-semibold text-[var(--home-positive)]">
                         {formatValue(row.valueA)}
                         <IconTrendingUp size={13} aria-hidden="true" />
                         <span className="sr-only">(better)</span>
@@ -76,7 +76,7 @@ export function ComparisonMetricTable({ title, rows, symbolA, symbolB }: Props) 
                   </td>
                   <td className="py-2 pl-3 text-right">
                     {winner === "b" ? (
-                      <span className="inline-flex items-center justify-end gap-1 font-semibold text-[var(--color-success)]">
+                      <span className="inline-flex items-center justify-end gap-1 font-semibold text-[var(--home-positive)]">
                         {formatValue(row.valueB)}
                         <IconTrendingUp size={13} aria-hidden="true" />
                         <span className="sr-only">(better)</span>

@@ -104,7 +104,7 @@ export default function EmailDigestDialog({
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="you@example.com"
-          className="mb-4 w-full rounded-xl border px-4 py-3 text-sm outline-none focus-visible:border-[var(--home-haze)] focus-visible:ring-2 focus-visible:ring-[color-mix(in_srgb,var(--home-haze)_35%,transparent)]"
+          className="mb-4 w-full rounded-[var(--radius-xl)] border px-4 py-3 text-sm outline-none focus-visible:border-[var(--home-signal)] focus-visible:ring-2 focus-visible:ring-[color-mix(in_srgb,var(--home-signal)_35%,transparent)]"
           style={{
             background: "var(--home-paper-alt)",
             borderColor: "var(--home-rule)",

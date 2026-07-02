@@ -56,7 +56,7 @@ export function ContactSection() {
                   className="block"
                 >
                   <WarmCard padding="md" hover className="h-full text-center">
-                    <method.icon className="mx-auto mb-4 h-10 w-10 text-[var(--home-haze)]" />
+                    <method.icon className="mx-auto mb-4 h-10 w-10 text-[var(--home-signal)]" />
                     <h3 className="mb-2 text-lg font-bold text-[var(--home-ink)]">
                       {method.label}
                     </h3>

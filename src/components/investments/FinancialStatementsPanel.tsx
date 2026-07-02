@@ -131,7 +131,7 @@ function StatementTable({
                 return (
                   <td
                     key={col}
-                    className={`py-2 px-2 text-right whitespace-nowrap ${isNeg ? "text-[var(--color-error)]" : "text-[var(--home-ink)]"}`}
+                    className={`py-2 px-2 text-right whitespace-nowrap ${isNeg ? "text-[var(--home-negative)]" : "text-[var(--home-ink)]"}`}
                   >
                     {val !== undefined && val !== null && val !== "*" ? formatNum(val) : "—"}
                   </td>
@@ -162,7 +162,7 @@ export function FinancialStatementsPanel({ symbol }: Props) {
               onClick={() => setActiveTab(key)}
               className={`px-3 py-1.5 text-xs font-medium rounded-md transition whitespace-nowrap min-h-[36px] ${
                 activeTab === key
-                  ? "bg-[var(--home-haze)] text-white"
+                  ? "bg-[var(--home-signal)] text-white"
                   : "text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)]"
               }`}
             >

@@ -37,7 +37,7 @@ interface Props {
 
 function PollingMetricCard({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)] p-4">
+    <div className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] p-4">
       <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">{label}</p>
       <p className="mt-2 text-xl font-bold text-[var(--home-ink)]">{value}</p>
     </div>
@@ -216,7 +216,7 @@ function RaceRow({
       tabIndex={0}
       aria-selected={isSelected}
     >
-      <td className="rounded-l-2xl px-3 py-3 align-middle">
+      <td className="rounded-l-[var(--radius-2xl)] px-3 py-3 align-middle">
         <button
           type="button"
           className="flex min-h-[44px] w-full items-center gap-2 text-left"
@@ -248,7 +248,7 @@ function RaceRow({
       <td className="px-3 py-3 align-middle text-sm font-semibold" style={{ color: leadColor }}>
         {race.marginLabel}
       </td>
-      <td className="hidden rounded-r-2xl px-3 py-3 align-middle text-xs text-[var(--home-ink-muted)] md:table-cell">
+      <td className="hidden rounded-r-[var(--radius-2xl)] px-3 py-3 align-middle text-xs text-[var(--home-ink-muted)] md:table-cell">
         {formatDate(race.lastPolled)}
       </td>
     </tr>
@@ -308,13 +308,13 @@ function RaceSidebar({ race }: { race: Race }) {
             return (
               <div
                 key={poll.id}
-                className="rounded-xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)] p-3 text-sm"
+                className="rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] p-3 text-sm"
               >
                 <div className="flex items-start justify-between gap-2">
                   <p className="font-semibold text-[var(--home-ink)] leading-tight">{poll.pollster}</p>
                   <span
                     className="text-xs font-bold flex-shrink-0"
-                    style={{ color: margin === 0 ? "#D97706" : margin > 0 ? DEM_COLOR : REP_COLOR }}
+                    style={{ color: margin === 0 ? "var(--home-warning)" : margin > 0 ? DEM_COLOR : REP_COLOR }}
                   >
                     {formatMargin(margin)}
                   </span>
@@ -408,9 +408,9 @@ function PollsTable<T extends PollLike>({
             return (
               <tr
                 key={poll.id}
-                className="border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)]"
+                className="border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))]"
               >
-                <td className="rounded-l-2xl px-3 py-3 align-middle">
+                <td className="rounded-l-[var(--radius-2xl)] px-3 py-3 align-middle">
                   <p className="text-sm font-semibold text-[var(--home-ink)]">{poll.pollster}</p>
                   {config.showSponsor && poll.sponsor ? (
                     <p className="text-xs text-[var(--home-ink-muted)]">{poll.sponsor}</p>
@@ -429,7 +429,7 @@ function PollsTable<T extends PollLike>({
                   {right}%
                 </td>
                 <td
-                  className="rounded-r-2xl px-3 py-3 align-middle text-sm font-bold"
+                  className="rounded-r-[var(--radius-2xl)] px-3 py-3 align-middle text-sm font-bold"
                   style={{ color: config.deltaColor(delta) }}
                 >
                   {config.formatDelta(delta)}
@@ -474,7 +474,7 @@ function GenericBallotPollsTable({ snapshot }: { snapshot: PollingSnapshot }) {
         leftValue: (p) => p.dem,
         rightValue: (p) => p.rep,
         formatDelta: formatMargin,
-        deltaColor: (d) => (d === 0 ? "#D97706" : d > 0 ? DEM_COLOR : REP_COLOR),
+        deltaColor: (d) => (d === 0 ? "var(--home-warning)" : d > 0 ? DEM_COLOR : REP_COLOR),
       }}
     />
   );
@@ -510,7 +510,7 @@ function RacesPanel({
             <span className="inline-block h-2.5 w-2.5 rounded-full" style={{ background: DEM_COLOR }} />
             Dem. leading: {counts.demLeading}
           </span>
-          <span className="flex items-center gap-1.5 font-medium" style={{ color: "#D97706" }}>
+          <span className="flex items-center gap-1.5 font-medium" style={{ color: "var(--home-warning)" }}>
             <span className="inline-block h-2.5 w-2.5 rounded-full bg-amber-500" />
             Toss-up: {counts.tossup}
           </span>
@@ -675,7 +675,7 @@ function OverviewPanel({ snapshot }: { snapshot: PollingSnapshot }) {
           {sortRacesByCompetitiveness(snapshot.governorRaces).map((race) => (
             <div
               key={race.id}
-              className="flex items-center gap-2 rounded-xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)] px-3 py-2"
+              className="flex items-center gap-2 rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-3 py-2"
             >
               <span className="text-sm font-semibold text-[var(--home-ink)]">{race.state}</span>
               <span
@@ -770,7 +770,7 @@ export function PollingAggregatorClient({ initialState, snapshot }: Props) {
 
         {/* View tabs */}
         <div
-          className="flex flex-wrap gap-2 rounded-[1.5rem] p-2"
+          className="flex flex-wrap gap-2 rounded-[var(--radius-3xl)] p-2"
           style={{
             border: "1px solid var(--home-rule)",
             background: "color-mix(in srgb, var(--home-paper-alt) 90%, var(--home-elev-mix))",
@@ -783,7 +783,7 @@ export function PollingAggregatorClient({ initialState, snapshot }: Props) {
               type="button"
               onClick={() => handleViewChange(key)}
               aria-pressed={key === routeState.view}
-              className="inline-flex min-h-[44px] items-center rounded-xl px-5 py-2 text-sm font-semibold transition-colors"
+              className="inline-flex min-h-[44px] items-center rounded-[var(--radius-xl)] px-5 py-2 text-sm font-semibold transition-colors"
               style={{
                 fontFamily: "var(--font-home-sans)",
                 fontSize: "0.88rem",

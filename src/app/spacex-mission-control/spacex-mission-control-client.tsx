@@ -529,16 +529,16 @@ export function SpaceXMissionControlClient({
   return (
     <section
       aria-label="SpaceX Mission Control"
-      className="min-h-screen bg-[radial-gradient(circle_at_top_left,color-mix(in_srgb,var(--home-haze)_12%,transparent),transparent_32%),radial-gradient(circle_at_bottom_right,color-mix(in_srgb,var(--home-moss)_10%,transparent),transparent_28%),linear-gradient(180deg,var(--home-paper)_0%,color-mix(in_srgb,var(--home-paper-alt)_70%,var(--home-paper))_100%)]"
+      className="home-page min-h-screen"
     >
-      <div className="mx-auto w-full max-w-[1700px] px-4 pb-10 pt-6 sm:px-6 sm:pb-12 sm:pt-8 lg:px-8 xl:px-10 2xl:px-12">
+      <div className="home-shell home-shell-wide home-section">
         <motion.div
-          className="mb-5 overflow-hidden rounded-[32px] border border-[color-mix(in_srgb,var(--home-haze)_14%,var(--home-rule))] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--home-haze)_7%,var(--home-paper-raised))_0%,var(--home-paper-raised)_50%,color-mix(in_srgb,var(--home-moss)_8%,var(--home-paper-raised))_100%)] p-5 shadow-[var(--shadow-md)] sm:p-6"
+          className="mb-5 overflow-hidden rounded-[var(--radius-3xl)] border border-[color-mix(in_srgb,var(--home-signal)_14%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-signal)_6%,var(--home-paper-raised))] p-5 shadow-[var(--shadow-md)] sm:p-6"
           {...motionProps}
         >
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-3">
-              <span className="rounded-full border border-[color-mix(in_srgb,var(--home-haze)_24%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-paper)_72%,transparent)] px-3 py-1 font-mono text-2xs font-semibold uppercase tracking-[0.22em] text-[var(--home-haze)]">
+              <span className="rounded-full border border-[color-mix(in_srgb,var(--home-signal)_24%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-paper)_72%,transparent)] px-3 py-1 font-mono text-2xs font-semibold uppercase tracking-[0.22em] text-[var(--home-signal)]">
                 SpaceX Mission Control
               </span>
               <span className="rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-3 py-1 text-xs font-medium text-[var(--home-ink-muted)]">
@@ -550,7 +550,7 @@ export function SpaceXMissionControlClient({
               A launch board built like an operations room, not a brochure.
             </h1>
 
-            <p className="mt-3 max-w-[64ch] text-sm leading-7 text-[var(--home-ink-muted)] sm:text-[0.95rem]">
+            <p className="mt-3 max-w-[64ch] text-sm leading-7 text-[var(--home-ink-muted)] sm:text-sm">
               Next mission, launch queue, and a detail panel for rockets, crew, payloads,
               capsules, and pads. Everything stays connected so you don&apos;t lose the thread when you drill in.
             </p>
@@ -559,17 +559,17 @@ export function SpaceXMissionControlClient({
               <button
                 type="button"
                 onClick={handleRetryAll}
-                className="tap-target inline-flex items-center gap-2 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-4 py-3 text-sm font-semibold text-[var(--home-ink)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)]"
+                className="tap-target inline-flex items-center gap-2 rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-4 py-3 text-sm font-semibold text-[var(--home-ink)] transition hover:border-[var(--home-signal)] hover:text-[var(--home-signal)]"
               >
                 <RefreshCcw className="h-4 w-4" />
                 Refresh data
               </button>
-              <div className="inline-flex min-h-[44px] items-center gap-2 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-3 text-sm text-[var(--home-ink-muted)]">
-                <DatabaseZap className="h-4 w-4 text-[var(--home-haze)]" />
+              <div className="inline-flex min-h-[44px] items-center gap-2 rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-3 text-sm text-[var(--home-ink-muted)]">
+                <DatabaseZap className="h-4 w-4 text-[var(--home-signal)]" />
                 {liveStatusLabel}
               </div>
-              <div className="inline-flex min-h-[44px] items-center gap-2 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-3 text-sm text-[var(--home-ink-muted)]">
-                <Link2 className="h-4 w-4 text-[var(--home-haze)]" />
+              <div className="inline-flex min-h-[44px] items-center gap-2 rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-3 text-sm text-[var(--home-ink-muted)]">
+                <Link2 className="h-4 w-4 text-[var(--home-signal)]" />
                 Query-linked mission detail
               </div>
             </div>
@@ -577,11 +577,11 @@ export function SpaceXMissionControlClient({
             {hasPartialDataIssue ? (
               <div
                 role="status"
-                className="mt-4 flex items-start gap-3 rounded-[24px] border border-[color-mix(in_srgb,var(--home-acid)_28%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-acid)_10%,var(--home-paper))] px-4 py-3 text-sm leading-6 text-[var(--home-ink-muted)]"
+                className="mt-4 flex items-start gap-3 rounded-[var(--radius-3xl)] border border-[color-mix(in_srgb,var(--home-signal)_28%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-signal)_10%,var(--home-paper))] px-4 py-3 text-sm leading-6 text-[var(--home-ink-muted)]"
               >
                 <AlertTriangle
                   aria-hidden="true"
-                  className="mt-0.5 h-5 w-5 shrink-0 text-[color-mix(in_srgb,var(--home-acid)_55%,var(--home-ink))]"
+                  className="mt-0.5 h-5 w-5 shrink-0 text-[color-mix(in_srgb,var(--home-signal)_55%,var(--home-ink))]"
                 />
                 <p>
                   One or more requests degraded, but the workspace is still usable.
@@ -660,6 +660,16 @@ export function SpaceXMissionControlClient({
             </div>
           </motion.div>
         </div>
+
+        {/* Data source */}
+        <section className="mt-5 rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-5 text-sm text-[var(--home-ink-muted)] shadow-[var(--shadow-sm)]">
+          <p className="mb-0 max-w-none leading-relaxed">
+            This dashboard runs on a checked-in snapshot of Launch Library 2
+            data from The Space Devs, served through this site&apos;s own API
+            routes rather than live upstream calls. It is an independent
+            project and is not affiliated with SpaceX.
+          </p>
+        </section>
       </div>
     </section>
   );

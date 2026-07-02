@@ -9,12 +9,16 @@ import {
 describe("classifyToolSlug", () => {
   it("buckets known slugs into their declared category", () => {
     expect(classifyToolSlug("investment-analytics-platform")).toBe("fintech");
-    expect(classifyToolSlug("earthquake-pulse")).toBe("pulse");
+    expect(classifyToolSlug("news-pulse-dashboard")).toBe("pulse");
     expect(classifyToolSlug("nba-pulse")).toBe("sports");
     expect(classifyToolSlug("frontier-model-tracker")).toBe("ai");
+    expect(classifyToolSlug("github-trending-pulse")).toBe("ai");
     expect(classifyToolSlug("decision-lab")).toBe("decision");
     expect(classifyToolSlug("polling-aggregator")).toBe("civic");
     expect(classifyToolSlug("wine-cellar")).toBe("lifestyle");
+    // Science & space owns the physical-world feeds — SpaceX is not a sport.
+    expect(classifyToolSlug("spacex-mission-control")).toBe("science");
+    expect(classifyToolSlug("earthquake-pulse")).toBe("science");
   });
 
   it("falls back to lifestyle for an uncategorized slug", () => {

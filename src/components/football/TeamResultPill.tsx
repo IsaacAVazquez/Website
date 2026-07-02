@@ -3,9 +3,9 @@ import { cn } from "@/lib/utils";
 export function TeamResultPill({ result }: { result: "W" | "D" | "L" }) {
   const colorClass =
     result === "W"
-      ? "border-[color-mix(in_srgb,var(--home-moss)_55%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-moss)_22%,var(--home-paper-alt))] text-[color-mix(in_srgb,var(--home-ink)_75%,var(--home-moss))]"
-      : result === "D"
-        ? "border-[color-mix(in_srgb,var(--home-haze)_25%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-haze)_10%,var(--home-paper-alt))] text-[var(--home-haze)]"
+      ? "border-[color-mix(in_srgb,var(--home-positive)_45%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-positive)_16%,var(--home-paper-alt))] text-[color-mix(in_srgb,var(--home-positive)_70%,var(--home-ink))]"
+      : result === "L"
+        ? "border-[color-mix(in_srgb,var(--home-negative)_40%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-negative)_12%,var(--home-paper-alt))] text-[color-mix(in_srgb,var(--home-negative)_70%,var(--home-ink))]"
         : "border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-[var(--home-ink-muted)]";
 
   return (

@@ -41,7 +41,7 @@ function NewsCard({ item }: { item: NewsItem }) {
     <div className="flex items-start gap-3 py-3 border-b border-[var(--home-rule)] last:border-0">
       <div
         aria-hidden="true"
-        className="mt-0.5 grid h-10 w-10 shrink-0 place-items-center rounded-[10px] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-xs font-semibold tracking-[0.04em] text-[var(--home-ink-muted)]"
+        className="mt-0.5 grid h-10 w-10 shrink-0 place-items-center rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-xs font-semibold tracking-[0.04em] text-[var(--home-ink-muted)]"
       >
         {newsMonogram(item)}
       </div>
@@ -51,7 +51,7 @@ function NewsCard({ item }: { item: NewsItem }) {
             href={item.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-start gap-1 text-sm font-medium text-[var(--home-ink)] hover:text-[var(--home-haze)] transition line-clamp-2"
+            className="inline-flex items-start gap-1 text-sm font-medium text-[var(--home-ink)] hover:text-[var(--home-signal)] transition line-clamp-2"
           >
             <span>{item.title}</span>
             <IconExternalLink size={12} className="mt-1 shrink-0 text-[var(--home-ink-soft)]" />
@@ -68,7 +68,7 @@ function NewsCard({ item }: { item: NewsItem }) {
           ) : null}
           {item.reportDate ? (
             <span
-              className="text-[0.7rem] uppercase tracking-[0.04em] text-[var(--home-ink-soft)]"
+              className="text-2xs uppercase tracking-[0.04em] text-[var(--home-ink-soft)]"
               style={{ fontFamily: "var(--font-jetbrains-mono, monospace)" }}
             >
               {formatDate(item.reportDate)}
@@ -148,8 +148,8 @@ function buildSignals({
 }
 
 function toneClasses(tone: "positive" | "neutral" | "negative") {
-  if (tone === "positive") return "border-emerald-200/70 bg-emerald-500/8 text-emerald-700 dark:text-emerald-300";
-  if (tone === "negative") return "border-red-200/70 bg-red-500/8 text-red-700 dark:text-red-300";
+  if (tone === "positive") return "border-[color-mix(in_srgb,var(--home-positive)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-positive)_9%,var(--home-paper-alt))] text-[color-mix(in_srgb,var(--home-positive)_70%,var(--home-ink))]";
+  if (tone === "negative") return "border-[color-mix(in_srgb,var(--home-negative)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-negative)_9%,var(--home-paper-alt))] text-[color-mix(in_srgb,var(--home-negative)_70%,var(--home-ink))]";
   return "border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-[var(--home-ink-muted)]";
 }
 
@@ -179,7 +179,7 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
       {/* Company bio */}
       <WarmCard
         padding="none"
-        className="overflow-hidden rounded-[30px] border-[color-mix(in_srgb,var(--home-haze)_16%,var(--home-rule))] shadow-[var(--shadow-sm)]"
+        className="overflow-hidden rounded-[var(--radius-3xl)] border-[color-mix(in_srgb,var(--home-signal)_16%,var(--home-rule))] shadow-[var(--shadow-sm)]"
       >
         <div className="p-5 sm:p-6">
           <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
@@ -194,7 +194,7 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
               href={info.website}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-[var(--home-haze)] hover:underline"
+              className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-[var(--home-signal)] hover:underline"
             >
               {info.website.replace(/^https?:\/\//, "")}
             </a>
@@ -206,7 +206,7 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
       {officers.length > 0 ? (
         <WarmCard
           padding="none"
-          className="rounded-[30px] shadow-[var(--shadow-sm)]"
+          className="rounded-[var(--radius-3xl)] shadow-[var(--shadow-sm)]"
         >
           <div className="p-5 sm:p-6">
             <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
@@ -216,7 +216,7 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
               {officers.map((officer, i) => (
                 <div
                   key={i}
-                  className="rounded-[20px] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-3"
+                  className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-3"
                 >
                   <p className="text-sm font-semibold leading-tight text-[var(--home-ink)]">
                     {officer.name ?? "—"}
@@ -227,7 +227,7 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
                     </p>
                   ) : null}
                   {officer.totalPay ? (
-                    <p className="mt-1.5 text-2xs font-medium text-[var(--home-haze)]">
+                    <p className="mt-1.5 text-2xs font-medium text-[var(--home-signal)]">
                       {formatPay(officer.totalPay)}
                     </p>
                   ) : null}
@@ -243,7 +243,7 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
         {/* Signals */}
         <WarmCard
           padding="sm"
-          className="rounded-[30px] border-[color-mix(in_srgb,var(--color-success)_18%,var(--home-rule))] shadow-[var(--shadow-sm)]"
+          className="rounded-[var(--radius-3xl)] border-[color-mix(in_srgb,var(--home-positive)_18%,var(--home-rule))] shadow-[var(--shadow-sm)]"
         >
           <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
             Signals
@@ -253,14 +253,14 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
               signals.map((signal) => (
                 <div
                   key={signal.label}
-                  className={`rounded-[24px] border px-4 py-3 ${toneClasses(signal.tone)}`}
+                  className={`rounded-[var(--radius-3xl)] border px-4 py-3 ${toneClasses(signal.tone)}`}
                 >
                   <p className="text-xs font-semibold uppercase tracking-[0.16em]">{signal.label}</p>
                   <p className="mt-2 text-sm leading-6 text-[var(--home-ink)]">{signal.body}</p>
                 </div>
               ))
             ) : (
-              <div className="rounded-[24px] border border-[var(--home-rule)] px-4 py-3 text-sm text-[var(--home-ink-muted)]">
+              <div className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] px-4 py-3 text-sm text-[var(--home-ink-muted)]">
                 Signals will appear once valuation and operating data are available.
               </div>
             )}
@@ -269,7 +269,7 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
 
         {/* News */}
         {newsItems.length > 0 ? (
-          <WarmCard padding="sm" className="rounded-[30px] shadow-[var(--shadow-sm)]">
+          <WarmCard padding="sm" className="rounded-[var(--radius-3xl)] shadow-[var(--shadow-sm)]">
             <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
               Latest News
             </p>
@@ -280,7 +280,7 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
             </div>
           </WarmCard>
         ) : !showNews ? (
-          <WarmCard padding="sm" className="rounded-[30px] shadow-[var(--shadow-sm)]">
+          <WarmCard padding="sm" className="rounded-[var(--radius-3xl)] shadow-[var(--shadow-sm)]">
             <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
               Snapshot Mode
             </p>

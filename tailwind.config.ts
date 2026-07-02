@@ -5,8 +5,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        mono: ["var(--font-jetbrains-mono)", "ui-monospace", "monospace"],
+        sans: ["var(--font-instrument-sans)", "system-ui", "sans-serif"],
+        mono: ["var(--font-fragment-mono)", "ui-monospace", "monospace"],
       },
       fontSize: {
         'xs': 'var(--text-xs)',
@@ -21,7 +21,7 @@ const config: Config = {
         '6xl': 'var(--text-6xl)',
       },
       colors: {
-        primary: "var(--home-haze)",
+        primary: "var(--home-signal)",
         secondary: "var(--color-secondary)",
         accent: "var(--color-accent)",
         warning: "var(--color-warning)",
@@ -43,7 +43,7 @@ const config: Config = {
         surface: {
           primary: "var(--home-paper)",
           secondary: "var(--home-paper-alt)",
-          elevated: "color-mix(in srgb, var(--home-paper) 92%, white)",
+          elevated: "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))",
           overlay: "var(--surface-overlay)",
         },
       },
@@ -58,16 +58,12 @@ const config: Config = {
         "theme-secondary": "var(--border-secondary)",
         "theme-accent": "var(--border-accent)",
       },
-      spacing: {
-        xs: "var(--space-xs)",
-        sm: "var(--space-sm)",
-        md: "var(--space-md)",
-        lg: "var(--space-lg)",
-        xl: "var(--space-xl)",
-        "2xl": "var(--space-2xl)",
-        "3xl": "var(--space-3xl)",
-        "4xl": "var(--space-4xl)",
-      },
+      /*
+       * Do NOT map the --space-* tokens onto `spacing` here. Under Tailwind
+       * v4's @config compat, spacing suffixes shadow the sizing scale, so
+       * `spacing.md` would silently turn every `max-w-md` (28rem) into 1rem
+       * site-wide. The --space-* variables remain available in CSS directly.
+       */
       boxShadow: {
         'sm': 'var(--shadow-sm)',
         'md': 'var(--shadow-md)',

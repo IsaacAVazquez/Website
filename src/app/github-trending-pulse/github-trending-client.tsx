@@ -576,7 +576,7 @@ function RepoRow({
         aria-controls={detailId}
         onClick={onToggle}
         onKeyDown={(event) => handleRowKeyDown(event, onToggle)}
-        className="cursor-pointer border-b border-[var(--home-rule)] transition-[background-color] hover:bg-[var(--home-paper-alt)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+        className="cursor-pointer border-b border-[var(--home-rule)] transition-[background-color] hover:bg-[var(--home-paper-alt)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
       >
         <td className="px-4 py-4 align-top">
           <div className="flex gap-3">
@@ -731,7 +731,7 @@ function SegmentSummary({
               type="button"
               aria-pressed={isActive}
               onClick={() => onSelectSegment(segment.key)}
-              className={`block min-h-[64px] w-full rounded-[0.75rem] border px-3 py-3 text-left transition-[background-color,border-color,color] ${
+              className={`block min-h-[64px] w-full rounded-[var(--radius-xl)] border px-3 py-3 text-left transition-[background-color,border-color,color] ${
                 isActive
                   ? "border-[var(--home-ink)] bg-[var(--home-paper-alt)]"
                   : "border-[var(--home-rule)] hover:border-[var(--home-ink)] hover:bg-[var(--home-paper-alt)]"

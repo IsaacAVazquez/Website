@@ -218,7 +218,7 @@ export function StaticHeader() {
         )}
       >
         <div className="page-shell pb-5">
-          <div className="rounded-2xl border p-3 shadow-[var(--shadow-md)] header-home-menu">
+          <div className="rounded-[var(--radius-2xl)] border p-3 shadow-[var(--shadow-md)] header-home-menu">
             <ul className="space-y-1" aria-label="Mobile navigation">
               {navLinks.map((link) => {
                 const active = isRouteActive(pathname, link.href);
@@ -237,7 +237,7 @@ export function StaticHeader() {
                         closeMobileMenu();
                       }}
                       className={cn(
-                        "flex min-h-[48px] items-center gap-3 rounded-xl px-4 py-3 transition-colors header-home-mobile-link",
+                        "flex min-h-[48px] items-center gap-3 rounded-[var(--radius-xl)] px-4 py-3 transition-colors header-home-mobile-link",
                         active
                           ? "bg-[var(--home-paper-alt)] text-[var(--home-ink)]"
                           : "text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"

@@ -107,12 +107,12 @@ function formatCoordinates(lat: number, lon: number): string {
 
 /** Seismic intensity ramp — neutral at the low end, red at the top. */
 function magnitudeColor(mag: number): string {
-  if (mag >= 7) return "var(--color-error)";
+  if (mag >= 7) return "var(--home-negative)";
   if (mag >= 6)
-    return "color-mix(in srgb, var(--color-error) 70%, var(--color-warning))";
-  if (mag >= 5) return "var(--color-warning)";
+    return "color-mix(in srgb, var(--home-negative) 70%, var(--home-warning))";
+  if (mag >= 5) return "var(--home-warning)";
   if (mag >= 4)
-    return "color-mix(in srgb, var(--color-warning) 65%, var(--home-ink-muted))";
+    return "color-mix(in srgb, var(--home-warning) 65%, var(--home-ink-muted))";
   return "var(--home-ink-muted)";
 }
 
@@ -124,8 +124,8 @@ function magnitudeTint(mag: number): string {
 function getViewButtonStyle(isActive: boolean): CSSProperties {
   if (isActive) {
     return {
-      borderColor: "color-mix(in srgb, var(--color-error) 32%, var(--home-rule))",
-      background: "color-mix(in srgb, var(--color-error) 9%, var(--home-paper-alt))",
+      borderColor: "color-mix(in srgb, var(--home-negative) 32%, var(--home-rule))",
+      background: "color-mix(in srgb, var(--home-negative) 9%, var(--home-paper-alt))",
       color: "var(--home-ink)",
       boxShadow: "var(--shadow-sm)",
     };
@@ -155,7 +155,7 @@ function getRowStyle(isSelected: boolean, mag: number): CSSProperties {
 function MagnitudeBadge({ mag }: { mag: number }) {
   return (
     <span
-      className="inline-flex min-w-[58px] flex-col items-center justify-center rounded-2xl border px-3 py-2"
+      className="inline-flex min-w-[58px] flex-col items-center justify-center rounded-[var(--radius-2xl)] border px-3 py-2"
       style={{
         borderColor: `color-mix(in srgb, ${magnitudeColor(mag)} 38%, var(--home-rule))`,
         background: magnitudeTint(mag),
@@ -173,7 +173,7 @@ function MagnitudeBadge({ mag }: { mag: number }) {
         {mag.toFixed(1)}
       </span>
       <span
-        className="mt-1 text-[10px] uppercase tracking-[0.14em]"
+        className="mt-1 text-3xs uppercase tracking-[0.14em]"
         style={{ color: "var(--home-ink-muted)", fontFamily: "var(--font-home-sans)" }}
       >
         Mag
@@ -196,7 +196,7 @@ function QuakeRow({
       type="button"
       onClick={() => onSelect(quake.id)}
       aria-current={isSelected ? "true" : undefined}
-      className="flex w-full items-center gap-4 rounded-[24px] border px-4 py-4 text-left"
+      className="flex w-full items-center gap-4 rounded-[var(--radius-3xl)] border px-4 py-4 text-left"
       style={{
         ...getRowStyle(isSelected, quake.magnitude),
         boxShadow: isSelected
@@ -227,7 +227,7 @@ function QuakeRow({
           {quake.tsunami ? (
             <span
               className="inline-flex items-center gap-1 font-semibold"
-              style={{ color: "var(--color-error)" }}
+              style={{ color: "var(--home-negative)" }}
             >
               <AlertTriangle className="h-3.5 w-3.5" aria-hidden="true" />
               Tsunami
@@ -356,7 +356,7 @@ function RegionList({
             key={region.region}
             type="button"
             onClick={() => onSelect(region.strongestId!)}
-            className="block w-full rounded-[22px] border px-4 py-3 text-left"
+            className="block w-full rounded-[var(--radius-2xl)] border px-4 py-3 text-left"
             style={{ borderColor: "var(--home-rule)", background: "var(--home-paper-alt)" }}
           >
             {content}
@@ -364,7 +364,7 @@ function RegionList({
         ) : (
           <div
             key={region.region}
-            className="rounded-[22px] border px-4 py-3"
+            className="rounded-[var(--radius-2xl)] border px-4 py-3"
             style={{ borderColor: "var(--home-rule)", background: "var(--home-paper-alt)" }}
           >
             {content}
@@ -378,7 +378,7 @@ function RegionList({
 function DetailStat({ label, value }: { label: string; value: string }) {
   return (
     <div
-      className="rounded-[18px] border px-4 py-3"
+      className="rounded-[var(--radius-2xl)] border px-4 py-3"
       style={{
         borderColor: "var(--home-rule)",
         background: "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))",
@@ -445,11 +445,11 @@ function QuakeDetailPanel({ quake }: { quake: QuakeEvent | null }) {
 
       {quake.tsunami ? (
         <div
-          className="mt-4 flex items-center gap-2 rounded-[18px] border px-4 py-3 text-sm font-semibold"
+          className="mt-4 flex items-center gap-2 rounded-[var(--radius-2xl)] border px-4 py-3 text-sm font-semibold"
           style={{
-            borderColor: "color-mix(in srgb, var(--color-error) 28%, var(--home-rule))",
-            background: "color-mix(in srgb, var(--color-error) 8%, var(--home-paper-alt))",
-            color: "var(--color-error)",
+            borderColor: "color-mix(in srgb, var(--home-negative) 28%, var(--home-rule))",
+            background: "color-mix(in srgb, var(--home-negative) 8%, var(--home-paper-alt))",
+            color: "var(--home-negative)",
           }}
           role="note"
         >
@@ -600,7 +600,7 @@ export function EarthquakeClient({ initialState, summary }: EarthquakeClientProp
       <section className="home-page min-h-screen">
         <div className="home-shell home-section">
           <div
-            className="rounded-[28px] border px-6 py-8"
+            className="rounded-[var(--radius-3xl)] border px-6 py-8"
             style={{ borderColor: "var(--home-rule)" }}
           >
             <p className="home-kicker">Earthquakes</p>
@@ -634,11 +634,11 @@ export function EarthquakeClient({ initialState, summary }: EarthquakeClientProp
     <section className="home-page min-h-screen">
       <div className="home-shell home-section space-y-8">
         <div
-          className="overflow-hidden rounded-[34px] border p-6 sm:p-8"
+          className="overflow-hidden rounded-[var(--radius-3xl)] border p-6 sm:p-8"
           style={{
-            borderColor: "color-mix(in srgb, var(--color-error) 26%, var(--home-rule))",
+            borderColor: "color-mix(in srgb, var(--home-negative) 26%, var(--home-rule))",
             background:
-              "linear-gradient(180deg, color-mix(in srgb, var(--color-error) 9%, var(--home-elev-mix)), color-mix(in srgb, var(--home-paper-alt) 82%, var(--home-elev-mix)))",
+              "color-mix(in srgb, var(--home-negative) 7%, var(--home-paper-raised))",
           }}
         >
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1.4fr)_minmax(280px,0.8fr)]">
@@ -676,7 +676,7 @@ export function EarthquakeClient({ initialState, summary }: EarthquakeClientProp
             </div>
 
             <div
-              className="rounded-[28px] border px-5 py-5"
+              className="rounded-[var(--radius-3xl)] border px-5 py-5"
               style={{
                 borderColor: "var(--home-rule)",
                 background: "color-mix(in srgb, var(--home-paper-alt) 86%, var(--home-elev-mix))",
@@ -776,7 +776,7 @@ export function EarthquakeClient({ initialState, summary }: EarthquakeClientProp
               {routeState.view === "regions" ? (
                 <div className="space-y-6">
                   <div
-                    className="rounded-[26px] border px-5 py-5"
+                    className="rounded-[var(--radius-3xl)] border px-5 py-5"
                     style={{
                       borderColor: "var(--home-rule)",
                       background: "color-mix(in srgb, var(--home-paper-alt) 82%, var(--home-elev-mix))",
@@ -808,7 +808,7 @@ export function EarthquakeClient({ initialState, summary }: EarthquakeClientProp
             </div>
 
             <div
-              className="rounded-[26px] border px-5 py-5"
+              className="rounded-[var(--radius-3xl)] border px-5 py-5"
               style={{
                 borderColor: "var(--home-rule)",
                 background: "color-mix(in srgb, var(--home-paper-alt) 82%, var(--home-elev-mix))",
@@ -829,7 +829,7 @@ export function EarthquakeClient({ initialState, summary }: EarthquakeClientProp
 
           <aside className="space-y-4">
             <div
-              className="rounded-[30px] border px-5 py-5 sm:px-6"
+              className="rounded-[var(--radius-3xl)] border px-5 py-5 sm:px-6"
               style={{
                 borderColor: selectedQuake
                   ? `color-mix(in srgb, ${magnitudeColor(selectedQuake.magnitude)} 24%, var(--home-rule))`

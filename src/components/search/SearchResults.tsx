@@ -182,7 +182,7 @@ function SearchResultCard({ result, query }: SearchResultCardProps) {
     const regex = new RegExp(`(${words.join('|')})`, 'gi');
     return safe.replace(
       regex,
-      '<mark style="background-color: color-mix(in srgb, var(--home-acid) 40%, transparent); color: var(--home-ink); padding: 0 2px; border-radius: 2px;">$1</mark>'
+      '<mark style="background-color: color-mix(in srgb, var(--home-signal) 40%, transparent); color: var(--home-ink); padding: 0 2px; border-radius: 2px;">$1</mark>'
     );
   };
 

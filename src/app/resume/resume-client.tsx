@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { IconDownload, IconMail, IconBrandLinkedin } from "@tabler/icons-react";
 
 const skillCategories = [
@@ -98,16 +97,38 @@ export default function Resume() {
   return (
     <div className="home-page min-h-screen">
       <div className="home-shell home-section">
-        <motion.div
-          className="space-y-8"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-        >
+        <div className="space-y-8">
           {/* Header panel */}
           <header className="resume-panel">
-            <h1 className="home-wordmark mb-6">
-              ISAAC VAZQUEZ
+            <p
+              className="mb-4 inline-flex items-center gap-2.5 uppercase"
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: "0.7rem",
+                letterSpacing: "0.08em",
+                color: "var(--home-ink-muted)",
+              }}
+            >
+              <span
+                aria-hidden="true"
+                className="inline-block h-2 w-2 rounded-full"
+                style={{ background: "var(--home-signal)" }}
+              />
+              Résumé · Product manager &amp; builder
+            </p>
+
+            <h1
+              className="mb-5"
+              style={{
+                fontFamily: "var(--font-home-sans)",
+                fontSize: "clamp(2.1rem, 4vw, 3.4rem)",
+                fontWeight: 640,
+                letterSpacing: "-0.03em",
+                lineHeight: 1.02,
+                color: "var(--home-ink)",
+              }}
+            >
+              Isaac Vazquez
             </h1>
 
             <div className="mb-5">
@@ -126,23 +147,16 @@ export default function Resume() {
               className="flex flex-wrap items-center gap-x-8 gap-y-3 mb-5 text-sm"
               style={{ color: "var(--home-ink-muted)", fontFamily: "var(--font-home-sans)" }}
             >
-      
               <a
                 href="mailto:IsaacVazquez@berkeley.edu"
-                className="flex items-center gap-2 transition-colors"
-                style={{ color: "var(--home-ink-muted)" }}
-                onMouseEnter={e => (e.currentTarget.style.color = "var(--home-ink)")}
-                onMouseLeave={e => (e.currentTarget.style.color = "var(--home-ink-muted)")}
+                className="flex items-center gap-2 transition-colors text-[var(--home-ink-muted)] hover:text-[var(--home-signal)] focus-visible:text-[var(--home-signal)]"
               >
                 <IconMail className="w-4 h-4" />
                 IsaacVazquez@berkeley.edu
               </a>
               <a
                 href="https://www.linkedin.com/in/isaac-vazquez/"
-                className="flex items-center gap-2 transition-colors"
-                style={{ color: "var(--home-ink-muted)" }}
-                onMouseEnter={e => (e.currentTarget.style.color = "var(--home-ink)")}
-                onMouseLeave={e => (e.currentTarget.style.color = "var(--home-ink-muted)")}
+                className="flex items-center gap-2 transition-colors text-[var(--home-ink-muted)] hover:text-[var(--home-signal)] focus-visible:text-[var(--home-signal)]"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -152,15 +166,11 @@ export default function Resume() {
             </div>
 
             {showMBA && (
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="mb-5"
-              >
-                <span className="home-pill">
+              <div className="mb-5">
+                <span className="resume-chip">
                   Berkeley Haas MBA &apos;27 · Consortium Fellow · MLT Fellow
                 </span>
-              </motion.div>
+              </div>
             )}
 
             <p className="home-body mb-0 max-w-none">
@@ -218,7 +228,7 @@ export default function Resume() {
                     </div>
                     <ul className="space-y-3 text-base leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
                       <li className="flex items-start">
-                        <span className="mr-4 mt-1.5 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
+                        <span aria-hidden="true" className="mr-4 mt-[0.7em] h-[2px] w-4 flex-shrink-0" style={{ background: "var(--home-ink)" }} />
                         <span>Lead client engagement for a global mobility technology company, managing stakeholder communication, internal workflow execution, and alignment across a cross-functional consulting team</span>
                       </li>
                     </ul>
@@ -269,23 +279,23 @@ export default function Resume() {
                     </div>
                     <ul className="space-y-3 text-base leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
                       <li className="flex items-start">
-                        <span className="mr-4 mt-1.5 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
+                        <span aria-hidden="true" className="mr-4 mt-[0.7em] h-[2px] w-4 flex-shrink-0" style={{ background: "var(--home-ink)" }} />
                         <span style={{ color: "var(--home-ink-muted)" }}>Translated leadership and user feedback into product requirements for RunningMate, a platform that helps political campaigns manage voter engagement, data analytics, and campaign strategy, aligning engineering and product teams</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="mr-4 mt-1.5 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
+                        <span aria-hidden="true" className="mr-4 mt-[0.7em] h-[2px] w-4 flex-shrink-0" style={{ background: "var(--home-ink)" }} />
                         <span>Conducted user interviews and analyzed user clickstream data to identify onboarding obstacles and technical challenges, leading to a redesign of product tutorials and first-time user flows that increased activation rates by <span className="font-semibold" style={{ color: "var(--home-ink)" }}>25%</span></span>
                       </li>
                       <li className="flex items-start">
-                        <span className="mr-4 mt-1.5 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
+                        <span aria-hidden="true" className="mr-4 mt-[0.7em] h-[2px] w-4 flex-shrink-0" style={{ background: "var(--home-ink)" }} />
                         <span>Built and deployed AI-powered QA and product workflow automation to solve operational challenges, increasing transparency between engineering, product, and client services teams while reducing bug triage time by <span className="font-semibold" style={{ color: "var(--home-ink)" }}>40%</span></span>
                       </li>
                       <li className="flex items-start">
-                        <span className="mr-4 mt-1.5 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
+                        <span aria-hidden="true" className="mr-4 mt-[0.7em] h-[2px] w-4 flex-shrink-0" style={{ background: "var(--home-ink)" }} />
                         <span>Designed and implemented structured manual and automated QA testing and planning processes across two core products, accelerating delivery cycles from monthly to biweekly releases and reducing release validation time by <span className="font-semibold" style={{ color: "var(--home-ink)" }}>30%</span></span>
                       </li>
                       <li className="flex items-start">
-                        <span className="mr-4 mt-1.5 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
+                        <span aria-hidden="true" className="mr-4 mt-[0.7em] h-[2px] w-4 flex-shrink-0" style={{ background: "var(--home-ink)" }} />
                         <span>Built a real-time event-generation system in Google Cloud, improving client onboarding and delivering instant access to campaign performance metrics, transitioning clients to a self-service model and reducing onboarding time by <span className="font-semibold" style={{ color: "var(--home-ink)" }}>60%</span></span>
                       </li>
                     </ul>
@@ -305,15 +315,15 @@ export default function Resume() {
                     </div>
                     <ul className="space-y-3 text-base leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
                       <li className="flex items-start">
-                        <span className="mr-4 mt-1.5 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
+                        <span aria-hidden="true" className="mr-4 mt-[0.7em] h-[2px] w-4 flex-shrink-0" style={{ background: "var(--home-ink)" }} />
                         <span>Owned product vision for peer-to-peer texting platform by connecting directly with customers to understand pain points and prioritizing features based on quantitative impact assessments that drove a <span className="font-semibold" style={{ color: "var(--home-ink)" }}>35%</span> increase in engagement</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="mr-4 mt-1.5 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
+                        <span aria-hidden="true" className="mr-4 mt-[0.7em] h-[2px] w-4 flex-shrink-0" style={{ background: "var(--home-ink)" }} />
                         <span>Generated <span className="font-semibold" style={{ color: "var(--home-ink)" }}>$4M</span> in additional revenue by leading a cross-functional pricing strategy initiative, aligning engineering, sales, and finance teams around product value through market analysis, competitor research, and financial modeling</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="mr-4 mt-1.5 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
+                        <span aria-hidden="true" className="mr-4 mt-[0.7em] h-[2px] w-4 flex-shrink-0" style={{ background: "var(--home-ink)" }} />
                         <span>Championed product reliability and release standards, achieving <span className="font-semibold" style={{ color: "var(--home-ink)" }}>99.999%</span> uptime, reducing critical defects by <span className="font-semibold" style={{ color: "var(--home-ink)" }}>90%</span>, and improving release efficiency by <span className="font-semibold" style={{ color: "var(--home-ink)" }}>50%</span> through new deployment rules and strategic test planning and implementation</span>
                       </li>
                     </ul>
@@ -352,15 +362,15 @@ export default function Resume() {
                     </div>
                     <ul className="space-y-3 text-base leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
                       <li className="flex items-start">
-                        <span className="mr-4 mt-1.5 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
+                        <span aria-hidden="true" className="mr-4 mt-[0.7em] h-[2px] w-4 flex-shrink-0" style={{ background: "var(--home-ink)" }} />
                         <span>Led client digital and communication strategy by developing data-driven messaging validation and audience sampling frameworks, aligning content with client goals and boosting response rates <span className="font-semibold" style={{ color: "var(--home-ink)" }}>20%</span> while scaling outreach to <span className="font-semibold" style={{ color: "var(--home-ink)" }}>50M+</span> voters</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="mr-4 mt-1.5 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
+                        <span aria-hidden="true" className="mr-4 mt-[0.7em] h-[2px] w-4 flex-shrink-0" style={{ background: "var(--home-ink)" }} />
                         <span>Analyzed voter behavior and campaign performance to surface high-impact opportunities, presenting findings in client meetings and delivering concise summaries that informed targeting choices and shaped strategic program priorities</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="mr-4 mt-1.5 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
+                        <span aria-hidden="true" className="mr-4 mt-[0.7em] h-[2px] w-4 flex-shrink-0" style={{ background: "var(--home-ink)" }} />
                         <span>Orchestrated successful delivery of <span className="font-semibold" style={{ color: "var(--home-ink)" }}>80+</span> client campaigns by establishing clear milestones and aligning cross-functional teams, achieving <span className="font-semibold" style={{ color: "var(--home-ink)" }}>100%</span> on-time delivery while maintaining consistency and performance across multiple channels</span>
                       </li>
                     </ul>
@@ -377,15 +387,15 @@ export default function Resume() {
                     </div>
                     <ul className="space-y-3 text-base leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
                       <li className="flex items-start">
-                        <span className="mr-4 mt-1.5 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
+                        <span aria-hidden="true" className="mr-4 mt-[0.7em] h-[2px] w-4 flex-shrink-0" style={{ background: "var(--home-ink)" }} />
                         <span>Automated ETL processes and reporting pipelines, replacing manual spreadsheet workflows with nightly data drops and interactive dashboards (Sisense, Tableau), reducing analysis time by <span className="font-semibold" style={{ color: "var(--home-ink)" }}>40%</span></span>
                       </li>
                       <li className="flex items-start">
-                        <span className="mr-4 mt-1.5 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
+                        <span aria-hidden="true" className="mr-4 mt-[0.7em] h-[2px] w-4 flex-shrink-0" style={{ background: "var(--home-ink)" }} />
                         <span>Leveraged user behavior analytics to optimize segmentation and targeting features across 20+ campaigns, improving conversion rates by <span className="font-semibold" style={{ color: "var(--home-ink)" }}>25%</span> and supporter conversion efficiency by <span className="font-semibold" style={{ color: "var(--home-ink)" }}>15%</span> through data-driven program enhancements</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="mr-4 mt-1.5 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
+                        <span aria-hidden="true" className="mr-4 mt-[0.7em] h-[2px] w-4 flex-shrink-0" style={{ background: "var(--home-ink)" }} />
                         <span>Created compelling visual content for multichannel campaigns including email, SMS, and events, applying design principles and A/B testing to enhance visual appeal and messaging clarity, increasing response rates by <span className="font-semibold" style={{ color: "var(--home-ink)" }}>30%</span></span>
                       </li>
                     </ul>
@@ -402,7 +412,7 @@ export default function Resume() {
                     </div>
                     <ul className="space-y-3 text-base leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
                       <li className="flex items-start">
-                        <span className="mr-4 mt-1.5 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
+                        <span aria-hidden="true" className="mr-4 mt-[0.7em] h-[2px] w-4 flex-shrink-0" style={{ background: "var(--home-ink)" }} />
                         <span>Developed data-driven user acquisition strategy by implementing personalized email campaigns and A/B testing frameworks, resulting in <span className="font-semibold" style={{ color: "var(--home-ink)" }}>5x</span> growth in user base and <span className="font-semibold" style={{ color: "var(--home-ink)" }}>50%</span> increase in conversion rates across client platforms</span>
                       </li>
                     </ul>
@@ -420,10 +430,7 @@ export default function Resume() {
 
             <div className="space-y-8 ml-0">
               {showMBA && (
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                >
+                <div>
                   <div className="mb-6">
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-3">
                       <h3
@@ -436,7 +443,7 @@ export default function Resume() {
                         May 2027
                       </div>
                     </div>
-                    <p className="text-lg font-semibold mb-4" style={{ color: "var(--home-haze)" }}>
+                    <p className="text-lg font-semibold mb-4" style={{ color: "var(--home-signal)" }}>
                       Master of Business Administration
                     </p>
                     <p className="text-sm mb-3" style={{ color: "var(--home-ink-muted)" }}>
@@ -444,17 +451,17 @@ export default function Resume() {
                     </p>
                     <ul className="space-y-2 text-sm leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
                       <li className="flex items-start">
-                        <span className="mr-3 mt-1 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
+                        <span aria-hidden="true" className="mr-3 mt-[0.7em] h-[2px] w-3.5 flex-shrink-0" style={{ background: "var(--home-ink)" }} />
                         <span>Consortium Fellow; Management Leadership for Tomorrow (MLT) Professional Development Fellow; MLT Ambassador</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="mr-3 mt-1 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
+                        <span aria-hidden="true" className="mr-3 mt-[0.7em] h-[2px] w-3.5 flex-shrink-0" style={{ background: "var(--home-ink)" }} />
                         <span>VP of Marketing, Haas Tech Club; VP of Admissions, Consortium; Product Management Club, AI Club, Fintech Club</span>
                       </li>
                     </ul>
                   </div>
 
-                </motion.div>
+                </div>
               )}
 
               <div>
@@ -512,7 +519,7 @@ export default function Resume() {
               ))}
             </div>
           </section>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

@@ -182,7 +182,7 @@ export function FoodMapLeaflet({
   if (status === "error") {
     return (
       <div
-        className="flex min-h-[320px] flex-col items-center justify-center gap-3 rounded-[1.25rem] p-8 text-center"
+        className="flex min-h-[320px] flex-col items-center justify-center gap-3 rounded-[var(--radius-3xl)] p-8 text-center"
         style={{
           border: "1px solid var(--home-rule)",
           background: "color-mix(in srgb, var(--home-paper) 90%, var(--home-elev-mix))",
@@ -203,7 +203,7 @@ export function FoodMapLeaflet({
     <div className="relative h-[420px] w-full">
       <div
         ref={containerRef}
-        className="h-full min-h-[320px] w-full rounded-[1.25rem]"
+        className="h-full min-h-[320px] w-full rounded-[var(--radius-3xl)]"
         style={{
           border: "1px solid var(--home-rule)",
           background: "color-mix(in srgb, var(--home-paper) 90%, var(--home-elev-mix))",
@@ -213,7 +213,7 @@ export function FoodMapLeaflet({
       />
       {status === "loading" && (
         <div
-          className="absolute inset-0 flex items-center justify-center rounded-[1.25rem] text-sm"
+          className="absolute inset-0 flex items-center justify-center rounded-[var(--radius-3xl)] text-sm"
           style={{
             background: "color-mix(in srgb, var(--home-paper) 90%, var(--home-elev-mix))",
             color: "var(--home-ink-muted)",

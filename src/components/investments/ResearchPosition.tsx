@@ -35,7 +35,7 @@ function shareLabel(n: number): string {
 
 function toneClass(n: number | undefined): string {
   if (n === undefined || !Number.isFinite(n) || n === 0) return "text-[var(--home-ink)]";
-  return n > 0 ? "text-[var(--color-success)]" : "text-[var(--color-error)]";
+  return n > 0 ? "text-[var(--home-positive)]" : "text-[var(--home-negative)]";
 }
 
 /**
@@ -81,7 +81,7 @@ export function ResearchPosition({ position }: Props) {
     <WarmCard
       padding="sm"
       ariaLabel="Your position"
-      className="rounded-[28px] shadow-[var(--shadow-sm)]"
+      className="rounded-[var(--radius-3xl)] shadow-[var(--shadow-sm)]"
     >
       <div className="mb-4 flex items-center justify-between gap-3">
         <div>
@@ -120,7 +120,7 @@ export function ResearchPosition({ position }: Props) {
             aria-label={`Allocation ${alloc.toFixed(1)} percent of portfolio`}
           >
             <div
-              className="h-full rounded-full bg-[var(--home-haze)]"
+              className="h-full rounded-full bg-[var(--home-signal)]"
               style={{ width: `${alloc}%` }}
             />
           </div>

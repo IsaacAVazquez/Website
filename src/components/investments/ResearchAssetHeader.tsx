@@ -21,6 +21,7 @@ import type {
   Profitability,
   StockPrice,
 } from "@/types/investment";
+import { holdingColor } from "./holdingPalette";
 
 interface Props {
   symbol: string;
@@ -29,29 +30,7 @@ interface Props {
   onAddToPortfolio?: () => void;
 }
 
-const TICKER_TONE: Record<string, string> = {
-  NVDA: "#5C8531",
-  AAPL: "#12110F",
-  MSFT: "#4D8AD0",
-  GOOGL: "#4A6CF0",
-  AMZN: "#1F7A6E",
-  TSLA: "#B22B2F",
-  "BRK.B": "#6B5A3E",
-  SPY: "#3F4B57",
-};
 
-function tonForSymbol(symbol: string): string {
-  const direct = TICKER_TONE[symbol];
-  if (direct) return direct;
-  // Hash for stable per-symbol color when not curated
-  let h = 0;
-  for (let i = 0; i < symbol.length; i++) {
-    h = (h << 5) - h + symbol.charCodeAt(i);
-    h |= 0;
-  }
-  const palette = ["#5672F8", "#5C8531", "#B22B2F", "#1F7A6E", "#4D8AD0", "#6B5A3E", "#3F4B57", "#615B52"];
-  return palette[Math.abs(h) % palette.length];
-}
 
 function formatBalance(n: number | undefined): { whole: string; cents: string } {
   if (n === undefined || !Number.isFinite(n)) return { whole: "—", cents: "" };
@@ -152,9 +131,9 @@ interface KeyMetricCellProps {
 function KeyMetricCell({ metric }: KeyMetricCellProps) {
   const valueColor =
     metric.tone === "pos"
-      ? "text-[var(--color-success)]"
+      ? "text-[var(--home-positive)]"
       : metric.tone === "neg"
-        ? "text-[var(--color-error)]"
+        ? "text-[var(--home-negative)]"
         : "text-[var(--home-ink)]";
   return (
     <div className="research-key-metric">
@@ -278,7 +257,7 @@ export function ResearchAssetHeader({
   ];
 
   const upper = symbol.toUpperCase();
-  const tone = tonForSymbol(upper);
+  const tone = holdingColor(upper);
   const quoteName = !quote?.error ? quote?.name : undefined;
   const displayName =
     info?.longName ||
@@ -327,7 +306,7 @@ export function ResearchAssetHeader({
 
         <div className="research-asset-meta">
           <div className="research-asset-titleline">
-            <h1>{displayName}</h1>
+            <h2>{displayName}</h2>
             <span className="research-ticker-pill">{upper}</span>
             {isInPortfolio ? (
               <span className="research-badge-pill held">

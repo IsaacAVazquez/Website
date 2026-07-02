@@ -17,8 +17,8 @@ export function TierBreakSeparator({ tier, gap }: TierBreakSeparatorProps) {
       <span
         className="inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-2xs font-semibold uppercase tracking-[0.14em]"
         style={{
-          borderColor: "color-mix(in srgb, var(--home-acid) 40%, var(--home-rule))",
-          background: "color-mix(in srgb, var(--home-acid) 18%, var(--home-paper))",
+          borderColor: "color-mix(in srgb, var(--home-signal) 40%, var(--home-rule))",
+          background: "color-mix(in srgb, var(--home-signal) 18%, var(--home-paper))",
           color: "var(--home-ink)",
         }}
       >

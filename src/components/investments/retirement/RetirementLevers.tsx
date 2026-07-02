@@ -10,8 +10,8 @@ interface Props {
 }
 
 function deltaTone(delta: number): string {
-  if (delta > 0.005) return "var(--color-success)";
-  if (delta < -0.005) return "var(--color-error)";
+  if (delta > 0.005) return "var(--home-positive)";
+  if (delta < -0.005) return "var(--home-negative)";
   return "var(--home-ink-muted)";
 }
 

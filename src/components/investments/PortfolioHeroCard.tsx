@@ -146,8 +146,8 @@ export function PortfolioHeroCard({
       .attr("x2", 0)
       .attr("y1", 0)
       .attr("y2", 1);
-    fillGrad.append("stop").attr("offset", "0%").attr("stop-color", "var(--home-haze)").attr("stop-opacity", 0.28);
-    fillGrad.append("stop").attr("offset", "100%").attr("stop-color", "var(--home-haze)").attr("stop-opacity", 0);
+    fillGrad.append("stop").attr("offset", "0%").attr("stop-color", "var(--home-signal)").attr("stop-opacity", 0.28);
+    fillGrad.append("stop").attr("offset", "100%").attr("stop-color", "var(--home-signal)").attr("stop-opacity", 0);
 
     const strokeGrad = defs
       .append("linearGradient")
@@ -156,7 +156,7 @@ export function PortfolioHeroCard({
       .attr("x2", 1)
       .attr("y1", 0)
       .attr("y2", 0);
-    strokeGrad.append("stop").attr("offset", "0%").attr("stop-color", "var(--home-haze)");
+    strokeGrad.append("stop").attr("offset", "0%").attr("stop-color", "var(--home-signal)");
     strokeGrad.append("stop").attr("offset", "100%").attr("stop-color", "var(--home-ink)");
 
     [0.25, 0.5, 0.75].forEach((p) => {
@@ -201,7 +201,7 @@ export function PortfolioHeroCard({
       .attr("cy", lastY)
       .attr("r", 6)
       .attr("fill", "none")
-      .attr("stroke", "var(--home-haze)")
+      .attr("stroke", "var(--home-signal)")
       .attr("stroke-opacity", 0.5);
     // Skip the looping SMIL pulse for users who prefer reduced motion; the
     // static ring above still marks the latest point. (CSS `animation:none`
@@ -292,7 +292,7 @@ export function PortfolioHeroCard({
           <span className={`chip ${dayPositive ? "pos" : "neg"}`}>
             {formatSignedCurrency(summary.dayChange)}
           </span>
-          <span className={dayPositive ? "text-[var(--color-success)]" : "text-[var(--color-error)]"}>
+          <span className={dayPositive ? "text-[var(--home-positive)]" : "text-[var(--home-negative)]"}>
             {formatPercent(summary.dayChangePercent)} today
           </span>
           <span className="muted">·</span>

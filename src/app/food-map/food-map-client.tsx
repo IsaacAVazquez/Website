@@ -65,7 +65,7 @@ function getPanelStyle(): CSSProperties {
 }
 
 const FILTER_LABEL_CLASS =
-  "text-[10.5px] font-bold uppercase tracking-[0.14em]";
+  "text-2xs font-bold uppercase tracking-[0.14em]";
 
 function CityChips({
   state,
@@ -87,20 +87,20 @@ function CityChips({
             role="radio"
             aria-checked={isActive}
             onClick={() => onSelect(city.id)}
-            className="resume-chip min-h-touch transition-[transform,border-color,background-color,box-shadow] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+            className="resume-chip min-h-touch transition-[transform,border-color,background-color,box-shadow] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
             style={{
               borderColor: isActive
-                ? "color-mix(in srgb, var(--home-haze) 45%, var(--home-rule))"
+                ? "color-mix(in srgb, var(--home-signal) 45%, var(--home-rule))"
                 : "var(--home-rule)",
               background: isActive
-                ? "color-mix(in srgb, var(--home-haze) 18%, var(--home-paper))"
+                ? "color-mix(in srgb, var(--home-signal) 18%, var(--home-paper))"
                 : "var(--home-paper-raised)",
               color: "var(--home-ink)",
             }}
           >
             {city.name}
             <span
-              className="ml-2 text-[0.7rem] uppercase tracking-[0.12em]"
+              className="ml-2 text-2xs uppercase tracking-[0.12em]"
               style={{ color: "var(--home-ink-muted)" }}
             >
               {counts[city.id] ?? 0}
@@ -129,7 +129,7 @@ function CuratorChips({
             type="button"
             onClick={() => onToggle(curator.id)}
             aria-pressed={isActive}
-            className="resume-chip min-h-touch inline-flex items-center gap-2 transition-[transform,border-color,background-color,box-shadow] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+            className="resume-chip min-h-touch inline-flex items-center gap-2 transition-[transform,border-color,background-color,box-shadow] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
             style={{
               borderColor: isActive
                 ? `color-mix(in srgb, ${curator.accent} 55%, var(--home-rule))`
@@ -176,13 +176,13 @@ function CuisineChips({
             type="button"
             onClick={() => onToggle(cuisine.id)}
             aria-pressed={isActive}
-            className="resume-chip min-h-touch transition-[transform,border-color,background-color,box-shadow] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+            className="resume-chip min-h-touch transition-[transform,border-color,background-color,box-shadow] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
             style={{
               borderColor: isActive
-                ? "color-mix(in srgb, var(--home-haze) 38%, var(--home-rule))"
+                ? "color-mix(in srgb, var(--home-signal) 38%, var(--home-rule))"
                 : "var(--home-rule)",
               background: isActive
-                ? "color-mix(in srgb, var(--home-haze) 14%, var(--home-paper))"
+                ? "color-mix(in srgb, var(--home-signal) 14%, var(--home-paper))"
                 : "var(--home-paper-raised)",
               color: "var(--home-ink)",
             }}
@@ -213,7 +213,7 @@ function PlaceCard({
       type="button"
       onClick={() => onSelect(place.id)}
       aria-pressed={isSelected}
-      className="home-card min-h-touch w-full rounded-[1.25rem] p-4 text-left transition-[transform,border-color,background-color,box-shadow] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+      className="home-card min-h-touch w-full rounded-[var(--radius-3xl)] p-4 text-left transition-[transform,border-color,background-color,box-shadow] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
       style={{
         ...getPanelStyle(),
         background: isSelected
@@ -277,7 +277,7 @@ function PlaceDetail({
       <button
         type="button"
         onClick={onClear}
-        className="self-start min-h-touch rounded-full px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] transition-[transform,border-color,background-color,color] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+        className="self-start min-h-touch rounded-full px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] transition-[transform,border-color,background-color,color] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
         style={{
           ...getPanelStyle(),
           color: "var(--home-ink)",
@@ -288,7 +288,7 @@ function PlaceDetail({
       </button>
 
       <div
-        className="rounded-[1.5rem] p-5"
+        className="rounded-[var(--radius-3xl)] p-5"
         style={{
           ...getPanelStyle(),
           background: `color-mix(in srgb, ${accent} 12%, var(--home-paper))`,
@@ -311,19 +311,19 @@ function PlaceDetail({
         </p>
 
         <div className="mt-4 grid gap-3">
-          <div className="rounded-[1.1rem] px-4 py-3" style={getPanelStyle()}>
+          <div className="rounded-[var(--radius-3xl)] px-4 py-3" style={getPanelStyle()}>
             <p className="home-kicker mb-1">Order</p>
             <p
-              className="mb-0 text-[0.95rem] font-semibold tracking-[-0.02em]"
+              className="mb-0 text-sm font-semibold tracking-[-0.02em]"
               style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
             >
               {place.order}
             </p>
           </div>
-          <div className="rounded-[1.1rem] px-4 py-3" style={getPanelStyle()}>
+          <div className="rounded-[var(--radius-3xl)] px-4 py-3" style={getPanelStyle()}>
             <p className="home-kicker mb-1">Recommended by</p>
             <p
-              className="mb-0 text-[0.95rem] font-semibold tracking-[-0.02em]"
+              className="mb-0 text-sm font-semibold tracking-[-0.02em]"
               style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
             >
               {curatorNames.join(" · ")}
@@ -332,7 +332,7 @@ function PlaceDetail({
         </div>
 
         <p
-          className="mt-4 text-[0.95rem] leading-relaxed"
+          className="mt-4 text-sm leading-relaxed"
           style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
         >
           {place.why}
@@ -342,7 +342,7 @@ function PlaceDetail({
           href={mapsLink(place)}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-4 inline-flex min-h-touch items-center gap-2 self-start rounded-full px-4 py-2 text-sm font-semibold transition-[transform,border-color,background-color,color] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+          className="mt-4 inline-flex min-h-touch items-center gap-2 self-start rounded-full px-4 py-2 text-sm font-semibold transition-[transform,border-color,background-color,color] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
           style={{
             ...getPanelStyle(),
             color: "var(--home-ink)",
@@ -360,7 +360,7 @@ function CuratorLegend() {
   return (
     <div className="flex flex-col gap-3">
       {FOOD_MAP_CURATORS.map((curator) => (
-        <div key={curator.id} className="rounded-[1.25rem] p-4" style={getPanelStyle()}>
+        <div key={curator.id} className="rounded-[var(--radius-3xl)] p-4" style={getPanelStyle()}>
           <div className="mb-1 flex items-center gap-2">
             <span
               aria-hidden="true"
@@ -375,7 +375,7 @@ function CuratorLegend() {
             </p>
           </div>
           <p
-            className="mb-0 text-[0.85rem] leading-relaxed"
+            className="mb-0 text-xs leading-relaxed"
             style={{ color: "var(--home-ink-muted)" }}
           >
             {curator.blurb}
@@ -593,7 +593,7 @@ function FoodMapWorkbench({
                     type="button"
                     onClick={handleResetFilters}
                     disabled={!hasFilters}
-                    className="min-h-touch rounded-full px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] transition-[transform,border-color,background-color,color,box-shadow] duration-200 ease disabled:cursor-not-allowed disabled:opacity-55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                    className="min-h-touch rounded-full px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] transition-[transform,border-color,background-color,color,box-shadow] duration-200 ease disabled:cursor-not-allowed disabled:opacity-55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
                     style={{
                       ...getPanelStyle(),
                       color: "var(--home-ink)",
@@ -655,7 +655,7 @@ function FoodMapWorkbench({
                   <button
                     type="button"
                     onClick={handleResetFilters}
-                    className="mt-4 min-h-touch rounded-full px-4 py-2 text-sm font-semibold transition-[transform,border-color,background-color,color] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                    className="mt-4 min-h-touch rounded-full px-4 py-2 text-sm font-semibold transition-[transform,border-color,background-color,color] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
                     style={{
                       ...getPanelStyle(),
                       color: "var(--home-ink)",
@@ -681,7 +681,7 @@ function FoodMapWorkbench({
 
             <aside
               aria-label="Food map side panel"
-              className="flex flex-col gap-4 rounded-[1.5rem] p-5 lg:sticky lg:top-24 lg:self-start"
+              className="flex flex-col gap-4 rounded-[var(--radius-3xl)] p-5 lg:sticky lg:top-24 lg:self-start"
               style={getPanelStyle()}
             >
               {selectedPlace ? (
@@ -690,7 +690,7 @@ function FoodMapWorkbench({
                 <>
                   <p className="tool-rail-label">Curators</p>
                   <p
-                    className="-mt-1 text-[0.85rem] leading-relaxed"
+                    className="-mt-1 text-xs leading-relaxed"
                     style={{ color: "var(--home-ink-muted)" }}
                   >
                     Pins are colored by who recommends them. Tap a pin or a card to

@@ -53,9 +53,9 @@ function normalizePriceEntry(entry: StockPrice & { report_date?: string }): Stoc
 function MetricRow({ label, value, tone = "default" }: { label: string; value: string; tone?: "default" | "positive" | "negative" }) {
   const valueClass =
     tone === "positive"
-      ? "text-[var(--color-success)]"
+      ? "text-[var(--home-positive)]"
       : tone === "negative"
-        ? "text-[var(--color-error)]"
+        ? "text-[var(--home-negative)]"
         : "text-[var(--home-ink)]";
 
   return (
@@ -117,9 +117,9 @@ export function ResearchSidebar({ symbol, onSymbolChange, isInPortfolio = false 
     : "default";
   const stanceColorClass =
     stanceTone === "positive"
-      ? "text-emerald-600 dark:text-emerald-400"
+      ? "text-[color-mix(in_srgb,var(--home-positive)_70%,var(--home-ink))]"
       : stanceTone === "negative"
-        ? "text-red-600 dark:text-red-400"
+        ? "text-[color-mix(in_srgb,var(--home-negative)_70%,var(--home-ink))]"
         : "text-[var(--home-ink-muted)]";
 
   const priceFreshnessMode = livePrice !== undefined ? "live" : "dataset";
@@ -132,7 +132,7 @@ export function ResearchSidebar({ symbol, onSymbolChange, isInPortfolio = false 
   return (
     <div className="space-y-3">
       {/* Search */}
-      <div className="rounded-[28px] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-4 shadow-[var(--shadow-sm)]">
+      <div className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-4 shadow-[var(--shadow-sm)]">
         <div className="mb-2 flex items-center justify-between gap-2">
           <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
             Research Symbol
@@ -141,8 +141,8 @@ export function ResearchSidebar({ symbol, onSymbolChange, isInPortfolio = false 
             <span
               className="inline-flex items-center rounded-full px-2 py-0.5 text-3xs font-semibold"
               style={{
-                backgroundColor: "color-mix(in srgb, var(--color-success) 15%, transparent)",
-                color: "var(--color-success)",
+                backgroundColor: "color-mix(in srgb, var(--home-positive) 15%, transparent)",
+                color: "var(--home-positive)",
               }}
             >
               In portfolio
@@ -155,7 +155,7 @@ export function ResearchSidebar({ symbol, onSymbolChange, isInPortfolio = false 
       {symbol ? (
         <>
           {/* Company identity + stance */}
-          <div className="rounded-[28px] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-4 shadow-[var(--shadow-sm)]">
+          <div className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-4 shadow-[var(--shadow-sm)]">
             <p className="text-sm font-semibold leading-snug text-[var(--home-ink)]">
               {[displayName || symbol, symbol !== (displayName || symbol) ? symbol : null, info?.sector, info?.industry].filter(Boolean).join(" · ")}
             </p>
@@ -167,7 +167,7 @@ export function ResearchSidebar({ symbol, onSymbolChange, isInPortfolio = false 
           </div>
 
           {/* Live price */}
-          <div className="rounded-[28px] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-4 shadow-[var(--shadow-sm)]">
+          <div className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-4 shadow-[var(--shadow-sm)]">
             <p className="mb-2 text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
               Latest Price
             </p>
@@ -182,7 +182,7 @@ export function ResearchSidebar({ symbol, onSymbolChange, isInPortfolio = false 
               {displayedDayChangePercent !== undefined ? (
                 <span
                   className={`text-sm font-semibold ${
-                    displayedDayChangePercent >= 0 ? "text-[var(--color-success)]" : "text-[var(--color-error)]"
+                    displayedDayChangePercent >= 0 ? "text-[var(--home-positive)]" : "text-[var(--home-negative)]"
                   }`}
                 >
                   {fmtSigned(displayedDayChangePercent)}
@@ -203,17 +203,17 @@ export function ResearchSidebar({ symbol, onSymbolChange, isInPortfolio = false 
                   : "Live pricing is temporarily unavailable."}
             </p>
             {quoteError && livePrice === undefined ? (
-              <p className="mt-1 text-2xs font-medium text-[var(--color-warning)]">{quoteError}</p>
+              <p className="mt-1 text-2xs font-medium text-[var(--home-warning)]">{quoteError}</p>
             ) : null}
             {historyFreshness.isStale ? (
-              <p className="mt-1 text-2xs font-medium text-[var(--color-warning)]">
+              <p className="mt-1 text-2xs font-medium text-[var(--home-warning)]">
                 Historical series trails the dataset by {historyFreshness.lagDays} days.
               </p>
             ) : null}
           </div>
 
           {/* Key metrics */}
-          <div className="rounded-[28px] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-4 shadow-[var(--shadow-sm)]">
+          <div className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-4 shadow-[var(--shadow-sm)]">
             <p className="mb-2 text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
               Key Metrics
             </p>
@@ -246,12 +246,12 @@ export function ResearchSidebar({ symbol, onSymbolChange, isInPortfolio = false 
           </div>
 
           {/* Dataset freshness */}
-          <div className="rounded-[28px] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-4 py-3 shadow-[var(--shadow-sm)]">
+          <div className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-4 py-3 shadow-[var(--shadow-sm)]">
             <DataFreshnessIndicator lastUpdated={dataFreshnessLastUpdated} mode="dataset" />
           </div>
         </>
       ) : (
-        <div className="rounded-[28px] border border-dashed border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-5 py-10 text-center shadow-[var(--shadow-sm)]">
+        <div className="rounded-[var(--radius-3xl)] border border-dashed border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-5 py-10 text-center shadow-[var(--shadow-sm)]">
           <p className="text-sm text-[var(--home-ink-muted)]">
             Enter a ticker to see metrics and research data.
           </p>

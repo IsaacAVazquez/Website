@@ -23,13 +23,13 @@ function defaultTeamName(teamNumber: number): string {
 }
 
 const STEAL_CHIP_STYLE = {
-  borderColor: "color-mix(in srgb, var(--color-success) 28%, var(--home-rule))",
-  background: "color-mix(in srgb, var(--color-success) 10%, var(--home-paper))",
+  borderColor: "color-mix(in srgb, var(--home-positive) 28%, var(--home-rule))",
+  background: "color-mix(in srgb, var(--home-positive) 10%, var(--home-paper))",
 } as const;
 
 const REACH_CHIP_STYLE = {
-  borderColor: "color-mix(in srgb, var(--color-warning) 30%, var(--home-rule))",
-  background: "color-mix(in srgb, var(--color-warning) 12%, var(--home-paper))",
+  borderColor: "color-mix(in srgb, var(--home-warning) 30%, var(--home-rule))",
+  background: "color-mix(in srgb, var(--home-warning) 12%, var(--home-paper))",
 } as const;
 
 const PANEL_TILE_STYLE = {
@@ -59,7 +59,7 @@ function PickValueRow({
   const delta = getPickDelta(pick) ?? 0;
 
   return (
-    <div className="rounded-[1.2rem] border px-4 py-3" style={PANEL_TILE_STYLE}>
+    <div className="rounded-[var(--radius-3xl)] border px-4 py-3" style={PANEL_TILE_STYLE}>
       <div className="flex flex-wrap items-center gap-2">
         <p className="text-sm font-semibold">{pick.player.name}</p>
         <span className={FANTASY_CHIP_CLASS} style={getPositionTone(pick.player.position)}>
@@ -118,7 +118,7 @@ export function DraftAnalyticsPanel({
                 />
               )}
               {activeRun && (
-                <div className="rounded-[1.2rem] border px-4 py-3" style={PANEL_TILE_STYLE}>
+                <div className="rounded-[var(--radius-3xl)] border px-4 py-3" style={PANEL_TILE_STYLE}>
                   <p className="text-sm font-semibold">
                     {activeRun.position} run in progress
                   </p>
@@ -130,10 +130,10 @@ export function DraftAnalyticsPanel({
               )}
               {showEmerging && emergingRun && (
                 <div
-                  className="rounded-[1.2rem] border px-4 py-3"
+                  className="rounded-[var(--radius-3xl)] border px-4 py-3"
                   style={{
-                    borderColor: "color-mix(in srgb, var(--home-acid) 36%, var(--home-rule))",
-                    background: "color-mix(in srgb, var(--home-acid) 10%, var(--home-paper))",
+                    borderColor: "color-mix(in srgb, var(--home-signal) 36%, var(--home-rule))",
+                    background: "color-mix(in srgb, var(--home-signal) 10%, var(--home-paper))",
                   }}
                 >
                   <p className="text-sm font-semibold">{emergingRun.position}s starting to go</p>
@@ -197,7 +197,7 @@ export function DraftAnalyticsPanel({
                 {analytics.positionRunAnalysis.map((run) => (
                   <div
                     key={`run-${run.position}-${run.startPick ?? run.startRound}`}
-                    className="rounded-[1.2rem] border px-4 py-3 text-sm"
+                    className="rounded-[var(--radius-3xl)] border px-4 py-3 text-sm"
                     style={PANEL_TILE_STYLE}
                   >
                     <span className="font-semibold">{run.position} run</span>
@@ -221,7 +221,7 @@ export function DraftAnalyticsPanel({
             {rankedTeams.map((team) => (
               <div
                 key={`team-value-${team.teamNumber}`}
-                className="flex items-center justify-between gap-3 rounded-[1.2rem] border px-4 py-3"
+                className="flex items-center justify-between gap-3 rounded-[var(--radius-3xl)] border px-4 py-3"
                 style={PANEL_TILE_STYLE}
               >
                 <div className="min-w-0">

@@ -74,27 +74,27 @@ function getZonePillStyle(zone: ReturnType<typeof getPLZone>): CSSProperties {
   switch (zone) {
     case "champions":
       return {
-        color: "var(--home-haze)",
-        borderColor: "color-mix(in srgb, var(--home-haze) 30%, var(--home-rule))",
-        background: "color-mix(in srgb, var(--home-haze) 10%, var(--home-paper-alt))",
+        color: "var(--home-signal)",
+        borderColor: "color-mix(in srgb, var(--home-signal) 30%, var(--home-rule))",
+        background: "color-mix(in srgb, var(--home-signal) 10%, var(--home-paper-alt))",
       };
     case "europa":
       return {
-        color: "color-mix(in srgb, var(--home-ink) 70%, var(--home-acid))",
-        borderColor: "color-mix(in srgb, var(--home-acid) 50%, var(--home-rule))",
-        background: "color-mix(in srgb, var(--home-acid) 22%, var(--home-paper-alt))",
+        color: "color-mix(in srgb, var(--home-positive) 60%, var(--home-ink))",
+        borderColor: "color-mix(in srgb, var(--home-positive) 45%, var(--home-rule))",
+        background: "color-mix(in srgb, var(--home-positive) 16%, var(--home-paper-alt))",
       };
     case "conference":
       return {
-        color: "color-mix(in srgb, var(--home-ink) 75%, var(--home-moss))",
-        borderColor: "color-mix(in srgb, var(--home-moss) 55%, var(--home-rule))",
-        background: "color-mix(in srgb, var(--home-moss) 22%, var(--home-paper-alt))",
+        color: "color-mix(in srgb, var(--home-positive) 45%, var(--home-ink))",
+        borderColor: "color-mix(in srgb, var(--home-positive) 28%, var(--home-rule))",
+        background: "color-mix(in srgb, var(--home-positive) 9%, var(--home-paper-alt))",
       };
     case "relegation":
       return {
-        color: "var(--home-ink)",
-        borderColor: "color-mix(in srgb, var(--home-ink) 30%, var(--home-rule))",
-        background: "color-mix(in srgb, var(--home-stone) 65%, var(--home-paper-alt))",
+        color: "color-mix(in srgb, var(--home-negative) 70%, var(--home-ink))",
+        borderColor: "color-mix(in srgb, var(--home-negative) 40%, var(--home-rule))",
+        background: "color-mix(in srgb, var(--home-negative) 10%, var(--home-paper-alt))",
       };
     default:
       return { color: "var(--home-ink-muted)", borderColor: "var(--home-rule)", background: "var(--home-paper-alt)" };
@@ -103,10 +103,10 @@ function getZonePillStyle(zone: ReturnType<typeof getPLZone>): CSSProperties {
 
 function getZoneDotColor(zone: ReturnType<typeof getPLZone>): string {
   switch (zone) {
-    case "champions": return "var(--home-haze)";
-    case "europa": return "var(--home-acid)";
-    case "conference": return "var(--home-moss)";
-    case "relegation": return "color-mix(in srgb, var(--home-ink) 65%, var(--home-stone))";
+    case "champions": return "var(--home-signal)";
+    case "europa": return "var(--home-positive)";
+    case "conference": return "color-mix(in srgb, var(--home-positive) 55%, var(--home-ink))";
+    case "relegation": return "var(--home-negative)";
     default: return "var(--home-rule)";
   }
 }
@@ -114,8 +114,8 @@ function getZoneDotColor(zone: ReturnType<typeof getPLZone>): string {
 function getTableRowStyle(isSelected: boolean): CSSProperties {
   if (isSelected) {
     return {
-      borderColor: "color-mix(in srgb, var(--home-haze) 35%, var(--home-rule))",
-      background: "color-mix(in srgb, var(--home-haze) 9%, var(--home-paper-alt))",
+      borderColor: "color-mix(in srgb, var(--home-signal) 35%, var(--home-rule))",
+      background: "color-mix(in srgb, var(--home-signal) 9%, var(--home-paper-alt))",
     };
   }
   return { borderColor: "var(--home-rule)", background: "var(--home-paper-alt)" };
@@ -124,8 +124,8 @@ function getTableRowStyle(isSelected: boolean): CSSProperties {
 function getViewButtonStyle(isActive: boolean): CSSProperties {
   if (isActive) {
     return {
-      borderColor: "color-mix(in srgb, var(--home-haze) 35%, var(--home-rule))",
-      background: "color-mix(in srgb, var(--home-haze) 9%, var(--home-paper-alt))",
+      borderColor: "color-mix(in srgb, var(--home-signal) 35%, var(--home-rule))",
+      background: "color-mix(in srgb, var(--home-signal) 9%, var(--home-paper-alt))",
       boxShadow: "var(--shadow-sm)",
     };
   }
@@ -474,7 +474,7 @@ export function PremierLeagueClient({
         {/* Main standings + sidebar */}
         <div id="pl-standings" className="grid gap-5 md:grid-cols-[minmax(0,1fr)_280px] lg:grid-cols-[minmax(0,1fr)_320px]">
           {/* Standings */}
-          <section className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,white)] p-5 sm:p-6 shadow-[var(--shadow-sm)]">
+          <section className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-5 sm:p-6 shadow-[var(--shadow-sm)]">
             <div className="flex items-center justify-between border-b border-[var(--home-rule)] pb-4">
               <h2 className="text-lg font-bold text-[var(--home-ink)]">Standings</h2>
               <span className="text-sm text-[var(--home-ink-muted)]">{visibleStandings.length} clubs</span>
@@ -545,7 +545,7 @@ export function PremierLeagueClient({
                             onClick={() => handleTeamChange(row.team.id)}
                             aria-pressed={isSelected}
                             aria-label={`Show ${row.team.name} details`}
-                            className="flex min-h-[44px] w-full items-center gap-2 rounded-xl px-1 text-left transition-colors hover:bg-[var(--home-paper-alt)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--home-haze)]"
+                            className="flex min-h-[44px] w-full items-center gap-2 rounded-[var(--radius-xl)] px-1 text-left transition-colors hover:bg-[var(--home-paper-alt)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--home-signal)]"
                           >
                             <CrestAvatar crest={row.team.crest} name={row.team.shortName} size="sm" />
                             <span className="font-semibold text-[var(--home-ink)]">{row.team.shortName}</span>
@@ -580,7 +580,7 @@ export function PremierLeagueClient({
           {/* Compact club sidebar */}
           <aside className="md:sticky md:top-28 md:self-start">
             {selectedRow ? (
-              <section className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,white)] p-5 shadow-[var(--shadow-sm)]" aria-live="polite" data-testid="pl-selected-club">
+              <section className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-5 shadow-[var(--shadow-sm)]" aria-live="polite" data-testid="pl-selected-club">
                 <div className="flex items-start gap-3">
                   <CrestAvatar crest={selectedRow.team.crest} name={selectedRow.team.shortName} size="lg" />
                   <div className="min-w-0 flex-1">
@@ -600,7 +600,7 @@ export function PremierLeagueClient({
                       </span>
                     </div>
                   </div>
-                  <div className="flex-shrink-0 rounded-xl bg-[var(--home-haze)] px-3 py-2 text-center text-[var(--home-paper)] shadow-sm">
+                  <div className="flex-shrink-0 rounded-[var(--radius-xl)] bg-[var(--home-signal)] px-3 py-2 text-center text-[var(--home-paper)] shadow-sm">
                     <p className="text-3xs uppercase tracking-[0.14em] opacity-80">Pos</p>
                     <p className="text-xl font-bold">{selectedRow.position}</p>
                   </div>
@@ -656,9 +656,9 @@ export function PremierLeagueClient({
         </div>
 
         {/* Tabbed detail strip */}
-        <div className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,white)] p-5 sm:p-6 shadow-[var(--shadow-sm)]">
+        <div className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-5 sm:p-6 shadow-[var(--shadow-sm)]">
           <div
-            className="flex gap-2 overflow-x-auto rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,white)] p-1.5"
+            className="flex gap-2 overflow-x-auto rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-1.5"
             role="tablist"
             aria-label="Club and league details"
           >
@@ -674,9 +674,9 @@ export function PremierLeagueClient({
                   aria-controls="pl-detail-panel"
                   tabIndex={activeDetailTab === tab ? 0 : -1}
                   onClick={() => setActiveDetailTab(tab)}
-                  className={`min-h-[44px] whitespace-nowrap rounded-2xl px-5 py-2.5 text-sm font-semibold transition-colors ${
+                  className={`min-h-[44px] whitespace-nowrap rounded-[var(--radius-2xl)] px-5 py-2.5 text-sm font-semibold transition-colors ${
                     activeDetailTab === tab
-                      ? "bg-[var(--home-haze)] text-[var(--home-paper)] shadow-sm"
+                      ? "bg-[var(--home-signal)] text-[var(--home-paper)] shadow-sm"
                       : "text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
                   }`}
                 >
@@ -707,7 +707,7 @@ export function PremierLeagueClient({
                     </div>
                   </div>
 
-                  <div className="rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4">
+                  <div className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4">
                     <p className="text-sm font-semibold text-[var(--home-ink)]">Pressure points</p>
                     <ul className="mt-3 space-y-2 pl-5 text-sm leading-relaxed text-[var(--home-ink-muted)]">
                       {selectedClubPressurePoints.map((item) => (
@@ -732,7 +732,7 @@ export function PremierLeagueClient({
 
                 {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) && (
                   <div
-                    className="rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4"
+                    className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4"
                     role={teamSnapshotError ? "alert" : "status"}
                     aria-live="polite"
                   >
@@ -817,7 +817,7 @@ export function PremierLeagueClient({
                       href="https://www.premierleague.com/stats/top/players/goals"
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-sm font-medium text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-haze)]"
+                      className="inline-flex min-h-[44px] items-center gap-2 rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-sm font-medium text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-signal)]"
                     >
                       Official
                       <ExternalLink className="h-4 w-4" />
@@ -835,9 +835,9 @@ export function PremierLeagueClient({
           </div>
         </div>
 
-        <section className="rounded-3xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-5 text-sm text-[var(--home-ink-muted)] shadow-sm">
+        <section className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-5 text-sm text-[var(--home-ink-muted)] shadow-sm">
           <div className="flex items-start gap-3">
-            <CircleAlert className="mt-0.5 h-4 w-4 flex-shrink-0 text-[var(--home-haze)]" />
+            <CircleAlert className="mt-0.5 h-4 w-4 flex-shrink-0 text-[var(--home-signal)]" />
             <p className="mb-0 max-w-none leading-relaxed">
               This page is a checked-in football-data.org snapshot rather than a live feed. Standings, club form, and fixture cards refresh from the local dataset shipped with the app.
             </p>
@@ -860,7 +860,7 @@ function ClubLeaderCard({
   emptyLabel: string;
 }) {
   return (
-    <div className="rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4">
+    <div className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4">
       <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
         {title}
       </p>

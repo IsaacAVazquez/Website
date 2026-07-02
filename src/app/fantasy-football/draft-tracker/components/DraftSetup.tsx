@@ -93,7 +93,7 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
             onChange={(event) => updateField("leagueName", event.target.value.slice(0, 60))}
             autoComplete="organization"
             maxLength={60}
-            className="min-h-[48px] w-full rounded-[1.2rem] border px-4 text-sm transition-[background-color,border-color,box-shadow] duration-200"
+            className="min-h-[48px] w-full rounded-[var(--radius-3xl)] border px-4 text-sm transition-[background-color,border-color,box-shadow] duration-200"
             style={getFieldStyle()}
             placeholder="Home league"
           />
@@ -106,7 +106,7 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
             name="totalTeams"
             value={formState.totalTeams}
             onChange={(event) => updateField("totalTeams", Number(event.target.value))}
-            className="min-h-[48px] w-full rounded-[1.2rem] border px-4 text-sm transition-[background-color,border-color,box-shadow] duration-200"
+            className="min-h-[48px] w-full rounded-[var(--radius-3xl)] border px-4 text-sm transition-[background-color,border-color,box-shadow] duration-200"
             style={getFieldStyle()}
           >
             {[8, 10, 12, 14, 16].map((teamCount) => (
@@ -124,7 +124,7 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
             name="userTeam"
             value={formState.userTeam}
             onChange={(event) => updateField("userTeam", Number(event.target.value))}
-            className="min-h-[48px] w-full rounded-[1.2rem] border px-4 text-sm transition-[background-color,border-color,box-shadow] duration-200"
+            className="min-h-[48px] w-full rounded-[var(--radius-3xl)] border px-4 text-sm transition-[background-color,border-color,box-shadow] duration-200"
             style={getFieldStyle()}
           >
             {Array.from({ length: formState.totalTeams }, (_, index) => index + 1).map((slot) => (
@@ -142,7 +142,7 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
             name="rounds"
             value={formState.rounds}
             onChange={(event) => updateField("rounds", Number(event.target.value))}
-            className="min-h-[48px] w-full rounded-[1.2rem] border px-4 text-sm transition-[background-color,border-color,box-shadow] duration-200"
+            className="min-h-[48px] w-full rounded-[var(--radius-3xl)] border px-4 text-sm transition-[background-color,border-color,box-shadow] duration-200"
             style={getFieldStyle()}
           >
             {[13, 14, 15, 16, 17, 18].map((roundCount) => (
@@ -168,7 +168,7 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
                   key={option.value}
                   type="button"
                   onClick={() => updateField("draftType", option.value)}
-                  className="min-h-[76px] rounded-[1.2rem] border px-4 py-3 text-left transition-[background-color,border-color,color,box-shadow] duration-200"
+                  className="min-h-[76px] rounded-[var(--radius-3xl)] border px-4 py-3 text-left transition-[background-color,border-color,color,box-shadow] duration-200"
                   style={getOptionStyle(active)}
                 >
                   <span className="block text-sm font-semibold">{option.label}</span>
@@ -194,7 +194,7 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
                   key={option.value}
                   type="button"
                   onClick={() => updateField("scoringFormat", option.value)}
-                  className="min-h-[72px] rounded-[1.2rem] border px-4 py-3 text-left transition-[background-color,border-color,color,box-shadow] duration-200"
+                  className="min-h-[72px] rounded-[var(--radius-3xl)] border px-4 py-3 text-left transition-[background-color,border-color,color,box-shadow] duration-200"
                   style={getOptionStyle(active)}
                 >
                   <span className="block text-sm font-semibold">{option.label}</span>
@@ -225,7 +225,7 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
                   key={option.label}
                   type="button"
                   onClick={() => updateField("timerSeconds", option.value === 0 ? 0 : formState.timerSeconds || 90)}
-                  className="min-h-[72px] rounded-[1.2rem] border px-4 py-3 text-left transition-[background-color,border-color,color,box-shadow] duration-200"
+                  className="min-h-[72px] rounded-[var(--radius-3xl)] border px-4 py-3 text-left transition-[background-color,border-color,color,box-shadow] duration-200"
                   style={getOptionStyle(active)}
                 >
                   <span className="block text-sm font-semibold">{option.label}</span>
@@ -249,7 +249,7 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
             value={formState.timerSeconds || 90}
             disabled={(formState.timerSeconds ?? 0) === 0}
             onChange={(event) => updateField("timerSeconds", Number(event.target.value))}
-            className="min-h-[48px] w-full rounded-[1.2rem] border px-4 text-sm transition-[background-color,border-color,box-shadow] duration-200 disabled:cursor-not-allowed disabled:opacity-60"
+            className="min-h-[48px] w-full rounded-[var(--radius-3xl)] border px-4 text-sm transition-[background-color,border-color,box-shadow] duration-200 disabled:cursor-not-allowed disabled:opacity-60"
             style={getFieldStyle()}
           >
             {[45, 60, 90, 120, 180].map((seconds) => (
@@ -262,7 +262,7 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
       </div>
 
       <div
-        className="mt-6 grid gap-3 rounded-[1.3rem] border px-4 py-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center"
+        className="mt-6 grid gap-3 rounded-[var(--radius-3xl)] border px-4 py-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center"
         style={{
           borderColor: "var(--home-rule)",
           background: "color-mix(in srgb, var(--home-paper-alt) 52%, var(--home-elev-mix))",

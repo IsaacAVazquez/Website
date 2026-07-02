@@ -301,7 +301,7 @@ export function SearchInterface({
                 placeholder="Search writing, projects, and tools…"
                 aria-label="Search content"
                 aria-controls="search-results"
-                className="w-full min-h-[44px] pl-12 pr-12 py-3 rounded-xl transition-colors"
+                className="w-full min-h-[44px] pl-12 pr-12 py-3 rounded-[var(--radius-xl)] transition-colors"
                 style={{
                   fontFamily: "var(--font-home-sans)",
                   background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
@@ -328,7 +328,7 @@ export function SearchInterface({
               aria-label={showFilters ? "Hide filters" : "Show filters"}
               aria-expanded={showFilters}
               aria-controls="search-filters"
-              className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl p-3 transition-colors"
+              className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-[var(--radius-xl)] p-3 transition-colors"
               style={
                 filterActive
                   ? {
@@ -397,7 +397,7 @@ export function SearchInterface({
               type="button"
               onClick={clearFilters}
               className="text-sm underline underline-offset-2"
-              style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-haze)" }}
+              style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-signal)" }}
             >
               Clear filters
             </button>
@@ -458,7 +458,7 @@ export function SearchInterface({
                     type="button"
                     onClick={() => handleQueryChange(example)}
                     className="block text-left text-sm underline underline-offset-2"
-                    style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-haze)" }}
+                    style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-signal)" }}
                   >
                     &ldquo;{example}&rdquo;
                   </button>

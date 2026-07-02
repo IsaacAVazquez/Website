@@ -63,7 +63,7 @@ export function getApplicationFormState(
 }
 
 export const applicationInputClass =
-  "w-full min-h-[44px] rounded-[0.9rem] border px-3 py-2 text-sm outline-none transition-[border-color,box-shadow] duration-200 ease focus-visible:border-[var(--home-haze)] focus-visible:ring-2 focus-visible:ring-[color-mix(in_srgb,var(--home-haze)_35%,transparent)]";
+  "w-full min-h-[44px] rounded-[var(--radius-2xl)] border px-3 py-2 text-sm outline-none transition-[border-color,box-shadow] duration-200 ease focus-visible:border-[var(--home-signal)] focus-visible:ring-2 focus-visible:ring-[color-mix(in_srgb,var(--home-signal)_35%,transparent)]";
 
 export const applicationInputStyle: CSSProperties = {
   background: "var(--home-paper-alt)",

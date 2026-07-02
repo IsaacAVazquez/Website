@@ -52,15 +52,18 @@ test.describe('Homepage', () => {
     ).toHaveText(NAV_LABELS)
   })
 
-  test('shows the editorial hero and primary CTAs', async ({ page }) => {
+  test('shows the instrument hero and primary CTAs', async ({ page }) => {
     await page.goto('/')
 
     await expect(
-      page.getByRole('heading', { level: 1, name: /isaac vazquez/i })
+      page.getByRole('heading', {
+        level: 1,
+        name: /i build tools that make hard problems easier to act on/i,
+      })
     ).toBeVisible()
-    // The primary CTAs sit in the bio band just under the hero wordmark.
-    await expect(page.getByRole('link', { name: /view projects/i }).first()).toBeVisible()
-    await expect(page.getByRole('link', { name: /read writing/i }).first()).toBeVisible()
+    // The primary CTAs sit directly under the hero claim.
+    await expect(page.getByRole('link', { name: /see the work/i }).first()).toBeVisible()
+    await expect(page.getByRole('link', { name: /read the writing/i }).first()).toBeVisible()
     await expect(page.getByTestId('home-projects')).toBeVisible()
     await expect(page.getByTestId('home-writing')).toBeVisible()
     await expect(page.getByRole('button', { name: /theme:/i }).first()).toBeVisible()
@@ -89,7 +92,10 @@ test.describe('Homepage', () => {
     await page.setViewportSize({ width: 390, height: 844 })
     await page.goto('/')
 
-    const heroHeading = page.getByRole('heading', { level: 1, name: /isaac vazquez/i })
+    const heroHeading = page.getByRole('heading', {
+      level: 1,
+      name: /i build tools that make hard problems easier to act on/i,
+    })
     await expect(heroHeading).toBeVisible()
 
     // The whole heading box must fit inside the initial 844px viewport —
@@ -99,22 +105,18 @@ test.describe('Homepage', () => {
     expect(headingBox!.y).toBeGreaterThanOrEqual(0)
     expect(headingBox!.y + headingBox!.height).toBeLessThanOrEqual(844)
 
-    // The primary "View projects" CTA is present further down the page.
-    await expect(page.getByRole('link', { name: /view projects/i }).first()).toBeVisible()
+    // The primary "See the work" CTA is present in the hero.
+    await expect(page.getByRole('link', { name: /see the work/i }).first()).toBeVisible()
   })
 
-  test('shows the editorial sections and card links', async ({ page }) => {
+  test('shows the instrument sections and card links', async ({ page }) => {
     await page.goto('/')
 
     await expect(
-      page.getByRole('heading', {
-        name: /product surfaces that show how i think in practice/i,
-      })
+      page.getByRole('heading', { name: /selected work/i })
     ).toBeVisible()
     await expect(
-      page.getByRole('heading', {
-        name: /writing on pm, ai workflows, and fintech tools/i,
-      })
+      page.getByRole('heading', { name: /recent writing/i })
     ).toBeVisible()
     await expect(
       page.getByRole('heading', {
@@ -124,6 +126,7 @@ test.describe('Homepage', () => {
 
     await expect(page.getByTestId('home-projects').getByRole('link')).toHaveCount(3)
     await expect(page.getByTestId('home-writing').getByRole('link')).toHaveCount(3)
+    await expect(page.getByTestId('home-tools')).toBeVisible()
   })
 
   test('supports dark theme on the homepage', async ({ page }) => {
@@ -142,13 +145,11 @@ test.describe('Homepage', () => {
     await page.emulateMedia({ reducedMotion: 'reduce' })
     await page.goto('/')
 
-    // Hero and marquee motion are decorative; with reduced motion the hero and
-    // the editorial sections must still render their content (not stay hidden).
+    // Count-ups and the sparkline draw-in are decorative; with reduced motion
+    // the hero must still render finished content (not stay hidden or at zero).
     await expect(page.getByTestId('hero')).toBeVisible()
     await expect(
-      page.getByRole('heading', {
-        name: /product surfaces that show how i think in practice/i,
-      })
+      page.getByRole('heading', { name: /selected work/i })
     ).toBeVisible()
   })
 })

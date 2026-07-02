@@ -73,10 +73,10 @@ export default function AdminPage() {
         <div className="w-full max-w-md">
           <WarmCard hover={false} padding="xl">
             <div className="text-center mb-8">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[color-mix(in_srgb,var(--home-haze)_14%,transparent)] mb-4">
-                <IconLock className="w-8 h-8 text-[var(--home-haze)]" />
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[color-mix(in_srgb,var(--home-signal)_14%,transparent)] mb-4">
+                <IconLock className="w-8 h-8 text-[var(--home-signal)]" />
               </div>
-              <h1 className="text-2xl font-bold text-[var(--home-haze)] mb-2">
+              <h1 className="text-2xl font-bold text-[var(--home-signal)] mb-2">
                 Admin Access
               </h1>
               <p className="text-[var(--home-ink-muted)]">Portfolio Dashboard</p>
@@ -92,7 +92,7 @@ export default function AdminPage() {
                   type="text"
                   value={loginForm.username}
                   onChange={e => setLoginForm(prev => ({ ...prev, username: e.target.value }))}
-                  className="w-full px-4 py-3 bg-[var(--home-paper)] border-2 border-[var(--home-rule)] rounded-lg text-[var(--home-ink)] placeholder-[var(--home-ink-muted)] focus:outline-none focus:border-[var(--home-haze)] focus:ring-2 focus:ring-[color-mix(in_srgb,var(--home-haze)_24%,transparent)] transition-colors"
+                  className="w-full px-4 py-3 bg-[var(--home-paper)] border-2 border-[var(--home-rule)] rounded-lg text-[var(--home-ink)] placeholder-[var(--home-ink-muted)] focus:outline-none focus:border-[var(--home-signal)] focus:ring-2 focus:ring-[color-mix(in_srgb,var(--home-signal)_24%,transparent)] transition-colors"
                   placeholder="Enter username"
                   required
                 />
@@ -107,7 +107,7 @@ export default function AdminPage() {
                   type="password"
                   value={loginForm.password}
                   onChange={e => setLoginForm(prev => ({ ...prev, password: e.target.value }))}
-                  className="w-full px-4 py-3 bg-[var(--home-paper)] border-2 border-[var(--home-rule)] rounded-lg text-[var(--home-ink)] placeholder-[var(--home-ink-muted)] focus:outline-none focus:border-[var(--home-haze)] focus:ring-2 focus:ring-[color-mix(in_srgb,var(--home-haze)_24%,transparent)] transition-colors"
+                  className="w-full px-4 py-3 bg-[var(--home-paper)] border-2 border-[var(--home-rule)] rounded-lg text-[var(--home-ink)] placeholder-[var(--home-ink-muted)] focus:outline-none focus:border-[var(--home-signal)] focus:ring-2 focus:ring-[color-mix(in_srgb,var(--home-signal)_24%,transparent)] transition-colors"
                   placeholder="Enter password"
                   required
                 />
@@ -166,7 +166,7 @@ export default function AdminPage() {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-sm font-semibold"
-              style={{ color: 'var(--home-acid)' }}
+              style={{ color: 'var(--home-signal)' }}
             >
               Open GitHub Actions workflow →
             </a>
@@ -183,7 +183,7 @@ export default function AdminPage() {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-sm font-semibold"
-              style={{ color: 'var(--home-acid)' }}
+              style={{ color: 'var(--home-signal)' }}
             >
               Open GitHub Actions workflow →
             </a>

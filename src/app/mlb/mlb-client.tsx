@@ -461,7 +461,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
         </div>
 
         <div id="mlb-standings" className="grid gap-5 md:grid-cols-[minmax(0,1fr)_280px] lg:grid-cols-[minmax(0,1fr)_320px]">
-          <section className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,white)] p-5 sm:p-6 shadow-[var(--shadow-sm)]">
+          <section className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-5 sm:p-6 shadow-[var(--shadow-sm)]">
             <div className="flex items-center justify-between border-b border-[var(--home-rule)] pb-4">
               <h2 className="text-lg font-bold text-[var(--home-ink)]">Standings</h2>
               <span className="text-sm text-[var(--home-ink-muted)]">
@@ -491,7 +491,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
             </div>
 
             {!hasStandings && (
-              <p className="mt-6 rounded-2xl border border-dashed border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4 text-sm text-[var(--home-ink-muted)]">
+              <p className="mt-6 rounded-[var(--radius-2xl)] border border-dashed border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4 text-sm text-[var(--home-ink-muted)]">
                 The 30 clubs are listed below. Win and loss data will appear
                 once the next snapshot is published.
               </p>
@@ -548,7 +548,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                                 onClick={() => handleTeamChange(row.id)}
                                 aria-pressed={isSelected}
                                 aria-label={`Show ${row.name} details`}
-                                className="flex min-h-[44px] w-full items-center gap-2 rounded-xl text-left"
+                                className="flex min-h-[44px] w-full items-center gap-2 rounded-[var(--radius-xl)] text-left"
                               >
                                 <CrestAvatar
                                   crest={logoByTeamId.get(row.id) ?? null}
@@ -590,7 +590,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
 
           <aside className="md:sticky md:top-28 md:self-start">
             <section
-              className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,white)] p-5 shadow-[var(--shadow-sm)]"
+              className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-5 shadow-[var(--shadow-sm)]"
               aria-live="polite"
               data-testid="mlb-selected-team"
             >
@@ -623,7 +623,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                         )}
                       </div>
                     </div>
-                    <div className="flex-shrink-0 rounded-xl bg-[var(--home-haze)] px-3 py-2 text-center text-[var(--home-paper)] shadow-sm">
+                    <div className="flex-shrink-0 rounded-[var(--radius-xl)] bg-[var(--home-signal)] px-3 py-2 text-center text-[var(--home-paper)] shadow-sm">
                       <p className="text-3xs uppercase tracking-[0.14em] opacity-80">Div</p>
                       <p className="text-xl font-bold">{selectedRow.divisionRank || "—"}</p>
                     </div>
@@ -679,9 +679,9 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
           </aside>
         </div>
 
-        <div className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,white)] p-5 sm:p-6 shadow-[var(--shadow-sm)]">
+        <div className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-5 sm:p-6 shadow-[var(--shadow-sm)]">
           <div
-            className="flex gap-2 overflow-x-auto rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,white)] p-1.5"
+            className="flex gap-2 overflow-x-auto rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-1.5"
             role="tablist"
             aria-label="Team and league details"
           >
@@ -701,9 +701,9 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                   aria-controls="mlb-detail-panel"
                   tabIndex={activeDetailTab === tab ? 0 : -1}
                   onClick={() => setActiveDetailTab(tab)}
-                  className={`min-h-[44px] whitespace-nowrap rounded-2xl px-5 py-2.5 text-sm font-semibold transition-colors ${
+                  className={`min-h-[44px] whitespace-nowrap rounded-[var(--radius-2xl)] px-5 py-2.5 text-sm font-semibold transition-colors ${
                     activeDetailTab === tab
-                      ? "bg-[var(--home-haze)] text-[var(--home-paper)] shadow-sm"
+                      ? "bg-[var(--home-signal)] text-[var(--home-paper)] shadow-sm"
                       : "text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
                   }`}
                 >
@@ -742,7 +742,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                     </div>
                   </div>
 
-                  <div className="rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4">
+                  <div className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4">
                     <p className="text-sm font-semibold text-[var(--home-ink)]">Pressure points</p>
                     <ul className="mt-3 space-y-2 pl-5 text-sm leading-relaxed text-[var(--home-ink-muted)]">
                       {getPressurePoints(selectedRow).map((item) => (
@@ -760,7 +760,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
 
                 {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) && (
                   <div
-                    className="rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4"
+                    className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4"
                     role={teamSnapshotError ? "alert" : "status"}
                     aria-live="polite"
                   >
@@ -855,9 +855,9 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
           </div>
         </div>
 
-        <section className="rounded-3xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-5 text-sm text-[var(--home-ink-muted)] shadow-sm">
+        <section className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-5 text-sm text-[var(--home-ink-muted)] shadow-sm">
           <div className="flex items-start gap-3">
-            <CircleAlert className="mt-0.5 h-4 w-4 flex-shrink-0 text-[var(--home-haze)]" />
+            <CircleAlert className="mt-0.5 h-4 w-4 flex-shrink-0 text-[var(--home-signal)]" />
             <p className="mb-0 max-w-none leading-relaxed">
               This page is a curated snapshot rather than a live API feed. Standings, schedule, and league leaders mirror the {summary.sourceLabel} endpoints and refresh on the regular update cadence.
             </p>
@@ -904,7 +904,7 @@ function LeagueLeaders({
           href={sourceUrl}
           target="_blank"
           rel="noreferrer"
-          className="inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-sm font-medium text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-haze)]"
+          className="inline-flex min-h-[44px] items-center gap-2 rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-sm font-medium text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-signal)]"
         >
           Source
           <ExternalLink className="h-4 w-4" />
@@ -939,23 +939,23 @@ function LeagueLeaders({
 function getDivisionPillStyle(league: "AL" | "NL"): CSSProperties {
   if (league === "AL") {
     return {
-      color: "var(--home-haze)",
-      borderColor: "color-mix(in srgb, var(--home-haze) 30%, var(--home-rule))",
-      background: "color-mix(in srgb, var(--home-haze) 10%, var(--home-paper-alt))",
+      color: "var(--home-signal)",
+      borderColor: "color-mix(in srgb, var(--home-signal) 30%, var(--home-rule))",
+      background: "color-mix(in srgb, var(--home-signal) 10%, var(--home-paper-alt))",
     };
   }
   return {
-    color: "color-mix(in srgb, var(--home-ink) 75%, var(--home-moss))",
-    borderColor: "color-mix(in srgb, var(--home-moss) 55%, var(--home-rule))",
-    background: "color-mix(in srgb, var(--home-moss) 22%, var(--home-paper-alt))",
+    color: "color-mix(in srgb, var(--home-ink) 88%, var(--home-stone))",
+    borderColor: "color-mix(in srgb, var(--home-ink) 28%, var(--home-rule))",
+    background: "color-mix(in srgb, var(--home-ink) 7%, var(--home-paper-alt))",
   };
 }
 
 function getViewButtonStyle(isActive: boolean): CSSProperties {
   if (isActive) {
     return {
-      borderColor: "color-mix(in srgb, var(--home-haze) 35%, var(--home-rule))",
-      background: "color-mix(in srgb, var(--home-haze) 9%, var(--home-paper-alt))",
+      borderColor: "color-mix(in srgb, var(--home-signal) 35%, var(--home-rule))",
+      background: "color-mix(in srgb, var(--home-signal) 9%, var(--home-paper-alt))",
       boxShadow: "var(--shadow-sm)",
     };
   }
@@ -968,8 +968,8 @@ function getViewButtonStyle(isActive: boolean): CSSProperties {
 function getTableRowStyle(isSelected: boolean): CSSProperties {
   if (isSelected) {
     return {
-      borderColor: "color-mix(in srgb, var(--home-haze) 35%, var(--home-rule))",
-      background: "color-mix(in srgb, var(--home-haze) 9%, var(--home-paper-alt))",
+      borderColor: "color-mix(in srgb, var(--home-signal) 35%, var(--home-rule))",
+      background: "color-mix(in srgb, var(--home-signal) 9%, var(--home-paper-alt))",
     };
   }
   return {

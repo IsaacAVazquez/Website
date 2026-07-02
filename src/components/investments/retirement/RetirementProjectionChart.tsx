@@ -12,7 +12,7 @@ interface Props {
 const W = 760;
 const H = 340;
 const MARGIN = { top: 16, right: 18, bottom: 36, left: 60 };
-const ACCENT = "var(--home-haze)";
+const ACCENT = "var(--home-signal)";
 
 /**
  * Balance over time with a shaded 10th–90th percentile confidence band and a

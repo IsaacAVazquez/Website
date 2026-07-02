@@ -252,7 +252,7 @@ export function InvestmentsDashboard({
         </div>
 
         {error ? (
-          <div className="mt-4 rounded-2xl border border-[color-mix(in_srgb,var(--color-warning)_35%,var(--home-rule))] bg-[color-mix(in_srgb,var(--color-warning)_10%,var(--home-paper-alt))] px-4 py-3 text-sm text-[var(--home-ink-muted)]">
+          <div className="mt-4 rounded-[var(--radius-2xl)] border border-[color-mix(in_srgb,var(--home-warning)_35%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-warning)_10%,var(--home-paper-alt))] px-4 py-3 text-sm text-[var(--home-ink-muted)]">
             {error}
           </div>
         ) : null}
@@ -276,7 +276,7 @@ export function InvestmentsDashboard({
               onResearch={handleResearch}
             />
           ) : (
-            <div className="rounded-[28px] border border-dashed border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-6 py-16 text-center shadow-[var(--shadow-sm)]">
+            <div className="rounded-[var(--radius-3xl)] border border-dashed border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-6 py-16 text-center shadow-[var(--shadow-sm)]">
               <p className="mb-2 text-sm font-semibold text-[var(--home-ink)]">
                 No positions yet
               </p>
@@ -347,7 +347,7 @@ export function InvestmentsDashboard({
           </section>
         ) : null}
 
-        <p className="mt-auto flex items-center gap-2 text-[11.5px] text-[var(--home-ink-muted)]">
+        <p className="mt-auto flex items-center gap-2 text-2xs text-[var(--home-ink-muted)]">
           <IconHelp size={14} aria-hidden="true" />
           Holdings live only in your browser. No logins, no cloud sync.
         </p>

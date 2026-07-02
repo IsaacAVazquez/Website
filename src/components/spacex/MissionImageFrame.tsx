@@ -90,7 +90,7 @@ export function MissionImageFrame({
       role={activeImage ? undefined : "img"}
       aria-label={activeImage ? undefined : alt}
     >
-      <div className="absolute inset-0 bg-[linear-gradient(160deg,color-mix(in_srgb,var(--home-haze)_10%,color-mix(in_srgb,var(--home-paper)_92%,white))_0%,color-mix(in_srgb,var(--home-paper)_92%,white)_72%)]" />
+      <div className="absolute inset-0 bg-[color-mix(in_srgb,var(--home-signal)_6%,var(--home-paper-raised))]" />
 
       {activeImage ? (
         <>
@@ -119,7 +119,7 @@ export function MissionImageFrame({
           {!isLoaded ? (
             <div
               aria-hidden="true"
-              className="absolute inset-0 animate-pulse bg-[color-mix(in_srgb,var(--home-paper-alt)_78%,white)]"
+              className="absolute inset-0 animate-pulse bg-[color-mix(in_srgb,var(--home-paper-alt)_78%,var(--home-elev-mix))]"
             />
           ) : null}
         </>
@@ -129,7 +129,7 @@ export function MissionImageFrame({
           className="absolute inset-0 flex items-center justify-center"
         >
           <div className="flex flex-col items-center gap-3">
-            <Rocket className="h-7 w-7 text-[var(--home-haze)]" />
+            <Rocket className="h-7 w-7 text-[var(--home-signal)]" />
             <span className="font-mono text-3xs font-semibold uppercase tracking-[0.28em] text-[var(--home-ink-soft)]">
               {getInitials(name)}
             </span>

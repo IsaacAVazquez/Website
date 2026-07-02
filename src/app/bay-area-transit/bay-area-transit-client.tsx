@@ -96,9 +96,9 @@ function getViewButtonStyle(isActive: boolean): CSSProperties {
   if (isActive) {
     return {
       borderColor:
-        "color-mix(in srgb, var(--home-acid) 50%, var(--home-rule))",
+        "color-mix(in srgb, var(--home-signal) 50%, var(--home-rule))",
       background:
-        "color-mix(in srgb, var(--home-acid) 16%, var(--home-paper-alt))",
+        "color-mix(in srgb, var(--home-signal) 16%, var(--home-paper-alt))",
       color: "var(--home-ink)",
       boxShadow: "var(--shadow-sm)",
     };
@@ -115,9 +115,9 @@ function getRowStyle(isSelected: boolean): CSSProperties {
   if (isSelected) {
     return {
       background:
-        "color-mix(in srgb, var(--home-acid) 14%, var(--home-paper-alt))",
+        "color-mix(in srgb, var(--home-signal) 14%, var(--home-paper-alt))",
       borderColor:
-        "color-mix(in srgb, var(--home-acid) 44%, var(--home-rule))",
+        "color-mix(in srgb, var(--home-signal) 44%, var(--home-rule))",
     };
   }
 
@@ -161,7 +161,7 @@ function StatBlock({
 }) {
   return (
     <div
-      className="rounded-[20px] px-4 py-3"
+      className="rounded-[var(--radius-3xl)] px-4 py-3"
       style={{
         background:
           "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
@@ -196,7 +196,7 @@ function StatBlock({
 function LineCard({ line }: { line: TransitLine }) {
   return (
     <div
-      className="rounded-[26px] border px-5 py-5"
+      className="rounded-[var(--radius-3xl)] border px-5 py-5"
       style={{
         borderColor: "var(--home-rule)",
         background:
@@ -267,11 +267,11 @@ function StationRow({
       type="button"
       onClick={() => onSelect(station.id)}
       aria-current={isSelected ? "true" : undefined}
-      className="flex min-h-[44px] w-full items-center justify-between gap-4 rounded-[20px] border px-4 py-3 text-left"
+      className="flex min-h-[44px] w-full items-center justify-between gap-4 rounded-[var(--radius-3xl)] border px-4 py-3 text-left"
       style={{
         ...getRowStyle(isSelected),
         boxShadow: isSelected
-          ? "inset 4px 0 0 0 var(--home-acid)"
+          ? "inset 4px 0 0 0 var(--home-signal)"
           : undefined,
       }}
     >
@@ -350,7 +350,7 @@ function DepartureRow({
 }) {
   return (
     <div
-      className="flex items-center gap-3 rounded-[18px] border px-4 py-3"
+      className="flex items-center gap-3 rounded-[var(--radius-3xl)] border px-4 py-3"
       style={{
         borderColor: "var(--home-rule)",
         background:
@@ -386,7 +386,7 @@ function DepartureRow({
             </span>
           ) : null}
           {delaySeconds > 0 ? (
-            <span style={{ color: "var(--color-warning)" }}>
+            <span style={{ color: "var(--home-warning)" }}>
               +{Math.round(delaySeconds / 60)} min late
             </span>
           ) : null}
@@ -397,7 +397,7 @@ function DepartureRow({
         style={{
           color:
             minutes === null || minutes <= 0
-              ? "var(--color-success)"
+              ? "var(--home-positive)"
               : "var(--home-ink)",
           fontFamily: "var(--font-home-sans)",
         }}
@@ -626,7 +626,7 @@ export function BayAreaTransitClient({
       <section className="home-page min-h-screen">
         <div className="home-shell home-section">
           <div
-            className="rounded-[28px] border px-6 py-8"
+            className="rounded-[var(--radius-3xl)] border px-6 py-8"
             style={{ borderColor: "var(--home-rule)" }}
           >
             <p className="home-kicker">Bay Area</p>
@@ -662,12 +662,12 @@ export function BayAreaTransitClient({
     <section className="home-page min-h-screen">
       <div className="home-shell home-section space-y-8">
         <div
-          className="overflow-hidden rounded-[34px] border p-6 sm:p-8"
+          className="overflow-hidden rounded-[var(--radius-3xl)] border p-6 sm:p-8"
           style={{
             borderColor:
-              "color-mix(in srgb, var(--home-acid) 28%, var(--home-rule))",
+              "color-mix(in srgb, var(--home-signal) 28%, var(--home-rule))",
             background:
-              "linear-gradient(180deg, color-mix(in srgb, var(--home-acid) 10%, var(--home-elev-mix)), color-mix(in srgb, var(--home-paper-alt) 82%, var(--home-elev-mix)))",
+              "color-mix(in srgb, var(--home-signal) 7%, var(--home-paper-raised))",
           }}
         >
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1.4fr)_minmax(280px,0.8fr)]">
@@ -711,7 +711,7 @@ export function BayAreaTransitClient({
             </div>
 
             <div
-              className="rounded-[28px] border px-5 py-5"
+              className="rounded-[var(--radius-3xl)] border px-5 py-5"
               style={{
                 borderColor: "var(--home-rule)",
                 background:
@@ -908,17 +908,17 @@ export function BayAreaTransitClient({
                   {summary.advisories.length === 0 &&
                   summary.elevator.length === 0 ? (
                     <div
-                      className="flex items-center gap-3 rounded-[24px] border px-5 py-5"
+                      className="flex items-center gap-3 rounded-[var(--radius-3xl)] border px-5 py-5"
                       style={{
                         borderColor:
-                          "color-mix(in srgb, var(--color-success) 26%, var(--home-rule))",
+                          "color-mix(in srgb, var(--home-positive) 26%, var(--home-rule))",
                         background:
-                          "color-mix(in srgb, var(--color-success) 8%, var(--home-paper-alt))",
+                          "color-mix(in srgb, var(--home-positive) 8%, var(--home-paper-alt))",
                       }}
                     >
                       <ShieldCheck
                         className="h-5 w-5 shrink-0"
-                        style={{ color: "var(--color-success)" }}
+                        style={{ color: "var(--home-positive)" }}
                         aria-hidden="true"
                       />
                       <p
@@ -937,18 +937,18 @@ export function BayAreaTransitClient({
                       {summary.advisories.map((advisory) => (
                         <div
                           key={advisory.id}
-                          className="rounded-[22px] border px-5 py-4"
+                          className="rounded-[var(--radius-3xl)] border px-5 py-4"
                           style={{
                             borderColor:
-                              "color-mix(in srgb, var(--color-warning) 26%, var(--home-rule))",
+                              "color-mix(in srgb, var(--home-warning) 26%, var(--home-rule))",
                             background:
-                              "color-mix(in srgb, var(--color-warning) 8%, var(--home-paper-alt))",
+                              "color-mix(in srgb, var(--home-warning) 8%, var(--home-paper-alt))",
                           }}
                         >
                           <div className="flex items-start gap-3">
                             <TriangleAlert
                               className="mt-0.5 h-4 w-4 shrink-0"
-                              style={{ color: "var(--color-warning)" }}
+                              style={{ color: "var(--home-warning)" }}
                               aria-hidden="true"
                             />
                             <div className="min-w-0">
@@ -978,7 +978,7 @@ export function BayAreaTransitClient({
                       {summary.elevator.map((entry) => (
                         <div
                           key={entry.id}
-                          className="rounded-[22px] border px-5 py-4"
+                          className="rounded-[var(--radius-3xl)] border px-5 py-4"
                           style={{
                             borderColor: "var(--home-rule)",
                             background:
@@ -1007,7 +1007,7 @@ export function BayAreaTransitClient({
             </div>
 
             <div
-              className="rounded-[26px] border px-5 py-5"
+              className="rounded-[var(--radius-3xl)] border px-5 py-5"
               style={{
                 borderColor: "var(--home-rule)",
                 background:
@@ -1031,10 +1031,10 @@ export function BayAreaTransitClient({
 
           <aside className="space-y-4">
             <div
-              className="rounded-[30px] border px-5 py-5 sm:px-6"
+              className="rounded-[var(--radius-3xl)] border px-5 py-5 sm:px-6"
               style={{
                 borderColor:
-                  "color-mix(in srgb, var(--home-acid) 22%, var(--home-rule))",
+                  "color-mix(in srgb, var(--home-signal) 22%, var(--home-rule))",
                 background:
                   "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
               }}
@@ -1106,19 +1106,19 @@ export function BayAreaTransitClient({
 
                   {stationBoardError ? (
                     <div
-                      className="mt-5 rounded-[22px] border px-4 py-4"
+                      className="mt-5 rounded-[var(--radius-3xl)] border px-4 py-4"
                       role="alert"
                       style={{
                         borderColor:
-                          "color-mix(in srgb, var(--color-error) 24%, var(--home-rule))",
+                          "color-mix(in srgb, var(--home-negative) 24%, var(--home-rule))",
                         background:
-                          "color-mix(in srgb, var(--color-error) 8%, var(--home-paper-alt))",
+                          "color-mix(in srgb, var(--home-negative) 8%, var(--home-paper-alt))",
                       }}
                     >
                       <div className="flex items-start gap-3">
                         <CircleAlert
                           className="mt-0.5 h-4 w-4 shrink-0"
-                          style={{ color: "var(--color-error)" }}
+                          style={{ color: "var(--home-negative)" }}
                           aria-hidden="true"
                         />
                         <p

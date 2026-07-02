@@ -93,7 +93,7 @@ export function WritingPreview() {
               <Link key={post.slug} href={`/writing/${post.slug}`}>
                 <WarmCard padding="md" hover className="h-full group">
                   <div className="space-y-3">
-                    <h3 className="font-bold text-lg text-[var(--home-ink)] group-hover:text-[var(--home-haze)] transition-colors">
+                    <h3 className="font-bold text-lg text-[var(--home-ink)] group-hover:text-[var(--home-signal)] transition-colors">
                       {post.title}
                     </h3>
                     {post.excerpt && (

@@ -13,9 +13,9 @@ interface RankDistributionBarProps {
 }
 
 const SPREAD_FILL: Record<string, string> = {
-  tight: "color-mix(in srgb, var(--color-success) 34%, var(--home-paper))",
-  mixed: "color-mix(in srgb, var(--home-acid) 46%, var(--home-paper))",
-  volatile: "color-mix(in srgb, var(--color-warning) 38%, var(--home-paper))",
+  tight: "color-mix(in srgb, var(--home-positive) 34%, var(--home-paper))",
+  mixed: "color-mix(in srgb, var(--home-signal) 46%, var(--home-paper))",
+  volatile: "color-mix(in srgb, var(--home-warning) 38%, var(--home-paper))",
 };
 
 /**

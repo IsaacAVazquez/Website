@@ -177,9 +177,9 @@ export function starFractions(rating: number): number[] {
 
 export function ratingBadgeStyle(rating: number) {
   if (rating >= 4.5)
-    return { background: "color-mix(in srgb, var(--home-acid) 28%, var(--home-paper))", color: "var(--home-ink)" };
+    return { background: "color-mix(in srgb, var(--home-signal) 28%, var(--home-paper))", color: "var(--home-ink)" };
   if (rating >= 3.5)
-    return { background: "color-mix(in srgb, var(--home-haze) 30%, var(--home-paper))", color: "var(--home-ink)" };
+    return { background: "color-mix(in srgb, var(--home-signal) 30%, var(--home-paper))", color: "var(--home-ink)" };
   if (rating >= 2.5)
     return { background: "color-mix(in srgb, var(--home-paper-alt) 80%, var(--home-elev-mix))", color: "var(--home-ink)" };
   return { background: "color-mix(in srgb, var(--home-stone) 30%, var(--home-paper))", color: "var(--home-ink-muted)" };

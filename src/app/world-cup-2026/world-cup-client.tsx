@@ -126,8 +126,8 @@ function KickoffCountdown({ startDate }: { startDate: string }) {
   const days = useDaysUntilKickoff(startDate);
   if (days === null || days <= 0) return null;
   return (
-    <span className="inline-flex flex-shrink-0 items-center gap-1.5 self-start rounded-full border border-[color-mix(in_srgb,var(--home-haze)_35%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-haze)_10%,var(--home-paper-alt))] px-3 py-1 text-xs font-semibold text-[var(--home-ink)]">
-      <Clock className="h-3.5 w-3.5 text-[var(--home-haze)]" />
+    <span className="inline-flex flex-shrink-0 items-center gap-1.5 self-start rounded-full border border-[color-mix(in_srgb,var(--home-signal)_35%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-signal)_10%,var(--home-paper-alt))] px-3 py-1 text-xs font-semibold text-[var(--home-ink)]">
+      <Clock className="h-3.5 w-3.5 text-[var(--home-signal)]" />
       {days === 1 ? "Kicks off tomorrow" : `Kicks off in ${days} days`}
     </span>
   );
@@ -356,7 +356,7 @@ export function WorldCupClient({
         <SurfaceCard className="p-4 sm:p-5">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
             <div className="flex items-start gap-3">
-              <Trophy className="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--home-haze)]" />
+              <Trophy className="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--home-signal)]" />
               <div>
                 <p className="text-sm font-semibold text-[var(--home-ink)]">
                   {tournament.name} · {tournament.phase}
@@ -394,10 +394,10 @@ export function WorldCupClient({
                 type="button"
                 onClick={() => handleViewChange(option.id)}
                 aria-pressed={isActive}
-                className={`inline-flex min-h-[44px] flex-col items-start rounded-2xl border px-4 py-2 text-left transition-colors ${
+                className={`inline-flex min-h-[44px] flex-col items-start rounded-[var(--radius-2xl)] border px-4 py-2 text-left transition-colors ${
                   isActive
-                    ? "border-[color-mix(in_srgb,var(--home-haze)_35%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-haze)_9%,var(--home-paper-alt))] shadow-[var(--shadow-sm)]"
-                    : "border-[var(--home-rule)] bg-[var(--home-paper-alt)] hover:text-[var(--home-haze)]"
+                    ? "border-[color-mix(in_srgb,var(--home-signal)_35%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-signal)_9%,var(--home-paper-alt))] shadow-[var(--shadow-sm)]"
+                    : "border-[var(--home-rule)] bg-[var(--home-paper-alt)] hover:text-[var(--home-signal)]"
                 }`}
               >
                 <span className="text-sm font-semibold text-[var(--home-ink)]">
@@ -469,10 +469,10 @@ export function WorldCupClient({
               {scorers.slice(0, 10).map((scorer) => (
                 <li
                   key={`${scorer.rank}-${scorer.name}`}
-                  className="flex items-center justify-between gap-4 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-4 py-3"
+                  className="flex items-center justify-between gap-4 rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-4 py-3"
                 >
                   <div className="flex min-w-0 items-center gap-3">
-                    <div className="inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[var(--home-paper)] text-sm font-bold text-[var(--home-haze)] shadow-sm">
+                    <div className="inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[var(--home-paper)] text-sm font-bold text-[var(--home-signal)] shadow-sm">
                       {scorer.rank}
                     </div>
                     <div className="min-w-0">
@@ -520,7 +520,7 @@ export function WorldCupClient({
                   {venues.map((venue) => (
                     <div
                       key={`${venue.city}-${venue.stadium}`}
-                      className="rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-4 py-3"
+                      className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-4 py-3"
                     >
                       <p className="font-semibold text-[var(--home-ink)]">
                         {venue.city}
@@ -537,9 +537,9 @@ export function WorldCupClient({
         </SurfaceCard>
 
         {/* Disclaimer */}
-        <section className="rounded-3xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-5 text-sm text-[var(--home-ink-muted)] shadow-sm">
+        <section className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-5 text-sm text-[var(--home-ink-muted)] shadow-sm">
           <div className="flex items-start gap-3">
-            <CircleAlert className="mt-0.5 h-4 w-4 flex-shrink-0 text-[var(--home-haze)]" />
+            <CircleAlert className="mt-0.5 h-4 w-4 flex-shrink-0 text-[var(--home-signal)]" />
             <p className="mb-0 max-w-none leading-relaxed">
               This page is a curated snapshot rather than a live feed. Group
               standings, fixtures, and the knockout bracket come from ESPN&apos;s
@@ -599,18 +599,18 @@ function GroupsView({
 
 function QualificationLegend() {
   return (
-    <div className="flex flex-wrap items-center gap-x-5 gap-y-2 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-4 py-3 text-xs text-[var(--home-ink-muted)]">
+    <div className="flex flex-wrap items-center gap-x-5 gap-y-2 rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-4 py-3 text-xs text-[var(--home-ink-muted)]">
       <span className="flex items-center gap-1.5">
         <span
           className="h-2 w-2 flex-shrink-0 rounded-full"
-          style={{ backgroundColor: "var(--home-moss)" }}
+          style={{ backgroundColor: "var(--home-positive)" }}
         />
         Top two advance to the Round of 32
       </span>
       <span className="flex items-center gap-1.5">
         <span
           className="h-2 w-2 flex-shrink-0 rounded-full"
-          style={{ backgroundColor: "var(--home-acid)" }}
+          style={{ backgroundColor: "var(--home-signal)" }}
         />
         Third place enters the eight-team wildcard race
       </span>
@@ -661,9 +661,9 @@ function GroupTable({
             const isSelected = row.teamId === selectedTeamId;
             const dotColor =
               index < 2
-                ? "var(--home-moss)"
+                ? "var(--home-positive)"
                 : index === 2
-                  ? "var(--home-acid)"
+                  ? "var(--home-signal)"
                   : "var(--home-rule)";
             const dotTitle =
               index < 2
@@ -679,7 +679,7 @@ function GroupTable({
                   isSelected
                     ? {
                         background:
-                          "color-mix(in srgb, var(--home-haze) 9%, var(--home-paper-alt))",
+                          "color-mix(in srgb, var(--home-signal) 9%, var(--home-paper-alt))",
                       }
                     : { background: "var(--home-paper-alt)" }
                 }
@@ -700,7 +700,7 @@ function GroupTable({
                   <button
                     type="button"
                     onClick={() => onOpenTeam(row.teamId)}
-                    className="flex min-h-[36px] w-full items-center gap-2 rounded-lg text-left transition hover:text-[var(--home-haze)]"
+                    className="flex min-h-[44px] w-full items-center gap-2 rounded-lg text-left transition hover:text-[var(--home-signal)]"
                   >
                     <CrestAvatar crest={row.crest} name={row.name} size="sm" />
                     <span className="truncate font-semibold text-[var(--home-ink)]">
@@ -752,7 +752,7 @@ function ThirdPlaceRace({
     <SurfaceCard className="p-5 sm:p-6">
       <div className="flex items-center justify-between border-b border-[var(--home-rule)] pb-4">
         <div className="flex items-center gap-2">
-          <Medal className="h-5 w-5 flex-shrink-0 text-[var(--home-haze)]" />
+          <Medal className="h-5 w-5 flex-shrink-0 text-[var(--home-signal)]" />
           <h2 className="text-lg font-bold text-[var(--home-ink)]">
             Third-place race
           </h2>
@@ -793,7 +793,7 @@ function ThirdPlaceRace({
                       isSelected
                         ? {
                             background:
-                              "color-mix(in srgb, var(--home-haze) 9%, var(--home-paper-alt))",
+                              "color-mix(in srgb, var(--home-signal) 9%, var(--home-paper-alt))",
                           }
                         : { background: "var(--home-paper-alt)" }
                     }
@@ -804,7 +804,7 @@ function ThirdPlaceRace({
                           className="h-1.5 w-1.5 flex-shrink-0 rounded-full"
                           style={{
                             backgroundColor: row.qualifies
-                              ? "var(--home-moss)"
+                              ? "var(--home-positive)"
                               : "var(--home-rule)",
                           }}
                           title={
@@ -822,7 +822,7 @@ function ThirdPlaceRace({
                       <button
                         type="button"
                         onClick={() => onOpenTeam(row.teamId)}
-                        className="flex min-h-[36px] w-full items-center gap-2 rounded-lg text-left transition hover:text-[var(--home-haze)]"
+                        className="flex min-h-[44px] w-full items-center gap-2 rounded-lg text-left transition hover:text-[var(--home-signal)]"
                       >
                         <CrestAvatar crest={row.crest} name={row.name} size="sm" />
                         <span className="truncate font-semibold text-[var(--home-ink)]">
@@ -1038,7 +1038,7 @@ function TeamDetailCard({
           type="button"
           onClick={onClear}
           aria-label="Clear selected team"
-          className="inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-[var(--home-ink-muted)] transition hover:text-[var(--home-haze)]"
+          className="inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-[var(--home-ink-muted)] transition hover:text-[var(--home-signal)]"
         >
           <X className="h-4 w-4" />
         </button>

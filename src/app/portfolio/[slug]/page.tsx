@@ -115,7 +115,7 @@ export default async function CaseStudyPage({
       <article className="home-shell home-shell-tight space-y-12">
         <Link
           href="/portfolio"
-          className="inline-flex items-center gap-2 rounded-md text-sm font-semibold text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-ink)] focus-visible:text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+          className="inline-flex items-center gap-2 rounded-md text-sm font-semibold text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-ink)] focus-visible:text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
           style={{ fontFamily: "var(--font-home-sans)" }}
         >
           <ArrowLeft className="h-4 w-4" />
@@ -175,7 +175,7 @@ export default async function CaseStudyPage({
                   href={caseStudy.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex min-h-[44px] items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition-colors"
+                  className="inline-flex min-h-[44px] items-center gap-2 rounded-[var(--radius-xl)] px-4 py-2 text-sm font-semibold transition-colors"
                   style={outlineButtonStyle}
                 >
                   <BrandGithub className="h-4 w-4" />
@@ -186,7 +186,7 @@ export default async function CaseStudyPage({
                 caseStudy.link.startsWith("/") ? (
                   <Link
                     href={caseStudy.link}
-                    className="inline-flex min-h-[44px] items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition-colors"
+                    className="inline-flex min-h-[44px] items-center gap-2 rounded-[var(--radius-xl)] px-4 py-2 text-sm font-semibold transition-colors"
                     style={outlineButtonStyle}
                   >
                     <ExternalLink className="h-4 w-4" />
@@ -197,7 +197,7 @@ export default async function CaseStudyPage({
                     href={caseStudy.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex min-h-[44px] items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition-colors"
+                    className="inline-flex min-h-[44px] items-center gap-2 rounded-[var(--radius-xl)] px-4 py-2 text-sm font-semibold transition-colors"
                     style={outlineButtonStyle}
                   >
                     <ExternalLink className="h-4 w-4" />
@@ -273,7 +273,7 @@ export default async function CaseStudyPage({
               <h3 className="text-xl mb-0" style={subsectionTitleStyle}>
                 North star metric
               </h3>
-              <p className="mb-0 text-lg font-semibold" style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-haze)" }}>
+              <p className="mb-0 text-lg font-semibold" style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-signal)" }}>
                 {caseStudy.northStarMetric}
               </p>
             </div>
@@ -389,13 +389,13 @@ export default async function CaseStudyPage({
                   </h3>
                   <div className="grid md:grid-cols-2 gap-3">
                     <div
-                      className="rounded-xl p-4 space-y-1"
+                      className="rounded-[var(--radius-xl)] p-4 space-y-1"
                       style={{
-                        background: "color-mix(in srgb, var(--home-haze) 10%, var(--home-paper))",
-                        border: "1px solid color-mix(in srgb, var(--home-haze) 35%, var(--home-rule))",
+                        background: "color-mix(in srgb, var(--home-signal) 10%, var(--home-paper))",
+                        border: "1px solid color-mix(in srgb, var(--home-signal) 35%, var(--home-rule))",
                       }}
                     >
-                      <p className="mb-0 text-xs font-semibold uppercase tracking-wider" style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-haze)", letterSpacing: "0.1em" }}>
+                      <p className="mb-0 text-xs font-semibold uppercase tracking-wider" style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-signal)", letterSpacing: "0.1em" }}>
                         Chose
                       </p>
                       <p className="mb-0 text-sm font-semibold" style={strongStyle}>
@@ -403,7 +403,7 @@ export default async function CaseStudyPage({
                       </p>
                     </div>
                     <div
-                      className="rounded-xl p-4 space-y-1"
+                      className="rounded-[var(--radius-xl)] p-4 space-y-1"
                       style={{
                         background: "color-mix(in srgb, var(--home-paper-alt) 78%, var(--home-elev-mix))",
                         border: "1px solid var(--home-rule)",
@@ -448,7 +448,7 @@ export default async function CaseStudyPage({
                 className="home-card p-6 sm:p-8 space-y-4"
                 style={{
                   background: "color-mix(in srgb, var(--home-paper-alt) 78%, var(--home-elev-mix))",
-                  borderLeft: "3px solid var(--home-haze)",
+                  borderLeft: "3px solid var(--home-signal)",
                 }}
               >
                 <blockquote className="mb-0 text-lg italic leading-7" style={bodyStyle}>
@@ -513,7 +513,7 @@ export default async function CaseStudyPage({
                     <p className="mb-0 text-base leading-7" style={bodyStyle}>
                       {nextCaseStudy.description}
                     </p>
-                    <p className="mb-0 text-sm font-semibold" style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-haze)" }}>
+                    <p className="mb-0 text-sm font-semibold" style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-signal)" }}>
                       {nextCaseStudy.metrics}
                     </p>
                   </div>

@@ -1,22 +1,62 @@
 import { StructuredData } from "@/components/StructuredData";
 import { AIStructuredData } from "@/components/AIStructuredData";
-import { HomePageV3 } from "@/components/home/HomePageV3";
+import {
+  HomeInstrument,
+  type QuakePulse,
+} from "@/components/home/HomeInstrument";
 import {
   getHomepageFeaturedCaseStudies,
   getPortfolioProjects,
 } from "@/constants/caseStudies";
 import { getAllBlogPostPreviews } from "@/lib/blog";
 import { getLiveToolGroups } from "@/constants/toolCategories";
+import { getEarthquakeSummary } from "@/lib/earthquakeSnapshot";
 import { profile, profileSameAs } from "@/lib/profile";
 
 export { metadata } from "./metadata";
 
-export default function Home() {
+const HOUR_MS = 3_600_000;
+
+/**
+ * Bucket the earthquake snapshot's rolling 24h feed into hourly counts for
+ * the hero's live-pulse sparkline. Fail-soft: an empty or malformed snapshot
+ * yields an empty series and the hero simply hides the sparkline.
+ */
+async function buildQuakePulse(): Promise<QuakePulse> {
+  try {
+    const summary = await getEarthquakeSummary();
+    const endTs = Date.parse(summary.generatedAt);
+    const buckets = new Array<number>(24).fill(0);
+
+    if (!Number.isNaN(endTs)) {
+      for (const quake of summary.recent) {
+        const age = endTs - Date.parse(quake.time);
+        if (Number.isNaN(age) || age < 0 || age >= 24 * HOUR_MS) continue;
+        buckets[23 - Math.floor(age / HOUR_MS)] += 1;
+      }
+    }
+
+    // The caption count must describe the same events the line draws. The
+    // snapshot's `recent` list is capped, so it can hold fewer events than
+    // heroStats.total24h — quoting that larger number next to a line built
+    // from the capped feed would misrepresent the chart.
+    const windowTotal = buckets.reduce((sum, count) => sum + count, 0);
+    return {
+      series: windowTotal > 0 ? buckets : [],
+      total24h: windowTotal,
+      asOf: Number.isNaN(endTs) ? null : summary.generatedAt,
+    };
+  } catch {
+    return { series: [], total24h: 0, asOf: null };
+  }
+}
+
+export default async function Home() {
   const featuredProjects = getHomepageFeaturedCaseStudies();
 
-  // Hero stats strip and marquee read live counts so the editorial hero
-  // stays accurate as content ships. Live tools are projects with a real
-  // hosted destination set on the case study.
+  // The hero live index reads real counts so it stays accurate as content
+  // ships. Live tools are projects with a real hosted destination set on the
+  // case study.
   const allPosts = getAllBlogPostPreviews();
   const allProjects = getPortfolioProjects();
   // The "Live tools" directory groups every project that ships a real
@@ -32,14 +72,16 @@ export default function Home() {
     essayCount: allPosts.length,
     liveToolCount: liveTools,
   };
+  const quakePulse = await buildQuakePulse();
 
   return (
     <>
-      <HomePageV3
+      <HomeInstrument
         featuredProjects={featuredProjects}
         recentPosts={allPosts}
         heroIndex={heroIndex}
         liveToolGroups={liveToolGroups}
+        quakePulse={quakePulse}
       />
 
       <StructuredData type="ProfilePage" />

@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from "react";
 import { select, line } from "d3";
+import { useTheme } from "next-themes";
 
 export interface RadarDimension {
   dimension: string;
@@ -15,13 +16,9 @@ interface Props {
   symbolB: string;
 }
 
-const COLOR_A = "var(--home-haze)";
-const COLOR_B = "#D97706";
-const COLOR_A_HEX = "#2563EB";
-const COLOR_B_HEX = "#D97706";
-
 export function ComparisonRadarChart({ data, symbolA, symbolB }: Props) {
   const svgRef = useRef<SVGSVGElement>(null);
+  const { resolvedTheme } = useTheme();
 
   useEffect(() => {
     if (!svgRef.current || data.length === 0) return;
@@ -35,6 +32,22 @@ export function ComparisonRadarChart({ data, symbolA, symbolB }: Props) {
     const n = data.length;
     const angleSlice = (Math.PI * 2) / n;
 
+    // SVG presentation attributes can't substitute var(), so resolve the
+    // tokens at render time (re-resolved when resolvedTheme flips) — same
+    // idiom as PortfolioPerformanceChart.
+    const computedStyle = getComputedStyle(document.documentElement);
+    const colorA =
+      computedStyle.getPropertyValue("--home-signal").trim() || "#C93F19";
+    const colorB =
+      computedStyle.getPropertyValue("--home-ink").trim() || "#191813";
+    const inkMuted =
+      computedStyle.getPropertyValue("--home-ink-muted").trim() || "#6F6B60";
+    const rule =
+      computedStyle.getPropertyValue("--home-rule").trim() ||
+      "rgba(25,24,19,0.14)";
+    const paper =
+      computedStyle.getPropertyValue("--home-paper").trim() || "#F6F5F1";
+
     const svg = select(svgRef.current);
     svg.selectAll("*").remove();
 
@@ -46,7 +59,7 @@ export function ComparisonRadarChart({ data, symbolA, symbolB }: Props) {
       g.append("circle")
         .attr("r", r)
         .attr("fill", "none")
-        .attr("stroke", "var(--home-rule)")
+        .attr("stroke", rule)
         .attr("stroke-width", 1)
         .attr("opacity", 0.6);
     }
@@ -61,7 +74,7 @@ export function ComparisonRadarChart({ data, symbolA, symbolB }: Props) {
         .attr("y1", 0)
         .attr("x2", x)
         .attr("y2", y)
-        .attr("stroke", "var(--home-rule)")
+        .attr("stroke", rule)
         .attr("stroke-width", 1)
         .attr("opacity", 0.5);
     });
@@ -77,9 +90,9 @@ export function ComparisonRadarChart({ data, symbolA, symbolB }: Props) {
         .attr("y", y)
         .attr("dy", "0.35em")
         .attr("text-anchor", Math.abs(x) < 5 ? "middle" : x > 0 ? "start" : "end")
-        .attr("fill", "var(--home-ink-muted)")
+        .attr("fill", inkMuted)
         .attr("font-size", "11px")
-        .attr("font-family", "var(--font-inter, system-ui)")
+        .style("font-family", "var(--font-home-sans), system-ui")
         .text(d.dimension);
     });
 
@@ -99,17 +112,17 @@ export function ComparisonRadarChart({ data, symbolA, symbolB }: Props) {
     // Stock B polygon (drawn first so A is on top)
     g.append("path")
       .attr("d", polygonPath(scoresB))
-      .attr("fill", COLOR_B_HEX)
-      .attr("fill-opacity", 0.18)
-      .attr("stroke", COLOR_B_HEX)
+      .attr("fill", colorB)
+      .attr("fill-opacity", 0.14)
+      .attr("stroke", colorB)
       .attr("stroke-width", 2);
 
     // Stock A polygon
     g.append("path")
       .attr("d", polygonPath(scoresA))
-      .attr("fill", COLOR_A_HEX)
+      .attr("fill", colorA)
       .attr("fill-opacity", 0.18)
-      .attr("stroke", COLOR_A_HEX)
+      .attr("stroke", colorA)
       .attr("stroke-width", 2);
 
     // Dots for A
@@ -120,8 +133,8 @@ export function ComparisonRadarChart({ data, symbolA, symbolB }: Props) {
         .attr("cx", r * Math.cos(angle))
         .attr("cy", r * Math.sin(angle))
         .attr("r", 4)
-        .attr("fill", COLOR_A_HEX)
-        .attr("stroke", "white")
+        .attr("fill", colorA)
+        .attr("stroke", paper)
         .attr("stroke-width", 1.5);
     });
 
@@ -133,11 +146,11 @@ export function ComparisonRadarChart({ data, symbolA, symbolB }: Props) {
         .attr("cx", r * Math.cos(angle))
         .attr("cy", r * Math.sin(angle))
         .attr("r", 4)
-        .attr("fill", COLOR_B_HEX)
-        .attr("stroke", "white")
+        .attr("fill", colorB)
+        .attr("stroke", paper)
         .attr("stroke-width", 1.5);
     });
-  }, [data, symbolA, symbolB]);
+  }, [data, symbolA, symbolB, resolvedTheme]);
 
   return (
     <div className="flex flex-col items-center gap-3">
@@ -147,23 +160,23 @@ export function ComparisonRadarChart({ data, symbolA, symbolB }: Props) {
         className="w-full max-w-[320px]"
         aria-label={`Radar comparison chart: ${symbolA} vs ${symbolB}`}
       />
-      {/* Legend */}
+      {/* Legend (HTML context, so inline style can use the tokens directly) */}
       <div className="flex items-center gap-6 text-sm">
         <span className="flex items-center gap-1.5">
           <span
-            className="inline-block w-3 h-3 rounded-full"
-            style={{ backgroundColor: COLOR_A_HEX }}
+            className="inline-block h-3 w-3 rounded-full"
+            style={{ backgroundColor: "var(--home-signal)" }}
           />
-          <span className="font-medium" style={{ color: COLOR_A }}>
+          <span className="font-medium" style={{ color: "var(--home-signal)" }}>
             {symbolA}
           </span>
         </span>
         <span className="flex items-center gap-1.5">
           <span
-            className="inline-block w-3 h-3 rounded-full"
-            style={{ backgroundColor: COLOR_B_HEX }}
+            className="inline-block h-3 w-3 rounded-full"
+            style={{ backgroundColor: "var(--home-ink)" }}
           />
-          <span className="font-medium" style={{ color: COLOR_B }}>
+          <span className="font-medium" style={{ color: "var(--home-ink)" }}>
             {symbolB}
           </span>
         </span>

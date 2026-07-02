@@ -141,13 +141,13 @@ function getMeetingToneStyle(status: Formula1MeetingSummary["status"]): CSSPrope
   switch (status) {
     case "upcoming":
       return {
-        borderColor: "color-mix(in srgb, var(--home-haze) 28%, var(--home-rule))",
-        background: "color-mix(in srgb, var(--home-haze) 8%, var(--home-paper-alt))",
+        borderColor: "color-mix(in srgb, var(--home-signal) 28%, var(--home-rule))",
+        background: "color-mix(in srgb, var(--home-signal) 8%, var(--home-paper-alt))",
       };
     case "live":
       return {
-        borderColor: "color-mix(in srgb, var(--home-acid) 30%, var(--home-rule))",
-        background: "color-mix(in srgb, var(--home-acid) 12%, var(--home-paper-alt))",
+        borderColor: "color-mix(in srgb, var(--home-signal) 30%, var(--home-rule))",
+        background: "color-mix(in srgb, var(--home-signal) 12%, var(--home-paper-alt))",
       };
     case "completed":
     default:
@@ -168,9 +168,9 @@ function getTeamAccentStyle(teamColor: string | null): CSSProperties {
 
 function getSessionAccent(type: string): string {
   const value = type.toLowerCase();
-  if (value.includes("race") && !value.includes("sprint")) return "var(--home-haze)";
-  if (value.includes("sprint")) return "#E8943B";
-  if (value.includes("qualif")) return "var(--home-acid)";
+  if (value.includes("race") && !value.includes("sprint")) return "var(--home-signal)";
+  if (value.includes("sprint")) return "var(--home-warning)";
+  if (value.includes("qualif")) return "var(--home-signal)";
   return "color-mix(in srgb, var(--home-ink-muted) 70%, var(--home-rule))";
 }
 
@@ -197,7 +197,7 @@ function PositionChangeIndicator({
   const delta = previousPosition - currentPosition;
   const isUp = delta > 0;
   const absoluteDelta = Math.abs(delta);
-  const accent = isUp ? "#22A06B" : "#D54E4E";
+  const accent = isUp ? "var(--home-positive)" : "var(--home-negative)";
   const Icon = isUp ? ArrowUp : ArrowDown;
   const label = `${isUp ? "Up" : "Down"} ${absoluteDelta}`;
 
@@ -329,12 +329,12 @@ function TrackOutline({
 function CircuitMarker({ meeting }: { meeting: Formula1MeetingSummary }) {
   return (
     <div
-      className="hidden h-20 w-24 flex-shrink-0 flex-col items-center justify-center gap-1.5 rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_82%,var(--home-elev-mix))] p-2.5 text-center sm:flex"
+      className="hidden h-20 w-24 flex-shrink-0 flex-col items-center justify-center gap-1.5 rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_82%,var(--home-elev-mix))] p-2.5 text-center sm:flex"
       aria-label={`${meeting.circuitShortName} circuit marker`}
     >
       <TrackOutline meeting={meeting} className="h-9 w-12" />
       <span
-        className="max-w-full text-[0.62rem] font-semibold uppercase leading-tight text-[var(--home-ink-muted)]"
+        className="max-w-full text-2xs font-semibold uppercase leading-tight text-[var(--home-ink-muted)]"
         style={{ overflowWrap: "anywhere" }}
       >
         {meeting.circuitShortName}
@@ -405,7 +405,7 @@ function useCountdown(targetIso: string | null): CountdownParts | null {
 
 function CountdownCell({ value, label }: { value: string; label: string }) {
   return (
-    <div className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_86%,var(--home-elev-mix))] px-2 py-2.5 text-center">
+    <div className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_86%,var(--home-elev-mix))] px-2 py-2.5 text-center">
       <p className="mb-0 text-[1.6rem] font-semibold leading-none tracking-[-0.04em] tabular-nums text-[var(--home-ink)]">
         {value}
       </p>
@@ -421,9 +421,9 @@ function RaceCountdown({ targetIso }: { targetIso: string | null }) {
 
   if (parts?.isPast) {
     return (
-      <div className="flex items-center gap-2 rounded-2xl border border-[color-mix(in_srgb,var(--home-acid)_35%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-acid)_14%,var(--home-paper))] px-4 py-3">
+      <div className="flex items-center gap-2 rounded-[var(--radius-2xl)] border border-[color-mix(in_srgb,var(--home-signal)_35%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-signal)_14%,var(--home-paper))] px-4 py-3">
         <span
-          className="h-2.5 w-2.5 flex-shrink-0 rounded-full bg-[#22A06B]"
+          className="h-2.5 w-2.5 flex-shrink-0 rounded-full bg-[var(--home-positive)]"
           aria-hidden="true"
         />
         <p className="mb-0 text-sm font-semibold text-[var(--home-ink)]">
@@ -442,7 +442,7 @@ function RaceCountdown({ targetIso }: { targetIso: string | null }) {
 
   return (
     <div>
-      <p className="mb-2 flex items-center gap-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]">
+      <p className="mb-2 flex items-center gap-1.5 text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]">
         <Clock size={13} aria-hidden="true" />
         Lights out in
       </p>
@@ -491,12 +491,12 @@ function SeasonProgress({
               className="h-2.5 flex-1 rounded-full"
               style={{
                 background: isDone
-                  ? "linear-gradient(180deg, color-mix(in srgb, var(--home-acid) 78%, var(--home-ink)) 0%, var(--home-acid) 100%)"
+                  ? "linear-gradient(180deg, color-mix(in srgb, var(--home-signal) 78%, var(--home-ink)) 0%, var(--home-signal) 100%)"
                   : isNext
-                    ? "color-mix(in srgb, var(--home-haze) 60%, var(--home-paper))"
+                    ? "color-mix(in srgb, var(--home-signal) 60%, var(--home-paper))"
                     : "color-mix(in srgb, var(--home-ink) 10%, var(--home-paper-alt))",
                 boxShadow: isNext
-                  ? "0 0 0 1px color-mix(in srgb, var(--home-haze) 45%, transparent)"
+                  ? "0 0 0 1px color-mix(in srgb, var(--home-signal) 45%, transparent)"
                   : undefined,
               }}
             />
@@ -533,11 +533,11 @@ function LeaderboardRow({
   const pct = row.points <= 0 ? 0 : Math.max(4, Math.round(ratio * 100));
   const gap = Math.max(0, Math.round(leaderPoints - row.points));
   const isLeader = row.position === 1;
-  const accent = row.teamColor ?? "var(--home-haze)";
+  const accent = row.teamColor ?? "var(--home-signal)";
 
   return (
     <li
-      className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-3.5 py-3 transition-[border-color,box-shadow] duration-200 hover:border-[color-mix(in_srgb,var(--home-ink)_18%,var(--home-rule))]"
+      className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-3.5 py-3 transition-[border-color,box-shadow] duration-200 hover:border-[color-mix(in_srgb,var(--home-ink)_18%,var(--home-rule))]"
       style={getTeamAccentStyle(row.teamColor)}
     >
       <div className="flex items-center gap-3">
@@ -594,14 +594,14 @@ function LeaderboardRow({
         </div>
         {row.pointsDelta > 0 ? (
           <span
-            className="inline-flex flex-shrink-0 items-center gap-0.5 text-[0.66rem] font-semibold tabular-nums text-[#22A06B]"
+            className="inline-flex flex-shrink-0 items-center gap-0.5 text-2xs font-semibold tabular-nums text-[var(--home-positive)]"
             title="Points gained at the last race"
           >
             <ArrowUp size={11} aria-hidden="true" />
             {formatDelta(row.pointsDelta)}
           </span>
         ) : null}
-        <span className="w-[6.5ch] flex-shrink-0 text-right text-[0.68rem] font-semibold uppercase tracking-[0.08em] tabular-nums text-[var(--home-ink-muted)]">
+        <span className="w-[6.5ch] flex-shrink-0 text-right text-2xs font-semibold uppercase tracking-[0.08em] tabular-nums text-[var(--home-ink-muted)]">
           {isLeader ? "Leader" : `−${gap}`}
         </span>
       </div>
@@ -732,7 +732,7 @@ function SectionHeader({
 function ResultRow({ entry }: { entry: Formula1RaceResultEntry }) {
   return (
     <li
-      className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-4 py-3"
+      className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-4 py-3"
       style={getTeamAccentStyle(entry.teamColor)}
     >
       <div className="flex items-start justify-between gap-4">
@@ -786,7 +786,7 @@ function MeetingSchedule({ meeting }: { meeting: Formula1MeetingSummary }) {
         return (
           <li
             key={session.key}
-            className="flex min-h-[44px] items-center justify-between gap-4 rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-4 py-3"
+            className="flex min-h-[44px] items-center justify-between gap-4 rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-4 py-3"
             style={{ borderLeftWidth: "3px", borderLeftColor: accent }}
           >
             <div className="flex min-w-0 items-center gap-2.5">
@@ -850,7 +850,7 @@ function MeetingDetailPanel({
             </span>
           ) : null}
           {meeting.hasSprint ? (
-            <span className="rounded-full border border-[color-mix(in_srgb,#E8943B_45%,var(--home-rule))] bg-[color-mix(in_srgb,#E8943B_12%,transparent)] px-3 py-1.5 text-[var(--home-ink)]">
+            <span className="rounded-full border border-[color-mix(in_srgb,var(--home-warning)_45%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-warning)_12%,transparent)] px-3 py-1.5 text-[var(--home-ink)]">
               Sprint weekend
             </span>
           ) : null}
@@ -882,7 +882,7 @@ function MeetingDetailPanel({
               ))}
             </ol>
           ) : (
-            <div className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] p-4">
+            <div className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] p-4">
               <p className="mb-0 text-sm leading-6 text-[var(--home-ink-muted)]">
                 OpenF1 has not published the official classification for this race yet. I still keep
                 the weekend here so the calendar stays intact.
@@ -927,7 +927,7 @@ function PodiumDisplay({ meeting }: { meeting: Formula1MeetingSummary }) {
               className={`flex flex-col ${meta.order}`}
             >
               <div
-                className="rounded-t-2xl border border-b-0 bg-[color-mix(in_srgb,var(--home-paper-alt)_82%,var(--home-elev-mix))] p-4"
+                className="rounded-t-[var(--radius-2xl)] border border-b-0 bg-[color-mix(in_srgb,var(--home-paper-alt)_82%,var(--home-elev-mix))] p-4"
                 style={{ borderColor: teamColor, borderTopWidth: "3px" }}
               >
                 <div className="flex items-center gap-3">
@@ -953,7 +953,7 @@ function PodiumDisplay({ meeting }: { meeting: Formula1MeetingSummary }) {
                 ) : null}
               </div>
               <div
-                className={`flex items-end justify-between gap-2 rounded-b-2xl border border-t-0 px-4 py-3 ${meta.step}`}
+                className={`flex items-end justify-between gap-2 rounded-b-[var(--radius-2xl)] border border-t-0 px-4 py-3 ${meta.step}`}
                 style={{
                   borderColor: teamColor,
                   background: `linear-gradient(180deg, color-mix(in srgb, ${meta.accent} 24%, var(--home-paper-alt)) 0%, color-mix(in srgb, var(--home-paper-alt) 92%, var(--home-elev-mix)) 100%)`,
@@ -965,7 +965,7 @@ function PodiumDisplay({ meeting }: { meeting: Formula1MeetingSummary }) {
                 >
                   {index + 1}
                 </span>
-                <span className="pb-1 text-right text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                <span className="pb-1 text-right text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                   {meta.label}
                   <span className="block text-[var(--home-ink)]">
                     {formatPoints(entry.points)} pts
@@ -998,7 +998,7 @@ function MeetingStrip({
             key={meeting.key}
             type="button"
             onClick={() => onSelect(meeting.key)}
-            className="min-h-[44px] min-w-[220px] flex-shrink-0 rounded-[22px] border px-4 py-3 text-left transition-[border-color,background-color,box-shadow] duration-200"
+            className="min-h-[44px] min-w-[220px] flex-shrink-0 rounded-[var(--radius-3xl)] border px-4 py-3 text-left transition-[border-color,background-color,box-shadow] duration-200"
             style={
               isSelected
                 ? {
@@ -1045,7 +1045,7 @@ function CalendarTimeline({
             <button
               type="button"
               onClick={() => onSelect(meeting.key)}
-              className="min-h-[44px] w-full rounded-[24px] border p-4 text-left transition-[border-color,background-color,box-shadow] duration-200"
+              className="min-h-[44px] w-full rounded-[var(--radius-3xl)] border p-4 text-left transition-[border-color,background-color,box-shadow] duration-200"
               style={
                 isSelected
                   ? {
@@ -1101,8 +1101,8 @@ function ViewToggle({
       style={
         isActive
           ? {
-              borderColor: "color-mix(in srgb, var(--home-haze) 30%, var(--home-rule))",
-              background: "color-mix(in srgb, var(--home-haze) 10%, var(--home-paper-alt))",
+              borderColor: "color-mix(in srgb, var(--home-signal) 30%, var(--home-rule))",
+              background: "color-mix(in srgb, var(--home-signal) 10%, var(--home-paper-alt))",
               boxShadow: "var(--shadow-sm)",
             }
           : {
@@ -1260,25 +1260,19 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
     <div className={`home-page min-h-screen ${styles.f1}`}>
       <div className="home-shell home-section space-y-6 sm:space-y-8">
       <section
-        className={`relative overflow-hidden rounded-[32px] border p-6 sm:p-8 lg:p-10 ${styles.carbon}`}
+        className={`relative overflow-hidden rounded-[var(--radius-3xl)] border p-6 sm:p-8 lg:p-10 ${styles.carbon}`}
         style={{
-          borderColor: "color-mix(in srgb, var(--home-haze) 30%, var(--home-rule))",
-          background:
-            "radial-gradient(circle at top right, color-mix(in srgb, var(--home-haze) 22%, transparent) 0%, transparent 42%), linear-gradient(140deg, color-mix(in srgb, var(--home-paper) 94%, var(--home-elev-mix)) 0%, color-mix(in srgb, var(--home-paper-alt) 88%, var(--home-elev-mix)) 100%)",
+          borderColor: "color-mix(in srgb, var(--home-signal) 30%, var(--home-rule))",
+          background: "color-mix(in srgb, var(--home-signal) 6%, var(--home-paper-raised))",
           boxShadow: "var(--shadow-sm)",
         }}
       >
-        <span
-          className={styles.speedLines}
-          aria-hidden="true"
-          style={{ top: 0, right: 0, width: "42%", height: "60%" }}
-        />
         <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
           <div>
             <p className="home-kicker mb-2">Formula 1 project</p>
             <h1
               className="max-w-[11ch] text-[clamp(2.7rem,7vw,5.4rem)] font-semibold tracking-[-0.08em] text-[var(--home-ink)]"
-              style={{ fontFamily: "var(--font-home-serif)", lineHeight: 0.92 }}
+              style={{ fontFamily: "var(--font-home-sans)", lineHeight: 0.92 }}
             >
               Formula 1 Pulse
             </h1>
@@ -1326,7 +1320,7 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
           </div>
 
           <aside
-            className="relative overflow-hidden rounded-[28px] border p-5 sm:p-6"
+            className="relative overflow-hidden rounded-[var(--radius-3xl)] border p-5 sm:p-6"
             style={getMeetingToneStyle(highlightMeeting?.status ?? "completed")}
           >
             {highlightMeeting?.circuitImage ? (
@@ -1374,7 +1368,7 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
                 ) : null}
 
                 <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                  <div className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_84%,var(--home-elev-mix))] p-4">
+                  <div className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_84%,var(--home-elev-mix))] p-4">
                     <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                       Race start
                     </p>
@@ -1384,7 +1378,7 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
                         : formatDateLabel(highlightMeeting.startAt)}
                     </p>
                   </div>
-                  <div className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_84%,var(--home-elev-mix))] p-4">
+                  <div className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_84%,var(--home-elev-mix))] p-4">
                     <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                       Weekend type
                     </p>
@@ -1548,14 +1542,14 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
             the FIA, or Formula One Management. Read the{" "}
             <a
               href={snapshot.sourceUrls.docs}
-              className="text-[var(--home-haze)] underline decoration-transparent transition-[color,text-decoration-color] duration-200 hover:decoration-current"
+              className="text-[var(--home-signal)] underline decoration-transparent transition-[color,text-decoration-color] duration-200 hover:decoration-current"
             >
               docs
             </a>{" "}
             or the{" "}
             <a
               href="https://openf1.org/"
-              className="text-[var(--home-haze)] underline decoration-transparent transition-[color,text-decoration-color] duration-200 hover:decoration-current"
+              className="text-[var(--home-signal)] underline decoration-transparent transition-[color,text-decoration-color] duration-200 hover:decoration-current"
             >
               project FAQ
             </a>

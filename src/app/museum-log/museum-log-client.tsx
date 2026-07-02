@@ -129,12 +129,12 @@ function TagChip({ children }: { children: ReactNode }) {
 function MuseumCoverArt({ museum }: { museum: Museum }) {
   // Procedural cover — initials + a deterministic hue based on type.
   const hueByType: Record<Museum["type"], string> = {
-    art: "var(--home-acid)",
-    history: "var(--home-haze)",
+    art: "var(--home-signal)",
+    history: "var(--home-signal)",
     science: "var(--home-paper-alt)",
     "natural-history": "var(--home-stone)",
-    design: "var(--home-acid)",
-    photography: "var(--home-haze)",
+    design: "var(--home-signal)",
+    photography: "var(--home-signal)",
     specialty: "var(--home-stone)",
   };
   const initials = museum.name
@@ -147,7 +147,7 @@ function MuseumCoverArt({ museum }: { museum: Museum }) {
 
   return (
     <div
-      className="relative flex aspect-[3/4] w-full items-end overflow-hidden rounded-2xl border border-[var(--home-rule)]"
+      className="relative flex aspect-[3/4] w-full items-end overflow-hidden rounded-[var(--radius-2xl)] border border-[var(--home-rule)]"
       style={{
         background: `linear-gradient(160deg, color-mix(in srgb, ${hueByType[museum.type]} 65%, var(--home-paper)) 0%, var(--home-paper-alt) 100%)`,
       }}
@@ -166,7 +166,7 @@ function MuseumCoverArt({ museum }: { museum: Museum }) {
         {museum.curatorRating.toFixed(1)}
       </span>
       <span
-        className="m-3 inline-flex items-center justify-center rounded-xl bg-[var(--home-ink)] px-3 py-2 text-2xl font-bold tracking-[-0.04em] text-[var(--home-paper)]"
+        className="m-3 inline-flex items-center justify-center rounded-[var(--radius-xl)] bg-[var(--home-ink)] px-3 py-2 text-2xl font-bold tracking-[-0.04em] text-[var(--home-paper)]"
         style={{ fontFamily: "var(--font-home-serif)" }}
       >
         {initials}
@@ -230,8 +230,8 @@ function QuickActions({
         }}
         aria-pressed={isVisited}
         aria-label={isVisited ? `Mark ${museum.name} as not visited` : `Log a visit to ${museum.name}`}
-        className={`inline-flex items-center gap-1.5 rounded-full border font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2 ${padClass}`}
-        style={pillStyle(isVisited, "var(--home-acid)")}
+        className={`inline-flex items-center gap-1.5 rounded-full border font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2 ${padClass}`}
+        style={pillStyle(isVisited, "var(--home-signal)")}
       >
         {isVisited ? <Check size={dim} /> : <Plus size={dim} />}
         {isVisited ? "Visited" : "Log visit"}
@@ -244,8 +244,8 @@ function QuickActions({
         }}
         aria-pressed={isWatchlisted}
         aria-label={isWatchlisted ? `Remove ${museum.name} from watchlist` : `Save ${museum.name} to watchlist`}
-        className={`inline-flex items-center gap-1.5 rounded-full border font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2 ${padClass}`}
-        style={pillStyle(isWatchlisted, "var(--home-haze)")}
+        className={`inline-flex items-center gap-1.5 rounded-full border font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2 ${padClass}`}
+        style={pillStyle(isWatchlisted, "var(--home-signal)")}
       >
         {isWatchlisted ? <BookmarkCheck size={dim} /> : <Bookmark size={dim} />}
         {isWatchlisted ? "Saved" : "Watchlist"}
@@ -257,12 +257,12 @@ function QuickActions({
           onToggleLiked();
         }}
         aria-pressed={isLiked}
-        className={`inline-flex items-center gap-1.5 rounded-full border font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2 ${padClass}`}
-        style={pillStyle(isLiked, "var(--home-acid)")}
+        className={`inline-flex items-center gap-1.5 rounded-full border font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2 ${padClass}`}
+        style={pillStyle(isLiked, "var(--home-signal)")}
       >
         <Heart
           size={dim}
-          fill={isLiked ? "var(--home-acid)" : "none"}
+          fill={isLiked ? "var(--home-signal)" : "none"}
           stroke={isLiked ? "var(--home-ink)" : "currentColor"}
         />
         {isLiked ? "Liked" : "Like"}
@@ -400,7 +400,7 @@ function DiscoverView({
 
   return (
     <div className="space-y-5">
-      <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-4 py-3 shadow-[var(--shadow-sm)]">
+      <div className="flex flex-wrap items-center gap-3 rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-4 py-3 shadow-[var(--shadow-sm)]">
         <span className="inline-flex items-center gap-1.5 text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
           <Filter size={12} /> Filters
         </span>
@@ -443,7 +443,7 @@ function DiscoverView({
         </span>
       </div>
 
-      <p className="text-[12.5px] text-[var(--home-ink-muted)]">
+      <p className="text-1xs text-[var(--home-ink-muted)]">
         {sorted.length} {sorted.length === 1 ? "museum" : "museums"} in the catalog
         {state.type !== "all" && ` · ${TYPE_LABEL[state.type]}`}
         {state.region !== "all" && ` · ${REGION_LABEL[state.region]}`}
@@ -608,7 +608,7 @@ function ReviewCard({
   onOpenMuseum: () => void;
 }) {
   return (
-    <li className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] p-5">
+    <li className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] p-5">
       <div className="flex flex-wrap items-baseline gap-2">
         <button
           type="button"
@@ -625,7 +625,7 @@ function ReviewCard({
       <div className="mt-2 flex flex-wrap items-center gap-2">
         <StarRow rating={review.rating} size={16} />
         <span className="text-sm font-semibold text-[var(--home-ink)]">{review.rating.toFixed(1)}</span>
-        {review.liked && <Heart size={14} fill="var(--home-acid)" stroke="var(--home-ink)" aria-label="Liked" />}
+        {review.liked && <Heart size={14} fill="var(--home-signal)" stroke="var(--home-ink)" aria-label="Liked" />}
         {review.exhibitTitle && (
           <span className="inline-flex items-center gap-1 text-xs text-[var(--home-ink-muted)]">
             <Ticket size={12} /> {review.exhibitTitle}
@@ -660,7 +660,7 @@ function DiaryEntry({
   onOpenMuseum: () => void;
 }) {
   return (
-    <li className="rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper)] p-3">
+    <li className="rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] p-3">
       <div className="flex items-center justify-between gap-2">
         <button
           type="button"
@@ -801,12 +801,12 @@ function ListPreviewCard({
     return { id: m.id, initials, type: m.type };
   });
   const hueByType: Record<Museum["type"], string> = {
-    art: "var(--home-acid)",
-    history: "var(--home-haze)",
+    art: "var(--home-signal)",
+    history: "var(--home-signal)",
     science: "var(--home-paper-alt)",
     "natural-history": "var(--home-stone)",
-    design: "var(--home-acid)",
-    photography: "var(--home-haze)",
+    design: "var(--home-signal)",
+    photography: "var(--home-signal)",
     specialty: "var(--home-stone)",
   };
 
@@ -900,7 +900,7 @@ function MuseumDetailView({
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
               {TYPE_LABEL[museum.type]} · {REGION_LABEL[museum.region]}
             </p>
-            <h1
+            <h2
               style={{
                 fontFamily: "var(--font-home-sans)",
                 fontSize: "clamp(1.9rem, 4vw, 2.8rem)",
@@ -911,7 +911,7 @@ function MuseumDetailView({
               }}
             >
               {museum.name}
-            </h1>
+            </h2>
             <p className="flex flex-wrap items-center gap-3 text-sm text-[var(--home-ink-muted)]">
               <span className="inline-flex items-center gap-1.5">
                 <MapPin size={14} /> {museum.city}, {museum.country}
@@ -980,12 +980,12 @@ function MuseumDetailView({
                     Visited {formatDate(review.dateVisited)}
                   </span>
                   {review.liked && (
-                    <Heart size={14} fill="var(--home-acid)" stroke="var(--home-ink)" aria-label="Liked" />
+                    <Heart size={14} fill="var(--home-signal)" stroke="var(--home-ink)" aria-label="Liked" />
                   )}
                 </div>
-                <h2 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">
+                <h3 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">
                   {review.headline}
-                </h2>
+                </h3>
               </header>
               <p className="mt-4 text-base leading-7 text-[var(--home-ink-muted)]">{review.body}</p>
               {review.recommendedFor && (
@@ -1008,15 +1008,15 @@ function MuseumDetailView({
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
                 Highlights
               </p>
-              <h2 className="mt-2 text-lg font-semibold text-[var(--home-ink)]">
+              <h3 className="mt-2 text-lg font-semibold text-[var(--home-ink)]">
                 What to actually see
-              </h2>
+              </h3>
             </header>
             <ul className="mt-4 grid gap-2 sm:grid-cols-2">
               {museum.highlights.map((h) => (
                 <li
                   key={h}
-                  className="rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-sm text-[var(--home-ink)]"
+                  className="rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-sm text-[var(--home-ink)]"
                 >
                   {h}
                 </li>
@@ -1030,15 +1030,15 @@ function MuseumDetailView({
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
                   Now on view
                 </p>
-                <h2 className="mt-2 text-lg font-semibold text-[var(--home-ink)]">
+                <h3 className="mt-2 text-lg font-semibold text-[var(--home-ink)]">
                   Current exhibitions
-                </h2>
+                </h3>
               </header>
               <ol className="mt-4 space-y-3">
                 {museum.exhibits.map((ex) => (
                   <li
                     key={ex.id}
-                    className="rounded-xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] p-3"
+                    className="rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] p-3"
                   >
                     <div className="flex flex-wrap items-baseline justify-between gap-2">
                       <p className="text-base font-semibold text-[var(--home-ink)]">{ex.title}</p>
@@ -1117,15 +1117,15 @@ function MuseumDetailView({
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
                   Curator history
                 </p>
-                <h2 className="mt-2 text-base font-semibold text-[var(--home-ink)]">
+                <h3 className="mt-2 text-base font-semibold text-[var(--home-ink)]">
                   Past visits
-                </h2>
+                </h3>
               </header>
               <ol className="mt-3 space-y-2 text-sm">
                 {visitLogEntries.map((entry) => (
                   <li
                     key={entry.id}
-                    className="flex flex-wrap items-baseline justify-between gap-2 rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2"
+                    className="flex flex-wrap items-baseline justify-between gap-2 rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2"
                   >
                     <span className="inline-flex items-center gap-2">
                       <Calendar size={12} className="text-[var(--home-ink-muted)]" />
@@ -1158,7 +1158,7 @@ function MuseumDetailView({
                     <button
                       type="button"
                       onClick={() => onOpenList(list.slug)}
-                      className="w-full rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-left text-sm font-semibold text-[var(--home-ink)] hover:bg-[var(--home-paper-alt)]"
+                      className="w-full rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-left text-sm font-semibold text-[var(--home-ink)] hover:bg-[var(--home-paper-alt)]"
                     >
                       {list.title}
                       <span className="ml-1 text-xs font-normal text-[var(--home-ink-muted)]">
@@ -1217,7 +1217,7 @@ function RateAndLogForm({
         onChange={(e) => setNote(e.target.value)}
         placeholder="Optional note (private to your browser)"
         rows={2}
-        className="w-full rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-sm text-[var(--home-ink)] placeholder:text-[var(--home-ink-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--home-acid)]"
+        className="w-full rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-sm text-[var(--home-ink)] placeholder:text-[var(--home-ink-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--home-signal)]"
       />
       <button
         type="submit"
@@ -1439,7 +1439,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
                   onClick={() => handleViewChange(item.id)}
                   aria-current={isActive ? "true" : undefined}
                   aria-pressed={isActive}
-                  className="inline-flex min-h-touch items-center gap-2 rounded-full border px-4 py-1.5 text-sm font-semibold transition-[border-color,background-color,color] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                  className="inline-flex min-h-touch items-center gap-2 rounded-full border px-4 py-1.5 text-sm font-semibold transition-[border-color,background-color,color] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
                   style={{
                     borderColor: isActive ? "var(--home-ink)" : "var(--home-rule)",
                     background: isActive
@@ -1457,7 +1457,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
                       style={{
                         background: isActive
                           ? "color-mix(in srgb, var(--home-paper) 22%, transparent)"
-                          : "color-mix(in srgb, var(--home-acid) 40%, transparent)",
+                          : "color-mix(in srgb, var(--home-signal) 40%, transparent)",
                         color: isActive ? "var(--home-paper)" : "var(--home-ink)",
                       }}
                     >
@@ -1614,7 +1614,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
 
           <aside
             aria-label="Museum Log side panel"
-            className="flex flex-col gap-4 rounded-[1.5rem] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_74%,var(--home-elev-mix))] p-5 shadow-[var(--shadow-sm)] lg:sticky lg:top-24 lg:self-start lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto"
+            className="flex flex-col gap-4 rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_74%,var(--home-elev-mix))] p-5 shadow-[var(--shadow-sm)] lg:sticky lg:top-24 lg:self-start lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto"
           >
             {selectedMuseum ? (
               <section>
@@ -1622,7 +1622,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
                   Other museums in {REGION_LABEL[selectedMuseum.region]}
                 </p>
                 {contextualMuseums.length === 0 ? (
-                  <p className="text-[12px] text-[var(--home-ink-muted)]">
+                  <p className="text-1xs text-[var(--home-ink-muted)]">
                     No other museums catalogued in this region yet.
                   </p>
                 ) : (
@@ -1632,17 +1632,17 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
                         <button
                           type="button"
                           onClick={() => handleOpenMuseum(m.slug)}
-                          className="grid w-full grid-cols-[1fr_auto] items-baseline gap-2 rounded-xl border border-transparent px-2 py-2 text-left transition-colors hover:border-[var(--home-rule)] hover:bg-[var(--home-paper)]"
+                          className="grid w-full grid-cols-[1fr_auto] items-baseline gap-2 rounded-[var(--radius-xl)] border border-transparent px-2 py-2 text-left transition-colors hover:border-[var(--home-rule)] hover:bg-[var(--home-paper)]"
                         >
                           <span className="min-w-0">
-                            <span className="block truncate text-[13px] font-semibold text-[var(--home-ink)]">
+                            <span className="block truncate text-xs font-semibold text-[var(--home-ink)]">
                               {m.name}
                             </span>
-                            <span className="block truncate text-[11.5px] text-[var(--home-ink-muted)]">
+                            <span className="block truncate text-2xs text-[var(--home-ink-muted)]">
                               {m.city} · {TYPE_LABEL[m.type]}
                             </span>
                           </span>
-                          <span className="inline-flex items-center gap-1 text-[12px] font-semibold text-[var(--home-ink)] tabular-nums">
+                          <span className="inline-flex items-center gap-1 text-1xs font-semibold text-[var(--home-ink)] tabular-nums">
                             <Star size={10} fill="currentColor" strokeWidth={0} />
                             {m.curatorRating.toFixed(1)}
                           </span>
@@ -1659,7 +1659,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
                     <Clock size={12} aria-hidden /> Recently visited
                   </p>
                   {recentlyVisited.length === 0 ? (
-                    <p className="text-[12px] text-[var(--home-ink-muted)]">
+                    <p className="text-1xs text-[var(--home-ink-muted)]">
                       No visits logged yet. Log one from any museum card.
                     </p>
                   ) : (
@@ -1669,13 +1669,13 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
                           <button
                             type="button"
                             onClick={() => handleOpenMuseum(row.museum.slug)}
-                            className="grid w-full grid-cols-[1fr_auto] items-baseline gap-2 rounded-xl border border-transparent px-2 py-2 text-left transition-colors hover:border-[var(--home-rule)] hover:bg-[var(--home-paper)]"
+                            className="grid w-full grid-cols-[1fr_auto] items-baseline gap-2 rounded-[var(--radius-xl)] border border-transparent px-2 py-2 text-left transition-colors hover:border-[var(--home-rule)] hover:bg-[var(--home-paper)]"
                           >
                             <span className="min-w-0">
-                              <span className="block truncate text-[13px] font-semibold text-[var(--home-ink)]">
+                              <span className="block truncate text-xs font-semibold text-[var(--home-ink)]">
                                 {row.museum.name}
                               </span>
-                              <span className="block truncate text-[11.5px] text-[var(--home-ink-muted)]">
+                              <span className="block truncate text-2xs text-[var(--home-ink-muted)]">
                                 {row.museum.city}
                               </span>
                             </span>
@@ -1694,7 +1694,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
                     <Heart size={12} aria-hidden /> Top liked
                   </p>
                   {topLiked.length === 0 ? (
-                    <p className="text-[12px] text-[var(--home-ink-muted)]">
+                    <p className="text-1xs text-[var(--home-ink-muted)]">
                       Heart a museum to surface it here.
                     </p>
                   ) : (
@@ -1704,17 +1704,17 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
                           <button
                             type="button"
                             onClick={() => handleOpenMuseum(m.slug)}
-                            className="grid w-full grid-cols-[1fr_auto] items-baseline gap-2 rounded-xl border border-transparent px-2 py-2 text-left transition-colors hover:border-[var(--home-rule)] hover:bg-[var(--home-paper)]"
+                            className="grid w-full grid-cols-[1fr_auto] items-baseline gap-2 rounded-[var(--radius-xl)] border border-transparent px-2 py-2 text-left transition-colors hover:border-[var(--home-rule)] hover:bg-[var(--home-paper)]"
                           >
                             <span className="min-w-0">
-                              <span className="block truncate text-[13px] font-semibold text-[var(--home-ink)]">
+                              <span className="block truncate text-xs font-semibold text-[var(--home-ink)]">
                                 {m.name}
                               </span>
-                              <span className="block truncate text-[11.5px] text-[var(--home-ink-muted)]">
+                              <span className="block truncate text-2xs text-[var(--home-ink-muted)]">
                                 {TYPE_LABEL[m.type]} · {m.city}
                               </span>
                             </span>
-                            <span className="inline-flex items-center gap-1 text-[12px] font-semibold text-[var(--home-ink)] tabular-nums">
+                            <span className="inline-flex items-center gap-1 text-1xs font-semibold text-[var(--home-ink)] tabular-nums">
                               <Star size={10} fill="currentColor" strokeWidth={0} />
                               {m.curatorRating.toFixed(1)}
                             </span>

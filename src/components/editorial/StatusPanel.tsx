@@ -23,20 +23,20 @@ export function StatusPanel({
   const toneStyle =
     tone === "error"
       ? {
-          borderColor: "color-mix(in srgb, var(--color-error) 30%, var(--home-rule))",
-          background: "color-mix(in srgb, var(--color-error) 10%, var(--home-paper))",
-          accent: "var(--color-error)",
+          borderColor: "color-mix(in srgb, var(--home-negative) 30%, var(--home-rule))",
+          background: "color-mix(in srgb, var(--home-negative) 10%, var(--home-paper))",
+          accent: "var(--home-negative)",
         }
       : tone === "warning"
         ? {
-            borderColor: "color-mix(in srgb, var(--color-warning) 32%, var(--home-rule))",
-            background: "color-mix(in srgb, var(--color-warning) 12%, var(--home-paper))",
-            accent: "var(--color-warning)",
+            borderColor: "color-mix(in srgb, var(--home-warning) 32%, var(--home-rule))",
+            background: "color-mix(in srgb, var(--home-warning) 12%, var(--home-paper))",
+            accent: "var(--home-warning)",
           }
         : {
             borderColor: "var(--home-rule)",
             background: "color-mix(in srgb, var(--home-paper-alt) 78%, var(--home-elev-mix))",
-            accent: "var(--home-haze)",
+            accent: "var(--home-signal)",
           };
 
   return (

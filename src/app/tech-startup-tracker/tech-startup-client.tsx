@@ -559,7 +559,7 @@ function StartupRow({
                     event.stopPropagation();
                     onToggle();
                   }}
-                  className="text-left font-semibold text-[var(--home-ink)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                  className="text-left font-semibold text-[var(--home-ink)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
                 >
                   {startup.name}
                 </button>
@@ -768,7 +768,7 @@ function SegmentSummary({
               type="button"
               aria-pressed={isActive}
               onClick={() => onSelectSegment(segment.key)}
-              className={`block min-h-[64px] w-full rounded-[0.75rem] border px-3 py-3 text-left transition-[background-color,border-color,color] ${
+              className={`block min-h-[64px] w-full rounded-[var(--radius-xl)] border px-3 py-3 text-left transition-[background-color,border-color,color] ${
                 isActive
                   ? "border-[var(--home-ink)] bg-[var(--home-paper-alt)]"
                   : "border-[var(--home-rule)] hover:border-[var(--home-ink)] hover:bg-[var(--home-paper-alt)]"

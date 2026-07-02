@@ -80,25 +80,25 @@ export function MetricCallout({
       gradient: 'from-[var(--home-ink-muted)] to-[var(--home-ink-muted)]',
       bg: 'bg-[var(--home-paper-alt)]',
       border: 'border-[var(--home-rule)]',
-      text: 'text-[var(--home-haze)]',
+      text: 'text-[var(--home-signal)]',
     },
     success: {
-      gradient: 'from-[var(--color-success)] to-[var(--color-success)]',
-      bg: 'bg-[var(--color-success)]/10',
-      border: 'border-[var(--color-success)]/30',
-      text: 'text-[var(--color-success)]',
+      gradient: 'from-[var(--home-positive)] to-[var(--home-positive)]',
+      bg: 'bg-[var(--home-positive)]/10',
+      border: 'border-[var(--home-positive)]/30',
+      text: 'text-[var(--home-positive)]',
     },
     primary: {
-      gradient: 'from-[var(--home-haze)] to-[var(--color-warning)]',
-      bg: 'bg-gradient-to-br from-[var(--home-haze)]/10 to-[var(--color-warning)]/10',
-      border: 'border-[var(--home-haze)]/30',
-      text: 'text-[var(--home-haze)]',
+      gradient: 'from-[var(--home-signal)] to-[var(--home-signal)]',
+      bg: 'bg-gradient-to-br from-[var(--home-signal)]/10 to-[var(--home-warning)]/10',
+      border: 'border-[var(--home-signal)]/30',
+      text: 'text-[var(--home-signal)]',
     },
     warning: {
-      gradient: 'from-[var(--color-warning)] to-[var(--home-haze)]',
-      bg: 'bg-[var(--color-warning)]/10',
-      border: 'border-[var(--color-warning)]/30',
-      text: 'text-[var(--color-warning)]',
+      gradient: 'from-[var(--home-warning)] to-[var(--home-warning)]',
+      bg: 'bg-[var(--home-warning)]/10',
+      border: 'border-[var(--home-warning)]/30',
+      text: 'text-[var(--home-warning)]',
     },
   };
 
@@ -133,7 +133,7 @@ export function MetricCallout({
         ease: "easeOut"
       }}
       className={cn(
-        "relative overflow-hidden rounded-xl border-2 transition-all duration-300",
+        "relative overflow-hidden rounded-[var(--radius-xl)] border-2 transition-[box-shadow,transform] duration-300",
         variantStyles.bg,
         variantStyles.border,
         sizeStyles.padding,
@@ -180,7 +180,7 @@ export function MetricCallout({
 
         {improvement && (
           <motion.div
-            className="text-xs text-[var(--color-success)] font-medium mt-1 flex items-center gap-1"
+            className="text-xs text-[var(--home-positive)] font-medium mt-1 flex items-center gap-1"
             initial={{ opacity: 0, x: -10 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
             transition={{ delay: 0.3, duration: 0.4 }}
