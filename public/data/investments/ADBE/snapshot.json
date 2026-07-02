@@ -1,10 +1,10 @@
 {
   "symbol": "ADBE",
-  "lastUpdated": "2026-06-29T23:40:07.848324+00:00",
+  "lastUpdated": "2026-07-02T23:53:41.175846+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-29T23:40:07.848324+00:00",
+    "snapshotBuiltAt": "2026-07-02T23:53:41.175846+00:00",
     "sections": {
-      "price": "2026-06-26"
+      "price": "2026-07-01"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 17.4839,
-      "ttmPe": 11.6,
-      "marketCap": 80889270000,
-      "psRatio": 3.21,
-      "pbRatio": 7.02,
-      "pegRatio": 1.44
+      "ttmPe": 12.07,
+      "marketCap": 84181020000,
+      "psRatio": 3.34,
+      "pbRatio": 7.31,
+      "pegRatio": 1.5
     },
     "profitability": {
       "roe": 14.92,
@@ -5873,41 +5873,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.35,
-      "costOfEquity": 16.63,
+      "wacc": 15.1,
+      "costOfEquity": 16.31,
       "costOfDebt": 0.9199999999999999,
       "taxRate": 24,
-      "beta": 1.4431,
-      "marketCap": 80889270000
+      "beta": 1.4105,
+      "marketCap": 84181020000
     },
     "beta": {
-      "beta5y": 1.4431
+      "beta5y": 1.4105
     },
     "price": [
-      {
-        "date": "2025-06-26",
-        "open": 387.2,
-        "high": 389.99,
-        "low": 382.87,
-        "close": 384.95,
-        "volume": 3139700
-      },
-      {
-        "date": "2025-06-27",
-        "open": 385.44,
-        "high": 390.31,
-        "low": 384.41,
-        "close": 385.83,
-        "volume": 5083800
-      },
-      {
-        "date": "2025-06-30",
-        "open": 387.3,
-        "high": 390.98,
-        "low": 384.63,
-        "close": 386.88,
-        "volume": 4645500
-      },
       {
         "date": "2025-07-01",
         "open": 385.1,
@@ -7898,7 +7874,31 @@
         "high": 203.48,
         "low": 195.29,
         "close": 202.73,
-        "volume": 9148100
+        "volume": 9172100
+      },
+      {
+        "date": "2026-06-29",
+        "open": 206.67,
+        "high": 209.54,
+        "low": 204.34,
+        "close": 206.43,
+        "volume": 7527300
+      },
+      {
+        "date": "2026-06-30",
+        "open": 204.1,
+        "high": 205.6,
+        "low": 201.31,
+        "close": 205.02,
+        "volume": 6269500
+      },
+      {
+        "date": "2026-07-01",
+        "open": 209.765,
+        "high": 213.66,
+        "low": 207.06,
+        "close": 210.98,
+        "volume": 5848317
       }
     ],
     "news": [
@@ -7951,11 +7951,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "59b99a57-d7ad-34d0-856d-87429aba674f",
-        "title": "3 Tech Stocks You Can Buy and Hold for the Next Decade",
-        "publisher": "Motley Fool",
+        "uuid": "b77d1727-4d59-3130-983d-a06105fa7081",
+        "title": "Should You Invest in Adobe (ADBE) Based on Bullish Wall Street Views?",
+        "publisher": "Zacks",
         "reportDate": "2025-05-30",
-        "link": "https://finance.yahoo.com/m/59b99a57-d7ad-34d0-856d-87429aba674f/3-tech-stocks-you-can-buy-and.html",
+        "link": "https://finance.yahoo.com/news/invest-adobe-adbe-based-bullish-133009472.html",
         "type": "STORY"
       },
       {
@@ -7967,19 +7967,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "b77d1727-4d59-3130-983d-a06105fa7081",
-        "title": "Should You Invest in Adobe (ADBE) Based on Bullish Wall Street Views?",
-        "publisher": "Zacks",
+        "uuid": "59b99a57-d7ad-34d0-856d-87429aba674f",
+        "title": "3 Tech Stocks You Can Buy and Hold for the Next Decade",
+        "publisher": "Motley Fool",
         "reportDate": "2025-05-30",
-        "link": "https://finance.yahoo.com/news/invest-adobe-adbe-based-bullish-133009472.html",
+        "link": "https://finance.yahoo.com/m/59b99a57-d7ad-34d0-856d-87429aba674f/3-tech-stocks-you-can-buy-and.html",
         "type": "STORY"
       },
       {
-        "uuid": "55c8b36c-2510-38f3-854f-062fb0af6334",
-        "title": "5 Brilliant Stocks to Buy in June",
-        "publisher": "Motley Fool",
+        "uuid": "99b5f820-1ff1-32d4-a77d-7c54708c0fc8",
+        "title": "Why The 39% Return On Capital At Adobe (NASDAQ:ADBE) Should Have Your Attention",
+        "publisher": "Simply Wall St.",
         "reportDate": "2025-06-01",
-        "link": "https://finance.yahoo.com/m/55c8b36c-2510-38f3-854f-062fb0af6334/5-brilliant-stocks-to-buy-in.html",
+        "link": "https://finance.yahoo.com/news/why-39-return-capital-adobe-130012134.html",
         "type": "STORY"
       }
     ],
@@ -8001,18 +8001,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 11.6,
-        "industryAvg": 23.3
+        "value": 12.07,
+        "industryAvg": 24.07
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.21,
-        "industryAvg": 4.08
+        "value": 3.34,
+        "industryAvg": 4.24
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.02,
-        "industryAvg": 4.42
+        "value": 7.31,
+        "industryAvg": 4.58
       },
       {
         "metric": "ROE",
@@ -8032,19 +8032,19 @@
       {
         "metric": "EBITDA Margin",
         "value": 37.72,
-        "industryAvg": 20.76
+        "industryAvg": 20.75
       },
       {
         "metric": "Net Margin",
         "value": 25.869999999999997,
-        "industryAvg": -0.32
+        "industryAvg": -0.33
       }
     ],
     "dcf": {
-      "fairValue": 159.04,
-      "currentPrice": 202.73,
-      "upside": -21.55,
-      "wacc": 15.35,
+      "fairValue": 162.35,
+      "currentPrice": 210.98,
+      "upside": -23.05,
+      "wacc": 15.1,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 8.04,
         "Terminal growth": 3

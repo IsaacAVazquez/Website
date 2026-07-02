@@ -18,13 +18,13 @@
     "link": "https://finance.yahoo.com/m/239097ec-365f-3453-b91e-0c08a6414799/3-top-quantum-computing.html"
   },
   {
-    "uuid": "1f65352e-e780-3b0a-9802-fdd0d6359ce8",
+    "uuid": "343df9a5-0920-3bee-8ef5-51237a31223f",
     "symbol": "GOOGL",
-    "title": "Streaming Surpasses Combined Cable, Broadcast Viewing for First Time in May, Nielsen Reports",
-    "publisher": "MT Newswires",
+    "title": "3 Cheap Tech Stocks to Buy Right Now",
+    "publisher": "Motley Fool",
     "report_date": "2025-06-17",
     "type": "STORY",
-    "link": "https://finance.yahoo.com/news/streaming-surpasses-combined-cable-broadcast-140549520.html"
+    "link": "https://finance.yahoo.com/m/343df9a5-0920-3bee-8ef5-51237a31223f/3-cheap-tech-stocks-to-buy.html"
   },
   {
     "uuid": "0cd3518a-5a9f-38ba-bfd6-367caceadf00",
@@ -45,13 +45,13 @@
     "link": "https://finance.yahoo.com/news/zacks-investment-ideas-feature-highlights-124900266.html"
   },
   {
-    "uuid": "343df9a5-0920-3bee-8ef5-51237a31223f",
+    "uuid": "1f65352e-e780-3b0a-9802-fdd0d6359ce8",
     "symbol": "GOOGL",
-    "title": "3 Cheap Tech Stocks to Buy Right Now",
-    "publisher": "Motley Fool",
+    "title": "Streaming Surpasses Combined Cable, Broadcast Viewing for First Time in May, Nielsen Reports",
+    "publisher": "MT Newswires",
     "report_date": "2025-06-17",
     "type": "STORY",
-    "link": "https://finance.yahoo.com/m/343df9a5-0920-3bee-8ef5-51237a31223f/3-cheap-tech-stocks-to-buy.html"
+    "link": "https://finance.yahoo.com/news/streaming-surpasses-combined-cable-broadcast-140549520.html"
   },
   {
     "uuid": "677e87f7-6d9d-30bd-a846-ca2e9cd5608e",
@@ -72,6 +72,15 @@
     "link": "https://finance.yahoo.com/news/sector-consumer-stocks-decline-afternoon-194457472.html"
   },
   {
+    "uuid": "4d96e147-0572-3919-abe2-9e78a89c6f88",
+    "symbol": "GOOGL",
+    "title": "Got $5,000? 3 Tech Stocks to Buy and Hold for the Long Term.",
+    "publisher": "Motley Fool",
+    "report_date": "2025-06-19",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/4d96e147-0572-3919-abe2-9e78a89c6f88/got-%245%2C000%3F-3-tech-stocks-to.html"
+  },
+  {
     "uuid": "58844064-6ec3-3b70-b13a-3eee7607b6b5",
     "symbol": "GOOGL",
     "title": "Adobe vs. Apple: Which AI-Driven Tech Stock is a Better Buy Now?",
@@ -79,14 +88,5 @@
     "report_date": "2025-06-19",
     "type": "STORY",
     "link": "https://finance.yahoo.com/news/adobe-vs-apple-ai-driven-172200197.html"
-  },
-  {
-    "uuid": "4d7fe1de-6ce8-3bad-a565-20d668edb258",
-    "symbol": "GOOGL",
-    "title": "3 Growth Stocks to Buy and Forget About",
-    "publisher": "Motley Fool",
-    "report_date": "2025-06-19",
-    "type": "STORY",
-    "link": "https://finance.yahoo.com/m/4d7fe1de-6ce8-3bad-a565-20d668edb258/3-growth-stocks-to-buy-and.html"
   }
 ]

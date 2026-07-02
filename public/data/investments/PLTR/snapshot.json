@@ -1,10 +1,10 @@
 {
   "symbol": "PLTR",
-  "lastUpdated": "2026-06-29T23:40:07.848324+00:00",
+  "lastUpdated": "2026-07-02T23:53:41.175846+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-29T23:40:07.848324+00:00",
+    "snapshotBuiltAt": "2026-07-02T23:53:41.175846+00:00",
     "sections": {
-      "price": "2026-06-26"
+      "price": "2026-07-01"
     }
   },
   "source": "prefetched",
@@ -33,7 +33,7 @@
       "country": "United States",
       "industry": "Software-Infrastructure",
       "sector": "Technology",
-      "longBusinessSummary": "Palantir Technologies Inc. builds and deploys software platforms for the intelligence community to assist in counterterrorism investigations and operations in the United States, the United Kingdom, and internationally. It provides Palantir Gotham integrates with other platforms for defense offerings which enables users to see, understand, and act in the modern battlespace; operations centers to the tactical edge; integrating data from domains and sensors in near real-time; and situational awareness and accelerating operational decision-making, as well as facilitates the hand-off between analysts and operational users, helping operators plan and execute real-world responses to threats that have been identified within the platform. The company also offers Palantir Foundry, a platform that helps organizations operate by creating a central operating system for their data; and allows individual users to integrate and analyze the data they need in one place. In addition, it provides Palantir Apollo, a software that delivers software and updates across the business, as well as enables customers to deploy their software virtually in any environment; and Palantir Artificial Intelligence Platform that provides unified access to open-source, self-hosted, and commercial large language models (LLMs) that can transform structured and unstructured data into LLM-understandable objects and can turn organizations' actions and processes into tools for humans and LLM-driven agents. The company also has a strategic partnership with Ondas Inc. to develop and deploy AI-enabled operational capabilities to scale stratospheric, aerial, and land-based ISR missions. The company was incorporated in 2003 and is headquartered in Aventura, Florida.",
+      "longBusinessSummary": "Palantir Technologies Inc. builds and deploys software platforms for the intelligence community to assist in counterterrorism investigations and operations in the United States, the United Kingdom, and internationally. It provides Palantir Gotham integrates with other platforms for defense offerings which enables users to see, understand, and act in the modern battlespace; operations centers to the tactical edge; integrating data from domains and sensors in near real-time; and situational awareness and accelerating operational decision-making, as well as facilitates the hand-off between analysts and operational users, helping operators plan and execute real-world responses to threats that have been identified within the platform. The company also offers Palantir Foundry, a platform that helps organizations operate by creating a central operating system for their data; and allows individual users to integrate and analyze the data they need in one place. In addition, it provides Palantir Apollo, a software that delivers software and updates across the business, as well as enables customers to deploy their software virtually in any environment; and Palantir Artificial Intelligence Platform that provides unified access to open-source, self-hosted, and commercial large language models (LLMs) that can transform structured and unstructured data into LLM-understandable objects and can turn organizations' actions and processes into tools for humans and LLM-driven agents. The company also has a strategic partnership with Ondas Inc. to develop and deploy AI-enabled operational capabilities to scale stratospheric, aerial, and land-based ISR missions. The company has a strategic collaboration with NVIDIA to deliver an intelligent engine for running NVIDIA AI and Nemotron open models in sovereign environments. The company was incorporated in 2003 and is headquartered in Aventura, Florida.",
       "fullTimeEmployees": 4395,
       "website": "https://www.palantir.com",
       "shortName": "Palantir Technologies Inc.",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 0.8876,
-      "ttmPe": 127.23,
-      "marketCap": 270728444160,
-      "psRatio": 51.82,
-      "pbRatio": 32.04,
-      "pegRatio": 0.42
+      "ttmPe": 141.65,
+      "marketCap": 301414037760,
+      "psRatio": 57.7,
+      "pbRatio": 35.67,
+      "pegRatio": 0.47
     },
     "profitability": {
       "roe": 10.99,
@@ -4965,41 +4965,17 @@
       ]
     },
     "wacc": {
-      "wacc": 17.89,
-      "costOfEquity": 17.9,
+      "wacc": 17.65,
+      "costOfEquity": 17.66,
       "costOfDebt": 0.06,
       "taxRate": 9,
-      "beta": 1.5921,
-      "marketCap": 270728444160
+      "beta": 1.5715,
+      "marketCap": 301414037760
     },
     "beta": {
-      "beta5y": 1.5921
+      "beta5y": 1.5715
     },
     "price": [
-      {
-        "date": "2025-06-26",
-        "open": 144.85,
-        "high": 148.215,
-        "low": 142.91,
-        "close": 144.25,
-        "volume": 69440500
-      },
-      {
-        "date": "2025-06-27",
-        "open": 144.87,
-        "high": 144.97,
-        "low": 130.54,
-        "close": 130.74,
-        "volume": 202598600
-      },
-      {
-        "date": "2025-06-30",
-        "open": 137.79,
-        "high": 138.875,
-        "low": 134.8,
-        "close": 136.32,
-        "volume": 97305600
-      },
       {
         "date": "2025-07-01",
         "open": 135.27,
@@ -6990,24 +6966,48 @@
         "high": 114.08,
         "low": 108.47,
         "close": 112.93,
-        "volume": 61176800
+        "volume": 61360500
+      },
+      {
+        "date": "2026-06-29",
+        "open": 116.23,
+        "high": 119.08,
+        "low": 114.7,
+        "close": 115.7,
+        "volume": 45017400
+      },
+      {
+        "date": "2026-06-30",
+        "open": 114.95,
+        "high": 118.7,
+        "low": 114.57,
+        "close": 116.67,
+        "volume": 38069700
+      },
+      {
+        "date": "2026-07-01",
+        "open": 120.276,
+        "high": 128.25,
+        "low": 119.35,
+        "close": 125.73,
+        "volume": 57264188
       }
     ],
     "news": [
-      {
-        "uuid": "944b24c7-5dc1-3bf4-a1c9-ea3e0b527d80",
-        "title": "Palantir (PLTR) Joins Forces with Ondas to Elevate AI-Powered Autonomous Drones",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-03-14",
-        "link": "https://finance.yahoo.com/news/palantir-pltr-joins-forces-ondas-151809996.html",
-        "type": "STORY"
-      },
       {
         "uuid": "ffe8bfcd-dec1-3b98-8125-d65c4ffa8e9b",
         "title": "Palantir Strikes AI Partnerships With Archer Aviation, Databricks",
         "publisher": "MT Newswires",
         "reportDate": "2025-03-14",
         "link": "https://finance.yahoo.com/news/palantir-strikes-ai-partnerships-archer-192210992.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "944b24c7-5dc1-3bf4-a1c9-ea3e0b527d80",
+        "title": "Palantir (PLTR) Joins Forces with Ondas to Elevate AI-Powered Autonomous Drones",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-03-14",
+        "link": "https://finance.yahoo.com/news/palantir-pltr-joins-forces-ondas-151809996.html",
         "type": "STORY"
       },
       {
@@ -7059,20 +7059,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "5f3936c2-86dc-3310-a7c4-553590e3dde3",
-        "title": "Palantir declines, Lemonade lifts guidance, Celsius Q1 miss",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/video/palantir-declines-lemonade-lifts-guidance-151158298.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "da78ab04-9824-38ae-919d-0f45264f5e66",
         "title": "Nebius Group Stock Earns 84 RS Rating",
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-05-06",
         "link": "https://finance.yahoo.com/m/da78ab04-9824-38ae-919d-0f45264f5e66/nebius-group-stock-earns-84.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "5f3936c2-86dc-3310-a7c4-553590e3dde3",
+        "title": "Palantir declines, Lemonade lifts guidance, Celsius Q1 miss",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/video/palantir-declines-lemonade-lifts-guidance-151158298.html",
+        "type": "VIDEO"
       }
     ],
     "officers": [
@@ -7143,18 +7143,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 127.23,
-        "industryAvg": 26.09
+        "value": 141.65,
+        "industryAvg": 27.08
       },
       {
         "metric": "P/S Ratio",
-        "value": 51.82,
-        "industryAvg": 5.7
+        "value": 57.7,
+        "industryAvg": 5.93
       },
       {
         "metric": "P/B Ratio",
-        "value": 32.04,
-        "industryAvg": 6.94
+        "value": 35.67,
+        "industryAvg": 7.21
       },
       {
         "metric": "ROE",
@@ -7174,7 +7174,7 @@
       {
         "metric": "EBITDA Margin",
         "value": 46.6,
-        "industryAvg": 33.96
+        "industryAvg": 33.97
       },
       {
         "metric": "Net Margin",
@@ -7183,10 +7183,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 12.64,
-      "currentPrice": 112.93,
-      "upside": -88.81,
-      "wacc": 17.89,
+      "fairValue": 12.86,
+      "currentPrice": 125.73,
+      "upside": -89.77,
+      "wacc": 17.65,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

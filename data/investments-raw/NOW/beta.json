@@ -1,8 +1,8 @@
 [
   {
     "symbol": "NOW",
-    "report_date": "2026-06-29",
-    "beta": 0.978,
+    "report_date": "2026-07-02",
+    "beta": 0.937,
     "period": "5y",
     "benchmark": "SPY"
   }

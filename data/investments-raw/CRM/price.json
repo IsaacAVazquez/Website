@@ -1,33 +1,6 @@
 [
   {
     "symbol": "CRM",
-    "report_date": "2025-06-26",
-    "open": 268.78,
-    "close": 270.74,
-    "high": 271.01,
-    "low": 265.16,
-    "volume": 6708000
-  },
-  {
-    "symbol": "CRM",
-    "report_date": "2025-06-27",
-    "open": 271.86,
-    "close": 273.42,
-    "high": 274.17,
-    "low": 269.43,
-    "volume": 21741400
-  },
-  {
-    "symbol": "CRM",
-    "report_date": "2025-06-30",
-    "open": 274.46,
-    "close": 272.69,
-    "high": 276.38,
-    "low": 270.4,
-    "volume": 8541900
-  },
-  {
-    "symbol": "CRM",
     "report_date": "2025-07-01",
     "open": 272.08,
     "close": 271.91,
@@ -2265,6 +2238,33 @@
     "close": 158.37,
     "high": 158.46,
     "low": 151.49,
-    "volume": 20231900
+    "volume": 21267900
+  },
+  {
+    "symbol": "CRM",
+    "report_date": "2026-06-29",
+    "open": 160.27,
+    "close": 157.93,
+    "high": 161.76,
+    "low": 157.7,
+    "volume": 12664100
+  },
+  {
+    "symbol": "CRM",
+    "report_date": "2026-06-30",
+    "open": 155.09,
+    "close": 156.66,
+    "high": 157.69,
+    "low": 154.07,
+    "volume": 13690500
+  },
+  {
+    "symbol": "CRM",
+    "report_date": "2026-07-01",
+    "open": 162.22,
+    "close": 163.23,
+    "high": 165.81,
+    "low": 161.2,
+    "volume": 13957646
   }
 ]

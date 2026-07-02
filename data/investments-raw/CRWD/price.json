@@ -1,33 +1,6 @@
 [
   {
     "symbol": "CRWD",
-    "report_date": "2025-06-26",
-    "open": 497.08,
-    "close": 505.22,
-    "high": 506.35,
-    "low": 494.09,
-    "volume": 3017000
-  },
-  {
-    "symbol": "CRWD",
-    "report_date": "2025-06-27",
-    "open": 504.59,
-    "close": 499.33,
-    "high": 505.37,
-    "low": 495.57,
-    "volume": 3466300
-  },
-  {
-    "symbol": "CRWD",
-    "report_date": "2025-06-30",
-    "open": 502.625,
-    "close": 509.31,
-    "high": 510.02,
-    "low": 499.72,
-    "volume": 2702800
-  },
-  {
-    "symbol": "CRWD",
     "report_date": "2025-07-01",
     "open": 509.37,
     "close": 492.07,
@@ -2148,123 +2121,150 @@
     "close": 658.79,
     "high": 684.0,
     "low": 652.01,
-    "volume": 3337400
+    "volume": 3337379
   },
   {
     "symbol": "CRWD",
     "report_date": "2026-06-09",
-    "open": 658.79,
-    "close": 644.93,
-    "high": 664.87,
-    "low": 617.74,
-    "volume": 3740600
+    "open": 164.6975,
+    "close": 161.2325,
+    "high": 166.2175,
+    "low": 154.435,
+    "volume": 14962456
   },
   {
     "symbol": "CRWD",
     "report_date": "2026-06-10",
-    "open": 639.03,
-    "close": 647.74,
-    "high": 662.13,
-    "low": 635.95,
-    "volume": 2527400
+    "open": 159.7575,
+    "close": 161.935,
+    "high": 165.5325,
+    "low": 158.9875,
+    "volume": 10109480
   },
   {
     "symbol": "CRWD",
     "report_date": "2026-06-11",
-    "open": 645.28,
-    "close": 691.53,
-    "high": 696.43,
-    "low": 641.0,
-    "volume": 3534000
+    "open": 161.32,
+    "close": 172.8825,
+    "high": 174.1075,
+    "low": 160.25,
+    "volume": 14136004
   },
   {
     "symbol": "CRWD",
     "report_date": "2026-06-12",
-    "open": 690.66,
-    "close": 682.8,
-    "high": 702.17,
-    "low": 678.0,
-    "volume": 2310900
+    "open": 172.665,
+    "close": 170.7,
+    "high": 175.5425,
+    "low": 169.5,
+    "volume": 9247564
   },
   {
     "symbol": "CRWD",
     "report_date": "2026-06-15",
-    "open": 692.67,
-    "close": 692.91,
-    "high": 697.495,
-    "low": 668.86,
-    "volume": 2546000
+    "open": 173.1675,
+    "close": 173.2275,
+    "high": 174.3737,
+    "low": 167.215,
+    "volume": 10184100
   },
   {
     "symbol": "CRWD",
     "report_date": "2026-06-16",
-    "open": 693.098,
-    "close": 679.49,
-    "high": 700.87,
-    "low": 665.96,
-    "volume": 2144000
+    "open": 173.2745,
+    "close": 169.8725,
+    "high": 175.2175,
+    "low": 166.49,
+    "volume": 8575820
   },
   {
     "symbol": "CRWD",
     "report_date": "2026-06-17",
-    "open": 680.0,
-    "close": 682.96,
-    "high": 690.93,
-    "low": 670.9,
-    "volume": 2098300
+    "open": 170.0,
+    "close": 170.74,
+    "high": 172.7325,
+    "low": 167.725,
+    "volume": 8393104
   },
   {
     "symbol": "CRWD",
     "report_date": "2026-06-18",
-    "open": 686.75,
-    "close": 684.86,
-    "high": 695.91,
-    "low": 660.92,
-    "volume": 5379400
+    "open": 171.6875,
+    "close": 171.215,
+    "high": 173.9775,
+    "low": 165.23,
+    "volume": 21517468
   },
   {
     "symbol": "CRWD",
     "report_date": "2026-06-22",
-    "open": 685.07,
-    "close": 675.44,
-    "high": 712.18,
-    "low": 673.195,
-    "volume": 3435800
+    "open": 171.2675,
+    "close": 168.86,
+    "high": 178.045,
+    "low": 168.2988,
+    "volume": 13743288
   },
   {
     "symbol": "CRWD",
     "report_date": "2026-06-23",
-    "open": 669.01,
-    "close": 680.92,
-    "high": 690.9,
-    "low": 662.0,
-    "volume": 2372000
+    "open": 167.2525,
+    "close": 170.23,
+    "high": 172.725,
+    "low": 165.5,
+    "volume": 9488052
   },
   {
     "symbol": "CRWD",
     "report_date": "2026-06-24",
-    "open": 680.49,
-    "close": 673.02,
-    "high": 687.146,
-    "low": 669.0,
-    "volume": 1754500
+    "open": 170.1225,
+    "close": 168.255,
+    "high": 171.7866,
+    "low": 167.25,
+    "volume": 7018104
   },
   {
     "symbol": "CRWD",
     "report_date": "2026-06-25",
-    "open": 680.38,
-    "close": 678.65,
-    "high": 692.74,
-    "low": 670.001,
-    "volume": 3007200
+    "open": 170.095,
+    "close": 169.6625,
+    "high": 173.185,
+    "low": 167.5002,
+    "volume": 12035636
   },
   {
     "symbol": "CRWD",
     "report_date": "2026-06-26",
-    "open": 686.2,
-    "close": 701.09,
-    "high": 704.84,
-    "low": 673.61,
-    "volume": 3328200
+    "open": 171.55,
+    "close": 175.2725,
+    "high": 176.21,
+    "low": 168.4025,
+    "volume": 13329052
+  },
+  {
+    "symbol": "CRWD",
+    "report_date": "2026-06-29",
+    "open": 177.375,
+    "close": 185.7275,
+    "high": 188.995,
+    "low": 176.03,
+    "volume": 19759292
+  },
+  {
+    "symbol": "CRWD",
+    "report_date": "2026-06-30",
+    "open": 184.125,
+    "close": 190.785,
+    "high": 191.325,
+    "low": 183.0001,
+    "volume": 14751888
+  },
+  {
+    "symbol": "CRWD",
+    "report_date": "2026-07-01",
+    "open": 775.0,
+    "close": 772.74,
+    "high": 786.0,
+    "low": 765.0,
+    "volume": 2449719
   }
 ]

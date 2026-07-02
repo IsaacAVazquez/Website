@@ -1,33 +1,6 @@
 [
   {
     "symbol": "ASML",
-    "report_date": "2025-06-26",
-    "open": 799.76,
-    "close": 798.09,
-    "high": 800.88,
-    "low": 786.5,
-    "volume": 1705800
-  },
-  {
-    "symbol": "ASML",
-    "report_date": "2025-06-27",
-    "open": 802.94,
-    "close": 795.95,
-    "high": 805.49,
-    "low": 788.45,
-    "volume": 1201000
-  },
-  {
-    "symbol": "ASML",
-    "report_date": "2025-06-30",
-    "open": 796.48,
-    "close": 801.39,
-    "high": 802.44,
-    "low": 794.04,
-    "volume": 1080400
-  },
-  {
-    "symbol": "ASML",
     "report_date": "2025-07-01",
     "open": 788.05,
     "close": 790.47,
@@ -2265,6 +2238,33 @@
     "close": 1794.62,
     "high": 1809.0,
     "low": 1767.64,
-    "volume": 2838900
+    "volume": 2840000
+  },
+  {
+    "symbol": "ASML",
+    "report_date": "2026-06-29",
+    "open": 1798.95,
+    "close": 1883.11,
+    "high": 1886.12,
+    "low": 1772.52,
+    "volume": 1760500
+  },
+  {
+    "symbol": "ASML",
+    "report_date": "2026-06-30",
+    "open": 1915.5,
+    "close": 1989.4399,
+    "high": 1999.96,
+    "low": 1913.88,
+    "volume": 2712600
+  },
+  {
+    "symbol": "ASML",
+    "report_date": "2026-07-01",
+    "open": 1915.335,
+    "close": 1843.04,
+    "high": 1943.0,
+    "low": 1832.66,
+    "volume": 2574972
   }
 ]

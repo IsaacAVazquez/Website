@@ -1,33 +1,6 @@
 [
   {
     "symbol": "PLTR",
-    "report_date": "2025-06-26",
-    "open": 144.85,
-    "close": 144.25,
-    "high": 148.215,
-    "low": 142.91,
-    "volume": 69440500
-  },
-  {
-    "symbol": "PLTR",
-    "report_date": "2025-06-27",
-    "open": 144.87,
-    "close": 130.74,
-    "high": 144.97,
-    "low": 130.54,
-    "volume": 202598600
-  },
-  {
-    "symbol": "PLTR",
-    "report_date": "2025-06-30",
-    "open": 137.79,
-    "close": 136.32,
-    "high": 138.875,
-    "low": 134.8,
-    "volume": 97305600
-  },
-  {
-    "symbol": "PLTR",
     "report_date": "2025-07-01",
     "open": 135.27,
     "close": 130.68,
@@ -2265,6 +2238,33 @@
     "close": 112.93,
     "high": 114.08,
     "low": 108.47,
-    "volume": 61176800
+    "volume": 61360500
+  },
+  {
+    "symbol": "PLTR",
+    "report_date": "2026-06-29",
+    "open": 116.23,
+    "close": 115.7,
+    "high": 119.08,
+    "low": 114.7,
+    "volume": 45017400
+  },
+  {
+    "symbol": "PLTR",
+    "report_date": "2026-06-30",
+    "open": 114.95,
+    "close": 116.67,
+    "high": 118.7,
+    "low": 114.57,
+    "volume": 38069700
+  },
+  {
+    "symbol": "PLTR",
+    "report_date": "2026-07-01",
+    "open": 120.276,
+    "close": 125.73,
+    "high": 128.25,
+    "low": 119.35,
+    "volume": 57264188
   }
 ]

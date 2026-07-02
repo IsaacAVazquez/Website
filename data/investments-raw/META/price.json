@@ -1,33 +1,6 @@
 [
   {
     "symbol": "META",
-    "report_date": "2025-06-26",
-    "open": 714.36,
-    "close": 726.09,
-    "high": 728.22,
-    "low": 711.05,
-    "volume": 13964800
-  },
-  {
-    "symbol": "META",
-    "report_date": "2025-06-27",
-    "open": 726.52,
-    "close": 733.63,
-    "high": 735.43,
-    "low": 725.86,
-    "volume": 18775700
-  },
-  {
-    "symbol": "META",
-    "report_date": "2025-06-30",
-    "open": 744.55,
-    "close": 738.09,
-    "high": 747.9,
-    "low": 734.25,
-    "volume": 15402100
-  },
-  {
-    "symbol": "META",
     "report_date": "2025-07-01",
     "open": 736.88,
     "close": 719.22,
@@ -2265,6 +2238,33 @@
     "close": 550.25,
     "high": 556.85,
     "low": 540.4,
-    "volume": 18845200
+    "volume": 18867700
+  },
+  {
+    "symbol": "META",
+    "report_date": "2026-06-29",
+    "open": 560.0,
+    "close": 562.6,
+    "high": 570.9,
+    "low": 558.0,
+    "volume": 15011400
+  },
+  {
+    "symbol": "META",
+    "report_date": "2026-06-30",
+    "open": 560.94,
+    "close": 563.29,
+    "high": 565.54,
+    "low": 551.43,
+    "volume": 18111100
+  },
+  {
+    "symbol": "META",
+    "report_date": "2026-07-01",
+    "open": 607.91,
+    "close": 612.91,
+    "high": 628.28,
+    "low": 595.1,
+    "volume": 45057181
   }
 ]

@@ -1,10 +1,10 @@
 {
   "symbol": "APP",
-  "lastUpdated": "2026-06-29T23:40:07.848324+00:00",
+  "lastUpdated": "2026-07-02T23:53:41.175846+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-06-29T23:40:07.848324+00:00",
+    "snapshotBuiltAt": "2026-07-02T23:53:41.175846+00:00",
     "sections": {
-      "price": "2026-06-26"
+      "price": "2026-07-01"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.3361,
-      "ttmPe": 42.09,
-      "marketCap": 160270016660,
-      "psRatio": 26,
-      "pbRatio": 67.81,
-      "pegRatio": 0.6
+      "ttmPe": 49.81,
+      "marketCap": 189674801095,
+      "psRatio": 30.77,
+      "pbRatio": 80.25,
+      "pegRatio": 0.71
     },
     "profitability": {
       "roe": 53.6,
@@ -5517,41 +5517,17 @@
       ]
     },
     "wacc": {
-      "wacc": 25.069999999999997,
-      "costOfEquity": 25.590000000000003,
+      "wacc": 24.959999999999997,
+      "costOfEquity": 25.4,
       "costOfDebt": 1.46,
       "taxRate": 16,
-      "beta": 2.4988,
-      "marketCap": 160270016660
+      "beta": 2.4934,
+      "marketCap": 189674801095
     },
     "beta": {
-      "beta5y": 2.4988
+      "beta5y": 2.4934
     },
     "price": [
-      {
-        "date": "2025-06-26",
-        "open": 342.41,
-        "high": 347.95,
-        "low": 328.94,
-        "close": 347.45,
-        "volume": 5305900
-      },
-      {
-        "date": "2025-06-27",
-        "open": 348.49,
-        "high": 348.83,
-        "low": 332.1,
-        "close": 333.78,
-        "volume": 18537800
-      },
-      {
-        "date": "2025-06-30",
-        "open": 341.32,
-        "high": 361.758,
-        "low": 340.05,
-        "close": 350.08,
-        "volume": 8204900
-      },
       {
         "date": "2025-07-01",
         "open": 347,
@@ -7542,7 +7518,31 @@
         "high": 483.32,
         "low": 440.4,
         "close": 477.08,
-        "volume": 3422500
+        "volume": 3426500
+      },
+      {
+        "date": "2026-06-29",
+        "open": 490.34,
+        "high": 506.491,
+        "low": 483,
+        "close": 498.76,
+        "volume": 5300300
+      },
+      {
+        "date": "2026-06-30",
+        "open": 494.42,
+        "high": 519.46,
+        "low": 492.84,
+        "close": 515.23,
+        "volume": 5594100
+      },
+      {
+        "date": "2026-07-01",
+        "open": 533.33,
+        "high": 574.75,
+        "low": 521.93,
+        "close": 564.61,
+        "volume": 5876381
       }
     ],
     "news": [
@@ -7644,22 +7644,11 @@
         "title": "Vice President Controller & Principal Accounting Officer"
       },
       {
-        "name": "Mr. Giovanni Ge",
-        "title": "Chief Product & Engineering Officer"
-      },
-      {
         "name": "Mr. Matthew A. Stumpf",
         "title": "Chief Financial Officer",
         "age": 41,
         "yearBorn": 1984,
         "totalPay": 427324
-      },
-      {
-        "name": "Mr. Vasily Shikin",
-        "title": "Chief Technology Officer",
-        "age": 39,
-        "yearBorn": 1986,
-        "totalPay": 837075
       },
       {
         "name": "Ms. Victoria Valenzuela",
@@ -7672,50 +7661,50 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 42.09,
-        "industryAvg": 40.52
+        "value": 49.81,
+        "industryAvg": 46.86
       },
       {
         "metric": "P/S Ratio",
-        "value": 26,
-        "industryAvg": 4.42
+        "value": 30.77,
+        "industryAvg": 5.11
       },
       {
         "metric": "P/B Ratio",
-        "value": 67.81,
-        "industryAvg": 7.27
+        "value": 80.25,
+        "industryAvg": 8.32
       },
       {
         "metric": "ROE",
         "value": 53.6,
-        "industryAvg": 22.470000000000002
+        "industryAvg": 22.5
       },
       {
         "metric": "ROA",
         "value": 16.11,
-        "industryAvg": 4.52
+        "industryAvg": 4.53
       },
       {
         "metric": "Gross Margin",
         "value": 88.94999999999999,
-        "industryAvg": 33.239999999999995
+        "industryAvg": 33.25
       },
       {
         "metric": "EBITDA Margin",
         "value": 82.28999999999999,
-        "industryAvg": 17.01
+        "industryAvg": 17.02
       },
       {
         "metric": "Net Margin",
         "value": 65.44,
-        "industryAvg": 7.48
+        "industryAvg": 7.5
       }
     ],
     "dcf": {
-      "fairValue": 105.43,
-      "currentPrice": 477.08,
-      "upside": -77.9,
-      "wacc": 25.07,
+      "fairValue": 106.01,
+      "currentPrice": 564.61,
+      "upside": -81.22,
+      "wacc": 24.96,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3
