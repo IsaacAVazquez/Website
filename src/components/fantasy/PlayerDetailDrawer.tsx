@@ -25,6 +25,12 @@ interface PlayerDetailDrawerProps {
   publishedRank?: string;
   /** Total tier count on the active board, for "Tier N of M" context. */
   boardTierCount?: number;
+  /**
+   * Whether the active snapshot carries an attributed ADP source. When false,
+   * every ADP-derived surface hides — mirroring the board — even if stale
+   * per-player adp values are present in the data.
+   */
+  adpAvailable?: boolean;
   onClose: () => void;
 }
 
@@ -52,7 +58,9 @@ function StatCell({ label, children }: { label: string; children: React.ReactNod
  * consensus spread, ownership, bye, ADP) plus the cross-surface watchlist,
  * notes, and compare controls. No projections/headshots: that data is empty.
  */
-export function PlayerDetailDrawer({ player, publishedRank, boardTierCount, onClose }: PlayerDetailDrawerProps) {
+export function PlayerDetailDrawer({ player, publishedRank, boardTierCount, onClose,
+  adpAvailable = true,
+}: PlayerDetailDrawerProps) {
   const reduceMotion = useReducedMotion();
   const panelRef = useRef<HTMLDivElement>(null);
   const restoreFocusRef = useRef<HTMLElement | null>(null);
@@ -112,7 +120,7 @@ export function PlayerDetailDrawer({ player, publishedRank, boardTierCount, onCl
   }, [player, onClose]);
 
   const isOpen = Boolean(player);
-  const valueSignal = player ? getValueVsAdp(player) : null;
+  const valueSignal = player && adpAvailable ? getValueVsAdp(player) : null;
   const spread = player ? getConsensusSpread(player) : null;
   const isQueued = player ? queue.isQueued(player.id) : false;
   const inCompare = player ? compare.inCompare(player.id) : false;
@@ -241,7 +249,7 @@ export function PlayerDetailDrawer({ player, publishedRank, boardTierCount, onCl
             </div>
 
             {/* ADP + value signal */}
-            {Number.isFinite(player.adp) && (
+            {adpAvailable && Number.isFinite(player.adp) && (
               <div
                 className="flex items-center justify-between rounded-[var(--radius-3xl)] border px-3 py-2.5"
                 style={{

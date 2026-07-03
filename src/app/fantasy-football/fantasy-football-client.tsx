@@ -1019,6 +1019,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
         player={detailPlayer}
         publishedRank={detailPlayer ? getPublishedBoardRank(detailPlayer, routeState.position) : undefined}
         boardTierCount={maxTier > 0 ? maxTier : undefined}
+        adpAvailable={adpAvailable}
         onClose={() => setDetailPlayer(null)}
       />
       <CompareTray

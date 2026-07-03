@@ -1,0 +1,23 @@
+---
+title: Header search, portfolio tiles, and tool polish
+publishedAt: "2026-06-24"
+category: Feature
+summary: Added in-header search with live results, per-project portfolio tiles, cleaner search ranking, AI Dev Tools and News Pulse UI improvements, and fixes for investments live pricing.
+tags:
+  - search
+  - portfolio
+  - tools
+---
+
+Search became part of the shell instead of a separate destination. The header now opens a live search dropdown, search filtering works in production, projects rank ahead of duplicate matches, and the taxonomy/filter UI is cleaner.
+
+The [portfolio](/portfolio) picked up per-project pixel-art tiles for the card grid, plus focused tests for the project-search path. The homepage portrait got smaller so the surrounding content has room to breathe, and the header nav alignment was fixed after prose list margins leaked into the nav row.
+
+Several tools got practical polish:
+
+- [AI Dev Tools](/ai-dev-tools) and [News Pulse](/news-pulse) got UI and UX improvements.
+- Fantasy football moved the Value signal next to Avg and cleaned up tooltip and touch-target behavior.
+- Investments restored live pricing in deployed environments and aligned the allocation donut.
+- Portfolio cleanup removed the stale Pulse Dashboards meta write-up from the portfolio and started cleaning stale sitemap entries.
+
+The tooling underneath moved too: Jest 30.4, Next, React, TypeScript ESLint, Playwright, Radix Dropdown, and `actions/checkout` all moved forward with fixes around the upgrade.

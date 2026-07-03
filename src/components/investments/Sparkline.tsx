@@ -55,7 +55,7 @@ export function Sparkline({
       .append("path")
       .datum(data)
       .attr("d", areaGenerator)
-      .attr("fill", color)
+      .style("fill", color)
       .attr("fill-opacity", 0.15);
 
     svg
@@ -63,7 +63,7 @@ export function Sparkline({
       .datum(data)
       .attr("d", lineGenerator)
       .attr("fill", "none")
-      .attr("stroke", color)
+      .style("stroke", color)
       .attr("stroke-width", 1.5);
   }, [data, width, height, isUp]);
 

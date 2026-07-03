@@ -53,10 +53,32 @@ function cacheNormalizedFantasySnapshot(
   return normalizedSnapshot;
 }
 
+// A stalled (never-settling) fetch previously hung the rankings board on its
+// loading skeleton forever and kept the API fallback from ever firing. Abort
+// hard so the static -> API chain always makes progress.
+const STATIC_SNAPSHOT_TIMEOUT_MS = 8_000;
+const API_SNAPSHOT_TIMEOUT_MS = 12_000;
+
+async function fetchWithTimeout(
+  input: string,
+  init: RequestInit,
+  timeoutMs: number
+): Promise<Response> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    return await fetch(input, { ...init, signal: controller.signal });
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 async function fetchStaticFantasySnapshot(scoring: FantasyRouteScoring): Promise<unknown> {
-  const response = await fetch(`/data/fantasy/${scoring}.json?v=${fantasySnapshotRevision}`, {
-    cache: "force-cache",
-  });
+  const response = await fetchWithTimeout(
+    `/data/fantasy/${scoring}.json?v=${fantasySnapshotRevision}`,
+    { cache: "force-cache" },
+    STATIC_SNAPSHOT_TIMEOUT_MS
+  );
 
   if (!response.ok) {
     throw new Error(`Static fantasy snapshot fetch failed (${response.status})`);
@@ -66,9 +88,11 @@ async function fetchStaticFantasySnapshot(scoring: FantasyRouteScoring): Promise
 }
 
 async function fetchApiFantasySnapshot(scoring: FantasyRouteScoring): Promise<unknown> {
-  const response = await fetch(`/api/fantasy-data?scoring=${scoring}&all=true`, {
-    cache: "no-store",
-  });
+  const response = await fetchWithTimeout(
+    `/api/fantasy-data?scoring=${scoring}&all=true`,
+    { cache: "no-store" },
+    API_SNAPSHOT_TIMEOUT_MS
+  );
 
   if (!response.ok) {
     throw new Error(`API fantasy snapshot fetch failed (${response.status})`);

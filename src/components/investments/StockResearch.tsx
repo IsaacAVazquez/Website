@@ -56,10 +56,10 @@ const TABS: { key: ResearchTab; label: string }[] = [
 
 const NAV_ITEMS = [
   { id: "overview", label: "Overview", icon: IconHome },
-  { id: "holdings", label: "My holdings", icon: IconList, href: "?view=portfolio#holdings-list" },
-  { id: "performance", label: "Performance", icon: IconChartLine, href: "?view=portfolio#performance-chart" },
-  { id: "allocation", label: "Allocation", icon: IconChartArcs3, href: "?view=portfolio#allocation" },
+  { id: "performance", label: "Performance", icon: IconChartLine, href: "?view=portfolio#performance" },
   { id: "stats", label: "Portfolio stats", icon: IconCircleHalf, href: "?view=portfolio#portfolio-stats" },
+  { id: "holdings", label: "My holdings", icon: IconList, href: "?view=portfolio#holdings-list" },
+  { id: "allocation", label: "Allocation", icon: IconChartArcs3, href: "?view=portfolio#allocation" },
 ] as const;
 
 function getCuratedOnlyMessage(symbol: string) {

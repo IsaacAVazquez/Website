@@ -154,11 +154,11 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
       .call((ax) =>
         ax
           .selectAll(".tick line")
-          .attr("stroke", "var(--home-rule)")
+          .style("stroke", "var(--home-rule)")
           .attr("stroke-opacity", "0.4")
       )
       .selectAll("text")
-      .attr("fill", "var(--home-ink-soft)")
+      .style("fill", "var(--home-ink-soft)")
       .attr("font-size", "10px")
       .attr("dx", "-4px");
 
@@ -168,7 +168,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
       .attr("x", -pInnerH / 2)
       .attr("y", -48)
       .attr("text-anchor", "middle")
-      .attr("fill", "var(--home-ink-soft)")
+      .style("fill", "var(--home-ink-soft)")
       .attr("font-size", "10px")
       .text("Price (USD)");
 
@@ -182,7 +182,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
     pg.append("path")
       .datum(entries)
       .attr("d", area)
-      .attr("fill", "var(--home-signal)")
+      .style("fill", "var(--home-signal)")
       .attr("fill-opacity", "0.12");
 
     // Line
@@ -195,7 +195,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
       .datum(entries)
       .attr("d", line)
       .attr("fill", "none")
-      .attr("stroke", "var(--home-signal)")
+      .style("stroke", "var(--home-signal)")
       .attr("stroke-width", 1.5);
 
     // 50-day moving average (dashed, neutral) — only the points that have a
@@ -211,7 +211,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
         .datum(entries)
         .attr("d", maLine)
         .attr("fill", "none")
-        .attr("stroke", "var(--home-ink-muted)")
+        .style("stroke", "var(--home-ink-muted)")
         .attr("stroke-width", 1.25)
         .attr("stroke-dasharray", "5,4")
         .attr("opacity", 0.85);
@@ -227,14 +227,14 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
         .attr("x2", pInnerW)
         .attr("y1", cy)
         .attr("y2", cy)
-        .attr("stroke", "var(--home-positive)")
+        .style("stroke", "var(--home-positive)")
         .attr("stroke-width", 1.25)
         .attr("stroke-dasharray", "2,3");
       pg.append("text")
         .attr("x", pInnerW)
         .attr("y", cy - 4)
         .attr("text-anchor", "end")
-        .attr("fill", "var(--home-positive)")
+        .style("fill", "var(--home-positive)")
         .attr("font-size", "9px")
         .attr("font-family", "var(--font-jetbrains-mono, monospace)")
         .text(`Cost $${(costBasis as number).toFixed(2)}`);
@@ -246,13 +246,13 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
       .call(axisBottom(xScale).ticks(5))
       .call((ax) => ax.select(".domain").remove())
       .selectAll("text")
-      .attr("fill", "var(--home-ink-soft)")
+      .style("fill", "var(--home-ink-soft)")
       .attr("font-size", "10px");
 
     // Hairline + tooltip on hover
     const hairline = pg
       .append("line")
-      .attr("stroke", "var(--home-ink-soft)")
+      .style("stroke", "var(--home-ink-soft)")
       .attr("stroke-dasharray", "3,3")
       .attr("y1", 0)
       .attr("y2", pInnerH)
@@ -330,7 +330,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
       .call(axisBottom(vxScale).ticks(5))
       .call((ax) => ax.select(".domain").remove())
       .selectAll("text")
-      .attr("fill", "var(--home-ink-soft)")
+      .style("fill", "var(--home-ink-soft)")
       .attr("font-size", "10px");
 
     // Volume label
@@ -339,7 +339,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
       .attr("x", -vInnerH / 2)
       .attr("y", -48)
       .attr("text-anchor", "middle")
-      .attr("fill", "var(--home-ink-soft)")
+      .style("fill", "var(--home-ink-soft)")
       .attr("font-size", "9px")
       .text("Volume");
   }, [slicedData, symbol, showMA, showCostBasis, hasCostBasis, costBasis]);

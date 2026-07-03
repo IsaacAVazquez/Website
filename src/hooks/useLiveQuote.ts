@@ -71,10 +71,13 @@ function liveQuoteReducer(
       };
     case "error":
       if (action.preserveQuote && state.quote) {
+        // Keep showing the last good quote, but don't swallow the failure —
+        // consumers gate values on `quote && !quote.error`, so surfacing the
+        // hook-level error only feeds the freshness messaging.
         return {
           ...state,
           isLoading: false,
-          error: null,
+          error: action.message,
         };
       }
 

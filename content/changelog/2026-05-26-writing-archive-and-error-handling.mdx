@@ -1,0 +1,13 @@
+---
+title: Writing archive V3 and steadier error handling
+publishedAt: "2026-05-26"
+category: Feature
+summary: Added the WritingArchiveV3 browsing experience and refactored shared error handling and logging across multiple components.
+tags:
+  - writing
+  - reliability
+---
+
+The writing archive got a stronger browsing layer with `WritingArchiveV3`. The goal was to make the archive feel useful once the article count got high enough that a simple reverse-chronological list was no longer doing enough work.
+
+Shared error handling and logging were cleaned up at the same time. That kind of refactor does not change the look of a page, but it changes how quickly failures can be understood when a route or component breaks.

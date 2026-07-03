@@ -125,6 +125,8 @@ export function InvestmentsDashboard({
   const navItems: NavItem[] = useMemo(
     () => [
       { id: "home", label: "Overview", href: "#hero", icon: IconHome },
+      { id: "performance", label: "Performance", href: "#performance", icon: IconChartLine },
+      { id: "stats", label: "Portfolio stats", href: "#portfolio-stats", icon: IconCircleHalf },
       {
         id: "holdings",
         label: "Holdings",
@@ -133,8 +135,6 @@ export function InvestmentsDashboard({
         pill: enhancedHoldings.length > 0 ? String(enhancedHoldings.length) : undefined,
       },
       { id: "allocation", label: "Allocation", href: "#allocation", icon: IconChartArcs3 },
-      { id: "stats", label: "Portfolio stats", href: "#portfolio-stats", icon: IconCircleHalf },
-      { id: "performance", label: "Performance", href: "#performance", icon: IconChartLine },
       { id: "research", label: "Research", href: "#research-section", icon: IconReportMoney },
       { id: "retirement", label: "Retirement", href: "#retirement", icon: IconPigMoney },
     ],

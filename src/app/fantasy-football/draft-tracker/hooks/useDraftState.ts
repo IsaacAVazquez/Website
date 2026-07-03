@@ -179,8 +179,46 @@ export const useDraftState = () => {
               timestamp: new Date(pick.timestamp),
             }));
           }
+          // Hydrate over full defaults so a blob written by an older build
+          // (same storage version, smaller shape — e.g. before undoHistory,
+          // teams, or draftId existed) can't strand the tracker with
+          // undefined fields. Guarded fields fall back individually; teams
+          // are rebuilt from the kept picks so rosters stay consistent.
+          const mergedSettings: DraftSettings = {
+            ...getDefaultSettings(),
+            ...(parsedState.settings ?? {}),
+          } as DraftSettings;
+          const mergedPicks = (parsedState.picks ?? []) as DraftPick[];
+          const defaults: DraftState = {
+            settings: mergedSettings,
+            picks: [],
+            currentPick: 1,
+            currentRound: 1,
+            isActive: false,
+            undoHistory: [],
+            teams: [],
+            draftId: generateDraftId(),
+          };
+          const merged: DraftState = {
+            ...defaults,
+            ...(parsedState as Partial<DraftState>),
+            settings: mergedSettings,
+            picks: mergedPicks,
+            undoHistory: Array.isArray(parsedState.undoHistory)
+              ? parsedState.undoHistory
+              : [],
+            teams:
+              Array.isArray(parsedState.teams) &&
+              parsedState.teams.length === mergedSettings.totalTeams
+                ? parsedState.teams
+                : rebuildTeams(mergedSettings.totalTeams, mergedPicks),
+            draftId:
+              typeof parsedState.draftId === "string" && parsedState.draftId
+                ? parsedState.draftId
+                : defaults.draftId,
+          };
           // eslint-disable-next-line react-hooks/set-state-in-effect
-          setDraftState(parsedState as DraftState);
+          setDraftState(merged);
         } catch (error) {
           console.error('Error loading draft state from localStorage:', error);
           // Persisted blob is corrupt — drop it so we start clean on next save

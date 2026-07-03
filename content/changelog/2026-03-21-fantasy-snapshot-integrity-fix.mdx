@@ -1,0 +1,15 @@
+---
+title: Fantasy snapshot integrity fix
+publishedAt: "2026-03-21"
+category: Fix
+summary: Fixed a real fantasy snapshot bug where overall boards could drift from the matching position boards, then rebuilt overall and flex from the same current position-board source.
+tags:
+  - fantasy-football
+  - fix
+---
+
+This was a real data integrity bug, not just a display issue.
+
+The `overall` boards could drift from the matching positional boards because overall rankings were still sourced from stale checked-in overall files while position boards were generated from current FantasyPros consensus data. That meant a player could carry one projection or rank in a position view and a different one in the overall view.
+
+The snapshot builder now derives `overall` and `flex` from the same current position-board dataset, preserves consistent player projections and position ranks across views, and bumps the schema version when clients need to move onto corrected data. Regression coverage now locks the overall-vs-position consistency path.

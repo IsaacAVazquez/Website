@@ -234,7 +234,7 @@ export function DraftBoard({
                 onClick={() => onDraftPlayer(player)}
                 disabled={isDraftComplete}
                 title={`Log ${player.name}`}
-                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold disabled:cursor-not-allowed disabled:opacity-60"
+                className="inline-flex min-h-touch items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold disabled:cursor-not-allowed disabled:opacity-60"
                 style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)" }}
               >
                 <span className="font-bold tabular-nums">{formatRankValue(player.rankEcr ?? player.averageRank)}</span>

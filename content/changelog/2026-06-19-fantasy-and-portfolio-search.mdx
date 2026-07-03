@@ -1,0 +1,20 @@
+---
+title: Fantasy football overhaul and portfolio project search
+publishedAt: "2026-06-19"
+category: Feature
+summary: The fantasy football board gained watchlists, notes, comparison, draft history, timers, exports, and clearer value signals, while the portfolio index picked up project search.
+tags:
+  - fantasy-football
+  - portfolio
+---
+
+The [fantasy football](/fantasy-football) surface moved from a rankings board into something closer to a draft workspace:
+
+- The rankings board gained a player detail drawer, watchlist queue, notes, compare tray, tier breaks, and a denser row treatment.
+- The draft assistant gained draft timers, undo and redo history, custom team names, CSV export, better team views, and stronger draft analytics.
+- Value and reach explanations now sit closer to the numbers through board legends, inline hovers, and cleaner tooltip behavior. The ADP work that started earlier in June is now visible enough to be useful during a draft.
+- E2E and unit coverage caught up to the new selectors, local-storage helpers, consensus logic, and emerging-run detection.
+
+The [portfolio index](/portfolio) also gained project search, with the marquee band moved between the project grid and pager so the browsing rhythm makes more sense. The search is intentionally local to the portfolio cards, and it matches across the fields that matter when someone is trying to find a specific kind of work.
+
+Underneath that, the snapshot workflows moved through a shared commit-and-push helper, football prebuild failures became non-fatal on deploy, and investments live-quote allowlisting was fixed for the deployed function bundle.

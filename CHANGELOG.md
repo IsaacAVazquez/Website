@@ -4,6 +4,229 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-07-02
+
+- Tightened the editorial design system across the site, including shared loading and error states, route polish, and updated design guidance in `STYLING.md`, `DESIGN_CHECKLIST.md`, and `docs/REDESIGN_BRIEF.md`.
+- Added a shared holding color palette and utility for investments visuals so allocation and holding components can assign colors consistently.
+- Added focused `PortfolioV3` search tests and kept the portfolio index covered as project search became a primary browsing path.
+- Added timeouts around fantasy snapshot fetches so a stalled static file request falls back to `/api/fantasy-data` instead of leaving the board on its loading state.
+- Hardened draft-tracker persisted-state loading so older localStorage blobs hydrate with safe defaults for undo history, teams, and draft IDs.
+- Kept the last good investments quote visible when a same-symbol refresh fails, while surfacing the failure through freshness messaging instead of hiding it.
+
+---
+
+## 2026-06-30
+
+- Updated `WRITING_VOICE.md` and the agent memory docs so the no-em-dash, plainspoken copy rules are current and easier to apply across UI copy, docs, and articles.
+
+---
+
+## 2026-06-25
+
+- Launched `/arcade`, a standalone synthwave CRT reflex game with a route-scoped font stack, custom visual system, and sitemap coverage.
+- Added World Cup 2026 group-stage writing coverage and synced the public sitemap with the new articles.
+- Gave Formula 1 Pulse a racing-flavored visual identity and restyled the 404 page with a retro treatment.
+- Removed stale `/portfolio/pulse-dashboards` sitemap references.
+
+---
+
+## 2026-06-24
+
+- Added in-header search with live results, fixed production search filtering, ranked projects ahead of duplicate matches, and cleaned up search taxonomy and filters.
+- Added per-project pixel-art tiles to the portfolio card grid and tightened the portfolio index scan state.
+- Improved `/ai-dev-tools` and `/news-pulse` UI/UX, moved fantasy Value next to Avg with cleaner tooltip/touch behavior, and restored investments live pricing while aligning the allocation donut.
+- Updated Next, React, TypeScript ESLint, Playwright, Jest tooling, Radix Dropdown, and GitHub checkout dependencies, with fixes for the Jest 30.4 toolchain.
+
+---
+
+## 2026-06-23
+
+- Added `/release-notes`, a month-grouped companion to the longer public changelog.
+- Added writing topic pages and an SEO content map so the writing archive can be browsed by recurring themes.
+- Improved findability across the homepage, live tools, shell, and search experience.
+- Added GA4 event tracking with an analytics reference page, plus sitemap priority and changefreq metadata by content type.
+- Staged a global report-only CSP and hardened auth, JSON-LD output, and email rate limiting.
+- Kept large sports snapshots out of client bundles, trimmed image runtime, fixed mobile-menu focus order, repaired the compare-modal focus trap, and expanded tests across builders, the tier engine, hooks, search, and sitemap classification.
+
+---
+
+## 2026-06-19
+
+- Overhauled the fantasy football rankings board with a player detail drawer, watchlist queue, notes, compare tray, tier breaks, denser rows, and clearer value/reach explanations.
+- Overhauled the fantasy draft assistant with draft timers, undo/redo history, custom team names, CSV exports, stronger team views, and updated draft analytics.
+- Added project search to `/portfolio` and moved the marquee band between the project grid and pager.
+- Routed snapshot workflows through the shared commit-and-push helper, made the football snapshot prebuild non-fatal on deploy, updated La Liga and Premier League snapshots for 2026, and fixed the deployed investments live-quote allowlist.
+
+---
+
+## 2026-06-18
+
+- Added build-breakdown writing articles for 24 portfolio projects, giving the project catalog a clearer implementation layer.
+- Cleaned up `/contact`, removed redundant copy, and dropped the old "not a fit" section.
+- Hardened fantasy snapshot freshness and push behavior, authenticated the SpaceX Launch Library path where possible, added a SpaceX snapshot freshness gate, and aligned fantasy snapshot tests with the populated ADP seed.
+- Redesigned Formula 1 Pulse with a more dynamic dashboard treatment and fixed the header brand/nav baseline alignment.
+
+---
+
+## 2026-06-15
+
+- Fixed correctness, crash, and SEO bugs across snapshot builders, dashboard clients, local-storage tools, RSS, search, metadata, and the MBA email path.
+- Corrected title de-duplication so the homepage keeps the site name in its document title.
+- Tightened recipe and wine-cellar parsing tests and hardened several page-level data paths after the June launch wave.
+
+---
+
+## 2026-06-10
+
+- Added a dozen writing pieces across horology, the AI mega-cap rally, AI-agent production practice, AI PM interviews, competitive analysis workflows, and June fantasy-football prep.
+- Added real position data to the investments research column, including shares, average cost, market value, total return, day P/L, and allocation context drawn from the local portfolio.
+- Added cost-basis and 50-day moving-average overlays to the investments price chart and cleaned up news cards with monogram thumbnails and timestamps.
+- Refined responsive fantasy draft-tracker and tier layouts.
+
+---
+
+## 2026-06-09
+
+- Launched Earthquake Pulse, Bay Area Transit Pulse, and Tech Startup Tracker as snapshot-driven dashboards with fail-soft refresh behavior.
+- Upgraded the travel planner with itinerary time windows, overlap detection, day color-coding, progress, mood icons, and a storage-corruption fix.
+- Moved more surfaces onto the editorial token system, added dashboard loading states, lazy-loaded heavier panels, improved dashboard table accessibility, and expanded unit coverage across March Madness, sports dashboards, polling, recipes, wine cellar, museum log, and Interchange IQ.
+
+---
+
+## 2026-06-08
+
+- Launched World Cup Pulse as a 2026 tournament hub that can become a live dashboard as ESPN-backed snapshots fill in groups, knockout rounds, fixtures, and scorers.
+- Published the World Cup contenders countdown and companion tournament-format writing.
+- Added a retirement planner inside the investments dashboard with allocation-derived assumptions, seeded Monte Carlo bands, two-phase projections, taxes, RMDs, Social Security mechanics, withdrawal levers, and editable disclosures.
+- Rebuilt Food Map on Leaflet as a multi-city curated surface with Miami, Atlanta, Copenhagen, San Sebastián, and Austin.
+- Launched the Fantasy Formula 1 optimizer and sharpened the fantasy football board with tier grouping, density controls, and stronger data-source framing.
+
+---
+
+## 2026-05-31
+
+- Refreshed the about and portfolio surfaces to match the current positioning and layout system.
+- Added the shared `HomeStatsPanel` to the homepage and writing archive.
+- Hardened player ID validation and snapshot handling across sports data modules, moved NBA player stats to a newer ESPN endpoint, and aligned UI copy with `WRITING_VOICE.md`.
+
+---
+
+## 2026-05-26
+
+- Added the `WritingArchiveV3` browsing experience with stronger article filtering and a clearer archive layout.
+- Refactored shared error handling and logging across multiple components so route failures use more consistent reporting.
+
+---
+
+## 2026-05-11
+
+- Enhanced the MBA job application tracking workflow and tightened the league snapshot quality gate so generated snapshot checks do not mistake imports for data bodies.
+
+---
+
+## 2026-05-04
+
+- Launched `/travel`, a browser-local trip planner with day-by-day itineraries and per-trip journals.
+- Added workflows to refresh sports snapshots for MLB, NBA, NFL, and SpaceX.
+- Refactored March Madness tests to cover the newer analytics and companion article links.
+
+---
+
+## 2026-04-29
+
+- Launched NBA Pulse, MLB Pulse, NFL Pulse, GitHub Trending Pulse, and Frontier Model Tracker using the shared snapshot-driven dashboard pattern.
+- Launched Food Map, Wine Cellar, Museum Log, and Recipe Finder as browser-persisted or curated personal tools.
+- Added a large writing wave across analytics, growth, pricing strategy, performance monitoring, QA automation, product launches, and civic-engagement platforms.
+- Improved accessibility and color-variable usage across components and cleaned up the changelog structure.
+
+---
+
+## 2026-04-26
+
+- Rolled out the Editorial V3 design system across the homepage hero, the writing archive, and the investments dashboard.
+- Rebuilt investments into a unified portfolio-plus-research shell with a three-column dashboard, hero balance card, dense stats grid, and key-metrics asset header.
+- Cut PR E2E feedback time, improved snapshot-refresh CI hygiene, and added retry behavior for snapshot-bot push races.
+
+---
+
+## 2026-04-25
+
+- Worked through the full-site design and UX audit backlog across shell, writing, dashboards, fantasy, fintech, and the MBA tracker.
+- Fixed high-priority empty states, tab accessibility, polling announcements, dropdown behavior, URL-state edge cases, pagination, and dashboard polish items.
+- Documented shipped audit items so the remaining backlog stayed focused on open work instead of already-fixed issues.
+
+---
+
+## 2026-04-22
+
+- Reworked the fantasy football tool surface and hardened the investments refresh pipeline with clearer data freshness messaging.
+- Fixed dark-mode elevation and touch-target compliance issues across the editorial surface.
+
+---
+
+## 2026-04-21
+
+- Added public `/now` and `/changelog` surfaces so current focus and shipped changes have first-class routes.
+- Published four April hot-topic deep dives and archived shipped implementation plans for traceability.
+- Backfilled the MBA role tracker into route and API inventories.
+
+---
+
+## 2026-04-20
+
+- Refreshed the MBA internship tracker layout, compacted company filters, expanded role search and career-type filtering, tightened job matching, and featured the tracker on the homepage.
+- Added Resend environment documentation for email notification setup.
+
+---
+
+## 2026-04-10
+
+- Launched `/mba-internship-notifications`, an MBA internship notifications dashboard with role aggregation, source curation, and email notifications.
+- Added and rewrote agentic AI articles across marketing, customer support, product management, and architecture.
+- Migrated live stock quotes to Finnhub and improved the investments search/sidebar experience.
+- Updated Premier League detail views and continued the football dashboard tabbed-layout work.
+
+---
+
+## 2026-04-08
+
+- Launched the political polling aggregator dashboard with a new component set and refreshed route styling.
+- Continued structural cleanup across contact, writing cards, and shared journey components.
+
+---
+
+## 2026-04-05
+
+- Rebuilt the SEO archive structure, refreshed homepage content, and improved accessibility metadata across key pages.
+- Enhanced article and case-study Open Graph metadata.
+- Documented the football snapshot workflow across architecture, development, automation, components, and testing docs.
+- Archived legacy one-time summary files under `docs/archive/`.
+
+---
+
+## 2026-04-02
+
+- Launched News Pulse, SpaceX Mission Control, and Interchange IQ as standalone data and fintech tools.
+- Added investments refresh automation and clearer price-freshness labels, while hardening search hydration, RSS coverage, and quote fallback tests.
+- Optimized public bundles, restored analyzer reporting, and moved the homepage featured-work placeholders onto real project titles.
+
+---
+
+## 2026-03-30
+
+- Added the news media AI strategy case study for the Atlantic Media fellowship track.
+- Fixed fantasy snapshot freshness and stale client-state handling after the corrected fantasy data model shipped.
+- Added the canonical `AGENTS.md` guide and repointed the compatibility `AGENT.md` file.
+
+---
+
+## 2026-03-28
+
+- Stabilized SpaceX mission image caching and fixed hydration issues on SpaceX Mission Control.
+- Continued fantasy snapshot freshness and stale-client-state fixes around the corrected fantasy data model.
+
+---
+
 ## 2026-03-21
 
 - Fixed a real fantasy football snapshot integrity bug where `overall` boards could drift from the matching positional boards because overall rankings were still sourced from stale checked-in overall files while positional boards were generated from current FantasyPros consensus data.
@@ -62,6 +285,13 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-03-15
+
+- Published and revised the agentic AI writing series across marketing, customer support, product management, and architecture.
+- Tightened the theme-toggle fallback path while the writing surface was being reworked into a sharper voice.
+
+---
+
 ## 2026-03-06
 
 - Updated core documentation to reflect current state of the platform (Next.js 16, blue/slate design system, dual-purpose portfolio + fantasy football).
@@ -72,6 +302,14 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Corrected `DEVELOPMENT.md`: updated to Next.js 16; replaced "Warm Modern" orange color examples with current CSS custom property system; updated file structure to reflect actual app routes; added fantasy football development section with data layer documentation.
 - Updated `CHANGELOG.md` with accurate version history.
 - Updated `TESTING.md` date to March 2026.
+
+---
+
+## 2026-03-02
+
+- Added investments as a featured public work item and restored the investments case study path.
+- Added the fantasy football analytics placeholder to the portfolio.
+- Configured the Netlify Next.js plugin, standalone output, and webpack production builds to reduce function-bundle size and match local dev behavior.
 
 ---
 

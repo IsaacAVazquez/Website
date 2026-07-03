@@ -196,6 +196,22 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
       .attr("stroke-width", 1.5)
       .attr("stroke-dasharray", "6 3");
 
+    // With a sparse visit-day history, show the actual saved points so the
+    // interpolated line doesn't read as a continuous daily record.
+    if (data.length <= 20) {
+      root
+        .selectAll("circle.perf-point")
+        .data(data)
+        .join("circle")
+        .attr("class", "perf-point")
+        .attr("cx", (d) => xScale(d.date))
+        .attr("cy", (d) => yScale(d.value))
+        .attr("r", 2.5)
+        .attr("fill", homeSignal)
+        .style("stroke", "var(--home-paper)")
+        .attr("stroke-width", 1);
+    }
+
     // Tooltip hover overlay
     const tooltip = tooltipRef.current;
     if (!tooltip) return;

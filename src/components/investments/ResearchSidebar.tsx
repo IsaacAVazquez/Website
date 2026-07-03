@@ -202,8 +202,12 @@ export function ResearchSidebar({ symbol, onSymbolChange, isInPortfolio = false 
                   ? `Showing the latest saved close from ${formatHistoryAsOf(historicalPriceAsOf)}.`
                   : "Live pricing is temporarily unavailable."}
             </p>
-            {quoteError && livePrice === undefined ? (
-              <p className="mt-1 text-2xs font-medium text-[var(--home-warning)]">{quoteError}</p>
+            {quoteError ? (
+              <p className="mt-1 text-2xs font-medium text-[var(--home-warning)]">
+                {livePrice === undefined
+                  ? quoteError
+                  : "Refresh failed. Showing the last saved quote."}
+              </p>
             ) : null}
             {historyFreshness.isStale ? (
               <p className="mt-1 text-2xs font-medium text-[var(--home-warning)]">

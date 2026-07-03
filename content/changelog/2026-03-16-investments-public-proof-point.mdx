@@ -1,0 +1,17 @@
+---
+title: Investments becomes a public fintech proof point
+publishedAt: "2026-03-16"
+category: Feature
+summary: Repositioned investments as a public fintech proof point, moved research from live section fetches to curated static snapshots, and reduced the published dataset from roughly 240 MB to roughly 2.2 MB.
+tags:
+  - investments
+  - performance
+---
+
+This is when [investments](/investments) stopped being just a private-feeling tool and became a public product surface.
+
+The page moved into the main navigation with recruiter-facing metadata, `SoftwareApplication` structured data, homepage and contact copy, and sitemap exposure. The homepage featured work also shifted so Investment Analytics Platform was treated as one of the site's primary proof points rather than a side project.
+
+The bigger implementation change was the research data model. Instead of fanning out through server-side section APIs at runtime, the app started reading one curated snapshot per symbol from `/data/investments/*`. Price history was capped to one year, news was trimmed, transcript artifacts were removed, and the published research dataset dropped from roughly `240 MB` to roughly `2.2 MB`.
+
+That tradeoff made the surface smaller, faster, and much easier to deploy. It also forced a clearer product rule: curated symbols get the full research view, and everything else gets an honest curated-universe message.

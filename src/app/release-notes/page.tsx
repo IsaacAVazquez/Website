@@ -5,7 +5,7 @@ import { StructuredData } from "@/components/StructuredData";
 
 // Hand-curated release notes for this site. Newest first.
 // Each entry is a short headline plus two or three sentences of detail.
-// Add new releases at the top of the array — grouping by month is derived.
+// Add new releases at the top of the array. Grouping by month is derived.
 interface ReleaseNote {
   date: string; // ISO yyyy-mm-dd
   category: string;
@@ -14,6 +14,62 @@ interface ReleaseNote {
 }
 
 const releaseNotes: ReleaseNote[] = [
+  {
+    date: "2026-07-02",
+    category: "Update",
+    headline: "Editorial polish, investments utilities, and reliability fixes",
+    detail:
+      "A broad styling pass tightened the editorial system across routes, added shared holding-color utilities for investment visuals, refreshed the design docs, and expanded portfolio-search coverage. Fantasy snapshot loading now times out into the API fallback, older draft-tracker saves hydrate safely, and investments quotes keep the last good value visible when refresh fails.",
+  },
+  {
+    date: "2026-06-30",
+    category: "Writing",
+    headline: "Writing voice rules get stricter",
+    detail:
+      "The writing voice guide was updated so site copy, documentation, UI text, and articles all follow the same plainspoken rules. The agent memory docs were synced at the same time.",
+  },
+  {
+    date: "2026-06-25",
+    category: "Launch",
+    headline: "Arcade, World Cup group coverage, and Formula 1 polish",
+    detail:
+      "A synthwave reflex game launched at /arcade, World Cup group-stage coverage joined the writing archive, and Formula 1 Pulse got a stronger racing-flavored visual identity. The 404 page also picked up a retro treatment.",
+  },
+  {
+    date: "2026-06-24",
+    category: "Feature",
+    headline: "Header search, portfolio tiles, and tool polish",
+    detail:
+      "The header now has live search results, the portfolio grid has per-project pixel-art tiles, and search ranking works more predictably in production. AI Dev Tools, News Pulse, fantasy football, and investments all picked up focused polish.",
+  },
+  {
+    date: "2026-06-23",
+    category: "Update",
+    headline: "Release notes, writing topics, and platform hardening",
+    detail:
+      "The /release-notes page launched as a month-grouped companion to the changelog, and writing topic pages made the archive easier to browse. GA4 tracking, sitemap priority metadata, staged CSP, accessibility fixes, and client-bundle trimming landed in the same sweep.",
+  },
+  {
+    date: "2026-06-19",
+    category: "Feature",
+    headline: "Fantasy football overhaul and portfolio search",
+    detail:
+      "The fantasy board gained a player drawer, watchlist, notes, comparison, tier breaks, draft timers, history, custom team names, exports, and clearer value/reach signals. The portfolio index added project search and moved the marquee band into a better browsing position.",
+  },
+  {
+    date: "2026-06-18",
+    category: "Writing",
+    headline: "Project build breakdowns and dashboard hardening",
+    detail:
+      "Two dozen build-breakdown articles joined the writing archive, giving the project catalog a clearer implementation layer. Contact copy, Formula 1 Pulse, fantasy snapshot freshness, SpaceX freshness checks, and header alignment moved forward too.",
+  },
+  {
+    date: "2026-06-15",
+    category: "Fix",
+    headline: "Correctness, crash fixes, and SEO cleanup",
+    detail:
+      "A broad fix sweep touched dashboard builders, local-storage tools, RSS, search, SEO metadata, the MBA email path, recipe parsing, and wine-cellar parsing. It was the reliability pass after a fast run of launches.",
+  },
   {
     date: "2026-06-10",
     category: "Writing",
@@ -85,6 +141,20 @@ const releaseNotes: ReleaseNote[] = [
       "The about and portfolio surfaces were refreshed, and shared stats panels landed on the homepage and writing archive. The sports data modules picked up some quiet hardening at the same time.",
   },
   {
+    date: "2026-05-26",
+    category: "Feature",
+    headline: "Writing archive V3 and steadier errors",
+    detail:
+      "The writing archive gained a stronger browsing and filtering experience. Shared error handling and logging were cleaned up so component failures report more consistently.",
+  },
+  {
+    date: "2026-05-11",
+    category: "Update",
+    headline: "MBA job tracking and snapshot checks",
+    detail:
+      "The MBA job workflow picked up a tracking pass, and the league snapshot quality gate became less brittle. That kept generated data checks focused on the actual snapshot body.",
+  },
+  {
     date: "2026-05-04",
     category: "Launch",
     headline: "Travel planner",
@@ -106,6 +176,27 @@ const releaseNotes: ReleaseNote[] = [
       "The V3 editorial design system rolled out across the homepage hero, the writing archive layout, and a rebuilt three-column investments dashboard. It set the visual standard the rest of the site now follows.",
   },
   {
+    date: "2026-04-25",
+    category: "Fix",
+    headline: "Full-site design audit cleanup",
+    detail:
+      "A design and UX audit turned into fixes across the shell, writing, dashboards, fantasy, fintech, and the MBA tracker. Empty states, tabs, announcements, dropdowns, URL state, pagination, and dashboard polish all moved forward.",
+  },
+  {
+    date: "2026-04-22",
+    category: "Update",
+    headline: "Fantasy and investments hardening",
+    detail:
+      "The fantasy football tool surface got a broad rework, and the investments refresh pipeline gained clearer data-freshness messaging. Dark-mode elevation and touch-target issues were tightened too.",
+  },
+  {
+    date: "2026-04-21",
+    category: "Launch",
+    headline: "Now and changelog surfaces",
+    detail:
+      "/now and /changelog became first-class routes, giving the site a clearer current-focus page and a running shipped log. Four April deep dives also joined the writing archive.",
+  },
+  {
     date: "2026-04-20",
     category: "Feature",
     headline: "MBA internship tracker styling refresh",
@@ -120,11 +211,32 @@ const releaseNotes: ReleaseNote[] = [
       "A new dashboard at /mba-internship-notifications aggregates internship roles from across the web. It sends notifications when a matching posting lands.",
   },
   {
+    date: "2026-04-08",
+    category: "Launch",
+    headline: "Political polling aggregator",
+    detail:
+      "A polling aggregator dashboard launched with its own component set and route styling. The surrounding contact, writing-card, and journey components got structural cleanup in the same stretch.",
+  },
+  {
     date: "2026-04-05",
     category: "Update",
     headline: "SEO archive and homepage content refresh",
     detail:
       "The SEO archive structure was rebuilt, and the homepage narrative was updated to match the current focus. The two changes shipped together so the story and the structure stayed in sync.",
+  },
+  {
+    date: "2026-04-02",
+    category: "Launch",
+    headline: "News Pulse, SpaceX, and Interchange IQ",
+    detail:
+      "News Pulse, SpaceX Mission Control, and Interchange IQ all became standalone tools. Investments refresh automation, price-freshness labels, search and RSS coverage, quote fallbacks, and bundle cleanup landed around the same time.",
+  },
+  {
+    date: "2026-03-30",
+    category: "Update",
+    headline: "News media case study and fantasy freshness",
+    detail:
+      "A news media AI strategy case study joined the portfolio track, and fantasy snapshot freshness handling got a follow-up fix after the corrected data model shipped. The canonical AGENTS guide landed too.",
   },
   {
     date: "2026-03-28",
@@ -134,6 +246,41 @@ const releaseNotes: ReleaseNote[] = [
       "Image caching for mission imagery was stabilized so launch photos load reliably. A hydration mismatch on the SpaceX dashboard was sorted out at the same time.",
   },
   {
+    date: "2026-03-21",
+    category: "Fix",
+    headline: "Fantasy snapshot integrity fix",
+    detail:
+      "A real fantasy bug was fixed where overall rankings could drift away from the matching position boards. Overall and flex boards now derive from the same current position data, with regression coverage around the path.",
+  },
+  {
+    date: "2026-03-19",
+    category: "Update",
+    headline: "Investments goes static, fantasy gets a canonical board",
+    detail:
+      "Investments research moved from heavy live section fetches to curated static snapshots, shrinking the published dataset from roughly 240 MB to roughly 2.2 MB. Fantasy football was rebuilt around one canonical rankings board and a simplified draft tracker powered by checked-in snapshots.",
+  },
+  {
+    date: "2026-03-18",
+    category: "Feature",
+    headline: "Investments deep links and live quote split",
+    detail:
+      "The investments workspace became URL-backed, with deep links for view, symbol, and section. Live quote data split away from historical snapshots, and symbol search got richer metadata and better keyboard behavior.",
+  },
+  {
+    date: "2026-03-17",
+    category: "Feature",
+    headline: "March Madness traffic pass and shell cleanup",
+    detail:
+      "March Madness became a search-oriented landing page with metadata, structured data, deep links, and a companion writing piece. The shell also simplified its navigation, footer CTAs, and full-width app route handling.",
+  },
+  {
+    date: "2026-03-16",
+    category: "Feature",
+    headline: "Investments becomes a public fintech proof point",
+    detail:
+      "Investments moved into the main navigation, gained recruiter-facing metadata, and switched research from live section fetches to curated static snapshots. The change made the surface smaller, faster, and easier to explain.",
+  },
+  {
     date: "2026-03-15",
     category: "Writing",
     headline: "Agentic AI writing series",
@@ -141,11 +288,39 @@ const releaseNotes: ReleaseNote[] = [
       "A set of articles on agentic AI shipped across marketing, customer support, product management, and architecture. They were later rewritten for a sharper, more opinionated voice.",
   },
   {
+    date: "2026-03-06",
+    category: "Docs",
+    headline: "Core documentation reset",
+    detail:
+      "The source-of-truth docs were corrected for the actual Next.js 16 site, including routes, components, APIs, development notes, testing, and the fantasy and investments surfaces.",
+  },
+  {
     date: "2026-03-02",
     category: "Feature",
     headline: "Investments research sidebar and metric tooltips",
     detail:
       "The investments surface gained MetricTooltip and ResearchSidebar components, plus a round of layout tweaks. Symbol-reset behavior also became clearer and more predictable.",
+  },
+  {
+    date: "2026-02-18",
+    category: "Docs",
+    headline: "Onboarding and documentation cleanup",
+    detail:
+      "Onboarding, API, performance, and troubleshooting docs were added, and the documentation index was synced to the current guide set. Markdown links were cleaned up so the docs could be used as a real entry point.",
+  },
+  {
+    date: "2026-02-10",
+    category: "Launch",
+    headline: "Portfolio, resume, writing, and the first investments page",
+    detail:
+      "The rebuilt platform got its first real content wave with new portfolio, resume, and writing surfaces. The first investments page shipped with Yahoo Finance research panels, and fantasy football tooling came back with RB tiers and a draft tracker.",
+  },
+  {
+    date: "2026-01-30",
+    category: "Foundation",
+    headline: "Next.js 16 rebuild",
+    detail:
+      "The current site started with a ground-up rebuild on Next.js 16, React, TypeScript strict mode, and Tailwind CSS v4. Fantasy analytics, structured data, NextAuth for /admin, next-sitemap, and the first version of the modern design system all landed here.",
   },
 ];
 

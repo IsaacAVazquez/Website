@@ -60,7 +60,23 @@ export function PortfolioHeroCard({
   onRefresh,
   lastUpdated,
 }: Props) {
-  const [range, setRange] = useState<RangeLabel>("1M");
+  // null = automatic: the narrowest range with at least two saved points.
+  // History only records a point on days the page is visited, so a fixed 1M
+  // default rendered an empty chart on arrival for sparse histories.
+  const [pickedRange, setPickedRange] = useState<RangeLabel | null>(null);
+  const autoRange = useMemo<RangeLabel>(() => {
+    for (const r of RANGES) {
+      if (r.days === Infinity) break;
+      const cutoff = new Date();
+      cutoff.setDate(cutoff.getDate() - r.days);
+      const cutoffStr = cutoff.toISOString().slice(0, 10);
+      if (snapshots.filter((s) => s.date >= cutoffStr).length >= 2) {
+        return r.label;
+      }
+    }
+    return "ALL";
+  }, [snapshots]);
+  const range = pickedRange ?? autoRange;
   const containerRef = useRef<HTMLDivElement | null>(null);
   const svgRef = useRef<SVGSVGElement | null>(null);
   const [width, setWidth] = useState(0);
@@ -107,13 +123,13 @@ export function PortfolioHeroCard({
         .attr("y", innerH / 2)
         .attr("text-anchor", "middle")
         .attr("dominant-baseline", "middle")
-        .attr("fill", "var(--home-ink-muted)")
+        .style("fill", "var(--home-ink-muted)")
         .style("font-size", "12px")
         .style("font-style", "italic")
         .text(
           snapshots.length === 0
-            ? "Performance chart appears once you save snapshots"
-            : "Not enough data for this range yet",
+            ? "A point is saved each day you visit; the line draws once there are two"
+            : "Not enough saved points in this range yet",
         );
       return;
     }
@@ -146,8 +162,8 @@ export function PortfolioHeroCard({
       .attr("x2", 0)
       .attr("y1", 0)
       .attr("y2", 1);
-    fillGrad.append("stop").attr("offset", "0%").attr("stop-color", "var(--home-signal)").attr("stop-opacity", 0.28);
-    fillGrad.append("stop").attr("offset", "100%").attr("stop-color", "var(--home-signal)").attr("stop-opacity", 0);
+    fillGrad.append("stop").attr("offset", "0%").style("stop-color", "var(--home-signal)").attr("stop-opacity", 0.28);
+    fillGrad.append("stop").attr("offset", "100%").style("stop-color", "var(--home-signal)").attr("stop-opacity", 0);
 
     const strokeGrad = defs
       .append("linearGradient")
@@ -156,8 +172,8 @@ export function PortfolioHeroCard({
       .attr("x2", 1)
       .attr("y1", 0)
       .attr("y2", 0);
-    strokeGrad.append("stop").attr("offset", "0%").attr("stop-color", "var(--home-signal)");
-    strokeGrad.append("stop").attr("offset", "100%").attr("stop-color", "var(--home-ink)");
+    strokeGrad.append("stop").attr("offset", "0%").style("stop-color", "var(--home-signal)");
+    strokeGrad.append("stop").attr("offset", "100%").style("stop-color", "var(--home-ink)");
 
     [0.25, 0.5, 0.75].forEach((p) => {
       root
@@ -166,7 +182,7 @@ export function PortfolioHeroCard({
         .attr("x2", innerW)
         .attr("y1", innerH * p)
         .attr("y2", innerH * p)
-        .attr("stroke", "color-mix(in srgb, var(--home-ink) 8%, transparent)")
+        .style("stroke", "color-mix(in srgb, var(--home-ink) 8%, transparent)")
         .attr("stroke-dasharray", "3 4");
     });
 
@@ -191,17 +207,31 @@ export function PortfolioHeroCard({
       .attr("stroke-linecap", "round")
       .attr("stroke-linejoin", "round");
 
+    if (data.length <= 20) {
+      root
+        .selectAll("circle.inv-hero-point")
+        .data(data)
+        .join("circle")
+        .attr("class", "inv-hero-point")
+        .attr("cx", (d) => xScale(d.date))
+        .attr("cy", (d) => yScale(d.value))
+        .attr("r", 2.5)
+        .style("fill", "var(--home-signal)")
+        .style("stroke", "var(--home-paper)")
+        .attr("stroke-width", 1);
+    }
+
     const last = data[data.length - 1];
     const lastX = xScale(last.date);
     const lastY = yScale(last.value);
-    root.append("circle").attr("cx", lastX).attr("cy", lastY).attr("r", 4).attr("fill", "var(--home-ink)");
+    root.append("circle").attr("cx", lastX).attr("cy", lastY).attr("r", 4).style("fill", "var(--home-ink)");
     const pulse = root
       .append("circle")
       .attr("cx", lastX)
       .attr("cy", lastY)
       .attr("r", 6)
       .attr("fill", "none")
-      .attr("stroke", "var(--home-signal)")
+      .style("stroke", "var(--home-signal)")
       .attr("stroke-opacity", 0.5);
     // Skip the looping SMIL pulse for users who prefer reduced motion; the
     // static ring above still marks the latest point. (CSS `animation:none`
@@ -231,7 +261,7 @@ export function PortfolioHeroCard({
         .attr("x", 0)
         .attr("y", yScale(v))
         .attr("dominant-baseline", "middle")
-        .attr("fill", "color-mix(in srgb, var(--home-ink) 38%, var(--home-paper))")
+        .style("fill", "color-mix(in srgb, var(--home-ink) 38%, var(--home-paper))")
         .style("font", "10.5px var(--font-mono)")
         .text(`$${format(".2~s")(v).replace("G", "B")}`);
     });
@@ -247,7 +277,7 @@ export function PortfolioHeroCard({
         .attr("x", xScale(d))
         .attr("y", 0)
         .attr("text-anchor", "middle")
-        .attr("fill", "color-mix(in srgb, var(--home-ink) 38%, var(--home-paper))")
+        .style("fill", "color-mix(in srgb, var(--home-ink) 38%, var(--home-paper))")
         .style("font", "10.5px var(--font-mono)")
         .text(timeFormat("%b %d")(d));
     });
@@ -310,7 +340,7 @@ export function PortfolioHeroCard({
                 role="tab"
                 aria-selected={range === r.label}
                 className={range === r.label ? "is-on" : ""}
-                onClick={() => setRange(r.label)}
+                onClick={() => setPickedRange(r.label)}
               >
                 {r.label}
               </button>

@@ -1,0 +1,13 @@
+---
+title: MBA tracking and snapshot gates
+publishedAt: "2026-05-11"
+category: Update
+summary: Enhanced MBA job application tracking and made the league snapshot quality gate less brittle.
+tags:
+  - mba-tracker
+  - snapshots
+---
+
+The MBA workflow got another practical tracking pass. The tracker had already moved from a small role list into something closer to an operating tool, and this release kept pushing it in that direction.
+
+The same date also fixed a snapshot quality-gate edge case in the sports refresh path. The gate now anchors on the snapshot body rather than getting confused by imports, which keeps automated refresh checks pointed at the data that actually matters.

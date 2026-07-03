@@ -1,9 +1,84 @@
-import { renderHook, waitFor } from "@testing-library/react";
+import { act, renderHook, waitFor } from "@testing-library/react";
 import { fantasySnapshotRevision } from "@/data/fantasySnapshotRevision.generated";
 import { FANTASY_SNAPSHOT_SCHEMA_VERSION } from "@/lib/fantasy";
 import { resetFantasySnapshotCacheForTests, useFantasySnapshot } from "../useFantasySnapshot";
 
 const originalFetch = global.fetch;
+
+function buildSnapshotPayload() {
+  return {
+      schemaVersion: FANTASY_SNAPSHOT_SCHEMA_VERSION,
+      season: 2025,
+      week: 0,
+      generatedAt: "2026-03-18T00:00:00.000Z",
+      upstreamUpdatedAt: "2026-04-15T15:29:20.000Z",
+      scoringFormat: "STANDARD",
+      source: "snapshot",
+      sliceMetadata: {
+        overall: {
+          available: true,
+          sourceKind: "overall_consensus",
+          rangeKind: "overall",
+          playerCount: 1,
+          updatedAt: "2026-04-15T15:29:20.000Z",
+        },
+        qb: {
+          available: true,
+          sourceKind: "shared_position_consensus",
+          rangeKind: "position",
+          playerCount: 1,
+          updatedAt: "2026-04-15T15:29:20.000Z",
+        },
+        rb: { available: true, sourceKind: "position_consensus", rangeKind: "position", playerCount: 0 },
+        wr: { available: true, sourceKind: "position_consensus", rangeKind: "position", playerCount: 0 },
+        te: { available: true, sourceKind: "position_consensus", rangeKind: "position", playerCount: 0 },
+        flex: { available: true, sourceKind: "derived_flex", rangeKind: "overall", playerCount: 0 },
+        k: { available: true, sourceKind: "shared_position_consensus", rangeKind: "position", playerCount: 0 },
+        dst: { available: true, sourceKind: "shared_position_consensus", rangeKind: "position", playerCount: 0 },
+  },
+      positions: {
+        QB: [
+          {
+            id: "player-1",
+            name: "Josh Allen",
+            team: "BUF",
+            position: "QB",
+            averageRank: 1,
+            rankEcr: 1,
+            rankAverage: 1.2,
+            standardDeviation: 1.2,
+            minRank: 1,
+            maxRank: 3,
+            positionRank: 1,
+            lastUpdated: "2026-04-15T15:29:20.000Z",
+          },
+        ],
+        RB: [],
+        WR: [],
+        TE: [],
+        K: [],
+        DST: [],
+        FLEX: [],
+  },
+      overall: [
+        {
+          id: "player-1",
+          name: "Josh Allen",
+          team: "BUF",
+          position: "QB",
+          averageRank: 1,
+          rankEcr: 1,
+          rankAverage: 1.2,
+          standardDeviation: 1.2,
+          minRank: 1,
+          maxRank: 3,
+          positionRank: 1,
+          lastUpdated: "2026-04-15T15:29:20.000Z",
+        },
+      ],
+    };
+}
+
 
 describe("useFantasySnapshot", () => {
   beforeEach(() => {
@@ -22,77 +97,7 @@ describe("useFantasySnapshot", () => {
   it("loads position data from the published snapshot file", async () => {
     (global.fetch as jest.Mock).mockResolvedValue({
       ok: true,
-      json: async () => ({
-        schemaVersion: FANTASY_SNAPSHOT_SCHEMA_VERSION,
-        season: 2025,
-        week: 0,
-        generatedAt: "2026-03-18T00:00:00.000Z",
-        upstreamUpdatedAt: "2026-04-15T15:29:20.000Z",
-        scoringFormat: "STANDARD",
-        source: "snapshot",
-        sliceMetadata: {
-          overall: {
-            available: true,
-            sourceKind: "overall_consensus",
-            rangeKind: "overall",
-            playerCount: 1,
-            updatedAt: "2026-04-15T15:29:20.000Z",
-          },
-          qb: {
-            available: true,
-            sourceKind: "shared_position_consensus",
-            rangeKind: "position",
-            playerCount: 1,
-            updatedAt: "2026-04-15T15:29:20.000Z",
-          },
-          rb: { available: true, sourceKind: "position_consensus", rangeKind: "position", playerCount: 0 },
-          wr: { available: true, sourceKind: "position_consensus", rangeKind: "position", playerCount: 0 },
-          te: { available: true, sourceKind: "position_consensus", rangeKind: "position", playerCount: 0 },
-          flex: { available: true, sourceKind: "derived_flex", rangeKind: "overall", playerCount: 0 },
-          k: { available: true, sourceKind: "shared_position_consensus", rangeKind: "position", playerCount: 0 },
-          dst: { available: true, sourceKind: "shared_position_consensus", rangeKind: "position", playerCount: 0 },
-        },
-        positions: {
-          QB: [
-            {
-              id: "player-1",
-              name: "Josh Allen",
-              team: "BUF",
-              position: "QB",
-              averageRank: 1,
-              rankEcr: 1,
-              rankAverage: 1.2,
-              standardDeviation: 1.2,
-              minRank: 1,
-              maxRank: 3,
-              positionRank: 1,
-              lastUpdated: "2026-04-15T15:29:20.000Z",
-            },
-          ],
-          RB: [],
-          WR: [],
-          TE: [],
-          K: [],
-          DST: [],
-          FLEX: [],
-        },
-        overall: [
-          {
-            id: "player-1",
-            name: "Josh Allen",
-            team: "BUF",
-            position: "QB",
-            averageRank: 1,
-            rankEcr: 1,
-            rankAverage: 1.2,
-            standardDeviation: 1.2,
-            minRank: 1,
-            maxRank: 3,
-            positionRank: 1,
-            lastUpdated: "2026-04-15T15:29:20.000Z",
-          },
-        ],
-      }),
+      json: async () => buildSnapshotPayload(),
     });
 
     const { result } = renderHook(() =>
@@ -108,6 +113,7 @@ describe("useFantasySnapshot", () => {
       `/data/fantasy/standard.json?v=${fantasySnapshotRevision}`,
       {
         cache: "force-cache",
+        signal: expect.any(AbortSignal),
       }
     );
     expect(result.current.players).toHaveLength(1);
@@ -372,5 +378,42 @@ describe("useFantasySnapshot", () => {
     expect(result.current.error).toMatch(/unavailable/i);
     expect(result.current.players).toHaveLength(0);
     expect(result.current.sliceMetadata).toBeNull();
+  });
+
+  it("aborts a stalled static fetch and falls back to the API route", async () => {
+    jest.useFakeTimers();
+    try {
+      (global.fetch as jest.Mock).mockImplementation((url: unknown, init?: RequestInit) => {
+        if (String(url).startsWith("/data/fantasy/")) {
+          // Stall forever, but reject on abort the way real fetch does.
+          return new Promise((_, reject) => {
+            init?.signal?.addEventListener("abort", () =>
+              reject(new DOMException("The operation was aborted.", "AbortError"))
+            );
+          });
+        }
+        return Promise.resolve({
+          ok: true,
+          json: async () => ({ success: true, data: buildSnapshotPayload() }),
+        });
+      });
+
+      const { result } = renderHook(() =>
+        useFantasySnapshot({ position: "qb", scoring: "ppr" })
+      );
+
+      await act(async () => {
+        jest.advanceTimersByTime(9000);
+      });
+      await act(async () => {});
+      await act(async () => {});
+
+      const lastCall = (global.fetch as jest.Mock).mock.calls.at(-1);
+      expect(String(lastCall?.[0])).toContain("/api/fantasy-data");
+      expect(result.current.players).toHaveLength(1);
+      expect(result.current.error).toBeNull();
+    } finally {
+      jest.useRealTimers();
+    }
   });
 });

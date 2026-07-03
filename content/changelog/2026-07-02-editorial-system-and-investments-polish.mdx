@@ -1,0 +1,23 @@
+---
+title: Editorial polish, investments utilities, and reliability fixes
+publishedAt: "2026-07-02"
+category: Update
+summary: A broad styling pass tightened the editorial system, added holding-color utilities for investment visuals, expanded portfolio-search coverage, and hardened fantasy snapshot loading, draft-state hydration, and live quote refresh messaging.
+tags:
+  - design
+  - investments
+  - portfolio
+  - fantasy-football
+---
+
+The latest pass was about making the system more consistent and sturdier instead of adding another large surface:
+
+- Design system cleanup moved more routes onto the current editorial tokens, tightened loading and error states, and updated the design checklist, styling guide, and redesign brief so future work has the same constraints.
+- Investments visuals gained a shared holding color palette and utility, so allocation charts and holding visuals can use consistent color assignment instead of each component solving that separately.
+- Portfolio coverage added focused tests around `PortfolioV3` search, which matters now that the portfolio index has become a real browsing surface rather than a static project list.
+- Fantasy snapshot loading now puts timeouts around the static-file and API fetches, so a stalled static snapshot can fall through to `/api/fantasy-data` instead of leaving the board on a loading skeleton.
+- The fantasy draft tracker now hydrates older v2 localStorage blobs over safe defaults, so saves written before undo history, teams, or draft IDs existed still open cleanly.
+- Investments quote refreshes now keep the last good quote visible while surfacing the failed refresh through freshness messaging.
+- Route polish touched the homepage, about, accessibility, admin, contact, writing, dashboards, fantasy, investments, and personal tools so the interface reads more like one site.
+
+This is the maintenance layer that keeps a multi-surface site from turning into a folder of unrelated experiments.

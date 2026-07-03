@@ -101,7 +101,7 @@ describe("useLiveQuote", () => {
     expect(result.current.error).toBeNull();
   });
 
-  it("keeps the last good quote visible during a same-symbol refetch failure", async () => {
+  it("keeps the last good quote visible and surfaces the failure during a same-symbol refetch failure", async () => {
     (global.fetch as jest.Mock)
       .mockResolvedValueOnce(buildQuoteResponse("AAPL", 203.1, "Apple Inc."))
       .mockResolvedValueOnce({
@@ -123,6 +123,7 @@ describe("useLiveQuote", () => {
 
     await waitFor(() => expect(result.current.isLoading).toBe(false));
     expect(result.current.quote?.price).toBe(203.1);
-    expect(result.current.error).toBeNull();
+    // The stale quote stays on screen, but the failed refresh is not silent.
+    expect(result.current.error).toMatch(/temporarily unavailable/i);
   });
 });

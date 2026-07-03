@@ -1,0 +1,15 @@
+---
+title: Investments gets URL-backed research state
+publishedAt: "2026-03-18"
+category: Feature
+summary: Made investments research state shareable with view, symbol, and section query params, split live quotes from historical snapshots, and improved curated symbol search.
+tags:
+  - investments
+  - reliability
+---
+
+The investments workspace became more usable once the state moved into the URL. Supported `view`, `symbol`, and `section` query params now preserve research context across tab switches, portfolio jumps, reloads, and shared links.
+
+The data model also became clearer. Live quote data split from curated historical snapshot data, so the header and chart can show current price and day change without pretending the historical series is live. The UI now labels the latest historical trading day and stale-history lag directly.
+
+Search improved at the same time. The curated index gained richer company metadata, provider company names are preserved during snapshot transforms, and symbols like `V` can be found by typing `Visa`. Snapshot normalization also got stricter around sorting, deduping, trimming, and validating price history before anything ships.
