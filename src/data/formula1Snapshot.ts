@@ -13,8 +13,8 @@ export const formula1Snapshot: Formula1Snapshot = {
     "constructorStandings": "https://api.openf1.org/v1/championship_teams?session_key=11315"
   },
   "season": 2026,
-  "generatedAt": "2026-07-03T10:47:53.479Z",
-  "defaultMeetingKey": "1289",
+  "generatedAt": "2026-07-04T10:22:08.444Z",
+  "defaultMeetingKey": "1290",
   "standingsMeetingKey": "1288",
   "meetings": [
     {
@@ -3848,7 +3848,7 @@ export const formula1Snapshot: Formula1Snapshot = {
       "gmtOffset": "01:00:00",
       "startAt": "2026-07-03T11:30:00+00:00",
       "endAt": "2026-07-05T16:00:00+00:00",
-      "status": "upcoming",
+      "status": "live",
       "hasSprint": true,
       "raceSessionKey": "11326",
       "raceStartsAt": "2026-07-05T14:00:00+00:00",
@@ -5089,63 +5089,63 @@ export const formula1Snapshot: Formula1Snapshot = {
     "season": 2026,
     "totalRaces": 24,
     "completedRaces": 10,
-    "upcomingRaces": 14,
+    "upcomingRaces": 13,
     "sprintWeekends": 6
   },
   "nextMeeting": {
-    "key": "1289",
-    "name": "British Grand Prix",
-    "officialName": "FORMULA 1 PIRELLI BRITISH GRAND PRIX 2026",
-    "location": "Silverstone",
-    "countryName": "United Kingdom",
-    "countryCode": "GBR",
-    "countryFlag": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/united-kingdom-flag.png",
-    "circuitKey": "2",
-    "circuitShortName": "Silverstone",
-    "circuitType": "Permanent",
-    "circuitImage": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Great Britain%20carbon.png",
-    "gmtOffset": "01:00:00",
-    "startAt": "2026-07-03T11:30:00+00:00",
-    "endAt": "2026-07-05T16:00:00+00:00",
+    "key": "1290",
+    "name": "Belgian Grand Prix",
+    "officialName": "FORMULA 1 MOËT & CHANDON BELGIAN GRAND PRIX 2026",
+    "location": "Spa-Francorchamps",
+    "countryName": "Belgium",
+    "countryCode": "BEL",
+    "countryFlag": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/belgium-flag.png",
+    "circuitKey": "7",
+    "circuitShortName": "Spa-Francorchamps",
+    "circuitType": "Temporary - Road",
+    "circuitImage": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Belgium%20carbon.png",
+    "gmtOffset": "02:00:00",
+    "startAt": "2026-07-17T11:30:00+00:00",
+    "endAt": "2026-07-19T15:00:00+00:00",
     "status": "upcoming",
-    "hasSprint": true,
-    "raceSessionKey": "11326",
-    "raceStartsAt": "2026-07-05T14:00:00+00:00",
+    "hasSprint": false,
+    "raceSessionKey": "11334",
+    "raceStartsAt": "2026-07-19T13:00:00+00:00",
     "sessions": [
       {
-        "key": "11316",
+        "key": "11327",
         "name": "Practice 1",
         "type": "Practice",
-        "startAt": "2026-07-03T11:30:00+00:00",
-        "endAt": "2026-07-03T12:30:00+00:00"
+        "startAt": "2026-07-17T11:30:00+00:00",
+        "endAt": "2026-07-17T12:30:00+00:00"
       },
       {
-        "key": "11317",
-        "name": "Sprint Qualifying",
-        "type": "Qualifying",
-        "startAt": "2026-07-03T15:30:00+00:00",
-        "endAt": "2026-07-03T16:14:00+00:00"
+        "key": "11328",
+        "name": "Practice 2",
+        "type": "Practice",
+        "startAt": "2026-07-17T15:00:00+00:00",
+        "endAt": "2026-07-17T16:00:00+00:00"
       },
       {
-        "key": "11321",
-        "name": "Sprint",
-        "type": "Race",
-        "startAt": "2026-07-04T11:00:00+00:00",
-        "endAt": "2026-07-04T12:00:00+00:00"
+        "key": "11329",
+        "name": "Practice 3",
+        "type": "Practice",
+        "startAt": "2026-07-18T10:30:00+00:00",
+        "endAt": "2026-07-18T11:30:00+00:00"
       },
       {
-        "key": "11322",
+        "key": "11330",
         "name": "Qualifying",
         "type": "Qualifying",
-        "startAt": "2026-07-04T15:00:00+00:00",
-        "endAt": "2026-07-04T16:00:00+00:00"
+        "startAt": "2026-07-18T14:00:00+00:00",
+        "endAt": "2026-07-18T15:00:00+00:00"
       },
       {
-        "key": "11326",
+        "key": "11334",
         "name": "Race",
         "type": "Race",
-        "startAt": "2026-07-05T14:00:00+00:00",
-        "endAt": "2026-07-05T16:00:00+00:00"
+        "startAt": "2026-07-19T13:00:00+00:00",
+        "endAt": "2026-07-19T15:00:00+00:00"
       }
     ],
     "classification": [],
