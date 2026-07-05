@@ -455,7 +455,7 @@ export default async function CaseStudyPage({
                   &ldquo;{caseStudy.result.testimonial.quote}&rdquo;
                 </blockquote>
                 <figcaption className="mb-0 text-sm" style={strongStyle}>
-                  — <cite className="not-italic">{caseStudy.result.testimonial.author}</cite>,{" "}
+                  <cite className="not-italic">{caseStudy.result.testimonial.author}</cite>,{" "}
                   {caseStudy.result.testimonial.role}
                 </figcaption>
               </figure>

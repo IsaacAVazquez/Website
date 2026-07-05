@@ -6,7 +6,7 @@ import { normalizeFoodMapState } from "./food-map-state";
 export const metadata = constructMetadata({
   title: "Food Map",
   description:
-    "A curated, deep-linkable map of where to eat across Austin, San Francisco, New York, New Orleans, LA, and Tokyo — filterable by city, curator (Anthony Bourdain, Isaac's picks, top-rated on Google), and cuisine.",
+    "A curated, deep-linkable map of where to eat across Austin, San Francisco, New York, New Orleans, LA, and Tokyo, filterable by city, curator (Anthony Bourdain, Isaac's picks, top-rated on Google), and cuisine.",
   canonicalUrl: "/food-map",
   dateModified: "2026-06-08",
   aiMetadata: {

@@ -25,9 +25,9 @@ I kept noticing how directly the fantasy football challenges mapped onto the ent
 
 The same is true for the real-time requirements. Users expect fast recommendations during live games, and that latency and throughput problem is structurally identical to what an enterprise recommendation or risk system faces during high-traffic events. And the business logic complexity (scoring formats, positional scarcity, league-specific settings) maps cleanly onto business rules, resource allocation constraints, and customer segmentation.
 
-That symmetry shaped how I thought about the architecture from the start. I was not just building a sports tool. I was stress-testing a set of patterns in a domain that gave me real feedback quickly.
+That symmetry shaped how I thought about the architecture from the start. I was not just building a sports tool, I was stress-testing a set of patterns in a domain that gave me real feedback quickly.
 
-## Architecture: Why I Leaned Into Event-Driven Design
+## Why I Leaned Into Event-Driven Design
 
 The central architectural bet was to treat data changes as events rather than polling states. When a player gets injured, when a game score updates, when a projection changes, each of those should propagate through the system rather than sit in a database waiting to be queried.
 
@@ -35,7 +35,7 @@ That choice changed how each layer could scale and fail independently. A tier re
 
 I would make this decision again for almost any analytics system with real-time requirements. The upfront cost is real (designing event schemas, handling idempotency, reasoning about ordering guarantees) but the flexibility it buys downstream is significant.
 
-## Data Pipelines: The Work Nobody Talks About
+## The Data Pipeline Work Nobody Talks About
 
 The most undervalued part of any AI analytics system is the pipeline that runs before the models see anything.
 
@@ -51,15 +51,15 @@ I think people underestimate how much of the predictive quality in an analytics 
 
 For player performance prediction, the raw statistics are much less useful than derived features: recent trend lines, position-specific context, opponent defensive tendencies, schedule difficulty over the next few weeks. None of those come from the raw feed. They come from knowing the domain and building the derived signals deliberately.
 
-The same principle applies to enterprise analytics. A raw transaction count is less useful than a per-customer velocity feature. A product page view is less useful than a signal derived from session structure and recency. The models are often the easy part. The hard part is deciding what to give them.
+The same principle applies to enterprise analytics. A raw transaction count is less useful than a per-customer velocity feature. A product page view is less useful than a signal derived from session structure and recency. The models are often the easy part, and the hard part is deciding what to give them.
 
 What I learned is to treat feature engineering as a design surface, something worth spending real time on and building infrastructure around, not as a preprocessing step you rush through to get to the modeling work.
 
-## Model Deployment: The Gap Between Offline Performance And Production Behavior
+## The Gap Between Offline Performance And Production Behavior
 
 One of the more humbling parts of this project was watching models that performed well in offline evaluation behave differently in production.
 
-The main culprit was distribution shift. The training data represented one kind of game state, and live games regularly surface states that look different. Players change teams. Weather patterns outside the historical range occur. Coaching staff turn over mid-season and break the statistical patterns the model had learned.
+The main culprit was distribution shift. The training data represented one kind of game state, and live games regularly surface states that look different. Players change teams, weather patterns fall outside the historical range, and coaching staff turn over mid-season and break the statistical patterns the model had learned.
 
 My response to that was to build monitoring into the deployment from the start rather than treating it as an operational afterthought. I tracked prediction distributions over time, not just point metrics. I set up alerts for when output distributions shifted significantly relative to baseline. And I built in a mechanism to fall back to simpler rule-based outputs when confidence was low, rather than serving a degraded model prediction with false confidence.
 
@@ -67,7 +67,7 @@ That last point, graceful degradation in the inference layer, matters for enterp
 
 ## User Experience For Analytical Products
 
-Analytics products fail differently than feature products. A missing feature creates friction. A misleading data display creates distrust, which is harder to recover from.
+Analytics products fail differently than feature products. A missing feature creates friction, but a misleading data display creates distrust, which is harder to recover from.
 
 That shaped how I thought about the frontend for the fantasy football analytics surface. The goal was to surface confidence alongside predictions, make the source of each recommendation visible, and avoid implying precision the underlying models did not actually have. When a tier boundary is ambiguous, it should look ambiguous rather than crisp.
 
@@ -83,6 +83,6 @@ I also underinvested in the observability layer early in the project. Adding mon
 
 ## The Broader Pattern
 
-Building this system reinforced something I believe about analytics products generally: the engineering complexity is not in the models. It is in the data infrastructure, the feature pipelines, and the production monitoring that keeps the whole thing honest over time.
+Building this system reinforced something I believe about analytics products generally, which is that the engineering complexity is not in the models. It is in the data infrastructure, the feature pipelines, and the production monitoring that keeps the whole thing honest over time.
 
 Fantasy football gave me a fast feedback loop and a domain where the quality of the predictions was immediately apparent to users. That made it an unusually good testbed. The architecture decisions that held up under that pressure (event-driven data flow, rigorous validation at ingestion, careful feature design, graceful degradation in inference, and observability as a first-class concern) are the same ones I would reach for building analytics systems at enterprise scale.

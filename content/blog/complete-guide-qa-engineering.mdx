@@ -1,5 +1,5 @@
 ---
-title: "The Complete Guide to QA Engineering: Building Quality into Software Development"
+title: "QA Engineering: Building Quality into Software Development"
 excerpt: "QA engineering is less about finding bugs and more about building the conditions where bugs don't survive to production. This is what that looks like across testing strategies, automation, and team integration."
 publishedAt: "2025-01-24"
 category: "QA Engineering"
@@ -15,12 +15,12 @@ cta:
   href: "/resume"
   actionLabel: "Open the resume"
 seo:
-  title: "Complete Guide to QA Engineering - Business Strategy & Testing Best Practices"
+  title: "QA Engineering - Business Strategy & Testing"
   description: "QA engineering is less about finding bugs than building the conditions where bugs don't survive to production, across testing strategy, automation, and team integration."
   keywords: ["QA engineering", "software testing", "quality assurance", "test automation", "Austin QA engineer", "Bay Area QA", "business strategy QA", "product management testing", "UC Berkeley MBA QA", "strategic testing practices"]
 ---
 
-# The Complete Guide to QA Engineering: Building Quality into Software Development
+# QA Engineering: Building Quality into Software Development
 
 QA engineering is one of those roles that looks simple from the outside and turns out to be surprisingly deep once you're in it. The job description says "find bugs," but the actual work is about building systems and processes that make bugs visible earlier, reduce the cost of finding them, and give development teams enough confidence to ship at speed. Those are different problems.
 
@@ -62,7 +62,7 @@ Before writing a single test, it's worth being explicit about what you're trying
 
 High-priority testing areas are generally critical business functions (payment processing, authentication), recently changed code, integration points with external systems, and anything security-sensitive. Not because those are always the most interesting to test, but because failures there are the most expensive.
 
-The testing types worth knowing well are: unit testing for individual functions in isolation, integration testing for component interactions and API contracts, system testing for complete workflows, and acceptance testing for business requirements. On the non-functional side, performance testing (load, stress, scalability), security testing, and accessibility testing all tend to get treated as optional until they're not.
+The testing types worth knowing well are unit testing for individual functions in isolation, integration testing for component interactions and API contracts, system testing for complete workflows, and acceptance testing for business requirements. On the non-functional side, performance testing (load, stress, scalability), security testing, and accessibility testing all tend to get treated as optional until they're not.
 
 Test-Driven Development is worth understanding even if you don't practice strict red-green-refactor. The discipline of writing a test before writing code forces you to think about the interface before the implementation, which tends to produce more testable code.
 
@@ -105,7 +105,7 @@ Scenario: Calculate total with tax
 
 ## Automation
 
-A question I get asked a lot is when to automate. My honest answer is: automate anything you need to run repeatedly and reliably. Regression testing, critical path testing, data-driven scenarios, API contract testing. These are good candidates. One-time checks, exploratory testing, usability testing, and anything with a UI that changes frequently are often not worth automating, at least not aggressively.
+A question I get asked a lot is when to automate. My honest answer is that you automate anything you need to run repeatedly and reliably. Regression testing, critical path testing, data-driven scenarios, and API contract testing are all good candidates. One-time checks, exploratory testing, usability testing, and anything with a UI that changes frequently are often not worth automating, at least not aggressively.
 
 The JavaScript/TypeScript ecosystem has solid tooling. Jest for unit and integration tests, React Testing Library for component tests, Playwright for E2E. Here's what each looks like in practice:
 
@@ -405,4 +405,4 @@ AI-assisted testing, shift-left practices, and cloud-native testing approaches a
 
 That's a harder job to do well, and also a more interesting one.
 
-If you want the adjacent reads, [Building Reliable Software Systems: A Complete Guide to Software Quality](/writing/building-reliable-software-systems) is the systems-level version of the same argument, and [The QA Engineer's Guide to Testing AI Systems: Quality Assurance for Machine Learning](/writing/qa-engineer-guide-testing-ai-systems) is where those instincts get stress-tested against non-deterministic products.
+If you want the adjacent reads, [Building Reliable Software Systems: What Actually Holds Up at Scale](/writing/building-reliable-software-systems) is the systems-level version of the same argument, and [The QA Engineer's Guide to Testing AI Systems: Quality Assurance for Machine Learning](/writing/qa-engineer-guide-testing-ai-systems) is where those instincts get stress-tested against non-deterministic products.

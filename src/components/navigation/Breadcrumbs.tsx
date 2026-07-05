@@ -75,7 +75,7 @@ export function Breadcrumbs({
 
     if (fullPath.includes('/blog/') && segment !== 'blog') {
       const blogTitleMap: Record<string, string> = {
-        'complete-guide-qa-engineering': 'Complete Guide to QA Engineering',
+        'complete-guide-qa-engineering': 'QA Engineering',
         'mastering-fantasy-football-analytics': 'Mastering Fantasy Football Analytics',
         'building-reliable-software-systems': 'Building Reliable Software Systems'
       };

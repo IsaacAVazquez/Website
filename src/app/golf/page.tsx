@@ -31,7 +31,7 @@ export const metadata = constructMetadata({
     ],
     contentType: "Software Application",
     context:
-      "Standalone golf dashboard by Isaac Vazquez that packages a checked-in tournament snapshot into a clean, shareable product surface.",
+      "Standalone golf dashboard by Isaac Vazquez that packages a checked-in tournament snapshot into a fast, shareable dashboard.",
     summary:
       "PGA Tour tournament dashboard for leaderboard scanning, player cards, and golfer drilldowns.",
     primaryFocus:

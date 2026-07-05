@@ -8,7 +8,7 @@ import { normalizeFrontierModelsState } from "./frontier-models-state";
 export const metadata = constructMetadata({
   title: "Frontier Model Tracker",
   description:
-    "Curated tracker of frontier large language models with context windows, pricing, modality coverage, and editorial notes, built for product teams sizing the AI tier-collapse landscape.",
+    "Curated tracker of frontier large language models with context windows, pricing, modality coverage, and editorial notes, built for product teams comparing frontier models as the price and capability tiers collapse.",
   canonicalUrl: "/frontier-models",
   dateModified: frontierModelsSnapshot.generatedAt.slice(0, 10),
   aiMetadata: {

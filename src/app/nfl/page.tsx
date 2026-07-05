@@ -14,7 +14,7 @@ export const metadata = constructMetadata({
   aiMetadata: {
     profession: "Product Manager",
     specialty:
-      "Interactive dashboards, sports data products, and productized exploratory tools",
+      "Interactive dashboards, sports data products, and interactive data tools",
     expertise: [
       "Next.js",
       "Sports dashboard design",

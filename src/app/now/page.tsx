@@ -36,7 +36,7 @@ const reading = [
   {
     title: "The Hard Thing About Hard Things",
     author: "Ben Horowitz",
-    note: "Re-read while navigating an MBA group project that ran off the rails.",
+    note: "Re-read while getting through an MBA group project that ran off the rails.",
   },
   {
     title: "High Output Management",

@@ -65,7 +65,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
             Search my portfolio, writing, and tools.
           </h1>
           <p className="home-body max-w-[52rem]">
-            This is a lightweight search layer for core case studies, writing, and tools. It is useful for navigation, not a comprehensive site index.
+            This is a lightweight search layer for core case studies, writing, and tools. It is useful for navigation, not a full site index.
           </p>
           <div className="flex flex-wrap gap-2 pt-2">
             {topicPills.map((topic) => (

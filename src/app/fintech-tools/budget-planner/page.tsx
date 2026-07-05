@@ -5,7 +5,7 @@ import { BudgetPlannerClient } from "./budget-planner-client";
 export const metadata = constructMetadata({
   title: "Budget Planner",
   description:
-    "Monthly budgeting tool for planning income, category budgets, savings targets, and manual expense tracking in a browser-persisted ledger.",
+    "I built a monthly budgeting tool for planning income, category budgets, savings targets, and manual expense tracking, all kept in a browser-persisted ledger.",
   canonicalUrl: "/fintech-tools/budget-planner",
   dateModified: "2026-04-03",
   image: "/fintech-tools/budget-planner/opengraph-image",

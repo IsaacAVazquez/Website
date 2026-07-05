@@ -17,13 +17,13 @@ seo:
 
 What makes AI and cybersecurity an interesting intersection is that they're moving in opposite directions at the same time. AI is making attacks more scalable, more convincing, and harder to detect with traditional signature-based defenses. It's also making detection and response faster, more adaptive, and capable of catching anomalies that no human analyst could spot in the volume of data modern systems produce. The practical implication for software engineers is that both the threat model and the defensive toolkit are changing simultaneously, and staying current with one while ignoring the other is a mistake.
 
-I've worked on systems where security isn't just a technical requirement. Civic tech platforms where a security failure has direct implications for democratic participation. That context sharpens the thinking. When the stakes are concrete, you take threat modeling seriously instead of treating it as a compliance checkbox.
+I've worked on systems where security isn't just a technical requirement, like civic tech platforms where a security failure has direct implications for democratic participation, and that kind of context sharpens the thinking. When the stakes are concrete, you take threat modeling seriously instead of treating it as a compliance checkbox.
 
 ## How AI Has Changed the Attack Surface
 
 The most visible change is in social engineering. AI-generated phishing campaigns can now produce personalized, contextually accurate emails at scale that are genuinely difficult to distinguish from legitimate communications. The old heuristics (look for typos, check for suspicious grammar, verify the sender domain) don't hold up against a well-prompted language model with access to your LinkedIn profile and recent company announcements.
 
-Deepfake attacks are the evolution of this into audio and video. The realistic threat scenarios aren't science fiction anymore. AI-generated audio of a CFO authorizing a wire transfer, real-time voice cloning during a video call to impersonate an executive, biometric authentication bypass using synthesized video. Financial fraud using voice cloning of executives has already happened at several organizations.
+Deepfake attacks are the evolution of this into audio and video. These scenarios are already real, not hypothetical: AI-generated audio of a CFO authorizing a wire transfer, real-time voice cloning during a video call to impersonate an executive, or biometric authentication bypass using synthesized video. Financial fraud using voice cloning of executives has already happened at several organizations.
 
 Detecting these requires a different approach than detecting traditional phishing:
 
@@ -55,7 +55,7 @@ The key there is the composite scoring. Language analysis alone is not sufficien
 
 ## Adversarial Machine Learning
 
-This is the category I find most technically interesting from a QA perspective. Attacks that target AI systems specifically by exploiting properties of machine learning models rather than conventional software vulnerabilities.
+This is the category I find most technically interesting from a QA perspective, attacks that target AI systems specifically by exploiting properties of machine learning models rather than conventional software vulnerabilities.
 
 Model poisoning involves injecting malicious training data to corrupt a model's behavior in specific, attacker-controlled ways. The model learns to behave normally in most cases but fails in predictable ways on inputs the attacker cares about. Detecting this requires statistical analysis of training data provenance and distribution, not just code review:
 
@@ -151,7 +151,7 @@ class IntelligentThreatDetectionSystem:
         return confirmed_threats
 ```
 
-What's worth noting here is the correlation step. Individual signals are noisy. A single anomalous network connection could be anything. The value of layering multiple models is that you can require correlation across signal types before triggering an alert, which dramatically reduces false positives. False positives are the silent killer of security operations. Teams that get too many alerts stop responding to them, which is exactly what sophisticated attackers count on.
+The correlation step is the part I'd focus on. Individual signals are noisy. A single anomalous network connection could be anything. The value of layering multiple models is that you can require correlation across signal types before triggering an alert, which dramatically reduces false positives. Too many false positives are what eventually breaks a security team. Teams that get too many alerts stop responding to them, which is exactly what sophisticated attackers count on.
 
 Predictive threat intelligence takes this further by building models that forecast likely attack campaigns based on global threat data and your organization's specific profile:
 
@@ -236,7 +236,7 @@ class DifferentialPrivacyManager:
 
 GDPR and similar regulations have real teeth for AI applications that process personal data. The requirements aren't just about data storage. They extend to algorithmic decision-making, model transparency, and the right to explanation for automated decisions. Organizations building AI systems that affect individuals in meaningful ways need consent management, data minimization, purpose limitation, and documented processes for handling data subject rights requests.
 
-Algorithmic bias sits at the intersection of ethics and legal risk. A model that systematically produces worse outcomes for protected demographic groups may violate anti-discrimination law regardless of whether the discrimination was intentional. Testing for bias isn't optional for systems used in lending, hiring, healthcare, or other regulated domains. What's worth being honest about is that there's no single definition of "fair" and different fairness metrics can be mathematically incompatible. The right constraints depend on the specific harm you're trying to prevent.
+Algorithmic bias is where ethics and legal risk overlap. A model that systematically produces worse outcomes for protected demographic groups may violate anti-discrimination law regardless of whether the discrimination was intentional. Testing for bias isn't optional for systems used in lending, hiring, healthcare, or other regulated domains. What's worth being honest about is that there's no single definition of "fair" and different fairness metrics can be mathematically incompatible. The right constraints depend on the specific harm you're trying to prevent.
 
 ## What This Means for Software Engineers
 
@@ -246,4 +246,4 @@ Threat modeling at the start of a project, thinking explicitly about what an att
 
 The financial argument for this investment is becoming easier to make. Average data breach costs have climbed significantly, and AI-related security incidents tend to be more expensive than conventional breaches. Every dollar spent on security engineering during development avoids substantially more than a dollar in incident response later. That's not a guarantee, but it's a defensible expectation.
 
-What I find genuinely challenging about this space is the pace. The attack capabilities and the defensive capabilities are both improving faster than any individual engineer can track. The answer to that isn't to read every paper. It's to build security practices that don't depend on predicting exactly what the next attack will look like. Defense in depth, least privilege, input validation, anomaly detection, and rapid incident response capability. Those hold up even when the specifics change.
+What I find genuinely challenging about this space is the pace. The attack capabilities and the defensive capabilities are both improving faster than any individual engineer can track. The answer to that isn't to read every paper. It's to build security practices that don't depend on predicting exactly what the next attack looks like, things like defense in depth, least privilege, input validation, anomaly detection, and a fast incident response capability, because those hold up even when the specifics change.

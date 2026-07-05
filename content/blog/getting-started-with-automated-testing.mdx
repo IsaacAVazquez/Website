@@ -19,7 +19,7 @@ Automated testing is one of those topics where the advice is almost universally 
 
 The pattern I keep coming back to is the testing pyramid. Not because it is a law of nature, but because it reflects something true about tradeoffs. Unit tests are cheap to write and fast to run, so you should have a lot of them. End-to-end tests are expensive and slow, so you should use them sparingly on the workflows that actually matter. Integration tests sit in the middle and cover the boundaries between components, which is where a surprising number of real bugs live.
 
-In practice, I aim for roughly 70% unit tests, 20% integration tests, and 10% end-to-end. The specific numbers matter less than the underlying logic: most of your feedback should come from fast, isolated tests, with E2E coverage reserved for critical paths.
+In practice, I aim for roughly 70% unit tests, 20% integration tests, and 10% end-to-end. The specific numbers matter less than the underlying logic, which is that most of your feedback should come from fast, isolated tests, with E2E coverage reserved for critical paths.
 
 ## Tools
 

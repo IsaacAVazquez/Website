@@ -8,7 +8,7 @@ import { normalizeFormula1State } from "./formula-1-state";
 export const metadata = constructMetadata({
   title: "Formula 1 Pulse",
   description:
-    "Editorial Formula 1 dashboard for the current season with the next Grand Prix, driver and constructor standings, and race-by-race context from a checked-in OpenF1 snapshot.",
+    "Formula 1 dashboard for the current season with the next Grand Prix, driver and constructor standings, and race-by-race context from a checked-in OpenF1 snapshot.",
   canonicalUrl: "/formula-1",
   dateModified: formula1Snapshot.generatedAt.slice(0, 10),
   aiMetadata: {
@@ -67,7 +67,7 @@ export default async function Formula1Page({ searchParams }: Formula1PageProps) 
         data={{
           name: "Formula 1 Pulse",
           description:
-            "Editorial Formula 1 dashboard with season standings, the next Grand Prix, and race-by-race context from a checked-in historical snapshot.",
+            "Formula 1 dashboard with season standings, the next Grand Prix, and race-by-race context from a checked-in historical snapshot.",
           url: "https://isaacavazquez.com/formula-1",
           applicationCategory: "SportsApplication",
           programmingLanguage: ["TypeScript", "Next.js"],

@@ -15,14 +15,14 @@ cta:
   href: "/resume"
   actionLabel: "Open the resume"
 seo:
-  title: "Testing AI Systems - Complete QA Guide for Machine Learning"
+  title: "Testing AI Systems, a QA Approach for Machine Learning"
   description: "Testing AI systems takes different instincts than deterministic software. What I've learned about data validation, model performance, bias detection, and production monitoring."
   keywords: ["AI testing", "machine learning testing", "AI QA", "model testing", "bias testing", "ML quality assurance", "AI validation", "testing AI systems", "QA for AI"]
 ---
 
 # The QA Engineer's Guide to Testing AI Systems: Quality Assurance for Machine Learning
 
-Testing AI systems is genuinely different from testing conventional software, and I think it's worth being direct about why. The usual QA toolkit assumes deterministic behavior: the same input produces the same output, and you can write an assertion that either passes or fails. With machine learning systems, that assumption breaks down. The output is probabilistic. The behavior changes as models retrain. The "correct" answer for a given input may be undefined or context-dependent. And the failure modes (a model that's overfit, a dataset that's been poisoned, a prediction that's systematically biased against a demographic group) are fundamentally different from a null pointer exception or a missing API parameter.
+Testing AI systems is genuinely different from testing conventional software, and I think it's worth being direct about why. The usual QA toolkit assumes deterministic behavior, where the same input produces the same output and you can write an assertion that either passes or fails. With machine learning systems, that assumption breaks down. The output is probabilistic, the behavior changes as models retrain, and the "correct" answer for a given input may be undefined or context-dependent. And the failure modes (a model that's overfit, a dataset that's been poisoned, a prediction that's systematically biased against a demographic group) are fundamentally different from a null pointer exception or a missing API parameter.
 
 I've worked on AI-powered analytics systems and spent a lot of time thinking through how to apply rigorous QA practice to components that don't behave deterministically. This is what I've found works.
 
@@ -281,7 +281,7 @@ class DisparateImpactDetector:
             return 'HIGH'
 ```
 
-What I'd add to this: passing the 80% rule doesn't mean the model is fair in any strong sense, and different fairness metrics can be mathematically incompatible with each other. The right set of metrics to test against depends on what the model is doing and what harms you're most concerned about. That's a design decision that needs to be made explicitly, not defaulted into.
+What I'd add to this is that passing the 80% rule doesn't mean the model is fair in any strong sense, and different fairness metrics can be mathematically incompatible with each other. The right set of metrics to test against depends on what the model is doing and what harms you're most concerned about. That's a design decision that needs to be made explicitly, not defaulted into.
 
 ## Integration and Performance Testing
 
@@ -348,4 +348,4 @@ The main shift is that QA engineers working on AI systems need to understand pro
 
 What I find most interesting about AI testing is that it pushes QA engineers toward being genuine collaborators in system design. The decisions about what data to train on, what fairness constraints to enforce, and what performance thresholds to accept are quality decisions as much as engineering decisions. Having QA perspective in those conversations early usually produces better outcomes.
 
-If you want the adjacent reads, [Building Reliable Software Systems: A Complete Guide to Software Quality](/writing/building-reliable-software-systems) is the cleaner systems-level companion, and [The Complete Guide to QA Engineering: Building Quality into Software Development](/writing/complete-guide-qa-engineering) is the broader QA operating model that the AI-specific work still depends on.
+If you want the adjacent reads, [Building Reliable Software Systems: What Actually Holds Up at Scale](/writing/building-reliable-software-systems) is the cleaner systems-level companion, and [QA Engineering: Building Quality into Software Development](/writing/complete-guide-qa-engineering) is the broader QA operating model that the AI-specific work still depends on.
