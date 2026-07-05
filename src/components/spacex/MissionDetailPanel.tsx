@@ -16,6 +16,13 @@ interface MissionDetailPanelProps {
   isLoading: boolean;
   error: string | null;
   onPanelChange: (panel: MissionControlPanel) => void;
+  /**
+   * Suppresses this panel's own outer `<aside>`/name/kicker header block and
+   * renders a bare `<div>` instead — used when `MissionDrawer` already shows
+   * that identity (patch, name, badge) in its own header and this component
+   * only needs to contribute the Overview/Vehicle/Payloads/Links tab body.
+   */
+  hideHeader?: boolean;
 }
 
 function ExternalGrid({
@@ -59,51 +66,65 @@ export function MissionDetailPanel({
   isLoading,
   error,
   onPanelChange,
+  hideHeader = false,
 }: MissionDetailPanelProps) {
-  return (
-    <aside
-      data-testid="mission-detail-panel"
-      aria-label="Mission detail panel"
-      className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)]/92 p-4 shadow-[var(--shadow-md)] sm:p-5"
+  const Wrapper = hideHeader ? "div" : "aside";
+  const tabs = (
+    <div
+      className="inline-flex flex-wrap gap-2 rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] p-2"
+      role="tablist"
+      aria-label="Mission detail panels"
     >
-      <div className="flex flex-col gap-4 border-b border-[var(--home-rule)] pb-5">
-        <div>
-          <p className="font-mono text-2xs font-semibold uppercase tracking-[0.22em] text-[var(--home-ink-soft)]">
-            Mission detail
-          </p>
-          <h2 className="mt-2 text-2xl font-bold tracking-[-0.04em] text-[var(--home-ink)]">
-            {launch ? launch.name : "Select a mission"}
-          </h2>
-          <p className="mt-2 text-sm leading-6 text-[var(--home-ink-muted)]">
-            {launch
-              ? `${launch.rocketName ?? "Rocket TBD"} • ${formatMissionMoment(launch)}`
-              : "Open a mission from the board to inspect vehicles, payloads, crew, and reference links in context."}
-          </p>
-        </div>
-
-        <div
-          className="inline-flex flex-wrap gap-2 rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] p-2"
-          role="tablist"
-          aria-label="Mission detail panels"
+      {PANEL_OPTIONS.map((option) => (
+        <button
+          key={option.key}
+          type="button"
+          role="tab"
+          aria-selected={activePanel === option.key}
+          onClick={() => onPanelChange(option.key)}
+          className={`tap-target rounded-[var(--radius-2xl)] px-4 py-3 text-sm font-semibold transition ${
+            activePanel === option.key
+              ? "bg-[var(--home-signal)] text-white"
+              : "text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
+          }`}
         >
-          {PANEL_OPTIONS.map((option) => (
-            <button
-              key={option.key}
-              type="button"
-              role="tab"
-              aria-selected={activePanel === option.key}
-              onClick={() => onPanelChange(option.key)}
-              className={`tap-target rounded-[var(--radius-2xl)] px-4 py-3 text-sm font-semibold transition ${
-                activePanel === option.key
-                  ? "bg-[var(--home-signal)] text-white"
-                  : "text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
-              }`}
-            >
-              {option.label}
-            </button>
-          ))}
+          {option.label}
+        </button>
+      ))}
+    </div>
+  );
+
+  return (
+    <Wrapper
+      data-testid={hideHeader ? undefined : "mission-detail-panel"}
+      aria-label={hideHeader ? undefined : "Mission detail panel"}
+      className={
+        hideHeader
+          ? "px-5 pb-5 pt-4"
+          : "rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)]/92 p-4 shadow-[var(--shadow-md)] sm:p-5"
+      }
+    >
+      {hideHeader ? (
+        <div className="pb-4">{tabs}</div>
+      ) : (
+        <div className="flex flex-col gap-4 border-b border-[var(--home-rule)] pb-5">
+          <div>
+            <p className="font-mono text-2xs font-semibold uppercase tracking-[0.22em] text-[var(--home-ink-soft)]">
+              Mission detail
+            </p>
+            <h2 className="mt-2 text-2xl font-bold tracking-[-0.04em] text-[var(--home-ink)]">
+              {launch ? launch.name : "Select a mission"}
+            </h2>
+            <p className="mt-2 text-sm leading-6 text-[var(--home-ink-muted)]">
+              {launch
+                ? `${launch.rocketName ?? "Rocket TBD"} • ${formatMissionMoment(launch)}`
+                : "Open a mission from the board to inspect vehicles, payloads, crew, and reference links in context."}
+            </p>
+          </div>
+
+          {tabs}
         </div>
-      </div>
+      )}
 
       {isLoading ? (
         <div className="space-y-3 py-5">
@@ -474,6 +495,6 @@ export function MissionDetailPanel({
           </div>
         </div>
       ) : null}
-    </aside>
+    </Wrapper>
   );
 }

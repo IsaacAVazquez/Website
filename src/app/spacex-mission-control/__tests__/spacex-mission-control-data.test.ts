@@ -6,7 +6,9 @@ import type {
   MissionLaunchDetail,
 } from "@/types/spacex";
 import {
+  getMissionControlCadence,
   getMissionControlSummary,
+  getMissionControlVehicleCatalogData,
   getMissionLaunchCards,
   getMissionLaunchDetail,
 } from "@/lib/spacexData";
@@ -15,11 +17,15 @@ jest.mock("@/lib/spacexData", () => ({
   getMissionControlSummary: jest.fn(),
   getMissionLaunchCards: jest.fn(),
   getMissionLaunchDetail: jest.fn(),
+  getMissionControlCadence: jest.fn(),
+  getMissionControlVehicleCatalogData: jest.fn(),
 }));
 
 const mockGetMissionControlSummary = jest.mocked(getMissionControlSummary);
 const mockGetMissionLaunchCards = jest.mocked(getMissionLaunchCards);
 const mockGetMissionLaunchDetail = jest.mocked(getMissionLaunchDetail);
+const mockGetMissionControlCadence = jest.mocked(getMissionControlCadence);
+const mockGetMissionControlVehicleCatalogData = jest.mocked(getMissionControlVehicleCatalogData);
 
 const baseLinks = {
   webcast: null,
@@ -90,6 +96,8 @@ describe("loadMissionControlInitialData", () => {
     mockGetMissionControlSummary.mockReset();
     mockGetMissionLaunchCards.mockReset();
     mockGetMissionLaunchDetail.mockReset();
+    mockGetMissionControlCadence.mockReset().mockReturnValue(null);
+    mockGetMissionControlVehicleCatalogData.mockReset().mockReturnValue({});
   });
 
   it("preloads summary, board launches, and selected detail for the current route", async () => {
@@ -112,6 +120,10 @@ describe("loadMissionControlInitialData", () => {
       launchesError: null,
       detail,
       detailError: null,
+      tapeRecentLaunches: [launchCard],
+      tapeUpcomingLaunches: [launchCard],
+      launchDetails: {},
+      cadence: null,
     });
     expect(mockGetMissionLaunchCards).toHaveBeenCalledWith("past", 10);
     expect(mockGetMissionLaunchDetail).toHaveBeenCalledWith(launchCard.id);

@@ -29,7 +29,11 @@ jest.mock("framer-motion", () => ({
     div: ({ children, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
       <div {...props}>{children}</div>
     ),
+    aside: ({ children, ...props }: React.HTMLAttributes<HTMLElement>) => (
+      <aside {...props}>{children}</aside>
+    ),
   },
+  AnimatePresence: ({ children }: { children?: React.ReactNode }) => <>{children}</>,
   useReducedMotion: () => true,
 }));
 
@@ -242,6 +246,10 @@ function createInitialData(
     launchesError: null,
     detail: null,
     detailError: null,
+    tapeRecentLaunches: [],
+    tapeUpcomingLaunches: [],
+    launchDetails: {},
+    cadence: null,
     ...overrides,
   };
 }
@@ -323,7 +331,8 @@ describe("SpaceXMissionControlClient", () => {
     expect(container.textContent).toContain("Refresh data");
     expect(container.querySelector('[data-testid="mission-hero"]')).not.toBeNull();
     expect(container.querySelector('[data-testid="mission-board"]')).not.toBeNull();
-    expect(container.querySelector('[data-testid="mission-detail-panel"]')).not.toBeNull();
+    // No launch is selected in this test, so the overlay drawer isn't mounted.
+    expect(container.querySelector('[data-testid="mission-detail-panel"]')).toBeNull();
     expect(queryMissionImage(container, "mission-hero-visual")?.getAttribute("src")).toContain(
       "https://images.example.com/falcon-heavy.png"
     );
@@ -333,16 +342,16 @@ describe("SpaceXMissionControlClient", () => {
     expect(queryMissionImageFrame(container, "mission-hero-visual")?.getAttribute("data-image-fit")).toBe(
       "cover"
     );
+    // Mission cards render an original generated SVG patch emblem, not real
+    // patch photography — no <img> element inside the card's patch tile.
     expect(
-      queryMissionImage(container, "mission-board-visual-6243aec2af52800c6e91925d")?.getAttribute(
-        "src"
-      )
-    ).toContain("https://images.example.com/ussf44-patch.png");
+      queryMissionImage(container, "mission-board-visual-6243aec2af52800c6e91925d")
+    ).toBeNull();
     expect(
-      queryMissionImageFrame(container, "mission-board-visual-6243aec2af52800c6e91925d")?.getAttribute(
-        "data-image-fit"
+      container.querySelector(
+        '[data-testid="mission-board-visual-6243aec2af52800c6e91925d"] svg'
       )
-    ).toBe("contain");
+    ).not.toBeNull();
   });
 
   it("renders server-hydrated summary, board, and detail data without mount-time browser fetches", async () => {
@@ -419,7 +428,7 @@ describe("SpaceXMissionControlClient", () => {
     ).toContain("https://images.example.com/fallback-patch.png");
   });
 
-  it("keeps the board patch tile in placeholder mode when a launch has no patch art", async () => {
+  it("renders the same generated patch emblem on the board regardless of upstream patch art", async () => {
     mockFetch.mockImplementation((input: RequestInfo | URL) => {
       const url = String(input);
 
@@ -451,14 +460,17 @@ describe("SpaceXMissionControlClient", () => {
     });
     await flushPromises();
 
+    // Board cards render an original generated SVG emblem seeded from the
+    // launch id, independent of whether the upstream API returned patch
+    // photography — no <img> is ever fetched for the card patch tile.
     expect(
       queryMissionImage(container, "mission-board-visual-5eb87d47ffd86e000604b390")
     ).toBeNull();
     expect(
-      queryMissionImageFrame(container, "mission-board-visual-5eb87d47ffd86e000604b390")?.getAttribute(
-        "data-image-state"
+      container.querySelector(
+        '[data-testid="mission-board-visual-5eb87d47ffd86e000604b390"] svg'
       )
-    ).toBe("placeholder");
+    ).not.toBeNull();
   });
 
   it("falls back to mission patch art when the hero image errors", async () => {

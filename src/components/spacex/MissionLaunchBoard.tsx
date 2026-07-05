@@ -1,11 +1,22 @@
-import { ChevronRight, Layers3, LoaderCircle, Orbit, Radar } from "lucide-react";
+"use client";
+
+import { useMemo, useState } from "react";
+import { Radar } from "lucide-react";
 import type { MissionControlStatus, MissionLaunchCard } from "@/types/spacex";
-import { MissionPatch } from "./MissionPatch";
-import { formatMissionScheduleLabel } from "./formatters";
+import { MissionCard } from "./MissionCard";
+import { deriveVehicleFamily, type MissionVehicleFamily } from "@/lib/spacexVehicleFamily";
 
 const STATUS_OPTIONS: Array<{ key: MissionControlStatus; label: string }> = [
   { key: "upcoming", label: "Upcoming" },
   { key: "past", label: "Past" },
+];
+
+const VEHICLE_FILTERS: Array<"All" | MissionVehicleFamily> = [
+  "All",
+  "Falcon 9",
+  "Falcon Heavy",
+  "Starship",
+  "Other",
 ];
 
 interface MissionLaunchBoardProps {
@@ -29,6 +40,20 @@ export function MissionLaunchBoard({
   onSelectLaunch,
   onRetry,
 }: MissionLaunchBoardProps) {
+  const [vehicleFilter, setVehicleFilter] = useState<"All" | MissionVehicleFamily>("All");
+
+  const availableFilters = useMemo(() => {
+    const present = new Set(launches.map((launch) => deriveVehicleFamily(launch.rocketName)));
+    return VEHICLE_FILTERS.filter((option) => option === "All" || present.has(option));
+  }, [launches]);
+
+  const shownLaunches = useMemo(() => {
+    if (vehicleFilter === "All") {
+      return launches;
+    }
+    return launches.filter((launch) => deriveVehicleFamily(launch.rocketName) === vehicleFilter);
+  }, [launches, vehicleFilter]);
+
   return (
     <section
       data-testid="mission-board"
@@ -41,11 +66,11 @@ export function MissionLaunchBoard({
             Launch board
           </p>
           <h2 className="mt-2 text-2xl font-bold tracking-[-0.04em] text-[var(--home-ink)]">
-            Browse the SpaceX launch queue.
+            Browse the SpaceX launch manifest.
           </h2>
           <p className="mt-2 text-sm leading-6 text-[var(--home-ink-muted)]">
-            Filter by upcoming or past missions, then open a launch to inspect vehicles,
-            payloads, and outbound references in context.
+            Filter by upcoming or past missions and by vehicle, then open a mission to inspect
+            vehicles, payloads, and outbound references in context.
           </p>
         </div>
 
@@ -73,6 +98,30 @@ export function MissionLaunchBoard({
         </div>
       </div>
 
+      {launches.length > 0 && availableFilters.length > 2 ? (
+        <div
+          className="mb-4 inline-flex flex-wrap gap-2"
+          role="group"
+          aria-label="Filter by vehicle"
+        >
+          {availableFilters.map((option) => (
+            <button
+              key={option}
+              type="button"
+              aria-pressed={vehicleFilter === option}
+              onClick={() => setVehicleFilter(option)}
+              className={`tap-target inline-flex min-h-[44px] items-center rounded-full border px-3.5 font-mono text-3xs uppercase tracking-[0.06em] transition ${
+                vehicleFilter === option
+                  ? "border-[var(--home-ink)] bg-[var(--home-ink)] text-[var(--home-paper)]"
+                  : "border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_84%,var(--home-elev-mix))] text-[var(--home-ink-muted)] hover:text-[var(--home-ink)]"
+              }`}
+            >
+              {option}
+            </button>
+          ))}
+        </div>
+      ) : null}
+
       {error && launches.length === 0 && !isLoading ? (
         <div role="alert" className="rounded-[var(--radius-3xl)] border border-[color-mix(in_srgb,var(--home-warning)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-warning)_9%,var(--home-paper))] p-4">
           <p className="text-sm font-semibold text-[var(--home-ink)]">
@@ -90,11 +139,11 @@ export function MissionLaunchBoard({
       ) : null}
 
       {isLoading && launches.length === 0 ? (
-        <div className="space-y-3">
-          {Array.from({ length: 5 }, (_, index) => (
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          {Array.from({ length: 6 }, (_, index) => (
             <div
               key={index}
-              className="h-[124px] animate-pulse rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper)]"
+              className="h-[268px] animate-pulse rounded-[var(--radius-lg)] border border-[var(--home-rule)] bg-[var(--home-paper)]"
             />
           ))}
         </div>
@@ -118,83 +167,32 @@ export function MissionLaunchBoard({
         </div>
       ) : null}
 
+      {shownLaunches.length > 0 ? (
+        <p className="mb-3 font-mono text-3xs uppercase tracking-[0.1em] text-[var(--home-ink-muted)]">
+          Select a mission for its debrief · {shownLaunches.length} shown
+        </p>
+      ) : null}
+
       {launches.length > 0 ? (
-        <div className="space-y-3">
-          {launches.map((launch) => {
-            const isSelected = selectedLaunchId === launch.id;
-
-            return (
-              <button
+        shownLaunches.length > 0 ? (
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+            {shownLaunches.map((launch) => (
+              <MissionCard
                 key={launch.id}
-                type="button"
-                onClick={() => onSelectLaunch(launch.id)}
-                className={`w-full rounded-[var(--radius-3xl)] border p-4 text-left transition sm:p-5 ${
-                  isSelected
-                    ? "border-[var(--home-signal)] bg-[color-mix(in_srgb,var(--home-signal)_7%,var(--home-paper))] shadow-[var(--shadow-sm)]"
-                    : "border-[var(--home-rule)] bg-[var(--home-paper)] hover:border-[color-mix(in_srgb,var(--home-signal)_26%,var(--home-rule))] hover:bg-[var(--home-paper-alt)]"
-                }`}
-              >
-                <div className="grid gap-4 md:grid-cols-[92px_minmax(0,1fr)]">
-                  <MissionPatch
-                    name={launch.name}
-                    image={launch.patchImage}
-                    className="h-[92px] min-h-[92px]"
-                    dataTestId={`mission-board-visual-${launch.id}`}
-                  />
-
-                  <div className="min-w-0">
-                    <div className="flex flex-wrap items-center justify-between gap-3">
-                      <div className="min-w-0">
-                        <div className="flex flex-wrap items-center gap-2">
-                          <span className="font-mono text-2xs font-semibold uppercase tracking-[0.2em] text-[var(--home-ink-soft)]">
-                            Flight #{launch.flightNumber}
-                          </span>
-                          <span className="rounded-full border border-[var(--home-rule)] px-2 py-1 text-2xs font-medium text-[var(--home-ink-muted)]">
-                            {launch.upcoming ? "Upcoming" : launch.success === true ? "Successful" : launch.success === false ? "Failed" : "Status pending"}
-                          </span>
-                        </div>
-                        <h3 className="mt-3 text-xl font-bold tracking-[-0.03em] text-[var(--home-ink)]">
-                          {launch.name}
-                        </h3>
-                      </div>
-
-                      <div className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--home-signal)]">
-                        Open detail
-                        {isLoading && isSelected ? (
-                          <LoaderCircle className="h-4 w-4 animate-spin" />
-                        ) : (
-                          <ChevronRight className="h-4 w-4" />
-                        )}
-                      </div>
-                    </div>
-
-                    <div className="mt-4 grid gap-3 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
-                      <div className="min-w-0">
-                        <p className="text-sm font-semibold text-[var(--home-ink)]">
-                          {launch.rocketName ?? "Rocket pending"} from {launch.launchpadName ?? "Launch site pending"}
-                        </p>
-                        <p className="mt-1 text-sm leading-6 text-[var(--home-ink-muted)]">
-                          {formatMissionScheduleLabel(launch)}
-                        </p>
-                      </div>
-
-                      <div className="flex flex-wrap gap-2">
-                        <span className="rounded-full bg-[var(--home-paper-alt)] px-3 py-2 text-xs font-medium text-[var(--home-ink-muted)]">
-                          <Layers3 className="mr-1 inline h-3.5 w-3.5" />
-                          {launch.payloadCount} payload{launch.payloadCount === 1 ? "" : "s"}
-                        </span>
-                        <span className="rounded-full bg-[var(--home-paper-alt)] px-3 py-2 text-xs font-medium text-[var(--home-ink-muted)]">
-                          <Orbit className="mr-1 inline h-3.5 w-3.5" />
-                          {launch.coreCount} core{launch.coreCount === 1 ? "" : "s"}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </button>
-            );
-          })}
-        </div>
+                launch={launch}
+                isSelected={selectedLaunchId === launch.id}
+                isBusy={isLoading}
+                onSelect={onSelectLaunch}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="rounded-[var(--radius-3xl)] border border-dashed border-[var(--home-rule)] bg-[var(--home-paper)] px-5 py-8 text-center">
+            <p className="text-sm leading-6 text-[var(--home-ink-muted)]">
+              No {vehicleFilter} missions on the {status} board right now.
+            </p>
+          </div>
+        )
       ) : null}
     </section>
   );

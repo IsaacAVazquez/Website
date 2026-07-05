@@ -1,84 +1,84 @@
 {
-  "generatedAt": "2026-07-05T11:16:17.787Z",
+  "generatedAt": "2026-07-05T20:32:40.433Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
-      "id": "1ef27ca1-af91-48bb-b934-3da5abd9f711",
-      "name": "Starlink Group 10-50",
-      "flightNumber": 699,
+      "id": "a6db1e67-5860-47c9-a674-adc0f35b62e0",
+      "name": "Transporter 17 (Dedicated SSO Rideshare)",
+      "flightNumber": 700,
       "upcoming": true,
       "success": null,
-      "details": "A batch of 29 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.\r\n\r\nThe Falcon 9 1st stage carries 2 customer payload from Besxar for testing their Fabships pilot reusable manufacturing pods in launch and re-entry environments.",
-      "dateUtc": "2026-07-05T10:50:00Z",
-      "dateUnix": 1783248600,
-      "dateLocal": "2026-07-05T10:50:00Z",
+      "details": "Dedicated rideshare flight to a sun-synchronous orbit with dozens of small microsatellites and nanosatellites for commercial and government customers.",
+      "dateUtc": "2026-07-07T07:10:00Z",
+      "dateUnix": 1783408200,
+      "dateLocal": "2026-07-07T07:10:00Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
       "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 40",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
-      "patchImage": "/data/spacex/images/1927035cad14a77c.png",
-      "vehicleImage": "/data/spacex/images/b317ff9ea04bd623.png",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
       "crewCount": 0,
-      "payloadCount": 29,
+      "payloadCount": 1,
       "capsuleCount": 0,
       "coreCount": 1,
       "hasExactTime": true,
       "isStaleSchedule": false,
       "links": {
         "webcast": null,
-        "article": "https://starlink.com",
-        "wikipedia": "https://en.wikipedia.org/wiki/Starlink",
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/SpaceX",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
         "redditMedia": null,
         "youtubeId": null,
-        "patchSmall": "/data/spacex/images/1927035cad14a77c.png",
-        "patchLarge": "/data/spacex/images/1927035cad14a77c.png",
+        "patchSmall": null,
+        "patchLarge": null,
         "flickrOriginal": [
-          "/data/spacex/images/b317ff9ea04bd623.png"
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
         ]
       }
     },
     "nextLaunch": {
-      "id": "1ef27ca1-af91-48bb-b934-3da5abd9f711",
-      "name": "Starlink Group 10-50",
-      "flightNumber": 699,
+      "id": "a6db1e67-5860-47c9-a674-adc0f35b62e0",
+      "name": "Transporter 17 (Dedicated SSO Rideshare)",
+      "flightNumber": 700,
       "upcoming": true,
       "success": null,
-      "details": "A batch of 29 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.\r\n\r\nThe Falcon 9 1st stage carries 2 customer payload from Besxar for testing their Fabships pilot reusable manufacturing pods in launch and re-entry environments.",
-      "dateUtc": "2026-07-05T10:50:00Z",
-      "dateUnix": 1783248600,
-      "dateLocal": "2026-07-05T10:50:00Z",
+      "details": "Dedicated rideshare flight to a sun-synchronous orbit with dozens of small microsatellites and nanosatellites for commercial and government customers.",
+      "dateUtc": "2026-07-07T07:10:00Z",
+      "dateUnix": 1783408200,
+      "dateLocal": "2026-07-07T07:10:00Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
       "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 40",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
-      "patchImage": "/data/spacex/images/1927035cad14a77c.png",
-      "vehicleImage": "/data/spacex/images/b317ff9ea04bd623.png",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
       "crewCount": 0,
-      "payloadCount": 29,
+      "payloadCount": 1,
       "capsuleCount": 0,
       "coreCount": 1,
       "hasExactTime": true,
       "isStaleSchedule": false,
       "links": {
         "webcast": null,
-        "article": "https://starlink.com",
-        "wikipedia": "https://en.wikipedia.org/wiki/Starlink",
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/SpaceX",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
         "redditMedia": null,
         "youtubeId": null,
-        "patchSmall": "/data/spacex/images/1927035cad14a77c.png",
-        "patchLarge": "/data/spacex/images/1927035cad14a77c.png",
+        "patchSmall": null,
+        "patchLarge": null,
         "flickrOriginal": [
-          "/data/spacex/images/b317ff9ea04bd623.png"
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
         ]
       }
     },
@@ -87,8 +87,8 @@
       "name": "Starlink Group 10-50",
       "flightNumber": 699,
       "upcoming": false,
-      "success": null,
-      "details": "A batch of 29 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.\r\n\r\nThe Falcon 9 1st stage carries 2 customer payload from Besxar for testing their Fabships pilot reusable manufacturing pods in launch and re-entry environments.",
+      "success": true,
+      "details": "A batch of 29 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.\r\n\r\nThe Falcon 9 1st stage carries 2 customer payload from Besxar Space Industries for testing their Fabships pilot reusable semiconductor wafers manufacturing pods in launch and re-entry environments.",
       "dateUtc": "2026-07-05T10:50:00Z",
       "dateUnix": 1783248600,
       "dateLocal": "2026-07-05T10:50:00Z",
@@ -150,49 +150,9 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-07-05T11:16:14.675Z"
+    "generatedAt": "2026-07-05T20:32:33.647Z"
   },
   "upcomingLaunches": [
-    {
-      "id": "1ef27ca1-af91-48bb-b934-3da5abd9f711",
-      "name": "Starlink Group 10-50",
-      "flightNumber": 699,
-      "upcoming": true,
-      "success": null,
-      "details": "A batch of 29 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.\r\n\r\nThe Falcon 9 1st stage carries 2 customer payload from Besxar for testing their Fabships pilot reusable manufacturing pods in launch and re-entry environments.",
-      "dateUtc": "2026-07-05T10:50:00Z",
-      "dateUnix": 1783248600,
-      "dateLocal": "2026-07-05T10:50:00Z",
-      "datePrecision": "hour",
-      "tbd": false,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 40",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
-      "patchImage": "/data/spacex/images/1927035cad14a77c.png",
-      "vehicleImage": "/data/spacex/images/b317ff9ea04bd623.png",
-      "crewCount": 0,
-      "payloadCount": 29,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": true,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": "https://starlink.com",
-        "wikipedia": "https://en.wikipedia.org/wiki/Starlink",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": "/data/spacex/images/1927035cad14a77c.png",
-        "patchLarge": "/data/spacex/images/1927035cad14a77c.png",
-        "flickrOriginal": [
-          "/data/spacex/images/b317ff9ea04bd623.png"
-        ]
-      }
-    },
     {
       "id": "a6db1e67-5860-47c9-a674-adc0f35b62e0",
       "name": "Transporter 17 (Dedicated SSO Rideshare)",
@@ -1112,6 +1072,46 @@
           "/data/spacex/images/83daf3ce21b64d93.jpg"
         ]
       }
+    },
+    {
+      "id": "67213393-7983-4c06-8b44-b8c785a5ed79",
+      "name": "Transporter 18 (Dedicated SSO Rideshare)",
+      "flightNumber": 723,
+      "upcoming": true,
+      "success": null,
+      "details": "Dedicated rideshare flight to a sun-synchronous orbit with dozens of small microsatellites and nanosatellites for commercial and government customers.",
+      "dateUtc": "2026-10-31T00:00:00Z",
+      "dateUnix": 1793404800,
+      "dateLocal": "2026-10-31T00:00:00Z",
+      "datePrecision": "month",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/SpaceX",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
     }
   ],
   "pastLaunches": [
@@ -1120,8 +1120,8 @@
       "name": "Starlink Group 10-50",
       "flightNumber": 699,
       "upcoming": false,
-      "success": null,
-      "details": "A batch of 29 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.\r\n\r\nThe Falcon 9 1st stage carries 2 customer payload from Besxar for testing their Fabships pilot reusable manufacturing pods in launch and re-entry environments.",
+      "success": true,
+      "details": "A batch of 29 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.\r\n\r\nThe Falcon 9 1st stage carries 2 customer payload from Besxar Space Industries for testing their Fabships pilot reusable semiconductor wafers manufacturing pods in launch and re-entry environments.",
       "dateUtc": "2026-07-05T10:50:00Z",
       "dateUnix": 1783248600,
       "dateLocal": "2026-07-05T10:50:00Z",
@@ -2077,106 +2077,6 @@
     }
   ],
   "launchDetails": {
-    "1ef27ca1-af91-48bb-b934-3da5abd9f711": {
-      "id": "1ef27ca1-af91-48bb-b934-3da5abd9f711",
-      "name": "Starlink Group 10-50",
-      "flightNumber": 699,
-      "upcoming": false,
-      "success": null,
-      "details": "A batch of 29 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.\r\n\r\nThe Falcon 9 1st stage carries 2 customer payload from Besxar for testing their Fabships pilot reusable manufacturing pods in launch and re-entry environments.",
-      "dateUtc": "2026-07-05T10:50:00Z",
-      "dateUnix": 1783248600,
-      "dateLocal": "2026-07-05T10:50:00Z",
-      "datePrecision": "hour",
-      "tbd": false,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 40",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
-      "patchImage": "/data/spacex/images/1927035cad14a77c.png",
-      "vehicleImage": "/data/spacex/images/b317ff9ea04bd623.png",
-      "crewCount": 0,
-      "payloadCount": 29,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": true,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": "https://x.com/i/broadcasts/1oKMvvkZZAOGQ",
-        "article": "https://www.spacex.com/launches/sl-10-50",
-        "wikipedia": "https://en.wikipedia.org/wiki/Starlink",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": "/data/spacex/images/1927035cad14a77c.png",
-        "patchLarge": "/data/spacex/images/1927035cad14a77c.png",
-        "flickrOriginal": [
-          "/data/spacex/images/b317ff9ea04bd623.png"
-        ]
-      },
-      "staticFireDateUtc": null,
-      "window": 14400,
-      "failures": [],
-      "rocket": {
-        "id": "164",
-        "name": "Falcon 9 Block 5",
-        "type": "Block 5",
-        "active": true,
-        "boosters": 0,
-        "stages": 2,
-        "costPerLaunch": 52000000,
-        "successRatePct": 100,
-        "firstFlight": "2018-05-11",
-        "company": "SpaceX",
-        "country": "USA",
-        "description": "Falcon 9 is a two-stage rocket designed and manufactured by SpaceX for the reliable and safe transport of satellites and the Dragon spacecraft into orbit. The Block 5 variant is the fifth major interval aimed at improving upon the ability for rapid reusability.",
-        "wikipedia": "https://en.wikipedia.org/wiki/Falcon_9",
-        "heightMeters": 70,
-        "diameterMeters": 3.65,
-        "massKg": 549000,
-        "image": "/data/spacex/images/83daf3ce21b64d93.jpg",
-        "flickrImages": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg",
-          "/data/spacex/images/b317ff9ea04bd623.png"
-        ]
-      },
-      "launchpad": {
-        "id": "80",
-        "name": "Space Launch Complex 40",
-        "fullName": "Space Launch Complex 40",
-        "locality": "Cape Canaveral SFS, FL, USA",
-        "region": null,
-        "timezone": "America/New_York",
-        "status": null,
-        "details": "",
-        "image": "/data/spacex/images/9b1f5cf5035d37b9.jpg"
-      },
-      "crew": [],
-      "payloads": [
-        {
-          "id": "7663",
-          "name": "Starlink Group 10-50",
-          "type": "Communications",
-          "customers": [
-            "SpaceX"
-          ],
-          "manufacturers": [
-            "SpaceX"
-          ],
-          "nationalities": [
-            "USA"
-          ],
-          "orbit": "Low Earth Orbit",
-          "regime": "LEO",
-          "massKg": null,
-          "massLbs": null
-        }
-      ],
-      "capsules": [],
-      "cores": []
-    },
     "a6db1e67-5860-47c9-a674-adc0f35b62e0": {
       "id": "a6db1e67-5860-47c9-a674-adc0f35b62e0",
       "name": "Transporter 17 (Dedicated SSO Rideshare)",
@@ -2276,6 +2176,300 @@
       "capsules": [],
       "cores": []
     },
+    "ac897b9f-44d2-4ff4-8416-1a0a076e98a2": {
+      "id": "ac897b9f-44d2-4ff4-8416-1a0a076e98a2",
+      "name": "Flight 13",
+      "flightNumber": 706,
+      "upcoming": true,
+      "success": null,
+      "details": "13th test flight of the two-stage Starship launch vehicle. Second flight of Starship V3",
+      "dateUtc": "2026-07-31T00:00:00Z",
+      "dateUnix": 1785456000,
+      "dateLocal": "2026-07-31T00:00:00Z",
+      "datePrecision": "month",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Starship V3",
+      "launchpadName": "Orbital Launch Pad 2",
+      "launchpadLocation": "SpaceX Starbase, TX, USA",
+      "patchImage": "/data/spacex/images/c044d36407569003.png",
+      "vehicleImage": "/data/spacex/images/0be5c2f84b0c0132.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 2,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": "https://www.spacex.com/vehicles/starship/",
+        "wikipedia": "https://en.wikipedia.org/wiki/SpaceX_Starship",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": "/data/spacex/images/c044d36407569003.png",
+        "patchLarge": "/data/spacex/images/c044d36407569003.png",
+        "flickrOriginal": [
+          "/data/spacex/images/0be5c2f84b0c0132.jpg"
+        ]
+      },
+      "staticFireDateUtc": null,
+      "window": 0,
+      "failures": [],
+      "rocket": {
+        "id": "522",
+        "name": "Starship V3",
+        "type": "V3",
+        "active": false,
+        "boosters": 0,
+        "stages": 2,
+        "costPerLaunch": null,
+        "successRatePct": 100,
+        "firstFlight": "2026-05-22",
+        "company": "SpaceX",
+        "country": "USA",
+        "description": "Third development version of the Starship reusable two-stage super heavy-lift launch vehicle.",
+        "wikipedia": "https://en.wikipedia.org/wiki/SpaceX_Starship#Block_3",
+        "heightMeters": 124.4,
+        "diameterMeters": 9,
+        "massKg": 5250000,
+        "image": null,
+        "flickrImages": [
+          "/data/spacex/images/0be5c2f84b0c0132.jpg"
+        ]
+      },
+      "launchpad": {
+        "id": "235",
+        "name": "Orbital Launch Pad 2",
+        "fullName": "Orbital Launch Pad 2",
+        "locality": "SpaceX Starbase, TX, USA",
+        "region": null,
+        "timezone": "America/Chicago",
+        "status": null,
+        "details": "The second launch and landing pad of the full version of the combined SpaceX Starship and Superheavy booster. To be first used for launch in 2025 with version 3 of Starship and the Superheavy booster.\r\n\r\nThe launch mount itself is named Orbital Launch Mount B.",
+        "image": "/data/spacex/images/71650fb231037f47.jpg"
+      },
+      "crew": [],
+      "payloads": [
+        {
+          "id": "7470",
+          "name": "Flight 13",
+          "type": "Test Flight",
+          "customers": [
+            "SpaceX"
+          ],
+          "manufacturers": [
+            "SpaceX"
+          ],
+          "nationalities": [
+            "USA"
+          ],
+          "orbit": "Suborbital",
+          "regime": "Sub",
+          "massKg": null,
+          "massLbs": null
+        }
+      ],
+      "capsules": [],
+      "cores": []
+    },
+    "521f3a1c-f977-4306-9b7f-495858719adf": {
+      "id": "521f3a1c-f977-4306-9b7f-495858719adf",
+      "name": "Nancy Grace Roman Space Telescope",
+      "flightNumber": 707,
+      "upcoming": true,
+      "success": null,
+      "details": "The Nancy Grace Roman Space Telescope is a NASA infrared space telescope with a 2.4 m (7.9 ft) wide field of view primary mirror and two scientific instruments. The Wide-Field Instrument (WFI) is a 300.8-megapixel multi-band visible and near-infrared camera, providing a sharpness of images comparable to that achieved by the Hubble Space Telescope over a 0.28 square degree field of view, 100 times larger than imaging cameras on the Hubble. The Coronagraphic Instrument (CGI) is a high-contrast, small field of view camera and spectrometer covering visible and near-infrared wavelengths using novel starlight-suppression technology. Roman objectives include a search for extra-solar planets using gravitational microlensing, and probing the expansion history of the Universe and the growth of cosmic structure, with the goal of measuring the effects of dark energy, the consistency of general relativity, and the curvature of spacetime.",
+      "dateUtc": "2026-08-30T00:00:00Z",
+      "dateUnix": 1788048000,
+      "dateLocal": "2026-08-30T00:00:00Z",
+      "datePrecision": "day",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon Heavy",
+      "launchpadName": "Launch Complex 39A",
+      "launchpadLocation": "Kennedy Space Center, FL, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/c62ac3115cf4d061.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 3,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/SpaceX",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/c62ac3115cf4d061.jpg"
+        ]
+      },
+      "staticFireDateUtc": null,
+      "window": 0,
+      "failures": [],
+      "rocket": {
+        "id": "161",
+        "name": "Falcon Heavy",
+        "type": "Heavy",
+        "active": true,
+        "boosters": 2,
+        "stages": 3,
+        "costPerLaunch": 90000000,
+        "successRatePct": 100,
+        "firstFlight": "2018-02-06",
+        "company": "SpaceX",
+        "country": "USA",
+        "description": "The Falcon Heavy is a variant of the Falcon 9 full thrust launch vehicle and consists of a standard Falcon 9 rocket core, with two additional boosters derived from the Falcon 9 first stage.",
+        "wikipedia": "https://en.wikipedia.org/wiki/Falcon_Heavy",
+        "heightMeters": 70,
+        "diameterMeters": 12.2,
+        "massKg": 1400000,
+        "image": "/data/spacex/images/c62ac3115cf4d061.jpg",
+        "flickrImages": [
+          "/data/spacex/images/c62ac3115cf4d061.jpg"
+        ]
+      },
+      "launchpad": {
+        "id": "87",
+        "name": "Launch Complex 39A",
+        "fullName": "Launch Complex 39A",
+        "locality": "Kennedy Space Center, FL, USA",
+        "region": null,
+        "timezone": "America/New_York",
+        "status": null,
+        "details": "",
+        "image": "/data/spacex/images/14b5a064429f38e9.jpg"
+      },
+      "crew": [],
+      "payloads": [
+        {
+          "id": "6105",
+          "name": "Nancy Grace Roman Space Telescope",
+          "type": "Astrophysics",
+          "customers": [],
+          "manufacturers": [
+            "SpaceX"
+          ],
+          "nationalities": [],
+          "orbit": "Sun-Earth L2",
+          "regime": "L2",
+          "massKg": null,
+          "massLbs": null
+        }
+      ],
+      "capsules": [],
+      "cores": []
+    },
+    "1ef27ca1-af91-48bb-b934-3da5abd9f711": {
+      "id": "1ef27ca1-af91-48bb-b934-3da5abd9f711",
+      "name": "Starlink Group 10-50",
+      "flightNumber": 699,
+      "upcoming": false,
+      "success": true,
+      "details": "A batch of 29 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.\r\n\r\nThe Falcon 9 1st stage carries 2 customer payload from Besxar Space Industries for testing their Fabships pilot reusable semiconductor wafers manufacturing pods in launch and re-entry environments.",
+      "dateUtc": "2026-07-05T10:50:00Z",
+      "dateUnix": 1783248600,
+      "dateLocal": "2026-07-05T10:50:00Z",
+      "datePrecision": "hour",
+      "tbd": false,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 40",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
+      "patchImage": "/data/spacex/images/1927035cad14a77c.png",
+      "vehicleImage": "/data/spacex/images/b317ff9ea04bd623.png",
+      "crewCount": 0,
+      "payloadCount": 29,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": true,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": "https://x.com/i/broadcasts/1oKMvvkZZAOGQ",
+        "article": "https://www.spacex.com/launches/sl-10-50",
+        "wikipedia": "https://en.wikipedia.org/wiki/Starlink",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": "/data/spacex/images/1927035cad14a77c.png",
+        "patchLarge": "/data/spacex/images/1927035cad14a77c.png",
+        "flickrOriginal": [
+          "/data/spacex/images/b317ff9ea04bd623.png"
+        ]
+      },
+      "staticFireDateUtc": null,
+      "window": 14400,
+      "failures": [],
+      "rocket": {
+        "id": "164",
+        "name": "Falcon 9 Block 5",
+        "type": "Block 5",
+        "active": true,
+        "boosters": 0,
+        "stages": 2,
+        "costPerLaunch": 52000000,
+        "successRatePct": 100,
+        "firstFlight": "2018-05-11",
+        "company": "SpaceX",
+        "country": "USA",
+        "description": "Falcon 9 is a two-stage rocket designed and manufactured by SpaceX for the reliable and safe transport of satellites and the Dragon spacecraft into orbit. The Block 5 variant is the fifth major interval aimed at improving upon the ability for rapid reusability.",
+        "wikipedia": "https://en.wikipedia.org/wiki/Falcon_9",
+        "heightMeters": 70,
+        "diameterMeters": 3.65,
+        "massKg": 549000,
+        "image": "/data/spacex/images/83daf3ce21b64d93.jpg",
+        "flickrImages": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg",
+          "/data/spacex/images/b317ff9ea04bd623.png"
+        ]
+      },
+      "launchpad": {
+        "id": "80",
+        "name": "Space Launch Complex 40",
+        "fullName": "Space Launch Complex 40",
+        "locality": "Cape Canaveral SFS, FL, USA",
+        "region": null,
+        "timezone": "America/New_York",
+        "status": null,
+        "details": "",
+        "image": "/data/spacex/images/9b1f5cf5035d37b9.jpg"
+      },
+      "crew": [],
+      "payloads": [
+        {
+          "id": "7663",
+          "name": "Starlink Group 10-50",
+          "type": "Communications",
+          "customers": [
+            "SpaceX"
+          ],
+          "manufacturers": [
+            "SpaceX"
+          ],
+          "nationalities": [
+            "USA"
+          ],
+          "orbit": "Low Earth Orbit",
+          "regime": "LEO",
+          "massKg": null,
+          "massLbs": null
+        }
+      ],
+      "capsules": [],
+      "cores": []
+    },
     "62d4cd48-ed28-418b-b58c-526781a50a39": {
       "id": "62d4cd48-ed28-418b-b58c-526781a50a39",
       "name": "Starlink Group 10-42",
@@ -2357,6 +2551,106 @@
         {
           "id": "7665",
           "name": "Starlink Group 10-42",
+          "type": "Communications",
+          "customers": [
+            "SpaceX"
+          ],
+          "manufacturers": [
+            "SpaceX"
+          ],
+          "nationalities": [
+            "USA"
+          ],
+          "orbit": "Low Earth Orbit",
+          "regime": "LEO",
+          "massKg": null,
+          "massLbs": null
+        }
+      ],
+      "capsules": [],
+      "cores": []
+    },
+    "135fb199-a39e-48cc-ba27-0aecd96ba9f8": {
+      "id": "135fb199-a39e-48cc-ba27-0aecd96ba9f8",
+      "name": "Starlink Group 17-48",
+      "flightNumber": 702,
+      "upcoming": true,
+      "success": null,
+      "details": "A batch of 24 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
+      "dateUtc": "2026-07-11T02:00:00Z",
+      "dateUnix": 1783735200,
+      "dateLocal": "2026-07-11T02:00:00Z",
+      "datePrecision": "hour",
+      "tbd": false,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": "/data/spacex/images/1927035cad14a77c.png",
+      "vehicleImage": "/data/spacex/images/b317ff9ea04bd623.png",
+      "crewCount": 0,
+      "payloadCount": 24,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": true,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": "https://x.com/i/broadcasts/1PKqrrkYpNwGb",
+        "article": "https://www.spacex.com/launches/sl-17-48",
+        "wikipedia": "https://en.wikipedia.org/wiki/Starlink",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": "/data/spacex/images/1927035cad14a77c.png",
+        "patchLarge": "/data/spacex/images/1927035cad14a77c.png",
+        "flickrOriginal": [
+          "/data/spacex/images/b317ff9ea04bd623.png"
+        ]
+      },
+      "staticFireDateUtc": null,
+      "window": 14400,
+      "failures": [],
+      "rocket": {
+        "id": "164",
+        "name": "Falcon 9 Block 5",
+        "type": "Block 5",
+        "active": true,
+        "boosters": 0,
+        "stages": 2,
+        "costPerLaunch": 52000000,
+        "successRatePct": 100,
+        "firstFlight": "2018-05-11",
+        "company": "SpaceX",
+        "country": "USA",
+        "description": "Falcon 9 is a two-stage rocket designed and manufactured by SpaceX for the reliable and safe transport of satellites and the Dragon spacecraft into orbit. The Block 5 variant is the fifth major interval aimed at improving upon the ability for rapid reusability.",
+        "wikipedia": "https://en.wikipedia.org/wiki/Falcon_9",
+        "heightMeters": 70,
+        "diameterMeters": 3.65,
+        "massKg": 549000,
+        "image": "/data/spacex/images/83daf3ce21b64d93.jpg",
+        "flickrImages": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg",
+          "/data/spacex/images/b317ff9ea04bd623.png"
+        ]
+      },
+      "launchpad": {
+        "id": "16",
+        "name": "Space Launch Complex 4E",
+        "fullName": "Space Launch Complex 4E",
+        "locality": "Vandenberg SFB, CA, USA",
+        "region": null,
+        "timezone": "America/Los_Angeles",
+        "status": null,
+        "details": "Space Launch Complex 4 East (SLC-4E) is a launch site at Vandenberg Space Force Base, California, U.S.\r\n\r\nThe pad was previously used by Atlas and Titan rockets between 1963 and 2005. The pad was built for use by Atlas-Agena rockets, but was later rebuilt to handle Titan rockets.",
+        "image": "/data/spacex/images/b752567507d74cae.jpg"
+      },
+      "crew": [],
+      "payloads": [
+        {
+          "id": "7664",
+          "name": "Starlink Group 17-48",
           "type": "Communications",
           "customers": [
             "SpaceX"
@@ -2572,5 +2866,71 @@
       "capsules": [],
       "cores": []
     }
+  },
+  "cadence": {
+    "points": [
+      {
+        "monthKey": "2025-08",
+        "label": "Jul 25",
+        "count": 0
+      },
+      {
+        "monthKey": "2025-09",
+        "label": "Aug 25",
+        "count": 0
+      },
+      {
+        "monthKey": "2025-10",
+        "label": "Sep 25",
+        "count": 0
+      },
+      {
+        "monthKey": "2025-11",
+        "label": "Oct 25",
+        "count": 7
+      },
+      {
+        "monthKey": "2025-12",
+        "label": "Nov 25",
+        "count": 13
+      },
+      {
+        "monthKey": "2026-01",
+        "label": "Dec 25",
+        "count": 13
+      },
+      {
+        "monthKey": "2026-02",
+        "label": "Jan 26",
+        "count": 12
+      },
+      {
+        "monthKey": "2026-03",
+        "label": "Feb 26",
+        "count": 15
+      },
+      {
+        "monthKey": "2026-04",
+        "label": "Mar 26",
+        "count": 12
+      },
+      {
+        "monthKey": "2026-05",
+        "label": "Apr 26",
+        "count": 12
+      },
+      {
+        "monthKey": "2026-06",
+        "label": "May 26",
+        "count": 14
+      },
+      {
+        "monthKey": "2026-07",
+        "label": "Jun 26",
+        "count": 2
+      }
+    ],
+    "rangeLabel": "Jul 25 – Jun 26",
+    "generatedAt": "2026-07-05T20:32:40.433Z"
   }
 }

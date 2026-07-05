@@ -14,9 +14,12 @@ import type {
 } from "@/types/spacex";
 import { MissionControlHero } from "@/components/spacex/MissionControlHero";
 import { MissionLaunchBoard } from "@/components/spacex/MissionLaunchBoard";
-import { MissionDetailPanel } from "@/components/spacex/MissionDetailPanel";
-import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
-import { ChartBar, Briefcase, FileText, Search } from "@/components/ui/ServerIcons";
+import { MissionLaunchTape } from "@/components/spacex/MissionLaunchTape";
+import { MissionCadenceStrip } from "@/components/spacex/MissionCadenceStrip";
+import { MissionStatFascia, type MissionStatFasciaCell } from "@/components/spacex/MissionStatFascia";
+import { MissionVehicleCatalog } from "@/components/spacex/MissionVehicleCatalog";
+import { MissionRecoveryPanel } from "@/components/spacex/MissionRecoveryPanel";
+import { MissionDrawer } from "@/components/spacex/MissionDrawer";
 import {
   buildMissionControlHref,
   DEFAULT_MISSION_CONTROL_STATE,
@@ -28,6 +31,14 @@ interface SpaceXMissionControlClientProps {
   initialData?: MissionControlInitialData;
   renderedAtMs?: number;
 }
+
+type MissionControlSection = "manifest" | "vehicles" | "recovery";
+
+const SECTION_OPTIONS: Array<{ key: MissionControlSection; label: string }> = [
+  { key: "manifest", label: "Manifest" },
+  { key: "vehicles", label: "Vehicles" },
+  { key: "recovery", label: "Recovery" },
+];
 
 const LIVE_REFRESH_INTERVAL_MS = 300_000;
 const LIVE_REFRESH_DEDUPE_MS = 1_500;
@@ -119,6 +130,18 @@ export function SpaceXMissionControlClient({
     initialData?.detailError ?? null
   );
   const [detailFetchKey, setDetailFetchKey] = useState(0);
+
+  const [section, setSection] = useState<MissionControlSection>("manifest");
+
+  // Launch tape, cadence, and the vehicle/recovery catalogs are read once
+  // from the server-rendered snapshot rather than kept on the 5-minute live
+  // poll below — none of them change on that cadence (the tape's "recent
+  // outcomes" and the hydrated vehicle/core records only change on a
+  // snapshot rebuild), so there's no separate fetch/loading state for them.
+  const tapeRecentLaunches = initialData?.tapeRecentLaunches ?? [];
+  const tapeUpcomingLaunches = initialData?.tapeUpcomingLaunches ?? [];
+  const vehicleCatalogDetails = initialData?.launchDetails ?? {};
+  const cadence = initialData?.cadence ?? null;
 
   const summaryRequestId = useRef(0);
   const launchesRequestId = useRef(0);
@@ -454,77 +477,40 @@ export function SpaceXMissionControlClient({
     transition: { duration: shouldReduceMotion ? 0 : 0.42 },
   };
 
-  const insightByLabel = useMemo(() => {
-    const map = new Map<string, string>();
-    (summary?.insights ?? []).forEach((insight) => {
-      map.set(insight.label.toLowerCase(), insight.value);
-    });
-    return map;
+  // Fused stat fascia — four cells, all computed from the same
+  // `buildInsights()` aggregate the board already relies on elsewhere. Only
+  // fields that are actually populated today are shown (see the mission
+  // control audit: "boosters landed"/"fleet leader" have no backing data
+  // until Recovery's core records are populated upstream), so nothing here
+  // is fabricated.
+  const statFasciaCells: MissionStatFasciaCell[] = useMemo(() => {
+    const insightByLabel = new Map((summary?.insights ?? []).map((insight) => [
+      insight.label.toLowerCase(),
+      insight,
+    ]));
+
+    const rows: Array<{ key: string; label: string }> = [
+      { key: "completed archive", label: "Flights to date" },
+      { key: "historical success", label: "Success rate" },
+      { key: "upcoming queue", label: "Upcoming queue" },
+      { key: "active rockets", label: "Active rockets" },
+    ];
+
+    return rows
+      .map(({ key, label }) => {
+        const insight = insightByLabel.get(key);
+        if (!insight) return null;
+        return { label, value: insight.value, detail: insight.description };
+      })
+      .filter((cell): cell is MissionStatFasciaCell => Boolean(cell));
   }, [summary]);
 
-  const heroLaunchDate = summary?.heroLaunch?.dateUtc ?? null;
-  const daysToNext = useMemo(() => {
-    if (!heroLaunchDate) return "—";
-    const ms = new Date(heroLaunchDate).getTime() - renderedAtMs;
-    if (Number.isNaN(ms)) return "—";
-    const days = Math.round(ms / (1000 * 60 * 60 * 24));
-    if (days < 0) return "Past";
-    return days === 0 ? "Today" : String(days);
-  }, [heroLaunchDate, renderedAtMs]);
-
-  const upcomingCount = routeState.status === "upcoming" ? launches.length : "—";
-
-  const past30DayCount = useMemo(() => {
-    if (routeState.status !== "past") return null;
-    const cutoff = renderedAtMs - 30 * 24 * 60 * 60 * 1000;
-    return launches.filter((launch) => {
-      const t = new Date(launch.dateUtc).getTime();
-      return Number.isFinite(t) && t >= cutoff;
-    }).length;
-  }, [launches, renderedAtMs, routeState.status]);
-
-  const insightsCells: HomeStatsCell[] = [
-    {
-      label: "Days to next launch",
-      value: <span className="tabular-nums">{daysToNext}</span>,
-      sub: summary?.heroLaunch?.name ?? "Awaiting schedule",
-    },
-    {
-      label: "Upcoming launches",
-      value: <span className="tabular-nums">{upcomingCount}</span>,
-      sub: routeState.status === "upcoming" ? "On the live board" : "Switch to upcoming view",
-    },
-    {
-      label: "Launches in last 30 days",
-      value: <span className="tabular-nums">{past30DayCount ?? "—"}</span>,
-      sub: routeState.status === "past" ? "Counted from the past board" : "n/a in current snapshot",
-    },
-    {
-      label: "Success rate",
-      value: insightByLabel.get("success rate") ?? "—",
-      sub: "Across tracked Falcon launches",
-    },
-    {
-      label: "Most-flown rocket",
-      value: insightByLabel.get("most flown") ?? insightByLabel.get("most-flown rocket") ?? "—",
-      sub: "By total flights in dataset",
-    },
-    {
-      label: "Active launchpads",
-      value: insightByLabel.get("active launchpads") ?? "—",
-      sub: "Cape, Vandy, Boca Chica",
-    },
-    {
-      label: "Booster reuses YTD",
-      value: insightByLabel.get("booster reuses ytd") ?? insightByLabel.get("reuses") ?? "—",
-      sub: "n/a in current snapshot",
-    },
-    {
-      label: "Falcon 9 turnaround",
-      value: insightByLabel.get("falcon 9 turnaround") ?? insightByLabel.get("avg turnaround") ?? "—",
-      sub: "Average days between flights",
-    },
-  ];
+  function handleCloseDrawer() {
+    setDetailLoading(false);
+    setDetailError(null);
+    setDetail(null);
+    updateRouteState({ launch: null, panel: DEFAULT_MISSION_CONTROL_STATE.panel });
+  }
 
   return (
     <section
@@ -594,6 +580,13 @@ export function SpaceXMissionControlClient({
           </div>
         </motion.div>
 
+        <motion.div className="mb-5" {...motionProps}>
+          <MissionLaunchTape
+            recentLaunches={tapeRecentLaunches}
+            upcomingLaunches={tapeUpcomingLaunches}
+          />
+        </motion.div>
+
         <div className="space-y-5">
           <motion.div {...motionProps}>
             <MissionControlHero
@@ -610,54 +603,63 @@ export function SpaceXMissionControlClient({
             />
           </motion.div>
 
-          <motion.div {...motionProps}>
-            <HomeStatsPanel
-              id="spacex-stats"
-              title="Mission control at a glance"
-              meta="Live, refreshes every 5 min"
-              cells={insightsCells}
-              pills={[
-                { label: "Upcoming launches", href: "/spacex-mission-control?status=upcoming", icon: Briefcase },
-                { label: "Past 30d", href: "/spacex-mission-control?status=past", icon: ChartBar },
-                { label: "Stats", href: "/spacex-mission-control?status=past", icon: FileText },
-                { label: "Boosters", href: "/spacex-mission-control?status=past", icon: Search },
-              ]}
-            />
+          <motion.div className="space-y-4" {...motionProps}>
+            <MissionStatFascia cells={statFasciaCells} />
+            <MissionCadenceStrip cadence={cadence} />
           </motion.div>
 
-          <motion.div
-            className="grid gap-5 xl:grid-cols-[minmax(0,1.08fr)_minmax(340px,0.92fr)] xl:items-start"
-            {...motionProps}
-          >
-            <MissionLaunchBoard
-              launches={launches}
-              status={routeState.status}
-              selectedLaunchId={routeState.launch}
-              isLoading={launchesLoading || detailLoading}
-              error={launchesError}
-              onStatusChange={handleStatusChange}
-              onSelectLaunch={(id) => {
-                setDetailLoading(true);
-                setDetailError(null);
-                setDetail(null);
-                updateRouteState({ launch: id, panel: "overview" });
-              }}
-              onRetry={() => {
-                setLaunchesLoading(true);
-                setLaunchesError(null);
-                setLaunches([]);
-                setLaunchesFetchKey((value) => value + 1);
-              }}
-            />
-            <div className="xl:sticky xl:top-28 xl:self-start">
-              <MissionDetailPanel
-                launch={routeState.launch ? detail : null}
-                activePanel={routeState.panel}
-                isLoading={routeState.launch ? detailLoading : false}
-                error={routeState.launch ? detailError : null}
-                onPanelChange={(panel) => updateRouteState({ panel })}
-              />
+          <motion.div {...motionProps}>
+            <div
+              role="tablist"
+              aria-label="Mission control sections"
+              className="inline-flex flex-wrap gap-2 rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] p-2"
+            >
+              {SECTION_OPTIONS.map((option) => (
+                <button
+                  key={option.key}
+                  type="button"
+                  role="tab"
+                  aria-selected={section === option.key}
+                  onClick={() => setSection(option.key)}
+                  className={`tap-target rounded-[var(--radius-2xl)] px-4 py-3 text-sm font-semibold transition ${
+                    section === option.key
+                      ? "bg-[var(--home-signal)] text-white"
+                      : "text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
+                  }`}
+                >
+                  {option.label}
+                </button>
+              ))}
             </div>
+          </motion.div>
+
+          <motion.div {...motionProps}>
+            {section === "manifest" ? (
+              <MissionLaunchBoard
+                launches={launches}
+                status={routeState.status}
+                selectedLaunchId={routeState.launch}
+                isLoading={launchesLoading || detailLoading}
+                error={launchesError}
+                onStatusChange={handleStatusChange}
+                onSelectLaunch={(id) => {
+                  setDetailLoading(true);
+                  setDetailError(null);
+                  setDetail(null);
+                  updateRouteState({ launch: id, panel: "overview" });
+                }}
+                onRetry={() => {
+                  setLaunchesLoading(true);
+                  setLaunchesError(null);
+                  setLaunches([]);
+                  setLaunchesFetchKey((value) => value + 1);
+                }}
+              />
+            ) : section === "vehicles" ? (
+              <MissionVehicleCatalog launchDetails={vehicleCatalogDetails} />
+            ) : (
+              <MissionRecoveryPanel launchDetails={vehicleCatalogDetails} />
+            )}
           </motion.div>
         </div>
 
@@ -671,6 +673,16 @@ export function SpaceXMissionControlClient({
           </p>
         </section>
       </div>
+
+      <MissionDrawer
+        launchId={routeState.launch}
+        detail={routeState.launch ? detail : null}
+        activePanel={routeState.panel}
+        isLoading={routeState.launch ? detailLoading : false}
+        error={routeState.launch ? detailError : null}
+        onPanelChange={(panel) => updateRouteState({ panel })}
+        onClose={handleCloseDrawer}
+      />
     </section>
   );
 }

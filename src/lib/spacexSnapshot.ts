@@ -1,5 +1,6 @@
 import generatedSnapshot from "@/data/spacexSnapshot.generated.json";
 import type {
+  MissionControlCadence,
   MissionControlSnapshot,
   MissionControlStatus,
   MissionLaunchCard,
@@ -14,6 +15,7 @@ const EMPTY_SPACEX_SNAPSHOT: MissionControlSnapshot = {
   upcomingLaunches: [],
   pastLaunches: [],
   launchDetails: {},
+  cadence: null,
 };
 
 let snapshotOverride: MissionControlSnapshot | null = null;
@@ -43,6 +45,10 @@ function normalizeSnapshot(value: unknown): MissionControlSnapshot {
     upcomingLaunches: isLaunchCardArray(snapshot.upcomingLaunches) ? snapshot.upcomingLaunches : [],
     pastLaunches: isLaunchCardArray(snapshot.pastLaunches) ? snapshot.pastLaunches : [],
     launchDetails: isLaunchDetailRecord(snapshot.launchDetails) ? snapshot.launchDetails : {},
+    cadence:
+      snapshot.cadence && typeof snapshot.cadence === "object"
+        ? (snapshot.cadence as MissionControlCadence)
+        : null,
   };
 }
 
@@ -68,6 +74,14 @@ export function getSpaceXSnapshotLaunches(
 
 export function getSpaceXSnapshotLaunchDetail(id: string): MissionLaunchDetail | null {
   return getSpaceXSnapshot().launchDetails[id] ?? null;
+}
+
+export function getSpaceXSnapshotLaunchDetails(): Record<string, MissionLaunchDetail> {
+  return getSpaceXSnapshot().launchDetails;
+}
+
+export function getSpaceXSnapshotCadence(): MissionControlCadence | null {
+  return getSpaceXSnapshot().cadence;
 }
 
 export function hasSpaceXSnapshotData(): boolean {
