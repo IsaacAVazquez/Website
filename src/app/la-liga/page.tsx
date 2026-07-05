@@ -16,7 +16,7 @@ export const metadata = constructMetadata({
   dateModified: laLigaSnapshot.updatedAt,
   aiMetadata: {
     profession: "Product Manager",
-    specialty: "Interactive dashboards, sports data products, and productized exploratory tools",
+    specialty: "Interactive dashboards, sports data products, and interactive data tools",
     expertise: [
       "Next.js",
       "Sports dashboard design",

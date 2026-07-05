@@ -1,5 +1,5 @@
 ---
-title: "Building Reliable Software Systems: A Complete Guide to Software Quality"
+title: "Building Reliable Software Systems: What Actually Holds Up at Scale"
 excerpt: "Reliability isn't something you bolt on after the fact. It's a product of the decisions you make throughout development. Here's what I've learned about the patterns that actually hold up at scale."
 publishedAt: "2025-01-24"
 category: "Software Quality"
@@ -20,7 +20,7 @@ seo:
   keywords: ["software quality", "reliable software", "system architecture", "software testing", "best practices", "Austin software engineer", "Bay Area engineering", "business strategy software", "product management quality", "UC Berkeley MBA tech"]
 ---
 
-# Building Reliable Software Systems: A Complete Guide to Software Quality
+# Building Reliable Software Systems: What Actually Holds Up at Scale
 
 Reliability isn't something you add at the end of a development cycle. I've built systems at pretty different scales, from civic tech platforms serving tens of millions of voters in Austin to applications designed for Bay Area levels of traffic and iteration speed. The pattern I keep seeing is the same. Reliability is a product of hundreds of small decisions made throughout development, not a layer you can add on top once the feature is done.
 
@@ -176,7 +176,7 @@ The defensive validation before the database transaction isn't redundant. It's t
 
 ## Architecture for Reliability
 
-Clean architecture organizes code into layers that can change independently. The domain layer holds business logic and has no external dependencies. The application layer orchestrates use cases. The infrastructure layer handles external concerns like databases and email services. When each layer is testable in isolation and the dependencies point inward, you end up with code that's easier to change and easier to verify.
+The structure I keep coming back to is clean architecture, code organized into layers that can change independently. The domain layer holds business logic and has no external dependencies, the application layer orchestrates use cases, and the infrastructure layer handles external concerns like databases and email services. What I like about it is that when each layer is testable in isolation and the dependencies point inward, you end up with code that's easier to change and easier to verify.
 
 ```typescript
 // Domain Layer, no external dependencies
@@ -388,4 +388,4 @@ When I'm making the case for investing in reliability work, I try to put it in t
 
 That's the part that business school has been useful for. Being able to frame technical quality arguments in financial terms doesn't make the technical work easier, but it does make it more likely to get resourced.
 
-If you want the adjacent reads, [The Complete Guide to QA Engineering: Building Quality into Software Development](/writing/complete-guide-qa-engineering) is the broader QA systems piece, and [The QA Engineer's Guide to Testing AI Systems: Quality Assurance for Machine Learning](/writing/qa-engineer-guide-testing-ai-systems) is where the same reliability instincts get applied to probabilistic systems instead of conventional software.
+If you want the adjacent reads, [QA Engineering: Building Quality into Software Development](/writing/complete-guide-qa-engineering) is the broader QA systems piece, and [The QA Engineer's Guide to Testing AI Systems: Quality Assurance for Machine Learning](/writing/qa-engineer-guide-testing-ai-systems) is where the same reliability instincts get applied to probabilistic systems instead of conventional software.

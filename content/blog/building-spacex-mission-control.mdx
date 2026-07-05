@@ -1,5 +1,5 @@
 ---
-title: "Building SpaceX Mission Control: Turning Public Launch Data Into A Productized Mission Board"
+title: "Building SpaceX Mission Control to Turn Public Launch Data Into a Mission Board"
 excerpt: "I built SpaceX Mission Control because most public API demos stop at retrieval. Here's what it took to turn flat launch data into a navigable, relationship-aware mission board."
 publishedAt: "2026-04-02"
 category: "Product Design"
@@ -13,7 +13,7 @@ seo:
   keywords: ["spacex mission control", "launch tracker design", "public api dashboard", "data product design", "relationship-aware api", "spacex dashboard"]
 ---
 
-# Building SpaceX Mission Control: Turning Public Launch Data Into A Productized Mission Board
+# Building SpaceX Mission Control to Turn Public Launch Data Into a Mission Board
 
 If you want to try the product before reading the breakdown, open [SpaceX Mission Control](/spacex-mission-control).
 
@@ -23,13 +23,13 @@ Public APIs make it easy to access data. They do not automatically make that dat
 
 A lot of public API projects stop at retrieval. Fetch a list, render a few cards, add filters, call it done. That proves the integration works, but it does not prove the product works.
 
-For a subject like spaceflight, the data is inherently relational. A launch means more when you can connect it to the rocket, the orbit, the payloads, the pad, the crew, and the status of the mission itself. A flat list hides most of that richness. So the real product question became: how do you make public launch data feel navigable, operational, and worth exploring?
+For a subject like spaceflight, the data is inherently relational. A launch means more when you can connect it to the rocket, the orbit, the payloads, the pad, the crew, and the status of the mission itself. A flat list hides most of that richness. So the real product question became how you make public launch data feel navigable, operational, and worth exploring.
 
 ## Why The Experience Starts With The Next Launch
 
 The first major decision was to center the interface on the next launch rather than treat all launches as equal. That mirrors how people naturally approach this category. Most users do not arrive asking for an abstract database browse. They want to know what is happening next, when it happens, and why it matters.
 
-By giving the next launch a dedicated hero treatment, the product establishes a useful hierarchy: immediate mission awareness first, broader board browsing second, deep detail exploration third. This is a product-design decision, not just a layout decision. It tells the user where to start.
+By giving the next launch a dedicated hero treatment, the product establishes a useful hierarchy, putting immediate mission awareness first, broader board browsing next, and deep detail exploration after that. This is a product-design decision, not just a layout decision. It tells the user where to start.
 
 ## The Core Product Decisions
 
@@ -37,19 +37,19 @@ The launch board is designed to feel like a working surface, not a passive archi
 
 One of the most important interaction decisions in the project is that mission detail is deep-linkable through route state. That means a specific launch and panel can be shared or revisited directly instead of existing only as transient UI state. It makes the experience more useful for exploration because the user can hold onto a meaningful point inside the product. Deep linking is often undervalued in dashboard-style projects. Here it matters because the detail panel is where the relationships between entities become legible.
 
-The most important technical choice underneath the product is relationship-aware normalization. The UI should not make users think in raw API fragments. It should present a mission as a connected object: what rocket is involved, which payloads are attached, whether crew or capsules matter, where the mission launches, how the mission fits into a larger launch story. That translation layer is what turns "API integration" into product behavior.
+The most important technical choice underneath the product is relationship-aware normalization. The UI should not make users think in raw API fragments. It should present a mission as a connected object, showing what rocket is involved, which payloads are attached, whether crew or capsules matter, where the mission launches, and how it fits into a larger launch story. That translation layer is what turns "API integration" into product behavior.
 
 ## Why This Needed To Feel Like A Product, Not A Showcase
 
 Space-themed UI can become gimmicky very fast. I wanted this project to avoid that trap. The goal was not to make something that simply looked cinematic. The goal was to create a productized data experience where the interface hierarchy, the route state, and the data normalization all support a clearer understanding of the missions.
 
-That required restraint: using visual atmosphere without sacrificing legibility, letting the mission data drive the interaction model, keeping the detail layer useful rather than decorative. The style is part of the experience, but it is not the product by itself.
+That required restraint, using visual atmosphere without sacrificing legibility, letting the mission data drive the interaction model, and keeping the detail layer useful rather than decorative. The style is part of the experience, but it is not the product by itself.
 
 ## What This Project Taught Me
 
 Data products get stronger when they acknowledge the shape of the domain instead of forcing the domain into generic UI patterns. Spaceflight is event-driven, relationship-heavy, and status-sensitive. Once I treated those qualities as design inputs, the product got better quickly. The next-launch hero, the mission board, and the deep-linked detail panel all came out of respecting that structure.
 
-This project also reinforced something I care about in dashboard design: route state is part of usability. A view you can return to and share is more valuable than one that only exists in the current browser moment.
+This project also reinforced something I care about in dashboard design, which is that route state is part of usability. A view you can return to and share is more valuable than one that only exists in the current browser moment.
 
 ## Try The Live Product
 

@@ -23,7 +23,7 @@ Understanding why it is winning tells you something useful about where to invest
 
 The simplest way to describe it is that MCP is a common language AI models use to talk to external systems. Before it existed, every tool integration was custom. If you wanted Claude to read your Notion database, you built a specific integration for that. If you wanted it to query a Postgres instance, you built a different specific integration. Each connection required its own implementation, its own error handling, its own maintenance.
 
-MCP standardizes that. It defines a protocol: a set of rules for how a model describes what tools are available, how it requests a tool call, and how results come back. Any system that implements the MCP server specification can now be connected to any model that implements the client side. The integration work happens once, not repeatedly for every model-tool pair.
+MCP standardizes that. It defines a protocol, a set of rules for how a model describes what tools are available, how it requests a tool call, and how results come back. Any system that implements the MCP server specification can now be connected to any model that implements the client side. The integration work happens once, not repeatedly for every model-tool pair.
 
 Anthropic published the specification in late 2024. What made it matter is that enough of the ecosystem adopted it quickly enough that it started becoming self-reinforcing. Tools built MCP servers because models supported it. Models supported it because tools were building servers. That dynamic is now far enough along that building a custom integration instead of an MCP server is the unusual choice, not the other way around.
 

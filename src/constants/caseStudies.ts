@@ -473,7 +473,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     },
     problem: {
       context:
-        "Provider docs read like marketing pages. Comparing five frontier models takes a tab graveyard and a spreadsheet.",
+        "Provider docs read like marketing pages. Comparing five frontier models means a dozen open tabs and a spreadsheet.",
       painPoints: [],
       stakes: "",
     },
@@ -699,11 +699,11 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
       summary:
         "I built a global earthquake dashboard that turns checked-in USGS GeoJSON snapshots into one calm, deep-linkable surface for recent activity, significant events, and regional breakdowns.",
       impact:
-        "Makes the planet's last day of seismic activity legible at a glance — what just moved, what was big enough to matter, and where the ground is busiest — without juggling separate live feeds.",
+        "Makes the planet's last day of seismic activity legible at a glance, what just moved, what was big enough to matter, and where the ground is busiest, without juggling separate live feeds.",
     },
     problem: {
       context:
-        "Raw USGS feeds are comprehensive but firehose-shaped; most people just want a fast read on what's recent, what's significant, and where activity is concentrated.",
+        "Raw USGS feeds carry everything but come at you like a firehose; most people just want a fast read on what's recent, what's significant, and where activity is concentrated.",
       painPoints: [],
       stakes: "",
     },

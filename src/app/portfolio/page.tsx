@@ -25,7 +25,7 @@ export const metadata = constructMetadata({
     ],
     contentType: "Portfolio / Projects",
     context:
-      "Complete portfolio of product management projects by Isaac Vazquez, covering live tools, analytics products, reliability work, and professional case studies.",
+      "Portfolio of product management projects by Isaac Vazquez, covering live tools, analytics products, reliability work, and professional case studies.",
     summary:
       "All projects demonstrating product management experience across platform scale, analytics, and investment research tooling.",
   },

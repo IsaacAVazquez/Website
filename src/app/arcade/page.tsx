@@ -25,7 +25,7 @@ const vt323 = VT323({
 export const metadata: Metadata = constructMetadata({
   title: "Reactor — Arcade",
   description:
-    "Reactor: a neon synthwave reflex arcade game tucked inside Isaac Vazquez's portfolio. A deliberate style experiment — light the live cell, dodge the decoys, keep the combo alive.",
+    "Reactor is a neon synthwave reflex arcade game inside Isaac Vazquez's portfolio, a deliberate style experiment where you light the live cell, dodge the decoys, and keep the combo alive.",
   canonicalUrl: "https://isaacavazquez.com/arcade",
 });
 

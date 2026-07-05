@@ -11,7 +11,7 @@ import { normalizeTransitState } from "./bay-area-transit-state";
 export const metadata = constructMetadata({
   title: "Bay Area Transit Pulse",
   description:
-    "Snapshot-backed BART dashboard for the Bay Area — lines and colors, live-style departure boards by station, and active service alerts in one calm screen.",
+    "Snapshot-backed BART dashboard for the Bay Area, with lines and colors, live-style departure boards by station, and active service alerts in one calm screen.",
   canonicalUrl: "/bay-area-transit",
   image: "/bay-area-transit/opengraph-image",
   dateModified: bayAreaTransitSnapshot.summary.system?.generatedAt?.slice(0, 10),

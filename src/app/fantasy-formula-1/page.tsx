@@ -27,7 +27,7 @@ export const metadata = constructMetadata({
     context:
       "Standalone Fantasy Formula 1 project by Isaac Vazquez that turns a checked-in OpenF1 snapshot into a practical team optimizer.",
     summary:
-      "Fantasy Formula 1 Optimizer helps users build five-driver, two-constructor lineups under a model budget using a transparent heuristic.",
+      "Fantasy Formula 1 Optimizer turns a checked-in OpenF1 snapshot into five-driver, two-constructor lineups you can plan under a model budget.",
     primaryFocus:
       "Fantasy sports decision support, lineup optimization, and snapshot-backed sports data UX",
   },

@@ -35,7 +35,7 @@ export const metadata = constructMetadata({
     ],
     contentType: "Interactive Sports Analysis",
     context:
-      "Hybrid portfolio project and editorial sports-analysis page by Isaac Vazquez that packages a bracket model through an interactive Next.js experience.",
+      "Hybrid portfolio project and editorial sports-analysis page by Isaac Vazquez that turns a bracket model into an interactive page you can click through by region.",
     summary:
       "Interactive 2026 March Madness bracket with upset picks, Final Four predictions, and a time-zone travel penalty model.",
     primaryFocus:

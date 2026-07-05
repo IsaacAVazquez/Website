@@ -17,7 +17,7 @@ seo:
 
 Software architecture has never evolved in a straight line. Each major shift happened because the previous approach stopped working at a particular scale, or because a new technology made a different tradeoff suddenly viable. I have worked across enough systems (civic tech platforms serving millions of voters, enterprise applications, and smaller products built under real constraints) to believe that understanding that history is not just interesting, it is practically useful. The decisions your team faces today are shaped by the same forces that drove every architectural transition before this one.
 
-What follows is my attempt to trace that evolution honestly, including where each paradigm genuinely helped and where it created new problems.
+What follows is my attempt to trace that evolution honestly, including where each approach genuinely helped and where it created new problems.
 
 ## Why Monoliths Were Not a Mistake
 
@@ -29,13 +29,13 @@ Where monoliths break down is predictable. When you need to scale one component 
 
 ## The Service-Oriented Architecture Detour
 
-SOA arrived in the 2000s promising integration and reuse. Enterprise service buses, SOAP interfaces, and centralized orchestration engines were supposed to let large organizations share business logic across applications without rebuilding it everywhere. The vision made sense. The implementation was frequently painful.
+SOA arrived in the 2000s promising integration and reuse. Enterprise service buses, SOAP interfaces, and centralized orchestration engines were supposed to let large organizations share business logic across applications without rebuilding it everywhere. The vision made sense, but the implementation was frequently painful.
 
 The problem with most SOA implementations was that the infrastructure complexity exceeded the benefits. Enterprise service buses became bottlenecks. SOAP contracts were rigid and verbose. Centralized orchestration created coupling through a different mechanism than the monolith had. Instead of one codebase, you had one coordinating service that everything depended on. Teams that built careful SOA systems often ended up with something slower, harder to change, and harder to debug than what they started with.
 
 That said, SOA did establish some ideas that survived into microservices. Services should map to business capabilities, interfaces matter, and reuse across systems is worth designing for. The execution changed but the underlying goal carried forward.
 
-## Microservices: Real Benefits, Real Costs
+## Microservices Have Real Benefits and Real Costs
 
 The microservices movement that emerged from Netflix, Twitter, and Uber in the early 2010s addressed genuine scale problems. When you need to deploy a single feature independently, when teams need genuine autonomy over their part of the system, when one component should be able to fail without taking down everything else, microservices are an answer to those specific pressures.
 
@@ -53,7 +53,7 @@ The honest version of what cloud-native enabled is cost flexibility and operatio
 
 Serverless computing pushed this further by removing the server abstraction entirely for workloads that fit the model. Functions that run in response to events, scale automatically, and cost nothing when idle are genuinely well-suited to certain problems (scheduled tasks, event processing, APIs with variable traffic patterns). They are poorly suited to workloads with consistent high traffic, long-running processes, or tight latency requirements. I have seen teams reach for serverless as a default rather than a choice and pay for it in unexpected costs, cold-start latency, and operational complexity in a different form.
 
-## AI-Native Architecture: Genuinely Different
+## AI-Native Architecture Is Genuinely Different
 
 The shift toward AI-native systems is different from the previous transitions in an important way. Monoliths, SOA, microservices, and cloud-native were all reorganizations of how existing software was structured and deployed. AI-native systems introduce a component type (the ML model) that behaves differently from traditional software and changes the design constraints around it.
 

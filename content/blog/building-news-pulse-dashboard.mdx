@@ -1,5 +1,5 @@
 ---
-title: "Building News Pulse: A Dashboard For Comparing How Major Outlets Cover The Same Story"
+title: "Building News Pulse to Compare How Major Outlets Cover the Same Story"
 excerpt: "I built News Pulse because it's surprisingly tedious to compare coverage across outlets in a structured way. Here's the product thinking behind the RSS foundation, the analysis layer, and the deliberate tradeoffs."
 publishedAt: "2026-04-02"
 category: "Media Analytics"
@@ -13,7 +13,7 @@ seo:
   keywords: ["news analytics dashboard", "rss aggregation", "media coverage analysis", "headline sentiment", "topic extraction dashboard", "news product design"]
 ---
 
-# Building News Pulse: A Dashboard For Comparing How Major Outlets Cover The Same Story
+# Building News Pulse to Compare How Major Outlets Cover the Same Story
 
 If you want to explore the product before reading the breakdown, open [News Pulse Dashboard](/news-pulse).
 
@@ -23,7 +23,7 @@ I built this project because it is surprisingly tedious to compare coverage acro
 
 ## The Problem Behind The Product
 
-People who follow the news closely often want to answer questions that consumer news products are not really designed to answer. Which outlets are covering this story heavily right now? Are the headlines converging around the same terms or splitting into different frames? Is the tone mostly urgent, negative, neutral, or mixed? How fast does a theme spread across sources? Most consumer news products are designed to deliver articles, not help people analyze editorial patterns. Enterprise media intelligence tools exist, but they are often heavier and more specialized than what this use case needs. That left a good product gap: a lightweight dashboard for comparing how several major outlets are talking about the same news cycle.
+People who follow the news closely often want to answer questions that consumer news products are not really designed to answer. They want to know which outlets are covering a story heavily right now, whether the headlines are converging on the same terms or splitting into different frames, whether the tone is mostly urgent or negative or neutral, and how fast a theme spreads across sources. Most consumer news products are designed to deliver articles, not help people analyze editorial patterns. Enterprise media intelligence tools exist, but they are often heavier and more specialized than what this use case needs. That left a good product gap, a lightweight dashboard for comparing how several major outlets are talking about the same news cycle.
 
 ## Why RSS Was The Right Foundation
 
@@ -43,8 +43,8 @@ There is always pressure to make media-analysis products feel more "AI-native" t
 
 ## What This Project Taught Me
 
-News products become more interesting when they move one step up the abstraction ladder. A feed is useful. A comparative view of editorial patterns is often more useful. This project reinforced a product principle I keep coming back to: if users are already doing synthesis manually, there is probably room to build a better intermediate layer. In this case, that layer is not a full newsroom platform. It is a clean dashboard that makes coverage differences easier to spot. It also reminded me that "lightweight" is not the same as "thin." A product can do meaningful analytical work without pretending every problem requires a giant model stack.
+News products become more interesting when they move one step up the abstraction ladder. A feed is useful. A comparative view of editorial patterns is often more useful. This project reinforced a product principle I keep coming back to, which is that if users are already doing synthesis manually, there is probably room to build a better intermediate layer. In this case, that layer is not a full newsroom platform. It is a clean dashboard that makes coverage differences easier to spot. It also reminded me that "lightweight" is not the same as "thin." A product can do meaningful analytical work without pretending every problem requires a giant model stack.
 
 ## Try The Live Product
 
-You can explore the full experience at [News Pulse Dashboard](/news-pulse). The easiest way to understand the product is to start on headlines, pick a source, then switch back to the all-sources coverage and analysis views. That transition shows the core point of the project: turning separate feeds into a clearer picture of the news cycle.
+You can explore the full experience at [News Pulse Dashboard](/news-pulse). The easiest way to understand the product is to start on headlines, pick a source, then switch back to the all-sources coverage and analysis views. That transition shows the core point of the project, which is turning separate feeds into a clearer picture of the news cycle.

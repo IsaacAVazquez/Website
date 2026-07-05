@@ -8,7 +8,7 @@ import { normalizeEarthquakeState } from "./earthquake-state";
 export const metadata = constructMetadata({
   title: "Earthquake Pulse",
   description:
-    "Snapshot-backed global earthquake monitor: the past 24 hours of seismic activity, significant quakes worldwide, magnitude distribution, and the busiest regions — all on one calm, deep-linkable screen.",
+    "Snapshot-backed global earthquake monitor covering the past 24 hours of seismic activity, significant quakes worldwide, magnitude distribution, and the busiest regions, all on one calm, deep-linkable screen.",
   canonicalUrl: "/earthquake-pulse",
   dateModified: earthquakeSnapshot.summary.generatedAt?.slice(0, 10),
   aiMetadata: {

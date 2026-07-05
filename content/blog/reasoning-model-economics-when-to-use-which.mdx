@@ -32,7 +32,7 @@ Getting this right requires understanding what the capability difference actuall
 
 "Reasoning" in the model-tier context refers to the ability to hold a complex problem in context, decompose it into steps, consider and revise intermediate conclusions, and arrive at an answer that accounts for constraints and tradeoffs that were not explicitly stated in the prompt. It is different from instruction-following capability, which is about accurately executing a well-specified request. And it is different from knowledge breadth, which is about having seen and retained a large amount of information during training.
 
-Most tasks that feel complicated are actually well-specified instruction-following tasks. Summarize this document. Draft a response to this email. Generate five alternatives to this headline. These tasks feel like they require thought, but they are actually pattern-matching against well-established templates. Mid-tier models handle them with quality that is indistinguishable from frontier models in practice.
+Most tasks that feel complicated are actually well-specified instruction-following tasks. Think of summarizing a document, drafting a response to an email, or generating five alternatives to a headline. These tasks feel like they require thought, but they are actually pattern-matching against well-established templates. Mid-tier models handle them with quality that is indistinguishable from frontier models in practice.
 
 The tasks that actually require reasoning are the ones where the problem is underspecified, where multiple constraints have to be balanced against each other simultaneously, where the answer depends on unstated context that has to be inferred, or where the correct answer requires recognizing that the question itself is framed incorrectly. These are genuinely rarer than we tend to assume.
 
@@ -58,7 +58,7 @@ The majority of tasks that teams run against frontier models fall into this cate
 
 The tell is whether the task has a single clear correct approach. If I am asking a model to extract all dates from a document and format them consistently, there is a right way to do that and both models will do it. The additional reasoning capability of a frontier model adds nothing, because the task does not require reasoning in the relevant sense.
 
-Classification tasks, even complex ones, usually fall here. Sentiment analysis, intent detection, topic categorization. These are pattern-matching tasks that mid-tier models handle well. I have run comparisons on classification tasks where the intuition was that the nuance required a frontier model, and the actual quality difference was small enough that it did not justify the cost.
+Classification tasks, even complex ones, usually fall here. Sentiment analysis, intent detection, and topic categorization are all pattern-matching tasks that mid-tier models handle well. I have run comparisons on classification tasks where the intuition was that the nuance required a frontier model, and the actual quality difference was small enough that it did not justify the cost.
 
 ## A practical decision framework
 
@@ -72,7 +72,7 @@ For interactive tools and assistants, I generally default to a mid-tier model an
 
 ## What I think people get wrong about this
 
-The most common mistake is using benchmark performance as a proxy for task-level quality. A model that scores significantly higher on MMLU or HumanEval does not necessarily produce significantly better output on the specific, repetitive tasks that make up most of a team's actual usage. Benchmarks measure the ceiling; production usage reflects the average case.
+The most common mistake is using benchmark performance as a proxy for task-level quality. A model that scores significantly higher on MMLU or HumanEval does not necessarily produce significantly better output on the specific, repetitive tasks that make up most of a team's actual usage. Benchmarks measure the ceiling, but what you actually see in production is closer to the average case.
 
 The second mistake is evaluating model quality on the tasks that went well. The right test is to find the tasks where output quality was unsatisfactory and ask whether a different model tier would have produced a different outcome. Often the answer is that the task definition was the problem, not the model capability.
 
