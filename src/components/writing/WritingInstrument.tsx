@@ -6,6 +6,7 @@ import {
   IconArrowRight,
   IconChevronLeft,
   IconChevronRight,
+  IconClock,
   IconSearch,
 } from "@tabler/icons-react";
 import { useTablistKeyboard } from "@/hooks/useTablistKeyboard";
@@ -13,6 +14,7 @@ import { useTrackedListingSearch } from "@/hooks/useTrackedListingSearch";
 import { trackListingFilter } from "@/lib/analytics";
 import { BLOG_TOPIC_PAGES } from "@/lib/blog-config";
 import { publishedDateFormatter } from "@/lib/utils";
+import { Chip } from "@/components/ui/Chip";
 import styles from "@/app/writing/writing.module.css";
 
 export interface WritingArchivePost {
@@ -329,20 +331,38 @@ export function WritingInstrument({
             </div>
           ) : (
             <>
-              <ul className={styles.ledger}>
+              <ul className={styles.archiveGrid}>
                 {visible.map((post) => (
                   <li key={post.slug}>
-                    <Link href={`/writing/${post.slug}`} className={styles.row}>
-                      <span className={styles.rowFolio}>
-                        {publishedDateFormatter.format(
-                          new Date(post.publishedAt),
-                        )}
-                      </span>
-                      <h3>{post.title}</h3>
-                      <span className={styles.rowMeta}>
-                        {postKind(post)} · {readingMinutes(post.readingTime)}min
-                        · {categoryLabel(post)}
-                      </span>
+                    <Link href={`/writing/${post.slug}`} className={styles.card}>
+                      <div className={styles.cardMeta}>
+                        <span>
+                          {publishedDateFormatter.format(
+                            new Date(post.publishedAt),
+                          )}
+                        </span>
+                        <span aria-hidden="true">·</span>
+                        <span>{postKind(post)}</span>
+                        <span aria-hidden="true">·</span>
+                        <span className={styles.cardCategory}>
+                          {categoryLabel(post)}
+                        </span>
+                      </div>
+                      <h3 className={styles.cardTitle}>{post.title}</h3>
+                      <p className={styles.cardExcerpt}>{post.excerpt}</p>
+                      <div className={styles.cardFoot}>
+                        <span className={styles.cardTime}>
+                          <IconClock size={14} aria-hidden="true" />
+                          {post.readingTime}
+                        </span>
+                        {post.tags && post.tags.length > 0 ? (
+                          <div className={styles.cardTags}>
+                            {post.tags.slice(0, 2).map((tag) => (
+                              <Chip key={tag}>{tag}</Chip>
+                            ))}
+                          </div>
+                        ) : null}
+                      </div>
                     </Link>
                   </li>
                 ))}
