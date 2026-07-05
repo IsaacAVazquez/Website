@@ -574,6 +574,43 @@
       "crew": []
     }
   },
+  "67213393-7983-4c06-8b44-b8c785a5ed79": {
+    "launchId": "67213393-7983-4c06-8b44-b8c785a5ed79",
+    "launchName": "Falcon 9 Block 5 | Transporter 18 (Dedicated SSO Rideshare)",
+    "window": "upcoming",
+    "images": {
+      "launch": [
+        {
+          "label": "Falcon 9 Block 5 | Transporter 18 (Dedicated SSO Rideshare)",
+          "localPath": "/data/spacex/images/83daf3ce21b64d93.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_image_20230807133459.jpeg"
+        }
+      ],
+      "patch": [
+        {
+          "label": "SpaceX Transporter Patch v2",
+          "localPath": "/data/spacex/images/853ee1e980aa77b8.png",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/spacex2520tran_mission_patch_20230102202140.png"
+        }
+      ],
+      "rocket": [
+        {
+          "label": "Falcon 9 Block 5",
+          "localPath": "/data/spacex/images/83daf3ce21b64d93.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_image_20230807133459.jpeg"
+        }
+      ],
+      "spacecraft": [],
+      "pad": [
+        {
+          "label": "Space Launch Complex 4E",
+          "localPath": "/data/spacex/images/b752567507d74cae.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/map_images/pad_16_20200803143532.jpg"
+        }
+      ],
+      "crew": []
+    }
+  },
   "74bf8472-9ba1-42d6-9245-b014f8e91de9": {
     "launchId": "74bf8472-9ba1-42d6-9245-b014f8e91de9",
     "launchName": "Falcon 9 Block 5 | Project Starfall Demonstration Mission",

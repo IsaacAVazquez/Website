@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-05T20:32:40.433Z",
+  "generatedAt": "2026-07-05T22:28:04.788Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-07-05T20:32:33.647Z"
+    "generatedAt": "2026-07-05T22:27:58.338Z"
   },
   "upcomingLaunches": [
     {
@@ -2871,66 +2871,66 @@
     "points": [
       {
         "monthKey": "2025-08",
-        "label": "Jul 25",
-        "count": 0
-      },
-      {
-        "monthKey": "2025-09",
         "label": "Aug 25",
         "count": 0
       },
       {
-        "monthKey": "2025-10",
+        "monthKey": "2025-09",
         "label": "Sep 25",
         "count": 0
       },
       {
-        "monthKey": "2025-11",
+        "monthKey": "2025-10",
         "label": "Oct 25",
+        "count": 0
+      },
+      {
+        "monthKey": "2025-11",
+        "label": "Nov 25",
         "count": 7
       },
       {
         "monthKey": "2025-12",
-        "label": "Nov 25",
-        "count": 13
-      },
-      {
-        "monthKey": "2026-01",
         "label": "Dec 25",
         "count": 13
       },
       {
-        "monthKey": "2026-02",
+        "monthKey": "2026-01",
         "label": "Jan 26",
+        "count": 13
+      },
+      {
+        "monthKey": "2026-02",
+        "label": "Feb 26",
         "count": 12
       },
       {
         "monthKey": "2026-03",
-        "label": "Feb 26",
+        "label": "Mar 26",
         "count": 15
       },
       {
         "monthKey": "2026-04",
-        "label": "Mar 26",
-        "count": 12
-      },
-      {
-        "monthKey": "2026-05",
         "label": "Apr 26",
         "count": 12
       },
       {
-        "monthKey": "2026-06",
+        "monthKey": "2026-05",
         "label": "May 26",
+        "count": 12
+      },
+      {
+        "monthKey": "2026-06",
+        "label": "Jun 26",
         "count": 14
       },
       {
         "monthKey": "2026-07",
-        "label": "Jun 26",
+        "label": "Jul 26",
         "count": 2
       }
     ],
-    "rangeLabel": "Jul 25 – Jun 26",
-    "generatedAt": "2026-07-05T20:32:40.433Z"
+    "rangeLabel": "Aug 25 – Jul 26",
+    "generatedAt": "2026-07-05T22:28:04.788Z"
   }
 }
