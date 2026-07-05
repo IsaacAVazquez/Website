@@ -25,6 +25,13 @@ export interface PremierLeagueTeamOption {
   tla: string | null;
   crest: string | null;
   venue: string | null;
+  /**
+   * Club brand accent hex, resolved from the `src/data/clubColors.ts` lookup
+   * (upstream never exposes a hex, only a free-text `clubColors` description).
+   * Optional so older committed snapshots (predating this field) still satisfy
+   * the type — treat a missing/`null` value as "fall back to a neutral token."
+   */
+  accentColor?: string | null;
 }
 
 export interface PremierLeagueStandingRow {
@@ -73,6 +80,12 @@ export interface PremierLeagueScorer {
   appearances: number;
 }
 
+/** One entry of the season-long goals-per-matchday series (matchday → total league goals). */
+export interface PremierLeagueMatchdayGoals {
+  matchday: number;
+  totalGoals: number;
+}
+
 export interface PremierLeagueSummary {
   competition: PremierLeagueCompetitionMeta | null;
   standings: PremierLeagueStandingRow[];
@@ -80,6 +93,13 @@ export interface PremierLeagueSummary {
   upcomingFixtures: PremierLeagueFixture[];
   teams: PremierLeagueTeamOption[];
   scorers: PremierLeagueScorer[];
+  /**
+   * Season-to-date goals scored per matchday, ascending by matchday, derived
+   * from a full-season fetch of FINISHED matches. Optional/defaults to `[]` —
+   * older committed snapshots won't have it, and a pre-season snapshot (no
+   * matches played yet) legitimately has an empty series.
+   */
+  goalsPerMatchday?: PremierLeagueMatchdayGoals[];
   generatedAt: string;
 }
 
@@ -98,6 +118,12 @@ export interface PremierLeagueTeamProfile extends PremierLeagueTeamOption {
   clubColors: string | null;
   website: string | null;
   address: string | null;
+  /**
+   * Manager/head coach name, sourced from football-data.org's team-detail
+   * `coach.name` field when upstream provides one. Optional because older
+   * snapshots won't have it and some upstream responses omit `coach` entirely.
+   */
+  manager?: string | null;
 }
 
 export interface PremierLeagueTeamSnapshot {

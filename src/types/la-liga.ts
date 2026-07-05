@@ -7,11 +7,24 @@ export interface LaLigaTeamOption {
   tla: string | null;
   crest: string | null;
   venue: string | null;
+  /**
+   * Club brand accent hex, resolved from the `src/data/clubColors.ts` lookup
+   * (upstream never exposes a hex, only a free-text `clubColors` description).
+   * Optional so older committed snapshots (predating this field) still satisfy
+   * the type — treat a missing/`null` value as "fall back to a neutral token."
+   */
+  accentColor?: string | null;
 }
 
 export interface LaLigaTeamProfile extends LaLigaTeamOption {
   founded: number | null;
   clubColors: string | null;
+  /**
+   * Manager/head coach name, sourced from football-data.org's team-detail
+   * `coach.name` field when upstream provides one. Optional because older
+   * snapshots won't have it and some upstream responses omit `coach` entirely.
+   */
+  manager?: string | null;
 }
 
 export interface LaLigaFixtureTeam {
@@ -69,6 +82,13 @@ export interface LaLigaClub {
   goalsFor: number;
   goalsAgainst: number;
   goalDifference: number;
+  /**
+   * Club brand accent hex, resolved from the `src/data/clubColors.ts` lookup.
+   * `LaLigaClub` is a flat standings row (it doesn't nest a team object), so
+   * the accent lives here directly rather than on `LaLigaTeamOption`. Optional
+   * so older committed snapshots still satisfy the type.
+   */
+  accentColor?: string | null;
 }
 
 export interface LaLigaLeader {
@@ -79,6 +99,12 @@ export interface LaLigaLeader {
   total: number;
   appearances: number;
   perMatch: number;
+}
+
+/** One entry of the season-long goals-per-matchday series (matchday → total league goals). */
+export interface LaLigaMatchdayGoals {
+  matchday: number;
+  totalGoals: number;
 }
 
 export interface LaLigaSnapshot {
@@ -94,6 +120,13 @@ export interface LaLigaSnapshot {
   clubs: LaLigaClub[];
   scorers: LaLigaLeader[];
   assists: LaLigaLeader[];
+  /**
+   * Season-to-date goals scored per matchday, ascending by matchday, derived
+   * from a full-season fetch of FINISHED matches. Optional/defaults to `[]` —
+   * older committed snapshots won't have it, and a pre-season snapshot (no
+   * matches played yet) legitimately has an empty series.
+   */
+  goalsPerMatchday?: LaLigaMatchdayGoals[];
   recentFixtures: LaLigaFixture[];
   upcomingFixtures: LaLigaFixture[];
   teams: LaLigaTeamOption[];

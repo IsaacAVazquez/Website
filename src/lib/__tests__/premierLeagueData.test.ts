@@ -289,6 +289,18 @@ describe("getPremierLeagueSummary", () => {
     });
     expect(summary.scorers[1].rank).toBe(2);
 
+    // Club accent color is resolved from the src/data/clubColors.ts lookup by TLA.
+    expect(arsenalRow?.team.accentColor).toBe("#EF0107");
+
+    // Goals-per-matchday aggregates the full-season FINISHED-matches fetch
+    // (a separate, unlimited call from the 8-most-recent `recentFixtures`),
+    // grouped by matchday and summed. The malformed match (no matchday, no
+    // away team) contributes nothing.
+    expect(summary.goalsPerMatchday).toEqual([
+      { matchday: 28, totalGoals: 3 },
+      { matchday: 29, totalGoals: 2 },
+    ]);
+
     expect(typeof summary.generatedAt).toBe("string");
   });
 
@@ -324,6 +336,7 @@ describe("getPremierLeagueSummary", () => {
     expect(summary.upcomingFixtures).toEqual([]);
     expect(summary.teams).toEqual([]);
     expect(summary.scorers).toEqual([]);
+    expect(summary.goalsPerMatchday).toEqual([]);
     // Falls back to the default season label when dates are absent.
     expect(summary.competition?.seasonLabel).toBe("Current season");
   });

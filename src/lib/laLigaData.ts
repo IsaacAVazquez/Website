@@ -6,11 +6,13 @@ import type {
   LaLigaFixtureTeam,
   LaLigaFormSummary,
   LaLigaLeader,
+  LaLigaMatchdayGoals,
   LaLigaSnapshot,
   LaLigaTeamOption,
   LaLigaTeamProfile,
   LaLigaTeamSnapshot,
 } from "@/types/la-liga";
+import { getLaLigaClubAccentColor } from "@/data/clubColors";
 
 const FOOTBALL_DATA_BASE_URL = "https://api.football-data.org/v4";
 const LA_LIGA_CODE = "PD";
@@ -20,6 +22,9 @@ const TEAM_REVALIDATE_SECONDS = 300;
 const RECENT_FIXTURE_LIMIT = 8;
 const UPCOMING_FIXTURE_LIMIT = 8;
 const TEAM_FIXTURE_LIMIT = 5;
+// Full-season goals-per-matchday aggregation reads every FINISHED match, not
+// just the most recent ones — this call intentionally omits `limit`.
+const SEASON_FIXTURES_REVALIDATE_SECONDS = 300;
 
 interface FootballDataTeam {
   id?: number | null;
@@ -33,6 +38,11 @@ interface FootballDataTeam {
   clubColors?: string | null;
   website?: string | null;
   address?: string | null;
+  // Only present on the single-team detail endpoint (`/teams/{id}`), not on
+  // list endpoints or the team objects embedded in matches/scorers/standings.
+  coach?: {
+    name?: string | null;
+  } | null;
 }
 
 interface FootballDataSeason {
@@ -149,7 +159,11 @@ function normalizeFixtureTeam(raw: FootballDataTeam | null | undefined): LaLigaF
 function normalizeTeamOption(raw: FootballDataTeam | null | undefined): LaLigaTeamOption | null {
   const team = normalizeFixtureTeam(raw);
   if (!team) return null;
-  return { ...team, venue: raw?.venue?.trim() || null };
+  return {
+    ...team,
+    venue: raw?.venue?.trim() || null,
+    accentColor: getLaLigaClubAccentColor(team.tla),
+  };
 }
 
 function normalizeTeamProfile(raw: FootballDataTeam | null | undefined): LaLigaTeamProfile | null {
@@ -159,6 +173,9 @@ function normalizeTeamProfile(raw: FootballDataTeam | null | undefined): LaLigaT
     ...team,
     founded: typeof raw?.founded === "number" ? raw.founded : null,
     clubColors: raw?.clubColors?.trim() || null,
+    // football-data.org's team-detail response doesn't always include a coach
+    // (varies by tier/team); skip silently (null) when it's absent.
+    manager: raw?.coach?.name?.trim() || null,
   };
 }
 
@@ -203,6 +220,7 @@ function normalizeStandingRow(raw: FootballDataStandingEntry | null | undefined)
     goalsFor: raw.goalsFor ?? 0,
     goalsAgainst: raw.goalsAgainst ?? 0,
     goalDifference: raw.goalDifference ?? 0,
+    accentColor: getLaLigaClubAccentColor(team?.tla),
   };
 }
 
@@ -220,6 +238,62 @@ function normalizeScorer(entry: FootballDataScorerEntry | null | undefined, rank
     appearances: entry?.playedMatches ?? 0,
     perMatch: entry?.playedMatches ? (entry.goals ?? 0) / entry.playedMatches : 0,
   };
+}
+
+/**
+ * Builds the assists leaderboard from the same `/scorers` response used for
+ * the goals leaderboard — football-data.org's scorer entries already carry an
+ * `assists` count per player, it was just never selected into its own sorted
+ * list. Re-ranks by assists descending rather than reusing the goals-based
+ * rank order.
+ */
+function normalizeAssister(entry: FootballDataScorerEntry | null | undefined, rank: number): LaLigaLeader | null {
+  const name = entry?.player?.name?.trim();
+  const teamId = entry?.team?.id;
+  const teamTla = entry?.team?.tla?.trim();
+  if (!name || typeof teamId !== "number") return null;
+  const assists = entry?.assists ?? 0;
+  return {
+    rank,
+    name,
+    clubId: entry?.team?.tla?.toLowerCase() || String(teamId),
+    clubCode: teamTla || String(teamId),
+    total: assists,
+    appearances: entry?.playedMatches ?? 0,
+    perMatch: entry?.playedMatches ? assists / entry.playedMatches : 0,
+  };
+}
+
+/**
+ * Aggregates a season's worth of FINISHED matches into a matchday → total
+ * league goals series. Operates on the raw upstream match shape (not the
+ * normalized `LaLigaFixture`) since only `matchday` and the final score are
+ * needed. Matches missing either are skipped rather than dropping the whole
+ * series.
+ */
+function buildGoalsPerMatchday(matches: FootballDataMatch[]): LaLigaMatchdayGoals[] {
+  const totals = new Map<number, number>();
+
+  for (const match of matches) {
+    const matchday = match?.matchday;
+    const home = match?.score?.fullTime?.home;
+    const away = match?.score?.fullTime?.away;
+
+    if (
+      typeof matchday !== "number" ||
+      !Number.isFinite(matchday) ||
+      typeof home !== "number" ||
+      typeof away !== "number"
+    ) {
+      continue;
+    }
+
+    totals.set(matchday, (totals.get(matchday) ?? 0) + home + away);
+  }
+
+  return Array.from(totals.entries())
+    .map(([matchday, totalGoals]) => ({ matchday, totalGoals }))
+    .sort((a, b) => a.matchday - b.matchday);
 }
 
 function buildTeamFormSummary(teamId: string, fixtures: LaLigaFixture[]): LaLigaFormSummary {
@@ -321,6 +395,7 @@ export function createEmptyLaLigaSnapshot(): LaLigaSnapshot {
     clubs: [],
     scorers: [],
     assists: [],
+    goalsPerMatchday: [],
     recentFixtures: [],
     upcomingFixtures: [],
     teams: [],
@@ -333,12 +408,14 @@ export async function getLaLigaSummary(): Promise<{
   matchday: number;
   clubs: LaLigaClub[];
   scorers: LaLigaLeader[];
+  assists: LaLigaLeader[];
+  goalsPerMatchday: LaLigaMatchdayGoals[];
   recentFixtures: LaLigaFixture[];
   upcomingFixtures: LaLigaFixture[];
   teams: LaLigaTeamOption[];
   generatedAt: string;
 }> {
-  const [standingsResponse, recentRes, upcomingRes, teamsRes, scorersRes] = await Promise.all([
+  const [standingsResponse, recentRes, upcomingRes, teamsRes, scorersRes, seasonFixturesRes] = await Promise.all([
     fetchFootballDataJson<FootballDataCompetitionStandingsResponse>(
       `/competitions/${LA_LIGA_CODE}/standings`,
       SUMMARY_REVALIDATE_SECONDS
@@ -359,6 +436,12 @@ export async function getLaLigaSummary(): Promise<{
       `/competitions/${LA_LIGA_CODE}/scorers`,
       SUMMARY_REVALIDATE_SECONDS
     ),
+    // Season-long fixture log for the goals-per-matchday pulse — every
+    // FINISHED match, no `limit`, distinct from the 8-most-recent `recentRes`.
+    fetchFootballDataJson<FootballDataMatchesResponse>(
+      `/competitions/${LA_LIGA_CODE}/matches?${buildQueryString({ status: "FINISHED" })}`,
+      SEASON_FIXTURES_REVALIDATE_SECONDS
+    ),
   ]);
 
   const standingsGroup =
@@ -373,6 +456,20 @@ export async function getLaLigaSummary(): Promise<{
   const scorers = (scorersRes.scorers ?? [])
     .map((entry, i) => normalizeScorer(entry, i + 1))
     .filter((s): s is LaLigaLeader => s !== null);
+
+  // Assists leaderboard: re-sort the same `/scorers` entries by assists count
+  // (descending) rather than leaving `assists` hardcoded to `[]` — the field
+  // is already present on every entry, it was just never selected out.
+  const assists = (scorersRes.scorers ?? [])
+    .filter(
+      (entry): entry is FootballDataScorerEntry =>
+        typeof entry?.assists === "number" && entry.assists > 0
+    )
+    .sort((a, b) => (b.assists ?? 0) - (a.assists ?? 0))
+    .map((entry, i) => normalizeAssister(entry, i + 1))
+    .filter((a): a is LaLigaLeader => a !== null);
+
+  const goalsPerMatchday = buildGoalsPerMatchday(seasonFixturesRes.matches ?? []);
 
   const recentFixtures = (recentRes.matches ?? [])
     .map((m) => normalizeFixture(m))
@@ -394,7 +491,18 @@ export async function getLaLigaSummary(): Promise<{
   const season = buildSeasonLabel(standingsResponse.season?.startDate, standingsResponse.season?.endDate);
   const matchday = standingsResponse.season?.currentMatchday ?? 0;
 
-  return { season, matchday, clubs, scorers, recentFixtures, upcomingFixtures, teams, generatedAt: new Date().toISOString() };
+  return {
+    season,
+    matchday,
+    clubs,
+    scorers,
+    assists,
+    goalsPerMatchday,
+    recentFixtures,
+    upcomingFixtures,
+    teams,
+    generatedAt: new Date().toISOString(),
+  };
 }
 
 export async function getLaLigaTeamSnapshot(teamId: string): Promise<LaLigaTeamSnapshot> {
@@ -493,7 +601,8 @@ export async function buildLaLigaSnapshot(options?: { skipTeamSnapshots?: boolea
     },
     clubs: summary.clubs,
     scorers: summary.scorers,
-    assists: [],
+    assists: summary.assists,
+    goalsPerMatchday: summary.goalsPerMatchday,
     recentFixtures: summary.recentFixtures,
     upcomingFixtures: summary.upcomingFixtures,
     teams: summary.teams,
