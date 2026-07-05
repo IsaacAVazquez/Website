@@ -14,6 +14,7 @@
   --pf-signal: var(--home-signal);
   --pf-rule: var(--home-rule);
   --pf-rule-soft: color-mix(in srgb, var(--home-rule) 55%, transparent);
+  --pf-stone: var(--home-stone);
 
   min-height: 100vh;
   background: var(--pf-paper);
@@ -447,13 +448,15 @@
   cursor: pointer;
 }
 
-/* Fused hairline grid — cells share rules like an instrument fascia. */
+/* Individually bordered gallery cards — the design kit's "pcard" idiom,
+   deliberately distinct from the fused hairline grid used for the featured
+   spotlight above and for Selected Work on the homepage. Radius, shadow, and
+   hover lift echo the same elevated-card pattern already used by
+   `.home-card` in globals.css, just scaled to a denser 3-col archive. */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--pf-rule);
-  border: 1px solid var(--pf-rule);
+  gap: 16px;
 }
 
 @media (max-width: 1000px) {
@@ -471,33 +474,44 @@
 .card {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding: 22px 22px 18px;
-  min-height: 190px;
-  background: var(--pf-paper);
+  border: 1px solid var(--pf-rule);
+  border-radius: var(--radius-2xl);
+  background: var(--pf-raised);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
   text-decoration: none;
   color: var(--pf-ink);
-  transition: background-color 160ms ease, box-shadow 160ms ease;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
 
 .card:hover,
 .card:focus-visible {
-  background: var(--pf-raised);
-  box-shadow: inset 0 3px 0 var(--pf-signal);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: color-mix(in srgb, var(--pf-ink) 20%, var(--pf-stone));
 }
 
-/* Project cover art — pixel-art SVG tiles bled to the cell edges. The tiles
-   ship their own background, so they read in both themes. */
+/* Project cover art — the committed pixel-art SVG tiles, rendered crisp
+   instead of smoothed, cropped to the card's rounded top corners. */
 .cardArt {
   position: relative;
-  margin: -22px -22px 4px;
   aspect-ratio: 1 / 1;
   overflow: hidden;
   border-bottom: 1px solid var(--pf-rule);
+  background: var(--pf-paper-alt);
 }
 
 .cardArt img {
   object-fit: cover;
+  image-rendering: pixelated;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 18px 18px;
+  flex: 1;
 }
 
 .cardTop {

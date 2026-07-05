@@ -199,6 +199,21 @@
   box-shadow: inset 0 3px 0 var(--ct-signal);
 }
 
+.channelIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--ct-rule);
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.channelPrimary .channelIcon {
+  border-color: color-mix(in srgb, var(--ct-paper) 30%, transparent);
+}
+
 .channelPrimary {
   background: var(--ct-ink);
   color: var(--ct-paper);
@@ -244,6 +259,24 @@
 
 .channelPrimary .footline {
   color: color-mix(in srgb, var(--ct-paper) 72%, transparent);
+}
+
+.status {
+  composes: mono;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: clamp(1.25rem, 2.5vw, 1.75rem) 0 0;
+  color: var(--ct-muted);
+}
+
+.statusDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--home-positive);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--home-positive) 16%, transparent);
+  flex-shrink: 0;
 }
 
 /* ============== Fit list ============== */

@@ -369,6 +369,151 @@
   white-space: nowrap;
 }
 
+/* ============== Photo intro ============== */
+
+.introRow {
+  display: grid;
+  grid-template-columns: minmax(160px, 0.5fr) minmax(0, 1.5fr);
+  gap: clamp(1.5rem, 3vw, 2.75rem);
+  align-items: start;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+@media (max-width: 720px) {
+  .introRow {
+    grid-template-columns: 1fr;
+  }
+}
+
+.photo {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--ab-rule);
+  max-width: 20rem;
+}
+
+.photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.introLead {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--ab-ink);
+  margin: 0;
+  max-width: 62ch;
+}
+
+/* ============== Journey timeline ============== */
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+}
+
+.tlRow {
+  display: grid;
+  grid-template-columns: 64px 52px 1fr;
+  gap: 18px;
+  align-items: start;
+  padding: 22px 0;
+  border-top: 1px solid var(--ab-rule-soft);
+}
+
+.tlRow:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+@media (max-width: 560px) {
+  .tlRow {
+    grid-template-columns: 48px 1fr;
+    grid-template-rows: auto auto;
+    gap: 6px 14px;
+  }
+
+  .tlLogo {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+  }
+
+  .tlYear {
+    grid-column: 2;
+    grid-row: 1;
+    padding-top: 0;
+  }
+
+  .tlContent {
+    grid-column: 2;
+    grid-row: 2;
+  }
+}
+
+.tlYear {
+  composes: mono;
+  color: var(--ab-muted);
+  padding-top: 4px;
+}
+
+.tlLogo {
+  width: 52px;
+  height: 52px;
+  border: 1px solid var(--ab-rule);
+  border-radius: 0;
+  background: var(--ab-raised);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.tlLogo img {
+  max-width: 36px;
+  max-height: 36px;
+  object-fit: contain;
+}
+
+.tlRole {
+  font-size: 1.1rem;
+  font-weight: 620;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--ab-ink);
+}
+
+.tlCo {
+  composes: mono;
+  color: var(--ab-signal);
+  margin: 4px 0 8px;
+}
+
+.tlDesc {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--ab-muted);
+  margin: 0 0 10px;
+  max-width: 56ch;
+}
+
+.tlChipRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tlChip {
+  composes: mono;
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border: 1px solid var(--ab-rule);
+  border-radius: 2px;
+  color: var(--ab-muted);
+  background: var(--ab-paper-alt);
+}
+
 /* ============== Track record ============== */
 
 /* Fused hairline grid — role panels share rules like an instrument fascia. */

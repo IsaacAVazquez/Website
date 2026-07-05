@@ -1,8 +1,60 @@
+import Image from "next/image";
 import Link from "next/link";
 import styles from "@/app/about/about.module.css";
 import { profile } from "@/lib/profile";
 import { getPortfolioProjects } from "@/constants/caseStudies";
 import { getAllBlogPostPreviews } from "@/lib/blog";
+
+interface TimelineEntry {
+  year: string;
+  logo: { src: string; alt: string };
+  role: string;
+  company: string;
+  description: string;
+  chips: string[];
+}
+
+// "The journey so far" — one row per era, newest first. Copy and chips are
+// carried over verbatim from the design kit's about.html, which already
+// conforms to the site's writing voice.
+const TIMELINE: TimelineEntry[] = [
+  {
+    year: "2025",
+    logo: { src: "/images/logos/berkeley-logo.png", alt: "UC Berkeley Haas" },
+    role: "MBA Candidate",
+    company: "UC Berkeley Haas",
+    description:
+      "At Haas to sharpen the strategy side of product work while I keep building things I find interesting. Consortium Fellow and MLT Professional Development Fellow.",
+    chips: ["Product Management", "Strategy", "Venture Capital", "Fintech"],
+  },
+  {
+    year: "2022–25",
+    logo: { src: "/images/logos/civitech-logo.png", alt: "Civitech" },
+    role: "Quality Assurance Analyst → Engineer",
+    company: "Civitech",
+    description:
+      "Owned product reliability for civic platforms reaching millions of users, then led the RunningMate launch. Cut critical defects 90%, moved NPS from 23 to 36, and took releases from monthly to biweekly.",
+    chips: ["Product Development", "AI/LLM Tools", "Release Management"],
+  },
+  {
+    year: "2019–21",
+    logo: { src: "/images/logos/open-progress-logo.png", alt: "Open Progress" },
+    role: "Digital & Data, Intern to Manager",
+    company: "Open Progress",
+    description:
+      "Moved client analytics from manual reporting to automated pipelines and dashboards, cutting decision time 40% and improving conversion 25% through better segmentation.",
+    chips: ["SQL", "ETL Pipelines", "Tableau", "Campaign Strategy"],
+  },
+  {
+    year: "2018",
+    logo: { src: "/images/logos/fsu-logo.png", alt: "Florida State University" },
+    role: "BA, Political Science & International Affairs",
+    company: "Florida State University",
+    description:
+      "The research and policy-analysis work gave me the analytical habits I still rely on in product work.",
+    chips: ["Research", "Policy Analysis"],
+  },
+];
 
 /**
  * AboutInstrument — Working Instrument About surface.
@@ -107,15 +159,27 @@ export function AboutInstrument() {
             </div>
           </div>
 
+          <div className={styles.introRow}>
+            <div className={styles.photo}>
+              <Image
+                src="/images/headshot-home.webp"
+                alt="Isaac Vazquez"
+                width={1200}
+                height={1799}
+                sizes="(max-width: 720px) 60vw, 20rem"
+              />
+            </div>
+            <p className={styles.introLead}>
+              I&apos;m a full-time MBA Candidate at UC Berkeley Haas with a
+              background in QA and analytics. Before business school, I spent
+              six years at two companies in civic technology, starting in
+              campaign analytics and working into quality engineering and
+              product ownership.
+            </p>
+          </div>
+
           <div className={styles.bioGrid}>
             <div className={styles.prose}>
-              <p className={styles.lead}>
-                I&apos;m a full-time MBA Candidate at UC Berkeley Haas with a
-                background in QA and analytics. Before business school, I spent
-                six years at two companies in civic technology, starting in
-                campaign analytics and working into quality engineering and
-                product ownership.
-              </p>
               <p>
                 I don&apos;t write product requirements by imagining how users
                 will behave. I look at what the system is doing, find where the
@@ -181,6 +245,50 @@ export function AboutInstrument() {
                 </li>
               </ul>
             </aside>
+          </div>
+        </div>
+      </section>
+
+      {/* The journey so far — a chronological timeline with employer logos,
+          the through-line the track-record cards below don't show. */}
+      <section className={styles.section} aria-labelledby="about-journey-heading">
+        <div className={styles.shell}>
+          <div className={styles.sectionHead}>
+            <div>
+              <span className={styles.sectionKicker}>Chronology</span>
+              <h2 id="about-journey-heading" className={styles.sectionTitle}>
+                The journey so far.
+              </h2>
+            </div>
+            <span className={styles.sectionMeta}>2018 → present</span>
+          </div>
+
+          <div className={styles.timeline}>
+            {TIMELINE.map((entry) => (
+              <div key={entry.company + entry.role} className={styles.tlRow}>
+                <span className={styles.tlYear}>{entry.year}</span>
+                <span className={styles.tlLogo}>
+                  <Image
+                    src={entry.logo.src}
+                    alt={entry.logo.alt}
+                    width={40}
+                    height={40}
+                  />
+                </span>
+                <div className={styles.tlContent}>
+                  <h3 className={styles.tlRole}>{entry.role}</h3>
+                  <p className={styles.tlCo}>{entry.company}</p>
+                  <p className={styles.tlDesc}>{entry.description}</p>
+                  <div className={styles.tlChipRow}>
+                    {entry.chips.map((chip) => (
+                      <span key={chip} className={styles.tlChip}>
+                        {chip}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

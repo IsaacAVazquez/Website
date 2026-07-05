@@ -194,18 +194,20 @@ function ProjectCard({
           sizes="(max-width: 700px) 92vw, (max-width: 1000px) 46vw, 30vw"
         />
       </div>
-      <div className={styles.cardTop}>
-        <span className={styles.cardNum} aria-hidden="true">
-          {id}
-        </span>
-        <span className={styles.cardMeta}>{study.timeline}</span>
-        {meta.isLive ? <span className={styles.live}>Live</span> : null}
-      </div>
-      <h3 data-testid="portfolio-card-title">{study.title}</h3>
-      <p>{summary}</p>
-      <div className={styles.cardFoot}>
-        <span className={styles.tag}>{meta.categoryLabel}</span>
-        <span>{study.role}</span>
+      <div className={styles.cardBody}>
+        <div className={styles.cardTop}>
+          <span className={styles.cardNum} aria-hidden="true">
+            {id}
+          </span>
+          <span className={styles.cardMeta}>{study.timeline}</span>
+          {meta.isLive ? <span className={styles.live}>Live</span> : null}
+        </div>
+        <h3 data-testid="portfolio-card-title">{study.title}</h3>
+        <p>{summary}</p>
+        <div className={styles.cardFoot}>
+          <span className={styles.tag}>{meta.categoryLabel}</span>
+          <span>{study.role}</span>
+        </div>
       </div>
     </Link>
   );

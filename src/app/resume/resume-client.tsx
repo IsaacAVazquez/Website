@@ -2,75 +2,115 @@
 
 import { useState } from "react";
 import { IconDownload, IconMail, IconBrandLinkedin } from "@tabler/icons-react";
+import styles from "@/app/resume/resume.module.css";
 
-const skillCategories = [
+interface SkillCategory {
+  category: string;
+  skills: string[];
+}
+
+const skillCategories: SkillCategory[] = [
   {
     category: "Product Analytics",
-    skills: [
-      { name: "Google Analytics", level: 85 },
-      { name: "Hotjar", level: 80 },
-      { name: "Looker Studio", level: 85 }
-    ]
+    skills: ["Google Analytics", "Hotjar", "Looker Studio"],
   },
   {
     category: "Data & SQL",
-    skills: [
-      { name: "SQL", level: 90 },
-      { name: "PostgreSQL", level: 85 },
-      { name: "MS SQL Server", level: 80 }
-    ]
+    skills: ["SQL", "PostgreSQL", "MS SQL Server"],
   },
   {
     category: "Cloud Platforms",
-    skills: [
-      { name: "Google Cloud Platform", level: 85 },
-      { name: "Microsoft Azure", level: 85 }
-    ]
+    skills: ["Google Cloud Platform", "Microsoft Azure"],
   },
   {
     category: "AI & Automation",
     skills: [
-      { name: "ChatGPT Codex", level: 95 },
-      { name: "Claude Code", level: 95 },
-      { name: "Copilot", level: 90 },
-      { name: "Google Gemini", level: 90 },
-      { name: "Bolt", level: 85 },
-      { name: "Lovable", level: 85 },
-      { name: "n8n", level: 80 },
-      { name: "Zapier", level: 85 }
-    ]
+      "ChatGPT Codex",
+      "Claude Code",
+      "Copilot",
+      "Google Gemini",
+      "Bolt",
+      "Lovable",
+      "n8n",
+      "Zapier",
+    ],
   },
   {
     category: "Product Development",
-    skills: [
-      { name: "Agile", level: 90 },
-      { name: "Asana", level: 85 },
-      { name: "Figma", level: 85 },
-      { name: "Jira", level: 90 },
-      { name: "Linear", level: 80 },
-      { name: "Miro", level: 80 }
-    ]
+    skills: ["Agile", "Asana", "Figma", "Jira", "Linear", "Miro"],
   },
   {
     category: "Design & Prototyping",
-    skills: [
-      { name: "Canva", level: 85 },
-      { name: "Lightroom", level: 75 },
-      { name: "Magic Patterns", level: 80 },
-      { name: "Photoshop", level: 75 }
-    ]
+    skills: ["Canva", "Lightroom", "Magic Patterns", "Photoshop"],
   },
   {
     category: "Productivity & Collaboration",
-    skills: [
-      { name: "Cursor", level: 90 },
-      { name: "Excel", level: 85 },
-      { name: "Gamma", level: 80 },
-      { name: "Loom", level: 85 },
-      { name: "Notion", level: 85 },
-      { name: "PowerPoint", level: 85 }
-    ]
-  }
+    skills: ["Cursor", "Excel", "Gamma", "Loom", "Notion", "PowerPoint"],
+  },
+];
+
+interface JobEntry {
+  role: string;
+  company: string;
+  when: string;
+  description: string;
+}
+
+// Every bullet from the old list-heavy layout, condensed into one paragraph
+// per role — same facts and metrics, written as prose rather than a bullet
+// list (the site's writing voice avoids bullets outside catalog tables).
+const experience: JobEntry[] = [
+  {
+    role: "Innovation Consultant Team Lead",
+    company: "Haas@Work",
+    when: "Jan 2026–Present",
+    description:
+      "Leads client engagement for a global mobility technology company, managing stakeholder communication, workflow execution, and alignment across a cross-functional consulting team.",
+  },
+  {
+    role: "Quality Assurance Engineer",
+    company: "Civitech",
+    when: "Feb–Aug 2025",
+    description:
+      "Translated leadership and user feedback into product requirements for RunningMate, a campaign management platform, aligning engineering and product teams. Redesigned onboarding tutorials and first-time user flows after analyzing clickstream data, lifting activation 25%, and built AI-powered QA and workflow automation that cut bug triage time 40%. Standardized manual and automated testing across two core products, moving releases from monthly to biweekly and cutting release validation time 30%.",
+  },
+  {
+    role: "Quality Assurance Analyst",
+    company: "Civitech",
+    when: "Jan 2022–Jan 2025",
+    description:
+      "Owned product vision for a peer-to-peer texting platform, prioritizing features from direct customer conversations and quantitative impact assessments that drove a 35% increase in engagement. Led a cross-functional pricing strategy across engineering, sales, and finance that generated $4M in additional revenue, and pushed release standards to 99.999% uptime, cutting critical defects 90% and improving release efficiency 50%.",
+  },
+  {
+    role: "Client Services Manager",
+    company: "Open Progress",
+    when: "Jan–Dec 2021",
+    description:
+      "Led client digital and communication strategy, building messaging validation and audience sampling frameworks that lifted response rates 20% while scaling outreach to 50M+ voters. Analyzed voter behavior and campaign performance to brief clients on high-impact opportunities, and delivered 80+ client campaigns on time by aligning cross-functional teams around clear milestones.",
+  },
+  {
+    role: "Digital and Data Associate",
+    company: "Open Progress",
+    when: "Sep 2019–Dec 2020",
+    description:
+      "Automated ETL and reporting pipelines, replacing manual spreadsheets with nightly data drops and interactive dashboards in Sisense and Tableau and cutting analysis time 40%. Used behavior analytics to sharpen segmentation and targeting across 20+ campaigns, improving conversion 25% and supporter efficiency 15%, and built multichannel creative and A/B tests that lifted response rates 30%.",
+  },
+  {
+    role: "Digital and Communications Intern",
+    company: "Open Progress",
+    when: "Jun–Aug 2019",
+    description:
+      "Built a data-driven acquisition strategy with personalized email campaigns and A/B testing that grew the user base 5x and lifted conversion 50% across client platforms.",
+  },
+];
+
+const INTERESTS = [
+  "FC Barcelona",
+  "Ferrari (F1)",
+  "Big Foodie",
+  "Film & TV Buff",
+  "Travel & Cultural Immersion",
+  "Digital Photography",
 ];
 
 const mbaRevealDate = new Date(2025, 0, 1);
@@ -82,9 +122,9 @@ export default function Resume() {
   const handleDownloadPDF = () => {
     if (downloading) return;
     setDownloading(true);
-    const link = document.createElement('a');
-    link.href = '/Isaac_Vazquez_Resume.pdf';
-    link.download = 'Isaac_Vazquez_Resume.pdf';
+    const link = document.createElement("a");
+    link.href = "/Isaac_Vazquez_Resume.pdf";
+    link.download = "Isaac_Vazquez_Resume.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -94,431 +134,142 @@ export default function Resume() {
     setTimeout(() => setDownloading(false), 1200);
   };
 
+  const education = [
+    ...(showMBA
+      ? [
+          {
+            role: "MBA Candidate",
+            company: "UC Berkeley Haas",
+            when: "2025–27",
+            description:
+              "Consortium Fellow · MLT Professional Development Fellow · MLT Ambassador. VP of Marketing (Haas Tech Club), VP of Admissions (Consortium), and active in the Product Management, AI, and Fintech clubs.",
+          },
+        ]
+      : []),
+    {
+      role: "BA, Political Science & International Affairs",
+      company: "Florida State University",
+      when: "2018",
+      description: "",
+    },
+  ];
+
   return (
-    <div className="home-page min-h-screen">
-      <div className="home-shell home-section">
-        <div className="space-y-8">
-          {/* Header panel */}
-          <header className="resume-panel">
-            <p
-              className="mb-4 inline-flex items-center gap-2.5 uppercase"
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: "0.7rem",
-                letterSpacing: "0.08em",
-                color: "var(--home-ink-muted)",
-              }}
-            >
-              <span
-                aria-hidden="true"
-                className="inline-block h-2 w-2 rounded-full"
-                style={{ background: "var(--home-signal)" }}
-              />
-              Résumé · Product manager &amp; builder
-            </p>
-
-            <h1
-              className="mb-5"
-              style={{
-                fontFamily: "var(--font-home-sans)",
-                fontSize: "clamp(2.1rem, 4vw, 3.4rem)",
-                fontWeight: 640,
-                letterSpacing: "-0.03em",
-                lineHeight: 1.02,
-                color: "var(--home-ink)",
-              }}
-            >
-              Isaac Vazquez
-            </h1>
-
-            <div className="mb-5">
-              <button
-                onClick={handleDownloadPDF}
-                disabled={downloading}
-                aria-busy={downloading}
-                className="resume-outline-button disabled:cursor-not-allowed disabled:opacity-60"
-              >
-                <IconDownload className="w-4 h-4" />
-                {downloading ? "Downloading…" : "Download PDF"}
-              </button>
+    <div className={styles.page}>
+      {/* Masthead */}
+      <section className={styles.masthead}>
+        <div className={styles.shell}>
+          <div className={styles.mastheadRow}>
+            <div>
+              <p className={styles.kicker}>Résumé · product manager &amp; builder</p>
+              <h1 className={styles.title}>
+                Product, <em>reliability</em>, and data.
+              </h1>
             </div>
-
-            <div
-              className="flex flex-wrap items-center gap-x-8 gap-y-3 mb-5 text-sm"
-              style={{ color: "var(--home-ink-muted)", fontFamily: "var(--font-home-sans)" }}
+            <button
+              onClick={handleDownloadPDF}
+              disabled={downloading}
+              aria-busy={downloading}
+              className="resume-outline-button disabled:cursor-not-allowed disabled:opacity-60"
             >
-              <a
-                href="mailto:IsaacVazquez@berkeley.edu"
-                className="flex items-center gap-2 transition-colors text-[var(--home-ink-muted)] hover:text-[var(--home-signal)] focus-visible:text-[var(--home-signal)]"
-              >
-                <IconMail className="w-4 h-4" />
-                IsaacVazquez@berkeley.edu
-              </a>
-              <a
-                href="https://www.linkedin.com/in/isaac-vazquez/"
-                className="flex items-center gap-2 transition-colors text-[var(--home-ink-muted)] hover:text-[var(--home-signal)] focus-visible:text-[var(--home-signal)]"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <IconBrandLinkedin className="w-4 h-4" />
-                LinkedIn
-              </a>
-            </div>
+              <IconDownload className="w-4 h-4" />
+              {downloading ? "Downloading…" : "Download PDF"}
+            </button>
+          </div>
 
+          <p className={styles.dek}>
+            Six years across QA, analytics, and client strategy in civic tech.
+            I&apos;m an MBA candidate at Berkeley Haas looking for product and
+            growth roles where analytical rigor and delivery speed feed each
+            other.
+          </p>
+
+          <div className={styles.metaRow}>
+            <a className={styles.metaLink} href="mailto:IsaacVazquez@berkeley.edu">
+              <IconMail className="w-4 h-4" />
+              IsaacVazquez@berkeley.edu
+            </a>
+            <a
+              className={styles.metaLink}
+              href="https://www.linkedin.com/in/isaac-vazquez/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <IconBrandLinkedin className="w-4 h-4" />
+              LinkedIn
+            </a>
             {showMBA && (
-              <div className="mb-5">
-                <span className="resume-chip">
-                  Berkeley Haas MBA &apos;27 · Consortium Fellow · MLT Fellow
-                </span>
-              </div>
+              <span className="resume-chip">
+                Berkeley Haas MBA &apos;27 · Consortium Fellow · MLT Fellow
+              </span>
             )}
+          </div>
+        </div>
+      </section>
 
-            <p className="home-body mb-0 max-w-none">
-              Six years across QA, analytics, and client strategy in civic tech. I&apos;m an MBA candidate at Berkeley Haas looking for product and growth roles where analytical rigor and delivery speed feed each other.
-            </p>
-          </header>
-
-          {/* Experience */}
-          <section className="resume-panel">
-            <h2 className="resume-section-title">
-              Experience
-            </h2>
-
-            <div className="space-y-14">
-              {/* Haas@Work */}
-              <div>
-                <div className="mb-5">
-                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-3">
-                    <h3
-                      className="text-3xl sm:text-4xl font-bold tracking-tighter"
-                      style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
-                    >
-                      HAAS@WORK
-                    </h3>
-                    <div
-                      className="text-base mt-2 sm:mt-0"
-                      style={{ color: "var(--home-ink-muted)", fontFamily: "var(--font-home-sans)" }}
-                    >
-                      January 2026–Present
-                    </div>
+      {/* Two-column ledger */}
+      <div className={styles.shell}>
+        <div className={styles.resumeGrid}>
+          <div>
+            <div className={styles.rblock}>
+              <p className={styles.rblockTitle}>Experience</p>
+              {experience.map((job) => (
+                <div className={styles.job} key={`${job.company}-${job.role}`}>
+                  <div className={styles.jobHead}>
+                    <h3 className={styles.jobRole}>{job.role}</h3>
+                    <span className={styles.jobWhen}>{job.when}</span>
                   </div>
-                  <p
-                    className="text-sm italic max-w-3xl"
-                    style={{ color: "var(--home-ink-muted)" }}
-                  >
-                    Berkeley, CA · UC Berkeley&apos;s innovation consulting agency
-                  </p>
+                  <p className={styles.jobCo}>{job.company}</p>
+                  <p className={styles.jobDesc}>{job.description}</p>
                 </div>
-
-                <div className="space-y-8 ml-0">
-                  <div>
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-4">
-                      <h4
-                        className="text-xl font-bold"
-                        style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
-                      >
-                        Innovation Consultant Team Lead
-                      </h4>
-                      <span
-                        className="text-sm mt-1 sm:mt-0"
-                        style={{ color: "var(--home-ink-muted)" }}
-                      >
-                        Jan 2026–Present
-                      </span>
-                    </div>
-                    <ul className="space-y-3 text-base leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
-                      <li className="flex items-start">
-                        <span aria-hidden="true" className="mr-4 mt-[0.7em] h-[2px] w-4 flex-shrink-0" style={{ background: "var(--home-ink)" }} />
-                        <span>Lead client engagement for a global mobility technology company, managing stakeholder communication, internal workflow execution, and alignment across a cross-functional consulting team</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              {/* Civitech */}
-              <div>
-                <div className="mb-5">
-                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-3">
-                    <h3
-                      className="text-3xl sm:text-4xl font-bold tracking-tighter"
-                      style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
-                    >
-                      CIVITECH
-                    </h3>
-                    <div
-                      className="text-base mt-2 sm:mt-0"
-                      style={{ color: "var(--home-ink-muted)", fontFamily: "var(--font-home-sans)" }}
-                    >
-                      January 2022–August 2025
-                    </div>
-                  </div>
-                  <p
-                    className="text-sm italic max-w-3xl"
-                    style={{ color: "var(--home-ink-muted)" }}
-                  >
-                    Austin, TX · Civitech is a SaaS tech company that builds software and tools for political candidates to improve voter engagement
-                  </p>
-                </div>
-
-                <div className="space-y-8 ml-0">
-                  <div>
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-4">
-                      <h4
-                        className="text-xl font-bold"
-                        style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
-                      >
-                        Quality Assurance Engineer
-                      </h4>
-                      <span
-                        className="text-sm mt-1 sm:mt-0"
-                        style={{ color: "var(--home-ink-muted)" }}
-                      >
-                        Feb 2025–Aug 2025
-                      </span>
-                    </div>
-                    <ul className="space-y-3 text-base leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
-                      <li className="flex items-start">
-                        <span aria-hidden="true" className="mr-4 mt-[0.7em] h-[2px] w-4 flex-shrink-0" style={{ background: "var(--home-ink)" }} />
-                        <span style={{ color: "var(--home-ink-muted)" }}>Translated leadership and user feedback into product requirements for RunningMate, a platform that helps political campaigns manage voter engagement, data analytics, and campaign strategy, aligning engineering and product teams</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span aria-hidden="true" className="mr-4 mt-[0.7em] h-[2px] w-4 flex-shrink-0" style={{ background: "var(--home-ink)" }} />
-                        <span>Conducted user interviews and analyzed user clickstream data to identify onboarding obstacles and technical challenges, leading to a redesign of product tutorials and first-time user flows that increased activation rates by <span className="font-semibold" style={{ color: "var(--home-ink)" }}>25%</span></span>
-                      </li>
-                      <li className="flex items-start">
-                        <span aria-hidden="true" className="mr-4 mt-[0.7em] h-[2px] w-4 flex-shrink-0" style={{ background: "var(--home-ink)" }} />
-                        <span>Built and deployed AI-powered QA and product workflow automation to solve operational challenges, increasing transparency between engineering, product, and client services teams while reducing bug triage time by <span className="font-semibold" style={{ color: "var(--home-ink)" }}>40%</span></span>
-                      </li>
-                      <li className="flex items-start">
-                        <span aria-hidden="true" className="mr-4 mt-[0.7em] h-[2px] w-4 flex-shrink-0" style={{ background: "var(--home-ink)" }} />
-                        <span>Designed and implemented structured manual and automated QA testing and planning processes across two core products, accelerating delivery cycles from monthly to biweekly releases and reducing release validation time by <span className="font-semibold" style={{ color: "var(--home-ink)" }}>30%</span></span>
-                      </li>
-                      <li className="flex items-start">
-                        <span aria-hidden="true" className="mr-4 mt-[0.7em] h-[2px] w-4 flex-shrink-0" style={{ background: "var(--home-ink)" }} />
-                        <span>Built a real-time event-generation system in Google Cloud, improving client onboarding and delivering instant access to campaign performance metrics, transitioning clients to a self-service model and reducing onboarding time by <span className="font-semibold" style={{ color: "var(--home-ink)" }}>60%</span></span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div>
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-4">
-                      <h4
-                        className="text-xl font-bold"
-                        style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
-                      >
-                        Quality Assurance Analyst
-                      </h4>
-                      <span className="text-sm mt-1 sm:mt-0" style={{ color: "var(--home-ink-muted)" }}>
-                        Jan 2022–Jan 2025
-                      </span>
-                    </div>
-                    <ul className="space-y-3 text-base leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
-                      <li className="flex items-start">
-                        <span aria-hidden="true" className="mr-4 mt-[0.7em] h-[2px] w-4 flex-shrink-0" style={{ background: "var(--home-ink)" }} />
-                        <span>Owned product vision for peer-to-peer texting platform by connecting directly with customers to understand pain points and prioritizing features based on quantitative impact assessments that drove a <span className="font-semibold" style={{ color: "var(--home-ink)" }}>35%</span> increase in engagement</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span aria-hidden="true" className="mr-4 mt-[0.7em] h-[2px] w-4 flex-shrink-0" style={{ background: "var(--home-ink)" }} />
-                        <span>Generated <span className="font-semibold" style={{ color: "var(--home-ink)" }}>$4M</span> in additional revenue by leading a cross-functional pricing strategy initiative, aligning engineering, sales, and finance teams around product value through market analysis, competitor research, and financial modeling</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span aria-hidden="true" className="mr-4 mt-[0.7em] h-[2px] w-4 flex-shrink-0" style={{ background: "var(--home-ink)" }} />
-                        <span>Championed product reliability and release standards, achieving <span className="font-semibold" style={{ color: "var(--home-ink)" }}>99.999%</span> uptime, reducing critical defects by <span className="font-semibold" style={{ color: "var(--home-ink)" }}>90%</span>, and improving release efficiency by <span className="font-semibold" style={{ color: "var(--home-ink)" }}>50%</span> through new deployment rules and strategic test planning and implementation</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              {/* Open Progress */}
-              <div>
-                <div className="mb-5">
-                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-3">
-                    <h3
-                      className="text-3xl sm:text-4xl font-bold tracking-tighter"
-                      style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
-                    >
-                      OPEN PROGRESS
-                    </h3>
-                    <div className="text-base mt-2 sm:mt-0" style={{ color: "var(--home-ink-muted)", fontFamily: "var(--font-home-sans)" }}>
-                      June 2019–December 2021
-                    </div>
-                  </div>
-                  <p className="text-sm italic max-w-3xl" style={{ color: "var(--home-ink-muted)" }}>
-                    Los Angeles, CA · Consultancy that built digital engagement solutions through innovative peer-to-peer outreach (acquired by Civitech)
-                  </p>
-                </div>
-
-                <div className="space-y-8 ml-0">
-                  <div>
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-4">
-                      <h4 className="text-xl font-bold" style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}>
-                        Client Services Manager
-                      </h4>
-                      <span className="text-sm mt-1 sm:mt-0" style={{ color: "var(--home-ink-muted)" }}>
-                        Jan 2021–Dec 2021
-                      </span>
-                    </div>
-                    <ul className="space-y-3 text-base leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
-                      <li className="flex items-start">
-                        <span aria-hidden="true" className="mr-4 mt-[0.7em] h-[2px] w-4 flex-shrink-0" style={{ background: "var(--home-ink)" }} />
-                        <span>Led client digital and communication strategy by developing data-driven messaging validation and audience sampling frameworks, aligning content with client goals and boosting response rates <span className="font-semibold" style={{ color: "var(--home-ink)" }}>20%</span> while scaling outreach to <span className="font-semibold" style={{ color: "var(--home-ink)" }}>50M+</span> voters</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span aria-hidden="true" className="mr-4 mt-[0.7em] h-[2px] w-4 flex-shrink-0" style={{ background: "var(--home-ink)" }} />
-                        <span>Analyzed voter behavior and campaign performance to surface high-impact opportunities, presenting findings in client meetings and delivering concise summaries that informed targeting choices and shaped strategic program priorities</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span aria-hidden="true" className="mr-4 mt-[0.7em] h-[2px] w-4 flex-shrink-0" style={{ background: "var(--home-ink)" }} />
-                        <span>Orchestrated successful delivery of <span className="font-semibold" style={{ color: "var(--home-ink)" }}>80+</span> client campaigns by establishing clear milestones and aligning cross-functional teams, achieving <span className="font-semibold" style={{ color: "var(--home-ink)" }}>100%</span> on-time delivery while maintaining consistency and performance across multiple channels</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div>
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-4">
-                      <h4 className="text-xl font-bold" style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}>
-                        Digital and Data Associate
-                      </h4>
-                      <span className="text-sm mt-1 sm:mt-0" style={{ color: "var(--home-ink-muted)" }}>
-                        Sep 2019–Dec 2020
-                      </span>
-                    </div>
-                    <ul className="space-y-3 text-base leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
-                      <li className="flex items-start">
-                        <span aria-hidden="true" className="mr-4 mt-[0.7em] h-[2px] w-4 flex-shrink-0" style={{ background: "var(--home-ink)" }} />
-                        <span>Automated ETL processes and reporting pipelines, replacing manual spreadsheet workflows with nightly data drops and interactive dashboards (Sisense, Tableau), reducing analysis time by <span className="font-semibold" style={{ color: "var(--home-ink)" }}>40%</span></span>
-                      </li>
-                      <li className="flex items-start">
-                        <span aria-hidden="true" className="mr-4 mt-[0.7em] h-[2px] w-4 flex-shrink-0" style={{ background: "var(--home-ink)" }} />
-                        <span>Leveraged user behavior analytics to optimize segmentation and targeting features across 20+ campaigns, improving conversion rates by <span className="font-semibold" style={{ color: "var(--home-ink)" }}>25%</span> and supporter conversion efficiency by <span className="font-semibold" style={{ color: "var(--home-ink)" }}>15%</span> through data-driven program enhancements</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span aria-hidden="true" className="mr-4 mt-[0.7em] h-[2px] w-4 flex-shrink-0" style={{ background: "var(--home-ink)" }} />
-                        <span>Created compelling visual content for multichannel campaigns including email, SMS, and events, applying design principles and A/B testing to enhance visual appeal and messaging clarity, increasing response rates by <span className="font-semibold" style={{ color: "var(--home-ink)" }}>30%</span></span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div>
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-4">
-                      <h4 className="text-xl font-bold" style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}>
-                        Digital and Communications Intern
-                      </h4>
-                      <span className="text-sm mt-1 sm:mt-0" style={{ color: "var(--home-ink-muted)" }}>
-                        Jun 2019–Aug 2019
-                      </span>
-                    </div>
-                    <ul className="space-y-3 text-base leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
-                      <li className="flex items-start">
-                        <span aria-hidden="true" className="mr-4 mt-[0.7em] h-[2px] w-4 flex-shrink-0" style={{ background: "var(--home-ink)" }} />
-                        <span>Developed data-driven user acquisition strategy by implementing personalized email campaigns and A/B testing frameworks, resulting in <span className="font-semibold" style={{ color: "var(--home-ink)" }}>5x</span> growth in user base and <span className="font-semibold" style={{ color: "var(--home-ink)" }}>50%</span> increase in conversion rates across client platforms</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
-          </section>
+          </div>
 
-          {/* Education */}
-          <section className="resume-panel">
-            <h2 className="resume-section-title">
-              Education
-            </h2>
-
-            <div className="space-y-8 ml-0">
-              {showMBA && (
-                <div>
-                  <div className="mb-6">
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-3">
-                      <h3
-                        className="text-2xl sm:text-3xl font-bold tracking-tight"
-                        style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
-                      >
-                        University of California, Berkeley
-                      </h3>
-                      <div className="text-base mt-2 sm:mt-0" style={{ color: "var(--home-ink-muted)" }}>
-                        May 2027
-                      </div>
-                    </div>
-                    <p className="text-lg font-semibold mb-4" style={{ color: "var(--home-signal)" }}>
-                      Master of Business Administration
-                    </p>
-                    <p className="text-sm mb-3" style={{ color: "var(--home-ink-muted)" }}>
-                      Haas School of Business
-                    </p>
-                    <ul className="space-y-2 text-sm leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
-                      <li className="flex items-start">
-                        <span aria-hidden="true" className="mr-3 mt-[0.7em] h-[2px] w-3.5 flex-shrink-0" style={{ background: "var(--home-ink)" }} />
-                        <span>Consortium Fellow; Management Leadership for Tomorrow (MLT) Professional Development Fellow; MLT Ambassador</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span aria-hidden="true" className="mr-3 mt-[0.7em] h-[2px] w-3.5 flex-shrink-0" style={{ background: "var(--home-ink)" }} />
-                        <span>VP of Marketing, Haas Tech Club; VP of Admissions, Consortium; Product Management Club, AI Club, Fintech Club</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                </div>
-              )}
-
-              <div>
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-3">
-                  <h3
-                    className="text-2xl sm:text-3xl font-bold tracking-tight"
-                    style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
-                  >
-                    Florida State University
-                  </h3>
-                  <div className="text-base mt-2 sm:mt-0" style={{ color: "var(--home-ink-muted)" }}>
-                    December 2018
-                  </div>
-                </div>
-                <p className="text-base" style={{ color: "var(--home-ink-muted)" }}>
-                  Bachelor of Arts, Political Science and International Affairs
-                </p>
-              </div>
-            </div>
-          </section>
-
-          {/* Skills */}
-          <section className="resume-panel">
-            <h2 className="resume-section-title">
-              Skills &amp; Expertise
-            </h2>
-
-            <div className="resume-skills-flow">
+          <div>
+            <div className={styles.rblock}>
+              <p className={styles.rblockTitle}>Skills</p>
               {skillCategories.map((category) => (
-                <div key={category.category} className="resume-skills-flow-item">
-                  <p className="home-kicker mb-4">{category.category}</p>
-                  <div className="flex flex-wrap gap-2">
+                <div className={styles.skillGroup} key={category.category}>
+                  <p className={styles.skillLbl}>{category.category}</p>
+                  <div className={styles.chipRow}>
                     {category.skills.map((skill) => (
-                      <span key={skill.name} className="resume-chip">
-                        {skill.name}
+                      <span key={skill} className="resume-chip">
+                        {skill}
                       </span>
                     ))}
                   </div>
                 </div>
               ))}
             </div>
-          </section>
 
-          {/* Interests */}
-          <section className="resume-panel">
-            <h2 className="resume-section-title">
-              Interests
-            </h2>
-
-            <div className="flex flex-wrap gap-3 ml-0">
-              {["FC Barcelona", "Ferrari (F1)", "Big Foodie", "Film & TV Buff", "Travel & Cultural Immersion", "Digital Photography"].map((interest) => (
-                <span key={interest} className="resume-chip cursor-default">
-                  {interest}
-                </span>
+            <div className={styles.rblock}>
+              <p className={styles.rblockTitle}>Education</p>
+              {education.map((entry) => (
+                <div className={styles.job} key={entry.role}>
+                  <div className={styles.jobHead}>
+                    <h3 className={styles.jobRole}>{entry.role}</h3>
+                    <span className={styles.jobWhen}>{entry.when}</span>
+                  </div>
+                  <p className={styles.jobCo}>{entry.company}</p>
+                  {entry.description ? (
+                    <p className={styles.jobDesc}>{entry.description}</p>
+                  ) : null}
+                </div>
               ))}
             </div>
-          </section>
+
+            <div className={styles.rblock}>
+              <p className={styles.rblockTitle}>Interests</p>
+              <div className={styles.chipRow}>
+                {INTERESTS.map((interest) => (
+                  <span key={interest} className="resume-chip cursor-default">
+                    {interest}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
