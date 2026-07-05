@@ -5,6 +5,9 @@ import {
   getFantasyAdpFreshness,
   getSnapshotStaleness,
   getSnapshotStalenessLabel,
+  getTierPlateAccent,
+  getTierRailIntensity,
+  getTierRailTone,
   getValueVsAdp,
 } from "@/lib/fantasyUtils";
 import type { Player } from "@/types";
@@ -91,6 +94,47 @@ describe("getValueVsAdp", () => {
   it("returns null when there is no ADP or no usable rank", () => {
     expect(getValueVsAdp(playerWith({ rankEcr: 20 }))).toBeNull();
     expect(getValueVsAdp(playerWith({ adp: 30 }))).toBeNull();
+  });
+});
+
+describe("getTierRailIntensity", () => {
+  it("is solid at tier 1", () => {
+    expect(getTierRailIntensity(1)).toBe(100);
+  });
+
+  it("fades by 13 points per tier", () => {
+    expect(getTierRailIntensity(2)).toBe(87);
+    expect(getTierRailIntensity(3)).toBe(74);
+  });
+
+  it("floors at 12 rather than fading to zero or negative", () => {
+    expect(getTierRailIntensity(8)).toBe(12);
+    expect(getTierRailIntensity(20)).toBe(12);
+  });
+
+  it("returns 0 for an untiered or invalid tier", () => {
+    expect(getTierRailIntensity(undefined)).toBe(0);
+    expect(getTierRailIntensity(null)).toBe(0);
+    expect(getTierRailIntensity(Number.NaN)).toBe(0);
+  });
+});
+
+describe("getTierRailTone", () => {
+  it("formats the intensity as a color-mix percentage", () => {
+    expect(getTierRailTone(1)).toBe("100%");
+    expect(getTierRailTone(8)).toBe("12%");
+    expect(getTierRailTone(undefined)).toBe("0%");
+  });
+});
+
+describe("getTierPlateAccent", () => {
+  it("gives the top plate the top weight and the bottom plate the bottom weight", () => {
+    expect(getTierPlateAccent(0, 4)).toBe("26%");
+    expect(getTierPlateAccent(3, 4)).toBe("8%");
+  });
+
+  it("returns a fixed accent when there is only one tier on screen", () => {
+    expect(getTierPlateAccent(0, 1)).toBe("24%");
   });
 });
 

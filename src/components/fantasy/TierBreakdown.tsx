@@ -4,7 +4,13 @@ import { useMemo } from "react";
 import { Star } from "lucide-react";
 
 import { FANTASY_POSITION_LABELS, type FantasyRoutePosition } from "@/lib/fantasy";
-import { formatAdp, formatRankValue, getPositionTone, getTierGap } from "@/lib/fantasyUtils";
+import {
+  formatAdp,
+  formatRankValue,
+  getPositionTone,
+  getTierGap,
+  getTierPlateAccent,
+} from "@/lib/fantasyUtils";
 import type { Player } from "@/types";
 
 interface TierBreakdownProps {
@@ -51,17 +57,6 @@ function groupByTier(players: Player[]): TierGroup[] {
   return tiered;
 }
 
-function tierAccent(index: number, total: number): string {
-  if (total <= 1) {
-    return "24%";
-  }
-  const topWeight = 26;
-  const bottomWeight = 8;
-  const progress = index / (total - 1);
-  const mixed = topWeight - (topWeight - bottomWeight) * progress;
-  return `${mixed.toFixed(0)}%`;
-}
-
 export function TierBreakdown({
   players,
   position,
@@ -100,7 +95,7 @@ export function TierBreakdown({
     <div className="grid scroll-mt-28 gap-4" aria-label={`${positionLabel} tier breakdown`}>
       {groups.map((group, index) => {
         const isUntiered = group.tier === "untiered";
-        const accent = isUntiered ? "6%" : tierAccent(index, Math.max(tieredGroups.length, 1));
+        const accent = isUntiered ? "6%" : getTierPlateAccent(index, Math.max(tieredGroups.length, 1));
         const label = isUntiered ? "Untiered" : `Tier ${group.tier}`;
         const description = isUntiered
           ? "Players without an assigned tier"

@@ -9,6 +9,7 @@ import {
   formatOwnership,
   formatRange,
   getPositionTone,
+  getTierRailTone,
 } from "@/lib/fantasyUtils";
 import type { Player } from "@/types";
 
@@ -42,7 +43,7 @@ function Metric({ label, children }: { label: string; children: ReactNode }) {
  * A single rankings-board row with a clear primary line (rank + name) over a
  * muted secondary line, a reflowing metric strip, and an always-visible action
  * cluster (queue, compare, open detail). Hover lifts the row; a queued row
- * carries an acid left accent so the watchlist reads inline.
+ * carries a signal left accent so the watchlist reads inline.
  */
 export function RankingsListRow({
   player,
@@ -63,13 +64,21 @@ export function RankingsListRow({
       className="group relative overflow-hidden rounded-[var(--radius-3xl)] border border-[color:var(--home-rule)] transition-[border-color,box-shadow,transform] hover:border-[color:var(--home-ink)] hover:shadow-[var(--shadow-md)] motion-safe:hover:-translate-y-0.5"
       style={{ background: "color-mix(in srgb, var(--home-paper-alt) 42%, var(--home-elev-mix))" }}
     >
-      {isQueued && (
-        <span
-          aria-hidden="true"
-          className="absolute inset-y-0 left-0 w-1"
-          style={{ background: "var(--home-signal)" }}
-        />
-      )}
+      {/* Graded tier rail: intensity fades with tier depth so the board reads
+          "signal as data" at a glance. A second, full-signal layer sits on
+          top and only shows on queue or hover, overriding the base grade
+          rather than blending with it. */}
+      <span
+        aria-hidden="true"
+        className="absolute inset-y-0 left-0 w-[3px]"
+        style={{ background: `color-mix(in srgb, var(--home-signal) ${getTierRailTone(player.tier)}, transparent)` }}
+      />
+      <span
+        aria-hidden="true"
+        className={`absolute inset-y-0 left-0 w-[3px] bg-[var(--home-signal)] transition-opacity ${
+          isQueued ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+        }`}
+      />
       <div className="flex items-stretch">
         <button
           type="button"
