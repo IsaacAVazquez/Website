@@ -4,6 +4,13 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-07-02
+
+- Brought `CHANGELOG.md` current by backfilling every release from 2026-03-28 through 2026-06-24 that had been recorded only in the public `content/changelog` entries, and added a public changelog entry for the 2026-06-24 dashboard-polish and investments live-pricing work.
+- Added a `Update Changelog on Merge` GitHub Action (`.github/workflows/changelog-on-merge.yml`) that appends a dated bullet to `CHANGELOG.md` for every merged pull request, backed by `scripts/append-changelog-entry.mjs` (idempotent, groups bullets under a UTC date header) and the shared `scripts/ci/commit-and-push-snapshot.sh` push path. Snapshot bots push straight to main so they are never logged, and a `skip-changelog` PR label opts out.
+
+---
+
 ## 2026-06-24
 
 - Redesigned the `/ai-dev-tools` directory from a horizontally-scrolling table into a responsive row-card list (single column on mobile, three-up facts grid on wider screens) with a sort control (curated, GitHub stars, recently shipped, name), relative GitHub-stars bars, release-freshness dots, and lifecycle status badges, and fixed the placeholder GitHub quick-link to an open-source filter.
