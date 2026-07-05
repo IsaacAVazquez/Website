@@ -24,6 +24,10 @@ import { StockSearch } from "./StockSearch";
 import { RetirementPlanner } from "./retirement/RetirementPlanner";
 import { useInvestments } from "@/hooks/useInvestments";
 import type { ResearchTab } from "@/app/investments/investments-state";
+import { InstrumentTape, type InstrumentTapeItem } from "@/components/editorial/InstrumentTape";
+import { formatCurrency, formatPercent } from "@/lib/investmentFormatting";
+import { holdingColor } from "./holdingPalette";
+import styles from "@/app/investments/investments.module.css";
 
 interface Props {
   researchSymbol: string;
@@ -121,6 +125,31 @@ export function InvestmentsDashboard({
   );
 
   const isEmpty = enhancedHoldings.length === 0;
+
+  // Quote tape: one line per holding, symbol/price/signed day % — the same
+  // enhancedHoldings array (live quote-driven) the holdings ledger renders,
+  // just projected onto the shared InstrumentTape strip.
+  const tapeItems: InstrumentTapeItem[] = useMemo(
+    () =>
+      enhancedHoldings.map((h) => {
+        const positive = h.dayChangePercent >= 0;
+        return {
+          key: h.symbol,
+          content: (
+            <span className={styles.quote}>
+              <span className={styles.quoteSym} style={{ borderLeft: `3px solid ${holdingColor(h.symbol)}`, paddingLeft: 8 }}>
+                {h.symbol}
+              </span>
+              <span className={styles.quotePx}>{formatCurrency(h.currentPrice)}</span>
+              <span className={positive ? "text-[var(--home-positive)]" : "text-[var(--home-negative)]"}>
+                {formatPercent(h.dayChangePercent)}
+              </span>
+            </span>
+          ),
+        };
+      }),
+    [enhancedHoldings],
+  );
 
   const navItems: NavItem[] = useMemo(
     () => [
@@ -225,6 +254,19 @@ export function InvestmentsDashboard({
           </div>
         </div>
 
+        {!isEmpty ? (
+          <InstrumentTape
+            className={styles.quoteTape}
+            label={
+              <span className={styles.quoteTapeTag}>
+                Snapshot · {formatDatasetDate(datasetLastUpdated)}
+              </span>
+            }
+            items={tapeItems}
+            ariaLabel="Holdings quote tape"
+          />
+        ) : null}
+
         {/* Compact dataset freshness chip */}
         <div className="invest-dataset-chip" role="status" aria-live="polite">
           <span className="invest-dataset-chip-dot" aria-hidden="true" />
@@ -252,7 +294,7 @@ export function InvestmentsDashboard({
         </div>
 
         {error ? (
-          <div className="mt-4 rounded-[var(--radius-2xl)] border border-[color-mix(in_srgb,var(--home-warning)_35%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-warning)_10%,var(--home-paper-alt))] px-4 py-3 text-sm text-[var(--home-ink-muted)]">
+          <div className="mt-4 rounded-[var(--radius-sm)] border border-[color-mix(in_srgb,var(--home-warning)_35%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-warning)_10%,var(--home-paper-alt))] px-4 py-3 text-sm text-[var(--home-ink-muted)]">
             {error}
           </div>
         ) : null}
@@ -276,7 +318,7 @@ export function InvestmentsDashboard({
               onResearch={handleResearch}
             />
           ) : (
-            <div className="rounded-[var(--radius-3xl)] border border-dashed border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-6 py-16 text-center shadow-[var(--shadow-sm)]">
+            <div className="rounded-[var(--radius-sm)] border border-dashed border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-6 py-16 text-center ">
               <p className="mb-2 text-sm font-semibold text-[var(--home-ink)]">
                 No positions yet
               </p>

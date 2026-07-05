@@ -19,7 +19,7 @@ import {
 } from "d3";
 import React, { useRef, useEffect, useState, useCallback } from "react";
 import { useTheme } from "next-themes";
-import { WarmCard } from "@/components/ui/WarmCard";
+import { TerminalPanel } from "./TerminalPanel";
 
 export interface PortfolioSnapshot {
   date: string; // "2026-03-05"
@@ -303,7 +303,7 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
 
   if (snapshots.length < 2) {
     return (
-      <WarmCard padding="sm" className="rounded-[var(--radius-3xl)] shadow-[var(--shadow-sm)]">
+      <TerminalPanel padding="sm">
         <h3
           className="text-base font-semibold mb-0"
           style={{ color: "var(--home-ink)" }}
@@ -316,12 +316,12 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
         >
           Performance tracking starts after 2 days of data
         </div>
-      </WarmCard>
+      </TerminalPanel>
     );
   }
 
   return (
-    <WarmCard padding="sm" className="rounded-[var(--radius-3xl)] shadow-[var(--shadow-sm)]">
+    <TerminalPanel padding="sm">
       <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
         <div>
           <h3
@@ -365,7 +365,7 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
         <svg ref={svgRef} className="w-full" style={{ height: HEIGHT }} />
         <div
         ref={tooltipRef}
-        className="absolute rounded-lg shadow-lg pointer-events-none transition-opacity duration-150"
+        className="absolute rounded-[var(--radius-sm)] pointer-events-none transition-opacity duration-150"
         style={{
           opacity: 0,
           padding: "8px 10px",
@@ -411,6 +411,6 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
           <span>Cost Basis</span>
         </div>
       </div>
-    </WarmCard>
+    </TerminalPanel>
   );
 }

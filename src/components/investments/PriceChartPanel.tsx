@@ -16,7 +16,7 @@ import {
   bisector,
   pointer,
 } from "d3";
-import { WarmCard } from "@/components/ui/WarmCard";
+import { TerminalPanel } from "./TerminalPanel";
 import { useStockData } from "@/hooks/useStockData";
 import { formatHistoryAsOf, getHistoricalPriceFreshness } from "@/lib/investmentsHistory";
 import type { PriceData, StockPrice } from "@/types/investment";
@@ -55,6 +55,15 @@ function normalizeEntry(entry: StockPrice & { report_date?: string; symbol?: str
   };
 }
 
+/** Rebase a close-price series so its first point reads 100 — for the
+ * vs-SPY overlay, where absolute dollars would put two different stocks on
+ * incomparable scales. */
+function indexToHundred(values: number[]): number[] {
+  const base = values[0];
+  if (!base) return values.map(() => 100);
+  return values.map((v) => (v / base) * 100);
+}
+
 export function PriceChartPanel({ symbol, costBasis = null }: Props) {
   const {
     data: raw,
@@ -67,6 +76,14 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
   const [range, setRange] = useState<Range>("1Y");
   const [showMA, setShowMA] = useState(true);
   const [showCostBasis, setShowCostBasis] = useState(true);
+  const [vsSpy, setVsSpy] = useState(false);
+
+  const isSpySymbol = symbol.toUpperCase() === "SPY";
+  const {
+    data: spyRaw,
+    isLoading: spyLoading,
+    isNotFetched: spyNotFetched,
+  } = useStockData<PriceData>(vsSpy && !isSpySymbol ? "SPY" : null, "price");
 
   const priceRef = useRef<SVGSVGElement>(null);
   const volumeRef = useRef<SVGSVGElement>(null);
@@ -99,18 +116,47 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
   const latestHistoricalDate = allEntries[allEntries.length - 1]?.date;
   const historyFreshness = getHistoricalPriceFreshness(latestHistoricalDate, datasetLastUpdated);
 
+  // SPY series, sliced to the same trailing window as the primary symbol so
+  // both series index to 100 at the same starting point.
+  const spyEntries: StockPrice[] = React.useMemo(() => {
+    if (!spyRaw || !Array.isArray(spyRaw)) return [];
+    return (spyRaw as (StockPrice & { report_date?: string })[]).map(normalizeEntry);
+  }, [spyRaw]);
+  const spySliced = React.useMemo(() => {
+    const days = RANGE_DAYS[range];
+    return spyEntries.slice(-days);
+  }, [spyEntries, range]);
+
+  const spyUnavailable = vsSpy && !isSpySymbol && !spyLoading && (spyNotFetched || spySliced.length < 2);
+  const vsSpyActive = vsSpy && !isSpySymbol && spySliced.length >= 2 && slicedData.length >= 2;
+
   useEffect(() => {
     if (!priceRef.current || !volumeRef.current || slicedData.length === 0) return;
 
     const parseDate = timeParse("%Y-%m-%d");
-    const entries = slicedData
+    let entries = slicedData
       .map((d) => ({ ...d, parsedDate: parseDate(d.date) }))
       .filter((d): d is typeof d & { parsedDate: Date } => d.parsedDate !== null);
 
     if (entries.length === 0) return;
 
+    // vs-SPY indexed overlay: both series rebase to 100 at the start of the
+    // current window. Trading-day counts between two symbols are nearly
+    // always identical (same exchange, same range), so aligning by trailing
+    // position (rather than exact calendar date) keeps this simple while
+    // staying correct in the overwhelming common case.
+    let spyIndexed: number[] | null = null;
+    if (vsSpyActive) {
+      const parsedSpy = spySliced
+        .map((d) => ({ ...d, parsedDate: parseDate(d.date) }))
+        .filter((d): d is typeof d & { parsedDate: Date } => d.parsedDate !== null);
+      const alignLen = Math.min(entries.length, parsedSpy.length);
+      entries = entries.slice(-alignLen);
+      spyIndexed = indexToHundred(parsedSpy.slice(-alignLen).map((d) => d.close));
+    }
+
     const dates = entries.map((d) => d.parsedDate);
-    const closes = entries.map((d) => d.close);
+    const closes = vsSpyActive ? indexToHundred(entries.map((d) => d.close)) : entries.map((d) => d.close);
     const volumes = entries.map((d) => d.volume);
 
     // ── Price chart ──────────────────────────────────────────────────────────
@@ -126,7 +172,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
       .attr("width", pWidth)
       .attr("height", pHeight)
       .attr("role", "img")
-      .attr("aria-label", `${symbol} price chart`);
+      .attr("aria-label", vsSpyActive ? `${symbol} price, indexed to 100 vs SPY` : `${symbol} price chart`);
 
     const pg = pSvg.append("g").attr("transform", `translate(${pMargin.left},${pMargin.top})`);
 
@@ -134,11 +180,14 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
       .domain([dates[0], dates[dates.length - 1]])
       .range([0, pInnerW]);
 
-    // Domain spans the visible closes and the visible MA. Cost basis is
-    // deliberately excluded so a far-out-of-range entry price can't squash the
-    // price line; the cost line is instead clamped to the chart edge below.
+    // Domain spans the visible closes (or indexed values, in vs-SPY mode) and
+    // the visible MA. Cost basis is deliberately excluded so a far-out-of-
+    // range entry price can't squash the price line; the cost line is instead
+    // clamped to the chart edge below. Neither MA nor cost basis apply in
+    // vs-SPY mode — they're dollar figures, meaningless mixed with an index.
     const domainValues = [...closes];
-    if (showMA) {
+    if (spyIndexed) domainValues.push(...spyIndexed);
+    if (showMA && !vsSpyActive) {
       for (const e of entries) if (e.ma50 !== null) domainValues.push(e.ma50);
     }
     const minClose = min(domainValues) ?? 0;
@@ -162,7 +211,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
       .attr("font-size", "10px")
       .attr("dx", "-4px");
 
-    // Y axis label (USD)
+    // Y axis label
     pg.append("text")
       .attr("transform", "rotate(-90)")
       .attr("x", -pInnerH / 2)
@@ -170,13 +219,30 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
       .attr("text-anchor", "middle")
       .style("fill", "var(--home-ink-soft)")
       .attr("font-size", "10px")
-      .text("Price (USD)");
+      .text(vsSpyActive ? "Indexed (start = 100)" : "Price (USD)");
 
-    // Area fill
+    // SPY comparison line (muted, drawn beneath the primary series) — only
+    // in vs-SPY mode, both series already rebased to 100 at the window start.
+    if (spyIndexed) {
+      const spyLine = d3Line<number>()
+        .x((_d, i) => xScale(dates[i]))
+        .y((d) => yScale(d))
+        .curve(curveMonotoneX);
+
+      pg.append("path")
+        .datum(spyIndexed)
+        .attr("d", spyLine)
+        .attr("fill", "none")
+        .style("stroke", "var(--home-ink-muted)")
+        .attr("stroke-width", 1.4)
+        .attr("stroke-dasharray", "4,3");
+    }
+
+    // Area fill (primary series only)
     const area = d3Area<(typeof entries)[0]>()
       .x((d) => xScale(d.parsedDate))
       .y0(pInnerH)
-      .y1((d) => yScale(d.close))
+      .y1((_d, i) => yScale(closes[i]))
       .curve(curveMonotoneX);
 
     pg.append("path")
@@ -188,7 +254,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
     // Line
     const line = d3Line<(typeof entries)[0]>()
       .x((d) => xScale(d.parsedDate))
-      .y((d) => yScale(d.close))
+      .y((_d, i) => yScale(closes[i]))
       .curve(curveMonotoneX);
 
     pg.append("path")
@@ -199,8 +265,8 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
       .attr("stroke-width", 1.5);
 
     // 50-day moving average (dashed, neutral) — only the points that have a
-    // warmed-up average are drawn.
-    if (showMA) {
+    // warmed-up average are drawn. Not shown in vs-SPY (indexed) mode.
+    if (showMA && !vsSpyActive) {
       const maLine = d3Line<(typeof entries)[0]>()
         .defined((d) => d.ma50 !== null)
         .x((d) => xScale(d.parsedDate))
@@ -220,7 +286,8 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
     // Cost-basis reference line (dashed green) with a mono price label. The y
     // position is clamped to the plot so an out-of-range entry pins to the edge
     // (signaling "cost sits above/below this window") instead of being clipped.
-    if (showCostBasis && hasCostBasis) {
+    // Not shown in vs-SPY (indexed) mode.
+    if (showCostBasis && hasCostBasis && !vsSpyActive) {
       const cy = Math.max(0, Math.min(pInnerH, yScale(costBasis as number)));
       pg.append("line")
         .attr("x1", 0)
@@ -284,7 +351,11 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
         tooltipRef.current.style.left = `${event.clientX - rect.left + 12}px`;
         tooltipRef.current.style.top = `${event.clientY - rect.top - 40}px`;
         tooltipRef.current.style.display = "block";
-        tooltipRef.current.innerHTML = `<span class="font-medium">${pt.date}</span><br/>Close: $${pt.close.toFixed(2)}`;
+        tooltipRef.current.innerHTML = vsSpyActive
+          ? `<span class="font-medium">${pt.date}</span><br/>${symbol.toUpperCase()}: ${closes[idx].toFixed(1)}${
+              spyIndexed ? `<br/>SPY: ${spyIndexed[idx].toFixed(1)}` : ""
+            }`
+          : `<span class="font-medium">${pt.date}</span><br/>Close: $${pt.close.toFixed(2)}`;
       })
       .on("mouseleave", function () {
         hairline.attr("opacity", 0);
@@ -342,13 +413,13 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
       .style("fill", "var(--home-ink-soft)")
       .attr("font-size", "9px")
       .text("Volume");
-  }, [slicedData, symbol, showMA, showCostBasis, hasCostBasis, costBasis]);
+  }, [slicedData, symbol, showMA, showCostBasis, hasCostBasis, costBasis, vsSpyActive, spySliced]);
 
   const isError = !isLoading && (!!error || (raw && !Array.isArray(raw)));
   const isEmpty = !isLoading && !error && slicedData.length === 0;
 
   return (
-    <WarmCard padding="sm" ariaLabel="Price chart" className="rounded-[var(--radius-3xl)] shadow-[var(--shadow-sm)]">
+    <TerminalPanel padding="sm" ariaLabel="Price chart">
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
         <div>
           <h3 className="text-sm font-semibold text-[var(--home-ink)]">Price History</h3>
@@ -363,43 +434,66 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
               Historical chart data trails the dataset by {historyFreshness.lagDays} days.
             </p>
           ) : null}
+          {spyUnavailable ? (
+            <p className="mt-1 text-xs text-[var(--home-warning)]">
+              SPY comparison data isn&apos;t in this data build yet — showing absolute price instead.
+            </p>
+          ) : null}
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <div className="flex flex-wrap gap-2" role="group" aria-label="Chart overlays">
-            <button
-              type="button"
-              onClick={() => setShowMA((v) => !v)}
-              aria-pressed={showMA}
-              className={`inline-flex min-h-[44px] items-center gap-2 rounded-full px-3.5 py-2 text-xs font-semibold transition ${
-                showMA
-                  ? "border border-[var(--home-ink-muted)] bg-[var(--home-paper-alt)] text-[var(--home-ink)]"
-                  : "border border-[var(--home-rule)] text-[var(--home-ink-soft)] hover:bg-[var(--home-paper-alt)]"
-              }`}
-            >
-              <span
-                aria-hidden="true"
-                className="inline-block h-0 w-4 border-t-[1.5px] border-dashed"
-                style={{ borderColor: "var(--home-ink-muted)" }}
-              />
-              50-day MA
-            </button>
-            {hasCostBasis ? (
+            {!vsSpy ? (
+              <>
+                <button
+                  type="button"
+                  onClick={() => setShowMA((v) => !v)}
+                  aria-pressed={showMA}
+                  className={`inline-flex min-h-[44px] items-center gap-2 rounded-[var(--radius-sm)] px-3.5 py-2 text-xs font-semibold transition ${
+                    showMA
+                      ? "border border-[var(--home-ink-muted)] bg-[var(--home-paper-alt)] text-[var(--home-ink)]"
+                      : "border border-[var(--home-rule)] text-[var(--home-ink-soft)] hover:bg-[var(--home-paper-alt)]"
+                  }`}
+                >
+                  <span
+                    aria-hidden="true"
+                    className="inline-block h-0 w-4 border-t-[1.5px] border-dashed"
+                    style={{ borderColor: "var(--home-ink-muted)" }}
+                  />
+                  50-day MA
+                </button>
+                {hasCostBasis ? (
+                  <button
+                    type="button"
+                    onClick={() => setShowCostBasis((v) => !v)}
+                    aria-pressed={showCostBasis}
+                    className={`inline-flex min-h-[44px] items-center gap-2 rounded-[var(--radius-sm)] px-3.5 py-2 text-xs font-semibold transition ${
+                      showCostBasis
+                        ? "border border-[color-mix(in_srgb,var(--home-positive)_45%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-positive)_10%,var(--home-paper-alt))] text-[var(--home-ink)]"
+                        : "border border-[var(--home-rule)] text-[var(--home-ink-soft)] hover:bg-[var(--home-paper-alt)]"
+                    }`}
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="inline-block h-0 w-4 border-t-[1.5px] border-dashed"
+                      style={{ borderColor: "var(--home-positive)" }}
+                    />
+                    Cost basis
+                  </button>
+                ) : null}
+              </>
+            ) : null}
+            {!isSpySymbol ? (
               <button
                 type="button"
-                onClick={() => setShowCostBasis((v) => !v)}
-                aria-pressed={showCostBasis}
-                className={`inline-flex min-h-[44px] items-center gap-2 rounded-full px-3.5 py-2 text-xs font-semibold transition ${
-                  showCostBasis
-                    ? "border border-[color-mix(in_srgb,var(--home-positive)_45%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-positive)_10%,var(--home-paper-alt))] text-[var(--home-ink)]"
+                onClick={() => setVsSpy((v) => !v)}
+                aria-pressed={vsSpy}
+                className={`inline-flex min-h-[44px] items-center gap-2 rounded-[var(--radius-sm)] px-3.5 py-2 text-xs font-semibold transition ${
+                  vsSpy
+                    ? "border border-[color-mix(in_srgb,var(--home-signal)_55%,var(--home-rule))] text-[var(--home-signal)]"
                     : "border border-[var(--home-rule)] text-[var(--home-ink-soft)] hover:bg-[var(--home-paper-alt)]"
                 }`}
               >
-                <span
-                  aria-hidden="true"
-                  className="inline-block h-0 w-4 border-t-[1.5px] border-dashed"
-                  style={{ borderColor: "var(--home-positive)" }}
-                />
-                Cost basis
+                vs SPY
               </button>
             ) : null}
           </div>
@@ -408,9 +502,9 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
               <button
                 key={r}
                 onClick={() => setRange(r)}
-                className={`min-h-[44px] min-w-[44px] rounded-full px-3.5 py-2 text-xs font-semibold transition ${
+                className={`min-h-[44px] min-w-[44px] rounded-[var(--radius-sm)] px-3.5 py-2 text-xs font-semibold transition ${
                   range === r
-                    ? "bg-[var(--home-signal)] text-white shadow-[var(--shadow-sm)]"
+                    ? "bg-[var(--home-signal)] text-white "
                     : "border border-[var(--home-rule)] text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
                 }`}
               >
@@ -438,10 +532,10 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
           <svg ref={volumeRef} className="mt-2 w-full" />
           <div
             ref={tooltipRef}
-            className="absolute pointer-events-none hidden z-10 bg-[var(--home-paper-raised)] border border-[var(--home-rule)] rounded px-2 py-1 text-xs text-[var(--home-ink)] shadow-md whitespace-nowrap"
+            className="absolute pointer-events-none hidden z-10 bg-[var(--home-paper-raised)] border border-[var(--home-rule)] rounded-[var(--radius-sm)] px-2 py-1 text-xs text-[var(--home-ink)] whitespace-nowrap"
           />
         </div>
       )}
-    </WarmCard>
+    </TerminalPanel>
   );
 }

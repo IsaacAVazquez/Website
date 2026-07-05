@@ -172,3 +172,6 @@ CB
 STZ
 FTNT
 ECL
+
+# Benchmark — vs-SPY indexed overlay on the research price chart
+SPY

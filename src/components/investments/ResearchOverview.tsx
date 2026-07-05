@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { WarmCard } from "@/components/ui/WarmCard";
+import { TerminalPanel } from "./TerminalPanel";
 import { useStockData } from "@/hooks/useStockData";
 import { IconExternalLink } from "@tabler/icons-react";
 import type {
@@ -41,7 +41,7 @@ function NewsCard({ item }: { item: NewsItem }) {
     <div className="flex items-start gap-3 py-3 border-b border-[var(--home-rule)] last:border-0">
       <div
         aria-hidden="true"
-        className="mt-0.5 grid h-10 w-10 shrink-0 place-items-center rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-xs font-semibold tracking-[0.04em] text-[var(--home-ink-muted)]"
+        className="mt-0.5 grid h-10 w-10 shrink-0 place-items-center rounded-[var(--radius-sm)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-xs font-semibold tracking-[0.04em] text-[var(--home-ink-muted)]"
       >
         {newsMonogram(item)}
       </div>
@@ -177,9 +177,9 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
   return (
     <div className="space-y-5">
       {/* Company bio */}
-      <WarmCard
+      <TerminalPanel
         padding="none"
-        className="overflow-hidden rounded-[var(--radius-3xl)] border-[color-mix(in_srgb,var(--home-signal)_16%,var(--home-rule))] shadow-[var(--shadow-sm)]"
+        className="overflow-hidden rounded-[var(--radius-sm)] border-[color-mix(in_srgb,var(--home-signal)_16%,var(--home-rule))] "
       >
         <div className="p-5 sm:p-6">
           <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
@@ -200,13 +200,13 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
             </a>
           ) : null}
         </div>
-      </WarmCard>
+      </TerminalPanel>
 
       {/* Officers */}
       {officers.length > 0 ? (
-        <WarmCard
+        <TerminalPanel
           padding="none"
-          className="rounded-[var(--radius-3xl)] shadow-[var(--shadow-sm)]"
+         
         >
           <div className="p-5 sm:p-6">
             <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
@@ -216,7 +216,7 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
               {officers.map((officer, i) => (
                 <div
                   key={i}
-                  className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-3"
+                  className="rounded-[var(--radius-sm)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-3"
                 >
                   <p className="text-sm font-semibold leading-tight text-[var(--home-ink)]">
                     {officer.name ?? "—"}
@@ -235,15 +235,15 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
               ))}
             </div>
           </div>
-        </WarmCard>
+        </TerminalPanel>
       ) : null}
 
       {/* Signals + News */}
       <div className={`grid gap-5 ${newsItems.length > 0 ? "lg:grid-cols-2" : ""}`}>
         {/* Signals */}
-        <WarmCard
+        <TerminalPanel
           padding="sm"
-          className="rounded-[var(--radius-3xl)] border-[color-mix(in_srgb,var(--home-positive)_18%,var(--home-rule))] shadow-[var(--shadow-sm)]"
+          className="rounded-[var(--radius-sm)] border-[color-mix(in_srgb,var(--home-positive)_18%,var(--home-rule))] "
         >
           <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
             Signals
@@ -253,23 +253,23 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
               signals.map((signal) => (
                 <div
                   key={signal.label}
-                  className={`rounded-[var(--radius-3xl)] border px-4 py-3 ${toneClasses(signal.tone)}`}
+                  className={`rounded-[var(--radius-sm)] border px-4 py-3 ${toneClasses(signal.tone)}`}
                 >
                   <p className="text-xs font-semibold uppercase tracking-[0.16em]">{signal.label}</p>
                   <p className="mt-2 text-sm leading-6 text-[var(--home-ink)]">{signal.body}</p>
                 </div>
               ))
             ) : (
-              <div className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] px-4 py-3 text-sm text-[var(--home-ink-muted)]">
+              <div className="rounded-[var(--radius-sm)] border border-[var(--home-rule)] px-4 py-3 text-sm text-[var(--home-ink-muted)]">
                 Signals will appear once valuation and operating data are available.
               </div>
             )}
           </div>
-        </WarmCard>
+        </TerminalPanel>
 
         {/* News */}
         {newsItems.length > 0 ? (
-          <WarmCard padding="sm" className="rounded-[var(--radius-3xl)] shadow-[var(--shadow-sm)]">
+          <TerminalPanel padding="sm">
             <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
               Latest News
             </p>
@@ -278,16 +278,16 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
                 <NewsCard key={item.uuid ?? i} item={item} />
               ))}
             </div>
-          </WarmCard>
+          </TerminalPanel>
         ) : !showNews ? (
-          <WarmCard padding="sm" className="rounded-[var(--radius-3xl)] shadow-[var(--shadow-sm)]">
+          <TerminalPanel padding="sm">
             <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
               Snapshot Mode
             </p>
             <p className="mt-3 text-sm leading-6 text-[var(--home-ink-muted)]">
               Valuation, quality, and operating data are available while the curated headline feed is unavailable.
             </p>
-          </WarmCard>
+          </TerminalPanel>
         ) : null}
       </div>
     </div>

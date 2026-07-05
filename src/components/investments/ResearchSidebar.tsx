@@ -132,7 +132,7 @@ export function ResearchSidebar({ symbol, onSymbolChange, isInPortfolio = false 
   return (
     <div className="space-y-3">
       {/* Search */}
-      <div className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-4 shadow-[var(--shadow-sm)]">
+      <div className="rounded-[var(--radius-sm)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-4 ">
         <div className="mb-2 flex items-center justify-between gap-2">
           <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
             Research Symbol
@@ -155,7 +155,7 @@ export function ResearchSidebar({ symbol, onSymbolChange, isInPortfolio = false 
       {symbol ? (
         <>
           {/* Company identity + stance */}
-          <div className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-4 shadow-[var(--shadow-sm)]">
+          <div className="rounded-[var(--radius-sm)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-4 ">
             <p className="text-sm font-semibold leading-snug text-[var(--home-ink)]">
               {[displayName || symbol, symbol !== (displayName || symbol) ? symbol : null, info?.sector, info?.industry].filter(Boolean).join(" · ")}
             </p>
@@ -167,7 +167,7 @@ export function ResearchSidebar({ symbol, onSymbolChange, isInPortfolio = false 
           </div>
 
           {/* Live price */}
-          <div className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-4 shadow-[var(--shadow-sm)]">
+          <div className="rounded-[var(--radius-sm)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-4 ">
             <p className="mb-2 text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
               Latest Price
             </p>
@@ -217,7 +217,7 @@ export function ResearchSidebar({ symbol, onSymbolChange, isInPortfolio = false 
           </div>
 
           {/* Key metrics */}
-          <div className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-4 shadow-[var(--shadow-sm)]">
+          <div className="rounded-[var(--radius-sm)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-4 ">
             <p className="mb-2 text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
               Key Metrics
             </p>
@@ -250,12 +250,12 @@ export function ResearchSidebar({ symbol, onSymbolChange, isInPortfolio = false 
           </div>
 
           {/* Dataset freshness */}
-          <div className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-4 py-3 shadow-[var(--shadow-sm)]">
+          <div className="rounded-[var(--radius-sm)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-4 py-3 ">
             <DataFreshnessIndicator lastUpdated={dataFreshnessLastUpdated} mode="dataset" />
           </div>
         </>
       ) : (
-        <div className="rounded-[var(--radius-3xl)] border border-dashed border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-5 py-10 text-center shadow-[var(--shadow-sm)]">
+        <div className="rounded-[var(--radius-sm)] border border-dashed border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-5 py-10 text-center ">
           <p className="text-sm text-[var(--home-ink-muted)]">
             Enter a ticker to see metrics and research data.
           </p>

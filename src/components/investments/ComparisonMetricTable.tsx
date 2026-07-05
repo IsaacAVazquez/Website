@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { WarmCard } from "@/components/ui/WarmCard";
+import { TerminalPanel } from "./TerminalPanel";
 import { IconTrendingUp } from "@tabler/icons-react";
 
 export interface MetricRow {
@@ -40,7 +40,7 @@ function compareValues(
 
 export function ComparisonMetricTable({ title, rows, symbolA, symbolB }: Props) {
   return (
-    <WarmCard padding="sm" className="rounded-[var(--radius-3xl)] shadow-[var(--shadow-sm)]">
+    <TerminalPanel padding="sm">
       <h3 className="mb-4 text-sm font-semibold text-[var(--home-ink)]">{title}</h3>
       <div className="overflow-x-auto">
         <table className="w-full text-sm" aria-label={`${title} comparison`}>
@@ -91,6 +91,6 @@ export function ComparisonMetricTable({ title, rows, symbolA, symbolB }: Props) 
           </tbody>
         </table>
       </div>
-    </WarmCard>
+    </TerminalPanel>
   );
 }

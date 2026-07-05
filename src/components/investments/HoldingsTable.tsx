@@ -10,6 +10,7 @@ import {
 } from "@/lib/investmentFormatting";
 import type { EnhancedHolding, PriceData, StockPrice } from "@/types/investment";
 import { holdingColor } from "./holdingPalette";
+import styles from "@/app/investments/investments.module.css";
 
 interface Props {
   holdings: EnhancedHolding[];
@@ -89,13 +90,11 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
       <tr>
         <td colSpan={8} className="!py-3">
           <div className="flex flex-wrap items-center gap-3 px-1">
-            <div className="invest-ticker">
-              <div className="invest-logo" style={{ background: color }}>
-                {holding.symbol.replace(".", "").slice(0, 4)}
-              </div>
-              <div className="invest-ticker-info">
-                <div className="invest-ticker-sym">{holding.symbol}</div>
-                <div className="invest-ticker-name">Edit position</div>
+            <div className={styles.tick}>
+              <span className={styles.tickBar} style={{ background: color }} aria-hidden="true" />
+              <div>
+                <div className={styles.tickSym}>{holding.symbol}</div>
+                <div className={styles.tickName}>Edit position</div>
               </div>
             </div>
             <label className="text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
@@ -108,7 +107,7 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
                 onChange={(e) => setEditShares(e.target.value)}
                 onKeyDown={handleEditKeyDown}
                 autoFocus
-                className="ml-2 w-28 rounded-full border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-3 py-1.5 text-sm text-[var(--home-ink)] focus:outline-none focus:ring-2 focus:ring-[var(--home-signal)]/40"
+                className="ml-2 w-28 rounded-[var(--radius-sm)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-1.5 text-sm font-mono text-[var(--home-ink)] focus:outline-none focus:ring-2 focus:ring-[var(--home-signal)]/40"
               />
             </label>
             <label className="text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
@@ -120,7 +119,7 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
                 value={editCost}
                 onChange={(e) => setEditCost(e.target.value)}
                 onKeyDown={handleEditKeyDown}
-                className="ml-2 w-28 rounded-full border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-3 py-1.5 text-sm text-[var(--home-ink)] focus:outline-none focus:ring-2 focus:ring-[var(--home-signal)]/40"
+                className="ml-2 w-28 rounded-[var(--radius-sm)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-1.5 text-sm font-mono text-[var(--home-ink)] focus:outline-none focus:ring-2 focus:ring-[var(--home-signal)]/40"
               />
             </label>
             <div className="invest-row-actions ml-auto">
@@ -150,13 +149,11 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
   return (
     <tr>
       <td>
-        <div className="invest-ticker">
-          <div className="invest-logo" style={{ background: color }}>
-            {holding.symbol.replace(".", "").slice(0, 4)}
-          </div>
-          <div className="invest-ticker-info">
-            <div className="invest-ticker-sym">{holding.symbol}</div>
-            <div className="invest-ticker-name" title={holding.name ?? holding.symbol}>
+        <div className={styles.tick}>
+          <span className={styles.tickBar} style={{ background: color }} aria-hidden="true" />
+          <div>
+            <div className={styles.tickSym} data-testid="ticker-symbol">{holding.symbol}</div>
+            <div className={styles.tickName} title={holding.name ?? holding.symbol}>
               {holding.name ?? holding.symbol}
             </div>
           </div>

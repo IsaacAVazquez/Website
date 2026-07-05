@@ -10,6 +10,7 @@ import {
   formatPercent,
   formatSignedCurrency,
 } from "@/lib/investmentFormatting";
+import styles from "@/app/investments/investments.module.css";
 
 interface Props {
   summary: PortfolioSummaryType;
@@ -80,33 +81,23 @@ interface StatCellProps {
 }
 
 function StatCell({ label, hint, value, sub, tone = "default", subTone = "default" }: StatCellProps) {
-  const valueColor =
-    tone === "pos"
-      ? "text-[var(--home-positive)]"
-      : tone === "neg"
-        ? "text-[var(--home-negative)]"
-        : "text-[var(--home-ink)]";
-  const subColor =
-    subTone === "pos"
-      ? "text-[var(--home-positive)]"
-      : subTone === "neg"
-        ? "text-[var(--home-negative)]"
-        : "text-[var(--home-ink-muted)]";
+  const valueClass = tone === "pos" ? styles.statPos : tone === "neg" ? styles.statNeg : "";
+  const subClass = subTone === "pos" ? styles.statPos : subTone === "neg" ? styles.statNeg : "";
   return (
-    <div className="flex min-w-0 flex-col gap-1">
+    <div className={styles.statCell}>
       <span
-        className="invest-stats-cell-label w-fit cursor-help text-1xs font-medium text-[var(--home-ink-muted)] [text-decoration-color:color-mix(in_srgb,var(--home-ink)_28%,transparent)] [text-decoration-line:underline] [text-decoration-style:dotted] [text-underline-offset:3px]"
+        className={styles.statLabel}
         title={hint}
       >
         {label}
       </span>
       <span
-        className={`truncate text-[1.0625rem] font-semibold leading-[1.3] tracking-[-0.01em] tabular-nums ${valueColor}`}
+        className={styles.statValue + " " + valueClass}
       >
         {value}
       </span>
       <span
-        className={`invest-stats-cell-sub text-2xs tabular-nums ${subColor}`}
+        className={styles.statSub + " " + subClass}
       >
         {sub ?? " "}
       </span>
@@ -122,23 +113,14 @@ export function PortfolioStatsGrid({ summary, holdings }: Props) {
   return (
     <section
       id="portfolio-stats"
-      className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-6 py-6 shadow-[var(--shadow-sm)] sm:px-7 sm:py-7 scroll-mt-28"
+      className={styles.statsPanel + " scroll-mt-28"}
     >
-      <div className="mb-5 flex items-baseline justify-between gap-4">
-        <h2 className="m-0 text-base font-bold tracking-[-0.02em] text-[var(--home-ink)]">
-          Portfolio stats
-        </h2>
-        <span className="inline-flex items-center gap-1.5 text-2xs text-[var(--home-ink-muted)]">
-          <span
-            aria-hidden="true"
-            className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--home-positive)]"
-            style={{ boxShadow: "0 0 0 3px color-mix(in srgb, var(--home-positive) 18%, transparent)" }}
-          />
-          Live across saved positions
-        </span>
+      <div className={styles.statsCap}>
+        <span>Portfolio stats</span>
+        <span className={styles.statsLive}>Live across saved positions</span>
       </div>
 
-      <div className="grid grid-cols-2 gap-x-6 gap-y-5 lg:grid-cols-4">
+      <div className={styles.statsGrid}>
         <StatCell
           label="Day P/L"
           hint="Today's change in portfolio value, summed across all positions."
@@ -231,7 +213,7 @@ export function PortfolioStatsGrid({ summary, holdings }: Props) {
         />
       </div>
 
-      <div className="mt-5 flex flex-wrap gap-2 border-t border-dashed border-[color-mix(in_srgb,var(--home-ink)_14%,transparent)] pt-4">
+      <div className={styles.statsFoot}>
         <a href="#allocation" className="invest-ghost">
           Allocation breakdown
         </a>

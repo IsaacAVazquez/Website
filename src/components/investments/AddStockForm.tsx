@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { ModernButton } from "@/components/ui/ModernButton";
-import { WarmCard } from "@/components/ui/WarmCard";
+import { TerminalPanel } from "./TerminalPanel";
 import { IconPlus, IconX } from "@tabler/icons-react";
 import type { PortfolioHolding } from "@/types/investment";
 
@@ -84,7 +84,7 @@ export function AddStockForm({ onAdd }: Props) {
   }
 
   return (
-    <WarmCard padding="sm" ariaLabel="Add stock form" className="rounded-[var(--radius-3xl)] shadow-[var(--shadow-sm)]">
+    <TerminalPanel padding="sm" ariaLabel="Add stock form">
       <div className="mb-5 flex items-center justify-between">
         <div>
           <h3 className="text-sm font-semibold text-[var(--home-ink)]">Add Position</h3>
@@ -168,6 +168,6 @@ export function AddStockForm({ onAdd }: Props) {
           </ModernButton>
         </div>
       </form>
-    </WarmCard>
+    </TerminalPanel>
   );
 }

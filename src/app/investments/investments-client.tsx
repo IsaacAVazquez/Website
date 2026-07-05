@@ -9,6 +9,7 @@ import {
   normalizeInvestmentsState,
 } from "./investments-state";
 import type { ResearchTab } from "./investments-state";
+import styles from "./investments.module.css";
 
 interface InvestmentsClientProps {
   initialState: InvestmentsSearchState;
@@ -93,7 +94,7 @@ export function InvestmentsClient({
 
   return (
     <section
-      className="home-page min-h-screen"
+      className={`home-page min-h-screen ${styles.terminalScope}`}
       aria-label="Investments dashboard"
       data-testid="investments-shell"
     >

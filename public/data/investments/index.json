@@ -149,7 +149,8 @@
     "CB",
     "STZ",
     "FTNT",
-    "ECL"
+    "ECL",
+    "SPY"
   ],
   "failed": [],
   "lastUpdated": "2026-07-02T23:53:41.175846+00:00",
@@ -1307,6 +1308,12 @@
       "searchText": "ecl ecolab inc. ecolab inc.",
       "stale": true,
       "asOf": "2026-04-29T19:21:59.962390+00:00"
+    },
+    {
+      "symbol": "SPY",
+      "shortName": "SPDR S&P 500 ETF Trust",
+      "longName": "SPDR S&P 500 ETF Trust",
+      "searchText": "spy spdr s&p 500 etf trust"
     }
   ]
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { WarmCard } from "@/components/ui/WarmCard";
+import { TerminalPanel } from "./TerminalPanel";
 import type { EnhancedHolding } from "@/types/investment";
 
 interface Props {
@@ -78,10 +78,10 @@ export function ResearchPosition({ position }: Props) {
   ];
 
   return (
-    <WarmCard
+    <TerminalPanel
       padding="sm"
       ariaLabel="Your position"
-      className="rounded-[var(--radius-3xl)] shadow-[var(--shadow-sm)]"
+     
     >
       <div className="mb-4 flex items-center justify-between gap-3">
         <div>
@@ -126,6 +126,6 @@ export function ResearchPosition({ position }: Props) {
           </div>
         </div>
       ) : null}
-    </WarmCard>
+    </TerminalPanel>
   );
 }

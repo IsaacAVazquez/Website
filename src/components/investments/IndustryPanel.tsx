@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { WarmCard } from "@/components/ui/WarmCard";
+import { TerminalPanel } from "./TerminalPanel";
 import { useStockData } from "@/hooks/useStockData";
 import {
   formatComparisonMetricValue,
@@ -55,7 +55,7 @@ export function IndustryPanel({ symbol }: Props) {
   const rows = extractRows(raw);
 
   return (
-    <WarmCard padding="sm">
+    <TerminalPanel padding="sm">
       <h3 className="text-sm font-semibold text-[var(--home-ink)] mb-3">
         Industry Comparison
       </h3>
@@ -102,6 +102,6 @@ export function IndustryPanel({ symbol }: Props) {
           </table>
         </div>
       )}
-    </WarmCard>
+    </TerminalPanel>
   );
 }

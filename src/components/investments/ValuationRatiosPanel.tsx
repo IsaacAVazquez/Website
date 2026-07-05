@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { WarmCard } from "@/components/ui/WarmCard";
+import { TerminalPanel } from "./TerminalPanel";
 import { useStockData } from "@/hooks/useStockData";
 import {
   formatComparisonMetricValue,
@@ -80,7 +80,7 @@ function StandaloneMetric({
   detail?: string;
 }) {
   return (
-    <div className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-4 py-3">
+    <div className="rounded-[var(--radius-sm)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-4 py-3">
       <p className="flex items-center gap-1 text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
         {label}
         <MetricTooltip term={label} />
@@ -126,7 +126,7 @@ export function ValuationRatiosPanel({
 
   if (!showIndustryComparison) {
     return (
-      <WarmCard padding="sm">
+      <TerminalPanel padding="sm">
         <h3 className="text-sm font-semibold text-[var(--home-ink)] mb-1">
           Valuation Snapshot
         </h3>
@@ -183,12 +183,12 @@ export function ValuationRatiosPanel({
             }
           />
         </div>
-      </WarmCard>
+      </TerminalPanel>
     );
   }
 
   return (
-    <WarmCard padding="sm">
+    <TerminalPanel padding="sm">
       <h3 className="text-sm font-semibold text-[var(--home-ink)] mb-1">Valuation vs Industry</h3>
       <p className="text-xs text-[var(--home-ink-soft)] mb-3">
         Comparing this stock&apos;s valuation ratios against its industry average.
@@ -218,6 +218,6 @@ export function ValuationRatiosPanel({
           ))}
         </>
       )}
-    </WarmCard>
+    </TerminalPanel>
   );
 }

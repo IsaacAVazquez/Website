@@ -1,0 +1,13 @@
+/*
+ * Fused hairline plate — the terminal identity's replacement for a floating,
+ * shadowed WarmCard inside /investments. No box-shadow, 2px corners, a
+ * single 1px --home-rule border. Tokens resolve against whatever scope this
+ * panel renders inside (the route's always-dark .terminalScope), so this
+ * file needs no token overrides of its own.
+ */
+.panel {
+  border: 1px solid var(--home-rule);
+  border-radius: var(--radius-sm);
+  background: var(--home-paper);
+  overflow: hidden;
+}
