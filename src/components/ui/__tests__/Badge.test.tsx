@@ -35,6 +35,13 @@ describe('Badge', () => {
     expect(badge).toHaveClass('border-[var(--home-rule)]')
   })
 
+  it('applies error variant correctly', () => {
+    const { container } = render(<Badge variant="error">Error</Badge>)
+    const badge = container.firstChild as HTMLElement
+    expect(badge).toHaveClass('bg-[var(--home-negative)]/10')
+    expect(badge).toHaveClass('text-[var(--home-negative)]')
+  })
+
   it('applies default size (sm)', () => {
     const { container } = render(<Badge>Small</Badge>)
     const badge = container.firstChild as HTMLElement
@@ -72,6 +79,12 @@ describe('Badge', () => {
     expect(badge).toHaveClass('items-center')
     expect(badge).toHaveClass('rounded-md')
     expect(badge).toHaveClass('font-medium')
+  })
+
+  it('renders as a span, not a div — Badge is an inline status token', () => {
+    const { container } = render(<Badge>Test</Badge>)
+    const badge = container.firstChild as HTMLElement
+    expect(badge.tagName).toBe('SPAN')
   })
 
   it('forwards additional props', () => {

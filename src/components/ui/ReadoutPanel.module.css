@@ -1,0 +1,70 @@
+/* ============================================================
+   ReadoutPanel — the signal-capped "live index" instrument.
+
+   Colors resolve through --hp-* custom properties, falling back to the
+   plain --home-* tokens. This lets an ancestor "plate" wrapper (e.g. the
+   homepage hero's dark ink slab, see src/app/page.module.css) rebind
+   --hp-paper/--hp-ink/--hp-muted/--hp-rule locally so the panel inverts for
+   that context, while a standalone panel (no such ancestor) just renders
+   with the ordinary paper/ink tokens.
+   ============================================================ */
+
+.panel {
+  border-top: 3px solid var(--hp-signal, var(--home-signal));
+  border-radius: 0;
+  background: var(--hp-paper, var(--home-paper));
+  color: var(--hp-ink, var(--home-ink));
+  position: relative;
+}
+
+.cap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--hp-rule, var(--home-rule));
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--hp-muted, var(--home-ink-muted));
+}
+
+.capLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: color-mix(in srgb, var(--hp-ink, var(--home-ink)) 82%, transparent);
+}
+
+.capRight {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 16px;
+  border-bottom: 1px solid
+    var(--hp-rule-soft, color-mix(in srgb, var(--home-rule) 55%, transparent));
+}
+
+.rowLabel {
+  font-size: 0.85rem;
+  color: var(--hp-muted, var(--home-ink-muted));
+}
+
+.rowValue {
+  font-family: var(--font-mono);
+  font-size: 1.8rem;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+  color: var(--hp-ink, var(--home-ink));
+}

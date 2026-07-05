@@ -20,6 +20,11 @@ export function StatusPanel({
   icon,
   statusRole,
 }: StatusPanelProps) {
+  // Auto-derive the ARIA role from tone (error → alert, otherwise status) so
+  // every instance gets a live region even if the caller doesn't pass one;
+  // an explicit `statusRole` still overrides.
+  const role = statusRole ?? (tone === "error" ? "alert" : "status");
+
   const toneStyle =
     tone === "error"
       ? {
@@ -41,12 +46,12 @@ export function StatusPanel({
 
   return (
     <div
-      className="home-card px-6 py-10 text-center"
+      className="home-card-static px-6 py-10 text-center"
       style={{
         borderColor: toneStyle.borderColor,
         background: toneStyle.background,
       }}
-      role={statusRole}
+      role={role}
     >
       {icon ? (
         <div

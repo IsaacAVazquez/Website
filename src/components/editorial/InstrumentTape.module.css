@@ -1,0 +1,58 @@
+/*
+ * InstrumentTape — layout chrome only. Colors reference the shared --home-*
+ * tokens directly (no local palette to alias, no hardcoded hex). The only
+ * reason this is a CSS module rather than inline Tailwind, like the rest of
+ * `editorial/`, is the webkit scrollbar-hiding pseudo-element, which can't be
+ * expressed as an inline style.
+ */
+
+.band {
+  display: flex;
+  align-items: stretch;
+  min-width: 0;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px 9px 0;
+  margin-right: 18px;
+  border-right: 1px solid var(--home-rule);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--home-ink-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.track {
+  display: flex;
+  align-items: stretch;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 18px;
+  border-right: 1px solid color-mix(in srgb, var(--home-rule) 55%, transparent);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  color: var(--home-ink);
+}
+
+.item:last-child {
+  border-right: 0;
+}
