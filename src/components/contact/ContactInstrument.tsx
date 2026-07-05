@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Mail, BrandLinkedin, Article } from "@/components/ui/ServerIcons";
 import styles from "@/app/contact/contact.module.css";
 
 /**
@@ -56,6 +57,9 @@ export function ContactInstrument() {
               className={`${styles.channel} ${styles.channelPrimary}`}
               href="mailto:IsaacVazquez@berkeley.edu"
             >
+              <span className={styles.channelIcon} aria-hidden="true">
+                <Mail size={18} />
+              </span>
               <div className={styles.topline}>
                 <span>Primary</span>
                 <span>№ 01</span>
@@ -74,6 +78,9 @@ export function ContactInstrument() {
               target="_blank"
               rel="noopener noreferrer"
             >
+              <span className={styles.channelIcon} aria-hidden="true">
+                <BrandLinkedin size={18} />
+              </span>
               <div className={styles.topline}>
                 <span>Secondary</span>
                 <span>№ 02</span>
@@ -87,6 +94,9 @@ export function ContactInstrument() {
               </div>
             </a>
             <Link className={styles.channel} href="/writing">
+              <span className={styles.channelIcon} aria-hidden="true">
+                <Article size={18} />
+              </span>
               <div className={styles.topline}>
                 <span>Tertiary</span>
                 <span>№ 03</span>
@@ -98,6 +108,10 @@ export function ContactInstrument() {
               </div>
             </Link>
           </div>
+          <p className={styles.status}>
+            <span className={styles.statusDot} aria-hidden="true" />
+            Based in Berkeley, CA · usually replies within a day
+          </p>
         </div>
       </div>
 

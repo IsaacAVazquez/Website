@@ -256,6 +256,35 @@ describe("getLaLigaSummary", () => {
     expect(summary.scorers[0].perMatch).toBeCloseTo(14 / 12);
     expect(summary.scorers[1].name).toBe("Kylian Mbappé");
 
+    // Assists board: re-sorted from the same /scorers response by assists
+    // descending (Mbappé has 5 assists vs. Lewandowski's 3), not hardcoded
+    // to []. The malformed (empty-name) entry is excluded.
+    expect(summary.assists).toHaveLength(2);
+    expect(summary.assists[0]).toMatchObject({
+      rank: 1,
+      name: "Kylian Mbappé",
+      clubId: "rma",
+      clubCode: "RMA",
+      total: 5,
+    });
+    expect(summary.assists[1]).toMatchObject({
+      rank: 2,
+      name: "Robert Lewandowski",
+      total: 3,
+    });
+
+    // Club accent color is resolved from the src/data/clubColors.ts lookup by TLA.
+    expect(barca?.accentColor).toBe("#A50044");
+
+    // Goals-per-matchday aggregates the full-season FINISHED-matches fetch
+    // (a separate, unlimited call from the 8-most-recent `recentRes`),
+    // grouped by matchday and summed. The malformed match (missing awayTeam,
+    // no matchday) contributes nothing.
+    expect(summary.goalsPerMatchday).toEqual([
+      { matchday: 11, totalGoals: 4 },
+      { matchday: 12, totalGoals: 4 },
+    ]);
+
     // Recent fixtures sorted newest-first; malformed (no awayTeam) one dropped.
     expect(summary.recentFixtures.map((f) => f.id)).toEqual(["1002", "1001"]);
     const clasico = summary.recentFixtures[0];
@@ -311,6 +340,8 @@ describe("getLaLigaSummary", () => {
 
     expect(summary.clubs).toEqual([]);
     expect(summary.scorers).toEqual([]);
+    expect(summary.assists).toEqual([]);
+    expect(summary.goalsPerMatchday).toEqual([]);
     expect(summary.recentFixtures).toEqual([]);
     expect(summary.upcomingFixtures).toEqual([]);
     expect(summary.teams).toEqual([]);

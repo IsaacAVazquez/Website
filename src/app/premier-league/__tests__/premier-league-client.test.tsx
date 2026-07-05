@@ -23,7 +23,7 @@ describe("PremierLeagueClient", () => {
     mockReplace.mockReset();
   });
 
-  it("renders the leader sidebar without rewriting the default route", async () => {
+  it("renders the default table view without opening the club drawer or rewriting the route", async () => {
     render(
       <PremierLeagueClient
         initialState={DEFAULT_PREMIER_LEAGUE_STATE}
@@ -32,15 +32,35 @@ describe("PremierLeagueClient", () => {
       />
     );
 
-    // Assert against the actual league leader rather than a hardcoded club so
-    // the test survives standings refreshes — the leader sidebar renders
-    // summary.standings[0].team.name in the default state.
-    expect(
-      screen.getByRole("heading", {
-        name: premierLeagueSnapshot.summary.standings[0].team.name,
-      })
-    ).toBeInTheDocument();
+    // The club drawer only opens for an explicit ?team= selection — a bare
+    // visit renders the standings and Club Detail tab inline, no overlay.
+    expect(screen.getByRole("heading", { name: "Standings" })).toBeInTheDocument();
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
     await waitFor(() => expect(mockReplace).not.toHaveBeenCalled());
+  });
+
+  it("opens the club drawer for a deep-linked club and closes it on Escape", async () => {
+    const user = userEvent.setup();
+    currentSearchParams = new URLSearchParams("team=57");
+
+    render(
+      <PremierLeagueClient
+        initialState={DEFAULT_PREMIER_LEAGUE_STATE}
+        summary={premierLeagueSnapshot.summary}
+        initialTeamSnapshot={premierLeagueSnapshot.teamSnapshots["57"] ?? null}
+      />
+    );
+
+    const club = premierLeagueSnapshot.summary.standings.find((row) => row.team.id === "57");
+    expect(club).toBeDefined();
+    expect(
+      screen.getByRole("dialog", { name: `${club!.team.name} detail` })
+    ).toBeInTheDocument();
+
+    await user.keyboard("{Escape}");
+
+    const [href] = mockPush.mock.calls.at(-1) ?? [];
+    expect(href).toBe("/premier-league");
   });
 
   it("canonicalizes invalid query params back to the default route", async () => {

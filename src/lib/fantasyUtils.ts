@@ -381,6 +381,49 @@ export function withTierBreaks(players: Player[]): FantasyTierRow[] {
 }
 
 /**
+ * Signal intensity for a tier, on a 0-100 scale: solid (100) at tier 1, fading
+ * by 13 points per tier down to a 12-point floor so even the bottom of the
+ * board keeps a faint accent instead of vanishing. Shared by the rankings
+ * row's left-edge tier rail and the inline tier-break tag so both read the
+ * same "how deep in the board" signal off one formula. An untiered player
+ * gets 0, which callers should mix toward a transparent/neutral base so the
+ * accent disappears rather than reading as flat gray.
+ */
+const TIER_RAIL_FLOOR = 12;
+const TIER_RAIL_STEP = 13;
+
+export function getTierRailIntensity(tier: number | null | undefined): number {
+  if (typeof tier !== "number" || !Number.isFinite(tier)) {
+    return 0;
+  }
+  return Math.max(TIER_RAIL_FLOOR, 100 - (tier - 1) * TIER_RAIL_STEP);
+}
+
+/** `getTierRailIntensity` as a ready-to-use `color-mix()` percentage. */
+export function getTierRailTone(tier: number | null | undefined): string {
+  return `${getTierRailIntensity(tier)}%`;
+}
+
+/**
+ * Background accent for a tier plate in the tiers-view breakdown. Unlike
+ * `getTierRailIntensity` (keyed off the absolute tier number, so tier 1 is
+ * always the hottest), this is keyed off the plate's position among the
+ * tiers actually on screen, so a position-filtered board that only shows
+ * tiers 4-9 still ranges from the top weight down to the bottom weight
+ * rather than reading uniformly faint.
+ */
+export function getTierPlateAccent(index: number, total: number): string {
+  if (total <= 1) {
+    return "24%";
+  }
+  const topWeight = 26;
+  const bottomWeight = 8;
+  const progress = index / (total - 1);
+  const mixed = topWeight - (topWeight - bottomWeight) * progress;
+  return `${mixed.toFixed(0)}%`;
+}
+
+/**
  * The "cliff" between two tiers: how many ranks drop between the last player of
  * one tier and the first of the next. A large gap is the classic signal to
  * reach for the tail of the current tier before it empties. Returns 0 when the

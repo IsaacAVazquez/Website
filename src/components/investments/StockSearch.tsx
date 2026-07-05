@@ -259,7 +259,7 @@ export function StockSearch({ value, onChange }: Props) {
           placeholder="Search symbol or company…"
           autoComplete="off"
           spellCheck={false}
-          className="box-border w-full rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] py-3 pl-9 pr-4 text-sm text-[var(--home-ink)] transition placeholder:text-[var(--home-ink-soft)] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[var(--home-signal)]"
+          className="box-border w-full rounded-[var(--radius-sm)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] py-3 pl-9 pr-4 text-sm text-[var(--home-ink)] transition placeholder:text-[var(--home-ink-soft)] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[var(--home-signal)]"
           aria-label="Search stock symbol"
           aria-autocomplete="list"
           aria-controls="stock-search-listbox"
@@ -281,7 +281,7 @@ export function StockSearch({ value, onChange }: Props) {
   role="listbox"
   aria-label="Symbol suggestions"
   style={dropdownStyle}
-className="m-0 list-none p-0 box-border overflow-hidden rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] shadow-lg"
+className="m-0 list-none p-0 box-border overflow-hidden rounded-[var(--radius-sm)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)]"
 >
             {suggestions.map((entry, indexPosition) => (
               <li key={entry.symbol}>

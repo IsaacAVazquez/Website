@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { WarmCard } from "@/components/ui/WarmCard";
+import { TerminalPanel } from "./TerminalPanel";
 import { useStockData } from "@/hooks/useStockData";
 import type { InvestmentSection } from "@/types/investment";
 import { ErrorState } from "./ErrorState";
@@ -150,7 +150,7 @@ export function FinancialStatementsPanel({ symbol }: Props) {
   const [period, setPeriod] = useState<Period>("quarterly");
 
   return (
-    <WarmCard padding="sm">
+    <TerminalPanel padding="sm">
       {/* Statement type tabs + period toggle */}
       <div className="flex items-center justify-between gap-2 mb-4 flex-wrap">
         <div className="flex gap-1 overflow-x-auto pb-1" role="tablist" aria-label="Financial statements">
@@ -190,6 +190,6 @@ export function FinancialStatementsPanel({ symbol }: Props) {
       </div>
 
       <StatementTable section={activeTab} symbol={symbol} period={period} />
-    </WarmCard>
+    </TerminalPanel>
   );
 }

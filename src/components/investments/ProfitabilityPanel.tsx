@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { WarmCard } from "@/components/ui/WarmCard";
+import { TerminalPanel } from "./TerminalPanel";
 import { useStockData } from "@/hooks/useStockData";
 import type { Profitability, MarginsData } from "@/types/investment";
 import { ErrorState } from "./ErrorState";
@@ -70,7 +70,7 @@ export function ProfitabilityPanel({ symbol }: Props) {
   const isLoading = profLoading || marginsLoading;
 
   return (
-    <WarmCard padding="sm">
+    <TerminalPanel padding="sm">
       <h3 className="text-sm font-semibold text-[var(--home-ink)] mb-3">Profitability & Margins</h3>
 
       {isLoading ? (
@@ -108,6 +108,6 @@ export function ProfitabilityPanel({ symbol }: Props) {
           )}
         </>
       )}
-    </WarmCard>
+    </TerminalPanel>
   );
 }

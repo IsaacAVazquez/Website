@@ -1,5 +1,6 @@
 import type {
   MissionCapsule,
+  MissionControlCadence,
   MissionControlInsight,
   MissionControlStatus,
   MissionControlSnapshot,
@@ -14,8 +15,12 @@ import type {
   MissionRocket,
 } from "@/types/spacex";
 import { resolveSpaceXImageUrl, resolveSpaceXImageUrls } from "@/lib/spacexImageManifest";
+import { aggregateLaunchCadence } from "@/lib/spacexCadence";
+import { deriveVehicleFamily } from "@/lib/spacexVehicleFamily";
 import {
+  getSpaceXSnapshotCadence,
   getSpaceXSnapshotLaunchDetail,
+  getSpaceXSnapshotLaunchDetails,
   getSpaceXSnapshotLaunches,
   getSpaceXSnapshotSummary,
   hasSpaceXSnapshotData,
@@ -40,6 +45,15 @@ const RATE_LIMIT_MAX_BACKOFF_MS = 5 * 60 * 1000;
 // call (on top of the 2 list calls + 1 agency call). The quality gate needs 5
 // details, so 3 per status keeps the full refresh comfortably under budget.
 const SNAPSHOT_DETAIL_LIMIT_PER_STATUS = 3;
+// Upper bound on total hydrated details once vehicle-family diversification
+// (below) is folded in, so the snapshot refresh stays comfortably under the
+// same 15-calls/hour budget the comment above describes.
+const SNAPSHOT_DETAIL_ID_CAP = 8;
+// Single extra list call (not one per month) to compute the trailing-12-month
+// launch cadence. SpaceX's current cadence is roughly 150-200+ launches/year,
+// so this generously covers a year of history in one request.
+const CADENCE_HISTORY_LIMIT = 260;
+const CADENCE_MONTHS_BACK = 12;
 
 type LaunchCollectionMode = "upcoming" | "previous";
 type MissionControlDataSource = "auto" | "live" | "snapshot";
@@ -1071,6 +1085,20 @@ export function isValidMissionLaunchId(value: string): boolean {
   return LAUNCH_ID_PATTERN.test(value);
 }
 
+// Vehicle catalog + recovery split are read directly from the committed
+// snapshot's hydrated launch details — they don't need live-fetch parity
+// (a handful of hydrated details only changes on each snapshot rebuild, not
+// minute to minute), so these are thin, synchronous pass-throughs rather
+// than fetch functions. Exposed from this module (not spacexSnapshot.ts
+// directly) so callers keep a single data-layer import boundary.
+export function getMissionControlCadence(): MissionControlCadence | null {
+  return getSpaceXSnapshotCadence();
+}
+
+export function getMissionControlVehicleCatalogData(): Record<string, MissionLaunchDetail> {
+  return getSpaceXSnapshotLaunchDetails();
+}
+
 function shouldReadFromSnapshot(source: MissionControlDataSource = "auto"): boolean {
   return source !== "live";
 }
@@ -1338,21 +1366,36 @@ export async function buildMissionControlSnapshot(): Promise<MissionControlSnaps
     generatedAt: new Date().toISOString(),
   };
 
+  // Prioritize one detail hydration per distinct vehicle family seen across
+  // the current upcoming+past window (e.g. Falcon 9, Falcon Heavy, Starship)
+  // ahead of the plain per-status fill, so the vehicle catalog gets real
+  // rocket records for more than just whichever family happens to launch
+  // most often, whenever the window actually contains that variety.
+  const allCards = [...upcomingLaunches, ...pastLaunches];
+  const familyFirstIds = new Map<string, string>();
+  for (const card of allCards) {
+    const family = deriveVehicleFamily(card.rocketName);
+    if (!familyFirstIds.has(family)) {
+      familyFirstIds.set(family, card.id);
+    }
+  }
+
   const detailIds = Array.from(
     new Set(
       [
+        ...familyFirstIds.values(),
+        summary.heroLaunch?.id ?? null,
+        summary.nextLaunch?.id ?? null,
+        summary.fallbackLaunch?.id ?? null,
         ...upcomingLaunches
           .slice(0, SNAPSHOT_DETAIL_LIMIT_PER_STATUS)
           .map((launch) => launch.id),
         ...pastLaunches
           .slice(0, SNAPSHOT_DETAIL_LIMIT_PER_STATUS)
           .map((launch) => launch.id),
-        summary.heroLaunch?.id ?? null,
-        summary.nextLaunch?.id ?? null,
-        summary.fallbackLaunch?.id ?? null,
       ].filter((id): id is string => Boolean(id))
     )
-  );
+  ).slice(0, SNAPSHOT_DETAIL_ID_CAP);
 
   const detailEntries: Array<readonly [string, MissionLaunchDetail]> = [];
 
@@ -1366,6 +1409,21 @@ export async function buildMissionControlSnapshot(): Promise<MissionControlSnaps
     }
   }
 
+  // Trailing-12-month launch cadence. Best-effort and isolated from the rest
+  // of the build: a failure here (rate limit, network) just leaves cadence
+  // null so the UI renders its empty state instead of failing the whole
+  // snapshot refresh.
+  let cadence: MissionControlCadence | null;
+  try {
+    const cadenceResponse = await fetchLaunchCollection("previous", CADENCE_HISTORY_LIMIT, 3600);
+    const cadenceDates = filterLaunchCollection(cadenceResponse.results, "previous").map(
+      (launch) => launch.net ?? launch.window_start ?? null
+    );
+    cadence = aggregateLaunchCadence(cadenceDates, Date.now(), CADENCE_MONTHS_BACK);
+  } catch {
+    cadence = null;
+  }
+
   return {
     generatedAt: new Date().toISOString(),
     sourceLabel: "launch-library-2 snapshot",
@@ -1373,6 +1431,7 @@ export async function buildMissionControlSnapshot(): Promise<MissionControlSnaps
     upcomingLaunches,
     pastLaunches,
     launchDetails: Object.fromEntries(detailEntries),
+    cadence,
   };
 }
 

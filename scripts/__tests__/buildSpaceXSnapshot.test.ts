@@ -47,6 +47,7 @@ describe("buildSpaceXSnapshot", () => {
       upcomingLaunches: [],
       pastLaunches: [],
       launchDetails: {},
+      cadence: null,
     };
 
     mockBuildMissionControlSnapshot.mockResolvedValue(snapshot);
@@ -111,6 +112,7 @@ describe("buildSpaceXSnapshot", () => {
       ],
       pastLaunches: [],
       launchDetails: {},
+      cadence: null,
     };
 
     await fs.mkdir(path.join(projectRoot, "src", "data"), { recursive: true });

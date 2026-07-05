@@ -60,7 +60,7 @@ function renderTable(holdings: EnhancedHolding[], handlers: Partial<{
 
 describe("HoldingsTable", () => {
   function tickerSymbols(): string[] {
-    return Array.from(document.querySelectorAll(".invest-ticker-sym")).map(
+    return Array.from(document.querySelectorAll('[data-testid="ticker-symbol"]')).map(
       (el) => el.textContent ?? ""
     );
   }

@@ -65,6 +65,18 @@ export interface MissionControlSummary {
   generatedAt: string;
 }
 
+export interface MissionControlCadencePoint {
+  monthKey: string;
+  label: string;
+  count: number;
+}
+
+export interface MissionControlCadence {
+  points: MissionControlCadencePoint[];
+  rangeLabel: string;
+  generatedAt: string;
+}
+
 export interface MissionControlInitialData {
   summary: MissionControlSummary | null;
   summaryError: string | null;
@@ -72,6 +84,13 @@ export interface MissionControlInitialData {
   launchesError: string | null;
   detail: MissionLaunchDetail | null;
   detailError: string | null;
+  /** Most-recent-first past launches with a known outcome, for the launch tape. */
+  tapeRecentLaunches: MissionLaunchCard[];
+  /** Soonest-first upcoming launches, for the launch tape. */
+  tapeUpcomingLaunches: MissionLaunchCard[];
+  /** All hydrated launch details in the committed snapshot (vehicle catalog + recovery). */
+  launchDetails: Record<string, MissionLaunchDetail>;
+  cadence: MissionControlCadence | null;
 }
 
 export interface MissionCrewMember {
@@ -176,4 +195,5 @@ export interface MissionControlSnapshot {
   upcomingLaunches: MissionLaunchCard[];
   pastLaunches: MissionLaunchCard[];
   launchDetails: Record<string, MissionLaunchDetail>;
+  cadence: MissionControlCadence | null;
 }

@@ -94,7 +94,7 @@ export function MetricTooltip({ term, definition, align = "left" }: Props) {
       </span>
       <span
         role="tooltip"
-        className={`pointer-events-none absolute bottom-full ${bubbleAlign} z-[80] mb-2 w-52 rounded-[var(--radius-2xl)] bg-[var(--home-ink)] px-3 py-2.5 text-2xs leading-snug text-[var(--home-paper)] opacity-0 shadow-lg transition-opacity duration-150 group-hover:opacity-100 group-focus-within:opacity-100`}
+        className={`pointer-events-none absolute bottom-full ${bubbleAlign} z-[80] mb-2 w-52 rounded-[var(--radius-sm)] bg-[var(--home-ink)] px-3 py-2.5 text-2xs leading-snug text-[var(--home-paper)] opacity-0 transition-opacity duration-150 group-hover:opacity-100 group-focus-within:opacity-100`}
       >
         {text}
         <span className={`absolute ${arrowAlign} top-full border-4 border-transparent border-t-[var(--home-ink)]`} />

@@ -34,12 +34,21 @@ describe('ModernButton', () => {
     expect(button).toHaveClass('text-[var(--home-ink-muted)]')
   })
 
+  it('applies mono variant correctly', () => {
+    render(<ModernButton variant="mono">Button</ModernButton>)
+    const button = screen.getByText('Button')
+    expect(button).toHaveClass('rounded-[var(--radius-sm)]')
+    expect(button).toHaveClass('font-mono')
+    expect(button).toHaveClass('uppercase')
+    expect(button).toHaveClass('hover:bg-[var(--home-signal)]')
+  })
+
   it('applies default size (md)', () => {
     render(<ModernButton>Button</ModernButton>)
     const button = screen.getByText('Button')
     expect(button).toHaveClass('px-6')
     expect(button).toHaveClass('py-2.5')
-    expect(button).toHaveClass('min-h-[44px]')
+    expect(button).toHaveClass('min-h-[48px]')
   })
 
   it('applies small size correctly', () => {
@@ -55,7 +64,7 @@ describe('ModernButton', () => {
     const button = screen.getByText('Button')
     expect(button).toHaveClass('px-8')
     expect(button).toHaveClass('py-3.5')
-    expect(button).toHaveClass('min-h-[52px]')
+    expect(button).toHaveClass('min-h-[54px]')
   })
 
   it('handles click events', () => {

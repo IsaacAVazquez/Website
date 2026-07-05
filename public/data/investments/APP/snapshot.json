@@ -7709,7 +7709,11 @@
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3
       },
-      "recommendation": "Sell"
+      "recommendation": "Sell",
+      "baseFcf": 11.3361,
+      "nearTermGrowthPct": 50,
+      "terminalGrowthPct": 3,
+      "years": 5
     }
   }
 }

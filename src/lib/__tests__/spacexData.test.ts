@@ -23,6 +23,7 @@ const emptySnapshot: MissionControlSnapshot = {
   upcomingLaunches: [],
   pastLaunches: [],
   launchDetails: {},
+  cadence: null,
 };
 
 const baseLaunch = {
@@ -309,6 +310,7 @@ describe("spacexData image normalization", () => {
       launchDetails: {
         "63aa7636-d2b7-457f-a3e6-27e564e42942": snapshotDetail,
       },
+      cadence: null,
     } satisfies MissionControlSnapshot);
 
     const [resolvedSummary, launches, detail] = await Promise.all([
@@ -331,6 +333,7 @@ describe("spacexData image normalization", () => {
       upcomingLaunches: [],
       pastLaunches: [],
       launchDetails: {},
+      cadence: null,
     });
 
     mockFetch.mockResolvedValue({

@@ -22,6 +22,9 @@ function clampLaLigaSummarySnapshot(snapshot: typeof laLigaSnapshot): LaLigaSumm
     ...summarySnapshot,
     recentFixtures: limitFixtures(summarySnapshot.recentFixtures, SUMMARY_FIXTURE_LIMIT),
     upcomingFixtures: limitFixtures(summarySnapshot.upcomingFixtures, SUMMARY_FIXTURE_LIMIT),
+    // Defaults for committed snapshots written before these fields existed.
+    assists: summarySnapshot.assists ?? [],
+    goalsPerMatchday: summarySnapshot.goalsPerMatchday ?? [],
   };
 }
 
@@ -43,6 +46,7 @@ export function createEmptyLaLigaSummarySnapshot(): LaLigaSummarySnapshot {
     clubs: [],
     scorers: [],
     assists: [],
+    goalsPerMatchday: [],
     recentFixtures: [],
     upcomingFixtures: [],
     teams: [],

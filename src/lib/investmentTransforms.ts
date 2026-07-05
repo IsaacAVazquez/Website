@@ -330,5 +330,12 @@ export function computeDcf(
       "Terminal growth": 3.0,
     },
     recommendation,
+    // Raw assumptions behind the figures above, for an interactive client-side
+    // recompute (DCFPanel). Recomputing with these unchanged reproduces
+    // `fairValue` exactly — see dcfRecompute() in the panel.
+    baseFcf: Math.round(baseFCF * 10000) / 10000,
+    nearTermGrowthPct: Math.round(gShort * 10000) / 100,
+    terminalGrowthPct: Math.round(gTerminal * 10000) / 100,
+    years: 5,
   };
 }

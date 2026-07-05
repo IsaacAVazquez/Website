@@ -1,4 +1,6 @@
 import type { Config } from "tailwindcss" with { "resolution-mode": "import" };
+import typography from "@tailwindcss/typography";
+import animate from "tailwindcss-animate";
 
 const config: Config = {
   darkMode: "class",
@@ -70,6 +72,22 @@ const config: Config = {
         'lg': 'var(--shadow-lg)',
         'xl': 'var(--shadow-xl)',
       },
+      /*
+       * Map the bare Tailwind radius scale onto the Working Instrument
+       * --radius-* tokens. Without this, `rounded-md`/`rounded-lg`/etc.
+       * silently resolve to Tailwind's stock (much rounder) scale instead
+       * of the deliberately sharp, machined-plate radii the design system
+       * defines in globals.css.
+       */
+      borderRadius: {
+        sm: 'var(--radius-sm)',
+        md: 'var(--radius-md)',
+        lg: 'var(--radius-lg)',
+        xl: 'var(--radius-xl)',
+        '2xl': 'var(--radius-2xl)',
+        '3xl': 'var(--radius-3xl)',
+        full: 'var(--radius-pill)',
+      },
       animation: {
         'skeleton-loading': 'skeleton-loading 1.5s ease-in-out infinite',
         'slide-in-up': 'slide-in-up 0.3s ease',
@@ -88,7 +106,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("@tailwindcss/typography"), require("tailwindcss-animate")],
+  plugins: [typography, animate],
 } satisfies Config;
 
 export default config;

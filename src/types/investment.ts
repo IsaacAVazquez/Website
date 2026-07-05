@@ -150,6 +150,22 @@ export interface DcfData {
   growthEstimates?: Record<string, number>;
   recommendation?: "Buy" | "Sell" | "Hold" | string;
   error?: string;
+  /**
+   * Raw model inputs behind `fairValue`, exposed so the DCF panel can offer a
+   * client-side "what-if" recompute instead of only displaying the one
+   * precomputed scenario. `baseFcf` is the same per-share cash-flow base the
+   * server model projects forward (see `computeDcf` in
+   * investmentTransforms.ts); `nearTermGrowthPct`/`terminalGrowthPct` and
+   * `wacc` are the growth/discount assumptions that produced `fairValue`.
+   * Recomputing with these unchanged values must reproduce `fairValue`
+   * exactly — that's what lets "reset to baseline" mean something concrete.
+   * Undefined on older snapshots built before this field existed; panels
+   * must fall back to a read-only display when absent.
+   */
+  baseFcf?: number;
+  nearTermGrowthPct?: number;
+  terminalGrowthPct?: number;
+  years?: number;
 }
 
 export interface CompanyInfo {

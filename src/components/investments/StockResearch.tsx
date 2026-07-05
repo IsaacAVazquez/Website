@@ -155,7 +155,7 @@ export function StockResearch({
             crumbTrail="Compare"
           />
           <div
-            className="mb-4 flex gap-2 overflow-x-auto rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] p-2 shadow-[var(--shadow-sm)]"
+            className="mb-4 flex gap-2 overflow-x-auto rounded-[var(--radius-sm)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] p-2 "
             role="tablist"
             aria-label="Research sections"
           >
@@ -169,7 +169,7 @@ export function StockResearch({
                 tabIndex={resolvedActiveTab === key ? 0 : -1}
                 onKeyDown={(e) => handleAllTabsKeyDown(e, index)}
                 onClick={() => onTabChange(key)}
-                className={`min-h-[44px] whitespace-nowrap rounded-[var(--radius-2xl)] px-4 py-2.5 text-sm font-semibold transition ${
+                className={`min-h-[44px] whitespace-nowrap rounded-[var(--radius-sm)] px-4 py-2.5 text-sm font-semibold transition ${
                   resolvedActiveTab === key
                     ? "bg-[var(--home-signal)] text-white"
                     : "text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
@@ -204,7 +204,7 @@ export function StockResearch({
 
         <div className="space-y-5">
           {!symbol ? (
-            <div className="rounded-[var(--radius-3xl)] border border-dashed border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-6 py-16 text-center shadow-[var(--shadow-sm)]">
+            <div className="rounded-[var(--radius-sm)] border border-dashed border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-6 py-16 text-center ">
               <p className="text-sm font-semibold text-[var(--home-ink)]">
                 Start with a ticker symbol
               </p>
@@ -213,7 +213,7 @@ export function StockResearch({
               </p>
             </div>
           ) : showLoadingState ? (
-            <div className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-6 py-16 text-center shadow-[var(--shadow-sm)]">
+            <div className="rounded-[var(--radius-sm)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-6 py-16 text-center ">
               <p className="text-sm font-semibold text-[var(--home-ink)]">
                 Loading research data…
               </p>
@@ -222,7 +222,7 @@ export function StockResearch({
               </p>
             </div>
           ) : showCuratedOnlyState ? (
-            <div className="rounded-[var(--radius-3xl)] border border-[color-mix(in_srgb,var(--home-warning)_35%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-warning)_10%,var(--home-paper-alt))] px-5 py-6 text-center shadow-[var(--shadow-sm)]">
+            <div className="rounded-[var(--radius-sm)] border border-[color-mix(in_srgb,var(--home-warning)_35%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-warning)_10%,var(--home-paper-alt))] px-5 py-6 text-center ">
               <p className="text-sm font-semibold text-[var(--home-ink)]">
                 This symbol is not in the current research set.
               </p>
@@ -231,7 +231,7 @@ export function StockResearch({
               </p>
             </div>
           ) : showResearchErrorState ? (
-            <div className="rounded-[var(--radius-3xl)] border border-[color-mix(in_srgb,var(--home-negative)_35%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-negative)_8%,var(--home-paper-alt))] px-5 py-6 text-center shadow-[var(--shadow-sm)]">
+            <div className="rounded-[var(--radius-sm)] border border-[color-mix(in_srgb,var(--home-negative)_35%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-negative)_8%,var(--home-paper-alt))] px-5 py-6 text-center ">
               <p className="text-sm font-semibold text-[var(--home-ink)]">
                 Research data is temporarily unavailable.
               </p>
@@ -248,7 +248,7 @@ export function StockResearch({
 
               {visibleTabs.length > 0 ? (
                 <div
-                  className="flex gap-2 overflow-x-auto rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] p-2 shadow-[var(--shadow-sm)]"
+                  className="flex gap-2 overflow-x-auto rounded-[var(--radius-sm)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] p-2 "
                   role="tablist"
                   aria-label="Research sections"
                 >
@@ -262,7 +262,7 @@ export function StockResearch({
                       tabIndex={resolvedActiveTab === key ? 0 : -1}
                       onKeyDown={(e) => handleVisibleTabKeyDown(e, index)}
                       onClick={() => onTabChange(key)}
-                      className={`min-h-[40px] whitespace-nowrap rounded-[var(--radius-2xl)] px-4 py-2 text-sm font-semibold transition ${
+                      className={`min-h-[40px] whitespace-nowrap rounded-[var(--radius-sm)] px-4 py-2 text-sm font-semibold transition ${
                         resolvedActiveTab === key
                           ? "bg-[var(--home-ink)] text-[var(--home-paper)]"
                           : "text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"

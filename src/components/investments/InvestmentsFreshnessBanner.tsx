@@ -25,7 +25,7 @@ export function InvestmentsFreshnessBanner({
 
   return (
     <div
-      className="mb-6 flex flex-wrap items-center gap-x-4 gap-y-2 rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-4 py-3 text-xs shadow-[var(--shadow-sm)] sm:text-xs"
+      className="mb-6 flex flex-wrap items-center gap-x-4 gap-y-2 rounded-[var(--radius-sm)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-4 py-3 text-xs  sm:text-xs"
       role="status"
       aria-label="Investments data freshness"
     >

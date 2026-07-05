@@ -22,6 +22,7 @@ import type {
   StockPrice,
 } from "@/types/investment";
 import { holdingColor } from "./holdingPalette";
+import styles from "@/app/investments/investments.module.css";
 
 interface Props {
   symbol: string;
@@ -67,10 +68,6 @@ function formatRefreshLabel(raw: string | Date | null | undefined): string {
   if (minutes < 60) return `Refreshed ${minutes}m ago`;
   const h = Math.floor(minutes / 60);
   return `Refreshed ${h}h ago`;
-}
-
-function logoChars(symbol: string): string {
-  return symbol.replace(".", "").slice(0, 2).toUpperCase();
 }
 
 function formatCompactCurrency(n: number | undefined): string {
@@ -249,12 +246,19 @@ export function ResearchAssetHeader({
               ? "neg"
               : "default",
     },
-    {
-      label: "52-week range",
-      hint: "Trailing 52-week intraday low / high from the price snapshot.",
-      value: formatRange(trailingLow, trailingHigh),
-    },
   ];
+
+  // 52-week range as a positioned dot on a track, not text — the trailing
+  // low/high and the current display price already come from the same
+  // trailingYear price series computed above.
+  const rangeDisplayPrice = quote && !quote.error ? quote.price : savedClose;
+  const weekRangePosition =
+    trailingLow !== undefined &&
+    trailingHigh !== undefined &&
+    trailingHigh > trailingLow &&
+    rangeDisplayPrice !== undefined
+      ? Math.min(100, Math.max(0, ((rangeDisplayPrice - trailingLow) / (trailingHigh - trailingLow)) * 100))
+      : null;
 
   const upper = symbol.toUpperCase();
   const tone = holdingColor(upper);
@@ -296,13 +300,11 @@ export function ResearchAssetHeader({
   return (
     <section className="research-asset-card" aria-label={`${upper} asset summary`}>
       <div className="research-asset-row">
-        <div
+        <span
           className="research-asset-logo"
           aria-hidden="true"
           style={{ background: tone }}
-        >
-          {logoChars(upper)}
-        </div>
+        />
 
         <div className="research-asset-meta">
           <div className="research-asset-titleline">
@@ -331,6 +333,17 @@ export function ResearchAssetHeader({
               </span>
             ) : null}
           </div>
+
+          {weekRangePosition !== null ? (
+            <div className={styles.weekRange} aria-label="52-week range">
+              <div className={styles.weekRangeTrack}>
+                <span className={styles.weekRangeMark} style={{ left: `${weekRangePosition}%` }} />
+              </div>
+              <div className={styles.weekRangeCaption}>
+                <span>52W {formatRange(trailingLow, trailingHigh)}</span>
+              </div>
+            </div>
+          ) : null}
         </div>
 
         <div className="research-asset-price">

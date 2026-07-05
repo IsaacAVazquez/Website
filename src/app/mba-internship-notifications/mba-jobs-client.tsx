@@ -36,6 +36,8 @@ import {
   getPillStyle,
 } from "@/components/editorial";
 import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
+import { Chip } from "@/components/ui/Chip";
+import { Kicker } from "@/components/ui/Kicker";
 import { Briefcase, ChartBar, Article, FileText, Mail as MailIcon } from "@/components/ui/ServerIcons";
 import {
   DropdownMenu,
@@ -522,7 +524,9 @@ function SectionLead({
   return (
     <div className="home-section-intro gap-3">
       <div className="space-y-2">
-        <p className="home-kicker mb-0">{kicker}</p>
+        <Kicker variant="plain" className="mb-0">
+          {kicker}
+        </Kicker>
         <h2
           id={id}
           className="home-project-title mb-0 max-w-[18ch]"
@@ -2187,7 +2191,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                 </span>
                 {!isLoading && <span className="resume-chip">{internshipCount} internships</span>}
                 {!isLoading && <span className="resume-chip">{fullTimeCount} full-time</span>}
-                <span className="resume-chip">{totalTracked} live feeds</span>
+                <Chip>{totalTracked} live feeds</Chip>
                 {uiState.external === "on" && (
                   <span className="resume-chip">{externalLeadCount} external leads</span>
                 )}

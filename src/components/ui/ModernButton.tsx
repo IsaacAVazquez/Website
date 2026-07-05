@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-type ButtonVariant = "primary" | "secondary" | "outline" | "ghost" | "accent";
+type ButtonVariant = "primary" | "secondary" | "outline" | "ghost" | "accent" | "mono";
 type ButtonSize = "sm" | "md" | "lg";
 
 interface ModernButtonBaseProps {
@@ -40,7 +40,7 @@ export const ModernButton = React.memo(function ModernButton({
   ...props
 }: ModernButtonProps) {
   const baseStyles = cn(
-    "inline-flex items-center justify-center font-semibold rounded-lg",
+    "inline-flex items-center justify-center font-semibold rounded-full",
     "transition-[background-color,border-color,color,box-shadow,transform] duration-200",
     "disabled:opacity-40 disabled:cursor-not-allowed",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--home-signal)]",
@@ -77,15 +77,28 @@ export const ModernButton = React.memo(function ModernButton({
       "text-[var(--home-paper)]",
       "shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow-md)]"
     ),
+    // Squared instrument-plate treatment (resume, ink plates) — the one
+    // non-pill variant. Radius/typography intentionally override the pill
+    // base and size-driven font-size below (see class ordering note).
+    mono: cn(
+      "rounded-[var(--radius-sm)] border border-[var(--home-ink)]",
+      "font-mono text-[0.75rem] font-normal uppercase tracking-[0.09em]",
+      "bg-transparent text-[var(--home-ink)]",
+      "hover:bg-[var(--home-signal)] hover:text-[var(--home-paper)] hover:border-[var(--home-signal)]"
+    ),
   };
 
   const sizes = {
     sm: "px-4 py-2 text-sm min-h-[44px] gap-1.5",
-    md: "px-6 py-2.5 text-base min-h-[44px] gap-2",
-    lg: "px-8 py-3.5 text-lg min-h-[52px] gap-2.5",
+    md: "px-6 py-2.5 text-base min-h-[48px] gap-2",
+    lg: "px-8 py-3.5 text-lg min-h-[54px] gap-2.5",
   };
 
-  const combinedClassName = cn(baseStyles, variants[variant], sizes[size], className);
+  // Variant classes are placed after size classes so a variant (e.g. `mono`'s
+  // fixed font-size) can override a size default via twMerge's last-one-wins
+  // resolution; sizes never carry color/radius, so this reorder is a no-op
+  // for every other variant.
+  const combinedClassName = cn(baseStyles, sizes[size], variants[variant], className);
 
   // Render as link when href is provided
   if ("href" in props && props.href) {

@@ -144,8 +144,8 @@ export default async function BlogPostPage({ params }: PageProps) {
       />
 
       <section className="home-page min-h-screen">
-        <div className="home-shell home-section">
-          <article className="mx-auto max-w-6xl">
+        <div className="home-shell-tight home-section">
+          <article className="mx-auto max-w-[60rem]">
             <nav aria-label="Breadcrumb" className="mb-8">
               <ol
                 className="flex items-center gap-2 text-sm"
@@ -213,21 +213,40 @@ export default async function BlogPostPage({ params }: PageProps) {
               </h1>
 
               <div
-                className="flex flex-wrap items-center gap-x-4 gap-y-1"
-                style={{
-                  fontFamily: "var(--font-home-sans)",
-                  fontSize: "0.8rem",
-                  fontWeight: 600,
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  color: "var(--home-ink-muted)",
-                }}
+                className="flex flex-wrap items-center gap-3 border-t pt-5"
+                style={{ borderColor: "var(--home-rule)" }}
               >
-                <time dateTime={post.publishedAt}>
-                  {publishedDateFormatter.format(new Date(post.publishedAt))}
-                </time>
-                <span aria-hidden="true">·</span>
-                <span>{post.readingTime}</span>
+                <Image
+                  src="/images/headshot-home.webp"
+                  alt="Isaac Vazquez"
+                  width={56}
+                  height={56}
+                  className="flex-shrink-0 rounded-full"
+                  style={{ border: "1px solid var(--home-rule)", objectFit: "cover" }}
+                />
+                <div
+                  className="flex flex-wrap items-center gap-x-2 gap-y-0.5"
+                  style={{ fontFamily: "var(--font-home-sans)" }}
+                >
+                  <span className="font-semibold" style={{ color: "var(--home-ink)" }}>
+                    Isaac Vazquez
+                  </span>
+                  <span aria-hidden="true" style={{ color: "var(--home-ink-muted)" }}>
+                    ·
+                  </span>
+                  <time
+                    dateTime={post.publishedAt}
+                    style={{ fontSize: "0.85rem", color: "var(--home-ink-muted)" }}
+                  >
+                    {publishedDateFormatter.format(new Date(post.publishedAt))}
+                  </time>
+                  <span aria-hidden="true" style={{ color: "var(--home-ink-muted)" }}>
+                    ·
+                  </span>
+                  <span style={{ fontSize: "0.85rem", color: "var(--home-ink-muted)" }}>
+                    {post.readingTime}
+                  </span>
+                </div>
               </div>
 
               <p className="home-body max-w-[54rem]">{post.excerpt}</p>
@@ -249,7 +268,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                     alt={post.coverImageAlt || post.title}
                     fill
                     priority
-                    sizes="(min-width: 1280px) 72rem, 100vw"
+                    sizes="(min-width: 1280px) 60rem, 100vw"
                     className="object-cover"
                   />
                 </div>
@@ -283,7 +302,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
             <div
               id="article-body"
-              className="prose prose-writing dark:prose-invert mb-16 max-w-none"
+              className="prose prose-writing dark:prose-invert mb-16"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
             <ArticleCodeCopy containerSelector="#article-body" location="article" />
@@ -381,7 +400,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               className="mb-10"
               style={{ borderTop: "1px solid var(--home-rule)", paddingTop: "2.5rem" }}
             >
-              <AuthorBio variant="full" />
+              <AuthorBio variant="light" />
             </div>
 
             {(olderPost || newerPost) && (

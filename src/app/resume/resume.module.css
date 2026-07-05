@@ -1,0 +1,231 @@
+/* ============================================================
+   Résumé — Working Instrument (2026-07 redesign).
+   Two-column ledger: hairline dividers, mono readouts, one signal
+   accent. Module names alias the global --home-* tokens (never
+   fresh hex) so light/dark flips upstream in globals.css.
+   ============================================================ */
+
+.page {
+  --rs-paper: var(--home-paper);
+  --rs-paper-alt: var(--home-paper-alt);
+  --rs-raised: var(--home-paper-raised);
+  --rs-ink: var(--home-ink);
+  --rs-muted: var(--home-ink-muted);
+  --rs-signal: var(--home-signal);
+  --rs-rule: var(--home-rule);
+  --rs-rule-soft: color-mix(in srgb, var(--home-rule) 55%, transparent);
+
+  min-height: 100vh;
+  background: var(--rs-paper);
+  color: var(--rs-ink);
+  font-family: var(--font-home-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.page *,
+.page *::before,
+.page *::after {
+  box-sizing: border-box;
+}
+
+.page ::selection {
+  background: color-mix(in srgb, var(--rs-signal) 24%, transparent);
+  color: var(--rs-ink);
+}
+
+.shell {
+  max-width: 88rem;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 2.5vw, 2.5rem);
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ============== Masthead ============== */
+
+.masthead {
+  padding: clamp(2.5rem, 5vw, 4.25rem) 0 clamp(1.75rem, 3.5vw, 2.75rem);
+  border-bottom: 1px solid var(--rs-rule);
+}
+
+.mastheadRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.kicker {
+  composes: mono;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--rs-muted);
+  margin-bottom: clamp(1.1rem, 2vw, 1.6rem);
+}
+
+.kicker::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--rs-signal);
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: clamp(2.2rem, 4.6vw, 4rem);
+  font-weight: 650;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin: 0;
+  color: var(--rs-ink);
+}
+
+.title em {
+  font-family: var(--font-home-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.dek {
+  margin: clamp(1rem, 2vw, 1.4rem) 0 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--rs-muted);
+  max-width: 60ch;
+}
+
+.metaRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  margin-top: clamp(1.1rem, 2vw, 1.5rem);
+}
+
+.metaLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--rs-muted);
+  text-decoration: none;
+  min-height: 44px;
+  transition: color 160ms ease;
+}
+
+.metaLink:hover,
+.metaLink:focus-visible {
+  color: var(--rs-signal);
+}
+
+/* ============== Two-column ledger ============== */
+
+.resumeGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: clamp(1.75rem, 4vw, 3.5rem);
+  align-items: start;
+  padding: clamp(2rem, 4vw, 3.25rem) 0 clamp(2.75rem, 5vw, 4rem);
+}
+
+@media (max-width: 900px) {
+  .resumeGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.rblock {
+  border-top: 1px solid var(--rs-rule);
+  padding-top: 8px;
+  margin-bottom: 30px;
+}
+
+.rblock:last-child {
+  margin-bottom: 0;
+}
+
+.rblockTitle {
+  composes: mono;
+  color: var(--rs-muted);
+  margin: 8px 0 14px;
+}
+
+/* ============== Experience / Education rows ============== */
+
+.job {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rs-rule-soft);
+}
+
+.job:last-child {
+  border-bottom: 0;
+}
+
+.jobHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.jobRole {
+  font-size: 1.05rem;
+  font-weight: 620;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--rs-ink);
+}
+
+.jobWhen {
+  composes: mono;
+  color: var(--rs-muted);
+  white-space: nowrap;
+}
+
+.jobCo {
+  composes: mono;
+  color: var(--rs-signal);
+  margin: 3px 0 8px;
+}
+
+.jobDesc {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--rs-muted);
+  margin: 0;
+  max-width: 60ch;
+}
+
+/* ============== Skills ============== */
+
+.skillGroup {
+  margin-bottom: 18px;
+}
+
+.skillGroup:last-child {
+  margin-bottom: 0;
+}
+
+.skillLbl {
+  font-size: 0.82rem;
+  font-weight: 700;
+  margin: 0 0 8px;
+  color: var(--rs-ink);
+}
+
+.chipRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}

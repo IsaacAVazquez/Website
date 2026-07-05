@@ -6,12 +6,14 @@ import type {
   PremierLeagueFixture,
   PremierLeagueFixtureTeam,
   PremierLeagueFormSummary,
+  PremierLeagueMatchdayGoals,
   PremierLeagueStandingRow,
   PremierLeagueSummary,
   PremierLeagueTeamOption,
   PremierLeagueTeamProfile,
   PremierLeagueTeamSnapshot,
 } from "@/types/premier-league";
+import { getPremierLeagueClubAccentColor } from "@/data/clubColors";
 
 const FOOTBALL_DATA_BASE_URL = "https://api.football-data.org/v4";
 const PREMIER_LEAGUE_CODE = "PL";
@@ -21,6 +23,9 @@ const TEAM_REVALIDATE_SECONDS = 300;
 const RECENT_FIXTURE_LIMIT = 8;
 const UPCOMING_FIXTURE_LIMIT = 8;
 const TEAM_FIXTURE_LIMIT = 5;
+// Full-season goals-per-matchday aggregation reads every FINISHED match, not
+// just the most recent ones — this call intentionally omits `limit`.
+const SEASON_FIXTURES_REVALIDATE_SECONDS = 300;
 
 interface FootballDataArea {
   name?: string | null;
@@ -38,6 +43,11 @@ interface FootballDataTeam {
   clubColors?: string | null;
   website?: string | null;
   address?: string | null;
+  // Only present on the single-team detail endpoint (`/teams/{id}`), not on
+  // list endpoints or the team objects embedded in matches/scorers/standings.
+  coach?: {
+    name?: string | null;
+  } | null;
 }
 
 interface FootballDataSeason {
@@ -183,6 +193,7 @@ function normalizeTeamOption(rawTeam: FootballDataTeam | null | undefined): Prem
   return {
     ...team,
     venue: rawTeam?.venue?.trim() || null,
+    accentColor: getPremierLeagueClubAccentColor(team.tla),
   };
 }
 
@@ -198,6 +209,9 @@ function normalizeTeamProfile(rawTeam: FootballDataTeam | null | undefined): Pre
     clubColors: rawTeam?.clubColors?.trim() || null,
     website: rawTeam?.website?.trim() || null,
     address: rawTeam?.address?.trim() || null,
+    // football-data.org's team-detail response doesn't always include a coach
+    // (varies by tier/team); skip silently (null) when it's absent.
+    manager: rawTeam?.coach?.name?.trim() || null,
   };
 }
 
@@ -269,6 +283,38 @@ function normalizeScorer(
     assists: entry?.assists ?? 0,
     appearances: entry?.playedMatches ?? 0,
   };
+}
+
+/**
+ * Aggregates a season's worth of FINISHED matches into a matchday → total
+ * league goals series. Operates on the raw upstream match shape (not the
+ * normalized `PremierLeagueFixture`) since only `matchday` and the final score
+ * are needed. Matches missing either are skipped rather than dropping the
+ * whole series.
+ */
+function buildGoalsPerMatchday(matches: FootballDataMatch[]): PremierLeagueMatchdayGoals[] {
+  const totals = new Map<number, number>();
+
+  for (const match of matches) {
+    const matchday = match?.matchday;
+    const home = match?.score?.fullTime?.home;
+    const away = match?.score?.fullTime?.away;
+
+    if (
+      typeof matchday !== "number" ||
+      !Number.isFinite(matchday) ||
+      typeof home !== "number" ||
+      typeof away !== "number"
+    ) {
+      continue;
+    }
+
+    totals.set(matchday, (totals.get(matchday) ?? 0) + home + away);
+  }
+
+  return Array.from(totals.entries())
+    .map(([matchday, totalGoals]) => ({ matchday, totalGoals }))
+    .sort((a, b) => a.matchday - b.matchday);
 }
 
 function sortFixturesDescending(left: PremierLeagueFixture, right: PremierLeagueFixture) {
@@ -448,6 +494,7 @@ export function createEmptyPremierLeagueSummary(): PremierLeagueSummary {
     recentFixtures: [],
     upcomingFixtures: [],
     teams: [],
+    goalsPerMatchday: [],
     generatedAt: new Date().toISOString(),
   };
 }
@@ -489,6 +536,14 @@ export async function getPremierLeagueSummary(): Promise<PremierLeagueSummary> {
     `/competitions/${PREMIER_LEAGUE_CODE}/scorers`,
     SUMMARY_REVALIDATE_SECONDS
   );
+  // Season-long fixture log for the goals-per-matchday pulse — every FINISHED
+  // match, no `limit`, distinct from the 8-most-recent `recentFixturesPromise`.
+  const seasonFixturesPromise = fetchFootballDataJson<FootballDataMatchesResponse>(
+    `/competitions/${PREMIER_LEAGUE_CODE}/matches?${buildQueryString({
+      status: "FINISHED",
+    })}`,
+    SEASON_FIXTURES_REVALIDATE_SECONDS
+  );
 
   const [
     standingsResponse,
@@ -496,12 +551,14 @@ export async function getPremierLeagueSummary(): Promise<PremierLeagueSummary> {
     upcomingFixturesResponse,
     teamsResponse,
     scorersResponse,
+    seasonFixturesResponse,
   ] = await Promise.all([
     standingsPromise,
     recentFixturesPromise,
     upcomingFixturesPromise,
     teamsPromise,
     scorersPromise,
+    seasonFixturesPromise,
   ]);
 
   const standingsGroup =
@@ -534,6 +591,8 @@ export async function getPremierLeagueSummary(): Promise<PremierLeagueSummary> {
     .map((entry, i) => normalizeScorer(entry, i + 1))
     .filter((s): s is import("@/types/premier-league").PremierLeagueScorer => s !== null);
 
+  const goalsPerMatchday = buildGoalsPerMatchday(seasonFixturesResponse.matches ?? []);
+
   return {
     competition: buildCompetitionMeta(standingsResponse),
     standings,
@@ -541,6 +600,7 @@ export async function getPremierLeagueSummary(): Promise<PremierLeagueSummary> {
     upcomingFixtures,
     teams,
     scorers,
+    goalsPerMatchday,
     generatedAt: new Date().toISOString(),
   };
 }

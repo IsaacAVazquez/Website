@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import { select, pie as d3Pie, arc as d3Arc } from "d3";
 import type { PieArcDatum } from "d3";
-import { WarmCard } from "@/components/ui/WarmCard";
+import { TerminalPanel } from "./TerminalPanel";
 import type { EnhancedHolding } from "@/types/investment";
 
 interface Props {
@@ -118,7 +118,7 @@ export function AllocationChart({ holdings }: Props) {
   if (data.length === 0) return null;
 
   return (
-    <WarmCard padding="sm" ariaLabel="Portfolio allocation chart" className="rounded-[var(--radius-3xl)] shadow-[var(--shadow-sm)]">
+    <TerminalPanel padding="sm" ariaLabel="Portfolio allocation chart">
       <div className="mb-4">
         <h3 className="text-sm font-semibold text-[var(--home-ink)]">Allocation</h3>
         <p className="mt-1 text-xs text-[var(--home-ink-soft)]">
@@ -131,7 +131,7 @@ export function AllocationChart({ holdings }: Props) {
           <div
             ref={tooltipRef}
             style={{ display: "none", position: "absolute", pointerEvents: "none" }}
-            className="px-2 py-1.5 rounded text-xs bg-[var(--home-ink)] text-[var(--home-paper)] shadow-lg whitespace-nowrap leading-relaxed"
+            className="px-2 py-1.5 rounded text-xs bg-[var(--home-ink)] text-[var(--home-paper)] whitespace-nowrap leading-relaxed"
           />
         </div>
 
@@ -140,7 +140,7 @@ export function AllocationChart({ holdings }: Props) {
           aria-label="Holdings legend with allocation percentages"
         >
           {data.map((h) => (
-            <li key={h.symbol} className="flex items-center gap-2 rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2.5">
+            <li key={h.symbol} className="flex items-center gap-2 rounded-[var(--radius-sm)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2.5">
               <span
                 className="w-2.5 h-2.5 rounded-full shrink-0"
                 style={{ backgroundColor: holdingColor(h.symbol) }}
@@ -170,6 +170,6 @@ export function AllocationChart({ holdings }: Props) {
           ))}
         </ol>
       </div>
-    </WarmCard>
+    </TerminalPanel>
   );
 }

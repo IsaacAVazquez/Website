@@ -1,7 +1,5 @@
 "use client";
 
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { IconBrandLinkedin, IconBrandGithub, IconMail } from "@tabler/icons-react";
@@ -19,7 +17,9 @@ export interface AuthorBioProps {
     email?: string;
     website?: string;
   };
-  variant?: "full" | "compact" | "inline";
+  /** `light` is the reading-discipline variant for the end of an article:
+   * a circular avatar, one paragraph, no expertise grid, minimal social. */
+  variant?: "full" | "compact" | "inline" | "light";
   showImage?: boolean;
   showSocial?: boolean;
   className?: string;
@@ -86,6 +86,95 @@ export function AuthorBio({
           >
             {title}
           </p>
+        </div>
+      </div>
+    );
+  }
+
+  if (variant === "light") {
+    return (
+      <div
+        className={`home-card-static flex items-start gap-4 p-5 ${className}`}
+        style={{ maxWidth: "65ch" }}
+        itemScope
+        itemType="https://schema.org/Person"
+        itemProp="author"
+      >
+        {showImage && image && (
+          <Image
+            src={image}
+            alt={name}
+            width={56}
+            height={56}
+            className="flex-shrink-0 rounded-full"
+            style={{ border: "1px solid var(--home-rule)", objectFit: "cover" }}
+            itemProp="image"
+          />
+        )}
+        <div className="min-w-0 flex-1">
+          <h3
+            className="mb-1 font-semibold"
+            style={{ fontFamily: "var(--font-home-sans)", fontSize: "1.05rem", color: "var(--home-ink)" }}
+            itemProp="name"
+          >
+            {name}
+          </h3>
+          {bio && (
+            <p
+              className="mb-0 text-sm leading-relaxed"
+              style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
+              itemProp="description"
+            >
+              {bio}
+            </p>
+          )}
+          {showSocial && social && (
+            <div className="mt-3 flex items-center gap-3">
+              {social.linkedin && (
+                <Link
+                  href={social.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors"
+                  style={{ color: "var(--home-ink-muted)" }}
+                  aria-label="LinkedIn"
+                  itemProp="sameAs"
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--home-ink)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--home-ink-muted)")}
+                >
+                  <IconBrandLinkedin className="h-4 w-4" />
+                </Link>
+              )}
+              {social.github && (
+                <Link
+                  href={social.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors"
+                  style={{ color: "var(--home-ink-muted)" }}
+                  aria-label="GitHub"
+                  itemProp="sameAs"
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--home-ink)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--home-ink-muted)")}
+                >
+                  <IconBrandGithub className="h-4 w-4" />
+                </Link>
+              )}
+              {social.email && (
+                <Link
+                  href={social.email}
+                  className="transition-colors"
+                  style={{ color: "var(--home-ink-muted)" }}
+                  aria-label="Email"
+                  itemProp="email"
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--home-ink)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--home-ink-muted)")}
+                >
+                  <IconMail className="h-4 w-4" />
+                </Link>
+              )}
+            </div>
+          )}
         </div>
       </div>
     );

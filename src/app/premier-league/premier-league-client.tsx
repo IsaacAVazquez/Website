@@ -8,15 +8,22 @@ import {
   type CSSProperties,
 } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { BarChart3, CircleAlert, ExternalLink, Shield, Trophy, TrendingUp } from "lucide-react";
+import { CircleAlert, ExternalLink } from "lucide-react";
 import {
-  StatCard,
   MetricCard,
   CrestAvatar,
-  TeamResultPill,
   FixtureCard,
-  LeaderList,
+  StatFascia,
+  ResultsTape,
+  GoalsPulseStrip,
+  SegmentedTabs,
+  FixtureLedgerSection,
+  groupFixturesByMatchday,
+  LeaderLedger,
+  ClubDrawer,
   type LeaderEntry,
+  type ClubDrawerClub,
+  type ClubDrawerScorer,
 } from "@/components/football";
 import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
 import {
@@ -301,6 +308,25 @@ export function PremierLeagueClient({
   }));
   const scorersByClub = useMemo(() => groupLeadersByClub(scorerEntries), [scorerEntries]);
 
+  // Assists board: football-data.org's scorer entries already carry an
+  // `assists` count per player — this is a re-sort of already-fetched data,
+  // not a new fetch (see src/lib/premierLeagueData.ts's normalizeScorer).
+  const assistEntries: LeaderEntry[] = useMemo(() => (
+    summary.scorers
+      .filter((s) => s.assists > 0)
+      .slice()
+      .sort((a, b) => b.assists - a.assists)
+      .map((s, i) => ({
+        rank: i + 1,
+        name: s.name,
+        clubId: s.teamId,
+        clubCode: s.teamName,
+        total: s.assists,
+        appearances: s.appearances,
+        perMatch: s.appearances ? s.assists / s.appearances : 0,
+      }))
+  ), [summary.scorers]);
+
   const selectedZone = selectedRow ? getPLZone(selectedRow.position) : "midtable";
   const selectedClubStoryline = selectedRow
     ? getClubStoryline(selectedRow, {
@@ -332,6 +358,39 @@ export function PremierLeagueClient({
   const recentFixtures = (teamSnapshot?.recentFixtures ?? []).slice(0, 3);
   const upcomingFixtures = (teamSnapshot?.upcomingFixtures ?? []).slice(0, 3);
   const lastUpdated = formatGeneratedAt(summary.generatedAt);
+
+  // Club drawer — opens only when a club is explicitly selected (an
+  // explicit ?team= in the URL, not the leader-default fallback used to
+  // keep the "Club Detail" tab populated), so a bare /premier-league visit
+  // never shows the overlay unsolicited.
+  const isDrawerOpen = Boolean(canonicalTeamId);
+  const drawerClub: ClubDrawerClub | null = isDrawerOpen && selectedRow
+    ? {
+      id: selectedRow.team.id,
+      name: selectedRow.team.name,
+      crest: teamSnapshot?.team?.crest ?? selectedRow.team.crest,
+      accentColor: selectedRow.team.accentColor ?? null,
+      position: selectedRow.position,
+      points: selectedRow.points,
+      played: selectedRow.playedGames,
+      won: selectedRow.won,
+      draw: selectedRow.draw,
+      lost: selectedRow.lost,
+      goalsFor: selectedRow.goalsFor,
+      goalsAgainst: selectedRow.goalsAgainst,
+      goalDifference: selectedRow.goalDifference,
+      manager: teamSnapshot?.team?.manager ?? null,
+      venue: teamSnapshot?.team?.venue ?? selectedRow.team.venue ?? null,
+    }
+    : null;
+  const drawerTopScorers: ClubDrawerScorer[] = selectedRow
+    ? summary.scorers
+      .filter((s) => s.teamId === selectedRow.team.id)
+      .map((s) => ({ name: s.name, goals: s.goals, assists: s.assists }))
+    : [];
+  function handleCloseDrawer() {
+    navigate({ view: routeState.view, team: null, detail: routeState.detail });
+  }
 
   // Stats panel cells
   const topScorerEntry = summary.scorers[0] ?? null;
@@ -403,25 +462,68 @@ export function PremierLeagueClient({
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="home-kicker mb-1">Football Data Tool</p>
-            <h1 className="text-2xl font-bold tracking-tight text-[var(--home-ink)] sm:text-3xl">
-              Premier League Pulse
-            </h1>
-            <p className="mt-1 max-w-[52ch] text-sm leading-6 text-[var(--home-ink-muted)]">
+            <div className="flex items-center gap-3">
+              <span
+                className="relative inline-flex h-11 min-w-[46px] flex-shrink-0 items-center justify-center rounded-[var(--radius-sm)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 font-mono text-sm text-[var(--home-ink)]"
+                aria-hidden="true"
+              >
+                ENG
+                <span className="absolute right-1 top-1 h-1 w-1 rounded-full bg-[var(--home-signal)]" />
+              </span>
+              <h1 className="text-2xl font-bold tracking-tight text-[var(--home-ink)] sm:text-3xl">
+                Premier League{" "}
+                <em style={{ fontFamily: "var(--font-home-serif)", fontStyle: "italic", fontWeight: 400 }}>
+                  Pulse
+                </em>
+              </h1>
+            </div>
+            <p className="mt-2 max-w-[52ch] text-sm leading-6 text-[var(--home-ink-muted)]">
               Where does the title race actually stand? Points gaps to the top four, European qualification line, and relegation pressure, refreshed weekly from live data.
             </p>
+            <p className="mt-3 inline-flex items-center gap-2 font-mono text-2xs uppercase tracking-[0.06em] text-[var(--home-ink-muted)]">
+              <span
+                className="h-1.5 w-1.5 rounded-full bg-[var(--home-positive)]"
+                style={{ boxShadow: "0 0 0 4px color-mix(in srgb, var(--home-positive) 16%, transparent)" }}
+                aria-hidden="true"
+              />
+              {currentMatchday ? `Matchday ${currentMatchday} · ` : ""}Snapshot updated {lastUpdated}
+            </p>
           </div>
-          <div className="flex flex-wrap gap-1.5 text-2xs text-[var(--home-ink-muted)]">
-            {[
-              `Season ${summary.competition?.seasonLabel ?? "2025/26"}`,
-              summary.competition?.currentMatchday ? `Matchday ${summary.competition.currentMatchday}` : null,
-              `Updated ${lastUpdated}`,
-            ].filter(Boolean).map((label) => (
-              <span key={label} className="rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 font-medium">
-                {label}
-              </span>
-            ))}
+          <div className="flex flex-col items-start gap-3 sm:items-end">
+            <div className="flex flex-wrap gap-1.5 text-2xs text-[var(--home-ink-muted)]">
+              {[
+                `Season ${summary.competition?.seasonLabel ?? "2025/26"}`,
+                summary.competition?.currentMatchday ? `Matchday ${summary.competition.currentMatchday}` : null,
+                `Updated ${lastUpdated}`,
+              ].filter(Boolean).map((label) => (
+                <span key={label} className="rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 font-medium">
+                  {label}
+                </span>
+              ))}
+            </div>
+            <GoalsPulseStrip
+              data={summary.goalsPerMatchday ?? []}
+              capLabel={
+                (summary.goalsPerMatchday?.length ?? 0) > 0
+                  ? `MD 01–${summary.goalsPerMatchday![summary.goalsPerMatchday!.length - 1].matchday}`
+                  : undefined
+              }
+              className="hidden w-44 sm:block"
+            />
           </div>
         </div>
+
+        <ResultsTape
+          recentFixtures={summary.recentFixtures}
+          upcomingFixtures={summary.upcomingFixtures}
+          label={
+            <span className="inline-flex items-center gap-2">
+              <span className="h-[7px] w-[7px] flex-shrink-0 rounded-full bg-[var(--home-signal)]" />
+              {currentMatchday ? `Matchday ${currentMatchday} · latest` : "Latest results"}
+            </span>
+          }
+          className="rounded-[var(--radius-sm)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_62%,var(--home-paper))] px-4 py-1"
+        />
 
         {/* Dense stats panel */}
         <HomeStatsPanel
@@ -439,41 +541,34 @@ export function PremierLeagueClient({
           ]}
         />
 
-        {/* Key gaps */}
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-          <StatCard
-            variant="compact"
-            eyebrow="Leader"
-            metric={`${leader?.team.shortName ?? "—"} · ${leader?.points ?? "—"} pts`}
-            detail={leader && runnerUp ? `${leader.points - runnerUp.points} clear of ${runnerUp.team.shortName}` : "Standings loading"}
-            icon={<Trophy className="h-4 w-4" />}
-          />
-          <StatCard
-            variant="compact"
-            eyebrow="Top-four line"
-            metric={fourthPlace && fifthPlace ? `+${fourthPlace.points - fifthPlace.points} pts` : "—"}
-            detail={fourthPlace && fifthPlace ? `${fourthPlace.team.shortName} over ${fifthPlace.team.shortName}` : ""}
-            icon={<TrendingUp className="h-4 w-4" />}
-          />
-          <StatCard
-            variant="compact"
-            eyebrow="Europe line"
-            metric={summary.standings[5] && summary.standings[6] ? `+${summary.standings[5].points - summary.standings[6].points} pts` : "—"}
-            detail={summary.standings[5] && summary.standings[6] ? `${summary.standings[5].team.shortName} over ${summary.standings[6].team.shortName}` : ""}
-            icon={<BarChart3 className="h-4 w-4" />}
-          />
-          <StatCard
-            variant="compact"
-            eyebrow="Safety line"
-            metric={safetyLine && dropLine ? `+${safetyLine.points - dropLine.points} pt` : "—"}
-            detail={safetyLine && dropLine ? `${safetyLine.team.shortName} over ${dropLine.team.shortName}` : ""}
-            icon={<Shield className="h-4 w-4" />}
-          />
-        </div>
+        {/* Key gaps — fused hairline stat fascia */}
+        <StatFascia
+          items={[
+            {
+              eyebrow: "Leader",
+              metric: `${leader?.team.shortName ?? "—"} · ${leader?.points ?? "—"} pts`,
+              detail: leader && runnerUp ? `${leader.points - runnerUp.points} clear of ${runnerUp.team.shortName}` : "Standings loading",
+            },
+            {
+              eyebrow: "Top-four line",
+              metric: fourthPlace && fifthPlace ? `+${fourthPlace.points - fifthPlace.points} pts` : "—",
+              detail: fourthPlace && fifthPlace ? `${fourthPlace.team.shortName} over ${fifthPlace.team.shortName}` : "",
+            },
+            {
+              eyebrow: "Europe line",
+              metric: summary.standings[5] && summary.standings[6] ? `+${summary.standings[5].points - summary.standings[6].points} pts` : "—",
+              detail: summary.standings[5] && summary.standings[6] ? `${summary.standings[5].team.shortName} over ${summary.standings[6].team.shortName}` : "",
+            },
+            {
+              eyebrow: "Safety line",
+              metric: safetyLine && dropLine ? `+${safetyLine.points - dropLine.points} pt` : "—",
+              detail: safetyLine && dropLine ? `${safetyLine.team.shortName} over ${dropLine.team.shortName}` : "",
+            },
+          ]}
+        />
 
-        {/* Main standings + sidebar */}
-        <div id="pl-standings" className="grid gap-5 md:grid-cols-[minmax(0,1fr)_280px] lg:grid-cols-[minmax(0,1fr)_320px]">
-          {/* Standings */}
+        {/* Standings */}
+        <div id="pl-standings">
           <section className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-5 sm:p-6 shadow-[var(--shadow-sm)]">
             <div className="flex items-center justify-between border-b border-[var(--home-rule)] pb-4">
               <h2 className="text-lg font-bold text-[var(--home-ink)]">Standings</h2>
@@ -576,115 +671,22 @@ export function PremierLeagueClient({
               </table>
             </div>
           </section>
-
-          {/* Compact club sidebar */}
-          <aside className="md:sticky md:top-28 md:self-start">
-            {selectedRow ? (
-              <section className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-5 shadow-[var(--shadow-sm)]" aria-live="polite" data-testid="pl-selected-club">
-                <div className="flex items-start gap-3">
-                  <CrestAvatar crest={selectedRow.team.crest} name={selectedRow.team.shortName} size="lg" />
-                  <div className="min-w-0 flex-1">
-                    <h2 className="truncate text-lg font-bold text-[var(--home-ink)]">{selectedRow.team.name}</h2>
-                    <div className="mt-1.5 flex flex-wrap gap-1.5">
-                      <span
-                        className="inline-flex items-center rounded-full border px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em]"
-                        style={getZonePillStyle(selectedZone)}
-                      >
-                        {getZoneLabel(selectedZone)}
-                      </span>
-                      <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
-                        {selectedRow.points} pts
-                      </span>
-                      <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
-                        {38 - selectedRow.playedGames} left
-                      </span>
-                    </div>
-                  </div>
-                  <div className="flex-shrink-0 rounded-[var(--radius-xl)] bg-[var(--home-signal)] px-3 py-2 text-center text-[var(--home-paper)] shadow-sm">
-                    <p className="text-3xs uppercase tracking-[0.14em] opacity-80">Pos</p>
-                    <p className="text-xl font-bold">{selectedRow.position}</p>
-                  </div>
-                </div>
-
-                <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 border-t border-[var(--home-rule)] pt-4">
-                  {([
-                    ["PPG", formatFixed(selectedRow.points / selectedRow.playedGames)],
-                    ["Record", `${selectedRow.won}-${selectedRow.draw}-${selectedRow.lost}`],
-                    ["Attack", `#${attackRankings.get(selectedRow.team.id) ?? "—"}`],
-                    ["Defense", `#${defenseRankings.get(selectedRow.team.id) ?? "—"}`],
-                    ["GF/m", formatFixed(selectedRow.goalsFor / selectedRow.playedGames)],
-                    ["GA/m", formatFixed(selectedRow.goalsAgainst / selectedRow.playedGames)],
-                  ] as const).map(([label, value]) => (
-                    <div key={label} className="flex items-baseline justify-between gap-2">
-                      <dt className="text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">{label}</dt>
-                      <dd className="text-sm font-bold text-[var(--home-ink)]">{value}</dd>
-                    </div>
-                  ))}
-                </dl>
-
-                {teamSnapshot && teamSnapshot.form.sequence.length > 0 && (
-                  <div className="mt-4 border-t border-[var(--home-rule)] pt-4">
-                    <p className="text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">Form</p>
-                    <div className="mt-2 flex gap-1.5">
-                      {teamSnapshot.form.sequence.map((result, i) => (
-                        <TeamResultPill key={`${result}-${i}`} result={result} />
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {selectedClubStoryline ? (
-                  <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-[var(--home-ink-muted)]">
-                    {selectedClubStoryline}
-                  </p>
-                ) : null}
-
-                {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) ? (
-                  <p
-                    className="mt-4 border-t border-[var(--home-rule)] pt-4 text-sm text-[var(--home-ink-muted)]"
-                    role={teamSnapshotError ? "alert" : "status"}
-                    aria-live="polite"
-                  >
-                    {isTeamSnapshotLoading
-                      ? "Loading club snapshot…"
-                      : teamSnapshotError}
-                  </p>
-                ) : null}
-              </section>
-            ) : null}
-          </aside>
         </div>
 
         {/* Tabbed detail strip */}
         <div className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-5 sm:p-6 shadow-[var(--shadow-sm)]">
-          <div
-            className="flex gap-2 overflow-x-auto rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-1.5"
-            role="tablist"
-            aria-label="Club and league details"
-          >
-            {(["club", "fixtures", "scorers"] as const).map((tab) => {
-              const labels = { club: "Club Detail", fixtures: "Fixtures", scorers: "Top Scorers" } as const;
-              return (
-                <button
-                  key={tab}
-                  id={`pl-detail-tab-${tab}`}
-                  role="tab"
-                  type="button"
-                  aria-selected={activeDetailTab === tab}
-                  aria-controls="pl-detail-panel"
-                  tabIndex={activeDetailTab === tab ? 0 : -1}
-                  onClick={() => setActiveDetailTab(tab)}
-                  className={`min-h-[44px] whitespace-nowrap rounded-[var(--radius-2xl)] px-5 py-2.5 text-sm font-semibold transition-colors ${
-                    activeDetailTab === tab
-                      ? "bg-[var(--home-signal)] text-[var(--home-paper)] shadow-sm"
-                      : "text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
-                  }`}
-                >
-                  {labels[tab]}
-                </button>
-              );
-            })}
-          </div>
+          <SegmentedTabs
+            tabs={[
+              { id: "club", label: "Club Detail" },
+              { id: "fixtures", label: "Fixtures" },
+              { id: "scorers", label: "Top Scorers" },
+            ]}
+            activeId={activeDetailTab}
+            onChange={(id) => setActiveDetailTab(id as typeof activeDetailTab)}
+            ariaLabel="Club and league details"
+            idPrefix="pl-detail-tab"
+            panelId="pl-detail-panel"
+          />
 
           <div
             id="pl-detail-panel"
@@ -695,6 +697,28 @@ export function PremierLeagueClient({
             {activeDetailTab === "club" && selectedRow && (
               <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                 <div className="space-y-5">
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex min-w-0 items-center gap-3">
+                      <CrestAvatar crest={selectedRow.team.crest} name={selectedRow.team.shortName} size="md" />
+                      <div className="min-w-0">
+                        <h3 className="truncate text-lg font-bold text-[var(--home-ink)]">{selectedRow.team.name}</h3>
+                        <span
+                          className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-3xs font-semibold uppercase tracking-[0.12em]"
+                          style={getZonePillStyle(selectedZone)}
+                        >
+                          {getZoneLabel(selectedZone)}
+                        </span>
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => handleTeamChange(selectedRow.team.id)}
+                      className="inline-flex min-h-[44px] flex-shrink-0 items-center gap-1.5 rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3.5 text-sm font-medium text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-signal)]"
+                    >
+                      Open detail
+                    </button>
+                  </div>
+
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">Performance</p>
                     <div className="mt-3 grid grid-cols-2 gap-3">
@@ -780,39 +804,34 @@ export function PremierLeagueClient({
 
             {activeDetailTab === "fixtures" && (
               <div className="grid gap-6 md:grid-cols-2">
-                {summary.recentFixtures.length > 0 && (
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">Recent slate</p>
-                    <h3 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">Latest results</h3>
-                    <div className="mt-4 space-y-3">
-                      {summary.recentFixtures.slice(0, 8).map((f) => (
-                        <FixtureCard key={f.id} fixture={f} onOpenTeam={handleTeamChange} />
-                      ))}
-                    </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">Recent slate</p>
+                  <h3 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">Latest results</h3>
+                  <div className="mt-4">
+                    <FixtureLedgerSection
+                      groups={groupFixturesByMatchday(summary.recentFixtures)}
+                      onOpenTeam={handleTeamChange}
+                    />
                   </div>
-                )}
-                {summary.upcomingFixtures.length > 0 && (
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">Next up</p>
-                    <h3 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">Upcoming fixtures</h3>
-                    <div className="mt-4 space-y-3">
-                      {summary.upcomingFixtures.slice(0, 8).map((f) => (
-                        <FixtureCard key={f.id} fixture={f} onOpenTeam={handleTeamChange} />
-                      ))}
-                    </div>
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">Next up</p>
+                  <h3 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">Upcoming fixtures</h3>
+                  <div className="mt-4">
+                    <FixtureLedgerSection
+                      groups={groupFixturesByMatchday(summary.upcomingFixtures, { suffix: "upcoming" })}
+                      onOpenTeam={handleTeamChange}
+                    />
                   </div>
-                )}
+                </div>
               </div>
             )}
 
-            {activeDetailTab === "scorers" && scorerEntries.length > 0 && (
+            {activeDetailTab === "scorers" && (
               <div className="grid gap-6 md:grid-cols-2">
                 <div>
                   <div className="flex items-start justify-between gap-3">
-                    <div>
-                      <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">Goals leaderboard</p>
-                      <h3 className="mt-2 text-xl font-bold text-[var(--home-ink)]">Top scorers</h3>
-                    </div>
+                    <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">Goals &amp; assists leaderboard</p>
                     <a
                       href="https://www.premierleague.com/stats/top/players/goals"
                       target="_blank"
@@ -823,13 +842,35 @@ export function PremierLeagueClient({
                       <ExternalLink className="h-4 w-4" />
                     </a>
                   </div>
-                  <LeaderList leaders={scorerEntries.slice(0, 5)} statLabel="goals" clubLookup={clubLookup} />
-                </div>
-                {scorerEntries.length > 5 && (
-                  <div>
-                    <LeaderList leaders={scorerEntries.slice(5, 10)} statLabel="goals" clubLookup={clubLookup} />
+                  <div className="mt-3">
+                    <LeaderLedger
+                      title="Top scorers"
+                      unit="G"
+                      entries={scorerEntries.slice(0, 10).map((entry) => ({
+                        rank: entry.rank,
+                        name: entry.name,
+                        clubCode: clubLookup.get(entry.clubId) ?? entry.clubCode,
+                        value: entry.total,
+                      }))}
+                      emptyLabel="No scorers recorded yet this season."
+                    />
                   </div>
-                )}
+                </div>
+                <div>
+                  <div className="mt-3 md:mt-9">
+                    <LeaderLedger
+                      title="Most assists"
+                      unit="A"
+                      entries={assistEntries.slice(0, 10).map((entry) => ({
+                        rank: entry.rank,
+                        name: entry.name,
+                        clubCode: clubLookup.get(entry.clubId) ?? entry.clubCode,
+                        value: entry.total,
+                      }))}
+                      emptyLabel="No assists recorded yet this season."
+                    />
+                  </div>
+                </div>
               </div>
             )}
           </div>
@@ -844,6 +885,18 @@ export function PremierLeagueClient({
           </div>
         </section>
       </div>
+
+      <ClubDrawer
+        club={drawerClub}
+        formSequence={teamSnapshot?.form.sequence ?? []}
+        topScorers={drawerTopScorers}
+        recentFixtures={recentFixtures}
+        upcomingFixtures={upcomingFixtures}
+        isLoadingDetail={!teamSnapshot && isTeamSnapshotLoading}
+        detailError={!teamSnapshot ? teamSnapshotError : null}
+        onClose={handleCloseDrawer}
+        testId="pl-selected-club"
+      />
     </div>
   );
 }

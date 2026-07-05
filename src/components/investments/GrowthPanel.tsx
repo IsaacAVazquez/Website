@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from "react";
 import { select, scaleBand, scaleLinear, max, axisBottom, axisLeft } from "d3";
-import { WarmCard } from "@/components/ui/WarmCard";
+import { TerminalPanel } from "./TerminalPanel";
 import { useStockData } from "@/hooks/useStockData";
 import { ErrorState } from "./ErrorState";
 
@@ -126,7 +126,7 @@ export function GrowthPanel({ symbol }: Props) {
   const metrics = extractMetrics(raw);
 
   return (
-    <WarmCard padding="sm">
+    <TerminalPanel padding="sm">
       <h3 className="text-sm font-semibold text-[var(--home-ink)] mb-3">YoY Growth</h3>
 
       {isLoading && (
@@ -157,6 +157,6 @@ export function GrowthPanel({ symbol }: Props) {
           </div>
         </>
       )}
-    </WarmCard>
+    </TerminalPanel>
   );
 }

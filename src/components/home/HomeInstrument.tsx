@@ -11,6 +11,9 @@ import type { BlogPostPreview } from "@/lib/blog";
 import { publishedDateFormatter } from "@/lib/utils";
 import { ContactCta } from "@/components/ContactCta";
 import { InstrumentCounter } from "@/components/home/InstrumentCounter";
+import { PanelClock } from "@/components/home/PanelClock";
+import { NowLine } from "@/components/home/NowLine";
+import { ReadoutPanel } from "@/components/ui/ReadoutPanel";
 import styles from "@/app/page.module.css";
 
 export interface QuakePulse {
@@ -62,6 +65,14 @@ function ArrowRight({ size = 14 }: { size?: number }) {
       <path d="M13 18l6 -6" />
       <path d="M13 6l6 6" />
     </svg>
+  );
+}
+
+function LiveDot() {
+  return (
+    <span className={styles.liveDot} aria-hidden="true">
+      <span />
+    </span>
   );
 }
 
@@ -172,29 +183,37 @@ export function HomeInstrument({
               </div>
             </div>
 
-            <div className={styles.panel}>
-              <div className={styles.panelCap}>
-                <span>Live index</span>
-                {indexStamp ? <span>{indexStamp}</span> : null}
-              </div>
-              <div className={styles.panelRow}>
-                <span className={styles.rowLbl}>Projects shipped</span>
-                <span className={styles.rowVal}>
-                  <InstrumentCounter value={heroIndex.projectCount} />
-                </span>
-              </div>
-              <div className={styles.panelRow}>
-                <span className={styles.rowLbl}>Tools in production</span>
-                <span className={styles.rowVal}>
-                  <InstrumentCounter value={heroIndex.liveToolCount} />
-                </span>
-              </div>
-              <div className={styles.panelRow}>
-                <span className={styles.rowLbl}>Essays and notes</span>
-                <span className={styles.rowVal}>
-                  <InstrumentCounter value={heroIndex.essayCount} />
-                </span>
-              </div>
+            <ReadoutPanel
+              label={
+                <>
+                  <LiveDot />
+                  Live index
+                </>
+              }
+              stamp={
+                <>
+                  <PanelClock />
+                  {indexStamp ? (
+                    <span className={styles.capStamp}>· {indexStamp}</span>
+                  ) : null}
+                </>
+              }
+              rows={[
+                {
+                  label: "Projects shipped",
+                  value: <InstrumentCounter value={heroIndex.projectCount} />,
+                },
+                {
+                  label: "Tools in production",
+                  value: <InstrumentCounter value={heroIndex.liveToolCount} />,
+                },
+                {
+                  label: "Essays and notes",
+                  value: <InstrumentCounter value={heroIndex.essayCount} />,
+                },
+              ]}
+              footer={<NowLine />}
+            >
               {showSparkline ? (
                 <div className={styles.spark}>
                   <svg
@@ -203,6 +222,13 @@ export function HomeInstrument({
                     role="img"
                     aria-label={`Sparkline of ${quakePulse.total24h} recent earthquakes bucketed by hour`}
                   >
+                    <line
+                      className={styles.sparkGrid}
+                      x1={SPARK_PAD}
+                      y1={SPARK_H / 2}
+                      x2={SPARK_W - SPARK_PAD}
+                      y2={SPARK_H / 2}
+                    />
                     <polygon
                       className={styles.sparkFill}
                       fill="var(--hp-signal)"
@@ -219,6 +245,15 @@ export function HomeInstrument({
                       points={sparklinePoints(quakePulse.series)}
                     />
                     <circle
+                      className={styles.sparkPing}
+                      cx={sparklineEnd(quakePulse.series).x}
+                      cy={sparklineEnd(quakePulse.series).y}
+                      r="3.5"
+                      fill="none"
+                      stroke="var(--hp-signal)"
+                      strokeWidth="1.5"
+                    />
+                    <circle
                       className={styles.sparkDot}
                       cx={sparklineEnd(quakePulse.series).x}
                       cy={sparklineEnd(quakePulse.series).y}
@@ -232,10 +267,7 @@ export function HomeInstrument({
                   </span>
                 </div>
               ) : null}
-              <p className={styles.nowLine}>
-                Now · decision memo for AI workflows
-              </p>
-            </div>
+            </ReadoutPanel>
           </div>
           </div>
         </div>

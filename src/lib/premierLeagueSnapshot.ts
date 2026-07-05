@@ -27,6 +27,8 @@ function clampPremierLeagueSummary(summary: PremierLeagueSummary): PremierLeague
     ...summary,
     recentFixtures: limitFixtures(summary.recentFixtures, SUMMARY_FIXTURE_LIMIT),
     upcomingFixtures: limitFixtures(summary.upcomingFixtures, SUMMARY_FIXTURE_LIMIT),
+    // Defaults for committed snapshots written before this field existed.
+    goalsPerMatchday: summary.goalsPerMatchday ?? [],
   };
 }
 
@@ -48,6 +50,7 @@ export function createEmptyPremierLeagueSummary(): PremierLeagueSummary {
     upcomingFixtures: [],
     teams: [],
     scorers: [],
+    goalsPerMatchday: [],
     generatedAt: new Date().toISOString(),
   };
 }
