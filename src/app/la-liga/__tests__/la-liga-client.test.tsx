@@ -54,8 +54,12 @@ describe("LaLigaClient", () => {
     const expectedClub =
       laLigaSnapshot.clubs.find((club) => club.id === "bet") ??
       laLigaSnapshot.clubs[0];
+
+    // "bet" is an explicit, resolvable ?club= selection, so it opens the club
+    // drawer (the standings-row click target) rather than only updating the
+    // inline "Club Detail" tab as before.
     expect(
-      screen.getByRole("heading", { name: expectedClub.name })
+      screen.getByRole("dialog", { name: `${expectedClub.name} detail` })
     ).toBeInTheDocument();
 
     await user.click(screen.getByRole("button", { name: /relegation fight/i }));
@@ -66,6 +70,39 @@ describe("LaLigaClient", () => {
         scroll: false,
       }
     );
+  });
+
+  it("opens the club drawer on an explicit selection and closes it on Escape", async () => {
+    const user = userEvent.setup();
+    currentSearchParams = new URLSearchParams("club=bet");
+
+    render(
+      <LaLigaClient
+        initialState={DEFAULT_LA_LIGA_STATE}
+        summary={{
+          season: laLigaSnapshot.season,
+          matchday: laLigaSnapshot.matchday,
+          updatedAt: laLigaSnapshot.updatedAt,
+          sourceLabel: laLigaSnapshot.sourceLabel,
+          sourceUrls: laLigaSnapshot.sourceUrls,
+          clubs: laLigaSnapshot.clubs,
+          scorers: laLigaSnapshot.scorers,
+          assists: laLigaSnapshot.assists,
+          recentFixtures: laLigaSnapshot.recentFixtures.slice(0, 8),
+          upcomingFixtures: laLigaSnapshot.upcomingFixtures.slice(0, 8),
+          teams: laLigaSnapshot.teams,
+        }}
+        initialTeamSnapshot={laLigaSnapshot.teamSnapshots.bet ?? null}
+      />
+    );
+
+    const expectedClub = laLigaSnapshot.clubs.find((club) => club.id === "bet");
+    expect(expectedClub).toBeDefined();
+    expect(screen.getByRole("dialog")).toBeInTheDocument();
+
+    await user.keyboard("{Escape}");
+
+    await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument());
   });
 
   it("canonicalizes hidden club selections for a focused view", async () => {

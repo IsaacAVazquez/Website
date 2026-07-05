@@ -8,14 +8,21 @@ import {
   type CSSProperties,
 } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { BarChart3, CircleAlert, ExternalLink, Shield, TrendingUp, Trophy } from "lucide-react";
+import { CircleAlert, ExternalLink } from "lucide-react";
 import {
-  StatCard,
   MetricCard,
   CrestAvatar,
-  TeamResultPill,
   FixtureCard,
-  LeaderList,
+  StatFascia,
+  ResultsTape,
+  GoalsPulseStrip,
+  SegmentedTabs,
+  FixtureLedgerSection,
+  groupFixturesByMatchday,
+  LeaderLedger,
+  ClubDrawer,
+  type ClubDrawerClub,
+  type ClubDrawerScorer,
 } from "@/components/football";
 import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
 import {
@@ -198,10 +205,20 @@ export function LaLigaClient({
   }
 
   function handleClubChange(clubId: string) {
+    // Always open the drawer on an explicit club selection, independent of
+    // `navigate`'s href diffing — `buildHref` strips the `club` query param
+    // entirely when it matches the default club on the default view, so
+    // drawer visibility can't be derived from the URL alone the way it can
+    // for Premier League (whose `team` param is never auto-stripped).
+    setIsDrawerOpen(true);
     navigate({
       view: routeState.view,
       club: canonicalizeClubId(clubId, aliasMap) ?? defaultState.club,
     });
+  }
+
+  function handleCloseDrawer() {
+    setIsDrawerOpen(false);
   }
 
   useEffect(() => {
@@ -250,6 +267,14 @@ export function LaLigaClient({
   }, [selectedClub, teamSnapshots]);
 
   const [activeDetailTab, setActiveDetailTab] = useState<"club" | "fixtures" | "scorers">("club");
+  // Mirrors a genuinely resolvable explicit `?club=` on first render (an
+  // unknown/unaliasable value shouldn't pop the overlay just because the
+  // query string carried something) — `handleClubChange` flips this on every
+  // subsequent selection regardless of URL-diffing quirks.
+  const [isDrawerOpen, setIsDrawerOpen] = useState(() => {
+    const explicitClubId = canonicalizeClubId(searchParams.get("club"), aliasMap);
+    return explicitClubId !== null && clubById.has(explicitClubId);
+  });
   const goalsForLeader = useMemo(
     () => [...clubs].sort((a, b) => b.goalsFor - a.goalsFor || a.position - b.position)[0] ?? null,
     [clubs]
@@ -308,6 +333,35 @@ export function LaLigaClient({
   const formSequence = teamSnapshot?.form?.sequence ?? [];
   const recentFixtures = (teamSnapshot?.recentFixtures ?? []).slice(0, 3);
   const upcomingFixtures = (teamSnapshot?.upcomingFixtures ?? []).slice(0, 3);
+
+  // Club drawer
+  const drawerClub: ClubDrawerClub | null = isDrawerOpen
+    ? {
+      // Must match recentFixtures/upcomingFixtures' homeTeam/awayTeam ids —
+      // those come from the team snapshot's numeric football-data.org id,
+      // not `selectedClub.id` (the TLA-based standings/routing id).
+      id: teamSnapshot?.team?.id ?? selectedClub.id,
+      name: selectedClub.name,
+      crest: teamSnapshot?.team?.crest ?? crestByClubId.get(selectedClub.id) ?? null,
+      accentColor: selectedClub.accentColor ?? null,
+      position: selectedClub.position,
+      points: selectedClub.points,
+      played: selectedClub.played,
+      won: selectedClub.won,
+      draw: selectedClub.drawn,
+      lost: selectedClub.lost,
+      goalsFor: selectedClub.goalsFor,
+      goalsAgainst: selectedClub.goalsAgainst,
+      goalDifference: selectedClub.goalDifference,
+      manager: teamSnapshot?.team?.manager ?? null,
+      venue: teamSnapshot?.team?.venue ?? null,
+    }
+    : null;
+  const drawerTopScorers: ClubDrawerScorer[] = buildClubTopScorers(
+    summary.scorers,
+    summary.assists,
+    selectedClub.id
+  );
 
   // Stats panel cells
   const topScorerEntry = summary.scorers[0] ?? null;
@@ -369,25 +423,68 @@ export function LaLigaClient({
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="home-kicker mb-1">Football Data Tool</p>
-            <h1 className="text-2xl font-bold tracking-tight text-[var(--home-ink)] sm:text-3xl">
-              La Liga Pulse
-            </h1>
-            <p className="mt-1 max-w-[52ch] text-sm leading-6 text-[var(--home-ink-muted)]">
+            <div className="flex items-center gap-3">
+              <span
+                className="relative inline-flex h-11 min-w-[46px] flex-shrink-0 items-center justify-center rounded-[var(--radius-sm)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 font-mono text-sm text-[var(--home-ink)]"
+                aria-hidden="true"
+              >
+                ESP
+                <span className="absolute right-1 top-1 h-1 w-1 rounded-full bg-[var(--home-signal)]" />
+              </span>
+              <h1 className="text-2xl font-bold tracking-tight text-[var(--home-ink)] sm:text-3xl">
+                La Liga{" "}
+                <em style={{ fontFamily: "var(--font-home-serif)", fontStyle: "italic", fontWeight: 400 }}>
+                  Pulse
+                </em>
+              </h1>
+            </div>
+            <p className="mt-2 max-w-[52ch] text-sm leading-6 text-[var(--home-ink-muted)]">
               La Liga&apos;s title race compressed into one view. Top-four gaps, European qualification pressure, and relegation context, updated weekly.
             </p>
+            <p className="mt-3 inline-flex items-center gap-2 font-mono text-2xs uppercase tracking-[0.06em] text-[var(--home-ink-muted)]">
+              <span
+                className="h-1.5 w-1.5 rounded-full bg-[var(--home-positive)]"
+                style={{ boxShadow: "0 0 0 4px color-mix(in srgb, var(--home-positive) 16%, transparent)" }}
+                aria-hidden="true"
+              />
+              Matchday {summary.matchday} · Snapshot updated {snapshotDateLabel}
+            </p>
           </div>
-          <div className="flex flex-wrap gap-1.5 text-2xs text-[var(--home-ink-muted)]">
-            {[
-              `Season ${summary.season}`,
-              `Matchday ${summary.matchday}`,
-              `Snapshot ${snapshotDateLabel}`,
-            ].map((label) => (
-              <span key={label} className="rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 font-medium">
-                {label}
-              </span>
-            ))}
+          <div className="flex flex-col items-start gap-3 sm:items-end">
+            <div className="flex flex-wrap gap-1.5 text-2xs text-[var(--home-ink-muted)]">
+              {[
+                `Season ${summary.season}`,
+                `Matchday ${summary.matchday}`,
+                `Snapshot ${snapshotDateLabel}`,
+              ].map((label) => (
+                <span key={label} className="rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 font-medium">
+                  {label}
+                </span>
+              ))}
+            </div>
+            <GoalsPulseStrip
+              data={summary.goalsPerMatchday ?? []}
+              capLabel={
+                (summary.goalsPerMatchday?.length ?? 0) > 0
+                  ? `MD 01–${summary.goalsPerMatchday![summary.goalsPerMatchday!.length - 1].matchday}`
+                  : undefined
+              }
+              className="hidden w-44 sm:block"
+            />
           </div>
         </div>
+
+        <ResultsTape
+          recentFixtures={summary.recentFixtures}
+          upcomingFixtures={summary.upcomingFixtures}
+          label={
+            <span className="inline-flex items-center gap-2">
+              <span className="h-[7px] w-[7px] flex-shrink-0 rounded-full bg-[var(--home-signal)]" />
+              {summary.matchday ? `Matchday ${summary.matchday} · latest` : "Latest results"}
+            </span>
+          }
+          className="rounded-[var(--radius-sm)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_62%,var(--home-paper))] px-4 py-1"
+        />
 
         {/* Dense stats panel */}
         <HomeStatsPanel
@@ -405,40 +502,34 @@ export function LaLigaClient({
           ]}
         />
 
-        {/* Key gaps */}
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-          <StatCard
-            variant="compact"
-            eyebrow="Leader"
-            metric={`${leader?.shortName ?? "—"} · ${leader?.points ?? "—"} pts`}
-            detail={leader && runnerUp ? `${leader.points - runnerUp.points} clear of ${runnerUp.shortName}` : "Standings loading"}
-            icon={<Trophy className="h-4 w-4" />}
-          />
-          <StatCard
-            variant="compact"
-            eyebrow="Top-four line"
-            metric={fourthPlace && fifthPlace ? `+${fourthPlace.points - fifthPlace.points} pts` : "—"}
-            detail={fourthPlace && fifthPlace ? `${fourthPlace.shortName} over ${fifthPlace.shortName}` : ""}
-            icon={<TrendingUp className="h-4 w-4" />}
-          />
-          <StatCard
-            variant="compact"
-            eyebrow="Europe line"
-            metric={sixthPlace && seventhPlace ? `+${sixthPlace.points - seventhPlace.points} pts` : "—"}
-            detail={sixthPlace && seventhPlace ? `${sixthPlace.shortName} over ${seventhPlace.shortName}` : ""}
-            icon={<BarChart3 className="h-4 w-4" />}
-          />
-          <StatCard
-            variant="compact"
-            eyebrow="Safety line"
-            metric={safetyLine && dropLine ? `+${safetyLine.points - dropLine.points} pt` : "—"}
-            detail={safetyLine && dropLine ? `${safetyLine.shortName} over ${dropLine.shortName}` : ""}
-            icon={<Shield className="h-4 w-4" />}
-          />
-        </div>
+        {/* Key gaps — fused hairline stat fascia */}
+        <StatFascia
+          items={[
+            {
+              eyebrow: "Leader",
+              metric: `${leader?.shortName ?? "—"} · ${leader?.points ?? "—"} pts`,
+              detail: leader && runnerUp ? `${leader.points - runnerUp.points} clear of ${runnerUp.shortName}` : "Standings loading",
+            },
+            {
+              eyebrow: "Top-four line",
+              metric: fourthPlace && fifthPlace ? `+${fourthPlace.points - fifthPlace.points} pts` : "—",
+              detail: fourthPlace && fifthPlace ? `${fourthPlace.shortName} over ${fifthPlace.shortName}` : "",
+            },
+            {
+              eyebrow: "Europe line",
+              metric: sixthPlace && seventhPlace ? `+${sixthPlace.points - seventhPlace.points} pts` : "—",
+              detail: sixthPlace && seventhPlace ? `${sixthPlace.shortName} over ${seventhPlace.shortName}` : "",
+            },
+            {
+              eyebrow: "Safety line",
+              metric: safetyLine && dropLine ? `+${safetyLine.points - dropLine.points} pt` : "—",
+              detail: safetyLine && dropLine ? `${safetyLine.shortName} over ${dropLine.shortName}` : "",
+            },
+          ]}
+        />
 
-        {/* Main standings + sidebar */}
-        <div id="laliga-standings" className="grid gap-5 md:grid-cols-[minmax(0,1fr)_280px] lg:grid-cols-[minmax(0,1fr)_320px]">
+        {/* Standings */}
+        <div id="laliga-standings">
           <section className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-5 sm:p-6 shadow-[var(--shadow-sm)]">
             <div className="flex items-center justify-between border-b border-[var(--home-rule)] pb-4">
               <h2 className="text-lg font-bold text-[var(--home-ink)]">Standings</h2>
@@ -541,121 +632,22 @@ export function LaLigaClient({
               </table>
             </div>
           </section>
-
-          {/* Compact club sidebar */}
-          <aside className="md:sticky md:top-28 md:self-start">
-            <section
-              className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-5 shadow-[var(--shadow-sm)]"
-              aria-live="polite"
-              data-testid="la-liga-selected-club"
-            >
-              <div className="flex items-start gap-3">
-                <CrestAvatar
-                  crest={crestByClubId.get(selectedClub.id) ?? null}
-                  name={selectedClub.name}
-                  size="lg"
-                />
-                <div className="min-w-0 flex-1">
-                  <h2 className="truncate text-lg font-bold text-[var(--home-ink)]">
-                    {selectedClub.name}
-                  </h2>
-                  <div className="mt-1.5 flex flex-wrap gap-1.5">
-                    <span
-                      className="inline-flex items-center rounded-full border px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em]"
-                      style={getZonePillStyle(selectedZone)}
-                    >
-                      {getZoneLabel(selectedZone)}
-                    </span>
-                    <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
-                      {selectedClub.points} pts
-                    </span>
-                    <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
-                      {38 - selectedClub.played} left
-                    </span>
-                  </div>
-                </div>
-                <div className="flex-shrink-0 rounded-[var(--radius-xl)] bg-[var(--home-signal)] px-3 py-2 text-center text-[var(--home-paper)] shadow-sm">
-                  <p className="text-3xs uppercase tracking-[0.14em] opacity-80">Pos</p>
-                  <p className="text-xl font-bold">{selectedClub.position}</p>
-                </div>
-              </div>
-
-              <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 border-t border-[var(--home-rule)] pt-4">
-                {([
-                  ["PPG", formatFixed(selectedClub.points / selectedClub.played)],
-                  ["Record", `${selectedClub.won}-${selectedClub.drawn}-${selectedClub.lost}`],
-                  ["Attack", `#${attackRankByClub.get(selectedClub.id) ?? "-"}`],
-                  ["Defense", `#${defenseRankByClub.get(selectedClub.id) ?? "-"}`],
-                  ["GF/m", formatFixed(selectedClub.goalsFor / selectedClub.played)],
-                  ["GA/m", formatFixed(selectedClub.goalsAgainst / selectedClub.played)],
-                ] as const).map(([label, value]) => (
-                  <div key={label} className="flex items-baseline justify-between gap-2">
-                    <dt className="text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">{label}</dt>
-                    <dd className="text-sm font-bold text-[var(--home-ink)]">{value}</dd>
-                  </div>
-                ))}
-              </dl>
-
-              {formSequence.length > 0 && (
-                <div className="mt-4 border-t border-[var(--home-rule)] pt-4">
-                  <p className="text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">Form</p>
-                  <div className="mt-2 flex gap-1.5">
-                    {formSequence.slice(-5).map((result, i) => (
-                      <TeamResultPill key={i} result={result} />
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-[var(--home-ink-muted)]">
-                {clubStoryline}
-              </p>
-
-              {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) ? (
-                <p
-                  className="mt-4 border-t border-[var(--home-rule)] pt-4 text-sm text-[var(--home-ink-muted)]"
-                  role={teamSnapshotError ? "alert" : "status"}
-                  aria-live="polite"
-                >
-                  {isTeamSnapshotLoading
-                    ? "Loading club snapshot…"
-                    : teamSnapshotError}
-                </p>
-              ) : null}
-            </section>
-          </aside>
         </div>
 
         {/* Tabbed detail strip */}
         <div className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-5 sm:p-6 shadow-[var(--shadow-sm)]">
-          <div
-            className="flex gap-2 overflow-x-auto rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-1.5"
-            role="tablist"
-            aria-label="Club and league details"
-          >
-            {(["club", "fixtures", "scorers"] as const).map((tab) => {
-              const labels = { club: "Club Detail", fixtures: "Fixtures", scorers: "Top Scorers" } as const;
-              return (
-                <button
-                  key={tab}
-                  id={`la-liga-detail-tab-${tab}`}
-                  role="tab"
-                  type="button"
-                  aria-selected={activeDetailTab === tab}
-                  aria-controls="la-liga-detail-panel"
-                  tabIndex={activeDetailTab === tab ? 0 : -1}
-                  onClick={() => setActiveDetailTab(tab)}
-                  className={`min-h-[44px] whitespace-nowrap rounded-[var(--radius-2xl)] px-5 py-2.5 text-sm font-semibold transition-colors ${
-                    activeDetailTab === tab
-                      ? "bg-[var(--home-signal)] text-[var(--home-paper)] shadow-sm"
-                      : "text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
-                  }`}
-                >
-                  {labels[tab]}
-                </button>
-              );
-            })}
-          </div>
+          <SegmentedTabs
+            tabs={[
+              { id: "club", label: "Club Detail" },
+              { id: "fixtures", label: "Fixtures" },
+              { id: "scorers", label: "Top Scorers" },
+            ]}
+            activeId={activeDetailTab}
+            onChange={(id) => setActiveDetailTab(id as typeof activeDetailTab)}
+            ariaLabel="Club and league details"
+            idPrefix="la-liga-detail-tab"
+            panelId="la-liga-detail-panel"
+          />
 
           <div
             id="la-liga-detail-panel"
@@ -666,6 +658,28 @@ export function LaLigaClient({
             {activeDetailTab === "club" && (
               <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                 <div className="space-y-5">
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex min-w-0 items-center gap-3">
+                      <CrestAvatar crest={crestByClubId.get(selectedClub.id) ?? null} name={selectedClub.name} size="md" />
+                      <div className="min-w-0">
+                        <h3 className="truncate text-lg font-bold text-[var(--home-ink)]">{selectedClub.name}</h3>
+                        <span
+                          className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-3xs font-semibold uppercase tracking-[0.12em]"
+                          style={getZonePillStyle(selectedZone)}
+                        >
+                          {getZoneLabel(selectedZone)}
+                        </span>
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => handleClubChange(selectedClub.id)}
+                      className="inline-flex min-h-[44px] flex-shrink-0 items-center gap-1.5 rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3.5 text-sm font-medium text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-signal)]"
+                    >
+                      Open detail
+                    </button>
+                  </div>
+
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">Performance</p>
                     <div className="mt-3 grid grid-cols-2 gap-3">
@@ -749,28 +763,26 @@ export function LaLigaClient({
 
             {activeDetailTab === "fixtures" && (
               <div className="grid gap-6 md:grid-cols-2">
-                {summary.recentFixtures.length > 0 && (
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">Recent slate</p>
-                    <h3 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">Latest results</h3>
-                    <div className="mt-4 space-y-3">
-                      {summary.recentFixtures.map((f) => (
-                        <FixtureCard key={f.id} fixture={f} onOpenTeam={handleClubChange} />
-                      ))}
-                    </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">Recent slate</p>
+                  <h3 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">Latest results</h3>
+                  <div className="mt-4">
+                    <FixtureLedgerSection
+                      groups={groupFixturesByMatchday(summary.recentFixtures)}
+                      onOpenTeam={handleClubChange}
+                    />
                   </div>
-                )}
-                {summary.upcomingFixtures.length > 0 && (
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">Next up</p>
-                    <h3 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">Upcoming fixtures</h3>
-                    <div className="mt-4 space-y-3">
-                      {summary.upcomingFixtures.map((f) => (
-                        <FixtureCard key={f.id} fixture={f} onOpenTeam={handleClubChange} />
-                      ))}
-                    </div>
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">Next up</p>
+                  <h3 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">Upcoming fixtures</h3>
+                  <div className="mt-4">
+                    <FixtureLedgerSection
+                      groups={groupFixturesByMatchday(summary.upcomingFixtures, { suffix: "upcoming" })}
+                      onOpenTeam={handleClubChange}
+                    />
                   </div>
-                )}
+                </div>
               </div>
             )}
 
@@ -778,10 +790,7 @@ export function LaLigaClient({
               <div className="grid gap-6 md:grid-cols-2">
                 <div>
                   <div className="flex items-start justify-between gap-3">
-                    <div>
-                      <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">Goals leaderboard</p>
-                      <h3 className="mt-2 text-xl font-bold text-[var(--home-ink)]">Top scorers</h3>
-                    </div>
+                    <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">Goals &amp; assists leaderboard</p>
                     <a
                       href={summary.sourceUrls.scorers}
                       target="_blank"
@@ -792,13 +801,35 @@ export function LaLigaClient({
                       <ExternalLink className="h-4 w-4" />
                     </a>
                   </div>
-                  <LeaderList leaders={summary.scorers.slice(0, 5)} statLabel="goals" clubLookup={clubLookup} />
-                </div>
-                {summary.scorers.length > 5 && (
-                  <div>
-                    <LeaderList leaders={summary.scorers.slice(5, 10)} statLabel="goals" clubLookup={clubLookup} />
+                  <div className="mt-3">
+                    <LeaderLedger
+                      title="Top scorers"
+                      unit="G"
+                      entries={summary.scorers.slice(0, 10).map((entry) => ({
+                        rank: entry.rank,
+                        name: entry.name,
+                        clubCode: clubLookup.get(entry.clubId) ?? entry.clubCode,
+                        value: entry.total,
+                      }))}
+                      emptyLabel="No scorers recorded yet this season."
+                    />
                   </div>
-                )}
+                </div>
+                <div>
+                  <div className="mt-3 md:mt-9">
+                    <LeaderLedger
+                      title="Most assists"
+                      unit="A"
+                      entries={summary.assists.slice(0, 10).map((entry) => ({
+                        rank: entry.rank,
+                        name: entry.name,
+                        clubCode: clubLookup.get(entry.clubId) ?? entry.clubCode,
+                        value: entry.total,
+                      }))}
+                      emptyLabel="No assists recorded yet this season."
+                    />
+                  </div>
+                </div>
               </div>
             )}
           </div>
@@ -814,6 +845,18 @@ export function LaLigaClient({
           </div>
         </section>
       </div>
+
+      <ClubDrawer
+        club={drawerClub}
+        formSequence={formSequence}
+        topScorers={drawerTopScorers}
+        recentFixtures={recentFixtures}
+        upcomingFixtures={upcomingFixtures}
+        isLoadingDetail={!teamSnapshot && isTeamSnapshotLoading}
+        detailError={!teamSnapshot ? teamSnapshotError : null}
+        onClose={handleCloseDrawer}
+        testId="la-liga-selected-club"
+      />
     </div>
   );
 }
@@ -860,6 +903,26 @@ function groupLeadersByClub(leaders: LaLigaLeader[]) {
     map.set(leaderEntry.clubId, existing);
     return map;
   }, new Map<string, LaLigaLeader[]>());
+}
+
+/**
+ * Builds a club's top-scorer list for the drawer by cross-referencing the
+ * separate goals (`scorers`) and assists (`assists`) boards by player name —
+ * La Liga's scorer entries don't carry a per-player assists count the way
+ * Premier League's do, but both boards share `clubId`, so a name match
+ * backfills assists when the player also appears on the assists board.
+ */
+function buildClubTopScorers(
+  scorers: LaLigaLeader[],
+  assists: LaLigaLeader[],
+  clubId: string
+): ClubDrawerScorer[] {
+  const assistsByName = new Map(
+    assists.filter((entry) => entry.clubId === clubId).map((entry) => [entry.name, entry.total])
+  );
+  return scorers
+    .filter((entry) => entry.clubId === clubId)
+    .map((entry) => ({ name: entry.name, goals: entry.total, assists: assistsByName.get(entry.name) ?? 0 }));
 }
 
 function getZoneDotColor(zone: ReturnType<typeof getClubZone>): string {
