@@ -208,6 +208,37 @@ describe("GET /api/news-pulse", () => {
     }
   });
 
+  it("serves the last good headlines as a stale 200 when a later refresh fails, not a 503", async () => {
+    jest.useFakeTimers();
+    try {
+      // First refresh succeeds and populates the last-good snapshot.
+      installFetchMock(buildFeedMap());
+      const first = await GET();
+      expect(first.status).toBe(200);
+      expect((await first.json()).articles).toHaveLength(6);
+
+      // Advance past the 5-minute success TTL so the next request re-fetches.
+      jest.advanceTimersByTime(6 * 60 * 1000);
+
+      // Now every feed is down.
+      installFetchMock(
+        Object.fromEntries(NEWS_FEEDS.map((feed) => [feed.url, new Error("network down")])),
+      );
+
+      const second = await GET();
+      const body = await second.json();
+
+      // Stale-but-usable: the last good articles with a note and a 200, plus a
+      // no-store header so clients re-fetch and we retry the feeds soon.
+      expect(second.status).toBe(200);
+      expect(body.articles).toHaveLength(6);
+      expect(body.message).toMatch(/last good headlines/i);
+      expect(second.headers.get("Cache-Control")).toBe("no-store");
+    } finally {
+      jest.useRealTimers();
+    }
+  });
+
   it("parses The Atlantic Atom feed with markup stripped and entities decoded", async () => {
     installFetchMock(buildFeedMap({
       [FEED_URLS.atlantic]: makeAtomFeed({

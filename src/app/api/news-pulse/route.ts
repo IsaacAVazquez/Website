@@ -22,6 +22,10 @@ interface FeedFetchResult {
   body: FeedResponseBody;
   status: number;
   isError: boolean;
+  // A usable but stale response: the latest refresh failed, so we serve the last
+  // good headlines. Cached with the short error TTL (retry soon) but returned to
+  // the client as a 200 with a note rather than a blank 503.
+  isStale?: boolean;
 }
 
 interface CacheEntry {
@@ -37,12 +41,19 @@ interface CacheEntry {
 // fresh fan-out to all 6 feeds.
 const cache = new Map<string, CacheEntry>();
 
+// The last successful (200) fetch, kept so a failed refresh can serve stale
+// headlines instead of a blank 503 while the feeds recover.
+let lastGood: FeedFetchResult | null = null;
+
 function isFresh(entry: CacheEntry, now: number): boolean {
   if (entry.completedAt === null || entry.value === null) {
     // Still in-flight — always considered fresh for single-flight purposes.
     return true;
   }
-  const ttl = entry.value.isError ? ERROR_TTL_MS : SUCCESS_TTL_MS;
+  // Stale (served-from-last-good) responses use the short error TTL so we retry
+  // the feeds soon rather than sitting on stale data for the full 5 minutes.
+  const ttl =
+    entry.value.isError || entry.value.isStale ? ERROR_TTL_MS : SUCCESS_TTL_MS;
   return now - entry.completedAt < ttl;
 }
 
@@ -129,6 +140,24 @@ async function fetchAllFeeds(): Promise<FeedFetchResult> {
   };
 }
 
+function buildStaleResult(
+  good: FeedFetchResult,
+  failure: FeedFetchResult
+): FeedFetchResult {
+  return {
+    body: {
+      articles: good.body.articles,
+      fetchedAt: good.body.fetchedAt,
+      errors: failure.body.errors,
+      message:
+        "Showing the last good headlines — the most recent refresh could not reach the feeds.",
+    },
+    status: 200,
+    isError: false,
+    isStale: true,
+  };
+}
+
 function getOrFetch(key: string): Promise<FeedFetchResult> {
   const now = Date.now();
   const existing = cache.get(key);
@@ -148,14 +177,27 @@ function getOrFetch(key: string): Promise<FeedFetchResult> {
   };
 
   entry.promise = (async () => {
-    try {
-      const result = await fetchAllFeeds();
-      entry.value = result;
+    const settle = (result: FeedFetchResult): FeedFetchResult => {
+      if (!result.isError) {
+        lastGood = result;
+        entry.value = result;
+        entry.completedAt = Date.now();
+        return result;
+      }
+      // The refresh failed. Serve the last good headlines (stale) rather than a
+      // blank 503 when we have them, so the dashboard survives a transient feed
+      // outage; the short TTL means we retry soon.
+      const served = lastGood ? buildStaleResult(lastGood, result) : result;
+      entry.value = served;
       entry.completedAt = Date.now();
-      return result;
+      return served;
+    };
+
+    try {
+      return settle(await fetchAllFeeds());
     } catch (error) {
       const message = error instanceof Error ? error.message : "unknown error";
-      const result: FeedFetchResult = {
+      return settle({
         body: {
           articles: [],
           fetchedAt: new Date().toISOString(),
@@ -164,10 +206,7 @@ function getOrFetch(key: string): Promise<FeedFetchResult> {
         },
         status: 503,
         isError: true,
-      };
-      entry.value = result;
-      entry.completedAt = Date.now();
-      return result;
+      });
     }
   })();
 
@@ -181,7 +220,7 @@ export async function GET() {
   return NextResponse.json(result.body, {
     status: result.status,
     headers: {
-      "Cache-Control": result.isError
+      "Cache-Control": result.isError || result.isStale
         ? ERROR_CACHE_CONTROL_HEADER
         : CACHE_CONTROL_HEADER,
     },
@@ -196,4 +235,5 @@ export async function GET() {
   Symbol.for("__newsPulseCacheResetForTesting")
 ] = (): void => {
   cache.clear();
+  lastGood = null;
 };
