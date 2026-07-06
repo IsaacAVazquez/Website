@@ -7,6 +7,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 ## 2026-07-06
 
 - Restore next-auth ^4.24.14 to fix npm ci peer conflict ([#278](https://github.com/IsaacAVazquez/Website/pull/278)).
+- High-priority data-source audit remediation ([#277](https://github.com/IsaacAVazquez/Website/pull/277)).
 
 ---
 
