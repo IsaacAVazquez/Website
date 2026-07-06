@@ -6,7 +6,9 @@ on:
   # current. ESPN's site API needs no token. Outside those months there is
   # nothing to refresh, so the schedule stays dormant.
   schedule:
-    - cron: "20 */6 * 6,7 *"
+    # Staggered off :20 so it doesn't race the hourly earthquake and 6h transit
+    # refreshes (which also push to main) over the same minute.
+    - cron: "50 */6 * 6,7 *"
   workflow_dispatch:
 
 # Don't stack a manual dispatch on top of a scheduled run.

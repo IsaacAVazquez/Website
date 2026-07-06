@@ -142,6 +142,14 @@ jobs:
 
       - name: Create job summary
         if: always()
+        # Pass step outputs through the environment rather than interpolating
+        # ${{ }} straight into the script. The tournament name comes from ESPN
+        # (untrusted), so direct interpolation under `contents: write` would be a
+        # shell-injection surface; as an env var the shell treats it as data.
+        env:
+          TOURNAMENT: ${{ steps.verify_quality.outputs.tournament }}
+          LEADERBOARD: ${{ steps.verify_quality.outputs.leaderboard }}
+          PLAYERS: ${{ steps.verify_quality.outputs.players }}
         run: |
           echo "## Golf Snapshot Refresh" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
@@ -149,10 +157,10 @@ jobs:
           echo "**Run Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> "$GITHUB_STEP_SUMMARY"
           echo "**Schedule:** Daily at 08:40 UTC" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
-          if [ -n "${{ steps.verify_quality.outputs.leaderboard }}" ]; then
-            echo "**Tournament:** ${{ steps.verify_quality.outputs.tournament }}" >> "$GITHUB_STEP_SUMMARY"
-            echo "**Leaderboard entries:** ${{ steps.verify_quality.outputs.leaderboard }}" >> "$GITHUB_STEP_SUMMARY"
-            echo "**Player options:** ${{ steps.verify_quality.outputs.players }}" >> "$GITHUB_STEP_SUMMARY"
+          if [ -n "$LEADERBOARD" ]; then
+            echo "**Tournament:** $TOURNAMENT" >> "$GITHUB_STEP_SUMMARY"
+            echo "**Leaderboard entries:** $LEADERBOARD" >> "$GITHUB_STEP_SUMMARY"
+            echo "**Player options:** $PLAYERS" >> "$GITHUB_STEP_SUMMARY"
             echo "" >> "$GITHUB_STEP_SUMMARY"
           fi
           if [ "${{ steps.check_changes.outputs.changed }}" = "true" ]; then

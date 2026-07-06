@@ -5,9 +5,21 @@ import {
   FANTASY_SNAPSHOT_SCHEMA_VERSION,
   getFantasyPlayersForPosition,
 } from "@/lib/fantasy";
-import { loadFantasySnapshot } from "@/lib/fantasySnapshotServer";
+import {
+  loadFantasySnapshot,
+  resetFantasySnapshotCache,
+} from "@/lib/fantasySnapshotServer";
 
 describe("fantasySnapshotServer", () => {
+  it("serves the parsed snapshot from cache within the TTL", async () => {
+    resetFantasySnapshotCache();
+    const first = await loadFantasySnapshot("ppr");
+    const second = await loadFantasySnapshot("ppr");
+    // A cache hit returns the same object; without the cache each call parses
+    // the ~700KB file afresh and would return a different reference.
+    expect(second).toBe(first);
+  });
+
   it("loads published snapshots from disk with sourced overall metadata", async () => {
     const scoringFormats = {
       ppr: "PPR",
