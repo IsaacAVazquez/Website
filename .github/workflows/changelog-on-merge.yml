@@ -1,0 +1,58 @@
+name: Update Changelog on Merge
+
+# Every merged pull request appends a dated bullet to CHANGELOG.md on main.
+# Snapshot-refresh bots push straight to main (no PR), so they never trigger
+# this. Add the `skip-changelog` label to a PR to opt out. The commit lands on
+# main directly with `[skip ci]`, and pushes made with GITHUB_TOKEN do not
+# start new workflow runs, so there is no trigger loop.
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [main]
+
+concurrency:
+  group: changelog-on-merge
+  cancel-in-progress: false
+
+jobs:
+  update-changelog:
+    name: Append merged PR to CHANGELOG
+    if: >-
+      github.event.pull_request.merged == true &&
+      !contains(github.event.pull_request.labels.*.name, 'skip-changelog')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v7
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "20"
+
+      - name: Append changelog entry
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+        run: |
+          DATE_UTC="$(date -u +'%Y-%m-%d')"
+          node scripts/append-changelog-entry.mjs "$PR_NUMBER" "$PR_TITLE" "$PR_URL" "$DATE_UTC"
+
+      - name: Commit and push
+        run: |
+          bash scripts/ci/commit-and-push-snapshot.sh \
+            "docs: log PR #${PR_NUMBER} in changelog [automated] [skip ci]" \
+            CHANGELOG.md
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
