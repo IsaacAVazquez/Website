@@ -169,6 +169,10 @@ interface GHJob {
   title: string;
   location: { name: string };
   absolute_url: string;
+  // `first_published` is when the posting first went live; `updated_at` moves on
+  // any later edit, so it overstates recency. Prefer first_published for the
+  // posted date and fall back to updated_at only when it's absent.
+  first_published?: string;
   updated_at: string;
   departments: { name: string }[];
   content?: string;
@@ -194,7 +198,7 @@ async function fetchGreenhouse(company: GreenhouseMBACompany): Promise<MBAJob[]>
       location: job.location?.name ?? "Remote",
       department: job.departments?.[0]?.name ?? "General",
       applyUrl: job.absolute_url,
-      postedAt: job.updated_at,
+      postedAt: job.first_published ?? job.updated_at,
       snippet,
       roleType: match.roleType,
       roleFamilies: match.roleFamilies,

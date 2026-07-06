@@ -140,6 +140,9 @@ describe("GET /api/mba-jobs", () => {
                 title: "PM Intern",
                 location: { name: "San Francisco, CA" },
                 absolute_url: "https://example.com/jobs/1001",
+                // first_published (posted) predates updated_at (a later edit);
+                // postedAt should track the earlier first_published.
+                first_published: "2026-03-01T10:00:00.000Z",
                 updated_at: "2026-04-14T16:00:00.000Z",
                 departments: [{ name: "Product" }],
                 content: "<p>MBA summer internship for product leaders.</p>",
@@ -232,6 +235,8 @@ describe("GET /api/mba-jobs", () => {
           title: "PM Intern",
           roleType: "internship",
           roleFamilies: ["product"],
+          // Prefers first_published over the later updated_at (2026-04-14).
+          postedAt: "2026-03-01T10:00:00.000Z",
         }),
         expect.objectContaining({
           title: "Strategic Finance Associate",
