@@ -1,9 +1,14 @@
+import { readFile } from "fs/promises";
+import path from "path";
 import { StructuredData } from "@/components/StructuredData";
 import { AIStructuredData } from "@/components/AIStructuredData";
-import {
-  HomeInstrument,
-  type QuakePulse,
-} from "@/components/home/HomeInstrument";
+import { HomeInstrument } from "@/components/home/HomeInstrument";
+import type {
+  HomeLiveFeedData,
+  HomeLiveFeedLaunch,
+  HomeLiveFeedMarket,
+  HomeLiveFeedQuake,
+} from "@/components/home/HomeLiveFeed";
 import {
   getHomepageFeaturedCaseStudies,
   getPortfolioProjects,
@@ -11,44 +16,110 @@ import {
 import { getAllBlogPostPreviews } from "@/lib/blog";
 import { getLiveToolGroups } from "@/constants/toolCategories";
 import { getEarthquakeSummary } from "@/lib/earthquakeSnapshot";
+import { getSpaceXSnapshotSummary } from "@/lib/spacexSnapshot";
 import { profile, profileSameAs } from "@/lib/profile";
 
 export { metadata } from "./metadata";
 
-const HOUR_MS = 3_600_000;
+// Relative "N min ago" style label for the live-feed readouts, computed at
+// render time from an ISO timestamp.
+function relativeAgo(iso: string): string {
+  const ms = Date.now() - Date.parse(iso);
+  if (Number.isNaN(ms) || ms < 0) return "just now";
+  const minutes = Math.round(ms / 60000);
+  if (minutes < 60) return `${minutes} min ago`;
+  const hours = Math.round(minutes / 60);
+  if (hours < 24) return `${hours} h ago`;
+  return `${Math.round(hours / 24)} d ago`;
+}
 
-/**
- * Bucket the earthquake snapshot's rolling 24h feed into hourly counts for
- * the hero's live-pulse sparkline. Fail-soft: an empty or malformed snapshot
- * yields an empty series and the hero simply hides the sparkline.
- */
-async function buildQuakePulse(): Promise<QuakePulse> {
+// The hero's live feed reads three production tools. Each readout fails soft to
+// null so a missing or malformed snapshot just drops that row rather than
+// breaking the hero.
+
+// Latest USGS quake plus a short recent-magnitude series for the bar spark.
+async function buildQuakeReadout(): Promise<HomeLiveFeedQuake | null> {
   try {
     const summary = await getEarthquakeSummary();
-    const endTs = Date.parse(summary.generatedAt);
-    const buckets = new Array<number>(24).fill(0);
-
-    if (!Number.isNaN(endTs)) {
-      for (const quake of summary.recent) {
-        const age = endTs - Date.parse(quake.time);
-        if (Number.isNaN(age) || age < 0 || age >= 24 * HOUR_MS) continue;
-        buckets[23 - Math.floor(age / HOUR_MS)] += 1;
-      }
-    }
-
-    // The caption count must describe the same events the line draws. The
-    // snapshot's `recent` list is capped, so it can hold fewer events than
-    // heroStats.total24h — quoting that larger number next to a line built
-    // from the capped feed would misrepresent the chart.
-    const windowTotal = buckets.reduce((sum, count) => sum + count, 0);
+    const latest = summary.recent[0];
+    if (!latest) return null;
+    // `recent` is newest-first; reverse the trailing window so the spark reads
+    // left-to-right chronologically with the latest quake as the final bar.
+    const recentMagnitudes = summary.recent
+      .slice(0, 12)
+      .map((quake) => quake.magnitude)
+      .reverse();
     return {
-      series: windowTotal > 0 ? buckets : [],
-      total24h: windowTotal,
-      asOf: Number.isNaN(endTs) ? null : summary.generatedAt,
+      magnitude: latest.magnitude,
+      depthKm: latest.depthKm,
+      place: latest.place,
+      agoLabel: relativeAgo(latest.time),
+      recentMagnitudes,
     };
   } catch {
-    return { series: [], total24h: 0, asOf: null };
+    return null;
   }
+}
+
+// Next SpaceX launch for the T-minus readout.
+function buildLaunchReadout(): HomeLiveFeedLaunch | null {
+  try {
+    const next = getSpaceXSnapshotSummary()?.nextLaunch;
+    if (!next) return null;
+    const vehicle =
+      [next.rocketName, next.launchpadName].filter(Boolean).join(" · ") || "SpaceX";
+    return {
+      mission: next.name,
+      vehicle,
+      dateUtc: next.dateUtc,
+      hasExactTime: next.hasExactTime,
+    };
+  } catch {
+    return null;
+  }
+}
+
+// S&P 500 day move from the committed SPY snapshot (daily closes).
+async function buildMarketReadout(): Promise<HomeLiveFeedMarket | null> {
+  try {
+    const raw = await readFile(
+      path.join(process.cwd(), "public", "data", "investments", "SPY", "snapshot.json"),
+      "utf8",
+    );
+    const prices = (JSON.parse(raw) as { sections?: { price?: unknown } }).sections
+      ?.price;
+    if (!Array.isArray(prices) || prices.length < 2) return null;
+    const last = prices[prices.length - 1] as { close?: unknown };
+    const prev = prices[prices.length - 2] as { close?: unknown };
+    if (typeof last.close !== "number" || typeof prev.close !== "number") return null;
+    const delta = last.close - prev.close;
+    const changePct = prev.close !== 0 ? (delta / prev.close) * 100 : 0;
+    return {
+      symbol: "SPY",
+      name: "S&P 500 ETF",
+      price: last.close.toLocaleString("en-US", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      }),
+      changePct,
+      delta: `${delta >= 0 ? "+" : ""}${delta.toFixed(2)}`,
+    };
+  } catch {
+    return null;
+  }
+}
+
+async function buildLiveFeed(): Promise<HomeLiveFeedData> {
+  const [quake, market] = await Promise.all([
+    buildQuakeReadout(),
+    buildMarketReadout(),
+  ]);
+  return {
+    quake,
+    launch: buildLaunchReadout(),
+    market,
+    sourceNote: "Committed snapshots across three production tools",
+  };
 }
 
 export default async function Home() {
@@ -72,7 +143,7 @@ export default async function Home() {
     essayCount: allPosts.length,
     liveToolCount: liveTools,
   };
-  const quakePulse = await buildQuakePulse();
+  const liveFeed = await buildLiveFeed();
 
   return (
     <>
@@ -81,7 +152,7 @@ export default async function Home() {
         recentPosts={allPosts}
         heroIndex={heroIndex}
         liveToolGroups={liveToolGroups}
-        quakePulse={quakePulse}
+        liveFeed={liveFeed}
       />
 
       <StructuredData type="ProfilePage" />

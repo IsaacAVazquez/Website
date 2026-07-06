@@ -10,19 +10,9 @@ import {
 import type { BlogPostPreview } from "@/lib/blog";
 import { publishedDateFormatter } from "@/lib/utils";
 import { ContactCta } from "@/components/ContactCta";
-import { InstrumentCounter } from "@/components/home/InstrumentCounter";
-import { PanelClock } from "@/components/home/PanelClock";
-import { NowLine } from "@/components/home/NowLine";
-import { ReadoutPanel } from "@/components/ui/ReadoutPanel";
+import { HomeLiveFeed } from "@/components/home/HomeLiveFeed";
+import type { HomeLiveFeedData } from "@/components/home/HomeLiveFeed";
 import styles from "@/app/page.module.css";
-
-export interface QuakePulse {
-  /** Hourly counts over the snapshot's last 24h window, oldest first. */
-  series: number[];
-  total24h: number;
-  /** ISO timestamp of the snapshot the series was derived from. */
-  asOf: string | null;
-}
 
 interface HomeInstrumentProps {
   featuredProjects: CaseStudyData[];
@@ -33,20 +23,8 @@ interface HomeInstrumentProps {
     liveToolCount: number;
   };
   liveToolGroups: LiveToolGroup[];
-  quakePulse: QuakePulse;
+  liveFeed: HomeLiveFeedData;
 }
-
-// Month-and-year stamp for the live index cap. Derived from the most recent
-// published post so the label tracks real content freshness, not wall clock.
-const updatedMonthFormatter = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  year: "numeric",
-});
-
-const asOfFormatter = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-});
 
 function ArrowRight({ size = 14 }: { size?: number }) {
   return (
@@ -68,14 +46,6 @@ function ArrowRight({ size = 14 }: { size?: number }) {
   );
 }
 
-function LiveDot() {
-  return (
-    <span className={styles.liveDot} aria-hidden="true">
-      <span />
-    </span>
-  );
-}
-
 function categoryLabelFor(slug: string): string {
   const id = classifyToolSlug(slug);
   return TOOL_CATEGORY_DEFS.find((def) => def.id === id)?.label ?? "Project";
@@ -85,59 +55,14 @@ function pad2(n: number): string {
   return String(n).padStart(2, "0");
 }
 
-/**
- * Map an hourly count series onto sparkline coordinates in a 300x72 viewBox
- * with a little padding so the stroke never clips.
- */
-const SPARK_W = 300;
-const SPARK_H = 72;
-const SPARK_PAD = 6;
-
-function sparklineCoords(series: number[]): Array<{ x: number; y: number }> {
-  const max = Math.max(...series, 1);
-  const step = SPARK_W / Math.max(series.length - 1, 1);
-  return series.map((count, index) => ({
-    x: Math.round(index * step * 100) / 100,
-    y:
-      Math.round(
-        (SPARK_H - SPARK_PAD - (count / max) * (SPARK_H - SPARK_PAD * 2)) * 100,
-      ) / 100,
-  }));
-}
-
-function sparklinePoints(series: number[]): string {
-  return sparklineCoords(series)
-    .map((point) => `${point.x},${point.y}`)
-    .join(" ");
-}
-
-function sparklineEnd(series: number[]): { x: number; y: number } {
-  const coords = sparklineCoords(series);
-  return coords[coords.length - 1] ?? { x: SPARK_W, y: SPARK_H / 2 };
-}
-
 export function HomeInstrument({
   featuredProjects,
   recentPosts,
   heroIndex,
   liveToolGroups,
-  quakePulse,
+  liveFeed,
 }: HomeInstrumentProps) {
   const writingRows = recentPosts.slice(0, 3);
-
-  // Most recent post timestamp drives the "Live index" freshness stamp.
-  const lastUpdatedTs = recentPosts.reduce((latest, post) => {
-    const ts = Date.parse(post.publishedAt);
-    return Number.isNaN(ts) ? latest : Math.max(latest, ts);
-  }, 0);
-  const indexStamp =
-    lastUpdatedTs > 0 ? updatedMonthFormatter.format(lastUpdatedTs) : null;
-
-  const showSparkline = quakePulse.series.length >= 6;
-  const quakeAsOf = quakePulse.asOf ? Date.parse(quakePulse.asOf) : NaN;
-  const quakeAsOfLabel = Number.isNaN(quakeAsOf)
-    ? null
-    : asOfFormatter.format(quakeAsOf);
 
   return (
     <div className={styles.page}>
@@ -183,91 +108,7 @@ export function HomeInstrument({
               </div>
             </div>
 
-            <ReadoutPanel
-              label={
-                <>
-                  <LiveDot />
-                  Live index
-                </>
-              }
-              stamp={
-                <>
-                  <PanelClock />
-                  {indexStamp ? (
-                    <span className={styles.capStamp}>· {indexStamp}</span>
-                  ) : null}
-                </>
-              }
-              rows={[
-                {
-                  label: "Projects shipped",
-                  value: <InstrumentCounter value={heroIndex.projectCount} />,
-                },
-                {
-                  label: "Tools in production",
-                  value: <InstrumentCounter value={heroIndex.liveToolCount} />,
-                },
-                {
-                  label: "Essays and notes",
-                  value: <InstrumentCounter value={heroIndex.essayCount} />,
-                },
-              ]}
-              footer={<NowLine />}
-            >
-              {showSparkline ? (
-                <div className={styles.spark}>
-                  <svg
-                    viewBox="0 0 300 72"
-                    preserveAspectRatio="none"
-                    role="img"
-                    aria-label={`Sparkline of ${quakePulse.total24h} recent earthquakes bucketed by hour`}
-                  >
-                    <line
-                      className={styles.sparkGrid}
-                      x1={SPARK_PAD}
-                      y1={SPARK_H / 2}
-                      x2={SPARK_W - SPARK_PAD}
-                      y2={SPARK_H / 2}
-                    />
-                    <polygon
-                      className={styles.sparkFill}
-                      fill="var(--hp-signal)"
-                      points={`${sparklinePoints(quakePulse.series)} 300,72 0,72`}
-                    />
-                    <polyline
-                      className={styles.sparkLine}
-                      fill="none"
-                      stroke="var(--hp-signal)"
-                      strokeWidth="2"
-                      strokeLinejoin="round"
-                      strokeLinecap="round"
-                      pathLength={100}
-                      points={sparklinePoints(quakePulse.series)}
-                    />
-                    <circle
-                      className={styles.sparkPing}
-                      cx={sparklineEnd(quakePulse.series).x}
-                      cy={sparklineEnd(quakePulse.series).y}
-                      r="3.5"
-                      fill="none"
-                      stroke="var(--hp-signal)"
-                      strokeWidth="1.5"
-                    />
-                    <circle
-                      className={styles.sparkDot}
-                      cx={sparklineEnd(quakePulse.series).x}
-                      cy={sparklineEnd(quakePulse.series).y}
-                      r="3.5"
-                      fill="var(--hp-signal)"
-                    />
-                  </svg>
-                  <span className={styles.sparkCap}>
-                    {quakePulse.total24h} recent quakes · by hour · USGS
-                    {quakeAsOfLabel ? ` · as of ${quakeAsOfLabel}` : ""}
-                  </span>
-                </div>
-              ) : null}
-            </ReadoutPanel>
+            <HomeLiveFeed data={liveFeed} />
           </div>
           </div>
         </div>
