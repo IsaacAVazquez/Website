@@ -22,8 +22,11 @@ export const NEWS_FEEDS = [
   },
   {
     id: "guardian",
+    // Front-page feed, not the World section, so it's comparable to the other
+    // sources' homepage-level feeds (NYT HomePage, BBC top stories, NPR news)
+    // rather than skewing The Guardian's mix toward world news.
     name: "The Guardian",
-    url: "https://www.theguardian.com/world/rss",
+    url: "https://www.theguardian.com/international/rss",
     color: "#052962",
   },
   {
