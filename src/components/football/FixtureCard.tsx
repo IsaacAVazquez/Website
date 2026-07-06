@@ -11,7 +11,15 @@ export interface GenericFixture {
   matchday: number | null;
   homeTeam: { id: string; shortName: string; crest: string | null };
   awayTeam: { id: string; shortName: string; crest: string | null };
-  score: { winner: string | null; home: number | null; away: number | null };
+  score: {
+    winner: string | null;
+    home: number | null;
+    away: number | null;
+    // Penalty shootout tallies, present only on knockout ties decided on pens
+    // (World Cup). Other competitions omit them and render unchanged.
+    shootoutHome?: number | null;
+    shootoutAway?: number | null;
+  };
 }
 
 const DATE_TIME_FORMATTER = new Intl.DateTimeFormat("en-US", {
@@ -95,6 +103,7 @@ export function FixtureCard({
         {[fixture.homeTeam, fixture.awayTeam].map((team, index) => {
           const isHome = index === 0;
           const score = isHome ? fixture.score.home : fixture.score.away;
+          const shootout = isHome ? fixture.score.shootoutHome : fixture.score.shootoutAway;
           const isWinner =
             (isHome && fixture.score.winner === "HOME_TEAM") ||
             (!isHome && fixture.score.winner === "AWAY_TEAM");
@@ -130,8 +139,19 @@ export function FixtureCard({
                   </span>
                 </div>
               )}
-              <span className="w-8 text-right text-sm font-semibold text-[var(--home-ink)]">
-                {fixture.status === "FINISHED" && score !== null ? score : "—"}
+              <span className="shrink-0 whitespace-nowrap text-right text-sm font-semibold text-[var(--home-ink)]">
+                {fixture.status === "FINISHED" && score !== null ? (
+                  <>
+                    {score}
+                    {shootout != null ? (
+                      <span className="ml-1 text-xs font-medium text-[var(--home-ink-soft)]">
+                        ({shootout})
+                      </span>
+                    ) : null}
+                  </>
+                ) : (
+                  "—"
+                )}
               </span>
             </div>
           );

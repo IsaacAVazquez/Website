@@ -502,18 +502,82 @@ function topByAthletes(
     .map((leader, i) => ({ ...leader, rank: i + 1 }));
 }
 
-function buildSeasonLabel(season: { year?: number | null; displayName?: string | null } | null | undefined): string {
-  if (season?.displayName) return season.displayName;
-  const year = season?.year ?? null;
-  if (year) {
-    const next = String(year + 1).slice(-2);
-    return `${year}/${next}`;
-  }
-  return "Current season";
+/**
+ * ESPN keys each NBA season by the calendar year it ENDS in, so the 2025-26
+ * season is `season=2026`. A season tips off in October and ends the following
+ * June, so from October onward we belong to the season that ends next year, and
+ * before October we belong to (or have just finished) the season that ends this
+ * year.
+ */
+export function resolveNbaSeasonEndYear(now: Date = new Date()): number {
+  const year = now.getUTCFullYear();
+  const month = now.getUTCMonth(); // 0 = January, 9 = October
+  return month >= 9 ? year + 1 : year;
+}
+
+/**
+ * Builds the "YYYY-YY" label from ESPN's ending-year key. We derive it from the
+ * pinned season year rather than the standings feed's `displayName`, because
+ * ESPN rolls `displayName` to the next season during the Finals while still
+ * serving the current season's final records. It briefly reported the 2025-26
+ * Finals as "2026-27", so deriving from the pinned year keeps the label honest.
+ */
+export function buildSeasonLabel(seasonEndYear: number): string {
+  const startYear = seasonEndYear - 1;
+  const endSuffix = String(seasonEndYear % 100).padStart(2, "0");
+  return `${startYear}-${endSuffix}`;
 }
 
 export function isValidNbaTeamId(teamId: string): boolean {
   return /^[a-z0-9]{2,4}$/i.test(teamId);
+}
+
+/**
+ * Off-season / transient-blip guard for fixtures. ESPN's ±7-day scoreboard
+ * window is legitimately empty once the Finals end, and can blip empty for a
+ * single run mid-season, while the standings and leaders feeds keep serving the
+ * completed season's final data. When a fresh build has no league-level
+ * fixtures but the committed snapshot still has some, carry the prior fixtures
+ * forward (league-level and per-team) so a refresh that only updates
+ * standings/leaders/season never regresses fixtures to zero. That lets the
+ * refresh workflow commit those non-fixture corrections on their own, instead
+ * of the old gate that skipped every off-season commit and stranded them
+ * (issue #232 follow-up). No-ops when the fresh build already has fixtures or
+ * when there is nothing prior to carry forward.
+ */
+export function preservePriorFixtures(
+  next: NbaSnapshot,
+  previous: NbaSnapshot | null | undefined
+): NbaSnapshot {
+  const nextHasFixtures =
+    next.recentFixtures.length > 0 || next.upcomingFixtures.length > 0;
+  if (nextHasFixtures || !previous) return next;
+
+  const previousHasFixtures =
+    previous.recentFixtures.length > 0 || previous.upcomingFixtures.length > 0;
+  if (!previousHasFixtures) return next;
+
+  const teamSnapshots: Record<string, NbaTeamSnapshot> = {};
+  for (const [teamId, team] of Object.entries(next.teamSnapshots)) {
+    const priorTeam = previous.teamSnapshots[teamId];
+    const teamHasFixtures =
+      team.recentFixtures.length > 0 || team.upcomingFixtures.length > 0;
+    teamSnapshots[teamId] =
+      priorTeam && !teamHasFixtures
+        ? {
+            ...team,
+            recentFixtures: priorTeam.recentFixtures,
+            upcomingFixtures: priorTeam.upcomingFixtures,
+          }
+        : team;
+  }
+
+  return {
+    ...next,
+    recentFixtures: previous.recentFixtures,
+    upcomingFixtures: previous.upcomingFixtures,
+    teamSnapshots,
+  };
 }
 
 export function createEmptyNbaSnapshot(): NbaSnapshot {
@@ -548,19 +612,25 @@ export async function getNbaSummary(): Promise<{
   teams: NbaTeamOption[];
   generatedAt: string;
 }> {
+  // Pin the season ESPN returns instead of trusting its default. Once the Finals
+  // end, ESPN's default standings and byathlete feeds roll their season pointer
+  // to the next season while still serving the just-finished season's final
+  // records, which is how the snapshot ended up labelling the 2025-26 Finals as
+  // "2026-27". Pinning the ending year fixes both the returned data and the label.
+  const today = new Date();
+  const seasonEndYear = resolveNbaSeasonEndYear(today);
   // `level=2` returns conferences with 15 entries each. The previous query
   // (`level=3&group=conference`) returns 400 as of 2026-04 — `&group=conference`
   // is rejected, and `level=3` alone splits down to divisions, leaving the
   // conference children with empty `entries` arrays.
-  const standingsUrl = `${ESPN_STANDINGS_URL}?level=2`;
-  const today = new Date();
+  const standingsUrl = `${ESPN_STANDINGS_URL}?level=2&season=${seasonEndYear}`;
   const yesterday = new Date(today);
   yesterday.setUTCDate(today.getUTCDate() - 7);
   const tomorrow = new Date(today);
   tomorrow.setUTCDate(today.getUTCDate() + 7);
   const dateRange = `${formatEspnDate(yesterday)}-${formatEspnDate(tomorrow)}`;
   const scoreboardUrl = `${ESPN_BASE_URL}/scoreboard?dates=${dateRange}&limit=200`;
-  const leadersUrl = ESPN_BYATHLETE_URL;
+  const leadersUrl = `${ESPN_BYATHLETE_URL}&season=${seasonEndYear}`;
   const teamsUrl = `${ESPN_BASE_URL}/teams?limit=40`;
 
   const [standingsResponse, scoreboardResponse, leadersResponse, teamsResponse] = await Promise.all([
@@ -639,7 +709,7 @@ export async function getNbaSummary(): Promise<{
     .sort((a, b) => a.shortName.localeCompare(b.shortName));
 
   return {
-    season: buildSeasonLabel(standingsResponse.season),
+    season: buildSeasonLabel(seasonEndYear),
     teamsByConference,
     scorers,
     rebounders,

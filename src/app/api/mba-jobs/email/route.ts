@@ -176,14 +176,21 @@ function normalizeJob(value: unknown): EmailDigestJob | null {
 }
 
 function normalizeJobs(value: unknown): EmailDigestJob[] | null {
-  if (!Array.isArray(value) || value.length === 0 || value.length > MAX_DIGEST_JOBS) {
+  if (!Array.isArray(value) || value.length === 0) {
     return null;
   }
 
-  const jobs = value.map(normalizeJob);
-  if (jobs.some((job) => job === null)) return null;
+  // Drop entries that fail validation (missing fields, unsafe URL, or an
+  // unparsable/absent postedAt, since every direct-HTML job is undated)
+  // instead of rejecting the whole batch, then cap to the digest ceiling by
+  // slicing. A body that yields no valid jobs still returns null so a
+  // genuinely empty or malformed request gets a 400.
+  const jobs = value
+    .map(normalizeJob)
+    .filter((job): job is EmailDigestJob => job !== null)
+    .slice(0, MAX_DIGEST_JOBS);
 
-  return jobs as EmailDigestJob[];
+  return jobs.length > 0 ? jobs : null;
 }
 
 function buildEmailHtml(jobs: EmailDigestJob[], to: string): string {

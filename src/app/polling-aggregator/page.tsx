@@ -7,7 +7,7 @@ import { normalizePollingState } from "./polling-aggregator-state";
 export const metadata = constructMetadata({
   title: "Polling Aggregator",
   description:
-    "Political polling aggregator tracking presidential approval, the generic congressional ballot, and key 2026 Senate and governor race polls.",
+    "Interactive polling-aggregator dashboard covering presidential approval, the generic congressional ballot, and 2026 Senate and governor races. Currently displays illustrative sample data rather than live polling.",
   canonicalUrl: "/polling-aggregator",
   dateModified: pollingSnapshot.generatedAt.slice(0, 10),
   aiMetadata: {
@@ -31,7 +31,7 @@ export const metadata = constructMetadata({
     ],
     contentType: "Software Application",
     context:
-      "Standalone political polling aggregator by Isaac Vazquez that aggregates public polls into averages for presidential approval, the generic ballot, and key 2026 Senate and governor races.",
+      "Standalone political polling-aggregator dashboard by Isaac Vazquez covering presidential approval, the generic ballot, and 2026 Senate and governor races. It currently renders illustrative sample data to demonstrate the aggregator interface rather than live polling.",
     summary:
       "Polling aggregator dashboard for presidential approval trends, the generic congressional ballot, and competitive 2026 midterm races.",
     primaryFocus:
@@ -67,7 +67,7 @@ export default async function PollingAggregatorPage({ searchParams }: PollingPag
         data={{
           name: "Polling Aggregator",
           description:
-            "Political polling aggregator tracking presidential approval, the generic ballot, and key 2026 midterm races.",
+            "Interactive polling-aggregator dashboard for presidential approval, the generic ballot, and 2026 midterm races, currently showing illustrative sample data rather than live polling.",
           url: "https://isaacavazquez.com/polling-aggregator",
           applicationCategory: "NewsApplication",
           programmingLanguage: ["TypeScript", "Next.js"],

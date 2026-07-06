@@ -22,6 +22,8 @@ const testSummary: GolfSummary = {
     status: "Cut line is set and Saturday pairings are next.",
     fieldSize: 132,
     cutLine: -1,
+    cutState: "made",
+    cutCount: 76,
     generatedAt: "2026-04-16T19:05:00.000Z",
   },
   heroStats: {
@@ -29,6 +31,8 @@ const testSummary: GolfSummary = {
     leaderScore: -8,
     playersUnderPar: 40,
     cutLine: -1,
+    cutState: "made",
+    cutCount: 76,
     fieldSize: 132,
   },
   leaderboard: [

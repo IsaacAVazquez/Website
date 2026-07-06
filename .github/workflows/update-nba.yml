@@ -112,9 +112,20 @@ jobs:
             process.exit(1);
           }
 
+          // Off-season / transient-blip signal (informational only). Once the
+          // Finals end, the +/-7 day scoreboard window is legitimately empty,
+          // and it can blip empty for a single mid-season run. The builder
+          // (updateNbaSnapshot.ts -> preservePriorFixtures) carries the
+          // committed snapshot's fixtures forward in that case, so fixtures
+          // never regress to zero and a standings/leaders/season refresh still
+          // commits on its own. This flag no longer gates the commit — it only
+          // annotates the run summary (issue #232 follow-up). A real outage that
+          // also empties standings or leaders still hard-fails via the gates
+          // above and below.
+          let offseason = 'false';
           if (recent + upcoming < 1) {
-            console.error('::error::NBA snapshot has no recent or upcoming fixtures.');
-            process.exit(1);
+            offseason = 'true';
+            console.log('::warning::NBA scoreboard window is empty (off-season or a transient scoreboard blip). Standings and leaders were still verified; the builder carries prior fixtures forward.');
           }
 
           if (scorers < MIN_LEADERS || rebounders < MIN_LEADERS || assists < MIN_LEADERS) {
@@ -132,7 +143,8 @@ jobs:
               'team_snapshots=' + teamSnapshots + '\n' +
               'scorers=' + scorers + '\n' +
               'rebounders=' + rebounders + '\n' +
-              'assists=' + assists + '\n',
+              'assists=' + assists + '\n' +
+              'offseason=' + offseason + '\n',
             { flag: 'a' }
           );
           "
@@ -157,6 +169,23 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      # Snapshot commits carry [skip ci], so the live site otherwise only picks
+      # up the refresh on the daily cron-job.org build hook. This deploys
+      # promptly whenever the snapshot actually changed, and no-ops until the
+      # NETLIFY_BUILD_HOOK secret is set.
+      - name: Trigger Netlify deploy
+        if: steps.check_changes.outputs.changed == 'true'
+        env:
+          NETLIFY_BUILD_HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
+        run: |
+          if [ -z "$NETLIFY_BUILD_HOOK" ]; then
+            echo "NETLIFY_BUILD_HOOK secret not configured; skipping deploy trigger."
+            exit 0
+          fi
+          curl -fsS -X POST -d '{}' "$NETLIFY_BUILD_HOOK" \
+            && echo "Netlify build hook triggered." \
+            || echo "::warning::Netlify build hook request failed; the daily scheduled rebuild will pick up the snapshot."
+
       - name: Create job summary
         if: always()
         run: |
@@ -176,6 +205,8 @@ jobs:
           fi
           if [ "${{ steps.check_changes.outputs.changed }}" = "true" ]; then
             echo "NBA snapshot changed and was committed." >> "$GITHUB_STEP_SUMMARY"
+          elif [ "${{ steps.verify_quality.outputs.offseason }}" = "true" ]; then
+            echo "NBA scoreboard window is empty (off-season); fixtures carried forward and nothing else changed, so no commit." >> "$GITHUB_STEP_SUMMARY"
           else
             echo "NBA snapshot was already up to date." >> "$GITHUB_STEP_SUMMARY"
           fi

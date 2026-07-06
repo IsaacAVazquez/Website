@@ -20,6 +20,8 @@ export function createEmptyGolfSummary(): GolfSummary {
       leaderScore: null,
       playersUnderPar: 0,
       cutLine: null,
+      cutState: "unknown",
+      cutCount: null,
       fieldSize: 0,
     },
     leaderboard: [],

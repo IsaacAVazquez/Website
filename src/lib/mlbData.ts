@@ -128,11 +128,10 @@ interface StatsApiLeadersResponse {
   }> | null;
 }
 
-function getCurrentSeason(): string {
-  const now = new Date();
+export function getCurrentSeason(now: Date = new Date()): string {
   const month = now.getUTCMonth() + 1;
   const year = now.getUTCFullYear();
-  return month >= 11 ? String(year + 1) : String(year);
+  return month >= 12 ? String(year + 1) : String(year);
 }
 
 function buildLogoUrl(teamId: number | string): string {

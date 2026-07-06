@@ -122,10 +122,10 @@ function buildFeedMap(overrides: Partial<Record<string, string | Error>> = {}) {
       pubDate: "Fri, 03 Apr 2026 15:30:00 GMT",
       category: "Politics",
     }),
-    [FEED_URLS.wapo]: makeRssFeed({
-      title: "Washington Post Headline",
-      link: "https://www.washingtonpost.com/world/2026/04/03/sample-story/",
-      description: "Washington Post summary",
+    [FEED_URLS.aljazeera]: makeRssFeed({
+      title: "Al Jazeera Headline",
+      link: "https://www.aljazeera.com/news/2026/4/3/sample-story",
+      description: "Al Jazeera summary",
       pubDate: "Fri, 03 Apr 2026 14:30:00 GMT",
       category: "World",
     }),
@@ -298,6 +298,26 @@ describe("GET /api/news-pulse", () => {
       "The Atlantic: returned no usable entries",
       "BBC: network down",
     ]);
+  });
+
+  it("maps an aborted feed fetch to a human timeout message", async () => {
+    // AbortController fires this shape when FETCH_TIMEOUT_MS is exceeded.
+    const abortError = new Error("This operation was aborted");
+    abortError.name = "AbortError";
+    installFetchMock(buildFeedMap({
+      [FEED_URLS.bbc]: abortError,
+    }));
+
+    const response = await GET();
+    const body = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(body.articles).toHaveLength(5);
+    expect(
+      body.articles.find((article: { source: string }) => article.source === "bbc"),
+    ).toBeUndefined();
+    expect(body.errors).toContain("BBC: timed out after 8s");
+    expect(body.errors).not.toContain("BBC: This operation was aborted");
   });
 
   it("returns a 503 with a structured message when every feed fails", async () => {

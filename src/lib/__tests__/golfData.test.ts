@@ -1,7 +1,7 @@
 /**
  * @jest-environment node
  */
-import { buildGolfSnapshotData } from "../golfData";
+import { buildGolfSnapshotData, extractCutScore, deriveCutState } from "../golfData";
 
 function jsonResponse(payload: unknown, status = 200): Response {
   return new Response(JSON.stringify(payload), {
@@ -289,5 +289,160 @@ describe("buildGolfSnapshotData", () => {
 
     const { summary } = await buildGolfSnapshotData();
     expect(summary.tournament.name).toBe("May Championship");
+  });
+});
+
+describe("extractCutScore", () => {
+  it("reads the cut from event.tournament.cutScore (ESPN's real location)", () => {
+    // Mirrors the live ESPN shape: the cut lives on tournament.cutScore, while
+    // neither event.status nor competition.status carries a cutLine.
+    const event = {
+      tournament: {
+        displayName: "John Deere Classic",
+        cutScore: -3,
+        cutRound: 2,
+        cutCount: 79,
+      },
+      status: { type: { state: "post", completed: true, description: "Final" } },
+      competitions: [
+        { status: { type: { state: "post", description: "Final" }, period: 4 } },
+      ],
+    };
+    expect(extractCutScore(event as never)).toBe(-3);
+  });
+
+  it("preserves an even-par cut (0) rather than treating it as missing", () => {
+    const event = { tournament: { cutScore: 0 }, status: { type: { state: "in" } } };
+    expect(extractCutScore(event as never)).toBe(0);
+  });
+
+  it("returns null for a genuine no-cut event (no cut fields anywhere)", () => {
+    const event = {
+      tournament: { displayName: "Sentry Tournament of Champions" },
+      status: { type: { state: "post" } },
+      competitions: [{ status: { type: { state: "post" }, period: 4 } }],
+    };
+    expect(extractCutScore(event as never)).toBeNull();
+  });
+
+  it("falls back to the legacy competition.status.cutLine when present", () => {
+    const event = {
+      tournament: { displayName: "Legacy Shape" },
+      competitions: [{ status: { cutLine: { value: 2 } } }],
+    };
+    expect(extractCutScore(event as never)).toBe(2);
+  });
+});
+
+describe("deriveCutState", () => {
+  it("reports a made cut when the cut score is set", () => {
+    const event = {
+      tournament: { cutScore: -3, cutRound: 2, cutCount: 79, numberOfRounds: 4 },
+    };
+    expect(deriveCutState(event as never)).toEqual({
+      cutLine: -3,
+      cutState: "made",
+      cutCount: 79,
+    });
+  });
+
+  it("reports a pending cut when a cut round is scheduled but no score yet", () => {
+    const event = {
+      tournament: { cutScore: null, cutRound: 2, cutCount: null, numberOfRounds: 4 },
+    };
+    const result = deriveCutState(event as never);
+    expect(result.cutState).toBe("pending");
+    expect(result.cutLine).toBeNull();
+  });
+
+  it("reports no cut when the described format carries no cut round", () => {
+    // Signature / limited-field event: ESPN describes the format (numberOfRounds)
+    // but there is no cutRound, so this is a genuine no-cut event.
+    expect(deriveCutState({ tournament: { numberOfRounds: 4 } } as never).cutState).toBe(
+      "none"
+    );
+    expect(
+      deriveCutState({ tournament: { cutRound: 0, numberOfRounds: 4 } } as never).cutState
+    ).toBe("none");
+  });
+
+  it("stays unknown (never a false 'no cut') when ESPN's data is too sparse", () => {
+    expect(deriveCutState({ tournament: { displayName: "x" } } as never).cutState).toBe(
+      "unknown"
+    );
+    expect(deriveCutState({} as never).cutState).toBe("unknown");
+    expect(deriveCutState(null).cutState).toBe("unknown");
+  });
+});
+
+describe("buildGolfSnapshotData cut line", () => {
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  function leaderboardWithTournamentCut() {
+    const base = makeLeaderboard(fiveCompetitors());
+    const event = base.events[0];
+    return {
+      ...base,
+      events: [
+        {
+          ...event,
+          status: { type: { state: "post", completed: true, description: "Final" } },
+          tournament: {
+            displayName: "John Deere Classic",
+            cutScore: -3,
+            cutRound: 2,
+            cutCount: 79,
+          },
+          competitions: [
+            {
+              ...event.competitions[0],
+              // Mirror the real ESPN response: status carries no cutLine.
+              status: {
+                type: { state: "post", description: "Final", detail: "Final" },
+                period: 4,
+              },
+            },
+          ],
+        },
+      ],
+    };
+  }
+
+  it("reads the cut line from event.tournament.cutScore when ESPN omits status.cutLine", async () => {
+    jest
+      .spyOn(global, "fetch")
+      .mockResolvedValue(jsonResponse(leaderboardWithTournamentCut()));
+
+    const { summary } = await buildGolfSnapshotData();
+    expect(summary.tournament.cutLine).toBe(-3);
+    expect(summary.heroStats.cutLine).toBe(-3);
+  });
+
+  it("reports a null cut line for a genuine no-cut event", async () => {
+    const base = makeLeaderboard(fiveCompetitors());
+    const event = base.events[0];
+    const noCut = {
+      ...base,
+      events: [
+        {
+          ...event,
+          status: { type: { state: "post", completed: true, description: "Final" } },
+          tournament: { displayName: "Sentry Tournament of Champions" },
+          competitions: [
+            {
+              ...event.competitions[0],
+              status: { type: { state: "post" }, period: 4 },
+            },
+          ],
+        },
+      ],
+    };
+
+    jest.spyOn(global, "fetch").mockResolvedValue(jsonResponse(noCut));
+
+    const { summary } = await buildGolfSnapshotData();
+    expect(summary.tournament.cutLine).toBeNull();
   });
 });

@@ -5,6 +5,14 @@ export interface GolfRouteState {
   player: string | null;
 }
 
+/**
+ * Cut state for the tournament. "made" once the cut score is set, "pending"
+ * while a cut is scheduled but not yet applied (early rounds), "none" for a
+ * genuine no-cut event (signature/limited-field), and "unknown" when ESPN
+ * hasn't given us enough to tell — so the UI never asserts a false "No cut".
+ */
+export type GolfCutState = "made" | "pending" | "none" | "unknown";
+
 export interface GolfTournament {
   id: string;
   name: string;
@@ -18,6 +26,8 @@ export interface GolfTournament {
   status: string;
   fieldSize: number;
   cutLine: number | null;
+  cutState: GolfCutState;
+  cutCount: number | null;
   generatedAt: string;
 }
 
@@ -26,6 +36,8 @@ export interface GolfHeroStats {
   leaderScore: number | null;
   playersUnderPar: number;
   cutLine: number | null;
+  cutState: GolfCutState;
+  cutCount: number | null;
   fieldSize: number;
 }
 

@@ -31,7 +31,7 @@ export const metadata = constructMetadata({
     context:
       "Portfolio project by Isaac Vazquez demonstrating news media analytics thinking, relevant to media strategy roles focused on AI integration and editorial innovation.",
     summary:
-      "Live dashboard pulling RSS feeds from The Atlantic, NYT, The Guardian, BBC, NPR, and Washington Post to visualize coverage patterns, trending topics, and headline sentiment.",
+      "Live dashboard pulling RSS feeds from The Atlantic, NYT, The Guardian, BBC, NPR, and Al Jazeera to visualize coverage patterns, trending topics, and headline sentiment.",
     primaryFocus:
       "News media analytics, cross-outlet coverage visualization, and lightweight NLP for editorial intelligence",
   },

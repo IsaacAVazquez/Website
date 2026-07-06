@@ -100,6 +100,14 @@ export interface WorldCupFixture {
     winner: "HOME_TEAM" | "AWAY_TEAM" | "DRAW" | null;
     home: number | null;
     away: number | null;
+    /**
+     * Penalty shootout tallies for a knockout tie level after regulation
+     * (and extra time). Present only when a shootout decided the match, so a
+     * "1-1" result with a winner can render as "1-1 (4-2 pens)". Absent from
+     * regular-time results.
+     */
+    shootoutHome?: number | null;
+    shootoutAway?: number | null;
   };
 }
 

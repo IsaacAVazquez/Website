@@ -96,6 +96,28 @@ function standingsPayload() {
   };
 }
 
+/**
+ * The season object has advanced to a not-yet-started future season, but the
+ * standings table still holds last season's completed data (the La Liga
+ * rollover quirk observed live). Un-pinned scorers/matches come back empty
+ * upstream. A future start date is the signal that the season hasn't begun.
+ */
+function rolledOverStandingsPayload() {
+  return {
+    competition: { code: "PD", name: "Primera Division" },
+    season: { startDate: "2099-08-16", endDate: "2100-05-30", currentMatchday: 1 },
+    standings: [
+      {
+        type: "TOTAL",
+        table: [
+          { position: 1, team: BARCA, points: 94, playedGames: 38, won: 30, draw: 4, lost: 4, goalsFor: 100, goalsAgainst: 30, goalDifference: 70 },
+          { position: 2, team: MADRID, points: 84, playedGames: 38, won: 26, draw: 6, lost: 6, goalsFor: 90, goalsAgainst: 40, goalDifference: 50 },
+        ],
+      },
+    ],
+  };
+}
+
 function finishedMatchesPayload() {
   return {
     matches: [
@@ -314,6 +336,35 @@ describe("getLaLigaSummary", () => {
     expect((firstCallInit.headers as Record<string, string>)["X-Auth-Token"]).toBe(
       "test-token"
     );
+  });
+
+  it("re-pins to the completed prior season when the season has not started (future start date)", async () => {
+    // Un-pinned requests describe the rolled-over future season (stale table,
+    // empty scorers/matches); requests pinned to a season return the real
+    // completed data.
+    jest.spyOn(global, "fetch").mockImplementation((input: RequestInfo | URL) => {
+      const url = String(input);
+      const pinned = url.includes("season=");
+      if (url.includes("/standings")) {
+        return Promise.resolve(jsonResponse(pinned ? standingsPayload() : rolledOverStandingsPayload()));
+      }
+      if (url.includes("/scorers")) return Promise.resolve(jsonResponse(pinned ? scorersPayload() : { scorers: [] }));
+      if (url.includes("/teams")) return Promise.resolve(jsonResponse(teamsPayload()));
+      if (url.includes("/matches")) {
+        if (url.includes("status=FINISHED")) return Promise.resolve(jsonResponse(pinned ? finishedMatchesPayload() : { matches: [] }));
+        if (url.includes("status=SCHEDULED")) return Promise.resolve(jsonResponse({ matches: [] }));
+      }
+      throw new Error(`Unexpected fetch URL in test: ${url}`);
+    });
+
+    const summary = await getLaLigaSummary();
+
+    // Without the fix, this surfaces the rolled-over future label + matchday 1
+    // + empty scorers. After re-pinning it shows the completed 2025/26 season.
+    expect(summary.season).toBe("2025/26");
+    expect(summary.matchday).toBe(12);
+    expect(summary.clubs.length).toBeGreaterThan(0);
+    expect(summary.scorers.length).toBeGreaterThan(0);
   });
 
   it("throws when the API token is not configured", async () => {

@@ -17,7 +17,11 @@ import type { TechStartupSnapshot } from "../src/types/techStartup";
  * `npm run update:tech-startups` to regenerate the snapshot.
  */
 
-const AS_OF = "2026-05-01";
+// Honest data-currency date. The curated seed's funding rounds are reported
+// through roughly mid-2025 (a handful of later additions aside), so this is the
+// date the figures actually reflect — not the file's build date. Bump it only
+// when the seed is genuinely refreshed against newer reporting.
+const AS_OF = "2025-06-01";
 
 const SOURCE_LABEL = "Curated from public reporting";
 const SOURCE_URL = "https://news.crunchbase.com";

@@ -83,6 +83,8 @@ interface EspnCompetitor {
   homeAway?: string | null;
   winner?: boolean | null;
   score?: number | string | null;
+  /** Penalty shootout tally; present only on knockout ties decided on pens. */
+  shootoutScore?: number | string | null;
   team?: EspnTeam | null;
 }
 
@@ -234,7 +236,7 @@ function fixtureTeam(competitor: EspnCompetitor | undefined): WorldCupFixtureTea
   };
 }
 
-function buildFixture(event: EspnEvent): WorldCupFixture | null {
+export function buildFixture(event: EspnEvent): WorldCupFixture | null {
   const competition = event.competitions?.[0];
   const competitors = competition?.competitors ?? [];
   const home = competitors.find((c) => c.homeAway === "home") ?? competitors[0];
@@ -246,6 +248,16 @@ function buildFixture(event: EspnEvent): WorldCupFixture | null {
   );
   const homeScore = home.score != null ? toNumber(home.score) : null;
   const awayScore = away.score != null ? toNumber(away.score) : null;
+  // Penalty shootout tallies (null when absent, never 0-defaulted): a knockout
+  // tie level after regulation and extra time is decided on penalties, and
+  // ESPN reports each side's count here. Without them a "1-1" result with a
+  // winner renders as a bare draw. Only home/away goals default to 0 elsewhere;
+  // a missing shootout must stay null so we can tell "no shootout" from "0".
+  const homeShootout =
+    home.shootoutScore != null ? toNumber(home.shootoutScore) : null;
+  const awayShootout =
+    away.shootoutScore != null ? toNumber(away.shootoutScore) : null;
+  const hasShootout = homeShootout != null || awayShootout != null;
   let winner: WorldCupFixture["score"]["winner"] = null;
   if (status === "FINISHED") {
     if (home.winner) winner = "HOME_TEAM";
@@ -272,7 +284,16 @@ function buildFixture(event: EspnEvent): WorldCupFixture | null {
     venue: competition?.venue?.fullName ?? null,
     homeTeam: fixtureTeam(home),
     awayTeam: fixtureTeam(away),
-    score: { winner, home: homeScore, away: awayScore },
+    score: {
+      winner,
+      home: homeScore,
+      away: awayScore,
+      // Keep regular-time results byte-identical to before by only adding the
+      // shootout fields when a shootout actually happened.
+      ...(hasShootout
+        ? { shootoutHome: homeShootout, shootoutAway: awayShootout }
+        : {}),
+    },
   };
 }
 

@@ -25,6 +25,15 @@ function writeFileAtomic(path: string, content: string): void {
   renameSync(tmp, path);
 }
 
+// A valid table has clubs AND at least one game played. A rolled-over season
+// keeps last season's table under a future-dated label or returns a zeroed
+// one; treating "no games played" as invalid routes it through the
+// keep-previous fallback rather than overwriting the good committed table.
+function hasPlayedClubs(snapshot: LaLigaSnapshot | null): boolean {
+  const clubs = snapshot?.clubs ?? [];
+  return clubs.length > 0 && clubs.some((club) => club.played > 0);
+}
+
 async function main() {
   console.log("Fetching La Liga snapshot from football-data.org…");
   const outPath = resolve(__dirname, "../src/data/laLigaSnapshot.ts");
@@ -37,7 +46,7 @@ async function main() {
       outPath,
       "laLigaSnapshot"
     );
-    if (existing && existing.clubs.length > 0) {
+    if (hasPlayedClubs(existing)) {
       console.warn(
         "La Liga snapshot refresh failed; keeping the existing snapshot.",
         error
@@ -47,16 +56,17 @@ async function main() {
     throw error;
   }
 
-  // A successful build with no clubs (off-season / schema drift) must not
-  // overwrite the good committed snapshot. Fall back to the existing data.
-  if (snapshot.clubs.length === 0) {
+  // A successful build with no played games (off-season rollover / schema
+  // drift) must not overwrite the good committed snapshot. Fall back to the
+  // existing data.
+  if (!hasPlayedClubs(snapshot)) {
     const existing = readGeneratedSnapshot<LaLigaSnapshot>(
       outPath,
       "laLigaSnapshot"
     );
-    if (existing && existing.clubs.length > 0) {
+    if (hasPlayedClubs(existing)) {
       console.warn(
-        "La Liga snapshot build returned no clubs; keeping the existing snapshot."
+        "La Liga snapshot build returned no played games; keeping the existing snapshot."
       );
       return;
     }

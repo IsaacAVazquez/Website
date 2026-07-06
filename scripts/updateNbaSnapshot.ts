@@ -12,7 +12,7 @@ import { config } from "dotenv";
 import { renameSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 config({ path: resolve(__dirname, "../.env.local") });
-import { buildNbaSnapshot } from "../src/lib/nbaData";
+import { buildNbaSnapshot, preservePriorFixtures } from "../src/lib/nbaData";
 import type { NbaSnapshot } from "../src/types/nba";
 import { readGeneratedSnapshot } from "./snapshotFallback";
 
@@ -66,6 +66,20 @@ async function main() {
       "🏀 NBA snapshot build returned no standings; keeping the existing snapshot."
     );
     return;
+  }
+
+  // Off-season / transient-blip guard: ESPN's scoreboard window is empty all
+  // summer while standings and leaders keep serving the completed season. Carry
+  // the committed snapshot's fixtures forward so a standings/leaders/season
+  // refresh commits on its own without regressing fixtures to zero.
+  const existing = readGeneratedSnapshot<NbaSnapshot>(outPath, "nbaSnapshot");
+  const fixturesBefore =
+    snapshot.recentFixtures.length + snapshot.upcomingFixtures.length;
+  snapshot = preservePriorFixtures(snapshot, existing);
+  if (snapshot.recentFixtures.length + snapshot.upcomingFixtures.length > fixturesBefore) {
+    console.log(
+      "🏀 Scoreboard window was empty; carried prior fixtures forward (off-season/blip)."
+    );
   }
 
   const output = `import type { NbaSnapshot } from "@/types/nba";

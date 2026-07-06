@@ -75,6 +75,45 @@ def read_symbols() -> list[str]:
     return [line.strip().upper() for line in lines if line.strip() and not line.startswith("#")]
 
 
+def symbol_price_freshness(symbol: str) -> str:
+    """Sortable freshness stamp for a symbol, read from its prior *public*
+    snapshot rather than its filesystem mtime — CI checks the repo out fresh
+    each run, which resets mtimes, so an mtime sort would be a no-op on the
+    runner. Prefers the price as-of date, then the snapshot build time, then
+    lastUpdated. Returns "" when the symbol has never been fetched or its
+    snapshot is unreadable, so it sorts first (stalest). ISO date/datetime
+    strings sort lexicographically in chronological order, so no parsing needed.
+    """
+    snapshot_path = PUBLIC_DIR / symbol / "snapshot.json"
+    if not snapshot_path.exists():
+        return ""
+    try:
+        with open(snapshot_path, "r", encoding="utf-8") as f:
+            snapshot = json.load(f)
+    except (OSError, json.JSONDecodeError):
+        return ""
+    freshness = snapshot.get("freshness")
+    if isinstance(freshness, dict):
+        sections = freshness.get("sections")
+        if isinstance(sections, dict) and sections.get("price"):
+            return str(sections["price"])
+        if freshness.get("snapshotBuiltAt"):
+            return str(freshness["snapshotBuiltAt"])
+    return str(snapshot.get("lastUpdated") or "")
+
+
+def sort_symbols_stalest_first(symbols: list[str]) -> list[str]:
+    """Order symbols by ascending prior-snapshot freshness so each budget-limited
+    run advances the stalest (and never-fetched) symbols first. The fetch loop
+    stops dispatching once GLOBAL_BUDGET_SECONDS is exhausted, so in fixed file
+    order the tail of the list would never refresh (~24 of 151 symbols fit the
+    22-minute budget); rotating the stalest to the front lets the cursor sweep
+    the whole universe across successive runs. Python's sort is stable, so
+    symbols with equal freshness keep their original file order.
+    """
+    return sorted(symbols, key=symbol_price_freshness)
+
+
 def read_company_names() -> dict[str, str]:
     if not COMPANY_NAMES_FILE.exists():
         return {}
@@ -488,8 +527,8 @@ def _alarm_handler(signum, frame):  # noqa: ARG001 — signal handler signature
 
 
 def main() -> None:
-    symbols = read_symbols()
-    print(f"Processing {len(symbols)} symbols: {', '.join(symbols)}")
+    symbols = sort_symbols_stalest_first(read_symbols())
+    print(f"Processing {len(symbols)} symbols (stalest first): {', '.join(symbols)}")
     print(f"Output directory: {OUTPUT_DIR}")
     print(f"Per-symbol timeout: {PER_SYMBOL_TIMEOUT_SECONDS}s")
     if GLOBAL_BUDGET_SECONDS:

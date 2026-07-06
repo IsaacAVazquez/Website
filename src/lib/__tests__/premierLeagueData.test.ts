@@ -1,7 +1,7 @@
 /**
  * @jest-environment node
  */
-import { getPremierLeagueSummary } from "../premierLeagueData";
+import { getPremierLeagueSummary, sumPlayedGames } from "../premierLeagueData";
 
 function jsonResponse(payload: unknown, status = 200): Response {
   return new Response(JSON.stringify(payload), {
@@ -170,6 +170,39 @@ function scheduledMatchesPayload() {
   };
 }
 
+/**
+ * The upstream competition has rolled to 2026/27 but no matches are played yet
+ * (the off-season state that produced the zeroed-table wipe). Every row is
+ * position-ordered with 0 played games.
+ */
+function rolledOverStandingsPayload() {
+  return {
+    area: { name: "England" },
+    competition: {
+      code: "PL",
+      name: "Premier League",
+      emblem: "https://emblem.png",
+      area: { name: "England" },
+    },
+    season: {
+      startDate: "2026-08-21",
+      endDate: "2027-05-30",
+      currentMatchday: 1,
+      winner: null,
+    },
+    standings: [
+      {
+        type: "TOTAL",
+        table: [
+          { position: 1, playedGames: 0, won: 0, draw: 0, lost: 0, points: 0, goalsFor: 0, goalsAgainst: 0, goalDifference: 0, team: ARSENAL },
+          { position: 2, playedGames: 0, won: 0, draw: 0, lost: 0, points: 0, goalsFor: 0, goalsAgainst: 0, goalDifference: 0, team: CHELSEA },
+          { position: 3, playedGames: 0, won: 0, draw: 0, lost: 0, points: 0, goalsFor: 0, goalsAgainst: 0, goalDifference: 0, team: LIVERPOOL },
+        ],
+      },
+    ],
+  };
+}
+
 function teamsPayload() {
   return {
     teams: [LIVERPOOL, ARSENAL, CHELSEA],
@@ -200,6 +233,14 @@ function routeFetch(url: string): Response {
   }
   throw new Error(`Unexpected fetch URL in test: ${url}`);
 }
+
+describe("sumPlayedGames", () => {
+  it("sums playedGames across rows and treats a zeroed table as zero", () => {
+    expect(sumPlayedGames([{ playedGames: 30 }, { playedGames: 28 }])).toBe(58);
+    expect(sumPlayedGames([{ playedGames: 0 }, { playedGames: 0 }])).toBe(0);
+    expect(sumPlayedGames([])).toBe(0);
+  });
+});
 
 describe("getPremierLeagueSummary", () => {
   let previousToken: string | undefined;
@@ -302,6 +343,37 @@ describe("getPremierLeagueSummary", () => {
     ]);
 
     expect(typeof summary.generatedAt).toBe("string");
+  });
+
+  it("re-pins to the completed prior season when the live standings show zero games played", async () => {
+    // Off-season rollover: the /standings request with no season param returns
+    // the zeroed 2026/27 placeholder; a request pinned to season=2025 returns
+    // the real completed 2025/26 table.
+    jest.spyOn(global, "fetch").mockImplementation((input: Parameters<typeof fetch>[0]) => {
+      const url = String(input);
+      if (url.includes("/standings")) {
+        return Promise.resolve(
+          jsonResponse(url.includes("season=2025") ? standingsPayload() : rolledOverStandingsPayload())
+        );
+      }
+      if (url.includes("/scorers")) return Promise.resolve(jsonResponse(scorersPayload()));
+      if (url.includes("/teams")) return Promise.resolve(jsonResponse(teamsPayload()));
+      if (url.includes("/matches")) {
+        if (url.includes("status=FINISHED")) return Promise.resolve(jsonResponse(finishedMatchesPayload()));
+        if (url.includes("status=SCHEDULED")) return Promise.resolve(jsonResponse(scheduledMatchesPayload()));
+      }
+      throw new Error(`Unexpected fetch URL in test: ${url}`);
+    });
+
+    const summary = await getPremierLeagueSummary();
+
+    // Must NOT surface the zeroed 2026/27 placeholder; re-pins to 2025/26.
+    expect(summary.competition?.seasonLabel).toBe("2025/26");
+    expect(summary.standings.length).toBeGreaterThan(0);
+    const totalPlayed = summary.standings.reduce((sum, row) => sum + row.playedGames, 0);
+    expect(totalPlayed).toBeGreaterThan(0);
+    // Position ordering [2, 1, 3] is unique to the completed-season payload.
+    expect(summary.standings.map((r) => r.position)).toEqual([2, 1, 3]);
   });
 
   it("throws when the API token is not configured", async () => {

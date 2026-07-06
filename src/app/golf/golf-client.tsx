@@ -725,10 +725,22 @@ export function GolfClient({
     },
     {
       label: "Cut line",
-      tooltip: "Score at which the field gets trimmed for the weekend.",
-      value: summary.heroStats.cutLine === null
-        ? "No cut"
-        : formatScoreToPar(summary.heroStats.cutLine),
+      tooltip:
+        summary.heroStats.cutState === "none"
+          ? "This event has no cut — the full field plays all rounds."
+          : summary.heroStats.cutCount !== null
+            ? `Score at which the field gets trimmed for the weekend. ${summary.heroStats.cutCount} players made the cut.`
+            : "Score at which the field gets trimmed for the weekend.",
+      // Three-state so a cut still to come reads differently from an event with
+      // no cut at all, instead of collapsing both to "TBD". Show the real to-par
+      // cut once we have it; say "No cut" only when ESPN's format confirms it;
+      // otherwise stay neutral with "TBD" rather than asserting a false "No cut".
+      value:
+        summary.heroStats.cutLine !== null
+          ? formatScoreToPar(summary.heroStats.cutLine)
+          : summary.heroStats.cutState === "none"
+            ? "No cut"
+            : "TBD",
     },
     {
       label: "Under par",

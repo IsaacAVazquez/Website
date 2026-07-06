@@ -2,7 +2,7 @@ import type { PollingSnapshot } from "@/types/polling";
 
 export const pollingSnapshot: PollingSnapshot = {
   generatedAt: "2026-04-08T06:00:00Z",
-  sourceLabel: "Aggregated from public pollsters",
+  sourceLabel: "Sample data",
 
   // ─── Presidential approval average ─────────────────────────────────────────
   approvalAvg: {

@@ -1,7 +1,7 @@
 /**
  * @jest-environment node
  */
-import { buildNflSnapshot } from "../nflData";
+import { buildNflSnapshot, etToUtcIso } from "../nflData";
 
 const STANDINGS_URL =
   "https://github.com/nflverse/nfldata/raw/master/data/standings.csv";
@@ -110,6 +110,28 @@ function mockFetch(
       return Promise.reject(new Error(`Unexpected fetch URL: ${url}`));
     });
 }
+
+describe("etToUtcIso", () => {
+  // NFLverse `games.csv` records `gameday`/`gametime` as US/Eastern wall-clock
+  // time, not UTC. America/New_York is UTC-5 in winter (EST) and UTC-4 during
+  // daylight saving (EDT), so the correct UTC offset depends on the date.
+
+  it("converts an EST (winter) kickoff from US/Eastern wall-clock to UTC", () => {
+    // 8:20pm ET Sunday Night Football on 2026-01-04. EST is UTC-5, so the true
+    // UTC instant rolls into the next calendar day at 01:20 UTC.
+    expect(etToUtcIso("2026-01-04", "20:20")).toBe("2026-01-05T01:20:00Z");
+  });
+
+  it("converts an EDT (summer) kickoff using the UTC-4 daylight offset", () => {
+    // 8:20pm ET on 2026-09-13. EDT is UTC-4, so the true UTC instant is the
+    // next calendar day at 00:20 UTC.
+    expect(etToUtcIso("2026-09-13", "20:20")).toBe("2026-09-14T00:20:00Z");
+  });
+
+  it("converts an early-afternoon EST kickoff (1:00pm ET -> 18:00 UTC)", () => {
+    expect(etToUtcIso("2026-01-04", "13:00")).toBe("2026-01-04T18:00:00Z");
+  });
+});
 
 describe("buildNflSnapshot", () => {
   afterEach(() => {
