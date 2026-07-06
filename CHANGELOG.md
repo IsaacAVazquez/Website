@@ -10,6 +10,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - High-priority data-source audit remediation ([#277](https://github.com/IsaacAVazquez/Website/pull/277)).
 - Open the SpaceX mission drawer before asserting its detail panel ([#279](https://github.com/IsaacAVazquez/Website/pull/279)).
 - Cache fantasy snapshot reads and harden refresh workflows ([#280](https://github.com/IsaacAVazquez/Website/pull/280)).
+- Serve last-good news-pulse headlines when a refresh fails ([#281](https://github.com/IsaacAVazquez/Website/pull/281)).
 
 ---
 
