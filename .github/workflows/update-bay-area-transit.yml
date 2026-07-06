@@ -6,7 +6,9 @@ on:
   # without committing noisy minute-to-minute churn. BART's public API needs no
   # token.
   schedule:
-    - cron: "20 */6 * * *"
+    # Staggered off :20 so it doesn't race the hourly earthquake and 6h world-cup
+    # refreshes (which also push to main) over the same minute.
+    - cron: "35 */6 * * *"
   workflow_dispatch:
 
 # Don't stack a manual dispatch on top of a scheduled run.

@@ -1,116 +1,31 @@
-import { NextRequest, NextResponse } from "next/server";
-import { getAllowedSymbols, fetchFinnhubQuote } from "@/lib/finnhub";
-import { apiRateLimiter, rateLimitResponse } from "@/lib/rateLimit";
-import { logger } from "@/lib/logger";
+import { NextResponse } from "next/server";
 
 /**
- * Stock API Route
- * Fetches live stock data via Finnhub.
+ * Deprecated and retired: /api/stocks.
  *
- * Hardening:
- *  - Per-IP rate limit (30 req/min) backed by the in-process apiRateLimiter
- *  - Allowlist of curated symbols (public/data/investments/index.json)
- *  - Caps to 25 symbols per request
- *  - Caches successful responses 30s + 60s SWR; errors get no-store
- *
- * Query Parameters:
- * - symbols: comma-separated list of stock symbols (e.g., "AAPL,GOOGL,MSFT")
+ * This was an orphaned near-duplicate of /api/investments/quotes (same Finnhub
+ * allowlist and quote shape) with no first-party consumer, yet it still spent
+ * Finnhub quota. It now returns 410 Gone with Deprecation/Sunset headers so any
+ * lingering caller fails loudly and can migrate to /api/investments/quotes.
  */
 
-const MAX_SYMBOLS_PER_REQUEST = 25;
-const SUCCESS_CACHE_HEADERS = {
-  "Cache-Control": "public, max-age=30, stale-while-revalidate=60",
-};
-const NO_STORE_HEADERS = { "Cache-Control": "no-store" };
+// 2026-07-06 (a Monday) — the date this route was retired.
+const SUNSET_DATE = "Mon, 06 Jul 2026 00:00:00 GMT";
 
-function getClientIp(request: NextRequest): string {
-  const forwarded = request.headers.get("x-forwarded-for");
-  const realIp = request.headers.get("x-real-ip");
-  return forwarded?.split(",")[0]?.trim() || realIp || "unknown";
-}
-
-export async function GET(request: NextRequest) {
-  const clientIp = getClientIp(request);
-  const rate = apiRateLimiter.check(`stocks:${clientIp}`);
-  if (!rate.success) {
-    return rateLimitResponse(rate);
-  }
-
-  try {
-    const searchParams = request.nextUrl.searchParams;
-    const symbols = searchParams.get("symbols");
-
-    if (!symbols) {
-      return NextResponse.json(
-        { error: "Symbols parameter is required" },
-        { status: 400, headers: NO_STORE_HEADERS }
-      );
-    }
-
-    const symbolArray = symbols
-      .split(",")
-      .map((s) => s.trim().toUpperCase())
-      .filter(Boolean);
-
-    if (symbolArray.length > MAX_SYMBOLS_PER_REQUEST) {
-      return NextResponse.json(
-        {
-          error: `Too many symbols. Limit is ${MAX_SYMBOLS_PER_REQUEST} per request.`,
-        },
-        { status: 400, headers: NO_STORE_HEADERS }
-      );
-    }
-
-    const allowlist = await getAllowedSymbols({
-      assetOrigin: request.nextUrl.origin,
-    });
-    const validSymbols = symbolArray.filter((s) => allowlist.has(s));
-    const invalidSymbols = symbolArray.filter((s) => !allowlist.has(s));
-
-    const invalidQuotes = invalidSymbols.map((s) => ({
-      symbol: s,
-      price: 0,
-      change: 0,
-      changePercent: 0,
-      dayHigh: 0,
-      dayLow: 0,
-      open: 0,
-      previousClose: 0,
-      volume: 0,
-      marketCap: 0,
-      name: s,
-      error: `Invalid symbol: ${s}`,
-    }));
-
-    if (validSymbols.length === 0) {
-      return NextResponse.json(
-        {
-          quotes: invalidQuotes,
-          rateLimited: false,
-          allFailed: false,
-          timestamp: new Date().toISOString(),
-        },
-        { headers: SUCCESS_CACHE_HEADERS }
-      );
-    }
-
-    const validQuotes = await Promise.all(validSymbols.map(fetchFinnhubQuote));
-    const allFailed = validQuotes.length > 0 && validQuotes.every((q) => q.error);
-
-    return NextResponse.json(
-      {
-        quotes: [...validQuotes, ...invalidQuotes],
-        rateLimited: false,
-        allFailed,
-        timestamp: new Date().toISOString(),
+export function GET(): NextResponse {
+  return NextResponse.json(
+    {
+      error: "Gone",
+      message: "/api/stocks has been retired. Use /api/investments/quotes instead.",
+    },
+    {
+      status: 410,
+      headers: {
+        Deprecation: "true",
+        Sunset: SUNSET_DATE,
+        Link: '</api/investments/quotes>; rel="successor-version"',
+        "Cache-Control": "no-store",
       },
-      { headers: SUCCESS_CACHE_HEADERS }
-    );
-  } catch (error) {
-    logger.error("Stock API error", error);
-    return NextResponse.json(
-      { error: "Failed to fetch stock data" },
-      { status: 500, headers: NO_STORE_HEADERS }
-    );
-  }
+    }
+  );
 }
