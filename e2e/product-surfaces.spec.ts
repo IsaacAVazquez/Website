@@ -88,12 +88,17 @@ test.describe("Product surfaces", () => {
     );
     await expect(page.getByTestId("mission-hero")).toBeVisible();
     await expect(page.getByTestId("mission-board")).toBeVisible();
-    await expect(page.getByTestId("mission-detail-panel")).toBeVisible();
     await expect(page.getByRole("tab", { name: /^Past$/i })).toHaveAttribute(
       "aria-selected",
       "true"
     );
     await expectNoHorizontalOverflow(page);
+
+    // The mission detail panel is a drawer that opens when a mission is
+    // selected (the page is a launch board, not an always-open detail view),
+    // so select the first mission card and confirm the drawer renders.
+    await page.locator('[data-testid^="mission-card-"]').first().click();
+    await expect(page.getByTestId("mission-detail-panel")).toBeVisible();
   });
 
   test("fintech tools accept calculator and ledger input", async ({ page }) => {
