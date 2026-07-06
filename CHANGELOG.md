@@ -15,6 +15,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Use Greenhouse first_published for MBA job posted dates ([#283](https://github.com/IsaacAVazquez/Website/pull/283)).
 - Normalize The Guardian news-pulse feed to its front page ([#284](https://github.com/IsaacAVazquez/Website/pull/284)).
 - Bump actions/cache from 5 to 6 ([#267](https://github.com/IsaacAVazquez/Website/pull/267)).
+- Three-readout live feed in the homepage hero ([#285](https://github.com/IsaacAVazquez/Website/pull/285)).
 
 ---
 
