@@ -86,6 +86,194 @@
   --hp-rule-soft: color-mix(in srgb, var(--home-rule) 55%, transparent);
 }
 
+/* ---- Hero live-feed instrument (sits inside the dark hero plate) ---- */
+.feedPanel {
+  position: relative;
+  border-top: 3px solid var(--home-signal);
+  background: color-mix(in srgb, var(--hp-paper) 6%, var(--hp-ink));
+  color: var(--hp-paper);
+}
+.feedCap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px 16px;
+  border-bottom: 1px solid color-mix(in srgb, var(--hp-paper) 18%, transparent);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--hp-paper) 64%, transparent);
+}
+.feedCapLive {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: color-mix(in srgb, var(--hp-paper) 82%, transparent);
+}
+.feedDot {
+  position: relative;
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  display: inline-block;
+}
+.feedDot > span {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--home-signal);
+  animation: feedBlip 1.9s ease-in-out infinite;
+}
+.feedDot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid var(--home-signal);
+  animation: feedRing 1.9s ease-out infinite;
+}
+.feedRd {
+  padding: 13px 16px;
+  border-bottom: 1px solid color-mix(in srgb, var(--hp-paper) 12%, transparent);
+}
+.feedRdHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.feedRdSrc {
+  color: color-mix(in srgb, var(--hp-paper) 68%, transparent);
+}
+.feedRdMeta {
+  font-variant-numeric: tabular-nums;
+  color: color-mix(in srgb, var(--hp-paper) 48%, transparent);
+}
+.feedUp {
+  color: var(--home-positive);
+}
+.feedDown {
+  color: var(--home-negative);
+}
+.feedRdFigure {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  margin-top: 8px;
+}
+.feedRdBig {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--hp-paper);
+}
+.feedRdUnit {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--hp-paper) 44%, transparent);
+}
+.feedRdSub {
+  margin-top: 5px;
+  font-size: 0.8rem;
+  line-height: 1.35;
+  color: color-mix(in srgb, var(--hp-paper) 66%, transparent);
+}
+.feedSpark {
+  display: block;
+  width: 100%;
+  height: 26px;
+  margin-top: 9px;
+}
+.feedBar {
+  fill: color-mix(in srgb, var(--hp-paper) 24%, transparent);
+}
+.feedBarLast {
+  fill: var(--home-signal);
+}
+.feedRdLine {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 6px;
+}
+.feedClock,
+.feedRdPrice {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  color: var(--hp-paper);
+  flex-shrink: 0;
+}
+.feedRdName {
+  font-size: 0.76rem;
+  color: color-mix(in srgb, var(--hp-paper) 56%, transparent);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: right;
+}
+.feedNow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--hp-paper) 64%, transparent);
+  overflow: hidden;
+}
+.feedNowLead {
+  flex-shrink: 0;
+  color: color-mix(in srgb, var(--hp-paper) 82%, transparent);
+}
+.feedNowText {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: color-mix(in srgb, var(--hp-paper) 60%, transparent);
+}
+@keyframes feedBlip {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.38;
+  }
+}
+@keyframes feedRing {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  70%,
+  100% {
+    transform: scale(2.8);
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .feedDot > span,
+  .feedDot::after {
+    animation: none;
+  }
+}
+
 .plate::before {
   content: "";
   position: absolute;
