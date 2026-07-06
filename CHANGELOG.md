@@ -16,6 +16,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Normalize The Guardian news-pulse feed to its front page ([#284](https://github.com/IsaacAVazquez/Website/pull/284)).
 - Bump actions/cache from 5 to 6 ([#267](https://github.com/IsaacAVazquez/Website/pull/267)).
 - Three-readout live feed in the homepage hero ([#285](https://github.com/IsaacAVazquez/Website/pull/285)).
+- Add pixel-art covers for unbuilt project surfaces ([#286](https://github.com/IsaacAVazquez/Website/pull/286)).
 
 ---
 
