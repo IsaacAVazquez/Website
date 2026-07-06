@@ -14,6 +14,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Compact GitHub trending snapshot and query topic:ai ([#282](https://github.com/IsaacAVazquez/Website/pull/282)).
 - Use Greenhouse first_published for MBA job posted dates ([#283](https://github.com/IsaacAVazquez/Website/pull/283)).
 - Normalize The Guardian news-pulse feed to its front page ([#284](https://github.com/IsaacAVazquez/Website/pull/284)).
+- Bump actions/cache from 5 to 6 ([#267](https://github.com/IsaacAVazquez/Website/pull/267)).
 
 ---
 
